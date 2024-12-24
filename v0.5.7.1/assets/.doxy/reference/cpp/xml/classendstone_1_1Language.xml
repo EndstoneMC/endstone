@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Language" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Language</compoundname>
+    <includes refid="language_8h" local="no">endstone/lang/language.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Language_1a62acb7590ea7237ef734b6c98b585c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Language::~Language</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Language</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="29" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Language_1a0bc2d7dd2a9b9b43aeb57f5278a4cb7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Language::translate</definition>
+        <argsstring>(std::string text) const =0</argsstring>
+        <name>translate</name>
+        <param>
+          <type>std::string</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given text into the current locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to be translated. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated text in the current locale. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="37" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Language_1aed24e5f934caf4816cb8471818ee2335" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Language::translate</definition>
+        <argsstring>(std::string text, std::string locale) const =0</argsstring>
+        <name>translate</name>
+        <param>
+          <type>std::string</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>locale</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given text into a specific locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to be translated. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>locale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The locale identifier for the desired translation (e.g., &quot;en_US&quot;). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated text in the specified locale. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="46" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Language_1acbd599919da84faee5aa55eaf8440d6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Language::translate</definition>
+        <argsstring>(std::string text, std::vector&lt; std::string &gt; params) const =0</argsstring>
+        <name>translate</name>
+        <param>
+          <type>std::string</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given text using a set of parameters for the current locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to be translated. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of parameters to be used in the translation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated text in the current locale, with parameters applied. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="55" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Language_1a8a6cde954fdb3b2b623f68346c2906e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Language::translate</definition>
+        <argsstring>(std::string text, std::vector&lt; std::string &gt; params, std::string locale) const =0</argsstring>
+        <name>translate</name>
+        <param>
+          <type>std::string</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>locale</declname>
+        </param>
+        <briefdescription>
+<para>Translates a given text using a set of parameters for a specific locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to be translated. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of parameters to be used in the translation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>locale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The locale identifier for the desired translation (e.g., &quot;en_US&quot;). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated text in the specified locale, with parameters applied. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="65" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Language_1a633b4bcff201523d59123b7da61ab324" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Language::translate</definition>
+        <argsstring>(Translatable translatable) const =0</argsstring>
+        <name>translate</name>
+        <param>
+          <type><ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref></type>
+          <declname>translatable</declname>
+        </param>
+        <briefdescription>
+<para>Translates a <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> object into the current locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>translatable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> object containing text and parameters. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated text in the current locale. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="74" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Language_1a41d81b4bfb0d53c5aae61c7312b8a11c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Language::translate</definition>
+        <argsstring>(Translatable translatable, std::string locale) const =0</argsstring>
+        <name>translate</name>
+        <param>
+          <type><ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref></type>
+          <declname>translatable</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>locale</declname>
+        </param>
+        <briefdescription>
+<para>Translates a <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> object into a specific locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>translatable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> object containing text and parameters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>locale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The locale identifier for the desired translation (e.g., &quot;en_US&quot;). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated text in the specified locale. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="83" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Language_1a4a6fdc89482f25a189791fda12b083e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Language::getLocale</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLocale</name>
+        <briefdescription>
+<para>Gets the current locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A string representing the current locale (e.g., &quot;en_US&quot;). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/language.h" line="90" column="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the interface for translating text into different languages. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/lang/language.h" line="27" column="1" bodyfile="include/endstone/lang/language.h" bodystart="27" bodyend="91"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Language_1a4a6fdc89482f25a189791fda12b083e6" prot="public" virt="pure-virtual"><scope>endstone::Language</scope><name>getLocale</name></member>
+      <member refid="classendstone_1_1Language_1a0bc2d7dd2a9b9b43aeb57f5278a4cb7e" prot="public" virt="pure-virtual"><scope>endstone::Language</scope><name>translate</name></member>
+      <member refid="classendstone_1_1Language_1aed24e5f934caf4816cb8471818ee2335" prot="public" virt="pure-virtual"><scope>endstone::Language</scope><name>translate</name></member>
+      <member refid="classendstone_1_1Language_1acbd599919da84faee5aa55eaf8440d6c" prot="public" virt="pure-virtual"><scope>endstone::Language</scope><name>translate</name></member>
+      <member refid="classendstone_1_1Language_1a8a6cde954fdb3b2b623f68346c2906e1" prot="public" virt="pure-virtual"><scope>endstone::Language</scope><name>translate</name></member>
+      <member refid="classendstone_1_1Language_1a633b4bcff201523d59123b7da61ab324" prot="public" virt="pure-virtual"><scope>endstone::Language</scope><name>translate</name></member>
+      <member refid="classendstone_1_1Language_1a41d81b4bfb0d53c5aae61c7312b8a11c" prot="public" virt="pure-virtual"><scope>endstone::Language</scope><name>translate</name></member>
+      <member refid="classendstone_1_1Language_1a62acb7590ea7237ef734b6c98b585c0b" prot="public" virt="virtual"><scope>endstone::Language</scope><name>~Language</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1HandlerList" kind="class" language="C++" prot="public">
+    <compoundname>endstone::HandlerList</compoundname>
+    <includes refid="handler__list_8h" local="no">endstone/event/handler_list.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex endstone::HandlerList::mtx_</definition>
+        <argsstring></argsstring>
+        <name>mtx_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="121" column="24" bodyfile="include/endstone/event/handler_list.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" prot="private" static="no" mutable="no">
+        <type>std::map&lt; EventPriority, std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &gt; &gt; &gt;</type>
+        <definition>std::map&lt;EventPriority, std::vector&lt;std::unique_ptr&lt;EventHandler&gt; &gt; &gt; endstone::HandlerList::handlers_</definition>
+        <argsstring></argsstring>
+        <name>handlers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="122" column="14" bodyfile="include/endstone/event/handler_list.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1HandlerList_1a549331fe1bfcd40f3e7b29b514edeb46" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> * &gt;</type>
+        <definition>std::vector&lt;EventHandler *&gt; endstone::HandlerList::baked_handlers_</definition>
+        <argsstring></argsstring>
+        <name>baked_handlers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="123" column="25" bodyfile="include/endstone/event/handler_list.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1HandlerList_1a495f3b97e658b65ee688803e6058f98e" prot="private" static="no" mutable="yes">
+        <type>bool</type>
+        <definition>bool endstone::HandlerList::valid_</definition>
+        <argsstring></argsstring>
+        <name>valid_</name>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="124" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1HandlerList_1a232dbfba6d8ceeb53735a41578bddefd" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::HandlerList::event_</definition>
+        <argsstring></argsstring>
+        <name>event_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="125" column="17" bodyfile="include/endstone/event/handler_list.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1abc3c311d2c072cde29bff7fe6ae1d2e0" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::HandlerList::HandlerList</definition>
+        <argsstring>(std::string event)</argsstring>
+        <name>HandlerList</name>
+        <param>
+          <type>std::string</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="33" column="14" bodyfile="include/endstone/event/handler_list.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1a865c70a65f39ac2d5efb285bca5ee34d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> *</type>
+        <definition>EventHandler* endstone::HandlerList::registerHandler</definition>
+        <argsstring>(std::unique_ptr&lt; EventHandler &gt; handler)</argsstring>
+        <name>registerHandler</name>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &gt;</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a new handler</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> handler to register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the pointer to the registered handler </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="41" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="41" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1ad2417dc763c19d61a627a7e43c09b81a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::HandlerList::unregister</definition>
+        <argsstring>(const EventHandler &amp;handler)</argsstring>
+        <name>unregister</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &amp;</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove a handler from a specific order slot</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> handler to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="60" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="60" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1a5950519aa05fb195d32afad8ea03addc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::HandlerList::unregister</definition>
+        <argsstring>(const Plugin &amp;plugin)</argsstring>
+        <name>unregister</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove a specific plugin&apos;s handlers from this handler</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="78" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="78" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1a26c9aa355bd946cf09d7f99767901794" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> * &gt;</type>
+        <definition>std::vector&lt;EventHandler *&gt; endstone::HandlerList::getHandlers</definition>
+        <argsstring>() const</argsstring>
+        <name>getHandlers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the baked registered handlers associated with this handler list</para>
+<para><simplesect kind="return"><para>the array of registered handlers </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="95" column="17" bodyfile="include/endstone/event/handler_list.h" bodystart="95" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1a60ca2f071683e43f5d601d886cc3a622" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::HandlerList::bake</definition>
+        <argsstring>() const</argsstring>
+        <name>bake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/handler_list.h" line="105" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="105" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A list of event handlers. Should be instantiated on a per-event basis. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/handler_list.h" line="31" column="1" bodyfile="include/endstone/event/handler_list.h" bodystart="31" bodyend="126"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1HandlerList_1a60ca2f071683e43f5d601d886cc3a622" prot="protected" virt="non-virtual"><scope>endstone::HandlerList</scope><name>bake</name></member>
+      <member refid="classendstone_1_1HandlerList_1a549331fe1bfcd40f3e7b29b514edeb46" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>baked_handlers_</name></member>
+      <member refid="classendstone_1_1HandlerList_1a232dbfba6d8ceeb53735a41578bddefd" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>event_</name></member>
+      <member refid="classendstone_1_1HandlerList_1a26c9aa355bd946cf09d7f99767901794" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>getHandlers</name></member>
+      <member refid="classendstone_1_1HandlerList_1abc3c311d2c072cde29bff7fe6ae1d2e0" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>HandlerList</name></member>
+      <member refid="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>handlers_</name></member>
+      <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>mtx_</name></member>
+      <member refid="classendstone_1_1HandlerList_1a865c70a65f39ac2d5efb285bca5ee34d" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>registerHandler</name></member>
+      <member refid="classendstone_1_1HandlerList_1ad2417dc763c19d61a627a7e43c09b81a" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>unregister</name></member>
+      <member refid="classendstone_1_1HandlerList_1a5950519aa05fb195d32afad8ea03addc" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>unregister</name></member>
+      <member refid="classendstone_1_1HandlerList_1a495f3b97e658b65ee688803e6058f98e" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>valid_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1EventHandler" kind="class" language="C++" prot="public">
+    <compoundname>endstone::EventHandler</compoundname>
+    <includes refid="event__handler_8h" local="no">endstone/event/event_handler.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1EventHandler_1adb860867df4a0ec561d94c5861fd0546" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::EventHandler::event_</definition>
+        <argsstring></argsstring>
+        <name>event_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="97" column="17" bodyfile="include/endstone/event/event_handler.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EventHandler_1aee627e677f1e854f937fe83caadcb9a0" prot="private" static="no" mutable="no">
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;)&gt;</type>
+        <definition>std::function&lt;void(Event &amp;)&gt; endstone::EventHandler::executor_</definition>
+        <argsstring></argsstring>
+        <name>executor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="98" column="19" bodyfile="include/endstone/event/event_handler.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EventHandler_1aa51d9e8a5d83b0c09c44b260d1704182" prot="private" static="no" mutable="no">
+        <type>EventPriority</type>
+        <definition>EventPriority endstone::EventHandler::priority_</definition>
+        <argsstring></argsstring>
+        <name>priority_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="99" column="19" bodyfile="include/endstone/event/event_handler.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EventHandler_1a707a2b365914fd03317191be88eb5412" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+        <definition>Plugin&amp; endstone::EventHandler::plugin_</definition>
+        <argsstring></argsstring>
+        <name>plugin_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="100" column="12" bodyfile="include/endstone/event/event_handler.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EventHandler_1ad05de4cbc4c308cfd4a88b26a1fa28ca" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool endstone::EventHandler::ignore_cancelled_</definition>
+        <argsstring></argsstring>
+        <name>ignore_cancelled_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="101" column="10" bodyfile="include/endstone/event/event_handler.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1EventHandler_1a3b68b55031268b92cbbf29b9fb3695c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::EventHandler::EventHandler</definition>
+        <argsstring>(std::string event, std::function&lt; void(Event &amp;)&gt; executor, EventPriority priority, Plugin &amp;plugin, bool ignore_cancelled)</argsstring>
+        <name>EventHandler</name>
+        <param>
+          <type>std::string</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(<ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;)&gt;</type>
+          <declname>executor</declname>
+        </param>
+        <param>
+          <type>EventPriority</type>
+          <declname>priority</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>ignore_cancelled</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="34" column="5" bodyfile="include/endstone/event/event_handler.h" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EventHandler_1afad1a09a8f6fee209e0cd0b4da87fa5d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+        <definition>Plugin&amp; endstone::EventHandler::getPlugin</definition>
+        <argsstring>() const</argsstring>
+        <name>getPlugin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the plugin for this registration</para>
+<para><simplesect kind="return"><para>Registered <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="46" column="13" bodyfile="include/endstone/event/event_handler.h" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EventHandler_1ae71bf36fa904b1810f5560cdc149b474" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>EventPriority</type>
+        <definition>EventPriority endstone::EventHandler::getPriority</definition>
+        <argsstring>() const</argsstring>
+        <name>getPriority</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the priority for this registration</para>
+<para><simplesect kind="return"><para>Registered Priority </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="55" column="20" bodyfile="include/endstone/event/event_handler.h" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EventHandler_1a09736eece61298b452a850f687b9a8ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::EventHandler::isIgnoreCancelled</definition>
+        <argsstring>() const</argsstring>
+        <name>isIgnoreCancelled</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether this listener accepts cancelled events</para>
+<para><simplesect kind="return"><para>True when ignoring cancelled events </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="65" column="11" bodyfile="include/endstone/event/event_handler.h" bodystart="65" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EventHandler_1a0bf540c4b132dbb5cac4cfc7e6c0dc3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::EventHandler::callEvent</definition>
+        <argsstring>(Event &amp;event)</argsstring>
+        <name>callEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calls the event executor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The event </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="75" column="10" bodyfile="include/endstone/event/event_handler.h" bodystart="75" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EventHandler_1aa8bc3d7f90a485cefdf0cbae3f95ffc0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::EventHandler::getEventType</definition>
+        <argsstring>() const</argsstring>
+        <name>getEventType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the event type for this registration</para>
+<para><simplesect kind="return"><para>Registered event type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_handler.h" line="91" column="18" bodyfile="include/endstone/event/event_handler.h" bodystart="91" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a registered <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> which associates with a <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/event_handler.h" line="32" column="1" bodyfile="include/endstone/event/event_handler.h" bodystart="32" bodyend="102"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1EventHandler_1a0bf540c4b132dbb5cac4cfc7e6c0dc3b" prot="public" virt="non-virtual"><scope>endstone::EventHandler</scope><name>callEvent</name></member>
+      <member refid="classendstone_1_1EventHandler_1adb860867df4a0ec561d94c5861fd0546" prot="private" virt="non-virtual"><scope>endstone::EventHandler</scope><name>event_</name></member>
+      <member refid="classendstone_1_1EventHandler_1a3b68b55031268b92cbbf29b9fb3695c7" prot="public" virt="non-virtual"><scope>endstone::EventHandler</scope><name>EventHandler</name></member>
+      <member refid="classendstone_1_1EventHandler_1aee627e677f1e854f937fe83caadcb9a0" prot="private" virt="non-virtual"><scope>endstone::EventHandler</scope><name>executor_</name></member>
+      <member refid="classendstone_1_1EventHandler_1aa8bc3d7f90a485cefdf0cbae3f95ffc0" prot="public" virt="non-virtual"><scope>endstone::EventHandler</scope><name>getEventType</name></member>
+      <member refid="classendstone_1_1EventHandler_1afad1a09a8f6fee209e0cd0b4da87fa5d" prot="public" virt="non-virtual"><scope>endstone::EventHandler</scope><name>getPlugin</name></member>
+      <member refid="classendstone_1_1EventHandler_1ae71bf36fa904b1810f5560cdc149b474" prot="public" virt="non-virtual"><scope>endstone::EventHandler</scope><name>getPriority</name></member>
+      <member refid="classendstone_1_1EventHandler_1ad05de4cbc4c308cfd4a88b26a1fa28ca" prot="private" virt="non-virtual"><scope>endstone::EventHandler</scope><name>ignore_cancelled_</name></member>
+      <member refid="classendstone_1_1EventHandler_1a09736eece61298b452a850f687b9a8ff" prot="public" virt="non-virtual"><scope>endstone::EventHandler</scope><name>isIgnoreCancelled</name></member>
+      <member refid="classendstone_1_1EventHandler_1a707a2b365914fd03317191be88eb5412" prot="private" virt="non-virtual"><scope>endstone::EventHandler</scope><name>plugin_</name></member>
+      <member refid="classendstone_1_1EventHandler_1aa51d9e8a5d83b0c09c44b260d1704182" prot="private" virt="non-virtual"><scope>endstone::EventHandler</scope><name>priority_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

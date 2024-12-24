@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlockEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::BlockEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1BlockBreakEvent" prot="public" virt="non-virtual">endstone::BlockBreakEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1BlockPlaceEvent" prot="public" virt="non-virtual">endstone::BlockPlaceEvent</derivedcompoundref>
+    <includes refid="block__event_8h" local="no">endstone/event/block/block_event.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1BlockEvent_1ad07edcfc653b930ee644fba64a42d68f" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
+        <definition>Block&amp; endstone::BlockEvent::block_</definition>
+        <argsstring></argsstring>
+        <name>block_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_event.h" line="41" column="11" bodyfile="include/endstone/event/block/block_event.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlockEvent::BlockEvent</definition>
+        <argsstring>(Block &amp;block)</argsstring>
+        <name>BlockEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
+          <declname>block</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_event.h" line="27" column="14" bodyfile="include/endstone/event/block/block_event.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlockEvent::~BlockEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~BlockEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_event.h" line="28" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockEvent_1ae5bdd3abb11f98e4d3929a6f40bbb26a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
+        <definition>Block&amp; endstone::BlockEvent::getBlock</definition>
+        <argsstring>() const</argsstring>
+        <name>getBlock</name>
+        <briefdescription>
+<para>Gets the block involved in this event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> which block is involved in this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_event.h" line="35" column="12" bodyfile="include/endstone/event/block/block_event.h" bodystart="35" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an Block-related event. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="4">
+        <label>endstone::BlockPlaceEvent</label>
+        <link refid="classendstone_1_1BlockPlaceEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::BlockBreakEvent</label>
+        <link refid="classendstone_1_1BlockBreakEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/block/block_event.h" line="25" column="1" bodyfile="include/endstone/event/block/block_event.h" bodystart="25" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1BlockEvent_1ad07edcfc653b930ee644fba64a42d68f" prot="private" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>block_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1BlockEvent_1ae5bdd3abb11f98e4d3929a6f40bbb26a" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9" prot="public" virt="pure-virtual"><scope>endstone::BlockEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>~BlockEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::BlockEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

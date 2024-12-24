@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ActorTeleportEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ActorTeleportEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent</basecompoundref>
+    <includes refid="actor__teleport__event_8h" local="no">endstone/event/actor/actor_teleport_event.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ActorTeleportEvent_1a2f7ffbf56f181255a139b024ba509783" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ActorTeleportEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <initializer>= &quot;ActorTeleportEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="32" column="37" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ActorTeleportEvent_1a2b90f3e377a4f13cb09f7ce4c26a45a8" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::ActorTeleportEvent::from_</definition>
+        <argsstring></argsstring>
+        <name>from_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="84" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorTeleportEvent_1a57f1bfdf09d6f173e5fe1d34f2a2c3c6" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::ActorTeleportEvent::to_</definition>
+        <argsstring></argsstring>
+        <name>to_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="85" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a6c419a38acb7baf7091376bac7bb44d7" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorTeleportEvent::ActorTeleportEvent</definition>
+        <argsstring>(Actor &amp;actor, Location from, Location to)</argsstring>
+        <name>ActorTeleportEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+          <declname>actor</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="29" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a05d22c8898cc980d69767e36c70d2248" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorTeleportEvent::~ActorTeleportEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~ActorTeleportEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a60979e7b5222885d3b072c8dde7185d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::ActorTeleportEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="33" column="18" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a66f845e674c7790e54896f66104b063c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool endstone::ActorTeleportEvent::isCancellable</definition>
+        <argsstring>() const override</argsstring>
+        <name>isCancellable</name>
+        <reimplements refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9">isCancellable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the event can be cancelled by a plugin or the server.</para>
+<para><simplesect kind="return"><para>true if this event can be cancelled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="38" column="11" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a3b69559bbec06825c26a58ac568c0e11" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <definition>const Location&amp; endstone::ActorTeleportEvent::getFrom</definition>
+        <argsstring>() const</argsstring>
+        <name>getFrom</name>
+        <briefdescription>
+<para>Gets the location that this actor moved from. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> this actor moved from </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="48" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::ActorTeleportEvent::setFrom</definition>
+        <argsstring>(const Location &amp;from)</argsstring>
+        <name>setFrom</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+<para>Sets the location that this actor moved from. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New location this actor moved from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="58" column="10" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a04e8968e9384a64661f04baefe5f886a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <definition>const Location&amp; endstone::ActorTeleportEvent::getTo</definition>
+        <argsstring>() const</argsstring>
+        <name>getTo</name>
+        <briefdescription>
+<para>Gets the location that this actor moved to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> this actor moved to </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="68" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::ActorTeleportEvent::setTo</definition>
+        <argsstring>(const Location &amp;to)</argsstring>
+        <name>setTo</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+<para>Sets the location that this actor moved to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>to</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> this actor moved to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="78" column="10" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Called when a non-player entity is teleported from one location to another. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This may be as a result of natural causes (Enderman, Shulker), pathfinding (Wolf), or commands (/teleport). </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::ActorEvent</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ActorTeleportEvent</label>
+        <link refid="classendstone_1_1ActorTeleportEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::ActorEvent</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ActorTeleportEvent</label>
+        <link refid="classendstone_1_1ActorTeleportEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/actor/actor_teleport_event.h" line="27" column="1" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="27" bodyend="86"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ActorEvent_1a1d431f4b3c7cc2db417684a97029c386" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>ActorEvent</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a6c419a38acb7baf7091376bac7bb44d7" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>ActorTeleportEvent</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a2b90f3e377a4f13cb09f7ce4c26a45a8" prot="private" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>from_</name></member>
+      <member refid="classendstone_1_1ActorEvent_1af8c9cbdbfc0c7e3fcb4a5ec566e0d1d4" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a60979e7b5222885d3b072c8dde7185d2" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a3b69559bbec06825c26a58ac568c0e11" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>getFrom</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a04e8968e9384a64661f04baefe5f886a" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>getTo</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a66f845e674c7790e54896f66104b063c" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a2f7ffbf56f181255a139b024ba509783" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>setFrom</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>setTo</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a57f1bfdf09d6f173e5fe1d34f2a2c3c6" prot="private" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>to_</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a3cf15029246f7add54e99e9e417b1c75" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>~ActorEvent</name></member>
+      <member refid="classendstone_1_1ActorTeleportEvent_1a05d22c8898cc980d69767e36c70d2248" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>~ActorTeleportEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

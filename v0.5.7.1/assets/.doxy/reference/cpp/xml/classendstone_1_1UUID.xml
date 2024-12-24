@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1UUID" kind="class" language="C++" prot="public">
+    <compoundname>endstone::UUID</compoundname>
+    <includes refid="uuid_8h" local="no">endstone/util/uuid.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classendstone_1_1UUID_1a1364e6289755ab27da41bf19976530d1" prot="public" static="no" mutable="no">
+        <type>std::uint8_t</type>
+        <definition>std::uint8_t endstone::UUID::data[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="107" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1UUID_1ac0e4eb7a3bf6976c61013a8a44681431" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::uint8_t *</type>
+        <definition>std::uint8_t* endstone::UUID::begin</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="31" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1UUID_1a73be865407a90ec8254ce78929b0d0e7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const uint8_t *</type>
+        <definition>const uint8_t* endstone::UUID::begin</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="36" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1UUID_1ac4c0feca4b272ce8388163e2b5c98c3e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::uint8_t *</type>
+        <definition>std::uint8_t* endstone::UUID::end</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="41" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1UUID_1a0fee782333a4786d4f6dd3cdb80803fb" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const uint8_t *</type>
+        <definition>const uint8_t* endstone::UUID::end</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="46" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1UUID_1a4e2f46b83b69f6bfc59456083849da00" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::UUID::isNil</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isNil</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="56" column="11" bodyfile="include/endstone/util/uuid.h" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1UUID_1a1d5154c476140540420483ac9e435c59" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::UUID::version</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="61" column="10" bodyfile="include/endstone/util/uuid.h" bodystart="61" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1UUID_1a0f9e2913aaa2ce04017cd62bfca446d9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::UUID::swap</definition>
+        <argsstring>(UUID &amp;rhs) noexcept</argsstring>
+        <name>swap</name>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="83" column="10" bodyfile="include/endstone/util/uuid.h" bodystart="83" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1UUID_1af4c18bdc295b4607ff4f82374b67fc02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::UUID::str</definition>
+        <argsstring>() const</argsstring>
+        <name>str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="90" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="90" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1UUID_1a887f4ce97cfcceb75784345c13c691ed" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr std::size_t</type>
+        <definition>static constexpr std::size_t endstone::UUID::size</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="51" column="35" bodyfile="include/endstone/util/uuid.h" bodystart="51" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Implementation of Universally Unique Identifier (<ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref>) </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Adapted from <ulink url="https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp">https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp</ulink> </para>
+    </detaileddescription>
+    <location file="include/endstone/util/uuid.h" line="29" column="1" bodyfile="include/endstone/util/uuid.h" bodystart="29" bodyend="108"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1UUID_1ac0e4eb7a3bf6976c61013a8a44681431" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>begin</name></member>
+      <member refid="classendstone_1_1UUID_1a73be865407a90ec8254ce78929b0d0e7" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>begin</name></member>
+      <member refid="classendstone_1_1UUID_1a1364e6289755ab27da41bf19976530d1" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>data</name></member>
+      <member refid="classendstone_1_1UUID_1ac4c0feca4b272ce8388163e2b5c98c3e" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>end</name></member>
+      <member refid="classendstone_1_1UUID_1a0fee782333a4786d4f6dd3cdb80803fb" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>end</name></member>
+      <member refid="classendstone_1_1UUID_1a4e2f46b83b69f6bfc59456083849da00" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>isNil</name></member>
+      <member refid="classendstone_1_1UUID_1a887f4ce97cfcceb75784345c13c691ed" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>size</name></member>
+      <member refid="classendstone_1_1UUID_1af4c18bdc295b4607ff4f82374b67fc02" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>str</name></member>
+      <member refid="classendstone_1_1UUID_1a0f9e2913aaa2ce04017cd62bfca446d9" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>swap</name></member>
+      <member refid="classendstone_1_1UUID_1a1d5154c476140540420483ac9e435c59" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

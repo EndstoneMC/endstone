@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_d0a7fd8d5b72659767e2a2651b1ff51c" kind="dir">
+    <compoundname>include/endstone/boss</compoundname>
+    <innerfile refid="bar__color_8h">bar_color.h</innerfile>
+    <innerfile refid="bar__flag_8h">bar_flag.h</innerfile>
+    <innerfile refid="bar__style_8h">bar_style.h</innerfile>
+    <innerfile refid="boss__bar_8h">boss_bar.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/boss/"/>
+  </compounddef>
+</doxygen>

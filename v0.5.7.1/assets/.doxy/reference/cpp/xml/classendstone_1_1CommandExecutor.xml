@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1CommandExecutor" kind="class" language="C++" prot="public">
+    <compoundname>endstone::CommandExecutor</compoundname>
+    <derivedcompoundref refid="classendstone_1_1Plugin" prot="public" virt="non-virtual">endstone::Plugin</derivedcompoundref>
+    <includes refid="command__executor_8h" local="no">endstone/command/command_executor.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1CommandExecutor_1a9dfc0b1fe01086e280de0d8202f6482c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::CommandExecutor::~CommandExecutor</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CommandExecutor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_executor.h" line="29" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::CommandExecutor::onCommand</definition>
+        <argsstring>(CommandSender &amp;sender, const Command &amp;command, const std::vector&lt; std::string &gt; &amp;args)</argsstring>
+        <name>onCommand</name>
+        <param>
+          <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &amp;</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Executes the given command, returning its success.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source of the command </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> which was executed </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Passed command arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the execution is successful, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_executor.h" line="39" column="18" bodyfile="include/endstone/command/command_executor.h" bodystart="39" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a class which contains a single method for executing commands. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Plugin</label>
+        <link refid="classendstone_1_1Plugin"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::CommandExecutor</label>
+        <link refid="classendstone_1_1CommandExecutor"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/command/command_executor.h" line="27" column="1" bodyfile="include/endstone/command/command_executor.h" bodystart="27" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" prot="public" virt="virtual"><scope>endstone::CommandExecutor</scope><name>onCommand</name></member>
+      <member refid="classendstone_1_1CommandExecutor_1a9dfc0b1fe01086e280de0d8202f6482c" prot="public" virt="virtual"><scope>endstone::CommandExecutor</scope><name>~CommandExecutor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
