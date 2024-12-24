@@ -22,10 +22,12 @@
 class ByteTag : public Tag {
 public:
     explicit ByteTag(std::uint8_t data = 0) : data(data) {}
+
     void write(IDataOutput &output) const override
     {
         output.writeByte(data);
     }
+
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readByteResult();
@@ -35,23 +37,28 @@ public:
         }
         return nonstd::make_unexpected(result.error());
     }
+
     [[nodiscard]] std::string toString() const override
     {
         return std::to_string(data);
     }
+
     [[nodiscard]] Type getId() const override
     {
         return Type::Byte;
     }
+
     [[nodiscard]] bool equals(const Tag &other) const override
     {
         return Tag::equals(other) && data == static_cast<const ByteTag &>(other).data;
     }
+
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
         return std::make_unique<ByteTag>(data);
     }
-    [[nodiscard]] std::uint64_t hash() const override
+
+    [[nodiscard]] std::size_t hash() const override
     {
         return data;
     }

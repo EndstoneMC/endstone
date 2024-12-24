@@ -16,7 +16,7 @@
 
 #include <nlohmann/json.hpp>
 
-#include "bedrock/nbt/compound_tag.h"
+#include "bedrock/nbt/nbt_io.h"
 
 namespace endstone::detail::devtools {
 

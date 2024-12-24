@@ -14,18 +14,18 @@
 
 #pragma once
 
-#include <cstdint>
-
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/tag.h"
 
 class FloatTag : public Tag {
 public:
     explicit FloatTag(float data = 0) : data(data) {}
+
     void write(IDataOutput &output) const override
     {
         output.writeFloat(data);
     }
+
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readFloatResult();
@@ -35,23 +35,28 @@ public:
         }
         return nonstd::make_unexpected(result.error());
     }
+
     [[nodiscard]] std::string toString() const override
     {
         return std::to_string(data);
     }
+
     [[nodiscard]] Type getId() const override
     {
         return Type::Float;
     }
+
     [[nodiscard]] bool equals(const Tag &other) const override
     {
         return Tag::equals(other) && data == static_cast<const FloatTag &>(other).data;
     }
+
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
         return std::make_unique<FloatTag>(data);
     }
-    [[nodiscard]] std::uint64_t hash() const override
+
+    [[nodiscard]] std::size_t hash() const override
     {
         return std::hash<float>{}(data);
     }

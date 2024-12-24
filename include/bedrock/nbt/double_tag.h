@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <cstdint>
-
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/tag.h"
 
@@ -51,7 +49,7 @@ public:
     {
         return std::make_unique<DoubleTag>(data);
     }
-    [[nodiscard]] std::uint64_t hash() const override
+    [[nodiscard]] std::size_t hash() const override
     {
         return std::hash<double>{}(data);
     }

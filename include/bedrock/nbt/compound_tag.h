@@ -14,11 +14,8 @@
 
 #pragma once
 
-#include <algorithm>
 #include <map>
-#include <numeric>
 #include <string>
-#include <utility>
 #include <variant>
 
 #include "bedrock/bedrock.h"
@@ -36,26 +33,23 @@
 #include "bedrock/nbt/tag.h"
 
 class CompoundTagVariant;
+using TagMap = std::map<std::string, CompoundTagVariant, std::less<>>;
 
 class CompoundTag : public Tag {
-    using storage_type = std::map<std::string, CompoundTagVariant, std::less<>>;
-    using iterator = storage_type::iterator;
-    using const_iterator = storage_type::const_iterator;
-
 public:
-    CompoundTag() = default;
+    CompoundTag();
     void write(IDataOutput &output) const override;
     Bedrock::Result<void> load(IDataInput &input) override;
     [[nodiscard]] std::string toString() const override;
     [[nodiscard]] Type getId() const override;
     [[nodiscard]] bool equals(const Tag &other) const override;
     [[nodiscard]] std::unique_ptr<Tag> copy() const override;
-    [[nodiscard]] std::uint64_t hash() const override;
+    [[nodiscard]] std::size_t hash() const override;
 
     [[nodiscard]] std::unique_ptr<CompoundTag> clone() const;
     void deepCopy(const CompoundTag &other);
     [[nodiscard]] bool contains(std::string_view key) const;
-    [[nodiscard]] bool contains(std::string_view key, Tag::Type type) const;
+    [[nodiscard]] bool contains(std::string_view key, Type type) const;
     [[nodiscard]] const Tag *get(std::string_view key) const;
     [[nodiscard]] const std::string &getString(std::string_view key) const;
     [[nodiscard]] const CompoundTag *getCompound(std::string_view key) const;
@@ -71,51 +65,16 @@ public:
     std::string &putString(std::string name, std::string value);
     CompoundTag &putCompound(std::string name, CompoundTag value);
     CompoundTag *putCompound(std::string name, std::unique_ptr<CompoundTag> value);
-
-    iterator begin()
-    {
-        return tags_.begin();
-    }
-
-    iterator end()
-    {
-        return tags_.end();
-    }
-
-    [[nodiscard]] const_iterator begin() const
-    {
-        return tags_.cbegin();
-    }
-
-    [[nodiscard]] const_iterator end() const
-    {
-        return tags_.cend();
-    }
-
-    [[nodiscard]] std::size_t size() const
-    {
-        return tags_.size();
-    }
-
-    [[nodiscard]] bool empty() const
-    {
-        return tags_.empty();
-    }
+    TagMap::iterator begin();
+    TagMap::iterator end();
+    [[nodiscard]] TagMap::const_iterator begin() const;
+    [[nodiscard]] TagMap::const_iterator end() const;
+    [[nodiscard]] std::size_t size() const;
+    [[nodiscard]] bool empty() const;
 
 private:
-    storage_type tags_;  // +8
+    TagMap tags_;  // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTag, 24, 32);
 
-class CompoundTagVariant {
-    using Variant = std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag, ByteArrayTag,
-                                 StringTag, ListTag, CompoundTag, IntArrayTag>;
-
-public:
-    [[nodiscard]] const Tag *get() const;
-    Tag &emplace(Tag &&tag);
-
-private:
-    Variant tag_storage_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(CompoundTagVariant, 48, 48);
+#include "bedrock/nbt/compound_tag_variant.h"

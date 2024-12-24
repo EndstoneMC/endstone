@@ -26,53 +26,61 @@
 #include "bedrock/nbt/tag.h"
 
 class ByteArrayTag : public Tag {
+    using ArrayData = std::vector<unsigned char>;
+
 public:
-    explicit ByteArrayTag(std::vector<std::uint8_t> data = {}) : data(std::move(data)) {}
+    explicit ByteArrayTag(ArrayData data = {}) : data(std::move(data)) {}
+
     void write(IDataOutput &output) const override
     {
         output.writeInt(static_cast<std::int32_t>(data.size()));
         output.writeBytes(data.data(), data.size());
     }
+
     Bedrock::Result<void> load(IDataInput &input) override
     {
-        auto result = input.readIntResult();
-        if (!result) {
-            return nonstd::make_unexpected(result.error());
+        auto int_result = input.readIntResult();
+        if (!int_result) {
+            return nonstd::make_unexpected(int_result.error());
         }
-        auto size = result.value();
+        const auto size = int_result.value();
         if (size > input.numBytesLeft()) {
             return nonstd::make_unexpected(
                 Bedrock::ErrorInfo<std::error_code>{std::make_error_code(std::errc::bad_message)});
         }
 
         data.resize(size);
-        auto result2 = input.readBytesResult(data.data(), size);
-        if (!result2) {
-            return nonstd::make_unexpected(result2.error());
+        if (auto bytes_result = input.readBytesResult(data.data(), size); !bytes_result) {
+            return nonstd::make_unexpected(bytes_result.error());
         }
         return {};
     }
+
     [[nodiscard]] std::string toString() const override
     {
         return fmt::format("[{} bytes]", data.size());
     }
+
     [[nodiscard]] Type getId() const override
     {
         return Type::ByteArray;
     }
+
     [[nodiscard]] bool equals(const Tag &other) const override
     {
         return Tag::equals(other) && data == static_cast<const ByteArrayTag &>(other).data;
     }
+
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
         return std::make_unique<ByteArrayTag>(data);
     }
-    [[nodiscard]] std::uint64_t hash() const override
+
+    [[nodiscard]] std::size_t hash() const override
     {
         return boost::hash_range(data.begin(), data.end());
     }
 
-    std::vector<std::uint8_t> data;
+    ArrayData data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ByteArrayTag, 32, 32);

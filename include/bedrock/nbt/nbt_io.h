@@ -18,7 +18,7 @@
 
 #include <nlohmann/json.hpp>
 
-#include "bedrock/nbt/tag.h"
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/util/data_io.h"
 
 namespace NbtIo {

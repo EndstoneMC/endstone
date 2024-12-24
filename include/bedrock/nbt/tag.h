@@ -19,7 +19,7 @@
 
 class Tag {
 public:
-    enum class Type : char {
+    enum class Type : std::uint8_t {
         End = 0,
         Byte = 1,
         Short = 2,
@@ -45,8 +45,11 @@ public:
     virtual void print(std::string const &, PrintStream &stream) const;
     virtual void print(PrintStream &stream) const;
     [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;
-    [[nodiscard]] virtual std::uint64_t hash() const = 0;
+    [[nodiscard]] virtual std::size_t hash() const = 0;
 
     static Bedrock::Result<std::unique_ptr<Tag>> newTag(Type);
     static std::string getTagName(Type type);
+
+protected:
+    Tag() = default;
 };

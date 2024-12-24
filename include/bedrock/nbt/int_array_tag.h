@@ -21,15 +21,19 @@
 #include "bedrock/nbt/tag.h"
 
 class IntArrayTag : public Tag {
+    using ArrayData = std::vector<int>;
+
 public:
-    explicit IntArrayTag(std::vector<std::int32_t> data = {}) : data(std::move(data)) {}
+    explicit IntArrayTag(ArrayData data = {}) : data(std::move(data)) {}
+
     void write(IDataOutput &output) const override
     {
         output.writeInt(static_cast<std::int32_t>(data.size()));
-        for (int i : data) {
+        for (const int i : data) {
             output.writeInt(i);
         }
     }
+
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readIntResult();
@@ -49,27 +53,32 @@ public:
         }
         return {};
     }
+
     [[nodiscard]] std::string toString() const override
     {
         return fmt::format("[{} ints]", data.size());
     }
+
     [[nodiscard]] Type getId() const override
     {
         return Type::IntArray;
     }
+
     [[nodiscard]] bool equals(const Tag &other) const override
     {
         return Tag::equals(other) && data == static_cast<const IntArrayTag &>(other).data;
     }
+
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
         return std::make_unique<IntArrayTag>(data);
     }
-    [[nodiscard]] std::uint64_t hash() const override
+
+    [[nodiscard]] std::size_t hash() const override
     {
         return boost::hash_range(data.begin(), data.end());
     }
 
-    std::vector<std::int32_t> data;
+    ArrayData data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(IntArrayTag, 32, 32);
