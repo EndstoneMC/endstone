@@ -56,9 +56,9 @@ public:
         return legacy_block_->requiresCorrectToolForDrops();
     }
 
-    [[nodiscard]] bool canContainLiquid() const
+    [[nodiscard]] DetectionRule getLiquidDetectionRule() const
     {
-        return direct_data_.water_detection_rule.can_contain_liquid;
+        return direct_data_.water_detection_rule;
     }
 
     [[nodiscard]] bool isSolid() const
