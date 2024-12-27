@@ -27,11 +27,11 @@ warnings.simplefilter(action="always", category=FutureWarning)
 def find_python():
     paths = []
     if sys.platform == "win32":
-        paths.append(os.path.join(sys.prefix, "python.exe"))
+        paths.append(os.path.join(sys.base_prefix, "python.exe"))
     else:
-        paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}.{sys.version_info.minor}"))
-        paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}"))
-        paths.append(os.path.join(sys.prefix, "bin", "python"))
+        paths.append(os.path.join(sys.base_prefix, "bin", "python" + f"{sys.version_info.major}.{sys.version_info.minor}"))
+        paths.append(os.path.join(sys.base_prefix, "bin", "python" + f"{sys.version_info.major}"))
+        paths.append(os.path.join(sys.base_prefix, "bin", "python"))
 
     for path in paths:
         if os.path.isfile(path):
