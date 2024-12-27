@@ -94,7 +94,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"explosionResistance", round(block.getExplosionResistance())},
                 {"friction", round(block.getFriction())},
                 {"hardness", round(block.getDestroySpeed())},
-                {"canContainLiquid", block.getLiquidDetectionRule().can_contain_liquid},
+                {"canContainLiquidSource", block.getLiquidDetectionRule().can_contain_liquid},
                 {"liquidReactionOnTouch", magic_enum::enum_name(block.getLiquidDetectionRule().on_liquid_touches)},
                 {"requiresCorrectToolForDrops", block.requiresCorrectToolForDrops()},
                 {"isSolid", block.isSolid()},
