@@ -32,7 +32,6 @@ def find_python():
         paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}.{sys.version_info.minor}"))
         paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}"))
         paths.append(os.path.join(sys.prefix, "bin", "python"))
-    paths.append(sys.executable)
 
     for path in paths:
         if os.path.isfile(path):
@@ -50,7 +49,8 @@ class PythonPluginLoader(PluginLoader):
         self._plugins = []
 
         # fix sys.executable variable
-        sys.executable = find_python()
+        if sys.executable is None or sys.executable == "":
+            sys.executable = find_python()
 
         # invalidate previously loaded modules (in case of /reload)
         importlib.invalidate_caches()
