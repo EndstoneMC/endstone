@@ -32,6 +32,7 @@ def find_python():
         paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}.{sys.version_info.minor}"))
         paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}"))
         paths.append(os.path.join(sys.prefix, "bin", "python"))
+    paths.append(sys.executable)
 
     for path in paths:
         if os.path.isfile(path):
