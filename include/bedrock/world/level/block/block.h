@@ -56,9 +56,9 @@ public:
         return legacy_block_->requiresCorrectToolForDrops();
     }
 
-    [[nodiscard]] DetectionRule getLiquidDetectionRule() const
+    [[nodiscard]] const BlockComponentDirectData &getDirectData() const
     {
-        return direct_data_.water_detection_rule;
+       return direct_data_;
     }
 
     [[nodiscard]] bool isSolid() const
@@ -74,41 +74,6 @@ public:
     [[nodiscard]] BlockRuntimeId getRuntimeId() const
     {
         return network_id_;
-    }
-
-    [[nodiscard]] BurnOdds getBurnOdds() const
-    {
-        return direct_data_.burn_odds;
-    }
-
-    [[nodiscard]] float getDestroySpeed() const
-    {
-        return direct_data_.destroy_speed;
-    }
-
-    [[nodiscard]] float getExplosionResistance() const
-    {
-        return direct_data_.explosion_resistance;
-    }
-
-    [[nodiscard]] FlameOdds getFlameOdds() const
-    {
-        return direct_data_.flame_odds;
-    }
-
-    [[nodiscard]] float getFriction() const
-    {
-        return direct_data_.friction;
-    }
-
-    [[nodiscard]] Brightness getLight() const
-    {
-        return direct_data_.light;
-    }
-
-    [[nodiscard]] Brightness getLightEmission() const
-    {
-        return direct_data_.light_emission;
     }
 
     [[nodiscard]] const std::vector<HashedString> &getTags() const
