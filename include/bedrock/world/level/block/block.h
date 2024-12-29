@@ -56,9 +56,9 @@ public:
         return legacy_block_->requiresCorrectToolForDrops();
     }
 
-    [[nodiscard]] bool canContainLiquid() const
+    [[nodiscard]] const BlockComponentDirectData &getDirectData() const
     {
-        return direct_data_.water_detection_rule.can_contain_liquid;
+        return direct_data_;
     }
 
     [[nodiscard]] bool isSolid() const
