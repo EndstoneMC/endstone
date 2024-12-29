@@ -58,7 +58,7 @@ public:
 
     [[nodiscard]] const BlockComponentDirectData &getDirectData() const
     {
-       return direct_data_;
+        return direct_data_;
     }
 
     [[nodiscard]] bool isSolid() const
