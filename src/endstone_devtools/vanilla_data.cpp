@@ -83,20 +83,19 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             ui_shape = block.getUIShape(ui_shape);
             block.getLiquidClipShape(region, {0, 0, 0}, liquid_clip_shape);
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
-            auto direct_data = block.getDirectData();
             data.block_states.push_back({
                 {"name", name},
                 {"blockStateHash", block.getRuntimeId()},
-                {"burnOdds", direct_data.burn_odds},
-                {"flameOdds", direct_data.flame_odds},
+                {"burnOdds", block.getBurnOdds()},
+                {"flameOdds", block.getFlameOdds()},
                 {"thickness", round(block.getThickness())},
-                {"lightDampening", direct_data.light},
-                {"lightEmission", direct_data.light_emission},
-                {"explosionResistance", round(direct_data.explosion_resistance)},
-                {"friction", round(direct_data.friction)},
-                {"hardness", round(direct_data.destroy_speed)},
-                {"canContainLiquidSource", direct_data.water_detection_rule.can_contain_liquid},
-                {"liquidReactionOnTouch", magic_enum::enum_name(direct_data.water_detection_rule.on_liquid_touches)},
+                {"lightDampening", block.getLight()},
+                {"lightEmission", block.getLightEmission()},
+                {"explosionResistance", round(block.getExplosionResistance())},
+                {"friction", round(block.getFriction())},
+                {"hardness", round(block.getDestroySpeed())},
+                {"canContainLiquidSource", block.getDirectData().water_detection_rule.can_contain_liquid},
+                {"liquidReactionOnTouch", magic_enum::enum_name(block.getDirectData().water_detection_rule.on_liquid_touches)},
                 {"requiresCorrectToolForDrops", block.requiresCorrectToolForDrops()},
                 {"isSolid", block.isSolid()},
                 {"translucency", block.getTranslucency()},
