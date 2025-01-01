@@ -579,21 +579,21 @@
     <member refid="classendstone_1_1Logger_1a310b9bd648301066760d387ca2fe7e2a" kind="function"><name>setLevel</name></member>
     <member refid="classendstone_1_1Logger_1a6985fcd498c81e1cf5c68bebd6f41df3" kind="function"><name>isEnabledFor</name></member>
     <member refid="classendstone_1_1Logger_1a129515baf5eca9a21431973581919acb" kind="function"><name>getName</name></member>
-    <member refid="classendstone_1_1Logger_1a25fe8a9a8d7315e3ee8b91660bf2baeb" kind="function"><name>log</name></member>
-    <member refid="classendstone_1_1Logger_1a96b098cc55da3ea295ddaff73ee4fda5" kind="function"><name>log</name></member>
-    <member refid="classendstone_1_1Logger_1a12b20b30c71ad1a32750b1cf204eaed3" kind="function"><name>trace</name></member>
-    <member refid="classendstone_1_1Logger_1afece6f3acad16bfa812319bce8642cba" kind="function"><name>trace</name></member>
-    <member refid="classendstone_1_1Logger_1afd79f51c7869d41732ce5fa3378d4c2c" kind="function"><name>debug</name></member>
-    <member refid="classendstone_1_1Logger_1a871e42ad85f5730044b2cc983cc3384a" kind="function"><name>debug</name></member>
-    <member refid="classendstone_1_1Logger_1aa6e245e9c7704bbed956aaf3f8df94ae" kind="function"><name>info</name></member>
-    <member refid="classendstone_1_1Logger_1a138fae3e1cb2ea5c193f87cfcf31f122" kind="function"><name>info</name></member>
-    <member refid="classendstone_1_1Logger_1ac0c495a5be4a737d755be069ee2dcdbc" kind="function"><name>warning</name></member>
-    <member refid="classendstone_1_1Logger_1a4537b8cb4a086be29beed8e5a44292cf" kind="function"><name>warning</name></member>
-    <member refid="classendstone_1_1Logger_1aad6f17ce5b3438c9a8187d53a047e54d" kind="function"><name>error</name></member>
-    <member refid="classendstone_1_1Logger_1a86c1d62c9325ca51c41d12b2e94b0bdc" kind="function"><name>error</name></member>
-    <member refid="classendstone_1_1Logger_1ac0f6bd20f1b02e4f18eaedc6a87ee710" kind="function"><name>error</name></member>
-    <member refid="classendstone_1_1Logger_1afd2c58b50e57b84a57635278a535e2f2" kind="function"><name>critical</name></member>
-    <member refid="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" kind="function"><name>critical</name></member>
+    <member refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kind="function"><name>log</name></member>
+    <member refid="classendstone_1_1Logger_1a33cdaa9d51325eed160f1859284b6b31" kind="function"><name>log</name></member>
+    <member refid="classendstone_1_1Logger_1a1850152708633dc08fc18d605b19371e" kind="function"><name>trace</name></member>
+    <member refid="classendstone_1_1Logger_1a4fb072ea887b7b9f8b423477568176bd" kind="function"><name>trace</name></member>
+    <member refid="classendstone_1_1Logger_1ac1666731787d092e739d07b2807929e2" kind="function"><name>debug</name></member>
+    <member refid="classendstone_1_1Logger_1aa0310f46bc7bd059293f61551de8dfee" kind="function"><name>debug</name></member>
+    <member refid="classendstone_1_1Logger_1a1ec8137441e804605aab3bc15569ce92" kind="function"><name>info</name></member>
+    <member refid="classendstone_1_1Logger_1a703d225d19d4d328636283bfac36c09c" kind="function"><name>info</name></member>
+    <member refid="classendstone_1_1Logger_1a371caa58890632671d272beaffbd7bc6" kind="function"><name>warning</name></member>
+    <member refid="classendstone_1_1Logger_1ae936f35dee496e1ea3a893cf6eac1bab" kind="function"><name>warning</name></member>
+    <member refid="classendstone_1_1Logger_1a8537f43ecc79575866258125aa874394" kind="function"><name>error</name></member>
+    <member refid="classendstone_1_1Logger_1a60381ba750ad53b817e80acecfd7afac" kind="function"><name>error</name></member>
+    <member refid="classendstone_1_1Logger_1a4891f5589e8620186afb8022f93d38e2" kind="function"><name>error</name></member>
+    <member refid="classendstone_1_1Logger_1a799b52643e31638b0e9ea99ba238dc96" kind="function"><name>critical</name></member>
+    <member refid="classendstone_1_1Logger_1a25c768637a0f06c9fbdfc11454cc7c3c" kind="function"><name>critical</name></member>
   </compound>
   <compound refid="classendstone_1_1MessageForm" kind="class"><name>endstone::MessageForm</name>
     <member refid="classendstone_1_1MessageForm_1ae80b40d9e184bdb006df4227c18bc7a0" kind="typedef"><name>OnSubmitCallback</name></member>
