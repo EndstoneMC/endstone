@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 FROM base AS builder
 
-ARG LLVM_VERSION=15
+ARG LLVM_VERSION=16
 
 RUN apt-get update -y -qq \
     && apt-get install -y -qq build-essential lsb-release wget software-properties-common gnupg \

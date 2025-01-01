@@ -80,8 +80,8 @@ class EndstoneRecipe(ConanFile):
     @property
     def _min_clang_compiler_version(self):
         # NOTE: the latest bedrock server for Linux is compiled with Clang 15.0.7,
-        # but it should be ABI compatible with Clang 9
-        return 9
+        # but it should be ABI compatible with Clang 16 (required by crashpad).
+        return 16
 
     @property
     def _is_dev_build(self):
