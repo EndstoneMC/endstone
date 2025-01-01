@@ -29,7 +29,9 @@ def find_python():
     if sys.platform == "win32":
         paths.append(os.path.join(sys.base_prefix, "python.exe"))
     else:
-        paths.append(os.path.join(sys.base_prefix, "bin", "python" + f"{sys.version_info.major}.{sys.version_info.minor}"))
+        paths.append(
+            os.path.join(sys.base_prefix, "bin", "python" + f"{sys.version_info.major}.{sys.version_info.minor}")
+        )
         paths.append(os.path.join(sys.base_prefix, "bin", "python" + f"{sys.version_info.major}"))
         paths.append(os.path.join(sys.base_prefix, "bin", "python"))
 
