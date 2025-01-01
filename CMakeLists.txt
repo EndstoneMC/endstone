@@ -12,6 +12,11 @@ endif ()
 # options
 # =======
 option(CODE_COVERAGE "Enable code coverage reporting" false)
+option(ENDSTONE_ENABLE_DEVTOOLS "Build Endstone with DevTools enabled." false)
+option(ENDSTONE_ENABLE_SENTRY "Enable Sentry integration for error reporting." false)
+set(ENDSTONE_SENTRY_DSN "" CACHE STRING "Set the Sentry DSN (Data Source Name) for error tracking.")
+set(ENDSTONE_SENTRY_ENVIRONMENT "production" CACHE STRING "Set the environment for Sentry (e.g., development, staging, production).")
+
 if (NOT BUILD_TESTING STREQUAL OFF)
     enable_testing()
 
@@ -56,7 +61,7 @@ add_subdirectory(src/endstone_core)
 # ==================
 # endstone::devtools
 # ==================
-if (ENDSTONE_DEVTOOLS_ENABLED)
+if (ENDSTONE_ENABLE_DEVTOOLS)
     find_package(glew CONFIG REQUIRED)
     find_package(glfw3 CONFIG REQUIRED)
     find_package(imgui CONFIG REQUIRED)

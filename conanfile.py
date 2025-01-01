@@ -159,6 +159,7 @@ class EndstoneRecipe(ConanFile):
         tc = CMakeToolchain(self)
         tc.variables["ENDSTONE_VERSION"] = self.version
         tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = self._should_enable_devtools
+        tc.variables["ENDSTONE_SENTRY_ENVIRONMENT"] = "development" if self._is_dev_build else "production"
         tc.generate()
 
     def build(self):

@@ -124,7 +124,7 @@ add_library(endstone_runtime SHARED
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
-if (ENDSTONE_DEVTOOLS_ENABLED)
+if (ENDSTONE_ENABLE_DEVTOOLS)
     target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
 endif ()
 if (WIN32)
