@@ -35,16 +35,15 @@ enum class DataItemType : std::uint8_t {
 };
 
 class DataItem {
+public:
     using ID = std::uint16_t;
 
-public:
+    DataItem(DataItemType type, ID id) : type_(type), id_(id) {}
     virtual ~DataItem() = default;
     ID getId() const;
     DataItemType getType() const;
 
 protected:
-    friend class SynchedActorData;
-
     const DataItemType type_;  // +8
     const ID id_;              // +10
 };

@@ -170,8 +170,8 @@ public:
     class Symbol {
     public:
         Symbol() = default;
-        Symbol(size_t value) : value_(static_cast<int>(value)){};
-        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)){};
+        Symbol(size_t value) : value_(static_cast<int>(value)) {};
+        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)) {};
 
         [[nodiscard]] int value() const
         {
@@ -200,7 +200,7 @@ public:
 
     struct Overload {
         using AllocFunction = std::unique_ptr<Command> (*)();
-        Overload(const CommandVersion &version, AllocFunction alloc) : version(version), alloc(alloc) {}
+        Overload(const CommandVersion &version, AllocFunction alloc);
 
         CommandVersion version;                    // +0
         AllocFunction alloc;                       // +8
@@ -209,6 +209,7 @@ public:
         bool is_chaining{false};                   // +44
         std::vector<Symbol> params_symbol;         // +48
     };
+
     struct Signature {
         std::string name;                                       // +0
         std::string description;                                // +32
@@ -226,6 +227,7 @@ public:
         bool finalized_chained_subcommands;                     // +142
         std::int64_t rule_counter;                              // +144
     };
+
     struct ParseToken {
         std::unique_ptr<ParseToken> child;  // +0
         std::unique_ptr<ParseToken> next;   // +8
@@ -235,6 +237,7 @@ public:
         Symbol type;                        // +36
     };
     BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry::ParseToken, 40, 40);
+
     friend struct fmt::formatter<ParseToken>;
     struct ParseRule;
     struct OptionalParameterChain;
@@ -279,7 +282,6 @@ public:
     };
     BEDROCK_STATIC_ASSERT_SIZE(ParamSymbols, 100, 100);
 
-public:
     struct RegistryState;
 
     // Endstone begins
@@ -300,20 +302,8 @@ public:
     }
 
     template <typename CommandType>
-    const Overload *registerOverload(const char *name, CommandVersion version, std::vector<CommandParameterData> params)
-    {
-        auto *signature = const_cast<Signature *>(findCommand(name));
-        if (!signature) {
-            return nullptr;
-        }
-
-        auto overload = Overload(version, allocateCommand<CommandType>);
-        overload.params = std::move(params);
-
-        signature->overloads.push_back(overload);
-        registerOverloadInternal(*signature, overload);
-        return &signature->overloads.back();
-    }
+    const Overload *registerOverload(const char *name, CommandVersion version,
+                                     std::vector<CommandParameterData> params);
     // Endstone ends
 
 private:
@@ -407,6 +397,23 @@ public:
     bool is_optional;                                              // +88
     CommandParameterOption options{CommandParameterOption::None};  // +89
 };
+
+template <typename CommandType>
+const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *name, CommandVersion version,
+                                                                   std::vector<CommandParameterData> params)
+{
+    auto *signature = const_cast<Signature *>(findCommand(name));
+    if (!signature) {
+        return nullptr;
+    }
+
+    auto overload = Overload(version, allocateCommand<CommandType>);
+    overload.params = std::move(params);
+
+    signature->overloads.push_back(overload);
+    registerOverloadInternal(*signature, overload);
+    return &signature->overloads.back();
+}
 
 namespace fmt {
 template <>

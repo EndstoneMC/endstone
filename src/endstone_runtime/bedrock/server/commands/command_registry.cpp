@@ -77,3 +77,7 @@ AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
 {
     return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::serializeAvailableCommands, this);
 }
+
+CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc) : version(version), alloc(alloc)
+{
+}
