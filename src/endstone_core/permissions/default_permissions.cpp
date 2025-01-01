@@ -70,7 +70,7 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
     registerPermission(root->getName() + ".version", root, "Allows the user to view the version of the server",
                        PermissionDefault::True);
 
-#ifdef ENDSTONE_DEVTOOLS
+#ifdef ENDSTONE_WITH_DEVTOOLS
     registerPermission(root->getName() + ".devtools", root, "Allows the user to open the DevTools.",
                        PermissionDefault::Operator);
 #endif

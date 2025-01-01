@@ -112,7 +112,7 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand(std::make_unique<ReloadCommand>());
     registerCommand(std::make_unique<StatusCommand>());
     registerCommand(std::make_unique<VersionCommand>());
-#ifdef ENDSTONE_DEVTOOLS
+#ifdef ENDSTONE_WITH_DEVTOOLS
     registerCommand(std::make_unique<DevToolsCommand>());
 #endif
 }

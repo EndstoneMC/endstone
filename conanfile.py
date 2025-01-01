@@ -80,11 +80,15 @@ class EndstoneRecipe(ConanFile):
     @property
     def _min_clang_compiler_version(self):
         # NOTE: the latest bedrock server for Linux is compiled with Clang 15.0.7,
-        # but it should be ABI compatible with Clang 10
-        return 10
+        # but it should be ABI compatible with Clang 9
+        return 9
 
     @property
-    def _devtools_enabled(self):
+    def _is_dev_build(self):
+        return "dev" in self.version
+
+    @property
+    def _should_enable_devtools(self):
         return self.settings.os == "Windows"
 
     def validate(self):
@@ -130,7 +134,7 @@ class EndstoneRecipe(ConanFile):
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
-        if self._devtools_enabled:
+        if self._should_enable_devtools:
             self.requires("glew/2.2.0")
             self.requires("glfw/3.4")
             self.requires("imgui/1.90.8-docking")
@@ -154,7 +158,7 @@ class EndstoneRecipe(ConanFile):
         deps.generate()
         tc = CMakeToolchain(self)
         tc.variables["ENDSTONE_VERSION"] = self.version
-        tc.variables["ENDSTONE_DEVTOOLS_ENABLED"] = self._devtools_enabled
+        tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = self._should_enable_devtools
         tc.generate()
 
     def build(self):
@@ -192,7 +196,7 @@ class EndstoneRecipe(ConanFile):
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
-        if self._devtools_enabled:
+        if self._should_enable_devtools:
             self.cpp_info.components["devtools"].libs = ["endstone_devtools"]
             self.cpp_info.components["devtools"].set_property("cmake_target_name", "endstone::devtools")
             self.cpp_info.components["devtools"].requires = [
@@ -206,7 +210,7 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
         self.cpp_info.components["runtime"].requires = ["core", "cpptrace::cpptrace", "sentry-native::sentry-native"]
-        if self._devtools_enabled:
+        if self._should_enable_devtools:
             self.cpp_info.components["runtime"].requires.extend(["devtools"])
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp", "ws2_32"])

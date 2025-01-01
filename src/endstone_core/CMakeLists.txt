@@ -99,6 +99,9 @@ target_link_libraries(endstone_core PUBLIC
         pybind11::embed
         spdlog::spdlog
         tomlplusplus::tomlplusplus)
+if (ENDSTONE_DEVTOOLS_ENABLED)
+    target_compile_definitions(endstone_core PUBLIC ENDSTONE_WITH_DEVTOOLS)
+endif ()
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)

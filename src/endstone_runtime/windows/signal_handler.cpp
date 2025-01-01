@@ -24,7 +24,7 @@
 #include "endstone/detail/server.h"
 
 // Must be included after all headers
-#include "Windows.h"
+#include <Windows.h>
 
 namespace endstone::detail {
 

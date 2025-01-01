@@ -54,7 +54,7 @@ ENDSTONE_RUNTIME_CTOR int main()
         // Install hooks
         endstone::detail::hook::install();
 
-#ifdef ENDSTONE_DEVTOOLS
+#ifdef ENDSTONE_WITH_DEVTOOLS
         // Create devtools window
         auto thread = std::thread(&endstone::detail::devtools::render);
         thread.detach();
