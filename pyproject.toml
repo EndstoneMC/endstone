@@ -72,11 +72,11 @@ config = ["tools.cmake.cmaketoolchain:generator=Ninja"]
 
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "win32"
-settings = ["compiler.cppstd=17"]
+settings = ["compiler.cppstd=20"]
 
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "linux"
-settings = ["compiler.cppstd=gnu17", "compiler.libcxx=libc++"]
+settings = ["compiler.cppstd=20", "compiler.libcxx=libc++"]
 
 [tool.setuptools_scm]
 write_to = "python/src/endstone/_internal/version.py"

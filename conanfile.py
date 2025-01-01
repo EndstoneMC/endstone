@@ -69,7 +69,7 @@ class EndstoneRecipe(ConanFile):
 
     @property
     def _min_cppstd(self):
-        return 17
+        return 20
 
     @property
     def _min_msvc_compiler_version(self):
@@ -80,8 +80,8 @@ class EndstoneRecipe(ConanFile):
     @property
     def _min_clang_compiler_version(self):
         # NOTE: the latest bedrock server for Linux is compiled with Clang 15.0.7,
-        # but it should be ABI compatible with Clang 5
-        return 5
+        # but it should be ABI compatible with Clang 10
+        return 10
 
     @property
     def _devtools_enabled(self):

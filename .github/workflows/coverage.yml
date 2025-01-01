@@ -49,7 +49,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install conan
           conan profile detect --force
-          conan install . --build=missing -s compiler.cppstd=17 -s compiler.libcxx=libc++ -s build_type=Debug -c tools.cmake.cmaketoolchain:generator=Ninja
+          conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -s build_type=Debug -c tools.cmake.cmaketoolchain:generator=Ninja
 
       - name: Build with CMake
         run: |

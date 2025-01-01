@@ -40,18 +40,18 @@ First of all, run the following commands to install dependencies of this project
 
 === ":fontawesome-brands-windows: Command Prompt"
     ```shell
-    conan install . --build=missing -s compiler.cppstd=17 -s build_type=RelWithDebInfo -c tools.cmake.cmaketoolchain:generator=Ninja
+    conan install . --build=missing -s compiler.cppstd=20 -s build_type=RelWithDebInfo -c tools.cmake.cmaketoolchain:generator=Ninja
     ```
 
 === ":fontawesome-brands-windows: Powershell"
     ```shell
-    conan install . --build=missing -s compiler.cppstd=17 -s build_type=RelWithDebInfo -c tools.cmake.cmaketoolchain:generator=Ninja -c tools.env.virtualenv:powershell=True
+    conan install . --build=missing -s compiler.cppstd=20 -s build_type=RelWithDebInfo -c tools.cmake.cmaketoolchain:generator=Ninja -c tools.env.virtualenv:powershell=True
     ```
 
 === ":fontawesome-brands-linux: Linux"
 
     ```shell
-    conan install . --build=missing -s compiler.cppstd=17 -s compiler.libcxx=libc++ -s build_type=RelWithDebInfo -c tools.cmake.cmaketoolchain:generator=Ninja
+    conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -s build_type=RelWithDebInfo -c tools.cmake.cmaketoolchain:generator=Ninja
     ```
 
 Now, activate the build virtual environment create by conan.
