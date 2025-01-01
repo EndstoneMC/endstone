@@ -25,29 +25,29 @@ class Error {
 public:
   Error(std::string_view message, std::string_view stack_trace) : message_(message), stack_trace_(stack_trace) {}
 
-  /**
-   * @brief Returns the error message.
-   *
-   * @return The error message.
-   */
-  [[nodiscard]] std::string_view getMessage() const noexcept
-  {
-    return message_;
-  }
+    /**
+     * @brief Returns the error message.
+     *
+     * @return The error message.
+     */
+    [[nodiscard]] std::string_view getMessage() const noexcept
+    {
+        return message_;
+    }
 
-  /**
-   * @brief Returns the stack trace associated with the error.
-   *
-   * @return The stack trace associated with the error.
-   */
-  [[nodiscard]] std::string_view getStackTrace() const noexcept
-  {
-    return stack_trace_;
-  }
+    /**
+     * @brief Returns the stack trace associated with the error.
+     *
+     * @return The stack trace associated with the error.
+     */
+    [[nodiscard]] std::string_view getStackTrace() const noexcept
+    {
+        return stack_trace_;
+    }
 
 private:
-  std::string message_;
-  std::string stack_trace_;
+    std::string message_;
+    std::string stack_trace_;
 };
 
 }  // namespace endstone

@@ -14,6 +14,8 @@
 
 #include "endstone/detail/scheduler/async_task.h"
 
+#include <fmt/std.h>
+
 #include "endstone/detail/scheduler/scheduler.h"
 
 namespace endstone::detail {

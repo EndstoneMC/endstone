@@ -66,9 +66,8 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 void EndstoneServer::init(ServerInstance &server_instance)
 {
     server_instance_ = &server_instance;
-    getLogger().info(ColorFormat::DarkAqua + ColorFormat::Bold +
-                         "This server is running {} version: {} (Minecraft: {})",
-                     getName(), getVersion(), getMinecraftVersion());
+    getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
+                     ColorFormat::DarkAqua + ColorFormat::Bold, getName(), getVersion(), getMinecraftVersion());
     command_sender_ = EndstoneConsoleCommandSender::create();
     player_ban_list_->load();
     ip_ban_list_->load();

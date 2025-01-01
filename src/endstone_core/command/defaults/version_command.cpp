@@ -38,7 +38,7 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
 
     auto &server = entt::locator<EndstoneServer>::value();
     if (args.empty()) {
-        sender.sendMessage(ColorFormat::Gold + "This server is running {} version: {} (Minecraft: {})",
+        sender.sendMessage("{}This server is running {} version: {} (Minecraft: {})", ColorFormat::Gold,
                            server.getName(), server.getVersion(), server.getMinecraftVersion());
     }
     else {

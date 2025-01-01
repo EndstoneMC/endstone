@@ -18,19 +18,19 @@ namespace endstone::detail {
 
 SpdLogAdapter::SpdLogAdapter(std::shared_ptr<spdlog::logger> logger) : logger_(std::move(logger)) {}
 
-void SpdLogAdapter::log(Logger::Level level, const std::string &message) const
+void SpdLogAdapter::log(Level level, const std::string_view message) const
 {
     if (isEnabledFor(level)) {
         logger_->log(static_cast<spdlog::level::level_enum>(level), message);
     }
 }
 
-void SpdLogAdapter::setLevel(Logger::Level level)
+void SpdLogAdapter::setLevel(Level level)
 {
     logger_->set_level(static_cast<spdlog::level::level_enum>(level));
 }
 
-bool SpdLogAdapter::isEnabledFor(Logger::Level level) const
+bool SpdLogAdapter::isEnabledFor(Level level) const
 {
     return logger_->should_log(static_cast<spdlog::level::level_enum>(level));
 }

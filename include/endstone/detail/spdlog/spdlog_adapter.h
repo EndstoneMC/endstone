@@ -26,7 +26,7 @@ public:
     void setLevel(Level level) override;
     [[nodiscard]] bool isEnabledFor(Level level) const override;
     [[nodiscard]] std::string_view getName() const override;
-    void log(Level level, const std::string &message) const override;
+    void log(Level level, std::string_view message) const override;
 
 private:
     std::shared_ptr<spdlog::logger> logger_;

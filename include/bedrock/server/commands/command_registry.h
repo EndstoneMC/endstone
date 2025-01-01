@@ -428,15 +428,15 @@ struct formatter<CommandRegistry::ParseToken> : formatter<string_view> {
             auto level = node_level.second;
 
             for (int i = 0; i < level * 4; ++i) {
-                *out++ = ' ';
+                out = fmt::format_to(out, " ");
             }
 
             if (node) {
-                out = format_to(out, "Symbol: 0x{:x}", node->type.value());
+                out = fmt::format_to(out, "Symbol: 0x{:x}", node->type.value());
                 if (node->length > 0) {
-                    out = format_to(out, ", Data: {}", std::string(node->text, node->length));
+                    out = fmt::format_to(out, ", Data: {}", std::string(node->text, node->length));
                 }
-                out = format_to(out, "\n");
+                out = fmt::format_to(out, "\n");
 
                 if (node->next) {
                     to_visit.emplace(node->next.get(), level);

@@ -59,14 +59,13 @@ spdlog::filename_t FileLogSink::calcFilename(const spdlog::filename_t &base_file
         return base_filename;
     }
 
-    auto now_tp = spdlog::log_clock::now();
-    return fmt::format(file_pattern, localtime(now_tp), index);
+    const auto now_tp = spdlog::log_clock::now();
+    return format(fmt::runtime(file_pattern), localtime(now_tp), index);
 }
 
 void FileLogSink::sink_it_(const spdlog::details::log_msg &msg)
 {
-    auto time = msg.time;
-    if (time >= rotation_tp_) {
+    if (auto time = msg.time; time >= rotation_tp_) {
         rotate();
         rotation_tp_ = nextRotation();
     }

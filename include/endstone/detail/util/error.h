@@ -22,10 +22,10 @@ namespace endstone::detail {
 
 Error make_error(std::string_view message);
 
-template <typename... Args>
+template <typename... Args, std::enable_if_t<(sizeof...(Args) > 0), int> = 0>
 Error make_error(const fmt::format_string<Args...> format, Args &&...args)
 {
-    return make_error(std::string_view(fmt::format(format, std::forward<Args>(args)...)));
+    return make_error(fmt::format(format, std::forward<Args>(args)...));
 }
 
 }  // namespace endstone::detail

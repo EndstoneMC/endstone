@@ -233,7 +233,8 @@ Result<void> EndstonePluginManager::registerEvent(std::string event, std::functi
         std::make_unique<EventHandler>(event, executor, priority, plugin, ignore_cancelled));
     if (!handler) {
         return nonstd::make_unexpected(
-            make_error("Plugin {} failed to register listener for event {}: Handler type mismatch", event));
+            make_error("Plugin {} failed to register listener for event {}: Handler type mismatch",
+                       plugin.getDescription().getFullName(), event));
     }
     return {};
 }
