@@ -123,6 +123,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("ms-gsl/4.0.0")
         self.requires("nlohmann_json/3.11.3")
         self.requires("pybind11/2.13.1")
+        self.requires("sentry-native/0.7.15")
         self.requires("spdlog/1.14.1")
         self.requires("tomlplusplus/3.3.0")
 
@@ -178,7 +179,6 @@ class EndstoneRecipe(ConanFile):
             "base64::base64",
             "boost::boost",
             "concurrentqueue::concurrentqueue",
-            "cpptrace::cpptrace",
             "date::date",
             "entt::entt",
             "glm::glm",
@@ -205,7 +205,7 @@ class EndstoneRecipe(ConanFile):
 
         self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = ["core"]
+        self.cpp_info.components["runtime"].requires = ["core", "cpptrace::cpptrace", "sentry-native::sentry-native"]
         if self._devtools_enabled:
             self.cpp_info.components["runtime"].requires.extend(["devtools"])
         if self.settings.os == "Windows":
