@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_runtime LANGUAGES CXX)
 
-if (UNIX)
-    find_package(libelf REQUIRED)
-endif ()
-
 include(FetchContent)
 FetchContent_Declare(
         funchook
@@ -15,7 +11,6 @@ FetchContent_Declare(
 set(FUNCHOOK_BUILD_SHARED OFF)
 set(FUNCHOOK_BUILD_TESTS OFF)
 set(FUNCHOOK_DISASM capstone)
-
 FetchContent_MakeAvailable(funchook)
 add_library(funchook::funchook ALIAS funchook-static)
 
@@ -127,11 +122,16 @@ target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook
 if (ENDSTONE_ENABLE_DEVTOOLS)
     target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
 endif ()
+if (ENDSTONE_ENABLE_SENTRY)
+    find_package(sentry REQUIRED)
+    target_link_libraries(endstone_runtime PRIVATE sentry::sentry)
+endif ()
 if (WIN32)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
     target_link_options(endstone_runtime PRIVATE "/INCREMENTAL:NO")
 endif ()
 if (UNIX)
+    find_package(libelf REQUIRED)
     target_link_libraries(endstone_runtime PRIVATE libelf::libelf)
     target_link_options(endstone_runtime PRIVATE "-Wl,--exclude-libs,ALL")
     target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden" "-fms-extensions")
