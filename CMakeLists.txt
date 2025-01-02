@@ -11,11 +11,11 @@ endif ()
 # =======
 # options
 # =======
-option(CODE_COVERAGE "Enable code coverage reporting" false)
-option(ENDSTONE_ENABLE_DEVTOOLS "Build Endstone with DevTools enabled." false)
-option(ENDSTONE_ENABLE_SENTRY "Enable Sentry integration for error reporting." false)
+option(CODE_COVERAGE "Enable code coverage reporting" OFF)
+option(ENDSTONE_ENABLE_DEVTOOLS "Build Endstone with DevTools enabled." OFF)
+option(ENDSTONE_ENABLE_SENTRY "Enable Sentry integration for error reporting." OFF)
 set(ENDSTONE_SENTRY_DSN "" CACHE STRING "Set the Sentry DSN (Data Source Name) for error tracking.")
-set(ENDSTONE_SENTRY_ENVIRONMENT "production" CACHE STRING "Set the environment for Sentry (e.g., development, staging, production).")
+set(ENDSTONE_SENTRY_ENVIRONMENT "development" CACHE STRING "Set the environment for Sentry (e.g., development, production).")
 
 if (NOT BUILD_TESTING STREQUAL OFF)
     enable_testing()

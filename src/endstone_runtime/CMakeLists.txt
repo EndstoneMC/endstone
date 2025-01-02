@@ -116,6 +116,7 @@ add_library(endstone_runtime SHARED
         hook.cpp
         loader.cpp
         main.cpp
+        sentry_handler.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
@@ -125,6 +126,9 @@ endif ()
 if (ENDSTONE_ENABLE_SENTRY)
     find_package(sentry REQUIRED)
     target_link_libraries(endstone_runtime PRIVATE sentry::sentry)
+    target_compile_definitions(endstone_runtime PRIVATE ENDSTONE_WITH_SENTRY)
+    target_compile_definitions(endstone_runtime PRIVATE ENDSTONE_SENTRY_DSN="${ENDSTONE_SENTRY_DSN}")
+    target_compile_definitions(endstone_runtime PRIVATE ENDSTONE_SENTRY_ENVIRONMENT="${ENDSTONE_SENTRY_ENVIRONMENT}")
 endif ()
 if (WIN32)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
