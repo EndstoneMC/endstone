@@ -35,6 +35,7 @@ class EndstoneRecipe(ConanFile):
         "capstone/*:m680x": False,
         "capstone/*:evm": False,
         "date/*:header_only": True,
+        "sentry-native/*:backend": "breakpad",
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
