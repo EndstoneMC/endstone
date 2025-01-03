@@ -26,11 +26,75 @@
 #include "endstone/detail/os.h"
 #include "endstone/endstone.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+#ifdef __linux__
+#include <csignal>
+#endif
+
 namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
 namespace {
+
+#ifdef _WIN32
+struct exception_slot {
+    DWORD code;
+    const char *name;
+    const char *description;
+};
+
+#define EXCEPTION_DEF(code, desc) \
+    {                             \
+        code, #code, desc         \
+    }
+
+const exception_slot EXCEPTION_DEFINITIONS[] = {
+    EXCEPTION_DEF(EXCEPTION_ACCESS_VIOLATION, "AccessViolation"),
+    EXCEPTION_DEF(EXCEPTION_ARRAY_BOUNDS_EXCEEDED, "ArrayBoundsExceeded"),
+    EXCEPTION_DEF(EXCEPTION_BREAKPOINT, "BreakPoint"),
+    EXCEPTION_DEF(EXCEPTION_DATATYPE_MISALIGNMENT, "DatatypeMisalignment"),
+    EXCEPTION_DEF(EXCEPTION_FLT_DENORMAL_OPERAND, "FloatDenormalOperand"),
+    EXCEPTION_DEF(EXCEPTION_FLT_DIVIDE_BY_ZERO, "FloatDivideByZero"),
+    EXCEPTION_DEF(EXCEPTION_FLT_INEXACT_RESULT, "FloatInexactResult"),
+    EXCEPTION_DEF(EXCEPTION_FLT_INVALID_OPERATION, "FloatInvalidOperation"),
+    EXCEPTION_DEF(EXCEPTION_FLT_OVERFLOW, "FloatOverflow"),
+    EXCEPTION_DEF(EXCEPTION_FLT_STACK_CHECK, "FloatStackCheck"),
+    EXCEPTION_DEF(EXCEPTION_FLT_UNDERFLOW, "FloatUnderflow"),
+    EXCEPTION_DEF(EXCEPTION_ILLEGAL_INSTRUCTION, "IllegalInstruction"),
+    EXCEPTION_DEF(EXCEPTION_IN_PAGE_ERROR, "InPageError"),
+    EXCEPTION_DEF(EXCEPTION_INT_DIVIDE_BY_ZERO, "IntegerDivideByZero"),
+    EXCEPTION_DEF(EXCEPTION_INT_OVERFLOW, "IntegerOverflow"),
+    EXCEPTION_DEF(EXCEPTION_INVALID_DISPOSITION, "InvalidDisposition"),
+    EXCEPTION_DEF(EXCEPTION_NONCONTINUABLE_EXCEPTION, "NonContinuableException"),
+    EXCEPTION_DEF(EXCEPTION_PRIV_INSTRUCTION, "PrivilgedInstruction"),
+    EXCEPTION_DEF(EXCEPTION_SINGLE_STEP, "SingleStep"),
+    EXCEPTION_DEF(EXCEPTION_STACK_OVERFLOW, "StackOverflow")};
+
+#endif
+
+#ifdef __linux__
+struct signal_slot {
+    int signal;
+    const char *name;
+    const char *description;
+};
+
+#define SIGNAL_DEF(sig, desc) \
+    {                         \
+        sig, #sig, desc       \
+    }
+
+const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction"),
+                                          SIGNAL_DEF(SIGTRAP, "Trap"),
+                                          SIGNAL_DEF(SIGABRT, "Abort"),
+                                          SIGNAL_DEF(SIGBUS, "BusError"),
+                                          SIGNAL_DEF(SIGFPE, "FloatingPointException"),
+                                          SIGNAL_DEF(SIGSEGV, "Segfault")};
+#endif
 
 void print_frame(std::ostream &stream, bool color, unsigned frame_number_width, std::size_t counter,
                  const cpptrace::stacktrace_frame &frame)
@@ -62,46 +126,67 @@ void print_frame(std::ostream &stream, bool color, unsigned frame_number_width, 
     stream << line;
 }
 
-void print_crash_dump(const std::string &message, std::size_t skip = 0)
+bool should_report(const cpptrace::stacktrace &stacktrace)
 {
-    printf("=== ENDSTONE CRASHED! - PLEASE REPORT THIS AS AN ISSUE ON GITHUB ===\n");
-    printf("Operation system: %s\n", os::get_name().c_str());
-    printf("Endstone version: %s\n", ENDSTONE_VERSION);
-    printf("Api version     : %s\n", ENDSTONE_API_VERSION);
-    printf("Description     : %s\n", message.c_str());
-
-    auto stacktrace = cpptrace::generate_trace(skip + 1);
-    auto &stream = std::cerr;
-    auto color = cpptrace::isatty(cpptrace::stderr_fileno);
-    stream << "Stack trace (most recent call first):" << '\n';
-
-    auto &frames = stacktrace.frames;
-    std::size_t counter = 0;
-    if (frames.empty()) {
-        stream << "<empty trace>" << '\n';
-        return;
-    }
-    const auto frame_number_width = std::to_string(frames.size()).length();
-    for (const auto &frame : frames) {
-        print_frame(stream, color, frame_number_width, counter, frame);
-        stream << '\n';
-        if (frame.line.has_value() && !frame.filename.empty()) {
-            stream << cpptrace::get_snippet(frame.filename, frame.line.value(), 2, color);
-        }
-        counter++;
-    }
+    // TODO:
+    return true;
 }
 
-sentry_value_t on_crash(const sentry_ucontext_t *ctx, sentry_value_t event, void *closure)
+void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
 {
+    stream << "=== ENDSTONE CRASHED! ===" << '\n'
+           << std::left << std::setw(18) << "Operation system:" << os::get_name() << '\n'
+           << std::left << std::setw(18) << "Endstone version:" << ENDSTONE_VERSION << '\n'
+           << std::left << std::setw(18) << "Api version:" << ENDSTONE_API_VERSION << '\n'
+           << std::left << std::setw(18) << "Description:";
 #ifdef _WIN32
-    print_crash_dump("Exception unhandled: " +
-                     fmt::format("{0:#x}", ctx->exception_ptrs.ExceptionRecord->ExceptionCode));
+    const auto *record = ctx->exception_ptrs.ExceptionRecord;
+    stream << "Exception code: 0x" << std::hex << record->ExceptionCode;
+    for (const auto &[code, name, description] : EXCEPTION_DEFINITIONS) {
+        if (code == record->ExceptionCode) {
+            stream << " (" << name << ") - " << description;
+        }
+    }
 #else
-    print_crash_dump("Signal received: " + std::to_string(ctx.signum));
+    const auto signum = ctx->signum;
+    stream << "Signal: 0x" << std::hex << signum;
+    for (const auto &[signal, name, description] : SIGNAL_DEFINITIONS) {
+        if (signal == signum) {
+            stream << " (" << name << ") - " << description;
+        }
+    }
 #endif
+    stream << "\n";
+}
 
-    // TODO(crash_handler): filter out crashes originates from BDS / plugins
+sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
+{
+    const auto stacktrace = cpptrace::generate_trace();
+    auto &stream = std::cerr;
+    print_crash_message(stream, ctx);
+
+    stream << "Stack trace (most recent call first):" << '\n';
+    if (const auto &frames = stacktrace.frames; frames.empty()) {
+        stream << "<empty trace>" << '\n';
+    }
+    else {
+        std::size_t counter = 0;
+        const auto color = cpptrace::isatty(cpptrace::stderr_fileno);
+        const auto frame_number_width = std::to_string(frames.size()).length();
+        for (const auto &frame : frames) {
+            print_frame(stream, color, frame_number_width, counter, frame);
+            stream << '\n';
+            if (frame.line.has_value() && !frame.filename.empty()) {
+                stream << cpptrace::get_snippet(frame.filename, frame.line.value(), 2, color);
+            }
+            counter++;
+        }
+    }
+
+    if (!should_report(stacktrace)) {
+        sentry_value_decref(event);
+        return sentry_value_new_null();
+    }
     return event;
 }
 }  // namespace
