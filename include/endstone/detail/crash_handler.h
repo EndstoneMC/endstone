@@ -13,15 +13,13 @@
 // limitations under the License.
 
 #pragma once
-#ifdef ENDSTONE_WITH_SENTRY
 
 namespace endstone::detail {
 
-class SentryHandler {
+class CrashHandler {
 public:
-    SentryHandler();
-    ~SentryHandler();
+    CrashHandler();
+    ~CrashHandler();
 };
 
 }  // namespace endstone::detail
-#endif

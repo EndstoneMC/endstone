@@ -24,6 +24,7 @@
 #include "endstone/detail/ban/ip_ban_list.h"
 #include "endstone/detail/ban/player_ban_list.h"
 #include "endstone/detail/command/command_map.h"
+#include "endstone/detail/crash_handler.h"
 #include "endstone/detail/lang/language.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/packs/endstone_pack_source.h"
@@ -121,6 +122,7 @@ private:
     friend class EndstonePlayer;
 
     void enablePlugin(Plugin &plugin);
+
     ServerInstance *server_instance_;
     Logger &logger_;
     std::unique_ptr<EndstonePlayerBanList> player_ban_list_;
@@ -136,10 +138,9 @@ private:
     std::vector<std::weak_ptr<EndstoneScoreboard>> scoreboards_;
     std::unordered_map<const EndstonePlayer *, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
-
     Bedrock::NonOwnerPointer<IResourcePackRepository> resource_pack_repository_;
     std::unique_ptr<EndstonePackSource> resource_pack_source_;
-
+    std::unique_ptr<CrashHandler> crash_handler_;
     int tick_counter_ = 0;
     float current_mspt_ = TargetMillisecondsPerTick * 1.0F;
     float average_mspt_[TargetTicksPerSecond] = {TargetMillisecondsPerTick};

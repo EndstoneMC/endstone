@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_runtime LANGUAGES CXX)
 
+find_package(sentry REQUIRED)
 include(FetchContent)
 FetchContent_Declare(
         funchook
@@ -113,22 +114,14 @@ add_library(endstone_runtime SHARED
         windows/hook.cpp
         windows/os.cpp
         windows/signal_handler.cpp
+        crash_handler.cpp
         hook.cpp
-        loader.cpp
         main.cpp
-        sentry_handler.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
-target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
+target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook sentry::sentry)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
-endif ()
-if (ENDSTONE_ENABLE_SENTRY)
-    find_package(sentry REQUIRED)
-    target_link_libraries(endstone_runtime PRIVATE sentry::sentry)
-    target_compile_definitions(endstone_runtime PRIVATE ENDSTONE_WITH_SENTRY)
-    target_compile_definitions(endstone_runtime PRIVATE ENDSTONE_SENTRY_DSN="${ENDSTONE_SENTRY_DSN}")
-    target_compile_definitions(endstone_runtime PRIVATE ENDSTONE_SENTRY_ENVIRONMENT="${ENDSTONE_SENTRY_ENVIRONMENT}")
 endif ()
 if (WIN32)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
@@ -147,12 +140,14 @@ install(TARGETS endstone_runtime
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+install(DIRECTORY ${sentry_INCLUDE_DIRS}/../bin/ DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+
 if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" AND MSVC)
     install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 endif ()
 
 if (WIN32)
-    add_library(endstone_runtime_loader SHARED "loader.cpp")
-    target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS ENDSTONE_RUNTIME_LOADER)
+    add_library(endstone_runtime_loader SHARED "runtime_loader.cpp")
+    target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS)
     install(TARGETS endstone_runtime_loader DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 endif ()

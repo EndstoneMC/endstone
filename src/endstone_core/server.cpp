@@ -53,13 +53,12 @@ namespace endstone::detail {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
-    register_signal_handler();
-
     player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
     ip_ban_list_ = std::make_unique<EndstoneIpBanList>("banned-ips.json");
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
+    crash_handler_ = std::make_unique<CrashHandler>();
     start_time_ = std::chrono::system_clock::now();
 }
 

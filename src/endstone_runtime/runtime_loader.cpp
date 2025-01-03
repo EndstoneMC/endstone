@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifdef ENDSTONE_RUNTIME_LOADER
-
 #include <windows.h>
 
 #include <cstdio>
@@ -58,5 +56,3 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID /*reserved*/)
     }
     return TRUE;
 }
-
-#endif
