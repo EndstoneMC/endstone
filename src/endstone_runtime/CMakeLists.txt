@@ -132,6 +132,19 @@ if (UNIX)
     target_link_libraries(endstone_runtime PRIVATE libelf::libelf)
     target_link_options(endstone_runtime PRIVATE "-Wl,--exclude-libs,ALL")
     target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden" "-fms-extensions")
+    add_custom_command(
+            TARGET endstone_runtime
+            POST_BUILD
+            COMMAND ${CMAKE_OBJCOPY} --only-keep-debug "$<TARGET_FILE:endstone_runtime>" "$<TARGET_FILE_DIR:endstone_runtime>/endstone_runtime.dbg"
+            COMMAND ${CMAKE_OBJCOPY} --strip-debug "$<TARGET_FILE:endstone_runtime>"
+            COMMAND ${CMAKE_OBJCOPY} --add-gnu-debuglink="$<TARGET_FILE_DIR:endstone_runtime>/endstone_runtime.dbg" "$<TARGET_FILE:endstone_runtime>"
+            COMMENT "Generating debug symbols and stripping binary: $<TARGET_FILE:endstone_runtime>"
+    )
+endif ()
+
+if (WIN32)
+    add_library(endstone_runtime_loader SHARED "runtime_loader.cpp")
+    target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS)
 endif ()
 
 # The crashpad handler executable must be shipped alongside our shared library
@@ -158,15 +171,15 @@ install(TARGETS endstone_runtime
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+install(TARGETS endstone_runtime RUNTIME DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/crashpad/ DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 
-if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" AND MSVC)
+if (WIN32)
+    install(TARGETS endstone_runtime_loader RUNTIME DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+endif ()
+if (MSVC)
     install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 endif ()
-
-if (WIN32)
-    add_library(endstone_runtime_loader SHARED "runtime_loader.cpp")
-    target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS)
-    install(TARGETS endstone_runtime_loader DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+if (UNIX)
+    install(FILES "$<TARGET_FILE_DIR:endstone_runtime>/endstone_runtime.dbg" DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 endif ()
