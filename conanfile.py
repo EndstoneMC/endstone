@@ -100,7 +100,8 @@ class EndstoneRecipe(ConanFile):
 
         if self.settings.arch != "x86_64":
             raise ConanInvalidConfiguration(
-                f"{self.ref} can only be built on x86_64. {self.settings.arch} is not supported.")
+                f"{self.ref} can only be built on x86_64. {self.settings.arch} is not supported."
+            )
 
         if self.settings.os == "Windows":
             if not compiler == "msvc" or Version(compiler_version) < self._min_msvc_compiler_version:

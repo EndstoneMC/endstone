@@ -92,6 +92,10 @@ lint.extend-select = ["I"]
 skip = ["pp*"]
 test-command = "pytest {package}/python/tests"
 test-requires = "pytest"
+repair-wheel-command = [
+    "pip install auditwheel sentry-cli",
+    'python scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
+]
 
 [tool.cibuildwheel.linux]
 manylinux-x86_64-image = "ghcr.io/endstonemc/manylinux_2_31_x86_64"
