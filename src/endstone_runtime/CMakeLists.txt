@@ -110,13 +110,12 @@ add_library(endstone_runtime SHARED
         bedrock/world/scores/server_scoreboard.cpp
         linux/hook.cpp
         linux/os.cpp
-        linux/signal_handler.cpp
         windows/hook.cpp
         windows/os.cpp
-        windows/signal_handler.cpp
         crash_handler.cpp
         hook.cpp
         main.cpp
+        signal_handler.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook sentry::sentry)

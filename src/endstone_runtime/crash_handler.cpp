@@ -208,7 +208,6 @@ CrashHandler::CrashHandler()
     sentry_options_set_database_path(options, ".sentry-native");
     sentry_options_set_handler_path(options, handler_path.string().c_str());
     sentry_options_set_release(options, std::string(release).c_str());
-    sentry_options_set_debug(options, 1);
     sentry_options_set_on_crash(options, on_crash, nullptr);
     sentry_options_set_environment(options, is_dev ? "development" : "production");
     sentry_init(options);

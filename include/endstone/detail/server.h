@@ -32,6 +32,7 @@
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/detail/scoreboard/scoreboard.h"
+#include "endstone/detail/signal_handler.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
@@ -141,6 +142,7 @@ private:
     Bedrock::NonOwnerPointer<IResourcePackRepository> resource_pack_repository_;
     std::unique_ptr<EndstonePackSource> resource_pack_source_;
     std::unique_ptr<CrashHandler> crash_handler_;
+    std::unique_ptr<SignalHandler> signal_handler_;
     int tick_counter_ = 0;
     float current_mspt_ = TargetMillisecondsPerTick * 1.0F;
     float average_mspt_[TargetTicksPerSecond] = {TargetMillisecondsPerTick};

@@ -59,6 +59,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     crash_handler_ = std::make_unique<CrashHandler>();
+    signal_handler_ = std::make_unique<SignalHandler>();
     start_time_ = std::chrono::system_clock::now();
 }
 

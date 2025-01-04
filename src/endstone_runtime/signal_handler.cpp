@@ -12,48 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifdef _MSC_VER
-
 #include "endstone/detail/signal_handler.h"
 
 #include <csignal>
 
 #include <entt/entt.hpp>
-#include <fmt/format.h>
 
 #include "endstone/detail/server.h"
 
-// Must be included after all headers
-#include <Windows.h>
+#ifdef _WIN32
+#include "Windows.h"
+#endif
 
 namespace endstone::detail {
-
 namespace {
-
-void terminate_handler()
+void request_server_shutdown()
 {
-    print_crash_dump("Program terminated.");
-    std::quick_exit(1);
+    if (entt::locator<EndstoneServer>::has_value()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        server.shutdown();
+    }
 }
 
-void purecall_handler()
-{
-    print_crash_dump("Pure virtual function called!");
-    std::quick_exit(1);
-}
-
-void signal_handler(int signal)
-{
-    print_crash_dump("Signal received: " + std::to_string(signal));
-    std::quick_exit(1);
-}
-
-LONG WINAPI exception_filter(EXCEPTION_POINTERS *info)
-{
-    print_crash_dump("Exception unhandled: " + fmt::format("{0:#x}", info->ExceptionRecord->ExceptionCode));
-    return EXCEPTION_CONTINUE_SEARCH;
-}
-
+#ifdef _WIN32
 BOOL WINAPI console_ctrl_handler(DWORD event)
 {
     switch (event) {
@@ -61,10 +42,7 @@ BOOL WINAPI console_ctrl_handler(DWORD event)
     case CTRL_CLOSE_EVENT:
     case CTRL_SHUTDOWN_EVENT:
     case SIGTERM: {
-        if (entt::locator<EndstoneServer>::has_value()) {
-            auto &server = entt::locator<EndstoneServer>::value();
-            server.shutdown();
-        }
+        request_server_shutdown();
         return TRUE;
     }
     default:
@@ -77,28 +55,56 @@ void console_signal_handler(int signal)
     switch (signal) {
     case SIGINT:
     case SIGTERM: {
-        auto &server = entt::locator<EndstoneServer>::value();
-        server.shutdown();
+        request_server_shutdown();
+        break;
     }
     default:
         break;
     }
 }
-
+#endif
+#ifdef __linux__
+void console_signal_handler(int signum, siginfo_t *info, void *ctx)
+{
+    request_server_shutdown();
+}
+#endif
 }  // namespace
 
-void register_signal_handler()
+SignalHandler::SignalHandler()
 {
-    std::set_terminate(terminate_handler);
-    _set_purecall_handler(purecall_handler);
-    signal(SIGABRT, signal_handler);
-    _set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
-    SetUnhandledExceptionFilter(exception_filter);
+#ifdef _WIN32
     SetConsoleCtrlHandler(console_ctrl_handler, TRUE);
     signal(SIGINT, console_signal_handler);
     signal(SIGTERM, console_signal_handler);
+#endif
+#ifdef __linux__
+    struct sigaction action;
+    memset(&action, 0, sizeof action);
+    action.sa_flags = static_cast<int>(SA_SIGINFO | SA_NODEFER | SA_RESETHAND);
+    sigfillset(&action.sa_mask);
+    action.sa_sigaction = console_signal_handler;
+    sigaction(SIGINT, &action, nullptr);
+    sigaction(SIGTERM, &action, nullptr);
+#endif
+}
+
+SignalHandler::~SignalHandler()
+{
+#ifdef _WIN32
+    SetConsoleCtrlHandler(nullptr, FALSE);
+    signal(SIGINT, SIG_DFL);
+    signal(SIGTERM, SIG_DFL);
+#endif
+#ifdef __linux__
+    struct sigaction action;
+    memset(&action, 0, sizeof action);
+    action.sa_handler = SIG_DFL;
+    sigemptyset(&action.sa_mask);
+    action.sa_flags = 0;
+    sigaction(SIGINT, &action, nullptr);
+    sigaction(SIGTERM, &action, nullptr);
+#endif
 }
 
 }  // namespace endstone::detail
-
-#endif
