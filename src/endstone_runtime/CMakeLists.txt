@@ -134,13 +134,32 @@ if (UNIX)
     target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden" "-fms-extensions")
 endif ()
 
+# The crashpad handler executable must be shipped alongside our shared library
+add_custom_target(
+        copy_crashpad_handler
+        ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${sentry_INCLUDE_DIRS}/../bin/ ${CMAKE_BINARY_DIR}/crashpad
+)
+add_dependencies(copy_crashpad_handler endstone_runtime)
+# Reduce the size of the executable by executing strip if it is present on the system
+find_program(STRIP_EXECUTABLE strip)
+if (STRIP_EXECUTABLE)
+    add_custom_target(
+            strip_crashpad_handler
+            ALL
+            COMMAND ${STRIP_EXECUTABLE} ${CMAKE_BINARY_DIR}/crashpad/crashpad_handler${CMAKE_EXECUTABLE_SUFFIX}
+            COMMENT "Stripping crashpad_handler executable for size reduction"
+    )
+    add_dependencies(strip_crashpad_handler copy_crashpad_handler)
+endif ()
+
 include(GNUInstallDirs)
 install(TARGETS endstone_runtime
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-install(DIRECTORY ${sentry_INCLUDE_DIRS}/../bin/ DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/crashpad/ DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 
 if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" AND MSVC)
     install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
