@@ -27,6 +27,16 @@ public:
     {
         return raw_id == other.raw_id;
     }
+
+    bool operator!=(const ActorUniqueID &other) const
+    {
+        return !(*this == other);
+    }
+
+    [[nodiscard]] bool isValid() const
+    {
+        return *this != INVALID_ID;
+    }
     static const ActorUniqueID INVALID_ID;
 };
 inline const ActorUniqueID ActorUniqueID::INVALID_ID{};

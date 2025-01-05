@@ -28,17 +28,16 @@ public:
                              Bedrock::NotNullNonOwnerPtr<GameplayUserManager>);
 
 private:
-    void *save_timer_;                                                              // +792 (+552)
-    LevelStorage *level_storage_;                                                   // +800 (+560)
-    bool is_dirty_;                                                                 // +808 (+568)
-    Bedrock::NotNullNonOwnerPtr<GameplayUserManager> gameplay_user_manager_;        // +816 (+576)
-    std::vector<const Objective *> tracked_objectives_;                             // +832 (+592)
-    PacketSender *packet_sender_;                                                   // +848 (+616)
-    ScoreboardId last_unique_scoreboard_id_;                                        // +856 (+624)
-    std::weak_ptr<void *> on_save_subscription_;                                    // +872 (+640)
-    std::weak_ptr<void *> on_level_storage_manager_start_leave_game_subscription_;  // +888 (+656)
-    std::weak_ptr<void *> on_remove_actor_entity_references_subscription_;          // +904 (+672)
-    std::weak_ptr<void *> on_gameplay_user_removed_subscription_;                   // +920 (+688)
-    std::shared_ptr<void *> scoreboard_imgui_module_;                               //
+    void *save_timer_;                                                              // +784 (+552)
+    LevelStorage *level_storage_;                                                   // +792 (+560)
+    bool is_dirty_;                                                                 // +800 (+568)
+    Bedrock::NotNullNonOwnerPtr<GameplayUserManager> gameplay_user_manager_;        // +808 (+576)
+    std::vector<const Objective *> tracked_objectives_;                             // +816 (+600)
+    PacketSender *packet_sender_;                                                   // +832 (+624)
+    ScoreboardId last_unique_scoreboard_id_;                                        // +848 (+632)
+    std::weak_ptr<void *> on_save_subscription_;                                    // +856 (+648)
+    std::weak_ptr<void *> on_level_storage_manager_start_leave_game_subscription_;  // +872 (+664)
+    std::weak_ptr<void *> on_remove_actor_entity_references_subscription_;          // +888 (+680)
+    std::weak_ptr<void *> on_gameplay_user_removed_subscription_;                   // +904 (+696)
 };
-BEDROCK_STATIC_ASSERT_SIZE(ServerScoreboard, 968, 736);
+BEDROCK_STATIC_ASSERT_SIZE(ServerScoreboard, 944, 712);

@@ -38,4 +38,4 @@ private:
 };
 
 template <typename ListenerType>
-class EventCoordinator;
+class EventCoordinator : public EventCoordinatorPimpl<ListenerType> {};

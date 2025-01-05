@@ -17,4 +17,4 @@
 #include "bedrock/world/events/block_event_listener.h"
 #include "bedrock/world/events/event_coordinator.h"
 
-class BlockEventCoordinator : public EventCoordinatorPimpl<BlockEventListener> {};
+class BlockEventCoordinator : public EventCoordinator<BlockEventListener> {};
