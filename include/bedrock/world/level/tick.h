@@ -18,6 +18,9 @@
 
 class Tick {
 public:
+    explicit Tick(const uint64_t tick_id) : tick_id(tick_id){};
+    Tick() = default;
+
     bool operator==(const Tick &other) const
     {
         return tick_id == other.tick_id;
