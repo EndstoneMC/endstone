@@ -14,6 +14,8 @@
 
 #include "bedrock/world/item/item_descriptor.h"
 
+#include <bedrock/world/item/item.h>
+
 void ItemDescriptor::serialize(Json::Value &json) const
 {
     if (impl_) {
@@ -42,6 +44,20 @@ const Item *ItemDescriptor::getItem() const
         impl_ = std::move(impl_->resolve());
     }
     return impl_->getItem().item;
+}
+
+std::int16_t ItemDescriptor::getId() const
+{
+    if (!impl_) {
+        return -1;
+    }
+    if (impl_->shouldResolve()) {
+        impl_ = std::move(impl_->resolve());
+    }
+    if (const auto *item = impl_->getItem().item; item) {
+        return item->getId();
+    }
+    return 0;
 }
 
 std::int16_t ItemDescriptor::getAuxValue() const
