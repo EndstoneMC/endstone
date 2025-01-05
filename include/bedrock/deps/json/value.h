@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include <nlohmann/adl_serializer.hpp>
+
 namespace Json {
 
 enum ValueType {    // NOLINTBEGIN
@@ -46,7 +48,7 @@ class Value {
     private:
         const char *cstr_;
     };
-    static_assert(sizeof(Json::Value::CZString) == 8);
+    static_assert(sizeof(CZString) == 8);
 
 public:
     using ObjectValues = std::map<CZString, Value>;
@@ -56,7 +58,7 @@ public:
     Value(const Value &other);
     ~Value();
     Value &operator=(Value other);
-    void swap(Value &other);
+    void swap(Value &other) noexcept;
 
     [[nodiscard]] ValueType type() const;
     [[nodiscard]] const char *asCString() const;
@@ -94,7 +96,9 @@ private:
     ValueType type_ : 8;
     int allocated_ : 1;  // Notes: if declared as bool, bitfield is useless.
 };
-static_assert(sizeof(Json::Value::ObjectValues::value_type) == 24);
-static_assert(sizeof(Json::Value) == 16);
+static_assert(sizeof(Value::ObjectValues::value_type) == 24);
+static_assert(sizeof(Value) == 16);
+
+void to_json(nlohmann::json &j, const Value &value);
 
 }  // namespace Json

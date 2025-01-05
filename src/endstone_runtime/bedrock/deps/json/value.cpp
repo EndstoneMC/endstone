@@ -17,6 +17,8 @@
 #include <cmath>
 #include <limits>
 
+#include <nlohmann/json.hpp>
+
 namespace Json {
 
 namespace {
@@ -180,7 +182,7 @@ Value &Value::operator=(Value other)
     return *this;
 }
 
-void Value::swap(Value &other)
+void Value::swap(Value &other) noexcept
 {
     ValueType temp = type_;
     type_ = other.type_;
@@ -377,6 +379,47 @@ std::size_t Value::size() const
         return value_.map_->size();
     default:
         return 0;
+    }
+}
+
+void to_json(nlohmann::json &j, const Value &value)
+{
+    switch (value.type()) {
+    case nullValue:
+        break;
+    case intValue: {
+        j = value.asInt64();
+        break;
+    }
+    case uintValue: {
+        j = value.asUInt64();
+        break;
+    }
+    case realValue: {
+        j = value.asDouble();
+        break;
+    }
+    case stringValue: {
+        j = value.asString();
+        break;
+    }
+    case booleanValue: {
+        j = value.asBool();
+        break;
+    }
+    case arrayValue: {
+        for (int i = 0; i < value.size(); i++) {
+            j.push_back(value[i]);
+        }
+        break;
+    }
+    case objectValue: {
+        auto members = value.getMemberNames();
+        for (auto &member : members) {
+            j[member] = value[member.c_str()];
+        }
+        break;
+    }
     }
 }
 
