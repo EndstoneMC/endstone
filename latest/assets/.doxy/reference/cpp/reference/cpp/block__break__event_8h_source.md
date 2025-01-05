@@ -25,24 +25,20 @@
 #pragma once
 
 #include "endstone/event/block/block_event.h"
+#include "endstone/event/cancellable.h"
 #include "endstone/player.h"
 
 namespace endstone {
 
-class BlockBreakEvent : public BlockEvent {
+class BlockBreakEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockBreakEvent(Block &block, Player &player) : BlockEvent(block), player_(player) {}
+    explicit BlockBreakEvent(Block &block, Player &player) : Cancellable(block), player_(player) {}
     ~BlockBreakEvent() override = default;
 
     inline static const std::string NAME = "BlockBreakEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     [[nodiscard]] Player &getPlayer() const

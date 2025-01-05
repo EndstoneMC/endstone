@@ -26,13 +26,14 @@
 
 #include "endstone/actor/mob.h"
 #include "endstone/event/actor/actor_event.h"
+#include "endstone/event/cancellable.h"
 
 namespace endstone {
 
-class ActorKnockbackEvent : public ActorEvent {
+class ActorKnockbackEvent : public Cancellable<ActorEvent> {
 public:
     explicit ActorKnockbackEvent(Mob &mob, Actor *source, Vector<float> knockback)
-        : ActorEvent(mob), mob_(mob), source_(source), knockback_(knockback)
+        : Cancellable(mob), mob_(mob), source_(source), knockback_(knockback)
     {
     }
     ~ActorKnockbackEvent() override = default;
@@ -41,11 +42,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     [[nodiscard]] Mob &getActor() const

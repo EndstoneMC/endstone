@@ -26,15 +26,16 @@
 
 #include "endstone/block/block_state.h"
 #include "endstone/event/block/block_event.h"
+#include "endstone/event/cancellable.h"
 #include "endstone/player.h"
 
 namespace endstone {
 
-class BlockPlaceEvent : public BlockEvent {
+class BlockPlaceEvent : public Cancellable<BlockEvent> {
 public:
     explicit BlockPlaceEvent(std::unique_ptr<BlockState> placed_block, Block &replaced_block, Block &placed_against,
                              Player &player)
-        : BlockEvent(replaced_block), placed_block_(std::move(placed_block)), placed_against_(placed_against),
+        : Cancellable(replaced_block), placed_block_(std::move(placed_block)), placed_against_(placed_against),
           player_(player)
     {
     }
@@ -44,11 +45,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     [[nodiscard]] Player &getPlayer() const

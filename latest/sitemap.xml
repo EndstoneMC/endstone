@@ -217,6 +217,10 @@
          <lastmod>2025-01-05</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Cancellable/</loc>
+         <lastmod>2025-01-05</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/structendstone_1_1ColorFormat/</loc>
          <lastmod>2025-01-05</lastmod>
     </url>
@@ -274,6 +278,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1HandlerList/</loc>
+         <lastmod>2025-01-05</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ICancellable/</loc>
          <lastmod>2025-01-05</lastmod>
     </url>
     <url>
@@ -834,6 +842,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_f1d783c0ad83ee143d16e768ebca51c8/</loc>
+         <lastmod>2025-01-05</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/cancellable_8h/</loc>
+         <lastmod>2025-01-05</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/cancellable_8h_source/</loc>
          <lastmod>2025-01-05</lastmod>
     </url>
     <url>

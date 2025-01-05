@@ -2067,7 +2067,7 @@ For latest updates join the chat on
 <li><code>#include &lt;endstone/event/actor/actor_event.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Event/">endstone::Event</a></p>
-<p>Inherited by the following classes: <a href="../classendstone_1_1ActorDeathEvent/">endstone::ActorDeathEvent</a>,  <a href="../classendstone_1_1ActorKnockbackEvent/">endstone::ActorKnockbackEvent</a>,  <a href="../classendstone_1_1ActorRemoveEvent/">endstone::ActorRemoveEvent</a>,  <a href="../classendstone_1_1ActorSpawnEvent/">endstone::ActorSpawnEvent</a>,  <a href="../classendstone_1_1ActorTeleportEvent/">endstone::ActorTeleportEvent</a></p>
+<p>Inherited by the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1ActorDeathEvent/">endstone::ActorDeathEvent</a>,  <a href="../classendstone_1_1ActorRemoveEvent/">endstone::ActorRemoveEvent</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2118,20 +2118,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancellable"><strong>isCancellable</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancelled"><strong>isCancelled</strong></a> () const<br></td>
-</tr>
-<tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>

@@ -12,13 +12,13 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -26,26 +26,22 @@
         <link refid="server_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="16">
         <label>include/endstone/event/server/plugin_enable_event.h</label>
         <link refid="plugin__enable__event_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="15">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
       <node id="8">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-      </node>
-      <node id="14">
-        <label>include/endstone/event/server/broadcast_message_event.h</label>
-        <link refid="broadcast__message__event_8h_source"/>
       </node>
       <node id="12">
         <label>include/endstone/event/event_handler.h</label>
@@ -65,10 +61,10 @@
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="14">
         <label>include/endstone/event/server/plugin_disable_event.h</label>
         <link refid="plugin__disable__event_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -76,7 +72,7 @@
         <link refid="endstone_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -105,28 +101,24 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="18">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
       <node id="13">
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
       </node>
-      <node id="21">
+      <node id="19">
         <label>include/endstone/plugin/plugin_description.h</label>
         <link refid="plugin__description_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="17">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -134,10 +126,6 @@
         <link refid="block__state_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="15">
-        <label>include/endstone/event/server/server_command_event.h</label>
-        <link refid="server__command__event_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>

@@ -3,6 +3,7 @@
   <compounddef id="actor__spawn__event_8h" kind="file" language="C++">
     <compoundname>actor_spawn_event.h</compoundname>
     <includes refid="actor__event_8h" local="yes">endstone/event/actor/actor_event.h</includes>
+    <includes refid="cancellable_8h" local="yes">endstone/event/cancellable.h</includes>
     <incdepgraph>
       <node id="21">
         <label>endstone/level/position.h</label>
@@ -45,8 +46,15 @@
       <node id="24">
         <label>cmath</label>
       </node>
+      <node id="26">
+        <label>stdexcept</label>
+      </node>
       <node id="5">
         <label>string</label>
+      </node>
+      <node id="27">
+        <label>endstone/event/cancellable.h</label>
+        <link refid="cancellable_8h_source"/>
       </node>
       <node id="14">
         <label>unordered_set</label>
@@ -69,6 +77,8 @@
       <node id="25">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
@@ -162,6 +172,8 @@
         <link refid="actor__spawn__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
       </node>
     </incdepgraph>
     <innerclass refid="classendstone_1_1ActorSpawnEvent" prot="public">endstone::ActorSpawnEvent</innerclass>
@@ -188,29 +200,25 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/event/actor/actor_event.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26" refid="classendstone_1_1ActorSpawnEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ActorSpawnEvent" kindref="compound">ActorSpawnEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ActorEvent" kindref="compound">ActorEvent</ref><sp/>{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ActorSpawnEvent" kindref="compound">ActorSpawnEvent</ref>(<ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;actor)<sp/>:<sp/><ref refid="classendstone_1_1ActorEvent" kindref="compound">ActorEvent</ref>(actor)<sp/>{}</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classendstone_1_1ActorSpawnEvent" kindref="compound">ActorSpawnEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ActorSpawnEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="32" refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="33"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="classendstone_1_1ActorSpawnEvent_1a4b36f15fe95c316b1589bbf5314c60d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ActorSpawnEvent_1a4b36f15fe95c316b1589bbf5314c60d6" kindref="member">isCancellable</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="38"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>add<sp/>spawn<sp/>cause</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/event/cancellable.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classendstone_1_1ActorSpawnEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ActorSpawnEvent" kindref="compound">ActorSpawnEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;ActorEvent&gt;<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ActorSpawnEvent" kindref="compound">ActorSpawnEvent</ref>(<ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;actor)<sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(actor)<sp/>{}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classendstone_1_1ActorSpawnEvent" kindref="compound">ActorSpawnEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ActorSpawnEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33" refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="34"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>add<sp/>spawn<sp/>cause</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/actor/actor_spawn_event.h"/>
   </compounddef>

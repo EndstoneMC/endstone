@@ -12,7 +12,7 @@
 
 * `#include <string>`
 * `#include <utility>`
-* `#include "endstone/event/event.h"`
+* `#include "endstone/event/cancellable.h"`
 * `#include "endstone/event/server/server_event.h"`
 * `#include "endstone/game_mode.h"`
 

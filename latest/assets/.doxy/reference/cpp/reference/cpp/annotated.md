@@ -24,6 +24,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._     
     * **class** [**BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._     
     * **class** [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) [_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._    
+    * **class** [**Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._     
     * **struct** [**ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._     
     * **class** [**Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     
@@ -39,6 +40,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._    
     * **class** [**Form**](classendstone_1_1Form.md) _Represents a generic form._     
     * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._     
+    * **class** [**ICancellable**](classendstone_1_1ICancellable.md)     
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md)     
     * **class** [**IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._     
@@ -87,7 +89,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md) _Called when a message is sent by_ `/scriptevent` _command._    
     * **class** [**Server**](classendstone_1_1Server.md) _Represents a server implementation._     
     * **class** [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) _Called when the console runs a command, early in the process._     
-    * **class** [**ServerEvent**](classendstone_1_1ServerEvent.md) _Represents an Server-related event._     
+    * **class** [**ServerEvent**](classendstone_1_1ServerEvent.md) _Represents a Server-related event._     
     * **class** [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) _Called when a server ping is coming in._     
     * **class** [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._     
     * **class** [**Skin**](classendstone_1_1Skin.md) _Represents a player skin._     

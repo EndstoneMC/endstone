@@ -12,6 +12,7 @@
 
 * `#include "endstone/actor/mob.h"`
 * `#include "endstone/event/actor/actor_event.h"`
+* `#include "endstone/event/cancellable.h"`
 
 
 

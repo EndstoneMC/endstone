@@ -27,24 +27,20 @@
 #include <string>
 #include <utility>
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
 
-class PlayerKickEvent : public PlayerEvent {
+class PlayerKickEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerKickEvent(Player &player, std::string reason) : PlayerEvent(player), reason_(std::move(reason)) {}
+    explicit PlayerKickEvent(Player &player, std::string reason) : Cancellable(player), reason_(std::move(reason)) {}
     ~PlayerKickEvent() override = default;
 
     inline static const std::string NAME = "PlayerKickEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     [[nodiscard]] std::string getReason() const

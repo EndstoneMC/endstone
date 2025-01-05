@@ -27,17 +27,18 @@
 #include <string>
 #include <utility>
 
-#include "endstone/event/event.h"
+#include "endstone/event/cancellable.h"
 #include "endstone/event/server/server_event.h"
 #include "endstone/game_mode.h"
 
 namespace endstone {
 
-class ServerListPingEvent : public ServerEvent {
+class ServerListPingEvent : public Cancellable<ServerEvent> {
 public:
     ServerListPingEvent(std::string remote_host, int remote_port, std::string ping_response)
-        : ServerEvent(true), ping_response_(std::move(ping_response)), remote_host_(std::move(remote_host)),
-          remote_port_(remote_port)
+        : Cancellable(true), ping_response_(std::move(ping_response)), remote_host_(std::move(remote_host)),
+          remote_port_(remote_port), network_protocol_version_(0), num_players_(0), max_players_(0), game_mode_(),
+          local_port_(0), local_port_v6_(0)
     {
     }
 
@@ -150,11 +151,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
     }
 
     bool deserialize();

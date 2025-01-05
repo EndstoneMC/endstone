@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ServerEvent**](classendstone_1_1ServerEvent.md) <br>_Represents an Server-related event._  |
+| class | [**ServerEvent**](classendstone_1_1ServerEvent.md) <br>_Represents a Server-related event._  |
 
 
 

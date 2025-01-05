@@ -24,24 +24,20 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
 
-class PlayerChatEvent : public PlayerEvent {
+class PlayerChatEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerChatEvent(Player &player, std::string message) : PlayerEvent(player), message_(std::move(message)) {}
+    explicit PlayerChatEvent(Player &player, std::string message) : Cancellable(player), message_(std::move(message)) {}
     ~PlayerChatEvent() override = default;
 
     inline static const std::string NAME = "PlayerChatEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     [[nodiscard]] std::string getMessage() const

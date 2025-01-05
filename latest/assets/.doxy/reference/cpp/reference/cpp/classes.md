@@ -50,6 +50,8 @@
 
 ## c
 
+* [**Cancellable**](classendstone_1_1Cancellable.md)
+([**endstone**](namespaceendstone.md))
 * [**ColorFormat**](structendstone_1_1ColorFormat.md)
 ([**endstone**](namespaceendstone.md))
 * [**Command**](classendstone_1_1Command.md)
@@ -116,6 +118,8 @@
 
 ## i
 
+* [**ICancellable**](classendstone_1_1ICancellable.md)
+([**endstone**](namespaceendstone.md))
 * [**ImageData**](structendstone_1_1Skin_1_1ImageData.md)
 ([**endstone::Skin**](classendstone_1_1Skin.md))
 * [**Inventory**](classendstone_1_1Inventory.md)

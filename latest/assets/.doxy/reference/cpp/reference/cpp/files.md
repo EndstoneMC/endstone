@@ -39,6 +39,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**plugin\_command.h**](plugin__command_8h.md)     
             * **file** [**proxied\_command\_sender.h**](proxied__command__sender_8h.md)     
         * **dir** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md)     
+            * **file** [**cancellable.h**](cancellable_8h.md)     
             * **file** [**event.h**](event_8h.md)     
             * **file** [**event\_handler.h**](event__handler_8h.md)     
             * **file** [**event\_priority.h**](event__priority_8h.md)     

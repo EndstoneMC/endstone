@@ -14,7 +14,7 @@ _Called when the thunder state in a world is changing._
 
 
 
-Inherits the following classes: [endstone::WeatherEvent](classendstone_1_1WeatherEvent.md)
+Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 
 
@@ -100,37 +100,31 @@ Inherits the following classes: [endstone::WeatherEvent](classendstone_1_1Weathe
 | ---: | :--- |
 |   | [**ThunderChangeEvent**](#function-thunderchangeevent) ([**Level**](classendstone_1_1Level.md) & level, bool to) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-| virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 |  bool | [**toThunderState**](#function-tothunderstate) () const<br> |
 |   | [**~ThunderChangeEvent**](#function-thunderchangeevent) () override<br> |
 
 
-## Public Functions inherited from endstone::WeatherEvent
+## Public Functions inherited from endstone::Cancellable
 
-See [endstone::WeatherEvent](classendstone_1_1WeatherEvent.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**WeatherEvent**](classendstone_1_1WeatherEvent.md#function-weatherevent) ([**Level**](classendstone_1_1Level.md) & level) <br> |
-|  [**Level**](classendstone_1_1Level.md) & | [**getLevel**](classendstone_1_1WeatherEvent.md#function-getlevel) () const<br> |
-|   | [**~WeatherEvent**](classendstone_1_1WeatherEvent.md#function-weatherevent) () override<br> |
-
-
-## Public Functions inherited from endstone::Event
-
-See [endstone::Event](classendstone_1_1Event.md)
+See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-12) (bool async=false) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-| virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-| virtual bool | [**isCancellable**](classendstone_1_1Event.md#function-iscancellable) () const = 0<br> |
-|  bool | [**isCancelled**](classendstone_1_1Event.md#function-iscancelled) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|  void | [**setCancelled**](classendstone_1_1Event.md#function-setcancelled) (bool cancel) <br> |
-| virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+
+
+## Public Functions inherited from endstone::ICancellable
+
+See [endstone::ICancellable](classendstone_1_1ICancellable.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
+| virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
 
@@ -270,35 +264,6 @@ name of this event
 
         
 Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
-
-<hr>
-
-
-
-### function isCancellable 
-
-```C++
-inline virtual bool endstone::ThunderChangeEvent::isCancellable () override const
-```
-
-
-
-Whether the event can be cancelled by a plugin or the server.
-
-
-
-
-**Returns:**
-
-true if this event can be cancelled 
-
-
-
-
-
-        
-Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function-iscancellable)
 
 
 <hr>

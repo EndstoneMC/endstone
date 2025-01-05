@@ -1974,9 +1974,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneplayerevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstonecancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::PlayerEvent
+        Public Functions inherited from endstone::Cancellable
       </span>
     </a>
 
@@ -1985,9 +1985,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstoneicancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::Event
+        Public Functions inherited from endstone::ICancellable
       </span>
     </a>
 
@@ -2143,19 +2143,6 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-iscancellable" class="md-nav__link">
-      <span class="md-ellipsis">
-        function isCancellable
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#function-playerinteractevent_1" class="md-nav__link">
       <span class="md-ellipsis">
         function ~PlayerInteractEvent
@@ -2209,7 +2196,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/event/player/player_interact_event.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2267,17 +2254,13 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-hasitem"><strong>hasItem</strong></a> () const<br><em>Check if this event involved an item.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-iscancellable"><strong>isCancellable</strong></a> () override const<br></td>
-</tr>
-<tr>
 <td style="text-align: right;"></td>
 <td style="text-align: left;"><a href="#function-playerinteractevent"><strong>~PlayerInteractEvent</strong></a> () override<br></td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneplayerevent">Public Functions inherited from endstone::PlayerEvent<a class="headerlink" href="#public-functions-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<h2 id="public-functions-inherited-from-endstonecancellable">Public Functions inherited from endstone::Cancellable<a class="headerlink" href="#public-functions-inherited-from-endstonecancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <table>
 <thead>
 <tr>
@@ -2287,64 +2270,44 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>PlayerEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-getplayer"><strong>getPlayer</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>~PlayerEvent</strong></a> () override<br></td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-functions-inherited-from-endstoneevent">Public Functions inherited from endstone::Event<a class="headerlink" href="#public-functions-inherited-from-endstoneevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1Event/">endstone::Event</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-12"><strong>Event</strong></a> (bool async=false) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-22"><strong>Event</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancellable"><strong>isCancellable</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancelled"><strong>isCancelled</strong></a> () const<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) <br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-inherited-from-endstoneicancellable">Public Functions inherited from endstone::ICancellable<a class="headerlink" href="#public-functions-inherited-from-endstoneicancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1ICancellable/">endstone::ICancellable</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) <br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event"><strong>~Event</strong></a> () = default<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-icancellable"><strong>~ICancellable</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
@@ -2423,17 +2386,8 @@ For latest updates join the chat on
 <p>boolean true if it did </p>
 <hr>
 
-<h3 id="function-iscancellable">function isCancellable<a class="headerlink" href="#function-iscancellable" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">isCancellable</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Whether the event can be cancelled by a plugin or the server.</p>
-<p><strong>Returns:</strong></p>
-<p>true if this event can be cancelled </p>
-<p>Implements <a href="../classendstone_1_1Event/#function-iscancellable"><em>endstone::Event::isCancellable</em></a></p>
-<hr>
-
 <h3 id="function-playerinteractevent_1">function ~PlayerInteractEvent<a class="headerlink" href="#function-playerinteractevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::~</span><span class="n">PlayerInteractEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::~</span><span class="n">PlayerInteractEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 

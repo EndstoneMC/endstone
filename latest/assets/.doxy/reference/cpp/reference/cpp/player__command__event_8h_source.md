@@ -24,13 +24,14 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
 
-class PlayerCommandEvent : public PlayerEvent {
+class PlayerCommandEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerCommandEvent(Player &player, std::string command) : PlayerEvent(player), command_(std::move(command))
+    explicit PlayerCommandEvent(Player &player, std::string command) : Cancellable(player), command_(std::move(command))
     {
     }
     ~PlayerCommandEvent() override = default;
@@ -39,11 +40,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     [[nodiscard]] std::string getCommand() const

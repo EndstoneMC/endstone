@@ -2706,6 +2706,7 @@ For latest updates join the chat on
 <li><strong>content_</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
 <li><strong>created_</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
 <li><strong>captureState</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>)</li>
+<li><strong>cancel</strong> (<a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a>, <a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>, <a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>Command</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>command_map_</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>CommandMap</strong> (<a href="../classendstone_1_1CommandMap/"><strong>endstone::CommandMap</strong></a>)</li>
@@ -2733,7 +2734,6 @@ For latest updates join the chat on
 <li><strong>createScoreboard</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>cape_data_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>cape_id_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
-<li><strong>cancel</strong> (<a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 </ul>
 <h2 id="d">d<a class="headerlink" href="#d" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3019,17 +3019,17 @@ For latest updates join the chat on
 <li><strong>isNameTagAlwaysVisible</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>isNameTagVisible</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>isOnGround</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
-<li><strong>isCancellable</strong> (<a href="../classendstone_1_1ActorDeathEvent/"><strong>endstone::ActorDeathEvent</strong></a>, <a href="../classendstone_1_1ActorKnockbackEvent/"><strong>endstone::ActorKnockbackEvent</strong></a>, <a href="../classendstone_1_1ActorRemoveEvent/"><strong>endstone::ActorRemoveEvent</strong></a>, <a href="../classendstone_1_1ActorSpawnEvent/"><strong>endstone::ActorSpawnEvent</strong></a>, <a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1BlockBreakEvent/"><strong>endstone::BlockBreakEvent</strong></a>, <a href="../classendstone_1_1BlockPlaceEvent/"><strong>endstone::BlockPlaceEvent</strong></a>, <a href="../classendstone_1_1BroadcastMessageEvent/"><strong>endstone::BroadcastMessageEvent</strong></a>, <a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1PlayerChatEvent/"><strong>endstone::PlayerChatEvent</strong></a>, <a href="../classendstone_1_1PlayerCommandEvent/"><strong>endstone::PlayerCommandEvent</strong></a>, <a href="../classendstone_1_1PlayerDeathEvent/"><strong>endstone::PlayerDeathEvent</strong></a>, <a href="../classendstone_1_1PlayerInteractActorEvent/"><strong>endstone::PlayerInteractActorEvent</strong></a>, <a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>, <a href="../classendstone_1_1PlayerJoinEvent/"><strong>endstone::PlayerJoinEvent</strong></a>, <a href="../classendstone_1_1PlayerKickEvent/"><strong>endstone::PlayerKickEvent</strong></a>, <a href="../classendstone_1_1PlayerLoginEvent/"><strong>endstone::PlayerLoginEvent</strong></a>, <a href="../classendstone_1_1PlayerQuitEvent/"><strong>endstone::PlayerQuitEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>, <a href="../classendstone_1_1PluginDisableEvent/"><strong>endstone::PluginDisableEvent</strong></a>, <a href="../classendstone_1_1PluginEnableEvent/"><strong>endstone::PluginEnableEvent</strong></a>, <a href="../classendstone_1_1ScriptMessageEvent/"><strong>endstone::ScriptMessageEvent</strong></a>, <a href="../classendstone_1_1ServerCommandEvent/"><strong>endstone::ServerCommandEvent</strong></a>, <a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>, <a href="../classendstone_1_1ThunderChangeEvent/"><strong>endstone::ThunderChangeEvent</strong></a>, <a href="../classendstone_1_1WeatherChangeEvent/"><strong>endstone::WeatherChangeEvent</strong></a>)</li>
 <li><strong>isBanned</strong> (<a href="../classendstone_1_1BanList/"><strong>endstone::BanList</strong></a>, <a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>, <a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>isValid</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>)</li>
 <li><strong>isVisible</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>isCancellable</strong> (<a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a>, <a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1PlayerDeathEvent/"><strong>endstone::PlayerDeathEvent</strong></a>, <a href="../classendstone_1_1PlayerJoinEvent/"><strong>endstone::PlayerJoinEvent</strong></a>, <a href="../classendstone_1_1PlayerQuitEvent/"><strong>endstone::PlayerQuitEvent</strong></a>, <a href="../classendstone_1_1PluginDisableEvent/"><strong>endstone::PluginDisableEvent</strong></a>, <a href="../classendstone_1_1PluginEnableEvent/"><strong>endstone::PluginEnableEvent</strong></a>, <a href="../classendstone_1_1ScriptMessageEvent/"><strong>endstone::ScriptMessageEvent</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
+<li><strong>isCancelled</strong> (<a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a>, <a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>, <a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>Italic</strong> (<a href="../structendstone_1_1ColorFormat/"><strong>endstone::ColorFormat</strong></a>)</li>
 <li><strong>isRegistered</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>isOp</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>isPermissionSet</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>isReadOnly</strong> (<a href="../classendstone_1_1Criteria/"><strong>endstone::Criteria</strong></a>)</li>
 <li><strong>isAsynchronous</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
-<li><strong>isCancelled</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>ignore_cancelled_</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>isIgnoreCancelled</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>isEmpty</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
@@ -3261,6 +3261,7 @@ For latest updates join the chat on
 <li><strong>setTitle</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>, <a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>setVisible</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>setMessage</strong> (<a href="../classendstone_1_1BroadcastMessageEvent/"><strong>endstone::BroadcastMessageEvent</strong></a>, <a href="../classendstone_1_1PlayerChatEvent/"><strong>endstone::PlayerChatEvent</strong></a>)</li>
+<li><strong>setCancelled</strong> (<a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a>, <a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>)</li>
 <li><strong>setAliases</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>setDescription</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>, <a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>setName</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
@@ -3274,7 +3275,6 @@ For latest updates join the chat on
 <li><strong>setLabel</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>, <a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
 <li><strong>setOptions</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
 <li><strong>stack_trace_</strong> (<a href="../classendstone_1_1Error/"><strong>endstone::Error</strong></a>)</li>
-<li><strong>setCancelled</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>setOnClose</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>setItem</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>setAmount</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
@@ -3441,6 +3441,7 @@ For latest updates join the chat on
 <li><strong>~Criteria</strong> (<a href="../classendstone_1_1Criteria/"><strong>endstone::Criteria</strong></a>)</li>
 <li><strong>~Dimension</strong> (<a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>)</li>
 <li><strong>~Event</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
+<li><strong>~ICancellable</strong> (<a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>)</li>
 <li><strong>~Inventory</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>~IpBanList</strong> (<a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>)</li>
 <li><strong>~ItemStack</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>

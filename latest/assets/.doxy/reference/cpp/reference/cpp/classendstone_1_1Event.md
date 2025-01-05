@@ -57,10 +57,7 @@ Inherited by the following classes: [endstone::ActorEvent](classendstone_1_1Acto
 |   | [**Event**](#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () const = 0<br> |
 |  bool | [**isAsynchronous**](#function-isasynchronous) () const<br> |
-| virtual bool | [**isCancellable**](#function-iscancellable) () const = 0<br> |
-|  bool | [**isCancelled**](#function-iscancelled) () const<br> |
 |  [**Event**](classendstone_1_1Event.md) & | [**operator=**](#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|  void | [**setCancelled**](#function-setcancelled) (bool cancel) <br> |
 | virtual  | [**~Event**](#function-event) () = default<br> |
 
 
@@ -179,60 +176,6 @@ false by default, true if the event fires asynchronously
 
 
 
-### function isCancellable 
-
-```C++
-virtual bool endstone::Event::isCancellable () const = 0
-```
-
-
-
-Whether the event can be cancelled by a plugin or the server.
-
-
-
-
-**Returns:**
-
-true if this event can be cancelled 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function isCancelled 
-
-```C++
-inline bool endstone::Event::isCancelled () const
-```
-
-
-
-Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins
-
-
-
-
-**Returns:**
-
-true if this event is cancelled 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function operator= 
 
 ```C++
@@ -243,35 +186,6 @@ Event & endstone::Event::operator= (
 
 
 
-
-<hr>
-
-
-
-### function setCancelled 
-
-```C++
-inline void endstone::Event::setCancelled (
-    bool cancel
-) 
-```
-
-
-
-Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
-
-
-
-
-**Parameters:**
-
-
-* `cancel` true if you wish to cancel this event 
-
-
-
-
-        
 
 <hr>
 

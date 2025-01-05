@@ -2287,10 +2287,6 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-iscancellable"><strong>isCancellable</strong></a> () override const<br></td>
-</tr>
-<tr>
 <td style="text-align: right;"></td>
 <td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-actordeathevent"><strong>~ActorDeathEvent</strong></a> () override<br></td>
 </tr>
@@ -2347,20 +2343,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancellable"><strong>isCancellable</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancelled"><strong>isCancelled</strong></a> () const<br></td>
-</tr>
-<tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2419,20 +2403,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancellable"><strong>isCancellable</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-iscancelled"><strong>isCancelled</strong></a> () const<br></td>
-</tr>
-<tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2474,10 +2446,7 @@ For latest updates join the chat on
 <h3 id="function-iscancellable">function isCancellable<a class="headerlink" href="#function-iscancellable" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">isCancellable</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
-<p>Whether the event can be cancelled by a plugin or the server.</p>
-<p><strong>Returns:</strong></p>
-<p>true if this event can be cancelled </p>
-<p>Implements <a href="../classendstone_1_1ActorDeathEvent/#function-iscancellable"><em>endstone::ActorDeathEvent::isCancellable</em></a></p>
+<p>Implements <a href="../classendstone_1_1Event/#function-iscancellable"><em>endstone::Event::isCancellable</em></a></p>
 <hr>
 
 <h3 id="function-setdeathmessage">function setDeathMessage<a class="headerlink" href="#function-setdeathmessage" title="Permanent link">&para;</a></h3>

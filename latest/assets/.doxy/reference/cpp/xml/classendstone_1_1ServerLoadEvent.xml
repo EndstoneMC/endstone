@@ -116,14 +116,10 @@
         <definition>bool endstone::ServerLoadEvent::isCancellable</definition>
         <argsstring>() const override</argsstring>
         <name>isCancellable</name>
-        <reimplements refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9">isCancellable</reimplements>
+        <reimplements refid="classendstone_1_1Event_1a2d453a34ebb1e1aaa8f512b8b6803ed4">isCancellable</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Whether the event can be cancelled by a plugin or the server.</para>
-<para><simplesect kind="return"><para>true if this event can be cancelled </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -181,12 +177,10 @@
       <member refid="classendstone_1_1ServerLoadEvent_1ad6f8ab066b197a8175518ac9e8dcabae" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>getType</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1ae9bf0371dda434c3227c2b88c098fa22" prot="public" virt="virtual"><scope>endstone::ServerLoadEvent</scope><name>isCancellable</name></member>
-      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>LoadType</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1aadade0b34a9857cae4d6eca19401cfb6" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1a6b655d60130ef5239ec7fb4b70b05670" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>ServerLoadEvent</name></member>
-      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1a0c38ee1be7f8172c828fcc32a8591554" prot="private" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>type_</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ServerLoadEvent</scope><name>~Event</name></member>
     </listofallmembers>

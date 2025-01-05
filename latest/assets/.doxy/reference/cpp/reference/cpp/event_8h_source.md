@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <stdexcept>
 #include <string>
 
 namespace endstone {
@@ -38,29 +39,21 @@ public:
 
     [[nodiscard]] virtual std::string getEventName() const = 0;
 
-    [[nodiscard]] virtual bool isCancellable() const = 0;
-
-    [[nodiscard]] bool isCancelled() const
-    {
-        if (!isCancellable()) {
-            return false;
-        }
-        return cancelled_;
-    };
-
-    void setCancelled(bool cancel)
-    {
-        if (isCancellable()) {
-            cancelled_ = cancel;
-        }
-    }
-
     [[nodiscard]] bool isAsynchronous() const
     {
         return async_;
     }
 
 private:
+    [[nodiscard]] virtual constexpr bool isCancellable() const
+    {
+        return false;
+    }
+
+    template <class T>
+    friend class Cancellable;
+    friend class EventHandler;
+
     bool async_;
     bool cancelled_{false};
 };

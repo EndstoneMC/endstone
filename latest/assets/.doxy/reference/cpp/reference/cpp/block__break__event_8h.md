@@ -11,6 +11,7 @@
 
 
 * `#include "endstone/event/block/block_event.h"`
+* `#include "endstone/event/cancellable.h"`
 * `#include "endstone/player.h"`
 
 
