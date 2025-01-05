@@ -20,12 +20,12 @@
 
 class ActorUniqueID {
 public:
+    std::int64_t raw_id{-1};
     bool operator==(const ActorUniqueID &other) const
     {
         return raw_id == other.raw_id;
     }
-
-    std::int64_t raw_id{-1};
+    inline static const ActorUniqueID INVALID_ID;
 };
 
 namespace std {

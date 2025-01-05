@@ -1,4 +1,4 @@
-timestamp = 1733469382
+timestamp = 1736035039
 version = "1.21.50"
 
 [windows]
@@ -35,6 +35,8 @@ version = "1.21.50"
 "?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 6291840
 # CraftingDataPacket
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 16545120
+# Explosion
+"?explode@Explosion@@QEAA_NXZ" = 39888224
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 50047168
 # GameMode
@@ -144,6 +146,8 @@ version = "1.21.50"
 "_ZN6Common20getGameVersionStringEv" = 81754400
 # CraftingDataPacket
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 88352736
+# Explosion
+"_ZN9Explosion7explodeEv" = 133440704
 # FurnaceBlockActor
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 146244016
 # GameMode

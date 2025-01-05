@@ -97,6 +97,7 @@ add_library(endstone_runtime SHARED
         bedrock/world/item/registry/item_registry.cpp
         bedrock/world/item/registry/item_registry_manager.cpp
         bedrock/world/item/registry/item_registry_ref.cpp
+        bedrock/world/level/explosion.cpp
         bedrock/world/level/level.cpp
         bedrock/world/level/biome/registry/biome_registry.cpp
         bedrock/world/level/block/block_descriptor.cpp

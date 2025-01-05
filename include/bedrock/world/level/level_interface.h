@@ -57,6 +57,7 @@
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/block_palette.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/level/explosion.h"
 #include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_listener.h"
