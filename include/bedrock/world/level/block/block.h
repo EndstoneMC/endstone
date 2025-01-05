@@ -51,120 +51,30 @@ class Block {
 public:
     virtual ~Block() = default;
 
-    [[nodiscard]] bool requiresCorrectToolForDrops() const
-    {
-        return legacy_block_->requiresCorrectToolForDrops();
-    }
-
-    [[nodiscard]] const BlockComponentDirectData &getDirectData() const
-    {
-        return direct_data_;
-    }
-
-    [[nodiscard]] bool isSolid() const
-    {
-        return legacy_block_->isSolid();
-    }
-
-    [[nodiscard]] const CompoundTag &getSerializationId() const
-    {
-        return serialization_id_;
-    }
-
-    [[nodiscard]] BlockRuntimeId getRuntimeId() const
-    {
-        return network_id_;
-    }
-
-    [[nodiscard]] BurnOdds getBurnOdds() const
-    {
-        return direct_data_.burn_odds;
-    }
-
-    [[nodiscard]] float getDestroySpeed() const
-    {
-        return direct_data_.destroy_speed;
-    }
-
-    [[nodiscard]] float getExplosionResistance() const
-    {
-        return direct_data_.explosion_resistance;
-    }
-
-    [[nodiscard]] FlameOdds getFlameOdds() const
-    {
-        return direct_data_.flame_odds;
-    }
-
-    [[nodiscard]] float getFriction() const
-    {
-        return direct_data_.friction;
-    }
-
-    [[nodiscard]] Brightness getLight() const
-    {
-        return direct_data_.light;
-    }
-
-    [[nodiscard]] Brightness getLightEmission() const
-    {
-        return direct_data_.light_emission;
-    }
-
-    [[nodiscard]] const std::vector<HashedString> &getTags() const
-    {
-        if (!tags_.empty()) {
-            return tags_;
-        }
-        return legacy_block_->getTags();
-    }
-
-    [[nodiscard]] float getThickness() const
-    {
-        return legacy_block_->getThickness();
-    }
-
-    [[nodiscard]] float getTranslucency() const
-    {
-        return legacy_block_->getTranslucency();
-    }
-
-    [[nodiscard]] const BlockLegacy &getLegacyBlock() const
-    {
-        return *legacy_block_;
-    }
-
+    [[nodiscard]] Brightness getLightEmission() const;
+    [[nodiscard]] float getTranslucency() const;
+    [[nodiscard]] bool isSolid() const;
+    [[nodiscard]] Brightness getLight() const;
+    [[nodiscard]] FlameOdds getFlameOdds() const;
+    [[nodiscard]] BurnOdds getBurnOdds() const;
+    [[nodiscard]] float getExplosionResistance() const;
     bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
-                           optional_ref<GetCollisionShapeInterface const> entity) const
-    {
-        out_aabb = legacy_block_->getCollisionShape(*this, region, pos, entity);
-        return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
-    }
-
-    bool getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
-    {
-        return legacy_block_->getCollisionShapeForCamera(out_aabb, *this, region, pos);
-    }
-
-    const AABB &getOutline(IConstBlockSource const &region, BlockPos const &pos, AABB &buffer) const
-    {
-        return legacy_block_->getOutline(*this, region, pos, buffer);
-    }
-
-    const AABB &getVisualShape(AABB &buffer) const
-    {
-        return legacy_block_->getVisualShape(*this, buffer);
-    }
-
-    const AABB &getUIShape(AABB &buffer) const
-    {
-        return legacy_block_->getUIShape(*this, buffer);
-    }
-
-    bool getLiquidClipShape(BlockSource &region, BlockPos const &pos, AABB &include_box) const
-    {
-        return legacy_block_->getLiquidClipVolume(*this, region, pos, include_box);
-    }
+                           optional_ref<GetCollisionShapeInterface const> entity) const;
+    bool getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const;
+    const AABB &getOutline(IConstBlockSource const &region, BlockPos const &pos, AABB &buffer) const;
+    const AABB &getVisualShape(AABB &buffer) const;
+    const AABB &getUIShape(AABB &buffer) const;
+    bool getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const;
+    [[nodiscard]] bool requiresCorrectToolForDrops() const;
+    [[nodiscard]] float getThickness() const;
+    [[nodiscard]] float getFriction() const;
+    [[nodiscard]] float getDestroySpeed() const;
+    [[nodiscard]] const CompoundTag &getSerializationId() const;
+    [[nodiscard]] BlockRuntimeId getRuntimeId() const;
+    std::string toDebugString() const;
+    [[nodiscard]] const BlockLegacy &getLegacyBlock() const;
+    [[nodiscard]] const std::vector<HashedString> &getTags() const;
+    [[nodiscard]] const BlockComponentDirectData &getDirectData() const;
 
 private:
     friend class ItemStackBase;

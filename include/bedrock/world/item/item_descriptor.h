@@ -21,11 +21,35 @@
 #include "bedrock/deps/json/value.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/item/item_tag.h"
+#include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block/block_legacy.h"
 
 class Item;
 
 class ItemDescriptor {
 public:
+    static constexpr int ANY_AUX_VALUE = 0x7FFF;
+    explicit ItemDescriptor();
+    explicit ItemDescriptor(const Block &);
+    explicit ItemDescriptor(const BlockLegacy &);
+    ItemDescriptor(ItemDescriptor &&) = default;
+
+    virtual ~ItemDescriptor() = default;
+    virtual void serialize(Json::Value &) const;
+    virtual void serialize(BinaryStream &) const;
+
+    ItemDescriptor &operator=(ItemDescriptor &&) = default;
+    [[nodiscard]] const Item *getItem() const;
+    [[nodiscard]] std::int16_t getId() const;
+    [[nodiscard]] std::int16_t getAuxValue() const;
+    [[nodiscard]] std::string const &getFullName() const;
+
+    struct ItemEntry {
+        const Item *item;
+        std::int16_t aux_value;
+        ItemEntry(const Item *, std::int16_t);
+    };
+
     enum class InternalType : std::uint8_t {
         Invalid = 0,
         Default = 1,
@@ -33,11 +57,6 @@ public:
         ItemTag = 3,
         Deferred = 4,
         ComplexAlias = 5,
-    };
-
-    struct ItemEntry {
-        const Item *item;
-        std::int16_t aux_value;
     };
 
     class BaseDescriptor {
@@ -61,44 +80,8 @@ public:
         virtual ~BaseDescriptor() = 0;
     };
 
-    class ItemTagDescriptor : public BaseDescriptor {
-    public:
-        ItemTag item_tag;
-    };
-
-    ItemDescriptor() = default;
-    virtual ~ItemDescriptor() = default;
-
-    [[nodiscard]] std::string const &getFullName() const
-    {
-        static std::string empty;
-        if (!impl) {
-            return empty;
-        }
-        return impl->getFullName();
-    }
-
-    [[nodiscard]] const Item *getItem() const
-    {
-        if (!impl) {
-            return nullptr;
-        }
-        if (impl->shouldResolve()) {
-            impl = std::move(impl->resolve());
-        }
-        return impl->getItem().item;
-    }
-
-    [[nodiscard]] std::int16_t getAuxValue() const
-    {
-        if (!impl) {
-            return 0x7FFF;
-        }
-        if (impl->shouldResolve()) {
-            impl = std::move(impl->resolve());
-        }
-        return impl->getItem().aux_value;
-    }
-
-    mutable std::unique_ptr<BaseDescriptor> impl;
+private:
+    mutable std::unique_ptr<BaseDescriptor> impl_;
 };
+
+struct ItemTagDescriptor;
