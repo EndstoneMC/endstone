@@ -21,6 +21,7 @@
 
 #include "endstone/network/packet.h"
 #include "endstone/network/packet_type.h"
+#include "endstone/util/vector.h"
 
 namespace endstone {
 
@@ -35,7 +36,7 @@ public:
     }
 
     std::string name;
-    BlockPos position;
+    Vector<int> position;
     float volume;
     float pitch;
 };
