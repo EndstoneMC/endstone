@@ -30,24 +30,25 @@ class Item;
 class ItemRegistryRef;
 
 class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
-    struct ItemAlias {
-        HashedString current_name;
-        BaseGameVersion since_version;
-    };
-
-    struct ItemHashAlias {
-        std::size_t alias_name;
-        BaseGameVersion since_version;
-    };
-
 public:
+    static const std::int16_t START_ITEM_ID = 256;
+
     [[nodiscard]] WeakPtr<Item> getItem(std::int16_t id) const;
     [[nodiscard]] WeakPtr<Item> getItem(const HashedString &name) const;
     Bedrock::NonOwnerPointer<CreativeItemRegistry> getCreativeItemRegistry() const;
 
 private:
     friend ItemRegistryRef;
+
     using ItemRegistryMap = std::vector<SharedPtr<Item>>;
+    struct ItemAlias {
+        HashedString current_name;
+        BaseGameVersion since_version;
+    };
+    struct ItemHashAlias {
+        std::size_t alias_name;
+        BaseGameVersion since_version;
+    };
 
     std::unique_ptr<void *> cereal_context_;                                               // +16
     ItemRegistryMap item_registry_;                                                        // +24

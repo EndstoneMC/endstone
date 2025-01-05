@@ -29,7 +29,8 @@ class Item;
 class ItemDescriptor {
 public:
     static constexpr int ANY_AUX_VALUE = 0x7FFF;
-    explicit ItemDescriptor();
+    static const HashType64 EMPTY_INGREDIENT_HASH = 0xB7F87A68;
+    explicit ItemDescriptor() = default;
     explicit ItemDescriptor(const Block &);
     explicit ItemDescriptor(const BlockLegacy &);
     explicit ItemDescriptor(const Item &, int);

@@ -66,7 +66,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             data.block_tags[tag_name].push_back(name);
         }
 
-        data.block_types[name] = {{"defaultBlockStateHash", block_legacy.getDefaultState()->getRuntimeId()}};
+        data.block_types[name] = {{"defaultBlockStateHash", block_legacy.getDefaultState().getRuntimeId()}};
         if (!tags.is_null()) {
             data.block_types[name]["tags"] = tags;
         }
