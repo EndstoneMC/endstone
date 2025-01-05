@@ -14,7 +14,6 @@
 
 #include "bedrock/world/events/player_event_coordinator.h"
 
-#include "bedrock/deps/json/nlohmann_json.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/server/server_instance.h"
@@ -44,8 +43,7 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
             const StackResultStorageEntity entity(event.player);
             if (const auto *player = static_cast<Player *>(Actor::tryGetFromEntity(entity.getStackRef(), false))) {
                 // Players can be null if they are dead when we receive the event
-                player->getEndstoneActor<EndstonePlayer>().onFormResponse(event.form_id,
-                                                                          to_nlohmann(event.form_response));
+                player->getEndstoneActor<EndstonePlayer>().onFormResponse(event.form_id, event.form_response);
             }
         },
         [](auto &&ignored) {},

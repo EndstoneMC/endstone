@@ -17,7 +17,6 @@
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/certificates/extended_certificate.h"
-#include "bedrock/deps/json/nlohmann_json.h"
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"

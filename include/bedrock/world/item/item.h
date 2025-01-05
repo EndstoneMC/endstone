@@ -193,6 +193,8 @@ public:
         return furnace_burn_interval_modifier_;
     }
 
+    ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;
+
 protected:
     std::string texture_atlas_file_;                                            // +8
     int frame_count_;                                                           // +40

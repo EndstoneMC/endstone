@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/events/scripting_events.h"
 
 class ScriptingEventHandler : public GameplayHandler {
