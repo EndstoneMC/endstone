@@ -18,6 +18,7 @@
 // must be included after pybind11
 #include "endstone/network/packet.h"
 #include "endstone/network/packet_type.h"
+#include "endstone/network/play_sound_packet.h"
 #include "endstone/network/spawn_particle_effect_packet.h"
 
 namespace py = pybind11;
@@ -27,10 +28,19 @@ namespace endstone::detail {
 void init_network(py::module_ &m)
 {
     py::enum_<PacketType>(m, "PacketType", "Represents the types of packets.")
+        .value("PLAY_SOUND", PacketType::PlaySound)
         .value("SPAWN_PARTICLE_EFFECT", PacketType::SpawnParticleEffect);
 
     py::class_<Packet>(m, "Packet", "Represents a packet.")
         .def_property_readonly("type", &Packet::getType, "Gets the type of the packet.");
+
+    py::class_<PlaySoundPacket, Packet>(m, "PlaySoundPacket",
+                                                  "Represents a packet for playing a sound.")
+        .def(py::init<>())
+        .def_readwrite("name", &PlaySoundPacket::name)
+        .def_readwrite("position", &PlaySoundPacket::position)
+        .def_readwrite("volume", &PlaySoundPacket::volume)
+        .def_readwrite("pitch", &PlaySoundPacket::pitch);
 
     py::class_<SpawnParticleEffectPacket, Packet>(m, "SpawnParticleEffectPacket",
                                                   "Represents a packet for spawning a particle effect.")

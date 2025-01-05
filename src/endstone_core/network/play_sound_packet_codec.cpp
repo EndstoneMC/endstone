@@ -12,28 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "bedrock/core/utility/binary_stream.h"
 #include "endstone/detail/network/packet_codec.h"
-
-#include <stdexcept>
-
-#include <fmt/format.h>
-
 #include "endstone/network/play_sound_packet.h"
-#include "endstone/network/spawn_particle_effect_packet.h"
 
 namespace endstone::detail {
-
-void PacketCodec::encode(BinaryStream &stream, Packet &packet)
+template <>
+void PacketCodec::encode(BinaryStream &stream, PlaySoundPacket &packet)
 {
-    switch (packet.getType()) {
-    case PacketType::PlaySound:
-        encode(stream, static_cast<PlaySoundPacket &>(packet));
-        break;
-    case PacketType::SpawnParticleEffect:
-        encode(stream, static_cast<SpawnParticleEffectPacket &>(packet));
-        break;
-    default:
-        throw std::runtime_error(fmt::format("Packet type {} is not supported.", static_cast<int>(packet.getType())));
-    }
+    stream.writeString(packet.name)
+    stream.writeVarInt(packet.position.x)
+    stream.writeUnsignedVarInt(packet.position.y)
+    stream.writeVarInt(packet.position.z)
+    stream.writeFloat(packet.volume);
+    stream.writeFloat(packet.pitch);
 }
+
 }  // namespace endstone::detail

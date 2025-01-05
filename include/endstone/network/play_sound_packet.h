@@ -14,12 +14,30 @@
 
 #pragma once
 
+#include <cstdint>
+#include <string>
+
+#include "bedrock/world/level/block_pos.h"
+
+#include "endstone/network/packet.h"
+#include "endstone/network/packet_type.h"
+
 namespace endstone {
+
 /**
- * @brief Represents the types of packets.
+ * @brief Represents a packet for playing a sound.
  */
-enum class PacketType {
-    PlaySound = 86,
-    SpawnParticleEffect = 118,
+class PlaySoundPacket final : public Packet {
+public:
+    [[nodiscard]] PacketType getType() const override
+    {
+        return PacketType::PlaySound;
+    }
+
+    std::string name;
+    BlockPos position;
+    float volume;
+    float pitch;
 };
+
 }  // namespace endstone
