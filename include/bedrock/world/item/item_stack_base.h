@@ -19,7 +19,6 @@
 #include <string>
 #include <string_view>
 
-#include "bedrock/forward.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/item/item.h"
@@ -28,18 +27,23 @@
 #include "bedrock/world/level/tick.h"
 
 class ItemStackBase {
+protected:
+    ItemStackBase();
+
 public:
     virtual ~ItemStackBase() = 0;
-    virtual void reinit(Item const &, int, int) = 0;
-    virtual void reinit(BlockLegacy const &, int) = 0;
-    virtual void reinit(std::string_view, int, int) = 0;
-    virtual void setNull(std::optional<std::string>) = 0;
-    [[nodiscard]] virtual std::string toString() const = 0;
-    [[nodiscard]] virtual std::string toDebugString() const = 0;
+    virtual void reinit(Item const &, int, int);
+    virtual void reinit(BlockLegacy const &, int);
+    virtual void reinit(std::string_view, int, int);
+    [[nodiscard]] ItemDescriptor getDescriptor() const;
+    virtual void setNull(std::optional<std::string>);
+    [[nodiscard]] virtual std::string toString() const;
+    [[nodiscard]] virtual std::string toDebugString() const;
 
     [[nodiscard]] bool isNull() const;
     [[nodiscard]] bool hasCustomHoverName() const;
     [[nodiscard]] std::string getCustomName() const;
+    [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] std::uint16_t getAuxValue() const;
     [[nodiscard]] std::string getName() const;
     [[nodiscard]] const Item *getItem() const;
@@ -51,23 +55,27 @@ public:
     [[nodiscard]] std::uint8_t getCount() const;  // Endstone
 
 private:
-    const static std::string TAG_DISPLAY;       // NOLINT(*-identifier-naming)
-    const static std::string TAG_DISPLAY_NAME;  // NOLINT(*-identifier-naming)
+    static const std::string TAG_DISPLAY;
+    static const std::string TAG_DISPLAY_NAME;
+    static const std::string TAG_CHARGED_ITEM;
+    static constexpr int ID_MASK = 0xffff;
+    static constexpr int ENCHANT_MASK = 0x8000;
+    static constexpr int AUX_VALUE_MASK = 0x7fff;
 
-    WeakPtr<Item> item_;                                  // +8
+    WeakPtr<Item> item_{nullptr};                         // +8
     std::unique_ptr<CompoundTag> user_data_;              // +16
-    Block *block_;                                        // +24
-    std::uint16_t aux_value_;                             // +32
-    std::uint8_t count_;                                  // +34
-    bool valid_deprecated_;                               // +35
-    bool show_pick_up_;                                   // +36
-    bool was_picked_up_;                                  // +37
+    Block *block_{nullptr};                               // +24
+    std::int16_t aux_value_{0};                           // +32
+    std::uint8_t count_{0};                               // +34
+    bool valid_deprecated_{true};                         // +35
+    bool show_pick_up_{true};                             // +36
+    bool was_picked_up_{false};                           // +37
     std::chrono::steady_clock::time_point pick_up_time_;  // +40
     std::vector<const BlockLegacy *> can_place_on_;       // +56
-    std::size_t can_place_on_hash_;                       // +80
+    std::size_t can_place_on_hash_{0};                    // +80
     std::vector<const BlockLegacy *> can_destroy_;        // +88
-    std::size_t can_destroy_hash_;                        // +112
-    Tick blocking_tick_;                                  // +120
+    std::size_t can_destroy_hash_{0};                     // +112
+    Tick blocking_tick_{};                                // +120
     std::unique_ptr<ItemInstance> charged_item_;          // +128
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackBase, 128, 128);

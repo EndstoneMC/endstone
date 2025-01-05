@@ -90,6 +90,7 @@ add_library(endstone_runtime SHARED
         bedrock/world/events/server_instance_event_coordinator.cpp
         bedrock/world/gamemode/game_mode.cpp
         bedrock/world/item/item.cpp
+        bedrock/world/item/item_descriptor.cpp
         bedrock/world/item/item_stack.cpp
         bedrock/world/item/item_stack_base.cpp
         bedrock/world/item/registry/creative_item_entry.cpp
@@ -100,6 +101,7 @@ add_library(endstone_runtime SHARED
         bedrock/world/level/explosion.cpp
         bedrock/world/level/level.cpp
         bedrock/world/level/biome/registry/biome_registry.cpp
+        bedrock/world/level/block/block.cpp
         bedrock/world/level/block/block_descriptor.cpp
         bedrock/world/level/block/block_legacy.cpp
         bedrock/world/level/block/actor/furnace_block_actor.cpp

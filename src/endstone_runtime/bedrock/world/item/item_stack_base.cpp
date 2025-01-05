@@ -14,6 +14,110 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
+#include <bedrock/world/item/item_instance.h>
+
+ItemStackBase::ItemStackBase()
+{
+    ItemStackBase::setNull(std::nullopt);
+}
+
+void ItemStackBase::reinit(Item const &, int, int) {}
+
+void ItemStackBase::reinit(BlockLegacy const &, int) {}
+
+void ItemStackBase::reinit(std::string_view, int, int) {}
+
+ItemDescriptor ItemStackBase::getDescriptor() const
+{
+    if (block_) {
+        if (aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
+            return ItemDescriptor(block_->getLegacyBlock());
+        }
+        auto block_descriptor = ItemDescriptor(*block_);
+        if (block_descriptor.getId() == getId()) {
+            return std::move(block_descriptor);
+        }
+    }
+    else if (!item_.isNull()) {
+        return item_->buildDescriptor(aux_value_, user_data_.get());
+    }
+    return ItemDescriptor();
+}
+
+void ItemStackBase::setNull(std::optional<std::string> reason)
+{
+    if (user_data_) {
+        user_data_->remove(TAG_CHARGED_ITEM);
+    }
+    charged_item_.reset();
+    count_ = 0;
+    block_ = nullptr;
+    aux_value_ = 0;
+    item_.reset();
+    user_data_.reset();
+    show_pick_up_ = true;
+    was_picked_up_ = false;
+    can_place_on_.clear();
+    can_destroy_.clear();
+    blocking_tick_ = Tick(0);
+}
+
+std::string ItemStackBase::toString() const
+{
+    std::stringstream ss;
+    ss << count_;
+    ss << " x ";
+    if (hasCustomHoverName()) {
+        ss << getCustomName();
+    }
+    else if (!item_.isNull()) {
+        ss << item_->buildDescriptionName(*this);
+    }
+    ss << "(" << getId() << ")";
+    ss << "@" << aux_value_;
+    return ss.str();
+}
+
+std::string ItemStackBase::toDebugString() const
+{
+    std::stringstream ss;
+    ss << "mItem = ";
+    if (hasCustomHoverName()) {
+        ss << getCustomName();
+    }
+    else if (!item_.isNull()) {
+        ss << item_->buildDescriptionName(*this);
+    }
+    ss << ", id = " << getId();
+    ss << ", mCount = " << std::to_string(count_);
+    ss << ", mAuxValue = " << std::to_string(aux_value_);
+    ss << ", mBlock = ";
+    if (block_) {
+        ss << block_->toDebugString();
+    }
+    else {
+        ss << "null";
+    }
+    ss << ", mCanDestroyHash = " << std::to_string(can_destroy_hash_);
+    ss << ", mCanPlaceOnHash = " << std::to_string(can_place_on_hash_);
+    ss << ", mBlockTicking = " << std::to_string(blocking_tick_.tick_id);
+    ss << ", mUserData = ";
+    if (user_data_) {
+        ss << user_data_->toString();
+    }
+    else {
+        ss << "null";
+    }
+    ss << ", chargedItem = ";
+    if (charged_item_ && !charged_item_->isNull()) {
+        ss << charged_item_->item_->getFullItemName();
+    }
+    else {
+        ss << "none";
+    }
+    return ss.str();
+}
+
 bool ItemStackBase::isNull() const
 {
     if (valid_deprecated_) {
@@ -54,9 +158,20 @@ std::string ItemStackBase::getCustomName() const
     return "";
 }
 
+std::int16_t ItemStackBase::getId() const
+{
+    if (!valid_deprecated_) {
+        return -1;
+    }
+    if (item_.isNull()) {
+        return 0;
+    }
+    return item_->getId();
+}
+
 std::uint16_t ItemStackBase::getAuxValue() const
 {
-    if (!block_ || aux_value_ == 0x7fff) {
+    if (!block_ || aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
         return aux_value_;
     }
     return block_->data_;
@@ -98,10 +213,24 @@ const Block *ItemStackBase::getBlock() const
     return block_;
 }
 
-void ItemStackBase::set(std::uint8_t count)
+void ItemStackBase::set(const std::uint8_t count)
 {
-    // TODO(fixme): implement this
-    throw std::logic_error("Not implemented");
+    auto max_stack_size = -1;
+    if (!item_.isNull()) {
+        max_stack_size = item_->getMaxStackSize(getDescriptor());
+    }
+    if (count > max_stack_size) {
+        count_ = max_stack_size;
+    }
+    else if (count == 0) {
+        count_ = 0;
+    }
+    else {
+        count_ = count;
+    }
+    if (!isNull()) {
+        setNull(std::nullopt);
+    }
 }
 
 std::uint8_t ItemStackBase::getCount() const
@@ -111,3 +240,4 @@ std::uint8_t ItemStackBase::getCount() const
 
 const std::string ItemStackBase::TAG_DISPLAY = "display";
 const std::string ItemStackBase::TAG_DISPLAY_NAME = "Name";
+const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";
