@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -229,7 +229,7 @@ class ActorEvent(Event):
         """
         Returns the Actor involved in this event
         """
-class ActorKnockbackEvent(ActorEvent):
+class ActorKnockbackEvent(ActorEvent, Cancellable):
     """
     Called when a living entity receives knockback.
     """
@@ -255,11 +255,11 @@ class ActorRemoveEvent(ActorEvent):
     """
     Called when an Actor is removed.
     """
-class ActorSpawnEvent(ActorEvent):
+class ActorSpawnEvent(ActorEvent, Cancellable):
     """
     Called when an Actor is spawned into a world.
     """
-class ActorTeleportEvent(ActorEvent):
+class ActorTeleportEvent(ActorEvent, Cancellable):
     """
     Called when a non-player entity is teleported from one location to another.
     """
@@ -482,7 +482,7 @@ class Block:
         """
         Gets the z-coordinate of this block
         """
-class BlockBreakEvent(BlockEvent):
+class BlockBreakEvent(BlockEvent, Cancellable):
     """
     Called when a block is broken by a player.
     """
@@ -550,7 +550,7 @@ class BlockFace:
     @property
     def value(self) -> int:
         ...
-class BlockPlaceEvent(BlockEvent):
+class BlockPlaceEvent(BlockEvent, Cancellable):
     """
     Called when a block is placed by a player.
     """
@@ -703,7 +703,7 @@ class BossBar:
     @title.setter
     def title(self, arg1: str) -> None:
         ...
-class BroadcastMessageEvent(Event):
+class BroadcastMessageEvent(ServerEvent, Cancellable):
     """
     Event triggered for server broadcast messages such as from Server.broadcast
     """
@@ -720,6 +720,30 @@ class BroadcastMessageEvent(Event):
         """
         Gets a set of recipients that this broadcast message will be displayed to.
         """
+class Cancellable:
+    """
+    Represents an event that may be cancelled by a plugin or the server.
+    """
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None:
+        ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None:
+        ...
 class ColorFormat:
     """
     All supported color and format codes.
@@ -1048,14 +1072,6 @@ class Event:
     Represents an event.
     """
     @property
-    def cancelled(self) -> bool:
-        """
-        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
-        """
-    @cancelled.setter
-    def cancelled(self, arg1: bool) -> None:
-        ...
-    @property
     def event_name(self) -> str:
         """
         Gets a user-friendly identifier for this event.
@@ -1065,19 +1081,6 @@ class Event:
         """
         Whether the event fires asynchronously.
         """
-    @property
-    def is_cancellable(self) -> bool:
-        """
-        Whether the event can be cancelled by a plugin or the server.
-        """
-    @property
-    def is_cancelled(self) -> bool:
-        """
-        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
-        """
-    @is_cancelled.setter
-    def is_cancelled(self, arg1: bool) -> None:
-        ...
 class EventPriority:
     """
     Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
@@ -2161,7 +2164,7 @@ class PlayerBanList:
         """
         Gets a vector of pointers to entries in the ban list.
         """
-class PlayerChatEvent(PlayerEvent):
+class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
     """
@@ -2173,7 +2176,7 @@ class PlayerChatEvent(PlayerEvent):
     @message.setter
     def message(self, arg1: str) -> None:
         ...
-class PlayerCommandEvent(PlayerEvent):
+class PlayerCommandEvent(PlayerEvent, Cancellable):
     """
     Called whenever a player runs a command.
     """
@@ -2206,7 +2209,7 @@ class PlayerEvent(Event):
         """
         Returns the player involved in this event.
         """
-class PlayerInteractActorEvent(PlayerEvent):
+class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks an actor.
     """
@@ -2215,7 +2218,7 @@ class PlayerInteractActorEvent(PlayerEvent):
         """
         Gets the actor that was right-clicked by the player.
         """
-class PlayerInteractEvent(PlayerEvent):
+class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks a block.
     """
@@ -2265,7 +2268,7 @@ class PlayerJoinEvent(PlayerEvent):
     @join_message.setter
     def join_message(self, arg1: str) -> None:
         ...
-class PlayerKickEvent(PlayerEvent):
+class PlayerKickEvent(PlayerEvent, Cancellable):
     """
     Called when a player gets kicked from the server
     """
@@ -2277,7 +2280,7 @@ class PlayerKickEvent(PlayerEvent):
     @reason.setter
     def reason(self, arg1: str) -> None:
         ...
-class PlayerLoginEvent(PlayerEvent):
+class PlayerLoginEvent(PlayerEvent, Cancellable):
     """
     Called when a player attempts to login in.
     """
@@ -2301,7 +2304,7 @@ class PlayerQuitEvent(PlayerEvent):
     @quit_message.setter
     def quit_message(self, arg1: str) -> None:
         ...
-class PlayerTeleportEvent(PlayerEvent):
+class PlayerTeleportEvent(PlayerEvent, Cancellable):
     """
     Called when a player is teleported from one location to another.
     """
@@ -2483,14 +2486,14 @@ class PluginDescription:
         """
         Gives the plugin's or plugin's author's website.
         """
-class PluginDisableEvent(Event):
+class PluginDisableEvent(ServerEvent):
     """
     Called when a plugin is disabled.
     """
     @property
     def plugin(self) -> Plugin:
         ...
-class PluginEnableEvent(Event):
+class PluginEnableEvent(ServerEvent):
     """
     Called when a plugin is enabled.
     """
@@ -2847,7 +2850,7 @@ class Scoreboard:
         """
         Gets all Objectives on this Scoreboard
         """
-class ScriptMessageEvent(Event):
+class ScriptMessageEvent(ServerEvent):
     """
     Called when a message is sent by `/scriptevent` command
     """
@@ -3033,7 +3036,7 @@ class Server:
         """
         Gets the version of this server implementation.
         """
-class ServerCommandEvent(Event):
+class ServerCommandEvent(ServerEvent, Cancellable):
     """
     Called when the console runs a command, early in the process.
     """
@@ -3050,7 +3053,11 @@ class ServerCommandEvent(Event):
         """
         Get the command sender.
         """
-class ServerListPingEvent(Event):
+class ServerEvent(Event):
+    """
+    Represents a server-related event
+    """
+class ServerListPingEvent(ServerEvent, Cancellable):
     """
     Called when a server ping is coming in.
     """
@@ -3374,15 +3381,10 @@ class TextInput:
     @placeholder.setter
     def placeholder(self, arg1: str | Translatable) -> TextInput:
         ...
-class ThunderChangeEvent(Event):
+class ThunderChangeEvent(WeatherEvent, Cancellable):
     """
     Called when the thunder state in a world is changing.
     """
-    @property
-    def level(self) -> Level:
-        """
-        Returns the Level where this event is occurring
-        """
     @property
     def to_thunder_state(self) -> bool:
         """
@@ -3522,17 +3524,21 @@ class Vector:
     @z.setter
     def z(self, arg1: float) -> None:
         ...
-class WeatherChangeEvent(Event):
+class WeatherChangeEvent(WeatherEvent, Cancellable):
     """
     Called when the weather (rain) state in a world is changing.
+    """
+    @property
+    def to_weather_state(self) -> bool:
+        """
+        Gets the state of weather that the world is being set to
+        """
+class WeatherEvent(Event):
+    """
+    Represents a weather-related event
     """
     @property
     def level(self) -> Level:
         """
         Returns the Level where this event is occurring
-        """
-    @property
-    def to_weather_state(self) -> bool:
-        """
-        Gets the state of weather that the world is being set to
         """

@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Represents an Server-related event
+ * @brief Represents a Server-related event
  */
 class ServerEvent : public Event {
 public:

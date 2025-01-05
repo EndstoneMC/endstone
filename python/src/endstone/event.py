@@ -9,6 +9,7 @@ from endstone._internal.endstone_python import (
     BlockEvent,
     BlockPlaceEvent,
     BroadcastMessageEvent,
+    Cancellable,
     Event,
     EventPriority,
     PlayerChatEvent,
@@ -26,9 +27,11 @@ from endstone._internal.endstone_python import (
     PluginEnableEvent,
     ScriptMessageEvent,
     ServerCommandEvent,
+    ServerEvent,
     ServerListPingEvent,
     ServerLoadEvent,
     ThunderChangeEvent,
+    WeatherEvent,
     WeatherChangeEvent,
 )
 
@@ -45,6 +48,7 @@ __all__ = [
     "BlockEvent",
     "BlockBreakEvent",
     "BlockPlaceEvent",
+    "Cancellable",
     "PlayerEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
@@ -60,10 +64,12 @@ __all__ = [
     "PluginEnableEvent",
     "PluginDisableEvent",
     "ScriptMessageEvent",
+    "ServerEvent",
     "ServerCommandEvent",
     "ServerListPingEvent",
     "ServerLoadEvent",
     "ThunderChangeEvent",
+    "WeatherEvent",
     "WeatherChangeEvent",
 ]
 
