@@ -276,6 +276,7 @@ public:
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 
+    [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
@@ -285,7 +286,8 @@ public:
     [[nodiscard]] const std::string &getFullNameId() const;
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;
-    [[nodiscard]] const Block *getDefaultState() const;
+    [[nodiscard]] const Block &getDefaultState() const;
+    std::int16_t getBlockItemId() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
     std::string description_id_;  // +8

@@ -40,6 +40,11 @@ const std::string &Item::getFullItemName() const
     return full_name_.getString();
 }
 
+const HashedString &Item::getFullNameHash() const
+{
+    return full_name_;
+}
+
 const WeakPtr<BlockLegacy> &Item::getLegacyBlock() const
 {
     return legacy_block_;
