@@ -33,18 +33,19 @@ BEDROCK_STATIC_ASSERT_SIZE(ReadOnlyBinaryStream, 72, 64);
 
 class BinaryStream : public ReadOnlyBinaryStream {
 public:
-    void write(const void *data, std::size_t size);
-    void writeUnsignedChar(std::uint8_t value);
-    void writeByte(std::uint8_t value);
     void writeBool(bool value);
-    void writeVarInt(std::int32_t value);
-    void writeVarInt64(std::int64_t value);
+    void writeByte(std::uint8_t value);
+    void writeUnsignedShort(std::uint16_t value);
+    void writeSignedShort(std::int16_t value);
     void writeUnsignedVarInt(std::uint32_t value);
     void writeUnsignedVarInt64(std::uint64_t value);
-    void writeString(std::string_view value);
+    void writeVarInt(std::int32_t value);
+    void writeVarInt64(std::int64_t value);
     void writeFloat(float value);
+    void writeString(std::string_view value);
 
 private:
+    void write(const void *data, std::size_t size);
     std::string *buffer_;  // +72
 };
 BEDROCK_STATIC_ASSERT_SIZE(BinaryStream, 80, 72);

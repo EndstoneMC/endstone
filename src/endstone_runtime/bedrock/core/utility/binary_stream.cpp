@@ -16,16 +16,9 @@
 
 #include <fmt/core.h>
 
-void BinaryStream::write(const void *data, std::size_t size)
+void BinaryStream::writeBool(bool value)
 {
-    if (size > 0) {
-        buffer_->append(static_cast<const char *>(data), size);
-    }
-}
-
-void BinaryStream::writeUnsignedChar(std::uint8_t value)
-{
-    write(&value, sizeof(std::uint8_t));
+    write(&value, sizeof(bool));
 }
 
 void BinaryStream::writeByte(std::uint8_t value)
@@ -33,19 +26,14 @@ void BinaryStream::writeByte(std::uint8_t value)
     write(&value, sizeof(std::uint8_t));
 }
 
-void BinaryStream::writeBool(bool value)
+void BinaryStream::writeUnsignedShort(std::uint16_t value)
 {
-    writeByte(value ? 1 : 0);
+    write(&value, sizeof(std::uint16_t));
 }
 
-void BinaryStream::writeVarInt(std::int32_t value)
+void BinaryStream::writeSignedShort(std::int16_t value)
 {
-    writeUnsignedVarInt((value >> 31) ^ (value << 1));
-}
-
-void BinaryStream::writeVarInt64(std::int64_t value)
-{
-    writeUnsignedVarInt64((value >> 63) ^ (value << 1));
+    write(&value, sizeof(std::int16_t));
 }
 
 void BinaryStream::writeUnsignedVarInt(std::uint32_t value)
@@ -76,13 +64,30 @@ void BinaryStream::writeUnsignedVarInt64(std::uint64_t value)
     } while (value);
 }
 
+void BinaryStream::writeVarInt(std::int32_t value)
+{
+    writeUnsignedVarInt((value >> 31) ^ (value << 1));
+}
+
+void BinaryStream::writeVarInt64(std::int64_t value)
+{
+    writeUnsignedVarInt64((value >> 63) ^ (value << 1));
+}
+
+void BinaryStream::writeFloat(float value)
+{
+    write(&value, sizeof(float));
+}
+
 void BinaryStream::writeString(std::string_view value)
 {
     writeUnsignedVarInt(value.length());
     write(value.data(), value.size());
 }
 
-void BinaryStream::writeFloat(float value)
+void BinaryStream::write(const void *data, std::size_t size)
 {
-    write(&value, sizeof(float));
+    if (size > 0) {
+        buffer_->append(static_cast<const char *>(data), size);
+    }
 }

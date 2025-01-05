@@ -20,7 +20,7 @@ namespace endstone::detail {
 template <>
 void PacketCodec::encode(BinaryStream &stream, SpawnParticleEffectPacket &packet)
 {
-    stream.writeUnsignedChar(packet.dimension_id);
+    stream.writeByte(packet.dimension_id);
     stream.writeVarInt64(packet.actor_id);
     stream.writeFloat(packet.position.getX());
     stream.writeFloat(packet.position.getY());
