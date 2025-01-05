@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/event/actor/actor_event.h"
+#include "endstone/event/cancellable.h"
 
 namespace endstone {
 
@@ -23,20 +24,15 @@ namespace endstone {
  *
  * If an Actor Spawn event is cancelled, the actor will not spawn.
  */
-class ActorSpawnEvent : public ActorEvent {
+class ActorSpawnEvent : public Cancellable<ActorEvent> {
 public:
-    explicit ActorSpawnEvent(Actor &actor) : ActorEvent(actor) {}
+    explicit ActorSpawnEvent(Actor &actor) : Cancellable(actor) {}
     ~ActorSpawnEvent() override = default;
 
     inline static const std::string NAME = "ActorSpawnEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     // TODO(event): add spawn cause

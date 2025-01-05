@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/event/actor/actor_event.h"
+#include "endstone/event/cancellable.h"
 #include "endstone/level/location.h"
 
 namespace endstone {
@@ -24,20 +25,15 @@ namespace endstone {
  *
  * This may be as a result of natural causes (Enderman, Shulker), pathfinding (Wolf), or commands (/teleport).
  */
-class ActorTeleportEvent : public ActorEvent {
+class ActorTeleportEvent : public Cancellable<ActorEvent> {
 public:
-    explicit ActorTeleportEvent(Actor &actor, Location from, Location to) : ActorEvent(actor), from_(from), to_(to) {}
+    explicit ActorTeleportEvent(Actor &actor, Location from, Location to) : Cancellable(actor), from_(from), to_(to) {}
     ~ActorTeleportEvent() override = default;
 
     inline static const std::string NAME = "ActorTeleportEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     /**

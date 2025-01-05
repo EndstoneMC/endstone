@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <stdexcept>
 #include <string>
 
 namespace endstone {
@@ -37,40 +38,6 @@ public:
     [[nodiscard]] virtual std::string getEventName() const = 0;
 
     /**
-     * Whether the event can be cancelled by a plugin or the server.
-     *
-     * @return true if this event can be cancelled
-     */
-    [[nodiscard]] virtual bool isCancellable() const = 0;
-
-    /**
-     * Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still
-     * pass to other plugins
-     *
-     * @return true if this event is cancelled
-     */
-    [[nodiscard]] bool isCancelled() const
-    {
-        if (!isCancellable()) {
-            return false;
-        }
-        return cancelled_;
-    };
-
-    /**
-     * Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still
-     * pass to other plugins.
-     *
-     * @param cancel true if you wish to cancel this event
-     */
-    void setCancelled(bool cancel)
-    {
-        if (isCancellable()) {
-            cancelled_ = cancel;
-        }
-    }
-
-    /**
      * Any custom event that should not by synchronized with other events must use the specific constructor.
      *
      * @return false by default, true if the event fires asynchronously
@@ -81,6 +48,15 @@ public:
     }
 
 private:
+    [[nodiscard]] virtual constexpr bool isCancellable() const
+    {
+        return false;
+    }
+
+    template <class T>
+    friend class Cancellable;
+    friend class EventHandler;
+
     bool async_;
     bool cancelled_{false};
 };

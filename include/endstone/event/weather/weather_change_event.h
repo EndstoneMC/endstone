@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/weather/weather_event.h"
 
 namespace endstone {
@@ -21,9 +22,9 @@ namespace endstone {
 /**
  * @brief Called when the weather (rain) state in a world is changing.
  */
-class WeatherChangeEvent : public WeatherEvent {
+class WeatherChangeEvent : public Cancellable<WeatherEvent> {
 public:
-    WeatherChangeEvent(Level &level, bool to) : WeatherEvent(level), to_(to) {}
+    WeatherChangeEvent(Level &level, const bool to) : Cancellable(level), to_(to) {}
     ~WeatherChangeEvent() override = default;
 
     /**
@@ -40,11 +41,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
 private:

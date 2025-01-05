@@ -26,7 +26,7 @@ IdentityDefinition const &ScoreboardId::getIdentityDef() const
 
 bool ScoreboardId::isValid() const
 {
-    return raw_id != ScoreboardId::INVALID.raw_id;
+    return raw_id != INVALID.raw_id;
 }
 
 bool ScoreboardId::operator==(const ScoreboardId &other) const
@@ -37,5 +37,5 @@ bool ScoreboardId::operator==(const ScoreboardId &other) const
 std::size_t ScoreboardId::getHash() const
 {
     static std::hash<ActorUniqueID> hasher;
-    return hasher({raw_id});
+    return hasher(ActorUniqueID(raw_id));
 }

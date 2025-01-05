@@ -21,12 +21,15 @@
 class ActorUniqueID {
 public:
     std::int64_t raw_id{-1};
+    ActorUniqueID() = default;
+    explicit ActorUniqueID(std::int64_t id) : raw_id(id){};
     bool operator==(const ActorUniqueID &other) const
     {
         return raw_id == other.raw_id;
     }
-    inline static const ActorUniqueID INVALID_ID;
+    static const ActorUniqueID INVALID_ID;
 };
+inline const ActorUniqueID ActorUniqueID::INVALID_ID{};
 
 namespace std {
 template <>

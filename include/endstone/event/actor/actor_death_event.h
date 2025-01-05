@@ -32,11 +32,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
     // TODO(event): add drops and dropExp
 };
 

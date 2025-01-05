@@ -18,8 +18,7 @@
 #include <utility>
 
 #include "endstone/command/command_sender.h"
-#include "endstone/event/event.h"
-#include "endstone/event/handler_list.h"
+#include "endstone/event/cancellable.h"
 #include "endstone/event/server/server_event.h"
 
 namespace endstone {
@@ -29,10 +28,10 @@ namespace endstone {
  *
  * This event should be async if fired from an async thread.
  */
-class BroadcastMessageEvent : public ServerEvent {
+class BroadcastMessageEvent : public Cancellable<ServerEvent> {
 public:
     BroadcastMessageEvent(bool async, std::string message, std::unordered_set<const CommandSender *> recipients)
-        : ServerEvent(async), message_(std::move(message)), recipients_(std::move(recipients))
+        : Cancellable(async), message_(std::move(message)), recipients_(std::move(recipients))
     {
     }
 
@@ -40,11 +39,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     /**

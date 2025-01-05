@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/level/location.h"
 
@@ -22,9 +23,9 @@ namespace endstone {
 /**
  * @brief Called when a player is teleported from one location to another.
  */
-class PlayerTeleportEvent : public PlayerEvent {
+class PlayerTeleportEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerTeleportEvent(Player &player, Location from, Location to) : PlayerEvent(player), from_(from), to_(to)
+    explicit PlayerTeleportEvent(Player &player, Location from, Location to) : Cancellable(player), from_(from), to_(to)
     {
     }
     ~PlayerTeleportEvent() override = default;
@@ -33,11 +34,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     /**

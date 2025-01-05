@@ -72,12 +72,12 @@ public:
      *
      * @param event The event
      */
-    void callEvent(Event &event)
+    void callEvent(Event &event) const
     {
         if (event.getEventName() != event_) {
             return;
         }
-        if (event.isCancellable() && event.isCancelled() && isIgnoreCancelled()) {
+        if (event.isCancellable() && event.cancelled_ && isIgnoreCancelled()) {
             return;
         }
         executor_(event);
