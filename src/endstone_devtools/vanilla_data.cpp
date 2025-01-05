@@ -81,7 +81,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             outline_shape = block.getOutline(region, {0, 0, 0}, outline_shape);
             visual_shape = block.getVisualShape(visual_shape);
             ui_shape = block.getUIShape(ui_shape);
-            block.getLiquidClipShape(region, {0, 0, 0}, liquid_clip_shape);
+            block.getLiquidClipVolume(region, {0, 0, 0}, liquid_clip_shape);
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
             data.block_states.push_back({
                 {"name", name},
@@ -95,7 +95,8 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"friction", round(block.getFriction())},
                 {"hardness", round(block.getDestroySpeed())},
                 {"canContainLiquidSource", block.getDirectData().water_detection_rule.can_contain_liquid},
-                {"liquidReactionOnTouch", magic_enum::enum_name(block.getDirectData().water_detection_rule.on_liquid_touches)},
+                {"liquidReactionOnTouch",
+                 magic_enum::enum_name(block.getDirectData().water_detection_rule.on_liquid_touches)},
                 {"requiresCorrectToolForDrops", block.requiresCorrectToolForDrops()},
                 {"isSolid", block.isSolid()},
                 {"translucency", block.getTranslucency()},
@@ -177,7 +178,7 @@ void dumpItemData(VanillaData &data, ::Level &level)
             {"toughnessValue", item->getToughnessValue()},
             {"maxDamage", item->getMaxDamage()},
             {"isDamageable", item->isDamageable()},
-            {"maxStackSize", item->getMaxStackSize({})},
+            {"maxStackSize", item->getMaxStackSize(ItemDescriptor())},
             {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(*::ItemStack::create(*item), 200)},
             {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
         if (!tags.is_null()) {
@@ -248,14 +249,15 @@ void dumpRecipes(VanillaData &data, ::Level &level)
 
             for (const auto &ingredient : entry.recipe->getIngredients()) {
                 recipe["input"].push_back({{"count", ingredient.getStackSize()}});
-                if (ingredient.impl && ingredient.impl->getType() == ItemDescriptor::InternalType::ItemTag) {
-                    recipe["input"].back()["tag"] =
-                        static_cast<ItemDescriptor::ItemTagDescriptor *>(ingredient.impl.get())->item_tag.getString();
+                Json::Value json_value;
+                ingredient.serialize(json_value);
+                if (nlohmann::json json = json_value; json.is_string()) {
+                    recipe["input"].back()["item"] = json.get<std::string>();
                 }
                 else {
-                    recipe["input"].back()["item"] = ingredient.getFullName();
+                    recipe["input"].back()["tag"] = json.at("item_tag").get<std::string>();
                 }
-                if (ingredient.getAuxValue() != 0 && ingredient.getAuxValue() != 0x7fff) {
+                if (ingredient.getAuxValue() != 0 && ingredient.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
                     recipe["input"].back()["data"] = ingredient.getAuxValue();
                 }
             }
@@ -265,7 +267,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
                     {"item", result_item.getItem()->getFullItemName()},
                     {"count", result_item.getCount()},
                 });
-                if (result_item.getAuxValue() != 0 && result_item.getAuxValue() != 0x7fff) {
+                if (result_item.getAuxValue() != 0 && result_item.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
                     recipe["output"].back()["data"] = result_item.getAuxValue();
                 }
                 if (result_item.hasUserData()) {
@@ -280,14 +282,15 @@ void dumpRecipes(VanillaData &data, ::Level &level)
             recipe["input"] = {
                 {"item", id_to_name(entry.item_data)},
             };
-            if (entry.item_aux != 0 && entry.item_aux != 0x7fff) {
+            if (entry.item_aux != 0 && entry.item_aux != ItemDescriptor::ANY_AUX_VALUE) {
                 recipe["input"]["data"] = entry.item_aux;
             }
             recipe["output"] = {
                 {"item", entry.item_result.getFullName()},
                 {"count", entry.item_result.getStackSize()},
             };
-            if (entry.item_result.getAuxValue() != 0 && entry.item_result.getAuxValue() != 0x7fff) {
+            if (entry.item_result.getAuxValue() != 0 &&
+                entry.item_result.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
                 recipe["output"]["data"] = entry.item_result.getAuxValue();
             }
         }
