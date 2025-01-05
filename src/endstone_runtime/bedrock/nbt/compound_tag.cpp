@@ -228,6 +228,16 @@ std::unique_ptr<CompoundTag> CompoundTag::clone() const
     return new_tag;
 }
 
+bool CompoundTag::remove(StringView name)
+{
+    auto it = tags_.find(name);
+    if (it == tags_.end()) {
+        return false;
+    }
+    tags_.erase(it);
+    return true;
+}
+
 TagMap::const_iterator CompoundTag::begin() const
 {
     return tags_.begin();
