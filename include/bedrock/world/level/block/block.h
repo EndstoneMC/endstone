@@ -78,6 +78,7 @@ public:
 
 private:
     friend class ItemStackBase;
+    friend class ItemDescriptor;
 
     BlockComponentStorage components_;                 // +8
     DataID data_;                                      // +112

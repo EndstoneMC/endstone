@@ -14,6 +14,8 @@
 
 #include "bedrock/world/level/block/block_legacy.h"
 
+#include "bedrock/world/item/registry/item_registry.h"
+
 bool BlockLegacy::requiresCorrectToolForDrops() const
 {
     return requires_correct_tool_for_drops;
@@ -59,9 +61,18 @@ const std::string &BlockLegacy::getNamespace() const
     return name_info_.namespace_name;
 }
 
-const Block *BlockLegacy::getDefaultState() const
+const Block &BlockLegacy::getDefaultState() const
 {
-    return default_state_;
+    return *default_state_;
+}
+
+std::int16_t BlockLegacy::getBlockItemId() const
+{
+    const auto value = id_.value;
+    if (value < ItemRegistry::START_ITEM_ID) {
+        return static_cast<std::int16_t>(value);
+    }
+    return static_cast<std::int16_t>((ItemRegistry::START_ITEM_ID - 1u) - value);
 }
 
 void BlockLegacy::forEachBlockPermutation(std::function<bool(Block const &)> callback) const
