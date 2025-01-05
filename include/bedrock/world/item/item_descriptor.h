@@ -32,6 +32,7 @@ public:
     explicit ItemDescriptor();
     explicit ItemDescriptor(const Block &);
     explicit ItemDescriptor(const BlockLegacy &);
+    explicit ItemDescriptor(const Item &, int);
     ItemDescriptor(ItemDescriptor &&) = default;
 
     virtual ~ItemDescriptor() = default;

@@ -20,6 +20,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/resources/base_game_version.h"
+#include "bedrock/safety/redactable_string.h"
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/actor/actor_location.h"
@@ -38,11 +39,6 @@ class Level;
 class Mob;
 
 class Item {
-protected:
-    // NOLINTNEXTLINE
-    ENDSTONE_HOOK CoordinatorResult _sendTryPlaceBlockEvent(Block const &, BlockSource const &, Actor const &,
-                                                            BlockPos const &, FacingID, Vec3 const &) const;
-
 public:
     virtual ~Item() = 0;
     virtual bool initServer(Json::Value const &, SemVersion const &, IPackLoadContext &, JsonBetaState) = 0;
@@ -130,8 +126,7 @@ public:
     virtual void hitActor(ItemStack &, Actor &, Mob &) const = 0;
     virtual void hitBlock(ItemStack &, Block const &, BlockPos const &, Mob &) const = 0;
     virtual std::string buildDescriptionName(ItemStackBase const &) const = 0;
-    // virtual Bedrock::Safety::RedactableString const buildRedactedDescriptionName
-    virtual void const buildRedactedDescriptionName(ItemStackBase const &) const = 0;
+    virtual Bedrock::Safety::RedactableString const buildRedactedDescriptionName(ItemStackBase const &) const = 0;
     virtual std::string buildDescriptionId(ItemDescriptor const &, CompoundTag const *) const = 0;
     virtual std::string buildEffectDescriptionName(ItemStackBase const &) const = 0;
     virtual void readUserData(ItemStackBase &, IDataInput &, ReadOnlyBinaryStream &) const = 0;
@@ -163,39 +158,26 @@ public:
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
     virtual float getFurnaceXPmultiplier(ItemStackBase const *) const = 0;
     virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
+
+private:
     virtual bool _checkUseOnPermissions(Actor &, ItemStackBase &, FacingID const &, BlockPos const &) const = 0;
     virtual bool _calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
     virtual bool _shouldAutoCalculatePlacePos() const = 0;
     virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face, Vec3 const &) const = 0;
 
-    [[nodiscard]] std::int16_t getId() const
-    {
-        return id_;
-    }
-
-    [[nodiscard]] const std::string &getFullItemName() const
-    {
-        return full_name_.getString();
-    }
-
-    [[nodiscard]] const std::vector<ItemTag> &getTags() const
-    {
-        return tags_;
-    }
-
-    [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const
-    {
-        return legacy_block_;
-    }
-
-    [[nodiscard]] float getFurnaceBurnIntervalMultipler() const
-    {
-        return furnace_burn_interval_modifier_;
-    }
-
+public:
+    [[nodiscard]] std::int16_t getId() const;
+    [[nodiscard]] const std::string &getFullItemName() const;
+    [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const;
+    [[nodiscard]] const std::vector<ItemTag> &getTags() const;
     ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;
+    [[nodiscard]] float getFurnaceBurnIntervalMultipler() const;
 
 protected:
+    // NOLINTNEXTLINE
+    ENDSTONE_HOOK CoordinatorResult _sendTryPlaceBlockEvent(Block const &, BlockSource const &, Actor const &,
+                                                            BlockPos const &, FacingID, Vec3 const &) const;
+
     std::string texture_atlas_file_;                                            // +8
     int frame_count_;                                                           // +40
     bool animates_in_toolbar_;                                                  // +44

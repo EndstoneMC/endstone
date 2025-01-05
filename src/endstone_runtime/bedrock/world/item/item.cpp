@@ -30,6 +30,36 @@ using endstone::detail::EndstoneBlockState;
 using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
+std::int16_t Item::getId() const
+{
+    return id_;
+}
+
+const std::string &Item::getFullItemName() const
+{
+    return full_name_.getString();
+}
+
+const WeakPtr<BlockLegacy> &Item::getLegacyBlock() const
+{
+    return legacy_block_;
+}
+
+const std::vector<ItemTag> &Item::getTags() const
+{
+    return tags_;
+}
+
+ItemDescriptor Item::buildDescriptor(std::int16_t aux_value, const CompoundTag *) const
+{
+    return ItemDescriptor(*this, aux_value);
+}
+
+float Item::getFurnaceBurnIntervalMultipler() const
+{
+    return furnace_burn_interval_modifier_;
+}
+
 CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, BlockSource const &block_source,
                                                 Actor const &actor, BlockPos const &pos, FacingID face,
                                                 Vec3 const &click_pos) const
