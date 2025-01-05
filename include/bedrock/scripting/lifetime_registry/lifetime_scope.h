@@ -14,15 +14,14 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/scripting_event_handler.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scripting_event_listener.h"
-#include "bedrock/world/events/scripting_events.h"
+#include "bedrock/forward.h"
 
-class ScriptingEventCoordinator : public EventCoordinatorPimpl<ScriptingEventListener> {
+namespace Scripting {
+class WeakLifetimeScope {
 public:
-    ENDSTONE_HOOK CoordinatorResult sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref);
-
-private:
-    std::unique_ptr<ScriptingEventHandler> scripting_event_handler_;  // +112 (+120)
+protected:
+    LifetimeRegistryReference *registry_ref_;  // +0
+    std::uint32_t version_;                    // +8
 };
+
+}  // namespace Scripting

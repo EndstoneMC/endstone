@@ -243,7 +243,7 @@ namespace Puv::Legacy {
 enum class LevelSoundEvent : int;
 }
 namespace Scripting {
-class WeakLifetimeScope;
+class LifetimeRegistryReference;
 template <typename T>
 class TypedObjectHandle;
 }  // namespace Scripting

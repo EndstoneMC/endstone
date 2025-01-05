@@ -14,15 +14,15 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/scripting_event_handler.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scripting_event_listener.h"
-#include "bedrock/world/events/scripting_events.h"
+#include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/block_events.h"
 
-class ScriptingEventCoordinator : public EventCoordinatorPimpl<ScriptingEventListener> {
+class BlockGameplayHandler : public GameplayHandler {
 public:
-    ENDSTONE_HOOK CoordinatorResult sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref);
-
-private:
-    std::unique_ptr<ScriptingEventHandler> scripting_event_handler_;  // +112 (+120)
+    virtual HandlerResult handleEvent(const BlockGameplayEvent<void> &) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(const BlockGameplayEvent<CoordinatorResult> &) = 0;
+    virtual GameplayHandlerResult<std::optional<std::string>> handleEvent(
+        const BlockGameplayEvent<std::optional<std::string>> &) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(MutableBlockGameplayEvent<CoordinatorResult> &) = 0;
 };

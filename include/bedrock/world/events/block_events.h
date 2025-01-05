@@ -25,7 +25,7 @@ struct BlockEventPlaceHolder {
     char pad[N];
 };
 
-template <typename Return>
+template <typename Result>
 struct BlockGameplayEvent;
 
 struct BlockPatternPostEvent {};
@@ -43,22 +43,42 @@ struct TargetBlockHitEvent {};
 struct TripWireTripEvent {};
 struct BlockTryPlaceByPlayerEvent {};
 
+struct ExplosionStartedEvent {
+    std::unordered_set<BlockPos> blocks;  // +0
+    Dimension &dimension;                 // +40
+    WeakRef<EntityContext> source;        // +48
+};
+
+struct BlockTryDestroyByPlayerEvent {
+    WeakRef<EntityContext> player;  // +0
+    const Block &block;             // +24
+    const BlockPos pos;             // +32
+    ItemStack item_used;            // +48
+};
+
 template <>
-struct BlockGameplayEvent<void> : ConstEventVariant<BlockPatternPostEvent,        // 0
+struct BlockGameplayEvent<void> : ConstEventVariant<BlockPatternPostEvent,  // 0
                                                     BlockEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(224, 192)>> {};
 
 template <>
-struct BlockGameplayEvent<CoordinatorResult> : ConstEventVariant<ActorInsideBlockEvent,        // 0
-                                                                 ActorStandOnBlockEvent,       // 1
-                                                                 BlockPatternPreEvent,         // 2
-                                                                 BlockRandomTickEvent,         // 3
-                                                                 ChestBlockTryPairEvent,       // 4
-                                                                 PistonActionEvent,            // 5
-                                                                 LeverActionEvent,             // 6
-                                                                 ButtonPushEvent,              // 7
-                                                                 PressurePlatePushEvent,       // 8
-                                                                 PressurePlatePopEvent,        // 9
-                                                                 TargetBlockHitEvent,          // 10
-                                                                 TripWireTripEvent,            // 11
-                                                                 BlockTryPlaceByPlayerEvent,   // 12
-                                                                 BlockEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(232, 192)>> {};
+struct BlockGameplayEvent<CoordinatorResult>
+    : ConstEventVariant<ActorInsideBlockEvent,       // 0
+                        ActorStandOnBlockEvent,      // 1
+                        BlockPatternPreEvent,        // 2
+                        BlockRandomTickEvent,        // 3
+                        ChestBlockTryPairEvent,      // 4
+                        PistonActionEvent,           // 5
+                        LeverActionEvent,            // 6
+                        ButtonPushEvent,             // 7
+                        PressurePlatePushEvent,      // 8
+                        PressurePlatePopEvent,       // 9
+                        TargetBlockHitEvent,         // 10
+                        TripWireTripEvent,           // 11
+                        BlockTryPlaceByPlayerEvent,  // 12
+                        BlockEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(232, 192)>> {};
+
+template <typename Result>
+struct MutableBlockGameplayEvent;
+
+struct MutableBlockGameplayEvent<CoordinatorResult>
+    : MutableEventVariant<ExplosionStartedEvent, BlockTryDestroyByPlayerEvent> {};

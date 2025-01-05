@@ -14,7 +14,12 @@
 
 #pragma once
 
+#include "bedrock/gameplayhandlers/block_gameplay_handler.h"
 #include "bedrock/world/events/block_event_listener.h"
 #include "bedrock/world/events/event_coordinator.h"
 
-class BlockEventCoordinator : public EventCoordinator<BlockEventListener> {};
+class BlockEventCoordinator : public EventCoordinator<BlockEventListener> {
+public:
+private:
+    std::unique_ptr<BlockGameplayHandler> block_gameplay_handler_;  // +120
+};

@@ -15,5 +15,11 @@
 #pragma once
 
 #include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/world/events/scripting_events.h"
 
-class ScriptingEventHandler : public GameplayHandler {};
+class ScriptingEventHandler : public GameplayHandler {
+public:
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        MutableScriptingGameplayEvent<CoordinatorResult> &) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(const ScriptingGameplayEvent<CoordinatorResult> &) = 0;
+};

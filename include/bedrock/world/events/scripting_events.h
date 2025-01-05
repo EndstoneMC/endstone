@@ -18,10 +18,21 @@
 #include <string>
 
 #include "bedrock/gameplayhandlers/coordinator_result.h"
+#include "bedrock/scripting/lifetime_registry/lifetime_scope.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/block_source.h"
+
+enum class WatchdogTerminateReason : int {
+    Hang = 0,
+    StackOverflow = 1,
+};
+
+struct BeforeWatchdogTerminateEvent {
+    Scripting::WeakLifetimeScope scope;                 // +0
+    WatchdogTerminateReason watchdog_terminate_reason;  // +16
+};
 
 struct ScriptModuleStartupEvent {};
 struct ScriptModuleShutdownEvent {};
@@ -39,6 +50,12 @@ struct ScriptCommandMessageEvent {
     std::optional<BlockObject> block_object;
     std::optional<ActorUniqueID> initiator;
 };
+
+template <typename Result>
+struct MutableScriptingGameplayEvent;
+
+template <>
+struct MutableScriptingGameplayEvent<CoordinatorResult> : MutableEventVariant<BeforeWatchdogTerminateEvent> {};
 
 template <typename Result>
 struct ScriptingGameplayEvent;
