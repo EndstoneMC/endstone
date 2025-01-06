@@ -14,6 +14,19 @@
 
 #include "bedrock/world/item/item_stack.h"
 
+
+ItemStack::ItemStack(const BlockLegacy &block, int count) : ItemStackBase(block, count) {}
+
+ItemStack::ItemStack(std::string_view name, int count, int aux_value, CompoundTag const *user_data)
+    : ItemStackBase(name, count, aux_value, user_data)
+{
+}
+
+ItemStack::ItemStack(Item const &item, int count, int aux_value, CompoundTag const *user_data)
+    : ItemStackBase(item, count, aux_value, user_data)
+{
+}
+
 void ItemStack::reinit(const BlockLegacy &block, int count)
 {
     const ItemStack rhs(block, count);

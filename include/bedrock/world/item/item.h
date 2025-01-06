@@ -40,6 +40,9 @@ class Mob;
 
 class Item {
 public:
+    static const std::uint8_t MAX_STACK_SIZE = 64;
+    static const int INVALID_ITEM_ID = -1;
+
     virtual ~Item() = 0;
     virtual bool initServer(Json::Value const &, SemVersion const &, IPackLoadContext &, JsonBetaState) = 0;
     virtual void tearDown() = 0;

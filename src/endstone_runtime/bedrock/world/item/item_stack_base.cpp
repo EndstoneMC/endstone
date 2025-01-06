@@ -15,13 +15,97 @@
 #include "bedrock/world/item/item_stack_base.h"
 
 #include <bedrock/world/item/item_instance.h>
+#include <bedrock/world/item/registry/item_registry_manager.h>
+#include <pybind11/pybind11.h>
 
 ItemStackBase::ItemStackBase()
 {
     ItemStackBase::setNull(std::nullopt);
 }
 
-ItemStackBase::~ItemStackBase() =default;
+ItemStackBase::ItemStackBase(const BlockLegacy &block, int count)
+{
+    item_ = nullptr;
+    user_data_ = nullptr;
+    block_ = &block.getRenderBlock();
+    init(block, count);
+    _checkForItemWorldCompatibility();
+}
+
+ItemStackBase::ItemStackBase(const std::string_view name, int count, int aux_value, CompoundTag const *user_data)
+{
+    int aux = aux_value;
+    if (const auto item = ItemRegistryManager::getItemRegistry().lookupByName(aux, name); !item.isNull()) {
+        init(*item, count, aux, user_data, false);
+    }
+    else {
+        ItemStackBase::setNull("Couldn't find item in registry.");
+    }
+    _checkForItemWorldCompatibility();
+}
+
+ItemStackBase::ItemStackBase(Item const &item, int count, int aux_value, CompoundTag const *user_data)
+{
+    init(item, count, aux_value, user_data, true);
+    _checkForItemWorldCompatibility();
+}
+
+ItemStackBase::ItemStackBase(const ItemStackBase &rhs)
+{
+    block_ = rhs.block_;
+    aux_value_ = rhs.aux_value_;
+    if (block_ && aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
+        init(block_->getLegacyBlock(), rhs.count_);
+    }
+    else {
+        int id = 0;
+        if (rhs.valid_deprecated_ && !rhs.item_.isNull()) {
+            id = rhs.item_->getId();
+        }
+        else {
+            id = Item::INVALID_ITEM_ID;
+        }
+        init(id, count_, aux_value_, false);
+    }
+
+    if (rhs.user_data_) {
+        setUserData(std::move(rhs.user_data_->clone()));
+    }
+
+    show_pick_up_ = rhs.show_pick_up_;
+    was_picked_up_ = rhs.was_picked_up_;
+    if (this != &rhs) {
+        can_place_on_ = rhs.can_place_on_;
+        can_destroy_ = rhs.can_destroy_;
+    }
+    blocking_tick_ = rhs.blocking_tick_;
+    _updateCompareHashes();
+    _checkForItemWorldCompatibility();
+}
+
+ItemStackBase &ItemStackBase::operator=(const ItemStackBase &rhs)
+{
+    if (this != &rhs) {
+        count_ = rhs.count_;
+        aux_value_ = rhs.aux_value_;
+        item_ = rhs.item_;
+        block_ = rhs.block_;
+        valid_deprecated_ = rhs.valid_deprecated_;
+        pick_up_time_ = rhs.pick_up_time_;
+        show_pick_up_ = rhs.show_pick_up_;
+        was_picked_up_ = rhs.was_picked_up_;
+        if (rhs.user_data_) {
+            setUserData(rhs.user_data_->clone());
+        }
+        can_place_on_ = rhs.can_place_on_;
+        can_destroy_ = rhs.can_destroy_;
+        blocking_tick_ = rhs.blocking_tick_;
+        _updateCompareHashes();
+    }
+    return *this;
+}
+
+ItemStackBase::~ItemStackBase() = default;
 
 void ItemStackBase::reinit(Item const &, int, int) {}
 
@@ -164,7 +248,7 @@ std::string ItemStackBase::getCustomName() const
 std::int16_t ItemStackBase::getId() const
 {
     if (!valid_deprecated_) {
-        return -1;
+        return Item::INVALID_ITEM_ID;
     }
     if (item_.isNull()) {
         return 0;
@@ -199,6 +283,16 @@ const Item *ItemStackBase::getItem() const
 bool ItemStackBase::hasUserData() const
 {
     return user_data_ != nullptr;
+}
+
+void ItemStackBase::setUserData(std::unique_ptr<CompoundTag> tag)
+{
+    user_data_ = std::move(tag);
+    if (user_data_) {
+        if (const auto *charged_item = user_data_->getCompound(TAG_CHARGED_ITEM)) {
+            charged_item_ = std::make_unique<ItemInstance>(ItemInstance::fromTag(*charged_item));
+        }
+    }
 }
 
 const CompoundTag *ItemStackBase::getUserData() const

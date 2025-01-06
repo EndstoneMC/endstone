@@ -181,7 +181,7 @@ const Item *ItemDescriptor::getItem() const
 std::int16_t ItemDescriptor::getId() const
 {
     if (!impl_) {
-        return -1;
+        return Item::INVALID_ITEM_ID;
     }
     if (impl_->shouldResolve()) {
         impl_ = std::move(impl_->resolve());

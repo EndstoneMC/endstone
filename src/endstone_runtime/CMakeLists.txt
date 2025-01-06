@@ -92,6 +92,7 @@ add_library(endstone_runtime SHARED
         bedrock/world/inventory/network/item_stack_net_id_variant.cpp
         bedrock/world/item/item.cpp
         bedrock/world/item/item_descriptor.cpp
+        bedrock/world/item/item_instance.cpp
         bedrock/world/item/item_stack.cpp
         bedrock/world/item/item_stack_base.cpp
         bedrock/world/item/registry/creative_item_entry.cpp

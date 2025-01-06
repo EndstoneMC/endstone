@@ -14,9 +14,14 @@
 
 #include "bedrock/world/item/registry/item_registry_ref.h"
 
-WeakPtr<Item> ItemRegistryRef::getItem(const HashedString &id) const
+WeakPtr<Item> ItemRegistryRef::lookupByName(int &out_item_aux, std::string_view in_string) const
 {
-    return _lockRegistry()->getItem(id);
+    return _lockRegistry()->lookupByName(out_item_aux, in_string);
+}
+
+const std::unordered_map<HashedString, WeakPtr<Item>> &ItemRegistryRef::getNameToItemMap() const
+{
+    return _lockRegistry()->name_to_item_map_;
 }
 
 WeakPtr<Item> ItemRegistryRef::getItem(std::int16_t id) const
@@ -24,9 +29,9 @@ WeakPtr<Item> ItemRegistryRef::getItem(std::int16_t id) const
     return _lockRegistry()->getItem(id);
 }
 
-const std::unordered_map<HashedString, WeakPtr<Item>> &ItemRegistryRef::getNameToItemMap() const
+WeakPtr<Item> ItemRegistryRef::getItem(const HashedString &id) const
 {
-    return _lockRegistry()->name_to_item_map_;
+    return _lockRegistry()->getItem(id);
 }
 
 Bedrock::NonOwnerPointer<CreativeItemRegistry> ItemRegistryRef::getCreativeItemRegistry()

@@ -12,11 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-#include "bedrock/world/item/item_stack_base.h"
-
-class ItemInstance final : public ItemStackBase {
-public:
-    static ItemInstance fromTag(const CompoundTag &);
-};
+#include "bedrock/world/item/item_instance.h"

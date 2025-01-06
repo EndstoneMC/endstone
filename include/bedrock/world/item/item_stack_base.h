@@ -22,7 +22,6 @@
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/item/item.h"
-#include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/tick.h"
 
@@ -37,7 +36,7 @@ protected:
     ItemStackBase &operator=(const ItemStackBase &);
 
 public:
-    virtual ~ItemStackBase() ;
+    virtual ~ItemStackBase();
     virtual void reinit(Item const &, int, int);
     virtual void reinit(BlockLegacy const &, int);
     virtual void reinit(std::string_view, int, int);
@@ -54,6 +53,7 @@ public:
     [[nodiscard]] std::string getName() const;
     [[nodiscard]] const Item *getItem() const;
     [[nodiscard]] bool hasUserData() const;
+    void setUserData(std::unique_ptr<CompoundTag>);
     [[nodiscard]] const CompoundTag *getUserData() const;
     [[nodiscard]] bool isBlock() const;
     [[nodiscard]] const Block *getBlock() const;
@@ -67,10 +67,14 @@ public:
     static constexpr int AUX_VALUE_MASK = 0x7fff;
 
 protected:
+    void init(const BlockLegacy &, int);
+    void init(const Item &, int, int, const CompoundTag *, bool);
+    void init(int, int, int, bool);
+
     static const std::string TAG_CHARGED_ITEM;
-    WeakPtr<Item> item_{nullptr};             // +8
+    WeakPtr<Item> item_;                      // +8
     std::unique_ptr<CompoundTag> user_data_;  // +16
-    Block *block_{nullptr};                   // +24
+    const Block *block_;                      // +24
     std::int16_t aux_value_{0};               // +32
     std::uint8_t count_{0};                   // +34
 
@@ -90,5 +94,6 @@ protected:
 
 private:
     void _updateCompareHashes();
+    void _checkForItemWorldCompatibility();
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackBase, 128, 128);
