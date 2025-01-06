@@ -26,10 +26,10 @@ endif ()
 # ===================
 # compile definitions
 # ===================
-add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
-add_compile_definitions(ENTT_SPARSE_PAGE=2048)
-add_compile_definitions(ENTT_PACKED_PAGE=128)
-add_compile_definitions(NOMINMAX)
+add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES) # TODO: move to target
+add_compile_definitions(ENTT_SPARSE_PAGE=2048) # TODO: move to target bedrock::bedrock
+add_compile_definitions(ENTT_PACKED_PAGE=128) # TODO: move to target bedrock::bedrock
+add_compile_definitions(NOMINMAX) # TODO: remove this
 
 # =================
 # endstone::headers
