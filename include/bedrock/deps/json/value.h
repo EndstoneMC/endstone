@@ -55,6 +55,7 @@ public:
     using ArrayValues = std::vector<Value *>;
 
     Value(ValueType type = nullValue);  // NOLINT(*-explicit-constructor)
+    Value(const std::string &);
     Value(const Value &other);
     ~Value();
     Value &operator=(Value other);
@@ -82,9 +83,7 @@ public:
     [[nodiscard]] Value get(const std::string &key, const Value &default_value) const;
 
 private:
-    void initBasic(ValueType type, bool allocated = false);
-
-    union ValueHolder {  // NOLINTBEGIN
+    union ValueHolder {
         std::int64_t int_;
         std::uint64_t uint_;
         double real_;
@@ -92,9 +91,8 @@ private:
         CZString *string_;
         ArrayValues *array_;
         ObjectValues *map_;
-    } value_;  // NOLINTEND
-    ValueType type_ : 8;
-    int allocated_ : 1;  // Notes: if declared as bool, bitfield is useless.
+    } value_;         // +0
+    ValueType type_;  // +8
 };
 static_assert(sizeof(Value::ObjectValues::value_type) == 24);
 static_assert(sizeof(Value) == 16);

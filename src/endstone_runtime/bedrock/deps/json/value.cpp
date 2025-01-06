@@ -23,8 +23,8 @@ namespace Json {
 
 namespace {
 
-const unsigned char kNull[sizeof(Value)] = {0};
-const unsigned char &kNullRef = kNull[0];
+const unsigned char kNull[sizeof(Value)] = {0};  // NOLINT
+const unsigned char &kNullRef = kNull[0];        // NOLINT
 
 char *duplicateStringValue(const char *value, unsigned int length = -1)
 {
@@ -69,7 +69,7 @@ Value::CZString::~CZString()
     }
 }
 
-bool Value::CZString::operator<(const Value::CZString &other) const
+bool Value::CZString::operator<(const CZString &other) const
 {
     if (cstr_) {
         return strcmp(cstr_, other.cstr_) < 0;
@@ -77,7 +77,7 @@ bool Value::CZString::operator<(const Value::CZString &other) const
     return false;
 }
 
-bool Value::CZString::operator==(const Value::CZString &other) const
+bool Value::CZString::operator==(const CZString &other) const
 {
     if (cstr_) {
         return strcmp(cstr_, other.cstr_) == 0;
@@ -90,9 +90,8 @@ const char *Value::CZString::c_str() const
     return cstr_;
 }
 
-Json::Value::Value(Json::ValueType type)
+Value::Value(const ValueType type) : type_(type)
 {
-    initBasic(type);
     switch (type) {
     case nullValue:
         break;
@@ -120,7 +119,12 @@ Json::Value::Value(Json::ValueType type)
     }
 }
 
-Value::Value(const Value &other) : type_(other.type_), allocated_(false)
+Value::Value(const std::string &value) : type_(stringValue)
+{
+    value_.string_ = new CZString(value.c_str());
+}
+
+Value::Value(const Value &other) : type_(other.type_)
 {
     switch (type_) {
     case nullValue:
@@ -133,11 +137,9 @@ Value::Value(const Value &other) : type_(other.type_), allocated_(false)
     case stringValue:
         if (other.value_.string_) {
             value_.string_ = new CZString(*other.value_.string_);
-            allocated_ = true;
         }
         else {
             value_.string_ = nullptr;
-            allocated_ = false;
         }
         break;
     case arrayValue:
@@ -161,9 +163,7 @@ Value::~Value()
     case booleanValue:
         break;
     case stringValue:
-        if (allocated_) {
-            delete value_.string_;
-        }
+        delete value_.string_;
         break;
     case arrayValue:
         delete value_.array_;
@@ -188,9 +188,6 @@ void Value::swap(Value &other) noexcept
     type_ = other.type_;
     other.type_ = temp;
     std::swap(value_, other.value_);
-    int temp2 = allocated_;
-    allocated_ = other.allocated_;
-    other.allocated_ = temp2;
 }
 
 const Value &Value::operator[](int index) const
@@ -228,12 +225,6 @@ Value Value::get(const char *key, const Value &default_value) const
 Value Value::get(const std::string &key, const Value &default_value) const
 {
     return get(key.c_str(), default_value);
-}
-
-void Value::initBasic(ValueType type, bool allocated)
-{
-    type_ = type;
-    allocated_ = allocated;
 }
 
 ValueType Value::type() const
@@ -382,7 +373,7 @@ std::size_t Value::size() const
     }
 }
 
-void to_json(nlohmann::json &j, const Value &value)
+void to_json(nlohmann::json &j, const Value &value)  // NOLINT(*-no-recursion)
 {
     switch (value.type()) {
     case nullValue:
