@@ -128,6 +128,26 @@ ItemDescriptor::ItemDescriptor(const Block &block)
     }
 }
 
+ItemDescriptor::ItemDescriptor(const BlockLegacy &block)
+{
+    const auto registry_ref = ItemRegistryManager::getItemRegistry();
+    const auto block_item_id = block.getBlockItemId();
+    if (auto item = registry_ref.getItem(block_item_id); !item.isNull()) {
+        impl_ = std::make_unique<InternalItemDescriptor>(std::move(item), ANY_AUX_VALUE);
+    }
+}
+
+ItemDescriptor::ItemDescriptor(const Item &item, int aux_value)
+{
+    const auto registry_ref = ItemRegistryManager::getItemRegistry();
+    if (auto item_ptr = registry_ref.getItem(item.getId()); !item_ptr.isNull()) {
+        impl_ = std::make_unique<InternalItemDescriptor>(std::move(item_ptr), aux_value > 0 ? aux_value : 0);
+    }
+    else {
+        impl_ = std::make_unique<InternalItemDescriptor>(nullptr, aux_value > 0 ? aux_value : 0);
+    }
+}
+
 void ItemDescriptor::serialize(Json::Value &json) const
 {
     if (impl_) {
@@ -192,6 +212,8 @@ std::string const &ItemDescriptor::getFullName() const
     return impl_->getFullName();
 }
 
+ItemDescriptor::ItemEntry::ItemEntry(const Item *item, std::int16_t aux_value) : item(item), aux_value(aux_value) {}
+
 const Block *ItemDescriptor::ItemEntry::getBlock() const
 {
     if (!item) {
@@ -213,6 +235,12 @@ bool ItemDescriptor::BaseDescriptor::sameItems(BaseDescriptor const &, bool flag
         return sameItem(item, flag);
     }
     return false;
+}
+
+std::string const &ItemDescriptor::BaseDescriptor::getFullName() const
+{
+    static std::string empty;
+    return empty;
 }
 
 std::string ItemDescriptor::BaseDescriptor::toString() const

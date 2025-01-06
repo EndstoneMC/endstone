@@ -239,6 +239,22 @@ std::uint8_t ItemStackBase::getCount() const
     return count_;
 }
 
+void ItemStackBase::_updateCompareHashes()
+{
+    static std::hash<const BlockLegacy *> hasher;
+    std::ranges::sort(can_place_on_);
+    can_place_on_hash_ = 0;
+    for (const auto &block : can_place_on_) {
+        can_place_on_hash_ ^= hasher(block) + 0x9e3779b9 + (can_place_on_hash_ << 6) + (can_place_on_hash_ >> 2);
+    }
+
+    std::ranges::sort(can_destroy_);
+    can_destroy_hash_ = 0;
+    for (const auto &block : can_destroy_) {
+        can_destroy_hash_ ^= hasher(block) + 0x9e3779b9 + (can_destroy_hash_ << 6) + (can_destroy_hash_ >> 2);
+    }
+}
+
 const std::string ItemStackBase::TAG_DISPLAY = "display";
 const std::string ItemStackBase::TAG_DISPLAY_NAME = "Name";
 const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";

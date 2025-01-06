@@ -20,10 +20,30 @@
 
 namespace Core {
 
-template <class KeyType, typename ValueType, typename U = ValueType>
+template <class TKey, typename TValue, typename TValuePtrIn = std::add_pointer_t<TValue>, typename... TNewInstanceArgs>
 class Cache {
+public:
+    using TValuePtr = TValuePtrIn;
+
+    template <typename Factory>
+    TValuePtr get(const TKey &key, const Factory &instance_factory)
+    {
+        // try get if the key already exists
+        {
+            std::lock_guard lock{access_};
+            auto it = content_.find(key);
+            if (it != content_.end()) {
+                return &it->second;
+            }
+        }
+        // emplace when it does not exist
+        std::lock_guard lock{access_};
+        return &content_.emplace(key, instance_factory()).first.second;
+    }
+
+private:
     Bedrock::Threading::SharedMutex access_;
-    std::unordered_map<KeyType, ValueType> content_;
+    std::unordered_map<TKey, TValue> content_;
 };
 
 }  // namespace Core

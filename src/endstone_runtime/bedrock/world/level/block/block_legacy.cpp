@@ -15,6 +15,12 @@
 #include "bedrock/world/level/block/block_legacy.h"
 
 #include "bedrock/world/item/registry/item_registry.h"
+#include "endstone/detail/hook.h"
+
+const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
+}
 
 bool BlockLegacy::requiresCorrectToolForDrops() const
 {
@@ -79,7 +85,7 @@ void BlockLegacy::forEachBlockPermutation(std::function<bool(Block const &)> cal
 {
     for (const auto &block_permutation : block_permutations_) {
         if (block_permutation) {
-            callback(*block_permutation);
+            (void)callback(*block_permutation);
         }
     }
 }

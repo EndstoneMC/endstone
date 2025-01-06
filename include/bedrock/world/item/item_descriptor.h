@@ -80,7 +80,7 @@ public:
         [[nodiscard]] virtual std::size_t getHash() const = 0;
         [[nodiscard]] virtual bool shouldResolve() const;
         [[nodiscard]] virtual std::unique_ptr<BaseDescriptor> resolve() const;
-        virtual ~BaseDescriptor() = 0;
+        virtual ~BaseDescriptor() = default;
     };
 
 private:
