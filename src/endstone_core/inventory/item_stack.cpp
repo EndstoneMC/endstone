@@ -33,7 +33,7 @@ void EndstoneItemStack::setType(std::string type)
         reset();
         return;
     }
-    owned_handle_ = ::ItemStack::create(type, 1);
+    owned_handle_ = std::make_unique<::ItemStack>(type, 1);
     handle_ = owned_handle_.get();
 }
 
@@ -54,20 +54,18 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
-std::unique_ptr<::ItemStack> EndstoneItemStack::toMinecraft(std::shared_ptr<ItemStack> item)
+::ItemStack EndstoneItemStack::toMinecraft(std::shared_ptr<ItemStack> item)
 {
     if (!item || item->getType() == "minecraft:air") {
-        return ::ItemStack::create();  // Empty item stack
+        return {};  // Empty item stack
     }
-
     if (const auto *stack = item->asEndstoneItemStack(); stack) {
         if (stack->handle_) {
-            return ::ItemStack::create(*stack->handle_);  // Call the copy constructor to make a clone
+            return {*stack->handle_};  // Call the copy constructor to make a clone
         }
-        return ::ItemStack::create();  // Empty item stack
+        return {};  // Empty item stack
     }
-
-    return ::ItemStack::create(item->getType(), item->getAmount());  // TODO(item): support item nbt data
+    return {item->getType(), item->getAmount()};  // TODO(item): support item nbt data
 }
 
 std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(::ItemStack &item)

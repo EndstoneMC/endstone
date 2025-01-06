@@ -23,12 +23,17 @@
 
 class ItemStack : public ItemStackBase {
 public:
-    ENDSTONE_FACTORY_DECLARE(ItemStack);
-    ENDSTONE_FACTORY_DECLARE(ItemStack, const ItemStack &rhs);
-    ENDSTONE_FACTORY_DECLARE(ItemStack, Item const &item, int count = 1, int aux_value = 0,
-                             CompoundTag const *user_data = nullptr);
-    ENDSTONE_FACTORY_DECLARE(ItemStack, std::string_view type, int count = 1, int aux_value = 0,
-                             CompoundTag const *user_data = nullptr);
+    ItemStack();
+    ItemStack(const ItemStack &rhs);
+    ItemStack(Item const &item, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
+    ItemStack(std::string_view type, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
+
+    void reinit(const BlockLegacy &, int) override;
+    void reinit(const Item &, int, int) override;
+    void reinit(std::string_view, int, int) override;
+    void setNull(std::optional<std::string>) override;
+    [[nodiscard]] std::string toString() const override;
+    [[nodiscard]] std::string toDebugString() const override;
 
 private:
     ItemStackNetIdVariant network_id_;

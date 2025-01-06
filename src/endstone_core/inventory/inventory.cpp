@@ -37,12 +37,14 @@ std::shared_ptr<ItemStack> EndstoneInventory::getItem(int index) const
 
 void EndstoneInventory::setItem(int index, std::shared_ptr<ItemStack> item)
 {
-    container_.setItemWithForceBalance(index, *EndstoneItemStack::toMinecraft(item), true);
+    const auto item_stack = EndstoneItemStack::toMinecraft(item);
+    container_.setItemWithForceBalance(index, item_stack, true);
 }
 
 void EndstoneInventory::addItem(ItemStack &item)
 {
-    container_.addItemWithForceBalance(*EndstoneItemStack::toMinecraft(item.shared_from_this()));
+    auto item_stack = EndstoneItemStack::toMinecraft(item.shared_from_this());
+    container_.addItemWithForceBalance(item_stack);
 }
 
 std::vector<std::shared_ptr<ItemStack>> EndstoneInventory::getContents() const
@@ -62,7 +64,8 @@ std::vector<std::shared_ptr<ItemStack>> EndstoneInventory::getContents() const
 
 int EndstoneInventory::first(ItemStack &item)
 {
-    return container_.findFirstSlotForItem(*EndstoneItemStack::toMinecraft(item.shared_from_this()));
+    const auto item_stack = EndstoneItemStack::toMinecraft(item.shared_from_this());
+    return container_.findFirstSlotForItem(item_stack);
 }
 
 bool EndstoneInventory::isEmpty() const
