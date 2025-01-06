@@ -29,9 +29,15 @@
 class ItemStackBase {
 protected:
     ItemStackBase();
+    explicit ItemStackBase(const BlockLegacy &block, int count = 1);
+    explicit ItemStackBase(std::string_view name, int count = 1, int aux_value = 0,
+                           CompoundTag const *user_data = nullptr);
+    explicit ItemStackBase(Item const &item, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
+    ItemStackBase(const ItemStackBase &);
+    ItemStackBase &operator=(const ItemStackBase &);
 
 public:
-    virtual ~ItemStackBase() = 0;
+    virtual ~ItemStackBase() ;
     virtual void reinit(Item const &, int, int);
     virtual void reinit(BlockLegacy const &, int);
     virtual void reinit(std::string_view, int, int);

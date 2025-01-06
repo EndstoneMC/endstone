@@ -13,3 +13,37 @@
 // limitations under the License.
 
 #include "bedrock/world/item/item_stack.h"
+
+void ItemStack::reinit(const BlockLegacy &block, int count)
+{
+    const ItemStack rhs(block, count);
+    operator=(rhs);
+}
+
+void ItemStack::reinit(const Item &item, const int count, const int aux_value)
+{
+    const ItemStack rhs(item, count, aux_value, nullptr);
+    operator=(rhs);
+}
+
+void ItemStack::reinit(const std::string_view name, const int count, const int aux_value)
+{
+    const ItemStack rhs(name, count, aux_value, nullptr);
+    operator=(rhs);
+}
+
+void ItemStack::setNull(std::optional<std::string> basic_string)
+{
+    ItemStackBase::setNull(basic_string);
+    network_id_ = ItemStackNetIdVariant();
+}
+
+std::string ItemStack::toString() const
+{
+    return ItemStackBase::toString() + network_id_.toString();
+}
+
+std::string ItemStack::toDebugString() const
+{
+    return ItemStackBase::toDebugString() + network_id_.toString();
+}

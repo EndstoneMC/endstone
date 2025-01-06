@@ -24,9 +24,11 @@
 class ItemStack : public ItemStackBase {
 public:
     ItemStack();
+    explicit ItemStack(const BlockLegacy &block, int count = 1);
+    explicit ItemStack(std::string_view name, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
+    explicit ItemStack(Item const &item, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
     ItemStack(const ItemStack &rhs);
-    ItemStack(Item const &item, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
-    ItemStack(std::string_view type, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
+    ItemStack &operator=(const ItemStack &rhs) = default;
 
     void reinit(const BlockLegacy &, int) override;
     void reinit(const Item &, int, int) override;

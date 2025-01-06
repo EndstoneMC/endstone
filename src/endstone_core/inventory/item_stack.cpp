@@ -61,11 +61,11 @@ void EndstoneItemStack::setAmount(int amount)
     }
     if (const auto *stack = item->asEndstoneItemStack(); stack) {
         if (stack->handle_) {
-            return {*stack->handle_};  // Call the copy constructor to make a clone
+            return *stack->handle_;  // Call the copy constructor to make a copy
         }
         return {};  // Empty item stack
     }
-    return {item->getType(), item->getAmount()};  // TODO(item): support item nbt data
+    return ::ItemStack(item->getType(), item->getAmount());  // TODO(item): support item nbt data
 }
 
 std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(::ItemStack &item)

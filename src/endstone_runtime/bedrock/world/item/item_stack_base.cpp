@@ -21,6 +21,8 @@ ItemStackBase::ItemStackBase()
     ItemStackBase::setNull(std::nullopt);
 }
 
+ItemStackBase::~ItemStackBase() =default;
+
 void ItemStackBase::reinit(Item const &, int, int) {}
 
 void ItemStackBase::reinit(BlockLegacy const &, int) {}
