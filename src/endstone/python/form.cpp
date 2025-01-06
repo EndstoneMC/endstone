@@ -18,18 +18,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-// must be included after pybind11
-#include "endstone/form/action_form.h"
-#include "endstone/form/controls/dropdown.h"
-#include "endstone/form/controls/label.h"
-#include "endstone/form/controls/slider.h"
-#include "endstone/form/controls/step_slider.h"
-#include "endstone/form/controls/text_input.h"
-#include "endstone/form/controls/toggle.h"
-#include "endstone/form/message_form.h"
-#include "endstone/form/modal_form.h"
-#include "endstone/message.h"
-#include "endstone/player.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 

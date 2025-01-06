@@ -146,7 +146,7 @@ struct formatter<endstone::BlockState> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "BlockState(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(),
+        return fmt::format_to(ctx.out(), "BlockState(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(),
                          val.getY(), val.getZ(), val.getType(), *val.getData());
     }
 };

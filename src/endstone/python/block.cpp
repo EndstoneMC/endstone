@@ -20,11 +20,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/block/block_data.h"
-#include "endstone/block/block_face.h"
-#include "endstone/block/block_state.h"
-#include "endstone/detail/pybind_type_caster.h"
-#include "endstone/level/dimension.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 

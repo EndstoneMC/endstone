@@ -16,8 +16,7 @@
 #include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 
-#include "endstone/util/socket_address.h"
-#include "endstone/util/vector.h"
+#include "endstone/endstone.hpp"
 
 namespace py = pybind11;
 

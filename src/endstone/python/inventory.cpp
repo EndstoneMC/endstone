@@ -17,8 +17,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/inventory/item_stack.h"
-#include "endstone/inventory/player_inventory.h"
+#include "endstone/endstone.hpp"
 
 namespace py = pybind11;
 

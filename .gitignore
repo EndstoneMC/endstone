@@ -17,3 +17,4 @@ wheelhouse/*
 stubs/*
 .cache/*
 dist/*
+endstone/_internal/version.py

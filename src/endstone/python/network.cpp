@@ -15,10 +15,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-// must be included after pybind11
-#include "endstone/network/packet.h"
-#include "endstone/network/packet_type.h"
-#include "endstone/network/spawn_particle_effect_packet.h"
+#include "endstone/endstone.hpp"
 
 namespace py = pybind11;
 

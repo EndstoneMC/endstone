@@ -16,13 +16,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/detail/pybind_type_caster.h"
-#include "endstone/permissions/permissible.h"
-#include "endstone/permissions/permission.h"
-#include "endstone/permissions/permission_attachment.h"
-#include "endstone/permissions/permission_attachment_info.h"
-#include "endstone/permissions/permission_default.h"
-#include "endstone/plugin/plugin.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 
@@ -39,8 +34,8 @@ Permission createPermission(std::string name, const std::optional<std::string> &
 }
 }  // namespace
 
-void init_permissions(py::module_ &m, py::class_<Permissible> &permissible,
-                      py::class_<Permission> &permission, py::enum_<PermissionDefault> &permission_default)
+void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
+                      py::enum_<PermissionDefault> &permission_default)
 {
     permission_default  //
         .value("TRUE", PermissionDefault::True)

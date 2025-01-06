@@ -12,21 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/command/command.h"
-
 #include <utility>
 
 #include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/command/command_executor.h"
-#include "endstone/command/command_sender.h"
-#include "endstone/command/command_sender_wrapper.h"
-#include "endstone/command/console_command_sender.h"
-#include "endstone/logger.h"
-#include "endstone/plugin/plugin.h"
-#include "endstone/server.h"
+#include "endstone/endstone.hpp"
 
 namespace py = pybind11;
 
@@ -44,7 +36,7 @@ public:
 };
 
 namespace {
-Command createCommand(std::string name, const std::optional<std::string> &description,
+Command createCommand(const std::string &name, const std::optional<std::string> &description,
                       const std::optional<std::vector<std::string>> &usages,
                       const std::optional<std::vector<std::string>> &aliases,
                       const std::optional<std::vector<std::string>> &permissions, const py::args & /*args*/,

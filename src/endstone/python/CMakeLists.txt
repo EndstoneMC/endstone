@@ -23,8 +23,8 @@ pybind11_add_module(endstone_python MODULE
         scoreboard.cpp
         util.cpp
 )
-target_include_directories(endstone_python PUBLIC include)
-target_link_libraries(endstone_python PRIVATE endstone::headers)
+target_compile_definitions(endstone_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
+target_link_libraries(endstone_python PRIVATE endstone::endstone)
 #if (UNIX)
 #    add_custom_command(
 #            TARGET endstone_python

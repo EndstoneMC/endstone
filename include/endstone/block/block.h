@@ -182,15 +182,15 @@ struct formatter<endstone::Block> : formatter<string_view> {
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
         auto it = ctx.out();
-        it = format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
-                       val.getType().value_or("INVALID"));
+        it = fmt::format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
+                            val.getType().value_or("INVALID"));
         if (auto data = val.getData()) {
-            it = format_to(it, ", data={}", *data.value());
+            it = fmt::format_to(it, ", data={}", *data.value());
         }
         else {
-            it = format_to(it, ", data=INVALID");
+            it = fmt::format_to(it, ", data=INVALID");
         }
-        it = format_to(it, ")");
+        it = fmt::format_to(it, ")");
         return it;
     }
 };

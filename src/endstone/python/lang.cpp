@@ -19,8 +19,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/lang/language.h"
-#include "endstone/lang/translatable.h"
+#include "endstone/endstone.hpp"
 
 namespace py = pybind11;
 

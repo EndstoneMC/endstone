@@ -99,6 +99,7 @@ target_link_libraries(endstone_core PUBLIC
         pybind11::embed
         spdlog::spdlog
         tomlplusplus::tomlplusplus)
+target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_WITH_DEVTOOLS)
 endif ()

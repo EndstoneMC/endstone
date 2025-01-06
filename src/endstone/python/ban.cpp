@@ -16,12 +16,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/ban/ban_entry.h"
-#include "endstone/ban/ip_ban_entry.h"
-#include "endstone/ban/ip_ban_list.h"
-#include "endstone/ban/player_ban_entry.h"
-#include "endstone/ban/player_ban_list.h"
-#include "endstone/detail/pybind_type_caster.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 

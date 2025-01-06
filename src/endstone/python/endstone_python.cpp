@@ -19,19 +19,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/block/block.h"
-#include "endstone/color_format.h"
-#include "endstone/command/console_command_sender.h"
-#include "endstone/command/plugin_command.h"
-#include "endstone/detail/pybind_type_caster.h"
-#include "endstone/game_mode.h"
-#include "endstone/level/level.h"
-#include "endstone/logger.h"
-#include "endstone/permissions/permissible.h"
-#include "endstone/permissions/permission.h"
-#include "endstone/permissions/permission_default.h"
-#include "endstone/scheduler/scheduler.h"
-#include "endstone/server.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 

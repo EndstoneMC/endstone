@@ -16,8 +16,7 @@
 
 #include <pybind11/pybind11.h>
 
-#include "endstone/util/result.h"
-#include "endstone/util/uuid.h"
+#include "endstone/endstone.hpp"
 
 namespace pybind11::detail {
 template <>

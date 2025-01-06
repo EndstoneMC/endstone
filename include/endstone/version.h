@@ -1,4 +1,4 @@
-// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,16 +14,12 @@
 
 #pragma once
 
-#include <algorithm>
-#include <set>
-#include <string>
-#include <unordered_map>
-#include <utility>
-#include <vector>
+#pragma once
 
-#include "endstone/command/command.h"
-#include "endstone/permissions/permission.h"
-#include "endstone/plugin/plugin_description.h"
-#include "endstone/plugin/plugin_load_order.h"
+#define ENDSTONE_STRINGIFY(x) #x
+#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
 
-
+#define ENDSTONE_VERSION_MAJOR 0
+#define ENDSTONE_VERSION_MINOR 5
+#define ENDSTONE_VERSION_PATCH 7
+#define ENDSTONE_API_VERSION   ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)

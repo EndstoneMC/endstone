@@ -33,9 +33,11 @@ dependencies = [
     "packaging",
     "pkginfo",
     "psutil",
+    "pyyaml",
     "requests",
     "rich",
     "tomlkit",
+    "typing-extensions",
 ]
 dynamic = ["version"]
 
@@ -56,19 +58,15 @@ endstone = "endstone._internal.bootstrap:cli"
 cmake.args = ["-G Ninja"]
 cmake.build-type = "RelWithDebInfo"
 cmake.define = { BUILD_TESTING = "OFF" }
-wheel.packages = ["python/src/endstone"]
+wheel.packages = ["endstone"]
 wheel.license-files = ["LICENSE"]
 install.components = ["endstone_wheel"]
 install.strip = false
 metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
-sdist.include = ["python/src/endstone/_internal/version.py"]
+sdist.include = ["endstone/_internal/version.py"]
 
 [tool.scikit-build-core-conan]
 config = ["tools.cmake.cmaketoolchain:generator=Ninja"]
-
-# [[tool.scikit-build-core-conan.local-recipes]]
-# path = "third_party/funchook"
-# version = "1.1.3"
 
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "win32"
@@ -79,7 +77,7 @@ if.platform-system = "linux"
 settings = ["compiler.cppstd=20", "compiler.libcxx=libc++"]
 
 [tool.setuptools_scm]
-write_to = "python/src/endstone/_internal/version.py"
+write_to = "endstone/_internal/version.py"
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 
@@ -90,7 +88,7 @@ lint.extend-select = ["I"]
 
 [tool.cibuildwheel]
 skip = ["pp*"]
-test-command = "pytest {package}/python/tests"
+test-command = "pytest {package}/tests/endstone/python"
 test-requires = "pytest"
 repair-wheel-command = [
     "pip install auditwheel sentry-cli",

@@ -15,12 +15,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/boss/bar_color.h"
-#include "endstone/boss/bar_flag.h"
-#include "endstone/boss/bar_style.h"
-#include "endstone/boss/boss_bar.h"
-#include "endstone/detail/pybind_type_caster.h"
-#include "endstone/player.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 

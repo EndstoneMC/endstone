@@ -17,16 +17,8 @@
 #include <pybind11/stl.h>
 
 // must be included after pybind11
-#include "endstone/actor/actor.h"
-#include "endstone/detail/pybind_type_caster.h"
-#include "endstone/player.h"
-#include "endstone/scoreboard/criteria.h"
-#include "endstone/scoreboard/display_slot.h"
-#include "endstone/scoreboard/objective.h"
-#include "endstone/scoreboard/objective_sort_order.h"
-#include "endstone/scoreboard/score.h"
-#include "endstone/scoreboard/score_entry.h"
-#include "endstone/scoreboard/scoreboard.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 

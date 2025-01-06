@@ -105,7 +105,7 @@ struct formatter<endstone::ItemStack> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
+        return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
     }
 };
 }  // namespace fmt

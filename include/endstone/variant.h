@@ -1,4 +1,4 @@
-// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,16 +14,20 @@
 
 #pragma once
 
-#include <algorithm>
-#include <set>
-#include <string>
-#include <unordered_map>
-#include <utility>
-#include <vector>
+namespace endstone {
+/**
+ * @brief Helper type for visitors.
+ * @tparam Func Types of function objects.
+ */
+template <typename... Func>
+struct overloaded : Func... {
+    using Func::operator()...;
+};
 
-#include "endstone/command/command.h"
-#include "endstone/permissions/permission.h"
-#include "endstone/plugin/plugin_description.h"
-#include "endstone/plugin/plugin_load_order.h"
-
-
+/**
+ * @brief Deduction guide.
+ * @tparam Func Types of function objects.
+ */
+template <typename... Func>
+overloaded(Func...) -> overloaded<Func...>;
+}  // namespace endstone

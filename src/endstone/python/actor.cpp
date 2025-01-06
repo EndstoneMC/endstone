@@ -17,10 +17,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/actor/mob.h"
-#include "endstone/detail/pybind_type_caster.h"
-#include "endstone/level/dimension.h"
-#include "endstone/level/level.h"
+#include "endstone/endstone.hpp"
+#include "type_caster.h"
 
 namespace py = pybind11;
 
