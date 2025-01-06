@@ -14,9 +14,9 @@
 
 #include <gtest/gtest.h>
 
-#include "endstone/detail/command/command_lexer.h"
+#include "endstone/core/command/command_lexer.h"
 
-using endstone::detail::CommandLexer;
+using endstone::core::CommandLexer;
 
 class CommandLexerTest : public ::testing::Test {
 protected:

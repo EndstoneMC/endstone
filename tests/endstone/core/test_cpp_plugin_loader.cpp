@@ -20,8 +20,8 @@
 
 #include "bedrock/world/level/level.h"
 #include "endstone/block/block_data.h"
-#include "endstone/detail/logger_factory.h"
-#include "endstone/detail/plugin/cpp_plugin_loader.h"
+#include "endstone/core/logger_factory.h"
+#include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/scheduler/scheduler.h"
 #include "endstone/server.h"
 
@@ -75,8 +75,7 @@ public:
 
     MockServer()
     {
-        ON_CALL(*this, getLogger())
-            .WillByDefault(testing::ReturnRef(endstone::detail::LoggerFactory::getLogger("Test")));
+        ON_CALL(*this, getLogger()).WillByDefault(testing::ReturnRef(endstone::core::LoggerFactory::getLogger("Test")));
     }
 };
 
@@ -86,7 +85,7 @@ protected:
     void SetUp() override
     {
         mock_server_ = std::make_unique<MockServer>();
-        loader_ = std::make_unique<endstone::detail::CppPluginLoader>(*mock_server_);
+        loader_ = std::make_unique<endstone::core::CppPluginLoader>(*mock_server_);
         plugin_dir_ = std::filesystem::current_path() / "plugins";
     }
 
@@ -98,7 +97,7 @@ protected:
     }
 
     std::unique_ptr<MockServer> mock_server_;
-    std::unique_ptr<endstone::detail::CppPluginLoader> loader_;
+    std::unique_ptr<endstone::core::CppPluginLoader> loader_;
     fs::path plugin_dir_;
 };
 
@@ -110,9 +109,9 @@ TEST_F(CppPluginLoaderTest, TestLoadPlugin)
     ASSERT_EQ(nullptr, loader_->loadPlugin(nonexistent_path.string()));
 
 #ifdef _WIN32
-    auto plugin_path = plugin_dir_ / "test_plugin.dll";
+    auto plugin_path = plugin_dir_ / "endstone_test_plugin.dll";
 #elif __linux__
-    auto plugin_path = plugin_dir_ / "libtest_plugin.so";
+    auto plugin_path = plugin_dir_ / "endstone_test_plugin.so";
 #endif
     ASSERT_NE(nullptr, loader_->loadPlugin(plugin_path.string()));
 }

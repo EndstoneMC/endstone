@@ -40,4 +40,15 @@ endif ()
 
 
 # Test
-#add_subdirectory(tests)
+if (NOT BUILD_TESTING STREQUAL OFF)
+    enable_testing()
+
+    if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g --coverage")
+    endif ()
+
+    find_package(GTest REQUIRED)
+    include(GoogleTest)
+    add_subdirectory(tests)
+endif ()

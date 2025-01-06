@@ -20,7 +20,7 @@
 #include <gtest/gtest.h>
 
 #include "endstone/boss/boss_bar.h"
-#include "endstone/detail/scheduler/scheduler.h"
+#include "endstone/core/scheduler/scheduler.h"
 #include "endstone/scheduler/scheduler.h"
 
 class MockServer : public endstone::Server {
@@ -86,7 +86,7 @@ protected:
     {
         server_ = std::make_unique<MockServer>();
         plugin_ = std::make_unique<MockPlugin>();
-        scheduler_ = std::make_unique<endstone::detail::EndstoneScheduler>(*server_);
+        scheduler_ = std::make_unique<endstone::core::EndstoneScheduler>(*server_);
         tick_count_ = 0;
     }
 
@@ -101,7 +101,7 @@ protected:
 
     std::unique_ptr<MockServer> server_;
     std::unique_ptr<MockPlugin> plugin_;
-    std::unique_ptr<endstone::detail::EndstoneScheduler> scheduler_;
+    std::unique_ptr<endstone::core::EndstoneScheduler> scheduler_;
     std::uint64_t tick_count_;
 };
 

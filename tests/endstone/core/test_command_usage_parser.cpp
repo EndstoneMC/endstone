@@ -14,9 +14,9 @@
 
 #include <gtest/gtest.h>
 
-#include "endstone/detail/command/command_usage_parser.h"
+#include "endstone/core/command/command_usage_parser.h"
 
-using endstone::detail::CommandUsageParser;
+using endstone::core::CommandUsageParser;
 
 // Define the fixture class
 class ParserTest : public ::testing::Test {

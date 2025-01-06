@@ -20,9 +20,9 @@
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 
-#include "endstone/detail/ban/player_ban_list.h"
+#include "endstone/core/ban/player_ban_list.h"
 
-namespace endstone::detail {
+namespace endstone::core {
 
 class PlayerBanListTest : public ::testing::Test {
 protected:
@@ -245,4 +245,4 @@ TEST_F(PlayerBanListTest, LoadNonExistingFile)
     EXPECT_EQ(ban_list.getEntries().size(), 0);  // No entries should be loaded
 }
 
-}  // namespace endstone::detail
+}  // namespace endstone::core

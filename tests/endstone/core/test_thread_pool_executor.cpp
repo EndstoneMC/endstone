@@ -14,9 +14,9 @@
 
 #include <gtest/gtest.h>
 
-#include "endstone/detail/scheduler/thread_pool_executor.h"
+#include "endstone/core/scheduler/thread_pool_executor.h"
 
-using endstone::detail::ThreadPoolExecutor;
+using endstone::core::ThreadPoolExecutor;
 
 // Test if tasks are executed
 TEST(ThreadPoolExecutorTest, ExecuteTasks)

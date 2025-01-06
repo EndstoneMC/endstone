@@ -16,13 +16,9 @@ add_library(funchook::funchook ALIAS funchook-static)
 
 add_library(endstone_runtime SHARED
         linux/hook.cpp
-        linux/os.cpp
         windows/hook.cpp
-        windows/os.cpp
-        crash_handler.cpp
         hook.cpp
         main.cpp
-        signal_handler.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)

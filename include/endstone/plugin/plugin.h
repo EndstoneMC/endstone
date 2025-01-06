@@ -357,6 +357,14 @@ private:
 
 }  // namespace endstone
 
+#ifndef ENDSTONE_EXPORT
+#if defined(WIN32) || defined(_WIN32)
+#define ENDSTONE_EXPORT __declspec(dllexport)
+#else
+#define ENDSTONE_EXPORT __attribute__((visibility("default")))
+#endif
+#endif
+
 #ifndef ENDSTONE_PLUGIN
 #define ENDSTONE_PLUGIN(Name, Version, MainClass)                                            \
     class PluginDescriptionBuilderImpl : public endstone::detail::PluginDescriptionBuilder { \

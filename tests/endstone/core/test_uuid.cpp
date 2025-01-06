@@ -17,7 +17,7 @@
 #include <gtest/gtest.h>
 
 #include "bedrock/platform/uuid.h"
-#include "endstone/detail/util/uuid.h"
+#include "endstone/core/util/uuid.h"
 
 TEST(UUIDTest, ConvertToAndFromEndstone)
 {
@@ -26,8 +26,8 @@ TEST(UUIDTest, ConvertToAndFromEndstone)
         expect.data[i] = i;  // Initialization for test
     }
 
-    const auto mce_uuid = endstone::detail::EndstoneUUID::toMinecraft(expect);
-    const auto actual = endstone::detail::EndstoneUUID::fromMinecraft(mce_uuid);
+    const auto mce_uuid = endstone::core::EndstoneUUID::toMinecraft(expect);
+    const auto actual = endstone::core::EndstoneUUID::fromMinecraft(mce_uuid);
 
     for (std::uint8_t i = 0; i < 16; ++i) {
         EXPECT_EQ(expect.data[i], actual.data[i]);
