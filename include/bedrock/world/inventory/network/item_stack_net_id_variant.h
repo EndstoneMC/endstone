@@ -14,29 +14,45 @@
 
 #pragma once
 
+#include <sstream>
+#include <string>
 #include <variant>
 
 #include "bedrock/bedrock.h"
 
-template <typename Tag, typename Type = int, Type Default = 0>
+template <typename Tag, typename RawIdT = int, RawIdT RawInvalid = 0>
 class TypedServerNetId {
 public:
-    Type raw_id = Default;
+    [[nodiscard]] std::string toString() const
+    {
+        std::stringstream ss;
+        ss << "[TypedServerNetId: " << raw_id << "]";
+        return ss.str();
+    }
+
+    RawIdT raw_id = RawInvalid;
 };
-template <typename Tag, typename Type = int, Type Default = 0>
+
+template <typename Tag, typename RawIdT = int, RawIdT RawInvalid = 0>
 class TypedClientNetId {
 public:
     virtual ~TypedClientNetId() = default;
-    Type raw_id = Default;
+    [[nodiscard]] std::string toString() const
+    {
+        std::stringstream ss;
+        ss << "[TypedClientNetId: " << raw_id << "]";
+        return ss.str();
+    }
+
+    RawIdT raw_id = RawInvalid;
 };
 
-class ItemStackNetIdTag;
-class ItemStackRequestIdTag;
-class ItemStackLegacyRequestIdTag;
-class ItemStackNetIdVariant {
-public:
-    std::variant<TypedServerNetId<ItemStackNetIdTag>, TypedClientNetId<ItemStackRequestIdTag>,
-                 TypedClientNetId<ItemStackLegacyRequestIdTag>>
-        network_id;
+struct ItemStackNetIdVariant {
+    [[nodiscard]] std::string toString() const;
+
+private:
+    std::variant<TypedServerNetId<struct ItemStackNetIdTag>, TypedClientNetId<struct ItemStackRequestIdTag>,
+                 TypedClientNetId<struct ItemStackLegacyRequestIdTag>>
+        variant_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackNetIdVariant, 24, 24);

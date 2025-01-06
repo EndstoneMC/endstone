@@ -89,6 +89,7 @@ add_library(endstone_runtime SHARED
         bedrock/world/events/scripting_event_coordinator.cpp
         bedrock/world/events/server_instance_event_coordinator.cpp
         bedrock/world/gamemode/game_mode.cpp
+        bedrock/world/inventory/network/item_stack_net_id_variant.cpp
         bedrock/world/item/item.cpp
         bedrock/world/item/item_descriptor.cpp
         bedrock/world/item/item_stack.cpp
