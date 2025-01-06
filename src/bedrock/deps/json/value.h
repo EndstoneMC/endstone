@@ -18,8 +18,6 @@
 #include <string>
 #include <vector>
 
-#include <nlohmann/adl_serializer.hpp>
-
 namespace Json {
 
 enum ValueType {    // NOLINTBEGIN
@@ -96,7 +94,5 @@ private:
 };
 static_assert(sizeof(Value::ObjectValues::value_type) == 24);
 static_assert(sizeof(Value) == 16);
-
-void to_json(nlohmann::json &j, const Value &value);
 
 }  // namespace Json

@@ -14,9 +14,9 @@
 
 #include "bedrock/network/packet.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftPackets::createPacket, id);
+    return ENDSTONE_SYMCALL(&MinecraftPackets::createPacket, id);
 }

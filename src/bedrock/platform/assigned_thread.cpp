@@ -14,7 +14,7 @@
 
 #include "bedrock/platform/threading/assigned_thread.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 namespace Bedrock::Threading {
 
@@ -25,7 +25,7 @@ bool AssignedThread::isOnThread() const
 
 AssignedThread &getServerThread()
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&getServerThread);
+    return ENDSTONE_SYMCALL(&getServerThread);
 }
 
 }  // namespace Bedrock::Threading

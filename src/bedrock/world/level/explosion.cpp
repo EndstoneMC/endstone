@@ -14,15 +14,6 @@
 
 #include "bedrock/world/level/explosion.h"
 
-#include <cpptrace/cpptrace.hpp>
-
-#include "endstone/detail/hook.h"
-
-bool Explosion::explode()
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Explosion::explode, this);
-}
-
 void Explosion::setFire(bool val)
 {
     fire_ = val;

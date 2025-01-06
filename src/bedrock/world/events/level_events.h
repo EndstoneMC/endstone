@@ -17,18 +17,13 @@
 #include <variant>
 
 #include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/world/events/event_variant.h"
-#include "endstone/endstone.h"
 
 class Level;
-
-struct LevelEventPlaceHolder {
-    char pad[ENDSTONE_VARIANT_WIN32_LINUX(120, 112)];
-};
 
 struct LevelAddedActorEvent {
     Bedrock::NonOwnerPointer<Level> level;  // +0
@@ -47,10 +42,7 @@ struct LevelGameplayEvent;
 template <>
 struct LevelGameplayEvent<void>
     : ConstEventVariant<LevelAddedActorEvent, LevelBroadcastEvent, LevelSoundBroadcastEvent, LevelDayCycleEvent,
-                               LevelStartLeaveGameEvent,
-                               LevelGameRuleChangeEvent,
-                               ScriptingInitializeEvent, LevelEventPlaceHolder> {
-};
+                        LevelStartLeaveGameEvent, LevelGameRuleChangeEvent, ScriptingInitializeEvent> {};
 
 struct LevelWeatherChangedEvent {
     bool from_rain;
@@ -65,5 +57,4 @@ template <typename Return>
 struct MutableLevelGameplayEvent;
 
 template <>
-struct MutableLevelGameplayEvent<CoordinatorResult>: MutableEventVariant<LevelWeatherChangedEvent> {
-};
+struct MutableLevelGameplayEvent<CoordinatorResult> : MutableEventVariant<LevelWeatherChangedEvent> {};

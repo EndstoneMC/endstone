@@ -15,7 +15,7 @@
 #include "bedrock/world/scores/scoreboard.h"
 
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 Objective *Scoreboard::addObjective(const std::string &name, const std::string &display_name,
                                     const ObjectiveCriteria &criteria)
@@ -153,7 +153,7 @@ void Scoreboard::resetPlayerScore(const ScoreboardId &id)
 bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
 {
     bool (Scoreboard::*func)(const ScoreboardId &, Objective &) = &Scoreboard::resetPlayerScore;
-    return ENDSTONE_HOOK_CALL_ORIGINAL(func, this, id, objective);
+    return ENDSTONE_SYMCALL(func, this, id, objective);
 }
 
 int Scoreboard::modifyPlayerScore(bool &success, const ScoreboardId &id, Objective &objective, int score,

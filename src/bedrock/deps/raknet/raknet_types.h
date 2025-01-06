@@ -60,8 +60,10 @@ struct SystemAddress {
         system_index = -1;
         debug_port = 0;
     }
-    [[nodiscard]] std::uint16_t GetPort() const;                                                // NOLINT
-    ENDSTONE_HOOK void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
+    [[nodiscard]] std::uint16_t GetPort() const;                                  // NOLINT
+    void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
+    [[nodiscard]] bool EqualsExcludingPort(const SystemAddress &right) const;
+    bool operator==(const SystemAddress &right) const;
 
     union  // In6OrIn4
     {

@@ -14,58 +14,14 @@
 
 #include "bedrock/server/commands/minecraft_commands.h"
 
-#include <entt/entt.hpp>
-
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
-#include "endstone/event/player/player_command_event.h"
-#include "endstone/event/server/server_command_event.h"
-
-using endstone::detail::EndstoneServer;
-
-MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
-{
-    const auto &server = entt::locator<EndstoneServer>::value();
-    if (const auto sender = ctx.getOrigin().getEndstoneSender(); sender) {
-        auto command_line = ctx.getCommand();
-
-        if (auto *player = sender->asPlayer(); player) {
-            endstone::PlayerCommandEvent event(*player, ctx.getCommand());
-            server.getPluginManager().callEvent(event);
-
-            if (event.isCancelled()) {
-                return MCRESULT_CommandsDisabled;
-            }
-            command_line = event.getCommand();
-            server.getLogger().info("{} issued server command: {}", player->getName(), command_line);
-        }
-
-        if (auto *console = sender->asConsole(); console) {
-            endstone::ServerCommandEvent event(*console, command_line);
-            server.getPluginManager().callEvent(event);
-
-            if (event.isCancelled()) {
-                return MCRESULT_CommandsDisabled;
-            }
-            command_line = event.getCommand();
-        }
-
-        if (server.dispatchCommand(*sender, command_line)) {
-            return MCRESULT_Success;
-        }
-        return MCRESULT_CommandNotFound;
-    }
-
-    // For other types of sender we don't support yet, fallback to the original dispatching route
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, suppress_output);
-}
+#include "endstone/core/symbol.h"
 
 Command *MinecraftCommands::compileCommand(HashedString const &command_str, CommandOrigin &origin,
                                            CurrentCmdVersion command_version,
                                            std::function<void(const std::string &)> on_parser_error)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version,
-                                       on_parser_error);
+    return ENDSTONE_SYMCALL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version,
+                            on_parser_error);
 }

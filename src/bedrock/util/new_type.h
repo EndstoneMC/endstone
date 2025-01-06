@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <nlohmann/json.hpp>
-
 template <typename ValueType>
 struct NewType {
     using Raw = ValueType;
@@ -42,15 +40,3 @@ struct NewType {
         return !(*this == rhs);
     }
 };
-
-template <typename ValueType>
-void to_json(nlohmann::json &j, const NewType<ValueType> &nt)
-{
-    j = nt.value;
-}
-
-template <typename ValueType>
-void from_json(const nlohmann::json &j, NewType<ValueType> &nt)
-{
-    j.get_to(nt.value);
-}

@@ -14,9 +14,8 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
-#include <bedrock/world/item/item_instance.h>
-#include <bedrock/world/item/registry/item_registry_manager.h>
-#include <pybind11/pybind11.h>
+#include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/registry/item_registry_manager.h"
 
 ItemStackBase::ItemStackBase()
 {

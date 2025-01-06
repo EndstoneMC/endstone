@@ -14,11 +14,10 @@
 
 #pragma once
 
-#include <array>
 #include <cstdint>
+#include <string>
 
 #include "bedrock/bedrock.h"
-#include "endstone/util/uuid.h"
 
 namespace mce {
 class UUID {

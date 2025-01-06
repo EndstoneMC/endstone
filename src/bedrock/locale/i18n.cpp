@@ -14,9 +14,9 @@
 
 #include "bedrock/locale/i18n.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 I18n &getI18n()
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&getI18n);
+    return ENDSTONE_SYMCALL(&getI18n);
 }

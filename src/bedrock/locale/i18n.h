@@ -66,4 +66,4 @@ public:
     virtual bool isPackKeyword(std::string const &) = 0;
 };
 
-ENDSTONE_HOOK I18n &getI18n();
+I18n &getI18n();

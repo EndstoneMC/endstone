@@ -31,6 +31,7 @@ endif ()
 
 # Implementations
 add_subdirectory(src/endstone/python)
+add_subdirectory(src/bedrock)
 return()
 add_subdirectory(src/endstone/core)
 add_subdirectory(src/endstone/runtime)

@@ -18,32 +18,29 @@
 #include <memory>
 #include <utility>
 
-#include <cpptrace/cpptrace.hpp>
-#include <spdlog/spdlog.h>
-
 #include "bedrock/server/commands/command.h"
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,
                                       CommandFlag flag1, CommandFlag flag2)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2);
+    ENDSTONE_SYMCALL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2);
 }
 
 void CommandRegistry::registerAlias(std::string name, std::string alias)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerAlias, this, std::move(name), std::move(alias));
+    ENDSTONE_SYMCALL(&CommandRegistry::registerAlias, this, std::move(name), std::move(alias));
 }
 
 const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string &name) const
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::findCommand, this, name);
+    return ENDSTONE_SYMCALL(&CommandRegistry::findCommand, this, name);
 }
 
 std::string CommandRegistry::describe(const CommandParameterData &param) const
 {
     std::string (CommandRegistry::*fp)(const CommandParameterData &param) const = &CommandRegistry::describe;
-    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, param);
+    return ENDSTONE_SYMCALL(fp, this, param);
 }
 
 std::string CommandRegistry::describe(const Signature &signature, const std::string &name, const Overload &overload,
@@ -51,31 +48,30 @@ std::string CommandRegistry::describe(const Signature &signature, const std::str
 {
     std::string (CommandRegistry::*fp)(const Signature &, const std::string &, const Overload &, unsigned int,
                                        unsigned int *, unsigned int *) const = &CommandRegistry::describe;
-    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, signature, name, overload, a4, a5, a6);
+    return ENDSTONE_SYMCALL(fp, this, signature, name, overload, a4, a5, a6);
 }
 
 void CommandRegistry::registerOverloadInternal(Signature &signature, Overload &overload)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
+    ENDSTONE_SYMCALL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
 }
 
 std::unique_ptr<Command> CommandRegistry::createCommand(const ParseToken &parse_token, const CommandOrigin &origin,
                                                         int version, std::string &error_message,
                                                         std::vector<std::string> &error_params) const
 {
-    spdlog::debug("ParseToken:\n{}", parse_token);
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::createCommand, this, parse_token, origin, version,
-                                       error_message, error_params);
+    return ENDSTONE_SYMCALL(&CommandRegistry::createCommand, this, parse_token, origin, version, error_message,
+                            error_params);
 }
 
 int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::addEnumValues, this, name, values);
+    return ENDSTONE_SYMCALL(&CommandRegistry::addEnumValues, this, name, values);
 }
 
 AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::serializeAvailableCommands, this);
+    return ENDSTONE_SYMCALL(&CommandRegistry::serializeAvailableCommands, this);
 }
 
 CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc) : version(version), alloc(alloc)

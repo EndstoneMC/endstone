@@ -19,7 +19,6 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 #include "bedrock/world/item/item_stack_base.h"
-#include "endstone/detail/hook.h"
 
 class ItemStack : public ItemStackBase {
 public:

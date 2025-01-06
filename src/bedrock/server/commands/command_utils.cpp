@@ -14,9 +14,9 @@
 
 #include "bedrock/server/commands/command_utils.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 std::string CommandUtils::getActorName(const Actor &actor)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandUtils::getActorName, actor);
+    return ENDSTONE_SYMCALL(&CommandUtils::getActorName, actor);
 }

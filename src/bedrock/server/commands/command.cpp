@@ -14,7 +14,7 @@
 
 #include "bedrock/server/commands/command.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 RelativeFloat::RelativeFloat(float offset, bool relative) : offset_(offset), relative_(relative) {}
 
@@ -30,12 +30,12 @@ bool RelativeFloat::isRelative() const
 
 std::string Command::getCommandName() const
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Command::getCommandName, this);
+    return ENDSTONE_SYMCALL(&Command::getCommandName, this);
 }
 
 void Command::run(CommandOrigin const &origin, CommandOutput &output) const
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Command::run, this, origin, output);
+    ENDSTONE_SYMCALL(&Command::run, this, origin, output);
 }
 
 bool Command::collectOptionalArguments()

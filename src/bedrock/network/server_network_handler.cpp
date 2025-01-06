@@ -14,47 +14,12 @@
 
 #include "bedrock/network/server_network_handler.h"
 
-#include <variant>
-
-#include <entt/entt.hpp>
-#include <magic_enum/magic_enum.hpp>
-
 #include "bedrock/locale/i18n.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
-#include "endstone/event/player/player_chat_event.h"
-#include "endstone/event/player/player_kick_event.h"
-#include "endstone/event/player/player_login_event.h"
-
-using endstone::detail::EndstonePlayer;
-using endstone::detail::EndstoneServer;
-
-void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
-                                            Connection::DisconnectFailReason reason, const std::string &message,
-                                            std::optional<std::string> filtered_message, bool skip_message)
-{
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto disconnect_message = message;
-    if (auto *endstone_player = server.getPlayer(network_id, sub_client_id)) {
-        auto kick_message = getI18n().get(message, nullptr);
-        endstone::PlayerKickEvent e{*endstone_player, kick_message};
-        server.getPluginManager().callEvent(e);
-
-        if (e.isCancelled()) {
-            return;
-        }
-
-        if (e.getReason() != disconnect_message) {
-            disconnect_message = e.getReason();
-        }
-    }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
-                                disconnect_message, std::move(filtered_message), skip_message);
-}
+#include "endstone/core/symbol.h"
 
 void ServerNetworkHandler::updateServerAnnouncement()
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::updateServerAnnouncement, this);
+    ENDSTONE_SYMCALL(&ServerNetworkHandler::updateServerAnnouncement, this);
 }
 
 ConnectionRequest const &ServerNetworkHandler::Client::getPrimaryRequest() const
@@ -66,95 +31,6 @@ std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> con
     getSubClientRequests() const
 {
     return sub_client_requests_;
-}
-
-bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
-{
-    const auto new_player =
-        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player, connection_request);
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
-    endstone_player.initFromConnectionRequest(&connection_request);
-
-    if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
-                                     endstone_player.getXuid())) {
-        endstone_player.kick("You have been banned from this server.");
-        return new_player;
-    }
-
-    if (server.getIpBanList().isBanned(endstone_player.getAddress().getHostname())) {
-        endstone_player.kick("You have been IP banned from this server.");
-        return new_player;
-    }
-
-    endstone::PlayerLoginEvent e{endstone_player};
-    server.getPluginManager().callEvent(e);
-
-    if (e.isCancelled()) {
-        endstone_player.kick(e.getKickMessage());
-    }
-    return new_player;
-}
-
-ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &network_id,
-                                                     const SubClientConnectionRequest &sub_client_connection_request,
-                                                     SubClientId sub_client_id)
-{
-    auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
-                                                      sub_client_connection_request, sub_client_id);
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
-    endstone_player.initFromConnectionRequest(&sub_client_connection_request);
-
-    if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
-                                     endstone_player.getXuid())) {
-        endstone_player.kick("You have been banned from this server.");
-        return server_player;
-    }
-
-    if (server.getIpBanList().isBanned(endstone_player.getAddress().getHostname())) {
-        endstone_player.kick("You have been IP banned from this server.");
-        return server_player;
-    }
-
-    endstone::PlayerLoginEvent e{endstone_player};
-    server.getPluginManager().callEvent(e);
-
-    if (e.isCancelled()) {
-        endstone_player.kick(e.getKickMessage());
-    }
-    return server_player;
-}
-
-void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &event)
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-    endstone::PlayerChatEvent e{player.getEndstoneActor<EndstonePlayer>(), event.message};
-    server.getPluginManager().callEvent(e);
-
-    if (e.isCancelled()) {
-        return;
-    }
-
-    event.message = std::move(e.getMessage());
-    server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
-
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_displayGameMessage, this, player, event);
-}
-
-bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const
-{
-    if (event == ServerTextEvent::Connection) {
-        // Note: return false to prevent BDS from sending the join/quit message
-        return false;
-    }
-    if (event == ServerTextEvent::ConnectionOriginal) {
-        // We still need to know if we are supposed to send a join/quit message at all.
-        // So we use a reserved value to call the original function with ServerTextEvent::Connection
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this,
-                                           ServerTextEvent::Connection);
-    }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this, event);
 }
 
 const Bedrock::NonOwnerPointer<ILevel> &ServerNetworkHandler::getLevel() const

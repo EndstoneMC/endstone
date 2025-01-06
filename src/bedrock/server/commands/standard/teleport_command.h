@@ -40,7 +40,7 @@ public:
 
 class TeleportCommand {
 public:
-    ENDSTONE_HOOK static TeleportTarget computeTarget(Actor &, Vec3, Vec3 *, AutomaticID<Dimension, int>,
+     static TeleportTarget computeTarget(Actor &, Vec3, Vec3 *, AutomaticID<Dimension, int>,
                                                       std::optional<RotationCommandUtils::RotationData> const &, int);
-    ENDSTONE_HOOK static void applyTarget(Actor &, TeleportTarget, bool);
+     static void applyTarget(Actor &, TeleportTarget, bool);
 };

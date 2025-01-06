@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <system_error>
 
 namespace Bedrock::Threading {
 

@@ -23,5 +23,5 @@
 
 class CommandOriginLoader {
 public:
-    ENDSTONE_HOOK static class std::unique_ptr<CommandOrigin> load(CompoundTag const &, ServerLevel &);
+    static std::unique_ptr<CommandOrigin> load(CompoundTag const &, ServerLevel &);
 };

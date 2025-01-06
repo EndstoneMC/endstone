@@ -14,6 +14,7 @@
 
 #pragma once
 
+
 #if _WIN32
 #define ENDSTONE_HOOK __declspec(dllexport)
 #elif __linux__

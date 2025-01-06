@@ -15,7 +15,9 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 #include <vector>
+#include <array>
 
 #include "bedrock/util/new_type.h"
 

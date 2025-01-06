@@ -36,7 +36,7 @@ class BlockDescriptor {
     };
 
 public:
-    [[nodiscard]] ENDSTONE_HOOK Block const *tryGetBlockNoLogging() const;
+    [[nodiscard]] Block const *tryGetBlockNoLogging() const;
 
 private:
     ResolveHelper resolve_helper_;         // +0
@@ -54,7 +54,7 @@ private:
 };
 
 namespace ScriptModuleMinecraft::ScriptBlockUtils {
-ENDSTONE_HOOK BlockDescriptor createBlockDescriptor(
+BlockDescriptor createBlockDescriptor(
     std::string type, std::optional<std::unordered_map<std::string, std::variant<int, std::string, bool>>> states);
 
 }  // namespace ScriptModuleMinecraft::ScriptBlockUtils

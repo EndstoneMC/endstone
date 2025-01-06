@@ -12,15 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/core/symbol.h"
 
-#include <string>
+#ifdef _WIN32
 
-#include "bedrock/nbt/compound_tag.h"
-#include "bedrock/util/data_io.h"
-
-namespace NbtIo {
-
-void writeNamedTag(const std::string &name, const Tag &tag, IDataOutput &output);
-
-}  // namespace NbtIo
+#endif

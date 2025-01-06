@@ -14,8 +14,6 @@
 
 #include "bedrock/core/file/path.h"
 
-#include <pybind11/pytypes.h>
-
 namespace Core {
 
 PathPart::PathPart(std::string &&str) : utf8_std_string_(std::move(str)) {}

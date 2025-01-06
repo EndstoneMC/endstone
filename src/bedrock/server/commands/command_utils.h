@@ -20,5 +20,5 @@
 #include "bedrock/world/actor/actor.h"
 
 namespace CommandUtils {
-ENDSTONE_HOOK std::string getActorName(Actor const &actor);
+std::string getActorName(Actor const &actor);
 };

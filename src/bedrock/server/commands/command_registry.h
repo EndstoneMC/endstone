@@ -53,17 +53,17 @@ class CommandRegistry {
     friend class CommandParameterData;
 
 public:
-    ENDSTONE_HOOK int addEnumValues(const std::string &name, const std::vector<std::string> &values);
+    int addEnumValues(const std::string &name, const std::vector<std::string> &values);
 
-    ENDSTONE_HOOK void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
-                                       CommandFlag flag1, CommandFlag flag2);
-    ENDSTONE_HOOK void registerAlias(std::string name, std::string alias);
+    void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
+                         CommandFlag flag1, CommandFlag flag2);
+    void registerAlias(std::string name, std::string alias);
 
 private:
     using CommandOverrideFunctor = std::function<void(CommandFlag &, const std::string &)>;
 
 public:
-    [[nodiscard]] ENDSTONE_HOOK AvailableCommandsPacket serializeAvailableCommands() const;
+    [[nodiscard]] AvailableCommandsPacket serializeAvailableCommands() const;
 
 private:
     using ScoreboardScoreAccessor = std::function<int(bool &, const std::string &, const Actor &)>;
@@ -170,8 +170,8 @@ public:
     class Symbol {
     public:
         Symbol() = default;
-        Symbol(size_t value) : value_(static_cast<int>(value)) {};
-        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)) {};
+        Symbol(size_t value) : value_(static_cast<int>(value)){};
+        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)){};
 
         [[nodiscard]] int value() const
         {
@@ -309,16 +309,14 @@ public:
 private:
     struct ParseTable;
 
-    [[nodiscard]] ENDSTONE_HOOK const Signature *findCommand(const std::string &name) const;
-    [[nodiscard]] ENDSTONE_HOOK std::unique_ptr<Command> createCommand(const ParseToken &parse_token,
-                                                                       const CommandOrigin &origin, int version,
-                                                                       std::string &error_message,
-                                                                       std::vector<std::string> &error_params) const;
-    [[nodiscard]] ENDSTONE_HOOK std::string describe(CommandParameterData const &) const;
-    [[nodiscard]] ENDSTONE_HOOK std::string describe(const Signature &signature, const std::string &name,
-                                                     const Overload &overload, unsigned int a4, unsigned int *a5,
-                                                     unsigned int *a6) const;
-    ENDSTONE_HOOK void registerOverloadInternal(Signature &signature, Overload &overload);
+    [[nodiscard]] const Signature *findCommand(const std::string &name) const;
+    [[nodiscard]] std::unique_ptr<Command> createCommand(const ParseToken &parse_token, const CommandOrigin &origin,
+                                                         int version, std::string &error_message,
+                                                         std::vector<std::string> &error_params) const;
+    [[nodiscard]] std::string describe(CommandParameterData const &) const;
+    [[nodiscard]] std::string describe(const Signature &signature, const std::string &name, const Overload &overload,
+                                       unsigned int a4, unsigned int *a5, unsigned int *a6) const;
+    void registerOverloadInternal(Signature &signature, Overload &overload);
 
     std::function<void(Packet const &)> network_update_callback_;                                // +0
     ScoreboardScoreAccessor get_score_for_objective_;                                            // +56

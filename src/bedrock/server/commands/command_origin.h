@@ -27,7 +27,6 @@
 #include "bedrock/world/actor/player/abilities.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/dimension/dimension.h"
-#include "endstone/command/command_sender.h"
 
 class Actor;
 class Level;

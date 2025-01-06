@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../../../include/bedrock/shared_constants.h"
+#include "bedrock/shared_constants.h"
 
-#include "../../../include/endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 std::string Common::getGameVersionString()
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Common::getGameVersionString);
+    return ENDSTONE_SYMCALL(&Common::getGameVersionString);
 }

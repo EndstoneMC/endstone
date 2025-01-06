@@ -14,11 +14,11 @@
 
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 
-#include "endstone/endstone.h"
+#include "bedrock/platform/brstd/variant.h"
 
 std::string ItemStackNetIdVariant::toString() const
 {
-    return std::visit(endstone::overloaded{
+    return std::visit(brstd::overloaded{
                           [](TypedServerNetId<ItemStackNetIdTag> id) -> std::string {
                               return "[ItemStackNetId: " + id.toString() + "]";
                           },

@@ -65,3 +65,10 @@ Result<std::unique_ptr<Block>> EndstoneDimension::getBlockAt(Location location)
 }
 
 }  // namespace endstone::core
+
+endstone::Dimension &Dimension::getEndstoneDimension() const
+{
+    using endstone::detail::EndstoneServer;
+    auto &server = entt::locator<EndstoneServer>::value();
+    return *server.getLevel()->getDimension(getName());
+}

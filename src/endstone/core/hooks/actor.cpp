@@ -25,12 +25,54 @@
 #include "bedrock/entity/components/tags_component.h"
 #include "bedrock/entity/systems/tag_system.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
-#include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/actor/mob_jump.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/detail/actor/actor.h"
+#include "endstone/detail/actor/mob.h"
+#include "endstone/detail/hook.h"
+#include "endstone/detail/player.h"
+#include "endstone/detail/server.h"
+#include "endstone/event/actor/actor_remove_event.h"
+#include "endstone/event/actor/actor_teleport_event.h"
+
+using endstone::detail::EndstoneActor;
+using endstone::detail::EndstoneActorComponent;
+using endstone::detail::EndstoneMob;
+using endstone::detail::EndstonePlayer;
+using endstone::detail::EndstoneServer;
+
+void Actor::remove()
+{
+    if (!isPlayer()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        endstone::ActorRemoveEvent e{getEndstoneActor()};
+        server.getPluginManager().callEvent(e);
+    }
+
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, __FUNCDNAME__, this);
+}
+
+void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
+{
+    Vec3 position = pos;
+    if (!isPlayer()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        auto &actor = getEndstoneActor();
+        endstone::Location to{&actor.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
+        endstone::ActorTeleportEvent e{actor, actor.getLocation(), to};
+        server.getPluginManager().callEvent(e);
+
+        if (e.isCancelled()) {
+            return;
+        }
+        position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
+    }
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, position, should_stop_riding, cause,
+                                     entity_type, keep_velocity);
+}
 
 bool Actor::getStatusFlag(ActorFlags flag) const
 {
@@ -190,6 +232,33 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
         return &actor;
     }
     return nullptr;
+}
+
+EndstoneActor &Actor::getEndstoneActor0() const
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto *self = const_cast<Actor *>(this);
+    auto &component = entity_context_.getOrAddComponent<EndstoneActorComponent>();
+    if (component.actor) {
+        return *component.actor;
+    }
+
+    if (self->isType(ActorType::Player)) {
+        if (!isPlayer()) {
+            // Sanity check, should never be reachable
+            throw std::runtime_error("Actor has a Player type but isPlayer() returns false.");
+        }
+        auto *player = static_cast<Player *>(self);
+        component.actor = EndstonePlayer::create(server, *player);
+    }
+    else if (self->hasType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
+        auto *mob = static_cast<Mob *>(self);
+        component.actor = EndstoneMob::create(server, *mob);
+    }
+    else {
+        component.actor = EndstoneActor::create(server, *self);
+    }
+    return *component.actor;
 }
 
 bool Actor::isJumping() const

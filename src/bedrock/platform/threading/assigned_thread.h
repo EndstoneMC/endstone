@@ -28,6 +28,6 @@ private:
     std::thread::id assigned_id_;
 };
 
-ENDSTONE_HOOK AssignedThread &getServerThread();
+AssignedThread &getServerThread();
 
 }  // namespace Bedrock::Threading

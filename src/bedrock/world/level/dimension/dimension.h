@@ -30,7 +30,6 @@
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/levelgen/v2/providers/int_provider.h"
 #include "bedrock/world/level/saveddata/saved_data.h"
-#include "endstone/level/dimension.h"
 
 class Level;
 

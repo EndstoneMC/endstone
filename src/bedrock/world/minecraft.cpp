@@ -14,11 +14,6 @@
 
 #include "bedrock/world/minecraft.h"
 
-#include <entt/entt.hpp>
-
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
-
 MinecraftCommands &Minecraft::getCommands()
 {
     return *commands_;

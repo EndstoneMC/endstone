@@ -17,7 +17,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 
-class FurnaceBlockActor: public BlockActor {
+class FurnaceBlockActor : public BlockActor {
 public:
-    ENDSTONE_HOOK static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
+    static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
 };

@@ -14,8 +14,6 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 
-#include "endstone/detail/server.h"
-
 Level &Dimension::getLevel() const
 {
     return *level_;
@@ -24,13 +22,6 @@ Level &Dimension::getLevel() const
 const std::string &Dimension::getName() const
 {
     return name_;
-}
-
-endstone::Dimension &Dimension::getEndstoneDimension() const
-{
-    using endstone::detail::EndstoneServer;
-    auto &server = entt::locator<EndstoneServer>::value();
-    return *server.getLevel()->getDimension(getName());
 }
 
 BlockSource &Dimension::getBlockSourceFromMainChunkSource() const

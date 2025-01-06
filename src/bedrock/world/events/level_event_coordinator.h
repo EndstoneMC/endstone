@@ -22,9 +22,6 @@
 
 class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
 public:
-    // ENDSTONE_HOOK void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
-    LevelGameplayHandler &getLevelGameplayHandler();
-
 private:
     ENDSTONE_HOOK void _postReloadActorAdded(Actor &, ActorInitializationMethod);
 

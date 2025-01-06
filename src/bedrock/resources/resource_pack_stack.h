@@ -54,7 +54,7 @@ class ResourcePackStack {
 public:
     virtual ~ResourcePackStack() = 0;
 
-    ENDSTONE_HOOK static std::unique_ptr<ResourcePackStack> deserialize(
+    static std::unique_ptr<ResourcePackStack> deserialize(
         std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo);
 
     PackInstanceStack stack;

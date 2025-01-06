@@ -14,6 +14,7 @@
 
 #include "bedrock/nbt/compound_tag.h"
 
+#include <algorithm>
 #include <utility>
 
 #include "bedrock/nbt/compound_tag_variant.h"

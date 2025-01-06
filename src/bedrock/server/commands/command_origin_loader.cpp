@@ -14,8 +14,9 @@
 
 #include "bedrock/server/commands/command_origin_loader.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
-class std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level) {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandOriginLoader::load, tag, level);
+std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level)
+{
+    return ENDSTONE_SYMCALL(&CommandOriginLoader::load, tag, level);
 }

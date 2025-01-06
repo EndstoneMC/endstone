@@ -15,11 +15,11 @@
 #include "bedrock/world/level/block/block_legacy.h"
 
 #include "bedrock/world/item/registry/item_registry.h"
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
+    return ENDSTONE_SYMCALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
 }
 
 bool BlockLegacy::requiresCorrectToolForDrops() const

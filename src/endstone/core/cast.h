@@ -80,4 +80,36 @@ void *fp_cast(Return (Class::*fp)(Args...) const)
     temp.p = fp;
     return temp.v;
 }
+
+template <typename Return, typename... Arg>
+Return (*fp_cast(Return (*fp)(Arg...), void* func))(Arg...)
+{
+    return *reinterpret_cast<decltype(&fp)>(&func);
+}
+
+template <typename Return, typename Class, typename... Arg>
+Return (Class::*fp_cast(Return (Class::*fp)(Arg...), void* address))(Arg...)
+{
+    struct {  // https://doi.org/10.1145/3660779
+        void *ptr;
+        std::size_t adj = 0;
+    } temp;
+    temp.ptr = address;
+    return *reinterpret_cast<decltype(&fp)>(&temp);
+}
+
+/**
+ * @brief Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)
+ */
+template <typename Return, typename Class, typename... Arg>
+Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const,                             void* address))(Arg...) const
+{
+    struct {  // https://doi.org/10.1145/3660779
+        void *ptr;
+        std::size_t adj = 0;
+    } temp;
+    temp.ptr = address;
+    return *reinterpret_cast<decltype(&fp)>(&temp);
+}
+
 }  // namespace endstone::core

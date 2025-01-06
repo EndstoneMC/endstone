@@ -21,5 +21,5 @@
 
 class BlockTypeRegistry {
 public:
-    ENDSTONE_HOOK static void forEachBlock(std::function<bool(BlockLegacy const &)>);
+    static void forEachBlock(std::function<bool(BlockLegacy const &)>);
 };

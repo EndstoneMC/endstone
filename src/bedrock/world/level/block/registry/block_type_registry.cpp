@@ -14,9 +14,9 @@
 
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 void BlockTypeRegistry::forEachBlock(std::function<bool(const BlockLegacy &)> callback)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&BlockTypeRegistry::forEachBlock, std::move(callback));
+    ENDSTONE_SYMCALL(&BlockTypeRegistry::forEachBlock, std::move(callback));
 }

@@ -14,26 +14,9 @@
 
 #include "bedrock/world/item/registry/item_registry_manager.h"
 
-#include <entt/entt.hpp>
-
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/server.h"
-
-using endstone::detail::EndstoneLevel;
-using endstone::detail::EndstoneServer;
+#include "endstone/core/symbol.h"
 
 ItemRegistryRef ItemRegistryManager::getItemRegistry()
 {
-    // NOTE: This is not the actual implementation in BDS
-    auto &server = entt::locator<EndstoneServer>::value();
-    if (!server.isPrimaryThread()) {
-        server.getLogger().error("ItemRegistryManager::getItemRegistry must be called from the server thread.");
-        return {};
-    }
-    auto *level = server.getLevel();
-    if (!level) {
-        server.getLogger().error("ItemRegistryManager::getItemRegistry is called before the level is loaded.");
-        return {};
-    }
-    return static_cast<EndstoneLevel *>(level)->getHandle().getItemRegistry();
+    return ENDSTONE_SYMCALL(&ItemRegistryManager::getItemRegistry);
 }

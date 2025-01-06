@@ -272,5 +272,5 @@ BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);
 
 class MinecraftPackets {
 public:
-    ENDSTONE_HOOK static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
+    static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
 };

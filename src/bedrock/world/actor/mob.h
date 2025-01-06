@@ -17,7 +17,6 @@
 #include <bitset>
 
 #include "bedrock/world/actor/actor.h"
-#include "endstone/detail/actor/mob.h"
 
 class Mob : public Actor {
 public:

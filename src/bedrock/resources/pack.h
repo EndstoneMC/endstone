@@ -32,7 +32,7 @@ public:
     [[nodiscard]] PackManifest const &getManifest() const;
     PackManifest &getManifest();
 
-    ENDSTONE_HOOK static std::unique_ptr<Pack> createPack(
+     static std::unique_ptr<Pack> createPack(
         ResourceLocation const &file_location, PackType type, PackOrigin origin, IPackManifestFactory &manifest_factory,
         Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider, PackSourceReport *report,
         Core::Path const &zip_sub_dir);

@@ -14,7 +14,7 @@
 
 #include "bedrock/resources/pack.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 PackManifest const &Pack::getManifest() const
 {
@@ -31,6 +31,6 @@ std::unique_ptr<Pack> Pack::createPack(ResourceLocation const &file_location, Pa
                                        Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider,
                                        PackSourceReport *report, Core::Path const &zip_sub_dir)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Pack::createPack, file_location, type, origin, manifest_factory, key_provider,
-                                       report, zip_sub_dir);
+    return ENDSTONE_SYMCALL(&Pack::createPack, file_location, type, origin, manifest_factory, key_provider, report,
+                            zip_sub_dir);
 }

@@ -16,6 +16,18 @@
 
 #include <cstdint>
 
+namespace endstone {
+class CommandSender;
+class Dimension;
+class Level;
+
+namespace detail {
+class EndstoneActor;
+class EndstoneLevel;
+class EndstoneServer;
+}  // namespace detail
+}  // namespace endstone
+
 // Classes
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
@@ -45,6 +57,7 @@ class BlockGraphicsModeChangeContext;
 class BlockItem;
 class BlockReducer;
 class BlockSourceListener;
+class BlockSourceHandle;
 class BlockState;
 class BodyControl;
 class BossEventSubscriptionManager;

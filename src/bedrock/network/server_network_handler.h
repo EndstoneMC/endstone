@@ -34,16 +34,10 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/server/deny_list.h"
 #include "bedrock/server/server_player.h"
-#include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/server_events.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"
-#include "endstone/endstone.h"
-
-namespace endstone::detail {
-class EndstoneServer;
-}
 
 enum class ServerTextEvent : std::uint8_t {
     Sleeping = 0,
@@ -74,7 +68,7 @@ public:
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                         std::string const &, std::optional<std::string>, bool);
-    ENDSTONE_HOOK void updateServerAnnouncement();
+    void updateServerAnnouncement();
 
     [[nodiscard]] const Bedrock::NonOwnerPointer<ILevel> &getLevel() const;  // Endstone
 

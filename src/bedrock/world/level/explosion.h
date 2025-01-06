@@ -25,7 +25,6 @@ using BlockPosSet = std::unordered_set<BlockPos>;
 
 class Explosion {
 public:
-    ENDSTONE_HOOK bool explode();
     void setFire(bool);
     [[nodiscard]] bool getFire() const;
 

@@ -82,6 +82,7 @@ add_library(endstone_core
         message.cpp
         player.cpp
         server.cpp
+        symbol_windows.cpp
 )
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC

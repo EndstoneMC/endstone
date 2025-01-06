@@ -12,33 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/events/level_event_coordinator.h"
+#include "bedrock/world/level/level.h"
 
+#include "bedrock/world/level/gameplay_user_manager.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/detail/server.h"
-#include "endstone/event/actor/actor_spawn_event.h"
 
-using endstone::detail::EndstoneActor;
+using endstone::detail::EndstoneScheduler;
 using endstone::detail::EndstoneServer;
 
-LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
+void Level::tick()
 {
-    return *level_gameplay_handler_;
-}
-
-void LevelEventCoordinator::_postReloadActorAdded(Actor &actor, ActorInitializationMethod init_method)
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::_postReloadActorAdded, this, actor, init_method);
-
-    if (actor.isPlayer()) {
-        return;
-    }
-
+    static std::string function_decorated_name = __FUNCDNAME__;
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorSpawnEvent e{actor.getEndstoneActor()};
-    server.getPluginManager().callEvent(e);
-
-    if (e.isCancelled()) {
-        actor.despawn();
-    }
+    server.tick(getCurrentServerTick().tick_id,
+                [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, function_decorated_name, this); });
 }
+

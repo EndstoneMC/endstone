@@ -14,17 +14,17 @@
 
 #include "bedrock/world/level/block/block_descriptor.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 Block const *BlockDescriptor::tryGetBlockNoLogging() const
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&BlockDescriptor::tryGetBlockNoLogging, this);
+    return ENDSTONE_SYMCALL(&BlockDescriptor::tryGetBlockNoLogging, this);
 }
 
 namespace ScriptModuleMinecraft::ScriptBlockUtils {
 BlockDescriptor createBlockDescriptor(
     std::string type, std::optional<std::unordered_map<std::string, std::variant<int, std::string, bool>>> states)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor, type, states);
+    return ENDSTONE_SYMCALL(&ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor, type, states);
 }
 }  // namespace ScriptModuleMinecraft::ScriptBlockUtils

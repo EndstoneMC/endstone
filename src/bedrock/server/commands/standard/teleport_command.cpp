@@ -14,18 +14,18 @@
 
 #include "bedrock/server/commands/standard/teleport_command.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/symbol.h"
 
 TeleportTarget TeleportCommand::computeTarget(Actor &victim, Vec3 destination, Vec3 *facing_position,
                                               AutomaticID<Dimension, int> destination_dimension,
                                               std::optional<RotationCommandUtils::RotationData> const &rotation_data,
                                               int command_version)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&TeleportCommand::computeTarget, victim, destination, facing_position,
-                                       destination_dimension, rotation_data, command_version);
+    return ENDSTONE_SYMCALL(&TeleportCommand::computeTarget, victim, destination, facing_position,
+                            destination_dimension, rotation_data, command_version);
 }
 
 void TeleportCommand::applyTarget(Actor &victim, TeleportTarget target, bool keep_velocity)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&TeleportCommand::applyTarget, victim, std::move(target), keep_velocity);
+    ENDSTONE_SYMCALL(&TeleportCommand::applyTarget, victim, std::move(target), keep_velocity);
 }

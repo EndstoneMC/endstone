@@ -34,9 +34,7 @@
 #include "bedrock/entity/components/attributes_component.h"
 #include "bedrock/entity/components/state_vector_component.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
-#include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/network/spatial_actor_network_data.h"
-#include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/util/variant_parameter_list.h"
 #include "bedrock/world/actor/actor_category.h"
@@ -49,7 +47,6 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/synched_actor_data.h"
 #include "bedrock/world/level/dimension/dimension.h"
-#include "endstone/detail/actor/actor.h"
 
 class Player;
 class Level;
