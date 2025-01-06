@@ -31,6 +31,7 @@
 * **addParent** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **addPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **addObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **aliases** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 
 
 ## b
@@ -44,6 +45,9 @@
 * **broadcast** ([**endstone::Server**](classendstone_1_1Server.md))
 * **broadcastMessage** ([**endstone::Server**](classendstone_1_1Server.md))
 * **begin** ([**endstone::UUID**](classendstone_1_1UUID.md))
+* **build** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md), [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
+* **buildCommands** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
+* **buildPermissions** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 
 ## c
@@ -65,6 +69,9 @@
 * **createBlockData** ([**endstone::Server**](classendstone_1_1Server.md))
 * **createBossBar** ([**endstone::Server**](classendstone_1_1Server.md))
 * **createScoreboard** ([**endstone::Server**](classendstone_1_1Server.md))
+* **CommandBuilder** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
+* **children** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
+* **command** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 
 ## d
@@ -78,6 +85,8 @@
 * **deserialize** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **distance** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **distanceSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **description** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
+* **default\_** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 
 
 ## e
@@ -413,6 +422,9 @@
 * **PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **Position** ([**endstone::Position**](classendstone_1_1Position.md))
+* **permissions** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
+* **PermissionBuilder** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
+* **permission** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 
 ## r
@@ -585,6 +597,7 @@
 * **updateCommands** ([**endstone::Player**](classendstone_1_1Player.md))
 * **unsubscribeFromDefaultPerms** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **unsubscribeFromPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **usages** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 
 
 ## v

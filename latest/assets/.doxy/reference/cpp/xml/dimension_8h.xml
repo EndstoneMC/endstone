@@ -31,6 +31,10 @@
       <node id="4">
         <label>string</label>
       </node>
+      <node id="9">
+        <label>endstone/variant.h</label>
+        <link refid="variant_8h_source"/>
+      </node>
       <node id="1">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h"/>
@@ -71,10 +75,6 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-      </node>
-      <node id="9">
-        <label>endstone/endstone.h</label>
-        <link refid="endstone_8h_source"/>
       </node>
       <node id="5">
         <label>endstone/block/block_data.h</label>

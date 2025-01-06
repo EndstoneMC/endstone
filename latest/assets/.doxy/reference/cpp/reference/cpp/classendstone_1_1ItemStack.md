@@ -88,8 +88,8 @@ Inherits the following classes: std::enable_shared_from_this< ItemStack >
 
 | Type | Name |
 | ---: | :--- |
-| virtual const detail::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-12) () const<br> |
-| virtual detail::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-22) () <br> |
+| virtual const core::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-12) () const<br> |
+| virtual core::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-22) () <br> |
 
 
 
@@ -250,7 +250,7 @@ virtual endstone::ItemStack::~ItemStack () = default
 ### function asEndstoneItemStack [1/2]
 
 ```C++
-inline virtual const detail::EndstoneItemStack * endstone::ItemStack::asEndstoneItemStack () const
+inline virtual const core::EndstoneItemStack * endstone::ItemStack::asEndstoneItemStack () const
 ```
 
 
@@ -263,7 +263,7 @@ inline virtual const detail::EndstoneItemStack * endstone::ItemStack::asEndstone
 ### function asEndstoneItemStack [2/2]
 
 ```C++
-inline virtual detail::EndstoneItemStack * endstone::ItemStack::asEndstoneItemStack () 
+inline virtual core::EndstoneItemStack * endstone::ItemStack::asEndstoneItemStack () 
 ```
 
 
@@ -279,7 +279,7 @@ inline virtual detail::EndstoneItemStack * endstone::ItemStack::asEndstoneItemSt
 
 ```C++
 class endstone::ItemStack::EndstoneItemStack (
-    detail::EndstoneItemStack
+    core::EndstoneItemStack
 ) 
 ```
 

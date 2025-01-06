@@ -177,6 +177,10 @@
       <node id="35">
         <label>unordered_set</label>
       </node>
+      <node id="10">
+        <label>endstone/variant.h</label>
+        <link refid="variant_8h_source"/>
+      </node>
       <node id="49">
         <label>endstone/inventory/player_inventory.h</label>
         <link refid="player__inventory_8h_source"/>
@@ -349,10 +353,6 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-      </node>
-      <node id="10">
-        <label>endstone/endstone.h</label>
-        <link refid="endstone_8h_source"/>
       </node>
       <node id="44">
         <label>endstone/form/controls/slider.h</label>

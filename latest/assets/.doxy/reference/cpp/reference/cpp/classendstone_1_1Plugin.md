@@ -552,7 +552,7 @@ Sets the enabled state of this plugin
 
 ```C++
 class endstone::Plugin::EndstonePluginManager (
-    detail::EndstonePluginManager
+    core::EndstonePluginManager
 ) 
 ```
 

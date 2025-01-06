@@ -1998,6 +1998,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#define-endstone_export" class="md-nav__link">
+      <span class="md-ellipsis">
+        define ENDSTONE_EXPORT
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#define-endstone_plugin" class="md-nav__link">
       <span class="md-ellipsis">
         define ENDSTONE_PLUGIN
@@ -2051,13 +2064,12 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;algorithm&gt;</code></li>
 <li><code>#include &lt;filesystem&gt;</code></li>
-<li><code>#include &lt;memory&gt;</code></li>
+<li><code>#include &lt;set&gt;</code></li>
 <li><code>#include &lt;string&gt;</code></li>
 <li><code>#include &lt;unordered_map&gt;</code></li>
 <li><code>#include &lt;utility&gt;</code></li>
 <li><code>#include &lt;vector&gt;</code></li>
 <li><code>#include "endstone/command/command_executor.h"</code></li>
-<li><code>#include "endstone/detail/plugin/plugin_description_builder.h"</code></li>
 <li><code>#include "endstone/logger.h"</code></li>
 <li><code>#include "endstone/permissions/permission.h"</code></li>
 <li><code>#include "endstone/plugin/plugin_description.h"</code></li>
@@ -2078,6 +2090,10 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">namespace</td>
+<td style="text-align: left;"><a href="../namespaceendstone_1_1core/"><strong>core</strong></a> <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">namespace</td>
 <td style="text-align: left;"><a href="../namespaceendstone_1_1detail/"><strong>detail</strong></a> <br></td>
 </tr>
 </tbody>
@@ -2095,6 +2111,18 @@ For latest updates join the chat on
 <td style="text-align: right;">class</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> <br><em>Represents a</em> <a href="../classendstone_1_1Plugin/"><em><strong>Plugin</strong></em></a> <em>.</em></td>
 </tr>
+<tr>
+<td style="text-align: right;">class</td>
+<td style="text-align: left;"><a href="../classendstone_1_1detail_1_1CommandBuilder/"><strong>CommandBuilder</strong></a> <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">class</td>
+<td style="text-align: left;"><a href="../classendstone_1_1detail_1_1PermissionBuilder/"><strong>PermissionBuilder</strong></a> <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structendstone_1_1detail_1_1PluginDescriptionBuilder/"><strong>PluginDescriptionBuilder</strong></a> <br></td>
+</tr>
 </tbody>
 </table>
 <h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
@@ -2108,37 +2136,46 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">define</td>
+<td style="text-align: left;"><a href="./#define-endstone_export"><strong>ENDSTONE_EXPORT</strong></a>  __attribute__((visibility("default")))<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">define</td>
 <td style="text-align: left;"><a href="./#define-endstone_plugin"><strong>ENDSTONE_PLUGIN</strong></a> (Name, Version, MainClass) <br></td>
 </tr>
 </tbody>
 </table>
 <h2 id="macro-definition-documentation">Macro Definition Documentation<a class="headerlink" href="#macro-definition-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="define-endstone_export">define ENDSTONE_EXPORT<a class="headerlink" href="#define-endstone_export" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#define ENDSTONE_EXPORT __attribute__((visibility(&quot;default&quot;)))</span>
+</span></code></pre></div>
+<hr>
+
 <h3 id="define-endstone_plugin">define ENDSTONE_PLUGIN<a class="headerlink" href="#define-endstone_plugin" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#define ENDSTONE_PLUGIN (</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Name</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Version</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">MainClass</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PluginDescriptionBuilderImpl</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">PluginDescriptionBuilder</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>\
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w">                                                                                  </span>\
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">PluginDescriptionBuilderImpl</span><span class="p">();</span><span class="w">                                                      </span>\
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">};</span><span class="w">                                                                                       </span>\
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">PluginDescriptionBuilderImpl</span><span class="w"> </span><span class="n">builder</span><span class="p">;</span><span class="w">                                             </span>\
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">EndstonePluginImpl</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">MainClass</span><span class="w"> </span><span class="p">{</span><span class="w">                                            </span>\
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w">                                                                                  </span>\
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="n">EndstonePluginImpl</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w">                                                      </span>\
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginDescription</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w">                   </span>\
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">{</span><span class="w">                                                                                    </span>\
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">description_</span><span class="p">;</span><span class="w">                                                             </span>\
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="p">}</span><span class="w">                                                                                    </span>\
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">                                                                                             </span>\
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w">                                                                                 </span><span class="err">\</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginDescription</span><span class="w"> </span><span class="n">description_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Version</span><span class="p">);</span><span class="w">             </span>\
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">};</span><span class="w">                                                                                       </span>\
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span><span class="w"> </span><span class="n">ENDSTONE_EXPORT</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="n">init_endstone_plugin</span><span class="p">()</span><span class="w">     </span>\
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="p">{</span><span class="w">                                                                                        </span>\
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EndstonePluginImpl</span><span class="p">();</span><span class="w">                                                  </span>\
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">                                                                            </span>\
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="p">}</span><span class="w">                                                                                        </span>\
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="n">PluginDescriptionBuilderImpl</span><span class="o">::</span><span class="n">PluginDescriptionBuilderImpl</span><span class="p">()</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#define ENDSTONE_PLUGIN (</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Name</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Version</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">MainClass</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PluginDescriptionBuilderImpl</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">PluginDescriptionBuilder</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>\
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w">                                                                                  </span>\
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">PluginDescriptionBuilderImpl</span><span class="p">();</span><span class="w">                                                      </span>\
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">};</span><span class="w">                                                                                       </span>\
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">PluginDescriptionBuilderImpl</span><span class="w"> </span><span class="n">builder</span><span class="p">;</span><span class="w">                                             </span>\
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">EndstonePluginImpl</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">MainClass</span><span class="w"> </span><span class="p">{</span><span class="w">                                            </span>\
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w">                                                                                  </span>\
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="n">EndstonePluginImpl</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w">                                                      </span>\
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginDescription</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w">                   </span>\
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="p">{</span><span class="w">                                                                                    </span>\
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">description_</span><span class="p">;</span><span class="w">                                                             </span>\
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="p">}</span><span class="w">                                                                                    </span>\
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                                                                                             </span>\
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w">                                                                                 </span><span class="err">\</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginDescription</span><span class="w"> </span><span class="n">description_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Version</span><span class="p">);</span><span class="w">             </span>\
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">};</span><span class="w">                                                                                       </span>\
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span><span class="w"> </span><span class="n">ENDSTONE_EXPORT</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="n">init_endstone_plugin</span><span class="p">()</span><span class="w">     </span>\
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">{</span><span class="w">                                                                                        </span>\
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EndstonePluginImpl</span><span class="p">();</span><span class="w">                                                  </span>\
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">                                                                            </span>\
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="p">}</span><span class="w">                                                                                        </span>\
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="n">PluginDescriptionBuilderImpl</span><span class="o">::</span><span class="n">PluginDescriptionBuilderImpl</span><span class="p">()</span>
 </span></code></pre></div>
 <hr>
 

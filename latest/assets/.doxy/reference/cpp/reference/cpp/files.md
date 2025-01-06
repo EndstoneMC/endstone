@@ -7,7 +7,6 @@ Here is a list of all files with brief descriptions:
 * **dir** [**include**](dir_d44c64559bbebec7f509842c48db8b23.md)     
     * **dir** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md)     
         * **file** [**color\_format.h**](color__format_8h.md)     
-        * **file** [**endstone.h**](endstone_8h.md)     
         * **file** [**game\_mode.h**](game__mode_8h.md)     
         * **dir** [**actor**](dir_dd7779a583e02d88c9a89a2c881c3946.md)     
             * **file** [**actor.h**](actor_8h.md)     
@@ -143,4 +142,6 @@ Here is a list of all files with brief descriptions:
         * **file** [**player.h**](player_8h.md)     
         * **file** [**server.h**](server_8h.md)     
         * **file** [**skin.h**](skin_8h.md)     
+        * **file** [**variant.h**](variant_8h.md)     
+        * **file** [**version.h**](version_8h.md)     
 

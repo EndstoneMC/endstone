@@ -27,6 +27,7 @@
 
 | Type | Name |
 | ---: | :--- |
+| namespace | [**core**](namespaceendstone_1_1core.md) <br> |
 | namespace | [**detail**](namespaceendstone_1_1detail.md) <br> |
 
 

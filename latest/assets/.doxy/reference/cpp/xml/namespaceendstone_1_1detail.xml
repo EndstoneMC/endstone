@@ -2,10 +2,13 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespaceendstone_1_1detail" kind="namespace" language="C++">
     <compoundname>endstone::detail</compoundname>
+    <innerclass refid="classendstone_1_1detail_1_1CommandBuilder" prot="public">endstone::detail::CommandBuilder</innerclass>
+    <innerclass refid="classendstone_1_1detail_1_1PermissionBuilder" prot="public">endstone::detail::PermissionBuilder</innerclass>
+    <innerclass refid="structendstone_1_1detail_1_1PluginDescriptionBuilder" prot="public">endstone::detail::PluginDescriptionBuilder</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/inventory/item_stack.h" line="25" column="1"/>
+    <location file="include/endstone/plugin/plugin.h" line="208" column="1"/>
   </compounddef>
 </doxygen>

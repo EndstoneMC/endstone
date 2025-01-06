@@ -23,7 +23,6 @@
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
     <innerclass refid="classendstone_1_1PluginCommand" prot="public">endstone::PluginCommand</innerclass>
     <innerclass refid="classendstone_1_1ProxiedCommandSender" prot="public">endstone::ProxiedCommandSender</innerclass>
-    <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
     <innerclass refid="classendstone_1_1ActorDeathEvent" prot="public">endstone::ActorDeathEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorEvent" prot="public">endstone::ActorEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorKnockbackEvent" prot="public">endstone::ActorKnockbackEvent</innerclass>
@@ -103,6 +102,8 @@
     <innerclass refid="classendstone_1_1SocketAddress" prot="public">endstone::SocketAddress</innerclass>
     <innerclass refid="classendstone_1_1UUID" prot="public">endstone::UUID</innerclass>
     <innerclass refid="classendstone_1_1Vector" prot="public">endstone::Vector</innerclass>
+    <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
+    <innernamespace refid="namespaceendstone_1_1core">endstone::core</innernamespace>
     <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="block__face_8h_1aec620d05bd961a002c83b008e178a785" prot="public" static="no" strong="yes">
@@ -685,40 +686,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="endstone_8h_1a653e5211ad2fdddf9d08c7353381631d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename...</type>
-            <declname>Func</declname>
-            <defname>Func</defname>
-          </param>
-        </templateparamlist>
-        <type></type>
-        <definition>endstone::overloaded</definition>
-        <argsstring>(Func...) -&gt; overloaded&lt; Func... &gt;</argsstring>
-        <name>overloaded</name>
-        <param>
-          <type>Func...</type>
-        </param>
-        <briefdescription>
-<para>Deduction guide. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="templateparam"><parameteritem>
-<parameternamelist>
-<parametername>Func</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Types of function objects. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/endstone.h" line="60" column="1" declfile="include/endstone/endstone.h" declline="60" declcolumn="1"/>
-      </memberdef>
       <memberdef kind="function" id="uuid_8h_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool endstone::operator==</definition>
@@ -882,6 +849,40 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/util/uuid.h" line="145" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="145" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="variant_8h_1a653e5211ad2fdddf9d08c7353381631d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Func</declname>
+            <defname>Func</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::overloaded</definition>
+        <argsstring>(Func...) -&gt; overloaded&lt; Func... &gt;</argsstring>
+        <name>overloaded</name>
+        <param>
+          <type>Func...</type>
+        </param>
+        <briefdescription>
+<para>Deduction guide. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Types of function objects. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/variant.h" line="32" column="1" declfile="include/endstone/variant.h" declline="32" declcolumn="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

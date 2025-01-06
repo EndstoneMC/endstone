@@ -30,7 +30,7 @@
 
 #include <fmt/format.h>
 
-#include "endstone/endstone.h"
+#include "endstone/variant.h"
 
 namespace endstone {
 
@@ -57,8 +57,8 @@ struct formatter<endstone::BlockStates::mapped_type> : formatter<string_view> {
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
         return std::visit(endstone::overloaded{
-                              [&ctx](const std::string &arg) { return format_to(ctx.out(), "{:?}", arg); },
-                              [&ctx](auto &&arg) { return format_to(ctx.out(), "{}", arg); },
+                              [&ctx](const std::string &arg) { return fmt::format_to(ctx.out(), "{:?}", arg); },
+                              [&ctx](auto &&arg) { return fmt::format_to(ctx.out(), "{}", arg); },
                           },
                           val);
     }
@@ -71,7 +71,7 @@ struct formatter<endstone::BlockStates::value_type> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "{:?}={}", val.first, val.second);
+        return fmt::format_to(ctx.out(), "{:?}={}", val.first, val.second);
     }
 };
 
@@ -82,7 +82,7 @@ struct formatter<endstone::BlockStates> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "[{}]", join(val.begin(), val.end(), ","));
+        return fmt::format_to(ctx.out(), "[{}]", join(val.begin(), val.end(), ","));
     }
 };
 
@@ -93,7 +93,7 @@ struct formatter<endstone::BlockData> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "BlockData(type={}, block_states={})", val.getType(), val.getBlockStates());
+        return fmt::format_to(ctx.out(), "BlockData(type={}, block_states={})", val.getType(), val.getBlockStates());
     }
 };
 }  // namespace fmt

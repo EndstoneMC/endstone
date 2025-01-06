@@ -25,6 +25,13 @@
 
 
 
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| class | [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) <br> |
+| class | [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) <br> |
+| struct | [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) <br> |
 
 
 
@@ -77,5 +84,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/inventory/item_stack.h`
+The documentation for this class was generated from the following file `include/endstone/plugin/plugin.h`
 

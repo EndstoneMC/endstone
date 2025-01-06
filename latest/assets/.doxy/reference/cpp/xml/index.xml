@@ -302,6 +302,19 @@
     <member refid="classendstone_1_1Command_1a9b47871a5d15778160cd8afb5a7bdb3c" kind="function"><name>asPluginCommand</name></member>
     <member refid="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" kind="function"><name>allowChangesFrom</name></member>
   </compound>
+  <compound refid="classendstone_1_1detail_1_1CommandBuilder" kind="class"><name>endstone::detail::CommandBuilder</name>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1a743a95f547b137b5c966eb97cc4bff20" kind="variable"><name>name_</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1a5b6736d275eb7ac68093c00e767a335e" kind="variable"><name>description_</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1a7f9b1bf8c6db40d62cb9638e13bb4c2c" kind="variable"><name>usages_</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1a5225cadbb8961bab0f5807708df3a1a7" kind="variable"><name>aliases_</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1a9dbe62d474febee24f93dce932c3e350" kind="variable"><name>permissions_</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1af521edee7ae7cce6c476430b71fbc570" kind="function"><name>CommandBuilder</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1ab9220b324fb79e09327ed016bb39499f" kind="function"><name>description</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1ab37a3f1e07e8c236e55c54864fbb20c2" kind="function"><name>usages</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1aeb53ceaadb389037c0cc1fc88c440c0f" kind="function"><name>aliases</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1a795d3f3fe4bfb83895501572709b2751" kind="function"><name>permissions</name></member>
+    <member refid="classendstone_1_1detail_1_1CommandBuilder_1a23eb482bf7b9baa80c637436c32e0245" kind="function"><name>build</name></member>
+  </compound>
   <compound refid="classendstone_1_1CommandExecutor" kind="class"><name>endstone::CommandExecutor</name>
     <member refid="classendstone_1_1CommandExecutor_1a9dfc0b1fe01086e280de0d8202f6482c" kind="function"><name>~CommandExecutor</name></member>
     <member refid="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" kind="function"><name>onCommand</name></member>
@@ -520,7 +533,7 @@
     <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kind="function"><name>removeBan</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
-    <member refid="classendstone_1_1ItemStack_1a48f826c758828421a29e85e3f8c98126" kind="friend"><name>detail::EndstoneItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" kind="variable"><name>type_</name></member>
     <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" kind="variable"><name>amount_</name></member>
     <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" kind="function"><name>ItemStack</name></member>
@@ -530,8 +543,8 @@
     <member refid="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1a4eeac443885604ca40fbc64bc05ddb3b" kind="function"><name>setAmount</name></member>
-    <member refid="classendstone_1_1ItemStack_1a404e08288c613ebc5f77bb4c009e0418" kind="function"><name>asEndstoneItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1ad9905cad5b9b5e86e90a4c0deefc33a2" kind="function"><name>asEndstoneItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1af78d10fe5478d07a49b43498a7748265" kind="function"><name>asEndstoneItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a255c30f5d74812aed24d5fab49847384" kind="function"><name>asEndstoneItemStack</name></member>
   </compound>
   <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
     <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" kind="variable"><name>text_</name></member>
@@ -723,6 +736,17 @@
     <member refid="classendstone_1_1PermissionAttachmentInfo_1ae9ffb138da5a3f122b22ef0b9d58620b" kind="function"><name>getAttachment</name></member>
     <member refid="classendstone_1_1PermissionAttachmentInfo_1a86e337719e9f2625f7a8a1760c630ecb" kind="function"><name>getValue</name></member>
   </compound>
+  <compound refid="classendstone_1_1detail_1_1PermissionBuilder" kind="class"><name>endstone::detail::PermissionBuilder</name>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a18383984bb3a7867d8d764d51ed3ec2f" kind="variable"><name>name_</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a63172ebb73a82e9850e42cfc927bef8b" kind="variable"><name>description_</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a91cc8149845859848f85f27aa589aaea" kind="variable"><name>default_value_</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1aaea36e51d398fef9a6bbe851a2e6af71" kind="variable"><name>children_</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a2cd08767e0a17368e821687b678653c9" kind="function"><name>PermissionBuilder</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1ae98628f969253bb6581684026834530e" kind="function"><name>description</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1aafeeb03f1ca5e136f7eba6672c3103ef" kind="function"><name>default_</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a65bfb8edc3c2595a07d5379234f8681b" kind="function"><name>children</name></member>
+    <member refid="classendstone_1_1detail_1_1PermissionBuilder_1afe7346c555708ae3575b1f678b47850d" kind="function"><name>build</name></member>
+  </compound>
   <compound refid="classendstone_1_1Player" kind="class"><name>endstone::Player</name>
     <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" kind="typedef"><name>FormVariant</name></member>
     <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" kind="function"><name>asPlayer</name></member>
@@ -911,7 +935,7 @@
   </compound>
   <compound refid="classendstone_1_1Plugin" kind="class"><name>endstone::Plugin</name>
     <member refid="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" kind="friend"><name>PluginLoader</name></member>
-    <member refid="classendstone_1_1Plugin_1ad9de0bdae1894ad40e33f0e12022cdbf" kind="friend"><name>detail::EndstonePluginManager</name></member>
+    <member refid="classendstone_1_1Plugin_1af89a58b391c1b932c5d3580fc2ccb764" kind="friend"><name>core::EndstonePluginManager</name></member>
     <member refid="classendstone_1_1Plugin_1aee2a3ea3a977bc44ea80f5a74ca5c454" kind="variable"><name>enabled_</name></member>
     <member refid="classendstone_1_1Plugin_1adfef6b28e088eeba9322262d6c4bab5b" kind="variable"><name>loader_</name></member>
     <member refid="classendstone_1_1Plugin_1abb783c24dd0a315c59a4c03e619779b3" kind="variable"><name>server_</name></member>
@@ -982,6 +1006,26 @@
     <member refid="classendstone_1_1PluginDescription_1ab55182911b0a4b0c0fe4060d61549be4" kind="function"><name>getDefaultPermission</name></member>
     <member refid="classendstone_1_1PluginDescription_1a5a1d5e827187d8a3347c698e943e9196" kind="function"><name>getCommands</name></member>
     <member refid="classendstone_1_1PluginDescription_1adb8e5df5fe24327b545c5acf0b0d2c1b" kind="function"><name>getPermissions</name></member>
+  </compound>
+  <compound refid="structendstone_1_1detail_1_1PluginDescriptionBuilder" kind="struct"><name>endstone::detail::PluginDescriptionBuilder</name>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a0db96dd45fceffa8c0005a1602a4a2ab" kind="variable"><name>description</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1adde71e03352151d967de543af50a99ec" kind="variable"><name>load</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a8eb373768ce82bd30b40d2323b5e4747" kind="variable"><name>authors</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1af359b32d95180c450c833f1c2a613f52" kind="variable"><name>contributors</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a8a1fecdffd0cef1ae40381a674ac386c" kind="variable"><name>website</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a55efe04d2fdefb11a3841a1d9408bddc" kind="variable"><name>prefix</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a20d4590caee1fb39c5c456b47cf6643e" kind="variable"><name>provides</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ad9d28f0e0379e9b533ad4a2fca271f5e" kind="variable"><name>depend</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1aa9af4af5e1001e063077bad5eb96ca17" kind="variable"><name>soft_depend</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a83248bb532a1af1113d663fa7646f524" kind="variable"><name>load_before</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a792705cd59585b0d75ce982c15c63cce" kind="variable"><name>default_permission</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1acddfac13f3632912867ac1c39a35d8af" kind="variable"><name>commands</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a9eed110ec8553b4838800d0df4cdbba2" kind="variable"><name>permissions</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ace2a4ce50c419c27999aa80bd448fe47" kind="function"><name>command</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1af03a2eb6b49a76328e0c0df6cb312c63" kind="function"><name>permission</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a80472466bde213571daf3ba7e3644079" kind="function"><name>build</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ad397b79716b4afbefe7b4148ed35767e" kind="function"><name>buildCommands</name></member>
+    <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a9ad5787e36692ad64c187511c7bf59c5" kind="function"><name>buildPermissions</name></member>
   </compound>
   <compound refid="classendstone_1_1PluginDisableEvent" kind="class"><name>endstone::PluginDisableEvent</name>
     <member refid="classendstone_1_1PluginDisableEvent_1a995d4dc150131f31d6a0e3f70c684301" kind="variable"><name>NAME</name></member>
@@ -1442,7 +1486,6 @@
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
     <member refid="result_8h_1a4af084d432127e336ffec03d016a299a" kind="typedef"><name>Result</name></member>
-    <member refid="endstone_8h_1a653e5211ad2fdddf9d08c7353381631d" kind="function"><name>overloaded</name></member>
     <member refid="uuid_8h_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
     <member refid="uuid_8h_1ac40f4f96efb610d56f90c6541fc8b400" kind="function"><name>operator&lt;</name></member>
     <member refid="uuid_8h_1a96fb3e11970608db1df12feb7a3a829e" kind="function"><name>operator!=</name></member>
@@ -1451,6 +1494,9 @@
     <member refid="uuid_8h_1af337ccd795abe8d4ca38aeffcd6066e7" kind="function"><name>operator&gt;=</name></member>
     <member refid="uuid_8h_1af2cf5277faf4607f09dbd0060c401d53" kind="function"><name>swap</name></member>
     <member refid="uuid_8h_1a3d5bde372c0cb7aefcad787a85d1f551" kind="function"><name>hash_value</name></member>
+    <member refid="variant_8h_1a653e5211ad2fdddf9d08c7353381631d" kind="function"><name>overloaded</name></member>
+  </compound>
+  <compound refid="namespaceendstone_1_1core" kind="namespace"><name>endstone::core</name>
   </compound>
   <compound refid="namespaceendstone_1_1detail" kind="namespace"><name>endstone::detail</name>
   </compound>
@@ -1507,17 +1553,6 @@
   <compound refid="plugin__command_8h" kind="file"><name>plugin_command.h</name>
   </compound>
   <compound refid="proxied__command__sender_8h" kind="file"><name>proxied_command_sender.h</name>
-  </compound>
-  <compound refid="endstone_8h" kind="file"><name>endstone.h</name>
-    <member refid="endstone_8h_1a5293e6d0f7cb888f6ac099548191fc09" kind="define"><name>ENDSTONE_STRINGIFY</name></member>
-    <member refid="endstone_8h_1a8eef1a1b39f5be9d7fdb63f61f6e6f41" kind="define"><name>ENDSTONE_TOSTRING</name></member>
-    <member refid="endstone_8h_1ad775ac2522a4205f4c0defcd1015c422" kind="define"><name>ENDSTONE_VERSION_MAJOR</name></member>
-    <member refid="endstone_8h_1a47af324054528678a066e32d3b2c8d0c" kind="define"><name>ENDSTONE_VERSION_MINOR</name></member>
-    <member refid="endstone_8h_1a1a384214544c4bcb200df812e5ac2bc9" kind="define"><name>ENDSTONE_VERSION_PATCH</name></member>
-    <member refid="endstone_8h_1a4b2c4ab328be64dd58f83fcfca8cc2e0" kind="define"><name>ENDSTONE_API_VERSION</name></member>
-    <member refid="endstone_8h_1ae90efa410737021fd43a9673ae189994" kind="define"><name>ENDSTONE_MAX_PLAYERS</name></member>
-    <member refid="endstone_8h_1a730919a6d09c2036dc1159779092ee86" kind="define"><name>ENDSTONE_EXPORT</name></member>
-    <member refid="endstone_8h_1ab82ab1fabc0fdd70997b22e6526a8d19" kind="define"><name>ENDSTONE_NOINLINE</name></member>
   </compound>
   <compound refid="actor__death__event_8h" kind="file"><name>actor_death_event.h</name>
   </compound>
@@ -1654,6 +1689,7 @@
   <compound refid="player_8h" kind="file"><name>player.h</name>
   </compound>
   <compound refid="plugin_8h" kind="file"><name>plugin.h</name>
+    <member refid="plugin_8h_1a730919a6d09c2036dc1159779092ee86" kind="define"><name>ENDSTONE_EXPORT</name></member>
     <member refid="plugin_8h_1a99de7e16aa3fa996fb7a6d528bccb394" kind="define"><name>ENDSTONE_PLUGIN</name></member>
   </compound>
   <compound refid="plugin__description_8h" kind="file"><name>plugin_description.h</name>
@@ -1697,6 +1733,16 @@
   <compound refid="uuid_8h" kind="file"><name>uuid.h</name>
   </compound>
   <compound refid="vector_8h" kind="file"><name>vector.h</name>
+  </compound>
+  <compound refid="variant_8h" kind="file"><name>variant.h</name>
+  </compound>
+  <compound refid="version_8h" kind="file"><name>version.h</name>
+    <member refid="version_8h_1a5293e6d0f7cb888f6ac099548191fc09" kind="define"><name>ENDSTONE_STRINGIFY</name></member>
+    <member refid="version_8h_1a8eef1a1b39f5be9d7fdb63f61f6e6f41" kind="define"><name>ENDSTONE_TOSTRING</name></member>
+    <member refid="version_8h_1ad775ac2522a4205f4c0defcd1015c422" kind="define"><name>ENDSTONE_VERSION_MAJOR</name></member>
+    <member refid="version_8h_1a47af324054528678a066e32d3b2c8d0c" kind="define"><name>ENDSTONE_VERSION_MINOR</name></member>
+    <member refid="version_8h_1a1a384214544c4bcb200df812e5ac2bc9" kind="define"><name>ENDSTONE_VERSION_PATCH</name></member>
+    <member refid="version_8h_1a4b2c4ab328be64dd58f83fcfca8cc2e0" kind="define"><name>ENDSTONE_API_VERSION</name></member>
   </compound>
   <compound refid="dir_dd7779a583e02d88c9a89a2c881c3946" kind="dir"><name>include/endstone/actor</name>
   </compound>

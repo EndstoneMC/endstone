@@ -33,6 +33,10 @@
       <node id="5">
         <label>string</label>
       </node>
+      <node id="9">
+        <label>endstone/variant.h</label>
+        <link refid="variant_8h_source"/>
+      </node>
       <node id="19">
         <label>string_view</label>
       </node>
@@ -65,10 +69,6 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-      </node>
-      <node id="9">
-        <label>endstone/endstone.h</label>
-        <link refid="endstone_8h_source"/>
       </node>
       <node id="6">
         <label>endstone/block/block_data.h</label>
@@ -207,7 +207,7 @@
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockState" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;BlockState(pos=BlockPos(x={},<sp/>y={},<sp/>z={}),<sp/>type={},<sp/>data={})&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" kindref="member">getX</ref>(),</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;BlockState(pos=BlockPos(x={},<sp/>y={},<sp/>z={}),<sp/>type={},<sp/>data={})&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" kindref="member">getX</ref>(),</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val.<ref refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" kindref="member">getY</ref>(),<sp/>val.<ref refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" kindref="member">getZ</ref>(),<sp/>val.<ref refid="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" kindref="member">getType</ref>(),<sp/>*val.<ref refid="classendstone_1_1BlockState_1aec5f854487918a3100a6da6383816329" kindref="member">getData</ref>());</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="152"><highlight class="normal">};</highlight></codeline>

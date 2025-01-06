@@ -549,7 +549,23 @@
          <lastmod>2025-01-06</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/namespaceendstone_1_1core/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespaceendstone_1_1detail/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1detail_1_1CommandBuilder/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1detail_1_1PermissionBuilder/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/structendstone_1_1detail_1_1PluginDescriptionBuilder/</loc>
          <lastmod>2025-01-06</lastmod>
     </url>
     <url>
@@ -610,14 +626,6 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/color__format_8h_source/</loc>
-         <lastmod>2025-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/endstone_8h/</loc>
-         <lastmod>2025-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/endstone_8h_source/</loc>
          <lastmod>2025-01-06</lastmod>
     </url>
     <url>
@@ -1610,6 +1618,22 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/skin_8h_source/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/variant_8h/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/variant_8h_source/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/version_8h/</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/version_8h_source/</loc>
          <lastmod>2025-01-06</lastmod>
     </url>
     <url>

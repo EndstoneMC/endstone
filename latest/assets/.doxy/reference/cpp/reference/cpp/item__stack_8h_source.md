@@ -32,7 +32,7 @@
 
 namespace endstone {
 
-namespace detail {
+namespace core {
 class EndstoneItemStack;
 }
 
@@ -65,14 +65,14 @@ public:
     }
 
 protected:
-    friend class detail::EndstoneItemStack;
+    friend class core::EndstoneItemStack;
 
-    virtual const detail::EndstoneItemStack *asEndstoneItemStack() const
+    virtual const core::EndstoneItemStack *asEndstoneItemStack() const
     {
         return nullptr;
     }
 
-    virtual detail::EndstoneItemStack *asEndstoneItemStack()
+    virtual core::EndstoneItemStack *asEndstoneItemStack()
     {
         return nullptr;
     }
@@ -92,7 +92,7 @@ struct formatter<endstone::ItemStack> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
+        return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
     }
 };
 }  // namespace fmt

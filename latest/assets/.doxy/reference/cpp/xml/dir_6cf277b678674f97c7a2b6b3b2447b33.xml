@@ -19,13 +19,14 @@
     <innerdir refid="dir_19c52f9ea81a2cf7449c80dcee80d6f0">include/endstone/scoreboard</innerdir>
     <innerdir refid="dir_89b85071337bf933dea6c29b4c6a4410">include/endstone/util</innerdir>
     <innerfile refid="color__format_8h">color_format.h</innerfile>
-    <innerfile refid="endstone_8h">endstone.h</innerfile>
     <innerfile refid="game__mode_8h">game_mode.h</innerfile>
     <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="message_8h">message.h</innerfile>
     <innerfile refid="player_8h">player.h</innerfile>
     <innerfile refid="server_8h">server.h</innerfile>
     <innerfile refid="skin_8h">skin.h</innerfile>
+    <innerfile refid="variant_8h">variant.h</innerfile>
+    <innerfile refid="version_8h">version.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

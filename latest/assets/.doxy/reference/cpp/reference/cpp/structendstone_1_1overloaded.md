@@ -12,7 +12,7 @@
 
 _Helper type for visitors._ [More...](#detailed-description)
 
-* `#include <endstone/endstone.h>`
+* `#include <endstone/variant.h>`
 
 
 
@@ -95,5 +95,5 @@ Inherits the following classes: endstone::Func
     
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/endstone.h`
+The documentation for this class was generated from the following file `include/endstone/variant.h`
 

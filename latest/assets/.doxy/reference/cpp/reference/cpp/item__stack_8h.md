@@ -31,7 +31,7 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br> |
-| namespace | [**detail**](namespaceendstone_1_1detail.md) <br> |
+| namespace | [**core**](namespaceendstone_1_1core.md) <br> |
 | namespace | [**fmt**](namespacefmt.md) <br> |
 
 
