@@ -25,12 +25,12 @@
 
 Container &Player::getInventory()
 {
-    return ENDSTONE_SYMCALL(&Player::getInventory, this);
+    ENDSTONE_SYMCALL(&Player::getInventory, this);
 }
 
 const std::string &Player::getName() const
 {
-    return ENDSTONE_SYMCALL(&Player::getName, this);
+    ENDSTONE_SYMCALL(&Player::getName, this);
 }
 
 GameType Player::getPlayerGameType() const

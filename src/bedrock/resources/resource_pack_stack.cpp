@@ -34,5 +34,5 @@ const PackManifest &PackInstance::getManifest() const
 std::unique_ptr<ResourcePackStack> ResourcePackStack::deserialize(
     std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo)
 {
-    return ENDSTONE_SYMCALL(&ResourcePackStack::deserialize, file_stream, repo);
+     ENDSTONE_SYMCALL(&ResourcePackStack::deserialize, file_stream, repo);
 }

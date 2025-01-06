@@ -25,7 +25,7 @@ target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook
 if (ENDSTONE_ENABLE_DEVTOOLS)
     target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
 endif ()
-if (WIN32)
+if (MSVC)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
     target_link_options(endstone_runtime PRIVATE "/INCREMENTAL:NO")
 endif ()
@@ -45,7 +45,7 @@ if (UNIX)
 endif ()
 
 if (WIN32)
-    add_library(endstone_runtime_loader SHARED "runtime_loader.cpp")
+    add_library(endstone_runtime_loader SHARED loader.cpp)
     target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS)
 endif ()
 

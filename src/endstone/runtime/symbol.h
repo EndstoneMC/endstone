@@ -14,37 +14,69 @@
 
 #pragma once
 
+#include <array>
 #include <memory>
 #include <stdexcept>
 #include <string_view>
+#include <utility>
 
 #include "cast.h"
+#include "endstone/core/platform.h"
 
 namespace endstone::runtime {
 
-template <typename Key, typename Value, std::size_t Size>
+template <std::size_t Size>
 class SymbolMap {
+    using Map = std::array<std::pair<std::string_view, std::size_t>, Size>;
+
 public:
-    constexpr explicit SymbolMap(std::array<std::pair<Key, Value>, Size> data) : data_(data) {}
-    constexpr Value at(const Key &key) const
+    constexpr SymbolMap(Map data) : data_(std::move(data)) {}
+
+    [[nodiscard]] constexpr std::size_t at(const std::string_view &key) const
     {
-        for (const auto &pair : data_) {
-            if (pair.first == key) {
-                return pair.second;
-            }
+        auto it = find(key);  // Use "find" to locate the key
+        if (it != data_.end()) {
+            return it->second;  // Return the value if key is found
         }
-        throw std::out_of_range("Key not found in ConstexprMap");
+        throw std::out_of_range("key not found");
+    }
+
+    [[nodiscard]] constexpr auto find(const std::string_view &key) const -> typename Map::const_iterator
+    {
+        return std::find_if(data_.begin(), data_.end(), [&key](const auto &pair) { return pair.first == key; });
+    }
+
+    [[nodiscard]] constexpr bool contains(const std::string_view &key) const
+    {
+        return find(key) != data_.end();
     }
 
 private:
-    std::array<std::pair<Key, Value>, Size> data_;
+    Map data_;
 };
 
-constexpr void *get_symbol_addr(std::string_view name);
+static constexpr auto gSymbols = SymbolMap<70>({{
+#ifdef _WIN32
+#include "windows/symbols.inc"
+
+#endif
+}});
+
+constexpr bool has_symbol(const std::string_view name)
+{
+    return gSymbols.contains(name);
+}
+
+inline void *get_symbol_addr(std::string_view name)
+{
+    static auto *executable_base = core::get_executable_base();
+    return static_cast<char *>(executable_base) + gSymbols.at(name);
+}
 }  // namespace endstone::runtime
 
-#define ENDSTONE_SYMCALL(fp, ...) \
-    std::invoke(endstone::runtime::fp_cast(fp, endstone::runtime::get_symbol_addr(__FUNCDNAME__)), ##__VA_ARGS__)
+#define ENDSTONE_SYMCALL(fp, ...)                                                                   \
+    static_assert(endstone::runtime::has_symbol(__FUNCDNAME__), "undefined symbol " __FUNCDNAME__); \
+    return std::invoke(endstone::runtime::fp_cast(fp, endstone::runtime::get_symbol_addr(__FUNCDNAME__)), ##__VA_ARGS__)
 
 namespace endstone::runtime {
 #ifdef _WIN32

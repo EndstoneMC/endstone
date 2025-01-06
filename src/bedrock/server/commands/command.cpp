@@ -30,7 +30,7 @@ bool RelativeFloat::isRelative() const
 
 std::string Command::getCommandName() const
 {
-    return ENDSTONE_SYMCALL(&Command::getCommandName, this);
+    ENDSTONE_SYMCALL(&Command::getCommandName, this);
 }
 
 void Command::run(CommandOrigin const &origin, CommandOutput &output) const

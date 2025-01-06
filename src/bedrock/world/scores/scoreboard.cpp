@@ -153,7 +153,7 @@ void Scoreboard::resetPlayerScore(const ScoreboardId &id)
 bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
 {
     bool (Scoreboard::*func)(const ScoreboardId &, Objective &) = &Scoreboard::resetPlayerScore;
-    return ENDSTONE_SYMCALL(func, this, id, objective);
+    ENDSTONE_SYMCALL(func, this, id, objective);
 }
 
 int Scoreboard::modifyPlayerScore(bool &success, const ScoreboardId &id, Objective &objective, int score,

@@ -19,5 +19,5 @@
 std::unique_ptr<CraftingDataPacket> CraftingDataPacket::prepareFromRecipes(const Recipes &recipe,
                                                                            bool only_crafting_recipes)
 {
-    return ENDSTONE_SYMCALL(&CraftingDataPacket::prepareFromRecipes, recipe, only_crafting_recipes);
+    ENDSTONE_SYMCALL(&CraftingDataPacket::prepareFromRecipes, recipe, only_crafting_recipes);
 }

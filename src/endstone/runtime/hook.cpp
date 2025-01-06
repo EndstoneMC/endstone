@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/hook.h"
+#include "hook.h"
 
 #include <funchook.h>
 
@@ -22,7 +22,7 @@
 
 #include <spdlog/spdlog.h>
 
-namespace endstone::core::hook {
+namespace endstone::hook {
 
 namespace {
 std::unordered_map<void *, void *> gOriginalsByDetour;
@@ -60,12 +60,12 @@ void install()
             funchook_t *hook = funchook_create();
             int status = funchook_prepare(hook, &original, detour);
             if (status != 0) {
-                throw std::system_error(status, hook_error_category(), fmt::format("Unable to hook {}", name));
+                throw std::system_error(status, error_category(), fmt::format("Unable to hook {}", name));
             }
 
             status = funchook_install(hook, 0);
             if (status != 0) {
-                throw std::system_error(status, hook_error_category(), fmt::format("Unable to hook {}", name));
+                throw std::system_error(status, error_category(), fmt::format("Unable to hook {}", name));
             }
 
             spdlog::debug("{}: {} -> {} -> {}", name, target, detour, original);
@@ -127,4 +127,4 @@ const std::error_category &hook_error_category()
     } category;
     return category;
 }
-}  // namespace endstone::core::hook
+}  // namespace endstone::hook

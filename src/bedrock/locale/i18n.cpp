@@ -18,5 +18,5 @@
 
 I18n &getI18n()
 {
-    return ENDSTONE_SYMCALL(&getI18n);
+     ENDSTONE_SYMCALL(&getI18n);
 }

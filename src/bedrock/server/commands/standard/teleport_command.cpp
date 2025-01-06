@@ -21,8 +21,8 @@ TeleportTarget TeleportCommand::computeTarget(Actor &victim, Vec3 destination, V
                                               std::optional<RotationCommandUtils::RotationData> const &rotation_data,
                                               int command_version)
 {
-    return ENDSTONE_SYMCALL(&TeleportCommand::computeTarget, victim, destination, facing_position,
-                            destination_dimension, rotation_data, command_version);
+    ENDSTONE_SYMCALL(&TeleportCommand::computeTarget, victim, destination, facing_position, destination_dimension,
+                     rotation_data, command_version);
 }
 
 void TeleportCommand::applyTarget(Actor &victim, TeleportTarget target, bool keep_velocity)

@@ -67,6 +67,5 @@ Command *MinecraftCommands::compileCommand(HashedString const &command_str, Comm
                                            CurrentCmdVersion command_version,
                                            std::function<void(const std::string &)> on_parser_error)
 {
-    return ENDSTONE_SYMCALL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version,
-                            on_parser_error);
+    ENDSTONE_SYMCALL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version, on_parser_error);
 }

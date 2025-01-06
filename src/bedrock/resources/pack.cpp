@@ -31,6 +31,6 @@ std::unique_ptr<Pack> Pack::createPack(ResourceLocation const &file_location, Pa
                                        Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider,
                                        PackSourceReport *report, Core::Path const &zip_sub_dir)
 {
-    return ENDSTONE_SYMCALL(&Pack::createPack, file_location, type, origin, manifest_factory, key_provider, report,
+     ENDSTONE_SYMCALL(&Pack::createPack, file_location, type, origin, manifest_factory, key_provider, report,
                             zip_sub_dir);
 }

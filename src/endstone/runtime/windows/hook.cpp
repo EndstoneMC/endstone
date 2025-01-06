@@ -14,15 +14,13 @@
 
 #ifdef _WIN32
 
-#include "endstone/core/hook.h"
-
 #include <Windows.h>
+
 // DbgHelp.h must be included after Windows.h
 #include <DbgHelp.h>
 
 #include <chrono>
 #include <filesystem>
-#include <iostream>
 #include <string>
 #include <system_error>
 #include <unordered_map>
@@ -30,9 +28,10 @@
 #include <spdlog/spdlog.h>
 #include <toml++/toml.h>
 
-#include "endstone/core/os.h"
+#include "endstone/core/platform.h"
+#include "endstone/runtime/hook.h"
 
-namespace endstone::core::hook {
+namespace endstone::hook {
 
 enum SymTagEnum {
     SymTagPublicSymbol = 10,
@@ -81,8 +80,8 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 
     SymCleanup(handle);
 
-    auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    const auto end = std::chrono::high_resolution_clock::now();
+    const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
     spdlog::debug("enumerate_symbols(): time elapsed: {}ms", duration.count());
 }
 }  // namespace
@@ -94,8 +93,8 @@ const std::unordered_map<std::string, void *> &get_detours()
         return detours;
     }
 
-    auto *module_base = os::get_module_base();
-    const auto module_pathname = os::get_module_pathname();
+    auto *module_base = core::get_module_base();
+    const auto module_pathname = core::get_module_pathname();
     const auto &targets = get_targets();
 
     enumerate_symbols(  //
@@ -119,8 +118,8 @@ const std::unordered_map<std::string, void *> &get_targets()
         return targets;
     }
 
-    auto *executable_base = os::get_executable_base();
-    const auto module_pathname = os::get_module_pathname();
+    auto *executable_base = core::get_executable_base();
+    const auto module_pathname = core::get_module_pathname();
     auto symbol_path = std::filesystem::path{module_pathname}.parent_path() / "symbols.toml";
     auto tbl = toml::parse_file(symbol_path.string());
     tbl["windows"].as_table()->for_each([executable_base](const toml::key &key, auto &&val) {
@@ -135,6 +134,6 @@ const std::unordered_map<std::string, void *> &get_targets()
     return targets;
 }
 
-}  // namespace endstone::core::hook
+}  // namespace endstone::hook
 
 #endif

@@ -18,13 +18,13 @@
 
 Block const *BlockDescriptor::tryGetBlockNoLogging() const
 {
-    return ENDSTONE_SYMCALL(&BlockDescriptor::tryGetBlockNoLogging, this);
+    ENDSTONE_SYMCALL(&BlockDescriptor::tryGetBlockNoLogging, this);
 }
 
 namespace ScriptModuleMinecraft::ScriptBlockUtils {
 BlockDescriptor createBlockDescriptor(
     std::string type, std::optional<std::unordered_map<std::string, std::variant<int, std::string, bool>>> states)
 {
-    return ENDSTONE_SYMCALL(&ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor, type, states);
+    ENDSTONE_SYMCALL(&ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor, type, states);
 }
 }  // namespace ScriptModuleMinecraft::ScriptBlockUtils

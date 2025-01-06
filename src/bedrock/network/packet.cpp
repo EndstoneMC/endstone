@@ -18,5 +18,5 @@
 
 std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {
-    return ENDSTONE_SYMCALL(&MinecraftPackets::createPacket, id);
+    ENDSTONE_SYMCALL(&MinecraftPackets::createPacket, id);
 }

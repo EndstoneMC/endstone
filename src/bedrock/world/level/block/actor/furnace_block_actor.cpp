@@ -18,5 +18,5 @@
 
 float FurnaceBlockActor::getBurnDuration(ItemStackBase const &item_instance, float burn_interval)
 {
-    return ENDSTONE_SYMCALL(&FurnaceBlockActor::getBurnDuration, item_instance, burn_interval);
+     ENDSTONE_SYMCALL(&FurnaceBlockActor::getBurnDuration, item_instance, burn_interval);
 }
