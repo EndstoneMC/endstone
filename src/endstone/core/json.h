@@ -17,6 +17,7 @@
 #include <nlohmann/json.hpp>
 
 #include "bedrock/deps/json/value.h"
+#include "bedrock/util/new_type.h"
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 template <>
@@ -63,3 +64,9 @@ struct adl_serializer<Json::Value> {
     }
 };
 NLOHMANN_JSON_NAMESPACE_END
+
+template <typename ValueType>
+void to_json(nlohmann::json &j, const NewType<ValueType> &t)
+{
+    j = t.value;
+}

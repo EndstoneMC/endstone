@@ -7,9 +7,9 @@ find_package(imgui CONFIG REQUIRED)
 find_package(zstr CONFIG REQUIRED)
 
 add_library(endstone_devtools
-        imgui/imgui_impl_glfw.cpp
-        imgui/imgui_impl_opengl3.cpp
-        imgui/imgui_json.cpp
+        imgui_impl_glfw.cpp
+        imgui_impl_opengl3.cpp
+        imgui_json.cpp
         devtools.cpp
         devtools_command.cpp
         vanilla_data.cpp

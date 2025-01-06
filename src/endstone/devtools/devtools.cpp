@@ -12,12 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/devtools/devtools.h"
+#include "devtools.h"
 
 #include <imgui.h>
-#include <imgui_file_browser.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
 #include <imgui_internal.h>
 
 #include <filesystem>
@@ -33,15 +30,18 @@
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
-#include "endstone/core/devtools/imgui/imgui_json.h"
-#include "endstone/core/devtools/vanilla_data.h"
 #include "endstone/core/logger_factory.h"
-#include "endstone/core/os.h"
-#include "endstone/endstone.h"
+#include "endstone/core/platform.h"
+#include "endstone/variant.h"
+#include "imgui_file_browser.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include "imgui_json.h"
+#include "vanilla_data.h"
 
 namespace fs = std::filesystem;
 
-namespace nlohmann {
+NLOHMANN_JSON_NAMESPACE_BEGIN
 template <>
 struct adl_serializer<Tag> {
     static void to_json(json &j, const Tag &tag)  // NOLINT(*-identifier-naming)
@@ -117,13 +117,12 @@ struct adl_serializer<ListTag> {
         adl_serializer<Tag>::to_json(j, tag);
     }
 };
+NLOHMANN_JSON_NAMESPACE_END
 
-}  // namespace nlohmann
-
-namespace endstone::core::devtools {
+namespace endstone::devtools {
 
 namespace {
-auto &gLogger = LoggerFactory::getLogger("DevTools");
+auto &gLogger = core::LoggerFactory::getLogger("DevTools");
 std::vector<std::string> gErrors = {};
 GLFWwindow *gWindow = nullptr;
 ImGui::FileBrowser *gFileBrowser = nullptr;
@@ -223,7 +222,8 @@ void render()
         glfwGetWindowContentScale(gWindow, &x_scale, &y_scale);
         if (x_scale != prev_scale) {
             prev_scale = x_scale;
-            auto font_path = fs::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
+            auto font_path =
+                fs::path{core::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
             io.Fonts->Clear();
             io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(15 * x_scale));
             io.Fonts->Build();
@@ -640,4 +640,4 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
     save_json_to_file(recipe_json, "recipes.json");
 }
 
-}  // namespace endstone::core::devtools
+}  // namespace endstone::devtools

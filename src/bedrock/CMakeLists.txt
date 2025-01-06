@@ -95,7 +95,7 @@ add_library(bedrock STATIC
         world/scores/server_scoreboard.cpp
 )
 add_library(bedrock::bedrock ALIAS bedrock)
-target_include_directories(bedrock PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../)
+target_include_directories(bedrock PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../)
 target_link_libraries(bedrock PUBLIC boost::boost fmt::fmt EnTT::EnTT glm::glm Microsoft.GSL::GSL nonstd::expected-lite)
 
 target_compile_definitions(bedrock PUBLIC ENTT_SPARSE_PAGE=2048)

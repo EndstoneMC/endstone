@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/devtools/vanilla_data.h"
+#include "vanilla_data.h"
 
 #include <magic_enum/magic_enum.hpp>
 
@@ -23,12 +23,13 @@
 #include "bedrock/world/level/block/actor/furnace_block_actor.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/base64.h"
-#include "endstone/core/devtools/imgui/imgui_json.h"
+#include "endstone/core/json.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/devtools/imgui_json.h"
 
-namespace endstone::core::devtools {
+namespace endstone::devtools {
 
 namespace {
 double round(double d)
@@ -242,7 +243,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         if (entry.recipe) {
             recipe["id"] = entry.recipe->getRecipeId();
             recipe["netId"] = entry.recipe->getNetId().raw_id;
-            recipe["uuid"] = EndstoneUUID::fromMinecraft(entry.recipe->getId()).str();
+            recipe["uuid"] = core::EndstoneUUID::fromMinecraft(entry.recipe->getId()).str();
             recipe["tag"] = entry.recipe->getTag().getString();
             recipe["priority"] = entry.recipe->getPriority();
 
@@ -272,7 +273,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
                 if (result_item.hasUserData()) {
                     BigEndianStringByteOutput output;
                     NbtIo::writeNamedTag("", *result_item.getUserData(), output);
-                    recipe["output"].back()["nbt"] = base64_encode(output.buffer);
+                    recipe["output"].back()["nbt"] = core::base64_encode(output.buffer);
                 }
             }
         }
@@ -400,11 +401,11 @@ VanillaData *VanillaData::get()
         return &entt::locator<VanillaData>::value();
     }
 
-    if (entt::locator<EndstoneServer>::has_value()) {
-        auto &server = entt::locator<EndstoneServer>::value();
+    if (entt::locator<core::EndstoneServer>::has_value()) {
+        auto &server = entt::locator<core::EndstoneServer>::value();
         if (auto *server_level = server.getLevel(); server_level) {
-            auto &level = static_cast<EndstoneLevel *>(server_level)->getHandle();
-            auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
+            auto &level = static_cast<core::EndstoneLevel *>(server_level)->getHandle();
+            auto &scheduler = static_cast<core::EndstoneScheduler &>(server.getScheduler());
             if (should_run) {
                 scheduler.runTask([&]() {
                     // run on the server thread instead of UI thread
@@ -423,4 +424,4 @@ VanillaData *VanillaData::get()
     return nullptr;
 }
 
-}  // namespace endstone::core::devtools
+}  // namespace endstone::devtools

@@ -14,8 +14,8 @@
 
 #pragma once
 
-namespace endstone::core::devtools {
+namespace endstone::devtools {
 void render();
 void show();
 void hide();
-}  // namespace endstone::core::devtools
+}  // namespace endstone::devtools

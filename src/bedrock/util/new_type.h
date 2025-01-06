@@ -19,6 +19,8 @@ struct NewType {
     using Raw = ValueType;
     Raw value;
 
+    NewType() = default;
+
     operator const Raw &() const
     {
         return value;

@@ -18,7 +18,7 @@
 
 #include "bedrock/nbt/nbt_io.h"
 
-namespace endstone::core::devtools {
+namespace endstone::devtools {
 
 struct VanillaData {
     nlohmann::json block_types;
@@ -49,4 +49,4 @@ struct VanillaData {
     static VanillaData *get();
 };
 
-}  // namespace endstone::core::devtools
+}  // namespace endstone::devtools
