@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/network/packet_adapter.h"
+#include "endstone/core/network/packet_adapter.h"
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "endstone/detail/network/packet_codec.h"
+#include "endstone/core/network/packet_codec.h"
 
 namespace endstone::core {
 

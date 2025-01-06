@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/minecraft_command.h"
+#include "endstone/core/command/minecraft_command.h"
 
 #include <utility>
 
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

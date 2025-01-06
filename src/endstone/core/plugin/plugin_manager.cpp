@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/plugin/plugin_manager.h"
+#include "endstone/core/plugin/plugin_manager.h"
 
 #include <algorithm>
 #include <filesystem>
@@ -22,8 +22,8 @@
 #include <utility>
 #include <vector>
 
-#include "endstone/detail/logger_factory.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/logger_factory.h"
+#include "endstone/core/util/error.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"

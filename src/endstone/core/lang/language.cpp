@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/lang/language.h"
+#include "endstone/core/lang/language.h"
 
 #include <bedrock/locale/i18n.h>
 

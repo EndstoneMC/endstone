@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/command_lexer.h"
+#include "endstone/core/command/command_lexer.h"
 
 namespace endstone::core {
 

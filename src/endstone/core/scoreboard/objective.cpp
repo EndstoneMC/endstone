@@ -12,17 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/scoreboard/objective.h"
+#include "endstone/core/scoreboard/objective.h"
 
 #include <optional>
 #include <string>
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "endstone/detail/scoreboard/score.h"
-#include "endstone/detail/scoreboard/scoreboard.h"
-#include "endstone/detail/server.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/scoreboard/score.h"
+#include "endstone/core/scoreboard/scoreboard.h"
+#include "endstone/core/server.h"
+#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 

@@ -25,7 +25,7 @@
 #include <nlohmann/json.hpp>
 
 #include "endstone/ban/ip_ban_list.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/util/error.h"
 #include "endstone/util/result.h"
 
 namespace fs = std::filesystem;

@@ -16,12 +16,12 @@
 
 #include <entt/entt.hpp>
 
-#include "endstone/detail/hook.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/server.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstoneLevel;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneLevel;
+using endstone::core::EndstoneServer;
 
 void StartGamePacket::write(BinaryStream &stream) const
 {

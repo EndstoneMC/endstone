@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/ban/ip_ban_list.h"
+#include "endstone/core/ban/ip_ban_list.h"
 
 namespace endstone::core {
 

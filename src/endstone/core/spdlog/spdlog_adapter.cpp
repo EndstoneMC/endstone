@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/spdlog/spdlog_adapter.h"
+#include "endstone/core/spdlog/spdlog_adapter.h"
 
 namespace endstone::core {
 

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/player.h"
+#include "endstone/core/player.h"
 
 #include <magic_enum/magic_enum.hpp>
 
@@ -32,14 +32,14 @@
 #include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
-#include "endstone/detail/base64.h"
-#include "endstone/detail/form/form_codec.h"
-#include "endstone/detail/inventory/player_inventory.h"
-#include "endstone/detail/network/packet_adapter.h"
-#include "endstone/detail/permissions/permissible.h"
-#include "endstone/detail/server.h"
-#include "endstone/detail/util/error.h"
-#include "endstone/detail/util/uuid.h"
+#include "endstone/core/base64.h"
+#include "endstone/core/form/form_codec.h"
+#include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/network/packet_adapter.h"
+#include "endstone/core/permissions/permissible.h"
+#include "endstone/core/server.h"
+#include "endstone/core/util/error.h"
+#include "endstone/core/util/uuid.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 

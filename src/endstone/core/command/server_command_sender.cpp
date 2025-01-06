@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/server_command_sender.h"
+#include "endstone/core/command/server_command_sender.h"
 
 #include <utility>
 
 #include <entt/entt.hpp>
 
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

@@ -21,9 +21,9 @@
 #include <sstream>
 #include <system_error>
 
-#include "endstone/detail/os.h"
+#include "endstone/core/os.h"
 
-namespace endstone::detail::os {
+namespace endstone::core::os {
 
 namespace {
 HMODULE get_module_handle(const char *module_name)
@@ -83,6 +83,6 @@ std::string get_name()
 {
     return "Windows";
 }
-}  // namespace endstone::detail::os
+}  // namespace endstone::core::os
 
 #endif

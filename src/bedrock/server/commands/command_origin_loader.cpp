@@ -14,7 +14,7 @@
 
 #include "bedrock/server/commands/command_origin_loader.h"
 
-#include "endstone/core/symbol.h"
+#include "endstone/runtime/symbol.h"
 
 std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level)
 {

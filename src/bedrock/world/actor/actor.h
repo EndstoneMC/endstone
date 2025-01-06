@@ -343,10 +343,10 @@ private:
     BuiltInActorComponents built_in_components_;  //
     // ...
 
-    endstone::detail::EndstoneActor &getEndstoneActor0() const;
+    endstone::core::EndstoneActor &getEndstoneActor0() const;
 
 public:
-    template <typename T = endstone::detail::EndstoneActor>
+    template <typename T = endstone::core::EndstoneActor>
     [[nodiscard]] T &getEndstoneActor() const
     {
         return static_cast<T &>(getEndstoneActor0());

@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/boss/boss_bar.h"
+#include "endstone/core/boss/boss_bar.h"
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
-#include "endstone/detail/server.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/server.h"
+#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 

@@ -20,14 +20,14 @@
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/locale/i18n.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstonePlayer;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstonePlayer;
+using endstone::core::EndstoneServer;
 
 void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,
@@ -55,17 +55,6 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
 void ServerNetworkHandler::updateServerAnnouncement()
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::updateServerAnnouncement, this);
-}
-
-ConnectionRequest const &ServerNetworkHandler::Client::getPrimaryRequest() const
-{
-    return *primary_request_;
-}
-
-std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> const &ServerNetworkHandler::Client::
-    getSubClientRequests() const
-{
-    return sub_client_requests_;
 }
 
 bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
@@ -155,9 +144,4 @@ bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) co
                                            ServerTextEvent::Connection);
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this, event);
-}
-
-const Bedrock::NonOwnerPointer<ILevel> &ServerNetworkHandler::getLevel() const
-{
-    return level_;
 }

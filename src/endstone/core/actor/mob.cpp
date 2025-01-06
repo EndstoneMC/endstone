@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/actor/mob.h"
+#include "endstone/core/actor/mob.h"
 
-#include "endstone/detail/permissions/permissible.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/permissions/permissible.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

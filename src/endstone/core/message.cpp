@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/message.h"
+#include "endstone/core/message.h"
 
 #include "bedrock/locale/i18n.h"
-#include "endstone/endstone.h"
+#include "endstone/variant.h"
 
 namespace endstone::core {
 

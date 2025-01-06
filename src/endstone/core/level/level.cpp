@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/level/level.h"
+#include "endstone/core/level/level.h"
 
 #include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
@@ -23,7 +23,7 @@
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
-#include "endstone/detail/level/dimension.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/level/dimension.h"
 
 namespace endstone::core {

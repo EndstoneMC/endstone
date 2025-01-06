@@ -19,7 +19,7 @@
 #include <optional>
 
 #include "bedrock/world/scores/objective.h"
-#include "endstone/detail/scoreboard/criteria.h"
+#include "endstone/core/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
 

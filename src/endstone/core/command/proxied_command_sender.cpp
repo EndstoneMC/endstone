@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/proxied_command_sender.h"
+#include "endstone/core/command/proxied_command_sender.h"
 
 #include <nonstd/expected.hpp>
 

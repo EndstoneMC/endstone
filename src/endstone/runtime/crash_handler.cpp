@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/crash_handler.h"
+#include "endstone/core/crash_handler.h"
 
 #include <sentry.h>
 
@@ -23,7 +23,7 @@
 #include <cpptrace/cpptrace.hpp>
 #include <fmt/format.h>
 
-#include "endstone/detail/os.h"
+#include "endstone/core/os.h"
 #include "endstone/endstone.h"
 
 #ifdef _WIN32
@@ -36,7 +36,7 @@
 
 namespace fs = std::filesystem;
 
-namespace endstone::detail {
+namespace endstone::core {
 
 namespace {
 
@@ -218,4 +218,4 @@ CrashHandler::~CrashHandler()
     sentry_close();
 }
 
-}  // namespace endstone::detail
+}  // namespace endstone::core

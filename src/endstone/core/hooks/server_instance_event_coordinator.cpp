@@ -18,21 +18,20 @@
 
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/level/level.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/scoreboard/scoreboard.h"
-#include "endstone/detail/server.h"
-#include "endstone/detail/signal_handler.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/scoreboard/scoreboard.h"
+#include "endstone/core/server.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin_load_order.h"
+#include "endstone/runtime/hook.h"
 
 namespace py = pybind11;
 
 using endstone::PluginLoadOrder;
 using endstone::ServerLoadEvent;
-using endstone::detail::EndstoneLevel;
-using endstone::detail::EndstoneScoreboard;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneLevel;
+using endstone::core::EndstoneScoreboard;
+using endstone::core::EndstoneServer;
 
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
 {
@@ -49,7 +48,7 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &ins
     auto &level = *instance.getMinecraft().getLevel();
     server.setLevel(std::make_unique<EndstoneLevel>(level));
     server.setScoreboard(std::make_unique<EndstoneScoreboard>(level.getScoreboard()));
-    server.setCommandMap(std::make_unique<endstone::detail::EndstoneCommandMap>(server));
+    server.setCommandMap(std::make_unique<endstone::core::EndstoneCommandMap>(server));
     server.enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     server.getPluginManager().callEvent(event);

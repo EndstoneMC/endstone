@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/hook.h"
 
 #include <funchook.h>
 
@@ -22,7 +22,7 @@
 
 #include <spdlog/spdlog.h>
 
-namespace endstone::detail::hook {
+namespace endstone::core::hook {
 
 namespace {
 std::unordered_map<void *, void *> gOriginalsByDetour;
@@ -127,4 +127,4 @@ const std::error_category &hook_error_category()
     } category;
     return category;
 }
-}  // namespace endstone::detail::hook
+}  // namespace endstone::core::hook

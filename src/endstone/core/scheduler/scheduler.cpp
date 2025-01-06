@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/scheduler/scheduler.h"
+#include "endstone/core/scheduler/scheduler.h"
 
-#include "endstone/detail/scheduler/async_task.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/scheduler/async_task.h"
+#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 

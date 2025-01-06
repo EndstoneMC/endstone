@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/form/form_codec.h"
+#include "endstone/core/form/form_codec.h"
 
-#include <entt/entt.hpp>
 #include <nlohmann/json.hpp>
 
-#include "endstone/endstone.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/controls/dropdown.h"
 #include "endstone/form/controls/label.h"
@@ -28,6 +26,7 @@
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
 #include "endstone/message.h"
+#include "endstone/variant.h"
 
 namespace endstone::core {
 

@@ -37,7 +37,7 @@ class CommandRunStats;
 class CommandParameterData;
 enum class SemanticConstraint;
 
-namespace endstone::detail {
+namespace endstone::core {
 class EndstoneCommandMap;
 }
 
@@ -285,7 +285,7 @@ public:
     struct RegistryState;
 
     // Endstone begins
-    friend class endstone::detail::EndstoneCommandMap;
+    friend class endstone::core::EndstoneCommandMap;
     std::string describe(const Signature &signature, const Overload &overload)
     {
         return describe(signature, signature.name, overload, 0, nullptr, nullptr);

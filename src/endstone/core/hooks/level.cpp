@@ -15,12 +15,12 @@
 #include "bedrock/world/level/level.h"
 
 #include "bedrock/world/level/gameplay_user_manager.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/scheduler/scheduler.h"
-#include "endstone/detail/server.h"
+#include "endstone/runtime/hook.h"
+#include "endstone/core/scheduler/scheduler.h"
+#include "endstone/core/server.h"
 
-using endstone::detail::EndstoneScheduler;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneScheduler;
+using endstone::core::EndstoneServer;
 
 void Level::tick()
 {

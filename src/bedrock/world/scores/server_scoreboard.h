@@ -17,11 +17,12 @@
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
+#include "endstone/runtime/symbol.h"
 
 class ServerScoreboard : public Scoreboard {
 public:
-    // ENDSTONE_FACTORY_DECLARE(ServerScoreboard, CommandSoftEnumRegistry, LevelStorage *,
-    //                          Bedrock::NotNullNonOwnerPtr<GameplayUserManager>);
+    ENDSTONE_FACTORY_DECLARE(ServerScoreboard, CommandSoftEnumRegistry, LevelStorage *,
+                             Bedrock::NotNullNonOwnerPtr<GameplayUserManager>);
 
 private:
     void *save_timer_;                                                              // +784 (+552)

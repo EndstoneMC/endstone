@@ -14,13 +14,13 @@
 
 #pragma once
 
-#include "endstone/detail/command/endstone_command.h"
+#include "endstone/core/command/endstone_command.h"
 
-namespace endstone::core {
-class DevToolsCommand : public EndstoneCommand {
+namespace endstone::devtools {
+class DevToolsCommand : public core::EndstoneCommand {
 public:
     DevToolsCommand();
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
 
-}  // namespace endstone::core
+}  // namespace endstone::devtools

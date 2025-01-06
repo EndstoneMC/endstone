@@ -15,7 +15,7 @@
 #pragma once
 
 #include "endstone/command/command_sender.h"
-#include "endstone/detail/permissions/permissible_base.h"
+#include "endstone/core/permissions/permissible_base.h"
 
 namespace endstone::core {
 

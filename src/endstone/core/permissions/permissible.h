@@ -18,28 +18,15 @@ namespace endstone::core {
 
 class PermissibleFactory {
 public:
-    enum class Option {
-        Normal,
-        Lazy
-    };
-
-    template <Option Option, typename Derived, typename... Args>
+    template <typename Derived, typename... Args>
     static std::shared_ptr<Derived> create(Args &&...args)
     {
         struct Impl : Derived {
             explicit Impl(Args &&...args) : Derived(std::forward<Args>(args)...) {}
         };
         auto result = std::make_shared<Impl>(std::forward<Args>(args)...);
-        if constexpr (Option == Option::Normal) {
-            result->recalculatePermissions();
-        }
+        result->recalculatePermissions();
         return result;
-    }
-
-    template <typename Derived, typename... Args>
-    static std::shared_ptr<Derived> create(Args &&...args)
-    {
-        return create<Option::Normal, Derived>(std::forward<Args>(args)...);
     }
 };
 

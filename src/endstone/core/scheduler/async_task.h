@@ -17,7 +17,7 @@
 #include <mutex>
 #include <thread>
 
-#include "endstone/detail/scheduler/task.h"
+#include "endstone/core/scheduler/task.h"
 
 namespace endstone::core {
 

@@ -15,7 +15,7 @@
 #pragma once
 
 #include "endstone/actor/actor.h"
-#include "endstone/detail/permissions/permissible_base.h"
+#include "endstone/core/permissions/permissible_base.h"
 
 class Actor;
 

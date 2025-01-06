@@ -17,8 +17,8 @@
 #include "block.h"
 #include "endstone/block/block.h"
 #include "endstone/block/block_state.h"
-#include "endstone/detail/block/block.h"
-#include "endstone/detail/level/dimension.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/level/dimension.h"
 namespace endstone::core {
 
 class EndstoneBlockState : public BlockState {

@@ -21,18 +21,18 @@
 #include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/command/console_command_sender.h"
-#include "endstone/detail/ban/ip_ban_list.h"
-#include "endstone/detail/ban/player_ban_list.h"
-#include "endstone/detail/command/command_map.h"
-#include "endstone/detail/crash_handler.h"
-#include "endstone/detail/lang/language.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/packs/endstone_pack_source.h"
-#include "endstone/detail/player.h"
-#include "endstone/detail/plugin/plugin_manager.h"
-#include "endstone/detail/scheduler/scheduler.h"
-#include "endstone/detail/scoreboard/scoreboard.h"
-#include "endstone/detail/signal_handler.h"
+#include "endstone/core/ban/ip_ban_list.h"
+#include "endstone/core/ban/player_ban_list.h"
+#include "endstone/core/command/command_map.h"
+#include "endstone/core/crash_handler.h"
+#include "endstone/core/lang/language.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/packs/endstone_pack_source.h"
+#include "endstone/core/player.h"
+#include "endstone/core/plugin/plugin_manager.h"
+#include "endstone/core/scheduler/scheduler.h"
+#include "endstone/core/scoreboard/scoreboard.h"
+#include "endstone/core/signal_handler.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
@@ -116,6 +116,7 @@ public:
     [[nodiscard]] ::ServerNetworkHandler &getServerNetworkHandler() const;
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
 
+    static constexpr int MaxPlayers = 200;
     static constexpr int TargetTicksPerSecond = 20;
     static constexpr int TargetMillisecondsPerTick = 1000 / TargetTicksPerSecond;
 

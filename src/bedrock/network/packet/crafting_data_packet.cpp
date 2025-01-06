@@ -14,10 +14,10 @@
 
 #include "bedrock/network/packet/crafting_data_packet.h"
 
-#include "endstone/detail/hook.h"
+#include "endstone/runtime/symbol.h"
 
 std::unique_ptr<CraftingDataPacket> CraftingDataPacket::prepareFromRecipes(const Recipes &recipe,
                                                                            bool only_crafting_recipes)
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CraftingDataPacket::prepareFromRecipes, recipe, only_crafting_recipes);
+    return ENDSTONE_SYMCALL(&CraftingDataPacket::prepareFromRecipes, recipe, only_crafting_recipes);
 }

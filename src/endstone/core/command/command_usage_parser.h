@@ -19,7 +19,7 @@
 
 #include <fmt/format.h>
 
-#include "endstone/detail/command/command_lexer.h"
+#include "endstone/core/command/command_lexer.h"
 
 namespace endstone::core {
 class CommandUsageParser {

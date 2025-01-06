@@ -19,9 +19,9 @@
 #include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
 
-#include "endstone/detail/devtools/devtools.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/logger_factory.h"
+#include "endstone/core/devtools/devtools.h"
+#include "endstone/core/hook.h"
+#include "endstone/core/logger_factory.h"
 
 #if __GNUC__
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
@@ -34,7 +34,7 @@ namespace py = pybind11;
 ENDSTONE_RUNTIME_CTOR int main()
 {
     spdlog::flush_every(std::chrono::seconds(5));
-    const auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
+    const auto &logger = endstone::core::LoggerFactory::getLogger("EndstoneRuntime");
     try {
         logger.info("Initialising...");
 
@@ -52,11 +52,11 @@ ENDSTONE_RUNTIME_CTOR int main()
         release.disarm();
 
         // Install hooks
-        endstone::detail::hook::install();
+        endstone::core::hook::install();
 
 #ifdef ENDSTONE_WITH_DEVTOOLS
         // Create devtools window
-        auto thread = std::thread(&endstone::detail::devtools::render);
+        auto thread = std::thread(&endstone::core::devtools::render);
         thread.detach();
 #endif
         return 0;

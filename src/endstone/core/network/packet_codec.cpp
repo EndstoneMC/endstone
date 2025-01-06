@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/network/packet_codec.h"
+#include "endstone/core/network/packet_codec.h"
 
 #include <stdexcept>
 

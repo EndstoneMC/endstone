@@ -14,7 +14,7 @@
 
 #include "bedrock/resources/pack.h"
 
-#include "endstone/core/symbol.h"
+#include "endstone/runtime/symbol.h"
 
 PackManifest const &Pack::getManifest() const
 {

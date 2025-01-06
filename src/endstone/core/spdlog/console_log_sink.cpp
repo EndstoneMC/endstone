@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/spdlog/console_log_sink.h"
+#include "endstone/core/spdlog/console_log_sink.h"
 
 #include <spdlog/pattern_formatter.h>
 #include <spdlog/sinks/base_sink-inl.h>
 
-#include "endstone/detail/spdlog/level_formatter.h"
-#include "endstone/detail/spdlog/text_formatter.h"
+#include "endstone/core/spdlog/level_formatter.h"
+#include "endstone/core/spdlog/text_formatter.h"
 
 namespace endstone::core {
 

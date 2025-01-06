@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/devtools/devtools_command.h"
+#include "endstone/core/devtools/devtools_command.h"
 
-#include "endstone/detail/devtools/devtools.h"
+#include "endstone/core/devtools/devtools.h"
 
-namespace endstone::detail {
+namespace endstone::devtools {
 
 DevToolsCommand::DevToolsCommand() : EndstoneCommand("devtools")
 {
@@ -41,4 +41,4 @@ bool DevToolsCommand::execute(CommandSender &sender, const std::vector<std::stri
     return true;
 }
 
-};  // namespace endstone::detail
+};  // namespace endstone::core

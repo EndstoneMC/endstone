@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/level/dimension.h"
+#include "endstone/core/level/dimension.h"
 
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
-#include "endstone/detail/block/block.h"
-#include "endstone/detail/level/level.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/level/level.h"
 
 namespace endstone::core {
 
@@ -68,7 +68,7 @@ Result<std::unique_ptr<Block>> EndstoneDimension::getBlockAt(Location location)
 
 endstone::Dimension &Dimension::getEndstoneDimension() const
 {
-    using endstone::detail::EndstoneServer;
+    using endstone::core::EndstoneServer;
     auto &server = entt::locator<EndstoneServer>::value();
     return *server.getLevel()->getDimension(getName());
 }

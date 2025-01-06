@@ -14,17 +14,16 @@
 
 #include "bedrock/world/events/scripting_event_coordinator.h"
 
-#include <boost/mpl/bool.hpp>
 #include <entt/entt.hpp>
 
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/events/scripting_events.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/event/server/script_message_event.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneServer;
 
 CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref)
 {

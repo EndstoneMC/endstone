@@ -22,7 +22,7 @@
 
 namespace endstone {
 
-namespace detail {
+namespace core {
 class EndstoneItemStack;
 }
 
@@ -78,14 +78,14 @@ public:
     }
 
 protected:
-    friend class detail::EndstoneItemStack;
+    friend class core::EndstoneItemStack;
 
-    virtual const detail::EndstoneItemStack *asEndstoneItemStack() const
+    virtual const core::EndstoneItemStack *asEndstoneItemStack() const
     {
         return nullptr;
     }
 
-    virtual detail::EndstoneItemStack *asEndstoneItemStack()
+    virtual core::EndstoneItemStack *asEndstoneItemStack()
     {
         return nullptr;
     }

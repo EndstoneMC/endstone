@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/logger_factory.h"
+#include "endstone/core/logger_factory.h"
 
 #include <mutex>
 #include <string>
@@ -20,9 +20,9 @@
 
 #include <spdlog/spdlog.h>
 
-#include "endstone/detail/spdlog/console_log_sink.h"
-#include "endstone/detail/spdlog/file_log_sink.h"
-#include "endstone/detail/spdlog/spdlog_adapter.h"
+#include "endstone/core/spdlog/console_log_sink.h"
+#include "endstone/core/spdlog/file_log_sink.h"
+#include "endstone/core/spdlog/spdlog_adapter.h"
 
 namespace endstone::core {
 

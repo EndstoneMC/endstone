@@ -21,8 +21,8 @@
 #include "bedrock/network/connection_request.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/world/events/player_events.h"
-#include "endstone/detail/actor/mob.h"
-#include "endstone/detail/inventory/player_inventory.h"
+#include "endstone/core/actor/mob.h"
+#include "endstone/core/inventory/player_inventory.h"
 #include "endstone/player.h"
 
 class Player;

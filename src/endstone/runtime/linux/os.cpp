@@ -14,14 +14,14 @@
 
 #ifdef __linux__
 
-#include "endstone/detail/os.h"
+#include "endstone/core/os.h"
 
 #include <climits>
 #include <fstream>
 
 #include <fmt/format.h>
 
-namespace endstone::detail::os {
+namespace endstone::core::os {
 
 namespace {
 struct ModuleInfo {
@@ -98,6 +98,6 @@ std::string get_name()
     return "Linux";
 }
 
-}  // namespace endstone::detail::os
+}  // namespace endstone::core::os
 
 #endif

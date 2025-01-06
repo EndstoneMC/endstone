@@ -17,7 +17,7 @@
 #include <memory>
 
 #include "bedrock/world/scores/scoreboard.h"
-#include "endstone/detail/scoreboard/scoreboard_packet_sender.h"
+#include "endstone/core/scoreboard/scoreboard_packet_sender.h"
 #include "endstone/scoreboard/scoreboard.h"
 
 namespace endstone::core {

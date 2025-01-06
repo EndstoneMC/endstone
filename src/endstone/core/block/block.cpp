@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/block/block.h"
+#include "endstone/core/block/block.h"
 
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level.h"
-#include "endstone/detail/block/block_data.h"
-#include "endstone/detail/block/block_face.h"
-#include "endstone/detail/block/block_state.h"
-#include "endstone/detail/server.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/block/block_data.h"
+#include "endstone/core/block/block_face.h"
+#include "endstone/core/block/block_state.h"
+#include "endstone/core/server.h"
+#include "endstone/core/util/error.h"
 
 using endstone::core::EndstoneServer;
 

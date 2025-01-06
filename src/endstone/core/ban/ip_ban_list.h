@@ -15,7 +15,7 @@
 #pragma once
 
 #include "endstone/ban/ip_ban_list.h"
-#include "endstone/detail/ban/ban_list.h"
+#include "endstone/core/ban/ban_list.h"
 
 namespace nlohmann {
 template <>

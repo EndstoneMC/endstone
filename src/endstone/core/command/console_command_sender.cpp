@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/console_command_sender.h"
+#include "endstone/core/command/console_command_sender.h"
 
-#include "endstone/detail/message.h"
-#include "endstone/detail/permissions/permissible.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/message.h"
+#include "endstone/core/permissions/permissible.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

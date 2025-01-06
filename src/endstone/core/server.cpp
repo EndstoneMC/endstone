@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 
 #include <filesystem>
 #include <memory>
@@ -29,18 +29,18 @@ namespace fs = std::filesystem;
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
-#include "endstone/detail/block/block_data.h"
-#include "endstone/detail/boss/boss_bar.h"
-#include "endstone/detail/command/command_map.h"
-#include "endstone/detail/command/console_command_sender.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/logger_factory.h"
-#include "endstone/detail/message.h"
-#include "endstone/detail/permissions/default_permissions.h"
-#include "endstone/detail/plugin/cpp_plugin_loader.h"
-#include "endstone/detail/plugin/python_plugin_loader.h"
-#include "endstone/detail/signal_handler.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/block/block_data.h"
+#include "endstone/core/boss/boss_bar.h"
+#include "endstone/core/command/command_map.h"
+#include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/logger_factory.h"
+#include "endstone/core/message.h"
+#include "endstone/core/permissions/default_permissions.h"
+#include "endstone/core/plugin/cpp_plugin_loader.h"
+#include "endstone/core/plugin/python_plugin_loader.h"
+#include "endstone/core/signal_handler.h"
+#include "endstone/core/util/error.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
@@ -247,9 +247,9 @@ Result<void> EndstoneServer::setMaxPlayers(int max_players)
     if (max_players < 0) {
         return nonstd::make_unexpected(make_error("Max number of players must not be negative."));
     }
-    if (max_players > ENDSTONE_MAX_PLAYERS) {
+    if (max_players > MaxPlayers) {
         return nonstd::make_unexpected(
-            make_error("Max number of players must not exceed the hard limit {}", ENDSTONE_MAX_PLAYERS));
+            make_error("Max number of players must not exceed the hard limit {}", MaxPlayers));
     }
     getServerNetworkHandler().max_num_players_ = max_players;
     getServerNetworkHandler().updateServerAnnouncement();

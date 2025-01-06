@@ -20,7 +20,7 @@
 
 #include <moodycamel/concurrentqueue.h>
 
-#include "endstone/detail/scheduler/task.h"
+#include "endstone/core/scheduler/task.h"
 #include "endstone/scheduler/scheduler.h"
 #include "thread_pool_executor.h"
 

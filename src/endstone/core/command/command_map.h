@@ -19,7 +19,7 @@
 
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
-#include "endstone/detail/command/command_wrapper.h"
+#include "endstone/core/command/command_wrapper.h"
 
 namespace endstone::core {
 

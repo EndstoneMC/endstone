@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/scoreboard/scoreboard_packet_sender.h"
+#include "endstone/core/scoreboard/scoreboard_packet_sender.h"
 
-#include "endstone/detail/server.h"
-#include "endstone/detail/util/uuid.h"
+#include "endstone/core/server.h"
+#include "endstone/core/util/uuid.h"
 
 namespace endstone::core {
 

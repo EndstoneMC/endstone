@@ -18,7 +18,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/permissions/permission.h"
 
 namespace endstone::core {

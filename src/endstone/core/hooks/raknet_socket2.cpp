@@ -20,14 +20,12 @@
 
 #include "bedrock/deps/raknet/get_time.h"
 #include "bedrock/deps/raknet/message_identifiers.h"
-#include "bedrock/deps/raknet/raknet_defines.h"
-#include "bedrock/deps/raknet/socket_defines.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/event/server/server_list_ping_event.h"
 #include "endstone/plugin/plugin_manager.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneServer;
 
 namespace RakNet {
 
@@ -35,7 +33,7 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
                                                                    RNS2_SendParameters *send_parameters,
                                                                    const char *file, unsigned int line)
 {
-    if (send_parameters->data[0] != MessageIdentifiers::UnconnectedPong) {
+    if (send_parameters->data[0] != UnconnectedPong) {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP, socket,
                                            send_parameters, file, line);
     }

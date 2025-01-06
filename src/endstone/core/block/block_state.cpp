@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/block/block_state.h"
+#include "endstone/core/block/block_state.h"
 
 #include "bedrock/world/level/block/block_descriptor.h"
-#include "endstone/detail/block/block.h"
-#include "endstone/detail/block/block_data.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/block/block_data.h"
+#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 

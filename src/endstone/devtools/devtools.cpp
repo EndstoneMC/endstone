@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/devtools/devtools.h"
+#include "endstone/core/devtools/devtools.h"
 
 #include <imgui.h>
 #include <imgui_file_browser.h>
@@ -33,10 +33,10 @@
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
-#include "endstone/detail/devtools/imgui/imgui_json.h"
-#include "endstone/detail/devtools/vanilla_data.h"
-#include "endstone/detail/logger_factory.h"
-#include "endstone/detail/os.h"
+#include "endstone/core/devtools/imgui/imgui_json.h"
+#include "endstone/core/devtools/vanilla_data.h"
+#include "endstone/core/logger_factory.h"
+#include "endstone/core/os.h"
 #include "endstone/endstone.h"
 
 namespace fs = std::filesystem;
@@ -120,7 +120,7 @@ struct adl_serializer<ListTag> {
 
 }  // namespace nlohmann
 
-namespace endstone::detail::devtools {
+namespace endstone::core::devtools {
 
 namespace {
 auto &gLogger = LoggerFactory::getLogger("DevTools");
@@ -640,4 +640,4 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
     save_json_to_file(recipe_json, "recipes.json");
 }
 
-}  // namespace endstone::detail::devtools
+}  // namespace endstone::core::devtools

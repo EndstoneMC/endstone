@@ -14,17 +14,17 @@
 
 #include "bedrock/server/commands/minecraft_commands.h"
 
-#include <endstone/core/symbol.h>
 #include <entt/entt.hpp>
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
+#include "endstone/runtime/hook.h"
+#include "endstone/runtime/symbol.h"
 
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneServer;
 
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {

@@ -18,15 +18,15 @@
 #include "bedrock/world/actor/actor_flags.h"
 #include "endstone/actor/actor.h"
 #include "endstone/actor/mob.h"
-#include "endstone/detail/actor/mob.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/actor/mob.h"
+#include "endstone/core/server.h"
 #include "endstone/event/actor/actor_death_event.h"
 #include "endstone/event/actor/actor_knockback_event.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstoneActor;
-using endstone::detail::EndstoneMob;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneActor;
+using endstone::core::EndstoneMob;
+using endstone::core::EndstoneServer;
 
 void Mob::die(const ActorDamageSource &source)
 {
@@ -57,14 +57,4 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
     auto knockback = e.getKnockback();
     diff = e.isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};
     setPosDelta(before + diff);
-}
-
-bool Mob::isGliding() const
-{
-    return getStatusFlag(ActorFlags::GLIDING);
-}
-
-void Mob::setYBodyRotation(float rotation)
-{
-    getPersistentComponent<MobBodyRotationComponent>()->y_body_rot = rotation;
 }

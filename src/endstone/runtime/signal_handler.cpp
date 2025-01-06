@@ -12,19 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/signal_handler.h"
+#include "endstone/core/signal_handler.h"
 
 #include <csignal>
 
 #include <entt/entt.hpp>
 
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 
 #ifdef _WIN32
 #include "Windows.h"
 #endif
 
-namespace endstone::detail {
+namespace endstone::core {
 namespace {
 void request_server_shutdown()
 {
@@ -107,4 +107,4 @@ SignalHandler::~SignalHandler()
 #endif
 }
 
-}  // namespace endstone::detail
+}  // namespace endstone::core

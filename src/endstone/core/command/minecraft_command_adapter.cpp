@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/minecraft_command_adapter.h"
+#include "endstone/core/command/minecraft_command_adapter.h"
 
 #include <stack>
 #include <string>
@@ -20,8 +20,8 @@
 
 #include <entt/entt.hpp>
 
-#include "endstone/detail/command/command_origin_wrapper.h"
-#include "endstone/detail/command/command_output_with_sender.h"
+#include "endstone/core/command/command_origin_wrapper.h"
+#include "endstone/core/command/command_output_with_sender.h"
 
 namespace endstone::core {
 

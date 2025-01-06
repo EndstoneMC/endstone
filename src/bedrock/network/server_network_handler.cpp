@@ -15,7 +15,7 @@
 #include "bedrock/network/server_network_handler.h"
 
 #include "bedrock/locale/i18n.h"
-#include "endstone/core/symbol.h"
+#include "endstone/runtime/symbol.h"
 
 void ServerNetworkHandler::updateServerAnnouncement()
 {

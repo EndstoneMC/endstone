@@ -21,7 +21,7 @@ class CommandSender;
 class Dimension;
 class Level;
 
-namespace detail {
+namespace core {
 class EndstoneActor;
 class EndstoneLevel;
 class EndstoneServer;

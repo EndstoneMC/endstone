@@ -15,7 +15,7 @@
 #pragma once
 
 #include "endstone/actor/mob.h"
-#include "endstone/detail/actor/actor.h"
+#include "endstone/core/actor/actor.h"
 
 class Mob;
 

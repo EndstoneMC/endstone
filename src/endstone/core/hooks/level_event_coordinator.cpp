@@ -14,12 +14,12 @@
 
 #include "bedrock/world/events/level_event_coordinator.h"
 
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/event/actor/actor_spawn_event.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstoneActor;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneActor;
+using endstone::core::EndstoneServer;
 
 void LevelEventCoordinator::_postReloadActorAdded(Actor &actor, ActorInitializationMethod init_method)
 {

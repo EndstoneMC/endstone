@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/detail/inventory/inventory.h"
+#include "endstone/core/inventory/inventory.h"
 #include "endstone/inventory/player_inventory.h"
 
 namespace endstone::core {

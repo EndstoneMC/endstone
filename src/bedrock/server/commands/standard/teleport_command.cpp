@@ -14,7 +14,7 @@
 
 #include "bedrock/server/commands/standard/teleport_command.h"
 
-#include "endstone/core/symbol.h"
+#include "endstone/runtime/symbol.h"
 
 TeleportTarget TeleportCommand::computeTarget(Actor &victim, Vec3 destination, Vec3 *facing_position,
                                               AutomaticID<Dimension, int> destination_dimension,

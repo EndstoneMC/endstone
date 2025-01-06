@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/block/block_data.h"
+#include "endstone/core/block/block_data.h"
 
 #include "bedrock/nbt/nbt_io.h"
 

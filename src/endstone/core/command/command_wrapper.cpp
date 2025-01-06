@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/command_wrapper.h"
+#include "endstone/core/command/command_wrapper.h"
 
 #include <boost/algorithm/string.hpp>
 
 #include "bedrock/server/commands/command_origin_loader.h"
-#include "endstone/detail/command/command_output_with_sender.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/command/command_output_with_sender.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

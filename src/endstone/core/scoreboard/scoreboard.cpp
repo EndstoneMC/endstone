@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/scoreboard/scoreboard.h"
+#include "endstone/core/scoreboard/scoreboard.h"
 
 #include <stdexcept>
 
@@ -20,13 +20,13 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/scoreboard.h"
-#include "endstone/detail/actor/actor.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/player.h"
-#include "endstone/detail/scoreboard/objective.h"
-#include "endstone/detail/scoreboard/score.h"
-#include "endstone/detail/server.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/actor/actor.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/player.h"
+#include "endstone/core/scoreboard/objective.h"
+#include "endstone/core/scoreboard/score.h"
+#include "endstone/core/server.h"
+#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 

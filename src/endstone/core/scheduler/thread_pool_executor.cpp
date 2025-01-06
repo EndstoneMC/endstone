@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/scheduler/thread_pool_executor.h"
+#include "endstone/core/scheduler/thread_pool_executor.h"
 
 namespace endstone::core {
 

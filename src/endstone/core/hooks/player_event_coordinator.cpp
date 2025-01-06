@@ -18,12 +18,13 @@
 #include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/level/level.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/player.h"
-#include "endstone/detail/signal_handler.h"
+#include "endstone/core/json.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/player.h"
+#include "endstone/core/signal_handler.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstonePlayer;
+using endstone::core::EndstonePlayer;
 
 void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
 {

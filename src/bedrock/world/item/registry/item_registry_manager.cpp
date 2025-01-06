@@ -14,7 +14,7 @@
 
 #include "bedrock/world/item/registry/item_registry_manager.h"
 
-#include "endstone/core/symbol.h"
+#include "endstone/runtime/symbol.h"
 
 ItemRegistryRef ItemRegistryManager::getItemRegistry()
 {

@@ -17,10 +17,10 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/locale/i18n.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneServer;
 
 void SayCommand::_sendMessage(const std::string &message, std::optional<std::string> filtered_message,
                               const std::string &sender_name, const CommandOriginIdentity &origin_identity,

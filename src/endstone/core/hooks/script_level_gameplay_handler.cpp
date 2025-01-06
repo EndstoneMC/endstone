@@ -19,13 +19,13 @@
 #include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/level_events.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/runtime/hook.h"
+#include "endstone/core/server.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
 
-using endstone::detail::EndstoneLevel;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneLevel;
+using endstone::core::EndstoneServer;
 
 GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
 {

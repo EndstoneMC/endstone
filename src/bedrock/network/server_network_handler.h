@@ -73,8 +73,8 @@ public:
     [[nodiscard]] const Bedrock::NonOwnerPointer<ILevel> &getLevel() const;  // Endstone
 
 private:
-    friend class endstone::detail::EndstoneServer;
-    friend class endstone::detail::EndstoneLevel;
+    friend class endstone::core::EndstoneServer;
+    friend class endstone::core::EndstoneLevel;
 
     // NOLINTBEGIN(*-identifier-naming)
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,

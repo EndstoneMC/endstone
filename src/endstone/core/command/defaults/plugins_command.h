@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/detail/command/endstone_command.h"
+#include "endstone/core/command/endstone_command.h"
 
 namespace endstone::core {
 class PluginsCommand : public EndstoneCommand {

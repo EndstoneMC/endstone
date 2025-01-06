@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/defaults/pardon_ip_command.h"
+#include "endstone/core/command/defaults/pardon_ip_command.h"
 
 #include <string>
 #include <vector>
 
 #include "bedrock/deps/raknet/socket_includes.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

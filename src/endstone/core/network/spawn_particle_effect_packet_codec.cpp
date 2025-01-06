@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/core/utility/binary_stream.h"
-#include "endstone/detail/network/packet_codec.h"
+#include "endstone/core/network/packet_codec.h"
 #include "endstone/network/spawn_particle_effect_packet.h"
 
 namespace endstone::core {

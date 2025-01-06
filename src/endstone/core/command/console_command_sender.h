@@ -15,7 +15,7 @@
 #pragma once
 
 #include "endstone/command/console_command_sender.h"
-#include "endstone/detail/command/server_command_sender.h"
+#include "endstone/core/command/server_command_sender.h"
 
 namespace endstone::core {
 

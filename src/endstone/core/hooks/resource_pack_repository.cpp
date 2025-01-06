@@ -14,14 +14,14 @@
 
 #include "bedrock/resources/resource_pack_repository.h"
 
-#include "endstone/detail/hook.h"
-#include "endstone/detail/packs/endstone_pack_source.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/packs/endstone_pack_source.h"
+#include "endstone/core/server.h"
+#include "endstone/runtime/hook.h"
 
 void ResourcePackRepository::_initializePackSource()
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
-    auto &server = entt::locator<endstone::detail::EndstoneServer>::value_or();
+    auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
     pack_source_->addPackSource(
         &server.createResourcePackSource(Bedrock::NonOwnerPointer<IResourcePackRepository>(*this)));
 }

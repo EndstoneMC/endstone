@@ -16,7 +16,7 @@
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/core/symbol.h"
+#include "endstone/runtime/symbol.h"
 
 Command *MinecraftCommands::compileCommand(HashedString const &command_str, CommandOrigin &origin,
                                            CurrentCmdVersion command_version,

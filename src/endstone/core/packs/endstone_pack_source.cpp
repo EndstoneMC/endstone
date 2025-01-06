@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/packs/endstone_pack_source.h"
+#include "endstone/core/packs/endstone_pack_source.h"
 
 #include <utility>
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 
 namespace fs = std::filesystem;
 

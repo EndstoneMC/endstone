@@ -16,14 +16,14 @@
 
 #include <entt/entt.hpp>
 
-#include "endstone/detail/hook.h"
-#include "endstone/endstone.h"
+#include "endstone/core/server.h"
+#include "endstone/runtime/hook.h"
 
 RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer, const ConnectionDefinition &def,
                                                  PeerPurpose purpose)
 {
     auto new_def = def;
-    new_def.max_num_connections = ENDSTONE_MAX_PLAYERS;
+    new_def.max_num_connections = endstone::core::EndstoneServer::MaxPlayers;
 
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
     if (result == RakNet::StartupResult::RAKNET_STARTED && purpose == PeerPurpose::Gameplay) {

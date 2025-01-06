@@ -12,9 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/actor/actor.h"
-
-#include <endstone/detail/util/error.h>
+#include "endstone/core/actor/actor.h"
 
 #include "bedrock/entity/components/offsets_component.h"
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
@@ -22,9 +20,9 @@
 #include "bedrock/server/commands/standard/teleport_command.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
-#include "endstone/detail/level/dimension.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/permissions/permissible.h"
+#include "endstone/core/level/dimension.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/permissions/permissible.h"
 
 namespace endstone::core {
 

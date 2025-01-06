@@ -75,7 +75,7 @@ class CraftingDataPacket : public Packet {
 public:
     ~CraftingDataPacket() override = default;
 
-    ENDSTONE_HOOK static std::unique_ptr<CraftingDataPacket> prepareFromRecipes(Recipes const &, bool);
+    static std::unique_ptr<CraftingDataPacket> prepareFromRecipes(Recipes const &, bool);
 
     std::vector<CraftingDataEntry> crafting_entries;                 // +48
     std::vector<PotionMixDataEntry> potion_mix_entries;              // +72

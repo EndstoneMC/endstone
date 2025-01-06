@@ -12,11 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/command_origin_wrapper.h"
+#include "endstone/core/command/command_origin_wrapper.h"
 
-#include <endstone/detail/permissions/permissible.h>
-
-#include "endstone/detail/message.h"
+#include "endstone/core/message.h"
+#include "endstone/core/permissions/permissible.h"
 
 namespace endstone::core {
 

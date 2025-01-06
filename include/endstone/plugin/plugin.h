@@ -29,11 +29,9 @@
 #include "endstone/server.h"
 
 namespace endstone {
-
 class PluginCommand;
 class PluginLoader;
-
-namespace detail {
+namespace core {
 class EndstonePluginManager;
 }
 
@@ -178,7 +176,7 @@ public:
 
 protected:
     friend class PluginLoader;
-    friend class detail::EndstonePluginManager;
+    friend class core::EndstonePluginManager;
 
     /**
      * Sets the enabled state of this plugin

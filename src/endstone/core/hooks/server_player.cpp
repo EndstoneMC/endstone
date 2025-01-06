@@ -21,16 +21,16 @@
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/message.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/message.h"
+#include "endstone/core/server.h"
 #include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/lang/translatable.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstonePlayer;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstonePlayer;
+using endstone::core::EndstoneServer;
 
 void ServerPlayer::die(const ActorDamageSource &source)
 {
@@ -87,7 +87,7 @@ void ServerPlayer::setLocalPlayerAsInitialized()
 
     endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.joined",
                               {endstone_player.getName()}};
-    const std::string join_message = endstone::detail::EndstoneMessage::toString(tr);
+    const std::string join_message = endstone::core::EndstoneMessage::toString(tr);
 
     endstone::PlayerJoinEvent e{endstone_player, join_message};
     server.getPluginManager().callEvent(e);
@@ -113,7 +113,7 @@ void ServerPlayer::disconnect()
     endstone_player.disconnect();
 
     endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};
-    const std::string quit_message = endstone::detail::EndstoneMessage::toString(tr);
+    const std::string quit_message = endstone::core::EndstoneMessage::toString(tr);
 
     endstone::PlayerQuitEvent e{endstone_player, quit_message};
     server.getPluginManager().callEvent(e);

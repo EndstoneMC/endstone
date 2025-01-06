@@ -21,16 +21,16 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/command/command_sender.h"
-#include "endstone/detail/command/console_command_sender.h"
-#include "endstone/detail/level/level.h"
-#include "endstone/detail/player.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/player.h"
+#include "endstone/core/server.h"
 
-using endstone::detail::EndstoneActor;
-using endstone::detail::EndstoneConsoleCommandSender;
-using endstone::detail::EndstoneLevel;
-using endstone::detail::EndstonePlayer;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneActor;
+using endstone::core::EndstoneConsoleCommandSender;
+using endstone::core::EndstoneLevel;
+using endstone::core::EndstonePlayer;
+using endstone::core::EndstoneServer;
 
 std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() const
 {

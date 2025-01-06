@@ -16,39 +16,43 @@
 
 #include <nlohmann/json.hpp>
 
+#include "bedrock/deps/json/value.h"
+
 NLOHMANN_JSON_NAMESPACE_BEGIN
-struct adl_serializer< Json::Value> {
-    static void to_json(json& j, const  Json::Value &value) {
+template <>
+struct adl_serializer<Json::Value> {
+    static void to_json(json &j, const Json::Value &value)
+    {
         switch (value.type()) {
-        case nullValue:
+        case Json::nullValue:
             break;
-        case intValue: {
+        case Json::intValue: {
             j = value.asInt64();
             break;
         }
-        case uintValue: {
+        case Json::uintValue: {
             j = value.asUInt64();
             break;
         }
-        case realValue: {
+        case Json::realValue: {
             j = value.asDouble();
             break;
         }
-        case stringValue: {
+        case Json::stringValue: {
             j = value.asString();
             break;
         }
-        case booleanValue: {
+        case Json::booleanValue: {
             j = value.asBool();
             break;
         }
-        case arrayValue: {
+        case Json::arrayValue: {
             for (int i = 0; i < value.size(); i++) {
                 j.push_back(value[i]);
             }
             break;
         }
-        case objectValue: {
+        case Json::objectValue: {
             auto members = value.getMemberNames();
             for (auto &member : members) {
                 j[member] = value[member.c_str()];

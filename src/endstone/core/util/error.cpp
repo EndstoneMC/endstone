@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/util/error.h"
+#include "endstone/core/util/error.h"
 
 #include <cpptrace/cpptrace.hpp>
 

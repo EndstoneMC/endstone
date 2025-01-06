@@ -14,7 +14,7 @@
 
 #ifdef _WIN32
 
-#include "endstone/detail/hook.h"
+#include "endstone/core/hook.h"
 
 #include <Windows.h>
 // DbgHelp.h must be included after Windows.h
@@ -30,9 +30,9 @@
 #include <spdlog/spdlog.h>
 #include <toml++/toml.h>
 
-#include "endstone/detail/os.h"
+#include "endstone/core/os.h"
 
-namespace endstone::detail::hook {
+namespace endstone::core::hook {
 
 enum SymTagEnum {
     SymTagPublicSymbol = 10,
@@ -135,6 +135,6 @@ const std::unordered_map<std::string, void *> &get_targets()
     return targets;
 }
 
-}  // namespace endstone::detail::hook
+}  // namespace endstone::core::hook
 
 #endif

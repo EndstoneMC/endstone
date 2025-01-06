@@ -21,12 +21,12 @@
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/level/level.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/event/player/player_teleport_event.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstonePlayer;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstonePlayer;
+using endstone::core::EndstoneServer;
 
 void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {

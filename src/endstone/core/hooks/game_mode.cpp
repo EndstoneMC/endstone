@@ -17,19 +17,19 @@
 #include <spdlog/spdlog.h>
 
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/detail/block/block.h"
-#include "endstone/detail/hook.h"
-#include "endstone/detail/inventory/item_stack.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/server.h"
 #include "endstone/event/block/block_break_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
+#include "endstone/runtime/hook.h"
 
-using endstone::detail::EndstoneActor;
-using endstone::detail::EndstoneBlock;
-using endstone::detail::EndstoneItemStack;
-using endstone::detail::EndstonePlayer;
-using endstone::detail::EndstoneServer;
+using endstone::core::EndstoneActor;
+using endstone::core::EndstoneBlock;
+using endstone::core::EndstoneItemStack;
+using endstone::core::EndstonePlayer;
+using endstone::core::EndstoneServer;
 
 bool GameMode::destroyBlock(BlockPos const &pos, FacingID face)
 {

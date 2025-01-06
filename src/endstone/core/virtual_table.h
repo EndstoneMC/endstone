@@ -21,7 +21,7 @@
 #include <entt/entt.hpp>
 #include <spdlog/spdlog.h>
 
-#include "endstone/detail/cast.h"
+#include "endstone/core/cast.h"
 #include "endstone/endstone.h"
 
 namespace endstone::core {

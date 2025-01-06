@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/server/commands/command.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

@@ -14,7 +14,7 @@
 
 #pragma once
 
-namespace endstone::core {
+namespace endstone::runtime {
 
 /**
  * @brief Cast a function pointer to void pointer
@@ -82,13 +82,13 @@ void *fp_cast(Return (Class::*fp)(Args...) const)
 }
 
 template <typename Return, typename... Arg>
-Return (*fp_cast(Return (*fp)(Arg...), void* func))(Arg...)
+Return (*fp_cast(Return (*fp)(Arg...), void *func))(Arg...)
 {
     return *reinterpret_cast<decltype(&fp)>(&func);
 }
 
 template <typename Return, typename Class, typename... Arg>
-Return (Class::*fp_cast(Return (Class::*fp)(Arg...), void* address))(Arg...)
+Return (Class::*fp_cast(Return (Class::*fp)(Arg...), void *address))(Arg...)
 {
     struct {  // https://doi.org/10.1145/3660779
         void *ptr;
@@ -102,7 +102,7 @@ Return (Class::*fp_cast(Return (Class::*fp)(Arg...), void* address))(Arg...)
  * @brief Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const,                             void* address))(Arg...) const
+Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const, void *address))(Arg...) const
 {
     struct {  // https://doi.org/10.1145/3660779
         void *ptr;
@@ -112,4 +112,4 @@ Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const,                      
     return *reinterpret_cast<decltype(&fp)>(&temp);
 }
 
-}  // namespace endstone::core
+}  // namespace endstone::runtime

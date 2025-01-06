@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/command_map.h"
+#include "endstone/core/command/command_map.h"
 
 #include <algorithm>
 #include <string>
@@ -24,21 +24,21 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "endstone/command/plugin_command.h"
-#include "endstone/detail/command/command_usage_parser.h"
-#include "endstone/detail/command/defaults/ban_command.h"
-#include "endstone/detail/command/defaults/ban_ip_command.h"
-#include "endstone/detail/command/defaults/ban_list_command.h"
-#include "endstone/detail/command/defaults/pardon_command.h"
-#include "endstone/detail/command/defaults/pardon_ip_command.h"
-#include "endstone/detail/command/defaults/plugins_command.h"
-#include "endstone/detail/command/defaults/reload_command.h"
-#include "endstone/detail/command/defaults/status_command.h"
-#include "endstone/detail/command/defaults/version_command.h"
-#include "endstone/detail/command/minecraft_command.h"
-#include "endstone/detail/command/minecraft_command_adapter.h"
-#include "endstone/detail/devtools/devtools_command.h"
-#include "endstone/detail/permissions/default_permissions.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/command/command_usage_parser.h"
+#include "endstone/core/command/defaults/ban_command.h"
+#include "endstone/core/command/defaults/ban_ip_command.h"
+#include "endstone/core/command/defaults/ban_list_command.h"
+#include "endstone/core/command/defaults/pardon_command.h"
+#include "endstone/core/command/defaults/pardon_ip_command.h"
+#include "endstone/core/command/defaults/plugins_command.h"
+#include "endstone/core/command/defaults/reload_command.h"
+#include "endstone/core/command/defaults/status_command.h"
+#include "endstone/core/command/defaults/version_command.h"
+#include "endstone/core/command/minecraft_command.h"
+#include "endstone/core/command/minecraft_command_adapter.h"
+#include "endstone/core/permissions/default_permissions.h"
+#include "endstone/core/server.h"
+#include "endstone/devtools/devtools_command.h"
 
 namespace endstone::core {
 
@@ -113,7 +113,7 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand(std::make_unique<StatusCommand>());
     registerCommand(std::make_unique<VersionCommand>());
 #ifdef ENDSTONE_WITH_DEVTOOLS
-    registerCommand(std::make_unique<DevToolsCommand>());
+    registerCommand(std::make_unique<devtools::DevToolsCommand>());
 #endif
 }
 

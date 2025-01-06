@@ -14,7 +14,7 @@
 
 #include "bedrock/resources/resource_pack_stack.h"
 
-#include "endstone/core/symbol.h"
+#include "endstone/runtime/symbol.h"
 
 PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool /*is_dependent*/,
                            PackSettings *pack_settings)

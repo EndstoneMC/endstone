@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/defaults/reload_command.h"
+#include "endstone/core/command/defaults/reload_command.h"
 
 #include <entt/entt.hpp>
 
 #include "endstone/color_format.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

@@ -17,6 +17,10 @@ find_package(spdlog REQUIRED)
 find_package(tomlplusplus REQUIRED)
 
 add_library(endstone_core
+        logger_factory.cpp
+        message.cpp
+        player.cpp
+        server.cpp
         actor/actor.cpp
         actor/mob.cpp
         ban/ip_ban_list.cpp
@@ -29,6 +33,7 @@ add_library(endstone_core
         command/command_lexer.cpp
         command/command_map.cpp
         command/command_origin_wrapper.cpp
+        command/command_sender.cpp
         command/command_usage_parser.cpp
         command/command_wrapper.cpp
         command/console_command_sender.cpp
@@ -47,6 +52,26 @@ add_library(endstone_core
         command/defaults/version_command.cpp
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
+        hooks/actor.cpp
+        hooks/bedrock_event_logger.cpp
+        hooks/game_mode.cpp
+        hooks/item.cpp
+        hooks/level.cpp
+        hooks/level_event_coordinator.cpp
+        hooks/minecraft_commands.cpp
+        hooks/mob.cpp
+        hooks/player.cpp
+        hooks/player_event_coordinator.cpp
+        hooks/raknet_socket2.cpp
+        hooks/rak_peer_helper.cpp
+        hooks/resource_pack_repository.cpp
+        hooks/say_command.cpp
+        hooks/scripting_event_coordinator.cpp
+        hooks/script_level_gameplay_handler.cpp
+        hooks/server_instance_event_coordinator.cpp
+        hooks/server_network_handler.cpp
+        hooks/server_player.cpp
+        hooks/start_game_packet.cpp
         inventory/inventory.cpp
         inventory/item_stack.cpp
         inventory/player_inventory.cpp
@@ -78,15 +103,12 @@ add_library(endstone_core
         spdlog/text_formatter.cpp
         util/error.cpp
         util/uuid.cpp
-        logger_factory.cpp
-        message.cpp
-        player.cpp
-        server.cpp
-        symbol_windows.cpp
 )
 add_library(endstone::core ALIAS endstone_core)
+target_include_directories(endstone_core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../)
 target_link_libraries(endstone_core PUBLIC
-        endstone::headers
+        bedrock::bedrock
+        endstone::endstone
         aklomp::base64
         boost::boost
         concurrentqueue::concurrentqueue

@@ -32,12 +32,13 @@ endif ()
 # Implementations
 add_subdirectory(src/endstone/python)
 add_subdirectory(src/bedrock)
-return()
 add_subdirectory(src/endstone/core)
+return()
 add_subdirectory(src/endstone/runtime)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     add_subdirectory(src/endstone/devtools)
 endif ()
+
 
 # Test
 add_subdirectory(tests)

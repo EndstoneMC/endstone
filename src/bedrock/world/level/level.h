@@ -17,7 +17,7 @@
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_interface.h"
 
-namespace endstone::detail {
+namespace endstone::core {
 class EndstoneServer;
 }
 
@@ -38,5 +38,5 @@ public:
 
 protected:
     virtual void _initializeMapDataManager() = 0;
-    friend class endstone::detail::EndstoneServer;
+    friend class endstone::core::EndstoneServer;
 };

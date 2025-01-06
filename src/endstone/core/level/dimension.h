@@ -16,7 +16,7 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/actor/actor.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/server.h"
 #include "endstone/level/dimension.h"
 
 namespace endstone::core {

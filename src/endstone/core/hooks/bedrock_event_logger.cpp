@@ -19,7 +19,7 @@
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/diagnostics/log_level.h"
-#include "endstone/detail/logger_factory.h"
+#include "endstone/core/logger_factory.h"
 #include "endstone/logger.h"
 
 void BedrockLog::log_va(LogCategory /*category*/, std::bitset<3> /*channel_mask*/, LogRule /*rule*/, LogAreaID area,
@@ -27,7 +27,7 @@ void BedrockLog::log_va(LogCategory /*category*/, std::bitset<3> /*channel_mask*
                         va_list args)
 {
     auto name = magic_enum::enum_name(area);
-    auto &logger = endstone::detail::LoggerFactory::getLogger(std::string(name));
+    auto &logger = endstone::core::LoggerFactory::getLogger(std::string(name));
     endstone::Logger::Level log_level;
     switch (priority) {
     case Bedrock::LogLevel::Verbose:

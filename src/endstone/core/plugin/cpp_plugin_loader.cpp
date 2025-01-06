@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/plugin/cpp_plugin_loader.h"
+#include "endstone/core/plugin/cpp_plugin_loader.h"
 
 #include <filesystem>
 #include <regex>
 namespace fs = std::filesystem;
 
-#include "endstone/detail/logger_factory.h"
-#include "endstone/detail/server.h"
+#include "endstone/core/logger_factory.h"
+#include "endstone/core/server.h"
 #include "endstone/plugin/plugin.h"
 
 #ifdef _WIN32

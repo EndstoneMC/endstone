@@ -12,20 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/permissions/permissible_base.h"
+#include "endstone/core/permissions/permissible_base.h"
 
 #include <memory>
 
-#include <endstone/detail/permissions/permissible.h>
-
-#include "endstone/detail/server.h"
-#include "endstone/detail/util/error.h"
+#include "endstone/core/permissions/permissible.h"
+#include "endstone/core/server.h"
+#include "endstone/core/util/error.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
 
 namespace endstone::core {
 
-PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
+PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this)
+{
+    PermissibleBase::recalculatePermissions();
+}
 
 bool PermissibleBase::isOp() const
 {
@@ -218,7 +220,7 @@ void PermissibleBase::clearPermissions()
 
 std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
 {
-    return PermissibleFactory::create<PermissibleFactory::Option::Lazy, PermissibleBase>(opable);
+    return PermissibleFactory::create<PermissibleBase>(opable);
 }
 
 }  // namespace endstone::core

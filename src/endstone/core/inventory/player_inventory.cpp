@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/inventory/player_inventory.h"
+#include "endstone/core/inventory/player_inventory.h"
 
 namespace endstone::core {
 

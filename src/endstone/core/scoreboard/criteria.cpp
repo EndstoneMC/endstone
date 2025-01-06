@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/scoreboard/criteria.h"
+#include "endstone/core/scoreboard/criteria.h"
 
 namespace endstone::core {
 

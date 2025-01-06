@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/plugin/python_plugin_loader.h"
+#include "endstone/core/plugin/python_plugin_loader.h"
 
 #include <pybind11/embed.h>
 namespace py = pybind11;
 
-#include "endstone/detail/logger_factory.h"
+#include "endstone/core/logger_factory.h"
 
 namespace endstone::core {
 
