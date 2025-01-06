@@ -18,6 +18,5 @@
 
 std::string Common::getGameVersionString()
 {
-    endstone::runtime::has_symbol(__FUNCDNAME__);
     ENDSTONE_SYMCALL(&Common::getGameVersionString);
 }
