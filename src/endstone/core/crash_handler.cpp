@@ -23,8 +23,8 @@
 #include <cpptrace/cpptrace.hpp>
 #include <fmt/format.h>
 
-#include "endstone/core/os.h"
-#include "endstone/endstone.h"
+#include "endstone/core/platform.h"
+#include "endstone/version.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -135,13 +135,12 @@ bool should_report(const cpptrace::stacktrace &stacktrace)
 void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
 {
     stream << "=== ENDSTONE CRASHED! ===" << '\n'
-           << std::left << std::setw(18) << "Operation system:" << os::get_name() << '\n'
+           << std::left << std::setw(18) << "Platform:" << get_platform() << '\n'
            << std::left << std::setw(18) << "Endstone version:" << ENDSTONE_VERSION << '\n'
-           << std::left << std::setw(18) << "Api version:" << ENDSTONE_API_VERSION << '\n'
-           << std::left << std::setw(18) << "Description:";
+           << std::left << std::setw(18) << "Api version:" << ENDSTONE_API_VERSION << '\n';
 #ifdef _WIN32
     const auto *record = ctx->exception_ptrs.ExceptionRecord;
-    stream << "Exception code: 0x" << std::hex << record->ExceptionCode;
+    stream << std::left << std::setw(18) << "Exception code: 0x" << std::hex << record->ExceptionCode;
     for (const auto &[code, name, description] : EXCEPTION_DEFINITIONS) {
         if (code == record->ExceptionCode) {
             stream << " (" << name << ") - " << description;
@@ -149,7 +148,7 @@ void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
     }
 #else
     const auto signum = ctx->signum;
-    stream << "Signal: 0x" << std::hex << signum;
+    stream << std::left << std::setw(18) << "Signal: 0x" << std::hex << signum;
     for (const auto &[signal, name, description] : SIGNAL_DEFINITIONS) {
         if (signal == signum) {
             stream << " (" << name << ") - " << description;
@@ -196,9 +195,9 @@ CrashHandler::CrashHandler()
     constexpr auto dsn =
         "https://69c28eeaef4651abcf0bbeace6a1175c@o4508553519431680.ingest.de.sentry.io/4508569040519248";
 #ifdef _WIN32
-    fs::path handler_path = (fs::path{os::get_module_pathname()}.parent_path()) / "crashpad_handler.exe";
+    fs::path handler_path = (fs::path{get_module_pathname()}.parent_path()) / "crashpad_handler.exe";
 #else
-    fs::path handler_path = (fs::path{os::get_module_pathname()}.parent_path()) / "crashpad_handler";
+    fs::path handler_path = (fs::path{get_module_pathname()}.parent_path()) / "crashpad_handler";
 #endif
     constexpr std::string_view release = "endstone@" ENDSTONE_VERSION;
     constexpr bool is_dev = release.find("dev") != std::string_view::npos;

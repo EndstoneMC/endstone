@@ -14,14 +14,14 @@
 
 #ifdef __linux__
 
-#include "endstone/core/os.h"
-
 #include <climits>
 #include <fstream>
 
 #include <fmt/format.h>
 
-namespace endstone::core::os {
+#include "endstone/core/platform.h"
+
+namespace endstone::core {
 
 namespace {
 struct ModuleInfo {
@@ -93,11 +93,11 @@ std::string get_executable_pathname()
     return module_info.pathname;
 }
 
-std::string get_name()
+constexpr std::string_view get_name()
 {
     return "Linux";
 }
 
-}  // namespace endstone::core::os
+}  // namespace endstone::core
 
 #endif

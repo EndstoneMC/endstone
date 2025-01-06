@@ -21,12 +21,12 @@
 
 #include "cast.h"
 
-namespace endstone::runtime::hook {
+namespace endstone::hook {
 void install();
-const std::error_category &hook_error_category();
-}  // namespace endstone::runtime::hook
+const std::error_category &error_category();
+}  // namespace endstone::hook
 
-namespace endstone::runtime::hook {
+namespace endstone::hook {
 
 void *get_original(void *detour);
 void *get_original(const std::string &name);
@@ -34,9 +34,9 @@ void *get_original(const std::string &name);
 const std::unordered_map<std::string, void *> &get_targets();
 const std::unordered_map<std::string, void *> &get_detours();
 
-}  // namespace endstone::runtime::hook
+}  // namespace endstone::hook
 
-namespace endstone::runtime::hook {
+namespace endstone::hook {
 /**
  * @brief Gets the original function pointer from a detour function pointer
  */
@@ -77,8 +77,10 @@ Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
     temp.ptr = original;
     return *reinterpret_cast<decltype(&fp)>(&temp);
 }
-}  // namespace endstone::runtime::hook
+}  // namespace endstone::hook
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) std::invoke(endstone::runtime::hook::get_original(fp), ##__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)                                                                  \
+    std::invoke(endstone::runtime::fp_cast(fp, endstone::hook::get_original(endstone::runtime::fp_cast(fp))), \
+                ##__VA_ARGS__)
 #define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...) \
-    std::invoke(endstone::runtime::hook::get_original(fp, name), ##__VA_ARGS__)
+    std::invoke(endstone::runtime::fp_cast(fp, endstone::hook::get_original(name)), ##__VA_ARGS__)

@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_runtime LANGUAGES CXX)
 
-find_package(sentry REQUIRED)
 include(FetchContent)
 FetchContent_Declare(
         funchook
@@ -26,7 +25,7 @@ add_library(endstone_runtime SHARED
         signal_handler.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
-target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook sentry::sentry)
+target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
 endif ()

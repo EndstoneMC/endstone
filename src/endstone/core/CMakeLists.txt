@@ -13,14 +13,19 @@ find_package(Microsoft.GSL REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 REQUIRED)
+find_package(sentry REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(tomlplusplus REQUIRED)
 
 add_library(endstone_core
+        crash_handler.cpp
         logger_factory.cpp
         message.cpp
+        platform_linux.cpp
+        platform_windows.cpp
         player.cpp
         server.cpp
+        signal_handler.cpp
         actor/actor.cpp
         actor/mob.cpp
         ban/ip_ban_list.cpp
@@ -120,6 +125,7 @@ target_link_libraries(endstone_core PUBLIC
         Microsoft.GSL::GSL
         nlohmann_json::nlohmann_json
         pybind11::embed
+        sentry::sentry
         spdlog::spdlog
         tomlplusplus::tomlplusplus)
 target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)

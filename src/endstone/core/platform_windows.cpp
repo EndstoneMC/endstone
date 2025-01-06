@@ -18,12 +18,13 @@
 // Psapi.h must be included after Windows.h
 #include <Psapi.h>
 
-#include <sstream>
+#include <string>
+#include <string_view>
 #include <system_error>
 
-#include "endstone/core/os.h"
+#include "endstone/core/platform.h"
 
-namespace endstone::core::os {
+namespace endstone::core {
 
 namespace {
 HMODULE get_module_handle(const char *module_name)
@@ -79,10 +80,10 @@ std::string get_executable_pathname()
     return file_name;
 }
 
-std::string get_name()
+constexpr std::string_view get_platform()
 {
     return "Windows";
 }
-}  // namespace endstone::core::os
+}  // namespace endstone::core
 
 #endif
