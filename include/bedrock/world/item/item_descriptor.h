@@ -50,6 +50,7 @@ public:
         const Item *item;
         std::int16_t aux_value;
         ItemEntry(const Item *, std::int16_t);
+        const Block *getBlock() const;
     };
 
     enum class InternalType : std::uint8_t {
@@ -64,21 +65,21 @@ public:
     class BaseDescriptor {
     public:
         [[nodiscard]] virtual std::unique_ptr<BaseDescriptor> clone() const = 0;
-        [[nodiscard]] virtual bool sameItems(BaseDescriptor const &, bool) const = 0;
+        [[nodiscard]] virtual bool sameItems(BaseDescriptor const &, bool) const;
         [[nodiscard]] virtual bool sameItem(ItemEntry const &, bool) const = 0;
-        [[nodiscard]] virtual std::string const &getFullName() const = 0;
-        [[nodiscard]] virtual std::string toString() const = 0;
+        [[nodiscard]] virtual std::string const &getFullName() const;
+        [[nodiscard]] virtual std::string toString() const;
         [[nodiscard]] virtual ItemEntry getItem() const = 0;
-        [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const = 0;
+        [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const;
         [[nodiscard]] virtual std::map<std::string, std::string> toMap() const = 0;
         [[nodiscard]] virtual std::optional<CompoundTag> save() const = 0;
-        virtual void serialize(Json::Value &val) const = 0;
+        virtual void serialize(Json::Value &val) const;
         virtual void serialize(BinaryStream &stream) const = 0;
         [[nodiscard]] virtual InternalType getType() const = 0;
-        [[nodiscard]] virtual bool isValid() const = 0;
+        [[nodiscard]] virtual bool isValid() const;
         [[nodiscard]] virtual std::size_t getHash() const = 0;
-        [[nodiscard]] virtual bool shouldResolve() const = 0;
-        [[nodiscard]] virtual std::unique_ptr<BaseDescriptor> resolve() const = 0;
+        [[nodiscard]] virtual bool shouldResolve() const;
+        [[nodiscard]] virtual std::unique_ptr<BaseDescriptor> resolve() const;
         virtual ~BaseDescriptor() = 0;
     };
 

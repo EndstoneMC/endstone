@@ -54,20 +54,24 @@ public:
     void set(std::uint8_t count);
     [[nodiscard]] std::uint8_t getCount() const;  // Endstone
 
-private:
     static const std::string TAG_DISPLAY;
     static const std::string TAG_DISPLAY_NAME;
-    static const std::string TAG_CHARGED_ITEM;
     static constexpr int ID_MASK = 0xffff;
     static constexpr int ENCHANT_MASK = 0x8000;
     static constexpr int AUX_VALUE_MASK = 0x7fff;
 
-    WeakPtr<Item> item_{nullptr};                         // +8
-    std::unique_ptr<CompoundTag> user_data_;              // +16
-    Block *block_{nullptr};                               // +24
-    std::int16_t aux_value_{0};                           // +32
-    std::uint8_t count_{0};                               // +34
-    bool valid_deprecated_{true};                         // +35
+protected:
+    static const std::string TAG_CHARGED_ITEM;
+    WeakPtr<Item> item_{nullptr};             // +8
+    std::unique_ptr<CompoundTag> user_data_;  // +16
+    Block *block_{nullptr};                   // +24
+    std::int16_t aux_value_{0};               // +32
+    std::uint8_t count_{0};                   // +34
+
+private:
+    bool valid_deprecated_{true};  // +35
+
+protected:
     bool show_pick_up_{true};                             // +36
     bool was_picked_up_{false};                           // +37
     std::chrono::steady_clock::time_point pick_up_time_;  // +40
@@ -77,5 +81,8 @@ private:
     std::size_t can_destroy_hash_{0};                     // +112
     Tick blocking_tick_{};                                // +120
     std::unique_ptr<ItemInstance> charged_item_;          // +128
+
+private:
+    void _updateCompareHashes();
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackBase, 128, 128);

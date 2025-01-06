@@ -60,6 +60,7 @@ void ItemStackBase::setNull(std::optional<std::string> reason)
     can_place_on_.clear();
     can_destroy_.clear();
     blocking_tick_ = Tick(0);
+    _updateCompareHashes();
 }
 
 std::string ItemStackBase::toString() const

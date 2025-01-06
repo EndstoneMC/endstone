@@ -56,23 +56,8 @@ bool InternalItemDescriptor::sameItem(const ItemDescriptor::ItemEntry &other, bo
         return true;
     }
 
-    auto get_block = [](const ItemDescriptor::ItemEntry &entry) -> const Block * {
-        const auto *item = entry.item;
-        if (!item) {
-            return nullptr;
-        }
-        const auto &block_legacy = item->getLegacyBlock();
-        if (block_legacy.isNull()) {
-            return nullptr;
-        }
-        if (entry.aux_value == ItemDescriptor::ANY_AUX_VALUE) {
-            return &block_legacy->getRenderBlock();
-        }
-        return block_legacy->tryGetStateFromLegacyData(entry.aux_value);
-    };
-    const auto *block = get_block(item_entry_);
-    const auto *other_block = get_block(other);
-    if (block && other_block) {
+    const auto *block = item_entry_.getBlock();
+    if (const auto *other_block = other.getBlock(); block && other_block) {
         return block == other_block;
     }
     return item_entry_.aux_value == other.aux_value;
@@ -102,6 +87,7 @@ std::optional<CompoundTag> InternalItemDescriptor::save() const
     }
     CompoundTag tag;
     tag.putString("Name", getFullName());
+    tag.putShort("Aux", item_entry_.aux_value);
     return tag;
 }
 
@@ -204,4 +190,60 @@ std::string const &ItemDescriptor::getFullName() const
         return empty;
     }
     return impl_->getFullName();
+}
+
+const Block *ItemDescriptor::ItemEntry::getBlock() const
+{
+    if (!item) {
+        return nullptr;
+    }
+    const auto &block_legacy = item->getLegacyBlock();
+    if (block_legacy.isNull()) {
+        return nullptr;
+    }
+    if (aux_value == ANY_AUX_VALUE) {
+        return &block_legacy->getRenderBlock();
+    }
+    return block_legacy->tryGetStateFromLegacyData(aux_value);
+}
+
+bool ItemDescriptor::BaseDescriptor::sameItems(BaseDescriptor const &, bool flag) const
+{
+    if (const auto item = getItem(); item.item) {
+        return sameItem(item, flag);
+    }
+    return false;
+}
+
+std::string ItemDescriptor::BaseDescriptor::toString() const
+{
+    return getFullName();
+}
+
+bool ItemDescriptor::BaseDescriptor::forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const
+{
+    if (const auto item = getItem(); item.item) {
+        return func(*item.item, item.aux_value);
+    }
+    return false;
+}
+
+void ItemDescriptor::BaseDescriptor::serialize(Json::Value &val) const
+{
+    val = getFullName();
+}
+
+bool ItemDescriptor::BaseDescriptor::isValid() const
+{
+    return true;
+}
+
+bool ItemDescriptor::BaseDescriptor::shouldResolve() const
+{
+    return false;
+}
+
+std::unique_ptr<ItemDescriptor::BaseDescriptor> ItemDescriptor::BaseDescriptor::resolve() const
+{
+    return nullptr;
 }
