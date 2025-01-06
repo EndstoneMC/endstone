@@ -22,6 +22,9 @@
 
 #include <spdlog/spdlog.h>
 
+#include "endstone/core/platform.h"
+#include "symbol.h"
+
 namespace endstone::hook {
 
 namespace {
@@ -45,6 +48,21 @@ void *get_original(const std::string &name)
         throw std::runtime_error(fmt::format("No original function can be found for name {}", name));
     }
     return it->second;
+}
+
+const std::unordered_map<std::string, void *> &get_targets()
+{
+    static std::unordered_map<std::string, void *> targets;
+    if (!targets.empty()) {
+        return targets;
+    }
+    auto *executable_base = core::get_executable_base();
+    runtime::foreach_symbol([executable_base](const auto &key, auto offset) {
+        spdlog::debug("T: {} -> 0x{:x}", key.data(), offset);
+        auto *target = static_cast<char *>(executable_base) + offset;
+        targets.emplace(key.data(), target);
+    });
+    return targets;
 }
 
 void install()
@@ -82,7 +100,7 @@ void install()
     }
 }
 
-const std::error_category &hook_error_category()
+const std::error_category &error_category()
 {
     static const class HookErrorCategory : public std::error_category {
     public:

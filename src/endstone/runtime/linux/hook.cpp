@@ -108,29 +108,6 @@ const std::unordered_map<std::string, void *> &get_detours()
     });
     return detours;
 }
-
-const std::unordered_map<std::string, void *> &get_targets()
-{
-    static std::unordered_map<std::string, void *> targets;
-    if (!targets.empty()) {
-        return targets;
-    }
-
-    auto *executable_base = os::get_executable_base();
-    const auto module_pathname = os::get_module_pathname();
-    auto symbol_path = std::filesystem::path{module_pathname}.parent_path() / "symbols.toml";
-    auto tbl = toml::parse_file(symbol_path.string());
-    tbl["linux"].as_table()->for_each([executable_base](const toml::key &key, auto &&val) {
-        if constexpr (toml::is_integer<decltype(val)>) {
-            auto offset = val.get();
-            spdlog::debug("T: {} -> 0x{:x}", key.data(), offset);
-            auto *target = static_cast<char *>(executable_base) + offset;
-            targets.emplace(key.data(), target);
-        }
-    });
-
-    return targets;
-}
 }  // namespace endstone::core::hook
 
 #endif

@@ -51,6 +51,16 @@ public:
         return find(key) != data_.end();
     }
 
+    [[nodiscard]] constexpr auto begin() const noexcept
+    {
+        return data_.begin();
+    }
+
+    [[nodiscard]] constexpr auto end() const noexcept
+    {
+        return data_.end();
+    }
+
 private:
     Map data_;
 };
@@ -71,6 +81,14 @@ inline void *get_symbol_addr(std::string_view name)
 {
     static auto *executable_base = core::get_executable_base();
     return static_cast<char *>(executable_base) + gSymbols.at(name);
+}
+
+template <typename Func>
+constexpr void foreach_symbol(Func &&func)
+{
+    for (const auto &[key, value] : gSymbols) {
+        std::invoke(std::forward<Func>(func), key, value);
+    }
 }
 }  // namespace endstone::runtime
 
