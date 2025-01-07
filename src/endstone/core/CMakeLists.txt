@@ -138,8 +138,28 @@ if (UNIX)
 endif ()
 target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${ENDSTONE_VERSION}")
 
+# The crashpad handler executable must be shipped alongside our shared library
+add_custom_target(
+        copy_crashpad_handler
+        ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${sentry_INCLUDE_DIRS}/../bin/ ${CMAKE_BINARY_DIR}/crashpad
+)
+add_dependencies(copy_crashpad_handler endstone_runtime)
+# Reduce the size of the executable by executing strip if it is present on the system
+find_program(STRIP_EXECUTABLE strip)
+if (STRIP_EXECUTABLE)
+    add_custom_target(
+            strip_crashpad_handler
+            ALL
+            COMMAND ${STRIP_EXECUTABLE} ${CMAKE_BINARY_DIR}/crashpad/crashpad_handler${CMAKE_EXECUTABLE_SUFFIX}
+            COMMENT "Stripping crashpad_handler executable for size reduction"
+    )
+    add_dependencies(strip_crashpad_handler copy_crashpad_handler)
+endif ()
+
 include(GNUInstallDirs)
 install(TARGETS endstone_core
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY ${CMAKE_BINARY_DIR}/crashpad/ DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)

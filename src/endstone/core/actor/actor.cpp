@@ -296,3 +296,30 @@ std::shared_ptr<EndstoneActor> EndstoneActor::create(EndstoneServer &server, ::A
 }
 
 }  // namespace endstone::core
+
+endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
+{
+    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto *self = const_cast<Actor *>(this);
+    auto &component = entity_context_.getOrAddComponent<endstone::core::EndstoneActorComponent>();
+    if (component.actor) {
+        return *component.actor;
+    }
+
+    if (self->isType(ActorType::Player)) {
+        if (!isPlayer()) {
+            // Sanity check, should never be reachable
+            throw std::runtime_error("Actor has a Player type but isPlayer() returns false.");
+        }
+        auto *player = static_cast<Player *>(self);
+        component.actor = endstone::core::EndstonePlayer::create(server, *player);
+    }
+    else if (self->hasType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
+        auto *mob = static_cast<Mob *>(self);
+        component.actor = endstone::core::EndstoneMob::create(server, *mob);
+    }
+    else {
+        component.actor = endstone::core::EndstoneActor::create(server, *self);
+    }
+    return *component.actor;
+}

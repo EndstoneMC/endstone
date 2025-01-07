@@ -31,7 +31,7 @@
 #include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
 #include "endstone/core/logger_factory.h"
-#include "endstone/core/platform.h"
+#include "endstone/detail/platform.h"
 #include "endstone/variant.h"
 #include "imgui_file_browser.h"
 #include "imgui_impl_glfw.h"
@@ -223,7 +223,7 @@ void render()
         if (x_scale != prev_scale) {
             prev_scale = x_scale;
             auto font_path =
-                fs::path{core::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
+                fs::path{detail::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
             io.Fonts->Clear();
             io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(15 * x_scale));
             io.Fonts->Build();
