@@ -22,7 +22,6 @@
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
 #include "endstone/runtime/hook.h"
-#include "endstone/runtime/symbol.h"
 
 using endstone::core::EndstoneServer;
 
@@ -61,11 +60,4 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
 
     // For other types of sender we don't support yet, fallback to the original dispatching route
     return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, suppress_output);
-}
-
-Command *MinecraftCommands::compileCommand(HashedString const &command_str, CommandOrigin &origin,
-                                           CurrentCmdVersion command_version,
-                                           std::function<void(const std::string &)> on_parser_error)
-{
-    ENDSTONE_SYMCALL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version, on_parser_error);
 }

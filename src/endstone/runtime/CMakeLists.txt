@@ -15,10 +15,10 @@ FetchContent_MakeAvailable(funchook)
 add_library(funchook::funchook ALIAS funchook-static)
 
 add_library(endstone_runtime SHARED
-        linux/hook.cpp
-        windows/hook.cpp
-        hook.cpp
         main.cpp
+        hook.cpp
+        linux.cpp
+        windows.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)

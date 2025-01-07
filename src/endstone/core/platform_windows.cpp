@@ -24,7 +24,7 @@
 
 #include "endstone/detail/platform.h"
 
-namespace endstone::core {
+namespace endstone::detail {
 
 namespace {
 HMODULE get_module_handle(const char *module_name)
@@ -84,6 +84,6 @@ constexpr std::string_view get_platform()
 {
     return "Windows";
 }
-}  // namespace endstone::core
+}  // namespace endstone::detail
 
 #endif

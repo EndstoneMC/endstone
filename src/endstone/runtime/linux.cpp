@@ -14,7 +14,7 @@
 
 #ifdef __linux__
 
-#include "endstone/core/hook.h"
+#include "hook.h"
 
 #include <fcntl.h>
 #include <gelf.h>
@@ -27,7 +27,7 @@
 #include <spdlog/spdlog.h>
 #include <toml++/toml.h>
 
-#include "endstone/core/os.h"
+#include "endstone/detail/platform.h"
 
 namespace {
 void read_elf(const std::string &module_pathname, uint32_t section_type,
@@ -77,7 +77,7 @@ void read_elf(const std::string &module_pathname, uint32_t section_type,
 }
 }  // namespace
 
-namespace endstone::core::hook {
+namespace endstone::hook {
 
 const std::unordered_map<std::string, void *> &get_detours()
 {
@@ -86,8 +86,8 @@ const std::unordered_map<std::string, void *> &get_detours()
         return detours;
     }
 
-    auto *module_base = os::get_module_base();
-    auto module_pathname = os::get_module_pathname();
+    auto *module_base = detail::get_module_base();
+    auto module_pathname = detail::get_module_pathname();
     const auto &targets = get_targets();
 
     read_elf(module_pathname, SHT_DYNSYM, [&](auto *elf, auto &shdr, auto &sym) {
@@ -108,6 +108,6 @@ const std::unordered_map<std::string, void *> &get_detours()
     });
     return detours;
 }
-}  // namespace endstone::core::hook
+}  // namespace endstone::hook
 
 #endif

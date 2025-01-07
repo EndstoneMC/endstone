@@ -1,11 +1,12 @@
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <filesystem>
+
 #include <toml++/toml.h>
 
 namespace {
-void generate_include_file(const std::string &output_file, const toml::table &table)
+int generate_include_file(const std::string &output_file, const toml::table &table)
 {
     namespace fs = std::filesystem;
 
@@ -16,16 +17,17 @@ void generate_include_file(const std::string &output_file, const toml::table &ta
     if (!parent_dir.empty() && !fs::exists(parent_dir)) {
         try {
             fs::create_directories(parent_dir);
-        } catch (const fs::filesystem_error &e) {
+        }
+        catch (const fs::filesystem_error &e) {
             std::cerr << "Failed to create directories for output file: " << e.what() << '\n';
-            return;
+            return 1;
         }
     }
 
     std::ofstream output(output_file);
     if (!output.is_open()) {
         std::cerr << "Failed to open output file: " << output_file << '\n';
-        return;
+        return 1;
     }
 
     output << "#pragma once\n\n";
@@ -38,12 +40,17 @@ void generate_include_file(const std::string &output_file, const toml::table &ta
             std::cerr << "Skipping non-integer value for key: " << key << '\n';
             continue;
         }
-        output << "    { \"" << key << "\", " << *value.value<int64_t>() << " },\n";
+        auto val = *value.value<int64_t>();
+        if (val == 0) {
+            std::cerr << "Skipping zero value for key: " << key << '\n';
+            continue;
+        }
+        output << "    { \"" << key << "\", " << val << " },\n";
     }
 
     output << "}};\n";
     output.close();
-    std::cout << "Include file generated: " << output_file << '\n';
+    return 0;
 }
 }  // namespace
 
@@ -60,9 +67,9 @@ int main(int argc, char **argv)
     try {
         auto table = toml::parse_file(input_file);
 #ifdef _WIN32
-        generate_include_file(output_file, *table["windows"].as_table());
+        return generate_include_file(output_file, *table["windows"].as_table());
 #elif __linux__
-        generate_include_file(output_file, *table["linux"].as_table());
+        return generate_include_file(output_file, *table["linux"].as_table());
 #else
 #error Unsupported platform
 #endif
@@ -71,6 +78,4 @@ int main(int argc, char **argv)
         std::cerr << "Failed to parse TOML file: " << err.description() << '\n';
         return 1;
     }
-
-    return 0;
 }

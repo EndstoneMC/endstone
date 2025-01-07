@@ -21,7 +21,7 @@
 
 #include "endstone/core/platform.h"
 
-namespace endstone::core {
+namespace endstone::detail {
 
 namespace {
 struct ModuleInfo {

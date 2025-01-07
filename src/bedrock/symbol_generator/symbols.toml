@@ -1,4 +1,4 @@
-timestamp = 1736035039
+timestamp = 1736268070
 version = "1.21.50"
 
 [windows]
@@ -12,6 +12,8 @@ version = "1.21.50"
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 59908992
 # BlockDescriptor
 "?tryGetBlockNoLogging@BlockDescriptor@@QEBAPEBVBlock@@XZ" = 41068464
+# BlockLegacy
+"?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 41068800
 # BlockTypeRegistry
 "?forEachBlock@BlockTypeRegistry@@SAXV?$function@$$A6A_NAEBVBlockLegacy@@@Z@std@@@Z" = 46961872
 # Command
@@ -35,8 +37,6 @@ version = "1.21.50"
 "?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 6291840
 # CraftingDataPacket
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 16545120
-# Explosion
-"?explode@Explosion@@QEAA_NXZ" = 39888224
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 50047168
 # GameMode
@@ -45,10 +45,8 @@ version = "1.21.50"
 "?useItemOn@GameMode@@UEAA?AVInteractionResult@@AEAVItemStack@@AEBVBlockPos@@EAEBVVec3@@PEBVBlock@@_N@Z" = 36388512
 # Item
 "?_sendTryPlaceBlockEvent@Item@@IEBA?AW4CoordinatorResult@@AEBVBlock@@AEBVBlockSource@@AEBVActor@@AEBVBlockPos@@EAEBVVec3@@@Z" = 40218656
-# ItemStack
-"??0ItemStack@@QEAA@XZ" = 40190640
-"??0ItemStack@@QEAA@AEBV0@@Z" = 40190144
-"??0ItemStack@@QEAA@AEBVItem@@HHPEBVCompoundTag@@@Z" = 40190368
+# ItemRegistryManager
+"?getItemRegistry@ItemRegistryManager@@SA?AVItemRegistryRef@@XZ" = 39673296
 # Level
 "?tick@Level@@UEAAXXZ" = 39489328
 # LevelEventCoordinator
@@ -72,7 +70,6 @@ version = "1.21.50"
 "?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 36373312
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 51374320
-"?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 51221232
 # RakPeerHelper
 "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 13945120
 # ResourcePackRepository

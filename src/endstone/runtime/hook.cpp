@@ -22,8 +22,8 @@
 
 #include <spdlog/spdlog.h>
 
-#include "endstone/core/platform.h"
-#include "symbol.h"
+#include "bedrock/symbol.h"
+#include "endstone/detail/platform.h"
 
 namespace endstone::hook {
 
@@ -56,8 +56,8 @@ const std::unordered_map<std::string, void *> &get_targets()
     if (!targets.empty()) {
         return targets;
     }
-    auto *executable_base = core::get_executable_base();
-    runtime::foreach_symbol([executable_base](const auto &key, auto offset) {
+    auto *executable_base = detail::get_executable_base();
+    detail::foreach_symbol([executable_base](const auto &key, auto offset) {
         spdlog::debug("T: {} -> 0x{:x}", key.data(), offset);
         auto *target = static_cast<char *>(executable_base) + offset;
         targets.emplace(key.data(), target);

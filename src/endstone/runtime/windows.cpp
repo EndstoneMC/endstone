@@ -14,22 +14,21 @@
 
 #ifdef _WIN32
 
-#include <Windows.h>
+#include "hook.h"
 
+#include <Windows.h>
 // DbgHelp.h must be included after Windows.h
 #include <DbgHelp.h>
 
 #include <chrono>
-#include <filesystem>
 #include <string>
 #include <system_error>
 #include <unordered_map>
 
 #include <spdlog/spdlog.h>
-#include <toml++/toml.h>
 
-#include "endstone/core/platform.h"
-#include "endstone/runtime/hook.h"
+#include "endstone/detail/platform.h"
+
 
 namespace endstone::hook {
 
@@ -93,8 +92,8 @@ const std::unordered_map<std::string, void *> &get_detours()
         return detours;
     }
 
-    auto *module_base = core::get_module_base();
-    const auto module_pathname = core::get_module_pathname();
+    auto *module_base = detail::get_module_base();
+    const auto module_pathname = detail::get_module_pathname();
     const auto &targets = get_targets();
 
     enumerate_symbols(  //
