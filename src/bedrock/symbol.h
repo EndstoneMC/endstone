@@ -52,7 +52,7 @@ constexpr void foreach_symbol(Func &&func)
 }  // namespace endstone::detail
 
 #define ENDSTONE_SYMCALL(fp, ...)                                                                  \
-    static_assert(endstone::detail::has_symbol(__FUNCDNAME__), "undefined symbol " __FUNCDNAME__); \
+    static_assert(endstone::detail::has_symbol(__FUNCDNAME__), "undefined symbol " __FUNCDNAME__ " in " __FUNCSIG__); \
     return std::invoke(endstone::detail::fp_cast(fp, endstone::detail::get_symbol_addr(__FUNCDNAME__)), ##__VA_ARGS__)
 
 namespace endstone::detail {

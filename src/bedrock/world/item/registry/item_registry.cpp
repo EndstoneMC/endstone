@@ -14,6 +14,13 @@
 
 #include "bedrock/world/item/registry/item_registry.h"
 
+#include "bedrock/symbol.h"
+
+WeakPtr<Item> ItemRegistry::lookupByName(int &out_aux_value, std::string_view in_string) const
+{
+    ENDSTONE_SYMCALL(&ItemRegistry::lookupByName, this, out_aux_value, in_string);
+}
+
 WeakPtr<Item> ItemRegistry::getItem(std::int16_t id) const
 {
     const auto it = id_to_item_map_.find(id);

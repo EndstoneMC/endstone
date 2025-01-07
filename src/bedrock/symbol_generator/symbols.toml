@@ -1,4 +1,4 @@
-timestamp = 1736268070
+timestamp = 1736279913
 version = "1.21.50"
 
 [windows]
@@ -45,6 +45,8 @@ version = "1.21.50"
 "?useItemOn@GameMode@@UEAA?AVInteractionResult@@AEAVItemStack@@AEBVBlockPos@@EAEBVVec3@@PEBVBlock@@_N@Z" = 36388512
 # Item
 "?_sendTryPlaceBlockEvent@Item@@IEBA?AW4CoordinatorResult@@AEBVBlock@@AEBVBlockSource@@AEBVActor@@AEBVBlockPos@@EAEBVVec3@@@Z" = 40218656
+# ItemRegistry
+"?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 39706432
 # ItemRegistryManager
 "?getItemRegistry@ItemRegistryManager@@SA?AVItemRegistryRef@@XZ" = 39673296
 # Level
