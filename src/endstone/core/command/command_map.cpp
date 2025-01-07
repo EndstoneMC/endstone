@@ -36,9 +36,9 @@
 #include "endstone/core/command/defaults/version_command.h"
 #include "endstone/core/command/minecraft_command.h"
 #include "endstone/core/command/minecraft_command_adapter.h"
+#include "endstone/core/devtools/devtools_command.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
-#include "endstone/devtools/devtools_command.h"
 
 namespace endstone::core {
 
@@ -113,7 +113,7 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand(std::make_unique<StatusCommand>());
     registerCommand(std::make_unique<VersionCommand>());
 #ifdef ENDSTONE_WITH_DEVTOOLS
-    registerCommand(std::make_unique<devtools::DevToolsCommand>());
+    registerCommand(std::make_unique<DevToolsCommand>());
 #endif
 }
 

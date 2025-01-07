@@ -19,9 +19,9 @@
 #include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
 
+#include "endstone/core/devtools/devtools.h"
 #include "endstone/core/logger_factory.h"
-#include "endstone/devtools/devtools.h"
-#include "hook.h"
+#include "endstone/runtime/hook.h"
 
 #if __GNUC__
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))

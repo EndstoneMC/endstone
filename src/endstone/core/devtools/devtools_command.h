@@ -16,11 +16,11 @@
 
 #include "endstone/core/command/endstone_command.h"
 
-namespace endstone::devtools {
+namespace endstone::core {
 class DevToolsCommand : public core::EndstoneCommand {
 public:
     DevToolsCommand();
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
 
-}  // namespace endstone::devtools
+}  // namespace endstone::core

@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifdef __linux__
+#include "endstone/runtime/hook.h"
 
-#include "hook.h"
+#ifdef __linux__
 
 #include <fcntl.h>
 #include <gelf.h>
@@ -25,7 +25,6 @@
 #include <unordered_map>
 
 #include <spdlog/spdlog.h>
-#include <toml++/toml.h>
 
 #include "endstone/detail/platform.h"
 

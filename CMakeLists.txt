@@ -34,10 +34,6 @@ add_subdirectory(src/endstone/python)
 add_subdirectory(src/bedrock)
 add_subdirectory(src/endstone/core)
 add_subdirectory(src/endstone/runtime)
-if (ENDSTONE_ENABLE_DEVTOOLS)
-    add_subdirectory(src/endstone/devtools)
-endif ()
-
 
 # Test
 if (NOT BUILD_TESTING STREQUAL OFF)

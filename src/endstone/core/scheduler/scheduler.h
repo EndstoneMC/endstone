@@ -16,13 +16,12 @@
 
 #include <atomic>
 #include <mutex>
-#include <queue>
 
 #include <moodycamel/concurrentqueue.h>
 
 #include "endstone/core/scheduler/task.h"
+#include "endstone/core/scheduler/thread_pool_executor.h"
 #include "endstone/scheduler/scheduler.h"
-#include "thread_pool_executor.h"
 
 namespace endstone::core {
 

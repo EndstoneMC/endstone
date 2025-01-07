@@ -21,7 +21,7 @@
 #include "endstone/core/server.h"
 
 #ifdef _WIN32
-#include "Windows.h"
+#include <Windows.h>
 #endif
 
 namespace endstone::core {

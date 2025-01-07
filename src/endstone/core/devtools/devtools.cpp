@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "devtools.h"
+#include "endstone/core/devtools/devtools.h"
 
 #include <imgui.h>
 #include <imgui_internal.h>
@@ -30,14 +30,14 @@
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
+#include "endstone/core/devtools/imgui_file_browser.h"
+#include "endstone/core/devtools/imgui_impl_glfw.h"
+#include "endstone/core/devtools/imgui_impl_opengl3.h"
+#include "endstone/core/devtools/imgui_json.h"
+#include "endstone/core/devtools/vanilla_data.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/detail/platform.h"
 #include "endstone/variant.h"
-#include "imgui_file_browser.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_json.h"
-#include "vanilla_data.h"
 
 namespace fs = std::filesystem;
 

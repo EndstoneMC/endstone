@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "imgui_json.h"
+#include "endstone/core/devtools/imgui_json.h"
 
 #include <imgui.h>
 

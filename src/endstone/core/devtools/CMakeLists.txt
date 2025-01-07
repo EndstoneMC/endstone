@@ -15,11 +15,4 @@ add_library(endstone_devtools
         vanilla_data.cpp
 )
 add_library(endstone::devtools ALIAS endstone_devtools)
-
 target_link_libraries(endstone_devtools PUBLIC endstone::core GLEW::GLEW glfw imgui::imgui zstr::zstr)
-
-include(GNUInstallDirs)
-install(TARGETS endstone_devtools
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

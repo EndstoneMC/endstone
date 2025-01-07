@@ -14,11 +14,11 @@
 
 #pragma once
 
-#include "block.h"
 #include "endstone/block/block.h"
 #include "endstone/block/block_state.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/level/dimension.h"
+
 namespace endstone::core {
 
 class EndstoneBlockState : public BlockState {

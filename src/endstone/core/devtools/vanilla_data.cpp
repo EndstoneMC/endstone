@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "vanilla_data.h"
+#include "endstone/core/devtools/vanilla_data.h"
 
 #include <magic_enum/magic_enum.hpp>
 
@@ -23,11 +23,11 @@
 #include "bedrock/world/level/block/actor/furnace_block_actor.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/base64.h"
+#include "endstone/core/devtools/imgui_json.h"
 #include "endstone/core/json.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/uuid.h"
-#include "endstone/devtools/imgui_json.h"
 
 namespace endstone::devtools {
 

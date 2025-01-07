@@ -12,11 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "endstone/runtime/hook.h"
+
 #ifdef _WIN32
 
-#include "hook.h"
-
 #include <Windows.h>
+
 // DbgHelp.h must be included after Windows.h
 #include <DbgHelp.h>
 
@@ -28,7 +29,6 @@
 #include <spdlog/spdlog.h>
 
 #include "endstone/detail/platform.h"
-
 
 namespace endstone::hook {
 
