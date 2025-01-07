@@ -15,7 +15,7 @@
 #include "bedrock/world/level/block/block_legacy.h"
 
 #include "bedrock/world/item/registry/item_registry.h"
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
 {

@@ -19,7 +19,7 @@
 #include <optional>
 #include <system_error>
 
-#include "cast.h"
+#include "endstone/detail/cast.h"
 
 namespace endstone::hook {
 void install();
@@ -80,7 +80,7 @@ Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
 }  // namespace endstone::hook
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)                                                                  \
-    std::invoke(endstone::runtime::fp_cast(fp, endstone::hook::get_original(endstone::runtime::fp_cast(fp))), \
+    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_original(endstone::detail::fp_cast(fp))), \
                 ##__VA_ARGS__)
 #define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...) \
-    std::invoke(endstone::runtime::fp_cast(fp, endstone::hook::get_original(name)), ##__VA_ARGS__)
+    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_original(name)), ##__VA_ARGS__)

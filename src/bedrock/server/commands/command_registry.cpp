@@ -19,7 +19,7 @@
 #include <utility>
 
 #include "bedrock/server/commands/command.h"
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,
                                       CommandFlag flag1, CommandFlag flag2)

@@ -14,7 +14,7 @@
 
 #include "bedrock/shared_constants.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 std::string Common::getGameVersionString()
 {

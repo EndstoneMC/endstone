@@ -14,7 +14,7 @@
 
 #include "bedrock/server/commands/command_utils.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 std::string CommandUtils::getActorName(const Actor &actor)
 {

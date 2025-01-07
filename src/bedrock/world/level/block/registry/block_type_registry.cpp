@@ -14,7 +14,7 @@
 
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 void BlockTypeRegistry::forEachBlock(std::function<bool(const BlockLegacy &)> callback)
 {

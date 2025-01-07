@@ -15,7 +15,7 @@
 #include "bedrock/world/scores/scoreboard.h"
 
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 Objective *Scoreboard::addObjective(const std::string &name, const std::string &display_name,
                                     const ObjectiveCriteria &criteria)

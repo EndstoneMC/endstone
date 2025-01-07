@@ -23,7 +23,7 @@
 #include <cpptrace/cpptrace.hpp>
 #include <fmt/format.h>
 
-#include "endstone/core/platform.h"
+#include "endstone/detail/platform.h"
 #include "endstone/version.h"
 
 #ifdef _WIN32
@@ -47,10 +47,7 @@ struct exception_slot {
     const char *description;
 };
 
-#define EXCEPTION_DEF(code, desc) \
-    {                             \
-        code, #code, desc         \
-    }
+#define EXCEPTION_DEF(code, desc) {code, #code, desc}
 
 const exception_slot EXCEPTION_DEFINITIONS[] = {
     EXCEPTION_DEF(EXCEPTION_ACCESS_VIOLATION, "AccessViolation"),
@@ -83,10 +80,7 @@ struct signal_slot {
     const char *description;
 };
 
-#define SIGNAL_DEF(sig, desc) \
-    {                         \
-        sig, #sig, desc       \
-    }
+#define SIGNAL_DEF(sig, desc) {sig, #sig, desc}
 
 const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction"),
                                           SIGNAL_DEF(SIGTRAP, "Trap"),
@@ -135,7 +129,7 @@ bool should_report(const cpptrace::stacktrace &stacktrace)
 void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
 {
     stream << "=== ENDSTONE CRASHED! ===" << '\n'
-           << std::left << std::setw(18) << "Platform:" << get_platform() << '\n'
+           << std::left << std::setw(18) << "Platform:" << detail::get_platform() << '\n'
            << std::left << std::setw(18) << "Endstone version:" << ENDSTONE_VERSION << '\n'
            << std::left << std::setw(18) << "Api version:" << ENDSTONE_API_VERSION << '\n';
 #ifdef _WIN32
@@ -195,9 +189,9 @@ CrashHandler::CrashHandler()
     constexpr auto dsn =
         "https://69c28eeaef4651abcf0bbeace6a1175c@o4508553519431680.ingest.de.sentry.io/4508569040519248";
 #ifdef _WIN32
-    fs::path handler_path = (fs::path{get_module_pathname()}.parent_path()) / "crashpad_handler.exe";
+    fs::path handler_path = (fs::path{detail::get_module_pathname()}.parent_path()) / "crashpad_handler.exe";
 #else
-    fs::path handler_path = (fs::path{get_module_pathname()}.parent_path()) / "crashpad_handler";
+    fs::path handler_path = (fs::path{detail::get_module_pathname()}.parent_path()) / "crashpad_handler";
 #endif
     constexpr std::string_view release = "endstone@" ENDSTONE_VERSION;
     constexpr bool is_dev = release.find("dev") != std::string_view::npos;

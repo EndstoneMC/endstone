@@ -14,7 +14,7 @@
 
 #include "bedrock/server/commands/command.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 RelativeFloat::RelativeFloat(float offset, bool relative) : offset_(offset), relative_(relative) {}
 

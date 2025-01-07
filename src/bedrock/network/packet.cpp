@@ -14,7 +14,7 @@
 
 #include "bedrock/network/packet.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {

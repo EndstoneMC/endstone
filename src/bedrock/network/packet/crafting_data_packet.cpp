@@ -14,7 +14,7 @@
 
 #include "bedrock/network/packet/crafting_data_packet.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 std::unique_ptr<CraftingDataPacket> CraftingDataPacket::prepareFromRecipes(const Recipes &recipe,
                                                                            bool only_crafting_recipes)

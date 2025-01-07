@@ -14,9 +14,9 @@
 
 #include "bedrock/world/level/block/actor/furnace_block_actor.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 float FurnaceBlockActor::getBurnDuration(ItemStackBase const &item_instance, float burn_interval)
 {
-     ENDSTONE_SYMCALL(&FurnaceBlockActor::getBurnDuration, item_instance, burn_interval);
+    ENDSTONE_SYMCALL(&FurnaceBlockActor::getBurnDuration, item_instance, burn_interval);
 }

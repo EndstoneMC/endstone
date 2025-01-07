@@ -22,7 +22,7 @@
 #include <string_view>
 #include <system_error>
 
-#include "endstone/core/platform.h"
+#include "endstone/detail/platform.h"
 
 namespace endstone::core {
 

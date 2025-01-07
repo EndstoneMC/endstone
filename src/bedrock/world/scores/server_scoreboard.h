@@ -17,7 +17,7 @@
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 class ServerScoreboard : public Scoreboard {
 public:

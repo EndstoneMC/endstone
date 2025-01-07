@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 project(bedrock LANGUAGES CXX)
 
+add_subdirectory(symbol_generator)
+
 find_package(Boost REQUIRED)
 find_package(expected-lite QUIET)
 find_package(fmt REQUIRED)
@@ -95,8 +97,9 @@ add_library(bedrock STATIC
         world/scores/server_scoreboard.cpp
 )
 add_library(bedrock::bedrock ALIAS bedrock)
+add_dependencies(bedrock bedrock_symbols)
 target_include_directories(bedrock PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../)
-target_link_libraries(bedrock PUBLIC boost::boost fmt::fmt EnTT::EnTT glm::glm Microsoft.GSL::GSL nonstd::expected-lite)
+target_link_libraries(bedrock PUBLIC bedrock::symbols endstone::endstone boost::boost fmt::fmt EnTT::EnTT glm::glm Microsoft.GSL::GSL nonstd::expected-lite)
 
 target_compile_definitions(bedrock PUBLIC ENTT_SPARSE_PAGE=2048)
 target_compile_definitions(bedrock PUBLIC ENTT_PACKED_PAGE=128)

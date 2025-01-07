@@ -14,7 +14,7 @@
 
 #include "bedrock/world/level/block/block_descriptor.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 Block const *BlockDescriptor::tryGetBlockNoLogging() const
 {

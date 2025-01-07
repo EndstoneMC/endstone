@@ -14,7 +14,9 @@
 
 #pragma once
 
-namespace endstone::runtime {
+#include <cstdint>
+
+namespace endstone::detail {
 
 /**
  * @brief Cast a function pointer to void pointer

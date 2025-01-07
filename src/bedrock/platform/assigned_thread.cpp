@@ -14,7 +14,7 @@
 
 #include "bedrock/platform/threading/assigned_thread.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 namespace Bedrock::Threading {
 

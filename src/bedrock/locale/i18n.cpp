@@ -14,7 +14,7 @@
 
 #include "bedrock/locale/i18n.h"
 
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 I18n &getI18n()
 {

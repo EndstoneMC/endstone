@@ -21,7 +21,7 @@
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/level/level.h"
-#include "endstone/runtime/symbol.h"
+#include "bedrock/symbol.h"
 
 Container &Player::getInventory()
 {
