@@ -52,11 +52,6 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
                                 disconnect_message, std::move(filtered_message), skip_message);
 }
 
-void ServerNetworkHandler::updateServerAnnouncement()
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::updateServerAnnouncement, this);
-}
-
 bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
 {
     const auto new_player =
