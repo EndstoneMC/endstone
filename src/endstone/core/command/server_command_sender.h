@@ -37,7 +37,8 @@ public:
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 
 private:
-    std::shared_ptr<PermissibleBase> perm_;
+    PermissibleBase &pimpl() const;
+    mutable std::shared_ptr<PermissibleBase> perm_;
 };
 
 }  // namespace endstone::core

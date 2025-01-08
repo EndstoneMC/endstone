@@ -23,8 +23,10 @@
 namespace endstone::core {
 
 ServerCommandSender::ServerCommandSender(std::shared_ptr<PermissibleBase> perm)
-    : perm_(perm ? std::move(perm) : PermissibleBase::create(this))
 {
+    if (perm) {
+        perm_ = std::move(perm);
+    }
 }
 
 Server &ServerCommandSender::getServer() const
@@ -34,47 +36,55 @@ Server &ServerCommandSender::getServer() const
 
 bool ServerCommandSender::isPermissionSet(std::string name) const
 {
-    return perm_->isPermissionSet(name);
+    return pimpl().isPermissionSet(name);
 }
 
 bool ServerCommandSender::isPermissionSet(const Permission &perm) const
 {
-    return perm_->isPermissionSet(perm);
+    return pimpl().isPermissionSet(perm);
 }
 
 bool ServerCommandSender::hasPermission(std::string name) const
 {
-    return perm_->hasPermission(name);
+    return pimpl().hasPermission(name);
 }
 
 bool ServerCommandSender::hasPermission(const Permission &perm) const
 {
-    return perm_->hasPermission(perm);
+    return pimpl().hasPermission(perm);
 }
 
 Result<PermissionAttachment *> ServerCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    return perm_->addAttachment(plugin, name, value);
+    return pimpl().addAttachment(plugin, name, value);
 }
 
 Result<PermissionAttachment *> ServerCommandSender::addAttachment(Plugin &plugin)
 {
-    return perm_->addAttachment(plugin);
+    return pimpl().addAttachment(plugin);
 }
 
 Result<void> ServerCommandSender::removeAttachment(PermissionAttachment &attachment)
 {
-    return perm_->removeAttachment(attachment);
+    return pimpl().removeAttachment(attachment);
 }
 
 void ServerCommandSender::recalculatePermissions()
 {
-    perm_->recalculatePermissions();
+    pimpl().recalculatePermissions();
 }
 
 std::unordered_set<PermissionAttachmentInfo *> ServerCommandSender::getEffectivePermissions() const
 {
-    return perm_->getEffectivePermissions();
+    return pimpl().getEffectivePermissions();
+}
+
+PermissibleBase &ServerCommandSender::pimpl() const
+{
+    if (!perm_) {
+        perm_ = PermissibleBase::create(const_cast<ServerCommandSender *>(this));
+    }
+    return *perm_;
 }
 
 }  // namespace endstone::core

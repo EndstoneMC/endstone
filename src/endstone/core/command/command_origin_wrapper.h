@@ -38,4 +38,4 @@ private:
     const CommandOrigin &origin_;
     CommandOutput &output_;
 };
-}
+}  // namespace endstone::core
