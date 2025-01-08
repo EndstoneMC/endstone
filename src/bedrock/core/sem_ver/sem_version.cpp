@@ -14,9 +14,34 @@
 
 #include "bedrock/core/sem_ver/sem_version.h"
 
+#include <string>
 #include <utility>
+#include <vector>
 
 #include <fmt/format.h>
+
+std::vector<std::string> _versionSplit(const std::string &str, char delim)
+{
+    std::vector<std::string> result;
+    std::string current;
+    for (const char c : str) {
+        if (c == delim) {
+            if (!current.empty()) {
+                result.push_back(current);
+                current.clear();
+            }
+        }
+        else {
+            current += c;
+        }
+    }
+    if (!current.empty()) {
+        result.push_back(current);
+    }
+    return result;
+}
+
+SemVersion::any_version_constructor const SemVersion::AnyVersionConstructor;
 
 SemVersion::SemVersion() : full_version_string_("0.0.0") {}
 
@@ -74,4 +99,47 @@ bool SemVersion::operator==(const SemVersion &rhs) const
         return false;
     }
     return true;
+}
+
+bool SemVersion::operator!=(const SemVersion &rhs) const
+{
+    return !(*this == rhs);
+}
+
+bool SemVersion::operator<(const SemVersion &rhs) const
+{
+    if (any_version_) {
+        return false;
+    }
+
+    if (rhs.any_version_) {
+        return true;
+    }
+
+    if (major_ == rhs.major_ && minor_ == rhs.minor_ && patch_ == rhs.patch_) {
+        if (pre_release_.empty() && !rhs.pre_release_.empty()) {
+            return false;
+        }
+        if (!pre_release_.empty() && rhs.pre_release_.empty()) {
+            return true;
+        }
+        throw std::runtime_error("Not implemented!");
+    }
+
+    return std::tie(major_, minor_, patch_) < std::tie(major_, minor_, patch_);
+}
+
+bool SemVersion::operator<=(const SemVersion &rhs) const
+{
+    return *this == rhs || *this < rhs;
+}
+
+bool SemVersion::isValid() const
+{
+    return valid_version_;
+}
+
+bool SemVersion::isAnyVersion() const
+{
+    return any_version_;
 }

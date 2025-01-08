@@ -30,6 +30,13 @@ public:
     [[nodiscard]] std::uint16_t getMinor() const;
     [[nodiscard]] std::uint16_t getPatch() const;
     bool operator==(const SemVersion &rhs) const;
+    bool operator!=(const SemVersion &rhs) const;
+    bool operator<(const SemVersion &rhs) const;
+    bool operator>(const SemVersion &rhs) const;
+    bool operator<=(const SemVersion &rhs) const;
+    bool operator>=(const SemVersion &rhs) const;
+    [[nodiscard]] bool isValid() const;
+    [[nodiscard]] bool isAnyVersion() const;
 
 private:
     std::uint16_t major_{0};           // +0

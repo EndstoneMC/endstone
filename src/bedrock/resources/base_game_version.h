@@ -24,6 +24,8 @@ public:
     BaseGameVersion(bool never_compatible);
     explicit BaseGameVersion(any_version_constructor);
     bool operator==(const BaseGameVersion &rhs) const;
+    [[nodiscard]] bool isCompatibleWith(const BaseGameVersion &) const;
+    [[nodiscard]] bool isNeverCompatible() const;
 
 private:
     SemVersion sem_version_;

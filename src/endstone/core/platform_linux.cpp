@@ -93,11 +93,11 @@ std::string get_executable_pathname()
     return module_info.pathname;
 }
 
-constexpr std::string_view get_name()
+std::string_view get_name()
 {
     return "Linux";
 }
 
-}  // namespace endstone::core
+}  // namespace endstone::detail
 
 #endif

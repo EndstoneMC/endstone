@@ -24,10 +24,23 @@
 
 class ItemRegistryRef {
 public:
+    class LockGuard {
+    public:
+        LockGuard() = default;
+        LockGuard(std::shared_ptr<std::mutex>);
+        ~LockGuard();
+
+    private:
+        std::shared_ptr<Bedrock::Threading::Mutex> mutex_;  // +0
+    };
+
     WeakPtr<Item> lookupByName(int &, std::string_view) const;
     [[nodiscard]] const std::unordered_map<HashedString, WeakPtr<Item>> &getNameToItemMap() const;
     [[nodiscard]] WeakPtr<Item> getItem(std::int16_t id) const;
     [[nodiscard]] WeakPtr<Item> getItem(const HashedString &id) const;
+    [[nodiscard]] BaseGameVersion getWorldBaseGameVersion() const;
+    [[nodiscard]] bool shouldCheckForItemWorldCompatibility() const;
+    [[nodiscard]] LockGuard lockItemWorldCompatibilityMutex() const;
     Bedrock::NonOwnerPointer<CreativeItemRegistry> getCreativeItemRegistry();
 
 private:

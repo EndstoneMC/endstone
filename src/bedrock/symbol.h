@@ -51,7 +51,7 @@ constexpr void foreach_symbol(Func &&func)
 }
 }  // namespace endstone::detail
 
-#define ENDSTONE_SYMCALL(fp, ...)                                                                  \
+#define ENDSTONE_SYMCALL(fp, ...)                                                                                     \
     static_assert(endstone::detail::has_symbol(__FUNCDNAME__), "undefined symbol " __FUNCDNAME__ " in " __FUNCSIG__); \
     return std::invoke(endstone::detail::fp_cast(fp, endstone::detail::get_symbol_addr(__FUNCDNAME__)), ##__VA_ARGS__)
 
@@ -72,6 +72,11 @@ void (*get_ctor(std::unique_ptr<Class> (*)(Args...), std::string_view name))(Cla
 }
 #endif
 }  // namespace endstone::detail
+
+#ifndef ENDSTONE_TOSTRING
+#define ENDSTONE_STRINGIFY(x) #x
+#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
+#endif
 
 #define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(__VA_ARGS__);
 #ifdef _WIN32

@@ -80,7 +80,7 @@ std::string get_executable_pathname()
     return file_name;
 }
 
-constexpr std::string_view get_platform()
+std::string_view get_platform()
 {
     return "Windows";
 }

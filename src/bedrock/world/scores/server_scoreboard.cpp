@@ -13,3 +13,12 @@
 // limitations under the License.
 
 #include "bedrock/world/scores/server_scoreboard.h"
+
+#include "bedrock/symbol.h"
+
+std::unique_ptr<ServerScoreboard> ServerScoreboard::create(
+    CommandSoftEnumRegistry registry, LevelStorage *storage,
+    Bedrock::NotNullNonOwnerPtr<GameplayUserManager> gameplay_user_manager)
+{
+    ENDSTONE_FACTORY_IMPLEMENT(ServerScoreboard, registry, storage, gameplay_user_manager);
+}

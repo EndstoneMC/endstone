@@ -14,6 +14,20 @@
 
 #include "bedrock/world/item/registry/item_registry_ref.h"
 
+ItemRegistryRef::LockGuard::LockGuard(std::shared_ptr<std::mutex> mutex) : mutex_(mutex)
+{
+    if (mutex_) {
+        mutex_->lock();
+    }
+}
+
+ItemRegistryRef::LockGuard::~LockGuard()
+{
+    if (mutex_) {
+        mutex_->unlock();
+    }
+}
+
 WeakPtr<Item> ItemRegistryRef::lookupByName(int &out_item_aux, std::string_view in_string) const
 {
     return _lockRegistry()->lookupByName(out_item_aux, in_string);
@@ -32,6 +46,21 @@ WeakPtr<Item> ItemRegistryRef::getItem(std::int16_t id) const
 WeakPtr<Item> ItemRegistryRef::getItem(const HashedString &id) const
 {
     return _lockRegistry()->getItem(id);
+}
+
+BaseGameVersion ItemRegistryRef::getWorldBaseGameVersion() const
+{
+    return _lockRegistry()->world_base_game_version_;
+}
+
+bool ItemRegistryRef::shouldCheckForItemWorldCompatibility() const
+{
+    return _lockRegistry()->check_for_item_world_compatibility_;
+}
+
+ItemRegistryRef::LockGuard ItemRegistryRef::lockItemWorldCompatibilityMutex() const
+{
+    return _lockRegistry()->compatibility_check_mutex_;
 }
 
 Bedrock::NonOwnerPointer<CreativeItemRegistry> ItemRegistryRef::getCreativeItemRegistry()

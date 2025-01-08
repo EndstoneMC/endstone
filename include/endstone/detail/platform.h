@@ -21,5 +21,5 @@ void *get_module_base();
 std::string get_module_pathname();
 void *get_executable_base();
 std::string get_executable_pathname();
-constexpr std::string_view get_platform();
+std::string_view get_platform();
 }  // namespace endstone::detail

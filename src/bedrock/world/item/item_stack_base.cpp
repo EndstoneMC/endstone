@@ -414,6 +414,28 @@ void ItemStackBase::_updateCompareHashes()
     }
 }
 
+void ItemStackBase::_checkForItemWorldCompatibility()
+{
+    const auto registry_ref = ItemRegistryManager::getItemRegistry();
+    auto lock = registry_ref.lockItemWorldCompatibilityMutex();
+    if (!registry_ref.shouldCheckForItemWorldCompatibility()) {
+        return;
+    }
+
+    auto world_version = registry_ref.getWorldBaseGameVersion();
+    bool compatible = false;
+    if (!item_.isNull()) {
+        compatible = item_->getRequiredBaseGameVersion().isCompatibleWith(world_version);
+    }
+    else if (block_) {
+        compatible = block_->getLegacyBlock().getRequiredBaseGameVersion().isCompatibleWith(world_version);
+    }
+
+    if (!compatible) {
+        setNull("Item is not compatible with the base game version.");
+    }
+}
+
 const std::string ItemStackBase::TAG_DISPLAY = "display";
 const std::string ItemStackBase::TAG_DISPLAY_NAME = "Name";
 const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";

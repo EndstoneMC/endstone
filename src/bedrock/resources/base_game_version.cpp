@@ -32,3 +32,14 @@ bool BaseGameVersion::operator==(const BaseGameVersion &rhs) const
     }
     return sem_version_ == rhs.sem_version_;
 }
+
+bool BaseGameVersion::isCompatibleWith(const BaseGameVersion &rhs) const
+{
+    return !never_compatible_ && !rhs.never_compatible_ &&
+           (!sem_version_.isValid() || rhs.sem_version_.isAnyVersion() || sem_version_ <= rhs.sem_version_);
+}
+
+bool BaseGameVersion::isNeverCompatible() const
+{
+    return never_compatible_;
+}
