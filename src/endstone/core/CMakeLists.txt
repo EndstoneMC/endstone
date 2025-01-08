@@ -54,26 +54,6 @@ add_library(endstone_core
         command/defaults/version_command.cpp
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
-        hooks/actor.cpp
-        hooks/bedrock_event_logger.cpp
-        hooks/game_mode.cpp
-        hooks/item.cpp
-        hooks/level.cpp
-        hooks/level_event_coordinator.cpp
-        hooks/minecraft_commands.cpp
-        hooks/mob.cpp
-        hooks/player.cpp
-        hooks/player_event_coordinator.cpp
-        hooks/raknet_socket2.cpp
-        hooks/rak_peer_helper.cpp
-        hooks/resource_pack_repository.cpp
-        hooks/say_command.cpp
-        hooks/scripting_event_coordinator.cpp
-        hooks/script_level_gameplay_handler.cpp
-        hooks/server_instance_event_coordinator.cpp
-        hooks/server_network_handler.cpp
-        hooks/server_player.cpp
-        hooks/start_game_packet.cpp
         inventory/inventory.cpp
         inventory/item_stack.cpp
         inventory/player_inventory.cpp

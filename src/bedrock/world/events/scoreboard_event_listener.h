@@ -16,5 +16,5 @@
 
 class ScoreboardEventListener {
 public:
-    virtual ~ScoreboardEventListener() = 0;
+    virtual ~ScoreboardEventListener() = default;
 };

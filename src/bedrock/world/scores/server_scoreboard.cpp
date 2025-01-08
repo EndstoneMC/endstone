@@ -15,10 +15,77 @@
 #include "bedrock/world/scores/server_scoreboard.h"
 
 #include "bedrock/symbol.h"
+#include "endstone/detail/utility.h"
 
-std::unique_ptr<ServerScoreboard> ServerScoreboard::create(
-    CommandSoftEnumRegistry registry, LevelStorage *storage,
-    Bedrock::NotNullNonOwnerPtr<GameplayUserManager> gameplay_user_manager)
+ServerScoreboard::ServerScoreboard(CommandSoftEnumRegistry registry, LevelStorage *storage,
+                                   Bedrock::NotNullNonOwnerPtr<GameplayUserManager> gameplay_user_manager)
+    : gameplay_user_manager_(gameplay_user_manager)
 {
-    ENDSTONE_FACTORY_IMPLEMENT(ServerScoreboard, registry, storage, gameplay_user_manager);
+    BEDROCK_CTOR(ServerScoreboard, CommandSoftEnumRegistry, LevelStorage *,
+                 Bedrock::NotNullNonOwnerPtr<GameplayUserManager>)
+    (this, registry, storage, gameplay_user_manager);
+}
+
+ServerScoreboard::~ServerScoreboard() = default;
+
+const DisplayObjective *ServerScoreboard::setDisplayObjective(const std::string &, const Objective &,
+                                                              ObjectiveSortOrder)
+{
+    endstone::detail::unreachable();
+}
+Objective *ServerScoreboard::clearDisplayObjective(const std::string &)
+{
+    endstone::detail::unreachable();
+}
+const ScoreboardId &ServerScoreboard::createScoreboardId(const Player &)
+{
+    endstone::detail::unreachable();
+}
+const ScoreboardId &ServerScoreboard::createScoreboardId(const Actor &)
+{
+    endstone::detail::unreachable();
+}
+const ScoreboardId &ServerScoreboard::createScoreboardId(const std::string &)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::onObjectiveAdded(const Objective &)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::onObjectiveRemoved(Objective &)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::onScoreChanged(const ScoreboardId &, const Objective &)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::onPlayerScoreRemoved(const ScoreboardId &, const Objective &)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::onPlayerJoined(const Player &)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::onPlayerIdentityUpdated(const PlayerScoreboardId &)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::tick()
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::setPacketSender(PacketSender *sender)
+{
+    endstone::detail::unreachable();
+}
+void ServerScoreboard::writeToLevelStorage()
+{
+    endstone::detail::unreachable();
+}
+bool ServerScoreboard::isClientSide() const
+{
+    endstone::detail::unreachable();
 }

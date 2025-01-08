@@ -14,15 +14,31 @@
 
 #pragma once
 
+#include "bedrock/symbol.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
-#include "bedrock/symbol.h"
 
 class ServerScoreboard : public Scoreboard {
 public:
-    ENDSTONE_FACTORY_DECLARE(ServerScoreboard, CommandSoftEnumRegistry, LevelStorage *,
-                             Bedrock::NotNullNonOwnerPtr<GameplayUserManager>);
+    ServerScoreboard(CommandSoftEnumRegistry, LevelStorage *, Bedrock::NotNullNonOwnerPtr<GameplayUserManager>);
+
+    ~ServerScoreboard() override;
+    const DisplayObjective *setDisplayObjective(const std::string &, const Objective &, ObjectiveSortOrder) override;
+    Objective *clearDisplayObjective(const std::string &) override;
+    const ScoreboardId &createScoreboardId(const Player &) override;
+    const ScoreboardId &createScoreboardId(const Actor &) override;
+    const ScoreboardId &createScoreboardId(const std::string &) override;
+    void onObjectiveAdded(const Objective &) override;
+    void onObjectiveRemoved(Objective &) override;
+    void onScoreChanged(const ScoreboardId &, const Objective &) override;
+    void onPlayerScoreRemoved(const ScoreboardId &, const Objective &) override;
+    void onPlayerJoined(const Player &) override;
+    void onPlayerIdentityUpdated(const PlayerScoreboardId &) override;
+    void tick() override;
+    void setPacketSender(PacketSender *sender) override;
+    void writeToLevelStorage() override;
+    [[nodiscard]] bool isClientSide() const override;
 
 private:
     void *save_timer_;                                                              // +784 (+552)

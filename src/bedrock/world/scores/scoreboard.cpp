@@ -14,8 +14,10 @@
 
 #include "bedrock/world/scores/scoreboard.h"
 
-#include "bedrock/world/actor/player/player.h"
 #include "bedrock/symbol.h"
+#include "bedrock/world/actor/player/player.h"
+
+Scoreboard::~Scoreboard() = default;
 
 Objective *Scoreboard::addObjective(const std::string &name, const std::string &display_name,
                                     const ObjectiveCriteria &criteria)

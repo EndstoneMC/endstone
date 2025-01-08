@@ -58,14 +58,14 @@ constexpr void foreach_symbol(Func &&func)
 namespace endstone::detail {
 #ifdef _WIN32
 template <typename Class, typename... Args>
-Class *(*get_ctor(std::unique_ptr<Class> (*)(Args...), std::string_view name))(Class *, Args...)
+Class *(*get_ctor(std::string_view name))(Class *, Args...)
 {
     auto *original = get_symbol_addr(name);
     return reinterpret_cast<Class *(*)(Class *, Args...)>(original);
 }
 #elif __linux__
 template <typename Class, typename... Args>
-void (*get_ctor(std::unique_ptr<Class> (*)(Args...), std::string_view name))(Class *, Args...)
+void (*get_ctor(std::string_view name))(Class *, Args...)
 {
     auto *original = get_symbol_addr(name);
     return reinterpret_cast<void (*)(Class *, Args...)>(original);
@@ -73,39 +73,6 @@ void (*get_ctor(std::unique_ptr<Class> (*)(Args...), std::string_view name))(Cla
 #endif
 }  // namespace endstone::detail
 
-#ifndef ENDSTONE_TOSTRING
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
-#endif
-
-#define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(__VA_ARGS__);
-#ifdef _WIN32
-#define ENDSTONE_FACTORY_PREFIX_TARGET(type)      ENDSTONE_TOSTRING(type) "@@@std@@@std@"
-#define ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) "??0" ENDSTONE_TOSTRING(type) "@@QEAA"
-#elif __linux__
-#define ENDSTONE_FACTORY_PREFIX_TARGET(type) ENDSTONE_TOSTRING(type) "6create"
-#define ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) \
-    "_ZN" + std::to_string(std::strlen(ENDSTONE_TOSTRING(type))) + ENDSTONE_TOSTRING(type) "C2"
-#endif
-
-#define ENDSTONE_FACTORY_IMPLEMENT(type, ...) ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, &type::create, ##__VA_ARGS__)
-
-#define ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, fp, ...)                       \
-    {                                                                            \
-        static std::string func_decorated_name = __FUNCDNAME__;                  \
-        static std::string ctor_decorated_name = []() {                          \
-            std::string prefix_target = ENDSTONE_FACTORY_PREFIX_TARGET(type);    \
-            std::string name = ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type);        \
-            std::size_t pos = func_decorated_name.find(prefix_target);           \
-            pos += std::strlen(prefix_target.c_str());                           \
-            name += func_decorated_name.substr(pos);                             \
-            pos = name.find("BV1@@Z");                                           \
-            if (pos != std::string::npos) {                                      \
-                name.replace(pos, 6, "BV0@@Z");                                  \
-            }                                                                    \
-            return name;                                                         \
-        }();                                                                     \
-        auto *obj = reinterpret_cast<type *>(new char[sizeof(type)]);            \
-        endstone::detail::get_ctor(fp, ctor_decorated_name)(obj, ##__VA_ARGS__); \
-        return std::unique_ptr<type>(obj);                                       \
-    }
+#define BEDROCK_CTOR(type, ...)                                                                                       \
+    static_assert(endstone::detail::has_symbol(__FUNCDNAME__), "undefined symbol " __FUNCDNAME__ " in " __FUNCSIG__); \
+    endstone::detail::get_ctor<type, ##__VA_ARGS__>(__FUNCDNAME__)

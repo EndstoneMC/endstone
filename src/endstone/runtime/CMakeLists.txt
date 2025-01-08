@@ -15,6 +15,26 @@ FetchContent_MakeAvailable(funchook)
 add_library(funchook::funchook ALIAS funchook-static)
 
 add_library(endstone_runtime SHARED
+        bedrock_hooks/actor.cpp
+        bedrock_hooks/bedrock_event_logger.cpp
+        bedrock_hooks/game_mode.cpp
+        bedrock_hooks/item.cpp
+        bedrock_hooks/level.cpp
+        bedrock_hooks/level_event_coordinator.cpp
+        bedrock_hooks/minecraft_commands.cpp
+        bedrock_hooks/mob.cpp
+        bedrock_hooks/player.cpp
+        bedrock_hooks/player_event_coordinator.cpp
+        bedrock_hooks/raknet_socket2.cpp
+        bedrock_hooks/rak_peer_helper.cpp
+        bedrock_hooks/resource_pack_repository.cpp
+        bedrock_hooks/say_command.cpp
+        bedrock_hooks/scripting_event_coordinator.cpp
+        bedrock_hooks/script_level_gameplay_handler.cpp
+        bedrock_hooks/server_instance_event_coordinator.cpp
+        bedrock_hooks/server_network_handler.cpp
+        bedrock_hooks/server_player.cpp
+        bedrock_hooks/start_game_packet.cpp
         main.cpp
         hook.cpp
         linux.cpp

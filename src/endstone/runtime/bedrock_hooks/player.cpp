@@ -45,88 +45,10 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
                                      entity_type, keep_velocity);
 }
 
-Container &Player::getInventory()
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getInventory, this);
-}
-
-const std::string &Player::getName() const
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
-}
-
 void Player::setPermissions(CommandPermissionLevel level)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
     auto &player = getEndstoneActor<EndstonePlayer>();
     player.recalculatePermissions();
     player.updateCommands();
-}
-
-GameType Player::getPlayerGameType() const
-{
-    auto game_type = GameType::Undefined;
-    if (auto *component = tryGetComponent<ActorGameTypeComponent>(); component) {
-        game_type = component->game_type;
-    }
-    if (game_type == GameType::Default) {
-        game_type = getLevel().getDefaultGameType();
-    }
-    return game_type;
-}
-
-PlayerPermissionLevel Player::getPlayerPermissionLevel() const
-{
-    return getAbilities().getPlayerPermissions();
-}
-
-LayeredAbilities &Player::getAbilities()
-{
-    auto component = getPersistentComponent<AbilitiesComponent>();
-    return component->abilities;
-}
-
-LayeredAbilities const &Player::getAbilities() const
-{
-    auto component = getPersistentComponent<AbilitiesComponent>();
-    return component->abilities;
-}
-
-bool Player::isEmoting() const
-{
-    return getStatusFlag(ActorFlags::EMOTING);
-}
-
-bool Player::isFlying() const
-{
-    return getAbilities().getBool(AbilitiesIndex::Flying);
-}
-
-int Player::getPlayerLevel() const
-{
-    return static_cast<int>(getAttribute("minecraft:player.level").getCurrentValue());
-}
-
-float Player::getLevelProgress() const
-{
-    return getAttribute("minecraft:player.experience").getCurrentValue();
-}
-
-int Player::getXpNeededForLevelRange(int start, int end)
-{
-    auto xp = 0;
-    auto current = start;
-    while (current < end) {
-        if (current > 30) {
-            xp += (9 * current - 138);
-        }
-        else if (current > 15) {
-            xp += (5 * current - 38);
-        }
-        else {
-            xp += (2 * current + 7);
-        }
-        ++current;
-    }
-    return xp;
 }

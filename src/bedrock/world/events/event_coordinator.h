@@ -25,7 +25,7 @@
 template <typename ListenerType>
 class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {
 public:
-    ~EventCoordinatorPimpl() override = 0;
+    ~EventCoordinatorPimpl() override = default;
 
 private:
     std::vector<ListenerType *> listeners_;                                      // +24

@@ -1,4 +1,4 @@
-timestamp = 1736293498
+timestamp = 1736373115
 version = "1.21.50"
 
 [windows]
@@ -52,7 +52,7 @@ version = "1.21.50"
 # ItemRegistryManager
 "?getItemRegistry@ItemRegistryManager@@SA?AVItemRegistryRef@@XZ" = 39673296
 # ItemStackBase
-"?_setItem@ItemStackBase@@AEAA_NH_N@Z" = 40458304
+"?init@ItemStackBase@@IEAAXHHH_N@Z" = 40546368
 # Level
 "?tick@Level@@UEAAXXZ" = 39489328
 # LevelEventCoordinator
@@ -76,6 +76,7 @@ version = "1.21.50"
 "?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 36373312
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 51374320
+"?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 51221232
 # RakPeerHelper
 "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 13945120
 # ResourcePackRepository
@@ -149,8 +150,6 @@ version = "1.21.50"
 "_ZN6Common20getGameVersionStringEv" = 81754400
 # CraftingDataPacket
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 88352736
-# Explosion
-"_ZN9Explosion7explodeEv" = 133440704
 # FurnaceBlockActor
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 146244016
 # GameMode

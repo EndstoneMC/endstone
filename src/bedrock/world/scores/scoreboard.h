@@ -32,7 +32,7 @@ class Player;
 
 class Scoreboard {
 public:
-    virtual ~Scoreboard() = 0;
+    virtual ~Scoreboard();
     virtual DisplayObjective const *setDisplayObjective(std::string const &, Objective const &, ObjectiveSortOrder) = 0;
     virtual Objective *clearDisplayObjective(std::string const &) = 0;
     virtual ScoreboardId const &createScoreboardId(Player const &) = 0;

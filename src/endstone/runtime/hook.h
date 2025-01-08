@@ -43,7 +43,7 @@ namespace endstone::hook {
 template <typename Return, typename... Arg>
 Return (*get_original(Return (*fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
 {
-    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    auto *original = name.has_value() ? get_original(name.value()) : get_original(detail::fp_cast(fp));
     return *reinterpret_cast<decltype(&fp)>(&original);
 }
 
@@ -53,7 +53,7 @@ Return (*get_original(Return (*fp)(Arg...), std::optional<std::string> name = st
 template <typename Return, typename Class, typename... Arg>
 Return (Class::*get_original(Return (Class::*fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
 {
-    void *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    void *original = name.has_value() ? get_original(name.value()) : get_original(detail::fp_cast(fp));
     struct {  // https://doi.org/10.1145/3660779
         void *ptr;
         std::size_t adj = 0;
@@ -69,7 +69,7 @@ template <typename Return, typename Class, typename... Arg>
 Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
                              std::optional<std::string> name = std::nullopt))(Arg...) const
 {
-    void *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    void *original = name.has_value() ? get_original(name.value()) : get_original(detail::fp_cast(fp));
     struct {  // https://doi.org/10.1145/3660779
         void *ptr;
         std::size_t adj = 0;
@@ -79,8 +79,6 @@ Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
 }
 }  // namespace endstone::hook
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)                                                                  \
-    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_original(endstone::detail::fp_cast(fp))), \
-                ##__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) std::invoke(endstone::hook::get_original(fp), ##__VA_ARGS__)
 #define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...) \
-    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_original(name)), ##__VA_ARGS__)
+    std::invoke(endstone::hook::get_original(fp, name), ##__VA_ARGS__)
