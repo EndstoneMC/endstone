@@ -32,6 +32,11 @@ const HashedString &Item::getFullNameHash() const
     return full_name_;
 }
 
+const BaseGameVersion &Item::getRequiredBaseGameVersion() const
+{
+    return min_required_base_game_version_;
+}
+
 const WeakPtr<BlockLegacy> &Item::getLegacyBlock() const
 {
     return legacy_block_;
@@ -40,6 +45,12 @@ const WeakPtr<BlockLegacy> &Item::getLegacyBlock() const
 const std::vector<ItemTag> &Item::getTags() const
 {
     return tags_;
+}
+
+Item &Item::setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version)
+{
+    min_required_base_game_version_ = base_game_version;
+    return *this;
 }
 
 ItemDescriptor Item::buildDescriptor(std::int16_t aux_value, const CompoundTag *) const

@@ -47,7 +47,10 @@ struct exception_slot {
     const char *description;
 };
 
-#define EXCEPTION_DEF(code, desc) {code, #code, desc}
+#define EXCEPTION_DEF(code, desc) \
+    {                             \
+        code, #code, desc         \
+    }
 
 const exception_slot EXCEPTION_DEFINITIONS[] = {
     EXCEPTION_DEF(EXCEPTION_ACCESS_VIOLATION, "AccessViolation"),
@@ -80,7 +83,10 @@ struct signal_slot {
     const char *description;
 };
 
-#define SIGNAL_DEF(sig, desc) {sig, #sig, desc}
+#define SIGNAL_DEF(sig, desc) \
+    {                         \
+        sig, #sig, desc       \
+    }
 
 const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction"),
                                           SIGNAL_DEF(SIGTRAP, "Trap"),

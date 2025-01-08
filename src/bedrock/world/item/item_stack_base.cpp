@@ -14,6 +14,7 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
+#include "bedrock/symbol.h"
 #include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
 
@@ -51,6 +52,10 @@ ItemStackBase::ItemStackBase(Item const &item, int count, int aux_value, Compoun
 
 ItemStackBase::ItemStackBase(const ItemStackBase &rhs)
 {
+    if (this == &rhs) {
+        return;
+    }
+
     block_ = rhs.block_;
     aux_value_ = rhs.aux_value_;
     if (block_ && aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
@@ -73,11 +78,10 @@ ItemStackBase::ItemStackBase(const ItemStackBase &rhs)
 
     show_pick_up_ = rhs.show_pick_up_;
     was_picked_up_ = rhs.was_picked_up_;
-    if (this != &rhs) {
-        can_place_on_ = rhs.can_place_on_;
-        can_destroy_ = rhs.can_destroy_;
-    }
+    can_place_on_ = rhs.can_place_on_;
+    can_destroy_ = rhs.can_destroy_;
     blocking_tick_ = rhs.blocking_tick_;
+
     _updateCompareHashes();
     _checkForItemWorldCompatibility();
 }
@@ -332,6 +336,66 @@ void ItemStackBase::set(const std::uint8_t count)
 std::uint8_t ItemStackBase::getCount() const
 {
     return count_;
+}
+
+void ItemStackBase::init(const BlockLegacy &block, const int count)
+{
+    init(block.getBlockItemId(), count, 0, true);
+    if (!item_.isNull() && item_->getRequiredBaseGameVersion() == BaseGameVersion::EMPTY) {
+        item_->setMinRequiredBaseGameVersion(block.getRequiredBaseGameVersion());
+    }
+}
+
+void ItemStackBase::init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap)
+{
+    const auto &block_legacy = item.getLegacyBlock();
+    const auto id = item.getId();
+    if (!block_legacy.isNull()) {
+        if (id < ItemRegistry::START_ITEM_ID) {
+            if (aux_value == ItemDescriptor::ANY_AUX_VALUE) {
+                block_ = &block_legacy->getRenderBlock();
+                init(*block_legacy, count);
+                aux_value_ = ItemDescriptor::ANY_AUX_VALUE;
+            }
+            else {
+                block_ = block_legacy->tryGetStateFromLegacyData(aux_value);
+                if (!block_) {
+                    init(*block_legacy, count);
+                }
+                else {
+                    init(block_->getLegacyBlock(), count);
+                }
+            }
+        }
+        else {
+            block_ = block_legacy->tryGetStateFromLegacyData(aux_value);
+            init(id, count, aux_value, true);
+        }
+    }
+    else {
+        init(id, count, aux_value, do_remap);
+    }
+    if (user_data) {
+        setUserData(user_data->clone());
+    }
+}
+
+void ItemStackBase::init(const int id, const int count, const int aux_value, const bool do_remap)
+{
+    count_ = count < 0 ? 0 : count;
+    if (!block_) {
+        aux_value_ = aux_value > 0 ? aux_value : 0;
+    }
+    _setItem(id, do_remap);
+    pick_up_time_ = std::chrono::steady_clock::now();
+    if (!count_) {
+        setNull(std::nullopt);
+    }
+}
+
+bool ItemStackBase::_setItem(int id, bool do_remap)
+{
+    ENDSTONE_SYMCALL(&ItemStackBase::_setItem, this, id, do_remap);
 }
 
 void ItemStackBase::_updateCompareHashes()

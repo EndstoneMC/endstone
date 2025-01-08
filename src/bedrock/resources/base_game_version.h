@@ -18,7 +18,16 @@
 
 class BaseGameVersion {
 public:
+    struct any_version_constructor {};
+    static const BaseGameVersion EMPTY;
+    BaseGameVersion();
+    BaseGameVersion(bool never_compatible);
+    explicit BaseGameVersion(any_version_constructor);
+    bool operator==(const BaseGameVersion &rhs) const;
+
 private:
     SemVersion sem_version_;
-    bool never_compatible_;
+    bool never_compatible_{false};
 };
+
+inline const BaseGameVersion BaseGameVersion::EMPTY{};

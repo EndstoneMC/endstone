@@ -67,9 +67,9 @@ public:
     static constexpr int AUX_VALUE_MASK = 0x7fff;
 
 protected:
-    void init(const BlockLegacy &, int);
-    void init(const Item &, int, int, const CompoundTag *, bool);
-    void init(int, int, int, bool);
+    void init(const BlockLegacy &block, int count);
+    void init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap);
+    void init(int id, int count, int aux_value, bool do_remap);
 
     static const std::string TAG_CHARGED_ITEM;
     WeakPtr<Item> item_;                      // +8
@@ -80,6 +80,7 @@ protected:
 
 private:
     bool valid_deprecated_{true};  // +35
+    bool _setItem(int id, bool do_remap);
 
 protected:
     bool show_pick_up_{true};                             // +36

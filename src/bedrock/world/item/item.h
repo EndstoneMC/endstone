@@ -171,9 +171,11 @@ private:
 public:
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] const std::string &getFullItemName() const;
-    const HashedString &getFullNameHash() const;
+    [[nodiscard]] const HashedString &getFullNameHash() const;
+    [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const;
     [[nodiscard]] const std::vector<ItemTag> &getTags() const;
+    Item &setMinRequiredBaseGameVersion(const BaseGameVersion & base_game_version);
     ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;
     [[nodiscard]] float getFurnaceBurnIntervalMultipler() const;
 

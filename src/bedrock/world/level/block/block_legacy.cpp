@@ -14,12 +14,12 @@
 
 #include "bedrock/world/level/block/block_legacy.h"
 
-#include "bedrock/world/item/registry/item_registry.h"
 #include "bedrock/symbol.h"
+#include "bedrock/world/item/registry/item_registry.h"
 
 const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
 {
-     ENDSTONE_SYMCALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
+    ENDSTONE_SYMCALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
 }
 
 bool BlockLegacy::requiresCorrectToolForDrops() const
@@ -70,6 +70,11 @@ const std::string &BlockLegacy::getNamespace() const
 const Block &BlockLegacy::getDefaultState() const
 {
     return *default_state_;
+}
+
+const BaseGameVersion &BlockLegacy::getRequiredBaseGameVersion() const
+{
+    return min_required_game_version_;
 }
 
 std::int16_t BlockLegacy::getBlockItemId() const

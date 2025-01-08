@@ -29,7 +29,7 @@ public:
     [[nodiscard]] std::uint16_t getMajor() const;
     [[nodiscard]] std::uint16_t getMinor() const;
     [[nodiscard]] std::uint16_t getPatch() const;
-    bool operator==(const SemVersion &version) const;
+    bool operator==(const SemVersion &rhs) const;
 
 private:
     std::uint16_t major_{0};           // +0

@@ -12,11 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/item/item_instance.h"
+#include "bedrock/resources/base_game_version.h"
 
-#include "bedrock/symbol.h"
+BaseGameVersion::BaseGameVersion() = default;
 
-ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
+BaseGameVersion::BaseGameVersion(bool never_compatible) : never_compatible_(never_compatible) {}
+
+BaseGameVersion::BaseGameVersion(any_version_constructor) : sem_version_(SemVersion::AnyVersionConstructor) {}
+
+bool BaseGameVersion::operator==(const BaseGameVersion &rhs) const
 {
-    ENDSTONE_SYMCALL(&ItemInstance::fromTag, tag);
+    if (rhs.never_compatible_) {
+        if (never_compatible_) {
+            return true;
+        }
+    }
+    else if (never_compatible_) {
+        return false;
+    }
+    return sem_version_ == rhs.sem_version_;
 }

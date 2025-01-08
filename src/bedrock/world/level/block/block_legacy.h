@@ -287,7 +287,8 @@ public:
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;
     [[nodiscard]] const Block &getDefaultState() const;
-    std::int16_t getBlockItemId() const;
+    [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
+    [[nodiscard]] std::int16_t getBlockItemId() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
     std::string description_id_;  // +8
