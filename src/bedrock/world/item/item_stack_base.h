@@ -72,26 +72,26 @@ protected:
     void init(int id, int count, int aux_value, bool do_remap);
 
     static const std::string TAG_CHARGED_ITEM;
-    WeakPtr<Item> item_;                      // +8
-    std::unique_ptr<CompoundTag> user_data_;  // +16
-    const Block *block_;                      // +24
-    std::int16_t aux_value_{0};               // +32
-    std::uint8_t count_{0};                   // +34
+    WeakPtr<Item> item_{nullptr};                      // +8
+    std::unique_ptr<CompoundTag> user_data_{nullptr};  // +16
+    const Block *block_{nullptr};                      // +24
+    std::int16_t aux_value_{0};                        // +32
+    std::uint8_t count_{0};                            // +34
 
 private:
     bool valid_deprecated_{true};  // +35
     bool _setItem(int id, bool do_remap);
 
 protected:
-    bool show_pick_up_{true};                             // +36
-    bool was_picked_up_{false};                           // +37
-    std::chrono::steady_clock::time_point pick_up_time_;  // +40
-    std::vector<const BlockLegacy *> can_place_on_;       // +56
-    std::size_t can_place_on_hash_{0};                    // +80
-    std::vector<const BlockLegacy *> can_destroy_;        // +88
-    std::size_t can_destroy_hash_{0};                     // +112
-    Tick blocking_tick_{};                                // +120
-    std::unique_ptr<ItemInstance> charged_item_;          // +128
+    bool show_pick_up_{true};                              // +36
+    bool was_picked_up_{false};                            // +37
+    std::chrono::steady_clock::time_point pick_up_time_;   // +40
+    std::vector<const BlockLegacy *> can_place_on_;        // +56
+    std::size_t can_place_on_hash_{0};                     // +80
+    std::vector<const BlockLegacy *> can_destroy_;         // +88
+    std::size_t can_destroy_hash_{0};                      // +112
+    Tick blocking_tick_{};                                 // +120
+    std::unique_ptr<ItemInstance> charged_item_{nullptr};  // +128
 
 private:
     void _updateCompareHashes();

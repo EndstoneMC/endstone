@@ -39,7 +39,40 @@ public:
         }
     }
 
+    SharedPtr(const SharedPtr &other) noexcept
+    {
+        if (other.pc_) {
+            other.pc_->share_count++;
+        }
+        pc_ = other.pc_;
+    }
+
     ~SharedPtr() noexcept
+    {
+        reset();
+    }
+
+    T *get() const noexcept
+    {
+        return pc_ ? pc_->ptr : nullptr;
+    }
+
+    operator T *() const
+    {
+        return get();
+    }
+
+    T &operator*() const noexcept
+    {
+        return *get();
+    }
+
+    T *operator->() const noexcept
+    {
+        return get();
+    }
+
+    void reset() noexcept
     {
         if (pc_) {
             if (--pc_->share_count <= 0) {
@@ -50,72 +83,8 @@ public:
                     delete pc_;
                 }
             }
+            pc_ = nullptr;
         }
-    }
-
-    // copy constructor
-    SharedPtr(const SharedPtr &other) noexcept
-    {
-        if (other.pc_) {
-            other.pc_->share_count++;
-        }
-        pc_ = other.pc_;
-    }
-
-    // move constructor
-    SharedPtr(SharedPtr &&other) noexcept
-    {
-        pc_ = other.pc_;
-        other.pc_ = nullptr;
-    }
-
-    // copy assignment operator
-    SharedPtr &operator=(const SharedPtr &other) noexcept
-    {
-        SharedPtr(other).swap(*this);
-        return *this;
-    }
-
-    // move assignment operator
-    SharedPtr &operator=(SharedPtr &&other) noexcept
-    {
-        SharedPtr(std::move(other)).swap(*this);
-        return *this;
-    }
-
-    void reset() noexcept
-    {
-        SharedPtr().swap(*this);
-    }
-
-    void reset(T *ptr) noexcept
-    {
-        SharedPtr(ptr).swap(*this);
-    }
-
-    T *operator->() const noexcept
-    {
-        return get();
-    }
-
-    T &operator*() const noexcept
-    {
-        return *get();
-    }
-
-    explicit operator bool() const
-    {
-        return get() != nullptr;
-    }
-
-    void swap(SharedPtr &other) noexcept
-    {
-        std::swap(pc_, other.pc_);
-    }
-
-    T *get() const noexcept
-    {
-        return pc_ ? pc_->ptr : nullptr;
     }
 
 private:
@@ -129,77 +98,38 @@ template <typename T>
 class WeakPtr {
 public:
     constexpr WeakPtr() noexcept = default;
-    constexpr WeakPtr(nullptr_t) noexcept {}  // NOLINT(*-explicit-constructor)
-                                              // Constructor from SharedPtr
+    constexpr WeakPtr(nullptr_t) noexcept {}
+
     explicit WeakPtr(const SharedPtr<T> &shared_ptr) noexcept : pc_(shared_ptr.pc_)
     {
         if (pc_) {
-            pc_->weak_count++;
+            ++pc_->weak_count;
         }
+    }
+
+    WeakPtr(const WeakPtr &other) noexcept
+    {
+        if (other.pc_) {
+            ++other.pc_->weak_count;
+        }
+        pc_ = other.pc_;
     }
 
     ~WeakPtr()
     {
-        if (pc_) {
-            if (--pc_->weak_count <= 0 && pc_->ptr == nullptr) {
-                delete pc_;
-            }
-        }
+        reset();
     }
 
-    // copy constructor
-    WeakPtr(const WeakPtr &other) noexcept
-    {
-        if (other.pc_) {
-            other.pc_->weak_count++;
-        }
-        pc_ = other.pc_;
-    }
-
-    // move constructor
-    WeakPtr(WeakPtr &&other) noexcept
-    {
-        pc_ = other.pc_;
-        other.pc_ = nullptr;
-    }
-
-    // copy assignment operator
     WeakPtr &operator=(const WeakPtr &other) noexcept
     {
-        WeakPtr(other).swap(*this);
+        if (this != &other) {
+            if (other.pc_) {
+                ++other.pc_->weak_count;
+            }
+            reset();
+            pc_ = other.pc_;
+        }
         return *this;
-    }
-
-    // move assignment operator
-    WeakPtr &operator=(WeakPtr &&other) noexcept
-    {
-        WeakPtr(std::move(other)).swap(*this);
-        return *this;
-    }
-
-    void reset() noexcept
-    {
-        WeakPtr().swap(*this);
-    }
-
-    void reset(T *ptr) noexcept
-    {
-        WeakPtr(ptr).swap(*this);
-    }
-
-    void swap(WeakPtr &other) noexcept
-    {
-        std::swap(pc_, other.pc_);
-    }
-
-    gsl::not_null<T *> operator->() const noexcept
-    {
-        return get();
-    }
-
-    T &operator*() const noexcept
-    {
-        return *get();
     }
 
     [[nodiscard]] bool isNull() const noexcept
@@ -212,12 +142,32 @@ public:
         return pc_ ? pc_->ptr : nullptr;
     }
 
+    operator T *() const
+    {
+        return get();
+    }
+
+    gsl::not_null<T *> operator->() const noexcept
+    {
+        return get();
+    }
+
+    void reset() noexcept
+    {
+        if (pc_) {
+            if (--pc_->weak_count <= 0 && pc_->ptr == nullptr) {
+                delete pc_;
+            }
+            pc_ = nullptr;
+        }
+    }
+
     static WeakPtr const &null()
     {
-        static WeakPtr wnull{nullptr};
-        return wnull;
+        static WeakPtr weak_null{nullptr};
+        return weak_null;
     }
 
 private:
-    SharedCounter<T> *pc_;
+    SharedCounter<T> *pc_{nullptr};
 };

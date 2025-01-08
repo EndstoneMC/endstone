@@ -25,8 +25,6 @@ ItemStackBase::ItemStackBase()
 
 ItemStackBase::ItemStackBase(const BlockLegacy &block, int count)
 {
-    item_ = nullptr;
-    user_data_ = nullptr;
     block_ = &block.getRenderBlock();
     init(block, count);
     _checkForItemWorldCompatibility();
