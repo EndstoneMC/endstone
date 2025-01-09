@@ -18,6 +18,7 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/symbol.h"
 #include "endstone/detail/cast.h"
 
 namespace endstone::hook {
@@ -29,9 +30,9 @@ const std::unordered_map<std::string, void *> &get_detours();
 }  // namespace endstone::hook
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, __FUNCDNAME__, ##__VA_ARGS__)
-#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                           \
-    std::invoke(                                                                                                  \
-        endstone::detail::fp_cast(                                                                                \
-            fp, endstone::hook::get_original(                                                                     \
-                    std::integral_constant<entt::hashed_string::hash_type, entt::hashed_string::value(name)>())), \
+#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                                \
+    std::invoke(                                                                                                       \
+        endstone::detail::fp_cast(                                                                                     \
+            fp, endstone::hook::get_original(                                                                          \
+                    std::integral_constant<entt::hashed_string::hash_type, entt::hashed_string::value(name)>::value)), \
         ##__VA_ARGS__)

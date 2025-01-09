@@ -36,7 +36,7 @@ void *get_original(entt::hashed_string::hash_type name)
 {
     const auto it = gOriginalsByName.find(name);
     if (it == gOriginalsByName.end()) {
-        throw std::runtime_error(fmt::format("No original function can be found for name {}", name));
+        throw std::runtime_error("original function not found");
     }
     return it->second;
 }
