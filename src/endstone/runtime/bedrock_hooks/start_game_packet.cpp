@@ -34,6 +34,5 @@ void StartGamePacket::write(BinaryStream &stream) const
     if (!client_side_generation_enabled) {
         settings_.setRandomSeed({0});
     }
-
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&StartGamePacket::write, __FUNCDNAME__, this, stream);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&StartGamePacket::write, this, stream);
 }

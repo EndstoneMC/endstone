@@ -14,19 +14,17 @@
 
 #include "bedrock/world/level/level.h"
 
-#include "bedrock/world/level/gameplay_user_manager.h"
-#include "endstone/runtime/hook.h"
 #include "endstone/core/scheduler/scheduler.h"
 #include "endstone/core/server.h"
+#include "endstone/runtime/hook.h"
 
 using endstone::core::EndstoneScheduler;
 using endstone::core::EndstoneServer;
 
 void Level::tick()
 {
-    static std::string function_decorated_name = __FUNCDNAME__;
+    constexpr auto symbol = __FUNCDNAME__;
     auto &server = entt::locator<EndstoneServer>::value();
     server.tick(getCurrentServerTick().tick_id,
-                [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, function_decorated_name, this); });
+                [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, symbol, this); });
 }
-

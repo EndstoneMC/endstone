@@ -41,8 +41,8 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
         return;
     }
     position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Player::teleportTo, __FUNCDNAME__, this, position, should_stop_riding, cause,
-                                     entity_type, keep_velocity);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::teleportTo, this, position, should_stop_riding, cause, entity_type,
+                                keep_velocity);
 }
 
 void Player::setPermissions(CommandPermissionLevel level)

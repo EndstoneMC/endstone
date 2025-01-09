@@ -28,7 +28,7 @@ using endstone::core::EndstoneServer;
 CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-
+    constexpr auto symbol = __FUNCDNAME__;
     auto visitor = [&](auto &&arg) -> CoordinatorResult {
         using T = std::decay_t<decltype(arg)>;
 
@@ -54,7 +54,7 @@ CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGamepla
         }
 
         const auto &event = arg.value();
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
+        return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ScriptingEventCoordinator::sendEvent, symbol, this, event);
     };
 
     return std::visit(visitor, ref.get().variant);

@@ -44,7 +44,7 @@ bool GameMode::destroyBlock(BlockPos const &pos, FacingID face)
     else {
         server.getLogger().error(block.error());
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::destroyBlock, __FUNCDNAME__, this, pos, face);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&GameMode::destroyBlock, this, pos, face);
 }
 
 InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, FacingID face, Vec3 const &hit,
@@ -72,8 +72,7 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
         server.getLogger().error(block.error());
     }
 
-    return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::useItemOn, __FUNCDNAME__, this, item, at, face, hit,
-                                            target_block, is_first_event);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&GameMode::useItemOn, this, item, at, face, hit, target_block, is_first_event);
 }
 
 bool GameMode::interact(Actor &actor, Vec3 const &location)
@@ -85,5 +84,5 @@ bool GameMode::interact(Actor &actor, Vec3 const &location)
     if (e.isCancelled()) {
         return false;
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::interact, __FUNCDNAME__, this, actor, location);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&GameMode::interact, this, actor, location);
 }

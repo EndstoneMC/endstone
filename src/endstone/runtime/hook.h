@@ -14,71 +14,24 @@
 
 #pragma once
 
-#include <functional>
-#include <memory>
-#include <optional>
 #include <system_error>
+
+#include <entt/entt.hpp>
 
 #include "endstone/detail/cast.h"
 
 namespace endstone::hook {
 void install();
 const std::error_category &error_category();
-}  // namespace endstone::hook
-
-namespace endstone::hook {
-
-void *get_original(void *detour);
-void *get_original(const std::string &name);
-
+void *get_original(entt::hashed_string::hash_type name);
 const std::unordered_map<std::string, void *> &get_targets();
 const std::unordered_map<std::string, void *> &get_detours();
-
 }  // namespace endstone::hook
 
-namespace endstone::hook {
-/**
- * @brief Gets the original function pointer from a detour function pointer
- */
-template <typename Return, typename... Arg>
-Return (*get_original(Return (*fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
-{
-    auto *original = name.has_value() ? get_original(name.value()) : get_original(detail::fp_cast(fp));
-    return *reinterpret_cast<decltype(&fp)>(&original);
-}
-
-/**
- * @brief Gets the original member function pointer from a detour member function pointer (non-const, no ref-qualifier)
- */
-template <typename Return, typename Class, typename... Arg>
-Return (Class::*get_original(Return (Class::*fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
-{
-    void *original = name.has_value() ? get_original(name.value()) : get_original(detail::fp_cast(fp));
-    struct {  // https://doi.org/10.1145/3660779
-        void *ptr;
-        std::size_t adj = 0;
-    } temp;
-    temp.ptr = original;
-    return *reinterpret_cast<decltype(&fp)>(&temp);
-}
-
-/**
- * @brief Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)
- */
-template <typename Return, typename Class, typename... Arg>
-Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
-                             std::optional<std::string> name = std::nullopt))(Arg...) const
-{
-    void *original = name.has_value() ? get_original(name.value()) : get_original(detail::fp_cast(fp));
-    struct {  // https://doi.org/10.1145/3660779
-        void *ptr;
-        std::size_t adj = 0;
-    } temp;
-    temp.ptr = original;
-    return *reinterpret_cast<decltype(&fp)>(&temp);
-}
-}  // namespace endstone::hook
-
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) std::invoke(endstone::hook::get_original(fp), ##__VA_ARGS__)
-#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...) \
-    std::invoke(endstone::hook::get_original(fp, name), ##__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, __FUNCDNAME__, ##__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                           \
+    std::invoke(                                                                                                  \
+        endstone::detail::fp_cast(                                                                                \
+            fp, endstone::hook::get_original(                                                                     \
+                    std::integral_constant<entt::hashed_string::hash_type, entt::hashed_string::value(name)>())), \
+        ##__VA_ARGS__)

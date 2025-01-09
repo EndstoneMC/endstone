@@ -20,6 +20,7 @@
 #include <system_error>
 #include <unordered_map>
 
+#include <entt/core/hashed_string.hpp>
 #include <spdlog/spdlog.h>
 
 #include "bedrock/symbol.h"
@@ -28,22 +29,12 @@
 namespace endstone::hook {
 
 namespace {
-std::unordered_map<void *, void *> gOriginalsByDetour;
-std::unordered_map<std::string, void *> gOriginalsByName;
+std::unordered_map<entt::hashed_string::hash_type, void *> gOriginalsByName;
 }  // namespace
 
-void *get_original(void *detour)
+void *get_original(entt::hashed_string::hash_type name)
 {
-    auto it = gOriginalsByDetour.find(detour);
-    if (it == gOriginalsByDetour.end()) {
-        throw std::runtime_error(fmt::format("No original function can be found for address {}", detour));
-    }
-    return it->second;
-}
-
-void *get_original(const std::string &name)
-{
-    auto it = gOriginalsByName.find(name);
+    const auto it = gOriginalsByName.find(name);
     if (it == gOriginalsByName.end()) {
         throw std::runtime_error(fmt::format("No original function can be found for name {}", name));
     }
@@ -87,16 +78,11 @@ void install()
             }
 
             spdlog::debug("{}: {} -> {} -> {}", name, target, detour, original);
-            gOriginalsByDetour.emplace(detour, original);
-            gOriginalsByName.emplace(name, original);
+            gOriginalsByName.emplace(entt::hashed_string{name.c_str()}, original);
         }
         else {
             throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
         }
-    }
-
-    for (const auto &[name, target] : targets) {
-        gOriginalsByName.emplace(name, target);
     }
 }
 

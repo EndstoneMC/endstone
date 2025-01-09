@@ -35,16 +35,15 @@ void Mob::die(const ActorDamageSource &source)
         endstone::ActorDeathEvent e{getEndstoneActor()};
         server.getPluginManager().callEvent(e);
     }
-
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Mob::die, __FUNCDNAME__, this, source);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::die, this, source);
 }
 
 void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizontal_force, float vertical_force,
                     float height_cap)
 {
     auto before = getPosDelta();
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Mob::knockback, __FUNCDNAME__, this, source, damage, dx, dz, horizontal_force,
-                                     vertical_force, height_cap);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, dx, dz, horizontal_force, vertical_force,
+                                height_cap);
     auto after = getPosDelta();
     auto diff = after - before;
 

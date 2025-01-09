@@ -39,7 +39,7 @@ void ServerPlayer::die(const ActorDamageSource &source)
     auto *player_death_manager = getLevel()._getPlayerDeathManager();
     player_death_manager->resetPacketSender();
 
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::die, this, source);
 
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = getEndstoneActor<EndstonePlayer>();

@@ -38,8 +38,7 @@ void Actor::remove()
         endstone::ActorRemoveEvent e{getEndstoneActor()};
         server.getPluginManager().callEvent(e);
     }
-
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, __FUNCDNAME__, this);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::remove, this);
 }
 
 void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
@@ -57,6 +56,6 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
         }
         position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
     }
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, position, should_stop_riding, cause,
-                                     entity_type, keep_velocity);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::teleportTo, this, position, should_stop_riding, cause, entity_type,
+                                keep_velocity);
 }
