@@ -84,5 +84,4 @@ std::unordered_set<PermissionAttachmentInfo *> ServerCommandSender::getEffective
     return perm_->getEffectivePermissions();
 }
 
-
 }  // namespace endstone::core

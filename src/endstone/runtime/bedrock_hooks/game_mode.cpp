@@ -14,8 +14,6 @@
 
 #include "bedrock/world/gamemode/game_mode.h"
 
-#include <spdlog/spdlog.h>
-
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/inventory/item_stack.h"

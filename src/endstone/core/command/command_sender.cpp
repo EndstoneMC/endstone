@@ -15,7 +15,6 @@
 #include "bedrock/server/commands/command_origin.h"
 
 #include <entt/entt.hpp>
-#include <spdlog/spdlog.h>
 
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/actor.h"
