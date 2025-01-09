@@ -47,7 +47,9 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
     auto sender = origin.getEndstoneSender();
     if (!sender) {
         // Fallback to command origin via a wrapper for unsupported types
-        sender = CommandOriginWrapper::create(origin, output);
+        const auto wrapper = CommandOriginWrapper::create(origin, output);
+        wrapper->init();
+        sender = wrapper;
     }
     if (command->unwrap().execute(*sender, args_)) {
         output.success();
@@ -72,8 +74,8 @@ std::string removeQuotes(const std::string &str)
 
 template <>
 bool CommandRegistry::parse<endstone::core::MinecraftCommandAdapter>(void *value, const ParseToken &parse_token,
-                                                                       const CommandOrigin &, int, std::string &,
-                                                                       std::vector<std::string> &) const
+                                                                     const CommandOrigin &, int, std::string &,
+                                                                     std::vector<std::string> &) const
 {
     auto &output = static_cast<endstone::core::MinecraftCommandAdapter *>(value)->args_;
 

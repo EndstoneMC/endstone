@@ -29,6 +29,16 @@ PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_
     PermissibleBase::recalculatePermissions();
 }
 
+PermissibleBase::~PermissibleBase()
+{
+    if (getPluginManager()) {
+        // Ensure clearPermissions() is called during destruction to remove this object from the permission subscription
+        // list and avoid dangling pointers. During server shutdown, if the plugin manager is already destroyed, this
+        // step is safely skipped as no dangling pointers can occur.
+        clearPermissions();
+    }
+}
+
 bool PermissibleBase::isOp() const
 {
     if (opable_) {
@@ -62,8 +72,7 @@ bool PermissibleBase::hasPermission(std::string name) const
         return permissions_.find(name)->second->getValue();
     }
 
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto *perm = server.getPluginManager().getPermission(name);
+    auto *perm = getPluginManager()->getPermission(name);
     if (perm != nullptr) {
         return hasPermission(perm->getDefault(), isOp());
     }
@@ -144,18 +153,15 @@ Result<void> PermissibleBase::removeAttachment(PermissionAttachment &attachment)
 
 void PermissibleBase::recalculatePermissions()
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &plugin_manager = server.getPluginManager();
-
     clearPermissions();
-    const auto defaults = plugin_manager.getDefaultPermissions(isOp());
-    plugin_manager.subscribeToDefaultPerms(isOp(), parent_);
+    const auto defaults = getPluginManager()->getDefaultPermissions(isOp());
+    getPluginManager()->subscribeToDefaultPerms(isOp(), parent_);
 
     for (auto *perm : defaults) {
         auto name = perm->getName();
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, nullptr, true);
-        plugin_manager.subscribeToPermission(name, parent_);
+        getPluginManager()->subscribeToPermission(name, parent_);
         calculateChildPermissions(perm->getChildren(), false, nullptr);
     }
 
@@ -168,18 +174,15 @@ void PermissibleBase::recalculatePermissions()
 void PermissibleBase::calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
                                                 PermissionAttachment *attachment)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &plugin_manager = server.getPluginManager();
-
     for (const auto &entry : children) {
         auto name = entry.first;
 
-        auto *perm = plugin_manager.getPermission(name);
+        auto *perm = getPluginManager()->getPermission(name);
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         bool value = entry.second ^ invert;
 
         permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, attachment, value);
-        plugin_manager.subscribeToPermission(name, parent_);
+        getPluginManager()->subscribeToPermission(name, parent_);
 
         if (perm != nullptr) {
             calculateChildPermissions(perm->getChildren(), !value, attachment);
@@ -206,21 +209,26 @@ CommandSender *PermissibleBase::asCommandSender() const
 
 void PermissibleBase::clearPermissions()
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &plugin_manager = server.getPluginManager();
-
     // Clear permissions
     for (const auto &[name, perm] : permissions_) {
-        plugin_manager.unsubscribeFromPermission(name, parent_);
+        getPluginManager()->unsubscribeFromPermission(name, parent_);
     }
-    plugin_manager.unsubscribeFromDefaultPerms(false, parent_);
-    plugin_manager.unsubscribeFromDefaultPerms(true, parent_);
+    getPluginManager()->unsubscribeFromDefaultPerms(false, parent_);
+    getPluginManager()->unsubscribeFromDefaultPerms(true, parent_);
     permissions_.clear();
 }
 
 std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
 {
     return PermissibleFactory::create<PermissibleBase>(opable);
+}
+
+PluginManager *PermissibleBase::getPluginManager()
+{
+    if (entt::locator<EndstoneServer>::has_value()) {
+        return &entt::locator<EndstoneServer>::value().getPluginManager();
+    }
+    return nullptr;
 }
 
 }  // namespace endstone::core

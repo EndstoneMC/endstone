@@ -21,11 +21,11 @@ namespace endstone::core {
 
 class ServerCommandSender : public CommandSender {
 protected:
-    explicit ServerCommandSender(std::shared_ptr<PermissibleBase> perm = nullptr);
+    explicit ServerCommandSender();
 
 public:
+    void init(std::shared_ptr<PermissibleBase> perm = nullptr);
     [[nodiscard]] Server &getServer() const override;
-
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;

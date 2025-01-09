@@ -53,13 +53,14 @@ namespace endstone::core {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
+    crash_handler_ = std::make_unique<CrashHandler>();
+    signal_handler_ = std::make_unique<SignalHandler>();
     player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
     ip_ban_list_ = std::make_unique<EndstoneIpBanList>("banned-ips.json");
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
+    command_sender_ = EndstoneConsoleCommandSender::create();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
-    crash_handler_ = std::make_unique<CrashHandler>();
-    signal_handler_ = std::make_unique<SignalHandler>();
     start_time_ = std::chrono::system_clock::now();
 }
 
@@ -68,7 +69,7 @@ void EndstoneServer::init(ServerInstance &server_instance)
     server_instance_ = &server_instance;
     getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
                      ColorFormat::DarkAqua + ColorFormat::Bold, getName(), getVersion(), getMinecraftVersion());
-    command_sender_ = EndstoneConsoleCommandSender::create();
+    command_sender_->init();
     player_ban_list_->load();
     ip_ban_list_->load();
 }

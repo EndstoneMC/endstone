@@ -831,10 +831,7 @@ void EndstonePlayer::initFromConnectionRequest(
         request);
 }
 
-void EndstonePlayer::disconnect()
-{
-    perm_->clearPermissions();
-}
+void EndstonePlayer::disconnect() {}
 
 void EndstonePlayer::updateAbilities() const
 {

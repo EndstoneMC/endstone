@@ -25,7 +25,6 @@ public:
             explicit Impl(Args &&...args) : Derived(std::forward<Args>(args)...) {}
         };
         auto result = std::make_shared<Impl>(std::forward<Args>(args)...);
-        result->recalculatePermissions();
         return result;
     }
 };

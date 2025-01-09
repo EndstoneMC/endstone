@@ -20,10 +20,10 @@
 
 #include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_instance.h"
-#include "endstone/command/console_command_sender.h"
 #include "endstone/core/ban/ip_ban_list.h"
 #include "endstone/core/ban/player_ban_list.h"
 #include "endstone/core/command/command_map.h"
+#include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/crash_handler.h"
 #include "endstone/core/lang/language.h"
 #include "endstone/core/level/level.h"
@@ -127,13 +127,15 @@ private:
 
     ServerInstance *server_instance_;
     Logger &logger_;
+    std::unique_ptr<CrashHandler> crash_handler_;
+    std::unique_ptr<SignalHandler> signal_handler_;
     std::unique_ptr<EndstonePlayerBanList> player_ban_list_;
     std::unique_ptr<EndstoneIpBanList> ip_ban_list_;
     std::unique_ptr<EndstoneLanguage> language_;
-    std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
-    std::shared_ptr<ConsoleCommandSender> command_sender_;
+    std::shared_ptr<EndstoneConsoleCommandSender> command_sender_;
     std::unique_ptr<EndstoneScheduler> scheduler_;
+    std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
     std::unordered_map<UUID, EndstonePlayer *> players_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
@@ -142,8 +144,6 @@ private:
     std::chrono::system_clock::time_point start_time_;
     Bedrock::NonOwnerPointer<IResourcePackRepository> resource_pack_repository_;
     std::unique_ptr<EndstonePackSource> resource_pack_source_;
-    std::unique_ptr<CrashHandler> crash_handler_;
-    std::unique_ptr<SignalHandler> signal_handler_;
     int tick_counter_ = 0;
     float current_mspt_ = TargetMillisecondsPerTick * 1.0F;
     float average_mspt_[TargetTicksPerSecond] = {TargetMillisecondsPerTick};

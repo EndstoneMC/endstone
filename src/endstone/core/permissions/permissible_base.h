@@ -33,6 +33,7 @@ namespace endstone::core {
 class PermissibleBase : public Permissible {
 protected:
     explicit PermissibleBase(Permissible *opable);
+    ~PermissibleBase() override;
 
 public:
     [[nodiscard]] bool isOp() const override;
@@ -52,6 +53,7 @@ public:
     static std::shared_ptr<PermissibleBase> create(Permissible *opable);
 
 private:
+    [[nodiscard]] static PluginManager *getPluginManager();
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
                                    PermissionAttachment *attachment);
     [[nodiscard]] static bool hasPermission(PermissionDefault default_value, bool op);
