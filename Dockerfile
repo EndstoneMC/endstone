@@ -45,7 +45,7 @@ RUN python -m pip install --upgrade pip \
     && python -m pip wheel . --no-deps --wheel-dir=wheelhouse --verbose \
     && python -m auditwheel --verbose repair --plat manylinux_2_31_x86_64 -w dist wheelhouse/*.whl \
     && pip install dist/*-manylinux_2_31_x86_64.whl \
-    && pytest python/tests
+    && pytest tests/endstone/python
 
 FROM base AS final
 

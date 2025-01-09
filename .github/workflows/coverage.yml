@@ -23,10 +23,10 @@ jobs:
       - name: Cache Conan
         uses: actions/cache@v4
         with:
-          path: ~/.conan2
-          key: ${{ runner.os }}-conan-${{ matrix.build_type }}-${{ hashFiles('conanfile.py') }}
+          path: ~/.conan2/p
+          key: ${{ runner.os }}-conan-Debug-${{ hashFiles('conanfile.py') }}
           restore-keys: |
-            ${{ runner.os }}-conan-${{ matrix.build_type }}-
+            ${{ runner.os }}-conan-Debug-
             ${{ runner.os }}-conan-
             ${{ runner.os }}-
 
