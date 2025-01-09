@@ -160,7 +160,7 @@ private:
     SocketAddress address_;
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
-    std::string locale_ = "en-US";
+    std::string locale_ = "en_US";
     std::string device_os_ = "Unknown";
     std::string device_id_;
     std::string game_version_;
