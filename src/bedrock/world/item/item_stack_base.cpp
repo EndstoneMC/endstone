@@ -293,12 +293,7 @@ bool ItemStackBase::hasUserData() const
 
 void ItemStackBase::setUserData(std::unique_ptr<CompoundTag> tag)
 {
-    user_data_ = std::move(tag);
-    if (user_data_) {
-        if (const auto *charged_item = user_data_->getCompound(TAG_CHARGED_ITEM)) {
-            charged_item_ = std::make_unique<ItemInstance>(ItemInstance::fromTag(*charged_item));
-        }
-    }
+    BEDROCK_CALL(&ItemStackBase::setUserData, this, std::move(tag));
 }
 
 const CompoundTag *ItemStackBase::getUserData() const

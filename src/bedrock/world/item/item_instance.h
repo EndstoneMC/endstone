@@ -16,7 +16,4 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
-class ItemInstance final : public ItemStackBase {
-public:
-    static ItemInstance fromTag(const CompoundTag &);
-};
+class ItemInstance final : public ItemStackBase {};

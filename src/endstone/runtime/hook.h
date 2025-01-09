@@ -18,7 +18,6 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/symbol.h"
 #include "endstone/detail/cast.h"
 
 namespace endstone::hook {

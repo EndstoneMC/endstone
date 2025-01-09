@@ -15,8 +15,3 @@
 #include "bedrock/world/item/item_instance.h"
 
 #include "bedrock/symbol.h"
-
-ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
-{
-    return BEDROCK_CALL(&ItemInstance::fromTag, tag);
-}

@@ -25,6 +25,7 @@ using BlockPosSet = std::unordered_set<BlockPos>;
 
 class Explosion {
 public:
+    Explosion(BlockSource &, Actor *, const Vec3 &, float);
     void setFire(bool);
     [[nodiscard]] bool getFire() const;
 

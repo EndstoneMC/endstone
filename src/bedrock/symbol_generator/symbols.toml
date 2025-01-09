@@ -1,4 +1,4 @@
-timestamp = 1736373115
+timestamp = 1736445665
 version = "1.21.50"
 
 [windows]
@@ -45,14 +45,13 @@ version = "1.21.50"
 "?useItemOn@GameMode@@UEAA?AVInteractionResult@@AEAVItemStack@@AEBVBlockPos@@EAEBVVec3@@PEBVBlock@@_N@Z" = 36388512
 # Item
 "?_sendTryPlaceBlockEvent@Item@@IEBA?AW4CoordinatorResult@@AEBVBlock@@AEBVBlockSource@@AEBVActor@@AEBVBlockPos@@EAEBVVec3@@@Z" = 40218656
-# ItemInstance
-"?fromTag@ItemInstance@@SA?AV1@AEBVCompoundTag@@@Z" = 40275952
 # ItemRegistry
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 39706432
 # ItemRegistryManager
 "?getItemRegistry@ItemRegistryManager@@SA?AVItemRegistryRef@@XZ" = 39673296
 # ItemStackBase
 "?init@ItemStackBase@@IEAAXHHH_N@Z" = 40546368
+"?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 40591680
 # Level
 "?tick@Level@@UEAAXXZ" = 39489328
 # LevelEventCoordinator
@@ -76,7 +75,6 @@ version = "1.21.50"
 "?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 36373312
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 51374320
-"?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 51221232
 # RakPeerHelper
 "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 13945120
 # ResourcePackRepository
@@ -127,6 +125,8 @@ version = "1.21.50"
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 160989088
 # BlockDescriptor
 "_ZNK15BlockDescriptor20tryGetBlockNoLoggingEv" = 129885728
+# BlockLegacy
+"_ZNK11BlockLegacy25tryGetStateFromLegacyDataEt" = 129898208
 # BlockTypeRegistry
 "_ZN17BlockTypeRegistry12forEachBlockENSt3__18functionIFbRK11BlockLegacyEEE" = 139876944
 # Command
@@ -158,10 +158,13 @@ version = "1.21.50"
 "_ZN8GameMode9useItemOnER9ItemStackRK8BlockPoshRK4Vec3PK5Blockb" = 129322896
 # Item
 "_ZNK4Item23_sendTryPlaceBlockEventERK5BlockRK11BlockSourceRK5ActorRK8BlockPoshRK4Vec3" = 137794752
-# ItemStack
-"_ZN9ItemStackC2Ev" = 137837680
-"_ZN9ItemStackC2ERKS_" = 137838128
-"_ZN9ItemStackC2ERK4ItemiiPK11CompoundTag" = 137837872
+# ItemRegsitry
+"_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 130608240
+# ItemRegistryManager
+"_ZN19ItemRegistryManager15getItemRegistryEv" = 130622960
+# ItemStackBase
+"_ZN13ItemStackBase4initEiiib" = 133043168
+"_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 133040528
 # Level
 "_ZN5Level4tickEv" = 130259312
 # LevelEventCoordinator
@@ -185,7 +188,6 @@ version = "1.21.50"
 "_ZN22PlayerEventCoordinator9sendEventERK8EventRefI19PlayerGameplayEventIvEE" = 129211184
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 149421424
-"_ZNK6RakNet13SystemAddress8ToStringEbPcc" = 149455664
 # RakPeerHelper
 "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 91912080
 # ResourcePackRepository

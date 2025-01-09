@@ -37,7 +37,7 @@ consteval std::size_t get_symbol(const std::string_view symbol)
             return value;
         }
     }
-    throw fmt::format("Symbol '{}' does not exist", symbol);
+    throw "symbol not found";
 }
 
 template <typename Func>
