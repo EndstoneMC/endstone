@@ -24,8 +24,6 @@
 #include <string>
 #include <unordered_map>
 
-#include <spdlog/spdlog.h>
-
 #include "endstone/detail/platform.h"
 
 namespace {

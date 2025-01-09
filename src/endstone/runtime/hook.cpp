@@ -49,7 +49,7 @@ const std::unordered_map<std::string, void *> &get_targets()
     }
     auto *executable_base = detail::get_executable_base();
     detail::foreach_symbol([executable_base](const auto &key, auto offset) {
-        spdlog::debug("T: {} -> 0x{:x}", key.data(), offset);
+        SPDLOG_DEBUG("T: {} -> 0x{:x}", key.data(), offset);
         auto *target = static_cast<char *>(executable_base) + offset;
         targets.emplace(key.data(), target);
     });
@@ -77,7 +77,7 @@ void install()
                 throw std::system_error(status, error_category(), fmt::format("Unable to hook {}", name));
             }
 
-            spdlog::debug("{}: {} -> {} -> {}", name, target, detour, original);
+            SPDLOG_DEBUG("{}: {} -> {} -> {}", name, target, detour, original);
             gOriginalsByName.emplace(entt::hashed_string{name.c_str()}, original);
         }
         else {

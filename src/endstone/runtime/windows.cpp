@@ -26,8 +26,6 @@
 #include <system_error>
 #include <unordered_map>
 
-#include <spdlog/spdlog.h>
-
 #include "endstone/detail/platform.h"
 
 namespace endstone::hook {
