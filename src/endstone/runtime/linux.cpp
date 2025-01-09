@@ -87,7 +87,6 @@ const std::unordered_map<std::string, void *> &get_detours()
 
     auto *module_base = detail::get_module_base();
     auto module_pathname = detail::get_module_pathname();
-    const auto &targets = get_targets();
 
     read_elf(module_pathname, SHT_DYNSYM, [&](auto *elf, auto &shdr, auto &sym) {
         if (sym.st_shndx == SHN_UNDEF || GELF_ST_TYPE(sym.st_info) != STT_FUNC ||
@@ -101,7 +100,6 @@ const std::unordered_map<std::string, void *> &get_detours()
         }
 
         auto offset = sym.st_value;
-        spdlog::debug("D: {} -> 0x{:x}", name, offset);
         auto *detour = static_cast<char *>(module_base) + offset;
         detours.emplace(name, detour);
     });

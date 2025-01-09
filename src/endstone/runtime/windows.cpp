@@ -40,8 +40,6 @@ namespace {
 void enumerate_symbols(const char *path, std::function<bool(const std::string &, std::size_t, std::uint32_t)> callback,
                        bool load_symbol)
 {
-    auto start = std::chrono::high_resolution_clock::now();
-
     HANDLE current_process = GetCurrentProcess();
     HANDLE handle;
     if (!DuplicateHandle(current_process, current_process, current_process, &handle, 0, FALSE, DUPLICATE_SAME_ACCESS)) {
@@ -78,10 +76,6 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
         &user_context, SYMSEARCH_GLOBALSONLY);
 
     SymCleanup(handle);
-
-    const auto end = std::chrono::high_resolution_clock::now();
-    const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    spdlog::debug("enumerate_symbols(): time elapsed: {}ms", duration.count());
 }
 }  // namespace
 
@@ -94,13 +88,11 @@ const std::unordered_map<std::string, void *> &get_detours()
 
     auto *module_base = detail::get_module_base();
     const auto module_pathname = detail::get_module_pathname();
-    const auto &targets = get_targets();
 
     enumerate_symbols(  //
         module_pathname.c_str(),
         [&](const std::string &name, std::size_t offset, std::uint32_t flags) -> bool {
             if (flags & SYMFLAG_EXPORT) {
-                spdlog::debug("D: {} -> 0x{:x}", name, offset);
                 auto *detour = static_cast<char *>(module_base) + offset;
                 detours.emplace(name, detour);
             }
