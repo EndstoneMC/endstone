@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/version.h" line="19" column="9" bodyfile="include/endstone/version.h" bodystart="19" bodyend="-1"/>
+        <location file="include/endstone/version.h" line="17" column="9" bodyfile="include/endstone/version.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="version_8h_1a8eef1a1b39f5be9d7fdb63f61f6e6f41" prot="public" static="no">
         <name>ENDSTONE_TOSTRING</name>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/version.h" line="20" column="9" bodyfile="include/endstone/version.h" bodystart="20" bodyend="-1"/>
+        <location file="include/endstone/version.h" line="18" column="9" bodyfile="include/endstone/version.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="version_8h_1ad775ac2522a4205f4c0defcd1015c422" prot="public" static="no">
         <name>ENDSTONE_VERSION_MAJOR</name>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/version.h" line="22" column="9" bodyfile="include/endstone/version.h" bodystart="22" bodyend="-1"/>
+        <location file="include/endstone/version.h" line="20" column="9" bodyfile="include/endstone/version.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="version_8h_1a47af324054528678a066e32d3b2c8d0c" prot="public" static="no">
         <name>ENDSTONE_VERSION_MINOR</name>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/version.h" line="23" column="9" bodyfile="include/endstone/version.h" bodystart="23" bodyend="-1"/>
+        <location file="include/endstone/version.h" line="21" column="9" bodyfile="include/endstone/version.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="version_8h_1a1a384214544c4bcb200df812e5ac2bc9" prot="public" static="no">
         <name>ENDSTONE_VERSION_PATCH</name>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/version.h" line="24" column="9" bodyfile="include/endstone/version.h" bodystart="24" bodyend="-1"/>
+        <location file="include/endstone/version.h" line="22" column="9" bodyfile="include/endstone/version.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="version_8h_1a4b2c4ab328be64dd58f83fcfca8cc2e0" prot="public" static="no">
         <name>ENDSTONE_API_VERSION</name>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/version.h" line="25" column="9" bodyfile="include/endstone/version.h" bodystart="25" bodyend="-1"/>
+        <location file="include/endstone/version.h" line="23" column="9" bodyfile="include/endstone/version.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -164,15 +164,13 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_STRINGIFY(x)<sp/>#x</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_TOSTRING(x)<sp/><sp/>ENDSTONE_STRINGIFY(x)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MAJOR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MINOR<sp/>5</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_PATCH<sp/>7</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_API_VERSION<sp/><sp/><sp/>ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR)<sp/>&quot;.&quot;</highlight><highlight class="normal"><sp/>ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_STRINGIFY(x)<sp/>#x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_TOSTRING(x)<sp/>ENDSTONE_STRINGIFY(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MAJOR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MINOR<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_PATCH<sp/>7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_API_VERSION<sp/><sp/><sp/>ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR)<sp/>&quot;.&quot;</highlight><highlight class="normal"><sp/>ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)</highlight></codeline>
     </programlisting>
     <location file="include/endstone/version.h"/>
   </compounddef>
