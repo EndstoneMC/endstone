@@ -15,6 +15,7 @@
 #include "bedrock/core/debug/bedrock_event_logger.h"
 
 #include <cstdio>
+#include <ranges>
 
 #include <magic_enum/magic_enum.hpp>
 
@@ -54,18 +55,9 @@ void BedrockLog::log_va(LogCategory /*category*/, std::bitset<3> /*channel_mask*
     std::size_t len = std::vsnprintf(buf.data(), buf.size(), format, args_copy);
     va_end(args_copy);
 
-    std::string message(buf.data(), len);
-    message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
-
-    std::size_t start = 0;
-    std::size_t end;
-
-    while ((end = message.find('\n', start)) != std::string::npos) {
-        logger.log(log_level, message.substr(start, end - start));
-        start = end + 1;
-    }
-
-    if (start < message.length()) {
-        logger.log(log_level, message.substr(start));
+    std::string_view message(buf.data(), len);
+    auto lines = message | std::ranges::views::split('\n');
+    for (const auto &line : lines) {
+        logger.log(log_level, std::string_view(line.begin(), line.end()));
     }
 }

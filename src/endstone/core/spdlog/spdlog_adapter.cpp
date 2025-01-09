@@ -14,6 +14,8 @@
 
 #include "endstone/core/spdlog/spdlog_adapter.h"
 
+#include <ranges>
+
 namespace endstone::core {
 
 SpdLogAdapter::SpdLogAdapter(std::shared_ptr<spdlog::logger> logger) : logger_(std::move(logger)) {}
@@ -21,7 +23,10 @@ SpdLogAdapter::SpdLogAdapter(std::shared_ptr<spdlog::logger> logger) : logger_(s
 void SpdLogAdapter::log(Level level, const std::string_view message) const
 {
     if (isEnabledFor(level)) {
-        logger_->log(static_cast<spdlog::level::level_enum>(level), message);
+        auto lines = message | std::ranges::views::split('\n');
+        for (const auto line : lines) {
+            logger_->log(static_cast<spdlog::level::level_enum>(level), std::string_view(line.begin(), line.end()));
+        }
     }
 }
 
