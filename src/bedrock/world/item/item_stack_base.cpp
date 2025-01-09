@@ -60,14 +60,19 @@ ItemStackBase::ItemStackBase(const ItemStackBase &rhs)
         init(block_->getLegacyBlock(), rhs.count_);
     }
     else {
-        int id = 0;
-        if (rhs.valid_deprecated_ && !rhs.item_.isNull()) {
-            id = rhs.item_->getId();
+        int id;
+        if (rhs.valid_deprecated_) {
+            if (!rhs.item_.isNull()) {
+                id = rhs.item_->getId();
+            }
+            else {
+                id = 0;
+            }
         }
         else {
             id = Item::INVALID_ITEM_ID;
         }
-        init(id, count_, aux_value_, false);
+        init(id, rhs.count_, aux_value_, false);
     }
 
     if (rhs.user_data_) {

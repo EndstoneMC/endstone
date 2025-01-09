@@ -28,7 +28,7 @@ public:
     [[nodiscard]] int getAmount() const override;
     void setAmount(int amount) override;
 
-    static ::ItemStack toMinecraft(std::shared_ptr<ItemStack> item);
+    static ::ItemStack toMinecraft(const std::shared_ptr<ItemStack> &item);
     static std::shared_ptr<EndstoneItemStack> fromMinecraft(::ItemStack &item);
 
 protected:

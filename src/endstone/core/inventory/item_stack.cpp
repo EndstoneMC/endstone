@@ -54,7 +54,7 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
-::ItemStack EndstoneItemStack::toMinecraft(std::shared_ptr<ItemStack> item)
+::ItemStack EndstoneItemStack::toMinecraft(const std::shared_ptr<ItemStack>& item)
 {
     if (!item || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
