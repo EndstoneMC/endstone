@@ -50,13 +50,17 @@ jobs:
       - name: Set up CMake and Ninja
         uses: lukka/get-cmake@latest
 
+      - name: Set Conan Home (Linux)
+        if: runner.os == 'Linux'
+        run: echo "CONAN_HOME=/host${HOME}/.conan2" >> $GITHUB_ENV
+
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.22.0
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}
           CIBW_BUILD_VERBOSITY: 1
-          CIBW_ENVIRONMENT_PASS_LINUX: "SENTRY_AUTH_TOKEN"
+          CIBW_ENVIRONMENT_PASS_LINUX: "CONAN_HOME SENTRY_AUTH_TOKEN"
 
       - uses: actions/upload-artifact@v4
         with:
