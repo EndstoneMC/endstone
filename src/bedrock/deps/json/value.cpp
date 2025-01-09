@@ -124,7 +124,7 @@ Value::Value(const std::string &value) : type_(stringValue)
 
 Value::Value(const Value &other) : type_(other.type_)
 {
-    switch (type_) {
+    switch (other.type_) {
     case nullValue:
     case intValue:
     case uintValue:

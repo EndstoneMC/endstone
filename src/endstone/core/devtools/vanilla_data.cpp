@@ -251,11 +251,11 @@ void dumpRecipes(VanillaData &data, ::Level &level)
                 recipe["input"].push_back({{"count", ingredient.getStackSize()}});
                 Json::Value json_value;
                 ingredient.serialize(json_value);
-                if (nlohmann::json json = json_value; json.is_string()) {
-                    recipe["input"].back()["item"] = json.get<std::string>();
+                if (nlohmann::json json = json_value; json.is_object()) {
+                    recipe["input"].back()["tag"] = json.at("item_tag").get<std::string>();
                 }
                 else {
-                    recipe["input"].back()["tag"] = json.at("item_tag").get<std::string>();
+                    recipe["input"].back()["item"] = ingredient.getFullName();
                 }
                 if (ingredient.getAuxValue() != 0 && ingredient.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
                     recipe["input"].back()["data"] = ingredient.getAuxValue();

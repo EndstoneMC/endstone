@@ -20,16 +20,16 @@
 
 namespace Json {
 
-enum ValueType {    // NOLINTBEGIN
-    nullValue = 0,  ///< 'null' value
-    intValue,       ///< signed integer value
-    uintValue,      ///< unsigned integer value
-    realValue,      ///< double value
-    stringValue,    ///< UTF-8 string value
-    booleanValue,   ///< bool value
-    arrayValue,     ///< array value (ordered list)
-    objectValue     ///< object value (collection of name/value pairs).
-};                  // NOLINTEND
+enum ValueType : char {  // NOLINTBEGIN
+    nullValue = 0,       ///< 'null' value
+    intValue = 1,        ///< signed integer value
+    uintValue = 2,       ///< unsigned integer value
+    realValue = 3,       ///< double value
+    stringValue = 4,     ///< UTF-8 string value
+    booleanValue = 5,    ///< bool value
+    arrayValue = 6,      ///< array value (ordered list)
+    objectValue = 7,     ///< object value (collection of name/value pairs).
+};                       // NOLINTEND
 
 class Value {
     static const Value &null;
