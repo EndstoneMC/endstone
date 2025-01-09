@@ -71,8 +71,11 @@ ModuleInfo get_module_info(const char *module_name)
 
 void *get_module_base()
 {
-    auto module_info = get_module_info("libendstone_runtime.so");
-    return module_info.base;
+    static void *base = []() {
+        auto module_info = get_module_info("libendstone_runtime.so");
+        return module_info.base;
+    }();
+    return base;
 }
 
 std::string get_module_pathname()
@@ -83,8 +86,11 @@ std::string get_module_pathname()
 
 void *get_executable_base()
 {
-    auto module_info = get_module_info(nullptr);
-    return module_info.base;
+    static void *base = []() {
+        auto module_info = get_module_info(nullptr);
+        return module_info.base;
+    }();
+    return base;
 }
 
 std::string get_executable_pathname()

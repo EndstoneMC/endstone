@@ -39,13 +39,16 @@ HMODULE get_module_handle(const char *module_name)
 
 void *get_module_base()
 {
-    MODULEINFO mi = {nullptr};
-    if (!GetModuleInformation(GetCurrentProcess(), get_module_handle("endstone_runtime.dll"), &mi, sizeof(mi))) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
-                                "GetModuleInformation failed");
-    }
+    static void *base = []() {
+        MODULEINFO mi = {nullptr};
+        if (!GetModuleInformation(GetCurrentProcess(), get_module_handle("endstone_runtime.dll"), &mi, sizeof(mi))) {
+            throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
+                                    "GetModuleInformation failed");
+        }
 
-    return mi.lpBaseOfDll;
+        return mi.lpBaseOfDll;
+    }();
+    return base;
 }
 
 std::string get_module_pathname()
@@ -61,13 +64,16 @@ std::string get_module_pathname()
 
 void *get_executable_base()
 {
-    MODULEINFO mi = {nullptr};
-    if (!GetModuleInformation(GetCurrentProcess(), get_module_handle(nullptr), &mi, sizeof(mi))) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
-                                "GetModuleInformation failed");
-    }
+    static void *base = []() {
+        MODULEINFO mi = {nullptr};
+        if (!GetModuleInformation(GetCurrentProcess(), get_module_handle(nullptr), &mi, sizeof(mi))) {
+            throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
+                                    "GetModuleInformation failed");
+        }
 
-    return mi.lpBaseOfDll;
+        return mi.lpBaseOfDll;
+    }();
+    return base;
 }
 
 std::string get_executable_pathname()
