@@ -19,18 +19,18 @@
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/network/packet/available_commands_packet.h"
+#include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/level/level.h"
-#include "bedrock/symbol.h"
 
 Container &Player::getInventory()
 {
-    ENDSTONE_SYMCALL(&Player::getInventory, this);
+    return BEDROCK_CALL(&Player::getInventory, this);
 }
 
 const std::string &Player::getName() const
 {
-    ENDSTONE_SYMCALL(&Player::getName, this);
+    return BEDROCK_CALL(&Player::getName, this);
 }
 
 GameType Player::getPlayerGameType() const

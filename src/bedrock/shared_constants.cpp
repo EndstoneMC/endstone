@@ -18,5 +18,5 @@
 
 std::string Common::getGameVersionString()
 {
-    ENDSTONE_SYMCALL(&Common::getGameVersionString);
+    return BEDROCK_CALL(&Common::getGameVersionString);
 }

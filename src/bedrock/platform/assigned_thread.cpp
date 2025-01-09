@@ -25,7 +25,7 @@ bool AssignedThread::isOnThread() const
 
 AssignedThread &getServerThread()
 {
-     ENDSTONE_SYMCALL(&getServerThread);
+    return BEDROCK_CALL(&getServerThread);
 }
 
 }  // namespace Bedrock::Threading

@@ -19,7 +19,7 @@
 
 void ServerNetworkHandler::updateServerAnnouncement()
 {
-    ENDSTONE_SYMCALL(&ServerNetworkHandler::updateServerAnnouncement, this);
+    BEDROCK_CALL(&ServerNetworkHandler::updateServerAnnouncement, this);
 }
 
 ConnectionRequest const &ServerNetworkHandler::Client::getPrimaryRequest() const

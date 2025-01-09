@@ -18,7 +18,7 @@
 
 WeakPtr<Item> ItemRegistry::lookupByName(int &out_aux_value, std::string_view in_string) const
 {
-    ENDSTONE_SYMCALL(&ItemRegistry::lookupByName, this, out_aux_value, in_string);
+    return BEDROCK_CALL(&ItemRegistry::lookupByName, this, out_aux_value, in_string);
 }
 
 WeakPtr<Item> ItemRegistry::getItem(std::int16_t id) const

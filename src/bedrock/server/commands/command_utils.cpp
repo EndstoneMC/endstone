@@ -18,5 +18,5 @@
 
 std::string CommandUtils::getActorName(const Actor &actor)
 {
-     ENDSTONE_SYMCALL(&CommandUtils::getActorName, actor);
+    return BEDROCK_CALL(&CommandUtils::getActorName, actor);
 }

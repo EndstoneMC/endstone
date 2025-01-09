@@ -21,11 +21,11 @@ TeleportTarget TeleportCommand::computeTarget(Actor &victim, Vec3 destination, V
                                               std::optional<RotationCommandUtils::RotationData> const &rotation_data,
                                               int command_version)
 {
-    ENDSTONE_SYMCALL(&TeleportCommand::computeTarget, victim, destination, facing_position, destination_dimension,
-                     rotation_data, command_version);
+    return BEDROCK_CALL(&TeleportCommand::computeTarget, victim, destination, facing_position, destination_dimension,
+                        rotation_data, command_version);
 }
 
 void TeleportCommand::applyTarget(Actor &victim, TeleportTarget target, bool keep_velocity)
 {
-    ENDSTONE_SYMCALL(&TeleportCommand::applyTarget, victim, std::move(target), keep_velocity);
+    BEDROCK_CALL(&TeleportCommand::applyTarget, victim, std::move(target), keep_velocity);
 }

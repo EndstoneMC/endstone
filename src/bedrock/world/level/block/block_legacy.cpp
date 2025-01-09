@@ -19,7 +19,7 @@
 
 const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
 {
-    ENDSTONE_SYMCALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
+    return BEDROCK_CALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
 }
 
 bool BlockLegacy::requiresCorrectToolForDrops() const

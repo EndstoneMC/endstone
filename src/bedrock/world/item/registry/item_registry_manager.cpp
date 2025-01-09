@@ -18,5 +18,5 @@
 
 ItemRegistryRef ItemRegistryManager::getItemRegistry()
 {
-    ENDSTONE_SYMCALL(&ItemRegistryManager::getItemRegistry);
+    return BEDROCK_CALL(&ItemRegistryManager::getItemRegistry);
 }

@@ -18,5 +18,5 @@
 
 std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level)
 {
-    ENDSTONE_SYMCALL(&CommandOriginLoader::load, tag, level);
+    return BEDROCK_CALL(&CommandOriginLoader::load, tag, level);
 }

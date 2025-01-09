@@ -18,5 +18,5 @@
 
 I18n &getI18n()
 {
-     ENDSTONE_SYMCALL(&getI18n);
+    return BEDROCK_CALL(&getI18n);
 }

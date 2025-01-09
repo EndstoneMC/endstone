@@ -386,7 +386,7 @@ void ItemStackBase::init(const Item &item, int count, int aux_value, const Compo
 void ItemStackBase::init(const int id, const int count, const int aux_value, const bool do_remap)
 {
     void (ItemStackBase::*fp)(int id, int count, int aux_value, bool do_remap) = &ItemStackBase::init;
-    ENDSTONE_SYMCALL(fp, this, id, count, aux_value, do_remap);
+    BEDROCK_CALL(fp, this, id, count, aux_value, do_remap);
 }
 
 void ItemStackBase::_updateCompareHashes()

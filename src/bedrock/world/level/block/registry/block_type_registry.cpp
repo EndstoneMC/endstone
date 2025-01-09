@@ -18,5 +18,5 @@
 
 void BlockTypeRegistry::forEachBlock(std::function<bool(const BlockLegacy &)> callback)
 {
-    ENDSTONE_SYMCALL(&BlockTypeRegistry::forEachBlock, std::move(callback));
+    BEDROCK_CALL(&BlockTypeRegistry::forEachBlock, std::move(callback));
 }

@@ -18,5 +18,5 @@
 
 ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
 {
-    ENDSTONE_SYMCALL(&ItemInstance::fromTag, tag);
+    return BEDROCK_CALL(&ItemInstance::fromTag, tag);
 }

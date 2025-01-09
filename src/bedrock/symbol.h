@@ -21,25 +21,23 @@
 #include <string_view>
 #include <utility>
 
+#include <entt/entt.hpp>
+#include <fmt/format.h>
+
 #include "endstone/detail/cast.h"
 #include "endstone/detail/platform.h"
 
 namespace endstone::detail {
 #include "bedrock_symbols.generated.h"
 
-constexpr bool has_symbol(const std::string_view name)
+consteval std::size_t get_symbol(const std::string_view symbol)
 {
-    return std::ranges::find_if(symbols, [&name](const auto &pair) { return pair.first == name; }) != symbols.end();
-}
-
-inline void *get_symbol_addr(std::string_view name)
-{
-    static auto *executable_base = endstone::detail::get_executable_base();
-    auto it = std::ranges::find_if(symbols, [&name](const auto &pair) { return pair.first == name; });
-    if (it == symbols.end()) {
-        throw std::out_of_range("symbol not found");
+    for (const auto &[key, value] : symbols) {
+        if (key == symbol) {
+            return value;
+        }
     }
-    return static_cast<char *>(executable_base) + it->second;
+    throw fmt::format("Symbol '{}' does not exist", symbol);
 }
 
 template <typename Func>
@@ -51,28 +49,28 @@ constexpr void foreach_symbol(Func &&func)
 }
 }  // namespace endstone::detail
 
-#define ENDSTONE_SYMCALL(fp, ...)                                                                                     \
-    static_assert(endstone::detail::has_symbol(__FUNCDNAME__), "undefined symbol " __FUNCDNAME__ " in " __FUNCSIG__); \
-    return std::invoke(endstone::detail::fp_cast(fp, endstone::detail::get_symbol_addr(__FUNCDNAME__)), ##__VA_ARGS__)
+#define BEDROCK_CALL(fp, ...)                                                                                \
+    std::invoke(endstone::detail::fp_cast(fp, static_cast<char *>(endstone::detail::get_executable_base()) + \
+                                                  endstone::detail::get_symbol(__FUNCDNAME__)),              \
+                ##__VA_ARGS__)
 
 namespace endstone::detail {
 #ifdef _WIN32
-template <typename Class, typename... Args>
-Class *(*get_ctor(std::string_view name))(Class *, Args...)
+template <std::size_t Offset, typename Class, typename... Args>
+Class *(*get_ctor())(Class *, Args...)
 {
-    auto *original = get_symbol_addr(name);
-    return reinterpret_cast<Class *(*)(Class *, Args...)>(original);
+    auto *addr = static_cast<char *>(get_executable_base()) + Offset;
+    return reinterpret_cast<Class *(*)(Class *, Args...)>(addr);
 }
 #elif __linux__
-template <typename Class, typename... Args>
-void (*get_ctor(std::string_view name))(Class *, Args...)
+template <std::size_t Offset, typename Class, typename... Args>
+void (*get_ctor())(Class *, Args...)
 {
-    auto *original = get_symbol_addr(name);
-    return reinterpret_cast<void (*)(Class *, Args...)>(original);
+    auto *addr = static_cast<char *>(get_executable_base()) + Offset;
+    return reinterpret_cast<void (*)(Class *, Args...)>(addr);
 }
 #endif
 }  // namespace endstone::detail
 
-#define BEDROCK_CTOR(type, ...)                                                                                       \
-    static_assert(endstone::detail::has_symbol(__FUNCDNAME__), "undefined symbol " __FUNCDNAME__ " in " __FUNCSIG__); \
-    endstone::detail::get_ctor<type, ##__VA_ARGS__>(__FUNCDNAME__)
+#define BEDROCK_CTOR(type, ...) \
+    endstone::detail::get_ctor<endstone::detail::get_symbol(__FUNCDNAME__), type, ##__VA_ARGS__>()
