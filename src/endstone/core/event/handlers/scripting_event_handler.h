@@ -14,7 +14,18 @@
 
 #pragma once
 
-class GameplayHandler {
+#include "bedrock/gameplayhandlers/scripting_event_handler.h"
+
+namespace endstone::core {
+
+class ScriptingEventHandler final : public ::ScriptingEventHandler {
 public:
-    virtual ~GameplayHandler() = default;
+    explicit ScriptingEventHandler(std::unique_ptr<::ScriptingEventHandler> handle);
+    GameplayHandlerResult<CoordinatorResult> handleEvent(MutableScriptingGameplayEvent<CoordinatorResult> &) override;
+    GameplayHandlerResult<CoordinatorResult> handleEvent(const ScriptingGameplayEvent<CoordinatorResult> &) override;
+
+private:
+    std::unique_ptr<::ScriptingEventHandler> handle_;
 };
+
+}  // namespace endstone::core

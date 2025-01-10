@@ -52,6 +52,7 @@ add_library(endstone_core
         command/defaults/reload_command.cpp
         command/defaults/status_command.cpp
         command/defaults/version_command.cpp
+        event/handlers/scripting_event_handler.cpp
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/inventory.cpp

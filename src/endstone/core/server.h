@@ -124,6 +124,7 @@ private:
     friend class EndstonePlayer;
 
     void enablePlugin(Plugin &plugin);
+    void hijackEventHandlers(::Level &level);
 
     ServerInstance *server_instance_;
     Logger &logger_;

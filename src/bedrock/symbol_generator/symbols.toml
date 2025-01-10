@@ -85,8 +85,6 @@ version = "1.21.50"
 "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 34977872
 # Scoreboard
 "?resetPlayerScore@Scoreboard@@QEAA_NAEBUScoreboardId@@AEAVObjective@@@Z" = 48536832
-# ScriptingEventCoordinator
-"?sendEvent@ScriptingEventCoordinator@@QEAA?AW4CoordinatorResult@@V?$EventRef@U?$ScriptingGameplayEvent@W4CoordinatorResult@@@@@@@Z" = 36373936
 # ScriptLevelGameplayHandler
 "?handleEvent@ScriptLevelGameplayHandler@@UEAA?AU?$GameplayHandlerResult@W4CoordinatorResult@@@@AEAULevelWeatherChangedEvent@@@Z" = 21865632
 # ScriptModuleMinecraft::ScriptBlockUtils
@@ -198,8 +196,6 @@ version = "1.21.50"
 "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level" = 103166880
 # Scoreboard
 "_ZN10Scoreboard16resetPlayerScoreERK12ScoreboardIdR9Objective" = 147989168
-# ScriptingEventCoordinator
-"_ZN25ScriptingEventCoordinator9sendEventE8EventRefI22ScriptingGameplayEventI17CoordinatorResultEE" = 129220304
 # ScriptLevelGameplayHandler
 "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent" = 111598320
 # ScriptModuleMinecraft::ScriptBlockUtils

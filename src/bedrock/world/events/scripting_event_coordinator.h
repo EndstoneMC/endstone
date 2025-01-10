@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/forward.h"
 #include "bedrock/gameplayhandlers/scripting_event_handler.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/scripting_event_listener.h"
@@ -21,8 +22,7 @@
 
 class ScriptingEventCoordinator : public EventCoordinatorPimpl<ScriptingEventListener> {
 public:
-    ENDSTONE_HOOK CoordinatorResult sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref);
-
-private:
+protected:
+    friend class endstone::core::EndstoneServer;
     std::unique_ptr<ScriptingEventHandler> scripting_event_handler_;  // +112 (+120)
 };

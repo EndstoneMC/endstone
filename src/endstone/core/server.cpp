@@ -17,6 +17,8 @@
 #include <filesystem>
 #include <memory>
 
+#include "endstone/core/event/handlers/scripting_event_handler.h"
+
 namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
@@ -208,6 +210,12 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
     plugin_manager_->enablePlugin(plugin);
 }
 
+void EndstoneServer::hijackEventHandlers(::Level &level)
+{
+    level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<ScriptingEventHandler>(
+        std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
+}
+
 void EndstoneServer::disablePlugins() const
 {
     plugin_manager_->disablePlugins();
@@ -226,6 +234,7 @@ Level *EndstoneServer::getLevel() const
 void EndstoneServer::setLevel(std::unique_ptr<EndstoneLevel> level)
 {
     level_ = std::move(level);
+    hijackEventHandlers(level_->getHandle());
 }
 
 std::vector<Player *> EndstoneServer::getOnlinePlayers() const
