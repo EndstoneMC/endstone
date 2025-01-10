@@ -23,14 +23,22 @@
 #include "endstone/core/devtools/devtools.h"
 #include "endstone/runtime/hook.h"
 
-namespace endstone {
+namespace endstone::hook {
+void uninstall();
+}  // namespace endstone::hook
+
+namespace endstone::core {
+
+void unload_endstone_server();
+void disable_endstone_server();
+void enable_endstone_server();
 
 class McColorSink : public ll::io::SinkBase {
     std::vector<std::shared_ptr<ll::io::SinkBase>> sinks;
 
 public:
     template <class R>
-    McColorSink(R &&range)
+    explicit McColorSink(R &&range)
     {
         for (auto &sink : std::forward<R>(range)) {
             sinks.emplace_back(sink.shared_from_this());
@@ -86,8 +94,10 @@ public:
     bool enable();
     bool disable();
     // bool unload();
+
 private:
     ll::mod::NativeMod &mSelf;
+    bool enabled{};
 };
 
 EndstoneRuntime &EndstoneRuntime::getInstance()
@@ -109,7 +119,7 @@ bool EndstoneRuntime::load()
         PyConfig_InitIsolatedConfig(&config);
         py::initialize_interpreter(&config);
         py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
-        py::module_::import("numpy");  // https://github.com/numpy/numpy/issues/24833
+        py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
         py::gil_scoped_release release{};
         release.disarm();
 
@@ -127,23 +137,42 @@ bool EndstoneRuntime::load()
         logger.error("{}", e.what());
         throw;
     }
+    enabled = true;
     return true;
 }
 
 bool EndstoneRuntime::enable()
 {
-    getSelf().getLogger().debug("Enabling...");
-    // Code for enabling the mod goes here.
+    if (!enabled) {
+        getSelf().getLogger().debug("Enabling...");
+        enable_endstone_server();
+        enabled = true;
+    }
+
     return true;
 }
 
 bool EndstoneRuntime::disable()
 {
-    getSelf().getLogger().debug("Disabling...");
-    // Code for disabling the mod goes here.
+
+    if (enabled) {
+        getSelf().getLogger().debug("Disabling...");
+        disable_endstone_server();
+        enabled = false;
+    }
     return true;
 }
 
-}  // namespace endstone
+// TODO:
+// bool EndstoneRuntime::unload()
+// {
+//     getSelf().getLogger().debug("Unloading...");
+//     unload_endstone_server();
+//     getSelf().getLogger().debug("uninstall hooks...");
+//     hook::uninstall();
+//     return true;
+// }
 
-LL_REGISTER_MOD(endstone::EndstoneRuntime, endstone::EndstoneRuntime::getInstance());
+}  // namespace endstone::core
+
+LL_REGISTER_MOD(endstone::core::EndstoneRuntime, endstone::core::EndstoneRuntime::getInstance());

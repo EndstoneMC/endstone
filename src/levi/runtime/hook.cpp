@@ -28,7 +28,7 @@ namespace endstone::hook {
 
 namespace {
 
-struct Hook {
+struct HookData {
     void *original{};
     void *target{};
     void *detour{};
@@ -44,15 +44,15 @@ struct Hook {
             throw std::runtime_error(fmt::format("Unable to hook {}", name));
         }
     }
-    ~Hook()
+    ~HookData()
     {
         if (target && detour) {
-            ll::memory::unhook(target, detour);
+            ll::memory::unhook(target, detour, false);
         }
     }
 };
 
-std::unordered_map<entt::hashed_string::hash_type, Hook> gOriginalsByName;
+std::unordered_map<entt::hashed_string::hash_type, HookData> gOriginalsByName;
 }  // namespace
 
 void *get_original(entt::hashed_string::hash_type name)
@@ -83,6 +83,8 @@ void install()
     const auto &detours = get_detours();
     const auto &targets = get_targets();
 
+    ll::thread::GlobalThreadPauser g;
+
     for (const auto &[name, detour] : detours) {
         if (name.starts_with("ll_")) {
             continue;
@@ -95,5 +97,11 @@ void install()
             throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
         }
     }
+}
+
+void uninstall()
+{
+    ll::thread::GlobalThreadPauser g;
+    gOriginalsByName.clear();
 }
 }  // namespace endstone::hook
