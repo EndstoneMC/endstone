@@ -107,14 +107,9 @@ bool EndstoneRuntime::load()
         // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
         PyConfig config;
         PyConfig_InitIsolatedConfig(&config);
-        logger.info("PyConfig_InitIsolatedConfig...");
         py::initialize_interpreter(&config);
-        logger.info("initialize_interpreter...");
-
         py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
-        logger.info("threading...");
         py::module_::import("numpy");  // https://github.com/numpy/numpy/issues/24833
-        logger.info("numpy...");
         py::gil_scoped_release release{};
         release.disarm();
 
