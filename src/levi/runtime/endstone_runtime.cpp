@@ -14,7 +14,6 @@
 
 #include <memory>
 
-#include <ll/api/io/Sink.h>
 #include <ll/api/mod/NativeMod.h>
 #include <ll/api/mod/RegisterHelper.h>
 #include <ll/api/utils/StringUtils.h>
@@ -33,59 +32,11 @@ void unload_endstone_server();
 void disable_endstone_server();
 void enable_endstone_server();
 
-class McColorSink : public ll::io::SinkBase {
-    std::vector<std::shared_ptr<ll::io::SinkBase>> sinks;
-
-public:
-    template <class R>
-    explicit McColorSink(R &&range)
-    {
-        for (auto &sink : std::forward<R>(range)) {
-            sinks.emplace_back(sink.shared_from_this());
-        }
-    }
-
-    virtual void append(ll::io::LogMessageView const &view)
-    {
-        ll::io::LogMessage msg(ll::string_utils::replaceMcToAnsiCode(view.msg), view.tit, view.lvl, view.tm);
-        for (auto &sink : sinks) {
-            sink->append(msg);
-        }
-    }
-
-    virtual void flush()
-    {
-        for (auto &sink : sinks) {
-            sink->flush();
-        }
-    }
-
-    virtual void setFormatter(ll::Polymorphic<ll::io::Formatter> fmter)
-    {
-        for (auto &sink : sinks) {
-            sink->setFormatter(fmter);
-        }
-    }
-
-    virtual void setFlushLevel(ll::io::LogLevel l)
-    {
-        for (auto &sink : sinks) {
-            sink->setFlushLevel(l);
-        }
-    }
-};
-
 class EndstoneRuntime {
 
 public:
     static EndstoneRuntime &getInstance();
-    EndstoneRuntime() : mSelf(*ll::mod::NativeMod::current())
-    {
-        auto &logger = getSelf().getLogger();
-        auto sink = std::make_shared<McColorSink>(getSelf().getLogger().sinks());
-        logger.clearSink();
-        logger.addSink(std::move(sink));
-    }
+    EndstoneRuntime() : mSelf(*ll::mod::NativeMod::current()) {}
     [[nodiscard]] ll::mod::NativeMod &getSelf() const
     {
         return mSelf;

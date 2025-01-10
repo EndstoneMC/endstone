@@ -18,6 +18,8 @@
 #include <string>
 #include <unordered_map>
 
+#include <ll/api/io/LoggerRegistry.h>
+#include <ll/api/io/Sink.h>
 #include <ll/api/mod/NativeMod.h>
 
 namespace endstone::core {
@@ -65,10 +67,56 @@ static Logger::Level transformLevel(ll::io::LogLevel level)
         LL_UNREACHABLE;
     }
 }
+class McColorSink : public ll::io::SinkBase {
+    std::vector<std::shared_ptr<ll::io::SinkBase>> sinks;
+
+public:
+    template <class R>
+    explicit McColorSink(R &&range)
+    {
+        for (auto &sink : std::forward<R>(range)) {
+            sinks.emplace_back(sink.shared_from_this());
+        }
+    }
+
+    virtual void append(ll::io::LogMessageView const &view)
+    {
+        ll::io::LogMessage msg(ll::string_utils::replaceMcToAnsiCode(view.msg), view.tit, view.lvl, view.tm);
+        for (auto &sink : sinks) {
+            sink->append(msg);
+        }
+    }
+
+    virtual void flush()
+    {
+        for (auto &sink : sinks) {
+            sink->flush();
+        }
+    }
+
+    virtual void setFormatter(ll::Polymorphic<ll::io::Formatter> fmter)
+    {
+        for (auto &sink : sinks) {
+            sink->setFormatter(fmter);
+        }
+    }
+
+    virtual void setFlushLevel(ll::io::LogLevel l)
+    {
+        for (auto &sink : sinks) {
+            sink->setFlushLevel(l);
+        }
+    }
+};
 
 class LogAdapter : public Logger {
 public:
-    explicit LogAdapter(std::shared_ptr<ll::io::Logger> logger) : logger_(std::move(logger)) {}
+    explicit LogAdapter(std::shared_ptr<ll::io::Logger> logger) : logger_(std::move(logger))
+    {
+        auto sink = std::make_shared<McColorSink>(logger_->sinks());
+        logger_->clearSink();
+        logger_->addSink(std::move(sink));
+    }
     void setLevel(Level level) override
     {
         logger_->setLevel(transformLevel(level));
@@ -90,12 +138,21 @@ private:
     std::shared_ptr<ll::io::Logger> logger_;
 };
 
-Logger &LoggerFactory::getLogger(const std::string &)
+Logger &LoggerFactory::getLogger(const std::string &name)
 {
-    // we don't want to name it
-    static LogAdapter logger(ll::mod::NativeMod::current()->getLogger().shared_from_this());
+    if (name == "Server" || name == "EndstoneRuntime") {
+        static LogAdapter self{ll::mod::NativeMod::current()->getLogger().shared_from_this()};
+        return self;
+    }
+    static std::mutex mutex;
+    static std::unordered_map<std::string, LogAdapter> loggers;
 
-    return logger;
+    std::scoped_lock<std::mutex> lock(mutex);
+    auto it = loggers.find(name);
+    if (it == loggers.end()) {
+        it = loggers.try_emplace(name, ll::io::LoggerRegistry::getInstance().getOrCreate(name)).first;
+    }
+    return it->second;
 }
 
 }  // namespace endstone::core
