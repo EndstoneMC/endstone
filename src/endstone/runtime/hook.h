@@ -15,23 +15,39 @@
 #pragma once
 
 #include <system_error>
-
-#include <entt/entt.hpp>
+#include <unordered_map>
 
 #include "endstone/detail/cast.h"
+
 
 namespace endstone::hook {
 void install();
 const std::error_category &error_category();
-void *get_original(entt::hashed_string::hash_type name);
+void *&get_original(const char *name);
 const std::unordered_map<std::string, void *> &get_targets();
 const std::unordered_map<std::string, void *> &get_detours();
+
+template <size_t N>
+struct StrLiteral {
+    constexpr StrLiteral(const char (&str)[N])
+    {
+        std::copy_n(str, N, data);
+    }
+    char data[N];
+};
+
+template <StrLiteral Name>
+inline void *get_original_cached()
+{
+    static void **original = nullptr;
+    if (!original) {
+        original = &get_original(Name.data);
+    }
+    return *original;
+}
+
 }  // namespace endstone::hook
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, __FUNCDNAME__, ##__VA_ARGS__)
-#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                                \
-    std::invoke(                                                                                                       \
-        endstone::detail::fp_cast(                                                                                     \
-            fp, endstone::hook::get_original(                                                                          \
-                    std::integral_constant<entt::hashed_string::hash_type, entt::hashed_string::value(name)>::value)), \
-        ##__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...) \
+    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_original_cached<name>()), ##__VA_ARGS__)

@@ -25,6 +25,7 @@
 #include <string>
 #include <system_error>
 #include <unordered_map>
+#include <functional>
 
 #include "endstone/detail/platform.h"
 

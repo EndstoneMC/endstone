@@ -15,7 +15,7 @@
 #include "endstone/runtime/hook.h"
 
 #include <string>
-#include <system_error>
+#include <string_view>
 #include <unordered_map>
 
 #include <entt/core/hashed_string.hpp>
@@ -52,10 +52,10 @@ struct HookData {
     }
 };
 
-std::unordered_map<entt::hashed_string::hash_type, HookData> gOriginalsByName;
+std::unordered_map<std::string, HookData> gOriginalsByName;
 }  // namespace
 
-void *get_original(entt::hashed_string::hash_type name)
+void *&get_original(const char *name)
 {
     const auto it = gOriginalsByName.find(name);
     if (it == gOriginalsByName.end()) {
@@ -91,7 +91,7 @@ void install()
         }
         if (auto it = targets.find(name); it != targets.end()) {
             void *target = it->second;
-            gOriginalsByName.try_emplace(entt::hashed_string{name.c_str()}).first->second.init(name, target, detour);
+            gOriginalsByName.try_emplace(name).first->second.init(name, target, detour);
         }
         else {
             throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
