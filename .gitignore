@@ -17,4 +17,7 @@ wheelhouse/*
 stubs/*
 .cache/*
 dist/*
+bin/*
+.xmake/*
+.vscode/*
 endstone/_internal/version.py

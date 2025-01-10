@@ -20,12 +20,20 @@
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/server.h"
 
+#ifndef ENDSTONE_VERSION_COMMAND_NAME
+#ifdef ENDSTONE_LL
+#define ENDSTONE_VERSION_COMMAND_NAME "esversion"
+#else
+#define ENDSTONE_VERSION_COMMAND_NAME "version"
+#endif
+#endif
+
 namespace endstone::core {
 
-VersionCommand::VersionCommand() : EndstoneCommand("version")
+VersionCommand::VersionCommand() : EndstoneCommand(ENDSTONE_VERSION_COMMAND_NAME)
 {
     setDescription("Gets the version of this server including any plugins in use.");
-    setUsages("/version", "/version ()[plugin: PluginName]");
+    setUsages("/" ENDSTONE_VERSION_COMMAND_NAME, "/" ENDSTONE_VERSION_COMMAND_NAME " ()[plugin: PluginName]");
     setAliases("ver", "about");
     setPermissions("endstone.command.version");
 }
