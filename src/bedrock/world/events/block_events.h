@@ -14,11 +14,18 @@
 
 #pragma once
 
-#pragma once
+#include <memory>
+#include <string>
 
+#include "bedrock/core/math/vec3.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/forward.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
+#include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/events/event_variant.h"
+#include "bedrock/world/item/item_stack.h"
+#include "bedrock/world/level/block_pos.h"
+#include "bedrock/world/level/dimension/dimension.h"
 
 struct ActorInsideBlockEvent {};
 struct ActorStandOnBlockEvent {};
@@ -32,7 +39,13 @@ struct BlockRandomTickEvent {};
 struct BlockPatternPreEvent : BlockPatternEvent {};
 struct BlockPatternPostEvent : BlockPatternEvent {};
 struct ChestBlockTryPairEvent {};
-struct CraftUISetResultNameEvent {};
+struct CraftUISetResultNameEvent {
+    enum class BlockType : int {
+        Anvil = 0,
+    };
+    const BlockType type;
+    const std::string name;
+};
 struct PistonActionEvent {};
 struct LeverActionEvent {};
 struct ButtonPushEvent {};
@@ -74,6 +87,9 @@ struct BlockGameplayEvent<CoordinatorResult> : ConstEventVariant<ActorInsideBloc
                                                                  TripWireTripEvent,          // 11
                                                                  BlockTryPlaceByPlayerEvent  // 12
                                                                  > {};
+
+template <>
+struct BlockGameplayEvent<std::optional<std::string>> : ConstEventVariant<CraftUISetResultNameEvent> {};
 
 template <typename Result>
 struct MutableBlockGameplayEvent;

@@ -33,6 +33,7 @@ namespace fs = std::filesystem;
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/event/handlers/block_gameplay_handler.h"
 #include "endstone/core/event/handlers/level_gameplay_handler.h"
 #include "endstone/core/event/handlers/scripting_event_handler.h"
 #include "endstone/core/level/level.h"
@@ -212,10 +213,12 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
 
 void EndstoneServer::registerEndstoneEventHandlers(::Level &level)
 {
-    level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<EndstoneScriptingEventHandler>(
-        std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
+    level.getBlockEventCoordinator().block_gameplay_handler_ = std::make_unique<EndstoneBlockGameplayHandler>(
+        std::move(level.getBlockEventCoordinator().block_gameplay_handler_));
     level.getLevelEventCoordinator().level_gameplay_handler_ = std::make_unique<EndstoneLevelGameplayHandler>(
         std::move(level.getLevelEventCoordinator().level_gameplay_handler_));
+    level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<EndstoneScriptingEventHandler>(
+        std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
 }
 
 void EndstoneServer::disablePlugins() const

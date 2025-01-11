@@ -14,15 +14,21 @@
 
 #pragma once
 
+#include <optional>
+#include <string>
+
 #include "bedrock/gameplayhandlers/gameplay_handler.h"
 #include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/events/block_events.h"
 
 class BlockGameplayHandler : public GameplayHandler {
 public:
-    virtual HandlerResult handleEvent(const BlockGameplayEvent<void> &) = 0;
-    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(const BlockGameplayEvent<CoordinatorResult> &) = 0;
+    ~BlockGameplayHandler() override = default;
+    virtual HandlerResult handleEvent(const BlockGameplayEvent<void> &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        const BlockGameplayEvent<CoordinatorResult> &event) = 0;
     virtual GameplayHandlerResult<std::optional<std::string>> handleEvent(
-        const BlockGameplayEvent<std::optional<std::string>> &) = 0;
-    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(MutableBlockGameplayEvent<CoordinatorResult> &) = 0;
+        const BlockGameplayEvent<std::optional<std::string>> &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        MutableBlockGameplayEvent<CoordinatorResult> &event) = 0;
 };

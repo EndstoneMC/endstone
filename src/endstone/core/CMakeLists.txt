@@ -52,6 +52,7 @@ add_library(endstone_core
         command/defaults/reload_command.cpp
         command/defaults/status_command.cpp
         command/defaults/version_command.cpp
+        event/handlers/block_gameplay_handler.cpp
         event/handlers/level_gameplay_handler.cpp
         event/handlers/scripting_event_handler.cpp
         event/server/server_list_ping_event.cpp

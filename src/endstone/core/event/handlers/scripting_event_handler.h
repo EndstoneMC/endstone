@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include "bedrock/gameplayhandlers/scripting_event_handler.h"
 
 namespace endstone::core {

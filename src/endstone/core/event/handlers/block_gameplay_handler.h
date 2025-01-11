@@ -16,20 +16,21 @@
 
 #include <memory>
 
-#include "bedrock/gameplayhandlers/level_gameplay_handler.h"
+#include "bedrock/gameplayhandlers/block_gameplay_handler.h"
 
 namespace endstone::core {
 
-class EndstoneLevelGameplayHandler final : public LevelGameplayHandler {
+class EndstoneBlockGameplayHandler final : public BlockGameplayHandler {
 public:
-    explicit EndstoneLevelGameplayHandler(std::unique_ptr<LevelGameplayHandler> handle);
-    HandlerResult handleEvent(LevelGameplayEvent<void> const &event) override;
-    GameplayHandlerResult<CoordinatorResult> handleEvent(MutableLevelGameplayEvent<CoordinatorResult> &event) override;
+    explicit EndstoneBlockGameplayHandler(std::unique_ptr<BlockGameplayHandler> handle);
+    HandlerResult handleEvent(const BlockGameplayEvent<void> &event) override;
+    GameplayHandlerResult<CoordinatorResult> handleEvent(const BlockGameplayEvent<CoordinatorResult> &event) override;
+    GameplayHandlerResult<std::optional<std::string>> handleEvent(
+        const BlockGameplayEvent<std::optional<std::string>> &event) override;
+    GameplayHandlerResult<CoordinatorResult> handleEvent(MutableBlockGameplayEvent<CoordinatorResult> &event) override;
 
 private:
-    void handleEvent(LevelWeatherChangedEvent &event);
-
-    std::unique_ptr<LevelGameplayHandler> handle_;
+    std::unique_ptr<BlockGameplayHandler> handle_;
 };
 
 }  // namespace endstone::core
