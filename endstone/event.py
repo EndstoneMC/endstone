@@ -1,6 +1,7 @@
 from endstone._internal.endstone_python import (
     ActorDeathEvent,
     ActorEvent,
+    ActorExplodeEvent,
     ActorKnockbackEvent,
     ActorRemoveEvent,
     ActorSpawnEvent,
@@ -40,6 +41,7 @@ __all__ = [
     "Event",
     "EventPriority",
     "ActorEvent",
+    "ActorExplodeEvent",
     "ActorDeathEvent",
     "ActorKnockbackEvent",
     "ActorRemoveEvent",

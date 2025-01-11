@@ -73,10 +73,18 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("actor", &ActorEvent::getActor, py::return_value_policy::reference,
                                "Returns the Actor involved in this event");
     py::class_<ActorDeathEvent, ActorEvent>(m, "ActorDeathEvent", "Called when an Actor dies.");
+    py::class_<ActorExplodeEvent, ActorEvent, ICancellable>(m, "ActorExplodeEvent", "Called when an Actor explodes.")
+        .def_property_readonly("location", &ActorExplodeEvent::getLocation,
+                               "Returns the location where the explosion happened.")
+        .def_property(
+            "block_list", [](const ActorExplodeEvent &self) { return self.getBlockList(); },
+            [](ActorExplodeEvent &self, std::vector<std::shared_ptr<Block>> blocks) {
+                self.getBlockList().swap(blocks);
+            },
+            py::return_value_policy::reference_internal,
+            "Gets or sets the list of blocks that would have been removed or were removed from the explosion event.");
     py::class_<ActorKnockbackEvent, ActorEvent, ICancellable>(m, "ActorKnockbackEvent",
                                                               "Called when a living entity receives knockback.")
-        .def_property_readonly("actor", &ActorKnockbackEvent::getActor, py::return_value_policy::reference,
-                               "Returns the Mob involved in this event")
         .def_property_readonly("source", &ActorKnockbackEvent::getSource, py::return_value_policy::reference,
                                "Get the source actor that has caused knockback to the defender, if exists.")
         .def_property("knockback", &ActorKnockbackEvent::getKnockback, &ActorKnockbackEvent::setKnockback,
@@ -151,8 +159,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                             "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "Gets or sets kick message to display if event is cancelled");
-    py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent",
-                                                           "Called when a player leaves a server.")
+    py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "Gets or sets the quit message to send to all online players.");
     py::class_<PlayerTeleportEvent, PlayerEvent, ICancellable>(
