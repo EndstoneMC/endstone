@@ -77,6 +77,7 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](#function-asactor) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
+| virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](#function-asmob) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
@@ -177,7 +178,7 @@ inline virtual Actor * endstone::CommandSender::asActor () const
 
 **Returns:**
 
-[**Player**](classendstone_1_1Player.md), nullptr if not an [**Actor**](classendstone_1_1Actor.md) 
+[**Actor**](classendstone_1_1Actor.md), nullptr if not an [**Actor**](classendstone_1_1Actor.md) 
 
 
 
@@ -230,6 +231,31 @@ inline virtual ConsoleCommandSender * endstone::CommandSender::asConsole () cons
 **Returns:**
 
 [**CommandSender**](classendstone_1_1CommandSender.md), nullptr if not a Console 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function asMob 
+
+_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._
+```C++
+inline virtual Mob * endstone::CommandSender::asMob () const
+```
+
+
+
+
+
+**Returns:**
+
+[**Mob**](classendstone_1_1Mob.md), nullptr if not an [**Mob**](classendstone_1_1Mob.md) 
 
 
 

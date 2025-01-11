@@ -88,6 +88,7 @@
       <member refid="classendstone_1_1CommandSender_1a1091414f8c9d9245f2beeee9e3679462" prot="public" virt="virtual"><scope>endstone::ProxiedCommandSender</scope><name>asActor</name></member>
       <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" prot="public" virt="virtual"><scope>endstone::ProxiedCommandSender</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" prot="public" virt="virtual"><scope>endstone::ProxiedCommandSender</scope><name>asConsole</name></member>
+      <member refid="classendstone_1_1CommandSender_1a2c493496251f903b52d0868535165e1a" prot="public" virt="virtual"><scope>endstone::ProxiedCommandSender</scope><name>asMob</name></member>
       <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" prot="public" virt="virtual"><scope>endstone::ProxiedCommandSender</scope><name>asPlayer</name></member>
       <member refid="classendstone_1_1ProxiedCommandSender_1a134a31c08b50616431745d14586bbd72" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getCallee</name></member>
       <member refid="classendstone_1_1ProxiedCommandSender_1ae097da0205a78357302ae2070e0bfa05" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getCaller</name></member>

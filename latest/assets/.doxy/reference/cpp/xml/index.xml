@@ -347,6 +347,7 @@
     <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" kind="function"><name>asCommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSender_1a1091414f8c9d9245f2beeee9e3679462" kind="function"><name>asActor</name></member>
+    <member refid="classendstone_1_1CommandSender_1a2c493496251f903b52d0868535165e1a" kind="function"><name>asMob</name></member>
     <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
@@ -377,6 +378,7 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1aee8faba171d9306e54b9108d6e78c31c" kind="function"><name>asCommandSender</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af132584a397c576d98f51e138be0e6fe" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a560100134114cadaf66e10f77d6fcbad" kind="function"><name>asActor</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a9eeb9238135d93ecdb5e80eaee0880f6" kind="function"><name>asMob</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aaecb20ead1422f65759effc2c0447d1c" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a250399cce499de4220556a64111e0787" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" kind="function"><name>getName</name></member>
@@ -640,6 +642,7 @@
     <member refid="classendstone_1_1MessageForm_1a752bf3c507fe01b45dfdd6e8572265c3" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1Mob" kind="class"><name>endstone::Mob</name>
+    <member refid="classendstone_1_1Mob_1a3235b6eb2525e21afcbc9deab2e116ea" kind="function"><name>asMob</name></member>
     <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kind="function"><name>isGliding</name></member>
   </compound>
   <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>

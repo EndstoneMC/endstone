@@ -2009,6 +2009,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-asmob" class="md-nav__link">
+      <span class="md-ellipsis">
+        function asMob
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-isgliding" class="md-nav__link">
       <span class="md-ellipsis">
         function isGliding
@@ -2073,6 +2086,10 @@ For latest updates join the chat on
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: right;">virtual <a href="./"><strong>Mob</strong></a> *</td>
+<td style="text-align: left;"><a href="#function-asmob"><strong>asMob</strong></a> () override const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="./"><em><strong>Mob</strong></em></a> <em>.</em></td>
+</tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-isgliding"><strong>isGliding</strong></a> () const = 0<br><em>Checks to see if an actor is gliding, such as using an Elytra.</em></td>
@@ -2230,6 +2247,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asconsole"><strong>asConsole</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as Console.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">virtual <a href="./"><strong>Mob</strong></a> *</td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asmob"><strong>asMob</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="./"><em><strong>Mob</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Player/"><strong>Player</strong></a> *</td>
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asplayer"><strong>asPlayer</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>.</em></td>
 </tr>
@@ -2324,9 +2345,18 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-asmob">function asMob<a class="headerlink" href="#function-asmob" title="Permanent link">&para;</a></h3>
+<p><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="./"><em><strong>Mob</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Mob</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">asMob</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="./"><strong>Mob</strong></a>, nullptr if not an <a href="./"><strong>Mob</strong></a> </p>
+<p>Implements <a href="../classendstone_1_1CommandSender/#function-asmob"><em>endstone::CommandSender::asMob</em></a></p>
+<hr>
+
 <h3 id="function-isgliding">function isGliding<a class="headerlink" href="#function-isgliding" title="Permanent link">&para;</a></h3>
 <p><em>Checks to see if an actor is gliding, such as using an Elytra.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">isGliding</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">isGliding</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>True if this actor is gliding. </p>
