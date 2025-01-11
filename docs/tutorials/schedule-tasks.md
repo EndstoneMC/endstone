@@ -11,7 +11,7 @@ Here, we want an on-screen popup displaying "Hi!" to appear for every online pla
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.4"
+        api_version = "0.5"
 
         # ...
 

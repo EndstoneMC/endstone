@@ -16,7 +16,7 @@ server.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.4"
+        api_version = "0.5"
 
         # ...
 
@@ -63,7 +63,7 @@ Now, we need to register our event handlers to the Endstone event system.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.4"
+        api_version = "0.5"
 
         # ...
 

@@ -13,7 +13,7 @@ Let's start with a simple command `/hello` that greets the command sender.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.4"
+        api_version = "0.5"
 
         commands = {
             "hello": {
@@ -56,7 +56,7 @@ Let's make the following changes to our code.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.4"
+        api_version = "0.5"
 
         commands = {
             "hello": {
@@ -130,7 +130,7 @@ message to whoever execute this command. It's just a few more lines away from th
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.4"
+        api_version = "0.5"
 
         commands = {
             "hello": {
@@ -207,7 +207,7 @@ should be `[msg: message]`. Let's add it to our code.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.4"
+        api_version = "0.5"
 
         commands = {
             "hello": {
