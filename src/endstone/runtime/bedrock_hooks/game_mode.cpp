@@ -29,24 +29,6 @@ using endstone::core::EndstoneItemStack;
 using endstone::core::EndstonePlayer;
 using endstone::core::EndstoneServer;
 
-bool GameMode::destroyBlock(BlockPos const &pos, FacingID face)
-{
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = player_->getEndstoneActor<EndstonePlayer>();
-    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
-    if (const auto block = EndstoneBlock::at(block_source, pos)) {
-        endstone::BlockBreakEvent e{*block.value(), player};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return false;
-        }
-    }
-    else {
-        server.getLogger().error(block.error());
-    }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&GameMode::destroyBlock, this, pos, face);
-}
-
 InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, FacingID face, Vec3 const &hit,
                                       Block const *target_block, bool is_first_event)
 {

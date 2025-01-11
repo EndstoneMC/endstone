@@ -14,6 +14,15 @@
 
 #include "endstone/core/event/handlers/block_gameplay_handler.h"
 
+#include <endstone/core/block/block_face.h>
+#include <endstone/event/block/block_break_event.h>
+#include <endstone/event/block/block_place_event.h>
+
+#include "bedrock/world/actor/actor.h"
+#include "endstone/block/block_face.h"
+#include "endstone/core/block/block_state.h"
+#include "endstone/core/player.h"
+
 namespace endstone::core {
 
 EndstoneBlockGameplayHandler::EndstoneBlockGameplayHandler(std::unique_ptr<BlockGameplayHandler> handle)
@@ -29,7 +38,16 @@ HandlerResult EndstoneBlockGameplayHandler::handleEvent(const BlockGameplayEvent
 GameplayHandlerResult<CoordinatorResult> EndstoneBlockGameplayHandler::handleEvent(
     const BlockGameplayEvent<CoordinatorResult> &event)
 {
-    return handle_->handleEvent(event);
+    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const BlockTryPlaceByPlayerEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+        }
+        return handle_->handleEvent(event);
+    };
+    return std::visit(visitor, event.variant);
 }
 
 GameplayHandlerResult<std::optional<std::string>> EndstoneBlockGameplayHandler::handleEvent(
@@ -41,7 +59,79 @@ GameplayHandlerResult<std::optional<std::string>> EndstoneBlockGameplayHandler::
 GameplayHandlerResult<CoordinatorResult> EndstoneBlockGameplayHandler::handleEvent(
     MutableBlockGameplayEvent<CoordinatorResult> &event)
 {
-    return handle_->handleEvent(event);
+    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<ExplosionStartedEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<BlockTryDestroyByPlayerEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+        }
+        return handle_->handleEvent(event);
+    };
+    return std::visit(visitor, event.variant);
+}
+
+bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent &event)
+{
+    const StackResultStorageEntity stack_result(event.player);
+    const auto *entity = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false);
+    if (!entity || !entity->isPlayer()) {
+        return true;
+    }
+
+    const auto &server = entt::locator<EndstoneServer>::value();
+    auto &player = entity->getEndstoneActor<EndstonePlayer>();
+    auto &dimension = player.getDimension();
+    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
+    const auto block_face = static_cast<BlockFace>(event.face);
+    auto block_placed = std::make_unique<EndstoneBlockState>(dimension, event.pos, event.permutation_to_place);
+    if (const auto block_replaced = EndstoneBlock::at(block_source, event.pos)) {
+        const auto opposite = EndstoneBlockFace::getOpposite(block_face);
+        if (const auto block_against = block_replaced.value()->getRelative(opposite)) {
+            BlockPlaceEvent e{std::move(block_placed), *block_replaced.value(), *block_against.value(), player};
+            server.getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                return false;
+            }
+        }
+        else {
+            server.getLogger().error(block_against.error());
+        }
+    }
+    else {
+        server.getLogger().error(block_replaced.error());
+    }
+    return true;
+}
+
+bool EndstoneBlockGameplayHandler::handleEvent(ExplosionStartedEvent &event)
+{
+    return true;
+}
+
+bool EndstoneBlockGameplayHandler::handleEvent(BlockTryDestroyByPlayerEvent &event)
+{
+    const StackResultStorageEntity stack_result(event.player);
+    const auto *entity = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false);
+    if (!entity || !entity->isPlayer()) {
+        return true;
+    }
+
+    const auto &server = entt::locator<EndstoneServer>::value();
+    auto &player = entity->getEndstoneActor<EndstonePlayer>();
+    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
+    if (const auto block = EndstoneBlock::at(block_source, event.pos)) {
+        BlockBreakEvent e{*block.value(), player};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+    }
+    else {
+        server.getLogger().error(block.error());
+    }
+    return true;
 }
 
 }  // namespace endstone::core

@@ -64,7 +64,13 @@ struct BlockTryDestroyByPlayerEvent {
     const BlockPos pos;             // +32
     ItemStack item_used;            // +48
 };
-struct BlockTryPlaceByPlayerEvent {};
+struct BlockTryPlaceByPlayerEvent {
+    WeakRef<EntityContext> player;      // +0
+    const BlockPos pos;                 // +24
+    const FacingID face;                // +36
+    const Vec3 face_location;           // +40
+    const Block &permutation_to_place;  // +56
+};
 
 template <typename Result>
 struct BlockGameplayEvent;

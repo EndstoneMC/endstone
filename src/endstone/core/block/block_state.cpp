@@ -26,9 +26,10 @@ EndstoneBlockState::EndstoneBlockState(const EndstoneBlock &block)
 {
 }
 
-EndstoneBlockState::EndstoneBlockState(Dimension &dimension, BlockPos block_pos, ::Block &block)
+EndstoneBlockState::EndstoneBlockState(Dimension &dimension, BlockPos block_pos, const ::Block &block)
     : dimension_(static_cast<EndstoneDimension &>(dimension)),
-      block_source_(dimension_.getHandle().getBlockSourceFromMainChunkSource()), block_pos_(block_pos), block_(&block)
+      block_source_(dimension_.getHandle().getBlockSourceFromMainChunkSource()), block_pos_(block_pos),
+      block_(const_cast<::Block *>(&block))
 {
 }
 

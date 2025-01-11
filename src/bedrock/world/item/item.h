@@ -180,10 +180,6 @@ public:
     [[nodiscard]] float getFurnaceBurnIntervalMultipler() const;
 
 protected:
-    // NOLINTNEXTLINE
-    ENDSTONE_HOOK CoordinatorResult _sendTryPlaceBlockEvent(Block const &, BlockSource const &, Actor const &,
-                                                            BlockPos const &, FacingID, Vec3 const &) const;
-
     std::string texture_atlas_file_;                                            // +8
     int frame_count_;                                                           // +40
     bool animates_in_toolbar_;                                                  // +44

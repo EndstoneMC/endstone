@@ -24,7 +24,7 @@ namespace endstone::core {
 class EndstoneBlockState : public BlockState {
 public:
     explicit EndstoneBlockState(const EndstoneBlock &block);
-    explicit EndstoneBlockState(Dimension &dimension, BlockPos block_pos, ::Block &block);
+    explicit EndstoneBlockState(Dimension &dimension, BlockPos block_pos, const ::Block &block);
     [[nodiscard]] Result<std::unique_ptr<Block>> getBlock() const override;
     [[nodiscard]] std::string getType() const override;
     Result<void> setType(std::string type) override;

@@ -25,7 +25,7 @@ class GameMode {
 public:
     virtual ~GameMode() = 0;
     virtual bool startDestroyBlock(BlockPos const &, FacingID face, bool &) = 0;
-    ENDSTONE_HOOK virtual bool destroyBlock(BlockPos const &, FacingID);
+    virtual bool destroyBlock(BlockPos const &, FacingID) = 0;
     virtual bool continueDestroyBlock(BlockPos const &, FacingID, Vec3 const &, bool &) = 0;
     virtual void stopDestroyBlock(BlockPos const &) = 0;
     virtual void startBuildBlock(BlockPos const &, FacingID) = 0;

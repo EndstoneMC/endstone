@@ -30,6 +30,10 @@ public:
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutableBlockGameplayEvent<CoordinatorResult> &event) override;
 
 private:
+    bool handleEvent(const BlockTryPlaceByPlayerEvent &event);
+    bool handleEvent(ExplosionStartedEvent &event);
+    bool handleEvent(BlockTryDestroyByPlayerEvent &event);
+
     std::unique_ptr<BlockGameplayHandler> handle_;
 };
 
