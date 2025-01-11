@@ -3,6 +3,11 @@
 
 
 
+## b
+
+* **BlockList** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
+
+
 ## c
 
 * **Callback** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))

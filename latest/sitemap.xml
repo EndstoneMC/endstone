@@ -161,6 +161,10 @@
          <lastmod>2025-01-11</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorExplodeEvent/</loc>
+         <lastmod>2025-01-11</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorKnockbackEvent/</loc>
          <lastmod>2025-01-11</lastmod>
     </url>
@@ -910,6 +914,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__event_8h_source/</loc>
+         <lastmod>2025-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__explode__event_8h/</loc>
+         <lastmod>2025-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__explode__event_8h_source/</loc>
          <lastmod>2025-01-11</lastmod>
     </url>
     <url>

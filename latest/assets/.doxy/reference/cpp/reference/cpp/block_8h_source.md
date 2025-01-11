@@ -38,7 +38,7 @@ class BlockState;
 
 class Dimension;
 
-class Block {
+class Block : public std::enable_shared_from_this<Block> {
 public:
     virtual ~Block() = default;
 
@@ -56,11 +56,11 @@ public:
 
     virtual Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
 
-    virtual Result<std::unique_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual Result<std::shared_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
-    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face) = 0;
+    virtual Result<std::shared_ptr<Block>> getRelative(BlockFace face) = 0;
 
-    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face, int distance) = 0;
+    virtual Result<std::shared_ptr<Block>> getRelative(BlockFace face, int distance) = 0;
 
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 

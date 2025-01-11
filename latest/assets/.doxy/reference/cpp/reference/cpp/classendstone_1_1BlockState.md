@@ -53,7 +53,7 @@ Inherits the following classes: std::enable_shared_from_this< BlockState >
 
 | Type | Name |
 | ---: | :--- |
-| virtual Result&lt; std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
+| virtual Result&lt; std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
 | virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the data for this block state._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains the block represented by this block state._  |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the location of this block state._  |
@@ -111,7 +111,7 @@ Unlike [**Block**](classendstone_1_1Block.md), which only one object can exist p
 
 _Gets the block represented by this block state._ 
 ```C++
-virtual Result< std::unique_ptr< Block > > endstone::BlockState::getBlock () const = 0
+virtual Result< std::shared_ptr< Block > > endstone::BlockState::getBlock () const = 0
 ```
 
 

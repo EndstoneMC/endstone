@@ -35,7 +35,7 @@ class BlockState : public std::enable_shared_from_this<BlockState> {
 public:
     virtual ~BlockState() = default;
 
-    [[nodiscard]] virtual Result<std::unique_ptr<Block>> getBlock() const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlock() const = 0;
 
     [[nodiscard]] virtual std::string getType() const = 0;
 

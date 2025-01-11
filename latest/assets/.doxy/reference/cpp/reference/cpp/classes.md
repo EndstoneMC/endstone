@@ -12,6 +12,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ActorEvent**](classendstone_1_1ActorEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md)

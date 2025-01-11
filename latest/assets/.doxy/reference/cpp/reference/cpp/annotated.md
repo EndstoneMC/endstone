@@ -10,6 +10,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
     * **class** [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _dies._    
     * **class** [**ActorEvent**](classendstone_1_1ActorEvent.md) _Represents an Actor-related event._     
+    * **class** [**ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md) _Called when an actor explodes._     
     * **class** [**ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md) _Called when a living entity receives knockback._     
     * **class** [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._    
     * **class** [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._    

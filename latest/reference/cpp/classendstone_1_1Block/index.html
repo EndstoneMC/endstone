@@ -2248,6 +2248,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/block/block.h&gt;</code></li>
 </ul>
+<p>Inherits the following classes: std::enable_shared_from_this&lt; Block &gt;</p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2274,15 +2275,15 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getlocation"><strong>getLocation</strong></a> () const = 0<br><em>Gets the</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>of the block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual Result&lt; std::shared_ptr&lt; <a href="./"><strong>Block</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="#function-getrelative-13"><strong>getRelative</strong></a> (int offset_x, int offset_y, int offset_z) = 0<br><em>Gets the block at the given offsets.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual Result&lt; std::shared_ptr&lt; <a href="./"><strong>Block</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="#function-getrelative-23"><strong>getRelative</strong></a> (BlockFace face) = 0<br><em>Gets the block at the given face.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual Result&lt; std::shared_ptr&lt; <a href="./"><strong>Block</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="#function-getrelative-33"><strong>getRelative</strong></a> (BlockFace face, int distance) = 0<br><em>Gets the block at the given distance of the given face.</em></td>
 </tr>
 <tr>
@@ -2365,7 +2366,7 @@ For latest updates join the chat on
 
 <h3 id="function-getrelative-13">function getRelative [&#8531;]<a class="headerlink" href="#function-getrelative-13" title="Permanent link">&para;</a></h3>
 <p><em>Gets the block at the given offsets.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">offset_x</span><span class="p">,</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">offset_y</span><span class="p">,</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">offset_z</span>
@@ -2383,7 +2384,7 @@ For latest updates join the chat on
 
 <h3 id="function-getrelative-23">function getRelative [&#8532;]<a class="headerlink" href="#function-getrelative-23" title="Permanent link">&para;</a></h3>
 <p><em>Gets the block at the given face.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">face</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -2398,7 +2399,7 @@ For latest updates join the chat on
 
 <h3 id="function-getrelative-33">function getRelative [3/3]<a class="headerlink" href="#function-getrelative-33" title="Permanent link">&para;</a></h3>
 <p><em>Gets the block at the given distance of the given face.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">face</span><span class="p">,</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">distance</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
