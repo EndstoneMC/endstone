@@ -18,6 +18,7 @@
 #include <pybind11/stl.h>
 
 #include "endstone/endstone.hpp"
+#include "poly.h"
 #include "type_caster.h"
 
 namespace py = pybind11;

@@ -19,6 +19,7 @@
 #include <pybind11/stl.h>
 
 #include "endstone/endstone.hpp"
+#include "poly.h"
 
 namespace py = pybind11;
 
@@ -106,27 +107,3 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
 }
 
 }  // namespace endstone::python
-
-namespace PYBIND11_NAMESPACE {
-template <>
-struct polymorphic_type_hook<endstone::CommandSender> {
-    static const void *get(const endstone::CommandSender *src, const std::type_info *&type)
-    {
-        if (!src) {
-            return src;
-        }
-
-        if (const auto *player = src->asPlayer()) {
-            type = &typeid(endstone::Player);
-            return player;
-        }
-
-        if (const auto *console = src->asConsole()) {
-            type = &typeid(endstone::ConsoleCommandSender);
-            return console;
-        }
-
-        return src;
-    }
-};
-}  // namespace PYBIND11_NAMESPACE
