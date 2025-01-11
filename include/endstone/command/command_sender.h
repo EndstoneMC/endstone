@@ -25,6 +25,7 @@ namespace endstone {
 
 class Actor;
 class ConsoleCommandSender;
+class Mob;
 class Server;
 class Player;
 
@@ -52,9 +53,19 @@ public:
     /**
      * @brief Gets a CommandSender as Actor
      *
-     * @return Player, nullptr if not an Actor
+     * @return Actor, nullptr if not an Actor
      */
     [[nodiscard]] virtual Actor *asActor() const
+    {
+        return nullptr;
+    }
+
+    /**
+     * @brief Gets a CommandSender as Mob
+     *
+     * @return Mob, nullptr if not an Mob
+     */
+    [[nodiscard]] virtual Mob *asMob() const
     {
         return nullptr;
     }

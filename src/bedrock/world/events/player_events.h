@@ -15,69 +15,197 @@
 #pragma once
 
 #include "bedrock/deps/json/value.h"
+#include "bedrock/entity/enums/client_input_lock_category.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"
+#include "bedrock/input/input_mode.h"
+#include "bedrock/input/scripting_input_button.h"
+#include "bedrock/world/container.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/game_type.h"
 
-template <typename Return>
-struct PlayerGameplayEvent;
-
-struct PlayerSkinLoadedClientEvent {};
-struct PlayerAddEvent {};
-struct PlayerAddExpEvent {};
-struct PlayerAddLevelEvent {};
-struct PlayerArmorExchangeEvent {};
-struct PlayerDestroyBlockEvent {};
-struct PlayerUseNameTagEvent {};
-struct PlayerDropItemEvent {};
-struct PlayerEatFoodEvent {};
-struct PlayerDamageEvent {};
-struct PlayerDisconnectEvent {};
-
-enum class PlayerFormCloseReason : int {
-    UserClosed = 0,
-    UserBusy = 1
-};
-
-struct PlayerFormCloseEvent {
+struct PlayerAddEvent {
     WeakRef<EntityContext> player;
-    int form_id;
-    PlayerFormCloseReason form_close_reason;
 };
-
-struct PlayerFormResponseEvent {
+struct PlayerAddExpEvent {
     WeakRef<EntityContext> player;
-    int form_id;
-    Json::Value form_response;
+    int exp;
 };
-
-struct PlayerInitialSpawnEvent {};
-struct PlayerOpenContainerEvent {};
-struct PlayerShootArrowEvent {};
-struct PlayerRespawnEvent {};
-struct PlayerStopLoadingEvent {};
-struct PlayerInputModeChangeEvent {};
-struct PlayerUpdateInteractionEvent {};
-struct PlayerSelectedItemChangedEvent {};
-struct PlayerDimensionChangeBeforeEvent {};
-struct PlayerDimensionChangeAfterEvent {};
-struct PlayerInteractWithEntityAfterEvent {};
-// NOTE: keep it up to date to ensure the variant has the right size
+struct PlayerAddLevelEvent {
+    WeakRef<EntityContext> player;
+    int add_level;
+    int new_level;
+};
+enum class PlayerArmorExchangeEventTriggeredLocation : int {
+    ServerPlayerSetArmor = 0,
+    MobHurtArmor = 1,
+};
+struct PlayerArmorExchangeEvent {
+    WeakRef<EntityContext> player;
+    ArmorSlot armor_slot;
+    ItemStack old_item;
+    ItemStack item;
+    PlayerArmorExchangeEventTriggeredLocation triggered_location;
+};
+struct PlayerDestroyBlockEvent {
+    WeakRef<EntityContext> player;
+    BlockPos block_pos;
+    FacingID face;
+    gsl::not_null<const Block *> block;
+};
+struct PlayerSayCommandEvent {
+    WeakRef<EntityContext> player;
+    std::string message;
+};
+struct PlayerUseNameTagEvent {
+    WeakRef<EntityContext> player;
+    ItemStack item;
+};
+struct PlayerDropItemEvent {
+    WeakRef<EntityContext> player;
+    WeakRef<EntityContext> spawned_item_actor;
+};
+struct PlayerEatFoodEvent {
+    WeakRef<EntityContext> player;
+    ItemStack food_item;
+};
+struct PlayerGetExperienceOrbEvent {
+    WeakRef<EntityContext> player;
+    int experience_value;
+};
+struct PlayerDamageEvent {
+    WeakRef<EntityContext> player;
+    std::unique_ptr<ActorDamageSource> damage_source;
+};
+struct PlayerOpenContainerEvent {
+    WeakRef<EntityContext> player;
+    ContainerType container_type;
+    const BlockPos block_pos;
+    ActorUniqueID entity_unique_id;
+};
+struct PlayerShootArrowEvent {
+    WeakRef<EntityContext> player;
+    WeakRef<EntityContext> arrow;
+    ItemStack weapon_item;
+    ItemStack arrow_item;
+};
+struct PlayerInitialSpawnEvent {
+    WeakRef<EntityContext> player;
+};
+struct PlayerRespawnEvent {
+    WeakRef<EntityContext> player;
+};
+struct PlayerStopLoadingEvent {
+    WeakRef<EntityContext> player;
+};
+struct PlayerInputModeChangeEvent {
+    WeakRef<EntityContext> player;
+    InputMode new_input_mode_used;
+    InputMode previous_input_mode_used;
+};
+struct PlayerInteractEvent {
+    WeakRef<EntityContext> player;
+    WeakRef<EntityContext> target_entity;
+    ItemStack item;
+};
+struct PlayerInteractWithEntityBeforeEvent {
+    WeakRef<EntityContext> player;
+    WeakRef<EntityContext> target_entity;
+    ItemStack item;
+};
+struct PlayerInteractWithEntityAfterEvent {
+    WeakRef<EntityContext> player;
+    WeakRef<EntityContext> target_entity;
+    ItemStack before_item;
+    ItemStack after_item;
+};
+struct PlayerInteractWithBlockBeforeEvent {
+    WeakRef<EntityContext> player;
+    Vec3 block_location;
+    FacingID block_face;
+    Vec3 face_location;
+    ItemStack item;
+    bool is_first_event;
+};
 struct PlayerInteractWithBlockAfterEvent {
     WeakRef<EntityContext> player;
     Vec3 block_location;
     FacingID block_face;
     Vec3 face_location;
-    std::size_t before_item[sizeof(ItemStack) / 8];  // Endstone: ItemStack is not constructible currently
-    std::size_t after_item[sizeof(ItemStack) / 8];
+    ItemStack before_item;
+    ItemStack after_item;
     bool is_first_event;
 };
-struct PlayerEmoteEvent {};
-struct PlayerScriptInputEvent {};
-struct PlayerInputPermissionCategoryChangeEvent {};
+struct PlayerUpdateInteractionEvent {
+    enum class ActionType : int {
+        ApproachEntity = 0,
+        LeaveEntity = 1,
+    };
+    WeakRef<EntityContext> player;
+    WeakRef<EntityContext> entity;
+    ActionType action;
+};
+struct PlayerSelectedItemChangedEvent {
+    ItemStack item;
+};
+struct PlayerDimensionChangeBeforeEvent {
+    WeakRef<EntityContext> player;
+    DimensionType from_dimension;
+    Vec3 from_location;
+    DimensionType to_dimension;
+    Vec3 to_location;
+};
+struct PlayerDimensionChangeAfterEvent {
+    WeakRef<EntityContext> player;
+    DimensionType from_dimension;
+    Vec3 from_location;
+    DimensionType to_dimension;
+    Vec3 to_location;
+};
+struct PlayerFormResponseEvent {
+    WeakRef<EntityContext> player;
+    int form_id;
+    Json::Value form_response;
+};
+enum class PlayerFormCloseReason : int {
+    UserClosed = 0,
+    UserBusy = 1
+};
+struct PlayerFormCloseEvent {
+    WeakRef<EntityContext> player;
+    std::uint32_t form_id;
+    PlayerFormCloseReason form_close_reason;
+};
+struct PlayerDisconnectEvent {
+    WeakRef<EntityContext> player;
+};
+struct PlayerSkinLoadedClientEvent {
+    WeakRef<EntityContext> player;
+};
+struct PlayerGameModeChangeEvent {
+    WeakRef<EntityContext> player;
+    GameType from_game_mode;
+    GameType to_game_mode;
+};
+struct PlayerInputPermissionCategoryChangeEvent {
+    WeakRef<EntityContext> player;
+    ClientInputLockCategory category;
+    bool state;
+};
+struct PlayerEmoteEvent {
+    WeakRef<EntityContext> player;
+    std::string emote_piece_id;
+};
+struct PlayerScriptInputEvent {
+    WeakRef<EntityContext> player;
+    ScriptingInputButton button;
+    ScriptingInputButtonState new_state;
+};
+
+template <typename Return>
+struct PlayerGameplayEvent;
 
 template <>
 struct PlayerGameplayEvent<void>
@@ -92,31 +220,11 @@ struct PlayerGameplayEvent<void>
                         PlayerInputPermissionCategoryChangeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
 
-struct PlayerSayCommandEvent {};
-struct PlayerGetExperienceOrbEvent {};
-struct PlayerInteractEvent {};
-struct PlayerInteractWithEntityBeforeEvent {};
-// NOTE: keep it up to date to ensure the variant has the right size
-struct PlayerInteractWithBlockBeforeEvent {
-    WeakRef<EntityContext> player;
-    Vec3 block_location;
-    FacingID block_face;
-    Vec3 face_location;
-    std::size_t item[sizeof(ItemStack) / 8];  // Endstone: ItemStack is not constructible currently
-    bool is_first_event;
-};
-
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
     : ConstEventVariant<PlayerSayCommandEvent, PlayerGetExperienceOrbEvent, PlayerInteractEvent,
                         PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<CoordinatorResult>, 232, 232);
-
-struct PlayerGameModeChangeEvent {
-    WeakRef<EntityContext> player;
-    GameType from_game_mode;
-    GameType to_game_mode;
-};
 
 template <typename Return>
 struct MutablePlayerGameplayEvent;

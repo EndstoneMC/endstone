@@ -108,7 +108,6 @@ class ILevelStorageManagerConnector;
 class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
-class InputMode;
 class InternalComponentRegistry;
 class InventoryTransaction;
 class IPackLoadContext;
@@ -127,7 +126,6 @@ class MapDataManager;
 class MapItemSavedData;
 class MaterialTypeHelper;
 class MobEffectInstance;
-class MobSpawnerData;
 class MolangVariableMap;
 class NavigationComponent;
 class NewInteractionModel;
@@ -241,13 +239,7 @@ namespace Core {
 class FilePathManager;
 class LevelStorageResult;
 class StorageAreaState;
-template <typename T>
-class PathBuffer;
 }  // namespace Core
-
-namespace Bedrock::PubSub {
-class SubscriptionBase;
-}
 
 namespace Social {
 class GamePublishSetting;

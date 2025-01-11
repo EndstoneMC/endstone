@@ -19,8 +19,8 @@
 namespace PYBIND11_NAMESPACE {
 
 template <>
-struct polymorphic_type_hook<endstone::Player> {
-    static const void *get(const endstone::Player *src, const std::type_info *&type)
+struct polymorphic_type_hook<endstone::Mob> {
+    static const void *get(const endstone::Mob *src, const std::type_info *&type)
     {
         if (!src) {
             return src;
@@ -29,11 +29,7 @@ struct polymorphic_type_hook<endstone::Player> {
             type = &typeid(endstone::Player);
             return player;
         }
-        if (const auto *console = src->asConsole()) {
-            type = &typeid(endstone::ConsoleCommandSender);
-            return console;
-        }
-        type = &typeid(endstone::Player);
+        type = &typeid(endstone::Mob);
         return src;
     }
 };
@@ -45,8 +41,8 @@ struct polymorphic_type_hook<endstone::Actor> {
         if (!src) {
             return src;
         }
-        if (const auto *player = src->asPlayer()) {
-            return polymorphic_type_hook<endstone::Player>::get(player, type);
+        if (const auto *mob = src->asMob()) {
+            return polymorphic_type_hook<endstone::Mob>::get(mob, type);
         }
         type = &typeid(endstone::Actor);
         return src;

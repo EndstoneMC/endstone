@@ -14,23 +14,15 @@
 
 #pragma once
 
-#include "endstone/actor/actor.h"
+#include <cstdint>
 
-namespace endstone {
-/**
- * @brief Represents a mobile entity (i.e. living entity), such as a monster or player.
- */
-class Mob : public Actor {
-public:
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return const_cast<Mob *>(this);
-    }
-
-    /**
-     * @brief Checks to see if an actor is gliding, such as using an Elytra.
-     * @return True if this actor is gliding.
-     */
-    [[nodiscard]] virtual bool isGliding() const = 0;
+enum class ScriptingInputButton : unsigned int {
+    Jump = 0,
+    Sneak = 1,
 };
-}  // namespace endstone
+
+enum class ScriptingInputButtonState : unsigned int {
+    Released = 0,
+    Pressed = 1,
+};
+
