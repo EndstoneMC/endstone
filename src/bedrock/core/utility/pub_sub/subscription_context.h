@@ -14,12 +14,14 @@
 
 #pragma once
 
+#include <string>
+
 namespace Bedrock::PubSub {
 
 class SubscriptionContext {
 public:
     virtual ~SubscriptionContext() = 0;
-    virtual void to_string(std::string &a2) = 0;
+    virtual void to_string(std::string &) = 0;
 };
 
 }  // namespace Bedrock::PubSub

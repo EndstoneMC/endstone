@@ -20,13 +20,6 @@
 namespace Details {
 template <typename T>
 class ValueOrRef {
-    union Variant {
-        const T *pointer;
-        const T value;
-        Variant() {}
-        ~Variant() {}
-    };
-
 public:
     ValueOrRef(std::reference_wrapper<T> ref) : is_pointer_(true)
     {
@@ -40,18 +33,28 @@ public:
         }
     }
 
+    T &value() noexcept
+    {
+        return is_pointer_ ? *variant_.pointer : variant_.value;
+    }
+
     T &value() const noexcept
     {
         return is_pointer_ ? *variant_.pointer : variant_.value;
     }
 
 private:
-    explicit ValueOrRef(T value) : is_pointer_(false)
+    ValueOrRef(T value) : is_pointer_(false)
     {
         variant_.value = value;
     }
 
-    Variant variant_;
+    union Variant {
+        Variant() {}
+        ~Variant() {}
+        T *pointer;
+        T value;
+    } variant_;
     const bool is_pointer_;
 };
 }  // namespace Details
@@ -73,9 +76,7 @@ template <typename... Events>
 using ConstEventVariant = EventVariantImpl<std::add_const_t<Events>...>;
 
 template <typename... Events>
-struct MutableEventVariant {
-    EventVariantImpl<Events...> variant;
-};
+using MutableEventVariant = EventVariantImpl<Events...>;
 
 template <typename EventVariant>
 class EventRef {

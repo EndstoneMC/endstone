@@ -24,29 +24,28 @@
 
 namespace endstone::core {
 
-ScriptingEventHandler::ScriptingEventHandler(std::unique_ptr<::ScriptingEventHandler> handle)
+EndstoneScriptingEventHandler::EndstoneScriptingEventHandler(std::unique_ptr<::ScriptingEventHandler> handle)
     : handle_(std::move(handle))
 {
 }
 
-GameplayHandlerResult<CoordinatorResult> ScriptingEventHandler::handleEvent(
+GameplayHandlerResult<CoordinatorResult> EndstoneScriptingEventHandler::handleEvent(
     MutableScriptingGameplayEvent<CoordinatorResult> &event)
 {
-
     return handle_->handleEvent(event);
 }
 
-GameplayHandlerResult<CoordinatorResult> ScriptingEventHandler::handleEvent(
-    const ScriptingGameplayEvent<CoordinatorResult> &variant)
+GameplayHandlerResult<CoordinatorResult> EndstoneScriptingEventHandler::handleEvent(
+    const ScriptingGameplayEvent<CoordinatorResult> &event)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
     auto visitor = [&](auto &&arg) {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const ScriptCommandMessageEvent>>) {
-            const auto &event = arg.value();
+            const auto &ref = arg.value();
             const CommandSender *sender = nullptr;
-            if (event.source_actor.has_value()) {
-                if (auto *actor = event.level.fetchEntity(event.source_actor.value(), false); actor) {
+            if (ref.source_actor.has_value()) {
+                if (auto *actor = ref.level.fetchEntity(ref.source_actor.value(), false); actor) {
                     sender = &actor->getEndstoneActor();
                 }
             }
@@ -54,13 +53,13 @@ GameplayHandlerResult<CoordinatorResult> ScriptingEventHandler::handleEvent(
             if (!sender) {
                 sender = &server.getCommandSender();
             }
-            ScriptMessageEvent e{event.message_id, event.message_value, *sender};
+            ScriptMessageEvent e{ref.message_id, ref.message_value, *sender};
             server.getPluginManager().callEvent(e);
         }
-        return handle_->handleEvent(variant);
+        return handle_->handleEvent(event);
     };
 
-    return std::visit(visitor, variant.variant);
+    return std::visit(visitor, event.variant);
 }
 
 }  // namespace endstone::core

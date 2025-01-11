@@ -14,18 +14,20 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/forward.h"
-#include "bedrock/gameplayhandlers/coordinator_result.h"
-#include "bedrock/gameplayhandlers/event_handler_dispatcher.h"
-#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/gameplayhandlers/level_gameplay_handler.h"
-#include "bedrock/scripting/event_handlers/script_event_handler.h"
-#include "bedrock/world/events/level_events.h"
 
-class ScriptLevelGameplayHandler : public EventHandlerDispatcher<LevelGameplayHandler>,
-                                   public ScriptEventHandler<ScriptModuleMinecraft::IScriptWorldBeforeEvents> {
+namespace endstone::core {
+
+class EndstoneLevelGameplayHandler final : public LevelGameplayHandler {
 public:
-    virtual ~ScriptLevelGameplayHandler() = 0;
-    virtual ENDSTONE_HOOK GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
+    explicit EndstoneLevelGameplayHandler(std::unique_ptr<LevelGameplayHandler> handle);
+    HandlerResult handleEvent(LevelGameplayEvent<void> const &event) override;
+    GameplayHandlerResult<CoordinatorResult> handleEvent(MutableLevelGameplayEvent<CoordinatorResult> &event) override;
+
+private:
+    void handleEvent(LevelWeatherChangedEvent &event);
+
+    std::unique_ptr<LevelGameplayHandler> handle_;
 };
+
+}  // namespace endstone::core

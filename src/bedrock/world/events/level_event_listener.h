@@ -15,6 +15,17 @@
 #pragma once
 
 class LevelEventListener {
+    using EventType = class LevelNotificationEvent;
+
 public:
-    virtual ~LevelEventListener() = 0;
+    virtual ~LevelEventListener();
+    virtual EventResult onLevelInitialized(Level &);
+    virtual EventResult onLevelAddedPlayer(Player &);
+    virtual EventResult onLevelRemovedPlayer(Player &);
+    virtual EventResult onLevelRemovedActor(Actor &);
+    virtual EventResult onLevelTick(Level &);
+    virtual EventResult onLevelTickStart(Level &);
+    virtual EventResult onLevelTickEnd(Level &);
+    virtual EventResult onLevelWeatherChange(const std::string &, bool, bool, bool, bool);
+    virtual EventResult onEvent(const EventType &);
 };

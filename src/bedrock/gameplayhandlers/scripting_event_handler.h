@@ -21,6 +21,7 @@
 class ScriptingEventHandler : public GameplayHandler {
 public:
     virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
-        MutableScriptingGameplayEvent<CoordinatorResult> &) = 0;
-    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(const ScriptingGameplayEvent<CoordinatorResult> &) = 0;
+        MutableScriptingGameplayEvent<CoordinatorResult> &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        const ScriptingGameplayEvent<CoordinatorResult> &event) = 0;
 };

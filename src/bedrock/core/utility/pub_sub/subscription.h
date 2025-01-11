@@ -14,5 +14,19 @@
 
 #pragma once
 
-template <typename T>
-struct ScriptEventHandler {};
+#include <memory>
+
+#include "bedrock/core/utility/pub_sub/detail/subscription_body.h"
+
+namespace Bedrock::PubSub {
+class SubscriptionBase {
+public:
+protected:
+    std::weak_ptr<Detail::SubscriptionBodyBase> body_;
+};
+static_assert(sizeof(SubscriptionBase) == 16);
+
+class Subscription : public SubscriptionBase {};
+static_assert(sizeof(Subscription) == 16);
+
+}  // namespace Bedrock::PubSub

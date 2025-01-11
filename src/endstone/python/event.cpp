@@ -232,7 +232,6 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                                "Called when the thunder state in a world is changing.")
         .def_property_readonly("to_thunder_state", &ThunderChangeEvent::toThunderState,
                                "Gets the state of thunder that the world is being set to");
-
     py::class_<WeatherChangeEvent, WeatherEvent, ICancellable>(
         m, "WeatherChangeEvent", "Called when the weather (rain) state in a world is changing.")
         .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,

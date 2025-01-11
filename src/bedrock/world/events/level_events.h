@@ -45,10 +45,10 @@ struct LevelGameplayEvent<void>
                         LevelStartLeaveGameEvent, LevelGameRuleChangeEvent, ScriptingInitializeEvent> {};
 
 struct LevelWeatherChangedEvent {
-    bool from_rain;
-    bool from_lightning;
-    bool to_rain;
-    bool to_lightning;
+    const bool is_raining;
+    const bool is_lightning;
+    bool will_be_raining;
+    bool will_be_lightning;
     int rain_time;
     int lightning_time;
 };

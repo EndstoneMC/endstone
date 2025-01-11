@@ -29,8 +29,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/rak_peer_helper.cpp
         bedrock_hooks/resource_pack_repository.cpp
         bedrock_hooks/say_command.cpp
-        bedrock_hooks/scripting_event_coordinator.cpp
-        bedrock_hooks/script_level_gameplay_handler.cpp
         bedrock_hooks/server_instance_event_coordinator.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp

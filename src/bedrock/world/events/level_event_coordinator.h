@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/core/utility/pub_sub/subscription.h"
+#include "bedrock/forward.h"
 #include "bedrock/gameplayhandlers/level_gameplay_handler.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
@@ -23,8 +25,11 @@
 class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
 public:
 private:
+    friend class endstone::core::EndstoneServer;
     ENDSTONE_HOOK void _postReloadActorAdded(Actor &, ActorInitializationMethod);
-
-    std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;     // +112
-    std::shared_ptr<Bedrock::PubSub::SubscriptionBase> subscription_;  // +120
+    std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;  // +112
+    Bedrock::PubSub::Subscription game_rule_change_subscription_;
+    Bedrock::PubSub::Subscription on_remove_actor_entity_references_subscription_;
+    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
 };

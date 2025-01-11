@@ -18,14 +18,16 @@
 
 namespace endstone::core {
 
-class ScriptingEventHandler final : public ::ScriptingEventHandler {
+class EndstoneScriptingEventHandler final : public ScriptingEventHandler {
 public:
-    explicit ScriptingEventHandler(std::unique_ptr<::ScriptingEventHandler> handle);
-    GameplayHandlerResult<CoordinatorResult> handleEvent(MutableScriptingGameplayEvent<CoordinatorResult> &) override;
-    GameplayHandlerResult<CoordinatorResult> handleEvent(const ScriptingGameplayEvent<CoordinatorResult> &) override;
+    explicit EndstoneScriptingEventHandler(std::unique_ptr<ScriptingEventHandler> handle);
+    GameplayHandlerResult<CoordinatorResult> handleEvent(
+        MutableScriptingGameplayEvent<CoordinatorResult> &event) override;
+    GameplayHandlerResult<CoordinatorResult> handleEvent(
+        const ScriptingGameplayEvent<CoordinatorResult> &event) override;
 
 private:
-    std::unique_ptr<::ScriptingEventHandler> handle_;
+    std::unique_ptr<ScriptingEventHandler> handle_;
 };
 
 }  // namespace endstone::core

@@ -20,7 +20,8 @@
 
 class LevelGameplayHandler : public GameplayHandler {
 public:
+    ~LevelGameplayHandler() override = default;
     virtual HandlerResult handleEvent(LevelGameplayEvent<void> const &event) = 0;
-    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(MutableLevelGameplayEvent<CoordinatorResult> &a2) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        MutableLevelGameplayEvent<CoordinatorResult> &event) = 0;
 };
-
