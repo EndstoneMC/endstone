@@ -30,9 +30,9 @@ public:
     [[nodiscard]] Result<std::shared_ptr<BlockData>> getData() const override;
     Result<void> setData(std::shared_ptr<BlockData> data) override;
     Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) override;
-    Result<std::unique_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) override;
-    Result<std::unique_ptr<Block>> getRelative(BlockFace face) override;
-    Result<std::unique_ptr<Block>> getRelative(BlockFace face, int distance) override;
+    Result<std::shared_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) override;
+    Result<std::shared_ptr<Block>> getRelative(BlockFace face) override;
+    Result<std::shared_ptr<Block>> getRelative(BlockFace face, int distance) override;
     [[nodiscard]] Dimension &getDimension() const override;
     [[nodiscard]] int getX() const override;
     [[nodiscard]] int getY() const override;
@@ -43,7 +43,7 @@ public:
     [[nodiscard]] BlockPos getPosition() const;
     [[nodiscard]] ::Block &getMinecraftBlock() const;
 
-    static Result<std::unique_ptr<EndstoneBlock>> at(BlockSource &block_source, BlockPos block_pos);
+    static Result<std::shared_ptr<EndstoneBlock>> at(BlockSource &block_source, BlockPos block_pos);
 
 private:
     [[nodiscard]] Result<const EndstoneBlock *> checkState() const;

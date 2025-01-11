@@ -34,7 +34,7 @@ class Dimension;
  * <p>
  * This is a live object, and only one Block may exist for any given location in a dimension.
  */
-class Block {
+class Block : public std::enable_shared_from_this<Block> {
 public:
     virtual ~Block() = default;
 
@@ -104,7 +104,7 @@ public:
      * @param offset_z Z-coordinate offset
      * @return Block at the given offsets
      */
-    virtual Result<std::unique_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual Result<std::shared_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
     /**
      * @brief Gets the block at the given face
@@ -114,7 +114,7 @@ public:
      * @param face Face of this block to return
      * @return Block at the given face
      */
-    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face) = 0;
+    virtual Result<std::shared_ptr<Block>> getRelative(BlockFace face) = 0;
 
     /**
      * @brief Gets the block at the given distance of the given face
@@ -123,7 +123,7 @@ public:
      * @param distance Distance to get the block at
      * @return Block at the given face
      */
-    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face, int distance) = 0;
+    virtual Result<std::shared_ptr<Block>> getRelative(BlockFace face, int distance) = 0;
 
     /**
      * @brief Gets the dimension which contains this Block

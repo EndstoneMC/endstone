@@ -65,7 +65,7 @@ public:
      * @param z Z-coordinate of the block
      * @return Block at the given coordinates
      */
-    virtual Result<std::unique_ptr<Block>> getBlockAt(int x, int y, int z) = 0;
+    virtual Result<std::shared_ptr<Block>> getBlockAt(int x, int y, int z) = 0;
 
     /**
      * @brief Gets the Block at the given Location.
@@ -73,6 +73,6 @@ public:
      * @param location Location of the block
      * @return Block at the given coordinates
      */
-    virtual Result<std::unique_ptr<Block>> getBlockAt(Location location) = 0;
+    virtual Result<std::shared_ptr<Block>> getBlockAt(Location location) = 0;
 };
 }  // namespace endstone

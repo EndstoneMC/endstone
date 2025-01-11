@@ -50,6 +50,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "command/proxied_command_sender.h"
 #include "event/actor/actor_death_event.h"
 #include "event/actor/actor_event.h"
+#include "event/actor/actor_explode_event.h"
 #include "event/actor/actor_knockback_event.h"
 #include "event/actor/actor_remove_event.h"
 #include "event/actor/actor_spawn_event.h"

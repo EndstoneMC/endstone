@@ -33,7 +33,7 @@ EndstoneBlockState::EndstoneBlockState(Dimension &dimension, BlockPos block_pos,
 {
 }
 
-Result<std::unique_ptr<Block>> EndstoneBlockState::getBlock() const
+Result<std::shared_ptr<Block>> EndstoneBlockState::getBlock() const
 {
     return EndstoneBlock::at(block_source_, block_pos_);
 }

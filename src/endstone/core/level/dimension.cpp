@@ -49,12 +49,12 @@ Level &EndstoneDimension::getLevel() const
     return level_;
 }
 
-Result<std::unique_ptr<Block>> EndstoneDimension::getBlockAt(int x, int y, int z)
+Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(int x, int y, int z)
 {
     return EndstoneBlock::at(getHandle().getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 
-Result<std::unique_ptr<Block>> EndstoneDimension::getBlockAt(Location location)
+Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(Location location)
 {
     return getBlockAt(location.getBlockX(), location.getBlockY(), location.getBlockZ());
 }

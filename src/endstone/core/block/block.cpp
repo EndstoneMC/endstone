@@ -89,23 +89,23 @@ Result<void> EndstoneBlock::setData(std::shared_ptr<BlockData> data, bool apply_
     });
 }
 
-Result<std::unique_ptr<Block>> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
+Result<std::shared_ptr<Block>> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::unique_ptr<Block>> {
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<Block>> {
         return getDimension().getBlockAt(getX() + offset_x, getY() + offset_y, getZ() + offset_z);
     });
 }
 
-Result<std::unique_ptr<Block>> EndstoneBlock::getRelative(BlockFace face)
+Result<std::shared_ptr<Block>> EndstoneBlock::getRelative(BlockFace face)
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::unique_ptr<Block>> {  //
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<Block>> {  //
         return getRelative(face, 1);
     });
 }
 
-Result<std::unique_ptr<Block>> EndstoneBlock::getRelative(BlockFace face, int distance)
+Result<std::shared_ptr<Block>> EndstoneBlock::getRelative(BlockFace face, int distance)
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::unique_ptr<Block>> {
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<Block>> {
         return getRelative(EndstoneBlockFace::getOffsetX(face) * distance,
                            EndstoneBlockFace::getOffsetY(face) * distance,
                            EndstoneBlockFace::getOffsetZ(face) * distance);
@@ -152,13 +152,13 @@ BlockPos EndstoneBlock::getPosition() const
     return const_cast<::Block &>(block_source_.getBlock(block_pos_));
 }
 
-Result<std::unique_ptr<EndstoneBlock>> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
+Result<std::shared_ptr<EndstoneBlock>> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
 {
-    auto block = std::make_unique<EndstoneBlock>(block_source, block_pos);
+    auto block = std::make_shared<EndstoneBlock>(block_source, block_pos);
     if (auto result = block->checkState(); !result) {
         return nonstd::make_unexpected(result.error());
     }
-    return std::move(block);
+    return block;
 }
 
 Result<const EndstoneBlock *> EndstoneBlock::checkState() const

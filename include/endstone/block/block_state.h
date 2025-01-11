@@ -38,7 +38,7 @@ public:
      *
      * @return the block represented by this block state
      */
-    [[nodiscard]] virtual Result<std::unique_ptr<Block>> getBlock() const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlock() const = 0;
 
     /**
      * @brief Gets the type of this block state.

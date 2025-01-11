@@ -28,8 +28,8 @@ public:
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] Type getType() const override;
     [[nodiscard]] Level &getLevel() const override;
-    Result<std::unique_ptr<Block>> getBlockAt(int x, int y, int z) override;
-    Result<std::unique_ptr<Block>> getBlockAt(Location location) override;
+    Result<std::shared_ptr<Block>> getBlockAt(int x, int y, int z) override;
+    Result<std::shared_ptr<Block>> getBlockAt(Location location) override;
 
     [[nodiscard]] ::Dimension &getHandle() const;
 

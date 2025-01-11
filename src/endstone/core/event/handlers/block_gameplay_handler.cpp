@@ -14,14 +14,14 @@
 
 #include "endstone/core/event/handlers/block_gameplay_handler.h"
 
-#include <endstone/core/block/block_face.h>
-#include <endstone/event/block/block_break_event.h>
-#include <endstone/event/block/block_place_event.h>
-
 #include "bedrock/world/actor/actor.h"
 #include "endstone/block/block_face.h"
+#include "endstone/core/block/block_face.h"
 #include "endstone/core/block/block_state.h"
 #include "endstone/core/player.h"
+#include "endstone/event/actor/actor_explode_event.h"
+#include "endstone/event/block/block_break_event.h"
+#include "endstone/event/block/block_place_event.h"
 
 namespace endstone::core {
 
@@ -89,7 +89,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent 
     if (const auto block_replaced = EndstoneBlock::at(block_source, event.pos)) {
         const auto opposite = EndstoneBlockFace::getOpposite(block_face);
         if (const auto block_against = block_replaced.value()->getRelative(opposite)) {
-            BlockPlaceEvent e{std::move(block_placed), *block_replaced.value(), *block_against.value(), player};
+            BlockPlaceEvent e{std::move(block_placed), block_replaced.value(), block_against.value(), player};
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 return false;
@@ -107,6 +107,37 @@ bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent 
 
 bool EndstoneBlockGameplayHandler::handleEvent(ExplosionStartedEvent &event)
 {
+    const StackResultStorageEntity stack_result(event.source);
+    const auto *source = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false);
+    const auto &server = entt::locator<EndstoneServer>::value();
+
+    std::vector<std::shared_ptr<Block>> block_list;
+    for (const auto &pos : event.blocks) {
+        if (auto block_or_error = EndstoneBlock::at(event.dimension.getBlockSourceFromMainChunkSource(), pos)) {
+            block_list.emplace_back(block_or_error.value());
+        }
+        else {
+            server.getLogger().error(block_or_error.error());
+            return true;
+        }
+    }
+    if (source) {
+        auto &actor = source->getEndstoneActor<>();
+        ActorExplodeEvent e{actor, actor.getLocation(), block_list};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+        event.blocks.clear();
+        for (const auto &block : e.getBlockList()) {
+            if (block) {
+                event.blocks.emplace(block->getX(), block->getY(), block->getZ());
+            }
+        }
+    }
+    else {
+        // TODO(event): BlockExplodeEvent
+    }
     return true;
 }
 
@@ -122,7 +153,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(BlockTryDestroyByPlayerEvent &eve
     auto &player = entity->getEndstoneActor<EndstonePlayer>();
     auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
     if (const auto block = EndstoneBlock::at(block_source, event.pos)) {
-        BlockBreakEvent e{*block.value(), player};
+        BlockBreakEvent e{block.value(), player};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
