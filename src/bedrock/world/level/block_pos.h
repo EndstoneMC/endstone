@@ -22,20 +22,45 @@
 
 class BlockPos {
 public:
-    int x;
-    int y;
-    int z;
+    static const BlockPos ZERO;
 
     BlockPos(int x, int y, int z) : x(x), y(y), z(z){};
-    BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)){};
     explicit BlockPos(const Vec3 &vec)
         : x(static_cast<int>(std::floorf(vec.x))), y(static_cast<int>(std::floorf(vec.y))),
           z(static_cast<int>(std::floorf(vec.z))){};
+    BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)){};
 
-    static const BlockPos ZERO;
+    bool operator==(const BlockPos &rhs) const
+    {
+        return x == rhs.x && y == rhs.y && z == rhs.z;
+    }
+    
+    bool operator!=(const BlockPos &rhs) const
+    {
+        return !(*this == rhs);
+    }
+
+    int x;
+    int y;
+    int z;
 };
 
 inline const BlockPos BlockPos::ZERO{0, 0, 0};
+
+namespace std {
+template <>
+struct hash<BlockPos> {
+    std::size_t operator()(const BlockPos &pos) const noexcept
+    {
+        static std::hash<int> hasher;
+        std::size_t seed = 0;
+        seed ^= hasher(pos.x) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        seed ^= hasher(pos.y) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        seed ^= hasher(pos.z) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        return seed;
+    }
+};
+}  // namespace std
 
 namespace fmt {
 template <>
