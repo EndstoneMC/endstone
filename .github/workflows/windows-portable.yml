@@ -14,9 +14,9 @@ jobs:
   build:
     runs-on: windows-2019
     env:
-      WP_URL: https://github.com/winpython/winpython/releases/download/7.5.20240410final/Winpython64-3.12.3.0dot.exe
-      WP_SHA256: beef54eba558559255a73e59ae1986e8d06a6b12b55e78645ab42b4d6974e124
-      WP_BINARY_DIR: WPy64-31230\python-3.12.3.amd64
+      WP_URL: https://github.com/winpython/winpython/releases/download/11.2.20241228final/Winpython64-3.12.8.0dot.exe
+      WP_SHA256: 2727f61b2702232337a46e39c006f24bd1084395cdf27d076c55d39756c406cc
+      WP_BINARY_DIR: WPy64-31280\python
 
     steps:
       - name: Checkout Code
