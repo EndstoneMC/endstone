@@ -92,7 +92,10 @@ target("endstone_python")
             file:print(", '%s')", suffix:sub(2))
         end
         file:close()
-        os.cp("endstone", "bin/EndstoneRuntime/Lib")
+        if not os.isdir("bin/EndstoneRuntime/Lib/endstone/_internal") then
+            os.mkdir("bin/EndstoneRuntime/Lib/endstone/_internal")
+        end
+        os.cp("endstone/**", "bin/EndstoneRuntime/Lib/endstone")
         os.cp(target:targetfile(), "bin/EndstoneRuntime/Lib/endstone/_internal")
     end)
     
