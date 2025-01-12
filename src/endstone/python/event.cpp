@@ -126,6 +126,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerDeathEvent, ActorDeathEvent, PlayerEvent>(m, "PlayerDeathEvent", "Called when a player dies")
         .def_property("death_message", &PlayerDeathEvent::getDeathMessage, &PlayerDeathEvent::setDeathMessage,
                       "Gets or sets the death message that will appear to everyone on the server.");
+    py::class_<PlayerGameModeChangeEvent, PlayerEvent>(m, "PlayerGameModeChangeEvent",
+                                                       "Called when the GameMode of the player is changed.")
+        .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
+                               "Gets the GameMode the player is switched to.");
     py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
         m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.")
         .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "Check if this event involved an item")

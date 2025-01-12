@@ -31,11 +31,11 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/world/actor/player/player.h"
-#include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
 #include "endstone/core/form/form_codec.h"
+#include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/core/network/packet_adapter.h"
 #include "endstone/core/permissions/permissible.h"
@@ -635,36 +635,12 @@ void EndstonePlayer::stopAllSounds()
 
 GameMode EndstonePlayer::getGameMode() const
 {
-    auto game_type = getHandle().getPlayerGameType();
-    switch (game_type) {
-    case GameType::Creative:
-        return GameMode::Creative;
-    case GameType::Adventure:
-        return GameMode::Adventure;
-    case GameType::Spectator:
-        return GameMode::Spectator;
-    default:
-        break;
-    }
-    return GameMode::Survival;
+    return EndstoneGameMode::fromMinecraft(getHandle().getPlayerGameType());
 }
 
 void EndstonePlayer::setGameMode(GameMode mode)
 {
-    switch (mode) {
-    case GameMode::Survival:
-        getHandle().setPlayerGameType(GameType::Survival);
-        break;
-    case GameMode::Creative:
-        getHandle().setPlayerGameType(GameType::Creative);
-        break;
-    case GameMode::Adventure:
-        getHandle().setPlayerGameType(GameType::Adventure);
-        break;
-    case GameMode::Spectator:
-        getHandle().setPlayerGameType(GameType::Spectator);
-        break;
-    }
+    getHandle().setPlayerGameType(EndstoneGameMode::toMinecraft(mode));
 }
 
 PlayerInventory &EndstonePlayer::getInventory() const

@@ -3,5 +3,14 @@ from endstone._internal.version import __version__
 
 __minecraft_version__ = "1.21.50"
 
-__all__ = ["__version__", "__minecraft_version__", "ColorFormat", "GameMode", "Logger", "OfflinePlayer", "Player",
-           "Server", "Skin"]
+__all__ = [
+    "__version__",
+    "__minecraft_version__",
+    "ColorFormat",
+    "GameMode",
+    "Logger",
+    "OfflinePlayer",
+    "Player",
+    "Server",
+    "Skin",
+]

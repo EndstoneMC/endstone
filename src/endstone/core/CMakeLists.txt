@@ -16,6 +16,7 @@ find_package(spdlog REQUIRED)
 
 add_library(endstone_core
         crash_handler.cpp
+        game_mode.cpp
         logger_factory.cpp
         message.cpp
         platform_linux.cpp

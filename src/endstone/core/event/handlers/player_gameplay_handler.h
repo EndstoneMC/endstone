@@ -32,6 +32,7 @@ private:
     bool handleEvent(const PlayerFormCloseEvent &event);
     bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event);
     bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event);
+    bool handleEvent(::PlayerGameModeChangeEvent &event);
 
     std::unique_ptr<PlayerGameplayHandler> handle_;
 };

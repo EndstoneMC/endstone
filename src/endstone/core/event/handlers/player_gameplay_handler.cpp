@@ -14,12 +14,15 @@
 
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 
+#include <endstone/core/game_mode.h>
+
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
 
@@ -64,7 +67,16 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
 GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEvent(
     MutablePlayerGameplayEvent<CoordinatorResult> &event)
 {
-    return handle_->handleEvent(event);
+    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<::PlayerGameModeChangeEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+        }
+        return handle_->handleEvent(event);
+    };
+    return std::visit(visitor, event.variant);
 }
 
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormResponseEvent &event)
@@ -130,6 +142,24 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithEntityBe
         if (e.isCancelled()) {
             return false;
         }
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(::PlayerGameModeChangeEvent &event)
+{
+    const StackResultStorageEntity stack_result(event.player);
+    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        PlayerGameModeChangeEvent e{actor->getEndstoneActor<EndstonePlayer>(),
+                                    EndstoneGameMode::fromMinecraft(event.to_game_mode)};
+        server.getPluginManager().callEvent(e);
+        // TODO(event): make this cancellable
+        // At the moment, this is not cancellable due to a bug in BDS. This bug also exists when working with the Script
+        // API. Mojang sends packets to inform the client about the game mode change regardless of the event. As a
+        // result, cancelling the event will cause the client to display a game mode different from the server's,
+        // causing an unfavourable inconsistency. Make this cancellable when Mojang resolves the bug, or a better
+        // workaround is found.
     }
     return true;
 }
