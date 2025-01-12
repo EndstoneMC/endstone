@@ -34,7 +34,7 @@ public:
     {
         return x == rhs.x && y == rhs.y && z == rhs.z;
     }
-    
+
     bool operator!=(const BlockPos &rhs) const
     {
         return !(*this == rhs);

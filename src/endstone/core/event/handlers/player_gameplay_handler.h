@@ -30,6 +30,7 @@ public:
 private:
     bool handleEvent(const PlayerFormResponseEvent &event);
     bool handleEvent(const PlayerFormCloseEvent &event);
+    bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event);
 
     std::unique_ptr<PlayerGameplayHandler> handle_;
 };

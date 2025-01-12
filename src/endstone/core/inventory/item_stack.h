@@ -21,7 +21,7 @@ namespace endstone::core {
 
 class EndstoneItemStack : public ItemStack {
 public:
-    explicit EndstoneItemStack(::ItemStack &item);
+    explicit EndstoneItemStack(const ::ItemStack &item);
 
     [[nodiscard]] std::string getType() const override;
     void setType(std::string type) override;
@@ -29,7 +29,7 @@ public:
     void setAmount(int amount) override;
 
     static ::ItemStack toMinecraft(const std::shared_ptr<ItemStack> &item);
-    static std::shared_ptr<EndstoneItemStack> fromMinecraft(::ItemStack &item);
+    static std::shared_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
 
 protected:
     const EndstoneItemStack *asEndstoneItemStack() const override;

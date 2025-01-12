@@ -116,11 +116,5 @@ bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) co
         // Note: return false to prevent BDS from sending the join/quit message
         return false;
     }
-    if (event == ServerTextEvent::ConnectionOriginal) {
-        // We still need to know if we are supposed to send a join/quit message at all.
-        // So we use a reserved value to call the original function with ServerTextEvent::Connection
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this,
-                                           ServerTextEvent::Connection);
-    }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this, event);
 }

@@ -43,7 +43,6 @@ enum class ServerTextEvent : std::uint8_t {
     Sleeping = 0,
     Connection = 1,
     ChangedSkin = 2,
-    ConnectionOriginal = Connection | 0x80,  // Endstone
 };
 
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,

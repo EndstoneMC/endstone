@@ -15,8 +15,12 @@
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 
 #include "bedrock/world/actor/actor.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
 #include "endstone/core/player.h"
+#include "endstone/core/server.h"
+#include "endstone/event/player/player_interact_event.h"
 
 namespace endstone::core {
 
@@ -43,7 +47,16 @@ HandlerResult EndstonePlayerGameplayHandler::handleEvent(const PlayerGameplayEve
 GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEvent(
     const PlayerGameplayEvent<CoordinatorResult> &event)
 {
-    return handle_->handleEvent(event);
+    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+        }
+        return handle_->handleEvent(event);
+    };
+    return std::visit(visitor, event.variant);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEvent(
@@ -55,7 +68,7 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormResponseEvent &event)
 {
     const StackResultStorageEntity stack_result(event.player);
-    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor) {
+    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
         actor->getEndstoneActor<EndstonePlayer>().onFormResponse(event.form_id, event.form_response);
     }
     return true;
@@ -64,8 +77,38 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormResponseEvent &e
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormCloseEvent &event)
 {
     const StackResultStorageEntity stack_result(event.player);
-    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor) {
+    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
         actor->getEndstoneActor<EndstonePlayer>().onFormClose(event.form_id, event.form_close_reason);
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
+{
+    const StackResultStorageEntity stack_result(event.player);
+    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        auto &player = actor->getEndstoneActor<EndstonePlayer>();
+        auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
+        if (auto block = EndstoneBlock::at(block_source, BlockPos(event.block_location))) {
+            const std::shared_ptr<EndstoneItemStack> item_stack =
+                event.item.isNull() ? nullptr : EndstoneItemStack::fromMinecraft(event.item);
+
+            PlayerInteractEvent e{
+                player,
+                item_stack,
+                block.value(),
+                static_cast<BlockFace>(event.block_face),
+                {event.face_location.x, event.face_location.y, event.face_location.z},
+            };
+            server.getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                return false;
+            }
+        }
+        else {
+            server.getLogger().error(block.error());
+        }
     }
     return true;
 }

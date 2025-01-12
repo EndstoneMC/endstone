@@ -29,34 +29,6 @@ using endstone::core::EndstoneItemStack;
 using endstone::core::EndstonePlayer;
 using endstone::core::EndstoneServer;
 
-InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, FacingID face, Vec3 const &hit,
-                                      Block const *target_block, bool is_first_event)
-{
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = player_->getEndstoneActor<EndstonePlayer>();
-    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
-    if (auto block = EndstoneBlock::at(block_source, at)) {
-        std::unique_ptr<EndstoneItemStack> item_stack =
-            item.isNull() ? nullptr : std::make_unique<EndstoneItemStack>(item);
-        endstone::PlayerInteractEvent e{
-            player,
-            std::move(item_stack),
-            std::move(block.value()),
-            static_cast<endstone::BlockFace>(face),
-            {hit.x, hit.y, hit.z},
-        };
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return InteractionResult::Failure();
-        }
-    }
-    else {
-        server.getLogger().error(block.error());
-    }
-
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&GameMode::useItemOn, this, item, at, face, hit, target_block, is_first_event);
-}
-
 bool GameMode::interact(Actor &actor, Vec3 const &location)
 {
     const auto &server = entt::locator<EndstoneServer>::value();

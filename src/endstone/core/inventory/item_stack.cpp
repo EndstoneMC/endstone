@@ -16,7 +16,10 @@
 
 namespace endstone::core {
 
-EndstoneItemStack::EndstoneItemStack(::ItemStack &item) : handle_(item.isNull() ? nullptr : &item) {}
+EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
+    : handle_(item.isNull() ? nullptr : const_cast<::ItemStack *>(&item))
+{
+}
 
 std::string EndstoneItemStack::getType() const
 {
@@ -54,7 +57,7 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
-::ItemStack EndstoneItemStack::toMinecraft(const std::shared_ptr<ItemStack>& item)
+::ItemStack EndstoneItemStack::toMinecraft(const std::shared_ptr<ItemStack> &item)
 {
     if (!item || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
@@ -68,7 +71,7 @@ void EndstoneItemStack::setAmount(int amount)
     return ::ItemStack(item->getType(), item->getAmount());  // TODO(item): support item nbt data
 }
 
-std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(::ItemStack &item)
+std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::ItemStack &item)
 {
     if (item.isNull()) {
         return nullptr;
