@@ -68,8 +68,6 @@ version = "1.21.50"
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 37973648
 "?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 38013904
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 38032432
-# PlayerEventCoordinator
-"?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 36373312
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 51374320
 # RakPeerHelper
@@ -174,8 +172,6 @@ version = "1.21.50"
 "_ZNK6Player7getNameEv" = 128778416
 "_ZN6Player14setPermissionsE22CommandPermissionLevel" = 128802864
 "_ZN6Player10teleportToERK4Vec3biib" = 128767968
-# PlayerEventCoordinator
-"_ZN22PlayerEventCoordinator9sendEventERK8EventRefI19PlayerGameplayEventIvEE" = 129211184
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 149421424
 # RakPeerHelper

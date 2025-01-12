@@ -12,4 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/events/player_event_coordinator.h"
+#pragma once
+
+#include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/player_events.h"
+
+class PlayerGameplayHandler : public GameplayHandler {
+public:
+    virtual HandlerResult handleEvent(const PlayerGameplayEvent<void> &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        const PlayerGameplayEvent<CoordinatorResult> &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        MutablePlayerGameplayEvent<CoordinatorResult> &event) = 0;
+};

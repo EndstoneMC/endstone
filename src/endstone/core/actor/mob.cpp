@@ -21,6 +21,11 @@ namespace endstone::core {
 
 EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob), mob_(mob) {}
 
+Mob *EndstoneMob::asMob() const
+{
+    return Mob::asMob();
+}
+
 void EndstoneMob::sendMessage(const Message &message) const
 {
     EndstoneActor::sendMessage(message);

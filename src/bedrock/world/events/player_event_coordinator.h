@@ -14,13 +14,15 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
+#include "bedrock/forward.h"
+#include "bedrock/gameplayhandlers/player_gameplay_handler.h"
 #include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/events/player_event_listener.h"
 #include "bedrock/world/events/player_events.h"
 
-class PlayerEventCoordinator : public EventCoordinatorPimpl<PlayerEventListener> {
+class PlayerEventCoordinator : public EventCoordinator<PlayerEventListener> {
 public:
-    ENDSTONE_HOOK void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
+protected:
+    friend class endstone::core::EndstoneServer;
+    std::unique_ptr<PlayerGameplayHandler> player_gameplay_handler_;
 };

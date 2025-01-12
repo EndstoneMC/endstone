@@ -736,7 +736,7 @@ void EndstonePlayer::sendPacket(Packet &packet) const
     getHandle().sendNetworkPacket(pk);
 }
 
-void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
+void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)
 {
     auto it = forms_.find(form_id);
     if (it == forms_.end()) {
@@ -762,7 +762,7 @@ void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
     }
 }
 
-void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
+void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json &json)
 {
     auto it = forms_.find(form_id);
     if (it == forms_.end()) {

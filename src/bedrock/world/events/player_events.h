@@ -168,7 +168,7 @@ struct PlayerDimensionChangeAfterEvent {
 };
 struct PlayerFormResponseEvent {
     WeakRef<EntityContext> player;
-    int form_id;
+    std::uint32_t form_id;
     Json::Value form_response;
 };
 enum class PlayerFormCloseReason : int {

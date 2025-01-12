@@ -149,8 +149,8 @@ public:
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(Packet &packet) const override;
-    void onFormClose(int form_id, PlayerFormCloseReason reason);
-    void onFormResponse(int form_id, const nlohmann::json &json);
+    void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
+    void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
 
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
@@ -175,8 +175,8 @@ private:
     std::string device_id_;
     std::string game_version_;
     Skin skin_;
-    int form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
-    std::unordered_map<int, FormVariant> forms_;
+    std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
+    std::unordered_map<std::uint32_t, FormVariant> forms_;
 };
 
 }  // namespace endstone::core

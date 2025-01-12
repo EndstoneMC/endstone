@@ -35,6 +35,7 @@ namespace fs = std::filesystem;
 #include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/event/handlers/block_gameplay_handler.h"
 #include "endstone/core/event/handlers/level_gameplay_handler.h"
+#include "endstone/core/event/handlers/player_gameplay_handler.h"
 #include "endstone/core/event/handlers/scripting_event_handler.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
@@ -217,6 +218,8 @@ void EndstoneServer::registerEndstoneEventHandlers(::Level &level)
         std::move(level.getBlockEventCoordinator().block_gameplay_handler_));
     level.getLevelEventCoordinator().level_gameplay_handler_ = std::make_unique<EndstoneLevelGameplayHandler>(
         std::move(level.getLevelEventCoordinator().level_gameplay_handler_));
+    level.getServerPlayerEventCoordinator().player_gameplay_handler_ = std::make_unique<EndstonePlayerGameplayHandler>(
+        std::move(level.getServerPlayerEventCoordinator().player_gameplay_handler_));
     level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<EndstoneScriptingEventHandler>(
         std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
 }

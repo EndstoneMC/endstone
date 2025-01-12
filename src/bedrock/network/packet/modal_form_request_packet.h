@@ -20,6 +20,6 @@
 
 class ModalFormRequestPacket : public Packet {
 public:
-    int form_id;
+    std::uint32_t form_id;
     std::string form_json;
 };
