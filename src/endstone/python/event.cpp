@@ -178,8 +178,8 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PluginDisableEvent, ServerEvent>(m, "PluginDisableEvent", "Called when a plugin is disabled.")
         .def_property_readonly("plugin", &PluginDisableEvent::getPlugin, py::return_value_policy::reference);
 
-    py::class_<ScriptMessageEvent, ServerEvent>(m, "ScriptMessageEvent",
-                                                "Called when a message is sent by `/scriptevent` command")
+    py::class_<ScriptMessageEvent, ServerEvent, ICancellable>(m, "ScriptMessageEvent",
+                                                              "Called when a message is sent by `/scriptevent` command")
         .def_property_readonly("message_id", &ScriptMessageEvent::getMessageId, "Get the message id to send.")
         .def_property_readonly("message", &ScriptMessageEvent::getMessage, "Get the message to send.")
         .def_property_readonly("sender", &ScriptMessageEvent::getSender,

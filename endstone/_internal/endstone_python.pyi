@@ -2909,7 +2909,7 @@ class Scoreboard:
         """
         Gets all Objectives on this Scoreboard
         """
-class ScriptMessageEvent(ServerEvent):
+class ScriptMessageEvent(ServerEvent, Cancellable):
     """
     Called when a message is sent by `/scriptevent` command
     """
