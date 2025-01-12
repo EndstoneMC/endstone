@@ -68,6 +68,11 @@ const ActorDefinitionIdentifier &Actor::getActorIdentifier() const
     return empty;
 }
 
+bool Actor::isSneaking() const
+{
+    return getStatusFlag(ActorFlags::SNEAKING);
+}
+
 bool Actor::isPlayer() const
 {
     return hasComponent<PlayerComponent>();

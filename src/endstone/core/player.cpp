@@ -586,6 +586,26 @@ bool EndstonePlayer::performCommand(std::string command) const
     return server_.dispatchCommand(*Player::asPlayer(), command);
 }
 
+bool EndstonePlayer::isSneaking() const
+{
+    return getHandle().isSneaking();
+}
+
+void EndstonePlayer::setSneaking(bool sneak)
+{
+    getHandle().setSneaking(sneak);
+}
+
+bool EndstonePlayer::isSprinting() const
+{
+    return getHandle().isSprinting();
+}
+
+void EndstonePlayer::setSprinting(bool sprinting)
+{
+    getHandle().setSprinting(sprinting);
+}
+
 void EndstonePlayer::playSound(Location location, std::string sound, float volume, float pitch)
 {
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlaySound);

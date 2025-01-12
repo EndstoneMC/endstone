@@ -22,6 +22,11 @@ bool Mob::isGliding() const
     return getStatusFlag(ActorFlags::GLIDING);
 }
 
+bool Mob::isSprinting() const
+{
+    return getStatusFlag(ActorFlags::SPRINTING);
+}
+
 void Mob::setYBodyRotation(float rotation)
 {
     getPersistentComponent<MobBodyRotationComponent>()->y_body_rot = rotation;

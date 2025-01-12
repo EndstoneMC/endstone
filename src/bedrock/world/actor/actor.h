@@ -26,7 +26,6 @@
 #include "bedrock/core/math/color.h"
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
-#include "bedrock/input/input_mode.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/aabb_shape_component.h"
@@ -35,6 +34,7 @@
 #include "bedrock/entity/components/attributes_component.h"
 #include "bedrock/entity/components/state_vector_component.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/input/input_mode.h"
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/util/variant_parameter_list.h"
@@ -251,6 +251,7 @@ public:
     [[nodiscard]] bool hasType(ActorType type) const;
     [[nodiscard]] ActorType getEntityTypeId() const;
     [[nodiscard]] const ActorDefinitionIdentifier &getActorIdentifier() const;
+    [[nodiscard]] bool isSneaking() const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] bool isOnGround() const;

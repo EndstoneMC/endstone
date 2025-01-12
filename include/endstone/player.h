@@ -92,10 +92,34 @@ public:
      */
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
-    // TODO: isSneaking
-    // TODO: setSneaking
-    // TODO: isSprinting
-    // TODO: setSprinting
+    /**
+     * @brief Returns if the player is in sneak mode
+     *
+     * @return true if player is in sneak mode
+     */
+    [[nodiscard]] virtual bool isSneaking() const = 0;
+
+    /**
+     * @brief Sets the sneak mode of the player
+     *
+     * @param sneak true if player should appear sneaking
+     */
+    virtual void setSneaking(bool sneak) = 0;
+
+    /**
+     * @brief Gets whether the player is sprinting or not.
+     *
+     * @return true if player is sprinting.
+     */
+    [[nodiscard]] virtual bool isSprinting() const = 0;
+
+    /**
+     * @brief Sets whether the player is sprinting or not.
+     *
+     * @param sprinting true if the player should be sprinting
+     */
+    virtual void setSprinting(bool sprinting) = 0;
+
     // TODO: playNote
 
     /**

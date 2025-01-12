@@ -2111,6 +2111,22 @@ class Player(Mob, OfflinePlayer):
     def is_flying(self, arg1: bool) -> None:
         ...
     @property
+    def is_sneaking(self) -> bool:
+        """
+        Gets or sets the sneak mode of the player
+        """
+    @is_sneaking.setter
+    def is_sneaking(self, arg1: bool) -> None:
+        ...
+    @property
+    def is_sprinting(self) -> bool:
+        """
+        Gets or sets whether the player is sprinting or not.
+        """
+    @is_sprinting.setter
+    def is_sprinting(self, arg1: bool) -> None:
+        ...
+    @property
     def locale(self) -> str:
         """
         Get the player's current locale.
