@@ -393,6 +393,10 @@
          <lastmod>2025-01-12</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerGameModeChangeEvent/</loc>
+         <lastmod>2025-01-12</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerInteractActorEvent/</loc>
          <lastmod>2025-01-12</lastmod>
     </url>
@@ -1022,6 +1026,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__event_8h_source/</loc>
+         <lastmod>2025-01-12</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__game__mode__change__event_8h/</loc>
+         <lastmod>2025-01-12</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__game__mode__change__event_8h_source/</loc>
          <lastmod>2025-01-12</lastmod>
     </url>
     <url>

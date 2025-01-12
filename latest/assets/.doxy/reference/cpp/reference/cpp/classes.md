@@ -198,6 +198,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerEvent**](classendstone_1_1PlayerEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md)
