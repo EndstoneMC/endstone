@@ -12,14 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/event/event.h"
-
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
-
-#include "endstone/endstone.hpp"
-#include "poly.h"
-#include "type_caster.h"
+#include "endstone_python.h"
 
 namespace py = pybind11;
 

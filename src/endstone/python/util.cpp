@@ -13,10 +13,8 @@
 // limitations under the License.
 
 #include <fmt/format.h>
-#include <pybind11/operators.h>
-#include <pybind11/pybind11.h>
 
-#include "endstone/endstone.hpp"
+#include "endstone_python.h"
 
 namespace py = pybind11;
 

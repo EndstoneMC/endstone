@@ -12,16 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/block/block.h"
-
-#include <string>
-
 #include <fmt/format.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
 
-#include "endstone/endstone.hpp"
-#include "type_caster.h"
+#include "endstone_python.h"
 
 namespace py = pybind11;
 
