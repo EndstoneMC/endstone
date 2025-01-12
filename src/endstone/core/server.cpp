@@ -37,6 +37,7 @@ namespace fs = std::filesystem;
 #include "endstone/core/event/handlers/level_gameplay_handler.h"
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 #include "endstone/core/event/handlers/scripting_event_handler.h"
+#include "endstone/core/event/handlers/server_network_event_handler.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -222,6 +223,9 @@ void EndstoneServer::registerEndstoneEventHandlers(::Level &level)
         std::move(level.getServerPlayerEventCoordinator().player_gameplay_handler_));
     level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<EndstoneScriptingEventHandler>(
         std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
+    level.getServerNetworkEventCoordinator().server_network_event_handler_ =
+        std::make_unique<EndstoneServerNetworkEventHandler>(
+            std::move(level.getServerNetworkEventCoordinator().server_network_event_handler_));
 }
 
 void EndstoneServer::disablePlugins() const

@@ -91,7 +91,6 @@ version = "1.21.50"
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 14436512
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 14438928
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 14291952
-"?_displayGameMessage@ServerNetworkHandler@@AEAAXAEBVPlayer@@AEAUChatEvent@@@Z" = 14296736
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 14311280
 # ServerPlayer
 "?die@ServerPlayer@@UEAAXAEBVActorDamageSource@@@Z" = 20376160
@@ -195,7 +194,6 @@ version = "1.21.50"
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 91630384
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 91583744
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 91671520
-"_ZN20ServerNetworkHandler19_displayGameMessageERK6PlayerR9ChatEvent" = 91546832
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 91584688
 # ServerPlayer
 "_ZN12ServerPlayer3dieERK17ActorDamageSource" = 103631264

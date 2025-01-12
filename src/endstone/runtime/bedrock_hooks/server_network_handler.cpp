@@ -110,22 +110,6 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
     return server_player;
 }
 
-void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &event)
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-    endstone::PlayerChatEvent e{player.getEndstoneActor<EndstonePlayer>(), event.message};
-    server.getPluginManager().callEvent(e);
-
-    if (e.isCancelled()) {
-        return;
-    }
-
-    event.message = std::move(e.getMessage());
-    server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
-
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_displayGameMessage, this, player, event);
-}
-
 bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const
 {
     if (event == ServerTextEvent::Connection) {

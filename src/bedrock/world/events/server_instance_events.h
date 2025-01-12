@@ -14,12 +14,22 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/server_network_event_handler.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/server_network_event_listener.h"
+#include <optional>
 
-class ServerNetworkEventCoordinator : public EventCoordinator<ServerNetworkEventListener> {
-protected:
-    friend class endstone::core::EndstoneServer;
-    std::unique_ptr<ServerNetworkEventHandler> server_network_event_handler_;
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
+
+class ServerInstance;
+
+struct ServerInstanceLeaveGameDoneEvent {
+    gsl::not_null<Bedrock::NonOwnerPointer<ServerInstance>> mServerInstance;
 };
+struct ServerInstanceRequestResourceReload {
+    gsl::not_null<Bedrock::NonOwnerPointer<ServerInstance>> mServerInstance;
+};
+
+template <typename Return>
+struct ServerInstanceGameplayEvent;
+
+template <>
+struct ServerInstanceGameplayEvent<void>
+    : ConstEventVariant<ServerInstanceLeaveGameDoneEvent, ServerInstanceRequestResourceReload> {};

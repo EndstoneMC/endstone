@@ -56,6 +56,7 @@ add_library(endstone_core
         event/handlers/level_gameplay_handler.cpp
         event/handlers/scripting_event_handler.cpp
         event/handlers/player_gameplay_handler.cpp
+        event/handlers/server_network_event_handler.cpp
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/inventory.cpp

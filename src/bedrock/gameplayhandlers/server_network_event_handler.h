@@ -14,12 +14,13 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/server_network_event_handler.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/server_network_event_listener.h"
+#include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/server_network_events.h"
 
-class ServerNetworkEventCoordinator : public EventCoordinator<ServerNetworkEventListener> {
-protected:
-    friend class endstone::core::EndstoneServer;
-    std::unique_ptr<ServerNetworkEventHandler> server_network_event_handler_;
+class ServerNetworkEventHandler : public GameplayHandler {
+public:
+    ~ServerNetworkEventHandler() override = default;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        MutableServerNetworkGameplayEvent<CoordinatorResult> &event) = 0;
 };

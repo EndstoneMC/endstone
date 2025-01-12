@@ -34,7 +34,7 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/server/deny_list.h"
 #include "bedrock/server/server_player.h"
-#include "bedrock/world/events/server_events.h"
+#include "bedrock/world/events/server_network_events.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"
@@ -79,7 +79,6 @@ private:
     // NOLINTBEGIN(*-identifier-naming)
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
                                                  SubClientId);
-    ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
     // NOLINTEND(*-identifier-naming)
 
