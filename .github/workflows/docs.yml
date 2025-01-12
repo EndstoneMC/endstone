@@ -9,7 +9,7 @@ on:
       - '.github/workflows/*'
       - 'docs/**'
       - 'include/endstone/**'
-      - 'python/**'
+      - 'endstone/**'
       - '*.md'
       - 'mkdocs.yml'
   release:
