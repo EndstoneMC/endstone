@@ -776,6 +776,10 @@
     <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
+    <member refid="classendstone_1_1Player_1a5cdb79fdd152c6c6ed8f251bd1e31523" kind="function"><name>isSneaking</name></member>
+    <member refid="classendstone_1_1Player_1a23622b02f067bad332947a0b9459fd0a" kind="function"><name>setSneaking</name></member>
+    <member refid="classendstone_1_1Player_1abb2a1b9ae99b24fc1e80ed5f73d55646" kind="function"><name>isSprinting</name></member>
+    <member refid="classendstone_1_1Player_1a605f8e9b23c3d73b187c7eeb3959d8e4" kind="function"><name>setSprinting</name></member>
     <member refid="classendstone_1_1Player_1aa1ceee8a331905251a258d2a81df0120" kind="function"><name>playSound</name></member>
     <member refid="classendstone_1_1Player_1a3cb05d6341f6edc50f3fe6d519cc82d9" kind="function"><name>stopSound</name></member>
     <member refid="classendstone_1_1Player_1a413039a8c159c88eb8d9aa4923a08521" kind="function"><name>stopAllSounds</name></member>

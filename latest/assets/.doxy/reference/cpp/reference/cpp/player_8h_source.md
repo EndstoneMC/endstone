@@ -67,10 +67,14 @@ public:
 
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
-    // TODO: isSneaking
-    // TODO: setSneaking
-    // TODO: isSprinting
-    // TODO: setSprinting
+    [[nodiscard]] virtual bool isSneaking() const = 0;
+
+    virtual void setSneaking(bool sneak) = 0;
+
+    [[nodiscard]] virtual bool isSprinting() const = 0;
+
+    virtual void setSprinting(bool sprinting) = 0;
+
     // TODO: playNote
 
     virtual void playSound(Location location, std::string sound, float volume, float pitch) = 0;

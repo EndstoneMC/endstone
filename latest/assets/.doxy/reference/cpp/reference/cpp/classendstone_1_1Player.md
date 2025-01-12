@@ -176,6 +176,8 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual void | [**giveExp**](#function-giveexp) (int amount) = 0<br>_Gives the player the amount of experience specified._  |
 | virtual void | [**giveExpLevels**](#function-giveexplevels) (int amount) = 0<br>_Gives the player the amount of experience levels specified._  |
 | virtual bool | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
+| virtual bool | [**isSneaking**](#function-issneaking) () const = 0<br>_Returns if the player is in sneak mode._  |
+| virtual bool | [**isSprinting**](#function-issprinting) () const = 0<br>_Gets whether the player is sprinting or not._  |
 | virtual void | [**kick**](#function-kick) (std::string message) const = 0<br>_Kicks player with custom kick message._  |
 | virtual bool | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
 | virtual void | [**playSound**](#function-playsound) ([**Location**](classendstone_1_1Location.md) location, std::string sound, float volume, float pitch) = 0<br>_Play a sound for a player at the location._  |
@@ -194,6 +196,8 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual Result&lt; void &gt; | [**setFlying**](#function-setflying) (bool value) = 0<br>_Makes this player start or stop flying._  |
 | virtual void | [**setGameMode**](#function-setgamemode) (GameMode mode) = 0<br>_Sets this player's current GameMode._  |
 | virtual void | [**setScoreboard**](#function-setscoreboard) ([**Scoreboard**](classendstone_1_1Scoreboard.md) & scoreboard) = 0<br> |
+| virtual void | [**setSneaking**](#function-setsneaking) (bool sneak) = 0<br>_Sets the sneak mode of the player._  |
+| virtual void | [**setSprinting**](#function-setsprinting) (bool sprinting) = 0<br>_Sets whether the player is sprinting or not._  |
 | virtual void | [**setWalkSpeed**](#function-setwalkspeed) (float value) const = 0<br> |
 | virtual void | [**spawnParticle**](#function-spawnparticle-14) (std::string name, [**Location**](classendstone_1_1Location.md) location) const = 0<br>_Spawns the particle at the target location._  |
 | virtual void | [**spawnParticle**](#function-spawnparticle-24) (std::string name, float x, float y, float z) const = 0<br>_Spawns the particle at the target location._  |
@@ -1047,6 +1051,56 @@ True if the player is flying, else false.
 
 
 
+### function isSneaking 
+
+_Returns if the player is in sneak mode._ 
+```C++
+virtual bool endstone::Player::isSneaking () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+true if player is in sneak mode 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isSprinting 
+
+_Gets whether the player is sprinting or not._ 
+```C++
+virtual bool endstone::Player::isSprinting () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+true if player is sprinting. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function kick 
 
 _Kicks player with custom kick message._ 
@@ -1542,6 +1596,60 @@ virtual void endstone::Player::setScoreboard (
 
 
 * `scoreboard` New [**Scoreboard**](classendstone_1_1Scoreboard.md) for the player 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setSneaking 
+
+_Sets the sneak mode of the player._ 
+```C++
+virtual void endstone::Player::setSneaking (
+    bool sneak
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `sneak` true if player should appear sneaking 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setSprinting 
+
+_Sets whether the player is sprinting or not._ 
+```C++
+virtual void endstone::Player::setSprinting (
+    bool sprinting
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `sprinting` true if the player should be sprinting 
 
 
 
