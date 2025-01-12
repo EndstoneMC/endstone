@@ -41,7 +41,8 @@ void init_logger(py::module_ &);
 void init_network(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
-void init_player(py::module_ &, py::class_<Player, Mob> &player);
+void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
+                 py::class_<Player, Mob, OfflinePlayer> &player);
 void init_plugin(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
@@ -72,7 +73,11 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
     auto mob = py::class_<Mob, Actor>(m, "Mob",
                                       "Represents a mobile entity (i.e. living entity), such as a monster or player.");
-    auto player = py::class_<Player, Mob>(m, "Player", "Represents a player.");
+    auto offline_player = py::class_<OfflinePlayer>(
+        m, "OfflinePlayer",
+        "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
+        "can, thus, be retrieved without the player needing to be online.");
+    auto player = py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.");
 
     init_color_format(m);
     init_game_mode(m);
@@ -87,7 +92,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_network(m);
     init_block(m, block);
     init_actor(m, actor, mob);
-    init_player(m, player);
+    init_player(m, offline_player, player);
     init_boss(m);
     init_command(m, command_sender);
     init_plugin(m);
@@ -266,9 +271,10 @@ void init_server(py::class_<Server> &server)
                                py::return_value_policy::reference);
 }
 
-void init_player(py::module_ &m, py::class_<Player, Mob> &player)
+void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
+                 py::class_<Player, Mob, OfflinePlayer> &player)
 {
-    py::class_<Skin>(m, "Skin")
+    py::class_<Skin>(m, "Skin", "Represents a player skin.")
         .def(py::init([](std::string skin_id, const py::array_t<std::uint8_t> &skin_data,
                          std::optional<std::string> cape_id, std::optional<py::array_t<std::uint8_t>> cape_data) {
                  py::buffer_info info1 = skin_data.request();
@@ -317,7 +323,12 @@ void init_player(py::module_ &m, py::class_<Player, Mob> &player)
             },
             "Get the Cape data.");
 
-    player.def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
+    offline_player  //
+        .def_property_readonly("name", &OfflinePlayer::getName, "Returns the name of this player")
+        .def_property_readonly("unique_id", &OfflinePlayer::getUniqueId, "Returns the UUID of this player");
+
+    player  //
+        .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("xuid", &Player::getXuid, "Returns the Xbox User ID (XUID) of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
