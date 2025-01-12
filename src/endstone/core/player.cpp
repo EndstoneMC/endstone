@@ -21,6 +21,7 @@
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
+#include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/text_packet.h"
 #include "bedrock/network/packet/toast_request_packet.h"
