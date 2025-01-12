@@ -10,10 +10,12 @@ add_requires("cpptrace 0.7.1")
 add_requires("date 3.0.3")
 add_requires("pybind11 2.13.6")
 add_requires("toml++ v3.4.0")
-add_requires("python 3.12.3")
 
 add_requires("levilamina 42b75be796e8481394a8dd380c2500f76287919f")
 add_requires("levibuildscript")
+
+add_requires("python 3.12.3")
+local python_libname = "python312"
 
 -- Define common packages to avoid repetition
 local common_packages = {
@@ -68,7 +70,7 @@ target("endstone_python")
     add_files("src/endstone/python/**.cpp")
     add_deps("endstone_headers")
     add_packages(common_packages)
-    add_packages("python", "pybind11", {links = "python312"})
+    add_packages("python", "pybind11", {links = python_libname})
     set_symbols("debug")
     after_build(function (target)
         local file = assert(io.open("endstone/_internal/version.py", "w"))
@@ -95,7 +97,7 @@ target("endstone_python")
         if not os.isdir("bin/EndstoneRuntime/Lib/endstone/_internal") then
             os.mkdir("bin/EndstoneRuntime/Lib/endstone/_internal")
         end
-        os.cp("endstone/**", "bin/EndstoneRuntime/Lib/endstone")
+        os.cp("endstone", "bin/EndstoneRuntime/Lib")
         os.cp(target:targetfile(), "bin/EndstoneRuntime/Lib/endstone/_internal")
     end)
     
@@ -111,7 +113,7 @@ target("endstone_core")
     remove_files("src/endstone/core/logger_factory.cpp")
     add_deps("endstone_headers")
     add_packages(common_packages)
-    add_packages("python", "pybind11", {links = "python312"})
+    add_packages("python", "pybind11", {links = python_libname})
     on_load(function (target)
         target:add("defines", "ENDSTONE_VERSION=\""..get_version(os).."\"")
     end)
@@ -128,6 +130,6 @@ target("endstone_runtime")
     add_files("src/levi/runtime/**.cpp")
     add_deps("endstone_headers", "endstone_core")
     add_packages(common_packages)
-    add_packages("python", "pybind11", {links = "python312"})
+    add_packages("python", "pybind11", {links = python_libname})
     add_links("dbghelp", "ws2_32","Psapi")
     set_symbols("debug")

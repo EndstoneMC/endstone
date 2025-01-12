@@ -68,6 +68,10 @@ bool EndstoneRuntime::load()
         // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
         PyConfig config;
         PyConfig_InitIsolatedConfig(&config);
+        PyConfig_SetString(&config, &config.pythonpath_env, (getSelf().getModDir() / "Lib").c_str());
+        config.isolated = 0;
+        config.use_environment = 1;
+        config.install_signal_handlers = 0;
         py::initialize_interpreter(&config);
         py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
         py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
