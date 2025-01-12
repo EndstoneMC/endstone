@@ -14,6 +14,8 @@
 
 #include "endstone/core/event/handlers/block_gameplay_handler.h"
 
+#include <magic_enum/magic_enum.hpp>
+
 #include "bedrock/world/actor/actor.h"
 #include "endstone/block/block_face.h"
 #include "endstone/core/block/block_face.h"
@@ -40,7 +42,8 @@ GameplayHandlerResult<CoordinatorResult> EndstoneBlockGameplayHandler::handleEve
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const BlockTryPlaceByPlayerEvent>>) {
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const BlockTryPlaceByPlayerEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PistonActionEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
@@ -70,6 +73,12 @@ GameplayHandlerResult<CoordinatorResult> EndstoneBlockGameplayHandler::handleEve
         return handle_->handleEvent(event);
     };
     return std::visit(visitor, event.variant);
+}
+
+bool EndstoneBlockGameplayHandler::handleEvent(const PistonActionEvent &event)
+{
+    // TODO(event): piston events
+    return true;
 }
 
 bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent &event)

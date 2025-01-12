@@ -24,6 +24,7 @@
 #include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/item/item_stack.h"
+#include "bedrock/world/level/block/actor/piston_block_actor.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/dimension/dimension.h"
 
@@ -46,7 +47,12 @@ struct CraftUISetResultNameEvent {
     const BlockType type;
     const std::string name;
 };
-struct PistonActionEvent {};
+struct PistonActionEvent {
+    std::shared_ptr<BlockSourceHandle> block_source_handle;
+    const BlockPos piston_block_pos;
+    PistonState action_type;
+    bool should_check_attached_blocks;
+};
 struct LeverActionEvent {};
 struct ButtonPushEvent {};
 struct PressurePlatePushEvent {};
