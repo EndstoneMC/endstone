@@ -68,26 +68,12 @@ public:
     [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
 
     /**
-     * @brief Sends this player a popup message
+     * @brief Transfers the player to another server
      *
-     * @param message Message to be displayed
+     * @param host Server address to transfer the player to.
+     * @param port Server port to transfer the player to
      */
-    virtual void sendPopup(std::string message) const = 0;
-
-    /**
-     * @brief Sends this player a tip message
-     *
-     * @param message Message to be displayed
-     */
-    virtual void sendTip(std::string message) const = 0;
-
-    /**
-     * @brief Sends this player a toast notification.
-     *
-     * @param title The title of the toast notification.
-     * @param content The content of the toast notification.
-     */
-    virtual void sendToast(std::string title, std::string content) const = 0;
+    virtual void transfer(std::string host, int port) const = 0;
 
     /**
      * @brief Kicks player with custom kick message.
@@ -95,6 +81,27 @@ public:
      * @param message kick message
      */
     virtual void kick(std::string message) const = 0;
+
+    // TODO: chat
+
+    /**
+     * @brief Makes the player perform the given command
+     *
+     * @param command Command to perform
+     * @return true if the command was successful, otherwise false
+     */
+    virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
+
+    // TODO:
+    //  isSneaking
+    //  setSneaking
+    //  isSprinting
+    //  setSprinting
+    //  playNote
+    //  playSound
+    //  stopSound
+    //  stopAllSounds
+    //  playEffect
 
     /**
      * @brief Gives the player the amount of experience specified.
@@ -223,6 +230,28 @@ public:
     void virtual setScoreboard(Scoreboard &scoreboard) = 0;
 
     /**
+     * @brief Sends this player a popup message
+     *
+     * @param message Message to be displayed
+     */
+    virtual void sendPopup(std::string message) const = 0;
+
+    /**
+     * @brief Sends this player a tip message
+     *
+     * @param message Message to be displayed
+     */
+    virtual void sendTip(std::string message) const = 0;
+
+    /**
+     * @brief Sends this player a toast notification.
+     *
+     * @param title The title of the toast notification.
+     * @param content The content of the toast notification.
+     */
+    virtual void sendToast(std::string title, std::string content) const = 0;
+
+    /**
      * @brief Sends a title and a subtitle message to the player. If they are empty strings, the display will be
      * updated as such. The titles will be displayed with the default timings.
      *
@@ -289,6 +318,8 @@ public:
     virtual void spawnParticle(std::string name, float x, float y, float z,
                                std::optional<std::string> molang_variables_json) const = 0;
 
+    // TODO: getClientViewDistance
+
     /**
      * @brief Gets the player's average ping
      *
@@ -297,19 +328,26 @@ public:
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
     /**
+     * @brief Gets the player's current locale.
+     *
+     * @return the player's locale
+     */
+    [[nodiscard]] virtual std::string getLocale() const = 0;
+
+    /**
      * @brief Send the list of commands to the client.
      *
      * Generally useful to ensure the client has a complete list of commands after permission changes are done.
      */
     virtual void updateCommands() const = 0;
 
+    // === EntityHuman === //
     /**
-     * @brief Makes the player perform the given command
+     * @brief Get the player's inventory.
      *
-     * @param command Command to perform
-     * @return true if the command was successful, otherwise false
+     * @return The inventory of the player, this also contains the armor slots.
      */
-    virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
+    [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
 
     /**
      * @brief Gets this player's current GameMode
@@ -324,20 +362,6 @@ public:
      * @param mode New game mode
      */
     virtual void setGameMode(GameMode mode) = 0;
-
-    /**
-     * @brief Get the player's inventory.
-     *
-     * @return The inventory of the player, this also contains the armor slots.
-     */
-    [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
-
-    /**
-     * @brief Gets the player's current locale.
-     *
-     * @return the player's locale
-     */
-    [[nodiscard]] virtual std::string getLocale() const = 0;
 
     /**
      * @brief Gets the player's current device's operation system (OS).
@@ -366,14 +390,6 @@ public:
      * @return the player's skin
      */
     [[nodiscard]] virtual const Skin &getSkin() const = 0;
-
-    /**
-     * @brief Transfers the player to another server
-     *
-     * @param host Server address to transfer the player to.
-     * @param port Server port to transfer the player to
-     */
-    virtual void transfer(std::string host, int port) const = 0;
 
     /**
      * @brief Sends a form to the player.

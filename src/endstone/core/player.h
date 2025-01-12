@@ -90,14 +90,15 @@ public:
     // Mob
     [[nodiscard]] bool isGliding() const override;
 
-    // Player
+    // OfflinePlayer
     [[nodiscard]] UUID getUniqueId() const override;
+
+    // Player
     [[nodiscard]] std::string getXuid() const override;
     [[nodiscard]] const SocketAddress &getAddress() const override;
-    void sendPopup(std::string message) const override;
-    void sendTip(std::string message) const override;
-    void sendToast(std::string title, std::string content) const override;
+    void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
+    bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
     void giveExp(int amount) override;
     void giveExpLevels(int amount) override;
     [[nodiscard]] float getExpProgress() const override;
@@ -115,6 +116,9 @@ public:
     void setWalkSpeed(float value) const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
     void setScoreboard(Scoreboard &scoreboard) override;
+    void sendPopup(std::string message) const override;
+    void sendTip(std::string message) const override;
+    void sendToast(std::string title, std::string content) const override;
     void sendTitle(std::string title, std::string subtitle) const override;
     void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const override;
     void resetTitle() const override;
@@ -126,16 +130,15 @@ public:
                        std::optional<std::string> molang_variables_json) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
-    bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+
+    [[nodiscard]] PlayerInventory &getInventory() const override;
     [[nodiscard]] GameMode getGameMode() const override;
     void setGameMode(GameMode mode) override;
-    [[nodiscard]] PlayerInventory &getInventory() const override;
     [[nodiscard]] std::string getLocale() const override;
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] std::string getDeviceId() const override;
     [[nodiscard]] std::string getGameVersion() const override;
     [[nodiscard]] const Skin &getSkin() const override;
-    void transfer(std::string host, int port) const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(Packet &packet) const override;
