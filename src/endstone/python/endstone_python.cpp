@@ -328,14 +328,23 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
         .def_property_readonly("unique_id", &OfflinePlayer::getUniqueId, "Returns the UUID of this player");
 
     player  //
+        .def_property_readonly("name", &OfflinePlayer::getName, "Returns the name of this player")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("xuid", &Player::getXuid, "Returns the Xbox User ID (XUID) of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
+        .def("transfer", &Player::transfer, "Transfers the player to another server.", py::arg("host"),
+             py::arg("port") = 19132)
+        .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.")
+        .def("perform_command", &Player::performCommand, py::arg("command"),
+             "Makes the player perform the given command.")
+        .def("play_sound", &Player::playSound, py::arg("location"), py::arg("sound"), py::arg("volume"),
+             py::arg("pitch"), "Play a sound for a player at the location.")
+        .def("stop_sound", &Player::stopSound, py::arg("sound"), "Stop the specified sound from playing.")
+        .def("stop_all_sounds", &Player::stopAllSounds, "Stop all sounds from playing.")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")
         .def("send_toast", &Player::sendToast, py::arg("title"), py::arg("content"),
              "Sends this player a toast notification.")
-        .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.")
         .def("give_exp", &Player::giveExp, py::arg("amount"), "Gives the player the amount of experience specified.")
         .def("give_exp_levels", &Player::giveExpLevels, py::arg("amount"),
              "Gives the player the amount of experience levels specified.")
@@ -374,8 +383,7 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
             "ping", [](const Player &self) { return self.getPing().count(); },
             "Gets the player's average ping in milliseconds.")
         .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.")
-        .def("perform_command", &Player::performCommand, py::arg("command"),
-             "Makes the player perform the given command.")
+
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.")
         .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
                                "Get the player's inventory.")
@@ -385,8 +393,6 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
         .def_property_readonly("device_id", &Player::getDeviceId, "Get the player's current device id.")
         .def_property_readonly("game_version", &Player::getGameVersion, "Get the player's current game version.")
         .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.")
-        .def("transfer", &Player::transfer, "Transfers the player to another server.", py::arg("host"),
-             py::arg("port") = 19132)
         .def("send_form", &Player::sendForm, "Sends a form to the player.", py::arg("form"))
         .def("close_form", &Player::closeForm, "Closes the forms that are currently open for the player.")
         .def("send_packet", &Player::sendPacket, py::arg("packet"), "Sends a packet to the player.");

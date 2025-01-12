@@ -1979,6 +1979,10 @@ class Player(Mob, OfflinePlayer):
         """
         Makes the player perform the given command.
         """
+    def play_sound(self, location: Location, sound: str, volume: float, pitch: float) -> None:
+        """
+        Play a sound for a player at the location.
+        """
     def reset_title(self) -> None:
         """
         Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.
@@ -2016,6 +2020,14 @@ class Player(Mob, OfflinePlayer):
     def spawn_particle(self, name: str, x: float, y: float, z: float, molang_variables_json: str | None = None) -> None:
         """
         Spawns the particle at the target location.
+        """
+    def stop_all_sounds(self) -> None:
+        """
+        Stop all sounds from playing.
+        """
+    def stop_sound(self, sound: str) -> None:
+        """
+        Stop the specified sound from playing.
         """
     def transfer(self, host: str, port: int = 19132) -> None:
         """
@@ -2102,6 +2114,11 @@ class Player(Mob, OfflinePlayer):
     def locale(self) -> str:
         """
         Get the player's current locale.
+        """
+    @property
+    def name(self) -> str:
+        """
+        Returns the name of this player
         """
     @property
     def ping(self) -> int:

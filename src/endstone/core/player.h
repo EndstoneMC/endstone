@@ -99,6 +99,9 @@ public:
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    void playSound(Location location, std::string sound, float volume, float pitch) override;
+    void stopSound(std::string sound) override;
+    void stopAllSounds() override;
     void giveExp(int amount) override;
     void giveExpLevels(int amount) override;
     [[nodiscard]] float getExpProgress() const override;

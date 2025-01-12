@@ -92,16 +92,35 @@ public:
      */
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
-    // TODO:
-    //  isSneaking
-    //  setSneaking
-    //  isSprinting
-    //  setSprinting
-    //  playNote
-    //  playSound
-    //  stopSound
-    //  stopAllSounds
-    //  playEffect
+    // TODO: isSneaking
+    // TODO: setSneaking
+    // TODO: isSprinting
+    // TODO: setSprinting
+    // TODO: playNote
+
+    /**
+     * @brief Play a sound for a player at the location.
+     *
+     * @param location The location to play the sound
+     * @param sound The internal sound name to play
+     * @param volume The volume of the sound
+     * @param pitch The pitch of the sound
+     */
+    virtual void playSound(Location location, std::string sound, float volume, float pitch) = 0;
+
+    /**
+     * @brief Stop the specified sound from playing.
+     *
+     * @param sound the sound to stop
+     */
+    virtual void stopSound(std::string sound) = 0;
+
+    /**
+     * @brief Stop all sounds from playing.
+     */
+    virtual void stopAllSounds() = 0;
+
+    // TODO: playEffect
 
     /**
      * @brief Gives the player the amount of experience specified.

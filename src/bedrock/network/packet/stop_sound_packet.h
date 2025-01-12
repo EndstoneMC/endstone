@@ -14,9 +14,14 @@
 
 #pragma once
 
-#include "bedrock/world/level/block_pos.h"
+#include <string>
 
-class NetworkBlockPosition : public BlockPos {
+#include "bedrock/network/network_block_position.h"
+#include "bedrock/network/packet.h"
+
+class StopSoundPacket : public Packet {
 public:
-    using BlockPos::BlockPos;
+    std::string name;
+    bool stop_all;
+    bool stop_music_legacy;
 };

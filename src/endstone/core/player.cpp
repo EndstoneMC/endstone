@@ -23,6 +23,7 @@
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
+#include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
 #include "bedrock/network/packet/toast_request_packet.h"
 #include "bedrock/network/packet/transfer_packet.h"
@@ -583,6 +584,33 @@ void EndstonePlayer::updateCommands() const
 bool EndstonePlayer::performCommand(std::string command) const
 {
     return server_.dispatchCommand(*Player::asPlayer(), command);
+}
+
+void EndstonePlayer::playSound(Location location, std::string sound, float volume, float pitch)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlaySound);
+    const auto pk = std::static_pointer_cast<PlaySoundPacket>(packet);
+    pk->name = sound;
+    pk->pos = {location.getX(), location.getY(), location.getZ()};
+    pk->volume = volume;
+    pk->pitch = pitch;
+    getHandle().sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::stopSound(std::string sound)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::StopSound);
+    const auto pk = std::static_pointer_cast<StopSoundPacket>(packet);
+    pk->name = sound;
+    getHandle().sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::stopAllSounds()
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::StopSound);
+    const auto pk = std::static_pointer_cast<StopSoundPacket>(packet);
+    pk->stop_all = true;
+    getHandle().sendNetworkPacket(*packet);
 }
 
 GameMode EndstonePlayer::getGameMode() const
