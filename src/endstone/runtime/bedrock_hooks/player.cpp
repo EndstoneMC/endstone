@@ -17,10 +17,7 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/entity/components/abilities_component.h"
-#include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/network/packet/available_commands_packet.h"
-#include "bedrock/world/actor/actor_flags.h"
-#include "bedrock/world/level/level.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_teleport_event.h"
 #include "endstone/runtime/hook.h"

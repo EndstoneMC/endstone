@@ -20,6 +20,7 @@
 #include "endstone/core/json.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
 
 namespace endstone::core {
@@ -49,7 +50,8 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>>) {
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
@@ -108,6 +110,25 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithBlockBef
         }
         else {
             server.getLogger().error(block.error());
+        }
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
+{
+    const StackResultStorageEntity stack_result_player(event.player);
+    const auto *player = ::Actor::tryGetFromEntity(stack_result_player.getStackRef(), false);
+
+    const StackResultStorageEntity stack_result_target(event.target_entity);
+    const auto *target = ::Actor::tryGetFromEntity(stack_result_target.getStackRef(), false);
+
+    if (player && player->isPlayer() && target) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        PlayerInteractActorEvent e{player->getEndstoneActor<EndstonePlayer>(), target->getEndstoneActor()};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
         }
     }
     return true;

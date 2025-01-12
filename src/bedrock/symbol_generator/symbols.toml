@@ -39,9 +39,6 @@ version = "1.21.50"
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 16545120
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 50047168
-# GameMode
-"?interact@GameMode@@UEAA_NAEAVActor@@AEBVVec3@@@Z" = 36359280
-"?useItemOn@GameMode@@UEAA?AVInteractionResult@@AEAVItemStack@@AEBVBlockPos@@EAEBVVec3@@PEBVBlock@@_N@Z" = 36388512
 # ItemRegistry
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 39706432
 # ItemRegistryManager
@@ -142,9 +139,6 @@ version = "1.21.50"
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 88352736
 # FurnaceBlockActor
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 146244016
-# GameMode
-"_ZN8GameMode8interactER5ActorRK4Vec3" = 129309872
-"_ZN8GameMode9useItemOnER9ItemStackRK8BlockPoshRK4Vec3PK5Blockb" = 129322896
 # ItemRegsitry
 "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 130608240
 # ItemRegistryManager

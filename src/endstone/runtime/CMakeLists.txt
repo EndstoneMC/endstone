@@ -17,14 +17,11 @@ add_library(funchook::funchook ALIAS funchook-static)
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
         bedrock_hooks/bedrock_event_logger.cpp
-        bedrock_hooks/game_mode.cpp
-        bedrock_hooks/item.cpp
         bedrock_hooks/level.cpp
         bedrock_hooks/level_event_coordinator.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
         bedrock_hooks/player.cpp
-        bedrock_hooks/player_event_coordinator.cpp
         bedrock_hooks/raknet_socket2.cpp
         bedrock_hooks/rak_peer_helper.cpp
         bedrock_hooks/resource_pack_repository.cpp
