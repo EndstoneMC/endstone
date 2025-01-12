@@ -17,8 +17,9 @@
 #include <string>
 #include <vector>
 
-#include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_types.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 
 class Actor;
 

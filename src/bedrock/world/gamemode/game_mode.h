@@ -13,8 +13,7 @@
 // limitations under the License.
 
 #pragma once
-#include "bedrock/forward.h"
-#include "bedrock/gameplayhandlers/coordinator_result.h"
+#include "bedrock/input/input_mode.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_pos.h"

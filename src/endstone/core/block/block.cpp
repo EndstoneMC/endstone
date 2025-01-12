@@ -37,9 +37,11 @@ bool EndstoneBlock::isValid() const
 
 Result<std::string> EndstoneBlock::getType() const
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::string> {
+    auto state = checkState();
+    if (state) {
         return block_source_.getBlock(block_pos_).getLegacyBlock().getFullNameId();
-    });
+    }
+    return nonstd::make_unexpected(state.error());
 }
 
 Result<void> EndstoneBlock::setType(std::string type)
@@ -49,21 +51,25 @@ Result<void> EndstoneBlock::setType(std::string type)
 
 Result<void> EndstoneBlock::setType(std::string type, bool apply_physics)
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<void> {
+    auto state = checkState();
+    if (state) {
         const auto &server = entt::locator<EndstoneServer>::value();
         auto result = server.createBlockData(type);
         if (!result) {
             return nonstd::make_unexpected(result.error());
         }
         return setData(result.value(), apply_physics);
-    });
+    }
+    return nonstd::make_unexpected(state.error());
 }
 
 Result<std::shared_ptr<BlockData>> EndstoneBlock::getData() const
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<BlockData>> {
+    auto state = checkState();
+    if (state) {
         return std::make_shared<EndstoneBlockData>(getMinecraftBlock());
-    });
+    }
+    return nonstd::make_unexpected(state.error());
 }
 
 Result<void> EndstoneBlock::setData(std::shared_ptr<BlockData> data)
@@ -76,40 +82,48 @@ Result<void> EndstoneBlock::setData(std::shared_ptr<BlockData> data, bool apply_
     if (!data) {
         return nonstd::make_unexpected(make_error("Block data cannot be null"));
     }
-
-    return checkState().and_then([&](const auto * /*self*/) -> Result<void> {
+    auto state = checkState();
+    if (state) {
         const ::Block &block = static_cast<EndstoneBlockData &>(*data).getHandle();
         if (apply_physics) {
-            block_source_.setBlock(block_pos_, block, 1 | 2, nullptr, nullptr);  // NEIGHBORS | NETWORK
+            block_source_.setBlock(block_pos_, block, BlockLegacy::UPDATE_NEIGHBORS | BlockLegacy::UPDATE_CLIENTS,
+                                   nullptr, nullptr);
         }
         else {
-            block_source_.setBlock(block_pos_, block, 2, nullptr, nullptr);  // NETWORK
+            block_source_.setBlock(block_pos_, block, BlockLegacy::UPDATE_CLIENTS, nullptr, nullptr);  // NETWORK
         }
         return {};
-    });
+    }
+    return nonstd::make_unexpected(state.error());
 }
 
 Result<std::shared_ptr<Block>> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<Block>> {
+    auto state = checkState();
+    if (state) {
         return getDimension().getBlockAt(getX() + offset_x, getY() + offset_y, getZ() + offset_z);
-    });
+    }
+    return nonstd::make_unexpected(state.error());
 }
 
 Result<std::shared_ptr<Block>> EndstoneBlock::getRelative(BlockFace face)
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<Block>> {  //
+    auto state = checkState();
+    if (state) {
         return getRelative(face, 1);
-    });
+    }
+    return nonstd::make_unexpected(state.error());
 }
 
 Result<std::shared_ptr<Block>> EndstoneBlock::getRelative(BlockFace face, int distance)
 {
-    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<Block>> {
+    auto state = checkState();
+    if (state) {
         return getRelative(EndstoneBlockFace::getOffsetX(face) * distance,
                            EndstoneBlockFace::getOffsetY(face) * distance,
                            EndstoneBlockFace::getOffsetZ(face) * distance);
-    });
+    }
+    return nonstd::make_unexpected(state.error());
 }
 
 Dimension &EndstoneBlock::getDimension() const

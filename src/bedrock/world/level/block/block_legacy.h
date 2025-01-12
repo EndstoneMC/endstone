@@ -99,14 +99,22 @@ enum class BlockProperty : std::uint64_t {
 };
 
 class BlockLegacy {
+public:
     struct NameInfo {
         HashedString raw_name;             // +0
         std::string namespace_name;        // +48
         HashedString full_name;            // +80
         HashedString pre_flattening_name;  // +128
     };
+    static const int UPDATE_NEIGHBORS = 1;
+    static const int UPDATE_CLIENTS = 2;
+    static const int UPDATE_INVISIBLE = 4;
+    static const int UPDATE_ITEM_DATA = 16;
+    static const int UPDATE_NONE = 4;
+    static const int UPDATE_ALL = 3;
+    static const int TILE_NUM_SHIFT = 12;
+    static const int NUM_LEGACY_BLOCK_TYPES = 512;
 
-public:
     virtual ~BlockLegacy() = 0;
     [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;

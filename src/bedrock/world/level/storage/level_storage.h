@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/core/file/path.h"
 #include "bedrock/core/threading/async.h"
 #include "bedrock/forward.h"
 #include "bedrock/nbt/compound_tag.h"

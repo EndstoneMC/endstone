@@ -26,6 +26,7 @@
 #include "bedrock/core/math/color.h"
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
+#include "bedrock/input/input_mode.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/aabb_shape_component.h"
