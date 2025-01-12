@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_quit_event.h" line="64" column="17" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="64" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_quit_event.h" line="59" column="17" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -88,20 +88,6 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_quit_event.h" line="33" column="18" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="33" bodyend="36"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1aa92fd31567b9d48f6ac2861f533871f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool endstone::PlayerQuitEvent::isCancellable</definition>
-        <argsstring>() const override</argsstring>
-        <name>isCancellable</name>
-        <reimplements refid="classendstone_1_1Event_1a2d453a34ebb1e1aaa8f512b8b6803ed4">isCancellable</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/player/player_quit_event.h" line="38" column="11" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="38" bodyend="41"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1a00b0ae58f2924784ed2e2ce0ca4ab8b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string endstone::PlayerQuitEvent::getQuitMessage</definition>
@@ -117,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_quit_event.h" line="48" column="18" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="48" bodyend="51"/>
+        <location file="include/endstone/event/player/player_quit_event.h" line="43" column="18" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1ae21d854c5df9d4a4631346a858356098" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -145,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_quit_event.h" line="58" column="10" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="58" bodyend="61"/>
+        <location file="include/endstone/event/player/player_quit_event.h" line="53" column="10" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="53" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -189,7 +175,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_quit_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="24" bodyend="65"/>
+    <location file="include/endstone/event/player/player_quit_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="24" bodyend="60"/>
     <listofallmembers>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>Event</name></member>
@@ -197,7 +183,6 @@
       <member refid="classendstone_1_1PlayerEvent_1a0024c3db9eaec88a139f3c3fcb687e55" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1PlayerQuitEvent_1a00b0ae58f2924784ed2e2ce0ca4ab8b4" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>getQuitMessage</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1PlayerQuitEvent_1aa92fd31567b9d48f6ac2861f533871f2" prot="public" virt="virtual"><scope>endstone::PlayerQuitEvent</scope><name>isCancellable</name></member>
       <member refid="classendstone_1_1PlayerQuitEvent_1a9a422070fcabd4719e3c1711af48fbcb" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerQuitEvent</scope><name>PlayerEvent</name></member>

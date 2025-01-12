@@ -42,11 +42,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
     [[nodiscard]] std::string getJoinMessage() const
     {
         return join_message_;

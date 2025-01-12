@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_enable_event.h" line="52" column="12" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="52" bodyend="-1"/>
+        <location file="include/endstone/event/server/plugin_enable_event.h" line="47" column="12" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -88,20 +88,6 @@
         </inbodydescription>
         <location file="include/endstone/event/server/plugin_enable_event.h" line="41" column="18" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="41" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginEnableEvent_1a921d98900c525ca71e7fc31d249fec42" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool endstone::PluginEnableEvent::isCancellable</definition>
-        <argsstring>() const override</argsstring>
-        <name>isCancellable</name>
-        <reimplements refid="classendstone_1_1Event_1a2d453a34ebb1e1aaa8f512b8b6803ed4">isCancellable</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/plugin_enable_event.h" line="46" column="11" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="46" bodyend="49"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Called when a plugin is enabled. </para>
@@ -144,7 +130,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/plugin_enable_event.h" line="26" column="1" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="26" bodyend="53"/>
+    <location file="include/endstone/event/server/plugin_enable_event.h" line="26" column="1" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="26" bodyend="48"/>
     <listofallmembers>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>Event</name></member>
@@ -153,7 +139,6 @@
       <member refid="classendstone_1_1PluginEnableEvent_1a80a2a76f95e0c011b04994475905d79b" prot="public" virt="virtual"><scope>endstone::PluginEnableEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PluginEnableEvent_1aa3358c8a4ebafd2edfc6eab994b902a0" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>getPlugin</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1PluginEnableEvent_1a921d98900c525ca71e7fc31d249fec42" prot="public" virt="virtual"><scope>endstone::PluginEnableEvent</scope><name>isCancellable</name></member>
       <member refid="classendstone_1_1PluginEnableEvent_1a6cb2f949961229f901d9a577fc1f7524" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PluginEnableEvent_1afd9bee1981cd95e03eef45144f73faf0" prot="private" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>plugin_</name></member>

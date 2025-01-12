@@ -42,11 +42,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
     [[nodiscard]] std::string getQuitMessage() const
     {
         return quit_message_;

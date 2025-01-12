@@ -101,7 +101,6 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 |   | [**PluginDisableEvent**](#function-plugindisableevent) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
-| virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 
 
 ## Public Functions inherited from endstone::ServerEvent
@@ -292,21 +291,6 @@ Gets the plugin involved in this event
 
 
         
-
-<hr>
-
-
-
-### function isCancellable 
-
-```C++
-inline virtual bool endstone::PluginDisableEvent::isCancellable () override const
-```
-
-
-
-Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function-iscancellable)
-
 
 <hr>
 

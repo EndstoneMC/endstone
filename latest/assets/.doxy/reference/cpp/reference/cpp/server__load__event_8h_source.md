@@ -52,11 +52,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
 private:
     LoadType type_;
 };

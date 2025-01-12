@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_load_event.h" line="54" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="54" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_load_event.h" line="49" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -111,20 +111,6 @@
         </inbodydescription>
         <location file="include/endstone/event/server/server_load_event.h" line="43" column="18" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="43" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServerLoadEvent_1ae9bf0371dda434c3227c2b88c098fa22" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool endstone::ServerLoadEvent::isCancellable</definition>
-        <argsstring>() const override</argsstring>
-        <name>isCancellable</name>
-        <reimplements refid="classendstone_1_1Event_1a2d453a34ebb1e1aaa8f512b8b6803ed4">isCancellable</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/server_load_event.h" line="48" column="11" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="48" bodyend="51"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Called when either the server startup or reload has completed. </para>
@@ -167,7 +153,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/server_load_event.h" line="28" column="1" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="28" bodyend="55"/>
+    <location file="include/endstone/event/server/server_load_event.h" line="28" column="1" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="28" bodyend="50"/>
     <listofallmembers>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>Event</name></member>
@@ -176,7 +162,6 @@
       <member refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" prot="public" virt="virtual"><scope>endstone::ServerLoadEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1ad6f8ab066b197a8175518ac9e8dcabae" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>getType</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1ServerLoadEvent_1ae9bf0371dda434c3227c2b88c098fa22" prot="public" virt="virtual"><scope>endstone::ServerLoadEvent</scope><name>isCancellable</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>LoadType</name></member>
       <member refid="classendstone_1_1ServerLoadEvent_1aadade0b34a9857cae4d6eca19401cfb6" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>operator=</name></member>

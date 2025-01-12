@@ -55,9 +55,9 @@ public:
     }
 
 private:
-    [[nodiscard]] constexpr bool isCancellable() const final
+    [[nodiscard]] bool isCancellable() const final
     {
-        return false;
+        return true;
     }
 };
 }  // namespace endstone

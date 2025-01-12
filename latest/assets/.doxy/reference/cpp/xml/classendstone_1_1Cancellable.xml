@@ -75,9 +75,9 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
-      <memberdef kind="function" id="classendstone_1_1Cancellable_1a933038c042fa11e64bda5a3a7aa69ea9" prot="private" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" final="yes" virt="non-virtual">
-        <type>constexpr bool</type>
-        <definition>constexpr bool endstone::Cancellable&lt; EventType &gt;::isCancellable</definition>
+      <memberdef kind="function" id="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418" prot="private" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Cancellable&lt; EventType &gt;::isCancellable</definition>
         <argsstring>() const final</argsstring>
         <name>isCancellable</name>
         <briefdescription>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/cancellable.h" line="67" column="21" bodyfile="include/endstone/event/cancellable.h" bodystart="67" bodyend="70"/>
+        <location file="include/endstone/event/cancellable.h" line="67" column="11" bodyfile="include/endstone/event/cancellable.h" bodystart="67" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -131,7 +131,7 @@
     <location file="include/endstone/event/cancellable.h" line="31" column="1" bodyfile="include/endstone/event/cancellable.h" bodystart="31" bodyend="71"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>cancel</name></member>
-      <member refid="classendstone_1_1Cancellable_1a933038c042fa11e64bda5a3a7aa69ea9" prot="private" virt="non-virtual"><scope>endstone::Cancellable</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418" prot="private" virt="non-virtual"><scope>endstone::Cancellable</scope><name>isCancellable</name></member>
       <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>~ICancellable</name></member>

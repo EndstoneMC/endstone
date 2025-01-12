@@ -106,7 +106,6 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 |   | [**ServerLoadEvent**](#function-serverloadevent) (LoadType type) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  LoadType | [**getType**](#function-gettype) () const<br> |
-| virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 
 
 ## Public Functions inherited from endstone::ServerEvent
@@ -300,21 +299,6 @@ inline LoadType endstone::ServerLoadEvent::getType () const
 ```
 
 
-
-
-<hr>
-
-
-
-### function isCancellable 
-
-```C++
-inline virtual bool endstone::ServerLoadEvent::isCancellable () override const
-```
-
-
-
-Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function-iscancellable)
 
 
 <hr>

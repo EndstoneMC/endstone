@@ -6,7 +6,6 @@
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ServerEvent &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PluginDisableEvent" prot="public" virt="non-virtual">endstone::PluginDisableEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PluginEnableEvent" prot="public" virt="non-virtual">endstone::PluginEnableEvent</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1ScriptMessageEvent" prot="public" virt="non-virtual">endstone::ScriptMessageEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ServerLoadEvent" prot="public" virt="non-virtual">endstone::ServerLoadEvent</derivedcompoundref>
     <includes refid="server__event_8h" local="no">endstone/event/server/server_event.h</includes>
       <sectiondef kind="public-func">
@@ -51,13 +50,13 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="9">
+      <node id="5">
         <label>endstone::ScriptMessageEvent</label>
         <link refid="classendstone_1_1ScriptMessageEvent"/>
-        <childnode refid="1" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::ServerCommandEvent</label>
         <link refid="classendstone_1_1ServerCommandEvent"/>
         <childnode refid="3" relation="public-inheritance">
@@ -69,7 +68,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>endstone::PluginEnableEvent</label>
         <link refid="classendstone_1_1PluginEnableEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -79,7 +78,7 @@
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::ServerListPingEvent</label>
         <link refid="classendstone_1_1ServerListPingEvent"/>
         <childnode refid="3" relation="public-inheritance">
@@ -103,7 +102,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::PluginDisableEvent</label>
         <link refid="classendstone_1_1PluginDisableEvent"/>
         <childnode refid="1" relation="public-inheritance">

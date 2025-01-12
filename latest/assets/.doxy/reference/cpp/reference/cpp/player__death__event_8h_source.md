@@ -43,11 +43,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
     [[nodiscard]] const std::string &getDeathMessage() const
     {
         return death_message_;

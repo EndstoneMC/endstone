@@ -168,7 +168,6 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 |   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::string death\_message) <br> |
 |  const std::string & | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-| virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 |  void | [**setDeathMessage**](#function-setdeathmessage) (const std::string & death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 |   | [**~PlayerDeathEvent**](#function-playerdeathevent) () override<br> |
 
@@ -474,21 +473,6 @@ name of this event
 
         
 Implements [*endstone::ActorDeathEvent::getEventName*](classendstone_1_1ActorDeathEvent.md#function-geteventname)
-
-
-<hr>
-
-
-
-### function isCancellable 
-
-```C++
-inline virtual bool endstone::PlayerDeathEvent::isCancellable () override const
-```
-
-
-
-Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function-iscancellable)
 
 
 <hr>

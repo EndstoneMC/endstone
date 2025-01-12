@@ -45,7 +45,7 @@ public:
     }
 
 private:
-    [[nodiscard]] virtual constexpr bool isCancellable() const
+    [[nodiscard]] virtual bool isCancellable() const
     {
         return false;
     }

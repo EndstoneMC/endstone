@@ -101,7 +101,6 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 |   | [**PlayerQuitEvent**](#function-playerquitevent) ([**Player**](classendstone_1_1Player.md) & player, std::string quit\_message) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  std::string | [**getQuitMessage**](#function-getquitmessage) () const<br>_Gets the quit message to send to all online players._  |
-| virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 |  void | [**setQuitMessage**](#function-setquitmessage) (std::string message) <br>_Sets the quit message to send to all online players._  |
 |   | [**~PlayerQuitEvent**](#function-playerquitevent) () override<br> |
 
@@ -294,21 +293,6 @@ Message to appear to other players on the server.
 
 
         
-
-<hr>
-
-
-
-### function isCancellable 
-
-```C++
-inline virtual bool endstone::PlayerQuitEvent::isCancellable () override const
-```
-
-
-
-Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function-iscancellable)
-
 
 <hr>
 

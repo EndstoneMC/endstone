@@ -101,7 +101,6 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 |   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player, std::string join\_message) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  std::string | [**getJoinMessage**](#function-getjoinmessage) () const<br>_Gets the join message to send to all online players._  |
-| virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 |  void | [**setJoinMessage**](#function-setjoinmessage) (std::string message) <br>_Sets the join message to send to all online players._  |
 |   | [**~PlayerJoinEvent**](#function-playerjoinevent) () override<br> |
 
@@ -294,21 +293,6 @@ Message to appear to other players on the server.
 
 
         
-
-<hr>
-
-
-
-### function isCancellable 
-
-```C++
-inline virtual bool endstone::PlayerJoinEvent::isCancellable () override const
-```
-
-
-
-Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function-iscancellable)
-
 
 <hr>
 
