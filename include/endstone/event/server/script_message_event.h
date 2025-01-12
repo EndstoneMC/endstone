@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/server/server_event.h"
 
 namespace endstone {
@@ -21,10 +22,10 @@ namespace endstone {
 /**
  * @brief Called when a message is sent by `/scriptevent` command
  */
-class ScriptMessageEvent : public ServerEvent {
+class ScriptMessageEvent : public Cancellable<ServerEvent> {
 public:
     ScriptMessageEvent(std::string message_id, std::string message, const CommandSender &sender)
-        : ServerEvent(false), message_id_(std::move(message_id)), message_(std::move(message)), sender_(sender)
+        : Cancellable(false), message_id_(std::move(message_id)), message_(std::move(message)), sender_(sender)
     {
     }
 
@@ -32,11 +33,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return true;
     }
 
     /**

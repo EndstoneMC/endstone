@@ -38,28 +38,35 @@ GameplayHandlerResult<CoordinatorResult> EndstoneScriptingEventHandler::handleEv
 GameplayHandlerResult<CoordinatorResult> EndstoneScriptingEventHandler::handleEvent(
     const ScriptingGameplayEvent<CoordinatorResult> &event)
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto visitor = [&](auto &&arg) {
+    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const ScriptCommandMessageEvent>>) {
-            const auto &ref = arg.value();
-            const CommandSender *sender = nullptr;
-            if (ref.source_actor.has_value()) {
-                if (auto *actor = ref.level.fetchEntity(ref.source_actor.value(), false); actor) {
-                    sender = &actor->getEndstoneActor();
-                }
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
-            // TODO(command): add support for BlockCommandSender
-            if (!sender) {
-                sender = &server.getCommandSender();
-            }
-            ScriptMessageEvent e{ref.message_id, ref.message_value, *sender};
-            server.getPluginManager().callEvent(e);
         }
         return handle_->handleEvent(event);
     };
-
     return std::visit(visitor, event.variant);
+}
+
+bool EndstoneScriptingEventHandler::handleEvent(const ScriptCommandMessageEvent &event)
+{
+    const auto &server = entt::locator<EndstoneServer>::value();
+    const CommandSender *sender = nullptr;
+    if (event.source_actor.has_value()) {
+        if (const auto *actor = event.level.fetchEntity(event.source_actor.value(), false); actor) {
+            sender = &actor->getEndstoneActor();
+        }
+    }
+    // TODO(command): add support for BlockCommandSender
+    if (!sender) {
+        sender = &server.getCommandSender();
+    }
+
+    ScriptMessageEvent e{event.message_id, event.message_value, *sender};
+    server.getPluginManager().callEvent(e);
+    return !e.isCancelled();
 }
 
 }  // namespace endstone::core

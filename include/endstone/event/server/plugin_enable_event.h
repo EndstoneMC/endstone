@@ -43,11 +43,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
 private:
     Plugin &plugin_;
 };

@@ -128,8 +128,7 @@ void print_frame(std::ostream &stream, bool color, unsigned frame_number_width, 
 
 bool should_report(const cpptrace::stacktrace &stacktrace)
 {
-    // TODO:
-    return false;
+    return true;
 }
 
 void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)

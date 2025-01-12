@@ -29,6 +29,8 @@ public:
         const ScriptingGameplayEvent<CoordinatorResult> &event) override;
 
 private:
+    bool handleEvent(const ScriptCommandMessageEvent &event);
+
     std::unique_ptr<ScriptingEventHandler> handle_;
 };
 

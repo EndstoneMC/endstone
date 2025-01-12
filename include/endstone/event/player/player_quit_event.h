@@ -35,11 +35,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
     /**
      * @brief Gets the quit message to send to all online players.
      *

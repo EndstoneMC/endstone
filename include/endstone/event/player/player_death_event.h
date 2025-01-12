@@ -36,11 +36,6 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
     /**
      * @brief Get the death message that will appear to everyone on the server.
      *
