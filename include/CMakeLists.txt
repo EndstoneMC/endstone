@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone LANGUAGES CXX)
 
+include(FetchContent)
+
 find_package(fmt QUIET)
 if (NOT fmt_FOUND)
     FetchContent_Declare(
