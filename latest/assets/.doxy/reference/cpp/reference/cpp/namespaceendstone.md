@@ -84,6 +84,7 @@
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
 | class | [**ModalForm**](classendstone_1_1ModalForm.md) <br>_Represents a modal form with controls._  |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
+| class | [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) <br>_Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._  |
 | class | [**Packet**](classendstone_1_1Packet.md) <br>_Represents a packet._  |
 | class | [**Permissible**](classendstone_1_1Permissible.md) <br>_Represents an object that may become a server operator and can be assigned permissions._  |
 | class | [**Permission**](classendstone_1_1Permission.md) <br>_Represents a unique permission that may be attached to a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |

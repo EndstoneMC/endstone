@@ -341,6 +341,10 @@
          <lastmod>2025-01-12</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1OfflinePlayer/</loc>
+         <lastmod>2025-01-12</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Packet/</loc>
          <lastmod>2025-01-12</lastmod>
     </url>
@@ -1606,6 +1610,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message_8h_source/</loc>
+         <lastmod>2025-01-12</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/offline__player_8h/</loc>
+         <lastmod>2025-01-12</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/offline__player_8h_source/</loc>
          <lastmod>2025-01-12</lastmod>
     </url>
     <url>

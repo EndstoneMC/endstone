@@ -140,6 +140,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**vector.h**](vector_8h.md)     
         * **file** [**logger.h**](logger_8h.md)     
         * **file** [**message.h**](message_8h.md)     
+        * **file** [**offline\_player.h**](offline__player_8h.md)     
         * **file** [**player.h**](player_8h.md)     
         * **file** [**server.h**](server_8h.md)     
         * **file** [**skin.h**](skin_8h.md)     

@@ -241,6 +241,7 @@
         <argsstring>() const =0</argsstring>
         <name>getName</name>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642">getName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af">getName</reimplementedby>
         <briefdescription>
 <para>Gets the name of this command sender. </para>
         </briefdescription>

@@ -7,6 +7,7 @@
     <includes local="no">cstdint</includes>
     <includes local="no">string</includes>
     <includedby refid="player__ban__entry_8h" local="yes">include/endstone/ban/player_ban_entry.h</includedby>
+    <includedby refid="offline__player_8h" local="yes">include/endstone/offline_player.h</includedby>
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
     <incdepgraph>
@@ -36,7 +37,7 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="20">
+      <node id="21">
         <label>include/endstone/event/player/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>
@@ -56,18 +57,18 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/endstone/event/player/player_login_event.h</label>
         <link refid="player__login__event_8h_source"/>
       </node>
-      <node id="14">
+      <node id="15">
         <label>include/endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -92,19 +93,19 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/endstone/event/player/player_join_event.h</label>
         <link refid="player__join__event_8h_source"/>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
       </node>
-      <node id="21">
+      <node id="22">
         <label>include/endstone/event/player/player_interact_actor_event.h</label>
         <link refid="player__interact__actor__event_8h_source"/>
       </node>
@@ -118,19 +119,19 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>include/endstone/event/player/player_teleport_event.h</label>
         <link refid="player__teleport__event_8h_source"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/endstone/event/player/player_kick_event.h</label>
         <link refid="player__kick__event_8h_source"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
       </node>
@@ -150,15 +151,13 @@
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
-      <node id="15">
+      <node id="16">
         <label>include/endstone/event/block/block_break_event.h</label>
         <link refid="block__break__event_8h_source"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>include/endstone/event/player/player_event.h</label>
         <link refid="player__event_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
@@ -177,8 +176,10 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>include/endstone/event/player/player_chat_event.h</label>
         <link refid="player__chat__event_8h_source"/>
       </node>
@@ -188,6 +189,8 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -199,6 +202,12 @@
       <node id="8">
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
+      </node>
+      <node id="14">
+        <label>include/endstone/offline_player.h</label>
+        <link refid="offline__player_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
       </node>
       <node id="12">
         <label>include/endstone/scheduler/task.h</label>

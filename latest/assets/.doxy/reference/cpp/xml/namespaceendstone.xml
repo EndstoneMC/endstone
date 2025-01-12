@@ -82,6 +82,7 @@
     <innerclass refid="classendstone_1_1Logger" prot="public">endstone::Logger</innerclass>
     <innerclass refid="classendstone_1_1Packet" prot="public">endstone::Packet</innerclass>
     <innerclass refid="classendstone_1_1SpawnParticleEffectPacket" prot="public">endstone::SpawnParticleEffectPacket</innerclass>
+    <innerclass refid="classendstone_1_1OfflinePlayer" prot="public">endstone::OfflinePlayer</innerclass>
     <innerclass refid="classendstone_1_1Permissible" prot="public">endstone::Permissible</innerclass>
     <innerclass refid="classendstone_1_1Permission" prot="public">endstone::Permission</innerclass>
     <innerclass refid="classendstone_1_1PermissionAttachment" prot="public">endstone::PermissionAttachment</innerclass>

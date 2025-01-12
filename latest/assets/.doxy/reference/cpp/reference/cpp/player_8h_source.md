@@ -34,6 +34,7 @@
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/network/spawn_particle_effect_packet.h"
+#include "endstone/offline_player.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
@@ -41,7 +42,7 @@
 
 namespace endstone {
 
-class Player : public Mob {
+class Player : public Mob, public OfflinePlayer {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
@@ -52,7 +53,7 @@ public:
         return const_cast<Player *>(this);
     }
 
-    [[nodiscard]] virtual UUID getUniqueId() const = 0;
+    [[nodiscard]] std::string getName() const override = 0;
 
     [[nodiscard]] virtual std::string getXuid() const = 0;
 
