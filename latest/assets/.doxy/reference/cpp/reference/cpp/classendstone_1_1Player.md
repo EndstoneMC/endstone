@@ -178,6 +178,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual bool | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
 | virtual void | [**kick**](#function-kick) (std::string message) const = 0<br>_Kicks player with custom kick message._  |
 | virtual bool | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
+| virtual void | [**playSound**](#function-playsound) ([**Location**](classendstone_1_1Location.md) location, std::string sound, float volume, float pitch) = 0<br>_Play a sound for a player at the location._  |
 | virtual void | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._  |
 | virtual void | [**sendForm**](#function-sendform) (FormVariant form) = 0<br>_Sends a form to the player._  |
 | virtual void | [**sendPacket**](#function-sendpacket) ([**Packet**](classendstone_1_1Packet.md) & packet) const = 0<br>_Sends a packet to the player._  |
@@ -198,6 +199,8 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual void | [**spawnParticle**](#function-spawnparticle-24) (std::string name, float x, float y, float z) const = 0<br>_Spawns the particle at the target location._  |
 | virtual void | [**spawnParticle**](#function-spawnparticle-34) (std::string name, [**Location**](classendstone_1_1Location.md) location, std::optional&lt; std::string &gt; molang\_variables\_json) const = 0<br>_Spawns the particle at the target location._  |
 | virtual void | [**spawnParticle**](#function-spawnparticle-44) (std::string name, float x, float y, float z, std::optional&lt; std::string &gt; molang\_variables\_json) const = 0<br>_Spawns the particle at the target location._  |
+| virtual void | [**stopAllSounds**](#function-stopallsounds) () = 0<br>_Stop all sounds from playing._  |
+| virtual void | [**stopSound**](#function-stopsound) (std::string sound) = 0<br>_Stop the specified sound from playing._  |
 | virtual void | [**transfer**](#function-transfer) (std::string host, int port) const = 0<br>_Transfers the player to another server._  |
 | virtual void | [**updateCommands**](#function-updatecommands) () const = 0<br>_Send the list of commands to the client._  |
 
@@ -1105,6 +1108,39 @@ true if the command was successful, otherwise false
 
 
 
+### function playSound 
+
+_Play a sound for a player at the location._ 
+```C++
+virtual void endstone::Player::playSound (
+    Location location,
+    std::string sound,
+    float volume,
+    float pitch
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `location` The location to play the sound 
+* `sound` The internal sound name to play 
+* `volume` The volume of the sound 
+* `pitch` The pitch of the sound 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function resetTitle 
 
 _Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._ 
@@ -1663,6 +1699,47 @@ virtual void endstone::Player::spawnParticle (
 * `y` the position on the y axis to spawn at 
 * `z` the position on the z axis to spawn at 
 * `molang_variables_json` the customizable molang variables that can be adjusted for this particle, in json 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function stopAllSounds 
+
+_Stop all sounds from playing._ 
+```C++
+virtual void endstone::Player::stopAllSounds () = 0
+```
+
+
+
+
+<hr>
+
+
+
+### function stopSound 
+
+_Stop the specified sound from playing._ 
+```C++
+virtual void endstone::Player::stopSound (
+    std::string sound
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `sound` the sound to stop 
 
 
 

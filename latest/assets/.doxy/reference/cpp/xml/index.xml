@@ -773,10 +773,12 @@
     <member refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" kind="function"><name>getXuid</name></member>
     <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" kind="function"><name>getAddress</name></member>
-    <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" kind="function"><name>sendPopup</name></member>
-    <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" kind="function"><name>sendTip</name></member>
-    <member refid="classendstone_1_1Player_1a2558a7cac1d76547e05eee61db8cc1ea" kind="function"><name>sendToast</name></member>
+    <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
+    <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
+    <member refid="classendstone_1_1Player_1aa1ceee8a331905251a258d2a81df0120" kind="function"><name>playSound</name></member>
+    <member refid="classendstone_1_1Player_1a3cb05d6341f6edc50f3fe6d519cc82d9" kind="function"><name>stopSound</name></member>
+    <member refid="classendstone_1_1Player_1a413039a8c159c88eb8d9aa4923a08521" kind="function"><name>stopAllSounds</name></member>
     <member refid="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" kind="function"><name>giveExp</name></member>
     <member refid="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" kind="function"><name>giveExpLevels</name></member>
     <member refid="classendstone_1_1Player_1aefef97a98e1c193a0eeaf710f417b835" kind="function"><name>getExpProgress</name></member>
@@ -794,6 +796,9 @@
     <member refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" kind="function"><name>setWalkSpeed</name></member>
     <member refid="classendstone_1_1Player_1a2e15fa57398c698ffdbe96b1d4b8c350" kind="function"><name>getScoreboard</name></member>
     <member refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" kind="function"><name>setScoreboard</name></member>
+    <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" kind="function"><name>sendPopup</name></member>
+    <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" kind="function"><name>sendTip</name></member>
+    <member refid="classendstone_1_1Player_1a2558a7cac1d76547e05eee61db8cc1ea" kind="function"><name>sendToast</name></member>
     <member refid="classendstone_1_1Player_1a8d5283dfea450c42458778ee059ccfe6" kind="function"><name>sendTitle</name></member>
     <member refid="classendstone_1_1Player_1a8294c943551a0e2fa0e31362d332f41e" kind="function"><name>sendTitle</name></member>
     <member refid="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" kind="function"><name>resetTitle</name></member>
@@ -802,17 +807,15 @@
     <member refid="classendstone_1_1Player_1aa0489a19f104d571d9bc991c6a7b318c" kind="function"><name>spawnParticle</name></member>
     <member refid="classendstone_1_1Player_1a91fd4054da2dc306633023de123a94cf" kind="function"><name>spawnParticle</name></member>
     <member refid="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" kind="function"><name>getPing</name></member>
+    <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" kind="function"><name>getLocale</name></member>
     <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" kind="function"><name>updateCommands</name></member>
-    <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
+    <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" kind="function"><name>getInventory</name></member>
     <member refid="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" kind="function"><name>getGameMode</name></member>
     <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" kind="function"><name>setGameMode</name></member>
-    <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" kind="function"><name>getInventory</name></member>
-    <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" kind="function"><name>getLocale</name></member>
     <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" kind="function"><name>getDeviceOS</name></member>
     <member refid="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" kind="function"><name>getDeviceId</name></member>
     <member refid="classendstone_1_1Player_1af27fa164812bf2653148836631b98732" kind="function"><name>getGameVersion</name></member>
     <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kind="function"><name>getSkin</name></member>
-    <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" kind="function"><name>sendForm</name></member>
     <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" kind="function"><name>closeForm</name></member>
     <member refid="classendstone_1_1Player_1aa28e46523502cc4d0c4975fa92cfc067" kind="function"><name>sendPacket</name></member>
