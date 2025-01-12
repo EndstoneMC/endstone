@@ -20,3 +20,4 @@ add_executable(endstone_test
 )
 add_dependencies(endstone_test test_plugin)
 target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
+gtest_discover_tests(endstone_test)
