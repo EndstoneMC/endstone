@@ -22,15 +22,29 @@ def run_command(cmd):
 
 
 def upload_and_strip(ctx, org, project, auth_token, strip):
-    # Use sentry-cli to upload all debug files from the unpacked wheel
-    cmd = ["sentry-cli", "debug-files", "upload", "-o", org, "-p", project, "--include-sources", str(ctx.path)]
     if auth_token:
-        cmd += ["--auth-token", auth_token]
+        print("Uploading debug files to sentry...")
+        # Use sentry-cli to upload all debug files from the unpacked wheel
+        cmd = [
+            "sentry-cli",
+            "debug-files",
+            "upload",
+            "-o",
+            org,
+            "-p",
+            project,
+            "--include-sources",
+            "--auth-token",
+            auth_token,
+            str(ctx.path),
+        ]
 
-    run_command(cmd)
+        run_command(cmd)
+    else:
+        print("Skipping uploading debug files as no auth token is specified...")
 
     if strip:
-        # Remove all .pdb and .dbg files after upload
+        print("Stripping debug files from the wheel file...")
         for root, _, filenames in os.walk(ctx.path):
             for file in filenames:
                 file_path = Path(root) / file
