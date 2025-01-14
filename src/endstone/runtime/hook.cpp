@@ -27,15 +27,19 @@
 #include "endstone/detail/platform.h"
 
 namespace endstone::hook {
-
 namespace {
-std::unordered_map<entt::hashed_string::hash_type, void *> gOriginalsByName;
+using OriginalMap = std::unordered_map<entt::hashed_string::hash_type, void *>;
+OriginalMap &originals()
+{
+    static OriginalMap originals;
+    return originals;
+}
 }  // namespace
 
 void *get_original(entt::hashed_string::hash_type name)
 {
-    const auto it = gOriginalsByName.find(name);
-    if (it == gOriginalsByName.end()) {
+    const auto it = originals().find(name);
+    if (it == originals().end()) {
         throw std::runtime_error("original function not found");
     }
     return it->second;
@@ -49,9 +53,9 @@ const std::unordered_map<std::string, void *> &get_targets()
     }
     auto *executable_base = detail::get_executable_base();
     detail::foreach_symbol([executable_base](const auto &key, auto offset) {
-        SPDLOG_DEBUG("T: {} -> 0x{:x}", key.data(), offset);
+        SPDLOG_DEBUG("T: {} -> 0x{:x}", key, offset);
         auto *target = static_cast<char *>(executable_base) + offset;
-        targets.emplace(key.data(), target);
+        targets.emplace(key, target);
     });
     return targets;
 }
@@ -78,7 +82,7 @@ void install()
             }
 
             SPDLOG_DEBUG("{}: {} -> {} -> {}", name, target, detour, original);
-            gOriginalsByName.emplace(entt::hashed_string{name.c_str()}, original);
+            originals().emplace(entt::hashed_string::value(name.c_str()), original);
         }
         else {
             throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
