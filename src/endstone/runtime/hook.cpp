@@ -35,7 +35,7 @@ static OriginalMap &originals()  // NOLINT(*-use-anonymous-namespace)
     return originals;
 }
 
-void *get_original(entt::hashed_string::hash_type name)
+void *&get_original(entt::hashed_string::hash_type name)
 {
     const auto it = originals().find(name);
     if (it == originals().end()) {

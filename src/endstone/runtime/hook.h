@@ -23,21 +23,20 @@
 namespace endstone::hook {
 namespace details {
 const std::error_category &error_category();
-void *get_original(entt::hashed_string::hash_type name);
+void *&get_original(entt::hashed_string::hash_type name);
 const std::unordered_map<std::string, void *> &get_targets();
 const std::unordered_map<std::string, void *> &get_detours();
 }  // namespace details
 
 void install();
-template <entt::hashed_string::hash_type name>
+template <entt::hashed_string::hash_type Name>
 void *get_original()
 {
-    static void *original = nullptr;
+    static void **original = nullptr;
     if (!original) {
-        original = details::get_original(name);
+        original = &details::get_original(Name);
     }
-
-    return original;
+    return *original;
 }
 }  // namespace endstone::hook
 
