@@ -32,19 +32,13 @@
 namespace endstone::devtools {
 
 namespace {
-double round(double d)
+double truncate(const double value, int decimal_places = 6)
 {
-    d *= 1000000.0;
-    if (d >= 0) {
-        d += 0.5;
-    }
-    else {
-        d -= 0.5;
-    }
-    return static_cast<int>(d) / 1000000.0;
+    const double scale = std::pow(10.0, decimal_places);
+    return std::trunc(value * scale) / scale;
 }
 
-void dumpBlockData(VanillaData &data, ::Level &level)
+void dumpBlockData(VanillaData &data, const ::Level &level)
 {
     auto overworld = level.getDimension(VanillaDimensions::Overworld);
     auto &region = overworld->getBlockSourceFromMainChunkSource();
@@ -89,12 +83,12 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"blockStateHash", block.getRuntimeId()},
                 {"burnOdds", block.getBurnOdds()},
                 {"flameOdds", block.getFlameOdds()},
-                {"thickness", round(block.getThickness())},
+                {"thickness", truncate(block.getThickness())},
                 {"lightDampening", block.getLight()},
                 {"lightEmission", block.getLightEmission()},
-                {"explosionResistance", round(block.getExplosionResistance())},
-                {"friction", round(block.getFriction())},
-                {"hardness", round(block.getDestroySpeed())},
+                {"explosionResistance", truncate(block.getExplosionResistance())},
+                {"friction", truncate(block.getFriction())},
+                {"hardness", truncate(block.getDestroySpeed())},
                 {"canContainLiquidSource", block.getDirectData().water_detection_rule.can_contain_liquid},
                 {"liquidReactionOnTouch",
                  magic_enum::enum_name(block.getDirectData().water_detection_rule.on_liquid_touches)},
@@ -104,48 +98,48 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"mapColor", map_color.toHexString()},
                 {"collisionShape",
                  {
-                     round(collision_shape.min.x),
-                     round(collision_shape.min.y),
-                     round(collision_shape.min.z),
-                     round(collision_shape.max.x),
-                     round(collision_shape.max.y),
-                     round(collision_shape.max.z),
+                     truncate(collision_shape.min.x),
+                     truncate(collision_shape.min.y),
+                     truncate(collision_shape.min.z),
+                     truncate(collision_shape.max.x),
+                     truncate(collision_shape.max.y),
+                     truncate(collision_shape.max.z),
                  }},
                 {"outlineShape",
                  {
-                     round(outline_shape.min.x),
-                     round(outline_shape.min.y),
-                     round(outline_shape.min.z),
-                     round(outline_shape.max.x),
-                     round(outline_shape.max.y),
-                     round(outline_shape.max.z),
+                     truncate(outline_shape.min.x),
+                     truncate(outline_shape.min.y),
+                     truncate(outline_shape.min.z),
+                     truncate(outline_shape.max.x),
+                     truncate(outline_shape.max.y),
+                     truncate(outline_shape.max.z),
                  }},
                 {"visualShape",
                  {
-                     round(visual_shape.min.x),
-                     round(visual_shape.min.y),
-                     round(visual_shape.min.z),
-                     round(visual_shape.max.x),
-                     round(visual_shape.max.y),
-                     round(visual_shape.max.z),
+                     truncate(visual_shape.min.x),
+                     truncate(visual_shape.min.y),
+                     truncate(visual_shape.min.z),
+                     truncate(visual_shape.max.x),
+                     truncate(visual_shape.max.y),
+                     truncate(visual_shape.max.z),
                  }},
                 {"uiShape",
                  {
-                     round(ui_shape.min.x),
-                     round(ui_shape.min.y),
-                     round(ui_shape.min.z),
-                     round(ui_shape.max.x),
-                     round(ui_shape.max.y),
-                     round(ui_shape.max.z),
+                     truncate(ui_shape.min.x),
+                     truncate(ui_shape.min.y),
+                     truncate(ui_shape.min.z),
+                     truncate(ui_shape.max.x),
+                     truncate(ui_shape.max.y),
+                     truncate(ui_shape.max.z),
                  }},
                 {"liquidClipShape",
                  {
-                     round(liquid_clip_shape.min.x),
-                     round(liquid_clip_shape.min.y),
-                     round(liquid_clip_shape.min.z),
-                     round(liquid_clip_shape.max.x),
-                     round(liquid_clip_shape.max.y),
-                     round(liquid_clip_shape.max.z),
+                     truncate(liquid_clip_shape.min.x),
+                     truncate(liquid_clip_shape.min.y),
+                     truncate(liquid_clip_shape.min.z),
+                     truncate(liquid_clip_shape.max.x),
+                     truncate(liquid_clip_shape.max.y),
+                     truncate(liquid_clip_shape.max.z),
                  }},
             });
             data.block_palette.add(block.getSerializationId().copy());
@@ -155,7 +149,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
     });
 }
 
-void dumpItemData(VanillaData &data, ::Level &level)
+void dumpItemData(VanillaData &data, const ::Level &level)
 {
     auto item_registry = level.getItemRegistry();
     for (const auto &[key, item] : item_registry.getNameToItemMap()) {
