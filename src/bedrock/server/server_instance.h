@@ -16,18 +16,29 @@
 
 #include "bedrock/app_platform_listener.h"
 #include "bedrock/core/file/storage_area_state_listener.h"
+#include "bedrock/network/loopback_packet_sender.h"
+#include "bedrock/util/timer.h"
 #include "bedrock/world/game_callbacks.h"
+#include "bedrock/world/game_session.h"
 #include "bedrock/world/minecraft.h"
+
+class ServerInstanceEventCoordinator;
 
 class ServerInstance : public Bedrock::EnableNonOwnerReferences,
                        public AppPlatformListener,
                        public GameCallbacks,
                        public Core::StorageAreaStateListener {
 public:
-    Minecraft &getMinecraft();
+    ServerInstance(IMinecraftApp &, const Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> &);
+    Minecraft *getMinecraft();
+    PacketSender &getPacketSender();
 
 private:
-    std::chrono::steady_clock::time_point last_sync_time_;  // +152
-    IMinecraftApp *app_;                                    // +160
-    std::unique_ptr<Minecraft> minecraft_;                  // +168
+    std::chrono::steady_clock::time_point last_sync_time_;
+    IMinecraftApp &app_;
+    std::unique_ptr<Minecraft> minecraft_;
+    std::unique_ptr<ServerNetworkSystem> network_;
+    std::unique_ptr<LoopbackPacketSender> packet_sender_;
+    std::unique_ptr<Timer> sim_timer_;
+    std::unique_ptr<Timer> real_timer_;
 };

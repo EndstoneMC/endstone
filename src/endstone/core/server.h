@@ -58,7 +58,6 @@ public:
     [[nodiscard]] Language &getLanguage() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
     void setCommandMap(std::unique_ptr<EndstoneCommandMap> command_map);
-    [[nodiscard]] MinecraftCommands &getMinecraftCommands() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
     [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
@@ -76,7 +75,7 @@ public:
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] int getMaxPlayers() const override;
     Result<void> setMaxPlayers(int max_players) override;
-    [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
+    [[nodiscard]] Player *getPlayer(UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
     [[nodiscard]] Player *getPlayer(const ::NetworkIdentifier &network_id, SubClientId sub_id) const;
 
@@ -113,8 +112,9 @@ public:
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
     void removePlayerBoard(EndstonePlayer &player);
-    [[nodiscard]] ::ServerNetworkHandler &getServerNetworkHandler() const;
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
+
+    ::ServerInstance &getServer() const;
 
     static constexpr int MaxPlayers = 200;
     static constexpr int TargetTicksPerSecond = 20;

@@ -141,11 +141,6 @@ void EndstoneServer::setCommandMap(std::unique_ptr<EndstoneCommandMap> command_m
     command_map_ = std::move(command_map);
 }
 
-MinecraftCommands &EndstoneServer::getMinecraftCommands() const
-{
-    return server_instance_->getMinecraft().getCommands();
-}
-
 PluginManager &EndstoneServer::getPluginManager() const
 {
     return *plugin_manager_;
@@ -261,7 +256,7 @@ std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 
 int EndstoneServer::getMaxPlayers() const
 {
-    return getServerNetworkHandler().max_num_players_;
+    return getServer().getMinecraft()->getServerNetworkHandler()->max_num_players_;
 }
 
 Result<void> EndstoneServer::setMaxPlayers(int max_players)
@@ -273,8 +268,8 @@ Result<void> EndstoneServer::setMaxPlayers(int max_players)
         return nonstd::make_unexpected(
             make_error("Max number of players must not exceed the hard limit {}", MaxPlayers));
     }
-    getServerNetworkHandler().max_num_players_ = max_players;
-    getServerNetworkHandler().updateServerAnnouncement();
+    getServer().getMinecraft()->getServerNetworkHandler()->max_num_players_ = max_players;
+    getServer().getMinecraft()->getServerNetworkHandler()->updateServerAnnouncement();
     return {};
 }
 
@@ -310,13 +305,13 @@ Player *EndstoneServer::getPlayer(const NetworkIdentifier &network_id, SubClient
 
 bool EndstoneServer::getOnlineMode() const
 {
-    return getServerNetworkHandler().network_server_config_.require_trusted_authentication;
+    return getServer().getMinecraft()->getServerNetworkHandler()->network_server_config_.require_trusted_authentication;
 }
 
 void EndstoneServer::shutdown()
 {
     static_cast<EndstoneScheduler &>(getScheduler()).runTask([this]() {
-        server_instance_->getMinecraft().requestServerShutdown("");
+        server_instance_->getMinecraft()->requestServerShutdown("");
     });
 }
 
@@ -341,7 +336,7 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
-    server_instance_->getMinecraft().requestResourceReload();
+    server_instance_->getMinecraft()->requestResourceReload();
     level_->getHandle().loadFunctionManager();
 }
 
@@ -514,11 +509,6 @@ void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
     player_boards_.erase(&player);
 }
 
-::ServerNetworkHandler &EndstoneServer::getServerNetworkHandler() const
-{
-    return *server_instance_->getMinecraft().getServerNetworkHandler();
-}
-
 void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()> &tick_function)
 {
     using namespace std::chrono;
@@ -535,6 +525,11 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
     average_mspt_[idx] = current_mspt_;
     average_tps_[idx] = current_tps_;
     average_usage_[idx] = current_usage_;
+}
+
+ServerInstance &EndstoneServer::getServer() const
+{
+    return *server_instance_;
 }
 
 }  // namespace endstone::core

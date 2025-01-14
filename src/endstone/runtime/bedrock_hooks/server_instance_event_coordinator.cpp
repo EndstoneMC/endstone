@@ -45,7 +45,7 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &level = *instance.getMinecraft().getLevel();
+    auto &level = *instance.getMinecraft()->getLevel();
     server.setLevel(std::make_unique<EndstoneLevel>(level));
     server.setScoreboard(std::make_unique<EndstoneScoreboard>(level.getScoreboard()));
     server.setCommandMap(std::make_unique<endstone::core::EndstoneCommandMap>(server));

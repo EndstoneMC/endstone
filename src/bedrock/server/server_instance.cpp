@@ -14,7 +14,12 @@
 
 #include "bedrock/server/server_instance.h"
 
-Minecraft &ServerInstance::getMinecraft()
+Minecraft *ServerInstance::getMinecraft()
 {
-    return *minecraft_;
+    return minecraft_.get();
+}
+
+PacketSender &ServerInstance::getPacketSender()
+{
+    return *packet_sender_;
 }

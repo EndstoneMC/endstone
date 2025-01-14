@@ -375,9 +375,9 @@ void EndstonePlayer::sendToast(std::string title, std::string content) const
 void EndstonePlayer::kick(std::string message) const
 {
     auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
-    server_.getServerNetworkHandler().disconnectClient(component->network_id, component->client_sub_id,
-                                                       Connection::DisconnectFailReason::Kicked, message, std::nullopt,
-                                                       false);
+    server_.getServer().getMinecraft()->getServerNetworkHandler()->disconnectClient(
+        component->network_id, component->client_sub_id, Connection::DisconnectFailReason::Kicked, message,
+        std::nullopt, false);
 }
 
 void EndstonePlayer::giveExp(int amount)
@@ -563,7 +563,7 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
 
 void EndstonePlayer::updateCommands() const
 {
-    auto &registry = server_.getMinecraftCommands().getRegistry();
+    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
     auto &command_map = server_.getCommandMap();

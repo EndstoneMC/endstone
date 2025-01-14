@@ -119,7 +119,7 @@ void EndstoneCommandMap::setDefaultCommands()
 
 void EndstoneCommandMap::setMinecraftCommands()
 {
-    auto &registry = server_.getMinecraftCommands().getRegistry();
+    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
 
     std::unordered_map<std::string, std::vector<std::string>> command_aliases;
     for (const auto &[alias, command_name] : registry.aliases_) {
@@ -148,7 +148,7 @@ void EndstoneCommandMap::setMinecraftCommands()
         }
 
         auto command = std::make_shared<CommandWrapper>(
-            server_.getMinecraftCommands(),
+            server_.getServer().getMinecraft()->getCommands(),
             std::make_unique<MinecraftCommand>(command_name, description, usages, aliases));
         command->registerTo(*this);
 
@@ -174,7 +174,7 @@ void EndstoneCommandMap::setPluginCommands()
     for (auto *plugin : plugins) {
         auto name = plugin->getName();
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        server_.getMinecraftCommands().getRegistry().addEnumValues("PluginName", {name});
+        server_.getServer().getMinecraft()->getCommands().getRegistry().addEnumValues("PluginName", {name});
 
         auto commands = plugin->getDescription().getCommands();
         for (const auto &command : commands) {
@@ -207,14 +207,14 @@ std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols =
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
     std::lock_guard lock(mutex_);
-    auto &registry = server_.getMinecraftCommands().getRegistry();
+    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
 
     if (!command) {
         server_.getLogger().error("Unable to register a null command.");
         return false;
     }
 
-    auto wrapped = std::make_shared<CommandWrapper>(server_.getMinecraftCommands(), command);
+    auto wrapped = std::make_shared<CommandWrapper>(server_.getServer().getMinecraft()->getCommands(), command);
     command = wrapped;
 
     // Check if the command name is available
@@ -353,7 +353,7 @@ struct {
 void EndstoneCommandMap::patchCommandRegistry()
 {
     std::lock_guard lock(mutex_);
-    auto &registry = server_.getMinecraftCommands().getRegistry();
+    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
 
     // remove the vanilla `/reload` command (to be replaced by ours)
     registry.signatures_.erase("reload");
@@ -361,7 +361,7 @@ void EndstoneCommandMap::patchCommandRegistry()
 
 void EndstoneCommandMap::saveCommandRegistryState() const
 {
-    auto &registry = server_.getMinecraftCommands().getRegistry();
+    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
     gCommandRegistryState.enums = registry.enums_;
     gCommandRegistryState.enum_lookup = registry.enum_lookup_;
     gCommandRegistryState.signatures = registry.signatures_;
@@ -370,7 +370,7 @@ void EndstoneCommandMap::saveCommandRegistryState() const
 
 void EndstoneCommandMap::restoreCommandRegistryState() const
 {
-    auto &registry = server_.getMinecraftCommands().getRegistry();
+    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
     registry.enums_ = gCommandRegistryState.enums;
     registry.enum_lookup_ = gCommandRegistryState.enum_lookup;
     registry.signatures_ = gCommandRegistryState.signatures;
