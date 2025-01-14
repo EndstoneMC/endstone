@@ -18,9 +18,8 @@
 #include <string>
 #include <variant>
 
-#include <bedrock/core/math/vec3.h>
-
 #include "bedrock/bedrock.h"
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/nbt/byte_array_tag.h"
 #include "bedrock/nbt/byte_tag.h"
 #include "bedrock/nbt/double_tag.h"

@@ -16,8 +16,15 @@
 
 #include <string>
 
-#include "bedrock/bedrock.h"
-
 namespace Common {
 std::string getGameVersionString();
-}
+}  // namespace Common
+
+namespace SharedConstants {
+static constexpr int TicksPerSecond = 20;
+constexpr float SecondsPerTick = 1.0 / TicksPerSecond;
+constexpr float MilliSecondsPerTick = SecondsPerTick * 1000;
+constexpr int TicksPerMinute = TicksPerSecond * 60;
+constexpr int TotalTrialTicks = TicksPerMinute * 90;
+constexpr uint8_t NetworkMaxSubClients = 4;
+}  // namespace SharedConstants

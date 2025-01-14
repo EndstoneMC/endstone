@@ -14,9 +14,7 @@
 
 #include "endstone/core/game_mode.h"
 
-#include <string_view>
-
-#include <endstone/detail/utility.h>
+#include "endstone/detail/utility.h"
 
 namespace endstone::core {
 

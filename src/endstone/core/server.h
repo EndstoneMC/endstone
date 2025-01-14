@@ -20,6 +20,7 @@
 
 #include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/shared_constants.h"
 #include "endstone/core/ban/ip_ban_list.h"
 #include "endstone/core/ban/player_ban_list.h"
 #include "endstone/core/command/command_map.h"
@@ -114,11 +115,9 @@ public:
     void removePlayerBoard(EndstonePlayer &player);
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
 
-    ::ServerInstance &getServer() const;
+    [[nodiscard]] ServerInstance &getServer() const;
 
     static constexpr int MaxPlayers = 200;
-    static constexpr int TargetTicksPerSecond = 20;
-    static constexpr int TargetMillisecondsPerTick = 1000 / TargetTicksPerSecond;
 
 private:
     friend class EndstonePlayer;
@@ -146,12 +145,12 @@ private:
     Bedrock::NonOwnerPointer<IResourcePackRepository> resource_pack_repository_;
     std::unique_ptr<EndstonePackSource> resource_pack_source_;
     int tick_counter_ = 0;
-    float current_mspt_ = TargetMillisecondsPerTick * 1.0F;
-    float average_mspt_[TargetTicksPerSecond] = {TargetMillisecondsPerTick};
-    float current_tps_ = TargetTicksPerSecond * 1.0F;
-    float average_tps_[TargetTicksPerSecond] = {TargetTicksPerSecond};
+    float current_mspt_ = SharedConstants::MilliSecondsPerTick * 1.0F;
+    float average_mspt_[SharedConstants::TicksPerSecond] = {SharedConstants::MilliSecondsPerTick};
+    float current_tps_ = SharedConstants::TicksPerSecond * 1.0F;
+    float average_tps_[SharedConstants::TicksPerSecond] = {SharedConstants::TicksPerSecond};
     float current_usage_ = 0.0F;
-    float average_usage_[TargetTicksPerSecond] = {0.0F};
+    float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
 };
 
 }  // namespace endstone::core

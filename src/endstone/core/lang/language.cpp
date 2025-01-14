@@ -14,7 +14,7 @@
 
 #include "endstone/core/lang/language.h"
 
-#include <bedrock/locale/i18n.h>
+#include "bedrock/locale/i18n.h"
 
 namespace endstone::core {
 

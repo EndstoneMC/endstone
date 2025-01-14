@@ -14,10 +14,9 @@
 
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 
-#include <endstone/core/game_mode.h>
-
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
 #include "endstone/core/player.h"

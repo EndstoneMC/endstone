@@ -398,7 +398,8 @@ float EndstoneServer::getCurrentMillisecondsPerTick()
 
 float EndstoneServer::getAverageMillisecondsPerTick()
 {
-    return std::accumulate(average_mspt_, average_mspt_ + TargetTicksPerSecond, 0.0F) / TargetTicksPerSecond;
+    return std::accumulate(average_mspt_, average_mspt_ + SharedConstants::TicksPerSecond, 0.0F) /
+           SharedConstants::TicksPerSecond;
 }
 
 float EndstoneServer::getCurrentTicksPerSecond()
@@ -408,7 +409,8 @@ float EndstoneServer::getCurrentTicksPerSecond()
 
 float EndstoneServer::getAverageTicksPerSecond()
 {
-    return std::accumulate(average_tps_, average_tps_ + TargetTicksPerSecond, 0.0F) / TargetTicksPerSecond;
+    return std::accumulate(average_tps_, average_tps_ + SharedConstants::TicksPerSecond, 0.0F) /
+           SharedConstants::TicksPerSecond;
 }
 
 float EndstoneServer::getCurrentTickUsage()
@@ -418,7 +420,8 @@ float EndstoneServer::getCurrentTickUsage()
 
 float EndstoneServer::getAverageTickUsage()
 {
-    return std::accumulate(average_usage_, average_usage_ + TargetTicksPerSecond, 0.0F) / TargetTicksPerSecond;
+    return std::accumulate(average_usage_, average_usage_ + SharedConstants::TicksPerSecond, 0.0F) /
+           SharedConstants::TicksPerSecond;
 }
 
 std::chrono::system_clock::time_point EndstoneServer::getStartTime()
@@ -519,9 +522,10 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
     tick_function();
 
     current_mspt_ = static_cast<float>(duration_cast<milliseconds>(steady_clock::now() - tick_time).count());
-    current_tps_ = std::min(static_cast<float>(TargetTicksPerSecond), 1000.0F / std::max(1.0F, current_mspt_));
-    current_usage_ = std::min(1.0F, current_mspt_ / TargetMillisecondsPerTick);
-    const auto idx = current_tick % TargetTicksPerSecond;
+    current_tps_ =
+        std::min(static_cast<float>(SharedConstants::TicksPerSecond), 1000.0F / std::max(1.0F, current_mspt_));
+    current_usage_ = std::min(1.0F, current_mspt_ / SharedConstants::MilliSecondsPerTick);
+    const auto idx = current_tick % SharedConstants::TicksPerSecond;
     average_mspt_[idx] = current_mspt_;
     average_tps_[idx] = current_tps_;
     average_usage_[idx] = current_usage_;

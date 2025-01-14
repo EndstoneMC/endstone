@@ -16,7 +16,7 @@
 
 #include <type_traits>
 
-#include <bedrock/world/events/event_variant.h>
+#include "bedrock/world/events/event_variant.h"
 #include <entt/entt.hpp>
 
 namespace Details {

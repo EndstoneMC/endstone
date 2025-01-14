@@ -38,7 +38,6 @@ CheckOptions:
   readability-identifier-naming.ClassMemberCase: CamelCase
   readability-identifier-naming.ClassMemberPrefix: 'm'
   readability-identifier-naming.ClassMethodCase: camelBack
-  readability-identifier-naming.ConstantCase: lower_case
   readability-identifier-naming.ConstantMemberCase: lower_case
   readability-identifier-naming.ConstantMemberSuffix: ''
   readability-identifier-naming.ConstantParameterCase: lower_case
@@ -47,7 +46,6 @@ CheckOptions:
   readability-identifier-naming.EnumConstantCase: CamelCase
   readability-identifier-naming.FunctionCase: aNy_CasE
   readability-identifier-naming.GlobalVariableCase: CamelCase
-  readability-identifier-naming.GlobalVariablePrefix: 'g'
   readability-identifier-naming.InlineNamespaceCase: CamelCase
   readability-identifier-naming.LocalConstantCase: lower_case
   readability-identifier-naming.LocalConstantPointerCase: lower_case
