@@ -21,17 +21,27 @@
 #include "endstone/detail/cast.h"
 
 namespace endstone::hook {
-void install();
+namespace details {
 const std::error_category &error_category();
 void *get_original(entt::hashed_string::hash_type name);
 const std::unordered_map<std::string, void *> &get_targets();
 const std::unordered_map<std::string, void *> &get_detours();
+}  // namespace details
+
+void install();
+template <entt::hashed_string::hash_type name>
+void *get_original()
+{
+    static void *original = nullptr;
+    if (!original) {
+        original = details::get_original(name);
+    }
+
+    return original;
+}
 }  // namespace endstone::hook
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, __FUNCDNAME__, ##__VA_ARGS__)
-#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                                \
-    std::invoke(                                                                                                       \
-        endstone::detail::fp_cast(                                                                                     \
-            fp, endstone::hook::get_original(                                                                          \
-                    std::integral_constant<entt::hashed_string::hash_type, entt::hashed_string::value(name)>::value)), \
-        ##__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                          \
+    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_original<entt::hashed_string::value(name)>()), \
+                ##__VA_ARGS__)

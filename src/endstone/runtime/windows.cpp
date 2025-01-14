@@ -28,8 +28,6 @@
 
 #include "endstone/detail/platform.h"
 
-namespace endstone::hook {
-
 enum SymTagEnum {
     SymTagPublicSymbol = 10,
 };
@@ -77,6 +75,7 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 }
 }  // namespace
 
+namespace endstone::hook::details {
 const std::unordered_map<std::string, void *> &get_detours()
 {
     static std::unordered_map<std::string, void *> detours;
@@ -99,6 +98,6 @@ const std::unordered_map<std::string, void *> &get_detours()
         false);  // set load_symbol to false so symbols are limited to the export table
     return detours;
 }
-}  // namespace endstone::hook
+}  // namespace endstone::hook::details
 
 #endif

@@ -27,14 +27,13 @@
 #include "endstone/detail/platform.h"
 
 namespace endstone::hook {
-namespace {
+namespace details {
 using OriginalMap = std::unordered_map<entt::hashed_string::hash_type, void *>;
-OriginalMap &originals()
+static OriginalMap &originals()  // NOLINT(*-use-anonymous-namespace)
 {
     static OriginalMap originals;
     return originals;
 }
-}  // namespace
 
 void *get_original(entt::hashed_string::hash_type name)
 {
@@ -58,36 +57,6 @@ const std::unordered_map<std::string, void *> &get_targets()
         targets.emplace(key, target);
     });
     return targets;
-}
-
-void install()
-{
-    const auto &detours = get_detours();
-    const auto &targets = get_targets();
-
-    for (const auto &[name, detour] : detours) {
-        if (auto it = targets.find(name); it != targets.end()) {
-            void *target = it->second;
-            void *original = target;
-
-            funchook_t *hook = funchook_create();
-            int status = funchook_prepare(hook, &original, detour);
-            if (status != 0) {
-                throw std::system_error(status, error_category(), fmt::format("Unable to hook {}", name));
-            }
-
-            status = funchook_install(hook, 0);
-            if (status != 0) {
-                throw std::system_error(status, error_category(), fmt::format("Unable to hook {}", name));
-            }
-
-            SPDLOG_DEBUG("{}: {} -> {} -> {}", name, target, detour, original);
-            originals().emplace(entt::hashed_string::value(name.c_str()), original);
-        }
-        else {
-            throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
-        }
-    }
 }
 
 const std::error_category &error_category()
@@ -135,4 +104,36 @@ const std::error_category &error_category()
     } category;
     return category;
 }
+}  // namespace details
+
+void install()
+{
+    const auto &detours = details::get_detours();
+    const auto &targets = details::get_targets();
+
+    for (const auto &[name, detour] : detours) {
+        if (auto it = targets.find(name); it != targets.end()) {
+            void *target = it->second;
+            void *original = target;
+
+            funchook_t *hook = funchook_create();
+            int status = funchook_prepare(hook, &original, detour);
+            if (status != 0) {
+                throw std::system_error(status, details::error_category(), fmt::format("Unable to hook {}", name));
+            }
+
+            status = funchook_install(hook, 0);
+            if (status != 0) {
+                throw std::system_error(status, details::error_category(), fmt::format("Unable to hook {}", name));
+            }
+
+            SPDLOG_DEBUG("{}: {} -> {} -> {}", name, target, detour, original);
+            details::originals().emplace(entt::hashed_string::value(name.c_str()), original);
+        }
+        else {
+            throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
+        }
+    }
+}
+
 }  // namespace endstone::hook

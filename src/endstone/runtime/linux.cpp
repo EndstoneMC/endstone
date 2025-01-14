@@ -74,7 +74,7 @@ void read_elf(const std::string &module_pathname, uint32_t section_type,
 }
 }  // namespace
 
-namespace endstone::hook {
+namespace endstone::hook::details {
 
 const std::unordered_map<std::string, void *> &get_detours()
 {
@@ -103,6 +103,6 @@ const std::unordered_map<std::string, void *> &get_detours()
     });
     return detours;
 }
-}  // namespace endstone::hook
+}  // namespace endstone::hook::details
 
 #endif
