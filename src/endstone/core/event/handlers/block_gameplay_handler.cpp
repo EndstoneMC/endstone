@@ -23,6 +23,7 @@
 #include "endstone/core/player.h"
 #include "endstone/event/actor/actor_explode_event.h"
 #include "endstone/event/block/block_break_event.h"
+#include "endstone/event/block/block_piston_event.h"
 #include "endstone/event/block/block_place_event.h"
 
 namespace endstone::core {
