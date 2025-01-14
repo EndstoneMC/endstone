@@ -1,8 +1,10 @@
 .dockerignore
 Dockerfile
 
+.github
 bedrock_server
 build
+dist
 venv
 wheelhouse
 CMakeUserPresets.json

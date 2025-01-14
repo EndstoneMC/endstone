@@ -109,9 +109,5 @@ if __name__ == "__main__":
         print(f"Error: File {wheel_file_path} does not exist.")
         exit(1)
 
-    if not dest_dir_path.exists():
-        print(f"Error: Destination directory {dest_dir_path} does not exist.")
-        exit(1)
-
     process_wheel(wheel_file_path, org, project, auth_token, dest_dir_path, args.strip)
     print(f"Successfully processed the wheel file: {wheel_file_path}")

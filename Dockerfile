@@ -1,9 +1,10 @@
-FROM python:3.12-slim-bullseye as base
+FROM python:3.12-slim-bullseye AS base
 
 LABEL maintainer="Endstone <hello@endstone.dev>"
 
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONIOENCODING=UTF-8
+    PYTHONIOENCODING=UTF-8 \
+    AUDITWHEEL_PLAT=manylinux_2_31_x86_64
 
 FROM base AS builder
 
@@ -23,7 +24,7 @@ RUN apt-get update -y -qq \
 ENV CC=clang \
     CXX=clang++
 
-ARG CMAKE_VERSION=3.26.6
+ARG CMAKE_VERSION=3.31.4
 
 ARG CMAKE_SH=cmake-${CMAKE_VERSION}-linux-x86_64.sh
 
@@ -38,13 +39,13 @@ RUN apt-get update -y -qq \
 
 WORKDIR /usr/src/endstone
 
-RUN git clone https://github.com/EndstoneMC/endstone.git .
+COPY . .
 
 RUN python -m pip install --upgrade pip \
-    && pip install wheel auditwheel setuptools "patchelf>=0.14" pytest \
-    && python -m pip wheel . --no-deps --wheel-dir=wheelhouse --verbose \
-    && python -m auditwheel --verbose repair --plat manylinux_2_31_x86_64 -w dist wheelhouse/*.whl \
-    && pip install dist/*-manylinux_2_31_x86_64.whl \
+    && pip install wheel auditwheel sentry-cli setuptools "patchelf>=0.14" pytest \
+    && python -m pip wheel . --no-deps --wheel-dir=dist --verbose \
+    && python scripts/repair_wheel.py -o endstone -p endstone -w wheelhouse dist/*.whl \
+    && pip install wheelhouse/*-${AUDITWHEEL_PLAT}.whl \
     && pytest tests/endstone/python
 
 FROM base AS final
@@ -61,10 +62,10 @@ RUN useradd -m -s /bin/bash endstone \
 
 WORKDIR /home/endstone
 
-COPY --from=builder /usr/src/endstone/dist .
+COPY --from=builder /usr/src/endstone/wheelhouse .
 
 RUN python -m pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir ./*-manylinux_2_31_x86_64.whl \
+    && pip install --no-cache-dir ./*-${AUDITWHEEL_PLAT}.whl \
     && rm ./*.whl
 
 USER endstone
