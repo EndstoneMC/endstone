@@ -38,6 +38,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**BlockEvent**](classendstone_1_1BlockEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**BlockState**](classendstone_1_1BlockState.md)

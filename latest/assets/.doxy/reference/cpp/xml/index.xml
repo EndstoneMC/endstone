@@ -172,6 +172,13 @@
     <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" kind="function"><name>~BlockEvent</name></member>
     <member refid="classendstone_1_1BlockEvent_1ae5bdd3abb11f98e4d3929a6f40bbb26a" kind="function"><name>getBlock</name></member>
   </compound>
+  <compound refid="classendstone_1_1BlockPistonEvent" kind="class"><name>endstone::BlockPistonEvent</name>
+    <member refid="classendstone_1_1BlockPistonEvent_1ab8569c094d15573abb55f975fa7f5577" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1BlockPistonEvent_1a01a8530261f46c8affc9f69e0e00e172" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1BlockPistonEvent_1aa7dd79874ce053b709f8e3e35fe8df78" kind="function"><name>BlockPistonEvent</name></member>
+    <member refid="classendstone_1_1BlockPistonEvent_1ad6544a645c1ac2a2b61734d2b66423dc" kind="function"><name>~BlockPistonEvent</name></member>
+    <member refid="classendstone_1_1BlockPistonEvent_1a9580392256ddc38e3489dab492cf3ede" kind="function"><name>getEventName</name></member>
+  </compound>
   <compound refid="classendstone_1_1BlockPlaceEvent" kind="class"><name>endstone::BlockPlaceEvent</name>
     <member refid="classendstone_1_1BlockPlaceEvent_1ac4e2bdd1835d163b9eb5accdfbbd63c1" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1abd8181f9d8977df00b325c5f9f33b4f9" kind="variable"><name>placed_block_</name></member>
@@ -1599,6 +1606,8 @@
   <compound refid="block__break__event_8h" kind="file"><name>block_break_event.h</name>
   </compound>
   <compound refid="block__event_8h" kind="file"><name>block_event.h</name>
+  </compound>
+  <compound refid="block__piston__event_8h" kind="file"><name>block_piston_event.h</name>
   </compound>
   <compound refid="block__place__event_8h" kind="file"><name>block_place_event.h</name>
   </compound>

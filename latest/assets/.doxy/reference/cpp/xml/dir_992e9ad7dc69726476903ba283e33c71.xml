@@ -4,6 +4,7 @@
     <compoundname>include/endstone/event/block</compoundname>
     <innerfile refid="block__break__event_8h">block_break_event.h</innerfile>
     <innerfile refid="block__event_8h">block_event.h</innerfile>
+    <innerfile refid="block__piston__event_8h">block_piston_event.h</innerfile>
     <innerfile refid="block__place__event_8h">block_place_event.h</innerfile>
     <briefdescription>
     </briefdescription>

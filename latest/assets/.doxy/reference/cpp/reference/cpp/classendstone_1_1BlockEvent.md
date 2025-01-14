@@ -17,7 +17,7 @@ _Represents an Block-related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
+Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::BlockPistonEvent](classendstone_1_1BlockPistonEvent.md)
 
 
 

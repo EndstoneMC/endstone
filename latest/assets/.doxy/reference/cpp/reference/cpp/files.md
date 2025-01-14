@@ -54,6 +54,7 @@ Here is a list of all files with brief descriptions:
             * **dir** [**block**](dir_992e9ad7dc69726476903ba283e33c71.md)     
                 * **file** [**block\_break\_event.h**](block__break__event_8h.md)     
                 * **file** [**block\_event.h**](block__event_8h.md)     
+                * **file** [**block\_piston\_event.h**](block__piston__event_8h.md)     
                 * **file** [**block\_place\_event.h**](block__place__event_8h.md)     
             * **dir** [**player**](dir_7c05c37b25e9c9eccd9c63c2d313ba28.md)     
                 * **file** [**player\_chat\_event.h**](player__chat__event_8h.md)     

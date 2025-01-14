@@ -7,6 +7,7 @@
     <includedby refid="actor__spawn__event_8h" local="yes">include/endstone/event/actor/actor_spawn_event.h</includedby>
     <includedby refid="actor__teleport__event_8h" local="yes">include/endstone/event/actor/actor_teleport_event.h</includedby>
     <includedby refid="block__break__event_8h" local="yes">include/endstone/event/block/block_break_event.h</includedby>
+    <includedby refid="block__piston__event_8h" local="yes">include/endstone/event/block/block_piston_event.h</includedby>
     <includedby refid="block__place__event_8h" local="yes">include/endstone/event/block/block_place_event.h</includedby>
     <includedby refid="player__chat__event_8h" local="yes">include/endstone/event/player/player_chat_event.h</includedby>
     <includedby refid="player__command__event_8h" local="yes">include/endstone/event/player/player_command_event.h</includedby>
@@ -23,7 +24,7 @@
     <includedby refid="thunder__change__event_8h" local="yes">include/endstone/event/weather/thunder_change_event.h</includedby>
     <includedby refid="weather__change__event_8h" local="yes">include/endstone/event/weather/weather_change_event.h</includedby>
     <invincdepgraph>
-      <node id="14">
+      <node id="15">
         <label>include/endstone/event/player/player_login_event.h</label>
         <link refid="player__login__event_8h_source"/>
       </node>
@@ -31,9 +32,13 @@
         <label>include/endstone/event/actor/actor_knockback_event.h</label>
         <link refid="actor__knockback__event_8h_source"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>include/endstone/event/server/server_list_ping_event.h</label>
         <link refid="server__list__ping__event_8h_source"/>
+      </node>
+      <node id="7">
+        <label>include/endstone/event/block/block_piston_event.h</label>
+        <link refid="block__piston__event_8h_source"/>
       </node>
       <node id="2">
         <label>include/endstone/event/actor/actor_explode_event.h</label>
@@ -82,48 +87,50 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
-      <node id="10">
+      <node id="11">
         <label>include/endstone/event/player/player_game_mode_change_event.h</label>
         <link refid="player__game__mode__change__event_8h_source"/>
       </node>
-      <node id="12">
+      <node id="13">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
       </node>
-      <node id="11">
+      <node id="12">
         <label>include/endstone/event/player/player_interact_actor_event.h</label>
         <link refid="player__interact__actor__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/event/server/broadcast_message_event.h</label>
         <link refid="broadcast__message__event_8h_source"/>
       </node>
-      <node id="15">
+      <node id="16">
         <label>include/endstone/event/player/player_teleport_event.h</label>
         <link refid="player__teleport__event_8h_source"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>include/endstone/event/server/script_message_event.h</label>
         <link refid="script__message__event_8h_source"/>
       </node>
-      <node id="13">
+      <node id="14">
         <label>include/endstone/event/player/player_kick_event.h</label>
         <link refid="player__kick__event_8h_source"/>
       </node>
-      <node id="9">
+      <node id="10">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="7">
+      <node id="8">
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
       </node>
-      <node id="21">
+      <node id="22">
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
-      <node id="20">
+      <node id="21">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
@@ -131,7 +138,7 @@
         <label>include/endstone/event/block/block_break_event.h</label>
         <link refid="block__break__event_8h_source"/>
       </node>
-      <node id="8">
+      <node id="9">
         <label>include/endstone/event/player/player_chat_event.h</label>
         <link refid="player__chat__event_8h_source"/>
       </node>
@@ -143,7 +150,7 @@
         <label>include/endstone/event/actor/actor_spawn_event.h</label>
         <link refid="actor__spawn__event_8h_source"/>
       </node>
-      <node id="18">
+      <node id="19">
         <label>include/endstone/event/server/server_command_event.h</label>
         <link refid="server__command__event_8h_source"/>
       </node>

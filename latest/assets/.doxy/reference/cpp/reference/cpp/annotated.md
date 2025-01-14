@@ -21,6 +21,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._     
     * **class** [**BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._     
     * **class** [**BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
+    * **class** [**BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md) _Called when a piston block is triggered._     
     * **class** [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) _Called when a block is placed by a player._     
     * **class** [**BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._     
     * **class** [**BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._     

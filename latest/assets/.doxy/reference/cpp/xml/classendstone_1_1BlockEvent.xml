@@ -4,6 +4,7 @@
     <compoundname>endstone::BlockEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; BlockEvent &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1BlockPistonEvent" prot="public" virt="non-virtual">endstone::BlockPistonEvent</derivedcompoundref>
     <includes refid="block__event_8h" local="no">endstone/event/block/block_event.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1BlockEvent_1a734e9cce3b2662de97e536e36d8963a4" prot="private" static="no" mutable="no">
@@ -95,6 +96,12 @@
         <label>endstone::BlockPlaceEvent</label>
         <link refid="classendstone_1_1BlockPlaceEvent"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::BlockPistonEvent</label>
+        <link refid="classendstone_1_1BlockPistonEvent"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
