@@ -189,6 +189,7 @@ class EndstoneRecipe(ConanFile):
             "base64::base64",
             "boost::boost",
             "concurrentqueue::concurrentqueue",
+            "cpptrace::cpptrace",
             "date::date",
             "entt::entt",
             "glm::glm",
@@ -196,6 +197,7 @@ class EndstoneRecipe(ConanFile):
             "nlohmann_json::nlohmann_json",
             "ms-gsl::ms-gsl",
             "pybind11::pybind11",
+            "sentry-native::sentry-native",
             "spdlog::spdlog",
             "tomlplusplus::tomlplusplus",
         ]
@@ -203,21 +205,17 @@ class EndstoneRecipe(ConanFile):
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
         if self._should_enable_devtools:
-            self.cpp_info.components["devtools"].libs = ["endstone_devtools"]
-            self.cpp_info.components["devtools"].set_property("cmake_target_name", "endstone::devtools")
-            self.cpp_info.components["devtools"].requires = [
+            self.cpp_info.components["core"].requires.extend([
                 "core",
                 "glew::glew",
                 "glfw::glfw",
                 "imgui::imgui",
                 "zstr::zstr",
-            ]
+            ])
 
         self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = ["core", "cpptrace::cpptrace", "sentry-native::sentry-native"]
-        if self._should_enable_devtools:
-            self.cpp_info.components["runtime"].requires.extend(["devtools"])
+        self.cpp_info.components["runtime"].requires = ["core"]
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp", "ws2_32"])
         if self.settings.os == "Linux":
