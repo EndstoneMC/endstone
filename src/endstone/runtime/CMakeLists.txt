@@ -8,9 +8,10 @@ FetchContent_Declare(
         GIT_TAG v1.1.3
         GIT_SHALLOW 1
 )
-set(FUNCHOOK_BUILD_SHARED OFF)
-set(FUNCHOOK_BUILD_TESTS OFF)
-set(FUNCHOOK_DISASM capstone)
+set(FUNCHOOK_BUILD_SHARED OFF CACHE BOOL "Build funchook shared library")
+set(FUNCHOOK_BUILD_TESTS OFF CACHE BOOL "Build funchook tests")
+set(FUNCHOOK_INSTALL OFF CACHE BOOL "Install funchook")
+# set(FUNCHOOK_DISASM capstone CACHE STRING "funchook disassembler engine")
 FetchContent_MakeAvailable(funchook)
 add_library(funchook::funchook ALIAS funchook-static)
 
