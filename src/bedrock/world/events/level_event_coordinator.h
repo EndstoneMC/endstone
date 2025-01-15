@@ -22,11 +22,10 @@
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/level_event_listener.h"
 
-class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
+class LevelEventCoordinator : public EventCoordinator<LevelEventListener> {
 public:
 private:
     friend class endstone::core::EndstoneServer;
-    ENDSTONE_HOOK void _postReloadActorAdded(Actor &, ActorInitializationMethod);
     std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;  // +112
     Bedrock::PubSub::Subscription game_rule_change_subscription_;
     Bedrock::PubSub::Subscription on_remove_actor_entity_references_subscription_;

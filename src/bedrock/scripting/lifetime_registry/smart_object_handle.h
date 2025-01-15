@@ -14,16 +14,20 @@
 
 #pragma once
 
-#include "bedrock/forward.h"
+#include "bedrock/scripting/lifetime_registry/lifetime_scope.h"
+#include "bedrock/scripting/lifetime_registry/object_handle.h"
 
 namespace Scripting {
-class WeakLifetimeScope {
+class StrongObjectHandle {
 public:
-    WeakLifetimeScope();
+    StrongObjectHandle(WeakLifetimeScope, ObjectHandle, bool);
 
 protected:
-    LifetimeRegistryReference *registry_ref_;  // +0
-    std::uint32_t version_;                    // +8
+    WeakLifetimeScope scope_;
+    ObjectHandle handle_;
 };
+
+template <typename T>
+class StrongTypedObjectHandle : public StrongObjectHandle {};
 
 }  // namespace Scripting

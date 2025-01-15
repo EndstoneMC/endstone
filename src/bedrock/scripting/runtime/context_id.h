@@ -14,16 +14,10 @@
 
 #pragma once
 
-#include "bedrock/forward.h"
-
 namespace Scripting {
-class WeakLifetimeScope {
-public:
-    WeakLifetimeScope();
-
-protected:
-    LifetimeRegistryReference *registry_ref_;  // +0
-    std::uint32_t version_;                    // +8
+struct ContextId {
+    ContextId();
+    ContextId(std::uint8_t);
+    std::uint8_t value;
 };
-
 }  // namespace Scripting

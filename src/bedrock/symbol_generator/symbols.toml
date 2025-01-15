@@ -48,8 +48,6 @@ version = "1.21.50"
 "?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 40591680
 # Level
 "?tick@Level@@UEAAXXZ" = 39489328
-# LevelEventCoordinator
-"?_postReloadActorAdded@LevelEventCoordinator@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 36309440
 # MinecraftCommands
 "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 22148496
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 22217824
@@ -148,8 +146,6 @@ version = "1.21.50"
 "_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 133040528
 # Level
 "_ZN5Level4tickEv" = 130259312
-# LevelEventCoordinator
-"_ZN21LevelEventCoordinator21_postReloadActorAddedER5Actor25ActorInitializationMethod" = 129209008
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 113630544
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 113627248

@@ -249,7 +249,10 @@ class TypedObjectHandle;
 }  // namespace Scripting
 namespace ScriptModuleMinecraft {
 class IScriptWorldBeforeEvents;
-}
+class ScriptBlockComponentRegistry;
+class ScriptItemComponentRegistry;
+class ScriptPropertyRegistry;
+}  // namespace ScriptModuleMinecraft
 
 // Template Classes
 template <typename A, typename B, typename C>

@@ -14,16 +14,20 @@
 
 #pragma once
 
-#include "bedrock/forward.h"
+#include "bedrock/scripting/runtime/context_id.h"
 
 namespace Scripting {
-class WeakLifetimeScope {
-public:
-    WeakLifetimeScope();
 
-protected:
-    LifetimeRegistryReference *registry_ref_;  // +0
-    std::uint32_t version_;                    // +8
+enum class ObjectHandleValue : uint64_t {
+};
+
+struct ObjectHandle {
+    static const size_t ContextIdShift = 56;
+    ObjectHandle();
+    ObjectHandle(ObjectHandleValue, ContextId);
+    ObjectHandle(uint64_t);
+    ObjectHandleValue value;
+    ContextId context_id;
 };
 
 }  // namespace Scripting

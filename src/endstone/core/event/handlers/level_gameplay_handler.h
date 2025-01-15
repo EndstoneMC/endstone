@@ -27,7 +27,8 @@ public:
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutableLevelGameplayEvent<CoordinatorResult> &event) override;
 
 private:
-    void handleEvent(LevelWeatherChangedEvent &event);
+    bool handleEvent(const LevelAddedActorEvent &event);
+    bool handleEvent(LevelWeatherChangedEvent &event);
 
     std::unique_ptr<LevelGameplayHandler> handle_;
 };

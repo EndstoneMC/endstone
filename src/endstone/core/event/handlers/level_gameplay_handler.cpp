@@ -20,6 +20,7 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/level_events.h"
 #include "endstone/core/server.h"
+#include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
 
@@ -32,20 +33,45 @@ EndstoneLevelGameplayHandler::EndstoneLevelGameplayHandler(std::unique_ptr<Level
 
 HandlerResult EndstoneLevelGameplayHandler::handleEvent(LevelGameplayEvent<void> const &event)
 {
-    return handle_->handleEvent(event);
+    auto visitor = [&](auto &&arg) -> HandlerResult {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const LevelAddedActorEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return HandlerResult::BypassListeners;
+            }
+        }
+        return handle_->handleEvent(event);
+    };
+    return std::visit(visitor, event.variant);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEvent(
     MutableLevelGameplayEvent<CoordinatorResult> &event)
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
-        handleEvent(arg.value());
+        if (!handleEvent(arg.value())) {
+            return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+        }
         return handle_->handleEvent(event);
     };
     return std::visit(visitor, event.variant);
 }
 
-void EndstoneLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
+bool EndstoneLevelGameplayHandler::handleEvent(const LevelAddedActorEvent &event)
+{
+    const StackResultStorageEntity stack_result(event.actor);
+    if (auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && !actor->isPlayer()) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        ActorSpawnEvent e{actor->getEndstoneActor()};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            actor->despawn();
+        }
+    }
+    return true;
+}
+
+bool EndstoneLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &level = *server.getLevel();
@@ -63,6 +89,7 @@ void EndstoneLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
             event.will_be_lightning = event.is_lightning;
         }
     }
+    return true;
 }
 
 }  // namespace endstone::core
