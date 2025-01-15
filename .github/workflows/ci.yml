@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        build_type: [ Release, RelWithDebInfo ]
+        build_type: [ Release ]
         os: [ ubuntu-20.04, windows-2019 ]
         include:
           - os: ubuntu-20.04
@@ -78,12 +78,20 @@ jobs:
           pip install conan
           conan profile detect --force
 
-      - name: Build with Conan (Linux)
+      - name: Install Dependencies with Conan (Linux)
         if: runner.os == 'Linux'
         run: |
-          conan create . --build=missing -s compiler.cppstd=20 -s build_type=${{ matrix.build_type }} -c tools.cmake.cmaketoolchain:generator=Ninja -s compiler.libcxx=libc++
+          conan install . --build=missing -s compiler.cppstd=20 -s build_type=${{ matrix.build_type }} -c tools.cmake.cmaketoolchain:generator=Ninja -s compiler.libcxx=libc++
 
-      - name: Build with Conan (Windows)
+      - name: Install Dependencies with Conan (Windows)
         if: runner.os == 'Windows'
         run: |
-          conan create . --build=missing -s compiler.cppstd=20 -s build_type=${{ matrix.build_type }} -c tools.cmake.cmaketoolchain:generator=Ninja
+          conan install . --build=missing -s compiler.cppstd=20 -s build_type=${{ matrix.build_type }} -c tools.cmake.cmaketoolchain:generator=Ninja
+
+      - name: Build with CMake
+        run: |
+          cmake -DCMAKE_TOOLCHAIN_FILE=build/${{ matrix.build_type }}/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          cmake --build build/${{ matrix.build_type }}
+
+      - name: Run Tests
+        run: ctest --test-dir build/${{ matrix.build_type }}
