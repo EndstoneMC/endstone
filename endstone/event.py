@@ -33,8 +33,8 @@ from endstone._internal.endstone_python import (
     ServerListPingEvent,
     ServerLoadEvent,
     ThunderChangeEvent,
-    WeatherEvent,
     WeatherChangeEvent,
+    WeatherEvent,
 )
 
 __all__ = [

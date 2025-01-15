@@ -2,7 +2,6 @@ from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.build import check_min_cppstd
 from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
-from conan.tools.scm import Git
 from conans.model.version import Version
 
 
@@ -24,49 +23,11 @@ class EndstoneRecipe(ConanFile):
         "shared": False,
         "fPIC": True,
         "boost/*:header_only": True,
-        "capstone/*:arm": False,
-        "capstone/*:m68k": False,
-        "capstone/*:mips": False,
-        "capstone/*:ppc": False,
-        "capstone/*:sparc": False,
-        "capstone/*:sysz": False,
-        "capstone/*:xcore": False,
-        "capstone/*:tms320c64x": False,
-        "capstone/*:m680x": False,
-        "capstone/*:evm": False,
         "date/*:header_only": True,
         "sentry-native/*:backend": "crashpad",
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
-
-    def set_version(self):
-        if self.version:
-            return
-
-        git = Git(self)
-        tag = git.run("describe --tags --long")
-
-        import re
-
-        tag, num_commits, commit_hash = re.match(r"^v?(\S+)-(\d+)-g([a-f0-9]+)$", tag).groups()
-        num_commits = int(num_commits)
-        version = Version(tag)
-
-        if num_commits > 0:
-            version = version.bump(len(version._items) - 1)
-
-        value = ".".join(str(i) for i in version.main)
-        if version.pre:
-            value += f"-{version.pre}"
-
-        if num_commits > 0:
-            value += f".dev{num_commits}"
-
-        if version.build:
-            value += f"+{version.build}"
-
-        self.version = value
 
     @property
     def _min_cppstd(self):
@@ -163,60 +124,8 @@ class EndstoneRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
         tc = CMakeToolchain(self)
-        tc.variables["ENDSTONE_VERSION"] = self.version
-        tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = self._should_enable_devtools
-        tc.generate()
-
-    def build(self):
-        cmake = CMake(self)
-        cmake.configure()
-        cmake.build()
-        cmake.test()
-
-    def package(self):
-        cmake = CMake(self)
-        cmake.install()
-
-    def package_info(self):
-        self.cpp_info.components["headers"].libs = []
-        self.cpp_info.components["headers"].libdirs = []
-        self.cpp_info.components["headers"].set_property("cmake_target_name", "endstone::headers")
-        self.cpp_info.components["headers"].requires = ["fmt::fmt", "expected-lite::expected-lite"]
-
-        self.cpp_info.components["core"].libs = ["endstone_core"]
-        self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
-        self.cpp_info.components["core"].requires = [
-            "base64::base64",
-            "boost::boost",
-            "concurrentqueue::concurrentqueue",
-            "cpptrace::cpptrace",
-            "date::date",
-            "entt::entt",
-            "glm::glm",
-            "magic_enum::magic_enum",
-            "nlohmann_json::nlohmann_json",
-            "ms-gsl::ms-gsl",
-            "pybind11::pybind11",
-            "sentry-native::sentry-native",
-            "spdlog::spdlog",
-            "tomlplusplus::tomlplusplus",
-        ]
-        if self.settings.os == "Linux":
-            self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
-
+        if self.version:
+            tc.variables["ENDSTONE_VERSION"] = self.version
         if self._should_enable_devtools:
-            self.cpp_info.components["core"].requires.extend([
-                "core",
-                "glew::glew",
-                "glfw::glfw",
-                "imgui::imgui",
-                "zstr::zstr",
-            ])
-
-        self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
-        self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = ["core"]
-        if self.settings.os == "Windows":
-            self.cpp_info.components["runtime"].system_libs.extend(["dbghelp", "ws2_32"])
-        if self.settings.os == "Linux":
-            self.cpp_info.components["runtime"].requires.extend(["libelf::libelf"])
+            tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
+        tc.generate()
