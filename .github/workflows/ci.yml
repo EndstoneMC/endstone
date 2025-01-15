@@ -91,7 +91,7 @@ jobs:
       - name: Build with CMake
         run: |
           cd build/${{ matrix.build_type }}
-          cmake ../.. -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
           cmake --build .
 
       - name: Run Tests
