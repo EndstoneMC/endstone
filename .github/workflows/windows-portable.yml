@@ -57,7 +57,7 @@ jobs:
           .\winpython.exe -y
 
       - name: Install Endstone
-        run: ${{ env.WP_BINARY_DIR }}\python.exe -m pip install --no-index --find-links=.\wheelhouse endstone
+        run: ${{ env.WP_BINARY_DIR }}\python.exe -m pip install --find-links=.\wheelhouse endstone
 
       - name: Clean Up
         run: |
