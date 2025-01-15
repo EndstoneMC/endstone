@@ -141,4 +141,3 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "util/uuid.h"
 #include "util/vector.h"
 #include "variant.h"
-#include "version.h"

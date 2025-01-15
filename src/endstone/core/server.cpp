@@ -50,10 +50,6 @@ namespace fs = std::filesystem;
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
 
-#if !defined(ENDSTONE_VERSION)
-#error ENDSTONE_VERSION is not defined
-#endif
-
 namespace endstone::core {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))

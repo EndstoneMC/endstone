@@ -23,8 +23,8 @@
 #include <cpptrace/cpptrace.hpp>
 #include <fmt/format.h>
 
+#include "endstone/detail/common.h"
 #include "endstone/detail/platform.h"
-#include "endstone/version.h"
 
 #ifdef _WIN32
 #include <Windows.h>

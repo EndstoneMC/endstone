@@ -124,26 +124,18 @@ if (UNIX)
     target_link_options(endstone_core PRIVATE -g)
     target_compile_options(endstone_core PRIVATE -O2 -DNDEBUG -g)
 endif ()
-target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${ENDSTONE_VERSION}")
+if (DEFINED SKBUILD_PROJECT_VERSION_FULL)
+    target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${SKBUILD_PROJECT_VERSION_FULL}")
+endif ()
 
 # The crashpad handler executable must be shipped alongside our shared library
 add_custom_target(
         copy_crashpad_handler
         ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${sentry_INCLUDE_DIRS}/../bin/ ${CMAKE_BINARY_DIR}/crashpad
+        COMMENT "Copying crashpad_handler${CMAKE_EXECUTABLE_SUFFIX}"
 )
 add_dependencies(copy_crashpad_handler endstone_runtime)
-# Reduce the size of the executable by executing strip if it is present on the system
-find_program(STRIP_EXECUTABLE strip)
-if (STRIP_EXECUTABLE)
-    add_custom_target(
-            strip_crashpad_handler
-            ALL
-            COMMAND ${STRIP_EXECUTABLE} ${CMAKE_BINARY_DIR}/crashpad/crashpad_handler${CMAKE_EXECUTABLE_SUFFIX}
-            COMMENT "Stripping crashpad_handler executable for size reduction"
-    )
-    add_dependencies(strip_crashpad_handler copy_crashpad_handler)
-endif ()
 
 include(GNUInstallDirs)
 install(TARGETS endstone_core

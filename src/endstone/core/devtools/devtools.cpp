@@ -36,6 +36,7 @@
 #include "endstone/core/devtools/imgui_json.h"
 #include "endstone/core/devtools/vanilla_data.h"
 #include "endstone/core/logger_factory.h"
+#include "endstone/detail/common.h"
 #include "endstone/detail/platform.h"
 #include "endstone/variant.h"
 
