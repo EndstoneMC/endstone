@@ -57,7 +57,10 @@ jobs:
           .\winpython.exe -y
 
       - name: Install Endstone
-        run: ${{ env.WP_BINARY_DIR }}\python.exe -m pip install --find-links=.\wheelhouse endstone
+        shell: pwsh
+        run: |
+          $file = Get-ChildItem -Path .\wheelhouse -Filter *.whl | Select-Object -First 1
+          ${{ env.WP_BINARY_DIR }}\python.exe -m pip install $file.FullName
 
       - name: Clean Up
         run: |
