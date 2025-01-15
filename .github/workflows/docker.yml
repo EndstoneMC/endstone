@@ -60,22 +60,6 @@ jobs:
             type=raw,value=latest,enable={{ is_default_branch }}
             type=pep440,pattern={{version}}
 
-      - name: Cache Docker
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: conan-cache-docker
-          key: ${{ runner.os }}-conan-docker-${{ hashFiles('conanfile.py') }}
-
-      - name: Inject Cache into Docker
-        uses: reproducible-containers/buildkit-cache-dance@v3.1.0
-        with:
-          cache-map: |
-            {
-              "conan-cache-docker": "/root/.conan2/p"
-            }
-          skip-extraction: ${{ steps.cache.outputs.cache-hit }}
-
       - name: Build and Push
         uses: docker/build-push-action@v6
         if: >
