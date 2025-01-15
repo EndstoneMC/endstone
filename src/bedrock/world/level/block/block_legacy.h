@@ -33,6 +33,7 @@
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/phys/aabb.h"
+#include "bedrock/world/phys/hit_result.h"
 
 class Actor;
 class Block;

@@ -16,6 +16,46 @@
 
 #include <cstdint>
 
+enum class ItemUseMethod : int {
+    Unknown = -1,
+    EquipArmor = 0,
+    Eat = 1,
+    Attack = 2,
+    Consume = 3,
+    Throw = 4,
+    Shoot = 5,
+    Place = 6,
+    FillBottle = 7,
+    FillBucket = 8,
+    PourBucket = 9,
+    UseTool = 10,
+    Interact = 11,
+    Retrieved = 12,
+    Dyed = 13,
+    Traded = 14,
+    BrushingCompleted = 15,
+    OpenedVault = 16,
+    _Count = 17,
+};
+
+enum class ItemAcquisitionMethod : int {
+    Unknown = -1,
+    None = 0,
+    PickedUp = 1,
+    Crafted = 2,
+    TakenFromChest = 3,
+    TakenFromEnderchest = 4,
+    Bought = 5,
+    Anvil = 6,
+    Smelted = 7,
+    Brewed = 8,
+    Filled = 9,
+    Trading = 10,
+    Fishing = 11,
+    Container = 13,
+    Feeding = 14,
+};
+
 enum class ItemCommandVisibility : std::uint8_t {
     Visible = 0,
     Hidden = 1,

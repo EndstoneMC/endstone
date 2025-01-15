@@ -14,15 +14,23 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-#include "bedrock/gameplayhandlers/actor_gameplay_handler.h"
-#include "bedrock/world/events/actor_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/world/effect/effect_duration.h"
+#include "bedrock/world/effect/mob_effect.h"
 
-class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
+class MobEffectInstance {
 public:
+    MobEffectInstance();
+
 private:
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
-    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
-    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+    unsigned int id_;
+    EffectDuration duration_;
+    std::optional<EffectDuration> duration_easy_;
+    std::optional<EffectDuration> duration_normal_;
+    std::optional<EffectDuration> duration_hard_;
+    int amplifier_;
+    bool display_on_screen_texture_animation_;
+    bool is_counter_paused_this_tick_;
+    bool ambient_;
+    bool effect_visible_;
+    MobEffect::FactorCalculationData factor_calculation_data_;
 };

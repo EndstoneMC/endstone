@@ -47,6 +47,8 @@
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/synched_actor_data.h"
+#include "bedrock/world/effect/mob_effect_instance.h"
+#include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/level/dimension/dimension.h"
 
 class Player;

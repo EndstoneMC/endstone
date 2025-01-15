@@ -14,15 +14,30 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-#include "bedrock/gameplayhandlers/actor_gameplay_handler.h"
-#include "bedrock/world/events/actor_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/entity/weak_entity_ref.h"
 
-class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
+enum class HitResultType : int {
+    TILE = 0,
+    ENTITY = 1,
+    ENTITY_OUT_OF_RANGE = 2,
+    NO_HIT = 3,
+};
+
+class HitResult {
 public:
+    HitResult() = default;
+
 private:
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
-    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
-    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+    Vec3 start_pos_{Vec3::ZERO};
+    Vec3 ray_dir_{Vec3::ZERO};
+    HitResultType type_{HitResultType::NO_HIT};
+    FacingID facing_{0};
+    BlockPos block_{BlockPos::ZERO};
+    Vec3 pos_{Vec3::ZERO};
+    WeakEntityRef entity_{nullptr};
+    bool is_hit_liquid_{false};
+    FacingID liquid_facing_{0};
+    BlockPos liquid_{BlockPos::ZERO};
+    Vec3 liquid_pos_{Vec3::ZERO};
+    bool indirect_hit_{false};
 };

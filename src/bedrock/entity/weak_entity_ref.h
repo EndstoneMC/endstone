@@ -14,15 +14,15 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-#include "bedrock/gameplayhandlers/actor_gameplay_handler.h"
-#include "bedrock/world/events/actor_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 
-class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
+class WeakEntityRef {
 public:
-private:
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
-    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
-    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+    WeakEntityRef() = default;
+    WeakEntityRef(nullptr_t) {}
+    operator WeakRef<EntityContext>() const
+    {
+        return weak_entity;
+    };
+    WeakRef<EntityContext> weak_entity;
 };

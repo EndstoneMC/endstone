@@ -14,15 +14,11 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-#include "bedrock/gameplayhandlers/actor_gameplay_handler.h"
-#include "bedrock/world/events/actor_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
+struct EffectDuration {
+    EffectDuration() = default;
+    explicit EffectDuration(const int value) : value_(value){};
 
-class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
-public:
 private:
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
-    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
-    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+    int value_{INFINITE_DURATION_VALUE};
+    static constexpr int INFINITE_DURATION_VALUE = -1;
 };

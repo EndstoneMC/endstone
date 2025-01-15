@@ -14,15 +14,8 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-#include "bedrock/gameplayhandlers/actor_gameplay_handler.h"
-#include "bedrock/world/events/actor_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
-
-class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
-public:
-private:
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
-    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
-    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+enum class HandSlot : int {
+    Mainhand = 0,
+    Offhand = 1,
+    _count = 2,
 };

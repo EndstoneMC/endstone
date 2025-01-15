@@ -14,15 +14,20 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-#include "bedrock/gameplayhandlers/actor_gameplay_handler.h"
-#include "bedrock/world/events/actor_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
-
-class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
+class MobEffect {
 public:
-private:
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
-    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
-    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+    static constexpr std::size_t NUM_EFFECTS = 37;
+    static constexpr int UNKNOWN_EFFECT = 0;
+    static constexpr int DARKNESS_EFFECT_FACTOR_PADDING_DURATION = 22;
+    struct FactorCalculationData {
+        int padding_duration;
+        float factor_start;
+        float factor_target;
+        float factor_current;
+        std::function<void(FactorCalculationData &, EffectDuration)> update_fn;
+        int ticks_active;
+        float factor_previous_frame;
+        bool had_effect_last_tick;
+        bool had_applied;
+    };
 };

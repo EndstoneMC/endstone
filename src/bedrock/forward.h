@@ -25,7 +25,7 @@ namespace core {
 class EndstoneActor;
 class EndstoneLevel;
 class EndstoneServer;
-}  // namespace detail
+}  // namespace core
 }  // namespace endstone
 
 // Classes
@@ -95,8 +95,6 @@ class FrameUpdateContextBase;
 class GameEvent;
 class GameModuleServer;
 class GetCollisionShapeInterface;
-class HandSlot;
-class HitResult;
 class I18nObserver;
 class IAddActorEntityProxy;
 class IContainerManager;
@@ -114,7 +112,6 @@ class IPackLoadContext;
 class ItemComponent;
 class ItemComponentPacket;
 class ItemData;
-class ItemUseMethod;
 class JigsawStructureRegistry;
 class LevelChunkMetaData;
 class LevelData;
@@ -125,7 +122,6 @@ class LootTables;
 class MapDataManager;
 class MapItemSavedData;
 class MaterialTypeHelper;
-class MobEffectInstance;
 class MolangVariableMap;
 class NavigationComponent;
 class NewInteractionModel;
@@ -185,7 +181,6 @@ class TrackedPacketDataContainer;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class UpdateEntityAfterFallOnInterface;
-class WeakEntityRef;
 class _TickPtr;  // NOLINT
 
 // Enums

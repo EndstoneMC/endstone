@@ -14,15 +14,16 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-#include "bedrock/gameplayhandlers/actor_gameplay_handler.h"
-#include "bedrock/world/events/actor_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/actor_events.h"
 
-class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
+class ActorGameplayHandler : public GameplayHandler {
 public:
-private:
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
-    Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
-    Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
+    ~ActorGameplayHandler() override = default;
+    virtual HandlerResult handleEvent(const ActorGameplayEvent<void> &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        const ActorGameplayEvent<CoordinatorResult> &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
+        MutableActorGameplayEvent<CoordinatorResult> &event) = 0;
 };
