@@ -25,15 +25,23 @@ pybind11_add_module(endstone_python MODULE
 )
 target_compile_definitions(endstone_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 target_link_libraries(endstone_python PRIVATE endstone::endstone)
-if (UNIX AND ENDSTONE_SEPARATE_DEBUG_INFO)
-    add_custom_command(
-            TARGET endstone_python
-            POST_BUILD
-            COMMAND ${CMAKE_OBJCOPY} --only-keep-debug "$<TARGET_FILE:endstone_python>" "$<TARGET_FILE_DIR:endstone_python>/endstone_python.dbg"
-            COMMAND ${CMAKE_OBJCOPY} --strip-debug "$<TARGET_FILE:endstone_python>"
-            COMMAND ${CMAKE_OBJCOPY} --add-gnu-debuglink="$<TARGET_FILE_DIR:endstone_python>/endstone_python.dbg" "$<TARGET_FILE:endstone_python>"
-            COMMENT "Generating debug symbols and stripping binary: $<TARGET_FILE:endstone_python>"
-    )
+if (MSVC)
+    target_link_options(endstone_python PRIVATE /DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF)
+    target_compile_options(endstone_python PRIVATE /O2 /DNDEBUG /Zi /Gy)
+endif ()
+if (UNIX)
+    target_link_options(endstone_python PRIVATE -g)
+    target_compile_options(endstone_python PRIVATE -O2 -DNDEBUG -g)
+    if (ENDSTONE_SEPARATE_DEBUG_INFO)
+        add_custom_command(
+                TARGET endstone_python
+                POST_BUILD
+                COMMAND ${CMAKE_OBJCOPY} --only-keep-debug "$<TARGET_FILE:endstone_python>" "$<TARGET_FILE_DIR:endstone_python>/endstone_python.dbg"
+                COMMAND ${CMAKE_OBJCOPY} --strip-debug "$<TARGET_FILE:endstone_python>"
+                COMMAND ${CMAKE_OBJCOPY} --add-gnu-debuglink="$<TARGET_FILE_DIR:endstone_python>/endstone_python.dbg" "$<TARGET_FILE:endstone_python>"
+                COMMENT "Generating debug symbols and stripping binary: $<TARGET_FILE:endstone_python>"
+        )
+    endif ()
 endif ()
 
 include(GNUInstallDirs)
