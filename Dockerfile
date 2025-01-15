@@ -5,13 +5,13 @@ FROM python:3.12-slim-bullseye AS base
 LABEL maintainer="Endstone <hello@endstone.dev>"
 
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONIOENCODING=UTF-8 \
-    AUDITWHEEL_PLAT=manylinux_2_31_x86_64
+    PYTHONIOENCODING=UTF-8
 
+# Build stage
 FROM base AS builder
 
+# Install required dependencies and configure LLVM
 ARG LLVM_VERSION=16
-
 RUN apt-get update -y -qq \
     && apt-get install -y -qq build-essential lsb-release wget software-properties-common gnupg \
     && wget https://apt.llvm.org/llvm.sh \
@@ -23,57 +23,72 @@ RUN apt-get update -y -qq \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100
 
-ENV CC=clang \
-    CXX=clang++
-
+# Install CMake and other build tools
 ARG CMAKE_VERSION=3.31.4
-
 ARG CMAKE_SH=cmake-${CMAKE_VERSION}-linux-x86_64.sh
-
 RUN apt-get update -y -qq \
-    && apt-get install -y -qq wget \
+    && apt-get install -y -qq wget git ninja-build \
     && wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_SH} \
     && chmod +x ${CMAKE_SH} \
     && ./${CMAKE_SH} --skip-license --exclude-subdir --prefix=/usr/local
 
-RUN apt-get update -y -qq \
-    && apt-get install -y -qq git ninja-build
+# Set default compiler and target platform tag for Python wheels
+ENV CC=clang \
+    CXX=clang++ \
+    AUDITWHEEL_PLAT=manylinux_2_31_x86_64
 
+# Define working directory for the source code
 WORKDIR /usr/src/endstone
 
+# Install C++ dependencies using Conan
+COPY conanfile.py conanfile.py
+RUN python -m pip install --upgrade pip \
+    && pip install conan \
+    && conan profile detect \
+    && conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja
+
+# Copy the rest of the project files
 COPY . .
 
-RUN --mount=type=cache,target=/root/.conan2/p \
-    --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
-    python -m pip install --upgrade pip \
-    && pip install wheel auditwheel sentry-cli setuptools "patchelf>=0.14" pytest \
+# Build and test the project
+RUN --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
+    pip install wheel auditwheel sentry-cli setuptools "patchelf>=0.14" pytest \
     && python -m pip wheel . --no-deps --wheel-dir=dist --verbose \
     && python scripts/repair_wheel.py -o endstone -p endstone -w wheelhouse dist/*.whl \
     && pip install wheelhouse/*-${AUDITWHEEL_PLAT}.whl \
     && pytest tests/endstone/python
 
+# Final stage
 FROM base AS final
 
+# Install runtime dependencies
 RUN apt-get update -y -qq \
     && apt-get install -y -qq curl \
     && apt-get clean -y -qq \
     && rm -rf /var/lib/apt/lists/*
 
+# Create a non-root user for running the application
 RUN useradd -m -s /bin/bash endstone \
     && printf "endstone:endstone" | chpasswd \
     && adduser endstone sudo \
     && printf "endstone ALL= NOPASSWD: ALL\\n" >> /etc/sudoers
 
+# Define working directory
 WORKDIR /home/endstone
 
+# Copy the built wheel files from the builder stage
 COPY --from=builder /usr/src/endstone/wheelhouse .
 
+# Install the wheel and clean up
 RUN python -m pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir ./*-${AUDITWHEEL_PLAT}.whl \
+    && pip install --no-cache-dir ./*.whl \
     && rm ./*.whl
 
+# Switch to non-root user
 USER endstone
 
+# Expose application ports
 EXPOSE 19132/udp 19133/udp
 
+# Define the default command to run the application
 CMD ["endstone"]

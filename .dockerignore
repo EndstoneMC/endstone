@@ -5,6 +5,7 @@ Dockerfile
 bedrock_server
 build
 dist
+docs
 venv
 wheelhouse
 CMakeUserPresets.json

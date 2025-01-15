@@ -124,8 +124,6 @@ class EndstoneRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
         tc = CMakeToolchain(self)
-        if self.version:
-            tc.variables["ENDSTONE_VERSION"] = self.version
         if self._should_enable_devtools:
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
         tc.generate()
