@@ -4,7 +4,7 @@ project(endstone_python LANGUAGES CXX)
 find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
 find_package(pybind11 REQUIRED)
 
-pybind11_add_module(endstone_python MODULE
+add_library(endstone_python MODULE
         actor.cpp
         ban.cpp
         block.cpp
@@ -23,9 +23,16 @@ pybind11_add_module(endstone_python MODULE
         scoreboard.cpp
         util.cpp
 )
+target_link_libraries(endstone_python PRIVATE endstone::endstone pybind11::module)
+pybind11_extension(endstone_python)
+set_target_properties(endstone_python PROPERTIES CXX_VISIBILITY_PRESET "hidden")
 target_compile_definitions(endstone_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
-target_link_libraries(endstone_python PRIVATE endstone::endstone)
+if (NOT DEFINED CMAKE_INTERPROCEDURAL_OPTIMIZATION)
+    target_link_libraries(endstone_python PRIVATE pybind11::lto)
+endif ()
+
 if (MSVC)
+    target_link_libraries(endstone_python PRIVATE pybind11::windows_extras)
     target_link_options(endstone_python PRIVATE /DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF)
     target_compile_options(endstone_python PRIVATE /O2 /DNDEBUG /Zi /Gy)
 endif ()
