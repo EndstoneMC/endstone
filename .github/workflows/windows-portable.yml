@@ -42,17 +42,22 @@ jobs:
       - name: Set up CMake and Ninja
         uses: lukka/get-cmake@latest
 
-      - name: Download Winpython
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.22.0
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CIBW_BUILD: cp312-win_amd64
+          CIBW_BUILD_VERBOSITY: 1
+
+      - name: Install Winpython
         run: |
           Invoke-WebRequest -OutFile winpython.exe ${{ env.WP_URL }}
           $file_hash = (Get-FileHash winpython.exe ).Hash
           if ($file_hash -ne "${{ env.WP_SHA256 }}") { exit(1) }
-
-      - name: Install Winpython
-        run: .\winpython.exe -y
+          .\winpython.exe -y
 
       - name: Install Endstone
-        run: ${{ env.WP_BINARY_DIR }}\python.exe -m pip install .
+        run: ${{ env.WP_BINARY_DIR }}\python.exe -m pip install --no-index --find-links=.\wheelhouse endstone
 
       - name: Clean Up
         run: |

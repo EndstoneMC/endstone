@@ -73,7 +73,6 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Set up Conan
-
         run: |
           python -m pip install --upgrade pip
           pip install conan
