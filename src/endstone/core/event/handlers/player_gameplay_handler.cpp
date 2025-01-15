@@ -14,6 +14,8 @@
 
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 
+#include "bedrock/entity/components/replay_state_component.h"
+#include "bedrock/network/packet/update_player_game_type_packet.h"
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/game_mode.h"
@@ -153,12 +155,18 @@ bool EndstonePlayerGameplayHandler::handleEvent(::PlayerGameModeChangeEvent &eve
         PlayerGameModeChangeEvent e{actor->getEndstoneActor<EndstonePlayer>(),
                                     EndstoneGameMode::fromMinecraft(event.to_game_mode)};
         server.getPluginManager().callEvent(e);
-        // TODO(event): make this cancellable
-        // At the moment, this is not cancellable due to a bug in BDS. This bug also exists when working with the Script
-        // API. Mojang sends packets to inform the client about the game mode change regardless of the event. As a
-        // result, cancelling the event will cause the client to display a game mode different from the server's,
-        // causing an unfavourable inconsistency. Make this cancellable when Mojang resolves the bug, or a better
-        // workaround is found.
+        if (e.isCancelled()) {
+            const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdatePlayerGameType);
+            const auto pk = std::static_pointer_cast<UpdatePlayerGameTypePacket>(packet);
+            pk->player_game_type = event.from_game_mode;
+            pk->target_player = actor->getOrCreateUniqueID();
+            pk->tick = 0;
+            if (const auto *component = actor->tryGetComponent<ReplayStateComponent>(); component) {
+                pk->tick = component->getCurrentTick();
+            }
+            server.getServer().getPacketSender().sendBroadcast(*pk);
+            return false;
+        }
     }
     return true;
 }

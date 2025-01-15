@@ -23,10 +23,10 @@ namespace endstone {
 /**
  * @brief Called when the GameMode of the player is changed.
  */
-class PlayerGameModeChangeEvent : public PlayerEvent {
+class PlayerGameModeChangeEvent : public Cancellable<PlayerEvent> {
 public:
     explicit PlayerGameModeChangeEvent(Player &player, GameMode new_game_mode)
-        : PlayerEvent(player), new_game_mode_(new_game_mode)
+        : Cancellable(player), new_game_mode_(new_game_mode)
     {
     }
     ~PlayerGameModeChangeEvent() override = default;
