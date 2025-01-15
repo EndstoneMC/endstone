@@ -147,5 +147,4 @@ Here is a list of all files with brief descriptions:
         * **file** [**server.h**](server_8h.md)     
         * **file** [**skin.h**](skin_8h.md)     
         * **file** [**variant.h**](variant_8h.md)     
-        * **file** [**version.h**](version_8h.md)     
 

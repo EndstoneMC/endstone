@@ -1779,14 +1779,6 @@
   </compound>
   <compound refid="variant_8h" kind="file"><name>variant.h</name>
   </compound>
-  <compound refid="version_8h" kind="file"><name>version.h</name>
-    <member refid="version_8h_1a5293e6d0f7cb888f6ac099548191fc09" kind="define"><name>ENDSTONE_STRINGIFY</name></member>
-    <member refid="version_8h_1a8eef1a1b39f5be9d7fdb63f61f6e6f41" kind="define"><name>ENDSTONE_TOSTRING</name></member>
-    <member refid="version_8h_1ad775ac2522a4205f4c0defcd1015c422" kind="define"><name>ENDSTONE_VERSION_MAJOR</name></member>
-    <member refid="version_8h_1a47af324054528678a066e32d3b2c8d0c" kind="define"><name>ENDSTONE_VERSION_MINOR</name></member>
-    <member refid="version_8h_1a1a384214544c4bcb200df812e5ac2bc9" kind="define"><name>ENDSTONE_VERSION_PATCH</name></member>
-    <member refid="version_8h_1a4b2c4ab328be64dd58f83fcfca8cc2e0" kind="define"><name>ENDSTONE_API_VERSION</name></member>
-  </compound>
   <compound refid="dir_dd7779a583e02d88c9a89a2c881c3946" kind="dir"><name>include/endstone/actor</name>
   </compound>
   <compound refid="dir_621c26b5fd4198aba66e7e31570ce44a" kind="dir"><name>include/endstone/event/actor</name>
