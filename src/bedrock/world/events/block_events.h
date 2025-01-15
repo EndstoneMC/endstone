@@ -19,9 +19,9 @@
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
-#include "bedrock/forward.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/world/actor/actor_definition_identifier.h"
+#include "bedrock/world/events/block_source_handle.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/actor/piston_block_actor.h"

@@ -19,6 +19,7 @@
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/world/actor/actor_definition_event.h"
 #include "bedrock/world/effect/mob_effect_instance.h"
+#include "bedrock/world/events/block_source_handle.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/item_instance.h"

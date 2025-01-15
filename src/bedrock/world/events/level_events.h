@@ -14,11 +14,8 @@
 
 #pragma once
 
-#include <variant>
-
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"

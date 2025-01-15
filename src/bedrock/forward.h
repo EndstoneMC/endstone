@@ -56,8 +56,6 @@ class BlockDefinitionGroup;
 class BlockGraphicsModeChangeContext;
 class BlockItem;
 class BlockReducer;
-class BlockSourceListener;
-class BlockSourceHandle;
 class BlockState;
 class BodyControl;
 class BossEventSubscriptionManager;
