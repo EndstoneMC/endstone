@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 FROM python:3.12-slim-bullseye AS base
 
 LABEL maintainer="Endstone <hello@endstone.dev>"
@@ -41,7 +43,9 @@ WORKDIR /usr/src/endstone
 
 COPY . .
 
-RUN python -m pip install --upgrade pip \
+RUN --mount=type=cache,target=/root/.conan2/p \
+    --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
+    python -m pip install --upgrade pip \
     && pip install wheel auditwheel sentry-cli setuptools "patchelf>=0.14" pytest \
     && python -m pip wheel . --no-deps --wheel-dir=dist --verbose \
     && python scripts/repair_wheel.py -o endstone -p endstone -w wheelhouse dist/*.whl \
