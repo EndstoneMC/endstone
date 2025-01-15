@@ -30,10 +30,10 @@
 
 namespace endstone {
 
-class PlayerGameModeChangeEvent : public PlayerEvent {
+class PlayerGameModeChangeEvent : public Cancellable<PlayerEvent> {
 public:
     explicit PlayerGameModeChangeEvent(Player &player, GameMode new_game_mode)
-        : PlayerEvent(player), new_game_mode_(new_game_mode)
+        : Cancellable(player), new_game_mode_(new_game_mode)
     {
     }
     ~PlayerGameModeChangeEvent() override = default;
