@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="player__emote__event_8h" kind="file" language="C++">
-    <compoundname>player_emote_event.h</compoundname>
+  <compounddef id="player__respawn__event_8h" kind="file" language="C++">
+    <compoundname>player_respawn_event.h</compoundname>
     <includes refid="player__event_8h" local="yes">endstone/event/player/player_event.h</includes>
     <incdepgraph>
       <node id="10">
@@ -40,18 +40,18 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/endstone/event/player/player_emote_event.h</label>
-        <link refid="player__emote__event_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>endstone/event/player/player_event.h</label>
         <link refid="player__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/event/player/player_respawn_event.h</label>
+        <link refid="player__respawn__event_8h"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="30">
@@ -496,7 +496,7 @@
         <label>vector</label>
       </node>
     </incdepgraph>
-    <innerclass refid="classendstone_1_1PlayerEmoteEvent" prot="public">endstone::PlayerEmoteEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerRespawnEvent" prot="public">endstone::PlayerRespawnEvent</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -523,31 +523,20 @@
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="classendstone_1_1PlayerEmoteEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerEmoteEvent" kindref="compound">PlayerEmoteEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref><sp/>{</highlight></codeline>
+<codeline lineno="24" refid="classendstone_1_1PlayerRespawnEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerRespawnEvent" kindref="compound">PlayerRespawnEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref><sp/>{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerEmoteEvent" kindref="compound">PlayerEmoteEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>,<sp/>std::string<sp/><ref refid="classendstone_1_1Vector" kindref="compound">emote_id</ref>)</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>),<sp/>emote_id_(std::move(<ref refid="classendstone_1_1Vector" kindref="compound">emote_id</ref>))</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PlayerEmoteEvent" kindref="compound">~PlayerEmoteEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PlayerEmoteEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="33" refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="34"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" kindref="member">getEmoteId</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="44"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>emote_id_;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>emote_id_;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerRespawnEvent" kindref="compound">PlayerRespawnEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>)<sp/>:<sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PlayerRespawnEvent" kindref="compound">~PlayerRespawnEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PlayerRespawnEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30" refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="31"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="include/endstone/event/player/player_emote_event.h"/>
+    <location file="include/endstone/event/player/player_respawn_event.h"/>
   </compounddef>
 </doxygen>

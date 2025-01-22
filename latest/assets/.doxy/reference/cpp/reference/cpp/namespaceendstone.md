@@ -107,6 +107,7 @@
 | class | [**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md) <br>_Called when a player gets kicked from the server._  |
 | class | [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) <br>_Called when a player attempts to login in._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
+| class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |
 | class | [**Plugin**](classendstone_1_1Plugin.md) <br>_Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**PluginCommand**](classendstone_1_1PluginCommand.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |

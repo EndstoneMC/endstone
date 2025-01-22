@@ -69,6 +69,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_kick\_event.h**](player__kick__event_8h.md)     
                 * **file** [**player\_login\_event.h**](player__login__event_8h.md)     
                 * **file** [**player\_quit\_event.h**](player__quit__event_8h.md)     
+                * **file** [**player\_respawn\_event.h**](player__respawn__event_8h.md)     
                 * **file** [**player\_teleport\_event.h**](player__teleport__event_8h.md)     
             * **dir** [**server**](dir_77022909323d5ad872c4820a738a5429.md)     
                 * **file** [**broadcast\_message\_event.h**](broadcast__message__event_8h.md)     

@@ -1,10 +1,10 @@
 
 
-# File player\_emote\_event.h
+# File player\_respawn\_event.h
 
-[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md) **>** [**player**](dir_7c05c37b25e9c9eccd9c63c2d313ba28.md) **>** [**player\_emote\_event.h**](player__emote__event_8h.md)
+[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md) **>** [**player**](dir_7c05c37b25e9c9eccd9c63c2d313ba28.md) **>** [**player\_respawn\_event.h**](player__respawn__event_8h.md)
 
-[Go to the documentation of this file](player__emote__event_8h.md)
+[Go to the documentation of this file](player__respawn__event_8h.md)
 
 
 ```C++
@@ -28,27 +28,16 @@
 
 namespace endstone {
 
-class PlayerEmoteEvent : public PlayerEvent {
+class PlayerRespawnEvent : public PlayerEvent {
 public:
-    explicit PlayerEmoteEvent(Player &player, std::string emote_id)
-        : PlayerEvent(player), emote_id_(std::move(emote_id))
-    {
-    }
-    ~PlayerEmoteEvent() override = default;
+    explicit PlayerRespawnEvent(Player &player) : PlayerEvent(player) {}
+    ~PlayerRespawnEvent() override = default;
 
-    inline static const std::string NAME = "PlayerEmoteEvent";
+    inline static const std::string NAME = "PlayerRespawnEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
     }
-
-    [[nodiscard]] std::string getEmoteId() const
-    {
-        return emote_id_;
-    }
-
-private:
-    std::string emote_id_;
 };
 
 }  // namespace endstone

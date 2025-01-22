@@ -29,6 +29,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md) _Called when a player uses an emote._ 
         * **class** [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) _Called when a player joins a server._ 
         * **class** [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) _Called when a player leaves a server._ 
+        * **class** [**endstone::PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) _Called when a player respawns._ 
     * **class** [**endstone::ServerEvent**](classendstone_1_1ServerEvent.md) _Represents a Server-related event._     
         * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
         * **class** [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md) _Called when a plugin is disabled._ 

@@ -968,6 +968,12 @@
     <member refid="classendstone_1_1PlayerQuitEvent_1a00b0ae58f2924784ed2e2ce0ca4ab8b4" kind="function"><name>getQuitMessage</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1ae21d854c5df9d4a4631346a858356098" kind="function"><name>setQuitMessage</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerRespawnEvent" kind="class"><name>endstone::PlayerRespawnEvent</name>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1ab47c1f5797bfb607b21b5fdbd1e35336" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1abb6a9abde0432b56b4ce24b1ebfdbcbb" kind="function"><name>PlayerRespawnEvent</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1a6d85e0d878c46548c97daab6e89bad91" kind="function"><name>~PlayerRespawnEvent</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8" kind="function"><name>getEventName</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerTeleportEvent" kind="class"><name>endstone::PlayerTeleportEvent</name>
     <member refid="classendstone_1_1PlayerTeleportEvent_1a65255877510836658e5cda1429403f91" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerTeleportEvent_1a4d1f49ddbc33c47de8e2521fb804a170" kind="variable"><name>from_</name></member>
@@ -1652,6 +1658,8 @@
   <compound refid="player__login__event_8h" kind="file"><name>player_login_event.h</name>
   </compound>
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
+  </compound>
+  <compound refid="player__respawn__event_8h" kind="file"><name>player_respawn_event.h</name>
   </compound>
   <compound refid="player__teleport__event_8h" kind="file"><name>player_teleport_event.h</name>
   </compound>
