@@ -1,0 +1,53 @@
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#pragma once
+
+#include "endstone/event/cancellable.h"
+#include "endstone/event/player/player_event.h"
+
+namespace endstone {
+
+/**
+ * @brief Called when a player uses an emote.
+ */
+class PlayerEmoteEvent : public PlayerEvent {
+public:
+    explicit PlayerEmoteEvent(Player &player, std::string emote_id)
+        : PlayerEvent(player), emote_id_(std::move(emote_id))
+    {
+    }
+    ~PlayerEmoteEvent() override = default;
+
+    inline static const std::string NAME = "PlayerEmoteEvent";
+    [[nodiscard]] std::string getEventName() const override
+    {
+        return NAME;
+    }
+
+    /**
+     * @brief Gets the emote ID
+     *
+     * @return The emote ID
+     */
+    [[nodiscard]] std::string getEmoteId() const
+    {
+        return emote_id_;
+    }
+
+private:
+    std::string emote_id_;
+};
+
+}  // namespace endstone

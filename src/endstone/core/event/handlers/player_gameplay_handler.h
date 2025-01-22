@@ -30,6 +30,7 @@ public:
 private:
     bool handleEvent(const PlayerFormResponseEvent &event);
     bool handleEvent(const PlayerFormCloseEvent &event);
+    bool handleEvent(const PlayerEmoteEvent &event);
     bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event);
     bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event);
     bool handleEvent(::PlayerGameModeChangeEvent &event);

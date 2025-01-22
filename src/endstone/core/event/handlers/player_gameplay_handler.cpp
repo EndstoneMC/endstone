@@ -23,6 +23,7 @@
 #include "endstone/core/json.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
@@ -55,7 +56,8 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerEmoteEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
@@ -136,6 +138,16 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithEntityBe
         if (e.isCancelled()) {
             return false;
         }
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const ::PlayerEmoteEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        PlayerEmoteEvent e{player->getEndstoneActor<EndstonePlayer>(), event.emote_piece_id};
+        server.getPluginManager().callEvent(e);
     }
     return true;
 }
