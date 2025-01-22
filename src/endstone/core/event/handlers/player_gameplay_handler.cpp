@@ -82,35 +82,31 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
 
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormResponseEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.player);
-    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
-        actor->getEndstoneActor<EndstonePlayer>().onFormResponse(event.form_id, event.form_response);
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        player->getEndstoneActor<EndstonePlayer>().onFormResponse(event.form_id, event.form_response);
     }
     return true;
 }
 
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormCloseEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.player);
-    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
-        actor->getEndstoneActor<EndstonePlayer>().onFormClose(event.form_id, event.form_close_reason);
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        player->getEndstoneActor<EndstonePlayer>().onFormClose(event.form_id, event.form_close_reason);
     }
     return true;
 }
 
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.player);
-    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = entt::locator<EndstoneServer>::value();
-        auto &player = actor->getEndstoneActor<EndstonePlayer>();
-        auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
+        auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         if (auto block = EndstoneBlock::at(block_source, BlockPos(event.block_location))) {
             const std::shared_ptr<EndstoneItemStack> item_stack =
                 event.item.isNull() ? nullptr : EndstoneItemStack::fromMinecraft(event.item);
 
             PlayerInteractEvent e{
-                player,
+                player->getEndstoneActor<EndstonePlayer>(),
                 item_stack,
                 block.value(),
                 static_cast<BlockFace>(event.block_face),
@@ -130,13 +126,10 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithBlockBef
 
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
 {
-    const StackResultStorageEntity stack_result_player(event.player);
-    const auto *player = ::Actor::tryGetFromEntity(stack_result_player.getStackRef(), false);
+    const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
+    const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
 
-    const StackResultStorageEntity stack_result_target(event.target_entity);
-    const auto *target = ::Actor::tryGetFromEntity(stack_result_target.getStackRef(), false);
-
-    if (player && player->isPlayer() && target) {
+    if (player && target) {
         const auto &server = entt::locator<EndstoneServer>::value();
         PlayerInteractActorEvent e{player->getEndstoneActor<EndstonePlayer>(), target->getEndstoneActor()};
         server.getPluginManager().callEvent(e);
@@ -149,19 +142,18 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithEntityBe
 
 bool EndstonePlayerGameplayHandler::handleEvent(::PlayerGameModeChangeEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.player);
-    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && actor->isPlayer()) {
+    if (auto *player = event.player.tryUnwrap<::Player>(); player) {
         const auto &server = entt::locator<EndstoneServer>::value();
-        PlayerGameModeChangeEvent e{actor->getEndstoneActor<EndstonePlayer>(),
+        PlayerGameModeChangeEvent e{player->getEndstoneActor<EndstonePlayer>(),
                                     EndstoneGameMode::fromMinecraft(event.to_game_mode)};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdatePlayerGameType);
             const auto pk = std::static_pointer_cast<UpdatePlayerGameTypePacket>(packet);
             pk->player_game_type = event.from_game_mode;
-            pk->target_player = actor->getOrCreateUniqueID();
+            pk->target_player = player->getOrCreateUniqueID();
             pk->tick = 0;
-            if (const auto *component = actor->tryGetComponent<ReplayStateComponent>(); component) {
+            if (const auto *component = player->tryGetComponent<ReplayStateComponent>(); component) {
                 pk->tick = component->getCurrentTick();
             }
             server.getServer().getPacketSender().sendBroadcast(*pk);

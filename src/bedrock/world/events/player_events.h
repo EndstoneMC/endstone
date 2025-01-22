@@ -82,7 +82,7 @@ struct PlayerDamageEvent {
     std::unique_ptr<ActorDamageSource> damage_source;
 };
 struct PlayerOpenContainerEvent {
-    WeakRef<EntityContext> player;
+    WeakEntityRef player;
     ContainerType container_type;
     const BlockPos block_pos;
     ActorUniqueID entity_unique_id;
@@ -181,27 +181,27 @@ struct PlayerFormCloseEvent {
     PlayerFormCloseReason form_close_reason;
 };
 struct PlayerDisconnectEvent {
-    WeakRef<EntityContext> player;
+    WeakEntityRef player;
 };
 struct PlayerSkinLoadedClientEvent {
-    WeakRef<EntityContext> player;
+    WeakEntityRef player;
 };
 struct PlayerGameModeChangeEvent {
-    WeakRef<EntityContext> player;
+    WeakEntityRef player;
     GameType from_game_mode;
     GameType to_game_mode;
 };
 struct PlayerInputPermissionCategoryChangeEvent {
-    WeakRef<EntityContext> player;
+    WeakEntityRef player;
     ClientInputLockCategory category;
     bool state;
 };
 struct PlayerEmoteEvent {
-    WeakRef<EntityContext> player;
+    WeakEntityRef player;
     std::string emote_piece_id;
 };
 struct PlayerScriptInputEvent {
-    WeakRef<EntityContext> player;
+    WeakEntityRef player;
     ScriptingInputButton button;
     ScriptingInputButtonState new_state;
 };

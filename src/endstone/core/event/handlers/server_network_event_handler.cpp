@@ -16,7 +16,6 @@
 
 #include <variant>
 
-#include "bedrock/locale/i18n.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_chat_event.h"
 
@@ -45,9 +44,8 @@ GameplayHandlerResult<CoordinatorResult> EndstoneServerNetworkEventHandler::hand
 bool EndstoneServerNetworkEventHandler::handleEvent(ChatEvent &event)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-    const StackResultStorageEntity stack_result(event.sender);
-    if (const auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor) {
-        PlayerChatEvent e{actor->getEndstoneActor<EndstonePlayer>(), event.message};
+    if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
+        PlayerChatEvent e{player->getEndstoneActor<EndstonePlayer>(), event.message};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;

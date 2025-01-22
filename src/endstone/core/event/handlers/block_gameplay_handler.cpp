@@ -84,8 +84,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(const PistonActionEvent &event)
 
 bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.player);
-    const auto *entity = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false);
+    const auto *entity = ::Actor::tryGetFromEntity(event.player.unwrap(), false);
     if (!entity || !entity->isPlayer()) {
         return true;
     }
@@ -117,8 +116,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent 
 
 bool EndstoneBlockGameplayHandler::handleEvent(ExplosionStartedEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.source);
-    const auto *source = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false);
+    const auto *source = WeakEntityRef(event.source).tryUnwrap<::Actor>();
     const auto &server = entt::locator<EndstoneServer>::value();
 
     std::vector<std::shared_ptr<Block>> block_list;
@@ -131,6 +129,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(ExplosionStartedEvent &event)
             return true;
         }
     }
+
     if (source) {
         auto &actor = source->getEndstoneActor<>();
         ActorExplodeEvent e{actor, actor.getLocation(), block_list};
@@ -153,24 +152,19 @@ bool EndstoneBlockGameplayHandler::handleEvent(ExplosionStartedEvent &event)
 
 bool EndstoneBlockGameplayHandler::handleEvent(BlockTryDestroyByPlayerEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.player);
-    const auto *entity = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false);
-    if (!entity || !entity->isPlayer()) {
-        return true;
-    }
-
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = entity->getEndstoneActor<EndstonePlayer>();
-    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
-    if (const auto block = EndstoneBlock::at(block_source, event.pos)) {
-        BlockBreakEvent e{block.value(), player};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return false;
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
+        if (const auto block = EndstoneBlock::at(block_source, event.pos)) {
+            BlockBreakEvent e{block.value(), player->getEndstoneActor<EndstonePlayer>()};
+            server.getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                return false;
+            }
         }
-    }
-    else {
-        server.getLogger().error(block.error());
+        else {
+            server.getLogger().error(block.error());
+        }
     }
     return true;
 }

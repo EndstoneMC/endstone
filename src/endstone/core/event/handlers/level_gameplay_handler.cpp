@@ -59,8 +59,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEve
 
 bool EndstoneLevelGameplayHandler::handleEvent(const LevelAddedActorEvent &event)
 {
-    const StackResultStorageEntity stack_result(event.actor);
-    if (auto *actor = ::Actor::tryGetFromEntity(stack_result.getStackRef(), false); actor && !actor->isPlayer()) {
+    if (auto *actor = WeakEntityRef(event.actor).tryUnwrap<::Actor>(); actor && !actor->isPlayer()) {
         const auto &server = entt::locator<EndstoneServer>::value();
         ActorSpawnEvent e{actor->getEndstoneActor()};
         server.getPluginManager().callEvent(e);
