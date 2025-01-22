@@ -34,9 +34,8 @@ EndstoneLevel::EndstoneLevel(::Level &level) : server_(entt::locator<EndstoneSer
     const static AutomaticID<::Dimension, int> dimension_ids[] = {VanillaDimensions::Overworld,
                                                                   VanillaDimensions::Nether, VanillaDimensions::TheEnd};
     for (const auto &dimension_id : dimension_ids) {
-
         auto dimension = level.getOrCreateDimension(dimension_id);
-        addDimension(std::make_unique<EndstoneDimension>(*dimension, *this));
+        addDimension(std::make_unique<EndstoneDimension>(*dimension.unwrap(), *this));
     }
 
     loadResourcePacks();

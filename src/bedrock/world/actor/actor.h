@@ -289,6 +289,7 @@ public:
     [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
+    static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed);
 
 private:
     EntityContext entity_context_;  // +8

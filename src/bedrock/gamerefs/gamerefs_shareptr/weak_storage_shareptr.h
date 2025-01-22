@@ -18,22 +18,17 @@
 
 template <typename T>
 class WeakStorageSharePtr {
-public:
+protected:
     WeakStorageSharePtr() = default;
     explicit WeakStorageSharePtr(std::weak_ptr<T> const &handle) : handle_(handle){};
-    T &operator*() const
+    [[nodiscard]] bool _isSet() const
     {
-        if (auto lock = handle_.lock()) {
-            return *lock;
-        }
-        throw std::bad_weak_ptr();
-    }
-
-    T *operator->() const noexcept
-    {
-        return handle_.lock().get();
+        return !handle_.expired();
     }
 
 private:
+    friend T;
+    template <typename U>
+    friend class StackResultStorageSharePtr;
     std::weak_ptr<T> handle_;
 };

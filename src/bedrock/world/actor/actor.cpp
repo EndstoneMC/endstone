@@ -100,7 +100,7 @@ bool Actor::isInLava() const
 
 Dimension &Actor::getDimension() const
 {
-    return *dimension_;
+    return *dimension_.unwrap();
 }
 
 Level &Actor::getLevel() const
@@ -195,6 +195,14 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
         return &actor;
     }
     return nullptr;
+}
+
+Actor *Actor::tryGetFromEntity(StackRefResult<EntityContext> entity, bool include_removed)
+{
+    if (!entity) {
+        return nullptr;
+    }
+    return tryGetFromEntity(*entity, include_removed);
 }
 
 bool Actor::isJumping() const

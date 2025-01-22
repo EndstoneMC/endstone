@@ -14,21 +14,34 @@
 
 #include "bedrock/entity/gamerefs_entity/stack_result_storage_entity.h"
 
-StackResultStorageEntity::StackResultStorageEntity(nullptr_t) {}
+StackResultStorageEntity::StackResultStorageEntity(nullptr_t) : context_(std::nullopt) {}
 
-StackResultStorageEntity::StackResultStorageEntity(EntityContext const &context) : context_(context) {}
+StackResultStorageEntity::StackResultStorageEntity(WeakStorageEntity const &weak_storage)
+{
+    if (weak_storage._isSet()) {
+        if (auto registry = weak_storage.registry_.unwrap(); registry) {
+            if (EntityContext entity_context(registry.value(), weak_storage.entity_); entity_context.isValid()) {
+                context_.emplace(entity_context);
+            }
+        }
+    }
+}
+
+StackResultStorageEntity::StackResultStorageEntity(EntityContext const &context)
+{
+    if (context.isValid()) {
+        context_.emplace(context);
+    }
+}
 
 StackResultStorageEntity::StackResultStorageEntity(OwnerStorageEntity const &ref) : context_(ref.getStackRef()) {}
 
-StackResultStorageEntity::StackResultStorageEntity(WeakStorageEntity const &ref)
-    : context_(EntityContext{*ref.registry_, ref.entity_})
+bool StackResultStorageEntity::_hasValue() const
 {
+    return context_.has_value();
 }
 
-EntityContext &StackResultStorageEntity::getStackRef() const
+EntityContext &StackResultStorageEntity::_getStackRef() const
 {
-    if (!context_.has_value()) {
-        throw std::bad_optional_access();
-    }
-    return const_cast<EntityContext &>(context_.value());
+    return context_.value();
 }

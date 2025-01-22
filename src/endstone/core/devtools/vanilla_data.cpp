@@ -41,7 +41,7 @@ double truncate(const double value, int decimal_places = 6)
 void dumpBlockData(VanillaData &data, const ::Level &level)
 {
     auto overworld = level.getDimension(VanillaDimensions::Overworld);
-    auto &region = overworld->getBlockSourceFromMainChunkSource();
+    auto &region = overworld.unwrap()->getBlockSourceFromMainChunkSource();
     auto item_registry = level.getItemRegistry();
 
     BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {

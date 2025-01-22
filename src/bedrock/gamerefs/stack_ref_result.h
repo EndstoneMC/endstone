@@ -16,7 +16,61 @@
 
 #include "bedrock/gamerefs/gamerefs_shareptr/gamerefs_shareptr.h"
 
-template <typename T>
-class StackRefResult : public GameRefs<T>::StackResultStorage {
-    using GameRefs<T>::StackResultStorage::StackResultStorage;
+template <typename Type>
+class StackRefResult : public GameRefs<Type>::StackResultStorage {
+public:
+    using StackRef = typename GameRefs<Type>::StackRef;
+    using GameRefs<Type>::StackResultStorage::StackResultStorage;
+
+    operator bool() const  // NOLINT(*-explicit-constructor)
+    {
+        return hasValue();
+    }
+
+    bool hasValue() const  // NOLINT(*-use-nodiscard)
+    {
+        return GameRefs<Type>::StackResultStorage::_hasValue();
+    }
+
+    StackRef &operator*() const
+    {
+        return value();
+    }
+
+    StackRef &operator*()
+    {
+        return value();
+    }
+
+    StackRef *operator->() const
+    {
+        return &value();
+    }
+
+    StackRef *operator->()
+    {
+        return &value();
+    }
+
+    StackRef &value() const
+    {
+        return GameRefs<Type>::StackResultStorage::_getStackRef();
+    }
+
+    StackRef &value()
+    {
+        return GameRefs<Type>::StackResultStorage::_getStackRef();
+    }
+
+    WeakRef<Type> getWeakRef() const;
+    bool operator==(nullptr_t) const;
+    bool operator!=(nullptr_t) const;
+
+private:
+    template <typename Type2>
+    friend class WeakRef;
+    template <typename Type2>
+    explicit StackRefResult(const WeakRef<Type2> &weak_ref) : GameRefs<Type>::StackResultStorage(weak_ref)
+    {
+    }
 };

@@ -22,8 +22,7 @@ class StrictEntityContext {
 public:
     [[nodiscard]] bool isNull() const
     {
-        return (static_cast<EntityId::underlying_type>(entity_id_) & EntityIdTraits::entity_mask) ==
-               EntityIdTraits::entity_mask;
+        return entity_id_ == entt::null;
     }
 
 private:

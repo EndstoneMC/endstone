@@ -15,8 +15,20 @@
 #pragma once
 
 #include "bedrock/gamerefs/gamerefs_shareptr/gamerefs_shareptr.h"
+#include "bedrock/gamerefs/stack_ref_result.h"
 
 template <typename T>
 class WeakRef : public GameRefs<T>::WeakStorage {
+public:
     using GameRefs<T>::WeakStorage::WeakStorage;
+
+    [[nodiscard]] bool isSet() const
+    {
+        return GameRefs<T>::WeakStorage::_isSet();
+    }
+
+    StackRefResult<T> unwrap() const
+    {
+        return StackRefResult<T>(*this);
+    }
 };

@@ -18,6 +18,11 @@
 #include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
 WeakStorageEntity::WeakStorageEntity(const EntityContext &ctx)
-    : registry_(ctx.registry().getWeakRef()), entity_(ctx.entityId())
+    : registry_(ctx._registry().getWeakRef()), entity_(ctx._getEntityId())
 {
+}
+
+bool WeakStorageEntity::_isSet() const
+{
+    return registry_.isSet() && entity_ != entt::null;
 }

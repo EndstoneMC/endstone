@@ -16,17 +16,33 @@
 
 #include <memory>
 
+#include "bedrock/gamerefs/gamerefs_shareptr/weak_storage_shareptr.h"
+
 template <typename T>
 class StackResultStorageSharePtr {
-public:
-    bool operator==(const std::nullptr_t) const
+protected:
+    StackResultStorageSharePtr() = default;
+    explicit StackResultStorageSharePtr(nullptr_t) : value_(nullptr) {}
+    template <typename U>
+    explicit StackResultStorageSharePtr(const WeakStorageSharePtr<U> &weak_storage)
     {
-        return value_ == nullptr;
+        if (!weak_storage.handle_.expired()) {
+            value_ = weak_storage.handle_.lock();
+        }
     }
+    StackResultStorageSharePtr(const StackResultStorageSharePtr &) = delete;
+    StackResultStorageSharePtr(StackResultStorageSharePtr &&) noexcept = default;
+    StackResultStorageSharePtr &operator=(const StackResultStorageSharePtr &) = delete;
+    StackResultStorageSharePtr &operator=(StackResultStorageSharePtr &&) = delete;
 
-    bool operator!=(const std::nullptr_t) const
+    bool _hasValue() const
     {
         return value_ != nullptr;
+    }
+
+    T &_getStackRef() const
+    {
+        return *value_;
     }
 
 private:

@@ -21,14 +21,14 @@
 #include "bedrock/gamerefs/weak_ref.h"
 
 class WeakStorageEntity {
-public:
+protected:
     WeakStorageEntity() = default;
     explicit WeakStorageEntity(const EntityContext &ctx);
+    [[nodiscard]] bool _isSet() const;
 
 private:
     friend class StackResultStorageEntity;
-
     WeakRef<EntityRegistry> registry_;
-    EntityId entity_{static_cast<EntityId::underlying_type>(-1)};
+    EntityId entity_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(WeakStorageEntity, 24, 24);

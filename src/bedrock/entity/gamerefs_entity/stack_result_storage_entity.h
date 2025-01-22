@@ -22,21 +22,21 @@
 #include "bedrock/entity/gamerefs_entity/weak_storage_entity.h"
 
 class StackResultStorageEntity {
-public:
+protected:
     StackResultStorageEntity() = default;
     explicit StackResultStorageEntity(nullptr_t);
+    explicit StackResultStorageEntity(WeakStorageEntity const &weak_storage);
     explicit StackResultStorageEntity(EntityContext const &);
-    explicit StackResultStorageEntity(OwnerStorageEntity const &);
-    explicit StackResultStorageEntity(WeakStorageEntity const &);
-
     StackResultStorageEntity(StackResultStorageEntity const &) = delete;
     StackResultStorageEntity(StackResultStorageEntity &&) = default;
+    explicit StackResultStorageEntity(OwnerStorageEntity const &);
     StackResultStorageEntity &operator=(StackResultStorageEntity const &) = delete;
     StackResultStorageEntity &operator=(StackResultStorageEntity &&) = delete;
-
-    [[nodiscard]] EntityContext &getStackRef() const;
+    [[nodiscard]] bool _hasValue() const;
+    [[nodiscard]] EntityContext &_getStackRef() const;
 
 private:
-    std::optional<EntityContext> context_{std::nullopt};
+    friend class WeakEntityRef;
+    mutable std::optional<EntityContext> context_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(StackResultStorageEntity, 32, 32);

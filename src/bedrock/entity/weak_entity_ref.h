@@ -19,10 +19,20 @@
 class WeakEntityRef {
 public:
     WeakEntityRef() = default;
-    WeakEntityRef(nullptr_t) {}
-    operator WeakRef<EntityContext>() const
+    WeakEntityRef(WeakRef<EntityContext> weak_entity) : weak_entity(std::move(weak_entity)) {}  // NOLINT(*-explicit-constructor)
+    WeakEntityRef(nullptr_t) {}                                                      // NOLINT(*-explicit-constructor)
+    template <typename T>
+    T *tryUnwrap() const
+    {
+        const StackResultStorageEntity stack_result(*this);
+        if (!stack_result._hasValue()) {
+            return nullptr;
+        }
+        return T::tryGetFromEntity(stack_result._getStackRef(), false);
+    }
+    operator WeakRef<EntityContext>() const  // NOLINT(*-explicit-constructor)
     {
         return weak_entity;
-    };
+    }
     WeakRef<EntityContext> weak_entity;
 };
