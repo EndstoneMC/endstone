@@ -19,34 +19,18 @@
 namespace endstone {
 
 /**
- * @brief Called when a player uses an emote.
+ * @brief Called when a player respawns.
  */
-class PlayerEmoteEvent : public PlayerEvent {
+class PlayerRespawnEvent : public PlayerEvent {
 public:
-    explicit PlayerEmoteEvent(Player &player, std::string emote_id)
-        : PlayerEvent(player), emote_id_(std::move(emote_id))
-    {
-    }
-    ~PlayerEmoteEvent() override = default;
+    explicit PlayerRespawnEvent(Player &player) : PlayerEvent(player) {}
+    ~PlayerRespawnEvent() override = default;
 
-    inline static const std::string NAME = "PlayerEmoteEvent";
+    inline static const std::string NAME = "PlayerRespawnEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
     }
-
-    /**
-     * @brief Gets the emote ID
-     *
-     * @return The emote ID
-     */
-    [[nodiscard]] std::string getEmoteId() const
-    {
-        return emote_id_;
-    }
-
-private:
-    std::string emote_id_;
 };
 
 }  // namespace endstone

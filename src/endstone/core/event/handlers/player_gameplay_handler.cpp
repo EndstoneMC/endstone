@@ -27,6 +27,7 @@
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
+#include "endstone/event/player/player_respawn_event.h"
 
 namespace endstone::core {
 
@@ -57,7 +58,8 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerEmoteEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerEmoteEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
@@ -94,6 +96,26 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormCloseEvent &even
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         player->getEndstoneActor<EndstonePlayer>().onFormClose(event.form_id, event.form_close_reason);
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const ::PlayerRespawnEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        PlayerRespawnEvent e{player->getEndstoneActor<EndstonePlayer>()};
+        server.getPluginManager().callEvent(e);
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const ::PlayerEmoteEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        PlayerEmoteEvent e{player->getEndstoneActor<EndstonePlayer>(), event.emote_piece_id};
+        server.getPluginManager().callEvent(e);
     }
     return true;
 }
@@ -138,16 +160,6 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithEntityBe
         if (e.isCancelled()) {
             return false;
         }
-    }
-    return true;
-}
-
-bool EndstonePlayerGameplayHandler::handleEvent(const ::PlayerEmoteEvent &event)
-{
-    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<EndstoneServer>::value();
-        PlayerEmoteEvent e{player->getEndstoneActor<EndstonePlayer>(), event.emote_piece_id};
-        server.getPluginManager().callEvent(e);
     }
     return true;
 }
