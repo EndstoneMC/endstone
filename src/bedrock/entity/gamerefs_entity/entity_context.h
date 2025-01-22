@@ -20,44 +20,62 @@
 class EntityContext : public EnableGetWeakRef<EntityContext> {
 public:
     EntityContext(EntityRegistry &registry, EntityId entity_id)
-        : registry_(registry), entt_registry_(registry.registry_), entity_id_(entity_id){};
+        : registry_(registry), entt_registry_(registry.registry_), entity_(entity_id)
+    {
+    }
+    EntityContext(const EntityContext &) = default;
+    EntityContext(EntityContext &&) = default;
+    EntityContext &operator=(const EntityContext &) = delete;
+    EntityContext &operator=(EntityContext &&) = delete;
+
+    [[nodiscard]] bool isValid() const
+    {
+        return entt_registry_.valid(entity_);
+    }
 
     template <typename Component>
     [[nodiscard]] bool hasComponent() const
     {
-        return entt_registry_.all_of<Component>(entity_id_);
-    }
-
-    template <typename Component>
-    Component *tryGetComponent()
-    {
-        return entt_registry_.try_get<Component>(entity_id_);
+        return entt_registry_.all_of<Component>(entity_);
     }
 
     template <typename Component>
     Component *tryGetComponent() const
     {
-        return entt_registry_.try_get<Component>(entity_id_);
+        return entt_registry_.try_get<Component>(entity_);
+    }
+
+    template <typename Component>
+    Component *tryGetComponent()
+    {
+        return entt_registry_.try_get<Component>(entity_);
     }
 
     template <typename Component, typename... Args>
     Component &getOrAddComponent(Args &&...args) const
     {
-        return entt_registry_.get_or_emplace<Component>(entity_id_, std::forward<Args>(args)...);
+        return entt_registry_.get_or_emplace<Component>(entity_, std::forward<Args>(args)...);
     }
 
-    [[nodiscard]] EntityRegistry &registry() const
+    [[nodiscard]] EntityRegistry &_registry() const
     {
         return registry_;
     }
 
-    [[nodiscard]] EntityId entityId() const
+protected:
+    friend class WeakStorageEntity;
+
+    [[nodiscard]] EntityId _getEntityId() const
     {
-        return entity_id_;
+        return entity_;
     }
 
-private:
-    EntityRegistry &registry_;                       // +0
-    entt::basic_registry<EntityId> &entt_registry_;  // +8
-    EntityId entity_id_;                             // +16
+    [[nodiscard]] std::uint32_t _getRegistryId() const
+    {
+        return entity_;
+    }
+
+    EntityRegistry &registry_;     // +0
+    EnTTRegistry &entt_registry_;  // +8
+    const EntityId entity_;        // +16
 };
