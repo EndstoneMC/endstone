@@ -113,24 +113,11 @@ void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
 
 void EndstoneLevel::loadResourcePacks()
 {
-    auto *manager = level_.getClientResourcePackManager();
-    auto &source = server_.getResourcePackSource();
+    const auto *manager = level_.getClientResourcePackManager();
+    const auto &source = server_.getResourcePackSource();
 
-    // Load packs from world_resource_packs.json first
+    // Load zipped packs
     nlohmann::json json;
-    fs::path file_path = fs::current_path() / "worlds" / level_.getLevelId() / "world_resource_packs.json";
-
-    if (exists(file_path)) {
-        try {
-            std::ifstream file(file_path);
-            json = nlohmann::json::parse(file, nullptr, true, true);
-        }
-        catch (std::exception &e) {
-            server_.getLogger().error("Failed to load from {}: {}", file_path, e.what());
-        }
-    }
-
-    // Append loaded packs to the stack
     source.forEachPackConst([&json](auto &pack) {
         auto &identity = pack.getManifest().getIdentity();
         json.push_back({
@@ -138,8 +125,6 @@ void EndstoneLevel::loadResourcePacks()
             {"version", {identity.version.getMajor(), identity.version.getMinor(), identity.version.getPatch()}},
         });
     });
-
-    // Deserialize the pack stack from json
     std::stringstream ss(json.dump());
     auto pack_stack = ResourcePackStack::deserialize(ss, server_.getResourcePackRepository());
 
@@ -149,14 +134,16 @@ void EndstoneLevel::loadResourcePacks()
                                                                                                   content_keys.end());
     for (const auto &pack_instance : pack_stack->stack) {
         const auto &manifest = pack_instance.getManifest();
-        bool encrypted = content_keys.find(manifest.getIdentity()) != content_keys.end();
+        const bool encrypted = content_keys.contains(manifest.getIdentity());
         server_.getLogger().info("Loaded {} v{} (Pack ID: {}) {}", manifest.getName(),
                                  manifest.getIdentity().version.asString(), manifest.getIdentity().id.asString(),
                                  encrypted ? ColorFormat::Green + "[encrypted]" : "");
     }
 
-    // Replace the level pack stack
-    manager->setStack(std::move(pack_stack), ResourcePackStackType::LEVEL, false);
+    // Append loaded packs to level pack stack
+    auto &level_stack = const_cast<ResourcePackStack &>(manager->getStack(ResourcePackStackType::LEVEL));
+    level_stack.stack.insert(level_stack.stack.end(), std::make_move_iterator(pack_stack->stack.begin()),
+                             std::make_move_iterator(pack_stack->stack.end()));
 }
 
 EndstoneServer &EndstoneLevel::getServer() const
