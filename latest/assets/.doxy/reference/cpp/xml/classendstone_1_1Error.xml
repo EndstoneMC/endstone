@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Error" kind="class" language="C++" prot="public">
     <compoundname>endstone::Error</compoundname>
     <includes refid="error_8h" local="no">endstone/util/error.h</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Error_1a76da8953868eeb80373357c0f524e08a" prot="private" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string endstone::Error::message_</definition>
         <argsstring></argsstring>
         <name>message_</name>
+        <qualifiedname>endstone::Error::message_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::string endstone::Error::stack_trace_</definition>
         <argsstring></argsstring>
         <name>stack_trace_</name>
+        <qualifiedname>endstone::Error::stack_trace_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -30,13 +32,14 @@
         </inbodydescription>
         <location file="include/endstone/util/error.h" line="50" column="17" bodyfile="include/endstone/util/error.h" bodystart="50" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Error_1af611da345686deb7c2a012faec27ac49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::Error::Error</definition>
         <argsstring>(std::string_view message, std::string_view stack_trace)</argsstring>
         <name>Error</name>
+        <qualifiedname>endstone::Error::Error</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>message</declname>
@@ -58,6 +61,7 @@
         <definition>std::string_view endstone::Error::getMessage</definition>
         <argsstring>() const noexcept</argsstring>
         <name>getMessage</name>
+        <qualifiedname>endstone::Error::getMessage</qualifiedname>
         <briefdescription>
 <para>Returns the error message. </para>
         </briefdescription>
@@ -75,6 +79,7 @@
         <definition>std::string_view endstone::Error::getStackTrace</definition>
         <argsstring>() const noexcept</argsstring>
         <name>getStackTrace</name>
+        <qualifiedname>endstone::Error::getStackTrace</qualifiedname>
         <briefdescription>
 <para>Returns the stack trace associated with the error. </para>
         </briefdescription>
@@ -87,7 +92,7 @@
         </inbodydescription>
         <location file="include/endstone/util/error.h" line="43" column="23" bodyfile="include/endstone/util/error.h" bodystart="43" bodyend="46"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents an error with a message and the stack trace. </para>
     </briefdescription>

@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = = "ActorKnockbackEvent"<br> |
+|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"ActorKnockbackEvent"`<br> |
 
 
 
@@ -98,12 +98,12 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorKnockbackEvent**](#function-actorknockbackevent) ([**Mob**](classendstone_1_1Mob.md) & mob, [**Actor**](classendstone_1_1Actor.md) \* source, [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; knockback) <br> |
+|   | [**ActorKnockbackEvent**](#function-actorknockbackevent) ([**Mob**](classendstone_1_1Mob.md) & mob, [**Actor**](classendstone_1_1Actor.md) \* source, [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; knockback) <br> |
 |  [**Mob**](classendstone_1_1Mob.md) & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Mob**_](classendstone_1_1Mob.md) _involved in this event._ |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getKnockback**](#function-getknockback) () const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; | [**getKnockback**](#function-getknockback) () const<br> |
 |  [**Actor**](classendstone_1_1Actor.md) \* | [**getSource**](#function-getsource) () const<br>_Get the source actor that has caused knockback to the defender, if exists._  |
-|  void | [**setKnockback**](#function-setknockback) ([**Vector**](classendstone_1_1Vector.md)&lt; float &gt; knockback) <br>_Sets the knockback that will be applied to the entity._  |
+|  [**void**](classendstone_1_1Vector.md) | [**setKnockback**](#function-setknockback) ([**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; knockback) <br>_Sets the knockback that will be applied to the entity._  |
 |   | [**~ActorKnockbackEvent**](#function-actorknockbackevent) () override<br> |
 
 
@@ -113,9 +113,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -124,9 +124,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -310,7 +310,7 @@ inline Vector < float > endstone::ActorKnockbackEvent::getKnockback () const
 Gets the knockback that will be applied to the entity.
 
 
-**Note:** this method returns a copy, changes must be applied with setKnockback(Vector)
+**Note:** this method returns a copy, changes must be applied with [**setKnockback(Vector)**](classendstone_1_1ActorKnockbackEvent.md#function-setknockback)
 
 
 

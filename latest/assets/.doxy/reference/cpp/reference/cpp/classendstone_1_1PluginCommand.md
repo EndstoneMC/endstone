@@ -73,12 +73,12 @@ Inherits the following classes: [endstone::Command](classendstone_1_1Command.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PluginCommand**](#function-plugincommand) (const [**Command**](classendstone_1_1Command.md) & command, [**Plugin**](classendstone_1_1Plugin.md) & owner) <br> |
+|   | [**PluginCommand**](#function-plugincommand) ([**const**](classendstone_1_1Vector.md) [**Command**](classendstone_1_1Command.md) & command, [**Plugin**](classendstone_1_1Plugin.md) & owner) <br> |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](#function-asplugincommand) () override const<br> |
-| virtual bool | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const std::vector&lt; std::string &gt; & args) override const<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Vector.md) std::vector&lt; std::string &gt; & args) override const<br> |
 | virtual [**CommandExecutor**](classendstone_1_1CommandExecutor.md) & | [**getExecutor**](#function-getexecutor) () const<br> |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
-| virtual void | [**setExecutor**](#function-setexecutor) (std::shared\_ptr&lt; [**CommandExecutor**](classendstone_1_1CommandExecutor.md) &gt; executor) <br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setExecutor**](#function-setexecutor) (std::shared\_ptr&lt; [**CommandExecutor**](classendstone_1_1CommandExecutor.md) &gt; executor) <br> |
 
 
 ## Public Functions inherited from endstone::Command
@@ -89,22 +89,22 @@ See [endstone::Command](classendstone_1_1Command.md)
 | ---: | :--- |
 |   | [**Command**](classendstone_1_1Command.md#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](classendstone_1_1Command.md#function-asplugincommand) () const<br> |
-| virtual bool | [**execute**](classendstone_1_1Command.md#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const std::vector&lt; std::string &gt; & args) const<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**execute**](classendstone_1_1Command.md#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Vector.md) std::vector&lt; std::string &gt; & args) const<br> |
 |  std::vector&lt; std::string &gt; | [**getAliases**](classendstone_1_1Command.md#function-getaliases) () const<br> |
 |  std::string | [**getDescription**](classendstone_1_1Command.md#function-getdescription) () const<br> |
 |  std::string | [**getName**](classendstone_1_1Command.md#function-getname) () const<br> |
 |  std::vector&lt; std::string &gt; | [**getPermissions**](classendstone_1_1Command.md#function-getpermissions) () const<br> |
 |  std::vector&lt; std::string &gt; | [**getUsages**](classendstone_1_1Command.md#function-getusages) () const<br> |
-|  bool | [**isRegistered**](classendstone_1_1Command.md#function-isregistered) () const<br> |
-|  bool | [**registerTo**](classendstone_1_1Command.md#function-registerto) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
-|  void | [**setAliases**](classendstone_1_1Command.md#function-setaliases) (Alias... aliases) <br> |
-|  void | [**setDescription**](classendstone_1_1Command.md#function-setdescription) (std::string description) <br> |
-|  void | [**setName**](classendstone_1_1Command.md#function-setname) (std::string name) <br> |
-|  void | [**setPermissions**](classendstone_1_1Command.md#function-setpermissions) (Permission... permissions) <br> |
-|  void | [**setUsages**](classendstone_1_1Command.md#function-setusages) (Usage... usages) <br> |
-|  bool | [**testPermission**](classendstone_1_1Command.md#function-testpermission) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  bool | [**testPermissionSilently**](classendstone_1_1Command.md#function-testpermissionsilently) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  bool | [**unregisterFrom**](classendstone_1_1Command.md#function-unregisterfrom) (const [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**isRegistered**](classendstone_1_1Command.md#function-isregistered) () const<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**registerTo**](classendstone_1_1Command.md#function-registerto) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setAliases**](classendstone_1_1Command.md#function-setaliases) (Alias... aliases) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setDescription**](classendstone_1_1Command.md#function-setdescription) (std::string description) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setName**](classendstone_1_1Command.md#function-setname) (std::string name) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setPermissions**](classendstone_1_1Command.md#function-setpermissions) (Permission... permissions) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setUsages**](classendstone_1_1Command.md#function-setusages) (Usage... usages) <br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**testPermission**](classendstone_1_1Command.md#function-testpermission) ([**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**testPermissionSilently**](classendstone_1_1Command.md#function-testpermissionsilently) ([**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**unregisterFrom**](classendstone_1_1Command.md#function-unregisterfrom) ([**const**](classendstone_1_1Vector.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
 | virtual  | [**~Command**](classendstone_1_1Command.md#function-command) () = default<br> |
 
 
@@ -169,7 +169,7 @@ See [endstone::Command](classendstone_1_1Command.md)
 
 ```C++
 inline endstone::PluginCommand::PluginCommand (
-    const Command & command,
+    const  Command & command,
     Plugin & owner
 ) 
 ```

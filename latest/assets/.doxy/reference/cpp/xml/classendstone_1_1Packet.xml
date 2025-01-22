@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Packet" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Packet</compoundname>
     <derivedcompoundref refid="classendstone_1_1SpawnParticleEffectPacket" prot="public" virt="non-virtual">endstone::SpawnParticleEffectPacket</derivedcompoundref>
     <includes refid="packet_8h" local="no">endstone/network/packet.h</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Packet_1a0737525674b86ec7f71593ee080b0fb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::Packet::~Packet</definition>
         <argsstring>()=default</argsstring>
         <name>~Packet</name>
+        <qualifiedname>endstone::Packet::~Packet</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,6 +24,7 @@
         <definition>virtual PacketType endstone::Packet::getType</definition>
         <argsstring>() const =0</argsstring>
         <name>getType</name>
+        <qualifiedname>endstone::Packet::getType</qualifiedname>
         <reimplementedby refid="classendstone_1_1SpawnParticleEffectPacket_1ae811207ba8cf84e9dc22a611ffb167bc">getType</reimplementedby>
         <briefdescription>
 <para>Gets the type of the packet. </para>
@@ -36,7 +38,7 @@
         </inbodydescription>
         <location file="include/endstone/network/packet.h" line="33" column="25"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents a packet. </para>
     </briefdescription>

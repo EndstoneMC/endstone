@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Criteria" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Criteria</compoundname>
     <includes refid="criteria_8h" local="no">endstone/scoreboard/criteria.h</includes>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="enum" id="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" prot="public" static="no" strong="yes">
         <type></type>
         <name>Type</name>
+        <qualifiedname>endstone::Criteria::Type</qualifiedname>
         <enumvalue id="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1abcf036b6f33e182d4705f4f5b1af13ac" prot="public">
           <name>Dummy</name>
           <briefdescription>
@@ -23,13 +24,14 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/criteria.h" line="26" column="5" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="26" bodyend="31"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Criteria_1a126b4b11c3322654f2e334c892a843ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::Criteria::~Criteria</definition>
         <argsstring>()=default</argsstring>
         <name>~Criteria</name>
+        <qualifiedname>endstone::Criteria::~Criteria</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -43,6 +45,7 @@
         <definition>virtual std::string endstone::Criteria::getName</definition>
         <argsstring>() const =0</argsstring>
         <name>getName</name>
+        <qualifiedname>endstone::Criteria::getName</qualifiedname>
         <briefdescription>
 <para>Get the name of this criteria (its unique id). </para>
         </briefdescription>
@@ -56,10 +59,11 @@
         <location file="include/endstone/scoreboard/criteria.h" line="40" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Criteria::isReadOnly</definition>
         <argsstring>() const =0</argsstring>
         <name>isReadOnly</name>
+        <qualifiedname>endstone::Criteria::isReadOnly</qualifiedname>
         <briefdescription>
 <para>Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have their scores changed. </para>
         </briefdescription>
@@ -77,6 +81,7 @@
         <definition>virtual RenderType endstone::Criteria::getDefaultRenderType</definition>
         <argsstring>() const =0</argsstring>
         <name>getDefaultRenderType</name>
+        <qualifiedname>endstone::Criteria::getDefaultRenderType</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -89,7 +94,7 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/criteria.h" line="55" column="25"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents a scoreboard criteria. </para>
     </briefdescription>

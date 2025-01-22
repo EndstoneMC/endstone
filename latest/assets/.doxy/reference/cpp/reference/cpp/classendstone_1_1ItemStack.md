@@ -54,11 +54,11 @@ Inherits the following classes: std::enable_shared_from_this< ItemStack >
 | Type | Name |
 | ---: | :--- |
 |   | [**ItemStack**](#function-itemstack-12) () = default<br> |
-|   | [**ItemStack**](#function-itemstack-22) (std::string type, int amount=1) <br> |
-| virtual int | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
+|   | [**ItemStack**](#function-itemstack-22) (std::string type, [**int**](classendstone_1_1Vector.md) amount=1) <br> |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
 | virtual std::string | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
-| virtual void | [**setAmount**](#function-setamount) (int amount) <br>_Sets the amount of items in this stack._  |
-| virtual void | [**setType**](#function-settype) (std::string type) <br>_Sets the type of this item._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setAmount**](#function-setamount) ([**int**](classendstone_1_1Vector.md) amount) <br>_Sets the amount of items in this stack._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setType**](#function-settype) (std::string type) <br>_Sets the type of this item._  |
 | virtual  | [**~ItemStack**](#function-itemstack) () = default<br> |
 
 
@@ -88,7 +88,7 @@ Inherits the following classes: std::enable_shared_from_this< ItemStack >
 
 | Type | Name |
 | ---: | :--- |
-| virtual const core::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-12) () const<br> |
+| virtual [**const**](classendstone_1_1Vector.md) core::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-12) () const<br> |
 | virtual core::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-22) () <br> |
 
 

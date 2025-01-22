@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Position" kind="class" language="C++" prot="public">
     <compoundname>endstone::Position</compoundname>
     <basecompoundref refid="classendstone_1_1Vector" prot="public" virt="non-virtual">endstone::Vector&lt; float &gt;</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Location" prot="public" virt="non-virtual">endstone::Location</derivedcompoundref>
     <includes refid="position_8h" local="no">endstone/level/position.h</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Position_1a30efe8f141cbd247bf6cb6a243bb0c41" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
         <definition>Dimension* endstone::Position::dimension_</definition>
         <argsstring></argsstring>
         <name>dimension_</name>
+        <qualifiedname>endstone::Position::dimension_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,27 +20,28 @@
         </inbodydescription>
         <location file="include/endstone/level/position.h" line="85" column="15" bodyfile="include/endstone/level/position.h" bodystart="85" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Position_1a514089ce3532bcb0eaf40d847957ae6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::Position::Position</definition>
         <argsstring>(Dimension *dimension, float x, float y, float z)</argsstring>
         <name>Position</name>
+        <qualifiedname>endstone::Position::Position</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
           <declname>dimension</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -50,11 +52,12 @@
         </inbodydescription>
         <location file="include/endstone/level/position.h" line="32" column="5" bodyfile="include/endstone/level/position.h" bodystart="32" bodyend="32"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Position_1adbfd6abb00c932129131dadcefa56356" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Position_1a02a939bf78aa4870eec36ec10e2757da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
-        <definition>Dimension* endstone::Position::getDimension</definition>
+        <definition>Dimension * endstone::Position::getDimension</definition>
         <argsstring>() const</argsstring>
         <name>getDimension</name>
+        <qualifiedname>endstone::Position::getDimension</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -68,10 +71,11 @@
         <location file="include/endstone/level/position.h" line="39" column="16" bodyfile="include/endstone/level/position.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Position::setDimension</definition>
         <argsstring>(Dimension &amp;dimension)</argsstring>
         <name>setDimension</name>
+        <qualifiedname>endstone::Position::setDimension</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
           <declname>dimension</declname>
@@ -96,10 +100,11 @@
         <location file="include/endstone/level/position.h" line="49" column="10" bodyfile="include/endstone/level/position.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>int endstone::Position::getBlockX</definition>
         <argsstring>() const</argsstring>
         <name>getBlockX</name>
+        <qualifiedname>endstone::Position::getBlockX</qualifiedname>
         <briefdescription>
 <para>Gets the floored value of the X component, indicating the block that this location is contained with. </para>
         </briefdescription>
@@ -113,10 +118,11 @@
         <location file="include/endstone/level/position.h" line="59" column="10" bodyfile="include/endstone/level/position.h" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>int endstone::Position::getBlockY</definition>
         <argsstring>() const</argsstring>
         <name>getBlockY</name>
+        <qualifiedname>endstone::Position::getBlockY</qualifiedname>
         <briefdescription>
 <para>Gets the floored value of the Y component, indicating the block that this location is contained with. </para>
         </briefdescription>
@@ -130,10 +136,11 @@
         <location file="include/endstone/level/position.h" line="69" column="10" bodyfile="include/endstone/level/position.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>int endstone::Position::getBlockZ</definition>
         <argsstring>() const</argsstring>
         <name>getBlockZ</name>
+        <qualifiedname>endstone::Position::getBlockZ</qualifiedname>
         <briefdescription>
 <para>Gets the floored value of the Z component, indicating the block that this location is contained with. </para>
         </briefdescription>
@@ -146,7 +153,7 @@
         </inbodydescription>
         <location file="include/endstone/level/position.h" line="79" column="10" bodyfile="include/endstone/level/position.h" bodystart="79" bodyend="82"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents a 3-dimensional position in a dimension within a level. </para>
     </briefdescription>
@@ -190,24 +197,24 @@
       <member refid="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getBlockX</name></member>
       <member refid="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getBlockY</name></member>
       <member refid="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getBlockZ</name></member>
-      <member refid="classendstone_1_1Position_1adbfd6abb00c932129131dadcefa56356" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Position_1a02a939bf78aa4870eec36ec10e2757da" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Vector_1a4dd96843b3397f60cc14e38acc188cde" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getX</name></member>
       <member refid="classendstone_1_1Vector_1a07b757a5eed5f58e4b07847eb7cb8f77" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getY</name></member>
       <member refid="classendstone_1_1Vector_1a84588ede264dbea3273c9fc3812ba82b" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getZ</name></member>
       <member refid="classendstone_1_1Vector_1ac1d344ebd47c06ee1fce6b75a996eacc" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>length</name></member>
       <member refid="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>lengthSquared</name></member>
-      <member refid="classendstone_1_1Vector_1a877f0cb3244b2d87fc4b910d15acbbc9" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*</name></member>
-      <member refid="classendstone_1_1Vector_1a77438991c855e2b407af434077be5b71" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*</name></member>
-      <member refid="classendstone_1_1Vector_1a742453feb781ab00f80ea8ca261d73c7" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*=</name></member>
-      <member refid="classendstone_1_1Vector_1aba78f506442e1a0ced331974b7ecc237" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator+</name></member>
-      <member refid="classendstone_1_1Vector_1a5ef968e42391dec6a1f8d6ddbd876fcc" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator+</name></member>
-      <member refid="classendstone_1_1Vector_1a81caca99d57f1b939be66444ded0af48" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator+=</name></member>
-      <member refid="classendstone_1_1Vector_1aad4af3f6158a8082b1378a996f3f1833" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator-</name></member>
-      <member refid="classendstone_1_1Vector_1a0fc1eb67cbc59047585507d28b2ed6d2" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator-</name></member>
-      <member refid="classendstone_1_1Vector_1a1eb1932eecdb794b85f0480e2e0146a8" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator-=</name></member>
-      <member refid="classendstone_1_1Vector_1a1212a7d2db661f7113c0f63b590cd497" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/</name></member>
-      <member refid="classendstone_1_1Vector_1a8904e8e1c99dd78d22273678f47f783a" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/</name></member>
-      <member refid="classendstone_1_1Vector_1af3925707b295793074f3fa992bd34d20" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/=</name></member>
+      <member refid="classendstone_1_1Vector_1a5485042a4e6973e83660c590aa03a791" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*</name></member>
+      <member refid="classendstone_1_1Vector_1a7296335b054365c0747066f44f969fca" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*</name></member>
+      <member refid="classendstone_1_1Vector_1abd4abd618ccad756cd3a10ccb437446a" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*=</name></member>
+      <member refid="classendstone_1_1Vector_1ab7f0e69eca26377fcdcabc58b6ae8577" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator+</name></member>
+      <member refid="classendstone_1_1Vector_1ad68e9504d5ef46327f5d40c833a4f802" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator+</name></member>
+      <member refid="classendstone_1_1Vector_1ac80f982a6ba8f6771779a2f5473f6303" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator+=</name></member>
+      <member refid="classendstone_1_1Vector_1a2c6969b8a3ead3b3f993417a6c7d5124" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator-</name></member>
+      <member refid="classendstone_1_1Vector_1a02ac07a018efdabcd621ba8505a385fa" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator-</name></member>
+      <member refid="classendstone_1_1Vector_1aa77a533d48afb08c5bf8c106dab089ab" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator-=</name></member>
+      <member refid="classendstone_1_1Vector_1abc685a19d9f6c585ede28769ca3bdbe6" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/</name></member>
+      <member refid="classendstone_1_1Vector_1a4501ecc7c065ffc7de8fec9a5341c520" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/</name></member>
+      <member refid="classendstone_1_1Vector_1ac4bc1aeef782ff41ca2c37b3e760f2bf" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/=</name></member>
       <member refid="classendstone_1_1Vector_1adeb43307778c502701288edb44b975db" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator==</name></member>
       <member refid="classendstone_1_1Position_1a514089ce3532bcb0eaf40d847957ae6b" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>Position</name></member>
       <member refid="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>setDimension</name></member>

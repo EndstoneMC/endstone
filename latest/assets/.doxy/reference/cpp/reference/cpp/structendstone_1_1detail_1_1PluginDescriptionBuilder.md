@@ -4,7 +4,7 @@
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**detail**](namespaceendstone_1_1detail.md) **>** [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md)
+[**ClassList**](annotated.md) **>** [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md)
 
 
 
@@ -36,14 +36,14 @@
 | Type | Name |
 | ---: | :--- |
 |  std::vector&lt; std::string &gt; | [**authors**](#variable-authors)  <br> |
-|  std::unordered\_map&lt; std::string, [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) &gt; | [**commands**](#variable-commands)  <br> |
+|  std::unordered\_map&lt; std::string, CommandBuilder &gt; | [**commands**](#variable-commands)  <br> |
 |  std::vector&lt; std::string &gt; | [**contributors**](#variable-contributors)  <br> |
-|  PermissionDefault | [**default\_permission**](#variable-default_permission)   = = PermissionDefault::Operator<br> |
+|  PermissionDefault | [**default\_permission**](#variable-default_permission)   = `PermissionDefault::Operator`<br> |
 |  std::vector&lt; std::string &gt; | [**depend**](#variable-depend)  <br> |
 |  std::string | [**description**](#variable-description)  <br> |
-|  PluginLoadOrder | [**load**](#variable-load)   = = PluginLoadOrder::PostWorld<br> |
+|  PluginLoadOrder | [**load**](#variable-load)   = `PluginLoadOrder::PostWorld`<br> |
 |  std::vector&lt; std::string &gt; | [**load\_before**](#variable-load_before)  <br> |
-|  std::unordered\_map&lt; std::string, [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) &gt; | [**permissions**](#variable-permissions)  <br> |
+|  std::unordered\_map&lt; std::string, PermissionBuilder &gt; | [**permissions**](#variable-permissions)  <br> |
 |  std::string | [**prefix**](#variable-prefix)  <br> |
 |  std::vector&lt; std::string &gt; | [**provides**](#variable-provides)  <br> |
 |  std::vector&lt; std::string &gt; | [**soft\_depend**](#variable-soft_depend)  <br> |
@@ -69,8 +69,8 @@
 | Type | Name |
 | ---: | :--- |
 |  [**PluginDescription**](classendstone_1_1PluginDescription.md) | [**build**](#function-build) (std::string name, std::string version) const<br> |
-|  [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) & | [**command**](#function-command) (std::string name) <br> |
-|  [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) & | [**permission**](#function-permission) (std::string name) <br> |
+|  CommandBuilder & | [**command**](#function-command) (std::string name) <br> |
+|  PermissionBuilder & | [**permission**](#function-permission) (std::string name) <br> |
 
 
 
@@ -278,7 +278,7 @@ std::string endstone::detail::PluginDescriptionBuilder::website;
 ### function build 
 
 ```C++
-inline PluginDescription endstone::detail::PluginDescriptionBuilder::build (
+inline PluginDescription PluginDescriptionBuilder::build (
     std::string name,
     std::string version
 ) const
@@ -294,7 +294,7 @@ inline PluginDescription endstone::detail::PluginDescriptionBuilder::build (
 ### function command 
 
 ```C++
-inline CommandBuilder & endstone::detail::PluginDescriptionBuilder::command (
+inline CommandBuilder & PluginDescriptionBuilder::command (
     std::string name
 ) 
 ```
@@ -309,7 +309,7 @@ inline CommandBuilder & endstone::detail::PluginDescriptionBuilder::command (
 ### function permission 
 
 ```C++
-inline PermissionBuilder & endstone::detail::PluginDescriptionBuilder::permission (
+inline PermissionBuilder & PluginDescriptionBuilder::permission (
     std::string name
 ) 
 ```

@@ -2,7 +2,7 @@
 
 # Class endstone::Vector
 
-**template &lt;typename T&gt;**
+**template &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;**
 
 
 
@@ -54,31 +54,31 @@ _Represents a 3-dimensional vector._
 
 | Type | Name |
 | ---: | :--- |
-|  constexpr | [**Vector**](#function-vector-12) () <br> |
-|  constexpr | [**Vector**](#function-vector-22) (T x, T y, T z) <br> |
-|  constexpr T | [**distance**](#function-distance) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  constexpr T | [**distanceSquared**](#function-distancesquared) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  constexpr T | [**getX**](#function-getx) () const<br>_Gets the X component._  |
-|  constexpr T | [**getY**](#function-gety) () const<br>_Gets the Y component._  |
-|  constexpr T | [**getZ**](#function-getz) () const<br>_Gets the Z component._  |
-|  constexpr T | [**length**](#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
-|  constexpr T | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](#function-operator) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](#function-operator_1) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator\*=**](#function-operator_2) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator+**](#function-operator_3) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator+**](#function-operator_4) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator+=**](#function-operator_5) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator-**](#function-operator_6) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator-**](#function-operator_7) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator-=**](#function-operator_8) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](#function-operator_9) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](#function-operator_10) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator/=**](#function-operator_11) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr bool | [**operator==**](#function-operator_12) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  constexpr void | [**setX**](#function-setx) (T x) <br>_Set the X component._  |
-|  constexpr void | [**setY**](#function-sety) (T y) <br>_Set the Y component._  |
-|  constexpr void | [**setZ**](#function-setz) (T z) <br>_Set the Z component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) | [**Vector**](#function-vector-12) () <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) | [**Vector**](#function-vector-22) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**distance**](#function-distance) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**distanceSquared**](#function-distancesquared) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**getX**](#function-getx) () const<br>_Gets the X component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**getY**](#function-gety) () const<br>_Gets the Y component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**getZ**](#function-getz) () const<br>_Gets the Z component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**length**](#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator\***](#function-operator) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator\***](#function-operator_1) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator\*=**](#function-operator_2) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator+**](#function-operator_3) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator+**](#function-operator_4) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator+=**](#function-operator_5) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator-**](#function-operator_6) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator-**](#function-operator_7) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator-=**](#function-operator_8) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator/**](#function-operator_9) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator/**](#function-operator_10) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator/=**](#function-operator_11) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**bool**](classendstone_1_1Vector.md) | [**operator==**](#function-operator_12) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**void**](classendstone_1_1Vector.md) | [**setX**](#function-setx) ([**T**](classendstone_1_1Vector.md) x) <br>_Set the X component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**void**](classendstone_1_1Vector.md) | [**setY**](#function-sety) ([**T**](classendstone_1_1Vector.md) y) <br>_Set the Y component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**void**](classendstone_1_1Vector.md) | [**setZ**](#function-setz) ([**T**](classendstone_1_1Vector.md) z) <br>_Set the Z component._  |
 
 
 
@@ -91,9 +91,9 @@ _Represents a 3-dimensional vector._
 
 | Type | Name |
 | ---: | :--- |
-|  T | [**x\_**](#variable-x_)  <br> |
-|  T | [**y\_**](#variable-y_)  <br> |
-|  T | [**z\_**](#variable-z_)  <br> |
+|  [**T**](classendstone_1_1Vector.md) | [**x\_**](#variable-x_)  <br> |
+|  [**T**](classendstone_1_1Vector.md) | [**y\_**](#variable-y_)  <br> |
+|  [**T**](classendstone_1_1Vector.md) | [**z\_**](#variable-z_)  <br> |
 
 
 
@@ -152,8 +152,8 @@ inline constexpr endstone::Vector::Vector (
 ### function distance 
 
 ```C++
-inline constexpr T endstone::Vector::distance (
-    const Vector < T > & other
+inline constexpr  T endstone::Vector::distance (
+    const  Vector < T > & other
 ) const
 ```
 
@@ -188,8 +188,8 @@ the distance
 ### function distanceSquared 
 
 ```C++
-inline constexpr T endstone::Vector::distanceSquared (
-    const Vector < T > & other
+inline constexpr  T endstone::Vector::distanceSquared (
+    const  Vector < T > & other
 ) const
 ```
 
@@ -225,7 +225,7 @@ the distance
 
 _Gets the X component._ 
 ```C++
-inline constexpr T endstone::Vector::getX () const
+inline constexpr  T endstone::Vector::getX () const
 ```
 
 
@@ -250,7 +250,7 @@ The X component.
 
 _Gets the Y component._ 
 ```C++
-inline constexpr T endstone::Vector::getY () const
+inline constexpr  T endstone::Vector::getY () const
 ```
 
 
@@ -275,7 +275,7 @@ The Y component.
 
 _Gets the Z component._ 
 ```C++
-inline constexpr T endstone::Vector::getZ () const
+inline constexpr  T endstone::Vector::getZ () const
 ```
 
 
@@ -300,7 +300,7 @@ The Z component.
 
 _Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._ 
 ```C++
-inline constexpr T endstone::Vector::length () const
+inline constexpr  T endstone::Vector::length () const
 ```
 
 
@@ -325,7 +325,7 @@ the magnitude
 
 _Gets the magnitude of the vector squared._ 
 ```C++
-inline constexpr T endstone::Vector::lengthSquared () const
+inline constexpr  T endstone::Vector::lengthSquared () const
 ```
 
 
@@ -349,8 +349,8 @@ the magnitude
 ### function operator\* 
 
 ```C++
-inline constexpr Vector < T > endstone::Vector::operator* (
-    const Vector < T > & other
+inline constexpr  Vector < T > endstone::Vector::operator* (
+    const  Vector < T > & other
 ) const
 ```
 
@@ -380,7 +380,7 @@ inline Vector < T > endstone::Vector::operator* (
 
 ```C++
 inline Vector < T > & endstone::Vector::operator*= (
-    const Vector < T > & other
+    const  Vector < T > & other
 ) 
 ```
 
@@ -394,8 +394,8 @@ inline Vector < T > & endstone::Vector::operator*= (
 ### function operator+ 
 
 ```C++
-inline constexpr Vector < T > endstone::Vector::operator+ (
-    const Vector < T > & other
+inline constexpr  Vector < T > endstone::Vector::operator+ (
+    const  Vector < T > & other
 ) const
 ```
 
@@ -425,7 +425,7 @@ inline Vector < T > endstone::Vector::operator+ (
 
 ```C++
 inline Vector < T > & endstone::Vector::operator+= (
-    const Vector < T > & other
+    const  Vector < T > & other
 ) 
 ```
 
@@ -439,8 +439,8 @@ inline Vector < T > & endstone::Vector::operator+= (
 ### function operator- 
 
 ```C++
-inline constexpr Vector < T > endstone::Vector::operator- (
-    const Vector < T > & other
+inline constexpr  Vector < T > endstone::Vector::operator- (
+    const  Vector < T > & other
 ) const
 ```
 
@@ -470,7 +470,7 @@ inline Vector < T > endstone::Vector::operator- (
 
 ```C++
 inline Vector < T > & endstone::Vector::operator-= (
-    const Vector < T > & other
+    const  Vector < T > & other
 ) 
 ```
 
@@ -484,8 +484,8 @@ inline Vector < T > & endstone::Vector::operator-= (
 ### function operator/ 
 
 ```C++
-inline constexpr Vector < T > endstone::Vector::operator/ (
-    const Vector < T > & other
+inline constexpr  Vector < T > endstone::Vector::operator/ (
+    const  Vector < T > & other
 ) const
 ```
 
@@ -515,7 +515,7 @@ inline Vector < T > endstone::Vector::operator/ (
 
 ```C++
 inline Vector < T > & endstone::Vector::operator/= (
-    const Vector < T > & other
+    const  Vector < T > & other
 ) 
 ```
 
@@ -529,8 +529,8 @@ inline Vector < T > & endstone::Vector::operator/= (
 ### function operator== 
 
 ```C++
-inline constexpr bool endstone::Vector::operator== (
-    const Vector < T > & other
+inline constexpr  bool endstone::Vector::operator== (
+    const  Vector < T > & other
 ) const
 ```
 
@@ -545,7 +545,7 @@ inline constexpr bool endstone::Vector::operator== (
 
 _Set the X component._ 
 ```C++
-inline constexpr void endstone::Vector::setX (
+inline constexpr  void endstone::Vector::setX (
     T x
 ) 
 ```
@@ -579,7 +579,7 @@ This vector.
 
 _Set the Y component._ 
 ```C++
-inline constexpr void endstone::Vector::setY (
+inline constexpr  void endstone::Vector::setY (
     T y
 ) 
 ```
@@ -613,7 +613,7 @@ This vector.
 
 _Set the Z component._ 
 ```C++
-inline constexpr void endstone::Vector::setZ (
+inline constexpr  void endstone::Vector::setZ (
     T z
 ) 
 ```
@@ -691,7 +691,7 @@ T endstone::Vector< T >::z_;
 ```C++
 inline Vector < T > endstone::Vector::operator* (
     T scalar,
-    const Vector < T > & v
+    const  Vector < T > & v
 ) 
 ```
 
@@ -707,7 +707,7 @@ inline Vector < T > endstone::Vector::operator* (
 ```C++
 inline Vector < T > endstone::Vector::operator+ (
     T scalar,
-    const Vector < T > & v
+    const  Vector < T > & v
 ) 
 ```
 
@@ -723,7 +723,7 @@ inline Vector < T > endstone::Vector::operator+ (
 ```C++
 inline Vector < T > endstone::Vector::operator- (
     T scalar,
-    const Vector < T > & v
+    const  Vector < T > & v
 ) 
 ```
 
@@ -739,7 +739,7 @@ inline Vector < T > endstone::Vector::operator- (
 ```C++
 inline Vector < T > endstone::Vector::operator/ (
     T scalar,
-    const Vector < T > & v
+    const  Vector < T > & v
 ) 
 ```
 

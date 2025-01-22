@@ -53,14 +53,14 @@ _Represents a command map that manages all commands of the_ [_**Server**_](class
 | Type | Name |
 | ---: | :--- |
 |   | [**CommandMap**](#function-commandmap-13) () = default<br> |
-|   | [**CommandMap**](#function-commandmap-23) (const [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
+|   | [**CommandMap**](#function-commandmap-23) ([**const**](classendstone_1_1Vector.md) [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
 |   | [**CommandMap**](#function-commandmap-33) ([**CommandMap**](classendstone_1_1CommandMap.md) &&) = default<br> |
-| virtual void | [**clearCommands**](#function-clearcommands) () = 0<br> |
-| virtual bool | [**dispatch**](#function-dispatch) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Looks for the requested command and executes it if found._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**clearCommands**](#function-clearcommands) () = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**dispatch**](#function-dispatch) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Looks for the requested command and executes it if found._  |
 | virtual [**Command**](classendstone_1_1Command.md) \* | [**getCommand**](#function-getcommand) (std::string name) const = 0<br> |
-|  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator) (const [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
+|  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Vector.md) [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
 |  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator_1) ([**CommandMap**](classendstone_1_1CommandMap.md) &&) = default<br> |
-| virtual bool | [**registerCommand**](#function-registercommand) (std::shared\_ptr&lt; [**Command**](classendstone_1_1Command.md) &gt; command) = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**registerCommand**](#function-registercommand) (std::shared\_ptr&lt; [**Command**](classendstone_1_1Command.md) &gt; command) = 0<br> |
 | virtual  | [**~CommandMap**](#function-commandmap) () = default<br> |
 
 
@@ -112,7 +112,7 @@ endstone::CommandMap::CommandMap () = default
 
 ```C++
 endstone::CommandMap::CommandMap (
-    const CommandMap &
+    const  CommandMap &
 ) = delete
 ```
 
@@ -231,7 +231,7 @@ Gets the command registered to the specified name
 
 ```C++
 CommandMap & endstone::CommandMap::operator= (
-    const CommandMap &
+    const  CommandMap &
 ) = delete
 ```
 

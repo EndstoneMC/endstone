@@ -49,9 +49,6 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Plugin**](classendstone_1_1Plugin.md) <br>_Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._ |
-| class | [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) <br> |
-| class | [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) <br> |
-| struct | [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) <br> |
 
 
 
@@ -105,8 +102,8 @@
 
 | Type | Name |
 | ---: | :--- |
-| define  | [**ENDSTONE\_EXPORT**](plugin_8h.md#define-endstone_export)  \_\_attribute\_\_((visibility("default")))<br> |
-| define  | [**ENDSTONE\_PLUGIN**](plugin_8h.md#define-endstone_plugin) (Name, Version, MainClass) <br> |
+| define  | [**ENDSTONE\_EXPORT**](plugin_8h.md#define-endstone_export)  `\_\_attribute\_\_((visibility("default")))`<br> |
+| define  | [**ENDSTONE\_PLUGIN**](plugin_8h.md#define-endstone_plugin) (Name, Version, MainClass) `/* multi line expression */`<br> |
 
 ## Macro Definition Documentation
 
@@ -117,7 +114,7 @@
 ### define ENDSTONE\_EXPORT 
 
 ```C++
-#define ENDSTONE_EXPORT __attribute__((visibility("default")))
+#define ENDSTONE_EXPORT `__attribute__((visibility("default")))`
 ```
 
 
@@ -134,27 +131,7 @@
     Name,
     Version,
     MainClass
-) class PluginDescriptionBuilderImpl : public endstone::detail::PluginDescriptionBuilder { \
-    public:                                                                                  \
-        PluginDescriptionBuilderImpl();                                                      \
-    };                                                                                       \
-    static PluginDescriptionBuilderImpl builder;                                             \
-    class EndstonePluginImpl : public MainClass {                                            \
-    public:                                                                                  \
-        EndstonePluginImpl() = default;                                                      \
-        const endstone::PluginDescription &getDescription() const override                   \
-        {                                                                                    \
-            return description_;                                                             \
-        }                                                                                    \
-                                                                                             \
-    private:                                                                                 \ endstone::PluginDescription description_ = builder.build(Name, Version);             \
-    };                                                                                       \
-    extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin()     \
-    {                                                                                        \
-        auto *p = new EndstonePluginImpl();                                                  \
-        return p;                                                                            \
-    }                                                                                        \
-    PluginDescriptionBuilderImpl::PluginDescriptionBuilderImpl()
+) `/* multi line expression */`
 ```
 
 

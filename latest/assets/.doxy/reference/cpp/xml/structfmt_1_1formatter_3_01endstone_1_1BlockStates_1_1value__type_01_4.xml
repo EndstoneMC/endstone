@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4" kind="struct" language="C++" prot="public">
     <compoundname>fmt::formatter&lt; endstone::BlockStates::value_type &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
     <templateparamlist>
     </templateparamlist>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1aad09b775459795e7252f362372b83072" prot="public" static="no">
         <type>endstone::BlockStates::value_type</type>
         <definition>using fmt::formatter&lt; endstone::BlockStates::value_type &gt;::Type =  endstone::BlockStates::value_type</definition>
         <argsstring></argsstring>
         <name>Type</name>
+        <qualifiedname>fmt::formatter&lt; endstone::BlockStates::value_type &gt;::Type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,8 +20,8 @@
         </inbodydescription>
         <location file="include/endstone/block/block_data.h" line="73" column="5" bodyfile="include/endstone/block/block_data.h" bodystart="73" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1adc0e1b7666aff1112b9b54564d09366d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -31,6 +32,7 @@
         <definition>auto fmt::formatter&lt; endstone::BlockStates::value_type &gt;::format</definition>
         <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
         <name>format</name>
+        <qualifiedname>fmt::formatter&lt; endstone::BlockStates::value_type &gt;::format</qualifiedname>
         <param>
           <type>const Type &amp;</type>
           <declname>val</declname>
@@ -47,7 +49,7 @@
         </inbodydescription>
         <location file="include/endstone/block/block_data.h" line="76" column="10" bodyfile="include/endstone/block/block_data.h" bodystart="76" bodyend="79"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

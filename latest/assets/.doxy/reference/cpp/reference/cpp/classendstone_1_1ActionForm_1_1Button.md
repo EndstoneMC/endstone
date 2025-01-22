@@ -32,7 +32,7 @@ _Represents a button with text and an optional icon._
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnClickCallback**](#typedef-onclickcallback)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnClickCallback**](#typedef-onclickcallback)  <br> |
 
 
 

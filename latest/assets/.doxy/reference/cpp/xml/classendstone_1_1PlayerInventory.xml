@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerInventory" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerInventory</compoundname>
     <basecompoundref refid="classendstone_1_1Inventory" prot="public" virt="non-virtual">endstone::Inventory</basecompoundref>
@@ -38,8 +38,8 @@
       <member refid="classendstone_1_1Inventory_1a44e46ae514650cc16b605b1b4769c6fc" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>clear</name></member>
       <member refid="classendstone_1_1Inventory_1a30d61d7b9ec2232c7f0d1b038f6f1a1a" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>first</name></member>
-      <member refid="classendstone_1_1Inventory_1a939142807707c78b4871181fbd73b1af" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getContents</name></member>
-      <member refid="classendstone_1_1Inventory_1a03242079a0da4d841504ddfec5c50ceb" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1Inventory_1a9e11b2e4c87f727a8c808a53449a072e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getContents</name></member>
+      <member refid="classendstone_1_1Inventory_1aa619cc21dec01cbe198065cbcbd2abf8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getItem</name></member>
       <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getMaxStackSize</name></member>
       <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getSize</name></member>
       <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>isEmpty</name></member>

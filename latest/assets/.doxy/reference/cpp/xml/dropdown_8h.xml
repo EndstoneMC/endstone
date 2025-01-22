@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dropdown_8h" kind="file" language="C++">
     <compoundname>dropdown.h</compoundname>
     <includes local="no">optional</includes>
@@ -10,16 +10,18 @@
     <includedby refid="step__slider_8h" local="yes">include/endstone/form/controls/step_slider.h</includedby>
     <includedby refid="modal__form_8h" local="yes">include/endstone/form/modal_form.h</includedby>
     <incdepgraph>
-      <node id="6">
-        <label>endstone/message.h</label>
-        <link refid="message_8h_source"/>
+      <node id="1">
+        <label>include/endstone/form/controls/dropdown.h</label>
+        <link refid="dropdown_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -32,166 +34,76 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>variant</label>
-      </node>
-      <node id="3">
-        <label>string</label>
-      </node>
-      <node id="1">
-        <label>include/endstone/form/controls/dropdown.h</label>
-        <link refid="dropdown_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
+      <node id="6">
+        <label>endstone/message.h</label>
+        <link refid="message_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>optional</label>
-      </node>
-      <node id="5">
-        <label>vector</label>
-      </node>
-      <node id="4">
-        <label>utility</label>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="11">
-        <label>include/endstone/event/player/player_death_event.h</label>
-        <link refid="player__death__event_8h_source"/>
-      </node>
-      <node id="21">
-        <label>include/endstone/plugin/plugin.h</label>
-        <link refid="plugin_8h_source"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>include/endstone/event/player/player_login_event.h</label>
-        <link refid="player__login__event_8h_source"/>
-      </node>
-      <node id="4">
-        <label>include/endstone/player.h</label>
-        <link refid="player_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
       </node>
-      <node id="20">
-        <label>include/endstone/server.h</label>
-        <link refid="server_8h_source"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>include/endstone/event/server/plugin_enable_event.h</label>
-        <link refid="plugin__enable__event_8h_source"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/endstone/event/block/block_piston_event.h</label>
-        <link refid="block__piston__event_8h_source"/>
-      </node>
-      <node id="15">
-        <label>include/endstone/event/player/player_join_event.h</label>
-        <link refid="player__join__event_8h_source"/>
-      </node>
-      <node id="18">
-        <label>include/endstone/event/player/player_quit_event.h</label>
-        <link refid="player__quit__event_8h_source"/>
-      </node>
-      <node id="1">
-        <label>include/endstone/form/controls/dropdown.h</label>
-        <link refid="dropdown_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>include/endstone/event/player/player_game_mode_change_event.h</label>
-        <link refid="player__game__mode__change__event_8h_source"/>
-      </node>
-      <node id="14">
-        <label>include/endstone/event/player/player_interact_event.h</label>
-        <link refid="player__interact__event_8h_source"/>
-      </node>
-      <node id="13">
-        <label>include/endstone/event/player/player_interact_actor_event.h</label>
-        <link refid="player__interact__actor__event_8h_source"/>
-      </node>
-      <node id="26">
-        <label>include/endstone/plugin/plugin_loader.h</label>
-        <link refid="plugin__loader_8h_source"/>
-      </node>
-      <node id="23">
-        <label>include/endstone/event/event_handler.h</label>
-        <link refid="event__handler_8h_source"/>
-        <childnode refid="24" relation="include">
-        </childnode>
+      <node id="2">
+        <label>optional</label>
       </node>
       <node id="3">
-        <label>include/endstone/form/modal_form.h</label>
-        <link refid="modal__form_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
+        <label>string</label>
       </node>
-      <node id="19">
-        <label>include/endstone/event/player/player_teleport_event.h</label>
-        <link refid="player__teleport__event_8h_source"/>
-      </node>
-      <node id="16">
-        <label>include/endstone/event/player/player_kick_event.h</label>
-        <link refid="player__kick__event_8h_source"/>
-      </node>
-      <node id="10">
-        <label>include/endstone/event/player/player_command_event.h</label>
-        <link refid="player__command__event_8h_source"/>
+      <node id="4">
+        <label>utility</label>
       </node>
       <node id="7">
-        <label>include/endstone/event/block/block_place_event.h</label>
-        <link refid="block__place__event_8h_source"/>
+        <label>variant</label>
       </node>
-      <node id="25">
-        <label>include/endstone/event/server/plugin_disable_event.h</label>
-        <link refid="plugin__disable__event_8h_source"/>
-        <childnode refid="26" relation="include">
-        </childnode>
+      <node id="5">
+        <label>vector</label>
       </node>
-      <node id="22">
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="23">
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
       <node id="5">
         <label>include/endstone/event/block/block_break_event.h</label>
         <link refid="block__break__event_8h_source"/>
+      </node>
+      <node id="6">
+        <label>include/endstone/event/block/block_piston_event.h</label>
+        <link refid="block__piston__event_8h_source"/>
+      </node>
+      <node id="7">
+        <label>include/endstone/event/block/block_place_event.h</label>
+        <link refid="block__place__event_8h_source"/>
+      </node>
+      <node id="24">
+        <label>include/endstone/event/event_handler.h</label>
+        <link refid="event__handler_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>include/endstone/event/handler_list.h</label>
+        <link refid="handler__list_8h_source"/>
+      </node>
+      <node id="9">
+        <label>include/endstone/event/player/player_chat_event.h</label>
+        <link refid="player__chat__event_8h_source"/>
+      </node>
+      <node id="10">
+        <label>include/endstone/event/player/player_command_event.h</label>
+        <link refid="player__command__event_8h_source"/>
+      </node>
+      <node id="11">
+        <label>include/endstone/event/player/player_death_event.h</label>
+        <link refid="player__death__event_8h_source"/>
+      </node>
+      <node id="12">
+        <label>include/endstone/event/player/player_emote_event.h</label>
+        <link refid="player__emote__event_8h_source"/>
       </node>
       <node id="8">
         <label>include/endstone/event/player/player_event.h</label>
@@ -218,29 +130,123 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
       </node>
-      <node id="9">
-        <label>include/endstone/event/player/player_chat_event.h</label>
-        <link refid="player__chat__event_8h_source"/>
+      <node id="13">
+        <label>include/endstone/event/player/player_game_mode_change_event.h</label>
+        <link refid="player__game__mode__change__event_8h_source"/>
       </node>
-      <node id="29">
-        <label>include/endstone/scheduler/scheduler.h</label>
-        <link refid="scheduler_8h_source"/>
+      <node id="14">
+        <label>include/endstone/event/player/player_interact_actor_event.h</label>
+        <link refid="player__interact__actor__event_8h_source"/>
       </node>
-      <node id="24">
-        <label>include/endstone/event/handler_list.h</label>
-        <link refid="handler__list_8h_source"/>
+      <node id="15">
+        <label>include/endstone/event/player/player_interact_event.h</label>
+        <link refid="player__interact__event_8h_source"/>
+      </node>
+      <node id="16">
+        <label>include/endstone/event/player/player_join_event.h</label>
+        <link refid="player__join__event_8h_source"/>
+      </node>
+      <node id="17">
+        <label>include/endstone/event/player/player_kick_event.h</label>
+        <link refid="player__kick__event_8h_source"/>
+      </node>
+      <node id="18">
+        <label>include/endstone/event/player/player_login_event.h</label>
+        <link refid="player__login__event_8h_source"/>
+      </node>
+      <node id="19">
+        <label>include/endstone/event/player/player_quit_event.h</label>
+        <link refid="player__quit__event_8h_source"/>
+      </node>
+      <node id="20">
+        <label>include/endstone/event/player/player_teleport_event.h</label>
+        <link refid="player__teleport__event_8h_source"/>
+      </node>
+      <node id="26">
+        <label>include/endstone/event/server/plugin_disable_event.h</label>
+        <link refid="plugin__disable__event_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
       </node>
       <node id="28">
-        <label>include/endstone/scheduler/task.h</label>
-        <link refid="task_8h_source"/>
-        <childnode refid="29" relation="include">
+        <label>include/endstone/event/server/plugin_enable_event.h</label>
+        <link refid="plugin__enable__event_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/form/controls/dropdown.h</label>
+        <link refid="dropdown_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>include/endstone/form/controls/step_slider.h</label>
         <link refid="step__slider_8h_source"/>
         <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/endstone/form/modal_form.h</label>
+        <link refid="modal__form_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/endstone/player.h</label>
+        <link refid="player_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/endstone/plugin/plugin.h</label>
+        <link refid="plugin_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>include/endstone/plugin/plugin_loader.h</label>
+        <link refid="plugin__loader_8h_source"/>
+      </node>
+      <node id="30">
+        <label>include/endstone/scheduler/scheduler.h</label>
+        <link refid="scheduler_8h_source"/>
+      </node>
+      <node id="29">
+        <label>include/endstone/scheduler/task.h</label>
+        <link refid="task_8h_source"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>include/endstone/server.h</label>
+        <link refid="server_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -279,47 +285,47 @@
 <codeline lineno="29" refid="classendstone_1_1Dropdown" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref>(Message<sp/>label,<sp/>std::vector&lt;std::string&gt;<sp/>options,<sp/>std::optional&lt;int&gt;<sp/>default_index<sp/>=<sp/>std::nullopt)</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>label_(std::move(label)),<sp/>options_(std::move(options)),<sp/>default_index_(default_index)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref>(Message<sp/><ref refid="classendstone_1_1Vector" kindref="compound">label</ref>,<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Vector" kindref="compound">options</ref>,<sp/>std::optional&lt;int&gt;<sp/><ref refid="classendstone_1_1Vector" kindref="compound">default_index</ref><sp/>=<sp/>std::nullopt)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>label_(std::move(<ref refid="classendstone_1_1Vector" kindref="compound">label</ref>)),<sp/>options_(std::move(<ref refid="classendstone_1_1Vector" kindref="compound">options</ref>)),<sp/>default_index_(<ref refid="classendstone_1_1Vector" kindref="compound">default_index</ref>)</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>Message<sp/><ref refid="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" kindref="member">getLabel</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="42" refid="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>Message<sp/><ref refid="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" kindref="member">getLabel</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="43"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>label_;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53" refid="classendstone_1_1Dropdown_1a73a8d33341dfc5da209028107553398a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1a73a8d33341dfc5da209028107553398a" kindref="member">setLabel</ref>(Message<sp/>label)</highlight></codeline>
+<codeline lineno="53" refid="classendstone_1_1Dropdown_1aaa0a076f154e39e44f50e958e8f78190" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1aaa0a076f154e39e44f50e958e8f78190" kindref="member">setLabel</ref>(Message<sp/><ref refid="classendstone_1_1Vector" kindref="compound">label</ref>)</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>label_<sp/>=<sp/>std::move(label);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>label_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Vector" kindref="compound">label</ref>);</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classendstone_1_1Dropdown_1a7f70f69c1ec1d3c891146079bd050934" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1a7f70f69c1ec1d3c891146079bd050934" kindref="member">addOption</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;option)</highlight></codeline>
+<codeline lineno="65" refid="classendstone_1_1Dropdown_1a76a20ab311120e240b6d552ef2741061" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1a76a20ab311120e240b6d552ef2741061" kindref="member">addOption</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">option</ref>)</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options_.push_back(option);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options_.push_back(<ref refid="classendstone_1_1Vector" kindref="compound">option</ref>);</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="classendstone_1_1Dropdown_1ada5b741131abbd0fab2b1757ea9a1cd6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Dropdown_1ada5b741131abbd0fab2b1757ea9a1cd6" kindref="member">getOptions</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="76" refid="classendstone_1_1Dropdown_1a3ff3209113ca1d2d2794290e7da8a595" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Dropdown_1a3ff3209113ca1d2d2794290e7da8a595" kindref="member">getOptions</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="77"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>options_;</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87" refid="classendstone_1_1Dropdown_1a97df9914cf801c57571f99884a496921" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1a97df9914cf801c57571f99884a496921" kindref="member">setOptions</ref>(std::vector&lt;std::string&gt;<sp/>options)</highlight></codeline>
+<codeline lineno="87" refid="classendstone_1_1Dropdown_1a18413db278b9d46f4d56e3db0b11520c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1a18413db278b9d46f4d56e3db0b11520c" kindref="member">setOptions</ref>(std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Vector" kindref="compound">options</ref>)</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options_<sp/>=<sp/>std::move(options);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Vector" kindref="compound">options</ref>);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98" refid="classendstone_1_1Dropdown_1ab9ff1b4c75b981ef0fc838bcba8f03fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::optional&lt;int&gt;<sp/><ref refid="classendstone_1_1Dropdown_1ab9ff1b4c75b981ef0fc838bcba8f03fb" kindref="member">getDefaultIndex</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="98" refid="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;int&gt;<sp/><ref refid="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" kindref="member">getDefaultIndex</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="99"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>default_index_;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109" refid="classendstone_1_1Dropdown_1a35213db20c98a01f5d3ac52f7de985cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1a35213db20c98a01f5d3ac52f7de985cd" kindref="member">setDefaultIndex</ref>(std::optional&lt;int&gt;<sp/>default_index)</highlight></codeline>
+<codeline lineno="109" refid="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref><sp/>&amp;<ref refid="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" kindref="member">setDefaultIndex</ref>(std::optional&lt;int&gt;<sp/><ref refid="classendstone_1_1Vector" kindref="compound">default_index</ref>)</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>default_index_<sp/>=<sp/>default_index;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>default_index_<sp/>=<sp/><ref refid="classendstone_1_1Vector" kindref="compound">default_index</ref>;</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>

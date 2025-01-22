@@ -53,18 +53,18 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 
 | Type | Name |
 | ---: | :--- |
-| virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, const std::string & name, bool value) = 0<br> |
+| virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**const**](classendstone_1_1Vector.md) std::string & name, [**bool**](classendstone_1_1Vector.md) value) = 0<br> |
 | virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () const = 0<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual std::unordered\_set&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) \* &gt; | [**getEffectivePermissions**](#function-geteffectivepermissions) () const = 0<br> |
-| virtual bool | [**hasPermission**](#function-haspermission-12) (std::string name) const = 0<br> |
-| virtual bool | [**hasPermission**](#function-haspermission-22) (const [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br> |
-| virtual bool | [**isOp**](#function-isop) () const = 0<br>_Checks if this object is a server operator._  |
-| virtual bool | [**isPermissionSet**](#function-ispermissionset-12) (std::string name) const = 0<br> |
-| virtual bool | [**isPermissionSet**](#function-ispermissionset-22) (const [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br> |
-| virtual void | [**recalculatePermissions**](#function-recalculatepermissions) () = 0<br> |
-| virtual Result&lt; void &gt; | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
-| virtual void | [**setOp**](#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasPermission**](#function-haspermission-12) (std::string name) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasPermission**](#function-haspermission-22) ([**const**](classendstone_1_1Vector.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isOp**](#function-isop) () const = 0<br>_Checks if this object is a server operator._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isPermissionSet**](#function-ispermissionset-12) (std::string name) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isPermissionSet**](#function-ispermissionset-22) ([**const**](classendstone_1_1Vector.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**recalculatePermissions**](#function-recalculatepermissions) () = 0<br> |
+| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setOp**](#function-setop) ([**bool**](classendstone_1_1Vector.md) value) = 0<br>_Sets the operator status of this object._  |
 | virtual  | [**~Permissible**](#function-permissible) () = default<br> |
 
 
@@ -267,7 +267,7 @@ Value of the permission
 
 ```C++
 virtual bool endstone::Permissible::hasPermission (
-    const Permission & perm
+    const  Permission & perm
 ) const = 0
 ```
 
@@ -364,7 +364,7 @@ true if the permission is set, otherwise false
 
 ```C++
 virtual bool endstone::Permissible::isPermissionSet (
-    const Permission & perm
+    const  Permission & perm
 ) const = 0
 ```
 

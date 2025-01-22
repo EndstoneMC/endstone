@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Level" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Level</compoundname>
     <includes refid="level_8h" local="no">endstone/level/level.h</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::Level::~Level</definition>
         <argsstring>()=default</argsstring>
         <name>~Level</name>
+        <qualifiedname>endstone::Level::~Level</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>virtual std::string endstone::Level::getName</definition>
         <argsstring>() const =0</argsstring>
         <name>getName</name>
+        <qualifiedname>endstone::Level::getName</qualifiedname>
         <briefdescription>
 <para>Gets the unique name of this level. </para>
         </briefdescription>
@@ -34,11 +36,12 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="36" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1a1e835342a3a271a9f4b75aa7a321d1d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> * &gt;</type>
-        <definition>virtual std::vector&lt;Actor *&gt; endstone::Level::getActors</definition>
+        <definition>virtual std::vector&lt; Actor * &gt; endstone::Level::getActors</definition>
         <argsstring>() const =0</argsstring>
         <name>getActors</name>
+        <qualifiedname>endstone::Level::getActors</qualifiedname>
         <briefdescription>
 <para>Get a list of all actors in this level. </para>
         </briefdescription>
@@ -52,10 +55,11 @@
         <location file="include/endstone/level/level.h" line="43" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>virtual int endstone::Level::getTime</definition>
         <argsstring>() const =0</argsstring>
         <name>getTime</name>
+        <qualifiedname>endstone::Level::getTime</qualifiedname>
         <briefdescription>
 <para>Gets the relative in-game time of this level. </para>
         </briefdescription>
@@ -69,12 +73,13 @@
         <location file="include/endstone/level/level.h" line="50" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Level::setTime</definition>
         <argsstring>(int time)=0</argsstring>
         <name>setTime</name>
+        <qualifiedname>endstone::Level::setTime</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
           <declname>time</declname>
         </param>
         <briefdescription>
@@ -96,11 +101,12 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="57" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1a79e833bb3b01ea1ac5c06bb9e37d7b1b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> * &gt;</type>
-        <definition>virtual std::vector&lt;Dimension *&gt; endstone::Level::getDimensions</definition>
+        <definition>virtual std::vector&lt; Dimension * &gt; endstone::Level::getDimensions</definition>
         <argsstring>() const =0</argsstring>
         <name>getDimensions</name>
+        <qualifiedname>endstone::Level::getDimensions</qualifiedname>
         <briefdescription>
 <para>Gets a list of all dimensions within this level. </para>
         </briefdescription>
@@ -113,11 +119,12 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="64" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1a33522929cc51fecb44f01c6942d099c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
-        <definition>virtual Dimension* endstone::Level::getDimension</definition>
+        <definition>virtual Dimension * endstone::Level::getDimension</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>getDimension</name>
+        <qualifiedname>endstone::Level::getDimension</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>name</declname>
@@ -143,7 +150,7 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="72" column="24"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents a level, which may contain actors, chunks and blocks. </para>
     </briefdescription>
@@ -151,9 +158,9 @@
     </detaileddescription>
     <location file="include/endstone/level/level.h" line="27" column="1" bodyfile="include/endstone/level/level.h" bodystart="27" bodyend="73"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Level_1a1e835342a3a271a9f4b75aa7a321d1d4" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getActors</name></member>
-      <member refid="classendstone_1_1Level_1a33522929cc51fecb44f01c6942d099c3" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimension</name></member>
-      <member refid="classendstone_1_1Level_1a79e833bb3b01ea1ac5c06bb9e37d7b1b" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimensions</name></member>
+      <member refid="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getActors</name></member>
+      <member refid="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimensions</name></member>
       <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getName</name></member>
       <member refid="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getTime</name></member>
       <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>setTime</name></member>

@@ -68,6 +68,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) _Called when a player sends a chat message._     
     * **class** [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) _Called whenever a player runs a command._     
     * **class** [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) _Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._    
+    * **class** [**PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md) _Called when a player uses an emote._     
     * **class** [**PlayerEvent**](classendstone_1_1PlayerEvent.md) _Represents a player related event._     
     * **class** [**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md) _Called when the GameMode of the player is changed._     
     * **class** [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) _Represents an event that is called when a player right-clicks an actor._     
@@ -112,11 +113,11 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._     
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
     * **namespace** [**core**](namespaceendstone_1_1core.md) 
-    * **namespace** [**detail**](namespaceendstone_1_1detail.md)     
-        * **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     
-        * **class** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)     
-        * **struct** [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md)     
+    * **namespace** [**detail**](namespaceendstone_1_1detail.md) 
     * **struct** [**overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
+* **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     
+* **class** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)     
+* **struct** [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md)     
 * **namespace** [**fmt**](namespacefmt.md)     
     * **struct** [**formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md)     
     * **struct** [**formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md)     
@@ -124,7 +125,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md)     
     * **struct** [**formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md)     
     * **struct** [**formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md)     
-    * **struct** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)     
+* **struct** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)     
 * **namespace** [**std**](namespacestd.md)     
     * **struct** [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)     
 

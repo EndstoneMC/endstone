@@ -55,22 +55,22 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 | ---: | :--- |
 |   | [**Command**](#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](#function-asplugincommand) () const<br> |
-| virtual bool | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const std::vector&lt; std::string &gt; & args) const<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Vector.md) std::vector&lt; std::string &gt; & args) const<br> |
 |  std::vector&lt; std::string &gt; | [**getAliases**](#function-getaliases) () const<br> |
 |  std::string | [**getDescription**](#function-getdescription) () const<br> |
 |  std::string | [**getName**](#function-getname) () const<br> |
 |  std::vector&lt; std::string &gt; | [**getPermissions**](#function-getpermissions) () const<br> |
 |  std::vector&lt; std::string &gt; | [**getUsages**](#function-getusages) () const<br> |
-|  bool | [**isRegistered**](#function-isregistered) () const<br> |
-|  bool | [**registerTo**](#function-registerto) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
-|  void | [**setAliases**](#function-setaliases) (Alias... aliases) <br> |
-|  void | [**setDescription**](#function-setdescription) (std::string description) <br> |
-|  void | [**setName**](#function-setname) (std::string name) <br> |
-|  void | [**setPermissions**](#function-setpermissions) (Permission... permissions) <br> |
-|  void | [**setUsages**](#function-setusages) (Usage... usages) <br> |
-|  bool | [**testPermission**](#function-testpermission) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  bool | [**testPermissionSilently**](#function-testpermissionsilently) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  bool | [**unregisterFrom**](#function-unregisterfrom) (const [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**isRegistered**](#function-isregistered) () const<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**registerTo**](#function-registerto) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setAliases**](#function-setaliases) (Alias... aliases) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setDescription**](#function-setdescription) (std::string description) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setName**](#function-setname) (std::string name) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setPermissions**](#function-setpermissions) (Permission... permissions) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setUsages**](#function-setusages) (Usage... usages) <br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**testPermission**](#function-testpermission) ([**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**testPermissionSilently**](#function-testpermissionsilently) ([**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**unregisterFrom**](#function-unregisterfrom) ([**const**](classendstone_1_1Vector.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
 | virtual  | [**~Command**](#function-command) () = default<br> |
 
 
@@ -528,7 +528,7 @@ Sets the usages of this command
 
 ```C++
 inline bool endstone::Command::testPermission (
-    const CommandSender & target
+    const  CommandSender & target
 ) const
 ```
 
@@ -564,7 +564,7 @@ true if they can use it, otherwise false
 
 ```C++
 inline bool endstone::Command::testPermissionSilently (
-    const CommandSender & target
+    const  CommandSender & target
 ) const
 ```
 
@@ -600,7 +600,7 @@ true if they can use it, otherwise false
 
 ```C++
 inline bool endstone::Command::unregisterFrom (
-    const CommandMap & command_map
+    const  CommandMap & command_map
 ) 
 ```
 

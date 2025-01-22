@@ -25,13 +25,6 @@
 
 
 
-## Classes
-
-| Type | Name |
-| ---: | :--- |
-| class | [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) <br> |
-| class | [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) <br> |
-| struct | [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) <br> |
 
 
 

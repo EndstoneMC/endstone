@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerLoginEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerLoginEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
     <includes refid="player__login__event_8h" local="no">endstone/event/player/player_login_event.h</includes>
-      <sectiondef kind="public-static-attrib">
+    <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerLoginEvent_1aaea7a39a26c68c5436ee3f050d6be2e6" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
         <definition>const std::string endstone::PlayerLoginEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
+        <qualifiedname>endstone::PlayerLoginEvent::NAME</qualifiedname>
         <initializer>= &quot;PlayerLoginEvent&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -19,13 +20,14 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_login_event.h" line="33" column="37" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="33" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerLoginEvent_1ad1404a38de83bce0919fa2c2f6f5cea1" prot="private" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string endstone::PlayerLoginEvent::message_</definition>
         <argsstring></argsstring>
         <name>message_</name>
+        <qualifiedname>endstone::PlayerLoginEvent::message_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -34,13 +36,14 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_login_event.h" line="60" column="17" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="60" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a409d08c3d2fde7d1814d0b7d63700fe6" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerLoginEvent::PlayerLoginEvent</definition>
         <argsstring>(Player &amp;player, std::string message=&quot;&quot;)</argsstring>
         <name>PlayerLoginEvent</name>
+        <qualifiedname>endstone::PlayerLoginEvent::PlayerLoginEvent</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
           <declname>player</declname>
@@ -63,6 +66,7 @@
         <definition>endstone::PlayerLoginEvent::~PlayerLoginEvent</definition>
         <argsstring>() override=default</argsstring>
         <name>~PlayerLoginEvent</name>
+        <qualifiedname>endstone::PlayerLoginEvent::~PlayerLoginEvent</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -76,6 +80,7 @@
         <definition>std::string endstone::PlayerLoginEvent::getEventName</definition>
         <argsstring>() const override</argsstring>
         <name>getEventName</name>
+        <qualifiedname>endstone::PlayerLoginEvent::getEventName</qualifiedname>
         <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
         <briefdescription>
         </briefdescription>
@@ -89,11 +94,12 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_login_event.h" line="34" column="18" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="34" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1ab88b5eee711f0524d08c9018830dec78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::string &amp;</type>
-        <definition>const std::string&amp; endstone::PlayerLoginEvent::getKickMessage</definition>
+      <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a25b7ba1f99219f7b07dc41a2aa36b840" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <definition>const std::string &amp; endstone::PlayerLoginEvent::getKickMessage</definition>
         <argsstring>() const</argsstring>
         <name>getKickMessage</name>
+        <qualifiedname>endstone::PlayerLoginEvent::getKickMessage</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -107,12 +113,13 @@
         <location file="include/endstone/event/player/player_login_event.h" line="44" column="24" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a8f5b97ba68ebdaf921e4d9a9e6f8219e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::PlayerLoginEvent::setKickMessage</definition>
         <argsstring>(const std::string &amp;message)</argsstring>
         <name>setKickMessage</name>
+        <qualifiedname>endstone::PlayerLoginEvent::setKickMessage</qualifiedname>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>
@@ -134,19 +141,13 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_login_event.h" line="54" column="10" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="54" bodyend="57"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Called when a player attempts to login in. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>endstone::PlayerLoginEvent</label>
-        <link refid="classendstone_1_1PlayerLoginEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
@@ -155,28 +156,28 @@
         <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
-        <label>endstone::ICancellable</label>
-        <link refid="classendstone_1_1ICancellable"/>
-      </node>
       <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
       </node>
       <node id="3">
         <label>endstone::PlayerEvent</label>
         <link refid="classendstone_1_1PlayerEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerLoginEvent</label>
+        <link refid="classendstone_1_1PlayerLoginEvent"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1">
-        <label>endstone::PlayerLoginEvent</label>
-        <link refid="classendstone_1_1PlayerLoginEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
@@ -185,18 +186,24 @@
         <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
-        <label>endstone::ICancellable</label>
-        <link refid="classendstone_1_1ICancellable"/>
-      </node>
       <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
       </node>
       <node id="3">
         <label>endstone::PlayerEvent</label>
         <link refid="classendstone_1_1PlayerEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerLoginEvent</label>
+        <link refid="classendstone_1_1PlayerLoginEvent"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
@@ -206,13 +213,13 @@
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PlayerLoginEvent_1a9593905e32bd292c3782ccc93190f92b" prot="public" virt="virtual"><scope>endstone::PlayerLoginEvent</scope><name>getEventName</name></member>
-      <member refid="classendstone_1_1PlayerLoginEvent_1ab88b5eee711f0524d08c9018830dec78" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>getKickMessage</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a0024c3db9eaec88a139f3c3fcb687e55" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerLoginEvent_1a25b7ba1f99219f7b07dc41a2aa36b840" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>getKickMessage</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::PlayerLoginEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerLoginEvent_1ad1404a38de83bce0919fa2c2f6f5cea1" prot="private" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>message_</name></member>
       <member refid="classendstone_1_1PlayerLoginEvent_1aaea7a39a26c68c5436ee3f050d6be2e6" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>NAME</name></member>
-      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerLoginEvent_1a409d08c3d2fde7d1814d0b7d63700fe6" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>PlayerLoginEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::PlayerLoginEvent</scope><name>setCancelled</name></member>

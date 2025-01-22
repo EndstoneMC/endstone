@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Language" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Language</compoundname>
     <includes refid="language_8h" local="no">endstone/lang/language.h</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Language_1a62acb7590ea7237ef734b6c98b585c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::Language::~Language</definition>
         <argsstring>()=default</argsstring>
         <name>~Language</name>
+        <qualifiedname>endstone::Language::~Language</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text) const =0</argsstring>
         <name>translate</name>
+        <qualifiedname>endstone::Language::translate</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>text</declname>
@@ -52,6 +54,7 @@
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text, std::string locale) const =0</argsstring>
         <name>translate</name>
+        <qualifiedname>endstone::Language::translate</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>text</declname>
@@ -94,6 +97,7 @@
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text, std::vector&lt; std::string &gt; params) const =0</argsstring>
         <name>translate</name>
+        <qualifiedname>endstone::Language::translate</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>text</declname>
@@ -136,6 +140,7 @@
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(std::string text, std::vector&lt; std::string &gt; params, std::string locale) const =0</argsstring>
         <name>translate</name>
+        <qualifiedname>endstone::Language::translate</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>text</declname>
@@ -190,6 +195,7 @@
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(Translatable translatable) const =0</argsstring>
         <name>translate</name>
+        <qualifiedname>endstone::Language::translate</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref></type>
           <declname>translatable</declname>
@@ -220,6 +226,7 @@
         <definition>virtual std::string endstone::Language::translate</definition>
         <argsstring>(Translatable translatable, std::string locale) const =0</argsstring>
         <name>translate</name>
+        <qualifiedname>endstone::Language::translate</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref></type>
           <declname>translatable</declname>
@@ -262,6 +269,7 @@
         <definition>virtual std::string endstone::Language::getLocale</definition>
         <argsstring>() const =0</argsstring>
         <name>getLocale</name>
+        <qualifiedname>endstone::Language::getLocale</qualifiedname>
         <briefdescription>
 <para>Gets the current locale. </para>
         </briefdescription>
@@ -274,7 +282,7 @@
         </inbodydescription>
         <location file="include/endstone/lang/language.h" line="90" column="26"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents the interface for translating text into different languages. </para>
     </briefdescription>

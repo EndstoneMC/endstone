@@ -69,7 +69,7 @@ Inherits the following classes: [endstone::ActorDeathEvent](classendstone_1_1Act
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = = "PlayerDeathEvent"<br> |
+|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"PlayerDeathEvent"`<br> |
 
 
 ## Public Static Attributes inherited from endstone::ActorDeathEvent
@@ -78,7 +78,7 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**NAME**](classendstone_1_1ActorDeathEvent.md#variable-name)   = = "ActorDeathEvent"<br> |
+|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](classendstone_1_1ActorDeathEvent.md#variable-name)   = `"ActorDeathEvent"`<br> |
 
 
 
@@ -166,9 +166,9 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::string death\_message) <br> |
-|  const std::string & | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
+|  [**const**](classendstone_1_1Vector.md) std::string & | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  void | [**setDeathMessage**](#function-setdeathmessage) (const std::string & death\_message) <br>_Set the death message that will appear to everyone on the server._  |
+|  [**void**](classendstone_1_1Vector.md) | [**setDeathMessage**](#function-setdeathmessage) ([**const**](classendstone_1_1Vector.md) std::string & death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 |   | [**~PlayerDeathEvent**](#function-playerdeathevent) () override<br> |
 
 
@@ -200,11 +200,11 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-12) (bool async=false) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-12) ([**bool**](classendstone_1_1Vector.md) async=[**false**](classendstone_1_1Vector.md)) <br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-22) ([**const**](classendstone_1_1Vector.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 | virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
+|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) ([**const**](classendstone_1_1Vector.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 | virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
 
 
@@ -225,11 +225,11 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-12) (bool async=false) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-12) ([**bool**](classendstone_1_1Vector.md) async=[**false**](classendstone_1_1Vector.md)) <br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-22) ([**const**](classendstone_1_1Vector.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 | virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
+|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) ([**const**](classendstone_1_1Vector.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 | virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
 
 

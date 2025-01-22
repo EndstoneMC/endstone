@@ -40,7 +40,6 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
-| struct | [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md) &lt;&gt;<br> |
 
 
 

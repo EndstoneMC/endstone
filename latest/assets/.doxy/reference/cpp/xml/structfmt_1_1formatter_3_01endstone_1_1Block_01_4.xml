@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structfmt_1_1formatter_3_01endstone_1_1Block_01_4" kind="struct" language="C++" prot="public">
     <compoundname>fmt::formatter&lt; endstone::Block &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
     <templateparamlist>
     </templateparamlist>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1a329e503a43a8c88c344787df53c06dfb" prot="public" static="no">
         <type><ref refid="classendstone_1_1Block" kindref="compound">endstone::Block</ref></type>
         <definition>using fmt::formatter&lt; endstone::Block &gt;::Type =  endstone::Block</definition>
         <argsstring></argsstring>
         <name>Type</name>
+        <qualifiedname>fmt::formatter&lt; endstone::Block &gt;::Type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,8 +20,8 @@
         </inbodydescription>
         <location file="include/endstone/block/block.h" line="179" column="5" bodyfile="include/endstone/block/block.h" bodystart="179" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1add1c38750b0aa11012686b8474844c70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -31,6 +32,7 @@
         <definition>auto fmt::formatter&lt; endstone::Block &gt;::format</definition>
         <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
         <name>format</name>
+        <qualifiedname>fmt::formatter&lt; endstone::Block &gt;::format</qualifiedname>
         <param>
           <type>const <ref refid="classendstone_1_1Block" kindref="compound">Type</ref> &amp;</type>
           <declname>val</declname>
@@ -47,7 +49,7 @@
         </inbodydescription>
         <location file="include/endstone/block/block.h" line="182" column="10" bodyfile="include/endstone/block/block.h" bodystart="182" bodyend="195"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

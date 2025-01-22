@@ -54,15 +54,15 @@ _Holds information about a permission attachment on a_ [_**Permissible**_](class
 | ---: | :--- |
 |   | [**PermissionAttachment**](#function-permissionattachment) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**Permissible**](classendstone_1_1Permissible.md) & permissible) <br> |
 |  [**Permissible**](classendstone_1_1Permissible.md) & | [**getPermissible**](#function-getpermissible) () const<br> |
-|  std::unordered\_map&lt; std::string, bool &gt; | [**getPermissions**](#function-getpermissions) () const<br> |
+|  std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Vector.md) &gt; | [**getPermissions**](#function-getpermissions) () const<br> |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
 |  PermissionRemovedExecutor | [**getRemovalCallback**](#function-getremovalcallback) () const<br> |
-|  bool | [**remove**](#function-remove) () <br> |
-|  void | [**setPermission**](#function-setpermission-12) (std::string name, bool value) <br> |
-|  void | [**setPermission**](#function-setpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm, bool value) <br> |
-|  void | [**setRemovalCallback**](#function-setremovalcallback) (PermissionRemovedExecutor ex) <br> |
-|  void | [**unsetPermission**](#function-unsetpermission-12) (std::string name) <br> |
-|  void | [**unsetPermission**](#function-unsetpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm) <br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**remove**](#function-remove) () <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setPermission**](#function-setpermission-12) (std::string name, [**bool**](classendstone_1_1Vector.md) value) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setPermission**](#function-setpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm, [**bool**](classendstone_1_1Vector.md) value) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setRemovalCallback**](#function-setremovalcallback) (PermissionRemovedExecutor ex) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**unsetPermission**](#function-unsetpermission-12) (std::string name) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**unsetPermission**](#function-unsetpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm) <br> |
 
 
 

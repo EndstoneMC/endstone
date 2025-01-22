@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerDeathEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerDeathEvent</compoundname>
     <basecompoundref refid="classendstone_1_1ActorDeathEvent" prot="public" virt="non-virtual">endstone::ActorDeathEvent</basecompoundref>
     <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
     <includes refid="player__death__event_8h" local="no">endstone/event/player/player_death_event.h</includes>
-      <sectiondef kind="public-static-attrib">
+    <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
         <definition>const std::string endstone::PlayerDeathEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
+        <qualifiedname>endstone::PlayerDeathEvent::NAME</qualifiedname>
         <initializer>= &quot;PlayerDeathEvent&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -20,13 +21,14 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_death_event.h" line="33" column="37" bodyfile="include/endstone/event/player/player_death_event.h" bodystart="33" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerDeathEvent_1a8d43b4af4294e73278d0d88b27a8ad03" prot="private" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string endstone::PlayerDeathEvent::death_message_</definition>
         <argsstring></argsstring>
         <name>death_message_</name>
+        <qualifiedname>endstone::PlayerDeathEvent::death_message_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,13 +37,14 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_death_event.h" line="60" column="17" bodyfile="include/endstone/event/player/player_death_event.h" bodystart="60" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1a6eb8acf00eac81ecc98168799fa32df1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerDeathEvent::PlayerDeathEvent</definition>
         <argsstring>(Player &amp;player, std::string death_message)</argsstring>
         <name>PlayerDeathEvent</name>
+        <qualifiedname>endstone::PlayerDeathEvent::PlayerDeathEvent</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
           <declname>player</declname>
@@ -63,6 +66,7 @@
         <definition>endstone::PlayerDeathEvent::~PlayerDeathEvent</definition>
         <argsstring>() override=default</argsstring>
         <name>~PlayerDeathEvent</name>
+        <qualifiedname>endstone::PlayerDeathEvent::~PlayerDeathEvent</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -76,6 +80,7 @@
         <definition>std::string endstone::PlayerDeathEvent::getEventName</definition>
         <argsstring>() const override</argsstring>
         <name>getEventName</name>
+        <qualifiedname>endstone::PlayerDeathEvent::getEventName</qualifiedname>
         <reimplements refid="classendstone_1_1ActorDeathEvent_1ad3572783702cd3e40447a3d6344a8094">getEventName</reimplements>
         <briefdescription>
         </briefdescription>
@@ -89,11 +94,12 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_death_event.h" line="34" column="18" bodyfile="include/endstone/event/player/player_death_event.h" bodystart="34" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1a9c83eb1c19d1f3bc66c5618721db1766" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::string &amp;</type>
-        <definition>const std::string&amp; endstone::PlayerDeathEvent::getDeathMessage</definition>
+      <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1ac76e5c152bc08891e8ecf76802c66682" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <definition>const std::string &amp; endstone::PlayerDeathEvent::getDeathMessage</definition>
         <argsstring>() const</argsstring>
         <name>getDeathMessage</name>
+        <qualifiedname>endstone::PlayerDeathEvent::getDeathMessage</qualifiedname>
         <briefdescription>
 <para>Get the death message that will appear to everyone on the server. </para>
         </briefdescription>
@@ -107,12 +113,13 @@
         <location file="include/endstone/event/player/player_death_event.h" line="44" column="24" bodyfile="include/endstone/event/player/player_death_event.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::PlayerDeathEvent::setDeathMessage</definition>
         <argsstring>(const std::string &amp;death_message)</argsstring>
         <name>setDeathMessage</name>
+        <qualifiedname>endstone::PlayerDeathEvent::setDeathMessage</qualifiedname>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
           <declname>death_message</declname>
         </param>
         <briefdescription>
@@ -134,35 +141,35 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_death_event.h" line="54" column="10" bodyfile="include/endstone/event/player/player_death_event.h" bodystart="54" bodyend="57"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Called when a <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> dies. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>endstone::PlayerDeathEvent</label>
-        <link refid="classendstone_1_1PlayerDeathEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>endstone::ActorDeathEvent</label>
         <link refid="classendstone_1_1ActorDeathEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>endstone::Event</label>
-        <link refid="classendstone_1_1Event"/>
-      </node>
       <node id="3">
         <label>endstone::ActorEvent</label>
         <link refid="classendstone_1_1ActorEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerDeathEvent</label>
+        <link refid="classendstone_1_1PlayerDeathEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
@@ -173,28 +180,28 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1">
-        <label>endstone::PlayerDeathEvent</label>
-        <link refid="classendstone_1_1PlayerDeathEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>endstone::ActorDeathEvent</label>
         <link refid="classendstone_1_1ActorDeathEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>endstone::Event</label>
-        <link refid="classendstone_1_1Event"/>
-      </node>
       <node id="3">
         <label>endstone::ActorEvent</label>
         <link refid="classendstone_1_1ActorEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerDeathEvent</label>
+        <link refid="classendstone_1_1PlayerDeathEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
@@ -213,15 +220,15 @@
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual" ambiguityscope="endstone::"><scope>endstone::PlayerDeathEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual" ambiguityscope="endstone::PlayerEvent::"><scope>endstone::PlayerDeathEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual" ambiguityscope="endstone::PlayerEvent::"><scope>endstone::PlayerDeathEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1ActorEvent_1af8c9cbdbfc0c7e3fcb4a5ec566e0d1d4" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>getActor</name></member>
-      <member refid="classendstone_1_1PlayerDeathEvent_1a9c83eb1c19d1f3bc66c5618721db1766" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>getDeathMessage</name></member>
+      <member refid="classendstone_1_1ActorEvent_1aeb9ea6c413f562e2ad4282fa4f695758" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1PlayerDeathEvent_1ac76e5c152bc08891e8ecf76802c66682" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>getDeathMessage</name></member>
       <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" prot="public" virt="virtual"><scope>endstone::PlayerDeathEvent</scope><name>getEventName</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a0024c3db9eaec88a139f3c3fcb687e55" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual" ambiguityscope="endstone::"><scope>endstone::PlayerDeathEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual" ambiguityscope="endstone::PlayerEvent::"><scope>endstone::PlayerDeathEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>NAME</name></member>
-      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual" ambiguityscope="endstone::"><scope>endstone::PlayerDeathEvent</scope><name>operator=</name></member>
-      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual" ambiguityscope="endstone::PlayerEvent::"><scope>endstone::PlayerDeathEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual" ambiguityscope="endstone::"><scope>endstone::PlayerDeathEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual" ambiguityscope="endstone::PlayerEvent::"><scope>endstone::PlayerDeathEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerDeathEvent_1a6eb8acf00eac81ecc98168799fa32df1" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>PlayerDeathEvent</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>setDeathMessage</name></member>

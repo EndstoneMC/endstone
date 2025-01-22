@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1OfflinePlayer" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::OfflinePlayer</compoundname>
     <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
     <includes refid="offline__player_8h" local="no">endstone/offline_player.h</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1a9d4539d56917bc166121f2bb2919b288" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::OfflinePlayer::~OfflinePlayer</definition>
         <argsstring>()=default</argsstring>
         <name>~OfflinePlayer</name>
+        <qualifiedname>endstone::OfflinePlayer::~OfflinePlayer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,6 +24,7 @@
         <definition>virtual std::string endstone::OfflinePlayer::getName</definition>
         <argsstring>() const =0</argsstring>
         <name>getName</name>
+        <qualifiedname>endstone::OfflinePlayer::getName</qualifiedname>
         <reimplementedby refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af">getName</reimplementedby>
         <briefdescription>
 <para>Returns the name of this player. </para>
@@ -41,6 +43,7 @@
         <definition>virtual UUID endstone::OfflinePlayer::getUniqueId</definition>
         <argsstring>() const =0</argsstring>
         <name>getUniqueId</name>
+        <qualifiedname>endstone::OfflinePlayer::getUniqueId</qualifiedname>
         <briefdescription>
 <para>Returns the <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of this player. </para>
         </briefdescription>
@@ -53,7 +56,7 @@
         </inbodydescription>
         <location file="include/endstone/offline_player.h" line="41" column="19"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online. </para>
     </briefdescription>

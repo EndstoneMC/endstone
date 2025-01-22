@@ -1,11 +1,61 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="event__priority_8h" kind="file" language="C++">
     <compoundname>event_priority.h</compoundname>
     <includedby refid="event__handler_8h" local="yes">include/endstone/event/event_handler.h</includedby>
     <includedby refid="handler__list_8h" local="yes">include/endstone/event/handler_list.h</includedby>
     <includedby refid="plugin__manager_8h" local="yes">include/endstone/plugin/plugin_manager.h</includedby>
     <invincdepgraph>
+      <node id="8">
+        <label>include/endstone/command/plugin_command.h</label>
+        <link refid="plugin__command_8h_source"/>
+      </node>
+      <node id="2">
+        <label>include/endstone/event/event_handler.h</label>
+        <link refid="event__handler_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/event/event_priority.h</label>
+        <link refid="event__priority_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/endstone/event/handler_list.h</label>
+        <link refid="handler__list_8h_source"/>
+      </node>
+      <node id="9">
+        <label>include/endstone/event/server/plugin_disable_event.h</label>
+        <link refid="plugin__disable__event_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/endstone/event/server/plugin_enable_event.h</label>
+        <link refid="plugin__enable__event_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/endstone/permissions/permission.h</label>
+        <link refid="permission_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/endstone/permissions/permission_attachment.h</label>
+        <link refid="permission__attachment_8h_source"/>
+      </node>
       <node id="7">
         <label>include/endstone/plugin/plugin.h</label>
         <link refid="plugin_8h_source"/>
@@ -22,47 +72,15 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>include/endstone/event/server/plugin_enable_event.h</label>
-        <link refid="plugin__enable__event_8h_source"/>
-        <childnode refid="10" relation="include">
+      <node id="14">
+        <label>include/endstone/plugin/plugin_description.h</label>
+        <link refid="plugin__description_8h_source"/>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="10">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
-      </node>
-      <node id="2">
-        <label>include/endstone/event/event_handler.h</label>
-        <link refid="event__handler_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>include/endstone/permissions/permission.h</label>
-        <link refid="permission_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/endstone/event/event_priority.h</label>
-        <link refid="event__priority_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/endstone/event/server/plugin_disable_event.h</label>
-        <link refid="plugin__disable__event_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
       </node>
       <node id="4">
         <label>include/endstone/plugin/plugin_manager.h</label>
@@ -70,33 +88,15 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>include/endstone/command/plugin_command.h</label>
-        <link refid="plugin__command_8h_source"/>
-      </node>
       <node id="13">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
-      </node>
-      <node id="3">
-        <label>include/endstone/event/handler_list.h</label>
-        <link refid="handler__list_8h_source"/>
-      </node>
-      <node id="14">
-        <label>include/endstone/plugin/plugin_description.h</label>
-        <link refid="plugin__description_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
       <node id="12">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
         <childnode refid="13" relation="include">
         </childnode>
-      </node>
-      <node id="6">
-        <label>include/endstone/permissions/permission_attachment.h</label>
-        <link refid="permission__attachment_8h_source"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1PluginDescription" kind="class" language="C++" prot="public">
     <compoundname>endstone::PluginDescription</compoundname>
     <includes refid="plugin__description_8h" local="no">endstone/plugin/plugin_description.h</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PluginDescription_1aacb04a904088262c76bc1a413d041c56" prot="private" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string endstone::PluginDescription::name_</definition>
         <argsstring></argsstring>
         <name>name_</name>
+        <qualifiedname>endstone::PluginDescription::name_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::string endstone::PluginDescription::version_</definition>
         <argsstring></argsstring>
         <name>version_</name>
+        <qualifiedname>endstone::PluginDescription::version_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>std::string endstone::PluginDescription::full_name_</definition>
         <argsstring></argsstring>
         <name>full_name_</name>
+        <qualifiedname>endstone::PluginDescription::full_name_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>std::string endstone::PluginDescription::api_version_</definition>
         <argsstring></argsstring>
         <name>api_version_</name>
+        <qualifiedname>endstone::PluginDescription::api_version_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>std::string endstone::PluginDescription::description_</definition>
         <argsstring></argsstring>
         <name>description_</name>
+        <qualifiedname>endstone::PluginDescription::description_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,6 +79,7 @@
         <definition>PluginLoadOrder endstone::PluginDescription::load_</definition>
         <argsstring></argsstring>
         <name>load_</name>
+        <qualifiedname>endstone::PluginDescription::load_</qualifiedname>
         <initializer>= PluginLoadOrder::PostWorld</initializer>
         <briefdescription>
         </briefdescription>
@@ -88,6 +94,7 @@
         <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::authors_</definition>
         <argsstring></argsstring>
         <name>authors_</name>
+        <qualifiedname>endstone::PluginDescription::authors_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -101,6 +108,7 @@
         <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::contributors_</definition>
         <argsstring></argsstring>
         <name>contributors_</name>
+        <qualifiedname>endstone::PluginDescription::contributors_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -114,6 +122,7 @@
         <definition>std::string endstone::PluginDescription::website_</definition>
         <argsstring></argsstring>
         <name>website_</name>
+        <qualifiedname>endstone::PluginDescription::website_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -127,6 +136,7 @@
         <definition>std::string endstone::PluginDescription::prefix_</definition>
         <argsstring></argsstring>
         <name>prefix_</name>
+        <qualifiedname>endstone::PluginDescription::prefix_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -140,6 +150,7 @@
         <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::provides_</definition>
         <argsstring></argsstring>
         <name>provides_</name>
+        <qualifiedname>endstone::PluginDescription::provides_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -153,6 +164,7 @@
         <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::depend_</definition>
         <argsstring></argsstring>
         <name>depend_</name>
+        <qualifiedname>endstone::PluginDescription::depend_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -166,6 +178,7 @@
         <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::soft_depend_</definition>
         <argsstring></argsstring>
         <name>soft_depend_</name>
+        <qualifiedname>endstone::PluginDescription::soft_depend_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -179,6 +192,7 @@
         <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::load_before_</definition>
         <argsstring></argsstring>
         <name>load_before_</name>
+        <qualifiedname>endstone::PluginDescription::load_before_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -192,6 +206,7 @@
         <definition>PermissionDefault endstone::PluginDescription::default_permission_</definition>
         <argsstring></argsstring>
         <name>default_permission_</name>
+        <qualifiedname>endstone::PluginDescription::default_permission_</qualifiedname>
         <initializer>= PermissionDefault::Operator</initializer>
         <briefdescription>
         </briefdescription>
@@ -206,6 +221,7 @@
         <definition>std::vector&lt;Command&gt; endstone::PluginDescription::commands_</definition>
         <argsstring></argsstring>
         <name>commands_</name>
+        <qualifiedname>endstone::PluginDescription::commands_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -219,6 +235,7 @@
         <definition>std::vector&lt;Permission&gt; endstone::PluginDescription::permissions_</definition>
         <argsstring></argsstring>
         <name>permissions_</name>
+        <qualifiedname>endstone::PluginDescription::permissions_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -227,13 +244,14 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="241" column="17" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="241" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1PluginDescription_1a6891a1c23f812cf3ce886b291e9b55d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PluginDescription::PluginDescription</definition>
         <argsstring>(std::string name, std::string version, std::string description=&quot;&quot;, PluginLoadOrder load=PluginLoadOrder::PostWorld, std::vector&lt; std::string &gt; authors={}, std::vector&lt; std::string &gt; contributors={}, std::string website=&quot;&quot;, std::string prefix=&quot;&quot;, std::vector&lt; std::string &gt; provides={}, std::vector&lt; std::string &gt; depend={}, std::vector&lt; std::string &gt; soft_depend={}, std::vector&lt; std::string &gt; load_before={}, PermissionDefault default_permission=PermissionDefault::Operator, std::vector&lt; Command &gt; commands={}, std::vector&lt; Permission &gt; permissions={})</argsstring>
         <name>PluginDescription</name>
+        <qualifiedname>endstone::PluginDescription::PluginDescription</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>name</declname>
@@ -320,6 +338,7 @@
         <definition>std::string endstone::PluginDescription::getName</definition>
         <argsstring>() const</argsstring>
         <name>getName</name>
+        <qualifiedname>endstone::PluginDescription::getName</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -337,6 +356,7 @@
         <definition>std::string endstone::PluginDescription::getVersion</definition>
         <argsstring>() const</argsstring>
         <name>getVersion</name>
+        <qualifiedname>endstone::PluginDescription::getVersion</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -354,6 +374,7 @@
         <definition>std::string endstone::PluginDescription::getFullName</definition>
         <argsstring>() const</argsstring>
         <name>getFullName</name>
+        <qualifiedname>endstone::PluginDescription::getFullName</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -371,6 +392,7 @@
         <definition>std::string endstone::PluginDescription::getAPIVersion</definition>
         <argsstring>() const</argsstring>
         <name>getAPIVersion</name>
+        <qualifiedname>endstone::PluginDescription::getAPIVersion</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -388,6 +410,7 @@
         <definition>std::string endstone::PluginDescription::getDescription</definition>
         <argsstring>() const</argsstring>
         <name>getDescription</name>
+        <qualifiedname>endstone::PluginDescription::getDescription</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -404,6 +427,7 @@
         <definition>PluginLoadOrder endstone::PluginDescription::getLoad</definition>
         <argsstring>() const</argsstring>
         <name>getLoad</name>
+        <qualifiedname>endstone::PluginDescription::getLoad</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -416,11 +440,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="109" column="22" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="109" bodyend="112"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a0fa0df5f3b62c3e0722c6395a5e14c22" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a062c8f7df7c7a8fe77ab8bf715dac4bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::getAuthors</definition>
+        <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getAuthors</definition>
         <argsstring>() const</argsstring>
         <name>getAuthors</name>
+        <qualifiedname>endstone::PluginDescription::getAuthors</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -433,11 +458,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="119" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="119" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a7590f2e57843fcd0f831ba76695d9a90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a87ec948d2370eff096635249fe050014" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::getContributors</definition>
+        <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getContributors</definition>
         <argsstring>() const</argsstring>
         <name>getContributors</name>
+        <qualifiedname>endstone::PluginDescription::getContributors</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -455,6 +481,7 @@
         <definition>std::string endstone::PluginDescription::getWebsite</definition>
         <argsstring>() const</argsstring>
         <name>getWebsite</name>
+        <qualifiedname>endstone::PluginDescription::getWebsite</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -472,6 +499,7 @@
         <definition>std::string endstone::PluginDescription::getPrefix</definition>
         <argsstring>() const</argsstring>
         <name>getPrefix</name>
+        <qualifiedname>endstone::PluginDescription::getPrefix</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -484,11 +512,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="149" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="149" bodyend="152"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ad3993763e55564208a31e4b031e21518" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1aa7ad7d7e5a635e93f7f9f314d7467beb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::getProvides</definition>
+        <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getProvides</definition>
         <argsstring>() const</argsstring>
         <name>getProvides</name>
+        <qualifiedname>endstone::PluginDescription::getProvides</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -501,11 +530,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="159" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="159" bodyend="162"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1acf4e07bcbf623f270f1292a508743f2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a9755156d552f3a3914b7303ed733b734" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::getDepend</definition>
+        <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getDepend</definition>
         <argsstring>() const</argsstring>
         <name>getDepend</name>
+        <qualifiedname>endstone::PluginDescription::getDepend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -518,11 +548,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="169" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="169" bodyend="172"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a100e76d2e114dbfb7ddc5fdca2ebc889" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab5b522df1a05b0608ba57a7c8e4598d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::getSoftDepend</definition>
+        <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getSoftDepend</definition>
         <argsstring>() const</argsstring>
         <name>getSoftDepend</name>
+        <qualifiedname>endstone::PluginDescription::getSoftDepend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -535,11 +566,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="179" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="179" bodyend="182"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1afa7a7f277ddd5883105230f86cc15127" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a27acab42935c249ba12836f510ca9a2f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; endstone::PluginDescription::getLoadBefore</definition>
+        <definition>std::vector&lt; std::string &gt; endstone::PluginDescription::getLoadBefore</definition>
         <argsstring>() const</argsstring>
         <name>getLoadBefore</name>
+        <qualifiedname>endstone::PluginDescription::getLoadBefore</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -557,6 +589,7 @@
         <definition>PermissionDefault endstone::PluginDescription::getDefaultPermission</definition>
         <argsstring>() const</argsstring>
         <name>getDefaultPermission</name>
+        <qualifiedname>endstone::PluginDescription::getDefaultPermission</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -569,11 +602,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="199" column="24" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="199" bodyend="202"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5a1d5e827187d8a3347c698e943e9196" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab72bcaae19692e3adc527205d91fcc53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>
-        <definition>std::vector&lt;Command&gt; endstone::PluginDescription::getCommands</definition>
+        <definition>std::vector&lt; Command &gt; endstone::PluginDescription::getCommands</definition>
         <argsstring>() const</argsstring>
         <name>getCommands</name>
+        <qualifiedname>endstone::PluginDescription::getCommands</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -586,11 +620,12 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="209" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="209" bodyend="212"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDescription_1adb8e5df5fe24327b545c5acf0b0d2c1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginDescription_1aa26b0f59f99a7e56627213a8b001a4c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &gt;</type>
-        <definition>std::vector&lt;Permission&gt; endstone::PluginDescription::getPermissions</definition>
+        <definition>std::vector&lt; Permission &gt; endstone::PluginDescription::getPermissions</definition>
         <argsstring>() const</argsstring>
         <name>getPermissions</name>
+        <qualifiedname>endstone::PluginDescription::getPermissions</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -603,7 +638,7 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_description.h" line="219" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="219" bodyend="222"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents the basic information about a plugin that the plugin loader needs to know. </para>
     </briefdescription>
@@ -620,20 +655,20 @@
       <member refid="classendstone_1_1PluginDescription_1a5bd5a1c3fe558b1895b304c3fe9933d7" prot="private" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>description_</name></member>
       <member refid="classendstone_1_1PluginDescription_1a0b867810879b1c06ac94ec9cc92d3c67" prot="private" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>full_name_</name></member>
       <member refid="classendstone_1_1PluginDescription_1ae194d349c1f8229882beaf0eb03e8a55" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getAPIVersion</name></member>
-      <member refid="classendstone_1_1PluginDescription_1a0fa0df5f3b62c3e0722c6395a5e14c22" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getAuthors</name></member>
-      <member refid="classendstone_1_1PluginDescription_1a5a1d5e827187d8a3347c698e943e9196" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getCommands</name></member>
-      <member refid="classendstone_1_1PluginDescription_1a7590f2e57843fcd0f831ba76695d9a90" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getContributors</name></member>
+      <member refid="classendstone_1_1PluginDescription_1a062c8f7df7c7a8fe77ab8bf715dac4bb" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getAuthors</name></member>
+      <member refid="classendstone_1_1PluginDescription_1ab72bcaae19692e3adc527205d91fcc53" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getCommands</name></member>
+      <member refid="classendstone_1_1PluginDescription_1a87ec948d2370eff096635249fe050014" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getContributors</name></member>
       <member refid="classendstone_1_1PluginDescription_1ab55182911b0a4b0c0fe4060d61549be4" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getDefaultPermission</name></member>
-      <member refid="classendstone_1_1PluginDescription_1acf4e07bcbf623f270f1292a508743f2e" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getDepend</name></member>
+      <member refid="classendstone_1_1PluginDescription_1a9755156d552f3a3914b7303ed733b734" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getDepend</name></member>
       <member refid="classendstone_1_1PluginDescription_1a5eefb00d2ebb98e02b00f27751bbcf85" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getDescription</name></member>
       <member refid="classendstone_1_1PluginDescription_1a311c84d8ffa82c26c06e9cbcb5c3ccf9" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getFullName</name></member>
       <member refid="classendstone_1_1PluginDescription_1a5667754725d4b2426fa9759bf5028f46" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getLoad</name></member>
-      <member refid="classendstone_1_1PluginDescription_1afa7a7f277ddd5883105230f86cc15127" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getLoadBefore</name></member>
+      <member refid="classendstone_1_1PluginDescription_1a27acab42935c249ba12836f510ca9a2f" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getLoadBefore</name></member>
       <member refid="classendstone_1_1PluginDescription_1a5a2f39ff668525dfa077122be1596328" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getName</name></member>
-      <member refid="classendstone_1_1PluginDescription_1adb8e5df5fe24327b545c5acf0b0d2c1b" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getPermissions</name></member>
+      <member refid="classendstone_1_1PluginDescription_1aa26b0f59f99a7e56627213a8b001a4c8" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getPermissions</name></member>
       <member refid="classendstone_1_1PluginDescription_1a576a777680f917842d66c21f100e8226" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getPrefix</name></member>
-      <member refid="classendstone_1_1PluginDescription_1ad3993763e55564208a31e4b031e21518" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getProvides</name></member>
-      <member refid="classendstone_1_1PluginDescription_1a100e76d2e114dbfb7ddc5fdca2ebc889" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getSoftDepend</name></member>
+      <member refid="classendstone_1_1PluginDescription_1aa7ad7d7e5a635e93f7f9f314d7467beb" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getProvides</name></member>
+      <member refid="classendstone_1_1PluginDescription_1ab5b522df1a05b0608ba57a7c8e4598d1" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getSoftDepend</name></member>
       <member refid="classendstone_1_1PluginDescription_1ad18d8a055c2490eab5ed52a098fea461" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getVersion</name></member>
       <member refid="classendstone_1_1PluginDescription_1a2c0839588d2d69aeeb5963294b75fe02" prot="public" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>getWebsite</name></member>
       <member refid="classendstone_1_1PluginDescription_1a5e809b9f16bb9e0c2efa21620e8d9b39" prot="private" virt="non-virtual"><scope>endstone::PluginDescription</scope><name>load_</name></member>

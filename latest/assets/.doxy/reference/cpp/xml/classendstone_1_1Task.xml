@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Task" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Task</compoundname>
     <includes refid="task_8h" local="no">endstone/scheduler/task.h</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Task_1ae40a9449683399a480b757911fb30ef4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::Task::~Task</definition>
         <argsstring>()=default</argsstring>
         <name>~Task</name>
+        <qualifiedname>endstone::Task::~Task</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>virtual TaskId endstone::Task::getTaskId</definition>
         <argsstring>() const =0</argsstring>
         <name>getTaskId</name>
+        <qualifiedname>endstone::Task::getTaskId</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -34,11 +36,12 @@
         </inbodydescription>
         <location file="include/endstone/scheduler/task.h" line="37" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Task_1ac008c1494ed3429e4058b3967e79315b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Task_1a2e9cdffd945930487342851df0a54b06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
-        <definition>virtual Plugin* endstone::Task::getOwner</definition>
+        <definition>virtual Plugin * endstone::Task::getOwner</definition>
         <argsstring>() const =0</argsstring>
         <name>getOwner</name>
+        <qualifiedname>endstone::Task::getOwner</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -52,10 +55,11 @@
         <location file="include/endstone/scheduler/task.h" line="44" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Task_1ad091016fe3fae7796852709bade2c079" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Task::isSync</definition>
         <argsstring>() const =0</argsstring>
         <name>isSync</name>
+        <qualifiedname>endstone::Task::isSync</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -69,10 +73,11 @@
         <location file="include/endstone/scheduler/task.h" line="51" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Task_1ab758d7bc88367c07f090b758496daada" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Task::isCancelled</definition>
         <argsstring>() const =0</argsstring>
         <name>isCancelled</name>
+        <qualifiedname>endstone::Task::isCancelled</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -86,10 +91,11 @@
         <location file="include/endstone/scheduler/task.h" line="58" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Task_1a3455812d65cf5c8f173e5cf5ab8a1fd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Task::cancel</definition>
         <argsstring>()=0</argsstring>
         <name>cancel</name>
+        <qualifiedname>endstone::Task::cancel</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -99,7 +105,7 @@
         </inbodydescription>
         <location file="include/endstone/scheduler/task.h" line="63" column="18"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents a task being executed by the scheduler. </para>
     </briefdescription>
@@ -108,7 +114,7 @@
     <location file="include/endstone/scheduler/task.h" line="28" column="1" bodyfile="include/endstone/scheduler/task.h" bodystart="28" bodyend="64"/>
     <listofallmembers>
       <member refid="classendstone_1_1Task_1a3455812d65cf5c8f173e5cf5ab8a1fd0" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>cancel</name></member>
-      <member refid="classendstone_1_1Task_1ac008c1494ed3429e4058b3967e79315b" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>getOwner</name></member>
+      <member refid="classendstone_1_1Task_1a2e9cdffd945930487342851df0a54b06" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>getOwner</name></member>
       <member refid="classendstone_1_1Task_1ab08c9a5deee528abf87f8e827c420e30" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>getTaskId</name></member>
       <member refid="classendstone_1_1Task_1ab758d7bc88367c07f090b758496daada" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Task_1ad091016fe3fae7796852709bade2c079" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>isSync</name></member>

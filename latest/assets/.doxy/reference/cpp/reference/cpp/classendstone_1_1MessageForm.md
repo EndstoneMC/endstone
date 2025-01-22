@@ -33,7 +33,7 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*, int)&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**Player**](classendstone_1_1Player.md) \*, [**int**](classendstone_1_1Vector.md))&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
 
 
 ## Public Types inherited from endstone::Form
@@ -42,7 +42,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](classendstone_1_1Form.md#typedef-onclosecallback)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](classendstone_1_1Form.md#typedef-onclosecallback)  <br> |
 
 
 
@@ -104,8 +104,8 @@ See [endstone::Form](classendstone_1_1Form.md)
 |   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
 |  OnCloseCallback | [**getOnClose**](classendstone_1_1Form.md#function-getonclose) () const<br>_Gets the on close callback of the form._  |
 |  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
-|  T & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
-|  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
+|  [**T**](classendstone_1_1Vector.md) & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
+|  [**T**](classendstone_1_1Vector.md) & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
 
 

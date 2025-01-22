@@ -1,104 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dimension_8h" kind="file" language="C++">
     <compoundname>dimension.h</compoundname>
     <includes refid="block_8h" local="yes">endstone/block/block.h</includes>
     <includes refid="result_8h" local="yes">endstone/util/result.h</includes>
     <incdepgraph>
-      <node id="12">
-        <label>endstone/level/position.h</label>
-        <link refid="position_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>fmt/format.h</label>
-      </node>
-      <node id="10">
-        <label>endstone/block/block_face.h</label>
-        <link refid="block__face_8h_source"/>
-      </node>
-      <node id="7">
-        <label>variant</label>
-      </node>
-      <node id="15">
-        <label>cmath</label>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
-      <node id="9">
-        <label>endstone/variant.h</label>
-        <link refid="variant_8h_source"/>
-      </node>
-      <node id="1">
-        <label>include/endstone/level/dimension.h</label>
-        <link refid="dimension_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>string_view</label>
-      </node>
-      <node id="17">
-        <label>nonstd/expected.hpp</label>
-      </node>
-      <node id="18">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>optional</label>
-      </node>
-      <node id="16">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>endstone/level/location.h</label>
-        <link refid="location_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>endstone/block/block_data.h</label>
-        <link refid="block__data_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>endstone/util/vector.h</label>
-        <link refid="vector_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>unordered_map</label>
-      </node>
       <node id="2">
         <label>endstone/block/block.h</label>
         <link refid="block_8h_source"/>
@@ -115,8 +21,102 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
+      <node id="5">
+        <label>endstone/block/block_data.h</label>
+        <link refid="block__data_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>endstone/block/block_face.h</label>
+        <link refid="block__face_8h_source"/>
+      </node>
+      <node id="1">
+        <label>include/endstone/level/dimension.h</label>
+        <link refid="dimension_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>endstone/level/location.h</label>
+        <link refid="location_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>endstone/level/position.h</label>
+        <link refid="position_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>endstone/util/error.h</label>
+        <link refid="error_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>endstone/util/vector.h</label>
+        <link refid="vector_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone/variant.h</label>
+        <link refid="variant_8h_source"/>
+      </node>
+      <node id="15">
+        <label>cmath</label>
+      </node>
+      <node id="8">
+        <label>fmt/format.h</label>
+      </node>
       <node id="3">
         <label>memory</label>
+      </node>
+      <node id="17">
+        <label>nonstd/expected.hpp</label>
+      </node>
+      <node id="13">
+        <label>optional</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="19">
+        <label>string_view</label>
+      </node>
+      <node id="6">
+        <label>unordered_map</label>
+      </node>
+      <node id="7">
+        <label>variant</label>
       </node>
     </incdepgraph>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
@@ -156,17 +156,17 @@
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Custom<sp/>=<sp/>999</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">~Dimension</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" kindref="member">getName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44" refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" kindref="member">getName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51" refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kindref="member">Type</ref><sp/><ref refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="51" refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kindref="member">Type</ref><sp/><ref refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="classendstone_1_1Dimension_1af1ff7ab3ee59c3cee8b334244c102dbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Dimension_1af1ff7ab3ee59c3cee8b334244c102dbf" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="58" refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classendstone_1_1Dimension_1a80f0ecee79722bdabe73f478f64399e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;std::shared_ptr&lt;Block&gt;&gt;<sp/><ref refid="classendstone_1_1Dimension_1a80f0ecee79722bdabe73f478f64399e8" kindref="member">getBlockAt</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="68" refid="classendstone_1_1Dimension_1a486bc4185de840fbd98af9eec7b38432" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Result&lt;std::shared_ptr&lt;Block&gt;</ref>&gt;<sp/><ref refid="classendstone_1_1Dimension_1a486bc4185de840fbd98af9eec7b38432" kindref="member">getBlockAt</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">y</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">z</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="classendstone_1_1Dimension_1a5c3a5826017866b4eba6258159e8ef8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;std::shared_ptr&lt;Block&gt;&gt;<sp/><ref refid="classendstone_1_1Dimension_1a5c3a5826017866b4eba6258159e8ef8e" kindref="member">getBlockAt</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>location)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76" refid="classendstone_1_1Dimension_1a7104191387c8e7bec0441f7a7e0542c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Result&lt;std::shared_ptr&lt;Block&gt;</ref>&gt;<sp/><ref refid="classendstone_1_1Dimension_1a7104191387c8e7bec0441f7a7e0542c9" kindref="member">getBlockAt</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1Vector" kindref="compound">location</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="78"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>

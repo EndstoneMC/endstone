@@ -4,7 +4,7 @@
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**detail**](namespaceendstone_1_1detail.md) **>** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)
+[**ClassList**](annotated.md) **>** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)
 
 
 
@@ -52,11 +52,11 @@
 | Type | Name |
 | ---: | :--- |
 |   | [**CommandBuilder**](#function-commandbuilder) (std::string name) <br> |
-|  [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) & | [**aliases**](#function-aliases) (Alias... aliases) <br> |
+|  CommandBuilder & | [**aliases**](#function-aliases) (Alias... aliases) <br> |
 |  [**Command**](classendstone_1_1Command.md) | [**build**](#function-build) () const<br> |
-|  [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) & | [**description**](#function-description) (std::string description) <br> |
-|  [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) & | [**permissions**](#function-permissions) (Permissions... permissions) <br> |
-|  [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) & | [**usages**](#function-usages) (Usage... usages) <br> |
+|  CommandBuilder & | [**description**](#function-description) (std::string description) <br> |
+|  CommandBuilder & | [**permissions**](#function-permissions) (Permissions... permissions) <br> |
+|  CommandBuilder & | [**usages**](#function-usages) (Usage... usages) <br> |
 
 
 
@@ -93,7 +93,7 @@
 ### function CommandBuilder 
 
 ```C++
-inline explicit endstone::detail::CommandBuilder::CommandBuilder (
+inline explicit CommandBuilder::CommandBuilder (
     std::string name
 ) 
 ```
@@ -109,7 +109,7 @@ inline explicit endstone::detail::CommandBuilder::CommandBuilder (
 
 ```C++
 template<typename... Alias>
-inline CommandBuilder & endstone::detail::CommandBuilder::aliases (
+inline CommandBuilder & CommandBuilder::aliases (
     Alias... aliases
 ) 
 ```
@@ -124,7 +124,7 @@ inline CommandBuilder & endstone::detail::CommandBuilder::aliases (
 ### function build 
 
 ```C++
-inline Command endstone::detail::CommandBuilder::build () const
+inline Command CommandBuilder::build () const
 ```
 
 
@@ -137,7 +137,7 @@ inline Command endstone::detail::CommandBuilder::build () const
 ### function description 
 
 ```C++
-inline CommandBuilder & endstone::detail::CommandBuilder::description (
+inline CommandBuilder & CommandBuilder::description (
     std::string description
 ) 
 ```
@@ -153,7 +153,7 @@ inline CommandBuilder & endstone::detail::CommandBuilder::description (
 
 ```C++
 template<typename... Permissions>
-inline CommandBuilder & endstone::detail::CommandBuilder::permissions (
+inline CommandBuilder & CommandBuilder::permissions (
     Permissions... permissions
 ) 
 ```
@@ -169,7 +169,7 @@ inline CommandBuilder & endstone::detail::CommandBuilder::permissions (
 
 ```C++
 template<typename... Usage>
-inline CommandBuilder & endstone::detail::CommandBuilder::usages (
+inline CommandBuilder & CommandBuilder::usages (
     Usage... usages
 ) 
 ```

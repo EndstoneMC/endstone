@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_f1d783c0ad83ee143d16e768ebca51c8" kind="dir">
     <compoundname>include/endstone/event</compoundname>
     <innerdir refid="dir_621c26b5fd4198aba66e7e31570ce44a">include/endstone/event/actor</innerdir>

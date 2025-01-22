@@ -4,7 +4,7 @@
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**detail**](namespaceendstone_1_1detail.md) **>** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)
+[**ClassList**](annotated.md) **>** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)
 
 
 
@@ -53,9 +53,9 @@
 | ---: | :--- |
 |   | [**PermissionBuilder**](#function-permissionbuilder) (std::string name) <br> |
 |  [**Permission**](classendstone_1_1Permission.md) | [**build**](#function-build) () const<br> |
-|  [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) & | [**children**](#function-children) (const std::string & name, bool value) <br> |
-|  [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) & | [**default\_**](#function-default_) (PermissionDefault default\_value) <br> |
-|  [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) & | [**description**](#function-description) (std::string description) <br> |
+|  PermissionBuilder & | [**children**](#function-children) ([**const**](classendstone_1_1Vector.md) std::string & name, [**bool**](classendstone_1_1Vector.md) value) <br> |
+|  PermissionBuilder & | [**default\_**](#function-default_) (PermissionDefault default\_value) <br> |
+|  PermissionBuilder & | [**description**](#function-description) (std::string description) <br> |
 
 
 
@@ -92,7 +92,7 @@
 ### function PermissionBuilder 
 
 ```C++
-inline explicit endstone::detail::PermissionBuilder::PermissionBuilder (
+inline explicit PermissionBuilder::PermissionBuilder (
     std::string name
 ) 
 ```
@@ -107,7 +107,7 @@ inline explicit endstone::detail::PermissionBuilder::PermissionBuilder (
 ### function build 
 
 ```C++
-inline Permission endstone::detail::PermissionBuilder::build () const
+inline Permission PermissionBuilder::build () const
 ```
 
 
@@ -120,7 +120,7 @@ inline Permission endstone::detail::PermissionBuilder::build () const
 ### function children 
 
 ```C++
-inline PermissionBuilder & endstone::detail::PermissionBuilder::children (
+inline PermissionBuilder & PermissionBuilder::children (
     const std::string & name,
     bool value
 ) 
@@ -136,7 +136,7 @@ inline PermissionBuilder & endstone::detail::PermissionBuilder::children (
 ### function default\_ 
 
 ```C++
-inline PermissionBuilder & endstone::detail::PermissionBuilder::default_ (
+inline PermissionBuilder & PermissionBuilder::default_ (
     PermissionDefault default_value
 ) 
 ```
@@ -151,7 +151,7 @@ inline PermissionBuilder & endstone::detail::PermissionBuilder::default_ (
 ### function description 
 
 ```C++
-inline PermissionBuilder & endstone::detail::PermissionBuilder::description (
+inline PermissionBuilder & PermissionBuilder::description (
     std::string description
 ) 
 ```

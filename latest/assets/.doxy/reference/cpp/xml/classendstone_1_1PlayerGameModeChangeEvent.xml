@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerGameModeChangeEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerGameModeChangeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
     <includes refid="player__game__mode__change__event_8h" local="no">endstone/event/player/player_game_mode_change_event.h</includes>
-      <sectiondef kind="public-static-attrib">
+    <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerGameModeChangeEvent_1a6c0edd9e6eac2347d03c35509b4c6404" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
         <definition>const std::string endstone::PlayerGameModeChangeEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
+        <qualifiedname>endstone::PlayerGameModeChangeEvent::NAME</qualifiedname>
         <initializer>= &quot;PlayerGameModeChangeEvent&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -19,13 +20,14 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_game_mode_change_event.h" line="34" column="37" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="34" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerGameModeChangeEvent_1a04a813980762f492edc3db56907da5b5" prot="private" static="no" mutable="no">
         <type>GameMode</type>
         <definition>GameMode endstone::PlayerGameModeChangeEvent::new_game_mode_</definition>
         <argsstring></argsstring>
         <name>new_game_mode_</name>
+        <qualifiedname>endstone::PlayerGameModeChangeEvent::new_game_mode_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -34,13 +36,14 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_game_mode_change_event.h" line="51" column="14" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="51" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a5e4a9eaed65c0886aaf01610a8c5d4eb" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerGameModeChangeEvent::PlayerGameModeChangeEvent</definition>
         <argsstring>(Player &amp;player, GameMode new_game_mode)</argsstring>
         <name>PlayerGameModeChangeEvent</name>
+        <qualifiedname>endstone::PlayerGameModeChangeEvent::PlayerGameModeChangeEvent</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
           <declname>player</declname>
@@ -62,6 +65,7 @@
         <definition>endstone::PlayerGameModeChangeEvent::~PlayerGameModeChangeEvent</definition>
         <argsstring>() override=default</argsstring>
         <name>~PlayerGameModeChangeEvent</name>
+        <qualifiedname>endstone::PlayerGameModeChangeEvent::~PlayerGameModeChangeEvent</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -75,6 +79,7 @@
         <definition>std::string endstone::PlayerGameModeChangeEvent::getEventName</definition>
         <argsstring>() const override</argsstring>
         <name>getEventName</name>
+        <qualifiedname>endstone::PlayerGameModeChangeEvent::getEventName</qualifiedname>
         <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
         <briefdescription>
         </briefdescription>
@@ -93,6 +98,7 @@
         <definition>GameMode endstone::PlayerGameModeChangeEvent::getNewGameMode</definition>
         <argsstring>() const</argsstring>
         <name>getNewGameMode</name>
+        <qualifiedname>endstone::PlayerGameModeChangeEvent::getNewGameMode</qualifiedname>
         <briefdescription>
 <para>Gets the GameMode the player is switched to. </para>
         </briefdescription>
@@ -105,7 +111,7 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_game_mode_change_event.h" line="45" column="15" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="45" bodyend="48"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Called when the GameMode of the player is changed. </para>
     </briefdescription>
@@ -120,24 +126,24 @@
         <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
-        <label>endstone::ICancellable</label>
-        <link refid="classendstone_1_1ICancellable"/>
-      </node>
       <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="1">
-        <label>endstone::PlayerGameModeChangeEvent</label>
-        <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
       </node>
       <node id="3">
         <label>endstone::PlayerEvent</label>
         <link refid="classendstone_1_1PlayerEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerGameModeChangeEvent</label>
+        <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
@@ -150,24 +156,24 @@
         <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
-        <label>endstone::ICancellable</label>
-        <link refid="classendstone_1_1ICancellable"/>
-      </node>
       <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="1">
-        <label>endstone::PlayerGameModeChangeEvent</label>
-        <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
       </node>
       <node id="3">
         <label>endstone::PlayerEvent</label>
         <link refid="classendstone_1_1PlayerEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerGameModeChangeEvent</label>
+        <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
@@ -178,12 +184,12 @@
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab" prot="public" virt="virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getNewGameMode</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a0024c3db9eaec88a139f3c3fcb687e55" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a6c0edd9e6eac2347d03c35509b4c6404" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a04a813980762f492edc3db56907da5b5" prot="private" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>new_game_mode_</name></member>
-      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a5e4a9eaed65c0886aaf01610a8c5d4eb" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>PlayerGameModeChangeEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>setCancelled</name></member>

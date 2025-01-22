@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1ServerCommandEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ServerCommandEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ServerEvent &gt;</basecompoundref>
     <includes refid="server__command__event_8h" local="no">endstone/event/server/server_command_event.h</includes>
-      <sectiondef kind="public-static-attrib">
+    <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
         <definition>const std::string endstone::ServerCommandEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
+        <qualifiedname>endstone::ServerCommandEvent::NAME</qualifiedname>
         <initializer>= &quot;ServerCommandEvent&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -19,13 +20,14 @@
         </inbodydescription>
         <location file="include/endstone/event/server/server_command_event.h" line="38" column="37" bodyfile="include/endstone/event/server/server_command_event.h" bodystart="38" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1ServerCommandEvent_1a7cffd99adc29d5cbf698c13bbffaaa4a" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
         <definition>CommandSender&amp; endstone::ServerCommandEvent::sender_</definition>
         <argsstring></argsstring>
         <name>sender_</name>
+        <qualifiedname>endstone::ServerCommandEvent::sender_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -39,6 +41,7 @@
         <definition>std::string endstone::ServerCommandEvent::command_</definition>
         <argsstring></argsstring>
         <name>command_</name>
+        <qualifiedname>endstone::ServerCommandEvent::command_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -47,13 +50,14 @@
         </inbodydescription>
         <location file="include/endstone/event/server/server_command_event.h" line="76" column="17" bodyfile="include/endstone/event/server/server_command_event.h" bodystart="76" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1ServerCommandEvent_1a8c99c3360b322ea0d6fcf42b3b0ab4b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::ServerCommandEvent::ServerCommandEvent</definition>
         <argsstring>(CommandSender &amp;sender, std::string command)</argsstring>
         <name>ServerCommandEvent</name>
+        <qualifiedname>endstone::ServerCommandEvent::ServerCommandEvent</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
           <declname>sender</declname>
@@ -75,6 +79,7 @@
         <definition>std::string endstone::ServerCommandEvent::getEventName</definition>
         <argsstring>() const override</argsstring>
         <name>getEventName</name>
+        <qualifiedname>endstone::ServerCommandEvent::getEventName</qualifiedname>
         <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
         <briefdescription>
         </briefdescription>
@@ -93,6 +98,7 @@
         <definition>std::string endstone::ServerCommandEvent::getCommand</definition>
         <argsstring>() const</argsstring>
         <name>getCommand</name>
+        <qualifiedname>endstone::ServerCommandEvent::getCommand</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -106,10 +112,11 @@
         <location file="include/endstone/event/server/server_command_event.h" line="49" column="18" bodyfile="include/endstone/event/server/server_command_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerCommandEvent_1a738f83bdce175aed3493f4e15f7834a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::ServerCommandEvent::setCommand</definition>
         <argsstring>(std::string message)</argsstring>
         <name>setCommand</name>
+        <qualifiedname>endstone::ServerCommandEvent::setCommand</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>message</declname>
@@ -133,11 +140,12 @@
         </inbodydescription>
         <location file="include/endstone/event/server/server_command_event.h" line="59" column="10" bodyfile="include/endstone/event/server/server_command_event.h" bodystart="59" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServerCommandEvent_1a9a0b3b10a0c6e12c0b3022d01e6c1aef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ServerCommandEvent_1a989fc72b2d7b7feb85a88dc3aa50bca7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
-        <definition>CommandSender&amp; endstone::ServerCommandEvent::getSender</definition>
+        <definition>CommandSender &amp; endstone::ServerCommandEvent::getSender</definition>
         <argsstring>() const</argsstring>
         <name>getSender</name>
+        <qualifiedname>endstone::ServerCommandEvent::getSender</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -150,7 +158,7 @@
         </inbodydescription>
         <location file="include/endstone/event/server/server_command_event.h" line="69" column="20" bodyfile="include/endstone/event/server/server_command_event.h" bodystart="69" bodyend="72"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Called when the console runs a command, early in the process. </para>
     </briefdescription>
@@ -159,62 +167,62 @@
 <para><bold>The command message contains a slash &apos;/&apos; at the start</bold> </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>endstone::ServerCommandEvent</label>
-        <link refid="classendstone_1_1ServerCommandEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>endstone::ICancellable</label>
-        <link refid="classendstone_1_1ICancellable"/>
-      </node>
-      <node id="4">
-        <label>endstone::Event</label>
-        <link refid="classendstone_1_1Event"/>
-      </node>
-      <node id="3">
-        <label>endstone::ServerEvent</label>
-        <link refid="classendstone_1_1ServerEvent"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::ServerCommandEvent</label>
+        <link refid="classendstone_1_1ServerCommandEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ServerEvent</label>
+        <link refid="classendstone_1_1ServerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1">
-        <label>endstone::ServerCommandEvent</label>
-        <link refid="classendstone_1_1ServerCommandEvent"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>endstone::ICancellable</label>
-        <link refid="classendstone_1_1ICancellable"/>
-      </node>
-      <node id="4">
-        <label>endstone::Event</label>
-        <link refid="classendstone_1_1Event"/>
-      </node>
-      <node id="3">
-        <label>endstone::ServerEvent</label>
-        <link refid="classendstone_1_1ServerEvent"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
         <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::ServerCommandEvent</label>
+        <link refid="classendstone_1_1ServerCommandEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ServerEvent</label>
+        <link refid="classendstone_1_1ServerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
@@ -224,15 +232,13 @@
       <member refid="classendstone_1_1ServerCommandEvent_1a403198dc6dbe597662b617fdc88db4b3" prot="private" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>command_</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual" ambiguityscope="endstone::Event::"><scope>endstone::ServerCommandEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual" ambiguityscope="endstone::Event::"><scope>endstone::ServerCommandEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a93827eb1ca9e938792f2abcf9fd1a09c" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>getCommand</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1af62a9d9bbc278b05dece09c1273e5b63" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>getEventName</name></member>
-      <member refid="classendstone_1_1ServerCommandEvent_1a9a0b3b10a0c6e12c0b3022d01e6c1aef" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>getSender</name></member>
+      <member refid="classendstone_1_1ServerCommandEvent_1a989fc72b2d7b7feb85a88dc3aa50bca7" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>getSender</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>NAME</name></member>
-      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a7cffd99adc29d5cbf698c13bbffaaa4a" prot="private" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>sender_</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a8c99c3360b322ea0d6fcf42b3b0ab4b0" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>ServerCommandEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>setCancelled</name></member>

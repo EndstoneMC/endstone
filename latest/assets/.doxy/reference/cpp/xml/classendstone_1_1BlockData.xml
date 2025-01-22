@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockData" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BlockData</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; BlockData &gt;</basecompoundref>
     <includes refid="block__data_8h" local="no">endstone/block/block_data.h</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::BlockData::~BlockData</definition>
         <argsstring>()=default</argsstring>
         <name>~BlockData</name>
+        <qualifiedname>endstone::BlockData::~BlockData</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,6 +24,7 @@
         <definition>virtual std::string endstone::BlockData::getType</definition>
         <argsstring>() const =0</argsstring>
         <name>getType</name>
+        <qualifiedname>endstone::BlockData::getType</qualifiedname>
         <briefdescription>
 <para>Get the block type represented by this block data. </para>
         </briefdescription>
@@ -40,6 +42,7 @@
         <definition>virtual BlockStates endstone::BlockData::getBlockStates</definition>
         <argsstring>() const =0</argsstring>
         <name>getBlockStates</name>
+        <qualifiedname>endstone::BlockData::getBlockStates</qualifiedname>
         <briefdescription>
 <para>Gets the block states, which when passed into a method such as Server::createBlockData(type, block_states) will unambiguously recreate this instance. </para>
         </briefdescription>
@@ -52,7 +55,7 @@
         </inbodydescription>
         <location file="include/endstone/block/block_data.h" line="49" column="26"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Represents the data related to a live block. </para>
     </briefdescription>

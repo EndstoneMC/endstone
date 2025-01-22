@@ -41,11 +41,11 @@ Inherits the following classes: [endstone::Packet](classendstone_1_1Packet.md)
 
 | Type | Name |
 | ---: | :--- |
-|  std::int64\_t | [**actor\_id**](#variable-actor_id)   = {-1}<br> |
-|  int | [**dimension\_id**](#variable-dimension_id)  <br> |
+|  std::int64\_t | [**actor\_id**](#variable-actor_id)   = `{-1}`<br> |
+|  [**int**](classendstone_1_1Vector.md) | [**dimension\_id**](#variable-dimension_id)  <br> |
 |  std::string | [**effect\_name**](#variable-effect_name)  <br> |
 |  std::optional&lt; std::string &gt; | [**molang\_variables\_json**](#variable-molang_variables_json)  <br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**position**](#variable-position)  <br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; | [**position**](#variable-position)  <br> |
 
 
 

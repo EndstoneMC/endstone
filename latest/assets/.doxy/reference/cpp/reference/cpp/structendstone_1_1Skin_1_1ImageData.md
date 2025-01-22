@@ -36,8 +36,8 @@
 | Type | Name |
 | ---: | :--- |
 |  std::string | [**data**](#variable-data)  <br> |
-|  int | [**height**](#variable-height)  <br> |
-|  int | [**width**](#variable-width)  <br> |
+|  [**int**](classendstone_1_1Vector.md) | [**height**](#variable-height)  <br> |
+|  [**int**](classendstone_1_1Vector.md) | [**width**](#variable-width)  <br> |
 
 
 

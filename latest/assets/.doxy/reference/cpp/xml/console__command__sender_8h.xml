@@ -1,22 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="console__command__sender_8h" kind="file" language="C++">
     <compoundname>console_command_sender.h</compoundname>
     <includes refid="command__sender_8h" local="yes">endstone/command/command_sender.h</includes>
     <incdepgraph>
-      <node id="4">
-        <label>fmt/format.h</label>
-      </node>
-      <node id="5">
-        <label>endstone/message.h</label>
-        <link refid="message_8h_source"/>
+      <node id="2">
+        <label>endstone/command/command_sender.h</label>
+        <link refid="command__sender_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/command/console_command_sender.h</label>
+        <link refid="console__command__sender_8h"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -29,57 +32,16 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>variant</label>
-      </node>
-      <node id="3">
-        <label>string</label>
-      </node>
-      <node id="12">
-        <label>unordered_set</label>
-      </node>
-      <node id="17">
-        <label>string_view</label>
-      </node>
-      <node id="15">
-        <label>nonstd/expected.hpp</label>
-      </node>
-      <node id="16">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>vector</label>
-      </node>
-      <node id="14">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>utility</label>
-      </node>
-      <node id="1">
-        <label>include/endstone/command/console_command_sender.h</label>
-        <link refid="console__command__sender_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>endstone/command/command_sender.h</label>
-        <link refid="command__sender_8h_source"/>
+      <node id="5">
+        <label>endstone/message.h</label>
+        <link refid="message_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -104,8 +66,46 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
+      <node id="16">
+        <label>endstone/util/error.h</label>
+        <link refid="error_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>fmt/format.h</label>
+      </node>
       <node id="11">
         <label>memory</label>
+      </node>
+      <node id="15">
+        <label>nonstd/expected.hpp</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="17">
+        <label>string_view</label>
+      </node>
+      <node id="12">
+        <label>unordered_set</label>
+      </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+      <node id="7">
+        <label>variant</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>

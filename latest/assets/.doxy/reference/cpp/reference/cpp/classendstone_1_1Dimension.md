@@ -57,7 +57,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 | Type | Name |
 | ---: | :--- |
-| virtual Result&lt; std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlockAt**](#function-getblockat-12) (int x, int y, int z) = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._ |
+| virtual Result&lt; std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlockAt**](#function-getblockat-12) ([**int**](classendstone_1_1Vector.md) x, [**int**](classendstone_1_1Vector.md) y, [**int**](classendstone_1_1Vector.md) z) = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._ |
 | virtual Result&lt; std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlockAt**](#function-getblockat-22) ([**Location**](classendstone_1_1Location.md) location) = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given_[_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level to which this dimension belongs._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this dimension._  |
