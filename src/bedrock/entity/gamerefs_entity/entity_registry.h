@@ -24,25 +24,14 @@
 template <typename>
 class WeakRef;
 
-template <>
-struct entt::entt_traits<EntityId> : basic_entt_traits<EntityIdTraits> {
-    static constexpr auto page_size = ENTT_SPARSE_PAGE;
-};
-static_assert(entt::entt_traits<EntityId>::page_size == 2048);
-
-template <>
-struct entt::storage_type<EntityId, EntityId, std::allocator<EntityId>, void> {
-    using type = basic_storage<EntityId, EntityId>;  // NOLINT(*-identifier-naming)
-};
-
 class EntityRegistry : public EnableGetWeakRef<EntityRegistry>, public std::enable_shared_from_this<EntityRegistry> {
 public:
     WeakRef<EntityRegistry> getWeakRef();
 
-private:
+protected:
     friend class EntityContext;
 
-    std::string debug_name_;                   // +16
-    entt::basic_registry<EntityId> registry_;  // +48
-    std::uint32_t id_;                         // +352
+    std::string debug_name_;  // +16
+    EnTTRegistry registry_;   // +48
+    std::uint32_t id_;        // +352
 };

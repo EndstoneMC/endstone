@@ -26,18 +26,35 @@ struct EntityIdTraits {
     static constexpr entity_type version_mask = 0x3FFF;  // 14b
 };
 
+namespace entt {
+template <>
+struct entt_traits<EntityId> : basic_entt_traits<EntityIdTraits> {
+    static constexpr std::size_t page_size = ENTT_SPARSE_PAGE;  // NOLINT(*-identifier-naming)
+};
+}  // namespace entt
+
 class EntityId {
+    template <typename Traits>
+    friend class entt::basic_entt_traits;
+    friend class EntityContext;
+
+    using underlying_type = EntityIdTraits::entity_type;             // NOLINT(*-identifier-naming)
+    constexpr EntityId(underlying_type raw_id) : raw_id_(raw_id){};  // NOLINT(*-explicit-constructor)
+    using entity_type = underlying_type;                             // NOLINT(*-identifier-naming)
+
 public:
-    using underlying_type = EntityIdTraits::entity_type;  // NOLINT(*-identifier-naming)
-
     EntityId() = default;
+    EntityId(const EntityId &) = default;
 
-    explicit constexpr EntityId(underlying_type entity) : raw_id_(entity){};
-    explicit constexpr operator underlying_type() const
+private:
+    underlying_type raw_id_ = -1;
+    constexpr operator unsigned int() const  // NOLINT(*-explicit-constructor)
     {
         return raw_id_;
     }
-
-private:
-    underlying_type raw_id_;
 };
+
+static_assert(entt::entt_traits<EntityId>::page_size == 2048, "ENTT_SPARSE_PAGE should be set to 2048.");
+static_assert(std::is_same_v<entt::storage_type<EntityId>::type, entt::basic_storage<EntityId>>,
+              "ENTT_NO_MIXIN is not defined.");
+using EnTTRegistry = entt::basic_registry<EntityId>;
