@@ -115,6 +115,8 @@ protected:
     virtual void updateChunkPublisherView(Vec3 const &, float) = 0;
 
 public:
+    static Player *tryGetFromEntity(EntityContext &, bool);
+
     [[nodiscard]] Container &getInventory();
     [[nodiscard]] const std::string &getName() const;
     ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);

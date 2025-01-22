@@ -183,9 +183,9 @@ bool Actor::hasCategory(ActorCategory category) const
     return !!(categories_ & category);
 }
 
-Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
+Actor *Actor::tryGetFromEntity(EntityContext const &entity, bool include_removed)
 {
-    auto *component = ctx.tryGetComponent<ActorOwnerComponent>();
+    auto *component = entity.tryGetComponent<ActorOwnerComponent>();
     if (!component) {
         return nullptr;
     }

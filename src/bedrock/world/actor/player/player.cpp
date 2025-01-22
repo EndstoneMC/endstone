@@ -18,10 +18,19 @@
 
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/actor_game_type_component.h"
+#include "bedrock/entity/components/player_component.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/level/level.h"
+
+Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_removed)
+{
+    if (!entity.hasComponent<PlayerComponent>()) {
+        return nullptr;
+    }
+    return static_cast<Player *>(Actor::tryGetFromEntity(entity, include_removed));
+}
 
 Container &Player::getInventory()
 {
