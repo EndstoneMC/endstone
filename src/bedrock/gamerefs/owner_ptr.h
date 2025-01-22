@@ -16,7 +16,38 @@
 
 #include "bedrock/gamerefs/gamerefs_shareptr/gamerefs_shareptr.h"
 
-template <typename T>
-class OwnerPtr : public GameRefs<T>::OwnerStorage {
-    using GameRefs<T>::OwnerStorage::OwnerStorage;
+template <typename Type>
+class OwnerPtr : public GameRefs<Type>::OwnerStorage {
+public:
+    using StackRef = typename GameRefs<Type>::StackRef;
+    using GameRefs<Type>::OwnerStorage::OwnerStorage;
+
+    explicit operator bool() const
+    {
+        return hasValue();
+    }
+
+    [[nodiscard]] bool hasValue() const
+    {
+        return GameRefs<Type>::OwnerStorage::_hasValue();
+    }
+
+    StackRef &operator*() const
+    {
+        return value();
+    }
+
+    StackRef *operator->() const
+    {
+        return &value();
+    }
+
+    StackRef &value() const
+    {
+        return GameRefs<Type>::OwnerStorage::_getStackRef();
+    }
+
+    WeakRef<Type> getWeakRef() const;
+    bool operator==(nullptr_t) const;
+    bool operator!=(nullptr_t) const;
 };

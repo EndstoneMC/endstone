@@ -27,14 +27,19 @@ StackResultStorageEntity::StackResultStorageEntity(WeakStorageEntity const &weak
     }
 }
 
-StackResultStorageEntity::StackResultStorageEntity(EntityContext const &context)
+StackResultStorageEntity::StackResultStorageEntity(EntityContext const &entity)
 {
-    if (context.isValid()) {
-        context_.emplace(context);
+    if (entity.isValid()) {
+        context_.emplace(entity);
     }
 }
 
-StackResultStorageEntity::StackResultStorageEntity(OwnerStorageEntity const &ref) : context_(ref.getStackRef()) {}
+StackResultStorageEntity::StackResultStorageEntity(OwnerStorageEntity const &owner_storage)
+{
+    if (owner_storage._hasValue()) {
+        context_.emplace(owner_storage.context_.value());
+    }
+}
 
 bool StackResultStorageEntity::_hasValue() const
 {

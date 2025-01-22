@@ -18,15 +18,17 @@
 
 template <typename T>
 class OwnerStorageSharePtr {
-public:
-    T &operator*() const
+protected:
+    OwnerStorageSharePtr() = default;
+
+    [[nodiscard]] bool _hasValue() const
     {
-        return *value_;
+        return value_ != nullptr;
     }
 
-    T *operator->() const noexcept
+    T &_getStackRef() const
     {
-        return value_.get();
+        return *value_;
     }
 
 private:

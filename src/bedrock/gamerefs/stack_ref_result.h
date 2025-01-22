@@ -27,7 +27,7 @@ public:
         return hasValue();
     }
 
-    bool hasValue() const  // NOLINT(*-use-nodiscard)
+    [[nodiscard]] bool hasValue() const
     {
         return GameRefs<Type>::StackResultStorage::_hasValue();
     }

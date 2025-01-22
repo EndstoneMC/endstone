@@ -20,26 +20,23 @@
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
 
 class OwnerStorageEntity {
-public:
-    [[nodiscard]] EntityContext &getStackRef() const
-    {
-        if (!context_.has_value()) {
-            throw std::bad_optional_access();
-        }
-        return const_cast<EntityContext &>(context_.value());
-    }
+protected:
+    OwnerStorageEntity() = default;
+    OwnerStorageEntity(const OwnerStorageEntity &) = delete;
+    OwnerStorageEntity &operator=(const OwnerStorageEntity &) = delete;
 
-    [[nodiscard]] bool hasValue() const
+    [[nodiscard]] bool _hasValue() const
     {
         return context_.has_value();
     }
 
-    [[nodiscard]] operator bool() const noexcept
+    [[nodiscard]] EntityContext &_getStackRef() const
     {
-        return hasValue();
+        return const_cast<EntityContext &>(context_.value());
     }
 
 private:
+    friend class StackResultStorageEntity;
     std::optional<EntityContext> context_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(OwnerStorageEntity, 32, 32);

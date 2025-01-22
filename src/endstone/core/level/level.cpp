@@ -49,21 +49,17 @@ std::string EndstoneLevel::getName() const
 std::vector<Actor *> EndstoneLevel::getActors() const
 {
     std::vector<Actor *> result;
-    for (const auto &e : level_.getEntities()) {
-        if (!e.hasValue()) {
+    for (const auto &entity : level_.getEntities()) {
+        if (!entity.hasValue()) {
             continue;
         }
-
-        // TODO(check): is this the correct usage of OwnerPtr<EntityContext> ?
-        const auto *actor = ::Actor::tryGetFromEntity(e.getStackRef(), false);
+        const auto *actor = ::Actor::tryGetFromEntity(*entity, false);
         if (!actor) {
             continue;
         }
-
         if (&actor->getLevel() != &level_) {
             continue;
         }
-
         result.push_back(&actor->getEndstoneActor());
     }
     return result;
