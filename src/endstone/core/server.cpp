@@ -17,8 +17,6 @@
 #include <filesystem>
 #include <memory>
 
-namespace fs = std::filesystem;
-
 #include <boost/algorithm/string.hpp>
 
 #include "bedrock/network/server_network_handler.h"
@@ -33,6 +31,7 @@ namespace fs = std::filesystem;
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/event/handlers/actor_gameplay_handler.h"
 #include "endstone/core/event/handlers/block_gameplay_handler.h"
 #include "endstone/core/event/handlers/level_gameplay_handler.h"
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
@@ -49,6 +48,8 @@ namespace fs = std::filesystem;
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
+
+namespace fs = std::filesystem;
 
 namespace endstone::core {
 
@@ -206,6 +207,8 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
 
 void EndstoneServer::registerEndstoneEventHandlers(::Level &level)
 {
+    level.getActorEventCoordinator().actor_gameplay_handler_ = std::make_unique<EndstoneActorGameplayHandler>(
+        std::move(level.getActorEventCoordinator().actor_gameplay_handler_));
     level.getBlockEventCoordinator().block_gameplay_handler_ = std::make_unique<EndstoneBlockGameplayHandler>(
         std::move(level.getBlockEventCoordinator().block_gameplay_handler_));
     level.getLevelEventCoordinator().level_gameplay_handler_ = std::make_unique<EndstoneLevelGameplayHandler>(
