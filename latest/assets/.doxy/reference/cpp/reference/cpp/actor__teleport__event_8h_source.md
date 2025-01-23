@@ -30,9 +30,12 @@
 
 namespace endstone {
 
-class ActorTeleportEvent : public Cancellable<ActorEvent> {
+class ActorTeleportEvent : public Cancellable<ActorEvent<Actor>> {
 public:
-    explicit ActorTeleportEvent(Actor &actor, Location from, Location to) : Cancellable(actor), from_(from), to_(to) {}
+    explicit ActorTeleportEvent(Actor &actor, Location from, Location to)
+        : Cancellable(actor), from_(std::move(from)), to_(std::move(to))
+    {
+    }
     ~ActorTeleportEvent() override = default;
 
     inline static const std::string NAME = "ActorTeleportEvent";

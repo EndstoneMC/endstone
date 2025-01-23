@@ -29,12 +29,13 @@
 
 namespace endstone {
 
+template <typename ActorType>
 class ActorEvent : public Event {
 public:
-    explicit ActorEvent(Actor &actor) : actor_(actor){};
+    explicit ActorEvent(ActorType &actor) : actor_(actor) {};
     ~ActorEvent() override = default;
 
-    [[nodiscard]] Actor &getActor() const
+    [[nodiscard]] ActorType &getActor() const
     {
         return actor_;
     }
@@ -42,7 +43,7 @@ public:
     // TODO(event): add getActorType method
 
 private:
-    Actor &actor_;
+    ActorType &actor_;
 };
 
 }  // namespace endstone

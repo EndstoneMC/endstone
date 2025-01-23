@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1ActorRemoveEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ActorRemoveEvent</compoundname>
-    <basecompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent</basecompoundref>
+    <basecompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Actor &gt;</basecompoundref>
     <includes refid="actor__remove__event_8h" local="no">endstone/event/actor/actor_remove_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorRemoveEvent_1a4d53a93b0651f115ce32b99dc5b0398d" prot="public" static="yes" mutable="no">
@@ -18,42 +18,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_remove_event.h" line="32" column="37" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_remove_event.h" line="31" column="37" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="31" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1ActorRemoveEvent_1ab2b72e42268aee037949fa4d66cb429c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>endstone::ActorRemoveEvent::ActorRemoveEvent</definition>
-        <argsstring>(Actor &amp;actor)</argsstring>
-        <name>ActorRemoveEvent</name>
-        <qualifiedname>endstone::ActorRemoveEvent::ActorRemoveEvent</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
-          <declname>actor</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/actor/actor_remove_event.h" line="29" column="14" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="29" bodyend="29"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActorRemoveEvent_1a2b9327e02f470a6aeb6226de8ed2c041" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>endstone::ActorRemoveEvent::~ActorRemoveEvent</definition>
-        <argsstring>() override=default</argsstring>
-        <name>~ActorRemoveEvent</name>
-        <qualifiedname>endstone::ActorRemoveEvent::~ActorRemoveEvent</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/actor/actor_remove_event.h" line="30" column="5"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorRemoveEvent_1aba629c08862f2ce560791525abfc6037" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
         <definition>std::string endstone::ActorRemoveEvent::getEventName</definition>
@@ -71,7 +39,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_remove_event.h" line="33" column="18" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="33" bodyend="36"/>
+        <location file="include/endstone/event/actor/actor_remove_event.h" line="32" column="18" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorRemoveEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorEvent&lt; ActorType &gt;::ActorEvent</definition>
+        <argsstring>(ActorType &amp;actor)</argsstring>
+        <name>ActorEvent</name>
+        <qualifiedname>endstone::ActorRemoveEvent::ActorEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">ActorType</ref> &amp;</type>
+          <declname>actor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_remove_event.h" line="29" column="5" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="28" bodyend="28"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -82,7 +68,7 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
-        <label>endstone::ActorEvent</label>
+        <label>endstone::ActorEvent&lt; Actor &gt;</label>
         <link refid="classendstone_1_1ActorEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
@@ -100,7 +86,7 @@
     </inheritancegraph>
     <collaborationgraph>
       <node id="2">
-        <label>endstone::ActorEvent</label>
+        <label>endstone::ActorEvent&lt; Actor &gt;</label>
         <link refid="classendstone_1_1ActorEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
@@ -116,19 +102,18 @@
         <link refid="classendstone_1_1Event"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/actor_remove_event.h" line="27" column="1" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="27" bodyend="39"/>
+    <location file="include/endstone/event/actor/actor_remove_event.h" line="27" column="1" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="27" bodyend="38"/>
     <listofallmembers>
-      <member refid="classendstone_1_1ActorEvent_1a1d431f4b3c7cc2db417684a97029c386" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>
-      <member refid="classendstone_1_1ActorRemoveEvent_1ab2b72e42268aee037949fa4d66cb429c" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>ActorRemoveEvent</name></member>
+      <member refid="classendstone_1_1ActorRemoveEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual" ambiguityscope="ActorEvent&lt; Actor &gt;::"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1ActorEvent_1aeb9ea6c413f562e2ad4282fa4f695758" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>getActor</name></member>
       <member refid="classendstone_1_1ActorRemoveEvent_1aba629c08862f2ce560791525abfc6037" prot="public" virt="virtual"><scope>endstone::ActorRemoveEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1ActorRemoveEvent_1a4d53a93b0651f115ce32b99dc5b0398d" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>operator=</name></member>
-      <member refid="classendstone_1_1ActorEvent_1a3cf15029246f7add54e99e9e417b1c75" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>~ActorEvent</name></member>
-      <member refid="classendstone_1_1ActorRemoveEvent_1a2b9327e02f470a6aeb6226de8ed2c041" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>~ActorRemoveEvent</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a9fff5524effc04e99bb28d49a9b37b6f" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>~ActorEvent</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ActorRemoveEvent</scope><name>~Event</name></member>
     </listofallmembers>
   </compounddef>

@@ -2039,9 +2039,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-actordeathevent" class="md-nav__link">
+    <a href="#function-actorevent" class="md-nav__link">
       <span class="md-ellipsis">
-        function ActorDeathEvent
+        function ActorEvent
       </span>
     </a>
 
@@ -2055,19 +2055,6 @@ For latest updates join the chat on
     <a href="#function-geteventname" class="md-nav__link">
       <span class="md-ellipsis">
         function getEventName
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-actordeathevent_1" class="md-nav__link">
-      <span class="md-ellipsis">
-        function ~ActorDeathEvent
       </span>
     </a>
 
@@ -2146,15 +2133,11 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-actordeathevent"><strong>ActorDeathEvent</strong></a> (<a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; actor) <br></td>
+<td style="text-align: left;"><a href="#function-actorevent"><strong>ActorEvent</strong></a> (<a href="../classendstone_1_1Vector/"><strong>ActorType</strong></a> &amp; actor) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-actordeathevent"><strong>~ActorDeathEvent</strong></a> () override<br></td>
 </tr>
 </tbody>
 </table>
@@ -2170,10 +2153,10 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ActorEvent/#function-actorevent"><strong>ActorEvent</strong></a> (<a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; actor) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ActorEvent/#function-actorevent"><strong>ActorEvent</strong></a> (<a href="../classendstone_1_1Vector/"><strong>ActorType</strong></a> &amp; actor) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp;</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>ActorType</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ActorEvent/#function-getactor"><strong>getActor</strong></a> () const<br><em>Returns the</em> <a href="../classendstone_1_1Actor/"><em><strong>Actor</strong></em></a> <em>involved in this event.</em></td>
 </tr>
 <tr>
@@ -2224,9 +2207,9 @@ For latest updates join the chat on
 </span></code></pre></div>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-actordeathevent">function ActorDeathEvent<a class="headerlink" href="#function-actordeathevent" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDeathEvent</span><span class="o">::</span><span class="n">ActorDeathEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span>
+<h3 id="function-actorevent">function ActorEvent<a class="headerlink" href="#function-actorevent" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDeathEvent</span><span class="o">::</span><span class="n">ActorEvent</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">ActorType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -2238,11 +2221,6 @@ For latest updates join the chat on
 <p><strong>Returns:</strong></p>
 <p>name of this event </p>
 <p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
-<hr>
-
-<h3 id="function-actordeathevent_1">function ~ActorDeathEvent<a class="headerlink" href="#function-actordeathevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDeathEvent</span><span class="o">::~</span><span class="n">ActorDeathEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
 <hr>
 
 <hr />

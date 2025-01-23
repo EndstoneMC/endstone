@@ -2,6 +2,8 @@
 
 # Class endstone::ActorEvent
 
+**template &lt;[**typename**](classendstone_1_1Vector.md) [**ActorType**](classendstone_1_1Vector.md)&gt;**
+
 
 
 [**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**ActorEvent**](classendstone_1_1ActorEvent.md)
@@ -17,7 +19,6 @@ _Represents an Actor-related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md),  [endstone::ActorRemoveEvent](classendstone_1_1ActorRemoveEvent.md)
 
 
 
@@ -74,8 +75,8 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](#function-actorevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|   | [**ActorEvent**](#function-actorevent) ([**ActorType**](classendstone_1_1Vector.md) & actor) <br> |
+|  [**ActorType**](classendstone_1_1Vector.md) & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](#function-actorevent) () override<br> |
 
 
@@ -154,7 +155,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 inline explicit endstone::ActorEvent::ActorEvent (
-    Actor & actor
+    ActorType & actor
 ) 
 ```
 
@@ -169,7 +170,7 @@ inline explicit endstone::ActorEvent::ActorEvent (
 
 _Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._
 ```C++
-inline Actor & endstone::ActorEvent::getActor () const
+inline ActorType & endstone::ActorEvent::getActor () const
 ```
 
 

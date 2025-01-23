@@ -99,9 +99,8 @@ Inherited by the following classes: [endstone::PlayerDeathEvent](classendstone_1
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorDeathEvent**](#function-actordeathevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
+|   | [**ActorEvent**](#function-actorevent) ([**ActorType**](classendstone_1_1Vector.md) & actor) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|   | [**~ActorDeathEvent**](#function-actordeathevent) () override<br> |
 
 
 ## Public Functions inherited from endstone::ActorEvent
@@ -110,8 +109,8 @@ See [endstone::ActorEvent](classendstone_1_1ActorEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1Vector.md) & actor) <br> |
+|  [**ActorType**](classendstone_1_1Vector.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) () override<br> |
 
 
@@ -227,11 +226,11 @@ const std::string endstone::ActorDeathEvent::NAME;
 
 
 
-### function ActorDeathEvent 
+### function ActorEvent 
 
 ```C++
-inline explicit endstone::ActorDeathEvent::ActorDeathEvent (
-    Actor & actor
+inline explicit endstone::ActorDeathEvent::ActorEvent (
+    ActorType & actor
 ) 
 ```
 
@@ -265,19 +264,6 @@ name of this event
 
         
 Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
-
-<hr>
-
-
-
-### function ~ActorDeathEvent 
-
-```C++
-endstone::ActorDeathEvent::~ActorDeathEvent () override
-```
-
-
 
 
 <hr>

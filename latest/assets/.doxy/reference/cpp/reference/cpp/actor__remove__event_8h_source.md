@@ -28,10 +28,9 @@
 
 namespace endstone {
 
-class ActorRemoveEvent : public ActorEvent {
+class ActorRemoveEvent : public ActorEvent<Actor> {
 public:
-    explicit ActorRemoveEvent(Actor &actor) : ActorEvent(actor) {}
-    ~ActorRemoveEvent() override = default;
+    using ActorEvent::ActorEvent;
 
     inline static const std::string NAME = "ActorRemoveEvent";
     [[nodiscard]] std::string getEventName() const override

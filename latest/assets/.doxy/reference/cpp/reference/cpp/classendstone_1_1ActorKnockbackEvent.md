@@ -99,7 +99,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorKnockbackEvent**](#function-actorknockbackevent) ([**Mob**](classendstone_1_1Mob.md) & mob, [**Actor**](classendstone_1_1Actor.md) \* source, [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; knockback) <br> |
-|  [**Mob**](classendstone_1_1Mob.md) & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Mob**_](classendstone_1_1Mob.md) _involved in this event._ |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; | [**getKnockback**](#function-getknockback) () const<br> |
 |  [**Actor**](classendstone_1_1Actor.md) \* | [**getSource**](#function-getsource) () const<br>_Get the source actor that has caused knockback to the defender, if exists._  |
@@ -240,31 +239,6 @@ inline explicit endstone::ActorKnockbackEvent::ActorKnockbackEvent (
 
 
 
-
-<hr>
-
-
-
-### function getActor 
-
-_Returns the_ [_**Mob**_](classendstone_1_1Mob.md) _involved in this event._
-```C++
-inline Mob & endstone::ActorKnockbackEvent::getActor () const
-```
-
-
-
-
-
-**Returns:**
-
-[**Mob**](classendstone_1_1Mob.md) which is involved in this event 
-
-
-
-
-
-        
 
 <hr>
 

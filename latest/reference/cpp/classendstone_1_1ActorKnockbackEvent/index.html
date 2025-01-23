@@ -2052,19 +2052,6 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getactor" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getActor
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#function-geteventname" class="md-nav__link">
       <span class="md-ellipsis">
         function getEventName
@@ -2200,10 +2187,6 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-actorknockbackevent"><strong>ActorKnockbackEvent</strong></a> (<a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> &amp; mob, <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> * source, <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>float</strong></a> &gt; knockback) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getactor"><strong>getActor</strong></a> () const<br><em>Returns the</em> <a href="../classendstone_1_1Mob/"><em><strong>Mob</strong></em></a> <em>involved in this event.</em></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
@@ -2292,16 +2275,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-getactor">function getActor<a class="headerlink" href="#function-getactor" title="Permanent link">&para;</a></h3>
-<p><em>Returns the</em> <a href="../classendstone_1_1Mob/"><em><strong>Mob</strong></em></a> <em>involved in this event.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Mob</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getActor</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> which is involved in this event </p>
-<hr>
-
 <h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Gets a user-friendly identifier for this event.</p>
 <p><strong>Returns:</strong></p>
@@ -2310,7 +2285,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getknockback">function getKnockback<a class="headerlink" href="#function-getknockback" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getKnockback</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getKnockback</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Gets the knockback that will be applied to the entity.</p>
 <p><strong>Note:</strong> this method returns a copy, changes must be applied with <a href="./#function-setknockback"><strong>setKnockback(Vector)</strong></a></p>
@@ -2320,7 +2295,7 @@ For latest updates join the chat on
 
 <h3 id="function-getsource">function getSource<a class="headerlink" href="#function-getsource" title="Permanent link">&para;</a></h3>
 <p><em>Get the source actor that has caused knockback to the defender, if exists.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>actor that caused knockback, or nullptr if the knockback is not caused by an actor. </p>
@@ -2328,9 +2303,9 @@ For latest updates join the chat on
 
 <h3 id="function-setknockback">function setKnockback<a class="headerlink" href="#function-setknockback" title="Permanent link">&para;</a></h3>
 <p><em>Sets the knockback that will be applied to the entity.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">setKnockback</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">knockback</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">setKnockback</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">knockback</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2339,7 +2314,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-actorknockbackevent_1">function ~ActorKnockbackEvent<a class="headerlink" href="#function-actorknockbackevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::~</span><span class="n">ActorKnockbackEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::~</span><span class="n">ActorKnockbackEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 

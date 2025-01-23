@@ -29,7 +29,7 @@
 
 namespace endstone {
 
-class ActorSpawnEvent : public Cancellable<ActorEvent> {
+class ActorSpawnEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     explicit ActorSpawnEvent(Actor &actor) : Cancellable(actor) {}
     ~ActorSpawnEvent() override = default;

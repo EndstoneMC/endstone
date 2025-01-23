@@ -30,7 +30,7 @@
 
 namespace endstone {
 
-class ActorKnockbackEvent : public Cancellable<ActorEvent> {
+class ActorKnockbackEvent : public Cancellable<ActorEvent<Mob>> {
 public:
     explicit ActorKnockbackEvent(Mob &mob, Actor *source, Vector<float> knockback)
         : Cancellable(mob), mob_(mob), source_(source), knockback_(knockback)
@@ -42,11 +42,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    [[nodiscard]] Mob &getActor() const
-    {
-        return mob_;
     }
 
     [[nodiscard]] Actor *getSource() const

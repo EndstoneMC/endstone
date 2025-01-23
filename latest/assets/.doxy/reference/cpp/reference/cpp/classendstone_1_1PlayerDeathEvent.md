@@ -178,9 +178,8 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md#function-actordeathevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
+|   | [**ActorEvent**](classendstone_1_1ActorDeathEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1Vector.md) & actor) <br> |
 | virtual std::string | [**getEventName**](classendstone_1_1ActorDeathEvent.md#function-geteventname) () override const<br> |
-|   | [**~ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md#function-actordeathevent) () override<br> |
 
 
 ## Public Functions inherited from endstone::ActorEvent
@@ -189,8 +188,8 @@ See [endstone::ActorEvent](classendstone_1_1ActorEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1Vector.md) & actor) <br> |
+|  [**ActorType**](classendstone_1_1Vector.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) () override<br> |
 
 

@@ -31,7 +31,7 @@
 
 namespace endstone {
 
-class ActorExplodeEvent : public Cancellable<ActorEvent> {
+class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
     using BlockList = std::vector<std::shared_ptr<Block>>;
 
 public:
