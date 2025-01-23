@@ -28,16 +28,6 @@ using endstone::core::EndstoneActor;
 using endstone::core::EndstoneMob;
 using endstone::core::EndstoneServer;
 
-void Mob::die(const ActorDamageSource &source)
-{
-    if (!isPlayer()) {
-        auto &server = entt::locator<EndstoneServer>::value();
-        endstone::ActorDeathEvent e{getEndstoneActor()};
-        server.getPluginManager().callEvent(e);
-    }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::die, this, source);
-}
-
 void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizontal_force, float vertical_force,
                     float height_cap)
 {

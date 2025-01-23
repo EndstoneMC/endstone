@@ -28,6 +28,8 @@ public:
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutableActorGameplayEvent<CoordinatorResult> &event) override;
 
 private:
+    bool handleEvent(const ActorKilledEvent &event);
+
     std::unique_ptr<ActorGameplayHandler> handle_;
 };
 

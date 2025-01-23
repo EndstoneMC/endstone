@@ -14,6 +14,10 @@
 
 #include "endstone/core/event/handlers/actor_gameplay_handler.h"
 
+#include "bedrock/world/actor/actor.h"
+#include "endstone/core/server.h"
+#include "endstone/event/actor/actor_death_event.h"
+
 namespace endstone::core {
 
 EndstoneActorGameplayHandler::EndstoneActorGameplayHandler(std::unique_ptr<ActorGameplayHandler> handle)
@@ -23,7 +27,16 @@ EndstoneActorGameplayHandler::EndstoneActorGameplayHandler(std::unique_ptr<Actor
 
 HandlerResult EndstoneActorGameplayHandler::handleEvent(const ActorGameplayEvent<void> &event)
 {
-    return handle_->handleEvent(event);
+    auto visitor = [&](auto &&arg) -> HandlerResult {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const ActorKilledEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return HandlerResult::BypassListeners;
+            }
+        }
+        return handle_->handleEvent(event);
+    };
+    return std::visit(visitor, event.variant);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstoneActorGameplayHandler::handleEvent(
@@ -36,6 +49,16 @@ GameplayHandlerResult<CoordinatorResult> EndstoneActorGameplayHandler::handleEve
     MutableActorGameplayEvent<CoordinatorResult> &event)
 {
     return handle_->handleEvent(event);
+}
+
+bool EndstoneActorGameplayHandler::handleEvent(const ActorKilledEvent &event)
+{
+    if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        ActorDeathEvent e{mob->getEndstoneActor<EndstoneMob>()};
+        server.getPluginManager().callEvent(e);
+    }
+    return true;
 }
 
 }  // namespace endstone::core

@@ -54,7 +54,6 @@ version = "1.21.50"
 # MinecraftPackets
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 13909120
 # Mob
-"?die@Mob@@UEAAXAEBVActorDamageSource@@@Z" = 37552064
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 37598352
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@@gsl@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 15310816
@@ -152,7 +151,6 @@ version = "1.21.50"
 # MinecraftPackets
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 91844144
 # Mob
-"_ZN3Mob3dieERK17ActorDamageSource" = 120610640
 "_ZN3Mob9knockbackEP5Actorifffff" = 120609872
 # Pack
 "_ZN4Pack10createPackERK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEEEP16PackSourceReportRKN4Core4PathE" = 90720896
