@@ -21,10 +21,9 @@ namespace endstone {
 /**
  * @brief Called when an Actor dies
  */
-class ActorDeathEvent : public ActorEvent {
+class ActorDeathEvent : public ActorEvent<Mob> {
 public:
-    explicit ActorDeathEvent(Actor &actor) : ActorEvent(actor) {}
-    ~ActorDeathEvent() override = default;
+    using ActorEvent::ActorEvent;
 
     inline static const std::string NAME = "ActorDeathEvent";
     [[nodiscard]] std::string getEventName() const override

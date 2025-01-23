@@ -24,10 +24,9 @@ namespace endstone {
  * This event should only be used for monitoring. Modifying the actor during or after this event leads to undefined
  * behaviours. This event will not be called for Players.
  */
-class ActorRemoveEvent : public ActorEvent {
+class ActorRemoveEvent : public ActorEvent<Actor> {
 public:
-    explicit ActorRemoveEvent(Actor &actor) : ActorEvent(actor) {}
-    ~ActorRemoveEvent() override = default;
+    using ActorEvent::ActorEvent;
 
     inline static const std::string NAME = "ActorRemoveEvent";
     [[nodiscard]] std::string getEventName() const override

@@ -24,7 +24,7 @@ namespace endstone {
 /**
  * @brief Called when an actor explodes
  */
-class ActorExplodeEvent : public Cancellable<ActorEvent> {
+class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
     using BlockList = std::vector<std::shared_ptr<Block>>;
 
 public:

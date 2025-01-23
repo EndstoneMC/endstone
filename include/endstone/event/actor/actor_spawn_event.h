@@ -24,7 +24,7 @@ namespace endstone {
  *
  * If an Actor Spawn event is cancelled, the actor will not spawn.
  */
-class ActorSpawnEvent : public Cancellable<ActorEvent> {
+class ActorSpawnEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     explicit ActorSpawnEvent(Actor &actor) : Cancellable(actor) {}
     ~ActorSpawnEvent() override = default;

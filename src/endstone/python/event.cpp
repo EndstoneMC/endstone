@@ -63,11 +63,15 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
              "Cancel this event. A cancelled event will not be executed in the server, but will still pass to other "
              "plugins.");
 
-    py::class_<ActorEvent, Event>(m, "ActorEvent", "Represents an Actor-related event.")
-        .def_property_readonly("actor", &ActorEvent::getActor, py::return_value_policy::reference,
+    py::class_<ActorEvent<Actor>, Event>(m, "ActorEvent", "Represents an Actor-related event.")
+        .def_property_readonly("actor", &ActorEvent<Actor>::getActor, py::return_value_policy::reference,
                                "Returns the Actor involved in this event");
-    py::class_<ActorDeathEvent, ActorEvent>(m, "ActorDeathEvent", "Called when an Actor dies.");
-    py::class_<ActorExplodeEvent, ActorEvent, ICancellable>(m, "ActorExplodeEvent", "Called when an Actor explodes.")
+    py::class_<ActorEvent<Mob>, Event>(m, "MobEvent", "Represents an Mob-related event.")
+        .def_property_readonly("actor", &ActorEvent<Mob>::getActor, py::return_value_policy::reference,
+                               "Returns the Mob involved in this event");
+    py::class_<ActorDeathEvent, ActorEvent<Mob>>(m, "ActorDeathEvent", "Called when an Actor dies.");
+    py::class_<ActorExplodeEvent, ActorEvent<Actor>, ICancellable>(m, "ActorExplodeEvent",
+                                                                   "Called when an Actor explodes.")
         .def_property_readonly("location", &ActorExplodeEvent::getLocation,
                                "Returns the location where the explosion happened.")
         .def_property(
@@ -77,16 +81,16 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
             },
             py::return_value_policy::reference_internal,
             "Gets or sets the list of blocks that would have been removed or were removed from the explosion event.");
-    py::class_<ActorKnockbackEvent, ActorEvent, ICancellable>(m, "ActorKnockbackEvent",
-                                                              "Called when a living entity receives knockback.")
+    py::class_<ActorKnockbackEvent, ActorEvent<Mob>, ICancellable>(m, "ActorKnockbackEvent",
+                                                                   "Called when a living entity receives knockback.")
         .def_property_readonly("source", &ActorKnockbackEvent::getSource, py::return_value_policy::reference,
                                "Get the source actor that has caused knockback to the defender, if exists.")
         .def_property("knockback", &ActorKnockbackEvent::getKnockback, &ActorKnockbackEvent::setKnockback,
                       "Gets or sets the knockback that will be applied to the entity.");
-    py::class_<ActorRemoveEvent, ActorEvent>(m, "ActorRemoveEvent", "Called when an Actor is removed.");
-    py::class_<ActorSpawnEvent, ActorEvent, ICancellable>(m, "ActorSpawnEvent",
-                                                          "Called when an Actor is spawned into a world.");
-    py::class_<ActorTeleportEvent, ActorEvent, ICancellable>(
+    py::class_<ActorRemoveEvent, ActorEvent<Actor>>(m, "ActorRemoveEvent", "Called when an Actor is removed.");
+    py::class_<ActorSpawnEvent, ActorEvent<Actor>, ICancellable>(m, "ActorSpawnEvent",
+                                                                 "Called when an Actor is spawned into a world.");
+    py::class_<ActorTeleportEvent, ActorEvent<Actor>, ICancellable>(
         m, "ActorTeleportEvent", "Called when a non-player entity is teleported from one location to another.")
         .def_property("from_location", &ActorTeleportEvent::getFrom, &ActorTeleportEvent::setFrom,
                       "Gets or sets the location that this actor moved from.")

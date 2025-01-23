@@ -23,7 +23,7 @@ namespace endstone {
 /**
  * @brief Called when a living entity receives knockback.
  */
-class ActorKnockbackEvent : public Cancellable<ActorEvent> {
+class ActorKnockbackEvent : public Cancellable<ActorEvent<Mob>> {
 public:
     explicit ActorKnockbackEvent(Mob &mob, Actor *source, Vector<float> knockback)
         : Cancellable(mob), mob_(mob), source_(source), knockback_(knockback)
@@ -35,16 +35,6 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
-    }
-
-    /**
-     * @brief Returns the Mob involved in this event
-     *
-     * @return Mob which is involved in this event
-     */
-    [[nodiscard]] Mob &getActor() const
-    {
-        return mob_;
     }
 
     /**

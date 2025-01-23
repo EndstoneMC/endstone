@@ -22,9 +22,10 @@ namespace endstone {
 /**
  * @brief Represents an Actor-related event
  */
+template <typename ActorType>
 class ActorEvent : public Event {
 public:
-    explicit ActorEvent(Actor &actor) : actor_(actor){};
+    explicit ActorEvent(ActorType &actor) : actor_(actor) {};
     ~ActorEvent() override = default;
 
     /**
@@ -32,7 +33,7 @@ public:
      *
      * @return Actor which is involved in this event
      */
-    [[nodiscard]] Actor &getActor() const
+    [[nodiscard]] ActorType &getActor() const
     {
         return actor_;
     }
@@ -40,7 +41,7 @@ public:
     // TODO(event): add getActorType method
 
 private:
-    Actor &actor_;
+    ActorType &actor_;
 };
 
 }  // namespace endstone
