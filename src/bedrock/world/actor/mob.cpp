@@ -17,6 +17,18 @@
 #include "bedrock/entity/components/mob_body_rotation_component.h"
 #include "bedrock/world/actor/actor_flags.h"
 
+Mob *Mob::tryGetFromEntity(EntityContext &entity, bool include_removed)
+{
+    auto *actor = Actor::tryGetFromEntity(entity, include_removed);
+    if (!actor) {
+        return nullptr;
+    }
+    if (!actor->isType(ActorType::Mob) || !actor->hasCategory(ActorCategory::Mob)) {
+        return nullptr;
+    }
+    return static_cast<Mob *>(actor);
+}
+
 bool Mob::isGliding() const
 {
     return getStatusFlag(ActorFlags::GLIDING);
