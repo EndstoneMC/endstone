@@ -167,5 +167,10 @@ enum class ActorType : int {
     Bogged = 144 | SkeletonMonster,
     OminousItemSpawner = 145,
     Creaking = 146 | Monster,
-    _entt_enum_as_bitmask
 };
+
+constexpr ActorType operator&(const ActorType lhs, const ActorType rhs)
+{
+    return static_cast<ActorType>(static_cast<std::underlying_type_t<ActorType>>(lhs) &
+                                  static_cast<std::underlying_type_t<ActorType>>(rhs));
+}

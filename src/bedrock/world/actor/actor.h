@@ -251,7 +251,7 @@ public:
     [[nodiscard]] bool getStatusFlag(ActorFlags) const;
     void setStatusFlag(ActorFlags, bool);
     [[nodiscard]] bool isType(ActorType type) const;
-    [[nodiscard]] bool hasType(ActorType type) const;
+    [[nodiscard]] bool hasType(ActorType types) const;
     [[nodiscard]] ActorType getEntityTypeId() const;
     [[nodiscard]] const ActorDefinitionIdentifier &getActorIdentifier() const;
     [[nodiscard]] bool isSneaking() const;
@@ -275,7 +275,7 @@ public:
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
     [[nodiscard]] Actor *getVehicle() const;
     [[nodiscard]] bool isRiding() const;
-    [[nodiscard]] bool hasCategory(ActorCategory) const;
+    [[nodiscard]] bool hasCategory(ActorCategory categories) const;
     [[nodiscard]] bool isJumping() const;
     [[nodiscard]] std::vector<std::string> getTags() const;
     bool addTag(const std::string &tag);

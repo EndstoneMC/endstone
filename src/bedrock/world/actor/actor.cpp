@@ -44,14 +44,15 @@ void Actor::setStatusFlag(ActorFlags flag, bool value)
 
 bool Actor::isType(ActorType type) const
 {
-    auto component = getPersistentComponent<ActorTypeComponent>();
-    return component->type == type;
+    return type == getEntityTypeId();
 }
 
-bool Actor::hasType(ActorType type) const
+bool Actor::hasType(ActorType types) const
 {
-    auto component = getPersistentComponent<ActorTypeComponent>();
-    return !!(component->type & type);
+    if (static_cast<std::underlying_type_t<ActorType>>(types)) {
+        return types == getEntityTypeId();
+    }
+    return (types & getEntityTypeId()) == types;
 }
 
 ActorType Actor::getEntityTypeId() const
@@ -183,9 +184,9 @@ bool Actor::isRiding() const
     return getVehicle() != nullptr;
 }
 
-bool Actor::hasCategory(ActorCategory category) const
+bool Actor::hasCategory(ActorCategory categories) const
 {
-    return !!(categories_ & category);
+    return (categories & categories_) == categories;
 }
 
 Actor *Actor::tryGetFromEntity(EntityContext const &entity, bool include_removed)

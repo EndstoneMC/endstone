@@ -314,7 +314,7 @@ endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
         auto *player = static_cast<Player *>(self);
         component.actor = endstone::core::EndstonePlayer::create(server, *player);
     }
-    else if (self->hasType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
+    else if (self->isType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
         auto *mob = static_cast<Mob *>(self);
         component.actor = endstone::core::EndstoneMob::create(server, *mob);
     }

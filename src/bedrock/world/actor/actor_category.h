@@ -14,12 +14,7 @@
 
 #pragma once
 
-#include <entt/entt.hpp>
-
-/**
- * From entityCategoryFromString
- */
-enum class ActorCategory {
+enum class ActorCategory : std::uint32_t {
     None = 0,
     Player = 1 << 0,
     Mob = 1 << 1,
@@ -38,15 +33,20 @@ enum class ActorCategory {
     Zombie = 1 << 15,
     Minecart = 1 << 16,
     Boat = 1 << 17,
-
+    NonTargetable = 1 << 18,
+    Predictable = 1 << 19,
     BoatRideable = Boat | Ridable,
     MinecartRidable = Minecart | Ridable,
     HumanoidMonster = Humanoid | Monster,
     WaterAnimal = Water | Animal,
     TamableAnimal = Tamable | Animal,
     UndeadMob = Undead | Monster,  // wtf mojang
-    ZombieMonster = Zombie | Monster
+    ZombieMonster = Zombie | Monster,
+    EvocationIllagerMonster = Villager | HumanoidMonster,
 };
 
-template <>
-struct entt::enum_as_bitmask<ActorCategory> : std::true_type {};
+constexpr ActorCategory operator&(const ActorCategory lhs, const ActorCategory rhs)
+{
+    return static_cast<ActorCategory>(static_cast<std::underlying_type_t<ActorCategory>>(lhs) &
+                                      static_cast<std::underlying_type_t<ActorCategory>>(rhs));
+}

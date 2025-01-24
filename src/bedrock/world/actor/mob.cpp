@@ -23,7 +23,7 @@ Mob *Mob::tryGetFromEntity(EntityContext &entity, bool include_removed)
     if (!actor) {
         return nullptr;
     }
-    if (!actor->isType(ActorType::Mob) || !actor->hasCategory(ActorCategory::Mob)) {
+    if (!actor->isType(ActorType::Mob) && !actor->hasCategory(ActorCategory::Mob)) {
         return nullptr;
     }
     return static_cast<Mob *>(actor);
