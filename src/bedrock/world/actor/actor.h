@@ -289,8 +289,8 @@ public:
     [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone
     float getFallDistance() const;
 
-    static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
-    static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed);
+    static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
+    static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
 
 private:
     EntityContext entity_context_;  // +8

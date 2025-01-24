@@ -115,7 +115,7 @@ protected:
     virtual void updateChunkPublisherView(Vec3 const &, float) = 0;
 
 public:
-    static Player *tryGetFromEntity(EntityContext &, bool);
+    static Player *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
     [[nodiscard]] Container &getInventory();
     [[nodiscard]] const std::string &getName() const;

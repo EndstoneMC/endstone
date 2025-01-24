@@ -69,7 +69,7 @@ protected:
     [[nodiscard]] virtual AABB _getAdjustedAABBForSpawnCheck(AABB const &, Vec3 const &) const = 0;
 
 public:
-    static Mob *tryGetFromEntity(EntityContext &entity, bool include_removed);
+    static Mob *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
     [[nodiscard]] bool isGliding() const;
     [[nodiscard]] bool isSprinting() const;
