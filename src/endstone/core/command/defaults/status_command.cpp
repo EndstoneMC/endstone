@@ -18,6 +18,7 @@
 
 #include "endstone/color_format.h"
 #include "endstone/core/server.h"
+#include "endstone/detail/platform.h"
 
 namespace endstone::core {
 
@@ -55,18 +56,37 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
         sender.sendMessage("{}Uptime: {}{} seconds", ColorFormat::Gold, ColorFormat::Red, seconds);
     }
 
-    auto color = ColorFormat::Green;
-    auto average_tps = server.getAverageTicksPerSecond();
-    if (average_tps < 12) {
-        color = ColorFormat::Red;
+    auto tps_color = ColorFormat::Green;
+    if (server.getCurrentTicksPerSecond() < 12) {
+        tps_color = ColorFormat::Red;
     }
-    else if (average_tps < 17) {
-        color = ColorFormat::Gold;
+    else if (server.getCurrentTicksPerSecond() < 17) {
+        tps_color = ColorFormat::Gold;
     }
 
-    sender.sendMessage("{}MSPT: {}{:.2f}", ColorFormat::Gold, color, server.getAverageMillisecondsPerTick());
-    sender.sendMessage("{}TPS: {}{:.2f}", ColorFormat::Gold, color, server.getAverageTicksPerSecond());
-    sender.sendMessage("{}Usage: {}{:.2f}%", ColorFormat::Gold, color, server.getAverageTickUsage() * 100);
+    sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%)", ColorFormat::Gold, tps_color,
+                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage());
+    sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%)", ColorFormat::Gold, tps_color,
+                       server.getAverageTicksPerSecond(), server.getAverageTickUsage());
+
+    sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, detail::get_thread_count());
+
+    sender.sendMessage("{}Used memory: {}{:.2f} MB", ColorFormat::Gold, ColorFormat::Red,
+                       detail::get_used_physical_memory() / 1024.0F / 1024.0F);
+    sender.sendMessage("{}Total memory: {}{:.2f} MB", ColorFormat::Gold, ColorFormat::Red,
+                       detail::get_total_virtual_memory() / 1024.0F / 1024.0F);
+
+    auto actors = server.getLevel()->getActors();
+    for (const auto &dimension : server.getLevel()->getDimensions()) {
+        auto actor_count = 0;
+        for (const auto &actor : actors) {
+            if (&actor->getDimension() == dimension) {
+                actor_count++;
+            }
+        }
+        sender.sendMessage("{}Dimension: \"{}\": {}{}{} actors", ColorFormat::Gold, dimension->getName(),
+                           ColorFormat::Red, actor_count, ColorFormat::Green);
+    }
 
     return true;
 }

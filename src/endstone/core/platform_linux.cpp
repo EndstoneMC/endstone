@@ -104,6 +104,38 @@ std::string_view get_name()
     return "Linux";
 }
 
+std::size_t get_proc_status(std::string_view key)
+{
+    std::ifstream file("/proc/self/status");
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open /proc/self/status");
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        if (line.size() > key.size() && line.substr(0, key.size()) == key && line[key.size()] == ':') {
+            return std::stoi(line.substr(key.size() + 1));
+        }
+    }
+
+    throw std::runtime_error(fmt::format("Key {} not found in {}", key, "/proc/self/status"));
+}
+
+std::size_t get_thread_count()
+{
+    return get_proc_status("Threads");
+}
+
+std::size_t get_used_physical_memory()
+{
+    return get_proc_status("VmRSS");
+}
+
+std::size_t get_total_virtual_memory()
+{
+    return get_proc_status("VmSize");
+}
+
 }  // namespace endstone::detail
 
 #endif
