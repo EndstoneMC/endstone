@@ -13,6 +13,7 @@ from endstone._internal.endstone_python import (
     Cancellable,
     Event,
     EventPriority,
+    MobEvent,
     PlayerChatEvent,
     PlayerCommandEvent,
     PlayerDeathEvent,
@@ -41,8 +42,6 @@ from endstone._internal.endstone_python import (
 
 __all__ = [
     "event_handler",
-    "Event",
-    "EventPriority",
     "ActorEvent",
     "ActorExplodeEvent",
     "ActorDeathEvent",
@@ -54,6 +53,9 @@ __all__ = [
     "BlockBreakEvent",
     "BlockPlaceEvent",
     "Cancellable",
+    "Event",
+    "EventPriority",
+    "MobEvent",
     "PlayerEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
