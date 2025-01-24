@@ -46,9 +46,15 @@ public:
 
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
-    virtual Result<std::shared_ptr<Block>> getBlockAt(int x, int y, int z) = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlockAt(int x, int y, int z) const = 0;
 
-    virtual Result<std::shared_ptr<Block>> getBlockAt(Location location) = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlockAt(Location location) const = 0;
+
+    [[nodiscard]] virtual int getHighestBlockYAt(int x, int z) const = 0;
+
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getHighestBlockAt(int x, int z) const = 0;
+
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getHighestBlockAt(Location location) const = 0;
 };
 }  // namespace endstone
 ```

@@ -246,6 +246,8 @@
 * **getEffectivePermissions** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **getDefaultRenderType** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
 * **getBlockAt** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
+* **getHighestBlockAt** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
+* **getHighestBlockYAt** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **getDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))

@@ -407,8 +407,11 @@
     <member refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" kind="function"><name>getLevel</name></member>
-    <member refid="classendstone_1_1Dimension_1a486bc4185de840fbd98af9eec7b38432" kind="function"><name>getBlockAt</name></member>
-    <member refid="classendstone_1_1Dimension_1a7104191387c8e7bec0441f7a7e0542c9" kind="function"><name>getBlockAt</name></member>
+    <member refid="classendstone_1_1Dimension_1acd6ec833ad5093f9ed3b60f4bdf9ec81" kind="function"><name>getBlockAt</name></member>
+    <member refid="classendstone_1_1Dimension_1a3b3e5514a44790a32b7f711c2cd4563a" kind="function"><name>getBlockAt</name></member>
+    <member refid="classendstone_1_1Dimension_1a444efcebbf833e779384449f781a10c6" kind="function"><name>getHighestBlockYAt</name></member>
+    <member refid="classendstone_1_1Dimension_1a0571b542f85470787ddd64f7d5ac157b" kind="function"><name>getHighestBlockAt</name></member>
+    <member refid="classendstone_1_1Dimension_1a03197b02f3aebc7663c6f8a7deebaaaf" kind="function"><name>getHighestBlockAt</name></member>
   </compound>
   <compound refid="classendstone_1_1Dropdown" kind="class"><name>endstone::Dropdown</name>
     <member refid="classendstone_1_1Dropdown_1a63178f8424835d566da0e3d6d62bb2b1" kind="variable"><name>label_</name></member>

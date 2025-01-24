@@ -119,10 +119,10 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="58" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a486bc4185de840fbd98af9eec7b38432" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1acd6ec833ad5093f9ed3b60f4bdf9ec81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>Result&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
         <definition>virtual Result&lt; std::shared_ptr&lt; Block &gt; &gt; endstone::Dimension::getBlockAt</definition>
-        <argsstring>(int x, int y, int z)=0</argsstring>
+        <argsstring>(int x, int y, int z) const =0</argsstring>
         <name>getBlockAt</name>
         <qualifiedname>endstone::Dimension::getBlockAt</qualifiedname>
         <param>
@@ -172,12 +172,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="68" column="20"/>
+        <location file="include/endstone/level/dimension.h" line="68" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1a7104191387c8e7bec0441f7a7e0542c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a3b3e5514a44790a32b7f711c2cd4563a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>Result&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
         <definition>virtual Result&lt; std::shared_ptr&lt; Block &gt; &gt; endstone::Dimension::getBlockAt</definition>
-        <argsstring>(Location location)=0</argsstring>
+        <argsstring>(Location location) const =0</argsstring>
         <name>getBlockAt</name>
         <qualifiedname>endstone::Dimension::getBlockAt</qualifiedname>
         <param>
@@ -203,7 +203,124 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="76" column="20"/>
+        <location file="include/endstone/level/dimension.h" line="76" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a444efcebbf833e779384449f781a10c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Dimension::getHighestBlockYAt</definition>
+        <argsstring>(int x, int z) const =0</argsstring>
+        <name>getHighestBlockYAt</name>
+        <qualifiedname>endstone::Dimension::getHighestBlockYAt</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Gets the highest non-empty (impassable) coordinate at the given coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X-coordinate of the blocks </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z-coordinate of the blocks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Y-coordinate of the highest non-empty block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="86" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a0571b542f85470787ddd64f7d5ac157b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
+        <definition>virtual Result&lt; std::shared_ptr&lt; Block &gt; &gt; endstone::Dimension::getHighestBlockAt</definition>
+        <argsstring>(int x, int z) const =0</argsstring>
+        <name>getHighestBlockAt</name>
+        <qualifiedname>endstone::Dimension::getHighestBlockAt</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Gets the highest non-empty (impassable) block at the given coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X-coordinate of the block </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z-coordinate of the block </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Highest non-empty block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="95" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1a03197b02f3aebc7663c6f8a7deebaaaf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
+        <definition>virtual Result&lt; std::shared_ptr&lt; Block &gt; &gt; endstone::Dimension::getHighestBlockAt</definition>
+        <argsstring>(Location location) const =0</argsstring>
+        <name>getHighestBlockAt</name>
+        <qualifiedname>endstone::Dimension::getHighestBlockAt</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+<para>Gets the highest non-empty (impassable) block at the given coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordinates to get the highest block </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Highest non-empty block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="103" column="21"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -211,10 +328,13 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/dimension.h" line="25" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="25" bodyend="77"/>
+    <location file="include/endstone/level/dimension.h" line="25" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="25" bodyend="104"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Dimension_1a486bc4185de840fbd98af9eec7b38432" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>
-      <member refid="classendstone_1_1Dimension_1a7104191387c8e7bec0441f7a7e0542c9" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>
+      <member refid="classendstone_1_1Dimension_1acd6ec833ad5093f9ed3b60f4bdf9ec81" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>
+      <member refid="classendstone_1_1Dimension_1a3b3e5514a44790a32b7f711c2cd4563a" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>
+      <member refid="classendstone_1_1Dimension_1a0571b542f85470787ddd64f7d5ac157b" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getHighestBlockAt</name></member>
+      <member refid="classendstone_1_1Dimension_1a03197b02f3aebc7663c6f8a7deebaaaf" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getHighestBlockAt</name></member>
+      <member refid="classendstone_1_1Dimension_1a444efcebbf833e779384449f781a10c6" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getHighestBlockYAt</name></member>
       <member refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getName</name></member>
       <member refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getType</name></member>
