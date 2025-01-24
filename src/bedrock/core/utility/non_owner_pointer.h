@@ -26,12 +26,9 @@ namespace Bedrock {
 template <class T>
 class NonOwnerPointer {
 public:
-    using ElementType = std::remove_extent_t<T>;
-
-    constexpr NonOwnerPointer() noexcept = default;
-    constexpr NonOwnerPointer(nullptr_t) noexcept {}  // NOLINT(*-explicit-constructor)
-    explicit NonOwnerPointer(ElementType &ptr) : NonOwnerPointer(&ptr) {}
-    explicit NonOwnerPointer(ElementType *ptr)
+    NonOwnerPointer() noexcept = default;
+    NonOwnerPointer(nullptr_t) noexcept {}  // NOLINT(*-explicit-constructor)
+    NonOwnerPointer(T *ptr)                 // NOLINT(*-explicit-constructor)
     {
         if (ptr) {
             _setControlBlock(ptr);
@@ -40,25 +37,12 @@ public:
             pointer_ = ptr;
         }
     }
-
+    NonOwnerPointer(T &ptr) : NonOwnerPointer(&ptr) {}  // NOLINT(*-explicit-constructor)
+    NonOwnerPointer(const NonOwnerPointer &) = default;
+    NonOwnerPointer(NonOwnerPointer &&) = default;
     ~NonOwnerPointer()
     {
         reset();
-    }
-
-    constexpr T &operator*() const noexcept
-    {
-        return *_get();
-    }
-
-    constexpr T *operator->() const noexcept
-    {
-        return _get();
-    }
-
-    [[nodiscard]] bool isValid() const noexcept
-    {
-        return control_block_ && control_block_->is_valid;
     }
 
     void reset()
@@ -70,14 +54,39 @@ public:
         pointer_ = nullptr;
     }
 
+    T *operator->() noexcept
+    {
+        return _get();
+    }
+
+    T &operator*() noexcept
+    {
+        return *_get();
+    }
+
+    T *operator->() const noexcept
+    {
+        return _get();
+    }
+
+    T &operator*() const noexcept
+    {
+        return *_get();
+    }
+
     [[nodiscard]] T *access() const
     {
         return _get();
     }
 
-    [[nodiscard]] operator bool() const noexcept
+    [[nodiscard]] explicit operator bool() const noexcept
     {
         return isValid();
+    }
+
+    [[nodiscard]] bool isValid() const noexcept
+    {
+        return control_block_ && control_block_->is_valid;
     }
 
     [[nodiscard]] bool operator==(nullptr_t) const noexcept
@@ -91,17 +100,6 @@ public:
     }
 
 private:
-    T *_get() const
-    {
-        if (!control_block_) {
-            throw std::runtime_error("Accessing a null NonOwnerPointer");
-        }
-        if (!control_block_->is_valid) {
-            throw std::runtime_error("Accessing a dangling NonOwnerPointer after the target object has been deleted");
-        }
-        return pointer_;
-    }
-
     void _setControlBlock(const EnableNonOwnerReferences *ptr)
     {
         if (control_block_) {
@@ -117,6 +115,18 @@ private:
             }
         }
     }
+
+    T *_get() const
+    {
+        if (!control_block_) {
+            throw std::runtime_error("Accessing a null NonOwnerPointer");
+        }
+        if (!control_block_->is_valid) {
+            throw std::runtime_error("Accessing a dangling NonOwnerPointer after the target object has been deleted");
+        }
+        return pointer_;
+    }
+
     std::shared_ptr<EnableNonOwnerReferences::ControlBlock> control_block_{nullptr};  // +0
     T *pointer_{nullptr};                                                             // +24
 };
