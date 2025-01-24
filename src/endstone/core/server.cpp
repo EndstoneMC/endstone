@@ -18,6 +18,7 @@
 #include <memory>
 
 #include <boost/algorithm/string.hpp>
+#include <pybind11/pybind11.h>
 
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
@@ -50,6 +51,7 @@
 #include "endstone/plugin/plugin.h"
 
 namespace fs = std::filesystem;
+namespace py = pybind11;
 
 namespace endstone::core {
 
@@ -66,6 +68,12 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     start_time_ = std::chrono::system_clock::now();
 }
 
+EndstoneServer::~EndstoneServer()
+{
+    py::gil_scoped_acquire acquire{};
+    disablePlugins();
+}
+
 void EndstoneServer::init(ServerInstance &server_instance)
 {
     server_instance_ = &server_instance;
@@ -74,26 +82,86 @@ void EndstoneServer::init(ServerInstance &server_instance)
     command_sender_->init();
     player_ban_list_->load();
     ip_ban_list_->load();
+    loadPlugins();
+    enablePlugins(PluginLoadOrder::Startup);
 }
 
-EndstonePackSource &EndstoneServer::createResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
+void EndstoneServer::setLevel(::Level &level)
 {
-    resource_pack_repository_ = repo;
+    level_ = std::make_unique<EndstoneLevel>(level);
+    scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
+    command_map_ = std::make_unique<EndstoneCommandMap>(*this);
+    enablePlugins(PluginLoadOrder::PostWorld);
+    ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
+    getPluginManager().callEvent(event);
+    loadResourcePacks();
+    registerGameplayHandlers();
+}
+
+void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
+{
+    resource_pack_repository_ = std::move(repo);
     if (!resource_pack_source_) {
-        resource_pack_source_ =
-            std::make_unique<EndstonePackSource>(repo->getResourcePacksPath().getContainer(), PackType::Resources);
+        resource_pack_source_ = std::make_unique<EndstonePackSource>(
+            resource_pack_repository_->getResourcePacksPath().getContainer(), PackType::Resources);
     }
-    return *resource_pack_source_;
 }
 
-EndstonePackSource &EndstoneServer::getResourcePackSource() const
+PackSource &EndstoneServer::getPackSource() const
 {
     return *resource_pack_source_;
 }
 
-Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> EndstoneServer::getResourcePackRepository() const
+void EndstoneServer::loadResourcePacks()
 {
-    return Bedrock::NonOwnerPointer<const IResourcePackRepository>(*resource_pack_repository_);
+    const auto *manager = level_->getHandle().getClientResourcePackManager();
+
+    // Load zipped packs
+    nlohmann::json json;
+    resource_pack_source_->forEachPackConst([&json](auto &pack) {
+        auto &identity = pack.getManifest().getIdentity();
+        json.push_back({
+            {"pack_id", identity.id.asString()},
+            {"version", {identity.version.getMajor(), identity.version.getMinor(), identity.version.getPatch()}},
+        });
+    });
+    std::stringstream ss(json.dump());
+    const auto pack_stack = ResourcePackStack::deserialize(ss, *resource_pack_repository_);
+
+    // Add encryption keys to network handler to be sent to clients
+    auto content_keys = resource_pack_source_->getContentKeys();
+    getServer().getMinecraft()->getServerNetworkHandler()->pack_id_to_content_key_.insert(content_keys.begin(),
+                                                                                          content_keys.end());
+    for (const auto &pack_instance : pack_stack->stack) {
+        const auto &manifest = pack_instance.getManifest();
+        const bool encrypted = content_keys.contains(manifest.getIdentity());
+        getLogger().info("Loaded {} v{} (Pack ID: {}) {}", manifest.getName(),
+                         manifest.getIdentity().version.asString(), manifest.getIdentity().id.asString(),
+                         encrypted ? ColorFormat::Green + "[encrypted]" : "");
+    }
+
+    // Append loaded packs to level pack stack
+    auto &level_stack = const_cast<ResourcePackStack &>(manager->getStack(ResourcePackStackType::LEVEL));
+    level_stack.stack.insert(level_stack.stack.end(), std::make_move_iterator(pack_stack->stack.begin()),
+                             std::make_move_iterator(pack_stack->stack.end()));
+}
+
+void EndstoneServer::registerGameplayHandlers()
+{
+    auto &level = level_->getHandle();
+    level.getActorEventCoordinator().actor_gameplay_handler_ = std::make_unique<EndstoneActorGameplayHandler>(
+        std::move(level.getActorEventCoordinator().actor_gameplay_handler_));
+    level.getBlockEventCoordinator().block_gameplay_handler_ = std::make_unique<EndstoneBlockGameplayHandler>(
+        std::move(level.getBlockEventCoordinator().block_gameplay_handler_));
+    level.getLevelEventCoordinator().level_gameplay_handler_ = std::make_unique<EndstoneLevelGameplayHandler>(
+        std::move(level.getLevelEventCoordinator().level_gameplay_handler_));
+    level.getServerPlayerEventCoordinator().player_gameplay_handler_ = std::make_unique<EndstonePlayerGameplayHandler>(
+        std::move(level.getServerPlayerEventCoordinator().player_gameplay_handler_));
+    level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<EndstoneScriptingEventHandler>(
+        std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
+    level.getServerNetworkEventCoordinator().server_network_event_handler_ =
+        std::make_unique<EndstoneServerNetworkEventHandler>(
+            std::move(level.getServerNetworkEventCoordinator().server_network_event_handler_));
 }
 
 std::string EndstoneServer::getName() const
@@ -131,11 +199,6 @@ Language &EndstoneServer::getLanguage() const
 EndstoneCommandMap &EndstoneServer::getCommandMap() const
 {
     return *command_map_;
-}
-
-void EndstoneServer::setCommandMap(std::unique_ptr<EndstoneCommandMap> command_map)
-{
-    command_map_ = std::move(command_map);
 }
 
 PluginManager &EndstoneServer::getPluginManager() const
@@ -205,23 +268,6 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
     plugin_manager_->enablePlugin(plugin);
 }
 
-void EndstoneServer::registerEndstoneEventHandlers(::Level &level)
-{
-    level.getActorEventCoordinator().actor_gameplay_handler_ = std::make_unique<EndstoneActorGameplayHandler>(
-        std::move(level.getActorEventCoordinator().actor_gameplay_handler_));
-    level.getBlockEventCoordinator().block_gameplay_handler_ = std::make_unique<EndstoneBlockGameplayHandler>(
-        std::move(level.getBlockEventCoordinator().block_gameplay_handler_));
-    level.getLevelEventCoordinator().level_gameplay_handler_ = std::make_unique<EndstoneLevelGameplayHandler>(
-        std::move(level.getLevelEventCoordinator().level_gameplay_handler_));
-    level.getServerPlayerEventCoordinator().player_gameplay_handler_ = std::make_unique<EndstonePlayerGameplayHandler>(
-        std::move(level.getServerPlayerEventCoordinator().player_gameplay_handler_));
-    level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<EndstoneScriptingEventHandler>(
-        std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
-    level.getServerNetworkEventCoordinator().server_network_event_handler_ =
-        std::make_unique<EndstoneServerNetworkEventHandler>(
-            std::move(level.getServerNetworkEventCoordinator().server_network_event_handler_));
-}
-
 void EndstoneServer::disablePlugins() const
 {
     plugin_manager_->disablePlugins();
@@ -235,12 +281,6 @@ Scheduler &EndstoneServer::getScheduler() const
 Level *EndstoneServer::getLevel() const
 {
     return level_.get();
-}
-
-void EndstoneServer::setLevel(std::unique_ptr<EndstoneLevel> level)
-{
-    level_ = std::move(level);
-    registerEndstoneEventHandlers(level_->getHandle());
 }
 
 std::vector<Player *> EndstoneServer::getOnlinePlayers() const
@@ -373,11 +413,6 @@ bool EndstoneServer::isPrimaryThread() const
 Scoreboard *EndstoneServer::getScoreboard() const
 {
     return scoreboard_.get();
-}
-
-void EndstoneServer::setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard)
-{
-    scoreboard_ = std::move(scoreboard);
 }
 
 std::shared_ptr<Scoreboard> EndstoneServer::createScoreboard()

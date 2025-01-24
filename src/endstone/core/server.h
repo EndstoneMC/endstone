@@ -42,14 +42,11 @@ namespace endstone::core {
 class EndstoneServer : public Server {
 public:
     explicit EndstoneServer();
+    ~EndstoneServer();
     EndstoneServer(EndstoneServer const &) = delete;
     EndstoneServer(EndstoneServer &&) = delete;
     EndstoneServer &operator=(EndstoneServer const &) = delete;
     EndstoneServer &operator=(EndstoneServer &&) = delete;
-    void init(ServerInstance &server_instance);
-    EndstonePackSource &createResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
-    [[nodiscard]] EndstonePackSource &getResourcePackSource() const;
-    [[nodiscard]] Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> getResourcePackRepository() const;
 
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
@@ -58,7 +55,6 @@ public:
     [[nodiscard]] Logger &getLogger() const override;
     [[nodiscard]] Language &getLanguage() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
-    void setCommandMap(std::unique_ptr<EndstoneCommandMap> command_map);
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
     [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
@@ -71,7 +67,6 @@ public:
     [[nodiscard]] Scheduler &getScheduler() const override;
 
     [[nodiscard]] Level *getLevel() const override;
-    void setLevel(std::unique_ptr<EndstoneLevel> level);
 
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] int getMaxPlayers() const override;
@@ -91,7 +86,6 @@ public:
     [[nodiscard]] bool isPrimaryThread() const override;
 
     [[nodiscard]] Scoreboard *getScoreboard() const override;
-    void setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard);
     [[nodiscard]] std::shared_ptr<Scoreboard> createScoreboard() override;
     float getCurrentMillisecondsPerTick() override;
     float getAverageMillisecondsPerTick() override;
@@ -121,9 +115,16 @@ public:
 
 private:
     friend class EndstonePlayer;
+    friend class ResourcePackRepository;
+    friend class ServerInstanceEventCoordinator;
 
+    void init(ServerInstance &server_instance);
+    void setLevel(::Level &level);
+    void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
+    PackSource &getPackSource() const;
     void enablePlugin(Plugin &plugin);
-    static void registerEndstoneEventHandlers(::Level &level);
+    void loadResourcePacks();
+    void registerGameplayHandlers();
 
     ServerInstance *server_instance_;
     Logger &logger_;

@@ -22,6 +22,6 @@ void ResourcePackRepository::_initializePackSource()
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
     auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
-    pack_source_->addPackSource(
-        &server.createResourcePackSource(Bedrock::NonOwnerPointer<IResourcePackRepository>(*this)));
+    server.setResourcePackRepository(*this);
+    pack_source_->addPackSource(&server.getPackSource());
 }

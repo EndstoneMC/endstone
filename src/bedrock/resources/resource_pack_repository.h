@@ -21,6 +21,8 @@
 class ResourcePackRepository : public IResourcePackRepository {
 public:
 private:
+    friend class endstone::core::EndstoneServer;
+
     ENDSTONE_HOOK void _initializePackSource();  // NOLINT
 
     Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> file_path_manager_;                 // +24

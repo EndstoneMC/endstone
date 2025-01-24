@@ -44,6 +44,8 @@ public:
     {
         reset();
     }
+    NonOwnerPointer &operator=(const NonOwnerPointer &) = default;
+    NonOwnerPointer &operator=(NonOwnerPointer &&) = default;
 
     void reset()
     {
