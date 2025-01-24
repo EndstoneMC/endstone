@@ -31,16 +31,6 @@ using endstone::core::EndstoneMob;
 using endstone::core::EndstonePlayer;
 using endstone::core::EndstoneServer;
 
-void Actor::remove()
-{
-    if (!isPlayer()) {
-        auto &server = entt::locator<EndstoneServer>::value();
-        endstone::ActorRemoveEvent e{getEndstoneActor()};
-        server.getPluginManager().callEvent(e);
-    }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::remove, this);
-}
-
 void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
     Vec3 position = pos;

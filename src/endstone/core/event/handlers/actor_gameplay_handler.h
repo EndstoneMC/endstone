@@ -29,6 +29,7 @@ public:
 
 private:
     bool handleEvent(const ActorKilledEvent &event);
+    bool handleEvent(const ActorRemovedEvent &event);
 
     std::unique_ptr<ActorGameplayHandler> handle_;
 };

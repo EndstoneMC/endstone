@@ -4,7 +4,6 @@ version = "1.21.50"
 [windows]
 "?getI18n@@YAAEAVI18n@@XZ" = 14120528
 # Actor
-"?remove@Actor@@UEAAXXZ" = 37853696
 "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 37887936
 # Bedrock
 "?getServerThread@Threading@Bedrock@@YAAEAVAssignedThread@12@XZ" = 62131040
@@ -101,7 +100,6 @@ version = "1.21.50"
 [linux]
 "_Z7getI18nv" = 91294352
 # Actor
-"_ZN5Actor6removeEv" = 121537872
 "_ZN5Actor10teleportToERK4Vec3biib" = 121564592
 # Bedrock
 "_ZN7Bedrock9Threading15getServerThreadEv" = 164283584

@@ -102,7 +102,7 @@ public:
     virtual ~Actor() = 0;
     virtual void resetUserPos(bool) = 0;
     virtual ActorType getOwnerEntityType() = 0;
-    ENDSTONE_HOOK virtual void remove();
+    virtual void remove() = 0;
     [[nodiscard]] virtual Vec3 getFiringPos() const = 0;
     [[nodiscard]] virtual float getInterpolatedBodyRot(float) const = 0;
     [[nodiscard]] virtual float getInterpolatedHeadRot(float) const = 0;
@@ -247,6 +247,7 @@ protected:
     virtual void _playStepSound(BlockPos const &, Block const &) = 0;
 
 public:
+    Actor(ILevel &, EntityContext &);
     [[nodiscard]] bool getStatusFlag(ActorFlags) const;
     void setStatusFlag(ActorFlags, bool);
     [[nodiscard]] bool isType(ActorType type) const;
@@ -260,7 +261,8 @@ public:
     [[nodiscard]] bool isInWater() const;
     [[nodiscard]] bool isInLava() const;
     [[nodiscard]] Dimension &getDimension() const;
-    [[nodiscard]] Level &getLevel() const;
+    [[nodiscard]] Level &getLevel();
+    [[nodiscard]] const Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
     [[nodiscard]] Vec3 const &getPosPrev() const;
     void applyImpulse(Vec3 const &impulse);
@@ -308,7 +310,7 @@ public:
     std::string alias;
     std::optional<glm::mat4x4> previous_render_transform;
     int last_hurt_by_player_time;
-    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> previous_bone_matrices;
+    std::map<HashedString, std::vector<std::vector<glm::highp_fmat4x4>>> previous_bone_matrices;
     SynchedActorDataEntityWrapper entity_data;
     std::unique_ptr<SpatialActorNetworkData> network_data;
     Vec3 sent_delta;
@@ -342,13 +344,31 @@ public:
     ActorUniqueID legacy_unique_id;
 
 private:
-    WeakRef<Dimension> dimension_;                // +456
-    Level *level_;                                // +472
-    HashedString actor_renderer_id_;              //
-    ActorCategory categories_;                    //
-    BuiltInActorComponents built_in_components_;  //
-    // ...
+    WeakRef<Dimension> dimension_;
+    ILevel *level_;
+    HashedString actor_renderer_id_;
+    ActorCategory categories_;
+    BuiltInActorComponents built_in_components_;
 
+protected:
+    HashedString actor_renderer_id_that_animation_component_was_initialized_with_;
+    bool changed_;
+    bool removed_;
+    bool moved_to_limbo_;
+    bool moved_to_unloaded_chunk_;
+    bool blocks_building_;
+    std::shared_ptr<AnimationComponent> animation_component_;
+    std::shared_ptr<AnimationComponent> ui_animation_component_;
+    ActorUniqueID target_id_;
+    ActorUniqueID in_love_partner_;
+    std::unique_ptr<CompoundTag> persisting_trade_offers_;
+    int persisting_trade_riches_;
+    bool persisting_trade_;
+    bool effects_dirty_;
+    bool loot_dropped_;
+    bool loaded_from_nbt_this_frame_;
+
+private:
     endstone::core::EndstoneActor &getEndstoneActor0() const;
 
 public:

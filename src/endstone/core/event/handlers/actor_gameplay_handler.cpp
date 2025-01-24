@@ -14,6 +14,8 @@
 
 #include "endstone/core/event/handlers/actor_gameplay_handler.h"
 
+#include <endstone/event/actor/actor_remove_event.h>
+
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_death_event.h"
@@ -29,7 +31,8 @@ HandlerResult EndstoneActorGameplayHandler::handleEvent(const ActorGameplayEvent
 {
     auto visitor = [&](auto &&arg) -> HandlerResult {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const ActorKilledEvent>>) {
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const ActorKilledEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const ActorRemovedEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
@@ -56,6 +59,16 @@ bool EndstoneActorGameplayHandler::handleEvent(const ActorKilledEvent &event)
     if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
         const auto &server = entt::locator<EndstoneServer>::value();
         ActorDeathEvent e{mob->getEndstoneActor<EndstoneMob>()};
+        server.getPluginManager().callEvent(e);
+    }
+    return true;
+}
+
+bool EndstoneActorGameplayHandler::handleEvent(const ActorRemovedEvent &event)
+{
+    if (const auto *actor = WeakEntityRef(event.entity).tryUnwrap<::Actor>(); actor && !actor->isPlayer()) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        ActorRemoveEvent e{actor->getEndstoneActor()};
         server.getPluginManager().callEvent(e);
     }
     return true;

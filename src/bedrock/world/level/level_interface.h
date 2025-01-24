@@ -368,7 +368,7 @@ public:
     virtual void runCommand(HashedString const &, CommandOrigin &, CommandOriginSystem, CurrentCmdVersion) = 0;
     virtual void runCommand(Command &, CommandOrigin &, CommandOriginSystem) = 0;
     [[nodiscard]] virtual PlayerCapabilities::ISharedController const &getCapabilities() const = 0;
-    virtual LevelTagRegistry &getTagRegistry() = 0;
+    [[nodiscard]] virtual LevelTagRegistry &getTagRegistry() const = 0;
     [[nodiscard]] virtual PlayerMovementSettings const &getPlayerMovementSettings() const = 0;
     virtual void setPlayerMovementSettings(PlayerMovementSettings const &) = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() = 0;
