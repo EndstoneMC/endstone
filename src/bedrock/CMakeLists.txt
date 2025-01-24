@@ -65,6 +65,7 @@ add_library(bedrock STATIC
         world/game_session.cpp
         world/minecraft.cpp
         world/actor/actor.cpp
+        world/actor/actor_damage_source.cpp
         world/actor/actor_definition_identifier.cpp
         world/actor/mob.cpp
         world/actor/synched_actor_data.cpp

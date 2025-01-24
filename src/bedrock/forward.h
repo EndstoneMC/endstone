@@ -33,7 +33,6 @@ class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
 class ActorBlockSyncMessage;
 class ActorChunkTransferEntry;
-class ActorDamageCause;
 class ActorDefinitionDescriptor;
 class ActorDefinitionGroup;
 class ActorEvent;
