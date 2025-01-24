@@ -23,7 +23,6 @@ EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
 
 std::string EndstoneItemStack::getType() const
 {
-    // TODO: add BedrockBlockNames::Air = HashedString("minecraft:air")
     return (handle_ && !handle_->isNull()) ? handle_->getItem()->getFullItemName() : "minecraft:air";
 }
 

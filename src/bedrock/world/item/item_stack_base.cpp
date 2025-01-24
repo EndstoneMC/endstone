@@ -17,6 +17,7 @@
 #include "bedrock/symbol.h"
 #include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
+#include "bedrock/world/level/block/bedrock_block_names.h"
 
 ItemStackBase::ItemStackBase()
 {
@@ -215,7 +216,7 @@ bool ItemStackBase::isNull() const
 {
     if (valid_deprecated_) {
         const auto *item = getItem();
-        if (!item || item->getFullItemName() != "minecraft:air") {
+        if (!item || item->getFullNameHash() != BedrockBlockNames::Air) {
             if (count_ > 0 || block_ != nullptr || aux_value_ > 0) {
                 return false;
             }
