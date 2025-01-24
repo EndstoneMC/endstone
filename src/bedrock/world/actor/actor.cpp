@@ -80,7 +80,7 @@ bool Actor::isPlayer() const
 
 bool Actor::isRemoved() const
 {
-    return !isAlive();
+    return removed_;
 }
 
 bool Actor::isOnGround() const
@@ -103,9 +103,14 @@ Dimension &Actor::getDimension() const
     return *dimension_.unwrap();
 }
 
-Level &Actor::getLevel() const
+Level &Actor::getLevel()
 {
-    return *level_;
+    return *static_cast<Level *>(level_);
+}
+
+const Level &Actor::getLevel() const
+{
+    return *static_cast<Level *>(level_);
 }
 
 Vec3 const &Actor::getPosition() const
