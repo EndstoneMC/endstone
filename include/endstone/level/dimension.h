@@ -65,7 +65,7 @@ public:
      * @param z Z-coordinate of the block
      * @return Block at the given coordinates
      */
-    virtual Result<std::shared_ptr<Block>> getBlockAt(int x, int y, int z) = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlockAt(int x, int y, int z) const = 0;
 
     /**
      * @brief Gets the Block at the given Location.
@@ -73,6 +73,33 @@ public:
      * @param location Location of the block
      * @return Block at the given coordinates
      */
-    virtual Result<std::shared_ptr<Block>> getBlockAt(Location location) = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlockAt(Location location) const = 0;
+
+    /**
+     * @brief Gets the highest non-empty (impassable) coordinate at the given
+     * coordinates.
+     *
+     * @param x X-coordinate of the blocks
+     * @param z Z-coordinate of the blocks
+     * @return Y-coordinate of the highest non-empty block
+     */
+    [[nodiscard]] virtual int getHighestBlockYAt(int x, int z) const = 0;
+
+    /**
+     * @brief Gets the highest non-empty (impassable) block at the given coordinates.
+     *
+     * @param x X-coordinate of the block
+     * @param z Z-coordinate of the block
+     * @return Highest non-empty block
+     */
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getHighestBlockAt(int x, int z) const = 0;
+
+    /**
+     * @brief Gets the highest non-empty (impassable) block at the given coordinates.
+     *
+     * @param location Coordinates to get the highest block
+     * @return Highest non-empty block
+     */
+    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getHighestBlockAt(Location location) const = 0;
 };
 }  // namespace endstone

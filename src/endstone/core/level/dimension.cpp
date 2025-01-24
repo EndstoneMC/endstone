@@ -14,6 +14,7 @@
 
 #include "endstone/core/level/dimension.h"
 
+#include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/level/level.h"
@@ -49,14 +50,30 @@ Level &EndstoneDimension::getLevel() const
     return level_;
 }
 
-Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(int x, int y, int z)
+Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(int x, int y, int z) const
 {
     return EndstoneBlock::at(getHandle().getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 
-Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(Location location)
+Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(Location location) const
 {
     return getBlockAt(location.getBlockX(), location.getBlockY(), location.getBlockZ());
+}
+
+int EndstoneDimension::getHighestBlockYAt(int x, int z) const
+{
+    return getHandle().getBlockSourceFromMainChunkSource().getHeight(
+        [](auto &block) { return block.getName() != BedrockBlockNames::Air; }, x, z);
+}
+
+Result<std::shared_ptr<Block>> EndstoneDimension::getHighestBlockAt(int x, int z) const
+{
+    return getBlockAt(x, getHighestBlockYAt(x, z), z);
+}
+
+Result<std::shared_ptr<Block>> EndstoneDimension::getHighestBlockAt(Location location) const
+{
+    return getHighestBlockAt(location.getBlockX(), location.getBlockZ());
 }
 
 ::Dimension &EndstoneDimension::getHandle() const

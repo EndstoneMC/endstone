@@ -38,7 +38,6 @@ public:
     [[nodiscard]] std::vector<Dimension *> getDimensions() const override;
     [[nodiscard]] Dimension *getDimension(std::string name) const override;
     void addDimension(std::unique_ptr<Dimension> dimension);
-    void loadResourcePacks();
 
     [[nodiscard]] EndstoneServer &getServer() const;
     [[nodiscard]] ::Level &getHandle() const;
