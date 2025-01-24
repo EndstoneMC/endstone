@@ -69,9 +69,10 @@ public:
     [[nodiscard]] float getThickness() const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
+    [[nodiscard]] const HashedString &getName() const;
     [[nodiscard]] const CompoundTag &getSerializationId() const;
     [[nodiscard]] BlockRuntimeId getRuntimeId() const;
-    std::string toDebugString() const;
+    [[nodiscard]] std::string toDebugString() const;
     [[nodiscard]] const BlockLegacy &getLegacyBlock() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
     [[nodiscard]] const BlockComponentDirectData &getDirectData() const;

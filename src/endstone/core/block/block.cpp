@@ -39,7 +39,7 @@ Result<std::string> EndstoneBlock::getType() const
 {
     auto state = checkState();
     if (state) {
-        return block_source_.getBlock(block_pos_).getLegacyBlock().getFullNameId();
+        return block_source_.getBlock(block_pos_).getName().getString();
     }
     return nonstd::make_unexpected(state.error());
 }

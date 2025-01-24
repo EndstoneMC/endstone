@@ -40,7 +40,7 @@ Result<std::shared_ptr<Block>> EndstoneBlockState::getBlock() const
 
 std::string EndstoneBlockState::getType() const
 {
-    return block_->getLegacyBlock().getFullNameId();
+    return block_->getName().getString();
 }
 
 Result<void> EndstoneBlockState::setType(std::string type)

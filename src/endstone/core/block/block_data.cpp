@@ -22,7 +22,7 @@ EndstoneBlockData::EndstoneBlockData(::Block &block) : block_(block) {}
 
 std::string EndstoneBlockData::getType() const
 {
-    return block_.getLegacyBlock().getFullNameId();
+    return block_.getLegacyBlock().getName().getString();
 }
 
 BlockStates EndstoneBlockData::getBlockStates() const

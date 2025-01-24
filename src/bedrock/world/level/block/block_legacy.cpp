@@ -52,11 +52,6 @@ const std::string &BlockLegacy::getDescriptionId() const
     return description_id_;
 }
 
-const std::string &BlockLegacy::getFullNameId() const
-{
-    return name_info_.full_name.getString();
-}
-
 const std::string &BlockLegacy::getRawNameId() const
 {
     return name_info_.raw_name.getString();
@@ -65,6 +60,11 @@ const std::string &BlockLegacy::getRawNameId() const
 const std::string &BlockLegacy::getNamespace() const
 {
     return name_info_.namespace_name;
+}
+
+const HashedString &BlockLegacy::getName() const
+{
+    return name_info_.full_name;
 }
 
 const Block &BlockLegacy::getDefaultState() const

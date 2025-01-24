@@ -45,7 +45,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
     auto item_registry = level.getItemRegistry();
 
     BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
-        const auto &name = block_legacy.getFullNameId();
+        const auto &name = block_legacy.getName().getString();
 
         nlohmann::json tags;
         for (const auto &tag : block_legacy.getTags()) {

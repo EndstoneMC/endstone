@@ -292,9 +292,9 @@ public:
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
     [[nodiscard]] const std::string &getDescriptionId() const;
-    [[nodiscard]] const std::string &getFullNameId() const;
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;
+    [[nodiscard]] const HashedString &getName() const;
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;

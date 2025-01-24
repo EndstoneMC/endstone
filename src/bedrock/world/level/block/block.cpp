@@ -100,6 +100,11 @@ float Block::getDestroySpeed() const
     return direct_data_.destroy_speed;
 }
 
+const HashedString &Block::getName() const
+{
+    return legacy_block_->getName();
+}
+
 const CompoundTag &Block::getSerializationId() const
 {
     return serialization_id_;
