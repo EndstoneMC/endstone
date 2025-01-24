@@ -128,12 +128,12 @@ std::size_t get_thread_count()
 
 std::size_t get_used_physical_memory()
 {
-    return get_proc_status("VmRSS");
+    return get_proc_status("VmRSS") * 1024;
 }
 
 std::size_t get_total_virtual_memory()
 {
-    return get_proc_status("VmSize");
+    return get_proc_status("VmSize") * 1024;
 }
 
 }  // namespace endstone::detail

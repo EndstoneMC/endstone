@@ -21,7 +21,6 @@
 class Mob : public Actor {
 public:
     ~Mob() override = 0;
-    void die(const ActorDamageSource &source) override;
 
     ENDSTONE_HOOK virtual void knockback(Actor *, int, float, float, float, float, float);
     virtual void spawnAnim() = 0;
