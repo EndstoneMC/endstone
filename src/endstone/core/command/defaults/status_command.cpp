@@ -64,10 +64,12 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
         tps_color = ColorFormat::Gold;
     }
 
-    sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%)", ColorFormat::Gold, tps_color,
-                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage());
-    sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%)", ColorFormat::Gold, tps_color,
-                       server.getAverageTicksPerSecond(), server.getAverageTickUsage());
+    sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%) {:.2f}ms", ColorFormat::Gold, tps_color,
+                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage(),
+                       server.getCurrentMillisecondsPerTick());
+    sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%) {:.2f}ms", ColorFormat::Gold, tps_color,
+                       server.getAverageTicksPerSecond(), server.getAverageTickUsage(),
+                       server.getAverageMillisecondsPerTick());
 
     sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, detail::get_thread_count());
 
@@ -76,6 +78,8 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
     sender.sendMessage("{}Total memory: {}{:.2f} MB", ColorFormat::Gold, ColorFormat::Red,
                        detail::get_total_virtual_memory() / 1024.0F / 1024.0F);
 
+    auto *level = server.getLevel();
+    sender.sendMessage("{}World \"{}\":", ColorFormat::Gold, level->getName());
     auto actors = server.getLevel()->getActors();
     for (const auto &dimension : server.getLevel()->getDimensions()) {
         auto actor_count = 0;
@@ -84,7 +88,7 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
                 actor_count++;
             }
         }
-        sender.sendMessage("{}Dimension: \"{}\": {}{}{} actors", ColorFormat::Gold, dimension->getName(),
+        sender.sendMessage("- {}Dimension \"{}\": {}{}{} entities", ColorFormat::Gold, dimension->getName(),
                            ColorFormat::Red, actor_count, ColorFormat::Green);
     }
 
