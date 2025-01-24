@@ -99,7 +99,7 @@ std::string get_executable_pathname()
     return module_info.pathname;
 }
 
-std::string_view get_name()
+std::string_view get_platform()
 {
     return "Linux";
 }

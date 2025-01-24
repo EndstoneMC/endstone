@@ -45,7 +45,7 @@ endif ()
 if (UNIX)
     find_package(libelf REQUIRED)
     target_link_libraries(endstone_runtime PRIVATE libelf::libelf)
-    target_link_options(endstone_runtime PRIVATE -g -Wl,--exclude-libs,ALL)
+    target_link_options(endstone_runtime PRIVATE -g -Wl,--no-undefined,--exclude-libs,ALL)
     target_compile_options(endstone_runtime PRIVATE -O2 -DNDEBUG -g -fvisibility=hidden -fms-extensions)
     if (ENDSTONE_SEPARATE_DEBUG_INFO)
         add_custom_command(

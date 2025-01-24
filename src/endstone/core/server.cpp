@@ -76,6 +76,9 @@ EndstoneServer::~EndstoneServer()
 
 void EndstoneServer::init(ServerInstance &server_instance)
 {
+    if (server_instance_) {
+        throw std::runtime_error("Server instance already initialized.");
+    }
     server_instance_ = &server_instance;
     getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
                      ColorFormat::DarkAqua + ColorFormat::Bold, getName(), getVersion(), getMinecraftVersion());
@@ -88,6 +91,9 @@ void EndstoneServer::init(ServerInstance &server_instance)
 
 void EndstoneServer::setLevel(::Level &level)
 {
+    if (level_) {
+        throw std::runtime_error("Level already initialized.");
+    }
     level_ = std::make_unique<EndstoneLevel>(level);
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
@@ -100,11 +106,12 @@ void EndstoneServer::setLevel(::Level &level)
 
 void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
 {
-    resource_pack_repository_ = std::move(repo);
-    if (!resource_pack_source_) {
-        resource_pack_source_ = std::make_unique<EndstonePackSource>(
-            resource_pack_repository_->getResourcePacksPath().getContainer(), PackType::Resources);
+    if (resource_pack_repository_) {
+        throw std::runtime_error("Resource pack repository already set.");
     }
+    resource_pack_repository_ = std::move(repo);
+    resource_pack_source_ = std::make_unique<EndstonePackSource>(
+        resource_pack_repository_->getResourcePacksPath().getContainer(), PackType::Resources);
 }
 
 PackSource &EndstoneServer::getPackSource() const

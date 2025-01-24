@@ -107,7 +107,12 @@ public:
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
     void removePlayerBoard(EndstonePlayer &player);
+
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
+    void init(ServerInstance &server_instance);
+    void setLevel(::Level &level);
+    void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
+    PackSource &getPackSource() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
 
@@ -115,18 +120,11 @@ public:
 
 private:
     friend class EndstonePlayer;
-    friend class ResourcePackRepository;
-    friend class ServerInstanceEventCoordinator;
-
-    void init(ServerInstance &server_instance);
-    void setLevel(::Level &level);
-    void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
-    PackSource &getPackSource() const;
     void enablePlugin(Plugin &plugin);
     void loadResourcePacks();
     void registerGameplayHandlers();
 
-    ServerInstance *server_instance_;
+    ServerInstance *server_instance_{nullptr};
     Logger &logger_;
     std::unique_ptr<CrashHandler> crash_handler_;
     std::unique_ptr<SignalHandler> signal_handler_;
