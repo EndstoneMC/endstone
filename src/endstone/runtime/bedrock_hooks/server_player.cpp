@@ -28,34 +28,6 @@
 using endstone::core::EndstonePlayer;
 using endstone::core::EndstoneServer;
 
-void ServerPlayer::setLocalPlayerAsInitialized()
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::setLocalPlayerAsInitialized, this);
-
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = getEndstoneActor<EndstonePlayer>();
-
-    endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.joined",
-                              {endstone_player.getName()}};
-    const std::string join_message = endstone::core::EndstoneMessage::toString(tr);
-
-    endstone::PlayerJoinEvent e{endstone_player, join_message};
-    server.getPluginManager().callEvent(e);
-
-    if (e.getJoinMessage() != join_message) {
-        tr = endstone::Translatable{e.getJoinMessage(), {}};
-    }
-
-    if (!e.getJoinMessage().empty()) {
-        for (const auto &player : server.getOnlinePlayers()) {
-            player->sendMessage(tr);
-        }
-    }
-
-    endstone_player.recalculatePermissions();
-    endstone_player.updateCommands();
-}
-
 void ServerPlayer::disconnect()
 {
     auto &server = entt::locator<EndstoneServer>::value();

@@ -14,11 +14,15 @@
 
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 
+#include <endstone/core/message.h>
+#include <endstone/event/player/player_join_event.h>
+
 #include "bedrock/entity/components/replay_state_component.h"
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/network/packet/update_player_game_type_packet.h"
 #include "bedrock/world/actor/actor.h"
+#include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
@@ -45,7 +49,8 @@ HandlerResult EndstonePlayerGameplayHandler::handleEvent(const PlayerGameplayEve
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerInitialSpawnEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
@@ -137,6 +142,32 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormCloseEvent &even
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         player->getEndstoneActor<EndstonePlayer>().onFormClose(event.form_id, event.form_close_reason);
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInitialSpawnEvent &event)
+{
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
+
+        Translatable tr{ColorFormat::Yellow + "%multiplayer.player.joined", {endstone_player.getName()}};
+        const std::string join_message = EndstoneMessage::toString(tr);
+
+        PlayerJoinEvent e{endstone_player, join_message};
+        server.getPluginManager().callEvent(e);
+        if (e.getJoinMessage() != join_message) {
+            tr = Translatable{e.getJoinMessage(), {}};
+        }
+
+        if (!e.getJoinMessage().empty()) {
+            for (const auto &online_player : server.getOnlinePlayers()) {
+                online_player->sendMessage(tr);
+            }
+        }
+        endstone_player.recalculatePermissions();
+        endstone_player.updateCommands();
     }
     return true;
 }
