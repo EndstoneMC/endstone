@@ -64,6 +64,7 @@
 | class | [**CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) <br>_Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._ |
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
+| class | [**DamageSource**](classendstone_1_1DamageSource.md) <br>_Represents a source of damage._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**Error**](classendstone_1_1Error.md) <br>_Represents an error with a message and the stack trace._  |

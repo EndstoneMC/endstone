@@ -35,6 +35,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._    
     * **class** [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
     * **class** [**Criteria**](classendstone_1_1Criteria.md) _Represents a scoreboard criteria._     
+    * **class** [**DamageSource**](classendstone_1_1DamageSource.md) _Represents a source of damage._     
     * **class** [**Dimension**](classendstone_1_1Dimension.md) _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._    
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**Error**](classendstone_1_1Error.md) _Represents an error with a message and the stack trace._     

@@ -31,6 +31,7 @@
     <innerclass refid="classendstone_1_1CommandSenderWrapper" prot="public">endstone::CommandSenderWrapper</innerclass>
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Criteria" prot="public">endstone::Criteria</innerclass>
+    <innerclass refid="classendstone_1_1DamageSource" prot="public">endstone::DamageSource</innerclass>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
     <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>
     <innerclass refid="classendstone_1_1Error" prot="public">endstone::Error</innerclass>

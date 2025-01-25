@@ -397,6 +397,13 @@
     <member refid="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" kind="function"><name>isReadOnly</name></member>
     <member refid="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" kind="function"><name>getDefaultRenderType</name></member>
   </compound>
+  <compound refid="classendstone_1_1DamageSource" kind="class"><name>endstone::DamageSource</name>
+    <member refid="classendstone_1_1DamageSource_1ad7317c28b8853f400f518106f3f9d659" kind="function"><name>~DamageSource</name></member>
+    <member refid="classendstone_1_1DamageSource_1ab42c44f31d7902b6737335056d55a389" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kind="function"><name>getActor</name></member>
+    <member refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kind="function"><name>getDamagingActor</name></member>
+    <member refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" kind="function"><name>isIndirect</name></member>
+  </compound>
   <compound refid="classendstone_1_1Dimension" kind="class"><name>endstone::Dimension</name>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kind="enum"><name>Type</name></member>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba50181b144eb2554dc2e45cd3d437e92f" kind="enumvalue"><name>Overworld</name></member>
@@ -1603,6 +1610,8 @@
   </compound>
   <compound refid="proxied__command__sender_8h" kind="file"><name>proxied_command_sender.h</name>
   </compound>
+  <compound refid="damage__source_8h" kind="file"><name>damage_source.h</name>
+  </compound>
   <compound refid="actor__death__event_8h" kind="file"><name>actor_death_event.h</name>
   </compound>
   <compound refid="actor__event_8h" kind="file"><name>actor_event.h</name>
@@ -1812,6 +1821,8 @@
   <compound refid="dir_5c7b2dbfabcd1115569d1e20a260545c" kind="dir"><name>include/endstone/command</name>
   </compound>
   <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
+  </compound>
+  <compound refid="dir_d35032eb9ca22acb8eface5f2c8b6a35" kind="dir"><name>include/endstone/damage</name>
   </compound>
   <compound refid="dir_6cf277b678674f97c7a2b6b3b2447b33" kind="dir"><name>include/endstone</name>
   </compound>
