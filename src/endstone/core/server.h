@@ -112,7 +112,7 @@ public:
     void init(ServerInstance &server_instance);
     void setLevel(::Level &level);
     void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
-    PackSource &getPackSource() const;
+    [[nodiscard]] PackSource &getPackSource() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
 
@@ -122,7 +122,18 @@ private:
     friend class EndstonePlayer;
     void enablePlugin(Plugin &plugin);
     void loadResourcePacks();
-    void registerGameplayHandlers();
+    template <typename Wrapper, typename T>
+    void wrap(std::unique_ptr<T> &target)
+    {
+        target = std::make_unique<Wrapper>(std::move(target));
+    }
+    void registerEventListeners();
+    template <typename Wrapper, typename T>
+    void unwrap(std::unique_ptr<T> &target)
+    {
+        target = static_cast<Wrapper *>(target.get())->unwrap();
+    }
+    void unregisterEventListeners();
 
     ServerInstance *server_instance_{nullptr};
     Logger &logger_;

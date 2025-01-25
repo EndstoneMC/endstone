@@ -26,6 +26,7 @@ public:
     HandlerResult handleEvent(const PlayerGameplayEvent<void> &event) override;
     GameplayHandlerResult<CoordinatorResult> handleEvent(const PlayerGameplayEvent<CoordinatorResult> &event) override;
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutablePlayerGameplayEvent<CoordinatorResult> &event) override;
+    std::unique_ptr<PlayerGameplayHandler> unwrap();
 
 private:
     bool handleEvent(const PlayerDamageEvent &event);

@@ -72,6 +72,7 @@ EndstoneServer::~EndstoneServer()
 {
     py::gil_scoped_acquire acquire{};
     disablePlugins();
+    unregisterEventListeners();
 }
 
 void EndstoneServer::init(ServerInstance &server_instance)
@@ -98,7 +99,7 @@ void EndstoneServer::setLevel(::Level &level)
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
-    registerGameplayHandlers();
+    registerEventListeners();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
@@ -154,22 +155,26 @@ void EndstoneServer::loadResourcePacks()
                              std::make_move_iterator(pack_stack->stack.end()));
 }
 
-void EndstoneServer::registerGameplayHandlers()
+void EndstoneServer::registerEventListeners()
 {
     auto &level = level_->getHandle();
-    level.getActorEventCoordinator().actor_gameplay_handler_ = std::make_unique<EndstoneActorGameplayHandler>(
-        std::move(level.getActorEventCoordinator().actor_gameplay_handler_));
-    level.getBlockEventCoordinator().block_gameplay_handler_ = std::make_unique<EndstoneBlockGameplayHandler>(
-        std::move(level.getBlockEventCoordinator().block_gameplay_handler_));
-    level.getLevelEventCoordinator().level_gameplay_handler_ = std::make_unique<EndstoneLevelGameplayHandler>(
-        std::move(level.getLevelEventCoordinator().level_gameplay_handler_));
-    level.getServerPlayerEventCoordinator().player_gameplay_handler_ = std::make_unique<EndstonePlayerGameplayHandler>(
-        std::move(level.getServerPlayerEventCoordinator().player_gameplay_handler_));
-    level.getScriptingEventCoordinator().scripting_event_handler_ = std::make_unique<EndstoneScriptingEventHandler>(
-        std::move(level.getScriptingEventCoordinator().scripting_event_handler_));
-    level.getServerNetworkEventCoordinator().server_network_event_handler_ =
-        std::make_unique<EndstoneServerNetworkEventHandler>(
-            std::move(level.getServerNetworkEventCoordinator().server_network_event_handler_));
+    wrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler_);
+    wrap<EndstoneBlockGameplayHandler>(level.getBlockEventCoordinator().block_gameplay_handler_);
+    wrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler_);
+    wrap<EndstonePlayerGameplayHandler>(level.getServerPlayerEventCoordinator().player_gameplay_handler_);
+    wrap<EndstoneScriptingEventHandler>(level.getScriptingEventCoordinator().scripting_event_handler_);
+    wrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler_);
+}
+
+void EndstoneServer::unregisterEventListeners()
+{
+    auto &level = level_->getHandle();
+    unwrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler_);
+    unwrap<EndstoneBlockGameplayHandler>(level.getBlockEventCoordinator().block_gameplay_handler_);
+    unwrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler_);
+    unwrap<EndstonePlayerGameplayHandler>(level.getServerPlayerEventCoordinator().player_gameplay_handler_);
+    unwrap<EndstoneScriptingEventHandler>(level.getScriptingEventCoordinator().scripting_event_handler_);
+    unwrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler_);
 }
 
 std::string EndstoneServer::getName() const
@@ -366,9 +371,11 @@ void EndstoneServer::reload()
 {
     plugin_manager_->clearPlugins();
     command_map_->clearCommands();
+    unregisterEventListeners();
     reloadData();
 
     // TODO(server): Wait for at most 2.5 seconds for all async tasks to finish, otherwise issue a warning
+    registerEventListeners();
     loadPlugins();
     enablePlugins(PluginLoadOrder::Startup);
     enablePlugins(PluginLoadOrder::PostWorld);

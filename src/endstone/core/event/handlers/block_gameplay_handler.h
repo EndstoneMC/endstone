@@ -28,6 +28,7 @@ public:
     GameplayHandlerResult<std::optional<std::string>> handleEvent(
         const BlockGameplayEvent<std::optional<std::string>> &event) override;
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutableBlockGameplayEvent<CoordinatorResult> &event) override;
+    std::unique_ptr<BlockGameplayHandler> unwrap();
 
 private:
     bool handleEvent(const PistonActionEvent &event);

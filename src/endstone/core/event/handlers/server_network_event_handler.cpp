@@ -41,6 +41,11 @@ GameplayHandlerResult<CoordinatorResult> EndstoneServerNetworkEventHandler::hand
     return std::visit(visitor, event.variant);
 }
 
+std::unique_ptr<ServerNetworkEventHandler> EndstoneServerNetworkEventHandler::unwrap()
+{
+    return std::move(handle_);
+}
+
 bool EndstoneServerNetworkEventHandler::handleEvent(ChatEvent &event)
 {
     const auto &server = entt::locator<EndstoneServer>::value();

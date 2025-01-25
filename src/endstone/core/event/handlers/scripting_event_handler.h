@@ -27,6 +27,7 @@ public:
         MutableScriptingGameplayEvent<CoordinatorResult> &event) override;
     GameplayHandlerResult<CoordinatorResult> handleEvent(
         const ScriptingGameplayEvent<CoordinatorResult> &event) override;
+    std::unique_ptr<ScriptingEventHandler> unwrap();
 
 private:
     bool handleEvent(const ScriptCommandMessageEvent &event);

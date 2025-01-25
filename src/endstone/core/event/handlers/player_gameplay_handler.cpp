@@ -94,6 +94,11 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
     return std::visit(visitor, event.variant);
 }
 
+std::unique_ptr<PlayerGameplayHandler> EndstonePlayerGameplayHandler::unwrap()
+{
+    return std::move(handle_);
+}
+
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {

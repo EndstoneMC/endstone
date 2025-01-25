@@ -57,6 +57,11 @@ GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEve
     return std::visit(visitor, event.variant);
 }
 
+std::unique_ptr<LevelGameplayHandler> EndstoneLevelGameplayHandler::unwrap()
+{
+    return std::move(handle_);
+}
+
 bool EndstoneLevelGameplayHandler::handleEvent(const LevelAddedActorEvent &event)
 {
     if (auto *actor = WeakEntityRef(event.actor).tryUnwrap<::Actor>(); actor && !actor->isPlayer()) {

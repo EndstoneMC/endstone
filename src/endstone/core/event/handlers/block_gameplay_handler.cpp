@@ -76,6 +76,11 @@ GameplayHandlerResult<CoordinatorResult> EndstoneBlockGameplayHandler::handleEve
     return std::visit(visitor, event.variant);
 }
 
+std::unique_ptr<BlockGameplayHandler> EndstoneBlockGameplayHandler::unwrap()
+{
+    return std::move(handle_);
+}
+
 bool EndstoneBlockGameplayHandler::handleEvent(const PistonActionEvent &event)
 {
     // TODO(event): piston events

@@ -54,6 +54,11 @@ GameplayHandlerResult<CoordinatorResult> EndstoneActorGameplayHandler::handleEve
     return handle_->handleEvent(event);
 }
 
+std::unique_ptr<ActorGameplayHandler> EndstoneActorGameplayHandler::unwrap()
+{
+    return std::move(handle_);
+}
+
 bool EndstoneActorGameplayHandler::handleEvent(const ActorKilledEvent &event)
 {
     if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {

@@ -25,6 +25,7 @@ public:
     explicit EndstoneLevelGameplayHandler(std::unique_ptr<LevelGameplayHandler> handle);
     HandlerResult handleEvent(LevelGameplayEvent<void> const &event) override;
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutableLevelGameplayEvent<CoordinatorResult> &event) override;
+    std::unique_ptr<LevelGameplayHandler> unwrap();
 
 private:
     bool handleEvent(const LevelAddedActorEvent &event);

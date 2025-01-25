@@ -26,6 +26,7 @@ public:
     explicit EndstoneServerNetworkEventHandler(std::unique_ptr<ServerNetworkEventHandler> handle);
     GameplayHandlerResult<CoordinatorResult> handleEvent(
         MutableServerNetworkGameplayEvent<CoordinatorResult> &event) override;
+    std::unique_ptr<ServerNetworkEventHandler> unwrap();
 
 private:
     bool handleEvent(ChatEvent &event);

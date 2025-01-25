@@ -50,6 +50,11 @@ GameplayHandlerResult<CoordinatorResult> EndstoneScriptingEventHandler::handleEv
     return std::visit(visitor, event.variant);
 }
 
+std::unique_ptr<ScriptingEventHandler> EndstoneScriptingEventHandler::unwrap()
+{
+    return std::move(handle_);
+}
+
 bool EndstoneScriptingEventHandler::handleEvent(const ScriptCommandMessageEvent &event)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
