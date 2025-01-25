@@ -20,6 +20,16 @@
 
 ActorDamageSource::ActorDamageSource(ActorDamageCause cause) : cause_(cause) {}
 
+ActorDamageCause ActorDamageSource::getCause() const
+{
+    return cause_;
+}
+
+void ActorDamageSource::setCause(ActorDamageCause cause)
+{
+    cause_ = cause;
+}
+
 bool ActorDamageSource::isEntitySource() const
 {
     return false;

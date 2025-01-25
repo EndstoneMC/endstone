@@ -27,29 +27,31 @@ class Actor;
 class ActorDamageSource {
 public:
     ActorDamageSource(ActorDamageCause cause);
+    [[nodiscard]] ActorDamageCause getCause() const;
+    void setCause(ActorDamageCause cause);
+
     virtual ~ActorDamageSource() = default;
-    [[nodiscard]] virtual bool isEntitySource() const ;
-    [[nodiscard]] virtual bool isChildEntitySource() const ;
-    [[nodiscard]] virtual bool isBlockSource() const ;
-    [[nodiscard]] virtual bool isFire() const ;
-    [[nodiscard]] virtual bool isReducedByResistanceEffect() const ;
-    [[nodiscard]] virtual bool isReducedByEnchantReduction() const ;
-    [[nodiscard]] virtual bool isReducedByArmorReduction() const ;
-    [[nodiscard]] virtual bool isFallingBlockDamage() const ;
-    [[nodiscard]] virtual bool isFallDamage() const ;
-    [[nodiscard]] virtual std::pair<std::string, std::vector<std::string>> getDeathMessage(std::string,
-                                                                                           Actor *) const ;
-    [[nodiscard]] virtual bool getIsCreative() const ;
-    [[nodiscard]] virtual bool getIsWorldBuilder() const ;
-    [[nodiscard]] virtual ActorUniqueID getEntityUniqueID() const ;
-    [[nodiscard]] virtual ActorType getEntityType() const ;
-    [[nodiscard]] virtual ActorCategory getEntityCategories() const ;
-    [[nodiscard]] virtual bool getDamagingEntityIsCreative() const ;
-    [[nodiscard]] virtual bool getDamagingEntityIsWorldBuilder() const ;
-    [[nodiscard]] virtual ActorUniqueID getDamagingEntityUniqueID() const ;
-    [[nodiscard]] virtual ActorType getDamagingEntityType() const ;
-    [[nodiscard]] virtual ActorCategory getDamagingEntityCategories() const ;
-    [[nodiscard]] virtual std::unique_ptr<ActorDamageSource> clone() const ;
+    [[nodiscard]] virtual bool isEntitySource() const;
+    [[nodiscard]] virtual bool isChildEntitySource() const;
+    [[nodiscard]] virtual bool isBlockSource() const;
+    [[nodiscard]] virtual bool isFire() const;
+    [[nodiscard]] virtual bool isReducedByResistanceEffect() const;
+    [[nodiscard]] virtual bool isReducedByEnchantReduction() const;
+    [[nodiscard]] virtual bool isReducedByArmorReduction() const;
+    [[nodiscard]] virtual bool isFallingBlockDamage() const;
+    [[nodiscard]] virtual bool isFallDamage() const;
+    [[nodiscard]] virtual std::pair<std::string, std::vector<std::string>> getDeathMessage(std::string, Actor *) const;
+    [[nodiscard]] virtual bool getIsCreative() const;
+    [[nodiscard]] virtual bool getIsWorldBuilder() const;
+    [[nodiscard]] virtual ActorUniqueID getEntityUniqueID() const;
+    [[nodiscard]] virtual ActorType getEntityType() const;
+    [[nodiscard]] virtual ActorCategory getEntityCategories() const;
+    [[nodiscard]] virtual bool getDamagingEntityIsCreative() const;
+    [[nodiscard]] virtual bool getDamagingEntityIsWorldBuilder() const;
+    [[nodiscard]] virtual ActorUniqueID getDamagingEntityUniqueID() const;
+    [[nodiscard]] virtual ActorType getDamagingEntityType() const;
+    [[nodiscard]] virtual ActorCategory getDamagingEntityCategories() const;
+    [[nodiscard]] virtual std::unique_ptr<ActorDamageSource> clone() const;
 
 private:
     ActorDamageCause cause_;

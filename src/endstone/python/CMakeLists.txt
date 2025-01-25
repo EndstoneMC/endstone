@@ -10,6 +10,7 @@ add_library(endstone_python MODULE
         block.cpp
         boss.cpp
         command.cpp
+        damage.cpp
         endstone_python.cpp
         event.cpp
         form.cpp
