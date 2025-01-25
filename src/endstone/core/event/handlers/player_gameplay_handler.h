@@ -28,6 +28,7 @@ public:
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutablePlayerGameplayEvent<CoordinatorResult> &event) override;
 
 private:
+    bool handleEvent(const PlayerDamageEvent &event);
     bool handleEvent(const PlayerFormResponseEvent &event);
     bool handleEvent(const PlayerFormCloseEvent &event);
     bool handleEvent(const PlayerRespawnEvent &event);

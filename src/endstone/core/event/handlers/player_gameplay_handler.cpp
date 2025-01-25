@@ -15,6 +15,8 @@
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 
 #include "bedrock/entity/components/replay_state_component.h"
+#include "bedrock/locale/i18n.h"
+#include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/network/packet/update_player_game_type_packet.h"
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/block/block.h"
@@ -23,6 +25,7 @@
 #include "endstone/core/json.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
@@ -40,7 +43,8 @@ HandlerResult EndstonePlayerGameplayHandler::handleEvent(const PlayerGameplayEve
 {
     auto visitor = [&](auto &&arg) -> HandlerResult {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
@@ -82,6 +86,43 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
         return handle_->handleEvent(event);
     };
     return std::visit(visitor, event.variant);
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
+{
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
+        if (player->isAlive()) {
+            // TODO: PlayerHurtEvent
+        }
+        else {
+            // Close any open form on player death
+            endstone_player.closeForm();
+
+            // Fire player death event
+            auto death_cause_message = event.damage_source->getDeathMessage(player->getName(), player);
+            auto death_message = getI18n().get(death_cause_message.first, death_cause_message.second, nullptr);
+            const auto e = std::make_unique<PlayerDeathEvent>(endstone_player, death_message);
+            server.getPluginManager().callEvent(*static_cast<PlayerEvent *>(e.get()));
+            if (e->getDeathMessage() != death_message) {
+                death_cause_message.first = e->getDeathMessage();
+                death_cause_message.second.clear();
+            }
+
+            // Send death info
+            const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
+            const auto pk = std::static_pointer_cast<DeathInfoPacket>(packet);
+            pk->death_cause_message = death_cause_message;
+            player->sendNetworkPacket(*packet);
+
+            // Broadcast death message if not empty
+            if (!e->getDeathMessage().empty()) {
+                server.broadcastMessage(Translatable{death_cause_message.first, death_cause_message.second});
+            }
+        }
+    }
+    return true;
 }
 
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormResponseEvent &event)

@@ -17,13 +17,9 @@
 #include <utility>
 
 #include "bedrock/locale/i18n.h"
-#include "bedrock/network/packet.h"
-#include "bedrock/network/packet/death_info_packet.h"
-#include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/core/message.h"
 #include "endstone/core/server.h"
-#include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/lang/translatable.h"
@@ -31,52 +27,6 @@
 
 using endstone::core::EndstonePlayer;
 using endstone::core::EndstoneServer;
-
-void ServerPlayer::die(const ActorDamageSource &source)
-{
-    // Note: reset the packet sender in PlayerDeathManager to prevent BDS
-    // from sending the death message as we will take over it
-    auto *player_death_manager = getLevel()._getPlayerDeathManager();
-    player_death_manager->resetPacketSender();
-
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::die, this, source);
-
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = getEndstoneActor<EndstonePlayer>();
-    endstone_player.closeForm();
-
-    // Do a server side translation for logging
-    auto death_cause_message = source.getDeathMessage(getName(), this);
-    auto death_message = getI18n().get(death_cause_message.first, death_cause_message.second, nullptr);
-
-    // Fire player death event
-    const auto e = std::make_unique<endstone::PlayerDeathEvent>(endstone_player, death_message);
-    server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
-    if (e->getDeathMessage() != death_message) {
-        death_cause_message.first = e->getDeathMessage();
-        death_cause_message.second.clear();
-    }
-
-    // Send death info
-    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
-    const auto pk = std::static_pointer_cast<DeathInfoPacket>(packet);
-    pk->death_cause_message = death_cause_message;
-    sendNetworkPacket(*packet);
-
-    // Log death message to console if not empty
-    if (e->getDeathMessage().empty()) {
-        return;
-    }
-    server.getLogger().info(e->getDeathMessage());
-
-    // Broadcast death messages
-    if (player_death_manager->getPlayerDeathManagerProxy()->shouldShowDeathMessages()) {
-        endstone::Translatable tr{death_cause_message.first, death_cause_message.second};
-        for (const auto &player : server.getOnlinePlayers()) {
-            player->sendMessage(tr);
-        }
-    }
-}
 
 void ServerPlayer::setLocalPlayerAsInitialized()
 {

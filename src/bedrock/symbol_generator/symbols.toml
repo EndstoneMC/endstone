@@ -86,7 +86,6 @@ version = "1.21.50"
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 14291952
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 14311280
 # ServerPlayer
-"?die@ServerPlayer@@UEAAXAEBVActorDamageSource@@@Z" = 20376160
 "?disconnect@ServerPlayer@@QEAAXXZ" = 20376320
 "?setLocalPlayerAsInitialized@ServerPlayer@@QEAAXXZ" = 20449488
 # ServerScoreboard
@@ -182,7 +181,6 @@ version = "1.21.50"
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 91671520
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 91584688
 # ServerPlayer
-"_ZN12ServerPlayer3dieERK17ActorDamageSource" = 103631264
 "_ZN12ServerPlayer10disconnectEv" = 103650656
 "_ZN12ServerPlayer27setLocalPlayerAsInitializedEv" = 103657312
 # ServerScoreboard

@@ -16,6 +16,7 @@
 
 #include "bedrock/core/utility/pub_sub/publisher.h"
 #include "bedrock/core/utility/pub_sub/thread_model.h"
+#include "bedrock/forward.h"
 
 class IPlayerDeathManagerProxy : public Bedrock::EnableNonOwnerReferences {
 public:
@@ -24,26 +25,20 @@ public:
     [[nodiscard]] virtual bool shouldShowDeathMessages() const = 0;
 };
 
-class PlayerDeathManagerBase {  // TODO(fixme): figure out the name
+class IPlayerDeathManagerConnector {
 public:
-    virtual ~PlayerDeathManagerBase() = default;
+    virtual ~IPlayerDeathManagerConnector() = default;
+    virtual Bedrock::PubSub::Connector<void(Player &)> &getOnPlayerDeathConnector() = 0;
 };
 
-class PlayerDeathManager
-    : public PlayerDeathManagerBase,
-      public Bedrock::PubSub::Publisher<void(Player &), Bedrock::PubSub::ThreadModel::MultiThreaded> {
+class PlayerDeathManager : public IPlayerDeathManagerConnector {
 public:
-    [[nodiscard]] gsl::not_null<IPlayerDeathManagerProxy *> getPlayerDeathManagerProxy() const
-    {
-        return proxy_.get();
-    }
-
-    void resetPacketSender()  // Endstone
-    {
-        sender_.reset();
-    }
+    PlayerDeathManager(std::unique_ptr<IPlayerDeathManagerProxy>);
 
 private:
+    friend class endstone::core::EndstoneServer;
+
+    Bedrock::PubSub::Publisher<void(Player &), Bedrock::PubSub::ThreadModel::MultiThreaded> on_player_death_publisher_;
     std::unique_ptr<IPlayerDeathManagerProxy> proxy_;  // +136
     Bedrock::NonOwnerPointer<PacketSender> sender_;    // +144
 };

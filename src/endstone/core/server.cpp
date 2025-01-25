@@ -97,11 +97,12 @@ void EndstoneServer::setLevel(::Level &level)
     level_ = std::make_unique<EndstoneLevel>(level);
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
+    loadResourcePacks();
+    registerGameplayHandlers();
+    level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     getPluginManager().callEvent(event);
-    loadResourcePacks();
-    registerGameplayHandlers();
 }
 
 void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
