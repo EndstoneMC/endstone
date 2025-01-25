@@ -14,9 +14,6 @@
 
 #include "endstone/core/event/handlers/player_gameplay_handler.h"
 
-#include <endstone/core/message.h>
-#include <endstone/event/player/player_join_event.h>
-
 #include "bedrock/entity/components/replay_state_component.h"
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/death_info_packet.h"
@@ -27,6 +24,7 @@
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
+#include "endstone/core/message.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_death_event.h"
@@ -34,6 +32,8 @@
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
+#include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
 
 namespace endstone::core {
@@ -48,6 +48,7 @@ HandlerResult EndstonePlayerGameplayHandler::handleEvent(const PlayerGameplayEve
     auto visitor = [&](auto &&arg) -> HandlerResult {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerInitialSpawnEvent>>) {
@@ -124,6 +125,32 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
             // Broadcast death message if not empty
             if (!e->getDeathMessage().empty()) {
                 server.broadcastMessage(Translatable{death_cause_message.first, death_cause_message.second});
+            }
+        }
+    }
+    return true;
+}
+
+bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDisconnectEvent &event)
+{
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = entt::locator<EndstoneServer>::value();
+        auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
+        endstone_player.disconnect();
+
+        Translatable tr{ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};
+        const std::string quit_message = EndstoneMessage::toString(tr);
+
+        PlayerQuitEvent e{endstone_player, quit_message};
+        server.getPluginManager().callEvent(e);
+
+        if (e.getQuitMessage() != quit_message) {
+            tr = Translatable{e.getQuitMessage(), {}};
+        }
+
+        if (!e.getQuitMessage().empty()) {
+            for (const auto &online_player : server.getOnlinePlayers()) {
+                online_player->sendMessage(tr);
             }
         }
     }

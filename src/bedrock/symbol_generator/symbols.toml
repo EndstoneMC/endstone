@@ -85,8 +85,6 @@ version = "1.21.50"
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 14438928
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 14291952
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 14311280
-# ServerPlayer
-"?disconnect@ServerPlayer@@QEAAXXZ" = 20376320
 # ServerScoreboard
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 51136848
 # StartGamePacket
@@ -179,8 +177,6 @@ version = "1.21.50"
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 91583744
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 91671520
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 91584688
-# ServerPlayer
-"_ZN12ServerPlayer10disconnectEv" = 103650656
 # ServerScoreboard
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 144814368
 # StartGamePacket

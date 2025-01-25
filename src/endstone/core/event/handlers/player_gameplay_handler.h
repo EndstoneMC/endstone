@@ -29,6 +29,7 @@ public:
 
 private:
     bool handleEvent(const PlayerDamageEvent &event);
+    bool handleEvent(const PlayerDisconnectEvent &event);
     bool handleEvent(const PlayerFormResponseEvent &event);
     bool handleEvent(const PlayerFormCloseEvent &event);
     bool handleEvent(const PlayerInitialSpawnEvent &event);
