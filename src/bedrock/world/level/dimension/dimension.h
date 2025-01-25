@@ -26,6 +26,7 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block_source.h"
+#include "bedrock/world/level/chunk/chunk_source.h"
 #include "bedrock/world/level/dimension/dimension_height_range.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/levelgen/v2/providers/int_provider.h"
@@ -56,7 +57,10 @@ class Dimension : public IDimension,
                   public EnableGetWeakRef<Dimension>,
                   public std::enable_shared_from_this<Dimension> {
 public:
+    Dimension(ILevel &, DimensionType, DimensionHeightRange, Scheduler &, std::string);
+
     [[nodiscard]] Level &getLevel() const;
+    [[nodiscard]] ChunkSource &getChunkSource() const;
     BlockSource &getBlockSourceFromMainChunkSource() const;
 
     [[nodiscard]] const std::string &getName() const;                 // Endstone
@@ -81,5 +85,15 @@ private:
     std::unique_ptr<RuntimeLightingManager> runtime_lighting_manager_;                // +352
     std::string name_;                                                                // +360
     DimensionType id_;                                                                // +392
-    // ...
+    bool ultra_warm_;                                                                 // +356
+    bool has_ceiling_;                                                                // +357
+    bool has_weather_;                                                                // +358
+    bool has_skylight_;                                                               // +359
+    Brightness sky_darken_;                                                           // +360
+    std::unique_ptr<BlockEventDispatcher> dispatcher_;                                // +368
+    std::unique_ptr<TaskGroup> task_group_;                                           // +376
+    std::unique_ptr<TaskGroup> chunk_gen_task_group_;                                 // +384
+    std::unique_ptr<PostprocessingManager> post_processing_manager_;                  // +392
+    std::unique_ptr<SubChunkInterlocker> sub_chunk_interlocker_;                      // +400
+    std::unique_ptr<ChunkSource> chunk_source_;                                       // +408
 };

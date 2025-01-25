@@ -12,24 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#pragma once
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+#include <unordered_map>
 
-ChunkSource &Dimension::getChunkSource() const
-{
-    return *chunk_source_;
-}
+#include "bedrock/world/level/chunk/level_chunk.h"
+#include "bedrock/world/level/chunk_pos.h"
 
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
-
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+using ChunkSourceLookupMap = std::unordered_map<ChunkPos, std::weak_ptr<LevelChunk>>;

@@ -16,11 +16,13 @@
 
 #include "bedrock/platform/threading/mutex_details.h"
 #include "bedrock/platform/threading/spin_lock.h"
+#include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/chunk_pos.h"
 #include "bedrock/world/level/tick.h"
 
 class Level;
 class Dimension;
+class ChunkSource;
 
 class LevelChunk {
 public:
