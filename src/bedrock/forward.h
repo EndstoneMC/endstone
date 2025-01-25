@@ -200,7 +200,6 @@ enum class BlockTintType;
 enum class BurnOdds;
 enum class ChunkCachedDataState : std::int8_t;
 enum class ChunkDebugDisplaySavedState : std::int8_t;
-enum class ChunkState : std::int8_t;
 enum class ChunkTerrainDataState : std::int8_t;
 enum class CreativeItemCategory;
 enum class FertilizerType;

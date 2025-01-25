@@ -20,7 +20,7 @@ namespace endstone::python {
 
 void init_damage(py::module &m)
 {
-    py::class_<DamageSource>(m, "DamageSource")
+    py::class_<DamageSource>(m, "DamageSource", "Represents a source of damage.")
         .def_property_readonly("type", &DamageSource::getType, "Get the damage type.")
         .def_property_readonly("actor", &DamageSource::getActor, py::return_value_policy::reference,
                                "Get the actor that caused the damage to occur.")
