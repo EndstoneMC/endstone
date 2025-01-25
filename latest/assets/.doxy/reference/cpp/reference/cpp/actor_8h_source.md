@@ -96,6 +96,19 @@ public:
 };
 
 }  // namespace endstone
+
+namespace fmt {
+template <>
+struct formatter<endstone::Actor> : formatter<string_view> {
+    using Type = endstone::Actor;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}", val.getName());
+    }
+};
+}  // namespace fmt
 ```
 
 

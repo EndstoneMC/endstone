@@ -47,8 +47,10 @@
   </compound>
   <compound refid="classendstone_1_1ActorDeathEvent" kind="class"><name>endstone::ActorDeathEvent</name>
     <member refid="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1ac6b8ca9f296013ab0943df44b763e4a3" kind="variable"><name>damage_source_</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1a0a2ffc4f1aa535e3afd006a934114f1a" kind="function"><name>ActorDeathEvent</name></member>
     <member refid="classendstone_1_1ActorDeathEvent_1ad3572783702cd3e40447a3d6344a8094" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1ActorDeathEvent_1a07f53f59692095b4a31a6e3d95128015" kind="function"><name>ActorEvent</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1ac269e4dac094cf1275a1fe60302872ed" kind="function"><name>getDamageSource</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorEvent" kind="class"><name>endstone::ActorEvent</name>
     <member refid="classendstone_1_1ActorEvent_1a5bda59f76a2df1a35f89d47c6ef2bcbf" kind="variable"><name>actor_</name></member>
@@ -399,7 +401,7 @@
   </compound>
   <compound refid="classendstone_1_1DamageSource" kind="class"><name>endstone::DamageSource</name>
     <member refid="classendstone_1_1DamageSource_1ad7317c28b8853f400f518106f3f9d659" kind="function"><name>~DamageSource</name></member>
-    <member refid="classendstone_1_1DamageSource_1ab42c44f31d7902b6737335056d55a389" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kind="function"><name>getActor</name></member>
     <member refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kind="function"><name>getDamagingActor</name></member>
     <member refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" kind="function"><name>isIndirect</name></member>
@@ -477,6 +479,10 @@
     <member refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" kind="function"><name>setOnClose</name></member>
     <member refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" kind="function"><name>getOnClose</name></member>
   </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1Actor_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Actor &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Actor_01_4_1a0b7e438b7e84f8f70a411fbe0aea3175" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Actor_01_4_1a8e26093faffc87121ab193cb1e5757af" kind="function"><name>format</name></member>
+  </compound>
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Block &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1a329e503a43a8c88c344787df53c06dfb" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1add1c38750b0aa11012686b8474844c70" kind="function"><name>format</name></member>
@@ -500,6 +506,10 @@
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4" kind="struct"><name>fmt::formatter&lt; endstone::BlockStates::value_type &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1aad09b775459795e7252f362372b83072" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1adc0e1b7666aff1112b9b54564d09366d" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4" kind="struct"><name>fmt::formatter&lt; endstone::DamageSource &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4_1a550a3ede03ae8cb3363f4506b352053a" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4_1a28a57016ce7ccd62f11a6a308793c01f" kind="function"><name>format</name></member>
   </compound>
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" kind="struct"><name>fmt::formatter&lt; endstone::ItemStack &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1ad78d75e07f93f63fc0413cee2954d7f0" kind="typedef"><name>Type</name></member>
@@ -885,7 +895,7 @@
   <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
     <member refid="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a8d43b4af4294e73278d0d88b27a8ad03" kind="variable"><name>death_message_</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a6eb8acf00eac81ecc98168799fa32df1" kind="function"><name>PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1af523e0468d3f29577029c070abf498c4" kind="function"><name>PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a5babbc8a8524edf5b68b86c9e9d21380" kind="function"><name>~PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1ac76e5c152bc08891e8ecf76802c66682" kind="function"><name>getDeathMessage</name></member>

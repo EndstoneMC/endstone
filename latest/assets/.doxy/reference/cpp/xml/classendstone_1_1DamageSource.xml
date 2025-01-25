@@ -16,11 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/damage/damage_source.h" line="24" column="13"/>
+        <location file="include/endstone/damage/damage_source.h" line="28" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1DamageSource_1ab42c44f31d7902b6737335056d55a389" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::string</type>
-        <definition>virtual std::string endstone::DamageSource::getType</definition>
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string_view</type>
+        <definition>virtual std::string_view endstone::DamageSource::getType</definition>
         <argsstring>() const =0</argsstring>
         <name>getType</name>
         <qualifiedname>endstone::DamageSource::getType</qualifiedname>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/damage/damage_source.h" line="31" column="26"/>
+        <location file="include/endstone/damage/damage_source.h" line="35" column="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/damage/damage_source.h" line="42" column="20"/>
+        <location file="include/endstone/damage/damage_source.h" line="46" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/damage/damage_source.h" line="52" column="20"/>
+        <location file="include/endstone/damage/damage_source.h" line="56" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/damage/damage_source.h" line="62" column="19"/>
+        <location file="include/endstone/damage/damage_source.h" line="66" column="19"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -99,11 +99,11 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/damage/damage_source.h" line="22" column="1" bodyfile="include/endstone/damage/damage_source.h" bodystart="22" bodyend="63"/>
+    <location file="include/endstone/damage/damage_source.h" line="26" column="1" bodyfile="include/endstone/damage/damage_source.h" bodystart="26" bodyend="67"/>
     <listofallmembers>
       <member refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>getActor</name></member>
       <member refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>getDamagingActor</name></member>
-      <member refid="classendstone_1_1DamageSource_1ab42c44f31d7902b6737335056d55a389" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>getType</name></member>
+      <member refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>getType</name></member>
       <member refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>isIndirect</name></member>
       <member refid="classendstone_1_1DamageSource_1ad7317c28b8853f400f518106f3f9d659" prot="public" virt="virtual"><scope>endstone::DamageSource</scope><name>~DamageSource</name></member>
     </listofallmembers>

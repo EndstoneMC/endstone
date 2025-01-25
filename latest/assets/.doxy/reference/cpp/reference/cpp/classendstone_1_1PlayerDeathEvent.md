@@ -165,7 +165,7 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::string death\_message) <br> |
+|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, std::string death\_message) <br> |
 |  [**const**](classendstone_1_1Vector.md) std::string & | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setDeathMessage**](#function-setdeathmessage) ([**const**](classendstone_1_1Vector.md) std::string & death\_message) <br>_Set the death message that will appear to everyone on the server._  |
@@ -178,7 +178,8 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](classendstone_1_1ActorDeathEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1Vector.md) & actor) <br> |
+|   | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md#function-actordeathevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source) <br> |
+|  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](classendstone_1_1ActorDeathEvent.md#function-getdamagesource) () const<br>_Gets the source of damage which caused the death._  |
 | virtual std::string | [**getEventName**](classendstone_1_1ActorDeathEvent.md#function-geteventname) () override const<br> |
 
 
@@ -413,6 +414,7 @@ const std::string endstone::PlayerDeathEvent::NAME;
 ```C++
 inline explicit endstone::PlayerDeathEvent::PlayerDeathEvent (
     Player & player,
+    std::unique_ptr< DamageSource > damage_source,
     std::string death_message
 ) 
 ```
