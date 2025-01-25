@@ -73,7 +73,6 @@ public:
 
 private:
     friend class endstone::core::EndstoneServer;
-    friend class endstone::core::EndstoneLevel;
 
     // NOLINTBEGIN(*-identifier-naming)
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,

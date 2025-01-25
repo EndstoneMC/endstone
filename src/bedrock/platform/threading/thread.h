@@ -16,16 +16,6 @@
 
 #include <thread>
 
-#include "bedrock/bedrock.h"
-
 namespace Bedrock::Threading {
-
-class AssignedThread {
-public:
-    [[nodiscard]] bool isOnThread() const;
-
-private:
-    std::thread::id assigned_id_;
-};
-
+using Thread = std::thread;
 }  // namespace Bedrock::Threading

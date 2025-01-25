@@ -14,18 +14,14 @@
 
 #pragma once
 
-#include <thread>
+#include "bedrock/core/threading/atomicops.h"
 
-#include "bedrock/bedrock.h"
-
-namespace Bedrock::Threading {
-
-class AssignedThread {
-public:
-    [[nodiscard]] bool isOnThread() const;
-
+template <typename T, std::size_t MAX_BLOCK_SIZE>
+class SPSCQueue {
 private:
-    std::thread::id assigned_id_;
+    struct Block {};
+    Lockless::WeakAtomic<Block *> front_block_;
+    char cacheline_filler_[56];
+    Lockless::WeakAtomic<Block *> tail_block_;
+    std::size_t largest_block_size_;
 };
-
-}  // namespace Bedrock::Threading

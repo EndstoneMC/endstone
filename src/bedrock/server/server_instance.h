@@ -16,7 +16,9 @@
 
 #include "bedrock/app_platform_listener.h"
 #include "bedrock/core/file/storage_area_state_listener.h"
+#include "bedrock/core/threading/spsc_queue.h"
 #include "bedrock/network/loopback_packet_sender.h"
+#include "bedrock/platform/threading/thread.h"
 #include "bedrock/util/timer.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
@@ -30,10 +32,20 @@ class ServerInstance : public Bedrock::EnableNonOwnerReferences,
                        public Core::StorageAreaStateListener {
 public:
     ServerInstance(IMinecraftApp &, const Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> &);
+    enum InstanceState : unsigned int {
+        Running = 0,
+        Suspended = 1,
+        WaitingLeaveGame = 2,
+        Stopped = 3,
+        NotStarted = 4,
+    };
+
     Minecraft *getMinecraft();
     PacketSender &getPacketSender();
 
 private:
+    friend class endstone::core::EndstoneServer;
+
     std::chrono::steady_clock::time_point last_sync_time_;
     IMinecraftApp &app_;
     std::unique_ptr<Minecraft> minecraft_;
@@ -41,4 +53,15 @@ private:
     std::unique_ptr<LoopbackPacketSender> packet_sender_;
     std::unique_ptr<Timer> sim_timer_;
     std::unique_ptr<Timer> real_timer_;
+    std::unique_ptr<Scheduler> scheduler_;
+    std::unique_ptr<EducationOptions> education_options_;
+    LevelStorage *storage_;
+    std::atomic_bool in_update_;
+    std::atomic<int> write_ref_counter_;
+    std::atomic_bool thread_should_join_;
+    Bedrock::Threading::Mutex mutex_destruction_;
+    Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> event_coordinator_;
+    std::atomic<InstanceState> instance_state_;
+    SPSCQueue<std::function<void()>, 512UL> command_queue_;
+    Bedrock::Threading::Thread server_instance_thread_;
 };

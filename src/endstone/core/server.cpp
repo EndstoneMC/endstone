@@ -415,7 +415,7 @@ void EndstoneServer::broadcastMessage(const Message &message) const
 
 bool EndstoneServer::isPrimaryThread() const
 {
-    return Bedrock::Threading::getServerThread().isOnThread();
+    return std::this_thread::get_id() == server_instance_->server_instance_thread_.get_id();
 }
 
 Scoreboard *EndstoneServer::getScoreboard() const

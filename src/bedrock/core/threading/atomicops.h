@@ -14,18 +14,12 @@
 
 #pragma once
 
-#include <thread>
+#include <atomic>
 
-#include "bedrock/bedrock.h"
-
-namespace Bedrock::Threading {
-
-class AssignedThread {
-public:
-    [[nodiscard]] bool isOnThread() const;
-
+namespace Lockless {
+template <typename T>
+class WeakAtomic {
 private:
-    std::thread::id assigned_id_;
+    std::atomic<T> value_;
 };
-
-}  // namespace Bedrock::Threading
+}  // namespace Lockless

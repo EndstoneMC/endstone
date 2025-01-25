@@ -82,6 +82,7 @@ class DimensionBrightnessRamp;
 class DimensionConversionData;
 class DimensionManager;
 class EducationLevelSettings;
+class EducationOptions;
 class EntitySystems;
 class EquipmentSlot;
 class Experiments;

@@ -23,9 +23,4 @@ bool AssignedThread::isOnThread() const
     return std::this_thread::get_id() == assigned_id_;
 }
 
-AssignedThread &getServerThread()
-{
-    return BEDROCK_CALL(&getServerThread);
-}
-
 }  // namespace Bedrock::Threading
