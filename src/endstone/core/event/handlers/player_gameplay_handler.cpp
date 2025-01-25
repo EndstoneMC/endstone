@@ -21,6 +21,7 @@
 #include "bedrock/world/actor/actor.h"
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/damage/damage_source.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
@@ -114,7 +115,8 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
             // Fire player death event
             auto death_cause_message = event.damage_source->getDeathMessage(player->getName(), player);
             auto death_message = getI18n().get(death_cause_message.first, death_cause_message.second, nullptr);
-            const auto e = std::make_unique<PlayerDeathEvent>(endstone_player, death_message);
+            const auto e = std::make_unique<PlayerDeathEvent>(
+                endstone_player, std::make_unique<EndstoneDamageSource>(*event.damage_source), death_message);
             server.getPluginManager().callEvent(*static_cast<PlayerEvent *>(e.get()));
             if (e->getDeathMessage() != death_message) {
                 death_cause_message.first = e->getDeathMessage();

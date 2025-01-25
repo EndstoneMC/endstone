@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/damage/damage_source.h"
 #include "endstone/event/actor/actor_event.h"
 
 namespace endstone {
@@ -23,7 +24,10 @@ namespace endstone {
  */
 class ActorDeathEvent : public ActorEvent<Mob> {
 public:
-    using ActorEvent::ActorEvent;
+    ActorDeathEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source)
+        : ActorEvent(actor), damage_source_(std::move(damage_source))
+    {
+    }
 
     inline static const std::string NAME = "ActorDeathEvent";
     [[nodiscard]] std::string getEventName() const override
@@ -31,6 +35,18 @@ public:
         return NAME;
     }
 
+    /**
+     * @brief Gets the source of damage which caused the death.
+     *
+     * @return a DamageSource detailing the source of the damage for the death.
+     */
+    [[nodiscard]] DamageSource &getDamageSource() const
+    {
+        return *damage_source_;
+    }
+
+private:
+    std::unique_ptr<DamageSource> damage_source_;
     // TODO(event): add drops and dropExp
 };
 

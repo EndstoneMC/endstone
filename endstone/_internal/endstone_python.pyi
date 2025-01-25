@@ -232,6 +232,11 @@ class ActorDeathEvent(MobEvent):
     @staticmethod
     def _pybind11_conduit_v1_(*args, **kwargs):
         ...
+    @property
+    def damage_source(self) -> DamageSource:
+        """
+        Gets the source of damage which caused the death.
+        """
 class ActorEvent(Event):
     """
     Represents an Actor-related event.
@@ -1042,6 +1047,8 @@ class Criteria:
 class DamageSource:
     @staticmethod
     def _pybind11_conduit_v1_(*args, **kwargs):
+        ...
+    def __str__(self) -> str:
         ...
     @property
     def actor(self) -> Actor:

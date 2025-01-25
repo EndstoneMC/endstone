@@ -19,6 +19,7 @@
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
+#include "bedrock/entity/components/fall_distance_component.h"
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
@@ -311,4 +312,10 @@ AttributeInstance &Actor::getMutableAttribute(const HashedString &name)
 {
     auto component = getPersistentComponent<AttributesComponent>();
     return component->attributes.getMutableInstance(name);
+}
+
+float Actor::getFallDistance() const
+{
+    auto component = getPersistentComponent<FallDistanceComponent>();
+    return component->value;
 }

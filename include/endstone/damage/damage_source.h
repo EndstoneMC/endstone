@@ -77,7 +77,7 @@ struct formatter<endstone::DamageSource> : formatter<string_view> {
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
         auto it = ctx.out();
-        it = fmt::format_to(it, "DamageSource(type={},", val.getType());
+        it = fmt::format_to(it, "DamageSource(type={}", val.getType());
         if (auto *actor = val.getActor()) {
             it = fmt::format_to(it, ", actor={}", *actor);
         }

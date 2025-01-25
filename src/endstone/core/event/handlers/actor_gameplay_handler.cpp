@@ -14,11 +14,11 @@
 
 #include "endstone/core/event/handlers/actor_gameplay_handler.h"
 
-#include <endstone/event/actor/actor_remove_event.h>
-
 #include "bedrock/world/actor/actor.h"
+#include "endstone/core/damage/damage_source.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_death_event.h"
+#include "endstone/event/actor/actor_remove_event.h"
 
 namespace endstone::core {
 
@@ -63,7 +63,7 @@ bool EndstoneActorGameplayHandler::handleEvent(const ActorKilledEvent &event)
 {
     if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
         const auto &server = entt::locator<EndstoneServer>::value();
-        ActorDeathEvent e{mob->getEndstoneActor<EndstoneMob>()};
+        ActorDeathEvent e{mob->getEndstoneActor<EndstoneMob>(), std::make_unique<EndstoneDamageSource>(*event.source)};
         server.getPluginManager().callEvent(e);
     }
     return true;
