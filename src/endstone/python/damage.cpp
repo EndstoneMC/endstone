@@ -26,7 +26,8 @@ void init_damage(py::module &m)
                                "Get the actor that caused the damage to occur.")
         .def_property_readonly("damaging_actor", &DamageSource::getDamagingActor, py::return_value_policy::reference,
                                "Get the actor that directly caused the damage.")
-        .def_property_readonly("is_indirect", &DamageSource::isIndirect, "Get if this damage is indirect.");
+        .def_property_readonly("is_indirect", &DamageSource::isIndirect, "Get if this damage is indirect.")
+        .def("__str__", [](const DamageSource &self) { return fmt::format("{}", self); });
 }
 
 }  // namespace endstone::python

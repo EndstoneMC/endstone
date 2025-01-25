@@ -53,6 +53,7 @@ add_library(endstone_core
         command/defaults/reload_command.cpp
         command/defaults/status_command.cpp
         command/defaults/version_command.cpp
+        damage/damage_source.cpp
         event/handlers/actor_gameplay_handler.cpp
         event/handlers/block_gameplay_handler.cpp
         event/handlers/level_gameplay_handler.cpp

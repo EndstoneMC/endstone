@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <string>
+
+#include "endstone/actor/actor.h"
+
 namespace endstone {
 
 /**
@@ -28,7 +32,7 @@ public:
      *
      * @return the damage type
      */
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual std::string_view getType() const = 0;
 
     /**
      * @brief Get the actor that caused the damage to occur.
@@ -63,3 +67,31 @@ public:
 };
 
 }  // namespace endstone
+
+namespace fmt {
+template <>
+struct formatter<endstone::DamageSource> : formatter<string_view> {
+    using Type = endstone::DamageSource;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        auto it = ctx.out();
+        it = fmt::format_to(it, "DamageSource(type={},", val.getType());
+        if (auto *actor = val.getActor()) {
+            it = fmt::format_to(it, ", actor={}", *actor);
+        }
+        else {
+            it = fmt::format_to(it, ", actor=None");
+        }
+        if (auto *damaging_actor = val.getDamagingActor()) {
+            it = fmt::format_to(it, ", damaging_actor={}", *damaging_actor);
+        }
+        else {
+            it = fmt::format_to(it, ", damaging_actor=None");
+        }
+        it = fmt::format_to(it, ")");
+        return it;
+    }
+};
+}  // namespace fmt
