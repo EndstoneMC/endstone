@@ -360,6 +360,8 @@
       <node id="55">
         <label>include/endstone/level/chunk.h</label>
         <link refid="chunk_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
       </node>
       <node id="21">
         <label>include/endstone/level/dimension.h</label>

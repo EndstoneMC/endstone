@@ -11,6 +11,7 @@
 
 
 * `#include "endstone/block/block.h"`
+* `#include "endstone/level/chunk.h"`
 * `#include "endstone/util/result.h"`
 
 

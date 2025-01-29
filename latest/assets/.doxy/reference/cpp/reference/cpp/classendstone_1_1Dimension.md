@@ -63,6 +63,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 | virtual Result&lt; std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getHighestBlockAt**](#function-gethighestblockat-22) ([**Location**](classendstone_1_1Location.md) location) const = 0<br>_Gets the highest non-empty (impassable) block at the given coordinates._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getHighestBlockYAt**](#function-gethighestblockyat) ([**int**](classendstone_1_1Vector.md) x, [**int**](classendstone_1_1Vector.md) z) const = 0<br>_Gets the highest non-empty (impassable) coordinate at the given coordinates._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level to which this dimension belongs._  |
+| virtual std::vector&lt; std::unique\_ptr&lt; [**Chunk**](classendstone_1_1Chunk.md) &gt; &gt; | [**getLoadedChunks**](#function-getloadedchunks) () = 0<br>_Gets a list of all loaded Chunks._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this dimension._  |
 | virtual [**Type**](classendstone_1_1Dimension.md#enum-type) | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this dimension._  |
 | virtual  | [**~Dimension**](#function-dimension) () = default<br> |
@@ -312,6 +313,31 @@ virtual Level & endstone::Dimension::getLevel () const = 0
 **Returns:**
 
 [**Level**](classendstone_1_1Level.md) containing this dimension. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getLoadedChunks 
+
+_Gets a list of all loaded Chunks._ 
+```C++
+virtual std::vector< std::unique_ptr< Chunk > > endstone::Dimension::getLoadedChunks () = 0
+```
+
+
+
+
+
+**Returns:**
+
+All loaded chunks 
 
 
 
