@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <optional>
+#include <vector>
+
+#include "bedrock/forward.h"
 #include "bedrock/platform/threading/mutex_details.h"
 #include "bedrock/platform/threading/spin_lock.h"
 #include "bedrock/world/level/block_pos.h"
@@ -25,21 +29,35 @@ class Level;
 class Dimension;
 class ChunkSource;
 
+enum class SubChunkInitMode : int {
+    All = 0,
+    AllButLast = 1,
+    None = 2,
+    ClientRequestSystemBlock = 3,
+    ReplaceWithAllAir = 4,
+};
+
 class LevelChunk {
 public:
-    [[nodiscard]] Tick getLastTick() const
-    {
-        return last_tick_;
-    }
+    LevelChunk(Dimension &, const ChunkPos &, bool, SubChunkInitMode, bool);
+
+    [[nodiscard]] const std::atomic<ChunkState> &getState() const;
+    [[nodiscard]] Tick getLastTick() const;
+    [[nodiscard]] const BlockPos &getMin() const;
+    [[nodiscard]] const BlockPos &getMax() const;
+    [[nodiscard]] const ChunkPos &getPosition() const;
+    [[nodiscard]] ChunkSource *getGenerator() const;
+    [[nodiscard]] Dimension &getDimension() const;
+    [[nodiscard]] Level &getLevel() const;
 
 private:
     Bedrock::Threading::Mutex block_entity_access_lock_;     // +0
-    Level *level_;                                           // +80
-    Dimension *dimension_;                                   // +88
+    Level &level_;                                           // +80
+    Dimension &dimension_;                                   // +88
     BlockPos min_;                                           // +96
     BlockPos max_;                                           // +108
     ChunkPos position_;                                      // +120
-    std::uint8_t lighting_fixup_done_;                       // +128
+    bool lighting_fixup_done_;                               // +128
     std::atomic<bool> lighting_task_active_;                 // +129
     bool read_only_;                                         // +130
     ChunkSource *generator_;                                 // +136

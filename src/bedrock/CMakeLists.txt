@@ -91,6 +91,7 @@ add_library(bedrock STATIC
         world/level/block/block_legacy.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/registry/block_type_registry.cpp
+        world/level/chunk/level_chunk.cpp
         world/level/dimension/dimension.cpp
         world/scores/objective.cpp
         world/scores/scoreboard.cpp

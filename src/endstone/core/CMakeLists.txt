@@ -66,6 +66,7 @@ add_library(endstone_core
         inventory/item_stack.cpp
         inventory/player_inventory.cpp
         lang/language.cpp
+        level/chunk.cpp
         level/dimension.cpp
         level/level.cpp
         network/packet_adapter.cpp
