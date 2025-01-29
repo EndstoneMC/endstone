@@ -106,6 +106,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**language.h**](language_8h.md)     
             * **file** [**translatable.h**](translatable_8h.md)     
         * **dir** [**level**](dir_8e239ca1e5fd0d936d66a30330d3a329.md)     
+            * **file** [**chunk.h**](chunk_8h.md)     
             * **file** [**dimension.h**](dimension_8h.md)     
             * **file** [**level.h**](level_8h.md)     
             * **file** [**location.h**](location_8h.md)     

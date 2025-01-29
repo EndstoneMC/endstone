@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_8e239ca1e5fd0d936d66a30330d3a329" kind="dir">
     <compoundname>include/endstone/level</compoundname>
+    <innerfile refid="chunk_8h">chunk.h</innerfile>
     <innerfile refid="dimension_8h">dimension.h</innerfile>
     <innerfile refid="level_8h">level.h</innerfile>
     <innerfile refid="location_8h">location.h</innerfile>

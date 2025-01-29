@@ -56,6 +56,8 @@
 
 * [**Cancellable**](classendstone_1_1Cancellable.md)
 ([**endstone**](namespaceendstone.md))
+* [**Chunk**](classendstone_1_1Chunk.md)
+([**endstone**](namespaceendstone.md))
 * [**ColorFormat**](structendstone_1_1ColorFormat.md)
 ([**endstone**](namespaceendstone.md))
 * [**Command**](classendstone_1_1Command.md)

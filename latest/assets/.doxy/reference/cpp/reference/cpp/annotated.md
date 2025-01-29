@@ -27,6 +27,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._     
     * **class** [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) [_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._    
     * **class** [**Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._     
+    * **class** [**Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._     
     * **struct** [**ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._     
     * **class** [**Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     

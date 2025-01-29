@@ -48,6 +48,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) 
 * **class** [**endstone::BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._ 
 * **class** [**endstone::BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._ 
+* **class** [**endstone::Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._ 
 * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     

@@ -48,6 +48,8 @@
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>include/endstone/actor/mob.h</label>
@@ -57,19 +59,19 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="51">
+      <node id="52">
         <label>include/endstone/block/block.h</label>
         <link refid="block_8h_source"/>
-        <childnode refid="52" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
         <childnode refid="54" relation="include">
         </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
       </node>
-      <node id="52">
+      <node id="53">
         <label>include/endstone/block/block_state.h</label>
         <link refid="block__state_8h_source"/>
         <childnode refid="8" relation="include">
@@ -131,7 +133,7 @@
         <label>include/endstone/event/block/block_break_event.h</label>
         <link refid="block__break__event_8h_source"/>
       </node>
-      <node id="53">
+      <node id="54">
         <label>include/endstone/event/block/block_event.h</label>
         <link refid="block__event_8h_source"/>
         <childnode refid="6" relation="include">
@@ -291,40 +293,44 @@
         <label>include/endstone/event/server/server_load_event.h</label>
         <link refid="server__load__event_8h_source"/>
       </node>
-      <node id="48">
+      <node id="49">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="49">
+      <node id="50">
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
-      <node id="47">
+      <node id="48">
         <label>include/endstone/event/weather/weather_event.h</label>
         <link refid="weather__event_8h_source"/>
-        <childnode refid="48" relation="include">
-        </childnode>
         <childnode refid="49" relation="include">
         </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
       </node>
-      <node id="54">
+      <node id="46">
+        <label>include/endstone/level/chunk.h</label>
+        <link refid="chunk_8h_source"/>
+      </node>
+      <node id="55">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
       </node>
-      <node id="46">
+      <node id="47">
         <label>include/endstone/level/level.h</label>
         <link refid="level_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>include/endstone/level/location.h</label>
         <link refid="location_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
@@ -338,7 +344,7 @@
         <link refid="position_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
       <node id="5">

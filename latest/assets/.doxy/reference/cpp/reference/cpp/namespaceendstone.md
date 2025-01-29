@@ -56,6 +56,7 @@
 | class | [**BossBar**](classendstone_1_1BossBar.md) <br>_Represents a boss bar that is displayed to players._  |
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
 | class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;[**typename**](classendstone_1_1Vector.md) EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
+| class | [**Chunk**](classendstone_1_1Chunk.md) <br>_Represents a chunk of blocks._  |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
 | class | [**Command**](classendstone_1_1Command.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._ |
 | class | [**CommandExecutor**](classendstone_1_1CommandExecutor.md) <br>_Represents a class which contains a single method for executing commands._  |
