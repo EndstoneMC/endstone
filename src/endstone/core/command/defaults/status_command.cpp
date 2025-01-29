@@ -64,11 +64,11 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
         tps_color = ColorFormat::Gold;
     }
 
-    sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%) {:.2f}ms", ColorFormat::Gold, tps_color,
-                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage(),
+    sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color,
+                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage(), ColorFormat::Gold, tps_color,
                        server.getCurrentMillisecondsPerTick());
-    sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%) {:.2f}ms", ColorFormat::Gold, tps_color,
-                       server.getAverageTicksPerSecond(), server.getAverageTickUsage(),
+    sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color,
+                       server.getAverageTicksPerSecond(), server.getAverageTickUsage(), ColorFormat::Gold, tps_color,
                        server.getAverageMillisecondsPerTick());
 
     sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, detail::get_thread_count());
@@ -79,7 +79,7 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
                        detail::get_total_virtual_memory() / 1024.0F / 1024.0F);
 
     auto *level = server.getLevel();
-    sender.sendMessage("{}World \"{}\":", ColorFormat::Gold, level->getName());
+    sender.sendMessage("{}Level \"{}\":", ColorFormat::Gold, level->getName());
     auto actors = server.getLevel()->getActors();
     for (const auto &dimension : server.getLevel()->getDimensions()) {
         auto actor_count = 0;
@@ -88,7 +88,9 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
                 actor_count++;
             }
         }
-        sender.sendMessage("- {}Dimension \"{}\": {}{}{} entities", ColorFormat::Gold, dimension->getName(),
+        sender.sendMessage("- {}Dimension \"{}\": {}{}{} loaded chunks, {}{}{} entities", ColorFormat::Gold,
+                           dimension->getName(),                                                       //
+                           ColorFormat::Red, dimension->getLoadedChunks().size(), ColorFormat::Green,  //
                            ColorFormat::Red, actor_count, ColorFormat::Green);
     }
 
