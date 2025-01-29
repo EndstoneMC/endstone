@@ -1165,6 +1165,11 @@ class Dimension:
         Gets the level to which this dimension belongs
         """
     @property
+    def loaded_chunks(self) -> list[Chunk]:
+        """
+        Gets a list of all loaded Chunks
+        """
+    @property
     def name(self) -> str:
         """
         Gets the name of this dimension
