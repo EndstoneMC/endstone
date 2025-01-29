@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/block/block.h"
+#include "endstone/level/chunk.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -101,5 +102,12 @@ public:
      * @return Highest non-empty block
      */
     [[nodiscard]] virtual Result<std::shared_ptr<Block>> getHighestBlockAt(Location location) const = 0;
+
+    /**
+     * @brief Gets a list of all loaded Chunks
+     *
+     * @return All loaded chunks
+     */
+    [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
 };
 }  // namespace endstone

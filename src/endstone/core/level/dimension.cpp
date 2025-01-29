@@ -17,6 +17,7 @@
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/level/chunk.h"
 #include "endstone/core/level/level.h"
 
 namespace endstone::core {
@@ -74,6 +75,20 @@ Result<std::shared_ptr<Block>> EndstoneDimension::getHighestBlockAt(int x, int z
 Result<std::shared_ptr<Block>> EndstoneDimension::getHighestBlockAt(Location location) const
 {
     return getHighestBlockAt(location.getBlockX(), location.getBlockZ());
+}
+
+std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
+{
+    std::vector<std::unique_ptr<Chunk>> chunks;
+    for (const auto &[pos, weak_lc] : dimension_.getChunkSource().getStorage()) {
+        if (weak_lc.expired()) {
+            continue;
+        }
+        if (auto chunk = weak_lc.lock(); chunk && chunk->getState() >= ChunkState::Loaded) {
+            chunks.emplace_back(std::make_unique<EndstoneChunk>(*chunk));
+        }
+    }
+    return chunks;
 }
 
 ::Dimension &EndstoneDimension::getHandle() const
