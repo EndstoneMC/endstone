@@ -1,8 +1,7 @@
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.build import check_min_cppstd
-from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
-from conans.model.version import Version
+from conan.tools.cmake import CMakeDeps, CMakeToolchain, cmake_layout
 
 
 class EndstoneRecipe(ConanFile):
@@ -34,50 +33,28 @@ class EndstoneRecipe(ConanFile):
         return 20
 
     @property
-    def _min_msvc_compiler_version(self):
-        # NOTE: the latest bedrock server for Windows is compiled with MSVC 2022 (v193),
-        # but it should be ABI compatible with MSVC 2017 (v191)
-        return 191  # Visual Studio 17
-
-    @property
-    def _min_clang_compiler_version(self):
-        # NOTE: the latest bedrock server for Linux is compiled with Clang 15.0.7,
-        # but it should be ABI compatible with Clang 16 (required by crashpad).
-        return 16
-
-    @property
     def _is_dev_build(self):
         return "dev" in self.version
 
     @property
-    def _should_enable_devtools(self):
+    def _with_devtools(self):
         return self.settings.os == "Windows"
 
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)
-
-        compiler = self.settings.compiler
-        compiler_version = self.settings.compiler.version
 
         if self.settings.arch != "x86_64":
             raise ConanInvalidConfiguration(
                 f"{self.ref} can only be built on x86_64. {self.settings.arch} is not supported."
             )
 
-        if self.settings.os == "Windows":
-            if not compiler == "msvc" or Version(compiler_version) < self._min_msvc_compiler_version:
-                raise ConanInvalidConfiguration(
-                    f"{self.ref} requires MSVC compiler version >= {self._min_msvc_compiler_version} on Windows."
-                )
-        elif self.settings.os == "Linux":
-            if not compiler == "clang" or Version(compiler_version) < self._min_clang_compiler_version:
-                raise ConanInvalidConfiguration(
-                    f"{self.ref} requires Clang compiler version >= {self._min_clang_compiler_version} on Linux."
-                )
-            if not compiler.libcxx == "libc++":
-                raise ConanInvalidConfiguration(f"{self.ref} requires C++ standard libraries libc++ on Linux.")
-        else:
-            raise ConanInvalidConfiguration(f"{self.ref} can only not be built on {self.settings.os}.")
+        if self.settings.os not in ["Windows", "Linux"]:
+            raise ConanInvalidConfiguration(
+                f"{self.ref} can only be built on Windows or Linux. {self.settings.os} is not supported."
+            )
+
+        if self.settings.os == "Linux" and not self.settings.compiler.libcxx == "libc++":
+            raise ConanInvalidConfiguration(f"{self.ref} requires C++ standard libraries libc++ on Linux.")
 
     def requirements(self):
         self.requires("base64/0.5.2")
@@ -88,7 +65,6 @@ class EndstoneRecipe(ConanFile):
         self.requires("entt/3.14.0")
         self.requires("expected-lite/0.8.0")
         self.requires("fmt/[~10]", transitive_headers=True, transitive_libs=True)
-        # self.requires("funchook/1.1.3")
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.7")
         self.requires("ms-gsl/4.1.0")
@@ -101,7 +77,7 @@ class EndstoneRecipe(ConanFile):
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
-        if self._should_enable_devtools:
+        if self._with_devtools:
             self.requires("glew/2.2.0")
             self.requires("glfw/3.4")
             self.requires("imgui/1.91.5-docking")
@@ -124,6 +100,6 @@ class EndstoneRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
         tc = CMakeToolchain(self)
-        if self._should_enable_devtools:
+        if self._with_devtools:
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
         tc.generate()
