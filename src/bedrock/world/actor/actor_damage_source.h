@@ -21,6 +21,7 @@
 #include "bedrock/world/actor/actor_damage_cause.h"
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/level/block/block.h"
 
 class Actor;
 
@@ -55,4 +56,17 @@ public:
 
 private:
     ActorDamageCause cause_;
+};
+
+class ActorDamageByBlockSource : public ActorDamageSource {
+public:
+    using ActorDamageSource::ActorDamageSource;
+    ActorDamageByBlockSource(const Block &, ActorDamageCause);
+    [[nodiscard]] const Block &getBlock() const;
+    [[nodiscard]] bool isBlockSource() const override;
+    [[nodiscard]] std::pair<std::string, std::vector<std::string>> getDeathMessage(std::string, Actor *) const override;
+    [[nodiscard]] std::unique_ptr<ActorDamageSource> clone() const override;
+
+private:
+    const Block *block_;  // +16
 };

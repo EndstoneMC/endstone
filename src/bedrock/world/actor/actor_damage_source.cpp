@@ -301,3 +301,8 @@ std::unique_ptr<ActorDamageSource> ActorDamageSource::clone() const
 {
     return std::make_unique<ActorDamageSource>(*this);
 }
+
+const Block &ActorDamageByBlockSource::getBlock() const
+{
+    return *block_;
+}
