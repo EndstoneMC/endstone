@@ -1,4 +1,4 @@
-timestamp = 1736445665
+timestamp = 1738428925
 version = "1.21.50"
 
 [windows]
@@ -52,6 +52,7 @@ version = "1.21.50"
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 13909120
 # Mob
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 37598352
+"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 37527120
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@@gsl@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 15310816
 # Player
@@ -142,6 +143,7 @@ version = "1.21.50"
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 91844144
 # Mob
 "_ZN3Mob9knockbackEP5Actorifffff" = 120609872
+"_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 120606480
 # Pack
 "_ZN4Pack10createPackERK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEEEP16PackSourceReportRKN4Core4PathE" = 90720896
 # Player

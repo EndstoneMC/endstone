@@ -14,36 +14,48 @@
 
 #include "bedrock/world/actor/mob.h"
 
-#include "bedrock/entity/components/mob_body_rotation_component.h"
-#include "bedrock/world/actor/actor_flags.h"
 #include "endstone/actor/actor.h"
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/mob.h"
+#include "endstone/core/damage/damage_source.h"
 #include "endstone/core/server.h"
-#include "endstone/event/actor/actor_death_event.h"
+#include "endstone/event/actor/actor_damage_event.h"
 #include "endstone/event/actor/actor_knockback_event.h"
 #include "endstone/runtime/hook.h"
-
-using endstone::core::EndstoneActor;
-using endstone::core::EndstoneMob;
-using endstone::core::EndstoneServer;
 
 void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizontal_force, float vertical_force,
                     float height_cap)
 {
-    auto before = getPosDelta();
+    const auto before = getPosDelta();
     ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, dx, dz, horizontal_force, vertical_force,
                                 height_cap);
-    auto after = getPosDelta();
+    const auto after = getPosDelta();
     auto diff = after - before;
 
-    auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorKnockbackEvent e{getEndstoneActor<EndstoneMob>(),
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    endstone::ActorKnockbackEvent e{getEndstoneActor<endstone::core::EndstoneMob>(),
                                     source == nullptr ? nullptr : &source->getEndstoneActor(),
                                     {diff.x, diff.y, diff.z}};
     server.getPluginManager().callEvent(e);
 
-    auto knockback = e.getKnockback();
+    const auto knockback = e.getKnockback();
     diff = e.isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};
     setPosDelta(before + diff);
+}
+
+bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)
+{
+    const auto &level = getLevel();
+    if (level.isClientSide() || isInvulnerableTo(source) || isDead()) {
+        return false;
+    }
+
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &mob = getEndstoneActor<endstone::core::EndstoneMob>();
+    endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return false;
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, e.getDamage(), knock, ignite);
 }

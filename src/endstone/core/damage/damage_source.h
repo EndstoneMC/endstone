@@ -21,7 +21,7 @@ namespace endstone::core {
 
 class EndstoneDamageSource : public DamageSource {
 public:
-    explicit EndstoneDamageSource(ActorDamageSource &damage_source);
+    explicit EndstoneDamageSource(const ActorDamageSource &damage_source);
 
     [[nodiscard]] std::string_view getType() const override;
     [[nodiscard]] Actor *getActor() const override;
@@ -31,7 +31,7 @@ public:
 private:
     static std::string_view toEndstone(ActorDamageCause cause);
 
-    ActorDamageSource &damage_source_;
+    const ActorDamageSource &damage_source_;
     std::string_view type_;
 };
 

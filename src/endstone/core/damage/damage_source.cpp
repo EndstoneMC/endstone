@@ -18,7 +18,7 @@
 
 namespace endstone::core {
 
-EndstoneDamageSource::EndstoneDamageSource(ActorDamageSource &damage_source) : damage_source_(damage_source)
+EndstoneDamageSource::EndstoneDamageSource(const ActorDamageSource &damage_source) : damage_source_(damage_source)
 {
     type_ = toEndstone(damage_source.getCause());
 }

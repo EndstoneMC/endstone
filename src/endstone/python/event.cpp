@@ -69,6 +69,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<ActorEvent<Mob>, Event>(m, "MobEvent", "Represents an Mob-related event.")
         .def_property_readonly("actor", &ActorEvent<Mob>::getActor, py::return_value_policy::reference,
                                "Returns the Mob involved in this event");
+    py::class_<ActorDamageEvent, ActorEvent<Mob>, ICancellable>(m, "ActorDamageEvent",
+                                                                "Called when an Actor is damaged.")
+        .def_property("damage", &ActorDamageEvent::getDamage, &ActorDamageEvent::setDamage,
+                      "Gets or sets the amount of damage caused by the event")
+        .def_property_readonly("damage_source", &ActorDamageEvent::getDamageSource, py::return_value_policy::reference,
+                               "Gets the source of damage.");
     py::class_<ActorDeathEvent, ActorEvent<Mob>>(m, "ActorDeathEvent", "Called when an Actor dies.")
         .def_property_readonly("damage_source", &ActorDeathEvent::getDamageSource, py::return_value_policy::reference,
                                "Gets the source of damage which caused the death.");
