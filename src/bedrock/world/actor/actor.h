@@ -289,7 +289,8 @@ public:
     void setScoreTag(const std::string &);
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;  // Endstone
     [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone
-    float getFallDistance() const;
+    [[nodiscard]] float getFallDistance() const;
+    [[nodiscard]] bool isDead() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);

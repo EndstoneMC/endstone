@@ -14,12 +14,12 @@
 
 #include "bedrock/world/actor/actor.h"
 
-#include "bedrock/entity/components/actor_data_flag_component.h"
 #include "bedrock/entity/components/actor_definition_identifier_component.h"
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
 #include "bedrock/entity/components/fall_distance_component.h"
+#include "bedrock/entity/components/is_dead_flag_component.h"
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
@@ -318,4 +318,9 @@ float Actor::getFallDistance() const
 {
     auto component = getPersistentComponent<FallDistanceComponent>();
     return component->value;
+}
+
+bool Actor::isDead() const
+{
+    return hasComponent<IsDeadFlagComponent>();
 }
