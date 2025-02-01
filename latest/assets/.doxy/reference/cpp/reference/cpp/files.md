@@ -46,6 +46,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**event\_priority.h**](event__priority_8h.md)     
             * **file** [**handler\_list.h**](handler__list_8h.md)     
             * **dir** [**actor**](dir_621c26b5fd4198aba66e7e31570ce44a.md)     
+                * **file** [**actor\_damage\_event.h**](actor__damage__event_8h.md)     
                 * **file** [**actor\_death\_event.h**](actor__death__event_8h.md)     
                 * **file** [**actor\_event.h**](actor__event_8h.md)     
                 * **file** [**actor\_explode\_event.h**](actor__explode__event_8h.md)     

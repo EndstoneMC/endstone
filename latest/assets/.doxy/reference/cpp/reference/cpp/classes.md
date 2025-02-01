@@ -8,6 +8,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Actor**](classendstone_1_1Actor.md)
 ([**endstone**](namespaceendstone.md))
+* [**ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**ActorEvent**](classendstone_1_1ActorEvent.md)

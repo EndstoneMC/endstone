@@ -4,6 +4,7 @@
     <compoundname>damage_source.h</compoundname>
     <includes local="no">string</includes>
     <includes refid="actor_8h" local="yes">endstone/actor/actor.h</includes>
+    <includedby refid="actor__damage__event_8h" local="yes">include/endstone/event/actor/actor_damage_event.h</includedby>
     <includedby refid="actor__death__event_8h" local="yes">include/endstone/event/actor/actor_death_event.h</includedby>
     <incdepgraph>
       <node id="3">
@@ -160,14 +161,20 @@
         <link refid="damage__source_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="2">
-        <label>include/endstone/event/actor/actor_death_event.h</label>
-        <link refid="actor__death__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>include/endstone/event/actor/actor_damage_event.h</label>
+        <link refid="actor__damage__event_8h_source"/>
+      </node>
       <node id="3">
+        <label>include/endstone/event/actor/actor_death_event.h</label>
+        <link refid="actor__death__event_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
         <label>include/endstone/event/player/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>
