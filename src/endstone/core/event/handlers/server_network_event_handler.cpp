@@ -38,7 +38,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneServerNetworkEventHandler::hand
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 std::unique_ptr<ServerNetworkEventHandler> EndstoneServerNetworkEventHandler::unwrap()

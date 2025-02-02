@@ -74,6 +74,19 @@ public:
     {
     }
 
+    EventVariantImpl(const EventVariantImpl &other)
+        : variant_(const_cast<EventVariantImpl &>(other).visit([](auto &&arg) -> variant_t {
+              using T = std::remove_reference_t<decltype(arg.value())>;
+              if constexpr (std::is_const_v<T>) {
+                  return variant_t{std::in_place_type<Details::ValueOrRef<T>>, std::cref(arg.value())};
+              }
+              else {
+                  return variant_t{std::in_place_type<Details::ValueOrRef<T>>, std::ref(arg.value())};
+              }
+          }))
+    {
+    }
+
     template <typename F>
     auto visit(F &&visitor)
     {
@@ -98,10 +111,19 @@ using MutableEventVariant = EventVariantImpl<Events...>;
 
 template <typename EventVariant>
 class EventRef {
+    static_assert(std::is_copy_constructible_v<EventVariant>, "EventVariant must be copy constructible");
+
 public:
     template <typename Event>
     EventRef(Event &event)
-        requires(!std::same_as<std::decay_t<Event>, EventRef>)
+        requires(!std::same_as<std::decay_t<Event>, EventRef> && std::is_const_v<Event>)
+        : variant_(std::cref(event))
+    {
+    }
+
+    template <typename Event>
+    EventRef(Event &event)
+        requires(!std::same_as<std::decay_t<Event>, EventRef> && !std::is_const_v<Event>)
         : variant_(std::ref(event))
     {
     }

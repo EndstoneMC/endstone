@@ -51,7 +51,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneBlockGameplayHandler::handleEve
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 GameplayHandlerResult<std::optional<std::string>> EndstoneBlockGameplayHandler::handleEvent(
@@ -73,7 +73,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneBlockGameplayHandler::handleEve
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 std::unique_ptr<BlockGameplayHandler> EndstoneBlockGameplayHandler::unwrap()

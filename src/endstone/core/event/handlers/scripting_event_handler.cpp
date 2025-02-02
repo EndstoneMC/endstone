@@ -47,7 +47,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneScriptingEventHandler::handleEv
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 std::unique_ptr<ScriptingEventHandler> EndstoneScriptingEventHandler::unwrap()

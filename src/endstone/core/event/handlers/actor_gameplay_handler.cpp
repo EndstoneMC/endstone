@@ -39,7 +39,7 @@ HandlerResult EndstoneActorGameplayHandler::handleEvent(const ActorGameplayEvent
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstoneActorGameplayHandler::handleEvent(

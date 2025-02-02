@@ -42,7 +42,7 @@ HandlerResult EndstoneLevelGameplayHandler::handleEvent(LevelGameplayEvent<void>
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEvent(
@@ -54,7 +54,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEve
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 std::unique_ptr<LevelGameplayHandler> EndstoneLevelGameplayHandler::unwrap()

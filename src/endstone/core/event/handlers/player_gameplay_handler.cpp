@@ -59,7 +59,7 @@ HandlerResult EndstonePlayerGameplayHandler::handleEvent(const PlayerGameplayEve
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEvent(
@@ -77,7 +77,7 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEvent(
@@ -92,7 +92,7 @@ GameplayHandlerResult<CoordinatorResult> EndstonePlayerGameplayHandler::handleEv
         }
         return handle_->handleEvent(event);
     };
-    return std::visit(visitor, event.variant);
+    return event.visit(visitor);
 }
 
 std::unique_ptr<PlayerGameplayHandler> EndstonePlayerGameplayHandler::unwrap()
@@ -105,10 +105,7 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         auto &server = entt::locator<EndstoneServer>::value();
         auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
-        if (player->isAlive()) {
-            // TODO: PlayerHurtEvent
-        }
-        else {
+        if (!player->isAlive()) {
             // Close any open form on player death
             endstone_player.closeForm();
 
