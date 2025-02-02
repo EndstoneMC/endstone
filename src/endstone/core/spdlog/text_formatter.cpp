@@ -52,4 +52,44 @@ std::unique_ptr<spdlog::custom_flag_formatter> TextFormatter::clone() const
     return spdlog::details::make_unique<TextFormatter>(should_do_colors_);
 }
 
+const std::unordered_map<unsigned char, spdlog::string_view_t> TextFormatter::ansi_codes = {
+    // References: https://minecraft.wiki/w/Formatting_codes
+
+    // Color codes
+    {ColorFormat::Black.back(), "\x1b[30m"},
+    {ColorFormat::DarkBlue.back(), "\x1b[34m"},
+    {ColorFormat::DarkGreen.back(), "\x1b[32m"},
+    {ColorFormat::DarkAqua.back(), "\x1b[36m"},
+    {ColorFormat::DarkRed.back(), "\x1b[31m"},
+    {ColorFormat::DarkPurple.back(), "\x1b[35m"},
+    {ColorFormat::Gold.back(), "\x1b[33m"},
+    {ColorFormat::Gray.back(), "\x1b[37m"},
+    {ColorFormat::DarkGray.back(), "\x1b[90m"},
+    {ColorFormat::Blue.back(), "\x1b[94m"},
+    {ColorFormat::Green.back(), "\x1b[92m"},
+    {ColorFormat::Aqua.back(), "\x1b[96m"},
+    {ColorFormat::Red.back(), "\x1b[91m"},
+    {ColorFormat::LightPurple.back(), "\x1b[95m"},
+    {ColorFormat::Yellow.back(), "\x1b[93m"},
+    {ColorFormat::White.back(), "\x1b[97m"},
+    {ColorFormat::MinecoinGold.back(), "\x1b[38;2;221;214;5m"},
+    {ColorFormat::MaterialQuartz.back(), "\x1b[38;2;227;212;209m"},
+    {ColorFormat::MaterialIron.back(), "\x1b[38;2;206;202;202m"},
+    {ColorFormat::MaterialNetherite.back(), "\x1b[38;2;68;58;59m"},
+    {ColorFormat::MaterialRedstone.back(), "\x1b[38;2;151;22;7m"},
+    {ColorFormat::MaterialCopper.back(), "\x1b[38;2;180;104;77m"},
+    {ColorFormat::MaterialGold.back(), "\x1b[38;2;222;177;45m"},
+    {ColorFormat::MaterialEmerald.back(), "\x1b[38;2;17;160;54m"},
+    {ColorFormat::MaterialDiamond.back(), "\x1b[38;2;44;186;168m"},
+    {ColorFormat::MaterialLapis.back(), "\x1b[38;2;33;73;123m"},
+    {ColorFormat::MaterialAmethyst.back(), "\x1b[38;2;154;92;198m"},
+    {ColorFormat::MaterialResin.back(), "\x1b[38;2;234;113;19m"},
+
+    // Formatting codes
+    {ColorFormat::Obfuscated.back(), "\x1b[8m"},
+    {ColorFormat::Bold.back(), "\x1b[1m"},
+    {ColorFormat::Italic.back(), "\x1b[3m"},
+    {ColorFormat::Reset.back(), "\x1b[0m"},
+};
+
 }  // namespace endstone::core
