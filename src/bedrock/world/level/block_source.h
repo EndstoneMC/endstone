@@ -16,7 +16,6 @@
 
 #include <memory>
 
-#include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/item/item_stack_base.h"
@@ -24,6 +23,7 @@
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_source_listener.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
+#include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_seed.h"
 
 class ILevel;

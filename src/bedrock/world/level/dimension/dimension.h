@@ -18,8 +18,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/core/utility/automatic_id.h"
-#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/forward.h"
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/network/packet.h"
@@ -28,6 +26,7 @@
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/chunk/chunk_source.h"
 #include "bedrock/world/level/dimension/dimension_height_range.h"
+#include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/levelgen/v2/providers/int_provider.h"
 #include "bedrock/world/level/saveddata/saved_data.h"

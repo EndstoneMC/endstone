@@ -14,12 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/level/dimension/dimension_type.h"
+#include "bedrock/core/utility/automatic_id.h"
 
-class VanillaDimensions {
-public:
-    constexpr static DimensionType Overworld{0};
-    constexpr static DimensionType Nether{1};
-    constexpr static DimensionType TheEnd{2};
-    constexpr static DimensionType Undefined{3};
-};
+class Dimension;
+using DimensionType = AutomaticID<Dimension, int>;

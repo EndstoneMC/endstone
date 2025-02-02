@@ -29,6 +29,3 @@ public:
         return !(*this == other);
     }
 };
-
-class Dimension;
-using DimensionType = AutomaticID<Dimension, int>;

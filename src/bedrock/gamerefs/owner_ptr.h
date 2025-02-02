@@ -46,8 +46,4 @@ public:
     {
         return GameRefs<Type>::OwnerStorage::_getStackRef();
     }
-
-    WeakRef<Type> getWeakRef() const;
-    bool operator==(nullptr_t) const;
-    bool operator!=(nullptr_t) const;
 };
