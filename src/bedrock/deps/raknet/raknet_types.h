@@ -99,12 +99,12 @@ struct AddressOrGUID {
         raknet_guid = input.raknet_guid;
         system_address = input.system_address;
     }
-    explicit AddressOrGUID(const SystemAddress &input)
+    AddressOrGUID(const SystemAddress &input)
     {
         raknet_guid = UNASSIGNED_RAKNET_GUID;
         system_address = input;
     }
-    explicit AddressOrGUID(const RakNetGUID &input)
+    AddressOrGUID(const RakNetGUID &input)
     {
         raknet_guid = input;
         system_address = UNASSIGNED_SYSTEM_ADDRESS;

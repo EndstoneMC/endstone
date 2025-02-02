@@ -557,8 +557,7 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
     auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
-    auto guid = RakNet::AddressOrGUID(component->network_id.guid);
-    return std::chrono::milliseconds(peer->GetAveragePing(guid));
+    return std::chrono::milliseconds(peer->GetAveragePing(component->network_id.guid));
 }
 
 void EndstonePlayer::updateCommands() const
