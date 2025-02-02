@@ -21,10 +21,7 @@ namespace Details {
 template <typename T>
 class ValueOrRef {
 public:
-    ValueOrRef(std::reference_wrapper<T> ref) : is_pointer_(true)
-    {
-        variant_.pointer = &ref.get();
-    }
+    ValueOrRef(std::reference_wrapper<T> ref) : is_pointer_(true), variant_(&ref.get()) {}
 
     ~ValueOrRef()
     {
@@ -33,43 +30,64 @@ public:
         }
     }
 
+    ValueOrRef(const ValueOrRef &other) = delete;
+
+    ValueOrRef(ValueOrRef &&other) noexcept
+        : is_pointer_(other.is_pointer_),
+          variant_(other.is_pointer_ ? Variant(other.variant_.pointer) : Variant(std::move(other.variant_.value)))
+    {
+    }
+
     T &value() noexcept
     {
         return is_pointer_ ? *variant_.pointer : variant_.value;
     }
 
-    T &value() const noexcept
+    const T &value() const noexcept
     {
         return is_pointer_ ? *variant_.pointer : variant_.value;
     }
 
 private:
-    ValueOrRef(T value) : is_pointer_(false)
-    {
-        variant_.value = value;
-    }
+    ValueOrRef(T value) : is_pointer_(false), variant_(std::move(value)) {}
 
     union Variant {
-        Variant() {}
+        Variant() : pointer(nullptr) {}
+        Variant(T *ptr) : pointer(ptr) {}
+        Variant(T &&val) : value(std::move(val)) {}
         ~Variant() {}
         T *pointer;
         T value;
-    } variant_;
+    };
+    Variant variant_;
     const bool is_pointer_;
 };
 }  // namespace Details
 
-template <typename... Events>
-struct EventVariantImpl {
-    EventVariantImpl(EventVariantImpl const &) = default;
-    EventVariantImpl(EventVariantImpl &&) = default;
+template <typename... Xs>
+class EventVariantImpl {
+    using variant_t = std::variant<Details::ValueOrRef<Xs>...>;
 
+public:
     template <typename T>
-    EventVariantImpl(std::reference_wrapper<T> event) : variant{std::in_place_type<Details::ValueOrRef<T>>, event}
+    EventVariantImpl(std::reference_wrapper<T> event) : variant_{std::in_place_type<Details::ValueOrRef<T>>, event}
     {
     }
 
-    std::variant<Details::ValueOrRef<Events>...> variant;
+    template <typename F>
+    auto visit(F &&visitor)
+    {
+        return std::visit(std::forward<F>(visitor), variant_);
+    }
+
+    template <typename F>
+    auto visit(F &&visitor) const
+    {
+        return std::visit(std::forward<F>(visitor), variant_);
+    }
+
+private:
+    variant_t variant_;
 };
 
 template <typename... Events>
@@ -81,12 +99,14 @@ using MutableEventVariant = EventVariantImpl<Events...>;
 template <typename EventVariant>
 class EventRef {
 public:
-    EventRef(EventRef const &) = delete;
-
     template <typename Event>
-    EventRef(Event &event) : variant_(std::ref(event))
+    EventRef(Event &event)
+        requires(!std::same_as<std::decay_t<Event>, EventRef>)
+        : variant_(std::ref(event))
     {
     }
+
+    EventRef(const EventRef &other) = default;
 
     EventVariant &get()
     {
