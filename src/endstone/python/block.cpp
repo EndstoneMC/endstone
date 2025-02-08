@@ -35,8 +35,8 @@ void init_block(py::module_ &m, py::class_<Block, std::shared_ptr<Block>> &block
         .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states for this block.")
         .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });
 
-    py::class_<BlockState, std::shared_ptr<BlockState>>(
-        m, "BlockState", "Represents a captured state of a block, which will not update automatically.")
+    py::class_<BlockState>(m, "BlockState",
+                           "Represents a captured state of a block, which will not update automatically.")
         .def_property_readonly("block", &BlockState::getBlock, "Gets the block represented by this block state.")
         .def_property("type", &BlockState::getType, &BlockState::setType, "Gets or sets the type of this block state.")
         .def_property("data", &BlockState::getData, &BlockState::setData, "Gets or sets the data for this block state.")

@@ -168,7 +168,7 @@ public:
      *
      * @return BlockState with the current state of this block.
      */
-    [[nodiscard]] virtual std::shared_ptr<BlockState> captureState() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockState> captureState() const = 0;
 };
 
 }  // namespace endstone

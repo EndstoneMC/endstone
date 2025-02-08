@@ -151,9 +151,9 @@ Location EndstoneBlock::getLocation() const
     return {&getDimension(), getX(), getY(), getZ()};
 }
 
-std::shared_ptr<BlockState> EndstoneBlock::captureState() const
+std::unique_ptr<BlockState> EndstoneBlock::captureState() const
 {
-    return std::make_shared<EndstoneBlockState>(*this);
+    return std::make_unique<EndstoneBlockState>(*this);
 }
 
 BlockPos EndstoneBlock::getPosition() const
