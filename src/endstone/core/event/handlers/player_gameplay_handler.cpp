@@ -225,27 +225,23 @@ bool EndstonePlayerGameplayHandler::handleEvent(const ::PlayerEmoteEvent &event)
 
 bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 {
-    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = entt::locator<EndstoneServer>::value();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
-        if (auto block = EndstoneBlock::at(block_source, BlockPos(event.block_location))) {
-            const std::shared_ptr<EndstoneItemStack> item_stack =
-                event.item.isNull() ? nullptr : EndstoneItemStack::fromMinecraft(event.item);
+        const auto block = EndstoneBlock::at(block_source, BlockPos(event.block_location));
+        const std::shared_ptr<EndstoneItemStack> item_stack =
+            event.item.isNull() ? nullptr : EndstoneItemStack::fromMinecraft(event.item);
 
-            PlayerInteractEvent e{
-                player->getEndstoneActor<EndstonePlayer>(),
-                item_stack,
-                block.value(),
-                static_cast<BlockFace>(event.block_face),
-                {event.face_location.x, event.face_location.y, event.face_location.z},
-            };
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                return false;
-            }
-        }
-        else {
-            server.getLogger().error(block.error());
+        PlayerInteractEvent e{
+            player->getEndstoneActor<EndstonePlayer>(),
+            item_stack,
+            block,
+            static_cast<BlockFace>(event.block_face),
+            {event.face_location.x, event.face_location.y, event.face_location.z},
+        };
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
         }
     }
     return true;

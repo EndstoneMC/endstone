@@ -166,13 +166,9 @@ BlockPos EndstoneBlock::getPosition() const
     return const_cast<::Block &>(block_source_.getBlock(block_pos_));
 }
 
-Result<std::shared_ptr<EndstoneBlock>> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
+std::shared_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
 {
-    auto block = std::make_shared<EndstoneBlock>(block_source, block_pos);
-    if (auto result = block->checkState(); !result) {
-        return nonstd::make_unexpected(result.error());
-    }
-    return block;
+    return std::make_shared<EndstoneBlock>(block_source, block_pos);
 }
 
 Result<const EndstoneBlock *> EndstoneBlock::checkState() const

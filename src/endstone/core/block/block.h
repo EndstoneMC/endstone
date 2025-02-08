@@ -43,7 +43,7 @@ public:
     [[nodiscard]] BlockPos getPosition() const;
     [[nodiscard]] ::Block &getMinecraftBlock() const;
 
-    static Result<std::shared_ptr<EndstoneBlock>> at(BlockSource &block_source, BlockPos block_pos);
+    static std::shared_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
 
 private:
     [[nodiscard]] Result<const EndstoneBlock *> checkState() const;
