@@ -29,14 +29,25 @@
 #include "endstone/core/server.h"
 #include "endstone/core/util/uuid.h"
 
-namespace endstone::devtools {
-
-namespace {
 double truncate(const double value, int decimal_places = 6)
 {
     const double scale = std::pow(10.0, decimal_places);
     return std::trunc(value * scale) / scale;
 }
+
+constexpr void to_json(nlohmann::json &json, const AABB &aabb)
+{
+    json.push_back(truncate(aabb.min.x));
+    json.push_back(truncate(aabb.min.y));
+    json.push_back(truncate(aabb.min.z));
+    json.push_back(truncate(aabb.max.x));
+    json.push_back(truncate(aabb.max.y));
+    json.push_back(truncate(aabb.max.z));
+}
+
+namespace endstone::devtools {
+
+namespace {
 
 void dumpBlockData(VanillaData &data, const ::Level &level)
 {
@@ -67,12 +78,20 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
         }
 
         block_legacy.forEachBlockPermutation([&](const ::Block &block) {
-            AABB collision_shape;
+            std::vector<AABB> collision_shapes;
             AABB outline_shape;
             AABB visual_shape;
             AABB ui_shape;
             AABB liquid_clip_shape;
-            block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
+            block.addCollisionShapes(region, {0, 0, 0}, nullptr, collision_shapes, nullptr);
+            for (auto &[min, max] : collision_shapes) {
+                min.x = truncate(min.x);
+                min.y = truncate(min.y);
+                min.z = truncate(min.z);
+                max.x = truncate(max.x);
+                max.y = truncate(max.y);
+                max.z = truncate(max.z);
+            }
             outline_shape = block.getOutline(region, {0, 0, 0}, outline_shape);
             visual_shape = block.getVisualShape(visual_shape);
             ui_shape = block.getUIShape(ui_shape);
@@ -96,51 +115,11 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
                 {"isSolid", block.isSolid()},
                 {"translucency", block.getTranslucency()},
                 {"mapColor", map_color.toHexString()},
-                {"collisionShape",
-                 {
-                     truncate(collision_shape.min.x),
-                     truncate(collision_shape.min.y),
-                     truncate(collision_shape.min.z),
-                     truncate(collision_shape.max.x),
-                     truncate(collision_shape.max.y),
-                     truncate(collision_shape.max.z),
-                 }},
-                {"outlineShape",
-                 {
-                     truncate(outline_shape.min.x),
-                     truncate(outline_shape.min.y),
-                     truncate(outline_shape.min.z),
-                     truncate(outline_shape.max.x),
-                     truncate(outline_shape.max.y),
-                     truncate(outline_shape.max.z),
-                 }},
-                {"visualShape",
-                 {
-                     truncate(visual_shape.min.x),
-                     truncate(visual_shape.min.y),
-                     truncate(visual_shape.min.z),
-                     truncate(visual_shape.max.x),
-                     truncate(visual_shape.max.y),
-                     truncate(visual_shape.max.z),
-                 }},
-                {"uiShape",
-                 {
-                     truncate(ui_shape.min.x),
-                     truncate(ui_shape.min.y),
-                     truncate(ui_shape.min.z),
-                     truncate(ui_shape.max.x),
-                     truncate(ui_shape.max.y),
-                     truncate(ui_shape.max.z),
-                 }},
-                {"liquidClipShape",
-                 {
-                     truncate(liquid_clip_shape.min.x),
-                     truncate(liquid_clip_shape.min.y),
-                     truncate(liquid_clip_shape.min.z),
-                     truncate(liquid_clip_shape.max.x),
-                     truncate(liquid_clip_shape.max.y),
-                     truncate(liquid_clip_shape.max.z),
-                 }},
+                {"collisionShapes", collision_shapes},
+                {"outlineShape", outline_shape},
+                {"visualShape", visual_shape},
+                {"uiShape", ui_shape},
+                {"liquidClipShape", liquid_clip_shape},
             });
             data.block_palette.add(block.getSerializationId().copy());
             return true;

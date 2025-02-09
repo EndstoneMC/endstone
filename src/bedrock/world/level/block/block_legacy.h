@@ -129,7 +129,7 @@ public:
                                                           BlockPos const &) const = 0;
     [[nodiscard]] virtual bool addCollisionShapes(Block const &, IConstBlockSource const &, BlockPos const &,
                                                   AABB const *, std::vector<AABB> &,
-                                                  optional_ref<GetCollisionShapeInterface const>) = 0;
+                                                  optional_ref<GetCollisionShapeInterface const>) const = 0;
     virtual void addAABBs(Block const &, IConstBlockSource const &, BlockPos const &, AABB const *,
                           std::vector<AABB> &) const = 0;
     [[nodiscard]] virtual AABB const &getOutline(Block const &, IConstBlockSource const &, BlockPos const &,
