@@ -29,13 +29,13 @@
 #include "endstone/core/server.h"
 #include "endstone/core/util/uuid.h"
 
-double truncate(const double value, int decimal_places = 6)
+inline double truncate(const double value, int decimal_places = 6)
 {
     const double scale = std::pow(10.0, decimal_places);
     return std::trunc(value * scale) / scale;
 }
 
-constexpr void to_json(nlohmann::json &json, const AABB &aabb)
+inline void to_json(nlohmann::json &json, const AABB &aabb)
 {
     json.push_back(truncate(aabb.min.x));
     json.push_back(truncate(aabb.min.y));
