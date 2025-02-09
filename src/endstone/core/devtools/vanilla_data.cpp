@@ -78,12 +78,12 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
         }
 
         block_legacy.forEachBlockPermutation([&](const ::Block &block) {
-            std::vector<AABB> collision_shapes;
+            std::vector<AABB> collision_shape;
             AABB outline_shape;
             AABB visual_shape;
             AABB ui_shape;
             AABB liquid_clip_shape;
-            block.addCollisionShapes(region, {0, 0, 0}, nullptr, collision_shapes, nullptr);
+            block.addCollisionShapes(region, {0, 0, 0}, nullptr, collision_shape, nullptr);
             outline_shape = block.getOutline(region, {0, 0, 0}, outline_shape);
             visual_shape = block.getVisualShape(visual_shape);
             ui_shape = block.getUIShape(ui_shape);
@@ -107,7 +107,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
                 {"isSolid", block.isSolid()},
                 {"translucency", block.getTranslucency()},
                 {"mapColor", map_color.toHexString()},
-                {"collisionShapes", collision_shapes},
+                {"collisionShape", collision_shape},
                 {"outlineShape", outline_shape},
                 {"visualShape", visual_shape},
                 {"uiShape", ui_shape},
