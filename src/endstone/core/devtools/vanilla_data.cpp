@@ -84,14 +84,6 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
             AABB ui_shape;
             AABB liquid_clip_shape;
             block.addCollisionShapes(region, {0, 0, 0}, nullptr, collision_shapes, nullptr);
-            for (auto &[min, max] : collision_shapes) {
-                min.x = truncate(min.x);
-                min.y = truncate(min.y);
-                min.z = truncate(min.z);
-                max.x = truncate(max.x);
-                max.y = truncate(max.y);
-                max.z = truncate(max.z);
-            }
             outline_shape = block.getOutline(region, {0, 0, 0}, outline_shape);
             visual_shape = block.getVisualShape(visual_shape);
             ui_shape = block.getUIShape(ui_shape);
