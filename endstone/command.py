@@ -4,6 +4,8 @@ from endstone._internal.endstone_python import (
     CommandSender,
     CommandSenderWrapper,
     ConsoleCommandSender,
+    ProxiedCommandSender,
 )
 
-__all__ = ["Command", "CommandExecutor", "CommandSender", "CommandSenderWrapper", "ConsoleCommandSender"]
+__all__ = ["Command", "CommandExecutor", "CommandSender", "CommandSenderWrapper", "ConsoleCommandSender",
+           "ProxiedCommandSender", ]
