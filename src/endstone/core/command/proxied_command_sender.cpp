@@ -18,8 +18,9 @@
 
 namespace endstone::core {
 
-EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(CommandSender &caller, CommandSender &callee)
-    : caller_(caller), callee_(callee)
+EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(std::shared_ptr<CommandSender> caller,
+                                                           std::shared_ptr<CommandSender> callee)
+    : caller_(std::move(caller)), callee_(std::move(callee))
 {
 }
 bool EndstoneProxiedCommandSender::isOp() const
@@ -115,12 +116,12 @@ std::string EndstoneProxiedCommandSender::getName() const
 
 CommandSender &EndstoneProxiedCommandSender::getCaller() const
 {
-    return caller_;
+    return *caller_;
 }
 
 CommandSender &EndstoneProxiedCommandSender::getCallee() const
 {
-    return callee_;
+    return *callee_;
 }
 
 }  // namespace endstone::core

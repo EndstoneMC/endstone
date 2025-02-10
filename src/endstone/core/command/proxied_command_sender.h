@@ -20,7 +20,7 @@ namespace endstone::core {
 
 class EndstoneProxiedCommandSender : public ProxiedCommandSender {
 protected:
-    EndstoneProxiedCommandSender(CommandSender &caller, CommandSender &callee);
+    EndstoneProxiedCommandSender(std::shared_ptr<CommandSender> caller, std::shared_ptr<CommandSender> callee);
 
 public:
     [[nodiscard]] bool isOp() const override;
@@ -45,8 +45,8 @@ public:
     [[nodiscard]] CommandSender &getCallee() const override;
 
 private:
-    CommandSender &caller_;
-    CommandSender &callee_;
+    std::shared_ptr<CommandSender> caller_;
+    std::shared_ptr<CommandSender> callee_;
 };
 
 }  // namespace endstone::core

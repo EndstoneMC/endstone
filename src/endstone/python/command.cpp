@@ -64,6 +64,12 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
 
     py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.");
 
+    py::class_<ProxiedCommandSender, CommandSender>(m, "ProxiedCommandSender", "Represents a proxied command sender.")
+        .def_property_readonly("caller", &ProxiedCommandSender::getCaller, py::return_value_policy::reference,
+                               "Returns the CommandSender which triggered this proxied command.")
+        .def_property_readonly("callee", &ProxiedCommandSender::getCallee, py::return_value_policy::reference,
+                               "Returns the CommandSender which is being used to call the command.");
+
     py::class_<Command, std::shared_ptr<Command>>(m, "Command",
                                                   "Represents a Command, which executes various tasks upon user input")
         .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),

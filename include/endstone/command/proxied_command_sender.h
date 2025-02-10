@@ -19,21 +19,21 @@
 namespace endstone {
 
 /**
- * @brief Interface for proxied command sender
+ * @brief Represents a proxied command sender
  */
 class ProxiedCommandSender : public CommandSender {
 public:
     /**
      * @brief Returns the CommandSender which triggered this proxied command.
      *
-     * @return a shared pointer to the caller which triggered the command
+     * @return the caller which triggered the command
      */
     [[nodiscard]] virtual CommandSender &getCaller() const = 0;
 
     /**
      * @brief Returns the CommandSender which is being used to call the command.
      *
-     * @return a shared pointer to the caller which the command is being run as
+     * @return the caller which the command is being run as
      */
     [[nodiscard]] virtual CommandSender &getCallee() const = 0;
 };

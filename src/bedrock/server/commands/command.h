@@ -18,8 +18,23 @@
 #include <cstdint>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
+
+class CommandPosition {
+public:
+    explicit CommandPosition(const Vec3 &);
+
+private:
+    Vec3 offset_;      // +0
+    bool relative_x_;  // +12
+    bool relative_y_;  // +13
+    bool relative_z_;  // +14
+    bool local_;       // +15
+};
+
+class CommandPositionFloat : public CommandPosition {};
 
 class RelativeFloat {
 public:
@@ -40,8 +55,8 @@ public:
     virtual bool collectOptionalArguments();
     virtual void execute(CommandOrigin const &, CommandOutput &) const = 0;
 
-    [[nodiscard]]  std::string getCommandName() const;
-     void run(CommandOrigin const &origin, CommandOutput &output) const;
+    [[nodiscard]] std::string getCommandName() const;
+    void run(CommandOrigin const &origin, CommandOutput &output) const;
 
 private:
     int version_ = 0;

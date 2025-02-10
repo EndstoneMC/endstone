@@ -21,20 +21,23 @@
 #include <optional>
 #include <stack>
 #include <string>
+#include <unordered_set>
 #include <utility>
 #include <vector>
+
+#include <fmt/format.h>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/type_id.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/server/commands/command_flag.h"
-#include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/server/commands/command_version.h"
 
 class Command;
-class CommandRunStats;
+class CommandOrigin;
 class CommandParameterData;
+class CommandRunStats;
 enum class SemanticConstraint;
 
 namespace endstone::core {

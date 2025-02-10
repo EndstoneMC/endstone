@@ -22,6 +22,7 @@
 #include "bedrock/deps/json/value.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/platform/uuid.h"
+#include "bedrock/server/commands/command.h"
 #include "bedrock/server/commands/command_origin_data.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/player/abilities.h"
@@ -71,10 +72,29 @@ public:
     [[nodiscard]] virtual Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 28
     [[nodiscard]] virtual CompoundTag serialize() const = 0;                                     // 29
     [[nodiscard]] virtual bool isValid() const = 0;                                              // 30
-    virtual void setUUID(const mce::UUID &uuid) = 0;                                             // 31
 
+protected:
+    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 31
+
+public:
     [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender() const;  // Endstone
 
 protected:
     mce::UUID uuid_;
+};
+
+class VirtualCommandOrigin : public CommandOrigin {
+public:
+    VirtualCommandOrigin(const CommandOrigin &, const CommandOrigin &, const CommandPositionFloat &, int);
+    [[nodiscard]] CommandOrigin *getOrigin() const
+    {
+        return origin_.get();
+    }
+
+private:
+    Vec3 pos_;                                        // +24
+    std::unique_ptr<CommandOrigin> origin_;           // +40
+    std::unique_ptr<CommandOrigin> output_receiver_;  // +48
+    CommandPositionFloat command_position_;           // +56
+    int version_;                                     // +72
 };
