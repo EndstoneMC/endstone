@@ -55,6 +55,12 @@ bool Block::getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, B
     return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
 }
 
+bool Block::addCollisionShapes(IConstBlockSource const &region, BlockPos const &pos, AABB const *intersect_testbox, std::vector<AABB> &out_aabbs,
+                           optional_ref<GetCollisionShapeInterface const> entity) const
+{
+    return legacy_block_->addCollisionShapes(*this, region, pos, intersect_testbox, out_aabbs, entity);
+}
+
 bool Block::getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
 {
     return legacy_block_->getCollisionShapeForCamera(out_aabb, *this, region, pos);
