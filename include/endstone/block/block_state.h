@@ -38,7 +38,7 @@ public:
      *
      * @return the block represented by this block state
      */
-    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlock() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Block> getBlock() const = 0;
 
     /**
      * @brief Gets the type of this block state.
@@ -111,7 +111,7 @@ public:
      *
      * @return true if the update was successful, otherwise false
      */
-    virtual Result<bool> update() = 0;
+    virtual bool update() = 0;
 
     /**
      * @brief Attempts to update the block represented by this state, setting it to the new values as defined by this
@@ -121,7 +121,7 @@ public:
      * @param force true to forcefully set the state
      * @return true if the update was successful, otherwise false
      */
-    virtual Result<bool> update(bool force) = 0;
+    virtual bool update(bool force) = 0;
 
     /**
      * @brief Attempts to update the block represented by this state, setting it to the new values as defined by this
@@ -134,7 +134,7 @@ public:
      * @param apply_physics false to cancel updating physics on surrounding blocks
      * @return true if the update was successful, otherwise false
      */
-    virtual Result<bool> update(bool force, bool apply_physics) = 0;
+    virtual bool update(bool force, bool apply_physics) = 0;
 };
 }  // namespace endstone
 

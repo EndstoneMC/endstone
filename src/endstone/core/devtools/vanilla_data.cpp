@@ -46,9 +46,7 @@ inline void to_json(nlohmann::json &json, const AABB &aabb)
 }
 
 namespace endstone::devtools {
-
 namespace {
-
 void dumpBlockData(VanillaData &data, const ::Level &level)
 {
     auto overworld = level.getDimension(VanillaDimensions::Overworld);

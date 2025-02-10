@@ -60,8 +60,9 @@ public:
     [[nodiscard]] float getExplosionResistance() const;
     bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                            optional_ref<GetCollisionShapeInterface const> entity) const;
-    bool addCollisionShapes(IConstBlockSource const &region, BlockPos const &pos, AABB const *intersect_testbox, std::vector<AABB> &out_aabbs,
-                           optional_ref<GetCollisionShapeInterface const> entity) const;
+    bool addCollisionShapes(IConstBlockSource const &region, BlockPos const &pos, AABB const *intersect_test_box,
+                            std::vector<AABB> &in_out_boxes,
+                            optional_ref<GetCollisionShapeInterface const> entity) const;
     bool getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const;
     const AABB &getOutline(IConstBlockSource const &region, BlockPos const &pos, AABB &buffer) const;
     const AABB &getVisualShape(AABB &buffer) const;

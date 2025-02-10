@@ -25,7 +25,7 @@ class EndstoneBlockState : public BlockState {
 public:
     explicit EndstoneBlockState(const EndstoneBlock &block);
     explicit EndstoneBlockState(Dimension &dimension, BlockPos block_pos, const ::Block &block);
-    [[nodiscard]] Result<std::shared_ptr<Block>> getBlock() const override;
+    [[nodiscard]] std::shared_ptr<Block> getBlock() const override;
     [[nodiscard]] std::string getType() const override;
     Result<void> setType(std::string type) override;
     [[nodiscard]] std::shared_ptr<BlockData> getData() const override;
@@ -35,9 +35,9 @@ public:
     [[nodiscard]] int getY() const override;
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Location getLocation() const override;
-    Result<bool> update() override;
-    Result<bool> update(bool force) override;
-    Result<bool> update(bool force, bool apply_physics) override;
+    bool update() override;
+    bool update(bool force) override;
+    bool update(bool force, bool apply_physics) override;
 
 private:
     EndstoneDimension &dimension_;

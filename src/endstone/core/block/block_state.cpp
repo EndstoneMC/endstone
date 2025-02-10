@@ -33,7 +33,7 @@ EndstoneBlockState::EndstoneBlockState(Dimension &dimension, BlockPos block_pos,
 {
 }
 
-Result<std::shared_ptr<Block>> EndstoneBlockState::getBlock() const
+std::shared_ptr<Block> EndstoneBlockState::getBlock() const
 {
     return EndstoneBlock::at(block_source_, block_pos_);
 }
@@ -96,24 +96,19 @@ Location EndstoneBlockState::getLocation() const
     return Location{&dimension_, getX(), getY(), getZ()};
 }
 
-Result<bool> EndstoneBlockState::update()
+bool EndstoneBlockState::update()
 {
     return update(false);
 }
 
-Result<bool> EndstoneBlockState::update(bool force)
+bool EndstoneBlockState::update(bool force)
 {
     return update(force, true);
 }
 
-Result<bool> EndstoneBlockState::update(bool force, bool apply_physics)
+bool EndstoneBlockState::update(bool force, bool apply_physics)
 {
-    auto result = getBlock();
-    if (!result) {
-        return nonstd::make_unexpected(result.error());
-    }
-
-    auto &block = result.value();
+    const auto block = getBlock();
     if (block->getType() != getType() && !force) {
         return false;
     }
