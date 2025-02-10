@@ -98,7 +98,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPlaceEvent**](#function-blockplaceevent) (std::shared\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; placed\_block, std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; replaced\_block, std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; placed\_against, [**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**BlockPlaceEvent**](#function-blockplaceevent) (std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; placed\_block, std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; replaced\_block, std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; placed\_against, [**Player**](classendstone_1_1Player.md) & player) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockAgainst**](#function-getblockagainst) () const<br>_Gets the block that this block was placed against._  |
 |  [**BlockState**](classendstone_1_1BlockState.md) & | [**getBlockPlacedState**](#function-getblockplacedstate) () const<br>_Gets the_ [_**BlockState**_](classendstone_1_1BlockState.md) _for the block which was placed._ |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockReplaced**](#function-getblockreplaced) () const<br>_Gets the block which was replaced._  |
@@ -239,7 +239,7 @@ const std::string endstone::BlockPlaceEvent::NAME;
 
 ```C++
 inline explicit endstone::BlockPlaceEvent::BlockPlaceEvent (
-    std::shared_ptr< BlockState > placed_block,
+    std::unique_ptr< BlockState > placed_block,
     std::shared_ptr< Block > replaced_block,
     std::shared_ptr< Block > placed_against,
     Player & player

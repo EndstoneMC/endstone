@@ -47,6 +47,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md) 
     * **class** [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) 
 * **class** [**endstone::BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._ 
+* **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._ 
 * **class** [**endstone::BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._ 
 * **class** [**endstone::Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._ 
 * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
@@ -124,8 +125,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
 * **class** **std::enable_shared_from_this< BlockData >**    
     * **class** [**endstone::BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._ 
-* **class** **std::enable_shared_from_this< BlockState >**    
-    * **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._ 
 * **class** **std::enable_shared_from_this< ItemStack >**    
     * **class** [**endstone::ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._ 
 * **class** **std::enable_shared_from_this< Scoreboard >**    

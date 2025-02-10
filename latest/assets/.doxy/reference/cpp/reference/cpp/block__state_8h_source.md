@@ -31,7 +31,7 @@
 
 namespace endstone {
 
-class BlockState : public std::enable_shared_from_this<BlockState> {
+class BlockState {
 public:
     virtual ~BlockState() = default;
 
@@ -72,7 +72,7 @@ struct formatter<endstone::BlockState> : formatter<string_view> {
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
         return fmt::format_to(ctx.out(), "BlockState(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(),
-                         val.getY(), val.getZ(), val.getType(), *val.getData());
+                              val.getY(), val.getZ(), val.getType(), *val.getData());
     }
 };
 }  // namespace fmt

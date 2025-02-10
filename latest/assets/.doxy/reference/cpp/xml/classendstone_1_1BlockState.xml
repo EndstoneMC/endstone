@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockState" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BlockState</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; BlockState &gt;</basecompoundref>
     <includes refid="block__state_8h" local="no">endstone/block/block_state.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1BlockState_1a7e3b8131f58cbb0ba1cd3338d8b90c12" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -325,28 +324,6 @@
     <detaileddescription>
 <para>Unlike <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>, which only one object can exist per coordinate, <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> can exist multiple times for any given <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>. Note that another plugin may change the state of the block, and you will not know, or they may change the block to another type entirely, causing your <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> to become invalid. </para>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1">
-        <label>endstone::BlockState</label>
-        <link refid="classendstone_1_1BlockState"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; BlockState &gt;</label>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1">
-        <label>endstone::BlockState</label>
-        <link refid="classendstone_1_1BlockState"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; BlockState &gt;</label>
-      </node>
-    </collaborationgraph>
     <location file="include/endstone/block/block_state.h" line="32" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="32" bodyend="138"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockState_1ab60f046d1cf2dafcaa2155bc01ea5c89" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>

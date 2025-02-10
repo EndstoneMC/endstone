@@ -33,7 +33,7 @@ namespace endstone {
 
 class BlockPlaceEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockPlaceEvent(std::shared_ptr<BlockState> placed_block, std::shared_ptr<Block> replaced_block,
+    explicit BlockPlaceEvent(std::unique_ptr<BlockState> placed_block, std::shared_ptr<Block> replaced_block,
                              std::shared_ptr<Block> placed_against, Player &player)
         : Cancellable(replaced_block), placed_block_(std::move(placed_block)),
           placed_against_(std::move(placed_against)), player_(player)
@@ -68,7 +68,7 @@ public:
     }
 
 private:
-    std::shared_ptr<BlockState> placed_block_;
+    std::unique_ptr<BlockState> placed_block_;
     std::shared_ptr<Block> placed_against_;
     Player &player_;
     // TODO(event): add ItemStack item

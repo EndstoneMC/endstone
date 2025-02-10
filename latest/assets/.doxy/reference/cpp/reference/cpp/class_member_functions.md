@@ -341,7 +341,6 @@
 * **isNameTagVisible** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isOnGround** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isBanned** ([**endstone::BanList**](classendstone_1_1BanList.md), [**endstone::IpBanList**](classendstone_1_1IpBanList.md), [**endstone::PlayerBanList**](classendstone_1_1PlayerBanList.md))
-* **isValid** ([**endstone::Block**](classendstone_1_1Block.md))
 * **isVisible** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **isCancellable** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::Event**](classendstone_1_1Event.md))
 * **isCancelled** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
