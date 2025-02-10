@@ -91,7 +91,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._     
     * **class** [**PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**Position**](classendstone_1_1Position.md) _Represents a 3-dimensional position in a dimension within a level._     
-    * **class** [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._     
+    * **class** [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a proxied command sender._     
     * **class** [**Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._     
     * **class** [**Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._     
     * **class** [**Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._     

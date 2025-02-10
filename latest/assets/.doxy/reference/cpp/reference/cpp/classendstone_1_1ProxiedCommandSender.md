@@ -8,7 +8,7 @@
 
 
 
-_Interface for proxied command sender._ 
+_Represents a proxied command sender._ 
 
 * `#include <endstone/command/proxied_command_sender.h>`
 
@@ -233,7 +233,7 @@ virtual CommandSender & endstone::ProxiedCommandSender::getCallee () const = 0
 
 **Returns:**
 
-a shared pointer to the caller which the command is being run as 
+the caller which the command is being run as 
 
 
 
@@ -258,7 +258,7 @@ virtual CommandSender & endstone::ProxiedCommandSender::getCaller () const = 0
 
 **Returns:**
 
-a shared pointer to the caller which triggered the command 
+the caller which triggered the command 
 
 
 

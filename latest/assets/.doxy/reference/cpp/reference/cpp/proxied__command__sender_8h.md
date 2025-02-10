@@ -35,7 +35,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Interface for proxied command sender._  |
+| class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Represents a proxied command sender._  |
 
 
 

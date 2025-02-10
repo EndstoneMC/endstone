@@ -15,7 +15,7 @@
 <para>Returns the <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> which triggered this proxied command. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a shared pointer to the caller which triggered the command </para>
+<para><simplesect kind="return"><para>the caller which triggered the command </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -33,7 +33,7 @@
 <para>Returns the <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> which is being used to call the command. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a shared pointer to the caller which the command is being run as </para>
+<para><simplesect kind="return"><para>the caller which the command is being run as </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -43,7 +43,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Interface for proxied command sender. </para>
+<para>Represents a proxied command sender. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
