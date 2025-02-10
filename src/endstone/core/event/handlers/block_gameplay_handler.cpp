@@ -104,7 +104,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent 
     const auto opposite = EndstoneBlockFace::getOpposite(block_face);
     const auto block_against = block_replaced->getRelative(opposite);
 
-    BlockPlaceEvent e{std::move(block_placed), block_replaced, block_against.value(), player};
+    BlockPlaceEvent e{std::move(block_placed), block_replaced, block_against, player};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return false;

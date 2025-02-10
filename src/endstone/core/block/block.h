@@ -23,16 +23,15 @@ namespace endstone::core {
 class EndstoneBlock : public Block {
 public:
     EndstoneBlock(BlockSource &block_source, BlockPos block_pos);
-    [[nodiscard]] bool isValid() const override;
-    [[nodiscard]] Result<std::string> getType() const override;
+    [[nodiscard]] std::string getType() const override;
     Result<void> setType(std::string type) override;
     Result<void> setType(std::string type, bool apply_physics) override;
-    [[nodiscard]] Result<std::shared_ptr<BlockData>> getData() const override;
+    [[nodiscard]] std::shared_ptr<BlockData> getData() const override;
     Result<void> setData(std::shared_ptr<BlockData> data) override;
     Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) override;
-    Result<std::shared_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) override;
-    Result<std::shared_ptr<Block>> getRelative(BlockFace face) override;
-    Result<std::shared_ptr<Block>> getRelative(BlockFace face, int distance) override;
+    std::shared_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) override;
+    std::shared_ptr<Block> getRelative(BlockFace face) override;
+    std::shared_ptr<Block> getRelative(BlockFace face, int distance) override;
     [[nodiscard]] Dimension &getDimension() const override;
     [[nodiscard]] int getX() const override;
     [[nodiscard]] int getY() const override;
@@ -46,7 +45,6 @@ public:
     static std::shared_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
 
 private:
-    [[nodiscard]] Result<const EndstoneBlock *> checkState() const;
     BlockSource &block_source_;
     BlockPos block_pos_;
 };

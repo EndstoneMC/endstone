@@ -28,11 +28,11 @@ public:
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] Type getType() const override;
     [[nodiscard]] Level &getLevel() const override;
-    [[nodiscard]] Result<std::shared_ptr<Block>> getBlockAt(int x, int y, int z) const override;
-    [[nodiscard]] Result<std::shared_ptr<Block>> getBlockAt(Location location) const override;
+    [[nodiscard]] std::shared_ptr<Block> getBlockAt(int x, int y, int z) const override;
+    [[nodiscard]] std::shared_ptr<Block> getBlockAt(Location location) const override;
     [[nodiscard]] int getHighestBlockYAt(int x, int z) const override;
-    [[nodiscard]] Result<std::shared_ptr<Block>> getHighestBlockAt(int x, int z) const override;
-    [[nodiscard]] Result<std::shared_ptr<Block>> getHighestBlockAt(Location location) const override;
+    [[nodiscard]] std::shared_ptr<Block> getHighestBlockAt(int x, int z) const override;
+    [[nodiscard]] std::shared_ptr<Block> getHighestBlockAt(Location location) const override;
     [[nodiscard]] std::vector<std::unique_ptr<Chunk>> getLoadedChunks() override;
 
     [[nodiscard]] ::Dimension &getHandle() const;

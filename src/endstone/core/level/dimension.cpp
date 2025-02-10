@@ -51,12 +51,12 @@ Level &EndstoneDimension::getLevel() const
     return level_;
 }
 
-Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(int x, int y, int z) const
+std::shared_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z) const
 {
     return EndstoneBlock::at(getHandle().getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 
-Result<std::shared_ptr<Block>> EndstoneDimension::getBlockAt(Location location) const
+std::shared_ptr<Block> EndstoneDimension::getBlockAt(Location location) const
 {
     return getBlockAt(location.getBlockX(), location.getBlockY(), location.getBlockZ());
 }
@@ -67,12 +67,12 @@ int EndstoneDimension::getHighestBlockYAt(int x, int z) const
         [](auto &block) { return block.getName() != BedrockBlockNames::Air; }, x, z);
 }
 
-Result<std::shared_ptr<Block>> EndstoneDimension::getHighestBlockAt(int x, int z) const
+std::shared_ptr<Block> EndstoneDimension::getHighestBlockAt(int x, int z) const
 {
     return getBlockAt(x, getHighestBlockYAt(x, z), z);
 }
 
-Result<std::shared_ptr<Block>> EndstoneDimension::getHighestBlockAt(Location location) const
+std::shared_ptr<Block> EndstoneDimension::getHighestBlockAt(Location location) const
 {
     return getHighestBlockAt(location.getBlockX(), location.getBlockZ());
 }

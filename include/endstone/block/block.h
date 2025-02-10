@@ -39,25 +39,13 @@ public:
     virtual ~Block() = default;
 
     /**
-     * @brief Checks if the block is valid.
-     *
-     * <br>
-     * This method verifies the validity of the block. A block is considered valid
-     * if and only if the chunk containing this block is loaded and ticking. If the
-     * chunk is not loaded or not in the ticking state, this method will return false.
-     *
-     * @return true if the block is valid (i.e., the containing chunk is loaded and ticking), otherwise false.
-     */
-    [[nodiscard]] virtual bool isValid() const = 0;
-
-    /**
      * @brief Get the type of the block.
      *
      * This method returns the type of the block as a string, for example, minecraft:acacia_stairs.
      *
      * @return The type of the block.
      */
-    [[nodiscard]] virtual Result<std::string> getType() const = 0;
+    [[nodiscard]] virtual std::string getType() const = 0;
 
     /**
      * @brief Sets the type of this block
@@ -79,7 +67,7 @@ public:
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> getData() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
 
     /**
      * @brief Sets the complete data for this block
@@ -104,7 +92,7 @@ public:
      * @param offset_z Z-coordinate offset
      * @return Block at the given offsets
      */
-    virtual Result<std::shared_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual std::shared_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
     /**
      * @brief Gets the block at the given face
@@ -114,7 +102,7 @@ public:
      * @param face Face of this block to return
      * @return Block at the given face
      */
-    virtual Result<std::shared_ptr<Block>> getRelative(BlockFace face) = 0;
+    virtual std::shared_ptr<Block> getRelative(BlockFace face) = 0;
 
     /**
      * @brief Gets the block at the given distance of the given face
@@ -123,7 +111,7 @@ public:
      * @param distance Distance to get the block at
      * @return Block at the given face
      */
-    virtual Result<std::shared_ptr<Block>> getRelative(BlockFace face, int distance) = 0;
+    virtual std::shared_ptr<Block> getRelative(BlockFace face, int distance) = 0;
 
     /**
      * @brief Gets the dimension which contains this Block
@@ -183,9 +171,9 @@ struct formatter<endstone::Block> : formatter<string_view> {
     {
         auto it = ctx.out();
         it = fmt::format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
-                            val.getType().value_or("INVALID"));
-        if (auto data = val.getData()) {
-            it = fmt::format_to(it, ", data={}", *data.value());
+                            val.getType());
+        if (const auto data = val.getData()) {
+            it = fmt::format_to(it, ", data={}", *data);
         }
         else {
             it = fmt::format_to(it, ", data=INVALID");
