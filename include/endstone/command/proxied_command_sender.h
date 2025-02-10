@@ -23,6 +23,11 @@ namespace endstone {
  */
 class ProxiedCommandSender : public CommandSender {
 public:
+    [[nodiscard]] ProxiedCommandSender *asProxiedCommandSender() const override
+    {
+        return const_cast<ProxiedCommandSender *>(this);
+    }
+
     /**
      * @brief Returns the CommandSender which triggered this proxied command.
      *

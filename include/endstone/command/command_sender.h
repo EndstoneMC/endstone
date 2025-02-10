@@ -28,6 +28,7 @@ class ConsoleCommandSender;
 class Mob;
 class Server;
 class Player;
+class ProxiedCommandSender;
 
 /**
  * @brief Represents a command sender.
@@ -76,6 +77,16 @@ public:
      * @return Player, nullptr if not a Player
      */
     [[nodiscard]] virtual Player *asPlayer() const
+    {
+        return nullptr;
+    }
+
+    /**
+     * @brief Gets a CommandSender as ProxiedCommandSender
+     *
+     * @return ProxiedCommandSender, nullptr if not a ProxiedCommandSender
+     */
+    [[nodiscard]] virtual ProxiedCommandSender *asProxiedCommandSender() const
     {
         return nullptr;
     }
