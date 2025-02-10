@@ -25,6 +25,7 @@
 * **asConsole** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **asMob** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Mob**](classendstone_1_1Mob.md))
 * **asPlayer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Player**](classendstone_1_1Player.md))
+* **asProxiedCommandSender** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md))
 * **addAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **addOption** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **addItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md))

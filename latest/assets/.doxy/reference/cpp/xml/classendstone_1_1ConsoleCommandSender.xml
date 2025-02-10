@@ -54,6 +54,7 @@
       <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1CommandSender_1aacfc66c9c74e9f8419ada38a1beb6913" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asMob</name></member>
       <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1CommandSender_1a52b174972923fb6dcb578166846c707a" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asProxiedCommandSender</name></member>
       <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>getName</name></member>
       <member refid="classendstone_1_1CommandSender_1aecd5cad85026861938379fa283d626cf" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>getServer</name></member>

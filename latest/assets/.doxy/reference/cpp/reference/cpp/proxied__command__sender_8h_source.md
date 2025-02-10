@@ -30,6 +30,11 @@ namespace endstone {
 
 class ProxiedCommandSender : public CommandSender {
 public:
+    [[nodiscard]] ProxiedCommandSender *asProxiedCommandSender() const override
+    {
+        return const_cast<ProxiedCommandSender *>(this);
+    }
+
     [[nodiscard]] virtual CommandSender &getCaller() const = 0;
 
     [[nodiscard]] virtual CommandSender &getCallee() const = 0;

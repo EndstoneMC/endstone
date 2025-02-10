@@ -113,6 +113,7 @@
       <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1Mob_1aefb6264f480587f4baaeb0eb23277760" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asMob</name></member>
       <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1CommandSender_1a52b174972923fb6dcb578166846c707a" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asProxiedCommandSender</name></member>
       <member refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Actor_1a547e0f2ecb4be6edb82f909f48946031" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getHealth</name></member>

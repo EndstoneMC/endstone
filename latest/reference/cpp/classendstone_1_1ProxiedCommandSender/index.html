@@ -2079,6 +2079,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-asproxiedcommandsender" class="md-nav__link">
+      <span class="md-ellipsis">
+        function asProxiedCommandSender
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getcallee" class="md-nav__link">
       <span class="md-ellipsis">
         function getCallee
@@ -2157,6 +2170,10 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual <a href="./"><strong>ProxiedCommandSender</strong></a> *</td>
+<td style="text-align: left;"><a href="#function-asproxiedcommandsender"><strong>asProxiedCommandSender</strong></a> () override const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="./"><em><strong>ProxiedCommandSender</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getcallee"><strong>getCallee</strong></a> () const = 0<br><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which is being used to call the command.</em></td>
 </tr>
@@ -2195,6 +2212,10 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Player/"><strong>Player</strong></a> *</td>
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asplayer"><strong>asPlayer</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="./"><strong>ProxiedCommandSender</strong></a> *</td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asproxiedcommandsender"><strong>asProxiedCommandSender</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="./"><em><strong>ProxiedCommandSender</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2287,9 +2308,18 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-asproxiedcommandsender">function asProxiedCommandSender<a class="headerlink" href="#function-asproxiedcommandsender" title="Permanent link">&para;</a></h3>
+<p><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="./"><em><strong>ProxiedCommandSender</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ProxiedCommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::</span><span class="n">asProxiedCommandSender</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="./"><strong>ProxiedCommandSender</strong></a>, nullptr if not a <a href="./"><strong>ProxiedCommandSender</strong></a> </p>
+<p>Implements <a href="../classendstone_1_1CommandSender/#function-asproxiedcommandsender"><em>endstone::CommandSender::asProxiedCommandSender</em></a></p>
+<hr>
+
 <h3 id="function-getcallee">function getCallee<a class="headerlink" href="#function-getcallee" title="Permanent link">&para;</a></h3>
 <p><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which is being used to call the command.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::</span><span class="n">getCallee</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::</span><span class="n">getCallee</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the caller which the command is being run as </p>
@@ -2297,7 +2327,7 @@ For latest updates join the chat on
 
 <h3 id="function-getcaller">function getCaller<a class="headerlink" href="#function-getcaller" title="Permanent link">&para;</a></h3>
 <p><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which triggered this proxied command.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::</span><span class="n">getCaller</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::</span><span class="n">getCaller</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the caller which triggered the command </p>

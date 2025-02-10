@@ -1626,6 +1626,7 @@
       <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1Mob_1aefb6264f480587f4baaeb0eb23277760" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asMob</name></member>
       <member refid="classendstone_1_1Player_1a9488f5cc958e803acdae2610fa4448aa" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1CommandSender_1a52b174972923fb6dcb578166846c707a" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asProxiedCommandSender</name></member>
       <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>closeForm</name></member>
       <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>FormVariant</name></member>
       <member refid="classendstone_1_1Player_1a4bbd490a104f8b287c0beff7b1593ca5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>

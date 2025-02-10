@@ -79,6 +79,7 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
 | virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](#function-asmob) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
+| virtual [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) \* | [**asProxiedCommandSender**](#function-asproxiedcommandsender) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**ProxiedCommandSender**_](classendstone_1_1ProxiedCommandSender.md) _._ |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**sendErrorMessage**](#function-senderrormessage-12) ([**const**](classendstone_1_1Vector.md) Message & message) const = 0<br>_Sends this sender a error message._  |
@@ -281,6 +282,31 @@ inline virtual Player * endstone::CommandSender::asPlayer () const
 **Returns:**
 
 [**Player**](classendstone_1_1Player.md), nullptr if not a [**Player**](classendstone_1_1Player.md) 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function asProxiedCommandSender 
+
+_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**ProxiedCommandSender**_](classendstone_1_1ProxiedCommandSender.md) _._
+```C++
+inline virtual ProxiedCommandSender * endstone::CommandSender::asProxiedCommandSender () const
+```
+
+
+
+
+
+**Returns:**
+
+[**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md), nullptr if not a [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) 
 
 
 
