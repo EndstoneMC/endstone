@@ -52,7 +52,7 @@ _Represents a captured state of a block, which will not update automatically._ [
 
 | Type | Name |
 | ---: | :--- |
-| virtual Result&lt; std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
+| virtual std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
 | virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the data for this block state._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains the block represented by this block state._  |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the location of this block state._  |
@@ -62,9 +62,9 @@ _Represents a captured state of a block, which will not update automatically._ [
 | virtual [**int**](classendstone_1_1Vector.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block state._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setData**](#function-setdata) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the data for this block state._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setType**](#function-settype) (std::string type) = 0<br>_Sets the type of this block state._  |
-| virtual Result&lt; [**bool**](classendstone_1_1Vector.md) &gt; | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
-| virtual Result&lt; [**bool**](classendstone_1_1Vector.md) &gt; | [**update**](#function-update-23) ([**bool**](classendstone_1_1Vector.md) force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
-| virtual Result&lt; [**bool**](classendstone_1_1Vector.md) &gt; | [**update**](#function-update-33) ([**bool**](classendstone_1_1Vector.md) force, [**bool**](classendstone_1_1Vector.md) apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**update**](#function-update-23) ([**bool**](classendstone_1_1Vector.md) force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**update**](#function-update-33) ([**bool**](classendstone_1_1Vector.md) force, [**bool**](classendstone_1_1Vector.md) apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
 | virtual  | [**~BlockState**](#function-blockstate) () = default<br> |
 
 
@@ -110,7 +110,7 @@ Unlike [**Block**](classendstone_1_1Block.md), which only one object can exist p
 
 _Gets the block represented by this block state._ 
 ```C++
-virtual Result< std::shared_ptr< Block > > endstone::BlockState::getBlock () const = 0
+virtual std::shared_ptr< Block > endstone::BlockState::getBlock () const = 0
 ```
 
 
@@ -364,7 +364,7 @@ virtual Result< void > endstone::BlockState::setType (
 
 _Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._ 
 ```C++
-virtual Result< bool > endstone::BlockState::update () = 0
+virtual bool endstone::BlockState::update () = 0
 ```
 
 
@@ -392,7 +392,7 @@ true if the update was successful, otherwise false
 
 _Attempts to update the block represented by this state, setting it to the new values as defined by this state._ 
 ```C++
-virtual Result< bool > endstone::BlockState::update (
+virtual bool endstone::BlockState::update (
     bool force
 ) = 0
 ```
@@ -429,7 +429,7 @@ true if the update was successful, otherwise false
 
 _Attempts to update the block represented by this state, setting it to the new values as defined by this state._ 
 ```C++
-virtual Result< bool > endstone::BlockState::update (
+virtual bool endstone::BlockState::update (
     bool force,
     bool apply_physics
 ) = 0

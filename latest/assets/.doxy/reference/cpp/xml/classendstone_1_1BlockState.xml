@@ -18,9 +18,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="34" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1ab60f046d1cf2dafcaa2155bc01ea5c89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
-        <definition>virtual Result&lt; std::shared_ptr&lt; Block &gt; &gt; endstone::BlockState::getBlock</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a2722e3b0eb377685890621bb6804f902" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Block &gt; endstone::BlockState::getBlock</definition>
         <argsstring>() const =0</argsstring>
         <name>getBlock</name>
         <qualifiedname>endstone::BlockState::getBlock</qualifiedname>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="41" column="21"/>
+        <location file="include/endstone/block/block_state.h" line="41" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -220,9 +220,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="104" column="23"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1afc15fdf92f21c6712fec43b2f6f9b702" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref> &gt;</type>
-        <definition>virtual Result&lt; bool &gt; endstone::BlockState::update</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BlockState::update</definition>
         <argsstring>()=0</argsstring>
         <name>update</name>
         <qualifiedname>endstone::BlockState::update</qualifiedname>
@@ -230,18 +230,18 @@
 <para>Attempts to update the block represented by this state, setting it to yhe new values as defined by this state. </para>
         </briefdescription>
         <detaileddescription>
-<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1a3aaae3b9d8b3a6d8dd4fdb5cdd0ee08e" kindref="member">update(false)</ref>. That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.</para>
+<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" kindref="member">update(false)</ref>. That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.</para>
 <para><simplesect kind="return"><para>true if the update was successful, otherwise false </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="114" column="20"/>
+        <location file="include/endstone/block/block_state.h" line="114" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a3aaae3b9d8b3a6d8dd4fdb5cdd0ee08e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref> &gt;</type>
-        <definition>virtual Result&lt; bool &gt; endstone::BlockState::update</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BlockState::update</definition>
         <argsstring>(bool force)=0</argsstring>
         <name>update</name>
         <qualifiedname>endstone::BlockState::update</qualifiedname>
@@ -253,7 +253,7 @@
 <para>Attempts to update the block represented by this state, setting it to the new values as defined by this state. </para>
         </briefdescription>
         <detaileddescription>
-<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1aa83ceb4fc9a1e621413de6e22e443880" kindref="member">update(force, true)</ref>. That is to say, this will trigger a physics update to surrounding blocks.</para>
+<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" kindref="member">update(force, true)</ref>. That is to say, this will trigger a physics update to surrounding blocks.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>force</parametername>
@@ -269,11 +269,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="124" column="20"/>
+        <location file="include/endstone/block/block_state.h" line="124" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1aa83ceb4fc9a1e621413de6e22e443880" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref> &gt;</type>
-        <definition>virtual Result&lt; bool &gt; endstone::BlockState::update</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BlockState::update</definition>
         <argsstring>(bool force, bool apply_physics)=0</argsstring>
         <name>update</name>
         <qualifiedname>endstone::BlockState::update</qualifiedname>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="137" column="20"/>
+        <location file="include/endstone/block/block_state.h" line="137" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -326,7 +326,7 @@
     </detaileddescription>
     <location file="include/endstone/block/block_state.h" line="32" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="32" bodyend="138"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockState_1ab60f046d1cf2dafcaa2155bc01ea5c89" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1BlockState_1a2722e3b0eb377685890621bb6804f902" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1BlockState_1a0699ddcbb62c951ca592858a8759276d" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getData</name></member>
       <member refid="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getLocation</name></member>
@@ -336,9 +336,9 @@
       <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getZ</name></member>
       <member refid="classendstone_1_1BlockState_1a59ca373fa26695ac6eb706f64b2e40f0" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setData</name></member>
       <member refid="classendstone_1_1BlockState_1a54629f4faa893e30d1ef4d4ac15bf147" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setType</name></member>
-      <member refid="classendstone_1_1BlockState_1afc15fdf92f21c6712fec43b2f6f9b702" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
-      <member refid="classendstone_1_1BlockState_1a3aaae3b9d8b3a6d8dd4fdb5cdd0ee08e" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
-      <member refid="classendstone_1_1BlockState_1aa83ceb4fc9a1e621413de6e22e443880" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
       <member refid="classendstone_1_1BlockState_1a7e3b8131f58cbb0ba1cd3338d8b90c12" prot="public" virt="virtual"><scope>endstone::BlockState</scope><name>~BlockState</name></member>
     </listofallmembers>
   </compounddef>

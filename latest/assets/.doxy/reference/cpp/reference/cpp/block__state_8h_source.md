@@ -35,7 +35,7 @@ class BlockState {
 public:
     virtual ~BlockState() = default;
 
-    [[nodiscard]] virtual Result<std::shared_ptr<Block>> getBlock() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Block> getBlock() const = 0;
 
     [[nodiscard]] virtual std::string getType() const = 0;
 
@@ -55,11 +55,11 @@ public:
 
     [[nodiscard]] virtual Location getLocation() const = 0;
 
-    virtual Result<bool> update() = 0;
+    virtual bool update() = 0;
 
-    virtual Result<bool> update(bool force) = 0;
+    virtual bool update(bool force) = 0;
 
-    virtual Result<bool> update(bool force, bool apply_physics) = 0;
+    virtual bool update(bool force, bool apply_physics) = 0;
 };
 }  // namespace endstone
 

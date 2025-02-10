@@ -202,7 +202,7 @@
   </compound>
   <compound refid="classendstone_1_1BlockState" kind="class"><name>endstone::BlockState</name>
     <member refid="classendstone_1_1BlockState_1a7e3b8131f58cbb0ba1cd3338d8b90c12" kind="function"><name>~BlockState</name></member>
-    <member refid="classendstone_1_1BlockState_1ab60f046d1cf2dafcaa2155bc01ea5c89" kind="function"><name>getBlock</name></member>
+    <member refid="classendstone_1_1BlockState_1a2722e3b0eb377685890621bb6804f902" kind="function"><name>getBlock</name></member>
     <member refid="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1BlockState_1a54629f4faa893e30d1ef4d4ac15bf147" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1BlockState_1a0699ddcbb62c951ca592858a8759276d" kind="function"><name>getData</name></member>
@@ -212,9 +212,9 @@
     <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" kind="function"><name>getY</name></member>
     <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" kind="function"><name>getZ</name></member>
     <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" kind="function"><name>getLocation</name></member>
-    <member refid="classendstone_1_1BlockState_1afc15fdf92f21c6712fec43b2f6f9b702" kind="function"><name>update</name></member>
-    <member refid="classendstone_1_1BlockState_1a3aaae3b9d8b3a6d8dd4fdb5cdd0ee08e" kind="function"><name>update</name></member>
-    <member refid="classendstone_1_1BlockState_1aa83ceb4fc9a1e621413de6e22e443880" kind="function"><name>update</name></member>
+    <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" kind="function"><name>update</name></member>
+    <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" kind="function"><name>update</name></member>
+    <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" kind="function"><name>update</name></member>
   </compound>
   <compound refid="classendstone_1_1BossBar" kind="class"><name>endstone::BossBar</name>
     <member refid="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" kind="function"><name>~BossBar</name></member>
