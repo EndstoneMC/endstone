@@ -85,8 +85,11 @@ std::vector<Dimension *> EndstoneLevel::getDimensions() const
 
 Dimension *EndstoneLevel::getDimension(std::string name) const
 {
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-    auto it = dimensions_.find(name);
+    if (name == "the_end") {
+        name = "TheEnd";
+    }
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+    const auto it = dimensions_.find(name);
     if (it == dimensions_.end()) {
         return nullptr;
     }
