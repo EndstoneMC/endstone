@@ -17,10 +17,23 @@
 class ChunkPos {
 public:
     union {
-        std::int64_t packed;
+        std::int64_t packed{0};
         union {
             int x;
             int z;
         };
     };
+
+    ChunkPos() = default;
+    ChunkPos(int x, int z)
+    {
+        this->x = x;
+        this->z = z;
+    }
+    ChunkPos(const BlockPos &pos)
+    {
+        x = pos.x >> 4;
+        z = pos.z >> 4;
+    }
+    ChunkPos(const Vec3 &pos) : ChunkPos(BlockPos(pos)) {}
 };

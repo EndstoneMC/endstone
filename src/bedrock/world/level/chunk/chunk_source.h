@@ -36,8 +36,8 @@ public:
     virtual std::shared_ptr<LevelChunk> getRandomChunk(Random &) = 0;
     virtual bool isChunkKnown(const ChunkPos &) = 0;
     virtual bool isChunkSaved(const ChunkPos &) = 0;
-    virtual std::shared_ptr<LevelChunk> createNewChunk(const ChunkPos &, LoadMode, bool) = 0;
-    virtual std::shared_ptr<LevelChunk> getOrLoadChunk(const ChunkPos &, LoadMode, bool) = 0;
+    virtual std::shared_ptr<LevelChunk> createNewChunk(const ChunkPos &cp, LoadMode lm, bool read_only) = 0;
+    virtual std::shared_ptr<LevelChunk> getOrLoadChunk(const ChunkPos &cp, LoadMode lm, bool read_only) = 0;
     virtual bool postProcess(ChunkViewSource &) = 0;
     virtual void checkAndReplaceChunk(ChunkViewSource &, LevelChunk &) = 0;
     virtual void loadChunk(LevelChunk &, bool) = 0;
