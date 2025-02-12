@@ -18,7 +18,10 @@
 #include <string>
 #include <vector>
 
+#include <boost/algorithm/string/join.hpp>
 #include <entt/entt.hpp>
+#include <fmt/ranges.h>
+#include <spdlog/spdlog.h>
 
 #include "endstone/core/command/command_origin_wrapper.h"
 #include "endstone/core/command/command_output_with_sender.h"
@@ -60,7 +63,7 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
 
 namespace {
 
-std::string removeQuotes(const std::string &str)
+std::string_view removeQuotes(const std::string_view &str)
 {
     if (str.size() < 2) {
         return str;
@@ -70,45 +73,55 @@ std::string removeQuotes(const std::string &str)
     }
     return str;
 }
+
+std::string parseNode(const CommandRegistry::ParseToken &root)
+{
+    auto get_string = [](const CommandRegistry::ParseToken &token) -> std::string {
+        const std::string_view result = {token.text, token.length};
+        if (token.type == CommandRegistry::HardNonTerminal::Id) {
+            return std::string(removeQuotes(result));
+        }
+        return std::string(result);
+    };
+
+    if (!root.child) {
+        return get_string(root);
+    }
+
+    auto *child = root.child.get();
+    auto *last_sibling = child;
+    for (auto *it = child->next.get(); it; it = it->next.get()) {
+        last_sibling = it;
+    }
+
+    auto *begin = child;
+    for (auto *it = child->child.get(); it; it = it->child.get()) {
+        begin = it;
+    }
+
+    auto *end = last_sibling;
+    for (auto *it = last_sibling->child.get(); it; it = it->child.get()) {
+        end = it;
+    }
+
+    if (begin == end) {
+        return get_string(*begin);
+    }
+    return {begin->text, end->text + end->length};
+}
+
 }  // namespace
 
 template <>
-bool CommandRegistry::parse<endstone::core::MinecraftCommandAdapter>(void *value, const ParseToken &parse_token,
-                                                                     const CommandOrigin &, int, std::string &,
-                                                                     std::vector<std::string> &) const
+bool CommandRegistry::parse<endstone::core::MinecraftCommandAdapter>(void *storage, const ParseToken &token,
+                                                                     const CommandOrigin &origin, int version,
+                                                                     std::string &error,
+                                                                     std::vector<std::string> &error_params) const
 {
-    auto &output = static_cast<endstone::core::MinecraftCommandAdapter *>(value)->args_;
-
-    std::string result;
-    std::stack<const ParseToken *> stack;
-    stack.push(&parse_token);
-
-    while (!stack.empty()) {
-        const auto *top = stack.top();
-        stack.pop();
-
-        if (top->length > 0) {
-            if (!result.empty()) {
-                result += " ";
-            }
-
-            auto str = std::string(top->text, top->length);
-            if (top->type.value() == static_cast<std::uint32_t>(HardNonTerminal::Id)) {
-                str = removeQuotes(str);
-            }
-
-            result += str;
-        }
-
-        if (top != &parse_token && top->next != nullptr) {
-            stack.push(top->next.get());
-        }
-
-        if (top->child != nullptr) {
-            stack.push(top->child.get());
-        }
+    if (!storage) {
+        return false;
     }
-
-    output.push_back(result);
+    auto &output = static_cast<endstone::core::MinecraftCommandAdapter *>(storage)->args_;
+    output.emplace_back(parseNode(token));
     return true;
 }

@@ -186,6 +186,11 @@ public:
             return value_ & 0xE00FFFFF;
         }
 
+        bool operator==(const Symbol &other) const
+        {
+            return value_ == other.value_;
+        }
+
     private:
         static const int EnumBit = 0x200000;
         static const int OptionalBit = 0x400000;
@@ -295,8 +300,8 @@ public:
     }
 
     template <typename T>
-    bool parse(void *value, const ParseToken &parse_token, const CommandOrigin &, int, std::string &,
-               std::vector<std::string> &) const;
+    bool parse(void *storage, const ParseToken &token, const CommandOrigin &origin, int version, std::string &error,
+               std::vector<std::string> &error_params) const;
 
     template <typename CommandType>
     static std::unique_ptr<Command> allocateCommand()
