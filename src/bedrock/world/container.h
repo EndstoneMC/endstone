@@ -19,6 +19,7 @@
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/utility/pub_sub/connector.h"
+#include "bedrock/core/utility/pub_sub/publisher.h"
 #include "bedrock/world/container_runtime_id.h"
 #include "bedrock/world/item/item_stack.h"
 

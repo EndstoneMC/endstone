@@ -14,4 +14,18 @@
 
 #pragma once
 
-class Inventory {};
+#include "bedrock/world/inventory/filling_container.h"
+
+class Inventory : public FillingContainer {
+public:
+    Inventory(Player *);
+    ~Inventory() override;
+    void init() override;
+    bool add(ItemStack &) override;
+    [[nodiscard]] bool canAdd(const ItemStack &) const override;
+    [[nodiscard]] virtual int getFirstEmptySlot() const;
+    [[nodiscard]] int getEmptySlotsCount() const override;
+    virtual void setContainerSize(int);
+    void setItem(int, const ItemStack &) override;
+    void setItemWithForceBalance(int, const ItemStack &, bool) override;
+};

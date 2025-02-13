@@ -34,13 +34,16 @@ Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_remov
 
 const Container &Player::getInventory() const
 {
-    static_assert(offsetof(Player, inventory_) == 1480);
+    return inventory_->getContainer();
+}
+
+Container &Player::getInventory()
+{
     return inventory_->getContainer();
 }
 
 const std::string &Player::getName() const
 {
-    static_assert(offsetof(Player, name_) == 1480);
     return name_;
 }
 

@@ -131,6 +131,7 @@ public:
     static Player *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
     [[nodiscard]] const Container &getInventory() const;
+    Container &getInventory();
     [[nodiscard]] const std::string &getName() const;
     ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
 
@@ -155,7 +156,7 @@ public:
     int score;
     float o_bob;
     float bob;
-    BuildPlatform build_platform;
+    BuildPlatform build_platform;  // +1180
     std::string unique_name;
     std::string server_id;
     std::string self_signed_id;
@@ -179,12 +180,12 @@ protected:
     std::shared_ptr<ContainerManagerModel> container_manager_;
     Bedrock::PubSub::PublisherPtr<void(const ContainerManagerModel *), Bedrock::PubSub::ThreadModel::SingleThreaded>
         container_manager_subscribers_;
-    std::unique_ptr<PlayerInventory> inventory_;
+    std::unique_ptr<PlayerInventory> inventory_;  // +1480
     InventoryOptions inventory_options_;
     float distance_since_transform_event_;
     std::vector<ItemInstance> creative_item_list_;
     std::array<std::vector<ItemGroup>, 4> filtered_creative_item_list_;
-    std::string platform_online_id_;
+    std::string platform_online_id_;  // +1536
 
 public:
     enum class SpawnPositionState : int {
@@ -297,11 +298,11 @@ private:
     std::int64_t started_blocking_time_stamp_;
     std::int64_t blocked_using_shield_time_stamp_;
     std::int64_t blocked_using_damaged_shield_time_stamp_;
-    std::string name_;
+    std::string name_;  // +3160
     std::string last_emote_played_;
     time_t emote_easter_egg_end_time_;
     unsigned int emote_message_count_;
-    std::string device_id_;
+    std::string device_id_;  // +3240
     bool flag_client_for_bai_reset_;
     bool send_inventory_options_to_client_;
     bool is_hosting_player_;
