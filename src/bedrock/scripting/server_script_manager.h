@@ -15,14 +15,11 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/scripting/plugin_execution_group.h"
 #include "bedrock/server/server_instance.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/server_instance_event_listener.h"
 
-class ServerInstanceEventCoordinator : public EventCoordinatorPimpl<ServerInstanceEventListener> {
+class ServerScriptManager {
 public:
-    void sendServerInitializeStart(ServerInstance &instance);
-    void sendServerInitializeEnd(ServerInstance &instance);
-    void sendServerThreadStarted(ServerInstance &instance);
-    void sendServerThreadStopped(ServerInstance &instance);
+private:
+    ENDSTONE_HOOK void _runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance);
 };

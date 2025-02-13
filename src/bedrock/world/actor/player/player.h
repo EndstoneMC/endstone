@@ -133,7 +133,7 @@ public:
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
     [[nodiscard]] const std::string &getName() const;
-    ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
+    void setPermissions(CommandPermissionLevel level);  // TODO(hook): this function can no longer be hooked (lined), find alternatives
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;

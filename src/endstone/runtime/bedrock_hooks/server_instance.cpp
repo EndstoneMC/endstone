@@ -12,17 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-#include "bedrock/bedrock.h"
 #include "bedrock/server/server_instance.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/server_instance_event_listener.h"
 
-class ServerInstanceEventCoordinator : public EventCoordinatorPimpl<ServerInstanceEventListener> {
-public:
-    void sendServerInitializeStart(ServerInstance &instance);
-    void sendServerInitializeEnd(ServerInstance &instance);
-    void sendServerThreadStarted(ServerInstance &instance);
-    void sendServerThreadStopped(ServerInstance &instance);
-};
+#include <endstone/runtime/hook.h>
+
+void ServerInstance::_resetServerScriptManager()
+{
+    // TODO(hook): maybe we could use ScriptModuleShutdownEvent?
+    // This function is called when the server loop stops (safely executed from the server thread)
+    // or during the destruction of the ServerInstance object.
+    entt::locator<endstone::core::EndstoneServer>::reset();
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::_resetServerScriptManager, this);
+}

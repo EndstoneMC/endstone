@@ -14,15 +14,11 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/server/server_instance.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/server_instance_event_listener.h"
+#include <cstdint>
 
-class ServerInstanceEventCoordinator : public EventCoordinatorPimpl<ServerInstanceEventListener> {
-public:
-    void sendServerInitializeStart(ServerInstance &instance);
-    void sendServerInitializeEnd(ServerInstance &instance);
-    void sendServerThreadStarted(ServerInstance &instance);
-    void sendServerThreadStopped(ServerInstance &instance);
+enum class PluginExecutionGroup : std::uint8_t {
+    PrePackLoadExecution = 0,
+    ServerStartExecution = 1,
+    ClientLevelCreation = 2,
+    All = 3,
 };
