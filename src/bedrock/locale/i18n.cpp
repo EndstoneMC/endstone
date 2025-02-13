@@ -18,5 +18,8 @@
 
 I18n &getI18n()
 {
-    return BEDROCK_CALL(&getI18n);
+    // TODO: avoid hardcoded value
+    constexpr std::size_t offset = 0x5069A70;
+    auto *address = static_cast<I18n *>(endstone::detail::get_executable_base()) + offset;
+    return *address;
 }

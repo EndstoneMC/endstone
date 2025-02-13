@@ -53,6 +53,7 @@ enum class CommandParameterDataType : int {
 };
 
 class CommandRegistry {
+    friend class Command;
     friend class CommandParameterData;
 
 public:
@@ -324,6 +325,7 @@ private:
     [[nodiscard]] std::string describe(CommandParameterData const &) const;
     [[nodiscard]] std::string describe(const Signature &signature, const std::string &name, const Overload &overload,
                                        unsigned int a4, unsigned int *a5, unsigned int *a6) const;
+    [[nodiscard]] std::string symbolToString(CommandRegistry::Symbol) const;
     void registerOverloadInternal(Signature &signature, Overload &overload);
 
     std::function<void(Packet const &)> network_update_callback_;                                // +0

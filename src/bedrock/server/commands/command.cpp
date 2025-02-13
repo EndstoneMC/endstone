@@ -30,7 +30,7 @@ bool RelativeFloat::isRelative() const
 
 std::string Command::getCommandName() const
 {
-    return BEDROCK_CALL(&Command::getCommandName, this);
+    return registry_->symbolToString(command_symbol_);
 }
 
 void Command::run(CommandOrigin const &origin, CommandOutput &output) const
