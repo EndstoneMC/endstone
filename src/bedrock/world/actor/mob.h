@@ -95,7 +95,7 @@ public:
     void setYBodyRotation(float rotation);
 
 public:
-    int hurt_duration;
+    int hurt_duration;  // +936
     float hurt_dir;
     float o_tilt;
     float tilt;

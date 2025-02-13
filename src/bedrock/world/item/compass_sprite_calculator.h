@@ -23,7 +23,7 @@ public:
 
 private:
     PointToTargetFunction target_to_point_to_;
-    IsPointingAtTargetFunction is_pointing_at_target_wwwwwwww;
+    IsPointingAtTargetFunction is_pointing_at_target_;
     int frame_;
     float rot_;
     float rot_a_;

@@ -19,4 +19,9 @@
 class PlayerUIContainer : public SimpleContainer {
 public:
     PlayerUIContainer(const std::string &, bool, int);
+
+private:
+    // TODO: figure out the name
+    int size_;
+    std::vector<ItemStack> items_;
 };

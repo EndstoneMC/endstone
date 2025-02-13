@@ -405,8 +405,8 @@ private:
     bool can_pickup_items_;
     bool has_set_can_pickup_items_;
     bool chained_damage_effects_;
-    bool was_in_wall_last_tick_;
-    int ticks_in_wall_;
+    // bool was_in_wall_last_tick_;
+    // int ticks_in_wall_;
     int affected_by_water_bottle_ticks_to_effect_;
     SpawnRuleEnum spawn_rules_enum_;
     std::unique_ptr<ActionQueue> action_queue_;

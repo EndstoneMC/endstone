@@ -184,7 +184,7 @@ protected:
     InventoryOptions inventory_options_;
     float distance_since_transform_event_;
     std::vector<ItemInstance> creative_item_list_;
-    std::array<std::vector<ItemGroup>, 4> filtered_creative_item_list_;
+    // std::array<std::vector<ItemGroup>, 4> filtered_creative_item_list_;
     std::string platform_online_id_;  // +1536
 
 public:
@@ -242,7 +242,7 @@ protected:
     bool has_seen_credits_;
     std::optional<PlayerSpawnFallbackType> spawn_fallback_type_;
     std::optional<Vec3> spawn_fallback_position_;
-    PlayerItemInUse item_in_use_;
+    PlayerItemInUse item_in_use_;  // +1808
     ActorType last_hurt_by_;
     std::int16_t sleep_counter_;
     std::int16_t prev_sleep_counter_;
@@ -250,10 +250,10 @@ protected:
     int previous_carried_item_;
     int emote_ticks_;
     std::shared_ptr<NetworkChunkPublisher> chunk_publisher_view_;
-    PacketSender &m_packet_sender_;
+    PacketSender &packet_sender_;
     std::shared_ptr<HudContainerManagerModel> hud_container_manager_model_;
     std::unique_ptr<EnderChestContainer> ender_chest_inventory_;
-    std::vector<ActorUniqueID> tracked_boss_i_ds_;
+    std::vector<ActorUniqueID> tracked_boss_ids_;
     using PlayerListenerList = std::vector<PlayerListener *>;
     ItemGroup cursor_selected_item_group_;
     std::size_t player_ui_container_[sizeof(PlayerUIContainer) / 8];
@@ -284,7 +284,6 @@ private:
     std::shared_ptr<AnimationComponent> first_person_animation_component_;
     PlayerListenerList listeners_;
     Vec3 respawn_position_candidate_;
-    Vec3 enter_bed_position_;
     Vec3 pre_dimension_transfer_spawn_position_;
     int enchantment_seed_;
     std::vector<unsigned int> on_screen_animation_textures_;
@@ -302,7 +301,7 @@ private:
     std::string last_emote_played_;
     time_t emote_easter_egg_end_time_;
     unsigned int emote_message_count_;
-    std::string device_id_;  // +3240
+    std::string device_id_;
     bool flag_client_for_bai_reset_;
     bool send_inventory_options_to_client_;
     bool is_hosting_player_;
