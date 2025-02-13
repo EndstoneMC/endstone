@@ -148,6 +148,8 @@ enum class ActorDataIDs : uint8_t {
     PLAYER_HAS_DIED = 129,
     COLLISION_BOX = 130,
     VISIBLE_MOB_EFFECTS = 131,
-    Count = 132,
+    FILTERED_NAME = 132,
+    ENTER_BED_POSITION = 133,
+    Count
 };
 // NOLINTEND(*-identifier-naming)

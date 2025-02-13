@@ -35,7 +35,8 @@ class SerializedAbilitiesData {
         std::uint32_t abilities_set;                                                // +4
         std::uint32_t ability_values;                                               // +8
         float fly_speed;                                                            // +12
-        float walk_speed;                                                           // +16
+        float vertical_fly_speed;                                                   // +16
+        float walk_speed;                                                           // +20
     };
 
 public:
@@ -73,6 +74,7 @@ public:
                 Ability::Options::None);
             serialized_layer.fly_speed = abilities.getFloat(AbilitiesIndex::FlySpeed);
             serialized_layer.walk_speed = abilities.getFloat(AbilitiesIndex::WalkSpeed);
+            serialized_layer.vertical_fly_speed = abilities.getFloat(AbilitiesIndex::VerticalFlySpeed);
         });
     }
 
