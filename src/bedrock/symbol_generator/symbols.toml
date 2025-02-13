@@ -1,4 +1,4 @@
-timestamp = 1739453052
+timestamp = 1739469146
 version = "1.21.60"
 
 [windows]
@@ -40,7 +40,7 @@ version = "1.21.60"
 # ItemRegistryManager
 "?getItemRegistry@ItemRegistryManager@@SA?AVItemRegistryRef@@XZ" = 44927936
 # ItemStackBase
-"?init@ItemStackBase@@IEAAXHHH_N@Z" = 0
+"?init@ItemStackBase@@IEAAXHHH_N@Z" = 45789312
 "?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 45792976
 # Level
 "?tick@Level@@UEAAXXZ" = 44663120
@@ -51,7 +51,7 @@ version = "1.21.60"
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 18459184
 # Mob
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 41302320
-"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 0
+"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 41298560
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@@gsl@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 17585952
 # Player

@@ -13,23 +13,14 @@
 // limitations under the License.
 
 #pragma once
+#include "bedrock/world/item/item_instance.h"
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
+class ItemGroup {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    explicit ItemGroup(const ItemInstance &);
 
-    float r;
-    float g;
-    float b;
-    float a;
+private:
+    ItemInstance item_template_;
+    int count_;
 };
-}  // namespace mce
-
-using Color = mce::Color;
+static_assert(sizeof(ItemGroup) == 136);

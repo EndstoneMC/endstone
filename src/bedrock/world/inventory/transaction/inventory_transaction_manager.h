@@ -14,22 +14,16 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include "bedrock/world/inventory/transaction/inventory_action.h"
 
-namespace mce {
-class Color {
+class InventoryTransactionManager {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    InventoryTransactionManager(Player &);
 
-    float r;
-    float g;
-    float b;
-    float a;
+private:
+    Player &player_;
+    std::unique_ptr<InventoryTransaction> current_transaction_;
+    std::vector<InventoryAction> expected_actions_;
+    bool enable_logs_;
 };
-}  // namespace mce
-
-using Color = mce::Color;
+static_assert(sizeof(InventoryTransactionManager) == 48);

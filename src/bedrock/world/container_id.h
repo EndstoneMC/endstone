@@ -14,22 +14,14 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
-public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
-
-    float r;
-    float g;
-    float b;
-    float a;
+enum ContainerID : signed char {
+    CONTAINER_ID_NONE = -1,
+    CONTAINER_ID_INVENTORY = 0,
+    CONTAINER_ID_FIRST = 1,
+    CONTAINER_ID_LAST = 100,
+    CONTAINER_ID_OFFHAND = 119,
+    CONTAINER_ID_ARMOR = 120,
+    CONTAINER_ID_SELECTION_SLOTS = 122,
+    CONTAINER_ID_PLAYER_ONLY_UI = 124,
+    CONTAINER_ID_REGISTRY = 125,
 };
-}  // namespace mce
-
-using Color = mce::Color;

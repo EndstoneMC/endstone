@@ -32,14 +32,16 @@ Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_remov
     return static_cast<Player *>(Actor::tryGetFromEntity(entity, include_removed));
 }
 
-Container &Player::getInventory()
+const Container &Player::getInventory() const
 {
-    return BEDROCK_CALL(&Player::getInventory, this);
+    static_assert(offsetof(Player, inventory_) == 1480);
+    return inventory_->getContainer();
 }
 
 const std::string &Player::getName() const
 {
-    return BEDROCK_CALL(&Player::getName, this);
+    static_assert(offsetof(Player, name_) == 1480);
+    return name_;
 }
 
 GameType Player::getPlayerGameType() const

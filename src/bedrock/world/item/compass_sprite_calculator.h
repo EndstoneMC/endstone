@@ -14,22 +14,18 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
+class CompassSpriteCalculator {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    using PointToTargetFunction = BlockPos (*)(const BlockSource *, Actor *);
+    using IsPointingAtTargetFunction = bool (*)(const BlockSource *, Actor *);
 
-    float r;
-    float g;
-    float b;
-    float a;
+    explicit CompassSpriteCalculator(PointToTargetFunction, IsPointingAtTargetFunction, float, float);
+
+private:
+    PointToTargetFunction target_to_point_to_;
+    IsPointingAtTargetFunction is_pointing_at_target_wwwwwwww;
+    int frame_;
+    float rot_;
+    float rot_a_;
 };
-}  // namespace mce
-
-using Color = mce::Color;
+static_assert(sizeof(CompassSpriteCalculator) == 32);

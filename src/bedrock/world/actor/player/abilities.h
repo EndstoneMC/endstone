@@ -98,4 +98,4 @@ public:
 private:
     std::array<Ability, static_cast<int>(AbilitiesIndex::AbilityCount)> abilities_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(Abilities, 228, 228);
+BEDROCK_STATIC_ASSERT_SIZE(Abilities, 240, 240);

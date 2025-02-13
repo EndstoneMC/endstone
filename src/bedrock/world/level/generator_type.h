@@ -14,22 +14,22 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
-public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
-
-    float r;
-    float g;
-    float b;
-    float a;
+enum class GeneratorType : int {
+    Legacy = 0,
+    Overworld = 1,
+    Flat = 2,
+    Nether = 3,
+    TheEnd = 4,
+    Void = 5,
+    Undefined = 6,
 };
-}  // namespace mce
 
-using Color = mce::Color;
+enum class NetherWorldType : bool {
+    Normal = 0,
+    Flat = 1,
+};
+
+enum class WorldVersion : unsigned char {
+    Pre_1_18 = 0,
+    Post_1_18 = 1,
+};

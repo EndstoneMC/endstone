@@ -14,22 +14,13 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
+class ClockSpriteCalculator {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    ClockSpriteCalculator();
 
-    float r;
-    float g;
-    float b;
-    float a;
+private:
+    int frame_;
+    float rot_;
+    float rot_a_;
 };
-}  // namespace mce
-
-using Color = mce::Color;
+static_assert(sizeof(ClockSpriteCalculator) == 12);

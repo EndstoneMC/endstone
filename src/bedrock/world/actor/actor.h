@@ -37,13 +37,16 @@
 #include "bedrock/input/input_mode.h"
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/server/commands/command_permission_level.h"
+#include "bedrock/util/molang_variable_map.h"
 #include "bedrock/util/variant_parameter_list.h"
 #include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_damage_source.h"
 #include "bedrock/world/actor/actor_definition_identifier.h"
+#include "bedrock/world/actor/actor_definition_ptr.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
+#include "bedrock/world/actor/actor_terrain_interlock_data.h"
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/synched_actor_data.h"
@@ -53,6 +56,12 @@
 
 class Player;
 class Level;
+
+enum class SpawnRuleEnum : int {
+    Undefined = -1,
+    NoSpawnRules = 0,
+    HasSpawnRules = 1,
+};
 
 struct BuiltInActorComponents {
     gsl::not_null<StateVectorComponent *> state_vector_component;
@@ -369,8 +378,40 @@ protected:
     bool loot_dropped_;
     bool loaded_from_nbt_this_frame_;
 
+public:
+protected:
+    Color hurt_color_;
+    std::unique_ptr<ActorDefinitionDiffList> definition_list_;
+    std::unique_ptr<CompoundTag> loaded_actor_property_bag_;
+    ActorDefinitionPtr actor_definition_ptr_;
+    std::string filtered_name_tag_;
+    ActorTerrainInterlockData terrain_interlock_data_;
+    ActorUniqueID last_hurt_mob_id_;
+    ActorUniqueID last_hurt_by_mob_id_;
+    ActorUniqueID last_hurt_by_player_id_;
+    uint64_t last_hurt_timestamp_;
+    ActorDamageCause last_hurt_cause_;
+    float last_hurt_;
+    int last_hurt_mob_timestamp_;
+    int last_hurt_by_mob_time_;
+    int last_hurt_by_mob_timestamp_;
+    bool is_predictable_projectile_;
+    bool is_rendering_in_ui_;
+    bool is_on_screen_;
+    bool update_bones_and_effects_;
+    bool update_effects_;
+
 private:
-    endstone::core::EndstoneActor &getEndstoneActor0() const;
+    bool can_pickup_items_;
+    bool has_set_can_pickup_items_;
+    bool chained_damage_effects_;
+    bool was_in_wall_last_tick_;
+    int ticks_in_wall_;
+    int affected_by_water_bottle_ticks_to_effect_;
+    SpawnRuleEnum spawn_rules_enum_;
+    std::unique_ptr<ActionQueue> action_queue_;
+    MolangVariableMap molang_variables_;
+    ActorUniqueID fishing_hook_id_;
 
 public:
     template <typename T = endstone::core::EndstoneActor>
@@ -378,4 +419,7 @@ public:
     {
         return static_cast<T &>(getEndstoneActor0());
     }
+
+private:
+    endstone::core::EndstoneActor &getEndstoneActor0() const;
 };

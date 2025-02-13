@@ -14,22 +14,16 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include <vector>
 
-namespace mce {
-class Color {
+#include "bedrock/forward.h"
+
+class MolangVariableMap {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    MolangVariableMap() = default;
 
-    float r;
-    float g;
-    float b;
-    float a;
+private:
+    std::vector<std::int16_t> map_from_variable_index_to_variable_array_offset_;
+    std::vector<std::unique_ptr<MolangVariable>> variables_;
+    bool has_public_variables_{false};
 };
-}  // namespace mce
-
-using Color = mce::Color;

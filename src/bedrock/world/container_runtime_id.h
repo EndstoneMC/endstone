@@ -14,22 +14,10 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
-public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
-
-    float r;
-    float g;
-    float b;
-    float a;
+template <typename Tag, typename RawIdT = unsigned int, RawIdT RawInvalid = 0>
+class TypedRuntimeId {
+    RawIdT raw_id_;
 };
-}  // namespace mce
 
-using Color = mce::Color;
+using ContainerRuntimeId = TypedRuntimeId<struct ContainerRuntimeIdTag>;
+static_assert(sizeof(ContainerRuntimeId) == 4);

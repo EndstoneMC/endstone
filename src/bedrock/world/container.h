@@ -19,8 +19,42 @@
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/utility/pub_sub/connector.h"
-#include "bedrock/forward.h"
+#include "bedrock/world/container_runtime_id.h"
 #include "bedrock/world/item/item_stack.h"
+
+class ContainerSizeChangeListener {
+public:
+    virtual void containerSizeChanged(int) = 0;
+    virtual ~ContainerSizeChangeListener();
+};
+static_assert(sizeof(ContainerSizeChangeListener) == 8);
+
+class ContainerContentChangeListener {
+public:
+    virtual void containerContentChanged(int) = 0;
+    virtual ~ContainerContentChangeListener();
+};
+static_assert(sizeof(ContainerContentChangeListener) == 8);
+
+class ContainerCloseListener {
+public:
+    virtual void containerClosed(Player &) = 0;
+    virtual ~ContainerCloseListener();
+};
+static_assert(sizeof(ContainerCloseListener) == 8);
+
+struct ContainerOwner {
+    class OwnedContainer {
+    public:
+        OwnedContainer(std::shared_ptr<ContainerModel>);
+
+    private:
+        std::shared_ptr<ContainerModel> container_model_;
+    };
+    static_assert(sizeof(OwnedContainer) == 16);
+    std::vector<OwnedContainer> owned_containers;
+};
+static_assert(sizeof(ContainerOwner) == 24);
 
 enum class ContainerType : std::int8_t {
     NONE = -9,
@@ -65,9 +99,21 @@ enum class ContainerType : std::int8_t {
 };
 
 class Container {
+public:
+    struct PublisherWrapper {
+        Bedrock::PubSub::Publisher<void(), Bedrock::PubSub::ThreadModel::MultiThreaded> publisher;
+    };
+
     using ItemStackNetIdChangedCallback = std::function<void(int, const ItemStack &)>;
 
-public:
+    static constexpr int LARGE_MAX_STACK_SIZE = 64;
+    static constexpr int DEFAULT_CONTAINER_SIZE = 27;
+    static constexpr int INVALID_SLOT = -1;
+    static constexpr std::uint32_t INVALID_CONTAINER_ID = 0;
+
+    Container(ContainerType);
+    Container(ContainerType, const std::string &, bool);
+
     virtual ~Container() = 0;
     virtual void init() = 0;
     virtual void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) = 0;
@@ -111,4 +157,19 @@ public:
     virtual void initializeContainerContents(BlockSource &region);
     [[nodiscard]] virtual bool isEmpty() const;
     [[nodiscard]] virtual bool isSlotDisabled(int) const;
+
+protected:
+    ContainerType container_type_;
+    ContainerType gameplay_container_type_;
+    std::unordered_set<ContainerContentChangeListener *> content_change_listeners_;
+    std::unordered_set<ContainerSizeChangeListener *> size_change_listeners_;
+    std::unordered_set<ContainerCloseListener *> close_listeners_;
+    PublisherWrapper removed_publisher_;
+    std::deque<std::function<void(Container &, int, const ItemStack &, const ItemStack &)>> transaction_context_stack_;
+    std::string name_;
+    bool custom_name_;
+    ContainerOwner container_owner_;
+
+private:
+    ContainerRuntimeId container_runtime_id_;
 };

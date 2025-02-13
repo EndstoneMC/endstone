@@ -14,22 +14,21 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include <chrono>
 
-namespace mce {
-class Color {
+class ActorTerrainInterlockData {
+    enum class VisibilityState : std::uint8_t {
+        InitialNotVisible = 0,
+        Visible = 1,
+        DelayedDestructionNotVisible = 2,
+    };
+
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    ActorTerrainInterlockData();
 
-    float r;
-    float g;
-    float b;
-    float a;
+protected:
+    VisibilityState render_visibility_state_;
+    std::chrono::steady_clock::time_point creation_time_;
+    bool has_been_delayed_deleted_;
 };
-}  // namespace mce
-
-using Color = mce::Color;
+static_assert(sizeof(ActorTerrainInterlockData) == 24);

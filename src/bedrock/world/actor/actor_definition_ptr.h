@@ -14,22 +14,13 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include "bedrock/forward.h"
 
-namespace mce {
-class Color {
+class ActorDefinitionPtr {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    ActorDefinitionPtr(ActorDefinitionGroup &, ActorDefinition &);
 
-    float r;
-    float g;
-    float b;
-    float a;
+protected:
+    ActorDefinitionGroup *group_;
+    ActorDefinition *ptr_;
 };
-}  // namespace mce
-
-using Color = mce::Color;

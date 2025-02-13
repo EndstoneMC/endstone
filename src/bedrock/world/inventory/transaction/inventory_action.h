@@ -14,22 +14,20 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include "bedrock/world/inventory/transaction/inventory_source.h"
+#include "bedrock/world/item/network_item_stack_descriptor.h"
 
-namespace mce {
-class Color {
+class InventoryAction {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    InventoryAction(InventorySource, uint32_t, const ItemStack &, const ItemStack &);
+    InventoryAction(InventorySource, uint32_t, const NetworkItemStackDescriptor &, const NetworkItemStackDescriptor &);
+    ~InventoryAction();
 
-    float r;
-    float g;
-    float b;
-    float a;
+private:
+    InventorySource source_;
+    uint32_t slot_;
+    NetworkItemStackDescriptor from_item_descriptor_;
+    NetworkItemStackDescriptor to_item_descriptor_;
+    ItemStack from_item_;
+    ItemStack to_item_;
 };
-}  // namespace mce
-
-using Color = mce::Color;

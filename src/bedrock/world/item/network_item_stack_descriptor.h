@@ -14,22 +14,15 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include "bedrock/world/item/item_descriptor_count.h"
 
-namespace mce {
-class Color {
+class NetworkItemStackDescriptor : public ItemDescriptorCount {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    NetworkItemStackDescriptor(const ItemStack &);
 
-    float r;
-    float g;
-    float b;
-    float a;
+private:
+    bool include_net_ids_;
+    ItemStackNetIdVariant net_id_variant_;
+    BlockRuntimeId block_runtime_id_;
+    std::string user_data_buffer_;
 };
-}  // namespace mce
-
-using Color = mce::Color;

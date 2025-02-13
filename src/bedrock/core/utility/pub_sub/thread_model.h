@@ -18,12 +18,25 @@
 
 namespace Bedrock::PubSub::ThreadModel {
 
+struct SingleThreaded {
+    class NullMutex {
+    public:
+        void lock() const {}
+        [[nodiscard]] bool try_lock() const
+        {
+            return true;
+        };
+        void unlock() const {}
+    };
+    using MutexType = NullMutex;
+};
+
 struct MultiThreaded {
-    using MutexType = Bedrock::Threading::Mutex;
+    using MutexType = Threading::Mutex;
 };
 
 struct MultiThreadedStrict {
-    using MutexType = Bedrock::Threading::RecursiveMutex;
+    using MutexType = Threading::RecursiveMutex;
 };
 
 }  // namespace Bedrock::PubSub::ThreadModel

@@ -14,22 +14,11 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
-public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
-
-    float r;
-    float g;
-    float b;
-    float a;
+enum class PlayerSpawnFallbackType : int {
+    AboveLeaves = 0,
+    ShallowWater = 1,
+    Waterlily = 2,
+    DeepWater = 3,
+    PowderSnow = 4,
+    None = 5,
 };
-}  // namespace mce
-
-using Color = mce::Color;

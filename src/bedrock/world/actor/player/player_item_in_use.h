@@ -14,22 +14,18 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include "bedrock/world/actor/player/player_inventory_slot_data.h"
 
-namespace mce {
-class Color {
-public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+struct PlayerItemInUse {
+    static constexpr int ITEM_USE_INTERVAL_DURATION = 4;
+    static constexpr int ITEM_USE_INTERVAL_COUNT = 6;
+    static constexpr int MAX_ITEM_USE_DURATION = 25;
 
-    float r;
-    float g;
-    float b;
-    float a;
+    int duration;                              // +0
+    bool should_send_interaction_game_events;  // +4
+
+private:
+    ItemStack item_;                // +8
+    PlayerInventorySlotData slot_;  // +160
 };
-}  // namespace mce
-
-using Color = mce::Color;
+static_assert(sizeof(PlayerItemInUse) == 168);

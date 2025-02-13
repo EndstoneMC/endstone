@@ -14,22 +14,18 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
-
-namespace mce {
-class Color {
+class SimpleContainer : public Container {
 public:
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+    SimpleContainer(const std::string &, bool, int, ContainerType);
+    [[nodiscard]] const ItemStack &getItem(int) const override;
+    void setItem(int, const ItemStack &) override;
+    [[nodiscard]] int getContainerSize() const override;
+    [[nodiscard]] int getMaxStackSize() const override;
+    void startOpen(Player &) override;
+    void stopOpen(Player &) override;
+    void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) override;
 
-    float r;
-    float g;
-    float b;
-    float a;
+protected:
+    int size_;
+    std::vector<ItemStack> items_;
 };
-}  // namespace mce
-
-using Color = mce::Color;
