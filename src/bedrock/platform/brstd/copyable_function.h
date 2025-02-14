@@ -20,6 +20,31 @@ namespace brstd {
 
 template <typename Signature>
 class copyable_function
-    : public detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature, false> {};
+    : public detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature, false> {
+public:
+    copyable_function() noexcept
+    {
+        this->_construct_empty();
+    }
+    copyable_function(nullptr_t)
+    {
+        this->_construct_empty();
+    }
+    template <typename F, typename = std::enable_if_t<std::is_invocable_v<F>>>
+    copyable_function(F &&f)
+    {
+        this->template _construct_target<F, F>(std::forward<F>(f));
+    }
+
+    copyable_function(copyable_function &&) = default;
+    copyable_function(const copyable_function &) = default;
+    copyable_function &operator=(copyable_function &&) = default;
+    copyable_function &operator=(const copyable_function &) = default;
+    copyable_function &operator=(nullptr_t)
+    {
+        this->_construct_empty();
+        return *this;
+    }
+};
 
 };  // namespace brstd
