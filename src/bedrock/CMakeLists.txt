@@ -36,6 +36,7 @@ add_library(bedrock STATIC
         nbt/nbt_io.cpp
         nbt/tag.cpp
         network/network_identifier.cpp
+        network/packet/types/world/actor/serialized_abilities_data.cpp
         network/packet/crafting_data_packet.cpp
         network/packet.cpp
         network/server_network_handler.cpp
