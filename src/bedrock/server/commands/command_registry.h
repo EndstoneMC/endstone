@@ -30,6 +30,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/type_id.h"
 #include "bedrock/network/packet/available_commands_packet.h"
+#include "bedrock/platform/brstd/copyable_function.h"
 #include "bedrock/server/commands/command_flag.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/server/commands/command_version.h"
@@ -174,8 +175,8 @@ public:
     class Symbol {
     public:
         Symbol() = default;
-        Symbol(size_t value) : value_(static_cast<int>(value)){};
-        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)){};
+        Symbol(size_t value) : value_(static_cast<int>(value)) {};
+        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)) {};
 
         [[nodiscard]] int value() const
         {
@@ -206,17 +207,20 @@ public:
 
     using NonTerminal = Symbol;
     using Terminal = Symbol;
+    using SymbolVector = std::vector<Symbol>;
 
     struct Overload {
-        using AllocFunction = std::unique_ptr<Command> (*)();
+        using AllocFunction = brstd::copyable_function<std::unique_ptr<Command>()>;
         Overload(const CommandVersion &version, AllocFunction alloc);
 
         CommandVersion version;                    // +0
         AllocFunction alloc;                       // +8
-        std::vector<CommandParameterData> params;  // +16
+        std::vector<CommandParameterData> params;  // +72
         std::int32_t version_offset{-1};           // +40
         bool is_chaining{false};                   // +44
-        std::vector<Symbol> params_symbol;         // +48
+        SymbolVector params_symbol;                // +48
+
+        static_assert(sizeof(AllocFunction) == 64);
     };
 
     struct Signature {
