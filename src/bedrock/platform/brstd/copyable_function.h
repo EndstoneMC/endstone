@@ -22,27 +22,24 @@ template <typename Signature>
 class copyable_function
     : public detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature, false> {
 public:
-    copyable_function() noexcept
-    {
-        this->_construct_empty();
-    }
-    copyable_function(nullptr_t)
-    {
-        this->_construct_empty();
-    }
+    copyable_function() noexcept = default;
+    copyable_function(std::nullptr_t) noexcept : copyable_function{} {}
+
     template <typename F, typename = std::enable_if_t<std::is_invocable_v<F>>>
     copyable_function(F &&f)
     {
-        this->template _construct_target<F, F>(std::forward<F>(f));
+        this->template construct_from_function<brstd::copyable_function, F>(std::forward<F>(f));
     }
 
-    copyable_function(copyable_function &&) = default;
-    copyable_function(const copyable_function &) = default;
-    copyable_function &operator=(copyable_function &&) = default;
-    copyable_function &operator=(const copyable_function &) = default;
+    copyable_function(copyable_function &&) noexcept;
+    copyable_function(const copyable_function &);
+    copyable_function &operator=(copyable_function &&) noexcept;
+    copyable_function &operator=(const copyable_function &);
     copyable_function &operator=(nullptr_t)
     {
-        this->_construct_empty();
+        if (*this) {
+            copyable_function{}.swap(*this);
+        }
         return *this;
     }
 };
