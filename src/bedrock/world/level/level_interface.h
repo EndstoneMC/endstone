@@ -38,6 +38,7 @@
 #include "bedrock/server/commands/standard/teleport_command.h"
 #include "bedrock/util/id_type.h"
 #include "bedrock/util/level_tag_registry_types.h"
+#include "bedrock/util/random.h"
 #include "bedrock/util/tag_registry.h"
 #include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
@@ -195,7 +196,8 @@ public:
     [[nodiscard]] virtual PlayerSleepStatus getSleepStatus() const = 0;
     [[nodiscard]] virtual int getTime() const = 0;
     virtual void setTime(int) = 0;
-    virtual std::uint32_t getSeed() = 0;
+    virtual RandomSeed getSeed() = 0;
+    [[nodiscard]] virtual LevelSeed64 getLevelSeed64() const = 0;
     [[nodiscard]] virtual BlockPos const &getSharedSpawnPos() const = 0;
     virtual void setDefaultSpawn(BlockPos const &) = 0;
     [[nodiscard]] virtual BlockPos const &getDefaultSpawn() const = 0;
@@ -365,6 +367,7 @@ public:
     virtual StackRefResult<EntityRegistry> getEntityRegistry() = 0;
     virtual EntitySystems &getEntitySystems() = 0;
     virtual WeakRef<EntityContext> getLevelEntity() = 0;
+    [[nodiscard]] virtual WeakRef<const EntityContext> getLevelEntity() const = 0;
     virtual void runCommand(HashedString const &, CommandOrigin &, CommandOriginSystem, CurrentCmdVersion) = 0;
     virtual void runCommand(Command &, CommandOrigin &, CommandOriginSystem) = 0;
     [[nodiscard]] virtual PlayerCapabilities::ISharedController const &getCapabilities() const = 0;
@@ -430,14 +433,15 @@ public:
     virtual LayeredAbilities *getPlayerAbilities(ActorUniqueID const &) = 0;
     virtual void setPlayerAbilities(ActorUniqueID const &, LayeredAbilities const &) = 0;
     virtual void sendAllPlayerAbilities(Player const &) = 0;
-    virtual void *getPlayerAbilitiesManager() = 0;
+    virtual Bedrock::NotNullNonOwnerPtr<PlayerAbilitiesManager> getPlayerAbilitiesManager() = 0;
+    virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsManager> getPlayerPermissionsManager() = 0;
+    virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsSynchroniser> getPlayerPermissionsSynchroniser() = 0;
     [[nodiscard]] virtual Recipes &getRecipes() const = 0;
     [[nodiscard]] virtual BlockReducer *getBlockReducer() const = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimPatternRegistry const> getTrimPatternRegistry() const = 0;
     virtual std::weak_ptr<TrimPatternRegistry> getTrimPatternRegistry() = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimMaterialRegistry const> getTrimMaterialRegistry() const = 0;
     virtual std::weak_ptr<TrimMaterialRegistry> getTrimMaterialRegistry() = 0;
-    virtual void digestServerItemComponents(ItemComponentPacket const &) = 0;
     [[nodiscard]] virtual BlockLegacy const &getRegisteredBorderBlock() const = 0;
     virtual void *getLevelChunkPerformanceTelemetry() = 0;
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
@@ -457,13 +461,10 @@ public:
     [[nodiscard]] virtual ItemRegistryRef getItemRegistry() const = 0;
     [[nodiscard]] virtual std::weak_ptr<BlockTypeRegistry> getBlockRegistry() const = 0;
     virtual void pauseAndFlushTaskGroups() = 0;
-    [[nodiscard]] virtual const void *cerealContext() const = 0;  // const cereal::ReflectionCtx &
-    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;     // Endstone: protected -> public
+    [[nodiscard]] virtual const cereal::ReflectionCtx &cerealContext() const = 0;
 
-private:
+protected:
+    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;
     virtual MapDataManager &_getMapDataManager() = 0;
-    virtual void *getArmorTrimUnloader() = 0;
-    [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
-    virtual void *getPlayerSleepManager() = 0;
-    virtual void *_cerealContext() = 0;  // cereal::ReflectionCtx &
+    virtual cereal::ReflectionCtx &_cerealContext() = 0;
 };

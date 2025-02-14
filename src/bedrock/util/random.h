@@ -14,15 +14,4 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/subscription.h"
-
-class AppPlatformListener {
-public:
-    AppPlatformListener(bool);
-    virtual ~AppPlatformListener() = 0;
-
-private:
-    Bedrock::PubSub::Subscription low_memory_subscription_;  // +8
-    bool listener_registered_;                               // +24
-};
-static_assert(sizeof(AppPlatformListener) == 32);
+using RandomSeed = unsigned int;

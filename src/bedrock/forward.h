@@ -147,6 +147,9 @@ class Path;
 class PauseManager;
 class PermissionsFile;
 class PhotoStorage;
+class PlayerAbilitiesManager;
+class PlayerPermissionsManager;
+class PlayerPermissionsSynchroniser;
 class PlayerDestroyProgressCacheComponent;
 class PlayerListener;
 class PlayerListEntry;
@@ -242,6 +245,9 @@ public:
 };
 namespace Automation {
 class AutomationClient;
+}
+namespace cereal {
+class ReflectionCtx;
 }
 namespace cg {
 class ImageBuffer;
