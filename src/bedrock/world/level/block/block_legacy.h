@@ -278,8 +278,7 @@ public:
     [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID) const = 0;
     [[nodiscard]] virtual bool allowStateMismatchOnPlacement(Block const &, Block const &) const = 0;
     [[nodiscard]] virtual bool canSurvive(BlockSource &, BlockPos const &) const = 0;
-    [[nodiscard]] virtual ::BlockRenderLayer getRenderLayer() const = 0;
-    [[nodiscard]] virtual ::BlockRenderLayer getRenderLayer(Block const &, BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual BlockRenderLayer getRenderLayer(Block const &, BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual int getExtraRenderLayers() const = 0;
     [[nodiscard]] virtual Brightness getLight(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
