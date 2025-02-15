@@ -71,6 +71,7 @@ class ChangeDimensionPacket;
 class ChunkKey;
 class ChunkTickRangeManager;
 class ChunkViewSource;
+class ClassroomModeNetworkHandler;
 class ClientNetworkSystem;
 class CommandOriginSystem;
 class CompactionStatus;
@@ -115,6 +116,7 @@ class IUnknownBlockTypeRegistry;
 class InternalComponentRegistry;
 class InventoryTransaction;
 class IPackLoadContext;
+class IServerNetworkController;
 class ItemComponent;
 class ItemComponentPacket;
 class ItemData;
@@ -168,6 +170,7 @@ class ResolvedItemIconInfo;
 class ResolvedTextObject;
 class ResourceDropsContext;
 class ResourceLoadManager;
+class ResourcePackFileUploadManager;
 class ResourcePackListener;
 class RopeSystem;
 class RuntimeLightingManager;
@@ -191,6 +194,7 @@ class SubChunkPacket;
 class SubChunkPos;
 class SurfaceBuilderRegistry;
 class SubpackInfoCollection;
+class TextFilteringProcessor;
 class TestPackSource;
 class TextObjectRoot;
 class TaskGroup;
@@ -230,7 +234,7 @@ enum class ParticleType;
 enum class PlayerSleepStatus;
 enum class ShapeType : std::int8_t;
 enum class StructureFeatureType;
-enum class TintMethod: std::uint8_t;
+enum class TintMethod : std::uint8_t;
 
 // Nested Classes and Namespaces
 class BlockSourceVisitor {
@@ -257,6 +261,11 @@ class FilePathManager;
 class LevelStorageResult;
 class StorageAreaState;
 }  // namespace Core
+namespace ClientBlobCache {
+namespace Server {
+class ActiveTransfersManager;
+}
+}  // namespace ClientBlobCache
 
 namespace Social {
 class GamePublishSetting;
