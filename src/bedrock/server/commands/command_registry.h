@@ -177,6 +177,10 @@ public:
         Symbol() = default;
         Symbol(size_t value) : value_(static_cast<int>(value)){};
         Symbol(HardNonTerminal value) : value_(static_cast<int>(value)){};
+        Symbol(const Symbol &other)
+        {
+            value_ = other.value_;
+        }
 
         [[nodiscard]] int value() const
         {
