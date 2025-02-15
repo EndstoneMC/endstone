@@ -217,12 +217,12 @@ public:
         using AllocFunction = brstd::copyable_function<std::unique_ptr<Command>() const>;
         Overload(const CommandVersion &version, AllocFunction alloc);
 
-        CommandVersion version;                    // +0
-        AllocFunction alloc;                       // +8
-        std::vector<CommandParameterData> params;  // +72
-        std::int32_t version_offset{-1};           // +40
-        bool is_chaining{false};                   // +44
-        SymbolVector params_symbol;                // +48
+        CommandVersion version;
+        AllocFunction alloc;
+        std::vector<CommandParameterData> params;
+        std::int32_t version_offset{-1};
+        bool is_chaining{false};
+        SymbolVector params_symbol;
 
         static_assert(sizeof(AllocFunction) == 64);
     };
