@@ -33,6 +33,8 @@ struct OceanRuinConfiguration {
 
 class Biome {
 public:
+    Biome(BiomeIdType, std::string_view);
+
     virtual ~Biome() = 0;
 
     [[nodiscard]] const std::string &getName() const
@@ -45,35 +47,35 @@ public:
         return id_;
     }
 
-    HashedString hash;                         // +8
-    float temperature;                         // +56
-    float downfall;                            // +60
-    float red_spore_density;                   // +64
-    float blue_spore_density;                  // +68
-    float ash_density;                         // +72
-    float white_ash_density;                   // +76
-    float snow_accumulation;                   // +80
-    float foliage_snow;                        // +84
-    float min_snow_level;                      // +88
-    float max_snow_level;                      // +92
-    float depth;                               // +96
-    float scale;                               // +100
-    int map_water_color;                       // +104
-    float water_transparency;                  // +108
-    bool rain;                                 // +112
-    OceanRuinConfiguration ocean_ruin_config;  // +116
+    HashedString hash;
+    float temperature;
+    float downfall;
+    float red_spore_density;
+    float blue_spore_density;
+    float ash_density;
+    float white_ash_density;
+    float snow_accumulation;
+    float foliage_snow;
+    float min_snow_level;
+    float max_snow_level;
+    float depth;
+    float scale;
+    int map_water_color;
+    const float water_transparency;
+    bool rain;
+    OceanRuinConfiguration ocean_ruin_config;
 
 protected:
-    MobList mobs_;             // +128
+    MobList mobs_;
     MobCategoryMap mobs_map_;  // +152
     struct CachedClientComponentData {
         bool has_noise_based_color_palette;
         bool is_roofed_forest;
     };
     static_assert(sizeof(CachedClientComponentData) == 2);
-    CachedClientComponentData cached_client_component_data_;  // +344
+    CachedClientComponentData cached_client_component_data_;  // +408
 
 private:
-    BiomeIdType id_;                                 // +346
-    BiomeComponentStorage biome_component_storage_;  // +352
+    BiomeIdType id_;                                 // +410
+    BiomeComponentStorage biome_component_storage_;  // +416
 };
