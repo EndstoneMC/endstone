@@ -211,7 +211,6 @@ enum class BedSleepingResult;
 enum class BlockActorType;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
-enum class BlockTintType;
 enum class BurnOdds;
 enum class ChunkCachedDataState : std::int8_t;
 enum class ChunkDebugDisplaySavedState : std::int8_t;
@@ -231,6 +230,7 @@ enum class ParticleType;
 enum class PlayerSleepStatus;
 enum class ShapeType : std::int8_t;
 enum class StructureFeatureType;
+enum class TintMethod: std::uint8_t;
 
 // Nested Classes and Namespaces
 class BlockSourceVisitor {
