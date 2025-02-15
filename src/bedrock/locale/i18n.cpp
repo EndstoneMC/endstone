@@ -19,7 +19,9 @@
 I18n &getI18n()
 {
     // TODO: avoid hardcoded value
+#ifdef _WIN32
     constexpr std::size_t offset = 0x5069A70;
-    auto *address = static_cast<I18n *>(endstone::detail::get_executable_base()) + offset;
+    auto *address = reinterpret_cast<I18n *>(static_cast<char *>(endstone::detail::get_executable_base()) + offset);
     return *address;
+#endif
 }
