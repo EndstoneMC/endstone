@@ -14,7 +14,13 @@
 
 #pragma once
 
+#include <functional>
+
+// Reference: https://github.com/LiteLDev/LeviLamina/blob/fbb3c97/src/mc/platform/brstd/detail/function.h
+
 namespace brstd::detail::function {
+
+constexpr size_t embedded_target_size = sizeof(void *) * 8 - sizeof(void *);
 
 enum class DerivedType : int {
     MoveOnly = 0,
@@ -22,186 +28,583 @@ enum class DerivedType : int {
     Function = 2,
 };
 
-template <DerivedType, typename, bool>
-class function_base_impl;
+template <DerivedType Type, class Return, bool Noexcept, class... Xs>
+class function_base_impl {
+    class storage;
 
-template <DerivedType Type, typename Return, bool Noexcept, typename... Xs>
-class function_base_impl<Type, Return(Xs...), Noexcept> {
-public:
-    explicit operator bool() const
-    {
-        return _storage.vfptr != nullptr;
-    }
-
-    Return call(Xs... xs) const
-    {
-        return _storage.vfptr->invoke(_storage, static_cast<Xs &&>(xs)...);
-    }
-
-protected:
-    void _construct_empty()
-    {
-        _storage = {nullptr};
-    }
-
-    template <typename T, typename CVRefT, typename... Ys>
-    void _construct_target(T &&t)
-    {
-        _storage = {_create_vfptr<T, CVRefT>()};
-        if constexpr (sizeof(T) <= storage::embedded_target_available_size) {
-            ::new (static_cast<void *>(_storage.embedded_target_)) T(std::forward<T>(t));
-        }
-        else {
-            _storage.heap_target() = new T(std::forward<T>(t));
-        }
-    }
-
-private:
-    struct vtable;
-
-    class storage {
-    public:
-        const vtable *vfptr;  // +0
-
-    private:
-        union {
-            void *heap_target_;              // +0
-            std::byte embedded_target_[56];  // +0
-        };  // +8
-
-    public:
-        static constexpr size_t embedded_target_offset = 0;  // TODO: could be non-zero
-        static constexpr size_t embedded_target_available_size = sizeof(embedded_target_) - embedded_target_offset;
-        static constexpr bool is_heap_target = sizeof(T) > embedded_target_available_size;
-        void *&heap_target()
-        {
-            return heap_target_;
-        }
-        void *const &heap_target() const
-        {
-            return heap_target_;
-        }
+    template <DerivedType Type>
+    struct vtable_base {
+        void (*move_to)(storage &, storage &) noexcept;
+        void (*destroy)(storage &) noexcept;
+        Return (*invoke)(storage const &, Xs &&...) noexcept(Noexcept);
     };
-    static_assert(sizeof(storage) == 64);
-
-    template <DerivedType>
-    struct vtable_base;
-
-    template <>
-    struct vtable_base<DerivedType::MoveOnly> {
-        void (*move_to)(storage &, storage &) = nullptr;  // +0
-        void (*destroy)(storage &) = nullptr;             // +8
-        Return (*invoke)(const storage &) = nullptr;      // +16
-    };
-    static_assert(sizeof(vtable_base<DerivedType::MoveOnly>) == 24);
 
     template <>
     struct vtable_base<DerivedType::Copyable> : vtable_base<DerivedType::MoveOnly> {
-        void (*copy_to)(const storage &, storage &) = nullptr;  // +24
+        void (*copy_to)(storage const &, storage &);
     };
-    static_assert(sizeof(vtable_base<DerivedType::Copyable>) == 32);
 
     struct vtable : vtable_base<Type> {};
 
-    template <typename ReturnA>
-    struct invoker {
-        template <typename... Ys>
-        static ReturnA execute(Ys &&...);
-    };
+    template <class Fn>
+    static constexpr size_t embedded_target_offset =
+        alignof(Fn) <= sizeof(vtable *) ? 0 : (alignof(Fn) - sizeof(vtable *));
 
-    template <typename T, typename CVRefT, bool HeapTarget>
+    template <class Fn>
+    static constexpr size_t embedded_target_available_size = embedded_target_size - embedded_target_offset<Fn>;
+
+    template <class Fn>
+    static constexpr bool is_heap_target = alignof(Fn) > alignof(std::max_align_t) ||
+                                           sizeof(Fn) > embedded_target_available_size<Fn> ||
+                                           !std::is_nothrow_move_constructible_v<Fn>;
+
+    class storage {
+    public:
+        vtable const *vfptr;
+
+    private:
+        union alignas(max_align_t) {
+            void *heap_target;
+            char embedded_target[embedded_target_size];
+        };
+
+    public:
+        template <class Fn>
+        [[nodiscard]] void *embedded_target_ptr() noexcept
+        {
+            return &embedded_target + embedded_target_offset<Fn>;
+        }
+
+        template <class Fn>
+        [[nodiscard]] Fn *small_fn_ptr() const noexcept
+        {
+            return static_cast<Fn *>(const_cast<storage *>(this)->embedded_target_ptr<Fn>());
+        }
+
+        template <class Fn>
+        [[nodiscard]] Fn *large_fn_ptr() const noexcept
+        {
+            return static_cast<Fn *>(heap_target);
+        }
+
+        void set_large_fn_ptr(void *const v) noexcept
+        {
+            heap_target = v;
+        }
+    };
+    template <class Fn, class FnInvQuals, bool HeapTarget>
     struct vtable_impl {
-        static void *target(const storage &st)
+        static Fn *target(storage const &self)
         {
-            // Return pointer to the stored T
             if constexpr (HeapTarget) {
-                return st.heap_target_;
+                return self.large_fn_ptr<Fn>();
             }
             else {
-                return static_cast<void *>(&st.embedded_target_);
+                return self.small_fn_ptr<Fn>();
             }
         }
 
-        static void copy_to(const storage &from, storage &to)
+        static void copy_to(storage const &self, storage &to)
         {
-            // trivially, do a new T(*target(from)) in-place or on heap
-            if constexpr (HeapTarget) {
-                to.heap_target() = new T(*target(from));
-            }
-            else {
-                ::new (static_cast<void *>(to.embedded_target_)) T(*target(from));
+            if constexpr (Type == DerivedType::Copyable) {
+                if constexpr (HeapTarget) {
+                    to.set_large_fn_ptr(::new Fn(*target(self)));
+                }
+                else {
+                    ::new (to.embedded_target_ptr<Fn>()) Fn(*target(self));
+                }
             }
         }
 
-        static void move_to(storage &from, storage &to)
+        static void move_to(storage &self, storage &to) noexcept
         {
             if constexpr (HeapTarget) {
-                to.heap_target() = target(from);  // pointer move
-                from.heap_target() = nullptr;
+                to.set_large_fn_ptr(target(self));
+                self.set_large_fn_ptr(nullptr);
             }
             else {
-                ::new (static_cast<void *>(to.embedded_target_)) T(std::move(*target(from)));
-                // optionally destroy the old object in 'from'
-                target(from)->~T();
+                auto const ptr = target(self);
+                ::new (to.embedded_target_ptr<Fn>()) Fn(std::move(*ptr));
+                ptr->~Fn();
             }
         }
 
-        static void destroy(storage &st)
+        static void destroy(storage &self) noexcept
         {
             if constexpr (HeapTarget) {
-                delete st.heap_target_;
-                st.heap_target_ = nullptr;
+                delete target(self);
             }
             else {
-                target(st)->~T();
+                target(self)->~Fn();
             }
         }
 
-        static Return invoke(const storage &st, Xs... xs) noexcept(Noexcept)
+        static Return invoke(storage const &self, Xs &&...args) noexcept(Noexcept)
         {
-            return (*target(st))(static_cast<Xs &&>(xs)...);
+            if constexpr (std::is_void_v<Return>) {
+                (void)std::invoke(static_cast<FnInvQuals>(*target(self)), std::forward<Xs>(args)...);
+            }
+            else {
+                return std::invoke(static_cast<FnInvQuals>(*target(self)), std::forward<Xs>(args)...);
+            }
         }
     };
 
-    template <typename T, typename CVRefT>
-    static const vtable *_create_vfptr()
+    template <class Fn, class FnInvQuals>
+    [[nodiscard]] static constexpr vtable create_vtable() noexcept
     {
-        static const vtable s_table = [] {
-            vtable vt{};
-            // Set up the function pointers:
-            vt.move_to = &vtable_impl<T, CVRefT, storage::is_heap_target>::move_to;
-            vt.destroy = &vtable_impl<T, CVRefT, storage::is_heap_target>::destroy;
-            vt.invoke = &vtable_impl<T, CVRefT, storage::is_heap_target>::invoke;
-            if constexpr (Type == DerivedType::Copyable) {
-                vt.copy_to = &vtable_impl<T, CVRefT, storage::is_heap_target>::copy_to;
-            }
-            return vt;
-        }();
-        return &s_table;
+        vtable impl{};
+
+        using impl_type = vtable_impl<Fn, FnInvQuals, is_heap_target<Fn>>;
+        impl.move_to = &impl_type::move_to;
+        impl.destroy = &impl_type::destroy;
+        impl.invoke = &impl_type::invoke;
+        if constexpr (Type == DerivedType::Copyable) {
+            impl.copy_to = &impl_type::copy_to;
+        }
+        return impl;
     }
 
+    template <class Fn, class FnInvQuals>
+    static constexpr vtable vfstorage = create_vtable<Fn, FnInvQuals>();
+
 protected:
-    storage _storage;  // +0
+    storage mStorage;
+
+    vtable const &get_vtable() const noexcept
+    {
+        return *mStorage.vfptr;
+    }
+
+    function_base_impl() noexcept = default;
+
+    void construct_empty()
+    {
+        mStorage.vfptr = nullptr;
+    }
+    template <class Fn, class FnInvQuals, class... Ys>
+    void construct_target(Ys &&...args)
+    {
+        mStorage.vfptr = &vfstorage<Fn, FnInvQuals>;
+        if constexpr (is_heap_target<Fn>) {
+            auto ptr = std::make_unique<Fn>(std::forward<Ys>(args)...);
+            mStorage.set_large_fn_ptr(ptr.release());
+        }
+        else {
+            ::new (mStorage.embedded_target_ptr<Fn>()) Fn(std::forward<Ys>(args)...);
+        }
+    }
+
+    auto get_invoke() const noexcept
+    {
+        if (!*this) {
+            std::abort();
+        }
+        return get_vtable().invoke;
+    }
+
+public:
+    explicit operator bool() const noexcept
+    {
+        return mStorage.vfptr != nullptr;
+    }
 };
 
-template <DerivedType, typename Base>
-class function_base;
+template <DerivedType, class Base>
+class function_base : public Base {
+protected:
+    function_base()
+    {
+        this->construct_empty();
+    }
+    ~function_base()
+    {
+        if (*this) {
+            this->get_vtable().destroy(this->mStorage);
+        }
+    }
+    function_base(function_base &&other)
+    {
+        if (other) {
+            other.get_vtable().move_to(other.mStorage, this->mStorage);
+            this->mStorage.vfptr = std::exchange(other.mStorage.vfptr, nullptr);
+        }
+        else {
+            this->construct_empty();
+        }
+    }
+    function_base &operator=(function_base &&other)
+    {
+        if (this != std::addressof(other)) {
+            if (*this) {
+                this->get_vtable().destroy(this->mStorage);
+            }
+            if (other) {
+                other.get_vtable().move_to(other.mStorage, this->mStorage);
+                this->mStorage.vfptr = std::exchange(other.mStorage.vfptr, nullptr);
+            }
+            else {
+                this->construct_empty();
+            }
+        }
+        return *this;
+    }
 
-template <typename Base>
-class function_base<DerivedType::MoveOnly, Base> : public Base {};
+public:
+    function_base &operator=(std::nullptr_t)
+    {
+        if (*this) {
+            this->get_vtable().destroy(this->mStorage);
+            this->mStorage.vfptr = nullptr;
+        }
+    }
 
-template <typename Base>
-class function_base<DerivedType::Copyable, Base> : public function_base<DerivedType::MoveOnly, Base> {};
+    [[nodiscard]] friend bool operator==(function_base const &self, nullptr_t) noexcept
+    {
+        return !static_cast<bool>(self);
+    }
+};
 
-template <DerivedType, typename Signature, bool OverrideCallOperatorModifiers>
+template <class Base>
+class function_base<DerivedType::Copyable, Base> : public function_base<DerivedType::MoveOnly, Base> {
+protected:
+    function_base() = default;
+    function_base(function_base &&) = default;
+    function_base &operator=(function_base &&) = default;
+
+    function_base(function_base const &other)
+    {
+        if (other) {
+            other.get_vtable().copy_to(other.mStorage, this->mStorage);
+            this->mStorage.vfptr = other.mStorage.vfptr;
+        }
+        else {
+            this->construct_empty();
+        }
+    }
+    function_base &operator=(function_base const &other)
+    {
+        if (this != std::addressof(other)) {
+            if (*this) {
+                this->get_vtable().destroy(this->mStorage);
+            }
+            if (other) {
+                other.get_vtable().copy_to(other.mStorage, this->mStorage);
+                this->mStorage.vfptr = other.mStorage.vfptr;
+            }
+            else {
+                this->construct_empty();
+            }
+        }
+    }
+};
+
+template <DerivedType Type, class Signature>
 class function_invoke_base;
 
-template <typename Signature, bool OverrideCallOperatorModifiers>
-class function_invoke_base<DerivedType::Copyable, Signature, OverrideCallOperatorModifiers>
-    : public function_base<DerivedType::Copyable,
-                           function_base_impl<DerivedType::Copyable, Signature, OverrideCallOperatorModifiers>> {};
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...)>
+    : public function_base<Type, function_base_impl<Type, Return, false, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn &;
 
-template <DerivedType Type, typename Signature, bool OverrideCallOperatorModifiers>
-class function_invoke : protected function_invoke_base<Type, Signature, OverrideCallOperatorModifiers> {};
+    template <class Fn>
+    static constexpr bool is_callable_from =
+        std::is_invocable_r_v<Return, Fn, Xs...> && std::is_invocable_r_v<Return, Fn &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args)
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) &>
+    : public function_base<Type, function_base_impl<Type, Return, false, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn &;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_invocable_r_v<Return, Fn &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) &
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) &&>
+    : public function_base<Type, function_base_impl<Type, Return, false, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn &&;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_invocable_r_v<Return, Fn, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) &&
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) const>
+    : public function_base<Type, function_base_impl<Type, Return, false, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn const &;
+
+    template <class Fn>
+    static constexpr bool is_callable_from =
+        std::is_invocable_r_v<Return, Fn const, Xs...> && std::is_invocable_r_v<Return, Fn const &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) const
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) const &>
+    : public function_base<Type, function_base_impl<Type, Return, false, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn const &;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_invocable_r_v<Return, Fn const &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) const &
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) const &&>
+    : public function_base<Type, function_base_impl<Type, Return, false, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn const &&;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_invocable_r_v<Return, Fn const, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) const &&
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) noexcept>
+    : public function_base<Type, function_base_impl<Type, Return, true, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn &;
+
+    template <class Fn>
+    static constexpr bool is_callable_from =
+        std::is_nothrow_invocable_r_v<Return, Fn, Xs...> && std::is_nothrow_invocable_r_v<Return, Fn &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) noexcept
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) & noexcept>
+    : public function_base<Type, function_base_impl<Type, Return, true, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn &;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_nothrow_invocable_r_v<Return, Fn &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) & noexcept
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) && noexcept>
+    : public function_base<Type, function_base_impl<Type, Return, true, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn &&;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_nothrow_invocable_r_v<Return, Fn, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) && noexcept
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) const noexcept>
+    : public function_base<Type, function_base_impl<Type, Return, true, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn const &;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_nothrow_invocable_r_v<Return, Fn const, Xs...> &&
+                                             std::is_nothrow_invocable_r_v<Return, Fn const &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) const noexcept
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) const & noexcept>
+    : public function_base<Type, function_base_impl<Type, Return, true, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn const &;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_nothrow_invocable_r_v<Return, Fn const &, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) const & noexcept
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <DerivedType Type, class Return, class... Xs>
+class function_invoke_base<Type, Return(Xs...) const && noexcept>
+    : public function_base<Type, function_base_impl<Type, Return, true, Xs...>> {
+public:
+    template <class Fn>
+    using FnInvQuals = Fn const &&;
+
+    template <class Fn>
+    static constexpr bool is_callable_from = std::is_nothrow_invocable_r_v<Return, Fn const, Xs...>;
+
+public:
+    using result_type = Return;
+
+    Return operator()(Xs... args) const && noexcept
+    {
+        return this->get_invoke()(this->mStorage, std::forward<Xs>(args)...);
+    }
+};
+
+template <class T, template <class...> class Z>
+constexpr bool is_specialization_of_v = false;
+
+template <template <class...> class Z, class... Args>
+constexpr bool is_specialization_of_v<Z<Args...>, Z> = true;
+
+template <DerivedType Type, class Signature>
+class function_invoke : public function_invoke_base<Type, Signature> {
+    using base = function_invoke_base<Type, Signature>;
+
+    template <class Fn>
+    static constexpr bool enable_one_arg_constructor =
+        !std::is_same_v<std::remove_cvref_t<Fn>, function_invoke> &&
+        !is_specialization_of_v<std::remove_cvref_t<Fn>, std::in_place_type_t> &&
+        base::template is_callable_from<std::decay_t<Fn>>;
+
+    template <class Fn, class... Xs>
+    static constexpr bool enable_in_place_constructor =
+        std::is_constructible_v<std::decay_t<Fn>, Xs...> && base::template is_callable_from<std::decay_t<Fn>>;
+
+    template <class Fn, class U, class... Xs>
+    static constexpr bool enable_in_place_list_constructor =
+        std::is_constructible_v<std::decay_t<Fn>, std::initializer_list<U> &, Xs...> &&
+        base::template is_callable_from<std::decay_t<Fn>>;
+
+public:
+    function_invoke() = default;
+    function_invoke(std::nullptr_t) : function_invoke() {}
+    template <class F>
+        requires enable_one_arg_constructor<F>
+    function_invoke(F &&f)
+    {
+        using Fn = std::decay_t<F>;
+        static_assert(std::is_constructible_v<Fn, F>);
+        if constexpr (std::is_member_pointer_v<Fn> || std::is_pointer_v<Fn> || requires(F e) { e == nullptr; }) {
+            if (f == nullptr) {
+                this->construct_empty();
+                return;
+            }
+        }
+        using FnInvQuals = base::template FnInvQuals<Fn>;
+        this->template construct_target<Fn, FnInvQuals>(std::forward<F>(f));
+    }
+
+    template <class F, class... Xs>
+        requires enable_in_place_constructor<F, Xs...>
+    explicit function_invoke(std::in_place_type_t<F>, Xs &&...args)
+    {
+        using Fn = std::decay_t<F>;
+        static_assert(std::is_same_v<Fn, F>);
+        using FnInvQuals = base::template FnInvQuals<Fn>;
+        this->template construct_target<Fn, FnInvQuals>(std::forward<Xs>(args)...);
+    }
+
+    template <class F, class U, class... Xs>
+        requires enable_in_place_list_constructor<F, U, Xs...>
+    explicit function_invoke(std::in_place_type_t<F>, std::initializer_list<U> l, Xs &&...args)
+    {
+        using Fn = std::decay_t<F>;
+        static_assert(std::is_same_v<Fn, F>);
+        using FnInvQuals = base::template FnInvQuals<Fn>;
+        this->template construct_target<Fn, FnInvQuals>(l, std::forward<Xs>(args)...);
+    }
+
+public:
+    void swap(function_invoke &other)
+    {
+        function_invoke tmp = std::move(other);
+        other = std::move(*this);
+        *this = std::move(tmp);
+    }
+};
 
 }  // namespace brstd::detail::function

@@ -175,8 +175,8 @@ public:
     class Symbol {
     public:
         Symbol() = default;
-        Symbol(size_t value) : value_(static_cast<int>(value)) {};
-        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)) {};
+        Symbol(size_t value) : value_(static_cast<int>(value)){};
+        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)){};
 
         [[nodiscard]] int value() const
         {
@@ -210,7 +210,7 @@ public:
     using SymbolVector = std::vector<Symbol>;
 
     struct Overload {
-        using AllocFunction = brstd::copyable_function<std::unique_ptr<Command>()>;
+        using AllocFunction = brstd::copyable_function<std::unique_ptr<Command>() const>;
         Overload(const CommandVersion &version, AllocFunction alloc);
 
         CommandVersion version;                    // +0
@@ -419,7 +419,7 @@ const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *n
         return nullptr;
     }
 
-    auto overload = Overload(version, allocateCommand<CommandType>);
+    auto overload = Overload(version, &allocateCommand<CommandType>);
     overload.params = std::move(params);
 
     signature->overloads.push_back(overload);

@@ -16,32 +16,27 @@
 
 #include "bedrock/platform/brstd/detail/function.h"
 
+// Reference: https://github.com/LiteLDev/LeviLamina/blob/fbb3c97/src/mc/platform/brstd/copyable_function.h
+
 namespace brstd {
 
-template <typename Signature>
-class copyable_function
-    : public detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature, false> {
+template <class Signature>
+class copyable_function : public detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature> {
+    using base = detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature>;
+
 public:
-    copyable_function() noexcept = default;
-    copyable_function(std::nullptr_t) noexcept : copyable_function{} {}
-
-    template <typename F, typename = std::enable_if_t<std::is_invocable_v<F>>>
-    copyable_function(F &&f)
+    using base::base;
+    using base::operator();
+    copyable_function(copyable_function &&) noexcept = default;
+    copyable_function &operator=(copyable_function &&) noexcept = default;
+    copyable_function(copyable_function const &) = default;
+    copyable_function &operator=(copyable_function const &) = default;
+    template <class F>
+        requires std::is_constructible_v<copyable_function, F>
+    copyable_function &operator=(F &&f)
     {
-        this->template construct_from_function<brstd::copyable_function, F>(std::forward<F>(f));
-    }
-
-    copyable_function(copyable_function &&) noexcept;
-    copyable_function(const copyable_function &);
-    copyable_function &operator=(copyable_function &&) noexcept;
-    copyable_function &operator=(const copyable_function &);
-    copyable_function &operator=(nullptr_t)
-    {
-        if (*this) {
-            copyable_function{}.swap(*this);
-        }
+        *this = copyable_function{std::forward<F>(f)};
         return *this;
     }
 };
-
-};  // namespace brstd
+}  // namespace brstd
