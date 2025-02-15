@@ -27,9 +27,16 @@ using RecipeNetId = TypedServerNetId<RecipeNetIdTag, unsigned int>;
 
 class Recipe {
 public:
+    using Ingredients = std::vector<RecipeIngredient>;
+    using ResultList = std::vector<ItemInstance>;
+    using UnloadedItemInstanceResultList = std::vector<NetworkItemInstanceDescriptor>;
+
     class Results {
     public:
-        [[nodiscard]] const std::vector<ItemInstance> &getItems() const
+        Results(const ResultList &);
+        Results(const UnloadedItemInstanceResultList &);
+
+        [[nodiscard]] const ResultList &getItems() const
         {
             return results_;
         }
@@ -96,16 +103,20 @@ public:
         return tag_;
     }
 
+protected:
+    Recipe();
+
+    std::string recipe_id_;
+    mce::UUID my_id_;
+    int width_;
+    int height_;
+    int priority_;
+    RecipeNetId recipe_net_id_;
+    Ingredients my_ingredients_;
+    Results results_;
+    RecipeUnlockingRequirement unlocking_requirement_;
+    SemVersion recipe_data_version_;
+
 private:
-    std::string recipe_id_;                             // +8
-    mce::UUID my_id_;                                   // +40  (+32)
-    int width_;                                         // +56  (+48)
-    int height_;                                        // +60  (+52)
-    int priority_;                                      // +64  (+56)
-    RecipeNetId recipe_net_id_;                         // +68  (+60)
-    std::vector<RecipeIngredient> my_ingredients_;      // +72  (+64)
-    Results results_;                                   // +96  (+88)
-    RecipeUnlockingRequirement unlocking_requirement_;  // +152 (+144)
-    SemVersion recipe_data_version_;                    // +184 (+176)
-    HashedString tag_;                                  // +296 (+264)
+    HashedString tag_;
 };

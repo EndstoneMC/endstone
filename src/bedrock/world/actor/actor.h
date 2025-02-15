@@ -52,6 +52,7 @@
 #include "bedrock/world/actor/synched_actor_data.h"
 #include "bedrock/world/effect/mob_effect_instance.h"
 #include "bedrock/world/item/equipment_slot.h"
+#include "bedrock/world/item/item_helper.h"
 #include "bedrock/world/level/dimension/dimension.h"
 
 class Player;
