@@ -128,6 +128,11 @@ public:
         return get();
     }
 
+    operator std::string_view() const
+    {
+        return view();
+    }
+
     [[nodiscard]] size_t length() const
     {
         if (data_.getData8() == MAX_STATIC_STRING_LENGTH) {
