@@ -132,7 +132,6 @@ public:
     virtual void addPassenger(Actor &) = 0;
     [[nodiscard]] virtual std::string getExitTip(std::string const &, InputMode, NewInteractionModel) const = 0;
     [[nodiscard]] virtual std::string getEntityLocNameString() const = 0;
-    [[nodiscard]] virtual bool isInWall() const = 0;
     [[nodiscard]] virtual bool isInvisible() const = 0;
     [[nodiscard]] virtual bool canShowNameTag() const = 0;
     [[nodiscard]] virtual std::string getFormattedNameTag() const = 0;
@@ -165,7 +164,6 @@ public:
     virtual void setStanding(bool) = 0;
     [[nodiscard]] virtual bool canPowerJump() const = 0;
     [[nodiscard]] virtual bool isEnchanted() const = 0;
-    [[nodiscard]] virtual bool shouldRender() const = 0;
     virtual void playAmbientSound() = 0;
     [[nodiscard]] virtual Puv::Legacy::LevelSoundEvent getAmbientSound() const = 0;
     [[nodiscard]] virtual bool isInvulnerableTo(ActorDamageSource const &) const = 0;
@@ -230,7 +228,6 @@ public:
     virtual void die(ActorDamageSource const &) = 0;
     [[nodiscard]] virtual bool shouldDropDeathLoot() const = 0;
     virtual void applySnapshot(EntityContext const &, EntityContext const &) = 0;
-    virtual float getNextStep(float) = 0;
     virtual void onPush(Actor &) = 0;
     [[nodiscard]] virtual std::optional<BlockPos> getLastDeathPos() const = 0;
     [[nodiscard]] virtual std::optional<DimensionType> getLastDeathDimension() const = 0;
@@ -242,19 +239,11 @@ public:
 protected:
     [[nodiscard]] virtual bool _shouldProvideFeedbackOnHandContainerItemSet(HandSlot, ItemStack const &) const = 0;
     [[nodiscard]] virtual bool _shouldProvideFeedbackOnArmorSet(ArmorSlot, ItemStack const &) const = 0;
-
-public:
-    virtual bool shouldTryMakeStepSound() = 0;
-
-protected:
     virtual bool _hurt(ActorDamageSource const &, float, bool, bool) = 0;
 
 public:
     virtual void readAdditionalSaveData(CompoundTag const &, DataLoadHelper &) = 0;
     virtual void addAdditionalSaveData(CompoundTag &) = 0;
-
-protected:
-    virtual void _playStepSound(BlockPos const &, Block const &) = 0;
 
 public:
     Actor(ILevel &, EntityContext &);
