@@ -28,6 +28,7 @@ public:
     void setUserList(const std::vector<OwnerPtr<EntityContext>> *);
     [[nodiscard]] bool isInitialized() const override = 0;
     void send(Packet &) override = 0;
+    void sendTo(const NetworkIdentifier &, SubClientId, Packet &) override = 0;
     void sendToServer(Packet &) override = 0;
     void sendToClient(const NetworkIdentifier &, const Packet &, SubClientId) override = 0;
     void sendToClient(const UserEntityIdentifierComponent *, const Packet &) override = 0;

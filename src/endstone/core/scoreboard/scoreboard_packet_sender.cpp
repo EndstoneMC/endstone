@@ -35,6 +35,11 @@ void ScoreboardPacketSender::send(::Packet &packet)
     throw std::runtime_error("Not supported!");
 }
 
+void ScoreboardPacketSender::sendTo(const NetworkIdentifier &, SubClientId, ::Packet &)
+{
+    throw std::runtime_error("Not supported!");
+}
+
 void ScoreboardPacketSender::sendToServer(::Packet &packet)
 {
     throw std::runtime_error("Not supported!");

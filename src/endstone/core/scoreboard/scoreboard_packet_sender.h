@@ -27,6 +27,7 @@ public:
     ~ScoreboardPacketSender() override = default;
     [[nodiscard]] bool isInitialized() const override;
     void send(::Packet &) override;
+    void sendTo(const NetworkIdentifier &, SubClientId, ::Packet &) override;
     void sendToServer(::Packet &) override;
     void sendToClient(const UserEntityIdentifierComponent *, const ::Packet &) override;
     void sendToClient(const NetworkIdentifier &, const ::Packet &, SubClientId) override;
