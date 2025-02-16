@@ -17,12 +17,13 @@
 #include <memory>
 
 #include "bedrock/forward.h"
+#include "bedrock/shared_types/height.h"
 #include "bedrock/world/actor/actor_types.h"
-#include "bedrock/world/item/item_stack_base.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_source_listener.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
+#include "bedrock/world/level/clip_parameters.h"
 #include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_seed.h"
 
@@ -32,6 +33,8 @@ class Material;
 class MaterialType;
 
 using ActorSpan = gsl::span<gsl::not_null<Actor *>>;
+using ConstActorSpan = gsl::span<gsl::not_null<const Actor *>>;
+using GetBlockFunction = std::function<const Block &(const BlockPos &)>;
 
 class IConstBlockSource {
 public:
@@ -45,6 +48,7 @@ public:
     [[nodiscard]] virtual bool hasBlock(BlockPos const &) const = 0;
     [[nodiscard]] virtual bool containsAnyLiquid(AABB const &) const = 0;
     [[nodiscard]] virtual bool containsMaterial(AABB const &, MaterialType) const = 0;
+    virtual void unknown() const = 0;  // TODO(fixme): what is this?
     [[nodiscard]] virtual bool isUnderWater(Vec3 const &, Block const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
@@ -66,53 +70,60 @@ public:
 
 class IBlockSource : public IConstBlockSource {
 public:
+    using Listener = BlockSourceListener;
+    using ListenerVector = std::vector<BlockSourceListener *>;
+
     ~IBlockSource() override = 0;
     void fetchAABBs(std::vector<AABB> &, AABB const &, bool) const override = 0;
     void fetchCollisionShapes(std::vector<AABB> &, AABB const &, bool, optional_ref<GetCollisionShapeInterface const>,
                               std::vector<AABB> *) const override = 0;
-
     virtual WeakRef<BlockSource> getWeakRef() = 0;
-    virtual void addListener(BlockSourceListener &) = 0;
-    virtual void removeListener(BlockSourceListener &) = 0;
+    virtual void addListener(Listener &) = 0;
+    virtual void removeListener(Listener &) = 0;
     virtual ActorSpan fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
     virtual ActorSpan fetchEntities(ActorType, AABB const &, Actor const *, std::function<bool(Actor *)>) = 0;
     virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
-    [[nodiscard]] virtual std::int16_t getMinHeight() const = 0;
-    [[nodiscard]] virtual std::int16_t getMaxHeight() const = 0;
+    [[nodiscard]] virtual Height getMinHeight() const = 0;
+    [[nodiscard]] virtual Height getMaxHeight() const = 0;
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
+    [[nodiscard]] virtual const Dimension &getDimensionConst() const = 0;
     virtual Dimension &getDimension() = 0;
-    [[nodiscard]] virtual Dimension const &getDimensionConst() const = 0;
     [[nodiscard]] virtual LevelChunk *getChunkAt(BlockPos const &) const = 0;
     [[nodiscard]] virtual LevelChunk *getChunk(int, int) const = 0;
     [[nodiscard]] virtual LevelChunk *getChunk(ChunkPos const &) const = 0;
     virtual Level &getLevel() = 0;
     [[nodiscard]] virtual ILevel &getILevel() const = 0;
     [[nodiscard]] virtual LevelSeed64 getLevelSeed64() const = 0;
-    [[nodiscard]] virtual std::uint16_t getAboveTopSolidBlock(int, int, bool, bool) const = 0;
-    [[nodiscard]] virtual std::uint16_t getHeight(std::function<bool(const Block &)> const &,
-                                                  BlockPos const &) const = 0;
-    [[nodiscard]] virtual std::uint16_t getHeight(std::function<bool(const Block &)> const &, int, int) const = 0;
+    [[nodiscard]] virtual Height getAboveTopSolidBlock(int, int, bool, bool) const = 0;
+    [[nodiscard]] virtual Height getAboveTopSolidBlock(const BlockPos &, bool, bool, bool) const = 0;
+    [[nodiscard]] virtual Height getHeight(std::function<bool(const Block &)> const &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual Height getHeight(std::function<bool(const Block &)> const &, int, int) const = 0;
     virtual std::vector<AABB> &fetchAABBs(AABB const &, bool) = 0;
     virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
                                                     std::vector<AABB> *) = 0;
     virtual HitResult clip(Vec3 const &, Vec3 const &, bool, ShapeType, int, bool, bool, Actor *,
                            std::function<bool(BlockSource const &, Block const &, bool)> const &) const = 0;
+    [[nodiscard]] virtual HitResult clip(const ClipParameters &) const = 0;
     virtual ChunkSource &getChunkSource() = 0;
     [[nodiscard]] virtual bool isSolidBlockingBlock(BlockPos const &) const = 0;
     [[nodiscard]] virtual bool isSolidBlockingBlock(int, int, int) const = 0;
     [[nodiscard]] virtual bool areChunksFullyLoaded(BlockPos const &, int) const = 0;
+    virtual bool mayPlace(const Block &, const BlockPos &, FacingID, Actor *, bool, Vec3) = 0;
     [[nodiscard]] virtual bool canDoBlockDrops() const = 0;
     [[nodiscard]] virtual bool canDoContainedItemDrops() const = 0;
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
     virtual void updateCheckForValidityState(bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual bool removeBlock(BlockPos const &) = 0;
-    virtual void postGameEvent(Actor *, GameEvent const &, BlockPos const &, Block const *) = 0;
+    virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
+    virtual void postGameEvent(Actor *, const GameEvent &, const Vec3 &, const Block *) = 0;
 };
 
 class BlockSource : public IBlockSource,
                     public EnableGetWeakRef<BlockSource>,
                     public std::enable_shared_from_this<BlockSource> {
 public:
-    ~BlockSource() override = 0;
+    explicit BlockSource(ChunkSource &, bool, bool);
+    BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
+    BlockSource(ILevel &, ChunkSource &, bool, bool);
 };
