@@ -35,46 +35,13 @@ class SerializedAbilitiesData {
         std::uint32_t abilities_set;                                                // +4
         std::uint32_t ability_values;                                               // +8
         float fly_speed;                                                            // +12
-        float walk_speed;                                                           // +16
+        float vertical_fly_speed;                                                   // +16
+        float walk_speed;                                                           // +20
     };
 
 public:
     SerializedAbilitiesData() = default;
-    SerializedAbilitiesData(ActorUniqueID target_player, const LayeredAbilities &layered_abilities)
-        : target_player_(target_player), command_permissions_(layered_abilities.getCommandPermissions()),
-          player_permissions_(layered_abilities.getPlayerPermissions())
-    {
-        layered_abilities.forEachLayer([this](AbilitiesLayer layer, const Abilities &abilities) {
-            if (!abilities.isAnyAbilitySet()) {
-                return;
-            }
-
-            auto &serialized_layer = layers_.emplace_back(SerializedLayer{});
-            serialized_layer.serialized_layer = ABILITIES_LAYER_MAP[static_cast<int>(layer)];
-            abilities.forEachAbility(
-                [&serialized_layer](Ability const &ability, AbilitiesIndex index) {
-                    auto flag = (1 << static_cast<int>(index));
-                    if (ability.isSet()) {
-                        serialized_layer.abilities_set |= flag;
-                    }
-                    else {
-                        serialized_layer.abilities_set &= ~flag;
-                    }
-
-                    if (ability.getType() == Ability::Type::Bool) {
-                        if (ability.getBool()) {
-                            serialized_layer.ability_values |= flag;
-                        }
-                        else {
-                            serialized_layer.ability_values &= ~flag;
-                        }
-                    }
-                },
-                Ability::Options::None);
-            serialized_layer.fly_speed = abilities.getFloat(AbilitiesIndex::FlySpeed);
-            serialized_layer.walk_speed = abilities.getFloat(AbilitiesIndex::WalkSpeed);
-        });
-    }
+    SerializedAbilitiesData(ActorUniqueID target_player, const LayeredAbilities &layered_abilities);
 
 private:
     ActorUniqueID target_player_{-1};             // +0

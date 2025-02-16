@@ -49,7 +49,7 @@ const std::vector<HashedString> &BlockLegacy::getTags() const
 
 const std::string &BlockLegacy::getDescriptionId() const
 {
-    return description_id_;
+    return description_id;
 }
 
 const std::string &BlockLegacy::getRawNameId() const

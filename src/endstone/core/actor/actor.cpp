@@ -213,8 +213,8 @@ Result<void> EndstoneActor::setHealth(int health) const
         return nonstd::make_unexpected(
             make_error("Health value ({}) must be between 0 and {}.", health, getMaxHealth()));
     }
-    auto &instance = actor_.getMutableAttribute("minecraft:health");
-    instance.setCurrentValue(static_cast<float>(health));
+    auto mutable_attr = actor_.getMutableAttribute("minecraft:health");
+    mutable_attr.instance->setCurrentValue(static_cast<float>(health), mutable_attr.context);
     return {};
 }
 

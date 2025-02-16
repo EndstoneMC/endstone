@@ -57,6 +57,10 @@ namespace endstone::core {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
+    EndstoneServer::getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
+                                     ColorFormat::DarkAqua + ColorFormat::Bold, EndstoneServer::getName(),
+                                     EndstoneServer::getVersion(), EndstoneServer::getMinecraftVersion());
+
     crash_handler_ = std::make_unique<CrashHandler>();
     signal_handler_ = std::make_unique<SignalHandler>();
     player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
@@ -81,8 +85,6 @@ void EndstoneServer::init(ServerInstance &server_instance)
         throw std::runtime_error("Server instance already initialized.");
     }
     server_instance_ = &server_instance;
-    getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
-                     ColorFormat::DarkAqua + ColorFormat::Bold, getName(), getVersion(), getMinecraftVersion());
     command_sender_->init();
     player_ban_list_->load();
     ip_ban_list_->load();

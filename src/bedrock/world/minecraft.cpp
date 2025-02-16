@@ -34,7 +34,7 @@ void Minecraft::requestServerShutdown(const std::string &message)
 
 void Minecraft::requestResourceReload()
 {
-    game_callbacks_->onRequestResourceReload();
+    game_callbacks_.onRequestResourceReload();
 }
 
 ResourcePackManager &Minecraft::getResourceLoader() const

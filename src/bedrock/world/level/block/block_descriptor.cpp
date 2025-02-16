@@ -16,9 +16,21 @@
 
 #include "bedrock/symbol.h"
 
+void BlockDescriptor::ResolveHelper::resolve(bool log_invalid_blocks)
+{
+    BEDROCK_CALL(&BlockDescriptor::ResolveHelper::resolve, this, log_invalid_blocks);
+}
+
 Block const *BlockDescriptor::tryGetBlockNoLogging() const
 {
-    return BEDROCK_CALL(&BlockDescriptor::tryGetBlockNoLogging, this);
+    if (is_deferred_) {
+        auto &self = const_cast<BlockDescriptor &>(*this);
+        std::lock_guard lock(self.lock_);
+        if (is_deferred_) {
+            self.resolve_helper_.resolve(false);
+        }
+    }
+    return block_;
 }
 
 namespace ScriptModuleMinecraft::ScriptBlockUtils {

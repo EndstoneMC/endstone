@@ -30,6 +30,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/type_id.h"
 #include "bedrock/network/packet/available_commands_packet.h"
+#include "bedrock/platform/brstd/copyable_function.h"
 #include "bedrock/server/commands/command_flag.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/server/commands/command_version.h"
@@ -53,6 +54,7 @@ enum class CommandParameterDataType : int {
 };
 
 class CommandRegistry {
+    friend class Command;
     friend class CommandParameterData;
 
 public:
@@ -175,6 +177,10 @@ public:
         Symbol() = default;
         Symbol(size_t value) : value_(static_cast<int>(value)){};
         Symbol(HardNonTerminal value) : value_(static_cast<int>(value)){};
+        Symbol(const Symbol &other)
+        {
+            value_ = other.value_;
+        }
 
         [[nodiscard]] int value() const
         {
@@ -205,17 +211,20 @@ public:
 
     using NonTerminal = Symbol;
     using Terminal = Symbol;
+    using SymbolVector = std::vector<Symbol>;
 
     struct Overload {
-        using AllocFunction = std::unique_ptr<Command> (*)();
+        using AllocFunction = brstd::copyable_function<std::unique_ptr<Command>() const>;
         Overload(const CommandVersion &version, AllocFunction alloc);
 
-        CommandVersion version;                    // +0
-        AllocFunction alloc;                       // +8
-        std::vector<CommandParameterData> params;  // +16
-        std::int32_t version_offset{-1};           // +40
-        bool is_chaining{false};                   // +44
-        std::vector<Symbol> params_symbol;         // +48
+        CommandVersion version;
+        AllocFunction alloc;
+        std::vector<CommandParameterData> params;
+        std::int32_t version_offset{-1};
+        bool is_chaining{false};
+        SymbolVector params_symbol;
+
+        static_assert(sizeof(AllocFunction) == 64);
     };
 
     struct Signature {
@@ -324,6 +333,7 @@ private:
     [[nodiscard]] std::string describe(CommandParameterData const &) const;
     [[nodiscard]] std::string describe(const Signature &signature, const std::string &name, const Overload &overload,
                                        unsigned int a4, unsigned int *a5, unsigned int *a6) const;
+    [[nodiscard]] std::string symbolToString(CommandRegistry::Symbol) const;
     void registerOverloadInternal(Signature &signature, Overload &overload);
 
     std::function<void(Packet const &)> network_update_callback_;                                // +0
@@ -413,7 +423,7 @@ const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *n
         return nullptr;
     }
 
-    auto overload = Overload(version, allocateCommand<CommandType>);
+    auto overload = Overload(version, &allocateCommand<CommandType>);
     overload.params = std::move(params);
 
     signature->overloads.push_back(overload);

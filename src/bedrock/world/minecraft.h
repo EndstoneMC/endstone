@@ -37,32 +37,32 @@ public:
     [[nodiscard]] Level *getLevel() const;
 
 private:
-    GameCallbacks *game_callbacks_;                                      // +24
-    IMinecraftEventing *eventing_;                                       // +32
-    std::unique_ptr<ResourcePackManager> resource_loader_;               // +40
-    std::unique_ptr<StructureManager> structure_manager_;                // +48
-    std::shared_ptr<GameModuleServer> game_module_server_;               // +56
-    AllowList *allow_list_;                                              // +72
-    PermissionsFile *permissions_file_;                                  // +80
-    std::unique_ptr<PrivateKeyManager> server_keys_;                     // +88
-    std::string save_game_path_;                                         // +96
-    Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;  // +128
-    ServerMetrics *server_metrics_;                                      // +144
-    bool corruption_detected_;                                           // +152
-    bool fire_on_level_corrupt_;                                         // +153
-    double frame_duration_;                                              // +160
-    double last_frame_start_;                                            // +168
-    std::chrono::seconds max_player_idle_time_;                          // +176
-    std::unique_ptr<MinecraftCommands> commands_;                        // +184
-    std::unique_ptr<GameSession> game_session_;                          // +192
-    void *game_test_level_listener_;                                     // +200
-    void *game_test_;                                                    // +208
-    void *sim_timer_;                                                    // +216
-    void *real_timer_;                                                   // +224
-    ClientOrServerNetworkSystemRef network_;                             // +232
-    PacketSender *packet_sender_;                                        // +248
-    IMinecraftApp *app_;                                                 // +256
-    SubClientId client_sub_id_;                                          // +264
-    OwnerPtr<EntityRegistry> entity_registry_;                           // +272
+    GameCallbacks &game_callbacks_;
+    IMinecraftEventing &eventing_;
+    std::unique_ptr<ResourcePackManager> resource_loader_;
+    std::unique_ptr<StructureManager> structure_manager_;
+    std::shared_ptr<GameModuleServer> game_module_server_;
+    AllowList &allow_list_;
+    PermissionsFile *permissions_file_;
+    std::unique_ptr<PrivateKeyManager> server_keys_;
+    std::string save_game_path_;
+    Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;
+    ServerMetrics *server_metrics_;
+    bool corruption_detected_;
+    bool fire_on_level_corrupt_;
+    double frame_duration_;
+    double last_frame_start_;
+    std::chrono::seconds max_player_idle_time_;
+    std::unique_ptr<MinecraftCommands> commands_;
+    std::unique_ptr<GameSession> game_session_;
+    void *game_test_level_listener_;
+    void *game_test_;
+    void *sim_timer_;
+    void *real_timer_;
+    ClientOrServerNetworkSystemRef network_;
+    PacketSender *packet_sender_;
+    IMinecraftApp *app_;
+    SubClientId client_sub_id_;
+    OwnerPtr<EntityRegistry> entity_registry_;
     // ...
 };

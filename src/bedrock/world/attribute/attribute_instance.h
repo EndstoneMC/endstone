@@ -19,6 +19,7 @@
 
 #include "bedrock/forward.h"
 #include "bedrock/world/attribute/attribute.h"
+#include "bedrock/world/attribute/mutable_attribute_with_context.h"
 
 class BaseAttributeMap;
 
@@ -29,15 +30,14 @@ public:
 
     [[nodiscard]] float getCurrentValue() const;
     [[nodiscard]] float getMaxValue() const;
-    void setCurrentValue(float value);
+    void setCurrentValue(float value, AttributeModificationContext ctx);
     [[nodiscard]] Attribute *getAttribute() const;
 
 private:
     friend class BaseAttributeMap;
 
-    void _setDirty();
+    void _setDirty(AttributeModificationContext ctx);
 
-    BaseAttributeMap *attribute_map_;                      // +8
     Attribute *attribute_;                                 // +16
     std::vector<void *> modifier_list_;                    // +24 std::vector<AttributeModifier>
     std::vector<void *> temporal_buffs_;                   // +48 std::vector<TemporalAttributeBuff>
@@ -60,3 +60,4 @@ private:
         };                                                 //
     };                                                     // +124
 };
+static_assert(sizeof(AttributeInstance) == 128);

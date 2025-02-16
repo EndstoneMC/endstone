@@ -29,11 +29,14 @@ class EndstoneServer;
 }  // namespace endstone
 
 // Classes
+class ActionQueue;
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
 class ActorBlockSyncMessage;
 class ActorChunkTransferEntry;
+class ActorDefinition;
 class ActorDefinitionDescriptor;
+class ActorDefinitionDiffList;
 class ActorDefinitionGroup;
 class ActorEvent;
 class ActorFactory;
@@ -68,12 +71,13 @@ class ChangeDimensionPacket;
 class ChunkKey;
 class ChunkTickRangeManager;
 class ChunkViewSource;
+class ClassroomModeNetworkHandler;
 class ClientNetworkSystem;
 class CommandOriginSystem;
-class CommandPositionFloat;
 class CompactionStatus;
 class ComplexInventoryTransaction;
-class ContainerContentChangeListener;
+class ContainerManagerModel;
+class ContainerModel;
 class ContainerRemovedListener;
 class CopperBehavior;
 class CraftingContainer;
@@ -85,6 +89,7 @@ class DimensionConversionData;
 class DimensionManager;
 class EducationLevelSettings;
 class EducationOptions;
+class EnderChestContainer;
 class EntitySystems;
 class EquipmentSlot;
 class Experiments;
@@ -93,8 +98,10 @@ class FeatureTypeFactory;
 class FogDefinition;
 class FrameUpdateContextBase;
 class GameEvent;
+class GameMode;
 class GameModuleServer;
 class GetCollisionShapeInterface;
+class HudContainerManagerModel;
 class I18nObserver;
 class IAddActorEntityProxy;
 class IContainerManager;
@@ -109,9 +116,11 @@ class IUnknownBlockTypeRegistry;
 class InternalComponentRegistry;
 class InventoryTransaction;
 class IPackLoadContext;
+class IServerNetworkController;
 class ItemComponent;
 class ItemComponentPacket;
 class ItemData;
+class ItemStackNetManagerBase;
 class JigsawStructureRegistry;
 class LevelChunkBuilderData;
 class LevelChunkMetaData;
@@ -124,8 +133,11 @@ class LootTables;
 class MapDataManager;
 class MapItemSavedData;
 class MaterialTypeHelper;
-class MolangVariableMap;
+class MobAnimationComponent;
+class MobHurtTimeComponent;
+class MolangVariable;
 class NavigationComponent;
+class NetworkChunkPublisher;
 class NewInteractionModel;
 class Options;
 class PackManifestFactory;
@@ -137,6 +149,11 @@ class Path;
 class PauseManager;
 class PermissionsFile;
 class PhotoStorage;
+class PlayerAbilitiesManager;
+class PlayerPermissionsManager;
+class PlayerPermissionsSynchroniser;
+class PlayerDestroyProgressCacheComponent;
+class PlayerListener;
 class PlayerListEntry;
 class PlayerMovementSettings;
 class PortalForcer;
@@ -153,6 +170,7 @@ class ResolvedItemIconInfo;
 class ResolvedTextObject;
 class ResourceDropsContext;
 class ResourceLoadManager;
+class ResourcePackFileUploadManager;
 class ResourcePackListener;
 class RopeSystem;
 class RuntimeLightingManager;
@@ -176,6 +194,7 @@ class SubChunkPacket;
 class SubChunkPos;
 class SurfaceBuilderRegistry;
 class SubpackInfoCollection;
+class TextFilteringProcessor;
 class TestPackSource;
 class TextObjectRoot;
 class TaskGroup;
@@ -196,7 +215,6 @@ enum class BedSleepingResult;
 enum class BlockActorType;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
-enum class BlockTintType;
 enum class BurnOdds;
 enum class ChunkCachedDataState : std::int8_t;
 enum class ChunkDebugDisplaySavedState : std::int8_t;
@@ -216,6 +234,7 @@ enum class ParticleType;
 enum class PlayerSleepStatus;
 enum class ShapeType : std::int8_t;
 enum class StructureFeatureType;
+enum class TintMethod : std::uint8_t;
 
 // Nested Classes and Namespaces
 class BlockSourceVisitor {
@@ -231,6 +250,9 @@ public:
 namespace Automation {
 class AutomationClient;
 }
+namespace cereal {
+class ReflectionCtx;
+}
 namespace cg {
 class ImageBuffer;
 }
@@ -239,6 +261,11 @@ class FilePathManager;
 class LevelStorageResult;
 class StorageAreaState;
 }  // namespace Core
+namespace ClientBlobCache {
+namespace Server {
+class ActiveTransfersManager;
+}
+}  // namespace ClientBlobCache
 
 namespace Social {
 class GamePublishSetting;

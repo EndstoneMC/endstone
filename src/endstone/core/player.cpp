@@ -400,7 +400,8 @@ Result<void> EndstonePlayer::setExpProgress(float progress)
     if (progress < 0.0 || progress > 1.0) {
         return nonstd::make_unexpected(make_error("Experience progress must be between 0.0 and 1.0 ({})", progress));
     }
-    getHandle().getMutableAttribute("minecraft:player.experience").setCurrentValue(progress);
+    auto mutable_attr = getHandle().getMutableAttribute("minecraft:player.experience");
+    mutable_attr.instance->setCurrentValue(progress, mutable_attr.context);
     return {};
 }
 

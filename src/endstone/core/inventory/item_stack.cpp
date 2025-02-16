@@ -14,6 +14,8 @@
 
 #include "endstone/core/inventory/item_stack.h"
 
+#include "bedrock/world/item/item.h"
+
 namespace endstone::core {
 
 EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)

@@ -308,10 +308,10 @@ const AttributeInstance &Actor::getAttribute(const HashedString &name) const
     return component->attributes.getInstance(name);
 }
 
-AttributeInstance &Actor::getMutableAttribute(const HashedString &name)
+MutableAttributeWithContext Actor::getMutableAttribute(const HashedString &name)
 {
     auto component = getPersistentComponent<AttributesComponent>();
-    return component->attributes.getMutableInstance(name);
+    return component->attributes.getMutableInstanceWithContext(name);
 }
 
 float Actor::getFallDistance() const

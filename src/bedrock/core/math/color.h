@@ -30,5 +30,6 @@ public:
     float b;
     float a;
 };
-
 }  // namespace mce
+
+using Color = mce::Color;

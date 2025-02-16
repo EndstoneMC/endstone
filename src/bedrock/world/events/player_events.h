@@ -205,6 +205,7 @@ struct PlayerScriptInputEvent {
     ScriptingInputButton button;
     ScriptingInputButtonState new_state;
 };
+struct PlayerEvent26 {};  // TODO(fixme): what is this?
 
 template <typename Return>
 struct PlayerGameplayEvent;
@@ -218,7 +219,7 @@ struct PlayerGameplayEvent<void>
                         PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
                         PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
                         PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
-                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerScriptInputEvent,
+                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerEvent26, PlayerScriptInputEvent,
                         PlayerInputPermissionCategoryChangeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
 

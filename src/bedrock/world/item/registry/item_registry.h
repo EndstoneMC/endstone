@@ -29,6 +29,12 @@
 class Item;
 class ItemRegistryRef;
 
+enum class ItemVersion : int {
+    Legacy = 0,
+    DataDriven = 1,
+    None = 2,
+};
+
 class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
 public:
     static const std::int16_t START_ITEM_ID = 256;

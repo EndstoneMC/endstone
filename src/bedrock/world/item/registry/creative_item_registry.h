@@ -17,7 +17,6 @@
 #include <functional>
 
 #include "bedrock/core/utility/enable_non_owner_references.h"
-#include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/item/registry/creative_item_entry.h"
 
 class CreativeItemRegistry : public Bedrock::EnableNonOwnerReferences {

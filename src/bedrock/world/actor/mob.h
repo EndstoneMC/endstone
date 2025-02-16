@@ -16,12 +16,30 @@
 
 #include <bitset>
 
+#include "bedrock/forward.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/item/clock_sprite_calculator.h"
+#include "bedrock/world/item/compass_sprite_calculator.h"
+
+enum class MobSpawnMethod : std::uint8_t {
+    Unknown = 0,
+    SpawnEgg = 1,
+    Command = 2,
+    Dispenser = 3,
+    Spawner = 4,
+    SpawnMethod_Count = 5,
+};
+
+struct BuiltInMobComponents {
+    gsl::not_null<MobAnimationComponent *> mob_animation_component;
+    gsl::not_null<MobHurtTimeComponent *> mob_hurt_time_component;
+};
 
 class Mob : public Actor {
 public:
-    ~Mob() override = 0;
+    Mob(Level &, EntityContext &);
 
+    ~Mob() override = 0;
     ENDSTONE_HOOK virtual void knockback(Actor *, int, float, float, float, float, float);
     virtual void spawnAnim() = 0;
     virtual void setSprinting(bool) = 0;
@@ -75,4 +93,35 @@ public:
     [[nodiscard]] bool isGliding() const;
     [[nodiscard]] bool isSprinting() const;
     void setYBodyRotation(float rotation);
+
+public:
+    int hurt_duration;  // +936
+    float hurt_dir;
+    float o_tilt;
+    float tilt;
+    CompassSpriteCalculator compass_sprite_calc;
+    CompassSpriteCalculator recovery_compass_sprite_calc;
+    ClockSpriteCalculator clock_sprite_calc;
+
+protected:
+    int swing_time_;
+    int death_time_;
+    BuiltInMobComponents built_in_mob_components_;
+    float movement_component_current_speed_;
+    bool swinging_;
+    bool surface_mob_;
+    bool naturally_spawned_;
+    bool wants_to_be_jockey_;
+    bool spawned_xp_;
+
+private:
+    bool has_bound_origin_;
+    std::optional<bool> actually_do_knockback_or_not_really_bad_hack_do_not_use_;
+    MobSpawnMethod spawn_method_;
+    bool create_ai_on_reload_;
+    ActorUniqueID caravan_head_;
+    ActorUniqueID caravan_tail_;
+    float o_attack_anim_;
+    BlockPos bound_origin_;
+    ActorUniqueID target_captain_id_;
 };

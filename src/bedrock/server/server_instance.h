@@ -44,9 +44,13 @@ public:
     PacketSender &getPacketSender();
 
 private:
-    friend class endstone::core::EndstoneServer;
+    ENDSTONE_HOOK void _resetServerScriptManager();
 
-    std::chrono::steady_clock::time_point last_sync_time_;
+public:
+    std::chrono::steady_clock::time_point last_sync_time;
+
+private:
+    friend class endstone::core::EndstoneServer;
     IMinecraftApp &app_;
     std::unique_ptr<Minecraft> minecraft_;
     std::unique_ptr<ServerNetworkSystem> network_;

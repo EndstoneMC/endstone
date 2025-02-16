@@ -26,10 +26,10 @@ float AttributeInstance::getMaxValue() const
     return current_max_value_;
 }
 
-void AttributeInstance::setCurrentValue(float value)
+void AttributeInstance::setCurrentValue(float value, AttributeModificationContext ctx)
 {
     current_value_ = value;
-    _setDirty();
+    _setDirty(ctx);
 }
 
 Attribute *AttributeInstance::getAttribute() const
@@ -37,9 +37,9 @@ Attribute *AttributeInstance::getAttribute() const
     return attribute_;
 }
 
-void AttributeInstance::_setDirty()
+void AttributeInstance::_setDirty(AttributeModificationContext ctx)
 {
-    if (attribute_map_) {
-        attribute_map_->onAttributeModified(*this);
+    if (ctx.attribute_map) {
+        ctx.attribute_map->onAttributeModified(*this);
     }
 }

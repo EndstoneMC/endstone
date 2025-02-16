@@ -25,13 +25,18 @@ class BaseAttributeMap {
 public:
     [[nodiscard]] const AttributeInstance &getInstance(const Attribute &attribute) const;
     [[nodiscard]] const AttributeInstance &getInstance(std::uint32_t id_value) const;
-    void onAttributeModified(AttributeInstance const &);
+    void onAttributeModified(AttributeInstance const &instance);
 
-    [[nodiscard]] const AttributeInstance &getInstance(const HashedString &name) const;  // Endstone
-    [[nodiscard]] AttributeInstance &getMutableInstance(const HashedString &name);       // Endstone
+    [[nodiscard]] const AttributeInstance &getInstance(const HashedString &name) const;                 // Endstone
+    [[nodiscard]] MutableAttributeWithContext getMutableInstanceWithContext(const HashedString &name);  // Endstone
 
 private:
-    std::unordered_map<std::uint32_t, AttributeInstance> instance_map_;  // +0
-    std::vector<AttributeInstanceHandle> dirty_attributes_;              //+64 (+40)
+    void _onAttributeModified(const AttributeInstance &instance);
+    void _onAttributeModifiedDisabled(const AttributeInstance &instance);
+
+    std::unordered_map<std::uint32_t, AttributeInstance> instance_map_;
+    std::vector<AttributeInstanceHandle> dirty_attributes_;
+    void (BaseAttributeMap::*on_attribute_modified_)(const AttributeInstance &) =
+        &BaseAttributeMap::_onAttributeModified;
 };
-BEDROCK_STATIC_ASSERT_SIZE(BaseAttributeMap, 88, 64);
+BEDROCK_STATIC_ASSERT_SIZE(BaseAttributeMap, 96, 80);

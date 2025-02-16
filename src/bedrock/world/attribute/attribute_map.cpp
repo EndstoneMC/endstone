@@ -32,11 +32,9 @@ const AttributeInstance &BaseAttributeMap::getInstance(std::uint32_t id_value) c
 
 void BaseAttributeMap::onAttributeModified(AttributeInstance const &instance)
 {
-    auto *attribute = instance.getAttribute();
-    if (!attribute) {
-        return;
+    if (on_attribute_modified_) {
+        std::invoke(on_attribute_modified_, this, instance);
     }
-    dirty_attributes_.push_back({this, attribute->getIDValue()});
 }
 
 const AttributeInstance &BaseAttributeMap::getInstance(const HashedString &name) const
@@ -49,12 +47,23 @@ const AttributeInstance &BaseAttributeMap::getInstance(const HashedString &name)
     throw std::runtime_error("Attribute not found by name: " + name.getString());
 }
 
-AttributeInstance &BaseAttributeMap::getMutableInstance(const HashedString &name)
+MutableAttributeWithContext BaseAttributeMap::getMutableInstanceWithContext(const HashedString &name)
 {
     for (auto &[id, instance] : instance_map_) {
         if (instance.attribute_->getName() == name) {
-            return instance;
+            return {&instance, this};
         }
     }
     throw std::runtime_error("Attribute not found by name: " + name.getString());
 }
+
+void BaseAttributeMap::_onAttributeModified(AttributeInstance const &instance)
+{
+    auto *attribute = instance.getAttribute();
+    if (!attribute) {
+        return;
+    }
+    dirty_attributes_.push_back({this, attribute->getIDValue()});
+}
+
+void BaseAttributeMap::_onAttributeModifiedDisabled(const AttributeInstance &instance) {}

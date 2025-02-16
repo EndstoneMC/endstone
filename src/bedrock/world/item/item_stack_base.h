@@ -21,9 +21,11 @@
 
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/shared_ptr.h"
-#include "bedrock/world/item/item.h"
+#include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/tick.h"
+
+class Item;
 
 class ItemStackBase {
 protected:

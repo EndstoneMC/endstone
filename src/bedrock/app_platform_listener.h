@@ -14,13 +14,15 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
+#include "bedrock/core/utility/pub_sub/subscription.h"
 
 class AppPlatformListener {
 public:
+    AppPlatformListener(bool);
     virtual ~AppPlatformListener() = 0;
 
 private:
-    bool listener_registered_;  // +8
+    Bedrock::PubSub::Subscription low_memory_subscription_;  // +8
+    bool listener_registered_;                               // +24
 };
-BEDROCK_STATIC_ASSERT_SIZE(AppPlatformListener, 16, 16);
+static_assert(sizeof(AppPlatformListener) == 32);

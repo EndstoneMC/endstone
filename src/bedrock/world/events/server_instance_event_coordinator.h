@@ -21,7 +21,8 @@
 
 class ServerInstanceEventCoordinator : public EventCoordinatorPimpl<ServerInstanceEventListener> {
 public:
-    ENDSTONE_HOOK void sendServerInitializeStart(ServerInstance &instance);
-    ENDSTONE_HOOK void sendServerThreadStarted(ServerInstance &instance);
-    ENDSTONE_HOOK void sendServerThreadStopped(ServerInstance &instance);
+    void sendServerInitializeStart(ServerInstance &instance);
+    void sendServerInitializeEnd(ServerInstance &instance);
+    void sendServerThreadStarted(ServerInstance &instance);
+    void sendServerThreadStopped(ServerInstance &instance);
 };

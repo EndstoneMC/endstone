@@ -17,6 +17,8 @@
 #include <mutex>
 #include <shared_mutex>
 
+#include "bedrock/platform/threading/spin_lock.h"
+
 namespace Bedrock::Threading {
 
 #ifdef _WIN32
@@ -32,3 +34,5 @@ using SharedMutex = std::shared_timed_mutex;
 #endif
 
 }  // namespace Bedrock::Threading
+
+using SpinLock = SpinLockImpl;

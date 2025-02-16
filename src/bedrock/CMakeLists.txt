@@ -36,6 +36,7 @@ add_library(bedrock STATIC
         nbt/nbt_io.cpp
         nbt/tag.cpp
         network/network_identifier.cpp
+        network/packet/types/world/actor/serialized_abilities_data.cpp
         network/packet/crafting_data_packet.cpp
         network/packet.cpp
         network/server_network_handler.cpp
@@ -70,6 +71,7 @@ add_library(bedrock STATIC
         world/actor/synched_actor_data.cpp
         world/actor/player/abilities.cpp
         world/actor/player/player.cpp
+        world/actor/player/player_inventory.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp
         world/inventory/network/item_stack_net_id_variant.cpp

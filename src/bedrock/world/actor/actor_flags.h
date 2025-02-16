@@ -134,5 +134,6 @@ enum class ActorFlags {
     TIMER_FLAG_2 = 116,
     TIMER_FLAG_3 = 117,
     BODY_ROTATION_BLOCKED = 118,
-    Count = 119
+    RENDERS_WHEN_INVISIBLE = 119,
+    Count
 };

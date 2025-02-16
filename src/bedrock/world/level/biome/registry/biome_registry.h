@@ -18,8 +18,12 @@
 #include <functional>
 #include <unordered_map>
 
+#include <gsl/gsl>
+
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/enable_non_owner_references.h"
+#include "bedrock/core/utility/pub_sub/subscription.h"
+#include "bedrock/platform/brstd/flat_set.h"
 #include "bedrock/util/tag_registry.h"
 #include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/biome/registry/well_known_biome_tags.h"
@@ -31,14 +35,18 @@ public:
 
 private:
     using BiomeNameLookupMap = std::unordered_map<HashType64, std::unique_ptr<Biome>>;
+    struct BiomeComparator {};
 
-    WellKnownBiomeTags well_known_biome_tags_;   // +24
-    bool client_initialized_;                    // +1008
-    BiomeNameLookupMap biomes_by_name_;          // +1016
-    std::vector<Biome *> biomes_by_id_;          // +1080
-    std::uint32_t next_id_;                      // +1104
-    std::atomic<bool> closed_for_registration_;  // +1108
-    bool load_from_packs_;                       // +1109
-    BiomeTagRegistry tag_registry_;              // +1112
-    Biome *empty_biome_;                         // +1240
+    WellKnownBiomeTags well_known_biome_tags_;
+    bool client_initialized_;
+    BiomeNameLookupMap biomes_by_name_;
+    brstd::flat_set<gsl::not_null<Biome *>, BiomeComparator> biomes_by_id_;  // +1080
+    std::uint32_t next_custom_biome_id_;
+    std::atomic<bool> closed_for_registration_;
+    bool load_from_packs_;
+    BiomeTagRegistry tag_registry_;
+    Biome *empty_biome_;  // +1256
+    HashedString default_water_idntifier_;
+    Bedrock::PubSub::Subscription on_save_subscription_;
+    Bedrock::PubSub::Subscription on_level_storage_manager_start_leave_game_subscription_;
 };
