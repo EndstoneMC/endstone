@@ -25,7 +25,7 @@ class Level : public ILevel {
 public:
     ENDSTONE_HOOK void tick() override;
 
-    virtual void *unknown() = 0;  // TODO: what is this?
+    virtual void *unknown() = 0;  // TODO(fixme): what is this?
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
     virtual void *getPlayerSleepManager() = 0;

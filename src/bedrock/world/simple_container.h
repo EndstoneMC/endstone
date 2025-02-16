@@ -28,5 +28,5 @@ public:
 protected:
     int size_;
     std::vector<ItemStack> items_;
-    int unknown_;  // TODO: what is this?
+    int unknown_;  // TODO(fixme): what is this?
 };
