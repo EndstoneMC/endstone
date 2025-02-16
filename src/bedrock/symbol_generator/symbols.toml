@@ -1,4 +1,4 @@
-timestamp = 1739489058
+timestamp = 1739714158
 version = "1.21.60"
 
 [windows]
@@ -7,7 +7,7 @@ version = "1.21.60"
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 65257136
 # BlockDescriptor
-"?tryGetBlockNoLogging@BlockDescriptor@@QEBAPEBVBlock@@XZ" = 46095792
+"?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 46146480
 # BlockLegacy
 "?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 46159792
 # BlockTypeRegistry
