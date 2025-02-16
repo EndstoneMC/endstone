@@ -66,33 +66,32 @@ public:
     [[nodiscard]] endstone::Dimension &getEndstoneDimension() const;  // Endstone
 
 private:
-    std::vector<ActorChunkTransferEntry> actor_chunk_transfer_queue_;                 // +104
-    std::unordered_map<ChunkKey, std::vector<ActorUnloadedChunkTransferEntry>>        //
-        actor_unloaded_chunk_transfer_queue_;                                         // +128
-    Level *level_;                                                                    // +192
-    DimensionHeightRange height_range_;                                               // +200
-    std::int16_t sea_level_;                                                          // +204
-    std::uint8_t monster_spawn_block_light_limit_;                                    // +206
-    IntProvider monster_spawn_light_test_;                                            // +208
-    OwnerPtr<BlockSource> block_source_;                                              // +240
-    float mobs_per_chunk_surface_[7];                                                 // +256
-    float mobs_per_chunk_underground_[7];                                             // +284
-    BrightnessPair default_brightness_;                                               // +312
-    std::unique_ptr<BaseLightTextureImageBuilder> base_light_texture_image_builder_;  // +320
-    std::unique_ptr<DimensionBrightnessRamp> dimension_brightness_ramp_;              // +328
-    std::shared_ptr<LevelChunkMetaData> target_metadata_;                             // +344
-    std::unique_ptr<RuntimeLightingManager> runtime_lighting_manager_;                // +352
-    std::string name_;                                                                // +360
-    DimensionType id_;                                                                // +392
-    bool ultra_warm_;                                                                 // +356
-    bool has_ceiling_;                                                                // +357
-    bool has_weather_;                                                                // +358
-    bool has_skylight_;                                                               // +359
-    Brightness sky_darken_;                                                           // +360
-    std::unique_ptr<BlockEventDispatcher> dispatcher_;                                // +368
-    std::unique_ptr<TaskGroup> task_group_;                                           // +376
-    std::unique_ptr<TaskGroup> chunk_gen_task_group_;                                 // +384
-    std::unique_ptr<PostprocessingManager> post_processing_manager_;                  // +392
-    std::unique_ptr<SubChunkInterlocker> sub_chunk_interlocker_;                      // +400
-    std::unique_ptr<ChunkSource> chunk_source_;                                       // +408
+    std::vector<ActorChunkTransferEntry> actor_chunk_transfer_queue_;  // +104
+    std::unordered_map<ChunkKey, std::vector<ActorUnloadedChunkTransferEntry>> actor_unloaded_chunk_transfer_queue_;
+    Level *level_;
+    DimensionHeightRange height_range_;
+    std::int16_t sea_level_;
+    std::uint8_t monster_spawn_block_light_limit_;
+    IntProvider monster_spawn_light_test_;
+    OwnerPtr<BlockSource> block_source_;  // +240
+    bool has_weather_;                    // +256
+    float mobs_per_chunk_surface_[7];
+    float mobs_per_chunk_underground_[7];
+    BrightnessPair default_brightness_;  // +316
+    std::unique_ptr<BaseLightTextureImageBuilder> base_light_texture_image_builder_;
+    std::unique_ptr<DimensionBrightnessRamp> dimension_brightness_ramp_;
+    std::shared_ptr<LevelChunkMetaData> target_metadata_;
+    std::unique_ptr<RuntimeLightingManager> runtime_lighting_manager_;
+    std::string name_;  // +360
+    DimensionType id_;  // +392
+    bool ultra_warm_;   // +396
+    bool has_ceiling_;
+    bool has_skylight_;
+    Brightness sky_darken_;
+    std::unique_ptr<BlockEventDispatcher> dispatcher_;  // +400
+    std::unique_ptr<TaskGroup> task_group_;
+    std::unique_ptr<TaskGroup> chunk_gen_task_group_;
+    std::unique_ptr<PostprocessingManager> post_processing_manager_;
+    std::unique_ptr<SubChunkInterlocker> sub_chunk_interlocker_;
+    std::unique_ptr<ChunkSource> chunk_source_;
 };
