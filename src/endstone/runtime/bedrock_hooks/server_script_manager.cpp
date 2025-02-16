@@ -22,6 +22,7 @@
 
 void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance)
 {
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerScriptManager::_runPlugins, this, exe_group, server_instance);
     static std::once_flag init_server, init_level;
     switch (exe_group) {
     case PluginExecutionGroup::PrePackLoadExecution: {
@@ -41,5 +42,4 @@ void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInst
     default:
         break;
     }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerScriptManager::_runPlugins, this, exe_group, server_instance);
 }
