@@ -32,7 +32,7 @@ public:
     }
 
 private:
-    std::unique_ptr<WebToken> raw_token_;                      // +16
+    std::unique_ptr<WebToken> raw_token_;                      // +0
     std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +0
-    std::unique_ptr<Certificate> certificate_;                 // +8
+    std::unique_ptr<Certificate> certificate_;                 // +16
 };
