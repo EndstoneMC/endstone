@@ -83,5 +83,5 @@ private:
     BaseGameVersion world_base_game_version_;                       //
     bool check_for_item_world_compatibility_;                       //
     std::shared_ptr<std::mutex> compatibility_check_mutex_;         //
-    std::unique_ptr<CreativeItemRegistry> creative_item_registry_;  //
+    std::unique_ptr<CreativeItemRegistry> creative_item_registry_;  // +960
 };

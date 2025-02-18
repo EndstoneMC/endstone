@@ -17,6 +17,7 @@
 #include <functional>
 
 #include "bedrock/core/utility/enable_non_owner_references.h"
+#include "bedrock/world/item/registry/creative_group_info.h"
 #include "bedrock/world/item/registry/creative_item_entry.h"
 
 class CreativeItemRegistry : public Bedrock::EnableNonOwnerReferences {
@@ -24,5 +25,6 @@ public:
     void forEachCreativeItemInstance(std::function<bool(const ItemInstance &)>) const;
 
 private:
-    std::vector<CreativeItemEntry> creative_items_;  // +24
+    std::vector<CreativeItemEntry> creative_items_;   // +24
+    std::vector<CreativeGroupInfo> creative_groups_;  // +48
 };

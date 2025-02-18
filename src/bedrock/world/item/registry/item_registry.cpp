@@ -41,5 +41,5 @@ WeakPtr<Item> ItemRegistry::getItem(const HashedString &id) const
 
 Bedrock::NonOwnerPointer<CreativeItemRegistry> ItemRegistry::getCreativeItemRegistry() const
 {
-    return Bedrock::NonOwnerPointer<CreativeItemRegistry>(*creative_item_registry_);
+    return *creative_item_registry_;
 }

@@ -12,19 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/game_session.h"
+#pragma once
 
-#include "bedrock/world/level/level.h"
-
-Bedrock::NonOwnerPointer<ServerNetworkHandler> GameSession::getServerNetworkHandler() const
-{
-    return *server_network_handler_;
-}
-
-Level *GameSession::getLevel() const
-{
-    if (level_entity_ && level_ != nullptr) {
-        return level_.access();
-    }
-    return nullptr;
-}
+enum class CreativeItemCategory : int {
+    All = 0,
+    Construction = 1,
+    Nature = 2,
+    Equipment = 3,
+    Items = 4,
+    ItemCommandOnly = 5,
+    Undefined = 6,
+    NUM_CATEGORIES = 7,
+};
