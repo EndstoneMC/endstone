@@ -494,6 +494,10 @@ void showItemWindow(bool *open)
         ImGui::Json(data->creative_items);
     }
 
+    if (ImGui::CollapsingHeader(fmt::format("{} Creative Groups", data->creative_groups.size()).c_str())) {
+        ImGui::Json(data->creative_groups);
+    }
+
     if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {
         ImGui::Json(data->item_tags);
     }

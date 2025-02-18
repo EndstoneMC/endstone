@@ -80,6 +80,7 @@ add_library(bedrock STATIC
         world/item/item_instance.cpp
         world/item/item_stack.cpp
         world/item/item_stack_base.cpp
+        world/item/registry/creative_group_info.cpp
         world/item/registry/creative_item_entry.cpp
         world/item/registry/creative_item_registry.cpp
         world/item/registry/item_registry.cpp

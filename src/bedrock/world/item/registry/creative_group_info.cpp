@@ -12,20 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-#include <functional>
-
-#include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/world/item/registry/creative_group_info.h"
-#include "bedrock/world/item/registry/creative_item_entry.h"
 
-class CreativeItemRegistry : public Bedrock::EnableNonOwnerReferences {
-public:
-    const std::vector<CreativeGroupInfo> &getCreativeGroups() const;
-    void forEachCreativeItemInstance(std::function<bool(const ItemInstance &)>) const;
+const std::string &CreativeGroupInfo::getName() const
+{
+    return name_.getString();
+}
 
-private:
-    std::vector<CreativeItemEntry> creative_items_;   // +24
-    std::vector<CreativeGroupInfo> creative_groups_;  // +48
-};
+const ItemInstance &CreativeGroupInfo::getIcon() const
+{
+    return icon_;
+}
+
+CreativeItemCategory CreativeGroupInfo::getCreativeCategory() const
+{
+    return category_;
+}
+
+std::uint32_t CreativeGroupInfo::getIndex() const
+{
+    return index_;
+}
+
+const std::vector<unsigned int> &CreativeGroupInfo::getItems() const
+{
+    return item_indexes_;
+}

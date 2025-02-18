@@ -165,6 +165,16 @@ void dumpItemData(VanillaData &data, const ::Level &level)
         data.creative_items.add(tag.copy());
         return true;
     });
+
+    for (const auto &creative_group : creative_item_registry->getCreativeGroups()) {
+        data.creative_groups.push_back({
+            {"name", creative_group.getName()},
+            {"category", magic_enum::enum_name(creative_group.getCreativeCategory())},
+        });
+        if (auto *icon_item = creative_group.getIcon().getItem(); icon_item) {
+            data.creative_groups.back()["icon"] = icon_item->getFullItemName();
+        }
+    }
 }
 
 void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)

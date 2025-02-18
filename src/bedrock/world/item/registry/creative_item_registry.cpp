@@ -16,6 +16,11 @@
 
 #include "bedrock/world/item/item_instance.h"
 
+const std::vector<CreativeGroupInfo> &CreativeItemRegistry::getCreativeGroups() const
+{
+    return creative_groups_;
+}
+
 void CreativeItemRegistry::forEachCreativeItemInstance(std::function<bool(const ItemInstance &)> func) const
 {
     for (const auto &creative_item : creative_items_) {

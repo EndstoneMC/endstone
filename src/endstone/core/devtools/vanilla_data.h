@@ -28,6 +28,7 @@ struct VanillaData {
     // nlohmann::json materials;
     nlohmann::json items;
     ::ListTag creative_items;
+    nlohmann::json creative_groups;
     nlohmann::json item_tags;
     nlohmann::json biomes;
     struct {

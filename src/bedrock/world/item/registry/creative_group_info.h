@@ -13,7 +13,9 @@
 // limitations under the License.
 
 #pragma once
+
 #include "bedrock/core/string/string_hash.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/world/item/item_category.h"
 #include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/item/registry/creative_item_entry_fwd.h"
@@ -23,13 +25,20 @@ public:
     CreativeGroupInfo(CreativeItemRegistryPtr, CreativeItemCategory, const HashedString &, uint32_t,
                       const ItemInstance &);
     CreativeGroupInfo(CreativeItemRegistryPtr, CreativeItemCategory, HashedString &&, uint32_t, ItemInstance &&);
-    CreativeGroupInfo(CreativeItemRegistryPtr, CreativeItemCategory, uint32_t);
+    CreativeGroupInfo(CreativeItemRegistryPtr, CreativeItemCategory, std::uint32_t);
+
+    CreativeItemGroupCategoryPtr getGroupCategory();
+    const std::string &getName() const;
+    const ItemInstance &getIcon() const;
+    CreativeItemCategory getCreativeCategory() const;
+    std::uint32_t getIndex() const;
+    const std::vector<unsigned int> &getItems() const;
 
 private:
     CreativeItemCategory category_;           // +24
     CreativeItemRegistryPtr registry_;        // +32
     HashedString name_;                       // +40
     ItemInstance icon_;                       // +80
-    uint32_t index_;                          // +208
+    std::uint32_t index_;                     // +208
     std::vector<unsigned int> item_indexes_;  // +216
 };
