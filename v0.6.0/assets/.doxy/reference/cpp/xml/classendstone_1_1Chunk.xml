@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Chunk" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Chunk</compoundname>
+    <includes refid="chunk_8h" local="no">endstone/level/chunk.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Chunk_1ac9753b865a92b8ce919a9a71d82b61d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Chunk::~Chunk</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Chunk</name>
+        <qualifiedname>endstone::Chunk::~Chunk</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="26" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Chunk::getX</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getX</name>
+        <qualifiedname>endstone::Chunk::getX</qualifiedname>
+        <briefdescription>
+<para>Gets the X-coordinate of this chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>X-coordinate </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="33" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Chunk::getZ</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getZ</name>
+        <qualifiedname>endstone::Chunk::getZ</qualifiedname>
+        <briefdescription>
+<para>Gets the Z-coordinate of this chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Z-coordinate </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="40" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+        <definition>virtual Level &amp; endstone::Chunk::getLevel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLevel</name>
+        <qualifiedname>endstone::Chunk::getLevel</qualifiedname>
+        <briefdescription>
+<para>Gets the level containing this chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Parent <ref refid="classendstone_1_1Level" kindref="compound">Level</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="47" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1ab18bb55fcb0a26706f9cb59406bdf0cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
+        <definition>virtual Dimension &amp; endstone::Chunk::getDimension</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDimension</name>
+        <qualifiedname>endstone::Chunk::getDimension</qualifiedname>
+        <briefdescription>
+<para>Gets the dimension containing this chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Parent <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="54" column="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a chunk of blocks. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/level/chunk.h" line="24" column="1" bodyfile="include/endstone/level/chunk.h" bodystart="24" bodyend="55"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Chunk_1ab18bb55fcb0a26706f9cb59406bdf0cc" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getX</name></member>
+      <member refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Chunk_1ac9753b865a92b8ce919a9a71d82b61d7" prot="public" virt="virtual"><scope>endstone::Chunk</scope><name>~Chunk</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
