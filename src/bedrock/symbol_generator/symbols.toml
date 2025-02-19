@@ -53,7 +53,7 @@ version = "1.21.60"
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 41302320
 "?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 41298560
 # Pack
-"?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@@gsl@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 17585952
+"?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 17585952
 # Player
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 41912464
 # RakNet
