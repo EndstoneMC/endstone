@@ -46,6 +46,7 @@ class AddActorBasePacket;
 class AdventureSettings;
 class AllowList;
 class AnimationComponent;
+class AppConfigs;
 class AttributeInstanceDelegate;
 class AutomationBehaviorTreeGroup;
 class BaseLightTextureImageBuilder;
@@ -133,6 +134,7 @@ class LootTables;
 class MapDataManager;
 class MapItemSavedData;
 class MaterialTypeHelper;
+class MinecraftGameTest;
 class MobAnimationComponent;
 class MobHurtTimeComponent;
 class MolangVariable;
@@ -268,7 +270,8 @@ class ActiveTransfersManager;
 
 namespace Social {
 class GamePublishSetting;
-}
+class MultiplayerServiceManager;
+}  // namespace Social
 namespace Puv::Legacy {
 enum class LevelSoundEvent : int;
 }
@@ -289,3 +292,5 @@ template <typename A, typename B, typename C>
 class OwnerPtrFactory;
 template <typename A, typename B, typename C>
 class Factory;
+template <typename T>
+class ServiceReference;

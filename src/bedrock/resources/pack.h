@@ -32,10 +32,10 @@ public:
     [[nodiscard]] PackManifest const &getManifest() const;
     PackManifest &getManifest();
 
-     static std::unique_ptr<Pack> createPack(
-        ResourceLocation const &file_location, PackType type, PackOrigin origin, IPackManifestFactory &manifest_factory,
-        Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider, PackSourceReport *report,
-        Core::Path const &zip_sub_dir);
+    static std::unique_ptr<Pack> createPack(ResourceLocation const &file_location, PackType type, PackOrigin origin,
+                                            IPackManifestFactory &manifest_factory,
+                                            Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,
+                                            PackSourceReport *report, Core::Path const &zip_sub_dir);
 
 private:
     std::unique_ptr<PackManifest> manifest_;

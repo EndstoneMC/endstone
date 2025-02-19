@@ -40,6 +40,10 @@ class PlayerRespawnRandomizer;
 
 class Player : public Mob {
 public:
+    Player(Level &, PacketSender &, GameType, bool, const NetworkIdentifier &, SubClientId, mce::UUID,
+           const std::string &, const std::string &, std::unique_ptr<Certificate>, EntityContext &, const std::string &,
+           const std::string &);
+
     ~Player() override = 0;
     ENDSTONE_HOOK void teleportTo(const Vec3 &, bool, int, int, bool) override;
 
@@ -133,7 +137,8 @@ public:
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
     [[nodiscard]] const std::string &getName() const;
-    void setPermissions(CommandPermissionLevel level);  // TODO(hook): this function can no longer be hooked (lined), find alternatives
+    void setPermissions(
+        CommandPermissionLevel level);  // TODO(hook): this function can no longer be hooked (lined), find alternatives
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;

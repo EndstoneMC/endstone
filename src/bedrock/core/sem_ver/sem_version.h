@@ -140,7 +140,7 @@ bool operator<=(const SemVersionBase<StringTypeLhs> &lhs, const SemVersionBase<S
 template <typename StringType>
 class SemVersionBase {
 public:
-    static const SemVersionAnyVersionType AnyVersionConstructor;
+    inline static const SemVersionAnyVersionType AnyVersionConstructor;
     SemVersionBase() = default;
     explicit SemVersionBase(SemVersionAnyVersionType) : valid_version_(true), any_version_(true) {}
     explicit SemVersionBase(const std::uint16_t major, const std::uint16_t minor, const std::uint16_t patch,

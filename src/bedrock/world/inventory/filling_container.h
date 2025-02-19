@@ -43,7 +43,7 @@ public:
     int getMaxStackSize() const override;
     int getContainerSize() const override;
     void startOpen(Player &) override;
-    virtual void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback);
+    void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) override;
 
 private:
     virtual void _trySetInSlot(ItemStack &, const int &, const int &, int &);

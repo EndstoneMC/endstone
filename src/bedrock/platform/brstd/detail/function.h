@@ -32,7 +32,7 @@ template <DerivedType Type, class Return, bool Noexcept, class... Xs>
 class function_base_impl {
     class storage;
 
-    template <DerivedType Type>
+    template <DerivedType>
     struct vtable_base {
         void (*move_to)(storage &, storage &) noexcept;
         void (*destroy)(storage &) noexcept;
@@ -60,10 +60,10 @@ class function_base_impl {
 
     class storage {
     public:
-        vtable const *vfptr;
+        const vtable *vfptr;
 
     private:
-        union alignas(max_align_t) {
+        union {
             void *heap_target;
             char embedded_target[embedded_target_size];
         };
@@ -97,10 +97,10 @@ class function_base_impl {
         static Fn *target(storage const &self)
         {
             if constexpr (HeapTarget) {
-                return self.large_fn_ptr<Fn>();
+                return self.template large_fn_ptr<Fn>();
             }
             else {
-                return self.small_fn_ptr<Fn>();
+                return self.template small_fn_ptr<Fn>();
             }
         }
 
@@ -111,7 +111,7 @@ class function_base_impl {
                     to.set_large_fn_ptr(::new Fn(*target(self)));
                 }
                 else {
-                    ::new (to.embedded_target_ptr<Fn>()) Fn(*target(self));
+                    ::new (to.template embedded_target_ptr<Fn>()) Fn(*target(self));
                 }
             }
         }
@@ -124,7 +124,7 @@ class function_base_impl {
             }
             else {
                 auto const ptr = target(self);
-                ::new (to.embedded_target_ptr<Fn>()) Fn(std::move(*ptr));
+                ::new (to.template embedded_target_ptr<Fn>()) Fn(std::move(*ptr));
                 ptr->~Fn();
             }
         }
@@ -191,7 +191,7 @@ protected:
             mStorage.set_large_fn_ptr(ptr.release());
         }
         else {
-            ::new (mStorage.embedded_target_ptr<Fn>()) Fn(std::forward<Ys>(args)...);
+            ::new (mStorage.template embedded_target_ptr<Fn>()) Fn(std::forward<Ys>(args)...);
         }
     }
 
@@ -296,6 +296,7 @@ protected:
                 this->construct_empty();
             }
         }
+        return *this;
     }
 };
 

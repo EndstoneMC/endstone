@@ -19,6 +19,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/shared_types/height.h"
 #include "bedrock/world/actor/actor_types.h"
+#include "bedrock/world/item/item_stack_base.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_source_listener.h"

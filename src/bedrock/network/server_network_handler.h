@@ -62,6 +62,14 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
     };
 
 public:
+    ServerNetworkHandler(GameCallbacks &, const Bedrock::NonOwnerPointer<ILevel> &, ServerNetworkSystem &,
+                         PrivateKeyManager &, ServerLocator &, PacketSender &, AllowList &, PermissionsFile *,
+                         const mce::UUID &, int, int, MinecraftCommands &, IMinecraftApp &,
+                         const std::unordered_map<PackIdVersion, std::string> &, Scheduler &,
+                         Bedrock::NonOwnerPointer<TextFilteringProcessor>, optional_ref<MinecraftGameTest>,
+                         ServiceReference<AppConfigs>, ServiceReference<Social::MultiplayerServiceManager>,
+                         NetworkServerConfig);
+
     ~ServerNetworkHandler() override = 0;
 
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);

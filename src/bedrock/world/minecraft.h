@@ -23,11 +23,16 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/resources/resource_pack_manager.h"
 #include "bedrock/server/commands/minecraft_commands.h"
+#include "bedrock/util/timer.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
 
 class Minecraft : public Bedrock::EnableNonOwnerReferences {
 public:
+    Minecraft(IMinecraftApp &, GameCallbacks &, AllowList &, PermissionsFile *,
+              const Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> &, std::chrono::seconds, IMinecraftEventing &,
+              ClientOrServerNetworkSystemRef, PacketSender &, SubClientId, Timer &, Timer &,
+              const Bedrock::NotNullNonOwnerPtr<const IContentTierManager> &, ServerMetrics *);
     ~Minecraft() override = 0;
     MinecraftCommands &getCommands();
     [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;

@@ -28,9 +28,9 @@ PackManifest &Pack::getManifest()
 
 std::unique_ptr<Pack> Pack::createPack(ResourceLocation const &file_location, PackType type, PackOrigin origin,
                                        IPackManifestFactory &manifest_factory,
-                                       Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider,
+                                       Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,
                                        PackSourceReport *report, Core::Path const &zip_sub_dir)
 {
     return BEDROCK_CALL(&Pack::createPack, file_location, type, origin, manifest_factory, key_provider, report,
-                            zip_sub_dir);
+                        zip_sub_dir);
 }
