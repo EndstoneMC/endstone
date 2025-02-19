@@ -56,7 +56,7 @@ protected:
 
 private:
     // ====== storage ====== //
-    class storage {
+    class alignas(std::max_align_t) storage {
     public:
         const vtable *vfptr;  // +0
 
