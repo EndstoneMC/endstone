@@ -20,12 +20,12 @@
 #include <vector>
 
 #include "bedrock/util/new_type.h"
+#include "bedrock/util/weighted_random_list.h"
 
 using ActorList = std::vector<class Actor *>;
 using BlockActorList = std::vector<class BlockActor *>;
 using MobList = std::vector<std::shared_ptr<class MobSpawnerData>>;
-// using MobCategoryMap = std::array<std::vector<std::shared_ptr<MobSpawnerData>>, 8UL>;
-using MobCategoryMap = std::array<char[32], 8UL>;  // TODO(fixme): use the actual type
+using MobCategoryMap = std::array<WeightedRandomList<std::shared_ptr<MobSpawnerData>>, 8UL>;
 
 enum class SubClientId : std::uint8_t {
     PrimaryClient = 0,
