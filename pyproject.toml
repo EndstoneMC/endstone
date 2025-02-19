@@ -57,7 +57,7 @@ endstone = "endstone._internal.bootstrap:cli"
 [tool.scikit-build]
 build-dir = "build/{wheel_tag}"
 cmake.args = ["-G Ninja"]
-cmake.build-type = "RelWithDebInfo"
+cmake.build-type = "Release"
 cmake.define = { BUILD_TESTING = "OFF" }
 wheel.packages = ["endstone"]
 wheel.license-files = ["LICENSE"]
