@@ -17,6 +17,7 @@
 #include "bedrock/deps/json/value.h"
 #include "bedrock/entity/enums/client_input_lock_category.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/events/client_joined_event_data.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/input/input_mode.h"
@@ -205,7 +206,9 @@ struct PlayerScriptInputEvent {
     ScriptingInputButton button;
     ScriptingInputButtonState new_state;
 };
-struct PlayerEvent26 {};  // TODO(fixme): what is this?
+struct ClientJoinedEvent {
+    std::weak_ptr<ClientJoinedEventData> join_data;
+};
 
 template <typename Return>
 struct PlayerGameplayEvent;
@@ -219,7 +222,7 @@ struct PlayerGameplayEvent<void>
                         PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
                         PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
                         PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
-                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerEvent26, PlayerScriptInputEvent,
+                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, ClientJoinedEvent, PlayerScriptInputEvent,
                         PlayerInputPermissionCategoryChangeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
 
