@@ -21,22 +21,15 @@
 namespace brstd {
 
 template <class Signature>
-class copyable_function : public detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature> {
-    using base = detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature>;
-
+class copyable_function
+    : public detail::function::function_invoke<detail::function::DerivedType::Copyable, Signature, false> {
 public:
-    using base::base;
-    using base::operator();
-    copyable_function(copyable_function &&) noexcept = default;
-    copyable_function &operator=(copyable_function &&) noexcept = default;
-    copyable_function(copyable_function const &) = default;
-    copyable_function &operator=(copyable_function const &) = default;
-    template <class F>
-        requires std::is_constructible_v<copyable_function, F>
-    copyable_function &operator=(F &&f)
+    template <typename F>
+    copyable_function(F &&f)
+        requires(!std::is_same_v<copyable_function, std::remove_cvref_t<F>>)
     {
-        *this = copyable_function{std::forward<F>(f)};
-        return *this;
+        this->template construct_from_function<brstd::copyable_function, F>(std::forward<F>(f));
     }
 };
+
 }  // namespace brstd
