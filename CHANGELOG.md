@@ -39,7 +39,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- Resolved a crash caused by `ProxiedCommandSender`.
 - Fixed the logic of finding the Python executable associated with the current interpreter
   by [@killcerr](https://github.com/killcerr) in #114.
 - Fixed the logic for parsing the `message` command parameter type.
