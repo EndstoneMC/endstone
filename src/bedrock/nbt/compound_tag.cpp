@@ -30,8 +30,17 @@ void CompoundTag::write(IDataOutput &output) const
 
 Bedrock::Result<void> CompoundTag::load(IDataInput &input)
 {
-    // TODO(nbt): fixme
-    throw std::runtime_error("Not implemented");
+    tags_.clear();
+    while (input.numBytesLeft()) {
+        std::string name;
+        auto tag_result = NbtIo::readNamedTag(input, name);
+        if (!tag_result) {
+            return nonstd::make_unexpected(tag_result.error());
+        }
+        put(name, std::move(tag_result.value()));
+    }
+
+    return {};
 }
 
 std::string CompoundTag::toString() const

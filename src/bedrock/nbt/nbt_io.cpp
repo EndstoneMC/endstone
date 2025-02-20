@@ -16,6 +16,33 @@
 
 #include "bedrock/nbt/compound_tag.h"
 
+Bedrock::Result<std::unique_ptr<Tag>> NbtIo::readNamedTag(IDataInput &dis, std::string &name)
+{
+    auto type_result = dis.readByteResult();
+    if (!type_result) {
+        return nonstd::make_unexpected(type_result.error());
+    }
+
+    auto type = static_cast<Tag::Type>(type_result.value());
+    if (type == Tag::Type::End) {
+        return std::make_unique<EndTag>();
+    }
+
+    auto name_result = dis.readStringResult();
+    if (!name_result) {
+        return nonstd::make_unexpected(name_result.error());
+    }
+    name = name_result.value();
+
+    auto tag_result = Tag::newTag(type);
+    if (!tag_result) {
+        return nonstd::make_unexpected(tag_result.error());
+    }
+
+    tag_result.value()->load(dis);
+    return std::move(tag_result.value());
+}
+
 void NbtIo::writeNamedTag(const std::string &name, const Tag &tag, IDataOutput &output)
 {
     auto type = tag.getId();
@@ -25,4 +52,3 @@ void NbtIo::writeNamedTag(const std::string &name, const Tag &tag, IDataOutput &
         tag.write(output);
     }
 }
-
