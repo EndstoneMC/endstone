@@ -21,7 +21,6 @@
 
 #include "bedrock/locale/i18n.h"
 #include "endstone/core/server.h"
-#include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/runtime/hook.h"
@@ -50,6 +49,21 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
                                 disconnect_message, std::move(filtered_message), skip_message);
+}
+
+IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const NetworkIdentifierWithSubId &sender,
+                                                                       MinecraftPacketIds packet_id,
+                                                                       std::size_t packet_size)
+{
+    // TODO: DataPacketReceiveEvent, the payloads are available in network_.receive_buffer_
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowIncomingPacketId, this, sender, packet_id, packet_size);
+}
+
+OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
+                                                                     const Packet &packet)
+{
+    // TODO: DataPacketSendEvent
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowOutgoingPacket, this, ids, packet);
 }
 
 bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)

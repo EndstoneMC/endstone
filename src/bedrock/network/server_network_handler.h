@@ -28,6 +28,7 @@
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_server_config.h"
+#include "bedrock/network/server_network_system.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/network/xbox_live_user_observer.h"
 #include "bedrock/platform/multiplayer_service_observer.h"
@@ -71,6 +72,11 @@ public:
                          NetworkServerConfig);
 
     ~ServerNetworkHandler() override = 0;
+    ENDSTONE_HOOK IncomingPacketFilterResult allowIncomingPacketId(const NetworkIdentifierWithSubId &sender,
+                                                                   MinecraftPacketIds packet_id,
+                                                                   std::size_t packet_size) override;
+    ENDSTONE_HOOK OutgoingPacketFilterResult allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
+                                                                 const Packet &packet) override;
 
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,

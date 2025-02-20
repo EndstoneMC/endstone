@@ -14,7 +14,9 @@
 
 #pragma once
 
-#include "bedrock/core/utility/non_owner_pointer.h"
+#include "bedrock/network/disconnection_request_info.h"
+#include "bedrock/network/network_identifier.h"
+#include "bedrock/world/actor/player/player.h"
 
 enum class IncomingPacketFilterResult : int {
     Allowed = 0,
@@ -27,4 +29,19 @@ enum class OutgoingPacketFilterResult : int {
     Reject = 1,
 };
 
-class NetEventCallback : public Bedrock::EnableNonOwnerReferences {};
+class NetEventCallback : public Bedrock::EnableNonOwnerReferences {
+public:
+    virtual void onPlayerReady(Player &) = 0;
+    ~NetEventCallback() override = default;
+    virtual void onConnect(const NetworkIdentifier &) = 0;
+    virtual void onUnableToConnect(Connection::DisconnectFailReason, const std::string &) = 0;
+    virtual void onTick() = 0;
+    virtual void onStoreOfferReceive(ShowStoreOfferRedirectType, const std::string &) = 0;
+    virtual void onDisconnect(const NetworkIdentifier &, Connection::DisconnectFailReason, const std::string &, bool,
+                              const std::string &) = 0;
+    virtual IncomingPacketFilterResult allowIncomingPacketId(const NetworkIdentifierWithSubId &, MinecraftPacketIds,
+                                                             size_t) = 0;
+    virtual OutgoingPacketFilterResult allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &,
+                                                           const Packet &) = 0;
+    // ...
+};

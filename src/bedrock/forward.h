@@ -239,6 +239,7 @@ enum class NoteBlockInstrument;
 enum class ParticleType;
 enum class PlayerSleepStatus;
 enum class ShapeType : std::int8_t;
+enum class ShowStoreOfferRedirectType : unsigned char;
 enum class StructureFeatureType;
 enum class TintMethod : std::uint8_t;
 
