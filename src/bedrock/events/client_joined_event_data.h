@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include "bedrock/common_types.h"
+#include "bedrock/network/network_identifier.h"
+
 struct ClientJoinedEventData {
     ClientJoinedEventData(NetworkIdentifier, SubClientId);
 

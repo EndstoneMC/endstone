@@ -38,9 +38,9 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() cons
         return std::static_pointer_cast<endstone::Actor>(getEntity()->getEndstoneActor().shared_from_this());
     }
     case CommandOriginType::Virtual: {
-        const auto &virtual_command_origin = *static_cast<const VirtualCommandOrigin *>(this);
-        return endstone::core::PermissibleFactory::create<endstone::core::EndstoneProxiedCommandSender>(
-            getOutputReceiver().getEndstoneSender(), virtual_command_origin.getOrigin()->getEndstoneSender());
+        // const auto &virtual_command_origin = *static_cast<const VirtualCommandOrigin *>(this);
+        // return endstone::core::PermissibleFactory::create<endstone::core::EndstoneProxiedCommandSender>(
+        //     getOutputReceiver().getEndstoneSender(), virtual_command_origin.getOrigin()->getEndstoneSender());
     }
     case CommandOriginType::CommandBlock:
     case CommandOriginType::MinecartCommandBlock:
