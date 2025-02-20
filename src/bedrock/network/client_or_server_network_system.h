@@ -21,10 +21,37 @@
 
 class ClientOrServerNetworkSystemRef
     : std::variant<std::reference_wrapper<ClientNetworkSystem>, std::reference_wrapper<ServerNetworkSystem>> {
-
+public:
     using ClientRefT = std::reference_wrapper<ClientNetworkSystem>;
     using ServerRefT = std::reference_wrapper<ServerNetworkSystem>;
 
-public:
-    using std::variant<ClientRefT, ServerRefT>::variant;
+    ClientOrServerNetworkSystemRef(ClientNetworkSystem &network_system)
+        : std::variant<ClientRefT, ServerRefT>(network_system)
+    {
+    }
+
+    ClientOrServerNetworkSystemRef(ServerNetworkSystem &network_system)
+        : std::variant<ClientRefT, ServerRefT>(network_system)
+    {
+    }
+
+    ClientNetworkSystem &toClientNetworkSystem()
+    {
+        return std::get<ClientRefT>(*this);
+    }
+
+    [[nodiscard]] const ClientNetworkSystem &toClientNetworkSystem() const
+    {
+        return std::get<ClientRefT>(*this);
+    }
+
+    ServerNetworkSystem &toServerNetworkSystem()
+    {
+        return std::get<ServerRefT>(*this);
+    }
+
+    [[nodiscard]] const ServerNetworkSystem &toServerNetworkSystem() const
+    {
+        return std::get<ServerRefT>(*this);
+    }
 };
