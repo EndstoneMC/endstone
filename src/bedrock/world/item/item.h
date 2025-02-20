@@ -180,6 +180,8 @@ public:
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
     ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;
     [[nodiscard]] float getFurnaceBurnIntervalMultipler() const;
+    [[nodiscard]] ItemVersion getItemVersion() const;
+    [[nodiscard]] const std::string &getCreativeGroup() const;
 
 protected:
     ItemVersion item_parse_version_;

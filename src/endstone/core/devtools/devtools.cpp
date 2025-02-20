@@ -118,6 +118,14 @@ struct adl_serializer<ListTag> {
         adl_serializer<Tag>::to_json(j, tag);
     }
 };
+
+template <>
+struct adl_serializer<CompoundTag> {
+    static void to_json(json &j, const CompoundTag &tag)  // NOLINT(*-identifier-naming)
+    {
+        adl_serializer<Tag>::to_json(j, tag);
+    }
+};
 NLOHMANN_JSON_NAMESPACE_END
 
 namespace endstone::devtools {
@@ -319,6 +327,11 @@ void render()
                         std::get<CompoundTag>(file_to_save).put("items", data->creative_items.copy());
                         openFileBrowser("Save Creative Items", "creative_items.nbt");
                     }
+                    if (ImGui::MenuItem("Item Components")) {
+                        file_to_save = CompoundTag();
+                        std::get<CompoundTag>(file_to_save).deepCopy(data->item_components);
+                        openFileBrowser("Save Item Components", "item_components.nbt");
+                    }
                     ImGui::EndMenu();
                 }
                 ImGui::EndMenu();
@@ -501,6 +514,10 @@ void showItemWindow(bool *open)
     if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {
         ImGui::Json(data->item_tags);
     }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Item Components", data->item_components.size()).c_str())) {
+        ImGui::Json(data->item_components);
+    }
     ImGui::End();
 }
 
@@ -618,6 +635,8 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
     save_json_to_file(data->items, "items.json");
     save_json_to_file(data->item_tags, "item_tags.json");
     save_json_to_file(data->biomes, "biomes.json");
+
+    save_nbt_to_file(data->item_components, "item_components.nbt");
 
     auto block_palette = CompoundTag();
     block_palette.put("blocks", data->block_palette.copy());
