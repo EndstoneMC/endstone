@@ -21,6 +21,15 @@
 
 class RakPeerHelper {
 public:
+    class IPSupportInterface {
+    public:
+        virtual ~IPSupportInterface() = default;
+        [[nodiscard]] virtual bool useIPv4Only() const = 0;
+        [[nodiscard]] virtual bool useIPv6Only() const = 0;
+        [[nodiscard]] virtual std::uint16_t getDefaultGamePort() const = 0;
+        [[nodiscard]] virtual std::uint16_t getDefaultGamePortv6() const = 0;
+    };
+
     enum class PeerPurpose : int {
         Gameplay = 0,
         LanDiscovery = 1,

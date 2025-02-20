@@ -16,4 +16,15 @@
 
 #include "bedrock/core/utility/non_owner_pointer.h"
 
+enum class IncomingPacketFilterResult : int {
+    Allowed = 0,
+    RejectedSilently = 1,
+    RejectedWithDisconnect = 2,
+};
+
+enum class OutgoingPacketFilterResult : int {
+    Allowed = 0,
+    Reject = 1,
+};
+
 class NetEventCallback : public Bedrock::EnableNonOwnerReferences {};

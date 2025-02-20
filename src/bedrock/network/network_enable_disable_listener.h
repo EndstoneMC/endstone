@@ -14,17 +14,24 @@
 
 #pragma once
 
-#include <variant>
-
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
-#include "bedrock/network/server_network_system.h"
 
-class ClientOrServerNetworkSystemRef
-    : std::variant<std::reference_wrapper<ClientNetworkSystem>, std::reference_wrapper<ServerNetworkSystem>> {
-
-    using ClientRefT = std::reference_wrapper<ClientNetworkSystem>;
-    using ServerRefT = std::reference_wrapper<ServerNetworkSystem>;
+class NetworkEnableDisableListener {
+    enum class State : int {
+        Enabled = 0,
+        Disabled = 1,
+        Uninitialized = 2,
+    };
 
 public:
-    using std::variant<ClientRefT, ServerRefT>::variant;
+    NetworkEnableDisableListener(const Bedrock::NonOwnerPointer<AppPlatform> &);
+    virtual ~NetworkEnableDisableListener() = default;
+
+private:
+    virtual void _onDisable() = 0;
+    virtual void _onEnable() = 0;
+    State state_;                                         // +8
+    Bedrock::NonOwnerPointer<AppPlatform> app_platform_;  // +16
 };
+static_assert(sizeof(NetworkEnableDisableListener) == 40);
