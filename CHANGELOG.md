@@ -5,9 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.5.8 - Unreleased
+## 0.6.2- Unreleased
 
-<small>[Compare with 0.5.7.1](https://github.com/EndstoneMC/endstone/compare/v0.5.7.1...HEAD)</small>
+<small>[Compare with 0.6.1](https://github.com/EndstoneMC/endstone/compare/v0.6.1...HEAD)</small>
+
+## [0.6.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.6.1) - 2025-02-20
+
+<small>[Compare with 0.6.0](https://github.com/EndstoneMC/endstone/compare/v0.6.0...v0.6.1)</small>
+
+### Fixed
+
+- Resolved a crash caused by `ProxiedCommandSender`
+
+## [0.6.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.6.0) – 2025-02-19
+
+<small>[Compare with 0.5.7.1](https://github.com/EndstoneMC/endstone/compare/v0.5.7.1...v0.6.0)</small>
+
+### Added
+
+- Added support for Minecraft v1.21.60.
+- Added more liquid-related data to the DevTools by [@smartcmd](https://github.com/smartcmd) in #113.
+- Added Sentry for crash reporting.
+- Added `Player::playSound`, `Player::stopSound`, and `Player::stopAllSounds` for client-side sound playing.
+- Added `Player::isSneaking` and `Player::setSneaking` to toggle the sneaking mode of a player.
+- Added `Player::isSprinting` and `Player::setSprinting` to toggle the sprinting mode of a player.
+- Added `PlayerGameModeChangeEvent`, triggered when a player's game mode changes. This event is cancellable.
+- Added `PlayerEmoteEvent`, triggered when a player sends an emote.
+- Added `PlayerRespawnEvent`, triggered when a player respawns after death.
+- Added more statistics to the `/status` command (e.g., memory usage, chunk status, etc.).
+- Added damage source to `ActorDeathEvent` and `PlayerDeathEvent` to retrieve information about the damager.
+- Added a basic chunk API.
+- Added block collision data to the DevTools by [@smartcmd](https://github.com/smartcmd) in #132.
+
+### Fixed
+
+- Resolved a crash caused by `ProxiedCommandSender`.
+- Fixed the logic of finding the Python executable associated with the current interpreter
+  by [@killcerr](https://github.com/killcerr) in #114.
+- Fixed the logic for parsing the `message` command parameter type.
+
+### Changed
+
+- **Python API**: Events that are cancellable now inherit from `Cancellable`. You can check if an event is cancellable
+  by using `isinstance(event, Cancellable)`.
+- `Dimension::getBlockAt` now returns a pointer to a `Block` directly instead of a `Result` wrapper, making the
+  interface more concise. If the requested block is in an unloaded or unpopulated chunk, it returns an empty block.
 
 ## [0.5.7.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.7.1) - 2024-12-24
 
