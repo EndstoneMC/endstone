@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `PlayerGameModeChangeEvent`, triggered when a player's game mode changes. This event is cancellable.
 - Added `PlayerEmoteEvent`, triggered when a player sends an emote.
 - Added `PlayerRespawnEvent`, triggered when a player respawns after death.
+- Added `ActorDamageEvent`, triggered when a living entity receives damage. You can cancel this event to stop the damage
+  from being effective.
+- Added `ActorExplodeEvent`, triggered when a mob (e.g. Creeper) explodes. You can cancel this event to stop the
+  explosion.
 - Added more statistics to the `/status` command (e.g., memory usage, chunk status, etc.).
 - Added damage source to `ActorDeathEvent` and `PlayerDeathEvent` to retrieve information about the damager.
 - Added a basic chunk API.
