@@ -467,4 +467,5 @@ protected:
     virtual PlayerDeathManager *_getPlayerDeathManager() = 0;
     virtual MapDataManager &_getMapDataManager() = 0;
     virtual cereal::ReflectionCtx &_cerealContext() = 0;
+    virtual void _onLowMemory() = 0;
 };

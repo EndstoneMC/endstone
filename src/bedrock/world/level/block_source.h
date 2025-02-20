@@ -49,7 +49,7 @@ public:
     [[nodiscard]] virtual bool hasBlock(BlockPos const &) const = 0;
     [[nodiscard]] virtual bool containsAnyLiquid(AABB const &) const = 0;
     [[nodiscard]] virtual bool containsMaterial(AABB const &, MaterialType) const = 0;
-    virtual void unknown() const = 0;  // TODO(fixme): what is this?
+    [[nodiscard]] virtual bool isInWall(const Vec3 &) const = 0;
     [[nodiscard]] virtual bool isUnderWater(Vec3 const &, Block const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
