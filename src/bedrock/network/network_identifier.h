@@ -49,8 +49,7 @@ public:
 };
 BEDROCK_STATIC_ASSERT_SIZE(NetworkIdentifier, 160, 160);
 
-class NetworkIdentifierWithSubId {
-public:
-    NetworkIdentifier network_identifier;
-    SubClientId sub_id;
+struct NetworkIdentifierWithSubId {
+    NetworkIdentifier id;
+    SubClientId sub_client_id;
 };
