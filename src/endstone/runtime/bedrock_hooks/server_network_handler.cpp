@@ -55,14 +55,14 @@ IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const Net
                                                                        MinecraftPacketIds packet_id,
                                                                        std::size_t packet_size)
 {
-    // TODO: DataPacketReceiveEvent, the payloads are available in network_.receive_buffer_
+    // TODO: DataPacketReceiveEvent, the payload is available in network_.receive_buffer_
     return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowIncomingPacketId, this, sender, packet_id, packet_size);
 }
 
 OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
                                                                      const Packet &packet)
 {
-    // TODO: DataPacketSendEvent
+    // TODO: DataPacketSendEvent, the payload is available in network_.send_stream_
     return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowOutgoingPacket, this, ids, packet);
 }
 

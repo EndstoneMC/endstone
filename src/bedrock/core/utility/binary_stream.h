@@ -18,8 +18,15 @@
 
 class ReadOnlyBinaryStream {
 public:
+    explicit ReadOnlyBinaryStream(std::string_view, bool);
+
     virtual ~ReadOnlyBinaryStream();
+
+private:
     virtual Bedrock::Result<void> read(void *, std::uint64_t);
+
+public:
+    [[nodiscard]] std::string_view getView() const;
 
 protected:
     std::string owned_buffer_;  // +8
@@ -33,6 +40,9 @@ BEDROCK_STATIC_ASSERT_SIZE(ReadOnlyBinaryStream, 72, 64);
 
 class BinaryStream : public ReadOnlyBinaryStream {
 public:
+    BinaryStream();
+    [[nodiscard]] const std::string &getBuffer() const;
+
     void writeBool(bool value);
     void writeByte(std::uint8_t value);
     void writeUnsignedShort(std::uint16_t value);
