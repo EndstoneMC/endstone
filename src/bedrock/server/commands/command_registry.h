@@ -65,7 +65,7 @@ public:
     void registerAlias(std::string name, std::string alias);
 
 private:
-    using CommandOverrideFunctor = std::function<void(CommandFlag &, const std::string &)>;
+    using CommandOverrideFunctor = std::function<void(const std::string &, CommandFlag &, CommandPermissionLevel &)>;
 
 public:
     [[nodiscard]] AvailableCommandsPacket serializeAvailableCommands() const;

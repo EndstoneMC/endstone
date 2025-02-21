@@ -15,25 +15,30 @@
 #pragma once
 
 #include <memory>
-#include <string>
 
 #include "bedrock/certificates/certificate.h"
-#include "bedrock/certificates/identity/game_server_token.h"
-#include "bedrock/certificates/web_token.h"
-#include "bedrock/deps/json/value.h"
 
-class SubClientConnectionRequest {
+class GameServerToken {
 public:
-    [[nodiscard]] Json::Value getData(const std::string &key) const
+    enum class VerificationOptions : int {
+        Default = 0,
+        IgnoreTimestamp = 1,
+    };
+
+    GameServerToken();
+    GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
+
+    operator bool() const
     {
-        if (game_server_token_ && raw_token_) {
-            return raw_token_->getData().get(key, Json::nullValue);
-        }
-        return Json::nullValue;
+        return isValid();
     }
 
-private:
-    std::unique_ptr<WebToken> raw_token_;                      // +0
-    std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +0
-    GameServerToken game_server_token_;                        // +16
+    [[nodiscard]] bool isValid() const
+    {
+        return certificate_ && certificate_->isValid();
+    }
+
+protected:
+    GameServerToken(std::unique_ptr<Certificate>, bool);
+    std::unique_ptr<Certificate> certificate_;  // +0
 };
