@@ -246,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="87" column="18"/>
+        <location file="include/endstone/level/dimension.h" line="86" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a6ca027288f9a76549036e24f78d5429f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="96" column="30"/>
+        <location file="include/endstone/level/dimension.h" line="95" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a70a9f70966ab87998b0b35788593fe7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -302,7 +302,7 @@
           <declname>location</declname>
         </param>
         <briefdescription>
-<para>Gets the highest non-empty (impassable) block at the given coordinates. </para>
+<para>Gets the highest non-empty (impassable) block at the given <ref refid="classendstone_1_1Location" kindref="compound">Location</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -320,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="104" column="30"/>
+        <location file="include/endstone/level/dimension.h" line="103" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> &gt; &gt;</type>
@@ -338,7 +338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="111" column="26"/>
+        <location file="include/endstone/level/dimension.h" line="110" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -346,7 +346,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/dimension.h" line="26" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="26" bodyend="112"/>
+    <location file="include/endstone/level/dimension.h" line="26" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="26" bodyend="111"/>
     <listofallmembers>
       <member refid="classendstone_1_1Dimension_1aad83b722cff909829edd4c57f84870c4" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>
       <member refid="classendstone_1_1Dimension_1af0858d44d3cc426ee962afcd2b4c5608" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>
