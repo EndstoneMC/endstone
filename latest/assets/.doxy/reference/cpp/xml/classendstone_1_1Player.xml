@@ -1683,6 +1683,7 @@
       <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>performCommand</name></member>
       <member refid="classendstone_1_1Player_1aa1ceee8a331905251a258d2a81df0120" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>playSound</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>recalculatePermissions</name></member>
+      <member refid="classendstone_1_1Actor_1a896dcb16d037d3591b0d39480521a193" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>remove</name></member>
       <member refid="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeScoreboardTag</name></member>
       <member refid="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>resetTitle</name></member>

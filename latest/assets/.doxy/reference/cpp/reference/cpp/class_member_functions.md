@@ -448,6 +448,7 @@
 
 ## r
 
+* **remove** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **removeScoreboardTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **removeBan** ([**endstone::BanList**](classendstone_1_1BanList.md), [**endstone::IpBanList**](classendstone_1_1IpBanList.md), [**endstone::PlayerBanList**](classendstone_1_1PlayerBanList.md))
 * **removeAll** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
@@ -459,7 +460,6 @@
 * **removeAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **registerHandler** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **recalculatePermissibles** ([**endstone::Permission**](classendstone_1_1Permission.md))
-* **remove** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **resetTitle** ([**endstone::Player**](classendstone_1_1Player.md))
 * **registerEvent** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **recalculatePermissionDefaults** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))

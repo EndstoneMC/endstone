@@ -64,6 +64,8 @@ public:
 
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 
+    virtual void remove() = 0;
+
     [[nodiscard]] virtual bool isDead() const = 0;
 
     [[nodiscard]] virtual int getHealth() const = 0;

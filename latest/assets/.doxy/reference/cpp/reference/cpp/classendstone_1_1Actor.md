@@ -114,6 +114,7 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isNameTagAlwaysVisible**](#function-isnametagalwaysvisible) () const = 0<br>_Checks if the actor's name tag is always visible._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isNameTagVisible**](#function-isnametagvisible) () const = 0<br>_Checks if the actor's name tag is currently visible._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isOnGround**](#function-isonground) () const = 0<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**remove**](#function-remove) () = 0<br> |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**removeScoreboardTag**](#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setHealth**](#function-sethealth) ([**int**](classendstone_1_1Vector.md) health) const = 0<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setNameTag**](#function-setnametag) (std::string name) = 0<br>_Sets the name tag for the actor._  |
@@ -771,6 +772,26 @@ True if actor is on ground.
 
 
 
+
+
+        
+
+<hr>
+
+
+
+### function remove 
+
+```C++
+virtual void endstone::Actor::remove () = 0
+```
+
+
+
+Remove this actor from the level.
+
+
+If you are trying to remove a [**Player**](classendstone_1_1Player.md), use [**Player::kick**](classendstone_1_1Player.md#function-kick) instead. 
 
 
         
