@@ -28,6 +28,21 @@
 using endstone::core::EndstonePlayer;
 using endstone::core::EndstoneServer;
 
+IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const NetworkIdentifierWithSubId &sender,
+                                                                       MinecraftPacketIds packet_id,
+                                                                       std::size_t packet_size)
+{
+    // TODO: DataPacketReceiveEvent, the payload is available in network_.receive_buffer_
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowIncomingPacketId, this, sender, packet_id, packet_size);
+}
+
+OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
+                                                                     const Packet &packet)
+{
+    // TODO: DataPacketSendEvent, the payload is available in network_.send_stream_
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowOutgoingPacket, this, ids, packet);
+}
+
 void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,
                                             std::optional<std::string> filtered_message, bool skip_message)
@@ -49,21 +64,6 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
                                 disconnect_message, std::move(filtered_message), skip_message);
-}
-
-IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const NetworkIdentifierWithSubId &sender,
-                                                                       MinecraftPacketIds packet_id,
-                                                                       std::size_t packet_size)
-{
-    // TODO: DataPacketReceiveEvent, the payload is available in network_.receive_buffer_
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowIncomingPacketId, this, sender, packet_id, packet_size);
-}
-
-OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
-                                                                     const Packet &packet)
-{
-    // TODO: DataPacketSendEvent, the payload is available in network_.send_stream_
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowOutgoingPacket, this, ids, packet);
 }
 
 bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)

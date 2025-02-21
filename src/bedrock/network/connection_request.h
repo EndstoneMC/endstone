@@ -25,6 +25,11 @@
 
 class ConnectionRequest {
 public:
+    [[nodiscard]] const GameServerToken &getGameServerToken() const
+    {
+        return game_server_token_;
+    }
+
     [[nodiscard]] Json::Value getData(const std::string &key) const
     {
         if (game_server_token_ && raw_token_) {

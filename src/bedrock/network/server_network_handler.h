@@ -78,12 +78,12 @@ public:
     ENDSTONE_HOOK OutgoingPacketFilterResult allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
                                                                  const Packet &packet) override;
 
-    ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                         std::string const &, std::optional<std::string>, bool);
+    [[nodiscard]] int getMaxNumPlayers() const;
+    int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();
-
-    [[nodiscard]] const Bedrock::NonOwnerPointer<ILevel> &getLevel() const;  // Endstone
+    ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
 
 private:
     friend class endstone::core::EndstoneServer;

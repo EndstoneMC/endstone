@@ -36,13 +36,15 @@ int ServerNetworkHandler::getMaxNumPlayers() const
 
 int ServerNetworkHandler::setMaxNumPlayers(int max_players)
 {
-    auto player_count = _getActiveAndInProgressPlayerCount(mce::UUID::EMPTY);
+
     auto result = 0;
     if (max_players <= SharedConstants::NetworkDefaultMaxConnections) {
-        if (max_players < player_count) {
-            max_players = player_count;
-            result = -1;
-        }
+        // TODO:
+        // auto player_count = _getActiveAndInProgressPlayerCount(mce::UUID::EMPTY);
+        // if (max_players < player_count) {
+        //     max_players = player_count;
+        //     result = -1;
+        // }
     }
     else {
         max_players = SharedConstants::NetworkDefaultMaxConnections;
