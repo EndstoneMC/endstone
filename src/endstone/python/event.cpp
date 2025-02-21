@@ -199,6 +199,14 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("player", &DataPacketReceiveEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the player involved in this event");
 
+    py::class_<DataPacketSendEvent, ServerEvent, ICancellable>(
+        m, "DataPacketSendEvent", "Called when the server sends a packet to a connected client.")
+        .def_property_readonly(
+            "data", [](const DataPacketSendEvent &self) { return py::bytes(self.getData()); },
+            "Gets the raw packet data")
+        .def_property_readonly("player", &DataPacketSendEvent::getPlayer, py::return_value_policy::reference,
+                               "Gets the player involved in this event");
+
     py::class_<PluginEnableEvent, ServerEvent>(m, "PluginEnableEvent", "Called when a plugin is enabled.")
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference);
 

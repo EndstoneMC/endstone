@@ -14,8 +14,6 @@
 
 #include "bedrock/network/server_network_handler.h"
 
-#include <variant>
-
 #include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
@@ -24,10 +22,8 @@
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/event/server/data_packet_receive_event.h"
+#include "endstone/event/server/data_packet_send_event.h"
 #include "endstone/runtime/hook.h"
-
-using endstone::core::EndstonePlayer;
-using endstone::core::EndstoneServer;
 
 IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const NetworkIdentifierWithSubId &sender,
                                                                        MinecraftPacketIds packet_id,
@@ -39,7 +35,7 @@ IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const Net
         return result;
     }
 
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = server.getPlayer(sender.id, sender.sub_client_id); player) {
         endstone::DataPacketReceiveEvent e{*player, network_.receive_buffer_};
         server.getPluginManager().callEvent(e);
@@ -54,15 +50,30 @@ IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const Net
 OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
                                                                      const Packet &packet)
 {
-    // TODO: DataPacketSendEvent, the payload is available in network_.send_stream_
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowOutgoingPacket, this, ids, packet);
+    const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowOutgoingPacket, this, ids, packet);
+    if (result != OutgoingPacketFilterResult::Allowed) {
+        return result;
+    }
+
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    for (const auto &target : ids) {
+        if (auto *player = server.getPlayer(target.id, target.sub_client_id); player) {
+            endstone::DataPacketSendEvent e{*player, network_.send_stream_.getView()};
+            server.getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                return OutgoingPacketFilterResult::Reject;
+            }
+        }
+    }
+
+    return OutgoingPacketFilterResult::Allowed;
 }
 
 void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,
                                             std::optional<std::string> filtered_message, bool skip_message)
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     auto disconnect_message = message;
     if (auto *endstone_player = server.getPlayer(network_id, sub_client_id)) {
         auto kick_message = getI18n().get(message, nullptr);
@@ -85,8 +96,8 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
 {
     const auto new_player =
         ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player, connection_request);
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&connection_request);
 
     if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
@@ -115,8 +126,8 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
 {
     auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
                                                       sub_client_connection_request, sub_client_id);
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
+    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&sub_client_connection_request);
 
     if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
