@@ -167,6 +167,11 @@ std::int64_t EndstoneMob::getId() const
     return EndstoneActor::getId();
 }
 
+void EndstoneMob::remove()
+{
+    EndstoneActor::remove();
+}
+
 bool EndstoneMob::isDead() const
 {
     return EndstoneActor::isDead();

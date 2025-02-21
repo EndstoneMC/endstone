@@ -102,6 +102,10 @@ class Actor(CommandSender):
         """
         Adds a tag to this actor.
         """
+    def remove(self) -> None:
+        """
+        Remove this actor from the level.
+        """
     def remove_scoreboard_tag(self, tag: str) -> bool:
         """
         Removes a given tag from this actor.

@@ -250,6 +250,11 @@ std::int64_t EndstonePlayer::getId() const
     return EndstoneMob::getId();
 }
 
+void EndstonePlayer::remove()
+{
+    getServer().getLogger().error("Cannot remove player {}, use Player::kick instead.", getName());
+}
+
 bool EndstonePlayer::isDead() const
 {
     return EndstoneMob::isDead();

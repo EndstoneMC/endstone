@@ -197,6 +197,11 @@ std::int64_t EndstoneActor::getId() const
     return actor_.getOrCreateUniqueID().raw_id;
 }
 
+void EndstoneActor::remove()
+{
+    actor_.remove();
+}
+
 bool EndstoneActor::isDead() const
 {
     return !actor_.isAlive();

@@ -128,6 +128,13 @@ public:
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 
     /**
+     * Remove this actor from the level.
+     *
+     * If you are trying to remove a Player, use Player::kick instead.
+     */
+    virtual void remove() = 0;
+
+    /**
      * @brief Returns true if this actor has been marked for removal.
      *
      * @return True if it is dead.

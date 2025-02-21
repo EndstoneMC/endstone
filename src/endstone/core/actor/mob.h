@@ -59,6 +59,7 @@ public:
     void teleport(Location location) override;
     void teleport(Actor &target) override;
     [[nodiscard]] std::int64_t getId() const override;
+    void remove() override;
     [[nodiscard]] bool isDead() const override;
     [[nodiscard]] int getHealth() const override;
     [[nodiscard]] Result<void> setHealth(int health) const override;
