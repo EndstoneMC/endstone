@@ -67,6 +67,7 @@
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
 | class | [**DamageSource**](classendstone_1_1DamageSource.md) <br>_Represents a source of damage._  |
+| class | [**DataPacketReceiveEvent**](classendstone_1_1DataPacketReceiveEvent.md) <br>_Called when the server receives a packet from a connected client._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**Error**](classendstone_1_1Error.md) <br>_Represents an error with a message and the stack trace._  |
