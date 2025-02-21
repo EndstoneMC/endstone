@@ -23,6 +23,7 @@
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
+#include "endstone/event/server/data_packet_receive_event.h"
 #include "endstone/runtime/hook.h"
 
 using endstone::core::EndstonePlayer;
@@ -32,8 +33,22 @@ IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const Net
                                                                        MinecraftPacketIds packet_id,
                                                                        std::size_t packet_size)
 {
-    // TODO: DataPacketReceiveEvent, the payload is available in network_.receive_buffer_
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowIncomingPacketId, this, sender, packet_id, packet_size);
+    const auto result =
+        ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowIncomingPacketId, this, sender, packet_id, packet_size);
+    if (result != IncomingPacketFilterResult::Allowed) {
+        return result;
+    }
+
+    const auto &server = entt::locator<EndstoneServer>::value();
+    if (auto *player = server.getPlayer(sender.id, sender.sub_client_id); player) {
+        endstone::DataPacketReceiveEvent e{*player, network_.receive_buffer_};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return IncomingPacketFilterResult::RejectedSilently;
+        }
+    }
+
+    return IncomingPacketFilterResult::Allowed;
 }
 
 OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
