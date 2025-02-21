@@ -24,6 +24,7 @@ class Level;
 namespace core {
 class EndstoneActor;
 class EndstoneLevel;
+class EndstonePlayer;
 class EndstoneServer;
 }  // namespace core
 }  // namespace endstone

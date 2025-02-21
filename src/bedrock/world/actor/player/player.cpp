@@ -14,8 +14,6 @@
 
 #include "bedrock/world/actor/player/player.h"
 
-#include <entt/entt.hpp>
-
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/entity/components/player_component.h"

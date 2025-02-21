@@ -92,6 +92,11 @@ public:
         return permissions_.command_permissions;
     }
 
+    void setCommandPermissions(CommandPermissionLevel permission)
+    {
+        permissions_.command_permissions = permission;
+    }
+
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissions() const
     {
         return permissions_.player_permissions;

@@ -137,8 +137,7 @@ public:
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
     [[nodiscard]] const std::string &getName() const;
-    void setPermissions(
-        CommandPermissionLevel level);  // TODO(hook): this function can no longer be hooked (lined), find alternatives
+    void setPermissions(CommandPermissionLevel permission);
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;
