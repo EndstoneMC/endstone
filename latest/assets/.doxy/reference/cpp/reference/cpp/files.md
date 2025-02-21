@@ -77,6 +77,7 @@ Here is a list of all files with brief descriptions:
             * **dir** [**server**](dir_77022909323d5ad872c4820a738a5429.md)     
                 * **file** [**broadcast\_message\_event.h**](broadcast__message__event_8h.md)     
                 * **file** [**data\_packet\_receive\_event.h**](data__packet__receive__event_8h.md)     
+                * **file** [**data\_packet\_send\_event.h**](data__packet__send__event_8h.md)     
                 * **file** [**plugin\_disable\_event.h**](plugin__disable__event_8h.md)     
                 * **file** [**plugin\_enable\_event.h**](plugin__enable__event_8h.md)     
                 * **file** [**script\_message\_event.h**](script__message__event_8h.md)     

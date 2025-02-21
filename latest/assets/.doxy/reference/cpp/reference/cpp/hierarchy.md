@@ -122,6 +122,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
+    * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
 * **class** **std::enable_shared_from_this< Block >**    
     * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
 * **class** **std::enable_shared_from_this< BlockData >**    

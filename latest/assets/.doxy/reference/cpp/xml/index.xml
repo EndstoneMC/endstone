@@ -433,6 +433,15 @@
     <member refid="classendstone_1_1DataPacketReceiveEvent_1a9606fb993602867c3354761c1070211a" kind="function"><name>getData</name></member>
     <member refid="classendstone_1_1DataPacketReceiveEvent_1a44cd72cab4d7bbf02ffc1b7bdbbfc2df" kind="function"><name>getPlayer</name></member>
   </compound>
+  <compound refid="classendstone_1_1DataPacketSendEvent" kind="class"><name>endstone::DataPacketSendEvent</name>
+    <member refid="classendstone_1_1DataPacketSendEvent_1a5d7757d2edbc30cb24392255ad7d41c9" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1DataPacketSendEvent_1ad38f94597f8cbbfa04e86a06b7aa5fc6" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1DataPacketSendEvent_1a5d2818dc97784db44ed12a999151490d" kind="variable"><name>data_</name></member>
+    <member refid="classendstone_1_1DataPacketSendEvent_1aa59b7aeaf22e39383c7c18abc57ab258" kind="function"><name>DataPacketSendEvent</name></member>
+    <member refid="classendstone_1_1DataPacketSendEvent_1ac2a9efbc32a8361dc741c58ad3c5ac56" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1DataPacketSendEvent_1ad588b01274f3f896b8332d8dfe117f7f" kind="function"><name>getData</name></member>
+    <member refid="classendstone_1_1DataPacketSendEvent_1aa073af290df67949d16c4ba4a8b0b43d" kind="function"><name>getPlayer</name></member>
+  </compound>
   <compound refid="classendstone_1_1Dimension" kind="class"><name>endstone::Dimension</name>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kind="enum"><name>Type</name></member>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba50181b144eb2554dc2e45cd3d437e92f" kind="enumvalue"><name>Overworld</name></member>
@@ -1716,6 +1725,8 @@
   <compound refid="broadcast__message__event_8h" kind="file"><name>broadcast_message_event.h</name>
   </compound>
   <compound refid="data__packet__receive__event_8h" kind="file"><name>data_packet_receive_event.h</name>
+  </compound>
+  <compound refid="data__packet__send__event_8h" kind="file"><name>data_packet_send_event.h</name>
   </compound>
   <compound refid="plugin__disable__event_8h" kind="file"><name>plugin_disable_event.h</name>
   </compound>
