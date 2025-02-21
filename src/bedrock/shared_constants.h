@@ -27,4 +27,5 @@ constexpr float MilliSecondsPerTick = SecondsPerTick * 1000;
 constexpr int TicksPerMinute = TicksPerSecond * 60;
 constexpr int TotalTrialTicks = TicksPerMinute * 90;
 constexpr uint8_t NetworkMaxSubClients = 4;
+constexpr int NetworkDefaultMaxConnections = 200;  // Endstone: 40 -> 200
 }  // namespace SharedConstants
