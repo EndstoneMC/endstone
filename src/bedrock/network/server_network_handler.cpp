@@ -15,12 +15,8 @@
 #include "bedrock/network/server_network_handler.h"
 
 #include "bedrock/locale/i18n.h"
+#include "bedrock/shared_constants.h"
 #include "bedrock/symbol.h"
-
-void ServerNetworkHandler::updateServerAnnouncement()
-{
-    BEDROCK_CALL(&ServerNetworkHandler::updateServerAnnouncement, this);
-}
 
 ConnectionRequest const &ServerNetworkHandler::Client::getPrimaryRequest() const
 {
@@ -33,7 +29,35 @@ std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> con
     return sub_client_requests_;
 }
 
-const Bedrock::NonOwnerPointer<ILevel> &ServerNetworkHandler::getLevel() const
+int ServerNetworkHandler::getMaxNumPlayers() const
 {
-    return level_;
+    return max_num_players_;
+}
+
+int ServerNetworkHandler::setMaxNumPlayers(int max_players)
+{
+    auto player_count = _getActiveAndInProgressPlayerCount(mce::UUID::EMPTY);
+    auto result = 0;
+    if (max_players <= SharedConstants::NetworkDefaultMaxConnections) {
+        if (max_players < player_count) {
+            max_players = player_count;
+            result = -1;
+        }
+    }
+    else {
+        max_players = SharedConstants::NetworkDefaultMaxConnections;
+        result = 1;
+    }
+
+    if (max_num_players_ != max_players) {
+        max_num_players_ = max_players;
+        updateServerAnnouncement();
+        app_.onNetworkMaxPlayersChanged(max_num_players_);
+    }
+    return result;
+}
+
+void ServerNetworkHandler::updateServerAnnouncement()
+{
+    BEDROCK_CALL(&ServerNetworkHandler::updateServerAnnouncement, this);
 }

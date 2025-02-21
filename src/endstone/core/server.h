@@ -116,8 +116,6 @@ public:
 
     [[nodiscard]] ServerInstance &getServer() const;
 
-    static constexpr int MaxPlayers = 200;
-
 private:
     friend class EndstonePlayer;
     void enablePlugin(Plugin &plugin);

@@ -310,7 +310,7 @@ std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 
 int EndstoneServer::getMaxPlayers() const
 {
-    return getServer().getMinecraft()->getServerNetworkHandler()->max_num_players_;
+    return getServer().getMinecraft()->getServerNetworkHandler()->getMaxNumPlayers();
 }
 
 Result<void> EndstoneServer::setMaxPlayers(int max_players)
@@ -318,12 +318,11 @@ Result<void> EndstoneServer::setMaxPlayers(int max_players)
     if (max_players < 0) {
         return nonstd::make_unexpected(make_error("Max number of players must not be negative."));
     }
-    if (max_players > MaxPlayers) {
-        return nonstd::make_unexpected(
-            make_error("Max number of players must not exceed the hard limit {}", MaxPlayers));
+    if (max_players > SharedConstants::NetworkDefaultMaxConnections) {
+        return nonstd::make_unexpected(make_error("Max number of players must not exceed the hard limit {}",
+                                                  SharedConstants::NetworkDefaultMaxConnections));
     }
-    getServer().getMinecraft()->getServerNetworkHandler()->max_num_players_ = max_players;
-    getServer().getMinecraft()->getServerNetworkHandler()->updateServerAnnouncement();
+    getServer().getMinecraft()->getServerNetworkHandler()->setMaxNumPlayers(max_players);
     return {};
 }
 
