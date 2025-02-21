@@ -63,8 +63,9 @@ std::shared_ptr<Block> EndstoneDimension::getBlockAt(Location location) const
 
 int EndstoneDimension::getHighestBlockYAt(int x, int z) const
 {
-    return getHandle().getBlockSourceFromMainChunkSource().getHeight(
+    const auto height = getHandle().getBlockSourceFromMainChunkSource().getHeight(
         [](auto &block) { return block.getName() != BedrockBlockNames::Air; }, x, z);
+    return height - 1;
 }
 
 std::shared_ptr<Block> EndstoneDimension::getHighestBlockAt(int x, int z) const

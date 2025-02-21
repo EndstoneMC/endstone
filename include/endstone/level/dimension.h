@@ -77,8 +77,7 @@ public:
     [[nodiscard]] virtual std::shared_ptr<Block> getBlockAt(Location location) const = 0;
 
     /**
-     * @brief Gets the highest non-empty (impassable) coordinate at the given
-     * coordinates.
+     * @brief Gets the highest non-empty (impassable) coordinate at the given coordinates.
      *
      * @param x X-coordinate of the blocks
      * @param z Z-coordinate of the blocks
@@ -96,7 +95,7 @@ public:
     [[nodiscard]] virtual std::shared_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
 
     /**
-     * @brief Gets the highest non-empty (impassable) block at the given coordinates.
+     * @brief Gets the highest non-empty (impassable) block at the given Location.
      *
      * @param location Coordinates to get the highest block
      * @return Highest non-empty block

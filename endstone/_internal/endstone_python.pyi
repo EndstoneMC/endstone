@@ -1179,6 +1179,20 @@ class Dimension:
         """
         Gets the Block at the given coordinates
         """
+    @typing.overload
+    def get_highest_block_at(self, location: Location) -> Block:
+        """
+        Gets the highest non-empty (impassable) block at the given Location.
+        """
+    @typing.overload
+    def get_highest_block_at(self, x: int, z: int) -> Block:
+        """
+        Gets the highest non-empty (impassable) block at the given coordinates.
+        """
+    def get_highest_block_y_at(self, x: int, z: int) -> int:
+        """
+        Gets the highest non-empty (impassable) coordinate at the given coordinates.
+        """
     @property
     def level(self) -> Level:
         """
