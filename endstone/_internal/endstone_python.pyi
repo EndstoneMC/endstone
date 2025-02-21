@@ -1139,7 +1139,7 @@ class DataPacketReceiveEvent(ServerEvent, Cancellable):
     @property
     def player(self) -> Player:
         """
-        Gets the Player that is breaking the block involved in this event.
+        Gets the player involved in this event
         """
 class Dimension:
     """

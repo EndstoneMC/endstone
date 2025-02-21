@@ -197,7 +197,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
             "data", [](const DataPacketReceiveEvent &self) { return py::bytes(self.getData()); },
             "Gets the raw packet data")
         .def_property_readonly("player", &DataPacketReceiveEvent::getPlayer, py::return_value_policy::reference,
-                               "Gets the Player that is breaking the block involved in this event.");
+                               "Gets the player involved in this event");
 
     py::class_<PluginEnableEvent, ServerEvent>(m, "PluginEnableEvent", "Called when a plugin is enabled.")
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference);
