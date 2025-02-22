@@ -126,8 +126,14 @@ void print_frame(std::ostream &stream, bool color, unsigned frame_number_width, 
     stream << line;
 }
 
-bool should_report(const cpptrace::stacktrace &stacktrace)
+bool should_report(const cpptrace::stacktrace &stacktrace, const sentry_ucontext_t *ctx)
 {
+#ifdef _WIN32
+    const auto *record = ctx->exception_ptrs.ExceptionRecord;
+    if (record->ExceptionCode == STATUS_FATAL_APP_EXIT) {
+        return false;
+    }
+#endif
     return true;
 }
 
@@ -181,7 +187,7 @@ sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event
         }
     }
 
-    if (!should_report(stacktrace)) {
+    if (!should_report(stacktrace, ctx)) {
         sentry_value_decref(event);
         return sentry_value_new_null();
     }
