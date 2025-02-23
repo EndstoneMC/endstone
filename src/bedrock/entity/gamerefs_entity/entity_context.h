@@ -28,10 +28,7 @@ public:
     EntityContext &operator=(const EntityContext &) = delete;
     EntityContext &operator=(EntityContext &&) = delete;
 
-    [[nodiscard]] bool isValid() const
-    {
-        return entt_registry_.valid(entity_);
-    }
+    [[nodiscard]] bool isValid() const;
 
     template <typename Component>
     [[nodiscard]] bool hasComponent() const
@@ -57,10 +54,8 @@ public:
         return entt_registry_.get_or_emplace<Component>(entity_, std::forward<Args>(args)...);
     }
 
-    [[nodiscard]] EntityRegistry &_registry() const
-    {
-        return registry_;
-    }
+    [[nodiscard]] WeakRef<EntityContext> getWeakRef() const;
+    [[nodiscard]] EntityRegistry &_registry() const;
 
 protected:
     friend class WeakStorageEntity;

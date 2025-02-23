@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/entity/weak_entity_ref.h"
 #include "endstone/actor/actor.h"
 #include "endstone/core/permissions/permissible_base.h"
 
@@ -84,8 +85,11 @@ public:
     [[nodiscard]] std::string getScoreTag() const override;
     void setScoreTag(std::string score) override;
 
-    // Internal use only
-    [[nodiscard]] ::Actor &getActor() const;
+    template <typename T>
+    T *getHandle()
+    {
+        return actor_.tryUnwrap<T>();
+    }
 
     static std::shared_ptr<EndstoneActor> create(EndstoneServer &server, ::Actor &actor);
 
@@ -93,7 +97,7 @@ protected:
     EndstoneServer &server_;
 
 private:
-    ::Actor &actor_;
+    WeakEntityRef actor_;
     static PermissibleBase &getPermissibleBase();
 };
 

@@ -324,3 +324,18 @@ bool Actor::isDead() const
 {
     return hasComponent<IsDeadFlagComponent>();
 }
+
+EntityContext &Actor::getEntity()
+{
+    return entity_context_;
+}
+
+const EntityContext &Actor::getEntity() const
+{
+    return entity_context_;
+}
+
+WeakRef<EntityContext> Actor::getWeakEntity() const
+{
+    return entity_context_.getWeakRef();
+}

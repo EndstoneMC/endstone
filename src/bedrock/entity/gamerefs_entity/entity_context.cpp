@@ -12,24 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/entity/entity_id.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-#include "bedrock/entity/gamerefs_entity/entity_registry.h"
-#include "bedrock/gamerefs/weak_ref.h"
+bool EntityContext::isValid() const
+{
+    return entt_registry_.valid(entity_);
+}
 
-class WeakStorageEntity {
-protected:
-    WeakStorageEntity() = default;
-    explicit WeakStorageEntity(const EntityContext &ctx);
-    [[nodiscard]] bool _isSet() const;
+WeakRef<EntityContext> EntityContext::getWeakRef() const
+{
+    return WeakRef<EntityContext>(*this);
+}
 
-private:
-    friend class EntityContext;
-    friend class StackResultStorageEntity;
-    WeakRef<EntityRegistry> registry_;
-    EntityId entity_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(WeakStorageEntity, 24, 24);
+EntityRegistry &EntityContext::_registry() const
+{
+    return registry_;
+}

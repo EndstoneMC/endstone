@@ -26,7 +26,7 @@
 
 namespace endstone::core {
 
-EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor)
+EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor.getWeakEntity())
 {
     getPermissibleBase();
 }
