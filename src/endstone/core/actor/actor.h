@@ -94,7 +94,7 @@ protected:
     template <typename T>
     T &getHandle() const
     {
-        auto *ptr = actor_.tryUnwrap<T>();
+        auto *ptr = actor_.tryUnwrap<T>(/*include_removed*/ true);
         if (!ptr) {
             throw std::runtime_error("Trying to access an actor that is no longer valid.");
         }
