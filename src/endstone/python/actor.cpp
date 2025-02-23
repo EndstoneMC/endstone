@@ -39,6 +39,9 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
              py::arg("target"))
         .def_property_readonly("id", &Actor::getId, "Returns a unique id for this actor.")
         .def("remove", &Actor::remove, "Remove this actor from the level.")
+        .def_property_readonly("is_valid", &Actor::isValid,
+                               "Returns false if the entity has died, been despawned for some other reason, or has not "
+                               "been added to the level.")
         .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.")
         .def_property("health", &Actor::getHealth, &Actor::setHealth,
                       "Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.")

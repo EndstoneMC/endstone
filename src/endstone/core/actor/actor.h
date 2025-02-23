@@ -70,6 +70,7 @@ public:
     [[nodiscard]] std::int64_t getId() const override;
     void remove() override;
     [[nodiscard]] bool isDead() const override;
+    [[nodiscard]] bool isValid() const override;
     [[nodiscard]] int getHealth() const override;
     [[nodiscard]] Result<void> setHealth(int health) const override;
     [[nodiscard]] int getMaxHealth() const override;
@@ -86,7 +87,7 @@ public:
     void setScoreTag(std::string score) override;
 
     template <typename T>
-    T *getHandle()
+    T *getHandle() const
     {
         return actor_.tryUnwrap<T>();
     }

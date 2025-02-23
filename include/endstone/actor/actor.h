@@ -142,6 +142,13 @@ public:
     [[nodiscard]] virtual bool isDead() const = 0;
 
     /**
+     * Returns false if the entity has died, been despawned for some other reason, or has not been added to the level.
+     *
+     * @return True if valid.
+     */
+    [[nodiscard]] virtual bool isValid() const = 0;
+
+    /**
      * @brief Gets the entity's health from 0 to its max possible value, where 0 is dead.
      *
      * @return Health represented from 0 to max
