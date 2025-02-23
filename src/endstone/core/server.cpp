@@ -301,14 +301,10 @@ Level *EndstoneServer::getLevel() const
 std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 {
     std::vector<Player *> result;
-    for (const auto &entity_context : level_->getHandle().getUsers()) {
-        if (!entity_context.hasValue()) {
-            continue;
-        }
-        if (const auto *player = ::Player::tryGetFromEntity(entity_context.value())) {
-            result.emplace_back(&player->getEndstoneActor<EndstonePlayer>());
-        }
-    }
+    level_->getHandle().forEachPlayer([&](const ::Player &player) {
+        result.emplace_back(&player.getEndstoneActor<EndstonePlayer>());
+        return true;
+    });
     return result;
 }
 
