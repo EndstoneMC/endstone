@@ -88,11 +88,10 @@ public:
 private:
     friend class endstone::core::EndstoneServer;
 
-    // NOLINTBEGIN(*-identifier-naming)
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
                                                  SubClientId);
+    ServerPlayer *_getServerPlayer(const NetworkIdentifier &, SubClientId);
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
-    // NOLINTEND(*-identifier-naming)
 
     GameCallbacks &callbacks_;
     Bedrock::NonOwnerPointer<ILevel> level_;

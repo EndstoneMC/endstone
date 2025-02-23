@@ -36,8 +36,9 @@ IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const Net
     }
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    if (auto *player = server.getPlayer(sender.id, sender.sub_client_id); player) {
-        endstone::DataPacketReceiveEvent e{*player, network_.receive_buffer_};
+    if (const auto *player = _getServerPlayer(sender.id, sender.sub_client_id); player) {
+        endstone::DataPacketReceiveEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+                                           network_.receive_buffer_};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return IncomingPacketFilterResult::RejectedSilently;
@@ -57,8 +58,9 @@ OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     for (const auto &target : ids) {
-        if (auto *player = server.getPlayer(target.id, target.sub_client_id); player) {
-            endstone::DataPacketSendEvent e{*player, network_.send_stream_.getView()};
+        if (auto *player = _getServerPlayer(target.id, target.sub_client_id); player) {
+            endstone::DataPacketSendEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+                                            network_.send_stream_.getView()};
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 return OutgoingPacketFilterResult::Reject;
@@ -75,9 +77,9 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     auto disconnect_message = message;
-    if (auto *endstone_player = server.getPlayer(network_id, sub_client_id)) {
+    if (auto *player = _getServerPlayer(network_id, sub_client_id)) {
         auto kick_message = getI18n().get(message, nullptr);
-        endstone::PlayerKickEvent e{*endstone_player, kick_message};
+        endstone::PlayerKickEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), kick_message};
         server.getPluginManager().callEvent(e);
 
         if (e.isCancelled()) {
@@ -148,6 +150,25 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
         endstone_player.kick(e.getKickMessage());
     }
     return server_player;
+}
+
+ServerPlayer *ServerNetworkHandler::_getServerPlayer(const NetworkIdentifier &source, SubClientId sub_id)
+{
+    for (const auto &entity_context : level_->getUsers()) {
+        if (!entity_context.hasValue()) {
+            continue;
+        }
+        auto &player = entity_context.value();
+        const auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
+        if (!component) {
+            continue;
+        }
+
+        if (component->network_id == source && component->client_sub_id == sub_id) {
+            return static_cast<ServerPlayer *>(Actor::tryGetFromEntity(player));
+        }
+    }
+    return nullptr;
 }
 
 bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const

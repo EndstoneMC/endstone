@@ -345,17 +345,6 @@ Player *EndstoneServer::getPlayer(std::string name) const
     return nullptr;
 }
 
-Player *EndstoneServer::getPlayer(const NetworkIdentifier &network_id, SubClientId sub_id) const
-{
-    for (const auto &[uuid, player] : players_) {
-        if (const auto component = player->getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
-            component->network_id == network_id && component->client_sub_id == sub_id) {
-            return player;
-        }
-    }
-    return nullptr;
-}
-
 bool EndstoneServer::getOnlineMode() const
 {
     return getServer().getMinecraft()->getServerNetworkHandler()->network_server_config_.require_trusted_authentication;

@@ -73,7 +73,6 @@ public:
     Result<void> setMaxPlayers(int max_players) override;
     [[nodiscard]] Player *getPlayer(UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
-    [[nodiscard]] Player *getPlayer(const ::NetworkIdentifier &network_id, SubClientId sub_id) const;
 
     [[nodiscard]] bool getOnlineMode() const override;
     void shutdown() override;
