@@ -74,14 +74,9 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     default:
         break;
     }
-    server_.players_.emplace(uuid_, this);
 }
 
-EndstonePlayer::~EndstonePlayer()
-{
-    server_.players_.erase(uuid_);
-    server_.removePlayerBoard(*this);
-}
+EndstonePlayer::~EndstonePlayer() = default;
 
 Player *EndstonePlayer::asPlayer() const
 {
@@ -866,7 +861,10 @@ void EndstonePlayer::initFromConnectionRequest(
         request);
 }
 
-void EndstonePlayer::disconnect() {}
+void EndstonePlayer::disconnect()
+{
+    server_.removePlayerBoard(*this);
+}
 
 void EndstonePlayer::updateAbilities() const
 {
