@@ -20,6 +20,19 @@ namespace Bedrock::Safety {
 class RedactableString {
 public:
     RedactableString() = default;
+    RedactableString(const std::string &unredacted_string) : unredacted_string_(unredacted_string) {}
+    RedactableString &operator=(std::string &&unredacted_string)
+    {
+        unredacted_string_ = std::move(unredacted_string);
+        redacted_string_.reset();
+        return *this;
+    }
+    RedactableString &operator=(const char *unredacted_string)
+    {
+        unredacted_string_ = unredacted_string;
+        redacted_string_.reset();
+        return *this;
+    }
 
 private:
     std::string unredacted_string_;

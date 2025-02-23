@@ -14,25 +14,22 @@
 
 #pragma once
 
-#include <string>
-
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/types/world/actor/ai/util/boss_event_data.h"
+#include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/actor/actor_unique_id.h"
-
-
 
 class BossEventPacket : public Packet {
 public:
-    const int FLAG_DARKEN{1};        // +48 NOLINT
-    const int FLAG_FOG{2};           // +52 NOLINT
-    ActorUniqueID boss_id;           // +56
-    ActorUniqueID player_id;         // +64
-    BossEventUpdateType event_type;  // +72
-    std::string name;                // +80
-    float health_percent;            // +112
-    BossBarColor color;              // +116
-    BossBarOverlay overlay;          // +120
-    bool darken_screen;              // +124
-    bool create_world_fog;           // +125
+    const int FLAG_DARKEN{1};
+    const int FLAG_FOG{2};
+    ActorUniqueID boss_id;
+    ActorUniqueID player_id;
+    BossEventUpdateType event_type;
+    Bedrock::Safety::RedactableString name;
+    float health_percent;
+    BossBarColor color;
+    BossBarOverlay overlay;
+    bool darken_screen;
+    bool create_world_fog;
 };
