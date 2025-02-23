@@ -179,6 +179,11 @@ class Actor(CommandSender):
         Returns true if the actor is supported by a block, i.e. on ground.
         """
     @property
+    def is_valid(self) -> bool:
+        """
+        Returns false if the entity has died, been despawned for some other reason, or has not been added to the level.
+        """
+    @property
     def level(self) -> Level:
         """
         Gets the current Level this actor resides in.
