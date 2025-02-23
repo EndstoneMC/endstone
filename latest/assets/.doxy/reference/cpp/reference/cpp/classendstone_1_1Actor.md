@@ -114,6 +114,7 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isNameTagAlwaysVisible**](#function-isnametagalwaysvisible) () const = 0<br>_Checks if the actor's name tag is always visible._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isNameTagVisible**](#function-isnametagvisible) () const = 0<br>_Checks if the actor's name tag is currently visible._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isOnGround**](#function-isonground) () const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isValid**](#function-isvalid) () const = 0<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**remove**](#function-remove) () = 0<br> |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**removeScoreboardTag**](#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setHealth**](#function-sethealth) ([**int**](classendstone_1_1Vector.md) health) const = 0<br> |
@@ -769,6 +770,33 @@ Returns true if the actor is supported by a block.
 **Returns:**
 
 True if actor is on ground. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isValid 
+
+```C++
+virtual bool endstone::Actor::isValid () const = 0
+```
+
+
+
+Returns false if the entity has died, been despawned for some other reason, or has not been added to the level.
+
+
+
+
+**Returns:**
+
+True if valid. 
 
 
 

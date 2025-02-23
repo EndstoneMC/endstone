@@ -1679,6 +1679,7 @@
       <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Player_1a5cdb79fdd152c6c6ed8f251bd1e31523" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isSneaking</name></member>
       <member refid="classendstone_1_1Player_1abb2a1b9ae99b24fc1e80ed5f73d55646" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isSprinting</name></member>
+      <member refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isValid</name></member>
       <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>kick</name></member>
       <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>performCommand</name></member>
       <member refid="classendstone_1_1Player_1aa1ceee8a331905251a258d2a81df0120" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>playSound</name></member>

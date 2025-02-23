@@ -68,6 +68,8 @@ public:
 
     [[nodiscard]] virtual bool isDead() const = 0;
 
+    [[nodiscard]] virtual bool isValid() const = 0;
+
     [[nodiscard]] virtual int getHealth() const = 0;
 
     [[nodiscard]] virtual Result<void> setHealth(int health) const = 0;

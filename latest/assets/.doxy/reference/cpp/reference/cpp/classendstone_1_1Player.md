@@ -245,6 +245,7 @@ See [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isNameTagAlwaysVisible**](classendstone_1_1Actor.md#function-isnametagalwaysvisible) () const = 0<br>_Checks if the actor's name tag is always visible._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isNameTagVisible**](classendstone_1_1Actor.md#function-isnametagvisible) () const = 0<br>_Checks if the actor's name tag is currently visible._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isOnGround**](classendstone_1_1Actor.md#function-isonground) () const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isValid**](classendstone_1_1Actor.md#function-isvalid) () const = 0<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**remove**](classendstone_1_1Actor.md#function-remove) () = 0<br> |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**removeScoreboardTag**](classendstone_1_1Actor.md#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setHealth**](classendstone_1_1Actor.md#function-sethealth) ([**int**](classendstone_1_1Vector.md) health) const = 0<br> |
