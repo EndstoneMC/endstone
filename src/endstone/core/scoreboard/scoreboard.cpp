@@ -140,7 +140,7 @@ std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
         case IdentityDefinition::Type::Player: {
             auto players = server.getOnlinePlayers();
             for (const auto &player : players) {
-                if (static_cast<EndstonePlayer *>(player)->getHandle().getOrCreateUniqueID() ==
+                if (static_cast<EndstonePlayer *>(player)->getPlayer().getOrCreateUniqueID() ==
                     id_ref.getPlayerId().actor_unique_id) {
                     result.emplace_back(player);
                 }
@@ -199,7 +199,7 @@ std::string EndstoneScoreboard::getDisplaySlotName(DisplaySlot slot)
 const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry) const
 {
     return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
-                                     return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
+                                     return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getPlayer());
                                  },
                                  [&](Actor *actor) -> const ::ScoreboardId & {
                                      return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
@@ -219,7 +219,7 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
 
     return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
                                      return board_.createScoreboardId(
-                                         static_cast<EndstonePlayer *>(player)->getHandle());
+                                         static_cast<EndstonePlayer *>(player)->getPlayer());
                                  },
                                  [&](Actor *actor) -> const ::ScoreboardId & {
                                      return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());

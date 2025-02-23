@@ -86,14 +86,22 @@ public:
     [[nodiscard]] std::string getScoreTag() const override;
     void setScoreTag(std::string score) override;
 
-    template <typename T>
-    T *getHandle() const
-    {
-        return actor_.tryUnwrap<T>();
-    }
+    ::Actor &getActor() const;
 
     static std::shared_ptr<EndstoneActor> create(EndstoneServer &server, ::Actor &actor);
 
+protected:
+    template <typename T>
+    T &getHandle() const
+    {
+        auto *ptr = actor_.tryUnwrap<T>();
+        if (!ptr) {
+            throw std::runtime_error("Trying to access an actor that is no longer valid.");
+        }
+        return *ptr;
+    }
+
+private:
 protected:
     EndstoneServer &server_;
 

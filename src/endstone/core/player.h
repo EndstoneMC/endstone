@@ -72,6 +72,7 @@ public:
     void teleport(Actor &target) override;
     [[nodiscard]] std::int64_t getId() const override;
     void remove() override;
+    [[nodiscard]] bool isValid() const override;
     [[nodiscard]] bool isDead() const override;
     [[nodiscard]] int getHealth() const override;
     [[nodiscard]] Result<void> setHealth(int health) const override;
@@ -158,14 +159,14 @@ public:
     void disconnect();
     void updateAbilities() const;
     bool checkRightClickSpam(Vector<int> block_pos, Vector<float> click_pos);
-    [[nodiscard]] ::Player &getHandle() const;
+
+    ::Player &getPlayer() const;
 
     static std::shared_ptr<EndstonePlayer> create(EndstoneServer &server, ::Player &player);
 
 private:
     friend class ::ServerNetworkHandler;
 
-    ::Player &player_;
     UUID uuid_;
     std::string xuid_;
     SocketAddress address_;

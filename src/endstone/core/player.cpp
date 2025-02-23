@@ -48,7 +48,7 @@
 namespace endstone::core {
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
-    : EndstoneMob(server, player), player_(player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
+    : EndstoneMob(server, player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
       inventory_(std::make_unique<EndstonePlayerInventory>(player))
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
@@ -103,7 +103,7 @@ void EndstonePlayer::sendMessage(const Message &message) const
                               pk->localize = true;
                           }},
                message);
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendErrorMessage(const Message &message) const
@@ -173,7 +173,7 @@ std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermi
 
 bool EndstonePlayer::isOp() const
 {
-    return getHandle().getCommandPermissionLevel() > CommandPermissionLevel::Any;
+    return getPlayer().getCommandPermissionLevel() > CommandPermissionLevel::Any;
 }
 
 void EndstonePlayer::setOp(bool value)
@@ -182,7 +182,7 @@ void EndstonePlayer::setOp(bool value)
         return;
     }
 
-    getHandle().setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::Admin);
+    getPlayer().setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::Admin);
 }
 
 std::string EndstonePlayer::getType() const
@@ -253,6 +253,11 @@ std::int64_t EndstonePlayer::getId() const
 void EndstonePlayer::remove()
 {
     getServer().getLogger().error("Cannot remove player {}, use Player::kick instead.", getName());
+}
+
+bool EndstonePlayer::isValid() const
+{
+    return EndstoneMob::isValid();
 }
 
 bool EndstonePlayer::isDead() const
@@ -356,7 +361,7 @@ void EndstonePlayer::sendPopup(std::string message) const
     auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Popup;
     pk->message = std::move(message);
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendTip(std::string message) const
@@ -365,7 +370,7 @@ void EndstonePlayer::sendTip(std::string message) const
     auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Tip;
     pk->message = std::move(message);
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendToast(std::string title, std::string content) const
@@ -374,12 +379,12 @@ void EndstonePlayer::sendToast(std::string title, std::string content) const
     auto pk = std::static_pointer_cast<ToastRequestPacket>(packet);
     pk->title = std::move(title);
     pk->content = std::move(content);
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::kick(std::string message) const
 {
-    auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
+    auto *component = getPlayer().tryGetComponent<UserEntityIdentifierComponent>();
     server_.getServer().getMinecraft()->getServerNetworkHandler()->disconnectClient(
         component->network_id, component->client_sub_id, Connection::DisconnectFailReason::Kicked, message,
         std::nullopt, false);
@@ -387,17 +392,17 @@ void EndstonePlayer::kick(std::string message) const
 
 void EndstonePlayer::giveExp(int amount)
 {
-    getHandle().addExperience(amount);
+    getPlayer().addExperience(amount);
 }
 
 void EndstonePlayer::giveExpLevels(int amount)
 {
-    getHandle().addLevels(amount);
+    getPlayer().addLevels(amount);
 }
 
 float EndstonePlayer::getExpProgress() const
 {
-    return getHandle().getLevelProgress();
+    return getPlayer().getLevelProgress();
 }
 
 Result<void> EndstonePlayer::setExpProgress(float progress)
@@ -405,14 +410,14 @@ Result<void> EndstonePlayer::setExpProgress(float progress)
     if (progress < 0.0 || progress > 1.0) {
         return nonstd::make_unexpected(make_error("Experience progress must be between 0.0 and 1.0 ({})", progress));
     }
-    auto mutable_attr = getHandle().getMutableAttribute("minecraft:player.experience");
+    auto mutable_attr = getPlayer().getMutableAttribute("minecraft:player.experience");
     mutable_attr.instance->setCurrentValue(progress, mutable_attr.context);
     return {};
 }
 
 int EndstonePlayer::getExpLevel() const
 {
-    return getHandle().getPlayerLevel();
+    return getPlayer().getPlayerLevel();
 }
 
 Result<void> EndstonePlayer::setExpLevel(int level)
@@ -434,22 +439,22 @@ int EndstonePlayer::getTotalExp() const
 
 bool EndstonePlayer::getAllowFlight() const
 {
-    return getHandle().getAbilities().getBool(AbilitiesIndex::MayFly);
+    return getPlayer().getAbilities().getBool(AbilitiesIndex::MayFly);
 }
 
 void EndstonePlayer::setAllowFlight(bool flight)
 {
     if (isFlying() && !flight) {
-        getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, false);
+        getPlayer().getAbilities().setAbility(AbilitiesIndex::Flying, false);
     }
 
-    getHandle().getAbilities().setAbility(AbilitiesIndex::MayFly, flight);
+    getPlayer().getAbilities().setAbility(AbilitiesIndex::MayFly, flight);
     updateAbilities();
 }
 
 bool EndstonePlayer::isFlying() const
 {
-    return getHandle().isFlying();
+    return getPlayer().isFlying();
 }
 
 Result<void> EndstonePlayer::setFlying(bool value)
@@ -458,30 +463,30 @@ Result<void> EndstonePlayer::setFlying(bool value)
         return nonstd::make_unexpected(make_error("Player {} is not allowed to fly.", getName()));
     }
 
-    getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, value);
+    getPlayer().getAbilities().setAbility(AbilitiesIndex::Flying, value);
     updateAbilities();
     return {};
 }
 
 float EndstonePlayer::getFlySpeed() const
 {
-    return getHandle().getAbilities().getFloat(AbilitiesIndex::FlySpeed);
+    return getPlayer().getAbilities().getFloat(AbilitiesIndex::FlySpeed);
 }
 
 void EndstonePlayer::setFlySpeed(float value) const
 {
-    getHandle().getAbilities().setAbility(AbilitiesIndex::FlySpeed, value);
+    getPlayer().getAbilities().setAbility(AbilitiesIndex::FlySpeed, value);
     updateAbilities();
 }
 
 float EndstonePlayer::getWalkSpeed() const
 {
-    return getHandle().getAbilities().getFloat(AbilitiesIndex::WalkSpeed);
+    return getPlayer().getAbilities().getFloat(AbilitiesIndex::WalkSpeed);
 }
 
 void EndstonePlayer::setWalkSpeed(float value) const
 {
-    getHandle().getAbilities().setAbility(AbilitiesIndex::WalkSpeed, value);
+    getPlayer().getAbilities().setAbility(AbilitiesIndex::WalkSpeed, value);
     updateAbilities();
 }
 
@@ -510,7 +515,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
         pk->fade_in_time = fade_in;
         pk->stay_time = stay;
         pk->fade_out_time = fade_out;
-        getHandle().sendNetworkPacket(*packet);
+        getPlayer().sendNetworkPacket(*packet);
     }
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
@@ -520,7 +525,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
         pk->fade_in_time = fade_in;
         pk->stay_time = stay;
         pk->fade_out_time = fade_out;
-        getHandle().sendNetworkPacket(*packet);
+        getPlayer().sendNetworkPacket(*packet);
     }
 }
 
@@ -529,7 +534,7 @@ void EndstonePlayer::resetTitle() const
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
     auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
     pk->type = SetTitlePacket::TitleType::Reset;
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::spawnParticle(std::string name, Location location) const
@@ -562,7 +567,7 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
 std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
-    auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
+    auto *component = getPlayer().tryGetComponent<UserEntityIdentifierComponent>();
     return std::chrono::milliseconds(peer->GetAveragePing(component->network_id.guid));
 }
 
@@ -576,14 +581,14 @@ void EndstonePlayer::updateCommands() const
         auto &name = it->name;
         auto *command = command_map.getCommand(name);
         if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this)) &&
-            it->permission_level <= player_.getCommandPermissionLevel()) {
+            it->permission_level <= getPlayer().getCommandPermissionLevel()) {
             ++it;
             continue;
         }
         it = packet.commands.erase(it);
     }
 
-    getHandle().sendNetworkPacket(packet);
+    getPlayer().sendNetworkPacket(packet);
 }
 
 bool EndstonePlayer::performCommand(std::string command) const
@@ -593,22 +598,22 @@ bool EndstonePlayer::performCommand(std::string command) const
 
 bool EndstonePlayer::isSneaking() const
 {
-    return getHandle().isSneaking();
+    return getPlayer().isSneaking();
 }
 
 void EndstonePlayer::setSneaking(bool sneak)
 {
-    getHandle().setSneaking(sneak);
+    getPlayer().setSneaking(sneak);
 }
 
 bool EndstonePlayer::isSprinting() const
 {
-    return getHandle().isSprinting();
+    return getPlayer().isSprinting();
 }
 
 void EndstonePlayer::setSprinting(bool sprinting)
 {
-    getHandle().setSprinting(sprinting);
+    getPlayer().setSprinting(sprinting);
 }
 
 void EndstonePlayer::playSound(Location location, std::string sound, float volume, float pitch)
@@ -619,7 +624,7 @@ void EndstonePlayer::playSound(Location location, std::string sound, float volum
     pk->pos = {location.getX(), location.getY(), location.getZ()};
     pk->volume = volume;
     pk->pitch = pitch;
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::stopSound(std::string sound)
@@ -627,7 +632,7 @@ void EndstonePlayer::stopSound(std::string sound)
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::StopSound);
     const auto pk = std::static_pointer_cast<StopSoundPacket>(packet);
     pk->name = sound;
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::stopAllSounds()
@@ -635,17 +640,17 @@ void EndstonePlayer::stopAllSounds()
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::StopSound);
     const auto pk = std::static_pointer_cast<StopSoundPacket>(packet);
     pk->stop_all = true;
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 GameMode EndstonePlayer::getGameMode() const
 {
-    return EndstoneGameMode::fromMinecraft(getHandle().getPlayerGameType());
+    return EndstoneGameMode::fromMinecraft(getPlayer().getPlayerGameType());
 }
 
 void EndstonePlayer::setGameMode(GameMode mode)
 {
-    getHandle().setPlayerGameType(EndstoneGameMode::toMinecraft(mode));
+    getPlayer().setPlayerGameType(EndstoneGameMode::toMinecraft(mode));
 }
 
 PlayerInventory &EndstonePlayer::getInventory() const
@@ -684,7 +689,7 @@ void EndstonePlayer::transfer(std::string host, int port) const
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
     pk->address = std::move(host);
     pk->port = port;
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendForm(FormVariant form)
@@ -701,20 +706,20 @@ void EndstonePlayer::sendForm(FormVariant form)
                                form)
                         .dump();
     forms_.emplace(pk->form_id, std::move(form));
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::closeForm()
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ClientboundCloseScreen);
-    getHandle().sendNetworkPacket(*packet);
+    getPlayer().sendNetworkPacket(*packet);
     forms_.clear();
 }
 
 void EndstonePlayer::sendPacket(Packet &packet) const
 {
     PacketAdapter pk{packet};
-    getHandle().sendNetworkPacket(pk);
+    getPlayer().sendNetworkPacket(pk);
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)
@@ -867,18 +872,18 @@ void EndstonePlayer::updateAbilities() const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateAbilitiesPacket);
     std::shared_ptr<UpdateAbilitiesPacket> pk = std::static_pointer_cast<UpdateAbilitiesPacket>(packet);
-    pk->data = {getHandle().getOrCreateUniqueID(), getHandle().getAbilities()};
-    getHandle().sendNetworkPacket(*packet);
-}
-
-::Player &EndstonePlayer::getHandle() const
-{
-    return player_;
+    pk->data = {getPlayer().getOrCreateUniqueID(), getPlayer().getAbilities()};
+    getPlayer().sendNetworkPacket(*packet);
 }
 
 std::shared_ptr<EndstonePlayer> EndstonePlayer::create(EndstoneServer &server, ::Player &player)
 {
     return PermissibleFactory::create<EndstonePlayer>(server, player);
+}
+
+::Player &EndstonePlayer::getPlayer() const
+{
+    return getHandle<::Player>();
 }
 
 }  // namespace endstone::core

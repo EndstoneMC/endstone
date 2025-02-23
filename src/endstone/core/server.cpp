@@ -348,7 +348,7 @@ Player *EndstoneServer::getPlayer(std::string name) const
 Player *EndstoneServer::getPlayer(const NetworkIdentifier &network_id, SubClientId sub_id) const
 {
     for (const auto &[uuid, player] : players_) {
-        if (const auto component = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
+        if (const auto component = player->getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
             component->network_id == network_id && component->client_sub_id == sub_id) {
             return player;
         }
@@ -546,7 +546,7 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
     getPlayerBoard(player).resetScores(&player);
 
     // add player to the new board
-    new_board.onPlayerJoined(player.getHandle());
+    new_board.onPlayerJoined(player.getPlayer());
 
     // update tracking records
     if (&scoreboard == scoreboard_.get()) {
