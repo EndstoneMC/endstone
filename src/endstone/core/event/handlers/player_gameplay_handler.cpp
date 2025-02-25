@@ -105,6 +105,7 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         auto &server = entt::locator<EndstoneServer>::value();
         auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
+
         if (!player->isAlive()) {
             // Close any open form on player death
             endstone_player.closeForm();
@@ -126,9 +127,17 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
             pk->death_cause_message = death_cause_message;
             player->sendNetworkPacket(*packet);
 
-            // Broadcast death message if not empty
-            if (!e->getDeathMessage().empty()) {
+            // Log death message to console if not empty
+            if (e->getDeathMessage().empty()) {
+                return true;
+            }
+
+            // Broadcast death messages
+            if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false)) {
                 server.broadcastMessage(Translatable{death_cause_message.first, death_cause_message.second});
+            }
+            else {
+                server.getLogger().info(e->getDeathMessage());
             }
         }
     }

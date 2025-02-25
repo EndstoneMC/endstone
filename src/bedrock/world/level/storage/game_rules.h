@@ -14,6 +14,12 @@
 
 #pragma once
 
+#include <functional>
+
+#include "bedrock/core/string/string_hash.h"
+#include "bedrock/resources/base_game_version.h"
+#include "bedrock/util/new_type.h"
+
 class GameRule {
 public:
     enum class Type : uint8_t {
@@ -47,10 +53,52 @@ public:
             return *this;
         }
     };
+
+    using TagDataNotFoundCallback = std::function<void(GameRule &, const BaseGameVersion &)>;
+    using ValidateValueCallback = std::function<bool(const Value &, class ValidationError *)>;
+
+    GameRule();
+    bool getBool() const
+    {
+        return value_.bool_val;
+    }
+
+private:
+    bool should_save_;
+    Type type_;
+    Value value_;
+    std::string name_;
+    bool allow_use_in_command_;
+    bool allow_use_in_scripting_;
+    bool is_default_set_;
+    bool requires_cheat_;
+    bool can_be_modified_by_player_;
+    TagDataNotFoundCallback tag_not_found_callback_;
+    ValidateValueCallback validate_value_callback_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(GameRule, 176, 144);
+
+struct GameRuleId : NewType<int> {
+    GameRuleId() = default;
+    explicit GameRuleId(const int id)
+    {
+        value = id;
+    }
 };
 
 class GameRules : public Bedrock::EnableNonOwnerReferences {
+    using GameRuleMap = std::vector<GameRule>;
+    using WorldPolicyMap = std::map<HashedString, GameRule>;
+
 public:
+    bool getBool(GameRuleId id, bool default_value) const
+    {
+        if (id >= 0 && id < game_rules_.size()) {
+            return game_rules_[id].getBool();
+        }
+        return default_value;
+    }
+
     enum GameRulesIndex : int {
         INVALID_GAME_RULE = -1,
         COMMAND_BLOCK_OUTPUT = 0,
@@ -99,4 +147,8 @@ public:
         EDU_GAME_RULE_COUNT = 42,
         GAME_RULE_COUNT = 42,
     };
+
+private:
+    GameRuleMap game_rules_;
+    WorldPolicyMap world_policies_;
 };
