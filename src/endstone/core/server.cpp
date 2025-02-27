@@ -360,11 +360,9 @@ void EndstoneServer::reload()
 {
     plugin_manager_->clearPlugins();
     command_map_->clearCommands();
-    unregisterEventListeners();
     reloadData();
 
     // TODO(server): Wait for at most 2.5 seconds for all async tasks to finish, otherwise issue a warning
-    registerEventListeners();
     loadPlugins();
     enablePlugins(PluginLoadOrder::Startup);
     enablePlugins(PluginLoadOrder::PostWorld);
@@ -379,8 +377,10 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
+    unregisterEventListeners();
     server_instance_->getMinecraft()->requestResourceReload();
     level_->getHandle().loadFunctionManager();
+    registerEventListeners();
 }
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
