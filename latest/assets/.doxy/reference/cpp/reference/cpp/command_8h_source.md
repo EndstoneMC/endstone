@@ -134,7 +134,7 @@ public:
             return true;
         }
 
-        target.sendErrorMessage(Translatable("commands.generic.unknown", {getName()}));
+        target.sendErrorMessage(Translatable("commands.generic.error.permissions", {getName()}));
         return false;
     }
 
