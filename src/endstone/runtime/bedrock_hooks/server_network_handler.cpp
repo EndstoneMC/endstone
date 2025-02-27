@@ -36,12 +36,16 @@ IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const Net
     }
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    if (const auto *player = _getServerPlayer(sender.id, sender.sub_client_id); player) {
+    if (auto *player = _getServerPlayer(sender.id, sender.sub_client_id); player) {
         endstone::DataPacketReceiveEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
                                            network_.receive_buffer_};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return IncomingPacketFilterResult::RejectedSilently;
+        }
+
+        if (packet_id == MinecraftPacketIds::SetLocalPlayerAsInit) {
+            player->setLocalPlayerAsInitialized();
         }
     }
 

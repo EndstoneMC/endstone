@@ -15,10 +15,38 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/network/server_network_system.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/inventory/inventory_menu.h"
 
 class ServerPlayer : public Player {
 public:
+    using OnPlayerLoadedCallback = std::function<void(ServerPlayer &)>;
+
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void disconnect();
+    void setLocalPlayerAsInitialized();
+
+protected:
+    DeviceMemoryTier memory_tier_;
+    PlatformType platform_type_;
+    int max_client_view_distance_;
+
+private:
+    ServerNetworkSystem &network_;
+    OnPlayerLoadedCallback on_player_loaded_callback_;
+    InventoryMenu inventory_menu_;
+    ContainerID container_counter_;
+    uint32_t max_chunk_radius_;
+    bool is_initial_player_load_happening_;
+    bool is_teacher_;
+    bool local_player_initialized_;  // +3498
+    bool waiting_for_ticking_areas_preload_;
+    Tick prev_shield_blocking_tick_;
+    uint32_t client_view_radius_;
+    uint32_t client_requested_radius_;
+    bool is_compatible_with_client_side_chunk_gen_;
+    int remaining_structure_refresh_ticks_;
+    StructureFeatureType current_structure_feature_;
+    int last_known_sync_tick_;
 };

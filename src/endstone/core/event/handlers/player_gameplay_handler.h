@@ -33,7 +33,7 @@ private:
     bool handleEvent(const PlayerDisconnectEvent &event);
     bool handleEvent(const PlayerFormResponseEvent &event);
     bool handleEvent(const PlayerFormCloseEvent &event);
-    bool handleEvent(const PlayerInitialSpawnEvent &event);
+    // bool handleEvent(const PlayerInitialSpawnEvent &event);
     bool handleEvent(const PlayerRespawnEvent &event);
     bool handleEvent(const PlayerEmoteEvent &event);
     bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event);

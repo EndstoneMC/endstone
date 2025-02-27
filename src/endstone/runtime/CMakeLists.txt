@@ -28,6 +28,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/say_command.cpp
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
+        bedrock_hooks/server_player.cpp
         bedrock_hooks/server_script_manager.cpp
         bedrock_hooks/start_game_packet.cpp
         main.cpp
