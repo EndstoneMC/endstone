@@ -52,7 +52,7 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
     }
 
     // run the command and pass down the sender
-    CommandOutputWithSender output{CommandOutputType::AllOutput, sender};
+    CommandOutputWithSender output{MinecraftCommands::getOutputType(*command_origin), sender};
     command->run(*command_origin, output);
 
     // redirect outputs to sender
