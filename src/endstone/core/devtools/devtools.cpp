@@ -292,6 +292,10 @@ void render()
                         file_to_save = data->item_tags;
                         openFileBrowser("Save Item Tags", "item_tags.json");
                     }
+                    if (ImGui::MenuItem("Creative Groups")) {
+                        file_to_save = data->creative_groups;
+                        openFileBrowser("Save Creative Groups", "creative_groups.json");
+                    }
                     if (ImGui::MenuItem("Recipes")) {
                         file_to_save = nlohmann::json{
                             {"shapeless", data->recipes.shapeless},
@@ -634,6 +638,7 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
     save_json_to_file(data->block_tags, "block_tags.json");
     save_json_to_file(data->items, "items.json");
     save_json_to_file(data->item_tags, "item_tags.json");
+    save_json_to_file(data->creative_groups, "creative_groups.json");
     save_json_to_file(data->biomes, "biomes.json");
 
     save_nbt_to_file(data->item_components, "item_components.nbt");
