@@ -128,11 +128,25 @@ public:
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 
     /**
+     * Remove this actor from the level.
+     *
+     * If you are trying to remove a Player, use Player::kick instead.
+     */
+    virtual void remove() = 0;
+
+    /**
      * @brief Returns true if this actor has been marked for removal.
      *
      * @return True if it is dead.
      */
     [[nodiscard]] virtual bool isDead() const = 0;
+
+    /**
+     * Returns false if the entity has died, been despawned for some other reason, or has not been added to the level.
+     *
+     * @return True if valid.
+     */
+    [[nodiscard]] virtual bool isValid() const = 0;
 
     /**
      * @brief Gets the entity's health from 0 to its max possible value, where 0 is dead.

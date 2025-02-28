@@ -19,6 +19,8 @@
 
 namespace mce {
 
+UUID UUID::EMPTY{};
+
 std::string UUID::asString() const
 {
     std::ostringstream oss;

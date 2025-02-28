@@ -28,6 +28,7 @@
 #include "bedrock/world/actor/player/player_inventory.h"
 #include "bedrock/world/actor/player/player_item_in_use.h"
 #include "bedrock/world/actor/player/player_types.h"
+#include "bedrock/world/containers/managers/container_manager.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/player_event_coordinator.h"
 #include "bedrock/world/inventory/inventory_options.h"
@@ -137,8 +138,7 @@ public:
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
     [[nodiscard]] const std::string &getName() const;
-    void setPermissions(
-        CommandPermissionLevel level);  // TODO(hook): this function can no longer be hooked (lined), find alternatives
+    void setPermissions(CommandPermissionLevel permission);
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;

@@ -35,9 +35,10 @@ public:
     }
 
     ENDSTONE_HOOK MCRESULT executeCommand(CommandContext &ctx, bool suppress_output) const;
-    Command *compileCommand(HashedString const &command_str, CommandOrigin &origin,
-                                          CurrentCmdVersion command_version,
-                                          std::function<void(const std::string &)> on_parser_error);
+    Command *compileCommand(HashedString const &command_str, CommandOrigin &origin, CurrentCmdVersion command_version,
+                            std::function<void(const std::string &)> on_parser_error);
+
+    static CommandOutputType getOutputType(const CommandOrigin & origin);
 
 private:
     std::unique_ptr<CommandOutputSender> output_sender_;                                       // +8

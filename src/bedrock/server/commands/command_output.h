@@ -66,6 +66,7 @@ public:
     void forceOutput(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
     void error(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
     [[nodiscard]] int getSuccessCount() const;
+    [[nodiscard]] CommandOutputType getType() const;
     [[nodiscard]] const std::vector<CommandOutputMessage> &getMessages() const;
 
 private:

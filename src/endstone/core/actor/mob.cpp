@@ -19,7 +19,7 @@
 
 namespace endstone::core {
 
-EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob), mob_(mob) {}
+EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob) {}
 
 Mob *EndstoneMob::asMob() const
 {
@@ -149,7 +149,7 @@ Dimension &EndstoneMob::getDimension() const
 void EndstoneMob::setRotation(float yaw, float pitch)
 {
     EndstoneActor::setRotation(yaw, pitch);
-    mob_.setYBodyRotation(yaw);
+    getMob().setYBodyRotation(yaw);
 }
 
 void EndstoneMob::teleport(Location location)
@@ -165,6 +165,16 @@ void EndstoneMob::teleport(Actor &target)
 std::int64_t EndstoneMob::getId() const
 {
     return EndstoneActor::getId();
+}
+
+void EndstoneMob::remove()
+{
+    EndstoneActor::remove();
+}
+
+bool EndstoneMob::isValid() const
+{
+    return EndstoneActor::isValid();
 }
 
 bool EndstoneMob::isDead() const
@@ -244,7 +254,12 @@ void EndstoneMob::setScoreTag(std::string score)
 
 bool EndstoneMob::isGliding() const
 {
-    return mob_.isGliding();
+    return getMob().isGliding();
+}
+
+::Mob &EndstoneMob::getMob() const
+{
+    return getHandle<::Mob>();
 }
 
 std::shared_ptr<EndstoneMob> EndstoneMob::create(EndstoneServer &server, ::Mob &mob)

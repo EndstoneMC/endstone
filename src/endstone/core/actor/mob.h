@@ -59,6 +59,8 @@ public:
     void teleport(Location location) override;
     void teleport(Actor &target) override;
     [[nodiscard]] std::int64_t getId() const override;
+    void remove() override;
+    [[nodiscard]] bool isValid() const override;
     [[nodiscard]] bool isDead() const override;
     [[nodiscard]] int getHealth() const override;
     [[nodiscard]] Result<void> setHealth(int health) const override;
@@ -78,9 +80,8 @@ public:
     // Mob
     [[nodiscard]] bool isGliding() const override;
 
-    static std::shared_ptr<EndstoneMob> create(EndstoneServer &server, ::Mob &mob);
+    ::Mob &getMob() const;
 
-private:
-    ::Mob &mob_;
+    static std::shared_ptr<EndstoneMob> create(EndstoneServer &server, ::Mob &mob);
 };
 }  // namespace endstone::core

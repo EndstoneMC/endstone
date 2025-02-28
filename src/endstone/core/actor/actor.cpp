@@ -26,7 +26,7 @@
 
 namespace endstone::core {
 
-EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor)
+EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor.getWeakEntity())
 {
     getPermissibleBase();
 }
@@ -42,7 +42,7 @@ Server &EndstoneActor::getServer() const
 
 std::string EndstoneActor::getName() const
 {
-    return CommandUtils::getActorName(actor_);
+    return CommandUtils::getActorName(getActor());
 }
 
 bool EndstoneActor::isPermissionSet(std::string name) const
@@ -102,29 +102,29 @@ void EndstoneActor::setOp(bool value)
 
 std::string EndstoneActor::getType() const
 {
-    return actor_.getActorIdentifier().getCanonicalName();
+    return getActor().getActorIdentifier().getCanonicalName();
 }
 
 std::uint64_t EndstoneActor::getRuntimeId() const
 {
-    return actor_.getRuntimeID().raw_id;
+    return getActor().getRuntimeID().raw_id;
 }
 
 Location EndstoneActor::getLocation() const
 {
-    auto position = actor_.getPosition();
-    position.y -= actor_.getPersistentComponent<OffsetsComponent>()->height_offset;
-    const auto &rotation = actor_.getRotation();
+    auto position = getActor().getPosition();
+    position.y -= getActor().getPersistentComponent<OffsetsComponent>()->height_offset;
+    const auto &rotation = getActor().getRotation();
 
     return {&getDimension(), position.x, position.y, position.z, rotation.x, rotation.y};
 }
 
 Vector<float> EndstoneActor::getVelocity() const
 {
-    if (actor_.hasCategory(ActorCategory::Mob) || actor_.hasCategory(ActorCategory::Ridable)) {
-        auto *actor = actor_.getVehicle();
+    if (getActor().hasCategory(ActorCategory::Mob) || getActor().hasCategory(ActorCategory::Ridable)) {
+        auto *actor = getActor().getVehicle();
         if (!actor) {
-            actor = &actor_;
+            actor = &getActor();
         }
         auto *component = actor->tryGetComponent<PostTickPositionDeltaComponent>();
         if (component) {
@@ -133,23 +133,23 @@ Vector<float> EndstoneActor::getVelocity() const
         }
     }
 
-    const auto &delta = actor_.getPosDelta();
+    const auto &delta = getActor().getPosDelta();
     return {delta.x, delta.y, delta.z};
 }
 
 bool EndstoneActor::isOnGround() const
 {
-    return actor_.isOnGround();
+    return getActor().isOnGround();
 }
 
 bool EndstoneActor::isInWater() const
 {
-    return actor_.isInWater();
+    return getActor().isInWater();
 }
 
 bool EndstoneActor::isInLava() const
 {
-    return actor_.isInLava();
+    return getActor().isInLava();
 }
 
 Level &EndstoneActor::getLevel() const
@@ -159,12 +159,12 @@ Level &EndstoneActor::getLevel() const
 
 Dimension &EndstoneActor::getDimension() const
 {
-    return *getLevel().getDimension(actor_.getDimension().getName());
+    return *getLevel().getDimension(getActor().getDimension().getName());
 }
 
 void EndstoneActor::setRotation(float yaw, float pitch)
 {
-    actor_.setRotationWrapped({pitch, yaw});
+    getActor().setRotationWrapped({pitch, yaw});
 }
 
 void EndstoneActor::teleport(Location location)
@@ -177,14 +177,14 @@ void EndstoneActor::teleport(Location location)
     auto rotation = RotationCommandUtils::RotationData{RelativeFloat{location.getPitch(), 0},
                                                        RelativeFloat{location.getYaw(), 0}, std::nullopt};
 
-    auto target = TeleportCommand::computeTarget(actor_,                                               // victim
+    auto target = TeleportCommand::computeTarget(getActor(),                                           // victim
                                                  {location.getX(), location.getY(), location.getZ()},  // destination
                                                  nullptr,                                              // facing
                                                  destination_dimension,                                //  dimension
                                                  rotation,                                             // rotation
                                                  CommandVersion::CurrentVersion);
 
-    TeleportCommand::applyTarget(actor_, std::move(target), /*keep_velocity*/ false);
+    TeleportCommand::applyTarget(getActor(), std::move(target), /*keep_velocity*/ false);
 }
 
 void EndstoneActor::teleport(Actor &target)
@@ -194,17 +194,31 @@ void EndstoneActor::teleport(Actor &target)
 
 std::int64_t EndstoneActor::getId() const
 {
-    return actor_.getOrCreateUniqueID().raw_id;
+    return getActor().getOrCreateUniqueID().raw_id;
+}
+
+void EndstoneActor::remove()
+{
+    getActor().remove();
 }
 
 bool EndstoneActor::isDead() const
 {
-    return !actor_.isAlive();
+    return !getActor().isAlive();
+}
+
+bool EndstoneActor::isValid() const
+{
+    const auto *handle = actor_.tryUnwrap<::Actor>();
+    if (!handle) {
+        return false;
+    }
+    return handle->isAlive();
 }
 
 int EndstoneActor::getHealth() const
 {
-    return actor_.getHealth();
+    return getActor().getHealth();
 }
 
 Result<void> EndstoneActor::setHealth(int health) const
@@ -213,70 +227,70 @@ Result<void> EndstoneActor::setHealth(int health) const
         return nonstd::make_unexpected(
             make_error("Health value ({}) must be between 0 and {}.", health, getMaxHealth()));
     }
-    auto mutable_attr = actor_.getMutableAttribute("minecraft:health");
+    auto mutable_attr = getActor().getMutableAttribute("minecraft:health");
     mutable_attr.instance->setCurrentValue(static_cast<float>(health), mutable_attr.context);
     return {};
 }
 
 int EndstoneActor::getMaxHealth() const
 {
-    return actor_.getMaxHealth();
+    return getActor().getMaxHealth();
 }
 
 std::vector<std::string> EndstoneActor::getScoreboardTags() const
 {
-    return actor_.getTags();
+    return getActor().getTags();
 }
 
 bool EndstoneActor::addScoreboardTag(std::string tag) const
 {
-    return actor_.addTag(tag);
+    return getActor().addTag(tag);
 }
 
 bool EndstoneActor::removeScoreboardTag(std::string tag) const
 {
-    return actor_.removeTag(tag);
+    return getActor().removeTag(tag);
 }
 
 bool EndstoneActor::isNameTagVisible() const
 {
-    return actor_.canShowNameTag();
+    return getActor().canShowNameTag();
 }
 
 void EndstoneActor::setNameTagVisible(bool visible)
 {
-    actor_.setNameTagVisible(visible);
+    getActor().setNameTagVisible(visible);
 }
 
 bool EndstoneActor::isNameTagAlwaysVisible() const
 {
-    return actor_.entity_data.getInt8(static_cast<SynchedActorData::ID>(ActorDataIDs::NAMETAG_ALWAYS_SHOW)) != 0;
+    return getActor().entity_data.getInt8(static_cast<SynchedActorData::ID>(ActorDataIDs::NAMETAG_ALWAYS_SHOW)) != 0;
 }
 
 void EndstoneActor::setNameTagAlwaysVisible(bool visible)
 {
-    actor_.entity_data.set<SynchedActorData::TypeInt8>(
+    getActor().entity_data.set<SynchedActorData::TypeInt8>(
         static_cast<SynchedActorData::ID>(ActorDataIDs::NAMETAG_ALWAYS_SHOW), visible);
 }
 
 std::string EndstoneActor::getNameTag() const
 {
-    return actor_.getNameTag();
+    return getActor().getNameTag();
 }
 
 void EndstoneActor::setNameTag(std::string name)
 {
-    actor_.setNameTag(name);
+    getActor().setNameTag(name);
 }
 
 std::string EndstoneActor::getScoreTag() const
 {
-    return actor_.getScoreTag();
+    return getActor().getScoreTag();
 }
 
 void EndstoneActor::setScoreTag(std::string score)
 {
-    actor_.setScoreTag(score);
+    getActor().setScoreTag(score);
 }
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
@@ -287,7 +301,7 @@ PermissibleBase &EndstoneActor::getPermissibleBase()
 
 ::Actor &EndstoneActor::getActor() const
 {
-    return actor_;
+    return getHandle<::Actor>();
 }
 
 std::shared_ptr<EndstoneActor> EndstoneActor::create(EndstoneServer &server, ::Actor &actor)

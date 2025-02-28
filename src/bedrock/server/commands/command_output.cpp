@@ -75,6 +75,11 @@ int CommandOutput::getSuccessCount() const
     return success_count_;
 }
 
+CommandOutputType CommandOutput::getType() const
+{
+    return type_;
+}
+
 const std::vector<CommandOutputMessage> &CommandOutput::getMessages() const
 {
     return messages_;

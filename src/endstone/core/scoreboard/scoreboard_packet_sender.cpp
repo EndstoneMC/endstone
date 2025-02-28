@@ -70,7 +70,7 @@ void ScoreboardPacketSender::sendToClient(const NetworkIdentifier &network_ident
             continue;
         }
 
-        auto user_identifier = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
+        auto user_identifier = player->getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
         if (user_identifier->network_id != network_identifier || user_identifier->client_sub_id != sub_id) {
             continue;
         }
@@ -95,7 +95,7 @@ void ScoreboardPacketSender::sendBroadcast(const ::Packet &packet)
             continue;
         }
 
-        auto user_identifier = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
+        auto user_identifier = player->getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
         sender_.sendToClient(user_identifier, packet);
     }
 }

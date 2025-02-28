@@ -23,7 +23,7 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
                                                  PeerPurpose purpose)
 {
     auto new_def = def;
-    new_def.max_num_connections = endstone::core::EndstoneServer::MaxPlayers;
+    new_def.max_num_connections = SharedConstants::NetworkDefaultMaxConnections;
 
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
     if (result == RakNet::StartupResult::RAKNET_STARTED && purpose == PeerPurpose::Gameplay) {

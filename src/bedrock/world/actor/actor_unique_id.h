@@ -18,8 +18,7 @@
 
 #include <boost/functional/hash.hpp>
 
-class ActorUniqueID {
-public:
+struct ActorUniqueID {
     std::int64_t raw_id{-1};
     ActorUniqueID() = default;
     explicit ActorUniqueID(std::int64_t id) : raw_id(id){};

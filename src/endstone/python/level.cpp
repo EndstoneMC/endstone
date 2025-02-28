@@ -82,6 +82,12 @@ void init_level(py::module_ &m)
              py::arg("location").noconvert(), "Gets the Block at the given Location")
         .def("get_block_at", py::overload_cast<int, int, int>(&Dimension::getBlockAt, py::const_), py::arg("x"),
              py::arg("y"), py::arg("z"), "Gets the Block at the given coordinates")
+        .def("get_highest_block_y_at", &Dimension::getHighestBlockYAt, py::arg("x"), py::arg("z"),
+             "Gets the highest non-empty (impassable) coordinate at the given coordinates.")
+        .def("get_highest_block_at", py::overload_cast<Location>(&Dimension::getHighestBlockAt, py::const_),
+             py::arg("location").noconvert(), "Gets the highest non-empty (impassable) block at the given Location.")
+        .def("get_highest_block_at", py::overload_cast<int, int>(&Dimension::getHighestBlockAt, py::const_),
+             py::arg("x"), py::arg("z"), "Gets the highest non-empty (impassable) block at the given coordinates.")
         .def_property_readonly("loaded_chunks", &Dimension::getLoadedChunks, "Gets a list of all loaded Chunks");
 
     level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")

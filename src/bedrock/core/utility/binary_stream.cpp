@@ -16,6 +16,16 @@
 
 #include <fmt/core.h>
 
+std::string_view ReadOnlyBinaryStream::getView() const
+{
+    return view_;
+}
+
+const std::string &BinaryStream::getBuffer() const
+{
+    return *buffer_;
+}
+
 void BinaryStream::writeBool(bool value)
 {
     write(&value, sizeof(bool));
@@ -90,4 +100,5 @@ void BinaryStream::write(const void *data, std::size_t size)
     if (size > 0) {
         buffer_->append(static_cast<const char *>(data), size);
     }
+    view_ = *buffer_;
 }

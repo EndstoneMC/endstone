@@ -65,11 +65,11 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
     }
 
     sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color,
-                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage(), ColorFormat::Gold, tps_color,
-                       server.getCurrentMillisecondsPerTick());
+                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage() * 100, ColorFormat::Gold,
+                       tps_color, server.getCurrentMillisecondsPerTick());
     sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color,
-                       server.getAverageTicksPerSecond(), server.getAverageTickUsage(), ColorFormat::Gold, tps_color,
-                       server.getAverageMillisecondsPerTick());
+                       server.getAverageTicksPerSecond(), server.getAverageTickUsage() * 100, ColorFormat::Gold,
+                       tps_color, server.getAverageMillisecondsPerTick());
 
     sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, detail::get_thread_count());
 

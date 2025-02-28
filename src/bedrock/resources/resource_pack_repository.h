@@ -31,7 +31,7 @@ private:
     std::unique_ptr<CompositePackSource> cache_pack_source_;                               // +80
     std::unique_ptr<CompositePackSource> world_pack_source_;                               // +88
     std::unique_ptr<CompositePackSource> premium_world_template_pack_source_;              // +96
-    std::unique_ptr<CompositePackSource> dynamic_package_source_;                          // +104
+    std::unique_ptr<CompositePackSource> temp_world_template_pack_source_;                 // +104
     std::unique_ptr<PackSourceReport> pack_source_report_;                                 // +120
     ResourcePack *editor_pack_;                                                            // +136
     ResourcePack *vanilla_pack_;                                                           // +128

@@ -18,6 +18,7 @@
 #include <string>
 
 #include "bedrock/certificates/certificate.h"
+#include "bedrock/certificates/identity/game_server_token.h"
 #include "bedrock/certificates/web_token.h"
 #include "bedrock/deps/json/value.h"
 
@@ -25,7 +26,7 @@ class SubClientConnectionRequest {
 public:
     [[nodiscard]] Json::Value getData(const std::string &key) const
     {
-        if (certificate_ && certificate_->isValid() && raw_token_) {
+        if (game_server_token_ && raw_token_) {
             return raw_token_->getData().get(key, Json::nullValue);
         }
         return Json::nullValue;
@@ -34,5 +35,5 @@ public:
 private:
     std::unique_ptr<WebToken> raw_token_;                      // +0
     std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +0
-    std::unique_ptr<Certificate> certificate_;                 // +16
+    GameServerToken game_server_token_;                        // +16
 };

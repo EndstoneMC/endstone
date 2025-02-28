@@ -73,7 +73,6 @@ public:
     Result<void> setMaxPlayers(int max_players) override;
     [[nodiscard]] Player *getPlayer(UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
-    [[nodiscard]] Player *getPlayer(const ::NetworkIdentifier &network_id, SubClientId sub_id) const;
 
     [[nodiscard]] bool getOnlineMode() const override;
     void shutdown() override;
@@ -116,8 +115,6 @@ public:
 
     [[nodiscard]] ServerInstance &getServer() const;
 
-    static constexpr int MaxPlayers = 200;
-
 private:
     friend class EndstonePlayer;
     void enablePlugin(Plugin &plugin);
@@ -147,10 +144,8 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
-    std::unordered_map<UUID, EndstonePlayer *> players_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
-    std::vector<std::weak_ptr<EndstoneScoreboard>> scoreboards_;
-    std::unordered_map<const EndstonePlayer *, std::shared_ptr<EndstoneScoreboard>> player_boards_;
+    std::unordered_map<UUID, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
     Bedrock::NonOwnerPointer<IResourcePackRepository> resource_pack_repository_;
     std::unique_ptr<EndstonePackSource> resource_pack_source_;

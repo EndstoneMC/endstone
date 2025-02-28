@@ -16,12 +16,44 @@
 
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/level/level.h"
 
 Command *MinecraftCommands::compileCommand(HashedString const &command_str, CommandOrigin &origin,
                                            CurrentCmdVersion command_version,
                                            std::function<void(const std::string &)> on_parser_error)
 {
     return BEDROCK_CALL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version,
-                            on_parser_error);
+                        on_parser_error);
+}
+
+CommandOutputType MinecraftCommands::getOutputType(const CommandOrigin &origin)
+{
+    switch (origin.getOriginType()) {
+    case CommandOriginType::Test:
+    case CommandOriginType::AutomationPlayer:
+    case CommandOriginType::ClientAutomation:
+    case CommandOriginType::Script: {
+        return CommandOutputType::DataSet;
+    }
+    case CommandOriginType::DedicatedServer: {
+        return CommandOutputType::AllOutput;
+    }
+    case CommandOriginType::CommandBlock:
+    case CommandOriginType::MinecartCommandBlock: {
+        if (auto *level = origin.getLevel(); level) {
+            if (!level->getGameRules().getBool(GameRuleId(GameRules::COMMAND_BLOCK_OUTPUT), false)) {
+                return CommandOutputType::LastOutput;
+            }
+        }
+        return CommandOutputType::AllOutput;
+    }
+    default: {
+        if (auto *level = origin.getLevel(); level) {
+            if (!level->getGameRules().getBool(GameRuleId(GameRules::SEND_COMMAND_FEEDBACK), false)) {
+                return CommandOutputType::Silent;
+            }
+        }
+        return CommandOutputType::AllOutput;
+    }
+    }
 }

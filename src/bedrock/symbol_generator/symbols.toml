@@ -1,4 +1,4 @@
-timestamp = 1739973955
+timestamp = 1740077622
 version = "1.21.60"
 
 [windows]
@@ -73,6 +73,8 @@ version = "1.21.60"
 # ServerInstance
 "?_resetServerScriptManager@ServerInstance@@AEAAXXZ" = 22404720
 # ServerNetworkHandler
+"?allowIncomingPacketId@ServerNetworkHandler@@UEAA?AW4IncomingPacketFilterResult@@AEBUNetworkIdentifierWithSubId@@W4MinecraftPacketIds@@_K@Z" = 18701200
+"?allowOutgoingPacket@ServerNetworkHandler@@UEAA?AW4OutgoingPacketFilterResult@@AEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 18700256
 "?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 18662704
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 18734400
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 18786960
@@ -161,6 +163,8 @@ version = "1.21.60"
 # ServerInstance
 "_ZN14ServerInstance25_resetServerScriptManagerEv" = 97226000
 # ServerNetworkHandler
+"_ZN20ServerNetworkHandler21allowIncomingPacketIdERK26NetworkIdentifierWithSubId18MinecraftPacketIdsm" = 94644288
+"_ZN20ServerNetworkHandler19allowOutgoingPacketERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet" = 94643472
 "_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 94609392
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 94689776
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 94642160

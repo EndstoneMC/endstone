@@ -23,7 +23,6 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/shared_constants.h"
-#include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/color_format.h"
@@ -46,6 +45,7 @@
 #include "endstone/core/plugin/python_plugin_loader.h"
 #include "endstone/core/signal_handler.h"
 #include "endstone/core/util/error.h"
+#include "endstone/core/util/uuid.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
@@ -301,16 +301,16 @@ Level *EndstoneServer::getLevel() const
 std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 {
     std::vector<Player *> result;
-    result.reserve(players_.size());
-    for (const auto &[id, player] : players_) {
-        result.push_back(player);
-    }
+    level_->getHandle().forEachPlayer([&](const ::Player &player) {
+        result.emplace_back(&player.getEndstoneActor<EndstonePlayer>());
+        return true;
+    });
     return result;
 }
 
 int EndstoneServer::getMaxPlayers() const
 {
-    return getServer().getMinecraft()->getServerNetworkHandler()->max_num_players_;
+    return getServer().getMinecraft()->getServerNetworkHandler()->getMaxNumPlayers();
 }
 
 Result<void> EndstoneServer::setMaxPlayers(int max_players)
@@ -318,39 +318,26 @@ Result<void> EndstoneServer::setMaxPlayers(int max_players)
     if (max_players < 0) {
         return nonstd::make_unexpected(make_error("Max number of players must not be negative."));
     }
-    if (max_players > MaxPlayers) {
-        return nonstd::make_unexpected(
-            make_error("Max number of players must not exceed the hard limit {}", MaxPlayers));
+    if (max_players > SharedConstants::NetworkDefaultMaxConnections) {
+        return nonstd::make_unexpected(make_error("Max number of players must not exceed the hard limit {}",
+                                                  SharedConstants::NetworkDefaultMaxConnections));
     }
-    getServer().getMinecraft()->getServerNetworkHandler()->max_num_players_ = max_players;
-    getServer().getMinecraft()->getServerNetworkHandler()->updateServerAnnouncement();
+    getServer().getMinecraft()->getServerNetworkHandler()->setMaxNumPlayers(max_players);
     return {};
 }
 
 Player *EndstoneServer::getPlayer(UUID id) const
 {
-    auto it = players_.find(id);
-    if (it != players_.end()) {
-        return it->second;
+    if (auto *player = level_->getHandle().getPlayer(EndstoneUUID::toMinecraft(id))) {
+        return &player->getEndstoneActor<EndstonePlayer>();
     }
     return nullptr;
 }
 
 Player *EndstoneServer::getPlayer(std::string name) const
 {
-    for (const auto &[_, player] : players_) {
+    for (const auto &player : getOnlinePlayers()) {
         if (boost::iequals(player->getName(), name)) {
-            return player;
-        }
-    }
-    return nullptr;
-}
-
-Player *EndstoneServer::getPlayer(const NetworkIdentifier &network_id, SubClientId sub_id) const
-{
-    for (const auto &[uuid, player] : players_) {
-        if (const auto component = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
-            component->network_id == network_id && component->client_sub_id == sub_id) {
             return player;
         }
     }
@@ -373,11 +360,9 @@ void EndstoneServer::reload()
 {
     plugin_manager_->clearPlugins();
     command_map_->clearCommands();
-    unregisterEventListeners();
     reloadData();
 
     // TODO(server): Wait for at most 2.5 seconds for all async tasks to finish, otherwise issue a warning
-    registerEventListeners();
     loadPlugins();
     enablePlugins(PluginLoadOrder::Startup);
     enablePlugins(PluginLoadOrder::PostWorld);
@@ -385,15 +370,17 @@ void EndstoneServer::reload()
     getPluginManager().callEvent(event);
 
     // sync commands
-    for (const auto &[uuid, player] : players_) {
+    for (const auto &player : getOnlinePlayers()) {
         player->updateCommands();
     }
 }
 
 void EndstoneServer::reloadData()
 {
+    unregisterEventListeners();
     server_instance_->getMinecraft()->requestResourceReload();
     level_->getHandle().loadFunctionManager();
+    registerEventListeners();
 }
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
@@ -438,7 +425,6 @@ std::shared_ptr<Scoreboard> EndstoneServer::createScoreboard()
     auto board = std::make_unique<ServerScoreboard>(registry, nullptr, level_->getHandle().getGameplayUserManager());
     board->setPacketSender(level_->getHandle().getPacketSender());
     auto result = std::make_shared<EndstoneScoreboard>(std::move(board));
-    scoreboards_.emplace_back(result);
     return result;
 }
 
@@ -527,7 +513,7 @@ IpBanList &EndstoneServer::getIpBanList() const
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const
 {
-    auto it = player_boards_.find(&player);
+    auto it = player_boards_.find(player.getUniqueId());
     if (it == player_boards_.end()) {
         return *scoreboard_;
     }
@@ -547,20 +533,21 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
     getPlayerBoard(player).resetScores(&player);
 
     // add player to the new board
-    new_board.onPlayerJoined(player.getHandle());
+    new_board.onPlayerJoined(player.getPlayer());
 
     // update tracking records
     if (&scoreboard == scoreboard_.get()) {
-        player_boards_.erase(&player);
+        player_boards_.erase(player.getUniqueId());
     }
     else {
-        player_boards_[&player] = std::static_pointer_cast<EndstoneScoreboard>(scoreboard.shared_from_this());
+        player_boards_[player.getUniqueId()] =
+            std::static_pointer_cast<EndstoneScoreboard>(scoreboard.shared_from_this());
     }
 }
 
 void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
 {
-    player_boards_.erase(&player);
+    player_boards_.erase(player.getUniqueId());
 }
 
 void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()> &tick_function)

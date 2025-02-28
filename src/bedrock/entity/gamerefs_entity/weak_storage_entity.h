@@ -27,6 +27,7 @@ protected:
     [[nodiscard]] bool _isSet() const;
 
 private:
+    friend class EntityContext;
     friend class StackResultStorageEntity;
     WeakRef<EntityRegistry> registry_;
     EntityId entity_;

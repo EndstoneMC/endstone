@@ -52,7 +52,7 @@ HandlerResult EndstonePlayerGameplayHandler::handleEvent(const PlayerGameplayEve
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerInitialSpawnEvent>> ||
+                      // std::is_same_v<T, Details::ValueOrRef<const PlayerInitialSpawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerEmoteEvent>>) {
             if (!handleEvent(arg.value())) {
@@ -105,6 +105,7 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         auto &server = entt::locator<EndstoneServer>::value();
         auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
+
         if (!player->isAlive()) {
             // Close any open form on player death
             endstone_player.closeForm();
@@ -126,9 +127,17 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerDamageEvent &event)
             pk->death_cause_message = death_cause_message;
             player->sendNetworkPacket(*packet);
 
-            // Broadcast death message if not empty
-            if (!e->getDeathMessage().empty()) {
+            // Log death message to console if not empty
+            if (e->getDeathMessage().empty()) {
+                return true;
+            }
+
+            // Broadcast death messages
+            if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false)) {
                 server.broadcastMessage(Translatable{death_cause_message.first, death_cause_message.second});
+            }
+            else {
+                server.getLogger().info(e->getDeathMessage());
             }
         }
     }
@@ -173,32 +182,6 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerFormCloseEvent &even
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         player->getEndstoneActor<EndstonePlayer>().onFormClose(event.form_id, event.form_close_reason);
-    }
-    return true;
-}
-
-bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInitialSpawnEvent &event)
-{
-    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<EndstoneServer>::value();
-        auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
-
-        Translatable tr{ColorFormat::Yellow + "%multiplayer.player.joined", {endstone_player.getName()}};
-        const std::string join_message = EndstoneMessage::toString(tr);
-
-        PlayerJoinEvent e{endstone_player, join_message};
-        server.getPluginManager().callEvent(e);
-        if (e.getJoinMessage() != join_message) {
-            tr = Translatable{e.getJoinMessage(), {}};
-        }
-
-        if (!e.getJoinMessage().empty()) {
-            for (const auto &online_player : server.getOnlinePlayers()) {
-                online_player->sendMessage(tr);
-            }
-        }
-        endstone_player.recalculatePermissions();
-        endstone_player.updateCommands();
     }
     return true;
 }

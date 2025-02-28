@@ -290,6 +290,9 @@ public:
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
     [[nodiscard]] bool isDead() const;
+    EntityContext &getEntity();
+    const EntityContext &getEntity() const;
+    WeakRef<EntityContext> getWeakEntity() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);

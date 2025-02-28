@@ -80,6 +80,8 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_respawn_event.h"
 #include "event/player/player_teleport_event.h"
 #include "event/server/broadcast_message_event.h"
+#include "event/server/data_packet_receive_event.h"
+#include "event/server/data_packet_send_event.h"
 #include "event/server/plugin_disable_event.h"
 #include "event/server/plugin_enable_event.h"
 #include "event/server/script_message_event.h"

@@ -22,9 +22,11 @@
 namespace mce {
 class UUID {
 public:
+    static UUID EMPTY;
+    UUID() = default;
     [[nodiscard]] std::string asString() const;
 
-    std::int64_t data[2];
+    std::int64_t data[2]{0, 0};
 };
 BEDROCK_STATIC_ASSERT_SIZE(UUID, 16, 16);
 }  // namespace mce

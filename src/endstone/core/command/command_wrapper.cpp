@@ -52,7 +52,7 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
     }
 
     // run the command and pass down the sender
-    CommandOutputWithSender output{CommandOutputType::AllOutput, sender};
+    CommandOutputWithSender output{MinecraftCommands::getOutputType(*command_origin), sender};
     command->run(*command_origin, output);
 
     // redirect outputs to sender
@@ -102,9 +102,9 @@ std::unique_ptr<CommandOrigin> CommandWrapper::getCommandOrigin(CommandSender &s
         CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
-            tag.putInt64("PlayerId", player->getHandle().getOrCreateUniqueID().raw_id);
+            tag.putInt64("PlayerId", player->getPlayer().getOrCreateUniqueID().raw_id);
         }
-        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getHandle().getLevel()));
+        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getPlayer().getLevel()));
     }
 
     if (const auto *actor = static_cast<EndstoneActor *>(sender.asActor()); actor) {

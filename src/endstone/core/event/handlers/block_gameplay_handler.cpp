@@ -89,22 +89,22 @@ bool EndstoneBlockGameplayHandler::handleEvent(const PistonActionEvent &event)
 
 bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent &event)
 {
-    const auto *entity = ::Actor::tryGetFromEntity(event.player.unwrap(), false);
-    if (!entity || !entity->isPlayer()) {
+    const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
+    if (!player) {
         return true;
     }
 
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = entity->getEndstoneActor<EndstonePlayer>();
-    auto &dimension = player.getDimension();
-    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
+    auto &endstone_player = player->getEndstoneActor<EndstonePlayer>();
+    auto &dimension = endstone_player.getDimension();
+    auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
     const auto block_face = static_cast<BlockFace>(event.face);
     auto block_placed = std::make_unique<EndstoneBlockState>(dimension, event.pos, event.permutation_to_place);
     const auto block_replaced = EndstoneBlock::at(block_source, event.pos);
     const auto opposite = EndstoneBlockFace::getOpposite(block_face);
     const auto block_against = block_replaced->getRelative(opposite);
 
-    BlockPlaceEvent e{std::move(block_placed), block_replaced, block_against, player};
+    BlockPlaceEvent e{std::move(block_placed), block_replaced, block_against, endstone_player};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return false;

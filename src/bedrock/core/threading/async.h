@@ -44,10 +44,10 @@ public:
 
 template <typename T>
 class IAsyncResult : public AsyncBase, public IAsyncGetResult<T> {
-    typedef std::shared_ptr<IAsyncResult> Handle;
-    typedef std::function<void(const IAsyncResult &)> CompletionHandler;
-
 public:
+    using Handle = std::shared_ptr<IAsyncResult>;
+    using CompletionHandler = int;
+
     virtual void addOnComplete(CompletionHandler) = 0;
 };
 

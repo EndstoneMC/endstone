@@ -22,14 +22,11 @@
 #include "endstone/event/player/player_teleport_event.h"
 #include "endstone/runtime/hook.h"
 
-using endstone::core::EndstonePlayer;
-using endstone::core::EndstoneServer;
-
 void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
     Vec3 position = pos;
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = getEndstoneActor<EndstonePlayer>();
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
     const endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
     endstone::PlayerTeleportEvent e{player, player.getLocation(), to};
     server.getPluginManager().callEvent(e);
@@ -42,10 +39,12 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
                                 keep_velocity);
 }
 
-void Player::setPermissions(CommandPermissionLevel level)
+void Player::setPermissions(CommandPermissionLevel permission)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
-    auto &player = getEndstoneActor<EndstonePlayer>();
+    const auto component = getPersistentComponent<AbilitiesComponent>();
+    component->abilities.setCommandPermissions(permission);
+
+    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
     player.recalculatePermissions();
     player.updateCommands();
 }
