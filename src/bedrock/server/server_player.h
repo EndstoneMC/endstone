@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/certificates/identity/game_server_token.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/inventory/inventory_menu.h"
@@ -23,6 +24,10 @@ class ServerPlayer : public Player {
 public:
     using OnPlayerLoadedCallback = std::function<void(ServerPlayer &)>;
 
+    ServerPlayer(Level &, PacketSender &, ServerNetworkSystem &, ClientBlobCache::Server::ActiveTransfersManager &,
+                 GameType, bool, const NetworkIdentifier &, SubClientId, OnPlayerLoadedCallback, mce::UUID,
+                 const std::string &, const std::string &, const GameServerToken &, int, bool, EntityContext &,
+                 DeviceMemoryTier, PlatformType, int, InputMode);
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void disconnect();
     void setLocalPlayerAsInitialized();
