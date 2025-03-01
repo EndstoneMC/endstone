@@ -14,7 +14,7 @@ _Represents a base actor in the level._
 
 
 
-Inherits the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
+Inherits the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md),  std::enable_shared_from_this< Actor >
 
 
 Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)

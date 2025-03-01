@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1Actor" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Actor</compoundname>
     <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Actor &gt;</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Mob" prot="public" virt="non-virtual">endstone::Mob</derivedcompoundref>
     <includes refid="actor_8h" local="no">endstone/actor/actor.h</includes>
     <sectiondef kind="public-func">
@@ -705,6 +706,8 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <link refid="classendstone_1_1Actor"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
       </node>
       <node id="2">
         <label>endstone::CommandSender</label>
@@ -712,7 +715,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::Mob</label>
         <link refid="classendstone_1_1Mob"/>
         <childnode refid="1" relation="public-inheritance">
@@ -722,11 +725,14 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::Player</label>
         <link refid="classendstone_1_1Player"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="4">
+        <label>std::enable_shared_from_this&lt; Actor &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -734,6 +740,8 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <label>endstone::Actor</label>
         <link refid="classendstone_1_1Actor"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -745,6 +753,9 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <node id="3">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
+      </node>
+      <node id="4">
+        <label>std::enable_shared_from_this&lt; Actor &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="250"/>

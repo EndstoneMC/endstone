@@ -55,6 +55,43 @@
         <link refid="classendstone_1_1Actor"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Mob</label>
+        <link refid="classendstone_1_1Mob"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+      <node id="6">
+        <label>endstone::Player</label>
+        <link refid="classendstone_1_1Player"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::enable_shared_from_this&lt; Actor &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
       </node>
       <node id="3">
         <label>endstone::CommandSender</label>
@@ -73,34 +110,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
       <node id="5">
-        <label>endstone::Player</label>
-        <link refid="classendstone_1_1Player"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2">
-        <label>endstone::Actor</label>
-        <link refid="classendstone_1_1Actor"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>endstone::CommandSender</label>
-        <link refid="classendstone_1_1CommandSender"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>endstone::Mob</label>
-        <link refid="classendstone_1_1Mob"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>endstone::Permissible</label>
-        <link refid="classendstone_1_1Permissible"/>
+        <label>std::enable_shared_from_this&lt; Actor &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/actor/mob.h" line="23" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="23" bodyend="35"/>

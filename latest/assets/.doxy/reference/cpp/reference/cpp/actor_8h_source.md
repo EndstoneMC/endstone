@@ -30,7 +30,7 @@
 
 namespace endstone {
 
-class Actor : public CommandSender {
+class Actor : public CommandSender, public std::enable_shared_from_this<Actor> {
 public:
     // CommandSender
     [[nodiscard]] Actor *asActor() const override

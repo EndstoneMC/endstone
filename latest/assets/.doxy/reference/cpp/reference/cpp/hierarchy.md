@@ -98,6 +98,16 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md) 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
+* **class** **std::enable_shared_from_this< Actor >**    
+    * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
+        * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+            * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
+    * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
+        * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+            * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
+    * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
+        * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+            * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
 * **class** **EventType**    
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
