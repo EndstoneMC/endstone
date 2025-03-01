@@ -21,59 +21,9 @@
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
-#include "endstone/event/server/data_packet_receive_event.h"
-#include "endstone/event/server/data_packet_send_event.h"
 #include "endstone/runtime/hook.h"
 
-IncomingPacketFilterResult ServerNetworkHandler::allowIncomingPacketId(const NetworkIdentifierWithSubId &sender,
-                                                                       MinecraftPacketIds packet_id,
-                                                                       std::size_t packet_size)
-{
-    const auto result =
-        ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowIncomingPacketId, this, sender, packet_id, packet_size);
-    if (result != IncomingPacketFilterResult::Allowed) {
-        return result;
-    }
 
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    if (auto *player = _getServerPlayer(sender.id, sender.sub_client_id); player) {
-        endstone::DataPacketReceiveEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                           network_.receive_buffer_};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return IncomingPacketFilterResult::RejectedSilently;
-        }
-
-        if (packet_id == MinecraftPacketIds::SetLocalPlayerAsInit) {
-            player->setLocalPlayerAsInitialized();
-        }
-    }
-
-    return IncomingPacketFilterResult::Allowed;
-}
-
-OutgoingPacketFilterResult ServerNetworkHandler::allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
-                                                                     const Packet &packet)
-{
-    const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&NetEventCallback::allowOutgoingPacket, this, ids, packet);
-    if (result != OutgoingPacketFilterResult::Allowed) {
-        return result;
-    }
-
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    for (const auto &target : ids) {
-        if (auto *player = _getServerPlayer(target.id, target.sub_client_id); player) {
-            endstone::DataPacketSendEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                            network_.send_stream_.getView()};
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                return OutgoingPacketFilterResult::Reject;
-            }
-        }
-    }
-
-    return OutgoingPacketFilterResult::Allowed;
-}
 
 void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,

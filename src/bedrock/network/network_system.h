@@ -34,7 +34,7 @@ protected:
     std::unique_ptr<LocalConnector> local_connector_;
 
 private:
-    friend class ServerNetworkHandler;
+    friend class endstone::core::EndstoneServerNetworkEventHandler;
 
     std::unique_ptr<RemoteConnector> remote_connector_;
     std::unique_ptr<ServerLocator> server_locator_;

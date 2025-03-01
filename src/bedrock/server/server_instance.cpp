@@ -19,6 +19,11 @@ Minecraft *ServerInstance::getMinecraft()
     return minecraft_.get();
 }
 
+ServerNetworkSystem &ServerInstance::getNetwork()
+{
+    return *network_;
+}
+
 PacketSender &ServerInstance::getPacketSender()
 {
     return *packet_sender_;

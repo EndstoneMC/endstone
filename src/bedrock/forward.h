@@ -26,6 +26,7 @@ class EndstoneActor;
 class EndstoneLevel;
 class EndstonePlayer;
 class EndstoneServer;
+class EndstoneServerNetworkEventHandler;
 }  // namespace core
 }  // namespace endstone
 

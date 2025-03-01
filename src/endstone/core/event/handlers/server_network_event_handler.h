@@ -30,6 +30,8 @@ public:
 
 private:
     bool handleEvent(ChatEvent &event);
+    bool handleEvent(IncomingPacketEvent &event);
+    bool handleEvent(OutgoingPacketEvent &event);
 
     std::unique_ptr<ServerNetworkEventHandler> handle_;
 };

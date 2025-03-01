@@ -72,11 +72,6 @@ public:
                          NetworkServerConfig);
 
     ~ServerNetworkHandler() override = 0;
-    ENDSTONE_HOOK IncomingPacketFilterResult allowIncomingPacketId(const NetworkIdentifierWithSubId &sender,
-                                                                   MinecraftPacketIds packet_id,
-                                                                   std::size_t packet_size) override;
-    ENDSTONE_HOOK OutgoingPacketFilterResult allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &ids,
-                                                                 const Packet &packet) override;
 
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                         std::string const &, std::optional<std::string>, bool);

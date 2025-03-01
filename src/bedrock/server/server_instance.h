@@ -41,6 +41,7 @@ public:
     };
 
     Minecraft *getMinecraft();
+    ServerNetworkSystem &getNetwork();
     PacketSender &getPacketSender();
 
 private:
