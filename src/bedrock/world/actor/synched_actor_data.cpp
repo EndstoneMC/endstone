@@ -16,16 +16,6 @@
 
 #include "bedrock/entity/components/synched_actor_data_component.h"
 
-DataItem::ID DataItem::getId() const
-{
-    return id_;
-}
-
-DataItemType DataItem::getType() const
-{
-    return type_;
-}
-
 SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
 {
     if (!hasData(id)) {
@@ -35,7 +25,7 @@ SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
     if (item->getType() != DataItemType::Byte) {
         return 0;
     }
-    return static_cast<DataItem2<TypeInt8> *>(item)->data_;
+    return static_cast<DataItem2<TypeInt8> *>(item)->data;
 }
 
 const std::string &SynchedActorData::getString(ID id) const
@@ -48,12 +38,12 @@ const std::string &SynchedActorData::getString(ID id) const
     if (item->getType() != DataItemType::String) {
         return empty_string;
     }
-    return static_cast<DataItem2<std::string> *>(item)->data_;
+    return static_cast<DataItem2<std::string> *>(item)->data;
 }
 
 bool SynchedActorData::hasData(ID id) const
 {
-    return id >= items_array_.size() && items_array_[id];
+    return id < items_array_.size() && items_array_[id];
 }
 
 DataItem &SynchedActorData::_get(ID id)
@@ -91,7 +81,7 @@ void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt8>(SynchedActor
         return;
     }
     auto *string_item = static_cast<DataItem2<SynchedActorData::TypeInt8> *>(item);
-    string_item->data_ = value;
+    string_item->data = value;
     data->dirty_flags_.set(id, true);
 }
 
@@ -104,6 +94,6 @@ void SynchedActorDataEntityWrapper::set<std::string>(SynchedActorData::ID id, co
         return;
     }
     auto *string_item = static_cast<DataItem2<std::string> *>(item);
-    string_item->data_ = value;
+    string_item->data = value;
     data->dirty_flags_.set(id, true);
 }

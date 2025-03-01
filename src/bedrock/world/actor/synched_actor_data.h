@@ -38,24 +38,24 @@ class DataItem {
 public:
     using ID = std::uint16_t;
 
-    DataItem(DataItemType type, ID id) : type_(type), id_(id) {}
-    virtual ~DataItem() = default;
-    ID getId() const;
-    DataItemType getType() const;
-
-protected:
-    const DataItemType type_;  // +8
-    const ID id_;              // +10
+    virtual ~DataItem();
+    [[nodiscard]] virtual ID getId() const = 0;
+    [[nodiscard]] virtual DataItemType getType() const = 0;
+    [[nodiscard]] virtual bool isDataEqual(const DataItem &) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<DataItem> clone() const = 0;
 };
 
 template <typename T>
 class DataItem2 : public DataItem {
 public:
-private:
-    friend class SynchedActorData;
-    friend class SynchedActorDataEntityWrapper;
+    DataItem2(DataItemType type, ID id, const T &data) : type_(type), id_(id), data(data) {}
 
-    T data_;  // +16
+private:
+    const DataItemType type_;
+    const ID id_;
+
+public:
+    T data;
 };
 
 class SynchedActorData {
