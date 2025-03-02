@@ -163,16 +163,21 @@ void dumpItemData(VanillaData &data, const ::Level &level)
         CompoundTag tag;
         tag.putString("name", item_instance.getItem()->getFullItemName());
         tag.putShort("damage", static_cast<std::int16_t>(item_instance.getAuxValue()));
-        tag.putString("group", item_instance.getItem()->getCreativeGroup());
         tag.putString("category", std::string(magic_enum::enum_name(item_instance.getItem()->getCreativeCategory())));
 
         if (const auto *user_data = item_instance.getUserData(); user_data) {
             tag.putCompound("tag", user_data->clone());
         }
 
-        if (item_instance.isBlock()) {
-            tag.putInt("blockStateHash", static_cast<std::int32_t>(item_instance.getBlock()->getRuntimeId()));
+        // NOTICE: The return value of Item::getCreativeGroup for blocks is incorrect, so we call
+        // BlockLegacy::getCreativeGroup() for blocks instead.
+        // TODO: Remove this workaround when mojang fixes the issue.
+        if (!item_instance.isBlock()) {
+            tag.putString("group", item_instance.getItem()->getCreativeGroup());
+        } else {
+            tag.putString("group", item_instance.getItem()->getLegacyBlock()->getCreativeGroup());
         }
+
         data.creative_items.add(tag.copy());
         return true;
     });

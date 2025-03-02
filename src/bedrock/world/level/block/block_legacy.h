@@ -295,6 +295,7 @@ public:
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;
     [[nodiscard]] const HashedString &getName() const;
+    [[nodiscard]] const std::string &getCreativeGroup() const;
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;
