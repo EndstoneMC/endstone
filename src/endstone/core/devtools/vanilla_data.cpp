@@ -164,7 +164,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
 
         CompoundTag tag;
         tag.putString("name", item_instance.getItem()->getFullItemName());
-        tag.putString("group", creative_item_entry.getGroup()->getName());
+        tag.putInt64("groupIndex", creative_item_entry.getGroup()->getIndex());
         tag.putShort("damage", static_cast<std::int16_t>(item_instance.getAuxValue()));
         tag.putString("category", std::string(magic_enum::enum_name(item_instance.getItem()->getCreativeCategory())));
 
