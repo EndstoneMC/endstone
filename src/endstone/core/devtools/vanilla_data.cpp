@@ -159,9 +159,12 @@ void dumpItemData(VanillaData &data, const ::Level &level)
     }
 
     auto creative_item_registry = item_registry.getCreativeItemRegistry();
-    creative_item_registry->forEachCreativeItemInstance([&](const ItemInstance &item_instance) {
+    for (const auto &creative_item_entry : creative_item_registry->getCreativeItemEntries()) {
+        const ItemInstance &item_instance = creative_item_entry.getItemInstance();
+
         CompoundTag tag;
         tag.putString("name", item_instance.getItem()->getFullItemName());
+        tag.putString("group", creative_item_entry.getGroup()->getName());
         tag.putShort("damage", static_cast<std::int16_t>(item_instance.getAuxValue()));
         tag.putString("category", std::string(magic_enum::enum_name(item_instance.getItem()->getCreativeCategory())));
 
@@ -169,18 +172,8 @@ void dumpItemData(VanillaData &data, const ::Level &level)
             tag.putCompound("tag", user_data->clone());
         }
 
-        // NOTICE: The return value of Item::getCreativeGroup for blocks is incorrect, so we call
-        // BlockLegacy::getCreativeGroup() for blocks instead.
-        // TODO: Remove this workaround when mojang fixes the issue.
-        if (!item_instance.isBlock()) {
-            tag.putString("group", item_instance.getItem()->getCreativeGroup());
-        } else {
-            tag.putString("group", item_instance.getItem()->getLegacyBlock()->getCreativeGroup());
-        }
-
         data.creative_items.add(tag.copy());
-        return true;
-    });
+    }
 
     for (const auto &creative_group : creative_item_registry->getCreativeGroups()) {
         data.creative_groups.push_back({
