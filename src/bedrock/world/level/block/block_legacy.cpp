@@ -67,11 +67,6 @@ const HashedString &BlockLegacy::getName() const
     return name_info_.full_name;
 }
 
-const std::string &BlockLegacy::getCreativeGroup() const
-{
-    return creative_group_;
-}
-
 const Block &BlockLegacy::getDefaultState() const
 {
     return *default_state_;
