@@ -1550,8 +1550,6 @@
         <link refid="classendstone_1_1Actor"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
       </node>
       <node id="4">
         <label>endstone::CommandSender</label>
@@ -1565,7 +1563,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
         <label>endstone::OfflinePlayer</label>
         <link refid="classendstone_1_1OfflinePlayer"/>
       </node>
@@ -1578,11 +1576,8 @@
         <link refid="classendstone_1_1Player"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-        <childnode refid="7" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="6">
-        <label>std::enable_shared_from_this&lt; Actor &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -1591,8 +1586,6 @@
         <link refid="classendstone_1_1Actor"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
       </node>
       <node id="4">
         <label>endstone::CommandSender</label>
@@ -1606,7 +1599,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
         <label>endstone::OfflinePlayer</label>
         <link refid="classendstone_1_1OfflinePlayer"/>
       </node>
@@ -1619,11 +1612,8 @@
         <link refid="classendstone_1_1Player"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-        <childnode refid="7" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="6">
-        <label>std::enable_shared_from_this&lt; Actor &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/player.h" line="38" column="1" bodyfile="include/endstone/player.h" bodystart="38" bodyend="455"/>
