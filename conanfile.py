@@ -23,7 +23,7 @@ class EndstoneRecipe(ConanFile):
         "fPIC": True,
         "boost/*:header_only": True,
         "date/*:header_only": True,
-        "sentry-native/*:backend": "breakpad",
+        "sentry-native/*:backend": "crashpad",
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"

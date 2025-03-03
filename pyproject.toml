@@ -36,6 +36,7 @@ dependencies = [
     "pyyaml",
     "requests",
     "rich",
+    "sentry-crashpad==0.7.17.1",
     "tomlkit",
     "typing-extensions",
 ]
