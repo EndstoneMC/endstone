@@ -3,6 +3,7 @@ import hashlib
 import logging
 import os
 import platform
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -12,6 +13,7 @@ from typing import Union
 
 import click
 import requests
+import sentry_crashpad
 from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
 
@@ -135,6 +137,9 @@ class Bootstrap:
 
     def _prepare(self) -> None:
         self.plugin_path.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(
+            Path(sentry_crashpad._get_executable("crashpad_handler")).parent, self.server_path, dirs_exist_ok=True
+        )
 
     def _install(self) -> None:
         """

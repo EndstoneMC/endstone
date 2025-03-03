@@ -27,6 +27,7 @@ class LinuxBootstrap(Bootstrap):
         super()._prepare()
         st = os.stat(self.executable_path)
         os.chmod(self.executable_path, st.st_mode | stat.S_IEXEC)
+        os.chmod(self.server_path / "crashpad_handler", st.st_mode | stat.S_IEXEC)
 
     def _create_process(self, *args, **kwargs) -> None:
         env = os.environ.copy()

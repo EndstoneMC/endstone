@@ -47,10 +47,7 @@ struct exception_slot {
     const char *description;
 };
 
-#define EXCEPTION_DEF(code, desc) \
-    {                             \
-        code, #code, desc         \
-    }
+#define EXCEPTION_DEF(code, desc) {code, #code, desc}
 
 const exception_slot EXCEPTION_DEFINITIONS[] = {
     EXCEPTION_DEF(EXCEPTION_ACCESS_VIOLATION, "AccessViolation"),
@@ -83,10 +80,7 @@ struct signal_slot {
     const char *description;
 };
 
-#define SIGNAL_DEF(sig, desc) \
-    {                         \
-        sig, #sig, desc       \
-    }
+#define SIGNAL_DEF(sig, desc) {sig, #sig, desc}
 
 const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction"),
                                           SIGNAL_DEF(SIGTRAP, "Trap"),
@@ -199,18 +193,12 @@ CrashHandler::CrashHandler()
 {
     constexpr auto dsn =
         "https://69c28eeaef4651abcf0bbeace6a1175c@o4508553519431680.ingest.de.sentry.io/4508569040519248";
-#ifdef _WIN32
-    fs::path handler_path = (fs::path{detail::get_module_pathname()}.parent_path()) / "crashpad_handler.exe";
-#else
-    fs::path handler_path = (fs::path{detail::get_module_pathname()}.parent_path()) / "crashpad_handler";
-#endif
     constexpr std::string_view release = "endstone@" ENDSTONE_VERSION;
     constexpr bool is_dev = release.find("dev") != std::string_view::npos;
 
     sentry_options_t *options = sentry_options_new();
     sentry_options_set_dsn(options, dsn);
     sentry_options_set_database_path(options, ".sentry-native");
-    sentry_options_set_handler_path(options, handler_path.string().c_str());
     sentry_options_set_release(options, std::string(release).c_str());
     sentry_options_set_on_crash(options, on_crash, nullptr);
     sentry_options_set_environment(options, is_dev ? "development" : "production");
