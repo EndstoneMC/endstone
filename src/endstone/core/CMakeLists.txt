@@ -131,23 +131,9 @@ if (DEFINED SKBUILD_PROJECT_VERSION_FULL)
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${SKBUILD_PROJECT_VERSION_FULL}")
 endif ()
 
-# The crashpad handler executable must be shipped alongside our shared library
-add_custom_target(
-        copy_crashpad_handler
-        ALL
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${sentry_INCLUDE_DIRS}/../bin/ ${CMAKE_BINARY_DIR}/crashpad
-        COMMENT "Copying crashpad_handler${CMAKE_EXECUTABLE_SUFFIX}"
-)
-add_dependencies(copy_crashpad_handler endstone_runtime)
 
 include(GNUInstallDirs)
 install(TARGETS endstone_core
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(DIRECTORY ${CMAKE_BINARY_DIR}/crashpad/ DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL
-        FILE_PERMISSIONS
-        OWNER_READ OWNER_EXECUTE OWNER_WRITE
-        GROUP_READ GROUP_EXECUTE
-        WORLD_READ WORLD_EXECUTE
-)
