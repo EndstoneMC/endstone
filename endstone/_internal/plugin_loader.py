@@ -164,7 +164,7 @@ class PythonPluginLoader(PluginLoader):
                 f"please change the distribution name from '{ep.dist.name}' to '{dist_name}'."
             )
             self.server.logger.error(
-                f"* If not, " f"please change the entry point name from '{ep.name}' to '{ep.dist.name[9:]}'."
+                f"* If not, please change the entry point name from '{ep.name}' to '{ep.dist.name[9:]}'."
             )
             return None
 

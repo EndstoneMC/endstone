@@ -88,8 +88,7 @@ class Plugin(endstone_python.Plugin):
                 or not issubclass(params[0].annotation, Event)
             ):
                 self.logger.error(
-                    f"Plugin {self.name} attempted to register an invalid "
-                    f"event handler signature: {attr_name}: {sig}"
+                    f"Plugin {self.name} attempted to register an invalid event handler signature: {attr_name}: {sig}"
                 )
                 continue
 
