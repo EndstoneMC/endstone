@@ -16,6 +16,7 @@
 
 #include <sentry.h>
 
+#include <csignal>
 #include <filesystem>
 #include <iostream>
 #include <string>
@@ -28,10 +29,6 @@
 
 #ifdef _WIN32
 #include <Windows.h>
-#endif
-
-#ifdef __linux__
-#include <csignal>
 #endif
 
 namespace fs = std::filesystem;
@@ -120,7 +117,7 @@ void print_frame(std::ostream &stream, bool color, unsigned frame_number_width, 
     stream << line;
 }
 
-bool should_report(const cpptrace::stacktrace &stacktrace, const sentry_ucontext_t *ctx)
+bool should_report(const sentry_ucontext_t *ctx)
 {
 #ifdef _WIN32
     const auto *record = ctx->exception_ptrs.ExceptionRecord;
@@ -131,38 +128,15 @@ bool should_report(const cpptrace::stacktrace &stacktrace, const sentry_ucontext
     return true;
 }
 
-void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
+void print_crash_message(std::string_view message)
 {
+    const auto stacktrace = cpptrace::generate_trace(1);
+    auto &stream = std::cerr;
     stream << "=== ENDSTONE CRASHED! ===" << '\n'
            << std::left << std::setw(18) << "Platform:" << detail::get_platform() << '\n'
            << std::left << std::setw(18) << "Endstone version:" << ENDSTONE_VERSION << '\n'
            << std::left << std::setw(18) << "Api version:" << ENDSTONE_API_VERSION << '\n';
-#ifdef _WIN32
-    const auto *record = ctx->exception_ptrs.ExceptionRecord;
-    stream << std::left << std::setw(18) << "Exception code: 0x" << std::hex << record->ExceptionCode;
-    for (const auto &[code, name, description] : EXCEPTION_DEFINITIONS) {
-        if (code == record->ExceptionCode) {
-            stream << " (" << name << ") - " << description;
-        }
-    }
-#else
-    const auto signum = ctx->signum;
-    stream << std::left << std::setw(18) << "Signal: 0x" << std::hex << signum;
-    for (const auto &[signal, name, description] : SIGNAL_DEFINITIONS) {
-        if (signal == signum) {
-            stream << " (" << name << ") - " << description;
-        }
-    }
-#endif
-    stream << "\n";
-}
-
-sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
-{
-    const auto stacktrace = cpptrace::generate_trace();
-    auto &stream = std::cerr;
-    print_crash_message(stream, ctx);
-
+    stream << message << "\n";
     stream << "Stack trace (most recent call first):" << '\n';
     if (const auto &frames = stacktrace.frames; frames.empty()) {
         stream << "<empty trace>" << '\n';
@@ -180,13 +154,57 @@ sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event
             counter++;
         }
     }
+}
 
-    if (!should_report(stacktrace, ctx)) {
+sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
+{
+    std::stringstream ss;
+#ifdef _WIN32
+    const auto *record = ctx->exception_ptrs.ExceptionRecord;
+    ss << std::left << std::setw(18) << "Exception code:" << "0x" << std::hex << record->ExceptionCode;
+    for (const auto &[code, name, description] : EXCEPTION_DEFINITIONS) {
+        if (code == record->ExceptionCode) {
+            ss << " (" << name << ") - " << description;
+        }
+    }
+#else
+    const auto signum = ctx->signum;
+    ss << std::left << std::setw(18) << "Signal:" << "0x" << std::hex << signum;
+    for (const auto &[signal, name, description] : SIGNAL_DEFINITIONS) {
+        if (signal == signum) {
+            ss << " (" << name << ") - " << description;
+        }
+    }
+#endif
+    print_crash_message(ss.str());
+
+    if (!should_report(ctx)) {
         sentry_value_decref(event);
         return sentry_value_new_null();
     }
     return event;
 }
+
+#ifdef _WIN32
+void on_terminate()
+{
+    print_crash_message("Program terminated.");
+    std::quick_exit(1);
+}
+
+void on_purecall()
+{
+    print_crash_message("Pure virtual function called!");
+    std::quick_exit(1);
+}
+
+void on_signal(int signal)
+{
+    print_crash_message("Signal received: " + std::to_string(signal));
+    std::quick_exit(1);
+}
+#endif
+
 }  // namespace
 
 CrashHandler::CrashHandler()
@@ -203,6 +221,13 @@ CrashHandler::CrashHandler()
     sentry_options_set_on_crash(options, on_crash, nullptr);
     sentry_options_set_environment(options, is_dev ? "development" : "production");
     sentry_init(options);
+
+#ifdef _WIN32
+    std::set_terminate(on_terminate);
+    _set_purecall_handler(on_purecall);
+    signal(SIGABRT, on_signal);
+    _set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
+#endif
 }
 
 CrashHandler::~CrashHandler()

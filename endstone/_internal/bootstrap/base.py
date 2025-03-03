@@ -137,9 +137,6 @@ class Bootstrap:
 
     def _prepare(self) -> None:
         self.plugin_path.mkdir(parents=True, exist_ok=True)
-        shutil.copytree(
-            Path(sentry_crashpad._get_executable("crashpad_handler")).parent, self.server_path, dirs_exist_ok=True
-        )
 
     def _install(self) -> None:
         """
