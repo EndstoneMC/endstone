@@ -139,7 +139,7 @@ void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
            << std::left << std::setw(18) << "Api version:" << ENDSTONE_API_VERSION << '\n';
 #ifdef _WIN32
     const auto *record = ctx->exception_ptrs.ExceptionRecord;
-    stream << std::left << std::setw(18) << "Exception code: 0x" << std::hex << record->ExceptionCode;
+    stream << std::left << std::setw(18) << "Exception code:" << "0x" << std::hex << record->ExceptionCode;
     for (const auto &[code, name, description] : EXCEPTION_DEFINITIONS) {
         if (code == record->ExceptionCode) {
             stream << " (" << name << ") - " << description;
@@ -147,7 +147,7 @@ void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
     }
 #else
     const auto signum = ctx->signum;
-    stream << std::left << std::setw(18) << "Signal: 0x" << std::hex << signum;
+    stream << std::left << std::setw(18) << "Signal:" << "0x" << std::hex << signum;
     for (const auto &[signal, name, description] : SIGNAL_DEFINITIONS) {
         if (signal == signum) {
             stream << " (" << name << ") - " << description;
