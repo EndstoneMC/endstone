@@ -5,9 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.6.2- Unreleased
+## 0.6.2 - Unreleased
 
 <small>[Compare with 0.6.1](https://github.com/EndstoneMC/endstone/compare/v0.6.1...HEAD)</small>
+
+### Added
+
+- Added `DataPacketReceiveEvent` and `DataPacketSendEvent` to allow viewing/intercepting low-level packet payloads.
+- Added `Actor::remove` to remove an actor from its associated dimension.
+- **Python API**: Added `Dimension.get_highest_block_at` to get the top non-air block at a given coordinate.
+
+### Fixed
+
+- Usages are now displayed correctly as percentages in `/status` command output.
+- Boss bars are now displayed correctly.
+- Death messages are no longer sent when the `SHOW_DEATH_MESSAGES` game rule is set to false.
+- Command feedback is now suppressed when the `SEND_COMMAND_FEEDBACK` game rule is set to false.
+- `PlayerJoinEvent` is now triggered after the client is fully initialized.
+- Crash reporting now works properly on Linux.
 
 ## [0.6.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.6.1) - 2025-02-20
 
