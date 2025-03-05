@@ -19,15 +19,17 @@
 #include <memory>
 #include <vector>
 
+#include "bedrock/forward.h"
 #include "bedrock/util/new_type.h"
 #include "bedrock/util/weighted_random_list.h"
 
 using ActorList = std::vector<class Actor *>;
 using BlockActorList = std::vector<class BlockActor *>;
 using MobList = std::vector<std::shared_ptr<class MobSpawnerData>>;
-using MobCategoryMap = std::array<WeightedRandomList<std::shared_ptr<MobSpawnerData>>, 8UL>;
+using MobCategoryMap = std::array<WeightedRandomList<br::worldgen::SpawnerData>, 8UL>;
 
 enum class SubClientId : std::uint8_t {
+    Server = 0,
     PrimaryClient = 0,
     Client2 = 1,
     Client3 = 2,

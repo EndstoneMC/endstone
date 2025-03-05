@@ -27,15 +27,13 @@ public:
     ServerPlayer(Level &, PacketSender &, ServerNetworkSystem &, ClientBlobCache::Server::ActiveTransfersManager &,
                  GameType, bool, const NetworkIdentifier &, SubClientId, OnPlayerLoadedCallback, mce::UUID,
                  const std::string &, const std::string &, const GameServerToken &, int, bool, EntityContext &,
-                 DeviceMemoryTier, PlatformType, int, InputMode);
+                  PlatformType, InputMode, SyncedClientOptionsComponent);
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void disconnect();
     void setLocalPlayerAsInitialized();
 
 protected:
-    DeviceMemoryTier memory_tier_;
     PlatformType platform_type_;
-    int max_client_view_distance_;
 
 private:
     ServerNetworkSystem &network_;

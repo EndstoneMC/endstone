@@ -159,9 +159,7 @@ public:
     const float sneak_height;
     const float sneak_offset;
     int score;
-    float o_bob;
-    float bob;
-    BuildPlatform build_platform;  // +1180
+    BuildPlatform build_platform;  // +1164
     std::string unique_name;
     std::string server_id;
     std::string self_signed_id;
@@ -247,10 +245,8 @@ protected:
     bool has_seen_credits_;
     std::optional<PlayerSpawnFallbackType> spawn_fallback_type_;
     std::optional<Vec3> spawn_fallback_position_;
-    PlayerItemInUse item_in_use_;  // +1808
+    PlayerItemInUse item_in_use_;
     ActorType last_hurt_by_;
-    std::int16_t sleep_counter_;
-    std::int16_t prev_sleep_counter_;
     ActorUniqueID previous_interact_entity_;
     int previous_carried_item_;
     int emote_ticks_;

@@ -13,7 +13,6 @@ find_package(Microsoft.GSL REQUIRED)
 add_library(bedrock STATIC
         shared_constants.cpp
         certificates/certificate.cpp
-        certificates/extended_certificate.cpp
         certificates/web_token.cpp
         config/player_capabilities.cpp
         core/file/path.cpp

@@ -22,4 +22,5 @@ struct NetworkServerConfig {
     std::vector<std::string> extra_trusted_keys;
     NetworkPermissions network_permissions;
     bool allow_subclient_login;
+    bool enable_packet_receipt_eventing;
 };
