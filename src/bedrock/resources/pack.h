@@ -27,6 +27,14 @@
 
 class PackSourceReport;
 
+class IPackIOProvider {
+public:
+    virtual ~IPackIOProvider();
+    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<IFileAccess> getFileAccess(ResourceFileSystem) const = 0;
+    [[nodiscard]] virtual std::function<std::string(const Core::Path &)> getAssetReader() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<IPackIOProvider> clone() const = 0;
+};
+
 class Pack : public Bedrock::EnableNonOwnerReferences {
 public:
     [[nodiscard]] PackManifest const &getManifest() const;
@@ -40,8 +48,9 @@ public:
 private:
     std::unique_ptr<PackManifest> manifest_;
     std::unique_ptr<PackAccessStrategy> access_strategy_;
-    std::unique_ptr<void *> subpack_info_pack_;  // void* = SubpackInfoCollection
-    std::unique_ptr<void *> metadata_;           // void* = PackMetadata
+    std::unique_ptr<SubpackInfoCollection> subpack_info_pack_;
+    std::unique_ptr<PackMetadata> metadata_;
+    std::unique_ptr<const LegacyDependenciesUpgrade> dependencies_upgrade_;
     std::map<void *, std::function<void(Pack &)>> pack_updated_callbacks_;
     std::map<void *, std::function<void(Pack &)>> pack_deleted_callbacks_;
 };
