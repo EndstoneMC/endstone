@@ -16,7 +16,6 @@
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "bedrock/certificates/extended_certificate.h"
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
@@ -55,18 +54,18 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     if (!component) {
         throw std::runtime_error("UserEntityIdentifierComponent is not valid");
     }
-    uuid_ = EndstoneUUID::fromMinecraft(component->client_uuid);
-    xuid_ = ExtendedCertificate::getXuid(*component->certificate, false);
+    uuid_ = EndstoneUUID::fromMinecraft(component->getClientUUID());
+    xuid_ = component->getXuid(false);
 
-    switch (component->network_id.getType()) {
+    switch (component->getNetworkId().getType()) {
     case NetworkIdentifier::Type::RakNet: {
         auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
-        auto addr = peer->GetSystemAddressFromGuid(component->network_id.guid);
-        component->network_id.sock.sa_stor = addr.address.sa_stor;
+        auto addr = peer->GetSystemAddressFromGuid(component->getNetworkId().guid);
+        component->getNetworkId().sock.sa_stor = addr.address.sa_stor;
     }
     case NetworkIdentifier::Type::Address:
     case NetworkIdentifier::Type::Address6: {
-        address_ = {component->network_id.getAddress(), component->network_id.getPort()};
+        address_ = {component->getNetworkId().getAddress(), component->getNetworkId().getPort()};
         break;
     }
     case NetworkIdentifier::Type::NetherNet:
@@ -381,7 +380,7 @@ void EndstonePlayer::kick(std::string message) const
 {
     auto *component = getPlayer().tryGetComponent<UserEntityIdentifierComponent>();
     server_.getServer().getMinecraft()->getServerNetworkHandler()->disconnectClient(
-        component->network_id, component->client_sub_id, Connection::DisconnectFailReason::Kicked, message,
+        component->getNetworkId(), component->getSubClientId(), Connection::DisconnectFailReason::Kicked, message,
         std::nullopt, false);
 }
 
@@ -563,7 +562,7 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
     auto *component = getPlayer().tryGetComponent<UserEntityIdentifierComponent>();
-    return std::chrono::milliseconds(peer->GetAveragePing(component->network_id.guid));
+    return std::chrono::milliseconds(peer->GetAveragePing(component->getNetworkId().guid));
 }
 
 void EndstonePlayer::updateCommands() const

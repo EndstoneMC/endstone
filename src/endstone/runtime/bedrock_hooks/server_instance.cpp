@@ -14,7 +14,7 @@
 
 #include "bedrock/server/server_instance.h"
 
-#include <endstone/runtime/hook.h>
+#include "endstone/runtime/hook.h"
 
 void ServerInstance::_resetServerScriptManager()
 {
