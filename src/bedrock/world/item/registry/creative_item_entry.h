@@ -17,6 +17,7 @@
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 #include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/registry/creative_item_entry_fwd.h"
 
 class CreativeItemRegistry;
 
@@ -26,6 +27,7 @@ using CreativeItemNetId = TypedServerNetId<CreativeItemNetIdTag, unsigned int>;
 class CreativeItemEntry : public Bedrock::EnableNonOwnerReferences {
 public:
     [[nodiscard]] ItemInstance const &getItemInstance() const;
+    [[nodiscard]] CreativeGroupInfoPtr getGroup() const;
 
 private:
     CreativeItemRegistry *registry_;  // +24

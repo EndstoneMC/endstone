@@ -22,7 +22,9 @@
 
 class CreativeItemRegistry : public Bedrock::EnableNonOwnerReferences {
 public:
-    const std::vector<CreativeGroupInfo> &getCreativeGroups() const;
+    CreativeGroupInfoPtr getCreativeGroup(std::uint32_t);
+    [[nodiscard]] const std::vector<CreativeItemEntry> &getCreativeItemEntries() const;
+    [[nodiscard]] const std::vector<CreativeGroupInfo> &getCreativeGroups() const;
     void forEachCreativeItemInstance(std::function<bool(const ItemInstance &)>) const;
 
 private:

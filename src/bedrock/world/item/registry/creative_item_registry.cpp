@@ -16,6 +16,16 @@
 
 #include "bedrock/world/item/item_instance.h"
 
+CreativeGroupInfoPtr CreativeItemRegistry::getCreativeGroup(const uint32_t index)
+{
+    return &creative_groups_[index];
+}
+
+const std::vector<CreativeItemEntry> &CreativeItemRegistry::getCreativeItemEntries() const
+{
+    return creative_items_;
+}
+
 const std::vector<CreativeGroupInfo> &CreativeItemRegistry::getCreativeGroups() const
 {
     return creative_groups_;

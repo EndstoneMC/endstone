@@ -62,3 +62,13 @@ float Item::getFurnaceBurnIntervalMultipler() const
 {
     return furnace_burn_interval_modifier_;
 }
+
+const std::string &Item::getCreativeGroup() const
+{
+    return creative_group_;
+}
+
+CreativeItemCategory Item::getCreativeCategory() const
+{
+    return creative_category_;
+}

@@ -14,7 +14,14 @@
 
 #include "bedrock/world/item/registry/creative_item_entry.h"
 
+#include "bedrock/world/item/registry/creative_item_registry.h"
+
 ItemInstance const &CreativeItemEntry::getItemInstance() const
 {
     return item_instance_;
+}
+
+CreativeGroupInfoPtr CreativeItemEntry::getGroup() const
+{
+    return registry_->getCreativeGroup(group_index_);
 }

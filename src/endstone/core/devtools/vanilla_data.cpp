@@ -144,27 +144,36 @@ void dumpItemData(VanillaData &data, const ::Level &level)
                             {"maxStackSize", item->getMaxStackSize(ItemDescriptor())},
                             {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(::ItemStack(*item), 200)},
                             {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
+
+        if (const auto components = item->buildNetworkTag()) {
+            CompoundTag tag;
+            tag.putCompound("components", components->clone());
+            tag.putBoolean("isComponentBased", item->isComponentBased());
+            tag.putInt("version", static_cast<std::int32_t>(item->item_parse_version));
+            data.item_components.put(name, std::move(tag));
+        }
+
         if (!tags.is_null()) {
             data.items[name]["tags"] = tags;
         }
     }
 
     auto creative_item_registry = item_registry.getCreativeItemRegistry();
-    creative_item_registry->forEachCreativeItemInstance([&](const ItemInstance &item_instance) {
+    for (const auto &creative_item_entry : creative_item_registry->getCreativeItemEntries()) {
+        const ItemInstance &item_instance = creative_item_entry.getItemInstance();
+
         CompoundTag tag;
         tag.putString("name", item_instance.getItem()->getFullItemName());
+        tag.putInt64("groupIndex", creative_item_entry.getGroup()->getIndex());
         tag.putShort("damage", static_cast<std::int16_t>(item_instance.getAuxValue()));
+        tag.putString("category", std::string(magic_enum::enum_name(item_instance.getItem()->getCreativeCategory())));
 
         if (const auto *user_data = item_instance.getUserData(); user_data) {
             tag.putCompound("tag", user_data->clone());
         }
 
-        if (item_instance.isBlock()) {
-            tag.putInt("blockStateHash", static_cast<std::int32_t>(item_instance.getBlock()->getRuntimeId()));
-        }
         data.creative_items.add(tag.copy());
-        return true;
-    });
+    }
 
     for (const auto &creative_group : creative_item_registry->getCreativeGroups()) {
         data.creative_groups.push_back({

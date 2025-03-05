@@ -180,9 +180,13 @@ public:
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
     ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;
     [[nodiscard]] float getFurnaceBurnIntervalMultipler() const;
+    [[nodiscard]] const std::string &getCreativeGroup() const;
+    [[nodiscard]] CreativeItemCategory getCreativeCategory() const;
+
+public:
+    ItemVersion item_parse_version;
 
 protected:
-    ItemVersion item_parse_version_;
     std::string texture_atlas_file_;
     int frame_count_;
     bool animates_in_toolbar_;
