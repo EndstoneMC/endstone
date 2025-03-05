@@ -24,6 +24,7 @@ class EndstoneActorGameplayHandler final : public ActorGameplayHandler {
 public:
     explicit EndstoneActorGameplayHandler(std::unique_ptr<ActorGameplayHandler> handle);
     HandlerResult handleEvent(const ActorGameplayEvent<void> &event) override;
+    HandlerResult handleEvent(MutableActorGameplayEvent<void> &event) override;
     GameplayHandlerResult<CoordinatorResult> handleEvent(const ActorGameplayEvent<CoordinatorResult> &event) override;
     GameplayHandlerResult<CoordinatorResult> handleEvent(MutableActorGameplayEvent<CoordinatorResult> &event) override;
     std::unique_ptr<ActorGameplayHandler> unwrap();

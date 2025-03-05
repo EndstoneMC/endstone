@@ -22,6 +22,7 @@ class ActorGameplayHandler : public GameplayHandler {
 public:
     ~ActorGameplayHandler() override = default;
     virtual HandlerResult handleEvent(const ActorGameplayEvent<void> &event) = 0;
+    virtual HandlerResult handleEvent(MutableActorGameplayEvent<void> &) = 0;
     virtual GameplayHandlerResult<CoordinatorResult> handleEvent(
         const ActorGameplayEvent<CoordinatorResult> &event) = 0;
     virtual GameplayHandlerResult<CoordinatorResult> handleEvent(

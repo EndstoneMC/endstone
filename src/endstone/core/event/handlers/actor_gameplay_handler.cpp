@@ -42,6 +42,11 @@ HandlerResult EndstoneActorGameplayHandler::handleEvent(const ActorGameplayEvent
     return event.visit(visitor);
 }
 
+HandlerResult EndstoneActorGameplayHandler::handleEvent(MutableActorGameplayEvent<void> &event)
+{
+    return handle_->handleEvent(event);
+}
+
 GameplayHandlerResult<CoordinatorResult> EndstoneActorGameplayHandler::handleEvent(
     const ActorGameplayEvent<CoordinatorResult> &event)
 {
