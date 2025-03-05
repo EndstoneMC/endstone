@@ -28,17 +28,20 @@ public:
     GameServerToken();
     GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
+    virtual ~GameServerToken() = default;
+    [[nodiscard]] virtual std::string toString() const;
+
     operator bool() const
     {
         return isValid();
     }
 
-    [[nodiscard]] bool isValid() const
+    [[nodiscard]] virtual bool isValid() const
     {
         return certificate_ && certificate_->isValid();
     }
 
 protected:
     GameServerToken(std::unique_ptr<Certificate>, bool);
-    std::unique_ptr<Certificate> certificate_;  // +0
+    std::unique_ptr<Certificate> certificate_;  // +8
 };
