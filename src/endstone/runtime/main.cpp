@@ -13,8 +13,8 @@
 // limitations under the License.
 
 #include <chrono>
+#include <cstdlib>
 #include <exception>
-#include <thread>
 
 #include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
@@ -23,15 +23,9 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/runtime/hook.h"
 
-#if __GNUC__
-#define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
-#else
-#define ENDSTONE_RUNTIME_CTOR
-#endif
-
 namespace py = pybind11;
 
-ENDSTONE_RUNTIME_CTOR int main()
+int init()
 {
     spdlog::flush_every(std::chrono::seconds(5));
     const auto &logger = endstone::core::LoggerFactory::getLogger("EndstoneRuntime");
@@ -83,7 +77,7 @@ ENDSTONE_RUNTIME_CTOR int main()
         SetConsoleMode(console, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
         SetConsoleCP(CP_UTF8);
         SetConsoleOutputCP(CP_UTF8);
-        main();
+        init();
         break;
     }
     case DLL_PROCESS_DETACH: {
@@ -93,5 +87,11 @@ ENDSTONE_RUNTIME_CTOR int main()
         break;
     }
     return TRUE;
+}
+#else
+__attribute__((constructor)) int main()
+{
+    unsetenv("LD_PRELOAD");
+    return init();
 }
 #endif
