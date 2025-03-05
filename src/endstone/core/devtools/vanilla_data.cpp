@@ -150,7 +150,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
             tag.putCompound("components", components->clone());
             tag.putBoolean("isComponentBased", item->isComponentBased());
             tag.putInt("version", static_cast<std::int32_t>(item->item_parse_version));
-            data.item_components.put(name, tag.clone());
+            data.item_components.put(name, std::move(tag));
         }
 
         if (!tags.is_null()) {
