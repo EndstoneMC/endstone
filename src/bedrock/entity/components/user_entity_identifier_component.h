@@ -16,18 +16,34 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/certificates/certificate.h"
+#include "bedrock/certificates/identity/game_server_token.h"
 #include "bedrock/common_types.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/platform/uuid.h"
 
 class UserEntityIdentifierComponent {
 public:
-    NetworkIdentifier network_id;              // +0
-    SubClientId client_sub_id;                 // +160
-    mce::UUID client_uuid;                     // +168
-    std::string playfab_id_unverified;         // +184
-    std::unique_ptr<Certificate> certificate;  // +216
+    static UserEntityIdentifierComponent *tryGetFromEntity(EntityContext &);
+    static const UserEntityIdentifierComponent *tryGetFromEntity(const EntityContext &);
+    [[nodiscard]] bool isPrimaryClient() const;
+    [[nodiscard]] bool isAuthenticated() const;
+    [[nodiscard]] bool isLoggedIntoXboxLive() const;
+    [[nodiscard]] const NetworkIdentifier &getNetworkId() const;
+    [[nodiscard]] SubClientId getSubClientId() const;
+    [[nodiscard]] std::string getUnverifiedPlayFabId() const;
+    [[nodiscard]] mce::UUID getClientUUID() const;
+    [[nodiscard]] mce::UUID getAuthenticatedUUID() const;
+    [[nodiscard]] std::string getIdentityName() const;
+    [[nodiscard]] std::string getXuid(bool) const;
+    [[nodiscard]] std::string getTitleId() const;
+
+private:
+    NetworkIdentifier network_id_;
+    SubClientId client_sub_id_;
+    std::string playfab_id_unverified_;
+    mce::UUID client_uuid_;
+    GameServerToken game_server_token_;
 };
 #if defined __clang__ || defined __GNUC__
 static_assert(entt::type_hash<UserEntityIdentifierComponent>::value() == 0xB845379);
