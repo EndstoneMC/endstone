@@ -14,7 +14,7 @@
 
 #include "bedrock/world/item/registry/creative_item_entry.h"
 
-#include "creative_item_registry.h"
+#include "bedrock/world/item/registry/creative_item_registry.h"
 
 ItemInstance const &CreativeItemEntry::getItemInstance() const
 {

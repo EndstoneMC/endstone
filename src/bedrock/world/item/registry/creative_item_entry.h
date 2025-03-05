@@ -17,7 +17,7 @@
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 #include "bedrock/world/item/item_instance.h"
-#include "creative_item_entry_fwd.h"
+#include "bedrock/world/item/registry/creative_item_entry_fwd.h"
 
 class CreativeItemRegistry;
 
