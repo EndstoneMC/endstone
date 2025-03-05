@@ -149,7 +149,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
             CompoundTag tag;
             tag.putCompound("components", components->clone());
             tag.putBoolean("isComponentBased", item->isComponentBased());
-            tag.putInt("version", static_cast<std::int32_t>(item->getItemVersion()));
+            tag.putInt("version", static_cast<std::int32_t>(item->item_parse_version));
             data.item_components.put(name, tag.clone());
         }
 

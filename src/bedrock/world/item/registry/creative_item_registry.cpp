@@ -21,14 +21,14 @@ CreativeGroupInfoPtr CreativeItemRegistry::getCreativeGroup(const uint32_t index
     return &creative_groups_[index];
 }
 
-const std::vector<CreativeGroupInfo> &CreativeItemRegistry::getCreativeGroups() const
-{
-    return creative_groups_;
-}
-
 const std::vector<CreativeItemEntry> &CreativeItemRegistry::getCreativeItemEntries() const
 {
     return creative_items_;
+}
+
+const std::vector<CreativeGroupInfo> &CreativeItemRegistry::getCreativeGroups() const
+{
+    return creative_groups_;
 }
 
 void CreativeItemRegistry::forEachCreativeItemInstance(std::function<bool(const ItemInstance &)> func) const
