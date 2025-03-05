@@ -88,8 +88,8 @@ class EndstoneRecipe(ConanFile):
         if self.settings.os == "Windows":
             self.options.rm_safe("fPIC")
 
-        if self.settings.os in ("FreeBSD", "Linux"):
-            self.options["sentry-native/*"].backend = "inproc"
+        # if self.settings.os in ("FreeBSD", "Linux"):
+        #     self.options["sentry-native/*"].backend = "inproc"
 
     def configure(self):
         if self.options.shared:
