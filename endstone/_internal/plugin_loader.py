@@ -8,6 +8,7 @@ import shutil
 import site
 import subprocess
 import sys
+import traceback
 import warnings
 
 import pkginfo
@@ -172,8 +173,9 @@ class PythonPluginLoader(PluginLoader):
         try:
             plugin_metadata = metadata(ep.dist.name).json
             cls = ep.load()
-        except Exception as e:
-            self.server.logger.error(f"Error occurred when trying to load plugin from entry point '{ep.name}': {e}")
+        except BaseException as e:
+            self.server.logger.error(f"Error occurred when trying to load plugin from entry point '{ep.name}':")
+            self.server.logger.error("".join(traceback.format_exception(e)))
             return None
 
         # prepare plugin description
