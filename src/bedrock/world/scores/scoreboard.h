@@ -64,6 +64,7 @@ public:
     void resetPlayerScore(const ScoreboardId &);
     bool resetPlayerScore(const ScoreboardId &, Objective &);
     int modifyPlayerScore(bool &success, const ScoreboardId &, Objective &, int, PlayerScoreSetFunction);
+    bool clearScoreboardIdentity(const ScoreboardId &);
 
 private:
     CommandSoftEnumRegistry registry_;                                                        // +8

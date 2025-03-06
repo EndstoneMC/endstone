@@ -99,6 +99,7 @@ add_library(bedrock STATIC
         world/scores/objective.cpp
         world/scores/scoreboard.cpp
         world/scores/scoreboard_id.cpp
+        world/scores/scoreboard_identity_ref.cpp
         world/scores/server_scoreboard.cpp
 )
 add_library(bedrock::bedrock ALIAS bedrock)

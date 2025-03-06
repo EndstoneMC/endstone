@@ -110,12 +110,12 @@ const ScoreboardId &Scoreboard::getScoreboardId(const std::string &fake) const
 
 bool Scoreboard::hasIdentityFor(const ScoreboardId &id) const
 {
-    return identity_refs_.find(id) != identity_refs_.end();
+    return identity_refs_.contains(id);
 }
 
 ScoreboardIdentityRef *Scoreboard::getScoreboardIdentityRef(const ScoreboardId &id)
 {
-    auto it = identity_refs_.find(id);
+    const auto it = identity_refs_.find(id);
     if (it != identity_refs_.end()) {
         return &it->second;
     }
@@ -124,8 +124,7 @@ ScoreboardIdentityRef *Scoreboard::getScoreboardIdentityRef(const ScoreboardId &
 
 ObjectiveCriteria *Scoreboard::getCriteria(const std::string &name) const
 {
-    auto it = criteria_.find(name);
-    if (it != criteria_.end()) {
+    if (const auto it = criteria_.find(name); it != criteria_.end()) {
         return it->second.get();
     }
     return nullptr;
@@ -154,8 +153,18 @@ void Scoreboard::resetPlayerScore(const ScoreboardId &id)
 
 bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
 {
-    bool (Scoreboard::*func)(const ScoreboardId &, Objective &) = &Scoreboard::resetPlayerScore;
-    return BEDROCK_CALL(func, this, id, objective);
+    auto score = objective.getPlayerScore(id);
+    if (!score.valid) {
+        return false;
+    }
+
+    auto *id_ref = getScoreboardIdentityRef(id);
+    if (!id_ref) {
+        return false;
+    }
+
+    onPlayerScoreRemoved(id, objective);
+    return id_ref->removeFromObjective(*this, objective);
 }
 
 int Scoreboard::modifyPlayerScore(bool &success, const ScoreboardId &id, Objective &objective, int score,
@@ -173,4 +182,16 @@ int Scoreboard::modifyPlayerScore(bool &success, const ScoreboardId &id, Objecti
         onScoreChanged(id, objective);
     }
     return result;
+}
+
+bool Scoreboard::clearScoreboardIdentity(const ScoreboardId &id)
+{
+    // TODO: sendOnScoreboardIdentityRemoved
+    if (identity_dictionary_.clearIdentity(id)) {
+        if (const auto it = identity_refs_.find(id); it != identity_refs_.end()) {
+            identity_refs_.erase(it);
+        }
+        return true;
+    }
+    return false;
 }

@@ -53,20 +53,16 @@ void Objective::setDisplayName(const std::string &display_name)
 
 bool Objective::hasScore(const ScoreboardId &id) const
 {
-    return scores_.find(id) != scores_.end();
+    return scores_.contains(id);
 }
 
 ScoreInfo Objective::getPlayerScore(const ScoreboardId &id) const
 {
     ScoreInfo result;
     result.objective = this;
-    auto it = scores_.find(id);
-    if (it != scores_.end()) {
+    if (const auto it = scores_.find(id); it != scores_.end()) {
         result.value = it->second;
         result.valid = true;
-    }
-    else {
-        result.valid = false;
     }
     return result;
 }

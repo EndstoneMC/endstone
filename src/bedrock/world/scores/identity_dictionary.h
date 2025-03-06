@@ -18,6 +18,7 @@
 
 #include "bedrock/world/scores/player_scoreboard_id.h"
 #include "bedrock/world/scores/scoreboard_id.h"
+#include "identity_definition.h"
 
 class IdentityDictionary {
 public:
@@ -46,6 +47,30 @@ public:
             return it->second;
         }
         return ScoreboardId::INVALID;
+    }
+
+    bool clearIdentity(const ScoreboardId &id)
+    {
+        const auto it = identity_defs_.find(id);
+        if (it == identity_defs_.end()) {
+            return false;
+        }
+        const auto &identity_def = it->second;
+        switch (identity_def.getIdentityType()) {
+        case IdentityDefinition::Type::Player:
+            players_.erase(identity_def.getPlayerId());
+            break;
+        case IdentityDefinition::Type::Entity:
+            entities_.erase(identity_def.getEntityId());
+            break;
+        case IdentityDefinition::Type::FakePlayer:
+            fakes_.erase(identity_def.getFakePlayerName());
+            break;
+        default:
+            break;
+        }
+        identity_defs_.erase(id);
+        return true;
     }
 
 private:

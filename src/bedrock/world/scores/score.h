@@ -17,7 +17,7 @@
 class Objective;
 
 struct ScoreInfo {
-    const Objective *objective;
-    bool valid;
-    int value;
+    const Objective *objective{nullptr};
+    bool valid{false};
+    int value{0};
 };

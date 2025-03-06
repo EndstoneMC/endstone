@@ -15,51 +15,26 @@
 #pragma once
 
 #include "bedrock/world/scores/identity_definition.h"
+#include "bedrock/world/scores/objective.h"
 #include "bedrock/world/scores/scoreboard_id.h"
+
+class Scoreboard;
 
 class ScoreboardIdentityRef {
 public:
-    [[nodiscard]] std::uint32_t getNumReferences() const
-    {
-        return num_references_;
-    }
+    ScoreboardIdentityRef();
+    ScoreboardIdentityRef(const ScoreboardId &);
 
-    [[nodiscard]] const ScoreboardId &getScoreboardId() const
-    {
-        return scoreboard_id_;
-    }
-
-    [[nodiscard]] const PlayerScoreboardId &getPlayerId() const
-    {
-        return scoreboard_id_.getIdentityDef().getPlayerId();
-    }
-
-    [[nodiscard]] const ActorUniqueID &getEntityId() const
-    {
-        return scoreboard_id_.getIdentityDef().getEntityId();
-    }
-
-    [[nodiscard]] const std::string &getFakePlayerName() const
-    {
-        return scoreboard_id_.getIdentityDef().getFakePlayerName();
-    }
-
-    [[nodiscard]] IdentityDefinition::Type getIdentityType() const
-    {
-        return scoreboard_id_.getIdentityDef().getIdentityType();
-    }
-
-    bool modifyScoreInObjective(int &result, Objective &objective, int score, PlayerScoreSetFunction action)
-    {
-        bool was_set = objective.getPlayerScore(scoreboard_id_).valid;
-        auto success = objective._modifyPlayerScore(result, scoreboard_id_, score, action);
-        if (!was_set && success) {
-            ++num_references_;
-        }
-        return success;
-    }
+    [[nodiscard]] const ScoreboardId &getScoreboardId() const;
+    [[nodiscard]] const PlayerScoreboardId &getPlayerId() const;
+    [[nodiscard]] const ActorUniqueID &getEntityId() const;
+    [[nodiscard]] const std::string &getFakePlayerName() const;
+    [[nodiscard]] int getNumReferences() const;
+    [[nodiscard]] IdentityDefinition::Type getIdentityType() const;
+    bool removeFromObjective(Scoreboard &, Objective &);
+    bool modifyScoreInObjective(int &result, Objective &objective, int score, PlayerScoreSetFunction action);
 
 private:
-    std::uint32_t num_references_;
+    std::uint32_t objective_references_;
     ScoreboardId scoreboard_id_;
 };
