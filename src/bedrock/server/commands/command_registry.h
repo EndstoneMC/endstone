@@ -331,9 +331,9 @@ private:
                                                          int version, std::string &error_message,
                                                          std::vector<std::string> &error_params) const;
     [[nodiscard]] std::string describe(CommandParameterData const &) const;
-    [[nodiscard]] std::string describe(const Signature &signature, const std::string &name, const Overload &overload,
-                                       unsigned int a4, unsigned int *a5, unsigned int *a6) const;
-    [[nodiscard]] std::string symbolToString(CommandRegistry::Symbol) const;
+    [[nodiscard]] std::string describe(const Signature &command, const std::string &alias, const Overload &overload,
+                                       unsigned int highlight, unsigned int *start, unsigned int *length) const;
+    [[nodiscard]] std::string symbolToString(Symbol) const;
     void registerOverloadInternal(Signature &signature, Overload &overload);
 
     std::function<void(Packet const &)> network_update_callback_;                                // +0

@@ -43,12 +43,22 @@ std::string CommandRegistry::describe(const CommandParameterData &param) const
     return BEDROCK_CALL(fp, this, param);
 }
 
-std::string CommandRegistry::describe(const Signature &signature, const std::string &name, const Overload &overload,
-                                      unsigned int a4, unsigned int *a5, unsigned int *a6) const
+std::string CommandRegistry::describe(const Signature & /*command*/, const std::string &alias, const Overload &overload,
+                                      unsigned int highlight, unsigned int *start, unsigned int *length) const
 {
-    std::string (CommandRegistry::*fp)(const Signature &, const std::string &, const Overload &, unsigned int,
-                                       unsigned int *, unsigned int *) const = &CommandRegistry::describe;
-    return BEDROCK_CALL(fp, this, signature, name, overload, a4, a5, a6);
+    std::stringstream ss;
+    ss << "/" << alias;
+    for (auto i = 0; i < overload.params.size(); i++) {
+        if (i == highlight && start != nullptr) {
+            *start = ss.tellp();
+        }
+        auto param_syntax = describe(overload.params[i]);
+        if (i == highlight && length != nullptr) {
+            *length = param_syntax.size();
+        }
+        ss << " " << param_syntax;
+    }
+    return ss.str();
 }
 
 std::string CommandRegistry::symbolToString(Symbol symbol) const
