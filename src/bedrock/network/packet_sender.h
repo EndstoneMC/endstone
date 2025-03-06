@@ -35,5 +35,5 @@ public:
     virtual void flush(NetworkIdentifier const &, std::function<void()> &&) = 0;
 
 private:
-    SubClientId sender_sub_id_{SubClientId::PrimaryClient};
+    SubClientId sub_id_{SubClientId::PrimaryClient};
 };
