@@ -34,7 +34,13 @@ void CommandRegistry::registerAlias(std::string name, std::string alias)
 
 const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string &name) const
 {
-    return BEDROCK_CALL(&CommandRegistry::findCommand, this, name);
+    if (signatures_.contains(name)) {
+        return &signatures_.at(name);
+    }
+    if (aliases_.contains(name)) {
+        return &signatures_.at(aliases_.at(name));
+    }
+    return nullptr;
 }
 
 std::string CommandRegistry::describe(const CommandParameterData &param) const
