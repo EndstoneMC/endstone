@@ -18,6 +18,7 @@ add_library(funchook::funchook ALIAS funchook-static)
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
         bedrock_hooks/bedrock_event_logger.cpp
+        bedrock_hooks/item_registry_manager.cpp
         bedrock_hooks/level.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp

@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <memory>
+#include <sstream>
 #include <utility>
 
 #include "bedrock/server/commands/command.h"

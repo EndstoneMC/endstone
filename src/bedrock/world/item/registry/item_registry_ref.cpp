@@ -28,6 +28,11 @@ ItemRegistryRef::LockGuard::~LockGuard()
     }
 }
 
+bool ItemRegistryRef::isValid() const
+{
+    return !weak_registry_.expired();
+}
+
 WeakPtr<Item> ItemRegistryRef::lookupByName(int &out_item_aux, std::string_view in_string) const
 {
     return _lockRegistry()->lookupByName(out_item_aux, in_string);

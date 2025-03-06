@@ -85,7 +85,6 @@ add_library(bedrock STATIC
         world/item/registry/creative_item_entry.cpp
         world/item/registry/creative_item_registry.cpp
         world/item/registry/item_registry.cpp
-        world/item/registry/item_registry_manager.cpp
         world/item/registry/item_registry_ref.cpp
         world/level/explosion.cpp
         world/level/level.cpp

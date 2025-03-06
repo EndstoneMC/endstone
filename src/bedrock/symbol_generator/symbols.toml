@@ -35,8 +35,6 @@ version = "1.21.60"
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 56284128
 # ItemRegistry
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 44908752
-# ItemRegistryManager
-"?getItemRegistry@ItemRegistryManager@@SA?AVItemRegistryRef@@XZ" = 44927936
 # ItemStackBase
 "?init@ItemStackBase@@IEAAXHHH_N@Z" = 45789312
 "?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 45792976
@@ -121,8 +119,6 @@ version = "1.21.60"
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 150682992
 # ItemRegsitry
 "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 136222384
-# ItemRegistryManager
-"_ZN19ItemRegistryManager15getItemRegistryEv" = 136235584
 # ItemStackBase
 "_ZN13ItemStackBase4initEiiib" = 138674192
 "_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 138671552

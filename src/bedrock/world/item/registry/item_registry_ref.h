@@ -34,6 +34,7 @@ public:
         std::shared_ptr<Bedrock::Threading::Mutex> mutex_;  // +0
     };
 
+  [[nodiscard]]    bool isValid() const;
     WeakPtr<Item> lookupByName(int &, std::string_view) const;
     [[nodiscard]] const std::unordered_map<HashedString, WeakPtr<Item>> &getNameToItemMap() const;
     [[nodiscard]] WeakPtr<Item> getItem(std::int16_t id) const;
