@@ -174,6 +174,16 @@ Tag *CompoundTag::get(StringView key)
     return nullptr;
 }
 
+int CompoundTag::getInt(StringView key) const
+{
+    if (auto *tag = get(key); tag) {
+        if (tag->getId() == Type::Int) {
+            return static_cast<const IntTag *>(tag)->data;
+        }
+    }
+    return 0;
+}
+
 const std::string &CompoundTag::getString(StringView key) const
 {
     static std::string empty;
@@ -204,6 +214,7 @@ CompoundTag *CompoundTag::getCompound(StringView key)
     }
     return nullptr;
 }
+
 
 bool CompoundTag::contains(StringView key) const
 {
