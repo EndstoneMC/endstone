@@ -271,6 +271,17 @@ std::uint16_t ItemStackBase::getAuxValue() const
     return block_->data_;
 }
 
+int ItemStackBase::getBaseRepairCost() const
+{
+    if (user_data_) {
+        if (user_data_->contains(TAG_REPAIR_COST)) {
+            return user_data_->getInt(TAG_REPAIR_COST);
+        }
+    }
+
+    return 0;
+}
+
 std::string ItemStackBase::getName() const
 {
     if (hasCustomHoverName()) {
@@ -425,4 +436,5 @@ void ItemStackBase::_checkForItemWorldCompatibility()
 
 const std::string ItemStackBase::TAG_DISPLAY = "display";
 const std::string ItemStackBase::TAG_DISPLAY_NAME = "Name";
+const std::string ItemStackBase::TAG_REPAIR_COST = "RepairCost";
 const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";
