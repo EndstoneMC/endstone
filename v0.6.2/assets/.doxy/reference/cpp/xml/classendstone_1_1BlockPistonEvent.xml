@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlockPistonEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::BlockPistonEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1BlockEvent" prot="public" virt="non-virtual">endstone::BlockEvent</basecompoundref>
+    <includes refid="block__piston__event_8h" local="no">endstone/event/block/block_piston_event.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1BlockPistonEvent_1ab8569c094d15573abb55f975fa7f5577" prot="public" static="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <definition>const std::string endstone::BlockPistonEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <qualifiedname>endstone::BlockPistonEvent::NAME</qualifiedname>
+        <initializer>= &quot;BlockPistonEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_piston_event.h" line="31" column="37" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1BlockPistonEvent_1a01a8530261f46c8affc9f69e0e00e172" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+        <definition>Player&amp; endstone::BlockPistonEvent::player_</definition>
+        <argsstring></argsstring>
+        <name>player_</name>
+        <qualifiedname>endstone::BlockPistonEvent::player_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_piston_event.h" line="38" column="12" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlockPistonEvent_1aa7dd79874ce053b709f8e3e35fe8df78" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlockPistonEvent::BlockPistonEvent</definition>
+        <argsstring>(std::shared_ptr&lt; Block &gt; block, Player &amp;player)</argsstring>
+        <name>BlockPistonEvent</name>
+        <qualifiedname>endstone::BlockPistonEvent::BlockPistonEvent</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <declname>block</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_piston_event.h" line="28" column="14" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockPistonEvent_1ad6544a645c1ac2a2b61734d2b66423dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlockPistonEvent::~BlockPistonEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~BlockPistonEvent</name>
+        <qualifiedname>endstone::BlockPistonEvent::~BlockPistonEvent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_piston_event.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockPistonEvent_1a9580392256ddc38e3489dab492cf3ede" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::BlockPistonEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <qualifiedname>endstone::BlockPistonEvent::getEventName</qualifiedname>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_piston_event.h" line="32" column="18" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a piston block is triggered. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::BlockPistonEvent</label>
+        <link refid="classendstone_1_1BlockPistonEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::BlockPistonEvent</label>
+        <link refid="classendstone_1_1BlockPistonEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/block/block_piston_event.h" line="26" column="1" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="26" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1BlockEvent_1a1c590af92d4fec9db9cb218ad7654a82" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockPistonEvent_1aa7dd79874ce053b709f8e3e35fe8df78" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>BlockPistonEvent</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1BlockPistonEvent_1a9580392256ddc38e3489dab492cf3ede" prot="public" virt="virtual"><scope>endstone::BlockPistonEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1BlockPistonEvent_1ab8569c094d15573abb55f975fa7f5577" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1BlockPistonEvent_1a01a8530261f46c8affc9f69e0e00e172" prot="private" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>~BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockPistonEvent_1ad6544a645c1ac2a2b61734d2b66423dc" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>~BlockPistonEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::BlockPistonEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1DamageSource" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::DamageSource</compoundname>
+    <includes refid="damage__source_8h" local="no">endstone/damage/damage_source.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1ad7317c28b8853f400f518106f3f9d659" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::DamageSource::~DamageSource</definition>
+        <argsstring>()=default</argsstring>
+        <name>~DamageSource</name>
+        <qualifiedname>endstone::DamageSource::~DamageSource</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/damage/damage_source.h" line="28" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string_view</type>
+        <definition>virtual std::string_view endstone::DamageSource::getType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getType</name>
+        <qualifiedname>endstone::DamageSource::getType</qualifiedname>
+        <briefdescription>
+<para>Get the damage type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the damage type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/damage/damage_source.h" line="35" column="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
+        <definition>virtual Actor * endstone::DamageSource::getActor</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getActor</name>
+        <qualifiedname>endstone::DamageSource::getActor</qualifiedname>
+        <briefdescription>
+<para>Get the actor that caused the damage to occur. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Not to be confused with <ref refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kindref="member">DamageSource::getDamagingActor()</ref>, the returned actor is the actor to which the damage is ultimately attributed if the receiver is killed. If, for example, the receiver was damaged by a projectile, the shooter/thrower would be returned.</para>
+<para><simplesect kind="return"><para>an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> or null </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/damage/damage_source.h" line="46" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
+        <definition>virtual Actor * endstone::DamageSource::getDamagingActor</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDamagingActor</name>
+        <qualifiedname>endstone::DamageSource::getDamagingActor</qualifiedname>
+        <briefdescription>
+<para>Get the actor that directly caused the damage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Not to be confused with <ref refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kindref="member">DamageSource::getActor()</ref>, the returned actor is the actor that actually inflicted the damage. If, for example, the receiver was damaged by a projectile, the projectile would be returned.</para>
+<para><simplesect kind="return"><para>an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> or null </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/damage/damage_source.h" line="56" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::DamageSource::isIndirect</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isIndirect</name>
+        <qualifiedname>endstone::DamageSource::isIndirect</qualifiedname>
+        <briefdescription>
+<para>Get if this damage is indirect. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Damage is considered indirect if <ref refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kindref="member">DamageSource::getActor()</ref> is not equal to <ref refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kindref="member">DamageSource::getDamagingActor()</ref>. This will be the case, for example, if a skeleton shot an arrow or a player threw a potion.</para>
+<para><simplesect kind="return"><para>true if is indirect, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/damage/damage_source.h" line="66" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a source of damage. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/damage/damage_source.h" line="26" column="1" bodyfile="include/endstone/damage/damage_source.h" bodystart="26" bodyend="67"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>getDamagingActor</name></member>
+      <member refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>getType</name></member>
+      <member refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" prot="public" virt="pure-virtual"><scope>endstone::DamageSource</scope><name>isIndirect</name></member>
+      <member refid="classendstone_1_1DamageSource_1ad7317c28b8853f400f518106f3f9d659" prot="public" virt="virtual"><scope>endstone::DamageSource</scope><name>~DamageSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
