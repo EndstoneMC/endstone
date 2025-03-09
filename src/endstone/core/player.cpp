@@ -50,29 +50,9 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     : EndstoneMob(server, player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
       inventory_(std::make_unique<EndstonePlayerInventory>(player))
 {
-    auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
-    if (!component) {
-        throw std::runtime_error("UserEntityIdentifierComponent is not valid");
-    }
+    const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
     uuid_ = EndstoneUUID::fromMinecraft(component->getClientUUID());
     xuid_ = component->getXuid(false);
-
-    switch (component->getNetworkId().getType()) {
-    case NetworkIdentifier::Type::RakNet: {
-        auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
-        auto addr = peer->GetSystemAddressFromGuid(component->getNetworkId().guid);
-        component->getNetworkId().sock.sa_stor = addr.address.sa_stor;
-    }
-    case NetworkIdentifier::Type::Address:
-    case NetworkIdentifier::Type::Address6: {
-        address_ = {component->getNetworkId().getAddress(), component->getNetworkId().getPort()};
-        break;
-    }
-    case NetworkIdentifier::Type::NetherNet:
-    case NetworkIdentifier::Type::Invalid:
-    default:
-        break;
-    }
 }
 
 EndstonePlayer::~EndstonePlayer() = default;
@@ -344,9 +324,27 @@ std::string EndstonePlayer::getXuid() const
     return xuid_;
 }
 
-const SocketAddress &EndstonePlayer::getAddress() const
+SocketAddress EndstonePlayer::getAddress() const
 {
-    return address_;
+    const static SocketAddress EMPTY{};
+    auto component = getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
+    switch (component->getNetworkId().getType()) {
+    case NetworkIdentifier::Type::RakNet: {
+        const auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
+        const auto addr = peer->GetSystemAddressFromGuid(component->getNetworkId().guid);
+        char buffer[INET6_ADDRSTRLEN + 5 + 1] = {};
+        addr.ToString(false, buffer);
+        return {buffer, addr.GetPort()};
+    }
+    case NetworkIdentifier::Type::Address:
+    case NetworkIdentifier::Type::Address6: {
+        return {component->getNetworkId().getAddress(), component->getNetworkId().getPort()};
+    }
+    case NetworkIdentifier::Type::NetherNet:
+    case NetworkIdentifier::Type::Invalid:
+    default:
+        return EMPTY;
+    }
 }
 
 void EndstonePlayer::sendPopup(std::string message) const
