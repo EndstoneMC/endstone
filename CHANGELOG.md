@@ -5,12 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.6.2 - Unreleased
+## 0.6.3 - Unreleased
 
-<small>[Compare with 0.6.1](https://github.com/EndstoneMC/endstone/compare/v0.6.1...HEAD)</small>
+<small>[Compare with 0.6.2](https://github.com/EndstoneMC/endstone/compare/v0.6.2...HEAD)</small>
+
+## [0.6.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.6.2) - 2025-03-09
+
+<small>[Compare with 0.6.1](https://github.com/EndstoneMC/endstone/compare/v0.6.1...v0.6.2)</small>
 
 ### Added
 
+- Added support for Minecraft v1.21.62.
 - Added `DataPacketReceiveEvent` and `DataPacketSendEvent` to allow viewing/intercepting low-level packet payloads.
 - Added `Actor::remove` to remove an actor from its associated dimension.
 - **Python API**: Added `Dimension.get_highest_block_at` to get the top non-air block at a given coordinate.
