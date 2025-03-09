@@ -10,6 +10,7 @@ import tempfile
 import zipfile
 from pathlib import Path
 from typing import Union
+from urllib.parse import urljoin
 
 import click
 import requests
@@ -69,18 +70,20 @@ class Bootstrap:
         dst = Path(dst)
 
         self._logger.info("Loading index from the remote server...")
-        response = requests.get(self._remote)
+        base_url = self._remote
+        channel = "preview" if Version(minecraft_version).is_prerelease else "stable"
+        metadata_url = urljoin(base_url, "/".join([channel, minecraft_version, "metadata.json"]))
+        response = requests.get(metadata_url)
         response.raise_for_status()
-        server_data = response.json()
+        metadata = response.json()
 
-        if minecraft_version not in server_data["binary"]:
-            raise ValueError(f"Version v{minecraft_version} is not found in the remote server.")
+        if minecraft_version != metadata["version"]:
+            raise ValueError(f"Version mismatch, expect: {minecraft_version}, actual: {metadata["version"]}")
 
         should_modify_server_properties = True
 
         with tempfile.TemporaryFile(dir=dst) as f:
-            metadata = server_data["binary"][minecraft_version][self.target_system.lower()]
-            url = metadata["url"]
+            url = metadata["binary"][self.target_system.lower()]["url"]
             response = requests.get(url, stream=True, headers={"User-Agent": self.user_agent})
             response.raise_for_status()
             total_size = int(response.headers.get("Content-Length", 0))
@@ -100,7 +103,7 @@ class Bootstrap:
                     m.update(data)
 
             self._logger.info("Download complete. Verifying integrity...")
-            if m.hexdigest() != metadata["sha256"]:
+            if m.hexdigest() != metadata["binary"][self.target_system.lower()]["sha256"]:
                 raise ValueError("SHA256 mismatch: the downloaded file may be corrupted or tampered with.")
 
             self._logger.info(f"Integrity check passed. Extracting to {dst}...")

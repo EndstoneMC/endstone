@@ -50,7 +50,7 @@ def catch_exceptions(func):
 @click.option(
     "-r",
     "--remote",
-    default="https://raw.githubusercontent.com/EndstoneMC/bedrock-server-data/main/bedrock_server_data.json",
+    default="https://raw.githubusercontent.com/EndstoneMC/bedrock-server-data/v2",
     help="The remote URL to retrieve bedrock server data from.",
 )
 @click.version_option(__version__)
