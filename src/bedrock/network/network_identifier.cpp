@@ -18,23 +18,26 @@
 
 std::string NetworkIdentifier::getAddress() const
 {
-    char str[INET6_ADDRSTRLEN] = {0};
-    if (sock.addr4.sin_family == AF_INET) {
-        if (!inet_ntop(AF_INET, &(sock.addr4.sin_addr), str, INET6_ADDRSTRLEN)) {
+    char buffer[INET6_ADDRSTRLEN + 1] = {};
+    if (type == Type::Address) {
+        if (!inet_ntop(sock.addr4.sin_family, &(sock.addr4.sin_addr), buffer, INET_ADDRSTRLEN + 1)) {
             return "0.0.0.0";
         }
     }
-    else {
-        if (!inet_ntop(AF_INET6, &(sock.addr6.sin6_addr), str, INET6_ADDRSTRLEN)) {
+    else if (type == Type::Address6) {
+        if (!inet_ntop(sock.addr6.sin6_family, &(sock.addr6.sin6_addr), buffer, INET6_ADDRSTRLEN + 1)) {
             return "::";
         }
     }
-    return str;
+    return buffer;
 }
 
 std::uint16_t NetworkIdentifier::getPort() const
 {
-    return ntohs(sock.addr4.sin_port);
+    if (type == Type::Address || type == Type::Address6) {
+        return ntohs(sock.addr4.sin_port);
+    }
+    return 0;
 }
 
 NetworkIdentifier::Type NetworkIdentifier::getType() const
