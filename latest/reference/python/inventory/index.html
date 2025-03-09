@@ -2560,43 +2560,6 @@ For latest updates join the chat on
 
 
 
-<p><span class="doc-section-title">Classes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory" href="#endstone.inventory.Inventory">Inventory</a></code></td>
-            <td>
-              <div class="doc-md-description">
-                <p>Interface to the various inventories.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.ItemStack" href="#endstone.inventory.ItemStack">ItemStack</a></code></td>
-            <td>
-              <div class="doc-md-description">
-                <p>Represents a stack of items.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.PlayerInventory" href="#endstone.inventory.PlayerInventory">PlayerInventory</a></code></td>
-            <td>
-              <div class="doc-md-description">
-                <p>Interface to the inventory of a Player, including the four armor slots and any extra slots.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
 
 
 
@@ -2635,117 +2598,6 @@ For latest updates join the chat on
 
 
 
-<p><span class="doc-section-title">Methods:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.add_item" href="#endstone.inventory.Inventory.add_item">add_item</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.clear" href="#endstone.inventory.Inventory.clear">clear</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Clears out the whole Inventory.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.first" href="#endstone.inventory.Inventory.first">first</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Returns the first slot in the inventory containing an ItemStack with the given stack.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.get_item" href="#endstone.inventory.Inventory.get_item">get_item</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Returns the ItemStack found in the slot at the given index</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.set_item" href="#endstone.inventory.Inventory.set_item">set_item</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Stores the ItemStack at the given index of the inventory.</p>
-                </div>
-              </td>
-            </tr>
-      </tbody>
-    </table>
-
-
-
-
-<p><span class="doc-section-title">Attributes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.contents" href="#endstone.inventory.Inventory.contents">contents</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ItemStack" href="#endstone.inventory.ItemStack">ItemStack</a>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns all ItemStacks from the inventory</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.is_empty" href="#endstone.inventory.Inventory.is_empty">is_empty</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.max_stack_size" href="#endstone.inventory.Inventory.max_stack_size">max_stack_size</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns the maximum stack size for an ItemStack in this inventory.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.Inventory.size" href="#endstone.inventory.Inventory.size">size</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns the size of the inventory</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
 
 
 
@@ -2980,42 +2832,6 @@ For latest updates join the chat on
 
 
 
-
-
-<p><span class="doc-section-title">Attributes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.ItemStack.amount" href="#endstone.inventory.ItemStack.amount">amount</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Gets or sets the amount of items in this stack.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.inventory.ItemStack.type" href="#endstone.inventory.ItemStack.type">type</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Gets or sets the type of this item.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
 
 
 

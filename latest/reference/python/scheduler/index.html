@@ -2534,35 +2534,6 @@ For latest updates join the chat on
 
 
 
-<p><span class="doc-section-title">Classes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler" href="#endstone.scheduler.Scheduler">Scheduler</a></code></td>
-            <td>
-              <div class="doc-md-description">
-                <p>Represents a scheduler that executes various tasks</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task" href="#endstone.scheduler.Task">Task</a></code></td>
-            <td>
-              <div class="doc-md-description">
-                <p>Represents a task being executed by the scheduler</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
 
 
 
@@ -2599,67 +2570,6 @@ For latest updates join the chat on
 
 
 
-
-
-<p><span class="doc-section-title">Methods:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.cancel_task" href="#endstone.scheduler.Scheduler.cancel_task">cancel_task</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Removes task from scheduler.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.cancel_tasks" href="#endstone.scheduler.Scheduler.cancel_tasks">cancel_tasks</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Removes all tasks associated with a particular plugin from the scheduler.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.get_pending_tasks" href="#endstone.scheduler.Scheduler.get_pending_tasks">get_pending_tasks</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Returns a vector of all pending tasks.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.is_queued" href="#endstone.scheduler.Scheduler.is_queued">is_queued</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Check if the task queued to be run later.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.is_running" href="#endstone.scheduler.Scheduler.is_running">is_running</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Check if the task currently running.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.run_task" href="#endstone.scheduler.Scheduler.run_task">run_task</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Returns a task that will be executed synchronously</p>
-                </div>
-              </td>
-            </tr>
-      </tbody>
-    </table>
 
 
 
@@ -2827,85 +2737,6 @@ For latest updates join the chat on
 
 
 
-<p><span class="doc-section-title">Methods:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.cancel" href="#endstone.scheduler.Task.cancel">cancel</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Attempts to cancel this task.</p>
-                </div>
-              </td>
-            </tr>
-      </tbody>
-    </table>
-
-
-
-
-<p><span class="doc-section-title">Attributes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.is_cancelled" href="#endstone.scheduler.Task.is_cancelled">is_cancelled</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns true if the task has been cancelled.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.is_sync" href="#endstone.scheduler.Task.is_sync">is_sync</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns true if the task is run by server thread.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.owner" href="#endstone.scheduler.Task.owner">owner</a></code></td>
-            <td>
-                  <code><span title="endstone._internal.endstone_python.Plugin">Plugin</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns the Plugin that owns the task.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.task_id" href="#endstone.scheduler.Task.task_id">task_id</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns the task id.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
 
 
 
