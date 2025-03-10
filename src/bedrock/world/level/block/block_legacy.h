@@ -80,7 +80,7 @@ enum class BlockProperty : std::uint64_t {
     BreaksWhenFallenOnByFallingBlock = 0x40000000,
     OnlyPistonPush = 0x80000000,
     Liquid = 0x100000000,
-    CanBeBuiltOver = 0x200000000,
+    // CanBeBuiltOver = 0x200000000,
     SnowRecoverable = 0x400000000,
     Scaffolding = 0x800000000,
     CanSupportCenterHangingBlock = 0x1000000000,
@@ -229,8 +229,9 @@ public:
     [[nodiscard]] virtual bool isAttachedTo(BlockSource &, BlockPos const &, BlockPos &outAttachedTo) const = 0;
     [[nodiscard]] virtual bool attack(Player *player, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTriggerEntityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
-    [[nodiscard]] virtual bool canBeBuiltOver(BlockSource &, BlockPos const &, BlockItem const &newItem) const = 0;
-    [[nodiscard]] virtual bool canBeBuiltOver(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool canBeBuiltOver(const Block &, BlockSource &, BlockPos const &,
+                                              BlockItem const &newItem) const = 0;
+    [[nodiscard]] virtual bool canBeBuiltOver(const Block &, BlockSource &, BlockPos const &) const = 0;
     virtual void triggerEvent(BlockSource &, BlockPos const &, int b0, int b1) const = 0;
     virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &eventName,
                               Actor &sourceEntity) const = 0;
@@ -273,8 +274,8 @@ public:
     virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
     virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
     [[nodiscard]] virtual bool isInteractiveBlock() const = 0;
-    [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID, std::optional<Vec3>) const = 0;
-    [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID) const = 0;
+    // [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID, std::optional<Vec3>) const = 0;
+    // [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID) const = 0;
     [[nodiscard]] virtual bool allowStateMismatchOnPlacement(Block const &, Block const &) const = 0;
     [[nodiscard]] virtual bool canSurvive(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual BlockRenderLayer getRenderLayer(Block const &, BlockSource &, BlockPos const &) const = 0;
