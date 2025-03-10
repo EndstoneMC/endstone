@@ -1,6 +1,8 @@
 import ctypes.util
 import os
 import stat
+import subprocess
+import sys
 from pathlib import Path
 
 from endstone._internal.bootstrap.base import Bootstrap
@@ -23,17 +25,33 @@ class LinuxBootstrap(Bootstrap):
     def _endstone_runtime_filename(self) -> str:
         return "libendstone_runtime.so"
 
+    @property
+    def _endstone_runtime_env(self) -> dict[str, str]:
+        env = super()._endstone_runtime_env
+        env["LD_PRELOAD"] = str(self._endstone_runtime_path.absolute())
+        env["LD_LIBRARY_PATH"] = str(self._linked_libpython_path.parent.absolute())
+        return env
+
     def _prepare(self) -> None:
         super()._prepare()
         st = os.stat(self.executable_path)
         os.chmod(self.executable_path, st.st_mode | stat.S_IEXEC)
         os.chmod(self.server_path / "crashpad_handler", st.st_mode | stat.S_IEXEC)
 
-    def _create_process(self, *args, **kwargs) -> None:
-        env = os.environ.copy()
-        env["LD_PRELOAD"] = str(self._endstone_runtime_path.absolute())
-        env["LD_LIBRARY_PATH"] = str(self._linked_libpython_path.parent.absolute())
-        super()._create_process(env=env)
+    def _run(self, *args, **kwargs) -> int:
+        process = subprocess.Popen(
+            [str(self.executable_path.absolute())],
+            stdin=sys.stdin,
+            stdout=sys.stdout,
+            stderr=subprocess.STDOUT,
+            text=True,
+            encoding="utf-8",
+            cwd=str(self.server_path.absolute()),
+            env=self._endstone_runtime_env,
+            *args,
+            **kwargs,
+        )
+        return process.wait()
 
     @property
     def _linked_libpython_path(self) -> Path:

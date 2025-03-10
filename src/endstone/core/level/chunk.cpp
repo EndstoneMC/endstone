@@ -14,8 +14,8 @@
 
 #include "endstone/core/level/chunk.h"
 
-#include <bedrock/world/level/dimension/dimension.h>
-#include <endstone/core/server.h>
+#include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 

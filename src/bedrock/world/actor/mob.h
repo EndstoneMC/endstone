@@ -103,15 +103,14 @@ public:
     ClockSpriteCalculator clock_sprite_calc;
 
 protected:
+    float attack_anim_;
     int swing_time_;
-    int death_time_;
     BuiltInMobComponents built_in_mob_components_;
     float movement_component_current_speed_;
     bool swinging_;
     bool surface_mob_;
     bool naturally_spawned_;
     bool wants_to_be_jockey_;
-    bool spawned_xp_;
 
 private:
     bool has_bound_origin_;

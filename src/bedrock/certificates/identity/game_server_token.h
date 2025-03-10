@@ -28,6 +28,14 @@ public:
     GameServerToken();
     GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
+    [[nodiscard]] std::string getXuid(bool trust_self_signed) const
+    {
+        if (!isValid() || (!trust_self_signed && certificate_->isSelfSigned())) {
+            return "";
+        }
+        return certificate_->getExtraData("XUID", {}).asString();
+    }
+
     operator bool() const
     {
         return isValid();

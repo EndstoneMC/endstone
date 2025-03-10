@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <string>
 
-using HashType64 = std::uint64_t;
+#include "bedrock/core/hash/hash_types.h"
 
 class HashedString {
 public:

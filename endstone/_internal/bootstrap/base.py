@@ -69,18 +69,19 @@ class Bootstrap:
         dst = Path(dst)
 
         self._logger.info("Loading index from the remote server...")
-        response = requests.get(self._remote)
+        channel = "preview" if Version(minecraft_version).is_prerelease else "release"
+        metadata_url = "/".join([self._remote, channel, minecraft_version, "metadata.json"])
+        response = requests.get(metadata_url)
         response.raise_for_status()
-        server_data = response.json()
+        metadata = response.json()
 
-        if minecraft_version not in server_data["binary"]:
-            raise ValueError(f"Version v{minecraft_version} is not found in the remote server.")
+        if minecraft_version != metadata["version"]:
+            raise ValueError(f"Version mismatch, expect: {minecraft_version}, actual: {metadata['version']}")
 
         should_modify_server_properties = True
 
         with tempfile.TemporaryFile(dir=dst) as f:
-            metadata = server_data["binary"][minecraft_version][self.target_system.lower()]
-            url = metadata["url"]
+            url = metadata["binary"][self.target_system.lower()]["url"]
             response = requests.get(url, stream=True, headers={"User-Agent": self.user_agent})
             response.raise_for_status()
             total_size = int(response.headers.get("Content-Length", 0))
@@ -100,7 +101,7 @@ class Bootstrap:
                     m.update(data)
 
             self._logger.info("Download complete. Verifying integrity...")
-            if m.hexdigest() != metadata["sha256"]:
+            if m.hexdigest() != metadata["binary"][self.target_system.lower()]["sha256"]:
                 raise ValueError("SHA256 mismatch: the downloaded file may be corrupted or tampered with.")
 
             self._logger.info(f"Integrity check passed. Extracting to {dst}...")
@@ -204,8 +205,7 @@ class Bootstrap:
         self._install()
         self._validate()
         self._prepare()
-        self._create_process()
-        return self._wait_for_server()
+        return self._run()
 
     @property
     def _endstone_runtime_filename(self) -> str:
@@ -216,48 +216,26 @@ class Bootstrap:
         p = Path(__file__).parent.parent / self._endstone_runtime_filename
         return p.resolve().absolute()
 
-    def _create_process(self, *args, **kwargs) -> None:
-        """
-        Creates a subprocess for running the server.
+    @property
+    def _endstone_runtime_env(self) -> dict[str, str]:
+        env = os.environ.copy()
+        env["PATH"] = os.pathsep.join(sys.path)
+        env["PYTHONPATH"] = os.pathsep.join(sys.path)
+        env["PYTHONIOENCODING"] = "UTF-8"
+        return env
 
-        This method initializes a subprocess.Popen object for the server executable. It sets up the necessary
-        buffers and encodings for the process and specifies the working directory.
+    def _run(self, *args, **kwargs) -> int:
+        """
+        Runs the server and returns its exit code.
+
+        This method blocks until the server process terminates. It returns the exit code of the process, which can be
+        used to determine if the server shut down successfully or if there were errors.
 
         Args:
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments.
 
-        """
-        env = kwargs.pop("env", os.environ.copy())
-        env["PATH"] = os.pathsep.join(sys.path)
-        env["PYTHONPATH"] = os.pathsep.join(sys.path)
-        env["PYTHONIOENCODING"] = "UTF-8"
-        self._process = subprocess.Popen(
-            [str(self.executable_path.absolute())],
-            stdin=sys.stdin,
-            stdout=sys.stdout,
-            stderr=subprocess.STDOUT,
-            text=True,
-            encoding="utf-8",
-            cwd=str(self.server_path.absolute()),
-            env=env,
-            *args,
-            **kwargs,
-        )
-
-    def _wait_for_server(self) -> int:
-        """
-        Waits for the server process to terminate and returns its exit code.
-
-        This method blocks until the server process created by _create_process terminates. It returns the
-        exit code of the process, which can be used to determine if the server shut down successfully or if
-        there were errors.
-
         Returns:
-            int: The exit code of the server process. Returns -1 if the process is not created or still running.
+            int: The exit code of the server process.
         """
-
-        if self._process is None:
-            return -1
-
-        return self._process.wait()
+        raise NotImplementedError
