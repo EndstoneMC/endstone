@@ -69,7 +69,7 @@ class Bootstrap:
         dst = Path(dst)
 
         self._logger.info("Loading index from the remote server...")
-        channel = "preview" if Version(minecraft_version).is_prerelease else "stable"
+        channel = "preview" if Version(minecraft_version).is_prerelease else "release"
         metadata_url = "/".join([self._remote, channel, minecraft_version, "metadata.json"])
         response = requests.get(metadata_url)
         response.raise_for_status()
