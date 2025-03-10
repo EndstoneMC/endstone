@@ -103,6 +103,7 @@ public:
     ClockSpriteCalculator clock_sprite_calc;
 
 protected:
+    float attack_anim_;
     int swing_time_;
     BuiltInMobComponents built_in_mob_components_;
     float movement_component_current_speed_;
