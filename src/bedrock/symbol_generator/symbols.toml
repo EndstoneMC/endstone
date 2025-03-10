@@ -121,7 +121,7 @@ version = "1.21.70-beta.26"
 "_ZN13ItemStackBase4initEiiib" = 148377408
 "_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 148374432
 # Level
-"_ZN5Level4tickEv" = 145524866
+"_ZN5Level4tickEv" = 145524864
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 130376928
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 130373456

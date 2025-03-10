@@ -76,7 +76,7 @@ class Bootstrap:
         metadata = response.json()
 
         if minecraft_version != metadata["version"]:
-            raise ValueError(f"Version mismatch, expect: {minecraft_version}, actual: {metadata["version"]}")
+            raise ValueError(f"Version mismatch, expect: {minecraft_version}, actual: {metadata['version']}")
 
         should_modify_server_properties = True
 

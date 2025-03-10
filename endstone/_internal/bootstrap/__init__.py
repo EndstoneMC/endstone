@@ -2,6 +2,7 @@ import functools
 import logging
 import platform
 import sys
+import time
 
 import click
 
@@ -71,4 +72,8 @@ def cli(server_folder: str, no_confirm: bool, remote: str) -> None:
 
     bootstrap = cls(server_folder=server_folder, no_confirm=no_confirm, remote=remote)
     exit_code = bootstrap.run()
+    if exit_code != 0:
+        logger.error(f"Server exited with non-zero code {exit_code}.")
+        time.sleep(2)
+
     sys.exit(exit_code)
