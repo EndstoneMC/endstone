@@ -130,7 +130,6 @@ class ItemComponentPacket;
 class ItemData;
 class ItemStackNetManagerBase;
 class JigsawStructureRegistry;
-class LegacyDependenciesUpgrade;
 class LevelChunkBuilderData;
 class LevelChunkMetaData;
 class LevelChunkMetaDataDictionary;
