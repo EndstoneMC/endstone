@@ -28,9 +28,6 @@ public:
     GameServerToken();
     GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
-    virtual ~GameServerToken() = default;
-    [[nodiscard]] virtual std::string toString() const;
-
     [[nodiscard]] std::string getXuid(bool trust_self_signed) const
     {
         if (!isValid() || (!trust_self_signed && certificate_->isSelfSigned())) {
@@ -44,12 +41,12 @@ public:
         return isValid();
     }
 
-    [[nodiscard]] virtual bool isValid() const
+    [[nodiscard]] bool isValid() const
     {
         return certificate_ && certificate_->isValid();
     }
 
 protected:
     GameServerToken(std::unique_ptr<Certificate>, bool);
-    std::unique_ptr<Certificate> certificate_;  // +8
+    std::unique_ptr<Certificate> certificate_;  // +0
 };
