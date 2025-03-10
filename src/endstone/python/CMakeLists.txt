@@ -27,6 +27,11 @@ pybind11_add_module(endstone_python MODULE
 target_link_libraries(endstone_python PRIVATE endstone::endstone pybind11::module)
 target_compile_definitions(endstone_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 
+if (WIN32)
+    pybind11_add_module(winext MODULE winext.cpp)
+    target_link_libraries(winext PRIVATE detours)
+endif ()
+
 if (MSVC)
     target_link_options(endstone_python PRIVATE /DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF)
     target_compile_options(endstone_python PRIVATE /O2 /DNDEBUG /Zi /Gy)
@@ -48,6 +53,9 @@ endif ()
 
 include(GNUInstallDirs)
 install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+if (WIN32)
+    install(TARGETS winext DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+endif ()
 if (MSVC)
     install(FILES $<TARGET_PDB_FILE:endstone_python> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 endif ()
