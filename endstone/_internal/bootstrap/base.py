@@ -10,7 +10,6 @@ import tempfile
 import zipfile
 from pathlib import Path
 from typing import Union
-from urllib.parse import urljoin
 
 import click
 import requests
@@ -206,8 +205,7 @@ class Bootstrap:
         self._install()
         self._validate()
         self._prepare()
-        self._create_process()
-        return self._wait_for_server()
+        return self._run()
 
     @property
     def _endstone_runtime_filename(self) -> str:
@@ -218,48 +216,26 @@ class Bootstrap:
         p = Path(__file__).parent.parent / self._endstone_runtime_filename
         return p.resolve().absolute()
 
-    def _create_process(self, *args, **kwargs) -> None:
-        """
-        Creates a subprocess for running the server.
+    @property
+    def _endstone_runtime_env(self) -> dict[str, str]:
+        env = os.environ.copy()
+        env["PATH"] = os.pathsep.join(sys.path)
+        env["PYTHONPATH"] = os.pathsep.join(sys.path)
+        env["PYTHONIOENCODING"] = "UTF-8"
+        return env
 
-        This method initializes a subprocess.Popen object for the server executable. It sets up the necessary
-        buffers and encodings for the process and specifies the working directory.
+    def _run(self, *args, **kwargs) -> int:
+        """
+        Runs the server and returns its exit code.
+
+        This method blocks until the server process terminates. It returns the exit code of the process, which can be
+        used to determine if the server shut down successfully or if there were errors.
 
         Args:
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments.
 
-        """
-        env = kwargs.pop("env", os.environ.copy())
-        env["PATH"] = os.pathsep.join(sys.path)
-        env["PYTHONPATH"] = os.pathsep.join(sys.path)
-        env["PYTHONIOENCODING"] = "UTF-8"
-        self._process = subprocess.Popen(
-            [str(self.executable_path.absolute())],
-            stdin=sys.stdin,
-            stdout=sys.stdout,
-            stderr=subprocess.STDOUT,
-            text=True,
-            encoding="utf-8",
-            cwd=str(self.server_path.absolute()),
-            env=env,
-            *args,
-            **kwargs,
-        )
-
-    def _wait_for_server(self) -> int:
-        """
-        Waits for the server process to terminate and returns its exit code.
-
-        This method blocks until the server process created by _create_process terminates. It returns the
-        exit code of the process, which can be used to determine if the server shut down successfully or if
-        there were errors.
-
         Returns:
-            int: The exit code of the server process. Returns -1 if the process is not created or still running.
+            int: The exit code of the server process.
         """
-
-        if self._process is None:
-            return -1
-
-        return self._process.wait()
+        raise NotImplementedError
