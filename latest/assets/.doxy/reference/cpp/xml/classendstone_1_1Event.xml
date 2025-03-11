@@ -180,8 +180,8 @@
         <reimplementedby refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerTeleportEvent_1a58a064da0b7bad2f61d36937f3da9cae">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1DataPacketReceiveEvent_1aa7a03379681888acd7519beeff14751d">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1DataPacketSendEvent_1ac2a9efbc32a8361dc741c58ad3c5ac56">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PacketSendEvent_1af8783d019d3cfd1ae4d8d83cc17d3267">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginDisableEvent_1a9083d88e6a5e47ed6307cc5f8ee12d4c">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginEnableEvent_1a80a2a76f95e0c011b04994475905d79b">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703">getEventName</reimplementedby>
@@ -375,21 +375,21 @@
         <childnode refid="35" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="1">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
       <node id="37">
-        <label>endstone::DataPacketReceiveEvent</label>
-        <link refid="classendstone_1_1DataPacketReceiveEvent"/>
+        <label>endstone::PacketReceiveEvent</label>
+        <link refid="classendstone_1_1PacketReceiveEvent"/>
         <childnode refid="35" relation="public-inheritance">
         </childnode>
       </node>
       <node id="38">
-        <label>endstone::DataPacketSendEvent</label>
-        <link refid="classendstone_1_1DataPacketSendEvent"/>
+        <label>endstone::PacketSendEvent</label>
+        <link refid="classendstone_1_1PacketSendEvent"/>
         <childnode refid="35" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="1">
-        <label>endstone::Event</label>
-        <link refid="classendstone_1_1Event"/>
       </node>
       <node id="22">
         <label>endstone::PlayerChatEvent</label>

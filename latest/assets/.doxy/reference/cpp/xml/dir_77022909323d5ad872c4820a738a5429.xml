@@ -3,8 +3,8 @@
   <compounddef id="dir_77022909323d5ad872c4820a738a5429" kind="dir">
     <compoundname>include/endstone/event/server</compoundname>
     <innerfile refid="broadcast__message__event_8h">broadcast_message_event.h</innerfile>
-    <innerfile refid="data__packet__receive__event_8h">data_packet_receive_event.h</innerfile>
-    <innerfile refid="data__packet__send__event_8h">data_packet_send_event.h</innerfile>
+    <innerfile refid="packet__receive__event_8h">packet_receive_event.h</innerfile>
+    <innerfile refid="packet__send__event_8h">packet_send_event.h</innerfile>
     <innerfile refid="plugin__disable__event_8h">plugin_disable_event.h</innerfile>
     <innerfile refid="plugin__enable__event_8h">plugin_enable_event.h</innerfile>
     <innerfile refid="script__message__event_8h">script_message_event.h</innerfile>

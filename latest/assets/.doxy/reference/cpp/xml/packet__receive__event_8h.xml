@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="data__packet__receive__event_8h" kind="file" language="C++">
-    <compoundname>data_packet_receive_event.h</compoundname>
-    <innerclass refid="classendstone_1_1DataPacketReceiveEvent" prot="public">endstone::DataPacketReceiveEvent</innerclass>
+  <compounddef id="packet__receive__event_8h" kind="file" language="C++">
+    <compoundname>packet_receive_event.h</compoundname>
+    <innerclass refid="classendstone_1_1PacketReceiveEvent" prot="public">endstone::PacketReceiveEvent</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -27,22 +27,22 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22" refid="classendstone_1_1DataPacketReceiveEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1DataPacketReceiveEvent" kindref="compound">DataPacketReceiveEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;ServerEvent&gt;<sp/>{</highlight></codeline>
+<codeline lineno="22" refid="classendstone_1_1PacketReceiveEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PacketReceiveEvent" kindref="compound">PacketReceiveEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;ServerEvent&gt;<sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1DataPacketReceiveEvent" kindref="compound">DataPacketReceiveEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>,<sp/>std::string_view<sp/>data)<sp/>:<sp/>player_(<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>),<sp/>data_(data)<sp/>{}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PacketReceiveEvent" kindref="compound">PacketReceiveEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>,<sp/>std::string_view<sp/>data)<sp/>:<sp/>player_(<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>),<sp/>data_(data)<sp/>{}</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;DataPacketReceiveEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="27" refid="classendstone_1_1DataPacketReceiveEvent_1aa7a03379681888acd7519beeff14751d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1DataPacketReceiveEvent_1aa7a03379681888acd7519beeff14751d" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PacketReceiveEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27" refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="28"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="classendstone_1_1DataPacketReceiveEvent_1a9606fb993602867c3354761c1070211a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string_view<sp/><ref refid="classendstone_1_1DataPacketReceiveEvent_1a9606fb993602867c3354761c1070211a" kindref="member">getData</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="37" refid="classendstone_1_1PacketReceiveEvent_1a779bf410f5b34014d54f160f81661e42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string_view<sp/><ref refid="classendstone_1_1PacketReceiveEvent_1a779bf410f5b34014d54f160f81661e42" kindref="member">getData</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="38"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47" refid="classendstone_1_1DataPacketReceiveEvent_1a44cd72cab4d7bbf02ffc1b7bdbbfc2df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1DataPacketReceiveEvent_1a44cd72cab4d7bbf02ffc1b7bdbbfc2df" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="47" refid="classendstone_1_1PacketReceiveEvent_1a1ae979ea681991973f171e06c64756ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1PacketReceiveEvent_1a1ae979ea681991973f171e06c64756ec" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="48"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>player_;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -54,6 +54,6 @@
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="include/endstone/event/server/data_packet_receive_event.h"/>
+    <location file="include/endstone/event/server/packet_receive_event.h"/>
   </compounddef>
 </doxygen>

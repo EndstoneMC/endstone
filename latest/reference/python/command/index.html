@@ -2793,6 +2793,68 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Classes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Command (endstone.command.Command)" href="#endstone.command.Command">Command</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a Command, which executes various tasks upon user input</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            CommandExecutor (endstone.command.CommandExecutor)" href="#endstone.command.CommandExecutor">CommandExecutor</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a class which contains a single method for executing commands</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            CommandSender (endstone.command.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a command sender.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            CommandSenderWrapper (endstone.command.CommandSenderWrapper)" href="#endstone.command.CommandSenderWrapper">CommandSenderWrapper</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            ConsoleCommandSender (endstone.command.ConsoleCommandSender)" href="#endstone.command.ConsoleCommandSender">ConsoleCommandSender</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a console command sender.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            ProxiedCommandSender (endstone.command.ProxiedCommandSender)" href="#endstone.command.ProxiedCommandSender">ProxiedCommandSender</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a proxied command sender.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
 
 
 
@@ -2840,6 +2902,159 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            execute (endstone.command.Command.execute)" href="#endstone.command.Command.execute">execute</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Executes the command, returning its success</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            test_permission (endstone.command.Command.test_permission)" href="#endstone.command.Command.test_permission">test_permission</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Tests the given CommandSender to see if they can perform this command.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            test_permission_silently (endstone.command.Command.test_permission_silently)" href="#endstone.command.Command.test_permission_silently">test_permission_silently</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Tests the given CommandSender to see if they can perform this command. No error is sent to the sender.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            aliases
+
+
+  
+      property
+      writable
+   (endstone.command.Command.aliases)" href="#endstone.command.Command.aliases">aliases</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of aliases of this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            description
+
+
+  
+      property
+      writable
+   (endstone.command.Command.description)" href="#endstone.command.Command.description">description</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Brief description of this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            is_registered
+
+
+  
+      property
+   (endstone.command.Command.is_registered)" href="#endstone.command.Command.is_registered">is_registered</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the current registered state of this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            name
+
+
+  
+      property
+      writable
+   (endstone.command.Command.name)" href="#endstone.command.Command.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of this command.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            permissions
+
+
+  
+      property
+      writable
+   (endstone.command.Command.permissions)" href="#endstone.command.Command.permissions">permissions</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The permissions required by users to be able to perform this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            usages
+
+
+  
+      property
+      writable
+   (endstone.command.Command.usages)" href="#endstone.command.Command.usages">usages</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of usages of this command</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -2871,6 +3086,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>List of aliases of this command</p>
+
     </div>
 
 </div>
@@ -2895,6 +3111,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Brief description of this command</p>
+
     </div>
 
 </div>
@@ -2918,6 +3135,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Returns the current registered state of this command</p>
+
     </div>
 
 </div>
@@ -2942,6 +3160,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Name of this command.</p>
+
     </div>
 
 </div>
@@ -2966,6 +3185,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>The permissions required by users to be able to perform this command</p>
+
     </div>
 
 </div>
@@ -2990,6 +3210,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>List of usages of this command</p>
+
     </div>
 
 </div>
@@ -3004,12 +3225,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.command.Command.execute" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">execute</span><span class="p">(</span><span class="n">sender</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">execute</span><span class="p">(</span><span class="n">sender</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Executes the command, returning its success</p>
+
 
     </div>
 
@@ -3023,12 +3245,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.command.Command.test_permission" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_permission</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_permission</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Tests the given CommandSender to see if they can perform this command.</p>
+
 
     </div>
 
@@ -3042,12 +3265,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.command.Command.test_permission_silently" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_permission_silently</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_permission_silently</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Tests the given CommandSender to see if they can perform this command. No error is sent to the sender.</p>
+
 
     </div>
 
@@ -3087,6 +3311,28 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            on_command (endstone.command.CommandExecutor.on_command)" href="#endstone.command.CommandExecutor.on_command">on_command</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Executes the given command, returning its success.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
 
 
 
@@ -3109,13 +3355,14 @@ For latest updates join the chat on
 
 <a href="#endstone.command.CommandExecutor.on_command" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">on_command</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">sender</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Command" href="#endstone.command.Command">Command</a></span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">sender</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Command (endstone._internal.endstone_python.Command)" href="#endstone.command.Command">Command</a></span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Executes the given command, returning its success.</p>
+
 
     </div>
 
@@ -3142,7 +3389,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permissible" href="../permissions/#endstone.permissions.Permissible">Permissible</a></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="../permissions/#endstone.permissions.Permissible">Permissible</a></code></p>
 
 
         <p>Represents a command sender.</p>
@@ -3155,6 +3402,82 @@ For latest updates join the chat on
 
 
 
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_error_message (endstone.command.CommandSender.send_error_message)" href="#endstone.command.CommandSender.send_error_message">send_error_message</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends this sender an error message</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_message (endstone.command.CommandSender.send_message)" href="#endstone.command.CommandSender.send_message">send_message</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends this sender a message</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            name
+
+
+  
+      property
+   (endstone.command.CommandSender.name)" href="#endstone.command.CommandSender.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the name of this command sender</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            server
+
+
+  
+      property
+   (endstone.command.CommandSender.server)" href="#endstone.command.CommandSender.server">server</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            endstone.Server (endstone._internal.endstone_python.Server)" href="../server/#endstone.Server">Server</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the server instance that this command is running on</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3186,6 +3509,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the name of this command sender</p>
+
     </div>
 
 </div>
@@ -3203,12 +3527,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.command.CommandSender.server" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">server</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Server" href="../server/#endstone.Server">Server</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">server</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            endstone.Server (endstone._internal.endstone_python.Server)" href="../server/#endstone.Server">Server</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Returns the server instance that this command is running on</p>
+
     </div>
 
 </div>
@@ -3223,12 +3548,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.command.CommandSender.send_error_message" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">send_error_message</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">send_error_message</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Sends this sender an error message</p>
+
 
     </div>
 
@@ -3242,12 +3568,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.command.CommandSender.send_message" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">send_message</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">send_message</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Sends this sender a message</p>
+
 
     </div>
 
@@ -3271,18 +3598,19 @@ For latest updates join the chat on
 
 <a href="#endstone.command.CommandSenderWrapper" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">CommandSenderWrapper</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">sender</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">on_message</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">on_error</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">sender</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">on_message</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">on_error</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></code></p>
 
 
         <p>Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output</p>
+
 
 
 
@@ -3327,10 +3655,11 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></code></p>
 
 
         <p>Represents a console command sender.</p>
+
 
 
 
@@ -3375,7 +3704,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></code></p>
 
 
         <p>Represents a proxied command sender.</p>
@@ -3388,6 +3717,53 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            callee
+
+
+  
+      property
+   (endstone.command.ProxiedCommandSender.callee)" href="#endstone.command.ProxiedCommandSender.callee">callee</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the CommandSender which is being used to call the command.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            caller
+
+
+  
+      property
+   (endstone.command.ProxiedCommandSender.caller)" href="#endstone.command.ProxiedCommandSender.caller">caller</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the CommandSender which triggered this proxied command.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3413,12 +3789,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.command.ProxiedCommandSender.callee" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">callee</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">callee</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Returns the CommandSender which is being used to call the command.</p>
+
     </div>
 
 </div>
@@ -3436,12 +3813,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.command.ProxiedCommandSender.caller" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">caller</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">caller</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            CommandSender (endstone._internal.endstone_python.CommandSender)" href="#endstone.command.CommandSender">CommandSender</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Returns the CommandSender which triggered this proxied command.</p>
+
     </div>
 
 </div>

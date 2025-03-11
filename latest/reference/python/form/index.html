@@ -3619,6 +3619,92 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Classes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            ActionForm (endstone.form.ActionForm)" href="#endstone.form.ActionForm">ActionForm</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a form with buttons that let the player take action.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Dropdown (endstone.form.Dropdown)" href="#endstone.form.Dropdown">Dropdown</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a dropdown with a set of predefined options.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Label (endstone.form.Label)" href="#endstone.form.Label">Label</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a text label.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            MessageForm (endstone.form.MessageForm)" href="#endstone.form.MessageForm">MessageForm</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a form with two buttons.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            ModalForm (endstone.form.ModalForm)" href="#endstone.form.ModalForm">ModalForm</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a modal form with controls.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Slider (endstone.form.Slider)" href="#endstone.form.Slider">Slider</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a slider with a label.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            StepSlider (endstone.form.StepSlider)" href="#endstone.form.StepSlider">StepSlider</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a step slider with a set of predefined options.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            TextInput (endstone.form.TextInput)" href="#endstone.form.TextInput">TextInput</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a text input field.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Toggle (endstone.form.Toggle)" href="#endstone.form.Toggle">Toggle</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a toggle button with a label.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
 
 
 
@@ -3642,11 +3728,11 @@ For latest updates join the chat on
 
 <a href="#endstone.form.ActionForm" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">ActionForm</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">buttons</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ActionForm.Button" href="#endstone.form.ActionForm.Button">Button</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">buttons</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Button (endstone._internal.endstone_python.ActionForm.Button)" href="#endstone.form.ActionForm.Button">Button</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
 </span></code></pre></div>
 
@@ -3662,7 +3748,149 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Classes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Button (endstone.form.ActionForm.Button)" href="#endstone.form.ActionForm.Button">Button</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a button with text and an optional icon.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            add_button (endstone.form.ActionForm.add_button)" href="#endstone.form.ActionForm.add_button">add_button</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Adds a button to the form.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            buttons
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.buttons)" href="#endstone.form.ActionForm.buttons">buttons</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="            Button (endstone._internal.endstone_python.ActionForm.Button)" href="#endstone.form.ActionForm.Button">Button</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the buttons of the action form.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            content
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.content)" href="#endstone.form.ActionForm.content">content</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the content of the form.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            on_close
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.on_close)" href="#endstone.form.ActionForm.on_close">on_close</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the on close callback.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            on_submit
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.on_submit)" href="#endstone.form.ActionForm.on_submit">on_submit</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the on submit callback.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            title
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.title)" href="#endstone.form.ActionForm.title">title</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the title of the form.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3689,12 +3917,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ActionForm.buttons" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buttons</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ActionForm.Button" href="#endstone.form.ActionForm.Button">Button</a></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buttons</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Button (endstone._internal.endstone_python.ActionForm.Button)" href="#endstone.form.ActionForm.Button">Button</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the buttons of the action form.</p>
+
     </div>
 
 </div>
@@ -3713,12 +3942,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ActionForm.content" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the content of the form.</p>
+
     </div>
 
 </div>
@@ -3737,12 +3967,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ActionForm.on_close" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the on close callback.</p>
+
     </div>
 
 </div>
@@ -3761,12 +3992,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ActionForm.on_submit" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the on submit callback.</p>
+
     </div>
 
 </div>
@@ -3785,12 +4017,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ActionForm.title" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the title of the form.</p>
+
     </div>
 
 </div>
@@ -3806,9 +4039,9 @@ For latest updates join the chat on
 
 <a href="#endstone.form.ActionForm.Button" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Button</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">icon</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">on_click</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">on_click</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
 </span></code></pre></div>
 
@@ -3825,6 +4058,72 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            icon
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.Button.icon)" href="#endstone.form.ActionForm.Button.icon">icon</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the icon path or URL of the button</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            on_click
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.Button.on_click)" href="#endstone.form.ActionForm.Button.on_click">on_click</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the on click callback.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            text
+
+
+  
+      property
+      writable
+   (endstone.form.ActionForm.Button.text)" href="#endstone.form.ActionForm.Button.text">text</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the text of the button</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3857,6 +4156,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the icon path or URL of the button</p>
+
     </div>
 
 </div>
@@ -3875,12 +4175,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ActionForm.Button.on_click" class="headerlink" title="Permanent link">&para;</a></h5>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_click</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_click</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the on click callback.</p>
+
     </div>
 
 </div>
@@ -3899,12 +4200,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ActionForm.Button.text" class="headerlink" title="Permanent link">&para;</a></h5>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the text of the button</p>
+
     </div>
 
 </div>
@@ -3929,15 +4231,16 @@ For latest updates join the chat on
 
 <a href="#endstone.form.ActionForm.add_button" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_button</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">icon</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">on_click</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ActionForm" href="#endstone.form.ActionForm">ActionForm</a></span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">on_click</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            ActionForm (endstone._internal.endstone_python.ActionForm)" href="#endstone.form.ActionForm">ActionForm</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Adds a button to the form.</p>
+
 
     </div>
 
@@ -3961,7 +4264,7 @@ For latest updates join the chat on
 
 <a href="#endstone.form.Dropdown" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Dropdown</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">default_index</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
@@ -3980,6 +4283,93 @@ For latest updates join the chat on
 
 
 
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            add_option (endstone.form.Dropdown.add_option)" href="#endstone.form.Dropdown.add_option">add_option</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Adds a new option to the dropdown.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            default_index
+
+
+  
+      property
+      writable
+   (endstone.form.Dropdown.default_index)" href="#endstone.form.Dropdown.default_index">default_index</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the optional default index of the dropdown.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            label
+
+
+  
+      property
+      writable
+   (endstone.form.Dropdown.label)" href="#endstone.form.Dropdown.label">label</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the label of the dropdown.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            options
+
+
+  
+      property
+      writable
+   (endstone.form.Dropdown.options)" href="#endstone.form.Dropdown.options">options</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the options of the dropdown.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -4012,6 +4402,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the optional default index of the dropdown.</p>
+
     </div>
 
 </div>
@@ -4030,12 +4421,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.Dropdown.label" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the label of the dropdown.</p>
+
     </div>
 
 </div>
@@ -4060,6 +4452,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the options of the dropdown.</p>
+
     </div>
 
 </div>
@@ -4074,12 +4467,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.form.Dropdown.add_option" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_option</span><span class="p">(</span><span class="n">option</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Dropdown" href="#endstone.form.Dropdown">Dropdown</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_option</span><span class="p">(</span><span class="n">option</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Dropdown (endstone._internal.endstone_python.Dropdown)" href="#endstone.form.Dropdown">Dropdown</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Adds a new option to the dropdown.</p>
+
 
     </div>
 
@@ -4102,7 +4496,7 @@ For latest updates join the chat on
 
 
 <a href="#endstone.form.Label" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Label</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Label</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4118,6 +4512,38 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            text
+
+
+  
+      property
+      writable
+   (endstone.form.Label.text)" href="#endstone.form.Label.text">text</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the text of the label.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -4144,12 +4570,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.Label.text" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">text</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the text of the label.</p>
+
     </div>
 
 </div>
@@ -4174,12 +4601,12 @@ For latest updates join the chat on
 
 <a href="#endstone.form.MessageForm" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">MessageForm</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">button1</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">button2</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">button1</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">button2</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span>
 </span></code></pre></div>
 
@@ -4196,6 +4623,123 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            button1
+
+
+  
+      property
+      writable
+   (endstone.form.MessageForm.button1)" href="#endstone.form.MessageForm.button1">button1</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the text of button1.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            button2
+
+
+  
+      property
+      writable
+   (endstone.form.MessageForm.button2)" href="#endstone.form.MessageForm.button2">button2</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the text of button2.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            content
+
+
+  
+      property
+      writable
+   (endstone.form.MessageForm.content)" href="#endstone.form.MessageForm.content">content</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the content of the form.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            on_close
+
+
+  
+      property
+      writable
+   (endstone.form.MessageForm.on_close)" href="#endstone.form.MessageForm.on_close">on_close</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the on close callback.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            on_submit
+
+
+  
+      property
+      writable
+   (endstone.form.MessageForm.on_submit)" href="#endstone.form.MessageForm.on_submit">on_submit</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the on submit callback.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            title
+
+
+  
+      property
+      writable
+   (endstone.form.MessageForm.title)" href="#endstone.form.MessageForm.title">title</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the title of the form.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -4222,12 +4766,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.MessageForm.button1" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">button1</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">button1</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the text of button1.</p>
+
     </div>
 
 </div>
@@ -4246,12 +4791,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.MessageForm.button2" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">button2</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">button2</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the text of button2.</p>
+
     </div>
 
 </div>
@@ -4270,12 +4816,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.MessageForm.content" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">content</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the content of the form.</p>
+
     </div>
 
 </div>
@@ -4294,12 +4841,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.MessageForm.on_close" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the on close callback.</p>
+
     </div>
 
 </div>
@@ -4318,12 +4866,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.MessageForm.on_submit" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the on submit callback.</p>
+
     </div>
 
 </div>
@@ -4342,12 +4891,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.MessageForm.title" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the title of the form.</p>
+
     </div>
 
 </div>
@@ -4372,22 +4922,22 @@ For latest updates join the chat on
 
 <a href="#endstone.form.ModalForm" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">ModalForm</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">controls</span><span class="p">:</span> <span class="p">(</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>            <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Dropdown" href="#endstone.form.Dropdown">Dropdown</a></span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Label" href="#endstone.form.Label">Label</a></span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Slider" href="#endstone.form.Slider">Slider</a></span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.StepSlider" href="#endstone.form.StepSlider">StepSlider</a></span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.TextInput" href="#endstone.form.TextInput">TextInput</a></span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Toggle" href="#endstone.form.Toggle">Toggle</a></span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>            <span class="n"><a class="autorefs autorefs-internal" title="            Dropdown (endstone._internal.endstone_python.Dropdown)" href="#endstone.form.Dropdown">Dropdown</a></span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Label (endstone._internal.endstone_python.Label)" href="#endstone.form.Label">Label</a></span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Slider (endstone._internal.endstone_python.Slider)" href="#endstone.form.Slider">Slider</a></span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            StepSlider (endstone._internal.endstone_python.StepSlider)" href="#endstone.form.StepSlider">StepSlider</a></span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            TextInput (endstone._internal.endstone_python.TextInput)" href="#endstone.form.TextInput">TextInput</a></span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Toggle (endstone._internal.endstone_python.Toggle)" href="#endstone.form.Toggle">Toggle</a></span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">]</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="o">|</span> <span class="kc">None</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">submit_button</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">submit_button</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">icon</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">)</span>
 </span></code></pre></div>
 
@@ -4404,6 +4954,144 @@ For latest updates join the chat on
 
 
 
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            add_control (endstone.form.ModalForm.add_control)" href="#endstone.form.ModalForm.add_control">add_control</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Adds a control to the form.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            controls
+
+
+  
+      property
+      writable
+   (endstone.form.ModalForm.controls)" href="#endstone.form.ModalForm.controls">controls</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="            Dropdown (endstone._internal.endstone_python.Dropdown)" href="#endstone.form.Dropdown">Dropdown</a> | <a class="autorefs autorefs-internal" title="            Label (endstone._internal.endstone_python.Label)" href="#endstone.form.Label">Label</a> | <a class="autorefs autorefs-internal" title="            Slider (endstone._internal.endstone_python.Slider)" href="#endstone.form.Slider">Slider</a> | <a class="autorefs autorefs-internal" title="            StepSlider (endstone._internal.endstone_python.StepSlider)" href="#endstone.form.StepSlider">StepSlider</a> | <a class="autorefs autorefs-internal" title="            TextInput (endstone._internal.endstone_python.TextInput)" href="#endstone.form.TextInput">TextInput</a> | <a class="autorefs autorefs-internal" title="            Toggle (endstone._internal.endstone_python.Toggle)" href="#endstone.form.Toggle">Toggle</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the controls of the modal form.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            icon
+
+
+  
+      property
+      writable
+   (endstone.form.ModalForm.icon)" href="#endstone.form.ModalForm.icon">icon</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the icon of the form.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            on_close
+
+
+  
+      property
+      writable
+   (endstone.form.ModalForm.on_close)" href="#endstone.form.ModalForm.on_close">on_close</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the on close callback.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            on_submit
+
+
+  
+      property
+      writable
+   (endstone.form.ModalForm.on_submit)" href="#endstone.form.ModalForm.on_submit">on_submit</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the on submit callback.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            submit_button
+
+
+  
+      property
+      writable
+   (endstone.form.ModalForm.submit_button)" href="#endstone.form.ModalForm.submit_button">submit_button</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the submit button message of the form.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            title
+
+
+  
+      property
+      writable
+   (endstone.form.ModalForm.title)" href="#endstone.form.ModalForm.title">title</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the title of the form.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -4431,18 +5119,19 @@ For latest updates join the chat on
 
 <a href="#endstone.form.ModalForm.controls" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">controls</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Dropdown" href="#endstone.form.Dropdown">Dropdown</a></span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Label" href="#endstone.form.Label">Label</a></span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Slider" href="#endstone.form.Slider">Slider</a></span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.StepSlider" href="#endstone.form.StepSlider">StepSlider</a></span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.TextInput" href="#endstone.form.TextInput">TextInput</a></span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Toggle" href="#endstone.form.Toggle">Toggle</a></span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n"><a class="autorefs autorefs-internal" title="            Dropdown (endstone._internal.endstone_python.Dropdown)" href="#endstone.form.Dropdown">Dropdown</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Label (endstone._internal.endstone_python.Label)" href="#endstone.form.Label">Label</a></span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Slider (endstone._internal.endstone_python.Slider)" href="#endstone.form.Slider">Slider</a></span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            StepSlider (endstone._internal.endstone_python.StepSlider)" href="#endstone.form.StepSlider">StepSlider</a></span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            TextInput (endstone._internal.endstone_python.TextInput)" href="#endstone.form.TextInput">TextInput</a></span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Toggle (endstone._internal.endstone_python.Toggle)" href="#endstone.form.Toggle">Toggle</a></span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the controls of the modal form.</p>
+
     </div>
 
 </div>
@@ -4467,6 +5156,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the icon of the form.</p>
+
     </div>
 
 </div>
@@ -4485,12 +5175,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ModalForm.on_close" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_close</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the on close callback.</p>
+
     </div>
 
 </div>
@@ -4509,12 +5200,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ModalForm.on_submit" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">on_submit</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            endstone.Player (endstone._internal.endstone_python.Player)" href="../player/#endstone.Player">Player</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the on submit callback.</p>
+
     </div>
 
 </div>
@@ -4533,12 +5225,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ModalForm.submit_button" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">submit_button</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">|</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">submit_button</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">|</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the submit button message of the form.</p>
+
     </div>
 
 </div>
@@ -4557,12 +5250,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.ModalForm.title" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">title</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the title of the form.</p>
+
     </div>
 
 </div>
@@ -4579,19 +5273,20 @@ For latest updates join the chat on
 <a href="#endstone.form.ModalForm.add_control" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_control</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">control</span><span class="p">:</span> <span class="p">(</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Dropdown" href="#endstone.form.Dropdown">Dropdown</a></span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Label" href="#endstone.form.Label">Label</a></span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Slider" href="#endstone.form.Slider">Slider</a></span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.StepSlider" href="#endstone.form.StepSlider">StepSlider</a></span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.TextInput" href="#endstone.form.TextInput">TextInput</a></span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Toggle" href="#endstone.form.Toggle">Toggle</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="n"><a class="autorefs autorefs-internal" title="            Dropdown (endstone._internal.endstone_python.Dropdown)" href="#endstone.form.Dropdown">Dropdown</a></span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Label (endstone._internal.endstone_python.Label)" href="#endstone.form.Label">Label</a></span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Slider (endstone._internal.endstone_python.Slider)" href="#endstone.form.Slider">Slider</a></span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            StepSlider (endstone._internal.endstone_python.StepSlider)" href="#endstone.form.StepSlider">StepSlider</a></span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            TextInput (endstone._internal.endstone_python.TextInput)" href="#endstone.form.TextInput">TextInput</a></span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Toggle (endstone._internal.endstone_python.Toggle)" href="#endstone.form.Toggle">Toggle</a></span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="p">),</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ModalForm" href="#endstone.form.ModalForm">ModalForm</a></span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            ModalForm (endstone._internal.endstone_python.ModalForm)" href="#endstone.form.ModalForm">ModalForm</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Adds a control to the form.</p>
+
 
     </div>
 
@@ -4615,7 +5310,7 @@ For latest updates join the chat on
 
 <a href="#endstone.form.Slider" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Slider</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="nb">min</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">max</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">step</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
@@ -4636,6 +5331,106 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            default_value
+
+
+  
+      property
+      writable
+   (endstone.form.Slider.default_value)" href="#endstone.form.Slider.default_value">default_value</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the optional default value of the slider.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            label
+
+
+  
+      property
+      writable
+   (endstone.form.Slider.label)" href="#endstone.form.Slider.label">label</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the label of the slider.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            max
+
+
+  
+      property
+      writable
+   (endstone.form.Slider.max)" href="#endstone.form.Slider.max">max</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the maximum value of the slider.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            min
+
+
+  
+      property
+      writable
+   (endstone.form.Slider.min)" href="#endstone.form.Slider.min">min</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the minimum value of the slider.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            step
+
+
+  
+      property
+      writable
+   (endstone.form.Slider.step)" href="#endstone.form.Slider.step">step</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the step size of the slider.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -4668,6 +5463,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the optional default value of the slider.</p>
+
     </div>
 
 </div>
@@ -4686,12 +5482,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.Slider.label" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the label of the slider.</p>
+
     </div>
 
 </div>
@@ -4716,6 +5513,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the maximum value of the slider.</p>
+
     </div>
 
 </div>
@@ -4740,6 +5538,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the minimum value of the slider.</p>
+
     </div>
 
 </div>
@@ -4764,6 +5563,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the step size of the slider.</p>
+
     </div>
 
 </div>
@@ -4788,7 +5588,7 @@ For latest updates join the chat on
 
 <a href="#endstone.form.StepSlider" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">StepSlider</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">default_index</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
@@ -4807,6 +5607,93 @@ For latest updates join the chat on
 
 
 
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            add_option (endstone.form.StepSlider.add_option)" href="#endstone.form.StepSlider.add_option">add_option</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Adds a new option to the step slider.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            default_index
+
+
+  
+      property
+      writable
+   (endstone.form.StepSlider.default_index)" href="#endstone.form.StepSlider.default_index">default_index</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the optional default index of the step slider.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            label
+
+
+  
+      property
+      writable
+   (endstone.form.StepSlider.label)" href="#endstone.form.StepSlider.label">label</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the label of the step slider.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            options
+
+
+  
+      property
+      writable
+   (endstone.form.StepSlider.options)" href="#endstone.form.StepSlider.options">options</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the options of the step slider.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -4839,6 +5726,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the optional default index of the step slider.</p>
+
     </div>
 
 </div>
@@ -4857,12 +5745,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.StepSlider.label" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the label of the step slider.</p>
+
     </div>
 
 </div>
@@ -4887,6 +5776,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the options of the step slider.</p>
+
     </div>
 
 </div>
@@ -4901,12 +5791,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.form.StepSlider.add_option" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_option</span><span class="p">(</span><span class="n">option</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Dropdown" href="#endstone.form.Dropdown">Dropdown</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_option</span><span class="p">(</span><span class="n">option</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Dropdown (endstone._internal.endstone_python.Dropdown)" href="#endstone.form.Dropdown">Dropdown</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Adds a new option to the step slider.</p>
+
 
     </div>
 
@@ -4930,8 +5821,8 @@ For latest updates join the chat on
 
 <a href="#endstone.form.TextInput" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">TextInput</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">placeholder</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">placeholder</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">default_value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
 </span></code></pre></div>
@@ -4949,6 +5840,72 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            default_value
+
+
+  
+      property
+      writable
+   (endstone.form.TextInput.default_value)" href="#endstone.form.TextInput.default_value">default_value</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the optional default text of the text input field.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            label
+
+
+  
+      property
+      writable
+   (endstone.form.TextInput.label)" href="#endstone.form.TextInput.label">label</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the label of the text input field.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            placeholder
+
+
+  
+      property
+      writable
+   (endstone.form.TextInput.placeholder)" href="#endstone.form.TextInput.placeholder">placeholder</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the placeholder of the text input field.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -4981,6 +5938,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the optional default text of the text input field.</p>
+
     </div>
 
 </div>
@@ -4999,12 +5957,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.TextInput.label" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the label of the text input field.</p>
+
     </div>
 
 </div>
@@ -5023,12 +5982,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.TextInput.placeholder" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">placeholder</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">placeholder</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the placeholder of the text input field.</p>
+
     </div>
 
 </div>
@@ -5053,7 +6013,7 @@ For latest updates join the chat on
 
 <a href="#endstone.form.Toggle" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Toggle</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">default_value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span>
 </span></code></pre></div>
@@ -5071,6 +6031,55 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            default_value
+
+
+  
+      property
+      writable
+   (endstone.form.Toggle.default_value)" href="#endstone.form.Toggle.default_value">default_value</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the value of the toggle.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            label
+
+
+  
+      property
+      writable
+   (endstone.form.Toggle.label)" href="#endstone.form.Toggle.label">label</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the label of the toggle.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -5103,6 +6112,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the value of the toggle.</p>
+
     </div>
 
 </div>
@@ -5121,12 +6131,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.form.Toggle.label" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Translatable" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">label</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Translatable (endstone._internal.endstone_python.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the label of the toggle.</p>
+
     </div>
 
 </div>

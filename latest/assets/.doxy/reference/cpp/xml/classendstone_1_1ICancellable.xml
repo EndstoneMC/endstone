@@ -187,21 +187,21 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="1">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
       <node id="14">
-        <label>endstone::DataPacketReceiveEvent</label>
-        <link refid="classendstone_1_1DataPacketReceiveEvent"/>
+        <label>endstone::PacketReceiveEvent</label>
+        <link refid="classendstone_1_1PacketReceiveEvent"/>
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
       <node id="15">
-        <label>endstone::DataPacketSendEvent</label>
-        <link refid="classendstone_1_1DataPacketSendEvent"/>
+        <label>endstone::PacketSendEvent</label>
+        <link refid="classendstone_1_1PacketSendEvent"/>
         <childnode refid="12" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="1">
-        <label>endstone::ICancellable</label>
-        <link refid="classendstone_1_1ICancellable"/>
       </node>
       <node id="20">
         <label>endstone::PlayerChatEvent</label>

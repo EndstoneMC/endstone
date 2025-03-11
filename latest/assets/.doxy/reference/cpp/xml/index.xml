@@ -425,24 +425,6 @@
     <member refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kind="function"><name>getDamagingActor</name></member>
     <member refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" kind="function"><name>isIndirect</name></member>
   </compound>
-  <compound refid="classendstone_1_1DataPacketReceiveEvent" kind="class"><name>endstone::DataPacketReceiveEvent</name>
-    <member refid="classendstone_1_1DataPacketReceiveEvent_1aa489cc867db17d3c80372a44ecbc6880" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1DataPacketReceiveEvent_1a71240afc45ae419e6e78ff80101cc5cf" kind="variable"><name>player_</name></member>
-    <member refid="classendstone_1_1DataPacketReceiveEvent_1a0254aea3e1ce866d88c8e3b70d22d901" kind="variable"><name>data_</name></member>
-    <member refid="classendstone_1_1DataPacketReceiveEvent_1aa9e5fab9f647b02b114076325c8900c5" kind="function"><name>DataPacketReceiveEvent</name></member>
-    <member refid="classendstone_1_1DataPacketReceiveEvent_1aa7a03379681888acd7519beeff14751d" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1DataPacketReceiveEvent_1a9606fb993602867c3354761c1070211a" kind="function"><name>getData</name></member>
-    <member refid="classendstone_1_1DataPacketReceiveEvent_1a44cd72cab4d7bbf02ffc1b7bdbbfc2df" kind="function"><name>getPlayer</name></member>
-  </compound>
-  <compound refid="classendstone_1_1DataPacketSendEvent" kind="class"><name>endstone::DataPacketSendEvent</name>
-    <member refid="classendstone_1_1DataPacketSendEvent_1a5d7757d2edbc30cb24392255ad7d41c9" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1DataPacketSendEvent_1ad38f94597f8cbbfa04e86a06b7aa5fc6" kind="variable"><name>player_</name></member>
-    <member refid="classendstone_1_1DataPacketSendEvent_1a5d2818dc97784db44ed12a999151490d" kind="variable"><name>data_</name></member>
-    <member refid="classendstone_1_1DataPacketSendEvent_1aa59b7aeaf22e39383c7c18abc57ab258" kind="function"><name>DataPacketSendEvent</name></member>
-    <member refid="classendstone_1_1DataPacketSendEvent_1ac2a9efbc32a8361dc741c58ad3c5ac56" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1DataPacketSendEvent_1ad588b01274f3f896b8332d8dfe117f7f" kind="function"><name>getData</name></member>
-    <member refid="classendstone_1_1DataPacketSendEvent_1aa073af290df67949d16c4ba4a8b0b43d" kind="function"><name>getPlayer</name></member>
-  </compound>
   <compound refid="classendstone_1_1Dimension" kind="class"><name>endstone::Dimension</name>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kind="enum"><name>Type</name></member>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba50181b144eb2554dc2e45cd3d437e92f" kind="enumvalue"><name>Overworld</name></member>
@@ -754,6 +736,24 @@
   <compound refid="classendstone_1_1Packet" kind="class"><name>endstone::Packet</name>
     <member refid="classendstone_1_1Packet_1a0737525674b86ec7f71593ee080b0fb1" kind="function"><name>~Packet</name></member>
     <member refid="classendstone_1_1Packet_1ae6b902874f587e6041c9706318a6ee34" kind="function"><name>getType</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PacketReceiveEvent" kind="class"><name>endstone::PacketReceiveEvent</name>
+    <member refid="classendstone_1_1PacketReceiveEvent_1a218801638ce951b0f39ba49d6a99e159" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PacketReceiveEvent_1a741ce691ee6fb7cdeca157b12b5c2590" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1PacketReceiveEvent_1a13c61ccf5ae2d60c8d0e5e7481c57c43" kind="variable"><name>data_</name></member>
+    <member refid="classendstone_1_1PacketReceiveEvent_1af0d06c7ec08cf777bb8b3b513c883609" kind="function"><name>PacketReceiveEvent</name></member>
+    <member refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PacketReceiveEvent_1a779bf410f5b34014d54f160f81661e42" kind="function"><name>getData</name></member>
+    <member refid="classendstone_1_1PacketReceiveEvent_1a1ae979ea681991973f171e06c64756ec" kind="function"><name>getPlayer</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PacketSendEvent" kind="class"><name>endstone::PacketSendEvent</name>
+    <member refid="classendstone_1_1PacketSendEvent_1a9884fb846170b61bc2e49937664176a7" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a28a7e34679b9893400a6fb2138a77479" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1ad1b8b145f0d644e3e6f4848406c8b77c" kind="variable"><name>data_</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a5c510cd6d766b6eaa96130e290c58ddf" kind="function"><name>PacketSendEvent</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1af8783d019d3cfd1ae4d8d83cc17d3267" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1ac30b876b74d356e7095ecdfc12cecc48" kind="function"><name>getData</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a620efa660c957b4dc7f1c08ee6a0e8a5" kind="function"><name>getPlayer</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
@@ -1725,9 +1725,9 @@
   </compound>
   <compound refid="broadcast__message__event_8h" kind="file"><name>broadcast_message_event.h</name>
   </compound>
-  <compound refid="data__packet__receive__event_8h" kind="file"><name>data_packet_receive_event.h</name>
+  <compound refid="packet__receive__event_8h" kind="file"><name>packet_receive_event.h</name>
   </compound>
-  <compound refid="data__packet__send__event_8h" kind="file"><name>data_packet_send_event.h</name>
+  <compound refid="packet__send__event_8h" kind="file"><name>packet_send_event.h</name>
   </compound>
   <compound refid="plugin__disable__event_8h" kind="file"><name>plugin_disable_event.h</name>
   </compound>

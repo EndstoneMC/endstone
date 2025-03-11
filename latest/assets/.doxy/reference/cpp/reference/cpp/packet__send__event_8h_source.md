@@ -1,10 +1,10 @@
 
 
-# File data\_packet\_send\_event.h
+# File packet\_send\_event.h
 
-[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md) **>** [**server**](dir_77022909323d5ad872c4820a738a5429.md) **>** [**data\_packet\_send\_event.h**](data__packet__send__event_8h.md)
+[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md) **>** [**server**](dir_77022909323d5ad872c4820a738a5429.md) **>** [**packet\_send\_event.h**](packet__send__event_8h.md)
 
-[Go to the documentation of this file](data__packet__send__event_8h.md)
+[Go to the documentation of this file](packet__send__event_8h.md)
 
 
 ```C++
@@ -26,11 +26,11 @@
 
 namespace endstone {
 
-class DataPacketSendEvent : public Cancellable<ServerEvent> {
+class PacketSendEvent : public Cancellable<ServerEvent> {
 public:
-    DataPacketSendEvent(Player &player, std::string_view data) : player_(player), data_(data) {}
+    PacketSendEvent(Player &player, std::string_view data) : player_(player), data_(data) {}
 
-    inline static const std::string NAME = "DataPacketSendEvent";
+    inline static const std::string NAME = "PacketSendEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;

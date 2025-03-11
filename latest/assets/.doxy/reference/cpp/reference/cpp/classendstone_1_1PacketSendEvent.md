@@ -1,16 +1,16 @@
 
 
-# Class endstone::DataPacketReceiveEvent
+# Class endstone::PacketSendEvent
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**DataPacketReceiveEvent**](classendstone_1_1DataPacketReceiveEvent.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**PacketSendEvent**](classendstone_1_1PacketSendEvent.md)
 
 
 
-_Called when the server receives a packet from a connected client._ 
+_Called when the server sends a packet to a connected client._ 
 
-* `#include <endstone/event/server/data_packet_receive_event.h>`
+* `#include <endstone/event/server/packet_send_event.h>`
 
 
 
@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"DataPacketReceiveEvent"`<br> |
+|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"PacketSendEvent"`<br> |
 
 
 
@@ -98,7 +98,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**DataPacketReceiveEvent**](#function-datapacketreceiveevent) ([**Player**](classendstone_1_1Player.md) & player, std::string\_view data) <br> |
+|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) & player, std::string\_view data) <br> |
 |  std::string\_view | [**getData**](#function-getdata) () const<br>_Gets the raw packet data._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br> |
@@ -213,7 +213,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 ### variable NAME 
 
 ```C++
-const std::string endstone::DataPacketReceiveEvent::NAME;
+const std::string endstone::PacketSendEvent::NAME;
 ```
 
 
@@ -225,10 +225,10 @@ const std::string endstone::DataPacketReceiveEvent::NAME;
 
 
 
-### function DataPacketReceiveEvent 
+### function PacketSendEvent 
 
 ```C++
-inline endstone::DataPacketReceiveEvent::DataPacketReceiveEvent (
+inline endstone::PacketSendEvent::PacketSendEvent (
     Player & player,
     std::string_view data
 ) 
@@ -245,7 +245,7 @@ inline endstone::DataPacketReceiveEvent::DataPacketReceiveEvent (
 
 _Gets the raw packet data._ 
 ```C++
-inline std::string_view endstone::DataPacketReceiveEvent::getData () const
+inline std::string_view endstone::PacketSendEvent::getData () const
 ```
 
 
@@ -269,7 +269,7 @@ The packet data.
 ### function getEventName 
 
 ```C++
-inline virtual std::string endstone::DataPacketReceiveEvent::getEventName () override const
+inline virtual std::string endstone::PacketSendEvent::getEventName () override const
 ```
 
 
@@ -298,7 +298,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 ### function getPlayer 
 
 ```C++
-inline Player & endstone::DataPacketReceiveEvent::getPlayer () const
+inline Player & endstone::PacketSendEvent::getPlayer () const
 ```
 
 
@@ -321,5 +321,5 @@ Returns the player involved in this event
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/event/server/data_packet_receive_event.h`
+The documentation for this class was generated from the following file `include/endstone/event/server/packet_send_event.h`
 

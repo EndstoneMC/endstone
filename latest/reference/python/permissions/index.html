@@ -3221,6 +3221,60 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Classes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Permissible (endstone.permissions.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents an object that may become a server operator and can be assigned permissions.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Permission (endstone.permissions.Permission)" href="#endstone.permissions.Permission">Permission</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a unique permission that may be attached to a Permissible</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone.permissions.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Holds information about a permission attachment on a Permissible object</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            PermissionAttachmentInfo (endstone.permissions.PermissionAttachmentInfo)" href="#endstone.permissions.PermissionAttachmentInfo">PermissionAttachmentInfo</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Holds information on a permission and which PermissionAttachment provides it</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone.permissions.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents the possible default values for permissions</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
 
 
 
@@ -3259,6 +3313,107 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            add_attachment (endstone.permissions.Permissible.add_attachment)" href="#endstone.permissions.Permissible.add_attachment">add_attachment</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            has_permission (endstone.permissions.Permissible.has_permission)" href="#endstone.permissions.Permissible.has_permission">has_permission</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            is_permission_set (endstone.permissions.Permissible.is_permission_set)" href="#endstone.permissions.Permissible.is_permission_set">is_permission_set</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            recalculate_permissions (endstone.permissions.Permissible.recalculate_permissions)" href="#endstone.permissions.Permissible.recalculate_permissions">recalculate_permissions</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Recalculates the permissions.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            remove_attachment (endstone.permissions.Permissible.remove_attachment)" href="#endstone.permissions.Permissible.remove_attachment">remove_attachment</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Removes a given PermissionAttachment.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            effective_permissions
+
+
+  
+      property
+   (endstone.permissions.Permissible.effective_permissions)" href="#endstone.permissions.Permissible.effective_permissions">effective_permissions</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-internal" title="            PermissionAttachmentInfo (endstone._internal.endstone_python.PermissionAttachmentInfo)" href="#endstone.permissions.PermissionAttachmentInfo">PermissionAttachmentInfo</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets effective permissions.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            is_op
+
+
+  
+      property
+      writable
+   (endstone.permissions.Permissible.is_op)" href="#endstone.permissions.Permissible.is_op">is_op</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The operator status of this object</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -3283,12 +3438,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.Permissible.effective_permissions" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">effective_permissions</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionAttachmentInfo" href="#endstone.permissions.PermissionAttachmentInfo">PermissionAttachmentInfo</a></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">effective_permissions</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            PermissionAttachmentInfo (endstone._internal.endstone_python.PermissionAttachmentInfo)" href="#endstone.permissions.PermissionAttachmentInfo">PermissionAttachmentInfo</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets effective permissions.</p>
+
     </div>
 
 </div>
@@ -3313,6 +3469,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>The operator status of this object</p>
+
     </div>
 
 </div>
@@ -3330,16 +3487,17 @@ For latest updates join the chat on
             <div class="doc-overloads">
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_attachment</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionAttachment" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span>
 </span></code></pre></div>
         <p>Adds a new PermissionAttachment.</p>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_attachment</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionAttachment" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_attachment</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span>
 </span></code></pre></div>
         <p>Adds a new PermissionAttachment.</p>
             </div>
 
 
     <div class="doc doc-contents ">
+
 
     </div>
 
@@ -3357,13 +3515,14 @@ For latest updates join the chat on
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">has_permission</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
         <p>Checks if a permissions is available by name.</p>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">has_permission</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permission" href="#endstone.permissions.Permission">Permission</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">has_permission</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="#endstone.permissions.Permission">Permission</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
         <p>Checks if a permissions is available by permission.</p>
             </div>
 
 
     <div class="doc doc-contents ">
+
 
     </div>
 
@@ -3381,13 +3540,14 @@ For latest updates join the chat on
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">is_permission_set</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
         <p>Checks if a permissions is set by name.</p>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">is_permission_set</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permission" href="#endstone.permissions.Permission">Permission</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">is_permission_set</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="#endstone.permissions.Permission">Permission</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </span></code></pre></div>
         <p>Checks if a permissions is set by permission.</p>
             </div>
 
 
     <div class="doc doc-contents ">
+
 
     </div>
 
@@ -3408,6 +3568,7 @@ For latest updates join the chat on
 
         <p>Recalculates the permissions.</p>
 
+
     </div>
 
 </div>
@@ -3420,12 +3581,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.permissions.Permissible.remove_attachment" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">remove_attachment</span><span class="p">(</span><span class="n">attachment</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionAttachment" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">remove_attachment</span><span class="p">(</span><span class="n">attachment</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Removes a given PermissionAttachment.</p>
+
 
     </div>
 
@@ -3451,7 +3613,7 @@ For latest updates join the chat on
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Permission</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">description</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">default</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">default</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">children</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="o">**</span><span class="n">kwargs</span>
@@ -3471,6 +3633,132 @@ For latest updates join the chat on
 
 
 
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            add_parent (endstone.permissions.Permission.add_parent)" href="#endstone.permissions.Permission.add_parent">add_parent</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            recalculate_permissibles (endstone.permissions.Permission.recalculate_permissibles)" href="#endstone.permissions.Permission.recalculate_permissibles">recalculate_permissibles</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Recalculates all Permissibles that contain this permission.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            children
+
+
+  
+      property
+   (endstone.permissions.Permission.children)" href="#endstone.permissions.Permission.children">children</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the children of this permission.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            default
+
+
+  
+      property
+      writable
+   (endstone.permissions.Permission.default)" href="#endstone.permissions.Permission.default">default</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The default value of this permission.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            description
+
+
+  
+      property
+      writable
+   (endstone.permissions.Permission.description)" href="#endstone.permissions.Permission.description">description</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The brief description of this permission</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            name
+
+
+  
+      property
+   (endstone.permissions.Permission.name)" href="#endstone.permissions.Permission.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the unique fully qualified name of this Permission.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            permissibles
+
+
+  
+      property
+   (endstone.permissions.Permission.permissibles)" href="#endstone.permissions.Permission.permissibles">permissibles</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets a set containing every Permissible that has this permission.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3502,6 +3790,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the children of this permission.</p>
+
     </div>
 
 </div>
@@ -3520,12 +3809,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.Permission.default" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">default</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">default</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>The default value of this permission.</p>
+
     </div>
 
 </div>
@@ -3550,6 +3840,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>The brief description of this permission</p>
+
     </div>
 
 </div>
@@ -3573,6 +3864,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the unique fully qualified name of this Permission.</p>
+
     </div>
 
 </div>
@@ -3590,12 +3882,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.Permission.permissibles" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">permissibles</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permissible" href="#endstone.permissions.Permissible">Permissible</a></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">permissibles</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets a set containing every Permissible that has this permission.</p>
+
     </div>
 
 </div>
@@ -3611,16 +3904,17 @@ For latest updates join the chat on
 
 <a href="#endstone.permissions.Permission.add_parent" class="headerlink" title="Permanent link">&para;</a></h4>
             <div class="doc-overloads">
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_parent</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permission" href="#endstone.permissions.Permission">Permission</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_parent</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="#endstone.permissions.Permission">Permission</a></span>
 </span></code></pre></div>
         <p>Adds this permission to the specified parent permission.</p>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_parent</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permission" href="#endstone.permissions.Permission">Permission</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_parent</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="#endstone.permissions.Permission">Permission</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
         <p>Adds this permission to the specified parent permission.</p>
             </div>
 
 
     <div class="doc doc-contents ">
+
 
     </div>
 
@@ -3640,6 +3934,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Recalculates all Permissibles that contain this permission.</p>
+
 
     </div>
 
@@ -3663,7 +3958,7 @@ For latest updates join the chat on
 
 <a href="#endstone.permissions.PermissionAttachment" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">PermissionAttachment</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">,</span> <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permissible" href="#endstone.permissions.Permissible">Permissible</a></span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">,</span> <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span>
 </span></code></pre></div>
 
@@ -3680,6 +3975,123 @@ For latest updates join the chat on
 
 
 
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            remove (endstone.permissions.PermissionAttachment.remove)" href="#endstone.permissions.PermissionAttachment.remove">remove</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Removes this attachment from its registered Permissible.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            set_permission (endstone.permissions.PermissionAttachment.set_permission)" href="#endstone.permissions.PermissionAttachment.set_permission">set_permission</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            unset_permission (endstone.permissions.PermissionAttachment.unset_permission)" href="#endstone.permissions.PermissionAttachment.unset_permission">unset_permission</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            permissible
+
+
+  
+      property
+   (endstone.permissions.PermissionAttachment.permissible)" href="#endstone.permissions.PermissionAttachment.permissible">permissible</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the Permissible that this is attached to.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            permissions
+
+
+  
+      property
+   (endstone.permissions.PermissionAttachment.permissions)" href="#endstone.permissions.PermissionAttachment.permissions">permissions</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets a copy of all set permissions and values contained within this attachment.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            plugin
+
+
+  
+      property
+   (endstone.permissions.PermissionAttachment.plugin)" href="#endstone.permissions.PermissionAttachment.plugin">plugin</a></code></td>
+            <td>
+                  <code><span title="endstone._internal.endstone_python.Plugin">Plugin</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the plugin responsible for this attachment.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            removal_callback
+
+
+  
+      property
+      writable
+   (endstone.permissions.PermissionAttachment.removal_callback)" href="#endstone.permissions.PermissionAttachment.removal_callback">removal_callback</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The callback to be called when this attachment is removed.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3705,12 +4117,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionAttachment.permissible" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permissible" href="#endstone.permissions.Permissible">Permissible</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets the Permissible that this is attached to.</p>
+
     </div>
 
 </div>
@@ -3734,6 +4147,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets a copy of all set permissions and values contained within this attachment.</p>
+
     </div>
 
 </div>
@@ -3757,6 +4171,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the plugin responsible for this attachment.</p>
+
     </div>
 
 </div>
@@ -3775,12 +4190,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionAttachment.removal_callback" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">removal_callback</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionAttachment" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">removal_callback</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>The callback to be called when this attachment is removed.</p>
+
     </div>
 
 </div>
@@ -3802,6 +4218,7 @@ For latest updates join the chat on
 
         <p>Removes this attachment from its registered Permissible.</p>
 
+
     </div>
 
 </div>
@@ -3818,13 +4235,14 @@ For latest updates join the chat on
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">set_permission</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
         <p>Sets a permission to the given value, by its fully qualified name.</p>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">set_permission</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permission" href="#endstone.permissions.Permission">Permission</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">set_permission</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="#endstone.permissions.Permission">Permission</a></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
         <p>Sets a permission to the given value.</p>
             </div>
 
 
     <div class="doc doc-contents ">
+
 
     </div>
 
@@ -3842,13 +4260,14 @@ For latest updates join the chat on
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">unset_permission</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
         <p>Removes the specified permission from this attachment by name.</p>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">unset_permission</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permission" href="#endstone.permissions.Permission">Permission</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">unset_permission</span><span class="p">(</span><span class="n">perm</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="#endstone.permissions.Permission">Permission</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
         <p>Removes the specified permission from this attachment.</p>
             </div>
 
 
     <div class="doc doc-contents ">
+
 
     </div>
 
@@ -3872,9 +4291,9 @@ For latest updates join the chat on
 
 <a href="#endstone.permissions.PermissionAttachmentInfo" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">PermissionAttachmentInfo</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permissible" href="#endstone.permissions.Permissible">Permissible</a></span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">permission</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">attachment</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionAttachment" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">attachment</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">,</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
 </span></code></pre></div>
@@ -3892,6 +4311,85 @@ For latest updates join the chat on
 
 
 
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            attachment
+
+
+  
+      property
+   (endstone.permissions.PermissionAttachmentInfo.attachment)" href="#endstone.permissions.PermissionAttachmentInfo.attachment">attachment</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the attachment providing this permission.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            permissible
+
+
+  
+      property
+   (endstone.permissions.PermissionAttachmentInfo.permissible)" href="#endstone.permissions.PermissionAttachmentInfo.permissible">permissible</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Get the permissible this is attached to</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            permission
+
+
+  
+      property
+   (endstone.permissions.PermissionAttachmentInfo.permission)" href="#endstone.permissions.PermissionAttachmentInfo.permission">permission</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the permission being set</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            value
+
+
+  
+      property
+   (endstone.permissions.PermissionAttachmentInfo.value)" href="#endstone.permissions.PermissionAttachmentInfo.value">value</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the value of this permission</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3917,12 +4415,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionAttachmentInfo.attachment" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">attachment</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionAttachment" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">attachment</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone._internal.endstone_python.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets the attachment providing this permission.</p>
+
     </div>
 
 </div>
@@ -3940,12 +4439,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionAttachmentInfo.permissible" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Permissible" href="#endstone.permissions.Permissible">Permissible</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="#endstone.permissions.Permissible">Permissible</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Get the permissible this is attached to</p>
+
     </div>
 
 </div>
@@ -3969,6 +4469,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the permission being set</p>
+
     </div>
 
 </div>
@@ -3992,6 +4493,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the value of this permission</p>
+
     </div>
 
 </div>
@@ -4034,6 +4536,149 @@ For latest updates join the chat on
 
 
 
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            FALSE
+
+
+  
+      class-attribute
+   (endstone.permissions.PermissionDefault.FALSE)" href="#endstone.permissions.PermissionDefault.FALSE">FALSE</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            NOT_OP
+
+
+  
+      class-attribute
+   (endstone.permissions.PermissionDefault.NOT_OP)" href="#endstone.permissions.PermissionDefault.NOT_OP">NOT_OP</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            NOT_OPERATOR
+
+
+  
+      class-attribute
+   (endstone.permissions.PermissionDefault.NOT_OPERATOR)" href="#endstone.permissions.PermissionDefault.NOT_OPERATOR">NOT_OPERATOR</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            OP
+
+
+  
+      class-attribute
+   (endstone.permissions.PermissionDefault.OP)" href="#endstone.permissions.PermissionDefault.OP">OP</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            OPERATOR
+
+
+  
+      class-attribute
+   (endstone.permissions.PermissionDefault.OPERATOR)" href="#endstone.permissions.PermissionDefault.OPERATOR">OPERATOR</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            TRUE
+
+
+  
+      class-attribute
+   (endstone.permissions.PermissionDefault.TRUE)" href="#endstone.permissions.PermissionDefault.TRUE">TRUE</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            name
+
+
+  
+      property
+   (endstone.permissions.PermissionDefault.name)" href="#endstone.permissions.PermissionDefault.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            value
+
+
+  
+      property
+   (endstone.permissions.PermissionDefault.value)" href="#endstone.permissions.PermissionDefault.value">value</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
 
   <div class="doc doc-children">
 
@@ -4056,10 +4701,11 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionDefault.FALSE" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">FALSE</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">FALSE</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>
@@ -4077,10 +4723,11 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionDefault.NOT_OP" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">NOT_OP</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">NOT_OP</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>
@@ -4098,10 +4745,11 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionDefault.NOT_OPERATOR" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">NOT_OPERATOR</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">NOT_OPERATOR</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>
@@ -4119,10 +4767,11 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionDefault.OP" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">OP</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">OP</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>
@@ -4140,10 +4789,11 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionDefault.OPERATOR" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">OPERATOR</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">OPERATOR</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>
@@ -4161,10 +4811,11 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.permissions.PermissionDefault.TRUE" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">TRUE</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PermissionDefault" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">TRUE</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionDefault (endstone._internal.endstone_python.PermissionDefault)" href="#endstone.permissions.PermissionDefault">PermissionDefault</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>
@@ -4186,6 +4837,7 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>
@@ -4207,6 +4859,7 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
     </div>
 
 </div>

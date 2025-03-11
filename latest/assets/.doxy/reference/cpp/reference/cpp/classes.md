@@ -83,10 +83,6 @@
 
 * [**DamageSource**](classendstone_1_1DamageSource.md)
 ([**endstone**](namespaceendstone.md))
-* [**DataPacketReceiveEvent**](classendstone_1_1DataPacketReceiveEvent.md)
-([**endstone**](namespaceendstone.md))
-* [**DataPacketSendEvent**](classendstone_1_1DataPacketSendEvent.md)
-([**endstone**](namespaceendstone.md))
 * [**Dimension**](classendstone_1_1Dimension.md)
 ([**endstone**](namespaceendstone.md))
 * [**Dropdown**](classendstone_1_1Dropdown.md)
@@ -187,6 +183,10 @@
 ## p
 
 * [**Packet**](classendstone_1_1Packet.md)
+([**endstone**](namespaceendstone.md))
+* [**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md)
+([**endstone**](namespaceendstone.md))
+* [**PacketSendEvent**](classendstone_1_1PacketSendEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**Permissible**](classendstone_1_1Permissible.md)
 ([**endstone**](namespaceendstone.md))

@@ -64,21 +64,21 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
       <node id="5">
-        <label>endstone::DataPacketReceiveEvent</label>
-        <link refid="classendstone_1_1DataPacketReceiveEvent"/>
+        <label>endstone::PacketReceiveEvent</label>
+        <link refid="classendstone_1_1PacketReceiveEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="6">
-        <label>endstone::DataPacketSendEvent</label>
-        <link refid="classendstone_1_1DataPacketSendEvent"/>
+        <label>endstone::PacketSendEvent</label>
+        <link refid="classendstone_1_1PacketSendEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>endstone::Event</label>
-        <link refid="classendstone_1_1Event"/>
       </node>
       <node id="10">
         <label>endstone::PluginDisableEvent</label>

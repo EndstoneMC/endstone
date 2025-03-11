@@ -3207,7 +3207,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Mob" href="../actor/#endstone.actor.Mob">Mob</a></code>, <code><span title="endstone._internal.endstone_python.OfflinePlayer">OfflinePlayer</span></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="            Mob (endstone._internal.endstone_python.Mob)" href="../actor/#endstone.actor.Mob">Mob</a></code>, <code><span title="endstone._internal.endstone_python.OfflinePlayer">OfflinePlayer</span></code></p>
 
 
         <p>Represents a player.</p>
@@ -3220,6 +3220,540 @@ For latest updates join the chat on
 
 
 
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            close_form (endstone.Player.close_form)" href="#endstone.Player.close_form">close_form</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Closes the forms that are currently open for the player.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            give_exp (endstone.Player.give_exp)" href="#endstone.Player.give_exp">give_exp</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gives the player the amount of experience specified.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            give_exp_levels (endstone.Player.give_exp_levels)" href="#endstone.Player.give_exp_levels">give_exp_levels</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gives the player the amount of experience levels specified.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            kick (endstone.Player.kick)" href="#endstone.Player.kick">kick</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Kicks player with custom kick message.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            perform_command (endstone.Player.perform_command)" href="#endstone.Player.perform_command">perform_command</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Makes the player perform the given command.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            play_sound (endstone.Player.play_sound)" href="#endstone.Player.play_sound">play_sound</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Play a sound for a player at the location.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            reset_title (endstone.Player.reset_title)" href="#endstone.Player.reset_title">reset_title</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_form (endstone.Player.send_form)" href="#endstone.Player.send_form">send_form</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends a form to the player.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_packet (endstone.Player.send_packet)" href="#endstone.Player.send_packet">send_packet</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends a packet to the player.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_popup (endstone.Player.send_popup)" href="#endstone.Player.send_popup">send_popup</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends this player a popup message</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_tip (endstone.Player.send_tip)" href="#endstone.Player.send_tip">send_tip</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends this player a tip message</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_title (endstone.Player.send_title)" href="#endstone.Player.send_title">send_title</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            send_toast (endstone.Player.send_toast)" href="#endstone.Player.send_toast">send_toast</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends this player a toast notification.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            spawn_particle (endstone.Player.spawn_particle)" href="#endstone.Player.spawn_particle">spawn_particle</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            stop_all_sounds (endstone.Player.stop_all_sounds)" href="#endstone.Player.stop_all_sounds">stop_all_sounds</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Stop all sounds from playing.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            stop_sound (endstone.Player.stop_sound)" href="#endstone.Player.stop_sound">stop_sound</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Stop the specified sound from playing.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            transfer (endstone.Player.transfer)" href="#endstone.Player.transfer">transfer</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Transfers the player to another server.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            update_commands (endstone.Player.update_commands)" href="#endstone.Player.update_commands">update_commands</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Send the list of commands to the client.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            address
+
+
+  
+      property
+   (endstone.Player.address)" href="#endstone.Player.address">address</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            SocketAddress (endstone._internal.endstone_python.SocketAddress)" href="../misc/#endstone.util.SocketAddress">SocketAddress</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the socket address of this player</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            allow_flight
+
+
+  
+      property
+      writable
+   (endstone.Player.allow_flight)" href="#endstone.Player.allow_flight">allow_flight</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the Player is allowed to fly via jump key double-tap.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            device_id
+
+
+  
+      property
+   (endstone.Player.device_id)" href="#endstone.Player.device_id">device_id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Get the player's current device id.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            device_os
+
+
+  
+      property
+   (endstone.Player.device_os)" href="#endstone.Player.device_os">device_os</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Get the player's current device's operation system (OS).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            exp_level
+
+
+  
+      property
+      writable
+   (endstone.Player.exp_level)" href="#endstone.Player.exp_level">exp_level</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the players current experience level.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            exp_progress
+
+
+  
+      property
+      writable
+   (endstone.Player.exp_progress)" href="#endstone.Player.exp_progress">exp_progress</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the players current experience progress towards the next level.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            fly_speed
+
+
+  
+      property
+      writable
+   (endstone.Player.fly_speed)" href="#endstone.Player.fly_speed">fly_speed</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the current allowed speed that a client can fly.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            game_mode
+
+
+  
+      property
+      writable
+   (endstone.Player.game_mode)" href="#endstone.Player.game_mode">game_mode</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            endstone.GameMode (endstone._internal.endstone_python.GameMode)" href="../misc/#endstone.GameMode">GameMode</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The player's current game mode.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            game_version
+
+
+  
+      property
+   (endstone.Player.game_version)" href="#endstone.Player.game_version">game_version</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Get the player's current game version.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            inventory
+
+
+  
+      property
+   (endstone.Player.inventory)" href="#endstone.Player.inventory">inventory</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PlayerInventory (endstone._internal.endstone_python.PlayerInventory)" href="../inventory/#endstone.inventory.PlayerInventory">PlayerInventory</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Get the player's inventory.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            is_flying
+
+
+  
+      property
+      writable
+   (endstone.Player.is_flying)" href="#endstone.Player.is_flying">is_flying</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the player is currently flying or not.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            is_sneaking
+
+
+  
+      property
+      writable
+   (endstone.Player.is_sneaking)" href="#endstone.Player.is_sneaking">is_sneaking</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the sneak mode of the player</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            is_sprinting
+
+
+  
+      property
+      writable
+   (endstone.Player.is_sprinting)" href="#endstone.Player.is_sprinting">is_sprinting</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets whether the player is sprinting or not.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            locale
+
+
+  
+      property
+   (endstone.Player.locale)" href="#endstone.Player.locale">locale</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Get the player's current locale.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            name
+
+
+  
+      property
+   (endstone.Player.name)" href="#endstone.Player.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the name of this player</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            ping
+
+
+  
+      property
+   (endstone.Player.ping)" href="#endstone.Player.ping">ping</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the player's average ping in milliseconds.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            scoreboard
+
+
+  
+      property
+      writable
+   (endstone.Player.scoreboard)" href="#endstone.Player.scoreboard">scoreboard</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Scoreboard (endstone._internal.endstone_python.Scoreboard)" href="../scoreboard/#endstone.scoreboard.Scoreboard">Scoreboard</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the player's visible Scoreboard.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            skin
+
+
+  
+      property
+   (endstone.Player.skin)" href="#endstone.Player.skin">skin</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            endstone.Skin (endstone._internal.endstone_python.Skin)" href="../misc/#endstone.Skin">Skin</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Get the player's skin.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            total_exp
+
+
+  
+      property
+   (endstone.Player.total_exp)" href="#endstone.Player.total_exp">total_exp</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the players total experience points.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            unique_id
+
+
+  
+      property
+   (endstone.Player.unique_id)" href="#endstone.Player.unique_id">unique_id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the UUID of this player</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            walk_speed
+
+
+  
+      property
+      writable
+   (endstone.Player.walk_speed)" href="#endstone.Player.walk_speed">walk_speed</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets or sets the current allowed speed that a client can walk.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            xuid
+
+
+  
+      property
+   (endstone.Player.xuid)" href="#endstone.Player.xuid">xuid</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the Xbox User ID (XUID) of this player</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3245,12 +3779,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.Player.address" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.SocketAddress" href="../misc/#endstone.util.SocketAddress">SocketAddress</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            SocketAddress (endstone._internal.endstone_python.SocketAddress)" href="../misc/#endstone.util.SocketAddress">SocketAddress</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets the socket address of this player</p>
+
     </div>
 
 </div>
@@ -3275,6 +3810,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>If the Player is allowed to fly via jump key double-tap.</p>
+
     </div>
 
 </div>
@@ -3298,6 +3834,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Get the player's current device id.</p>
+
     </div>
 
 </div>
@@ -3321,6 +3858,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Get the player's current device's operation system (OS).</p>
+
     </div>
 
 </div>
@@ -3345,6 +3883,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the players current experience level.</p>
+
     </div>
 
 </div>
@@ -3369,6 +3908,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the players current experience progress towards the next level.</p>
+
     </div>
 
 </div>
@@ -3393,6 +3933,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the current allowed speed that a client can fly.</p>
+
     </div>
 
 </div>
@@ -3411,12 +3952,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.Player.game_mode" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">game_mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.GameMode" href="../misc/#endstone.GameMode">GameMode</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">game_mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            endstone.GameMode (endstone._internal.endstone_python.GameMode)" href="../misc/#endstone.GameMode">GameMode</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>The player's current game mode.</p>
+
     </div>
 
 </div>
@@ -3440,6 +3982,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Get the player's current game version.</p>
+
     </div>
 
 </div>
@@ -3457,12 +4000,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.Player.inventory" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">inventory</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PlayerInventory" href="../inventory/#endstone.inventory.PlayerInventory">PlayerInventory</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">inventory</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PlayerInventory (endstone._internal.endstone_python.PlayerInventory)" href="../inventory/#endstone.inventory.PlayerInventory">PlayerInventory</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Get the player's inventory.</p>
+
     </div>
 
 </div>
@@ -3487,6 +4031,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>If the player is currently flying or not.</p>
+
     </div>
 
 </div>
@@ -3511,6 +4056,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the sneak mode of the player</p>
+
     </div>
 
 </div>
@@ -3535,6 +4081,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets whether the player is sprinting or not.</p>
+
     </div>
 
 </div>
@@ -3558,6 +4105,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Get the player's current locale.</p>
+
     </div>
 
 </div>
@@ -3581,6 +4129,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Returns the name of this player</p>
+
     </div>
 
 </div>
@@ -3604,6 +4153,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the player's average ping in milliseconds.</p>
+
     </div>
 
 </div>
@@ -3622,12 +4172,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.Player.scoreboard" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">scoreboard</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Scoreboard" href="../scoreboard/#endstone.scoreboard.Scoreboard">Scoreboard</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">scoreboard</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Scoreboard (endstone._internal.endstone_python.Scoreboard)" href="../scoreboard/#endstone.scoreboard.Scoreboard">Scoreboard</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Gets or sets the player's visible Scoreboard.</p>
+
     </div>
 
 </div>
@@ -3645,12 +4196,13 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.Player.skin" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">skin</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Skin" href="../misc/#endstone.Skin">Skin</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">skin</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            endstone.Skin (endstone._internal.endstone_python.Skin)" href="../misc/#endstone.Skin">Skin</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Get the player's skin.</p>
+
     </div>
 
 </div>
@@ -3674,6 +4226,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets the players total experience points.</p>
+
     </div>
 
 </div>
@@ -3697,6 +4250,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Returns the UUID of this player</p>
+
     </div>
 
 </div>
@@ -3721,6 +4275,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets or sets the current allowed speed that a client can walk.</p>
+
     </div>
 
 </div>
@@ -3744,6 +4299,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Returns the Xbox User ID (XUID) of this player</p>
+
     </div>
 
 </div>
@@ -3765,6 +4321,7 @@ For latest updates join the chat on
 
         <p>Closes the forms that are currently open for the player.</p>
 
+
     </div>
 
 </div>
@@ -3783,6 +4340,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gives the player the amount of experience specified.</p>
+
 
     </div>
 
@@ -3803,6 +4361,7 @@ For latest updates join the chat on
 
         <p>Gives the player the amount of experience levels specified.</p>
 
+
     </div>
 
 </div>
@@ -3821,6 +4380,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Kicks player with custom kick message.</p>
+
 
     </div>
 
@@ -3841,6 +4401,7 @@ For latest updates join the chat on
 
         <p>Makes the player perform the given command.</p>
 
+
     </div>
 
 </div>
@@ -3854,7 +4415,7 @@ For latest updates join the chat on
 
 <a href="#endstone.Player.play_sound" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">play_sound</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">location</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Location" href="../level/#endstone.level.Location">Location</a></span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">location</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Location (endstone._internal.endstone_python.Location)" href="../level/#endstone.level.Location">Location</a></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">sound</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">volume</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">pitch</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></span><span class="p">,</span>
@@ -3864,6 +4425,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Play a sound for a player at the location.</p>
+
 
     </div>
 
@@ -3884,6 +4446,7 @@ For latest updates join the chat on
 
         <p>Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.</p>
 
+
     </div>
 
 </div>
@@ -3897,13 +4460,14 @@ For latest updates join the chat on
 
 <a href="#endstone.Player.send_form" class="headerlink" title="Permanent link">&para;</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">send_form</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">form</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.MessageForm" href="../form/#endstone.form.MessageForm">MessageForm</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ActionForm" href="../form/#endstone.form.ActionForm">ActionForm</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ModalForm" href="../form/#endstone.form.ModalForm">ModalForm</a></span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">form</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            MessageForm (endstone._internal.endstone_python.MessageForm)" href="../form/#endstone.form.MessageForm">MessageForm</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            ActionForm (endstone._internal.endstone_python.ActionForm)" href="../form/#endstone.form.ActionForm">ActionForm</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            ModalForm (endstone._internal.endstone_python.ModalForm)" href="../form/#endstone.form.ModalForm">ModalForm</a></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Sends a form to the player.</p>
+
 
     </div>
 
@@ -3917,12 +4481,13 @@ For latest updates join the chat on
 
 
 <a href="#endstone.Player.send_packet" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">send_packet</span><span class="p">(</span><span class="n">packet</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Packet" href="../network/#endstone.network.Packet">Packet</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">send_packet</span><span class="p">(</span><span class="n">packet</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Packet (endstone._internal.endstone_python.Packet)" href="../network/#endstone.network.Packet">Packet</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Sends a packet to the player.</p>
+
 
     </div>
 
@@ -3943,6 +4508,7 @@ For latest updates join the chat on
 
         <p>Sends this player a popup message</p>
 
+
     </div>
 
 </div>
@@ -3961,6 +4527,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Sends this player a tip message</p>
+
 
     </div>
 
@@ -3987,6 +4554,7 @@ For latest updates join the chat on
 
         <p>Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.</p>
 
+
     </div>
 
 </div>
@@ -4006,6 +4574,7 @@ For latest updates join the chat on
 
         <p>Sends this player a toast notification.</p>
 
+
     </div>
 
 </div>
@@ -4021,7 +4590,7 @@ For latest updates join the chat on
             <div class="doc-overloads">
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">spawn_particle</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">location</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Location" href="../level/#endstone.level.Location">Location</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">location</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Location (endstone._internal.endstone_python.Location)" href="../level/#endstone.level.Location">Location</a></span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">molang_variables_json</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
@@ -4039,6 +4608,7 @@ For latest updates join the chat on
 
 
     <div class="doc doc-contents ">
+
 
     </div>
 
@@ -4059,6 +4629,7 @@ For latest updates join the chat on
 
         <p>Stop all sounds from playing.</p>
 
+
     </div>
 
 </div>
@@ -4077,6 +4648,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Stop the specified sound from playing.</p>
+
 
     </div>
 
@@ -4097,6 +4669,7 @@ For latest updates join the chat on
 
         <p>Transfers the player to another server.</p>
 
+
     </div>
 
 </div>
@@ -4115,6 +4688,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Send the list of commands to the client.</p>
+
 
     </div>
 

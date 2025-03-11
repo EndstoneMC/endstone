@@ -34,8 +34,6 @@
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Criteria" prot="public">endstone::Criteria</innerclass>
     <innerclass refid="classendstone_1_1DamageSource" prot="public">endstone::DamageSource</innerclass>
-    <innerclass refid="classendstone_1_1DataPacketReceiveEvent" prot="public">endstone::DataPacketReceiveEvent</innerclass>
-    <innerclass refid="classendstone_1_1DataPacketSendEvent" prot="public">endstone::DataPacketSendEvent</innerclass>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
     <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>
     <innerclass refid="classendstone_1_1Error" prot="public">endstone::Error</innerclass>
@@ -60,6 +58,8 @@
     <innerclass refid="classendstone_1_1OfflinePlayer" prot="public">endstone::OfflinePlayer</innerclass>
     <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
     <innerclass refid="classendstone_1_1Packet" prot="public">endstone::Packet</innerclass>
+    <innerclass refid="classendstone_1_1PacketReceiveEvent" prot="public">endstone::PacketReceiveEvent</innerclass>
+    <innerclass refid="classendstone_1_1PacketSendEvent" prot="public">endstone::PacketSendEvent</innerclass>
     <innerclass refid="classendstone_1_1Permissible" prot="public">endstone::Permissible</innerclass>
     <innerclass refid="classendstone_1_1Permission" prot="public">endstone::Permission</innerclass>
     <innerclass refid="classendstone_1_1PermissionAttachment" prot="public">endstone::PermissionAttachment</innerclass>
