@@ -547,17 +547,6 @@ void EndstonePlayer::spawnParticle(std::string name, Location location,
     spawnParticle(name, location.getX(), location.getY(), location.getZ(), molang_variables_json);
 }
 
-void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
-                                   std::optional<std::string> molang_variables_json) const
-{
-    SpawnParticleEffectPacket pk;
-    pk.dimension_id = static_cast<int>(getDimension().getType());
-    pk.effect_name = name;
-    pk.position = {x, y, z};
-    pk.molang_variables_json = molang_variables_json;
-    sendPacket(pk);
-}
-
 std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();

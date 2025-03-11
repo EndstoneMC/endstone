@@ -23,7 +23,6 @@
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
-#include "endstone/network/spawn_particle_effect_packet.h"
 #include "endstone/offline_player.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/skin.h"
@@ -449,9 +448,10 @@ public:
     /**
      * @brief Sends a packet to the player.
      *
-     * @param packet The packet to be sent.
+     * @param packet_id The packet ID to be sent.
+     * @param payload The payload of the packet to be transmitted.
      */
-    virtual void sendPacket(Packet &packet) const = 0;
+    virtual void sendPacket(int packet_id, std::string_view payload) const = 0;
 };
 
 }  // namespace endstone

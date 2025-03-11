@@ -39,7 +39,6 @@ void init_inventory(py::module_ &);
 void init_lang(py::module_ &);
 void init_level(py::module_ &);
 void init_logger(py::module_ &);
-void init_network(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
@@ -91,7 +90,6 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_ban(m);
     init_level(m);
     init_scoreboard(m);
-    init_network(m);
     init_block(m, block);
     init_actor(m, actor, mob);
     init_player(m, offline_player, player);
@@ -401,7 +399,8 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
         .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.")
         .def("send_form", &Player::sendForm, "Sends a form to the player.", py::arg("form"))
         .def("close_form", &Player::closeForm, "Closes the forms that are currently open for the player.")
-        .def("send_packet", &Player::sendPacket, py::arg("packet"), "Sends a packet to the player.");
+        .def("send_packet", &Player::sendPacket, py::arg("packet_id"), py::arg("payload"),
+             "Sends a packet to the player.");
 }
 
 }  // namespace endstone::python
