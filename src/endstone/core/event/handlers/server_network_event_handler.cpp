@@ -16,8 +16,8 @@
 
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_chat_event.h"
-#include "endstone/event/server/data_packet_receive_event.h"
-#include "endstone/event/server/data_packet_send_event.h"
+#include "endstone/event/server/packet_receive_event.h"
+#include "endstone/event/server/packet_send_event.h"
 
 namespace endstone::core {
 
@@ -66,7 +66,7 @@ bool EndstoneServerNetworkEventHandler::handleEvent(IncomingPacketEvent &event)
     if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
         const auto &network = server.getServer().getNetwork();
         // TODO(refactor): add Player::handleDataPacket and call the event there
-        DataPacketReceiveEvent e{player->getEndstoneActor<EndstonePlayer>(), network.receive_buffer_};
+        PacketReceiveEvent e{player->getEndstoneActor<EndstonePlayer>(), network.receive_buffer_};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
@@ -86,7 +86,7 @@ bool EndstoneServerNetworkEventHandler::handleEvent(OutgoingPacketEvent &event)
     for (const auto &target : event.recipients) {
         if (auto *player = WeakEntityRef(target).tryUnwrap<::Player>(); player) {
             const auto &network = server.getServer().getNetwork();
-            DataPacketSendEvent e{player->getEndstoneActor<EndstonePlayer>(), network.send_stream_.getView()};
+            PacketSendEvent e{player->getEndstoneActor<EndstonePlayer>(), network.send_stream_.getView()};
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 return false;

@@ -17,13 +17,13 @@
 namespace endstone {
 
 /**
- * @brief Called when the server receives a packet from a connected client.
+ * @brief Called when the server sends a packet to a connected client.
  */
-class DataPacketReceiveEvent : public Cancellable<ServerEvent> {
+class PacketSendEvent : public Cancellable<ServerEvent> {
 public:
-    DataPacketReceiveEvent(Player &player, std::string_view data) : player_(player), data_(data) {}
+    PacketSendEvent(Player &player, std::string_view data) : player_(player), data_(data) {}
 
-    inline static const std::string NAME = "DataPacketReceiveEvent";
+    inline static const std::string NAME = "PacketSendEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
