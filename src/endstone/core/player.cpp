@@ -37,7 +37,6 @@
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/player_inventory.h"
-#include "endstone/core/network/packet_adapter.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/error.h"
@@ -709,12 +708,6 @@ void EndstonePlayer::closeForm()
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ClientboundCloseScreen);
     getPlayer().sendNetworkPacket(*packet);
     forms_.clear();
-}
-
-void EndstonePlayer::sendPacket(Packet &packet) const
-{
-    PacketAdapter pk{packet};
-    getPlayer().sendNetworkPacket(pk);
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)

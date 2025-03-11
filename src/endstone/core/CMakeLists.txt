@@ -69,9 +69,6 @@ add_library(endstone_core
         level/chunk.cpp
         level/dimension.cpp
         level/level.cpp
-        network/packet_adapter.cpp
-        network/packet_codec.cpp
-        network/spawn_particle_effect_packet_codec.cpp
         packs/endstone_pack_source.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp
