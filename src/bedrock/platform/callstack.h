@@ -32,6 +32,11 @@ struct CallStack {
     BEDROCK_STATIC_ASSERT_SIZE(Frame, 32, 32);
 
     struct Context {
+        Context(std::string value, std::optional<LogLevel> log_level = std::nullopt,
+                std::optional<LogAreaID> log_area = std::nullopt)
+            : value(std::move(value)), log_level(log_level), log_area(log_area)
+        {
+        }
         std::string value;
         std::optional<LogLevel> log_level;
         std::optional<LogAreaID> log_area;
@@ -39,10 +44,21 @@ struct CallStack {
     BEDROCK_STATIC_ASSERT_SIZE(Context, 48, 40);
 
     struct FrameWithContext {
+        FrameWithContext(Frame &&frame, std::optional<Context> &&context) : frame(frame), context(std::move(context)) {}
         Frame frame;                     // +0
         std::optional<Context> context;  // +40
     };
     BEDROCK_STATIC_ASSERT_SIZE(FrameWithContext, 88, 80);
+
+    CallStack(FrameWithContext &&frame)
+    {
+        frames.emplace_back(std::move(frame));
+    }
+
+    CallStack(std::vector<FrameWithContext> &&frames)
+    {
+        frames = std::move(frames);
+    }
 
     std::vector<FrameWithContext> frames;
 };

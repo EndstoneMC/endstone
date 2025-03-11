@@ -24,9 +24,12 @@
 namespace Bedrock {
 
 template <typename T, typename E = std::error_code>
-class Result : public nonstd::expected<T, ErrorInfo<E>> {
+class Result : nonstd::expected<T, ErrorInfo<E>> {
 public:
-    using nonstd::expected<T, ErrorInfo<E>>::expected;
+    template <typename ErrorTypeU>
+    Result(ErrorInfo<ErrorTypeU> error_info) : nonstd::expected<T, ErrorInfo<ErrorTypeU>>(error_info)
+    {
+    }
 };
 BEDROCK_STATIC_ASSERT_SIZE(Result<unsigned char>, 72, 72);
 
