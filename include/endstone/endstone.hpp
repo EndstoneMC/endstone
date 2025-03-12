@@ -17,9 +17,10 @@
 // We do not support compiling under MSVC Debug mode because it sets _ITERATOR_DEBUG_LEVEL
 // to a nonzero value, changing the standard library's iterator implementation and resulting
 // in an ABI incompatible with the BDS environment, which is built in Release mode.
-#if defined(_MSC_VER) && defined(_ITERATOR_DEBUG_LEVEL)
+#ifdef _MSC_VER
+#include <iterator>
 static_assert(_ITERATOR_DEBUG_LEVEL == 0,
-              "Compilation aborted: _ITERATOR_DEBUG_LEVEL is nonzero. This indicates MSVC Debug mode, "
+              "Compilation aborted: _ITERATOR_DEBUG_LEVEL != 0. This indicates MSVC Debug mode, "
               "which is not supported. Please switch to a Release or RelWithDebInfo configuration.");
 #endif
 
