@@ -40,18 +40,17 @@ public:
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto int_result = input.readIntResult();
-        if (!int_result) {
-            return nonstd::make_unexpected(int_result.error());
+        if (!int_result.ignoreError()) {
+            return BEDROCK_RETHROW(int_result);
         }
-        const auto size = int_result.value();
+        const auto size = int_result.discardError().value();
         if (size > input.numBytesLeft()) {
-            return nonstd::make_unexpected(
-                Bedrock::ErrorInfo<std::error_code>{std::make_error_code(std::errc::bad_message)});
+            return BEDROCK_NEW_ERROR(std::errc::bad_message);
         }
 
         data.resize(size);
-        if (auto bytes_result = input.readBytesResult(data.data(), size); !bytes_result) {
-            return nonstd::make_unexpected(bytes_result.error());
+        if (auto bytes_result = input.readBytesResult(data.data(), size); !bytes_result.ignoreError()) {
+            return BEDROCK_RETHROW(bytes_result);
         }
         return {};
     }

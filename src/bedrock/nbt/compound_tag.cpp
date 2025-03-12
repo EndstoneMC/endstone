@@ -34,10 +34,10 @@ Bedrock::Result<void> CompoundTag::load(IDataInput &input)
     while (input.numBytesLeft()) {
         std::string name;
         auto tag_result = NbtIo::readNamedTag(input, name);
-        if (!tag_result) {
-            return nonstd::make_unexpected(tag_result.error());
+        if (!tag_result.ignoreError()) {
+            return BEDROCK_RETHROW(tag_result);
         }
-        put(name, std::move(tag_result.value()));
+        put(name, std::move(tag_result.discardError().value()));
     }
 
     return {};
