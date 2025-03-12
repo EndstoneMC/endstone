@@ -16,6 +16,7 @@
 
 #include <system_error>
 
+#include <bedrock/core/debug/bedrock_event_logger.h>
 #include <nonstd/expected.hpp>
 
 #include "bedrock/bedrock.h"
@@ -23,12 +24,56 @@
 
 namespace Bedrock {
 
+class ResultLogger {
+    template <typename U, typename ErrorU>
+    friend class Result;
+
+    static void log(std::optional<LogLevel> log_level, std::optional<LogAreaID> log_area, const std::string &error,
+                    const CallStack &call_stack)
+    {
+        va_list args = nullptr;
+        const auto message = fmt::format("Error: {}\nCall stack:{}", error, call_stack);
+        log_va(BedrockLog::LogArea, {1}, BedrockLog::DefaultRules, log_area.value_or(LogAreaID::All),
+               log_level.value_or(Error), __FUNCTION__, __LINE__, message.c_str(), args);
+    }
+};
+
+template <typename T, typename E = std::error_code>
+using LoggedResult = nonstd::expected<T, ErrorInfo<E>>;
+
 template <typename T, typename E = std::error_code>
 class Result : nonstd::expected<T, ErrorInfo<E>> {
 public:
+    using nonstd::expected<T, ErrorInfo<E>>::expected;
+
     template <typename ErrorTypeU>
-    Result(ErrorInfo<ErrorTypeU> error_info) : nonstd::expected<T, ErrorInfo<ErrorTypeU>>(error_info)
+    Result(ErrorInfo<ErrorTypeU> error_info) : nonstd::expected<T, ErrorInfo<E>>(nonstd::make_unexpected(error_info))
     {
+    }
+
+    LoggedResult<T, E> &&logError(std::optional<LogLevel> log_level = std::nullopt,
+                                  std::optional<LogAreaID> log_area = std::nullopt)
+    {
+        if (!nonstd::expected<T, ErrorInfo<E>>::has_value()) {
+            ErrorInfo<E> &error_info = nonstd::expected<T, ErrorInfo<E>>::error();
+            ResultLogger::log(log_level, log_area, fmt::format("{}", error_info.error), error_info.call_stack);
+        }
+        return std::move(*this);
+    }
+
+    bool ignoreError()
+    {
+        return nonstd::expected<T, ErrorInfo<E>>::has_value();
+    }
+
+    nonstd::expected<T, ErrorInfo<E>> &&discardError()
+    {
+        return std::move(*this);
+    }
+
+    [[nodiscard]] const nonstd::expected<T, ErrorInfo<E>> &asExpected() const
+    {
+        return *this;
     }
 };
 BEDROCK_STATIC_ASSERT_SIZE(Result<unsigned char>, 72, 72);

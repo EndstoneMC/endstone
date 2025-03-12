@@ -16,6 +16,7 @@
 
 #include <system_error>
 
+#include <entt/entt.hpp>
 #include <fmt/format.h>
 #include <fmt/os.h>
 #include <fmt/std.h>
@@ -64,16 +65,16 @@ CallStack::FrameWithContext createFrame(std::pair<CallStack::Frame, Context> &&p
 }
 
 template <typename ErrorType, typename GetFrame>
-ErrorInfo<ErrorType> addFrameToError(ErrorInfoBuilder<ErrorType> &&error, const GetFrame &getFrame)
+ErrorInfo<ErrorType> addFrameToError(ErrorInfoBuilder<ErrorType> &&error, const GetFrame &get_frame)
 {
-    return {error.value.value(), {getFrame()}, {}};
+    return {error.value.value(), {get_frame()}, {}};
 }
 
 template <typename ErrorType, typename GetFrame>
-ErrorInfo<ErrorType> &&addFrameToError(ErrorInfo<ErrorType> &&errorInfo, const GetFrame &getFrame)
+ErrorInfo<ErrorType> &&addFrameToError(ErrorInfo<ErrorType> &&error_info, const GetFrame &get_frame)
 {
-    errorInfo.call_stack.frames.emplace_back(getFrame());
-    return std::move(errorInfo);
+    error_info.call_stack.frames.emplace_back(get_frame());
+    return std::move(error_info);
 }
 
 inline std::nullopt_t createContext()
@@ -110,5 +111,25 @@ std::string ErrorInfo<ErrorType>::message() const
     }
     return result;
 }
-
 }  // namespace Bedrock
+
+#define BEDROCK_NEW_ERROR(ERROR)                                                                            \
+    Bedrock::Detail::addFrameToError(Bedrock::Detail::createError(ERROR), [&]() {                            \
+        constexpr static Bedrock::CallStack::Frame frame{                                                   \
+            .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__}; \
+        return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext()));       \
+    })
+
+#define BEDROCK_NEW_ERROR_MESSAGE(ERROR, MESSAGE)                                                              \
+    Bedrock::Detail::addFrameToError(Bedrock::Detail::createError(ERROR), [&]() {                               \
+        constexpr static Bedrock::CallStack::Frame frame{                                                      \
+            .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__};    \
+        return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext(##MESSAGE))); \
+    })
+
+#define BEDROCK_RETHROW(RESULT)                                                                             \
+    Bedrock::Detail::addFrameToError(std::move(RESULT.discardError().error()), [&]() {                       \
+        constexpr static Bedrock::CallStack::Frame frame{                                                   \
+            .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__}; \
+        return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext()));       \
+    })
