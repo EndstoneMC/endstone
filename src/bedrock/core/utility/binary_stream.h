@@ -14,18 +14,32 @@
 
 #pragma once
 
+#include <entt/core/hashed_string.hpp>
+
 #include "bedrock/platform/result.h"
 
 class ReadOnlyBinaryStream {
 public:
-    explicit ReadOnlyBinaryStream(std::string_view, bool);
-
-    virtual ~ReadOnlyBinaryStream();
+    explicit ReadOnlyBinaryStream(std::string_view buffer, bool copy_buffer)
+    {
+        auto view = buffer;
+        if (copy_buffer) {
+            owned_buffer_ = buffer;
+            view = owned_buffer_;
+        }
+        read_pointer_ = 0;
+        has_overflowed_ = false;
+        view_ = view;
+    }
+    virtual ~ReadOnlyBinaryStream() = default;
 
 private:
-    virtual Bedrock::Result<void> read(void *, std::uint64_t);
+    virtual Bedrock::Result<void> read(void *target, std::uint64_t num);
 
 public:
+    [[nodiscard]] size_t getReadPointer() const;
+    Bedrock::Result<unsigned char> getByte();
+    Bedrock::Result<unsigned int> getUnsignedVarInt();
     [[nodiscard]] std::string_view getView() const;
 
 protected:

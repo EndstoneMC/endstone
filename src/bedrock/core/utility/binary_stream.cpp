@@ -16,6 +16,59 @@
 
 #include <fmt/core.h>
 
+Bedrock::Result<void> ReadOnlyBinaryStream::read(void *target, std::uint64_t num)
+{
+    if (has_overflowed_) {
+        return BEDROCK_NEW_ERROR_MESSAGE(std::errc::invalid_seek, "BinaryStream read() overflow");
+    }
+
+    if (num == 0) {
+        return {};
+    }
+
+    if (auto checked_number = read_pointer_ + num; checked_number < read_pointer_ || checked_number > view_.size()) {
+        return BEDROCK_NEW_ERROR_MESSAGE(
+            std::errc::invalid_seek,
+            fmt::format(
+                "BinaryStream read() overflow checkedNumber = {}, mReadPointer = {}, buffer Length is = {} bytes",
+                checked_number, read_pointer_, view_.size()));
+    }
+    std::memcpy(target, view_.data() + read_pointer_, num);
+    read_pointer_ += num;
+    return {};
+}
+
+size_t ReadOnlyBinaryStream::getReadPointer() const
+{
+    return read_pointer_;
+}
+
+Bedrock::Result<unsigned char> ReadOnlyBinaryStream::getByte()
+{
+    unsigned char value = 0;
+    auto result = read(&value, sizeof(value));
+    if (!result.ignoreError()) {
+        return BEDROCK_RETHROW(result);
+    }
+    return value;
+}
+
+Bedrock::Result<unsigned int> ReadOnlyBinaryStream::getUnsignedVarInt()
+{
+    unsigned int value = 0;
+    for (auto i = 0;; i += 7) {
+        auto byte_result = getByte();
+        if (!byte_result.ignoreError()) {
+            return BEDROCK_RETHROW(byte_result);
+        }
+        value |= (byte_result.discardError().value() & 0x7F) << i;
+        if ((value & 0x80U) == 0) {
+            break;
+        }
+    }
+    return value;
+}
+
 std::string_view ReadOnlyBinaryStream::getView() const
 {
     return view_;
