@@ -92,13 +92,17 @@ bool EndstoneServerNetworkEventHandler::handleEvent(IncomingPacketEvent &event)
 bool EndstoneServerNetworkEventHandler::handleEvent(OutgoingPacketEvent &event)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-    for (const auto &target : event.recipients) {
-        if (auto *player = WeakEntityRef(target).tryUnwrap<::Player>(); player) {
+    for (auto it = event.recipients.begin(); it != event.recipients.end();) {
+        const auto &recipient = *it;
+        if (const auto *player = WeakEntityRef(recipient).tryUnwrap<::Player>(); player) {
             const auto &network = server.getServer().getNetwork();
             PacketSendEvent e{player->getEndstoneActor<EndstonePlayer>(), network.send_stream_.getView()};
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
-                return false;
+                it = event.recipients.erase(it);
+            }
+            else {
+                ++it;
             }
         }
     }
