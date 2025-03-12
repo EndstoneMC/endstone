@@ -47,8 +47,8 @@ protected:
     std::string_view view_;     // +40
 
 private:
-    std::size_t read_pointer_;  // +56
-    bool has_overflowed_;       // +64
+    std::size_t read_pointer_{0};  // +56
+    bool has_overflowed_{false};   // +64
 };
 BEDROCK_STATIC_ASSERT_SIZE(ReadOnlyBinaryStream, 72, 64);
 
