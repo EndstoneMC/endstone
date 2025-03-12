@@ -37,6 +37,7 @@
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/network/data_packet.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/error.h"
@@ -148,6 +149,12 @@ Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin, con
 Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin)
 {
     return perm_->addAttachment(plugin);
+}
+
+void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
+{
+    DataPacket pk(packet_id, payload);
+    getPlayer().sendNetworkPacket(pk);
 }
 
 Result<void> EndstonePlayer::removeAttachment(PermissionAttachment &attachment)

@@ -148,6 +148,12 @@ void BinaryStream::writeString(std::string_view value)
     write(value.data(), value.size());
 }
 
+void BinaryStream::writeStream(BinaryStream &stream)
+{
+    buffer_->append(
+        stream.getView().substr(stream.getReadPointer(), stream.getView().size() - stream.getReadPointer()));
+}
+
 void BinaryStream::write(const void *data, std::size_t size)
 {
     if (size > 0) {
