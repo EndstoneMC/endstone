@@ -66,7 +66,16 @@ bool EndstoneServerNetworkEventHandler::handleEvent(IncomingPacketEvent &event)
     if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
         const auto &network = server.getServer().getNetwork();
         // TODO(refactor): add Player::handleDataPacket and call the event there
-        PacketReceiveEvent e{player->getEndstoneActor<EndstonePlayer>(), network.receive_buffer_};
+        ReadOnlyBinaryStream stream(network.receive_buffer_, false);
+        auto header = stream.getUnsignedVarInt().logError(Bedrock::LogLevel::Error, LogAreaID::Network);
+        if (!header.has_value()) {
+            return false;
+        }
+        const auto packet_id = static_cast<int>(header.value() & 0x3ff);
+        const auto sender_sub_id = (header.value() >> 10) & 3;
+        const auto target_sub_id = (header.value() >> 12) & 3;
+        PacketReceiveEvent e{player->getEndstoneActor<EndstonePlayer>(), packet_id,
+                             stream.getView().substr(stream.getReadPointer())};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
