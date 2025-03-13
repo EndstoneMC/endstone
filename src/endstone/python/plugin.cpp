@@ -262,6 +262,19 @@ void init_plugin(py::module &m)
                       py::cpp_function(&PluginCommand::setExecutor, py::keep_alive<1, 2>()),
                       py::return_value_policy::reference, "The CommandExecutor to run when parsing this command")
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this PluginCommand");
+
+    py::class_<Service, std::shared_ptr<Service>>(m, "Service", "Represents a list of methods.").def(py::init<>());
+
+    py::class_<ServiceManager>(m, "ServiceManager",
+                               "Represent a service manager that manages services and service providers.")
+        .def("register", &ServiceManager::registerService, py::arg("name"), py::arg("provider"), py::arg("plugin"),
+             "Register a provider of a service.", py::keep_alive<1, 3>())
+        .def("unregister_all", &ServiceManager::unregisterAll, py::arg("plugin"),
+             "Unregister all the services registered by a particular plugin.")
+        .def("unregister", py::overload_cast<std::string, const Service &>(&ServiceManager::unregister),
+             py::arg("name"), py::arg("provider"), "Unregister a particular provider for a particular service.")
+        .def("unregister", py::overload_cast<const Service &>(&ServiceManager::unregister), py::arg("provider"),
+             "Unregister a particular provider.");
 }
 
 }  // namespace endstone::python

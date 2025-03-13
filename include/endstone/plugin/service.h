@@ -15,7 +15,7 @@
 #pragma once
 
 /**
- * @brief Services are an interface specifying a list of methods.
+ * @brief Services represent a list of methods.
  */
 class Service : public std::enable_shared_from_this<Service> {
 public:
