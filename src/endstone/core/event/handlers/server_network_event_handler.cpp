@@ -94,16 +94,17 @@ bool EndstoneServerNetworkEventHandler::handleEvent(OutgoingPacketEvent &event)
     const auto &server = entt::locator<EndstoneServer>::value();
     for (auto it = event.recipients.begin(); it != event.recipients.end();) {
         const auto &recipient = *it;
+        const auto &network = server.getServer().getNetwork();
+        ReadOnlyBinaryStream stream(network.send_stream_.getView(), false);
+        auto header = stream.getUnsignedVarInt().logError(Bedrock::LogLevel::Error, LogAreaID::Network);
+        if (!header.has_value()) {
+            return false;
+        }
+        const auto packet_id = static_cast<int>(header.value() & 0x3ff);
+        const auto sender_sub_id = (header.value() >> 10) & 3;
+        const auto target_sub_id = (header.value() >> 12) & 3;
+
         if (const auto *player = WeakEntityRef(recipient).tryUnwrap<::Player>(); player) {
-            const auto &network = server.getServer().getNetwork();
-            ReadOnlyBinaryStream stream(network.send_stream_.getView(), false);
-            auto header = stream.getUnsignedVarInt().logError(Bedrock::LogLevel::Error, LogAreaID::Network);
-            if (!header.has_value()) {
-                return false;
-            }
-            const auto packet_id = static_cast<int>(header.value() & 0x3ff);
-            const auto sender_sub_id = (header.value() >> 10) & 3;
-            const auto target_sub_id = (header.value() >> 12) & 3;
             PacketSendEvent e{player->getEndstoneActor<EndstonePlayer>(), packet_id,
                               stream.getView().substr(stream.getReadPointer())};
             server.getPluginManager().callEvent(e);
