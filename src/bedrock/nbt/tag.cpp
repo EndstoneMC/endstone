@@ -74,8 +74,7 @@ Bedrock::Result<std::unique_ptr<Tag>> Tag::newTag(Type type)
         return std::make_unique<IntArrayTag>();
     case Type::NumTagTypes:
     default:
-        return nonstd::make_unexpected(
-            Bedrock::ErrorInfo<std::error_code>{std::make_error_code(std::errc::bad_message)});
+        return BEDROCK_NEW_ERROR(std::errc::bad_message);
     }
 }
 

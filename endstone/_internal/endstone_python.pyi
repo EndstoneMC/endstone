@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'Packet', 'PacketReceiveEvent', 'PacketSendEvent', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1978,18 +1978,6 @@ class OfflinePlayer:
         """
         Returns the UUID of this player
         """
-class Packet:
-    """
-    Represents a packet.
-    """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
-    @property
-    def type(self) -> PacketType:
-        """
-        Gets the type of the packet.
-        """
 class PacketReceiveEvent(ServerEvent, Cancellable):
     """
     Called when the server receives a packet from a connected client.
@@ -1998,9 +1986,14 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     def _pybind11_conduit_v1_(*args, **kwargs):
         ...
     @property
-    def data(self) -> bytes:
+    def packet_id(self) -> int:
         """
-        Gets the raw packet data
+        Gets the ID of the packet.
+        """
+    @property
+    def payload(self) -> bytes:
+        """
+        Gets the raw packet data **excluding** the header.
         """
     @property
     def player(self) -> Player:
@@ -2015,50 +2008,20 @@ class PacketSendEvent(ServerEvent, Cancellable):
     def _pybind11_conduit_v1_(*args, **kwargs):
         ...
     @property
-    def data(self) -> bytes:
+    def packet_id(self) -> int:
         """
-        Gets the raw packet data
+        Gets the ID of the packet.
+        """
+    @property
+    def payload(self) -> bytes:
+        """
+        Gets the raw packet data **excluding** the header.
         """
     @property
     def player(self) -> Player:
         """
         Gets the player involved in this event
         """
-class PacketType:
-    """
-    Represents the types of packets.
-    """
-    SPAWN_PARTICLE_EFFECT: typing.ClassVar[PacketType]  # value = <PacketType.SPAWN_PARTICLE_EFFECT: 118>
-    __members__: typing.ClassVar[dict[str, PacketType]]  # value = {'SPAWN_PARTICLE_EFFECT': <PacketType.SPAWN_PARTICLE_EFFECT: 118>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class Permissible:
     """
     Represents an object that may become a server operator and can be assigned permissions.
@@ -2335,7 +2298,7 @@ class Player(Mob, OfflinePlayer):
         """
         Sends a form to the player.
         """
-    def send_packet(self, packet: Packet) -> None:
+    def send_packet(self, packet_id: int, payload: bytes) -> None:
         """
         Sends a packet to the player.
         """
@@ -3843,20 +3806,6 @@ class SocketAddress:
         """
         Gets the port number.
         """
-class SpawnParticleEffectPacket(Packet):
-    """
-    Represents a packet for spawning a particle effect.
-    """
-    actor_id: int
-    dimension_id: int
-    effect_name: str
-    molang_variables_json: str | None
-    position: Vector
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
-    def __init__(self) -> None:
-        ...
 class StepSlider:
     """
     Represents a step slider with a set of predefined options.

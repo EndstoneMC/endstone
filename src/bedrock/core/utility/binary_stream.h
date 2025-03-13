@@ -14,18 +14,32 @@
 
 #pragma once
 
+#include <entt/core/hashed_string.hpp>
+
 #include "bedrock/platform/result.h"
 
 class ReadOnlyBinaryStream {
 public:
-    explicit ReadOnlyBinaryStream(std::string_view, bool);
-
-    virtual ~ReadOnlyBinaryStream();
+    explicit ReadOnlyBinaryStream(std::string_view buffer, bool copy_buffer)
+    {
+        auto view = buffer;
+        if (copy_buffer) {
+            owned_buffer_ = buffer;
+            view = owned_buffer_;
+        }
+        read_pointer_ = 0;
+        has_overflowed_ = false;
+        view_ = view;
+    }
+    virtual ~ReadOnlyBinaryStream() = default;
 
 private:
-    virtual Bedrock::Result<void> read(void *, std::uint64_t);
+    virtual Bedrock::Result<void> read(void *target, std::uint64_t num);
 
 public:
+    [[nodiscard]] size_t getReadPointer() const;
+    Bedrock::Result<unsigned char> getByte();
+    Bedrock::Result<unsigned int> getUnsignedVarInt();
     [[nodiscard]] std::string_view getView() const;
 
 protected:
@@ -33,13 +47,14 @@ protected:
     std::string_view view_;     // +40
 
 private:
-    std::size_t read_pointer_;  // +56
-    bool has_overflowed_;       // +64
+    std::size_t read_pointer_{0};  // +56
+    bool has_overflowed_{false};   // +64
 };
 BEDROCK_STATIC_ASSERT_SIZE(ReadOnlyBinaryStream, 72, 64);
 
 class BinaryStream : public ReadOnlyBinaryStream {
 public:
+    using ReadOnlyBinaryStream::ReadOnlyBinaryStream;
     BinaryStream();
     [[nodiscard]] const std::string &getBuffer() const;
 
@@ -53,6 +68,7 @@ public:
     void writeVarInt64(std::int64_t value);
     void writeFloat(float value);
     void writeString(std::string_view value);
+    void writeStream(BinaryStream &);
 
 private:
     void write(const void *data, std::size_t size);

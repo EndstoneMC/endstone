@@ -37,19 +37,19 @@ public:
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readIntResult();
-        if (!result) {
-            return nonstd::make_unexpected(result.error());
+        if (!result.ignoreError()) {
+            return BEDROCK_RETHROW(result);
         }
 
-        auto size = result.value();
+        const auto size = result.discardError().value();
         data.clear();
         data.reserve(size);
         for (int i = 0; i < size; ++i) {
             auto result2 = input.readIntResult();
-            if (!result2) {
-                return nonstd::make_unexpected(result2.error());
+            if (!result2.ignoreError()) {
+                return BEDROCK_RETHROW(result2);
             }
-            data.push_back(result2.value());
+            data.push_back(result2.discardError().value());
         }
         return {};
     }

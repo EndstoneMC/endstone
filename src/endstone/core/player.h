@@ -150,7 +150,7 @@ public:
     [[nodiscard]] const Skin &getSkin() const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
-    void sendPacket(Packet &packet) const override;
+    void sendPacket(int packet_id, std::string_view payload) const override;
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
 
