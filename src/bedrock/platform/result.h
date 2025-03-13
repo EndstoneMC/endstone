@@ -16,10 +16,10 @@
 
 #include <system_error>
 
-#include <bedrock/core/debug/bedrock_event_logger.h>
 #include <nonstd/expected.hpp>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/debug/bedrock_event_logger.h"
 #include "bedrock/platform/check.h"
 
 namespace Bedrock {

@@ -23,7 +23,7 @@ class DataPacket : public Packet {
 public:
     DataPacket(int packet_id, std::string_view payload);
     [[nodiscard]] virtual MinecraftPacketIds getId() const;
-    [[nodiscard]] virtual std::string getName() const ;
+    [[nodiscard]] virtual std::string getName() const;
     [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const;
     virtual void write(BinaryStream &) const;
     [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &);
