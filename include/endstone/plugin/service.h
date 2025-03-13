@@ -14,6 +14,7 @@
 
 #pragma once
 
+namespace endstone {
 /**
  * @brief Services represent a list of methods.
  */
@@ -21,3 +22,4 @@ class Service : public std::enable_shared_from_this<Service> {
 public:
     virtual ~Service() = default;
 };
+}  // namespace endstone

@@ -17,6 +17,7 @@ add_executable(endstone_test
         endstone/core/test_logger_factory.cpp
         endstone/core/test_player_ban_list.cpp
         endstone/core/test_scheduler.cpp
+        endstone/core/test_service_manager.cpp
         endstone/core/test_thread_pool_executor.cpp
         endstone/core/test_uuid.cpp
         endstone/core/test_vector.cpp
