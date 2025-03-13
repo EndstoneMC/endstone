@@ -1370,15 +1370,17 @@
     <member refid="classendstone_1_1ServerLoadEvent_1ad6f8ab066b197a8175518ac9e8dcabae" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" kind="function"><name>getEventName</name></member>
   </compound>
-  <compound refid="classService" kind="class"><name>Service</name>
-    <member refid="classService_1a9b798149b90cbdb1f1c66f740db5864b" kind="function"><name>~Service</name></member>
+  <compound refid="classendstone_1_1Service" kind="class"><name>endstone::Service</name>
+    <member refid="classendstone_1_1Service_1a32cb65d2703ed291136757f43ae5713f" kind="function"><name>~Service</name></member>
   </compound>
   <compound refid="classendstone_1_1ServiceManager" kind="class"><name>endstone::ServiceManager</name>
     <member refid="classendstone_1_1ServiceManager_1abbb8cc4e6fb216c72faeba297e006eb7" kind="function"><name>~ServiceManager</name></member>
-    <member refid="classendstone_1_1ServiceManager_1a43e8dfe943ce6ec10bf195c053193453" kind="function"><name>registerService</name></member>
+    <member refid="classendstone_1_1ServiceManager_1a8fbe97b8dcbc297e6386f0e6c1c6e3f6" kind="function"><name>registerService</name></member>
     <member refid="classendstone_1_1ServiceManager_1af62f98b2abdd3fa261d372dd10b5d831" kind="function"><name>unregisterAll</name></member>
     <member refid="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" kind="function"><name>unregister</name></member>
     <member refid="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" kind="function"><name>unregister</name></member>
+    <member refid="classendstone_1_1ServiceManager_1a329a71e32b64af8ed4df189f3976739f" kind="function"><name>get</name></member>
+    <member refid="classendstone_1_1ServiceManager_1ac2fcb33a1d0fc89902100b7244fa55b0" kind="function"><name>load</name></member>
   </compound>
   <compound refid="classendstone_1_1Skin" kind="class"><name>endstone::Skin</name>
     <member refid="classendstone_1_1Skin_1aaa8acbed9e68495f28de0b06022fa61c" kind="variable"><name>skin_id_</name></member>
@@ -1576,6 +1578,12 @@
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6b" kind="enum"><name>PluginLoadOrder</name></member>
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" kind="enumvalue"><name>Startup</name></member>
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kind="enumvalue"><name>PostWorld</name></member>
+    <member refid="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5" kind="enum"><name>ServicePriority</name></member>
+    <member refid="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5ab5b8e20937205384be7b9e0c29a28fdb" kind="enumvalue"><name>Lowest</name></member>
+    <member refid="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a28d0edd045e05cf5af64e35ae0c4c6ef" kind="enumvalue"><name>Low</name></member>
+    <member refid="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a960b44c579bc2f6818d2daaf9e4c16f0" kind="enumvalue"><name>Normal</name></member>
+    <member refid="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a655d20c1ca69519ca647684edbb2db35" kind="enumvalue"><name>High</name></member>
+    <member refid="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a582996407922dab08d5cf2b3d2a7c1c9" kind="enumvalue"><name>Highest</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" kind="enum"><name>DisplaySlot</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" kind="enumvalue"><name>BelowName</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" kind="enumvalue"><name>PlayerList</name></member>
@@ -1824,6 +1832,8 @@
   <compound refid="service_8h" kind="file"><name>service.h</name>
   </compound>
   <compound refid="service__manager_8h" kind="file"><name>service_manager.h</name>
+  </compound>
+  <compound refid="service__priority_8h" kind="file"><name>service_priority.h</name>
   </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
   </compound>

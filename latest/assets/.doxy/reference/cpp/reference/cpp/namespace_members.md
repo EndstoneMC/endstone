@@ -65,6 +65,7 @@
 ## s
 
 * **ScoreEntry** ([**endstone**](namespaceendstone.md))
+* **ServicePriority** ([**endstone**](namespaceendstone.md))
 * **swap** ([**endstone**](namespaceendstone.md))
 
 

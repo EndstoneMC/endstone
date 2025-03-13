@@ -97,8 +97,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md) 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
-* **class** **std::enable_shared_from_this< Service >**    
-    * **class** [**Service**](classService.md) _Services represent a list of methods._ 
 * **class** **EventType**    
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
@@ -132,6 +130,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._ 
 * **class** **std::enable_shared_from_this< Scoreboard >**    
     * **class** [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._ 
+* **class** **std::enable_shared_from_this< Service >**    
+    * **class** [**endstone::Service**](classendstone_1_1Service.md) _Services represent a list of methods._ 
 * **class** **endstone::Func**    
     * **struct** [**endstone::overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
 * **class** **formatter< string_view >**    

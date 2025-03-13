@@ -99,6 +99,7 @@
     <innerclass refid="classendstone_1_1ServerEvent" prot="public">endstone::ServerEvent</innerclass>
     <innerclass refid="classendstone_1_1ServerListPingEvent" prot="public">endstone::ServerListPingEvent</innerclass>
     <innerclass refid="classendstone_1_1ServerLoadEvent" prot="public">endstone::ServerLoadEvent</innerclass>
+    <innerclass refid="classendstone_1_1Service" prot="public">endstone::Service</innerclass>
     <innerclass refid="classendstone_1_1ServiceManager" prot="public">endstone::ServiceManager</innerclass>
     <innerclass refid="classendstone_1_1Skin" prot="public">endstone::Skin</innerclass>
     <innerclass refid="classendstone_1_1Slider" prot="public">endstone::Slider</innerclass>
@@ -511,6 +512,54 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_load_order.h" line="22" column="1" bodyfile="include/endstone/plugin/plugin_load_order.h" bodystart="22" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="enum" id="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ServicePriority</name>
+        <qualifiedname>endstone::ServicePriority</qualifiedname>
+        <enumvalue id="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5ab5b8e20937205384be7b9e0c29a28fdb" prot="public">
+          <name>Lowest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a28d0edd045e05cf5af64e35ae0c4c6ef" prot="public">
+          <name>Low</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a960b44c579bc2f6818d2daaf9e4c16f0" prot="public">
+          <name>Normal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a655d20c1ca69519ca647684edbb2db35" prot="public">
+          <name>High</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="service__priority_8h_1a5e726f9a35fad2caa785b6225c768ca5a582996407922dab08d5cf2b3d2a7c1c9" prot="public">
+          <name>Highest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents various priorities of a provider. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/service_priority.h" line="21" column="1" bodyfile="include/endstone/plugin/service_priority.h" bodystart="21" bodyend="27"/>
       </memberdef>
       <memberdef kind="enum" id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" prot="public" static="no" strong="yes">
         <type></type>

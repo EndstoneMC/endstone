@@ -9,6 +9,7 @@
     <innerfile refid="plugin__manager_8h">plugin_manager.h</innerfile>
     <innerfile refid="service_8h">service.h</innerfile>
     <innerfile refid="service__manager_8h">service_manager.h</innerfile>
+    <innerfile refid="service__priority_8h">service_priority.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

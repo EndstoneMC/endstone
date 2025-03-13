@@ -4,7 +4,6 @@
 
 Here are the classes, structs, unions and interfaces with brief descriptions:
 
-* **class** [**Service**](classService.md) _Services represent a list of methods._     
 * **namespace** [**endstone**](namespaceendstone.md)     
     * **class** [**ActionForm**](classendstone_1_1ActionForm.md) _Represents a form with buttons that let the player take action._     
         * **class** [**Button**](classendstone_1_1ActionForm_1_1Button.md) _Represents a button with text and an optional icon._     
@@ -103,6 +102,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ServerEvent**](classendstone_1_1ServerEvent.md) _Represents a Server-related event._     
     * **class** [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) _Called when a server ping is coming in._     
     * **class** [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._     
+    * **class** [**Service**](classendstone_1_1Service.md) _Services represent a list of methods._     
     * **class** [**ServiceManager**](classendstone_1_1ServiceManager.md) _Represent a service manager that manages services and service providers._     
     * **class** [**Skin**](classendstone_1_1Skin.md) _Represents a player skin._     
         * **struct** [**ImageData**](structendstone_1_1Skin_1_1ImageData.md)     

@@ -141,10 +141,6 @@
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>
-         <loc>https://endstone.dev/latest/reference/cpp/classService/</loc>
-         <lastmod>2025-03-13</lastmod>
-    </url>
-    <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespaceendstone/</loc>
          <lastmod>2025-03-13</lastmod>
     </url>
@@ -534,6 +530,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ServerLoadEvent/</loc>
+         <lastmod>2025-03-13</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Service/</loc>
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>
@@ -1574,6 +1574,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/service__manager_8h_source/</loc>
+         <lastmod>2025-03-13</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/service__priority_8h/</loc>
+         <lastmod>2025-03-13</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/service__priority_8h_source/</loc>
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>

@@ -310,6 +310,7 @@
 * **getRemoteHost** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getRemotePort** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getServerGuid** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **get** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **getCapeData** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getCapeId** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getSkinData** ([**endstone::Skin**](classendstone_1_1Skin.md))
@@ -390,6 +391,7 @@
 * **log** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **loadPlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **loadPlugins** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **load** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **length** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **lengthSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
@@ -646,7 +648,6 @@
 
 ## ~
 
-* **~Service** ([**Service**](classService.md))
 * **~ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
 * **~ActorExplodeEvent** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **~ActorKnockbackEvent** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -701,6 +702,7 @@
 * **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **~Server** ([**endstone::Server**](classendstone_1_1Server.md))
+* **~Service** ([**endstone::Service**](classendstone_1_1Service.md))
 * **~ServiceManager** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **~Task** ([**endstone::Task**](classendstone_1_1Task.md))
 * **~ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))

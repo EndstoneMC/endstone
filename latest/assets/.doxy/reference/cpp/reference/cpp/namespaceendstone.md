@@ -131,6 +131,7 @@
 | class | [**ServerEvent**](classendstone_1_1ServerEvent.md) <br>_Represents a Server-related event._  |
 | class | [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) <br>_Called when a server ping is coming in._  |
 | class | [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) <br>_Called when either the server startup or reload has completed._  |
+| class | [**Service**](classendstone_1_1Service.md) <br>_Services represent a list of methods._  |
 | class | [**ServiceManager**](classendstone_1_1ServiceManager.md) <br>_Represent a service manager that manages services and service providers._  |
 | class | [**Skin**](classendstone_1_1Skin.md) <br>_Represents a player skin._  |
 | class | [**Slider**](classendstone_1_1Slider.md) <br>_Represents a slider with a label._  |
@@ -168,6 +169,7 @@
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
 | typedef nonstd::expected&lt; [**T**](classendstone_1_1Vector.md), [**Error**](classendstone_1_1Error.md) &gt; | [**Result**](#typedef-result)  <br> |
 | typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br> |
+| enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
 | typedef std::uint32\_t | [**TaskId**](#typedef-taskid)  <br> |
 
 
@@ -507,6 +509,26 @@ An entry for a score.
 
 
         
+
+<hr>
+
+
+
+### enum ServicePriority 
+
+_Represents various priorities of a provider._ 
+```C++
+enum endstone::ServicePriority {
+    Lowest,
+    Low,
+    Normal,
+    High,
+    Highest
+};
+```
+
+
+
 
 <hr>
 

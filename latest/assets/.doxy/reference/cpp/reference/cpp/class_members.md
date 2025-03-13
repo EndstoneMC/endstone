@@ -386,6 +386,7 @@
 * **getRemoteHost** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getRemotePort** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getServerGuid** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **get** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **getCapeData** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getCapeId** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getSkinData** ([**endstone::Skin**](classendstone_1_1Skin.md))
@@ -491,10 +492,10 @@
 * **local\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **local\_port\_v6\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **LoadType** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **load** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md), [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **length** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **lengthSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **level\_** ([**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
-* **load** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **load\_before** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 
@@ -871,7 +872,6 @@
 
 ## ~
 
-* **~Service** ([**Service**](classService.md))
 * **~ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
 * **~ActorExplodeEvent** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **~ActorKnockbackEvent** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -926,6 +926,7 @@
 * **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **~Server** ([**endstone::Server**](classendstone_1_1Server.md))
+* **~Service** ([**endstone::Service**](classendstone_1_1Service.md))
 * **~ServiceManager** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **~Task** ([**endstone::Task**](classendstone_1_1Task.md))
 * **~ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))

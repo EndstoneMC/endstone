@@ -42,5 +42,10 @@
 * **RenderType** ([**endstone**](namespaceendstone.md))
 
 
+## s
+
+* **ServicePriority** ([**endstone**](namespaceendstone.md))
+
+
 
 

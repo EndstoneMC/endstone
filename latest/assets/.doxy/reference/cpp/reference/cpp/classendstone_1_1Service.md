@@ -1,10 +1,10 @@
 
 
-# Class Service
+# Class endstone::Service
 
 
 
-[**ClassList**](annotated.md) **>** [**Service**](classService.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Service**](classendstone_1_1Service.md)
 
 
 
@@ -90,7 +90,7 @@ Inherits the following classes: std::enable_shared_from_this< Service >
 ### function ~Service 
 
 ```C++
-virtual Service::~Service () = default
+virtual endstone::Service::~Service () = default
 ```
 
 

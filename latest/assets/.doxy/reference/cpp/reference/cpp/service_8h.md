@@ -23,13 +23,18 @@
 
 
 
+## Namespaces
+
+| Type | Name |
+| ---: | :--- |
+| namespace | [**endstone**](namespaceendstone.md) <br> |
 
 
 ## Classes
 
 | Type | Name |
 | ---: | :--- |
-| class | [**Service**](classService.md) <br>_Services represent a list of methods._  |
+| class | [**Service**](classendstone_1_1Service.md) <br>_Services represent a list of methods._  |
 
 
 
