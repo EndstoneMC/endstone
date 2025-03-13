@@ -3028,7 +3028,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-sendpacket"><strong>sendPacket</strong></a> (<a href="../classendstone_1_1Packet/"><strong>Packet</strong></a> &amp; packet) const = 0<br><em>Sends a packet to the player.</em></td>
+<td style="text-align: left;"><a href="#function-sendpacket"><strong>sendPacket</strong></a> (<a href="../classendstone_1_1Vector/"><strong>int</strong></a> packet_id, std::string_view payload) const = 0<br><em>Sends a packet to the player.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
@@ -3719,12 +3719,14 @@ For latest updates join the chat on
 <h3 id="function-sendpacket">function sendPacket<a class="headerlink" href="#function-sendpacket" title="Permanent link">&para;</a></h3>
 <p><em>Sends a packet to the player.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">sendPacket</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="n">Packet</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">packet</span>
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">packet_id</span><span class="p">,</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">payload</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>packet</code> The packet to be sent. </li>
+<li><code>packet_id</code> The packet ID to be sent. </li>
+<li><code>payload</code> The payload of the packet to be transmitted. </li>
 </ul>
 <hr>
 

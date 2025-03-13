@@ -183,7 +183,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual [**void**](classendstone_1_1Vector.md) | [**playSound**](#function-playsound) ([**Location**](classendstone_1_1Location.md) location, std::string sound, [**float**](classendstone_1_1Vector.md) volume, [**float**](classendstone_1_1Vector.md) pitch) = 0<br>_Play a sound for a player at the location._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**sendForm**](#function-sendform) (FormVariant form) = 0<br>_Sends a form to the player._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**sendPacket**](#function-sendpacket) ([**Packet**](classendstone_1_1Packet.md) & packet) const = 0<br>_Sends a packet to the player._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**sendPacket**](#function-sendpacket) ([**int**](classendstone_1_1Vector.md) packet\_id, std::string\_view payload) const = 0<br>_Sends a packet to the player._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**sendPopup**](#function-sendpopup) (std::string message) const = 0<br>_Sends this player a popup message._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**sendTitle**](#function-sendtitle-12) (std::string title, std::string subtitle) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings._  |
@@ -1244,7 +1244,8 @@ virtual void endstone::Player::sendForm (
 _Sends a packet to the player._ 
 ```C++
 virtual void endstone::Player::sendPacket (
-    Packet & packet
+    int packet_id,
+    std::string_view payload
 ) const = 0
 ```
 
@@ -1255,7 +1256,8 @@ virtual void endstone::Player::sendPacket (
 **Parameters:**
 
 
-* `packet` The packet to be sent. 
+* `packet_id` The packet ID to be sent. 
+* `payload` The payload of the packet to be transmitted. 
 
 
 

@@ -2133,9 +2133,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getdata" class="md-nav__link">
+    <a href="#function-geteventname" class="md-nav__link">
       <span class="md-ellipsis">
-        function getData
+        function getEventName
       </span>
     </a>
 
@@ -2146,9 +2146,22 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-geteventname" class="md-nav__link">
+    <a href="#function-getpacketid" class="md-nav__link">
       <span class="md-ellipsis">
-        function getEventName
+        function getPacketId
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getpayload" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getPayload
       </span>
     </a>
 
@@ -2240,15 +2253,19 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-packetsendevent"><strong>PacketSendEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string_view data) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">std::string_view</td>
-<td style="text-align: left;"><a href="#function-getdata"><strong>getData</strong></a> () const<br><em>Gets the raw packet data.</em></td>
+<td style="text-align: left;"><a href="#function-packetsendevent"><strong>PacketSendEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> packet_id, std::string_view payload) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="#function-getpacketid"><strong>getPacketId</strong></a> () const<br><em>Gets the ID of the packet.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::string_view</td>
+<td style="text-align: left;"><a href="#function-getpayload"><strong>getPayload</strong></a> () const<br><em>Gets the raw packet data</em> <strong>excluding</strong> <em>the header.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp;</td>
@@ -2317,21 +2334,14 @@ For latest updates join the chat on
 <h3 id="function-packetsendevent">function PacketSendEvent<a class="headerlink" href="#function-packetsendevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">data</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">packet_id</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">payload</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-getdata">function getData<a class="headerlink" href="#function-getdata" title="Permanent link">&para;</a></h3>
-<p><em>Gets the raw packet data.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">getData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>The packet data. </p>
-<hr>
-
 <h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Gets a user-friendly identifier for this event.</p>
 <p><strong>Returns:</strong></p>
@@ -2339,8 +2349,24 @@ For latest updates join the chat on
 <p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
 <hr>
 
+<h3 id="function-getpacketid">function getPacketId<a class="headerlink" href="#function-getpacketid" title="Permanent link">&para;</a></h3>
+<p><em>Gets the ID of the packet.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">getPacketId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The packet ID. </p>
+<hr>
+
+<h3 id="function-getpayload">function getPayload<a class="headerlink" href="#function-getpayload" title="Permanent link">&para;</a></h3>
+<p><em>Gets the raw packet data</em> <strong>excluding</strong> <em>the header.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">getPayload</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The packet payload data. </p>
+<hr>
+
 <h3 id="function-getplayer">function getPlayer<a class="headerlink" href="#function-getplayer" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">getPlayer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PacketSendEvent</span><span class="o">::</span><span class="n">getPlayer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Returns the player involved in this event</p>
 <p><strong>Returns:</strong></p>

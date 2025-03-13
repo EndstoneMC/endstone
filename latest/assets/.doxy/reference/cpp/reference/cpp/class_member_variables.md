@@ -14,7 +14,6 @@
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **api\_version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **authors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
-* **actor\_id** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 * **authors** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 
@@ -66,7 +65,6 @@
 * **DarkRed** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **description\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **default\_index\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
-* **data\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **DefaultPermission** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **default\_value\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::Toggle**](classendstone_1_1Toggle.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **death\_message\_** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
@@ -75,7 +73,6 @@
 * **depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **dimension\_** ([**endstone::Position**](classendstone_1_1Position.md))
 * **data** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md), [**endstone::UUID**](classendstone_1_1UUID.md))
-* **dimension\_id** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 * **default\_text\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **default\_permission** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
@@ -90,7 +87,6 @@
 * **executor\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
-* **effect\_name** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 
 
 ## f
@@ -172,7 +168,6 @@
 * **motd\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **max\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
 * **min\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
-* **molang\_variables\_json** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 
 
 ## n
@@ -205,6 +200,8 @@
 * **plugin\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md))
 * **priority\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **pitch\_** ([**endstone::Location**](classendstone_1_1Location.md))
+* **packet\_id\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
+* **payload\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **plugin\_manager\_** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **permissible\_** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **permission\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
@@ -212,7 +209,6 @@
 * **provides\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **ping\_response\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **port\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
-* **position** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 * **placeholder\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **params\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **permissions** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))

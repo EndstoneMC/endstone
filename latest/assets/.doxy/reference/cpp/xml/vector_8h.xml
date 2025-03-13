@@ -5,7 +5,6 @@
     <includes local="no">cmath</includes>
     <includedby refid="location_8h" local="yes">include/endstone/level/location.h</includedby>
     <includedby refid="position_8h" local="yes">include/endstone/level/position.h</includedby>
-    <includedby refid="spawn__particle__effect__packet_8h" local="yes">include/endstone/network/spawn_particle_effect_packet.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/endstone/util/vector.h</label>
@@ -340,12 +339,6 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="58">
-        <label>include/endstone/network/spawn_particle_effect_packet.h</label>
-        <link refid="spawn__particle__effect__packet_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
       <node id="6">
         <label>include/endstone/player.h</label>
         <link refid="player_8h_source"/>
@@ -404,8 +397,6 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

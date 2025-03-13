@@ -1887,9 +1887,22 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.event.PacketReceiveEvent.data" class="md-nav__link">
+    <a href="#endstone.event.PacketReceiveEvent.packet_id" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;data
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;packet_id
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PacketReceiveEvent.payload" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;payload
       </span>
     </a>
 
@@ -1932,9 +1945,22 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.event.PacketSendEvent.data" class="md-nav__link">
+    <a href="#endstone.event.PacketSendEvent.packet_id" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;data
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;packet_id
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PacketSendEvent.payload" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;payload
       </span>
     </a>
 
@@ -4710,9 +4736,22 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.event.PacketReceiveEvent.data" class="md-nav__link">
+    <a href="#endstone.event.PacketReceiveEvent.packet_id" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;data
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;packet_id
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PacketReceiveEvent.payload" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;payload
       </span>
     </a>
 
@@ -4755,9 +4794,22 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.event.PacketSendEvent.data" class="md-nav__link">
+    <a href="#endstone.event.PacketSendEvent.packet_id" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;data
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;packet_id
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PacketSendEvent.payload" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;payload
       </span>
     </a>
 
@@ -8597,18 +8649,34 @@ For latest updates join the chat on
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="            data
+            <td><code><a class="autorefs autorefs-internal" title="            packet_id
 
 
   
       property
-   (endstone.event.PacketReceiveEvent.data)" href="#endstone.event.PacketReceiveEvent.data">data</a></code></td>
+   (endstone.event.PacketReceiveEvent.packet_id)" href="#endstone.event.PacketReceiveEvent.packet_id">packet_id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the ID of the packet.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            payload
+
+
+  
+      property
+   (endstone.event.PacketReceiveEvent.payload)" href="#endstone.event.PacketReceiveEvent.payload">payload</a></code></td>
             <td>
                   <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the raw packet data</p>
+                <p>Gets the raw packet data <strong>excluding</strong> the header.</p>
               </div>
             </td>
           </tr>
@@ -8646,21 +8714,45 @@ For latest updates join the chat on
 
 
 
-<h4 id="endstone.event.PacketReceiveEvent.data" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">data</span>
+<h4 id="endstone.event.PacketReceiveEvent.packet_id" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">packet_id</span>
 
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#endstone.event.PacketReceiveEvent.data" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">data</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a></span>
+<a href="#endstone.event.PacketReceiveEvent.packet_id" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">packet_id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Gets the raw packet data</p>
+        <p>Gets the ID of the packet.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.event.PacketReceiveEvent.payload" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">payload</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.event.PacketReceiveEvent.payload" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">payload</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets the raw packet data <strong>excluding</strong> the header.</p>
 
     </div>
 
@@ -8740,18 +8832,34 @@ For latest updates join the chat on
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="            data
+            <td><code><a class="autorefs autorefs-internal" title="            packet_id
 
 
   
       property
-   (endstone.event.PacketSendEvent.data)" href="#endstone.event.PacketSendEvent.data">data</a></code></td>
+   (endstone.event.PacketSendEvent.packet_id)" href="#endstone.event.PacketSendEvent.packet_id">packet_id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the ID of the packet.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            payload
+
+
+  
+      property
+   (endstone.event.PacketSendEvent.payload)" href="#endstone.event.PacketSendEvent.payload">payload</a></code></td>
             <td>
                   <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the raw packet data</p>
+                <p>Gets the raw packet data <strong>excluding</strong> the header.</p>
               </div>
             </td>
           </tr>
@@ -8789,21 +8897,45 @@ For latest updates join the chat on
 
 
 
-<h4 id="endstone.event.PacketSendEvent.data" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">data</span>
+<h4 id="endstone.event.PacketSendEvent.packet_id" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">packet_id</span>
 
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#endstone.event.PacketSendEvent.data" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">data</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a></span>
+<a href="#endstone.event.PacketSendEvent.packet_id" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">packet_id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Gets the raw packet data</p>
+        <p>Gets the ID of the packet.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.event.PacketSendEvent.payload" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">payload</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.event.PacketSendEvent.payload" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">payload</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets the raw packet data <strong>excluding</strong> the header.</p>
 
     </div>
 

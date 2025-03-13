@@ -18,7 +18,6 @@
 * `#include "endstone/form/modal_form.h"`
 * `#include "endstone/game_mode.h"`
 * `#include "endstone/inventory/player_inventory.h"`
-* `#include "endstone/network/spawn_particle_effect_packet.h"`
 * `#include "endstone/offline_player.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`
 * `#include "endstone/skin.h"`

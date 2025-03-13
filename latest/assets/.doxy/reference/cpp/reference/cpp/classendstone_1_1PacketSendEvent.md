@@ -98,9 +98,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) & player, std::string\_view data) <br> |
-|  std::string\_view | [**getData**](#function-getdata) () const<br>_Gets the raw packet data._  |
+|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) & player, [**int**](classendstone_1_1Vector.md) packet\_id, std::string\_view payload) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|  [**int**](classendstone_1_1Vector.md) | [**getPacketId**](#function-getpacketid) () const<br>_Gets the ID of the packet._  |
+|  std::string\_view | [**getPayload**](#function-getpayload) () const<br>_Gets the raw packet data_ **excluding** _the header._ |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br> |
 
 
@@ -230,37 +231,13 @@ const std::string endstone::PacketSendEvent::NAME;
 ```C++
 inline endstone::PacketSendEvent::PacketSendEvent (
     Player & player,
-    std::string_view data
+    int packet_id,
+    std::string_view payload
 ) 
 ```
 
 
 
-
-<hr>
-
-
-
-### function getData 
-
-_Gets the raw packet data._ 
-```C++
-inline std::string_view endstone::PacketSendEvent::getData () const
-```
-
-
-
-
-
-**Returns:**
-
-The packet data. 
-
-
-
-
-
-        
 
 <hr>
 
@@ -290,6 +267,56 @@ name of this event
         
 Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
+
+<hr>
+
+
+
+### function getPacketId 
+
+_Gets the ID of the packet._ 
+```C++
+inline int endstone::PacketSendEvent::getPacketId () const
+```
+
+
+
+
+
+**Returns:**
+
+The packet ID. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getPayload 
+
+_Gets the raw packet data_ **excluding** _the header._
+```C++
+inline std::string_view endstone::PacketSendEvent::getPayload () const
+```
+
+
+
+
+
+**Returns:**
+
+The packet payload data. 
+
+
+
+
+
+        
 
 <hr>
 

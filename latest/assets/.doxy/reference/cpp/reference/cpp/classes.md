@@ -182,8 +182,6 @@
 
 ## p
 
-* [**Packet**](classendstone_1_1Packet.md)
-([**endstone**](namespaceendstone.md))
 * [**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PacketSendEvent**](classendstone_1_1PacketSendEvent.md)
@@ -279,8 +277,6 @@
 * [**Slider**](classendstone_1_1Slider.md)
 ([**endstone**](namespaceendstone.md))
 * [**SocketAddress**](classendstone_1_1SocketAddress.md)
-([**endstone**](namespaceendstone.md))
-* [**SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md)
 ([**endstone**](namespaceendstone.md))
 * [**StepSlider**](classendstone_1_1StepSlider.md)
 ([**endstone**](namespaceendstone.md))
