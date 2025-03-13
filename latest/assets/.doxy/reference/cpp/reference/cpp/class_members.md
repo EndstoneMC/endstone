@@ -661,6 +661,7 @@
 * **reloadData** ([**endstone::Server**](classendstone_1_1Server.md))
 * **remote\_host\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **remote\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **registerService** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 
 
 ## s
@@ -820,12 +821,13 @@
 * **update** ([**endstone::BlockState**](classendstone_1_1BlockState.md))
 * **unregisterFrom** ([**endstone::Command**](classendstone_1_1Command.md))
 * **usages\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
-* **unregister** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md), [**endstone::Objective**](classendstone_1_1Objective.md))
+* **unregister** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **unsetPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **updateCommands** ([**endstone::Player**](classendstone_1_1Player.md))
 * **uuid\_** ([**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md))
 * **unsubscribeFromDefaultPerms** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **unsubscribeFromPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **unregisterAll** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **usages** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 
 
@@ -869,6 +871,7 @@
 
 ## ~
 
+* **~Service** ([**Service**](classService.md))
 * **~ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
 * **~ActorExplodeEvent** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **~ActorKnockbackEvent** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -923,6 +926,7 @@
 * **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **~Server** ([**endstone::Server**](classendstone_1_1Server.md))
+* **~ServiceManager** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **~Task** ([**endstone::Task**](classendstone_1_1Task.md))
 * **~ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **~WeatherChangeEvent** ([**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))

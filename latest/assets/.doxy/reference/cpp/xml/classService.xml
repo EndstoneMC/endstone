@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classService" kind="class" language="C++" prot="public">
+    <compoundname>Service</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Service &gt;</basecompoundref>
+    <includes refid="service_8h" local="no">endstone/plugin/service.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classService_1a9b798149b90cbdb1f1c66f740db5864b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Service::~Service</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Service</name>
+        <qualifiedname>Service::~Service</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/service.h" line="22" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Services represent a list of methods. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Service</label>
+        <link refid="classService"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Service &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Service</label>
+        <link refid="classService"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Service &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/plugin/service.h" line="20" column="1" bodyfile="include/endstone/plugin/service.h" bodystart="20" bodyend="23"/>
+    <listofallmembers>
+      <member refid="classService_1a9b798149b90cbdb1f1c66f740db5864b" prot="public" virt="virtual"><scope>Service</scope><name>~Service</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

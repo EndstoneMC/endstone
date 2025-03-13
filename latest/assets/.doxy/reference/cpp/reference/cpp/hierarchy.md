@@ -82,6 +82,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._ 
 * **class** [**endstone::Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._ 
 * **class** [**endstone::Server**](classendstone_1_1Server.md) _Represents a server implementation._ 
+* **class** [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md) _Represent a service manager that manages services and service providers._ 
 * **class** [**endstone::Skin**](classendstone_1_1Skin.md) _Represents a player skin._ 
 * **class** [**endstone::Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._ 
 * **class** [**endstone::SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._ 
@@ -96,6 +97,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md) 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
+* **class** **std::enable_shared_from_this< Service >**    
+    * **class** [**Service**](classService.md) _Services represent a list of methods._ 
 * **class** **EventType**    
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 

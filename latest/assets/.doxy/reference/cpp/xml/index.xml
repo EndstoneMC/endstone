@@ -1370,6 +1370,16 @@
     <member refid="classendstone_1_1ServerLoadEvent_1ad6f8ab066b197a8175518ac9e8dcabae" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" kind="function"><name>getEventName</name></member>
   </compound>
+  <compound refid="classService" kind="class"><name>Service</name>
+    <member refid="classService_1a9b798149b90cbdb1f1c66f740db5864b" kind="function"><name>~Service</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ServiceManager" kind="class"><name>endstone::ServiceManager</name>
+    <member refid="classendstone_1_1ServiceManager_1abbb8cc4e6fb216c72faeba297e006eb7" kind="function"><name>~ServiceManager</name></member>
+    <member refid="classendstone_1_1ServiceManager_1a43e8dfe943ce6ec10bf195c053193453" kind="function"><name>registerService</name></member>
+    <member refid="classendstone_1_1ServiceManager_1af62f98b2abdd3fa261d372dd10b5d831" kind="function"><name>unregisterAll</name></member>
+    <member refid="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" kind="function"><name>unregister</name></member>
+    <member refid="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" kind="function"><name>unregister</name></member>
+  </compound>
   <compound refid="classendstone_1_1Skin" kind="class"><name>endstone::Skin</name>
     <member refid="classendstone_1_1Skin_1aaa8acbed9e68495f28de0b06022fa61c" kind="variable"><name>skin_id_</name></member>
     <member refid="classendstone_1_1Skin_1aaad023e4790ab3bb235ce881cb3a5e05" kind="variable"><name>skin_data_</name></member>
@@ -1810,6 +1820,10 @@
   <compound refid="plugin__loader_8h" kind="file"><name>plugin_loader.h</name>
   </compound>
   <compound refid="plugin__manager_8h" kind="file"><name>plugin_manager.h</name>
+  </compound>
+  <compound refid="service_8h" kind="file"><name>service.h</name>
+  </compound>
+  <compound refid="service__manager_8h" kind="file"><name>service_manager.h</name>
   </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
   </compound>

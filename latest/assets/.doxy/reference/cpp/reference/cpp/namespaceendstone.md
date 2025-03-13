@@ -131,6 +131,7 @@
 | class | [**ServerEvent**](classendstone_1_1ServerEvent.md) <br>_Represents a Server-related event._  |
 | class | [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) <br>_Called when a server ping is coming in._  |
 | class | [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) <br>_Called when either the server startup or reload has completed._  |
+| class | [**ServiceManager**](classendstone_1_1ServiceManager.md) <br>_Represent a service manager that manages services and service providers._  |
 | class | [**Skin**](classendstone_1_1Skin.md) <br>_Represents a player skin._  |
 | class | [**Slider**](classendstone_1_1Slider.md) <br>_Represents a slider with a label._  |
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |

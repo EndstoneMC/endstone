@@ -7,6 +7,8 @@
     <innerfile refid="plugin__load__order_8h">plugin_load_order.h</innerfile>
     <innerfile refid="plugin__loader_8h">plugin_loader.h</innerfile>
     <innerfile refid="plugin__manager_8h">plugin_manager.h</innerfile>
+    <innerfile refid="service_8h">service.h</innerfile>
+    <innerfile refid="service__manager_8h">service_manager.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -126,6 +126,8 @@ Here is a list of all files with brief descriptions:
             * **file** [**plugin\_load\_order.h**](plugin__load__order_8h.md)     
             * **file** [**plugin\_loader.h**](plugin__loader_8h.md)     
             * **file** [**plugin\_manager.h**](plugin__manager_8h.md)     
+            * **file** [**service.h**](service_8h.md)     
+            * **file** [**service\_manager.h**](service__manager_8h.md)     
         * **dir** [**scheduler**](dir_3a50fadda3c7cdc27c965a478a3f7d27.md)     
             * **file** [**scheduler.h**](scheduler_8h.md)     
             * **file** [**task.h**](task_8h.md)     

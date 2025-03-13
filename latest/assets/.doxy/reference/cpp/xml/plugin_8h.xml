@@ -19,6 +19,7 @@
     <includedby refid="plugin__disable__event_8h" local="yes">include/endstone/event/server/plugin_disable_event.h</includedby>
     <includedby refid="plugin__enable__event_8h" local="yes">include/endstone/event/server/plugin_enable_event.h</includedby>
     <includedby refid="plugin__loader_8h" local="yes">include/endstone/plugin/plugin_loader.h</includedby>
+    <includedby refid="service__manager_8h" local="yes">include/endstone/plugin/service_manager.h</includedby>
     <includedby refid="task_8h" local="yes">include/endstone/scheduler/task.h</includedby>
     <incdepgraph>
       <node id="57">
@@ -856,19 +857,25 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="6">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="9">
+      <node id="8">
+        <label>include/endstone/plugin/service_manager.h</label>
+        <link refid="service__manager_8h_source"/>
+      </node>
+      <node id="10">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="8">
+      <node id="9">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
