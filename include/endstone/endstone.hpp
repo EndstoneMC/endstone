@@ -17,9 +17,10 @@
 // We do not support compiling under MSVC Debug mode because it sets _ITERATOR_DEBUG_LEVEL
 // to a nonzero value, changing the standard library's iterator implementation and resulting
 // in an ABI incompatible with the BDS environment, which is built in Release mode.
-#if defined(_MSC_VER) && defined(_ITERATOR_DEBUG_LEVEL)
+#ifdef _MSC_VER
+#include <iterator>
 static_assert(_ITERATOR_DEBUG_LEVEL == 0,
-              "Compilation aborted: _ITERATOR_DEBUG_LEVEL is nonzero. This indicates MSVC Debug mode, "
+              "Compilation aborted: _ITERATOR_DEBUG_LEVEL != 0. This indicates MSVC Debug mode, "
               "which is not supported. Please switch to a Release or RelWithDebInfo configuration.");
 #endif
 
@@ -80,8 +81,8 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_respawn_event.h"
 #include "event/player/player_teleport_event.h"
 #include "event/server/broadcast_message_event.h"
-#include "event/server/data_packet_receive_event.h"
-#include "event/server/data_packet_send_event.h"
+#include "event/server/packet_receive_event.h"
+#include "event/server/packet_send_event.h"
 #include "event/server/plugin_disable_event.h"
 #include "event/server/plugin_enable_event.h"
 #include "event/server/script_message_event.h"
@@ -115,9 +116,6 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "level/position.h"
 #include "logger.h"
 #include "message.h"
-#include "network/packet.h"
-#include "network/packet_type.h"
-#include "network/spawn_particle_effect_packet.h"
 #include "offline_player.h"
 #include "permissions/permissible.h"
 #include "permissions/permission.h"

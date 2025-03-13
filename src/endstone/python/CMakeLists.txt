@@ -17,7 +17,6 @@ pybind11_add_module(endstone_python MODULE
         inventory.cpp
         lang.cpp
         level.cpp
-        network.cpp
         permissions.cpp
         plugin.cpp
         scheduler.cpp

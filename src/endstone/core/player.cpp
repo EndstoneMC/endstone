@@ -36,7 +36,7 @@
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/player_inventory.h"
-#include "endstone/core/network/packet_adapter.h"
+#include "endstone/core/network/data_packet.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/error.h"
@@ -128,6 +128,12 @@ Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin, con
 Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin)
 {
     return perm_->addAttachment(plugin);
+}
+
+void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
+{
+    DataPacket pk(packet_id, payload);
+    getPlayer().sendNetworkPacket(pk);
 }
 
 Result<void> EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
@@ -548,12 +554,18 @@ void EndstonePlayer::spawnParticle(std::string name, Location location,
 void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
                                    std::optional<std::string> molang_variables_json) const
 {
-    SpawnParticleEffectPacket pk;
-    pk.dimension_id = static_cast<int>(getDimension().getType());
-    pk.effect_name = name;
-    pk.position = {x, y, z};
-    pk.molang_variables_json = molang_variables_json;
-    sendPacket(pk);
+    BinaryStream stream;
+    stream.writeByte(static_cast<int>(getDimension().getType()));
+    stream.writeVarInt64(-1);  // self
+    stream.writeFloat(x);
+    stream.writeFloat(y);
+    stream.writeFloat(z);
+    stream.writeString(name);
+    stream.writeBool(molang_variables_json.has_value());
+    if (molang_variables_json.has_value()) {
+        stream.writeString(molang_variables_json.value());
+    }
+    sendPacket(static_cast<int>(MinecraftPacketIds::SpawnParticleEffect), stream.getView());
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const
@@ -706,12 +718,6 @@ void EndstonePlayer::closeForm()
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ClientboundCloseScreen);
     getPlayer().sendNetworkPacket(*packet);
     forms_.clear();
-}
-
-void EndstonePlayer::sendPacket(Packet &packet) const
-{
-    PacketAdapter pk{packet};
-    getPlayer().sendNetworkPacket(pk);
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)

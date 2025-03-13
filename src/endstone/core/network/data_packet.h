@@ -16,15 +16,12 @@
 
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/network/packet.h"
-#include "endstone/network/packet.h"
 
 namespace endstone::core {
 
-class PacketAdapter : public ::Packet {
+class DataPacket : public Packet {
 public:
-    explicit PacketAdapter(endstone::Packet &packet);
-
-    ~PacketAdapter() override = default;
+    DataPacket(int packet_id, std::string_view payload);
     [[nodiscard]] virtual MinecraftPacketIds getId() const;
     [[nodiscard]] virtual std::string getName() const;
     [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const;
@@ -36,7 +33,9 @@ public:
 private:
     [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &);
 
-    endstone::Packet &packet_;
+private:
+    int packet_id_;
+    std::string_view payload_;
 };
 
 }  // namespace endstone::core

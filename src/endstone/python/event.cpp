@@ -191,20 +191,22 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                py::return_value_policy::reference_internal,
                                "Gets a set of recipients that this broadcast message will be displayed to.");
 
-    py::class_<DataPacketReceiveEvent, ServerEvent, ICancellable>(
-        m, "DataPacketReceiveEvent", "Called when the server receives a packet from a connected client.")
+    py::class_<PacketReceiveEvent, ServerEvent, ICancellable>(
+        m, "PacketReceiveEvent", "Called when the server receives a packet from a connected client.")
+        .def_property_readonly("packet_id", &PacketReceiveEvent::getPacketId, "Gets the ID of the packet.")
         .def_property_readonly(
-            "data", [](const DataPacketReceiveEvent &self) { return py::bytes(self.getData()); },
-            "Gets the raw packet data")
-        .def_property_readonly("player", &DataPacketReceiveEvent::getPlayer, py::return_value_policy::reference,
+            "payload", [](const PacketReceiveEvent &self) { return py::bytes(self.getPayload()); },
+            "Gets the raw packet data **excluding** the header.")
+        .def_property_readonly("player", &PacketReceiveEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the player involved in this event");
 
-    py::class_<DataPacketSendEvent, ServerEvent, ICancellable>(
-        m, "DataPacketSendEvent", "Called when the server sends a packet to a connected client.")
+    py::class_<PacketSendEvent, ServerEvent, ICancellable>(
+        m, "PacketSendEvent", "Called when the server sends a packet to a connected client.")
+        .def_property_readonly("packet_id", &PacketSendEvent::getPacketId, "Gets the ID of the packet.")
         .def_property_readonly(
-            "data", [](const DataPacketSendEvent &self) { return py::bytes(self.getData()); },
-            "Gets the raw packet data")
-        .def_property_readonly("player", &DataPacketSendEvent::getPlayer, py::return_value_policy::reference,
+            "payload", [](const PacketSendEvent &self) { return py::bytes(self.getPayload()); },
+            "Gets the raw packet data **excluding** the header.")
+        .def_property_readonly("player", &PacketSendEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the player involved in this event");
 
     py::class_<PluginEnableEvent, ServerEvent>(m, "PluginEnableEvent", "Called when a plugin is enabled.")

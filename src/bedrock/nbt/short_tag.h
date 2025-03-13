@@ -31,11 +31,11 @@ public:
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readShortResult();
-        if (result) {
-            data = result.value();
+        if (result.ignoreError()) {
+            data = result.discardError().value();
             return {};
         }
-        return nonstd::make_unexpected(result.error());
+        return BEDROCK_RETHROW(result);
     }
 
     [[nodiscard]] std::string toString() const override

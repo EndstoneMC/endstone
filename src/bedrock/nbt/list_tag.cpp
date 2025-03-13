@@ -44,51 +44,57 @@ void ListTag::write(IDataOutput &output) const
 Bedrock::Result<void> ListTag::load(IDataInput &input)
 {
     auto byte_result = input.readByteResult();
-    if (!byte_result) {
-        return nonstd::make_unexpected(byte_result.error());
+    if (!byte_result.ignoreError()) {
+        return BEDROCK_RETHROW(byte_result);
     }
-    type_ = static_cast<Type>(byte_result.value());
+    type_ = static_cast<Type>(byte_result.asExpected().value());
 
     auto int_result = input.readIntResult();
-    if (!int_result) {
-        return nonstd::make_unexpected(int_result.error());
+    if (!int_result.ignoreError()) {
+        return BEDROCK_RETHROW(int_result);
     }
 
-    const auto size = int_result.value();
+    const auto size = int_result.asExpected().value();
     list_.clear();
     list_.reserve(size);
     for (int i = 0; i < size; ++i) {
         auto tag_result = newTag(type_);
-        if (!tag_result) {
-            return nonstd::make_unexpected(tag_result.error());
+        if (!tag_result.ignoreError()) {
+            return BEDROCK_RETHROW(tag_result);
         }
-        auto tag = std::move(tag_result.value());
+        auto tag = std::move(tag_result.discardError().value());
         tag->load(input);
         list_.push_back(std::move(tag));
     }
     return {};
 }
+
 std::string ListTag::toString() const
 {
     return fmt::format("{} entries of type {}", list_.size(), Tag::getTagName(type_));
 }
+
 Tag::Type ListTag::getId() const
 {
     return Type::List;
 }
+
 bool ListTag::equals(const Tag &other) const
 {
     return Tag::equals(other) && list_ == static_cast<const ListTag &>(other).list_ &&
            type_ == static_cast<const ListTag &>(other).type_;
 }
+
 std::unique_ptr<Tag> ListTag::copy() const
 {
     return copyList();
 }
+
 std::size_t ListTag::hash() const
 {
     return boost::hash_range(list_.begin(), list_.end());
 }
+
 void ListTag::print(const std::string &string, PrintStream &stream) const
 {
     Tag::print(string, stream);
@@ -101,11 +107,13 @@ void ListTag::print(const std::string &string, PrintStream &stream) const
     stream.print(string);
     stream.print("}\n");
 }
+
 void ListTag::add(std::unique_ptr<Tag> tag)
 {
     type_ = tag->getId();
     list_.push_back(std::move(tag));
 }
+
 Tag *ListTag::get(int index) const
 {
     if (index < 0 || index >= list_.size()) {
@@ -113,6 +121,7 @@ Tag *ListTag::get(int index) const
     }
     return list_[index].get();
 }
+
 float ListTag::getFloat(int index) const
 {
     if (auto *tag = get(index); tag && tag->getId() == Type::Float) {
@@ -120,6 +129,7 @@ float ListTag::getFloat(int index) const
     }
     return 0;
 }
+
 int ListTag::getInt(int index) const
 {
     if (auto *tag = get(index); tag && tag->getId() == Type::Int) {
@@ -127,6 +137,7 @@ int ListTag::getInt(int index) const
     }
     return 0;
 }
+
 double ListTag::getDouble(int index) const
 {
     if (auto *tag = get(index); tag && tag->getId() == Type::Double) {
@@ -134,6 +145,7 @@ double ListTag::getDouble(int index) const
     }
     return 0;
 }
+
 const std::string &ListTag::getString(int index) const
 {
     static std::string empty_string;
@@ -142,6 +154,7 @@ const std::string &ListTag::getString(int index) const
     }
     return empty_string;
 }
+
 std::int64_t ListTag::getInt64(int index) const
 {
     if (auto *tag = get(index); tag && tag->getId() == Type::Int64) {
@@ -149,6 +162,7 @@ std::int64_t ListTag::getInt64(int index) const
     }
     return 0;
 }
+
 std::int16_t ListTag::getShort(int index) const
 {
     if (auto *tag = get(index); tag && tag->getId() == Type::Short) {
@@ -156,6 +170,7 @@ std::int16_t ListTag::getShort(int index) const
     }
     return 0;
 }
+
 std::uint8_t ListTag::getByte(int index) const
 {
     if (auto *tag = get(index); tag && tag->getId() == Type::Byte) {
@@ -163,10 +178,12 @@ std::uint8_t ListTag::getByte(int index) const
     }
     return 0;
 }
+
 std::size_t ListTag::size() const
 {
     return list_.size();
 }
+
 std::unique_ptr<ListTag> ListTag::copyList() const
 {
     auto copy = std::make_unique<ListTag>();
@@ -176,6 +193,7 @@ std::unique_ptr<ListTag> ListTag::copyList() const
     }
     return copy;
 }
+
 const CompoundTag *ListTag::getCompound(int index) const
 {
     if (const auto *tag = get(index); tag && tag->getId() == Type::Compound) {
@@ -183,6 +201,7 @@ const CompoundTag *ListTag::getCompound(int index) const
     }
     return nullptr;
 }
+
 CompoundTag *ListTag::getCompound(int index)
 {
     if (auto *tag = get(index); tag && tag->getId() == Type::Compound) {
@@ -190,6 +209,7 @@ CompoundTag *ListTag::getCompound(int index)
     }
     return nullptr;
 }
+
 void ListTag::erase(int index)
 {
     if (index < 0 || index >= list_.size()) {
@@ -197,10 +217,12 @@ void ListTag::erase(int index)
     }
     list_.erase(list_.begin() + index);
 }
+
 void ListTag::popBack()
 {
     list_.pop_back();
 }
+
 void ListTag::forEachCompoundTag(std::function<void(const CompoundTag &)> func) const
 {
     for (const auto &tag : list_) {
