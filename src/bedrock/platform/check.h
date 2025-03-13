@@ -124,7 +124,7 @@ std::string ErrorInfo<ErrorType>::message() const
     Bedrock::Detail::addFrameToError(Bedrock::Detail::createError(ERROR), [&]() {                               \
         constexpr static Bedrock::CallStack::Frame frame{                                                      \
             .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__};    \
-        return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext(##MESSAGE))); \
+        return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext(MESSAGE))); \
     })
 
 #define BEDROCK_RETHROW(RESULT)                                                                             \

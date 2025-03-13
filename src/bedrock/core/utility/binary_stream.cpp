@@ -74,7 +74,10 @@ std::string_view ReadOnlyBinaryStream::getView() const
     return view_;
 }
 
-BinaryStream::BinaryStream() : ReadOnlyBinaryStream(owned_buffer_, false), buffer_(&owned_buffer_) {}
+BinaryStream::BinaryStream() : ReadOnlyBinaryStream("", false), buffer_(&owned_buffer_)
+{
+    view_ = owned_buffer_;
+}
 
 const std::string &BinaryStream::getBuffer() const
 {
