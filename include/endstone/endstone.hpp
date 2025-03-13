@@ -130,6 +130,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "plugin/plugin_manager.h"
 #include "plugin/service.h"
 #include "plugin/service_manager.h"
+#include "plugin/service_priority.h"
 #include "scheduler/scheduler.h"
 #include "scheduler/task.h"
 #include "scoreboard/criteria.h"

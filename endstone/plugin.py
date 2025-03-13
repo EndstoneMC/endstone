@@ -14,6 +14,9 @@ from endstone._internal.endstone_python import (
     PluginLoader,
     PluginLoadOrder,
     PluginManager,
+    Service,
+    ServiceManager,
+    ServicePriority,
 )
 from endstone.event import Event
 
@@ -24,6 +27,9 @@ __all__ = [
     "PluginLoader",
     "PluginLoadOrder",
     "PluginManager",
+    "Service",
+    "ServiceManager",
+    "ServicePriority",
 ]
 
 
@@ -83,9 +89,9 @@ class Plugin(endstone_python.Plugin):
             sig = inspect.signature(func)
             params = list(sig.parameters.values())
             if (
-                len(params) != 1
-                or not inspect.isclass(params[0].annotation)
-                or not issubclass(params[0].annotation, Event)
+                    len(params) != 1
+                    or not inspect.isclass(params[0].annotation)
+                    or not issubclass(params[0].annotation, Event)
             ):
                 self.logger.error(
                     f"Plugin {self.name} attempted to register an invalid event handler signature: {attr_name}: {sig}"

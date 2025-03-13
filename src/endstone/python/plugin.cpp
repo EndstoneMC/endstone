@@ -263,18 +263,26 @@ void init_plugin(py::module &m)
                       py::return_value_policy::reference, "The CommandExecutor to run when parsing this command")
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this PluginCommand");
 
+    py::enum_<ServicePriority>(m, "ServicePriority", "Represents various priorities of a provider.")
+        .value("LOWEST", ServicePriority::Lowest)
+        .value("LOW", ServicePriority::Low)
+        .value("NORMAL", ServicePriority::Normal)
+        .value("HIGH", ServicePriority::High)
+        .value("HIGHEST", ServicePriority::Highest);
+
     py::class_<Service, std::shared_ptr<Service>>(m, "Service", "Represents a list of methods.").def(py::init<>());
 
     py::class_<ServiceManager>(m, "ServiceManager",
                                "Represent a service manager that manages services and service providers.")
         .def("register", &ServiceManager::registerService, py::arg("name"), py::arg("provider"), py::arg("plugin"),
-             "Register a provider of a service.", py::keep_alive<1, 3>())
+             py::arg("priority"), "Register a provider of a service.", py::keep_alive<1, 3>())
         .def("unregister_all", &ServiceManager::unregisterAll, py::arg("plugin"),
              "Unregister all the services registered by a particular plugin.")
         .def("unregister", py::overload_cast<std::string, const Service &>(&ServiceManager::unregister),
              py::arg("name"), py::arg("provider"), "Unregister a particular provider for a particular service.")
         .def("unregister", py::overload_cast<const Service &>(&ServiceManager::unregister), py::arg("provider"),
-             "Unregister a particular provider.");
+             "Unregister a particular provider.")
+        .def("load", &ServiceManager::get, py::arg("name"));
 }
 
 }  // namespace endstone::python
