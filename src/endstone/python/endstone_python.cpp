@@ -399,8 +399,12 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
         .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.")
         .def("send_form", &Player::sendForm, "Sends a form to the player.", py::arg("form"))
         .def("close_form", &Player::closeForm, "Closes the forms that are currently open for the player.")
-        .def("send_packet", &Player::sendPacket, py::arg("packet_id"), py::arg("payload"),
-             "Sends a packet to the player.");
+        .def(
+            "send_packet",
+            [](const Player &self, const int packet_id, const py::bytes &payload) {
+                return self.sendPacket(packet_id, payload);
+            },
+            py::arg("packet_id"), py::arg("payload"), "Sends a packet to the player.");
 }
 
 }  // namespace endstone::python
