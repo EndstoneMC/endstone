@@ -202,8 +202,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
 
     py::class_<PacketSendEvent, ServerEvent, ICancellable>(
         m, "PacketSendEvent", "Called when the server sends a packet to a connected client.")
+        .def_property_readonly("packet_id", &PacketSendEvent::getPacketId, "Gets the ID of the packet.")
         .def_property_readonly(
-            "data", [](const PacketSendEvent &self) { return py::bytes(self.getData()); }, "Gets the raw packet data")
+            "payload", [](const PacketSendEvent &self) { return py::bytes(self.getPayload()); },
+            "Gets the raw packet data **excluding** the header.")
         .def_property_readonly("player", &PacketSendEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the player involved in this event");
 

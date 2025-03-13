@@ -21,7 +21,10 @@ namespace endstone {
  */
 class PacketSendEvent : public Cancellable<ServerEvent> {
 public:
-    PacketSendEvent(Player &player, std::string_view data) : player_(player), data_(data) {}
+    PacketSendEvent(Player &player, int packet_id, std::string_view payload)
+        : player_(player), packet_id_(packet_id), payload_(payload)
+    {
+    }
 
     inline static const std::string NAME = "PacketSendEvent";
     [[nodiscard]] std::string getEventName() const override
@@ -30,13 +33,23 @@ public:
     }
 
     /**
-     * @brief Gets the raw packet data
+     * @brief Gets the ID of the packet.
      *
-     * @return The packet data.
+     * @return The packet ID.
      */
-    std::string_view getData() const
+    [[nodiscard]] int getPacketId() const
     {
-        return data_;
+        return packet_id_;
+    }
+
+    /**
+     * @brief Gets the raw packet data **excluding** the header.
+     *
+     * @return The packet payload data.
+     */
+    [[nodiscard]] std::string_view getPayload() const
+    {
+        return payload_;
     }
 
     /**
@@ -51,7 +64,8 @@ public:
 
 private:
     Player &player_;
-    std::string_view data_;
+    int packet_id_;
+    std::string_view payload_;
 };
 
 }  // namespace endstone
