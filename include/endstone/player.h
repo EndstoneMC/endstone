@@ -64,7 +64,7 @@ public:
      *
      * @return the player's socket address
      */
-    [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
+    [[nodiscard]] virtual SocketAddress getAddress() const = 0;
 
     /**
      * @brief Transfers the player to another server

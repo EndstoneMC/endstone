@@ -31,7 +31,8 @@ public:
 protected:
     friend class EntityContext;
 
-    std::string debug_name_;  // +16
-    EnTTRegistry registry_;   // +48
-    std::uint32_t id_;        // +352
+    bool is_viewing_;
+    std::string debug_name_;
+    EnTTRegistry registry_;
+    std::uint32_t id_;
 };

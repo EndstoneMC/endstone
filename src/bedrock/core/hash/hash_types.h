@@ -14,9 +14,7 @@
 
 #pragma once
 
-#include "bedrock/certificates/certificate.h"
+#include <cstdint>
 
-class ExtendedCertificate {
-public:
-    static std::string getXuid(const Certificate &certificate, bool trust_self_signed);
-};
+using HashType = std::uint32_t;
+using HashType64 = std::uint64_t;

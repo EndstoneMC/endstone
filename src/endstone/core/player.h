@@ -97,7 +97,7 @@ public:
 
     // Player
     [[nodiscard]] std::string getXuid() const override;
-    [[nodiscard]] const SocketAddress &getAddress() const override;
+    [[nodiscard]] SocketAddress getAddress() const override;
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
@@ -169,14 +169,13 @@ private:
 
     UUID uuid_;
     std::string xuid_;
-    SocketAddress address_;
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::string locale_ = "en_US";
     std::string device_os_ = "Unknown";
     std::string device_id_;
     std::string game_version_;
-    Skin skin_;
+    Skin skin_{};
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
 };

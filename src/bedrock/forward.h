@@ -43,6 +43,7 @@ class ActorDefinitionGroup;
 class ActorEvent;
 class ActorFactory;
 class ActorInteraction;
+class ActorSoundIdentifier;
 class ActorUnloadedChunkTransferEntry;
 class AddActorBasePacket;
 class AdventureSettings;
@@ -111,6 +112,7 @@ class I18nObserver;
 class IAddActorEntityProxy;
 class IContainerRegistryAccess;
 class IContentTierManager;
+class IFileAccess;
 class IFoodItemComponent;
 class IGameModuleShared;
 class ILevelRandom;
@@ -135,6 +137,7 @@ class LevelData;
 class LevelSoundManager;
 class LevelStorageObserver;
 class LevelStorageWriteBatch;
+class LinkedAssetValidator;
 class LocalConnector;
 class LootTables;
 class MapDataManager;
@@ -216,7 +219,10 @@ class TrackedUniqueChunkPtr;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class UpdateEntityAfterFallOnInterface;
+class VolumeEntityManagerServer;
 class _TickPtr;  // NOLINT
+
+struct SyncedClientOptionsComponent;
 
 // Enums
 enum class ArmorMaterialType;
@@ -262,6 +268,9 @@ public:
 };
 namespace Automation {
 class AutomationClient;
+}
+namespace br::worldgen {
+struct SpawnerData;
 }
 namespace cereal {
 class ReflectionCtx;

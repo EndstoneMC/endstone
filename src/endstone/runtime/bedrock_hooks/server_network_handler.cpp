@@ -23,8 +23,6 @@
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/runtime/hook.h"
 
-
-
 void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,
                                             std::optional<std::string> filtered_message, bool skip_message)
@@ -118,7 +116,7 @@ ServerPlayer *ServerNetworkHandler::_getServerPlayer(const NetworkIdentifier &so
             continue;
         }
 
-        if (component->network_id == source && component->client_sub_id == sub_id) {
+        if (component->getNetworkId() == source && component->getSubClientId() == sub_id) {
             return static_cast<ServerPlayer *>(Actor::tryGetFromEntity(player));
         }
     }

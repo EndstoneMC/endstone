@@ -26,11 +26,6 @@
 class NetworkSystem : public RakNetConnector::ConnectionCallbacks,
                       public RakPeerHelper::IPSupportInterface,
                       public NetworkEnableDisableListener {
-private:
-    class PacketSecurityController;
-    using PacketSecurityControllerFactory =
-        std::function<std::shared_ptr<PacketSecurityController>(const NetworkIdentifier &)>;
-
 protected:
     struct Dependencies;
     NetworkSystem(Dependencies &&);
@@ -63,6 +58,5 @@ private:
     uint16_t default_game_port_v6_;
     bool is_lan_discovery_enabled_;
     void *network_statistics_;
-    alignas(std::max_align_t) PacketSecurityControllerFactory packet_security_controller_factory_;
     // ...
 };

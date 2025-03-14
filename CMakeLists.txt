@@ -31,6 +31,7 @@ if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
 endif ()
 
 # Implementations
+add_subdirectory(third_party)
 add_subdirectory(src/endstone/python)
 add_subdirectory(src/bedrock)
 add_subdirectory(src/endstone/core)

@@ -170,6 +170,19 @@ struct ActorStartRidingEvent {
     WeakEntityRef vehicle;
 };
 
+struct ActorItemEventBeforeDroppedItem {
+    WeakRef<EntityContext> actor;
+    std::shared_ptr<ActorDamageSource> source;
+    std::vector<ItemStack> items;
+};
+
+struct ActorItemEventAfterDroppedItem {
+    WeakRef<EntityContext> actor;
+    std::shared_ptr<ActorDamageSource> source;
+    std::vector<ItemStack> items;
+    std::vector<WeakRef<EntityContext>> item_actors;
+};
+
 template <typename Result>
 struct ActorGameplayEvent;
 
@@ -180,7 +193,7 @@ struct ActorGameplayEvent<void>
                         ActorDiedEvent, ActorDroppedItemEvent, ActorEquippedArmorEvent, ActorHurtEvent,
                         ActorHealthChangedEvent, ActorKilledEvent, ActorPlacedItemEvent, ActorRemovedEvent,
                         ActorRemoveEffectEvent, ActorStartRidingEvent, ActorUseItemEvent, KnockBackEvent,
-                        MountTamingEvent> {};
+                        MountTamingEvent, ActorItemEventAfterDroppedItem> {};
 
 template <>
 struct ActorGameplayEvent<CoordinatorResult>
@@ -188,6 +201,9 @@ struct ActorGameplayEvent<CoordinatorResult>
 
 template <typename Result>
 struct MutableActorGameplayEvent;
+
+template <>
+struct MutableActorGameplayEvent<void> : MutableEventVariant<ActorItemEventBeforeDroppedItem> {};
 
 template <>
 struct MutableActorGameplayEvent<CoordinatorResult>
