@@ -11,6 +11,7 @@ add_executable(endstone_test
         bedrock/test_spin_lock.cpp
         bedrock/test_static_optimized_string.cpp
         endstone/core/test_base64.cpp
+        endstone/core/test_binary_stream.cpp
         endstone/core/test_command_lexer.cpp
         endstone/core/test_command_usage_parser.cpp
         endstone/core/test_cpp_plugin_loader.cpp

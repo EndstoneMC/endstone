@@ -20,17 +20,7 @@
 
 class ReadOnlyBinaryStream {
 public:
-    explicit ReadOnlyBinaryStream(std::string_view buffer, bool copy_buffer)
-    {
-        auto view = buffer;
-        if (copy_buffer) {
-            owned_buffer_ = buffer;
-            view = owned_buffer_;
-        }
-        read_pointer_ = 0;
-        has_overflowed_ = false;
-        view_ = view;
-    }
+    explicit ReadOnlyBinaryStream(std::string_view buffer, bool copy_buffer);
     virtual ~ReadOnlyBinaryStream() = default;
 
 private:
@@ -41,6 +31,7 @@ public:
     Bedrock::Result<unsigned char> getByte();
     Bedrock::Result<unsigned int> getUnsignedVarInt();
     [[nodiscard]] std::string_view getView() const;
+    [[nodiscard]] bool hasOverflowed() const;
 
 protected:
     std::string owned_buffer_;  // +8

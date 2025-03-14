@@ -16,6 +16,18 @@
 
 #include <fmt/core.h>
 
+ReadOnlyBinaryStream::ReadOnlyBinaryStream(std::string_view buffer, bool copy_buffer)
+{
+    auto view = buffer;
+    if (copy_buffer) {
+        owned_buffer_ = buffer;
+        view = owned_buffer_;
+    }
+    read_pointer_ = 0;
+    has_overflowed_ = false;
+    view_ = view;
+}
+
 Bedrock::Result<void> ReadOnlyBinaryStream::read(void *target, std::uint64_t num)
 {
     if (has_overflowed_) {
@@ -27,6 +39,7 @@ Bedrock::Result<void> ReadOnlyBinaryStream::read(void *target, std::uint64_t num
     }
 
     if (auto checked_number = read_pointer_ + num; checked_number < read_pointer_ || checked_number > view_.size()) {
+        has_overflowed_ = true;
         return BEDROCK_NEW_ERROR_MESSAGE(
             std::errc::invalid_seek,
             fmt::format(
@@ -61,8 +74,9 @@ Bedrock::Result<unsigned int> ReadOnlyBinaryStream::getUnsignedVarInt()
         if (!byte_result.ignoreError()) {
             return BEDROCK_RETHROW(byte_result);
         }
-        value |= (byte_result.discardError().value() & 0x7F) << i;
-        if ((value & 0x80U) == 0) {
+        const auto byte = byte_result.discardError().value();
+        value |= (byte & 0x7F) << i;
+        if ((byte & 0x80U) == 0) {
             break;
         }
     }
@@ -72,6 +86,11 @@ Bedrock::Result<unsigned int> ReadOnlyBinaryStream::getUnsignedVarInt()
 std::string_view ReadOnlyBinaryStream::getView() const
 {
     return view_;
+}
+
+bool ReadOnlyBinaryStream::hasOverflowed() const
+{
+    return has_overflowed_;
 }
 
 BinaryStream::BinaryStream() : ReadOnlyBinaryStream("", false), buffer_(&owned_buffer_)
