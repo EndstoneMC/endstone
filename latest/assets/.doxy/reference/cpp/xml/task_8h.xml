@@ -578,6 +578,22 @@
         <childnode refid="36" relation="include">
         </childnode>
       </node>
+      <node id="91">
+        <label>endstone/plugin/service.h</label>
+        <link refid="service_8h_source"/>
+      </node>
+      <node id="90">
+        <label>endstone/plugin/service_manager.h</label>
+        <link refid="service__manager_8h_source"/>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>endstone/plugin/service_priority.h</label>
+        <link refid="service__priority_8h_source"/>
+      </node>
       <node id="1">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h"/>
@@ -678,6 +694,8 @@
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
         </childnode>
         <childnode refid="80" relation="include">
         </childnode>

@@ -10,7 +10,6 @@
 
 
 
-* `#include "endstone/plugin/plugin.h"`
 * `#include "endstone/plugin/service.h"`
 * `#include "endstone/plugin/service_priority.h"`
 

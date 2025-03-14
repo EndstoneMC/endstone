@@ -38,6 +38,7 @@
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
+#include "endstone/plugin/service_manager.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/util/result.h"
 #include "endstone/util/uuid.h"
@@ -145,6 +146,8 @@ public:
     [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;
 
     [[nodiscard]] virtual IpBanList &getIpBanList() const = 0;
+
+    [[nodiscard]] virtual ServiceManager &getServiceManager() const = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

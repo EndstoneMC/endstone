@@ -23,6 +23,7 @@
 * `#include "endstone/level/level.h"`
 * `#include "endstone/logger.h"`
 * `#include "endstone/player.h"`
+* `#include "endstone/plugin/service_manager.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`
 * `#include "endstone/util/result.h"`
 * `#include "endstone/util/uuid.h"`

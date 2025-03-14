@@ -374,6 +374,7 @@
 * **getPluginCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginManager** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getScheduler** ([**endstone::Server**](classendstone_1_1Server.md))
+* **getServiceManager** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getStartTime** ([**endstone::Server**](classendstone_1_1Server.md))
 * **game\_mode\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getLevelName** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))

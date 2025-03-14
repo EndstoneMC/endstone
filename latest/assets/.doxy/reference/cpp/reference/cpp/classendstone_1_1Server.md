@@ -92,6 +92,7 @@ _Represents a server implementation._
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
+| virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br> |
 | virtual std::chrono::system\_clock::time\_point | [**getStartTime**](#function-getstarttime) () = 0<br>_Gets the start time of the server._  |
 | virtual std::string | [**getVersion**](#function-getversion) () const = 0<br>_Gets the version string of this server implementation._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isPrimaryThread**](#function-isprimarythread) () const = 0<br>_Checks the current thread against the expected primary server thread._  |
@@ -1075,6 +1076,33 @@ This [**Scoreboard**](classendstone_1_1Scoreboard.md) is saved by the server, is
 **Returns:**
 
 the default server scoreboard 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getServiceManager 
+
+```C++
+virtual ServiceManager & endstone::Server::getServiceManager () const = 0
+```
+
+
+
+Gets the service manager.
+
+
+
+
+**Returns:**
+
+The service manager 
 
 
 
