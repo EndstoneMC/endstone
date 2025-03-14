@@ -17,6 +17,7 @@
 #include "bedrock/core/threading/async.h"
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/forward.h"
+#include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_enable_disable_listener.h"
 #include "bedrock/network/rak_peer_helper.h"
 #include "bedrock/network/raknet_connector.h"
@@ -25,6 +26,11 @@
 class NetworkSystem : public RakNetConnector::ConnectionCallbacks,
                       public RakPeerHelper::IPSupportInterface,
                       public NetworkEnableDisableListener {
+private:
+    class PacketSecurityController;
+    using PacketSecurityControllerFactory =
+        std::function<std::shared_ptr<PacketSecurityController>(const NetworkIdentifier &)>;
+
 protected:
     struct Dependencies;
     NetworkSystem(Dependencies &&);
@@ -47,4 +53,16 @@ private:
     std::string receive_buffer_;  // +272
     std::string send_buffer_;
     BinaryStream send_stream_;
+    struct IncomingPacketQueue {
+        NetEventCallback &callback_obj;
+        Bedrock::Threading::Mutex mutex;
+    };
+    std::unique_ptr<IncomingPacketQueue> incoming_packets[4];
+    bool use_ipv6_only_;
+    uint16_t default_game_port_;
+    uint16_t default_game_port_v6_;
+    bool is_lan_discovery_enabled_;
+    void *network_statistics_;
+    alignas(std::max_align_t) PacketSecurityControllerFactory packet_security_controller_factory_;
+    // ...
 };
