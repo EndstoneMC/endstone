@@ -3528,6 +3528,11 @@ class Server:
         Gets the primary Scoreboard controlled by the server.
         """
     @property
+    def service_manager(self) -> ServiceManager:
+        """
+        Gets the service manager.
+        """
+    @property
     def start_time(self) -> datetime.datetime:
         """
         Gets the start time of the server.

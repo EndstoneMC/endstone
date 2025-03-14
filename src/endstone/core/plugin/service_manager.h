@@ -15,6 +15,7 @@
 #pragma once
 
 #include <mutex>
+#include <unordered_map>
 
 #include "endstone/plugin/service_manager.h"
 

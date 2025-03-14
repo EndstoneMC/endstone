@@ -31,10 +31,10 @@
 #include "endstone/core/packs/endstone_pack_source.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/plugin_manager.h"
+#include "endstone/core/plugin/service_manager.h"
 #include "endstone/core/scheduler/scheduler.h"
 #include "endstone/core/scoreboard/scoreboard.h"
 #include "endstone/core/signal_handler.h"
-#include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
 namespace endstone::core {
@@ -102,6 +102,7 @@ public:
                                                                      BlockStates block_states) const override;
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;
+    [[nodiscard]] ServiceManager &getServiceManager() const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
@@ -140,6 +141,7 @@ private:
     std::unique_ptr<EndstoneIpBanList> ip_ban_list_;
     std::unique_ptr<EndstoneLanguage> language_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
+    std::unique_ptr<EndstoneServiceManager> service_manager_;
     std::shared_ptr<EndstoneConsoleCommandSender> command_sender_;
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneCommandMap> command_map_;

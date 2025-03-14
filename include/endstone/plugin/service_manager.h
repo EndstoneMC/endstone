@@ -14,11 +14,12 @@
 
 #pragma once
 
-#include "endstone/plugin/plugin.h"
 #include "endstone/plugin/service.h"
 #include "endstone/plugin/service_priority.h"
 
 namespace endstone {
+
+class Plugin;
 
 /**
  * @brief Represent a service manager that manages services and service providers.

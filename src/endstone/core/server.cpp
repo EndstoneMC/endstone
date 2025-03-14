@@ -67,6 +67,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     ip_ban_list_ = std::make_unique<EndstoneIpBanList>("banned-ips.json");
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
+    service_manager_ = std::make_unique<EndstoneServiceManager>();
     command_sender_ = EndstoneConsoleCommandSender::create();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
@@ -509,6 +510,11 @@ PlayerBanList &EndstoneServer::getBanList() const
 IpBanList &EndstoneServer::getIpBanList() const
 {
     return *ip_ban_list_;
+}
+
+ServiceManager &EndstoneServer::getServiceManager() const
+{
+    return *service_manager_;
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const
