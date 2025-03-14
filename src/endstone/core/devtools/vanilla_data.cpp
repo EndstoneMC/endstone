@@ -134,6 +134,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
             data.item_tags[tag_name].push_back(name);
         }
 
+        auto item_stack = ::ItemStack(*item);
         data.items[name] = {{"id", item->getId()},
                             {"attackDamage", item->getAttackDamage()},
                             {"armorValue", item->getArmorValue()},
@@ -142,8 +143,9 @@ void dumpItemData(VanillaData &data, const ::Level &level)
                             {"maxDamage", item->getMaxDamage()},
                             {"isDamageable", item->isDamageable()},
                             {"maxStackSize", item->getMaxStackSize(ItemDescriptor())},
-                            {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(::ItemStack(*item), 200)},
-                            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
+                            {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(item_stack, 200)},
+                            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)},
+                            {"baseRepairCost", item_stack.getBaseRepairCost()}};
 
         if (const auto components = item->buildNetworkTag()) {
             CompoundTag tag;

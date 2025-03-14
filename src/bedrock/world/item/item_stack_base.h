@@ -52,6 +52,7 @@ public:
     [[nodiscard]] std::string getCustomName() const;
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] std::uint16_t getAuxValue() const;
+    [[nodiscard]] int getBaseRepairCost() const;
     [[nodiscard]] std::string getName() const;
     [[nodiscard]] const Item *getItem() const;
     [[nodiscard]] bool hasUserData() const;
@@ -64,6 +65,7 @@ public:
 
     static const std::string TAG_DISPLAY;
     static const std::string TAG_DISPLAY_NAME;
+    static const std::string TAG_REPAIR_COST;
     static constexpr int ID_MASK = 0xffff;
     static constexpr int ENCHANT_MASK = 0x8000;
     static constexpr int AUX_VALUE_MASK = 0x7fff;
