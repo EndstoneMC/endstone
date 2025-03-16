@@ -83,22 +83,34 @@ bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-Plugin *EndstonePluginManager::loadPlugin(std::string file)
+PluginLoader *EndstonePluginManager::resolvePluginLoader(const std::string &file) const
 {
-    Plugin *result = nullptr;
     for (const auto &loader : plugin_loaders_) {
         for (const auto &pattern : loader->getPluginFileFilters()) {
             if (std::regex r(pattern); std::regex_search(file, r)) {
-                if (auto *plugin = loader->loadPlugin(file); plugin) {
-                    if (initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
-                        result = plugin;
-                    }
-                    break;
-                }
+                return loader.get();
             }
         }
     }
-    return result;
+    return nullptr;
+}
+
+Plugin *EndstonePluginManager::loadPlugin(std::string file)
+{
+    auto *loader = resolvePluginLoader(file);
+    if (!loader) {
+        return nullptr;
+    }
+
+    auto *plugin = loader->loadPlugin(file);
+    if (!plugin) {
+        return nullptr;
+    }
+
+    if (!initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
+        return nullptr;
+    }
+    return plugin;
 }
 
 std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
@@ -432,9 +444,6 @@ bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
     plugin.logger_ = &LoggerFactory::getLogger(prefix);
     plugin.data_folder_ = base_folder / plugin_name;
 
-    plugins_.push_back(&plugin);
-    lookup_names_[plugin_name] = &plugin;
-
     plugin.getLogger().info("Loading {}", plugin.getDescription().getFullName());
     try {
         plugin.onLoad();
@@ -442,7 +451,11 @@ bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
     catch (std::exception &e) {
         plugin.getLogger().error("Error occurred when loading {}", plugin.getDescription().getFullName());
         plugin.getLogger().error(e.what());
+        return false;
     }
+
+    plugins_.push_back(&plugin);
+    lookup_names_[plugin_name] = &plugin;
     return true;
 }
 
