@@ -68,6 +68,8 @@ public:
 
 private:
     friend class EndstoneServer;
+    Plugin *loadPlugin(Plugin &plugin);
+    std::vector<Plugin *> loadPlugins(std::vector<Plugin *>);
     bool initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
     void calculatePermissionDefault(Permission &perm);
     void dirtyPermissibles(bool op) const;

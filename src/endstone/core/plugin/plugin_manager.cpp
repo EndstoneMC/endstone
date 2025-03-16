@@ -101,24 +101,43 @@ Plugin *EndstonePluginManager::loadPlugin(std::string file)
     if (!loader) {
         return nullptr;
     }
-
     auto *plugin = loader->loadPlugin(file);
     if (!plugin) {
         return nullptr;
     }
-
     if (!initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
         return nullptr;
     }
-    return plugin;
+    return loadPlugin(*plugin);
+}
+
+Plugin *EndstonePluginManager::loadPlugin(Plugin &plugin)
+{
+    const auto &description = plugin.getDescription();
+    auto plugin_name = description.getName();
+    for (const auto &depend : description.getDepend()) {
+        if (const auto *dependency = server_.getPluginManager().getPlugin(depend); !dependency) {
+            server_.getLogger().error(
+                "Could not load plugin '{}': Unknown dependency {}. Please download and install it to run this plugin.",
+                plugin_name, depend);
+            return nullptr;
+        }
+    }
+
+    plugin.getLogger().info("Loading {}", plugin.getDescription().getFullName());
+    try {
+        plugin.onLoad();
+    }
+    catch (std::exception &e) {
+        plugin.getLogger().error("Error occurred when loading {}", plugin.getDescription().getFullName());
+        plugin.getLogger().error(e.what());
+        return nullptr;
+    }
+    return &plugin;
 }
 
 std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
 {
-    std::vector<Plugin *> loaded_plugins;
-
-    // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
-
     // Create a copy of the current plugin loaders.
     // This is necessary because some plugins might register new loaders during their `onLoad` phase,
     // which could modify the `plugin_loaders_` vector and invalidate the iterator.
@@ -127,33 +146,56 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
         loaders.emplace_back(plugin_loader.get());
     }
 
-    // Iterate over the copied loaders to load plugins from the specified directory.
+    std::vector<Plugin *> plugins;
     for (const auto &loader : loaders) {
-        auto plugins = loader->loadPlugins(directory);
-        for (auto *plugin : plugins) {
+        auto result = loader->loadPlugins(directory);
+        for (auto *plugin : result) {
             if (!plugin) {
                 continue;
             }
-            if (initPlugin(*plugin, *loader, fs::path(directory))) {
-                loaded_plugins.push_back(plugin);
+            if (!initPlugin(*plugin, *loader, directory)) {
+                continue;
             }
+            plugins.push_back(plugin);
         }
     }
 
-    return loaded_plugins;
+    return loadPlugins(plugins);
 }
 
 std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<std::string> files)
 {
-    std::vector<Plugin *> loaded_plugins;
-
-    // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
+    std::vector<Plugin *> plugins;
     for (const auto &file : files) {
-        if (auto *plugin = loadPlugin(file)) {
+        auto *loader = resolvePluginLoader(file);
+        if (!loader) {
+            continue;
+        }
+        auto *plugin = loader->loadPlugin(file);
+        if (!plugin) {
+            continue;
+        }
+        if (!initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
+            continue;
+        }
+        plugins.push_back(plugin);
+    }
+    return loadPlugins(plugins);
+}
+
+std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> plugins)
+{
+    // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
+    std::vector<Plugin *> loaded_plugins;
+    for (auto *plugin : plugins) {
+        if (!plugin) {
+            continue;
+        }
+        plugin = loadPlugin(*plugin);
+        if (plugin) {
             loaded_plugins.push_back(plugin);
         }
     }
-
     return loaded_plugins;
 }
 
@@ -410,8 +452,7 @@ std::string toCamelCase(const std::string &input)
 bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder)
 {
     const static std::regex valid_name{"^[a-z0-9_]+$"};
-    const auto &description = plugin.getDescription();
-    auto plugin_name = description.getName();
+    auto plugin_name = plugin.getDescription().getName();
     if (!std::regex_match(plugin_name, valid_name)) {
         server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", plugin_name);
         server_.getLogger().error(
@@ -425,15 +466,6 @@ bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
         return false;
     }
 
-    for (const auto &depend : description.getDepend()) {
-        if (const auto *dependency = server_.getPluginManager().getPlugin(depend); !dependency) {
-            server_.getLogger().error(
-                "Could not load plugin '{}': Unknown dependency {}. Please download and install it to run this plugin.",
-                plugin_name, depend);
-            return false;
-        }
-    }
-
     auto prefix = plugin.getDescription().getPrefix();
     if (prefix.empty()) {
         prefix = toCamelCase(plugin_name);
@@ -443,16 +475,6 @@ bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
     plugin.server_ = &server_;
     plugin.logger_ = &LoggerFactory::getLogger(prefix);
     plugin.data_folder_ = base_folder / plugin_name;
-
-    plugin.getLogger().info("Loading {}", plugin.getDescription().getFullName());
-    try {
-        plugin.onLoad();
-    }
-    catch (std::exception &e) {
-        plugin.getLogger().error("Error occurred when loading {}", plugin.getDescription().getFullName());
-        plugin.getLogger().error(e.what());
-        return false;
-    }
 
     plugins_.push_back(&plugin);
     lookup_names_[plugin_name] = &plugin;
