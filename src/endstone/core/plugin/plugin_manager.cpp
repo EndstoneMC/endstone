@@ -398,7 +398,8 @@ std::string toCamelCase(const std::string &input)
 bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder)
 {
     const static std::regex valid_name{"^[a-z0-9_]+$"};
-    auto plugin_name = plugin.getDescription().getName();
+    const auto &description = plugin.getDescription();
+    auto plugin_name = description.getName();
     if (!std::regex_match(plugin_name, valid_name)) {
         server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", plugin_name);
         server_.getLogger().error(
@@ -406,10 +407,19 @@ bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
         return false;
     }
 
-    if (plugin_name.rfind("endstone", 0) == 0) {
+    if (plugin_name.starts_with("endstone")) {
         server_.getLogger().error("Could not load plugin '{}': Plugin name must not start with 'endstone'.",
                                   plugin_name);
         return false;
+    }
+
+    for (const auto &depend : description.getDepend()) {
+        if (const auto *dependency = server_.getPluginManager().getPlugin(depend); !dependency) {
+            server_.getLogger().error(
+                "Could not load plugin '{}': Unknown dependency {}. Please download and install it to run this plugin.",
+                plugin_name, depend);
+            return false;
+        }
     }
 
     auto prefix = plugin.getDescription().getPrefix();
