@@ -249,16 +249,53 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<std::string
     return loadPlugins(plugins);
 }
 
-std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> plugins)
+std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> candidates)
 {
     // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
+    std::unordered_map<std::string, Plugin *> plugins;
     std::vector<Plugin *> loaded_plugins;
-    for (auto *plugin : plugins) {
-        if (!plugin) {
+    std::unordered_map<std::string, std::string> plugins_provided;
+    std::unordered_map<std::string, std::vector<Plugin *>> dependencies;
+    std::unordered_map<std::string, std::vector<Plugin *>> soft_dependencies;
+
+    for (auto *candidate : candidates) {
+        if (!candidate) {
             continue;
         }
-        if (loadPlugin(*plugin)) {
-            loaded_plugins.push_back(plugin);
+
+        const auto &description = candidate->getDescription();
+
+        // Check if two plugins have the same name
+        if (auto it = plugins.find(description.getName()); it != plugins.end()) {
+            server_.getLogger().error("Ambiguous plugin name '{}', which is the name of another plugin.",
+                                      description.getName());
+        }
+        plugins[description.getName()] = candidate;
+
+        // Check if the plugin's name is one of the provides of another plugin
+        if (auto it = plugins_provided.find(description.getName()); it != plugins_provided.end()) {
+            server_.getLogger().warning("Ambiguous plugin name '{}'. It is also provided by '{}'.",
+                                        description.getName(), it->second);
+            plugins_provided.erase(it);
+        }
+
+        for (const auto &provide : description.getProvides()) {
+            // Check if any of the provides is the name of another plugin
+            if (auto it = plugins.find(provide); it != plugins.end()) {
+                server_.getLogger().warning("Plugin '{}' provides '{}', which is the name of another plugin.",
+                                            description.getName(), provide);
+                continue;
+            }
+            // Check if more than one plugin provides the same name
+            if (auto it = plugins_provided.find(provide); it != plugins_provided.end()) {
+                server_.getLogger().warning("'{}' is provided by both '{}' and '{}'.", description.getName(),
+                                            it->second);
+            }
+            plugins_provided[provide] = description.getName();
+        }
+
+        if (loadPlugin(*candidate)) {
+            loaded_plugins.push_back(candidate);
         }
     }
     return loaded_plugins;
