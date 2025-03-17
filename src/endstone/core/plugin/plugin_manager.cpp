@@ -36,6 +36,29 @@
 
 namespace fs = std::filesystem;
 
+namespace {
+std::string toCamelCase(const std::string &input)
+{
+    std::string output;
+    bool capitalize = true;
+
+    for (auto ch : input) {
+        if (ch == '_') {
+            capitalize = true;
+        }
+        else if (capitalize) {
+            unsigned char uc = std::toupper(static_cast<unsigned char>(ch));
+            output += static_cast<char>(uc);
+            capitalize = false;
+        }
+        else {
+            output += ch;
+        }
+    }
+    return output;
+}
+}  // namespace
+
 namespace endstone::core {
 
 EndstonePluginManager::EndstonePluginManager(Server &server)
@@ -97,6 +120,20 @@ PluginLoader *EndstonePluginManager::resolvePluginLoader(const std::string &file
     return nullptr;
 }
 
+void EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder)
+{
+    auto plugin_name = plugin.getDescription().getName();
+    auto prefix = plugin.getDescription().getPrefix();
+    if (prefix.empty()) {
+        prefix = toCamelCase(plugin_name);
+    }
+
+    plugin.loader_ = &loader;
+    plugin.server_ = &server_;
+    plugin.logger_ = &LoggerFactory::getLogger(prefix);
+    plugin.data_folder_ = base_folder / plugin_name;
+}
+
 Plugin *EndstonePluginManager::loadPlugin(std::string file)
 {
     auto *loader = resolvePluginLoader(file);
@@ -107,16 +144,44 @@ Plugin *EndstonePluginManager::loadPlugin(std::string file)
     if (!plugin) {
         return nullptr;
     }
-    if (!initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
+    initPlugin(*plugin, *loader, fs::path(file).parent_path());  // dependency injection
+    if (!loadPlugin(*plugin)) {
         return nullptr;
     }
-    return loadPlugin(*plugin);
+    return plugin;
 }
 
 Plugin *EndstonePluginManager::loadPlugin(Plugin &plugin)
 {
     const auto &description = plugin.getDescription();
     auto plugin_name = description.getName();
+    const static std::regex valid_name{"^[a-z0-9_]+$"};
+    if (!std::regex_match(plugin_name, valid_name)) {
+        server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", plugin_name);
+        server_.getLogger().error(
+            "A valid plugin name should only contain lowercase letters, numbers and underscores.");
+        return nullptr;
+    }
+
+    if (plugin_name.starts_with("endstone")) {
+        server_.getLogger().error("Could not load plugin '{}': Plugin name must not start with 'endstone'.",
+                                  plugin_name);
+        return nullptr;
+    }
+
+    if (boost::iequals(plugin_name, "endstone") || boost::iequals(plugin_name, "minecraft") ||
+        boost::iequals(plugin_name, "mojang")) {
+        server_.getLogger().error("Could not load plugin '{}': Restricted name.", plugin_name);
+        return nullptr;
+    }
+
+    // Check for duplicate names.
+    if (lookup_names_.contains(plugin_name)) {
+        server_.getLogger().error("Could not load plugin '{}': Another plugin with the same name has been loaded.",
+                                  plugin_name);
+        return nullptr;
+    }
+
     for (const auto &depend : description.getDepend()) {
         if (const auto *dependency = server_.getPluginManager().getPlugin(depend); !dependency) {
             server_.getLogger().error(
@@ -134,6 +199,13 @@ Plugin *EndstonePluginManager::loadPlugin(Plugin &plugin)
         plugin.getLogger().error("Error occurred when loading {}", plugin.getDescription().getFullName());
         plugin.getLogger().error(e.what());
         return nullptr;
+    }
+
+    // All checks passed, add to the plugin list and lookup map
+    plugins_.push_back(&plugin);
+    lookup_names_[plugin.getDescription().getName()] = &plugin;
+    for (const auto &provide : plugin.getDescription().getProvides()) {
+        lookup_names_.emplace(provide, &plugin);
     }
     return &plugin;
 }
@@ -155,13 +227,10 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
             if (!plugin) {
                 continue;
             }
-            if (!initPlugin(*plugin, *loader, directory)) {
-                continue;
-            }
+            initPlugin(*plugin, *loader, directory);  // dependency injection
             plugins.push_back(plugin);
         }
     }
-
     return loadPlugins(plugins);
 }
 
@@ -177,9 +246,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<std::string
         if (!plugin) {
             continue;
         }
-        if (!initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
-            continue;
-        }
+        initPlugin(*plugin, *loader, fs::path(file).parent_path());  // dependency injection
         plugins.push_back(plugin);
     }
     return loadPlugins(plugins);
@@ -193,8 +260,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> p
         if (!plugin) {
             continue;
         }
-        plugin = loadPlugin(*plugin);
-        if (plugin) {
+        if (loadPlugin(*plugin)) {
             loaded_plugins.push_back(plugin);
         }
     }
@@ -426,67 +492,6 @@ void EndstonePluginManager::unsubscribeFromDefaultPerms(bool op, Permissible &pe
             def_subs_.erase(op);
         }
     }
-}
-
-namespace {
-std::string toCamelCase(const std::string &input)
-{
-    std::string output;
-    bool capitalize = true;
-
-    for (auto ch : input) {
-        if (ch == '_') {
-            capitalize = true;
-        }
-        else if (capitalize) {
-            unsigned char uc = std::toupper(static_cast<unsigned char>(ch));
-            output += static_cast<char>(uc);
-            capitalize = false;
-        }
-        else {
-            output += ch;
-        }
-    }
-    return output;
-}
-}  // namespace
-
-bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder)
-{
-    const static std::regex valid_name{"^[a-z0-9_]+$"};
-    auto plugin_name = plugin.getDescription().getName();
-    if (!std::regex_match(plugin_name, valid_name)) {
-        server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", plugin_name);
-        server_.getLogger().error(
-            "A valid plugin name should only contain lowercase letters, numbers and underscores.");
-        return false;
-    }
-
-    if (plugin_name.starts_with("endstone")) {
-        server_.getLogger().error("Could not load plugin '{}': Plugin name must not start with 'endstone'.",
-                                  plugin_name);
-        return false;
-    }
-
-    if (boost::iequals(plugin_name, "endstone") || boost::iequals(plugin_name, "minecraft") ||
-        boost::iequals(plugin_name, "mojang")) {
-        server_.getLogger().error("Could not load plugin '{}': Restricted name.", plugin_name);
-        return false;
-    }
-
-    auto prefix = plugin.getDescription().getPrefix();
-    if (prefix.empty()) {
-        prefix = toCamelCase(plugin_name);
-    }
-
-    plugin.loader_ = &loader;
-    plugin.server_ = &server_;
-    plugin.logger_ = &LoggerFactory::getLogger(prefix);
-    plugin.data_folder_ = base_folder / plugin_name;
-
-    plugins_.push_back(&plugin);
-    lookup_names_[plugin_name] = &plugin;
-    return true;
 }
 
 std::unordered_set<Permissible *> EndstonePluginManager::getDefaultPermSubscriptions(bool op) const
