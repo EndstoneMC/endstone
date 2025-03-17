@@ -181,9 +181,9 @@ Plugin *EndstonePluginManager::loadPlugin(Plugin &plugin)
 
     for (const auto &depend : description.getDepend()) {
         if (const auto *dependency = server_.getPluginManager().getPlugin(depend); !dependency) {
-            server_.getLogger().error(
-                "Could not load plugin '{}': Unknown dependency {}. Please download and install it to run this plugin.",
-                plugin_name, depend);
+            server_.getLogger().error("Could not load plugin '{}': Unknown dependency '{}'. Please download and "
+                                      "install it to run this plugin.",
+                                      plugin_name, depend);
             return nullptr;
         }
     }
@@ -251,7 +251,6 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<std::string
 
 std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> candidates)
 {
-    // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
     std::vector<Plugin *> result;
     std::unordered_map<std::string, Plugin *> plugins;
     std::vector<std::string> loaded_plugins;
@@ -280,19 +279,19 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
             plugins_provided.erase(it);
         }
 
-        for (const auto &provide : description.getProvides()) {
+        for (const auto &provided : description.getProvides()) {
             // Check if any of the provides is the name of another plugin
-            if (auto it = plugins.find(provide); it != plugins.end()) {
+            if (auto it = plugins.find(provided); it != plugins.end()) {
                 server_.getLogger().warning("Plugin '{}' provides '{}', which is the name of another plugin.",
-                                            description.getName(), provide);
+                                            description.getName(), provided);
                 continue;
             }
             // Check if more than one plugin provides the same name
-            if (auto it = plugins_provided.find(provide); it != plugins_provided.end()) {
-                server_.getLogger().warning("'{}' is provided by both '{}' and '{}'.", description.getName(),
+            if (auto it = plugins_provided.find(provided); it != plugins_provided.end()) {
+                server_.getLogger().warning("'{}' is provided by both '{}' and '{}'.", provided, description.getName(),
                                             it->second);
             }
-            plugins_provided[provide] = description.getName();
+            plugins_provided[provided] = description.getName();
         }
 
         // Register soft dependencies
@@ -304,7 +303,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
                 soft_dependencies[description.getName()] = soft_deps;
             }
             for (const auto &depend : soft_deps) {
-                dependency_graph.add_edge(description.getName(), depend);
+                // dependency_graph.add_edge(description.getName(), depend);
             }
         }
 
@@ -317,7 +316,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
                 dependencies[description.getName()] = deps;
             }
             for (const auto &depend : deps) {
-                dependency_graph.add_edge(description.getName(), depend);
+                // dependency_graph.add_edge(description.getName(), depend);
             }
         }
 
@@ -329,7 +328,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
             else {
                 soft_dependencies[load_before] = {description.getName()};
             }
-            dependency_graph.add_edge(load_before, description.getName());
+            // dependency_graph.add_edge(load_before, description.getName());
         }
     }
 
@@ -353,22 +352,23 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
                     }
                     else if (!plugins.contains(dependency) && !plugins_provided.contains(dependency)) {
                         unknown_dependency = true;
-                        soft_dependencies.erase(plugin_name);
-                        dependencies.erase(plugin_name);
-                        server_.getLogger().error("Could not load plugin '{}': Unknown dependency {}. Please download "
-                                                  "and install it to run this plugin.",
-                                                  plugin_name, dependency);
+                        server_.getLogger().error(
+                            "Could not load plugin '{}': Unknown dependency '{}'. Please download "
+                            "and install it to run this plugin.",
+                            plugin_name, dependency);
                         break;
                     }
                     else {
                         ++dep_it;  // check for next deps
                     }
                 }
-                if (!unknown_dependency && deps.empty()) {
+                if (deps.empty()) {
                     dependencies.erase(plugin_name);
                 }
             }
             if (unknown_dependency) {
+                soft_dependencies.erase(plugin_name);
+                dependencies.erase(plugin_name);
                 it = plugins.erase(it);
                 continue;
             }
@@ -409,6 +409,37 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
         }
 
         if (missing_dependency) {
+            // Try a second pass: load plugins that have no hard dependencies (ignoring soft dependencies).
+            for (auto it = plugins.begin(); it != plugins.end();) {
+                const auto &plugin_name = it->first;
+                auto *plugin = it->second;
+
+                if (!dependencies.contains(plugin_name)) {
+                    soft_dependencies.erase(plugin_name);
+                    missing_dependency = false;
+
+                    auto *loaded_plugin = loadPlugin(*plugin);
+                    if (loaded_plugin != nullptr) {
+                        result.push_back(loaded_plugin);
+                        loaded_plugins.push_back(plugin_name);
+                        auto provides = loaded_plugin->getDescription().getProvides();
+                        loaded_plugins.insert(loaded_plugins.end(), provides.begin(), provides.end());
+                    }
+                    it = plugins.erase(it);
+                    break;
+                }
+                ++it;
+            }
+
+            // If there are still plugins left, a circular dependency is assumed.
+            if (missing_dependency) {
+                soft_dependencies.clear();
+                dependencies.clear();
+                for (const auto &plugin : plugins) {
+                    server_.getLogger().error("Could not load '{}': circular dependency detected.", plugin.first);
+                }
+                plugins.clear();
+            }
         }
     }
 
