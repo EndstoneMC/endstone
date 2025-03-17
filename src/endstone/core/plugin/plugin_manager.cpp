@@ -252,11 +252,12 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<std::string
 std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> candidates)
 {
     // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
+    std::vector<Plugin *> result;
     std::unordered_map<std::string, Plugin *> plugins;
-    std::vector<Plugin *> loaded_plugins;
+    std::vector<std::string> loaded_plugins;
     std::unordered_map<std::string, std::string> plugins_provided;
-    std::unordered_map<std::string, std::vector<Plugin *>> dependencies;
-    std::unordered_map<std::string, std::vector<Plugin *>> soft_dependencies;
+    std::unordered_map<std::string, std::vector<std::string>> dependencies;
+    std::unordered_map<std::string, std::vector<std::string>> soft_dependencies;
 
     for (auto *candidate : candidates) {
         if (!candidate) {
@@ -294,11 +295,124 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
             plugins_provided[provide] = description.getName();
         }
 
-        if (loadPlugin(*candidate)) {
-            loaded_plugins.push_back(candidate);
+        // Register soft dependencies
+        if (auto soft_deps = description.getSoftDepend(); !soft_deps.empty()) {
+            if (auto it = soft_dependencies.find(description.getName()); it != soft_dependencies.end()) {
+                it->second.insert(it->second.end(), soft_deps.begin(), soft_deps.end());
+            }
+            else {
+                soft_dependencies[description.getName()] = soft_deps;
+            }
+            for (const auto &depend : soft_deps) {
+                dependency_graph.add_edge(description.getName(), depend);
+            }
+        }
+
+        // Register hard dependencies
+        if (auto deps = description.getDepend(); !deps.empty()) {
+            if (auto it = dependencies.find(description.getName()); it != dependencies.end()) {
+                it->second.insert(it->second.end(), deps.begin(), deps.end());
+            }
+            else {
+                dependencies[description.getName()] = deps;
+            }
+            for (const auto &depend : deps) {
+                dependency_graph.add_edge(description.getName(), depend);
+            }
+        }
+
+        // Process LoadBefore by adding this plugin as a soft dependency for each target
+        for (const auto &load_before : description.getLoadBefore()) {
+            if (auto it = soft_dependencies.find(load_before); it != soft_dependencies.end()) {
+                it->second.emplace_back(load_before);
+            }
+            else {
+                soft_dependencies[load_before] = {description.getName()};
+            }
+            dependency_graph.add_edge(load_before, description.getName());
         }
     }
-    return loaded_plugins;
+
+    // Resolve dependency and load plugins
+    while (!plugins.empty()) {
+        bool missing_dependency = true;
+
+        // Iterate over the current plugins.
+        for (auto it = plugins.begin(); it != plugins.end();) {
+            const auto &plugin_name = it->first;
+            auto *plugin = it->second;
+
+            // Check hard dependencies: remove those already loaded.
+            bool unknown_dependency = false;
+            if (dependencies.contains(plugin_name)) {
+                auto &deps = dependencies[plugin_name];
+                for (auto dep_it = deps.begin(); dep_it != deps.end();) {
+                    const auto &dependency = *dep_it;
+                    if (std::ranges::find(loaded_plugins, dependency) != loaded_plugins.end()) {
+                        dep_it = deps.erase(dep_it);
+                    }
+                    else if (!plugins.contains(dependency) && !plugins_provided.contains(dependency)) {
+                        unknown_dependency = true;
+                        soft_dependencies.erase(plugin_name);
+                        dependencies.erase(plugin_name);
+                        server_.getLogger().error("Could not load plugin '{}': Unknown dependency {}. Please download "
+                                                  "and install it to run this plugin.",
+                                                  plugin_name, dependency);
+                        break;
+                    }
+                    else {
+                        ++dep_it;  // check for next deps
+                    }
+                }
+                if (!unknown_dependency && deps.empty()) {
+                    dependencies.erase(plugin_name);
+                }
+            }
+            if (unknown_dependency) {
+                it = plugins.erase(it);
+                continue;
+            }
+
+            // Check soft dependencies
+            if (soft_dependencies.contains(plugin_name)) {
+                auto &soft_deps = soft_dependencies[plugin_name];
+                for (auto dep_it = soft_deps.begin(); dep_it != soft_deps.end();) {
+                    const auto &soft_dependency = *dep_it;
+                    if (!plugins.contains(soft_dependency) && !plugins_provided.contains(soft_dependency)) {
+                        // soft depend is no longer around
+                        dep_it = soft_deps.erase(dep_it);
+                    }
+                    else {
+                        ++dep_it;  // check for next deps
+                    }
+                }
+                if (soft_deps.empty()) {
+                    soft_dependencies.erase(plugin_name);
+                }
+            }
+
+            if (!dependencies.contains(plugin_name) && !soft_dependencies.contains(plugin_name) &&
+                plugins.contains(plugin_name)) {
+                missing_dependency = false;
+                // we are clear to load!
+                if (auto *loaded_plugin = loadPlugin(*plugin)) {
+                    result.push_back(loaded_plugin);
+                    loaded_plugins.push_back(plugin_name);
+                    auto provides = loaded_plugin->getDescription().getProvides();
+                    loaded_plugins.insert(loaded_plugins.end(), provides.begin(), provides.end());
+                }
+                it = plugins.erase(it);
+            }
+            else {
+                ++it;
+            }
+        }
+
+        if (missing_dependency) {
+        }
+    }
+
+    return result;
 }
 
 void EndstonePluginManager::enablePlugin(Plugin &plugin) const
