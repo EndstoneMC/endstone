@@ -34,30 +34,22 @@ protected:
 
 TEST_F(ParserTest, ParseCommandWithoutParameters)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
 
-    ASSERT_EQ(result, true);
+    const auto &[command_name, parameters] = result.value();
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 0);
-    ASSERT_EQ(error_message, "");
 }
 
 TEST_F(ParserTest, ParseCommandWithMandatoryParameter)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command <text: string>");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
 
-    ASSERT_EQ(error_message, "");
-    ASSERT_EQ(result, true);
+    const auto &[command_name, parameters] = result.value();
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
     ASSERT_EQ(parameters[0].name, "text");
@@ -68,15 +60,11 @@ TEST_F(ParserTest, ParseCommandWithMandatoryParameter)
 
 TEST_F(ParserTest, ParseCommandWithOptionalParameter)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command [text: string]");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
 
-    ASSERT_EQ(error_message, "");
-    ASSERT_EQ(result, true);
+    const auto &[command_name, parameters] = result.value();
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
     ASSERT_EQ(parameters[0].name, "text");
@@ -87,15 +75,11 @@ TEST_F(ParserTest, ParseCommandWithOptionalParameter)
 
 TEST_F(ParserTest, ParseCommandWithMandatoryEnumParameter)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command (add | set | query)<enum: EnumType>");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
 
-    ASSERT_EQ(error_message, "");
-    ASSERT_EQ(result, true);
+    const auto &[command_name, parameters] = result.value();
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
     ASSERT_EQ(parameters[0].name, "enum");
@@ -107,15 +91,11 @@ TEST_F(ParserTest, ParseCommandWithMandatoryEnumParameter)
 
 TEST_F(ParserTest, ParseCommandWithOptionalEnumParameter)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command (add | set | query)[enum: EnumType]");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
 
-    ASSERT_EQ(error_message, "");
-    ASSERT_EQ(result, true);
+    const auto &[command_name, parameters] = result.value();
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
     ASSERT_EQ(parameters[0].name, "enum");
@@ -127,15 +107,11 @@ TEST_F(ParserTest, ParseCommandWithOptionalEnumParameter)
 
 TEST_F(ParserTest, ParseCommandWithEmptyEnumParameter)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command ()[enum: EnumType]");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
 
-    ASSERT_EQ(error_message, "");
-    ASSERT_EQ(result, true);
+    const auto &[command_name, parameters] = result.value();
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
     ASSERT_EQ(parameters[0].name, "enum");
@@ -147,15 +123,11 @@ TEST_F(ParserTest, ParseCommandWithEmptyEnumParameter)
 
 TEST_F(ParserTest, ParseCommandWithOneEnumParameter)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command (set)[enum: EnumType]");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
 
-    ASSERT_EQ(error_message, "");
-    ASSERT_EQ(result, true);
+    const auto &[command_name, parameters] = result.value();
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
     ASSERT_EQ(parameters[0].name, "enum");
@@ -167,91 +139,63 @@ TEST_F(ParserTest, ParseCommandWithOneEnumParameter)
 
 TEST_F(ParserTest, ParseCommandWithError)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/some_command <param1 int>");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
 
-    ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect ':', got 'int' at position 25.");
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect ':', got 'int' at position 25.");
 }
 
 TEST_F(ParserTest, ParseCommandWithUnfinishedEnum)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command (add|set|)<enum : EnumType>");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
 
-    ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect 'enum value', got ')' at position 19.");
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect 'enum value', got ')' at position 19.");
 }
 
 TEST_F(ParserTest, ParseCommandWithoutEndingToken)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command <text:string");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
 
-    ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect '>', got '' at position 21.");
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect '>', got '' at position 21.");
 }
 
 TEST_F(ParserTest, ParseCommandWithoutSlash)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("command <text:string>");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
 
-    ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect '/', got 'command' at position 7.");
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect '/', got 'command' at position 7.");
 }
 
 TEST_F(ParserTest, ParseCommandWithUnexpectedBracket)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command <text:string]");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
 
-    ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect '>', got ']' at position 22.");
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect '>', got ']' at position 22.");
 }
 
 TEST_F(ParserTest, ParseCommandWithoutParameterType)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command <text>");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
 
-    ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect ':', got '>' at position 15.");
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect ':', got '>' at position 15.");
 }
 
 TEST_F(ParserTest, ParseCommandWithUnexpectedToken)
 {
-    std::string command_name;
-    std::vector<CommandUsageParser::Parameter> parameters;
-    std::string error_message;
-
     CommandUsageParser parser("/command <<text:string>");
-    bool result = parser.parse(command_name, parameters, error_message);
+    auto result = parser.parse();
 
-    ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect 'parameter name', got '<' at position 11.");
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect 'parameter name', got '<' at position 11.");
 }
