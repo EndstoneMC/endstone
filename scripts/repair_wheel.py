@@ -21,7 +21,7 @@ def run_command(cmd):
             raise subprocess.CalledProcessError(p.returncode, p.args)
 
 
-def upload_and_strip(ctx, org, project, auth_token, strip):
+def upload_and_strip(ctx, org: str, project: str, auth_token: str, strip: bool):
     if auth_token:
         print("Uploading debug files to sentry...")
         # Use sentry-cli to upload all debug files from the unpacked wheel
@@ -53,18 +53,18 @@ def upload_and_strip(ctx, org, project, auth_token, strip):
                     os.remove(file_path)
 
 
-def process_wheel(wheel_file, org, project, auth_token, dest_dir, strip):
+def process_wheel(wheel_file: Path, org: str, project: str, auth_token: str, dest_dir: Path, strip: bool):
     system = platform.system().lower()
 
     if system == "windows":
-        output_wheel = Path(dest_dir) / Path(wheel_file).name
-        with InWheelCtx(wheel_file, str(output_wheel)) as ctx:
+        output_wheel = dest_dir / wheel_file.name
+        with InWheelCtx(wheel_file, output_wheel) as ctx:
             upload_and_strip(ctx, org, project, auth_token, strip)
     elif system == "linux":
         # Handle Linux: Write stripped wheel to temp dir and repair it
         with tempfile.TemporaryDirectory() as temp_dir:
-            temp_wheel = Path(temp_dir) / Path(wheel_file).name
-            with InWheelCtx(wheel_file, str(temp_wheel)) as ctx:
+            temp_wheel = Path(temp_dir) / wheel_file.name
+            with InWheelCtx(wheel_file, temp_wheel) as ctx:
                 upload_and_strip(ctx, org, project, auth_token, strip)
 
             # Repair the stripped wheel
