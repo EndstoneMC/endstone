@@ -22,6 +22,8 @@
 #include <utility>
 #include <vector>
 
+#include <boost/algorithm/string/predicate.hpp>
+
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/util/error.h"
 #include "endstone/event/event.h"
@@ -463,6 +465,12 @@ bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
     if (plugin_name.starts_with("endstone")) {
         server_.getLogger().error("Could not load plugin '{}': Plugin name must not start with 'endstone'.",
                                   plugin_name);
+        return false;
+    }
+
+    if (boost::iequals(plugin_name, "endstone") || boost::iequals(plugin_name, "minecraft") ||
+        boost::iequals(plugin_name, "mojang")) {
+        server_.getLogger().error("Could not load plugin '{}': Restricted name.", plugin_name);
         return false;
     }
 
