@@ -44,10 +44,12 @@ public:
 private:
     nonstd::expected<std::string_view, std::string> parseToken(CommandLexer::TokenType type, std::string what);
     nonstd::expected<std::string_view, std::string> parseIdentifier(std::string what);
-    nonstd::expected<Parameter, std::string> parseParameter();
+    nonstd::expected<Parameter, std::string> parseParameterOrEnum();
     nonstd::expected<Parameter, std::string> parseEnum();
+    nonstd::expected<Parameter, std::string> parseSingleUnnamedEnum();
 
     CommandLexer lexer_;
+    std::string command_name_;
 };
 
 }  // namespace endstone::core

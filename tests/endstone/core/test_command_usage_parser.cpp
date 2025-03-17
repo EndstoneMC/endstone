@@ -137,13 +137,97 @@ TEST_F(ParserTest, ParseCommandWithOneEnumParameter)
     ASSERT_EQ(parameters[0].is_enum, true);
 }
 
+TEST_F(ParserTest, ParseCommandWithOneEnumParameterShorthand)
+{
+    CommandUsageParser parser("/command set");
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
+
+    const auto &[command_name, parameters] = result.value();
+    ASSERT_EQ(command_name, "command");
+    ASSERT_EQ(parameters.size(), 1);
+    ASSERT_EQ(parameters[0].name, "set");
+    ASSERT_EQ(parameters[0].type, "CommandSet");
+    ASSERT_EQ(parameters[0].values, std::vector<std::string>({"set"}));
+    ASSERT_EQ(parameters[0].optional, false);
+    ASSERT_EQ(parameters[0].is_enum, true);
+}
+
+TEST_F(ParserTest, ParseCommandWithOneEnumParameterShorthandMandatory)
+{
+    CommandUsageParser parser("/command <set>");
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
+
+    const auto &[command_name, parameters] = result.value();
+    ASSERT_EQ(command_name, "command");
+    ASSERT_EQ(parameters.size(), 1);
+    ASSERT_EQ(parameters[0].name, "set");
+    ASSERT_EQ(parameters[0].type, "CommandSet");
+    ASSERT_EQ(parameters[0].values, std::vector<std::string>({"set"}));
+    ASSERT_EQ(parameters[0].optional, false);
+    ASSERT_EQ(parameters[0].is_enum, true);
+}
+
+TEST_F(ParserTest, ParseCommandWithOneEnumParameterShorthandOptional)
+{
+    CommandUsageParser parser("/command [set]");
+    auto result = parser.parse();
+    ASSERT_EQ(result.has_value(), true);
+
+    const auto &[command_name, parameters] = result.value();
+    ASSERT_EQ(command_name, "command");
+    ASSERT_EQ(parameters.size(), 1);
+    ASSERT_EQ(parameters[0].name, "set");
+    ASSERT_EQ(parameters[0].type, "CommandSet");
+    ASSERT_EQ(parameters[0].values, std::vector<std::string>({"set"}));
+    ASSERT_EQ(parameters[0].optional, true);
+    ASSERT_EQ(parameters[0].is_enum, true);
+}
+
+TEST_F(ParserTest, ParseCommandWithUnnamedEnumParameterMandatory)
+{
+    CommandUsageParser parser("/command <add|set>");
+    auto result = parser.parse();
+    ASSERT_TRUE(result.has_value());
+
+    const auto &[command_name, parameters] = result.value();
+    ASSERT_EQ(command_name, "command");
+    ASSERT_EQ(parameters.size(), 1);
+
+    // Expect auto-generated parameter: name "add_set", type "CommandAddSet"
+    ASSERT_EQ(parameters[0].name, "add_set");
+    ASSERT_EQ(parameters[0].type, "CommandAddSet");
+    ASSERT_EQ(parameters[0].values, std::vector<std::string>({"add", "set"}));
+    ASSERT_FALSE(parameters[0].optional);
+    ASSERT_TRUE(parameters[0].is_enum);
+}
+
+TEST_F(ParserTest, ParseCommandWithUnnamedEnumParameterOptional)
+{
+    CommandUsageParser parser("/command [add|set]");
+    auto result = parser.parse();
+    ASSERT_TRUE(result.has_value());
+
+    const auto &[command_name, parameters] = result.value();
+    ASSERT_EQ(command_name, "command");
+    ASSERT_EQ(parameters.size(), 1);
+
+    // Expect auto-generated parameter: name "add_set", type "CommandAddSet"
+    ASSERT_EQ(parameters[0].name, "add_set");
+    ASSERT_EQ(parameters[0].type, "CommandAddSet");
+    ASSERT_EQ(parameters[0].values, std::vector<std::string>({"add", "set"}));
+    ASSERT_TRUE(parameters[0].optional);
+    ASSERT_TRUE(parameters[0].is_enum);
+}
+
 TEST_F(ParserTest, ParseCommandWithError)
 {
     CommandUsageParser parser("/some_command <param1 int>");
     auto result = parser.parse();
 
     ASSERT_EQ(result.has_value(), false);
-    ASSERT_EQ(result.error(), "Syntax Error: expect ':', got 'int' at position 25.");
+    ASSERT_EQ(result.error(), "Syntax Error: expect ':', '|', '>' or ']', got 'int' at position 21.");
 }
 
 TEST_F(ParserTest, ParseCommandWithUnfinishedEnum)
@@ -153,6 +237,15 @@ TEST_F(ParserTest, ParseCommandWithUnfinishedEnum)
 
     ASSERT_EQ(result.has_value(), false);
     ASSERT_EQ(result.error(), "Syntax Error: expect 'enum value', got ')' at position 19.");
+}
+
+TEST_F(ParserTest, ParseCommandWithUnfinishedEnumUnamed)
+{
+    CommandUsageParser parser("/command <add|set|>");
+    auto result = parser.parse();
+
+    ASSERT_EQ(result.has_value(), false);
+    ASSERT_EQ(result.error(), "Syntax Error: expect 'enum value', got '>' at position 19.");
 }
 
 TEST_F(ParserTest, ParseCommandWithoutEndingToken)
@@ -182,20 +275,11 @@ TEST_F(ParserTest, ParseCommandWithUnexpectedBracket)
     ASSERT_EQ(result.error(), "Syntax Error: expect '>', got ']' at position 22.");
 }
 
-TEST_F(ParserTest, ParseCommandWithoutParameterType)
-{
-    CommandUsageParser parser("/command <text>");
-    auto result = parser.parse();
-
-    ASSERT_EQ(result.has_value(), false);
-    ASSERT_EQ(result.error(), "Syntax Error: expect ':', got '>' at position 15.");
-}
-
 TEST_F(ParserTest, ParseCommandWithUnexpectedToken)
 {
     CommandUsageParser parser("/command <<text:string>");
     auto result = parser.parse();
 
     ASSERT_EQ(result.has_value(), false);
-    ASSERT_EQ(result.error(), "Syntax Error: expect 'parameter name', got '<' at position 11.");
+    ASSERT_EQ(result.error(), "Syntax Error: expect 'parameter name' or 'enum value', got '<' at position 11.");
 }
