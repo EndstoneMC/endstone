@@ -93,7 +93,7 @@ skip = ["pp*"]
 test-command = "pytest {package}/tests/endstone/python"
 test-requires = "pytest"
 repair-wheel-command = [
-    "pip install auditwheel sentry-cli",
+    "pip install auditwheel==6.2.0 sentry-cli",
     'python scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
 ]
 

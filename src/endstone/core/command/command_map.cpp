@@ -240,82 +240,80 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     std::vector<std::vector<CommandParameterData>> pending_param_data;
     for (const auto &usage : usages) {
         auto parser = CommandUsageParser(usage);
-        std::string command_name;
-        std::vector<CommandUsageParser::Parameter> parameters;
-        std::string error_message;
-        if (parser.parse(command_name, parameters, error_message)) {
-            if (command_name != name) {
-                server_.getLogger().warning("Unexpected command name '{}' in usage '{}', do you mean '{}'?",
-                                            command_name, usage, name);
-            }
-
-            bool success = true;
-            std::vector<CommandParameterData> param_data;
-            for (const auto &parameter : parameters) {
-                auto data =
-                    CommandParameterData({0}, &CommandRegistry::parse<MinecraftCommandAdapter>, parameter.name.c_str(),
-                                         CommandParameterDataType::Basic, nullptr, nullptr, 0, parameter.optional, -1);
-
-                if (parameter.is_enum) {
-                    const auto &enum_name = parameter.type;
-
-                    // Add suffix if the enum already exists
-                    std::string enum_name_final = enum_name;
-                    int i = 0;
-                    while (registry.enum_lookup_.find(enum_name_final) != registry.enum_lookup_.end()) {
-                        enum_name_final = fmt::format("{}_{}", enum_name, ++i);
-                    }
-                    if (enum_name_final != enum_name) {
-                        server_.getLogger().warning("Enum '{}' already exists, '{}' will be registered instead.",
-                                                    enum_name, enum_name_final);
-                    }
-
-                    // Add enum
-                    auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
-
-                    // Check if the enum has been added
-                    auto it = registry.enum_lookup_.find(enum_name_final);
-                    if (it == registry.enum_lookup_.end()) {
-                        server_.getLogger().error("Unable to register enum '{}'.", enum_name_final);
-                        throw std::runtime_error("Unreachable");
-                    }
-                    data.param_type = CommandParameterDataType::Enum;
-                    data.enum_name_or_postfix = it->first.c_str();
-                    data.enum_or_postfix_symbol = symbol;
-                    data.options = CommandParameterOption::EnumAutocompleteExpansion;
-                }
-                else if (parameter.type == "bool") {
-                    static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
-                    data.param_type = CommandParameterDataType::Enum;
-                    data.enum_name_or_postfix = "Boolean";
-                    data.enum_or_postfix_symbol = symbol;
-                }
-                else if (parameter.type == "block") {
-                    static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Block", {}));
-                    data.param_type = CommandParameterDataType::Enum;
-                    data.enum_name_or_postfix = "Block";
-                    data.enum_or_postfix_symbol = symbol;
-                }
-                else {
-                    auto it = gTypeSymbols.find(std::string(parameter.type));
-                    if (it == gTypeSymbols.end()) {
-                        server_.getLogger().error(
-                            "Unable to register command '{}'. Unsupported type '{}' in usage '{}'.", name,
-                            parameter.type, usage);
-                        success = false;
-                        break;  // early stop if any of the param in the usage is invalid
-                    }
-                    data.chained_subcommand_symbol = static_cast<int>(it->second);
-                }
-                param_data.push_back(data);
-            }
-
-            if (success) {
-                pending_param_data.push_back(param_data);
-            }
+        auto result = parser.parse();
+        if (!result.has_value()) {
+            server_.getLogger().error("Error occurred when parsing usage '{}'. {}", usage, result.error());
+            continue;
         }
-        else {
-            server_.getLogger().error("Error occurred when parsing usage '{}'. {}", usage, error_message);
+
+        auto &[command_name, parameters] = result.value();
+        if (command_name != name) {
+            server_.getLogger().warning("Unexpected command name '{}' in usage '{}', do you mean '{}'?", command_name,
+                                        usage, name);
+        }
+
+        bool success = true;
+        std::vector<CommandParameterData> param_data;
+        for (const auto &parameter : parameters) {
+            auto data =
+                CommandParameterData({0}, &CommandRegistry::parse<MinecraftCommandAdapter>, parameter.name.c_str(),
+                                     CommandParameterDataType::Basic, nullptr, nullptr, 0, parameter.optional, -1);
+
+            if (parameter.is_enum) {
+                const auto &enum_name = parameter.type;
+
+                // Add suffix if the enum already exists
+                std::string enum_name_final = enum_name;
+                int i = 0;
+                while (registry.enum_lookup_.find(enum_name_final) != registry.enum_lookup_.end()) {
+                    enum_name_final = fmt::format("{}_{}", enum_name, ++i);
+                }
+                if (enum_name_final != enum_name) {
+                    server_.getLogger().warning("Enum '{}' already exists, '{}' will be registered instead.", enum_name,
+                                                enum_name_final);
+                }
+
+                // Add enum
+                auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
+
+                // Check if the enum has been added
+                auto it = registry.enum_lookup_.find(enum_name_final);
+                if (it == registry.enum_lookup_.end()) {
+                    server_.getLogger().error("Unable to register enum '{}'.", enum_name_final);
+                    throw std::runtime_error("Unreachable");
+                }
+                data.param_type = CommandParameterDataType::Enum;
+                data.enum_name_or_postfix = it->first.c_str();
+                data.enum_or_postfix_symbol = symbol;
+                data.options = CommandParameterOption::EnumAutocompleteExpansion;
+            }
+            else if (parameter.type == "bool") {
+                static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
+                data.param_type = CommandParameterDataType::Enum;
+                data.enum_name_or_postfix = "Boolean";
+                data.enum_or_postfix_symbol = symbol;
+            }
+            else if (parameter.type == "block") {
+                static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Block", {}));
+                data.param_type = CommandParameterDataType::Enum;
+                data.enum_name_or_postfix = "Block";
+                data.enum_or_postfix_symbol = symbol;
+            }
+            else {
+                auto it = gTypeSymbols.find(std::string(parameter.type));
+                if (it == gTypeSymbols.end()) {
+                    server_.getLogger().error("Unable to register command '{}'. Unsupported type '{}' in usage '{}'.",
+                                              name, parameter.type, usage);
+                    success = false;
+                    break;  // early stop if any of the param in the usage is invalid
+                }
+                data.chained_subcommand_symbol = static_cast<int>(it->second);
+            }
+            param_data.push_back(data);
+        }
+
+        if (success) {
+            pending_param_data.push_back(param_data);
         }
     }
 
