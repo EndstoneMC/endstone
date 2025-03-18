@@ -2107,6 +2107,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getitemmeta" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getItemMeta
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-gettype" class="md-nav__link">
       <span class="md-ellipsis">
         function getType
@@ -2296,6 +2309,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getamount"><strong>getAmount</strong></a> () const<br><em>Gets the amount of items in this stack.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getitemmeta"><strong>getItemMeta</strong></a> () const<br><em>Gets a copy of this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>'s</em><a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () const<br><em>Gets the type of this item.</em></td>
 </tr>
@@ -2354,9 +2371,17 @@ For latest updates join the chat on
 <p>Amount of items in this stack </p>
 <hr>
 
+<h3 id="function-getitemmeta">function getItemMeta<a class="headerlink" href="#function-getitemmeta" title="Permanent link">&para;</a></h3>
+<p><em>Gets a copy of this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>'s</em><a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">getItemMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>a copy of the current <a href="./"><strong>ItemStack</strong></a>'s <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> </p>
+<hr>
+
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
 <p><em>Gets the type of this item.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Type of the items in this stack </p>
@@ -2364,9 +2389,9 @@ For latest updates join the chat on
 
 <h3 id="function-setamount">function setAmount<a class="headerlink" href="#function-setamount" title="Permanent link">&para;</a></h3>
 <p><em>Sets the amount of items in this stack.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">setAmount</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">setAmount</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2376,9 +2401,9 @@ For latest updates join the chat on
 
 <h3 id="function-settype">function setType<a class="headerlink" href="#function-settype" title="Permanent link">&para;</a></h3>
 <p><em>Sets the type of this item.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">setType</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">setType</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2387,24 +2412,24 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-itemstack">function ~ItemStack<a class="headerlink" href="#function-itemstack" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::~</span><span class="n">ItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::~</span><span class="n">ItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 <h2 id="protected-functions-documentation">Protected Functions Documentation<a class="headerlink" href="#protected-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-asendstoneitemstack-12">function asEndstoneItemStack [&frac12;]<a class="headerlink" href="#function-asendstoneitemstack-12" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">asEndstoneItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">asEndstoneItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-asendstoneitemstack-22">function asEndstoneItemStack [2/2]<a class="headerlink" href="#function-asendstoneitemstack-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">asEndstoneItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">asEndstoneItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 <h2 id="friends-documentation">Friends Documentation<a class="headerlink" href="#friends-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="friend-endstoneitemstack">friend EndstoneItemStack<a class="headerlink" href="#friend-endstoneitemstack" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 

@@ -30,6 +30,8 @@
 
 #include <memory>
 
+#include "endstone/inventory/meta/item_meta.h"
+
 namespace endstone {
 
 namespace core {
@@ -43,6 +45,19 @@ public:
 
     virtual ~ItemStack() = default;
 
+protected:
+    friend class core::EndstoneItemStack;
+    virtual const core::EndstoneItemStack *asEndstoneItemStack() const
+    {
+        return nullptr;
+    }
+
+    virtual core::EndstoneItemStack *asEndstoneItemStack()
+    {
+        return nullptr;
+    }
+
+public:
     [[nodiscard]] virtual std::string getType() const
     {
         return type_;
@@ -64,18 +79,13 @@ public:
         amount_ = amount;
     }
 
-protected:
-    friend class core::EndstoneItemStack;
-
-    virtual const core::EndstoneItemStack *asEndstoneItemStack() const
+    virtual std::shared_ptr<ItemMeta> getItemMeta() const
     {
+        // TODO(item): return the actual item meta
         return nullptr;
     }
 
-    virtual core::EndstoneItemStack *asEndstoneItemStack()
-    {
-        return nullptr;
-    }
+    // TODO(item): setItemMeta
 
 private:
     std::string type_ = "minecraft:air";

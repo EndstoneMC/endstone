@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_stack.h" line="103" column="5" bodyfile="include/endstone/inventory/item_stack.h" bodystart="103" bodyend="-1"/>
+        <location file="include/endstone/inventory/item_stack.h" line="118" column="5" bodyfile="include/endstone/inventory/item_stack.h" bodystart="118" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_stack.h" line="106" column="10" bodyfile="include/endstone/inventory/item_stack.h" bodystart="106" bodyend="109"/>
+        <location file="include/endstone/inventory/item_stack.h" line="121" column="10" bodyfile="include/endstone/inventory/item_stack.h" bodystart="121" bodyend="124"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -74,7 +74,7 @@
         <label>formatter&lt; string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/item_stack.h" line="102" column="1" bodyfile="include/endstone/inventory/item_stack.h" bodystart="102" bodyend="110"/>
+    <location file="include/endstone/inventory/item_stack.h" line="117" column="1" bodyfile="include/endstone/inventory/item_stack.h" bodystart="117" bodyend="125"/>
     <listofallmembers>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1a6116802aa2eb42ae63921aa2f140c160" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::ItemStack &gt;</scope><name>format</name></member>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1ad78d75e07f93f63fc0413cee2954d7f0" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::ItemStack &gt;</scope><name>Type</name></member>

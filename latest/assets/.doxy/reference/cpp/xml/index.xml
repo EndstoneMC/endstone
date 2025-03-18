@@ -613,6 +613,7 @@
     <member refid="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1a4eeac443885604ca40fbc64bc05ddb3b" kind="function"><name>setAmount</name></member>
+    <member refid="classendstone_1_1ItemStack_1a437f3a6408df9f05c04d3340259937dd" kind="function"><name>getItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a62bebb1df1234d03ab77416e897c1fc5" kind="function"><name>asEndstoneItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a3f2fbe456de9e2762bc629e422f00469" kind="function"><name>asEndstoneItemStack</name></member>
   </compound>

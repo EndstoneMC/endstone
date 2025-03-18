@@ -270,6 +270,7 @@
 * **getAddress** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md), [**endstone::Player**](classendstone_1_1Player.md))
 * **getLore** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **getAmount** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
+* **getItemMeta** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **getLocale** ([**endstone::Language**](classendstone_1_1Language.md), [**endstone::Player**](classendstone_1_1Player.md))
 * **getActors** ([**endstone::Level**](classendstone_1_1Level.md))
 * **getDimensions** ([**endstone::Level**](classendstone_1_1Level.md))

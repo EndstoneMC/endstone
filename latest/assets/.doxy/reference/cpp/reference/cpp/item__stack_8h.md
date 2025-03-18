@@ -13,6 +13,7 @@
 * `#include <utility>`
 * `#include <fmt/format.h>`
 * `#include <memory>`
+* `#include "endstone/inventory/meta/item_meta.h"`
 
 
 

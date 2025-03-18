@@ -56,6 +56,7 @@ Inherits the following classes: std::enable_shared_from_this< ItemStack >
 |   | [**ItemStack**](#function-itemstack-12) () = default<br> |
 |   | [**ItemStack**](#function-itemstack-22) (std::string type, [**int**](classendstone_1_1Vector.md) amount=1) <br> |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
+| virtual std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual std::string | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setAmount**](#function-setamount) ([**int**](classendstone_1_1Vector.md) amount) <br>_Sets the amount of items in this stack._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setType**](#function-settype) (std::string type) <br>_Sets the type of this item._  |
@@ -142,6 +143,31 @@ inline virtual int endstone::ItemStack::getAmount () const
 **Returns:**
 
 Amount of items in this stack 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getItemMeta 
+
+_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._
+```C++
+inline virtual std::shared_ptr< ItemMeta > endstone::ItemStack::getItemMeta () const
+```
+
+
+
+
+
+**Returns:**
+
+a copy of the current [**ItemStack**](classendstone_1_1ItemStack.md)'s [**ItemMeta**](classendstone_1_1ItemMeta.md) 
 
 
 
