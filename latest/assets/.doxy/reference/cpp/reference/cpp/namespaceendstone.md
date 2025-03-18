@@ -78,6 +78,7 @@
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br> |
 | class | [**IpBanList**](classendstone_1_1IpBanList.md) <br>_Represents a ban list, containing banned IP addresses._  |
+| class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the storage mechanism for auxiliary item data._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
 | class | [**Label**](classendstone_1_1Label.md) <br>_Represents a text label._  |
 | class | [**Language**](classendstone_1_1Language.md) <br>_Represents the interface for translating text into different languages._  |

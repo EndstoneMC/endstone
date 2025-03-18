@@ -590,6 +590,12 @@
     <member refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" kind="function"><name>isBanned</name></member>
     <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kind="function"><name>removeBan</name></member>
   </compound>
+  <compound refid="classendstone_1_1ItemMeta" kind="class"><name>endstone::ItemMeta</name>
+    <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" kind="function"><name>~ItemMeta</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" kind="function"><name>hasLore</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a69e7e1109f273d57b6fce553eec88fa9" kind="function"><name>getLore</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" kind="function"><name>setLore</name></member>
+  </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" kind="variable"><name>type_</name></member>
@@ -1784,6 +1790,8 @@
   </compound>
   <compound refid="item__stack_8h" kind="file"><name>item_stack.h</name>
   </compound>
+  <compound refid="item__meta_8h" kind="file"><name>item_meta.h</name>
+  </compound>
   <compound refid="player__inventory_8h" kind="file"><name>player_inventory.h</name>
   </compound>
   <compound refid="language_8h" kind="file"><name>language.h</name>
@@ -1903,6 +1911,8 @@
   <compound refid="dir_cd2600a5c389b96acc106cf97f774d1c" kind="dir"><name>include/endstone/lang</name>
   </compound>
   <compound refid="dir_8e239ca1e5fd0d936d66a30330d3a329" kind="dir"><name>include/endstone/level</name>
+  </compound>
+  <compound refid="dir_2d728641c8c30e7cdff7ab60efc98406" kind="dir"><name>include/endstone/inventory/meta</name>
   </compound>
   <compound refid="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc" kind="dir"><name>include/endstone/permissions</name>
   </compound>

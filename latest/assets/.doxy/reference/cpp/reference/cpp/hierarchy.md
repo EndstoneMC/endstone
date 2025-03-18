@@ -126,6 +126,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
 * **class** **std::enable_shared_from_this< BlockData >**    
     * **class** [**endstone::BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._ 
+* **class** **std::enable_shared_from_this< ItemMeta >**    
+    * **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the storage mechanism for auxiliary item data._ 
 * **class** **std::enable_shared_from_this< ItemStack >**    
     * **class** [**endstone::ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._ 
 * **class** **std::enable_shared_from_this< Scoreboard >**    

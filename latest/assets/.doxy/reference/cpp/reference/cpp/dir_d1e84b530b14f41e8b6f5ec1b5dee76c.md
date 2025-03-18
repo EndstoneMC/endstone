@@ -26,6 +26,11 @@
 | file | [**player\_inventory.h**](player__inventory_8h.md) <br> |
 
 
+## Directories
+
+| Type | Name |
+| ---: | :--- |
+| dir | [**meta**](dir_2d728641c8c30e7cdff7ab60efc98406.md) <br> |
 
 
 

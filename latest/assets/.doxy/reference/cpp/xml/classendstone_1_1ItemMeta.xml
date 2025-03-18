@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ItemMeta" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::ItemMeta</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; ItemMeta &gt;</basecompoundref>
+    <includes refid="item__meta_8h" local="no">endstone/inventory/meta/item_meta.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::ItemMeta::~ItemMeta</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ItemMeta</name>
+        <qualifiedname>endstone::ItemMeta::~ItemMeta</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="23" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::ItemMeta::hasLore</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasLore</name>
+        <qualifiedname>endstone::ItemMeta::hasLore</qualifiedname>
+        <briefdescription>
+<para>Checks for existence of lore. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this has lore </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="30" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a69e7e1109f273d57b6fce553eec88fa9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::vector&lt; std::string &gt; &gt;</type>
+        <definition>virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; endstone::ItemMeta::getLore</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLore</name>
+        <qualifiedname>endstone::ItemMeta::getLore</qualifiedname>
+        <briefdescription>
+<para>Gets the lore that is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a list of lore that is set </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="37" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::ItemMeta::setLore</definition>
+        <argsstring>(std::optional&lt; std::vector&lt; std::string &gt; &gt; lore)=0</argsstring>
+        <name>setLore</name>
+        <qualifiedname>endstone::ItemMeta::setLore</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::vector&lt; std::string &gt; &gt;</type>
+          <declname>lore</declname>
+        </param>
+        <briefdescription>
+<para>Sets the lore for this item or removes lore when given std::nullopt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lore</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lore that will be set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="44" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents the storage mechanism for auxiliary item data. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; ItemMeta &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; ItemMeta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/meta/item_meta.h" line="21" column="1" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="21" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ItemMeta_1a69e7e1109f273d57b6fce553eec88fa9" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>~ItemMeta</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

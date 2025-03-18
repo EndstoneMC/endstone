@@ -142,6 +142,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**IpBanList**](classendstone_1_1IpBanList.md)
 ([**endstone**](namespaceendstone.md))
+* [**ItemMeta**](classendstone_1_1ItemMeta.md)
+([**endstone**](namespaceendstone.md))
 * [**ItemStack**](classendstone_1_1ItemStack.md)
 ([**endstone**](namespaceendstone.md))
 

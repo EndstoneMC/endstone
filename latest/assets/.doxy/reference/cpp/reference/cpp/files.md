@@ -102,6 +102,8 @@ Here is a list of all files with brief descriptions:
             * **file** [**message\_form.h**](message__form_8h.md)     
             * **file** [**modal\_form.h**](modal__form_8h.md)     
         * **dir** [**inventory**](dir_d1e84b530b14f41e8b6f5ec1b5dee76c.md)     
+            * **dir** [**meta**](dir_2d728641c8c30e7cdff7ab60efc98406.md)     
+                * **file** [**item\_meta.h**](item__meta_8h.md)     
             * **file** [**inventory.h**](inventory_8h.md)     
             * **file** [**item\_stack.h**](item__stack_8h.md)     
             * **file** [**player\_inventory.h**](player__inventory_8h.md)     

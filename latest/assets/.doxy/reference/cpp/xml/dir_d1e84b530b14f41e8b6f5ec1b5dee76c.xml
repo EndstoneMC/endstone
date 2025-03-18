@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_d1e84b530b14f41e8b6f5ec1b5dee76c" kind="dir">
     <compoundname>include/endstone/inventory</compoundname>
+    <innerdir refid="dir_2d728641c8c30e7cdff7ab60efc98406">include/endstone/inventory/meta</innerdir>
     <innerfile refid="inventory_8h">inventory.h</innerfile>
     <innerfile refid="item__stack_8h">item_stack.h</innerfile>
     <innerfile refid="player__inventory_8h">player_inventory.h</innerfile>
