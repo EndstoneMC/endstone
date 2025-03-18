@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/plugin/plugin.h"
+#include <endstone/endstone.hpp>
 
 class TestPlugin : public endstone::Plugin {
 public:
     void onLoad() override
     {
         getLogger().info("onLoad is called");
+        getLogger().info("Server version is {}", endstone::getServer().getVersion());
     }
 
     void onEnable() override
@@ -32,7 +33,7 @@ public:
     }
 };
 
-ENDSTONE_PLUGIN("TestPlugin", "1.0.0", TestPlugin)
+ENDSTONE_PLUGIN("test", "1.0.0", TestPlugin)
 {
     description = "This is a test plugin";
     website = "https://github.com/EndstoneMC/endstone";
