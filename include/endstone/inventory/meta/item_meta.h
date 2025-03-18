@@ -14,13 +14,32 @@
 
 #pragma once
 
+#include <memory>
+#include <optional>
+#include <string>
+#include <vector>
+
 namespace endstone {
 /**
  * @brief Represents the storage mechanism for auxiliary item data.
  */
 class ItemMeta : public std::enable_shared_from_this<ItemMeta> {
 public:
+    enum class Type {
+        Base = 0,
+        Map = 1,
+        Count = 2,
+        None = Base,
+    };
+
     virtual ~ItemMeta() = default;
+
+    /**
+     * @brief Gets the type of this item meta
+     *
+     * @return type of this item meta
+     */
+    [[nodiscard]] virtual Type getType() const = 0;
 
     /**
      * @brief Checks for existence of lore.
