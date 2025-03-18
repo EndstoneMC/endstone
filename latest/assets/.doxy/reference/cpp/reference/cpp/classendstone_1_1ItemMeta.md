@@ -29,6 +29,11 @@ Inherits the following classes: std::enable_shared_from_this< ItemMeta >
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| enum  | [**Type**](#enum-type)  <br> |
 
 
 
@@ -54,6 +59,7 @@ Inherits the following classes: std::enable_shared_from_this< ItemMeta >
 | Type | Name |
 | ---: | :--- |
 | virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
+| virtual Type | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasLore**](#function-haslore) () const = 0<br>_Checks for existence of lore._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given std::nullopt._  |
 | virtual  | [**~ItemMeta**](#function-itemmeta) () = default<br> |
@@ -85,6 +91,26 @@ Inherits the following classes: std::enable_shared_from_this< ItemMeta >
 
 
 
+## Public Types Documentation
+
+
+
+
+### enum Type 
+
+```C++
+enum endstone::ItemMeta::Type {
+    Base = 0,
+    Map = 1,
+    Count = 2,
+    None = Base
+};
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -104,6 +130,31 @@ virtual std::optional< std::vector< std::string > > endstone::ItemMeta::getLore 
 **Returns:**
 
 a list of lore that is set 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getType 
+
+_Gets the type of this item meta._ 
+```C++
+virtual Type endstone::ItemMeta::getType () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+type of this item meta 
 
 
 

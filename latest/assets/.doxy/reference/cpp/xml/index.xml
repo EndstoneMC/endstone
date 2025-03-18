@@ -591,7 +591,13 @@
     <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kind="function"><name>removeBan</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemMeta" kind="class"><name>endstone::ItemMeta</name>
+    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" kind="enum"><name>Type</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a095a1b43effec73955e31e790438de49" kind="enumvalue"><name>Base</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a46f3ea056caa3126b91f3f70beea068c" kind="enumvalue"><name>Map</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044ae93f994f01c537c4e2f7d8528c3eb5e9" kind="enumvalue"><name>Count</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
     <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" kind="function"><name>~ItemMeta</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" kind="function"><name>hasLore</name></member>
     <member refid="classendstone_1_1ItemMeta_1a69e7e1109f273d57b6fce553eec88fa9" kind="function"><name>getLore</name></member>
     <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" kind="function"><name>setLore</name></member>

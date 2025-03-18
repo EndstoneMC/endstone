@@ -11,7 +11,7 @@
 
 ## t
 
-* **Type** ([**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
+* **Type** ([**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 
 
 
