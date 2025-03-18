@@ -23,17 +23,19 @@ class EndstoneItemStack : public ItemStack {
 public:
     explicit EndstoneItemStack(const ::ItemStack &item);
 
+protected:
+    const EndstoneItemStack *asEndstoneItemStack() const override;
+    EndstoneItemStack *asEndstoneItemStack() override;
+
+public:
     [[nodiscard]] std::string getType() const override;
     void setType(std::string type) override;
     [[nodiscard]] int getAmount() const override;
     void setAmount(int amount) override;
+    std::shared_ptr<ItemMeta> getItemMeta() const override;
 
     static ::ItemStack toMinecraft(const std::shared_ptr<ItemStack> &item);
     static std::shared_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
-
-protected:
-    const EndstoneItemStack *asEndstoneItemStack() const override;
-    EndstoneItemStack *asEndstoneItemStack() override;
 
 private:
     void reset();
