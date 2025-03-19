@@ -16,7 +16,6 @@
 
 #include <utility>
 
-#include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/join.hpp>
 #include <fmt/format.h>
 

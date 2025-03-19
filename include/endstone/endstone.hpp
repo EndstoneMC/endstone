@@ -174,7 +174,7 @@ inline Server &getServer()
         auto get_server = reinterpret_cast<GetServerFunc>(GetProcAddress(module, "endstone_getServer"));
 #else
         // On Linux, use dlsym with RTLD_DEFAULT to search the global symbol table.
-        get_server = reinterpret_cast<GetServerFunc>(dlsym(RTLD_DEFAULT, "endstone_getServer"));
+        auto get_server = reinterpret_cast<GetServerFunc>(dlsym(RTLD_DEFAULT, "endstone_getServer"));
 #endif
         if (!get_server) {
             std::cerr << "Failed to retrieve getServer function pointer.\n";
