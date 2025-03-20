@@ -21,9 +21,17 @@
 
 #include "endstone/core/devtools/devtools.h"
 #include "endstone/core/logger_factory.h"
+#include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
 namespace py = pybind11;
+
+extern "C" {
+ENDSTONE_EXPORT endstone::Server &endstone_getServer()
+{
+    return entt::locator<endstone::core::EndstoneServer>::value();
+}
+}
 
 int init()
 {

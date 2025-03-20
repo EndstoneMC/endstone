@@ -96,6 +96,7 @@ add_library(bedrock STATIC
         world/level/block/registry/block_type_registry.cpp
         world/level/chunk/level_chunk.cpp
         world/level/dimension/dimension.cpp
+        world/level/saveddata/map_item_saved_data.cpp
         world/scores/objective.cpp
         world/scores/scoreboard.cpp
         world/scores/scoreboard_id.cpp

@@ -18,6 +18,16 @@
 
 namespace endstone::core {
 
+const EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack() const
+{
+    return this;
+}
+
+EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack()
+{
+    return this;
+}
+
 EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
     : handle_(item.isNull() ? nullptr : const_cast<::ItemStack *>(&item))
 {
@@ -58,6 +68,12 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
+std::shared_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
+{
+    // TODO(item): return the actual item meta
+    return nullptr;
+}
+
 ::ItemStack EndstoneItemStack::toMinecraft(const std::shared_ptr<ItemStack> &item)
 {
     if (!item || item->getType() == "minecraft:air") {
@@ -78,16 +94,6 @@ std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::Item
         return nullptr;
     }
     return std::make_shared<EndstoneItemStack>(item);
-}
-
-const EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack() const
-{
-    return this;
-}
-
-EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack()
-{
-    return this;
 }
 
 void EndstoneItemStack::reset()

@@ -53,7 +53,7 @@ std::vector<std::shared_ptr<ItemStack>> EndstoneInventory::getContents() const
     std::vector<std::shared_ptr<ItemStack>> contents;
     for (const auto &slot : slots) {
         if (slot && !slot->isNull()) {
-            contents.push_back(EndstoneItemStack::fromMinecraft(const_cast<::ItemStack &>(*slot)));
+            contents.push_back(EndstoneItemStack::fromMinecraft(*slot));
         }
         else {
             contents.push_back(nullptr);
