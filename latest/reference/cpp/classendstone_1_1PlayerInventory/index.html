@@ -2044,6 +2044,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-gethelditemslot" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getHeldItemSlot
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getiteminmainhand" class="md-nav__link">
       <span class="md-ellipsis">
         function getItemInMainHand
@@ -2060,6 +2073,19 @@ For latest updates join the chat on
     <a href="#function-getiteminoffhand" class="md-nav__link">
       <span class="md-ellipsis">
         function getItemInOffHand
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-sethelditemslot" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setHeldItemSlot
       </span>
     </a>
 
@@ -2122,12 +2148,20 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="#function-gethelditemslot"><strong>getHeldItemSlot</strong></a> () const = 0<br><em>Get the slot number of the currently held item.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getiteminmainhand"><strong>getItemInMainHand</strong></a> () const = 0<br><em>Gets the item the player is currently holding in their main hand.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getiteminoffhand"><strong>getItemInOffHand</strong></a> () const = 0<br><em>Gets the item the player is currently holding in their off hand.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-sethelditemslot"><strong>setHeldItemSlot</strong></a> (<a href="../classendstone_1_1Vector/"><strong>int</strong></a> slot) = 0<br><em>Set the slot number of the currently held item.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2184,9 +2218,17 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-gethelditemslot">function getHeldItemSlot<a class="headerlink" href="#function-gethelditemslot" title="Permanent link">&para;</a></h3>
+<p><em>Get the slot number of the currently held item.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getHeldItemSlot</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Held item slot number </p>
+<hr>
+
 <h3 id="function-getiteminmainhand">function getItemInMainHand<a class="headerlink" href="#function-getiteminmainhand" title="Permanent link">&para;</a></h3>
 <p><em>Gets the item the player is currently holding in their main hand.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInMainHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInMainHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the currently held item </p>
@@ -2194,10 +2236,23 @@ For latest updates join the chat on
 
 <h3 id="function-getiteminoffhand">function getItemInOffHand<a class="headerlink" href="#function-getiteminoffhand" title="Permanent link">&para;</a></h3>
 <p><em>Gets the item the player is currently holding in their off hand.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInOffHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInOffHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the currently held item </p>
+<hr>
+
+<h3 id="function-sethelditemslot">function setHeldItemSlot<a class="headerlink" href="#function-sethelditemslot" title="Permanent link">&para;</a></h3>
+<p><em>Set the slot number of the currently held item.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">setHeldItemSlot</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">slot</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>This validates whether the slot is between 0 and 8 inclusive.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>slot</code> The new slot number </li>
+</ul>
 <hr>
 
 <hr />

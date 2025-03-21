@@ -1001,6 +1001,8 @@
   <compound refid="classendstone_1_1PlayerInventory" kind="class"><name>endstone::PlayerInventory</name>
     <member refid="classendstone_1_1PlayerInventory_1a9a61b9533ba53ece25d5e118bac36bfc" kind="function"><name>getItemInMainHand</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a138adf16c2be36e572643e8d639a8ec4" kind="function"><name>getItemInOffHand</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kind="function"><name>getHeldItemSlot</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" kind="function"><name>setHeldItemSlot</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerJoinEvent" kind="class"><name>endstone::PlayerJoinEvent</name>
     <member refid="classendstone_1_1PlayerJoinEvent_1a7f02575361267d031b100a8b132e0d06" kind="variable"><name>NAME</name></member>

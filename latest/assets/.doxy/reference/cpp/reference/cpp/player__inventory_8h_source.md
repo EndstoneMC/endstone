@@ -33,6 +33,10 @@ public:
     [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInMainHand() const = 0;
 
     [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInOffHand() const = 0;
+
+    [[nodiscard]] virtual int getHeldItemSlot() const = 0;
+
+    virtual void setHeldItemSlot(int slot) = 0;
 };
 
 }  // namespace endstone

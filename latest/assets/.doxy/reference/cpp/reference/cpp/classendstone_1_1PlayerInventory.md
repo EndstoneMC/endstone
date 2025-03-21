@@ -73,8 +73,10 @@ Inherits the following classes: [endstone::Inventory](classendstone_1_1Inventory
 
 | Type | Name |
 | ---: | :--- |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getHeldItemSlot**](#function-gethelditemslot) () const = 0<br>_Get the slot number of the currently held item._  |
 | virtual std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItemInMainHand**](#function-getiteminmainhand) () const = 0<br>_Gets the item the player is currently holding in their main hand._  |
 | virtual std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItemInOffHand**](#function-getiteminoffhand) () const = 0<br>_Gets the item the player is currently holding in their off hand._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setHeldItemSlot**](#function-sethelditemslot) ([**int**](classendstone_1_1Vector.md) slot) = 0<br>_Set the slot number of the currently held item._  |
 
 
 ## Public Functions inherited from endstone::Inventory
@@ -152,6 +154,31 @@ See [endstone::Inventory](classendstone_1_1Inventory.md)
 
 
 
+### function getHeldItemSlot 
+
+_Get the slot number of the currently held item._ 
+```C++
+virtual int endstone::PlayerInventory::getHeldItemSlot () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+Held item slot number 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getItemInMainHand 
 
 _Gets the item the player is currently holding in their main hand._ 
@@ -192,6 +219,36 @@ virtual std::shared_ptr< ItemStack > endstone::PlayerInventory::getItemInOffHand
 
 the currently held item 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setHeldItemSlot 
+
+_Set the slot number of the currently held item._ 
+```C++
+virtual void endstone::PlayerInventory::setHeldItemSlot (
+    int slot
+) = 0
+```
+
+
+
+This validates whether the slot is between 0 and 8 inclusive.
+
+
+
+
+**Parameters:**
+
+
+* `slot` The new slot number 
 
 
 

@@ -41,6 +41,54 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="38" column="30"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::PlayerInventory::getHeldItemSlot</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getHeldItemSlot</name>
+        <qualifiedname>endstone::PlayerInventory::getHeldItemSlot</qualifiedname>
+        <briefdescription>
+<para>Get the slot number of the currently held item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Held item slot number </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="45" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setHeldItemSlot</definition>
+        <argsstring>(int slot)=0</argsstring>
+        <name>setHeldItemSlot</name>
+        <qualifiedname>endstone::PlayerInventory::setHeldItemSlot</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+<para>Set the slot number of the currently held item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This validates whether the slot is between 0 and 8 inclusive.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new slot number </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="54" column="18"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Interface to the inventory of a <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>, including the four armor slots and any extra slots. </para>
@@ -71,18 +119,20 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/player_inventory.h" line="24" column="1" bodyfile="include/endstone/inventory/player_inventory.h" bodystart="24" bodyend="39"/>
+    <location file="include/endstone/inventory/player_inventory.h" line="24" column="1" bodyfile="include/endstone/inventory/player_inventory.h" bodystart="24" bodyend="55"/>
     <listofallmembers>
       <member refid="classendstone_1_1Inventory_1a44e46ae514650cc16b605b1b4769c6fc" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>clear</name></member>
       <member refid="classendstone_1_1Inventory_1a30d61d7b9ec2232c7f0d1b038f6f1a1a" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>first</name></member>
       <member refid="classendstone_1_1Inventory_1a9e11b2e4c87f727a8c808a53449a072e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getContents</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getHeldItemSlot</name></member>
       <member refid="classendstone_1_1Inventory_1aa619cc21dec01cbe198065cbcbd2abf8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getItem</name></member>
       <member refid="classendstone_1_1PlayerInventory_1a9a61b9533ba53ece25d5e118bac36bfc" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getItemInMainHand</name></member>
       <member refid="classendstone_1_1PlayerInventory_1a138adf16c2be36e572643e8d639a8ec4" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getItemInOffHand</name></member>
       <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getMaxStackSize</name></member>
       <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getSize</name></member>
       <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>isEmpty</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setHeldItemSlot</name></member>
       <member refid="classendstone_1_1Inventory_1a69eeb486417970b8575356f39ee55320" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setItem</name></member>
       <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" prot="public" virt="virtual"><scope>endstone::PlayerInventory</scope><name>~Inventory</name></member>
     </listofallmembers>
