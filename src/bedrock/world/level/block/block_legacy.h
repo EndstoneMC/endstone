@@ -98,6 +98,18 @@ enum class BlockProperty : std::uint64_t {
     _entt_enum_as_bitmask
 };
 
+enum class BlockTintType : std::uint8_t {
+    DefaultFoliage = 0,
+    BirchFoliage = 1,
+    EvergreenFoliage = 2,
+    VineFoliage = 3,
+    Grass = 4,
+    Water = 5,
+    Stem = 6,
+    RedStoneWire = 7,
+    None = 8,
+};
+
 class BlockLegacy {
 public:
     struct NameInfo {
@@ -299,6 +311,7 @@ public:
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;
+    [[nodiscard]] BlockTintType getBlockTintType() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
     std::string description_id;  // +8
@@ -347,7 +360,7 @@ protected:
     Color map_color_;
     float friction_;
     NoteBlockInstrument note_block_instrument_;
-    TintMethod tint_method_;
+    BlockTintType tint_type_;
     bool return_default_block_on_unidentified_block_state_;
 
 private:
