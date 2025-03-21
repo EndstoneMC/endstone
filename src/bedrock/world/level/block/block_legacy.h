@@ -99,15 +99,15 @@ enum class BlockProperty : std::uint64_t {
 };
 
 enum class BlockTintType : std::uint8_t {
-    DefaultFoliage = 0,
-    BirchFoliage = 1,
-    EvergreenFoliage = 2,
-    VineFoliage = 3,
+    None = 0,
+    DefaultFoliage = 1,
+    BirchFoliage = 2,
+    EvergreenFoliage = 3,
     Grass = 4,
     Water = 5,
     Stem = 6,
     RedStoneWire = 7,
-    None = 8,
+    Count = 8,
 };
 
 class BlockLegacy {
