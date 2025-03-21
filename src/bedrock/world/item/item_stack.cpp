@@ -14,6 +14,8 @@
 
 #include "bedrock/world/item/item_stack.h"
 
+const ItemStack ItemStack::EMPTY_ITEM{};
+
 ItemStack::ItemStack(const BlockLegacy &block, int count) : ItemStackBase(block, count) {}
 
 ItemStack::ItemStack(std::string_view name, int count, int aux_value, CompoundTag const *user_data)
@@ -58,4 +60,9 @@ std::string ItemStack::toString() const
 std::string ItemStack::toDebugString() const
 {
     return ItemStackBase::toDebugString() + network_id_.toString();
+}
+
+const ItemStackNetIdVariant &ItemStack::getItemStackNetIdVariant() const
+{
+    return network_id_;
 }

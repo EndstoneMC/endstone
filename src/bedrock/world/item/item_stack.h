@@ -22,6 +22,7 @@
 
 class ItemStack : public ItemStackBase {
 public:
+    static const ItemStack EMPTY_ITEM;
     ItemStack() = default;
     explicit ItemStack(const BlockLegacy &block, int count = 1);
     explicit ItemStack(std::string_view name, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
@@ -35,6 +36,8 @@ public:
     void setNull(std::optional<std::string>) override;
     [[nodiscard]] std::string toString() const override;
     [[nodiscard]] std::string toDebugString() const override;
+
+    [[nodiscard]] const ItemStackNetIdVariant &getItemStackNetIdVariant() const;
 
 private:
     ItemStackNetIdVariant network_id_;
