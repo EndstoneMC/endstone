@@ -222,6 +222,7 @@ class Bootstrap:
         env["PATH"] = os.pathsep.join(sys.path)
         env["PYTHONPATH"] = os.pathsep.join(sys.path)
         env["PYTHONIOENCODING"] = "UTF-8"
+        env["ENDSTONE_PYTHON_EXECUTABLE"] = sys.executable
         return env
 
     def _run(self, *args, **kwargs) -> int:

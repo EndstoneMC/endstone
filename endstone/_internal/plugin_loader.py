@@ -27,6 +27,9 @@ warnings.simplefilter(action="always", category=FutureWarning)
 
 def find_python():
     paths = []
+    if os.environ.get("ENDSTONE_PYTHON_EXECUTABLE", None) is not None:
+        paths.append(os.environ["ENDSTONE_PYTHON_EXECUTABLE"])
+
     if sys.platform == "win32":
         paths.append(os.path.join(sys.base_prefix, "python.exe"))
     else:
@@ -36,6 +39,7 @@ def find_python():
         paths.append(os.path.join(sys.base_prefix, "bin", "python" + f"{sys.version_info.major}"))
         paths.append(os.path.join(sys.base_prefix, "bin", "python"))
 
+    paths = set(paths)
     for path in paths:
         if os.path.isfile(path):
             return path
