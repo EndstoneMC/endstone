@@ -56,7 +56,7 @@ public:
 
     [[nodiscard]] virtual std::string getXuid() const = 0;
 
-    [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
+    [[nodiscard]] virtual SocketAddress getAddress() const = 0;
 
     virtual void transfer(std::string host, int port) const = 0;
 

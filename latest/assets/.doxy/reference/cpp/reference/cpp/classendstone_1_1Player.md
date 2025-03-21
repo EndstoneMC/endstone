@@ -155,7 +155,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | ---: | :--- |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual [**void**](classendstone_1_1Vector.md) | [**closeForm**](#function-closeform) () = 0<br>_Closes the forms that are currently open for the player._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
+| virtual [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual std::string | [**getDeviceId**](#function-getdeviceid) () const = 0<br>_Gets the player's current device id._  |
 | virtual std::string | [**getDeviceOS**](#function-getdeviceos) () const = 0<br>_Gets the player's current device's operation system (OS)._  |
@@ -521,7 +521,7 @@ virtual void endstone::Player::closeForm () = 0
 
 _Gets the socket address of this player._ 
 ```C++
-virtual const  SocketAddress & endstone::Player::getAddress () const = 0
+virtual SocketAddress endstone::Player::getAddress () const = 0
 ```
 
 

@@ -78,9 +78,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="60" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1a4bbd490a104f8b287c0beff7b1593ca5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> &amp;</type>
-        <definition>virtual const SocketAddress &amp; endstone::Player::getAddress</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref></type>
+        <definition>virtual SocketAddress endstone::Player::getAddress</definition>
         <argsstring>() const =0</argsstring>
         <name>getAddress</name>
         <qualifiedname>endstone::Player::getAddress</qualifiedname>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="67" column="34"/>
+        <location file="include/endstone/player.h" line="67" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
@@ -1641,7 +1641,7 @@
       <member refid="classendstone_1_1CommandSender_1a52b174972923fb6dcb578166846c707a" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asProxiedCommandSender</name></member>
       <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>closeForm</name></member>
       <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>FormVariant</name></member>
-      <member refid="classendstone_1_1Player_1a4bbd490a104f8b287c0beff7b1593ca5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
+      <member refid="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
       <member refid="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAllowFlight</name></member>
       <member refid="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceId</name></member>
       <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceOS</name></member>

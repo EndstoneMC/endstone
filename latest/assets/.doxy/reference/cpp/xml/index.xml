@@ -847,7 +847,7 @@
     <member refid="classendstone_1_1Player_1a9488f5cc958e803acdae2610fa4448aa" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" kind="function"><name>getXuid</name></member>
-    <member refid="classendstone_1_1Player_1a4bbd490a104f8b287c0beff7b1593ca5" kind="function"><name>getAddress</name></member>
+    <member refid="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
