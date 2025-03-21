@@ -32,7 +32,7 @@ int EndstoneInventory::getMaxStackSize() const
 
 std::shared_ptr<ItemStack> EndstoneInventory::getItem(int index) const
 {
-    return EndstoneItemStack::fromMinecraft(const_cast<::ItemStack &>(container_.getItem(index)));
+    return EndstoneItemStack::fromMinecraft(container_.getItem(index));
 }
 
 void EndstoneInventory::setItem(int index, std::shared_ptr<ItemStack> item)

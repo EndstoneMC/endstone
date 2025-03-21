@@ -29,6 +29,13 @@ public:
      * @return the currently held item
      */
     [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInMainHand() const = 0;
+
+    /**
+     * @brief Gets the item the player is currently holding in their off hand.
+     *
+     * @return the currently held item
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInOffHand() const = 0;
 };
 
 }  // namespace endstone

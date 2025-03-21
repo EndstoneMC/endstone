@@ -14,6 +14,8 @@
 
 #include "endstone/core/inventory/player_inventory.h"
 
+#include "endstone/core/inventory/item_stack.h"
+
 namespace endstone::core {
 
 int EndstonePlayerInventory::getSize() const
@@ -67,6 +69,11 @@ void EndstonePlayerInventory::clear()
 std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInMainHand() const
 {
     return getItem(holder_.getSupplies().getSelectedSlot().slot);
+}
+
+std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInOffHand() const
+{
+    return EndstoneItemStack::fromMinecraft(holder_.getOffhandSlot());
 }
 
 }  // namespace endstone::core

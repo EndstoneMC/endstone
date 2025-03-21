@@ -2698,6 +2698,11 @@ class PlayerInventory(Inventory):
         """
         Gets the item the player is currently holding in their main hand.
         """
+    @property
+    def item_in_off_hand(self) -> ItemStack:
+        """
+        Gets the item the player is currently holding in their off hand.
+        """
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server

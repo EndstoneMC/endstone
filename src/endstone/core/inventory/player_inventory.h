@@ -35,6 +35,7 @@ public:
     void clear() override;
 
     [[nodiscard]] std::shared_ptr<ItemStack> getItemInMainHand() const override;
+    [[nodiscard]] std::shared_ptr<ItemStack> getItemInOffHand() const override;
 
 private:
     ::Player &holder_;
