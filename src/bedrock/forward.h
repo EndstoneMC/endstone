@@ -226,7 +226,6 @@ struct SyncedClientOptionsComponent;
 
 // Enums
 enum class ArmorMaterialType;
-enum class ArmorSlot;
 enum class ArmorTextureType;
 enum class BedSleepingResult;
 enum class BlockActorType;

@@ -23,6 +23,7 @@
 #include "bedrock/input/input_mode.h"
 #include "bedrock/input/scripting_input_button.h"
 #include "bedrock/world/actor/actor_damage_source.h"
+#include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/container.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/item/item_stack.h"

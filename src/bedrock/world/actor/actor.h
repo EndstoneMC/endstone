@@ -49,6 +49,7 @@
 #include "bedrock/world/actor/actor_terrain_interlock_data.h"
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/actor/synched_actor_data.h"
 #include "bedrock/world/effect/mob_effect_instance.h"
 #include "bedrock/world/item/equipment_slot.h"
@@ -291,9 +292,10 @@ public:
     [[nodiscard]] float getFallDistance() const;
     [[nodiscard]] bool isDead() const;
     EntityContext &getEntity();
-    const EntityContext &getEntity() const;
-    WeakRef<EntityContext> getWeakEntity() const;
-    const ItemStack &getOffhandSlot() const;
+    [[nodiscard]] const EntityContext &getEntity() const;
+    [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;
+    [[nodiscard]] const ItemStack &getOffhandSlot() const;
+    [[nodiscard]] const ItemStack &getArmor(ArmorSlot) const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);

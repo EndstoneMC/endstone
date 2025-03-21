@@ -30,6 +30,7 @@
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/actor_environment.h"
+#include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/actor/mob_jump.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
@@ -345,4 +346,10 @@ const ItemStack &Actor::getOffhandSlot() const
 {
     auto component = getPersistentComponent<ActorEquipmentComponent>();
     return component->hand->getItem(static_cast<int>(HandSlot::Offhand));
+}
+
+const ItemStack &Actor::getArmor(ArmorSlot slot) const
+{
+    auto component = getPersistentComponent<ActorEquipmentComponent>();
+    return component->armor->getItem(static_cast<int>(slot));
 }
