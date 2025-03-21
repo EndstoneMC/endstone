@@ -70,7 +70,9 @@ void init_inventory(py::module_ &m)
         .def_property_readonly("item_in_main_hand", &PlayerInventory::getItemInMainHand,
                                "Gets the item the player is currently holding in their main hand.")
         .def_property_readonly("item_in_off_hand", &PlayerInventory::getItemInOffHand,
-                               "Gets the item the player is currently holding in their off hand.");
+                               "Gets the item the player is currently holding in their off hand.")
+        .def_property("held_item_slot", &PlayerInventory::getHeldItemSlot, &PlayerInventory::setHeldItemSlot,
+                      "Gets or sets the slot number of the currently held item");
 }
 
 }  // namespace endstone::python

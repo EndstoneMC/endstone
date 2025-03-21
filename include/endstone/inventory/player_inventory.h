@@ -36,6 +36,22 @@ public:
      * @return the currently held item
      */
     [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInOffHand() const = 0;
+
+    /**
+     * @brief Get the slot number of the currently held item
+     *
+     * @return Held item slot number
+     */
+    [[nodiscard]] virtual int getHeldItemSlot() const = 0;
+
+    /**
+     * @brief Set the slot number of the currently held item.
+     *
+     * This validates whether the slot is between 0 and 8 inclusive.
+     *
+     * @param slot The new slot number
+     */
+    virtual void setHeldItemSlot(int slot) = 0;
 };
 
 }  // namespace endstone

@@ -18,6 +18,7 @@
 #include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/entity/components/player_component.h"
 #include "bedrock/network/packet/available_commands_packet.h"
+#include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/level/level.h"
@@ -48,6 +49,35 @@ const Container &Player::getInventory() const
 Container &Player::getInventory()
 {
     return inventory_->getContainer();
+}
+
+int Player::getSelectedItemSlot() const
+{
+    return inventory_->getSelectedSlot().slot;
+}
+
+const ItemStack &Player::setSelectedSlot(int slot)
+{
+    if (isClientSide()) {
+        return ItemStack::EMPTY_ITEM;
+    }
+    if (!inventory_->selectSlot(slot, CONTAINER_ID_INVENTORY)) {
+        return ItemStack::EMPTY_ITEM;
+    }
+    const auto &container = inventory_->getContainer();
+    auto &item = container.getItem(slot);
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerEquipment);
+    const auto pk = std::static_pointer_cast<MobEquipmentPacket>(packet);
+    pk->runtime_id = getRuntimeID();
+    pk->item = item;
+    pk->slot = slot;
+    pk->selected_slot = slot;
+    pk->container_id = CONTAINER_ID_INVENTORY;
+    pk->slot_byte = slot;
+    pk->selected_slot_byte = slot;
+    pk->container_id_byte = CONTAINER_ID_INVENTORY;
+    getDimension().sendPacketForEntity(*this, *pk, nullptr);
+    return item;
 }
 
 const std::string &Player::getName() const

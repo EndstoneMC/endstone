@@ -31,6 +31,7 @@ public:
 
     [[nodiscard]] int getHotbarSize() const;
     [[nodiscard]] PlayerInventorySlotData getSelectedSlot() const;
+    bool selectSlot(int slot, ContainerID container_id);
     [[nodiscard]] const Container &getContainer() const;
     Container &getContainer();
 

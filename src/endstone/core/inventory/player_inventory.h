@@ -36,6 +36,8 @@ public:
 
     [[nodiscard]] std::shared_ptr<ItemStack> getItemInMainHand() const override;
     [[nodiscard]] std::shared_ptr<ItemStack> getItemInOffHand() const override;
+    [[nodiscard]] int getHeldItemSlot() const override;
+    void setHeldItemSlot(int slot) override;
 
 private:
     ::Player &holder_;

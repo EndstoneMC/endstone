@@ -68,12 +68,24 @@ void EndstonePlayerInventory::clear()
 
 std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInMainHand() const
 {
-    return getItem(holder_.getSupplies().getSelectedSlot().slot);
+    return getItem(holder_.getSelectedItemSlot());
 }
 
 std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInOffHand() const
 {
     return EndstoneItemStack::fromMinecraft(holder_.getOffhandSlot());
+}
+
+int EndstonePlayerInventory::getHeldItemSlot() const
+{
+    return holder_.getSelectedItemSlot();
+}
+
+void EndstonePlayerInventory::setHeldItemSlot(int slot)
+{
+    // TODO: Preconditions.checkArgument(slot >= 0 && slot < PlayerInventory.getSelectionSize(), "Slot (%s) is not
+    //  between 0 and %s inclusive", slot, PlayerInventory.getSelectionSize() - 1);
+    holder_.setSelectedSlot(slot);
 }
 
 }  // namespace endstone::core

@@ -2694,6 +2694,14 @@ class PlayerInventory(Inventory):
     def _pybind11_conduit_v1_(*args, **kwargs):
         ...
     @property
+    def held_item_slot(self) -> int:
+        """
+        Gets or sets the slot number of the currently held item
+        """
+    @held_item_slot.setter
+    def held_item_slot(self, arg1: int) -> None:
+        ...
+    @property
     def item_in_main_hand(self) -> ItemStack:
         """
         Gets the item the player is currently holding in their main hand.

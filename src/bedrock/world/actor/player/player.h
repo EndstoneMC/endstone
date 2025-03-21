@@ -139,6 +139,8 @@ public:
     PlayerInventory &getSupplies();
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
+    [[nodiscard]] int getSelectedItemSlot() const;
+    const ItemStack &setSelectedSlot(int);
     [[nodiscard]] const std::string &getName() const;
     void setPermissions(CommandPermissionLevel permission);
 
