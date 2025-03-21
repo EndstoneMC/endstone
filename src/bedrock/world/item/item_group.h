@@ -21,6 +21,5 @@ public:
 
 private:
     ItemInstance item_template_;
-    int count_;
 };
-static_assert(sizeof(ItemGroup) == 136);
+static_assert(sizeof(ItemGroup) == 128);
