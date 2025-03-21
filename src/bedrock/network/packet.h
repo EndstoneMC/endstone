@@ -248,7 +248,8 @@ enum class MinecraftPacketIds : int {
     UpdateClientOptions = 323,
     PlayerVideoCapturePacket = 324,
     PlayerUpdateEntityOverridesPacket = 325,
-    EndId = 326,
+    PlayerLocation = 326,
+    EndId = 327,
 };
 
 class Packet {
