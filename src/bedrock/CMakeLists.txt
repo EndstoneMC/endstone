@@ -102,7 +102,6 @@ add_library(bedrock STATIC
         world/scores/scoreboard_id.cpp
         world/scores/scoreboard_identity_ref.cpp
         world/scores/server_scoreboard.cpp
-        world/level/block/tint_method.h
 )
 add_library(bedrock::bedrock ALIAS bedrock)
 add_dependencies(bedrock bedrock_symbols)
