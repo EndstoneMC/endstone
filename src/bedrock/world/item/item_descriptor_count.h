@@ -20,6 +20,11 @@
 
 class ItemDescriptorCount : public ItemDescriptor {
 public:
+    explicit ItemDescriptorCount(const ItemDescriptor &item_descriptor, uint16_t count)
+        : ItemDescriptor(item_descriptor), stack_size_(count)
+    {
+    }
+
     [[nodiscard]] std::uint16_t getStackSize() const
     {
         return stack_size_;

@@ -148,6 +148,13 @@ ItemDescriptor::ItemDescriptor(const Item &item, int aux_value)
     }
 }
 
+ItemDescriptor::ItemDescriptor(const ItemDescriptor &other)
+{
+    if (other.impl_) {
+        impl_ = std::move(other.impl_->clone());
+    }
+}
+
 void ItemDescriptor::serialize(Json::Value &json) const
 {
     if (impl_) {
