@@ -64,6 +64,7 @@ endif ()
 if (WIN32)
     add_library(endstone_runtime_loader SHARED loader.cpp)
     target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS)
+    set_target_properties(endstone_runtime_loader PROPERTIES LINK_FLAGS /EXPORT:DllMain,@1,NONAME)
 endif ()
 
 include(GNUInstallDirs)

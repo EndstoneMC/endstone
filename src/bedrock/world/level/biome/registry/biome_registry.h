@@ -46,7 +46,6 @@ private:
     bool load_from_packs_;
     BiomeTagRegistry tag_registry_;
     Biome *empty_biome_;  // +1256
-    HashedString default_water_idntifier_;
     Bedrock::PubSub::Subscription on_save_subscription_;
     Bedrock::PubSub::Subscription on_level_storage_manager_start_leave_game_subscription_;
 };

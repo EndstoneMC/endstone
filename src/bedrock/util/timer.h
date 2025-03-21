@@ -48,7 +48,7 @@ private:
     int64_t last_ms_;
     int64_t last_ms_sys_time_;
     float adjust_time_;
-    int stepping_tick_;
+    float stepping_tick_;
     std::function<std::int64_t()> get_time_ms_callback_;
     static constexpr int MAX_TICKS_PER_UPDATE = 10;
     static constexpr float MAX_TIME_PER_UPDATE = 1.0 / MAX_TICKS_PER_UPDATE;

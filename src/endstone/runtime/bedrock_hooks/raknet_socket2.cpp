@@ -48,7 +48,7 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
 
     std::string ping_response{data + head_size + 2, strlen};
     auto &server = entt::locator<EndstoneServer>::value();
-    char buffer[64];
+    char buffer[INET6_ADDRSTRLEN + 5 + 1] = {};
     send_parameters->system_address.ToString(false, buffer);
     endstone::ServerListPingEvent event(std::string(buffer), send_parameters->system_address.GetPort(), ping_response);
     if (!event.deserialize()) {

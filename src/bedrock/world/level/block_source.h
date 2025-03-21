@@ -67,6 +67,7 @@ public:
     virtual AABB getTallestCollisionShape(AABB const &, float *, bool,
                                           optional_ref<GetCollisionShapeInterface const>) const = 0;
     [[nodiscard]] virtual float getBrightness(BlockPos const &) const = 0;
+    [[nodiscard]] virtual float getVisualLiquidHeight(const Vec3 &) const = 0;
 };
 
 class IBlockSource : public IConstBlockSource {

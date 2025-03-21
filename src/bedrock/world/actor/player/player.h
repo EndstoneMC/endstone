@@ -154,14 +154,12 @@ public:
 
     static int getXpNeededForLevelRange(int start, int end);
 
-    std::vector<std::uint16_t> ocean_biomes;
+    std::vector<std::uint16_t> ocean_biomes;  // +1112
     std::vector<std::uint16_t> froglights;
     const float sneak_height;
     const float sneak_offset;
     int score;
-    float o_bob;
-    float bob;
-    BuildPlatform build_platform;  // +1180
+    BuildPlatform build_platform;  // +1164
     std::string unique_name;
     std::string server_id;
     std::string self_signed_id;
@@ -185,7 +183,7 @@ protected:
     std::shared_ptr<ContainerManagerModel> container_manager_;
     Bedrock::PubSub::PublisherPtr<void(const ContainerManagerModel *), Bedrock::PubSub::ThreadModel::SingleThreaded>
         container_manager_subscribers_;
-    std::unique_ptr<PlayerInventory> inventory_;  // +1480
+    std::unique_ptr<PlayerInventory> inventory_;  // +1472
     InventoryOptions inventory_options_;
     float distance_since_transform_event_;
     std::vector<ItemInstance> creative_item_list_;
@@ -247,10 +245,8 @@ protected:
     bool has_seen_credits_;
     std::optional<PlayerSpawnFallbackType> spawn_fallback_type_;
     std::optional<Vec3> spawn_fallback_position_;
-    PlayerItemInUse item_in_use_;  // +1808
+    PlayerItemInUse item_in_use_;
     ActorType last_hurt_by_;
-    std::int16_t sleep_counter_;
-    std::int16_t prev_sleep_counter_;
     ActorUniqueID previous_interact_entity_;
     int previous_carried_item_;
     int emote_ticks_;
@@ -302,7 +298,7 @@ private:
     std::int64_t started_blocking_time_stamp_;
     std::int64_t blocked_using_shield_time_stamp_;
     std::int64_t blocked_using_damaged_shield_time_stamp_;
-    std::string name_;  // +3160
+    std::string name_;  // +3152
     std::string last_emote_played_;
     time_t emote_easter_egg_end_time_;
     unsigned int emote_message_count_;

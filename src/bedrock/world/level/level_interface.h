@@ -250,14 +250,14 @@ public:
     virtual TickingAreasManager &getTickingAreasMgr() = 0;
     virtual void addTickingAreaList(DimensionType, std::shared_ptr<TickingAreaList> const &) = 0;
     virtual void sendServerLegacyParticle(ParticleType, Vec3 const &, Vec3 const &, int) = 0;
-    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorDefinitionIdentifier const &, bool,
+    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool,
                            bool) = 0;
     virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, float, float) = 0;
     virtual void playSound(std::string const &, Vec3 const &, float, float) = 0;
     virtual void playSound(IConstBlockSource const &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                           ActorDefinitionIdentifier const &, bool, bool) = 0;
-    virtual void playSound(DimensionType, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                           ActorDefinitionIdentifier const &, bool, bool) = 0;
+                           ActorSoundIdentifier const &, bool, bool) = 0;
+    virtual void playSound(DimensionType, Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
+                           bool, bool) = 0;
     virtual PlayerEventCoordinator &getRemotePlayerEventCoordinator() = 0;
     virtual ServerPlayerEventCoordinator &getServerPlayerEventCoordinator() = 0;
     virtual ClientPlayerEventCoordinator &getClientPlayerEventCoordinator() = 0;
@@ -279,11 +279,11 @@ public:
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, int) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, Block const &) = 0;
     virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, Block const &,
-                                     ActorDefinitionIdentifier const &, bool, bool) = 0;
+                                     ActorSoundIdentifier const &, bool, bool) = 0;
     virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                                     ActorDefinitionIdentifier const &, bool, bool) = 0;
+                                     ActorSoundIdentifier const &, bool, bool) = 0;
     virtual void broadcastSoundEvent(Dimension &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                                     ActorDefinitionIdentifier const &, bool, bool) = 0;
+                                     ActorSoundIdentifier const &, bool, bool) = 0;
     virtual void broadcastActorEvent(Actor &, ActorEvent, int) const = 0;
     [[nodiscard]] virtual void *getActorEventBroadcaster() const = 0;
     virtual void addChunkViewTracker(std::weak_ptr<ChunkViewSource>) = 0;
@@ -327,6 +327,8 @@ public:
     virtual void addTerrainParticleEffect(BlockPos const &, Block const &, Vec3 const &, float, float, float) = 0;
     virtual void addTerrainSlideEffect(BlockPos const &, Block const &, Vec3 const &, float, float, float) = 0;
     virtual void addBreakingItemParticleEffect(Vec3 const &, ParticleType, ResolvedItemIconInfo const &) = 0;
+    virtual void addBiomeTintedParticleEffect(const HashedString &, const BlockPos &, const Block &,
+                                              std::optional<mce::Color>) = 0;
     virtual ActorUniqueID getNewUniqueID() = 0;
     virtual ActorRuntimeID getNextRuntimeID() = 0;
     [[nodiscard]] virtual std::vector<ChunkPos> const &getTickingOffsets() const = 0;
@@ -368,6 +370,8 @@ public:
     virtual EntitySystems &getEntitySystems() = 0;
     virtual WeakRef<EntityContext> getLevelEntity() = 0;
     [[nodiscard]] virtual WeakRef<const EntityContext> getLevelEntity() const = 0;
+    [[nodiscard]] virtual Bedrock::NonOwnerPointer<VolumeEntityManagerServer> tryGetVolumeEntityManagerServer()
+        const = 0;
     virtual void runCommand(HashedString const &, CommandOrigin &, CommandOriginSystem, CurrentCmdVersion) = 0;
     virtual void runCommand(Command &, CommandOrigin &, CommandOriginSystem) = 0;
     [[nodiscard]] virtual PlayerCapabilities::ISharedController const &getCapabilities() const = 0;

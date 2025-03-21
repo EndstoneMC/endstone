@@ -45,6 +45,11 @@ public:
     [[nodiscard]] virtual PackType getPackType() const = 0;
     virtual PackSourceReport load(IPackManifestFactory &factory,
                                   Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &) = 0;
+
+protected:
+    PackSource() = default;
+    PackSource(std::unique_ptr<IPackIOProvider> io) : io_(std::move(io)) {}
+    const std::unique_ptr<IPackIOProvider> io_;
 };
 
 class CompositePackSource : public PackSource {
