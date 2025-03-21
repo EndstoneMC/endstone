@@ -18,14 +18,18 @@
 
 class StringByteOutput : public BytesDataOutput {
 public:
+    StringByteOutput(std::string &buffer) : buffer_(buffer){};
     ~StringByteOutput() override = default;
     void writeBytes(const void *data, std::uint64_t bytes) override;
 
-    std::string buffer;
+protected:
+    std::string &buffer_;
 };
+static_assert(sizeof(StringByteOutput) == 16);
 
 class BigEndianStringByteOutput : public StringByteOutput {
 public:
+    using StringByteOutput::StringByteOutput;
     ~BigEndianStringByteOutput() override = default;
     void writeFloat(float v) override;
     void writeDouble(double v) override;
@@ -33,3 +37,4 @@ public:
     void writeInt(std::int32_t v) override;
     void writeLongLong(std::int64_t v) override;
 };
+static_assert(sizeof(BigEndianStringByteOutput) == 16);

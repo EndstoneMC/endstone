@@ -381,10 +381,11 @@ void render()
                                       file << arg;
                                   },
                                   [&](const CompoundTag &arg) {
-                                      BigEndianStringByteOutput output;
+                                      std::string buffer;
+                                      BigEndianStringByteOutput output(buffer);
                                       NbtIo::writeNamedTag("", arg, output);
                                       zstr::ofstream file(path.string(), std::ios::out | std::ios::binary);
-                                      file << output.buffer;
+                                      file << buffer;
                                   }},
                        file_to_save);
             file_to_save = std::monostate();
@@ -628,10 +629,11 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
         file << arg;
     };
     static auto save_nbt_to_file = [&](const CompoundTag &arg, const std::string &name) {
-        BigEndianStringByteOutput output;
+        std::string buffer;
+        BigEndianStringByteOutput output(buffer);
         NbtIo::writeNamedTag("", arg, output);
         zstr::ofstream file((base_path / name).string(), std::ios::out | std::ios::binary);
-        file << output.buffer;
+        file << buffer;
     };
     save_json_to_file(data->block_types, "block_types.json");
     save_json_to_file(data->block_states, "block_states.json");

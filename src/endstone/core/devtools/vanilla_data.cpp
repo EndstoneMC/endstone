@@ -254,9 +254,10 @@ void dumpRecipes(VanillaData &data, ::Level &level)
                     recipe["output"].back()["data"] = result_item.getAuxValue();
                 }
                 if (result_item.hasUserData()) {
-                    BigEndianStringByteOutput output;
+                    std::string buffer;
+                    BigEndianStringByteOutput output(buffer);
                     NbtIo::writeNamedTag("", *result_item.getUserData(), output);
-                    recipe["output"].back()["nbt"] = core::base64_encode(output.buffer);
+                    recipe["output"].back()["nbt"] = core::base64_encode(buffer);
                 }
             }
         }

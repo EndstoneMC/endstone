@@ -16,7 +16,7 @@
 
 void StringByteOutput::writeBytes(const void *data, std::uint64_t bytes)
 {
-    buffer.append(static_cast<const char *>(data), bytes);
+    buffer_.append(static_cast<const char *>(data), bytes);
 }
 
 void BigEndianStringByteOutput::writeFloat(float v)
