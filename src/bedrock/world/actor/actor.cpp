@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/actor.h"
 
 #include "bedrock/entity/components/actor_definition_identifier_component.h"
+#include "bedrock/entity/components/actor_equipment_component.h"
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
@@ -338,4 +339,10 @@ const EntityContext &Actor::getEntity() const
 WeakRef<EntityContext> Actor::getWeakEntity() const
 {
     return entity_context_.getWeakRef();
+}
+
+const ItemStack &Actor::getOffhandSlot() const
+{
+    auto component = getPersistentComponent<ActorEquipmentComponent>();
+    return component->hand->getItem(static_cast<int>(HandSlot::Offhand));
 }

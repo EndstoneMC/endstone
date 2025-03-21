@@ -45,6 +45,11 @@ public:
     void startOpen(Player &) override;
     void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) override;
 
+    [[nodiscard]] int getHotbarSize() const
+    {
+        return HOTBAR_SIZE;
+    }
+
 private:
     virtual void _trySetInSlot(ItemStack &, const int &, const int &, int &);
 

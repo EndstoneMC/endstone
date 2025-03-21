@@ -14,20 +14,10 @@
 
 #pragma once
 
-#include "bedrock/world/container.h"
+#include "bedrock/world/simple_container.h"
 
-class SimpleContainer : public Container {
-public:
-    SimpleContainer(const std::string &, bool, int, ContainerType);
-    [[nodiscard]] const ItemStack &getItem(int) const override;
-    void setItem(int, const ItemStack &) override;
-    [[nodiscard]] int getContainerSize() const override;
-    [[nodiscard]] int getMaxStackSize() const override;
-    void startOpen(Player &) override;
-    void stopOpen(Player &) override;
-    void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) override;
-
-protected:
-    int size_;
-    std::vector<ItemStack> items_;
+struct ActorEquipmentComponent {
+    std::unique_ptr<SimpleContainer> hand;
+    std::unique_ptr<SimpleContainer> armor;
 };
+static_assert(sizeof(ActorEquipmentComponent) == 16);

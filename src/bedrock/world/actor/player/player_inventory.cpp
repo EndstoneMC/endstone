@@ -14,6 +14,11 @@
 
 #include "bedrock/world/actor/player/player_inventory.h"
 
+int PlayerInventory::getHotbarSize() const
+{
+    return inventory_->getHotbarSize();
+}
+
 PlayerInventorySlotData PlayerInventory::getSelectedSlot() const
 {
     return {selected_container_id_, selected_};

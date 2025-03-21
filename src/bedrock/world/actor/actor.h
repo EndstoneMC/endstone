@@ -293,6 +293,7 @@ public:
     EntityContext &getEntity();
     const EntityContext &getEntity() const;
     WeakRef<EntityContext> getWeakEntity() const;
+    const ItemStack &getOffhandSlot() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);

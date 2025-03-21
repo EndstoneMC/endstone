@@ -29,6 +29,7 @@ public:
     virtual void createTransactionContext(std::function<void(Container &, int, const ItemStack &, const ItemStack &)>,
                                           std::function<void()>);
 
+    [[nodiscard]] int getHotbarSize() const;
     [[nodiscard]] PlayerInventorySlotData getSelectedSlot() const;
     [[nodiscard]] const Container &getContainer() const;
     Container &getContainer();
