@@ -105,6 +105,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
                 {"isSolid", block.isSolid()},
                 {"translucency", block.getTranslucency()},
                 {"mapColor", map_color.toHexString()},
+                {"tintMethod", magic_enum::enum_name(block.getLegacyBlock().getTintMethod())},
                 {"collisionShape", collision_shape},
                 {"outlineShape", outline_shape},
                 {"visualShape", visual_shape},

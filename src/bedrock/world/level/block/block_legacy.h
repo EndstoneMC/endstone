@@ -29,6 +29,7 @@
 #include "bedrock/world/item/item_category.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/block_state_instance.h"
+#include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/phys/aabb.h"
@@ -299,6 +300,7 @@ public:
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;
+    [[nodiscard]] TintMethod getTintMethod() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
     std::string description_id;  // +8
