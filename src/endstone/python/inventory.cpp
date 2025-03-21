@@ -67,6 +67,11 @@ void init_inventory(py::module_ &m)
     py::class_<PlayerInventory, Inventory>(
         m, "PlayerInventory",
         "Interface to the inventory of a Player, including the four armor slots and any extra slots.")
+        .def_property_readonly("helmet", &PlayerInventory::getHelmet, "Gets the ItemStack from the helmet slot")
+        .def_property_readonly("chestplate", &PlayerInventory::getChestplate,
+                               "Gets the ItemStack from the chestplate slot")
+        .def_property_readonly("leggings", &PlayerInventory::getLeggings, "Gets the ItemStack from the leg slot")
+        .def_property_readonly("boots", &PlayerInventory::getBoots, "Gets the ItemStack from the boots slot")
         .def_property_readonly("item_in_main_hand", &PlayerInventory::getItemInMainHand,
                                "Gets the item the player is currently holding in their main hand.")
         .def_property_readonly("item_in_off_hand", &PlayerInventory::getItemInOffHand,

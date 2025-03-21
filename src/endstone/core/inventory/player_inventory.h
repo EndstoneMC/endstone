@@ -34,6 +34,10 @@ public:
     [[nodiscard]] bool isEmpty() const override;
     void clear() override;
 
+    [[nodiscard]] std::shared_ptr<ItemStack> getHelmet() const override;
+    [[nodiscard]] std::shared_ptr<ItemStack> getChestplate() const override;
+    [[nodiscard]] std::shared_ptr<ItemStack> getLeggings() const override;
+    [[nodiscard]] std::shared_ptr<ItemStack> getBoots() const override;
     [[nodiscard]] std::shared_ptr<ItemStack> getItemInMainHand() const override;
     [[nodiscard]] std::shared_ptr<ItemStack> getItemInOffHand() const override;
     [[nodiscard]] int getHeldItemSlot() const override;

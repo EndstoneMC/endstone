@@ -24,6 +24,34 @@ namespace endstone {
 class PlayerInventory : public Inventory {
 public:
     /**
+     * @brief Return the ItemStack from the helmet slot
+     *
+     * @return The ItemStack in the helmet slot
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getHelmet() const = 0;
+
+    /**
+     * @brief Return the ItemStack from the chestplate slot
+     *
+     * @return The ItemStack in the chestplate slot
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getChestplate() const = 0;
+
+    /**
+     * @brief Return the ItemStack from the leg slot
+     *
+     * @return The ItemStack in the leg slot
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getLeggings() const = 0;
+
+    /**
+     * @brief Return the ItemStack from the boots slot
+     *
+     * @return The ItemStack in the boots slot
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getBoots() const = 0;
+
+    /**
      * @brief Gets the item the player is currently holding in their main hand.
      *
      * @return the currently held item

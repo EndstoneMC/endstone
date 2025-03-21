@@ -2694,6 +2694,16 @@ class PlayerInventory(Inventory):
     def _pybind11_conduit_v1_(*args, **kwargs):
         ...
     @property
+    def boots(self) -> ItemStack:
+        """
+        Gets the ItemStack from the boots slot
+        """
+    @property
+    def chestplate(self) -> ItemStack:
+        """
+        Gets the ItemStack from the chestplate slot
+        """
+    @property
     def held_item_slot(self) -> int:
         """
         Gets or sets the slot number of the currently held item
@@ -2701,6 +2711,11 @@ class PlayerInventory(Inventory):
     @held_item_slot.setter
     def held_item_slot(self, arg1: int) -> None:
         ...
+    @property
+    def helmet(self) -> ItemStack:
+        """
+        Gets the ItemStack from the helmet slot
+        """
     @property
     def item_in_main_hand(self) -> ItemStack:
         """
@@ -2710,6 +2725,11 @@ class PlayerInventory(Inventory):
     def item_in_off_hand(self) -> ItemStack:
         """
         Gets the item the player is currently holding in their off hand.
+        """
+    @property
+    def leggings(self) -> ItemStack:
+        """
+        Gets the ItemStack from the leg slot
         """
 class PlayerJoinEvent(PlayerEvent):
     """

@@ -66,6 +66,26 @@ void EndstonePlayerInventory::clear()
     holder_.sendInventory(false);
 }
 
+std::shared_ptr<ItemStack> EndstonePlayerInventory::getHelmet() const
+{
+    return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Head));
+}
+
+std::shared_ptr<ItemStack> EndstonePlayerInventory::getChestplate() const
+{
+    return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Torso));
+}
+
+std::shared_ptr<ItemStack> EndstonePlayerInventory::getLeggings() const
+{
+    return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Legs));
+}
+
+std::shared_ptr<ItemStack> EndstonePlayerInventory::getBoots() const
+{
+    return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Feet));
+}
+
 std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInMainHand() const
 {
     return getItem(holder_.getSelectedItemSlot());
