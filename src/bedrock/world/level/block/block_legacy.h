@@ -29,6 +29,7 @@
 #include "bedrock/world/item/item_category.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/block_state_instance.h"
+#include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/phys/aabb.h"
@@ -96,18 +97,6 @@ enum class BlockProperty : std::uint64_t {
     Climbable = 0x800000000000,
     CanHaltWhenClimbing = 0x1000000000000,
     _entt_enum_as_bitmask
-};
-
-enum class BlockTintType : std::uint8_t {
-    None = 0,
-    DefaultFoliage = 1,
-    BirchFoliage = 2,
-    EvergreenFoliage = 3,
-    Grass = 4,
-    Water = 5,
-    Stem = 6,
-    RedStoneWire = 7,
-    Count = 8,
 };
 
 class BlockLegacy {
@@ -311,7 +300,7 @@ public:
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;
-    [[nodiscard]] BlockTintType getBlockTintType() const;
+    [[nodiscard]] TintMethod getTintMethod() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
     std::string description_id;  // +8
@@ -360,7 +349,7 @@ protected:
     Color map_color_;
     float friction_;
     NoteBlockInstrument note_block_instrument_;
-    BlockTintType tint_type_;
+    TintMethod tint_method_;
     bool return_default_block_on_unidentified_block_state_;
 
 private:

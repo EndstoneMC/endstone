@@ -86,9 +86,9 @@ std::int16_t BlockLegacy::getBlockItemId() const
     return static_cast<std::int16_t>((ItemRegistry::START_ITEM_ID - 1u) - value);
 }
 
-BlockTintType BlockLegacy::getBlockTintType() const
+TintMethod BlockLegacy::getTintMethod() const
 {
-    return tint_type_;
+    return tint_method_;
 }
 
 void BlockLegacy::forEachBlockPermutation(std::function<bool(Block const &)> callback) const
