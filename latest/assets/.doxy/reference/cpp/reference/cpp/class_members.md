@@ -321,6 +321,7 @@
 * **getBlockFace** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getClickedPosition** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getItemInMainHand** ([**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md))
+* **getItemInOffHand** ([**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md))
 * **getJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **getKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **getQuitMessage** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))

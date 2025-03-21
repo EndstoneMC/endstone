@@ -2079,6 +2079,19 @@ For latest updates join the chat on
 </li>
                 
             
+                
+                    <li class="md-nav__item">
+    <a href="#function-getiteminoffhand" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getItemInOffHand
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
         </ul>
     </nav>
     
@@ -2135,6 +2148,10 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getiteminmainhand"><strong>getItemInMainHand</strong></a> () const = 0<br><em>Gets the item the player is currently holding in their main hand.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getiteminoffhand"><strong>getItemInOffHand</strong></a> () const = 0<br><em>Gets the item the player is currently holding in their off hand.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2194,6 +2211,14 @@ For latest updates join the chat on
 <h3 id="function-getiteminmainhand">function getItemInMainHand<a class="headerlink" href="#function-getiteminmainhand" title="Permanent link">&para;</a></h3>
 <p><em>Gets the item the player is currently holding in their main hand.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInMainHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the currently held item </p>
+<hr>
+
+<h3 id="function-getiteminoffhand">function getItemInOffHand<a class="headerlink" href="#function-getiteminoffhand" title="Permanent link">&para;</a></h3>
+<p><em>Gets the item the player is currently holding in their off hand.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInOffHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the currently held item </p>

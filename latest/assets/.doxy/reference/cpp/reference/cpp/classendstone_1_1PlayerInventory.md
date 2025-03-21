@@ -74,6 +74,7 @@ Inherits the following classes: [endstone::Inventory](classendstone_1_1Inventory
 | Type | Name |
 | ---: | :--- |
 | virtual std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItemInMainHand**](#function-getiteminmainhand) () const = 0<br>_Gets the item the player is currently holding in their main hand._  |
+| virtual std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItemInOffHand**](#function-getiteminoffhand) () const = 0<br>_Gets the item the player is currently holding in their off hand._  |
 
 
 ## Public Functions inherited from endstone::Inventory
@@ -156,6 +157,31 @@ See [endstone::Inventory](classendstone_1_1Inventory.md)
 _Gets the item the player is currently holding in their main hand._ 
 ```C++
 virtual std::shared_ptr< ItemStack > endstone::PlayerInventory::getItemInMainHand () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the currently held item 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getItemInOffHand 
+
+_Gets the item the player is currently holding in their off hand._ 
+```C++
+virtual std::shared_ptr< ItemStack > endstone::PlayerInventory::getItemInOffHand () const = 0
 ```
 
 
