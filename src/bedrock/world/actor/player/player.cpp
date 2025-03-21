@@ -30,6 +30,16 @@ Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_remov
     return static_cast<Player *>(Actor::tryGetFromEntity(entity, include_removed));
 }
 
+const PlayerInventory &Player::getSupplies() const
+{
+    return *inventory_;
+}
+
+PlayerInventory &Player::getSupplies()
+{
+    return *inventory_;
+}
+
 const Container &Player::getInventory() const
 {
     return inventory_->getContainer();

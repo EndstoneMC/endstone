@@ -2693,6 +2693,11 @@ class PlayerInventory(Inventory):
     @staticmethod
     def _pybind11_conduit_v1_(*args, **kwargs):
         ...
+    @property
+    def item_in_main_hand(self) -> ItemStack:
+        """
+        Gets the item the player is currently holding in their main hand.
+        """
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server

@@ -135,6 +135,8 @@ protected:
 public:
     static Player *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
+    [[nodiscard]] const PlayerInventory &getSupplies() const;
+    PlayerInventory &getSupplies();
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
     [[nodiscard]] const std::string &getName() const;

@@ -14,6 +14,11 @@
 
 #include "bedrock/world/actor/player/player_inventory.h"
 
+PlayerInventorySlotData PlayerInventory::getSelectedSlot() const
+{
+    return {selected_container_id_, selected_};
+}
+
 const Container &PlayerInventory::getContainer() const
 {
     return *inventory_;

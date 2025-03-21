@@ -34,6 +34,8 @@ public:
     [[nodiscard]] bool isEmpty() const override;
     void clear() override;
 
+    [[nodiscard]] std::shared_ptr<ItemStack> getItemInMainHand() const override;
+
 private:
     ::Player &holder_;
 };

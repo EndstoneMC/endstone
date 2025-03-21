@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/world/actor/player/inventory.h"
+#include "bedrock/world/actor/player/player_inventory_slot_data.h"
 #include "bedrock/world/container.h"
 #include "bedrock/world/container_id.h"
 #include "bedrock/world/item/item_stack.h"
@@ -28,10 +29,13 @@ public:
     virtual void createTransactionContext(std::function<void(Container &, int, const ItemStack &, const ItemStack &)>,
                                           std::function<void()>);
 
+    [[nodiscard]] PlayerInventorySlotData getSelectedSlot() const;
     [[nodiscard]] const Container &getContainer() const;
     Container &getContainer();
 
 private:
+    static bool isHotbarSlot(int slot);
+
     int selected_;
     ItemStack infinite_item_;
     ContainerID selected_container_id_;

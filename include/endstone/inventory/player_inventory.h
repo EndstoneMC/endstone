@@ -21,6 +21,14 @@ namespace endstone {
 /**
  * @brief Interface to the inventory of a Player, including the four armor slots and any extra slots.
  */
-class PlayerInventory : public Inventory {};
+class PlayerInventory : public Inventory {
+public:
+    /**
+     * @brief Gets the item the player is currently holding in their main hand.
+     *
+     * @return the currently held item
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInMainHand() const = 0;
+};
 
 }  // namespace endstone

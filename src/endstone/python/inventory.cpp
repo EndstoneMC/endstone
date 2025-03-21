@@ -66,7 +66,9 @@ void init_inventory(py::module_ &m)
 
     py::class_<PlayerInventory, Inventory>(
         m, "PlayerInventory",
-        "Interface to the inventory of a Player, including the four armor slots and any extra slots.");
+        "Interface to the inventory of a Player, including the four armor slots and any extra slots.")
+        .def_property_readonly("item_in_main_hand", &PlayerInventory::getItemInMainHand,
+                               "Gets the item the player is currently holding in their main hand.");
 }
 
 }  // namespace endstone::python

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/world/container_id.h"
+
 struct PlayerInventorySlotData {
     ContainerID container_id;
     int slot;

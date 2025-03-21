@@ -64,4 +64,9 @@ void EndstonePlayerInventory::clear()
     holder_.sendInventory(false);
 }
 
+std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInMainHand() const
+{
+    return getItem(holder_.getSupplies().getSelectedSlot().slot);
+}
+
 }  // namespace endstone::core
