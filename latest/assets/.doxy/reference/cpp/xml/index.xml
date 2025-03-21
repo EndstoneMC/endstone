@@ -999,6 +999,10 @@
     <member refid="classendstone_1_1PlayerInteractEvent_1af320c80fe31afe89aeabe1f344e5a56d" kind="function"><name>getClickedPosition</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerInventory" kind="class"><name>endstone::PlayerInventory</name>
+    <member refid="classendstone_1_1PlayerInventory_1ad433a57e218d2e6f5ea53d0f8c832f21" kind="function"><name>getHelmet</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1aaeb5dd80e741f18877c16c75f6b8bb2e" kind="function"><name>getChestplate</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1abdd04c432e76f76f0413f522d3921d38" kind="function"><name>getLeggings</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a9c3955ed3e203d6487850d57f85ef424" kind="function"><name>getBoots</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a9a61b9533ba53ece25d5e118bac36bfc" kind="function"><name>getItemInMainHand</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a138adf16c2be36e572643e8d639a8ec4" kind="function"><name>getItemInOffHand</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kind="function"><name>getHeldItemSlot</name></member>
