@@ -55,7 +55,7 @@ class Bootstrap:
 
     @property
     def user_agent(self) -> str:
-        return f"Endstone/{endstone_version} (Minecraft/{minecraft_version})"
+        return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36"
 
     def _validate(self) -> None:
         if platform.system().lower() != self.target_system:
@@ -71,7 +71,7 @@ class Bootstrap:
         self._logger.info("Loading index from the remote server...")
         channel = "preview" if Version(minecraft_version).is_prerelease else "release"
         metadata_url = "/".join([self._remote, channel, minecraft_version, "metadata.json"])
-        response = requests.get(metadata_url)
+        response = requests.get(metadata_url, timeout=10)
         response.raise_for_status()
         metadata = response.json()
 
@@ -82,10 +82,10 @@ class Bootstrap:
 
         with tempfile.TemporaryFile(dir=dst) as f:
             url = metadata["binary"][self.target_system.lower()]["url"]
+            self._logger.info(f"Downloading server from {url}...")
             response = requests.get(url, stream=True, headers={"User-Agent": self.user_agent})
             response.raise_for_status()
             total_size = int(response.headers.get("Content-Length", 0))
-            self._logger.info(f"Downloading server from {url}...")
             m = hashlib.sha256()
 
             with Progress(
