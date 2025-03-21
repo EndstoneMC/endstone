@@ -999,6 +999,7 @@
     <member refid="classendstone_1_1PlayerInteractEvent_1af320c80fe31afe89aeabe1f344e5a56d" kind="function"><name>getClickedPosition</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerInventory" kind="class"><name>endstone::PlayerInventory</name>
+    <member refid="classendstone_1_1PlayerInventory_1a9a61b9533ba53ece25d5e118bac36bfc" kind="function"><name>getItemInMainHand</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerJoinEvent" kind="class"><name>endstone::PlayerJoinEvent</name>
     <member refid="classendstone_1_1PlayerJoinEvent_1a7f02575361267d031b100a8b132e0d06" kind="variable"><name>NAME</name></member>
