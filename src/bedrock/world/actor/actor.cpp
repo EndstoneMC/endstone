@@ -101,6 +101,13 @@ bool Actor::isInLava() const
 {
     return ActorEnvironment::getIsInLava(entity_context_);
 }
+bool Actor::isClientSide() const
+{
+    if (!level_) {
+        return true;
+    }
+    return level_->isClientSide();
+}
 
 Dimension &Actor::getDimension() const
 {

@@ -260,6 +260,7 @@ public:
     [[nodiscard]] bool isOnGround() const;
     [[nodiscard]] bool isInWater() const;
     [[nodiscard]] bool isInLava() const;
+    [[nodiscard]] bool isClientSide() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel();
     [[nodiscard]] const Level &getLevel() const;
