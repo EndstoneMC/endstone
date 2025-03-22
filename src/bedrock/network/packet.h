@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/common_types.h"
+#include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/deps/raknet/packet_priority.h"
 #include "bedrock/network/network_peer.h"
 #include "bedrock/platform/result.h"
@@ -254,16 +255,34 @@ enum class MinecraftPacketIds : int {
 class Packet {
 public:
     virtual ~Packet() = default;
-    // [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
-    // [[nodiscard]] virtual std::string getName() const = 0;
-    // [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const = 0;
-    // virtual void write(BinaryStream &) const = 0;
-    // [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &) = 0;
-    // [[nodiscard]] virtual bool disallowBatching() const = 0;
-    // [[nodiscard]] virtual bool isValid() const = 0;
+    [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
+    [[nodiscard]] virtual std::string getName() const = 0;
+    [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t packet_size, bool is_receiver_server) const
+    {
+        if (is_receiver_server && packet_size > 0xA00000) {
+            return BEDROCK_NEW_ERROR(std::errc::message_size);
+        }
+        return {};
+    }
+    virtual void write(BinaryStream &) const = 0;
+    [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &stream)
+    {
+        if (auto result = _read(stream); !result.ignoreError()) {
+            return BEDROCK_RETHROW(result);
+        }
+        return {};
+    }
+    [[nodiscard]] virtual bool disallowBatching() const
+    {
+        return false;
+    }
+    [[nodiscard]] virtual bool isValid() const
+    {
+        return true;
+    }
 
 private:
-    // [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
+    [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
     PacketPriority priority_{PacketPriority::MEDIUM_PRIORITY};                         // + 8
     NetworkPeer::Reliability reliability_{NetworkPeer::Reliability::ReliableOrdered};  // + 12
