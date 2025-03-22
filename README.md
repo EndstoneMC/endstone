@@ -156,7 +156,7 @@ For advanced users, you may build Endstone locally from the source.
 First, clone the repository:
 
 ```shell
-git clone https://github.com/EndstoneMC/endstone.git
+git clone https://github.com/EndstoneMC/endstone.git --recurse-submodule
 cd endstone
 ```
 
