@@ -44,7 +44,6 @@ void handlePacket(const ResourcePackStackPacket &packet)
     // https://github.com/pmmp/PocketMine-MP/blob/c80a4d/src/network/mcpe/handler/ResourcePacksPacketHandler.php#L177
     // always false, otherwise it may force the client to remove its own non-server-supplied resource packs.
     pk.texture_pack_required = false;
-    printf("setting mTexturePackRequired to false");
 }
 
 }  // namespace
