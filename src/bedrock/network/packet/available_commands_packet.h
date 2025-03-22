@@ -67,13 +67,32 @@ public:
     };
 
     ~AvailableCommandsPacket() override = default;
+    [[nodiscard]] MinecraftPacketIds getId() const override
+    {
+        return MinecraftPacketIds::AvailableCommands;
+    }
+    [[nodiscard]] std::string getName() const override
+    {
+        return "AvailableCommandsPacket";
+    }
+    void write(BinaryStream & /*unused*/) const override
+    {
+        throw std::logic_error("Not implemented");
+    }
 
-    std::vector<std::string> enum_values;                    // +48
-    std::vector<std::string> postfixes;                      // +72
-    std::vector<EnumData> enums;                             // +96
-    std::vector<std::string> chained_subcommand_values;      // +120
-    std::vector<ChainedSubcommandData> chained_subcommands;  // +144
-    std::vector<CommandData> commands;                       // +168
-    std::vector<SoftEnumData> soft_enums;                    // +192
-    std::vector<ConstrainedValueData> constraints;           // +216
+protected:
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream & /*unused*/) override
+    {
+        throw std::logic_error("Not implemented");
+    }
+
+public:
+    std::vector<std::string> enum_values;
+    std::vector<std::string> postfixes;
+    std::vector<EnumData> enums;
+    std::vector<std::string> chained_subcommand_values;
+    std::vector<ChainedSubcommandData> chained_subcommands;
+    std::vector<CommandData> commands;
+    std::vector<SoftEnumData> soft_enums;
+    std::vector<ConstrainedValueData> constraints;
 };
