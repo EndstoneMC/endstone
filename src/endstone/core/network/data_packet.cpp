@@ -29,36 +29,10 @@ std::string endstone::core::DataPacket::getName() const
     return "DataPacket";
 }
 
-Bedrock::Result<void> endstone::core::DataPacket::checkSize(std::uint64_t packet_size, bool is_receiver_server) const
-{
-    if (is_receiver_server && packet_size > 0xA00000) {
-        return BEDROCK_NEW_ERROR(std::errc::message_size);
-    }
-    return {};
-}
-
 void endstone::core::DataPacket::write(BinaryStream &stream) const
 {
     BinaryStream bs(payload_, false);
     stream.writeStream(bs);
-}
-
-Bedrock::Result<void> endstone::core::DataPacket::read(ReadOnlyBinaryStream &stream)
-{
-    if (auto result = _read(stream); !result.ignoreError()) {
-        return BEDROCK_RETHROW(result);
-    }
-    return {};
-}
-
-bool endstone::core::DataPacket::disallowBatching() const
-{
-    return false;
-}
-
-bool endstone::core::DataPacket::isValid() const
-{
-    return true;
 }
 
 Bedrock::Result<void> endstone::core::DataPacket::_read(ReadOnlyBinaryStream &stream)
