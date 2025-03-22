@@ -169,6 +169,7 @@ class PlayerPermissionsSynchroniser;
 class PlayerDestroyProgressCacheComponent;
 class PlayerListener;
 class PlayerListEntry;
+class PlayerLocationReceiver;
 class PlayerMovementSettings;
 class PortalForcer;
 class PositionTrackingDBClient;
