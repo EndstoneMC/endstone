@@ -17,20 +17,18 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-using endstone::core::EndstoneLevel;
-using endstone::core::EndstoneServer;
-
 namespace {
 void handlePacket(const StartGamePacket &packet)
 {
     static bool client_side_generation_enabled = []() {
-        const auto &server = entt::locator<EndstoneServer>::value();
-        const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto *level = static_cast<endstone::core::EndstoneLevel *>(server.getLevel());
         return level->getHandle().isClientSideGenerationEnabled();
     }();
 
@@ -39,6 +37,16 @@ void handlePacket(const StartGamePacket &packet)
         pk.settings.setRandomSeed(0);
     }
 }
+
+void handlePacket(const ResourcePackStackPacket &packet)
+{
+    auto &pk = const_cast<ResourcePackStackPacket &>(packet);
+    // https://github.com/pmmp/PocketMine-MP/blob/c80a4d/src/network/mcpe/handler/ResourcePacksPacketHandler.php#L177
+    // always false, otherwise it may force the client to remove its own non-server-supplied resource packs.
+    pk.texture_pack_required = false;
+    printf("setting mTexturePackRequired to false");
+}
+
 }  // namespace
 
 void NetworkSystem::send(const NetworkIdentifier &id, const Packet &packet, SubClientId sender_sub_id)
@@ -46,6 +54,9 @@ void NetworkSystem::send(const NetworkIdentifier &id, const Packet &packet, SubC
     switch (packet.getId()) {
     case MinecraftPacketIds::StartGame:
         handlePacket(static_cast<const StartGamePacket &>(packet));
+        break;
+    case MinecraftPacketIds::ResourcePackStack:
+        handlePacket(static_cast<const ResourcePackStackPacket &>(packet));
         break;
     default:
         break;
