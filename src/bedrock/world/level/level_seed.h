@@ -14,6 +14,11 @@
 
 #pragma once
 
-struct LevelSeed64 {
-    std::int64_t value;
+class LevelSeed64 {
+    using ValueType = uint64_t;
+    LevelSeed64();
+    LevelSeed64(ValueType value) : value(value){};
+
+public:
+    ValueType value{0};
 };
