@@ -103,7 +103,7 @@ enum class ContainerType : std::int8_t {
 class Container {
 public:
     struct PublisherWrapper {
-        Bedrock::PubSub::Publisher<void(), Bedrock::PubSub::ThreadModel::MultiThreaded> publisher;
+        Bedrock::PubSub::Publisher<void(), Bedrock::PubSub::ThreadModel::SingleThreaded> publisher;
     };
 
     using ItemStackNetIdChangedCallback = std::function<void(int, const ItemStack &)>;
