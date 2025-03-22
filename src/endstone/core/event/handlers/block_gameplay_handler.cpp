@@ -154,6 +154,8 @@ bool EndstoneBlockGameplayHandler::handleEvent(BlockTryDestroyByPlayerEvent &eve
         if (e.isCancelled()) {
             return false;
         }
+        // update here as plugins may change the player inventory during the event handling
+        event.item_used = player->getInventory().getItem(player->getSelectedItemSlot());
     }
     return true;
 }
