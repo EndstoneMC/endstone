@@ -26,6 +26,9 @@
 class NetworkSystem : public RakNetConnector::ConnectionCallbacks,
                       public RakPeerHelper::IPSupportInterface,
                       public NetworkEnableDisableListener {
+public:
+    ENDSTONE_HOOK void send(const NetworkIdentifier &id, const Packet &packet, SubClientId sender_sub_id);
+
 protected:
     struct Dependencies;
     NetworkSystem(Dependencies &&);

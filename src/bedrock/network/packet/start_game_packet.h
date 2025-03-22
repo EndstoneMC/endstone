@@ -21,8 +21,7 @@
 
 class StartGamePacket : public Packet {
 public:
-    ENDSTONE_HOOK virtual void write(BinaryStream &) const;
-
-private:
-    mutable LevelSettings settings_;  // +48
+    StartGamePacket();
+    LevelSettings settings;  // +48
+    // ...
 };

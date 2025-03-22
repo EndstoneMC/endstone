@@ -22,6 +22,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/level.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/network_system.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/raknet_socket2.cpp
         bedrock_hooks/rak_peer_helper.cpp
@@ -31,7 +32,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
         bedrock_hooks/server_script_manager.cpp
-        bedrock_hooks/start_game_packet.cpp
         main.cpp
         hook.cpp
         linux.cpp

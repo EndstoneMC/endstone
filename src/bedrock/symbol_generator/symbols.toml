@@ -1,4 +1,4 @@
-timestamp = 1741558079
+timestamp = 1742672796
 version = "1.21.70-preview.26"
 
 [windows]
@@ -48,6 +48,8 @@ version = "1.21.70-preview.26"
 # Mob
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 47342064
 "?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 47337904
+# NetworkSystem
+"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z" = 20212192
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 19377472
 # Player
@@ -76,8 +78,6 @@ version = "1.21.70-preview.26"
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 63968352
 # ServerScriptManager
 "?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 26937280
-# StartGamePacket
-"?write@StartGamePacket@@UEBAXAEAVBinaryStream@@@Z" = 19654032
 # TeleportCommand
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 39280688
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 39281584
@@ -130,6 +130,8 @@ version = "1.21.70-preview.26"
 # Mob
 "_ZN3Mob9knockbackEP5Actorifffff" = 135552176
 "_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 135549056
+# NetworkSystem
+"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId" = 100363392
 # Pack
 "_ZN4Pack10createPackERK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE" = 99072640
 # Player
@@ -158,8 +160,6 @@ version = "1.21.70-preview.26"
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 159301712
 # ServerScriptManager
 "_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 128160656
-# StartGamePacket
-"_ZNK15StartGamePacket5writeER12BinaryStream" = 100996624
 # TeleportCommand
 "_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 113001456
 "_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 113001840

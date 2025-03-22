@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/packet/start_game_packet.h"
+#include "bedrock/network/network_system.h"
 
 #include <entt/entt.hpp>
 
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/start_game_packet.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
@@ -23,16 +25,30 @@
 using endstone::core::EndstoneLevel;
 using endstone::core::EndstoneServer;
 
-void StartGamePacket::write(BinaryStream &stream) const
+namespace {
+void handlePacket(const StartGamePacket &packet)
 {
     static bool client_side_generation_enabled = []() {
-        auto &server = entt::locator<EndstoneServer>::value();
-        auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+        const auto &server = entt::locator<EndstoneServer>::value();
+        const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
         return level->getHandle().isClientSideGenerationEnabled();
     }();
 
     if (!client_side_generation_enabled) {
-        settings_.setRandomSeed({0});
+        auto &pk = const_cast<StartGamePacket &>(packet);
+        pk.settings.setRandomSeed(0);
     }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&StartGamePacket::write, this, stream);
+}
+}  // namespace
+
+void NetworkSystem::send(const NetworkIdentifier &id, const Packet &packet, SubClientId sender_sub_id)
+{
+    switch (packet.getId()) {
+    case MinecraftPacketIds::StartGame:
+        handlePacket(static_cast<const StartGamePacket &>(packet));
+        break;
+    default:
+        break;
+    }
+    ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkSystem::send, this, id, packet, sender_sub_id);
 }
