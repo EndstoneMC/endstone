@@ -50,13 +50,10 @@ void init_block(py::module_ &m, py::class_<Block, std::shared_ptr<Block>> &block
              py::arg("apply_physics") = true, "Attempts to update the block represented by this state.")
         .def("__str__", [](const BlockState &self) { return fmt::format("{}", self); });
 
-    block
-        .def_property("type", &Block::getType, py::overload_cast<std::string>(&Block::setType),
-                      "Gets or sets the type of the block.")
+    block.def_property_readonly("type", &Block::getType, "Gets or sets the type of the block.")
         .def("set_type", py::overload_cast<std::string, bool>(&Block::setType), py::arg("type"),
              py::arg("apply_physics") = true, "Sets the type of this block")
-        .def_property("data", &Block::getData, py::overload_cast<std::shared_ptr<BlockData>>(&Block::setData),
-                      "Gets or sets the complete data for this block")
+        .def_property_readonly("data", &Block::getData, "Gets the complete data for this block")
         .def("set_data", py::overload_cast<std::shared_ptr<BlockData>, bool>(&Block::setData), py::arg("data"),
              py::arg("apply_physics") = true, "Sets the complete data for this block")
         .def("get_relative", py::overload_cast<int, int, int>(&Block::getRelative), py::arg("offset_x"),

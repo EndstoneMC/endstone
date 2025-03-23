@@ -535,11 +535,8 @@ class Block:
     @property
     def data(self) -> BlockData:
         """
-        Gets or sets the complete data for this block
+        Gets the complete data for this block
         """
-    @data.setter
-    def data(self, arg1: BlockData) -> None:
-        ...
     @property
     def dimension(self) -> Dimension:
         """
@@ -555,9 +552,6 @@ class Block:
         """
         Gets or sets the type of the block.
         """
-    @type.setter
-    def type(self, arg1: str) -> None:
-        ...
     @property
     def x(self) -> int:
         """
@@ -1527,6 +1521,10 @@ class ItemStack:
         ...
     def __str__(self) -> str:
         ...
+    def set_item_meta(self, meta: ItemMeta) -> bool:
+        """
+        Set the ItemMeta of this ItemStack.
+        """
     @property
     def amount(self) -> int:
         """
@@ -1538,11 +1536,8 @@ class ItemStack:
     @property
     def item_meta(self) -> ItemMeta:
         """
-        Gets a copy of the ItemMeta or set the ItemMeta of this ItemStack.
+        Gets a copy of the ItemMeta of this ItemStack.
         """
-    @item_meta.setter
-    def item_meta(self, arg1: ItemMeta) -> bool:
-        ...
     @property
     def type(self) -> str:
         """
