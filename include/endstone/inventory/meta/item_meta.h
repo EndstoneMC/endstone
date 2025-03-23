@@ -39,27 +39,50 @@ public:
      *
      * @return type of this item meta
      */
-    [[nodiscard]] virtual Type getType() const = 0;
+    [[nodiscard]] virtual Type getType() const
+    {
+        return Type::Base;
+    }
 
     /**
      * @brief Checks for existence of lore.
      *
      * @return true if this has lore
      */
-    [[nodiscard]] virtual bool hasLore() const = 0;
+    [[nodiscard]] virtual bool hasLore() const
+    {
+        return lore_.has_value() && !lore_.value().empty();
+    }
 
     /**
      * @brief Gets the lore that is set.
      *
      * @return a list of lore that is set
      */
-    [[nodiscard]] virtual std::optional<std::vector<std::string>> getLore() const = 0;
+    [[nodiscard]] virtual std::optional<std::vector<std::string>> getLore() const
+    {
+        if (!hasLore()) {
+            return std::nullopt;
+        }
+        return lore_;
+    }
 
     /**
      * @brief Sets the lore for this item or removes lore when given std::nullopt.
      *
      * @param lore the lore that will be set
      */
-    virtual void setLore(std::optional<std::vector<std::string>> lore) = 0;
+    virtual void setLore(std::optional<std::vector<std::string>> lore)
+    {
+        if (!lore.has_value() || !lore_.value().empty()) {
+            lore_ = std::nullopt;
+        }
+        else {
+            lore_ = std::move(lore);
+        }
+    }
+
+private:
+    std::optional<std::vector<std::string>> lore_;
 };
 }  // namespace endstone
