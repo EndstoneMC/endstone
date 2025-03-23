@@ -25,6 +25,8 @@ namespace endstone {
  */
 class ItemMeta : public std::enable_shared_from_this<ItemMeta> {
 public:
+    static ItemMeta EMPTY;
+
     enum class Type {
         Item = 0,
         Map = 1,
@@ -51,6 +53,17 @@ public:
     [[nodiscard]] virtual Type getType() const
     {
         return Type::Item;
+    }
+
+    /**
+     * @brief Checks if the item metadata is empty.
+     *
+     * @return true if the metadata is empty, false otherwise.
+     */
+    [[nodiscard]] virtual bool isEmpty() const
+    {
+        // TODO(item): more checks here
+        return !hasLore();
     }
 
     /**
@@ -104,4 +117,6 @@ public:
 private:
     std::optional<std::vector<std::string>> lore_;
 };
+
+inline ItemMeta ItemMeta::EMPTY;
 }  // namespace endstone

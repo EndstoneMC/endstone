@@ -16,14 +16,13 @@
 
 namespace endstone::core {
 
+template <typename T>
+void loadData(const std::shared_ptr<T> &meta, const CompoundTag &tag);
+
 template <>
-void loadData(std::shared_ptr<ItemMeta> meta, const ItemStackBase &item)
+void loadData(const std::shared_ptr<ItemMeta> &meta, const CompoundTag &tag)
 {
-    const auto *tag = item.getUserData();
-    if (!tag) {
-        return;
-    }
-    const auto *display_tag = tag->getCompound(ItemStackBase::TAG_DISPLAY);
+    const auto *display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
     if (!display_tag) {
         return;
     }
@@ -33,9 +32,7 @@ void loadData(std::shared_ptr<ItemMeta> meta, const ItemStackBase &item)
     }
     std::vector<std::string> lore;
     for (auto i = 0; i < lore_tag->size(); i++) {
-        if (auto str = lore_tag->getString(i); !str.empty()) {
-            lore.emplace_back(str);
-        }
+        lore.emplace_back(lore_tag->getString(i));
     }
     if (!lore.empty()) {
         meta->setLore(lore);
@@ -43,23 +40,72 @@ void loadData(std::shared_ptr<ItemMeta> meta, const ItemStackBase &item)
 }
 
 template <>
-void loadData(std::shared_ptr<MapMeta> meta, const ItemStackBase &item)
+void loadData(const std::shared_ptr<MapMeta> &meta, const CompoundTag &tag)
 {
+    loadData<ItemMeta>(meta, tag);
     // TODO(item): implement this
-    loadData<ItemMeta>(meta, item);
 }
 
 std::shared_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string_view type, const ItemStackBase &item)
 {
     auto meta = ItemFactory::getItemMeta(type);
+    const auto *tag = item.getUserData();
+    if (!tag) {
+        return meta;
+    }
+
     switch (meta->getType()) {
     case ItemMeta::Type::Map:
-        loadData<MapMeta>(std::static_pointer_cast<MapMeta>(meta), item);
+        loadData<MapMeta>(std::static_pointer_cast<MapMeta>(meta), *tag);
         break;
     default:
-        loadData<ItemMeta>(meta, item);
+        loadData<ItemMeta>(meta, *tag);
         break;
     }
     return meta;
+}
+
+template <typename T>
+void applyTo(const std::shared_ptr<T> &meta, CompoundTag &tag);
+
+template <>
+void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
+{
+    auto *display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
+    if (!display_tag) {
+        tag.putCompound(ItemStackBase::TAG_DISPLAY, std::make_unique<CompoundTag>());
+    }
+    display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
+
+    if (meta->hasLore()) {
+        auto lore_tag = std::make_unique<ListTag>();
+        for (const auto &line : meta->getLore().value()) {
+            lore_tag->add(std::make_unique<StringTag>(line));
+        }
+        display_tag->put(ItemStackBase::TAG_LORE, std::move(lore_tag));
+    }
+}
+
+template <>
+void applyTo(const std::shared_ptr<MapMeta> &meta, CompoundTag &tag)
+{
+    applyTo<ItemMeta>(meta, tag);
+    // TODO(item): implement this
+}
+
+void EndstoneItemFactory::applyToItem(ItemStackBase &item, const std::shared_ptr<ItemMeta> &meta)
+{
+    if (!item.hasUserData()) {
+        item.setUserData(std::make_unique<CompoundTag>());
+    }
+    auto *tag = item.getUserData();
+    switch (meta->getType()) {
+    case ItemMeta::Type::Map:
+        applyTo<MapMeta>(std::static_pointer_cast<MapMeta>(meta), *tag);
+        break;
+    default:
+        applyTo<ItemMeta>(meta, *tag);
+        break;
+    }
 }
 }  // namespace endstone::core

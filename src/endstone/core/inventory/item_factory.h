@@ -20,12 +20,10 @@
 
 namespace endstone::core {
 
-template <typename T>
-void loadData(std::shared_ptr<T> meta, const ItemStackBase &item);
-
 class EndstoneItemFactory {
 public:
-    static std::shared_ptr<ItemMeta> getItemMeta(const std::string_view type, const ItemStackBase &item);
+    static std::shared_ptr<ItemMeta> getItemMeta(std::string_view type, const ItemStackBase &item);
+    static void applyToItem(ItemStackBase &item, const std::shared_ptr<ItemMeta> &meta);
 };
 
 }  // namespace endstone::core

@@ -57,6 +57,7 @@ public:
     [[nodiscard]] bool hasUserData() const;
     void setUserData(std::unique_ptr<CompoundTag>);
     [[nodiscard]] const CompoundTag *getUserData() const;
+    CompoundTag *getUserData();
     [[nodiscard]] bool isBlock() const;
     [[nodiscard]] const Block *getBlock() const;
     void set(std::uint8_t count);
