@@ -75,12 +75,10 @@ void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
 {
     auto *display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
     if (!display_tag) {
-        tag.putCompound(ItemStackBase::TAG_DISPLAY, std::make_unique<CompoundTag>());
+        display_tag = tag.putCompound(ItemStackBase::TAG_DISPLAY, std::make_unique<CompoundTag>());
     }
-    display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
 
-    auto lore = meta->getLore();
-    if (lore.has_value()) {
+    if (const auto lore = meta->getLore(); lore.has_value()) {
         auto lore_tag = std::make_unique<ListTag>();
         for (const auto &line : lore.value()) {
             lore_tag->add(std::make_unique<StringTag>(line));
