@@ -600,6 +600,7 @@
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a46f3ea056caa3126b91f3f70beea068c" kind="enumvalue"><name>Map</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044ae93f994f01c537c4e2f7d8528c3eb5e9" kind="enumvalue"><name>Count</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
+    <member refid="classendstone_1_1ItemMeta_1add18f641b7834e9df2f5a2ffeab49594" kind="variable"><name>display_name_</name></member>
     <member refid="classendstone_1_1ItemMeta_1a7905ccb73edf20aa1d50d1804d2a3abd" kind="variable"><name>lore_</name></member>
     <member refid="classendstone_1_1ItemMeta_1a4cb3e9ff9d8815008a0b8683dda34cc5" kind="function"><name>ItemMeta</name></member>
     <member refid="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" kind="function"><name>ItemMeta</name></member>
@@ -607,6 +608,9 @@
     <member refid="classendstone_1_1ItemMeta_1aa625bf685038240c41c94de7b7d90081" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ItemMeta_1ad6bbacae4d9f4009d6e60ee16a20f41f" kind="function"><name>isEmpty</name></member>
     <member refid="classendstone_1_1ItemMeta_1a75bd58e151444aa65fc5a0f708cb1d87" kind="function"><name>clone</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ac1c53200d91a5bc301d1bef9f30b49ae" kind="function"><name>hasDisplayName</name></member>
+    <member refid="classendstone_1_1ItemMeta_1afa9871ea34a4882bce24ba932316aa49" kind="function"><name>getDisplayName</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a0131cce7bf802bcf4c3cf755c4ebe2f6" kind="function"><name>setDisplayName</name></member>
     <member refid="classendstone_1_1ItemMeta_1a440df7c31dac61545e14e2fdda65dab1" kind="function"><name>hasLore</name></member>
     <member refid="classendstone_1_1ItemMeta_1a41e00cbe764c3f380da8793067952e47" kind="function"><name>getLore</name></member>
     <member refid="classendstone_1_1ItemMeta_1a0f6800a810736ffdd7844d256616900e" kind="function"><name>setLore</name></member>

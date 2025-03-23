@@ -66,6 +66,29 @@ public:
         return std::make_shared<ItemMeta>(*this);
     }
 
+    [[nodiscard]] virtual bool hasDisplayName() const
+    {
+        return display_name_.has_value() && !display_name_.value().empty();
+    }
+
+    [[nodiscard]] virtual std::optional<std::string> getDisplayName() const
+    {
+        if (!hasDisplayName()) {
+            return std::nullopt;
+        }
+        return display_name_;
+    }
+
+    virtual void setDisplayName(std::optional<std::string> name)
+    {
+        if (!name.has_value() || name.value().empty()) {
+            display_name_ = std::nullopt;
+        }
+        else {
+            display_name_ = std::move(name);
+        }
+    }
+
     [[nodiscard]] virtual bool hasLore() const
     {
         return lore_.has_value() && !lore_.value().empty();
@@ -90,6 +113,7 @@ public:
     }
 
 private:
+    std::optional<std::string> display_name_;
     std::optional<std::vector<std::string>> lore_;
 };
 }  // namespace endstone
