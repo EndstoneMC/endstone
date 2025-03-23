@@ -139,9 +139,8 @@ bool EndstoneItemStack::setItemMeta(::ItemStack *item, const std::shared_ptr<Ite
     if (!item_meta) {
         return true;
     }
-    if (!item_meta->isEmpty()) {
-        EndstoneItemFactory::applyToItem(*item, item_meta);
-    }
+
+    EndstoneItemFactory::applyToItem(*item, item_meta);
     return true;
 }
 

@@ -85,6 +85,9 @@ void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
         }
         display_tag->put(ItemStackBase::TAG_LORE, std::move(lore_tag));
     }
+    else {
+        display_tag->remove(ItemStackBase::TAG_LORE);
+    }
 }
 
 template <>
