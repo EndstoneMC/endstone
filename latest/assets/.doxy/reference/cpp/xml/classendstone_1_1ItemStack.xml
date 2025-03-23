@@ -60,6 +60,7 @@
         <argsstring></argsstring>
         <name>meta_</name>
         <qualifiedname>endstone::ItemStack::meta_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

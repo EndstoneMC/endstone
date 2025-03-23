@@ -348,7 +348,7 @@
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96" refid="classendstone_1_1ItemStack_1a437f3a6408df9f05c04d3340259937dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1ItemStack_1a437f3a6408df9f05c04d3340259937dd" kindref="member">getItemMeta</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="97"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>meta_<sp/>?<sp/>ItemFactory::getItemMeta(type_)<sp/>:<sp/>meta_-&gt;clone();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>meta_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>?<sp/>ItemFactory::getItemMeta(type_)<sp/>:<sp/>meta_-&gt;clone();</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106" refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kindref="member">hasItemMeta</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
@@ -373,7 +373,7 @@
 <codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>type_<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:air&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>amount_<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;ItemMeta&gt;<sp/>meta_;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;ItemMeta&gt;<sp/>meta_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="135"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

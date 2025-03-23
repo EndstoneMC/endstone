@@ -77,7 +77,7 @@ public:
 
     virtual std::shared_ptr<ItemMeta> getItemMeta() const
     {
-        return meta_ ? ItemFactory::getItemMeta(type_) : meta_->clone();
+        return meta_ == nullptr ? ItemFactory::getItemMeta(type_) : meta_->clone();
     }
 
     virtual bool hasItemMeta() const
@@ -102,7 +102,7 @@ public:
 private:
     std::string type_ = "minecraft:air";
     int amount_ = 0;
-    std::shared_ptr<ItemMeta> meta_;
+    std::shared_ptr<ItemMeta> meta_ = nullptr;
 };
 
 }  // namespace endstone
