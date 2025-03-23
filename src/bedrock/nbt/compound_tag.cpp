@@ -205,6 +205,26 @@ CompoundTag *CompoundTag::getCompound(StringView key)
     return nullptr;
 }
 
+const ListTag *CompoundTag::getList(StringView name) const
+{
+    if (auto *tag = get(name); tag) {
+        if (tag->getId() == Type::List) {
+            return static_cast<const ListTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
+ListTag *CompoundTag::getList(StringView name)
+{
+    if (auto *tag = get(name); tag) {
+        if (tag->getId() == Type::List) {
+            return static_cast<ListTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
 bool CompoundTag::contains(StringView key) const
 {
     return get(key) != nullptr;
