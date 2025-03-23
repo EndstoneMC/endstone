@@ -22,6 +22,9 @@ void init_inventory(py::module_ &m)
 {
     py::class_<ItemMeta, std::shared_ptr<ItemMeta>>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, "Creates a clone of the current metadata.")
+        .def_property_readonly("has_display_name", &ItemMeta::hasDisplayName, "Checks for existence of a display name.")
+        .def_property("display_name", &ItemMeta::getDisplayName, &ItemMeta::setDisplayName,
+                      "Gets or sets the display name.")
         .def_property_readonly("has_lore", &ItemMeta::hasLore, "Checks for existence of lore.")
         .def_property("lore", &ItemMeta::getLore, &ItemMeta::setLore, "Gets or sets the lore for this item.");
 

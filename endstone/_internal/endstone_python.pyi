@@ -1498,6 +1498,19 @@ class ItemMeta:
         Creates a clone of the current metadata.
         """
     @property
+    def display_name(self) -> str | None:
+        """
+        Gets or sets the display name.
+        """
+    @display_name.setter
+    def display_name(self, arg1: str | None) -> None:
+        ...
+    @property
+    def has_display_name(self) -> bool:
+        """
+        Checks for existence of a display name.
+        """
+    @property
     def has_lore(self) -> bool:
         """
         Checks for existence of lore.

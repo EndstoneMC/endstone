@@ -178,7 +178,7 @@ const std::string &CompoundTag::getString(StringView key) const
 {
     static std::string empty;
     if (const auto *tag = get(key); tag) {
-        if (tag->getId() == Tag::Type::String) {
+        if (tag->getId() == Type::String) {
             return static_cast<const StringTag *>(tag)->data;
         }
     }

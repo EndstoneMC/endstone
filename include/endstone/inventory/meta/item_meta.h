@@ -75,6 +75,44 @@ public:
     }
 
     /**
+     * @brief Checks for existence of a display name.
+     *
+     * @return true if this has a display name
+     */
+    [[nodiscard]] virtual bool hasDisplayName() const
+    {
+        return display_name_.has_value() && !display_name_.value().empty();
+    }
+
+    /**
+     * @brief Gets the display name that is set.
+     *
+     * @return the display name that is set
+     */
+    [[nodiscard]] virtual std::optional<std::string> getDisplayName() const
+    {
+        if (!hasDisplayName()) {
+            return std::nullopt;
+        }
+        return display_name_;
+    }
+
+    /**
+     * @brief Sets the display name.
+     *
+     * @param name the name to set
+     */
+    virtual void setDisplayName(std::optional<std::string> name)
+    {
+        if (!name.has_value() || name.value().empty()) {
+            display_name_ = std::nullopt;
+        }
+        else {
+            display_name_ = std::move(name);
+        }
+    }
+
+    /**
      * @brief Checks for existence of lore.
      *
      * @return true if this has lore
@@ -113,6 +151,7 @@ public:
     }
 
 private:
+    std::optional<std::string> display_name_;
     std::optional<std::vector<std::string>> lore_;
 };
 }  // namespace endstone

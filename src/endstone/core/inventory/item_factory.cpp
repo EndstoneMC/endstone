@@ -24,20 +24,25 @@ void loadData(const std::shared_ptr<T> &meta, const CompoundTag &tag);
 template <>
 void loadData(const std::shared_ptr<ItemMeta> &meta, const CompoundTag &tag)
 {
-    const auto *display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
-    if (!display_tag) {
-        return;
-    }
-    const auto *lore_tag = display_tag->getList(ItemStackBase::TAG_LORE);
-    if (!lore_tag) {
-        return;
-    }
-    std::vector<std::string> lore;
-    for (auto i = 0; i < lore_tag->size(); i++) {
-        lore.emplace_back(lore_tag->getString(i));
-    }
-    if (!lore.empty()) {
-        meta->setLore(lore);
+    if (const auto *display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY)) {
+        // Display name
+        auto display_name = display_tag->getString(ItemStackBase::TAG_DISPLAY_NAME);
+        if (!display_name.empty()) {
+            meta->setDisplayName(display_name);
+        }
+
+        // Lore
+        const auto *lore_tag = display_tag->getList(ItemStackBase::TAG_LORE);
+        if (!lore_tag) {
+            return;
+        }
+        std::vector<std::string> lore;
+        for (auto i = 0; i < lore_tag->size(); i++) {
+            lore.emplace_back(lore_tag->getString(i));
+        }
+        if (!lore.empty()) {
+            meta->setLore(lore);
+        }
     }
 }
 
@@ -78,6 +83,15 @@ void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
         display_tag = tag.putCompound(ItemStackBase::TAG_DISPLAY, std::make_unique<CompoundTag>());
     }
 
+    // Display name
+    if (const auto display_name = meta->getDisplayName(); display_name.has_value()) {
+        display_tag->put(ItemStackBase::TAG_DISPLAY_NAME, std::make_unique<StringTag>(display_name.value()));
+    }
+    else {
+        display_tag->remove(ItemStackBase::TAG_DISPLAY_NAME);
+    }
+
+    // Lore
     if (const auto lore = meta->getLore(); lore.has_value()) {
         auto lore_tag = std::make_unique<ListTag>();
         for (const auto &line : lore.value()) {
