@@ -63,6 +63,7 @@ add_library(endstone_core
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/inventory.cpp
+        inventory/item_factory.cpp
         inventory/item_stack.cpp
         inventory/player_inventory.cpp
         lang/language.cpp

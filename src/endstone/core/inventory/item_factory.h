@@ -14,27 +14,18 @@
 
 #pragma once
 
-#include <memory>
-#include <optional>
-#include <string>
-#include <vector>
+#include <bedrock/world/item/item_stack_base.h>
 
-namespace endstone {
-/**
- * @brief Represents the metadata for a map item.
- */
-class MapMeta : public ItemMeta {
+#include "endstone/inventory/item_factory.h"
+
+namespace endstone::core {
+
+template <typename T>
+void loadData(std::shared_ptr<T> meta, const ItemStackBase &item);
+
+class EndstoneItemFactory {
 public:
-    using ItemMeta::ItemMeta;
-
-    [[nodiscard]] Type getType() const override
-    {
-        return Type::Map;
-    }
-
-    [[nodiscard]] std::shared_ptr<ItemMeta> clone() const override
-    {
-        return std::make_shared<MapMeta>(*this);
-    }
+    static std::shared_ptr<ItemMeta> getItemMeta(const std::string_view type, const ItemStackBase &item);
 };
-}  // namespace endstone
+
+}  // namespace endstone::core
