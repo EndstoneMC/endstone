@@ -142,6 +142,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**IpBanList**](classendstone_1_1IpBanList.md)
 ([**endstone**](namespaceendstone.md))
+* [**ItemFactory**](classendstone_1_1ItemFactory.md)
+([**endstone**](namespaceendstone.md))
 * [**ItemMeta**](classendstone_1_1ItemMeta.md)
 ([**endstone**](namespaceendstone.md))
 * [**ItemStack**](classendstone_1_1ItemStack.md)
@@ -164,6 +166,8 @@
 
 ## m
 
+* [**MapMeta**](classendstone_1_1MapMeta.md)
+([**endstone**](namespaceendstone.md))
 * [**MessageForm**](classendstone_1_1MessageForm.md)
 ([**endstone**](namespaceendstone.md))
 * [**Mob**](classendstone_1_1Mob.md)

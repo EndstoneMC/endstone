@@ -85,6 +85,7 @@
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **event\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **executor\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
+* **EMPTY** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 
@@ -133,6 +134,7 @@
 * **location\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **LightPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **label\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **lore\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **loader\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **logger\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **load\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -162,6 +164,7 @@
 * **MaterialResin** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MinecoinGold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **meta\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **message\_id\_** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **max\_players\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **minecraft\_version\_network\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))

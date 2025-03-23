@@ -45,6 +45,7 @@
     <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
     <innerclass refid="classendstone_1_1IpBanEntry" prot="public">endstone::IpBanEntry</innerclass>
     <innerclass refid="classendstone_1_1IpBanList" prot="public">endstone::IpBanList</innerclass>
+    <innerclass refid="classendstone_1_1ItemFactory" prot="public">endstone::ItemFactory</innerclass>
     <innerclass refid="classendstone_1_1ItemMeta" prot="public">endstone::ItemMeta</innerclass>
     <innerclass refid="classendstone_1_1ItemStack" prot="public">endstone::ItemStack</innerclass>
     <innerclass refid="classendstone_1_1Label" prot="public">endstone::Label</innerclass>
@@ -52,6 +53,7 @@
     <innerclass refid="classendstone_1_1Level" prot="public">endstone::Level</innerclass>
     <innerclass refid="classendstone_1_1Location" prot="public">endstone::Location</innerclass>
     <innerclass refid="classendstone_1_1Logger" prot="public">endstone::Logger</innerclass>
+    <innerclass refid="classendstone_1_1MapMeta" prot="public">endstone::MapMeta</innerclass>
     <innerclass refid="classendstone_1_1MessageForm" prot="public">endstone::MessageForm</innerclass>
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1ModalForm" prot="public">endstone::ModalForm</innerclass>

@@ -38,7 +38,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the storage mechanism for auxiliary item data._  |
+| class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the metadata of a generic item._  |
 
 
 

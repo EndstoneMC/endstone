@@ -32,23 +32,70 @@
 namespace endstone {
 class ItemMeta : public std::enable_shared_from_this<ItemMeta> {
 public:
+    static ItemMeta EMPTY;
+
     enum class Type {
-        Base = 0,
+        Item = 0,
         Map = 1,
         Count = 2,
-        None = Base,
+        None = Item,
     };
+
+    ItemMeta() = default;
+    explicit ItemMeta(const ItemMeta *meta)
+    {
+        if (meta == nullptr) {
+            return;
+        }
+        *this = *meta;
+    }
 
     virtual ~ItemMeta() = default;
 
-    [[nodiscard]] virtual Type getType() const = 0;
+    [[nodiscard]] virtual Type getType() const
+    {
+        return Type::Item;
+    }
 
-    [[nodiscard]] virtual bool hasLore() const = 0;
+    [[nodiscard]] virtual bool isEmpty() const
+    {
+        // TODO(item): more checks here
+        return !hasLore();
+    }
 
-    [[nodiscard]] virtual std::optional<std::vector<std::string>> getLore() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<ItemMeta> clone() const
+    {
+        return std::make_shared<ItemMeta>(*this);
+    }
 
-    virtual void setLore(std::optional<std::vector<std::string>> lore) = 0;
+    [[nodiscard]] virtual bool hasLore() const
+    {
+        return lore_.has_value() && !lore_.value().empty();
+    }
+
+    [[nodiscard]] virtual std::optional<std::vector<std::string>> getLore() const
+    {
+        if (!hasLore()) {
+            return std::nullopt;
+        }
+        return lore_;
+    }
+
+    virtual void setLore(std::optional<std::vector<std::string>> lore)
+    {
+        if (!lore.has_value() || !lore_.value().empty()) {
+            lore_ = std::nullopt;
+        }
+        else {
+            lore_ = std::move(lore);
+        }
+    }
+
+private:
+    std::optional<std::vector<std::string>> lore_;
 };
+
+inline ItemMeta ItemMeta::EMPTY;
 }  // namespace endstone
 ```
 
