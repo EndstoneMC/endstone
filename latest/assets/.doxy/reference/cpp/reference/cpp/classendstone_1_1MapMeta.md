@@ -50,13 +50,6 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 
 
-## Public Static Attributes inherited from endstone::ItemMeta
-
-See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
-
-| Type | Name |
-| ---: | :--- |
-|  [**ItemMeta**](classendstone_1_1ItemMeta.md) | [**EMPTY**](classendstone_1_1ItemMeta.md#variable-empty)  <br> |
 
 
 

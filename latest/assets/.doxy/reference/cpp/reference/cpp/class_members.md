@@ -167,7 +167,6 @@
 * **EventHandler** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **event\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **executor\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
-* **EMPTY** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **error** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))

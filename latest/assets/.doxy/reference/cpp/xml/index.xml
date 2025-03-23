@@ -600,7 +600,6 @@
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a46f3ea056caa3126b91f3f70beea068c" kind="enumvalue"><name>Map</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044ae93f994f01c537c4e2f7d8528c3eb5e9" kind="enumvalue"><name>Count</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ae567a6f394a977cf8c10ab0ad3a88051" kind="variable"><name>EMPTY</name></member>
     <member refid="classendstone_1_1ItemMeta_1a7905ccb73edf20aa1d50d1804d2a3abd" kind="variable"><name>lore_</name></member>
     <member refid="classendstone_1_1ItemMeta_1a4cb3e9ff9d8815008a0b8683dda34cc5" kind="function"><name>ItemMeta</name></member>
     <member refid="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" kind="function"><name>ItemMeta</name></member>

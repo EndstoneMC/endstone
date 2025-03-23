@@ -41,11 +41,6 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**ItemMeta**](classendstone_1_1ItemMeta.md) | [**EMPTY**](#variable-empty)  <br> |
 
 
 
@@ -115,21 +110,6 @@ enum endstone::ItemMeta::Type {
     Count = 2,
     None = Item
 };
-```
-
-
-
-
-<hr>
-## Public Static Attributes Documentation
-
-
-
-
-### variable EMPTY 
-
-```C++
-ItemMeta endstone::ItemMeta::EMPTY;
 ```
 
 
