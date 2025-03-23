@@ -40,14 +40,9 @@ public:
 
 protected:
     friend class core::EndstoneItemStack;
-    virtual const core::EndstoneItemStack *asEndstoneItemStack() const
+    virtual bool isEndstoneItemStack() const
     {
-        return nullptr;
-    }
-
-    virtual core::EndstoneItemStack *asEndstoneItemStack()
-    {
-        return nullptr;
+        return false;
     }
 
 public:
