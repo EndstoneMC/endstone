@@ -68,6 +68,7 @@ std::shared_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
 {
     return getItemMeta(handle_);
 }
+
 bool EndstoneItemStack::hasItemMeta() const
 {
     return hasItemMeta(handle_) && getItemMeta() != nullptr;
@@ -75,7 +76,7 @@ bool EndstoneItemStack::hasItemMeta() const
 
 bool EndstoneItemStack::setItemMeta(std::shared_ptr<ItemMeta> meta)
 {
-    return setItemMeta(handle_, meta_);
+    return setItemMeta(handle_, meta);
 }
 
 ::ItemStack EndstoneItemStack::toMinecraft(const std::shared_ptr<ItemStack> &item)
@@ -125,11 +126,12 @@ bool EndstoneItemStack::hasItemMeta(::ItemStack *item)
 
 bool EndstoneItemStack::setItemMeta(::ItemStack *item, const std::shared_ptr<ItemMeta> &meta)
 {
+    static std::shared_ptr<ItemMeta> empty = std::make_shared<ItemMeta>();
     if (!item) {
         return false;
     }
     if (!meta) {
-        EndstoneItemFactory::applyToItem(*item, ItemMeta::EMPTY.shared_from_this());
+        EndstoneItemFactory::applyToItem(*item, empty);
         return true;
     }
     // TODO(item): applicability check

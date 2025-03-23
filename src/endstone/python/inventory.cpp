@@ -32,6 +32,8 @@ void init_inventory(py::module_ &m)
         .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
                       "Gets or sets the amount of items in this stack.")
+        .def_property("item_meta", &ItemStack::getItemMeta, &ItemStack::setItemMeta,
+                      "Gets a copy of the ItemMeta or set the ItemMeta of this ItemStack.")
         .def("__str__", [](const ItemStack &self) { return fmt::format("{}", self); });
 
     py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")

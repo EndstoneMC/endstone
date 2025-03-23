@@ -1536,6 +1536,14 @@ class ItemStack:
     def amount(self, arg1: int) -> None:
         ...
     @property
+    def item_meta(self) -> ItemMeta:
+        """
+        Gets a copy of the ItemMeta or set the ItemMeta of this ItemStack.
+        """
+    @item_meta.setter
+    def item_meta(self, arg1: ItemMeta) -> bool:
+        ...
+    @property
     def type(self) -> str:
         """
         Gets or sets the type of this item.

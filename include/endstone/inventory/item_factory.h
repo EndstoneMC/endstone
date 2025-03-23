@@ -24,9 +24,9 @@ public:
                                                  const std::shared_ptr<ItemMeta> &meta = nullptr)
     {
         if (type == "minecraft:filled_map") {
-            return std::make_unique<MapMeta>(meta.get());
+            return std::make_shared<MapMeta>(meta.get());
         }
-        return std::make_unique<ItemMeta>(meta.get());
+        return std::make_shared<ItemMeta>(meta.get());
     }
 
     static std::shared_ptr<ItemMeta> asMetaFor(const std::string_view type, const std::shared_ptr<ItemMeta> &meta)

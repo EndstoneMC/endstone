@@ -25,8 +25,6 @@ namespace endstone {
  */
 class ItemMeta : public std::enable_shared_from_this<ItemMeta> {
 public:
-    static ItemMeta EMPTY;
-
     enum class Type {
         Item = 0,
         Map = 1,
@@ -106,7 +104,7 @@ public:
      */
     virtual void setLore(std::optional<std::vector<std::string>> lore)
     {
-        if (!lore.has_value() || !lore_.value().empty()) {
+        if (!lore.has_value() || lore.value().empty()) {
             lore_ = std::nullopt;
         }
         else {
@@ -117,6 +115,4 @@ public:
 private:
     std::optional<std::vector<std::string>> lore_;
 };
-
-inline ItemMeta ItemMeta::EMPTY;
 }  // namespace endstone

@@ -14,6 +14,8 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
+#include <boost/mpl/integral_c_tag.hpp>
+
 namespace endstone::core {
 
 template <typename T>
@@ -77,9 +79,10 @@ void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
     }
     display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
 
-    if (meta->hasLore()) {
+    auto lore = meta->getLore();
+    if (lore.has_value()) {
         auto lore_tag = std::make_unique<ListTag>();
-        for (const auto &line : meta->getLore().value()) {
+        for (const auto &line : lore.value()) {
             lore_tag->add(std::make_unique<StringTag>(line));
         }
         display_tag->put(ItemStackBase::TAG_LORE, std::move(lore_tag));
