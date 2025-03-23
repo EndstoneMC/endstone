@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <iostream>
-
 // We do not support compiling under MSVC Debug mode because it sets _ITERATOR_DEBUG_LEVEL
 // to a nonzero value, changing the standard library's iterator implementation and resulting
 // in an ABI incompatible with the BDS environment, which is built in Release mode.
@@ -152,36 +150,3 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "util/uuid.h"
 #include "util/vector.h"
 #include "variant.h"
-
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <dlfcn.h>
-#endif
-
-namespace endstone {
-inline Server &getServer()
-{
-    static Server *server = nullptr;
-    if (!server) {
-        using GetServerFunc = Server &(*)();
-#ifdef _WIN32
-        const HMODULE module = GetModuleHandleA("endstone_runtime.dll");
-        if (!module) {
-            std::cerr << "Failed to obtain host module handle.\n";
-            std::exit(1);
-        }
-        auto get_server = reinterpret_cast<GetServerFunc>(GetProcAddress(module, "endstone_getServer"));
-#else
-        // On Linux, use dlsym with RTLD_DEFAULT to search the global symbol table.
-        auto get_server = reinterpret_cast<GetServerFunc>(dlsym(RTLD_DEFAULT, "endstone_getServer"));
-#endif
-        if (!get_server) {
-            std::cerr << "Failed to retrieve getServer function pointer.\n";
-            std::exit(1);
-        }
-        server = &get_server();
-    }
-    return *server;
-}
-}  // namespace endstone

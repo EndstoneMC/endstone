@@ -108,10 +108,9 @@ const std::error_category &error_category()
 
 void install()
 {
-    auto detours = details::get_detours();
+    const auto &detours = details::get_detours();
     const auto &targets = details::get_targets();
 
-    detours.erase("endstone_getServer");
     for (const auto &[name, detour] : detours) {
         if (auto it = targets.find(name); it != targets.end()) {
             void *target = it->second;

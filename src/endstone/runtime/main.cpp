@@ -26,13 +26,6 @@
 
 namespace py = pybind11;
 
-extern "C" {
-ENDSTONE_EXPORT endstone::Server &endstone_getServer()
-{
-    return entt::locator<endstone::core::EndstoneServer>::value();
-}
-}
-
 int init()
 {
     spdlog::flush_every(std::chrono::seconds(5));
