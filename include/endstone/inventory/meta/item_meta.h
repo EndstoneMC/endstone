@@ -32,6 +32,8 @@ public:
         None = Base,
     };
 
+    ItemMeta() = default;
+
     virtual ~ItemMeta() = default;
 
     /**

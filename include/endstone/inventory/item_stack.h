@@ -99,15 +99,41 @@ public:
      */
     virtual std::shared_ptr<ItemMeta> getItemMeta() const
     {
-        // TODO(item): return the actual item meta
-        return nullptr;
+        // TODO(item): support type-specific meta
+        return meta_ ? std::make_shared<ItemMeta>(*meta_) : std::shared_ptr<ItemMeta>();
     }
 
-    // TODO(item): setItemMeta
+    /**
+     * @brief Checks to see if any metadata has been defined.
+     *
+     * @return Returns true if some metadata has been set for this item
+     */
+    virtual bool hasItemMeta() const
+    {
+        return meta_ != nullptr;
+    }
+
+    /**
+     * @brief Set the ItemMeta of this ItemStack.
+     *
+     * @param meta new ItemMeta, or null to indicate meta data be cleared.
+     * @return True if successfully applied ItemMeta
+     */
+    virtual bool setItemMeta(std::shared_ptr<ItemMeta> meta)
+    {
+        if (!meta) {
+            meta_ = nullptr;
+            return true;
+        }
+        // TODO(item): applicability check, support type-specific meta
+        meta_ = std::make_shared<ItemMeta>(*meta);  // always make a copy
+        return true;
+    }
 
 private:
     std::string type_ = "minecraft:air";
     int amount_ = 0;
+    std::shared_ptr<ItemMeta> meta_;
 };
 
 }  // namespace endstone
