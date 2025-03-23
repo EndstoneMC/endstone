@@ -25,6 +25,8 @@ namespace endstone {
  */
 class MapMeta : public ItemMeta {
 public:
+    using ItemMeta::ItemMeta;
+
     [[nodiscard]] Type getType() const override
     {
         return Type::Map;

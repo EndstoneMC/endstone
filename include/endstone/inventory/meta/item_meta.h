@@ -21,18 +21,25 @@
 
 namespace endstone {
 /**
- * @brief Represents the storage mechanism for auxiliary item data.
+ * @brief Represents the metadata of a generic item.
  */
 class ItemMeta : public std::enable_shared_from_this<ItemMeta> {
 public:
     enum class Type {
-        Base = 0,
+        Item = 0,
         Map = 1,
         Count = 2,
-        None = Base,
+        None = Item,
     };
 
     ItemMeta() = default;
+    explicit ItemMeta(const ItemMeta *meta)
+    {
+        if (meta == nullptr) {
+            return;
+        }
+        *this = *meta;
+    }
 
     virtual ~ItemMeta() = default;
 
@@ -43,7 +50,17 @@ public:
      */
     [[nodiscard]] virtual Type getType() const
     {
-        return Type::Base;
+        return Type::Item;
+    }
+
+    /**
+     * @brief Creates a clone of the current metadata.
+     *
+     * @return A copy of the metadata containing the same state as the original.
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemMeta> clone() const
+    {
+        return std::make_shared<ItemMeta>(*this);
     }
 
     /**

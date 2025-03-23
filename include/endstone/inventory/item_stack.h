@@ -21,6 +21,7 @@
 #include <memory>
 
 #include "endstone/inventory/meta/item_meta.h"
+#include "item_factory.h"
 
 namespace endstone {
 
@@ -94,8 +95,7 @@ public:
      */
     virtual std::shared_ptr<ItemMeta> getItemMeta() const
     {
-        // TODO(item): support type-specific meta
-        return meta_ ? std::make_shared<ItemMeta>(*meta_) : std::shared_ptr<ItemMeta>();
+        return meta_ ? ItemFactory::getItemMeta(type_) : meta_->clone();
     }
 
     /**
@@ -121,7 +121,10 @@ public:
             return true;
         }
         // TODO(item): applicability check, support type-specific meta
-        meta_ = std::make_shared<ItemMeta>(*meta);  // always make a copy
+        meta_ = ItemFactory::asMetaFor(type_, meta);
+        if (meta_ == meta) {
+            meta_ = meta->clone();
+        }
         return true;
     }
 
