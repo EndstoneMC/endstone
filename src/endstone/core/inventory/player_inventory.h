@@ -38,8 +38,14 @@ public:
     [[nodiscard]] std::unique_ptr<ItemStack> getChestplate() const override;
     [[nodiscard]] std::unique_ptr<ItemStack> getLeggings() const override;
     [[nodiscard]] std::unique_ptr<ItemStack> getBoots() const override;
+    void setHelmet(const ItemStack *helmet) override;
+    void setChestplate(const ItemStack *chestplate) override;
+    void setLeggings(const ItemStack *leggings) override;
+    void setBoots(const ItemStack *boots) override;
     [[nodiscard]] std::unique_ptr<ItemStack> getItemInMainHand() const override;
+    void setItemInMainHand(const ItemStack *item) override;
     [[nodiscard]] std::unique_ptr<ItemStack> getItemInOffHand() const override;
+    void setItemInOffHand(const ItemStack *item) override;
     [[nodiscard]] int getHeldItemSlot() const override;
     void setHeldItemSlot(int slot) override;
 

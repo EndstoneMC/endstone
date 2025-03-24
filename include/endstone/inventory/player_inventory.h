@@ -52,6 +52,42 @@ public:
     [[nodiscard]] virtual std::unique_ptr<ItemStack> getBoots() const = 0;
 
     /**
+     * @brief Put the given ItemStack into the helmet slot.
+     *
+     * This does not check if the ItemStack is a helmet.
+     *
+     * @param helmet The ItemStack to use as helmet
+     */
+    virtual void setHelmet(const ItemStack *helmet) = 0;
+
+    /**
+     * @brief Put the given ItemStack into the chestplate slot.
+     *
+     * This does not check if the ItemStack is a chestplate.
+     *
+     * @param chestplate The ItemStack to use as chestplate
+     */
+    virtual void setChestplate(const ItemStack *chestplate) = 0;
+
+    /**
+     * @brief Put the given ItemStack into the leggings slot.
+     *
+     * This does not check if the ItemStack is a pair of leggings.
+     *
+     * @param leggings The ItemStack to use as leggings
+     */
+    virtual void setLeggings(const ItemStack *leggings) = 0;
+
+    /**
+     * @brief Put the given ItemStack into the boots slot.
+     *
+     * This does not check if the ItemStack is a pair of boots.
+     *
+     * @param boots The ItemStack to use as boots
+     */
+    virtual void setBoots(const ItemStack *boots) = 0;
+
+    /**
      * @brief Gets the item the player is currently holding in their main hand.
      *
      * @return the currently held item
@@ -59,11 +95,25 @@ public:
     [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemInMainHand() const = 0;
 
     /**
+     * @brief Sets the item the player is holding in their main hand.
+     *
+     * @param item The item to put into the player's hand
+     */
+    virtual void setItemInMainHand(const ItemStack *item) = 0;
+
+    /**
      * @brief Gets the item the player is currently holding in their off hand.
      *
      * @return the currently held item
      */
     [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemInOffHand() const = 0;
+
+    /**
+     * @brief Sets the item the player is holding in their off hand.
+     *
+     * @param item The item to put into the player's hand
+     */
+    virtual void setItemInOffHand(const ItemStack *item) = 0;
 
     /**
      * @brief Get the slot number of the currently held item

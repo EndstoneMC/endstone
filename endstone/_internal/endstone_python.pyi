@@ -2723,13 +2723,19 @@ class PlayerInventory(Inventory):
     @property
     def boots(self) -> ItemStack:
         """
-        Gets the ItemStack from the boots slot
+        Gets or sets the ItemStack in the boots slot
         """
+    @boots.setter
+    def boots(self, arg1: ItemStack) -> None:
+        ...
     @property
     def chestplate(self) -> ItemStack:
         """
-        Gets the ItemStack from the chestplate slot
+        Gets or sets the ItemStack in the chestplate slot
         """
+    @chestplate.setter
+    def chestplate(self, arg1: ItemStack) -> None:
+        ...
     @property
     def held_item_slot(self) -> int:
         """
@@ -2741,23 +2747,35 @@ class PlayerInventory(Inventory):
     @property
     def helmet(self) -> ItemStack:
         """
-        Gets the ItemStack from the helmet slot
+        Gets or sets the ItemStack in the helmet slot
         """
+    @helmet.setter
+    def helmet(self, arg1: ItemStack) -> None:
+        ...
     @property
     def item_in_main_hand(self) -> ItemStack:
         """
-        Gets the item the player is currently holding in their main hand.
+        Gets or sets the item the player is currently holding in their main hand.
         """
+    @item_in_main_hand.setter
+    def item_in_main_hand(self, arg1: ItemStack) -> None:
+        ...
     @property
     def item_in_off_hand(self) -> ItemStack:
         """
-        Gets the item the player is currently holding in their off hand.
+        Gets or sets the item the player is currently holding in their off hand.
         """
+    @item_in_off_hand.setter
+    def item_in_off_hand(self, arg1: ItemStack) -> None:
+        ...
     @property
     def leggings(self) -> ItemStack:
         """
-        Gets the ItemStack from the leg slot
+        Gets or sets the ItemStack in the leg slot
         """
+    @leggings.setter
+    def leggings(self, arg1: ItemStack) -> None:
+        ...
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server

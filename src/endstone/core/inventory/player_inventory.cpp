@@ -86,14 +86,44 @@ std::unique_ptr<ItemStack> EndstonePlayerInventory::getBoots() const
     return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Feet));
 }
 
+void EndstonePlayerInventory::setHelmet(const ItemStack *helmet)
+{
+    holder_.setArmor(ArmorSlot::Head, EndstoneItemStack::toMinecraft(helmet));
+}
+
+void EndstonePlayerInventory::setChestplate(const ItemStack *chestplate)
+{
+    holder_.setArmor(ArmorSlot::Torso, EndstoneItemStack::toMinecraft(chestplate));
+}
+
+void EndstonePlayerInventory::setLeggings(const ItemStack *leggings)
+{
+    holder_.setArmor(ArmorSlot::Legs, EndstoneItemStack::toMinecraft(leggings));
+}
+
+void EndstonePlayerInventory::setBoots(const ItemStack *boots)
+{
+    holder_.setArmor(ArmorSlot::Feet, EndstoneItemStack::toMinecraft(boots));
+}
+
 std::unique_ptr<ItemStack> EndstonePlayerInventory::getItemInMainHand() const
 {
     return getItem(holder_.getSelectedItemSlot());
 }
 
+void EndstonePlayerInventory::setItemInMainHand(const ItemStack *item)
+{
+    setItem(holder_.getSelectedItemSlot(), item);
+}
+
 std::unique_ptr<ItemStack> EndstonePlayerInventory::getItemInOffHand() const
 {
     return EndstoneItemStack::fromMinecraft(holder_.getOffhandSlot());
+}
+
+void EndstonePlayerInventory::setItemInOffHand(const ItemStack *item)
+{
+    holder_.setOffhandSlot(EndstoneItemStack::toMinecraft(item));
 }
 
 int EndstonePlayerInventory::getHeldItemSlot() const
