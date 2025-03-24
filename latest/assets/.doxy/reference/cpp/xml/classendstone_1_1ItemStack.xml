@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1ItemStack" kind="class" language="C++" prot="public">
     <compoundname>endstone::ItemStack</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; ItemStack &gt;</basecompoundref>
     <includes refid="item__stack_8h" local="no">endstone/inventory/item_stack.h</includes>
     <sectiondef kind="friend">
       <memberdef kind="friend" id="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -305,28 +304,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1">
-        <label>endstone::ItemStack</label>
-        <link refid="classendstone_1_1ItemStack"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; ItemStack &gt;</label>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1">
-        <label>endstone::ItemStack</label>
-        <link refid="classendstone_1_1ItemStack"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; ItemStack &gt;</label>
-      </node>
-    </collaborationgraph>
     <location file="include/endstone/inventory/item_stack.h" line="35" column="1" bodyfile="include/endstone/inventory/item_stack.h" bodystart="35" bodyend="135"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>amount_</name></member>

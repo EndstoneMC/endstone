@@ -53,15 +53,15 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**addItem**](#function-additem) ([**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**addItem**](#function-additem) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**clear**](#function-clear) () = 0<br>_Clears out the whole_ [_**Inventory**_](classendstone_1_1Inventory.md) _._ |
-| virtual [**int**](classendstone_1_1Vector.md) | [**first**](#function-first) ([**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Returns the first slot in the inventory containing an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _with the given stack._ |
-| virtual std::vector&lt; std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; | [**getContents**](#function-getcontents) () const = 0<br>_Returns all ItemStacks from the inventory._  |
-| virtual std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItem**](#function-getitem) ([**int**](classendstone_1_1Vector.md) index) const = 0<br>_Returns the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _found in the slot at the given index._ |
+| virtual [**int**](classendstone_1_1Vector.md) | [**first**](#function-first) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Returns the first slot in the inventory containing an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _with the given stack._ |
+| virtual std::vector&lt; std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; | [**getContents**](#function-getcontents) () const = 0<br>_Returns all ItemStacks from the inventory._  |
+| virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItem**](#function-getitem) ([**int**](classendstone_1_1Vector.md) index) const = 0<br>_Returns the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _found in the slot at the given index._ |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Returns the maximum stack size for an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _in this inventory._ |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getSize**](#function-getsize) () const = 0<br>_Returns the size of the inventory._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isEmpty**](#function-isempty) () const = 0<br>_Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setItem**](#function-setitem) ([**int**](classendstone_1_1Vector.md) index, std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item) = 0<br>_Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given index of the inventory._ |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setItem**](#function-setitem) ([**int**](classendstone_1_1Vector.md) index, [**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* item) = 0<br>_Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given index of the inventory._ |
 | virtual  | [**~Inventory**](#function-inventory) () = default<br> |
 
 
@@ -101,7 +101,7 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 _Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can._ 
 ```C++
 virtual void endstone::Inventory::addItem (
-    ItemStack & item
+    const  ItemStack & item
 ) = 0
 ```
 
@@ -142,8 +142,8 @@ virtual void endstone::Inventory::clear () = 0
 _Returns the first slot in the inventory containing an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _with the given stack._
 ```C++
 virtual int endstone::Inventory::first (
-    ItemStack & item
-) = 0
+    const  ItemStack & item
+) const = 0
 ```
 
 
@@ -175,7 +175,7 @@ The slot index of the given [**ItemStack**](classendstone_1_1ItemStack.md) or -1
 
 _Returns all ItemStacks from the inventory._ 
 ```C++
-virtual std::vector< std::shared_ptr< ItemStack > > endstone::Inventory::getContents () const = 0
+virtual std::vector< std::unique_ptr< ItemStack > > endstone::Inventory::getContents () const = 0
 ```
 
 
@@ -200,7 +200,7 @@ An array of ItemStacks from the inventory. Individual items may be null.
 
 _Returns the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _found in the slot at the given index._
 ```C++
-virtual std::shared_ptr< ItemStack > endstone::Inventory::getItem (
+virtual std::unique_ptr< ItemStack > endstone::Inventory::getItem (
     int index
 ) const = 0
 ```
@@ -311,7 +311,7 @@ _Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given inde
 ```C++
 virtual void endstone::Inventory::setItem (
     int index,
-    std::shared_ptr< ItemStack > item
+    const  ItemStack * item
 ) = 0
 ```
 

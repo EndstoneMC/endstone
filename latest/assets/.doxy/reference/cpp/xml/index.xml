@@ -566,11 +566,11 @@
     <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" kind="function"><name>~Inventory</name></member>
     <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" kind="function"><name>getSize</name></member>
     <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" kind="function"><name>getMaxStackSize</name></member>
-    <member refid="classendstone_1_1Inventory_1aa619cc21dec01cbe198065cbcbd2abf8" kind="function"><name>getItem</name></member>
-    <member refid="classendstone_1_1Inventory_1a69eeb486417970b8575356f39ee55320" kind="function"><name>setItem</name></member>
-    <member refid="classendstone_1_1Inventory_1a44e46ae514650cc16b605b1b4769c6fc" kind="function"><name>addItem</name></member>
-    <member refid="classendstone_1_1Inventory_1a9e11b2e4c87f727a8c808a53449a072e" kind="function"><name>getContents</name></member>
-    <member refid="classendstone_1_1Inventory_1a30d61d7b9ec2232c7f0d1b038f6f1a1a" kind="function"><name>first</name></member>
+    <member refid="classendstone_1_1Inventory_1ade917e3c7719cb3ec7b6ffa8db27462b" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" kind="function"><name>setItem</name></member>
+    <member refid="classendstone_1_1Inventory_1aa0b7467f203722c8224f4d0d2c18a6a1" kind="function"><name>addItem</name></member>
+    <member refid="classendstone_1_1Inventory_1aed3238de786bddbcf39761658b95c48b" kind="function"><name>getContents</name></member>
+    <member refid="classendstone_1_1Inventory_1afd3997dd60d7f4f0649aa4280f05bc24" kind="function"><name>first</name></member>
     <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" kind="function"><name>isEmpty</name></member>
     <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" kind="function"><name>clear</name></member>
   </compound>
@@ -1006,27 +1006,27 @@
   </compound>
   <compound refid="classendstone_1_1PlayerInteractEvent" kind="class"><name>endstone::PlayerInteractEvent</name>
     <member refid="classendstone_1_1PlayerInteractEvent_1abac8921bf78c78354ff50a94cd9d25b1" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerInteractEvent_1ad0c64e0521987e5dae12809296a739bf" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1ad1d466d344a89164b579dc62d9f2a86c" kind="variable"><name>item_</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a71797286dbb58b39e92fb1803ef9cf3e" kind="variable"><name>block_clicked_</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a6eae7ed2b14249eeea133f6297d0a960" kind="variable"><name>block_face_</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a50a670a3475715ed0b2e8d7ca24320ea" kind="variable"><name>clicked_position_</name></member>
-    <member refid="classendstone_1_1PlayerInteractEvent_1a24a9bd0065f02d7ce9bb62a43504f30d" kind="function"><name>PlayerInteractEvent</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1afab4425c711f7ae97e7afe985e19b934" kind="function"><name>PlayerInteractEvent</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a79542b22fedd19df03ea203e9c0cd9f7" kind="function"><name>~PlayerInteractEvent</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1ad3cf6bffe4c85dd968febed54fb22e2e" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a24de1e03d7c563bc8cddc7ee7e4c73c5" kind="function"><name>hasItem</name></member>
-    <member refid="classendstone_1_1PlayerInteractEvent_1aaccafaf7a7911a6737853a34fbc30dce" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a2d08f03d4f791c471a4bedc4ae0bf03b" kind="function"><name>getItem</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a34e1b96ac0ad624c40e8877a4696111e" kind="function"><name>hasBlock</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a81c8c9f27b65f2b9125fa9057605d7f8" kind="function"><name>getBlock</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" kind="function"><name>getBlockFace</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1af320c80fe31afe89aeabe1f344e5a56d" kind="function"><name>getClickedPosition</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerInventory" kind="class"><name>endstone::PlayerInventory</name>
-    <member refid="classendstone_1_1PlayerInventory_1ad433a57e218d2e6f5ea53d0f8c832f21" kind="function"><name>getHelmet</name></member>
-    <member refid="classendstone_1_1PlayerInventory_1aaeb5dd80e741f18877c16c75f6b8bb2e" kind="function"><name>getChestplate</name></member>
-    <member refid="classendstone_1_1PlayerInventory_1abdd04c432e76f76f0413f522d3921d38" kind="function"><name>getLeggings</name></member>
-    <member refid="classendstone_1_1PlayerInventory_1a9c3955ed3e203d6487850d57f85ef424" kind="function"><name>getBoots</name></member>
-    <member refid="classendstone_1_1PlayerInventory_1a9a61b9533ba53ece25d5e118bac36bfc" kind="function"><name>getItemInMainHand</name></member>
-    <member refid="classendstone_1_1PlayerInventory_1a138adf16c2be36e572643e8d639a8ec4" kind="function"><name>getItemInOffHand</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a5d8aed04054ac15ff23520de1bd12bd3" kind="function"><name>getHelmet</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1ab86d60990578106d6482ffcebceb7af8" kind="function"><name>getChestplate</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1ad3ae88bf84272b3b6cf4b9bb24e11c1f" kind="function"><name>getLeggings</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1adee7ce6d4f195755d45b2b69e62a3817" kind="function"><name>getBoots</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a99872b670e9b45c92c6527f872edefdb" kind="function"><name>getItemInMainHand</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a10ac6823a0e6dcf8435d61f9e06e7966" kind="function"><name>getItemInOffHand</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kind="function"><name>getHeldItemSlot</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" kind="function"><name>setHeldItemSlot</name></member>
   </compound>

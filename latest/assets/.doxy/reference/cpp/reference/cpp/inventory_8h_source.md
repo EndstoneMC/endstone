@@ -37,15 +37,15 @@ public:
 
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItem(int index) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItem(int index) const = 0;
 
-    virtual void setItem(int index, std::shared_ptr<ItemStack> item) = 0;
+    virtual void setItem(int index, const ItemStack *item) = 0;
 
-    virtual void addItem(ItemStack &item) = 0;
+    virtual void addItem(const ItemStack &item) = 0;
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<ItemStack>> getContents() const = 0;
+    [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getContents() const = 0;
 
-    [[nodiscard]] virtual int first(ItemStack &item) = 0;
+    [[nodiscard]] virtual int first(const ItemStack &item) const = 0;
 
     [[nodiscard]] virtual bool isEmpty() const = 0;
 

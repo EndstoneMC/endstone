@@ -14,7 +14,6 @@ _Represents a stack of items._
 
 
 
-Inherits the following classes: std::enable_shared_from_this< ItemStack >
 
 
 

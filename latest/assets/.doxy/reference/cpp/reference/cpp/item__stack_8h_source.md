@@ -39,7 +39,7 @@ namespace core {
 class EndstoneItemStack;
 }
 
-class ItemStack : public std::enable_shared_from_this<ItemStack> {
+class ItemStack {
 public:
     ItemStack() = default;
     explicit ItemStack(std::string type, int amount = 1) : type_(std::move(type)), amount_(amount) {}
