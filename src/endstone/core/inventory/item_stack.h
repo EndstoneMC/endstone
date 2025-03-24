@@ -35,8 +35,8 @@ public:
     bool hasItemMeta() const override;
     bool setItemMeta(ItemMeta *meta) override;
 
-    static ::ItemStack toMinecraft(const std::shared_ptr<ItemStack> &item);
-    static std::shared_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
+    static ::ItemStack toMinecraft(const ItemStack *item);
+    static std::unique_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
     static std::string getType(const ::ItemStack *item);
     static std::unique_ptr<ItemMeta> getItemMeta(const ::ItemStack *item);
     static bool hasItemMeta(const ::ItemStack *item);

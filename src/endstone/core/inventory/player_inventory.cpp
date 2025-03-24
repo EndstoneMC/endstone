@@ -28,29 +28,29 @@ int EndstonePlayerInventory::getMaxStackSize() const
     return EndstoneInventory::getMaxStackSize();
 }
 
-std::shared_ptr<ItemStack> EndstonePlayerInventory::getItem(int index) const
+std::unique_ptr<ItemStack> EndstonePlayerInventory::getItem(int index) const
 {
     return EndstoneInventory::getItem(index);
 }
 
-void EndstonePlayerInventory::setItem(int index, std::shared_ptr<ItemStack> item)
+void EndstonePlayerInventory::setItem(int index, const ItemStack *item)
 {
     EndstoneInventory::setItem(index, item);
     holder_.sendInventory(false);
 }
 
-void EndstonePlayerInventory::addItem(ItemStack &item)
+void EndstonePlayerInventory::addItem(const ItemStack &item)
 {
     EndstoneInventory::addItem(item);
     holder_.sendInventory(false);
 }
 
-std::vector<std::shared_ptr<ItemStack>> EndstonePlayerInventory::getContents() const
+std::vector<std::unique_ptr<ItemStack>> EndstonePlayerInventory::getContents() const
 {
     return EndstoneInventory::getContents();
 }
 
-int EndstonePlayerInventory::first(ItemStack &item)
+int EndstonePlayerInventory::first(const ItemStack &item) const
 {
     return EndstoneInventory::first(item);
 }
@@ -66,32 +66,32 @@ void EndstonePlayerInventory::clear()
     holder_.sendInventory(false);
 }
 
-std::shared_ptr<ItemStack> EndstonePlayerInventory::getHelmet() const
+std::unique_ptr<ItemStack> EndstonePlayerInventory::getHelmet() const
 {
     return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Head));
 }
 
-std::shared_ptr<ItemStack> EndstonePlayerInventory::getChestplate() const
+std::unique_ptr<ItemStack> EndstonePlayerInventory::getChestplate() const
 {
     return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Torso));
 }
 
-std::shared_ptr<ItemStack> EndstonePlayerInventory::getLeggings() const
+std::unique_ptr<ItemStack> EndstonePlayerInventory::getLeggings() const
 {
     return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Legs));
 }
 
-std::shared_ptr<ItemStack> EndstonePlayerInventory::getBoots() const
+std::unique_ptr<ItemStack> EndstonePlayerInventory::getBoots() const
 {
     return EndstoneItemStack::fromMinecraft(holder_.getArmor(ArmorSlot::Feet));
 }
 
-std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInMainHand() const
+std::unique_ptr<ItemStack> EndstonePlayerInventory::getItemInMainHand() const
 {
     return getItem(holder_.getSelectedItemSlot());
 }
 
-std::shared_ptr<ItemStack> EndstonePlayerInventory::getItemInOffHand() const
+std::unique_ptr<ItemStack> EndstonePlayerInventory::getItemInOffHand() const
 {
     return EndstoneItemStack::fromMinecraft(holder_.getOffhandSlot());
 }

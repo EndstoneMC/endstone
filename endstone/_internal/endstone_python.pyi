@@ -1400,7 +1400,7 @@ class Inventory:
         """
         Returns the size of the inventory
         """
-    def __set_item__(self, index: int, item: ItemStack | None) -> None:
+    def __set_item__(self, index: int, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
@@ -1420,7 +1420,7 @@ class Inventory:
         """
         Returns the ItemStack found in the slot at the given index
         """
-    def set_item(self, index: int, item: ItemStack | None) -> None:
+    def set_item(self, index: int, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """

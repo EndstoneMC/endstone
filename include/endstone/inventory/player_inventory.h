@@ -28,42 +28,42 @@ public:
      *
      * @return The ItemStack in the helmet slot
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getHelmet() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getHelmet() const = 0;
 
     /**
      * @brief Return the ItemStack from the chestplate slot
      *
      * @return The ItemStack in the chestplate slot
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getChestplate() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getChestplate() const = 0;
 
     /**
      * @brief Return the ItemStack from the leg slot
      *
      * @return The ItemStack in the leg slot
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getLeggings() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getLeggings() const = 0;
 
     /**
      * @brief Return the ItemStack from the boots slot
      *
      * @return The ItemStack in the boots slot
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getBoots() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getBoots() const = 0;
 
     /**
      * @brief Gets the item the player is currently holding in their main hand.
      *
      * @return the currently held item
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInMainHand() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemInMainHand() const = 0;
 
     /**
      * @brief Gets the item the player is currently holding in their off hand.
      *
      * @return the currently held item
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItemInOffHand() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemInOffHand() const = 0;
 
     /**
      * @brief Get the slot number of the currently held item

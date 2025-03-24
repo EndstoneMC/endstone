@@ -30,7 +30,7 @@ void init_inventory(py::module_ &m)
 
     py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
 
-    py::class_<ItemStack, std::shared_ptr<ItemStack>>(m, "ItemStack", "Represents a stack of items.")
+    py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.")
         .def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
         .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
@@ -45,12 +45,8 @@ void init_inventory(py::module_ &m)
                                "Returns the maximum stack size for an ItemStack in this inventory.")
         .def("get_item", &Inventory::getItem, py::arg("index"),
              "Returns the ItemStack found in the slot at the given index")
-        .def(
-            "set_item",
-            [](Inventory &self, int index, std::optional<std::shared_ptr<ItemStack>> item) {
-                self.setItem(index, item.value_or(nullptr));
-            },
-            py::arg("index"), py::arg("item"), "Stores the ItemStack at the given index of the inventory.")
+        .def("set_item", &Inventory::setItem, py::arg("index"), py::arg("item"),
+             "Stores the ItemStack at the given index of the inventory.")
         .def("add_item", &Inventory::addItem, py::arg("item"),
              "Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as "
              "well as it can.")
@@ -64,12 +60,8 @@ void init_inventory(py::module_ &m)
         .def("__len__", &Inventory::getSize, "Returns the size of the inventory")
         .def("__get_item__", &Inventory::getItem, py::arg("index"),
              "Returns the ItemStack found in the slot at the given index")
-        .def(
-            "__set_item__",
-            [](Inventory &self, int index, std::optional<std::shared_ptr<ItemStack>> item) {
-                self.setItem(index, item.value_or(nullptr));
-            },
-            py::arg("index"), py::arg("item"), "Stores the ItemStack at the given index of the inventory.");
+        .def("__set_item__", &Inventory::setItem, py::arg("index"), py::arg("item"),
+             "Stores the ItemStack at the given index of the inventory.");
 
     py::class_<PlayerInventory, Inventory>(
         m, "PlayerInventory",

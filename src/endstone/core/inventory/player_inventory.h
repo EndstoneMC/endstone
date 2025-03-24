@@ -26,20 +26,20 @@ public:
 
     [[nodiscard]] int getSize() const override;
     [[nodiscard]] int getMaxStackSize() const override;
-    [[nodiscard]] std::shared_ptr<ItemStack> getItem(int index) const override;
-    void setItem(int index, std::shared_ptr<ItemStack> item) override;
-    void addItem(ItemStack &item) override;
-    [[nodiscard]] std::vector<std::shared_ptr<ItemStack>> getContents() const override;
-    [[nodiscard]] int first(ItemStack &item) override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getItem(int index) const override;
+    void setItem(int index, const ItemStack *item) override;
+    void addItem(const ItemStack &item) override;
+    [[nodiscard]] std::vector<std::unique_ptr<ItemStack>> getContents() const override;
+    [[nodiscard]] int first(const ItemStack &item) const override;
     [[nodiscard]] bool isEmpty() const override;
     void clear() override;
 
-    [[nodiscard]] std::shared_ptr<ItemStack> getHelmet() const override;
-    [[nodiscard]] std::shared_ptr<ItemStack> getChestplate() const override;
-    [[nodiscard]] std::shared_ptr<ItemStack> getLeggings() const override;
-    [[nodiscard]] std::shared_ptr<ItemStack> getBoots() const override;
-    [[nodiscard]] std::shared_ptr<ItemStack> getItemInMainHand() const override;
-    [[nodiscard]] std::shared_ptr<ItemStack> getItemInOffHand() const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getHelmet() const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getChestplate() const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getLeggings() const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getBoots() const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getItemInMainHand() const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getItemInOffHand() const override;
     [[nodiscard]] int getHeldItemSlot() const override;
     void setHeldItemSlot(int slot) override;
 

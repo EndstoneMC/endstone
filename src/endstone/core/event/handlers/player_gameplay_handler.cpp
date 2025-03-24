@@ -212,12 +212,11 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithBlockBef
         const auto &server = entt::locator<EndstoneServer>::value();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = EndstoneBlock::at(block_source, BlockPos(event.block_location));
-        const std::shared_ptr<EndstoneItemStack> item_stack =
-            event.item.isNull() ? nullptr : EndstoneItemStack::fromMinecraft(event.item);
+        const auto item_stack = event.item.isNull() ? nullptr : EndstoneItemStack::fromMinecraft(event.item);
 
         PlayerInteractEvent e{
             player->getEndstoneActor<EndstonePlayer>(),
-            item_stack,
+            item_stack.get(),
             block,
             static_cast<BlockFace>(event.block_face),
             {event.face_location.x, event.face_location.y, event.face_location.z},

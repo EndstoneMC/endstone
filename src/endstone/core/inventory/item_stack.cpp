@@ -79,14 +79,13 @@ bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
     return setItemMeta(handle_, meta);
 }
 
-::ItemStack EndstoneItemStack::toMinecraft(const std::shared_ptr<ItemStack> &item)
+::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
     if (!item || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
     }
     if (item->isEndstoneItemStack()) {
-        const auto stack = std::static_pointer_cast<EndstoneItemStack>(item);
-        if (stack->handle_) {
+        if (const auto *stack = static_cast<const EndstoneItemStack *>(item); stack->handle_) {
             return *stack->handle_;  // Call the copy constructor to make a copy
         }
         return {};  // Empty item stack
@@ -98,12 +97,12 @@ bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
     return stack;
 }
 
-std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::ItemStack &item)
+std::unique_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::ItemStack &item)
 {
     if (item.isNull()) {
         return nullptr;
     }
-    return std::make_shared<EndstoneItemStack>(item);
+    return std::make_unique<EndstoneItemStack>(item);
 }
 
 std::string EndstoneItemStack::getType(const ::ItemStack *item)

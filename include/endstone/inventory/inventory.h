@@ -46,7 +46,7 @@ public:
      * @param index The index of the Slot's ItemStack to return
      * @return The ItemStack in the slot
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItem(int index) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItem(int index) const = 0;
 
     /**
      * @brief Stores the ItemStack at the given index of the inventory.
@@ -54,7 +54,7 @@ public:
      * @param index The index where to put the ItemStack
      * @param item The ItemStack to set
      */
-    virtual void setItem(int index, std::shared_ptr<ItemStack> item) = 0;
+    virtual void setItem(int index, const ItemStack *item) = 0;
 
     /**
      * @brief Stores the given ItemStacks in the inventory. This will try to fill
@@ -62,14 +62,14 @@ public:
      *
      * @param item The ItemStack to add
      */
-    virtual void addItem(ItemStack &item) = 0;
+    virtual void addItem(const ItemStack &item) = 0;
 
     /**
      * @brief Returns all ItemStacks from the inventory
      *
      * @return An array of ItemStacks from the inventory. Individual items may be null.
      */
-    [[nodiscard]] virtual std::vector<std::shared_ptr<ItemStack>> getContents() const = 0;
+    [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getContents() const = 0;
 
     /**
      * @brief Returns the first slot in the inventory containing an ItemStack with the given stack.
@@ -77,7 +77,7 @@ public:
      * @param item The ItemStack to match against
      * @return The slot index of the given ItemStack or -1 if not found
      */
-    [[nodiscard]] virtual int first(ItemStack &item) = 0;
+    [[nodiscard]] virtual int first(const ItemStack &item) const = 0;
 
     /**
      * @brief Check whether this inventory is empty. An inventory is considered
