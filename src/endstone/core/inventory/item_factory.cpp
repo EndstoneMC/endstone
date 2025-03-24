@@ -14,8 +14,6 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
-#include <boost/mpl/integral_c_tag.hpp>
-
 namespace endstone::core {
 
 template <typename T>
