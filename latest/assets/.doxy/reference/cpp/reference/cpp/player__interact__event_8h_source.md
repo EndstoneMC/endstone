@@ -32,9 +32,9 @@ namespace endstone {
 
 class PlayerInteractEvent : public Cancellable<PlayerEvent> {
 public:
-    PlayerInteractEvent(Player &player, ItemStack *item, std::shared_ptr<Block> block_clicked, BlockFace block_face,
+    PlayerInteractEvent(Player &player, ItemStack *item, Block *block_clicked, BlockFace block_face,
                         const Vector<float> &clicked_position)
-        : Cancellable(player), item_(item), block_clicked_(std::move(block_clicked)), block_face_(block_face),
+        : Cancellable(player), item_(item), block_clicked_(block_clicked), block_face_(block_face),
           clicked_position_(clicked_position)
     {
     }
@@ -61,7 +61,7 @@ public:
         return block_clicked_ != nullptr;
     }
 
-    [[nodiscard]] std::shared_ptr<Block> getBlock() const
+    [[nodiscard]] Block *getBlock() const
     {
         return block_clicked_;
     }
@@ -78,7 +78,7 @@ public:
 
 private:
     ItemStack *item_;
-    std::shared_ptr<Block> block_clicked_;
+    Block *block_clicked_;
     BlockFace block_face_;
     Vector<float> clicked_position_;
 };

@@ -7,9 +7,9 @@
     <derivedcompoundref refid="classendstone_1_1BlockPistonEvent" prot="public" virt="non-virtual">endstone::BlockPistonEvent</derivedcompoundref>
     <includes refid="block__event_8h" local="no">endstone/event/block/block_event.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1BlockEvent_1a734e9cce3b2662de97e536e36d8963a4" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;Block&gt; endstone::BlockEvent::block_</definition>
+      <memberdef kind="variable" id="classendstone_1_1BlockEvent_1ad07edcfc653b930ee644fba64a42d68f" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
+        <definition>Block&amp; endstone::BlockEvent::block_</definition>
         <argsstring></argsstring>
         <name>block_</name>
         <qualifiedname>endstone::BlockEvent::block_</qualifiedname>
@@ -19,18 +19,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_event.h" line="43" column="21" bodyfile="include/endstone/event/block/block_event.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_event.h" line="41" column="11" bodyfile="include/endstone/event/block/block_event.h" bodystart="41" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BlockEvent_1a1c590af92d4fec9db9cb218ad7654a82" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockEvent::BlockEvent</definition>
-        <argsstring>(std::shared_ptr&lt; Block &gt; block)</argsstring>
+        <argsstring>(Block &amp;block)</argsstring>
         <name>BlockEvent</name>
         <qualifiedname>endstone::BlockEvent::BlockEvent</qualifiedname>
         <param>
-          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
           <declname>block</declname>
         </param>
         <briefdescription>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_event.h" line="29" column="14" bodyfile="include/endstone/event/block/block_event.h" bodystart="29" bodyend="29"/>
+        <location file="include/endstone/event/block/block_event.h" line="27" column="14" bodyfile="include/endstone/event/block/block_event.h" bodystart="27" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_event.h" line="30" column="5"/>
+        <location file="include/endstone/event/block/block_event.h" line="28" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_event.h" line="37" column="12" bodyfile="include/endstone/event/block/block_event.h" bodystart="37" bodyend="40"/>
+        <location file="include/endstone/event/block/block_event.h" line="35" column="12" bodyfile="include/endstone/event/block/block_event.h" bodystart="35" bodyend="38"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -127,10 +127,10 @@
         <link refid="classendstone_1_1Event"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/block/block_event.h" line="27" column="1" bodyfile="include/endstone/event/block/block_event.h" bodystart="27" bodyend="44"/>
+    <location file="include/endstone/event/block/block_event.h" line="25" column="1" bodyfile="include/endstone/event/block/block_event.h" bodystart="25" bodyend="42"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockEvent_1a734e9cce3b2662de97e536e36d8963a4" prot="private" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>block_</name></member>
-      <member refid="classendstone_1_1BlockEvent_1a1c590af92d4fec9db9cb218ad7654a82" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockEvent_1ad07edcfc653b930ee644fba64a42d68f" prot="private" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>block_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>BlockEvent</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockEvent</scope><name>getBlock</name></member>

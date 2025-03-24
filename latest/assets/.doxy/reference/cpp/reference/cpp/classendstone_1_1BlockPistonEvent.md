@@ -98,7 +98,7 @@ Inherits the following classes: [endstone::BlockEvent](classendstone_1_1BlockEve
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPistonEvent**](#function-blockpistonevent) (std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**BlockPistonEvent**](#function-blockpistonevent) ([**Block**](classendstone_1_1Block.md) & block, [**Player**](classendstone_1_1Player.md) & player) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |   | [**~BlockPistonEvent**](#function-blockpistonevent) () override<br> |
 
@@ -109,7 +109,7 @@ See [endstone::BlockEvent](classendstone_1_1BlockEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockEvent**](classendstone_1_1BlockEvent.md#function-blockevent) (std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block) <br> |
+|   | [**BlockEvent**](classendstone_1_1BlockEvent.md#function-blockevent) ([**Block**](classendstone_1_1Block.md) & block) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlock**](classendstone_1_1BlockEvent.md#function-getblock) () const<br>_Gets the block involved in this event._  |
 |   | [**~BlockEvent**](classendstone_1_1BlockEvent.md#function-blockevent) () override<br> |
 
@@ -230,7 +230,7 @@ const std::string endstone::BlockPistonEvent::NAME;
 
 ```C++
 inline explicit endstone::BlockPistonEvent::BlockPistonEvent (
-    std::shared_ptr< Block > block,
+    Block & block,
     Player & player
 ) 
 ```

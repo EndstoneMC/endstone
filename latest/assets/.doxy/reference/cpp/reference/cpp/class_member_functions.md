@@ -57,6 +57,7 @@
 ## c
 
 * **captureState** ([**endstone::Block**](classendstone_1_1Block.md))
+* **clone** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **cancel** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
 * **Command** ([**endstone::Command**](classendstone_1_1Command.md))
 * **CommandMap** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
@@ -64,7 +65,6 @@
 * **CommandSenderWrapper** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **clear** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
-* **clone** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))

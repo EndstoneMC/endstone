@@ -32,7 +32,7 @@
 namespace endstone {
 
 class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
-    using BlockList = std::vector<std::shared_ptr<Block>>;
+    using BlockList = std::vector<std::unique_ptr<Block>>;
 
 public:
     explicit ActorExplodeEvent(Actor &actor, Location location, BlockList blocks)

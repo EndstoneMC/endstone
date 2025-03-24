@@ -74,7 +74,7 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockEvent**](#function-blockevent) (std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block) <br> |
+|   | [**BlockEvent**](#function-blockevent) ([**Block**](classendstone_1_1Block.md) & block) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlock**](#function-getblock) () const<br>_Gets the block involved in this event._  |
 |   | [**~BlockEvent**](#function-blockevent) () override<br> |
 
@@ -154,7 +154,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 inline explicit endstone::BlockEvent::BlockEvent (
-    std::shared_ptr< Block > block
+    Block & block
 ) 
 ```
 

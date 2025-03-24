@@ -35,7 +35,7 @@ class BlockState {
 public:
     virtual ~BlockState() = default;
 
-    [[nodiscard]] virtual std::shared_ptr<Block> getBlock() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 
     [[nodiscard]] virtual std::string getType() const = 0;
 

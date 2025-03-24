@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block.h" line="167" column="5" bodyfile="include/endstone/block/block.h" bodystart="167" bodyend="-1"/>
+        <location file="include/endstone/block/block.h" line="174" column="5" bodyfile="include/endstone/block/block.h" bodystart="174" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block.h" line="170" column="10" bodyfile="include/endstone/block/block.h" bodystart="170" bodyend="183"/>
+        <location file="include/endstone/block/block.h" line="177" column="10" bodyfile="include/endstone/block/block.h" bodystart="177" bodyend="190"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -76,7 +76,7 @@
         <label>formatter&lt; string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/block/block.h" line="166" column="1" bodyfile="include/endstone/block/block.h" bodystart="166" bodyend="184"/>
+    <location file="include/endstone/block/block.h" line="173" column="1" bodyfile="include/endstone/block/block.h" bodystart="173" bodyend="191"/>
     <listofallmembers>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1add1c38750b0aa11012686b8474844c70" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::Block &gt;</scope><name>format</name></member>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1a329e503a43a8c88c344787df53c06dfb" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::Block &gt;</scope><name>Type</name></member>

@@ -47,15 +47,15 @@ public:
 
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Block> getBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(Location location) const = 0;
 
     [[nodiscard]] virtual int getHighestBlockYAt(int x, int z) const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Block> getHighestBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(Location location) const = 0;
 
     [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
 };

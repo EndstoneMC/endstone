@@ -98,7 +98,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockBreakEvent**](#function-blockbreakevent) (std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**BlockBreakEvent**](#function-blockbreakevent) ([**Block**](classendstone_1_1Block.md) & block, [**Player**](classendstone_1_1Player.md) & player) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Gets the_ [_**Player**_](classendstone_1_1Player.md) _that is breaking the block involved in this event._ |
 |   | [**~BlockBreakEvent**](#function-blockbreakevent) () override<br> |
@@ -236,7 +236,7 @@ const std::string endstone::BlockBreakEvent::NAME;
 
 ```C++
 inline explicit endstone::BlockBreakEvent::BlockBreakEvent (
-    std::shared_ptr< Block > block,
+    Block & block,
     Player & player
 ) 
 ```

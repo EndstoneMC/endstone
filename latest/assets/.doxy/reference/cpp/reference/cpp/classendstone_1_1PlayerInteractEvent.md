@@ -98,8 +98,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**ItemStack**](classendstone_1_1ItemStack.md) \* item, std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block\_clicked, BlockFace block\_face, [**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; & clicked\_position) <br> |
-|  std::shared\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const<br>_Returns the clicked block._  |
+|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**ItemStack**](classendstone_1_1ItemStack.md) \* item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, BlockFace block\_face, [**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; & clicked\_position) <br> |
+|  [**Block**](classendstone_1_1Block.md) \* | [**getBlock**](#function-getblock) () const<br>_Returns the clicked block._  |
 |  BlockFace | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; [**float**](classendstone_1_1Vector.md) &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br>_Gets the exact position on the block the player interacted with._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
@@ -236,7 +236,7 @@ const std::string endstone::PlayerInteractEvent::NAME;
 inline endstone::PlayerInteractEvent::PlayerInteractEvent (
     Player & player,
     ItemStack * item,
-    std::shared_ptr< Block > block_clicked,
+    Block * block_clicked,
     BlockFace block_face,
     const  Vector < float > & clicked_position
 ) 
@@ -253,7 +253,7 @@ inline endstone::PlayerInteractEvent::PlayerInteractEvent (
 
 _Returns the clicked block._ 
 ```C++
-inline std::shared_ptr< Block > endstone::PlayerInteractEvent::getBlock () const
+inline Block * endstone::PlayerInteractEvent::getBlock () const
 ```
 
 

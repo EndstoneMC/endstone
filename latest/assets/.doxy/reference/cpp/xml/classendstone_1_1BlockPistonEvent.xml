@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_piston_event.h" line="31" column="37" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="31" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_piston_event.h" line="29" column="37" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="29" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -34,18 +34,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_piston_event.h" line="38" column="12" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="38" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_piston_event.h" line="36" column="12" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="36" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BlockPistonEvent_1aa7dd79874ce053b709f8e3e35fe8df78" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockPistonEvent_1abd862a6320bbd140b020ed19a5079ce1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockPistonEvent::BlockPistonEvent</definition>
-        <argsstring>(std::shared_ptr&lt; Block &gt; block, Player &amp;player)</argsstring>
+        <argsstring>(Block &amp;block, Player &amp;player)</argsstring>
         <name>BlockPistonEvent</name>
         <qualifiedname>endstone::BlockPistonEvent::BlockPistonEvent</qualifiedname>
         <param>
-          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
           <declname>block</declname>
         </param>
         <param>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_piston_event.h" line="28" column="14" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="28" bodyend="28"/>
+        <location file="include/endstone/event/block/block_piston_event.h" line="26" column="14" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="26" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPistonEvent_1ad6544a645c1ac2a2b61734d2b66423dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_piston_event.h" line="29" column="5"/>
+        <location file="include/endstone/event/block/block_piston_event.h" line="27" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPistonEvent_1a9580392256ddc38e3489dab492cf3ede" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_piston_event.h" line="32" column="18" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="32" bodyend="35"/>
+        <location file="include/endstone/event/block/block_piston_event.h" line="30" column="18" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="30" bodyend="33"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -135,10 +135,10 @@
         <link refid="classendstone_1_1Event"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/block/block_piston_event.h" line="26" column="1" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="26" bodyend="39"/>
+    <location file="include/endstone/event/block/block_piston_event.h" line="24" column="1" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="24" bodyend="37"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockEvent_1a1c590af92d4fec9db9cb218ad7654a82" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>BlockEvent</name></member>
-      <member refid="classendstone_1_1BlockPistonEvent_1aa7dd79874ce053b709f8e3e35fe8df78" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>BlockPistonEvent</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockPistonEvent_1abd862a6320bbd140b020ed19a5079ce1" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>BlockPistonEvent</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockPistonEvent</scope><name>getBlock</name></member>
