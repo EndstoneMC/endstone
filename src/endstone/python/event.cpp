@@ -83,9 +83,23 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("location", &ActorExplodeEvent::getLocation,
                                "Returns the location where the explosion happened.")
         .def_property(
-            "block_list", [](const ActorExplodeEvent &self) { return self.getBlockList(); },
-            [](ActorExplodeEvent &self, std::vector<std::shared_ptr<Block>> blocks) {
-                self.getBlockList().swap(blocks);
+            "block_list",
+            [](const ActorExplodeEvent &self) {
+                std::vector<Block *> blocks;
+                for (const auto &block : self.getBlockList()) {
+                    if (block) {
+                        blocks.emplace_back(block.get());
+                    }
+                }
+                return blocks;
+            },
+            [](ActorExplodeEvent &self, const std::vector<Block *> &blocks) {
+                self.getBlockList().clear();
+                for (const auto &block : blocks) {
+                    if (block) {
+                        self.getBlockList().emplace_back(block->clone());
+                    }
+                }
             },
             py::return_value_policy::reference_internal,
             "Gets or sets the list of blocks that would have been removed or were removed from the explosion event.");

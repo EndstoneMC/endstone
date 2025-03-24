@@ -20,7 +20,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-void init_block(py::module_ &m, py::class_<Block, std::shared_ptr<Block>> &block)
+void init_block(py::module_ &m, py::class_<Block> &block)
 {
     py::enum_<BlockFace>(m, "BlockFace")
         .value("DOWN", BlockFace::Down)

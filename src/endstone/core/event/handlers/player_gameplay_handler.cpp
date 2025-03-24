@@ -217,7 +217,7 @@ bool EndstonePlayerGameplayHandler::handleEvent(const PlayerInteractWithBlockBef
         PlayerInteractEvent e{
             player->getEndstoneActor<EndstonePlayer>(),
             item_stack.get(),
-            block,
+            block.get(),
             static_cast<BlockFace>(event.block_face),
             {event.face_location.x, event.face_location.y, event.face_location.z},
         };

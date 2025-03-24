@@ -16,7 +16,6 @@
 
 #include "endstone/event/block/block_event.h"
 #include "endstone/event/cancellable.h"
-#include "endstone/player.h"
 
 namespace endstone {
 
@@ -28,7 +27,7 @@ namespace endstone {
  */
 class BlockBreakEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockBreakEvent(std::shared_ptr<Block> block, Player &player) : Cancellable(block), player_(player) {}
+    explicit BlockBreakEvent(Block &block, Player &player) : Cancellable(block), player_(player) {}
     ~BlockBreakEvent() override = default;
 
     inline static const std::string NAME = "BlockBreakEvent";

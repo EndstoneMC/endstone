@@ -27,7 +27,7 @@ namespace py = pybind11;
 namespace endstone::python {
 void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob);
 void init_ban(py::module_ &);
-void init_block(py::module_ &, py::class_<Block, std::shared_ptr<Block>> &block);
+void init_block(py::module_ &, py::class_<Block> &block);
 void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
@@ -68,7 +68,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto permission_default =
         py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
-    auto block = py::class_<Block, std::shared_ptr<Block>>(m, "Block", "Represents a block.");
+    auto block = py::class_<Block>(m, "Block", "Represents a block.");
     auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
     auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
     auto mob = py::class_<Mob, Actor>(m, "Mob",

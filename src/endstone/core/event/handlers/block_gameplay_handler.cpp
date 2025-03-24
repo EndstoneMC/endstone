@@ -104,7 +104,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(const BlockTryPlaceByPlayerEvent 
     const auto opposite = EndstoneBlockFace::getOpposite(block_face);
     const auto block_against = block_replaced->getRelative(opposite);
 
-    BlockPlaceEvent e{std::move(block_placed), block_replaced, block_against, endstone_player};
+    BlockPlaceEvent e{std::move(block_placed), *block_replaced, *block_against, endstone_player};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return false;
@@ -117,14 +117,14 @@ bool EndstoneBlockGameplayHandler::handleEvent(ExplosionStartedEvent &event)
     const auto *source = WeakEntityRef(event.source).tryUnwrap<::Actor>();
     const auto &server = entt::locator<EndstoneServer>::value();
 
-    std::vector<std::shared_ptr<Block>> block_list;
+    std::vector<std::unique_ptr<Block>> block_list;
     for (const auto &pos : event.blocks) {
         block_list.emplace_back(EndstoneBlock::at(event.dimension.getBlockSourceFromMainChunkSource(), pos));
     }
 
     if (source) {
         auto &actor = source->getEndstoneActor<>();
-        ActorExplodeEvent e{actor, actor.getLocation(), block_list};
+        ActorExplodeEvent e{actor, actor.getLocation(), std::move(block_list)};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
@@ -149,7 +149,7 @@ bool EndstoneBlockGameplayHandler::handleEvent(BlockTryDestroyByPlayerEvent &eve
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = EndstoneBlock::at(block_source, event.pos);
 
-        BlockBreakEvent e{block, player->getEndstoneActor<EndstonePlayer>()};
+        BlockBreakEvent e{*block, player->getEndstoneActor<EndstonePlayer>()};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
