@@ -30,16 +30,15 @@
 namespace endstone {
 class ItemFactory {
 public:
-    static std::shared_ptr<ItemMeta> getItemMeta(const std::string_view type,
-                                                 const std::shared_ptr<ItemMeta> &meta = nullptr)
+    static std::unique_ptr<ItemMeta> getItemMeta(const std::string_view type, const ItemMeta *meta = nullptr)
     {
         if (type == "minecraft:filled_map") {
-            return std::make_shared<MapMeta>(meta.get());
+            return std::make_unique<MapMeta>(meta);
         }
-        return std::make_shared<ItemMeta>(meta.get());
+        return std::make_unique<ItemMeta>(meta);
     }
 
-    static std::shared_ptr<ItemMeta> asMetaFor(const std::string_view type, const std::shared_ptr<ItemMeta> &meta)
+    static std::unique_ptr<ItemMeta> asMetaFor(const std::string_view type, const ItemMeta *meta)
     {
         return getItemMeta(type, meta);
     }

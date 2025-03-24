@@ -39,9 +39,9 @@ public:
         return Type::Map;
     }
 
-    [[nodiscard]] std::shared_ptr<ItemMeta> clone() const override
+    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
     {
-        return std::make_shared<MapMeta>(*this);
+        return std::make_unique<MapMeta>(*this);
     }
 };
 }  // namespace endstone

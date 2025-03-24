@@ -30,8 +30,9 @@
 #include <vector>
 
 namespace endstone {
-class ItemMeta : public std::enable_shared_from_this<ItemMeta> {
+class ItemMeta {
 public:
+    static ItemMeta EMPTY;
     enum class Type {
         Item = 0,
         Map = 1,
@@ -61,9 +62,9 @@ public:
         return !hasLore();
     }
 
-    [[nodiscard]] virtual std::shared_ptr<ItemMeta> clone() const
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const
     {
-        return std::make_shared<ItemMeta>(*this);
+        return std::make_unique<ItemMeta>(*this);
     }
 
     [[nodiscard]] virtual bool hasDisplayName() const
@@ -116,6 +117,8 @@ private:
     std::optional<std::string> display_name_;
     std::optional<std::vector<std::string>> lore_;
 };
+
+inline ItemMeta ItemMeta::EMPTY;
 }  // namespace endstone
 ```
 

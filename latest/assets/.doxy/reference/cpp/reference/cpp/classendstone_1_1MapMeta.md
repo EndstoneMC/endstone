@@ -50,6 +50,13 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 
 
+## Public Static Attributes inherited from endstone::ItemMeta
+
+See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
+
+| Type | Name |
+| ---: | :--- |
+|  [**ItemMeta**](classendstone_1_1ItemMeta.md) | [**EMPTY**](classendstone_1_1ItemMeta.md#variable-empty)  <br> |
 
 
 
@@ -82,7 +89,7 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | ---: | :--- |
 |   | [**ItemMeta**](#function-itemmeta-12) () = default<br> |
 |   | [**ItemMeta**](#function-itemmeta-22) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br> |
-| virtual std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () override const<br>_Creates a clone of the current metadata._  |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () override const<br>_Creates a clone of the current metadata._  |
 | virtual Type | [**getType**](#function-gettype) () override const<br>_Gets the type of this item meta._  |
 
 
@@ -94,7 +101,7 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | ---: | :--- |
 |   | [**ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta-12) () = default<br> |
 |   | [**ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta-22) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br> |
-| virtual std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](classendstone_1_1ItemMeta.md#function-clone) () const<br>_Creates a clone of the current metadata._  |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](classendstone_1_1ItemMeta.md#function-clone) () const<br>_Creates a clone of the current metadata._  |
 | virtual std::optional&lt; std::string &gt; | [**getDisplayName**](classendstone_1_1ItemMeta.md#function-getdisplayname) () const<br>_Gets the display name that is set._  |
 | virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; | [**getLore**](classendstone_1_1ItemMeta.md#function-getlore) () const<br>_Gets the lore that is set._  |
 | virtual Type | [**getType**](classendstone_1_1ItemMeta.md#function-gettype) () const<br>_Gets the type of this item meta._  |
@@ -195,7 +202,7 @@ inline explicit endstone::MapMeta::ItemMeta (
 
 _Creates a clone of the current metadata._ 
 ```C++
-inline virtual std::shared_ptr< ItemMeta > endstone::MapMeta::clone () override const
+inline virtual std::unique_ptr< ItemMeta > endstone::MapMeta::clone () override const
 ```
 
 

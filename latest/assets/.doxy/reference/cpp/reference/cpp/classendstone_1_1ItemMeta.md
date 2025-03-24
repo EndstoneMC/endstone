@@ -14,7 +14,6 @@ _Represents the metadata of a generic item._
 
 
 
-Inherits the following classes: std::enable_shared_from_this< ItemMeta >
 
 
 Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta.md)
@@ -41,6 +40,11 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 
 
 
+## Public Static Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  [**ItemMeta**](classendstone_1_1ItemMeta.md) | [**EMPTY**](#variable-empty)  <br> |
 
 
 
@@ -61,7 +65,7 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 | ---: | :--- |
 |   | [**ItemMeta**](#function-itemmeta-12) () = default<br> |
 |   | [**ItemMeta**](#function-itemmeta-22) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br> |
-| virtual std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () const<br>_Creates a clone of the current metadata._  |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () const<br>_Creates a clone of the current metadata._  |
 | virtual std::optional&lt; std::string &gt; | [**getDisplayName**](#function-getdisplayname) () const<br>_Gets the display name that is set._  |
 | virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; | [**getLore**](#function-getlore) () const<br>_Gets the lore that is set._  |
 | virtual Type | [**getType**](#function-gettype) () const<br>_Gets the type of this item meta._  |
@@ -119,6 +123,21 @@ enum endstone::ItemMeta::Type {
 
 
 <hr>
+## Public Static Attributes Documentation
+
+
+
+
+### variable EMPTY 
+
+```C++
+ItemMeta endstone::ItemMeta::EMPTY;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -156,7 +175,7 @@ inline explicit endstone::ItemMeta::ItemMeta (
 
 _Creates a clone of the current metadata._ 
 ```C++
-inline virtual std::shared_ptr< ItemMeta > endstone::ItemMeta::clone () const
+inline virtual std::unique_ptr< ItemMeta > endstone::ItemMeta::clone () const
 ```
 
 

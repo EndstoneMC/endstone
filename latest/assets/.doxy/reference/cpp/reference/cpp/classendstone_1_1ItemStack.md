@@ -56,11 +56,11 @@ Inherits the following classes: std::enable_shared_from_this< ItemStack >
 |   | [**ItemStack**](#function-itemstack-12) () = default<br> |
 |   | [**ItemStack**](#function-itemstack-22) (std::string type, [**int**](classendstone_1_1Vector.md) amount=1) <br> |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
-| virtual std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual std::string | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setAmount**](#function-setamount) ([**int**](classendstone_1_1Vector.md) amount) <br>_Sets the amount of items in this stack._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**setItemMeta**](#function-setitemmeta) (std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setType**](#function-settype) (std::string type) <br>_Sets the type of this item._  |
 | virtual  | [**~ItemStack**](#function-itemstack) () = default<br> |
 
@@ -159,7 +159,7 @@ Amount of items in this stack
 
 _Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._
 ```C++
-inline virtual std::shared_ptr< ItemMeta > endstone::ItemStack::getItemMeta () const
+inline virtual std::unique_ptr< ItemMeta > endstone::ItemStack::getItemMeta () const
 ```
 
 
@@ -262,7 +262,7 @@ inline virtual void endstone::ItemStack::setAmount (
 _Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._
 ```C++
 inline virtual bool endstone::ItemStack::setItemMeta (
-    std::shared_ptr< ItemMeta > meta
+    ItemMeta * meta
 ) 
 ```
 

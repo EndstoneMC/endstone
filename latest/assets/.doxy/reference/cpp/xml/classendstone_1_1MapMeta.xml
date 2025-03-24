@@ -24,13 +24,13 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/map_meta.h" line="30" column="11" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="30" bodyend="33"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapMeta_1a1cacf7d89d28deb9f31de8500fdd4bff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
-        <definition>std::shared_ptr&lt; ItemMeta &gt; endstone::MapMeta::clone</definition>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1af0b98024806dc794e0006453fc468f8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; ItemMeta &gt; endstone::MapMeta::clone</definition>
         <argsstring>() const override</argsstring>
         <name>clone</name>
         <qualifiedname>endstone::MapMeta::clone</qualifiedname>
-        <reimplements refid="classendstone_1_1ItemMeta_1a75bd58e151444aa65fc5a0f708cb1d87">clone</reimplements>
+        <reimplements refid="classendstone_1_1ItemMeta_1a1b76f24868a6af2aa987bfb263e73dc8">clone</reimplements>
         <briefdescription>
 <para>Creates a clone of the current metadata. </para>
         </briefdescription>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="28" column="5" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="36" bodyend="42"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="28" column="5" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="37" bodyend="43"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -85,24 +85,20 @@
       <node id="2">
         <label>endstone::ItemMeta</label>
         <link refid="classendstone_1_1ItemMeta"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
       </node>
       <node id="1">
         <label>endstone::MapMeta</label>
         <link refid="classendstone_1_1MapMeta"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="3">
-        <label>std::enable_shared_from_this&lt; ItemMeta &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
       <node id="2">
         <label>endstone::ItemMeta</label>
         <link refid="classendstone_1_1ItemMeta"/>
-        <childnode refid="3" relation="public-inheritance">
+        <childnode refid="2" relation="usage">
+          <edgelabel>EMPTY</edgelabel>
         </childnode>
       </node>
       <node id="1">
@@ -111,13 +107,11 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>std::enable_shared_from_this&lt; ItemMeta &gt;</label>
-      </node>
     </collaborationgraph>
     <location file="include/endstone/inventory/meta/map_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="26" bodyend="39"/>
     <listofallmembers>
-      <member refid="classendstone_1_1MapMeta_1a1cacf7d89d28deb9f31de8500fdd4bff" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>clone</name></member>
+      <member refid="classendstone_1_1MapMeta_1af0b98024806dc794e0006453fc468f8c" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>clone</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae567a6f394a977cf8c10ab0ad3a88051" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>EMPTY</name></member>
       <member refid="classendstone_1_1ItemMeta_1afa9871ea34a4882bce24ba932316aa49" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a41e00cbe764c3f380da8793067952e47" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>getLore</name></member>
       <member refid="classendstone_1_1MapMeta_1a2a8ceb9bf21b37f27f5feef4ba3e3982" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>getType</name></member>

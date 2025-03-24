@@ -53,8 +53,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**asMetaFor**](#function-asmetafor) ([**const**](classendstone_1_1Vector.md) std::string\_view type, [**const**](classendstone_1_1Vector.md) std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; & meta) <br> |
-|  std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) ([**const**](classendstone_1_1Vector.md) std::string\_view type, [**const**](classendstone_1_1Vector.md) std::shared\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; & meta=[**nullptr**](classendstone_1_1Vector.md)) <br> |
+|  std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**asMetaFor**](#function-asmetafor) ([**const**](classendstone_1_1Vector.md) std::string\_view type, [**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br> |
+|  std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) ([**const**](classendstone_1_1Vector.md) std::string\_view type, [**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta=[**nullptr**](classendstone_1_1Vector.md)) <br> |
 
 
 
@@ -89,9 +89,9 @@
 ### function asMetaFor 
 
 ```C++
-static inline std::shared_ptr< ItemMeta > endstone::ItemFactory::asMetaFor (
+static inline std::unique_ptr< ItemMeta > endstone::ItemFactory::asMetaFor (
     const std::string_view type,
-    const std::shared_ptr< ItemMeta > & meta
+    const  ItemMeta * meta
 ) 
 ```
 
@@ -105,9 +105,9 @@ static inline std::shared_ptr< ItemMeta > endstone::ItemFactory::asMetaFor (
 ### function getItemMeta 
 
 ```C++
-static inline std::shared_ptr< ItemMeta > endstone::ItemFactory::getItemMeta (
+static inline std::unique_ptr< ItemMeta > endstone::ItemFactory::getItemMeta (
     const std::string_view type,
-    const std::shared_ptr< ItemMeta > & meta=nullptr
+    const  ItemMeta * meta=nullptr
 ) 
 ```
 

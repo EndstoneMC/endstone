@@ -2298,7 +2298,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getamount"><strong>getAmount</strong></a> () const<br><em>Gets the amount of items in this stack.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getitemmeta"><strong>getItemMeta</strong></a> () const<br><em>Gets a copy of this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>'s</em><a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
@@ -2315,7 +2315,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-setitemmeta"><strong>setItemMeta</strong></a> (std::shared_ptr&lt; <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> &gt; meta) <br><em>Set the</em> <a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>of this</em><a href="./"><em><strong>ItemStack</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-setitemmeta"><strong>setItemMeta</strong></a> (<a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> * meta) <br><em>Set the</em> <a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>of this</em><a href="./"><em><strong>ItemStack</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
@@ -2366,7 +2366,7 @@ For latest updates join the chat on
 
 <h3 id="function-getitemmeta">function getItemMeta<a class="headerlink" href="#function-getitemmeta" title="Permanent link">&para;</a></h3>
 <p><em>Gets a copy of this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>'s</em><a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">getItemMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">getItemMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a copy of the current <a href="./"><strong>ItemStack</strong></a>'s <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> </p>
@@ -2403,7 +2403,7 @@ For latest updates join the chat on
 <h3 id="function-setitemmeta">function setItemMeta<a class="headerlink" href="#function-setitemmeta" title="Permanent link">&para;</a></h3>
 <p><em>Set the</em> <a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>of this</em><a href="./"><em><strong>ItemStack</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">setItemMeta</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">meta</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">meta</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

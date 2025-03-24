@@ -75,7 +75,7 @@ public:
         amount_ = amount;
     }
 
-    virtual std::shared_ptr<ItemMeta> getItemMeta() const
+    virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
         return meta_ == nullptr ? ItemFactory::getItemMeta(type_) : meta_->clone();
     }
@@ -85,7 +85,7 @@ public:
         return meta_ != nullptr;
     }
 
-    virtual bool setItemMeta(std::shared_ptr<ItemMeta> meta)
+    virtual bool setItemMeta(ItemMeta *meta)
     {
         if (!meta) {
             meta_ = nullptr;
@@ -93,7 +93,7 @@ public:
         }
         // TODO(item): applicability check, support type-specific meta
         meta_ = ItemFactory::asMetaFor(type_, meta);
-        if (meta_ == meta) {
+        if (meta_.get() == meta) {
             meta_ = meta->clone();
         }
         return true;
@@ -102,7 +102,7 @@ public:
 private:
     std::string type_ = "minecraft:air";
     int amount_ = 0;
-    std::shared_ptr<ItemMeta> meta_ = nullptr;
+    std::unique_ptr<ItemMeta> meta_ = nullptr;
 };
 
 }  // namespace endstone

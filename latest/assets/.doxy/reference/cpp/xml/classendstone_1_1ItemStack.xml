@@ -54,9 +54,9 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_stack.h" line="133" column="9" bodyfile="include/endstone/inventory/item_stack.h" bodystart="133" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1ItemStack_1a34a46b74dbd5787e2f2c99947d31937a" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;ItemMeta&gt; endstone::ItemStack::meta_</definition>
+      <memberdef kind="variable" id="classendstone_1_1ItemStack_1a1c1edec51e5963fb5f4c054466bfa6c7" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;ItemMeta&gt; endstone::ItemStack::meta_</definition>
         <argsstring></argsstring>
         <name>meta_</name>
         <qualifiedname>endstone::ItemStack::meta_</qualifiedname>
@@ -216,9 +216,9 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_stack.h" line="86" column="18" bodyfile="include/endstone/inventory/item_stack.h" bodystart="86" bodyend="89"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemStack_1a437f3a6408df9f05c04d3340259937dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
-        <definition>virtual std::shared_ptr&lt; ItemMeta &gt; endstone::ItemStack::getItemMeta</definition>
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; ItemMeta &gt; endstone::ItemStack::getItemMeta</definition>
         <argsstring>() const</argsstring>
         <name>getItemMeta</name>
         <qualifiedname>endstone::ItemStack::getItemMeta</qualifiedname>
@@ -252,14 +252,14 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_stack.h" line="106" column="18" bodyfile="include/endstone/inventory/item_stack.h" bodystart="106" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemStack_1ae9cb0c626a724974a3f1fbea4c51bf27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemStack::setItemMeta</definition>
-        <argsstring>(std::shared_ptr&lt; ItemMeta &gt; meta)</argsstring>
+        <argsstring>(ItemMeta *meta)</argsstring>
         <name>setItemMeta</name>
         <qualifiedname>endstone::ItemStack::setItemMeta</qualifiedname>
         <param>
-          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
           <declname>meta</declname>
         </param>
         <briefdescription>
@@ -332,15 +332,15 @@
       <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>amount_</name></member>
       <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" prot="public" virt="non-virtual"><scope>endstone::ItemStack</scope><name>core::EndstoneItemStack</name></member>
       <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>getAmount</name></member>
-      <member refid="classendstone_1_1ItemStack_1a437f3a6408df9f05c04d3340259937dd" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>getItemMeta</name></member>
+      <member refid="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>getItemMeta</name></member>
       <member refid="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>getType</name></member>
       <member refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>hasItemMeta</name></member>
       <member refid="classendstone_1_1ItemStack_1a98d56b0907d2e07d3ccdb8f0b4639f0d" prot="protected" virt="virtual"><scope>endstone::ItemStack</scope><name>isEndstoneItemStack</name></member>
       <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" prot="public" virt="non-virtual"><scope>endstone::ItemStack</scope><name>ItemStack</name></member>
       <member refid="classendstone_1_1ItemStack_1a76b91ae72d897786c73f4969203d1858" prot="public" virt="non-virtual"><scope>endstone::ItemStack</scope><name>ItemStack</name></member>
-      <member refid="classendstone_1_1ItemStack_1a34a46b74dbd5787e2f2c99947d31937a" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>meta_</name></member>
+      <member refid="classendstone_1_1ItemStack_1a1c1edec51e5963fb5f4c054466bfa6c7" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>meta_</name></member>
       <member refid="classendstone_1_1ItemStack_1a4eeac443885604ca40fbc64bc05ddb3b" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>setAmount</name></member>
-      <member refid="classendstone_1_1ItemStack_1ae9cb0c626a724974a3f1fbea4c51bf27" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>setItemMeta</name></member>
+      <member refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>setItemMeta</name></member>
       <member refid="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>setType</name></member>
       <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>type_</name></member>
       <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>~ItemStack</name></member>
