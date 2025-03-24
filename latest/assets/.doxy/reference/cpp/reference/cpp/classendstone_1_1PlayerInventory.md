@@ -80,7 +80,13 @@ Inherits the following classes: [endstone::Inventory](classendstone_1_1Inventory
 | virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItemInMainHand**](#function-getiteminmainhand) () const = 0<br>_Gets the item the player is currently holding in their main hand._  |
 | virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItemInOffHand**](#function-getiteminoffhand) () const = 0<br>_Gets the item the player is currently holding in their off hand._  |
 | virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getLeggings**](#function-getleggings) () const = 0<br>_Return the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _from the leg slot._ |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setBoots**](#function-setboots) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* boots) = 0<br>_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the boots slot._ |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setChestplate**](#function-setchestplate) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* chestplate) = 0<br>_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the chestplate slot._ |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setHeldItemSlot**](#function-sethelditemslot) ([**int**](classendstone_1_1Vector.md) slot) = 0<br>_Set the slot number of the currently held item._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setHelmet**](#function-sethelmet) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* helmet) = 0<br>_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the helmet slot._ |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setItemInMainHand**](#function-setiteminmainhand) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* item) = 0<br>_Sets the item the player is holding in their main hand._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setItemInOffHand**](#function-setiteminoffhand) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* item) = 0<br>_Sets the item the player is holding in their off hand._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setLeggings**](#function-setleggings) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* leggings) = 0<br>_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the leggings slot._ |
 
 
 ## Public Functions inherited from endstone::Inventory
@@ -333,6 +339,66 @@ The [**ItemStack**](classendstone_1_1ItemStack.md) in the leg slot
 
 
 
+### function setBoots 
+
+_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the boots slot._
+```C++
+virtual void endstone::PlayerInventory::setBoots (
+    const  ItemStack * boots
+) = 0
+```
+
+
+
+This does not check if the [**ItemStack**](classendstone_1_1ItemStack.md) is a pair of boots.
+
+
+
+
+**Parameters:**
+
+
+* `boots` The [**ItemStack**](classendstone_1_1ItemStack.md) to use as boots 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setChestplate 
+
+_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the chestplate slot._
+```C++
+virtual void endstone::PlayerInventory::setChestplate (
+    const  ItemStack * chestplate
+) = 0
+```
+
+
+
+This does not check if the [**ItemStack**](classendstone_1_1ItemStack.md) is a chestplate.
+
+
+
+
+**Parameters:**
+
+
+* `chestplate` The [**ItemStack**](classendstone_1_1ItemStack.md) to use as chestplate 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setHeldItemSlot 
 
 _Set the slot number of the currently held item._ 
@@ -353,6 +419,120 @@ This validates whether the slot is between 0 and 8 inclusive.
 
 
 * `slot` The new slot number 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setHelmet 
+
+_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the helmet slot._
+```C++
+virtual void endstone::PlayerInventory::setHelmet (
+    const  ItemStack * helmet
+) = 0
+```
+
+
+
+This does not check if the [**ItemStack**](classendstone_1_1ItemStack.md) is a helmet.
+
+
+
+
+**Parameters:**
+
+
+* `helmet` The [**ItemStack**](classendstone_1_1ItemStack.md) to use as helmet 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setItemInMainHand 
+
+_Sets the item the player is holding in their main hand._ 
+```C++
+virtual void endstone::PlayerInventory::setItemInMainHand (
+    const  ItemStack * item
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `item` The item to put into the player's hand 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setItemInOffHand 
+
+_Sets the item the player is holding in their off hand._ 
+```C++
+virtual void endstone::PlayerInventory::setItemInOffHand (
+    const  ItemStack * item
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `item` The item to put into the player's hand 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setLeggings 
+
+_Put the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into the leggings slot._
+```C++
+virtual void endstone::PlayerInventory::setLeggings (
+    const  ItemStack * leggings
+) = 0
+```
+
+
+
+This does not check if the [**ItemStack**](classendstone_1_1ItemStack.md) is a pair of leggings.
+
+
+
+
+**Parameters:**
+
+
+* `leggings` The [**ItemStack**](classendstone_1_1ItemStack.md) to use as leggings 
 
 
 

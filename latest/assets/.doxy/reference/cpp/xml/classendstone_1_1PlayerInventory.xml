@@ -77,6 +77,126 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="52" column="30"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a811b329ef42ce228d737e4228aade626" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setHelmet</definition>
+        <argsstring>(const ItemStack *helmet)=0</argsstring>
+        <name>setHelmet</name>
+        <qualifiedname>endstone::PlayerInventory::setHelmet</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <declname>helmet</declname>
+        </param>
+        <briefdescription>
+<para>Put the given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> into the helmet slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This does not check if the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> is a helmet.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>helmet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> to use as helmet </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="61" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a50825fd18b6f9ec27b6043081edd39e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setChestplate</definition>
+        <argsstring>(const ItemStack *chestplate)=0</argsstring>
+        <name>setChestplate</name>
+        <qualifiedname>endstone::PlayerInventory::setChestplate</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <declname>chestplate</declname>
+        </param>
+        <briefdescription>
+<para>Put the given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> into the chestplate slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This does not check if the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> is a chestplate.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>chestplate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> to use as chestplate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="70" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a4ab9df3c892e7c8adfd7770ad6442bbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setLeggings</definition>
+        <argsstring>(const ItemStack *leggings)=0</argsstring>
+        <name>setLeggings</name>
+        <qualifiedname>endstone::PlayerInventory::setLeggings</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <declname>leggings</declname>
+        </param>
+        <briefdescription>
+<para>Put the given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> into the leggings slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This does not check if the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> is a pair of leggings.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>leggings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> to use as leggings </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="79" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a3d2a8c9ccdfe6e6d668a5c64305c0d44" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setBoots</definition>
+        <argsstring>(const ItemStack *boots)=0</argsstring>
+        <name>setBoots</name>
+        <qualifiedname>endstone::PlayerInventory::setBoots</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <declname>boots</declname>
+        </param>
+        <briefdescription>
+<para>Put the given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> into the boots slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This does not check if the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> is a pair of boots.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>boots</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> to use as boots </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="88" column="18"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a99872b670e9b45c92c6527f872edefdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; ItemStack &gt; endstone::PlayerInventory::getItemInMainHand</definition>
@@ -93,7 +213,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/player_inventory.h" line="59" column="30"/>
+        <location file="include/endstone/inventory/player_inventory.h" line="95" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a13913ac8928251b4078bc8b7599db44f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setItemInMainHand</definition>
+        <argsstring>(const ItemStack *item)=0</argsstring>
+        <name>setItemInMainHand</name>
+        <qualifiedname>endstone::PlayerInventory::setItemInMainHand</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Sets the item the player is holding in their main hand. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item to put into the player&apos;s hand </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="102" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a10ac6823a0e6dcf8435d61f9e06e7966" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
@@ -111,7 +260,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/player_inventory.h" line="66" column="30"/>
+        <location file="include/endstone/inventory/player_inventory.h" line="109" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a1b5365a4d2081279549a63a817ffd7fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setItemInOffHand</definition>
+        <argsstring>(const ItemStack *item)=0</argsstring>
+        <name>setItemInOffHand</name>
+        <qualifiedname>endstone::PlayerInventory::setItemInOffHand</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Sets the item the player is holding in their off hand. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item to put into the player&apos;s hand </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/player_inventory.h" line="116" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
@@ -129,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/player_inventory.h" line="73" column="18"/>
+        <location file="include/endstone/inventory/player_inventory.h" line="123" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
@@ -159,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/player_inventory.h" line="82" column="18"/>
+        <location file="include/endstone/inventory/player_inventory.h" line="132" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -191,7 +369,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/player_inventory.h" line="24" column="1" bodyfile="include/endstone/inventory/player_inventory.h" bodystart="24" bodyend="83"/>
+    <location file="include/endstone/inventory/player_inventory.h" line="24" column="1" bodyfile="include/endstone/inventory/player_inventory.h" bodystart="24" bodyend="133"/>
     <listofallmembers>
       <member refid="classendstone_1_1Inventory_1aa0b7467f203722c8224f4d0d2c18a6a1" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>clear</name></member>
@@ -208,8 +386,14 @@
       <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getMaxStackSize</name></member>
       <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getSize</name></member>
       <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>isEmpty</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a3d2a8c9ccdfe6e6d668a5c64305c0d44" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setBoots</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a50825fd18b6f9ec27b6043081edd39e7" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setChestplate</name></member>
       <member refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setHeldItemSlot</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a811b329ef42ce228d737e4228aade626" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setHelmet</name></member>
       <member refid="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setItem</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a13913ac8928251b4078bc8b7599db44f" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setItemInMainHand</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a1b5365a4d2081279549a63a817ffd7fd" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setItemInOffHand</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a4ab9df3c892e7c8adfd7770ad6442bbb" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setLeggings</name></member>
       <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" prot="public" virt="virtual"><scope>endstone::PlayerInventory</scope><name>~Inventory</name></member>
     </listofallmembers>
   </compounddef>

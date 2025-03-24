@@ -1025,8 +1025,14 @@
     <member refid="classendstone_1_1PlayerInventory_1ab86d60990578106d6482ffcebceb7af8" kind="function"><name>getChestplate</name></member>
     <member refid="classendstone_1_1PlayerInventory_1ad3ae88bf84272b3b6cf4b9bb24e11c1f" kind="function"><name>getLeggings</name></member>
     <member refid="classendstone_1_1PlayerInventory_1adee7ce6d4f195755d45b2b69e62a3817" kind="function"><name>getBoots</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a811b329ef42ce228d737e4228aade626" kind="function"><name>setHelmet</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a50825fd18b6f9ec27b6043081edd39e7" kind="function"><name>setChestplate</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a4ab9df3c892e7c8adfd7770ad6442bbb" kind="function"><name>setLeggings</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a3d2a8c9ccdfe6e6d668a5c64305c0d44" kind="function"><name>setBoots</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a99872b670e9b45c92c6527f872edefdb" kind="function"><name>getItemInMainHand</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a13913ac8928251b4078bc8b7599db44f" kind="function"><name>setItemInMainHand</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a10ac6823a0e6dcf8435d61f9e06e7966" kind="function"><name>getItemInOffHand</name></member>
+    <member refid="classendstone_1_1PlayerInventory_1a1b5365a4d2081279549a63a817ffd7fd" kind="function"><name>setItemInOffHand</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kind="function"><name>getHeldItemSlot</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" kind="function"><name>setHeldItemSlot</name></member>
   </compound>
