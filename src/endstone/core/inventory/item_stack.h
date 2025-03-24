@@ -31,16 +31,16 @@ public:
     void setType(std::string type) override;
     [[nodiscard]] int getAmount() const override;
     void setAmount(int amount) override;
-    std::shared_ptr<ItemMeta> getItemMeta() const override;
+    std::unique_ptr<ItemMeta> getItemMeta() const override;
     bool hasItemMeta() const override;
-    bool setItemMeta(std::shared_ptr<ItemMeta> meta) override;
+    bool setItemMeta(ItemMeta *meta) override;
 
     static ::ItemStack toMinecraft(const std::shared_ptr<ItemStack> &item);
     static std::shared_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
-    static std::string getType(::ItemStack *item);
-    static std::shared_ptr<ItemMeta> getItemMeta(::ItemStack *item);
-    static bool hasItemMeta(::ItemStack *item);
-    static bool setItemMeta(::ItemStack *item, const std::shared_ptr<ItemMeta> &meta);
+    static std::string getType(const ::ItemStack *item);
+    static std::unique_ptr<ItemMeta> getItemMeta(const ::ItemStack *item);
+    static bool hasItemMeta(const ::ItemStack *item);
+    static bool setItemMeta(::ItemStack *item, const ItemMeta *meta);
 
 private:
     void reset();

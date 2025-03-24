@@ -20,7 +20,7 @@ namespace endstone::python {
 
 void init_inventory(py::module_ &m)
 {
-    py::class_<ItemMeta, std::shared_ptr<ItemMeta>>(m, "ItemMeta", "Represents the metadata of a generic item.")
+    py::class_<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, "Creates a clone of the current metadata.")
         .def_property_readonly("has_display_name", &ItemMeta::hasDisplayName, "Checks for existence of a display name.")
         .def_property("display_name", &ItemMeta::getDisplayName, &ItemMeta::setDisplayName,
@@ -28,7 +28,7 @@ void init_inventory(py::module_ &m)
         .def_property_readonly("has_lore", &ItemMeta::hasLore, "Checks for existence of lore.")
         .def_property("lore", &ItemMeta::getLore, &ItemMeta::setLore, "Gets or sets the lore for this item.");
 
-    py::class_<MapMeta, ItemMeta, std::shared_ptr<MapMeta>>(m, "MapMeta", "Represents the metadata for a map item.");
+    py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
 
     py::class_<ItemStack, std::shared_ptr<ItemStack>>(m, "ItemStack", "Represents a stack of items.")
         .def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)

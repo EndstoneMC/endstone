@@ -64,7 +64,7 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
-std::shared_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
+std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
 {
     return getItemMeta(handle_);
 }
@@ -74,7 +74,7 @@ bool EndstoneItemStack::hasItemMeta() const
     return hasItemMeta(handle_) && getItemMeta() != nullptr;
 }
 
-bool EndstoneItemStack::setItemMeta(std::shared_ptr<ItemMeta> meta)
+bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
 {
     return setItemMeta(handle_, meta);
 }
@@ -93,7 +93,7 @@ bool EndstoneItemStack::setItemMeta(std::shared_ptr<ItemMeta> meta)
     }
     auto stack = ::ItemStack(item->getType(), item->getAmount());
     if (item->hasItemMeta()) {
-        setItemMeta(&stack, item->getItemMeta());
+        setItemMeta(&stack, item->getItemMeta().get());
     }
     return stack;
 }
@@ -106,12 +106,12 @@ std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::Item
     return std::make_shared<EndstoneItemStack>(item);
 }
 
-std::string EndstoneItemStack::getType(::ItemStack *item)
+std::string EndstoneItemStack::getType(const ::ItemStack *item)
 {
     return (item && !item->isNull()) ? item->getItem()->getFullItemName() : "minecraft:air";
 }
 
-std::shared_ptr<ItemMeta> EndstoneItemStack::getItemMeta(::ItemStack *item)
+std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item)
 {
     if (item && !item->isNull()) {
         return EndstoneItemFactory::getItemMeta(getType(item), *item);
@@ -119,19 +119,18 @@ std::shared_ptr<ItemMeta> EndstoneItemStack::getItemMeta(::ItemStack *item)
     return ItemFactory::getItemMeta("minecraft:air");
 }
 
-bool EndstoneItemStack::hasItemMeta(::ItemStack *item)
+bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
 {
     return !getItemMeta(item)->isEmpty();
 }
 
-bool EndstoneItemStack::setItemMeta(::ItemStack *item, const std::shared_ptr<ItemMeta> &meta)
+bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
 {
-    static std::shared_ptr<ItemMeta> empty = std::make_shared<ItemMeta>();
     if (!item) {
         return false;
     }
     if (!meta) {
-        EndstoneItemFactory::applyToItem(*item, empty);
+        EndstoneItemFactory::applyToItem(ItemMeta::EMPTY, *item);
         return true;
     }
     // TODO(item): applicability check
@@ -140,7 +139,7 @@ bool EndstoneItemStack::setItemMeta(::ItemStack *item, const std::shared_ptr<Ite
         return true;
     }
 
-    EndstoneItemFactory::applyToItem(*item, item_meta);
+    EndstoneItemFactory::applyToItem(*item_meta, *item);
     return true;
 }
 

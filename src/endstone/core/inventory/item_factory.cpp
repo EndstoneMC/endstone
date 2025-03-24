@@ -17,16 +17,16 @@
 namespace endstone::core {
 
 template <typename T>
-void loadData(const std::shared_ptr<T> &meta, const CompoundTag &tag);
+void loadData(T &meta, const CompoundTag &tag);
 
 template <>
-void loadData(const std::shared_ptr<ItemMeta> &meta, const CompoundTag &tag)
+void loadData(ItemMeta &meta, const CompoundTag &tag)
 {
     if (const auto *display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY)) {
         // Display name
         auto display_name = display_tag->getString(ItemStackBase::TAG_DISPLAY_NAME);
         if (!display_name.empty()) {
-            meta->setDisplayName(display_name);
+            meta.setDisplayName(display_name);
         }
 
         // Lore
@@ -39,19 +39,19 @@ void loadData(const std::shared_ptr<ItemMeta> &meta, const CompoundTag &tag)
             lore.emplace_back(lore_tag->getString(i));
         }
         if (!lore.empty()) {
-            meta->setLore(lore);
+            meta.setLore(lore);
         }
     }
 }
 
 template <>
-void loadData(const std::shared_ptr<MapMeta> &meta, const CompoundTag &tag)
+void loadData(MapMeta &meta, const CompoundTag &tag)
 {
     loadData<ItemMeta>(meta, tag);
     // TODO(item): implement this
 }
 
-std::shared_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string_view type, const ItemStackBase &item)
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string_view type, const ItemStackBase &item)
 {
     auto meta = ItemFactory::getItemMeta(type);
     const auto *tag = item.getUserData();
@@ -61,20 +61,20 @@ std::shared_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string_vie
 
     switch (meta->getType()) {
     case ItemMeta::Type::Map:
-        loadData<MapMeta>(std::static_pointer_cast<MapMeta>(meta), *tag);
+        loadData<MapMeta>(static_cast<MapMeta &>(*meta), *tag);
         break;
     default:
-        loadData<ItemMeta>(meta, *tag);
+        loadData<ItemMeta>(*meta, *tag);
         break;
     }
     return meta;
 }
 
 template <typename T>
-void applyTo(const std::shared_ptr<T> &meta, CompoundTag &tag);
+void applyTo(const T &meta, CompoundTag &tag);
 
 template <>
-void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
+void applyTo(const ItemMeta &meta, CompoundTag &tag)
 {
     auto *display_tag = tag.getCompound(ItemStackBase::TAG_DISPLAY);
     if (!display_tag) {
@@ -82,7 +82,7 @@ void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
     }
 
     // Display name
-    if (const auto display_name = meta->getDisplayName(); display_name.has_value()) {
+    if (const auto display_name = meta.getDisplayName(); display_name.has_value()) {
         display_tag->put(ItemStackBase::TAG_DISPLAY_NAME, std::make_unique<StringTag>(display_name.value()));
     }
     else {
@@ -90,7 +90,7 @@ void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
     }
 
     // Lore
-    if (const auto lore = meta->getLore(); lore.has_value()) {
+    if (const auto lore = meta.getLore(); lore.has_value()) {
         auto lore_tag = std::make_unique<ListTag>();
         for (const auto &line : lore.value()) {
             lore_tag->add(std::make_unique<StringTag>(line));
@@ -103,21 +103,21 @@ void applyTo(const std::shared_ptr<ItemMeta> &meta, CompoundTag &tag)
 }
 
 template <>
-void applyTo(const std::shared_ptr<MapMeta> &meta, CompoundTag &tag)
+void applyTo(const MapMeta &meta, CompoundTag &tag)
 {
     applyTo<ItemMeta>(meta, tag);
     // TODO(item): implement this
 }
 
-void EndstoneItemFactory::applyToItem(ItemStackBase &item, const std::shared_ptr<ItemMeta> &meta)
+void EndstoneItemFactory::applyToItem(const ItemMeta &meta, ItemStackBase &item)
 {
     if (!item.hasUserData()) {
         item.setUserData(std::make_unique<CompoundTag>());
     }
     auto *tag = item.getUserData();
-    switch (meta->getType()) {
+    switch (meta.getType()) {
     case ItemMeta::Type::Map:
-        applyTo<MapMeta>(std::static_pointer_cast<MapMeta>(meta), *tag);
+        applyTo<MapMeta>(static_cast<const MapMeta &>(meta), *tag);
         break;
     default:
         applyTo<ItemMeta>(meta, *tag);

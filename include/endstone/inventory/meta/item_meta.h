@@ -23,8 +23,9 @@ namespace endstone {
 /**
  * @brief Represents the metadata of a generic item.
  */
-class ItemMeta : public std::enable_shared_from_this<ItemMeta> {
+class ItemMeta {
 public:
+    static ItemMeta EMPTY;
     enum class Type {
         Item = 0,
         Map = 1,
@@ -69,9 +70,9 @@ public:
      *
      * @return A copy of the metadata containing the same state as the original.
      */
-    [[nodiscard]] virtual std::shared_ptr<ItemMeta> clone() const
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const
     {
-        return std::make_shared<ItemMeta>(*this);
+        return std::make_unique<ItemMeta>(*this);
     }
 
     /**
@@ -154,4 +155,6 @@ private:
     std::optional<std::string> display_name_;
     std::optional<std::vector<std::string>> lore_;
 };
+
+inline ItemMeta ItemMeta::EMPTY;
 }  // namespace endstone

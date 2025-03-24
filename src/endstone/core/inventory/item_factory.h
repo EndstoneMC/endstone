@@ -22,8 +22,8 @@ namespace endstone::core {
 
 class EndstoneItemFactory {
 public:
-    static std::shared_ptr<ItemMeta> getItemMeta(std::string_view type, const ItemStackBase &item);
-    static void applyToItem(ItemStackBase &item, const std::shared_ptr<ItemMeta> &meta);
+    static std::unique_ptr<ItemMeta> getItemMeta(std::string_view type, const ItemStackBase &item);
+    static void applyToItem(const ItemMeta &meta, ItemStackBase &item);
 };
 
 }  // namespace endstone::core
