@@ -34,6 +34,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_script_manager.cpp
         main.cpp
         hook.cpp
+        vtable_hook.cpp
         linux.cpp
         windows.cpp
 )
