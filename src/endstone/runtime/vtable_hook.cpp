@@ -27,7 +27,7 @@ static OriginalMap &originals()  // NOLINT(*-use-anonymous-namespace)
     return originals;
 }
 
-void install_vtable(void **vtable, int ordinal, void *detour)
+void hook_vtable(void **vtable, int ordinal, void *detour)
 {
     // Get the function pointer at the specified ordinal.
     void *target = vtable[ordinal];

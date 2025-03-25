@@ -20,18 +20,19 @@
 
 namespace endstone::hook {
 namespace details {
-void install_vtable(void **vtable, int ordinal, void *detour);
+void hook_vtable(void **vtable, int ordinal, void *detour);
 }
 
 template <int Ordinal, typename Obj, typename Detour>
-void install_vtable(Obj *obj, Detour detour)
+void hook_vtable(Obj *obj, Detour detour)
 {
-    static std::once_flag flag;
-    std::call_once(flag, [=]() {
-        void **vtable = *reinterpret_cast<void ***>(obj);
-        details::install_vtable(vtable, Ordinal, detail::fp_cast(detour));
-    });
+    void **vtable = *reinterpret_cast<void ***>(obj);
+    details::hook_vtable(vtable, Ordinal, detail::fp_cast(detour));
 }
 
 void *get_vtable_original(void *detour);
 }  // namespace endstone::hook
+
+#define ENDSTONE_VHOOK_CALL_ORIGINAL(fp, ...)                                                               \
+    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_vtable_original(endstone::detail::fp_cast(fp))), \
+                ##__VA_ARGS__)

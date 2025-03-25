@@ -20,6 +20,7 @@
 #elif __linux__
 #define ENDSTONE_HOOK __attribute__((visibility("default")))
 #endif
+#define ENDSTONE_VHOOK
 
 #ifdef NDEBUG
 #ifdef _WIN32

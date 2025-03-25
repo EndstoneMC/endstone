@@ -34,7 +34,6 @@
 #include "endstone/core/event/handlers/actor_gameplay_handler.h"
 #include "endstone/core/event/handlers/block_gameplay_handler.h"
 #include "endstone/core/event/handlers/level_gameplay_handler.h"
-#include "endstone/core/event/handlers/player_gameplay_handler.h"
 #include "endstone/core/event/handlers/scripting_event_handler.h"
 #include "endstone/core/event/handlers/server_network_event_handler.h"
 #include "endstone/core/level/level.h"
@@ -164,7 +163,6 @@ void EndstoneServer::registerEventListeners()
     wrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler_);
     wrap<EndstoneBlockGameplayHandler>(level.getBlockEventCoordinator().block_gameplay_handler_);
     wrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler_);
-    wrap<EndstonePlayerGameplayHandler>(level.getServerPlayerEventCoordinator().player_gameplay_handler_);
     wrap<EndstoneScriptingEventHandler>(level.getScriptingEventCoordinator().scripting_event_handler_);
     wrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler_);
 }
@@ -175,7 +173,6 @@ void EndstoneServer::unregisterEventListeners()
     unwrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler_);
     unwrap<EndstoneBlockGameplayHandler>(level.getBlockEventCoordinator().block_gameplay_handler_);
     unwrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler_);
-    unwrap<EndstonePlayerGameplayHandler>(level.getServerPlayerEventCoordinator().player_gameplay_handler_);
     unwrap<EndstoneScriptingEventHandler>(level.getScriptingEventCoordinator().scripting_event_handler_);
     unwrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler_);
 }
