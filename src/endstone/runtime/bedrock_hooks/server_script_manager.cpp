@@ -19,6 +19,7 @@
 
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
+#include "bedrock/scripting/event_handlers/script_scripting_event_handler.h"
 #include "endstone/core/server.h"
 #include "endstone/detail/cast.h"
 #include "endstone/runtime/hook.h"
@@ -55,6 +56,17 @@ void hookEventHandler(PlayerGameplayHandler &handler)
 #endif
 }
 
+template <>
+void hookEventHandler(ScriptingEventHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<1>(&handler, &ScriptScriptingEventHandler::handleEvent2);
+#else
+    hook_vtable<3>(&handler, &ScriptScriptingEventHandler::handleEvent2);
+#endif
+}
+
 void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerScriptManager::_runPlugins, this, exe_group, server_instance);
@@ -73,6 +85,7 @@ void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInst
             auto &server = entt::locator<endstone::core::EndstoneServer>::value();
             hookEventHandler(*level.getBlockEventCoordinator().block_gameplay_handler);
             hookEventHandler(*level.getServerPlayerEventCoordinator().player_gameplay_handler);
+            hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
             server.setLevel(level);
         });
         break;

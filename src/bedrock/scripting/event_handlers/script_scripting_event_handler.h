@@ -14,13 +14,13 @@
 
 #pragma once
 
-#include "bedrock/forward.h"
-#include "bedrock/gameplayhandlers/scripting_event_handler.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scripting_event_listener.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/events/scripting_events.h"
 
-class ScriptingEventCoordinator : public EventCoordinatorPimpl<ScriptingEventListener> {
+class ScriptScriptingEventHandler {
 public:
-    std::unique_ptr<ScriptingEventHandler> scripting_event_handler;  // Endstone: private -> public
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent1(
+        MutableScriptingGameplayEvent<CoordinatorResult> &event);
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent2(
+        const ScriptingGameplayEvent<CoordinatorResult> &event);
 };
