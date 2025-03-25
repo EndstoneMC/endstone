@@ -56,7 +56,6 @@ add_library(endstone_core
         damage/damage_source.cpp
         event/handlers/actor_gameplay_handler.cpp
         event/handlers/level_gameplay_handler.cpp
-        event/handlers/server_network_event_handler.cpp
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/inventory.cpp

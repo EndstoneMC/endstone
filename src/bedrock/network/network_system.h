@@ -38,8 +38,6 @@ protected:
     std::unique_ptr<LocalConnector> local_connector_;
 
 private:
-    friend class endstone::core::EndstoneServerNetworkEventHandler;
-
     std::unique_ptr<RemoteConnector> remote_connector_;
     std::unique_ptr<ServerLocator> server_locator_;
     Bedrock::Threading::RecursiveMutex connections_mutex_;
@@ -48,9 +46,13 @@ private:
     std::unique_ptr<TaskGroup> receive_task_group_;
     Bedrock::NonOwnerPointer<IPacketObserver> packet_observer_;
     Scheduler &main_thread_;
+
+public:                           // Endstone: private -> public
     std::string receive_buffer_;  // +272
     std::string send_buffer_;
     BinaryStream send_stream_;
+
+private:
     struct IncomingPacketQueue {
         NetEventCallback &callback_obj;
         Bedrock::Threading::Mutex mutex;

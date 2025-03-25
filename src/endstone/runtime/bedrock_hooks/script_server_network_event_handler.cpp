@@ -12,57 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/event/handlers/server_network_event_handler.h"
+#include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/server/packet_receive_event.h"
 #include "endstone/event/server/packet_send_event.h"
+#include "endstone/runtime/vtable_hook.h"
 
-namespace endstone::core {
-
-EndstoneServerNetworkEventHandler::EndstoneServerNetworkEventHandler(std::unique_ptr<ServerNetworkEventHandler> handle)
-    : handle_(std::move(handle))
+namespace {
+bool handleEvent(IncomingPacketEvent &event)
 {
-}
-
-GameplayHandlerResult<CoordinatorResult> EndstoneServerNetworkEventHandler::handleEvent(
-    MutableServerNetworkGameplayEvent<CoordinatorResult> &event)
-{
-    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
-        using T = std::decay_t<decltype(arg)>;
-        if (!handleEvent(arg.value())) {
-            return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
-        }
-        return handle_->handleEvent(event);
-    };
-    return event.visit(visitor);
-}
-
-std::unique_ptr<ServerNetworkEventHandler> EndstoneServerNetworkEventHandler::unwrap()
-{
-    return std::move(handle_);
-}
-
-bool EndstoneServerNetworkEventHandler::handleEvent(ChatEvent &event)
-{
-    const auto &server = entt::locator<EndstoneServer>::value();
-    if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
-        PlayerChatEvent e{player->getEndstoneActor<EndstonePlayer>(), event.message};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return false;
-        }
-
-        event.message = std::move(e.getMessage());
-        server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
-    }
-    return true;
-}
-
-bool EndstoneServerNetworkEventHandler::handleEvent(IncomingPacketEvent &event)
-{
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
         const auto &network = server.getServer().getNetwork();
         // TODO(refactor): add Player::handleDataPacket and call the event there
@@ -74,8 +35,8 @@ bool EndstoneServerNetworkEventHandler::handleEvent(IncomingPacketEvent &event)
         const auto packet_id = static_cast<int>(header.value() & 0x3ff);
         const auto sender_sub_id = (header.value() >> 10) & 3;
         const auto target_sub_id = (header.value() >> 12) & 3;
-        PacketReceiveEvent e{player->getEndstoneActor<EndstonePlayer>(), packet_id,
-                             stream.getView().substr(stream.getReadPointer())};
+        endstone::PacketReceiveEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), packet_id,
+                                       stream.getView().substr(stream.getReadPointer())};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
@@ -89,9 +50,9 @@ bool EndstoneServerNetworkEventHandler::handleEvent(IncomingPacketEvent &event)
     return true;
 }
 
-bool EndstoneServerNetworkEventHandler::handleEvent(OutgoingPacketEvent &event)
+bool handleEvent(OutgoingPacketEvent &event)
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     for (auto it = event.recipients.begin(); it != event.recipients.end();) {
         const auto &recipient = *it;
         if (const auto *player = WeakEntityRef(recipient).tryUnwrap<::Player>(); player) {
@@ -104,8 +65,8 @@ bool EndstoneServerNetworkEventHandler::handleEvent(OutgoingPacketEvent &event)
             const auto packet_id = static_cast<int>(header.value() & 0x3ff);
             const auto sender_sub_id = (header.value() >> 10) & 3;
             const auto target_sub_id = (header.value() >> 12) & 3;
-            PacketSendEvent e{player->getEndstoneActor<EndstonePlayer>(), packet_id,
-                              stream.getView().substr(stream.getReadPointer())};
+            endstone::PacketSendEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), packet_id,
+                                        stream.getView().substr(stream.getReadPointer())};
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 it = event.recipients.erase(it);
@@ -118,4 +79,32 @@ bool EndstoneServerNetworkEventHandler::handleEvent(OutgoingPacketEvent &event)
     return true;
 }
 
-}  // namespace endstone::core
+bool handleEvent(ChatEvent &event)
+{
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
+        endstone::PlayerChatEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.message};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+
+        event.message = std::move(e.getMessage());
+        server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
+    }
+    return true;
+}
+}  // namespace
+
+GameplayHandlerResult<CoordinatorResult> ScriptServerNetworkEventHandler::handleEvent1(
+    MutableServerNetworkGameplayEvent<CoordinatorResult> &event)
+{
+    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
+        using T = std::decay_t<decltype(arg)>;
+        if (!handleEvent(arg.value())) {
+            return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+        }
+        return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptServerNetworkEventHandler::handleEvent1, this, event);
+    };
+    return event.visit(visitor);
+}

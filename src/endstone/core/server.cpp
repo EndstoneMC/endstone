@@ -33,7 +33,6 @@
 #include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/event/handlers/actor_gameplay_handler.h"
 #include "endstone/core/event/handlers/level_gameplay_handler.h"
-#include "endstone/core/event/handlers/server_network_event_handler.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -160,7 +159,6 @@ void EndstoneServer::registerEventListeners()
     auto &level = level_->getHandle();
     wrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler);
     wrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler);
-    wrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler);
 }
 
 void EndstoneServer::unregisterEventListeners()
@@ -168,7 +166,6 @@ void EndstoneServer::unregisterEventListeners()
     auto &level = level_->getHandle();
     unwrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler);
     unwrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler);
-    unwrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler);
 }
 
 std::string EndstoneServer::getName() const

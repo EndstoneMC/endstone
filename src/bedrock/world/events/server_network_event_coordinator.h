@@ -19,7 +19,6 @@
 #include "bedrock/world/events/server_network_event_listener.h"
 
 class ServerNetworkEventCoordinator : public EventCoordinator<ServerNetworkEventListener> {
-protected:
-    friend class endstone::core::EndstoneServer;
-    std::unique_ptr<ServerNetworkEventHandler> server_network_event_handler_;
+public:
+    std::unique_ptr<ServerNetworkEventHandler> server_network_event_handler;  // Endstone: private -> public
 };
