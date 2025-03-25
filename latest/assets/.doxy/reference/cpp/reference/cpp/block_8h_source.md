@@ -48,11 +48,11 @@ public:
 
     virtual Result<void> setType(std::string type, bool apply_physics) = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
-    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(const BlockData &data) = 0;
 
-    virtual Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
+    virtual Result<void> setData(const BlockData &data, bool apply_physics) = 0;
 
     virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 

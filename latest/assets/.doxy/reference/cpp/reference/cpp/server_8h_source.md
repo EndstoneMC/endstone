@@ -138,9 +138,9 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                                  std::vector<BarFlag> flags) const = 0;
 
-    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const = 0;
+    [[nodiscard]] virtual Result<std::unique_ptr<BlockData>> createBlockData(std::string type) const = 0;
 
-    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
+    [[nodiscard]] virtual Result<std::unique_ptr<BlockData>> createBlockData(std::string type,
                                                                              BlockStates block_states) const = 0;
 
     [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;

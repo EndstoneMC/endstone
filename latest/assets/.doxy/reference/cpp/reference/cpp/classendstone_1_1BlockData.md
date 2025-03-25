@@ -14,7 +14,6 @@ _Represents the data related to a live block._
 
 
 
-Inherits the following classes: std::enable_shared_from_this< BlockData >
 
 
 

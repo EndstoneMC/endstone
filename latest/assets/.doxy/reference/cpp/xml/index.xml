@@ -150,9 +150,9 @@
     <member refid="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Block_1afc6493c7fae9703684a17ebcc6c92a32" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1Block_1a6235d565c41138ea5ed584250d84617f" kind="function"><name>setType</name></member>
-    <member refid="classendstone_1_1Block_1ae65e640442d36d5dbbbf8374cc9a996e" kind="function"><name>getData</name></member>
-    <member refid="classendstone_1_1Block_1ae4ceaaa2365957b62e4741857259e1bb" kind="function"><name>setData</name></member>
-    <member refid="classendstone_1_1Block_1a1f906bf290929643ec2092f199aeafeb" kind="function"><name>setData</name></member>
+    <member refid="classendstone_1_1Block_1a5293fd07d6c423a5a7132944eec13282" kind="function"><name>getData</name></member>
+    <member refid="classendstone_1_1Block_1a7f24c60e47c3bcd49f0b1122b80b7b47" kind="function"><name>setData</name></member>
+    <member refid="classendstone_1_1Block_1a4dbd6ae72829e456925cc5a86d93ea42" kind="function"><name>setData</name></member>
     <member refid="classendstone_1_1Block_1ade7ede2f68266c797efbb8b5a237304b" kind="function"><name>getRelative</name></member>
     <member refid="classendstone_1_1Block_1ae60ad017cb35887e0cad09c2d76b354b" kind="function"><name>getRelative</name></member>
     <member refid="classendstone_1_1Block_1a360bc161449ffdd18506c4775408af14" kind="function"><name>getRelative</name></member>
@@ -208,8 +208,8 @@
     <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" kind="function"><name>getBlock</name></member>
     <member refid="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1BlockState_1a54629f4faa893e30d1ef4d4ac15bf147" kind="function"><name>setType</name></member>
-    <member refid="classendstone_1_1BlockState_1a0699ddcbb62c951ca592858a8759276d" kind="function"><name>getData</name></member>
-    <member refid="classendstone_1_1BlockState_1a59ca373fa26695ac6eb706f64b2e40f0" kind="function"><name>setData</name></member>
+    <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" kind="function"><name>getData</name></member>
+    <member refid="classendstone_1_1BlockState_1a97427ac349aacfcc0d617ec52fb33ff8" kind="function"><name>setData</name></member>
     <member refid="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" kind="function"><name>getX</name></member>
     <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" kind="function"><name>getY</name></member>
@@ -1350,8 +1350,8 @@
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
     <member refid="classendstone_1_1Server_1a7e443c131695f212023c111ae764d404" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a2536be1d6e7e8756a2827762ab9896ba" kind="function"><name>createBossBar</name></member>
-    <member refid="classendstone_1_1Server_1a0a9fc3969f104cdd695f767caca09f01" kind="function"><name>createBlockData</name></member>
-    <member refid="classendstone_1_1Server_1af2ae4fb41a7aa7b1780030b47813283a" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1ae5ee8ce481311bba022940d94472220f" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1a1b24e2dbc070bf8ad930aa9d144e7438" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" kind="function"><name>getBanList</name></member>
     <member refid="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" kind="function"><name>getIpBanList</name></member>
     <member refid="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" kind="function"><name>getServiceManager</name></member>

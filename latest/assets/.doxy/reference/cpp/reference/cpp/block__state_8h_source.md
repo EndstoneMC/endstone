@@ -41,9 +41,9 @@ public:
 
     virtual Result<void> setType(std::string type) = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
-    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(const BlockData& data) = 0;
 
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 

@@ -83,9 +83,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="55" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a0699ddcbb62c951ca592858a8759276d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
-        <definition>virtual std::shared_ptr&lt; BlockData &gt; endstone::BlockState::getData</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BlockData &gt; endstone::BlockState::getData</definition>
         <argsstring>() const =0</argsstring>
         <name>getData</name>
         <qualifiedname>endstone::BlockState::getData</qualifiedname>
@@ -101,14 +101,14 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="62" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a59ca373fa26695ac6eb706f64b2e40f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a97427ac349aacfcc0d617ec52fb33ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::BlockState::setData</definition>
-        <argsstring>(std::shared_ptr&lt; BlockData &gt; data)=0</argsstring>
+        <argsstring>(const BlockData &amp;data)=0</argsstring>
         <name>setData</name>
         <qualifiedname>endstone::BlockState::setData</qualifiedname>
         <param>
-          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
           <declname>data</declname>
         </param>
         <briefdescription>
@@ -327,14 +327,14 @@
     <location file="include/endstone/block/block_state.h" line="32" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="32" bodyend="138"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>
-      <member refid="classendstone_1_1BlockState_1a0699ddcbb62c951ca592858a8759276d" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getData</name></member>
+      <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getData</name></member>
       <member refid="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getType</name></member>
       <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getX</name></member>
       <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getY</name></member>
       <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getZ</name></member>
-      <member refid="classendstone_1_1BlockState_1a59ca373fa26695ac6eb706f64b2e40f0" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setData</name></member>
+      <member refid="classendstone_1_1BlockState_1a97427ac349aacfcc0d617ec52fb33ff8" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setData</name></member>
       <member refid="classendstone_1_1BlockState_1a54629f4faa893e30d1ef4d4ac15bf147" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setType</name></member>
       <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
       <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>

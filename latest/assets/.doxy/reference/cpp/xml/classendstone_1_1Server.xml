@@ -930,9 +930,9 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="315" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a0a9fc3969f104cdd695f767caca09f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt; &gt;</type>
-        <definition>virtual Result&lt; std::shared_ptr&lt; BlockData &gt; &gt; endstone::Server::createBlockData</definition>
+      <memberdef kind="function" id="classendstone_1_1Server_1ae5ee8ce481311bba022940d94472220f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt; &gt;</type>
+        <definition>virtual Result&lt; std::unique_ptr&lt; BlockData &gt; &gt; endstone::Server::createBlockData</definition>
         <argsstring>(std::string type) const =0</argsstring>
         <name>createBlockData</name>
         <qualifiedname>endstone::Server::createBlockData</qualifiedname>
@@ -961,9 +961,9 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="325" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1af2ae4fb41a7aa7b1780030b47813283a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt; &gt;</type>
-        <definition>virtual Result&lt; std::shared_ptr&lt; BlockData &gt; &gt; endstone::Server::createBlockData</definition>
+      <memberdef kind="function" id="classendstone_1_1Server_1a1b24e2dbc070bf8ad930aa9d144e7438" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt; &gt;</type>
+        <definition>virtual Result&lt; std::unique_ptr&lt; BlockData &gt; &gt; endstone::Server::createBlockData</definition>
         <argsstring>(std::string type, BlockStates block_states) const =0</argsstring>
         <name>createBlockData</name>
         <qualifiedname>endstone::Server::createBlockData</qualifiedname>
@@ -1071,8 +1071,8 @@
       <member refid="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelUser</name></member>
       <member refid="classendstone_1_1Server_1acc4f0ea241258f9d987752f1b86d1c8e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
-      <member refid="classendstone_1_1Server_1a0a9fc3969f104cdd695f767caca09f01" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
-      <member refid="classendstone_1_1Server_1af2ae4fb41a7aa7b1780030b47813283a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
+      <member refid="classendstone_1_1Server_1ae5ee8ce481311bba022940d94472220f" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
+      <member refid="classendstone_1_1Server_1a1b24e2dbc070bf8ad930aa9d144e7438" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
       <member refid="classendstone_1_1Server_1a7e443c131695f212023c111ae764d404" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1a2536be1d6e7e8756a2827762ab9896ba" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1a6bff7fa11f6c5256df465cc74aab51e9" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createScoreboard</name></member>

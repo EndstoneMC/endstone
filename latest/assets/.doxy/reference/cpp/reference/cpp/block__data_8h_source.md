@@ -36,7 +36,7 @@ namespace endstone {
 
 using BlockStates = std::unordered_map<std::string, std::variant<bool, std::string, int>>;
 
-class BlockData : public std::enable_shared_from_this<BlockData> {
+class BlockData {
 public:
     virtual ~BlockData() = default;
 

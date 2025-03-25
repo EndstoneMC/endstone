@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockData" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BlockData</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; BlockData &gt;</basecompoundref>
     <includes refid="block__data_8h" local="no">endstone/block/block_data.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -61,28 +60,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1">
-        <label>endstone::BlockData</label>
-        <link refid="classendstone_1_1BlockData"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; BlockData &gt;</label>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1">
-        <label>endstone::BlockData</label>
-        <link refid="classendstone_1_1BlockData"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; BlockData &gt;</label>
-      </node>
-    </collaborationgraph>
     <location file="include/endstone/block/block_data.h" line="32" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="32" bodyend="50"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getBlockStates</name></member>

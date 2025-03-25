@@ -54,7 +54,7 @@ _Represents a block._ [More...](#detailed-description)
 | ---: | :--- |
 | virtual std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) () const = 0<br>_Captures the current state of this block._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**clone**](#function-clone) () const = 0<br>_Creates a copy of the current block._  |
-| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
+| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) ([**int**](classendstone_1_1Vector.md) offset\_x, [**int**](classendstone_1_1Vector.md) offset\_y, [**int**](classendstone_1_1Vector.md) offset\_z) = 0<br>_Gets the block at the given offsets._  |
@@ -64,8 +64,8 @@ _Represents a block._ [More...](#detailed-description)
 | virtual [**int**](classendstone_1_1Vector.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setData**](#function-setdata-12) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the complete data for this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setData**](#function-setdata-22) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data, [**bool**](classendstone_1_1Vector.md) apply\_physics) = 0<br>_Sets the complete data for this block._  |
+| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setData**](#function-setdata-12) ([**const**](classendstone_1_1Vector.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the complete data for this block._  |
+| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setData**](#function-setdata-22) ([**const**](classendstone_1_1Vector.md) [**BlockData**](classendstone_1_1BlockData.md) & data, [**bool**](classendstone_1_1Vector.md) apply\_physics) = 0<br>_Sets the complete data for this block._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setType**](#function-settype-22) (std::string type, [**bool**](classendstone_1_1Vector.md) apply\_physics) = 0<br>_Sets the type of this block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
@@ -166,7 +166,7 @@ virtual std::unique_ptr< Block > endstone::Block::clone () const = 0
 
 _Gets the complete block data for this block._ 
 ```C++
-virtual std::shared_ptr< BlockData > endstone::Block::getData () const = 0
+virtual std::unique_ptr< BlockData > endstone::Block::getData () const = 0
 ```
 
 
@@ -456,7 +456,7 @@ x-coordinate
 _Sets the complete data for this block._ 
 ```C++
 virtual Result< void > endstone::Block::setData (
-    std::shared_ptr< BlockData > data
+    const  BlockData & data
 ) = 0
 ```
 
@@ -483,7 +483,7 @@ virtual Result< void > endstone::Block::setData (
 _Sets the complete data for this block._ 
 ```C++
 virtual Result< void > endstone::Block::setData (
-    std::shared_ptr< BlockData > data,
+    const  BlockData & data,
     bool apply_physics
 ) = 0
 ```
