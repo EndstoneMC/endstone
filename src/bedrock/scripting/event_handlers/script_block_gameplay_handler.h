@@ -14,11 +14,16 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/block_gameplay_handler.h"
-#include "bedrock/world/events/block_event_listener.h"
-#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/block_events.h"
 
-class BlockEventCoordinator : public EventCoordinator<BlockEventListener> {
+class ScriptBlockGameplayHandler {
 public:
-    std::unique_ptr<BlockGameplayHandler> block_gameplay_handler;  // Endstone: private -> public
+    ENDSTONE_VHOOK HandlerResult handleEvent1(const BlockGameplayEvent<void> &event);
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent2(
+        const BlockGameplayEvent<CoordinatorResult> &event);
+    ENDSTONE_VHOOK GameplayHandlerResult<std::optional<std::string>> handleEvent3(
+        const BlockGameplayEvent<std::optional<std::string>> &event);
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent4(
+        MutableBlockGameplayEvent<CoordinatorResult> &event);
 };

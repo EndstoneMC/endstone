@@ -17,6 +17,7 @@
 #include <mutex>
 #include <thread>
 
+#include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
 #include "endstone/core/server.h"
 #include "endstone/detail/cast.h"
@@ -25,6 +26,19 @@
 
 template <typename T>
 void hookEventHandler(T &handler);
+
+template <>
+void hookEventHandler(BlockGameplayHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
+    hook_vtable<1>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
+#else
+    hook_vtable<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
+    hook_vtable<5>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
+#endif
+}
 
 template <>
 void hookEventHandler(PlayerGameplayHandler &handler)
@@ -57,6 +71,7 @@ void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInst
         std::call_once(init_level, [&server_instance]() {
             auto &level = *server_instance.getMinecraft()->getLevel();
             auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+            hookEventHandler(*level.getBlockEventCoordinator().block_gameplay_handler);
             hookEventHandler(*level.getServerPlayerEventCoordinator().player_gameplay_handler);
             server.setLevel(level);
         });
