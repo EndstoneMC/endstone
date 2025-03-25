@@ -26,9 +26,9 @@ public:
     [[nodiscard]] std::string getType() const override;
     Result<void> setType(std::string type) override;
     Result<void> setType(std::string type, bool apply_physics) override;
-    [[nodiscard]] std::shared_ptr<BlockData> getData() const override;
-    Result<void> setData(std::shared_ptr<BlockData> data) override;
-    Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) override;
+    [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
+    Result<void> setData(const BlockData&  data) override;
+    Result<void> setData(const BlockData&  data, bool apply_physics) override;
     std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) override;
     std::unique_ptr<Block> getRelative(BlockFace face) override;
     std::unique_ptr<Block> getRelative(BlockFace face, int distance) override;

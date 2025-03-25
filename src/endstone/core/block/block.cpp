@@ -46,25 +46,22 @@ Result<void> EndstoneBlock::setType(std::string type, bool apply_physics)
     if (!result) {
         return nonstd::make_unexpected(result.error());
     }
-    return setData(result.value(), apply_physics);
+    return setData(*result.value(), apply_physics);
 }
 
-std::shared_ptr<BlockData> EndstoneBlock::getData() const
+std::unique_ptr<BlockData> EndstoneBlock::getData() const
 {
-    return std::make_shared<EndstoneBlockData>(getMinecraftBlock());
+    return std::make_unique<EndstoneBlockData>(getMinecraftBlock());
 }
 
-Result<void> EndstoneBlock::setData(std::shared_ptr<BlockData> data)
+Result<void> EndstoneBlock::setData(const BlockData &data)
 {
     return setData(std::move(data), true);
 }
 
-Result<void> EndstoneBlock::setData(std::shared_ptr<BlockData> data, bool apply_physics)
+Result<void> EndstoneBlock::setData(const BlockData &data, bool apply_physics)
 {
-    if (!data) {
-        return nonstd::make_unexpected(make_error("Block data cannot be null"));
-    }
-    const ::Block &block = static_cast<EndstoneBlockData &>(*data).getHandle();
+    const ::Block &block = static_cast<const EndstoneBlockData &>(data).getHandle();
     if (apply_physics) {
         block_source_.get().setBlock(block_pos_, block, BlockLegacy::UPDATE_NEIGHBORS | BlockLegacy::UPDATE_CLIENTS,
                                      nullptr, nullptr);

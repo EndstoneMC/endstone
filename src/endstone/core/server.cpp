@@ -478,12 +478,12 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string type) const
+Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string type) const
 {
     return createBlockData(type, {});
 }
 
-Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
+Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
@@ -499,7 +499,7 @@ Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
         return nonstd::make_unexpected(make_error("Block type {} cannot be found in the registry.", type));
     }
 
-    return std::make_shared<EndstoneBlockData>(const_cast<::Block &>(*block));
+    return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));
 }
 
 PlayerBanList &EndstoneServer::getBanList() const

@@ -67,14 +67,14 @@ public:
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
     /**
      * @brief Sets the complete data for this block
      *
      * @param data new block specific data
      */
-    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(const BlockData &data) = 0;
 
     /**
      * @brief Sets the complete data for this block
@@ -82,7 +82,7 @@ public:
      * @param data new block specific data
      * @param apply_physics False to cancel physics on the changed block.
      */
-    virtual Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
+    virtual Result<void> setData(const BlockData &data, bool apply_physics) = 0;
 
     /**
      * @brief Gets the block at the given offsets

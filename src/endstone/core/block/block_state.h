@@ -28,8 +28,8 @@ public:
     [[nodiscard]] std::unique_ptr<Block> getBlock() const override;
     [[nodiscard]] std::string getType() const override;
     Result<void> setType(std::string type) override;
-    [[nodiscard]] std::shared_ptr<BlockData> getData() const override;
-    Result<void> setData(std::shared_ptr<BlockData> data) override;
+    [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
+    Result<void> setData(const BlockData &data) override;
     [[nodiscard]] Dimension &getDimension() const override;
     [[nodiscard]] int getX() const override;
     [[nodiscard]] int getY() const override;

@@ -59,14 +59,14 @@ public:
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
     /**
      * @brief Sets the data for this block state.
      *
      * @param data New block specific data
      */
-    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(const BlockData& data) = 0;
 
     /**
      * @brief Gets the dimension which contains the block represented by this block state.

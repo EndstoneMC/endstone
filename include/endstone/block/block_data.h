@@ -29,7 +29,7 @@ using BlockStates = std::unordered_map<std::string, std::variant<bool, std::stri
 /**
  * @brief Represents the data related to a live block
  */
-class BlockData : public std::enable_shared_from_this<BlockData> {
+class BlockData {
 public:
     virtual ~BlockData() = default;
 
