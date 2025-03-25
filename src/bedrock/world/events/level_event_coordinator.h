@@ -24,9 +24,9 @@
 
 class LevelEventCoordinator : public EventCoordinator<LevelEventListener> {
 public:
+    std::unique_ptr<LevelGameplayHandler> level_gameplay_handler;  // Endstone: private -> public
+
 private:
-    friend class endstone::core::EndstoneServer;
-    std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;  // +112
     Bedrock::PubSub::Subscription game_rule_change_subscription_;
     Bedrock::PubSub::Subscription on_remove_actor_entity_references_subscription_;
     Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
