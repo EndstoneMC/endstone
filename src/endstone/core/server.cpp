@@ -31,7 +31,6 @@
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
-#include "endstone/core/event/handlers/actor_gameplay_handler.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -72,7 +71,6 @@ EndstoneServer::~EndstoneServer()
 {
     py::gil_scoped_acquire acquire{};
     disablePlugins();
-    unregisterEventListeners();
 }
 
 void EndstoneServer::init(ServerInstance &server_instance)
@@ -97,7 +95,6 @@ void EndstoneServer::setLevel(::Level &level)
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
-    registerEventListeners();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
@@ -151,18 +148,6 @@ void EndstoneServer::loadResourcePacks()
     auto &level_stack = const_cast<ResourcePackStack &>(manager->getStack(ResourcePackStackType::LEVEL));
     level_stack.stack.insert(level_stack.stack.end(), std::make_move_iterator(pack_stack->stack.begin()),
                              std::make_move_iterator(pack_stack->stack.end()));
-}
-
-void EndstoneServer::registerEventListeners()
-{
-    auto &level = level_->getHandle();
-    wrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler);
-}
-
-void EndstoneServer::unregisterEventListeners()
-{
-    auto &level = level_->getHandle();
-    unwrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler);
 }
 
 std::string EndstoneServer::getName() const
@@ -363,10 +348,8 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
-    unregisterEventListeners();
     server_instance_->getMinecraft()->requestResourceReload();
     level_->getHandle().loadFunctionManager();
-    registerEventListeners();
 }
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
