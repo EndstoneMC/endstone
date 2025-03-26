@@ -48,6 +48,10 @@ public:
                                             IPackManifestFactory &manifest_factory,
                                             Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,
                                             PackSourceReport *report, Core::Path const &zip_sub_dir);
+    static std::unique_ptr<Pack> createPack(const IPackIOProvider &io, const ResourceLocation &file_location,
+                                            PackType type, PackOrigin origin, IPackManifestFactory &manifest_factory,
+                                            Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,
+                                            PackSourceReport *report, const Core::Path &zip_sub_dir);
 
 private:
     std::unique_ptr<PackManifest> manifest_;
