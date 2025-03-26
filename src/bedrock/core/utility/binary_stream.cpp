@@ -51,9 +51,24 @@ Bedrock::Result<void> ReadOnlyBinaryStream::read(void *target, std::uint64_t num
     return {};
 }
 
+void ReadOnlyBinaryStream::setReadPointer(size_t read_pointer)
+{
+    read_pointer_ = read_pointer;
+}
+
 size_t ReadOnlyBinaryStream::getReadPointer() const
 {
     return read_pointer_;
+}
+
+size_t ReadOnlyBinaryStream::getUnreadLength() const
+{
+    return view_.size() - read_pointer_;
+}
+
+size_t ReadOnlyBinaryStream::getLength() const
+{
+    return view_.size();
 }
 
 Bedrock::Result<unsigned char> ReadOnlyBinaryStream::getByte()
@@ -103,6 +118,13 @@ const std::string &BinaryStream::getBuffer() const
     return *buffer_;
 }
 
+void BinaryStream::reset()
+{
+    buffer_->clear();
+    view_ = *buffer_;
+    setReadPointer(0);
+}
+
 void BinaryStream::writeBool(bool value)
 {
     write(&value, sizeof(bool));
@@ -126,13 +148,13 @@ void BinaryStream::writeSignedShort(std::int16_t value)
 void BinaryStream::writeUnsignedVarInt(std::uint32_t value)
 {
     do {
-        std::uint8_t byte = value & 0xFF;
+        std::uint8_t byte = value & 0x7F;
         value >>= 7;
         if (value) {
             writeByte(byte | 0x80);
         }
         else {
-            writeByte(byte & 0x7F);
+            writeByte(byte);
         }
     } while (value);
 }
@@ -140,13 +162,13 @@ void BinaryStream::writeUnsignedVarInt(std::uint32_t value)
 void BinaryStream::writeUnsignedVarInt64(std::uint64_t value)
 {
     do {
-        std::uint8_t byte = value & 0xFF;
+        std::uint8_t byte = value & 0x7F;
         value >>= 7;
         if (value) {
             writeByte(byte | 0x80);
         }
         else {
-            writeByte(byte & 0x7F);
+            writeByte(byte);
         }
     } while (value);
 }
@@ -170,6 +192,11 @@ void BinaryStream::writeString(std::string_view value)
 {
     writeUnsignedVarInt(value.length());
     write(value.data(), value.size());
+}
+
+void BinaryStream::writeRawBytes(std::string_view span)
+{
+    write(span.data(), span.size());
 }
 
 void BinaryStream::writeStream(BinaryStream &stream)

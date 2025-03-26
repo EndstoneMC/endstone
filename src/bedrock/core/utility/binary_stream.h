@@ -27,7 +27,10 @@ private:
     virtual Bedrock::Result<void> read(void *target, std::uint64_t num);
 
 public:
+    void setReadPointer(size_t);
     [[nodiscard]] size_t getReadPointer() const;
+    [[nodiscard]] size_t getUnreadLength() const;
+    [[nodiscard]] size_t getLength() const;
     Bedrock::Result<unsigned char> getByte();
     Bedrock::Result<unsigned int> getUnsignedVarInt();
     [[nodiscard]] std::string_view getView() const;
@@ -48,6 +51,7 @@ public:
     using ReadOnlyBinaryStream::ReadOnlyBinaryStream;
     BinaryStream();
     [[nodiscard]] const std::string &getBuffer() const;
+    void reset();
 
     void writeBool(bool value);
     void writeByte(std::uint8_t value);
@@ -59,6 +63,7 @@ public:
     void writeVarInt64(std::int64_t value);
     void writeFloat(float value);
     void writeString(std::string_view value);
+    void writeRawBytes(std::string_view span);
     void writeStream(BinaryStream &);
 
 private:
