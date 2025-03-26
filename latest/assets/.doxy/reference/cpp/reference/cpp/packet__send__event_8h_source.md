@@ -24,6 +24,9 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
+#include "endstone/event/server/server_event.h"
+
 namespace endstone {
 
 class PacketSendEvent : public Cancellable<ServerEvent> {
@@ -42,11 +45,6 @@ public:
     [[nodiscard]] int getPacketId() const
     {
         return packet_id_;
-    }
-
-    void setPacketId(int packet_id)
-    {
-        packet_id_ = packet_id;
     }
 
     [[nodiscard]] std::string_view getPayload() const

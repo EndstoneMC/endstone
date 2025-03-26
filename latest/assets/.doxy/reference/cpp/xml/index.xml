@@ -778,7 +778,6 @@
     <member refid="classendstone_1_1PacketReceiveEvent_1a6f1faff12f221ef1a2a467553cc7e91e" kind="function"><name>PacketReceiveEvent</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1a55fbf8774d4f1a7d069e542c685fdd48" kind="function"><name>getPacketId</name></member>
-    <member refid="classendstone_1_1PacketReceiveEvent_1a55cce39a50cdfb9c5b50ea772b3ea8ce" kind="function"><name>setPacketId</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1a518168db89685906e59159d8fde84006" kind="function"><name>getPayload</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1a38da3d7aa9ee5431efbf9ef500b1df56" kind="function"><name>setPayload</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1a1ae979ea681991973f171e06c64756ec" kind="function"><name>getPlayer</name></member>
@@ -792,7 +791,6 @@
     <member refid="classendstone_1_1PacketSendEvent_1a4ccee97085c453392154aaf96b6a573e" kind="function"><name>PacketSendEvent</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1af8783d019d3cfd1ae4d8d83cc17d3267" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" kind="function"><name>getPacketId</name></member>
-    <member refid="classendstone_1_1PacketSendEvent_1a4fb4aa20b8b771c28270795dafea40d0" kind="function"><name>setPacketId</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" kind="function"><name>getPayload</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" kind="function"><name>setPayload</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a620efa660c957b4dc7f1c08ee6a0e8a5" kind="function"><name>getPlayer</name></member>
