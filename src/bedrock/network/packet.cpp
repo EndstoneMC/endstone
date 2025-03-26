@@ -14,7 +14,61 @@
 
 #include "bedrock/network/packet.h"
 
+#include "bedrock/network/net_event_callback.h"
 #include "bedrock/symbol.h"
+
+Bedrock::Result<void> Packet::checkSize(std::uint64_t packet_size, bool is_receiver_server) const
+{
+    if (is_receiver_server && packet_size > 0xA00000) {
+        return BEDROCK_NEW_ERROR(std::errc::message_size);
+    }
+    return {};
+}
+
+Bedrock::Result<void> Packet::read(ReadOnlyBinaryStream &stream)
+{
+    if (auto result = _read(stream); !result.ignoreError()) {
+        return BEDROCK_RETHROW(result);
+    }
+    return {};
+}
+
+bool Packet::disallowBatching() const
+{
+    return false;
+}
+
+bool Packet::isValid() const
+{
+    return true;
+}
+
+SubClientId Packet::getClientSubId() const
+{
+    return client_sub_id_;
+}
+
+Compressibility Packet::getCompressible() const
+{
+    return compressible_;
+}
+
+NetworkPeer::Reliability Packet::getReliability() const
+{
+    return reliability_;
+}
+
+void Packet::setReceiveTimestamp(const NetworkPeer::PacketRecvTimepoint &recv_timepoint)
+{
+    recv_timepoint_ = recv_timepoint;
+}
+
+void Packet::handle(const NetworkIdentifier &id, NetEventCallback &callback, std::shared_ptr<Packet> &packet)
+{
+    if (handler_) {
+        handler_->handle(id, callback, packet);
+    }
+}
 
 std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {

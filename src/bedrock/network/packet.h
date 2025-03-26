@@ -17,6 +17,7 @@
 #include "bedrock/common_types.h"
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/deps/raknet/packet_priority.h"
+#include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_peer.h"
 #include "bedrock/platform/result.h"
 
@@ -252,36 +253,33 @@ enum class MinecraftPacketIds : int {
     EndId = 326,
 };
 
+class NetEventCallback;
+class Packet;
+
+class IPacketHandlerDispatcher {
+public:
+    virtual ~IPacketHandlerDispatcher() = default;
+    virtual void handle(const NetworkIdentifier &, NetEventCallback &, std::shared_ptr<Packet> &) const = 0;
+};
+
 class Packet {
 public:
     virtual ~Packet() = default;
     [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
     [[nodiscard]] virtual std::string getName() const = 0;
-    [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t packet_size, bool is_receiver_server) const
-    {
-        if (is_receiver_server && packet_size > 0xA00000) {
-            return BEDROCK_NEW_ERROR(std::errc::message_size);
-        }
-        return {};
-    }
+    [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t packet_size, bool is_receiver_server) const;
     virtual void write(BinaryStream &) const = 0;
-    [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &stream)
-    {
-        if (auto result = _read(stream); !result.ignoreError()) {
-            return BEDROCK_RETHROW(result);
-        }
-        return {};
-    }
-    [[nodiscard]] virtual bool disallowBatching() const
-    {
-        return false;
-    }
-    [[nodiscard]] virtual bool isValid() const
-    {
-        return true;
-    }
+    [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &stream);
+    [[nodiscard]] virtual bool disallowBatching() const;
+    [[nodiscard]] virtual bool isValid() const;
+    [[nodiscard]] SubClientId getClientSubId() const;
+    [[nodiscard]] Compressibility getCompressible() const;
+    [[nodiscard]] NetworkPeer::Reliability getReliability() const;
+    void setReceiveTimestamp(const NetworkPeer::PacketRecvTimepoint &recv_timepoint);
+    void handle(const NetworkIdentifier &id, NetEventCallback &callback, std::shared_ptr<Packet> &packet);
 
 private:
+    friend class NetworkSystem;
     [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
     PacketPriority priority_{PacketPriority::MEDIUM_PRIORITY};                         // + 8
@@ -289,7 +287,7 @@ private:
     SubClientId client_sub_id_{SubClientId::PrimaryClient};                            // + 16
     bool is_handled_{false};                                                           // + 17
     NetworkPeer::PacketRecvTimepoint recv_timepoint_;                                  // + 24
-    void *handler_{nullptr};                                                           // + 32
+    const IPacketHandlerDispatcher *handler_{nullptr};                                 // + 32
     Compressibility compressible_{Compressibility::Compressible};                      // + 40
 };
 BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);
