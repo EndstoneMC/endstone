@@ -2040,8 +2040,11 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     @property
     def payload(self) -> bytes:
         """
-        Gets the raw packet data **excluding** the header.
+        Gets or sets the raw packet data **excluding** the header.
         """
+    @payload.setter
+    def payload(self, arg1: bytes) -> None:
+        ...
     @property
     def player(self) -> Player:
         """
@@ -2062,8 +2065,11 @@ class PacketSendEvent(ServerEvent, Cancellable):
     @property
     def payload(self) -> bytes:
         """
-        Gets the raw packet data **excluding** the header.
+        Gets or sets the raw packet data **excluding** the header.
         """
+    @payload.setter
+    def payload(self, arg1: bytes) -> None:
+        ...
     @property
     def player(self) -> Player:
         """

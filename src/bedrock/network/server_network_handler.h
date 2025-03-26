@@ -82,10 +82,10 @@ public:
 
 private:
     friend class endstone::core::EndstoneServer;
-
+    friend class NetworkSystem;
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
                                                  SubClientId);
-    ServerPlayer *_getServerPlayer(const NetworkIdentifier &, SubClientId);
+    ServerPlayer *_getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone: virtual -> non-virtual
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
 
     GameCallbacks &callbacks_;

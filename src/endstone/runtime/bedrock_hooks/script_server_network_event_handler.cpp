@@ -25,57 +25,68 @@ bool handleEvent(IncomingPacketEvent &event)
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
-        const auto &network = server.getServer().getNetwork();
         // TODO(refactor): add Player::handleDataPacket and call the event there
+        if (event.packet_id == MinecraftPacketIds::SetLocalPlayerAsInit) {
+            static_cast<::ServerPlayer *>(player)->setLocalPlayerAsInitialized();
+        }
+
+        const auto &network = server.getServer().getNetwork();
         ReadOnlyBinaryStream stream(network.receive_buffer_, false);
         auto header = stream.getUnsignedVarInt().logError(Bedrock::LogLevel::Error, LogAreaID::Network);
         if (!header.has_value()) {
             return false;
         }
         const auto packet_id = static_cast<int>(header.value() & 0x3ff);
-        const auto sender_sub_id = (header.value() >> 10) & 3;
-        const auto target_sub_id = (header.value() >> 12) & 3;
-        endstone::PacketReceiveEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), packet_id,
-                                       stream.getView().substr(stream.getReadPointer())};
+        auto payload = stream.getView().substr(stream.getReadPointer());
+
+        endstone::PacketReceiveEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), packet_id, payload};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
         }
 
-        if (event.packet_id == MinecraftPacketIds::SetLocalPlayerAsInit) {
-            static_cast<::ServerPlayer *>(player)->setLocalPlayerAsInitialized();
+        if (e.getPayload().data() == payload.data()) {
+            return true;  // Nothing to do, the packet is the same, go back to the original handler
         }
+
+        // Plugins have changed the payload, let's handle it ourselves
+        auto packet = MinecraftPackets::createPacket(static_cast<MinecraftPacketIds>(packet_id));
+        if (!packet) {
+            server.getLogger().error("PacketReceiveEvent: Unknown packet id: {}", packet_id);
+            return false;
+        }
+
+        const auto &network_id = player->getPersistentComponent<UserEntityIdentifierComponent>()->getNetworkId();
+        auto *connection = network._getConnectionFromId(network_id);
+        if (!connection || connection->shouldCloseConnection()) {
+            return true;
+        }
+
+        auto now = std::chrono::steady_clock::now();
+        connection->last_packet_time = now;
+        packet->setReceiveTimestamp(now);
+
+        ReadOnlyBinaryStream read_stream(e.getPayload(), false);
+        auto packet_size = read_stream.getView().size() - read_stream.getReadPointer();
+        if (auto result = packet->checkSize(packet_size, true); !result.ignoreError()) {
+            server.getLogger().error("PacketReceiveEvent: Bad packet size: {}", packet_size);
+            return false;
+        }
+
+        if (auto result = packet->read(read_stream); !result.ignoreError()) {
+            server.getLogger().error("PacketReceiveEvent: Bad packet!");
+            return false;
+        }
+
+        packet->handle(network_id, *server.getServer().getMinecraft()->getServerNetworkHandler(), packet);
+        return false;
     }
 
     return true;
 }
 
-bool handleEvent(OutgoingPacketEvent &event)
+bool handleEvent(OutgoingPacketEvent & /*event*/)
 {
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    for (auto it = event.recipients.begin(); it != event.recipients.end();) {
-        const auto &recipient = *it;
-        if (const auto *player = WeakEntityRef(recipient).tryUnwrap<::Player>(); player) {
-            const auto &network = server.getServer().getNetwork();
-            ReadOnlyBinaryStream stream(network.send_stream_.getView(), false);
-            auto header = stream.getUnsignedVarInt().logError(Bedrock::LogLevel::Error, LogAreaID::Network);
-            if (!header.has_value()) {
-                return false;
-            }
-            const auto packet_id = static_cast<int>(header.value() & 0x3ff);
-            const auto sender_sub_id = (header.value() >> 10) & 3;
-            const auto target_sub_id = (header.value() >> 12) & 3;
-            endstone::PacketSendEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), packet_id,
-                                        stream.getView().substr(stream.getReadPointer())};
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                it = event.recipients.erase(it);
-            }
-            else {
-                ++it;
-            }
-        }
-    }
     return true;
 }
 
@@ -99,12 +110,17 @@ bool handleEvent(ChatEvent &event)
 GameplayHandlerResult<CoordinatorResult> ScriptServerNetworkEventHandler::handleEvent1(
     MutableServerNetworkGameplayEvent<CoordinatorResult> &event)
 {
+    const auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptServerNetworkEventHandler::handleEvent1, this, event);
+    if (result.handler_result == HandlerResult::BypassListeners || result.return_value == CoordinatorResult::Cancel) {
+        return result;
+    }
+
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
         if (!handleEvent(arg.value())) {
             return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
         }
-        return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptServerNetworkEventHandler::handleEvent1, this, event);
+        return result;
     };
     return event.visit(visitor);
 }

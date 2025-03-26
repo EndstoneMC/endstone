@@ -14,6 +14,8 @@
 
 #include "bedrock/world/minecraft.h"
 
+#include "bedrock/network/server_network_handler.h"
+
 MinecraftCommands &Minecraft::getCommands()
 {
     return *commands_;
