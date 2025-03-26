@@ -21,10 +21,11 @@
 #include "bedrock/network/packet/start_game_packet.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/server.h"
+#include "endstone/event/server/packet_send_event.h"
 #include "endstone/runtime/hook.h"
 
 namespace {
-void handlePacket(const StartGamePacket &packet)
+void patchPacket(const StartGamePacket &packet)
 {
     static bool client_side_generation_enabled = []() {
         const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
@@ -38,7 +39,7 @@ void handlePacket(const StartGamePacket &packet)
     }
 }
 
-void handlePacket(const ResourcePackStackPacket &packet)
+void patchPacket(const ResourcePackStackPacket &packet)
 {
     auto &pk = const_cast<ResourcePackStackPacket &>(packet);
     // https://github.com/pmmp/PocketMine-MP/blob/c80a4d/src/network/mcpe/handler/ResourcePacksPacketHandler.php#L177
@@ -48,17 +49,42 @@ void handlePacket(const ResourcePackStackPacket &packet)
 
 }  // namespace
 
-void NetworkSystem::send(const NetworkIdentifier &id, const Packet &packet, SubClientId sender_sub_id)
+void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)
 {
-    switch (packet.getId()) {
-    case MinecraftPacketIds::StartGame:
-        handlePacket(static_cast<const StartGamePacket &>(packet));
-        break;
-    case MinecraftPacketIds::ResourcePackStack:
-        handlePacket(static_cast<const ResourcePackStackPacket &>(packet));
-        break;
-    default:
-        break;
+    if (packet.getName() != "DataPacket") {
+        switch (packet.getId()) {
+        case MinecraftPacketIds::StartGame:
+            patchPacket(static_cast<const StartGamePacket &>(packet));
+            break;
+        case MinecraftPacketIds::ResourcePackStack:
+            patchPacket(static_cast<const ResourcePackStackPacket &>(packet));
+            break;
+        default:
+            break;
+        }
     }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkSystem::send, this, id, packet, sender_sub_id);
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkSystem::send, this, network_id, packet, sender_sub_id);
+}
+
+NetworkConnection *NetworkSystem::_getConnectionFromId(const NetworkIdentifier &id) const
+{
+    for (const auto &connection : connections_) {
+        if (connection->id == id) {
+            return connection.get();
+        }
+    }
+    return nullptr;
+}
+
+void NetworkSystem::_sendInternal(const NetworkIdentifier &id, const Packet &packet, const std::string &data)
+{
+    const auto *connection = _getConnectionFromId(id);
+    if (!connection || connection->shouldCloseConnection()) {
+        return;
+    }
+    if (!connection->peer) {
+        return;
+    }
+    connection->peer->sendPacket(data, packet.getReliability(), packet.getCompressible());
 }

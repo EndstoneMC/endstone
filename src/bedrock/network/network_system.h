@@ -18,6 +18,7 @@
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/net_event_callback.h"
+#include "bedrock/network/network_connection.h"
 #include "bedrock/network/network_enable_disable_listener.h"
 #include "bedrock/network/rak_peer_helper.h"
 #include "bedrock/network/raknet_connector.h"
@@ -27,7 +28,7 @@ class NetworkSystem : public RakNetConnector::ConnectionCallbacks,
                       public RakPeerHelper::IPSupportInterface,
                       public NetworkEnableDisableListener {
 public:
-    ENDSTONE_HOOK void send(const NetworkIdentifier &id, const Packet &packet, SubClientId sender_sub_id);
+    ENDSTONE_HOOK void send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id);
 
 protected:
     struct Dependencies;
@@ -37,7 +38,11 @@ protected:
     std::vector<std::unique_ptr<NetworkConnection>> connections_;
     std::unique_ptr<LocalConnector> local_connector_;
 
+public:
+    NetworkConnection *_getConnectionFromId(const NetworkIdentifier &) const;  // Endstone: private -> public
+
 private:
+    void _sendInternal(const NetworkIdentifier &id, const Packet &packet, const std::string &data);
     std::unique_ptr<RemoteConnector> remote_connector_;
     std::unique_ptr<ServerLocator> server_locator_;
     Bedrock::Threading::RecursiveMutex connections_mutex_;
