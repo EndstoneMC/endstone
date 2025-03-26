@@ -192,6 +192,7 @@
 * **on\_message\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **options\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
+* **owned\_payload\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **owner\_** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 
 

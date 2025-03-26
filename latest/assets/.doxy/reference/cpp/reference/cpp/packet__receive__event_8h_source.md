@@ -44,9 +44,20 @@ public:
         return packet_id_;
     }
 
+    void setPacketId(int packet_id)
+    {
+        packet_id_ = packet_id;
+    }
+
     [[nodiscard]] std::string_view getPayload() const
     {
         return payload_;
+    }
+
+    void setPayload(std::string_view payload)
+    {
+        owned_payload_ = payload;
+        payload_ = owned_payload_;
     }
 
     [[nodiscard]] Player &getPlayer() const
@@ -58,6 +69,7 @@ private:
     Player &player_;
     int packet_id_;
     std::string_view payload_;
+    std::string owned_payload_;
 };
 
 }  // namespace endstone
