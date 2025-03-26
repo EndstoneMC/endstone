@@ -32,9 +32,7 @@ std::unique_ptr<Pack> Pack::createPack(ResourceLocation const &file_location, Pa
                                        PackSourceReport *report, Core::Path const &zip_sub_dir)
 {
 #ifdef _WIN32
-    // TODO(fixme): avoid hardcoded value
-    constexpr std::size_t offset = 0x4CAA368;  // 1.21.70.04
-    void **vtable = reinterpret_cast<void **>(static_cast<char *>(endstone::detail::get_executable_base()) + offset);
+    auto **vtable = BEDROCK_VAR(void **, "AppPlatformIOProvide::vtable");
     return createPack(*reinterpret_cast<const IPackIOProvider *>(&vtable), file_location, type, origin,
                       manifest_factory, std::move(key_provider), report, zip_sub_dir);
 #else

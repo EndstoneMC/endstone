@@ -1,4 +1,4 @@
-timestamp = 1742926509
+timestamp = 1742982492
 version = "1.21.70"
 
 [windows]
@@ -81,6 +81,9 @@ version = "1.21.70"
 # TeleportCommand
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 36628640
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 36629296
+# Variables
+"getI18n::result" = 90743760
+"AppPlatformIOProvide::vtable" = 80388968
 
 [linux]
 "_Z7getI18nv" = 91859840

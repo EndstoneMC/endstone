@@ -54,6 +54,10 @@ constexpr void foreach_symbol(Func &&func)
                                                   endstone::detail::get_symbol(__FUNCDNAME__)),              \
                 ##__VA_ARGS__)
 
+#define BEDROCK_VAR(type, name)                                                           \
+    reinterpret_cast<type>(static_cast<char *>(endstone::detail::get_executable_base()) + \
+                           endstone::detail::get_symbol(name));
+
 namespace endstone::detail {
 #ifdef _WIN32
 template <std::size_t Offset, typename Class, typename... Args>
