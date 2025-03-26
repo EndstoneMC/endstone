@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
+#include "endstone/event/server/server_event.h"
+
 namespace endstone {
 
 /**
@@ -53,6 +56,17 @@ public:
     }
 
     /**
+     * @brief Sets the raw packet data **excluding** the header.
+     *
+     * @return The packet payload data.
+     */
+    void setPayload(std::string_view payload)
+    {
+        owned_payload_ = payload;
+        payload_ = owned_payload_;
+    }
+
+    /**
      * Returns the player involved in this event
      *
      * @return Player who is involved in this event
@@ -63,9 +77,11 @@ public:
     }
 
 private:
+    friend bool handleEvent(class OutgoingPacketEvent &event);
     Player &player_;
     int packet_id_;
     std::string_view payload_;
+    std::string owned_payload_;
 };
 
 }  // namespace endstone
