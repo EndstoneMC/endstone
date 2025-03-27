@@ -102,12 +102,15 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 |   | [**ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta-12) () = default<br> |
 |   | [**ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta-22) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br> |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](classendstone_1_1ItemMeta.md#function-clone) () const<br>_Creates a clone of the current metadata._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getDamage**](classendstone_1_1ItemMeta.md#function-getdamage) () const<br>_Gets the damage._  |
 | virtual std::optional&lt; std::string &gt; | [**getDisplayName**](classendstone_1_1ItemMeta.md#function-getdisplayname) () const<br>_Gets the display name that is set._  |
 | virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; | [**getLore**](classendstone_1_1ItemMeta.md#function-getlore) () const<br>_Gets the lore that is set._  |
 | virtual Type | [**getType**](classendstone_1_1ItemMeta.md#function-gettype) () const<br>_Gets the type of this item meta._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasDamage**](classendstone_1_1ItemMeta.md#function-hasdamage) () const<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasDisplayName**](classendstone_1_1ItemMeta.md#function-hasdisplayname) () const<br>_Checks for existence of a display name._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasLore**](classendstone_1_1ItemMeta.md#function-haslore) () const<br>_Checks for existence of lore._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isEmpty**](classendstone_1_1ItemMeta.md#function-isempty) () const<br>_Checks if the item metadata is empty._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setDamage**](classendstone_1_1ItemMeta.md#function-setdamage) ([**int**](classendstone_1_1Vector.md) damage) <br>_Sets the damage._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setDisplayName**](classendstone_1_1ItemMeta.md#function-setdisplayname) (std::optional&lt; std::string &gt; name) <br>_Sets the display name._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setLore**](classendstone_1_1ItemMeta.md#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) <br>_Sets the lore for this item or removes lore when given std::nullopt._  |
 | virtual  | [**~ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta) () = default<br> |

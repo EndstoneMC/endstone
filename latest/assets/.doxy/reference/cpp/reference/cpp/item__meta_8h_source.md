@@ -59,7 +59,7 @@ public:
     [[nodiscard]] virtual bool isEmpty() const
     {
         // TODO(item): more checks here
-        return !hasLore();
+        return !(hasDisplayName() || hasLore() || hasDamage());
     }
 
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const
@@ -113,9 +113,25 @@ public:
         }
     }
 
+    [[nodiscard]] virtual bool hasDamage() const
+    {
+        return damage_ > 0;
+    }
+
+    [[nodiscard]] virtual int getDamage() const
+    {
+        return damage_;
+    }
+
+    virtual void setDamage(int damage)
+    {
+        damage_ = damage;
+    }
+
 private:
     std::optional<std::string> display_name_;
     std::optional<std::vector<std::string>> lore_;
+    int damage_ = 0;
 };
 
 inline ItemMeta ItemMeta::EMPTY;

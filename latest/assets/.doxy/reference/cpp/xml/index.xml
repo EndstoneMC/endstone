@@ -604,6 +604,7 @@
     <member refid="classendstone_1_1ItemMeta_1ae567a6f394a977cf8c10ab0ad3a88051" kind="variable"><name>EMPTY</name></member>
     <member refid="classendstone_1_1ItemMeta_1add18f641b7834e9df2f5a2ffeab49594" kind="variable"><name>display_name_</name></member>
     <member refid="classendstone_1_1ItemMeta_1a7905ccb73edf20aa1d50d1804d2a3abd" kind="variable"><name>lore_</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a2ade8bcb7e8addc9d938f64a9b954a0d" kind="variable"><name>damage_</name></member>
     <member refid="classendstone_1_1ItemMeta_1a4cb3e9ff9d8815008a0b8683dda34cc5" kind="function"><name>ItemMeta</name></member>
     <member refid="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" kind="function"><name>ItemMeta</name></member>
     <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" kind="function"><name>~ItemMeta</name></member>
@@ -616,6 +617,9 @@
     <member refid="classendstone_1_1ItemMeta_1a440df7c31dac61545e14e2fdda65dab1" kind="function"><name>hasLore</name></member>
     <member refid="classendstone_1_1ItemMeta_1a41e00cbe764c3f380da8793067952e47" kind="function"><name>getLore</name></member>
     <member refid="classendstone_1_1ItemMeta_1a0f6800a810736ffdd7844d256616900e" kind="function"><name>setLore</name></member>
+    <member refid="classendstone_1_1ItemMeta_1af42728b1b375cb09ada9a2d531631791" kind="function"><name>hasDamage</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a89e50ea812936a4939bd62290e218b37" kind="function"><name>getDamage</name></member>
+    <member refid="classendstone_1_1ItemMeta_1aa245eb290cc6649159cddff75a6cf8ec" kind="function"><name>setDamage</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>

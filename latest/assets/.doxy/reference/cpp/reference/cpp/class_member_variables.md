@@ -54,7 +54,7 @@
 
 ## d
 
-* **damage\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md))
+* **damage\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **damage\_source\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **DateFormat** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **DarkAqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
