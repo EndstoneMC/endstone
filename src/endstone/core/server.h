@@ -147,7 +147,7 @@ private:
     float average_tps_[SharedConstants::TicksPerSecond] = {SharedConstants::TicksPerSecond};
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
-    bool allow_client_packs = false;
+    bool allow_client_packs_ = false;
 };
 
 }  // namespace endstone::core
