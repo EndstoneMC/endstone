@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.7.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) - 2025-03-27
+
+<small>[Compare with 0.7.0](https://github.com/EndstoneMC/endstone/compare/v0.7.0...v0.7.1)</small>
+
+### Added
+
+- Added support for BDS version 1.21.70.04.
+- Added new `setPayload` method in `PacketSendEvent` and `PacketReceiveEvent` for editing packet contents.
+- Introduced a configuration file, `endstone.toml`, for Endstone configurations.
+
+### Fixed
+
+- Resolved a crash caused by sending packets within the `PacketSendEvent` handler.
+
+### Changed
+
+- Updated the behavior of server pack enforcement: clients can no longer use custom packs when  
+  `texturepack-required` is set to `true` in `server.properties`. This behavior can be overridden  
+  by setting `allow-client-packs` in `endstone.toml`.
+
 ## [0.7.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) - 2025-03-25
 
 <small>[Compare with 0.6.2](https://github.com/EndstoneMC/endstone/compare/v0.6.2...v0.7.0)</small>
