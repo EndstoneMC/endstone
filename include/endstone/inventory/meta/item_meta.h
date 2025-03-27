@@ -62,7 +62,7 @@ public:
     [[nodiscard]] virtual bool isEmpty() const
     {
         // TODO(item): more checks here
-        return !hasLore();
+        return !(hasDisplayName() || hasLore() || hasDamage());
     }
 
     /**
@@ -151,9 +151,40 @@ public:
         }
     }
 
+    /**
+     * @brief Checks to see if this item has damage
+     *
+     * @return true if this has damage
+     */
+    [[nodiscard]] virtual bool hasDamage() const
+    {
+        return damage_ > 0;
+    }
+
+    /**
+     * @brief Gets the damage
+     *
+     * @return the damage
+     */
+    [[nodiscard]] virtual int getDamage() const
+    {
+        return damage_;
+    }
+
+    /**
+     * @brief Sets the damage
+     *
+     * @param damage item damage
+     */
+    virtual void setDamage(int damage)
+    {
+        damage_ = damage;
+    }
+
 private:
     std::optional<std::string> display_name_;
     std::optional<std::vector<std::string>> lore_;
+    int damage_ = 0;
 };
 
 inline ItemMeta ItemMeta::EMPTY;

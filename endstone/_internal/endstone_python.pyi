@@ -1498,6 +1498,14 @@ class ItemMeta:
         Creates a clone of the current metadata.
         """
     @property
+    def damage(self) -> int:
+        """
+        Gets or sets the damage.
+        """
+    @damage.setter
+    def damage(self, arg1: int) -> None:
+        ...
+    @property
     def display_name(self) -> str | None:
         """
         Gets or sets the display name.
@@ -1505,6 +1513,11 @@ class ItemMeta:
     @display_name.setter
     def display_name(self, arg1: str | None) -> None:
         ...
+    @property
+    def has_damage(self) -> bool:
+        """
+        Checks to see if this item has damage
+        """
     @property
     def has_display_name(self) -> bool:
         """

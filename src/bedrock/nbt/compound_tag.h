@@ -73,8 +73,8 @@ public:
     [[nodiscard]] std::int16_t getShort(StringView) const;
     [[nodiscard]] const ShortTag *getShortTag(StringView) const;
     ShortTag *getShortTag(StringView);
-    [[nodiscard]] int getInt(StringView) const;
-    [[nodiscard]] const IntTag *getIntTag(StringView) const;
+    [[nodiscard]] int getInt(StringView name) const;
+    [[nodiscard]] const IntTag *getIntTag(StringView name) const;
     IntTag *getIntTag(StringView);
     [[nodiscard]] std::int64_t getInt64(StringView) const;
     [[nodiscard]] const Int64Tag *getInt64Tag(StringView) const;

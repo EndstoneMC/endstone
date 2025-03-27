@@ -14,6 +14,8 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
+#include "bedrock/world/item/item.h"
+
 namespace endstone::core {
 
 template <typename T>
@@ -30,17 +32,20 @@ void loadData(ItemMeta &meta, const CompoundTag &tag)
         }
 
         // Lore
-        const auto *lore_tag = display_tag->getList(ItemStackBase::TAG_LORE);
-        if (!lore_tag) {
-            return;
+        if (const auto *lore_tag = display_tag->getList(ItemStackBase::TAG_LORE)) {
+            std::vector<std::string> lore;
+            for (auto i = 0; i < lore_tag->size(); i++) {
+                lore.emplace_back(lore_tag->getString(i));
+            }
+            if (!lore.empty()) {
+                meta.setLore(lore);
+            }
         }
-        std::vector<std::string> lore;
-        for (auto i = 0; i < lore_tag->size(); i++) {
-            lore.emplace_back(lore_tag->getString(i));
-        }
-        if (!lore.empty()) {
-            meta.setLore(lore);
-        }
+    }
+
+    // Damage
+    if (const auto damage = tag.getInt(Item::TAG_DAMAGE)) {
+        meta.setDamage(damage);
     }
 }
 
@@ -99,6 +104,13 @@ void applyTo(const ItemMeta &meta, CompoundTag &tag)
     }
     else {
         display_tag->remove(ItemStackBase::TAG_LORE);
+    }
+
+    if (meta.hasDamage()) {
+        tag.putInt(Item::TAG_DAMAGE, meta.getDamage());
+    }
+    else {
+        tag.remove(Item::TAG_DAMAGE);
     }
 }
 
