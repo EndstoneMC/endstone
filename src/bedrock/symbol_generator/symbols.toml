@@ -1,4 +1,4 @@
-timestamp = 1742982492
+timestamp = 1743095342
 version = "1.21.70"
 
 [windows]
@@ -50,6 +50,7 @@ version = "1.21.70"
 "?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 43746128
 # NetworkSystem
 "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z" = 18858256
+"?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 18859472
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 18053760
 # Player
@@ -135,6 +136,7 @@ version = "1.21.70"
 "_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 125859024
 # NetworkSystem
 "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId" = 92378288
+"_ZN13NetworkSystem14sendToMultipleERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet" = 92379040
 # Pack
 "_ZN4Pack10createPackERK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE" = 91204864
 # Player

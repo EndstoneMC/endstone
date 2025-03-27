@@ -112,6 +112,13 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     _sendInternal(network_id, packet, stream.getBuffer());
 }
 
+void NetworkSystem::sendToMultiple(const std::vector<NetworkIdentifierWithSubId> &recipients, const Packet &packet)
+{
+    for (const auto &recipient : recipients) {
+        send(recipient.id, packet, recipient.sub_client_id);
+    }
+}
+
 NetworkConnection *NetworkSystem::_getConnectionFromId(const NetworkIdentifier &id) const
 {
     for (const auto &connection : connections_) {
