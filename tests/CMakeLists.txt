@@ -8,6 +8,7 @@ set_target_properties(test_plugin PROPERTIES RUNTIME_OUTPUT_DIRECTORY "plugins")
 add_executable(endstone_test
         bedrock/test_binary_stream.cpp
         bedrock/test_check.cpp
+        bedrock/test_function_ref.cpp
         bedrock/test_hashed_string.cpp
         bedrock/test_sem_version.cpp
         bedrock/test_spin_lock.cpp
