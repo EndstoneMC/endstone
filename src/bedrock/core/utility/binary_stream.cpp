@@ -151,7 +151,11 @@ void BinaryStream::writeUnsignedInt(uint32_t value, char const *doc_field_name, 
 }
 void BinaryStream::writeSignedBigEndianInt(int32_t value, char const *doc_field_name, char const *doc_field_notes)
 {
+#if defined(_MSC_VER)
     auto v = _byteswap_ulong(value);
+#else
+    auto v = __builtin_bswap32(value);
+#endif
     write(&v, sizeof(v));
 }
 
