@@ -64,7 +64,6 @@ public:
     }
 
 private:
-    friend bool handleEvent(class OutgoingPacketEvent &event);
     Player &player_;
     int packet_id_;
     std::string_view payload_;
