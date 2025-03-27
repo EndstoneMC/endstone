@@ -14,29 +14,38 @@
 
 #include "endstone/core/network/data_packet.h"
 
-endstone::core::DataPacket::DataPacket(int packet_id, std::string_view payload)
-    : packet_id_(packet_id), payload_(payload)
+namespace endstone::core {
+DataPacket::DataPacket(int packet_id, std::string_view payload) : packet_id_(packet_id), payload_(payload) {}
+
+MinecraftPacketIds DataPacket::getId() const
 {
+    return static_cast<MinecraftPacketIds>(-1);
 }
 
-MinecraftPacketIds endstone::core::DataPacket::getId() const
-{
-    return static_cast<MinecraftPacketIds>(packet_id_);
-}
-
-std::string endstone::core::DataPacket::getName() const
+std::string DataPacket::getName() const
 {
     return "DataPacket";
 }
 
-void endstone::core::DataPacket::write(BinaryStream &stream) const
+void DataPacket::write(BinaryStream &stream) const
 {
-    BinaryStream bs(payload_, false);
-    stream.writeStream(bs);
+    stream.writeRawBytes(payload_);
 }
 
-Bedrock::Result<void> endstone::core::DataPacket::_read(ReadOnlyBinaryStream &stream)
+int DataPacket::getPacketId() const
+{
+    return packet_id_;
+}
+
+std::string_view DataPacket::getPayload() const
+{
+    return payload_;
+}
+
+Bedrock::Result<void> DataPacket::_read(ReadOnlyBinaryStream &stream)
 {
     payload_ = stream.getView().substr(stream.getReadPointer());
     return {};
 }
+
+}  // namespace endstone::core

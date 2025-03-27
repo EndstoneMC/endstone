@@ -25,6 +25,8 @@ public:
     [[nodiscard]] MinecraftPacketIds getId() const override;
     [[nodiscard]] std::string getName() const override;
     void write(BinaryStream &) const override;
+    [[nodiscard]] int getPacketId() const;
+    [[nodiscard]] std::string_view getPayload() const;
 
 private:
     [[nodiscard]] Bedrock::Result<void> _read(ReadOnlyBinaryStream &) override;

@@ -20,6 +20,7 @@
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
 #include "endstone/core/level/level.h"
+#include "endstone/core/network/data_packet.h"
 #include "endstone/core/server.h"
 #include "endstone/event/server/packet_send_event.h"
 #include "endstone/runtime/hook.h"
@@ -51,7 +52,11 @@ void patchPacket(const ResourcePackStackPacket &packet)
 
 void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)
 {
-    if (packet.getName() != "DataPacket") {
+    auto packet_id = static_cast<int>(packet.getId());
+    if (packet_id == -1) {
+        packet_id = static_cast<const endstone::core::DataPacket &>(packet).getPacketId();
+    }
+    else {
         switch (packet.getId()) {
         case MinecraftPacketIds::StartGame:
             patchPacket(static_cast<const StartGamePacket &>(packet));
@@ -64,7 +69,48 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
         }
     }
 
-    ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkSystem::send, this, network_id, packet, sender_sub_id);
+    std::vector<NetworkIdentifierWithSubId> recipients;
+    recipients.emplace_back(network_id, sender_sub_id);
+    for (const auto &queue : incoming_packets) {
+        if (!queue) {
+            continue;
+        }
+        if (queue->callback_obj.allowOutgoingPacket(recipients, packet) != OutgoingPacketFilterResult::Allowed) {
+            return;
+        }
+    }
+
+    BinaryStream stream;
+    const auto header = packet_id | (static_cast<unsigned>(sender_sub_id) << 10) |
+                        (static_cast<unsigned>(packet.getClientSubId()) << 12);
+    stream.writeUnsignedVarInt(header, "Header Data", nullptr);
+    packet.write(stream);
+
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto *player =
+        server.getServer().getMinecraft()->getServerNetworkHandler()->_getServerPlayer(network_id, sender_sub_id);
+    if (player) {
+        ReadOnlyBinaryStream read_stream(stream.getView(), false);
+        read_stream.getUnsignedVarInt();
+        auto payload = read_stream.getView().substr(read_stream.getReadPointer());
+        endstone::PacketSendEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), packet_id, payload};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return;
+        }
+
+        if (e.getPayload().data() != payload.data()) {
+            // Plugins have changed the payload, let's re-encode the packet
+            stream.reset();
+            stream.writeUnsignedVarInt(header, "Header Data", nullptr);
+            stream.writeRawBytes(e.getPayload());
+        }
+    }
+
+    if (auto *connection = _getConnectionFromId(network_id)) {
+        connection->last_packet_time = std::chrono::steady_clock::now();
+    }
+    _sendInternal(network_id, packet, stream.getBuffer());
 }
 
 NetworkConnection *NetworkSystem::_getConnectionFromId(const NetworkIdentifier &id) const
