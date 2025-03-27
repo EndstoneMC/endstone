@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1detail_1_1PermissionBuilder" kind="class" language="C++" prot="private">
+    <compoundname>endstone::detail::PermissionBuilder</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1detail_1_1PermissionBuilder_1a18383984bb3a7867d8d764d51ed3ec2f" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::detail::PermissionBuilder::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::name_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="283" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1detail_1_1PermissionBuilder_1a63172ebb73a82e9850e42cfc927bef8b" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::detail::PermissionBuilder::description_</definition>
+        <argsstring></argsstring>
+        <name>description_</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::description_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="284" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1detail_1_1PermissionBuilder_1a91cc8149845859848f85f27aa589aaea" prot="private" static="no" mutable="no">
+        <type>PermissionDefault</type>
+        <definition>PermissionDefault endstone::detail::PermissionBuilder::default_value_</definition>
+        <argsstring></argsstring>
+        <name>default_value_</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::default_value_</qualifiedname>
+        <initializer>= Permission::DefaultPermission</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="285" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1detail_1_1PermissionBuilder_1aaea36e51d398fef9a6bbe851a2e6af71" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, bool&gt; endstone::detail::PermissionBuilder::children_</definition>
+        <argsstring></argsstring>
+        <name>children_</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::children_</qualifiedname>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="286" column="24" bodyfile="include/endstone/plugin/plugin.h" bodystart="286" bodyend="286"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1detail_1_1PermissionBuilder_1a2cd08767e0a17368e821687b678653c9" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::detail::PermissionBuilder::PermissionBuilder</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>PermissionBuilder</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::PermissionBuilder</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="257" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="257" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1detail_1_1PermissionBuilder_1af0e532c4aea8b11975de6717f026b0bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PermissionBuilder &amp;</type>
+        <definition>PermissionBuilder &amp; endstone::detail::PermissionBuilder::description</definition>
+        <argsstring>(std::string description)</argsstring>
+        <name>description</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::description</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="259" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="259" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1detail_1_1PermissionBuilder_1a14a16ef08f7006a3f37ab5ec9c5ac6dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PermissionBuilder &amp;</type>
+        <definition>PermissionBuilder &amp; endstone::detail::PermissionBuilder::default_</definition>
+        <argsstring>(PermissionDefault default_value)</argsstring>
+        <name>default_</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::default_</qualifiedname>
+        <param>
+          <type>PermissionDefault</type>
+          <declname>default_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="265" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="265" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1detail_1_1PermissionBuilder_1a1b9872c5107f2494c43f46e4f7124d12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PermissionBuilder &amp;</type>
+        <definition>PermissionBuilder &amp; endstone::detail::PermissionBuilder::children</definition>
+        <argsstring>(const std::string &amp;name, bool value)</argsstring>
+        <name>children</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::children</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="271" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="271" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1detail_1_1PermissionBuilder_1afe7346c555708ae3575b1f678b47850d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref></type>
+        <definition>Permission endstone::detail::PermissionBuilder::build</definition>
+        <argsstring>() const</argsstring>
+        <name>build</name>
+        <qualifiedname>endstone::detail::PermissionBuilder::build</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="277" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="277" bodyend="280"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/plugin/plugin.h" line="255" column="1" bodyfile="include/endstone/plugin/plugin.h" bodystart="255" bodyend="287"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1afe7346c555708ae3575b1f678b47850d" prot="public" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>build</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a1b9872c5107f2494c43f46e4f7124d12" prot="public" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>children</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1aaea36e51d398fef9a6bbe851a2e6af71" prot="private" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>children_</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a14a16ef08f7006a3f37ab5ec9c5ac6dd" prot="public" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>default_</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a91cc8149845859848f85f27aa589aaea" prot="private" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>default_value_</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1af0e532c4aea8b11975de6717f026b0bd" prot="public" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>description</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a63172ebb73a82e9850e42cfc927bef8b" prot="private" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>description_</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a18383984bb3a7867d8d764d51ed3ec2f" prot="private" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>name_</name></member>
+      <member refid="classendstone_1_1detail_1_1PermissionBuilder_1a2cd08767e0a17368e821687b678653c9" prot="public" virt="non-virtual"><scope>endstone::detail::PermissionBuilder</scope><name>PermissionBuilder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

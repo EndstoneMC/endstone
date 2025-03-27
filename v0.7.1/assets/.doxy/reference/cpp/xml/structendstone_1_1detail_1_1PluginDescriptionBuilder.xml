@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structendstone_1_1detail_1_1PluginDescriptionBuilder" kind="struct" language="C++" prot="private">
+    <compoundname>endstone::detail::PluginDescriptionBuilder</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a0db96dd45fceffa8c0005a1602a4a2ab" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::detail::PluginDescriptionBuilder::description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::description</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="290" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1adde71e03352151d967de543af50a99ec" prot="public" static="no" mutable="no">
+        <type>PluginLoadOrder</type>
+        <definition>PluginLoadOrder endstone::detail::PluginDescriptionBuilder::load</definition>
+        <argsstring></argsstring>
+        <name>load</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::load</qualifiedname>
+        <initializer>= PluginLoadOrder::PostWorld</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="291" column="21" bodyfile="include/endstone/plugin/plugin.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a8eb373768ce82bd30b40d2323b5e4747" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::detail::PluginDescriptionBuilder::authors</definition>
+        <argsstring></argsstring>
+        <name>authors</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::authors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="292" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1af359b32d95180c450c833f1c2a613f52" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::detail::PluginDescriptionBuilder::contributors</definition>
+        <argsstring></argsstring>
+        <name>contributors</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::contributors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="293" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a8a1fecdffd0cef1ae40381a674ac386c" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::detail::PluginDescriptionBuilder::website</definition>
+        <argsstring></argsstring>
+        <name>website</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::website</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="294" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a55efe04d2fdefb11a3841a1d9408bddc" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::detail::PluginDescriptionBuilder::prefix</definition>
+        <argsstring></argsstring>
+        <name>prefix</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::prefix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="295" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a20d4590caee1fb39c5c456b47cf6643e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::detail::PluginDescriptionBuilder::provides</definition>
+        <argsstring></argsstring>
+        <name>provides</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::provides</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="296" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ad9d28f0e0379e9b533ad4a2fca271f5e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::detail::PluginDescriptionBuilder::depend</definition>
+        <argsstring></argsstring>
+        <name>depend</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::depend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="297" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1aa9af4af5e1001e063077bad5eb96ca17" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::detail::PluginDescriptionBuilder::soft_depend</definition>
+        <argsstring></argsstring>
+        <name>soft_depend</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::soft_depend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="298" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a83248bb532a1af1113d663fa7646f524" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::detail::PluginDescriptionBuilder::load_before</definition>
+        <argsstring></argsstring>
+        <name>load_before</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::load_before</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="299" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a792705cd59585b0d75ce982c15c63cce" prot="public" static="no" mutable="no">
+        <type>PermissionDefault</type>
+        <definition>PermissionDefault endstone::detail::PluginDescriptionBuilder::default_permission</definition>
+        <argsstring></argsstring>
+        <name>default_permission</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::default_permission</qualifiedname>
+        <initializer>= PermissionDefault::Operator</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="300" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1acddfac13f3632912867ac1c39a35d8af" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, CommandBuilder &gt;</type>
+        <definition>std::unordered_map&lt;std::string, CommandBuilder&gt; endstone::detail::PluginDescriptionBuilder::commands</definition>
+        <argsstring></argsstring>
+        <name>commands</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::commands</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="301" column="24" bodyfile="include/endstone/plugin/plugin.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a9eed110ec8553b4838800d0df4cdbba2" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, PermissionBuilder &gt;</type>
+        <definition>std::unordered_map&lt;std::string, PermissionBuilder&gt; endstone::detail::PluginDescriptionBuilder::permissions</definition>
+        <argsstring></argsstring>
+        <name>permissions</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::permissions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="302" column="24" bodyfile="include/endstone/plugin/plugin.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ac94dc23d3e899ca9d63ad6f785c188a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>CommandBuilder &amp;</type>
+        <definition>CommandBuilder &amp; endstone::detail::PluginDescriptionBuilder::command</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>command</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::command</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="304" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="304" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a7a0a3a2fdc436f2cf37a7549504492db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>PermissionBuilder &amp;</type>
+        <definition>PermissionBuilder &amp; endstone::detail::PluginDescriptionBuilder::permission</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>permission</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::permission</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="310" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="310" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a80472466bde213571daf3ba7e3644079" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref></type>
+        <definition>PluginDescription endstone::detail::PluginDescriptionBuilder::build</definition>
+        <argsstring>(std::string name, std::string version) const</argsstring>
+        <name>build</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::build</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="316" column="24" bodyfile="include/endstone/plugin/plugin.h" bodystart="316" bodyend="333"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a782fcda61234c0fa5b7f5df56091cfac" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>
+        <definition>std::vector&lt; Command &gt; endstone::detail::PluginDescriptionBuilder::buildCommands</definition>
+        <argsstring>() const</argsstring>
+        <name>buildCommands</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::buildCommands</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="336" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="336" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a5aea521dd4d859c086faa0f0293dd6ce" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &gt;</type>
+        <definition>std::vector&lt; Permission &gt; endstone::detail::PluginDescriptionBuilder::buildPermissions</definition>
+        <argsstring>() const</argsstring>
+        <name>buildPermissions</name>
+        <qualifiedname>endstone::detail::PluginDescriptionBuilder::buildPermissions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="346" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="346" bodyend="354"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/plugin/plugin.h" line="289" column="1" bodyfile="include/endstone/plugin/plugin.h" bodystart="289" bodyend="355"/>
+    <listofallmembers>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a8eb373768ce82bd30b40d2323b5e4747" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>authors</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a80472466bde213571daf3ba7e3644079" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>build</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a782fcda61234c0fa5b7f5df56091cfac" prot="private" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>buildCommands</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a5aea521dd4d859c086faa0f0293dd6ce" prot="private" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>buildPermissions</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ac94dc23d3e899ca9d63ad6f785c188a4" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>command</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1acddfac13f3632912867ac1c39a35d8af" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>commands</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1af359b32d95180c450c833f1c2a613f52" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>contributors</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a792705cd59585b0d75ce982c15c63cce" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>default_permission</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1ad9d28f0e0379e9b533ad4a2fca271f5e" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>depend</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a0db96dd45fceffa8c0005a1602a4a2ab" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>description</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1adde71e03352151d967de543af50a99ec" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>load</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a83248bb532a1af1113d663fa7646f524" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>load_before</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a7a0a3a2fdc436f2cf37a7549504492db" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>permission</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a9eed110ec8553b4838800d0df4cdbba2" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>permissions</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a55efe04d2fdefb11a3841a1d9408bddc" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>prefix</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a20d4590caee1fb39c5c456b47cf6643e" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>provides</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1aa9af4af5e1001e063077bad5eb96ca17" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>soft_depend</name></member>
+      <member refid="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a8a1fecdffd0cef1ae40381a674ac386c" prot="public" virt="non-virtual"><scope>endstone::detail::PluginDescriptionBuilder</scope><name>website</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ItemFactory" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ItemFactory</compoundname>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1ad3859a4e281fd1174c00b4fe5cd4240b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+        <definition>static std::unique_ptr&lt; ItemMeta &gt; endstone::ItemFactory::getItemMeta</definition>
+        <argsstring>(const std::string_view type, const ItemMeta *meta=nullptr)</argsstring>
+        <name>getItemMeta</name>
+        <qualifiedname>endstone::ItemFactory::getItemMeta</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <declname>meta</declname>
+          <defval><ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_factory.h" line="23" column="28" bodyfile="include/endstone/inventory/item_factory.h" bodystart="23" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1ad01f4a716016ca971ae174925c8457bc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+        <definition>static std::unique_ptr&lt; ItemMeta &gt; endstone::ItemFactory::asMetaFor</definition>
+        <argsstring>(const std::string_view type, const ItemMeta *meta)</argsstring>
+        <name>asMetaFor</name>
+        <qualifiedname>endstone::ItemFactory::asMetaFor</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <declname>meta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_factory.h" line="31" column="28" bodyfile="include/endstone/inventory/item_factory.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/inventory/item_factory.h" line="21" column="1" bodyfile="include/endstone/inventory/item_factory.h" bodystart="21" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ItemFactory_1ad01f4a716016ca971ae174925c8457bc" prot="public" virt="non-virtual"><scope>endstone::ItemFactory</scope><name>asMetaFor</name></member>
+      <member refid="classendstone_1_1ItemFactory_1ad3859a4e281fd1174c00b4fe5cd4240b" prot="public" virt="non-virtual"><scope>endstone::ItemFactory</scope><name>getItemMeta</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
