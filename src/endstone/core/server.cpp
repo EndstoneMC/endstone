@@ -19,6 +19,7 @@
 
 #include <boost/algorithm/string.hpp>
 #include <pybind11/pybind11.h>
+#include <toml++/toml.h>
 
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
@@ -65,6 +66,14 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     command_sender_ = EndstoneConsoleCommandSender::create();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
+
+    try {
+        toml::table tbl = toml::parse_file("endstone.toml");
+        allow_client_packs = tbl.at_path("settings.allow-client-packs").value_or(false);
+    }
+    catch (const toml::parse_error &err) {
+        EndstoneServer::getLogger().error("Failed to parse config file: {}", err);
+    }
 }
 
 EndstoneServer::~EndstoneServer()
@@ -114,6 +123,11 @@ void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IReso
 PackSource &EndstoneServer::getPackSource() const
 {
     return *resource_pack_source_;
+}
+
+bool EndstoneServer::getAllowClientPacks() const
+{
+    return allow_client_packs;
 }
 
 void EndstoneServer::loadResourcePacks()

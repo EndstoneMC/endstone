@@ -113,6 +113,7 @@ public:
     void setLevel(::Level &level);
     void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
     [[nodiscard]] PackSource &getPackSource() const;
+    [[nodiscard]] bool getAllowClientPacks() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
 
@@ -146,6 +147,7 @@ private:
     float average_tps_[SharedConstants::TicksPerSecond] = {SharedConstants::TicksPerSecond};
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
+    bool allow_client_packs = false;
 };
 
 }  // namespace endstone::core

@@ -28,13 +28,9 @@
 namespace {
 void patchPacket(const StartGamePacket &packet)
 {
-    static bool client_side_generation_enabled = []() {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-        const auto *level = static_cast<endstone::core::EndstoneLevel *>(server.getLevel());
-        return level->getHandle().isClientSideGenerationEnabled();
-    }();
-
-    if (!client_side_generation_enabled) {
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto *level = static_cast<endstone::core::EndstoneLevel *>(server.getLevel());
+    if (level && !level->getHandle().isClientSideGenerationEnabled()) {
         auto &pk = const_cast<StartGamePacket &>(packet);
         pk.settings.setRandomSeed(0);
     }
@@ -42,12 +38,15 @@ void patchPacket(const StartGamePacket &packet)
 
 void patchPacket(const ResourcePackStackPacket &packet)
 {
-    auto &pk = const_cast<ResourcePackStackPacket &>(packet);
-    // https://github.com/pmmp/PocketMine-MP/blob/c80a4d/src/network/mcpe/handler/ResourcePacksPacketHandler.php#L177
-    // always false, otherwise it may force the client to remove its own non-server-supplied resource packs.
-    pk.texture_pack_required = false;
+    if (packet.texture_pack_required) {
+        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        if (server.getAllowClientPacks()) {
+            auto &pk = const_cast<ResourcePackStackPacket &>(packet);
+            // false, otherwise the client will remove its own non-server-supplied resource packs.
+            pk.texture_pack_required = false;
+        }
+    }
 }
-
 }  // namespace
 
 void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)

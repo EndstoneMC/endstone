@@ -13,6 +13,7 @@ find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 REQUIRED)
 find_package(sentry REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(tomlplusplus REQUIRED)
 
 add_library(endstone_core
         crash_handler.cpp
@@ -104,7 +105,8 @@ target_link_libraries(endstone_core PUBLIC
         nlohmann_json::nlohmann_json
         pybind11::embed
         sentry::sentry
-        spdlog::spdlog)
+        spdlog::spdlog
+        tomlplusplus::tomlplusplus)
 target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     add_subdirectory(devtools)
