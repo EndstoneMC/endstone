@@ -229,7 +229,7 @@ void BinaryStream::writeFixedFloat(float value, char const *doc_field_name, char
 
 void BinaryStream::writeNormalizedFloat(float value, char const *doc_field_name, char const *doc_field_notes)
 {
-    writeVarInt64(value * std::numeric_limits<int>::max(), doc_field_name, nullptr);
+    writeVarInt64(value * static_cast<double>(std::numeric_limits<int>::max()), doc_field_name, nullptr);
 }
 
 void BinaryStream::writeString(std::string_view value, char const *doc_field_name, char const *doc_field_notes)
