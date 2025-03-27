@@ -21,9 +21,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Updated the behavior of server pack enforcement: clients can no longer use custom packs when  
-  `texturepack-required` is set to `true` in `server.properties`. This behavior can be overridden  
-  by setting `allow-client-packs` in `endstone.toml`.
+- Updated the behavior of server pack enforcement to match vanilla BDS: clients are not allowed to use custom packs when
+  `texturepack-required` is set to `true` in `server.properties`. This behavior can be overridden by setting
+  `allow-client-packs` in `endstone.toml`.
 
 ## [0.7.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) - 2025-03-25
 
