@@ -138,5 +138,8 @@ void NetworkSystem::_sendInternal(const NetworkIdentifier &id, const Packet &pac
     if (!connection->peer) {
         return;
     }
+    if (packet_observer_) {
+        packet_observer_->packetSentTo(id, packet, data.size());
+    }
     connection->peer->sendPacket(data, packet.getReliability(), packet.getCompressible());
 }

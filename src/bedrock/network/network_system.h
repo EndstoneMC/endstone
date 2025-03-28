@@ -20,6 +20,7 @@
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_connection.h"
 #include "bedrock/network/network_enable_disable_listener.h"
+#include "bedrock/network/packet_observer_interface.h"
 #include "bedrock/network/rak_peer_helper.h"
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/platform/threading/mutex_details.h"
