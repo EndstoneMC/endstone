@@ -18,13 +18,16 @@ namespace endstone {
 class ShapelessRecipe : public Recipe {
 public:
     ~ShapelessRecipe() override = default;
-    ShapelessRecipe(std::string recipe_id, ItemStack result) : Recipe(std::move(recipe_id)), result_{result} {}
-    std::vector<ItemStack> &getResult() override
+    ShapelessRecipe(std::string recipe_id, std::unique_ptr<ItemStack> result) : Recipe(std::move(recipe_id))
+    {
+        result_.emplace_back(std::move(result));
+    }
+    std::vector<std::unique_ptr<ItemStack>> &getResult() override
     {
         return result_;
     }
 
 private:
-    std::vector<ItemStack> result_;
+    std::vector<std::unique_ptr<ItemStack>> result_;
 };
 }  // namespace endstone

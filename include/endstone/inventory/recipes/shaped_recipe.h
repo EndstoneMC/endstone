@@ -22,11 +22,11 @@ namespace endstone {
 class ShapedRecipe : public Recipe {
 public:
     ~ShapedRecipe() override = default;
-    ShapedRecipe(std::string recipe_id, std::vector<ItemStack> result)
+    ShapedRecipe(std::string recipe_id, std::vector<std::unique_ptr<ItemStack>> result)
         : Recipe(std::move(recipe_id)), result_(std::move(result))
     {
     }
-    std::vector<ItemStack> &getResult() override
+    std::vector<std::unique_ptr<ItemStack>> &getResult() override
     {
         return result_;
     }
@@ -41,7 +41,7 @@ public:
     }
 
 private:
-    std::vector<ItemStack> result_;
+    std::vector<std::unique_ptr<ItemStack>> result_;
     std::vector<std::string> rows_;
     std::map<char, RecipeChoice> ingredients_;
 };
