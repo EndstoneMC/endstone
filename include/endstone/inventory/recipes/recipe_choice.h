@@ -17,13 +17,13 @@
 namespace endstone {
 class RecipeChoice {
 public:
-    explicit RecipeChoice(std::unique_ptr<ItemStack> choice) : choice_(std::move(choice)) {}
-    std::unique_ptr<ItemStack> &getChoice()
+    explicit RecipeChoice(ItemStack choice) : choice_(std::move(choice)) {}
+    ItemStack &getChoice()
     {
         return choice_;
     }
 
 private:
-    std::unique_ptr<ItemStack> choice_;
+    ItemStack choice_;
 };
 }  // namespace endstone

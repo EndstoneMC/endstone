@@ -18,7 +18,7 @@ namespace endstone {
 class ShapelessRecipe : public Recipe {
 public:
     ~ShapelessRecipe() override = default;
-    ShapelessRecipe(std::string recipe_id, ItemStack /**/) : Recipe(std::move(recipe_id)) {}
+    ShapelessRecipe(std::string recipe_id, ItemStack result) : Recipe(std::move(recipe_id)), result_{result} {}
     std::vector<ItemStack> &getResult() override
     {
         return result_;
