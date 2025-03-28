@@ -594,6 +594,11 @@ class BlockData:
         Gets the block states for this block.
         """
     @property
+    def runtime_id(self) -> int:
+        """
+        Gets the runtime id for this block.
+        """
+    @property
     def type(self) -> str:
         """
         Get the block type represented by this block data.

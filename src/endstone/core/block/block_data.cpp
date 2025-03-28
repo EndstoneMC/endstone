@@ -52,6 +52,11 @@ BlockStates EndstoneBlockData::getBlockStates() const
     return result;
 }
 
+std::uint32_t EndstoneBlockData::getRuntimeId() const
+{
+    return getHandle().getRuntimeId();
+}
+
 ::Block &EndstoneBlockData::getHandle() const
 {
     return block_;

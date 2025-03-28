@@ -47,6 +47,13 @@ public:
      * @return the block states for this block
      */
     [[nodiscard]] virtual BlockStates getBlockStates() const = 0;
+
+    /**
+     * @brief Get the runtime ID for this block.
+     *
+     * @return the runtime id for this block
+     */
+    [[nodiscard]] virtual std::uint32_t getRuntimeId() const = 0;
 };
 
 }  // namespace endstone
