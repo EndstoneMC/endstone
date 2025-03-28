@@ -16,4 +16,16 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
-class ItemInstance final : public ItemStackBase {};
+class ItemInstance final : public ItemStackBase {
+public:
+    explicit ItemInstance(const BlockLegacy &block, int count = 1) : ItemStackBase(block, count) {}
+    explicit ItemInstance(std::string_view name, int count = 1, int aux_value = 0,
+                          CompoundTag const *user_data = nullptr)
+        : ItemStackBase(name, count, aux_value, user_data)
+    {
+    }
+    explicit ItemInstance(Item const &item, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr)
+        : ItemStackBase(item, count, aux_value, user_data)
+    {
+    }
+};
