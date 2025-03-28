@@ -13,15 +13,18 @@
 // limitations under the License.
 
 #pragma once
-
-#include "bedrock/world/item/item_descriptor_count.h"
-
-class RecipeIngredient : public ItemDescriptorCount {
+#include "endstone/inventory/recipes/recipe.h"
+namespace endstone {
+class ShapelessRecipe : public Recipe {
 public:
-    RecipeIngredient(const Block &block, uint16_t count) : ItemDescriptorCount(ItemDescriptor{block}, count) {}
-    RecipeIngredient(const BlockLegacy &block, uint16_t count) : ItemDescriptorCount(ItemDescriptor{block}, count) {}
-    RecipeIngredient(const Item &item, int aux_value, uint16_t count)
-        : ItemDescriptorCount(ItemDescriptor{item, aux_value}, count)
+    ~ShapelessRecipe() override = default;
+    ShapelessRecipe(std::string recipe_id, ItemStack /**/) : Recipe(std::move(recipe_id)) {}
+    std::vector<ItemStack> &getResult() override
     {
+        return result_;
     }
+
+private:
+    std::vector<ItemStack> result_;
 };
+}  // namespace endstone
