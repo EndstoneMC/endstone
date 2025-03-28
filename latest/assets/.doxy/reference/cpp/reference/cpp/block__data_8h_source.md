@@ -43,6 +43,8 @@ public:
     [[nodiscard]] virtual std::string getType() const = 0;
 
     [[nodiscard]] virtual BlockStates getBlockStates() const = 0;
+
+    [[nodiscard]] virtual std::uint32_t getRuntimeId() const = 0;
 };
 
 }  // namespace endstone

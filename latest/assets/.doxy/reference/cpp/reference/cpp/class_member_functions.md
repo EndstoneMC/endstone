@@ -129,7 +129,7 @@
 * **getLocation** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md))
 * **getMaxHealth** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getNameTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
-* **getRuntimeId** ([**endstone::Actor**](classendstone_1_1Actor.md))
+* **getRuntimeId** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::BlockData**](classendstone_1_1BlockData.md))
 * **getScoreTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getScoreboardTags** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getType** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockData**](classendstone_1_1BlockData.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::DamageSource**](classendstone_1_1DamageSource.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
