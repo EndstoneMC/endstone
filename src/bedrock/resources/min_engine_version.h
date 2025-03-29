@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #pragma once
+#include "bedrock/core/sem_ver/sem_version.h"
 #include "bedrock/server/commands/command_version.h"
 #include "bedrock/shared_types/molang/molang_version.h"
 

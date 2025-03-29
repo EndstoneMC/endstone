@@ -13,22 +13,24 @@
 // limitations under the License.
 
 #pragma once
-
-#include <vector>
-
-#include "bedrock/world/item/crafting/recipe_ingredient.h"
-
-class RecipeUnlockingRequirement {
+#include "endstone/inventory/item_stack.h"
+namespace endstone {
+enum class RecipeType {
+    Shaped,
+    Shapeless
+};
+class Recipe {
 public:
-    enum class UnlockingContext : int {
-        None = 0,
-        AlwaysUnlocked = 0x1,
-        PlayerInWater = 0x2,
-        PlayerHasManyItems = 0x3,
-    };
-    explicit RecipeUnlockingRequirement(UnlockingContext context) : context_(context) {}
+    explicit Recipe(std::string recipe_id) : recipe_id_(std::move(recipe_id)) {}
+    virtual ~Recipe() = default;
+    virtual std::vector<std::shared_ptr<ItemStack>> &getResult() = 0;
+    std::string &getId()
+    {
+        return recipe_id_;
+    }
+    virtual RecipeType getType() = 0;
 
 private:
-    UnlockingContext context_;
-    std::vector<RecipeIngredient> ingredients_;
+    std::string recipe_id_;
 };
+}  // namespace endstone
