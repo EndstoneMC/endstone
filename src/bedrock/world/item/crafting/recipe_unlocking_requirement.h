@@ -26,6 +26,7 @@ public:
         PlayerInWater = 0x2,
         PlayerHasManyItems = 0x3,
     };
+    explicit RecipeUnlockingRequirement(UnlockingContext context) : context_(context) {}
 
 private:
     UnlockingContext context_;

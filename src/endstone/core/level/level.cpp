@@ -23,7 +23,10 @@
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/level/dimension.h"
+#include "endstone/inventory/recipes/shaped_recipe.h"
+#include "endstone/inventory/recipes/shapeless_recipe.h"
 #include "endstone/level/dimension.h"
 
 namespace endstone::core {
@@ -116,6 +119,27 @@ EndstoneServer &EndstoneLevel::getServer() const
 ::Level &EndstoneLevel::getHandle() const
 {
     return level_;
+}
+
+void EndstoneLevel::addRecipe(std::shared_ptr<Recipe> recipe)
+{
+    auto recipes = level_.getRecipes();
+    if (recipe->isShaped()) {
+        auto &ingredient_map = reinterpret_cast<endstone::ShapedRecipe *>(recipe.get())->getIngredientMap();
+        std::vector<Recipes::Type> types;
+        for (auto &ingredient : ingredient_map) {
+            Recipes::Type type;
+
+            RecipeIngredient{EndstoneItemStack::toMinecraft(ingredient.second->getChoice().get()).getItem()};
+            types.emplace_back(type);
+        }
+
+        recipes.addShapedRecipe(
+            recipe->getId(), const std::vector<::ItemInstance> &result,
+            reinterpret_cast<endstone::ShapedRecipe *>(recipe.get())->shape(), types, {""}, 0, nullptr,
+            RecipeUnlockingRequirement{RecipeUnlockingRequirement::UnlockingContext::AlwaysUnlocked}, SemVersion{},
+            false);
+    }
 }
 
 };  // namespace endstone::core

@@ -13,21 +13,53 @@
 // limitations under the License.
 
 #pragma once
+#include <set>
+
 #include "endstone/inventory/recipes/recipe.h"
+#include "endstone/inventory/recipes/recipe_choice.h"
+
 namespace endstone {
-class ShapelessRecipe : public Recipe {
+class ShapelessRecipe final : public Recipe {
 public:
     ~ShapelessRecipe() override = default;
-    ShapelessRecipe(std::string recipe_id, std::unique_ptr<ItemStack> result) : Recipe(std::move(recipe_id))
+    ShapelessRecipe(std::string recipe_id, std::shared_ptr<ItemStack> result) : Recipe(std::move(recipe_id))
     {
         result_.emplace_back(std::move(result));
     }
-    std::vector<std::unique_ptr<ItemStack>> &getResult() override
+    std::vector<std::shared_ptr<ItemStack>> &getResult() override
     {
         return result_;
     }
+    ShapelessRecipe &addIngredient(const std::shared_ptr<RecipeChoice> &choice, int count)
+    {
+        if (ingredients_.contains({choice, count})) {
+            ingredients_.find({choice, count})->count += count;
+        }
+        return *this;
+    }
+    bool isShaped() override
+    {
+        return false;
+    }
+    bool isShapeless() override
+    {
+        return true;
+    }
+    bool isFurnace() override
+    {
+        return false;
+    }
 
 private:
-    std::vector<std::unique_ptr<ItemStack>> result_;
+    struct Ingredient {
+        std::shared_ptr<RecipeChoice> choice;
+        mutable int count;
+        bool operator<(const Ingredient &other) const
+        {
+            return choice < other.choice;
+        }
+    };
+    std::vector<std::shared_ptr<ItemStack>> result_;
+    std::set<Ingredient> ingredients_;
 };
 }  // namespace endstone

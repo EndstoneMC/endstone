@@ -18,6 +18,7 @@
 #include <string>
 
 #include "endstone/actor/actor.h"
+#include "endstone/inventory/recipes/recipe.h"
 
 namespace endstone {
 
@@ -70,6 +71,8 @@ public:
      * @return The Dimension with the given name, or nullptr if none exists
      */
     [[nodiscard]] virtual Dimension *getDimension(std::string name) const = 0;
+
+    virtual void addRecipe(std::shared_ptr<Recipe> recipe) = 0;
 };
 
 }  // namespace endstone

@@ -19,14 +19,14 @@
 #include "endstone/inventory/recipes/recipe_choice.h"
 
 namespace endstone {
-class ShapedRecipe : public Recipe {
+class ShapedRecipe final : public Recipe {
 public:
     ~ShapedRecipe() override = default;
-    ShapedRecipe(std::string recipe_id, std::vector<std::unique_ptr<ItemStack>> result)
+    ShapedRecipe(std::string recipe_id, std::vector<std::shared_ptr<ItemStack>> result)
         : Recipe(std::move(recipe_id)), result_(std::move(result))
     {
     }
-    std::vector<std::unique_ptr<ItemStack>> &getResult() override
+    std::vector<std::shared_ptr<ItemStack>> &getResult() override
     {
         return result_;
     }
@@ -34,15 +34,35 @@ public:
     {
         rows_ = std::move(rows);
     }
-    ShapedRecipe &setIngredient(char key, std::unique_ptr<RecipeChoice> choice)
+    std::vector<std::string> &shape()
+    {
+        return rows_;
+    }
+    std::map<char, std::shared_ptr<RecipeChoice>> &getIngredientMap()
+    {
+        return ingredients_;
+    }
+    ShapedRecipe &setIngredient(char key, std::shared_ptr<RecipeChoice> choice)
     {
         ingredients_.emplace(key, choice);
         return *this;
     }
+    bool isShaped() override
+    {
+        return true;
+    }
+    bool isShapeless() override
+    {
+        return false;
+    }
+    bool isFurnace() override
+    {
+        return false;
+    }
 
 private:
-    std::vector<std::unique_ptr<ItemStack>> result_;
+    std::vector<std::shared_ptr<ItemStack>> result_;
     std::vector<std::string> rows_;
-    std::map<char, RecipeChoice> ingredients_;
+    std::map<char, std::shared_ptr<RecipeChoice>> ingredients_;
 };
 }  // namespace endstone

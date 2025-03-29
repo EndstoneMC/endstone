@@ -19,7 +19,14 @@ class Recipe {
 public:
     explicit Recipe(std::string recipe_id) : recipe_id_(std::move(recipe_id)) {}
     virtual ~Recipe() = default;
-    virtual std::vector<std::unique_ptr<ItemStack>> &getResult() = 0;
+    virtual std::vector<std::shared_ptr<ItemStack>> &getResult() = 0;
+    std::string &getId()
+    {
+        return recipe_id_;
+    }
+    virtual bool isShaped() = 0;
+    virtual bool isShapeless() = 0;
+    virtual bool isFurnace() = 0;
 
 private:
     std::string recipe_id_;

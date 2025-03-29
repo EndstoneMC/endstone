@@ -18,6 +18,7 @@
 
 class RecipeIngredient : public ItemDescriptorCount {
 public:
+    RecipeIngredient() : ItemDescriptorCount(ItemDescriptor{}, 0) {}
     RecipeIngredient(const Block &block, uint16_t count) : ItemDescriptorCount(ItemDescriptor{block}, count) {}
     RecipeIngredient(const BlockLegacy &block, uint16_t count) : ItemDescriptorCount(ItemDescriptor{block}, count) {}
     RecipeIngredient(const Item &item, int aux_value, uint16_t count)

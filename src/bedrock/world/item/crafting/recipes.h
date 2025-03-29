@@ -26,10 +26,11 @@
 class Recipes {
 public:
     struct Type {
-        Item *item;
-        Block const *block;
+        Item *item{};
+        Block const *block{};
         RecipeIngredient ingredient;
         char c;
+        Type() = default;
     };
     using RecipesMap = std::map<HashedString, std::map<std::string, std::shared_ptr<Recipe>>>;
     bool loadRecipe(std::pair<std::string, Json::Value> const &recipe_obj_info,
