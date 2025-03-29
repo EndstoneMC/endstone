@@ -34,7 +34,7 @@ public:
     {
         stack_size_ = stack_size;
     }
-
+    ItemDescriptorCount(ItemDescriptorCount &&) = default;
     ItemDescriptorCount &operator=(ItemDescriptorCount &&) = default;
 
 private:

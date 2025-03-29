@@ -25,5 +25,6 @@ public:
         : ItemDescriptorCount(ItemDescriptor{item, aux_value}, count)
     {
     }
+    RecipeIngredient(RecipeIngredient &&) = default;
     RecipeIngredient &operator=(RecipeIngredient &&) = default;
 };

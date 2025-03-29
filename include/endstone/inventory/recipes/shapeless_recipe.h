@@ -21,6 +21,14 @@
 namespace endstone {
 class ShapelessRecipe : public Recipe {
 public:
+    struct Ingredient {
+        std::shared_ptr<RecipeChoice> choice;
+        mutable std::uint16_t count;
+        bool operator<(const Ingredient &other) const
+        {
+            return choice < other.choice;
+        }
+    };
     ~ShapelessRecipe() override = default;
     ShapelessRecipe(std::string recipe_id, std::shared_ptr<ItemStack> result) : Recipe(std::move(recipe_id))
     {
@@ -30,7 +38,7 @@ public:
     {
         return result_;
     }
-    ShapelessRecipe &addIngredient(const std::shared_ptr<RecipeChoice> &choice, int count)
+    ShapelessRecipe &addIngredient(const std::shared_ptr<RecipeChoice> &choice, std::uint16_t count)
     {
         if (ingredients_.contains({choice, count})) {
             ingredients_.find({choice, count})->count += count;
@@ -41,16 +49,12 @@ public:
     {
         return RecipeType::Shapeless;
     }
+    std::set<Ingredient> getIngredients()
+    {
+        return ingredients_;
+    }
 
 private:
-    struct Ingredient {
-        std::shared_ptr<RecipeChoice> choice;
-        mutable int count;
-        bool operator<(const Ingredient &other) const
-        {
-            return choice < other.choice;
-        }
-    };
     std::vector<std::shared_ptr<ItemStack>> result_;
     std::set<Ingredient> ingredients_;
 };

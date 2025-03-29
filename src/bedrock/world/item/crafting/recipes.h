@@ -22,6 +22,7 @@
 #include "bedrock/world/item/crafting/recipe.h"
 #include "bedrock/world/item/crafting/shaped_recipe.h"
 #include "bedrock/world/item/crafting/shapeless_recipe.h"
+#include "bedrock/world/item/item.h"
 
 class Recipes {
 public:
@@ -32,6 +33,12 @@ public:
         RecipeIngredient ingredient;
         char c;
         Type() = default;
+        Type(Type &&) = default;
+        ~Type()
+        {
+            delete item;
+            delete block;
+        }
     };
     using RecipesMap = std::map<HashedString, std::map<std::string, std::shared_ptr<Recipe>>>;
     bool loadRecipe(std::pair<std::string, Json::Value> const &recipe_obj_info,

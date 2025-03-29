@@ -132,12 +132,14 @@ void EndstoneLevel::addRecipe(std::shared_ptr<endstone::Recipe> recipe)
             results.emplace_back(EndstoneItemStack::toMinecraft(result.get()));
         }
         std::vector<::Recipes::Type> types;
-        for (auto &[c, ingredient] : rec->getIngredientMap()) {
+        for (const auto &[c, ingredient] : rec->getIngredientMap()) {
             ::Recipes::Type type;
             auto stack = EndstoneItemStack::toMinecraft(ingredient->getChoice().get());
             type.ingredient = std::move(::RecipeIngredient{*stack.getItem(), stack.getAuxValue(), 1});
             type.c = c;
+            types.emplace_back(std::move(type));
         }
+
         recipes.addShapedRecipe(
             recipe->getId(), results, rec->shape(), types, {}, 0, nullptr,
             RecipeUnlockingRequirement{RecipeUnlockingRequirement::UnlockingContext::AlwaysUnlocked},
@@ -145,6 +147,20 @@ void EndstoneLevel::addRecipe(std::shared_ptr<endstone::Recipe> recipe)
         break;
     }
     case RecipeType::Shapeless: {
+        auto *rec = reinterpret_cast<ShapelessRecipe *>(recipe.get());
+        ::ItemInstance result{EndstoneItemStack::toMinecraft(rec->getResult()[0].get())};
+        std::vector<::Recipes::Type> types;
+        for (const auto &[ingredient, c] : rec->getIngredients()) {
+            ::Recipes::Type type;
+            auto stack = EndstoneItemStack::toMinecraft(ingredient->getChoice().get());
+            type.ingredient = std::move(::RecipeIngredient{*stack.getItem(), stack.getAuxValue(), c});
+            types.emplace_back(std::move(type));
+        }
+
+        recipes.addShapelessRecipe(
+            recipe->getId(), result, types, {}, 0, nullptr,
+            RecipeUnlockingRequirement{RecipeUnlockingRequirement::UnlockingContext::AlwaysUnlocked},
+            SemVersion(1, 21, 0));
         break;
     }
     }
