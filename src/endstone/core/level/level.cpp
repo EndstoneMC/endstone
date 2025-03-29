@@ -121,24 +121,32 @@ EndstoneServer &EndstoneLevel::getServer() const
     return level_;
 }
 
-void EndstoneLevel::addRecipe(std::shared_ptr<Recipe> recipe)
+void EndstoneLevel::addRecipe(std::shared_ptr<endstone::Recipe> recipe)
 {
     auto recipes = level_.getRecipes();
-    if (recipe->isShaped()) {
-        auto &ingredient_map = reinterpret_cast<endstone::ShapedRecipe *>(recipe.get())->getIngredientMap();
-        std::vector<Recipes::Type> types;
-        for (auto &ingredient : ingredient_map) {
-            Recipes::Type type;
-
-            RecipeIngredient{EndstoneItemStack::toMinecraft(ingredient.second->getChoice().get()).getItem()};
-            types.emplace_back(type);
+    switch (recipe->getType()) {
+    case RecipeType::Shaped: {
+        auto *rec = reinterpret_cast<ShapedRecipe *>(recipe.get());
+        std::vector<::ItemInstance> results;
+        for (auto &result : rec->getResult()) {
+            results.emplace_back(EndstoneItemStack::toMinecraft(result.get()));
         }
-
+        std::vector<::Recipes::Type> types;
+        for (auto &[c, ingredient] : rec->getIngredientMap()) {
+            ::Recipes::Type type;
+            auto stack = EndstoneItemStack::toMinecraft(ingredient->getChoice().get());
+            type.ingredient = std::move(::RecipeIngredient{*stack.getItem(), stack.getAuxValue(), 1});
+            type.c = c;
+        }
         recipes.addShapedRecipe(
-            recipe->getId(), const std::vector<::ItemInstance> &result,
-            reinterpret_cast<endstone::ShapedRecipe *>(recipe.get())->shape(), types, {""}, 0, nullptr,
-            RecipeUnlockingRequirement{RecipeUnlockingRequirement::UnlockingContext::AlwaysUnlocked}, SemVersion{},
-            false);
+            recipe->getId(), results, rec->shape(), types, {}, 0, nullptr,
+            RecipeUnlockingRequirement{RecipeUnlockingRequirement::UnlockingContext::AlwaysUnlocked},
+            SemVersion(1, 21, 0), false);
+        break;
+    }
+    case RecipeType::Shapeless: {
+        break;
+    }
     }
 }
 

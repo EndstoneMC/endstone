@@ -187,7 +187,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
     }
 }
 
-void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
+void dumpShapedRecipe(const ::Recipe &recipe, nlohmann::json &json)
 {
     auto input = json["input"];
     json.erase("input");
@@ -369,9 +369,8 @@ void dumpRecipes(VanillaData &data, ::Level &level)
 void dumpBiomes(VanillaData &data, ::Level &level)
 {
     auto &biomes = data.biomes;
-    level.getBiomeRegistry().forEachBiome([&biomes](const Biome &biome) {
-        biomes[biome.getName()] = {{"id", biome.getId()}};
-    });
+    level.getBiomeRegistry().forEachBiome(
+        [&biomes](const Biome &biome) { biomes[biome.getName()] = {{"id", biome.getId()}}; });
 }
 
 }  // namespace

@@ -19,7 +19,7 @@
 #include "endstone/inventory/recipes/recipe_choice.h"
 
 namespace endstone {
-class ShapelessRecipe final : public Recipe {
+class ShapelessRecipe : public Recipe {
 public:
     ~ShapelessRecipe() override = default;
     ShapelessRecipe(std::string recipe_id, std::shared_ptr<ItemStack> result) : Recipe(std::move(recipe_id))
@@ -37,17 +37,9 @@ public:
         }
         return *this;
     }
-    bool isShaped() override
+    RecipeType getType() override
     {
-        return false;
-    }
-    bool isShapeless() override
-    {
-        return true;
-    }
-    bool isFurnace() override
-    {
-        return false;
+        return RecipeType::Shapeless;
     }
 
 private:

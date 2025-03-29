@@ -28,4 +28,5 @@ public:
         : ItemStackBase(item, count, aux_value, user_data)
     {
     }
+    explicit ItemInstance(const ItemStackBase &item_stack) : ItemStackBase(item_stack) {}
 };

@@ -19,7 +19,7 @@
 #include "endstone/inventory/recipes/recipe_choice.h"
 
 namespace endstone {
-class ShapedRecipe final : public Recipe {
+class ShapedRecipe : public Recipe {
 public:
     ~ShapedRecipe() override = default;
     ShapedRecipe(std::string recipe_id, std::vector<std::shared_ptr<ItemStack>> result)
@@ -47,21 +47,13 @@ public:
         ingredients_.emplace(key, choice);
         return *this;
     }
-    bool isShaped() override
+    RecipeType getType() override
     {
-        return true;
-    }
-    bool isShapeless() override
-    {
-        return false;
-    }
-    bool isFurnace() override
-    {
-        return false;
+        return RecipeType::Shaped;
     }
 
 private:
-    std::vector<std::shared_ptr<ItemStack>> result_;
+    std::vector<std::shared_ptr<endstone::ItemStack>> result_;
     std::vector<std::string> rows_;
     std::map<char, std::shared_ptr<RecipeChoice>> ingredients_;
 };

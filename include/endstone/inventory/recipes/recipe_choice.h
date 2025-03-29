@@ -17,13 +17,13 @@
 namespace endstone {
 class RecipeChoice {
 public:
-    explicit RecipeChoice(std::shared_ptr<ItemStack> choice) : choice_(std::move(choice)) {}
-    std::shared_ptr<ItemStack> &getChoice()
+    explicit RecipeChoice(std::shared_ptr<endstone::ItemStack> choice) : choice_(std::move(choice)) {}
+    std::shared_ptr<endstone::ItemStack> &getChoice()
     {
         return choice_;
     }
 
 private:
-    std::shared_ptr<ItemStack> choice_;
+    std::shared_ptr<endstone::ItemStack> choice_;
 };
 }  // namespace endstone

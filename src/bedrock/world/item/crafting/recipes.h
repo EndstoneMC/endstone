@@ -25,7 +25,8 @@
 
 class Recipes {
 public:
-    struct Type {
+    class Type {
+    public:
         Item *item{};
         Block const *block{};
         RecipeIngredient ingredient;

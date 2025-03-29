@@ -15,6 +15,10 @@
 #pragma once
 #include "endstone/inventory/item_stack.h"
 namespace endstone {
+enum class RecipeType {
+    Shaped,
+    Shapeless
+};
 class Recipe {
 public:
     explicit Recipe(std::string recipe_id) : recipe_id_(std::move(recipe_id)) {}
@@ -24,9 +28,7 @@ public:
     {
         return recipe_id_;
     }
-    virtual bool isShaped() = 0;
-    virtual bool isShapeless() = 0;
-    virtual bool isFurnace() = 0;
+    virtual RecipeType getType() = 0;
 
 private:
     std::string recipe_id_;
