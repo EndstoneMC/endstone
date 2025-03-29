@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.7.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) – 2025-03-29
+
+<small>[Compare with 0.7.1](https://github.com/EndstoneMC/endstone/compare/v0.7.1...v0.7.2)</small>
+
+### Added
+
+- Added support for BDS version 1.21.71.01.
+- Added `getDamage` and `setDamage` to `ItemMeta` for handling item durability.
+- Added `getRuntimeId` to `BlockData` to retrieve the runtime ID of a block permutation (also known as the network hash
+  ID).
+
+### Fixed
+
+- Fixed an issue where outgoing packet statistics were not written to `packet-statistics.txt`.
+
 ## [0.7.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) - 2025-03-27
 
 <small>[Compare with 0.7.0](https://github.com/EndstoneMC/endstone/compare/v0.7.0...v0.7.1)</small>
