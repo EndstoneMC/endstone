@@ -79,6 +79,14 @@ void init_form(py::module_ &m)
         .def_property("default_value", &Toggle::getDefaultValue, &Toggle::setDefaultValue,
                       "Gets or sets the value of the toggle.", py::return_value_policy::reference);
 
+    py::class_<Divider>(m, "Divider", "Represents a divider.")
+        .def(py::init<>());
+
+    py::class_<Header>(m, "Header", "Represents a header with a label.")
+        .def(py::init<Message>(), py::arg("label") = "")
+        .def_property("label", &Header::getLabel, &Header::setLabel, "Gets or sets the label of the header.",
+                      py::return_value_policy::reference);
+
     py::class_<MessageForm>(m, "MessageForm", "Represents a form with two buttons.")
         .def(py::init<>([](Message title, Message content, Message button1, Message button2,
                            MessageForm::OnSubmitCallback on_submit, MessageForm::OnCloseCallback on_close) {

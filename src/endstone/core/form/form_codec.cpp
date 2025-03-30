@@ -127,6 +127,26 @@ nlohmann::json FormCodec::toJson(const Toggle &toggle)
     return json;
 }
 
+template <>
+nlohmann::json FormCodec::toJson(const Divider &divider)
+{
+    nlohmann::json json;
+    json["type"] = "divider";
+    // NOTE: Useless but if we do not add it, the form will be rejected by client
+    json["text"] = "";
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const Header &header)
+{
+    nlohmann::json json;
+    json["type"] = "header";
+    // NOTE: Useless but if we do not add it, the form will be rejected by client
+    json["text"] = toJson(header.getLabel());
+    return json;
+}
+
 /**
  * Forms
  */

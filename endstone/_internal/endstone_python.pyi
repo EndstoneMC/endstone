@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemMeta', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapMeta', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Divider', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemMeta', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapMeta', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -13,9 +13,6 @@ class ActionForm:
         """
         Represents a button with text and an optional icon.
         """
-        @staticmethod
-        def _pybind11_conduit_v1_(*args, **kwargs):
-            ...
         def __init__(self, text: str | Translatable = '', icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> None:
             ...
         @property
@@ -42,9 +39,6 @@ class ActionForm:
         @text.setter
         def text(self, arg1: str | Translatable) -> ActionForm.Button:
             ...
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button] | None = None, on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     def add_button(self, text: str | Translatable, icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> ActionForm:
@@ -95,9 +89,6 @@ class Actor(CommandSender):
     """
     Represents a base actor in the level.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def add_scoreboard_tag(self, tag: str) -> bool:
         """
         Adds a tag to this actor.
@@ -238,9 +229,6 @@ class ActorDamageEvent(MobEvent, Cancellable):
     """
     Called when an Actor is damaged.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def damage(self) -> float:
         """
@@ -258,9 +246,6 @@ class ActorDeathEvent(MobEvent):
     """
     Called when an Actor dies.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def damage_source(self) -> DamageSource:
         """
@@ -270,9 +255,6 @@ class ActorEvent(Event):
     """
     Represents an Actor-related event.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def actor(self) -> Actor:
         """
@@ -282,9 +264,6 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
     """
     Called when an Actor explodes.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def block_list(self) -> list[Block]:
         """
@@ -302,9 +281,6 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
     """
     Called when a living entity receives knockback.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def knockback(self) -> Vector:
         """
@@ -322,23 +298,14 @@ class ActorRemoveEvent(ActorEvent):
     """
     Called when an Actor is removed.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
 class ActorSpawnEvent(ActorEvent, Cancellable):
     """
     Called when an Actor is spawned into a world.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
 class ActorTeleportEvent(ActorEvent, Cancellable):
     """
     Called when a non-player entity is teleported from one location to another.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def from_location(self) -> Location:
         """
@@ -359,9 +326,6 @@ class BanEntry:
     """
     A single entry from a ban list.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def created(self) -> datetime.datetime:
         """
@@ -404,9 +368,6 @@ class BarColor:
     WHITE: typing.ClassVar[BarColor]  # value = <BarColor.WHITE: 7>
     YELLOW: typing.ClassVar[BarColor]  # value = <BarColor.YELLOW: 4>
     __members__: typing.ClassVar[dict[str, BarColor]]  # value = {'PINK': <BarColor.PINK: 0>, 'BLUE': <BarColor.BLUE: 1>, 'RED': <BarColor.RED: 2>, 'GREEN': <BarColor.GREEN: 3>, 'YELLOW': <BarColor.YELLOW: 4>, 'PURPLE': <BarColor.PURPLE: 5>, 'REBECCA_PURPLE': <BarColor.REBECCA_PURPLE: 6>, 'WHITE': <BarColor.WHITE: 7>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -436,9 +397,6 @@ class BarColor:
 class BarFlag:
     DARKEN_SKY: typing.ClassVar[BarFlag]  # value = <BarFlag.DARKEN_SKY: 0>
     __members__: typing.ClassVar[dict[str, BarFlag]]  # value = {'DARKEN_SKY': <BarFlag.DARKEN_SKY: 0>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -472,9 +430,6 @@ class BarStyle:
     SEGMENTED_6: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_6: 1>
     SOLID: typing.ClassVar[BarStyle]  # value = <BarStyle.SOLID: 0>
     __members__: typing.ClassVar[dict[str, BarStyle]]  # value = {'SOLID': <BarStyle.SOLID: 0>, 'SEGMENTED_6': <BarStyle.SEGMENTED_6: 1>, 'SEGMENTED_10': <BarStyle.SEGMENTED_10: 2>, 'SEGMENTED_12': <BarStyle.SEGMENTED_12: 3>, 'SEGMENTED_20': <BarStyle.SEGMENTED_20: 4>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -505,9 +460,6 @@ class Block:
     """
     Represents a block.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __str__(self) -> str:
         ...
     def capture_state(self) -> BlockState:
@@ -571,9 +523,6 @@ class BlockBreakEvent(BlockEvent, Cancellable):
     """
     Called when a block is broken by a player.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def player(self) -> Player:
         """
@@ -583,9 +532,6 @@ class BlockData:
     """
     Represents the data related to a live block
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __str__(self) -> str:
         ...
     @property
@@ -607,9 +553,6 @@ class BlockEvent(Event):
     """
     Represents an Block-related event
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def block(self) -> Block:
         """
@@ -623,9 +566,6 @@ class BlockFace:
     UP: typing.ClassVar[BlockFace]  # value = <BlockFace.UP: 1>
     WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.WEST: 4>
     __members__: typing.ClassVar[dict[str, BlockFace]]  # value = {'DOWN': <BlockFace.DOWN: 0>, 'UP': <BlockFace.UP: 1>, 'NORTH': <BlockFace.NORTH: 2>, 'SOUTH': <BlockFace.SOUTH: 3>, 'WEST': <BlockFace.WEST: 4>, 'EAST': <BlockFace.EAST: 5>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -656,9 +596,6 @@ class BlockPlaceEvent(BlockEvent, Cancellable):
     """
     Called when a block is placed by a player.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def block_against(self) -> Block:
         """
@@ -683,9 +620,6 @@ class BlockState:
     """
     Represents a captured state of a block, which will not update automatically.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __str__(self) -> str:
         ...
     def update(self, force: bool = False, apply_physics: bool = True) -> bool:
@@ -742,9 +676,6 @@ class BossBar:
     """
     Represents a boss bar that is displayed to players.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def add_flag(self, flag: BarFlag) -> None:
         """
         Adds an optional flag to this boss bar.
@@ -818,9 +749,6 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
     """
     Event triggered for server broadcast messages such as from Server.broadcast
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def message(self) -> str:
         """
@@ -838,9 +766,6 @@ class Cancellable:
     """
     Represents an event that may be cancelled by a plugin or the server.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def cancel(self) -> None:
         """
         Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
@@ -865,9 +790,6 @@ class Chunk:
     """
     Represents a chunk of blocks.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def dimension(self) -> Dimension:
         """
@@ -924,16 +846,10 @@ class ColorFormat:
     RESET: typing.ClassVar[str] = '§r'
     WHITE: typing.ClassVar[str] = '§f'
     YELLOW: typing.ClassVar[str] = '§e'
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
 class Command:
     """
     Represents a Command, which executes various tasks upon user input
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None, permissions: list[str] | None = None, *args, **kwargs) -> None:
         ...
     def execute(self, sender: CommandSender, args: list[str]) -> bool:
@@ -997,9 +913,6 @@ class CommandExecutor:
     """
     Represents a class which contains a single method for executing commands
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self) -> None:
         ...
     def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
@@ -1010,9 +923,6 @@ class CommandSender(Permissible):
     """
     Represents a command sender.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def send_error_message(self, message: str | Translatable) -> None:
         """
         Sends this sender an error message
@@ -1035,18 +945,12 @@ class CommandSenderWrapper(CommandSender):
     """
     Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, sender: CommandSender, on_message: typing.Callable[[str | Translatable], None] = None, on_error: typing.Callable[[str | Translatable], None] = None) -> None:
         ...
 class ConsoleCommandSender(CommandSender):
     """
     Represents a console command sender.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
 class Criteria:
     """
     Represents a scoreboard criteria.
@@ -1057,9 +961,6 @@ class Criteria:
         """
         DUMMY: typing.ClassVar[Criteria.Type]  # value = <Type.DUMMY: 0>
         __members__: typing.ClassVar[dict[str, Criteria.Type]]  # value = {'DUMMY': <Type.DUMMY: 0>}
-        @staticmethod
-        def _pybind11_conduit_v1_(*args, **kwargs):
-            ...
         def __eq__(self, other: typing.Any) -> bool:
             ...
         def __getstate__(self) -> int:
@@ -1087,9 +988,6 @@ class Criteria:
         def value(self) -> int:
             ...
     DUMMY: typing.ClassVar[Criteria.Type]  # value = <Type.DUMMY: 0>
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def default_render_type(self) -> RenderType:
         ...
@@ -1103,9 +1001,6 @@ class DamageSource:
     """
     Represents a source of damage.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __str__(self) -> str:
         ...
     @property
@@ -1141,9 +1036,6 @@ class Dimension:
         OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
         THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
         __members__: typing.ClassVar[dict[str, Dimension.Type]]  # value = {'OVERWORLD': <Type.OVERWORLD: 0>, 'NETHER': <Type.NETHER: 1>, 'THE_END': <Type.THE_END: 2>, 'CUSTOM': <Type.CUSTOM: 999>}
-        @staticmethod
-        def _pybind11_conduit_v1_(*args, **kwargs):
-            ...
         def __eq__(self, other: typing.Any) -> bool:
             ...
         def __getstate__(self) -> int:
@@ -1174,9 +1066,6 @@ class Dimension:
     NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
     THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @typing.overload
     def get_block_at(self, location: Location) -> Block:
         """
@@ -1229,9 +1118,6 @@ class DisplaySlot:
     PLAYER_LIST: typing.ClassVar[DisplaySlot]  # value = <DisplaySlot.PLAYER_LIST: 1>
     SIDE_BAR: typing.ClassVar[DisplaySlot]  # value = <DisplaySlot.SIDE_BAR: 2>
     __members__: typing.ClassVar[dict[str, DisplaySlot]]  # value = {'BELOW_NAME': <DisplaySlot.BELOW_NAME: 0>, 'PLAYER_LIST': <DisplaySlot.PLAYER_LIST: 1>, 'SIDE_BAR': <DisplaySlot.SIDE_BAR: 2>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -1258,13 +1144,16 @@ class DisplaySlot:
     @property
     def value(self) -> int:
         ...
+class Divider:
+    """
+    Represents a divider.
+    """
+    def __init__(self) -> None:
+        ...
 class Dropdown:
     """
     Represents a dropdown with a set of predefined options.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, label: str | Translatable = '', options: list[str] | None = None, default_index: int | None = None) -> None:
         ...
     def add_option(self, option: str) -> Dropdown:
@@ -1299,9 +1188,6 @@ class Event:
     """
     Represents an event.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def event_name(self) -> str:
         """
@@ -1323,9 +1209,6 @@ class EventPriority:
     MONITOR: typing.ClassVar[EventPriority]  # value = <EventPriority.MONITOR: 5>
     NORMAL: typing.ClassVar[EventPriority]  # value = <EventPriority.NORMAL: 2>
     __members__: typing.ClassVar[dict[str, EventPriority]]  # value = {'LOWEST': <EventPriority.LOWEST: 0>, 'LOW': <EventPriority.LOW: 1>, 'NORMAL': <EventPriority.NORMAL: 2>, 'HIGH': <EventPriority.HIGH: 3>, 'HIGHEST': <EventPriority.HIGHEST: 4>, 'MONITOR': <EventPriority.MONITOR: 5>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -1361,9 +1244,6 @@ class GameMode:
     SPECTATOR: typing.ClassVar[GameMode]  # value = <GameMode.SPECTATOR: 3>
     SURVIVAL: typing.ClassVar[GameMode]  # value = <GameMode.SURVIVAL: 0>
     __members__: typing.ClassVar[dict[str, GameMode]]  # value = {'SURVIVAL': <GameMode.SURVIVAL: 0>, 'CREATIVE': <GameMode.CREATIVE: 1>, 'ADVENTURE': <GameMode.ADVENTURE: 2>, 'SPECTATOR': <GameMode.SPECTATOR: 3>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -1390,13 +1270,24 @@ class GameMode:
     @property
     def value(self) -> int:
         ...
+class Header:
+    """
+    Represents a header with a label.
+    """
+    def __init__(self, label: str | Translatable = '') -> None:
+        ...
+    @property
+    def label(self) -> str | Translatable:
+        """
+        Gets or sets the label of the header.
+        """
+    @label.setter
+    def label(self, arg1: str | Translatable) -> Header:
+        ...
 class Inventory:
     """
     Interface to the various inventories.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __get_item__(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
@@ -1453,9 +1344,6 @@ class IpBanEntry(BanEntry):
     """
     Represents a ban entry for an IP address.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, address: str) -> None:
         ...
     @property
@@ -1467,9 +1355,6 @@ class IpBanList:
     """
     Represents a ban list containing banned IP addresses.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def add_ban(self, address: str, reason: str | None = None, expires: datetime.datetime | None = None, source: str | None = None) -> IpBanEntry:
         """
         Adds a ban to this list, or updates an existing one.
@@ -1495,9 +1380,6 @@ class ItemMeta:
     """
     Represents the metadata of a generic item.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def clone(self) -> ItemMeta:
         """
         Creates a clone of the current metadata.
@@ -1545,9 +1427,6 @@ class ItemStack:
     """
     Represents a stack of items.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, type: str = 'minecraft:air', amount: int = 1) -> None:
         ...
     def __str__(self) -> str:
@@ -1581,9 +1460,6 @@ class Label:
     """
     Represents a text label.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, text: str | Translatable = '') -> None:
         ...
     @property
@@ -1598,9 +1474,6 @@ class Language:
     """
     Represents the interface for translating text into different languages.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @typing.overload
     def translate(self, text: str, params: list[str] | None = None, locale: str | None = None) -> str:
         """
@@ -1617,9 +1490,6 @@ class Language:
         Gets the current locale.
         """
 class Level:
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def get_dimension(self, name: str) -> Dimension:
         """
         Gets the dimension with the given name.
@@ -1651,9 +1521,6 @@ class Location(Position):
     """
     Represents a 3-dimensional location in a dimension within a level.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0) -> None:
         ...
     def __repr__(self) -> str:
@@ -1691,9 +1558,6 @@ class Logger:
         TRACE: typing.ClassVar[Logger.Level]  # value = <Level.TRACE: 0>
         WARNING: typing.ClassVar[Logger.Level]  # value = <Level.WARNING: 3>
         __members__: typing.ClassVar[dict[str, Logger.Level]]  # value = {'TRACE': <Level.TRACE: 0>, 'DEBUG': <Level.DEBUG: 1>, 'INFO': <Level.INFO: 2>, 'WARNING': <Level.WARNING: 3>, 'ERROR': <Level.ERROR: 4>, 'CRITICAL': <Level.CRITICAL: 5>}
-        @staticmethod
-        def _pybind11_conduit_v1_(*args, **kwargs):
-            ...
         def __eq__(self, other: typing.Any) -> bool:
             ...
         def __getstate__(self) -> int:
@@ -1726,9 +1590,6 @@ class Logger:
     INFO: typing.ClassVar[Logger.Level]  # value = <Level.INFO: 2>
     TRACE: typing.ClassVar[Logger.Level]  # value = <Level.TRACE: 0>
     WARNING: typing.ClassVar[Logger.Level]  # value = <Level.WARNING: 3>
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def critical(self, message: str) -> None:
         """
         Log a message at the CRITICAL level.
@@ -1770,16 +1631,10 @@ class MapMeta(ItemMeta):
     """
     Represents the metadata for a map item.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
 class MessageForm:
     """
     Represents a form with two buttons.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, title: str | Translatable = '', content: str | Translatable = '', button1: str | Translatable = '', button2: str | Translatable = '', on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     @property
@@ -1834,9 +1689,6 @@ class Mob(Actor):
     """
     Represents a mobile entity (i.e. living entity), such as a monster or player.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def is_gliding(self) -> bool:
         """
@@ -1846,9 +1698,6 @@ class MobEvent(Event):
     """
     Represents an Mob-related event.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def actor(self) -> Mob:
         """
@@ -1858,22 +1707,19 @@ class ModalForm:
     """
     Represents a modal form with controls.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
+    def __init__(self, title: str | Translatable = '', controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: typing.Callable[[Player, str], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
-    def __init__(self, title: str | Translatable = '', controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: typing.Callable[[Player, str], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
-        ...
-    def add_control(self, control: Dropdown | Label | Slider | StepSlider | TextInput | Toggle) -> ModalForm:
+    def add_control(self, control: Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header) -> ModalForm:
         """
         Adds a control to the form.
         """
     @property
-    def controls(self) -> list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle]:
+    def controls(self) -> list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header]:
         """
         Gets or sets the controls of the modal form.
         """
     @controls.setter
-    def controls(self, arg1: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle]) -> ModalForm:
+    def controls(self, arg1: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header]) -> ModalForm:
         ...
     @property
     def icon(self) -> str | None:
@@ -1920,9 +1766,6 @@ class Objective:
     Represents an objective on a scoreboard that can show scores specific to entries.
     """
     __hash__: typing.ClassVar[None] = None
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, arg0: Objective) -> bool:
         ...
     def __ne__(self, arg0: Objective) -> bool:
@@ -1997,9 +1840,6 @@ class ObjectiveSortOrder:
     ASCENDING: typing.ClassVar[ObjectiveSortOrder]  # value = <ObjectiveSortOrder.ASCENDING: 0>
     DESCENDING: typing.ClassVar[ObjectiveSortOrder]  # value = <ObjectiveSortOrder.DESCENDING: 1>
     __members__: typing.ClassVar[dict[str, ObjectiveSortOrder]]  # value = {'ASCENDING': <ObjectiveSortOrder.ASCENDING: 0>, 'DESCENDING': <ObjectiveSortOrder.DESCENDING: 1>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -2030,9 +1870,6 @@ class OfflinePlayer:
     """
     Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def name(self) -> str:
         """
@@ -2047,9 +1884,6 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     """
     Called when the server receives a packet from a connected client.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def packet_id(self) -> int:
         """
@@ -2072,9 +1906,6 @@ class PacketSendEvent(ServerEvent, Cancellable):
     """
     Called when the server sends a packet to a connected client.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def packet_id(self) -> int:
         """
@@ -2097,9 +1928,6 @@ class Permissible:
     """
     Represents an object that may become a server operator and can be assigned permissions.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @typing.overload
     def add_attachment(self, plugin: Plugin, name: str, value: bool) -> PermissionAttachment:
         """
@@ -2155,9 +1983,6 @@ class Permission:
     """
     Represents a unique permission that may be attached to a Permissible
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, name: str, description: str | None = None, default: PermissionDefault | None = None, children: dict[str, bool] | None = None, *args, **kwargs) -> None:
         ...
     @typing.overload
@@ -2209,9 +2034,6 @@ class PermissionAttachment:
     """
     Holds information about a permission attachment on a Permissible object
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, plugin: Plugin, permissible: Permissible) -> None:
         ...
     def remove(self) -> bool:
@@ -2265,9 +2087,6 @@ class PermissionAttachmentInfo:
     """
     Holds information on a permission and which PermissionAttachment provides it
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, permissible: Permissible, permission: str, attachment: PermissionAttachment, value: bool) -> None:
         ...
     @property
@@ -2301,9 +2120,6 @@ class PermissionDefault:
     OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     TRUE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.TRUE: 0>
     __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -2334,9 +2150,6 @@ class Player(Mob, OfflinePlayer):
     """
     Represents a player.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def close_form(self) -> None:
         """
         Closes the forms that are currently open for the player.
@@ -2559,9 +2372,6 @@ class PlayerBanEntry(BanEntry):
     """
     Represents a ban entry for a player.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None) -> None:
         ...
     @property
@@ -2583,9 +2393,6 @@ class PlayerBanList:
     """
     Represents a ban list containing banned players.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def add_ban(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None, reason: str | None = None, expires: datetime.datetime | None = None, source: str | None = None) -> PlayerBanEntry:
         """
         Adds a ban to this list, or updates an existing one.
@@ -2611,9 +2418,6 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def message(self) -> str:
         """
@@ -2626,9 +2430,6 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
     """
     Called whenever a player runs a command.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def command(self) -> str:
         """
@@ -2641,9 +2442,6 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     """
     Called when a player dies
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def death_message(self) -> str:
         """
@@ -2656,9 +2454,6 @@ class PlayerEmoteEvent(PlayerEvent):
     """
     Called when a player uses and emote
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def emote_id(self) -> str:
         """
@@ -2668,9 +2463,6 @@ class PlayerEvent(Event):
     """
     Represents a player related event
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def player(self) -> Player:
         """
@@ -2680,9 +2472,6 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     """
     Called when the GameMode of the player is changed.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def new_game_mode(self) -> GameMode:
         """
@@ -2692,9 +2481,6 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks an actor.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def actor(self) -> Actor:
         """
@@ -2704,9 +2490,6 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks a block.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def block(self) -> Block:
         """
@@ -2741,9 +2524,6 @@ class PlayerInventory(Inventory):
     """
     Interface to the inventory of a Player, including the four armor slots and any extra slots.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def boots(self) -> ItemStack:
         """
@@ -2804,9 +2584,6 @@ class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def join_message(self) -> str:
         """
@@ -2819,9 +2596,6 @@ class PlayerKickEvent(PlayerEvent, Cancellable):
     """
     Called when a player gets kicked from the server
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def reason(self) -> str:
         """
@@ -2834,9 +2608,6 @@ class PlayerLoginEvent(PlayerEvent, Cancellable):
     """
     Called when a player attempts to login in.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def kick_message(self) -> str:
         """
@@ -2849,9 +2620,6 @@ class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def quit_message(self) -> str:
         """
@@ -2864,16 +2632,10 @@ class PlayerRespawnEvent(PlayerEvent):
     """
     Called when a player respawns.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
 class PlayerTeleportEvent(PlayerEvent, Cancellable):
     """
     Called when a player is teleported from one location to another.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def from_location(self) -> Location:
         """
@@ -2894,9 +2656,6 @@ class Plugin(CommandExecutor):
     """
     Represents a Plugin
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self) -> None:
         ...
     def _get_description(self) -> PluginDescription:
@@ -2951,9 +2710,6 @@ class PluginCommand(Command):
     """
     Represents a Command belonging to a Plugin
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def executor(self) -> CommandExecutor:
         """
@@ -2971,9 +2727,6 @@ class PluginDescription:
     """
     Represents the basic information about a plugin that the plugin loader needs to know.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: list[str] | None = None, contributors: list[str] | None = None, website: str | None = None, prefix: str | None = None, provides: list[str] | None = None, depend: list[str] | None = None, soft_depend: list[str] | None = None, load_before: list[str] | None = None, default_permission: PermissionDefault | None = None, commands: list[Command] | None = None, permissions: list[Permission] | None = None, *args, **kwargs) -> None:
         ...
     @property
@@ -3065,9 +2818,6 @@ class PluginDisableEvent(ServerEvent):
     """
     Called when a plugin is disabled.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def plugin(self) -> Plugin:
         ...
@@ -3075,9 +2825,6 @@ class PluginEnableEvent(ServerEvent):
     """
     Called when a plugin is enabled.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def plugin(self) -> Plugin:
         ...
@@ -3088,9 +2835,6 @@ class PluginLoadOrder:
     POSTWORLD: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.POSTWORLD: 1>
     STARTUP: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.STARTUP: 0>
     __members__: typing.ClassVar[dict[str, PluginLoadOrder]]  # value = {'STARTUP': <PluginLoadOrder.STARTUP: 0>, 'POSTWORLD': <PluginLoadOrder.POSTWORLD: 1>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -3121,9 +2865,6 @@ class PluginLoader:
     """
     Represents a plugin loader, which handles direct access to specific types of plugins
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, server: Server) -> None:
         ...
     def disable_plugin(self, plugin: Plugin) -> None:
@@ -3156,9 +2897,6 @@ class PluginManager:
     """
     Represents a plugin manager that handles all plugins from the Server
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def call_event(self, event: Event) -> None:
         """
         Calls an event which will be passed to plugins.
@@ -3275,9 +3013,6 @@ class Position(Vector):
     """
     Represents a 3-dimensional position in a dimension within a level.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, dimension: Dimension, x: float, y: float, z: float) -> None:
         ...
     def __repr__(self) -> str:
@@ -3311,9 +3046,6 @@ class ProxiedCommandSender(CommandSender):
     """
     Represents a proxied command sender.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def callee(self) -> CommandSender:
         """
@@ -3330,9 +3062,6 @@ class RenderType:
     """
     INTEGER: typing.ClassVar[RenderType]  # value = <RenderType.INTEGER: 0>
     __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -3363,9 +3092,6 @@ class Scheduler:
     """
     Represents a scheduler that executes various tasks
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def cancel_task(self, id: int) -> None:
         """
         Removes task from scheduler.
@@ -3394,9 +3120,6 @@ class Score:
     """
     Represents a score for an objective on a scoreboard.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def entry(self) -> Player | Actor | str:
         """
@@ -3429,9 +3152,6 @@ class Scoreboard:
     """
     Represents a scoreboard
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def add_objective(self, name: str, criteria: Criteria.Type, display_name: str | None = None, render_type: RenderType = RenderType.INTEGER) -> Objective:
         """
         Registers an Objective on this Scoreboard with a name displayed to players
@@ -3476,9 +3196,6 @@ class ScriptMessageEvent(ServerEvent, Cancellable):
     """
     Called when a message is sent by `/scriptevent` command
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def message(self) -> str:
         """
@@ -3498,9 +3215,6 @@ class Server:
     """
     Represents a server implementation.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def broadcast(self, message: str | Translatable, permission: str) -> None:
         """
         Broadcasts the specified message to every user with the given permission name.
@@ -3673,9 +3387,6 @@ class ServerCommandEvent(ServerEvent, Cancellable):
     """
     Called when the console runs a command, early in the process.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def command(self) -> str:
         """
@@ -3693,16 +3404,10 @@ class ServerEvent(Event):
     """
     Represents a server-related event
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
 class ServerListPingEvent(ServerEvent, Cancellable):
     """
     Called when a server ping is coming in.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def game_mode(self) -> GameMode:
         """
@@ -3797,9 +3502,6 @@ class ServerLoadEvent(Event):
     class LoadType:
         STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
         __members__: typing.ClassVar[dict[str, ServerLoadEvent.LoadType]]  # value = {'STARTUP': <LoadType.STARTUP: 0>}
-        @staticmethod
-        def _pybind11_conduit_v1_(*args, **kwargs):
-            ...
         def __eq__(self, other: typing.Any) -> bool:
             ...
         def __getstate__(self) -> int:
@@ -3827,9 +3529,6 @@ class ServerLoadEvent(Event):
         def value(self) -> int:
             ...
     STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def type(self) -> ServerLoadEvent.LoadType:
         ...
@@ -3837,18 +3536,12 @@ class Service:
     """
     Represents a list of methods.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self) -> None:
         ...
 class ServiceManager:
     """
     Represent a service manager that manages services and service providers.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def load(self, name: str) -> Service:
         ...
     def register(self, name: str, provider: Service, plugin: Plugin, priority: ServicePriority) -> None:
@@ -3879,9 +3572,6 @@ class ServicePriority:
     LOWEST: typing.ClassVar[ServicePriority]  # value = <ServicePriority.LOWEST: 0>
     NORMAL: typing.ClassVar[ServicePriority]  # value = <ServicePriority.NORMAL: 2>
     __members__: typing.ClassVar[dict[str, ServicePriority]]  # value = {'LOWEST': <ServicePriority.LOWEST: 0>, 'LOW': <ServicePriority.LOW: 1>, 'NORMAL': <ServicePriority.NORMAL: 2>, 'HIGH': <ServicePriority.HIGH: 3>, 'HIGHEST': <ServicePriority.HIGHEST: 4>}
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -3912,9 +3602,6 @@ class Skin:
     """
     Represents a player skin.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, skin_id: str, skin_data: numpy.ndarray[numpy.uint8], cape_id: str | None = None, cape_data: numpy.ndarray[numpy.uint8] | None = None) -> None:
         ...
     @property
@@ -3941,9 +3628,6 @@ class Slider:
     """
     Represents a slider with a label.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, label: str | Translatable = '', min: float = 0, max: float = 100, step: float = 20, default_value: float | None = None) -> None:
         ...
     @property
@@ -3990,9 +3674,6 @@ class SocketAddress:
     """
     Represents an IP Socket Address (hostname + port number).
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @typing.overload
     def __init__(self) -> None:
         ...
@@ -4017,9 +3698,6 @@ class StepSlider:
     """
     Represents a step slider with a set of predefined options.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, label: str | Translatable = '', options: list[str] | None = None, default_index: int | None = None) -> None:
         ...
     def add_option(self, option: str) -> Dropdown:
@@ -4054,9 +3732,6 @@ class Task:
     """
     Represents a task being executed by the scheduler
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def cancel(self) -> None:
         """
         Attempts to cancel this task.
@@ -4085,9 +3760,6 @@ class TextInput:
     """
     Represents a text input field.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, label: str | Translatable = '', placeholder: str | Translatable = '', default_value: str | None = None) -> None:
         ...
     @property
@@ -4118,9 +3790,6 @@ class ThunderChangeEvent(WeatherEvent, Cancellable):
     """
     Called when the thunder state in a world is changing.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def to_thunder_state(self) -> bool:
         """
@@ -4130,9 +3799,6 @@ class Toggle:
     """
     Represents a toggle button with a label.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, label: str | Translatable = '', default_value: bool = False) -> None:
         ...
     @property
@@ -4155,9 +3821,6 @@ class Translatable:
     """
     Represents an object with a text representation that can be translated by the Minecraft client.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     def __init__(self, text: str, params: list[str] | None = None) -> None:
         ...
     @property
@@ -4174,9 +3837,6 @@ class Vector:
     """
     Represents a 3-dimensional vector.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @typing.overload
     def __add__(self, arg0: Vector) -> Vector:
         ...
@@ -4273,9 +3933,6 @@ class WeatherChangeEvent(WeatherEvent, Cancellable):
     """
     Called when the weather (rain) state in a world is changing.
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def to_weather_state(self) -> bool:
         """
@@ -4285,9 +3942,6 @@ class WeatherEvent(Event):
     """
     Represents a weather-related event
     """
-    @staticmethod
-    def _pybind11_conduit_v1_(*args, **kwargs):
-        ...
     @property
     def level(self) -> Level:
         """
