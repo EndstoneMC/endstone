@@ -70,7 +70,6 @@ public:
     {
         auto button = Button(text, icon, std::move(on_click));
         controls_.emplace_back(button);
-        buttons_.emplace_back(button);
         return *this;
     }
 
@@ -120,16 +119,6 @@ public:
     }
 
     /**
-     * @brief Get the buttons of the action form.
-     *
-     * @return A list of buttons in the action form.
-     */
-    [[nodiscard]] const std::vector<Button> &getButtons() const
-    {
-        return buttons_;
-    }
-
-    /**
      * @brief Set the controls of the action form.
      *
      * @param controls The list of controls to set.
@@ -166,7 +155,6 @@ public:
 private:
     Message content_;
     std::vector<Control> controls_;
-    std::vector<Button> buttons_;
     OnSubmitCallback on_submit_;
 };
 

@@ -155,8 +155,7 @@ void init_form(py::module_ &m)
         .def("add_header", &ActionForm::addHeader, "Adds a header to the form.", py::arg("text"), py::return_value_policy::reference)
         .def("add_divider", &ActionForm::addDivider, "Adds a divider to the form.", py::return_value_policy::reference)
         .def_property("controls", &ActionForm::getControls, &ActionForm::setControls,
-                      "Gets or sets the controls of the action form.", py::return_value_policy::reference)
-        .def_property_readonly("buttons", &ActionForm::getButtons, "Gets the buttons of the action form.", py::return_value_policy::reference);
+                      "Gets or sets the controls of the action form.", py::return_value_policy::reference);
 
     py::class_<ModalForm>(m, "ModalForm", "Represents a modal form with controls.")
         .def(py::init<>([](Message title, const std::optional<std::vector<ModalForm::Control>> &controls,

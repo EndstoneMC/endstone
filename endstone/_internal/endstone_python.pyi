@@ -58,11 +58,6 @@ class ActionForm:
         Adds a label to the form.
         """
     @property
-    def buttons(self) -> list[ActionForm.Button]:
-        """
-        Gets the buttons of the action form.
-        """
-    @property
     def content(self) -> str | Translatable:
         """
         Gets or sets the content of the form.
