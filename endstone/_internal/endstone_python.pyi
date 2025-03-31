@@ -39,20 +39,29 @@ class ActionForm:
         @text.setter
         def text(self, arg1: str | Translatable) -> ActionForm.Button:
             ...
-    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button] | None = None, on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button | Divider | Header | Label] | None = None, on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     def add_button(self, text: str | Translatable, icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> ActionForm:
         """
         Adds a button to the form.
         """
+    def add_divider(self) -> ActionForm:
+        """
+        Adds a divider to the form.
+        """
+    def add_header(self, text: str | Translatable) -> ActionForm:
+        """
+        Adds a header to the form.
+        """
+    def add_label(self, text: str | Translatable) -> ActionForm:
+        """
+        Adds a label to the form.
+        """
     @property
     def buttons(self) -> list[ActionForm.Button]:
         """
-        Gets or sets the buttons of the action form.
+        Gets the buttons of the action form.
         """
-    @buttons.setter
-    def buttons(self, arg1: list[ActionForm.Button]) -> ActionForm:
-        ...
     @property
     def content(self) -> str | Translatable:
         """
@@ -60,6 +69,14 @@ class ActionForm:
         """
     @content.setter
     def content(self, arg1: str | Translatable) -> ActionForm:
+        ...
+    @property
+    def controls(self) -> list[ActionForm.Button | Divider | Header | Label]:
+        """
+        Gets or sets the controls of the action form.
+        """
+    @controls.setter
+    def controls(self, arg1: list[ActionForm.Button | Divider | Header | Label]) -> ActionForm:
         ...
     @property
     def on_close(self) -> typing.Callable[[Player], None]:
