@@ -25,7 +25,6 @@ namespace endstone {
  */
 class ItemMeta {
 public:
-    static ItemMeta EMPTY;
     enum class Type {
         Item = 0,
         Map = 1,
@@ -186,6 +185,4 @@ private:
     std::optional<std::vector<std::string>> lore_;
     int damage_ = 0;
 };
-
-inline ItemMeta ItemMeta::EMPTY;
 }  // namespace endstone

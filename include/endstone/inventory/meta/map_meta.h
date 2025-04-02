@@ -25,7 +25,13 @@ namespace endstone {
  */
 class MapMeta : public ItemMeta {
 public:
-    using ItemMeta::ItemMeta;
+    explicit MapMeta(const ItemMeta *meta) : ItemMeta(meta)
+    {
+        if (meta == nullptr || meta->getType() != Type::Map) {
+            return;
+        }
+        *this = *static_cast<const MapMeta *>(meta);
+    }
 
     [[nodiscard]] Type getType() const override
     {
