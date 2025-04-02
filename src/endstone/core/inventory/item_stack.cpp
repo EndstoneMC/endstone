@@ -16,6 +16,7 @@
 
 #include "bedrock/world/item/item.h"
 #include "endstone/core/inventory/item_factory.h"
+#include "item_type.h"
 
 namespace endstone::core {
 
@@ -112,15 +113,16 @@ std::string EndstoneItemStack::getType(const ::ItemStack *item)
 
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item)
 {
-    if (item && !item->isNull()) {
-        return EndstoneItemFactory::getItemMeta(getType(item), *item);
+    if (!hasItemMeta(item)) {
+        return EndstoneItemFactory::instance().getItemMeta(getType(item));
     }
-    return ItemFactory::getItemMeta("minecraft:air");
+    const auto type = EndstoneItemType::fromMinecraft(*item->getItem());
+    return static_cast<EndstoneItemType *>(type.get())->getItemMeta(*item);
 }
 
 bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
 {
-    return !getItemMeta(item)->isEmpty();
+    return item != nullptr && !item->isNull() && item->getUserData() != nullptr;
 }
 
 bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
@@ -129,16 +131,16 @@ bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
         return false;
     }
     if (!meta) {
-        EndstoneItemFactory::applyToItem(ItemMeta::EMPTY, *item);
+        EndstoneItemMeta::restoreMeta(*item);
         return true;
     }
     // TODO(item): applicability check
-    auto item_meta = ItemFactory::asMetaFor(getType(item), meta);
+    const auto item_meta = EndstoneItemFactory::instance().asMetaFor(meta, getType(item));
     if (!item_meta) {
         return true;
     }
 
-    EndstoneItemFactory::applyToItem(*item_meta, *item);
+    EndstoneItemMeta::applyToItem(*item_meta, *item);
     return true;
 }
 

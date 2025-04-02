@@ -14,8 +14,18 @@
 
 #pragma once
 
+#include <memory>
+
+#include "bedrock/world/item/item.h"
 #include "endstone/inventory/item_type.h"
+#include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone::core {
+class EndstoneItemType : public ItemType {
+public:
+    std::unique_ptr<ItemMeta> getItemMeta(const ::ItemStack &stack);
+    std::unique_ptr<ItemMeta> getItemMeta(const ItemMeta &stack);
 
+    static std::unique_ptr<ItemType> fromMinecraft(const ::Item &item);
+};
 }  // namespace endstone::core
