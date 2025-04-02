@@ -1,7 +1,3 @@
-#include <utility>
-
-#include <fmt/format.h>
-
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +16,10 @@
 
 #include <memory>
 
+#include <fmt/format.h>
+
+#include "endstone/internal.h"
 #include "endstone/inventory/meta/item_meta.h"
-#include "item_factory.h"
 
 namespace endstone {
 
@@ -64,8 +62,10 @@ public:
      */
     virtual void setType(std::string type)
     {
-        // TODO(item): clear item components when the type is changed
         type_ = std::move(type);
+        if (meta_) {
+            meta_ = getServer().getItemFactory().asMetaFor(meta_.get(), type_);
+        }
     }
 
     /**
@@ -95,7 +95,7 @@ public:
      */
     virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
-        return meta_ == nullptr ? ItemFactory::getItemMeta(type_) : meta_->clone();
+        return meta_ == nullptr ? getServer().getItemFactory().getItemMeta(type_) : meta_->clone();
     }
 
     /**
@@ -121,7 +121,7 @@ public:
             return true;
         }
         // TODO(item): applicability check, support type-specific meta
-        meta_ = ItemFactory::asMetaFor(type_, meta);
+        meta_ = getServer().getItemFactory().asMetaFor(meta, type_);
         if (meta_.get() == meta) {
             meta_ = meta->clone();
         }
