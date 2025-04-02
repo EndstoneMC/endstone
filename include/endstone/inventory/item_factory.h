@@ -20,17 +20,23 @@
 namespace endstone {
 class ItemFactory {
 public:
-    static std::unique_ptr<ItemMeta> getItemMeta(const std::string_view type, const ItemMeta *meta = nullptr)
-    {
-        if (type == "minecraft:filled_map") {
-            return std::make_unique<MapMeta>(meta);
-        }
-        return std::make_unique<ItemMeta>(meta);
-    }
+    virtual ~ItemFactory() = default;
 
-    static std::unique_ptr<ItemMeta> asMetaFor(const std::string_view type, const ItemMeta *meta)
-    {
-        return getItemMeta(type, meta);
-    }
+    /**
+     * @brief This creates a new item meta for the material.
+     *
+     * @param type The item type to consider as base for the meta
+     * @return a new ItemMeta that could be applied to an item stack of the specified type
+     */
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(std::string_view type) const = 0;
+    /**
+     * @brief Returns an appropriate item meta for the specified stack.
+
+     * @param meta the meta to convert
+     * @param type the item type to convert the meta for
+     * @return An appropriate item meta for the specified item stack. No guarantees are made as to if a copy is
+     returned. This will be null for a stack of air.
+     */
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, std::string_view type) const = 0;
 };
 }  // namespace endstone
