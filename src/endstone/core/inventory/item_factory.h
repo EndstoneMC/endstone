@@ -14,16 +14,19 @@
 
 #pragma once
 
-#include <bedrock/world/item/item_stack_base.h>
-
 #include "endstone/inventory/item_factory.h"
 
 namespace endstone::core {
 
-class EndstoneItemFactory {
+class EndstoneItemFactory : public ItemFactory {
 public:
-    static std::unique_ptr<ItemMeta> getItemMeta(std::string_view type, const ItemStackBase &item);
-    static void applyToItem(const ItemMeta &meta, ItemStackBase &item);
+    static EndstoneItemFactory &instance();
+
+    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(std::string_view type) const override;
+    [[nodiscard]] std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, std::string_view type) const override;
+
+private:
+    std::unique_ptr<ItemMeta> getItemMeta(std::string_view type, const ItemMeta *meta) const;
 };
 
 }  // namespace endstone::core
