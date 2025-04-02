@@ -32,6 +32,7 @@
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -497,6 +498,11 @@ IpBanList &EndstoneServer::getIpBanList() const
 ServiceManager &EndstoneServer::getServiceManager() const
 {
     return *service_manager_;
+}
+
+ItemFactory &EndstoneServer::getItemFactory() const
+{
+    return EndstoneItemFactory::instance();
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

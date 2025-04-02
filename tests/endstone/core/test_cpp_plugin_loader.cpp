@@ -73,6 +73,7 @@ public:
                 (std::string, endstone::BlockStates), (const, override));
     MOCK_METHOD(endstone::PlayerBanList &, getBanList, (), (const, override));
     MOCK_METHOD(endstone::IpBanList &, getIpBanList, (), (const, override));
+    MOCK_METHOD(endstone::ItemFactory &, getItemFactory, (), (const, override));
 
     MockServer()
     {

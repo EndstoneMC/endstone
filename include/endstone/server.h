@@ -24,6 +24,7 @@
 #include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
+#include "endstone/inventory/item_factory.h"
 #include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
@@ -355,6 +356,14 @@ public:
      * @return The service manager
      */
     [[nodiscard]] virtual ServiceManager &getServiceManager() const = 0;
+
+    /**
+     * Gets the instance of the item factory (for ItemMeta).
+     *
+     * @return the item factory
+     * @see ItemFactory
+     */
+    [[nodiscard]] virtual ItemFactory &getItemFactory() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

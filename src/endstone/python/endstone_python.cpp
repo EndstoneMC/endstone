@@ -270,6 +270,9 @@ void init_server(py::class_<Server> &server)
         .def_property_readonly("ban_list", &Server::getBanList, "Gets the player ban list.",
                                py::return_value_policy::reference)
         .def_property_readonly("ip_ban_list", &Server::getIpBanList, "Gets the IP ban list.",
+                               py::return_value_policy::reference)
+        .def_property_readonly("item_factory", &Server::getItemFactory,
+                               "Gets the instance of the item factory (for ItemMeta).",
                                py::return_value_policy::reference);
 }
 
