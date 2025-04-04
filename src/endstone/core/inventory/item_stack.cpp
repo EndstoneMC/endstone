@@ -82,7 +82,7 @@ bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
 
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
-    if (!item || item->getType() == "minecraft:air") {
+    if (item == nullptr || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
     }
     if (item->isEndstoneItemStack()) {
@@ -116,8 +116,7 @@ std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item
     if (!hasItemMeta(item)) {
         return EndstoneItemFactory::instance().getItemMeta(getType(item));
     }
-    const auto type = EndstoneItemType::fromMinecraft(*item->getItem());
-    return static_cast<EndstoneItemType *>(type.get())->getItemMeta(*item);
+    return EndstoneItemType::fromMinecraft(*item->getItem())->getItemMeta(*item);
 }
 
 bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
@@ -127,20 +126,18 @@ bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
 
 bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
 {
-    if (!item) {
+    if (!item || item->isNull()) {
         return false;
     }
-    if (!meta) {
-        EndstoneItemMeta::restoreMeta(*item);
-        return true;
-    }
-    // TODO(item): applicability check
+
     const auto item_meta = EndstoneItemFactory::instance().asMetaFor(meta, getType(item));
     if (!item_meta) {
         return true;
     }
 
-    EndstoneItemMeta::applyToItem(*item_meta, *item);
+    const auto type = EndstoneItemType::fromMinecraft(*item->getItem());
+    type->restoreItemMeta(*item);
+    type->applyMetaToItem(*item_meta, *item);
     return true;
 }
 

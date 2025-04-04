@@ -17,9 +17,8 @@
 #include <memory>
 #include <vector>
 
-#include "endstone/inventory/item_stack.h"
-
 namespace endstone {
+class ItemStack;
 /**
  * @brief Interface to the various inventories.
  */

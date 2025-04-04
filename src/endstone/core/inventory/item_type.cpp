@@ -16,4 +16,35 @@
 
 namespace endstone::core {
 
+EndstoneItemType::EndstoneItemType(std::string key, const ::Item &item) : EndstoneRegistryItem(std::move(key), item)
+{
+    item_metadata_ = EndstoneItemMetas::getItemMetaData(*this);
+}
+
+std::unique_ptr<ItemMeta> EndstoneItemType::getItemMeta(const ItemStack &stack)
+{
+    return item_metadata_->fromItemStack(stack);
+}
+
+std::unique_ptr<ItemMeta> EndstoneItemType::getItemMeta(const ItemMeta &meta)
+{
+    return item_metadata_->fromItemMeta(meta);
+}
+
+void EndstoneItemType::restoreItemMeta(::ItemStack &stack)
+{
+    return item_metadata_->restoreItemMeta(stack);
+}
+
+void EndstoneItemType::applyMetaToItem(const ItemMeta &meta, ItemStack &stack)
+{
+    return item_metadata_->applyMetaToItem(meta, stack);
+}
+
+std::unique_ptr<EndstoneItemType> EndstoneItemType::fromMinecraft(const ::Item &item)
+{
+    // TODO(registry): get from item registry instead
+    return std::make_unique<EndstoneItemType>(item.getFullItemName(), item);
+}
+
 }  // namespace endstone::core

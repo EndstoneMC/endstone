@@ -26,7 +26,6 @@
 #include "endstone/boss/boss_bar.h"
 #include "endstone/inventory/item_factory.h"
 #include "endstone/lang/language.h"
-#include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
 #include "endstone/plugin/service_manager.h"

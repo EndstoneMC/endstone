@@ -19,6 +19,7 @@
 #include <fmt/format.h>
 
 #include "endstone/internal.h"
+#include "endstone/server.h"
 #include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone {

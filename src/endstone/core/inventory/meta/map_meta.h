@@ -16,28 +16,32 @@
 
 #include <memory>
 
-namespace endstone {
-/**
- * @brief Represents the metadata for a map item.
- */
-class MapMeta : public ItemMeta {
+namespace endstone::core {
+
+class EndstoneMapMeta {
 public:
-    explicit MapMeta(const ItemMeta *meta) : ItemMeta(meta)
+    std::unique_ptr<ItemMeta> fromItemStack(const ::ItemStack &stack) const
     {
-        if (meta == nullptr || meta->getType() != Type::Map) {
-            return;
-        }
-        *this = *static_cast<const MapMeta *>(meta);
+        // TODO:
+        return nullptr;
     }
 
-    [[nodiscard]] Type getType() const override
+    std::unique_ptr<ItemMeta> fromItemMeta(const ItemMeta &meta) const
     {
-        return Type::Map;
+        // TODO:
+        return nullptr;
     }
 
-    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
+    void restore(::ItemStack &stack)
     {
-        return std::make_unique<MapMeta>(*this);
+        // TODO:
+    }
+
+    void applyToItem(const ItemMeta &meta, ::ItemStack &stack)
+    {
+        restore(stack);
+        // TODO:
     }
 };
-}  // namespace endstone
+
+}  // namespace endstone::core
