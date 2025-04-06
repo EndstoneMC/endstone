@@ -2357,7 +2357,7 @@ class Player(Mob, OfflinePlayer):
         """
         Makes the player perform the given command.
         """
-    def play_sound(self, location: Location, sound: str, volume: float, pitch: float) -> None:
+    def play_sound(self, location: Location, sound: str, volume: float = 1.0, pitch: float = 1.0) -> None:
         """
         Play a sound for a player at the location.
         """

@@ -627,7 +627,7 @@ void EndstonePlayer::playSound(Location location, std::string sound, float volum
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlaySound);
     const auto pk = std::static_pointer_cast<PlaySoundPacket>(packet);
     pk->name = sound;
-    pk->pos = {location.getX(), location.getY(), location.getZ()};
+    pk->pos = {static_cast<int>(location.getX()), static_cast<int>(location.getY()), static_cast<int>(location.getZ())};
     pk->volume = volume;
     pk->pitch = pitch;
     getPlayer().sendNetworkPacket(*packet);

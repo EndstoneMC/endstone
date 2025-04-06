@@ -343,8 +343,8 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
                       "Gets or sets the sneak mode of the player")
         .def_property("is_sprinting", &Player::isSprinting, &Player::setSprinting,
                       "Gets or sets whether the player is sprinting or not.")
-        .def("play_sound", &Player::playSound, py::arg("location"), py::arg("sound"), py::arg("volume"),
-             py::arg("pitch"), "Play a sound for a player at the location.")
+        .def("play_sound", &Player::playSound, py::arg("location"), py::arg("sound"), py::arg("volume") = 1.0,
+             py::arg("pitch") = 1.0, "Play a sound for a player at the location.")
         .def("stop_sound", &Player::stopSound, py::arg("sound"), "Stop the specified sound from playing.")
         .def("stop_all_sounds", &Player::stopAllSounds, "Stop all sounds from playing.")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
