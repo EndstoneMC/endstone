@@ -17,6 +17,10 @@
 #include <optional>
 #include <string>
 
+#include "endstone/form/controls/button.h"
+#include "endstone/form/controls/divider.h"
+#include "endstone/form/controls/header.h"
+#include "endstone/form/controls/label.h"
 #include "endstone/form/form.h"
 
 namespace endstone {
@@ -26,91 +30,7 @@ namespace endstone {
  */
 class ActionForm : public Form<ActionForm> {
 public:
-    /**
-     * @brief Represents a button with text and an optional icon.
-     */
-    class Button {
-    public:
-        using OnClickCallback = std::function<void(Player *)>;
-
-        Button() = default;
-        explicit Button(Message text, std::optional<std::string> icon = std::nullopt, OnClickCallback on_click = {})
-            : text_(std::move(text)), icon_(std::move(icon)), on_click_(std::move(on_click))
-        {
-        }
-
-        /**
-         * @brief Gets the text of the button.
-         *
-         * @return The text.
-         */
-        [[nodiscard]] Message getText() const
-        {
-            return text_;
-        }
-
-        /**
-         * @brief Sets the text of the button.
-         *
-         * @param text The new text for the button.
-         * @return A reference to the current button.
-         */
-        Button &setText(Message text)
-        {
-            text_ = std::move(text);
-            return *this;
-        }
-
-        /**
-         * @brief Get the icon of the button.
-         *
-         * @return The path or URL to the icon file
-         */
-        [[nodiscard]] std::optional<std::string> getIcon() const
-        {
-            return icon_;
-        }
-
-        /**
-         * @brief Sets the icon for the button.
-         *
-         * @param icon The path or URL to the icon file.
-         * @return A reference to the current button.
-         */
-        Button &setIcon(std::string icon)
-        {
-            icon_ = std::move(icon);
-            return *this;
-        }
-
-        /**
-         * @brief Gets the on click callback of the button.
-         *
-         * @return The on click callback of the button.
-         */
-        [[nodiscard]] OnClickCallback getOnClick() const
-        {
-            return on_click_;
-        }
-
-        /**
-         * @brief Sets the on click callback of the button.
-         *
-         * @param on_click The callback to be set.
-         * @return A reference to the current button.
-         */
-        Button &setOnClick(OnClickCallback on_click)
-        {
-            on_click_ = std::move(on_click);
-            return *this;
-        }
-
-    private:
-        Message text_;
-        std::optional<std::string> icon_;
-        OnClickCallback on_click_;
-    };
-
+    using Control = std::variant<Button, Divider, Header, Label>;
     using OnSubmitCallback = std::function<void(Player *, int)>;
 
     explicit ActionForm() = default;
@@ -148,29 +68,65 @@ public:
     ActionForm &addButton(const Message &text, const std::optional<std::string> &icon = std::nullopt,
                           Button::OnClickCallback on_click = {})
     {
-        buttons_.emplace_back(text, icon, std::move(on_click));
+        auto button = Button(text, icon, std::move(on_click));
+        controls_.emplace_back(button);
         return *this;
     }
 
     /**
-     * @brief Get the buttons of the action form.
+     * @brief Adds a label to the form.
      *
-     * @return A list of buttons in the action form.
+     * @param text The text of the label
+     * @return A reference to the current form.
      */
-    [[nodiscard]] const std::vector<Button> &getButtons() const
+    ActionForm &addLabel(const Message &text)
     {
-        return buttons_;
+        controls_.push_back(Label(text));
+        return *this;
     }
 
     /**
-     * @brief Set the buttons of the action form.
+     * @brief Adds a header to the form.
      *
-     * @param buttons The list of buttons to set.
+     * @param text The text of the header
      * @return A reference to the current form.
      */
-    ActionForm &setButtons(const std::vector<Button> &buttons)
+    ActionForm &addHeader(const Message &text)
     {
-        buttons_ = buttons;
+        controls_.push_back(Header(text));
+        return *this;
+    }
+
+    /**
+     * @brief Adds a divider to the form.
+     *
+     * @return A reference to the current form.
+     */
+    ActionForm &addDivider()
+    {
+        controls_.push_back(Divider());
+        return *this;
+    }
+
+    /**
+     * @brief Get the controls of the action form.
+     *
+     * @return A list of controls in the action form.
+     */
+    [[nodiscard]] const std::vector<Control> &getControls() const
+    {
+        return controls_;
+    }
+
+    /**
+     * @brief Set the controls of the action form.
+     *
+     * @param controls The list of controls to set.
+     * @return A reference to the current form.
+     */
+    ActionForm &setControls(const std::vector<Control> &controls)
+    {
+        controls_ = controls;
         return *this;
     }
 
@@ -198,7 +154,7 @@ public:
 
 private:
     Message content_;
-    std::vector<Button> buttons_;
+    std::vector<Control> controls_;
     OnSubmitCallback on_submit_;
 };
 

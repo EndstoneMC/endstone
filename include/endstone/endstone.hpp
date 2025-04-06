@@ -100,6 +100,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "form/controls/step_slider.h"
 #include "form/controls/text_input.h"
 #include "form/controls/toggle.h"
+#include "form/controls/button.h"
 #include "form/form.h"
 #include "form/message_form.h"
 #include "form/modal_form.h"

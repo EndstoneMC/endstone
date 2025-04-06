@@ -762,20 +762,24 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
         try {
             std::visit(overloaded{
                            [&](const MessageForm &form) {
-                               if (auto callback = form.getOnSubmit()) {
+                               if (const auto callback = form.getOnSubmit()) {
                                    callback(this, json.get<bool>() ? 0 : 1);
                                }
                            },
                            [&](const ActionForm &form) {
-                               int selection = json.get<int>();
-                               if (auto callback = form.getOnSubmit()) {
+                               const int selection = json.get<int>();
+                               if (const auto callback = form.getOnSubmit()) {
                                    callback(this, selection);
                                }
-                               const auto &buttons = form.getButtons();
-                               if (selection >= 0 && selection < buttons.size()) {
-                                   const auto &button = buttons[selection];
-                                   if (auto on_click = button.getOnClick()) {
-                                       on_click(this);
+                               int i = selection;
+                               for (const auto &controls = form.getControls(); const auto &control : controls) {
+                                   if (std::holds_alternative<Button>(control)) {
+                                       if (i == 0) {
+                                           std::get<Button>(control).getOnClick()(this);
+                                           break;
+                                       }
+
+                                       i--;
                                    }
                                }
                            },
