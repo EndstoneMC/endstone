@@ -771,15 +771,14 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                                if (const auto callback = form.getOnSubmit()) {
                                    callback(this, selection);
                                }
-                               int i = selection;
+                               int index = 0;
                                for (const auto &controls = form.getControls(); const auto &control : controls) {
                                    if (std::holds_alternative<Button>(control)) {
-                                       if (i == 0) {
+                                       if (index == selection) {
                                            std::get<Button>(control).getOnClick()(this);
                                            break;
                                        }
-
-                                       i--;
+                                       ++index;
                                    }
                                }
                            },
