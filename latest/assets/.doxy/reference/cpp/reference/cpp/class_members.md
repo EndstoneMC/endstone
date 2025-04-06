@@ -7,6 +7,9 @@
 
 * **ActionForm** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **addDivider** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **addHeader** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **addLabel** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addScoreboardTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **asActor** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **ActorDamageEvent** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md))
@@ -49,8 +52,6 @@
 
 ## b
 
-* **buttons\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
-* **Button** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **BlockList** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **blocks\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **BlockBreakEvent** ([**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md))
@@ -59,6 +60,7 @@
 * **BlockPistonEvent** ([**endstone::BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md))
 * **BlockPlaceEvent** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **BroadcastMessageEvent** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
+* **Button** ([**endstone::Button**](classendstone_1_1Button.md))
 * **Black** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Blue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Bold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -80,7 +82,9 @@
 
 ## c
 
+* **Control** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **controls\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **created\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **captureState** ([**endstone::Block**](classendstone_1_1Block.md))
 * **clone** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md))
@@ -95,8 +99,6 @@
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **clear** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
-* **Control** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **controls\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
@@ -133,6 +135,7 @@
 * **DarkRed** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **description\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **dispatch** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
+* **Divider** ([**endstone::Divider**](classendstone_1_1Divider.md))
 * **Dropdown** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::StepSlider**](classendstone_1_1StepSlider.md))
 * **default\_index\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **display\_name\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
@@ -190,11 +193,8 @@
 
 ## g
 
-* **getIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **getOnClick** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
-* **getText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
-* **getButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **getControls** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getDimension** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Position**](classendstone_1_1Position.md))
 * **getHealth** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -240,6 +240,9 @@
 * **getTitle** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Form**](classendstone_1_1Form.md))
 * **getMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::Error**](classendstone_1_1Error.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **getRecipients** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
+* **getIcon** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **getOnClick** ([**endstone::Button**](classendstone_1_1Button.md))
+* **getText** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **Gold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Gray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Green** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -258,7 +261,7 @@
 * **getHighestBlockYAt** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **getLoadedChunks** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **getDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
-* **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getStackTrace** ([**endstone::Error**](classendstone_1_1Error.md))
 * **getEventType** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
@@ -283,7 +286,6 @@
 * **getYaw** ([**endstone::Location**](classendstone_1_1Location.md))
 * **getButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
-* **getControls** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getSubmitButton** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getCriteria** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplaySlot** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -422,6 +424,7 @@
 * **hasPermission** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **HandlerList** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **Header** ([**endstone::Header**](classendstone_1_1Header.md))
 * **hasDamage** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **hasDisplayName** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **hasLore** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
@@ -434,7 +437,6 @@
 
 ## i
 
-* **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **isDead** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInLava** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInWater** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -444,6 +446,7 @@
 * **isValid** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isBanned** ([**endstone::BanList**](classendstone_1_1BanList.md), [**endstone::IpBanList**](classendstone_1_1IpBanList.md), [**endstone::PlayerBanList**](classendstone_1_1PlayerBanList.md))
 * **isVisible** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
+* **icon\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **isCancellable** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::Event**](classendstone_1_1Event.md))
 * **isCancelled** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -495,7 +498,7 @@
 
 * **location\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **LightPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
-* **label\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **label\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **lore\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **Label** ([**endstone::Label**](classendstone_1_1Label.md))
 * **Location** ([**endstone::Location**](classendstone_1_1Location.md))
@@ -557,9 +560,9 @@
 ## o
 
 * **OnSubmitCallback** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **OnClickCallback** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
-* **on\_click\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **on\_submit\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **OnClickCallback** ([**endstone::Button**](classendstone_1_1Button.md))
+* **on\_click\_** ([**endstone::Button**](classendstone_1_1Button.md))
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **onCommand** ([**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md))
 * **operator=** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md), [**endstone::Server**](classendstone_1_1Server.md))
@@ -689,11 +692,8 @@
 
 ## s
 
-* **setIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **setOnClick** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
-* **setText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
-* **setButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **setControls** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setHealth** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **setNameTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -718,6 +718,9 @@
 * **setTitle** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Form**](classendstone_1_1Form.md))
 * **setVisible** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **setMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
+* **setIcon** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **setOnClick** ([**endstone::Button**](classendstone_1_1Button.md))
+* **setText** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
 * **setCancelled** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md))
 * **setAliases** ([**endstone::Command**](classendstone_1_1Command.md))
 * **setDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md))
@@ -729,7 +732,7 @@
 * **sender\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **setOp** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **setDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
-* **setLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **setLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **setOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **stack\_trace\_** ([**endstone::Error**](classendstone_1_1Error.md))
 * **setOnClose** ([**endstone::Form**](classendstone_1_1Form.md))
@@ -744,7 +747,6 @@
 * **setLevel** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **setButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
-* **setControls** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setSubmitButton** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **submit\_button\_text\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setDisplay** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -830,9 +832,9 @@
 
 ## t
 
-* **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **teleport** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **text\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **Type** ([**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md))

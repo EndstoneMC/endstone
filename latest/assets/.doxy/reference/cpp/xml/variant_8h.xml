@@ -154,14 +154,14 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Func&gt;</highlight></codeline>
 <codeline lineno="23" refid="structendstone_1_1overloaded" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref><sp/>:<sp/>Func...<sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Func::operator()...;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Func&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref>(Func...)<sp/>-&gt;<sp/><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref>&lt;Func...&gt;;</highlight></codeline>
+<codeline lineno="32" refid="namespaceendstone_1a653e5211ad2fdddf9d08c7353381631d" refkind="member"><highlight class="normal"><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref>(Func...)<sp/>-&gt;<sp/><ref refid="structendstone_1_1overloaded" kindref="compound">overloaded</ref>&lt;Func...&gt;;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight></codeline>
     </programlisting>
     <location file="include/endstone/variant.h"/>

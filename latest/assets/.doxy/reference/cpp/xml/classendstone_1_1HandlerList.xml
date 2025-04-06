@@ -19,7 +19,7 @@
         <location file="include/endstone/event/handler_list.h" line="121" column="24" bodyfile="include/endstone/event/handler_list.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" prot="private" static="no" mutable="no">
-        <type>std::map&lt; EventPriority, std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &gt; &gt; &gt;</type>
+        <type>std::map&lt; <ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref>, std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &gt; &gt; &gt;</type>
         <definition>std::map&lt;EventPriority, std::vector&lt;std::unique_ptr&lt;EventHandler&gt; &gt; &gt; endstone::HandlerList::handlers_</definition>
         <argsstring></argsstring>
         <name>handlers_</name>

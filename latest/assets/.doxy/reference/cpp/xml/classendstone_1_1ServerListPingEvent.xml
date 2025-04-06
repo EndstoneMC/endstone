@@ -163,7 +163,7 @@
         <location file="include/endstone/event/server/server_list_ping_event.h" line="267" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a5684f820a993d3726b9e742ab8ed1911" prot="private" static="no" mutable="no">
-        <type>GameMode</type>
+        <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
         <definition>GameMode endstone::ServerListPingEvent::game_mode_</definition>
         <argsstring></argsstring>
         <name>game_mode_</name>
@@ -663,7 +663,7 @@
         <location file="include/endstone/event/server/server_list_ping_event.h" line="223" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="223" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a931195e8a6f00198331002fb62cbdea1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>GameMode</type>
+        <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
         <definition>GameMode endstone::ServerListPingEvent::getGameMode</definition>
         <argsstring>() const</argsstring>
         <name>getGameMode</name>
@@ -687,7 +687,7 @@
         <name>setGameMode</name>
         <qualifiedname>endstone::ServerListPingEvent::setGameMode</qualifiedname>
         <param>
-          <type>GameMode</type>
+          <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
           <declname>game_mode</declname>
         </param>
         <briefdescription>

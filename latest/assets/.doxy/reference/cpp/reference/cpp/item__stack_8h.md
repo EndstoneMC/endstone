@@ -32,7 +32,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| namespace | [**endstone**](namespaceendstone.md) <br> |
+| namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
 | namespace | [**core**](namespaceendstone_1_1core.md) <br> |
 | namespace | [**fmt**](namespacefmt.md) <br> |
 

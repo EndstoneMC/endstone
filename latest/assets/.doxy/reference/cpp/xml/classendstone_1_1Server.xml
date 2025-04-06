@@ -823,7 +823,7 @@
           <declname>color</declname>
         </param>
         <param>
-          <type>BarStyle</type>
+          <type><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref></type>
           <declname>style</declname>
         </param>
         <briefdescription>
@@ -878,11 +878,11 @@
           <declname>color</declname>
         </param>
         <param>
-          <type>BarStyle</type>
+          <type><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref></type>
           <declname>style</declname>
         </param>
         <param>
-          <type>std::vector&lt; BarFlag &gt;</type>
+          <type>std::vector&lt; <ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref> &gt;</type>
           <declname>flags</declname>
         </param>
         <briefdescription>

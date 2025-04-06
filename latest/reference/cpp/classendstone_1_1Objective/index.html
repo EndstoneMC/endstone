@@ -2403,7 +2403,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getdisplayname"><strong>getDisplayName</strong></a> () const = 0<br><em>Gets the name displayed to players for this objective.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; DisplaySlot &gt;</td>
+<td style="text-align: right;">virtual Result&lt; <a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getdisplayslot"><strong>getDisplaySlot</strong></a> () const = 0<br><em>Gets the display slot this objective is displayed at.</em></td>
 </tr>
 <tr>
@@ -2411,19 +2411,19 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const = 0<br><em>Gets the name of this</em> <a href="./"><em><strong>Objective</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; RenderType &gt;</td>
+<td style="text-align: right;">virtual Result&lt; <a href="../namespaceendstone/#enum-rendertype"><strong>RenderType</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getrendertype"><strong>getRenderType</strong></a> () const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; std::unique_ptr&lt; <a href="../classendstone_1_1Score/"><strong>Score</strong></a> &gt; &gt;</td>
-<td style="text-align: left;"><a href="#function-getscore"><strong>getScore</strong></a> (ScoreEntry entry) const = 0<br><em>Gets an entry's</em> <a href="../classendstone_1_1Score/"><em><strong>Score</strong></em></a> <em>for this objective.</em></td>
+<td style="text-align: left;"><a href="#function-getscore"><strong>getScore</strong></a> (<a href="../namespaceendstone/#typedef-scoreentry"><strong>ScoreEntry</strong></a> entry) const = 0<br><em>Gets an entry's</em> <a href="../classendstone_1_1Score/"><em><strong>Score</strong></em></a> <em>for this objective.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getscoreboard"><strong>getScoreboard</strong></a> () const = 0<br><em>Gets the scoreboard to which this objective is attached.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; ObjectiveSortOrder &gt;</td>
+<td style="text-align: right;">virtual Result&lt; <a href="../namespaceendstone/#enum-objectivesortorder"><strong>ObjectiveSortOrder</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getsortorder"><strong>getSortOrder</strong></a> () const = 0<br><em>Gets the sort order for this objective.</em></td>
 </tr>
 <tr>
@@ -2444,11 +2444,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-setdisplay-12"><strong>setDisplay</strong></a> (std::optional&lt; DisplaySlot &gt; slot) = 0<br><em>Sets the display slot for this objective. This will remove it from any other display slot.</em></td>
+<td style="text-align: left;"><a href="#function-setdisplay-12"><strong>setDisplay</strong></a> (std::optional&lt; <a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> &gt; slot) = 0<br><em>Sets the display slot for this objective. This will remove it from any other display slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-setdisplay-22"><strong>setDisplay</strong></a> (std::optional&lt; DisplaySlot &gt; slot, ObjectiveSortOrder order) = 0<br><em>Sets the display slot and sort order for this objective. This will remove it from any other display slot.</em></td>
+<td style="text-align: left;"><a href="#function-setdisplay-22"><strong>setDisplay</strong></a> (std::optional&lt; <a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> &gt; slot, <a href="../namespaceendstone/#enum-objectivesortorder"><strong>ObjectiveSortOrder</strong></a> order) = 0<br><em>Sets the display slot and sort order for this objective. This will remove it from any other display slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
@@ -2456,7 +2456,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-setrendertype"><strong>setRenderType</strong></a> (RenderType render_type) = 0<br><em>Sets manner in which this objective will be rendered.</em></td>
+<td style="text-align: left;"><a href="#function-setrendertype"><strong>setRenderType</strong></a> (<a href="../namespaceendstone/#enum-rendertype"><strong>RenderType</strong></a> render_type) = 0<br><em>Sets manner in which this objective will be rendered.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>

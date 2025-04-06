@@ -6,6 +6,7 @@
     <includes local="no">string</includes>
     <includes local="no">utility</includes>
     <includes refid="message_8h" local="yes">endstone/message.h</includes>
+    <includedby refid="action__form_8h" local="yes">include/endstone/form/action_form.h</includedby>
     <includedby refid="modal__form_8h" local="yes">include/endstone/form/modal_form.h</includedby>
     <incdepgraph>
       <node id="1">
@@ -171,13 +172,21 @@
         <childnode refid="25" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>include/endstone/form/action_form.h</label>
+        <link refid="action__form_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/endstone/form/controls/label.h</label>
         <link refid="label_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
-      <node id="2">
+      <node id="29">
         <label>include/endstone/form/modal_form.h</label>
         <link refid="modal__form_8h_source"/>
         <childnode refid="3" relation="include">
@@ -261,7 +270,7 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/message.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28" refid="classendstone_1_1Label" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Label" kindref="compound">Label</ref><sp/>{</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>

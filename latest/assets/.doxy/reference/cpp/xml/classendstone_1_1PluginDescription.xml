@@ -75,12 +75,12 @@
         <location file="include/endstone/plugin/plugin_description.h" line="229" column="17" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PluginDescription_1a5e809b9f16bb9e0c2efa21620e8d9b39" prot="private" static="no" mutable="no">
-        <type>PluginLoadOrder</type>
+        <type><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kindref="member">PluginLoadOrder</ref></type>
         <definition>PluginLoadOrder endstone::PluginDescription::load_</definition>
         <argsstring></argsstring>
         <name>load_</name>
         <qualifiedname>endstone::PluginDescription::load_</qualifiedname>
-        <initializer>= PluginLoadOrder::PostWorld</initializer>
+        <initializer>= <ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kindref="member">PluginLoadOrder::PostWorld</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -202,7 +202,7 @@
         <location file="include/endstone/plugin/plugin_description.h" line="238" column="17" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="238" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PluginDescription_1a361bc60878942504024b0cc3978259f2" prot="private" static="no" mutable="no">
-        <type>PermissionDefault</type>
+        <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
         <definition>PermissionDefault endstone::PluginDescription::default_permission_</definition>
         <argsstring></argsstring>
         <name>default_permission_</name>
@@ -266,9 +266,9 @@
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>PluginLoadOrder</type>
+          <type><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kindref="member">PluginLoadOrder</ref></type>
           <declname>load</declname>
-          <defval>PluginLoadOrder::PostWorld</defval>
+          <defval><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kindref="member">PluginLoadOrder::PostWorld</ref></defval>
         </param>
         <param>
           <type>std::vector&lt; std::string &gt;</type>
@@ -311,7 +311,7 @@
           <defval>{}</defval>
         </param>
         <param>
-          <type>PermissionDefault</type>
+          <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
           <declname>default_permission</declname>
           <defval>PermissionDefault::Operator</defval>
         </param>
@@ -423,7 +423,7 @@
         <location file="include/endstone/plugin/plugin_description.h" line="99" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="99" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginDescription_1a5667754725d4b2426fa9759bf5028f46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>PluginLoadOrder</type>
+        <type><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kindref="member">PluginLoadOrder</ref></type>
         <definition>PluginLoadOrder endstone::PluginDescription::getLoad</definition>
         <argsstring>() const</argsstring>
         <name>getLoad</name>
@@ -585,7 +585,7 @@
         <location file="include/endstone/plugin/plugin_description.h" line="189" column="18" bodyfile="include/endstone/plugin/plugin_description.h" bodystart="189" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginDescription_1ab55182911b0a4b0c0fe4060d61549be4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>PermissionDefault</type>
+        <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
         <definition>PermissionDefault endstone::PluginDescription::getDefaultPermission</definition>
         <argsstring>() const</argsstring>
         <name>getDefaultPermission</name>

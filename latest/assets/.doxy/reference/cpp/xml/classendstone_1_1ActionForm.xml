@@ -4,8 +4,21 @@
     <compoundname>endstone::ActionForm</compoundname>
     <basecompoundref refid="classendstone_1_1Form" prot="public" virt="non-virtual">endstone::Form&lt; ActionForm &gt;</basecompoundref>
     <includes refid="action__form_8h" local="no">endstone/form/action_form.h</includes>
-    <innerclass refid="classendstone_1_1ActionForm_1_1Button" prot="public">endstone::ActionForm::Button</innerclass>
     <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1ActionForm_1a468369b9ae764e15f0cda9dcd721934c" prot="public" static="no">
+        <type>std::variant&lt; <ref refid="classendstone_1_1Button" kindref="compound">Button</ref>, <ref refid="classendstone_1_1Divider" kindref="compound">Divider</ref>, <ref refid="classendstone_1_1Header" kindref="compound">Header</ref>, <ref refid="classendstone_1_1Label" kindref="compound">Label</ref> &gt;</type>
+        <definition>using endstone::ActionForm::Control =  std::variant&lt;Button, Divider, Header, Label&gt;</definition>
+        <argsstring></argsstring>
+        <name>Control</name>
+        <qualifiedname>endstone::ActionForm::Control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/action_form.h" line="33" column="5" bodyfile="include/endstone/form/action_form.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1ActionForm_1a0ca59e6772ff18f48423865050a4ef0c" prot="public" static="no">
         <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, <ref refid="classendstone_1_1Vector" kindref="compound">int</ref>)&gt;</type>
         <definition>using endstone::ActionForm::OnSubmitCallback =  std::function&lt;void(Player *, int)&gt;</definition>
@@ -18,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="114" column="5" bodyfile="include/endstone/form/action_form.h" bodystart="114" bodyend="-1"/>
+        <location file="include/endstone/form/action_form.h" line="34" column="5" bodyfile="include/endstone/form/action_form.h" bodystart="34" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -34,21 +47,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="200" column="13" bodyfile="include/endstone/form/action_form.h" bodystart="200" bodyend="-1"/>
+        <location file="include/endstone/form/action_form.h" line="156" column="13" bodyfile="include/endstone/form/action_form.h" bodystart="156" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1ActionForm_1a6d636aeb18a37003ef44b1b30c82d0d2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="classendstone_1_1ActionForm_1_1Button" kindref="compound">Button</ref> &gt;</type>
-        <definition>std::vector&lt;Button&gt; endstone::ActionForm::buttons_</definition>
+      <memberdef kind="variable" id="classendstone_1_1ActionForm_1a9b5f5282a25960a7127974c096259123" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Control &gt;</type>
+        <definition>std::vector&lt;Control&gt; endstone::ActionForm::controls_</definition>
         <argsstring></argsstring>
-        <name>buttons_</name>
-        <qualifiedname>endstone::ActionForm::buttons_</qualifiedname>
+        <name>controls_</name>
+        <qualifiedname>endstone::ActionForm::controls_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="201" column="17" bodyfile="include/endstone/form/action_form.h" bodystart="201" bodyend="-1"/>
+        <location file="include/endstone/form/action_form.h" line="157" column="17" bodyfile="include/endstone/form/action_form.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActionForm_1a2f6132d73109f39a57142a7af41f5275" prot="private" static="no" mutable="no">
         <type>OnSubmitCallback</type>
@@ -62,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="202" column="22" bodyfile="include/endstone/form/action_form.h" bodystart="202" bodyend="-1"/>
+        <location file="include/endstone/form/action_form.h" line="158" column="22" bodyfile="include/endstone/form/action_form.h" bodystart="158" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -78,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="116" column="14"/>
+        <location file="include/endstone/form/action_form.h" line="36" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
@@ -96,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="123" column="14" bodyfile="include/endstone/form/action_form.h" bodystart="123" bodyend="126"/>
+        <location file="include/endstone/form/action_form.h" line="43" column="14" bodyfile="include/endstone/form/action_form.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1adb15597b6b4d6a4edf6bec6db6ed7faa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ActionForm" kindref="compound">ActionForm</ref> &amp;</type>
@@ -127,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="134" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="134" bodyend="138"/>
+        <location file="include/endstone/form/action_form.h" line="54" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="54" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1a67bb3b3933803edf6e64013d3386fcec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ActionForm" kindref="compound">ActionForm</ref> &amp;</type>
@@ -184,46 +197,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="148" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="148" bodyend="153"/>
+        <location file="include/endstone/form/action_form.h" line="68" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="68" bodyend="74"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActionForm_1a67d711694b8e1feacec03fad0eade8ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; <ref refid="classendstone_1_1ActionForm_1_1Button" kindref="compound">Button</ref> &gt; &amp;</type>
-        <definition>const std::vector&lt; Button &gt; &amp; endstone::ActionForm::getButtons</definition>
-        <argsstring>() const</argsstring>
-        <name>getButtons</name>
-        <qualifiedname>endstone::ActionForm::getButtons</qualifiedname>
-        <briefdescription>
-<para>Get the buttons of the action form. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>A list of buttons in the action form. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="160" column="24" bodyfile="include/endstone/form/action_form.h" bodystart="160" bodyend="163"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActionForm_1a3263711e7fc2d21bad18be79cb38925d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ActionForm_1a4d1d4891f8f9893afc10e34aaf3ac392" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ActionForm" kindref="compound">ActionForm</ref> &amp;</type>
-        <definition>ActionForm &amp; endstone::ActionForm::setButtons</definition>
-        <argsstring>(const std::vector&lt; Button &gt; &amp;buttons)</argsstring>
-        <name>setButtons</name>
-        <qualifiedname>endstone::ActionForm::setButtons</qualifiedname>
+        <definition>ActionForm &amp; endstone::ActionForm::addLabel</definition>
+        <argsstring>(const Message &amp;text)</argsstring>
+        <name>addLabel</name>
+        <qualifiedname>endstone::ActionForm::addLabel</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; <ref refid="classendstone_1_1ActionForm_1_1Button" kindref="compound">Button</ref> &gt; &amp;</type>
-          <declname>buttons</declname>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+          <declname>text</declname>
         </param>
         <briefdescription>
-<para>Set the buttons of the action form. </para>
+<para>Adds a label to the form. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>buttons</parametername>
+<parametername>text</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The list of buttons to set. </para>
+<para>The text of the label </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -233,7 +228,105 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="171" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="171" bodyend="175"/>
+        <location file="include/endstone/form/action_form.h" line="82" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="82" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActionForm_1a71b6ee0a6a60f61ceff0f864cb7aa662" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ActionForm" kindref="compound">ActionForm</ref> &amp;</type>
+        <definition>ActionForm &amp; endstone::ActionForm::addHeader</definition>
+        <argsstring>(const Message &amp;text)</argsstring>
+        <name>addHeader</name>
+        <qualifiedname>endstone::ActionForm::addHeader</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Adds a header to the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text of the header </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/action_form.h" line="94" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="94" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActionForm_1a3000d750607a90793bcb0d933d55e854" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ActionForm" kindref="compound">ActionForm</ref> &amp;</type>
+        <definition>ActionForm &amp; endstone::ActionForm::addDivider</definition>
+        <argsstring>()</argsstring>
+        <name>addDivider</name>
+        <qualifiedname>endstone::ActionForm::addDivider</qualifiedname>
+        <briefdescription>
+<para>Adds a divider to the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/action_form.h" line="105" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActionForm_1a9490eb69d1bcee4ed940b9fd42681002" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; Control &gt; &amp;</type>
+        <definition>const std::vector&lt; Control &gt; &amp; endstone::ActionForm::getControls</definition>
+        <argsstring>() const</argsstring>
+        <name>getControls</name>
+        <qualifiedname>endstone::ActionForm::getControls</qualifiedname>
+        <briefdescription>
+<para>Get the controls of the action form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A list of controls in the action form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/action_form.h" line="116" column="24" bodyfile="include/endstone/form/action_form.h" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActionForm_1a11f4ae54967fb5223e50b3444c467ca6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ActionForm" kindref="compound">ActionForm</ref> &amp;</type>
+        <definition>ActionForm &amp; endstone::ActionForm::setControls</definition>
+        <argsstring>(const std::vector&lt; Control &gt; &amp;controls)</argsstring>
+        <name>setControls</name>
+        <qualifiedname>endstone::ActionForm::setControls</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; Control &gt; &amp;</type>
+          <declname>controls</declname>
+        </param>
+        <briefdescription>
+<para>Set the controls of the action form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>controls</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list of controls to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/action_form.h" line="127" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="127" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1a18e87e6ed9ab7a49f74522672392ffe6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>OnSubmitCallback</type>
@@ -251,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="182" column="23" bodyfile="include/endstone/form/action_form.h" bodystart="182" bodyend="185"/>
+        <location file="include/endstone/form/action_form.h" line="138" column="23" bodyfile="include/endstone/form/action_form.h" bodystart="138" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1ad6432d9fec3543615bc2a79a33c846a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ActionForm" kindref="compound">ActionForm</ref> &amp;</type>
@@ -282,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="193" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="193" bodyend="197"/>
+        <location file="include/endstone/form/action_form.h" line="149" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="149" bodyend="153"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -314,15 +407,19 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/form/action_form.h" line="27" column="1" bodyfile="include/endstone/form/action_form.h" bodystart="27" bodyend="203"/>
+    <location file="include/endstone/form/action_form.h" line="31" column="1" bodyfile="include/endstone/form/action_form.h" bodystart="31" bodyend="159"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActionForm_1ac76d90626698589dba21d3d9d372326f" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>ActionForm</name></member>
       <member refid="classendstone_1_1ActionForm_1a67bb3b3933803edf6e64013d3386fcec" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>addButton</name></member>
-      <member refid="classendstone_1_1ActionForm_1a6d636aeb18a37003ef44b1b30c82d0d2" prot="private" virt="non-virtual"><scope>endstone::ActionForm</scope><name>buttons_</name></member>
+      <member refid="classendstone_1_1ActionForm_1a3000d750607a90793bcb0d933d55e854" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>addDivider</name></member>
+      <member refid="classendstone_1_1ActionForm_1a71b6ee0a6a60f61ceff0f864cb7aa662" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>addHeader</name></member>
+      <member refid="classendstone_1_1ActionForm_1a4d1d4891f8f9893afc10e34aaf3ac392" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>addLabel</name></member>
       <member refid="classendstone_1_1ActionForm_1a5a2382f4992f2611612841261e5c5255" prot="private" virt="non-virtual"><scope>endstone::ActionForm</scope><name>content_</name></member>
+      <member refid="classendstone_1_1ActionForm_1a468369b9ae764e15f0cda9dcd721934c" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>Control</name></member>
+      <member refid="classendstone_1_1ActionForm_1a9b5f5282a25960a7127974c096259123" prot="private" virt="non-virtual"><scope>endstone::ActionForm</scope><name>controls_</name></member>
       <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>Form</name></member>
-      <member refid="classendstone_1_1ActionForm_1a67d711694b8e1feacec03fad0eade8ce" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getButtons</name></member>
       <member refid="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getContent</name></member>
+      <member refid="classendstone_1_1ActionForm_1a9490eb69d1bcee4ed940b9fd42681002" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getControls</name></member>
       <member refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getOnClose</name></member>
       <member refid="classendstone_1_1ActionForm_1a18e87e6ed9ab7a49f74522672392ffe6" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getOnSubmit</name></member>
       <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getTitle</name></member>
@@ -330,8 +427,8 @@
       <member refid="classendstone_1_1ActionForm_1a2f6132d73109f39a57142a7af41f5275" prot="private" virt="non-virtual"><scope>endstone::ActionForm</scope><name>on_submit_</name></member>
       <member refid="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>OnCloseCallback</name></member>
       <member refid="classendstone_1_1ActionForm_1a0ca59e6772ff18f48423865050a4ef0c" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>OnSubmitCallback</name></member>
-      <member refid="classendstone_1_1ActionForm_1a3263711e7fc2d21bad18be79cb38925d" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setButtons</name></member>
       <member refid="classendstone_1_1ActionForm_1adb15597b6b4d6a4edf6bec6db6ed7faa" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setContent</name></member>
+      <member refid="classendstone_1_1ActionForm_1a11f4ae54967fb5223e50b3444c467ca6" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setControls</name></member>
       <member refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setOnClose</name></member>
       <member refid="classendstone_1_1ActionForm_1ad6432d9fec3543615bc2a79a33c846a5" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setOnSubmit</name></member>
       <member refid="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setTitle</name></member>

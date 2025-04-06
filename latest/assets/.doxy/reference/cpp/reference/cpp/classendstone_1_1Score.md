@@ -52,7 +52,7 @@ _Represents a score for an objective on a scoreboard._
 
 | Type | Name |
 | ---: | :--- |
-| virtual ScoreEntry | [**getEntry**](#function-getentry) () const = 0<br>_Gets the entry being tracked by this_ [_**Score**_](classendstone_1_1Score.md) _._ |
+| virtual [**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) | [**getEntry**](#function-getentry) () const = 0<br>_Gets the entry being tracked by this_ [_**Score**_](classendstone_1_1Score.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) & | [**getObjective**](#function-getobjective) () const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _being tracked by this_[_**Score**_](classendstone_1_1Score.md) _._ |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard for the associated objective._  |
 | virtual Result&lt; [**int**](classendstone_1_1Vector.md) &gt; | [**getValue**](#function-getvalue) () const = 0<br>_Gets the current score._  |

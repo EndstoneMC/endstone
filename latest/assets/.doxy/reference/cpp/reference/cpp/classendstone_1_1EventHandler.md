@@ -52,11 +52,11 @@ _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**EventHandler**](#function-eventhandler) (std::string event, std::function&lt; [**void**](classendstone_1_1Vector.md)([**Event**](classendstone_1_1Event.md) &)&gt; executor, EventPriority priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled) <br> |
+|   | [**EventHandler**](#function-eventhandler) (std::string event, std::function&lt; [**void**](classendstone_1_1Vector.md)([**Event**](classendstone_1_1Event.md) &)&gt; executor, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**callEvent**](#function-callevent) ([**Event**](classendstone_1_1Event.md) & event) const<br> |
 |  std::string | [**getEventType**](#function-geteventtype) () const<br> |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
-|  EventPriority | [**getPriority**](#function-getpriority) () const<br> |
+|  [**EventPriority**](namespaceendstone.md#enum-eventpriority) | [**getPriority**](#function-getpriority) () const<br> |
 |  [**bool**](classendstone_1_1Vector.md) | [**isIgnoreCancelled**](#function-isignorecancelled) () const<br> |
 
 

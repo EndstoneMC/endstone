@@ -50,8 +50,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md)
 ([**endstone**](namespaceendstone.md))
-* [**Button**](classendstone_1_1ActionForm_1_1Button.md)
-([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* [**Button**](classendstone_1_1Button.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## c
@@ -84,6 +84,8 @@
 * [**DamageSource**](classendstone_1_1DamageSource.md)
 ([**endstone**](namespaceendstone.md))
 * [**Dimension**](classendstone_1_1Dimension.md)
+([**endstone**](namespaceendstone.md))
+* [**Divider**](classendstone_1_1Divider.md)
 ([**endstone**](namespaceendstone.md))
 * [**Dropdown**](classendstone_1_1Dropdown.md)
 ([**endstone**](namespaceendstone.md))
@@ -128,6 +130,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)
 ([**std**](namespacestd.md))
+* [**Header**](classendstone_1_1Header.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## i

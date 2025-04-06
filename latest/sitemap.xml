@@ -145,10 +145,6 @@
          <lastmod>2025-04-06</lastmod>
     </url>
     <url>
-         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActionForm_1_1Button/</loc>
-         <lastmod>2025-04-06</lastmod>
-    </url>
-    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Actor/</loc>
          <lastmod>2025-04-06</lastmod>
     </url>
@@ -229,6 +225,10 @@
          <lastmod>2025-04-06</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Button/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Cancellable/</loc>
          <lastmod>2025-04-06</lastmod>
     </url>
@@ -277,6 +277,10 @@
          <lastmod>2025-04-06</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Divider/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Dropdown/</loc>
          <lastmod>2025-04-06</lastmod>
     </url>
@@ -298,6 +302,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1HandlerList/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Header/</loc>
          <lastmod>2025-04-06</lastmod>
     </url>
     <url>
@@ -1325,11 +1333,35 @@
          <lastmod>2025-04-06</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/button_8h/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/button_8h_source/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/divider_8h/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/divider_8h_source/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/dropdown_8h/</loc>
          <lastmod>2025-04-06</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dropdown_8h_source/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/header_8h/</loc>
+         <lastmod>2025-04-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/header_8h_source/</loc>
          <lastmod>2025-04-06</lastmod>
     </url>
     <url>

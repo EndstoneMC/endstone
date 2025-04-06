@@ -37,7 +37,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type>ServicePriority</type>
+          <type><ref refid="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5" kindref="member">ServicePriority</ref></type>
           <declname>priority</declname>
         </param>
         <briefdescription>

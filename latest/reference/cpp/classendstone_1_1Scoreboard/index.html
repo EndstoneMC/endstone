@@ -2327,14 +2327,14 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; std::unique_ptr&lt; <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> &gt; &gt;</td>
-<td style="text-align: left;"><a href="#function-addobjective-33"><strong>addObjective</strong></a> (std::string name, <a href="../classendstone_1_1Criteria/#enum-type"><strong>Criteria::Type</strong></a> criteria, std::string display_name, RenderType render_type) = 0<br><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-addobjective-33"><strong>addObjective</strong></a> (std::string name, <a href="../classendstone_1_1Criteria/#enum-type"><strong>Criteria::Type</strong></a> criteria, std::string display_name, <a href="../namespaceendstone/#enum-rendertype"><strong>RenderType</strong></a> render_type) = 0<br><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-clearslot"><strong>clearSlot</strong></a> (DisplaySlot slot) = 0<br><em>Clears any objective in the specified slot.</em></td>
+<td style="text-align: left;"><a href="#function-clearslot"><strong>clearSlot</strong></a> (<a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> slot) = 0<br><em>Clears any objective in the specified slot.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; ScoreEntry &gt;</td>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../namespaceendstone/#typedef-scoreentry"><strong>ScoreEntry</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getentries"><strong>getEntries</strong></a> () const = 0<br><em>Gets all entries tracked by this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
@@ -2343,7 +2343,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getobjective-22"><strong>getObjective</strong></a> (DisplaySlot slot) const = 0<br><em>Gets the</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>currently displayed in a DisplaySlot on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-getobjective-22"><strong>getObjective</strong></a> (<a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> slot) const = 0<br><em>Gets the</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>currently displayed in a DisplaySlot on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; std::unique_ptr&lt; <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> &gt; &gt;</td>
@@ -2355,11 +2355,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; std::unique_ptr&lt; <a href="../classendstone_1_1Score/"><strong>Score</strong></a> &gt; &gt;</td>
-<td style="text-align: left;"><a href="#function-getscores"><strong>getScores</strong></a> (ScoreEntry entry) const = 0<br><em>Gets all scores for an entry on this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-getscores"><strong>getScores</strong></a> (<a href="../namespaceendstone/#typedef-scoreentry"><strong>ScoreEntry</strong></a> entry) const = 0<br><em>Gets all scores for an entry on this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-resetscores"><strong>resetScores</strong></a> (ScoreEntry entry) = 0<br><em>Removes all scores for an entry on this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-resetscores"><strong>resetScores</strong></a> (<a href="../namespaceendstone/#typedef-scoreentry"><strong>ScoreEntry</strong></a> entry) = 0<br><em>Removes all scores for an entry on this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>

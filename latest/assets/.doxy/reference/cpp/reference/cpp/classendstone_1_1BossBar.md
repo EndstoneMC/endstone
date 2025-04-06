@@ -52,21 +52,21 @@ _Represents a boss bar that is displayed to players._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**addFlag**](#function-addflag) (BarFlag flag) = 0<br>_Add an optional flag to this boss bar._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**addFlag**](#function-addflag) ([**BarFlag**](namespaceendstone.md#enum-barflag) flag) = 0<br>_Add an optional flag to this boss bar._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**addPlayer**](#function-addplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Adds the player to this boss bar causing it to display on their screen._  |
 | virtual BarColor | [**getColor**](#function-getcolor) () const = 0<br>_Returns the color of this boss bar._  |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getPlayers**](#function-getplayers) () const = 0<br>_Returns all players viewing this boss bar._  |
 | virtual [**float**](classendstone_1_1Vector.md) | [**getProgress**](#function-getprogress) () const = 0<br>_Returns the progress of the bar between 0.0 and 1.0._  |
-| virtual BarStyle | [**getStyle**](#function-getstyle) () const = 0<br>_Returns the style of this boss bar._  |
+| virtual [**BarStyle**](namespaceendstone.md#enum-barstyle) | [**getStyle**](#function-getstyle) () const = 0<br>_Returns the style of this boss bar._  |
 | virtual std::string | [**getTitle**](#function-gettitle) () const = 0<br>_Returns the title of this boss bar._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**hasFlag**](#function-hasflag) (BarFlag flag) const = 0<br>_Returns whether this boss bar has the passed flag set._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasFlag**](#function-hasflag) ([**BarFlag**](namespaceendstone.md#enum-barflag) flag) const = 0<br>_Returns whether this boss bar has the passed flag set._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isVisible**](#function-isvisible) () const = 0<br>_Return if the boss bar is displayed to attached players._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**removeAll**](#function-removeall) () = 0<br>_Removes all players from this boss bar._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**removeFlag**](#function-removeflag) (BarFlag flag) = 0<br>_Remove an existing flag on this boss bar._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**removeFlag**](#function-removeflag) ([**BarFlag**](namespaceendstone.md#enum-barflag) flag) = 0<br>_Remove an existing flag on this boss bar._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**removePlayer**](#function-removeplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Removes the player from this boss bar causing it to be removed from their screen._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setColor**](#function-setcolor) (BarColor color) = 0<br>_Sets the color of this boss bar._  |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setProgress**](#function-setprogress) ([**float**](classendstone_1_1Vector.md) progress) = 0<br>_Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setStyle**](#function-setstyle) (BarStyle style) = 0<br>_Sets the bar style of this boss bar._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setStyle**](#function-setstyle) ([**BarStyle**](namespaceendstone.md#enum-barstyle) style) = 0<br>_Sets the bar style of this boss bar._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setTitle**](#function-settitle) (std::string title) = 0<br>_Sets the title of this boss bar._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setVisible**](#function-setvisible) ([**bool**](classendstone_1_1Vector.md) visible) = 0<br>_Set if the boss bar is displayed to attached players._  |
 | virtual  | [**~BossBar**](#function-bossbar) () = default<br> |

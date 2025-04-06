@@ -5,7 +5,7 @@
     <includes refid="permission_8h" local="no">endstone/permissions/permission.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1Permission_1a385c02996be80249d7de305f42f92924" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> PermissionDefault</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
         <definition>const PermissionDefault endstone::Permission::DefaultPermission</definition>
         <argsstring></argsstring>
         <name>DefaultPermission</name>
@@ -50,7 +50,7 @@
         <location file="include/endstone/permissions/permission.h" line="192" column="24" bodyfile="include/endstone/permissions/permission.h" bodystart="192" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Permission_1a5c738f9da8b8ba26ad2270b8945b542f" prot="private" static="no" mutable="no">
-        <type>PermissionDefault</type>
+        <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
         <definition>PermissionDefault endstone::Permission::default_value_</definition>
         <argsstring></argsstring>
         <name>default_value_</name>
@@ -110,7 +110,7 @@
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>PermissionDefault</type>
+          <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
           <declname>default_value</declname>
           <defval>DefaultPermission</defval>
         </param>
@@ -164,7 +164,7 @@
         <location file="include/endstone/permissions/permission.h" line="62" column="24" bodyfile="include/endstone/permissions/permission.h" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Permission_1ab667964641734328e6882b4391d0b5d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>PermissionDefault</type>
+        <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
         <definition>PermissionDefault endstone::Permission::getDefault</definition>
         <argsstring>() const</argsstring>
         <name>getDefault</name>
@@ -188,7 +188,7 @@
         <name>setDefault</name>
         <qualifiedname>endstone::Permission::setDefault</qualifiedname>
         <param>
-          <type>PermissionDefault</type>
+          <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
           <declname>value</declname>
         </param>
         <briefdescription>

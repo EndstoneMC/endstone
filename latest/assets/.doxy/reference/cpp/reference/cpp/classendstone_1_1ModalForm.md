@@ -33,7 +33,7 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::variant&lt; [**Dropdown**](classendstone_1_1Dropdown.md), [**Label**](classendstone_1_1Label.md), [**Slider**](classendstone_1_1Slider.md), [**StepSlider**](classendstone_1_1StepSlider.md), [**TextInput**](classendstone_1_1TextInput.md), [**Toggle**](classendstone_1_1Toggle.md) &gt; | [**Control**](#typedef-control)  <br> |
+| typedef std::variant&lt; [**Dropdown**](classendstone_1_1Dropdown.md), [**Label**](classendstone_1_1Label.md), [**Slider**](classendstone_1_1Slider.md), [**StepSlider**](classendstone_1_1StepSlider.md), [**TextInput**](classendstone_1_1TextInput.md), [**Toggle**](classendstone_1_1Toggle.md), [**Divider**](classendstone_1_1Divider.md), [**Header**](classendstone_1_1Header.md) &gt; | [**Control**](#typedef-control)  <br> |
 | typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**Player**](classendstone_1_1Player.md) \*, std::string)&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
 
 
@@ -178,7 +178,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 ### typedef Control 
 
 ```C++
-using endstone::ModalForm::Control =  std::variant<Dropdown, Label, Slider, StepSlider, TextInput, Toggle>;
+using endstone::ModalForm::Control =  std::variant<Dropdown, Label, Slider, StepSlider, TextInput, Toggle, Divider, Header>;
 ```
 
 

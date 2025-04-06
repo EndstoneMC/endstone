@@ -136,7 +136,7 @@
           <declname>display_name</declname>
         </param>
         <param>
-          <type>RenderType</type>
+          <type><ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref></type>
           <declname>render_type</declname>
         </param>
         <briefdescription>
@@ -222,7 +222,7 @@
         <name>getObjective</name>
         <qualifiedname>endstone::Scoreboard::getObjective</qualifiedname>
         <param>
-          <type>DisplaySlot</type>
+          <type><ref refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kindref="member">DisplaySlot</ref></type>
           <declname>slot</declname>
         </param>
         <briefdescription>
@@ -302,7 +302,7 @@
         <name>getScores</name>
         <qualifiedname>endstone::Scoreboard::getScores</qualifiedname>
         <param>
-          <type>ScoreEntry</type>
+          <type><ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref></type>
           <declname>entry</declname>
         </param>
         <briefdescription>
@@ -333,7 +333,7 @@
         <name>resetScores</name>
         <qualifiedname>endstone::Scoreboard::resetScores</qualifiedname>
         <param>
-          <type>ScoreEntry</type>
+          <type><ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref></type>
           <declname>entry</declname>
         </param>
         <briefdescription>
@@ -356,7 +356,7 @@
         <location file="include/endstone/scoreboard/scoreboard.h" line="111" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scoreboard_1a22601ed4eb51f01df4d0548a0c4f872a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; ScoreEntry &gt;</type>
+        <type>std::vector&lt; <ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref> &gt;</type>
         <definition>virtual std::vector&lt; ScoreEntry &gt; endstone::Scoreboard::getEntries</definition>
         <argsstring>() const =0</argsstring>
         <name>getEntries</name>
@@ -380,7 +380,7 @@
         <name>clearSlot</name>
         <qualifiedname>endstone::Scoreboard::clearSlot</qualifiedname>
         <param>
-          <type>DisplaySlot</type>
+          <type><ref refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kindref="member">DisplaySlot</ref></type>
           <declname>slot</declname>
         </param>
         <briefdescription>

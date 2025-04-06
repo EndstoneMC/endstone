@@ -33,7 +33,7 @@
         <location file="include/endstone/event/event_handler.h" line="98" column="19" bodyfile="include/endstone/event/event_handler.h" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1EventHandler_1aa51d9e8a5d83b0c09c44b260d1704182" prot="private" static="no" mutable="no">
-        <type>EventPriority</type>
+        <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
         <definition>EventPriority endstone::EventHandler::priority_</definition>
         <argsstring></argsstring>
         <name>priority_</name>
@@ -91,7 +91,7 @@
           <declname>executor</declname>
         </param>
         <param>
-          <type>EventPriority</type>
+          <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
           <declname>priority</declname>
         </param>
         <param>
@@ -129,7 +129,7 @@
         <location file="include/endstone/event/event_handler.h" line="46" column="13" bodyfile="include/endstone/event/event_handler.h" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1EventHandler_1ae71bf36fa904b1810f5560cdc149b474" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>EventPriority</type>
+        <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
         <definition>EventPriority endstone::EventHandler::getPriority</definition>
         <argsstring>() const</argsstring>
         <name>getPriority</name>

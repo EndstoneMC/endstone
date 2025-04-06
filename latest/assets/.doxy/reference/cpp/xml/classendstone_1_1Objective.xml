@@ -171,7 +171,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="86" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1af38249b8c237008e2058ca2a21366f10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; DisplaySlot &gt;</type>
+        <type>Result&lt; <ref refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kindref="member">DisplaySlot</ref> &gt;</type>
         <definition>virtual Result&lt; DisplaySlot &gt; endstone::Objective::getDisplaySlot</definition>
         <argsstring>() const =0</argsstring>
         <name>getDisplaySlot</name>
@@ -189,7 +189,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="93" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a05c3b9adac524acd88b8308eea70afb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; ObjectiveSortOrder &gt;</type>
+        <type>Result&lt; <ref refid="namespaceendstone_1a3bd0139000789bdd027bcb09aca47f9f" kindref="member">ObjectiveSortOrder</ref> &gt;</type>
         <definition>virtual Result&lt; ObjectiveSortOrder &gt; endstone::Objective::getSortOrder</definition>
         <argsstring>() const =0</argsstring>
         <name>getSortOrder</name>
@@ -213,7 +213,7 @@
         <name>setDisplay</name>
         <qualifiedname>endstone::Objective::setDisplay</qualifiedname>
         <param>
-          <type>std::optional&lt; DisplaySlot &gt;</type>
+          <type>std::optional&lt; <ref refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kindref="member">DisplaySlot</ref> &gt;</type>
           <declname>slot</declname>
         </param>
         <briefdescription>
@@ -242,11 +242,11 @@
         <name>setDisplay</name>
         <qualifiedname>endstone::Objective::setDisplay</qualifiedname>
         <param>
-          <type>std::optional&lt; DisplaySlot &gt;</type>
+          <type>std::optional&lt; <ref refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kindref="member">DisplaySlot</ref> &gt;</type>
           <declname>slot</declname>
         </param>
         <param>
-          <type>ObjectiveSortOrder</type>
+          <type><ref refid="namespaceendstone_1a3bd0139000789bdd027bcb09aca47f9f" kindref="member">ObjectiveSortOrder</ref></type>
           <declname>order</declname>
         </param>
         <briefdescription>
@@ -277,7 +277,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="117" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1ad0a6886ee17ccb32139c3b793e29b94a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; RenderType &gt;</type>
+        <type>Result&lt; <ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref> &gt;</type>
         <definition>virtual Result&lt; RenderType &gt; endstone::Objective::getRenderType</definition>
         <argsstring>() const =0</argsstring>
         <name>getRenderType</name>
@@ -301,7 +301,7 @@
         <name>setRenderType</name>
         <qualifiedname>endstone::Objective::setRenderType</qualifiedname>
         <param>
-          <type>RenderType</type>
+          <type><ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref></type>
           <declname>render_type</declname>
         </param>
         <briefdescription>
@@ -330,7 +330,7 @@
         <name>getScore</name>
         <qualifiedname>endstone::Objective::getScore</qualifiedname>
         <param>
-          <type>ScoreEntry</type>
+          <type><ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref></type>
           <declname>entry</declname>
         </param>
         <briefdescription>

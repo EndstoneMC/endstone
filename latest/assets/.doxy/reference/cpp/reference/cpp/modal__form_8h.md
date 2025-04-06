@@ -19,6 +19,8 @@
 * `#include "endstone/form/controls/step_slider.h"`
 * `#include "endstone/form/controls/text_input.h"`
 * `#include "endstone/form/controls/toggle.h"`
+* `#include "endstone/form/controls/divider.h"`
+* `#include "endstone/form/controls/header.h"`
 * `#include "endstone/form/form.h"`
 
 
@@ -37,7 +39,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| namespace | [**endstone**](namespaceendstone.md) <br> |
+| namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
 
 
 ## Classes

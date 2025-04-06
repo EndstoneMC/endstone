@@ -27,17 +27,13 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 
 
 
-## Classes
-
-| Type | Name |
-| ---: | :--- |
-| class | [**Button**](classendstone_1_1ActionForm_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 
 
 ## Public Types
 
 | Type | Name |
 | ---: | :--- |
+| typedef std::variant&lt; [**Button**](classendstone_1_1Button.md), [**Divider**](classendstone_1_1Divider.md), [**Header**](classendstone_1_1Header.md), [**Label**](classendstone_1_1Label.md) &gt; | [**Control**](#typedef-control)  <br> |
 | typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**Player**](classendstone_1_1Player.md) \*, [**int**](classendstone_1_1Vector.md))&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
 
 
@@ -92,11 +88,14 @@ See [endstone::Form](classendstone_1_1Form.md)
 | ---: | :--- |
 |   | [**ActionForm**](#function-actionform) () = default<br> |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addButton**](#function-addbutton) ([**const**](classendstone_1_1Vector.md) Message & text, [**const**](classendstone_1_1Vector.md) std::optional&lt; std::string &gt; & icon=std::nullopt, Button::OnClickCallback on\_click={}) <br>_Adds a button to the form._  |
-|  [**const**](classendstone_1_1Vector.md) std::vector&lt; [**Button**](classendstone_1_1ActionForm_1_1Button.md) &gt; & | [**getButtons**](#function-getbuttons) () const<br>_Get the buttons of the action form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addDivider**](#function-adddivider) () <br>_Adds a divider to the form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addHeader**](#function-addheader) ([**const**](classendstone_1_1Vector.md) Message & text) <br>_Adds a header to the form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addLabel**](#function-addlabel) ([**const**](classendstone_1_1Vector.md) Message & text) <br>_Adds a label to the form._  |
 |  Message | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
+|  [**const**](classendstone_1_1Vector.md) std::vector&lt; Control &gt; & | [**getControls**](#function-getcontrols) () const<br>_Get the controls of the action form._  |
 |  OnSubmitCallback | [**getOnSubmit**](#function-getonsubmit) () const<br>_Gets the on submit callback of the form._  |
-|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setButtons**](#function-setbuttons) ([**const**](classendstone_1_1Vector.md) std::vector&lt; [**Button**](classendstone_1_1ActionForm_1_1Button.md) &gt; & buttons) <br>_Set the buttons of the action form._  |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setContent**](#function-setcontent) (Message text) <br>_Set the content of the form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setControls**](#function-setcontrols) ([**const**](classendstone_1_1Vector.md) std::vector&lt; Control &gt; & controls) <br>_Set the controls of the action form._  |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setOnSubmit**](#function-setonsubmit) (OnSubmitCallback on\_submit) <br>_Sets the on submit callback of the form._  |
 
 
@@ -178,6 +177,19 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 
 
+### typedef Control 
+
+```C++
+using endstone::ActionForm::Control =  std::variant<Button, Divider, Header, Label>;
+```
+
+
+
+
+<hr>
+
+
+
 ### typedef OnSubmitCallback 
 
 ```C++
@@ -244,11 +256,11 @@ A reference to the current form.
 
 
 
-### function getButtons 
+### function addDivider 
 
-_Get the buttons of the action form._ 
+_Adds a divider to the form._ 
 ```C++
-inline const std::vector< Button > & endstone::ActionForm::getButtons () const
+inline ActionForm & endstone::ActionForm::addDivider () 
 ```
 
 
@@ -257,7 +269,75 @@ inline const std::vector< Button > & endstone::ActionForm::getButtons () const
 
 **Returns:**
 
-A list of buttons in the action form. 
+A reference to the current form. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function addHeader 
+
+_Adds a header to the form._ 
+```C++
+inline ActionForm & endstone::ActionForm::addHeader (
+    const Message & text
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `text` The text of the header 
+
+
+
+**Returns:**
+
+A reference to the current form. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function addLabel 
+
+_Adds a label to the form._ 
+```C++
+inline ActionForm & endstone::ActionForm::addLabel (
+    const Message & text
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `text` The text of the label 
+
+
+
+**Returns:**
+
+A reference to the current form. 
 
 
 
@@ -294,6 +374,31 @@ The content of the form.
 
 
 
+### function getControls 
+
+_Get the controls of the action form._ 
+```C++
+inline const std::vector< Control > & endstone::ActionForm::getControls () const
+```
+
+
+
+
+
+**Returns:**
+
+A list of controls in the action form. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getOnSubmit 
 
 _Gets the on submit callback of the form._ 
@@ -308,40 +413,6 @@ inline OnSubmitCallback endstone::ActionForm::getOnSubmit () const
 **Returns:**
 
 The on submit callback of the form. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setButtons 
-
-_Set the buttons of the action form._ 
-```C++
-inline ActionForm & endstone::ActionForm::setButtons (
-    const std::vector< Button > & buttons
-) 
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `buttons` The list of buttons to set. 
-
-
-
-**Returns:**
-
-A reference to the current form. 
 
 
 
@@ -370,6 +441,40 @@ inline ActionForm & endstone::ActionForm::setContent (
 
 
 * `text` The text to set as the content. 
+
+
+
+**Returns:**
+
+A reference to the current form. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setControls 
+
+_Set the controls of the action form._ 
+```C++
+inline ActionForm & endstone::ActionForm::setControls (
+    const std::vector< Control > & controls
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `controls` The list of controls to set. 
 
 
 

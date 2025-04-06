@@ -447,7 +447,7 @@
           <declname>executor</declname>
         </param>
         <param>
-          <type>EventPriority</type>
+          <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
           <declname>priority</declname>
         </param>
         <param>

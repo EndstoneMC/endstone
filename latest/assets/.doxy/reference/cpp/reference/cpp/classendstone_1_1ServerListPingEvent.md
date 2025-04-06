@@ -101,7 +101,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |   | [**ServerListPingEvent**](#function-serverlistpingevent) (std::string remote\_host, [**int**](classendstone_1_1Vector.md) remote\_port, std::string ping\_response) <br> |
 |  [**bool**](classendstone_1_1Vector.md) | [**deserialize**](#function-deserialize) () <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  GameMode | [**getGameMode**](#function-getgamemode) () const<br> |
+|  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const<br> |
 |  std::string | [**getLevelName**](#function-getlevelname) () const<br> |
 |  [**int**](classendstone_1_1Vector.md) | [**getLocalPort**](#function-getlocalport) () const<br> |
 |  [**int**](classendstone_1_1Vector.md) | [**getLocalPortV6**](#function-getlocalportv6) () const<br> |
@@ -114,7 +114,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |  [**int**](classendstone_1_1Vector.md) | [**getRemotePort**](#function-getremoteport) () const<br> |
 |  std::string | [**getServerGuid**](#function-getserverguid) () const<br> |
 |  std::string | [**serialize**](#function-serialize) () <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setGameMode**](#function-setgamemode) (GameMode game\_mode) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setLocalPort**](#function-setlocalport) ([**int**](classendstone_1_1Vector.md) port) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setLocalPortV6**](#function-setlocalportv6) ([**int**](classendstone_1_1Vector.md) port) <br> |

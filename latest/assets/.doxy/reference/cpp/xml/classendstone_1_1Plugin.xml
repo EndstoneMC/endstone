@@ -406,9 +406,9 @@
           <declname>instance</declname>
         </param>
         <param>
-          <type>EventPriority</type>
+          <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
           <declname>priority</declname>
-          <defval>EventPriority::Normal</defval>
+          <defval><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" kindref="member">EventPriority::Normal</ref></defval>
         </param>
         <param>
           <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
@@ -439,9 +439,9 @@
           <declname>func</declname>
         </param>
         <param>
-          <type>EventPriority</type>
+          <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
           <declname>priority</declname>
-          <defval>EventPriority::Normal</defval>
+          <defval><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" kindref="member">EventPriority::Normal</ref></defval>
         </param>
         <param>
           <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>

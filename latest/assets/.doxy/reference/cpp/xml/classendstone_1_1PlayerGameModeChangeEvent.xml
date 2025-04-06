@@ -23,7 +23,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerGameModeChangeEvent_1a04a813980762f492edc3db56907da5b5" prot="private" static="no" mutable="no">
-        <type>GameMode</type>
+        <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
         <definition>GameMode endstone::PlayerGameModeChangeEvent::new_game_mode_</definition>
         <argsstring></argsstring>
         <name>new_game_mode_</name>
@@ -49,7 +49,7 @@
           <declname>player</declname>
         </param>
         <param>
-          <type>GameMode</type>
+          <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
           <declname>new_game_mode</declname>
         </param>
         <briefdescription>
@@ -94,7 +94,7 @@
         <location file="include/endstone/event/player/player_game_mode_change_event.h" line="35" column="18" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="35" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>GameMode</type>
+        <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
         <definition>GameMode endstone::PlayerGameModeChangeEvent::getNewGameMode</definition>
         <argsstring>() const</argsstring>
         <name>getNewGameMode</name>

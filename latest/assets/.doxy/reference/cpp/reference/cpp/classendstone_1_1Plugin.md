@@ -87,8 +87,8 @@ Inherits the following classes: [endstone::CommandExecutor](classendstone_1_1Com
 | virtual [**void**](classendstone_1_1Vector.md) | [**onEnable**](#function-onenable) () <br>_Called when this plugin is enabled._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**onLoad**](#function-onload) () <br>_Called after a plugin is loaded but before it has been enabled._  |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**registerEvent**](#function-registerevent-12) ([**void**](classendstone_1_1Vector.md)(T::\*)(EventType &) func, [**T**](classendstone_1_1Vector.md) & instance, EventPriority priority=EventPriority::Normal, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled=[**false**](classendstone_1_1Vector.md)) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**registerEvent**](#function-registerevent-22) (std::function&lt; [**void**](classendstone_1_1Vector.md)(EventType &)&gt; func, EventPriority priority=EventPriority::Normal, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled=[**false**](classendstone_1_1Vector.md)) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**registerEvent**](#function-registerevent-12) ([**void**](classendstone_1_1Vector.md)(T::\*)(EventType &) func, [**T**](classendstone_1_1Vector.md) & instance, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled=[**false**](classendstone_1_1Vector.md)) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**registerEvent**](#function-registerevent-22) (std::function&lt; [**void**](classendstone_1_1Vector.md)(EventType &)&gt; func, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled=[**false**](classendstone_1_1Vector.md)) <br> |
 |   | [**~Plugin**](#function-plugin) () override<br> |
 
 

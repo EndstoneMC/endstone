@@ -98,9 +98,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerGameModeChangeEvent**](#function-playergamemodechangeevent) ([**Player**](classendstone_1_1Player.md) & player, GameMode new\_game\_mode) <br> |
+|   | [**PlayerGameModeChangeEvent**](#function-playergamemodechangeevent) ([**Player**](classendstone_1_1Player.md) & player, [**GameMode**](namespaceendstone.md#enum-gamemode) new\_game\_mode) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  GameMode | [**getNewGameMode**](#function-getnewgamemode) () const<br>_Gets the GameMode the player is switched to._  |
+|  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getNewGameMode**](#function-getnewgamemode) () const<br>_Gets the GameMode the player is switched to._  |
 |   | [**~PlayerGameModeChangeEvent**](#function-playergamemodechangeevent) () override<br> |
 
 

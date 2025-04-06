@@ -34,13 +34,15 @@
 #include "endstone/form/controls/step_slider.h"
 #include "endstone/form/controls/text_input.h"
 #include "endstone/form/controls/toggle.h"
+#include "endstone/form/controls/divider.h"
+#include "endstone/form/controls/header.h"
 #include "endstone/form/form.h"
 
 namespace endstone {
 
 class ModalForm : public Form<ModalForm> {
 public:
-    using Control = std::variant<Dropdown, Label, Slider, StepSlider, TextInput, Toggle>;
+    using Control = std::variant<Dropdown, Label, Slider, StepSlider, TextInput, Toggle, Divider, Header>;
     using OnSubmitCallback = std::function<void(Player *, std::string)>;
 
     ModalForm &addControl(const Control &control)

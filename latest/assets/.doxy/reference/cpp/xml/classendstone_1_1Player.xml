@@ -1347,7 +1347,7 @@
         <location file="include/endstone/player.h" line="392" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>GameMode</type>
+        <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
         <definition>virtual GameMode endstone::Player::getGameMode</definition>
         <argsstring>() const =0</argsstring>
         <name>getGameMode</name>
@@ -1371,7 +1371,7 @@
         <name>setGameMode</name>
         <qualifiedname>endstone::Player::setGameMode</qualifiedname>
         <param>
-          <type>GameMode</type>
+          <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
           <declname>mode</declname>
         </param>
         <briefdescription>

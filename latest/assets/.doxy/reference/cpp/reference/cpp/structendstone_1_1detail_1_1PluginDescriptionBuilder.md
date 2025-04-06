@@ -38,10 +38,10 @@
 |  std::vector&lt; std::string &gt; | [**authors**](#variable-authors)  <br> |
 |  std::unordered\_map&lt; std::string, CommandBuilder &gt; | [**commands**](#variable-commands)  <br> |
 |  std::vector&lt; std::string &gt; | [**contributors**](#variable-contributors)  <br> |
-|  PermissionDefault | [**default\_permission**](#variable-default_permission)   = `PermissionDefault::Operator`<br> |
+|  [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**default\_permission**](#variable-default_permission)   = `PermissionDefault::Operator`<br> |
 |  std::vector&lt; std::string &gt; | [**depend**](#variable-depend)  <br> |
 |  std::string | [**description**](#variable-description)  <br> |
-|  PluginLoadOrder | [**load**](#variable-load)   = `PluginLoadOrder::PostWorld`<br> |
+|  [**PluginLoadOrder**](namespaceendstone.md#enum-pluginloadorder) | [**load**](#variable-load)   = `PluginLoadOrder::PostWorld`<br> |
 |  std::vector&lt; std::string &gt; | [**load\_before**](#variable-load_before)  <br> |
 |  std::unordered\_map&lt; std::string, PermissionBuilder &gt; | [**permissions**](#variable-permissions)  <br> |
 |  std::string | [**prefix**](#variable-prefix)  <br> |

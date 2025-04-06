@@ -19,7 +19,7 @@
         <location file="include/endstone/scoreboard/score.h" line="30" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Score_1ad4f90b17d4d35334a1732bf428649368" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>ScoreEntry</type>
+        <type><ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref></type>
         <definition>virtual ScoreEntry endstone::Score::getEntry</definition>
         <argsstring>() const =0</argsstring>
         <name>getEntry</name>

@@ -77,7 +77,7 @@
         <location file="include/endstone/scoreboard/criteria.h" line="48" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>RenderType</type>
+        <type><ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref></type>
         <definition>virtual RenderType endstone::Criteria::getDefaultRenderType</definition>
         <argsstring>() const =0</argsstring>
         <name>getDefaultRenderType</name>

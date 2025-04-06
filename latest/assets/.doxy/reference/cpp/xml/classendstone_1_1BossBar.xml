@@ -113,7 +113,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="58" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>BarStyle</type>
+        <type><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref></type>
         <definition>virtual BarStyle endstone::BossBar::getStyle</definition>
         <argsstring>() const =0</argsstring>
         <name>getStyle</name>
@@ -137,7 +137,7 @@
         <name>setStyle</name>
         <qualifiedname>endstone::BossBar::setStyle</qualifiedname>
         <param>
-          <type>BarStyle</type>
+          <type><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref></type>
           <declname>style</declname>
         </param>
         <briefdescription>
@@ -166,7 +166,7 @@
         <name>hasFlag</name>
         <qualifiedname>endstone::BossBar::hasFlag</qualifiedname>
         <param>
-          <type>BarFlag</type>
+          <type><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref></type>
           <declname>flag</declname>
         </param>
         <briefdescription>
@@ -197,7 +197,7 @@
         <name>addFlag</name>
         <qualifiedname>endstone::BossBar::addFlag</qualifiedname>
         <param>
-          <type>BarFlag</type>
+          <type><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref></type>
           <declname>flag</declname>
         </param>
         <briefdescription>
@@ -226,7 +226,7 @@
         <name>removeFlag</name>
         <qualifiedname>endstone::BossBar::removeFlag</qualifiedname>
         <param>
-          <type>BarFlag</type>
+          <type><ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref></type>
           <declname>flag</declname>
         </param>
         <briefdescription>

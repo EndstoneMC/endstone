@@ -18,12 +18,12 @@
         <location file="include/endstone/plugin/plugin.h" line="290" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="290" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1adde71e03352151d967de543af50a99ec" prot="public" static="no" mutable="no">
-        <type>PluginLoadOrder</type>
+        <type><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kindref="member">PluginLoadOrder</ref></type>
         <definition>PluginLoadOrder endstone::detail::PluginDescriptionBuilder::load</definition>
         <argsstring></argsstring>
         <name>load</name>
         <qualifiedname>endstone::detail::PluginDescriptionBuilder::load</qualifiedname>
-        <initializer>= PluginLoadOrder::PostWorld</initializer>
+        <initializer>= <ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kindref="member">PluginLoadOrder::PostWorld</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -145,7 +145,7 @@
         <location file="include/endstone/plugin/plugin.h" line="299" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="299" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structendstone_1_1detail_1_1PluginDescriptionBuilder_1a792705cd59585b0d75ce982c15c63cce" prot="public" static="no" mutable="no">
-        <type>PermissionDefault</type>
+        <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
         <definition>PermissionDefault endstone::detail::PluginDescriptionBuilder::default_permission</definition>
         <argsstring></argsstring>
         <name>default_permission</name>

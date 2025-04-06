@@ -162,7 +162,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual [**int**](classendstone_1_1Vector.md) | [**getExpLevel**](#function-getexplevel) () const = 0<br>_Gets the players current experience level._  |
 | virtual [**float**](classendstone_1_1Vector.md) | [**getExpProgress**](#function-getexpprogress) () const = 0<br>_Gets the players current experience progress towards the next level._  |
 | virtual [**float**](classendstone_1_1Vector.md) | [**getFlySpeed**](#function-getflyspeed) () const = 0<br>_Gets the current allowed speed that a client can fly._  |
-| virtual GameMode | [**getGameMode**](#function-getgamemode) () const = 0<br>_Gets this player's current GameMode._  |
+| virtual [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const = 0<br>_Gets this player's current GameMode._  |
 | virtual std::string | [**getGameVersion**](#function-getgameversion) () const = 0<br>_Gets the player's current game version._  |
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
 | virtual std::string | [**getLocale**](#function-getlocale) () const = 0<br>_Gets the player's current locale._  |
@@ -194,7 +194,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setExpProgress**](#function-setexpprogress) ([**float**](classendstone_1_1Vector.md) progress) = 0<br>_Sets the players current experience progress towards the next level._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setFlySpeed**](#function-setflyspeed) ([**float**](classendstone_1_1Vector.md) value) const = 0<br> |
 | virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setFlying**](#function-setflying) ([**bool**](classendstone_1_1Vector.md) value) = 0<br>_Makes this player start or stop flying._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setGameMode**](#function-setgamemode) (GameMode mode) = 0<br>_Sets this player's current GameMode._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) mode) = 0<br>_Sets this player's current GameMode._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setScoreboard**](#function-setscoreboard) ([**Scoreboard**](classendstone_1_1Scoreboard.md) & scoreboard) = 0<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setSneaking**](#function-setsneaking) ([**bool**](classendstone_1_1Vector.md) sneak) = 0<br>_Sets the sneak mode of the player._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setSprinting**](#function-setsprinting) ([**bool**](classendstone_1_1Vector.md) sprinting) = 0<br>_Sets whether the player is sprinting or not._  |
