@@ -13,22 +13,6 @@
 // limitations under the License.
 
 #pragma once
+#include "bedrock/world/item/crafting/recipe.h"
 
-#include <vector>
-
-#include "bedrock/world/item/crafting/recipe_ingredient.h"
-
-class RecipeUnlockingRequirement {
-public:
-    enum class UnlockingContext : int {
-        None = 0,
-        AlwaysUnlocked = 0x1,
-        PlayerInWater = 0x2,
-        PlayerHasManyItems = 0x3,
-    };
-    explicit RecipeUnlockingRequirement(UnlockingContext context) : context_(context) {}
-
-private:
-    UnlockingContext context_;
-    std::vector<RecipeIngredient> ingredients_;
-};
+class ShapelessRecipe : public Recipe {};

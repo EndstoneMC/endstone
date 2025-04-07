@@ -34,6 +34,8 @@ public:
     {
         stack_size_ = stack_size;
     }
+    ItemDescriptorCount(ItemDescriptorCount &&) = default;
+    ItemDescriptorCount &operator=(ItemDescriptorCount &&) = default;
 
 private:
     std::uint16_t stack_size_;

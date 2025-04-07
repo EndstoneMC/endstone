@@ -42,6 +42,8 @@ public:
     [[nodiscard]] EndstoneServer &getServer() const;
     [[nodiscard]] ::Level &getHandle() const;
 
+    void addRecipe(std::shared_ptr<Recipe> recipe) override;
+
 private:
     EndstoneServer &server_;
     ::Level &level_;
