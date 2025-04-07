@@ -51,11 +51,7 @@ void patchPacket(const ResourcePackStackPacket &packet)
 
 void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)
 {
-    auto packet_id = static_cast<int>(packet.getId());
-    if (packet_id == -1) {
-        packet_id = static_cast<const endstone::core::DataPacket &>(packet).getPacketId();
-    }
-    else {
+    if (packet.getName() != "DataPacket") {
         switch (packet.getId()) {
         case MinecraftPacketIds::StartGame:
             patchPacket(static_cast<const StartGamePacket &>(packet));
@@ -80,6 +76,7 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     }
 
     BinaryStream stream;
+    const auto packet_id = static_cast<int>(packet.getId());
     const auto header = packet_id | (static_cast<unsigned>(sender_sub_id) << 10) |
                         (static_cast<unsigned>(packet.getClientSubId()) << 12);
     stream.writeUnsignedVarInt(header, "Header Data", nullptr);

@@ -24,12 +24,12 @@ public:
     DataPacket(int packet_id, std::string_view payload);
     [[nodiscard]] MinecraftPacketIds getId() const override;
     [[nodiscard]] std::string getName() const override;
-    void write(BinaryStream &) const override;
+    void write(BinaryStream &stream) const override;
     [[nodiscard]] int getPacketId() const;
     [[nodiscard]] std::string_view getPayload() const;
 
 private:
-    [[nodiscard]] Bedrock::Result<void> _read(ReadOnlyBinaryStream &) override;
+    [[nodiscard]] Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
 
 private:
     int packet_id_;

@@ -19,7 +19,7 @@ DataPacket::DataPacket(int packet_id, std::string_view payload) : packet_id_(pac
 
 MinecraftPacketIds DataPacket::getId() const
 {
-    return static_cast<MinecraftPacketIds>(-1);
+    return static_cast<MinecraftPacketIds>(packet_id_);
 }
 
 std::string DataPacket::getName() const
