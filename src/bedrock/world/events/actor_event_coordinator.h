@@ -21,9 +21,9 @@
 
 class ActorEventCoordinator : public EventCoordinator<ActorEventListener> {
 public:
+    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler;  // Endstone: private -> public
+
 private:
-    friend class endstone::core::EndstoneServer;
-    std::unique_ptr<ActorGameplayHandler> actor_gameplay_handler_;
     Bedrock::PubSub::Subscription on_gameplay_user_added_subscription_;
     Bedrock::PubSub::Subscription post_reload_actor_added_subscription_;
 };

@@ -21,12 +21,28 @@ enum class Compressibility {
 
 class NetworkPeer {
 public:
+    using PacketRecvTimepoint = std::chrono::steady_clock::time_point;
+    using PacketRecvTimepointPtr = std::shared_ptr<PacketRecvTimepoint>;
+
     enum class Reliability {
         Reliable = 0,
         ReliableOrdered = 1,
         Unreliable = 2,
         UnreliableSequenced = 3,
     };
+    enum class DataStatus : int {
+        HasData = 0,
+        NoData = 1,
+        BrokenData = 2,
+    };
+    struct NetworkStatus {};
 
-    using PacketRecvTimepoint = std::chrono::steady_clock::time_point;
+    virtual ~NetworkPeer() = default;
+    virtual void sendPacket(const std::string &, Reliability, Compressibility) = 0;
+    virtual DataStatus receivePacket(std::string &, const PacketRecvTimepointPtr &) = 0;
+    virtual NetworkStatus getNetworkStatus() const = 0;
+    virtual void update() = 0;
+    virtual void flush(std::function<void()> &&) = 0;
+    virtual bool isLocal() const = 0;
+    virtual bool isEncrypted() const = 0;
 };

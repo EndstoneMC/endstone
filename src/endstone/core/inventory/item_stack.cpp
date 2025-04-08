@@ -15,27 +15,23 @@
 #include "endstone/core/inventory/item_stack.h"
 
 #include "bedrock/world/item/item.h"
+#include "endstone/core/inventory/item_factory.h"
 
 namespace endstone::core {
-
-const EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack() const
-{
-    return this;
-}
-
-EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack()
-{
-    return this;
-}
 
 EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
     : handle_(item.isNull() ? nullptr : const_cast<::ItemStack *>(&item))
 {
 }
 
+bool EndstoneItemStack::isEndstoneItemStack() const
+{
+    return true;
+}
+
 std::string EndstoneItemStack::getType() const
 {
-    return (handle_ && !handle_->isNull()) ? handle_->getItem()->getFullItemName() : "minecraft:air";
+    return getType(handle_);
 }
 
 void EndstoneItemStack::setType(std::string type)
@@ -68,32 +64,82 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
-std::shared_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
+std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
 {
-    // TODO(item): return the actual item meta
-    return nullptr;
+    return getItemMeta(handle_);
 }
 
-::ItemStack EndstoneItemStack::toMinecraft(const std::shared_ptr<ItemStack> &item)
+bool EndstoneItemStack::hasItemMeta() const
+{
+    return hasItemMeta(handle_) && getItemMeta() != nullptr;
+}
+
+bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
+{
+    return setItemMeta(handle_, meta);
+}
+
+::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
     if (!item || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
     }
-    if (const auto *stack = item->asEndstoneItemStack(); stack) {
-        if (stack->handle_) {
+    if (item->isEndstoneItemStack()) {
+        if (const auto *stack = static_cast<const EndstoneItemStack *>(item); stack->handle_) {
             return *stack->handle_;  // Call the copy constructor to make a copy
         }
         return {};  // Empty item stack
     }
-    return ::ItemStack(item->getType(), item->getAmount());  // TODO(item): support item nbt data
+    auto stack = ::ItemStack(item->getType(), item->getAmount());
+    if (item->hasItemMeta()) {
+        setItemMeta(&stack, item->getItemMeta().get());
+    }
+    return stack;
 }
 
-std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::ItemStack &item)
+std::unique_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::ItemStack &item)
 {
     if (item.isNull()) {
         return nullptr;
     }
-    return std::make_shared<EndstoneItemStack>(item);
+    return std::make_unique<EndstoneItemStack>(item);
+}
+
+std::string EndstoneItemStack::getType(const ::ItemStack *item)
+{
+    return (item && !item->isNull()) ? item->getItem()->getFullItemName() : "minecraft:air";
+}
+
+std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item)
+{
+    if (item && !item->isNull()) {
+        return EndstoneItemFactory::getItemMeta(getType(item), *item);
+    }
+    return ItemFactory::getItemMeta("minecraft:air");
+}
+
+bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
+{
+    return !getItemMeta(item)->isEmpty();
+}
+
+bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
+{
+    if (!item) {
+        return false;
+    }
+    if (!meta) {
+        EndstoneItemFactory::applyToItem(ItemMeta::EMPTY, *item);
+        return true;
+    }
+    // TODO(item): applicability check
+    auto item_meta = ItemFactory::asMetaFor(getType(item), meta);
+    if (!item_meta) {
+        return true;
+    }
+
+    EndstoneItemFactory::applyToItem(*item_meta, *item);
+    return true;
 }
 
 void EndstoneItemStack::reset()

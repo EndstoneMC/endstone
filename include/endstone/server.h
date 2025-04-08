@@ -322,7 +322,7 @@ public:
      * @param type the block type
      * @return new data instance
      */
-    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const = 0;
+    [[nodiscard]] virtual Result<std::unique_ptr<BlockData>> createBlockData(std::string type) const = 0;
 
     /**
      * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to
@@ -332,7 +332,7 @@ public:
      * @param block_states block states, for example {"old_leaf_type":"birch", "persistent_bit":true}
      * @return new data instance
      */
-    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
+    [[nodiscard]] virtual Result<std::unique_ptr<BlockData>> createBlockData(std::string type,
                                                                              BlockStates block_states) const = 0;
 
     /**

@@ -93,13 +93,15 @@ std::optional<CompoundTag> InternalItemDescriptor::save() const
 
 void InternalItemDescriptor::serialize(BinaryStream &stream) const
 {
-    if (const auto *item = item_entry_.item; item) {
-        stream.writeSignedShort(item->getId());
-        stream.writeSignedShort(item_entry_.aux_value);
-    }
-    else {
-        stream.writeSignedShort(0);
-    }
+    stream.writeIf(
+        item_entry_.item != nullptr, "item exist?",
+        [&](BinaryStream &s) {  // true
+            s.writeSignedShort(item_entry_.item->getId(), "Id", nullptr);
+            s.writeSignedShort(item_entry_.aux_value, "Aux Value", nullptr);
+        },
+        [&](BinaryStream &s) {  // false
+            s.writeSignedShort(0, "Zero value", nullptr);
+        });
 }
 
 ItemDescriptor::InternalType InternalItemDescriptor::getType() const
@@ -168,7 +170,7 @@ void ItemDescriptor::serialize(BinaryStream &stream) const
         impl_ = std::move(impl_->resolve());
     }
     auto type = impl_ ? impl_->getType() : InternalType::Invalid;
-    stream.writeByte(static_cast<std::uint8_t>(type));
+    stream.writeByte(static_cast<std::uint8_t>(type), "InternalType", nullptr);
     if (impl_) {
         impl_->serialize(stream);
     }

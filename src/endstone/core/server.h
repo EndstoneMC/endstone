@@ -97,8 +97,8 @@ public:
                                                          BarStyle style) const override;
     [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                          std::vector<BarFlag> flags) const override;
-    [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const override;
-    [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
+    [[nodiscard]] Result<std::unique_ptr<BlockData>> createBlockData(std::string type) const override;
+    [[nodiscard]] Result<std::unique_ptr<BlockData>> createBlockData(std::string type,
                                                                      BlockStates block_states) const override;
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;
@@ -113,6 +113,7 @@ public:
     void setLevel(::Level &level);
     void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
     [[nodiscard]] PackSource &getPackSource() const;
+    [[nodiscard]] bool getAllowClientPacks() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
 
@@ -120,18 +121,6 @@ private:
     friend class EndstonePlayer;
     void enablePlugin(Plugin &plugin);
     void loadResourcePacks();
-    template <typename Wrapper, typename T>
-    void wrap(std::unique_ptr<T> &target)
-    {
-        target = std::make_unique<Wrapper>(std::move(target));
-    }
-    void registerEventListeners();
-    template <typename Wrapper, typename T>
-    void unwrap(std::unique_ptr<T> &target)
-    {
-        target = static_cast<Wrapper *>(target.get())->unwrap();
-    }
-    void unregisterEventListeners();
 
     ServerInstance *server_instance_{nullptr};
     Logger &logger_;
@@ -158,6 +147,7 @@ private:
     float average_tps_[SharedConstants::TicksPerSecond] = {SharedConstants::TicksPerSecond};
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
+    bool allow_client_packs_ = false;
 };
 
 }  // namespace endstone::core

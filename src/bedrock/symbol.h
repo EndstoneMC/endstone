@@ -47,12 +47,24 @@ constexpr void foreach_symbol(Func &&func)
         std::invoke(std::forward<Func>(func), key, value);
     }
 }
+
+template <typename Func, typename... Args>
+constexpr decltype(auto) invoke(const char *function, Func &&func, Args &&...args)
+{
+    return std::invoke(func, std::forward<Args>(args)...);
+}
 }  // namespace endstone::detail
 
-#define BEDROCK_CALL(fp, ...)                                                                                \
-    std::invoke(endstone::detail::fp_cast(fp, static_cast<char *>(endstone::detail::get_executable_base()) + \
-                                                  endstone::detail::get_symbol(__FUNCDNAME__)),              \
-                ##__VA_ARGS__)
+#define BEDROCK_CALL(fp, ...)                                                                        \
+    endstone::detail::invoke(                                                                        \
+        __FUNCDNAME__,                                                                               \
+        endstone::detail::fp_cast(fp, static_cast<char *>(endstone::detail::get_executable_base()) + \
+                                          endstone::detail::get_symbol(__FUNCDNAME__)),              \
+        ##__VA_ARGS__)
+
+#define BEDROCK_VAR(type, name)                                                           \
+    reinterpret_cast<type>(static_cast<char *>(endstone::detail::get_executable_base()) + \
+                           endstone::detail::get_symbol(name));
 
 namespace endstone::detail {
 #ifdef _WIN32

@@ -15,8 +15,6 @@
 #pragma once
 
 #include "endstone/event/block/block_event.h"
-#include "endstone/event/cancellable.h"
-#include "endstone/player.h"
 
 namespace endstone {
 
@@ -25,7 +23,7 @@ namespace endstone {
  */
 class BlockPistonEvent : public BlockEvent {
 public:
-    explicit BlockPistonEvent(std::shared_ptr<Block> block, Player &player) : BlockEvent(block), player_(player) {}
+    explicit BlockPistonEvent(Block &block, Player &player) : BlockEvent(block), player_(player) {}
     ~BlockPistonEvent() override = default;
 
     inline static const std::string NAME = "BlockPistonEvent";

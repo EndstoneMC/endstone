@@ -22,18 +22,25 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/level.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/network_system.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/raknet_socket2.cpp
         bedrock_hooks/rak_peer_helper.cpp
         bedrock_hooks/resource_pack_repository.cpp
         bedrock_hooks/say_command.cpp
+        bedrock_hooks/script_actor_gameplay_handler.cpp
+        bedrock_hooks/script_block_gameplay_handler.cpp
+        bedrock_hooks/script_level_gameplay_handler.cpp
+        bedrock_hooks/script_player_gameplay_handler.cpp
+        bedrock_hooks/script_scripting_event_handler.cpp
+        bedrock_hooks/script_server_network_event_handler.cpp
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
         bedrock_hooks/server_script_manager.cpp
-        bedrock_hooks/start_game_packet.cpp
         main.cpp
         hook.cpp
+        vtable_hook.cpp
         linux.cpp
         windows.cpp
 )

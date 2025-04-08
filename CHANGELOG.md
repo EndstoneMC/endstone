@@ -5,9 +5,67 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.6.3 - Unreleased
+## [0.7.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) – 2025-03-29
 
-<small>[Compare with 0.6.2](https://github.com/EndstoneMC/endstone/compare/v0.6.2...HEAD)</small>
+<small>[Compare with 0.7.1](https://github.com/EndstoneMC/endstone/compare/v0.7.1...v0.7.2)</small>
+
+### Added
+
+- Added support for BDS version 1.21.71.01.
+- Added `getDamage` and `setDamage` to `ItemMeta` for handling item durability.
+- Added `getRuntimeId` to `BlockData` to retrieve the runtime ID of a block permutation (also known as the network hash
+  ID).
+
+### Fixed
+
+- Fixed an issue where outgoing packet statistics were not written to `packet-statistics.txt`.
+
+## [0.7.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) - 2025-03-27
+
+<small>[Compare with 0.7.0](https://github.com/EndstoneMC/endstone/compare/v0.7.0...v0.7.1)</small>
+
+### Added
+
+- Added support for BDS version 1.21.70.04.
+- Added new `setPayload` method in `PacketSendEvent` and `PacketReceiveEvent` for editing packet contents.
+- Introduced a configuration file, `endstone.toml`, for Endstone configurations.
+
+### Fixed
+
+- Resolved a crash caused by sending packets within the `PacketSendEvent` handler.
+
+### Changed
+
+- Updated the behavior of server pack enforcement to match vanilla BDS: clients are not allowed to use custom packs when
+  `texturepack-required` is set to `true` in `server.properties`. This behavior can be overridden by setting
+  `allow-client-packs` in `endstone.toml`.
+
+## [0.7.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) - 2025-03-25
+
+<small>[Compare with 0.6.2](https://github.com/EndstoneMC/endstone/compare/v0.6.2...v0.7.0)</small>
+
+### Added
+
+- Added support for Minecraft v1.21.70.
+- Introduced the `Service` API, enabling plugins to register services that can be utilized by other plugins.
+- Implemented dependency resolution for the plugin manager.
+- Anonymous enums are now supported in command registration. For example, instead of writing  
+  `/home (add|remove)<action: HomeAction>`, you can now simply write `/home <add|remove>`.
+- **Inventory API**: Added a basic `ItemMeta` API, allowing you to get and set the display name and lore of an item.
+- **Inventory API**: Introduced various methods to get and set items in armor slots as well as main/off-hand slots.
+- **Inventory API**: Added methods to get and set the selected hotbar slot.
+
+### Fixed
+
+- Fixed a crash caused by a conflict with the event system of the scripting API.
+
+### Changed
+
+- **BREAKING CHANGE**: `DataPacketReceiveEvent` and `DataPacketSendEvent` have been renamed to `PacketReceiveEvent`
+  and  
+  `PacketSendEvent`, respectively. Both events now provide a packet ID and payload instead of a `data` field.
+- **BREAKING CHANGE**: `Player::sendPacket` now requires a packet ID and payload as arguments instead of a `Packet`
+  object.
 
 ## [0.6.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.6.2) - 2025-03-09
 

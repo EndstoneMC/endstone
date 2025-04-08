@@ -22,16 +22,14 @@ namespace endstone::core {
 class DataPacket : public Packet {
 public:
     DataPacket(int packet_id, std::string_view payload);
-    [[nodiscard]] virtual MinecraftPacketIds getId() const;
-    [[nodiscard]] virtual std::string getName() const;
-    [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const;
-    virtual void write(BinaryStream &) const;
-    [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &);
-    [[nodiscard]] virtual bool disallowBatching() const;
-    [[nodiscard]] virtual bool isValid() const;
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string getName() const override;
+    void write(BinaryStream &stream) const override;
+    [[nodiscard]] int getPacketId() const;
+    [[nodiscard]] std::string_view getPayload() const;
 
 private:
-    [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &);
+    [[nodiscard]] Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
 
 private:
     int packet_id_;

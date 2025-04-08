@@ -24,18 +24,23 @@ public:
     explicit EndstoneItemStack(const ::ItemStack &item);
 
 protected:
-    const EndstoneItemStack *asEndstoneItemStack() const override;
-    EndstoneItemStack *asEndstoneItemStack() override;
+    bool isEndstoneItemStack() const override;
 
 public:
     [[nodiscard]] std::string getType() const override;
     void setType(std::string type) override;
     [[nodiscard]] int getAmount() const override;
     void setAmount(int amount) override;
-    std::shared_ptr<ItemMeta> getItemMeta() const override;
+    std::unique_ptr<ItemMeta> getItemMeta() const override;
+    bool hasItemMeta() const override;
+    bool setItemMeta(ItemMeta *meta) override;
 
-    static ::ItemStack toMinecraft(const std::shared_ptr<ItemStack> &item);
-    static std::shared_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
+    static ::ItemStack toMinecraft(const ItemStack *item);
+    static std::unique_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
+    static std::string getType(const ::ItemStack *item);
+    static std::unique_ptr<ItemMeta> getItemMeta(const ::ItemStack *item);
+    static bool hasItemMeta(const ::ItemStack *item);
+    static bool setItemMeta(::ItemStack *item, const ItemMeta *meta);
 
 private:
     void reset();

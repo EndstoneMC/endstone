@@ -14,55 +14,38 @@
 
 #include "endstone/core/network/data_packet.h"
 
-endstone::core::DataPacket::DataPacket(int packet_id, std::string_view payload)
-    : packet_id_(packet_id), payload_(payload)
-{
-}
+namespace endstone::core {
+DataPacket::DataPacket(int packet_id, std::string_view payload) : packet_id_(packet_id), payload_(payload) {}
 
-MinecraftPacketIds endstone::core::DataPacket::getId() const
+MinecraftPacketIds DataPacket::getId() const
 {
     return static_cast<MinecraftPacketIds>(packet_id_);
 }
 
-std::string endstone::core::DataPacket::getName() const
+std::string DataPacket::getName() const
 {
     return "DataPacket";
 }
 
-Bedrock::Result<void> endstone::core::DataPacket::checkSize(std::uint64_t packet_size, bool is_receiver_server) const
+void DataPacket::write(BinaryStream &stream) const
 {
-    if (is_receiver_server && packet_size > 0xA00000) {
-        return BEDROCK_NEW_ERROR(std::errc::message_size);
-    }
-    return {};
+    stream.writeRawBytes(payload_);
 }
 
-void endstone::core::DataPacket::write(BinaryStream &stream) const
+int DataPacket::getPacketId() const
 {
-    BinaryStream bs(payload_, false);
-    stream.writeStream(bs);
+    return packet_id_;
 }
 
-Bedrock::Result<void> endstone::core::DataPacket::read(ReadOnlyBinaryStream &stream)
+std::string_view DataPacket::getPayload() const
 {
-    if (auto result = _read(stream); !result.ignoreError()) {
-        return BEDROCK_RETHROW(result);
-    }
-    return {};
+    return payload_;
 }
 
-bool endstone::core::DataPacket::disallowBatching() const
-{
-    return false;
-}
-
-bool endstone::core::DataPacket::isValid() const
-{
-    return true;
-}
-
-Bedrock::Result<void> endstone::core::DataPacket::_read(ReadOnlyBinaryStream &stream)
+Bedrock::Result<void> DataPacket::_read(ReadOnlyBinaryStream &stream)
 {
     payload_ = stream.getView().substr(stream.getReadPointer());
     return {};
 }
+
+}  // namespace endstone::core

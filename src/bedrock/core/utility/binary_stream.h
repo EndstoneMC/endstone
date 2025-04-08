@@ -14,8 +14,7 @@
 
 #pragma once
 
-#include <entt/core/hashed_string.hpp>
-
+#include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/platform/result.h"
 
 class ReadOnlyBinaryStream {
@@ -27,7 +26,10 @@ private:
     virtual Bedrock::Result<void> read(void *target, std::uint64_t num);
 
 public:
+    void setReadPointer(size_t);
     [[nodiscard]] size_t getReadPointer() const;
+    [[nodiscard]] size_t getUnreadLength() const;
+    [[nodiscard]] size_t getLength() const;
     Bedrock::Result<unsigned char> getByte();
     Bedrock::Result<unsigned int> getUnsignedVarInt();
     [[nodiscard]] std::string_view getView() const;
@@ -45,20 +47,54 @@ BEDROCK_STATIC_ASSERT_SIZE(ReadOnlyBinaryStream, 72, 64);
 
 class BinaryStream : public ReadOnlyBinaryStream {
 public:
+    struct ConditionBlock {
+        bool control_value;
+        brstd::function_ref<void(BinaryStream &)> write_condition;
+        char const *doc_field_name;
+    };
+    static_assert(sizeof(ConditionBlock) == 32);
+
     using ReadOnlyBinaryStream::ReadOnlyBinaryStream;
     BinaryStream();
     [[nodiscard]] const std::string &getBuffer() const;
+    void reset();
 
-    void writeBool(bool value);
-    void writeByte(std::uint8_t value);
-    void writeUnsignedShort(std::uint16_t value);
-    void writeSignedShort(std::int16_t value);
-    void writeUnsignedVarInt(std::uint32_t value);
-    void writeUnsignedVarInt64(std::uint64_t value);
-    void writeVarInt(std::int32_t value);
-    void writeVarInt64(std::int64_t value);
-    void writeFloat(float value);
-    void writeString(std::string_view value);
+    ~BinaryStream() override = default;
+    virtual void writeBool(bool value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeByte(uint8_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeUnsignedShort(uint16_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeSignedShort(int16_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeUnsignedInt(uint32_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeSignedBigEndianInt(int32_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeSignedInt(int32_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeUnsignedInt64(uint64_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeSignedInt64(int64_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeUnsignedVarInt(uint32_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeUnsignedVarInt64(uint64_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeVarInt(int32_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeVarInt64(int64_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeDouble(double value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeFloat(float value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeFixedFloat(float value, char const *doc_field_name, char const *doc_field_notes, double size);
+    virtual void writeNormalizedFloat(float value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeString(std::string_view value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeIf(bool control_value, char const *doc_field_name,
+                         brstd::function_ref<void(BinaryStream &)> const &write_if_true,
+                         std::optional<brstd::function_ref<void(BinaryStream &)>> const &write_if_false);
+    virtual void writeConditional(char const *doc_field_name, std::initializer_list<ConditionBlock> &&conditions,
+                                  std::optional<brstd::function_ref<void(BinaryStream &)>> const &write_default);
+    virtual void branchingWrite_DEPRECATED(std::function<void(BinaryStream &, int)> &&branch_writer, int control_value,
+                                           int doc_range_begin, int doc_range_end, char const *control_doc_field_name);
+    virtual void branchingWrite_DEPRECATED(std::function<void(BinaryStream &, int)> &&branch_writer, int control_value,
+                                           std::vector<int> const &doc_control_set, char const *control_doc_field_name);
+
+private:
+    virtual void _writeArray(std::function<void(BinaryStream &)> &&size_writer,
+                             std::function<void(BinaryStream &)> &&writer, char const *doc_field_name,
+                             char const *doc_field_notes);
+
+public:
+    void writeRawBytes(std::string_view span);
     void writeStream(BinaryStream &);
 
 private:

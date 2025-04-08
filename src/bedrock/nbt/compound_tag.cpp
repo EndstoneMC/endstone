@@ -174,11 +174,29 @@ Tag *CompoundTag::get(StringView key)
     return nullptr;
 }
 
+int CompoundTag::getInt(StringView name) const
+{
+    if (const auto *tag = getIntTag(name)) {
+        return tag->data;
+    }
+    return 0;
+}
+
+const IntTag *CompoundTag::getIntTag(StringView name) const
+{
+    if (const auto *tag = get(name); tag) {
+        if (tag->getId() == Type::Int) {
+            return static_cast<const IntTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
 const std::string &CompoundTag::getString(StringView key) const
 {
     static std::string empty;
     if (const auto *tag = get(key); tag) {
-        if (tag->getId() == Tag::Type::String) {
+        if (tag->getId() == Type::String) {
             return static_cast<const StringTag *>(tag)->data;
         }
     }
@@ -200,6 +218,26 @@ CompoundTag *CompoundTag::getCompound(StringView key)
     if (auto *tag = get(key); tag) {
         if (tag->getId() == Type::Compound) {
             return static_cast<CompoundTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
+const ListTag *CompoundTag::getList(StringView name) const
+{
+    if (auto *tag = get(name); tag) {
+        if (tag->getId() == Type::List) {
+            return static_cast<const ListTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
+ListTag *CompoundTag::getList(StringView name)
+{
+    if (auto *tag = get(name); tag) {
+        if (tag->getId() == Type::List) {
+            return static_cast<ListTag *>(tag);
         }
     }
     return nullptr;

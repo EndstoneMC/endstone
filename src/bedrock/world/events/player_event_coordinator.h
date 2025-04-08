@@ -22,7 +22,5 @@
 
 class PlayerEventCoordinator : public EventCoordinator<PlayerEventListener> {
 public:
-protected:
-    friend class endstone::core::EndstoneServer;
-    std::unique_ptr<PlayerGameplayHandler> player_gameplay_handler_;
+    std::unique_ptr<PlayerGameplayHandler> player_gameplay_handler;  // ENDSTONE: private -> public
 };

@@ -34,7 +34,7 @@ class Dimension;
  * <p>
  * This is a live object, and only one Block may exist for any given location in a dimension.
  */
-class Block : public std::enable_shared_from_this<Block> {
+class Block {
 public:
     virtual ~Block() = default;
 
@@ -67,14 +67,14 @@ public:
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
     /**
      * @brief Sets the complete data for this block
      *
      * @param data new block specific data
      */
-    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(const BlockData &data) = 0;
 
     /**
      * @brief Sets the complete data for this block
@@ -82,7 +82,7 @@ public:
      * @param data new block specific data
      * @param apply_physics False to cancel physics on the changed block.
      */
-    virtual Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
+    virtual Result<void> setData(const BlockData &data, bool apply_physics) = 0;
 
     /**
      * @brief Gets the block at the given offsets
@@ -92,7 +92,7 @@ public:
      * @param offset_z Z-coordinate offset
      * @return Block at the given offsets
      */
-    virtual std::shared_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
     /**
      * @brief Gets the block at the given face
@@ -102,7 +102,7 @@ public:
      * @param face Face of this block to return
      * @return Block at the given face
      */
-    virtual std::shared_ptr<Block> getRelative(BlockFace face) = 0;
+    virtual std::unique_ptr<Block> getRelative(BlockFace face) = 0;
 
     /**
      * @brief Gets the block at the given distance of the given face
@@ -111,7 +111,7 @@ public:
      * @param distance Distance to get the block at
      * @return Block at the given face
      */
-    virtual std::shared_ptr<Block> getRelative(BlockFace face, int distance) = 0;
+    virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
 
     /**
      * @brief Gets the dimension which contains this Block
@@ -149,7 +149,7 @@ public:
     [[nodiscard]] virtual Location getLocation() const = 0;
 
     /**
-     * Captures the current state of this block.
+     * @brief Captures the current state of this block.
      * <p>
      * The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a
      * sign after you capture its state.
@@ -157,6 +157,13 @@ public:
      * @return BlockState with the current state of this block.
      */
     [[nodiscard]] virtual std::unique_ptr<BlockState> captureState() const = 0;
+
+    /**
+     * @brief Creates a copy of the current block.
+     *
+     * @return Block
+     */
+    [[nodiscard]] virtual std::unique_ptr<Block> clone() const = 0;
 };
 
 }  // namespace endstone

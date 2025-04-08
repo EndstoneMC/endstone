@@ -12,13 +12,13 @@ from pathlib import Path
 from typing import Union
 
 import click
+import importlib_resources
 import requests
 import sentry_crashpad
 from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
 
 from endstone import __minecraft_version__ as minecraft_version
-from endstone import __version__ as endstone_version
 
 
 class Bootstrap:
@@ -48,6 +48,10 @@ class Bootstrap:
     @property
     def executable_path(self) -> Path:
         return self.server_path / self.executable_filename
+
+    @property
+    def config_path(self) -> Path:
+        return self.server_path / "endstone.toml"
 
     @property
     def plugin_path(self) -> Path:
@@ -141,6 +145,10 @@ class Bootstrap:
         shutil.copytree(
             Path(sentry_crashpad._get_executable("crashpad_handler")).parent, self.server_path, dirs_exist_ok=True
         )
+        if not self.config_path.exists():
+            ref = importlib_resources.files("endstone") / "config" / "endstone.toml"
+            with importlib_resources.as_file(ref) as path:
+                shutil.copy(path, self.config_path)
 
     def _install(self) -> None:
         """

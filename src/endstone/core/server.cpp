@@ -19,6 +19,7 @@
 
 #include <boost/algorithm/string.hpp>
 #include <pybind11/pybind11.h>
+#include <toml++/toml.h>
 
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
@@ -31,12 +32,6 @@
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
-#include "endstone/core/event/handlers/actor_gameplay_handler.h"
-#include "endstone/core/event/handlers/block_gameplay_handler.h"
-#include "endstone/core/event/handlers/level_gameplay_handler.h"
-#include "endstone/core/event/handlers/player_gameplay_handler.h"
-#include "endstone/core/event/handlers/scripting_event_handler.h"
-#include "endstone/core/event/handlers/server_network_event_handler.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -71,13 +66,20 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     command_sender_ = EndstoneConsoleCommandSender::create();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
+
+    try {
+        toml::table tbl = toml::parse_file("endstone.toml");
+        allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
+    }
+    catch (const toml::parse_error &err) {
+        EndstoneServer::getLogger().error("Failed to parse config file: {}", err);
+    }
 }
 
 EndstoneServer::~EndstoneServer()
 {
     py::gil_scoped_acquire acquire{};
     disablePlugins();
-    unregisterEventListeners();
 }
 
 void EndstoneServer::init(ServerInstance &server_instance)
@@ -102,7 +104,6 @@ void EndstoneServer::setLevel(::Level &level)
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
-    registerEventListeners();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
@@ -122,6 +123,11 @@ void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IReso
 PackSource &EndstoneServer::getPackSource() const
 {
     return *resource_pack_source_;
+}
+
+bool EndstoneServer::getAllowClientPacks() const
+{
+    return allow_client_packs_;
 }
 
 void EndstoneServer::loadResourcePacks()
@@ -156,28 +162,6 @@ void EndstoneServer::loadResourcePacks()
     auto &level_stack = const_cast<ResourcePackStack &>(manager->getStack(ResourcePackStackType::LEVEL));
     level_stack.stack.insert(level_stack.stack.end(), std::make_move_iterator(pack_stack->stack.begin()),
                              std::make_move_iterator(pack_stack->stack.end()));
-}
-
-void EndstoneServer::registerEventListeners()
-{
-    auto &level = level_->getHandle();
-    wrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler_);
-    wrap<EndstoneBlockGameplayHandler>(level.getBlockEventCoordinator().block_gameplay_handler_);
-    wrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler_);
-    wrap<EndstonePlayerGameplayHandler>(level.getServerPlayerEventCoordinator().player_gameplay_handler_);
-    wrap<EndstoneScriptingEventHandler>(level.getScriptingEventCoordinator().scripting_event_handler_);
-    wrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler_);
-}
-
-void EndstoneServer::unregisterEventListeners()
-{
-    auto &level = level_->getHandle();
-    unwrap<EndstoneActorGameplayHandler>(level.getActorEventCoordinator().actor_gameplay_handler_);
-    unwrap<EndstoneBlockGameplayHandler>(level.getBlockEventCoordinator().block_gameplay_handler_);
-    unwrap<EndstoneLevelGameplayHandler>(level.getLevelEventCoordinator().level_gameplay_handler_);
-    unwrap<EndstonePlayerGameplayHandler>(level.getServerPlayerEventCoordinator().player_gameplay_handler_);
-    unwrap<EndstoneScriptingEventHandler>(level.getScriptingEventCoordinator().scripting_event_handler_);
-    unwrap<EndstoneServerNetworkEventHandler>(level.getServerNetworkEventCoordinator().server_network_event_handler_);
 }
 
 std::string EndstoneServer::getName() const
@@ -378,10 +362,8 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
-    unregisterEventListeners();
     server_instance_->getMinecraft()->requestResourceReload();
     level_->getHandle().loadFunctionManager();
-    registerEventListeners();
 }
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
@@ -478,12 +460,12 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string type) const
+Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string type) const
 {
     return createBlockData(type, {});
 }
 
-Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
+Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
@@ -499,7 +481,7 @@ Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
         return nonstd::make_unexpected(make_error("Block type {} cannot be found in the registry.", type));
     }
 
-    return std::make_shared<EndstoneBlockData>(const_cast<::Block &>(*block));
+    return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));
 }
 
 PlayerBanList &EndstoneServer::getBanList() const

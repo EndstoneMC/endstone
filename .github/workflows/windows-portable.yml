@@ -32,8 +32,6 @@ jobs:
           key: ${{ runner.os }}-conan-RelWithDebInfo-${{ hashFiles('conanfile.py') }}
           restore-keys: |
             ${{ runner.os }}-conan-RelWithDebInfo-
-            ${{ runner.os }}-conan-
-            ${{ runner.os }}-
 
       - name: Set up MSVC
         uses: ilammy/msvc-dev-cmd@v1
@@ -44,7 +42,7 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.23.0
+        uses: pypa/cibuildwheel@v2.23.2
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CIBW_BUILD: cp312-win_amd64

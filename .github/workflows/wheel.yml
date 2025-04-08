@@ -39,8 +39,6 @@ jobs:
           key: ${{ runner.os }}-conan-RelWithDebInfo-${{ hashFiles('conanfile.py') }}
           restore-keys: |
             ${{ runner.os }}-conan-RelWithDebInfo-
-            ${{ runner.os }}-conan-
-            ${{ runner.os }}-
 
       - name: Set up MSVC (Windows)
         if: runner.os == 'Windows'
@@ -56,7 +54,7 @@ jobs:
         run: echo "CONAN_HOME=/host${HOME}/.conan2" >> $GITHUB_ENV
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.23.0
+        uses: pypa/cibuildwheel@v2.23.2
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}

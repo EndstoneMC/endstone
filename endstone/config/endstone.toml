@@ -1,0 +1,4 @@
+[settings]
+# Allow clients to use their own packs when texturepack-required is set to true in server.properties.
+# Has no effect if texturepack-required is false.
+allow-client-packs = false

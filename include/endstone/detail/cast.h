@@ -114,4 +114,4 @@ Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const, void *address))(Arg..
     return *reinterpret_cast<decltype(&fp)>(&temp);
 }
 
-}  // namespace endstone::runtime
+}  // namespace endstone::detail

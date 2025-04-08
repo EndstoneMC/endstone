@@ -22,7 +22,5 @@
 
 class ScriptingEventCoordinator : public EventCoordinatorPimpl<ScriptingEventListener> {
 public:
-protected:
-    friend class endstone::core::EndstoneServer;
-    std::unique_ptr<ScriptingEventHandler> scripting_event_handler_;  // +112 (+120)
+    std::unique_ptr<ScriptingEventHandler> scripting_event_handler;  // Endstone: private -> public
 };

@@ -42,6 +42,7 @@ class Item {
 public:
     static const std::uint8_t MAX_STACK_SIZE = 64;
     static const int INVALID_ITEM_ID = -1;
+    static const std::string TAG_DAMAGE;
 
     Item(const std::string &, short);
 

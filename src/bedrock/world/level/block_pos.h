@@ -24,6 +24,7 @@ class BlockPos {
 public:
     static const BlockPos ZERO;
 
+    BlockPos() = default;
     BlockPos(int x, int y, int z) : x(x), y(y), z(z){};
     BlockPos(const Vec3 &vec)
         : x(static_cast<int>(std::floorf(vec.x))), y(static_cast<int>(std::floorf(vec.y))),

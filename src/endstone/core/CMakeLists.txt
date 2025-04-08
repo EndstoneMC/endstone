@@ -13,6 +13,7 @@ find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 REQUIRED)
 find_package(sentry REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(tomlplusplus REQUIRED)
 
 add_library(endstone_core
         crash_handler.cpp
@@ -54,18 +55,12 @@ add_library(endstone_core
         command/defaults/status_command.cpp
         command/defaults/version_command.cpp
         damage/damage_source.cpp
-        event/handlers/actor_gameplay_handler.cpp
-        event/handlers/block_gameplay_handler.cpp
-        event/handlers/level_gameplay_handler.cpp
-        event/handlers/scripting_event_handler.cpp
-        event/handlers/player_gameplay_handler.cpp
-        event/handlers/server_network_event_handler.cpp
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/inventory.cpp
+        inventory/item_factory.cpp
         inventory/item_stack.cpp
         inventory/player_inventory.cpp
-        inventory/meta/item_meta.cpp
         lang/language.cpp
         level/chunk.cpp
         level/dimension.cpp
@@ -110,7 +105,8 @@ target_link_libraries(endstone_core PUBLIC
         nlohmann_json::nlohmann_json
         pybind11::embed
         sentry::sentry
-        spdlog::spdlog)
+        spdlog::spdlog
+        tomlplusplus::tomlplusplus)
 target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     add_subdirectory(devtools)

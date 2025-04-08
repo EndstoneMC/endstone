@@ -13,7 +13,7 @@
 
 [![CI](https://github.com/EndstoneMC/endstone/actions/workflows/ci.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/ci.yml)
 [![Documentation](https://github.com/EndstoneMC/endstone/actions/workflows/docs.yml/badge.svg)](https://endstone.dev/)
-[![Minecraft - Version](https://img.shields.io/badge/minecraft-v1.21.60_(Bedrock)-black)](https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs)
+[![Minecraft - Version](https://img.shields.io/badge/minecraft-v1.21.70_(Bedrock)-black)](https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
 [![Python](https://img.shields.io/pypi/pyversions/endstone?logo=python&logoColor=white)](https://www.python.org/)
 [![GitHub License](https://img.shields.io/github/license/endstonemc/endstone)](LICENSE)
@@ -156,7 +156,7 @@ For advanced users, you may build Endstone locally from the source.
 First, clone the repository:
 
 ```shell
-git clone https://github.com/EndstoneMC/endstone.git
+git clone https://github.com/EndstoneMC/endstone.git --recurse-submodule
 cd endstone
 ```
 

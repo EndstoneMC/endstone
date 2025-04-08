@@ -127,6 +127,43 @@ nlohmann::json FormCodec::toJson(const Toggle &toggle)
     return json;
 }
 
+template <>
+nlohmann::json FormCodec::toJson(const Divider &divider)
+{
+    nlohmann::json json;
+    json["type"] = "divider";
+    // NOTE: Useless but if we do not add it, the form will be rejected by client
+    json["text"] = "";
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const Header &header)
+{
+    nlohmann::json json;
+    json["type"] = "header";
+    // NOTE: Useless but if we do not add it, the form will be rejected by client
+    json["text"] = toJson(header.getLabel());
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const Button &button)
+{
+    nlohmann::json json;
+    json["text"] = toJson(button.getText());
+    if (auto icon = button.getIcon(); icon.has_value()) {
+        if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
+            json["image"]["type"] = "url";
+        }
+        else {
+            json["image"]["type"] = "path";
+        }
+        json["image"]["data"] = icon.value();
+    }
+    return json;
+}
+
 /**
  * Forms
  */
@@ -143,32 +180,18 @@ nlohmann::json FormCodec::toJson(const MessageForm &form)
 }
 
 template <>
-nlohmann::json FormCodec::toJson(const ActionForm::Button &button)
-{
-    nlohmann::json json;
-    json["text"] = toJson(button.getText());
-    if (auto icon = button.getIcon(); icon.has_value()) {
-        if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
-            json["image"]["type"] = "url";
-        }
-        else {
-            json["image"]["type"] = "path";
-        }
-        json["image"]["data"] = icon.value();
-    }
-    return json;
-}
-
-template <>
 nlohmann::json FormCodec::toJson(const ActionForm &form)
 {
     nlohmann::json json;
     json["type"] = "form";
     json["title"] = toJson(form.getTitle());
     json["content"] = toJson(form.getContent());
-    json["buttons"] = nlohmann::json::array();
-    for (const auto &button : form.getButtons()) {
-        json["buttons"].push_back(toJson(button));
+    json["elements"] = nlohmann::json::array();
+    for (const auto &control : form.getControls()) {
+        json["elements"].push_back(std::visit(overloaded{[](auto &&arg) {
+                                                 return toJson(arg);
+                                             }},
+                                             control));
     }
     return json;
 }

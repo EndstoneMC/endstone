@@ -66,7 +66,7 @@ public:
      * @param z Z-coordinate of the block
      * @return Block at the given coordinates
      */
-    [[nodiscard]] virtual std::shared_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
 
     /**
      * @brief Gets the Block at the given Location.
@@ -74,7 +74,7 @@ public:
      * @param location Location of the block
      * @return Block at the given coordinates
      */
-    [[nodiscard]] virtual std::shared_ptr<Block> getBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(Location location) const = 0;
 
     /**
      * @brief Gets the highest non-empty (impassable) coordinate at the given coordinates.
@@ -92,7 +92,7 @@ public:
      * @param z Z-coordinate of the block
      * @return Highest non-empty block
      */
-    [[nodiscard]] virtual std::shared_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
 
     /**
      * @brief Gets the highest non-empty (impassable) block at the given Location.
@@ -100,7 +100,7 @@ public:
      * @param location Coordinates to get the highest block
      * @return Highest non-empty block
      */
-    [[nodiscard]] virtual std::shared_ptr<Block> getHighestBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(Location location) const = 0;
 
     /**
      * @brief Gets a list of all loaded Chunks

@@ -20,16 +20,25 @@ namespace endstone::python {
 
 void init_inventory(py::module_ &m)
 {
-    py::class_<ItemMeta, std::shared_ptr<ItemMeta>>(m, "ItemMeta",
-                                                    "Represents the storage mechanism for auxiliary item data.")
+    py::class_<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
+        .def("clone", &ItemMeta::clone, "Creates a clone of the current metadata.")
+        .def_property_readonly("has_display_name", &ItemMeta::hasDisplayName, "Checks for existence of a display name.")
+        .def_property("display_name", &ItemMeta::getDisplayName, &ItemMeta::setDisplayName,
+                      "Gets or sets the display name.")
         .def_property_readonly("has_lore", &ItemMeta::hasLore, "Checks for existence of lore.")
-        .def_property("lore", &ItemMeta::getLore, &ItemMeta::setLore, "Gets or sets the lore for this item.");
+        .def_property("lore", &ItemMeta::getLore, &ItemMeta::setLore, "Gets or sets the lore for this item.")
+        .def_property_readonly("has_damage", &ItemMeta::hasDamage, "Checks to see if this item has damage")
+        .def_property("damage", &ItemMeta::getDamage, &ItemMeta::setDamage, "Gets or sets the damage.");
 
-    py::class_<ItemStack, std::shared_ptr<ItemStack>>(m, "ItemStack", "Represents a stack of items.")
+    py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
+
+    py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.")
         .def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
         .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
                       "Gets or sets the amount of items in this stack.")
+        .def_property_readonly("item_meta", &ItemStack::getItemMeta, "Gets a copy of the ItemMeta of this ItemStack.")
+        .def("set_item_meta", &ItemStack::setItemMeta, py::arg("meta"), "Set the ItemMeta of this ItemStack.")
         .def("__str__", [](const ItemStack &self) { return fmt::format("{}", self); });
 
     py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")
@@ -38,12 +47,8 @@ void init_inventory(py::module_ &m)
                                "Returns the maximum stack size for an ItemStack in this inventory.")
         .def("get_item", &Inventory::getItem, py::arg("index"),
              "Returns the ItemStack found in the slot at the given index")
-        .def(
-            "set_item",
-            [](Inventory &self, int index, std::optional<std::shared_ptr<ItemStack>> item) {
-                self.setItem(index, item.value_or(nullptr));
-            },
-            py::arg("index"), py::arg("item"), "Stores the ItemStack at the given index of the inventory.")
+        .def("set_item", &Inventory::setItem, py::arg("index"), py::arg("item"),
+             "Stores the ItemStack at the given index of the inventory.")
         .def("add_item", &Inventory::addItem, py::arg("item"),
              "Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as "
              "well as it can.")
@@ -57,25 +62,24 @@ void init_inventory(py::module_ &m)
         .def("__len__", &Inventory::getSize, "Returns the size of the inventory")
         .def("__get_item__", &Inventory::getItem, py::arg("index"),
              "Returns the ItemStack found in the slot at the given index")
-        .def(
-            "__set_item__",
-            [](Inventory &self, int index, std::optional<std::shared_ptr<ItemStack>> item) {
-                self.setItem(index, item.value_or(nullptr));
-            },
-            py::arg("index"), py::arg("item"), "Stores the ItemStack at the given index of the inventory.");
+        .def("__set_item__", &Inventory::setItem, py::arg("index"), py::arg("item"),
+             "Stores the ItemStack at the given index of the inventory.");
 
     py::class_<PlayerInventory, Inventory>(
         m, "PlayerInventory",
         "Interface to the inventory of a Player, including the four armor slots and any extra slots.")
-        .def_property_readonly("helmet", &PlayerInventory::getHelmet, "Gets the ItemStack from the helmet slot")
-        .def_property_readonly("chestplate", &PlayerInventory::getChestplate,
-                               "Gets the ItemStack from the chestplate slot")
-        .def_property_readonly("leggings", &PlayerInventory::getLeggings, "Gets the ItemStack from the leg slot")
-        .def_property_readonly("boots", &PlayerInventory::getBoots, "Gets the ItemStack from the boots slot")
-        .def_property_readonly("item_in_main_hand", &PlayerInventory::getItemInMainHand,
-                               "Gets the item the player is currently holding in their main hand.")
-        .def_property_readonly("item_in_off_hand", &PlayerInventory::getItemInOffHand,
-                               "Gets the item the player is currently holding in their off hand.")
+        .def_property("helmet", &PlayerInventory::getHelmet, &PlayerInventory::setHelmet,
+                      "Gets or sets the ItemStack in the helmet slot")
+        .def_property("chestplate", &PlayerInventory::getChestplate, &PlayerInventory::setChestplate,
+                      "Gets or sets the ItemStack in the chestplate slot")
+        .def_property("leggings", &PlayerInventory::getLeggings, &PlayerInventory::setLeggings,
+                      "Gets or sets the ItemStack in the leg slot")
+        .def_property("boots", &PlayerInventory::getBoots, &PlayerInventory::setBoots,
+                      "Gets or sets the ItemStack in the boots slot")
+        .def_property("item_in_main_hand", &PlayerInventory::getItemInMainHand, &PlayerInventory::setItemInMainHand,
+                      "Gets or sets the item the player is currently holding in their main hand.")
+        .def_property("item_in_off_hand", &PlayerInventory::getItemInOffHand, &PlayerInventory::setItemInOffHand,
+                      "Gets or sets the item the player is currently holding in their off hand.")
         .def_property("held_item_slot", &PlayerInventory::getHeldItemSlot, &PlayerInventory::setHeldItemSlot,
                       "Gets or sets the slot number of the currently held item");
 }

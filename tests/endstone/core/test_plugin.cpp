@@ -19,7 +19,6 @@ public:
     void onLoad() override
     {
         getLogger().info("onLoad is called");
-        getLogger().info("Server version is {}", endstone::getServer().getVersion());
     }
 
     void onEnable() override

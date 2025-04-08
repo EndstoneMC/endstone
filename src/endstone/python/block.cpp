@@ -20,7 +20,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-void init_block(py::module_ &m, py::class_<Block, std::shared_ptr<Block>> &block)
+void init_block(py::module_ &m, py::class_<Block> &block)
 {
     py::enum_<BlockFace>(m, "BlockFace")
         .value("DOWN", BlockFace::Down)
@@ -30,9 +30,10 @@ void init_block(py::module_ &m, py::class_<Block, std::shared_ptr<Block>> &block
         .value("WEST", BlockFace::West)
         .value("EAST", BlockFace::East);
 
-    py::class_<BlockData, std::shared_ptr<BlockData>>(m, "BlockData", "Represents the data related to a live block")
+    py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block")
         .def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
         .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states for this block.")
+        .def_property_readonly("runtime_id", &BlockData::getRuntimeId, "Gets the runtime id for this block.")
         .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });
 
     py::class_<BlockState>(m, "BlockState",
@@ -50,14 +51,11 @@ void init_block(py::module_ &m, py::class_<Block, std::shared_ptr<Block>> &block
              py::arg("apply_physics") = true, "Attempts to update the block represented by this state.")
         .def("__str__", [](const BlockState &self) { return fmt::format("{}", self); });
 
-    block
-        .def_property("type", &Block::getType, py::overload_cast<std::string>(&Block::setType),
-                      "Gets or sets the type of the block.")
+    block.def_property_readonly("type", &Block::getType, "Gets or sets the type of the block.")
         .def("set_type", py::overload_cast<std::string, bool>(&Block::setType), py::arg("type"),
              py::arg("apply_physics") = true, "Sets the type of this block")
-        .def_property("data", &Block::getData, py::overload_cast<std::shared_ptr<BlockData>>(&Block::setData),
-                      "Gets or sets the complete data for this block")
-        .def("set_data", py::overload_cast<std::shared_ptr<BlockData>, bool>(&Block::setData), py::arg("data"),
+        .def_property_readonly("data", &Block::getData, "Gets the complete data for this block")
+        .def("set_data", py::overload_cast<const BlockData &, bool>(&Block::setData), py::arg("data"),
              py::arg("apply_physics") = true, "Sets the complete data for this block")
         .def("get_relative", py::overload_cast<int, int, int>(&Block::getRelative), py::arg("offset_x"),
              py::arg("offset_y"), py::arg("offset_z"), "Gets the block at the given offsets")

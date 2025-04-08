@@ -17,6 +17,8 @@
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/level/block/block.h"
 
+const std::string Item::TAG_DAMAGE = "Damage";
+
 std::int16_t Item::getId() const
 {
     return id_;

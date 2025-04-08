@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import Inventory, ItemMeta, ItemStack, PlayerInventory
+from endstone._internal.endstone_python import Inventory, ItemMeta, ItemStack, MapMeta, PlayerInventory
 
-__all__ = ["ItemStack", "ItemMeta", "Inventory", "PlayerInventory"]
+__all__ = ["ItemStack", "ItemMeta", "Inventory", "MapMeta", "PlayerInventory"]

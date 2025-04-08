@@ -5,7 +5,7 @@ from typing import Any, Dict
 import psutil
 from endstone_bstats import AdvancedPie, DrilldownPie, MetricsBase, MetricsConfig, SimplePie, SingleLineChart
 
-from endstone import Server
+from endstone import Server, __minecraft_version__
 
 
 class Metrics(MetricsBase):
@@ -28,7 +28,7 @@ class Metrics(MetricsBase):
 
         self.add_custom_chart(SingleLineChart("players", lambda: len(self._server.online_players)))
         self.add_custom_chart(SimplePie("endstone_version", lambda: self._server.version))
-        self.add_custom_chart(SimplePie("minecraft_version", lambda: self._server.minecraft_version))
+        self.add_custom_chart(SimplePie("minecraft_version", lambda: __minecraft_version__))
         self.add_custom_chart(DrilldownPie("online_mode", self._get_online_mode))
         self.add_custom_chart(DrilldownPie("python_version", self._get_python_version))
         self.add_custom_chart(AdvancedPie("player_platform", self._get_player_platforms))

@@ -33,7 +33,7 @@ EndstoneBlockState::EndstoneBlockState(Dimension &dimension, BlockPos block_pos,
 {
 }
 
-std::shared_ptr<Block> EndstoneBlockState::getBlock() const
+std::unique_ptr<Block> EndstoneBlockState::getBlock() const
 {
     return EndstoneBlock::at(block_source_, block_pos_);
 }
@@ -57,17 +57,14 @@ Result<void> EndstoneBlockState::setType(std::string type)
     return {};
 }
 
-std::shared_ptr<BlockData> EndstoneBlockState::getData() const
+std::unique_ptr<BlockData> EndstoneBlockState::getData() const
 {
-    return std::make_shared<EndstoneBlockData>(*block_);
+    return std::make_unique<EndstoneBlockData>(*block_);
 }
 
-Result<void> EndstoneBlockState::setData(std::shared_ptr<BlockData> data)
+Result<void> EndstoneBlockState::setData(const BlockData &data)
 {
-    if (!data) {
-        return nonstd::make_unexpected(make_error("Block data cannot be null"));
-    }
-    block_ = &std::dynamic_pointer_cast<EndstoneBlockData>(data)->getHandle();
+    block_ = &static_cast<const EndstoneBlockData &>(data).getHandle();
     return {};
 }
 
@@ -112,7 +109,7 @@ bool EndstoneBlockState::update(bool force, bool apply_physics)
     if (block->getType() != getType() && !force) {
         return false;
     }
-    block->setData(getData(), apply_physics);
+    block->setData(*getData(), apply_physics);
     return true;
 }
 

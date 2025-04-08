@@ -57,6 +57,7 @@ public:
     [[nodiscard]] bool hasUserData() const;
     void setUserData(std::unique_ptr<CompoundTag>);
     [[nodiscard]] const CompoundTag *getUserData() const;
+    CompoundTag *getUserData();
     [[nodiscard]] bool isBlock() const;
     [[nodiscard]] const Block *getBlock() const;
     void set(std::uint8_t count);
@@ -64,6 +65,7 @@ public:
 
     static const std::string TAG_DISPLAY;
     static const std::string TAG_DISPLAY_NAME;
+    static const std::string TAG_LORE;
     static constexpr int ID_MASK = 0xffff;
     static constexpr int ENCHANT_MASK = 0x8000;
     static constexpr int AUX_VALUE_MASK = 0x7fff;

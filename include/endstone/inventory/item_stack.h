@@ -21,6 +21,7 @@
 #include <memory>
 
 #include "endstone/inventory/meta/item_meta.h"
+#include "item_factory.h"
 
 namespace endstone {
 
@@ -31,7 +32,7 @@ class EndstoneItemStack;
 /**
  * @brief Represents a stack of items.
  */
-class ItemStack : public std::enable_shared_from_this<ItemStack> {
+class ItemStack {
 public:
     ItemStack() = default;
     explicit ItemStack(std::string type, int amount = 1) : type_(std::move(type)), amount_(amount) {}
@@ -40,14 +41,9 @@ public:
 
 protected:
     friend class core::EndstoneItemStack;
-    virtual const core::EndstoneItemStack *asEndstoneItemStack() const
+    virtual bool isEndstoneItemStack() const
     {
-        return nullptr;
-    }
-
-    virtual core::EndstoneItemStack *asEndstoneItemStack()
-    {
-        return nullptr;
+        return false;
     }
 
 public:
@@ -97,17 +93,45 @@ public:
      *
      * @return a copy of the current ItemStack's ItemMeta
      */
-    virtual std::shared_ptr<ItemMeta> getItemMeta() const
+    virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
-        // TODO(item): return the actual item meta
-        return nullptr;
+        return meta_ == nullptr ? ItemFactory::getItemMeta(type_) : meta_->clone();
     }
 
-    // TODO(item): setItemMeta
+    /**
+     * @brief Checks to see if any metadata has been defined.
+     *
+     * @return Returns true if some metadata has been set for this item
+     */
+    virtual bool hasItemMeta() const
+    {
+        return meta_ != nullptr;
+    }
+
+    /**
+     * @brief Set the ItemMeta of this ItemStack.
+     *
+     * @param meta new ItemMeta, or null to indicate meta data be cleared.
+     * @return True if successfully applied ItemMeta
+     */
+    virtual bool setItemMeta(ItemMeta *meta)
+    {
+        if (!meta) {
+            meta_ = nullptr;
+            return true;
+        }
+        // TODO(item): applicability check, support type-specific meta
+        meta_ = ItemFactory::asMetaFor(type_, meta);
+        if (meta_.get() == meta) {
+            meta_ = meta->clone();
+        }
+        return true;
+    }
 
 private:
     std::string type_ = "minecraft:air";
     int amount_ = 0;
+    std::unique_ptr<ItemMeta> meta_ = nullptr;
 };
 
 }  // namespace endstone

@@ -30,27 +30,27 @@ int EndstoneInventory::getMaxStackSize() const
     return container_.getMaxStackSize();
 }
 
-std::shared_ptr<ItemStack> EndstoneInventory::getItem(int index) const
+std::unique_ptr<ItemStack> EndstoneInventory::getItem(int index) const
 {
     return EndstoneItemStack::fromMinecraft(container_.getItem(index));
 }
 
-void EndstoneInventory::setItem(int index, std::shared_ptr<ItemStack> item)
+void EndstoneInventory::setItem(int index, const ItemStack *item)
 {
     const auto item_stack = EndstoneItemStack::toMinecraft(item);
     container_.setItemWithForceBalance(index, item_stack, true);
 }
 
-void EndstoneInventory::addItem(ItemStack &item)
+void EndstoneInventory::addItem(const ItemStack &item)
 {
-    auto item_stack = EndstoneItemStack::toMinecraft(item.shared_from_this());
+    auto item_stack = EndstoneItemStack::toMinecraft(&item);
     container_.addItemWithForceBalance(item_stack);
 }
 
-std::vector<std::shared_ptr<ItemStack>> EndstoneInventory::getContents() const
+std::vector<std::unique_ptr<ItemStack>> EndstoneInventory::getContents() const
 {
     const auto slots = container_.getSlots();
-    std::vector<std::shared_ptr<ItemStack>> contents;
+    std::vector<std::unique_ptr<ItemStack>> contents;
     for (const auto &slot : slots) {
         if (slot && !slot->isNull()) {
             contents.push_back(EndstoneItemStack::fromMinecraft(*slot));
@@ -62,9 +62,9 @@ std::vector<std::shared_ptr<ItemStack>> EndstoneInventory::getContents() const
     return contents;
 }
 
-int EndstoneInventory::first(ItemStack &item)
+int EndstoneInventory::first(const ItemStack &item) const
 {
-    const auto item_stack = EndstoneItemStack::toMinecraft(item.shared_from_this());
+    const auto item_stack = EndstoneItemStack::toMinecraft(&item);
     return container_.findFirstSlotForItem(item_stack);
 }
 

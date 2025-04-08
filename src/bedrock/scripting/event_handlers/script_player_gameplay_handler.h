@@ -12,34 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/meta/item_meta.h"
+#pragma once
 
-namespace endstone::core {
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/player_events.h"
 
-ItemMeta::Type EndstoneItemMeta::getType() const
-{
-    return Type::Base;
-}
-
-bool EndstoneItemMeta::hasLore() const
-{
-    return lore_.has_value() && !lore_.value().empty();
-}
-
-std::optional<std::vector<std::string>> EndstoneItemMeta::getLore() const
-{
-    if (!hasLore()) {
-        return std::nullopt;
-    }
-    return lore_;
-}
-
-void EndstoneItemMeta::setLore(std::optional<std::vector<std::string>> lore)
-{
-    lore_ = std::move(lore);
-    if (!hasLore()) {
-        lore_ = std::nullopt;
-    }
-}
-
-}  // namespace endstone::core
+class ScriptPlayerGameplayHandler {
+public:
+    ENDSTONE_VHOOK HandlerResult handleEvent1(const PlayerGameplayEvent<void> &event);
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent2(
+        const PlayerGameplayEvent<CoordinatorResult> &event);
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent3(
+        MutablePlayerGameplayEvent<CoordinatorResult> &event);
+};

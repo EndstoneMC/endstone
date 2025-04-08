@@ -14,25 +14,16 @@
 
 #pragma once
 
-#include <memory>
+#include <bedrock/world/item/item_stack_base.h>
 
-#include "bedrock/gameplayhandlers/scripting_event_handler.h"
+#include "endstone/inventory/item_factory.h"
 
 namespace endstone::core {
 
-class EndstoneScriptingEventHandler final : public ScriptingEventHandler {
+class EndstoneItemFactory {
 public:
-    explicit EndstoneScriptingEventHandler(std::unique_ptr<ScriptingEventHandler> handle);
-    GameplayHandlerResult<CoordinatorResult> handleEvent(
-        MutableScriptingGameplayEvent<CoordinatorResult> &event) override;
-    GameplayHandlerResult<CoordinatorResult> handleEvent(
-        const ScriptingGameplayEvent<CoordinatorResult> &event) override;
-    std::unique_ptr<ScriptingEventHandler> unwrap();
-
-private:
-    bool handleEvent(const ScriptCommandMessageEvent &event);
-
-    std::unique_ptr<ScriptingEventHandler> handle_;
+    static std::unique_ptr<ItemMeta> getItemMeta(std::string_view type, const ItemStackBase &item);
+    static void applyToItem(const ItemMeta &meta, ItemStackBase &item);
 };
 
 }  // namespace endstone::core

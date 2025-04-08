@@ -555,15 +555,17 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
                                    std::optional<std::string> molang_variables_json) const
 {
     BinaryStream stream;
-    stream.writeByte(static_cast<int>(getDimension().getType()));
-    stream.writeVarInt64(-1);  // self
-    stream.writeFloat(x);
-    stream.writeFloat(y);
-    stream.writeFloat(z);
-    stream.writeString(name);
-    stream.writeBool(molang_variables_json.has_value());
+    stream.writeByte(static_cast<int>(getDimension().getType()), "Dimension Id", nullptr);
+    stream.writeVarInt64(-1, "Actor Unique ID", nullptr);  // -1 = self
+    stream.writeFloat(x, "X", nullptr);
+    stream.writeFloat(y, "Y", nullptr);
+    stream.writeFloat(z, "Z", nullptr);
+    stream.writeString(name, "Effect Name",
+                       "Should be an effect that exists on the client. No-op if the effect doesn't exist.");
+    stream.writeBool(molang_variables_json.has_value(), "Has Value",
+                     "If true, follow with appropriate data type, otherwise nothing");
     if (molang_variables_json.has_value()) {
-        stream.writeString(molang_variables_json.value());
+        stream.writeString(molang_variables_json.value(), "Serialized Variable Map", nullptr);
     }
     sendPacket(static_cast<int>(MinecraftPacketIds::SpawnParticleEffect), stream.getView());
 }
@@ -625,7 +627,7 @@ void EndstonePlayer::playSound(Location location, std::string sound, float volum
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlaySound);
     const auto pk = std::static_pointer_cast<PlaySoundPacket>(packet);
     pk->name = sound;
-    pk->pos = {location.getX(), location.getY(), location.getZ()};
+    pk->pos = {static_cast<int>(location.getX()), static_cast<int>(location.getY()), static_cast<int>(location.getZ())};
     pk->volume = volume;
     pk->pitch = pitch;
     getPlayer().sendNetworkPacket(*packet);
@@ -760,20 +762,23 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
         try {
             std::visit(overloaded{
                            [&](const MessageForm &form) {
-                               if (auto callback = form.getOnSubmit()) {
+                               if (const auto callback = form.getOnSubmit()) {
                                    callback(this, json.get<bool>() ? 0 : 1);
                                }
                            },
                            [&](const ActionForm &form) {
-                               int selection = json.get<int>();
-                               if (auto callback = form.getOnSubmit()) {
+                               const int selection = json.get<int>();
+                               if (const auto callback = form.getOnSubmit()) {
                                    callback(this, selection);
                                }
-                               const auto &buttons = form.getButtons();
-                               if (selection >= 0 && selection < buttons.size()) {
-                                   const auto &button = buttons[selection];
-                                   if (auto on_click = button.getOnClick()) {
-                                       on_click(this);
+                               int index = 0;
+                               for (const auto &controls = form.getControls(); const auto &control : controls) {
+                                   if (std::holds_alternative<Button>(control)) {
+                                       if (index == selection) {
+                                           std::get<Button>(control).getOnClick()(this);
+                                           break;
+                                       }
+                                       ++index;
                                    }
                                }
                            },

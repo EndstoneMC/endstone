@@ -19,10 +19,7 @@
 I18n &getI18n()
 {
 #ifdef _WIN32
-    // TODO(fixme): avoid hardcoded value
-    constexpr std::size_t offset = 0x622E190;  // 1.21.80-preview.21
-    auto *address = reinterpret_cast<I18n *>(static_cast<char *>(endstone::detail::get_executable_base()) + offset);
-    return *address;
+    return *BEDROCK_VAR(I18n *, "getI18n::result");
 #else
     return BEDROCK_CALL(&getI18n);
 #endif

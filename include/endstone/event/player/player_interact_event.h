@@ -25,10 +25,10 @@ namespace endstone {
  */
 class PlayerInteractEvent : public Cancellable<PlayerEvent> {
 public:
-    PlayerInteractEvent(Player &player, std::shared_ptr<ItemStack> item, std::shared_ptr<Block> block_clicked,
-                        BlockFace block_face, const Vector<float> &clicked_position)
-        : Cancellable(player), item_(std::move(item)), block_clicked_(std::move(block_clicked)),
-          block_face_(block_face), clicked_position_(clicked_position)
+    PlayerInteractEvent(Player &player, ItemStack *item, Block *block_clicked, BlockFace block_face,
+                        const Vector<float> &clicked_position)
+        : Cancellable(player), item_(item), block_clicked_(block_clicked), block_face_(block_face),
+          clicked_position_(clicked_position)
     {
     }
     ~PlayerInteractEvent() override = default;
@@ -54,7 +54,7 @@ public:
      *
      * @return ItemStack the item used
      */
-    [[nodiscard]] std::shared_ptr<ItemStack> getItem() const
+    [[nodiscard]] ItemStack *getItem() const
     {
         return item_;
     }
@@ -74,7 +74,7 @@ public:
      *
      * @return Block returns the block clicked with this item.
      */
-    [[nodiscard]] std::shared_ptr<Block> getBlock() const
+    [[nodiscard]] Block *getBlock() const
     {
         return block_clicked_;
     }
@@ -102,8 +102,8 @@ public:
     }
 
 private:
-    std::shared_ptr<ItemStack> item_;
-    std::shared_ptr<Block> block_clicked_;
+    ItemStack *item_;
+    Block *block_clicked_;
     BlockFace block_face_;
     Vector<float> clicked_position_;
 };

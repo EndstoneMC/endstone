@@ -83,9 +83,23 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("location", &ActorExplodeEvent::getLocation,
                                "Returns the location where the explosion happened.")
         .def_property(
-            "block_list", [](const ActorExplodeEvent &self) { return self.getBlockList(); },
-            [](ActorExplodeEvent &self, std::vector<std::shared_ptr<Block>> blocks) {
-                self.getBlockList().swap(blocks);
+            "block_list",
+            [](const ActorExplodeEvent &self) {
+                std::vector<Block *> blocks;
+                for (const auto &block : self.getBlockList()) {
+                    if (block) {
+                        blocks.emplace_back(block.get());
+                    }
+                }
+                return blocks;
+            },
+            [](ActorExplodeEvent &self, const std::vector<Block *> &blocks) {
+                self.getBlockList().clear();
+                for (const auto &block : blocks) {
+                    if (block) {
+                        self.getBlockList().emplace_back(block->clone());
+                    }
+                }
             },
             py::return_value_policy::reference_internal,
             "Gets or sets the list of blocks that would have been removed or were removed from the explosion event.");
@@ -194,18 +208,20 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PacketReceiveEvent, ServerEvent, ICancellable>(
         m, "PacketReceiveEvent", "Called when the server receives a packet from a connected client.")
         .def_property_readonly("packet_id", &PacketReceiveEvent::getPacketId, "Gets the ID of the packet.")
-        .def_property_readonly(
+        .def_property(
             "payload", [](const PacketReceiveEvent &self) { return py::bytes(self.getPayload()); },
-            "Gets the raw packet data **excluding** the header.")
+            [](PacketReceiveEvent &self, const py::bytes &payload) { self.setPayload(payload); },
+            "Gets or sets the raw packet data **excluding** the header.")
         .def_property_readonly("player", &PacketReceiveEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the player involved in this event");
 
     py::class_<PacketSendEvent, ServerEvent, ICancellable>(
         m, "PacketSendEvent", "Called when the server sends a packet to a connected client.")
         .def_property_readonly("packet_id", &PacketSendEvent::getPacketId, "Gets the ID of the packet.")
-        .def_property_readonly(
+        .def_property(
             "payload", [](const PacketSendEvent &self) { return py::bytes(self.getPayload()); },
-            "Gets the raw packet data **excluding** the header.")
+            [](PacketSendEvent &self, const py::bytes &payload) { self.setPayload(payload); },
+            "Gets or sets the raw packet data **excluding** the header.")
         .def_property_readonly("player", &PacketSendEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the player involved in this event");
 

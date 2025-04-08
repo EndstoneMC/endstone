@@ -17,8 +17,93 @@
 #include <mutex>
 #include <thread>
 
+#include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
+#include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
+#include "bedrock/scripting/event_handlers/script_level_gameplay_handler.h"
+#include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
+#include "bedrock/scripting/event_handlers/script_scripting_event_handler.h"
+#include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 #include "endstone/core/server.h"
+#include "endstone/detail/cast.h"
 #include "endstone/runtime/hook.h"
+#include "endstone/runtime/vtable_hook.h"
+
+template <typename T>
+void hookEventHandler(T &handler);
+
+template <>
+void hookEventHandler(ActorGameplayHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<4>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+#else
+    hook_vtable<2>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+#endif
+}
+
+template <>
+void hookEventHandler(BlockGameplayHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
+    hook_vtable<1>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
+#else
+    hook_vtable<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
+    hook_vtable<5>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
+#endif
+}
+
+template <>
+void hookEventHandler(LevelGameplayHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
+    hook_vtable<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+#else
+    hook_vtable<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
+    hook_vtable<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+#endif
+}
+
+template <>
+void hookEventHandler(PlayerGameplayHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<3>(&handler, &ScriptPlayerGameplayHandler::handleEvent1);
+    hook_vtable<2>(&handler, &ScriptPlayerGameplayHandler::handleEvent2);
+    hook_vtable<1>(&handler, &ScriptPlayerGameplayHandler::handleEvent3);
+#else
+    hook_vtable<2>(&handler, &ScriptPlayerGameplayHandler::handleEvent1);
+    hook_vtable<3>(&handler, &ScriptPlayerGameplayHandler::handleEvent2);
+    hook_vtable<4>(&handler, &ScriptPlayerGameplayHandler::handleEvent3);
+#endif
+}
+
+template <>
+void hookEventHandler(ScriptingEventHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<1>(&handler, &ScriptScriptingEventHandler::handleEvent2);
+#else
+    hook_vtable<3>(&handler, &ScriptScriptingEventHandler::handleEvent2);
+#endif
+}
+
+template <>
+void hookEventHandler(ServerNetworkEventHandler &handler)
+{
+    using endstone::hook::hook_vtable;
+#ifdef _WIN32
+    hook_vtable<1>(&handler, &ScriptServerNetworkEventHandler::handleEvent1);
+#else
+    hook_vtable<2>(&handler, &ScriptServerNetworkEventHandler::handleEvent1);
+#endif
+}
 
 void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance)
 {
@@ -34,8 +119,15 @@ void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInst
     }
     case PluginExecutionGroup::ServerStartExecution: {
         std::call_once(init_level, [&server_instance]() {
+            auto &level = *server_instance.getMinecraft()->getLevel();
             auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-            server.setLevel(*server_instance.getMinecraft()->getLevel());
+            hookEventHandler(*level.getActorEventCoordinator().actor_gameplay_handler);
+            hookEventHandler(*level.getBlockEventCoordinator().block_gameplay_handler);
+            hookEventHandler(*level.getLevelEventCoordinator().level_gameplay_handler);
+            hookEventHandler(*level.getServerPlayerEventCoordinator().player_gameplay_handler);
+            hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
+            hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
+            server.setLevel(level);
         });
         break;
     }

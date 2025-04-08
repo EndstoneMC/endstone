@@ -25,6 +25,7 @@ public:
 
     [[nodiscard]] std::string getType() const override;
     [[nodiscard]] BlockStates getBlockStates() const override;
+    [[nodiscard]] std::uint32_t getRuntimeId() const override;
 
     [[nodiscard]] ::Block &getHandle() const;
 

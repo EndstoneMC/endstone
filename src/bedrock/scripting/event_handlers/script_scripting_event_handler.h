@@ -14,19 +14,13 @@
 
 #pragma once
 
-#include "endstone/inventory/meta/item_meta.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/scripting_events.h"
 
-namespace endstone::core {
-
-class EndstoneItemMeta : public ItemMeta {
+class ScriptScriptingEventHandler {
 public:
-    [[nodiscard]] Type getType() const override;
-    [[nodiscard]] bool hasLore() const override;
-    [[nodiscard]] std::optional<std::vector<std::string>> getLore() const override;
-    void setLore(std::optional<std::vector<std::string>> lore) override;
-
-private:
-    std::optional<std::vector<std::string>> lore_;
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent1(
+        MutableScriptingGameplayEvent<CoordinatorResult> &event);
+    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent2(
+        const ScriptingGameplayEvent<CoordinatorResult> &event);
 };
-
-}  // namespace endstone::core
