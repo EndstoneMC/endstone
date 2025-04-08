@@ -78,14 +78,6 @@ void CommandRegistry::registerOverloadInternal(Signature &signature, Overload &o
     BEDROCK_CALL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
 }
 
-std::unique_ptr<Command> CommandRegistry::createCommand(const ParseToken &parse_token, const CommandOrigin &origin,
-                                                        int version, std::string &error_message,
-                                                        std::vector<std::string> &error_params) const
-{
-    return BEDROCK_CALL(&CommandRegistry::createCommand, this, parse_token, origin, version, error_message,
-                        error_params);
-}
-
 int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
 {
     return BEDROCK_CALL(&CommandRegistry::addEnumValues, this, name, values);
