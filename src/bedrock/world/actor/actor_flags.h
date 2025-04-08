@@ -139,5 +139,5 @@ enum class ActorFlags {
     COLLIDABLE = 121,
     WASD_AIR_CONTROLLED = 122,
     DOES_SERVER_AUTH_ONLY_DISMOUNT = 123,
-    Count
+    Count = 124,
 };
