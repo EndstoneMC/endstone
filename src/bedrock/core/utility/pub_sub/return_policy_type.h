@@ -14,11 +14,9 @@
 
 #pragma once
 
-#include "bedrock/core/utility/pub_sub/detail/threading_publisher_base.h"
-
-namespace Bedrock::PubSub::Detail {
-
-template <typename ThreadingModel, typename SubscriptionBody>
-class DispatchingPublisherBase : public ThreadingPublisherBase<ThreadingModel> {};
-
-}  // namespace Bedrock::PubSub::Detail
+namespace Bedrock::PubSub {
+enum class ReturnPolicyType : int {
+    Aggregate = 0,
+    Discard = 1,
+};
+}  // namespace Bedrock::PubSub

@@ -18,6 +18,7 @@
 
 #include "bedrock/core/container/intrusive_list.h"
 #include "bedrock/core/utility/pub_sub/publisher_config.h"
+#include "bedrock/core/utility/pub_sub/return_policy_type.h"
 
 namespace Bedrock::PubSub::Detail {
 
@@ -35,6 +36,14 @@ private:
     PublisherDisconnector *disconnector_;                // +40
     ContextType context_;                                // +48
     GroupType group_;                                    // +56
+};
+
+template <typename Signature, ReturnPolicyType PolicyType>
+class SubscriptionBody : public SubscriptionBodyBase {
+    using FunctionType = std::function<Signature>;
+
+protected:
+    FunctionType function_;  // +64
 };
 
 }  // namespace Bedrock::PubSub::Detail

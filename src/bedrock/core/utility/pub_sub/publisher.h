@@ -18,13 +18,16 @@
 
 #include "bedrock/core/utility/pub_sub/connector.h"
 #include "bedrock/core/utility/pub_sub/detail/dispatching_publisher_base.h"
+#include "bedrock/core/utility/pub_sub/return_policy_type.h"
 
 namespace Bedrock::PubSub {
 
-template <typename Func, typename T>
-class Publisher : public Detail::DispatchingPublisherBase<T>, Connector<Func> {};
+template <typename Signature, typename ThreadingModel, ReturnPolicyType PolicyType = ReturnPolicyType::Aggregate>
+class Publisher
+    : public Detail::DispatchingPublisherBase<ThreadingModel, Detail::SubscriptionBody<Signature, PolicyType>>,
+      Connector<Signature> {};
 
-template <typename Func, typename T>
-using PublisherPtr = std::unique_ptr<Publisher<Func, T>>;
+template <typename Signature, typename ThreadingModel>
+using PublisherPtr = std::unique_ptr<Publisher<Signature, ThreadingModel>>;
 
 }  // namespace Bedrock::PubSub
