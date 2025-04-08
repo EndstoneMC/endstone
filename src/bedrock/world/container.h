@@ -143,8 +143,11 @@ public:
     [[nodiscard]] virtual std::vector<ItemStack> getSlotCopies() const;
     [[nodiscard]] virtual std::vector<const ItemStack *> const getSlots() const;
     [[nodiscard]] virtual int getEmptySlotsCount() const;
-    [[nodiscard]] virtual int getItemCount(ItemStack const &compare) const;
+    [[nodiscard]] virtual int getItemCount(const ItemStack &) const;
+    [[nodiscard]] virtual int firstEmptySlot() const;
+    [[nodiscard]] virtual int firstItem() const;
     [[nodiscard]] virtual int findFirstSlotForItem(ItemStack const &item) const;
+    [[nodiscard]] virtual int reverseFindFirstSlotForItem(const ItemStack &) const;
     [[nodiscard]] virtual bool canPushInItem(int, int, ItemStack const &) const;
     [[nodiscard]] virtual bool canPullOutItem(int, int, ItemStack const &) const;
     virtual void setContainerChanged(int slot);
