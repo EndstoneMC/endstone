@@ -39,8 +39,6 @@ jobs:
           key: ${{ runner.os }}-conan-RelWithDebInfo-${{ hashFiles('conanfile.py') }}
           restore-keys: |
             ${{ runner.os }}-conan-RelWithDebInfo-
-            ${{ runner.os }}-conan-
-            ${{ runner.os }}-
 
       - name: Set up MSVC (Windows)
         if: runner.os == 'Windows'

@@ -28,8 +28,6 @@ jobs:
           key: ${{ runner.os }}-conan-Debug-${{ hashFiles('conanfile.py') }}
           restore-keys: |
             ${{ runner.os }}-conan-Debug-
-            ${{ runner.os }}-conan-
-            ${{ runner.os }}-
 
       - name: Set up Python
         uses: actions/setup-python@v5
