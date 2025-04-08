@@ -32,7 +32,7 @@ std::unique_ptr<Pack> Pack::createPack(ResourceLocation const &file_location, Pa
                                        PackSourceReport *report, Core::Path const &zip_sub_dir)
 {
 #ifdef _WIN32
-    auto **vtable = BEDROCK_VAR(void **, "AppPlatformIOProvide::vtable");
+    auto **vtable = BEDROCK_VAR(void **, "AppPlatformIOProvider::vtable");
     return createPack(*reinterpret_cast<const IPackIOProvider *>(&vtable), file_location, type, origin,
                       manifest_factory, std::move(key_provider), report, zip_sub_dir);
 #else
