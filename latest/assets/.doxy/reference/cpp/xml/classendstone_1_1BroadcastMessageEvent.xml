@@ -22,9 +22,9 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1BroadcastMessageEvent_1a2efd1a69db19322c0611bc0a97e0aa8d" prot="private" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string endstone::BroadcastMessageEvent::message_</definition>
+      <memberdef kind="variable" id="classendstone_1_1BroadcastMessageEvent_1a9f539177fb40c385c04031b2a966b4a4" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::BroadcastMessageEvent::message_</definition>
         <argsstring></argsstring>
         <name>message_</name>
         <qualifiedname>endstone::BroadcastMessageEvent::message_</qualifiedname>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="75" column="17" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="75" bodyend="-1"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="75" column="13" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BroadcastMessageEvent_1a53004e13a08c5694d14b948528bf91a9" prot="private" static="no" mutable="no">
         <type>std::unordered_set&lt; <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
@@ -52,10 +52,10 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a77ff21bb94261df9a78b5e745c5d9652" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a30af9de400fa866509e535893d1fce33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BroadcastMessageEvent::BroadcastMessageEvent</definition>
-        <argsstring>(bool async, std::string message, std::unordered_set&lt; const CommandSender * &gt; recipients)</argsstring>
+        <argsstring>(bool async, Message message, std::unordered_set&lt; const CommandSender * &gt; recipients)</argsstring>
         <name>BroadcastMessageEvent</name>
         <qualifiedname>endstone::BroadcastMessageEvent::BroadcastMessageEvent</qualifiedname>
         <param>
@@ -63,7 +63,7 @@
           <declname>async</declname>
         </param>
         <param>
-          <type>std::string</type>
+          <type>Message</type>
           <declname>message</declname>
         </param>
         <param>
@@ -97,9 +97,9 @@
         </inbodydescription>
         <location file="include/endstone/event/server/broadcast_message_event.h" line="39" column="18" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="39" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a3af436d3c63cf1901bcb09bc7b4a32fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
-        <definition>const std::string &amp; endstone::BroadcastMessageEvent::getMessage</definition>
+      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1abded73e5b43b74bb3e0698691e4e34e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+        <definition>const Message &amp; endstone::BroadcastMessageEvent::getMessage</definition>
         <argsstring>() const</argsstring>
         <name>getMessage</name>
         <qualifiedname>endstone::BroadcastMessageEvent::getMessage</qualifiedname>
@@ -113,16 +113,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="49" column="24" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="49" bodyend="52"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="49" column="20" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a7a73a014a95353346d4fb8b789c77998" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a38fe78c4c7758c30f1e08d930417c276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::BroadcastMessageEvent::setMessage</definition>
-        <argsstring>(std::string message)</argsstring>
+        <argsstring>(Message message)</argsstring>
         <name>setMessage</name>
         <qualifiedname>endstone::BroadcastMessageEvent::setMessage</qualifiedname>
         <param>
-          <type>std::string</type>
+          <type>Message</type>
           <declname>message</declname>
         </param>
         <briefdescription>
@@ -231,21 +231,21 @@
     </collaborationgraph>
     <location file="include/endstone/event/server/broadcast_message_event.h" line="31" column="1" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="31" bodyend="77"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BroadcastMessageEvent_1a77ff21bb94261df9a78b5e745c5d9652" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>BroadcastMessageEvent</name></member>
+      <member refid="classendstone_1_1BroadcastMessageEvent_1a30af9de400fa866509e535893d1fce33" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>BroadcastMessageEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BroadcastMessageEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4" prot="public" virt="virtual"><scope>endstone::BroadcastMessageEvent</scope><name>getEventName</name></member>
-      <member refid="classendstone_1_1BroadcastMessageEvent_1a3af436d3c63cf1901bcb09bc7b4a32fd" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>getMessage</name></member>
+      <member refid="classendstone_1_1BroadcastMessageEvent_1abded73e5b43b74bb3e0698691e4e34e6" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>getMessage</name></member>
       <member refid="classendstone_1_1BroadcastMessageEvent_1a32bd00d3d3836b81cef9852f7ace5a36" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>getRecipients</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::BroadcastMessageEvent</scope><name>isCancelled</name></member>
-      <member refid="classendstone_1_1BroadcastMessageEvent_1a2efd1a69db19322c0611bc0a97e0aa8d" prot="private" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>message_</name></member>
+      <member refid="classendstone_1_1BroadcastMessageEvent_1a9f539177fb40c385c04031b2a966b4a4" prot="private" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>message_</name></member>
       <member refid="classendstone_1_1BroadcastMessageEvent_1a46c6014d11f209582bf2839fec0dea35" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1BroadcastMessageEvent_1a53004e13a08c5694d14b948528bf91a9" prot="private" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>recipients_</name></member>
       <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::BroadcastMessageEvent</scope><name>setCancelled</name></member>
-      <member refid="classendstone_1_1BroadcastMessageEvent_1a7a73a014a95353346d4fb8b789c77998" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>setMessage</name></member>
+      <member refid="classendstone_1_1BroadcastMessageEvent_1a38fe78c4c7758c30f1e08d930417c276" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>setMessage</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::BroadcastMessageEvent</scope><name>~Event</name></member>
       <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::BroadcastMessageEvent</scope><name>~ICancellable</name></member>
     </listofallmembers>

@@ -246,12 +246,12 @@
   </compound>
   <compound refid="classendstone_1_1BroadcastMessageEvent" kind="class"><name>endstone::BroadcastMessageEvent</name>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a46c6014d11f209582bf2839fec0dea35" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1BroadcastMessageEvent_1a2efd1a69db19322c0611bc0a97e0aa8d" kind="variable"><name>message_</name></member>
+    <member refid="classendstone_1_1BroadcastMessageEvent_1a9f539177fb40c385c04031b2a966b4a4" kind="variable"><name>message_</name></member>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a53004e13a08c5694d14b948528bf91a9" kind="variable"><name>recipients_</name></member>
-    <member refid="classendstone_1_1BroadcastMessageEvent_1a77ff21bb94261df9a78b5e745c5d9652" kind="function"><name>BroadcastMessageEvent</name></member>
+    <member refid="classendstone_1_1BroadcastMessageEvent_1a30af9de400fa866509e535893d1fce33" kind="function"><name>BroadcastMessageEvent</name></member>
     <member refid="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1BroadcastMessageEvent_1a3af436d3c63cf1901bcb09bc7b4a32fd" kind="function"><name>getMessage</name></member>
-    <member refid="classendstone_1_1BroadcastMessageEvent_1a7a73a014a95353346d4fb8b789c77998" kind="function"><name>setMessage</name></member>
+    <member refid="classendstone_1_1BroadcastMessageEvent_1abded73e5b43b74bb3e0698691e4e34e6" kind="function"><name>getMessage</name></member>
+    <member refid="classendstone_1_1BroadcastMessageEvent_1a38fe78c4c7758c30f1e08d930417c276" kind="function"><name>setMessage</name></member>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a32bd00d3d3836b81cef9852f7ace5a36" kind="function"><name>getRecipients</name></member>
   </compound>
   <compound refid="classendstone_1_1Button" kind="class"><name>endstone::Button</name>

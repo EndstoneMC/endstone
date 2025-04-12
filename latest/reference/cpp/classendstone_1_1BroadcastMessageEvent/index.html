@@ -2317,14 +2317,14 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-broadcastmessageevent"><strong>BroadcastMessageEvent</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> async, std::string message, std::unordered_set&lt; <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> * &gt; recipients) <br></td>
+<td style="text-align: left;"><a href="#function-broadcastmessageevent"><strong>BroadcastMessageEvent</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> async, Message message, std::unordered_set&lt; <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> * &gt; recipients) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp;</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> Message &amp;</td>
 <td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br></td>
 </tr>
 <tr>
@@ -2333,7 +2333,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setmessage"><strong>setMessage</strong></a> (std::string message) <br></td>
+<td style="text-align: left;"><a href="#function-setmessage"><strong>setMessage</strong></a> (Message message) <br></td>
 </tr>
 </tbody>
 </table>
@@ -2400,7 +2400,7 @@ For latest updates join the chat on
 <h3 id="function-broadcastmessageevent">function BroadcastMessageEvent<a class="headerlink" href="#function-broadcastmessageevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">async</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">recipients</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
@@ -2416,7 +2416,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getmessage">function getMessage<a class="headerlink" href="#function-getmessage" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">getMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">getMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Get the message to broadcast.</p>
 <p><strong>Returns:</strong></p>
@@ -2433,7 +2433,7 @@ For latest updates join the chat on
 
 <h3 id="function-setmessage">function setMessage<a class="headerlink" href="#function-setmessage" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">setMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">message</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Set the message to broadcast.</p>

@@ -98,11 +98,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BroadcastMessageEvent**](#function-broadcastmessageevent) ([**bool**](classendstone_1_1Vector.md) async, std::string message, std::unordered\_set&lt; [**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; recipients) <br> |
+|   | [**BroadcastMessageEvent**](#function-broadcastmessageevent) ([**bool**](classendstone_1_1Vector.md) async, Message message, std::unordered\_set&lt; [**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; recipients) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string & | [**getMessage**](#function-getmessage) () const<br> |
+|  [**const**](classendstone_1_1Vector.md) Message & | [**getMessage**](#function-getmessage) () const<br> |
 |  [**const**](classendstone_1_1Vector.md) std::unordered\_set&lt; [**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; & | [**getRecipients**](#function-getrecipients) () const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setMessage**](#function-setmessage) (std::string message) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setMessage**](#function-setmessage) (Message message) <br> |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -238,7 +238,7 @@ const std::string endstone::BroadcastMessageEvent::NAME;
 ```C++
 inline endstone::BroadcastMessageEvent::BroadcastMessageEvent (
     bool async,
-    std::string message,
+    Message message,
     std::unordered_set< const  CommandSender * > recipients
 ) 
 ```
@@ -282,7 +282,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 ### function getMessage 
 
 ```C++
-inline const std::string & endstone::BroadcastMessageEvent::getMessage () const
+inline const Message & endstone::BroadcastMessageEvent::getMessage () const
 ```
 
 
@@ -337,7 +337,7 @@ All CommandSenders who will see this broadcast message
 
 ```C++
 inline void endstone::BroadcastMessageEvent::setMessage (
-    std::string message
+    Message message
 ) 
 ```
 
