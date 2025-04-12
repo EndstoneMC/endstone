@@ -27,7 +27,7 @@ bool handleEvent(IncomingPacketEvent &event)
     if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
         // TODO(refactor): add Player::handleDataPacket and call the event there
         if (event.packet_id == MinecraftPacketIds::SetLocalPlayerAsInit) {
-            static_cast<::ServerPlayer *>(player)->setLocalPlayerAsInitialized();
+            player->getEndstoneActor<endstone::core::EndstonePlayer>().doFirstSpawn();
         }
 
         const auto &network = server.getServer().getNetwork();

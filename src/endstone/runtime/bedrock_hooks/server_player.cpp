@@ -13,35 +13,3 @@
 // limitations under the License.
 
 #include "bedrock/server/server_player.h"
-
-#include "endstone/color_format.h"
-#include "endstone/core/message.h"
-#include "endstone/core/player.h"
-#include "endstone/core/server.h"
-#include "endstone/event/player/player_join_event.h"
-
-void ServerPlayer::setLocalPlayerAsInitialized()
-{
-    local_player_initialized_ = true;
-
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    auto &endstone_player = getEndstoneActor<endstone::core::EndstonePlayer>();
-
-    endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.joined",
-                              {endstone_player.getName()}};
-    const std::string join_message = endstone::core::EndstoneMessage::toString(tr);
-
-    endstone::PlayerJoinEvent e{endstone_player, join_message};
-    server.getPluginManager().callEvent(e);
-    if (e.getJoinMessage() != join_message) {
-        tr = endstone::Translatable{e.getJoinMessage(), {}};
-    }
-
-    if (!e.getJoinMessage().empty()) {
-        for (const auto &online_player : server.getOnlinePlayers()) {
-            online_player->sendMessage(tr);
-        }
-    }
-    endstone_player.recalculatePermissions();
-    endstone_player.updateCommands();
-}

@@ -288,7 +288,7 @@ public:
     /**
      * @brief Gets the start time of the server.
      *
-     * @return The start time of the server。
+     * @return The start time of the server.
      */
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 
