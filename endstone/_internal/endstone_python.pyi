@@ -762,12 +762,12 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
     Event triggered for server broadcast messages such as from Server.broadcast
     """
     @property
-    def message(self) -> str:
+    def message(self) -> str | Translatable:
         """
         Gets or sets the message to broadcast.
         """
     @message.setter
-    def message(self, arg1: str) -> None:
+    def message(self, arg1: str | Translatable) -> None:
         ...
     @property
     def recipients(self) -> set[CommandSender]:
