@@ -800,7 +800,7 @@
 <para>Gets the start time of the server. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The start time of the server。 </para>
+<para><simplesect kind="return"><para>The start time of the server. </para>
 </simplesect>
 </para>
         </detaileddescription>

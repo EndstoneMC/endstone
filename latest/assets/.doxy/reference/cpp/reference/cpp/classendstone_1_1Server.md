@@ -1127,7 +1127,7 @@ virtual std::chrono::system_clock::time_point endstone::Server::getStartTime () 
 
 **Returns:**
 
-The start time of the server。 
+The start time of the server. 
 
 
 
