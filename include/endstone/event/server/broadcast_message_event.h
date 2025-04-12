@@ -30,7 +30,7 @@ namespace endstone {
  */
 class BroadcastMessageEvent : public Cancellable<ServerEvent> {
 public:
-    BroadcastMessageEvent(bool async, std::string message, std::unordered_set<const CommandSender *> recipients)
+    BroadcastMessageEvent(bool async, Message message, std::unordered_set<const CommandSender *> recipients)
         : Cancellable(async), message_(std::move(message)), recipients_(std::move(recipients))
     {
     }
@@ -46,7 +46,7 @@ public:
      *
      * @return Message to broadcast
      */
-    [[nodiscard]] const std::string &getMessage() const
+    [[nodiscard]] const Message &getMessage() const
     {
         return message_;
     }
@@ -56,7 +56,7 @@ public:
      *
      * @param message New message to broadcast
      */
-    void setMessage(std::string message)
+    void setMessage(Message message)
     {
         message_ = std::move(message);
     }
@@ -72,7 +72,7 @@ public:
     }
 
 private:
-    std::string message_;
+    Message message_;
     std::unordered_set<const CommandSender *> recipients_;
 };
 
