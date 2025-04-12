@@ -57,6 +57,7 @@ class PythonPluginLoader(PluginLoader):
 
         # fix sys.executable variable
         sys.executable = find_python()
+        sys._base_executable = sys.executable
 
         # invalidate previously loaded modules (in case of /reload)
         importlib.invalidate_caches()
