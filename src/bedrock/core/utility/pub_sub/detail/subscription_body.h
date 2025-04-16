@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <functional>
 
 #include "bedrock/core/container/intrusive_list.h"
 #include "bedrock/core/utility/pub_sub/publisher_config.h"
