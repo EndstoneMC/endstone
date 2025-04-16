@@ -16,6 +16,7 @@
 
 #include "bedrock/resources/invalid_packs_filter_group.h"
 #include "bedrock/resources/pack_source.h"
+#include "bedrock/resources/pack_source_factory.h"
 #include "bedrock/resources/resource_pack_stack.h"
 
 class IResourcePackRepository : public Bedrock::EnableNonOwnerReferences {

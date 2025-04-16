@@ -20,6 +20,8 @@
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
 
+class Minecraft;
+
 class ICommandsContextProvider {
 public:
     virtual ~ICommandsContextProvider();
@@ -28,8 +30,18 @@ public:
     virtual void onCommandExecuted(MCRESULT, CommandOriginType, const std::string &, const std::string &) = 0;
 };
 
+class DefaultCommandsContextProvider : public ICommandsContextProvider {
+public:
+    explicit DefaultCommandsContextProvider(Minecraft &);
+
+private:
+    Minecraft &minecraft_;  // +8
+};
+
 class MinecraftCommands {
 public:
+    MinecraftCommands(ICommandsContextProvider &, std::unique_ptr<CommandRegistry> &&);
+
     virtual ~MinecraftCommands() = default;
 
     [[nodiscard]] CommandOutputSender &getOutputSender() const
