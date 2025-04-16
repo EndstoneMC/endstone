@@ -375,7 +375,7 @@ void EndstoneServer::broadcast(const Message &message, const std::string &permis
         }
     }
 
-    BroadcastMessageEvent event{!isPrimaryThread(), EndstoneMessage::toString(message), recipients};
+    BroadcastMessageEvent event{!isPrimaryThread(), message, recipients};
     getPluginManager().callEvent(event);
 
     if (event.isCancelled()) {

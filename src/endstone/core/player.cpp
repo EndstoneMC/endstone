@@ -36,11 +36,13 @@
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/error.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -794,6 +796,32 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
             getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
         }
     }
+}
+
+void EndstonePlayer::doFirstSpawn()
+{
+    if (spawned_) {
+        return;
+    }
+    spawned_ = true;
+
+    const auto &server = getServer();
+    Translatable tr{ColorFormat::Yellow + "%multiplayer.player.joined", {getName()}};
+    const std::string join_message = EndstoneMessage::toString(tr);
+
+    PlayerJoinEvent e{*this, join_message};
+    server.getPluginManager().callEvent(e);
+    if (e.getJoinMessage() != join_message) {
+        tr = Translatable{e.getJoinMessage(), {}};
+    }
+
+    if (!e.getJoinMessage().empty()) {
+        for (const auto &online_player : server.getOnlinePlayers()) {
+            online_player->sendMessage(tr);
+        }
+    }
+    recalculatePermissions();
+    updateCommands();
 }
 
 void EndstonePlayer::initFromConnectionRequest(

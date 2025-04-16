@@ -153,6 +153,7 @@ public:
     void sendPacket(int packet_id, std::string_view payload) const override;
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
+    void doFirstSpawn();
 
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
@@ -178,6 +179,7 @@ private:
     Skin skin_{};
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
+    bool spawned_ = false;
 };
 
 }  // namespace endstone::core
