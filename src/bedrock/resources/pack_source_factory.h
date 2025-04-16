@@ -16,6 +16,7 @@
 
 #include "bedrock/core/utility/pub_sub/subscription.h"
 #include "bedrock/platform/threading/mutex_details.h"
+#include "bedrock/resources/pack_command_pipeline.h"
 #include "bedrock/resources/pack_source.h"
 
 class IPackSourceFactory {
@@ -30,14 +31,14 @@ public:
         std::unique_ptr<RealmsUnknownPackSource> realms_unknown_behavior_pack_source;
     };
 
-    [[nodiscard]] std::unique_ptr<IPackIOProvider> createPackIOProvider() const  // Endston
+    [[nodiscard]] std::unique_ptr<IPackIOProvider> createPackIOProvider() const  // Endstone
     {
         return io->clone();
     }
 
 private:
     template <typename PackSourceT>
-    struct SourcesList<PackSourceT> {
+    struct SourcesList {
         std::vector<PackSourceT> sources;
         Bedrock::Threading::RecursiveMutex mutex;
     };

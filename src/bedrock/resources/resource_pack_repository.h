@@ -64,4 +64,4 @@ private:
     bool refresh_packs_requested_;
     ContentIdentity current_premium_world_template_identity_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 576, 504);
+BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 600, 528);
