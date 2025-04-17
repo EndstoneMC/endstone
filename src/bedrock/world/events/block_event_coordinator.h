@@ -20,5 +20,6 @@
 
 class BlockEventCoordinator : public EventCoordinator<BlockEventListener> {
 public:
-    std::unique_ptr<BlockGameplayHandler> block_gameplay_handler;  // Endstone: private -> public
+    // Endstone: private -> public
+    std::unique_ptr<BlockGameplayHandler> block_gameplay_handler;  // +96
 };

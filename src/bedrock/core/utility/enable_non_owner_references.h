@@ -42,4 +42,5 @@ private:
 
     std::shared_ptr<ControlBlock> control_block_;
 };
+static_assert(sizeof(EnableNonOwnerReferences) == 24);
 }  // namespace Bedrock
