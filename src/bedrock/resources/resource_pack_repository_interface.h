@@ -53,7 +53,6 @@ public:
     [[nodiscard]] virtual Core::HeapPathBuffer getTreatmentPacksPath() const = 0;
     virtual void refreshPacks() = 0;
     virtual void requestReloadUserPacks() = 0;
-    virtual void requestReloadDynamicPackagePacks() = 0;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> getKeyProvider() const = 0;
     virtual PackManifestFactory &getPackManifestFactory() = 0;
     [[nodiscard]] virtual PackSettingsFactory &getPackSettingsFactory() const = 0;
