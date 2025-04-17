@@ -251,7 +251,8 @@ enum class MinecraftPacketIds : int {
     PlayerVideoCapturePacket = 324,
     PlayerUpdateEntityOverridesPacket = 325,
     PlayerLocation = 326,
-    EndId = 327,
+    ClientboundControlSchemeSet = 327,
+    EndId
 };
 
 class NetEventCallback;
