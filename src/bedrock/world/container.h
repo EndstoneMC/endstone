@@ -170,6 +170,7 @@ protected:
     std::unordered_set<ContainerSizeChangeListener *> size_change_listeners_;
     std::unordered_set<ContainerCloseListener *> close_listeners_;
     PublisherWrapper removed_publisher_;
+    void *unknown_;  // TODO(fixme): what is this?
     std::deque<std::function<void(Container &, int, const ItemStack &, const ItemStack &)>> transaction_context_stack_;
     Bedrock::Safety::RedactableString name_;
     bool custom_name_;

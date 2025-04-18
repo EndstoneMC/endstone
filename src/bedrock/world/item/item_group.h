@@ -21,5 +21,6 @@ public:
 
 private:
     ItemInstance item_template_;
+    std::optional<int> stack_size_;
 };
-static_assert(sizeof(ItemGroup) == 128);
+static_assert(sizeof(ItemGroup) == 136);
