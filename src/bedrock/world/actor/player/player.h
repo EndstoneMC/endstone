@@ -261,7 +261,7 @@ protected:
     std::vector<ActorUniqueID> tracked_boss_ids_;
     using PlayerListenerList = std::vector<PlayerListener *>;
     ItemGroup cursor_selected_item_group_;
-    std::size_t player_ui_container_[sizeof(PlayerUIContainer) / 8];
+    PlayerUIContainer player_ui_container_;
     InventoryTransactionManager transaction_manager_;  // +2648
     std::unique_ptr<GameMode> game_mode_;
     std::unique_ptr<PlayerRespawnRandomizer> spawn_randomizer_;
