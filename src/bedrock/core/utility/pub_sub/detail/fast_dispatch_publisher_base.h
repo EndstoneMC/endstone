@@ -18,15 +18,55 @@
 #include "bedrock/core/utility/pub_sub/thread_model.h"
 
 namespace Bedrock::PubSub::Detail {
-template <typename T>
-class FastDispatchPublisherBase;
+
+class FastDispatchPublisherBase_SingleThreaded : public PublisherBase,
+                                                 protected ThreadModel::SingleThreaded::MutexType {
+    using MutexType = const ThreadModel::SingleThreaded::MutexType;
+    using LockType = Threading::LockGuard<MutexType>;
+
+protected:
+    FastDispatchPublisherBase_SingleThreaded();
+};
+
+class FastDispatchPublisherBase_MultiThreaded : public PublisherBase {
+    using MutexType = ThreadModel::MultiThreaded::MutexType;
+    using LockType = Threading::LockGuard<MutexType>;
+
+protected:
+    FastDispatchPublisherBase_MultiThreaded();
+    MutexType mutex_;
+    std::atomic<std::uint64_t> fast_dispatch_info_;
+};
+
+class FastDispatchPublisherBase_MultiThreadedStrict : public PublisherBase {
+    using MutexType = ThreadModel::MultiThreadedStrict::MutexType;
+    using LockType = Threading::LockGuard<MutexType>;
+    using UniqueLockType = Threading::UniqueLock<MutexType>;
+
+protected:
+    FastDispatchPublisherBase_MultiThreadedStrict();
+    MutexType mutex_;
+};
+
+template <typename ThreadModel>
+struct FastDispatchBaseSelector;
 
 template <>
-class FastDispatchPublisherBase<ThreadModel::MultiThreaded> : public PublisherBase {
-    using MutexType = ThreadModel::MultiThreaded::MutexType;
-
-    MutexType mutex_;
-    std::atomic<std::size_t> fast_dispatch_info_;
+struct FastDispatchBaseSelector<ThreadModel::SingleThreaded> {
+    using type = FastDispatchPublisherBase_SingleThreaded;
 };
+
+template <>
+struct FastDispatchBaseSelector<ThreadModel::MultiThreaded> {
+    using type = FastDispatchPublisherBase_MultiThreaded;
+};
+
+template <>
+struct FastDispatchBaseSelector<ThreadModel::MultiThreadedStrict> {
+    using type = FastDispatchPublisherBase_MultiThreadedStrict;
+};
+
+template <typename ThreadModel>
+using FastDispatchPublisherBase = typename FastDispatchBaseSelector<ThreadModel>::type;
 
 }  // namespace Bedrock::PubSub::Detail

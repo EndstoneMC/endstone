@@ -207,9 +207,6 @@ struct PlayerScriptInputEvent {
     ScriptingInputButton button;
     ScriptingInputButtonState new_state;
 };
-struct ClientJoinedEvent {
-    std::weak_ptr<ClientJoinedEventData> join_data;
-};
 
 template <typename Return>
 struct PlayerGameplayEvent;
@@ -223,7 +220,7 @@ struct PlayerGameplayEvent<void>
                         PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
                         PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
                         PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
-                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, ClientJoinedEvent, PlayerScriptInputEvent,
+                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerScriptInputEvent,
                         PlayerInputPermissionCategoryChangeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
 

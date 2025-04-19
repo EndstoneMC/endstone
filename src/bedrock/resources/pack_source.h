@@ -52,6 +52,10 @@ protected:
     const std::unique_ptr<IPackIOProvider> io_;
 };
 
+class DirectoryPackSource : public PackSource {};
+class RealmsUnknownPackSource : public PackSource {};
+class InPackagePackSource : public PackSource {};
+
 class CompositePackSource : public PackSource {
 public:
     void addPackSource(PackSource *pack_source);
@@ -61,3 +65,6 @@ public:
 private:
     std::vector<PackSource *> pack_sources_;
 };
+
+class TreatmentPackSource : public PackSource {};
+class WorldTemplatePackSource : public DirectoryPackSource {};

@@ -51,17 +51,6 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public LevelListener,
                              public Social::MultiplayerServiceObserver,
                              public Social::XboxLiveUserObserver {
-    class Client {
-    public:
-        [[nodiscard]] ConnectionRequest const &getPrimaryRequest() const;
-        [[nodiscard]] std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> const &
-        getSubClientRequests() const;
-
-    private:
-        std::unique_ptr<ConnectionRequest> primary_request_;
-        std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> sub_client_requests_;
-    };
-
 public:
     ServerNetworkHandler(GameCallbacks &, const Bedrock::NonOwnerPointer<ILevel> &, ServerNetworkSystem &,
                          PrivateKeyManager &, ServerLocator &, PacketSender &, AllowList &, PermissionsFile *,
@@ -88,12 +77,26 @@ private:
     ServerPlayer *_getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone: virtual -> non-virtual
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
 
-    GameCallbacks &callbacks_;
+protected:
+    class Client {
+    public:
+        [[nodiscard]] ConnectionRequest const &getPrimaryRequest() const;
+        [[nodiscard]] std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> const &
+        getSubClientRequests() const;
+
+    private:
+        std::unique_ptr<ConnectionRequest> primary_request_;
+        std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> sub_client_requests_;
+    };
+    std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +80
+
+private:
+    GameCallbacks &callbacks_;  // +144
     Bedrock::NonOwnerPointer<ILevel> level_;
     ServerNetworkSystem &network_;
     PrivateKeyManager &server_keys_;
     ServerLocator &server_locator_;
-    gsl::not_null<PacketSender *> packet_sender_;
+    gsl::not_null<PacketSender *> packet_sender_;  // +200
     bool use_allow_list_;
     AllowList &allow_list_;
     PermissionsFile *permissions_file_;
@@ -113,13 +116,13 @@ private:
     std::unique_ptr<IServerNetworkController> server_network_controller_;
     std::string server_name_;
     std::vector<std::string> trusted_keys_;
-    int max_num_players_;
+    int max_num_players_;  // +872
     std::unordered_set<mce::UUID> known_emote_piece_id_lookup_;
     std::vector<mce::UUID> known_emote_piece_ids_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::string, std::shared_ptr<ResourcePackFileUploadManager>>>
         resource_upload_managers_;
     std::unique_ptr<TaskGroup> io_task_group_;
-    std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +960
-    bool is_trial_;                                                           // +1024
-    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;   // +1032
+    std::unique_ptr<TaskGroup> async_join_task_group_;
+    bool is_trial_;
+    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;
 };

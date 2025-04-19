@@ -78,4 +78,4 @@ private:
     ScoreboardEventCoordinator scoreboard_event_coordinator_;                                 // +600 (+384)
     PlayerScoreboardEventListener player_listener_;                                           // +712 (+504)
 };
-BEDROCK_STATIC_ASSERT_SIZE(Scoreboard, 784, 552);
+BEDROCK_STATIC_ASSERT_SIZE(Scoreboard, 768, 536);

@@ -26,32 +26,11 @@ PackManifest &Pack::getManifest()
     return *manifest_;
 }
 
-std::unique_ptr<Pack> Pack::createPack(ResourceLocation const &file_location, PackType type, PackOrigin origin,
-                                       IPackManifestFactory &manifest_factory,
-                                       Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,
-                                       PackSourceReport *report, Core::Path const &zip_sub_dir)
-{
-#ifdef _WIN32
-    auto **vtable = BEDROCK_VAR(void **, "AppPlatformIOProvider::vtable");
-    return createPack(*reinterpret_cast<const IPackIOProvider *>(&vtable), file_location, type, origin,
-                      manifest_factory, std::move(key_provider), report, zip_sub_dir);
-#else
-    std::unique_ptr<Pack> (*fp)(const ResourceLocation &, PackType, PackOrigin, IPackManifestFactory &,
-                                Bedrock::NonOwnerPointer<const IContentKeyProvider>, PackSourceReport *,
-                                const Core::Path &) = &Pack::createPack;
-    return BEDROCK_CALL(fp, file_location, type, origin, manifest_factory, key_provider, report, zip_sub_dir);
-#endif
-}
-
-#ifdef _WIN32
 std::unique_ptr<Pack> Pack::createPack(const IPackIOProvider &io, const ResourceLocation &file_location, PackType type,
                                        PackOrigin origin, IPackManifestFactory &manifest_factory,
                                        Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,
                                        PackSourceReport *report, const Core::Path &zip_sub_dir)
 {
-    std::unique_ptr<Pack> (*fp)(const IPackIOProvider &, const ResourceLocation &, PackType, PackOrigin,
-                                IPackManifestFactory &, Bedrock::NonOwnerPointer<const IContentKeyProvider>,
-                                PackSourceReport *, const Core::Path &) = &Pack::createPack;
-    return BEDROCK_CALL(fp, io, file_location, type, origin, manifest_factory, key_provider, report, zip_sub_dir);
+    return BEDROCK_CALL(&Pack::createPack, io, file_location, type, origin, manifest_factory, key_provider, report,
+                        zip_sub_dir);
 }
-#endif

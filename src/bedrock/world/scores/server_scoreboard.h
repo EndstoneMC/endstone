@@ -53,4 +53,4 @@ private:
     std::weak_ptr<void *> on_remove_actor_entity_references_subscription_;          // +888 (+680)
     std::weak_ptr<void *> on_gameplay_user_removed_subscription_;                   // +904 (+696)
 };
-BEDROCK_STATIC_ASSERT_SIZE(ServerScoreboard, 944, 712);
+BEDROCK_STATIC_ASSERT_SIZE(ServerScoreboard, 928, 696);

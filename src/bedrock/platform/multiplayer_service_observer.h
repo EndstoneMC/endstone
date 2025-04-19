@@ -25,4 +25,5 @@ public:
     virtual void onInvalidPlayerJoinedLobby(mce::UUID const &uuid, std::string const &xuid) = 0;
     virtual void onUserDisconnectedBecauseConcurrentLogin(std::string const &id) = 0;
 };
+static_assert(sizeof(MultiplayerServiceObserver) == 16);
 }  // namespace Social

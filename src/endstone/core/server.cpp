@@ -116,8 +116,9 @@ void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IReso
         throw std::runtime_error("Resource pack repository already set.");
     }
     resource_pack_repository_ = std::move(repo);
+    auto io = resource_pack_repository_->getPackSourceFactory().createPackIOProvider();
     resource_pack_source_ = std::make_unique<EndstonePackSource>(
-        resource_pack_repository_->getResourcePacksPath().getContainer(), PackType::Resources);
+        resource_pack_repository_->getResourcePacksPath().getContainer(), PackType::Resources, std::move(io));
 }
 
 PackSource &EndstoneServer::getPackSource() const

@@ -150,6 +150,8 @@ enum class ActorDataIDs : uint8_t {
     VISIBLE_MOB_EFFECTS = 131,
     FILTERED_NAME = 132,
     ENTER_BED_POSITION = 133,
-    Count
+    SEAT_THIRD_PERSON_CAMERA_RADIUS = 134,
+    SEAT_CAMERA_RELAX_DISTANCE_SMOOTHING = 135,
+    Count = 136,
 };
 // NOLINTEND(*-identifier-naming)

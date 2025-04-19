@@ -22,7 +22,7 @@ struct InternalItemDescriptor : ItemDescriptor::BaseDescriptor {
     InternalItemDescriptor(WeakPtr<Item> &&item, std::int16_t aux_value);
     [[nodiscard]] std::unique_ptr<BaseDescriptor> clone() const override;
     [[nodiscard]] bool sameItem(const ItemDescriptor::ItemEntry &, bool) const override;
-    [[nodiscard]] const std::string &getFullName() const override;
+    [[nodiscard]] std::string getFullName() const override;
     [[nodiscard]] ItemDescriptor::ItemEntry getItem() const override;
     [[nodiscard]] std::map<std::string, std::string> toMap() const override;
     [[nodiscard]] std::optional<CompoundTag> save() const override;
@@ -63,7 +63,7 @@ bool InternalItemDescriptor::sameItem(const ItemDescriptor::ItemEntry &other, bo
     return item_entry_.aux_value == other.aux_value;
 }
 
-const std::string &InternalItemDescriptor::getFullName() const
+std::string InternalItemDescriptor::getFullName() const
 {
     return item_entry_.item->getFullItemName();
 }
@@ -212,7 +212,7 @@ std::int16_t ItemDescriptor::getAuxValue() const
     return impl_->getItem().aux_value;
 }
 
-std::string const &ItemDescriptor::getFullName() const
+std::string ItemDescriptor::getFullName() const
 {
     static std::string empty;
     if (!impl_) {
@@ -246,10 +246,9 @@ bool ItemDescriptor::BaseDescriptor::sameItems(BaseDescriptor const &, bool flag
     return false;
 }
 
-std::string const &ItemDescriptor::BaseDescriptor::getFullName() const
+std::string ItemDescriptor::BaseDescriptor::getFullName() const
 {
-    static std::string empty;
-    return empty;
+    return "";
 }
 
 std::string ItemDescriptor::BaseDescriptor::toString() const

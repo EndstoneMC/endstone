@@ -21,7 +21,7 @@ std::string getGameVersionString();
 }  // namespace Common
 
 namespace SharedConstants {
-static constexpr int TicksPerSecond = 20;
+constexpr int TicksPerSecond = 20;
 constexpr float SecondsPerTick = 1.0 / TicksPerSecond;
 constexpr float MilliSecondsPerTick = SecondsPerTick * 1000;
 constexpr int TicksPerMinute = TicksPerSecond * 60;

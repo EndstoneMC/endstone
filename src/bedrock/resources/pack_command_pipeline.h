@@ -14,33 +14,12 @@
 
 #pragma once
 
-#include <memory>
-#include <stdexcept>
+#include "bedrock/core/utility/enable_non_owner_references.h"
 
-namespace Bedrock {
+namespace PackCommand {
 
-class EnableNonOwnerReferences {
+class IPackCommandPipeline : public Bedrock::EnableNonOwnerReferences {
 public:
-    struct ControlBlock {
-        bool is_valid;
-    };
-
-    EnableNonOwnerReferences()
-    {
-        control_block_ = std::make_shared<ControlBlock>();
-        control_block_->is_valid = true;
-    }
-
-    virtual ~EnableNonOwnerReferences()
-    {
-        control_block_->is_valid = false;
-    }
-
-private:
-    template <typename T>
-    friend class NonOwnerPointer;
-
-    std::shared_ptr<ControlBlock> control_block_;
+    ~IPackCommandPipeline() override = default;
 };
-static_assert(sizeof(EnableNonOwnerReferences) == 24);
-}  // namespace Bedrock
+};  // namespace PackCommand

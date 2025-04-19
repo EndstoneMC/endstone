@@ -24,4 +24,5 @@ public:
     virtual void onXboxUserBlocked(std::string const &) = 0;
     virtual void onXboxUserUnblocked(std::string const &) = 0;
 };
+static_assert(sizeof(XboxLiveUserObserver) == 16);
 }  // namespace Social

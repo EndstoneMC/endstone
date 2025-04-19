@@ -49,18 +49,18 @@ public:
     [[nodiscard]] ResourceLocation const &getLocation() const;
     [[nodiscard]] bool hasErrors() const;
     [[nodiscard]] PackErrors const &getErrors() const;
-     [[nodiscard]] PackIdVersion const &getIdentity() const;
+    [[nodiscard]] PackIdVersion const &getIdentity() const;
     [[nodiscard]] std::string const &getOriginalName() const;
 
 private:
-    ResourceLocation location_;              // +0
-    bool was_upgraded_;                      // +56
-    bool attempted_upgrade_;                 // +57
-    PackErrors errors_;                      // +64
-    PackErrors warnings_;                    // +88
-    SemVersion required_base_game_version_;  // +112
-    std::string original_name_;              // +224
-    std::string original_version_;           // +256
-    PackIdVersion identity_;                 // +288
-    PackType pack_type_;                     // +424
+    ResourceLocation location_;
+    PackErrors errors_;
+    PackErrors warnings_;
+    SemVersion required_base_game_version_;
+    std::string original_name_;
+    std::string original_version_;
+    PackIdVersion identity_;
+    PackType pack_type_;
+    bool was_upgraded_;
+    bool attempted_upgrade_;
 };

@@ -43,7 +43,7 @@ private:
     brstd::flat_set<gsl::not_null<Biome *>, BiomeComparator> biomes_by_id_;  // +1080
     std::uint32_t next_custom_biome_id_;
     std::atomic<bool> closed_for_registration_;
-    bool load_from_packs_;
+    bool load_from_all_packs_;
     BiomeTagRegistry tag_registry_;
     Biome *empty_biome_;  // +1256
     Bedrock::PubSub::Subscription on_save_subscription_;

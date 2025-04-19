@@ -33,6 +33,14 @@ using RecursiveMutex = std::recursive_mutex;
 using SharedMutex = std::shared_timed_mutex;
 #endif
 
+template <typename T>
+class UniqueLock : public std::unique_lock<T> {};
+
+template <typename T>
+class LockGuard : public std::lock_guard<T> {
+    using std::lock_guard<T>::lock_guard;
+};
+
 }  // namespace Bedrock::Threading
 
 using SpinLock = SpinLockImpl;

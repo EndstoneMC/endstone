@@ -23,7 +23,7 @@ namespace endstone::core {
 
 class EndstonePackSource : public PackSource {
 public:
-    EndstonePackSource(std::filesystem::path path, ::PackType pack_type);
+    EndstonePackSource(std::filesystem::path path, ::PackType pack_type, std::unique_ptr<IPackIOProvider> io);
     ~EndstonePackSource() override = default;
     void forEachPackConst(ConstPackCallback callback) const override;
     void forEachPack(PackCallback callback) override;

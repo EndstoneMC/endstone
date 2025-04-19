@@ -20,8 +20,28 @@
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
 
+class Minecraft;
+
+class ICommandsContextProvider {
+public:
+    virtual ~ICommandsContextProvider();
+    virtual Level *getLevel() = 0;
+    [[nodiscard]] virtual NetworkIdentifier getLocalNetworkId() const = 0;
+    virtual void onCommandExecuted(MCRESULT, CommandOriginType, const std::string &, const std::string &) = 0;
+};
+
+class DefaultCommandsContextProvider : public ICommandsContextProvider {
+public:
+    explicit DefaultCommandsContextProvider(Minecraft &);
+
+private:
+    Minecraft &minecraft_;  // +8
+};
+
 class MinecraftCommands {
 public:
+    MinecraftCommands(ICommandsContextProvider &, std::unique_ptr<CommandRegistry> &&);
+
     virtual ~MinecraftCommands() = default;
 
     [[nodiscard]] CommandOutputSender &getOutputSender() const
@@ -38,11 +58,12 @@ public:
     Command *compileCommand(HashedString const &command_str, CommandOrigin &origin, CurrentCmdVersion command_version,
                             std::function<void(const std::string &)> on_parser_error);
 
-    static CommandOutputType getOutputType(const CommandOrigin & origin);
+    static CommandOutputType getOutputType(const CommandOrigin &origin);
 
 private:
-    std::unique_ptr<CommandOutputSender> output_sender_;                                       // +8
-    std::unique_ptr<CommandRegistry> registry_;                                                // +16
-    CommandPermissionLevel operator_command_permission_level_{CommandPermissionLevel::Admin};  // +24
+    ICommandsContextProvider &context_provider_;
+    std::unique_ptr<CommandRegistry> registry_;
+    std::unique_ptr<CommandOutputSender> output_sender_;
+    CommandPermissionLevel operator_command_permission_level_{CommandPermissionLevel::Admin};
     // ...
 };

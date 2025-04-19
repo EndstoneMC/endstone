@@ -29,8 +29,8 @@
 #include "bedrock/world/item/item_category.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/block_state_instance.h"
-#include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
+#include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/phys/aabb.h"
 #include "bedrock/world/phys/hit_result.h"
@@ -272,7 +272,7 @@ public:
     virtual void onExploded(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void onStandOn(EntityContext &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTickOnSetBlock() const = 0;
-    virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
+    // virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
     virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
     [[nodiscard]] virtual bool isInteractiveBlock() const = 0;
     // [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID, std::optional<Vec3>) const = 0;

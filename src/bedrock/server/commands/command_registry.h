@@ -54,10 +54,13 @@ enum class CommandParameterDataType : int {
 };
 
 class CommandRegistry {
+public:
     friend class Command;
     friend class CommandParameterData;
 
-public:
+    using CustomStorageGetFn = void *(*)(Command *, int);
+    using CustomStorageIsSetFn = bool *(*)(Command *, int);
+
     int addEnumValues(const std::string &name, const std::vector<std::string> &values);
 
     void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
@@ -389,6 +392,8 @@ enum class SemanticConstraint {
 
 class CommandParameterData {
     using ParseFunction = CommandRegistry::ParseFunction;
+    using CustomStorageGetFn = CommandRegistry::CustomStorageGetFn;
+    using CustomStorageIsSetFn = CommandRegistry::CustomStorageIsSetFn;
 
 public:
     CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_index, ParseFunction parse, char const *name,
@@ -399,6 +404,8 @@ public:
           is_optional(is_optional)
     {
     }
+    CommandParameterData(Bedrock::typeid_t<CommandRegistry>, ParseFunction, const char *, int, bool, CustomStorageGetFn,
+                         CustomStorageIsSetFn);
 
     Bedrock::typeid_t<CommandRegistry> type_index;                 // +0
     ParseFunction parse;                                           // +8
@@ -412,6 +419,8 @@ public:
     int set_offset;                                                // +84
     bool is_optional;                                              // +88
     CommandParameterOption options{CommandParameterOption::None};  // +89
+    CustomStorageGetFn value_get_fn{nullptr};
+    CustomStorageIsSetFn value_is_set_fn{nullptr};
 };
 
 template <typename CommandType>
