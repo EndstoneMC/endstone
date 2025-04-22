@@ -151,6 +151,7 @@ template <>
 nlohmann::json FormCodec::toJson(const Button &button)
 {
     nlohmann::json json;
+    json["type"] = "button";
     json["text"] = toJson(button.getText());
     if (auto icon = button.getIcon(); icon.has_value()) {
         if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
