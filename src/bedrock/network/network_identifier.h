@@ -19,6 +19,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
+#include "bedrock/deps/nethernet/network_id.h"
 #include "bedrock/deps/raknet/raknet_types.h"
 
 class NetworkIdentifier {
@@ -31,15 +32,14 @@ public:
         Invalid = 4,
     };
 
-    char unk[16];                  // TODO(fixme): figure out what is this?
-    std::uint64_t nether_net_id;   //
-    RakNet::RakNetGUID guid;       //
-    union {                        //
-        sockaddr_storage sa_stor;  //
-        sockaddr_in6 addr6;        //
-        sockaddr_in addr4;         //
-    } sock;                        //
-    Type type;                     // +176
+    NetherNet::NetworkID nether_net_id;  //
+    RakNet::RakNetGUID guid;             //
+    union {                              //
+        sockaddr_storage sa_stor;        //
+        sockaddr_in6 addr6;              //
+        sockaddr_in addr4;               //
+    } sock;                              //
+    Type type;                           // +176
 
     [[nodiscard]] std::string getAddress() const;
     [[nodiscard]] std::uint16_t getPort() const;

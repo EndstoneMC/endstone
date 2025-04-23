@@ -31,7 +31,7 @@ enum class MobSpawnMethod : std::uint8_t {
 };
 
 struct BuiltInMobComponents {
-    gsl::not_null<DeathTickingComponent *> death_ticking_component;  // TODO(fixme): check this
+    gsl::not_null<DeathTickingComponent *> death_ticking_component;
     gsl::not_null<MobAnimationComponent *> mob_animation_component;
     gsl::not_null<MobHurtTimeComponent *> mob_hurt_time_component;
 };
