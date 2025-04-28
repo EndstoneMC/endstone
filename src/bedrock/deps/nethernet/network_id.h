@@ -22,6 +22,7 @@ namespace NetherNet {
 namespace P2P {
 struct NetworkID {
     std::uint64_t value;
+    std::strong_ordering operator<=>(const NetworkID &) const = default;
 };
 static_assert(sizeof(NetworkID) == 8);
 }  // namespace P2P
@@ -29,11 +30,14 @@ static_assert(sizeof(NetworkID) == 8);
 namespace Realms {
 struct NetworkID {
     mce::UUID value;
+    std::strong_ordering operator<=>(const NetworkID &other) const = default;
 };
 static_assert(sizeof(NetworkID) == 16);
 
 }  // namespace Realms
 
-struct NetworkID : private std::variant<std::monostate, P2P::NetworkID, Realms::NetworkID> {};
+struct NetworkID : private std::variant<std::monostate, P2P::NetworkID, Realms::NetworkID> {
+    std::strong_ordering operator<=>(const NetworkID &) const = default;
+};
 static_assert(sizeof(NetworkID) == 24);
 }  // namespace NetherNet

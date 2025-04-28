@@ -37,4 +37,12 @@ std::string UUID::asString() const
     return oss.str();
 }
 
+bool UUID::operator<(const UUID &other) const
+{
+    if (data[0] == other.data[0]) {
+        return data[1] < other.data[1];
+    }
+    return data[0] < other.data[0];
+}
+
 }  // namespace mce
