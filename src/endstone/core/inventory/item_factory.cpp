@@ -34,6 +34,7 @@ void loadData(ItemMeta &meta, const CompoundTag &tag)
         // Lore
         if (const auto *lore_tag = display_tag->getList(ItemStackBase::TAG_LORE)) {
             std::vector<std::string> lore;
+            lore.reserve(lore_tag->size());
             for (auto i = 0; i < lore_tag->size(); i++) {
                 lore.emplace_back(lore_tag->getString(i));
             }
@@ -46,6 +47,12 @@ void loadData(ItemMeta &meta, const CompoundTag &tag)
     // Damage
     if (const auto damage = tag.getInt(Item::TAG_DAMAGE)) {
         meta.setDamage(damage);
+    }
+
+    // Enchant
+    if (const auto *const enchants = tag.getList(ItemStackBase::TAG_ENCH)) {
+        enchants->forEachCompoundTag(
+            [&](const CompoundTag &enchant) { meta.addEnchant(enchant.getShort("id"), enchant.getShort("lvl")); });
     }
 }
 
@@ -111,6 +118,19 @@ void applyTo(const ItemMeta &meta, CompoundTag &tag)
     }
     else {
         tag.remove(Item::TAG_DAMAGE);
+    }
+
+    // Enchant
+    if (meta.hasEnchants()) {
+        auto enchants = meta.getEnchants();
+        auto enchants_tag = std::make_unique<ListTag>();
+        for (const auto &[id, lvl] : enchants) {
+            auto enchant = std::make_unique<CompoundTag>();
+            enchant->putShort("id", id);
+            enchant->putShort("lvl", lvl);
+            enchants_tag->add(std::move(enchant));
+        }
+        tag.put(ItemStackBase::TAG_ENCH, std::move(enchants_tag));
     }
 }
 

@@ -17,6 +17,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 namespace endstone {
@@ -181,7 +182,61 @@ public:
         damage_ = damage;
     }
 
+    virtual bool addEnchant(std::int16_t id, std::int16_t lvl)
+    {
+        if (enchants_ && enchants_->contains(id) && enchants_->at(id) == lvl) {
+            return false;
+        }
+        if (!enchants_) {
+            enchants_ = {};
+        }
+        (*enchants_)[id] = lvl;
+        return true;
+    }
+
+    virtual bool removeEnchant(std::int16_t id)
+    {
+        if (enchants_ && enchants_->contains(id)) {
+            enchants_->erase(id);
+            if (enchants_->empty()) {
+                enchants_ = std::nullopt;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    virtual bool removeEnchants()
+    {
+        if (enchants_) {
+            enchants_ = std::nullopt;
+            return true;
+        }
+        return false;
+    }
+
+    [[nodiscard]] virtual bool hasEnchant(std::int16_t id) const
+    {
+        return enchants_ && enchants_->contains(id);
+    }
+
+    [[nodiscard]] virtual std::unordered_map<std::int16_t, std::int16_t> getEnchants() const
+    {
+        return enchants_ ? *enchants_ : std::unordered_map<std::int16_t, std::int16_t>{};
+    }
+
+    [[nodiscard]] virtual std::int16_t getEnchantLevel(std::int16_t id) const
+    {
+        return enchants_ && enchants_->contains(id) ? enchants_->at(id) : static_cast<std::int16_t>(0);
+    }
+
+    [[nodiscard]] virtual bool hasEnchants() const
+    {
+        return enchants_.has_value();
+    }
+
 private:
+    std::optional<std::unordered_map<std::int16_t, std::int16_t>> enchants_;
     std::optional<std::string> display_name_;
     std::optional<std::vector<std::string>> lore_;
     int damage_ = 0;
