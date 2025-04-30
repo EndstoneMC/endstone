@@ -215,6 +215,16 @@ public:
         return false;
     }
 
+    virtual void setEnchants(std::unordered_map<std::int16_t, std::int16_t> enchants)
+    {
+        if (!enchants.empty()) {
+            enchants_ = std::move(enchants);
+        }
+        else {
+            enchants_ = std::nullopt;
+        }
+    }
+
     [[nodiscard]] virtual bool hasEnchant(std::int16_t id) const
     {
         return enchants_ && enchants_->contains(id);

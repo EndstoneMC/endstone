@@ -27,8 +27,11 @@ void init_inventory(py::module_ &m)
                       "Gets or sets the display name.")
         .def_property_readonly("has_lore", &ItemMeta::hasLore, "Checks for existence of lore.")
         .def_property("lore", &ItemMeta::getLore, &ItemMeta::setLore, "Gets or sets the lore for this item.")
-        .def_property_readonly("has_damage", &ItemMeta::hasDamage, "Checks to see if this item has damage")
-        .def_property("damage", &ItemMeta::getDamage, &ItemMeta::setDamage, "Gets or sets the damage.");
+        .def_property_readonly("has_damage", &ItemMeta::hasDamage, "Checks to see if this item has damage.")
+        .def_property("damage", &ItemMeta::getDamage, &ItemMeta::setDamage, "Gets or sets the damage.")
+        .def_property_readonly("has_enchants", &ItemMeta::hasEnchants, "Checks for existence of enchants.")
+        .def_property("enchants", &ItemMeta::getEnchants, &ItemMeta::setEnchants,
+                      "Gets or sets the enchants for this item.");
 
     py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
 
