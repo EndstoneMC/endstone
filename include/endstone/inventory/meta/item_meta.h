@@ -187,8 +187,8 @@ public:
         if (enchants_ && enchants_->contains(id) && enchants_->at(id) == lvl) {
             return false;
         }
-        if (!enchants_) {
-            enchants_ = {};
+        if (!enchants_.has_value()) {
+            enchants_ = std::make_optional<std::unordered_map<std::int16_t, std::int16_t>>({});
         }
         (*enchants_)[id] = lvl;
         return true;
@@ -242,7 +242,7 @@ public:
 
     [[nodiscard]] virtual bool hasEnchants() const
     {
-        return enchants_.has_value();
+        return enchants_.has_value() ? !enchants_->empty() : false;
     }
 
 private:

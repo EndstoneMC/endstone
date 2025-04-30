@@ -40,7 +40,10 @@ public:
     constexpr static std::int16_t POWER = 19;
     constexpr static std::int16_t PUNCH = 20;
     constexpr static std::int16_t FLAME = 21;
+#pragma push_macro("INFINITY")
+#undef INFINITY
     constexpr static std::int16_t INFINITY = 22;
+#pragma pop_macro("INFINITY")
     constexpr static std::int16_t LUCK_OF_THE_SEA = 23;
     constexpr static std::int16_t LURE = 24;
     constexpr static std::int16_t FROST_WALKER = 25;
