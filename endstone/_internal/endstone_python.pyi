@@ -1423,17 +1423,12 @@ class ItemMeta:
     @property
     def has_damage(self) -> bool:
         """
-        Checks to see if this item has damage.
+        Checks to see if this item has damage
         """
     @property
     def has_display_name(self) -> bool:
         """
         Checks for existence of a display name.
-        """
-    @property
-    def has_enchants(self) -> bool:
-        """
-        Checks for existence of enchants.
         """
     @property
     def has_lore(self) -> bool:
