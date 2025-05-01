@@ -125,7 +125,7 @@ void applyTo(const ItemMeta &meta, CompoundTag &tag)
     if (meta.hasEnchants()) {
         auto enchants = meta.getEnchants();
         auto enchants_tag = std::make_unique<ListTag>();
-        for (const auto &[id, lvl] : enchants) {
+        for (const auto &[id, lvl] : *enchants) {
             auto enchant = std::make_unique<CompoundTag>();
             enchant->putShort("id", id);
             enchant->putShort("lvl", lvl);
