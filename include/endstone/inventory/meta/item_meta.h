@@ -208,16 +208,16 @@ public:
 
     virtual bool removeEnchants()
     {
-        if (enchants_) {
+        if (enchants_.has_value()) {
             enchants_ = std::nullopt;
             return true;
         }
         return false;
     }
 
-    virtual void setEnchants(std::unordered_map<std::int16_t, std::int16_t> enchants)
+    virtual void setEnchants(std::optional<std::unordered_map<std::int16_t, std::int16_t>> enchants)
     {
-        if (!enchants.empty()) {
+        if (enchants.has_value() && !enchants->empty()) {
             enchants_ = std::move(enchants);
         }
         else {
@@ -230,9 +230,12 @@ public:
         return enchants_ && enchants_->contains(id);
     }
 
-    [[nodiscard]] virtual std::unordered_map<std::int16_t, std::int16_t> getEnchants() const
+    [[nodiscard]] virtual std::optional<std::unordered_map<std::int16_t, std::int16_t>> getEnchants() const
     {
-        return enchants_ ? *enchants_ : std::unordered_map<std::int16_t, std::int16_t>{};
+        if (hasEnchants()) {
+            return enchants_;
+        }
+        return std::nullopt;
     }
 
     [[nodiscard]] virtual std::int16_t getEnchantLevel(std::int16_t id) const

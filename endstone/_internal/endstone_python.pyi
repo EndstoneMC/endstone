@@ -1413,14 +1413,27 @@ class ItemMeta:
     def display_name(self, arg1: str | None) -> None:
         ...
     @property
+    def enchants(self) -> dict[int, int] | None:
+        """
+        Gets or sets the enchants for this item.
+        """
+    @enchants.setter
+    def enchants(self, arg1: dict[int, int] | None) -> None:
+        ...
+    @property
     def has_damage(self) -> bool:
         """
-        Checks to see if this item has damage
+        Checks to see if this item has damage.
         """
     @property
     def has_display_name(self) -> bool:
         """
         Checks for existence of a display name.
+        """
+    @property
+    def has_enchants(self) -> bool:
+        """
+        Checks for existence of enchants.
         """
     @property
     def has_lore(self) -> bool:
