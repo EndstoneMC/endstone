@@ -14,53 +14,43 @@
 
 #pragma once
 
-#include <cstdint>
 namespace endstone {
+class ItemStack;
+
 class Enchantment {
 public:
-    constexpr static std::int16_t PROTECTION = 0;
-    constexpr static std::int16_t FIRE_PROTECTION = 1;
-    constexpr static std::int16_t FEATHER_FALLING = 2;
-    constexpr static std::int16_t BLAST_PROTECTION = 3;
-    constexpr static std::int16_t PROJECTILE_PROTECTION = 4;
-    constexpr static std::int16_t THORNS = 5;
-    constexpr static std::int16_t RESPIRATION = 6;
-    constexpr static std::int16_t DEPTH_STRIDER = 7;
-    constexpr static std::int16_t AQUA_AFFINITY = 8;
-    constexpr static std::int16_t SHARPNESS = 9;
-    constexpr static std::int16_t SMITE = 10;
-    constexpr static std::int16_t BANE_OF_ARTHROPODS = 11;
-    constexpr static std::int16_t KNOCKBACK = 12;
-    constexpr static std::int16_t FIRE_ASPECT = 13;
-    constexpr static std::int16_t LOOTING = 14;
-    constexpr static std::int16_t EFFICIENCY = 15;
-    constexpr static std::int16_t SILK_TOUCH = 16;
-    constexpr static std::int16_t UNBREAKING = 17;
-    constexpr static std::int16_t FORTUNE = 18;
-    constexpr static std::int16_t POWER = 19;
-    constexpr static std::int16_t PUNCH = 20;
-    constexpr static std::int16_t FLAME = 21;
-#pragma push_macro("INFINITY")
-#undef INFINITY
-    constexpr static std::int16_t INFINITY = 22;
-#pragma pop_macro("INFINITY")
-    constexpr static std::int16_t LUCK_OF_THE_SEA = 23;
-    constexpr static std::int16_t LURE = 24;
-    constexpr static std::int16_t FROST_WALKER = 25;
-    constexpr static std::int16_t MENDING = 26;
-    constexpr static std::int16_t BINDING_CURSE = 27;
-    constexpr static std::int16_t VANISHING_CURSE = 28;
-    constexpr static std::int16_t IMPALING = 29;
-    constexpr static std::int16_t RIPTIDE = 30;
-    constexpr static std::int16_t LOYALTY = 31;
-    constexpr static std::int16_t CHANNELING = 32;
-    constexpr static std::int16_t MULTISHOT = 33;
-    constexpr static std::int16_t PIERCING = 34;
-    constexpr static std::int16_t QUICK_CHARGE = 35;
-    constexpr static std::int16_t SOUL_SPEED = 36;
-    constexpr static std::int16_t SWIFT_SNEAK = 37;
-    constexpr static std::int16_t WIND_BURST = 38;
-    constexpr static std::int16_t DENSITY = 39;
-    constexpr static std::int16_t BREACH = 40;
+    virtual ~Enchantment() = default;
+
+    /**
+     * @brief Return the namespaced identifier for this enchantment.
+     *
+     * @return this enchantment's key
+     */
+    [[nodiscard]] virtual std::string_view getKey() const = 0;
+
+    /**
+     * @brief Gets the maximum level that this Enchantment may become.
+     *
+     * @return Maximum level of the Enchantment
+     */
+    [[nodiscard]] virtual int getMaxLevel() const = 0;
+
+    /**
+     * @brief Check if this enchantment conflicts with another enchantment.
+     *
+     * @param other The enchantment to check against
+     * @return True if there is a conflict.
+     */
+    [[nodiscard]] virtual bool conflictsWith(const Enchantment &other) const = 0;
+
+    /**
+     * Checks if this Enchantment may be applied to the given ItemStack.
+     * <p>
+     * This does not check if it conflicts with any enchantments already applied to the item.
+     *
+     * @param item Item to test
+     * @return True if the enchantment may be applied, otherwise False
+     */
+    [[nodiscard]] virtual bool canEnchantItem(const ItemStack &item) const = 0;
 };
 }  // namespace endstone

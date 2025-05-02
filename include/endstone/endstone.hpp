@@ -42,6 +42,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "boss/boss_bar.h"
 #include "color_format.h"
 #include "command/command.h"
+#include "enchantments/enchantment.h"
 #include "command/command_executor.h"
 #include "command/command_map.h"
 #include "command/command_sender.h"
