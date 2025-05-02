@@ -23,6 +23,7 @@ add_library(endstone_core
         platform_linux.cpp
         platform_windows.cpp
         player.cpp
+        registry.cpp
         server.cpp
         signal_handler.cpp
         actor/actor.cpp
