@@ -24,11 +24,13 @@
 #include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
+#include "endstone/enchantments/enchantment.h"
 #include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
 #include "endstone/plugin/service_manager.h"
+#include "endstone/registry.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/util/result.h"
 #include "endstone/util/uuid.h"
@@ -355,6 +357,13 @@ public:
      * @return The service manager
      */
     [[nodiscard]] virtual ServiceManager &getServiceManager() const = 0;
+
+    /**
+     * Returns the registry for all the enchantments.
+
+     * @return the enchantment registry.
+     */
+    [[nodiscard]] virtual Registry<Enchantment> &getEnchantmentRegistry() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

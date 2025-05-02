@@ -36,6 +36,7 @@ public:
     MOCK_METHOD(bool, dispatchCommand, (endstone::CommandSender &, std::string), (const, override));
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
     MOCK_METHOD(endstone::ServiceManager &, getServiceManager, (), (const, override));
+    MOCK_METHOD(endstone::Registry<endstone::Enchantment> &, getEnchantmentRegistry, (), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
     MOCK_METHOD(int, getMaxPlayers, (), (const, override));

@@ -103,6 +103,7 @@ public:
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;
     [[nodiscard]] ServiceManager &getServiceManager() const override;
+    [[nodiscard]] Registry<Enchantment> &getEnchantmentRegistry() const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
