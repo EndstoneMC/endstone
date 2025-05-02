@@ -70,11 +70,11 @@
 * **button2\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **block\_clicked\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **block\_face\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **begin** ([**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::UUID**](classendstone_1_1UUID.md))
 * **BroadcastChannelAdmin** ([**endstone::Server**](classendstone_1_1Server.md))
 * **BroadcastChannelUser** ([**endstone::Server**](classendstone_1_1Server.md))
 * **broadcast** ([**endstone::Server**](classendstone_1_1Server.md))
 * **broadcastMessage** ([**endstone::Server**](classendstone_1_1Server.md))
-* **begin** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **build** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md), [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **buildCommands** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **buildPermissions** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
@@ -106,6 +106,8 @@
 * **commands\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **contributors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **const\_iterator** ([**endstone::Registry**](classendstone_1_1Registry.md))
+* **const\_reference** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **cancelTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **clearSlot** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
@@ -177,8 +179,8 @@
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **enablePlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **enablePlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **end** ([**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::UUID**](classendstone_1_1UUID.md))
 * **empty** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
-* **end** ([**endstone::UUID**](classendstone_1_1UUID.md))
 
 
 ## f
@@ -363,6 +365,8 @@
 * **getBlockZ** ([**endstone::Position**](classendstone_1_1Position.md))
 * **getCallee** ([**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md))
 * **getCaller** ([**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md))
+* **get** ([**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
+* **getOrThrow** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **getPendingTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **getEntry** ([**endstone::Score**](classendstone_1_1Score.md))
 * **getObjective** ([**endstone::Score**](classendstone_1_1Score.md), [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
@@ -401,7 +405,6 @@
 * **getRemoteHost** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getRemotePort** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getServerGuid** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
-* **get** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **getCapeData** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getCapeId** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getSkinData** ([**endstone::Skin**](classendstone_1_1Skin.md))
@@ -475,6 +478,7 @@
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **isEnabled** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **isPluginEnabled** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **iterator** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **isQueued** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **isRunning** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **isScoreSet** ([**endstone::Score**](classendstone_1_1Score.md))
@@ -492,6 +496,7 @@
 
 * **knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **kick** ([**endstone::Player**](classendstone_1_1Player.md))
+* **key\_type** ([**endstone::Registry**](classendstone_1_1Registry.md))
 
 
 ## l
@@ -676,6 +681,7 @@
 * **recalculatePermissionDefaults** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **registerLoader** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **removePermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **reference** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **runTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskAsync** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskLater** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
@@ -793,6 +799,7 @@
 * **subscribeToDefaultPerms** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **subscribeToPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **setDimension** ([**endstone::Position**](classendstone_1_1Position.md))
+* **storage\_type** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **setValue** ([**endstone::Score**](classendstone_1_1Score.md))
 * **ScriptMessageEvent** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **Server** ([**endstone::Server**](classendstone_1_1Server.md))
@@ -871,6 +878,7 @@
 * **valid\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **value\_type** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **version** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **Vector** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
@@ -957,6 +965,7 @@
 * **~Plugin** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **~PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **~PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **~Registry** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **~Scheduler** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))

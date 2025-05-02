@@ -1283,6 +1283,24 @@
     <member refid="classendstone_1_1ProxiedCommandSender_1abf8c53e2b5c1a1f8e79a6740f23450d1" kind="function"><name>getCaller</name></member>
     <member refid="classendstone_1_1ProxiedCommandSender_1a0d463952b7f1889c87d4c76c4a15154a" kind="function"><name>getCallee</name></member>
   </compound>
+  <compound refid="classendstone_1_1Registry" kind="class"><name>endstone::Registry</name>
+    <member refid="classendstone_1_1Registry_1a064491e80f8fd57f592cb51bd0d76715" kind="typedef"><name>key_type</name></member>
+    <member refid="classendstone_1_1Registry_1aa2c59bf8b96fa037c9d9237d9648e877" kind="typedef"><name>value_type</name></member>
+    <member refid="classendstone_1_1Registry_1a69562de8dd0c2073b225a3722a323ea6" kind="typedef"><name>reference</name></member>
+    <member refid="classendstone_1_1Registry_1a294b14ffa431d30cea6e7722f067af4b" kind="typedef"><name>const_reference</name></member>
+    <member refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" kind="typedef"><name>iterator</name></member>
+    <member refid="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" kind="typedef"><name>const_iterator</name></member>
+    <member refid="classendstone_1_1Registry_1a6fd2b15db63a1bea07fdd1d4c6a18bc3" kind="typedef"><name>storage_type</name></member>
+    <member refid="classendstone_1_1Registry_1a9396db9d9eea6543c7ed9d6162e9822a" kind="function"><name>~Registry</name></member>
+    <member refid="classendstone_1_1Registry_1a02bab8b09ca4cd8e7eb1e772e8c1e86d" kind="function"><name>get</name></member>
+    <member refid="classendstone_1_1Registry_1ac6b2b57622e283766603fa6652558d9e" kind="function"><name>get</name></member>
+    <member refid="classendstone_1_1Registry_1a802a2854f83cf4851de301c0a428e972" kind="function"><name>getOrThrow</name></member>
+    <member refid="classendstone_1_1Registry_1aa7a23437b398794827a2c99204b80445" kind="function"><name>getOrThrow</name></member>
+    <member refid="classendstone_1_1Registry_1a934a6aa418f2d8c45e05d84932d65617" kind="function"><name>begin</name></member>
+    <member refid="classendstone_1_1Registry_1a7000e9b723eeb4de37d97382e3d93cc6" kind="function"><name>end</name></member>
+    <member refid="classendstone_1_1Registry_1a93c7909db64a83e1db3bb8045c624733" kind="function"><name>begin</name></member>
+    <member refid="classendstone_1_1Registry_1a04682eeb1ac4ae542c341f25bed244d8" kind="function"><name>end</name></member>
+  </compound>
   <compound refid="classendstone_1_1Scheduler" kind="class"><name>endstone::Scheduler</name>
     <member refid="classendstone_1_1Scheduler_1a869448c7e94100977f5c3026c6a16a45" kind="function"><name>~Scheduler</name></member>
     <member refid="classendstone_1_1Scheduler_1a9f4787f0c3bcbd771935a8a58fb40198" kind="function"><name>runTask</name></member>
@@ -1606,6 +1624,8 @@
     <member refid="classendstone_1_1WeatherEvent_1a2fd933d4e6cb075fcfaeccf58344b742" kind="function"><name>~WeatherEvent</name></member>
     <member refid="classendstone_1_1WeatherEvent_1a41c387efbe3a36881832bddf69b90691" kind="function"><name>getLevel</name></member>
   </compound>
+  <compound refid="conceptendstone_1_1Keyed" kind="concept"><name>endstone::Keyed</name>
+  </compound>
   <compound refid="namespaceendstone" kind="namespace"><name>endstone</name>
     <member refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785" kind="enum"><name>BlockFace</name></member>
     <member refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785a08a38277b0309070706f6652eeae9a53" kind="enumvalue"><name>Down</name></member>
@@ -1920,6 +1940,8 @@
   <compound refid="service__manager_8h" kind="file"><name>service_manager.h</name>
   </compound>
   <compound refid="service__priority_8h" kind="file"><name>service_priority.h</name>
+  </compound>
+  <compound refid="registry_8h" kind="file"><name>registry.h</name>
   </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
   </compound>

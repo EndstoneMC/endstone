@@ -262,6 +262,12 @@
 ([**endstone**](namespaceendstone.md))
 
 
+## r
+
+* [**Registry**](classendstone_1_1Registry.md)
+([**endstone**](namespaceendstone.md))
+
+
 ## s
 
 * [**Scheduler**](classendstone_1_1Scheduler.md)

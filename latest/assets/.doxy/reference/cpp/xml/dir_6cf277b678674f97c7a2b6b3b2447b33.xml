@@ -24,6 +24,7 @@
     <innerfile refid="message_8h">message.h</innerfile>
     <innerfile refid="offline__player_8h">offline_player.h</innerfile>
     <innerfile refid="player_8h">player.h</innerfile>
+    <innerfile refid="registry_8h">registry.h</innerfile>
     <innerfile refid="server_8h">server.h</innerfile>
     <innerfile refid="skin_8h">skin.h</innerfile>
     <innerfile refid="variant_8h">variant.h</innerfile>
