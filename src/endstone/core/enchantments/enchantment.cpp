@@ -37,7 +37,7 @@ int EndstoneEnchantment::getStartLevel() const
 
 bool EndstoneEnchantment::conflictsWith(const Enchantment &other) const
 {
-    return getHandle().isCompatibleWith(static_cast<const EndstoneEnchantment &>(other).getHandle().getEnchantType());
+    return !getHandle().isCompatibleWith(static_cast<const EndstoneEnchantment &>(other).getHandle().getEnchantType());
 }
 
 bool EndstoneEnchantment::canEnchantItem(const ItemStack &item) const
