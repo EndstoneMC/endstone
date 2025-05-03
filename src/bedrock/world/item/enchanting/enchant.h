@@ -157,7 +157,7 @@ private:
 public:
     Frequency getFrequency() const;
     bool canEnchant(const ItemInstance &, bool) const;
-    bool canEnchant(int, bool) const;
+    bool canEnchant(int slot, bool allow_non_vanilla) const;
     bool canPrimaryEnchant(const ItemInstance &) const;
     bool canPrimaryEnchant(int) const;
     bool canSecondaryEnchant(const ItemInstance &) const;
