@@ -36,6 +36,13 @@ public:
     [[nodiscard]] virtual int getMaxLevel() const = 0;
 
     /**
+     * @brief Gets the level that this Enchantment should start at (also known as minimum level).
+     *
+     * @return Starting level of the Enchantment
+     */
+    [[nodiscard]] virtual int getStartLevel() const = 0;
+
+    /**
      * @brief Check if this enchantment conflicts with another enchantment.
      *
      * @param other The enchantment to check against
