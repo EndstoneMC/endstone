@@ -50,7 +50,7 @@ void loadData(ItemMeta &meta, const CompoundTag &tag)
     }
 
     // Enchant
-    if (const auto *const enchants = tag.getList(ItemStackBase::TAG_ENCH)) {
+    if (const auto *const enchants = tag.getList(ItemStackBase::TAG_ENCHANTS)) {
         meta.removeEnchants();
         enchants->forEachCompoundTag(
             [&](const CompoundTag &enchant) { meta.addEnchant(enchant.getShort("id"), enchant.getShort("lvl")); });
@@ -131,10 +131,10 @@ void applyTo(const ItemMeta &meta, CompoundTag &tag)
             enchant->putShort("lvl", lvl);
             enchants_tag->add(std::move(enchant));
         }
-        tag.put(ItemStackBase::TAG_ENCH, std::move(enchants_tag));
+        tag.put(ItemStackBase::TAG_ENCHANTS, std::move(enchants_tag));
     }
     else {
-        tag.remove(ItemStackBase::TAG_ENCH);
+        tag.remove(ItemStackBase::TAG_ENCHANTS);
     }
 }
 
