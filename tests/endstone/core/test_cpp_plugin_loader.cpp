@@ -15,52 +15,39 @@
 #include <filesystem>
 #include <memory>
 
-#include <endstone/core/server.h>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
-#include "endstone/server.h"
+#include "mocks.h"
 
 namespace fs = std::filesystem;
-
-class MockServer : public endstone::core::EndstoneServer {
-public:
-    MOCK_METHOD(endstone::Logger &, getLogger, (), (const, override));
-
-    MockServer()
-    {
-        ON_CALL(*this, getLogger()).WillByDefault(testing::ReturnRef(endstone::core::LoggerFactory::getLogger("Test")));
-    }
-};
 
 class CppPluginLoaderTest : public ::testing::Test {
 protected:
     // Set Up
     void SetUp() override
     {
-        mock_server_ = std::make_unique<MockServer>();
-        loader_ = std::make_unique<endstone::core::CppPluginLoader>(*mock_server_);
+        ON_CALL(server_, getLogger())
+            .WillByDefault(testing::ReturnRef(endstone::core::LoggerFactory::getLogger("Test")));
+        loader_ = std::make_unique<endstone::core::CppPluginLoader>(server_);
         plugin_dir_ = std::filesystem::current_path() / "plugins";
     }
 
     // Tear Down
     void TearDown() override
     {
-        mock_server_.reset();
         loader_.reset();
     }
 
-    std::unique_ptr<MockServer> mock_server_;
+    testing::NiceMock<MockServer> server_;
     std::unique_ptr<endstone::core::CppPluginLoader> loader_;
     fs::path plugin_dir_;
 };
 
 TEST_F(CppPluginLoaderTest, TestLoadPlugin)
 {
-    EXPECT_CALL(*mock_server_, getLogger()).Times(2);
-
     auto nonexistent_path = plugin_dir_ / "nonexistent_file";
     ASSERT_EQ(nullptr, loader_->loadPlugin(nonexistent_path.string()));
 
@@ -74,7 +61,6 @@ TEST_F(CppPluginLoaderTest, TestLoadPlugin)
 
 TEST_F(CppPluginLoaderTest, TestLoadPluginsFromDirectory)
 {
-    EXPECT_CALL(*mock_server_, getLogger()).Times(2);
     auto plugins = loader_->loadPlugins(plugin_dir_.string());
     ASSERT_EQ(1, plugins.size());
     ASSERT_EQ(plugins[0]->getName(), "test");

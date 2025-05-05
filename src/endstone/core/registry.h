@@ -194,7 +194,7 @@ private:
     }
 
     MinecraftRegistry<M> minecraft_registry_;
-    mutable std::unordered_map<std::string_view, std::unique_ptr<T>> cache_;
+    mutable typename Registry<T>::storage_type cache_;
     MinecraftToEndstoneFunc minecraft_to_endstone_;
 };
 

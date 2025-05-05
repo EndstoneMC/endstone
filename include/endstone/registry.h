@@ -44,13 +44,13 @@ template <Keyed T>
 class Registry {
 public:
     using key_type = std::string_view;
-    using value_type = T;
+    using value_type = std::unique_ptr<T>;
     using reference = T &;
     using const_reference = const T &;
 
 protected:
     /// Underlying storage type
-    using storage_type = std::unordered_map<key_type, T>;
+    using storage_type = std::unordered_map<key_type, value_type>;
 
 public:
     /// Iterator over stored elements

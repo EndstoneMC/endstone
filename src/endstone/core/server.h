@@ -42,7 +42,7 @@ namespace endstone::core {
 class EndstoneServer : public Server {
 public:
     explicit EndstoneServer();
-    ~EndstoneServer();
+    ~EndstoneServer() override;
     EndstoneServer(EndstoneServer const &) = delete;
     EndstoneServer(EndstoneServer &&) = delete;
     EndstoneServer &operator=(EndstoneServer const &) = delete;
@@ -136,6 +136,7 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
+    std::unique_ptr<Registry<Enchantment>> enchantment_registry_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
     std::unordered_map<UUID, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
