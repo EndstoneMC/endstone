@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.7.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) – 2025-05-06
+
+<small>[Compare with 0.7.2](https://github.com/EndstoneMC/endstone/compare/v0.7.2...v0.7.3)</small>
+
+### Added
+
+- Added support for Minecraft v1.21.80.
+- Added divider and header for `ActionForm`.
+
+### Fixed
+
+- Ensure SetLocalPlayerAsInitializedPacket is handled only once when a player
+  joins ([#171](https://github.com/EndstoneMC/endstone/issues/171)).
+- Death message is now correctly localised on the client side.
+- Python interpreter now launches correctly in multiprocessing scenarios.
+
 ## [0.7.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) – 2025-03-29
 
 <small>[Compare with 0.7.1](https://github.com/EndstoneMC/endstone/compare/v0.7.1...v0.7.2)</small>
