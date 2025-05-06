@@ -64,6 +64,7 @@
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
 #include "bedrock/world/level/player_death_manager.h"
+#include "bedrock/world/level/saveddata/map_item_saved_data.h"
 #include "bedrock/world/level/storage/game_rules.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
@@ -123,6 +124,7 @@ public:
     virtual bool isPlayerSuspended(Player &) const = 0;
     virtual Bedrock::NonOwnerPointer<GameplayUserManager> getGameplayUserManager() = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<GameplayUserManager> getGameplayUserManager() const = 0;
+    virtual Bedrock::NonOwnerPointer<PlayerLocationReceiver> getPlayerLocationReceiver() = 0;
     virtual OwnerPtr<EntityContext> removeActorAndTakeEntity(WeakEntityRef) = 0;
     virtual OwnerPtr<EntityContext> removeActorFromWorldAndTakeEntity(WeakEntityRef) = 0;
     virtual OwnerPtr<EntityContext> takeEntity(WeakEntityRef, LevelChunk &) = 0;
@@ -466,6 +468,7 @@ public:
     [[nodiscard]] virtual std::weak_ptr<BlockTypeRegistry> getBlockRegistry() const = 0;
     virtual void pauseAndFlushTaskGroups() = 0;
     [[nodiscard]] virtual const cereal::ReflectionCtx &cerealContext() const = 0;
+    virtual void subChunkTickAndSendRequests() = 0;
 
 protected:
     virtual PlayerDeathManager *_getPlayerDeathManager() = 0;

@@ -158,12 +158,12 @@ public:
 
     static int getXpNeededForLevelRange(int start, int end);
 
-    std::vector<std::uint16_t> ocean_biomes;  // +1112
+    std::vector<std::uint16_t> ocean_biomes;  // +1120
     std::vector<std::uint16_t> froglights;
     const float sneak_height;
     const float sneak_offset;
     int score;
-    BuildPlatform build_platform;  // +1164
+    BuildPlatform build_platform;  // +1180
     std::string unique_name;
     std::string server_id;
     std::string self_signed_id;
@@ -187,7 +187,7 @@ protected:
     std::shared_ptr<ContainerManagerModel> container_manager_;
     Bedrock::PubSub::PublisherPtr<void(const ContainerManagerModel *), Bedrock::PubSub::ThreadModel::SingleThreaded>
         container_manager_subscribers_;
-    std::unique_ptr<PlayerInventory> inventory_;  // +1472
+    std::unique_ptr<PlayerInventory> inventory_;  // +1480
     InventoryOptions inventory_options_;
     float distance_since_transform_event_;
     std::vector<ItemInstance> creative_item_list_;
@@ -261,8 +261,8 @@ protected:
     std::vector<ActorUniqueID> tracked_boss_ids_;
     using PlayerListenerList = std::vector<PlayerListener *>;
     ItemGroup cursor_selected_item_group_;
-    std::size_t player_ui_container_[sizeof(PlayerUIContainer) / 8];
-    InventoryTransactionManager transaction_manager_;
+    PlayerUIContainer player_ui_container_;
+    InventoryTransactionManager transaction_manager_;  // +2648
     std::unique_ptr<GameMode> game_mode_;
     std::unique_ptr<PlayerRespawnRandomizer> spawn_randomizer_;
     std::unique_ptr<SerializedSkin> skin_;
@@ -302,7 +302,7 @@ private:
     std::int64_t started_blocking_time_stamp_;
     std::int64_t blocked_using_shield_time_stamp_;
     std::int64_t blocked_using_damaged_shield_time_stamp_;
-    std::string name_;  // +3152
+    std::string name_;  // +3080
     std::string last_emote_played_;
     time_t emote_easter_egg_end_time_;
     unsigned int emote_message_count_;

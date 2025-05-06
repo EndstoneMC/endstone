@@ -201,7 +201,7 @@ public:
     [[nodiscard]] virtual bool canPickupItem(ItemStack const &) const = 0;
     [[nodiscard]] virtual bool canBePulledIntoVehicle() const = 0;
     [[nodiscard]] virtual bool inCaravan() const = 0;
-    virtual void sendMotionPacketIfNeeded(PlayerMovementSettings const &) = 0;
+    virtual void sendMotionPacketIfNeeded() = 0;
     [[nodiscard]] virtual bool canSynchronizeNewEntity() const = 0;
     virtual void startSwimming() = 0;
     virtual void stopSwimming() = 0;

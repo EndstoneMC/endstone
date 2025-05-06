@@ -29,7 +29,7 @@ class Item;
 class ItemDescriptor {
 public:
     static constexpr int ANY_AUX_VALUE = 0x7FFF;
-    static const HashType64 EMPTY_INGREDIENT_HASH = 0xB7F87A68;
+    static constexpr HashType64 EMPTY_INGREDIENT_HASH = 0xB7F87A68;
     explicit ItemDescriptor() = default;
     explicit ItemDescriptor(const Block &);
     explicit ItemDescriptor(const BlockLegacy &);
@@ -45,7 +45,7 @@ public:
     [[nodiscard]] const Item *getItem() const;
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] std::int16_t getAuxValue() const;
-    [[nodiscard]] std::string const &getFullName() const;
+    [[nodiscard]] std::string getFullName() const;
 
     struct ItemEntry {
         const Item *item;
@@ -68,7 +68,7 @@ public:
         [[nodiscard]] virtual std::unique_ptr<BaseDescriptor> clone() const = 0;
         [[nodiscard]] virtual bool sameItems(BaseDescriptor const &, bool) const;
         [[nodiscard]] virtual bool sameItem(ItemEntry const &, bool) const = 0;
-        [[nodiscard]] virtual std::string const &getFullName() const;
+        [[nodiscard]] virtual std::string getFullName() const;
         [[nodiscard]] virtual std::string toString() const;
         [[nodiscard]] virtual ItemEntry getItem() const = 0;
         [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const;

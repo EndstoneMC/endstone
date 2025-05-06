@@ -138,5 +138,6 @@ enum class ActorFlags {
     BODY_ROTATION_AXIS_ALIGNED = 120,
     COLLIDABLE = 121,
     WASD_AIR_CONTROLLED = 122,
-    Count
+    DOES_SERVER_AUTH_ONLY_DISMOUNT = 123,
+    Count = 124,
 };

@@ -58,6 +58,7 @@ private:
     double frame_duration_;
     double last_frame_start_;
     std::chrono::seconds max_player_idle_time_;
+    std::unique_ptr<DefaultCommandsContextProvider> default_commands_context_provider_;
     std::unique_ptr<MinecraftCommands> commands_;
     std::unique_ptr<GameSession> game_session_;
     void *game_test_level_listener_;

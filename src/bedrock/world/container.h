@@ -103,7 +103,7 @@ enum class ContainerType : std::int8_t {
 class Container {
 public:
     struct PublisherWrapper {
-        Bedrock::PubSub::Publisher<void(), Bedrock::PubSub::ThreadModel::MultiThreaded> publisher;
+        Bedrock::PubSub::Publisher<void(), Bedrock::PubSub::ThreadModel::SingleThreaded> publisher;
     };
 
     using ItemStackNetIdChangedCallback = std::function<void(int, const ItemStack &)>;
@@ -116,26 +116,26 @@ public:
     Container(ContainerType);
     Container(ContainerType, const std::string &, bool);
 
-    virtual ~Container() = 0;
-    virtual void init() = 0;
+    virtual ~Container() = default;
+    virtual void init();
     virtual void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) = 0;
-    virtual void addContentChangeListener(ContainerContentChangeListener *) = 0;
-    virtual void removeContentChangeListener(ContainerContentChangeListener *) = 0;
+    virtual void addContentChangeListener(ContainerContentChangeListener *);
+    virtual void removeContentChangeListener(ContainerContentChangeListener *);
     virtual Bedrock::PubSub::Connector<void()> *getContainerRemovedConnector();
     [[nodiscard]] virtual bool hasRemovedSubscribers() const;
     [[nodiscard]] virtual ItemStack const &getItem(int) const = 0;
-    virtual bool hasRoomForItem(ItemStack const &) = 0;
-    virtual bool addItem(ItemStack &) = 0;
-    virtual bool addItemWithForceBalance(ItemStack &) = 0;
-    virtual bool addItemToFirstEmptySlot(ItemStack const &) = 0;
+    virtual bool hasRoomForItem(ItemStack const &);
+    virtual bool addItem(ItemStack &);
+    virtual bool addItemWithForceBalance(ItemStack &);
+    virtual bool addItemToFirstEmptySlot(ItemStack const &);
     virtual void setItem(int, ItemStack const &) = 0;
-    virtual void setItemWithForceBalance(int, ItemStack const &, bool) = 0;
-    virtual void removeItem(int, int) = 0;
-    virtual void removeAllItems() = 0;
-    virtual void removeAllItemsWithForceBalance() = 0;
-    virtual void containerRemoved() = 0;
-    virtual void dropSlotContent(BlockSource &, Vec3 const &, bool, int) = 0;
-    virtual void dropContents(BlockSource &, Vec3 const &, bool) = 0;
+    virtual void setItemWithForceBalance(int, ItemStack const &, bool);
+    virtual void removeItem(int, int);
+    virtual void removeAllItems();
+    virtual void removeAllItemsWithForceBalance();
+    virtual void containerRemoved();
+    virtual void dropSlotContent(BlockSource &, Vec3 const &, bool, int);
+    virtual void dropContents(BlockSource &, Vec3 const &, bool);
     [[nodiscard]] virtual int getContainerSize() const = 0;
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
     virtual void startOpen(Player &) = 0;
@@ -143,8 +143,11 @@ public:
     [[nodiscard]] virtual std::vector<ItemStack> getSlotCopies() const;
     [[nodiscard]] virtual std::vector<const ItemStack *> const getSlots() const;
     [[nodiscard]] virtual int getEmptySlotsCount() const;
-    [[nodiscard]] virtual int getItemCount(ItemStack const &compare) const;
+    [[nodiscard]] virtual int getItemCount(const ItemStack &) const;
+    [[nodiscard]] virtual int firstEmptySlot() const;
+    [[nodiscard]] virtual int firstItem() const;
     [[nodiscard]] virtual int findFirstSlotForItem(ItemStack const &item) const;
+    [[nodiscard]] virtual int reverseFindFirstSlotForItem(const ItemStack &) const;
     [[nodiscard]] virtual bool canPushInItem(int, int, ItemStack const &) const;
     [[nodiscard]] virtual bool canPullOutItem(int, int, ItemStack const &) const;
     virtual void setContainerChanged(int slot);
