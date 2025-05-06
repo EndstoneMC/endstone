@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Button" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Button</compoundname>
+    <includes refid="button_8h" local="no">endstone/form/controls/button.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1Button_1a52b4d719bc268f8d3543c83a3bf429ea" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *)&gt;</type>
+        <definition>using endstone::Button::OnClickCallback =  std::function&lt;void(Player *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OnClickCallback</name>
+        <qualifiedname>endstone::Button::OnClickCallback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="31" column="5" bodyfile="include/endstone/form/controls/button.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Button_1a0966411688e4051e6ebd9e12e6a49bfc" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::Button::text_</definition>
+        <argsstring></argsstring>
+        <name>text_</name>
+        <qualifiedname>endstone::Button::text_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="106" column="13" bodyfile="include/endstone/form/controls/button.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Button_1a944174ff70825c631f1efe103a1f4857" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::Button::icon_</definition>
+        <argsstring></argsstring>
+        <name>icon_</name>
+        <qualifiedname>endstone::Button::icon_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="107" column="19" bodyfile="include/endstone/form/controls/button.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Button_1a6de0c118f565a904dc9ea35e005ded30" prot="private" static="no" mutable="no">
+        <type>OnClickCallback</type>
+        <definition>OnClickCallback endstone::Button::on_click_</definition>
+        <argsstring></argsstring>
+        <name>on_click_</name>
+        <qualifiedname>endstone::Button::on_click_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="108" column="21" bodyfile="include/endstone/form/controls/button.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Button_1aa7bd604170d6b66a289e1fb1326605fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Button::Button</definition>
+        <argsstring>()=default</argsstring>
+        <name>Button</name>
+        <qualifiedname>endstone::Button::Button</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Button_1ac605e37f08b850a6e997525b57da9912" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Button::Button</definition>
+        <argsstring>(Message text, std::optional&lt; std::string &gt; icon=std::nullopt, OnClickCallback on_click={})</argsstring>
+        <name>Button</name>
+        <qualifiedname>endstone::Button::Button</qualifiedname>
+        <param>
+          <type>Message</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>icon</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <param>
+          <type>OnClickCallback</type>
+          <declname>on_click</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="34" column="14" bodyfile="include/endstone/form/controls/button.h" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::Button::getText</definition>
+        <argsstring>() const</argsstring>
+        <name>getText</name>
+        <qualifiedname>endstone::Button::getText</qualifiedname>
+        <briefdescription>
+<para>Gets the text of the button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The text. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="44" column="14" bodyfile="include/endstone/form/controls/button.h" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Button_1a81e95408c4c135c0e0a14693b5285f51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Button" kindref="compound">Button</ref> &amp;</type>
+        <definition>Button &amp; endstone::Button::setText</definition>
+        <argsstring>(Message text)</argsstring>
+        <name>setText</name>
+        <qualifiedname>endstone::Button::setText</qualifiedname>
+        <param>
+          <type>Message</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Sets the text of the button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new text for the button. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current button. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="55" column="12" bodyfile="include/endstone/form/controls/button.h" bodystart="55" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Button_1a51ef57a2817568eba3b565c04b409b3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; endstone::Button::getIcon</definition>
+        <argsstring>() const</argsstring>
+        <name>getIcon</name>
+        <qualifiedname>endstone::Button::getIcon</qualifiedname>
+        <briefdescription>
+<para>Get the icon of the button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The path or URL to the icon file </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="66" column="20" bodyfile="include/endstone/form/controls/button.h" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Button_1a5b8b26c09fd84d50e501f66bc2340727" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Button" kindref="compound">Button</ref> &amp;</type>
+        <definition>Button &amp; endstone::Button::setIcon</definition>
+        <argsstring>(std::string icon)</argsstring>
+        <name>setIcon</name>
+        <qualifiedname>endstone::Button::setIcon</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>icon</declname>
+        </param>
+        <briefdescription>
+<para>Sets the icon for the button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>icon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path or URL to the icon file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current button. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="77" column="12" bodyfile="include/endstone/form/controls/button.h" bodystart="77" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Button_1a60036ee46a14e1782aa4a9ae1623a823" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>OnClickCallback</type>
+        <definition>OnClickCallback endstone::Button::getOnClick</definition>
+        <argsstring>() const</argsstring>
+        <name>getOnClick</name>
+        <qualifiedname>endstone::Button::getOnClick</qualifiedname>
+        <briefdescription>
+<para>Gets the on click callback of the button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The on click callback of the button. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="88" column="22" bodyfile="include/endstone/form/controls/button.h" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Button" kindref="compound">Button</ref> &amp;</type>
+        <definition>Button &amp; endstone::Button::setOnClick</definition>
+        <argsstring>(OnClickCallback on_click)</argsstring>
+        <name>setOnClick</name>
+        <qualifiedname>endstone::Button::setOnClick</qualifiedname>
+        <param>
+          <type>OnClickCallback</type>
+          <declname>on_click</declname>
+        </param>
+        <briefdescription>
+<para>Sets the on click callback of the button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>on_click</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to be set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current button. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/button.h" line="99" column="12" bodyfile="include/endstone/form/controls/button.h" bodystart="99" bodyend="103"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a button with text and an optional icon. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/button.h" line="29" column="1" bodyfile="include/endstone/form/controls/button.h" bodystart="29" bodyend="109"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Button_1aa7bd604170d6b66a289e1fb1326605fd" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>Button</name></member>
+      <member refid="classendstone_1_1Button_1ac605e37f08b850a6e997525b57da9912" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>Button</name></member>
+      <member refid="classendstone_1_1Button_1a51ef57a2817568eba3b565c04b409b3b" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>getIcon</name></member>
+      <member refid="classendstone_1_1Button_1a60036ee46a14e1782aa4a9ae1623a823" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>getOnClick</name></member>
+      <member refid="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>getText</name></member>
+      <member refid="classendstone_1_1Button_1a944174ff70825c631f1efe103a1f4857" prot="private" virt="non-virtual"><scope>endstone::Button</scope><name>icon_</name></member>
+      <member refid="classendstone_1_1Button_1a6de0c118f565a904dc9ea35e005ded30" prot="private" virt="non-virtual"><scope>endstone::Button</scope><name>on_click_</name></member>
+      <member refid="classendstone_1_1Button_1a52b4d719bc268f8d3543c83a3bf429ea" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>OnClickCallback</name></member>
+      <member refid="classendstone_1_1Button_1a5b8b26c09fd84d50e501f66bc2340727" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>setIcon</name></member>
+      <member refid="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>setOnClick</name></member>
+      <member refid="classendstone_1_1Button_1a81e95408c4c135c0e0a14693b5285f51" prot="public" virt="non-virtual"><scope>endstone::Button</scope><name>setText</name></member>
+      <member refid="classendstone_1_1Button_1a0966411688e4051e6ebd9e12e6a49bfc" prot="private" virt="non-virtual"><scope>endstone::Button</scope><name>text_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
