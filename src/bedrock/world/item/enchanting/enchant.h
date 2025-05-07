@@ -174,7 +174,7 @@ public:
 
     static const Enchant *getEnchant(const Type &type);
     static const Enchant *getEnchantFromName(const HashedString &name);
-    static std::vector<std::unique_ptr<Enchant>> getEnchants();  // Endstone
+    static const std::vector<std::unique_ptr<Enchant>> &getEnchants();  // Endstone
 
 protected:
     const Type enchant_type_;

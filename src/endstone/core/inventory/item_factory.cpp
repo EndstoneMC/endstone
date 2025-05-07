@@ -14,7 +14,9 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
+#include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"
+#include "endstone/namespaced_key.h"
 
 namespace endstone::core {
 
@@ -52,8 +54,22 @@ void loadData(ItemMeta &meta, const CompoundTag &tag)
     // Enchant
     if (const auto *const enchants = tag.getList(ItemStackBase::TAG_ENCHANTS)) {
         meta.removeEnchants();
-        enchants->forEachCompoundTag(
-            [&](const CompoundTag &enchant) { meta.addEnchant(enchant.getShort("id"), enchant.getShort("lvl")); });
+        enchants->forEachCompoundTag([&](const CompoundTag &enchant_tag) {
+            if (!enchant_tag.contains("id", Tag::Type::Short) || !enchant_tag.contains("lvl", Tag::Type::Short)) {
+                return;
+            }
+            auto id = enchant_tag.getShort("id");
+            const auto *enchant = Enchant::getEnchant(static_cast<Enchant::Type>(id));
+            if (!enchant) {
+                return;
+            }
+
+            const auto key = NamespacedKey::fromString(enchant->getStringId().getString());
+            if (!key.has_value()) {
+                return;
+            }
+            meta.addEnchant(key->toString(), enchant_tag.getShort("lvl"), true);
+        });
     }
 }
 
@@ -125,11 +141,21 @@ void applyTo(const ItemMeta &meta, CompoundTag &tag)
     if (meta.hasEnchants()) {
         auto enchants = meta.getEnchants();
         auto enchants_tag = std::make_unique<ListTag>();
-        for (const auto &[id, lvl] : *enchants) {
-            auto enchant = std::make_unique<CompoundTag>();
-            enchant->putShort("id", id);
-            enchant->putShort("lvl", lvl);
-            enchants_tag->add(std::move(enchant));
+        for (const auto &[string_id, lvl] : enchants) {
+            auto enchant_tag = std::make_unique<CompoundTag>();
+            const auto key = NamespacedKey::fromString(string_id);
+            if (!key.has_value()) {
+                continue;
+            }
+
+            const auto *enchant = Enchant::getEnchantFromName(key->getKey());
+            if (!enchant) {
+                continue;
+            }
+
+            enchant_tag->putShort("id", static_cast<std::int16_t>(enchant->getEnchantType()));
+            enchant_tag->putShort("lvl", static_cast<std::int16_t>(lvl));
+            enchants_tag->add(std::move(enchant_tag));
         }
         tag.put(ItemStackBase::TAG_ENCHANTS, std::move(enchants_tag));
     }

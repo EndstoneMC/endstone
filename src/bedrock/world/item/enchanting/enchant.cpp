@@ -33,6 +33,16 @@ bool Enchant::canEnchant(int slot, bool allow_non_vanilla) const
     return false;
 }
 
+const HashedString &Enchant::getStringId() const
+{
+    return string_id_;
+}
+
+Enchant::Type Enchant::getEnchantType() const
+{
+    return enchant_type_;
+}
+
 const Enchant *Enchant::getEnchant(const Type &type)
 {
     if (type > Type::NumEnchantments) {
@@ -51,7 +61,7 @@ const Enchant *Enchant::getEnchantFromName(const HashedString &name)
     return nullptr;
 }
 
-std::vector<std::unique_ptr<Enchant>> Enchant::getEnchants()
+const std::vector<std::unique_ptr<Enchant>> &Enchant::getEnchants()
 {
     static auto &enchants = *BEDROCK_VAR(std::vector<std::unique_ptr<Enchant>> *, "Enchant::mEnchants");
     return enchants;
