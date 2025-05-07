@@ -8,6 +8,7 @@
     <innerdir refid="dir_d0a7fd8d5b72659767e2a2651b1ff51c">include/endstone/boss</innerdir>
     <innerdir refid="dir_5c7b2dbfabcd1115569d1e20a260545c">include/endstone/command</innerdir>
     <innerdir refid="dir_d35032eb9ca22acb8eface5f2c8b6a35">include/endstone/damage</innerdir>
+    <innerdir refid="dir_5154bf3e53eefb0e1f350f5612107967">include/endstone/enchantments</innerdir>
     <innerdir refid="dir_f1d783c0ad83ee143d16e768ebca51c8">include/endstone/event</innerdir>
     <innerdir refid="dir_0fd3b458603af3963ebb9c312a9238ec">include/endstone/form</innerdir>
     <innerdir refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c">include/endstone/inventory</innerdir>
@@ -22,6 +23,7 @@
     <innerfile refid="game__mode_8h">game_mode.h</innerfile>
     <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="message_8h">message.h</innerfile>
+    <innerfile refid="namespaced__key_8h">namespaced_key.h</innerfile>
     <innerfile refid="offline__player_8h">offline_player.h</innerfile>
     <innerfile refid="player_8h">player.h</innerfile>
     <innerfile refid="registry_8h">registry.h</innerfile>

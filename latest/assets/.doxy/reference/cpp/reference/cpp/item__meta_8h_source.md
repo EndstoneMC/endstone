@@ -27,6 +27,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 namespace endstone {
@@ -59,7 +60,7 @@ public:
     [[nodiscard]] virtual bool isEmpty() const
     {
         // TODO(item): more checks here
-        return !(hasDisplayName() || hasLore() || hasDamage());
+        return !(hasDisplayName() || hasLore() || hasEnchants() || hasDamage());
     }
 
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const
@@ -69,7 +70,7 @@ public:
 
     [[nodiscard]] virtual bool hasDisplayName() const
     {
-        return display_name_.has_value() && !display_name_.value().empty();
+        return display_name_.has_value();
     }
 
     [[nodiscard]] virtual std::optional<std::string> getDisplayName() const
@@ -83,16 +84,16 @@ public:
     virtual void setDisplayName(std::optional<std::string> name)
     {
         if (!name.has_value() || name.value().empty()) {
-            display_name_ = std::nullopt;
+            display_name_.reset();
         }
         else {
-            display_name_ = std::move(name);
+            display_name_ = std::move(name.value());
         }
     }
 
     [[nodiscard]] virtual bool hasLore() const
     {
-        return lore_.has_value() && !lore_.value().empty();
+        return !lore_.empty();
     }
 
     [[nodiscard]] virtual std::optional<std::vector<std::string>> getLore() const
@@ -106,10 +107,10 @@ public:
     virtual void setLore(std::optional<std::vector<std::string>> lore)
     {
         if (!lore.has_value() || lore.value().empty()) {
-            lore_ = std::nullopt;
+            lore_.clear();
         }
         else {
-            lore_ = std::move(lore);
+            lore_ = std::move(lore.value());
         }
     }
 
@@ -128,9 +129,54 @@ public:
         damage_ = damage;
     }
 
+    [[nodiscard]] virtual bool hasEnchants() const
+    {
+        return !enchantments_.empty();
+    }
+
+    [[nodiscard]] virtual bool hasEnchant(const std::string &id) const
+    {
+        return hasEnchants() && enchantments_.contains(id);
+    }
+
+    [[nodiscard]] virtual int getEnchantLevel(const std::string &id) const
+    {
+        if (!hasEnchant(id)) {
+            return 0;
+        }
+        return enchantments_.at(id);
+    }
+
+    [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const
+    {
+        if (hasEnchants()) {
+            return enchantments_;
+        }
+        return {};
+    }
+
+    virtual bool addEnchant(const std::string &id, int level, bool force)
+    {
+        // TODO: we should do the level limit check here
+        const auto old = getEnchantLevel(id);
+        enchantments_[id] = level;
+        return old == 0 || old != level;
+    }
+
+    virtual bool removeEnchant(const std::string &id)
+    {
+        return enchantments_.erase(id) > 0;
+    }
+
+    virtual void removeEnchants()
+    {
+        enchantments_.clear();
+    }
+
 private:
     std::optional<std::string> display_name_;
-    std::optional<std::vector<std::string>> lore_;
+    std::vector<std::string> lore_;
+    std::unordered_map<std::string, int> enchantments_;
     int damage_ = 0;
 };
 

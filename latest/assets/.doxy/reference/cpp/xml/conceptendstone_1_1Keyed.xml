@@ -29,6 +29,6 @@ concept <ref refid="conceptendstone_1_1Keyed" kindref="compound">endstone::Keyed
 </parameterlist>
 </para>
     </detaileddescription>
-    <location file="include/endstone/registry.h" line="30" column="1"/>
+    <location file="include/endstone/registry.h" line="32" column="1"/>
   </compounddef>
 </doxygen>

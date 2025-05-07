@@ -2315,6 +2315,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-itemmeta-22"><strong>ItemMeta</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> * meta) <br></td>
 </tr>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-addenchant"><strong>addEnchant</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> level, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> force) <br><em>Adds the specified enchantment to this item meta.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-clone"><strong>clone</strong></a> () const<br><em>Creates a clone of the current metadata.</em></td>
 </tr>
@@ -2325,6 +2329,14 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual std::optional&lt; std::string &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-getdisplayname"><strong>getDisplayName</strong></a> () const<br><em>Gets the display name that is set.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-getenchantlevel"><strong>getEnchantLevel</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id) const<br><em>Checks for the level of the specified enchantment.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unordered_map&lt; std::string, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-getenchants"><strong>getEnchants</strong></a> () const<br><em>Returns a copy the enchantments in this</em> <a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::optional&lt; std::vector&lt; std::string &gt; &gt;</td>
@@ -2344,11 +2356,27 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasenchant"><strong>hasEnchant</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id) const<br><em>Checks for existence of the specified enchantment.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasenchants"><strong>hasEnchants</strong></a> () const<br><em>Checks for the existence of any enchantments.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-haslore"><strong>hasLore</strong></a> () const<br><em>Checks for existence of lore.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-isempty"><strong>isEmpty</strong></a> () const<br><em>Checks if the item metadata is empty.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-removeenchant"><strong>removeEnchant</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id) <br><em>Removes the specified enchantment from this item meta.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-removeenchants"><strong>removeEnchants</strong></a> () <br><em>Removes all enchantments from this item meta.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>

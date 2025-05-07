@@ -39,7 +39,7 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 | typedef [**typename**](classendstone_1_1Vector.md) storage\_type::iterator | [**iterator**](#typedef-iterator)  <br>_Iterator over stored elements._  |
 | typedef std::string\_view | [**key\_type**](#typedef-key_type)  <br> |
 | typedef [**T**](classendstone_1_1Vector.md) & | [**reference**](#typedef-reference)  <br> |
-| typedef [**T**](classendstone_1_1Vector.md) | [**value\_type**](#typedef-value_type)  <br> |
+| typedef std::unique\_ptr&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**value\_type**](#typedef-value_type)  <br> |
 
 
 
@@ -81,7 +81,7 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::unordered\_map&lt; key\_type, [**T**](classendstone_1_1Vector.md) &gt; | [**storage\_type**](#typedef-storage_type)  <br>_Underlying storage type._  |
+| typedef std::unordered\_map&lt; key\_type, value\_type &gt; | [**storage\_type**](#typedef-storage_type)  <br>_Underlying storage type._  |
 
 
 
@@ -198,7 +198,7 @@ using endstone::Registry< T >::reference =  T &;
 ### typedef value\_type 
 
 ```C++
-using endstone::Registry< T >::value_type =  T;
+using endstone::Registry< T >::value_type =  std::unique_ptr<T>;
 ```
 
 
@@ -485,7 +485,7 @@ virtual endstone::Registry::~Registry () = default
 
 _Underlying storage type._ 
 ```C++
-using endstone::Registry< T >::storage_type =  std::unordered_map<key_type, T>;
+using endstone::Registry< T >::storage_type =  std::unordered_map<key_type, value_type>;
 ```
 
 

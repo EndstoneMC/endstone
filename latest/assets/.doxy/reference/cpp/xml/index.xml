@@ -465,6 +465,14 @@
     <member refid="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" kind="function"><name>getDefaultIndex</name></member>
     <member refid="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" kind="function"><name>setDefaultIndex</name></member>
   </compound>
+  <compound refid="classendstone_1_1Enchantment" kind="class"><name>endstone::Enchantment</name>
+    <member refid="classendstone_1_1Enchantment_1a52f4acd21d110aa3cf5ca3e41815310c" kind="function"><name>~Enchantment</name></member>
+    <member refid="classendstone_1_1Enchantment_1ad8a4ebf33948e5f1d3e915c62ffd967c" kind="function"><name>getKey</name></member>
+    <member refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" kind="function"><name>getMaxLevel</name></member>
+    <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" kind="function"><name>getStartLevel</name></member>
+    <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" kind="function"><name>conflictsWith</name></member>
+    <member refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" kind="function"><name>canEnchantItem</name></member>
+  </compound>
   <compound refid="classendstone_1_1Error" kind="class"><name>endstone::Error</name>
     <member refid="classendstone_1_1Error_1a76da8953868eeb80373357c0f524e08a" kind="variable"><name>message_</name></member>
     <member refid="classendstone_1_1Error_1ae3b5543e80a7f6a83ba9b0ecb52288bc" kind="variable"><name>stack_trace_</name></member>
@@ -557,6 +565,9 @@
     <member refid="classendstone_1_1HandlerList_1ad341b769bbf3a604e82392b84212a18d" kind="function"><name>getHandlers</name></member>
     <member refid="classendstone_1_1HandlerList_1a60ca2f071683e43f5d601d886cc3a622" kind="function"><name>bake</name></member>
   </compound>
+  <compound refid="structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4" kind="struct"><name>std::hash&lt; endstone::NamespacedKey &gt;</name>
+    <member refid="structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4_1a310e8844362559c807406a13612c969b" kind="function"><name>operator()</name></member>
+  </compound>
   <compound refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4" kind="struct"><name>std::hash&lt; endstone::UUID &gt;</name>
     <member refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4_1aba2e224d81006d5f09afad62be9dfd1c" kind="function"><name>operator()</name></member>
   </compound>
@@ -618,7 +629,8 @@
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
     <member refid="classendstone_1_1ItemMeta_1ae567a6f394a977cf8c10ab0ad3a88051" kind="variable"><name>EMPTY</name></member>
     <member refid="classendstone_1_1ItemMeta_1add18f641b7834e9df2f5a2ffeab49594" kind="variable"><name>display_name_</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a7905ccb73edf20aa1d50d1804d2a3abd" kind="variable"><name>lore_</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a1f13d1157dad83d18d873ceaf0a91f4f" kind="variable"><name>lore_</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a921a8f040ce632f93a9307b514c97820" kind="variable"><name>enchantments_</name></member>
     <member refid="classendstone_1_1ItemMeta_1a2ade8bcb7e8addc9d938f64a9b954a0d" kind="variable"><name>damage_</name></member>
     <member refid="classendstone_1_1ItemMeta_1a4cb3e9ff9d8815008a0b8683dda34cc5" kind="function"><name>ItemMeta</name></member>
     <member refid="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" kind="function"><name>ItemMeta</name></member>
@@ -635,6 +647,13 @@
     <member refid="classendstone_1_1ItemMeta_1af42728b1b375cb09ada9a2d531631791" kind="function"><name>hasDamage</name></member>
     <member refid="classendstone_1_1ItemMeta_1a89e50ea812936a4939bd62290e218b37" kind="function"><name>getDamage</name></member>
     <member refid="classendstone_1_1ItemMeta_1aa245eb290cc6649159cddff75a6cf8ec" kind="function"><name>setDamage</name></member>
+    <member refid="classendstone_1_1ItemMeta_1af5a265b1621c4842f41c038847a51575" kind="function"><name>hasEnchants</name></member>
+    <member refid="classendstone_1_1ItemMeta_1abf9138f4d340652fd673b7568d166a4c" kind="function"><name>hasEnchant</name></member>
+    <member refid="classendstone_1_1ItemMeta_1acac9cc1ddfb87e430b47516b61b29aa7" kind="function"><name>getEnchantLevel</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ab9cd282f890093cae80627ad4826f03c" kind="function"><name>getEnchants</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a030edb9fd428d20c2377a79de7d92864" kind="function"><name>addEnchant</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ac7049e99d2e8db712238d7d6ffdc714c" kind="function"><name>removeEnchant</name></member>
+    <member refid="classendstone_1_1ItemMeta_1aea90fbe476ccffe4ea551d7339e901ea" kind="function"><name>removeEnchants</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>
@@ -760,6 +779,24 @@
     <member refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" kind="function"><name>setIcon</name></member>
     <member refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" kind="function"><name>getOnSubmit</name></member>
     <member refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" kind="function"><name>setOnSubmit</name></member>
+  </compound>
+  <compound refid="classendstone_1_1NamespacedKey" kind="class"><name>endstone::NamespacedKey</name>
+    <member refid="classendstone_1_1NamespacedKey_1a88dfddee7b93877c4aa732a5d9a66b64" kind="variable"><name>MINECRAFT</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a4d559245aaaf69cb610124d7c574804e" kind="variable"><name>namespace_</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a57859d67bb4ceae68093728745b57db5" kind="variable"><name>key_</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a090d1b38d6504f02be01f3feba0de4fa" kind="function"><name>create</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a225700c978a8134ff4d86e31a88bf51e" kind="function"><name>fromString</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1aa08e51ed653aeaa8fe7f7504f1afba3f" kind="function"><name>getNamespace</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1ae86d202bb5a6f80144ca6d8c958510dc" kind="function"><name>getKey</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a6bb36e46913fae93d955ea8c397338e8" kind="function"><name>toString</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1ab7f69986bc4b4710cfe7e1af8ed3cbbc" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a4eb5cd3bda3e08cc29c296e4eb005739" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a7321f5a3dd9b0dcaa4ad9e3c1c8a044f" kind="function"><name>NamespacedKey</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1abf796f634fc56195e913dd3c06391815" kind="function"><name>normalizeString</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1aad565f313c469167ebedc75cdeb4ebd0" kind="function"><name>isValidNamespaceChar</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a559d6702571c04670c33b3696bf450f0" kind="function"><name>isValidKeyChar</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a61b37d0c8f145b7ab9de975eef4850f4" kind="function"><name>isValidNamespace</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a51b23985be73bbc74a0a7975ec6e89b1" kind="function"><name>isValidKey</name></member>
   </compound>
   <compound refid="classendstone_1_1Objective" kind="class"><name>endstone::Objective</name>
     <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" kind="function"><name>~Objective</name></member>
@@ -1285,12 +1322,12 @@
   </compound>
   <compound refid="classendstone_1_1Registry" kind="class"><name>endstone::Registry</name>
     <member refid="classendstone_1_1Registry_1a064491e80f8fd57f592cb51bd0d76715" kind="typedef"><name>key_type</name></member>
-    <member refid="classendstone_1_1Registry_1aa2c59bf8b96fa037c9d9237d9648e877" kind="typedef"><name>value_type</name></member>
+    <member refid="classendstone_1_1Registry_1a25c58a4ce23faba72da639af96021e63" kind="typedef"><name>value_type</name></member>
     <member refid="classendstone_1_1Registry_1a69562de8dd0c2073b225a3722a323ea6" kind="typedef"><name>reference</name></member>
     <member refid="classendstone_1_1Registry_1a294b14ffa431d30cea6e7722f067af4b" kind="typedef"><name>const_reference</name></member>
     <member refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" kind="typedef"><name>iterator</name></member>
     <member refid="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" kind="typedef"><name>const_iterator</name></member>
-    <member refid="classendstone_1_1Registry_1a6fd2b15db63a1bea07fdd1d4c6a18bc3" kind="typedef"><name>storage_type</name></member>
+    <member refid="classendstone_1_1Registry_1a84959c1d1c49ffa5b6778c232a445c4d" kind="typedef"><name>storage_type</name></member>
     <member refid="classendstone_1_1Registry_1a9396db9d9eea6543c7ed9d6162e9822a" kind="function"><name>~Registry</name></member>
     <member refid="classendstone_1_1Registry_1a02bab8b09ca4cd8e7eb1e772e8c1e86d" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1Registry_1ac6b2b57622e283766603fa6652558d9e" kind="function"><name>get</name></member>
@@ -1396,6 +1433,7 @@
     <member refid="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" kind="function"><name>getBanList</name></member>
     <member refid="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" kind="function"><name>getIpBanList</name></member>
     <member refid="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" kind="function"><name>getServiceManager</name></member>
+    <member refid="classendstone_1_1Server_1a7c61c7491de9bf768a0b7bb7ede40fc8" kind="function"><name>getEnchantmentRegistry</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
     <member refid="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" kind="variable"><name>NAME</name></member>
@@ -1763,6 +1801,8 @@
   </compound>
   <compound refid="damage__source_8h" kind="file"><name>damage_source.h</name>
   </compound>
+  <compound refid="enchantment_8h" kind="file"><name>enchantment.h</name>
+  </compound>
   <compound refid="actor__damage__event_8h" kind="file"><name>actor_damage_event.h</name>
   </compound>
   <compound refid="actor__death__event_8h" kind="file"><name>actor_death_event.h</name>
@@ -1909,6 +1949,8 @@
   </compound>
   <compound refid="message_8h" kind="file"><name>message.h</name>
   </compound>
+  <compound refid="namespaced__key_8h" kind="file"><name>namespaced_key.h</name>
+  </compound>
   <compound refid="offline__player_8h" kind="file"><name>offline_player.h</name>
   </compound>
   <compound refid="permissible_8h" kind="file"><name>permissible.h</name>
@@ -1996,6 +2038,8 @@
   <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
   </compound>
   <compound refid="dir_d35032eb9ca22acb8eface5f2c8b6a35" kind="dir"><name>include/endstone/damage</name>
+  </compound>
+  <compound refid="dir_5154bf3e53eefb0e1f350f5612107967" kind="dir"><name>include/endstone/enchantments</name>
   </compound>
   <compound refid="dir_6cf277b678674f97c7a2b6b3b2447b33" kind="dir"><name>include/endstone</name>
   </compound>

@@ -23,11 +23,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="46" column="5" bodyfile="include/endstone/registry.h" bodystart="46" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="48" column="5" bodyfile="include/endstone/registry.h" bodystart="48" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1aa2c59bf8b96fa037c9d9237d9648e877" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
-        <definition>using endstone::Registry&lt; T &gt;::value_type =  T</definition>
+      <memberdef kind="typedef" id="classendstone_1_1Registry_1a25c58a4ce23faba72da639af96021e63" prot="public" static="no">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &gt;</type>
+        <definition>using endstone::Registry&lt; T &gt;::value_type =  std::unique_ptr&lt;T&gt;</definition>
         <argsstring></argsstring>
         <name>value_type</name>
         <qualifiedname>endstone::Registry::value_type</qualifiedname>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="47" column="5" bodyfile="include/endstone/registry.h" bodystart="47" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="49" column="5" bodyfile="include/endstone/registry.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1Registry_1a69562de8dd0c2073b225a3722a323ea6" prot="public" static="no">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="48" column="5" bodyfile="include/endstone/registry.h" bodystart="48" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="50" column="5" bodyfile="include/endstone/registry.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1Registry_1a294b14ffa431d30cea6e7722f067af4b" prot="public" static="no">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="49" column="5" bodyfile="include/endstone/registry.h" bodystart="49" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="51" column="5" bodyfile="include/endstone/registry.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" prot="public" static="no">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> storage_type::iterator</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="57" column="5" bodyfile="include/endstone/registry.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="59" column="5" bodyfile="include/endstone/registry.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" prot="public" static="no">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> storage_type::const_iterator</type>
@@ -95,13 +95,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="59" column="5" bodyfile="include/endstone/registry.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="61" column="5" bodyfile="include/endstone/registry.h" bodystart="61" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-type">
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a6fd2b15db63a1bea07fdd1d4c6a18bc3" prot="protected" static="no">
-        <type>std::unordered_map&lt; key_type, <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &gt;</type>
-        <definition>using endstone::Registry&lt; T &gt;::storage_type =  std::unordered_map&lt;key_type, T&gt;</definition>
+      <memberdef kind="typedef" id="classendstone_1_1Registry_1a84959c1d1c49ffa5b6778c232a445c4d" prot="protected" static="no">
+        <type>std::unordered_map&lt; key_type, value_type &gt;</type>
+        <definition>using endstone::Registry&lt; T &gt;::storage_type =  std::unordered_map&lt;key_type, value_type&gt;</definition>
         <argsstring></argsstring>
         <name>storage_type</name>
         <qualifiedname>endstone::Registry::storage_type</qualifiedname>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="53" column="5" bodyfile="include/endstone/registry.h" bodystart="53" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="55" column="5" bodyfile="include/endstone/registry.h" bodystart="55" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="61" column="13"/>
+        <location file="include/endstone/registry.h" line="63" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a02bab8b09ca4cd8e7eb1e772e8c1e86d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="71" column="15"/>
+        <location file="include/endstone/registry.h" line="73" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1ac6b2b57622e283766603fa6652558d9e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="79" column="21"/>
+        <location file="include/endstone/registry.h" line="81" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a802a2854f83cf4851de301c0a428e972" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
@@ -231,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="88" column="15" bodyfile="include/endstone/registry.h" bodystart="88" bodyend="94"/>
+        <location file="include/endstone/registry.h" line="90" column="15" bodyfile="include/endstone/registry.h" bodystart="90" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1aa7a23437b398794827a2c99204b80445" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="103" column="21" bodyfile="include/endstone/registry.h" bodystart="103" bodyend="109"/>
+        <location file="include/endstone/registry.h" line="105" column="21" bodyfile="include/endstone/registry.h" bodystart="105" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a934a6aa418f2d8c45e05d84932d65617" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" kindref="member">iterator</ref></type>
@@ -290,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="118" column="22"/>
+        <location file="include/endstone/registry.h" line="120" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a7000e9b723eeb4de37d97382e3d93cc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" kindref="member">iterator</ref></type>
@@ -308,7 +308,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="125" column="22"/>
+        <location file="include/endstone/registry.h" line="127" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a93c7909db64a83e1db3bb8045c624733" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" kindref="member">const_iterator</ref></type>
@@ -326,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="132" column="28"/>
+        <location file="include/endstone/registry.h" line="134" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a04682eeb1ac4ae542c341f25bed244d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" kindref="member">const_iterator</ref></type>
@@ -344,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="139" column="28"/>
+        <location file="include/endstone/registry.h" line="141" column="28"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -363,7 +363,7 @@
 </parameterlist>
 </para>
     </detaileddescription>
-    <location file="include/endstone/registry.h" line="44" column="1" bodyfile="include/endstone/registry.h" bodystart="44" bodyend="140"/>
+    <location file="include/endstone/registry.h" line="46" column="1" bodyfile="include/endstone/registry.h" bodystart="46" bodyend="142"/>
     <listofallmembers>
       <member refid="classendstone_1_1Registry_1a934a6aa418f2d8c45e05d84932d65617" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>begin</name></member>
       <member refid="classendstone_1_1Registry_1a93c7909db64a83e1db3bb8045c624733" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>begin</name></member>
@@ -378,8 +378,8 @@
       <member refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>iterator</name></member>
       <member refid="classendstone_1_1Registry_1a064491e80f8fd57f592cb51bd0d76715" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>key_type</name></member>
       <member refid="classendstone_1_1Registry_1a69562de8dd0c2073b225a3722a323ea6" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>reference</name></member>
-      <member refid="classendstone_1_1Registry_1a6fd2b15db63a1bea07fdd1d4c6a18bc3" prot="protected" virt="non-virtual"><scope>endstone::Registry</scope><name>storage_type</name></member>
-      <member refid="classendstone_1_1Registry_1aa2c59bf8b96fa037c9d9237d9648e877" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>value_type</name></member>
+      <member refid="classendstone_1_1Registry_1a84959c1d1c49ffa5b6778c232a445c4d" prot="protected" virt="non-virtual"><scope>endstone::Registry</scope><name>storage_type</name></member>
+      <member refid="classendstone_1_1Registry_1a25c58a4ce23faba72da639af96021e63" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>value_type</name></member>
       <member refid="classendstone_1_1Registry_1a9396db9d9eea6543c7ed9d6162e9822a" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>~Registry</name></member>
     </listofallmembers>
   </compounddef>

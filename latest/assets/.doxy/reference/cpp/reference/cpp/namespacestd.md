@@ -82,5 +82,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/util/uuid.h`
+The documentation for this class was generated from the following file `include/endstone/namespaced_key.h`
 

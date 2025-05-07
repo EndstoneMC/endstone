@@ -2218,6 +2218,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-addenchant" class="md-nav__link">
+      <span class="md-ellipsis">
+        function addEnchant
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-clone" class="md-nav__link">
       <span class="md-ellipsis">
         function clone
@@ -2247,6 +2260,32 @@ For latest updates join the chat on
     <a href="#function-getdisplayname" class="md-nav__link">
       <span class="md-ellipsis">
         function getDisplayName
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getenchantlevel" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getEnchantLevel
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getenchants" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getEnchants
       </span>
     </a>
 
@@ -2309,6 +2348,32 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-hasenchant" class="md-nav__link">
+      <span class="md-ellipsis">
+        function hasEnchant
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-hasenchants" class="md-nav__link">
+      <span class="md-ellipsis">
+        function hasEnchants
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-haslore" class="md-nav__link">
       <span class="md-ellipsis">
         function hasLore
@@ -2325,6 +2390,32 @@ For latest updates join the chat on
     <a href="#function-isempty" class="md-nav__link">
       <span class="md-ellipsis">
         function isEmpty
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-removeenchant" class="md-nav__link">
+      <span class="md-ellipsis">
+        function removeEnchant
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-removeenchants" class="md-nav__link">
+      <span class="md-ellipsis">
+        function removeEnchants
       </span>
     </a>
 
@@ -2477,6 +2568,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-itemmeta-22"><strong>ItemMeta</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="./"><strong>ItemMeta</strong></a> * meta) <br></td>
 </tr>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-addenchant"><strong>addEnchant</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> level, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> force) <br><em>Adds the specified enchantment to this item meta.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="./"><strong>ItemMeta</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-clone"><strong>clone</strong></a> () const<br><em>Creates a clone of the current metadata.</em></td>
 </tr>
@@ -2487,6 +2582,14 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual std::optional&lt; std::string &gt;</td>
 <td style="text-align: left;"><a href="#function-getdisplayname"><strong>getDisplayName</strong></a> () const<br><em>Gets the display name that is set.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="#function-getenchantlevel"><strong>getEnchantLevel</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id) const<br><em>Checks for the level of the specified enchantment.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unordered_map&lt; std::string, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getenchants"><strong>getEnchants</strong></a> () const<br><em>Returns a copy the enchantments in this</em> <a href="./"><em><strong>ItemMeta</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::optional&lt; std::vector&lt; std::string &gt; &gt;</td>
@@ -2506,11 +2609,27 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-hasenchant"><strong>hasEnchant</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id) const<br><em>Checks for existence of the specified enchantment.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-hasenchants"><strong>hasEnchants</strong></a> () const<br><em>Checks for the existence of any enchantments.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="#function-haslore"><strong>hasLore</strong></a> () const<br><em>Checks for existence of lore.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="#function-isempty"><strong>isEmpty</strong></a> () const<br><em>Checks if the item metadata is empty.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-removeenchant"><strong>removeEnchant</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; id) <br><em>Removes the specified enchantment from this item meta.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-removeenchants"><strong>removeEnchants</strong></a> () <br><em>Removes all enchantments from this item meta.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
@@ -2558,9 +2677,27 @@ For latest updates join the chat on
 </span></code></pre></div>
 <hr>
 
+<h3 id="function-addenchant">function addEnchant<a class="headerlink" href="#function-addenchant" title="Permanent link">&para;</a></h3>
+<p><em>Adds the specified enchantment to this item meta.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">addEnchant</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">force</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> <a href="../classendstone_1_1Enchantment/"><strong>Enchantment</strong></a> id to add </li>
+<li><code>level</code> <a href="../classendstone_1_1Level/"><strong>Level</strong></a> for the enchantment </li>
+<li><code>force</code> this indicates the enchantment should be applied, ignoring the level limit </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>true if the item meta changed as a result of this call, false otherwise </p>
+<hr>
+
 <h3 id="function-clone">function clone<a class="headerlink" href="#function-clone" title="Permanent link">&para;</a></h3>
 <p><em>Creates a clone of the current metadata.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">clone</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">clone</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A copy of the metadata containing the same state as the original. </p>
@@ -2568,7 +2705,7 @@ For latest updates join the chat on
 
 <h3 id="function-getdamage">function getDamage<a class="headerlink" href="#function-getdamage" title="Permanent link">&para;</a></h3>
 <p><em>Gets the damage.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getDamage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getDamage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the damage </p>
@@ -2576,15 +2713,38 @@ For latest updates join the chat on
 
 <h3 id="function-getdisplayname">function getDisplayName<a class="headerlink" href="#function-getdisplayname" title="Permanent link">&para;</a></h3>
 <p><em>Gets the display name that is set.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getDisplayName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getDisplayName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the display name that is set </p>
 <hr>
 
+<h3 id="function-getenchantlevel">function getEnchantLevel<a class="headerlink" href="#function-getenchantlevel" title="Permanent link">&para;</a></h3>
+<p><em>Checks for the level of the specified enchantment.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getEnchantLevel</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> enchantment id to check </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>The level that the specified enchantment has, or 0 if none </p>
+<hr>
+
+<h3 id="function-getenchants">function getEnchants<a class="headerlink" href="#function-getenchants" title="Permanent link">&para;</a></h3>
+<p><em>Returns a copy the enchantments in this</em> <a href="./"><em><strong>ItemMeta</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getEnchants</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p>Returns an empty map if none.</p>
+<p><strong>Returns:</strong></p>
+<p>An immutable copy of the enchantments </p>
+<hr>
+
 <h3 id="function-getlore">function getLore<a class="headerlink" href="#function-getlore" title="Permanent link">&para;</a></h3>
 <p><em>Gets the lore that is set.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getLore</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getLore</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a list of lore that is set </p>
@@ -2592,7 +2752,7 @@ For latest updates join the chat on
 
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
 <p><em>Gets the type of this item meta.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>type of this item meta </p>
@@ -2600,7 +2760,7 @@ For latest updates join the chat on
 
 <h3 id="function-hasdamage">function hasDamage<a class="headerlink" href="#function-hasdamage" title="Permanent link">&para;</a></h3>
 <p><em>Checks to see if this item has damage.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasDamage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasDamage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if this has damage </p>
@@ -2608,15 +2768,37 @@ For latest updates join the chat on
 
 <h3 id="function-hasdisplayname">function hasDisplayName<a class="headerlink" href="#function-hasdisplayname" title="Permanent link">&para;</a></h3>
 <p><em>Checks for existence of a display name.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasDisplayName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasDisplayName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if this has a display name </p>
 <hr>
 
+<h3 id="function-hasenchant">function hasEnchant<a class="headerlink" href="#function-hasenchant" title="Permanent link">&para;</a></h3>
+<p><em>Checks for existence of the specified enchantment.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasEnchant</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> enchantment id to check </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>true if this enchantment exists for this meta </p>
+<hr>
+
+<h3 id="function-hasenchants">function hasEnchants<a class="headerlink" href="#function-hasenchants" title="Permanent link">&para;</a></h3>
+<p><em>Checks for the existence of any enchantments.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasEnchants</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>true if an enchantment exists on this meta </p>
+<hr>
+
 <h3 id="function-haslore">function hasLore<a class="headerlink" href="#function-haslore" title="Permanent link">&para;</a></h3>
 <p><em>Checks for existence of lore.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasLore</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasLore</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if this has lore </p>
@@ -2624,17 +2806,37 @@ For latest updates join the chat on
 
 <h3 id="function-isempty">function isEmpty<a class="headerlink" href="#function-isempty" title="Permanent link">&para;</a></h3>
 <p><em>Checks if the item metadata is empty.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">isEmpty</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">isEmpty</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if the metadata is empty, false otherwise. </p>
 <hr>
 
+<h3 id="function-removeenchant">function removeEnchant<a class="headerlink" href="#function-removeenchant" title="Permanent link">&para;</a></h3>
+<p><em>Removes the specified enchantment from this item meta.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">removeEnchant</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> <a href="../classendstone_1_1Enchantment/"><strong>Enchantment</strong></a> id to remove </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>true if the item meta changed as a result of this call, false otherwise </p>
+<hr>
+
+<h3 id="function-removeenchants">function removeEnchants<a class="headerlink" href="#function-removeenchants" title="Permanent link">&para;</a></h3>
+<p><em>Removes all enchantments from this item meta.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">removeEnchants</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</span></code></pre></div></p>
+<hr>
+
 <h3 id="function-setdamage">function setDamage<a class="headerlink" href="#function-setdamage" title="Permanent link">&para;</a></h3>
 <p><em>Sets the damage.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">setDamage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">setDamage</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2644,9 +2846,9 @@ For latest updates join the chat on
 
 <h3 id="function-setdisplayname">function setDisplayName<a class="headerlink" href="#function-setdisplayname" title="Permanent link">&para;</a></h3>
 <p><em>Sets the display name.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">setDisplayName</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">setDisplayName</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2656,9 +2858,9 @@ For latest updates join the chat on
 
 <h3 id="function-setlore">function setLore<a class="headerlink" href="#function-setlore" title="Permanent link">&para;</a></h3>
 <p><em>Sets the lore for this item or removes lore when given std::nullopt.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">setLore</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lore</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">setLore</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lore</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2667,7 +2869,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-itemmeta">function ~ItemMeta<a class="headerlink" href="#function-itemmeta" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::~</span><span class="n">ItemMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::~</span><span class="n">ItemMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 
