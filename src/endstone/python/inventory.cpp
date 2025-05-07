@@ -27,8 +27,18 @@ void init_inventory(py::module_ &m)
                       "Gets or sets the display name.")
         .def_property_readonly("has_lore", &ItemMeta::hasLore, "Checks for existence of lore.")
         .def_property("lore", &ItemMeta::getLore, &ItemMeta::setLore, "Gets or sets the lore for this item.")
-        .def_property_readonly("has_damage", &ItemMeta::hasDamage, "Checks to see if this item has damage")
-        .def_property("damage", &ItemMeta::getDamage, &ItemMeta::setDamage, "Gets or sets the damage.");
+        .def_property_readonly("has_damage", &ItemMeta::hasDamage, "Checks to see if this item has damage.")
+        .def_property("damage", &ItemMeta::getDamage, &ItemMeta::setDamage, "Gets or sets the damage.")
+        .def_property_readonly("has_enchants", &ItemMeta::hasEnchants, "Checks for the existence of any enchantments.")
+        .def("has_enchant", &ItemMeta::hasEnchant, py::arg("id"), "Checks for existence of the specified enchantment.")
+        .def("get_enchant_level", &ItemMeta::getEnchantLevel, py::arg("id"),
+             "Checks for the level of the specified enchantment.")
+        .def_property_readonly("enchants", &ItemMeta::getEnchants, "Returns a copy the enchantments in this ItemMeta.")
+        .def("add_enchant", &ItemMeta::addEnchant, py::arg("id"), py::arg("level"), py::arg("force") = false,
+             "Adds the specified enchantment to this item meta.")
+        .def("remove_enchant", &ItemMeta::removeEnchant, py::arg("id"),
+             "Removes the specified enchantment from this item meta.")
+        .def("remove_enchants", &ItemMeta::removeEnchants, "Removes all enchantments from this item meta.");
 
     py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
 

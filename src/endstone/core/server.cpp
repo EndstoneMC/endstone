@@ -101,6 +101,7 @@ void EndstoneServer::setLevel(::Level &level)
         throw std::runtime_error("Level already initialized.");
     }
     level_ = std::make_unique<EndstoneLevel>(level);
+    // TODO(registry): init registries here
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
@@ -498,6 +499,11 @@ IpBanList &EndstoneServer::getIpBanList() const
 ServiceManager &EndstoneServer::getServiceManager() const
 {
     return *service_manager_;
+}
+
+Registry<Enchantment> &EndstoneServer::getEnchantmentRegistry() const
+{
+    return *enchantment_registry_;
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

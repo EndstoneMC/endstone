@@ -1,4 +1,4 @@
-timestamp = 1746561160
+timestamp = 1746638321
 version = "1.21.80"
 
 [windows]
@@ -83,6 +83,7 @@ version = "1.21.80"
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 23154624
 # Variables
 "getI18n::result" = 94070880
+"Enchant::mEnchants" = 93952624
 
 [linux]
 "_Z7getI18nv" = 82515072
@@ -165,3 +166,5 @@ version = "1.21.80"
 # TeleportCommand
 "_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 87938288
 "_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 87938672
+# Variables
+"Enchant::mEnchants" = 179825952

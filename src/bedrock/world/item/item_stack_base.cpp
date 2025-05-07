@@ -432,3 +432,4 @@ const std::string ItemStackBase::TAG_DISPLAY = "display";
 const std::string ItemStackBase::TAG_DISPLAY_NAME = "Name";
 const std::string ItemStackBase::TAG_LORE = "Lore";
 const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";
+const std::string ItemStackBase::TAG_ENCHANTS = "ench";

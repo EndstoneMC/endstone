@@ -17,6 +17,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 namespace endstone {
@@ -62,7 +63,7 @@ public:
     [[nodiscard]] virtual bool isEmpty() const
     {
         // TODO(item): more checks here
-        return !(hasDisplayName() || hasLore() || hasDamage());
+        return !(hasDisplayName() || hasLore() || hasEnchants() || hasDamage());
     }
 
     /**
@@ -82,7 +83,7 @@ public:
      */
     [[nodiscard]] virtual bool hasDisplayName() const
     {
-        return display_name_.has_value() && !display_name_.value().empty();
+        return display_name_.has_value();
     }
 
     /**
@@ -106,10 +107,10 @@ public:
     virtual void setDisplayName(std::optional<std::string> name)
     {
         if (!name.has_value() || name.value().empty()) {
-            display_name_ = std::nullopt;
+            display_name_.reset();
         }
         else {
-            display_name_ = std::move(name);
+            display_name_ = std::move(name.value());
         }
     }
 
@@ -120,7 +121,7 @@ public:
      */
     [[nodiscard]] virtual bool hasLore() const
     {
-        return lore_.has_value() && !lore_.value().empty();
+        return !lore_.empty();
     }
 
     /**
@@ -144,10 +145,10 @@ public:
     virtual void setLore(std::optional<std::vector<std::string>> lore)
     {
         if (!lore.has_value() || lore.value().empty()) {
-            lore_ = std::nullopt;
+            lore_.clear();
         }
         else {
-            lore_ = std::move(lore);
+            lore_ = std::move(lore.value());
         }
     }
 
@@ -181,9 +182,96 @@ public:
         damage_ = damage;
     }
 
+    /**
+     * @brief Checks for the existence of any enchantments.
+     *
+     * @return true if an enchantment exists on this meta
+     */
+    [[nodiscard]] virtual bool hasEnchants() const
+    {
+        return !enchantments_.empty();
+    }
+
+    /**
+     * @brief Checks for existence of the specified enchantment.
+     *
+     * @param id enchantment id to check
+     * @return true if this enchantment exists for this meta
+     */
+    [[nodiscard]] virtual bool hasEnchant(const std::string &id) const
+    {
+        return hasEnchants() && enchantments_.contains(id);
+    }
+
+    /**
+     * @brief Checks for the level of the specified enchantment.
+     *
+     * @param id enchantment id to check
+     * @return The level that the specified enchantment has, or 0 if none
+     */
+    [[nodiscard]] virtual int getEnchantLevel(const std::string &id) const
+    {
+        if (!hasEnchant(id)) {
+            return 0;
+        }
+        return enchantments_.at(id);
+    }
+
+    /**
+     * @brief Returns a copy the enchantments in this ItemMeta.
+     *
+     * Returns an empty map if none.
+     *
+     * @return An immutable copy of the enchantments
+     */
+    [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const
+    {
+        if (hasEnchants()) {
+            return enchantments_;
+        }
+        return {};
+    }
+
+    /**
+     * @brief Adds the specified enchantment to this item meta.
+     *
+     * @param id Enchantment id to add
+     * @param level Level for the enchantment
+     * @param force this indicates the enchantment should be applied, ignoring the level limit
+     * @return true if the item meta changed as a result of this call, false otherwise
+     */
+    virtual bool addEnchant(const std::string &id, int level, bool force)
+    {
+        // TODO: we should do the level limit check here
+        const auto old = getEnchantLevel(id);
+        enchantments_[id] = level;
+        return old == 0 || old != level;
+    }
+
+    /**
+     * @brief Removes the specified enchantment from this item meta.
+     *
+     * @param id Enchantment id to remove
+     * @return true if the item meta changed as a result of this call, false
+     *     otherwise
+     */
+    virtual bool removeEnchant(const std::string &id)
+    {
+        return enchantments_.erase(id) > 0;
+    }
+
+    /**
+     * @brief Removes all enchantments from this item meta.
+     */
+    virtual void removeEnchants()
+    {
+        enchantments_.clear();
+    }
+
 private:
     std::optional<std::string> display_name_;
-    std::optional<std::vector<std::string>> lore_;
+    std::vector<std::string> lore_;
+    std::unordered_map<std::string, int> enchantments_;
     int damage_ = 0;
 };
 

@@ -23,6 +23,7 @@ add_library(endstone_core
         platform_linux.cpp
         platform_windows.cpp
         player.cpp
+        registry.cpp
         server.cpp
         signal_handler.cpp
         actor/actor.cpp
@@ -55,6 +56,7 @@ add_library(endstone_core
         command/defaults/status_command.cpp
         command/defaults/version_command.cpp
         damage/damage_source.cpp
+        enchantments/enchantment.cpp
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/inventory.cpp

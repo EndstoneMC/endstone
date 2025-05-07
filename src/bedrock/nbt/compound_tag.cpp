@@ -192,6 +192,24 @@ const IntTag *CompoundTag::getIntTag(StringView name) const
     return nullptr;
 }
 
+std::int16_t CompoundTag::getShort(StringView name) const
+{
+    if (const auto *tag = getShortTag(name)) {
+        return tag->data;
+    }
+    return 0;
+}
+
+const ShortTag *CompoundTag::getShortTag(StringView name) const
+{
+    if (const auto *tag = get(name); tag) {
+        if (tag->getId() == Type::Short) {
+            return static_cast<const ShortTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
 const std::string &CompoundTag::getString(StringView key) const
 {
     static std::string empty;
