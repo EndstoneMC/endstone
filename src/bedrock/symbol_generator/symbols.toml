@@ -1,4 +1,4 @@
-timestamp = 1746632940
+timestamp = 1746638321
 version = "1.21.80"
 
 [windows]
@@ -166,3 +166,5 @@ version = "1.21.80"
 # TeleportCommand
 "_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 87938288
 "_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 87938672
+# Variables
+"Enchant::mEnchants" = 179825952
