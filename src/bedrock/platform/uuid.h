@@ -25,6 +25,9 @@ public:
     static UUID EMPTY;
     UUID() = default;
     [[nodiscard]] std::string asString() const;
+    bool operator==(const UUID &other) const = default;
+    bool operator!=(const UUID &other) const = default;
+    bool operator<(const UUID &other) const;
 
     std::int64_t data[2]{0, 0};
 };

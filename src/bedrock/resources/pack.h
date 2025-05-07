@@ -32,6 +32,7 @@ public:
     virtual ~IPackIOProvider();
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<IFileAccess> getFileAccess(ResourceFileSystem) const = 0;
     [[nodiscard]] virtual std::function<std::string(const Core::Path &)> getAssetReader() const = 0;
+    [[nodiscard]] virtual Core::Path getOnDiskScratchPath() const = 0;
     [[nodiscard]] virtual std::unique_ptr<IPackIOProvider> clone() const = 0;
 };
 
@@ -44,10 +45,6 @@ public:
     [[nodiscard]] PackManifest const &getManifest() const;
     PackManifest &getManifest();
 
-    static std::unique_ptr<Pack> createPack(ResourceLocation const &file_location, PackType type, PackOrigin origin,
-                                            IPackManifestFactory &manifest_factory,
-                                            Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,
-                                            PackSourceReport *report, Core::Path const &zip_sub_dir);
     static std::unique_ptr<Pack> createPack(const IPackIOProvider &io, const ResourceLocation &file_location,
                                             PackType type, PackOrigin origin, IPackManifestFactory &manifest_factory,
                                             Bedrock::NonOwnerPointer<const IContentKeyProvider> key_provider,

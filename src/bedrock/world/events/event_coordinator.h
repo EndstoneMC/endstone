@@ -23,18 +23,20 @@
 #include "bedrock/world/events/event_result.h"
 
 template <typename ListenerType>
-class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {
+class EventCoordinatorPimpl {
 public:
-    ~EventCoordinatorPimpl() override = default;
+    virtual ~EventCoordinatorPimpl() = default;
+
+protected:
+    std::vector<ListenerType *> listeners_;                                      // +8
+    std::vector<std::function<EventResult(ListenerType &)>> events_to_process_;  // +32
+    std::vector<ListenerType *> pending_registrations_;                          // +56
+    bool has_pending_registrations_;                                             // +80
 
 private:
-    std::vector<ListenerType *> listeners_;                                      // +24
-    std::vector<std::function<EventResult(ListenerType &)>> events_to_process_;  // +48
-    std::vector<ListenerType *> pending_registrations_;                          // +72
-    bool has_pending_registrations_;                                             // +96
-    std::thread::id thread_id_;                                                  // +100 (+104)
-    bool thread_id_initialized_;                                                 // +104 (+112)
-    std::int32_t thread_check_index_;                                            // +112 (+116)
+    std::thread::id thread_id_;        // +84
+    bool thread_id_initialized_;       //
+    std::int32_t thread_check_index_;  //
 };
 
 template <typename ListenerType>

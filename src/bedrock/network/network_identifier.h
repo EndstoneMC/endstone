@@ -19,6 +19,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
+#include "bedrock/deps/nethernet/network_id.h"
 #include "bedrock/deps/raknet/raknet_types.h"
 
 class NetworkIdentifier {
@@ -31,14 +32,14 @@ public:
         Invalid = 4,
     };
 
-    std::uint64_t nether_net_id;   // +0
-    RakNet::RakNetGUID guid;       // +8
-    union {                        //
-        sockaddr_storage sa_stor;  //
-        sockaddr_in6 addr6;        //
-        sockaddr_in addr4;         //
-    } sock;                        // +24
-    Type type;                     // +152
+    NetherNet::NetworkID nether_net_id;  //
+    RakNet::RakNetGUID guid;             //
+    union {                              //
+        sockaddr_storage sa_stor;        //
+        sockaddr_in6 addr6;              //
+        sockaddr_in addr4;               //
+    } sock;                              //
+    Type type;                           // +176
 
     [[nodiscard]] std::string getAddress() const;
     [[nodiscard]] std::uint16_t getPort() const;
@@ -47,7 +48,7 @@ public:
     bool operator!=(const NetworkIdentifier &other) const;
     [[nodiscard]] bool equalsTypeData(const NetworkIdentifier &other) const;
 };
-BEDROCK_STATIC_ASSERT_SIZE(NetworkIdentifier, 160, 160);
+static_assert(sizeof(NetworkIdentifier) == 176);
 
 struct NetworkIdentifierWithSubId {
     NetworkIdentifier id;

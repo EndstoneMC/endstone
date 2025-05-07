@@ -24,8 +24,9 @@ namespace fs = std::filesystem;
 
 namespace endstone::core {
 
-EndstonePackSource::EndstonePackSource(std::filesystem::path path, PackType pack_type)
-    : path_(std::move(path)), pack_type_(pack_type)
+EndstonePackSource::EndstonePackSource(std::filesystem::path path, PackType pack_type,
+                                       std::unique_ptr<IPackIOProvider> io)
+    : PackSource(std::move(io)), path_(std::move(path)), pack_type_(pack_type)
 {
 }
 
@@ -104,8 +105,8 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
             }
 
             const auto file_location = ResourceLocation(Core::Path(file.string()), ResourceFileSystem::Raw);
-            auto pack = Pack::createPack(file_location, getPackType(), getPackOrigin(), manifest_factory, key_provider,
-                                         &report, Core::Path::EMPTY);
+            auto pack = Pack::createPack(*io_, file_location, getPackType(), getPackOrigin(), manifest_factory,
+                                         key_provider, &report, Core::Path::EMPTY);
             if (!pack) {
                 server.getLogger().error("Could not load resource pack from '{}':",
                                          file_location.getRelativePath().getContainer());

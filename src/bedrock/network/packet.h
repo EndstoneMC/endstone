@@ -42,7 +42,7 @@ enum class MinecraftPacketIds : int {
     TakeItemActor = 17,
     MoveAbsoluteActor = 18,
     MovePlayer = 19,
-    PassengerJump = 20,
+    PassengerJump_Deprecated = 20,
     UpdateBlock = 21,
     AddPainting = 22,
     TickSync_deprecated = 23,
@@ -79,7 +79,7 @@ enum class MinecraftPacketIds : int {
     GuiDataPickItem = 54,
     AdventureSettings_Deprecated = 55,
     BlockActorData = 56,
-    PlayerInput = 57,
+    PlayerInput_Deprecated = 57,
     FullChunkData = 58,
     SetCommandsEnabled = 59,
     SetDifficulty = 60,
@@ -225,7 +225,7 @@ enum class MinecraftPacketIds : int {
     TitleSpecificPacketsStart = 200,
     TitleSpecificPacketsEnd = 299,
     CameraInstruction = 300,
-    CompressedBiomeDefinitionList = 301,
+    CompressedBiomeDefinitionList_DEPRECATED = 301,
     TrimData = 302,
     OpenSign = 303,
     AgentAnimation = 304,
@@ -250,7 +250,9 @@ enum class MinecraftPacketIds : int {
     UpdateClientOptions = 323,
     PlayerVideoCapturePacket = 324,
     PlayerUpdateEntityOverridesPacket = 325,
-    EndId = 326,
+    PlayerLocation = 326,
+    ClientboundControlSchemeSet = 327,
+    EndId
 };
 
 class NetEventCallback;

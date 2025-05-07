@@ -18,7 +18,7 @@
 
 namespace Bedrock::PubSub::Detail {
 
-template <typename T>
-class DispatchingPublisherBase : public ThreadingPublisherBase<T> {};
+template <typename ThreadingModel, typename SubscriptionBody>
+class DispatchingPublisherBase : public ThreadingPublisherBase<ThreadingModel> {};
 
 }  // namespace Bedrock::PubSub::Detail
