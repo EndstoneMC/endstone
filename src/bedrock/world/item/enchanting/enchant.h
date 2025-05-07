@@ -172,6 +172,9 @@ public:
     void setDisabled();
     bool isDisabled() const;
 
+    static const Enchant *getEnchantFromName(const HashedString &name);
+    static std::vector<Enchant *> getEnchants();  // Endstone
+
 protected:
     const Type enchant_type_;
     const Frequency frequency_;

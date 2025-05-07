@@ -14,6 +14,8 @@
 
 #include "bedrock/world/item/enchanting/enchant.h"
 
+#include "bedrock/symbol.h"
+
 bool Enchant::canEnchant(int slot, bool allow_non_vanilla) const
 {
     // If we’re allowing “non-vanilla” enchants, everything’s permitted
@@ -29,4 +31,24 @@ bool Enchant::canEnchant(int slot, bool allow_non_vanilla) const
         return true;
     }
     return false;
+}
+
+const Enchant *Enchant::getEnchantFromName(const HashedString &name)
+{
+    for (const auto &enchant : getEnchants()) {
+        if (enchant->getStringId() == name) {
+            return enchant;
+        }
+    }
+    return nullptr;
+}
+
+std::vector<Enchant *> Enchant::getEnchants()
+{
+    static auto &enchants = *BEDROCK_VAR(std::vector<std::unique_ptr<Enchant>> *, "Enchant::mEnchants");
+    auto result = std::vector<Enchant *>(enchants.size());
+    for (const auto &enchant : enchants) {
+        result.emplace_back(enchant.get());
+    }
+    return result;
 }
