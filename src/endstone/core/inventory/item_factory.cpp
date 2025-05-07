@@ -63,12 +63,7 @@ void loadData(ItemMeta &meta, const CompoundTag &tag)
             if (!enchant) {
                 return;
             }
-
-            const auto key = NamespacedKey::fromString(enchant->getStringId().getString());
-            if (!key.has_value()) {
-                return;
-            }
-            meta.addEnchant(key->toString(), enchant_tag.getShort("lvl"), true);
+            meta.addEnchant(enchant->getStringId().getString(), enchant_tag.getShort("lvl"), true);
         });
     }
 }
@@ -143,12 +138,7 @@ void applyTo(const ItemMeta &meta, CompoundTag &tag)
         auto enchants_tag = std::make_unique<ListTag>();
         for (const auto &[string_id, lvl] : enchants) {
             auto enchant_tag = std::make_unique<CompoundTag>();
-            const auto key = NamespacedKey::fromString(string_id);
-            if (!key.has_value()) {
-                continue;
-            }
-
-            const auto *enchant = Enchant::getEnchantFromName(key->getKey());
+            const auto *enchant = Enchant::getEnchantFromName(string_id);
             if (!enchant) {
                 continue;
             }
