@@ -1392,9 +1392,29 @@ class ItemMeta:
     """
     Represents the metadata of a generic item.
     """
+    def add_enchant(self, id: str, level: int, force: bool = False) -> bool:
+        """
+        Adds the specified enchantment to this item meta.
+        """
     def clone(self) -> ItemMeta:
         """
         Creates a clone of the current metadata.
+        """
+    def get_enchant_level(self, id: str) -> int:
+        """
+        Checks for the level of the specified enchantment.
+        """
+    def has_enchant(self, id: str) -> bool:
+        """
+        Checks for existence of the specified enchantment.
+        """
+    def remove_enchant(self, id: str) -> bool:
+        """
+        Removes the specified enchantment from this item meta.
+        """
+    def remove_enchants(self) -> None:
+        """
+        Removes all enchantments from this item meta.
         """
     @property
     def damage(self) -> int:
@@ -1413,22 +1433,24 @@ class ItemMeta:
     def display_name(self, arg1: str | None) -> None:
         ...
     @property
-    def enchants(self) -> dict[int, int] | None:
+    def enchants(self) -> dict[str, int]:
         """
-        Gets or sets the enchants for this item.
+        Returns a copy the enchantments in this ItemMeta.
         """
-    @enchants.setter
-    def enchants(self, arg1: dict[int, int] | None) -> None:
-        ...
     @property
     def has_damage(self) -> bool:
         """
-        Checks to see if this item has damage
+        Checks to see if this item has damage.
         """
     @property
     def has_display_name(self) -> bool:
         """
         Checks for existence of a display name.
+        """
+    @property
+    def has_enchants(self) -> bool:
+        """
+        Checks for the existence of any enchantments.
         """
     @property
     def has_lore(self) -> bool:
