@@ -1458,12 +1458,25 @@ class ItemMeta:
         Checks for existence of lore.
         """
     @property
+    def has_repair_cost(self) -> bool:
+        """
+        Checks to see if this item has a repair penalty.
+        """
+    @property
     def lore(self) -> list[str] | None:
         """
         Gets or sets the lore for this item.
         """
     @lore.setter
     def lore(self, arg1: list[str] | None) -> None:
+        ...
+    @property
+    def repair_cost(self) -> int:
+        """
+        Gets or sets the repair penalty.
+        """
+    @repair_cost.setter
+    def repair_cost(self, arg1: int) -> None:
         ...
 class ItemStack:
     """

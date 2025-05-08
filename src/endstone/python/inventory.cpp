@@ -38,7 +38,11 @@ void init_inventory(py::module_ &m)
              "Adds the specified enchantment to this item meta.")
         .def("remove_enchant", &ItemMeta::removeEnchant, py::arg("id"),
              "Removes the specified enchantment from this item meta.")
-        .def("remove_enchants", &ItemMeta::removeEnchants, "Removes all enchantments from this item meta.");
+        .def("remove_enchants", &ItemMeta::removeEnchants, "Removes all enchantments from this item meta.")
+        .def_property_readonly("has_repair_cost", &ItemMeta::hasRepairCost,
+                               "Checks to see if this item has a repair penalty.")
+        .def_property("repair_cost", &ItemMeta::getRepairCost, &ItemMeta::setRepairCost,
+                      "Gets or sets the repair penalty.");
 
     py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
 
