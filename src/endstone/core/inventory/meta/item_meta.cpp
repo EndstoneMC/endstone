@@ -16,10 +16,9 @@
 
 #include <utility>
 
-#include <bedrock/world/item/enchanting/enchant.h>
 #include <fmt/chrono.h>
-#include <nlohmann/detail/value_t.hpp>
 
+#include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_stack_base.h"
 
@@ -248,10 +247,17 @@ std::unordered_map<std::string, int> EndstoneItemMeta::getEnchants() const
 
 bool EndstoneItemMeta::addEnchant(const std::string &id, int level, bool force)
 {
-    // TODO: we should do the level limit check here
-    const auto old = getEnchantLevel(id);
-    enchantments_[id] = level;
-    return old == 0 || old != level;
+    const auto *enchant = Enchant::getEnchantFromName(id);
+    if (!enchant) {
+        return false;
+    }
+
+    if (force || level >= enchant->getMinLevel() && level <= enchant->getMaxLevel()) {
+        const auto old = getEnchantLevel(id);
+        enchantments_[id] = level;
+        return old == 0 || old != level;
+    }
+    return false;
 }
 
 bool EndstoneItemMeta::removeEnchant(const std::string &id)
