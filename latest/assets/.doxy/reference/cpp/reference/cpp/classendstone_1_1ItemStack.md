@@ -53,7 +53,7 @@ _Represents a stack of items._
 | Type | Name |
 | ---: | :--- |
 |   | [**ItemStack**](#function-itemstack-12) () = default<br> |
-|   | [**ItemStack**](#function-itemstack-22) (std::string type, [**int**](classendstone_1_1Vector.md) amount=1) <br> |
+|   | [**ItemStack**](#function-itemstack-22) (std::string type, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount=1) <br> |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual std::string | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
@@ -118,7 +118,7 @@ endstone::ItemStack::ItemStack () = default
 ```C++
 inline explicit endstone::ItemStack::ItemStack (
     std::string type,
-    int amount=1
+    const  int amount=1
 ) 
 ```
 

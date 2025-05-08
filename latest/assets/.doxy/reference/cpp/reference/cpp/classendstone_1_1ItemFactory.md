@@ -47,14 +47,15 @@
 
 
 
-
-
-## Public Static Functions
+## Public Functions
 
 | Type | Name |
 | ---: | :--- |
-|  std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**asMetaFor**](#function-asmetafor) ([**const**](classendstone_1_1Vector.md) std::string\_view type, [**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br> |
-|  std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) ([**const**](classendstone_1_1Vector.md) std::string\_view type, [**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta=[**nullptr**](classendstone_1_1Vector.md)) <br> |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**asMetaFor**](#function-asmetafor) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, std::string\_view type) const = 0<br>_Returns an appropriate item meta for the specified item type._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**equals**](#function-equals) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta1, [**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta2) const = 0<br>_This method is used to compare two_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _objects._ |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) (std::string\_view type) const = 0<br>_This creates a new item meta for the item type._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isApplicable**](#function-isapplicable) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, std::string\_view type) const = 0<br>_This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
+| virtual  | [**~ItemFactory**](#function-itemfactory) () = default<br> |
 
 
 
@@ -81,22 +82,83 @@
 
 
 
-## Public Static Functions Documentation
+
+
+## Public Functions Documentation
 
 
 
 
 ### function asMetaFor 
 
+_Returns an appropriate item meta for the specified item type._ 
 ```C++
-static inline std::unique_ptr< ItemMeta > endstone::ItemFactory::asMetaFor (
-    const std::string_view type,
-    const  ItemMeta * meta
-) 
+virtual std::unique_ptr< ItemMeta > endstone::ItemFactory::asMetaFor (
+    const  ItemMeta * meta,
+    std::string_view type
+) const = 0
 ```
 
 
 
+The item meta returned will always be a valid meta for a given [**ItemStack**](classendstone_1_1ItemStack.md) of the specified item type. It may be a more or less specific meta, and could also be the same meta or meta type as the parameter. The item meta returned will also always be the most appropriate meta.
+
+
+
+
+**Parameters:**
+
+
+* `meta` the meta to convert 
+* `type` the item type to convert the meta for 
+
+
+
+**Returns:**
+
+An appropriate item meta for the specified item type. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function equals 
+
+_This method is used to compare two_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _objects._
+```C++
+virtual bool endstone::ItemFactory::equals (
+    const  ItemMeta * meta1,
+    const  ItemMeta * meta2
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `meta1` First meta to compare, and may be null to indicate no data 
+* `meta2` Second meta to compare, and may be null to indicate no data 
+
+
+
+**Returns:**
+
+false if one of the meta has data the other does not, otherwise true 
+
+
+
+
+
+        
 
 <hr>
 
@@ -104,11 +166,78 @@ static inline std::unique_ptr< ItemMeta > endstone::ItemFactory::asMetaFor (
 
 ### function getItemMeta 
 
+_This creates a new item meta for the item type._ 
 ```C++
-static inline std::unique_ptr< ItemMeta > endstone::ItemFactory::getItemMeta (
-    const std::string_view type,
-    const  ItemMeta * meta=nullptr
-) 
+virtual std::unique_ptr< ItemMeta > endstone::ItemFactory::getItemMeta (
+    std::string_view type
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `type` The item type to consider as base for the meta 
+
+
+
+**Returns:**
+
+a new [**ItemMeta**](classendstone_1_1ItemMeta.md) that could be applied to an item stack of the specified item type 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isApplicable 
+
+_This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _._
+```C++
+virtual bool endstone::ItemFactory::isApplicable (
+    const  ItemMeta * meta,
+    std::string_view type
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `meta` Meta to check 
+* `type` The item type that meta will be applied to 
+
+
+
+**Returns:**
+
+true if the meta can be applied without losing data, false otherwise 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function ~ItemFactory 
+
+```C++
+virtual endstone::ItemFactory::~ItemFactory () = default
 ```
 
 

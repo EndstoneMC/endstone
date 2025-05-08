@@ -5,6 +5,7 @@
     <includes refid="item__meta_8h" local="yes">endstone/inventory/meta/item_meta.h</includes>
     <includes refid="map__meta_8h" local="yes">endstone/inventory/meta/map_meta.h</includes>
     <includedby refid="item__stack_8h" local="yes">include/endstone/inventory/item_stack.h</includedby>
+    <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/endstone/inventory/item_factory.h</label>
@@ -57,122 +58,34 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="23">
+      <node id="6">
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
       <node id="7">
-        <label>include/endstone/event/block/block_place_event.h</label>
-        <link refid="block__place__event_8h_source"/>
-      </node>
-      <node id="24">
         <label>include/endstone/event/event_handler.h</label>
         <link refid="event__handler_8h_source"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-      </node>
-      <node id="25">
-        <label>include/endstone/event/handler_list.h</label>
-        <link refid="handler__list_8h_source"/>
-      </node>
-      <node id="9">
-        <label>include/endstone/event/player/player_chat_event.h</label>
-        <link refid="player__chat__event_8h_source"/>
-      </node>
-      <node id="10">
-        <label>include/endstone/event/player/player_command_event.h</label>
-        <link refid="player__command__event_8h_source"/>
-      </node>
-      <node id="11">
-        <label>include/endstone/event/player/player_death_event.h</label>
-        <link refid="player__death__event_8h_source"/>
-      </node>
-      <node id="12">
-        <label>include/endstone/event/player/player_emote_event.h</label>
-        <link refid="player__emote__event_8h_source"/>
       </node>
       <node id="8">
-        <label>include/endstone/event/player/player_event.h</label>
-        <link refid="player__event_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/endstone/event/player/player_game_mode_change_event.h</label>
-        <link refid="player__game__mode__change__event_8h_source"/>
-      </node>
-      <node id="14">
-        <label>include/endstone/event/player/player_interact_actor_event.h</label>
-        <link refid="player__interact__actor__event_8h_source"/>
+        <label>include/endstone/event/handler_list.h</label>
+        <link refid="handler__list_8h_source"/>
       </node>
       <node id="3">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
       </node>
-      <node id="15">
-        <label>include/endstone/event/player/player_join_event.h</label>
-        <link refid="player__join__event_8h_source"/>
-      </node>
-      <node id="16">
-        <label>include/endstone/event/player/player_kick_event.h</label>
-        <link refid="player__kick__event_8h_source"/>
-      </node>
-      <node id="17">
-        <label>include/endstone/event/player/player_login_event.h</label>
-        <link refid="player__login__event_8h_source"/>
-      </node>
-      <node id="18">
-        <label>include/endstone/event/player/player_quit_event.h</label>
-        <link refid="player__quit__event_8h_source"/>
-      </node>
-      <node id="19">
-        <label>include/endstone/event/player/player_respawn_event.h</label>
-        <link refid="player__respawn__event_8h_source"/>
-      </node>
-      <node id="20">
-        <label>include/endstone/event/player/player_teleport_event.h</label>
-        <link refid="player__teleport__event_8h_source"/>
-      </node>
-      <node id="26">
+      <node id="9">
         <label>include/endstone/event/server/plugin_disable_event.h</label>
         <link refid="plugin__disable__event_8h_source"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="11">
         <label>include/endstone/event/server/plugin_enable_event.h</label>
         <link refid="plugin__enable__event_8h_source"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/endstone/inventory/inventory.h</label>
-        <link refid="inventory_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -180,67 +93,51 @@
         <link refid="item__factory_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>include/endstone/inventory/item_stack.h</label>
         <link refid="item__stack_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
       </node>
       <node id="5">
-        <label>include/endstone/inventory/player_inventory.h</label>
-        <link refid="player__inventory_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/endstone/player.h</label>
-        <link refid="player_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
         <label>include/endstone/plugin/plugin.h</label>
         <link refid="plugin_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="10">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="30">
+      <node id="13">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="29">
+      <node id="12">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="4">
         <label>include/endstone/server.h</label>
         <link refid="server_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -273,20 +170,17 @@
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="21" refid="classendstone_1_1ItemFactory" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ItemFactory" kindref="compound">ItemFactory</ref><sp/>{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/>getItemMeta(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1Vector" kindref="compound">type</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Vector" kindref="compound">meta</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classendstone_1_1Vector" kindref="compound">type</ref><sp/>==<sp/></highlight><highlight class="stringliteral">&quot;minecraft:filled_map&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;MapMeta&gt;(<ref refid="classendstone_1_1Vector" kindref="compound">meta</ref>);</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;ItemMeta&gt;(<ref refid="classendstone_1_1Vector" kindref="compound">meta</ref>);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/>asMetaFor(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1Vector" kindref="compound">type</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Vector" kindref="compound">meta</ref>)</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getItemMeta(<ref refid="classendstone_1_1Vector" kindref="compound">type</ref>,<sp/><ref refid="classendstone_1_1Vector" kindref="compound">meta</ref>);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemFactory" kindref="compound">~ItemFactory</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classendstone_1_1ItemFactory_1acfce92dd018412d66224af727972cd69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1ItemFactory_1acfce92dd018412d66224af727972cd69" kindref="member">getItemMeta</ref>(std::string_view<sp/><ref refid="classendstone_1_1Vector" kindref="compound">type</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1ItemFactory_1ad5b1bc24eea58025e21008c31a546fd9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemFactory_1ad5b1bc24eea58025e21008c31a546fd9" kindref="member">isApplicable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Vector" kindref="compound">meta</ref>,<sp/>std::string_view<sp/><ref refid="classendstone_1_1Vector" kindref="compound">type</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" kindref="member">equals</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Vector" kindref="compound">meta1</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Vector" kindref="compound">meta2</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classendstone_1_1ItemFactory_1a44aedfd7afd6b1fabc869c0ec14f63c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1ItemFactory_1a44aedfd7afd6b1fabc869c0ec14f63c1" kindref="member">asMetaFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Vector" kindref="compound">meta</ref>,<sp/>std::string_view<sp/><ref refid="classendstone_1_1Vector" kindref="compound">type</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/inventory/item_factory.h"/>
   </compounddef>

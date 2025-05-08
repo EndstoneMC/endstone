@@ -40,11 +40,6 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**ItemMeta**](classendstone_1_1ItemMeta.md) | [**EMPTY**](#variable-empty)  <br> |
 
 
 
@@ -63,27 +58,25 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ItemMeta**](#function-itemmeta-12) () = default<br> |
-|   | [**ItemMeta**](#function-itemmeta-22) ([**const**](classendstone_1_1Vector.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**addEnchant**](#function-addenchant) ([**const**](classendstone_1_1Vector.md) std::string & id, [**int**](classendstone_1_1Vector.md) level, [**bool**](classendstone_1_1Vector.md) force) <br>_Adds the specified enchantment to this item meta._  |
-| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () const<br>_Creates a clone of the current metadata._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getDamage**](#function-getdamage) () const<br>_Gets the damage._  |
-| virtual std::optional&lt; std::string &gt; | [**getDisplayName**](#function-getdisplayname) () const<br>_Gets the display name that is set._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getEnchantLevel**](#function-getenchantlevel) ([**const**](classendstone_1_1Vector.md) std::string & id) const<br>_Checks for the level of the specified enchantment._  |
-| virtual std::unordered\_map&lt; std::string, [**int**](classendstone_1_1Vector.md) &gt; | [**getEnchants**](#function-getenchants) () const<br>_Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
-| virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; | [**getLore**](#function-getlore) () const<br>_Gets the lore that is set._  |
-| virtual Type | [**getType**](#function-gettype) () const<br>_Gets the type of this item meta._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**hasDamage**](#function-hasdamage) () const<br>_Checks to see if this item has damage._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**hasDisplayName**](#function-hasdisplayname) () const<br>_Checks for existence of a display name._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**hasEnchant**](#function-hasenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) const<br>_Checks for existence of the specified enchantment._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**hasEnchants**](#function-hasenchants) () const<br>_Checks for the existence of any enchantments._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**hasLore**](#function-haslore) () const<br>_Checks for existence of lore._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isEmpty**](#function-isempty) () const<br>_Checks if the item metadata is empty._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**removeEnchant**](#function-removeenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) <br>_Removes the specified enchantment from this item meta._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**removeEnchants**](#function-removeenchants) () <br>_Removes all enchantments from this item meta._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setDamage**](#function-setdamage) ([**int**](classendstone_1_1Vector.md) damage) <br>_Sets the damage._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setDisplayName**](#function-setdisplayname) (std::optional&lt; std::string &gt; name) <br>_Sets the display name._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) <br>_Sets the lore for this item or removes lore when given std::nullopt._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**addEnchant**](#function-addenchant) ([**const**](classendstone_1_1Vector.md) std::string & id, [**int**](classendstone_1_1Vector.md) level, [**bool**](classendstone_1_1Vector.md) force) = 0<br>_Adds the specified enchantment to this item meta._  |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () const = 0<br>_Creates a clone of the current metadata._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getDamage**](#function-getdamage) () const = 0<br>_Gets the damage._  |
+| virtual std::optional&lt; std::string &gt; | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the display name that is set._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getEnchantLevel**](#function-getenchantlevel) ([**const**](classendstone_1_1Vector.md) std::string & id) const = 0<br>_Checks for the level of the specified enchantment._  |
+| virtual std::unordered\_map&lt; std::string, [**int**](classendstone_1_1Vector.md) &gt; | [**getEnchants**](#function-getenchants) () const = 0<br>_Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
+| virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
+| virtual Type | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasDamage**](#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasDisplayName**](#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasEnchant**](#function-hasenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) const = 0<br>_Checks for existence of the specified enchantment._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasEnchants**](#function-hasenchants) () const = 0<br>_Checks for the existence of any enchantments._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasLore**](#function-haslore) () const = 0<br>_Checks for existence of lore._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isEmpty**](#function-isempty) () const = 0<br>_Checks if the item metadata is empty._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**removeEnchant**](#function-removeenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) = 0<br>_Removes the specified enchantment from this item meta._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**removeEnchants**](#function-removeenchants) () = 0<br>_Removes all enchantments from this item meta._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setDamage**](#function-setdamage) ([**int**](classendstone_1_1Vector.md) damage) = 0<br>_Sets the damage._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setDisplayName**](#function-setdisplayname) (std::optional&lt; std::string &gt; name) = 0<br>_Sets the display name._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given std::nullopt._  |
 | virtual  | [**~ItemMeta**](#function-itemmeta) () = default<br> |
 
 
@@ -124,24 +117,9 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 enum endstone::ItemMeta::Type {
     Item = 0,
     Map = 1,
-    Count = 2,
+    Count,
     None = Item
 };
-```
-
-
-
-
-<hr>
-## Public Static Attributes Documentation
-
-
-
-
-### variable EMPTY 
-
-```C++
-ItemMeta endstone::ItemMeta::EMPTY;
 ```
 
 
@@ -153,43 +131,15 @@ ItemMeta endstone::ItemMeta::EMPTY;
 
 
 
-### function ItemMeta [1/2]
-
-```C++
-endstone::ItemMeta::ItemMeta () = default
-```
-
-
-
-
-<hr>
-
-
-
-### function ItemMeta [2/2]
-
-```C++
-inline explicit endstone::ItemMeta::ItemMeta (
-    const  ItemMeta * meta
-) 
-```
-
-
-
-
-<hr>
-
-
-
 ### function addEnchant 
 
 _Adds the specified enchantment to this item meta._ 
 ```C++
-inline virtual bool endstone::ItemMeta::addEnchant (
+virtual bool endstone::ItemMeta::addEnchant (
     const std::string & id,
     int level,
     bool force
-) 
+) = 0
 ```
 
 
@@ -223,7 +173,7 @@ true if the item meta changed as a result of this call, false otherwise
 
 _Creates a clone of the current metadata._ 
 ```C++
-inline virtual std::unique_ptr< ItemMeta > endstone::ItemMeta::clone () const
+virtual std::unique_ptr< ItemMeta > endstone::ItemMeta::clone () const = 0
 ```
 
 
@@ -248,7 +198,7 @@ A copy of the metadata containing the same state as the original.
 
 _Gets the damage._ 
 ```C++
-inline virtual int endstone::ItemMeta::getDamage () const
+virtual int endstone::ItemMeta::getDamage () const = 0
 ```
 
 
@@ -273,7 +223,7 @@ the damage
 
 _Gets the display name that is set._ 
 ```C++
-inline virtual std::optional< std::string > endstone::ItemMeta::getDisplayName () const
+virtual std::optional< std::string > endstone::ItemMeta::getDisplayName () const = 0
 ```
 
 
@@ -298,9 +248,9 @@ the display name that is set
 
 _Checks for the level of the specified enchantment._ 
 ```C++
-inline virtual int endstone::ItemMeta::getEnchantLevel (
+virtual int endstone::ItemMeta::getEnchantLevel (
     const std::string & id
-) const
+) const = 0
 ```
 
 
@@ -332,7 +282,7 @@ The level that the specified enchantment has, or 0 if none
 
 _Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._
 ```C++
-inline virtual std::unordered_map< std::string, int > endstone::ItemMeta::getEnchants () const
+virtual std::unordered_map< std::string, int > endstone::ItemMeta::getEnchants () const = 0
 ```
 
 
@@ -360,7 +310,7 @@ An immutable copy of the enchantments
 
 _Gets the lore that is set._ 
 ```C++
-inline virtual std::optional< std::vector< std::string > > endstone::ItemMeta::getLore () const
+virtual std::optional< std::vector< std::string > > endstone::ItemMeta::getLore () const = 0
 ```
 
 
@@ -385,7 +335,7 @@ a list of lore that is set
 
 _Gets the type of this item meta._ 
 ```C++
-inline virtual Type endstone::ItemMeta::getType () const
+virtual Type endstone::ItemMeta::getType () const = 0
 ```
 
 
@@ -410,7 +360,7 @@ type of this item meta
 
 _Checks to see if this item has damage._ 
 ```C++
-inline virtual bool endstone::ItemMeta::hasDamage () const
+virtual bool endstone::ItemMeta::hasDamage () const = 0
 ```
 
 
@@ -435,7 +385,7 @@ true if this has damage
 
 _Checks for existence of a display name._ 
 ```C++
-inline virtual bool endstone::ItemMeta::hasDisplayName () const
+virtual bool endstone::ItemMeta::hasDisplayName () const = 0
 ```
 
 
@@ -460,9 +410,9 @@ true if this has a display name
 
 _Checks for existence of the specified enchantment._ 
 ```C++
-inline virtual bool endstone::ItemMeta::hasEnchant (
+virtual bool endstone::ItemMeta::hasEnchant (
     const std::string & id
-) const
+) const = 0
 ```
 
 
@@ -494,7 +444,7 @@ true if this enchantment exists for this meta
 
 _Checks for the existence of any enchantments._ 
 ```C++
-inline virtual bool endstone::ItemMeta::hasEnchants () const
+virtual bool endstone::ItemMeta::hasEnchants () const = 0
 ```
 
 
@@ -519,7 +469,7 @@ true if an enchantment exists on this meta
 
 _Checks for existence of lore._ 
 ```C++
-inline virtual bool endstone::ItemMeta::hasLore () const
+virtual bool endstone::ItemMeta::hasLore () const = 0
 ```
 
 
@@ -544,7 +494,7 @@ true if this has lore
 
 _Checks if the item metadata is empty._ 
 ```C++
-inline virtual bool endstone::ItemMeta::isEmpty () const
+virtual bool endstone::ItemMeta::isEmpty () const = 0
 ```
 
 
@@ -569,9 +519,9 @@ true if the metadata is empty, false otherwise.
 
 _Removes the specified enchantment from this item meta._ 
 ```C++
-inline virtual bool endstone::ItemMeta::removeEnchant (
+virtual bool endstone::ItemMeta::removeEnchant (
     const std::string & id
-) 
+) = 0
 ```
 
 
@@ -603,7 +553,7 @@ true if the item meta changed as a result of this call, false otherwise
 
 _Removes all enchantments from this item meta._ 
 ```C++
-inline virtual void endstone::ItemMeta::removeEnchants () 
+virtual void endstone::ItemMeta::removeEnchants () = 0
 ```
 
 
@@ -617,9 +567,9 @@ inline virtual void endstone::ItemMeta::removeEnchants ()
 
 _Sets the damage._ 
 ```C++
-inline virtual void endstone::ItemMeta::setDamage (
+virtual void endstone::ItemMeta::setDamage (
     int damage
-) 
+) = 0
 ```
 
 
@@ -644,9 +594,9 @@ inline virtual void endstone::ItemMeta::setDamage (
 
 _Sets the display name._ 
 ```C++
-inline virtual void endstone::ItemMeta::setDisplayName (
+virtual void endstone::ItemMeta::setDisplayName (
     std::optional< std::string > name
-) 
+) = 0
 ```
 
 
@@ -671,9 +621,9 @@ inline virtual void endstone::ItemMeta::setDisplayName (
 
 _Sets the lore for this item or removes lore when given std::nullopt._ 
 ```C++
-inline virtual void endstone::ItemMeta::setLore (
+virtual void endstone::ItemMeta::setLore (
     std::optional< std::vector< std::string > > lore
-) 
+) = 0
 ```
 
 

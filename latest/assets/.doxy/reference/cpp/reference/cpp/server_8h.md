@@ -20,6 +20,7 @@
 * `#include "endstone/block/block_data.h"`
 * `#include "endstone/boss/boss_bar.h"`
 * `#include "endstone/enchantments/enchantment.h"`
+* `#include "endstone/inventory/item_factory.h"`
 * `#include "endstone/lang/language.h"`
 * `#include "endstone/level/level.h"`
 * `#include "endstone/logger.h"`

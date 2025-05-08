@@ -10,11 +10,10 @@
 
 
 
-* `#include <utility>`
-* `#include <fmt/format.h>`
 * `#include <memory>`
+* `#include "endstone/detail/endstone.h"`
+* `#include "endstone/inventory/item_factory.h"`
 * `#include "endstone/inventory/meta/item_meta.h"`
-* `#include "item_factory.h"`
 
 
 

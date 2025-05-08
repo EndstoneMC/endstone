@@ -32,17 +32,6 @@
 namespace endstone {
 class MapMeta : public ItemMeta {
 public:
-    using ItemMeta::ItemMeta;
-
-    [[nodiscard]] Type getType() const override
-    {
-        return Type::Map;
-    }
-
-    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
-    {
-        return std::make_unique<MapMeta>(*this);
-    }
 };
 }  // namespace endstone
 ```

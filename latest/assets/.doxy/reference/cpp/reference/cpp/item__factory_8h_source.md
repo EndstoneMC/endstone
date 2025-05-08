@@ -30,18 +30,15 @@
 namespace endstone {
 class ItemFactory {
 public:
-    static std::unique_ptr<ItemMeta> getItemMeta(const std::string_view type, const ItemMeta *meta = nullptr)
-    {
-        if (type == "minecraft:filled_map") {
-            return std::make_unique<MapMeta>(meta);
-        }
-        return std::make_unique<ItemMeta>(meta);
-    }
+    virtual ~ItemFactory() = default;
 
-    static std::unique_ptr<ItemMeta> asMetaFor(const std::string_view type, const ItemMeta *meta)
-    {
-        return getItemMeta(type, meta);
-    }
+    virtual std::unique_ptr<ItemMeta> getItemMeta(std::string_view type) const = 0;
+
+    virtual bool isApplicable(const ItemMeta *meta, std::string_view type) const = 0;
+
+    virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
+
+    virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, std::string_view type) const = 0;
 };
 }  // namespace endstone
 ```

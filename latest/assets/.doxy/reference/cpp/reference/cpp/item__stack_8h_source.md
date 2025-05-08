@@ -8,10 +8,6 @@
 
 
 ```C++
-#include <utility>
-
-#include <fmt/format.h>
-
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,8 +26,9 @@
 
 #include <memory>
 
+#include "endstone/detail/endstone.h"
+#include "endstone/inventory/item_factory.h"
 #include "endstone/inventory/meta/item_meta.h"
-#include "item_factory.h"
 
 namespace endstone {
 
@@ -42,7 +39,7 @@ class EndstoneItemStack;
 class ItemStack {
 public:
     ItemStack() = default;
-    explicit ItemStack(std::string type, int amount = 1) : type_(std::move(type)), amount_(amount) {}
+    explicit ItemStack(std::string type, const int amount = 1) : type_(std::move(type)), amount_(amount) {}
 
     virtual ~ItemStack() = default;
 
@@ -77,29 +74,36 @@ public:
 
     virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
-        return meta_ == nullptr ? ItemFactory::getItemMeta(type_) : meta_->clone();
+        return meta_ == nullptr ? Endstone::getServer().getItemFactory().getItemMeta(type_) : meta_->clone();
     }
 
     virtual bool hasItemMeta() const
     {
-        return meta_ != nullptr;
+        return Endstone::getServer().getItemFactory().equals(meta_.get(), nullptr);
     }
 
     virtual bool setItemMeta(ItemMeta *meta)
+    {
+        return setItemMeta0(meta, type_);
+    }
+
+private:
+    bool setItemMeta0(ItemMeta *meta, const std::string_view type)
     {
         if (!meta) {
             meta_ = nullptr;
             return true;
         }
-        // TODO(item): applicability check, support type-specific meta
-        meta_ = ItemFactory::asMetaFor(type_, meta);
-        if (meta_.get() == meta) {
-            meta_ = meta->clone();
+
+        const auto &item_factory = Endstone::getServer().getItemFactory();
+        if (!item_factory.isApplicable(meta, type)) {
+            return false;
         }
+
+        meta_ = item_factory.asMetaFor(meta, type);
         return true;
     }
 
-private:
     std::string type_ = "minecraft:air";
     int amount_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;

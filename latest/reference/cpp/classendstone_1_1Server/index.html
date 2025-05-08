@@ -2437,6 +2437,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getitemfactory" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getItemFactory
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getlanguage" class="md-nav__link">
       <span class="md-ellipsis">
         function getLanguage
@@ -2903,6 +2916,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getipbanlist"><strong>getIpBanList</strong></a> () const = 0<br></td>
 </tr>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1ItemFactory/"><strong>ItemFactory</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getitemfactory"><strong>getItemFactory</strong></a> () const = 0<br></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Language/"><strong>Language</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getlanguage"><strong>getLanguage</strong></a> () const = 0<br><em>Gets the current language interface used by the server.</em></td>
 </tr>
@@ -3233,9 +3250,18 @@ For latest updates join the chat on
 <p>The IP ban list </p>
 <hr>
 
+<h3 id="function-getitemfactory">function getItemFactory<a class="headerlink" href="#function-getitemfactory" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ItemFactory</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getItemFactory</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<p>Gets the instance of the item factory (for <code>ItemMeta</code>).</p>
+<p><strong>Returns:</strong></p>
+<p>the item factory </p>
+<p><strong>See also:</strong> <a href="../classendstone_1_1ItemFactory/"><strong>ItemFactory</strong></a> </p>
+<hr>
+
 <h3 id="function-getlanguage">function getLanguage<a class="headerlink" href="#function-getlanguage" title="Permanent link">&para;</a></h3>
 <p><em>Gets the current language interface used by the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Language</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLanguage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Language</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLanguage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Language/"><strong>Language</strong></a> interface used by the server for translations. </p>
@@ -3243,7 +3269,7 @@ For latest updates join the chat on
 
 <h3 id="function-getlevel">function getLevel<a class="headerlink" href="#function-getlevel" title="Permanent link">&para;</a></h3>
 <p><em>Gets the server level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the server level </p>
@@ -3251,7 +3277,7 @@ For latest updates join the chat on
 
 <h3 id="function-getlogger">function getLogger<a class="headerlink" href="#function-getlogger" title="Permanent link">&para;</a></h3>
 <p><em>Returns the primary logger associated with this server instance.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLogger</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLogger</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Logger/"><strong>Logger</strong></a> associated with this server </p>
@@ -3259,7 +3285,7 @@ For latest updates join the chat on
 
 <h3 id="function-getmaxplayers">function getMaxPlayers<a class="headerlink" href="#function-getmaxplayers" title="Permanent link">&para;</a></h3>
 <p><em>Get the maximum amount of players which can login to this server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMaxPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMaxPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the amount of players this server allows </p>
@@ -3267,7 +3293,7 @@ For latest updates join the chat on
 
 <h3 id="function-getminecraftversion">function getMinecraftVersion<a class="headerlink" href="#function-getminecraftversion" title="Permanent link">&para;</a></h3>
 <p><em>Gets the Minecraft version that this server is running.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMinecraftVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMinecraftVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>version of Minecraft </p>
@@ -3275,7 +3301,7 @@ For latest updates join the chat on
 
 <h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
 <p><em>Gets the name of this server implementation.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>name of this server implementation </p>
@@ -3283,7 +3309,7 @@ For latest updates join the chat on
 
 <h3 id="function-getonlinemode">function getOnlineMode<a class="headerlink" href="#function-getonlinemode" title="Permanent link">&para;</a></h3>
 <p><em>Gets whether the</em> <a href="./"><em><strong>Server</strong></em></a> <em>is in online mode or not.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getOnlineMode</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getOnlineMode</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if the server authenticates clients, false otherwise </p>
@@ -3291,7 +3317,7 @@ For latest updates join the chat on
 
 <h3 id="function-getonlineplayers">function getOnlinePlayers<a class="headerlink" href="#function-getonlineplayers" title="Permanent link">&para;</a></h3>
 <p><em>Gets a list of all currently online players.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getOnlinePlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getOnlinePlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a list of currently online players. </p>
@@ -3299,9 +3325,9 @@ For latest updates join the chat on
 
 <h3 id="function-getplayer-12">function getPlayer [&frac12;]<a class="headerlink" href="#function-getplayer-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets the player with the given</em> <a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPlayer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="w"> </span><span class="n">id</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPlayer</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">    </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3313,9 +3339,9 @@ For latest updates join the chat on
 
 <h3 id="function-getplayer-22">function getPlayer [2/2]<a class="headerlink" href="#function-getplayer-22" title="Permanent link">&para;</a></h3>
 <p><em>Gets the player with the exact given name, case-insensitive.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPlayer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPlayer</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3327,9 +3353,9 @@ For latest updates join the chat on
 
 <h3 id="function-getplugincommand">function getPluginCommand<a class="headerlink" href="#function-getplugincommand" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1PluginCommand/"><em><strong>PluginCommand</strong></em></a> <em>with the given name or alias.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PluginCommand</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPluginCommand</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PluginCommand</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPluginCommand</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3341,7 +3367,7 @@ For latest updates join the chat on
 
 <h3 id="function-getpluginmanager">function getPluginManager<a class="headerlink" href="#function-getpluginmanager" title="Permanent link">&para;</a></h3>
 <p><em>Gets the plugin manager for interfacing with plugins.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PluginManager</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPluginManager</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PluginManager</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getPluginManager</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a plugin manager for this <a href="./"><strong>Server</strong></a> instance </p>
@@ -3349,7 +3375,7 @@ For latest updates join the chat on
 
 <h3 id="function-getscheduler">function getScheduler<a class="headerlink" href="#function-getscheduler" title="Permanent link">&para;</a></h3>
 <p><em>Gets the scheduler for managing scheduled events.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scheduler</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getScheduler</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scheduler</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getScheduler</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a scheduling service for this server </p>
@@ -3357,7 +3383,7 @@ For latest updates join the chat on
 
 <h3 id="function-getscoreboard">function getScoreboard<a class="headerlink" href="#function-getscoreboard" title="Permanent link">&para;</a></h3>
 <p><em>Gets the primary</em> <a href="../classendstone_1_1Scoreboard/"><em><strong>Scoreboard</strong></em></a> <em>controlled by the server.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by default to players. This will only exist after the level has been loaded.</p>
 <p><strong>Returns:</strong></p>
@@ -3365,7 +3391,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getservicemanager">function getServiceManager<a class="headerlink" href="#function-getservicemanager" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ServiceManager</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getServiceManager</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ServiceManager</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getServiceManager</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <p>Gets the service manager.</p>
 <p><strong>Returns:</strong></p>
@@ -3374,7 +3400,7 @@ For latest updates join the chat on
 
 <h3 id="function-getstarttime">function getStartTime<a class="headerlink" href="#function-getstarttime" title="Permanent link">&para;</a></h3>
 <p><em>Gets the start time of the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getStartTime</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getStartTime</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The start time of the server. </p>
@@ -3382,7 +3408,7 @@ For latest updates join the chat on
 
 <h3 id="function-getversion">function getVersion<a class="headerlink" href="#function-getversion" title="Permanent link">&para;</a></h3>
 <p><em>Gets the version string of this server implementation.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>version of this server implementation </p>
@@ -3390,37 +3416,37 @@ For latest updates join the chat on
 
 <h3 id="function-isprimarythread">function isPrimaryThread<a class="headerlink" href="#function-isprimarythread" title="Permanent link">&para;</a></h3>
 <p><em>Checks the current thread against the expected primary server thread.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">isPrimaryThread</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">isPrimaryThread</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if the current thread matches the expected primary thread, false otherwise </p>
 <hr>
 
 <h3 id="function-operator">function operator=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span>
-</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-reload">function reload<a class="headerlink" href="#function-reload" title="Permanent link">&para;</a></h3>
 <p><em>Reloads the server configuration, functions, scripts and plugins.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">reload</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">reload</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="function-reloaddata">function reloadData<a class="headerlink" href="#function-reloaddata" title="Permanent link">&para;</a></h3>
 <p><em>Reload only the Minecraft data for the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">reloadData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">reloadData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This includes functions and script files from all behaviour packs. </p>
 <hr>
 
 <h3 id="function-setmaxplayers">function setMaxPlayers<a class="headerlink" href="#function-setmaxplayers" title="Permanent link">&para;</a></h3>
 <p><em>Set the maximum amount of players allowed to be logged in at once.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span>
-</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3430,12 +3456,12 @@ For latest updates join the chat on
 
 <h3 id="function-shutdown">function shutdown<a class="headerlink" href="#function-shutdown" title="Permanent link">&para;</a></h3>
 <p><em>Shutdowns the server, stopping everything.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">shutdown</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">shutdown</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="function-server">function ~Server<a class="headerlink" href="#function-server" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::~</span><span class="n">Server</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::~</span><span class="n">Server</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

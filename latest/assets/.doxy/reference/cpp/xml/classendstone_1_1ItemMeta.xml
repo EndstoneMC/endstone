@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="classendstone_1_1ItemMeta" kind="class" language="C++" prot="public">
+  <compounddef id="classendstone_1_1ItemMeta" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::ItemMeta</compoundname>
     <derivedcompoundref refid="classendstone_1_1MapMeta" prot="public" virt="non-virtual">endstone::MapMeta</derivedcompoundref>
     <includes refid="item__meta_8h" local="no">endstone/inventory/meta/item_meta.h</includes>
@@ -27,7 +27,6 @@
         </enumvalue>
         <enumvalue id="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044ae93f994f01c537c4e2f7d8528c3eb5e9" prot="public">
           <name>Count</name>
-          <initializer>= 2</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -47,117 +46,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="30" column="5" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="30" bodyend="35"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="classendstone_1_1ItemMeta_1ae567a6f394a977cf8c10ab0ad3a88051" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref></type>
-        <definition>ItemMeta endstone::ItemMeta::EMPTY</definition>
-        <argsstring></argsstring>
-        <name>EMPTY</name>
-        <qualifiedname>endstone::ItemMeta::EMPTY</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="29" column="21" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="29" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1ItemMeta_1add18f641b7834e9df2f5a2ffeab49594" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; std::string &gt;</type>
-        <definition>std::optional&lt;std::string&gt; endstone::ItemMeta::display_name_</definition>
-        <argsstring></argsstring>
-        <name>display_name_</name>
-        <qualifiedname>endstone::ItemMeta::display_name_</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="272" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="272" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1ItemMeta_1a1f13d1157dad83d18d873ceaf0a91f4f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; endstone::ItemMeta::lore_</definition>
-        <argsstring></argsstring>
-        <name>lore_</name>
-        <qualifiedname>endstone::ItemMeta::lore_</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="273" column="17" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="273" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1ItemMeta_1a921a8f040ce632f93a9307b514c97820" prot="private" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
-        <definition>std::unordered_map&lt;std::string, int&gt; endstone::ItemMeta::enchantments_</definition>
-        <argsstring></argsstring>
-        <name>enchantments_</name>
-        <qualifiedname>endstone::ItemMeta::enchantments_</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="274" column="24" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="274" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1ItemMeta_1a2ade8bcb7e8addc9d938f64a9b954a0d" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
-        <definition>int endstone::ItemMeta::damage_</definition>
-        <argsstring></argsstring>
-        <name>damage_</name>
-        <qualifiedname>endstone::ItemMeta::damage_</qualifiedname>
-        <initializer>= 0</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="275" column="9" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="275" bodyend="-1"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="29" column="5" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="29" bodyend="34"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a4cb3e9ff9d8815008a0b8683dda34cc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>endstone::ItemMeta::ItemMeta</definition>
-        <argsstring>()=default</argsstring>
-        <name>ItemMeta</name>
-        <qualifiedname>endstone::ItemMeta::ItemMeta</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="37" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>endstone::ItemMeta::ItemMeta</definition>
-        <argsstring>(const ItemMeta *meta)</argsstring>
-        <name>ItemMeta</name>
-        <qualifiedname>endstone::ItemMeta::ItemMeta</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
-          <declname>meta</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="38" column="14" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="38" bodyend="44"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::ItemMeta::~ItemMeta</definition>
@@ -170,15 +62,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="46" column="13"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="36" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1aa625bf685038240c41c94de7b7d90081" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>Type</type>
         <definition>virtual Type endstone::ItemMeta::getType</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>getType</name>
         <qualifiedname>endstone::ItemMeta::getType</qualifiedname>
-        <reimplementedby refid="classendstone_1_1MapMeta_1a2a8ceb9bf21b37f27f5feef4ba3e3982">getType</reimplementedby>
         <briefdescription>
 <para>Gets the type of this item meta. </para>
         </briefdescription>
@@ -189,12 +80,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="53" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="53" bodyend="56"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="43" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ad6bbacae4d9f4009d6e60ee16a20f41f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a43a0aa639900616ec5235f9ece8592e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::isEmpty</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>isEmpty</name>
         <qualifiedname>endstone::ItemMeta::isEmpty</qualifiedname>
         <briefdescription>
@@ -207,15 +98,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="63" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="63" bodyend="67"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="50" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a1b76f24868a6af2aa987bfb263e73dc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; ItemMeta &gt; endstone::ItemMeta::clone</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>clone</name>
         <qualifiedname>endstone::ItemMeta::clone</qualifiedname>
-        <reimplementedby refid="classendstone_1_1MapMeta_1af0b98024806dc794e0006453fc468f8c">clone</reimplementedby>
         <briefdescription>
 <para>Creates a clone of the current metadata. </para>
         </briefdescription>
@@ -226,12 +116,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="74" column="30" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="74" bodyend="77"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="57" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ac1c53200d91a5bc301d1bef9f30b49ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::hasDisplayName</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>hasDisplayName</name>
         <qualifiedname>endstone::ItemMeta::hasDisplayName</qualifiedname>
         <briefdescription>
@@ -244,12 +134,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="84" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="84" bodyend="87"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="64" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1afa9871ea34a4882bce24ba932316aa49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a55b51dde197c33d2e3b122e549982afb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::string &gt;</type>
         <definition>virtual std::optional&lt; std::string &gt; endstone::ItemMeta::getDisplayName</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>getDisplayName</name>
         <qualifiedname>endstone::ItemMeta::getDisplayName</qualifiedname>
         <briefdescription>
@@ -262,12 +152,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="94" column="28" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="94" bodyend="100"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="71" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a0131cce7bf802bcf4c3cf755c4ebe2f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ItemMeta::setDisplayName</definition>
-        <argsstring>(std::optional&lt; std::string &gt; name)</argsstring>
+        <argsstring>(std::optional&lt; std::string &gt; name)=0</argsstring>
         <name>setDisplayName</name>
         <qualifiedname>endstone::ItemMeta::setDisplayName</qualifiedname>
         <param>
@@ -291,12 +181,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="107" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="107" bodyend="115"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="78" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a440df7c31dac61545e14e2fdda65dab1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::hasLore</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>hasLore</name>
         <qualifiedname>endstone::ItemMeta::hasLore</qualifiedname>
         <briefdescription>
@@ -309,12 +199,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="122" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="122" bodyend="125"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="85" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a41e00cbe764c3f380da8793067952e47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a69e7e1109f273d57b6fce553eec88fa9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::vector&lt; std::string &gt; &gt;</type>
         <definition>virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; endstone::ItemMeta::getLore</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>getLore</name>
         <qualifiedname>endstone::ItemMeta::getLore</qualifiedname>
         <briefdescription>
@@ -327,12 +217,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="132" column="28" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="132" bodyend="138"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="92" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a0f6800a810736ffdd7844d256616900e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ItemMeta::setLore</definition>
-        <argsstring>(std::optional&lt; std::vector&lt; std::string &gt; &gt; lore)</argsstring>
+        <argsstring>(std::optional&lt; std::vector&lt; std::string &gt; &gt; lore)=0</argsstring>
         <name>setLore</name>
         <qualifiedname>endstone::ItemMeta::setLore</qualifiedname>
         <param>
@@ -356,12 +246,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="145" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="145" bodyend="153"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="99" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1af42728b1b375cb09ada9a2d531631791" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::hasDamage</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>hasDamage</name>
         <qualifiedname>endstone::ItemMeta::hasDamage</qualifiedname>
         <briefdescription>
@@ -374,12 +264,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="160" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="160" bodyend="163"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="106" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a89e50ea812936a4939bd62290e218b37" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>virtual int endstone::ItemMeta::getDamage</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>getDamage</name>
         <qualifiedname>endstone::ItemMeta::getDamage</qualifiedname>
         <briefdescription>
@@ -392,12 +282,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="170" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="170" bodyend="173"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="113" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1aa245eb290cc6649159cddff75a6cf8ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ItemMeta::setDamage</definition>
-        <argsstring>(int damage)</argsstring>
+        <argsstring>(int damage)=0</argsstring>
         <name>setDamage</name>
         <qualifiedname>endstone::ItemMeta::setDamage</qualifiedname>
         <param>
@@ -421,12 +311,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="180" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="180" bodyend="183"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="120" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1af5a265b1621c4842f41c038847a51575" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::hasEnchants</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>hasEnchants</name>
         <qualifiedname>endstone::ItemMeta::hasEnchants</qualifiedname>
         <briefdescription>
@@ -439,12 +329,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="190" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="190" bodyend="193"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="127" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1abf9138f4d340652fd673b7568d166a4c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::hasEnchant</definition>
-        <argsstring>(const std::string &amp;id) const</argsstring>
+        <argsstring>(const std::string &amp;id) const =0</argsstring>
         <name>hasEnchant</name>
         <qualifiedname>endstone::ItemMeta::hasEnchant</qualifiedname>
         <param>
@@ -470,12 +360,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="201" column="19" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="201" bodyend="204"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="135" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1acac9cc1ddfb87e430b47516b61b29aa7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>virtual int endstone::ItemMeta::getEnchantLevel</definition>
-        <argsstring>(const std::string &amp;id) const</argsstring>
+        <argsstring>(const std::string &amp;id) const =0</argsstring>
         <name>getEnchantLevel</name>
         <qualifiedname>endstone::ItemMeta::getEnchantLevel</qualifiedname>
         <param>
@@ -501,12 +391,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="212" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="212" bodyend="218"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="143" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ab9cd282f890093cae80627ad4826f03c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
         <definition>virtual std::unordered_map&lt; std::string, int &gt; endstone::ItemMeta::getEnchants</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const =0</argsstring>
         <name>getEnchants</name>
         <qualifiedname>endstone::ItemMeta::getEnchants</qualifiedname>
         <briefdescription>
@@ -520,12 +410,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="227" column="33" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="227" bodyend="233"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="152" column="33"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a030edb9fd428d20c2377a79de7d92864" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::addEnchant</definition>
-        <argsstring>(const std::string &amp;id, int level, bool force)</argsstring>
+        <argsstring>(const std::string &amp;id, int level, bool force)=0</argsstring>
         <name>addEnchant</name>
         <qualifiedname>endstone::ItemMeta::addEnchant</qualifiedname>
         <param>
@@ -575,12 +465,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="243" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="243" bodyend="249"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="162" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ac7049e99d2e8db712238d7d6ffdc714c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a2349b16d2c1414811c1c8f36dc19452c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ItemMeta::removeEnchant</definition>
-        <argsstring>(const std::string &amp;id)</argsstring>
+        <argsstring>(const std::string &amp;id)=0</argsstring>
         <name>removeEnchant</name>
         <qualifiedname>endstone::ItemMeta::removeEnchant</qualifiedname>
         <param>
@@ -606,12 +496,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="258" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="258" bodyend="261"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="171" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1aea90fbe476ccffe4ea551d7339e901ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ItemMeta::removeEnchants</definition>
-        <argsstring>()</argsstring>
+        <argsstring>()=0</argsstring>
         <name>removeEnchants</name>
         <qualifiedname>endstone::ItemMeta::removeEnchants</qualifiedname>
         <briefdescription>
@@ -621,7 +511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="266" column="18" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="266" bodyend="269"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="176" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -641,43 +531,27 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <collaborationgraph>
-      <node id="1">
-        <label>endstone::ItemMeta</label>
-        <link refid="classendstone_1_1ItemMeta"/>
-        <childnode refid="1" relation="usage">
-          <edgelabel>EMPTY</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
-    <location file="include/endstone/inventory/meta/item_meta.h" line="27" column="1" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="27" bodyend="276"/>
+    <location file="include/endstone/inventory/meta/item_meta.h" line="27" column="1" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="27" bodyend="177"/>
     <listofallmembers>
-      <member refid="classendstone_1_1ItemMeta_1a030edb9fd428d20c2377a79de7d92864" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>addEnchant</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a1b76f24868a6af2aa987bfb263e73dc8" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>clone</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a2ade8bcb7e8addc9d938f64a9b954a0d" prot="private" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>damage_</name></member>
-      <member refid="classendstone_1_1ItemMeta_1add18f641b7834e9df2f5a2ffeab49594" prot="private" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>display_name_</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ae567a6f394a977cf8c10ab0ad3a88051" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>EMPTY</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a921a8f040ce632f93a9307b514c97820" prot="private" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>enchantments_</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a89e50ea812936a4939bd62290e218b37" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>getDamage</name></member>
-      <member refid="classendstone_1_1ItemMeta_1afa9871ea34a4882bce24ba932316aa49" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>getDisplayName</name></member>
-      <member refid="classendstone_1_1ItemMeta_1acac9cc1ddfb87e430b47516b61b29aa7" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>getEnchantLevel</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ab9cd282f890093cae80627ad4826f03c" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>getEnchants</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a41e00cbe764c3f380da8793067952e47" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>getLore</name></member>
-      <member refid="classendstone_1_1ItemMeta_1aa625bf685038240c41c94de7b7d90081" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>getType</name></member>
-      <member refid="classendstone_1_1ItemMeta_1af42728b1b375cb09ada9a2d531631791" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>hasDamage</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ac1c53200d91a5bc301d1bef9f30b49ae" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>hasDisplayName</name></member>
-      <member refid="classendstone_1_1ItemMeta_1abf9138f4d340652fd673b7568d166a4c" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>hasEnchant</name></member>
-      <member refid="classendstone_1_1ItemMeta_1af5a265b1621c4842f41c038847a51575" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>hasEnchants</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a440df7c31dac61545e14e2fdda65dab1" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>hasLore</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ad6bbacae4d9f4009d6e60ee16a20f41f" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>isEmpty</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a4cb3e9ff9d8815008a0b8683dda34cc5" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>ItemMeta</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>ItemMeta</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a1f13d1157dad83d18d873ceaf0a91f4f" prot="private" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>lore_</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ac7049e99d2e8db712238d7d6ffdc714c" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>removeEnchant</name></member>
-      <member refid="classendstone_1_1ItemMeta_1aea90fbe476ccffe4ea551d7339e901ea" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>removeEnchants</name></member>
-      <member refid="classendstone_1_1ItemMeta_1aa245eb290cc6649159cddff75a6cf8ec" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>setDamage</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a0131cce7bf802bcf4c3cf755c4ebe2f6" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>setDisplayName</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a0f6800a810736ffdd7844d256616900e" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>setLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>addEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>clone</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a55b51dde197c33d2e3b122e549982afb" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getEnchantLevel</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a69e7e1109f273d57b6fce553eec88fa9" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getType</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a43a0aa639900616ec5235f9ece8592e7" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>isEmpty</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a2349b16d2c1414811c1c8f36dc19452c" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>removeEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>removeEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setLore</name></member>
       <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>Type</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>~ItemMeta</name></member>
     </listofallmembers>
