@@ -155,8 +155,8 @@ public:
                        bool ignore_cancelled = false)
     {
         auto result = getServer().getPluginManager().registerEvent(
-            EventType::NAME, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); }, priority,
-            *this, ignore_cancelled);
+            EventType::NAME, [func, &instance](Event &e) { (instance.*func)(reinterpret_cast<EventType &>(e)); },
+            priority, *this, ignore_cancelled);
         if (!result) {
             server_->getLogger().error(result.error());
         }
@@ -167,7 +167,7 @@ public:
                        bool ignore_cancelled = false)
     {
         auto result = getServer().getPluginManager().registerEvent(
-            EventType::NAME, [func](Event &e) { func(static_cast<EventType &>(e)); }, priority, *this,
+            EventType::NAME, [func](Event &e) { func(reinterpret_cast<EventType &>(e)); }, priority, *this,
             ignore_cancelled);
         if (!result) {
             server_->getLogger().error(result.error());
