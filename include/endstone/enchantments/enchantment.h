@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "endstone/namespaced_key.h"
+
 namespace endstone {
 class ItemStack;
 
@@ -26,7 +28,7 @@ public:
      *
      * @return this enchantment's key
      */
-    [[nodiscard]] virtual std::string_view getKey() const = 0;
+    [[nodiscard]] virtual NamespacedKey getKey() const = 0;
 
     /**
      * @brief Gets the maximum level that this Enchantment may become.

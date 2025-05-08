@@ -21,20 +21,21 @@ namespace endstone::core {
 template <typename T>
 class MinecraftRegistry {
 public:
-    const T *get(std::string_view key);
-    std::vector<std::string_view> keys() const;
+    [[nodiscard]] const T *get(const NamespacedKey &key) const;
+    [[nodiscard]] std::vector<NamespacedKey> keys() const;
 };
 
-template <typename T, typename M>
-class EndstoneRegistry final : public Registry<T> {
+template <typename E, typename M>
+class EndstoneRegistry final : public Registry<E> {
 public:
-    using MinecraftToEndstoneFunc = std::function<std::unique_ptr<T>(std::string_view, const M &)>;
-    EndstoneRegistry(MinecraftRegistry<M> minecraft_registry, MinecraftToEndstoneFunc minecraft_to_endstone)
-        : minecraft_registry_(std::move(minecraft_registry)), minecraft_to_endstone_(minecraft_to_endstone)
+    using MinecraftToEndstoneFunc = std::function<std::unique_ptr<E>(NamespacedKey, const M &)>;
+
+    explicit EndstoneRegistry(MinecraftToEndstoneFunc minecraft_to_endstone)
+        : minecraft_to_endstone_(minecraft_to_endstone)
     {
     }
 
-    T *get(typename Registry<T>::key_type key) noexcept override
+    E *get(NamespacedKey key) noexcept override
     {
         auto it = cache_.find(key);
         if (it != cache_.end()) {
@@ -46,12 +47,12 @@ public:
             return nullptr;
         }
 
-        T *raw = endstone.get();
+        E *raw = endstone.get();
         cache_.emplace(key, std::move(endstone));
         return raw;
     }
 
-    const T *get(typename Registry<T>::key_type key) const noexcept override
+    const E *get(NamespacedKey key) const noexcept override
     {
         auto it = cache_.find(key);
         if (it != cache_.end()) {
@@ -63,138 +64,51 @@ public:
             return nullptr;
         }
 
-        T *raw = endstone.get();
+        E *raw = endstone.get();
         cache_.emplace(key, std::move(endstone));
         return raw;
     }
 
-    T &getOrThrow(typename Registry<T>::key_type key) override
+    E &getOrThrow(const NamespacedKey key) override
     {
-        T *result = get(key);
+        E *result = get(key);
         if (!result) {
-            throw std::out_of_range{std::string{"EndstoneRegistry: key not found: "} + std::string(key)};
+            throw std::out_of_range{std::string{"EndstoneRegistry: key not found: "} + key.toString()};
         }
         return *result;
     }
 
-    const T &getOrThrow(typename Registry<T>::key_type key) const override
+    const E &getOrThrow(const NamespacedKey key) const override
     {
-        const T *result = get(key);
+        const E *result = get(key);
         if (!result) {
-            throw std::out_of_range{std::string{"EndstoneRegistry: key not found: "} + std::string(key)};
+            throw std::out_of_range{std::string{"EndstoneRegistry: key not found: "} + key.toString()};
         }
         return *result;
     }
 
-private:
-    class Iterator {
-    public:
-        using iterator_category = std::forward_iterator_tag;
-        using value_type = T *;
-        using difference_type = std::ptrdiff_t;
-        using pointer = T **;
-        using reference = T *&;
-
-        Iterator(EndstoneRegistry *owner, std::vector<std::string_view>::const_iterator key_it)
-            : owner_(owner), key_it_(key_it)
-        {
-        }
-
-        value_type operator*() const
-        {
-            return owner_->get(*key_it_);
-        }
-
-        Iterator &operator++()
-        {
-            ++key_it_;
-            return *this;
-        }
-
-        bool operator==(const Iterator &other) const
-        {
-            return key_it_ == other.key_it_;
-        }
-        bool operator!=(const Iterator &other) const
-        {
-            return !(*this == other);
-        }
-
-    private:
-        EndstoneRegistry *owner_;
-        std::vector<std::string_view>::const_iterator key_it_;
-    };
-
-    class ConstIterator {
-    public:
-        using iterator_category = std::forward_iterator_tag;
-        using value_type = const T *;
-        using difference_type = std::ptrdiff_t;
-        using pointer = const T **;
-        using reference = const T *&;
-
-        ConstIterator(const EndstoneRegistry *owner, std::vector<std::string_view>::const_iterator key_it)
-            : owner_(owner), key_it_(key_it)
-        {
-        }
-
-        value_type operator*() const
-        {
-            return owner_->get(*key_it_);
-        }
-
-        ConstIterator &operator++()
-        {
-            ++key_it_;
-            return *this;
-        }
-
-        bool operator==(const ConstIterator &other) const
-        {
-            return key_it_ == other.key_it_;
-        }
-        bool operator!=(const ConstIterator &other) const
-        {
-            return !(*this == other);
-        }
-
-    private:
-        const EndstoneRegistry *owner_;
-        std::vector<std::string_view>::const_iterator key_it_;
-    };
-
-public:
-    Iterator begin() override
+    void forEach(std::function<bool(const E &)> func) const override
     {
-        return Iterator{this, minecraft_registry_.keys().cbegin()};
+        for (const auto &key : minecraft_registry_.keys()) {
+            if (!func(getOrThrow(key))) {
+                break;
+            }
+        }
     }
 
-    Iterator end() override
-    {
-        return Iterator{this, minecraft_registry_.keys().cend()};
-    }
-
-    ConstIterator begin() const override
-    {
-        return ConstIterator{this, minecraft_registry_.keys().cbegin()};
-    }
-
-    ConstIterator end() const override
-    {
-        return ConstIterator{this, minecraft_registry_.keys().cend()};
-    }
+    static std::unique_ptr<Registry<E>> createRegistry();
 
 private:
-    std::unique_ptr<T> createEndstone(std::string_view key, const M *minecraft)
+    std::unique_ptr<E> createEndstone(NamespacedKey key, const M *minecraft) const
     {
         if (minecraft == nullptr) {
             return nullptr;
         }
-        return minecraft_to_endstone_(key, minecraft);
+        return minecraft_to_endstone_(key, *minecraft);
     }
 
     MinecraftRegistry<M> minecraft_registry_;
-    mutable typename Registry<T>::storage_type cache_;
+    mutable std::unordered_map<NamespacedKey, std::unique_ptr<E>> cache_;
     MinecraftToEndstoneFunc minecraft_to_endstone_;
 };
 

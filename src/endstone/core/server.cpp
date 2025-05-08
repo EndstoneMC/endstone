@@ -24,6 +24,7 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/shared_constants.h"
+#include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/color_format.h"
@@ -32,19 +33,20 @@
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/core/plugin/python_plugin_loader.h"
+#include "endstone/core/registry.h"
 #include "endstone/core/signal_handler.h"
 #include "endstone/core/util/error.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
-#include "inventory/item_factory.h"
 
 namespace fs = std::filesystem;
 namespace py = pybind11;
@@ -102,7 +104,7 @@ void EndstoneServer::setLevel(::Level &level)
         throw std::runtime_error("Level already initialized.");
     }
     level_ = std::make_unique<EndstoneLevel>(level);
-    // TODO(registry): init registries here
+    enchantment_registry_ = EndstoneRegistry<Enchantment, Enchant>::createRegistry();
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();

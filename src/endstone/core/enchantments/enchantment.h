@@ -16,21 +16,22 @@
 
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "endstone/enchantments/enchantment.h"
+#include "endstone/namespaced_key.h"
 
 namespace endstone::core {
 class EndstoneEnchantment : public Enchantment {
 public:
-    EndstoneEnchantment(std::string key, Enchant &handle);
-    [[nodiscard]] std::string_view getKey() const override;
+    EndstoneEnchantment(NamespacedKey key, const Enchant &handle);
+    [[nodiscard]] NamespacedKey getKey() const override;
     [[nodiscard]] int getMaxLevel() const override;
     [[nodiscard]] int getStartLevel() const override;
     [[nodiscard]] bool conflictsWith(const Enchantment &other) const override;
     [[nodiscard]] bool canEnchantItem(const ItemStack &item) const override;
 
-    Enchant &getHandle() const;
+    const Enchant &getHandle() const;
 
 private:
-    std::string key_;
-    Enchant &handle_;
+    NamespacedKey key_;
+    const Enchant &handle_;
 };
 }  // namespace endstone::core

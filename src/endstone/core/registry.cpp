@@ -14,6 +14,34 @@
 
 #include "endstone/core/registry.h"
 
+#include "bedrock/world/item/enchanting/enchant.h"
+#include "enchantments/enchantment.h"
+
 namespace endstone::core {
+
+template <>
+const Enchant *MinecraftRegistry<Enchant>::get(const NamespacedKey &key) const
+{
+    return Enchant::getEnchantFromName(key.getKey());
+}
+
+template <>
+std::vector<NamespacedKey> MinecraftRegistry<Enchant>::keys() const
+{
+    std::vector<NamespacedKey> keys;
+    for (const auto &enchant : Enchant::getEnchants()) {
+        if (auto key = NamespacedKey::fromString(enchant->getStringId().getString()); key.has_value()) {
+            keys.emplace_back(key.value());
+        }
+    }
+    return keys;
+}
+
+template <>
+std::unique_ptr<Registry<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::createRegistry()
+{
+    return std::make_unique<EndstoneRegistry>(
+        [](auto key, const auto &handle) { return std::make_unique<EndstoneEnchantment>(key, handle); });
+}
 
 }  // namespace endstone::core

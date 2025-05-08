@@ -18,9 +18,12 @@
 #include "endstone/core/inventory/item_stack.h"
 
 namespace endstone::core {
-EndstoneEnchantment::EndstoneEnchantment(std::string key, Enchant &handle) : key_(std::move(key)), handle_(handle) {}
+EndstoneEnchantment::EndstoneEnchantment(NamespacedKey key, const Enchant &handle)
+    : key_(std::move(key)), handle_(handle)
+{
+}
 
-std::string_view EndstoneEnchantment::getKey() const
+NamespacedKey EndstoneEnchantment::getKey() const
 {
     return key_;
 }
@@ -46,7 +49,7 @@ bool EndstoneEnchantment::canEnchantItem(const ItemStack &item) const
     return getHandle().canEnchant(stack.getItem()->getEnchantSlot(), false);
 }
 
-Enchant &EndstoneEnchantment::getHandle() const
+const Enchant &EndstoneEnchantment::getHandle() const
 {
     return handle_;
 }
