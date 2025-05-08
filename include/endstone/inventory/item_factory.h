@@ -31,6 +31,16 @@ public:
     virtual std::unique_ptr<ItemMeta> getItemMeta(std::string_view type) const = 0;
 
     /**
+     * @brief This method checks the item meta to confirm that it is applicable (no data lost if applied) to the
+     * specified ItemStack.
+     *
+     * @param meta Meta to check
+     * @param type The item type that meta will be applied to
+     * @return true if the meta can be applied without losing data, false otherwise
+     */
+    virtual bool isApplicable(const ItemMeta *meta, std::string_view type) const = 0;
+
+    /**
      * @brief Returns an appropriate item meta for the specified item type.
      *
      * The item meta returned will always be a valid meta for a given ItemStack of the specified item type. It may be a

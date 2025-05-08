@@ -25,6 +25,7 @@
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
 #include "endstone/enchantments/enchantment.h"
+#include "endstone/inventory/item_factory.h"
 #include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
@@ -226,6 +227,14 @@ public:
      * @return true if the current thread matches the expected primary thread, false otherwise
      */
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
+
+    /**
+     * Gets the instance of the item factory (for {@link ItemMeta}).
+     *
+     * @return the item factory
+     * @see ItemFactory
+     */
+    [[nodiscard]] virtual ItemFactory &getItemFactory();
 
     /**
      * @brief Gets the primary Scoreboard controlled by the server.

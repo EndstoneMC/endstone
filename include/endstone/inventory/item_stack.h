@@ -92,7 +92,7 @@ public:
      */
     virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
-        return meta_ == nullptr ? ItemFactory::getItemMeta(type_) : meta_->clone();
+        return meta_ == nullptr ? Endstone::getServer().getItemFactory().getItemMeta(type_) : meta_->clone();
     }
 
     /**
@@ -113,19 +113,26 @@ public:
      */
     virtual bool setItemMeta(ItemMeta *meta)
     {
+        return setItemMeta0(meta, type_);
+    }
+
+private:
+    bool setItemMeta0(ItemMeta *meta, std::string_view type)
+    {
         if (!meta) {
             meta_ = nullptr;
             return true;
         }
-        // TODO(item): applicability check, support type-specific meta
-        meta_ = ItemFactory::asMetaFor(type_, meta);
-        if (meta_.get() == meta) {
-            meta_ = meta->clone();
+
+        auto &item_factory = Endstone::getServer().getItemFactory();
+        if (item_factory.isApplicable(meta, type)) {
+            return false;
         }
+
+        meta_ = item_factory.asMetaFor(meta, type);
         return true;
     }
 
-private:
     std::string type_ = "minecraft:air";
     int amount_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;
