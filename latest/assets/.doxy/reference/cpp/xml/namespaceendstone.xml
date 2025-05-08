@@ -39,7 +39,6 @@
     <innerclass refid="classendstone_1_1Divider" prot="public">endstone::Divider</innerclass>
     <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>
     <innerclass refid="classendstone_1_1Enchantment" prot="public">endstone::Enchantment</innerclass>
-    <innerclass refid="classendstone_1_1Error" prot="public">endstone::Error</innerclass>
     <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
     <innerclass refid="classendstone_1_1EventHandler" prot="public">endstone::EventHandler</innerclass>
     <innerclass refid="classendstone_1_1Form" prot="public">endstone::Form</innerclass>
@@ -730,14 +729,14 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/score_entry.h" line="29" column="1" bodyfile="include/endstone/scoreboard/score_entry.h" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a4af084d432127e336ffec03d016a299a" prot="public" static="no">
+      <memberdef kind="typedef" id="namespaceendstone_1abc54c88a21352cadabe5992bea8976d6" prot="public" static="no">
         <templateparamlist>
           <param>
             <type>typename T</type>
           </param>
         </templateparamlist>
-        <type>nonstd::expected&lt; <ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, <ref refid="classendstone_1_1Error" kindref="compound">Error</ref> &gt;</type>
-        <definition>using endstone::Result = typedef nonstd::expected&lt;T, Error&gt;</definition>
+        <type>nonstd::expected&lt; <ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, std::string &gt;</type>
+        <definition>using endstone::Result = typedef nonstd::expected&lt;T, std::string&gt;</definition>
         <argsstring></argsstring>
         <name>Result</name>
         <qualifiedname>endstone::Result</qualifiedname>
@@ -747,7 +746,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/result.h" line="24" column="1" bodyfile="include/endstone/util/result.h" bodystart="24" bodyend="-1"/>
+        <location file="include/endstone/util/result.h" line="22" column="1" bodyfile="include/endstone/util/result.h" bodystart="22" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">

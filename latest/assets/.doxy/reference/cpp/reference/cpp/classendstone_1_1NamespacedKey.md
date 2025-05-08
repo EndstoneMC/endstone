@@ -68,8 +68,8 @@ _Represents a string-based key which consists of two components - a namespace an
 
 | Type | Name |
 | ---: | :--- |
-|  std::optional&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**create**](#function-create) (std::string\_view namespace\_, std::string\_view key) <br>_Factory method to create a_ [_**NamespacedKey**_](classendstone_1_1NamespacedKey.md) _. Returns std::nullopt if namespace or key is invalid._ |
-|  std::optional&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**fromString**](#function-fromstring) (std::string\_view input, std::optional&lt; std::string\_view &gt; default\_ns=std::nullopt) <br> |
+|  Result&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**create**](#function-create) ([**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin, std::string\_view key) <br>_Create a key in the plugin's namespace._  |
+|  Result&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**fromString**](#function-fromstring) (std::string\_view input, [**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) \* plugin=[**nullptr**](classendstone_1_1Vector.md)) <br> |
 
 
 
@@ -203,10 +203,10 @@ inline std::string endstone::NamespacedKey::toString () noexcept const
 
 ### function create 
 
-_Factory method to create a_ [_**NamespacedKey**_](classendstone_1_1NamespacedKey.md) _. Returns std::nullopt if namespace or key is invalid._
+_Create a key in the plugin's namespace._ 
 ```C++
-static inline std::optional< NamespacedKey > endstone::NamespacedKey::create (
-    std::string_view namespace_,
+static inline Result< NamespacedKey > endstone::NamespacedKey::create (
+    const  Plugin & plugin,
     std::string_view key
 ) 
 ```
@@ -218,15 +218,8 @@ static inline std::optional< NamespacedKey > endstone::NamespacedKey::create (
 **Parameters:**
 
 
-* `namespace_` the namespace 
-* `key` the key 
-
-
-
-**Returns:**
-
-optional containing the [**NamespacedKey**](classendstone_1_1NamespacedKey.md), or std::nullopt on failure 
-
+* `plugin` the plugin to use for the namespace 
+* `key` the key to create 
 
 
 
@@ -240,9 +233,9 @@ optional containing the [**NamespacedKey**](classendstone_1_1NamespacedKey.md), 
 ### function fromString 
 
 ```C++
-static inline std::optional< NamespacedKey > endstone::NamespacedKey::fromString (
+static inline Result< NamespacedKey > endstone::NamespacedKey::fromString (
     std::string_view input,
-    std::optional< std::string_view > default_ns=std::nullopt
+    const  Plugin * plugin=nullptr
 ) 
 ```
 
@@ -252,11 +245,11 @@ Parse a [**NamespacedKey**](classendstone_1_1NamespacedKey.md) from a string, wi
 
 
 Examples:
-* fromString("foo", "plugin") -&gt; "plugin:foo"
-* fromString("foo:bar", std::nullopt) -&gt; "foo:bar"
-* fromString(":foo", "minecraft") -&gt; "minecraft:foo"
-* fromString("foo", std::nullopt) -&gt; "minecraft:foo"
-* fromString("Foo", ...) -&gt; std::nullopt
+* fromString("foo", plugin) -&gt; "plugin:foo"
+* fromString("foo:bar", nullptr) -&gt; "foo:bar"
+* fromString(":foo", nullptr) -&gt; "minecraft:foo"
+* fromString("foo", nullptr) -&gt; "minecraft:foo"
+* fromString("Foo", plugin) -&gt; std::nullopt
 
 
 
@@ -267,7 +260,7 @@ Examples:
 
 
 * `input` the string to parse 
-* `default_ns` optional default namespace; if std::nullopt, uses Minecraft 
+* `plugin` optional default namespace; if nullptr, uses the minecraft namespace 
 
 
 

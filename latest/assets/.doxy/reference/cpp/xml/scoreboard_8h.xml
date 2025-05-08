@@ -75,18 +75,10 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
       <node id="12">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -94,9 +86,6 @@
       </node>
       <node id="2">
         <label>string</label>
-      </node>
-      <node id="15">
-        <label>string_view</label>
       </node>
       <node id="10">
         <label>variant</label>
@@ -109,6 +98,10 @@
       <node id="20">
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
+      </node>
+      <node id="27">
+        <label>include/endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
       </node>
       <node id="3">
         <label>include/endstone/event/block/block_place_event.h</label>
@@ -218,6 +211,14 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
+      <node id="26">
+        <label>include/endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>include/endstone/player.h</label>
         <link refid="player_8h_source"/>
@@ -239,23 +240,29 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="24">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="27">
+      <node id="28">
+        <label>include/endstone/registry.h</label>
+        <link refid="registry_8h_source"/>
+      </node>
+      <node id="30">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="26">
+      <node id="29">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="1">

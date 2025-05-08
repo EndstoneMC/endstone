@@ -1630,8 +1630,8 @@
     </collaborationgraph>
     <location file="include/endstone/player.h" line="37" column="1" bodyfile="include/endstone/player.h" bodystart="37" bodyend="455"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
-      <member refid="classendstone_1_1Permissible_1a344f309bb63d9861d854c074b4e2bd60" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addScoreboardTag</name></member>
       <member refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asActor</name></member>
       <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asCommandSender</name></member>

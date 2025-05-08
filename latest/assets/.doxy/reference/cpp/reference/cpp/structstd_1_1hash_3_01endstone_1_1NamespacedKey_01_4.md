@@ -6,7 +6,7 @@
 
 
 
-[**ClassList**](annotated.md) **>** [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md)
+[**ClassList**](annotated.md) **>** [**std**](namespacestd.md) **>** [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md)
 
 
 
@@ -90,7 +90,7 @@
 ### function operator() 
 
 ```C++
-inline size_t hash< endstone::NamespacedKey >::operator() (
+inline size_t std::hash< endstone::NamespacedKey >::operator() (
     const endstone::NamespacedKey & key
 ) noexcept const
 ```

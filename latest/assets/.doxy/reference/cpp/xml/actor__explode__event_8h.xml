@@ -7,10 +7,10 @@
     <includes refid="cancellable_8h" local="yes">endstone/event/cancellable.h</includes>
     <includes refid="location_8h" local="yes">endstone/level/location.h</includes>
     <incdepgraph>
-      <node id="21">
+      <node id="19">
         <label>endstone/actor/actor.h</label>
         <link refid="actor_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -51,24 +51,24 @@
         <label>endstone/block/block_face.h</label>
         <link refid="block__face_8h_source"/>
       </node>
-      <node id="22">
+      <node id="20">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>endstone/event/actor/actor_event.h</label>
-        <link refid="actor__event_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>endstone/event/actor/actor_event.h</label>
+        <link refid="actor__event_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -76,33 +76,33 @@
         <link refid="actor__explode__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="30">
         <label>endstone/event/cancellable.h</label>
         <link refid="cancellable_8h_source"/>
       </node>
-      <node id="30">
+      <node id="28">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="23">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -125,52 +125,44 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="21">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="25">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="27">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="16">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -198,28 +190,25 @@
       <node id="13">
         <label>optional</label>
       </node>
-      <node id="31">
+      <node id="29">
         <label>stdexcept</label>
       </node>
       <node id="4">
         <label>string</label>
       </node>
-      <node id="19">
-        <label>string_view</label>
-      </node>
       <node id="6">
         <label>unordered_map</label>
       </node>
-      <node id="28">
+      <node id="26">
         <label>unordered_set</label>
       </node>
-      <node id="24">
+      <node id="22">
         <label>utility</label>
       </node>
       <node id="7">
         <label>variant</label>
       </node>
-      <node id="26">
+      <node id="24">
         <label>vector</label>
       </node>
     </incdepgraph>

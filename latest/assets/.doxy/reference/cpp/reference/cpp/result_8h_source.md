@@ -26,14 +26,20 @@
 
 #include <nonstd/expected.hpp>
 
-#include "endstone/util/error.h"
-
 namespace endstone {
 
 template <typename T>
-using Result = nonstd::expected<T, Error>;
+using Result = nonstd::expected<T, std::string>;
 
-} // namespace endstone
+#define ENDSTONE_CHECK(EXPRESSION, ERROR_MSG) \
+    if (!(EXPRESSION))                        \
+        return nonstd::make_unexpected(ERROR_MSG);
+
+#define ENDSTONE_CHECKF(EXPRESSION, ERROR_MSG, ...) \
+    if (!(EXPRESSION))                              \
+        return nonstd::make_unexpected(fmt::format(ERROR_MSG, ##__VA_ARGS__));
+
+}  // namespace endstone
 ```
 
 

@@ -75,7 +75,7 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins-22) (std::vector&lt; std::string &gt; files) = 0<br> |
 |  [**PluginManager**](classendstone_1_1PluginManager.md) & | [**operator=**](#function-operator) ([**PluginManager**](classendstone_1_1PluginManager.md) [**const**](classendstone_1_1Vector.md) &) = delete<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**recalculatePermissionDefaults**](#function-recalculatepermissiondefaults) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br> |
-| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**registerEvent**](#function-registerevent) (std::string event, std::function&lt; [**void**](classendstone_1_1Vector.md)([**Event**](classendstone_1_1Event.md) &)&gt; executor, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled) = 0<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**registerEvent**](#function-registerevent) (std::string event, std::function&lt; [**void**](classendstone_1_1Vector.md)([**Event**](classendstone_1_1Event.md) &)&gt; executor, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled) = 0<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**registerLoader**](#function-registerloader) (std::unique\_ptr&lt; [**PluginLoader**](classendstone_1_1PluginLoader.md) &gt; loader) = 0<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**removePermission**](#function-removepermission-12) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br> |
 | virtual [**void**](classendstone_1_1Vector.md) | [**removePermission**](#function-removepermission-22) (std::string name) = 0<br> |
@@ -789,7 +789,7 @@ This will have no effect if the specified permission is not registered here.
 ### function registerEvent 
 
 ```C++
-virtual Result< void > endstone::PluginManager::registerEvent (
+virtual void endstone::PluginManager::registerEvent (
     std::string event,
     std::function< void ( Event &)> executor,
     EventPriority priority,

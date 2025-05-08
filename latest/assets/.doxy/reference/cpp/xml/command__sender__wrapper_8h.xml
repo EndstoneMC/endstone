@@ -66,18 +66,10 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
       <node id="14">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -91,9 +83,6 @@
       </node>
       <node id="3">
         <label>string</label>
-      </node>
-      <node id="17">
-        <label>string_view</label>
       </node>
       <node id="12">
         <label>unordered_set</label>
@@ -178,13 +167,13 @@
 <codeline lineno="64"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_.<ref refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" kindref="member">hasPermission</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">perm</ref>);</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="67" refid="classendstone_1_1CommandSenderWrapper_1a1515cda416373f98bced2fc1934f4302" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Result&lt;PermissionAttachment *&gt;</ref><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1a1515cda416373f98bced2fc1934f4302" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">name</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">value</ref>)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
+<codeline lineno="67" refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref><sp/>*<ref refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">name</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">value</ref>)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
 <codeline lineno="68"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_.<ref refid="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>,<sp/><ref refid="classendstone_1_1Vector" kindref="compound">name</ref>,<sp/><ref refid="classendstone_1_1Vector" kindref="compound">value</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_.<ref refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>,<sp/><ref refid="classendstone_1_1Vector" kindref="compound">name</ref>,<sp/><ref refid="classendstone_1_1Vector" kindref="compound">value</ref>);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="71" refid="classendstone_1_1CommandSenderWrapper_1ad60d3b2651ad27433df1f6d380b85dfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Result&lt;PermissionAttachment *&gt;</ref><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1ad60d3b2651ad27433df1f6d380b85dfd" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
+<codeline lineno="71" refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref><sp/>*<ref refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
 <codeline lineno="72"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_.<ref refid="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_.<ref refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">plugin</ref>);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="75" refid="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Result&lt;void&gt;</ref><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" kindref="member">removeAttachment</ref>(<ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">attachment</ref>)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
 <codeline lineno="76"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>

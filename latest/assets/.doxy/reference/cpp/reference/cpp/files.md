@@ -151,7 +151,6 @@ Here is a list of all files with brief descriptions:
             * **file** [**score\_entry.h**](score__entry_8h.md)     
             * **file** [**scoreboard.h**](scoreboard_8h.md)     
         * **dir** [**util**](dir_89b85071337bf933dea6c29b4c6a4410.md)     
-            * **file** [**error.h**](error_8h.md)     
             * **file** [**result.h**](result_8h.md)     
             * **file** [**socket\_address.h**](socket__address_8h.md)     
             * **file** [**uuid.h**](uuid_8h.md)     

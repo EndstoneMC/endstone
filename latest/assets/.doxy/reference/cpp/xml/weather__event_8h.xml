@@ -12,9 +12,9 @@
         <link refid="actor_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -65,24 +65,24 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="20">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
       </node>
-      <node id="23">
+      <node id="21">
         <label>endstone/level/position.h</label>
         <link refid="position_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -119,27 +119,19 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="20">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
       <node id="18">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
       </node>
-      <node id="25">
+      <node id="23">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="24">
         <label>cmath</label>
       </node>
       <node id="9">
@@ -151,7 +143,7 @@
       <node id="19">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="24">
+      <node id="22">
         <label>optional</label>
       </node>
       <node id="3">
@@ -159,9 +151,6 @@
       </node>
       <node id="4">
         <label>string</label>
-      </node>
-      <node id="21">
-        <label>string_view</label>
       </node>
       <node id="16">
         <label>unordered_set</label>

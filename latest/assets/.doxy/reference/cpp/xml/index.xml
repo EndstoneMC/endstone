@@ -401,8 +401,8 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" kind="function"><name>hasPermission</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c" kind="function"><name>hasPermission</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a1515cda416373f98bced2fc1934f4302" kind="function"><name>addAttachment</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1ad60d3b2651ad27433df1f6d380b85dfd" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" kind="function"><name>addAttachment</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" kind="function"><name>removeAttachment</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aeeb41c929000b7f74f64d289d509edba" kind="function"><name>getEffectivePermissions</name></member>
@@ -472,13 +472,6 @@
     <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" kind="function"><name>getStartLevel</name></member>
     <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" kind="function"><name>conflictsWith</name></member>
     <member refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" kind="function"><name>canEnchantItem</name></member>
-  </compound>
-  <compound refid="classendstone_1_1Error" kind="class"><name>endstone::Error</name>
-    <member refid="classendstone_1_1Error_1a76da8953868eeb80373357c0f524e08a" kind="variable"><name>message_</name></member>
-    <member refid="classendstone_1_1Error_1ae3b5543e80a7f6a83ba9b0ecb52288bc" kind="variable"><name>stack_trace_</name></member>
-    <member refid="classendstone_1_1Error_1af611da345686deb7c2a012faec27ac49" kind="function"><name>Error</name></member>
-    <member refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" kind="function"><name>getMessage</name></member>
-    <member refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" kind="function"><name>getStackTrace</name></member>
   </compound>
   <compound refid="classendstone_1_1Event" kind="class"><name>endstone::Event</name>
     <member refid="classendstone_1_1Event_1a7f434d804d3d19ce4876be9b2a540fcf" kind="friend"><name>Cancellable</name></member>
@@ -551,6 +544,9 @@
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" kind="struct"><name>fmt::formatter&lt; endstone::ItemStack &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1ad78d75e07f93f63fc0413cee2954d7f0" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1a6116802aa2eb42ae63921aa2f140c160" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4" kind="struct"><name>fmt::formatter&lt; endstone::NamespacedKey &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1afcf12b2150ee0d6347f8120c2565bbf6" kind="function"><name>format</name></member>
   </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
@@ -736,7 +732,6 @@
     <member refid="classendstone_1_1Logger_1ae936f35dee496e1ea3a893cf6eac1bab" kind="function"><name>warning</name></member>
     <member refid="classendstone_1_1Logger_1a8537f43ecc79575866258125aa874394" kind="function"><name>error</name></member>
     <member refid="classendstone_1_1Logger_1a60381ba750ad53b817e80acecfd7afac" kind="function"><name>error</name></member>
-    <member refid="classendstone_1_1Logger_1a4891f5589e8620186afb8022f93d38e2" kind="function"><name>error</name></member>
     <member refid="classendstone_1_1Logger_1a799b52643e31638b0e9ea99ba238dc96" kind="function"><name>critical</name></member>
     <member refid="classendstone_1_1Logger_1a25c768637a0f06c9fbdfc11454cc7c3c" kind="function"><name>critical</name></member>
   </compound>
@@ -782,19 +777,19 @@
     <member refid="classendstone_1_1NamespacedKey_1a88dfddee7b93877c4aa732a5d9a66b64" kind="variable"><name>MINECRAFT</name></member>
     <member refid="classendstone_1_1NamespacedKey_1a4d559245aaaf69cb610124d7c574804e" kind="variable"><name>namespace_</name></member>
     <member refid="classendstone_1_1NamespacedKey_1a57859d67bb4ceae68093728745b57db5" kind="variable"><name>key_</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a090d1b38d6504f02be01f3feba0de4fa" kind="function"><name>create</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a225700c978a8134ff4d86e31a88bf51e" kind="function"><name>fromString</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a783dd7045c71a33d7f3c2e42ed605218" kind="function"><name>create</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1adf677ac151135822dec2909766b0429a" kind="function"><name>fromString</name></member>
     <member refid="classendstone_1_1NamespacedKey_1aa08e51ed653aeaa8fe7f7504f1afba3f" kind="function"><name>getNamespace</name></member>
     <member refid="classendstone_1_1NamespacedKey_1ae86d202bb5a6f80144ca6d8c958510dc" kind="function"><name>getKey</name></member>
     <member refid="classendstone_1_1NamespacedKey_1a6bb36e46913fae93d955ea8c397338e8" kind="function"><name>toString</name></member>
     <member refid="classendstone_1_1NamespacedKey_1ab7f69986bc4b4710cfe7e1af8ed3cbbc" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1NamespacedKey_1a4eb5cd3bda3e08cc29c296e4eb005739" kind="function"><name>operator!=</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a7321f5a3dd9b0dcaa4ad9e3c1c8a044f" kind="function"><name>NamespacedKey</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1abf796f634fc56195e913dd3c06391815" kind="function"><name>normalizeString</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a97b31335f69af4741727566f5c3f4113" kind="function"><name>NamespacedKey</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1ac6c1cf58648d35f41287bc739dff0aea" kind="function"><name>normalizeString</name></member>
     <member refid="classendstone_1_1NamespacedKey_1aad565f313c469167ebedc75cdeb4ebd0" kind="function"><name>isValidNamespaceChar</name></member>
     <member refid="classendstone_1_1NamespacedKey_1a559d6702571c04670c33b3696bf450f0" kind="function"><name>isValidKeyChar</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a61b37d0c8f145b7ab9de975eef4850f4" kind="function"><name>isValidNamespace</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a51b23985be73bbc74a0a7975ec6e89b1" kind="function"><name>isValidKey</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a68bc1ad253e1f6feb993aa6c880ab749" kind="function"><name>isValidNamespace</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a4a3c5d0b50569d4f381d8af215a94d2e" kind="function"><name>isValidKey</name></member>
   </compound>
   <compound refid="classendstone_1_1Objective" kind="class"><name>endstone::Objective</name>
     <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" kind="function"><name>~Objective</name></member>
@@ -857,8 +852,8 @@
     <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" kind="function"><name>hasPermission</name></member>
     <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" kind="function"><name>hasPermission</name></member>
-    <member refid="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2" kind="function"><name>addAttachment</name></member>
-    <member refid="classendstone_1_1Permissible_1a344f309bb63d9861d854c074b4e2bd60" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" kind="function"><name>addAttachment</name></member>
     <member refid="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" kind="function"><name>removeAttachment</name></member>
     <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" kind="function"><name>getEffectivePermissions</name></member>
@@ -1289,7 +1284,7 @@
     <member refid="classendstone_1_1PluginManager_1ab56ff89a7ecf2d6b912f95c77c1508d9" kind="function"><name>disablePlugins</name></member>
     <member refid="classendstone_1_1PluginManager_1a14a15ef4e634b7109ef923c4dc84b64d" kind="function"><name>clearPlugins</name></member>
     <member refid="classendstone_1_1PluginManager_1a4dfe6ff074c30ba3055cdd8e81fc724c" kind="function"><name>callEvent</name></member>
-    <member refid="classendstone_1_1PluginManager_1a6259920491221f4409a7e683d7655605" kind="function"><name>registerEvent</name></member>
+    <member refid="classendstone_1_1PluginManager_1a3f7b1b0a5e838c7b299a93e12a816ea6" kind="function"><name>registerEvent</name></member>
     <member refid="classendstone_1_1PluginManager_1a6eec3de712d8eb401cba594c25702a6b" kind="function"><name>getPermission</name></member>
     <member refid="classendstone_1_1PluginManager_1adf54011d2e7f3b831a1d9276119946a1" kind="function"><name>addPermission</name></member>
     <member refid="classendstone_1_1PluginManager_1a8e228f95cb9ae2fa7691a0bab7a4ab15" kind="function"><name>removePermission</name></member>
@@ -1717,7 +1712,7 @@
     <member refid="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
-    <member refid="namespaceendstone_1a4af084d432127e336ffec03d016a299a" kind="typedef"><name>Result</name></member>
+    <member refid="namespaceendstone_1abc54c88a21352cadabe5992bea8976d6" kind="typedef"><name>Result</name></member>
     <member refid="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
     <member refid="namespaceendstone_1ac40f4f96efb610d56f90c6541fc8b400" kind="function"><name>operator&lt;</name></member>
     <member refid="namespaceendstone_1a96fb3e11970608db1df12feb7a3a829e" kind="function"><name>operator!=</name></member>
@@ -1996,9 +1991,9 @@
   </compound>
   <compound refid="skin_8h" kind="file"><name>skin.h</name>
   </compound>
-  <compound refid="error_8h" kind="file"><name>error.h</name>
-  </compound>
   <compound refid="result_8h" kind="file"><name>result.h</name>
+    <member refid="result_8h_1a613e4514eceaf0e617f7c0a5ee0dda4b" kind="define"><name>ENDSTONE_CHECK</name></member>
+    <member refid="result_8h_1a760d13d5835ad7be65508f3f39ef9efa" kind="define"><name>ENDSTONE_CHECKF</name></member>
   </compound>
   <compound refid="socket__address_8h" kind="file"><name>socket_address.h</name>
   </compound>

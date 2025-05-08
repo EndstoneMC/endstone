@@ -67,18 +67,10 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
       <node id="15">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -108,9 +100,6 @@
       </node>
       <node id="3">
         <label>string</label>
-      </node>
-      <node id="18">
-        <label>string_view</label>
       </node>
       <node id="5">
         <label>unordered_map</label>

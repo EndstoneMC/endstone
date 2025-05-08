@@ -62,9 +62,8 @@
 |  [**void**](classendstone_1_1Vector.md) | [**critical**](#function-critical-22) ([**const**](classendstone_1_1Vector.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Vector.md) &&... args) const<br> |
 |  [**void**](classendstone_1_1Vector.md) | [**debug**](#function-debug-12) ([**const**](classendstone_1_1Vector.md) std::string\_view message) const<br> |
 |  [**void**](classendstone_1_1Vector.md) | [**debug**](#function-debug-22) ([**const**](classendstone_1_1Vector.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Vector.md) &&... args) const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**error**](#function-error-13) ([**const**](classendstone_1_1Vector.md) std::string\_view message) const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**error**](#function-error-23) ([**const**](classendstone_1_1Vector.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Vector.md) &&... args) const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**error**](#function-error-33) ([**const**](classendstone_1_1Vector.md) [**endstone::Error**](classendstone_1_1Error.md) & err) const<br> |
+|  [**void**](classendstone_1_1Vector.md) | [**error**](#function-error-12) ([**const**](classendstone_1_1Vector.md) std::string\_view message) const<br> |
+|  [**void**](classendstone_1_1Vector.md) | [**error**](#function-error-22) ([**const**](classendstone_1_1Vector.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Vector.md) &&... args) const<br> |
 | virtual std::string\_view | [**getName**](#function-getname) () const = 0<br>_Get the name of this_ [_**Logger**_](classendstone_1_1Logger.md) _instance._ |
 |  [**void**](classendstone_1_1Vector.md) | [**info**](#function-info-12) ([**const**](classendstone_1_1Vector.md) std::string\_view message) const<br> |
 |  [**void**](classendstone_1_1Vector.md) | [**info**](#function-info-22) ([**const**](classendstone_1_1Vector.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Vector.md) &&... args) const<br> |
@@ -211,7 +210,7 @@ inline void endstone::Logger::debug (
 
 
 
-### function error [1/3]
+### function error [1/2]
 
 ```C++
 inline void endstone::Logger::error (
@@ -226,28 +225,13 @@ inline void endstone::Logger::error (
 
 
 
-### function error [2/3]
+### function error [2/2]
 
 ```C++
 template<typename... Args, std::enable_if_t<(sizeof...( Args ) > 0), int >>
 inline void endstone::Logger::error (
     const fmt::format_string< Args... > format,
     Args &&... args
-) const
-```
-
-
-
-
-<hr>
-
-
-
-### function error [3/3]
-
-```C++
-inline void endstone::Logger::error (
-    const  endstone::Error & err
 ) const
 ```
 

@@ -8,14 +8,14 @@
     <includes refid="cancellable_8h" local="yes">endstone/event/cancellable.h</includes>
     <includes refid="server__event_8h" local="yes">endstone/event/server/server_event.h</includes>
     <incdepgraph>
-      <node id="20">
+      <node id="18">
         <label>endstone/actor/actor.h</label>
         <link refid="actor_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -30,14 +30,14 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="16">
         <label>endstone/event/cancellable.h</label>
         <link refid="cancellable_8h_source"/>
       </node>
-      <node id="26">
+      <node id="24">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -51,17 +51,17 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="17">
         <label>endstone/event/server/server_event.h</label>
         <link refid="server__event_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -74,24 +74,24 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="19">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
       </node>
-      <node id="22">
+      <node id="20">
         <label>endstone/level/position.h</label>
         <link refid="position_8h_source"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -128,27 +128,19 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
       <node id="14">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
       </node>
-      <node id="24">
+      <node id="22">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="23">
         <label>cmath</label>
       </node>
       <node id="5">
@@ -160,17 +152,14 @@
       <node id="15">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="23">
+      <node id="21">
         <label>optional</label>
       </node>
-      <node id="27">
+      <node id="25">
         <label>stdexcept</label>
       </node>
       <node id="2">
         <label>string</label>
-      </node>
-      <node id="17">
-        <label>string_view</label>
       </node>
       <node id="12">
         <label>unordered_set</label>

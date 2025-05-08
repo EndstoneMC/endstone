@@ -2096,6 +2096,60 @@ For latest updates join the chat on
     
 </li>
       
+        <li class="md-nav__item">
+    <a href="#macros" class="md-nav__link">
+      <span class="md-ellipsis">
+        Macros
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#macro-definition-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Macro Definition Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Macro Definition Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#define-endstone_check" class="md-nav__link">
+      <span class="md-ellipsis">
+        define ENDSTONE_CHECK
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#define-endstone_checkf" class="md-nav__link">
+      <span class="md-ellipsis">
+        define ENDSTONE_CHECKF
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
     </ul>
   
 </nav>
@@ -2133,7 +2187,6 @@ For latest updates join the chat on
 <p><a href="../result_8h_source/">Go to the source code of this file</a></p>
 <ul>
 <li><code>#include &lt;nonstd/expected.hpp&gt;</code></li>
-<li><code>#include "endstone/util/error.h"</code></li>
 </ul>
 <h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h2>
 <table>
@@ -2150,6 +2203,43 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">define</td>
+<td style="text-align: left;"><a href="./#define-endstone_check"><strong>ENDSTONE_CHECK</strong></a> (EXPRESSION, ERROR_MSG) <code>/* multi line expression */</code><br></td>
+</tr>
+<tr>
+<td style="text-align: right;">define</td>
+<td style="text-align: left;"><a href="./#define-endstone_checkf"><strong>ENDSTONE_CHECKF</strong></a> (EXPRESSION, ERROR_MSG, ...) <code>/* multi line expression */</code><br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="macro-definition-documentation">Macro Definition Documentation<a class="headerlink" href="#macro-definition-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="define-endstone_check">define ENDSTONE_CHECK<a class="headerlink" href="#define-endstone_check" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#define ENDSTONE_CHECK (</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">EXPRESSION</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">ERROR_MSG</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span><span class="err">`</span><span class="cm">/* multi line expression */</span><span class="err">`</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="define-endstone_checkf">define ENDSTONE_CHECKF<a class="headerlink" href="#define-endstone_checkf" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#define ENDSTONE_CHECKF (</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">EXPRESSION</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">ERROR_MSG</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">...</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span><span class="err">`</span><span class="cm">/* multi line expression */</span><span class="err">`</span>
+</span></code></pre></div>
+<hr>
+
 <hr />
 <p>The documentation for this class was generated from the following file <code>include/endstone/util/result.h</code></p>
 

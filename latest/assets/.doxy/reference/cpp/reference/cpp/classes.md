@@ -95,8 +95,6 @@
 
 * [**Enchantment**](classendstone_1_1Enchantment.md)
 ([**endstone**](namespaceendstone.md))
-* [**Error**](classendstone_1_1Error.md)
-([**endstone**](namespaceendstone.md))
 * [**Event**](classendstone_1_1Event.md)
 ([**endstone**](namespaceendstone.md))
 * [**EventHandler**](classendstone_1_1EventHandler.md)
@@ -124,6 +122,8 @@
 * [**formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md)
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)
+* [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md)
+([**fmt**](namespacefmt.md))
 
 
 ## h
@@ -131,6 +131,7 @@
 * [**HandlerList**](classendstone_1_1HandlerList.md)
 ([**endstone**](namespaceendstone.md))
 * [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md)
+([**std**](namespacestd.md))
 * [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)
 ([**std**](namespacestd.md))
 * [**Header**](classendstone_1_1Header.md)

@@ -74,8 +74,8 @@ public:
 
     virtual void callEvent(Event &event) = 0;
 
-    virtual Result<void> registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
-                                       Plugin &plugin, bool ignore_cancelled) = 0;
+    virtual void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+                               Plugin &plugin, bool ignore_cancelled) = 0;
 
     [[nodiscard]] virtual Permission *getPermission(std::string name) const = 0;
 

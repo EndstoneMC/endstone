@@ -54,9 +54,9 @@ public:
 
     [[nodiscard]] virtual bool hasPermission(const Permission &perm) const = 0;
 
-    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
+    virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
-    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin) = 0;
+    virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
 
     virtual Result<void> removeAttachment(PermissionAttachment &attachment) = 0;
 

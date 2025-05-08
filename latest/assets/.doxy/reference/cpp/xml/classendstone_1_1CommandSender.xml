@@ -206,7 +206,7 @@
 <parametername>message</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="classendstone_1_1Error" kindref="compound">Error</ref> message to be displayed </para>
+<para>Error message to be displayed </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -352,8 +352,8 @@
     </collaborationgraph>
     <location file="include/endstone/command/command_sender.h" line="36" column="1" bodyfile="include/endstone/command/command_sender.h" bodystart="36" bodyend="138"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>addAttachment</name></member>
-      <member refid="classendstone_1_1Permissible_1a344f309bb63d9861d854c074b4e2bd60" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1CommandSender_1a981997682a69961a0cb5e92b7a70f4ff" prot="public" virt="virtual"><scope>endstone::CommandSender</scope><name>asActor</name></member>
       <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" virt="virtual"><scope>endstone::CommandSender</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" prot="public" virt="virtual"><scope>endstone::CommandSender</scope><name>asConsole</name></member>

@@ -56,6 +56,10 @@
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
+      <node id="12">
+        <label>include/endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
+      </node>
       <node id="6">
         <label>include/endstone/event/event_handler.h</label>
         <link refid="event__handler_8h_source"/>
@@ -78,6 +82,14 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
+      <node id="11">
+        <label>include/endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>include/endstone/plugin/plugin.h</label>
         <link refid="plugin_8h_source"/>
@@ -89,23 +101,29 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="9">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="12">
+      <node id="13">
+        <label>include/endstone/registry.h</label>
+        <link refid="registry_8h_source"/>
+      </node>
+      <node id="15">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="11">
+      <node id="14">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="3">

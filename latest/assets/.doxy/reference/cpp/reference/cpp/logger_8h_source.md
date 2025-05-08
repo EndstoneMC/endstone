@@ -29,8 +29,6 @@
 
 #include <fmt/format.h>
 
-#include "endstone/util/error.h"
-
 namespace endstone {
 
 class Logger {
@@ -120,12 +118,6 @@ public:
     void error(const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(Error, format, std::forward<Args>(args)...);
-    }
-
-    void error(const endstone::Error &err) const
-    {
-        log(Error, err.getMessage());
-        log(Error, err.getStackTrace());
     }
 
     void critical(const std::string_view message) const

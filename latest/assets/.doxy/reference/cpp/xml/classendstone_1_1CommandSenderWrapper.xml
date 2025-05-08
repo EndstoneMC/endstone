@@ -143,7 +143,7 @@
 <parametername>message</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="classendstone_1_1Error" kindref="compound">Error</ref> message to be displayed </para>
+<para>Error message to be displayed </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -330,13 +330,13 @@
         </inbodydescription>
         <location file="include/endstone/command/command_sender_wrapper.h" line="63" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="63" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a1515cda416373f98bced2fc1934f4302" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> * &gt;</type>
-        <definition>Result&lt; PermissionAttachment * &gt; endstone::CommandSenderWrapper::addAttachment</definition>
+      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> *</type>
+        <definition>PermissionAttachment * endstone::CommandSenderWrapper::addAttachment</definition>
         <argsstring>(Plugin &amp;plugin, const std::string &amp;name, bool value) override</argsstring>
         <name>addAttachment</name>
         <qualifiedname>endstone::CommandSenderWrapper::addAttachment</qualifiedname>
-        <reimplements refid="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2">addAttachment</reimplements>
+        <reimplements refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc">addAttachment</reimplements>
         <param>
           <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
@@ -384,15 +384,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="67" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="67" bodyend="70"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="67" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="67" bodyend="70"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ad60d3b2651ad27433df1f6d380b85dfd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> * &gt;</type>
-        <definition>Result&lt; PermissionAttachment * &gt; endstone::CommandSenderWrapper::addAttachment</definition>
+      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> *</type>
+        <definition>PermissionAttachment * endstone::CommandSenderWrapper::addAttachment</definition>
         <argsstring>(Plugin &amp;plugin) override</argsstring>
         <name>addAttachment</name>
         <qualifiedname>endstone::CommandSenderWrapper::addAttachment</qualifiedname>
-        <reimplements refid="classendstone_1_1Permissible_1a344f309bb63d9861d854c074b4e2bd60">addAttachment</reimplements>
+        <reimplements refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b">addAttachment</reimplements>
         <param>
           <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
@@ -416,7 +416,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="71" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="71" bodyend="74"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="71" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
@@ -662,8 +662,8 @@
     </collaborationgraph>
     <location file="include/endstone/command/command_sender_wrapper.h" line="24" column="1" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="24" bodyend="120"/>
     <listofallmembers>
-      <member refid="classendstone_1_1CommandSenderWrapper_1a1515cda416373f98bced2fc1934f4302" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>
-      <member refid="classendstone_1_1CommandSenderWrapper_1ad60d3b2651ad27433df1f6d380b85dfd" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a44729e5299e551a8058e457a60c64900" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>asActor</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a5fc91f3c240a91dc5a37d1e0345da2c6" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a1ad4a226bbf1e73d89839d743585b678" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>asConsole</name></member>

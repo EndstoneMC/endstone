@@ -10,15 +10,15 @@
     <includes refid="permissible_8h" local="yes">endstone/permissions/permissible.h</includes>
     <includes refid="permission_8h" local="yes">endstone/permissions/permission.h</includes>
     <incdepgraph>
-      <node id="19">
+      <node id="17">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="19">
         <label>endstone/event/event_priority.h</label>
         <link refid="event__priority_8h_source"/>
       </node>
@@ -36,7 +36,7 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="13">
         <label>endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
         <childnode refid="2" relation="include">
@@ -51,9 +51,9 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -71,7 +71,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -82,11 +82,11 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="14">
         <label>endstone/permissions/permission_default.h</label>
         <link refid="permission__default_8h_source"/>
       </node>
-      <node id="17">
+      <node id="15">
         <label>endstone/plugin/plugin_manager.h</label>
         <link refid="plugin__manager_8h_source"/>
         <childnode refid="3" relation="include">
@@ -95,25 +95,17 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>endstone/util/error.h</label>
-        <link refid="error_8h_source"/>
-        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -128,14 +120,11 @@
       <node id="12">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="20">
+      <node id="18">
         <label>stdexcept</label>
       </node>
       <node id="4">
         <label>string</label>
-      </node>
-      <node id="14">
-        <label>string_view</label>
       </node>
       <node id="5">
         <label>unordered_map</label>
@@ -146,7 +135,7 @@
       <node id="6">
         <label>utility</label>
       </node>
-      <node id="18">
+      <node id="16">
         <label>vector</label>
       </node>
     </incdepgraph>

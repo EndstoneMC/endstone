@@ -2517,11 +2517,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-commandsenderwrapper"><strong>CommandSenderWrapper</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, Callback on_message={}, Callback on_error={}) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> * &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
 <td style="text-align: left;"><a href="#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; name, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> value) override<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> * &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
 <td style="text-align: left;"><a href="#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) override<br></td>
 </tr>
 <tr>
@@ -2669,11 +2669,11 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> * &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp; name, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> value) = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> * &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br></td>
 </tr>
 <tr>
@@ -2738,7 +2738,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-addattachment-12">function addAttachment [&frac12;]<a class="headerlink" href="#function-addattachment-12" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">addAttachment</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">addAttachment</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
@@ -2757,7 +2757,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-addattachment-22">function addAttachment [2/2]<a class="headerlink" href="#function-addattachment-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">addAttachment</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">addAttachment</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
@@ -2942,7 +2942,7 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>message</code> <a href="../classendstone_1_1Error/"><strong>Error</strong></a> message to be displayed </li>
+<li><code>message</code> Error message to be displayed </li>
 </ul>
 <p>Implements <a href="../classendstone_1_1CommandSender/#function-senderrormessage-12"><em>endstone::CommandSender::sendErrorMessage</em></a></p>
 <hr>

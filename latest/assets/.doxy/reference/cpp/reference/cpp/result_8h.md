@@ -11,7 +11,6 @@
 
 
 * `#include <nonstd/expected.hpp>`
-* `#include "endstone/util/error.h"`
 
 
 
@@ -81,7 +80,49 @@
 
 
 
+## Macros
 
+| Type | Name |
+| ---: | :--- |
+| define  | [**ENDSTONE\_CHECK**](result_8h.md#define-endstone_check) (EXPRESSION, ERROR\_MSG) `/* multi line expression */`<br> |
+| define  | [**ENDSTONE\_CHECKF**](result_8h.md#define-endstone_checkf) (EXPRESSION, ERROR\_MSG, ...) `/* multi line expression */`<br> |
+
+## Macro Definition Documentation
+
+
+
+
+
+### define ENDSTONE\_CHECK 
+
+```C++
+#define ENDSTONE_CHECK (
+    EXPRESSION,
+    ERROR_MSG
+) `/* multi line expression */`
+```
+
+
+
+
+<hr>
+
+
+
+### define ENDSTONE\_CHECKF 
+
+```C++
+#define ENDSTONE_CHECKF (
+    EXPRESSION,
+    ERROR_MSG,
+    ...
+) `/* multi line expression */`
+```
+
+
+
+
+<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `include/endstone/util/result.h`

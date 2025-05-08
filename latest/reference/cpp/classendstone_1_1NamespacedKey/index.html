@@ -2378,12 +2378,12 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">std::optional&lt; <a href="./"><strong>NamespacedKey</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-create"><strong>create</strong></a> (std::string_view namespace_, std::string_view key) <br><em>Factory method to create a</em> <a href="./"><em><strong>NamespacedKey</strong></em></a> <em>. Returns std::nullopt if namespace or key is invalid.</em></td>
+<td style="text-align: right;">Result&lt; <a href="./"><strong>NamespacedKey</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-create"><strong>create</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::string_view key) <br><em>Create a key in the plugin's namespace.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::optional&lt; <a href="./"><strong>NamespacedKey</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-fromstring"><strong>fromString</strong></a> (std::string_view input, std::optional&lt; std::string_view &gt; default_ns=std::nullopt) <br></td>
+<td style="text-align: right;">Result&lt; <a href="./"><strong>NamespacedKey</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-fromstring"><strong>fromString</strong></a> (std::string_view input, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * plugin=<a href="../classendstone_1_1Vector/"><strong>nullptr</strong></a>) <br></td>
 </tr>
 </tbody>
 </table>
@@ -2427,38 +2427,36 @@ For latest updates join the chat on
 <hr>
 <h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-create">function create<a class="headerlink" href="#function-create" title="Permanent link">&para;</a></h3>
-<p><em>Factory method to create a</em> <a href="./"><em><strong>NamespacedKey</strong></em></a> <em>. Returns std::nullopt if namespace or key is invalid.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="n">create</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">namespace_</span><span class="p">,</span>
+<p><em>Create a key in the plugin's namespace.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="n">create</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>namespace_</code> the namespace </li>
-<li><code>key</code> the key </li>
+<li><code>plugin</code> the plugin to use for the namespace </li>
+<li><code>key</code> the key to create </li>
 </ul>
-<p><strong>Returns:</strong></p>
-<p>optional containing the <a href="./"><strong>NamespacedKey</strong></a>, or std::nullopt on failure </p>
 <hr>
 
 <h3 id="function-fromstring">function fromString<a class="headerlink" href="#function-fromstring" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="n">fromString</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="n">fromString</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">input</span><span class="p">,</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_ns</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">plugin</span><span class="o">=</span><span class="k">nullptr</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Parse a <a href="./"><strong>NamespacedKey</strong></a> from a string, with an optional default namespace.</p>
 <p>Examples:
-* fromString("foo", "plugin") -&gt; "plugin:foo"
-* fromString("foo:bar", std::nullopt) -&gt; "foo:bar"
-* fromString(":foo", "minecraft") -&gt; "minecraft:foo"
-* fromString("foo", std::nullopt) -&gt; "minecraft:foo"
-* fromString("Foo", ...) -&gt; std::nullopt</p>
+* fromString("foo", plugin) -&gt; "plugin:foo"
+* fromString("foo:bar", nullptr) -&gt; "foo:bar"
+* fromString(":foo", nullptr) -&gt; "minecraft:foo"
+* fromString("foo", nullptr) -&gt; "minecraft:foo"
+* fromString("Foo", plugin) -&gt; std::nullopt</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>input</code> the string to parse </li>
-<li><code>default_ns</code> optional default namespace; if std::nullopt, uses Minecraft </li>
+<li><code>plugin</code> optional default namespace; if nullptr, uses the minecraft namespace </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>optional containing the parsed key, or std::nullopt if invalid </p>

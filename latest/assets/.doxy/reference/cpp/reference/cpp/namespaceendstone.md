@@ -72,7 +72,6 @@ _Represents a button with text and an optional icon._
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**Enchantment**](classendstone_1_1Enchantment.md) <br> |
-| class | [**Error**](classendstone_1_1Error.md) <br>_Represents an error with a message and the stack trace._  |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**Form**](classendstone_1_1Form.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Represents a generic form._  |
@@ -176,7 +175,7 @@ _Represents a button with text and an optional icon._
 | typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**const**](classendstone_1_1Vector.md) [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
-| typedef nonstd::expected&lt; [**T**](classendstone_1_1Vector.md), [**Error**](classendstone_1_1Error.md) &gt; | [**Result**](#typedef-result)  <br> |
+| typedef nonstd::expected&lt; [**T**](classendstone_1_1Vector.md), std::string &gt; | [**Result**](#typedef-result)  <br> |
 | typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br> |
 | enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
 | typedef std::uint32\_t | [**TaskId**](#typedef-taskid)  <br> |
@@ -496,7 +495,7 @@ enum endstone::RenderType {
 ### typedef Result 
 
 ```C++
-using endstone::Result = typedef nonstd::expected<T, Error>;
+using endstone::Result = typedef nonstd::expected<T, std::string>;
 ```
 
 

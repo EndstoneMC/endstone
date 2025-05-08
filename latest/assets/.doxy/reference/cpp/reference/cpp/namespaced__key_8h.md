@@ -16,6 +16,8 @@
 * `#include <optional>`
 * `#include <string>`
 * `#include <string_view>`
+* `#include "endstone/plugin/plugin.h"`
+* `#include "endstone/util/result.h"`
 
 
 
@@ -34,7 +36,6 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
-| namespace | [**std**](namespacestd.md) <br> |
 
 
 ## Classes
@@ -42,6 +43,8 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**NamespacedKey**](classendstone_1_1NamespacedKey.md) <br>_Represents a string-based key which consists of two components - a namespace and a key._  |
+| struct | [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md) &lt;&gt;<br> |
+| struct | [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md) &lt;&gt;<br> |
 
 
 

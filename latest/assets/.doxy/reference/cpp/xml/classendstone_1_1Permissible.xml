@@ -196,13 +196,13 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="84" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> * &gt;</type>
-        <definition>virtual Result&lt; PermissionAttachment * &gt; endstone::Permissible::addAttachment</definition>
+      <memberdef kind="function" id="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> *</type>
+        <definition>virtual PermissionAttachment * endstone::Permissible::addAttachment</definition>
         <argsstring>(Plugin &amp;plugin, const std::string &amp;name, bool value)=0</argsstring>
         <name>addAttachment</name>
         <qualifiedname>endstone::Permissible::addAttachment</qualifiedname>
-        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a1515cda416373f98bced2fc1934f4302">addAttachment</reimplementedby>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5">addAttachment</reimplementedby>
         <param>
           <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
@@ -250,15 +250,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permissible.h" line="94" column="20"/>
+        <location file="include/endstone/permissions/permissible.h" line="94" column="34"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1a344f309bb63d9861d854c074b4e2bd60" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> * &gt;</type>
-        <definition>virtual Result&lt; PermissionAttachment * &gt; endstone::Permissible::addAttachment</definition>
+      <memberdef kind="function" id="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> *</type>
+        <definition>virtual PermissionAttachment * endstone::Permissible::addAttachment</definition>
         <argsstring>(Plugin &amp;plugin)=0</argsstring>
         <name>addAttachment</name>
         <qualifiedname>endstone::Permissible::addAttachment</qualifiedname>
-        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1ad60d3b2651ad27433df1f6d380b85dfd">addAttachment</reimplementedby>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3">addAttachment</reimplementedby>
         <param>
           <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
@@ -282,7 +282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permissible.h" line="102" column="20"/>
+        <location file="include/endstone/permissions/permissible.h" line="102" column="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
@@ -427,8 +427,8 @@
     </inheritancegraph>
     <location file="include/endstone/permissions/permissible.h" line="34" column="1" bodyfile="include/endstone/permissions/permissible.h" bodystart="34" bodyend="131"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Permissible_1ada705f51f6b8d94304b53cf66f5e26a2" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>
-      <member refid="classendstone_1_1Permissible_1a344f309bb63d9861d854c074b4e2bd60" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1a49323c37f310044720678e27513b44dc" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>hasPermission</name></member>
