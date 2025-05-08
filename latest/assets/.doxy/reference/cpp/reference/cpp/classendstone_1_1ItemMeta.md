@@ -74,12 +74,14 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasLore**](#function-haslore) () const = 0<br>_Checks for existence of lore._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasRepairCost**](#function-hasrepaircost) () const = 0<br>_Checks to see if this has a repair penalty._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isEmpty**](#function-isempty) () const = 0<br>_Checks if the item metadata is empty._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isUnbreakable**](#function-isunbreakable) () const = 0<br>_Return if the unbreakable tag is true. An unbreakable item will not lose durability._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**removeEnchant**](#function-removeenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) = 0<br>_Removes the specified enchantment from this item meta._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**removeEnchants**](#function-removeenchants) () = 0<br>_Removes all enchantments from this item meta._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setDamage**](#function-setdamage) ([**int**](classendstone_1_1Vector.md) damage) = 0<br>_Sets the damage._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setDisplayName**](#function-setdisplayname) (std::optional&lt; std::string &gt; name) = 0<br>_Sets the display name._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given std::nullopt._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setRepairCost**](#function-setrepaircost) ([**int**](classendstone_1_1Vector.md) cost) = 0<br>_Sets the repair penalty._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setUnbreakable**](#function-setunbreakable) ([**bool**](classendstone_1_1Vector.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
 | virtual  | [**~ItemMeta**](#function-itemmeta) () = default<br> |
 
 
@@ -568,6 +570,31 @@ true if the metadata is empty, false otherwise.
 
 
 
+### function isUnbreakable 
+
+_Return if the unbreakable tag is true. An unbreakable item will not lose durability._ 
+```C++
+virtual bool endstone::ItemMeta::isUnbreakable () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+true if the unbreakable tag is true 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function removeEnchant 
 
 _Removes the specified enchantment from this item meta._ 
@@ -714,6 +741,33 @@ virtual void endstone::ItemMeta::setRepairCost (
 
 
 * `cost` repair penalty 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setUnbreakable 
+
+_Sets the unbreakable tag. An unbreakable item will not lose durability._ 
+```C++
+virtual void endstone::ItemMeta::setUnbreakable (
+    bool unbreakable
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `unbreakable` true if set unbreakable 
 
 
 

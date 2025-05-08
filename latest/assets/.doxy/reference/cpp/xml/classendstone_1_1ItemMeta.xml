@@ -529,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="183" column="18"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="183" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
@@ -547,7 +547,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/item_meta.h" line="190" column="17"/>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="190" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
@@ -578,6 +578,53 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/item_meta.h" line="197" column="18"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::ItemMeta::isUnbreakable</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isUnbreakable</name>
+        <qualifiedname>endstone::ItemMeta::isUnbreakable</qualifiedname>
+        <briefdescription>
+<para>Return if the unbreakable tag is true. An unbreakable item will not lose durability. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the unbreakable tag is true </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="204" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::ItemMeta::setUnbreakable</definition>
+        <argsstring>(bool unbreakable)=0</argsstring>
+        <name>setUnbreakable</name>
+        <qualifiedname>endstone::ItemMeta::setUnbreakable</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <declname>unbreakable</declname>
+        </param>
+        <briefdescription>
+<para>Sets the unbreakable tag. An unbreakable item will not lose durability. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unbreakable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true if set unbreakable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/item_meta.h" line="211" column="18"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Represents the metadata of a generic item. </para>
@@ -596,7 +643,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/inventory/meta/item_meta.h" line="27" column="1" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="27" bodyend="198"/>
+    <location file="include/endstone/inventory/meta/item_meta.h" line="27" column="1" bodyfile="include/endstone/inventory/meta/item_meta.h" bodystart="27" bodyend="212"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>addEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>clone</name></member>
@@ -614,12 +661,14 @@
       <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasLore</name></member>
       <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasRepairCost</name></member>
       <member refid="classendstone_1_1ItemMeta_1a43a0aa639900616ec5235f9ece8592e7" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>isEmpty</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>isUnbreakable</name></member>
       <member refid="classendstone_1_1ItemMeta_1a2349b16d2c1414811c1c8f36dc19452c" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>removeEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>removeEnchants</name></member>
       <member refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setDamage</name></member>
       <member refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setLore</name></member>
       <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setRepairCost</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>setUnbreakable</name></member>
       <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>Type</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::ItemMeta</scope><name>~ItemMeta</name></member>
     </listofallmembers>

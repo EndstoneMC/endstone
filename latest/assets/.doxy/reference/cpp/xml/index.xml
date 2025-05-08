@@ -653,6 +653,8 @@
     <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" kind="function"><name>hasRepairCost</name></member>
     <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" kind="function"><name>getRepairCost</name></member>
     <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" kind="function"><name>setRepairCost</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" kind="function"><name>isUnbreakable</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" kind="function"><name>setUnbreakable</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>

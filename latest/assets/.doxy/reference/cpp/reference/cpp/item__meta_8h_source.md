@@ -80,11 +80,15 @@ public:
 
     virtual void removeEnchants() = 0;
 
-    virtual bool hasRepairCost() const = 0;
+    [[nodiscard]] virtual bool hasRepairCost() const = 0;
 
-    virtual int getRepairCost() const = 0;
+    [[nodiscard]] virtual int getRepairCost() const = 0;
 
     virtual void setRepairCost(int cost) = 0;
+
+    [[nodiscard]] virtual bool isUnbreakable() const = 0;
+
+    virtual void setUnbreakable(bool unbreakable) = 0;
 };
 }  // namespace endstone
 ```

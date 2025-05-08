@@ -100,12 +100,14 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasLore**](classendstone_1_1ItemMeta.md#function-haslore) () const = 0<br>_Checks for existence of lore._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasRepairCost**](classendstone_1_1ItemMeta.md#function-hasrepaircost) () const = 0<br>_Checks to see if this has a repair penalty._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isEmpty**](classendstone_1_1ItemMeta.md#function-isempty) () const = 0<br>_Checks if the item metadata is empty._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isUnbreakable**](classendstone_1_1ItemMeta.md#function-isunbreakable) () const = 0<br>_Return if the unbreakable tag is true. An unbreakable item will not lose durability._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**removeEnchant**](classendstone_1_1ItemMeta.md#function-removeenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) = 0<br>_Removes the specified enchantment from this item meta._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**removeEnchants**](classendstone_1_1ItemMeta.md#function-removeenchants) () = 0<br>_Removes all enchantments from this item meta._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setDamage**](classendstone_1_1ItemMeta.md#function-setdamage) ([**int**](classendstone_1_1Vector.md) damage) = 0<br>_Sets the damage._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setDisplayName**](classendstone_1_1ItemMeta.md#function-setdisplayname) (std::optional&lt; std::string &gt; name) = 0<br>_Sets the display name._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setLore**](classendstone_1_1ItemMeta.md#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given std::nullopt._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setRepairCost**](classendstone_1_1ItemMeta.md#function-setrepaircost) ([**int**](classendstone_1_1Vector.md) cost) = 0<br>_Sets the repair penalty._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setUnbreakable**](classendstone_1_1ItemMeta.md#function-setunbreakable) ([**bool**](classendstone_1_1Vector.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
 | virtual  | [**~ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta) () = default<br> |
 
 
