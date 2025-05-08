@@ -14,14 +14,14 @@
 
 #pragma once
 
+#include <vector>
+
 // We do not support compiling under MSVC Debug mode because it sets _ITERATOR_DEBUG_LEVEL
 // to a nonzero value, changing the standard library's iterator implementation and resulting
 // in an ABI incompatible with the BDS environment, which is built in Release mode.
-#ifdef _MSC_VER
-#include <iterator>
+#if defined(_MSC_VER) and defined(_ITERATOR_DEBUG_LEVEL)
 static_assert(_ITERATOR_DEBUG_LEVEL == 0,
-              "Compilation aborted: _ITERATOR_DEBUG_LEVEL != 0. This indicates MSVC Debug mode, "
-              "which is not supported. Please switch to a Release or RelWithDebInfo configuration.");
+              "Error: Endstone plugins must be built in Release or RelWithDebInfo mode with MSVC!");
 #endif
 
 #include "actor/actor.h"
@@ -42,7 +42,6 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "boss/boss_bar.h"
 #include "color_format.h"
 #include "command/command.h"
-#include "enchantments/enchantment.h"
 #include "command/command_executor.h"
 #include "command/command_map.h"
 #include "command/command_sender.h"
@@ -51,6 +50,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "command/plugin_command.h"
 #include "command/proxied_command_sender.h"
 #include "damage/damage_source.h"
+#include "enchantments/enchantment.h"
 #include "event/actor/actor_damage_event.h"
 #include "event/actor/actor_death_event.h"
 #include "event/actor/actor_event.h"
