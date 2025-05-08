@@ -53,7 +53,7 @@
 | ---: | :--- |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**canEnchantItem**](#function-canenchantitem) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**conflictsWith**](#function-conflictswith) ([**const**](classendstone_1_1Vector.md) [**Enchantment**](classendstone_1_1Enchantment.md) & other) const = 0<br>_Check if this enchantment conflicts with another enchantment._  |
-| virtual std::string\_view | [**getKey**](#function-getkey) () const = 0<br>_Return the namespaced identifier for this enchantment._  |
+| virtual [**NamespacedKey**](classendstone_1_1NamespacedKey.md) | [**getKey**](#function-getkey) () const = 0<br>_Return the namespaced identifier for this enchantment._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
 | virtual  | [**~Enchantment**](#function-enchantment) () = default<br> |
@@ -167,7 +167,7 @@ True if there is a conflict.
 
 _Return the namespaced identifier for this enchantment._ 
 ```C++
-virtual std::string_view endstone::Enchantment::getKey () const = 0
+virtual NamespacedKey endstone::Enchantment::getKey () const = 0
 ```
 
 

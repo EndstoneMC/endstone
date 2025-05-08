@@ -34,56 +34,31 @@
 namespace endstone {
 
 template <typename T>
-concept Keyed = requires(const T &t) {
-    {
-        t.getKey()
-    } -> std::convertible_to<std::string_view>;
-};
-
-template <Keyed T>
 class Registry {
 public:
-    using key_type = std::string_view;
-    using value_type = std::unique_ptr<T>;
-    using reference = T &;
-    using const_reference = const T &;
-
-protected:
-    using storage_type = std::unordered_map<key_type, value_type>;
-
-public:
-    using iterator = typename storage_type::iterator;
-    using const_iterator = typename storage_type::const_iterator;
-
     virtual ~Registry() = default;
 
-    virtual T *get(key_type key) noexcept = 0;
+    virtual T *get(NamespacedKey key) noexcept = 0;
 
-    virtual const T *get(key_type key) const noexcept = 0;
+    virtual const T *get(NamespacedKey key) const noexcept = 0;
 
-    virtual T &getOrThrow(key_type key)
+    virtual T &getOrThrow(const NamespacedKey key)
     {
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No object with key: "} + std::string{key});
+        throw std::invalid_argument(std::string{"No object with key: "} + key.toString());
     }
 
-    virtual const T &getOrThrow(key_type key) const
+    virtual const T &getOrThrow(const NamespacedKey key) const
     {
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No object with key: "} + std::string{key});
+        throw std::invalid_argument(std::string{"No object with key: "} + key.toString());
     }
 
-    virtual iterator begin() = 0;
-
-    virtual iterator end() = 0;
-
-    virtual const_iterator begin() const = 0;
-
-    virtual const_iterator end() const = 0;
+    virtual void forEach(std::function<bool(const T &)> func) const = 0;
 };
 }  // namespace endstone
 ```

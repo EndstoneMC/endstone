@@ -50,9 +50,9 @@
 * **BroadcastMessageEvent** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
 * **Button** ([**endstone::Button**](classendstone_1_1Button.md))
 * **bake** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
-* **begin** ([**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::UUID**](classendstone_1_1UUID.md))
 * **broadcast** ([**endstone::Server**](classendstone_1_1Server.md))
 * **broadcastMessage** ([**endstone::Server**](classendstone_1_1Server.md))
+* **begin** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **build** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md), [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **buildCommands** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **buildPermissions** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
@@ -112,8 +112,8 @@
 * **error** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **enablePlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **enablePlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **end** ([**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::UUID**](classendstone_1_1UUID.md))
 * **empty** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
+* **end** ([**endstone::UUID**](classendstone_1_1UUID.md))
 
 
 ## f
@@ -121,6 +121,7 @@
 * **Form** ([**endstone::Form**](classendstone_1_1Form.md))
 * **first** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **fromString** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
+* **forEach** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **format** ([**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md))
 
 

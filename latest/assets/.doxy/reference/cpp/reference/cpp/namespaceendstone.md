@@ -130,7 +130,7 @@ _Represents a button with text and an optional icon._
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**Position**](classendstone_1_1Position.md) <br>_Represents a 3-dimensional position in a dimension within a level._  |
 | class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Represents a proxied command sender._  |
-| class | [**Registry**](classendstone_1_1Registry.md) &lt;T&gt;<br>_Abstract registry interface for keyed objects._  |
+| class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Abstract registry interface for keyed objects._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
 | class | [**Score**](classendstone_1_1Score.md) <br>_Represents a score for an objective on a scoreboard._  |
 | class | [**Scoreboard**](classendstone_1_1Scoreboard.md) <br>_Represents a scoreboard._  |

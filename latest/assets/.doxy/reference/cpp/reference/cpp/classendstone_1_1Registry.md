@@ -2,7 +2,7 @@
 
 # Class endstone::Registry
 
-**template &lt;Keyed T&gt;**
+**template &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;**
 
 
 
@@ -30,16 +30,6 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 
 
 
-## Public Types
-
-| Type | Name |
-| ---: | :--- |
-| typedef [**typename**](classendstone_1_1Vector.md) storage\_type::const\_iterator | [**const\_iterator**](#typedef-const_iterator)  <br>_Const iterator over stored elements._  |
-| typedef [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) & | [**const\_reference**](#typedef-const_reference)  <br> |
-| typedef [**typename**](classendstone_1_1Vector.md) storage\_type::iterator | [**iterator**](#typedef-iterator)  <br>_Iterator over stored elements._  |
-| typedef std::string\_view | [**key\_type**](#typedef-key_type)  <br> |
-| typedef [**T**](classendstone_1_1Vector.md) & | [**reference**](#typedef-reference)  <br> |
-| typedef std::unique\_ptr&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**value\_type**](#typedef-value_type)  <br> |
 
 
 
@@ -64,24 +54,16 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**iterator**](classendstone_1_1Registry.md#typedef-iterator) | [**begin**](#function-begin-12) () = 0<br>_Returns iterator to beginning of registry items._  |
-| virtual [**const\_iterator**](classendstone_1_1Registry.md#typedef-const_iterator) | [**begin**](#function-begin-22) () const = 0<br>_Const begin iterator._  |
-| virtual [**iterator**](classendstone_1_1Registry.md#typedef-iterator) | [**end**](#function-end-12) () = 0<br>_Returns iterator to end of registry items._  |
-| virtual [**const\_iterator**](classendstone_1_1Registry.md#typedef-const_iterator) | [**end**](#function-end-22) () const = 0<br>_Const end iterator._  |
-| virtual [**T**](classendstone_1_1Vector.md) \* | [**get**](#function-get-12) (key\_type key) noexcept = 0<br>_Get the object by its key._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) \* | [**get**](#function-get-22) (key\_type key) noexcept const = 0<br>_Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._ |
-| virtual [**T**](classendstone_1_1Vector.md) & | [**getOrThrow**](#function-getorthrow-12) (key\_type key) <br>_Get the object by its key or throw if missing._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) & | [**getOrThrow**](#function-getorthrow-22) (key\_type key) const<br>_Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._ |
+| virtual [**void**](classendstone_1_1Vector.md) | [**forEach**](#function-foreach) (std::function&lt; [**bool**](classendstone_1_1Vector.md)([**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
+| virtual [**T**](classendstone_1_1Vector.md) \* | [**get**](#function-get-12) ([**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) noexcept = 0<br>_Get the object by its key._  |
+| virtual [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) \* | [**get**](#function-get-22) ([**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) noexcept const = 0<br>_Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._ |
+| virtual [**T**](classendstone_1_1Vector.md) & | [**getOrThrow**](#function-getorthrow-12) ([**const**](classendstone_1_1Vector.md) [**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) <br>_Get the object by its key or throw if missing._  |
+| virtual [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) & | [**getOrThrow**](#function-getorthrow-22) ([**const**](classendstone_1_1Vector.md) [**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) const<br>_Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._ |
 | virtual  | [**~Registry**](#function-registry) () = default<br> |
 
 
 
 
-## Protected Types
-
-| Type | Name |
-| ---: | :--- |
-| typedef std::unordered\_map&lt; key\_type, value\_type &gt; | [**storage\_type**](#typedef-storage_type)  <br>_Underlying storage type._  |
 
 
 
@@ -123,186 +105,31 @@ Provides lookup by key (nullable or exception-throwing) and iteration.
 
 
     
-## Public Types Documentation
-
-
-
-
-### typedef const\_iterator 
-
-_Const iterator over stored elements._ 
-```C++
-using endstone::Registry< T >::const_iterator =  typename storage_type::const_iterator;
-```
-
-
-
-
-<hr>
-
-
-
-### typedef const\_reference 
-
-```C++
-using endstone::Registry< T >::const_reference =  const T &;
-```
-
-
-
-
-<hr>
-
-
-
-### typedef iterator 
-
-_Iterator over stored elements._ 
-```C++
-using endstone::Registry< T >::iterator =  typename storage_type::iterator;
-```
-
-
-
-
-<hr>
-
-
-
-### typedef key\_type 
-
-```C++
-using endstone::Registry< T >::key_type =  std::string_view;
-```
-
-
-
-
-<hr>
-
-
-
-### typedef reference 
-
-```C++
-using endstone::Registry< T >::reference =  T &;
-```
-
-
-
-
-<hr>
-
-
-
-### typedef value\_type 
-
-```C++
-using endstone::Registry< T >::value_type =  std::unique_ptr<T>;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
 
 
-### function begin [1/2]
+### function forEach 
 
-_Returns iterator to beginning of registry items._ 
+_Apply a function to each stored element._ 
 ```C++
-virtual iterator endstone::Registry::begin () = 0
+virtual void endstone::Registry::forEach (
+    std::function< bool ( const  T &)> func
+) const = 0
 ```
 
 
 
-Enables range-based for loops.
+Iterates over all stored elements and applies the provided function to them. The iteration continues until the function returns false or all elements have been processed.
 
 
 
 
-**Returns:**
-
-iterator Begin iterator. 
+**Parameters:**
 
 
-
-
-
-        
-
-<hr>
-
-
-
-### function begin [2/2]
-
-_Const begin iterator._ 
-```C++
-virtual const_iterator endstone::Registry::begin () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-const\_iterator Const begin iterator. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function end [1/2]
-
-_Returns iterator to end of registry items._ 
-```C++
-virtual iterator endstone::Registry::end () = 0
-```
-
-
-
-
-
-**Returns:**
-
-iterator End iterator. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function end [2/2]
-
-_Const end iterator._ 
-```C++
-virtual const_iterator endstone::Registry::end () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-const\_iterator Const end iterator. 
-
+* `func` A callable object taking a const reference to an element and returning a boolean. Returning false stops the iteration. 
 
 
 
@@ -318,7 +145,7 @@ const\_iterator Const end iterator.
 _Get the object by its key._ 
 ```C++
 virtual T * endstone::Registry::get (
-    key_type key
+    NamespacedKey key
 ) noexcept = 0
 ```
 
@@ -355,7 +182,7 @@ T\* Pointer to the object, or nullptr if it does not exist.
 _Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._
 ```C++
 virtual const  T * endstone::Registry::get (
-    key_type key
+    NamespacedKey key
 ) noexcept const = 0
 ```
 
@@ -389,7 +216,7 @@ const T\* Pointer to the object, or nullptr if it does not exist.
 _Get the object by its key or throw if missing._ 
 ```C++
 inline virtual T & endstone::Registry::getOrThrow (
-    key_type key
+    const  NamespacedKey key
 ) 
 ```
 
@@ -430,7 +257,7 @@ T& Reference to the object with the given key.
 _Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._
 ```C++
 inline virtual const  T & endstone::Registry::getOrThrow (
-    key_type key
+    const  NamespacedKey key
 ) const
 ```
 
@@ -470,22 +297,6 @@ const T& Const reference to the object with the given key.
 
 ```C++
 virtual endstone::Registry::~Registry () = default
-```
-
-
-
-
-<hr>
-## Protected Types Documentation
-
-
-
-
-### typedef storage\_type 
-
-_Underlying storage type._ 
-```C++
-using endstone::Registry< T >::storage_type =  std::unordered_map<key_type, value_type>;
 ```
 
 

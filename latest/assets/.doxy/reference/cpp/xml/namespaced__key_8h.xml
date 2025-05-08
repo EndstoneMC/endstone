@@ -8,6 +8,7 @@
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">string_view</includes>
+    <includedby refid="enchantment_8h" local="yes">include/endstone/enchantments/enchantment.h</includedby>
     <includedby refid="registry_8h" local="yes">include/endstone/registry.h</includedby>
     <incdepgraph>
       <node id="1">
@@ -50,6 +51,12 @@
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
+      <node id="2">
+        <label>include/endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
       <node id="6">
         <label>include/endstone/event/event_handler.h</label>
         <link refid="event__handler_8h_source"/>
@@ -77,6 +84,8 @@
         <link refid="namespaced__key_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
       <node id="4">
         <label>include/endstone/plugin/plugin.h</label>
@@ -98,7 +107,7 @@
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="2">
+      <node id="13">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="3" relation="include">

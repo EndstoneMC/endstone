@@ -5,116 +5,9 @@
     <includes refid="registry_8h" local="no">endstone/registry.h</includes>
     <templateparamlist>
       <param>
-        <type>Keyed</type>
-        <declname>T</declname>
-        <defname>T</defname>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
       </param>
     </templateparamlist>
-    <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a064491e80f8fd57f592cb51bd0d76715" prot="public" static="no">
-        <type>std::string_view</type>
-        <definition>using endstone::Registry&lt; T &gt;::key_type =  std::string_view</definition>
-        <argsstring></argsstring>
-        <name>key_type</name>
-        <qualifiedname>endstone::Registry::key_type</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="48" column="5" bodyfile="include/endstone/registry.h" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a25c58a4ce23faba72da639af96021e63" prot="public" static="no">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &gt;</type>
-        <definition>using endstone::Registry&lt; T &gt;::value_type =  std::unique_ptr&lt;T&gt;</definition>
-        <argsstring></argsstring>
-        <name>value_type</name>
-        <qualifiedname>endstone::Registry::value_type</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="49" column="5" bodyfile="include/endstone/registry.h" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a69562de8dd0c2073b225a3722a323ea6" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
-        <definition>using endstone::Registry&lt; T &gt;::reference =  T &amp;</definition>
-        <argsstring></argsstring>
-        <name>reference</name>
-        <qualifiedname>endstone::Registry::reference</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="50" column="5" bodyfile="include/endstone/registry.h" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a294b14ffa431d30cea6e7722f067af4b" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
-        <definition>using endstone::Registry&lt; T &gt;::const_reference =  const T &amp;</definition>
-        <argsstring></argsstring>
-        <name>const_reference</name>
-        <qualifiedname>endstone::Registry::const_reference</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="51" column="5" bodyfile="include/endstone/registry.h" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> storage_type::iterator</type>
-        <definition>using endstone::Registry&lt; T &gt;::iterator =  typename storage_type::iterator</definition>
-        <argsstring></argsstring>
-        <name>iterator</name>
-        <qualifiedname>endstone::Registry::iterator</qualifiedname>
-        <briefdescription>
-<para>Iterator over stored elements. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="59" column="5" bodyfile="include/endstone/registry.h" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> storage_type::const_iterator</type>
-        <definition>using endstone::Registry&lt; T &gt;::const_iterator =  typename storage_type::const_iterator</definition>
-        <argsstring></argsstring>
-        <name>const_iterator</name>
-        <qualifiedname>endstone::Registry::const_iterator</qualifiedname>
-        <briefdescription>
-<para>Const iterator over stored elements. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="61" column="5" bodyfile="include/endstone/registry.h" bodystart="61" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="protected-type">
-      <memberdef kind="typedef" id="classendstone_1_1Registry_1a84959c1d1c49ffa5b6778c232a445c4d" prot="protected" static="no">
-        <type>std::unordered_map&lt; key_type, value_type &gt;</type>
-        <definition>using endstone::Registry&lt; T &gt;::storage_type =  std::unordered_map&lt;key_type, value_type&gt;</definition>
-        <argsstring></argsstring>
-        <name>storage_type</name>
-        <qualifiedname>endstone::Registry::storage_type</qualifiedname>
-        <briefdescription>
-<para>Underlying storage type. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="55" column="5" bodyfile="include/endstone/registry.h" bodystart="55" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Registry_1a9396db9d9eea6543c7ed9d6162e9822a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -128,16 +21,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="63" column="13"/>
+        <location file="include/endstone/registry.h" line="36" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1a02bab8b09ca4cd8e7eb1e772e8c1e86d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Registry_1a12086295fb74563d44e4e362cff1598b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
         <definition>virtual T * endstone::Registry&lt; T &gt;::get</definition>
-        <argsstring>(key_type key) noexcept=0</argsstring>
+        <argsstring>(NamespacedKey key) noexcept=0</argsstring>
         <name>get</name>
         <qualifiedname>endstone::Registry::get</qualifiedname>
         <param>
-          <type>key_type</type>
+          <type><ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -160,20 +53,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="73" column="15"/>
+        <location file="include/endstone/registry.h" line="46" column="15"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1ac6b2b57622e283766603fa6652558d9e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Registry_1a99649cc36f14453c0013b82e0f3843db" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
         <definition>virtual const T * endstone::Registry&lt; T &gt;::get</definition>
-        <argsstring>(key_type key) const noexcept=0</argsstring>
+        <argsstring>(NamespacedKey key) const noexcept=0</argsstring>
         <name>get</name>
         <qualifiedname>endstone::Registry::get</qualifiedname>
         <param>
-          <type>key_type</type>
+          <type><ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
           <declname>key</declname>
         </param>
         <briefdescription>
-<para>Const overload of <ref refid="classendstone_1_1Registry_1a02bab8b09ca4cd8e7eb1e772e8c1e86d" kindref="member">get()</ref>. </para>
+<para>Const overload of <ref refid="classendstone_1_1Registry_1a12086295fb74563d44e4e362cff1598b" kindref="member">get()</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -191,16 +84,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="81" column="21"/>
+        <location file="include/endstone/registry.h" line="54" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1a802a2854f83cf4851de301c0a428e972" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1Registry_1a72a8c099b8f3fa87b3ecd6a3b1ef4834" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
         <definition>virtual T &amp; endstone::Registry&lt; T &gt;::getOrThrow</definition>
-        <argsstring>(key_type key)</argsstring>
+        <argsstring>(const NamespacedKey key)</argsstring>
         <name>getOrThrow</name>
         <qualifiedname>endstone::Registry::getOrThrow</qualifiedname>
         <param>
-          <type>key_type</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -231,20 +124,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="90" column="15" bodyfile="include/endstone/registry.h" bodystart="90" bodyend="96"/>
+        <location file="include/endstone/registry.h" line="63" column="15" bodyfile="include/endstone/registry.h" bodystart="63" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1aa7a23437b398794827a2c99204b80445" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1Registry_1a2e2e60ccbebb8aea3cb57afe54f5443c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
         <definition>virtual const T &amp; endstone::Registry&lt; T &gt;::getOrThrow</definition>
-        <argsstring>(key_type key) const</argsstring>
+        <argsstring>(const NamespacedKey key) const</argsstring>
         <name>getOrThrow</name>
         <qualifiedname>endstone::Registry::getOrThrow</qualifiedname>
         <param>
-          <type>key_type</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
           <declname>key</declname>
         </param>
         <briefdescription>
-<para>Const overload of <ref refid="classendstone_1_1Registry_1a802a2854f83cf4851de301c0a428e972" kindref="member">getOrThrow()</ref>. </para>
+<para>Const overload of <ref refid="classendstone_1_1Registry_1a72a8c099b8f3fa87b3ecd6a3b1ef4834" kindref="member">getOrThrow()</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -271,80 +164,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="105" column="21" bodyfile="include/endstone/registry.h" bodystart="105" bodyend="111"/>
+        <location file="include/endstone/registry.h" line="78" column="21" bodyfile="include/endstone/registry.h" bodystart="78" bodyend="84"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1a934a6aa418f2d8c45e05d84932d65617" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" kindref="member">iterator</ref></type>
-        <definition>virtual iterator endstone::Registry&lt; T &gt;::begin</definition>
-        <argsstring>()=0</argsstring>
-        <name>begin</name>
-        <qualifiedname>endstone::Registry::begin</qualifiedname>
+      <memberdef kind="function" id="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Registry&lt; T &gt;::forEach</definition>
+        <argsstring>(std::function&lt; bool(const T &amp;)&gt; func) const =0</argsstring>
+        <name>forEach</name>
+        <qualifiedname>endstone::Registry::forEach</qualifiedname>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;)&gt;</type>
+          <declname>func</declname>
+        </param>
         <briefdescription>
-<para>Returns iterator to beginning of registry items. </para>
+<para>Apply a function to each stored element. </para>
         </briefdescription>
         <detaileddescription>
-<para>Enables range-based for loops.</para>
-<para><simplesect kind="return"><para>iterator Begin iterator. </para>
-</simplesect>
+<para>Iterates over all stored elements and applies the provided function to them. The iteration continues until the function returns false or all elements have been processed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A callable object taking a const reference to an element and returning a boolean. Returning false stops the iteration. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="120" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1a7000e9b723eeb4de37d97382e3d93cc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" kindref="member">iterator</ref></type>
-        <definition>virtual iterator endstone::Registry&lt; T &gt;::end</definition>
-        <argsstring>()=0</argsstring>
-        <name>end</name>
-        <qualifiedname>endstone::Registry::end</qualifiedname>
-        <briefdescription>
-<para>Returns iterator to end of registry items. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>iterator End iterator. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="127" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1a93c7909db64a83e1db3bb8045c624733" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" kindref="member">const_iterator</ref></type>
-        <definition>virtual const_iterator endstone::Registry&lt; T &gt;::begin</definition>
-        <argsstring>() const =0</argsstring>
-        <name>begin</name>
-        <qualifiedname>endstone::Registry::begin</qualifiedname>
-        <briefdescription>
-<para>Const begin iterator. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>const_iterator Const begin iterator. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="134" column="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Registry_1a04682eeb1ac4ae542c341f25bed244d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" kindref="member">const_iterator</ref></type>
-        <definition>virtual const_iterator endstone::Registry&lt; T &gt;::end</definition>
-        <argsstring>() const =0</argsstring>
-        <name>end</name>
-        <qualifiedname>endstone::Registry::end</qualifiedname>
-        <briefdescription>
-<para>Const end iterator. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>const_iterator Const end iterator. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/registry.h" line="141" column="28"/>
+        <location file="include/endstone/registry.h" line="96" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -363,23 +213,13 @@
 </parameterlist>
 </para>
     </detaileddescription>
-    <location file="include/endstone/registry.h" line="46" column="1" bodyfile="include/endstone/registry.h" bodystart="46" bodyend="142"/>
+    <location file="include/endstone/registry.h" line="34" column="1" bodyfile="include/endstone/registry.h" bodystart="34" bodyend="97"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Registry_1a934a6aa418f2d8c45e05d84932d65617" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>begin</name></member>
-      <member refid="classendstone_1_1Registry_1a93c7909db64a83e1db3bb8045c624733" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>begin</name></member>
-      <member refid="classendstone_1_1Registry_1a1fbadc90ae8173400539b7a5657ffa1e" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>const_iterator</name></member>
-      <member refid="classendstone_1_1Registry_1a294b14ffa431d30cea6e7722f067af4b" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>const_reference</name></member>
-      <member refid="classendstone_1_1Registry_1a7000e9b723eeb4de37d97382e3d93cc6" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>end</name></member>
-      <member refid="classendstone_1_1Registry_1a04682eeb1ac4ae542c341f25bed244d8" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>end</name></member>
-      <member refid="classendstone_1_1Registry_1a02bab8b09ca4cd8e7eb1e772e8c1e86d" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>get</name></member>
-      <member refid="classendstone_1_1Registry_1ac6b2b57622e283766603fa6652558d9e" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>get</name></member>
-      <member refid="classendstone_1_1Registry_1a802a2854f83cf4851de301c0a428e972" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>getOrThrow</name></member>
-      <member refid="classendstone_1_1Registry_1aa7a23437b398794827a2c99204b80445" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>getOrThrow</name></member>
-      <member refid="classendstone_1_1Registry_1a87d21bfef8e81931cb811fca7e2079ff" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>iterator</name></member>
-      <member refid="classendstone_1_1Registry_1a064491e80f8fd57f592cb51bd0d76715" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>key_type</name></member>
-      <member refid="classendstone_1_1Registry_1a69562de8dd0c2073b225a3722a323ea6" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>reference</name></member>
-      <member refid="classendstone_1_1Registry_1a84959c1d1c49ffa5b6778c232a445c4d" prot="protected" virt="non-virtual"><scope>endstone::Registry</scope><name>storage_type</name></member>
-      <member refid="classendstone_1_1Registry_1a25c58a4ce23faba72da639af96021e63" prot="public" virt="non-virtual"><scope>endstone::Registry</scope><name>value_type</name></member>
+      <member refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>forEach</name></member>
+      <member refid="classendstone_1_1Registry_1a12086295fb74563d44e4e362cff1598b" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1a99649cc36f14453c0013b82e0f3843db" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1a72a8c099b8f3fa87b3ecd6a3b1ef4834" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>getOrThrow</name></member>
+      <member refid="classendstone_1_1Registry_1a2e2e60ccbebb8aea3cb57afe54f5443c" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>getOrThrow</name></member>
       <member refid="classendstone_1_1Registry_1a9396db9d9eea6543c7ed9d6162e9822a" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>~Registry</name></member>
     </listofallmembers>
   </compounddef>
