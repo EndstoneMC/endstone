@@ -100,6 +100,7 @@ const std::unordered_map<std::string, void *> &get_detours()
         auto *detour = static_cast<char *>(module_base) + offset;
         detours.emplace(name, detour);
     });
+    detours.erase("endstone_get_server");
     return detours;
 }
 }  // namespace endstone::hook::details

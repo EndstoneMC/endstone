@@ -96,3 +96,8 @@ __attribute__((constructor)) int main()
     return init();
 }
 #endif
+
+extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Server &endstone_get_server()
+{
+    return entt::locator<endstone::core::EndstoneServer>::value();
+}

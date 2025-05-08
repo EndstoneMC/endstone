@@ -96,6 +96,8 @@ const std::unordered_map<std::string, void *> &get_detours()
             return true;
         },
         false);  // set load_symbol to false so symbols are limited to the export table
+
+    detours.erase("endstone_get_server");
     return detours;
 }
 }  // namespace endstone::hook::details
