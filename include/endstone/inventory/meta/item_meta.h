@@ -174,5 +174,26 @@ public:
      * @brief Removes all enchantments from this item meta.
      */
     virtual void removeEnchants() = 0;
+
+    /**
+     * @brief Checks to see if this has a repair penalty
+     *
+     * @return true if this has a repair penalty
+     */
+    virtual bool hasRepairCost() const = 0;
+
+    /**
+     * @brief Gets the repair penalty
+     *
+     * @return the repair penalty
+     */
+    virtual int getRepairCost() const = 0;
+
+    /**
+     * @brief Sets the repair penalty
+     *
+     * @param cost repair penalty
+     */
+    virtual void setRepairCost(int cost) = 0;
 };
 }  // namespace endstone

@@ -42,6 +42,10 @@ public:
     bool addEnchant(const std::string &id, int level, bool force) override;
     bool removeEnchant(const std::string &id) override;
     void removeEnchants() override;
+    bool hasRepairCost() const override;
+    int getRepairCost() const override;
+    void setRepairCost(int cost) override;
+
     virtual bool applicableTo(std::string_view type) const;
     virtual bool equalsCommon(const EndstoneItemMeta &other) const;
     virtual bool notUncommon() const;
@@ -51,6 +55,7 @@ private:
     std::optional<std::string> display_name_;
     std::vector<std::string> lore_;
     std::unordered_map<std::string, int> enchantments_;
+    int repair_cost_ = 0;
     int damage_ = 0;
 };
 

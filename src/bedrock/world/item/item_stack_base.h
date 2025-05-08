@@ -66,6 +66,7 @@ public:
     static const std::string TAG_DISPLAY;
     static const std::string TAG_DISPLAY_NAME;
     static const std::string TAG_LORE;
+    static const std::string TAG_REPAIR_COST;
     static const std::string TAG_ENCHANTS;
     static constexpr int ID_MASK = 0xffff;
     static constexpr int ENCHANT_MASK = 0x8000;

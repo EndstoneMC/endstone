@@ -128,6 +128,11 @@ EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
     // Enchant
     enchantments_ = buildEnchantments(tag);
 
+    // Repair cost
+    if (const auto repair_cost = tag.getInt(ItemStackBase::TAG_REPAIR_COST)) {
+        repair_cost_ = repair_cost;
+    }
+
     // Damage
     if (const auto damage = tag.getInt(Item::TAG_DAMAGE)) {
         damage_ = damage;
@@ -141,7 +146,7 @@ ItemMeta::Type EndstoneItemMeta::getType() const
 
 bool EndstoneItemMeta::isEmpty() const
 {
-    return !(hasDisplayName() || hasLore() || hasEnchants() || hasDamage());
+    return !(hasDisplayName() || hasLore() || hasEnchants() || hasRepairCost() || hasDamage());
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemMeta::clone() const
@@ -254,6 +259,21 @@ void EndstoneItemMeta::removeEnchants()
     enchantments_.clear();
 }
 
+bool EndstoneItemMeta::hasRepairCost() const
+{
+    return repair_cost_ > 0;
+}
+
+int EndstoneItemMeta::getRepairCost() const
+{
+    return repair_cost_;
+}
+
+void EndstoneItemMeta::setRepairCost(int cost)
+{
+    repair_cost_ = cost;
+}
+
 bool EndstoneItemMeta::applicableTo(std::string_view type) const
 {
     return type != "minecraft:air";
@@ -262,10 +282,11 @@ bool EndstoneItemMeta::applicableTo(std::string_view type) const
 bool EndstoneItemMeta::equalsCommon(const EndstoneItemMeta &that) const
 {
     return (hasDisplayName() ? that.hasDisplayName() && display_name_ == that.display_name_
-                             : !that.hasDisplayName())                                                        //
-        && (hasEnchants() ? that.hasEnchants() && enchantments_ == that.enchantments_ : !that.hasEnchants())  //
-        && (lore_ == that.lore_)                                                                              //
-        && (hasDamage() ? that.hasDamage() && damage_ == that.damage_ : !that.hasDamage());                   //
+                             : !that.hasDisplayName())                                                            //
+        && (hasEnchants() ? that.hasEnchants() && enchantments_ == that.enchantments_ : !that.hasEnchants())      //
+        && (lore_ == that.lore_)                                                                                  //
+        && (hasRepairCost() ? that.hasRepairCost() && repair_cost_ == that.repair_cost_ : !that.hasRepairCost())  //
+        && (hasDamage() ? that.hasDamage() && damage_ == that.damage_ : !that.hasDamage());                       //
 }
 
 bool EndstoneItemMeta::notUncommon() const
@@ -284,6 +305,10 @@ void EndstoneItemMeta::applyToItem(CompoundTag &tag) const
     }
 
     applyEnchantments(enchantments_, tag);
+
+    if (hasRepairCost()) {
+        tag.putInt(ItemStackBase::TAG_REPAIR_COST, repair_cost_);
+    }
 
     if (hasDamage()) {
         tag.putInt(Item::TAG_DAMAGE, damage_);
