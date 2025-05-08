@@ -133,6 +133,11 @@ EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
         repair_cost_ = repair_cost;
     }
 
+    // Unbreakable
+    if (const auto unbreakable = tag.getBoolean("Unbreakable")) {
+        unbreakable_ = unbreakable;
+    }
+
     // Damage
     if (const auto damage = tag.getInt(Item::TAG_DAMAGE)) {
         damage_ = damage;
@@ -146,7 +151,7 @@ ItemMeta::Type EndstoneItemMeta::getType() const
 
 bool EndstoneItemMeta::isEmpty() const
 {
-    return !(hasDisplayName() || hasLore() || hasEnchants() || hasRepairCost() || hasDamage());
+    return !(hasDisplayName() || hasLore() || hasEnchants() || hasRepairCost() || isUnbreakable() || hasDamage());
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemMeta::clone() const
@@ -274,6 +279,16 @@ void EndstoneItemMeta::setRepairCost(int cost)
     repair_cost_ = cost;
 }
 
+bool EndstoneItemMeta::isUnbreakable() const
+{
+    return unbreakable_;
+}
+
+void EndstoneItemMeta::setUnbreakable(bool unbreakable)
+{
+    unbreakable_ = unbreakable;
+}
+
 bool EndstoneItemMeta::applicableTo(std::string_view type) const
 {
     return type != "minecraft:air";
@@ -286,6 +301,7 @@ bool EndstoneItemMeta::equalsCommon(const EndstoneItemMeta &that) const
         && (hasEnchants() ? that.hasEnchants() && enchantments_ == that.enchantments_ : !that.hasEnchants())      //
         && (lore_ == that.lore_)                                                                                  //
         && (hasRepairCost() ? that.hasRepairCost() && repair_cost_ == that.repair_cost_ : !that.hasRepairCost())  //
+        && (isUnbreakable() == that.isUnbreakable())                                                              //
         && (hasDamage() ? that.hasDamage() && damage_ == that.damage_ : !that.hasDamage());                       //
 }
 
@@ -308,6 +324,10 @@ void EndstoneItemMeta::applyToItem(CompoundTag &tag) const
 
     if (hasRepairCost()) {
         tag.putInt(ItemStackBase::TAG_REPAIR_COST, repair_cost_);
+    }
+
+    if (isUnbreakable()) {
+        tag.putBoolean("Unbreakable", unbreakable_);
     }
 
     if (hasDamage()) {

@@ -42,13 +42,15 @@ public:
     bool addEnchant(const std::string &id, int level, bool force) override;
     bool removeEnchant(const std::string &id) override;
     void removeEnchants() override;
-    bool hasRepairCost() const override;
-    int getRepairCost() const override;
+    [[nodiscard]] bool hasRepairCost() const override;
+    [[nodiscard]] int getRepairCost() const override;
     void setRepairCost(int cost) override;
+    [[nodiscard]] bool isUnbreakable() const override;
+    void setUnbreakable(bool unbreakable) override;
 
-    virtual bool applicableTo(std::string_view type) const;
-    virtual bool equalsCommon(const EndstoneItemMeta &other) const;
-    virtual bool notUncommon() const;
+    [[nodiscard]] virtual bool applicableTo(std::string_view type) const;
+    [[nodiscard]] virtual bool equalsCommon(const EndstoneItemMeta &other) const;
+    [[nodiscard]] virtual bool notUncommon() const;
     virtual void applyToItem(::CompoundTag &tag) const;
 
 private:
@@ -57,6 +59,7 @@ private:
     std::unordered_map<std::string, int> enchantments_;
     int repair_cost_ = 0;
     int damage_ = 0;
+    bool unbreakable_ = false;
 };
 
 }  // namespace endstone::core

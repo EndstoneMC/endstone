@@ -42,7 +42,9 @@ void init_inventory(py::module_ &m)
         .def_property_readonly("has_repair_cost", &ItemMeta::hasRepairCost,
                                "Checks to see if this item has a repair penalty.")
         .def_property("repair_cost", &ItemMeta::getRepairCost, &ItemMeta::setRepairCost,
-                      "Gets or sets the repair penalty.");
+                      "Gets or sets the repair penalty.")
+        .def_property("is_unbreakable", &ItemMeta::isUnbreakable, &ItemMeta::setUnbreakable,
+                      "Gets or sets the unbreakable tag. An unbreakable item will not lose durability.");
 
     py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
 

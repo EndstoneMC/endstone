@@ -180,14 +180,14 @@ public:
      *
      * @return true if this has a repair penalty
      */
-    virtual bool hasRepairCost() const = 0;
+    [[nodiscard]] virtual bool hasRepairCost() const = 0;
 
     /**
      * @brief Gets the repair penalty
      *
      * @return the repair penalty
      */
-    virtual int getRepairCost() const = 0;
+    [[nodiscard]] virtual int getRepairCost() const = 0;
 
     /**
      * @brief Sets the repair penalty
@@ -195,5 +195,19 @@ public:
      * @param cost repair penalty
      */
     virtual void setRepairCost(int cost) = 0;
+
+    /**
+     * @brief Return if the unbreakable tag is true. An unbreakable item will not lose durability.
+     *
+     * @return true if the unbreakable tag is true
+     */
+    [[nodiscard]] virtual bool isUnbreakable() const = 0;
+
+    /**
+     * @brief Sets the unbreakable tag. An unbreakable item will not lose durability.
+     *
+     * @param unbreakable true if set unbreakable
+     */
+    virtual void setUnbreakable(bool unbreakable) = 0;
 };
 }  // namespace endstone

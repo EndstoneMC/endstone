@@ -174,6 +174,24 @@ Tag *CompoundTag::get(StringView key)
     return nullptr;
 }
 
+std::uint8_t CompoundTag::getByte(StringView key) const
+{
+    if (const auto *tag = getByteTag(key)) {
+        return tag->data;
+    }
+    return 0;
+}
+
+const ByteTag *CompoundTag::getByteTag(StringView key) const
+{
+    if (const auto *tag = get(key); tag) {
+        if (tag->getId() == Type::Byte) {
+            return static_cast<const ByteTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
 int CompoundTag::getInt(StringView name) const
 {
     if (const auto *tag = getIntTag(name)) {
@@ -259,6 +277,11 @@ ListTag *CompoundTag::getList(StringView name)
         }
     }
     return nullptr;
+}
+
+bool CompoundTag::getBoolean(StringView key) const
+{
+    return getByte(key) != 0;
 }
 
 bool CompoundTag::contains(StringView key) const

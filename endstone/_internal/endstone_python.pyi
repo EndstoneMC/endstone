@@ -1463,6 +1463,14 @@ class ItemMeta:
         Checks to see if this item has a repair penalty.
         """
     @property
+    def is_unbreakable(self) -> bool:
+        """
+        Gets or sets the unbreakable tag. An unbreakable item will not lose durability.
+        """
+    @is_unbreakable.setter
+    def is_unbreakable(self, arg1: bool) -> None:
+        ...
+    @property
     def lore(self) -> list[str] | None:
         """
         Gets or sets the lore for this item.
