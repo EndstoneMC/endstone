@@ -25,7 +25,6 @@
 #include <boost/algorithm/string/predicate.hpp>
 
 #include "endstone/core/logger_factory.h"
-#include "endstone/core/util/error.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
@@ -520,24 +519,23 @@ void EndstonePluginManager::callEvent(Event &event)
     }
 }
 
-Result<void> EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
-                                                  EventPriority priority, Plugin &plugin, bool ignore_cancelled)
+void EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
+                                          EventPriority priority, Plugin &plugin, bool ignore_cancelled)
 {
     if (!plugin.isEnabled()) {
-        return nonstd::make_unexpected(
-            make_error("Plugin {} attempted to register listener for event {} while not enabled.",
-                       plugin.getDescription().getFullName(), event));
+        server_.getLogger().error("Plugin {} attempted to register listener for event {} while not enabled.",
+                                  plugin.getDescription().getFullName(), event);
+        return;
     }
 
     auto &handler_list = event_handlers_.emplace(event, event).first->second;
     const auto *handler = handler_list.registerHandler(
         std::make_unique<EventHandler>(event, executor, priority, plugin, ignore_cancelled));
     if (!handler) {
-        return nonstd::make_unexpected(
-            make_error("Plugin {} failed to register listener for event {}: Handler type mismatch",
-                       plugin.getDescription().getFullName(), event));
+        server_.getLogger().error("Plugin {} failed to register listener for event {}: Handler type mismatch",
+                                  plugin.getDescription().getFullName(), event);
+        return;
     }
-    return {};
 }
 
 Permission *EndstonePluginManager::getPermission(std::string name) const

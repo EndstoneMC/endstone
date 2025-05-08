@@ -22,7 +22,6 @@
 #include "endstone/core/scoreboard/score.h"
 #include "endstone/core/scoreboard/scoreboard.h"
 #include "endstone/core/server.h"
-#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 
@@ -100,7 +99,7 @@ Result<DisplaySlot> EndstoneObjective::getDisplaySlot() const
             if (result) {
                 return result.value();
             }
-            return nonstd::make_unexpected(make_error("Object is not displayed."));
+            return nonstd::make_unexpected("Object is not displayed.");
         });
 }
 
@@ -118,7 +117,7 @@ Result<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
             if (result) {
                 return result.value();
             }
-            return nonstd::make_unexpected(make_error("Object is not displayed."));
+            return nonstd::make_unexpected("Object is not displayed.");
         });
 }
 
@@ -154,7 +153,7 @@ Result<RenderType> EndstoneObjective::getRenderType() const
 Result<void> EndstoneObjective::setRenderType(RenderType render_type)
 {
     return checkState().and_then([](const auto * /*self*/) -> Result<void> {
-        return nonstd::make_unexpected(make_error("setRenderType is not supported."));
+        return nonstd::make_unexpected("setRenderType is not supported.");
     });
 }
 
@@ -168,7 +167,7 @@ Result<std::unique_ptr<Score>> EndstoneObjective::getScore(ScoreEntry entry) con
 Result<const EndstoneObjective *> EndstoneObjective::checkState() const
 {
     if (scoreboard_.board_.getObjective(name_) == nullptr) {
-        return nonstd::make_unexpected(make_error("Objective '{}' is unregistered from the scoreboard.", name_));
+        return nonstd::make_unexpected(fmt::format("Objective '{}' is unregistered from the scoreboard.", name_));
     }
     return this;
 }

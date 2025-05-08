@@ -26,7 +26,6 @@
 #include "endstone/core/scoreboard/objective.h"
 #include "endstone/core/scoreboard/score.h"
 #include "endstone/core/server.h"
-#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 
@@ -69,9 +68,7 @@ Result<std::unique_ptr<Objective>> EndstoneScoreboard::addObjective(std::string 
     }
 
     auto *objective = board_.addObjective(name, display_name, *cr);
-    if (!objective) {
-        return nonstd::make_unexpected(make_error("Objective {} already exists.", name));
-    }
+    ENDSTONE_CHECKF(objective, "Objective {} already exists.", name)
     return std::make_unique<EndstoneObjective>(*this, *objective);
 }
 

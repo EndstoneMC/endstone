@@ -33,6 +33,7 @@
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
@@ -42,7 +43,6 @@
 #include "endstone/core/plugin/python_plugin_loader.h"
 #include "endstone/core/registry.h"
 #include "endstone/core/signal_handler.h"
-#include "endstone/core/util/error.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
@@ -305,13 +305,7 @@ int EndstoneServer::getMaxPlayers() const
 
 Result<void> EndstoneServer::setMaxPlayers(int max_players)
 {
-    if (max_players < 0) {
-        return nonstd::make_unexpected(make_error("Max number of players must not be negative."));
-    }
-    if (max_players > SharedConstants::NetworkDefaultMaxConnections) {
-        return nonstd::make_unexpected(make_error("Max number of players must not exceed the hard limit {}",
-                                                  SharedConstants::NetworkDefaultMaxConnections));
-    }
+    ENDSTONE_CHECK(max_players >= 0, "Max number of players must be >= 0");
     getServer().getMinecraft()->getServerNetworkHandler()->setMaxNumPlayers(max_players);
     return {};
 }
@@ -487,9 +481,7 @@ Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
 
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
     const auto *block = block_descriptor.tryGetBlockNoLogging();
-    if (!block) {
-        return nonstd::make_unexpected(make_error("Block type {} cannot be found in the registry.", type));
-    }
+    ENDSTONE_CHECKF(block, "Block type {} cannot be found in the registry.", type);
 
     return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));
 }

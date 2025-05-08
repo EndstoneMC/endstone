@@ -64,11 +64,11 @@ public:
     {
         return sender_.hasPermission(perm);
     }
-    Result<PermissionAttachment *> addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
     {
         return sender_.addAttachment(plugin, name, value);
     }
-    Result<PermissionAttachment *> addAttachment(Plugin &plugin) override
+    PermissionAttachment *addAttachment(Plugin &plugin) override
     {
         return sender_.addAttachment(plugin);
     }

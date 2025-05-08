@@ -19,7 +19,6 @@
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/block/block_state.h"
 #include "endstone/core/server.h"
-#include "endstone/core/util/error.h"
 
 using endstone::core::EndstoneServer;
 

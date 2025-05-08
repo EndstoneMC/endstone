@@ -66,12 +66,12 @@ bool EndstoneMob::hasPermission(const Permission &perm) const
     return EndstoneActor::hasPermission(perm);
 }
 
-Result<PermissionAttachment *> EndstoneMob::addAttachment(Plugin &plugin, const std::string &name, bool value)
+PermissionAttachment *EndstoneMob::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return EndstoneActor::addAttachment(plugin, name, value);
 }
 
-Result<PermissionAttachment *> EndstoneMob::addAttachment(Plugin &plugin)
+PermissionAttachment *EndstoneMob::addAttachment(Plugin &plugin)
 {
     return EndstoneActor::addAttachment(plugin);
 }

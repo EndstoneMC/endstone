@@ -53,13 +53,12 @@ bool EndstoneProxiedCommandSender::hasPermission(const Permission &perm) const
     return getCaller().hasPermission(perm);
 }
 
-Result<PermissionAttachment *> EndstoneProxiedCommandSender::addAttachment(Plugin &plugin, const std::string &name,
-                                                                           bool value)
+PermissionAttachment *EndstoneProxiedCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return getCaller().addAttachment(plugin, name, value);
 }
 
-Result<PermissionAttachment *> EndstoneProxiedCommandSender::addAttachment(Plugin &plugin)
+PermissionAttachment *EndstoneProxiedCommandSender::addAttachment(Plugin &plugin)
 {
     return getCaller().addAttachment(plugin);
 }

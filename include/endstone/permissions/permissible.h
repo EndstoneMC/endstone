@@ -91,7 +91,7 @@ public:
      * @param value Value of the permission
      * @return The PermissionAttachment that was just created
      */
-    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
+    virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
     /**
      * Adds a new empty PermissionAttachment to this object
@@ -99,7 +99,7 @@ public:
      * @param plugin Plugin responsible for this attachment, may not be null or disabled
      * @return The PermissionAttachment that was just created
      */
-    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin) = 0;
+    virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
 
     /**
      * Removes the given PermissionAttachment from this object

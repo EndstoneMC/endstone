@@ -65,12 +65,12 @@ bool EndstoneActor::hasPermission(const Permission &perm) const
     return getPermissibleBase().hasPermission(perm);
 }
 
-Result<PermissionAttachment *> EndstoneActor::addAttachment(Plugin &plugin, const std::string &name, bool value)
+PermissionAttachment *EndstoneActor::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return getPermissibleBase().addAttachment(plugin, name, value);
 }
 
-Result<PermissionAttachment *> EndstoneActor::addAttachment(Plugin &plugin)
+PermissionAttachment *EndstoneActor::addAttachment(Plugin &plugin)
 {
     return getPermissibleBase().addAttachment(plugin);
 }
@@ -223,10 +223,8 @@ int EndstoneActor::getHealth() const
 
 Result<void> EndstoneActor::setHealth(int health) const
 {
-    if (health < 0 || health > getMaxHealth()) {
-        return nonstd::make_unexpected(
-            make_error("Health value ({}) must be between 0 and {}.", health, getMaxHealth()));
-    }
+    ENDSTONE_CHECKF(health >= 0 && health <= getMaxHealth(),  //
+                    "Health value ({}) must be between 0 and {}.", health, getMaxHealth())
     auto mutable_attr = getActor().getMutableAttribute("minecraft:health");
     mutable_attr.instance->setCurrentValue(static_cast<float>(health), mutable_attr.context);
     return {};

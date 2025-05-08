@@ -150,7 +150,7 @@ TEST_F(PlayerBanListTest, SaveBanList)
     auto &entry = ban_list.addBan("player11", uuid_, xuid_, "Misconduct", std::nullopt, "Moderator");
 
     auto result = ban_list.save();
-    EXPECT_TRUE(result) << result.error().getMessage() << result.error().getStackTrace();
+    EXPECT_TRUE(result) << result.error();
 
     // Verify the saved file content
     std::ifstream file(file_);
@@ -172,10 +172,10 @@ TEST_F(PlayerBanListTest, SaveBanList)
 TEST_F(PlayerBanListTest, SaveWithMissingOptionalFields)
 {
     EndstonePlayerBanList ban_list{file_};
-    auto &entry = ban_list.addBan("player12", "Cheating", std::nullopt, "Admin");
+    ban_list.addBan("player12", "Cheating", std::nullopt, "Admin");
 
     auto result = ban_list.save();
-    EXPECT_TRUE(result) << result.error().getMessage() << result.error().getStackTrace();
+    EXPECT_TRUE(result) << result.error();
 
     // Verify the saved file content
     std::ifstream file(file_);
@@ -200,7 +200,7 @@ TEST_F(PlayerBanListTest, SaveWithFileException)
     ban_list.addBan("player13", "Abuse", std::nullopt, "AutoModeration");
     auto result = ban_list.save();
     EXPECT_FALSE(result);
-    EXPECT_EQ(result.error().getMessage(), "Unable to open file '/invalid_path/test_banned_players.json'.");
+    EXPECT_EQ(result.error(), "Unable to open file '/invalid_path/test_banned_players.json'.");
 }
 
 TEST_F(PlayerBanListTest, LoadBanList)
@@ -222,7 +222,7 @@ TEST_F(PlayerBanListTest, LoadBanList)
 
     EndstonePlayerBanList ban_list{file_};
     auto result = ban_list.load();
-    EXPECT_TRUE(result) << result.error().getMessage() << result.error().getStackTrace();
+    EXPECT_TRUE(result) << result.error();
 
     EXPECT_EQ(ban_list.getEntries().size(), 1);
     auto *entry = ban_list.getBanEntry("player11");

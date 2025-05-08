@@ -95,7 +95,7 @@ public:
     static handle cast(T &&src, return_value_policy policy, handle parent)
     {
         if (!src) {
-            throw std::runtime_error(std::string(src.error().getMessage()));
+            throw std::runtime_error(src.error());
         }
         if (!std::is_lvalue_reference<T>::value) {
             policy = return_value_policy_override<Value>::policy(policy);
@@ -113,7 +113,7 @@ public:
     static handle cast(T &&src, return_value_policy policy, handle parent)
     {
         if (!src) {
-            throw std::runtime_error(std::string(src.error().getMessage()));
+            throw std::runtime_error(src.error());
         }
         return none().release();
     }

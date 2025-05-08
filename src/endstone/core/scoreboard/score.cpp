@@ -20,7 +20,6 @@
 #include "endstone/core/scoreboard/objective.h"
 #include "endstone/core/scoreboard/scoreboard.h"
 #include "endstone/core/server.h"
-#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 
@@ -51,17 +50,13 @@ Result<void> EndstoneScore::setValue(int score)
     return objective_->checkState().and_then([&](const auto *obj) -> Result<void> {
         return getOrCreateScoreboardId().and_then([&](const auto *id) -> Result<void> {
             return obj->isModifiable().and_then([&](bool modifiable) -> Result<void> {
-                if (!modifiable) {
-                    return nonstd::make_unexpected(make_error("Cannot modify read-only score."));
-                }
+                ENDSTONE_CHECK(modifiable, "Cannot modify read-only score.");
 
                 bool success = false;
                 obj->scoreboard_.board_.modifyPlayerScore(success, *id, obj->objective_, score,
                                                           PlayerScoreSetFunction::Set);
 
-                if (!success) {
-                    return nonstd::make_unexpected(make_error("Unable to modify score."));
-                }
+                ENDSTONE_CHECK(success, "Unable to modify score.");
                 return {};
             });
         });

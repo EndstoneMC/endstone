@@ -90,7 +90,6 @@ add_library(endstone_core
         spdlog/level_formatter.cpp
         spdlog/spdlog_adapter.cpp
         spdlog/text_formatter.cpp
-        util/error.cpp
         util/uuid.cpp
 )
 add_library(endstone::core ALIAS endstone_core)

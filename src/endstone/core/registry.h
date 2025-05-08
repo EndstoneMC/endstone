@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "endstone/namespaced_key.h"
+#include "endstone/registry.h"
 #include "endstone/server.h"
 
 namespace endstone::core {

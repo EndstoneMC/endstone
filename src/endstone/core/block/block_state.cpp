@@ -17,7 +17,6 @@
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/block/block_data.h"
-#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 
@@ -49,9 +48,7 @@ Result<void> EndstoneBlockState::setType(std::string type)
         using ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor;
         const auto block_descriptor = createBlockDescriptor(type, std::nullopt);
         auto *block = const_cast<::Block *>(block_descriptor.tryGetBlockNoLogging());
-        if (!block) {
-            return nonstd::make_unexpected(make_error("BlockState::setType failed: unknown block type {}.", type));
-        }
+        ENDSTONE_CHECKF(block, "BlockState::setType failed: unknown block type {}.", type);
         block_ = block;
     }
     return {};

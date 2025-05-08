@@ -40,7 +40,6 @@
 #include "endstone/core/network/data_packet.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
-#include "endstone/core/util/error.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
@@ -122,12 +121,12 @@ bool EndstonePlayer::hasPermission(const Permission &perm) const
     return perm_->hasPermission(perm);
 }
 
-Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
+PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return perm_->addAttachment(plugin, name, value);
 }
 
-Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin)
+PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin)
 {
     return perm_->addAttachment(plugin);
 }
@@ -407,9 +406,8 @@ float EndstonePlayer::getExpProgress() const
 
 Result<void> EndstonePlayer::setExpProgress(float progress)
 {
-    if (progress < 0.0 || progress > 1.0) {
-        return nonstd::make_unexpected(make_error("Experience progress must be between 0.0 and 1.0 ({})", progress));
-    }
+    ENDSTONE_CHECKF(progress >= 0.0 && progress <= 1.0,  //
+                    "Experience progress must be between 0.0 and 1.0 ({})", progress);
     auto mutable_attr = getPlayer().getMutableAttribute("minecraft:player.experience");
     mutable_attr.instance->setCurrentValue(progress, mutable_attr.context);
     return {};
@@ -422,9 +420,7 @@ int EndstonePlayer::getExpLevel() const
 
 Result<void> EndstonePlayer::setExpLevel(int level)
 {
-    if (level < 0) {
-        return nonstd::make_unexpected(make_error("Experience level must not be negative ({})", level));
-    }
+    ENDSTONE_CHECKF(level >= 0, "Experience level must not be negative ({})", level);
     giveExpLevels(level - getExpLevel());
     return {};
 }
@@ -460,7 +456,7 @@ bool EndstonePlayer::isFlying() const
 Result<void> EndstonePlayer::setFlying(bool value)
 {
     if (!getAllowFlight()) {
-        return nonstd::make_unexpected(make_error("Player {} is not allowed to fly.", getName()));
+        ENDSTONE_CHECKF(!value, "Player {} is not allowed to fly.", getName());
     }
 
     getPlayer().getAbilities().setAbility(AbilitiesIndex::Flying, value);

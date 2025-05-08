@@ -18,7 +18,6 @@
 
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
-#include "endstone/core/util/error.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
 
@@ -105,26 +104,27 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, bool op)
     }
 }
 
-Result<PermissionAttachment *> PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
+PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     if (name.empty()) {
-        return nonstd::make_unexpected(make_error("Permission name cannot be empty"));
+        plugin.getLogger().error("Could not add PermissionAttachment: Permission name cannot be empty");
+        return nullptr;
     }
 
-    auto result = addAttachment(plugin);
+    auto *result = addAttachment(plugin);
     if (result) {
-        result.value()->setPermission(name, value);
+        result->setPermission(name, value);
         recalculatePermissions();
     }
 
     return result;
 }
 
-Result<PermissionAttachment *> PermissibleBase::addAttachment(Plugin &plugin)
+PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin)
 {
     if (!plugin.isEnabled()) {
-        return nonstd::make_unexpected(make_error("Could not add PermissionAttachment: Plugin {} is disabled",
-                                                  plugin.getDescription().getFullName()));
+        plugin.getLogger().error("Could not add PermissionAttachment: Plugin is disabled");
+        return nullptr;
     }
 
     const auto &it = attachments_.emplace_back(std::make_unique<PermissionAttachment>(plugin, parent_));
@@ -148,7 +148,7 @@ Result<void> PermissibleBase::removeAttachment(PermissionAttachment &attachment)
         return {};
     }
 
-    return nonstd::make_unexpected(make_error("Given attachment is not part of Permissible object."));
+    return nonstd::make_unexpected("Given attachment is not part of Permissible object.");
 }
 
 void PermissibleBase::recalculatePermissions()

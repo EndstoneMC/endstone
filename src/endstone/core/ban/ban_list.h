@@ -25,7 +25,6 @@
 #include <nlohmann/json.hpp>
 
 #include "endstone/ban/ip_ban_list.h"
-#include "endstone/core/util/error.h"
 #include "endstone/util/result.h"
 
 namespace fs = std::filesystem;
@@ -144,7 +143,7 @@ public:
 
         std::ofstream file(file_);
         if (!file) {
-            return nonstd::make_unexpected(make_error("Unable to open file '{}'.", file_));
+            return nonstd::make_unexpected(fmt::format("Unable to open file '{}'.", file_));
         }
 
         try {
@@ -152,7 +151,7 @@ public:
             return {};
         }
         catch (const std::exception &e) {
-            return nonstd::make_unexpected(make_error("Unable to write file '{}': {}", file_, e.what()));
+            return nonstd::make_unexpected(fmt::format("Unable to write file '{}': {}", file_, e.what()));
         }
     }
 
@@ -166,7 +165,7 @@ public:
 
         std::ifstream file(file_);
         if (!file) {
-            return nonstd::make_unexpected(make_error("Unable to open file '{}'.", file_));
+            return nonstd::make_unexpected(fmt::format("Unable to open file '{}'.", file_));
         }
 
         try {
@@ -202,7 +201,7 @@ public:
             return {};
         }
         catch (const std::exception &e) {
-            return nonstd::make_unexpected(make_error("Unable to read file '{}': {}", file_, e.what()));
+            return nonstd::make_unexpected(fmt::format("Unable to read file '{}': {}", file_, e.what()));
         }
     }
 

@@ -15,21 +15,14 @@
 #include "endstone/core/scheduler/scheduler.h"
 
 #include "endstone/core/scheduler/async_task.h"
-#include "endstone/core/util/error.h"
 
 namespace endstone::core {
 
 namespace {
 Result<void> validate(const Plugin &plugin, const std::function<void()> &task)
 {
-    if (!task) {
-        return nonstd::make_unexpected(make_error("Plugin {} attempted to register an empty task", plugin.getName()));
-    }
-
-    if (!plugin.isEnabled()) {
-        return nonstd::make_unexpected(
-            make_error("Plugin {} attempted to register task while disabled", plugin.getName()));
-    }
+    ENDSTONE_CHECKF(task, "Plugin {} attempted to register an empty task", plugin.getName());
+    ENDSTONE_CHECKF(plugin.isEnabled(), "Plugin {} attempted to register task while disabled", plugin.getName());
     return {};
 }
 }  // namespace
