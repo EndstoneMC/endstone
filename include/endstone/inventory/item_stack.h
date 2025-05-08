@@ -125,7 +125,7 @@ private:
         }
 
         const auto &item_factory = Endstone::getServer().getItemFactory();
-        if (item_factory.isApplicable(meta, type)) {
+        if (!item_factory.isApplicable(meta, type)) {
             return false;
         }
 

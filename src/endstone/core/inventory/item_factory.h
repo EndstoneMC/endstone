@@ -14,8 +14,7 @@
 
 #pragma once
 
-#include <bedrock/world/item/item_stack_base.h>
-
+#include "endstone/core/inventory/meta/item_meta.h"
 #include "endstone/inventory/item_factory.h"
 
 namespace endstone::core {
@@ -28,6 +27,9 @@ public:
     bool isApplicable(const ItemMeta *meta, std::string_view type) const override;
     bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const override;
     std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, std::string_view type) const override;
+
+private:
+    std::unique_ptr<ItemMeta> getItemMeta(std::string_view type, const EndstoneItemMeta *meta) const;
 };
 
 }  // namespace endstone::core
