@@ -34,7 +34,8 @@ public:
      */
     static Server &getServer()
     {
-        if (server_ == nullptr) {
+        static Server *server;
+        if (server == nullptr) {
 #ifdef _WIN32
             auto handle = GetModuleHandle("endstone_runtime.dll");
 #else
@@ -54,18 +55,15 @@ public:
                 throw std::runtime_error("Failed to find symbol endstone_get_server");
             }
 
-            server_ = &fn();
-            if (!server_) {
+            server = &fn();
+            if (!server) {
                 throw std::runtime_error("Failed to get server instance.");
             }
         }
-
-        return *server_;
+        return *server;
     }
 
 private:
     Endstone() = delete;
-
-    static Server *server_;
 };
 }  // namespace endstone

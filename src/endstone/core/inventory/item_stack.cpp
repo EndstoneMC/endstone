@@ -16,6 +16,7 @@
 
 #include "bedrock/world/item/item.h"
 #include "endstone/core/inventory/item_factory.h"
+#include "endstone/core/inventory/meta/item_meta.h"
 
 namespace endstone::core {
 
@@ -117,10 +118,11 @@ std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item
         return EndstoneItemFactory::instance().getItemMeta(getType(item));
     }
 
-    if (type == "minecraft:filled_map") {
-        return std::make_unique<EndstoneMapMeta>(item->getUserData());
-    }
-    return std::make_unique<EndstoneItemMeta>(item->getUserData());
+    // TODO(item): support map meta
+    // if (type == "minecraft:filled_map") {
+    //     return std::make_unique<EndstoneMapMeta>(item->getUserData());
+    // }
+    return std::make_unique<EndstoneItemMeta>(*item->getUserData());
 }
 
 bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
