@@ -65,18 +65,21 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 | virtual [**int**](classendstone_1_1Vector.md) | [**getEnchantLevel**](#function-getenchantlevel) ([**const**](classendstone_1_1Vector.md) std::string & id) const = 0<br>_Checks for the level of the specified enchantment._  |
 | virtual std::unordered\_map&lt; std::string, [**int**](classendstone_1_1Vector.md) &gt; | [**getEnchants**](#function-getenchants) () const = 0<br>_Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual std::optional&lt; std::vector&lt; std::string &gt; &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getRepairCost**](#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
 | virtual Type | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasDamage**](#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasDisplayName**](#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasEnchant**](#function-hasenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) const = 0<br>_Checks for existence of the specified enchantment._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasEnchants**](#function-hasenchants) () const = 0<br>_Checks for the existence of any enchantments._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**hasLore**](#function-haslore) () const = 0<br>_Checks for existence of lore._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**hasRepairCost**](#function-hasrepaircost) () const = 0<br>_Checks to see if this has a repair penalty._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isEmpty**](#function-isempty) () const = 0<br>_Checks if the item metadata is empty._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**removeEnchant**](#function-removeenchant) ([**const**](classendstone_1_1Vector.md) std::string & id) = 0<br>_Removes the specified enchantment from this item meta._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**removeEnchants**](#function-removeenchants) () = 0<br>_Removes all enchantments from this item meta._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setDamage**](#function-setdamage) ([**int**](classendstone_1_1Vector.md) damage) = 0<br>_Sets the damage._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setDisplayName**](#function-setdisplayname) (std::optional&lt; std::string &gt; name) = 0<br>_Sets the display name._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given std::nullopt._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setRepairCost**](#function-setrepaircost) ([**int**](classendstone_1_1Vector.md) cost) = 0<br>_Sets the repair penalty._  |
 | virtual  | [**~ItemMeta**](#function-itemmeta) () = default<br> |
 
 
@@ -331,6 +334,31 @@ a list of lore that is set
 
 
 
+### function getRepairCost 
+
+_Gets the repair penalty._ 
+```C++
+virtual int endstone::ItemMeta::getRepairCost () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the repair penalty 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getType 
 
 _Gets the type of this item meta._ 
@@ -490,6 +518,31 @@ true if this has lore
 
 
 
+### function hasRepairCost 
+
+_Checks to see if this has a repair penalty._ 
+```C++
+virtual bool endstone::ItemMeta::hasRepairCost () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+true if this has a repair penalty 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isEmpty 
 
 _Checks if the item metadata is empty._ 
@@ -634,6 +687,33 @@ virtual void endstone::ItemMeta::setLore (
 
 
 * `lore` the lore that will be set 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setRepairCost 
+
+_Sets the repair penalty._ 
+```C++
+virtual void endstone::ItemMeta::setRepairCost (
+    int cost
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `cost` repair penalty 
 
 
 

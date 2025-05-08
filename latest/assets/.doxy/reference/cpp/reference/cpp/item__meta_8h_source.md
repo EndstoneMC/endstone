@@ -79,6 +79,12 @@ public:
     virtual bool removeEnchant(const std::string &id) = 0;
 
     virtual void removeEnchants() = 0;
+
+    virtual bool hasRepairCost() const = 0;
+
+    virtual int getRepairCost() const = 0;
+
+    virtual void setRepairCost(int cost) = 0;
 };
 }  // namespace endstone
 ```
