@@ -1,7 +1,3 @@
-#include <utility>
-
-#include <fmt/format.h>
-
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +16,9 @@
 
 #include <memory>
 
+#include "endstone/detail/endstone.h"
+#include "endstone/inventory/item_factory.h"
 #include "endstone/inventory/meta/item_meta.h"
-#include "item_factory.h"
 
 namespace endstone {
 
