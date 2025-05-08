@@ -35,9 +35,9 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, std::string_view ty
 }
 
 namespace {
-bool equals0(const EndstoneItemMeta *meta1, const EndstoneItemMeta *meta2)
+bool equals0(const EndstoneItemMeta &meta1, const EndstoneItemMeta &meta2)
 {
-    return meta1->equalsCommon(*meta2) && meta1->notUncommon() && meta2->notUncommon();
+    return meta1.equalsCommon(meta2) && meta1.notUncommon() && meta2.notUncommon();
 }
 }  // namespace
 
@@ -55,7 +55,7 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
         return meta1->isEmpty();
     }
 
-    return equals0(static_cast<const EndstoneItemMeta *>(meta1), static_cast<const EndstoneItemMeta *>(meta2));
+    return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, std::string_view type) const

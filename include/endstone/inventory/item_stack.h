@@ -102,7 +102,7 @@ public:
      */
     virtual bool hasItemMeta() const
     {
-        return Endstone::getServer().getItemFactory().equals(meta_.get(), nullptr);
+        return !Endstone::getServer().getItemFactory().equals(meta_.get(), nullptr);
     }
 
     /**
