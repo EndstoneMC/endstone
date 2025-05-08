@@ -21,6 +21,9 @@
 #include <string>
 #include <string_view>
 
+#include "endstone/plugin/plugin.h"
+#include "endstone/util/result.h"
+
 namespace endstone {
 
 /**
@@ -38,20 +41,18 @@ public:
     static constexpr std::string_view MINECRAFT = "minecraft";
 
     /**
-     * @brief Factory method to create a NamespacedKey. Returns std::nullopt if namespace or key is invalid.
+     * @brief Create a key in the plugin's namespace.
      *
-     * @param namespace_ the namespace
-     * @param key the key
-     * @return optional containing the NamespacedKey, or std::nullopt on failure
+     * @param plugin the plugin to use for the namespace
+     * @param key the key to create
      */
-    static std::optional<NamespacedKey> create(std::string_view namespace_, std::string_view key)
+    static Result<NamespacedKey> create(const Plugin &plugin, std::string_view key)
     {
-        std::string ns = normalizeString(namespace_);
+        std::string ns = normalizeString(plugin.getName());
         std::string k = normalizeString(key);
 
-        if (!isValidNamespace(ns) || !isValidKey(k)) {
-            return std::nullopt;
-        }
+        ENDSTONE_CHECKF(isValidNamespace(ns), "Invalid namespace. Must be [a-z0-9._-]: {}", ns);
+        ENDSTONE_CHECKF(isValidKey(key), "Invalid key. Must be [a-z0-9/._-]: {}", k);
         return NamespacedKey(std::move(ns), std::move(k));
     }
 
@@ -59,50 +60,42 @@ public:
      * Parse a NamespacedKey from a string, with an optional default namespace.
      *
      * Examples:
-     * - fromString("foo", "plugin")       -> "plugin:foo"
-     * - fromString("foo:bar", std::nullopt) -> "foo:bar"
-     * - fromString(":foo", "minecraft")   -> "minecraft:foo"
-     * - fromString("foo", std::nullopt)     -> "minecraft:foo"
-     * - fromString("Foo", ...)              -> std::nullopt
+     * - fromString("foo", plugin)      -> "plugin:foo"
+     * - fromString("foo:bar", nullptr) -> "foo:bar"
+     * - fromString(":foo", nullptr)    -> "minecraft:foo"
+     * - fromString("foo", nullptr)     -> "minecraft:foo"
+     * - fromString("Foo", plugin)      -> std::nullopt
      *
      * @param input the string to parse
-     * @param default_ns optional default namespace; if std::nullopt, uses Minecraft
+     * @param plugin optional default namespace; if nullptr, uses the minecraft namespace
      * @return optional containing the parsed key, or std::nullopt if invalid
      */
-    static std::optional<NamespacedKey> fromString(std::string_view input,
-                                                   std::optional<std::string_view> default_ns = std::nullopt)
+    static Result<NamespacedKey> fromString(std::string_view input, const Plugin *plugin = nullptr)
     {
-        if (input.empty()) {
-            return std::nullopt;
-        }
-        size_t colon_count = std::count(input.begin(), input.end(), ':');
-        if (colon_count > 1) {
-            return std::nullopt;
-        }
+        ENDSTONE_CHECK(!input.empty(), "Input string must not be empty or null");
 
-        std::string ns;
-        std::string key;
+        const auto colon_count = std::ranges::count(input, ':');
+        ENDSTONE_CHECK(colon_count <= 1, "Input string is invalid: " + std::string(input));
+
+        std::string_view ns;
+        std::string_view key;
         if (colon_count == 1) {
-            auto pos = input.find(':');
-            ns = std::string(input.substr(0, pos));
-            key = std::string(input.substr(pos + 1));
+            const auto pos = input.find(':');
+            ns = input.substr(0, pos);
+            key = input.substr(pos + 1);
         }
         else {
-            key = std::string(input);
+            key = input;
         }
 
-        std::string_view final_ns;
-        if (colon_count == 1) {
-            final_ns = ns.empty() ? default_ns.value_or(MINECRAFT) : ns;
-        }
-        else {
-            if (!isValidKey(key)) {
-                return std::nullopt;
-            }
-            final_ns = default_ns.value_or(MINECRAFT);
+        ENDSTONE_CHECK(isValidKey(key), "Invalid key. Must be [a-z0-9/._-]: " + std::string(key));
+
+        if (colon_count == 0 || ns.empty()) {
+            return plugin ? create(*plugin, key) : NamespacedKey(MINECRAFT, key);
         }
 
-        return create(final_ns, key);
+        ENDSTONE_CHECK(isValidNamespace(ns), "Invalid namespace. Must be [a-z0-9._-]: " + std::string(ns));
+        return NamespacedKey(ns, key);
     }
 
     [[nodiscard]] const std::string &getNamespace() const noexcept
@@ -130,12 +123,12 @@ private:
     /**
      * Private constructor; use create() or fromString() instead.
      */
-    NamespacedKey(std::string ns, std::string key) : namespace_(std::move(ns)), key_(std::move(key)) {}
+    NamespacedKey(const std::string_view ns, const std::string_view key) : namespace_(ns), key_(key) {}
 
     /**
      * Normalize a string view to lowercase, returning a new std::string.
      */
-    static std::string normalizeString(std::string_view str)
+    static std::string normalizeString(const std::string_view str)
     {
         std::string s(str);
         std::ranges::transform(s, s.begin(), ::tolower);
@@ -152,12 +145,12 @@ private:
         return isValidNamespaceChar(c) || c == '/';
     }
 
-    static bool isValidNamespace(const std::string &ns) noexcept
+    static bool isValidNamespace(const std::string_view ns) noexcept
     {
         return !ns.empty() && std::ranges::all_of(ns, isValidNamespaceChar);
     }
 
-    static bool isValidKey(const std::string &key) noexcept
+    static bool isValidKey(const std::string_view key) noexcept
     {
         return !key.empty() && std::ranges::all_of(key, isValidKeyChar);
     }
@@ -165,9 +158,8 @@ private:
 
 }  // namespace endstone
 
-namespace std {
 template <>
-struct hash<endstone::NamespacedKey> {
+struct std::hash<endstone::NamespacedKey> {
     size_t operator()(const endstone::NamespacedKey &key) const noexcept
     {
         const size_t h1 = std::hash<std::string_view>{}(key.getNamespace());
@@ -175,4 +167,12 @@ struct hash<endstone::NamespacedKey> {
         return h1 ^ (h2 + 0x9e3779b9 + (h1 << 6) + (h1 >> 2));
     }
 };
-}  // namespace std
+
+template <>
+struct fmt::formatter<endstone::NamespacedKey> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::NamespacedKey &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}:{}", val.getNamespace(), val.getKey());
+    }
+};  // namespace fmt

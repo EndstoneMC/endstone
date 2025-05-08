@@ -39,6 +39,7 @@ void init_inventory(py::module_ &);
 void init_lang(py::module_ &);
 void init_level(py::module_ &);
 void init_logger(py::module_ &);
+void init_namespaced_key(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
@@ -98,6 +99,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_plugin(m);
     init_scheduler(m);
     init_permissions(m, permissible, permission, permission_default);
+    init_namespaced_key(m);
     init_server(server);
     init_event(m, event, event_priority);
 }
@@ -142,6 +144,26 @@ void init_color_format(py::module_ &m)
         .def_property_readonly_static("BOLD", [](const py::object &) { return ColorFormat::Bold; })
         .def_property_readonly_static("ITALIC", [](const py::object &) { return ColorFormat::Italic; })
         .def_property_readonly_static("RESET", [](const py::object &) { return ColorFormat::Reset; });
+}
+
+void init_namespaced_key(py::module_ &m)
+{
+    py::class_<NamespacedKey>(m, "NamespacedKey")
+        .def(py::init([](const Plugin &plugin, std::string key) {
+            auto result = NamespacedKey::create(plugin, key);
+            if (!result) {
+                throw std::runtime_error(result.error());
+            }
+            return result.value();
+        }))
+        .def_property_readonly("namespace", &NamespacedKey::getNamespace, "Returns the namespace of the NamespacedKey.")
+        .def_property_readonly("key", &NamespacedKey::getKey, "Returns the key of the NamespacedKey.")
+        .def_static("from_string", &NamespacedKey::fromString, "Parses a NamespacedKey from a string.",
+                    py::arg("input"), py::arg("plugin") = py::none())
+        .def("__str__", &NamespacedKey::toString)
+        .def("__repr__", [](const NamespacedKey &key) {
+            return "NamespacedKey(namespace='" + key.getNamespace() + "', key='" + key.getKey() + "')";
+        });
 }
 
 void init_game_mode(py::module_ &m)

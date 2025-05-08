@@ -1,4 +1,14 @@
-from endstone._internal.endstone_python import ColorFormat, GameMode, Logger, OfflinePlayer, Player, Server, Skin
+from endstone._internal.endstone_python import (
+    ColorFormat,
+    GameMode,
+    Logger,
+    NamespacedKey,
+    OfflinePlayer,
+    Player,
+    Server,
+    Skin,
+)
+
 from endstone._internal.version import __version__
 
 __minecraft_version__ = "1.21.80"
@@ -9,6 +19,7 @@ __all__ = [
     "ColorFormat",
     "GameMode",
     "Logger",
+    "NamespacedKey",
     "OfflinePlayer",
     "Player",
     "Server",
