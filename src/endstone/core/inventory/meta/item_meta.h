@@ -21,6 +21,7 @@ namespace endstone::core {
 
 class EndstoneItemMeta : public ItemMeta {
 public:
+    EndstoneItemMeta(const EndstoneItemMeta *meta);
     EndstoneItemMeta(const ::CompoundTag &tag);
     [[nodiscard]] Type getType() const override;
     [[nodiscard]] bool isEmpty() const override;
@@ -41,6 +42,9 @@ public:
     bool addEnchant(const std::string &id, int level, bool force) override;
     bool removeEnchant(const std::string &id) override;
     void removeEnchants() override;
+    virtual bool applicableTo(std::string_view type) const;
+    virtual bool equalsCommon(const EndstoneItemMeta &other) const;
+    virtual bool notUncommon() const;
     virtual void applyToItem(::CompoundTag &tag) const;
 
 private:

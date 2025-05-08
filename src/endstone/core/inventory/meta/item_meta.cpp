@@ -95,6 +95,14 @@ void applyEnchantments(const std::unordered_map<std::string, int> &enchantments,
 }
 }  // namespace
 
+EndstoneItemMeta::EndstoneItemMeta(const EndstoneItemMeta *meta)
+{
+    if (meta == nullptr) {
+        return;
+    }
+    *this = *meta;
+}
+
 EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
 {
     if (const auto *display = tag.getCompound(ItemStackBase::TAG_DISPLAY)) {
@@ -244,6 +252,25 @@ bool EndstoneItemMeta::removeEnchant(const std::string &id)
 void EndstoneItemMeta::removeEnchants()
 {
     enchantments_.clear();
+}
+
+bool EndstoneItemMeta::applicableTo(std::string_view type) const
+{
+    return type != "minecraft:air";
+}
+
+bool EndstoneItemMeta::equalsCommon(const EndstoneItemMeta &that) const
+{
+    return (hasDisplayName() ? that.hasDisplayName() && display_name_ == that.display_name_
+                             : !that.hasDisplayName())                                                        //
+        && (hasEnchants() ? that.hasEnchants() && enchantments_ == that.enchantments_ : !that.hasEnchants())  //
+        && (lore_ == that.lore_)                                                                              //
+        && (hasDamage() ? that.hasDamage() && damage_ == that.damage_ : !that.hasDamage());                   //
+}
+
+bool EndstoneItemMeta::notUncommon() const
+{
+    return true;
 }
 
 void EndstoneItemMeta::applyToItem(CompoundTag &tag) const
