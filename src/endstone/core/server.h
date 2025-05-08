@@ -84,6 +84,7 @@ public:
 
     [[nodiscard]] bool isPrimaryThread() const override;
 
+    [[nodiscard]] ItemFactory &getItemFactory() const override;
     [[nodiscard]] Scoreboard *getScoreboard() const override;
     [[nodiscard]] std::shared_ptr<Scoreboard> createScoreboard() override;
     float getCurrentMillisecondsPerTick() override;

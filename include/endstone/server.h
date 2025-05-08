@@ -234,7 +234,7 @@ public:
      * @return the item factory
      * @see ItemFactory
      */
-    [[nodiscard]] virtual ItemFactory &getItemFactory();
+    [[nodiscard]] virtual ItemFactory &getItemFactory() const = 0;
 
     /**
      * @brief Gets the primary Scoreboard controlled by the server.

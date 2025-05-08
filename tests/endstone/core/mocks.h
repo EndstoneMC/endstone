@@ -45,6 +45,7 @@ public:
     MOCK_METHOD(void, broadcast, (const endstone::Message &, const std::string &), (const, override));
     MOCK_METHOD(void, broadcastMessage, (const endstone::Message &), (const, override));
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
+    MOCK_METHOD(endstone::ItemFactory &, getItemFactory, (), (const, override));
     MOCK_METHOD(endstone::Scoreboard *, getScoreboard, (), (const, override));
     MOCK_METHOD(std::shared_ptr<endstone::Scoreboard>, createScoreboard, (), (override));
     MOCK_METHOD(float, getCurrentMillisecondsPerTick, (), (override));

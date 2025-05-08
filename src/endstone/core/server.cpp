@@ -44,6 +44,7 @@
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
+#include "inventory/item_factory.h"
 
 namespace fs = std::filesystem;
 namespace py = pybind11;
@@ -397,6 +398,11 @@ void EndstoneServer::broadcastMessage(const Message &message) const
 bool EndstoneServer::isPrimaryThread() const
 {
     return std::this_thread::get_id() == server_instance_->server_instance_thread_.get_id();
+}
+
+ItemFactory &EndstoneServer::getItemFactory() const
+{
+    return EndstoneItemFactory::instance();
 }
 
 Scoreboard *EndstoneServer::getScoreboard() const
