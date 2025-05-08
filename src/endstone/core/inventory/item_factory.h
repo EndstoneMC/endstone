@@ -20,10 +20,14 @@
 
 namespace endstone::core {
 
-class EndstoneItemFactory {
+class EndstoneItemFactory : public ItemFactory {
 public:
-    static std::unique_ptr<ItemMeta> getItemMeta(std::string_view type, const ItemStackBase &item);
-    static void applyToItem(const ItemMeta &meta, ItemStackBase &item);
+    static EndstoneItemFactory &instance();
+
+    std::unique_ptr<ItemMeta> getItemMeta(std::string_view type) const override;
+    bool isApplicable(const ItemMeta *meta, std::string_view type) const override;
+    bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const override;
+    std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, std::string_view type) const override;
 };
 
 }  // namespace endstone::core

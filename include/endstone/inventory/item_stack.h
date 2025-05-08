@@ -32,7 +32,7 @@ class EndstoneItemStack;
 class ItemStack {
 public:
     ItemStack() = default;
-    explicit ItemStack(std::string type, int amount = 1) : type_(std::move(type)), amount_(amount) {}
+    explicit ItemStack(std::string type, const int amount = 1) : type_(std::move(type)), amount_(amount) {}
 
     virtual ~ItemStack() = default;
 
@@ -102,7 +102,7 @@ public:
      */
     virtual bool hasItemMeta() const
     {
-        return meta_ != nullptr;
+        return Endstone::getServer().getItemFactory().equals(meta_.get(), nullptr);
     }
 
     /**
@@ -117,14 +117,14 @@ public:
     }
 
 private:
-    bool setItemMeta0(ItemMeta *meta, std::string_view type)
+    bool setItemMeta0(ItemMeta *meta, const std::string_view type)
     {
         if (!meta) {
             meta_ = nullptr;
             return true;
         }
 
-        auto &item_factory = Endstone::getServer().getItemFactory();
+        const auto &item_factory = Endstone::getServer().getItemFactory();
         if (item_factory.isApplicable(meta, type)) {
             return false;
         }

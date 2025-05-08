@@ -71,7 +71,7 @@ std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
 
 bool EndstoneItemStack::hasItemMeta() const
 {
-    return hasItemMeta(handle_) && getItemMeta() != nullptr;
+    return hasItemMeta(handle_) && !EndstoneItemFactory::instance().equals(getItemMeta().get(), nullptr);
 }
 
 bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
@@ -112,33 +112,45 @@ std::string EndstoneItemStack::getType(const ::ItemStack *item)
 
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item)
 {
-    if (item && !item->isNull()) {
-        return EndstoneItemFactory::getItemMeta(getType(item), *item);
+    auto type = getType(item);
+    if (!hasItemMeta(item)) {
+        return EndstoneItemFactory::instance().getItemMeta(getType(item));
     }
-    return ItemFactory::getItemMeta("minecraft:air");
+
+    if (type == "minecraft:filled_map") {
+        return std::make_unique<EndstoneMapMeta>(item->getUserData());
+    }
+    return std::make_unique<EndstoneItemMeta>(item->getUserData());
 }
 
 bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
 {
-    return !getItemMeta(item)->isEmpty();
+    return item != nullptr && !item->isNull() && item->getUserData() != nullptr && !item->getUserData()->isEmpty();
 }
 
 bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
 {
-    if (!item) {
+    if (item == nullptr || item->isNull()) {
         return false;
     }
-    if (!meta) {
-        EndstoneItemFactory::applyToItem(ItemMeta::EMPTY, *item);
+
+    if (EndstoneItemFactory::instance().equals(meta, nullptr)) {
+        item->setUserData(nullptr);
         return true;
     }
-    // TODO(item): applicability check
-    auto item_meta = ItemFactory::asMetaFor(getType(item), meta);
+
+    if (!EndstoneItemFactory::instance().isApplicable(meta, getType(item))) {
+        return false;
+    }
+
+    const auto item_meta = EndstoneItemFactory::instance().asMetaFor(meta, getType(item));
     if (!item_meta) {
         return true;
     }
 
-    EndstoneItemFactory::applyToItem(*item_meta, *item);
+    auto tag = std::make_unique<CompoundTag>();
+    static_cast<const EndstoneItemMeta *>(meta)->applyToItem(*tag);
+    item->setUserData(std::move(tag));
     return true;
 }
 

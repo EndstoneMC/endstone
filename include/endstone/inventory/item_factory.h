@@ -41,6 +41,15 @@ public:
     virtual bool isApplicable(const ItemMeta *meta, std::string_view type) const = 0;
 
     /**
+     * @brief This method is used to compare two ItemMeta objects.
+     *
+     * @param meta1 First meta to compare, and may be null to indicate no data
+     * @param meta2 Second meta to compare, and may be null to indicate no data
+     * @return false if one of the meta has data the other does not, otherwise true
+     */
+    virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
+
+    /**
      * @brief Returns an appropriate item meta for the specified item type.
      *
      * The item meta returned will always be a valid meta for a given ItemStack of the specified item type. It may be a
