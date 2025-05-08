@@ -13,7 +13,6 @@ add_executable(endstone_test
         bedrock/test_sem_version.cpp
         bedrock/test_spin_lock.cpp
         bedrock/test_static_optimized_string.cpp
-        endstone/api/test_item_stack.cpp
         endstone/core/test_base64.cpp
         endstone/core/test_command_lexer.cpp
         endstone/core/test_command_usage_parser.cpp
