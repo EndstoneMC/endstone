@@ -20,6 +20,7 @@
 #include <pybind11/stl.h>
 
 #include "endstone/endstone.hpp"
+#include "registry.h"
 #include "type_caster.h"
 
 namespace py = pybind11;
@@ -45,6 +46,7 @@ void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::c
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player);
 void init_plugin(py::module_ &);
+void init_registry(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
 void init_server(py::class_<Server> &server);
@@ -100,6 +102,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_scheduler(m);
     init_permissions(m, permissible, permission, permission_default);
     init_namespaced_key(m);
+    init_registry(m);
     init_server(server);
     init_event(m, event, event_priority);
 }
@@ -212,6 +215,11 @@ void init_logger(py::module &m)
         .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
 }
 
+void init_registry(py::module_ &m)
+{
+    python::registry<Enchantment>(m, "EnchantmentRegistry");
+}
+
 void init_server(py::class_<Server> &server)
 {
     server.def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
@@ -234,6 +242,8 @@ void init_server(py::class_<Server> &server)
                                "Gets the scheduler for managing scheduled events.")
         .def_property_readonly("service_manager", &Server::getServiceManager, py::return_value_policy::reference,
                                "Gets the service manager.")
+        .def_property_readonly("enchantment_registry", &Server::getEnchantmentRegistry,
+                               py::return_value_policy::reference, "Returns the registry for all the enchantments.")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "Gets the server level.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,
@@ -255,6 +265,9 @@ void init_server(py::class_<Server> &server)
             "broadcast_message", [](const Server &self, const Message &message) { self.broadcastMessage(message); },
             py::arg("message"),
             "Broadcasts the specified message to every user with permission endstone.broadcast.user")
+        .def_property_readonly("item_factory", &Server::getItemFactory,
+                               "Gets the instance of the item factory (for ItemMeta).",
+                               py::return_value_policy::reference)
         .def_property_readonly("scoreboard", &Server::getScoreboard,
                                "Gets the primary Scoreboard controlled by the server.",
                                py::return_value_policy::reference)

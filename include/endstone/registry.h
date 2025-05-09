@@ -62,7 +62,7 @@ public:
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No object with key: "} + key.toString());
+        throw std::invalid_argument(std::string{"No registry entry found for key: "} + key.toString());
     }
 
     /**
@@ -77,7 +77,7 @@ public:
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No object with key: "} + key.toString());
+        throw std::invalid_argument(std::string{"No registry entry found for key: "} + key.toString());
     }
 
     /**

@@ -231,7 +231,7 @@ public:
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
 
     /**
-     * Gets the instance of the item factory (for {@link ItemMeta}).
+     * Gets the instance of the item factory (for ItemMeta).
      *
      * @return the item factory
      * @see ItemFactory
