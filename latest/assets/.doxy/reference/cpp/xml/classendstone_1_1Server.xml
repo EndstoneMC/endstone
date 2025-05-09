@@ -653,7 +653,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Gets the instance of the item factory (for <computeroutput><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref></computeroutput>).</para>
+<para>Gets the instance of the item factory (for <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>).</para>
 <para><simplesect kind="return"><para>the item factory </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classendstone_1_1ItemFactory" kindref="compound">ItemFactory</ref> </para>

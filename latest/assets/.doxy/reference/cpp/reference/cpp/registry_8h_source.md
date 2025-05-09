@@ -44,7 +44,7 @@ public:
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No object with key: "} + key.toString());
+        throw std::invalid_argument(std::string{"No registry entry found for key: "} + key.toString());
     }
 
     virtual const T &getOrThrow(const NamespacedKey key) const
@@ -52,7 +52,7 @@ public:
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No object with key: "} + key.toString());
+        throw std::invalid_argument(std::string{"No registry entry found for key: "} + key.toString());
     }
 
     virtual void forEach(std::function<bool(const T &)> func) const = 0;

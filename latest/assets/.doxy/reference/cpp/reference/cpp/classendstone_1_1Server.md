@@ -744,7 +744,7 @@ virtual ItemFactory & endstone::Server::getItemFactory () const = 0
 
 
 
-Gets the instance of the item factory (for `ItemMeta`).
+Gets the instance of the item factory (for [**ItemMeta**](classendstone_1_1ItemMeta.md)).
 
 
 
