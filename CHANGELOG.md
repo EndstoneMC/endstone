@@ -5,7 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.7.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) – 2025-05-06
+## [0.8.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.0) - 2025-05-11
+
+<small>[Compare with 0.7.3](https://github.com/EndstoneMC/endstone/compare/v0.7.3...v0.8.0)</small>
+
+### Added
+
+- Added support for BDS version 1.21.80.3
+- Introduced a new Registry API for accessing the built-in definitions (e.g., all available enchantments via
+  `Server::getEnchantmentRegistry`)
+- Added ability to edit item enchantments via the `ItemMeta` API
+- Added ability to get and set an item’s repair cost and mark it as unbreakable via the `ItemMeta` API
+
+### Fixed
+
+- C++ plugins can now register event handlers for `PlayerDeathEvent`
+
+### Changed
+
+- Simplified `endstone::Result` for improved error handling
+
+## [0.7.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.3) – 2025-05-06
 
 <small>[Compare with 0.7.2](https://github.com/EndstoneMC/endstone/compare/v0.7.2...v0.7.3)</small>
 
@@ -21,7 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Death message is now correctly localised on the client side.
 - Python interpreter now launches correctly in multiprocessing scenarios.
 
-## [0.7.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) – 2025-03-29
+## [0.7.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.2) – 2025-03-29
 
 <small>[Compare with 0.7.1](https://github.com/EndstoneMC/endstone/compare/v0.7.1...v0.7.2)</small>
 
@@ -36,7 +56,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed an issue where outgoing packet statistics were not written to `packet-statistics.txt`.
 
-## [0.7.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0) - 2025-03-27
+## [0.7.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.7.1) - 2025-03-27
 
 <small>[Compare with 0.7.0](https://github.com/EndstoneMC/endstone/compare/v0.7.0...v0.7.1)</small>
 
