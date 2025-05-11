@@ -48,6 +48,17 @@ void init_inventory(py::module_ &m)
 
     py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.");
 
+    py::class_<ItemFactory>(m, "ItemFactory")
+        .def("get_item_meta", &ItemFactory::getItemMeta, py::arg("type"),
+             "This creates a new item meta for the item type.")
+        .def("is_applicable", &ItemFactory::isApplicable, py::arg("meta"), py::arg("type"),
+             "This method checks the item meta to confirm that it is applicable (no data lost if applied) to the "
+             "specified ItemStack")
+        .def("equals", &ItemFactory::equals, py::arg("meta1"), py::arg("meta2"),
+             "This method is used to compare two ItemMeta objects.")
+        .def("as_meta_for", &ItemFactory::asMetaFor, py::arg("meta"), py::arg("type"),
+             "Returns an appropriate item meta for the specified item type.");
+
     py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.")
         .def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
         .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
