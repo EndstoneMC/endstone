@@ -208,6 +208,7 @@ nav:
           - Boss: reference/python/boss.md
           - Command: reference/python/command.md
           - Damage: reference/python/damage.md
+          - Enchantments: reference/python/enchantments.md
           - Event: reference/python/event.md
           - Form: reference/python/form.md
           - Language: reference/python/lang.md

@@ -18,7 +18,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-void init_inventory(py::module_ &m)
+void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 {
     py::class_<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, "Creates a clone of the current metadata.")
@@ -59,8 +59,7 @@ void init_inventory(py::module_ &m)
         .def("as_meta_for", &ItemFactory::asMetaFor, py::arg("meta"), py::arg("type"),
              "Returns an appropriate item meta for the specified item type.");
 
-    py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.")
-        .def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
+    item_stack.def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
         .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
                       "Gets or sets the amount of items in this stack.")

@@ -53,8 +53,8 @@ public:
     [[nodiscard]] virtual bool conflictsWith(const Enchantment &other) const = 0;
 
     /**
-     * Checks if this Enchantment may be applied to the given ItemStack.
-     * <p>
+     * @brief Checks if this Enchantment may be applied to the given ItemStack.
+     *
      * This does not check if it conflicts with any enchantments already applied to the item.
      *
      * @param item Item to test

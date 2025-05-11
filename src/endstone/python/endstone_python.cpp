@@ -33,14 +33,15 @@ void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_damage(py::module_ &);
+void init_enchantments(py::module_ &);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
 void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
-void init_inventory(py::module_ &);
+void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
 void init_level(py::module_ &);
 void init_logger(py::module_ &);
-void init_namespaced_key(py::module_ &);
+void init_namespaced_key(py::module_ &, py::class_<NamespacedKey> &namespaced_key);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
@@ -81,6 +82,9 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
         "can, thus, be retrieved without the player needing to be online.");
     auto player = py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.");
+    auto item_stack = py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.");
+    auto namespaced_key = py::class_<NamespacedKey>(
+        m, "NamespacedKey", "Represents a string-based key which consists of two components - a namespace and a key.");
 
     init_color_format(m);
     init_damage(m);
@@ -88,7 +92,8 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_logger(m);
     init_lang(m);
     init_form(m);
-    init_inventory(m);
+    init_enchantments(m);
+    init_inventory(m, item_stack);
     init_util(m);
     init_ban(m);
     init_level(m);
@@ -101,7 +106,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_plugin(m);
     init_scheduler(m);
     init_permissions(m, permissible, permission, permission_default);
-    init_namespaced_key(m);
+    init_namespaced_key(m, namespaced_key);
     init_registry(m);
     init_server(server);
     init_event(m, event, event_priority);
@@ -149,9 +154,9 @@ void init_color_format(py::module_ &m)
         .def_property_readonly_static("RESET", [](const py::object &) { return ColorFormat::Reset; });
 }
 
-void init_namespaced_key(py::module_ &m)
+void init_namespaced_key(py::module_ &m, py::class_<NamespacedKey> &namespaced_key)
 {
-    py::class_<NamespacedKey>(m, "NamespacedKey")
+    namespaced_key
         .def(py::init([](const Plugin &plugin, std::string key) {
             auto result = NamespacedKey::create(plugin, key);
             if (!result) {

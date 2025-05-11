@@ -5,6 +5,7 @@ from endstone._internal.endstone_python import (
     NamespacedKey,
     OfflinePlayer,
     Player,
+    EnchantmentRegistry,
     Server,
     Skin,
 )
@@ -22,6 +23,7 @@ __all__ = [
     "NamespacedKey",
     "OfflinePlayer",
     "Player",
+    "EnchantmentRegistry",
     "Server",
     "Skin",
 ]

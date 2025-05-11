@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Divider', 'Dropdown', 'EnchantmentRegistry', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapMeta', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapMeta', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1196,6 +1196,32 @@ class Dropdown:
     @options.setter
     def options(self, arg1: list[str]) -> Dropdown:
         ...
+class Enchantment:
+    def can_enchant_item(self, item: ItemStack) -> bool:
+        """
+        Checks if this Enchantment may be applied to the given ItemStack.
+        
+        This does not check if it conflicts with any enchantments already applied to the item.
+        """
+    def conflicts_with(self, other: Enchantment) -> bool:
+        """
+        Check if this enchantment conflicts with another enchantment.
+        """
+    @property
+    def key(self) -> NamespacedKey:
+        """
+        Return the namespaced identifier for this enchantment.
+        """
+    @property
+    def max_level(self) -> int:
+        """
+        Gets the maximum level that this Enchantment may become.
+        """
+    @property
+    def start_level(self) -> int:
+        """
+        Gets the level that this Enchantment should start at (also known as minimum level).
+        """
 class EnchantmentRegistry:
     @typing.overload
     def __contains__(self, key: NamespacedKey) -> bool:
@@ -1204,16 +1230,16 @@ class EnchantmentRegistry:
     def __contains__(self, key: str) -> bool:
         ...
     @typing.overload
-    def __getitem__(self, key: NamespacedKey) -> ...:
+    def __getitem__(self, key: NamespacedKey) -> Enchantment:
         ...
     @typing.overload
-    def __getitem__(self, key: str) -> ...:
+    def __getitem__(self, key: str) -> Enchantment:
         ...
     def __iter__(self) -> list:
         ...
-    def get(self, key: NamespacedKey) -> ...:
+    def get(self, key: NamespacedKey) -> Enchantment:
         ...
-    def get_or_throw(self, key: NamespacedKey) -> ...:
+    def get_or_throw(self, key: NamespacedKey) -> Enchantment:
         ...
 class Event:
     """
@@ -1409,7 +1435,9 @@ class IpBanList:
         """
 class ItemFactory:
     def as_meta_for(self, meta: ItemMeta, type: str) -> ItemMeta:
-        ...
+        """
+        Returns an appropriate item meta for the specified item type.
+        """
     def equals(self, meta1: ItemMeta, meta2: ItemMeta) -> bool:
         """
         This method is used to compare two ItemMeta objects.
@@ -1859,6 +1887,9 @@ class ModalForm:
     def title(self, arg1: str | Translatable) -> ModalForm:
         ...
 class NamespacedKey:
+    """
+    Represents a string-based key which consists of two components - a namespace and a key.
+    """
     @staticmethod
     def from_string(input: str, plugin: Plugin = None) -> NamespacedKey:
         """
