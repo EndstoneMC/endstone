@@ -24,11 +24,17 @@ public:
     void onEnable() override
     {
         getLogger().info("onEnable is called");
+        registerEvent(&TestPlugin::onPlayerDeath, *this);
     }
 
     void onDisable() override
     {
         getLogger().info("onDisable is called");
+    }
+
+    void onPlayerDeath(const endstone::PlayerDeathEvent &event)
+    {
+        getLogger().info("onPlayerDeath is called for player {}", event.getPlayer().getName());
     }
 };
 
