@@ -51,7 +51,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**canEnchantItem**](#function-canenchantitem) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**canEnchantItem**](#function-canenchantitem) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**conflictsWith**](#function-conflictswith) ([**const**](classendstone_1_1Vector.md) [**Enchantment**](classendstone_1_1Enchantment.md) & other) const = 0<br>_Check if this enchantment conflicts with another enchantment._  |
 | virtual [**NamespacedKey**](classendstone_1_1NamespacedKey.md) | [**getKey**](#function-getkey) () const = 0<br>_Return the namespaced identifier for this enchantment._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
@@ -92,15 +92,13 @@
 
 ### function canEnchantItem 
 
+_Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._
 ```C++
 virtual bool endstone::Enchantment::canEnchantItem (
     const  ItemStack & item
 ) const = 0
 ```
 
-
-
-Checks if this [**Enchantment**](classendstone_1_1Enchantment.md) may be applied to the given [**ItemStack**](classendstone_1_1ItemStack.md). 
 
 
 This does not check if it conflicts with any enchantments already applied to the item.

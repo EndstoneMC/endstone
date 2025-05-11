@@ -113,9 +113,9 @@
           <declname>item</declname>
         </param>
         <briefdescription>
+<para>Checks if this <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> may be applied to the given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Checks if this <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> may be applied to the given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>. </para>
 <para>This does not check if it conflicts with any enchantments already applied to the item.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
