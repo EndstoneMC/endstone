@@ -101,24 +101,18 @@ public:
     void registerEvent(void (T::*func)(EventType &), T &instance, EventPriority priority = EventPriority::Normal,
                        bool ignore_cancelled = false)
     {
-        auto result = getServer().getPluginManager().registerEvent(
+        getServer().getPluginManager().registerEvent(
             EventType::NAME, [func, &instance](Event &e) { (instance.*func)(reinterpret_cast<EventType &>(e)); },
             priority, *this, ignore_cancelled);
-        if (!result) {
-            server_->getLogger().error(result.error());
-        }
     }
 
     template <typename EventType>
     void registerEvent(std::function<void(EventType &)> func, EventPriority priority = EventPriority::Normal,
                        bool ignore_cancelled = false)
     {
-        auto result = getServer().getPluginManager().registerEvent(
+        getServer().getPluginManager().registerEvent(
             EventType::NAME, [func](Event &e) { func(reinterpret_cast<EventType &>(e)); }, priority, *this,
             ignore_cancelled);
-        if (!result) {
-            server_->getLogger().error(result.error());
-        }
     }
 
 protected:
