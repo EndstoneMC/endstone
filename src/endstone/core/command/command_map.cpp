@@ -34,8 +34,8 @@
 #include "endstone/core/command/defaults/reload_command.h"
 #include "endstone/core/command/defaults/status_command.h"
 #include "endstone/core/command/defaults/version_command.h"
-#include "endstone/core/command/minecraft_command.h"
 #include "endstone/core/command/minecraft_command_adapter.h"
+#include "endstone/core/command/minecraft_command_wrapper.h"
 #include "endstone/core/devtools/devtools_command.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
@@ -46,7 +46,6 @@ EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
     patchCommandRegistry();
     saveCommandRegistryState();
-    setMinecraftCommands();
     setDefaultCommands();
 }
 
@@ -62,7 +61,7 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
         return false;
     }
 
-    const auto *target = getCommand(args[0]);
+    const auto target = getCommand(args[0]);
     if (!target) {
         sender.sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
         return false;
@@ -80,25 +79,37 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
 void EndstoneCommandMap::clearCommands()
 {
     std::lock_guard lock(mutex_);
-    for (const auto &[name, command] : known_commands_) {
+    for (const auto &[name, command] : custom_commands_) {
         command->unregisterFrom(*this);
     }
-    known_commands_.clear();
+    custom_commands_.clear();
     restoreCommandRegistryState();
-    setMinecraftCommands();
     setDefaultCommands();
 }
 
-Command *EndstoneCommandMap::getCommand(std::string name) const
+std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
 {
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    std::ranges::transform(name, name.begin(), ::tolower);
 
-    auto it = known_commands_.find(name);
-    if (it == known_commands_.end()) {
-        return nullptr;
+    // Try to find the custom command we've registered
+    if (const auto it = custom_commands_.find(name); it != custom_commands_.end()) {
+        return it->second;
     }
 
-    return it->second.get();
+    // Custom command not found, let's find it in CommandRegistry
+    const auto &registry = getHandle();
+    if (const auto *signature = registry.findCommand(name)) {
+        auto command = std::make_shared<MinecraftCommandWrapper>(registry, *signature);
+        command->registerTo(*this);
+        return command;
+    }
+
+    return nullptr;
+}
+
+CommandRegistry &EndstoneCommandMap::getHandle() const
+{
+    return server_.getServer().getMinecraft()->getCommands().getRegistry();
 }
 
 void EndstoneCommandMap::setDefaultCommands()
@@ -119,7 +130,7 @@ void EndstoneCommandMap::setDefaultCommands()
 
 void EndstoneCommandMap::setMinecraftCommands()
 {
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    auto &registry = getHandle();
 
     std::unordered_map<std::string, std::vector<std::string>> command_aliases;
     for (const auto &[alias, command_name] : registry.aliases_) {
@@ -214,12 +225,9 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         return false;
     }
 
-    auto wrapped = std::make_shared<CommandWrapper>(server_.getServer().getMinecraft()->getCommands(), command);
-    command = wrapped;
-
     // Check if the command name is available
     auto name = command->getName();
-    if (auto it = known_commands_.find(name); it != known_commands_.end() && it->second->getName() == it->first) {
+    if (getCommand(name) != nullptr) {
         server_.getLogger().error("Unable to register command '{}' as it already exists.", name);
         return false;  // the name was registered and is not an alias, we don't replace it
     }
@@ -227,7 +235,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     // Check for available aliases
     std::vector<std::string> pending_aliases;
     for (const auto &alias : command->getAliases()) {
-        if (known_commands_.find(alias) == known_commands_.end()) {
+        if (getCommand(alias) != nullptr) {
             pending_aliases.push_back(alias);
         }
     }
@@ -324,11 +332,11 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
     // Actual registration starts from here
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
-                             {static_cast<CommandFlagSize>(CommandCheatFlag::NotCheat)}, {0});
-    known_commands_.emplace(name, wrapped);
+                             CommandCheatFlag::NotCheat, CommandUsageFlag::Normal);
+    custom_commands_.emplace(name, command);
     for (const auto &alias : pending_aliases) {
         registry.registerAlias(name, alias);
-        known_commands_.emplace(alias, wrapped);
+        custom_commands_.emplace(alias, command);
     }
     for (const auto &param_data : pending_param_data) {
         registry.registerOverload<MinecraftCommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);

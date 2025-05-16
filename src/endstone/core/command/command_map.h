@@ -30,12 +30,12 @@ public:
     bool registerCommand(std::shared_ptr<Command> command) override;
     bool dispatch(CommandSender &sender, std::string command_line) const override;
     void clearCommands() override;
-    [[nodiscard]] Command *getCommand(std::string name) const override;
+    [[nodiscard]] std::shared_ptr<Command> getCommand(std::string name) const override;
 
 private:
     friend class EndstoneServer;
+    [[nodiscard]] ::CommandRegistry &getHandle() const;
     void setDefaultCommands();
-    void setMinecraftCommands();
     void setPluginCommands();
 
     void patchCommandRegistry();
@@ -44,7 +44,7 @@ private:
 
     EndstoneServer &server_;
     std::recursive_mutex mutex_;
-    std::unordered_map<std::string, std::shared_ptr<CommandWrapper>> known_commands_;
+    std::unordered_map<std::string, std::shared_ptr<Command>> custom_commands_;
 };
 
 }  // namespace endstone::core

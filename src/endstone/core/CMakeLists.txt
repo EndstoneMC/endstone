@@ -42,7 +42,6 @@ add_library(endstone_core
         command/command_usage_parser.cpp
         command/command_wrapper.cpp
         command/console_command_sender.cpp
-        command/minecraft_command.cpp
         command/minecraft_command_adapter.cpp
         command/minecraft_command_wrapper.cpp
         command/proxied_command_sender.cpp
