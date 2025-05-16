@@ -57,6 +57,7 @@ class CommandRegistry {
 public:
     friend class Command;
     friend class CommandParameterData;
+    friend class endstone::core::EndstoneCommandMap;
 
     using CustomStorageGetFn = void *(*)(Command *, int);
     using CustomStorageIsSetFn = bool *(*)(Command *, int);
