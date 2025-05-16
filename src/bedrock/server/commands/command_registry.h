@@ -307,7 +307,7 @@ public:
 
     // Endstone begins
     friend class endstone::core::EndstoneCommandMap;
-    std::string describe(const Signature &signature, const Overload &overload)
+    [[nodiscard]] std::string describe(const Signature &signature, const Overload &overload) const
     {
         return describe(signature, signature.name, overload, 0, nullptr, nullptr);
     }
