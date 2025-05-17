@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <bedrock/server/commands/minecraft_commands.h>
+
 #include "bedrock/server/commands/command_origin.h"
 #include "endstone/core/command/endstone_command.h"
 
@@ -21,13 +23,16 @@ namespace endstone::core {
 
 class MinecraftCommandWrapper : public EndstoneCommand {
 public:
-    explicit MinecraftCommandWrapper(const CommandRegistry &registry,
+    explicit MinecraftCommandWrapper(MinecraftCommands &minecraft_commands,
                                      const CommandRegistry::Signature &minecraft_command);
     [[nodiscard]] bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 
+    static std::unique_ptr<CommandOrigin> getCommandOrigin(CommandSender &sender);
+
 private:
     static std::string getPermission(const CommandRegistry::Signature &minecraft_command);
-    const CommandRegistry &registry_;
+
+    MinecraftCommands &minecraft_commands_;
 };
 
 }  // namespace endstone::core

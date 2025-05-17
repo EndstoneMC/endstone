@@ -14,15 +14,18 @@
 
 #include "endstone/core/command/minecraft_command_wrapper.h"
 
-#include <spdlog/details/registry.h>
+#include <boost/algorithm/string/join.hpp>
 
 #include "bedrock/locale/i18n.h"
+#include "bedrock/server/commands/command_origin_loader.h"
+#include "bedrock/server/commands/minecraft_commands.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 
-MinecraftCommandWrapper::MinecraftCommandWrapper(const CommandRegistry &registry,
+MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_commands,
                                                  const CommandRegistry::Signature &signature)
-    : EndstoneCommand(signature.name), registry_(registry)
+    : EndstoneCommand(signature.name), minecraft_commands_(minecraft_commands)
 {
     // Description
     auto description = getI18n().get(signature.description, {}, nullptr);
@@ -32,12 +35,92 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(const CommandRegistry &registry
     std::vector<std::string> usages;
     usages.reserve(signature.overloads.size());
     for (const auto &overload : signature.overloads) {
-        usages.push_back(registry.describe(signature, overload));
+        usages.push_back(minecraft_commands.getRegistry().describe(signature, overload));
     }
     setUsages(std::move(usages));
 
     // Permissions
     setPermissions(getPermission(signature));
+}
+
+bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<std::string> &args) const
+{
+    if (!testPermission(sender)) {
+        return true;
+    }
+
+    const auto command_origin = getCommandOrigin(sender);
+    if (!command_origin) {
+        throw std::runtime_error("Unsupported command origin type");
+    }
+
+    // compile command
+    std::vector command_parts = {"/" + getName()};
+    command_parts.insert(command_parts.end(), args.begin(), args.end());
+    const auto full_command = boost::algorithm::join(command_parts, " ");
+    const auto *command = minecraft_commands_.compileCommand(  //
+        full_command, *command_origin, CurrentCmdVersion::Latest,
+        [&sender](auto const &err) { sender.sendErrorMessage(err); });
+
+    if (!command) {
+        return false;
+    }
+
+    // run the command
+    CommandOutput output{MinecraftCommands::getOutputType(*command_origin)};
+    command->run(*command_origin, output);
+
+    // redirect outputs to sender
+    for (const auto &message : output.getMessages()) {
+        switch (message.getType()) {
+        case CommandOutputMessageType::Success:
+            sender.sendMessage(Translatable(message.getMessageId(), message.getParams()));
+            break;
+        case CommandOutputMessageType::Error:
+            sender.sendErrorMessage(Translatable(message.getMessageId(), message.getParams()));
+            break;
+        default:
+            throw std::runtime_error("Unsupported CommandOutputMessageType");
+        }
+    }
+
+    return output.getSuccessCount() > 0;
+}
+
+std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(CommandSender &sender)
+{
+    const auto &server = entt::locator<EndstoneServer>::value();
+    if (const auto *console = sender.asConsole(); console) {
+        CompoundTag tag;
+        {
+            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::DedicatedServer));
+            tag.putString("RequestId", "00000000-0000-0000-0000-000000000000");
+            tag.putByte("CommandPermissionLevel", static_cast<std::uint8_t>(CommandPermissionLevel::Owner));
+            tag.putString("DimensionId", "overworld");
+        }
+        const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
+    }
+
+    if (const auto *player = static_cast<EndstonePlayer *>(sender.asPlayer()); player) {
+        CompoundTag tag;
+        {
+            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
+            tag.putInt64("PlayerId", player->getPlayer().getOrCreateUniqueID().raw_id);
+        }
+        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getPlayer().getLevel()));
+    }
+
+    if (const auto *actor = static_cast<EndstoneActor *>(sender.asActor()); actor) {
+        CompoundTag tag;
+        {
+            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Entity));
+            tag.putInt64("EntityId", actor->getActor().getOrCreateUniqueID().raw_id);
+        }
+        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(actor->getActor().getLevel()));
+    }
+
+    return nullptr;
 }
 
 std::string MinecraftCommandWrapper::getPermission(const CommandRegistry::Signature &minecraft_command)
