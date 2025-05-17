@@ -14,9 +14,8 @@
 
 #pragma once
 
-#include <bedrock/server/commands/minecraft_commands.h>
-
 #include "bedrock/server/commands/command_origin.h"
+#include "bedrock/server/commands/minecraft_commands.h"
 #include "endstone/core/command/endstone_command.h"
 
 namespace endstone::core {
