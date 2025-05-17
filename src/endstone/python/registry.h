@@ -20,6 +20,9 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/namespaced_key.h"
+#include "endstone/registry.h"
+
 namespace py = pybind11;
 
 namespace endstone::python {

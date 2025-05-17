@@ -577,13 +577,13 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
 
 void EndstonePlayer::updateCommands() const
 {
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    const auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
-    auto &command_map = server_.getCommandMap();
+    const auto &command_map = server_.getCommandMap();
     for (auto it = packet.commands.begin(); it != packet.commands.end();) {
-        auto &name = it->name;
-        auto *command = command_map.getCommand(name);
+        const auto &name = it->name;
+        const auto command = command_map.getCommand(name);
         if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this)) &&
             it->permission_level <= getPlayer().getCommandPermissionLevel()) {
             ++it;

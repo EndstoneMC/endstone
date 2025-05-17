@@ -20,7 +20,6 @@
 #include <entt/entt.hpp>
 
 #include "endstone/core/command/command_origin_wrapper.h"
-#include "endstone/core/command/command_output_with_sender.h"
 
 namespace endstone::core {
 
@@ -29,20 +28,11 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
     const auto &server = entt::locator<EndstoneServer>::value();
     const auto &command_map = server.getCommandMap();
     const auto command_name = getCommandName();
-    const auto *command = static_cast<CommandWrapper *>(command_map.getCommand(command_name));
+    const auto command = command_map.getCommand(command_name);
     if (!command) {
         throw std::runtime_error("Command not found");
     }
 
-    // We already have a sender passed down from CommandWrapper::execute
-    if (output.has_command_sender) {
-        if (command->unwrap().execute(static_cast<CommandOutputWithSender &>(output).sender_, args_)) {
-            output.success();
-        }
-        return;
-    }
-
-    // We don't have a sender yet - this is called from the original dispatching route
     auto sender = origin.getEndstoneSender();
     if (!sender) {
         // Fallback to command origin via a wrapper for unsupported types
@@ -50,7 +40,8 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
         wrapper->init();
         sender = wrapper;
     }
-    if (command->unwrap().execute(*sender, args_)) {
+
+    if (command->execute(*sender, args_)) {
         output.success();
     }
 }

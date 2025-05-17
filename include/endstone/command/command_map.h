@@ -65,6 +65,6 @@ public:
      * @param name Name of the command to retrieve
      * @return Command with the specified name or nullptr if a command with that label doesn't exist
      */
-    [[nodiscard]] virtual Command *getCommand(std::string name) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Command> getCommand(std::string name) const = 0;
 };
 }  // namespace endstone

@@ -74,9 +74,6 @@ private:
                     CommandOutputMessageType);
 
     CommandOutputType type_;                      // +0
-public:                                           //
-    bool has_command_sender{false};               // +4 used by Endstone
-private:                                          //
     std::unique_ptr<CommandPropertyBag> data_;    // +8
     std::vector<CommandOutputMessage> messages_;  // +16
     int success_count_{0};                        // +40
