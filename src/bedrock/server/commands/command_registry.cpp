@@ -107,6 +107,25 @@ void CommandRegistry::setSoftEnumValues(const std::string &enum_name, std::vecto
     network_update_callback_(*pk);
 }
 
-CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc) : version(version), alloc(alloc)
+void CommandRegistry::addSoftEnumValues(const std::string &enum_name, std::vector<std::string> values)
+{
+    const auto it = soft_enum_lookup_.find(enum_name);
+    if (it == soft_enum_lookup_.end()) {
+        return;
+    }
+
+    auto &soft_enum = soft_enums_.at(it->second);
+    soft_enum.values.insert(soft_enum.values.end(), values.begin(), values.end());
+
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
+    const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
+    pk->enum_name = enum_name;
+    pk->values = values;
+    pk->type = SoftEnumUpdateType::Add;
+    network_update_callback_(*pk);
+}
+
+CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc)
+    : version(version), alloc(std::move(alloc))
 {
 }

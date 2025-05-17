@@ -79,6 +79,7 @@ private:
 
 public:
     void setSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
+    void addSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
 
     static const int NonTerminalBit = 0x100000;
     static const int FirstNonTerminal = 0x100001;
