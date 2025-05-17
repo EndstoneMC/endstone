@@ -19,6 +19,7 @@
 #include <sstream>
 #include <utility>
 
+#include "bedrock/network/packet/update_soft_enum_packet.h"
 #include "bedrock/server/commands/command.h"
 #include "bedrock/symbol.h"
 
@@ -86,6 +87,24 @@ int CommandRegistry::addEnumValues(const std::string &name, const std::vector<st
 AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
 {
     return BEDROCK_CALL(&CommandRegistry::serializeAvailableCommands, this);
+}
+
+void CommandRegistry::setSoftEnumValues(const std::string &enum_name, std::vector<std::string> values)
+{
+    const auto it = soft_enum_lookup_.find(enum_name);
+    if (it == soft_enum_lookup_.end()) {
+        return;
+    }
+
+    auto &soft_enum = soft_enums_.at(it->second);
+    soft_enum.values = values;
+
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
+    const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
+    pk->enum_name = enum_name;
+    pk->values = values;
+    pk->type = SoftEnumUpdateType::Replace;
+    network_update_callback_(*pk);
 }
 
 CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc) : version(version), alloc(alloc)

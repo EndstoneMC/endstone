@@ -78,6 +78,8 @@ private:
     using ScoreboardScoreAccessor = std::function<int(bool &, const std::string &, const Actor &)>;
 
 public:
+    void setSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
+
     static const int NonTerminalBit = 0x100000;
     static const int FirstNonTerminal = 0x100001;
 
@@ -266,14 +268,21 @@ public:
     using ParseFunction = bool (CommandRegistry::*)(void *, const ParseToken &, const CommandOrigin &, int,
                                                     std::string &, std::vector<std::string> &) const;
     struct Enum {
-        std::string name;                                             // +0
-        Bedrock::typeid_t<CommandRegistry> type;                      // +32
-        ParseFunction parse;                                          // +40
-        std::vector<std::pair<std::uint32_t, std::uint32_t>> values;  // +48
+        std::string name;
+        Bedrock::typeid_t<CommandRegistry> type;
+        ParseFunction parse;
+        std::vector<std::pair<std::uint64_t, std::uint64_t>> values;
     };
     struct ChainedSubcommand;
-    struct SoftEnum;
-    struct ConstrainedValue;
+    struct SoftEnum {
+        std::string name;
+        std::vector<std::string> values;
+    };
+    struct ConstrainedValue {
+        Symbol value;
+        Symbol enum_symbol;
+        std::vector<unsigned char> constraints;
+    };
     struct ParamSymbols {
         Terminal x;              // +0
         Terminal y;              // +4
