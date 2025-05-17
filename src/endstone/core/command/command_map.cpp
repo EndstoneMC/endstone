@@ -146,7 +146,87 @@ void EndstoneCommandMap::setPluginCommands()
             registerCommand(std::make_unique<PluginCommand>(command, *plugin));
         }
     }
-    getHandle().getRegistry().setSoftEnumValues("PluginName", std::move(plugin_names));
+    clearEnumValues("PluginName");
+    getHandle().getRegistry().addEnumValues("PluginName", plugin_names);
+}
+
+void EndstoneCommandMap::unregisterCommand(std::string name)
+{
+    std::ranges::transform(name, name.begin(), ::tolower);
+    auto &registry = getHandle().getRegistry();
+    const auto *signature = registry.findCommand(name);
+    if (!signature) {
+        return;
+    }
+
+    // Remove enums introduced by custom commands
+    if (custom_commands_.contains(name)) {
+        for (const auto &overload : signature->overloads) {
+            for (const auto &param : overload.params) {
+                if (param.param_type != CommandParameterDataType::Enum || !param.enum_name_or_postfix) {
+                    continue;
+                }
+                if (param.enum_name_or_postfix == "Boolean" || param.enum_name_or_postfix == "Block") {
+                    continue;
+                }
+                clearEnumValues(param.enum_name_or_postfix);
+            }
+        }
+    }
+
+    // TODO: remove enum value constraints for name in enum name CommandName
+
+    // Remove aliases
+    for (auto it = registry.aliases_.begin(); it != registry.aliases_.end();) {
+        if (it->second == name) {
+            const auto &alias = it->first;
+            removeEnumValueFromExisting("CommandName", alias);
+            removeEnumValueFromExisting("CommandAliases", alias);
+            it = registry.aliases_.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+
+    // Remove name from CommandName
+    removeEnumValueFromExisting("CommandName", name);
+
+    // Remove command signature
+    registry.signatures_.erase(name);
+}
+
+void EndstoneCommandMap::clearEnumValues(const std::string &enum_name)
+{
+    auto &registry = getHandle().getRegistry();
+    if (!registry.enum_lookup_.contains(enum_name)) {
+        return;
+    }
+
+    const auto enum_index = registry.enum_lookup_.at(enum_name);
+    auto &enum_data = registry.enums_.at(enum_index);
+    enum_data.values.clear();
+}
+
+void EndstoneCommandMap::removeEnumValueFromExisting(const std::string &enum_name, const std::string &enum_value)
+{
+    auto &registry = getHandle().getRegistry();
+    if (!registry.enum_lookup_.contains(enum_name) || !registry.enum_value_lookup_.contains(enum_value)) {
+        return;
+    }
+
+    const auto enum_index = registry.enum_lookup_.at(enum_name);
+    const auto enum_value_index = registry.enum_value_lookup_.at(enum_value);
+
+    auto &enum_data = registry.enums_.at(enum_index);
+    for (auto it = enum_data.values.begin(); it != enum_data.values.end();) {
+        if (it->first == CommandRegistry::Symbol::fromEnumValueIndex(enum_value_index).value()) {
+            it = enum_data.values.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
 }
 
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
@@ -207,7 +287,15 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 // Add suffix if the enum already exists
                 std::string enum_name_final = enum_name;
                 int i = 0;
-                while (registry.soft_enum_lookup_.contains(enum_name_final)) {
+                while (true) {
+                    const auto it = registry.enum_lookup_.find(enum_name_final);
+                    if (it == registry.enum_lookup_.end()) {
+                        break;
+                    }
+                    const auto enum_index = it->second;
+                    if (registry.enums_.at(enum_index).values.empty()) {
+                        break;
+                    }
                     enum_name_final = fmt::format("{}_{}", enum_name, ++i);
                 }
                 if (enum_name_final != enum_name) {
@@ -215,16 +303,16 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                                 enum_name_final);
                 }
 
-                // Add soft enum
-                auto symbol = registry.addSoftEnum(enum_name_final, parameter.values);
+                // Add enum
+                auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
 
                 // Check if the enum has been added
-                auto it = registry.soft_enum_lookup_.find(enum_name_final);
-                if (it == registry.soft_enum_lookup_.end()) {
+                auto it = registry.enum_lookup_.find(enum_name_final);
+                if (it == registry.enum_lookup_.end()) {
                     server_.getLogger().error("Unable to register enum '{}'.", enum_name_final);
                     throw std::runtime_error("Unreachable");
                 }
-                data.param_type = CommandParameterDataType::SoftEnum;
+                data.param_type = CommandParameterDataType::Enum;
                 data.enum_name_or_postfix = it->first.c_str();
                 data.enum_or_postfix_symbol = symbol;
                 data.options = CommandParameterOption::EnumAutocompleteExpansion;

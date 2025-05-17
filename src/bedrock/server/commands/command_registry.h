@@ -215,12 +215,15 @@ public:
         [[nodiscard]] bool isSoftEnum() const;
         static Symbol fromEnumIndex(size_t index)
         {
-            return {index | NonTerminalBit | EnumBit};
+            return {index | EnumBit | NonTerminalBit};
         }
         static Symbol fromOptionalIndex(size_t index);
         static Symbol fromFactorizationIndex(size_t index);
         static Symbol fromPostfixIndex(size_t index);
-        static Symbol fromEnumValueIndex(size_t index);
+        static Symbol fromEnumValueIndex(size_t index)
+        {
+            return {index | EnumValueBit};
+        }
         static Symbol fromSoftEnumIndex(size_t index);
         static Symbol fromChainedSubcommandIndex(size_t index);
         static Symbol fromChainedSubcommandValueIndex(size_t index);
@@ -385,9 +388,9 @@ private:
     std::vector<Factorization> factorizations_;                                                  // +296
     std::vector<std::string> postfixes_;                                                         // +320
     std::map<std::string, std::uint32_t> enum_lookup_;                                           // +344
-    std::map<std::string, std::uint64_t> enum_value_lookup_;                                     // +360
+    std::map<std::string, std::uint32_t> enum_value_lookup_;                                     // +360
     std::map<std::string, std::uint32_t> chained_subcommand_lookup_;                             // +376
-    std::map<std::string, std::uint64_t> chained_subcommand_value_lookup_;                       // +392
+    std::map<std::string, std::uint32_t> chained_subcommand_value_lookup_;                       // +392
     std::vector<Symbol> command_symbols_;                                                        // +408
     std::map<std::string, Signature> signatures_;                                                // +432
     std::map<Bedrock::typeid_t<CommandRegistry>, std::int32_t> type_lookup_;                     // +448

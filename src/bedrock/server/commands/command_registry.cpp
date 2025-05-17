@@ -124,3 +124,8 @@ CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction
     : version(version), alloc(std::move(alloc))
 {
 }
+
+int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
+{
+    return BEDROCK_CALL(&CommandRegistry::addEnumValues, this, name, values);
+}

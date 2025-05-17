@@ -39,6 +39,8 @@ private:
     void setDefaultCommands();
     void setPluginCommands();
     void unregisterCommand(std::string name);
+    void clearEnumValues(const std::string &enum_name);
+    void removeEnumValueFromExisting(const std::string &enum_name, const std::string &enum_value);
 
     EndstoneServer &server_;
     std::recursive_mutex mutex_;
