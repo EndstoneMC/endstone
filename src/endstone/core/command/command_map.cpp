@@ -128,63 +128,12 @@ void EndstoneCommandMap::setDefaultCommands()
 #endif
 }
 
-void EndstoneCommandMap::setMinecraftCommands()
-{
-    auto &registry = getHandle();
-
-    std::unordered_map<std::string, std::vector<std::string>> command_aliases;
-    for (const auto &[alias, command_name] : registry.aliases_) {
-        auto it = command_aliases.emplace(command_name, std::vector<std::string>()).first;
-        it->second.push_back(alias);
-    }
-
-    auto *root = DefaultPermissions::registerPermission(
-        "minecraft", nullptr, "Gives the user the ability to use all vanilla utilities and commands");
-    auto *parent = DefaultPermissions::registerPermission(
-        root->getName() + ".command", root, "Gives the user the ability to use all vanilla minecraft commands");
-
-    for (const auto &[command_name, signature] : registry.signatures_) {
-        auto description = getI18n().get(signature.description, {}, nullptr);
-
-        std::vector<std::string> usages;
-        usages.reserve(signature.overloads.size());
-        for (const auto &overload : signature.overloads) {
-            usages.push_back(registry.describe(signature, overload));
-        }
-
-        std::vector<std::string> aliases;
-        auto it = command_aliases.find(command_name);
-        if (it != command_aliases.end()) {
-            aliases.insert(aliases.end(), it->second.begin(), it->second.end());
-        }
-
-        auto command = std::make_shared<CommandWrapper>(
-            server_.getServer().getMinecraft()->getCommands(),
-            std::make_unique<MinecraftCommand>(command_name, description, usages, aliases));
-        command->registerTo(*this);
-
-        known_commands_.emplace(signature.name, command);
-        for (const auto &alias : aliases) {
-            known_commands_.emplace(alias, command);
-        }
-
-        DefaultPermissions::registerPermission(parent->getName() + "." + command_name, parent,
-                                               "Gives the user the ability to use the /" + command_name + " command",
-                                               signature.permission_level > CommandPermissionLevel::Any
-                                                   ? PermissionDefault::Operator
-                                                   : PermissionDefault::True);
-    }
-
-    parent->recalculatePermissibles();
-    root->recalculatePermissibles();
-}
-
 void EndstoneCommandMap::setPluginCommands()
 {
     auto plugins = server_.getPluginManager().getPlugins();
     for (auto *plugin : plugins) {
         auto name = plugin->getName();
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        std::ranges::transform(name, name.begin(), ::tolower);
         server_.getServer().getMinecraft()->getCommands().getRegistry().addEnumValues("PluginName", {name});
 
         auto commands = plugin->getDescription().getCommands();
@@ -273,7 +222,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 // Add suffix if the enum already exists
                 std::string enum_name_final = enum_name;
                 int i = 0;
-                while (registry.enum_lookup_.find(enum_name_final) != registry.enum_lookup_.end()) {
+                while (registry.enum_lookup_.contains(enum_name_final)) {
                     enum_name_final = fmt::format("{}_{}", enum_name, ++i);
                 }
                 if (enum_name_final != enum_name) {
@@ -296,13 +245,13 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 data.options = CommandParameterOption::EnumAutocompleteExpansion;
             }
             else if (parameter.type == "bool") {
-                static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
+                static auto symbol = registry.addEnumValues("Boolean", {});
                 data.param_type = CommandParameterDataType::Enum;
                 data.enum_name_or_postfix = "Boolean";
                 data.enum_or_postfix_symbol = symbol;
             }
             else if (parameter.type == "block") {
-                static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Block", {}));
+                static auto symbol = registry.addEnumValues("Block", {});
                 data.param_type = CommandParameterDataType::Enum;
                 data.enum_name_or_postfix = "Block";
                 data.enum_or_postfix_symbol = symbol;
