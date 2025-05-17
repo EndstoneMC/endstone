@@ -97,9 +97,9 @@ std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
     }
 
     // Custom command not found, let's find it in CommandRegistry
-    const auto &registry = getHandle();
+    const auto &registry = getHandle().getRegistry();
     if (const auto *signature = registry.findCommand(name)) {
-        auto command = std::make_shared<MinecraftCommandWrapper>(registry, *signature);
+        auto command = std::make_shared<MinecraftCommandWrapper>(getHandle(), *signature);
         command->registerTo(*this);
         return command;
     }
@@ -107,9 +107,9 @@ std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
     return nullptr;
 }
 
-CommandRegistry &EndstoneCommandMap::getHandle() const
+MinecraftCommands &EndstoneCommandMap::getHandle() const
 {
-    return server_.getServer().getMinecraft()->getCommands().getRegistry();
+    return server_.getServer().getMinecraft()->getCommands();
 }
 
 void EndstoneCommandMap::setDefaultCommands()
@@ -167,7 +167,7 @@ std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols =
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
     std::lock_guard lock(mutex_);
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    auto &registry = getHandle().getRegistry();
 
     if (!command) {
         server_.getLogger().error("Unable to register a null command.");
@@ -308,7 +308,7 @@ struct {
 void EndstoneCommandMap::patchCommandRegistry()
 {
     std::lock_guard lock(mutex_);
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    auto &registry = getHandle().getRegistry();
 
     // remove the vanilla `/reload` command (to be replaced by ours)
     registry.signatures_.erase("reload");
@@ -316,7 +316,7 @@ void EndstoneCommandMap::patchCommandRegistry()
 
 void EndstoneCommandMap::saveCommandRegistryState() const
 {
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    auto &registry = getHandle().getRegistry();
     gCommandRegistryState.enums = registry.enums_;
     gCommandRegistryState.enum_lookup = registry.enum_lookup_;
     gCommandRegistryState.signatures = registry.signatures_;
@@ -325,7 +325,7 @@ void EndstoneCommandMap::saveCommandRegistryState() const
 
 void EndstoneCommandMap::restoreCommandRegistryState() const
 {
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    auto &registry = getHandle().getRegistry();
     registry.enums_ = gCommandRegistryState.enums;
     registry.enum_lookup_ = gCommandRegistryState.enum_lookup;
     registry.signatures_ = gCommandRegistryState.signatures;

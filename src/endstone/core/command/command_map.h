@@ -17,7 +17,7 @@
 #include <mutex>
 #include <unordered_map>
 
-#include "bedrock/server/commands/command_registry.h"
+#include "bedrock/server/commands/minecraft_commands.h"
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
 
@@ -34,7 +34,7 @@ public:
 
 private:
     friend class EndstoneServer;
-    [[nodiscard]] ::CommandRegistry &getHandle() const;
+    [[nodiscard]] ::MinecraftCommands &getHandle() const;
     void setDefaultCommands();
     void setPluginCommands();
 
