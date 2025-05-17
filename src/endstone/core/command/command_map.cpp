@@ -184,7 +184,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     // Check for available aliases
     std::vector<std::string> pending_aliases;
     for (const auto &alias : command->getAliases()) {
-        if (getCommand(alias) != nullptr) {
+        if (getCommand(alias) == nullptr) {
             pending_aliases.push_back(alias);
         }
     }
