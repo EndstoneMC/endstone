@@ -34,17 +34,17 @@ public:
 
 private:
     friend class EndstoneServer;
-    [[nodiscard]] ::MinecraftCommands &getHandle() const;
+    [[nodiscard]] ::MinecraftCommands &getHandle();
+    [[nodiscard]] const ::MinecraftCommands &getHandle() const;
     void setDefaultCommands();
     void setPluginCommands();
-
-    void patchCommandRegistry();
-    void saveCommandRegistryState() const;
-    void restoreCommandRegistryState() const;
+    void unregisterCommand(std::string name);
 
     EndstoneServer &server_;
     std::recursive_mutex mutex_;
     std::unordered_map<std::string, std::shared_ptr<Command>> custom_commands_;
+
+    static const std::unordered_map<std::string, CommandRegistry::HardNonTerminal> TYPE_SYMBOLS;
 };
 
 }  // namespace endstone::core

@@ -63,7 +63,7 @@ public:
     using CustomStorageIsSetFn = bool *(*)(Command *, int);
 
     int addEnumValues(const std::string &name, const std::vector<std::string> &values);
-
+    int addSoftEnum(const std::string &name, std::vector<std::string> values);
     void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                          CommandFlag flag1, CommandFlag flag2);
     void registerAlias(std::string name, std::string alias);
@@ -189,6 +189,11 @@ public:
             value_ = other.value_;
         }
 
+        bool operator==(const Symbol &other) const
+        {
+            return value_ == other.value_;
+        }
+
         [[nodiscard]] int value() const
         {
             return value_;
@@ -199,10 +204,26 @@ public:
             return value_ & 0xE00FFFFF;
         }
 
-        bool operator==(const Symbol &other) const
+        [[nodiscard]] bool isTerminal() const;
+        [[nodiscard]] bool isEnum() const;
+        [[nodiscard]] bool isChainedSubCommand() const;
+        [[nodiscard]] bool isOptional() const;
+        [[nodiscard]] bool isFactorization() const;
+        [[nodiscard]] bool isPostfix() const;
+        [[nodiscard]] bool isEnumValue() const;
+        [[nodiscard]] bool isChainedSubcommandValue() const;
+        [[nodiscard]] bool isSoftEnum() const;
+        static Symbol fromEnumIndex(size_t index)
         {
-            return value_ == other.value_;
+            return {index | NonTerminalBit | EnumBit};
         }
+        static Symbol fromOptionalIndex(size_t index);
+        static Symbol fromFactorizationIndex(size_t index);
+        static Symbol fromPostfixIndex(size_t index);
+        static Symbol fromEnumValueIndex(size_t index);
+        static Symbol fromSoftEnumIndex(size_t index);
+        static Symbol fromChainedSubcommandIndex(size_t index);
+        static Symbol fromChainedSubcommandValueIndex(size_t index);
 
     private:
         static const int EnumBit = 0x200000;
@@ -213,7 +234,7 @@ public:
         static const int SoftEnumBit = 0x4000000;
         static const int ChainedSubcommandBit = 0x8000000;
         static const int ChainedSubcommandValueBit = 0x10000000;
-        int value_{-1};
+        int value_ = 0;
     };
 
     using NonTerminal = Symbol;

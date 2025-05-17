@@ -44,8 +44,7 @@ namespace endstone::core {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
-    patchCommandRegistry();
-    saveCommandRegistryState();
+    unregisterCommand("reload");
     setDefaultCommands();
 }
 
@@ -81,9 +80,9 @@ void EndstoneCommandMap::clearCommands()
     std::lock_guard lock(mutex_);
     for (const auto &[name, command] : custom_commands_) {
         command->unregisterFrom(*this);
+        unregisterCommand(command->getName());
     }
     custom_commands_.clear();
-    restoreCommandRegistryState();
     setDefaultCommands();
 }
 
@@ -99,15 +98,20 @@ std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
     // Custom command not found, let's find it in CommandRegistry
     const auto &registry = getHandle().getRegistry();
     if (const auto *signature = registry.findCommand(name)) {
-        auto command = std::make_shared<MinecraftCommandWrapper>(getHandle(), *signature);
+        auto command =
+            std::make_shared<MinecraftCommandWrapper>(const_cast<MinecraftCommands &>(getHandle()), *signature);
         command->registerTo(*this);
         return command;
     }
 
     return nullptr;
 }
+MinecraftCommands &EndstoneCommandMap::getHandle()
+{
+    return server_.getServer().getMinecraft()->getCommands();
+}
 
-MinecraftCommands &EndstoneCommandMap::getHandle() const
+const MinecraftCommands &EndstoneCommandMap::getHandle() const
 {
     return server_.getServer().getMinecraft()->getCommands();
 }
@@ -130,39 +134,20 @@ void EndstoneCommandMap::setDefaultCommands()
 
 void EndstoneCommandMap::setPluginCommands()
 {
-    auto plugins = server_.getPluginManager().getPlugins();
+    const auto plugins = server_.getPluginManager().getPlugins();
+    std::vector<std::string> plugin_names;
     for (auto *plugin : plugins) {
         auto name = plugin->getName();
         std::ranges::transform(name, name.begin(), ::tolower);
-        server_.getServer().getMinecraft()->getCommands().getRegistry().addEnumValues("PluginName", {name});
+        plugin_names.emplace_back(name);
 
         auto commands = plugin->getDescription().getCommands();
         for (const auto &command : commands) {
             registerCommand(std::make_unique<PluginCommand>(command, *plugin));
         }
     }
+    getHandle().getRegistry().setSoftEnumValues("PluginName", std::move(plugin_names));
 }
-
-namespace {
-std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols = {
-    {"int", CommandRegistry::HardNonTerminal::Int},
-    {"float", CommandRegistry::HardNonTerminal::Val},
-    {"actor", CommandRegistry::HardNonTerminal::Selection},
-    {"entity", CommandRegistry::HardNonTerminal::Selection},
-    {"player", CommandRegistry::HardNonTerminal::Selection},
-    {"target", CommandRegistry::HardNonTerminal::Selection},
-    {"string", CommandRegistry::HardNonTerminal::Id},
-    {"str", CommandRegistry::HardNonTerminal::Id},
-    {"block_pos", CommandRegistry::HardNonTerminal::Position},
-    {"vec3i", CommandRegistry::HardNonTerminal::Position},
-    {"pos", CommandRegistry::HardNonTerminal::PositionFloat},
-    {"vec3", CommandRegistry::HardNonTerminal::PositionFloat},
-    {"vec3f", CommandRegistry::HardNonTerminal::PositionFloat},
-    {"message", CommandRegistry::HardNonTerminal::MessageRoot},
-    {"json", CommandRegistry::HardNonTerminal::JsonObject},
-    {"block_states", CommandRegistry::HardNonTerminal::BlockStateArray},
-};
-}  // namespace
 
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
@@ -222,7 +207,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 // Add suffix if the enum already exists
                 std::string enum_name_final = enum_name;
                 int i = 0;
-                while (registry.enum_lookup_.contains(enum_name_final)) {
+                while (registry.soft_enum_lookup_.contains(enum_name_final)) {
                     enum_name_final = fmt::format("{}_{}", enum_name, ++i);
                 }
                 if (enum_name_final != enum_name) {
@@ -230,35 +215,35 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                                 enum_name_final);
                 }
 
-                // Add enum
-                auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
+                // Add soft enum
+                auto symbol = registry.addSoftEnum(enum_name_final, parameter.values);
 
                 // Check if the enum has been added
-                auto it = registry.enum_lookup_.find(enum_name_final);
-                if (it == registry.enum_lookup_.end()) {
+                auto it = registry.soft_enum_lookup_.find(enum_name_final);
+                if (it == registry.soft_enum_lookup_.end()) {
                     server_.getLogger().error("Unable to register enum '{}'.", enum_name_final);
                     throw std::runtime_error("Unreachable");
                 }
-                data.param_type = CommandParameterDataType::Enum;
+                data.param_type = CommandParameterDataType::SoftEnum;
                 data.enum_name_or_postfix = it->first.c_str();
                 data.enum_or_postfix_symbol = symbol;
                 data.options = CommandParameterOption::EnumAutocompleteExpansion;
             }
             else if (parameter.type == "bool") {
-                static auto symbol = registry.addEnumValues("Boolean", {});
+                static auto enum_index = registry.enum_lookup_.at("Boolean");
                 data.param_type = CommandParameterDataType::Enum;
                 data.enum_name_or_postfix = "Boolean";
-                data.enum_or_postfix_symbol = symbol;
+                data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
             }
             else if (parameter.type == "block") {
-                static auto symbol = registry.addEnumValues("Block", {});
+                static auto enum_index = registry.enum_lookup_.at("Block");
                 data.param_type = CommandParameterDataType::Enum;
                 data.enum_name_or_postfix = "Block";
-                data.enum_or_postfix_symbol = symbol;
+                data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
             }
             else {
-                auto it = gTypeSymbols.find(std::string(parameter.type));
-                if (it == gTypeSymbols.end()) {
+                auto it = TYPE_SYMBOLS.find(std::string(parameter.type));
+                if (it == TYPE_SYMBOLS.end()) {
                     server_.getLogger().error("Unable to register command '{}'. Unsupported type '{}' in usage '{}'.",
                                               name, parameter.type, usage);
                     success = false;
@@ -296,40 +281,23 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     return true;
 }
 
-namespace {
-struct {
-    std::vector<CommandRegistry::Enum> enums;
-    std::map<std::string, std::uint32_t> enum_lookup;
-    std::map<std::string, CommandRegistry::Signature> signatures;
-    std::map<std::string, std::string> aliases;
-} gCommandRegistryState;
-}  // namespace
-
-void EndstoneCommandMap::patchCommandRegistry()
-{
-    std::lock_guard lock(mutex_);
-    auto &registry = getHandle().getRegistry();
-
-    // remove the vanilla `/reload` command (to be replaced by ours)
-    registry.signatures_.erase("reload");
-}
-
-void EndstoneCommandMap::saveCommandRegistryState() const
-{
-    auto &registry = getHandle().getRegistry();
-    gCommandRegistryState.enums = registry.enums_;
-    gCommandRegistryState.enum_lookup = registry.enum_lookup_;
-    gCommandRegistryState.signatures = registry.signatures_;
-    gCommandRegistryState.aliases = registry.aliases_;
-}
-
-void EndstoneCommandMap::restoreCommandRegistryState() const
-{
-    auto &registry = getHandle().getRegistry();
-    registry.enums_ = gCommandRegistryState.enums;
-    registry.enum_lookup_ = gCommandRegistryState.enum_lookup;
-    registry.signatures_ = gCommandRegistryState.signatures;
-    registry.aliases_ = gCommandRegistryState.aliases;
-}
+const std::unordered_map<std::string, CommandRegistry::HardNonTerminal> EndstoneCommandMap::TYPE_SYMBOLS = {
+    {"int", CommandRegistry::HardNonTerminal::Int},
+    {"float", CommandRegistry::HardNonTerminal::Val},
+    {"actor", CommandRegistry::HardNonTerminal::Selection},
+    {"entity", CommandRegistry::HardNonTerminal::Selection},
+    {"player", CommandRegistry::HardNonTerminal::Selection},
+    {"target", CommandRegistry::HardNonTerminal::Selection},
+    {"string", CommandRegistry::HardNonTerminal::Id},
+    {"str", CommandRegistry::HardNonTerminal::Id},
+    {"block_pos", CommandRegistry::HardNonTerminal::Position},
+    {"vec3i", CommandRegistry::HardNonTerminal::Position},
+    {"pos", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"vec3", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"vec3f", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"message", CommandRegistry::HardNonTerminal::MessageRoot},
+    {"json", CommandRegistry::HardNonTerminal::JsonObject},
+    {"block_states", CommandRegistry::HardNonTerminal::BlockStateArray},
+};
 
 }  // namespace endstone::core

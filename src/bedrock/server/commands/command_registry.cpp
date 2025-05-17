@@ -79,11 +79,6 @@ void CommandRegistry::registerOverloadInternal(Signature &signature, Overload &o
     BEDROCK_CALL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
 }
 
-int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
-{
-    return BEDROCK_CALL(&CommandRegistry::addEnumValues, this, name, values);
-}
-
 AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
 {
     return BEDROCK_CALL(&CommandRegistry::serializeAvailableCommands, this);
