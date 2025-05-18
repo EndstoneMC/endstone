@@ -20,8 +20,11 @@ namespace endstone::core {
 
 Permission *DefaultPermissions::registerPermission(std::unique_ptr<Permission> perm, Permission *parent)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto *result = server.getPluginManager().addPermission(std::move(perm));
+    const auto &server = entt::locator<EndstoneServer>::value();
+    auto *result = server.getPluginManager().getPermission(perm->getName());
+    if (result == nullptr) {
+        result = server.getPluginManager().addPermission(std::move(perm));
+    }
     if (parent != nullptr && result != nullptr) {
         parent->getChildren()[result->getName()] = true;
     }
@@ -42,6 +45,22 @@ void DefaultPermissions::registerCorePermissions()
     registerCommandPermissions(root);
     registerBroadcastPermissions(root);
     root->recalculatePermissibles();
+}
+
+void DefaultPermissions::registerMinecraftPermissions()
+{
+    auto *root = registerPermission("minecraft", nullptr,
+                                    "Gives the user the ability to use all vanilla utilities and commands");
+    auto *parent = registerPermission(root->getName() + ".command", root,
+                                      "Gives the user the ability to use all vanilla minecraft commands");
+    registerPermission(parent->getName() + ".help", parent, "Allows the user to access Vanilla command help.",
+                       PermissionDefault::True);
+    registerPermission(parent->getName() + ".list", parent, "Allows the user to list all online players.",
+                       PermissionDefault::True);
+    registerPermission(parent->getName() + ".me", parent, "Allows the user to perform a chat action.",
+                       PermissionDefault::True);
+    registerPermission(parent->getName() + ".tell", parent, "Allows the user to privately message another player.",
+                       PermissionDefault::True);
 }
 
 void DefaultPermissions::registerCommandPermissions(Permission *parent)

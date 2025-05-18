@@ -32,6 +32,7 @@ public:
                                           PermissionDefault default_value = Permission::DefaultPermission,
                                           const std::unordered_map<std::string, bool> &children = {});
     static void registerCorePermissions();
+    static void registerMinecraftPermissions();
     static void registerCommandPermissions(Permission *parent);
     static void registerBroadcastPermissions(Permission *parent);
 };

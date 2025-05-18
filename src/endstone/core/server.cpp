@@ -249,6 +249,7 @@ void EndstoneServer::enablePlugins(PluginLoadOrder type)
     if (type == PluginLoadOrder::PostWorld) {
         command_map_->setPluginCommands();
         DefaultPermissions::registerCorePermissions();
+        DefaultPermissions::registerMinecraftPermissions();
     }
 
     auto plugins = plugin_manager_->getPlugins();
