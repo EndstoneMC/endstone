@@ -104,10 +104,10 @@
         <name>getDamage</name>
         <qualifiedname>endstone::ActorDamageEvent::getDamage</qualifiedname>
         <briefdescription>
-<para>Gets the amount of damage caused by the event. </para>
+<para>Gets the raw amount of damage caused by the event. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The amount of damage caused by the event </para>
+<para><simplesect kind="return"><para>The raw amount of damage caused by the event </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -126,7 +126,7 @@
           <declname>damage</declname>
         </param>
         <briefdescription>
-<para>Sets the amount of damage caused by the event. </para>
+<para>Sets the raw amount of damage caused by the event. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -134,7 +134,7 @@
 <parametername>damage</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The amount of damage caused by the event </para>
+<para>The raw amount of damage caused by the event </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

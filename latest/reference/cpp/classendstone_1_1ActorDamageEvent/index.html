@@ -2335,7 +2335,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>float</strong></a></td>
-<td style="text-align: left;"><a href="#function-getdamage"><strong>getDamage</strong></a> () const<br><em>Gets the amount of damage caused by the event.</em></td>
+<td style="text-align: left;"><a href="#function-getdamage"><strong>getDamage</strong></a> () const<br><em>Gets the raw amount of damage caused by the event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> &amp;</td>
@@ -2347,7 +2347,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setdamage"><strong>setDamage</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>float</strong></a> damage) <br><em>Sets the amount of damage caused by the event.</em></td>
+<td style="text-align: left;"><a href="#function-setdamage"><strong>setDamage</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>float</strong></a> damage) <br><em>Sets the raw amount of damage caused by the event.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2419,11 +2419,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getdamage">function getDamage<a class="headerlink" href="#function-getdamage" title="Permanent link">&para;</a></h3>
-<p><em>Gets the amount of damage caused by the event.</em> 
+<p><em>Gets the raw amount of damage caused by the event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">getDamage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The amount of damage caused by the event </p>
+<p>The raw amount of damage caused by the event </p>
 <hr>
 
 <h3 id="function-getdamagesource">function getDamageSource<a class="headerlink" href="#function-getdamagesource" title="Permanent link">&para;</a></h3>
@@ -2444,14 +2444,14 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setdamage">function setDamage<a class="headerlink" href="#function-setdamage" title="Permanent link">&para;</a></h3>
-<p><em>Sets the amount of damage caused by the event.</em> 
+<p><em>Sets the raw amount of damage caused by the event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">setDamage</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">damage</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>damage</code> The amount of damage caused by the event </li>
+<li><code>damage</code> The raw amount of damage caused by the event </li>
 </ul>
 <hr>
 

@@ -99,10 +99,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorDamageEvent**](#function-actordamageevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, [**const**](classendstone_1_1Vector.md) [**float**](classendstone_1_1Vector.md) damage) <br> |
-|  [**float**](classendstone_1_1Vector.md) | [**getDamage**](#function-getdamage) () const<br>_Gets the amount of damage caused by the event._  |
+|  [**float**](classendstone_1_1Vector.md) | [**getDamage**](#function-getdamage) () const<br>_Gets the raw amount of damage caused by the event._  |
 |  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](#function-getdamagesource) () const<br>_Get the source of damage._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setDamage**](#function-setdamage) ([**const**](classendstone_1_1Vector.md) [**float**](classendstone_1_1Vector.md) damage) <br>_Sets the amount of damage caused by the event._  |
+|  [**void**](classendstone_1_1Vector.md) | [**setDamage**](#function-setdamage) ([**const**](classendstone_1_1Vector.md) [**float**](classendstone_1_1Vector.md) damage) <br>_Sets the raw amount of damage caused by the event._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -245,7 +245,7 @@ inline endstone::ActorDamageEvent::ActorDamageEvent (
 
 ### function getDamage 
 
-_Gets the amount of damage caused by the event._ 
+_Gets the raw amount of damage caused by the event._ 
 ```C++
 inline float endstone::ActorDamageEvent::getDamage () const
 ```
@@ -256,7 +256,7 @@ inline float endstone::ActorDamageEvent::getDamage () const
 
 **Returns:**
 
-The amount of damage caused by the event 
+The raw amount of damage caused by the event 
 
 
 
@@ -324,7 +324,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function setDamage 
 
-_Sets the amount of damage caused by the event._ 
+_Sets the raw amount of damage caused by the event._ 
 ```C++
 inline void endstone::ActorDamageEvent::setDamage (
     const  float damage
@@ -338,7 +338,7 @@ inline void endstone::ActorDamageEvent::setDamage (
 **Parameters:**
 
 
-* `damage` The amount of damage caused by the event 
+* `damage` The raw amount of damage caused by the event 
 
 
 
