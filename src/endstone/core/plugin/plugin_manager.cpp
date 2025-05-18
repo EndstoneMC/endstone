@@ -62,7 +62,7 @@ namespace endstone::core {
 
 EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server)
 {
-    default_perms_[PermissionLevel::Player] = {};
+    default_perms_[PermissionLevel::Default] = {};
     default_perms_[PermissionLevel::Operator] = {};
     default_perms_[PermissionLevel::Console] = {};
 }
@@ -488,7 +488,7 @@ void EndstonePluginManager::clearPlugins()
     event_handlers_.clear();
     plugin_loaders_.clear();
     permissions_.clear();
-    default_perms_[PermissionLevel::Player].clear();
+    default_perms_[PermissionLevel::Default].clear();
     default_perms_[PermissionLevel::Operator].clear();
     default_perms_[PermissionLevel::Console].clear();
 }
@@ -590,7 +590,7 @@ std::unordered_set<Permission *> EndstonePluginManager::getDefaultPermissions(Pe
 void EndstonePluginManager::recalculatePermissionDefaults(Permission &perm)
 {
     if (getPermission(perm.getName()) != nullptr) {
-        default_perms_.at(PermissionLevel::Player).erase(&perm);
+        default_perms_.at(PermissionLevel::Default).erase(&perm);
         default_perms_.at(PermissionLevel::Operator).erase(&perm);
         default_perms_.at(PermissionLevel::Console).erase(&perm);
         calculatePermissionDefault(perm);
@@ -612,8 +612,8 @@ void EndstonePluginManager::calculatePermissionDefault(Permission &perm)
     }
 
     if (perm.getDefault() == PermissionDefault::NotOperator || perm.getDefault() == PermissionDefault::True) {
-        default_perms_.at(PermissionLevel::Player).insert(&perm);
-        dirtyPermissibles(PermissionLevel::Player);
+        default_perms_.at(PermissionLevel::Default).insert(&perm);
+        dirtyPermissibles(PermissionLevel::Default);
     }
 }
 

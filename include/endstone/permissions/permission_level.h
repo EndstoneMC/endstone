@@ -16,7 +16,7 @@
 
 namespace endstone {
 enum class PermissionLevel {
-    Player = 0,
+    Default = 0,
     Operator = 1,
     Console = 2,
 };

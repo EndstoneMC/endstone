@@ -269,8 +269,9 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
                                 plugin.getDescription().getFullName(), perm.getName());
         }
     }
-    plugin_manager_->dirtyPermissibles(true);
-    plugin_manager_->dirtyPermissibles(false);
+    plugin_manager_->dirtyPermissibles(PermissionLevel::Default);
+    plugin_manager_->dirtyPermissibles(PermissionLevel::Operator);
+    plugin_manager_->dirtyPermissibles(PermissionLevel::Console);
     plugin_manager_->enablePlugin(plugin);
 }
 
