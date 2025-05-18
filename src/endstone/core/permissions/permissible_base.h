@@ -37,8 +37,7 @@ protected:
     ~PermissibleBase() override;
 
 public:
-    [[nodiscard]] bool isOp() const override;
-    void setOp(bool value) override;
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
