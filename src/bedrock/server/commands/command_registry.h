@@ -43,7 +43,8 @@ enum class SemanticConstraint;
 
 namespace endstone::core {
 class EndstoneCommandMap;
-}
+class EndstonePlayer;
+}  // namespace endstone::core
 
 enum class CommandParameterDataType : int {
     Basic = 0,
@@ -58,6 +59,7 @@ public:
     friend class Command;
     friend class CommandParameterData;
     friend class endstone::core::EndstoneCommandMap;
+    friend class endstone::core::EndstonePlayer;
 
     using CustomStorageGetFn = void *(*)(Command *, int);
     using CustomStorageIsSetFn = bool *(*)(Command *, int);
@@ -365,6 +367,13 @@ private:
     struct ParseTable;
 
     [[nodiscard]] const Signature *findCommand(const std::string &name) const;
+    [[nodiscard]] NonTerminal findEnum(const std::string &name) const;
+    [[nodiscard]] NonTerminal findSoftEnum(const std::string &name) const;
+    [[nodiscard]] Terminal findEnumValue(const std::string &name) const;
+    [[nodiscard]] NonTerminal findChainedSubcommand(const std::string &name) const;
+    [[nodiscard]] NonTerminal findChainedSubcommandValue(const std::string &name) const;
+    [[nodiscard]] Terminal findPostfix(const std::string &name) const;
+    [[nodiscard]] Terminal findIdentifierInfo(const std::string &name) const;
     [[nodiscard]] std::unique_ptr<Command> createCommand(const ParseToken &parse_token, const CommandOrigin &origin,
                                                          int version, std::string &error_message,
                                                          std::vector<std::string> &error_params) const;

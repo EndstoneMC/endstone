@@ -31,11 +31,11 @@ public:
     bool dispatch(CommandSender &sender, std::string command_line) const override;
     void clearCommands() override;
     [[nodiscard]] std::shared_ptr<Command> getCommand(std::string name) const override;
+    [[nodiscard]] ::MinecraftCommands &getHandle();
+    [[nodiscard]] const ::MinecraftCommands &getHandle() const;
 
 private:
     friend class EndstoneServer;
-    [[nodiscard]] ::MinecraftCommands &getHandle();
-    [[nodiscard]] const ::MinecraftCommands &getHandle() const;
     void setDefaultCommands();
     void setPluginCommands();
     void unregisterCommand(std::string name);

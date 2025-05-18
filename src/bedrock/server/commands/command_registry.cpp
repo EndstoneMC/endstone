@@ -45,6 +45,24 @@ const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string
     return nullptr;
 }
 
+CommandRegistry::NonTerminal CommandRegistry::findEnum(const std::string &name) const
+{
+    const auto it = enum_lookup_.find(name);
+    if (it == enum_lookup_.end()) {
+        return Symbol{0};
+    }
+    return Symbol::fromEnumValueIndex(it->second);
+}
+
+CommandRegistry::Terminal CommandRegistry::findEnumValue(const std::string &name) const
+{
+    const auto it = enum_value_lookup_.find(name);
+    if (it == enum_value_lookup_.end()) {
+        return Symbol{0};
+    }
+    return Symbol::fromEnumValueIndex(it->second);
+}
+
 std::string CommandRegistry::describe(const CommandParameterData &param) const
 {
     std::string (CommandRegistry::*fp)(const CommandParameterData &param) const = &CommandRegistry::describe;
