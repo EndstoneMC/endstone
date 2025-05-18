@@ -271,11 +271,7 @@ private:
     std::string description_;
     std::vector<std::string> aliases_;
     std::vector<std::string> usages_;
-
-protected:
     std::vector<std::string> permissions_;
-
-private:
     const CommandMap *command_map_ = nullptr;
 };
 }  // namespace endstone

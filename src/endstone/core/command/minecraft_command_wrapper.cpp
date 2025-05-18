@@ -26,8 +26,7 @@ namespace endstone::core {
 
 MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_commands,
                                                  const CommandRegistry::Signature &signature)
-    : EndstoneCommand(signature.name), minecraft_commands_(minecraft_commands),
-      permission_level_(signature.permission_level)
+    : EndstoneCommand(signature.name), minecraft_commands_(minecraft_commands)
 {
     // Description
     auto description = getI18n().get(signature.description, {}, nullptr);

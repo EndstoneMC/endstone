@@ -298,7 +298,7 @@ public:
         std::string name;
         Bedrock::typeid_t<CommandRegistry> type;
         ParseFunction parse;
-        std::vector<std::pair<std::uint64_t, std::uint64_t>> values;
+        std::vector<std::pair<std::uint32_t, std::uint32_t>> values;
     };
     struct ChainedSubcommand;
     struct SoftEnum {

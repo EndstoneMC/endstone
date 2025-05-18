@@ -32,7 +32,6 @@ private:
     static std::string getPermission(const CommandRegistry::Signature &minecraft_command);
 
     MinecraftCommands &minecraft_commands_;
-    CommandPermissionLevel permission_level_;
 };
 
 }  // namespace endstone::core
