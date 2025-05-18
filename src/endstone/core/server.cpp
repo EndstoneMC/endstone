@@ -213,7 +213,7 @@ PluginManager &EndstoneServer::getPluginManager() const
 
 PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 {
-    if (auto *command = command_map_->getCommand(name)) {
+    if (auto command = command_map_->getCommand(name)) {
         return command->asPluginCommand();
     }
     return nullptr;
@@ -249,6 +249,7 @@ void EndstoneServer::enablePlugins(PluginLoadOrder type)
     if (type == PluginLoadOrder::PostWorld) {
         command_map_->setPluginCommands();
         DefaultPermissions::registerCorePermissions();
+        DefaultPermissions::registerMinecraftPermissions();
     }
 
     auto plugins = plugin_manager_->getPlugins();

@@ -40,10 +40,9 @@ add_library(endstone_core
         command/command_origin_wrapper.cpp
         command/command_sender.cpp
         command/command_usage_parser.cpp
-        command/command_wrapper.cpp
         command/console_command_sender.cpp
-        command/minecraft_command.cpp
         command/minecraft_command_adapter.cpp
+        command/minecraft_command_wrapper.cpp
         command/proxied_command_sender.cpp
         command/server_command_sender.cpp
         command/defaults/ban_command.cpp

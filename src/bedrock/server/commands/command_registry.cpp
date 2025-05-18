@@ -19,6 +19,7 @@
 #include <sstream>
 #include <utility>
 
+#include "bedrock/network/packet/update_soft_enum_packet.h"
 #include "bedrock/server/commands/command.h"
 #include "bedrock/symbol.h"
 
@@ -42,6 +43,24 @@ const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string
         return &signatures_.at(aliases_.at(name));
     }
     return nullptr;
+}
+
+CommandRegistry::NonTerminal CommandRegistry::findEnum(const std::string &name) const
+{
+    const auto it = enum_lookup_.find(name);
+    if (it == enum_lookup_.end()) {
+        return Symbol{0};
+    }
+    return Symbol::fromEnumValueIndex(it->second);
+}
+
+CommandRegistry::Terminal CommandRegistry::findEnumValue(const std::string &name) const
+{
+    const auto it = enum_value_lookup_.find(name);
+    if (it == enum_value_lookup_.end()) {
+        return Symbol{0};
+    }
+    return Symbol::fromEnumValueIndex(it->second);
 }
 
 std::string CommandRegistry::describe(const CommandParameterData &param) const
@@ -78,16 +97,53 @@ void CommandRegistry::registerOverloadInternal(Signature &signature, Overload &o
     BEDROCK_CALL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
 }
 
-int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
-{
-    return BEDROCK_CALL(&CommandRegistry::addEnumValues, this, name, values);
-}
-
 AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
 {
     return BEDROCK_CALL(&CommandRegistry::serializeAvailableCommands, this);
 }
 
-CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc) : version(version), alloc(alloc)
+void CommandRegistry::setSoftEnumValues(const std::string &enum_name, std::vector<std::string> values)
 {
+    const auto it = soft_enum_lookup_.find(enum_name);
+    if (it == soft_enum_lookup_.end()) {
+        return;
+    }
+
+    auto &soft_enum = soft_enums_.at(it->second);
+    soft_enum.values = values;
+
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
+    const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
+    pk->enum_name = enum_name;
+    pk->values = values;
+    pk->type = SoftEnumUpdateType::Replace;
+    network_update_callback_(*pk);
+}
+
+void CommandRegistry::addSoftEnumValues(const std::string &enum_name, std::vector<std::string> values)
+{
+    const auto it = soft_enum_lookup_.find(enum_name);
+    if (it == soft_enum_lookup_.end()) {
+        return;
+    }
+
+    auto &soft_enum = soft_enums_.at(it->second);
+    soft_enum.values.insert(soft_enum.values.end(), values.begin(), values.end());
+
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
+    const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
+    pk->enum_name = enum_name;
+    pk->values = values;
+    pk->type = SoftEnumUpdateType::Add;
+    network_update_callback_(*pk);
+}
+
+CommandRegistry::Overload::Overload(const CommandVersion &version, AllocFunction alloc)
+    : version(version), alloc(std::move(alloc))
+{
+}
+
+int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
+{
+    return BEDROCK_CALL(&CommandRegistry::addEnumValues, this, name, values);
 }

@@ -39,11 +39,11 @@ class Command;
 class CommandOrigin;
 class CommandParameterData;
 class CommandRunStats;
-enum class SemanticConstraint;
 
 namespace endstone::core {
 class EndstoneCommandMap;
-}
+class EndstonePlayer;
+}  // namespace endstone::core
 
 enum class CommandParameterDataType : int {
     Basic = 0,
@@ -53,16 +53,27 @@ enum class CommandParameterDataType : int {
     ChainedSubcommand = 4,
 };
 
+enum class SemanticConstraint : std::uint8_t {
+    None = 0,
+    RequiresCheatsEnabled = 1,
+    RequiresElevatedPermissions = 2,
+    RequiresHostPermissions = 4,
+    RequiresAllowAliases = 8,
+    VALUE_MASK = 15,
+};
+
 class CommandRegistry {
 public:
     friend class Command;
     friend class CommandParameterData;
+    friend class endstone::core::EndstoneCommandMap;
+    friend class endstone::core::EndstonePlayer;
 
     using CustomStorageGetFn = void *(*)(Command *, int);
     using CustomStorageIsSetFn = bool *(*)(Command *, int);
 
     int addEnumValues(const std::string &name, const std::vector<std::string> &values);
-
+    int addSoftEnum(const std::string &name, std::vector<std::string> values);
     void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                          CommandFlag flag1, CommandFlag flag2);
     void registerAlias(std::string name, std::string alias);
@@ -77,6 +88,9 @@ private:
     using ScoreboardScoreAccessor = std::function<int(bool &, const std::string &, const Actor &)>;
 
 public:
+    void setSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
+    void addSoftEnumValues(const std::string &enum_name, std::vector<std::string> values);
+
     static const int NonTerminalBit = 0x100000;
     static const int FirstNonTerminal = 0x100001;
 
@@ -185,6 +199,11 @@ public:
             value_ = other.value_;
         }
 
+        bool operator==(const Symbol &other) const
+        {
+            return value_ == other.value_;
+        }
+
         [[nodiscard]] int value() const
         {
             return value_;
@@ -195,10 +214,29 @@ public:
             return value_ & 0xE00FFFFF;
         }
 
-        bool operator==(const Symbol &other) const
+        [[nodiscard]] bool isTerminal() const;
+        [[nodiscard]] bool isEnum() const;
+        [[nodiscard]] bool isChainedSubCommand() const;
+        [[nodiscard]] bool isOptional() const;
+        [[nodiscard]] bool isFactorization() const;
+        [[nodiscard]] bool isPostfix() const;
+        [[nodiscard]] bool isEnumValue() const;
+        [[nodiscard]] bool isChainedSubcommandValue() const;
+        [[nodiscard]] bool isSoftEnum() const;
+        static Symbol fromEnumIndex(size_t index)
         {
-            return value_ == other.value_;
+            return {index | EnumBit | NonTerminalBit};
         }
+        static Symbol fromOptionalIndex(size_t index);
+        static Symbol fromFactorizationIndex(size_t index);
+        static Symbol fromPostfixIndex(size_t index);
+        static Symbol fromEnumValueIndex(size_t index)
+        {
+            return {index | EnumValueBit};
+        }
+        static Symbol fromSoftEnumIndex(size_t index);
+        static Symbol fromChainedSubcommandIndex(size_t index);
+        static Symbol fromChainedSubcommandValueIndex(size_t index);
 
     private:
         static const int EnumBit = 0x200000;
@@ -209,7 +247,7 @@ public:
         static const int SoftEnumBit = 0x4000000;
         static const int ChainedSubcommandBit = 0x8000000;
         static const int ChainedSubcommandValueBit = 0x10000000;
-        int value_{-1};
+        int value_ = 0;
     };
 
     using NonTerminal = Symbol;
@@ -265,14 +303,21 @@ public:
     using ParseFunction = bool (CommandRegistry::*)(void *, const ParseToken &, const CommandOrigin &, int,
                                                     std::string &, std::vector<std::string> &) const;
     struct Enum {
-        std::string name;                                             // +0
-        Bedrock::typeid_t<CommandRegistry> type;                      // +32
-        ParseFunction parse;                                          // +40
-        std::vector<std::pair<std::uint32_t, std::uint32_t>> values;  // +48
+        std::string name;
+        Bedrock::typeid_t<CommandRegistry> type;
+        ParseFunction parse;
+        std::vector<std::pair<std::uint32_t, std::uint32_t>> values;
     };
     struct ChainedSubcommand;
-    struct SoftEnum;
-    struct ConstrainedValue;
+    struct SoftEnum {
+        std::string name;
+        std::vector<std::string> values;
+    };
+    struct ConstrainedValue {
+        Symbol value;
+        Symbol enum_symbol;
+        std::vector<unsigned char> constraints;
+    };
     struct ParamSymbols {
         Terminal x;              // +0
         Terminal y;              // +4
@@ -306,7 +351,7 @@ public:
 
     // Endstone begins
     friend class endstone::core::EndstoneCommandMap;
-    std::string describe(const Signature &signature, const Overload &overload)
+    [[nodiscard]] std::string describe(const Signature &signature, const Overload &overload) const
     {
         return describe(signature, signature.name, overload, 0, nullptr, nullptr);
     }
@@ -330,6 +375,13 @@ private:
     struct ParseTable;
 
     [[nodiscard]] const Signature *findCommand(const std::string &name) const;
+    [[nodiscard]] NonTerminal findEnum(const std::string &name) const;
+    [[nodiscard]] NonTerminal findSoftEnum(const std::string &name) const;
+    [[nodiscard]] Terminal findEnumValue(const std::string &name) const;
+    [[nodiscard]] NonTerminal findChainedSubcommand(const std::string &name) const;
+    [[nodiscard]] NonTerminal findChainedSubcommandValue(const std::string &name) const;
+    [[nodiscard]] Terminal findPostfix(const std::string &name) const;
+    [[nodiscard]] Terminal findIdentifierInfo(const std::string &name) const;
     [[nodiscard]] std::unique_ptr<Command> createCommand(const ParseToken &parse_token, const CommandOrigin &origin,
                                                          int version, std::string &error_message,
                                                          std::vector<std::string> &error_params) const;
@@ -353,9 +405,9 @@ private:
     std::vector<Factorization> factorizations_;                                                  // +296
     std::vector<std::string> postfixes_;                                                         // +320
     std::map<std::string, std::uint32_t> enum_lookup_;                                           // +344
-    std::map<std::string, std::uint64_t> enum_value_lookup_;                                     // +360
+    std::map<std::string, std::uint32_t> enum_value_lookup_;                                     // +360
     std::map<std::string, std::uint32_t> chained_subcommand_lookup_;                             // +376
-    std::map<std::string, std::uint64_t> chained_subcommand_value_lookup_;                       // +392
+    std::map<std::string, std::uint32_t> chained_subcommand_value_lookup_;                       // +392
     std::vector<Symbol> command_symbols_;                                                        // +408
     std::map<std::string, Signature> signatures_;                                                // +432
     std::map<Bedrock::typeid_t<CommandRegistry>, std::int32_t> type_lookup_;                     // +448
@@ -379,15 +431,6 @@ enum class CommandParameterOption : std::uint8_t {
     EnumAutocompleteExpansion = 1,
     HasSemanticConstraint = 2,
     EnumAsChainedCommand = 4
-};
-
-enum class SemanticConstraint {
-    None = 0,
-    RequiresCheatsEnabled = 1,
-    RequiresElevatedPermissions = 2,
-    RequiresHostPermissions = 4,
-    RequiresAllowAliases = 8,
-    VALUE_MASK = 15,
 };
 
 class CommandParameterData {

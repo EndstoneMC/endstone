@@ -14,20 +14,17 @@
 
 #pragma once
 
-#include "bedrock/server/commands/command_output.h"
+#include "bedrock/network/packet.h"
 
-namespace endstone::core {
-
-class CommandOutputWithSender : public ::CommandOutput {
-public:
-    CommandOutputWithSender(CommandOutputType type, CommandSender &sender) : CommandOutput(type), sender_(sender)
-    {
-        has_command_sender = true;
-    }
-
-private:
-    friend class MinecraftCommandAdapter;
-    CommandSender &sender_;
+enum class SoftEnumUpdateType : uint8_t {
+    Add = 0,
+    Remove = 1,
+    Replace = 2,
 };
 
-}  // namespace endstone::core
+class UpdateSoftEnumPacket : public Packet {
+public:
+    std::string enum_name;
+    std::vector<std::string> values;
+    SoftEnumUpdateType type;
+};

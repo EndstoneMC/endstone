@@ -17,9 +17,9 @@
 #include <mutex>
 #include <unordered_map>
 
+#include "bedrock/server/commands/minecraft_commands.h"
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
-#include "endstone/core/command/command_wrapper.h"
 
 namespace endstone::core {
 
@@ -30,21 +30,23 @@ public:
     bool registerCommand(std::shared_ptr<Command> command) override;
     bool dispatch(CommandSender &sender, std::string command_line) const override;
     void clearCommands() override;
-    [[nodiscard]] Command *getCommand(std::string name) const override;
+    [[nodiscard]] std::shared_ptr<Command> getCommand(std::string name) const override;
+    [[nodiscard]] ::MinecraftCommands &getHandle();
+    [[nodiscard]] const ::MinecraftCommands &getHandle() const;
 
 private:
     friend class EndstoneServer;
     void setDefaultCommands();
-    void setMinecraftCommands();
     void setPluginCommands();
-
-    void patchCommandRegistry();
-    void saveCommandRegistryState() const;
-    void restoreCommandRegistryState() const;
+    void unregisterCommand(std::string name);
+    void clearEnumValues(const std::string &enum_name);
+    void removeEnumValueFromExisting(const std::string &enum_name, const std::string &enum_value);
 
     EndstoneServer &server_;
     std::recursive_mutex mutex_;
-    std::unordered_map<std::string, std::shared_ptr<CommandWrapper>> known_commands_;
+    std::unordered_map<std::string, std::shared_ptr<Command>> custom_commands_;
+
+    static const std::unordered_map<std::string, CommandRegistry::HardNonTerminal> TYPE_SYMBOLS;
 };
 
 }  // namespace endstone::core

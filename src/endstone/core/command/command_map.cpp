@@ -34,8 +34,8 @@
 #include "endstone/core/command/defaults/reload_command.h"
 #include "endstone/core/command/defaults/status_command.h"
 #include "endstone/core/command/defaults/version_command.h"
-#include "endstone/core/command/minecraft_command.h"
 #include "endstone/core/command/minecraft_command_adapter.h"
+#include "endstone/core/command/minecraft_command_wrapper.h"
 #include "endstone/core/devtools/devtools_command.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
@@ -44,9 +44,7 @@ namespace endstone::core {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
-    patchCommandRegistry();
-    saveCommandRegistryState();
-    setMinecraftCommands();
+    unregisterCommand("reload");
     setDefaultCommands();
 }
 
@@ -62,7 +60,7 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
         return false;
     }
 
-    const auto *target = getCommand(args[0]);
+    const auto target = getCommand(args[0]);
     if (!target) {
         sender.sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
         return false;
@@ -80,25 +78,42 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
 void EndstoneCommandMap::clearCommands()
 {
     std::lock_guard lock(mutex_);
-    for (const auto &[name, command] : known_commands_) {
+    for (const auto &[name, command] : custom_commands_) {
         command->unregisterFrom(*this);
+        unregisterCommand(command->getName());
     }
-    known_commands_.clear();
-    restoreCommandRegistryState();
-    setMinecraftCommands();
+    custom_commands_.clear();
     setDefaultCommands();
 }
 
-Command *EndstoneCommandMap::getCommand(std::string name) const
+std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
 {
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    std::ranges::transform(name, name.begin(), ::tolower);
 
-    auto it = known_commands_.find(name);
-    if (it == known_commands_.end()) {
-        return nullptr;
+    // Try to find the custom command we've registered
+    if (const auto it = custom_commands_.find(name); it != custom_commands_.end()) {
+        return it->second;
     }
 
-    return it->second.get();
+    // Custom command not found, let's find it in CommandRegistry
+    const auto &registry = getHandle().getRegistry();
+    if (const auto *signature = registry.findCommand(name)) {
+        auto command =
+            std::make_shared<MinecraftCommandWrapper>(const_cast<MinecraftCommands &>(getHandle()), *signature);
+        command->registerTo(*this);
+        return command;
+    }
+
+    return nullptr;
+}
+MinecraftCommands &EndstoneCommandMap::getHandle()
+{
+    return server_.getServer().getMinecraft()->getCommands();
+}
+
+const MinecraftCommands &EndstoneCommandMap::getHandle() const
+{
+    return server_.getServer().getMinecraft()->getCommands();
 }
 
 void EndstoneCommandMap::setDefaultCommands()
@@ -117,109 +132,116 @@ void EndstoneCommandMap::setDefaultCommands()
 #endif
 }
 
-void EndstoneCommandMap::setMinecraftCommands()
-{
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
-
-    std::unordered_map<std::string, std::vector<std::string>> command_aliases;
-    for (const auto &[alias, command_name] : registry.aliases_) {
-        auto it = command_aliases.emplace(command_name, std::vector<std::string>()).first;
-        it->second.push_back(alias);
-    }
-
-    auto *root = DefaultPermissions::registerPermission(
-        "minecraft", nullptr, "Gives the user the ability to use all vanilla utilities and commands");
-    auto *parent = DefaultPermissions::registerPermission(
-        root->getName() + ".command", root, "Gives the user the ability to use all vanilla minecraft commands");
-
-    for (const auto &[command_name, signature] : registry.signatures_) {
-        auto description = getI18n().get(signature.description, {}, nullptr);
-
-        std::vector<std::string> usages;
-        usages.reserve(signature.overloads.size());
-        for (const auto &overload : signature.overloads) {
-            usages.push_back(registry.describe(signature, overload));
-        }
-
-        std::vector<std::string> aliases;
-        auto it = command_aliases.find(command_name);
-        if (it != command_aliases.end()) {
-            aliases.insert(aliases.end(), it->second.begin(), it->second.end());
-        }
-
-        auto command = std::make_shared<CommandWrapper>(
-            server_.getServer().getMinecraft()->getCommands(),
-            std::make_unique<MinecraftCommand>(command_name, description, usages, aliases));
-        command->registerTo(*this);
-
-        known_commands_.emplace(signature.name, command);
-        for (const auto &alias : aliases) {
-            known_commands_.emplace(alias, command);
-        }
-
-        DefaultPermissions::registerPermission(parent->getName() + "." + command_name, parent,
-                                               "Gives the user the ability to use the /" + command_name + " command",
-                                               signature.permission_level > CommandPermissionLevel::Any
-                                                   ? PermissionDefault::Operator
-                                                   : PermissionDefault::True);
-    }
-
-    parent->recalculatePermissibles();
-    root->recalculatePermissibles();
-}
-
 void EndstoneCommandMap::setPluginCommands()
 {
-    auto plugins = server_.getPluginManager().getPlugins();
+    const auto plugins = server_.getPluginManager().getPlugins();
+    std::vector<std::string> plugin_names;
     for (auto *plugin : plugins) {
         auto name = plugin->getName();
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        server_.getServer().getMinecraft()->getCommands().getRegistry().addEnumValues("PluginName", {name});
+        std::ranges::transform(name, name.begin(), ::tolower);
+        plugin_names.emplace_back(name);
 
         auto commands = plugin->getDescription().getCommands();
         for (const auto &command : commands) {
             registerCommand(std::make_unique<PluginCommand>(command, *plugin));
         }
     }
+    clearEnumValues("PluginName");
+    getHandle().getRegistry().addEnumValues("PluginName", plugin_names);
 }
 
-namespace {
-std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols = {
-    {"int", CommandRegistry::HardNonTerminal::Int},
-    {"float", CommandRegistry::HardNonTerminal::Val},
-    {"actor", CommandRegistry::HardNonTerminal::Selection},
-    {"entity", CommandRegistry::HardNonTerminal::Selection},
-    {"player", CommandRegistry::HardNonTerminal::Selection},
-    {"target", CommandRegistry::HardNonTerminal::Selection},
-    {"string", CommandRegistry::HardNonTerminal::Id},
-    {"str", CommandRegistry::HardNonTerminal::Id},
-    {"block_pos", CommandRegistry::HardNonTerminal::Position},
-    {"vec3i", CommandRegistry::HardNonTerminal::Position},
-    {"pos", CommandRegistry::HardNonTerminal::PositionFloat},
-    {"vec3", CommandRegistry::HardNonTerminal::PositionFloat},
-    {"vec3f", CommandRegistry::HardNonTerminal::PositionFloat},
-    {"message", CommandRegistry::HardNonTerminal::MessageRoot},
-    {"json", CommandRegistry::HardNonTerminal::JsonObject},
-    {"block_states", CommandRegistry::HardNonTerminal::BlockStateArray},
-};
-}  // namespace
+void EndstoneCommandMap::unregisterCommand(std::string name)
+{
+    std::ranges::transform(name, name.begin(), ::tolower);
+    auto &registry = getHandle().getRegistry();
+    const auto *signature = registry.findCommand(name);
+    if (!signature) {
+        return;
+    }
+
+    // Remove enums introduced by custom commands
+    if (custom_commands_.contains(name)) {
+        for (const auto &overload : signature->overloads) {
+            for (const auto &param : overload.params) {
+                if (param.param_type != CommandParameterDataType::Enum || !param.enum_name_or_postfix) {
+                    continue;
+                }
+                if (param.enum_name_or_postfix == "Boolean" || param.enum_name_or_postfix == "Block") {
+                    continue;
+                }
+                clearEnumValues(param.enum_name_or_postfix);
+            }
+        }
+    }
+
+    // TODO: remove enum value constraints for name in enum name CommandName
+
+    // Remove aliases
+    for (auto it = registry.aliases_.begin(); it != registry.aliases_.end();) {
+        if (it->second == name) {
+            const auto &alias = it->first;
+            removeEnumValueFromExisting("CommandName", alias);
+            removeEnumValueFromExisting("CommandAliases", alias);
+            it = registry.aliases_.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+
+    // Remove name from CommandName
+    removeEnumValueFromExisting("CommandName", name);
+
+    // Remove command signature
+    registry.signatures_.erase(name);
+}
+
+void EndstoneCommandMap::clearEnumValues(const std::string &enum_name)
+{
+    auto &registry = getHandle().getRegistry();
+    if (!registry.enum_lookup_.contains(enum_name)) {
+        return;
+    }
+
+    const auto enum_index = registry.enum_lookup_.at(enum_name);
+    auto &enum_data = registry.enums_.at(enum_index);
+    enum_data.values.clear();
+}
+
+void EndstoneCommandMap::removeEnumValueFromExisting(const std::string &enum_name, const std::string &enum_value)
+{
+    auto &registry = getHandle().getRegistry();
+    if (!registry.enum_lookup_.contains(enum_name) || !registry.enum_value_lookup_.contains(enum_value)) {
+        return;
+    }
+
+    const auto enum_index = registry.enum_lookup_.at(enum_name);
+    const auto enum_value_index = registry.enum_value_lookup_.at(enum_value);
+
+    auto &enum_data = registry.enums_.at(enum_index);
+    for (auto it = enum_data.values.begin(); it != enum_data.values.end();) {
+        if (it->first == CommandRegistry::Symbol::fromEnumValueIndex(enum_value_index).value()) {
+            it = enum_data.values.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+}
 
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
     std::lock_guard lock(mutex_);
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    auto &registry = getHandle().getRegistry();
 
     if (!command) {
         server_.getLogger().error("Unable to register a null command.");
         return false;
     }
 
-    auto wrapped = std::make_shared<CommandWrapper>(server_.getServer().getMinecraft()->getCommands(), command);
-    command = wrapped;
-
     // Check if the command name is available
     auto name = command->getName();
-    if (auto it = known_commands_.find(name); it != known_commands_.end() && it->second->getName() == it->first) {
+    if (getCommand(name) != nullptr) {
         server_.getLogger().error("Unable to register command '{}' as it already exists.", name);
         return false;  // the name was registered and is not an alias, we don't replace it
     }
@@ -227,7 +249,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     // Check for available aliases
     std::vector<std::string> pending_aliases;
     for (const auto &alias : command->getAliases()) {
-        if (known_commands_.find(alias) == known_commands_.end()) {
+        if (getCommand(alias) == nullptr) {
             pending_aliases.push_back(alias);
         }
     }
@@ -265,7 +287,15 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 // Add suffix if the enum already exists
                 std::string enum_name_final = enum_name;
                 int i = 0;
-                while (registry.enum_lookup_.find(enum_name_final) != registry.enum_lookup_.end()) {
+                while (true) {
+                    const auto it = registry.enum_lookup_.find(enum_name_final);
+                    if (it == registry.enum_lookup_.end()) {
+                        break;
+                    }
+                    const auto enum_index = it->second;
+                    if (registry.enums_.at(enum_index).values.empty()) {
+                        break;
+                    }
                     enum_name_final = fmt::format("{}_{}", enum_name, ++i);
                 }
                 if (enum_name_final != enum_name) {
@@ -288,20 +318,20 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 data.options = CommandParameterOption::EnumAutocompleteExpansion;
             }
             else if (parameter.type == "bool") {
-                static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
+                static auto enum_index = registry.enum_lookup_.at("Boolean");
                 data.param_type = CommandParameterDataType::Enum;
                 data.enum_name_or_postfix = "Boolean";
-                data.enum_or_postfix_symbol = symbol;
+                data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
             }
             else if (parameter.type == "block") {
-                static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Block", {}));
+                static auto enum_index = registry.enum_lookup_.at("Block");
                 data.param_type = CommandParameterDataType::Enum;
                 data.enum_name_or_postfix = "Block";
-                data.enum_or_postfix_symbol = symbol;
+                data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
             }
             else {
-                auto it = gTypeSymbols.find(std::string(parameter.type));
-                if (it == gTypeSymbols.end()) {
+                auto it = TYPE_SYMBOLS.find(std::string(parameter.type));
+                if (it == TYPE_SYMBOLS.end()) {
                     server_.getLogger().error("Unable to register command '{}'. Unsupported type '{}' in usage '{}'.",
                                               name, parameter.type, usage);
                     success = false;
@@ -324,11 +354,11 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
     // Actual registration starts from here
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
-                             {static_cast<CommandFlagSize>(CommandCheatFlag::NotCheat)}, {0});
-    known_commands_.emplace(name, wrapped);
+                             CommandCheatFlag::NotCheat, CommandUsageFlag::Normal);
+    custom_commands_.emplace(name, command);
     for (const auto &alias : pending_aliases) {
         registry.registerAlias(name, alias);
-        known_commands_.emplace(alias, wrapped);
+        custom_commands_.emplace(alias, command);
     }
     for (const auto &param_data : pending_param_data) {
         registry.registerOverload<MinecraftCommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
@@ -339,40 +369,23 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     return true;
 }
 
-namespace {
-struct {
-    std::vector<CommandRegistry::Enum> enums;
-    std::map<std::string, std::uint32_t> enum_lookup;
-    std::map<std::string, CommandRegistry::Signature> signatures;
-    std::map<std::string, std::string> aliases;
-} gCommandRegistryState;
-}  // namespace
-
-void EndstoneCommandMap::patchCommandRegistry()
-{
-    std::lock_guard lock(mutex_);
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
-
-    // remove the vanilla `/reload` command (to be replaced by ours)
-    registry.signatures_.erase("reload");
-}
-
-void EndstoneCommandMap::saveCommandRegistryState() const
-{
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
-    gCommandRegistryState.enums = registry.enums_;
-    gCommandRegistryState.enum_lookup = registry.enum_lookup_;
-    gCommandRegistryState.signatures = registry.signatures_;
-    gCommandRegistryState.aliases = registry.aliases_;
-}
-
-void EndstoneCommandMap::restoreCommandRegistryState() const
-{
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
-    registry.enums_ = gCommandRegistryState.enums;
-    registry.enum_lookup_ = gCommandRegistryState.enum_lookup;
-    registry.signatures_ = gCommandRegistryState.signatures;
-    registry.aliases_ = gCommandRegistryState.aliases;
-}
+const std::unordered_map<std::string, CommandRegistry::HardNonTerminal> EndstoneCommandMap::TYPE_SYMBOLS = {
+    {"int", CommandRegistry::HardNonTerminal::Int},
+    {"float", CommandRegistry::HardNonTerminal::Val},
+    {"actor", CommandRegistry::HardNonTerminal::Selection},
+    {"entity", CommandRegistry::HardNonTerminal::Selection},
+    {"player", CommandRegistry::HardNonTerminal::Selection},
+    {"target", CommandRegistry::HardNonTerminal::Selection},
+    {"string", CommandRegistry::HardNonTerminal::Id},
+    {"str", CommandRegistry::HardNonTerminal::Id},
+    {"block_pos", CommandRegistry::HardNonTerminal::Position},
+    {"vec3i", CommandRegistry::HardNonTerminal::Position},
+    {"pos", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"vec3", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"vec3f", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"message", CommandRegistry::HardNonTerminal::MessageRoot},
+    {"json", CommandRegistry::HardNonTerminal::JsonObject},
+    {"block_states", CommandRegistry::HardNonTerminal::BlockStateArray},
+};
 
 }  // namespace endstone::core

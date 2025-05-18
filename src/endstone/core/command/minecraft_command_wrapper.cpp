@@ -12,23 +12,44 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/command/command_wrapper.h"
+#include "endstone/core/command/minecraft_command_wrapper.h"
 
-#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/join.hpp>
 
+#include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_origin_loader.h"
-#include "endstone/core/command/command_output_with_sender.h"
-#include "endstone/core/level/level.h"
+#include "bedrock/server/commands/minecraft_commands.h"
+#include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
 
-CommandWrapper::CommandWrapper(MinecraftCommands &minecraft_commands, std::shared_ptr<Command> command)
-    : Command(*command), minecraft_commands_(minecraft_commands), command_(std::move(command))
+MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_commands,
+                                                 const CommandRegistry::Signature &signature)
+    : EndstoneCommand(signature.name), minecraft_commands_(minecraft_commands)
 {
+    // Description
+    auto description = getI18n().get(signature.description, {}, nullptr);
+    setDescription(std::move(description));
+
+    // Usages
+    std::vector<std::string> usages;
+    usages.reserve(signature.overloads.size());
+    for (const auto &overload : signature.overloads) {
+        usages.push_back(minecraft_commands.getRegistry().describe(signature, overload));
+    }
+    setUsages(std::move(usages));
+
+    // Permissions
+    const auto permission = getPermission(signature);
+    setPermissions(permission);
+    DefaultPermissions::registerPermission(
+        permission, nullptr, "Gives the user the ability to use the /" + getName() + " command",
+        signature.permission_level > CommandPermissionLevel::Any ? PermissionDefault::Operator
+                                                                 : PermissionDefault::True);
 }
 
-bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::string> &args) const
+bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
     if (!testPermission(sender)) {
         return true;
@@ -43,7 +64,7 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
     std::vector command_parts = {"/" + getName()};
     command_parts.insert(command_parts.end(), args.begin(), args.end());
     const auto full_command = boost::algorithm::join(command_parts, " ");
-    const auto *command = minecraft_commands_.compileCommand(  //
+    auto *command = minecraft_commands_.compileCommand(  //
         full_command, *command_origin, CurrentCmdVersion::Latest,
         [&sender](auto const &err) { sender.sendErrorMessage(err); });
 
@@ -51,8 +72,9 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
         return false;
     }
 
-    // run the command and pass down the sender
-    CommandOutputWithSender output{MinecraftCommands::getOutputType(*command_origin), sender};
+    // run the command
+    command->permission_level_ = CommandPermissionLevel::Any;  //  We've already done the permission check above
+    CommandOutput output{MinecraftCommands::getOutputType(*command_origin)};
     command->run(*command_origin, output);
 
     // redirect outputs to sender
@@ -72,20 +94,9 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
     return output.getSuccessCount() > 0;
 }
 
-PluginCommand *CommandWrapper::asPluginCommand() const
-{
-    return unwrap().asPluginCommand();
-}
-
-Command &CommandWrapper::unwrap() const
-{
-    return *command_;
-}
-
-std::unique_ptr<CommandOrigin> CommandWrapper::getCommandOrigin(CommandSender &sender)
+std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(CommandSender &sender)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-
     if (const auto *console = sender.asConsole(); console) {
         CompoundTag tag;
         {
@@ -117,6 +128,11 @@ std::unique_ptr<CommandOrigin> CommandWrapper::getCommandOrigin(CommandSender &s
     }
 
     return nullptr;
+}
+
+std::string MinecraftCommandWrapper::getPermission(const CommandRegistry::Signature &minecraft_command)
+{
+    return "minecraft.command." + minecraft_command.name;
 }
 
 }  // namespace endstone::core

@@ -163,7 +163,7 @@ void EndstonePlayer::setOp(bool value)
         return;
     }
 
-    getPlayer().setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::Admin);
+    getPlayer().setPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
 }
 
 std::string EndstonePlayer::getType() const
@@ -577,21 +577,39 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
 
 void EndstonePlayer::updateCommands() const
 {
-    auto &registry = server_.getServer().getMinecraft()->getCommands().getRegistry();
+    const auto &command_map = server_.getCommandMap();
+    const auto &registry = command_map.getHandle().getRegistry();
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
-    auto &command_map = server_.getCommandMap();
+    std::unordered_map<std::uint32_t, SemanticConstraint> constraints_to_remove;
     for (auto it = packet.commands.begin(); it != packet.commands.end();) {
-        auto &name = it->name;
-        auto *command = command_map.getCommand(name);
-        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this)) &&
-            it->permission_level <= getPlayer().getCommandPermissionLevel()) {
+        const auto &name = it->name;
+        const auto command = command_map.getCommand(name);
+        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this))) {
+            if (auto symbol = registry.findEnumValue(name); symbol.value() != 0) {
+                if (it->permission_level >= CommandPermissionLevel::Host) {
+                    constraints_to_remove.emplace(symbol.toIndex(), SemanticConstraint::RequiresHostPermissions);
+                }
+                else if (it->permission_level > CommandPermissionLevel::Any) {
+                    constraints_to_remove.emplace(symbol.toIndex(), SemanticConstraint::RequiresElevatedPermissions);
+                }
+            }
+            it->permission_level = CommandPermissionLevel::Any;
             ++it;
-            continue;
         }
-        it = packet.commands.erase(it);
+        else {
+            it = packet.commands.erase(it);
+        }
     }
 
+    // Remove semantic constraints
+    const auto enum_index = registry.findEnum("CommandName").toIndex();
+    for (auto &data : packet.constraints) {
+        if (constraints_to_remove.contains(data.enum_value_symbol) && data.enum_symbol == enum_index) {
+            auto constraint = constraints_to_remove.at(data.enum_value_symbol);
+            std::erase(data.constraints, registry.semantic_constraint_lookup_.at(constraint));
+        }
+    }
     getPlayer().sendNetworkPacket(packet);
 }
 

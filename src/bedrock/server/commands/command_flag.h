@@ -62,43 +62,44 @@ enum class CommandEditorFlag : CommandFlagSize {
 };
 
 struct CommandFlag {
-    CommandFlagSize flag;
-    // bitwise OR
+    // NOLINTBEGIN(*-explicit-constructor)
+    CommandFlag(CommandUsageFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    CommandFlag(CommandVisibilityFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    CommandFlag(CommandSyncFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    CommandFlag(CommandExecuteFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    CommandFlag(CommandTypeFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    CommandFlag(CommandCheatFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    CommandFlag(CommandAsyncFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    CommandFlag(CommandEditorFlag flag) : flag(static_cast<CommandFlagSize>(flag)) {}
+    // NOLINTEND(*-explicit-constructor)
+    explicit CommandFlag(CommandFlagSize flag) : flag(flag) {}
+    CommandFlag() = default;
+
     CommandFlag operator|(const CommandFlag &other) const
     {
         return CommandFlag{static_cast<CommandFlagSize>(flag | other.flag)};
     }
-    // bitwise AND
+
+    CommandFlag &operator|=(const CommandFlag &other)
+    {
+        flag = static_cast<CommandFlagSize>(flag | other.flag);
+        return *this;
+    }
+
     CommandFlag operator&(const CommandFlag &other) const
     {
         return CommandFlag{static_cast<CommandFlagSize>(flag & other.flag)};
     }
-    // bitwise XOR
-    CommandFlag operator^(const CommandFlag &other) const
+
+    bool operator==(const CommandFlag &other) const
     {
-        return CommandFlag{static_cast<CommandFlagSize>(flag ^ other.flag)};
+        return flag == other.flag;
     }
-    // bitwise NOT
-    CommandFlag operator~() const
+
+    [[nodiscard]] bool hasFlags(CommandFlag other) const
     {
-        return CommandFlag{static_cast<CommandFlagSize>(~flag)};
+        return (flag & other.flag) == other.flag;
     }
-    // assignment OR
-    CommandFlag &operator|=(const CommandFlag &other)
-    {
-        flag |= other.flag;
-        return *this;
-    }
-    // assignment AND
-    CommandFlag &operator&=(const CommandFlag &other)
-    {
-        flag &= other.flag;
-        return *this;
-    }
-    // assignment XOR
-    CommandFlag &operator^=(const CommandFlag &other)
-    {
-        flag ^= other.flag;
-        return *this;
-    }
+
+    CommandFlagSize flag;
 };
