@@ -97,6 +97,12 @@ bool handleEvent(BlockTryDestroyByPlayerEvent &event)
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = endstone::core::EndstoneBlock::at(block_source, event.pos);
 
+        if (player->getPlayerGameType() == GameType::Creative) {
+            if (!event.item_used.isNull() && !event.item_used.getItem()->canDestroyInCreative()) {
+                return false;
+            }
+        }
+
         endstone::BlockBreakEvent e{*block, player->getEndstoneActor<endstone::core::EndstonePlayer>()};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
