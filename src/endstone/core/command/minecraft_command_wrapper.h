@@ -25,6 +25,7 @@ public:
     explicit MinecraftCommandWrapper(MinecraftCommands &minecraft_commands,
                                      const CommandRegistry::Signature &minecraft_command);
     [[nodiscard]] bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
+    [[nodiscard]] bool testPermissionSilently(const CommandSender &target) const override;
 
     static std::unique_ptr<CommandOrigin> getCommandOrigin(CommandSender &sender);
 
@@ -32,6 +33,7 @@ private:
     static std::string getPermission(const CommandRegistry::Signature &minecraft_command);
 
     MinecraftCommands &minecraft_commands_;
+    CommandPermissionLevel permission_level_;
 };
 
 }  // namespace endstone::core

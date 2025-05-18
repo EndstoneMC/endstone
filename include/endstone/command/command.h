@@ -44,6 +44,11 @@ public:
 
     virtual ~Command() = default;
 
+    [[nodiscard]] virtual PluginCommand *asPluginCommand() const
+    {
+        return nullptr;
+    }
+
     /**
      * Executes the command, returning its success
      *
@@ -187,7 +192,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    [[nodiscard]] bool testPermission(const CommandSender &target) const
+    [[nodiscard]] virtual bool testPermission(const CommandSender &target) const
     {
         if (testPermissionSilently(target)) {
             return true;
@@ -204,7 +209,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    [[nodiscard]] bool testPermissionSilently(const CommandSender &target) const
+    [[nodiscard]] virtual bool testPermissionSilently(const CommandSender &target) const
     {
         if (permissions_.empty()) {
             return true;
@@ -256,11 +261,6 @@ public:
         return command_map_ != nullptr;
     }
 
-    [[nodiscard]] virtual PluginCommand *asPluginCommand() const
-    {
-        return nullptr;
-    }
-
 private:
     [[nodiscard]] bool allowChangesFrom(const CommandMap &command_map) const
     {
@@ -271,7 +271,11 @@ private:
     std::string description_;
     std::vector<std::string> aliases_;
     std::vector<std::string> usages_;
+
+protected:
     std::vector<std::string> permissions_;
+
+private:
     const CommandMap *command_map_ = nullptr;
 };
 }  // namespace endstone

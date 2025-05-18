@@ -25,7 +25,8 @@ namespace endstone::core {
 
 MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_commands,
                                                  const CommandRegistry::Signature &signature)
-    : EndstoneCommand(signature.name), minecraft_commands_(minecraft_commands)
+    : EndstoneCommand(signature.name), minecraft_commands_(minecraft_commands),
+      permission_level_(signature.permission_level)
 {
     // Description
     auto description = getI18n().get(signature.description, {}, nullptr);
@@ -85,6 +86,22 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
     }
 
     return output.getSuccessCount() > 0;
+}
+
+bool MinecraftCommandWrapper::testPermissionSilently(const CommandSender &target) const
+{
+    const auto &server = entt::locator<EndstoneServer>::value();
+    // If the permission node for this vanilla command is not set, fallback to permission level
+    if (std::ranges::all_of(permissions_, [&server](const auto &permission) {
+            return server.getPluginManager().getPermission(permission) == nullptr;
+        })) {
+        if (permission_level_ == CommandPermissionLevel::Any) {
+            return true;
+        }
+        return target.isOp();
+    }
+
+    return EndstoneCommand::testPermissionSilently(target);
 }
 
 std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(CommandSender &sender)
