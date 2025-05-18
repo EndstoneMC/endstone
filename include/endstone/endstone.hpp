@@ -128,6 +128,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "permissions/permission_attachment.h"
 #include "permissions/permission_attachment_info.h"
 #include "permissions/permission_default.h"
+#include "permissions/permission_level.h"
 #include "player.h"
 #include "plugin/plugin.h"
 #include "plugin/plugin_description.h"
