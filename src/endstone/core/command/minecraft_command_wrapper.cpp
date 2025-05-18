@@ -19,6 +19,7 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/server/commands/minecraft_commands.h"
+#include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -41,7 +42,12 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_co
     setUsages(std::move(usages));
 
     // Permissions
-    setPermissions(getPermission(signature));
+    const auto permission = getPermission(signature);
+    setPermissions(permission);
+    DefaultPermissions::registerPermission(
+        permission, nullptr, "Gives the user the ability to use the /" + getName() + " command",
+        signature.permission_level > CommandPermissionLevel::Any ? PermissionDefault::Operator
+                                                                 : PermissionDefault::True);
 }
 
 bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<std::string> &args) const
@@ -59,7 +65,7 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
     std::vector command_parts = {"/" + getName()};
     command_parts.insert(command_parts.end(), args.begin(), args.end());
     const auto full_command = boost::algorithm::join(command_parts, " ");
-    const auto *command = minecraft_commands_.compileCommand(  //
+    auto *command = minecraft_commands_.compileCommand(  //
         full_command, *command_origin, CurrentCmdVersion::Latest,
         [&sender](auto const &err) { sender.sendErrorMessage(err); });
 
@@ -68,6 +74,7 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
     }
 
     // run the command
+    command->permission_level_ = CommandPermissionLevel::Any;  //  We've already done the permission check above
     CommandOutput output{MinecraftCommands::getOutputType(*command_origin)};
     command->run(*command_origin, output);
 
@@ -86,22 +93,6 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
     }
 
     return output.getSuccessCount() > 0;
-}
-
-bool MinecraftCommandWrapper::testPermissionSilently(const CommandSender &target) const
-{
-    const auto &server = entt::locator<EndstoneServer>::value();
-    // If the permission node for this vanilla command is not set, fallback to permission level
-    if (std::ranges::all_of(permissions_, [&server](const auto &permission) {
-            return server.getPluginManager().getPermission(permission) == nullptr;
-        })) {
-        if (permission_level_ == CommandPermissionLevel::Any) {
-            return true;
-        }
-        return target.isOp();
-    }
-
-    return EndstoneCommand::testPermissionSilently(target);
 }
 
 std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(CommandSender &sender)

@@ -44,11 +44,6 @@ public:
 
     virtual ~Command() = default;
 
-    [[nodiscard]] virtual PluginCommand *asPluginCommand() const
-    {
-        return nullptr;
-    }
-
     /**
      * Executes the command, returning its success
      *
@@ -192,13 +187,13 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    [[nodiscard]] virtual bool testPermission(const CommandSender &target) const
+    [[nodiscard]] bool testPermission(const CommandSender &target) const
     {
         if (testPermissionSilently(target)) {
             return true;
         }
 
-        target.sendErrorMessage(Translatable("commands.generic.error.permissions", {getName()}));
+        target.sendErrorMessage(Translatable("commands.generic.unknown", {getName()}));
         return false;
     }
 
@@ -209,7 +204,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    [[nodiscard]] virtual bool testPermissionSilently(const CommandSender &target) const
+    [[nodiscard]] bool testPermissionSilently(const CommandSender &target) const
     {
         if (permissions_.empty()) {
             return true;
@@ -259,6 +254,11 @@ public:
     [[nodiscard]] bool isRegistered() const
     {
         return command_map_ != nullptr;
+    }
+
+    [[nodiscard]] virtual PluginCommand *asPluginCommand() const
+    {
+        return nullptr;
     }
 
 private:

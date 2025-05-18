@@ -22,6 +22,10 @@
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
 
+namespace endstone::core {
+class MinecraftCommandWrapper;
+}
+
 class CommandPosition {
 public:
     explicit CommandPosition(const Vec3 &);
@@ -59,6 +63,7 @@ public:
     void run(CommandOrigin const &origin, CommandOutput &output) const;
 
 private:
+    friend class endstone::core::MinecraftCommandWrapper;
     int version_ = 0;
     CommandRegistry *registry_{nullptr};                                          // +16
     CommandRegistry::Symbol command_symbol_;                                      // +24
