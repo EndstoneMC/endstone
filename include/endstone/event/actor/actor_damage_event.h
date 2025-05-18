@@ -37,9 +37,9 @@ public:
     }
 
     /**
-     * @brief Gets the amount of damage caused by the event
+     * @brief Gets the raw amount of damage caused by the event
      *
-     * @return The amount of damage caused by the event
+     * @return The raw amount of damage caused by the event
      */
     [[nodiscard]] float getDamage() const
     {
@@ -47,9 +47,9 @@ public:
     }
 
     /**
-     * @brief Sets the amount of damage caused by the event.
+     * @brief Sets the raw amount of damage caused by the event.
      *
-     * @param damage The amount of damage caused by the event
+     * @param damage The raw amount of damage caused by the event
      */
     void setDamage(const float damage)
     {

@@ -14,6 +14,7 @@
 
 #include "bedrock/world/actor/mob.h"
 
+#include "bedrock/entity/components/damage_sensor_component.h"
 #include "endstone/actor/actor.h"
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/mob.h"
@@ -48,6 +49,18 @@ bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool 
     const auto &level = getLevel();
     if (level.isClientSide() || isInvulnerableTo(source) || isDead()) {
         return false;
+    }
+
+    // https://github.com/EndstoneMC/endstone/issues/175
+    if (auto *damage_sensor = tryGetComponent<DamageSensorComponent>(); damage_sensor) {
+        const auto damage_result = damage_sensor->recordGenericDamageAndCheckIfDealt(
+            *this, source, damage, static_cast<float>(getHealth()), {}, false);
+        if (damage_result == DealsDamage::No) {
+            return false;
+        }
+        if (damage_result == DealsDamage::NoButSidesEffectsApply) {
+            return true;
+        }
     }
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
