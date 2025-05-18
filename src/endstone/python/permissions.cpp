@@ -30,7 +30,7 @@ Permission createPermission(std::string name, const std::optional<std::string> &
 }  // namespace
 
 void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
-                      py::enum_<PermissionDefault> &permission_default)
+                      py::enum_<PermissionDefault> &permission_default, py::enum_<PermissionLevel> &permission_level)
 {
     permission_default  //
         .value("TRUE", PermissionDefault::True)
@@ -38,7 +38,14 @@ void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::
         .value("OP", PermissionDefault::Operator)
         .value("OPERATOR", PermissionDefault::Operator)
         .value("NOT_OP", PermissionDefault::NotOperator)
-        .value("NOT_OPERATOR", PermissionDefault::NotOperator);
+        .value("NOT_OPERATOR", PermissionDefault::NotOperator)
+        .value("CONSOLE", PermissionDefault::Console);
+
+    permission_level  //
+        .value("DEFAULT", PermissionLevel::Default)
+        .value("OP", PermissionLevel::Operator)
+        .value("OPERATOR", PermissionLevel::Operator)
+        .value("CONSOLE", PermissionLevel::Console);
 
     permission  //
         .def(py::init(&createPermission), py::arg("name"), py::arg("description") = py::none(),
@@ -46,19 +53,19 @@ void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::
         .def_property_readonly("name", &Permission::getName, "Gets the unique fully qualified name of this Permission.")
         .def_property_readonly("children", &Permission::getChildren, py::return_value_policy::reference_internal,
                                "Gets the children of this permission.")
-        .def_property("default", &endstone::Permission::getDefault, &endstone::Permission::setDefault,
+        .def_property("default", &Permission::getDefault, &Permission::setDefault,
                       "The default value of this permission.")
-        .def_property("description", &endstone::Permission::getDescription, &endstone::Permission::setDescription,
+        .def_property("description", &Permission::getDescription, &Permission::setDescription,
                       "The brief description of this permission")
-        .def_property_readonly("permissibles", &endstone::Permission::getPermissibles,
+        .def_property_readonly("permissibles", &Permission::getPermissibles,
                                py::return_value_policy::reference_internal,
                                "Gets a set containing every Permissible that has this permission.")
-        .def("recalculate_permissibles", &endstone::Permission::recalculatePermissibles,
+        .def("recalculate_permissibles", &Permission::recalculatePermissibles,
              "Recalculates all Permissibles that contain this permission.")
-        .def("add_parent", py::overload_cast<std::string, bool>(&endstone::Permission::addParent), py::arg("name"),
+        .def("add_parent", py::overload_cast<std::string, bool>(&Permission::addParent), py::arg("name"),
              py::arg("value"), "Adds this permission to the specified parent permission.")
-        .def("add_parent", py::overload_cast<Permission &, bool>(&endstone::Permission::addParent, py::const_),
-             py::arg("perm"), py::arg("value"), "Adds this permission to the specified parent permission.");
+        .def("add_parent", py::overload_cast<Permission &, bool>(&Permission::addParent, py::const_), py::arg("perm"),
+             py::arg("value"), "Adds this permission to the specified parent permission.");
 
     py::class_<PermissionAttachment>(m, "PermissionAttachment",
                                      "Holds information about a permission attachment on a Permissible object")

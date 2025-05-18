@@ -43,7 +43,7 @@ void init_level(py::module_ &);
 void init_logger(py::module_ &);
 void init_namespaced_key(py::module_ &, py::class_<NamespacedKey> &namespaced_key);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
-                      py::enum_<PermissionDefault> &permission_default);
+                      py::enum_<PermissionDefault> &permission_default, py::enum_<PermissionLevel> &permission_level);
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player);
 void init_plugin(py::module_ &);
@@ -71,6 +71,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         py::class_<Permission>(m, "Permission", "Represents a unique permission that may be attached to a Permissible");
     auto permission_default =
         py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
+    auto permission_level = py::enum_<PermissionLevel>(m, "PermissionLevel");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto block = py::class_<Block>(m, "Block", "Represents a block.");
     auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
@@ -105,7 +106,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_command(m, command_sender);
     init_plugin(m);
     init_scheduler(m);
-    init_permissions(m, permissible, permission, permission_default);
+    init_permissions(m, permissible, permission, permission_default, permission_level);
     init_namespaced_key(m, namespaced_key);
     init_registry(m);
     init_server(server);
@@ -372,6 +373,7 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
     player  //
         .def_property_readonly("name", &OfflinePlayer::getName, "Returns the name of this player")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
+        .def_property("is_op", &Player::isOp, &Player::setOp, "The operator status of this playerall")
         .def_property_readonly("xuid", &Player::getXuid, "Returns the Xbox User ID (XUID) of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("transfer", &Player::transfer, "Transfers the player to another server.", py::arg("host"),
