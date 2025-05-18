@@ -96,7 +96,7 @@ See [endstone::Command](classendstone_1_1Command.md)
 |  std::vector&lt; std::string &gt; | [**getPermissions**](classendstone_1_1Command.md#function-getpermissions) () const<br> |
 |  std::vector&lt; std::string &gt; | [**getUsages**](classendstone_1_1Command.md#function-getusages) () const<br> |
 |  [**bool**](classendstone_1_1Vector.md) | [**isRegistered**](classendstone_1_1Command.md#function-isregistered) () const<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**registerTo**](classendstone_1_1Command.md#function-registerto) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**registerTo**](classendstone_1_1Command.md#function-registerto) ([**const**](classendstone_1_1Vector.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setAliases**](classendstone_1_1Command.md#function-setaliases) (Alias... aliases) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setDescription**](classendstone_1_1Command.md#function-setdescription) (std::string description) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setName**](classendstone_1_1Command.md#function-setname) (std::string name) <br> |

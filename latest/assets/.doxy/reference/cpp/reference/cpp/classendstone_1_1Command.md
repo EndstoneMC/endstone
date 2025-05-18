@@ -62,7 +62,7 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 |  std::vector&lt; std::string &gt; | [**getPermissions**](#function-getpermissions) () const<br> |
 |  std::vector&lt; std::string &gt; | [**getUsages**](#function-getusages) () const<br> |
 |  [**bool**](classendstone_1_1Vector.md) | [**isRegistered**](#function-isregistered) () const<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**registerTo**](#function-registerto) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**registerTo**](#function-registerto) ([**const**](classendstone_1_1Vector.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setAliases**](#function-setaliases) (Alias... aliases) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setDescription**](#function-setdescription) (std::string description) <br> |
 |  [**void**](classendstone_1_1Vector.md) | [**setName**](#function-setname) (std::string name) <br> |
@@ -341,7 +341,7 @@ true if this command is currently registered false otherwise
 
 ```C++
 inline bool endstone::Command::registerTo (
-    CommandMap & command_map
+    const  CommandMap & command_map
 ) 
 ```
 

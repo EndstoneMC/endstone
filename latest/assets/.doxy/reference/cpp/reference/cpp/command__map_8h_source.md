@@ -50,7 +50,7 @@ public:
 
     virtual void clearCommands() = 0;
 
-    [[nodiscard]] virtual Command *getCommand(std::string name) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Command> getCommand(std::string name) const = 0;
 };
 }  // namespace endstone
 ```

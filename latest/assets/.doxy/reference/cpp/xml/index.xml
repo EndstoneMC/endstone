@@ -322,7 +322,7 @@
     <member refid="classendstone_1_1Command_1abe0ff7e4cf40cad6b6dcb7e1a9c4bef2" kind="variable"><name>aliases_</name></member>
     <member refid="classendstone_1_1Command_1a1cb2033591a7c1015ad86df7418059c7" kind="variable"><name>usages_</name></member>
     <member refid="classendstone_1_1Command_1a787227a863a60818990e90ccf2a898f7" kind="variable"><name>permissions_</name></member>
-    <member refid="classendstone_1_1Command_1a8737004d405dc53b54f3517fe2661d2e" kind="variable"><name>command_map_</name></member>
+    <member refid="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" kind="variable"><name>command_map_</name></member>
     <member refid="classendstone_1_1Command_1aa44822c895d67402241b9570bafd2ce7" kind="function"><name>Command</name></member>
     <member refid="classendstone_1_1Command_1a1a6c0c0027b500df3e4eea60cf489ea2" kind="function"><name>~Command</name></member>
     <member refid="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" kind="function"><name>execute</name></member>
@@ -338,7 +338,7 @@
     <member refid="classendstone_1_1Command_1a53e55d4c2375b2b34e321f4f46551b09" kind="function"><name>setPermissions</name></member>
     <member refid="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" kind="function"><name>testPermission</name></member>
     <member refid="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" kind="function"><name>testPermissionSilently</name></member>
-    <member refid="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" kind="function"><name>registerTo</name></member>
+    <member refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" kind="function"><name>registerTo</name></member>
     <member refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" kind="function"><name>unregisterFrom</name></member>
     <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kind="function"><name>isRegistered</name></member>
     <member refid="classendstone_1_1Command_1ae3f04d6fbd6fe48c29c1b2951f77a5c0" kind="function"><name>asPluginCommand</name></member>
@@ -371,7 +371,7 @@
     <member refid="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" kind="function"><name>registerCommand</name></member>
     <member refid="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" kind="function"><name>dispatch</name></member>
     <member refid="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" kind="function"><name>clearCommands</name></member>
-    <member refid="classendstone_1_1CommandMap_1a6d7b8b2293e962e1cd54e6b59a9f454f" kind="function"><name>getCommand</name></member>
+    <member refid="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" kind="function"><name>getCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandSender" kind="class"><name>endstone::CommandSender</name>
     <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" kind="function"><name>asCommandSender</name></member>

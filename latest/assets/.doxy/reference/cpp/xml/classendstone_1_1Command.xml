@@ -75,9 +75,9 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="274" column="17" bodyfile="include/endstone/command/command.h" bodystart="274" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Command_1a8737004d405dc53b54f3517fe2661d2e" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
-        <definition>CommandMap* endstone::Command::command_map_</definition>
+      <memberdef kind="variable" id="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
+        <definition>const CommandMap* endstone::Command::command_map_</definition>
         <argsstring></argsstring>
         <name>command_map_</name>
         <qualifiedname>endstone::Command::command_map_</qualifiedname>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="275" column="16" bodyfile="include/endstone/command/command.h" bodystart="275" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="275" column="22" bodyfile="include/endstone/command/command.h" bodystart="275" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -507,14 +507,14 @@
         </inbodydescription>
         <location file="include/endstone/command/command.h" line="207" column="11" bodyfile="include/endstone/command/command.h" bodystart="207" bodyend="215"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Command::registerTo</definition>
-        <argsstring>(CommandMap &amp;command_map)</argsstring>
+        <argsstring>(const CommandMap &amp;command_map)</argsstring>
         <name>registerTo</name>
         <qualifiedname>endstone::Command::registerTo</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
           <declname>command_map</declname>
         </param>
         <briefdescription>
@@ -620,7 +620,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="265" column="10" bodyfile="include/endstone/command/command.h" bodystart="265" bodyend="268"/>
+        <location file="include/endstone/command/command.h" line="265" column="11" bodyfile="include/endstone/command/command.h" bodystart="265" bodyend="268"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -646,7 +646,7 @@
       <member refid="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>allowChangesFrom</name></member>
       <member refid="classendstone_1_1Command_1ae3f04d6fbd6fe48c29c1b2951f77a5c0" prot="public" virt="virtual"><scope>endstone::Command</scope><name>asPluginCommand</name></member>
       <member refid="classendstone_1_1Command_1aa44822c895d67402241b9570bafd2ce7" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>Command</name></member>
-      <member refid="classendstone_1_1Command_1a8737004d405dc53b54f3517fe2661d2e" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>command_map_</name></member>
+      <member refid="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>command_map_</name></member>
       <member refid="classendstone_1_1Command_1a402ad7e2575662204296a8a7c8a02c46" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>description_</name></member>
       <member refid="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" prot="public" virt="virtual"><scope>endstone::Command</scope><name>execute</name></member>
       <member refid="classendstone_1_1Command_1a15380c3310b2a8f58b1ce3e227ddcf6d" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>getAliases</name></member>
@@ -657,7 +657,7 @@
       <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>isRegistered</name></member>
       <member refid="classendstone_1_1Command_1a38260b8e8868c4008945a050adddd89d" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>name_</name></member>
       <member refid="classendstone_1_1Command_1a787227a863a60818990e90ccf2a898f7" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>permissions_</name></member>
-      <member refid="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>registerTo</name></member>
+      <member refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>registerTo</name></member>
       <member refid="classendstone_1_1Command_1a79687a94cbcfbd9a07c3aa8d72afd995" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setAliases</name></member>
       <member refid="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setDescription</name></member>
       <member refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setName</name></member>

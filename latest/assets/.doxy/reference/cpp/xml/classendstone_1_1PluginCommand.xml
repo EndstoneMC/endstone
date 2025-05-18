@@ -227,7 +227,7 @@
       <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>isRegistered</name></member>
       <member refid="classendstone_1_1PluginCommand_1a025ba1c09032b5fa58580e5819d18ff9" prot="private" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>owner_</name></member>
       <member refid="classendstone_1_1PluginCommand_1aaceb3f61ac9023104cf66875c9407e2b" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>PluginCommand</name></member>
-      <member refid="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>registerTo</name></member>
+      <member refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>registerTo</name></member>
       <member refid="classendstone_1_1Command_1a79687a94cbcfbd9a07c3aa8d72afd995" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setAliases</name></member>
       <member refid="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setDescription</name></member>
       <member refid="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>setExecutor</name></member>

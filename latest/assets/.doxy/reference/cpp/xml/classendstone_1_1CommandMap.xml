@@ -189,9 +189,9 @@
         </inbodydescription>
         <location file="include/endstone/command/command_map.h" line="60" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandMap_1a6d7b8b2293e962e1cd54e6b59a9f454f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> *</type>
-        <definition>virtual Command * endstone::CommandMap::getCommand</definition>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Command &gt; endstone::CommandMap::getCommand</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>getCommand</name>
         <qualifiedname>endstone::CommandMap::getCommand</qualifiedname>
@@ -218,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="68" column="22"/>
+        <location file="include/endstone/command/command_map.h" line="68" column="30"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -233,7 +233,7 @@
       <member refid="classendstone_1_1CommandMap_1afc2b0e7676d5d23fffb429c5910a1645" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
       <member refid="classendstone_1_1CommandMap_1a4ebefdf37ff6f59a731c03217fe4bb9c" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
       <member refid="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>dispatch</name></member>
-      <member refid="classendstone_1_1CommandMap_1a6d7b8b2293e962e1cd54e6b59a9f454f" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>getCommand</name></member>
+      <member refid="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>getCommand</name></member>
       <member refid="classendstone_1_1CommandMap_1af84987985d1b5dd0dcd0c14840dae7da" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>operator=</name></member>
       <member refid="classendstone_1_1CommandMap_1a71900d4f6d83ea0a21f9b2dbddcae322" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>operator=</name></member>
       <member refid="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>registerCommand</name></member>

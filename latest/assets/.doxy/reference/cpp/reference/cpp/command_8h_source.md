@@ -134,7 +134,7 @@ public:
             return true;
         }
 
-        target.sendErrorMessage(Translatable("commands.generic.error.permissions", {getName()}));
+        target.sendErrorMessage(Translatable("commands.generic.unknown", {getName()}));
         return false;
     }
 
@@ -148,7 +148,7 @@ public:
                            [&target](const auto &p) { return target.hasPermission(p); });
     }
 
-    bool registerTo(CommandMap &command_map)
+    bool registerTo(const CommandMap &command_map)
     {
         if (allowChangesFrom(command_map)) {
             command_map_ = &command_map;
@@ -179,7 +179,7 @@ public:
     }
 
 private:
-    bool allowChangesFrom(const CommandMap &command_map) const
+    [[nodiscard]] bool allowChangesFrom(const CommandMap &command_map) const
     {
         return (!isRegistered() || command_map_ == &command_map);
     }
@@ -189,7 +189,7 @@ private:
     std::vector<std::string> aliases_;
     std::vector<std::string> usages_;
     std::vector<std::string> permissions_;
-    CommandMap *command_map_ = nullptr;
+    const CommandMap *command_map_ = nullptr;
 };
 }  // namespace endstone
 ```
