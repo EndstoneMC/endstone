@@ -88,7 +88,7 @@ bool PermissibleBase::hasPermission(const Permission &perm) const
     return hasPermission(perm.getDefault(), isOp());
 }
 
-bool PermissibleBase::hasPermission(PermissionDefault default_value, bool op)
+bool PermissibleBase::hasPermission(PermissionDefault default_value, PermissionLevel level)
 {
     switch (default_value) {
     case PermissionDefault::True:
@@ -96,9 +96,11 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, bool op)
     case PermissionDefault::False:
         return false;
     case PermissionDefault::Operator:
-        return op;
+        return level >= PermissionLevel::Operator;
     case PermissionDefault::NotOperator:
-        return !op;
+        return level == PermissionLevel::Player;
+    case PermissionDefault::Console:
+        return level == PermissionLevel::Console;
     default:
         return false;
     }

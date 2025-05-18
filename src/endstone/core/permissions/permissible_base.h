@@ -24,6 +24,7 @@
 #include "endstone/permissions/permission_attachment.h"
 #include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/permission_default.h"
+#include "endstone/permissions/permission_level.h"
 
 namespace endstone::core {
 
@@ -56,7 +57,7 @@ private:
     [[nodiscard]] static PluginManager *getPluginManager();
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
                                    PermissionAttachment *attachment);
-    [[nodiscard]] static bool hasPermission(PermissionDefault default_value, bool op);
+    [[nodiscard]] static bool hasPermission(PermissionDefault default_value, PermissionLevel level);
     Permissible *opable_;
     Permissible &parent_;
     std::vector<std::unique_ptr<PermissionAttachment>> attachments_;
