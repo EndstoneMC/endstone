@@ -45,6 +45,11 @@ std::string EndstoneActor::getName() const
     return CommandUtils::getActorName(getActor());
 }
 
+PermissionLevel EndstoneActor::getPermissionLevel() const
+{
+    return getPermissibleBase().getPermissionLevel();
+}
+
 bool EndstoneActor::isPermissionSet(std::string name) const
 {
     return getPermissibleBase().isPermissionSet(name);
@@ -88,16 +93,6 @@ void EndstoneActor::recalculatePermissions()
 std::unordered_set<PermissionAttachmentInfo *> EndstoneActor::getEffectivePermissions() const
 {
     return getPermissibleBase().getEffectivePermissions();
-}
-
-bool EndstoneActor::isOp() const
-{
-    return getPermissibleBase().isOp();
-}
-
-void EndstoneActor::setOp(bool value)
-{
-    getPermissibleBase().setOp(value);
 }
 
 std::string EndstoneActor::getType() const

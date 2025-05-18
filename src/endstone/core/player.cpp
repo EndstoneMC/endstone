@@ -101,6 +101,11 @@ std::string EndstonePlayer::getName() const
     return EndstoneMob::getName();
 }
 
+PermissionLevel EndstonePlayer::getPermissionLevel() const
+{
+    return isOp() ? PermissionLevel::Operator : PermissionLevel::Default;
+}
+
 bool EndstonePlayer::isPermissionSet(std::string name) const
 {
     return perm_->isPermissionSet(name);
@@ -150,20 +155,6 @@ void EndstonePlayer::recalculatePermissions()
 std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermissions() const
 {
     return perm_->getEffectivePermissions();
-}
-
-bool EndstonePlayer::isOp() const
-{
-    return getPlayer().getCommandPermissionLevel() > CommandPermissionLevel::Any;
-}
-
-void EndstonePlayer::setOp(bool value)
-{
-    if (value == isOp()) {
-        return;
-    }
-
-    getPlayer().setPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
 }
 
 std::string EndstonePlayer::getType() const
@@ -324,6 +315,20 @@ bool EndstonePlayer::isGliding() const
 UUID EndstonePlayer::getUniqueId() const
 {
     return uuid_;
+}
+
+bool EndstonePlayer::isOp() const
+{
+    return getPlayer().getCommandPermissionLevel() > CommandPermissionLevel::Any;
+}
+
+void EndstonePlayer::setOp(bool value)
+{
+    if (value == isOp()) {
+        return;
+    }
+
+    getPlayer().setPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
 }
 
 std::string EndstonePlayer::getXuid() const
@@ -587,11 +592,12 @@ void EndstonePlayer::updateCommands() const
         const auto command = command_map.getCommand(name);
         if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this))) {
             if (auto symbol = registry.findEnumValue(name); symbol.value() != 0) {
+                auto symbol_index = static_cast<std::uint32_t>(symbol.toIndex());
                 if (it->permission_level >= CommandPermissionLevel::Host) {
-                    constraints_to_remove.emplace(symbol.toIndex(), SemanticConstraint::RequiresHostPermissions);
+                    constraints_to_remove.emplace(symbol_index, SemanticConstraint::RequiresHostPermissions);
                 }
                 else if (it->permission_level > CommandPermissionLevel::Any) {
-                    constraints_to_remove.emplace(symbol.toIndex(), SemanticConstraint::RequiresElevatedPermissions);
+                    constraints_to_remove.emplace(symbol_index, SemanticConstraint::RequiresElevatedPermissions);
                 }
             }
             it->permission_level = CommandPermissionLevel::Any;

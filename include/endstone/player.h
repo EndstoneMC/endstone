@@ -46,6 +46,13 @@ public:
     }
 
     /**
+     * @brief Returns the name of this player
+     *
+     * @return Player name or null if we have not seen a name for this player yet
+     */
+    [[nodiscard]] std::string getName() const override = 0;
+
+    /**
      * @brief Checks if this player is a server operator
      *
      * @return true if this is an operator, otherwise false
@@ -58,13 +65,6 @@ public:
      * @param value New operator value
      */
     virtual void setOp(bool value) = 0;
-
-    /**
-     * @brief Returns the name of this player
-     *
-     * @return Player name or null if we have not seen a name for this player yet
-     */
-    [[nodiscard]] std::string getName() const override = 0;
 
     /**
      * @brief Returns the Xbox User ID (XUID) of this player

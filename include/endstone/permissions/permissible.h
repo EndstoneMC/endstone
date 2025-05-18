@@ -41,7 +41,7 @@ public:
      *
      * @return The permission level
      */
-    [[nodiscard]] virtual PermissionLevel getPermissionLevel() const;
+    [[nodiscard]] virtual PermissionLevel getPermissionLevel() const = 0;
 
     /**
      * @brief Checks if this object contains an override for the specified permission, by fully qualified name
