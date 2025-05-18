@@ -39,7 +39,6 @@ class Command;
 class CommandOrigin;
 class CommandParameterData;
 class CommandRunStats;
-enum class SemanticConstraint;
 
 namespace endstone::core {
 class EndstoneCommandMap;
@@ -52,6 +51,15 @@ enum class CommandParameterDataType : int {
     SoftEnum = 2,
     Postfix = 3,
     ChainedSubcommand = 4,
+};
+
+enum class SemanticConstraint : std::uint8_t {
+    None = 0,
+    RequiresCheatsEnabled = 1,
+    RequiresElevatedPermissions = 2,
+    RequiresHostPermissions = 4,
+    RequiresAllowAliases = 8,
+    VALUE_MASK = 15,
 };
 
 class CommandRegistry {
@@ -423,15 +431,6 @@ enum class CommandParameterOption : std::uint8_t {
     EnumAutocompleteExpansion = 1,
     HasSemanticConstraint = 2,
     EnumAsChainedCommand = 4
-};
-
-enum class SemanticConstraint {
-    None = 0,
-    RequiresCheatsEnabled = 1,
-    RequiresElevatedPermissions = 2,
-    RequiresHostPermissions = 4,
-    RequiresAllowAliases = 8,
-    VALUE_MASK = 15,
 };
 
 class CommandParameterData {
