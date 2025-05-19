@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.8.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.1) - 2025-05-20
+
+<small>[Compare with 0.8.0](https://github.com/EndstoneMC/endstone/compare/v0.8.0...v0.8.1)</small>
+
+### Added
+
+- Added support for BDS version 1.21.82.1
+
+### Fixed
+
+- Resolve compatibility issues with custom commands registered via the beta Script API (
+  `init.customCommandRegistry.registerCommand`).
+- Resolve a compatibility issue with LegacyScriptEngine when used in LeviStone, a downstream project.
+- Fix [#150](https://github.com/EndstoneMC/endstone/issues/150) by allowing explicit permission grants for non-OP
+  players to execute OP commands.
+- `ActorDamageEvent` will no longer fire if the `damage_sensor` determines that no damage should be dealt.
+- `BlockBreakEvent` will no longer fire when a player uses an item that’s not supposed to break blocks in Creative mode.
+
 ## [0.8.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.0) - 2025-05-11
 
 <small>[Compare with 0.7.3](https://github.com/EndstoneMC/endstone/compare/v0.7.3...v0.8.0)</small>
@@ -12,10 +30,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Added support for BDS version 1.21.80.3
-- Introduced a new Registry API for accessing the built-in definitions (e.g., all available enchantments via
-  `Server::getEnchantmentRegistry`)
-- Added ability to edit item enchantments via the `ItemMeta` API
-- Added ability to get and set an item’s repair cost and mark it as unbreakable via the `ItemMeta` API
 
 ### Fixed
 
