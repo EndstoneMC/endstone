@@ -30,6 +30,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Added support for BDS version 1.21.80.3
+- Introduced a new Registry API for accessing the built-in definitions (e.g., all available enchantments via
+  `Server::getEnchantmentRegistry`)
+- Added ability to edit item enchantments via the `ItemMeta` API
+- Added ability to get and set an item’s repair cost and mark it as unbreakable via the `ItemMeta` API
 
 ### Fixed
 
