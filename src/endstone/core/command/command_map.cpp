@@ -166,7 +166,8 @@ void EndstoneCommandMap::unregisterCommand(std::string name)
                 if (param.param_type != CommandParameterDataType::Enum || !param.enum_name_or_postfix) {
                     continue;
                 }
-                if (param.enum_name_or_postfix == "Boolean" || param.enum_name_or_postfix == "Block") {
+                if (std::string_view(param.enum_name_or_postfix) == "Boolean" ||
+                    std::string_view(param.enum_name_or_postfix) == "Block") {
                     continue;
                 }
                 clearEnumValues(param.enum_name_or_postfix);
