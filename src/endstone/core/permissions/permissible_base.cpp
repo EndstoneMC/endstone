@@ -38,25 +38,18 @@ PermissibleBase::~PermissibleBase()
     }
 }
 
-bool PermissibleBase::isOp() const
+PermissionLevel PermissibleBase::getPermissionLevel() const
 {
     if (opable_) {
-        return opable_->isOp();
+        return opable_->getPermissionLevel();
     }
-    return false;
-}
-
-void PermissibleBase::setOp(bool value)
-{
-    if (opable_) {
-        opable_->setOp(value);
-    }
+    return PermissionLevel::Default;
 }
 
 bool PermissibleBase::isPermissionSet(std::string name) const
 {
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-    return permissions_.find(name) != permissions_.end();
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+    return permissions_.contains(name);
 }
 
 bool PermissibleBase::isPermissionSet(const Permission &perm) const
@@ -66,29 +59,28 @@ bool PermissibleBase::isPermissionSet(const Permission &perm) const
 
 bool PermissibleBase::hasPermission(std::string name) const
 {
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     if (isPermissionSet(name)) {
         return permissions_.find(name)->second->getValue();
     }
 
-    auto *perm = getPluginManager()->getPermission(name);
-    if (perm != nullptr) {
-        return hasPermission(perm->getDefault(), isOp());
+    if (auto *perm = getPluginManager()->getPermission(name); perm != nullptr) {
+        return hasPermission(perm->getDefault(), getPermissionLevel());
     }
-    return hasPermission(Permission::DefaultPermission, isOp());
+    return hasPermission(Permission::DefaultPermission, getPermissionLevel());
 }
 
 bool PermissibleBase::hasPermission(const Permission &perm) const
 {
     auto name = perm.getName();
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     if (isPermissionSet(name)) {
         return permissions_.find(name)->second->getValue();
     }
-    return hasPermission(perm.getDefault(), isOp());
+    return hasPermission(perm.getDefault(), getPermissionLevel());
 }
 
-bool PermissibleBase::hasPermission(PermissionDefault default_value, bool op)
+bool PermissibleBase::hasPermission(PermissionDefault default_value, PermissionLevel level)
 {
     switch (default_value) {
     case PermissionDefault::True:
@@ -96,9 +88,11 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, bool op)
     case PermissionDefault::False:
         return false;
     case PermissionDefault::Operator:
-        return op;
+        return level >= PermissionLevel::Operator;
     case PermissionDefault::NotOperator:
-        return !op;
+        return level == PermissionLevel::Default;
+    case PermissionDefault::Console:
+        return level == PermissionLevel::Console;
     default:
         return false;
     }
@@ -135,8 +129,8 @@ PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin)
 
 Result<void> PermissibleBase::removeAttachment(PermissionAttachment &attachment)
 {
-    const auto it = std::find_if(attachments_.begin(), attachments_.end(),
-                                 [&attachment](const auto &item) { return item.get() == &attachment; });
+    const auto it =
+        std::ranges::find_if(attachments_, [&attachment](const auto &item) { return item.get() == &attachment; });
 
     if (it != attachments_.end()) {
         if (auto callback = it->get()->getRemovalCallback()) {
@@ -154,12 +148,12 @@ Result<void> PermissibleBase::removeAttachment(PermissionAttachment &attachment)
 void PermissibleBase::recalculatePermissions()
 {
     clearPermissions();
-    const auto defaults = getPluginManager()->getDefaultPermissions(isOp());
-    getPluginManager()->subscribeToDefaultPerms(isOp(), parent_);
+    const auto defaults = getPluginManager()->getDefaultPermissions(getPermissionLevel());
+    getPluginManager()->subscribeToDefaultPerms(getPermissionLevel(), parent_);
 
     for (auto *perm : defaults) {
         auto name = perm->getName();
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
         permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, nullptr, true);
         getPluginManager()->subscribeToPermission(name, parent_);
         calculateChildPermissions(perm->getChildren(), false, nullptr);
@@ -178,7 +172,7 @@ void PermissibleBase::calculateChildPermissions(const std::unordered_map<std::st
         auto name = entry.first;
 
         auto *perm = getPluginManager()->getPermission(name);
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
         bool value = entry.second ^ invert;
 
         permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, attachment, value);
@@ -213,8 +207,9 @@ void PermissibleBase::clearPermissions()
     for (const auto &[name, perm] : permissions_) {
         getPluginManager()->unsubscribeFromPermission(name, parent_);
     }
-    getPluginManager()->unsubscribeFromDefaultPerms(false, parent_);
-    getPluginManager()->unsubscribeFromDefaultPerms(true, parent_);
+    getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Default, parent_);
+    getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Operator, parent_);
+    getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Console, parent_);
     permissions_.clear();
 }
 

@@ -15,16 +15,9 @@
 #pragma once
 
 namespace endstone {
-
-/**
- * @brief Represents the possible default values for permissions.
- */
-enum class PermissionDefault {
-    True,
-    False,
-    Operator,
-    NotOperator,
-    Console
+enum class PermissionLevel {
+    Default = 0,
+    Operator = 1,
+    Console = 2,
 };
-
 }  // namespace endstone

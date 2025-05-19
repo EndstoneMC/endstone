@@ -63,10 +63,6 @@ struct polymorphic_type_hook<endstone::CommandSender> {
             type = &typeid(endstone::ConsoleCommandSender);
             return console;
         }
-        if (const auto *proxied = src->asProxiedCommandSender()) {
-            type = &typeid(endstone::ProxiedCommandSender);
-            return proxied;
-        }
         type = &typeid(endstone::CommandSender);
         return src;
     }

@@ -29,8 +29,7 @@ public:
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] bool isOp() const override;
-    void setOp(bool value) override;
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
 
     static std::shared_ptr<CommandOriginWrapper> create(const CommandOrigin &origin, CommandOutput &output);
 

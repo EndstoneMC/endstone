@@ -20,8 +20,6 @@
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/command/console_command_sender.h"
-#include "endstone/core/command/proxied_command_sender.h"
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
@@ -37,11 +35,7 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() cons
     case CommandOriginType::Entity: {
         return std::static_pointer_cast<endstone::Actor>(getEntity()->getEndstoneActor().shared_from_this());
     }
-    case CommandOriginType::Virtual: {
-        // const auto &virtual_command_origin = *static_cast<const VirtualCommandOrigin *>(this);
-        // return endstone::core::PermissibleFactory::create<endstone::core::EndstoneProxiedCommandSender>(
-        //     getOutputReceiver().getEndstoneSender(), virtual_command_origin.getOrigin()->getEndstoneSender());
-    }
+    case CommandOriginType::Virtual:
     case CommandOriginType::CommandBlock:
     case CommandOriginType::MinecartCommandBlock:
         // TODO(permission): add BlockCommandSender, Entity and CommandMinecart

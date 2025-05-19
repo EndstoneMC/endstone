@@ -45,8 +45,10 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_co
     setPermissions(permission);
     DefaultPermissions::registerPermission(
         permission, nullptr, "Gives the user the ability to use the /" + getName() + " command",
-        signature.permission_level > CommandPermissionLevel::Any ? PermissionDefault::Operator
-                                                                 : PermissionDefault::True);
+        signature.permission_level > CommandPermissionLevel::Any
+            ? (signature.permission_level >= CommandPermissionLevel::Host ? PermissionDefault::Console
+                                                                          : PermissionDefault::Operator)
+            : PermissionDefault::True);
 }
 
 bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<std::string> &args) const
