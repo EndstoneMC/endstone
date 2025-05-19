@@ -73,7 +73,11 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
     }
 
     // run the command
-    command->permission_level_ = CommandPermissionLevel::Any;  //  We've already done the permission check above
+    if (command->permission_level_ < CommandPermissionLevel::Host) {  // TODO(permission): remove after refactor
+        //  We've already done the permission check above
+        command->permission_level_ = CommandPermissionLevel::Any;
+    }
+
     CommandOutput output{MinecraftCommands::getOutputType(*command_origin)};
     command->run(*command_origin, output);
 
