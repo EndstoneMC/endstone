@@ -61,6 +61,10 @@ jobs:
           CIBW_BUILD_VERBOSITY: 1
           CIBW_ENVIRONMENT_PASS_LINUX: "CONAN_HOME SENTRY_AUTH_TOKEN"
 
+      - name: Change permission for Conan home folder (Linux)
+        if: runner.os == 'Linux'
+        run: sudo chown -R $USER:$USER ~/.conan2
+
       - uses: actions/upload-artifact@v4
         with:
           name: endstone-wheels-${{ matrix.python-tag }}-${{ matrix.platform }}
