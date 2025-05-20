@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Cancellable" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Cancellable</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">EventType</basecompoundref>
+    <basecompoundref refid="classendstone_1_1ICancellable" prot="public" virt="non-virtual">endstone::ICancellable</basecompoundref>
+    <includes refid="cancellable_8h" local="no">endstone/event/cancellable.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> EventType</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Cancellable&lt; EventType &gt;::isCancelled</definition>
+        <argsstring>() const final</argsstring>
+        <name>isCancelled</name>
+        <qualifiedname>endstone::Cancellable::isCancelled</qualifiedname>
+        <reimplements refid="classendstone_1_1ICancellable_1ad7d9998d26e5339233a01cf718a779ef">isCancelled</reimplements>
+        <briefdescription>
+<para>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this event is cancelled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/cancellable.h" line="41" column="11" bodyfile="include/endstone/event/cancellable.h" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" static="no" const="no" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>void endstone::Cancellable&lt; EventType &gt;::setCancelled</definition>
+        <argsstring>(bool cancel) final</argsstring>
+        <name>setCancelled</name>
+        <qualifiedname>endstone::Cancellable::setCancelled</qualifiedname>
+        <reimplements refid="classendstone_1_1ICancellable_1a348a8d847632c98e42510134d82086ef">setCancelled</reimplements>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <declname>cancel</declname>
+        </param>
+        <briefdescription>
+<para>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cancel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true if you wish to cancel this event </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/cancellable.h" line="52" column="10" bodyfile="include/endstone/event/cancellable.h" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" static="no" const="no" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <definition>void endstone::Cancellable&lt; EventType &gt;::cancel</definition>
+        <argsstring>() final</argsstring>
+        <name>cancel</name>
+        <qualifiedname>endstone::Cancellable::cancel</qualifiedname>
+        <reimplements refid="classendstone_1_1ICancellable_1a65036acf5f2520cb11d833b4a4daee29">cancel</reimplements>
+        <briefdescription>
+<para>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/cancellable.h" line="61" column="10" bodyfile="include/endstone/event/cancellable.h" bodystart="61" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418" prot="private" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Cancellable&lt; EventType &gt;::isCancellable</definition>
+        <argsstring>() const final</argsstring>
+        <name>isCancellable</name>
+        <qualifiedname>endstone::Cancellable::isCancellable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/cancellable.h" line="67" column="11" bodyfile="include/endstone/event/cancellable.h" bodystart="67" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A type characterizing events that may be cancelled by a plugin or the server. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>EventType</label>
+      </node>
+      <node id="1">
+        <label>endstone::Cancellable&lt; EventType &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>EventType</label>
+      </node>
+      <node id="1">
+        <label>endstone::Cancellable&lt; EventType &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/cancellable.h" line="31" column="1" bodyfile="include/endstone/event/cancellable.h" bodystart="31" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418" prot="private" virt="non-virtual"><scope>endstone::Cancellable</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::Cancellable</scope><name>~ICancellable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

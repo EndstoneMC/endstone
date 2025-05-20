@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1NamespacedKey" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::NamespacedKey</compoundname>
+    <includes refid="namespaced__key_8h" local="no">endstone/namespaced_key.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1NamespacedKey_1a88dfddee7b93877c4aa732a5d9a66b64" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> std::string_view</type>
+        <definition>constexpr std::string_view endstone::NamespacedKey::MINECRAFT</definition>
+        <argsstring></argsstring>
+        <name>MINECRAFT</name>
+        <qualifiedname>endstone::NamespacedKey::MINECRAFT</qualifiedname>
+        <initializer>= &quot;minecraft&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The namespace representing all inbuilt keys. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="41" column="39" bodyfile="include/endstone/namespaced_key.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1NamespacedKey_1a4d559245aaaf69cb610124d7c574804e" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::NamespacedKey::namespace_</definition>
+        <argsstring></argsstring>
+        <name>namespace_</name>
+        <qualifiedname>endstone::NamespacedKey::namespace_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="120" column="17" bodyfile="include/endstone/namespaced_key.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1NamespacedKey_1a57859d67bb4ceae68093728745b57db5" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::NamespacedKey::key_</definition>
+        <argsstring></argsstring>
+        <name>key_</name>
+        <qualifiedname>endstone::NamespacedKey::key_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="121" column="17" bodyfile="include/endstone/namespaced_key.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a783dd7045c71a33d7f3c2e42ed605218" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &gt;</type>
+        <definition>static Result&lt; NamespacedKey &gt; endstone::NamespacedKey::create</definition>
+        <argsstring>(const Plugin &amp;plugin, std::string_view key)</argsstring>
+        <name>create</name>
+        <qualifiedname>endstone::NamespacedKey::create</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Create a key in the plugin&apos;s namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the plugin to use for the namespace </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to create </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="49" column="19" bodyfile="include/endstone/namespaced_key.h" bodystart="49" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1adf677ac151135822dec2909766b0429a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &gt;</type>
+        <definition>static Result&lt; NamespacedKey &gt; endstone::NamespacedKey::fromString</definition>
+        <argsstring>(std::string_view input, const Plugin *plugin=nullptr)</argsstring>
+        <name>fromString</name>
+        <qualifiedname>endstone::NamespacedKey::fromString</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
+          <declname>plugin</declname>
+          <defval><ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse a <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> from a string, with an optional default namespace.</para>
+<para>Examples:<itemizedlist>
+<listitem><para>fromString(&quot;foo&quot;, plugin) -&gt; &quot;plugin:foo&quot;</para>
+</listitem><listitem><para>fromString(&quot;foo:bar&quot;, nullptr) -&gt; &quot;foo:bar&quot;</para>
+</listitem><listitem><para>fromString(&quot;:foo&quot;, nullptr) -&gt; &quot;minecraft:foo&quot;</para>
+</listitem><listitem><para>fromString(&quot;foo&quot;, nullptr) -&gt; &quot;minecraft:foo&quot;</para>
+</listitem><listitem><para>fromString(&quot;Foo&quot;, plugin) -&gt; std::nullopt</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string to parse </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional default namespace; if nullptr, uses the minecraft namespace </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>optional containing the parsed key, or std::nullopt if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="73" column="19" bodyfile="include/endstone/namespaced_key.h" bodystart="73" bodyend="99"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1aa08e51ed653aeaa8fe7f7504f1afba3f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <definition>const std::string &amp; endstone::NamespacedKey::getNamespace</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getNamespace</name>
+        <qualifiedname>endstone::NamespacedKey::getNamespace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="101" column="24" bodyfile="include/endstone/namespaced_key.h" bodystart="101" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1ae86d202bb5a6f80144ca6d8c958510dc" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <definition>const std::string &amp; endstone::NamespacedKey::getKey</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getKey</name>
+        <qualifiedname>endstone::NamespacedKey::getKey</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="106" column="24" bodyfile="include/endstone/namespaced_key.h" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a6bb36e46913fae93d955ea8c397338e8" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::NamespacedKey::toString</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>toString</name>
+        <qualifiedname>endstone::NamespacedKey::toString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="111" column="18" bodyfile="include/endstone/namespaced_key.h" bodystart="111" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1ab7f69986bc4b4710cfe7e1af8ed3cbbc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>bool endstone::NamespacedKey::operator==</definition>
+        <argsstring>(const NamespacedKey &amp;other) const noexcept=default</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::NamespacedKey::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="116" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a4eb5cd3bda3e08cc29c296e4eb005739" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>bool endstone::NamespacedKey::operator!=</definition>
+        <argsstring>(const NamespacedKey &amp;other) const noexcept=default</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::NamespacedKey::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="117" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a97b31335f69af4741727566f5c3f4113" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::NamespacedKey::NamespacedKey</definition>
+        <argsstring>(const std::string_view ns, const std::string_view key)</argsstring>
+        <name>NamespacedKey</name>
+        <qualifiedname>endstone::NamespacedKey::NamespacedKey</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <declname>ns</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Private constructor; use <ref refid="classendstone_1_1NamespacedKey_1a783dd7045c71a33d7f3c2e42ed605218" kindref="member">create()</ref> or <ref refid="classendstone_1_1NamespacedKey_1adf677ac151135822dec2909766b0429a" kindref="member">fromString()</ref> instead. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="126" column="5" bodyfile="include/endstone/namespaced_key.h" bodystart="126" bodyend="126"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1ac6c1cf58648d35f41287bc739dff0aea" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string endstone::NamespacedKey::normalizeString</definition>
+        <argsstring>(const std::string_view str)</argsstring>
+        <name>normalizeString</name>
+        <qualifiedname>endstone::NamespacedKey::normalizeString</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Normalize a string view to lowercase, returning a new std::string. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="131" column="24" bodyfile="include/endstone/namespaced_key.h" bodystart="131" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1aad565f313c469167ebedc75cdeb4ebd0" prot="private" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>static constexpr bool endstone::NamespacedKey::isValidNamespaceChar</definition>
+        <argsstring>(char c) noexcept</argsstring>
+        <name>isValidNamespaceChar</name>
+        <qualifiedname>endstone::NamespacedKey::isValidNamespaceChar</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">char</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="138" column="27" bodyfile="include/endstone/namespaced_key.h" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a559d6702571c04670c33b3696bf450f0" prot="private" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>static constexpr bool endstone::NamespacedKey::isValidKeyChar</definition>
+        <argsstring>(char c) noexcept</argsstring>
+        <name>isValidKeyChar</name>
+        <qualifiedname>endstone::NamespacedKey::isValidKeyChar</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">char</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="143" column="27" bodyfile="include/endstone/namespaced_key.h" bodystart="143" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a68bc1ad253e1f6feb993aa6c880ab749" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>static bool endstone::NamespacedKey::isValidNamespace</definition>
+        <argsstring>(const std::string_view ns) noexcept</argsstring>
+        <name>isValidNamespace</name>
+        <qualifiedname>endstone::NamespacedKey::isValidNamespace</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <declname>ns</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="148" column="17" bodyfile="include/endstone/namespaced_key.h" bodystart="148" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a4a3c5d0b50569d4f381d8af215a94d2e" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <definition>static bool endstone::NamespacedKey::isValidKey</definition>
+        <argsstring>(const std::string_view key) noexcept</argsstring>
+        <name>isValidKey</name>
+        <qualifiedname>endstone::NamespacedKey::isValidKey</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/namespaced_key.h" line="153" column="17" bodyfile="include/endstone/namespaced_key.h" bodystart="153" bodyend="156"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a string-based key which consists of two components - a namespace and a key. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Namespaces may only contain lowercase alphanumeric characters, periods, underscores, and hyphens.</para>
+<para>Keys may only contain lowercase alphanumeric characters, periods, underscores, hyphens, and forward slashes. </para>
+    </detaileddescription>
+    <location file="include/endstone/namespaced_key.h" line="36" column="1" bodyfile="include/endstone/namespaced_key.h" bodystart="36" bodyend="157"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1NamespacedKey_1a783dd7045c71a33d7f3c2e42ed605218" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>create</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1adf677ac151135822dec2909766b0429a" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>fromString</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1ae86d202bb5a6f80144ca6d8c958510dc" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>getKey</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1aa08e51ed653aeaa8fe7f7504f1afba3f" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>getNamespace</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a4a3c5d0b50569d4f381d8af215a94d2e" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>isValidKey</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a559d6702571c04670c33b3696bf450f0" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>isValidKeyChar</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a68bc1ad253e1f6feb993aa6c880ab749" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>isValidNamespace</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1aad565f313c469167ebedc75cdeb4ebd0" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>isValidNamespaceChar</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a57859d67bb4ceae68093728745b57db5" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>key_</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a88dfddee7b93877c4aa732a5d9a66b64" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>MINECRAFT</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a4d559245aaaf69cb610124d7c574804e" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>namespace_</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a97b31335f69af4741727566f5c3f4113" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>NamespacedKey</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1ac6c1cf58648d35f41287bc739dff0aea" prot="private" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>normalizeString</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a4eb5cd3bda3e08cc29c296e4eb005739" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1ab7f69986bc4b4710cfe7e1af8ed3cbbc" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1NamespacedKey_1a6bb36e46913fae93d955ea8c397338e8" prot="public" virt="non-virtual"><scope>endstone::NamespacedKey</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
