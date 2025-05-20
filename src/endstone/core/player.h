@@ -49,8 +49,8 @@ public:
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
     [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment * addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment * addAttachment(Plugin &plugin) override;
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    PermissionAttachment *addAttachment(Plugin &plugin) override;
     Result<void> removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
@@ -159,7 +159,7 @@ public:
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
     void disconnect();
     void updateAbilities() const;
-    bool checkRightClickSpam(Vector<int> block_pos, Vector<float> click_pos);
+    void checkOpStatus();
 
     ::Player &getPlayer() const;
 
@@ -180,6 +180,7 @@ private:
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     bool spawned_ = false;
+    bool last_op_status_ = false;
 };
 
 }  // namespace endstone::core

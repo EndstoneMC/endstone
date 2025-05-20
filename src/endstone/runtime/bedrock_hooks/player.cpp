@@ -39,12 +39,3 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
                                 keep_velocity);
 }
 
-void Player::setPermissions(CommandPermissionLevel permission)
-{
-    const auto component = getPersistentComponent<AbilitiesComponent>();
-    component->abilities.setCommandPermissions(permission);
-
-    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-    player.recalculatePermissions();
-    player.updateCommands();
-}

@@ -85,6 +85,12 @@ const std::string &Player::getName() const
     return name_;
 }
 
+void Player::setPermissions(CommandPermissionLevel permission)
+{
+    const auto component = getPersistentComponent<AbilitiesComponent>();
+    component->abilities.setCommandPermissions(permission);
+}
+
 GameType Player::getPlayerGameType() const
 {
     auto game_type = GameType::Undefined;

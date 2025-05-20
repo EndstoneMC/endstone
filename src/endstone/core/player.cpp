@@ -54,6 +54,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
     uuid_ = EndstoneUUID::fromMinecraft(component->getClientUUID());
     xuid_ = component->getXuid(false);
+    last_op_status_ = EndstonePlayer::isOp();
 }
 
 EndstonePlayer::~EndstonePlayer() = default;
@@ -164,6 +165,9 @@ void EndstonePlayer::setOp(bool value)
     }
 
     getPlayer().setPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
+    recalculatePermissions();
+    updateCommands();
+    last_op_status_ = value;
 }
 
 std::string EndstonePlayer::getType() const
@@ -924,6 +928,15 @@ void EndstonePlayer::updateAbilities() const
     std::shared_ptr<UpdateAbilitiesPacket> pk = std::static_pointer_cast<UpdateAbilitiesPacket>(packet);
     pk->data = {getPlayer().getOrCreateUniqueID(), getPlayer().getAbilities()};
     getPlayer().sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::checkOpStatus()
+{
+    if (last_op_status_ != isOp()) {
+        recalculatePermissions();
+        updateCommands();
+        last_op_status_ = isOp();
+    }
 }
 
 std::shared_ptr<EndstonePlayer> EndstonePlayer::create(EndstoneServer &server, ::Player &player)

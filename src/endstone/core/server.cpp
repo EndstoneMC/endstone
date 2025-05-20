@@ -548,16 +548,22 @@ void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
 
 void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()> &tick_function)
 {
-    using namespace std::chrono;
+    using std::chrono::milliseconds;
+    using std::chrono::steady_clock;
 
-    const auto tick_time = steady_clock::now();
-
+    const auto start = steady_clock::now();
+    // tick start
     scheduler_->mainThreadHeartbeat(current_tick);
     tick_function();
+    for (const auto &p : getOnlinePlayers()) {
+        auto *player = static_cast<EndstonePlayer *>(p);
+        player->checkOpStatus();
+    }
+    // tick end
+    const auto end = steady_clock::now();
 
-    current_mspt_ = static_cast<float>(duration_cast<milliseconds>(steady_clock::now() - tick_time).count());
-    current_tps_ =
-        std::min(static_cast<float>(SharedConstants::TicksPerSecond), 1000.0F / std::max(1.0F, current_mspt_));
+    current_mspt_ = static_cast<float>(duration_cast<milliseconds>(end - start).count());
+    current_tps_ = std::min(1.0F * SharedConstants::TicksPerSecond, 1000.0F / std::max(1.0F, current_mspt_));
     current_usage_ = std::min(1.0F, current_mspt_ / SharedConstants::MilliSecondsPerTick);
     const auto idx = current_tick % SharedConstants::TicksPerSecond;
     average_mspt_[idx] = current_mspt_;
