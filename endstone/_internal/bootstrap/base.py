@@ -94,10 +94,10 @@ class Bootstrap:
             m = hashlib.sha256()
 
             with Progress(
-                    TextColumn("[progress.description]{task.description}"),
-                    BarColumn(),
-                    DownloadColumn(),
-                    TimeRemainingColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                BarColumn(),
+                DownloadColumn(),
+                TimeRemainingColumn(),
             ) as progress:
                 task = progress.add_task("[bold blue]Downloading...", total=total_size)
                 for data in response.iter_content(chunk_size=1024):
