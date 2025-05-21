@@ -1,4 +1,5 @@
 import errno
+import fnmatch
 import hashlib
 import logging
 import os
@@ -93,10 +94,10 @@ class Bootstrap:
             m = hashlib.sha256()
 
             with Progress(
-                TextColumn("[progress.description]{task.description}"),
-                BarColumn(),
-                DownloadColumn(),
-                TimeRemainingColumn(),
+                    TextColumn("[progress.description]{task.description}"),
+                    BarColumn(),
+                    DownloadColumn(),
+                    TimeRemainingColumn(),
             ) as progress:
                 task = progress.add_task("[bold blue]Downloading...", total=total_size)
                 for data in response.iter_content(chunk_size=1024):
@@ -110,12 +111,23 @@ class Bootstrap:
 
             self._logger.info(f"Integrity check passed. Extracting to {dst}...")
             dst.mkdir(parents=True, exist_ok=True)
+            override_patterns = [
+                self.executable_filename,
+                "behavior_packs/*",
+                "definitions/*",
+                "resource_packs/*",
+                "bedrock_server_how_to.html",
+                "profanity_filter.wlist",
+                "release-notes.txt",
+            ]
             with zipfile.ZipFile(f) as zip_ref:
                 for file in zip_ref.namelist():
-                    if file in ["allowlist.json", "permissions.json", "server.properties"] and (dst / file).exists():
-                        self._logger.info(f"{file} already exists, skipping.")
-                        should_modify_server_properties = False
-                        continue
+                    dest_path = dst / file
+                    if dest_path.exists():
+                        if not any(fnmatch.fnmatch(file, pattern) for pattern in override_patterns):
+                            should_modify_server_properties = False
+                            self._logger.info(f"{dest_path} already exists, skipping.")
+                            continue
 
                     zip_ref.extract(file, dst)
 
