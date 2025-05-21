@@ -12,7 +12,7 @@ from endstone._internal.endstone_python import (
 
 from endstone._internal.version import __version__
 
-__minecraft_version__ = "1.21.82"
+__minecraft_version__ = "1.21.83"
 
 __all__ = [
     "__version__",
