@@ -69,9 +69,9 @@ public:
      *
      * @return the cape data.
      */
-    [[nodiscard]] const std::optional<Image> &getCapeData() const
+    [[nodiscard]] const Image *getCapeData() const
     {
-        return cape_data_;
+        return cape_data_.has_value() ? &cape_data_.value() : nullptr;
     }
 
 private:

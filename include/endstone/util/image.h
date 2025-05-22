@@ -34,6 +34,12 @@ public:
      */
     Image(const int width, const int height) : width_(width), height_(height), data_(width * height * 4, '\0') {}
 
+private:
+    Image(const int width, const int height, const std::string_view data) : width_(width), height_(height), data_(data)
+    {
+    }
+
+public:
     /**
      * @brief Get the image width.
      *
@@ -92,6 +98,22 @@ public:
     [[nodiscard]] std::string_view getData() const
     {
         return data_;
+    }
+
+    /**
+     * @brief Creates an image from the pixel data in a byte buffer.
+     * @param width    Image width in pixels
+     * @param height   Image height in pixels
+     * @param buffer  A string_view over exactly width*height*4 bytes of RGBA data
+     * @return         The image on success, or an error on failure.
+     */
+    static Result<Image> fromBuffer(const int width, const int height, std::string_view buffer)
+    {
+        ENDSTONE_CHECK(width > 0 && height > 0, "Width and height must be positive");
+        ENDSTONE_CHECKF(buffer.size() == width * height * 4,
+                        "Buffer size {} does not match expected size {} (width * height * 4)", buffer.size(),
+                        width * height * 4);
+        return Image(width, height, buffer);
     }
 
 private:

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <fmt/format.h>
+#include <pybind11/numpy.h>
 
 #include "endstone_python.h"
 
@@ -66,6 +67,33 @@ void init_util(py::module &m)
         .def("distance", &Vector<float>::distance, py::arg("other"), "The distance between this Vector and another")
         .def("distance_squared", &Vector<float>::distanceSquared, py::arg("other"),
              "The squared distance between this Vector and another");
+
+    py::class_<Color>(m, "Color", "Represents a color with red, green, blue, and alpha components.")
+        .def(py::init<std::uint8_t, std::uint8_t, std::uint8_t, std::uint8_t>(), py::arg("r") = 0, py::arg("g") = 0,
+             py::arg("b") = 0, py::arg("a") = 255,
+             "Creates a color with the specified red, green, blue, and alpha values in the range (0 - 255).")
+        .def_property_readonly("r", &Color::getRed, "Gets the red component of the color.")
+        .def_property_readonly("g", &Color::getRed, "Gets the green component of the color.")
+        .def_property_readonly("b", &Color::getRed, "Gets the blue component of the color.")
+        .def_property_readonly("a", &Color::getRed, "Gets the alpha component of the color.");
+
+    py::class_<Image>(m, "Image",
+                      "Represents an RGBA image.\nEach pixel is four bytes: R, G, B, A, in row-major order.")
+        .def_static("from_buffer", &Image::fromBuffer, py::arg("buffer"),
+                    "Creates an image from the pixel data in a byte buffer.")
+        .def_property_readonly("width", &Image::getWidth, "Get the image width.")
+        .def_property_readonly("height", &Image::getHeight, "Get the image width.")
+        .def("get_color", &Image::getColor, py::arg("x"), py::arg("y"), "Get the color of a pixel.")
+        .def("set_color", &Image::setColor, py::arg("x"), py::arg("y"), py::arg("color"), "Set the color of a pixel.")
+        .def_property_readonly("data", [](const Image &self) {
+            const std::string_view buf = self.getData();
+            const py::ssize_t h = self.getHeight();
+            const py::ssize_t w = self.getWidth();
+            const std::array<py::ssize_t, 3> shape{{h, w, 4}};        // shape: (height, width, 4)
+            const std::array<py::ssize_t, 3> strides{{w * 4, 4, 1}};  // strides in bytes: row, column, channel
+            return py::array_t<std::uint8_t>(py::buffer_info(
+                const_cast<char *>(buf.data()), 1, py::format_descriptor<std::uint8_t>::format(), 3, shape, strides));
+        });
 }
 
 }  // namespace endstone::python

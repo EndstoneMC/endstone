@@ -317,53 +317,14 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player)
 {
     py::class_<Skin>(m, "Skin", "Represents a player skin.")
-        .def(py::init([](std::string skin_id, const py::array_t<std::uint8_t> &skin_data,
-                         std::optional<std::string> cape_id, std::optional<py::array_t<std::uint8_t>> cape_data) {
-                 py::buffer_info info1 = skin_data.request();
-                 if (info1.ndim != 3 || info1.shape[2] != 4) {
-                     throw std::runtime_error("Incompatible shape. Expected (h, w, 4)");
-                 }
-                 Skin::ImageData sd = {static_cast<int>(info1.shape[0]), static_cast<int>(info1.shape[1]),
-                                       std::string(static_cast<char *>(info1.ptr), info1.size)};
-
-                 std::optional<Skin::ImageData> cd = std::nullopt;
-                 if (cape_data.has_value()) {
-                     py::buffer_info info2 = cape_data.value().request();
-                     if (info2.ndim != 3 || info2.shape[2] != 4) {
-                         throw std::runtime_error("Incompatible shape. Expected (h, w, 4)");
-                     }
-                     cd = {static_cast<int>(info2.shape[0]), static_cast<int>(info2.shape[1]),
-                           std::string(static_cast<char *>(info2.ptr), info2.size)};
-                 }
-                 return Skin(std::move(skin_id), sd, std::move(cape_id), cd);
-             }),
-             py::arg("skin_id"), py::arg("skin_data"), py::arg("cape_id") = py::none(),
-             py::arg("cape_data") = py::none())
+        .def(py::init<std::string, Image, std::optional<std::string>, std::optional<Image>>(), py::arg("skin_id"),
+             py::arg("skin_data"), py::arg("cape_id") = py::none(), py::arg("cape_data") = py::none())
         .def_property_readonly("skin_id", &Skin::getSkinId, "Get the Skin ID.")
-        .def_property_readonly(
-            "skin_data",
-            [](const Skin &self) {
-                const auto &data = self.getSkinData();
-                return py::array_t<std::uint8_t>(py::buffer_info(
-                    const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
-                    py::format_descriptor<std::uint8_t>::format(), 3, {data.height, data.width, 4},
-                    {sizeof(std::uint8_t) * data.width * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
-            },
-            "Get the Skin data.")
+        .def_property_readonly("skin_data", &Skin::getCapeData, "Get the Skin data.",
+                               py::return_value_policy::reference)
         .def_property_readonly("cape_id", &Skin::getCapeId, "Get the Cape ID.")
-        .def_property_readonly(
-            "cape_data",
-            [](const Skin &self) -> std::optional<py::array_t<std::uint8_t>> {
-                if (!self.getCapeData().has_value()) {
-                    return std::nullopt;
-                }
-                const auto &data = self.getCapeData().value();
-                return py::array_t<std::uint8_t>(py::buffer_info(
-                    const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
-                    py::format_descriptor<std::uint8_t>::format(), 3, {data.height, data.width, 4},
-                    {sizeof(std::uint8_t) * data.width * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
-            },
-            "Get the Cape data.");
+        .def_property_readonly("cape_data", &Skin::getCapeData, "Get the Cape data.",
+                               py::return_value_policy::reference);
 
     offline_player  //
         .def_property_readonly("name", &OfflinePlayer::getName, "Returns the name of this player")

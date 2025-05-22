@@ -38,21 +38,41 @@ public:
     {
     }
 
+    /**
+     * @brief Gets the red component of the color.
+     *
+     * @return The red component (0–255) of the color.
+     */
     [[nodiscard]] std::uint8_t getRed() const
     {
         return r_;
     }
 
+    /**
+     * @brief Gets the green component of the color.
+     *
+     * @return The green component (0–255) of the color.
+     */
     [[nodiscard]] std::uint8_t getGreen() const
     {
         return g_;
     }
 
+    /**
+     * @brief Gets the blue component of the color.
+     *
+     * @return The blue component (0–255) of the color.
+     */
     [[nodiscard]] std::uint8_t getBlue() const
     {
         return b_;
     }
 
+    /**
+     * @brief Gets the alpha component of the color.
+     *
+     * @return The alpha component (0–255) of the color.
+     */
     [[nodiscard]] std::uint8_t getAlpha() const
     {
         return a_;
