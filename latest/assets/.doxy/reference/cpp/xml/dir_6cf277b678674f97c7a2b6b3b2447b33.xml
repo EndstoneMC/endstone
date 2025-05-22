@@ -14,6 +14,7 @@
     <innerdir refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c">include/endstone/inventory</innerdir>
     <innerdir refid="dir_cd2600a5c389b96acc106cf97f774d1c">include/endstone/lang</innerdir>
     <innerdir refid="dir_8e239ca1e5fd0d936d66a30330d3a329">include/endstone/level</innerdir>
+    <innerdir refid="dir_35fd4abc90217931459f3a8776f2bf4e">include/endstone/map</innerdir>
     <innerdir refid="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc">include/endstone/permissions</innerdir>
     <innerdir refid="dir_53ee43673b2467e53c4cb8c30a2e7d89">include/endstone/plugin</innerdir>
     <innerdir refid="dir_3a50fadda3c7cdc27c965a478a3f7d27">include/endstone/scheduler</innerdir>

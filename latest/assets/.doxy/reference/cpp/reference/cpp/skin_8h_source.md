@@ -28,20 +28,14 @@
 #include <string>
 #include <utility>
 
+#include "endstone/util/image.h"
+
 namespace endstone {
 
 class Skin {
 public:
-    struct ImageData {
-        int height;
-        int width;
-        std::string data;
-    };
-
-    Skin() = default;
-
-    Skin(std::string skin_id, ImageData skin_data, std::optional<std::string> cape_id = std::nullopt,
-         std::optional<ImageData> cape_data = std::nullopt)
+    Skin(std::string skin_id, Image skin_data, std::optional<std::string> cape_id = std::nullopt,
+         std::optional<Image> cape_data = std::nullopt)
         : skin_id_(std::move(skin_id)), skin_data_(std::move(skin_data)), cape_id_(std::move(cape_id)),
           cape_data_(std::move(cape_data))
     {
@@ -52,7 +46,7 @@ public:
         return skin_id_;
     }
 
-    [[nodiscard]] const ImageData &getSkinData() const
+    [[nodiscard]] const Image &getSkinData() const
     {
         return skin_data_;
     }
@@ -62,16 +56,16 @@ public:
         return cape_id_;
     }
 
-    [[nodiscard]] const std::optional<ImageData> &getCapeData() const
+    [[nodiscard]] const Image *getCapeData() const
     {
-        return cape_data_;
+        return cape_data_.has_value() ? &cape_data_.value() : nullptr;
     }
 
 private:
     std::string skin_id_;
-    ImageData skin_data_;
+    Image skin_data_;
     std::optional<std::string> cape_id_;
-    std::optional<ImageData> cape_data_;
+    std::optional<Image> cape_data_;
 };
 
 }  // namespace endstone

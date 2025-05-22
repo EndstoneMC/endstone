@@ -320,7 +320,7 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
@@ -398,6 +398,26 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>endstone/util/color.h</label>
+        <link refid="color_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>endstone/util/image.h</label>
+        <link refid="image_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
       </node>
       <node id="17">
         <label>endstone/util/result.h</label>
@@ -405,7 +425,7 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="57">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
         <childnode refid="45" relation="include">

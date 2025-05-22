@@ -26,6 +26,7 @@
     <innerclass refid="classendstone_1_1Button" prot="public">endstone::Button</innerclass>
     <innerclass refid="classendstone_1_1Cancellable" prot="public">endstone::Cancellable</innerclass>
     <innerclass refid="classendstone_1_1Chunk" prot="public">endstone::Chunk</innerclass>
+    <innerclass refid="classendstone_1_1Color" prot="public">endstone::Color</innerclass>
     <innerclass refid="structendstone_1_1ColorFormat" prot="public">endstone::ColorFormat</innerclass>
     <innerclass refid="classendstone_1_1Command" prot="public">endstone::Command</innerclass>
     <innerclass refid="classendstone_1_1CommandExecutor" prot="public">endstone::CommandExecutor</innerclass>
@@ -45,6 +46,7 @@
     <innerclass refid="classendstone_1_1HandlerList" prot="public">endstone::HandlerList</innerclass>
     <innerclass refid="classendstone_1_1Header" prot="public">endstone::Header</innerclass>
     <innerclass refid="classendstone_1_1ICancellable" prot="public">endstone::ICancellable</innerclass>
+    <innerclass refid="classendstone_1_1Image" prot="public">endstone::Image</innerclass>
     <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
     <innerclass refid="classendstone_1_1IpBanEntry" prot="public">endstone::IpBanEntry</innerclass>
     <innerclass refid="classendstone_1_1IpBanList" prot="public">endstone::IpBanList</innerclass>
@@ -56,7 +58,10 @@
     <innerclass refid="classendstone_1_1Level" prot="public">endstone::Level</innerclass>
     <innerclass refid="classendstone_1_1Location" prot="public">endstone::Location</innerclass>
     <innerclass refid="classendstone_1_1Logger" prot="public">endstone::Logger</innerclass>
+    <innerclass refid="classendstone_1_1MapCanvas" prot="public">endstone::MapCanvas</innerclass>
     <innerclass refid="classendstone_1_1MapMeta" prot="public">endstone::MapMeta</innerclass>
+    <innerclass refid="classendstone_1_1MapRenderer" prot="public">endstone::MapRenderer</innerclass>
+    <innerclass refid="classendstone_1_1MapView" prot="public">endstone::MapView</innerclass>
     <innerclass refid="classendstone_1_1MessageForm" prot="public">endstone::MessageForm</innerclass>
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1ModalForm" prot="public">endstone::ModalForm</innerclass>

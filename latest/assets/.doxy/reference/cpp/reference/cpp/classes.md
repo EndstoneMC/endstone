@@ -60,6 +60,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Chunk**](classendstone_1_1Chunk.md)
 ([**endstone**](namespaceendstone.md))
+* [**Color**](classendstone_1_1Color.md)
+([**endstone**](namespaceendstone.md))
 * [**ColorFormat**](structendstone_1_1ColorFormat.md)
 ([**endstone**](namespaceendstone.md))
 * [**Command**](classendstone_1_1Command.md)
@@ -142,8 +144,8 @@
 
 * [**ICancellable**](classendstone_1_1ICancellable.md)
 ([**endstone**](namespaceendstone.md))
-* [**ImageData**](structendstone_1_1Skin_1_1ImageData.md)
-([**endstone::Skin**](classendstone_1_1Skin.md))
+* [**Image**](classendstone_1_1Image.md)
+([**endstone**](namespaceendstone.md))
 * [**Inventory**](classendstone_1_1Inventory.md)
 ([**endstone**](namespaceendstone.md))
 * [**IpBanEntry**](classendstone_1_1IpBanEntry.md)
@@ -174,7 +176,13 @@
 
 ## m
 
+* [**MapCanvas**](classendstone_1_1MapCanvas.md)
+([**endstone**](namespaceendstone.md))
 * [**MapMeta**](classendstone_1_1MapMeta.md)
+([**endstone**](namespaceendstone.md))
+* [**MapRenderer**](classendstone_1_1MapRenderer.md)
+([**endstone**](namespaceendstone.md))
+* [**MapView**](classendstone_1_1MapView.md)
 ([**endstone**](namespaceendstone.md))
 * [**MessageForm**](classendstone_1_1MessageForm.md)
 ([**endstone**](namespaceendstone.md))

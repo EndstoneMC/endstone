@@ -13,6 +13,7 @@
 * `#include <optional>`
 * `#include <string>`
 * `#include <utility>`
+* `#include "endstone/util/image.h"`
 
 
 
@@ -38,7 +39,6 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Skin**](classendstone_1_1Skin.md) <br>_Represents a player skin._  |
-| struct | [**ImageData**](structendstone_1_1Skin_1_1ImageData.md) <br> |
 
 
 

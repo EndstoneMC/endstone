@@ -6,6 +6,7 @@
 ## a
 
 * **actor\_** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
+* **a\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **aliases\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
@@ -21,6 +22,7 @@
 
 * **blocks\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **block\_** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md))
+* **b\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Black** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Blue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Bold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -64,6 +66,7 @@
 * **DarkRed** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **description\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **default\_index\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
+* **data\_** ([**endstone::Image**](classendstone_1_1Image.md))
 * **DefaultPermission** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **default\_value\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::Toggle**](classendstone_1_1Toggle.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **death\_message\_** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
@@ -71,8 +74,8 @@
 * **default\_permission\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **dimension\_** ([**endstone::Position**](classendstone_1_1Position.md))
-* **data** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md), [**endstone::UUID**](classendstone_1_1UUID.md))
 * **default\_text\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
+* **data** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **default\_permission** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **description** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
@@ -96,6 +99,7 @@
 
 ## g
 
+* **g\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Gold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Gray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Green** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -105,7 +109,7 @@
 ## h
 
 * **handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
-* **height** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md))
+* **height\_** ([**endstone::Image**](classendstone_1_1Image.md))
 * **hostname\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 
 
@@ -114,6 +118,7 @@
 * **icon\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
+* **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 
 
@@ -230,6 +235,7 @@
 * **raw\_knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **reason\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md))
 * **recipients\_** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
+* **r\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Red** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Reset** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **removed\_** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
@@ -275,8 +281,8 @@
 ## w
 
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **width\_** ([**endstone::Image**](classendstone_1_1Image.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
-* **width** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md))
 * **website** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 

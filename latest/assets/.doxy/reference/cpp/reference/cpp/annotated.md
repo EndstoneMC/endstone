@@ -29,6 +29,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._     
     * **class** [**Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._     
     * **class** [**Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._     
+    * **class** [**Color**](classendstone_1_1Color.md) _Represents a color with red, green, blue, and alpha components._     
     * **struct** [**ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._     
     * **class** [**Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     
@@ -48,6 +49,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._     
     * **class** [**Header**](classendstone_1_1Header.md) _Represents a header with a label._     
     * **class** [**ICancellable**](classendstone_1_1ICancellable.md)     
+    * **class** [**Image**](classendstone_1_1Image.md) _Represents an RGBA image._     
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md)     
     * **class** [**IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._     
@@ -59,7 +61,10 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._     
     * **class** [**Location**](classendstone_1_1Location.md) _Represents a 3-dimensional location in a dimension within a level._     
     * **class** [**Logger**](classendstone_1_1Logger.md) [_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._    
+    * **class** [**MapCanvas**](classendstone_1_1MapCanvas.md) _Represents a canvas for drawing to a map. Each canvas is associated with a specific_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _and represents that renderer's layer on the map._    
     * **class** [**MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._ 
+    * **class** [**MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._     
+    * **class** [**MapView**](classendstone_1_1MapView.md) _Represents a map item._     
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
@@ -112,7 +117,6 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Service**](classendstone_1_1Service.md) _Services represent a list of methods._     
     * **class** [**ServiceManager**](classendstone_1_1ServiceManager.md) _Represent a service manager that manages services and service providers._     
     * **class** [**Skin**](classendstone_1_1Skin.md) _Represents a player skin._     
-        * **struct** [**ImageData**](structendstone_1_1Skin_1_1ImageData.md)     
     * **class** [**Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._     
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     
     * **class** [**StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._     
