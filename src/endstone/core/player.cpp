@@ -593,11 +593,12 @@ void EndstonePlayer::updateCommands() const
             it->permission_level < CommandPermissionLevel::Host  // TODO(permission): remove after refactor
         ) {
             if (auto symbol = registry.findEnumValue(name); symbol.value() != 0) {
+                auto symbol_index = static_cast<std::uint32_t>(symbol.toIndex());
                 if (it->permission_level >= CommandPermissionLevel::Host) {
-                    constraints_to_remove.emplace(symbol.toIndex(), SemanticConstraint::RequiresHostPermissions);
+                    constraints_to_remove.emplace(symbol_index, SemanticConstraint::RequiresHostPermissions);
                 }
                 else if (it->permission_level > CommandPermissionLevel::Any) {
-                    constraints_to_remove.emplace(symbol.toIndex(), SemanticConstraint::RequiresElevatedPermissions);
+                    constraints_to_remove.emplace(symbol_index, SemanticConstraint::RequiresElevatedPermissions);
                 }
             }
             it->permission_level = CommandPermissionLevel::Any;
@@ -706,9 +707,9 @@ std::string EndstonePlayer::getGameVersion() const
     return game_version_;
 }
 
-const Skin &EndstonePlayer::getSkin() const
+const Skin *EndstonePlayer::getSkin() const
 {
-    return skin_;
+    return skin_.get();
 }
 
 void EndstonePlayer::transfer(std::string host, int port) const
@@ -905,13 +906,24 @@ void EndstonePlayer::initFromConnectionRequest(
                 auto skin_id = req->getData("SkinId").asString();
                 auto skin_height = req->getData("SkinImageHeight").asInt();
                 auto skin_width = req->getData("SkinImageWidth").asInt();
-                auto skin_data = base64_decode(req->getData("SkinData").asString()).value_or("");
+                auto skin_image = Image::fromBuffer(skin_width, skin_height,
+                                                    base64_decode(req->getData("SkinData").asString()).value_or(""));
+                if (!skin_image) {
+                    server_.getLogger().error("Player {} has an invalid skin: {}", getName(), skin_image.error());
+                    return;
+                }
+
                 auto cape_id = req->getData("CapeId").asString();
                 auto cape_height = req->getData("CapeImageHeight").asInt();
                 auto cape_width = req->getData("CapeImageWidth").asInt();
-                auto cape_data = base64_decode(req->getData("CapeData").asString()).value_or("");
-                skin_ = {skin_id, Skin::ImageData{skin_height, skin_width, skin_data}, cape_id,
-                         Skin::ImageData{cape_height, cape_width, cape_data}};
+                auto cape_image = Image::fromBuffer(skin_width, skin_height,
+                                                    base64_decode(req->getData("CapeData").asString()).value_or(""));
+                if (cape_id.empty() || !cape_image) {
+                    skin_ = std::make_unique<Skin>(skin_id, skin_image.value());
+                }
+                else {
+                    skin_ = std::make_unique<Skin>(skin_id, skin_image.value(), cape_id, cape_image.value());
+                }
             }
         },
         request);

@@ -147,7 +147,7 @@ public:
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] std::string getDeviceId() const override;
     [[nodiscard]] std::string getGameVersion() const override;
-    [[nodiscard]] const Skin &getSkin() const override;
+    [[nodiscard]] const Skin *getSkin() const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
@@ -176,7 +176,7 @@ private:
     std::string device_os_ = "Unknown";
     std::string device_id_;
     std::string game_version_;
-    Skin skin_{};
+    std::unique_ptr<Skin> skin_;
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     bool spawned_ = false;
