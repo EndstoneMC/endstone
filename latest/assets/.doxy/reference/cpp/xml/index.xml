@@ -1032,7 +1032,7 @@
     <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" kind="function"><name>getDeviceOS</name></member>
     <member refid="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" kind="function"><name>getDeviceId</name></member>
     <member refid="classendstone_1_1Player_1af27fa164812bf2653148836631b98732" kind="function"><name>getGameVersion</name></member>
-    <member refid="classendstone_1_1Player_1a65b1f5137a06cc2bd567241802ff2ec9" kind="function"><name>getSkin</name></member>
+    <member refid="classendstone_1_1Player_1a8487451241c1dece2c1d2aa92851f735" kind="function"><name>getSkin</name></member>
     <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" kind="function"><name>sendForm</name></member>
     <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" kind="function"><name>closeForm</name></member>
     <member refid="classendstone_1_1Player_1a68b095f25d166158a3e03d1840194896" kind="function"><name>sendPacket</name></member>

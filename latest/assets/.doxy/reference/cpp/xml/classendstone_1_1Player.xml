@@ -1447,9 +1447,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="427" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1a65b1f5137a06cc2bd567241802ff2ec9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Skin" kindref="compound">Skin</ref> &amp;</type>
-        <definition>virtual const Skin &amp; endstone::Player::getSkin</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1a8487451241c1dece2c1d2aa92851f735" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Skin" kindref="compound">Skin</ref> *</type>
+        <definition>virtual const Skin * endstone::Player::getSkin</definition>
         <argsstring>() const =0</argsstring>
         <name>getSkin</name>
         <qualifiedname>endstone::Player::getSkin</qualifiedname>
@@ -1667,7 +1667,7 @@
       <member refid="classendstone_1_1Actor_1aab1b3bf14d77e70515a6afacb3219e86" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getScoreboardTags</name></member>
       <member refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getScoreTag</name></member>
       <member refid="classendstone_1_1CommandSender_1aecd5cad85026861938379fa283d626cf" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getServer</name></member>
-      <member refid="classendstone_1_1Player_1a65b1f5137a06cc2bd567241802ff2ec9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getSkin</name></member>
+      <member refid="classendstone_1_1Player_1a8487451241c1dece2c1d2aa92851f735" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getSkin</name></member>
       <member refid="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getTotalExp</name></member>
       <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getType</name></member>
       <member refid="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getUniqueId</name></member>

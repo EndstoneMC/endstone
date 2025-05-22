@@ -169,7 +169,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual std::string | [**getName**](#function-getname) () override const = 0<br>_Returns the name of this player._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _displayed to this player._ |
-| virtual [**const**](classendstone_1_1Vector.md) [**Skin**](classendstone_1_1Skin.md) & | [**getSkin**](#function-getskin) () const = 0<br>_Gets the player's skin._  |
+| virtual [**const**](classendstone_1_1Vector.md) [**Skin**](classendstone_1_1Skin.md) \* | [**getSkin**](#function-getskin) () const = 0<br>_Gets the player's skin._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
 | virtual [**float**](classendstone_1_1Vector.md) | [**getWalkSpeed**](#function-getwalkspeed) () const = 0<br>_Gets the current allowed speed that a client can walk._  |
 | virtual std::string | [**getXuid**](#function-getxuid) () const = 0<br>_Returns the Xbox User ID (XUID) of this player._  |
@@ -876,7 +876,7 @@ The current scoreboard seen by this player
 
 _Gets the player's skin._ 
 ```C++
-virtual const  Skin & endstone::Player::getSkin () const = 0
+virtual const  Skin * endstone::Player::getSkin () const = 0
 ```
 
 

@@ -161,7 +161,7 @@ public:
 
     [[nodiscard]] virtual std::string getGameVersion() const = 0;
 
-    [[nodiscard]] virtual const Skin &getSkin() const = 0;
+    [[nodiscard]] virtual const Skin *getSkin() const = 0;
 
     virtual void sendForm(FormVariant form) = 0;
 
