@@ -107,7 +107,7 @@ Each pixel is four bytes: R, G, B, A, in row-major order.
 
 _Create an empty image (all pixels transparent black)._ 
 ```C++
-inline endstone::Image::Image (
+inline explicit endstone::Image::Image (
     const  int width,
     const  int height
 ) 

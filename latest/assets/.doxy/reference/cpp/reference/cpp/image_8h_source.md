@@ -31,7 +31,9 @@
 namespace endstone {
 class Image {
 public:
-    Image(const int width, const int height) : width_(width), height_(height), data_(width * height * 4, '\0') {}
+    explicit Image(const int width, const int height) : width_(width), height_(height), data_(width * height * 4, '\0')
+    {
+    }
 
 private:
     Image(const int width, const int height, const std::string_view data) : width_(width), height_(height), data_(data)

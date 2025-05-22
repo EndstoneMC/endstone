@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_renderer.h" line="66" column="10" bodyfile="include/endstone/map/map_renderer.h" bodystart="66" bodyend="-1"/>
+        <location file="include/endstone/map/map_renderer.h" line="67" column="10" bodyfile="include/endstone/map/map_renderer.h" bodystart="67" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_renderer.h" line="28" column="13"/>
+        <location file="include/endstone/map/map_renderer.h" line="29" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_renderer.h" line="35" column="11"/>
+        <location file="include/endstone/map/map_renderer.h" line="36" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_renderer.h" line="42" column="18"/>
+        <location file="include/endstone/map/map_renderer.h" line="43" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1a2ffd5d14ab9ff49f698f187b14159778" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_renderer.h" line="51" column="18"/>
+        <location file="include/endstone/map/map_renderer.h" line="52" column="18"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_renderer.h" line="57" column="5"/>
+        <location file="include/endstone/map/map_renderer.h" line="58" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1aab2b8c42df0209c8e2e2cebdeec05f9d" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_renderer.h" line="63" column="14"/>
+        <location file="include/endstone/map/map_renderer.h" line="64" column="14"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -186,7 +186,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/map/map_renderer.h" line="26" column="1" bodyfile="include/endstone/map/map_renderer.h" bodystart="26" bodyend="67"/>
+    <location file="include/endstone/map/map_renderer.h" line="27" column="1" bodyfile="include/endstone/map/map_renderer.h" bodystart="27" bodyend="68"/>
     <listofallmembers>
       <member refid="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" prot="public" virt="virtual"><scope>endstone::MapRenderer</scope><name>initialize</name></member>
       <member refid="classendstone_1_1MapRenderer_1ac13cebc8a7857f8cd6e3bef11f34bace" prot="private" virt="non-virtual"><scope>endstone::MapRenderer</scope><name>is_contextual_</name></member>

@@ -10,7 +10,6 @@
 
 
 
-* `#include "endstone/map/map_renderer.h"`
 * `#include "endstone/util/color.h"`
 * `#include "endstone/util/image.h"`
 
