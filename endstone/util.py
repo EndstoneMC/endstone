@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import SocketAddress, Vector
+from endstone._internal.endstone_python import Color, Image, SocketAddress, Vector
 
-__all__ = ["SocketAddress", "Vector"]
+__all__ = ["Color", "Image", "SocketAddress", "Vector"]
