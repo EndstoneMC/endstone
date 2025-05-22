@@ -66,15 +66,6 @@ void init_util(py::module &m)
         .def("distance", &Vector<float>::distance, py::arg("other"), "The distance between this Vector and another")
         .def("distance_squared", &Vector<float>::distanceSquared, py::arg("other"),
              "The squared distance between this Vector and another");
-
-    py::class_<Color>(m, "Color", "Represents a color with red, green, blue, and alpha components.")
-        .def(py::init<std::uint8_t, std::uint8_t, std::uint8_t, std::uint8_t>(), py::arg("red") = 0,
-             py::arg("green") = 0, py::arg("blue") = 0, py::arg("alpha") = 255,
-             "Creates a color with the specified red, green, blue, and alpha values in the range (0 - 255).")
-        .def_property_readonly("red", &Color::getRed, "Gets the red component of the color.")
-        .def_property_readonly("green", &Color::getRed, "Gets the green component of the color.")
-        .def_property_readonly("blue", &Color::getRed, "Gets the blue component of the color.")
-        .def_property_readonly("alpha", &Color::getRed, "Gets the alpha component of the color.");
 }
 
 }  // namespace endstone::python

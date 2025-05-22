@@ -182,4 +182,44 @@ public:
     PYBIND11_TYPE_CASTER(endstone::Image, const_name("numpy.ndarray[numpy.uint8]"));
 };
 
+template <>
+class type_caster<endstone::Color> {
+public:
+    // Python -> C++
+    bool load(handle src, bool)
+    {
+        if (!pybind11::isinstance<sequence>(src)) {
+            PyErr_SetString(PyExc_ValueError, "Color must be a sequence of 3 or 4 integers");
+            return false;
+        }
+
+        auto seq = reinterpret_borrow<sequence>(src);
+        size_t len = seq.size();
+
+        if (len != 3 && len != 4) {
+            PyErr_SetString(PyExc_ValueError, "Color tuple must have length 3 or 4");
+            return false;
+        }
+
+        // Cast elements to int
+        try {
+            value = endstone::Color{seq[0].cast<uint8_t>(), seq[1].cast<uint8_t>(), seq[2].cast<uint8_t>(),
+                                    static_cast<uint8_t>(len == 4 ? seq[3].cast<uint8_t>() : 255)};
+        }
+        catch (const cast_error &) {
+            PyErr_SetString(PyExc_ValueError, "Color elements must be integers");
+            return false;
+        }
+        return true;
+    }
+
+    // C++ -> Python
+    static handle cast(const endstone::Color &src, return_value_policy /* policy */, handle /* parent */)
+    {
+        return make_tuple(src.getRed(), src.getGreen(), src.getBlue(), src.getAlpha()).release();
+    }
+
+    PYBIND11_TYPE_CASTER(endstone::Color, const_name("tuple[int, ...]"));
+};
+
 }  // namespace pybind11::detail
