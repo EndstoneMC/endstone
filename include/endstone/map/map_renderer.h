@@ -14,10 +14,11 @@
 
 #pragma once
 
+#include "endstone/map/map_canvas.h"
+
 namespace endstone {
 
 class MapView;
-class MapCanvas;
 class Player;
 
 /**

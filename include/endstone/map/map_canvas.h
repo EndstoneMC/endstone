@@ -14,11 +14,14 @@
 
 #pragma once
 
-#include "endstone/map/map_renderer.h"
 #include "endstone/util/color.h"
 #include "endstone/util/image.h"
 
 namespace endstone {
+
+class MapRenderer;
+class MapView;
+
 /**
  * @brief Represents a canvas for drawing to a map. Each canvas is associated with a
  *        specific MapRenderer and represents that renderer's layer on the map.

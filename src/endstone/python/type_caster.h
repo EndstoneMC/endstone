@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 
 #include "endstone/endstone.hpp"
@@ -102,7 +103,6 @@ public:
         }
         return value_conv::cast(*std::forward<T>(src), policy, parent);
     }
-
     PYBIND11_TYPE_CASTER(endstone::Result<Value>, value_conv::name);
 };
 
@@ -118,6 +118,68 @@ public:
         return none().release();
     }
     PYBIND11_TYPE_CASTER(endstone::Result<void>, const_name("None"));
+};
+
+// Type caster for endstone::Image <-> numpy.ndarray of uint8 RGBA
+template <>
+class type_caster<endstone::Image> {
+public:
+    explicit type_caster() : value(0, 0) {}
+
+    // Python -> C++ conversion
+    bool load(handle src, bool)
+    {
+        // Expect a numpy array with shape (H, W, 4) and dtype=uint8
+        array_t<uint8_t, array::c_style | array::forcecast> array;
+        try {
+            array = pybind11::cast<array_t<uint8_t, array::c_style | array::forcecast>>(src);
+        }
+        catch (const cast_error &) {
+            PyErr_SetString(PyExc_TypeError, "Expected a NumPy array with dtype=uint8 and C-style memory layout");
+            return false;
+        }
+
+        if (array.ndim() != 3 || array.shape(2) != 4) {
+            PyErr_SetString(PyExc_ValueError, "NumPy array must have 3 dimensions and 4 channels (shape: H x W x 4)");
+            return false;
+        }
+
+        const int height = static_cast<int>(array.shape(0));
+        const int width = static_cast<int>(array.shape(1));
+
+        auto result = endstone::Image::fromBuffer(
+            width, height, std::string_view(reinterpret_cast<const char *>(array.data()), height * width * 4));
+        if (!result) {
+            PyErr_SetString(PyExc_ValueError, result.error().c_str());
+            return false;
+        }
+        value = std::move(result.value());
+        return PyErr_Occurred() == nullptr;
+    }
+
+    // C++ -> Python conversion
+    static handle cast(const endstone::Image &img, return_value_policy /* policy */, handle /* parent */)
+    {
+        const int width = img.getWidth();
+        const int height = img.getHeight();
+
+        // Create a numpy array with shape (H, W, 4)
+        std::vector<ssize_t> shape = {height, width, 4};
+        std::vector<ssize_t> strides = {width * 4, 4, 1};
+
+        // Allocate a new array and copy
+        array_t<uint8_t> array(buffer_info(const_cast<char *>(img.getData().data()), /* data */
+                                           1,                                        /* size of one scalar */
+                                           format_descriptor<uint8_t>::format(),     /* data type */
+                                           3,                                        /* number of dimensions */
+                                           shape,                                    /* shape */
+                                           strides                                   /* strides */
+                                           ));
+
+        // Make an owned copy so buffer can own it
+        return array.attr("copy")().release();
+    }
+    PYBIND11_TYPE_CASTER(endstone::Image, const_name("numpy.ndarray[numpy.uint8]"));
 };
 
 }  // namespace pybind11::detail
