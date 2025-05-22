@@ -1559,15 +1559,15 @@
     <member refid="classendstone_1_1ServiceManager_1ac2fcb33a1d0fc89902100b7244fa55b0" kind="function"><name>load</name></member>
   </compound>
   <compound refid="classendstone_1_1Skin" kind="class"><name>endstone::Skin</name>
-    <member refid="classendstone_1_1Skin_1aaa8acbed9e68495f28de0b06022fa61c" kind="variable"><name>skin_id_</name></member>
-    <member refid="classendstone_1_1Skin_1a9303a49ec2e52a458e63c585bdb9bc0f" kind="variable"><name>skin_data_</name></member>
+    <member refid="classendstone_1_1Skin_1a273ae02704f5c5092c71515347ced54a" kind="variable"><name>id_</name></member>
+    <member refid="classendstone_1_1Skin_1aa836b4be3c7a31992075e8e0bb889524" kind="variable"><name>image_</name></member>
     <member refid="classendstone_1_1Skin_1a7dc86a18a4cd9717572d333e0ca9637a" kind="variable"><name>cape_id_</name></member>
-    <member refid="classendstone_1_1Skin_1ab399d692ee02f5b9eae84cccc9bd74ea" kind="variable"><name>cape_data_</name></member>
-    <member refid="classendstone_1_1Skin_1a7b116ff49f790852611e20204b4a517f" kind="function"><name>Skin</name></member>
-    <member refid="classendstone_1_1Skin_1aec30f62af8dddd5a18b8ab8d0a793070" kind="function"><name>getSkinId</name></member>
-    <member refid="classendstone_1_1Skin_1ae072447c5ba5f6634a2e0365ef90c8c1" kind="function"><name>getSkinData</name></member>
+    <member refid="classendstone_1_1Skin_1af20c4875f8a119304d9f85b8f3f0b436" kind="variable"><name>cape_image_</name></member>
+    <member refid="classendstone_1_1Skin_1a2ffd851d35963ade4e7d9f379bb641e4" kind="function"><name>Skin</name></member>
+    <member refid="classendstone_1_1Skin_1a1ee37c6cbb142562db8016e5361f32fb" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1Skin_1a8493d696282383696dbb73d0e8a6175d" kind="function"><name>getImage</name></member>
     <member refid="classendstone_1_1Skin_1a97566d8b87ee36b861f2a0dc086f768a" kind="function"><name>getCapeId</name></member>
-    <member refid="classendstone_1_1Skin_1a8bd89c7792231c674671991f69889b27" kind="function"><name>getCapeData</name></member>
+    <member refid="classendstone_1_1Skin_1a12cda5900a5d279f30afb27e21e8fd76" kind="function"><name>getCapeImage</name></member>
   </compound>
   <compound refid="classendstone_1_1Slider" kind="class"><name>endstone::Slider</name>
     <member refid="classendstone_1_1Slider_1a6ab24261f08b33fd1b3476c7bd1a08bc" kind="variable"><name>label_</name></member>

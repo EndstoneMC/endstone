@@ -47,8 +47,8 @@
 * **clicked\_position\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **commands\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **contributors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
-* **cape\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **cape\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
+* **cape\_image\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **commands** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **contributors** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
@@ -120,6 +120,8 @@
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
+* **image\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 
 
 ## j
@@ -251,8 +253,6 @@
 * **server\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **soft\_depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **server\_guid\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
-* **skin\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
-* **skin\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **step\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
 * **soft\_depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 

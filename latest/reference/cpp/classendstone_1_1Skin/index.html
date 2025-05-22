@@ -2148,19 +2148,6 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getcapedata" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getCapeData
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#function-getcapeid" class="md-nav__link">
       <span class="md-ellipsis">
         function getCapeId
@@ -2174,9 +2161,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getskindata" class="md-nav__link">
+    <a href="#function-getcapeimage" class="md-nav__link">
       <span class="md-ellipsis">
-        function getSkinData
+        function getCapeImage
       </span>
     </a>
 
@@ -2187,9 +2174,22 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getskinid" class="md-nav__link">
+    <a href="#function-getid" class="md-nav__link">
       <span class="md-ellipsis">
-        function getSkinId
+        function getId
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getimage" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getImage
       </span>
     </a>
 
@@ -2252,67 +2252,67 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-skin"><strong>Skin</strong></a> (std::string skin_id, <a href="../classendstone_1_1Image/"><strong>Image</strong></a> skin_data, std::optional&lt; std::string &gt; cape_id=std::nullopt, std::optional&lt; <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &gt; cape_data=std::nullopt) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Image/"><strong>Image</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-getcapedata"><strong>getCapeData</strong></a> () const<br><em>Gets the cape data.</em></td>
+<td style="text-align: left;"><a href="#function-skin"><strong>Skin</strong></a> (std::string id, <a href="../classendstone_1_1Image/"><strong>Image</strong></a> image, std::optional&lt; std::string &gt; cape_id=std::nullopt, std::optional&lt; <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &gt; cape_image=std::nullopt) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::optional&lt; std::string &gt; &amp;</td>
 <td style="text-align: left;"><a href="#function-getcapeid"><strong>getCapeId</strong></a> () const<br><em>Gets the cape id.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getskindata"><strong>getSkinData</strong></a> () const<br><em>Gets the skin data.</em></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Image/"><strong>Image</strong></a> *</td>
+<td style="text-align: left;"><a href="#function-getcapeimage"><strong>getCapeImage</strong></a> () const<br><em>Gets the cape image.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp;</td>
-<td style="text-align: left;"><a href="#function-getskinid"><strong>getSkinId</strong></a> () const<br><em>Gets the skin id.</em></td>
+<td style="text-align: left;"><a href="#function-getid"><strong>getId</strong></a> () const<br><em>Gets the skin id.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getimage"><strong>getImage</strong></a> () const<br><em>Gets the skin image.</em></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-skin">function Skin<a class="headerlink" href="#function-skin" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">Skin</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">skin_id</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Image</span><span class="w"> </span><span class="n">skin_data</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Image</span><span class="w"> </span><span class="n">image</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_id</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_data</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_image</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-getcapedata">function getCapeData<a class="headerlink" href="#function-getcapedata" title="Permanent link">&para;</a></h3>
-<p><em>Gets the cape data.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Image</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getCapeData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>the cape data. </p>
-<hr>
-
 <h3 id="function-getcapeid">function getCapeId<a class="headerlink" href="#function-getcapeid" title="Permanent link">&para;</a></h3>
 <p><em>Gets the cape id.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getCapeId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getCapeId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the cape id. </p>
 <hr>
 
-<h3 id="function-getskindata">function getSkinData<a class="headerlink" href="#function-getskindata" title="Permanent link">&para;</a></h3>
-<p><em>Gets the skin data.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Image</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getSkinData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<h3 id="function-getcapeimage">function getCapeImage<a class="headerlink" href="#function-getcapeimage" title="Permanent link">&para;</a></h3>
+<p><em>Gets the cape image.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Image</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getCapeImage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>the skin data. </p>
+<p>the cape image. </p>
 <hr>
 
-<h3 id="function-getskinid">function getSkinId<a class="headerlink" href="#function-getskinid" title="Permanent link">&para;</a></h3>
+<h3 id="function-getid">function getId<a class="headerlink" href="#function-getid" title="Permanent link">&para;</a></h3>
 <p><em>Gets the skin id.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getSkinId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the skin id. </p>
+<hr>
+
+<h3 id="function-getimage">function getImage<a class="headerlink" href="#function-getimage" title="Permanent link">&para;</a></h3>
+<p><em>Gets the skin image.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Image</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getImage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the skin image. </p>
 <hr>
 
 <hr />

@@ -2915,8 +2915,8 @@ For latest updates join the chat on
 <li><strong>createBlockData</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>createBossBar</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>createScoreboard</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
-<li><strong>cape_data_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>cape_id_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
+<li><strong>cape_image_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>CommandBuilder</strong> (<a href="../classendstone_1_1detail_1_1CommandBuilder/"><strong>endstone::detail::CommandBuilder</strong></a>)</li>
 <li><strong>children</strong> (<a href="../classendstone_1_1detail_1_1PermissionBuilder/"><strong>endstone::detail::PermissionBuilder</strong></a>)</li>
 <li><strong>command</strong> (<a href="../structendstone_1_1detail_1_1PluginDescriptionBuilder/"><strong>endstone::detail::PluginDescriptionBuilder</strong></a>)</li>
@@ -3000,7 +3000,7 @@ For latest updates join the chat on
 <li><strong>getOnSubmit</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>getDimension</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1Chunk/"><strong>endstone::Chunk</strong></a>, <a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>, <a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>, <a href="../classendstone_1_1Position/"><strong>endstone::Position</strong></a>)</li>
 <li><strong>getHealth</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
-<li><strong>getId</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
+<li><strong>getId</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>, <a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>getLevel</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1Chunk/"><strong>endstone::Chunk</strong></a>, <a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>, <a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>, <a href="../classendstone_1_1WeatherEvent/"><strong>endstone::WeatherEvent</strong></a>)</li>
 <li><strong>getLocation</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1ActorExplodeEvent/"><strong>endstone::ActorExplodeEvent</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>)</li>
 <li><strong>getMaxHealth</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
@@ -3227,10 +3227,9 @@ For latest updates join the chat on
 <li><strong>getRemoteHost</strong> (<a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>)</li>
 <li><strong>getRemotePort</strong> (<a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>)</li>
 <li><strong>getServerGuid</strong> (<a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>)</li>
-<li><strong>getCapeData</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>getCapeId</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
-<li><strong>getSkinData</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
-<li><strong>getSkinId</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
+<li><strong>getCapeImage</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
+<li><strong>getImage</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>getDefaultValue</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
 <li><strong>getMax</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
 <li><strong>getMin</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
@@ -3317,6 +3316,8 @@ For latest updates join the chat on
 <li><strong>isRunning</strong> (<a href="../classendstone_1_1Scheduler/"><strong>endstone::Scheduler</strong></a>)</li>
 <li><strong>isScoreSet</strong> (<a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a>)</li>
 <li><strong>isPrimaryThread</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
+<li><strong>id_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
+<li><strong>image_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>isSync</strong> (<a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>isNil</strong> (<a href="../classendstone_1_1UUID/"><strong>endstone::UUID</strong></a>)</li>
 </ul>
@@ -3659,8 +3660,6 @@ For latest updates join the chat on
 <li><strong>setServerGuid</strong> (<a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>)</li>
 <li><strong>ServerLoadEvent</strong> (<a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
 <li><strong>Skin</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
-<li><strong>skin_data_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
-<li><strong>skin_id_</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>Slider</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
 <li><strong>setDefaultValue</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
 <li><strong>setMax</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
