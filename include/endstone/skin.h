@@ -27,10 +27,9 @@ namespace endstone {
  */
 class Skin {
 public:
-    Skin(std::string skin_id, Image skin_data, std::optional<std::string> cape_id = std::nullopt,
-         std::optional<Image> cape_data = std::nullopt)
-        : skin_id_(std::move(skin_id)), skin_data_(std::move(skin_data)), cape_id_(std::move(cape_id)),
-          cape_data_(std::move(cape_data))
+    Skin(std::string id, Image image, std::optional<std::string> cape_id = std::nullopt,
+         std::optional<Image> cape_image = std::nullopt)
+        : id_(std::move(id)), image_(std::move(image)), cape_id_(std::move(cape_id)), cape_image_(std::move(cape_image))
     {
     }
 
@@ -39,19 +38,19 @@ public:
      *
      * @return the skin id.
      */
-    [[nodiscard]] const std::string &getSkinId() const
+    [[nodiscard]] const std::string &getId() const
     {
-        return skin_id_;
+        return id_;
     }
 
     /**
-     * @brief Gets the skin data.
+     * @brief Gets the skin image.
      *
-     * @return the skin data.
+     * @return the skin image.
      */
-    [[nodiscard]] const Image &getSkinData() const
+    [[nodiscard]] const Image &getImage() const
     {
-        return skin_data_;
+        return image_;
     }
 
     /**
@@ -65,20 +64,20 @@ public:
     }
 
     /**
-     * @brief Gets the cape data.
+     * @brief Gets the cape image.
      *
-     * @return the cape data.
+     * @return the cape image.
      */
-    [[nodiscard]] const Image *getCapeData() const
+    [[nodiscard]] const Image *getCapeImage() const
     {
-        return cape_data_.has_value() ? &cape_data_.value() : nullptr;
+        return cape_image_.has_value() ? &cape_image_.value() : nullptr;
     }
 
 private:
-    std::string skin_id_;
-    Image skin_data_;
+    std::string id_;
+    Image image_;
     std::optional<std::string> cape_id_;
-    std::optional<Image> cape_data_;
+    std::optional<Image> cape_image_;
 };
 
 }  // namespace endstone

@@ -317,13 +317,12 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player)
 {
     py::class_<Skin>(m, "Skin", "Represents a player skin.")
-        .def(py::init<std::string, Image, std::optional<std::string>, std::optional<Image>>(), py::arg("skin_id"),
-             py::arg("skin_data"), py::arg("cape_id") = py::none(), py::arg("cape_data") = py::none())
-        .def_property_readonly("skin_id", &Skin::getSkinId, "Get the Skin ID.")
-        .def_property_readonly("skin_data", &Skin::getCapeData, "Get the Skin data.",
-                               py::return_value_policy::reference)
+        .def(py::init<std::string, Image, std::optional<std::string>, std::optional<Image>>(), py::arg("id"),
+             py::arg("image"), py::arg("cape_id") = py::none(), py::arg("cape_image") = py::none())
+        .def_property_readonly("id", &Skin::getId, "Get the Skin ID.")
+        .def_property_readonly("image", &Skin::getImage, "Get the Skin image.", py::return_value_policy::reference)
         .def_property_readonly("cape_id", &Skin::getCapeId, "Get the Cape ID.")
-        .def_property_readonly("cape_data", &Skin::getCapeData, "Get the Cape data.",
+        .def_property_readonly("cape_image", &Skin::getCapeImage, "Get the Cape image.",
                                py::return_value_policy::reference);
 
     offline_player  //
