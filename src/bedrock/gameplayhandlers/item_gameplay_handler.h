@@ -14,11 +14,13 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/item_gameplay_handler.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/item_event_listener.h"
+#include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/item_events.h"
 
-class ItemEventCoordinator : public EventCoordinator<ItemEventListener> {
+class ItemGameplayHandler : public GameplayHandler {
 public:
-    std::unique_ptr<ItemGameplayHandler> item_gameplay_handler;  // Endstone: private -> public
+    ~ItemGameplayHandler() override = default;
+    virtual HandlerResult handleEvent(const ItemGameplayEvent<void> &) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(MutableItemGameplayEvent<CoordinatorResult> &) = 0;
 };

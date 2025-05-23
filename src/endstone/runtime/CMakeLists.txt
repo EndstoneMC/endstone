@@ -30,6 +30,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/say_command.cpp
         bedrock_hooks/script_actor_gameplay_handler.cpp
         bedrock_hooks/script_block_gameplay_handler.cpp
+        bedrock_hooks/script_item_gameplay_handler.cpp
         bedrock_hooks/script_level_gameplay_handler.cpp
         bedrock_hooks/script_player_gameplay_handler.cpp
         bedrock_hooks/script_scripting_event_handler.cpp
