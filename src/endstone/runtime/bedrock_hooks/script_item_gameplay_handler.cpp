@@ -14,13 +14,34 @@
 
 #include "bedrock/scripting/event_handlers/script_item_gameplay_handler.h"
 
+#include "bedrock/world/item/item.h"
+#include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/player.h"
+#include "endstone/core/server.h"
+#include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
 
 bool handleEvent(ItemCompleteUseEvent &event)
 {
-    // TODO(killcerr): add PlayerItemConsumeEvent here, return false to cancel the event
+    auto &item = event.item_instance;
+    const std::set<std::string> item_names{"minecraft:potion", "minecraft:milk_bucket", "minecraft:medicine"};
+    if (item.getItem()->isFood() || item_names.contains(item.getItem()->getFullItemName())) {
+        const auto item_stack =
+            event.item_instance.isNull()
+                ? nullptr
+                : endstone::core::EndstoneItemStack::fromMinecraft(reinterpret_cast<ItemStack &>(event.item_instance));
+        if (auto *player = const_cast<Player *>(event.actor.tryUnwrap<::Player>()); player) {
+            auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+            endstone::PlayerItemConsumeEvent e{*endstone::core::EndstonePlayer::create(server, *player),
+                                               item_stack.get()};
+            server.getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                return false;
+            }
+        }
+    }
     return true;
 }
 
