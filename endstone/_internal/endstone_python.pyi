@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapMeta', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1752,10 +1752,166 @@ class Logger:
         """
         Get the name of this Logger instance.
         """
+class MapCanvas:
+    """
+    Represents a canvas for drawing to a map. Each canvas is associated with a specific MapRenderer and represents that renderer's layer on the map.
+    """
+    def draw_image(self, x: int, y: int, image: numpy.ndarray[numpy.uint8]) -> None:
+        """
+        Draw an image to the map. The image will be clipped if necessary.
+        """
+    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
+        """
+        Get a pixel from the layers below this canvas.
+        """
+    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...] | None:
+        """
+        Get a pixel from the canvas.
+        
+        If no color is set at the given position for this canvas, then None is returned and the color returned by get_base_pixel_color() is shown on the map
+        """
+    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...] | None) -> None:
+        """
+        Draw a pixel to the canvas.
+        
+        If None is used as color, then the color returned by get_base_pixel_color() is shown on the map.
+        """
+    @property
+    def map_view(self) -> MapView:
+        """
+        Get the map this canvas is attached to.
+        """
 class MapMeta(ItemMeta):
     """
     Represents the metadata for a map item.
     """
+class MapRenderer:
+    """
+    Represents a renderer for a map.
+    """
+    def __init__(self, is_contextual: bool = False) -> None:
+        """
+        Initialize the map renderer base with the given contextual status.
+        """
+    def initialize(self, view: MapView) -> None:
+        """
+        Initialize this MapRenderer for the given map.
+        """
+    def render(self, map: MapView, canvas: MapCanvas, player: Player) -> None:
+        """
+        Render to the given map.
+        """
+class MapView:
+    """
+    Represents a map item.
+    """
+    class Scale:
+        """
+        An enum representing all possible scales a map can be set to.
+        """
+        CLOSE: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSE: 1>
+        CLOSET: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSET: 0>
+        FAR: typing.ClassVar[MapView.Scale]  # value = <Scale.FAR: 3>
+        FARTHEST: typing.ClassVar[MapView.Scale]  # value = <Scale.FARTHEST: 4>
+        NORMAL: typing.ClassVar[MapView.Scale]  # value = <Scale.NORMAL: 2>
+        __members__: typing.ClassVar[dict[str, MapView.Scale]]  # value = {'CLOSET': <Scale.CLOSET: 0>, 'CLOSE': <Scale.CLOSE: 1>, 'NORMAL': <Scale.NORMAL: 2>, 'FAR': <Scale.FAR: 3>, 'FARTHEST': <Scale.FARTHEST: 4>}
+        def __eq__(self, other: typing.Any) -> bool:
+            ...
+        def __getstate__(self) -> int:
+            ...
+        def __hash__(self) -> int:
+            ...
+        def __index__(self) -> int:
+            ...
+        def __init__(self, value: int) -> None:
+            ...
+        def __int__(self) -> int:
+            ...
+        def __ne__(self, other: typing.Any) -> bool:
+            ...
+        def __repr__(self) -> str:
+            ...
+        def __setstate__(self, state: int) -> None:
+            ...
+        def __str__(self) -> str:
+            ...
+        @property
+        def name(self) -> str:
+            ...
+        @property
+        def value(self) -> int:
+            ...
+    def add_renderer(self, renderer: MapRenderer) -> None:
+        """
+        Add a renderer to this map.
+        """
+    def remove_renderer(self, renderer: MapRenderer) -> None:
+        """
+        Remove a renderer from this map.
+        """
+    @property
+    def center_x(self) -> int:
+        """
+        Get or set the center X position of this map.
+        """
+    @center_x.setter
+    def center_x(self, arg1: int) -> None:
+        ...
+    @property
+    def center_z(self) -> int:
+        """
+        Get or set the center Z position of this map.
+        """
+    @center_z.setter
+    def center_z(self, arg1: int) -> None:
+        ...
+    @property
+    def dimension(self) -> Dimension:
+        """
+        Get or set the dimension that this map is associated with.
+        """
+    @dimension.setter
+    def dimension(self, arg1: Dimension) -> None:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Get the ID of this map item for use with MapMeta.
+        """
+    @property
+    def is_unlimited_tracking(self) -> bool:
+        """
+        Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range.
+        """
+    @is_unlimited_tracking.setter
+    def is_unlimited_tracking(self, arg1: bool) -> None:
+        ...
+    @property
+    def is_virtual(self) -> bool:
+        """
+        Check whether this map is virtual.
+        """
+    @property
+    def locked(self) -> bool:
+        """
+        Whether the map is locked or not. A locked map may not be explored further.
+        """
+    @locked.setter
+    def locked(self, arg1: bool) -> None:
+        ...
+    @property
+    def renderers(self) -> list[MapRenderer]:
+        """
+        Get a copied list of MapRenderers currently in effect.
+        """
+    @property
+    def scale(self) -> MapView.Scale:
+        """
+        Get or set the scale of this map.
+        """
+    @scale.setter
+    def scale(self, arg1: MapView.Scale) -> None:
+        ...
 class MessageForm:
     """
     Represents a form with two buttons.

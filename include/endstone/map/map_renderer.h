@@ -26,45 +26,43 @@ class Player;
  */
 class MapRenderer {
 public:
-    virtual ~MapRenderer() = default;
+ /**
+  * @brief Initialize the map renderer base with the given contextual status.
+  *
+  * @param is_contextual Whether the renderer is contextual. See isContextual().
+  */
+ explicit MapRenderer(const bool is_contextual = false) : is_contextual_(is_contextual) {}
 
-    /**
-     * @brief Get whether the renderer is contextual, i.e. has different canvases for different players.
-     *
-     * @return true if contextual, false otherwise.
-     */
-    [[nodiscard]] bool isContextual() const;
+ virtual ~MapRenderer() = default;
 
-    /**
-     * @brief Initialize this MapRenderer for the given map.
-     *
-     * @param map The MapView being initialized.
-     */
-    virtual void initialize(MapView &map);
+ /**
+  * @brief Get whether the renderer is contextual, i.e. has different canvases for different players.
+  *
+  * @return true if contextual, false otherwise.
+  */
+ [[nodiscard]] bool isContextual() const
+ {
+  return is_contextual_;
+ }
 
-    /**
-     * @brief Render to the given map.
-     *
-     * @param map The MapView being rendered to.
-     * @param canvas The canvas to use for rendering.
-     * @param player The player who triggered the rendering.
-     */
-    virtual void render(MapView &map, MapCanvas &canvas, Player &player) = 0;
+ /**
+  * @brief Initialize this MapRenderer for the given map.
+  *
+  * @param map The MapView being initialized.
+  */
+ virtual void initialize(MapView &map) {}
 
-protected:
-    /**
-     * @brief Initialize the map renderer base to be non-contextual.
-     */
-    MapRenderer();
-
-    /**
-     * @brief Initialize the map renderer base with the given contextual status.
-     * @param contextual Whether the renderer is contextual.
-     */
-    explicit MapRenderer(bool contextual);
+ /**
+  * @brief Render to the given map.
+  *
+  * @param map The MapView being rendered to.
+  * @param canvas The canvas to use for rendering.
+  * @param player The player who triggered the rendering.
+  */
+ virtual void render(MapView &map, MapCanvas &canvas, Player &player) = 0;
 
 private:
-    bool is_contextual_;
+ bool is_contextual_;
 };
 
 }  // namespace endstone

@@ -19,7 +19,6 @@
 
 namespace endstone {
 
-class MapRenderer;
 class MapView;
 
 /**

@@ -108,7 +108,7 @@ public:
      *
      * @param dimension The Dimension to associate this map with.
      */
-    virtual void setWorld(Dimension *dimension) = 0;
+    virtual void setDimension(Dimension *dimension) = 0;
 
     /**
      * @brief Get a list of MapRenderers currently in effect.

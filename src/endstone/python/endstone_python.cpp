@@ -41,6 +41,7 @@ void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
 void init_level(py::module_ &);
 void init_logger(py::module_ &);
+void init_map(py::module_ &);
 void init_namespaced_key(py::module_ &, py::class_<NamespacedKey> &namespaced_key);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
@@ -97,6 +98,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_util(m);
     init_ban(m);
     init_level(m);
+    init_map(m);
     init_scoreboard(m);
     init_block(m, block);
     init_actor(m, actor, mob);
