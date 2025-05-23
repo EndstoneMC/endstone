@@ -269,12 +269,12 @@
         </inbodydescription>
         <location file="include/endstone/map/map_view.h" line="104" column="24"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapView_1ab18f6cab3f3a083cd5e652f4de1e3aff" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
-        <definition>virtual void endstone::MapView::setWorld</definition>
+        <definition>virtual void endstone::MapView::setDimension</definition>
         <argsstring>(Dimension *dimension)=0</argsstring>
-        <name>setWorld</name>
-        <qualifiedname>endstone::MapView::setWorld</qualifiedname>
+        <name>setDimension</name>
+        <qualifiedname>endstone::MapView::setDimension</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
           <declname>dimension</declname>
@@ -492,10 +492,10 @@
       <member refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" prot="public" virt="non-virtual"><scope>endstone::MapView</scope><name>Scale</name></member>
       <member refid="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setCenterX</name></member>
       <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setCenterZ</name></member>
+      <member refid="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setDimension</name></member>
       <member refid="classendstone_1_1MapView_1ae265a39be350ec1e782a8035f867bda9" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setLocked</name></member>
       <member refid="classendstone_1_1MapView_1ac539ec1fa7f4055f8a662b6897f25073" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setScale</name></member>
       <member refid="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setUnlimitedTracking</name></member>
-      <member refid="classendstone_1_1MapView_1ab18f6cab3f3a083cd5e652f4de1e3aff" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setWorld</name></member>
       <member refid="classendstone_1_1MapView_1afd118d375700e3fe7699498c00a7ec2e" prot="public" virt="virtual"><scope>endstone::MapView</scope><name>~MapView</name></member>
     </listofallmembers>
   </compounddef>

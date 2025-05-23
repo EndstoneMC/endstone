@@ -33,21 +33,21 @@ class Player;
 
 class MapRenderer {
 public:
-    virtual ~MapRenderer() = default;
+ explicit MapRenderer(const bool is_contextual = false) : is_contextual_(is_contextual) {}
 
-    [[nodiscard]] bool isContextual() const;
+ virtual ~MapRenderer() = default;
 
-    virtual void initialize(MapView &map);
+ [[nodiscard]] bool isContextual() const
+ {
+  return is_contextual_;
+ }
 
-    virtual void render(MapView &map, MapCanvas &canvas, Player &player) = 0;
+ virtual void initialize(MapView &map) {}
 
-protected:
-    MapRenderer();
-
-    explicit MapRenderer(bool contextual);
+ virtual void render(MapView &map, MapCanvas &canvas, Player &player) = 0;
 
 private:
-    bool is_contextual_;
+ bool is_contextual_;
 };
 
 }  // namespace endstone

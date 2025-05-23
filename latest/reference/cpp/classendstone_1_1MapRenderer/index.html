@@ -2122,17 +2122,6 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#protected-functions" class="md-nav__link">
-      <span class="md-ellipsis">
-        Protected Functions
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2143,6 +2132,19 @@ For latest updates join the chat on
     
     <nav class="md-nav" aria-label="Public Functions Documentation">
         <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-maprenderer" class="md-nav__link">
+      <span class="md-ellipsis">
+        function MapRenderer
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
             
                 
                     <li class="md-nav__item">
@@ -2185,52 +2187,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-maprenderer" class="md-nav__link">
+    <a href="#function-maprenderer_1" class="md-nav__link">
       <span class="md-ellipsis">
         function ~MapRenderer
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-        </ul>
-    </nav>
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#protected-functions-documentation" class="md-nav__link">
-      <span class="md-ellipsis">
-        Protected Functions Documentation
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label="Protected Functions Documentation">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-maprenderer-12" class="md-nav__link">
-      <span class="md-ellipsis">
-        function MapRenderer [&frac12;]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-maprenderer-22" class="md-nav__link">
-      <span class="md-ellipsis">
-        function MapRenderer [2/2]
       </span>
     </a>
 
@@ -2292,6 +2251,10 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-maprenderer"><strong>MapRenderer</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> is_contextual=<a href="../classendstone_1_1Vector/"><strong>false</strong></a>) <br><em>Initialize the map renderer base with the given contextual status.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="#function-initialize"><strong>initialize</strong></a> (<a href="../classendstone_1_1MapView/"><strong>MapView</strong></a> &amp; map) <br><em>Initialize this</em> <a href="./"><em><strong>MapRenderer</strong></em></a> <em>for the given map.</em></td>
 </tr>
@@ -2309,31 +2272,24 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="protected-functions">Protected Functions<a class="headerlink" href="#protected-functions" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-maprenderer-12"><strong>MapRenderer</strong></a> () <br><em>Initialize the map renderer base to be non-contextual.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-maprenderer-22"><strong>MapRenderer</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> contextual) <br><em>Initialize the map renderer base with the given contextual status.</em></td>
-</tr>
-</tbody>
-</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-maprenderer">function MapRenderer<a class="headerlink" href="#function-maprenderer" title="Permanent link">&para;</a></h3>
+<p><em>Initialize the map renderer base with the given contextual status.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">MapRenderer</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_contextual</span><span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>is_contextual</code> Whether the renderer is contextual. See <a href="./#function-iscontextual"><strong>isContextual()</strong></a>. </li>
+</ul>
+<hr>
+
 <h3 id="function-initialize">function initialize<a class="headerlink" href="#function-initialize" title="Permanent link">&para;</a></h3>
 <p><em>Initialize this</em> <a href="./"><em><strong>MapRenderer</strong></em></a> <em>for the given map.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">initialize</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">MapView</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">initialize</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">MapView</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2343,7 +2299,7 @@ For latest updates join the chat on
 
 <h3 id="function-iscontextual">function isContextual<a class="headerlink" href="#function-iscontextual" title="Permanent link">&para;</a></h3>
 <p><em>Get whether the renderer is contextual, i.e. has different canvases for different players.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">isContextual</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">isContextual</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if contextual, false otherwise. </p>
@@ -2351,11 +2307,11 @@ For latest updates join the chat on
 
 <h3 id="function-render">function render<a class="headerlink" href="#function-render" title="Permanent link">&para;</a></h3>
 <p><em>Render to the given map.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">render</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">MapView</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">MapCanvas</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">canvas</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">render</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">MapView</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">MapCanvas</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">canvas</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2365,27 +2321,9 @@ For latest updates join the chat on
 </ul>
 <hr>
 
-<h3 id="function-maprenderer">function ~MapRenderer<a class="headerlink" href="#function-maprenderer" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::~</span><span class="n">MapRenderer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<h3 id="function-maprenderer_1">function ~MapRenderer<a class="headerlink" href="#function-maprenderer_1" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::~</span><span class="n">MapRenderer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
-<hr>
-<h2 id="protected-functions-documentation">Protected Functions Documentation<a class="headerlink" href="#protected-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-maprenderer-12">function MapRenderer [&frac12;]<a class="headerlink" href="#function-maprenderer-12" title="Permanent link">&para;</a></h3>
-<p><em>Initialize the map renderer base to be non-contextual.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">MapRenderer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
-</span></code></pre></div></p>
-<hr>
-
-<h3 id="function-maprenderer-22">function MapRenderer [2/2]<a class="headerlink" href="#function-maprenderer-22" title="Permanent link">&para;</a></h3>
-<p><em>Initialize the map renderer base with the given contextual status.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">MapRenderer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">contextual</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>contextual</code> Whether the renderer is contextual. </li>
-</ul>
 <hr>
 
 <hr />

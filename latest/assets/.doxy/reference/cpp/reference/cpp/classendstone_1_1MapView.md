@@ -70,10 +70,10 @@ _Represents a map item._
 | virtual [**bool**](classendstone_1_1Vector.md) | [**removeRenderer**](#function-removerenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) \* renderer) = 0<br>_Remove a renderer from this map._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setCenterX**](#function-setcenterx) ([**int**](classendstone_1_1Vector.md) x) = 0<br>_Set the center X position of this map._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setCenterZ**](#function-setcenterz) ([**int**](classendstone_1_1Vector.md) z) = 0<br>_Set the center Z position of this map._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**setDimension**](#function-setdimension) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension) = 0<br>_Set the dimension that this map is associated with._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setLocked**](#function-setlocked) ([**bool**](classendstone_1_1Vector.md) locked) = 0<br>_Sets whether the map is locked or not. A locked map may not be explored further._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setScale**](#function-setscale) ([**Scale**](classendstone_1_1MapView.md#enum-scale) scale) = 0<br>_Set the scale of this map._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setUnlimitedTracking**](#function-setunlimitedtracking) ([**bool**](classendstone_1_1Vector.md) unlimited) = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setWorld**](#function-setworld) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension) = 0<br>_Set the dimension that this map is associated with._  |
 | virtual  | [**~MapView**](#function-mapview) () = default<br> |
 
 
@@ -473,6 +473,33 @@ virtual void endstone::MapView::setCenterZ (
 
 
 
+### function setDimension 
+
+_Set the dimension that this map is associated with._ 
+```C++
+virtual void endstone::MapView::setDimension (
+    Dimension * dimension
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `dimension` The [**Dimension**](classendstone_1_1Dimension.md) to associate this map with. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setLocked 
 
 _Sets whether the map is locked or not. A locked map may not be explored further._ 
@@ -544,33 +571,6 @@ virtual void endstone::MapView::setUnlimitedTracking (
 
 
 * `unlimited` True to enable unlimited tracking. 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setWorld 
-
-_Set the dimension that this map is associated with._ 
-```C++
-virtual void endstone::MapView::setWorld (
-    Dimension * dimension
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `dimension` The [**Dimension**](classendstone_1_1Dimension.md) to associate this map with. 
 
 
 

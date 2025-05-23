@@ -766,12 +766,11 @@
   </compound>
   <compound refid="classendstone_1_1MapRenderer" kind="class"><name>endstone::MapRenderer</name>
     <member refid="classendstone_1_1MapRenderer_1ac13cebc8a7857f8cd6e3bef11f34bace" kind="variable"><name>is_contextual_</name></member>
+    <member refid="classendstone_1_1MapRenderer_1ac44bbcfebbdd168c39e5653ab03805ba" kind="function"><name>MapRenderer</name></member>
     <member refid="classendstone_1_1MapRenderer_1a8772440cd8520c99a6ab6b3c5f4d1cbc" kind="function"><name>~MapRenderer</name></member>
     <member refid="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" kind="function"><name>isContextual</name></member>
     <member refid="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" kind="function"><name>initialize</name></member>
     <member refid="classendstone_1_1MapRenderer_1a2ffd5d14ab9ff49f698f187b14159778" kind="function"><name>render</name></member>
-    <member refid="classendstone_1_1MapRenderer_1ad9bfc4ca9b4fa117f8731b38c42dafaa" kind="function"><name>MapRenderer</name></member>
-    <member refid="classendstone_1_1MapRenderer_1aab2b8c42df0209c8e2e2cebdeec05f9d" kind="function"><name>MapRenderer</name></member>
   </compound>
   <compound refid="classendstone_1_1MapView" kind="class"><name>endstone::MapView</name>
     <member refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" kind="enum"><name>Scale</name></member>
@@ -790,7 +789,7 @@
     <member refid="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" kind="function"><name>setCenterX</name></member>
     <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" kind="function"><name>setCenterZ</name></member>
     <member refid="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" kind="function"><name>getDimension</name></member>
-    <member refid="classendstone_1_1MapView_1ab18f6cab3f3a083cd5e652f4de1e3aff" kind="function"><name>setWorld</name></member>
+    <member refid="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" kind="function"><name>setDimension</name></member>
     <member refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" kind="function"><name>getRenderers</name></member>
     <member refid="classendstone_1_1MapView_1ad0eaecd9cf1b5fb0a8fb373c7c828aa6" kind="function"><name>addRenderer</name></member>
     <member refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" kind="function"><name>removeRenderer</name></member>

@@ -60,7 +60,7 @@ public:
 
     [[nodiscard]] virtual Dimension *getDimension() const = 0;
 
-    virtual void setWorld(Dimension *dimension) = 0;
+    virtual void setDimension(Dimension *dimension) = 0;
 
     [[nodiscard]] virtual std::vector<MapRenderer *> getRenderers() const = 0;
 
