@@ -25,24 +25,23 @@ namespace {
 
 bool handleEvent(ItemCompleteUseEvent &event)
 {
-    auto &item = event.item_instance;
-    const std::set<std::string> item_names{"minecraft:potion", "minecraft:milk_bucket", "minecraft:medicine"};
-    if (item.getItem()->isFood() || item_names.contains(item.getItem()->getFullItemName())) {
-        const auto item_stack =
-            event.item_instance.isNull()
-                ? nullptr
-                : endstone::core::EndstoneItemStack::fromMinecraft(reinterpret_cast<ItemStack &>(event.item_instance));
-        if (auto *player = const_cast<Player *>(event.actor.tryUnwrap<::Player>()); player) {
-            auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-            endstone::PlayerItemConsumeEvent e{*endstone::core::EndstonePlayer::create(server, *player),
-                                               item_stack.get()};
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                return false;
-            }
-        }
+    // todo: fix cancel
+    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto *player = event.actor.tryUnwrap<::Player>();
+    if (!player) {
+        return true;
     }
-    return true;
+    const auto *item = event.item_instance.getItem();
+    const std::set<std::string> item_names{"minecraft:potion", "minecraft:milk_bucket", "minecraft:medicine"};
+    if (!item->isFood() && !item_names.contains(item->getFullItemName())) {
+        return true;
+    }
+    const auto item_stack =
+        endstone::core::EndstoneItemStack::fromMinecraft(reinterpret_cast<ItemStack &>(event.item_instance));
+
+    endstone::PlayerItemConsumeEvent e{*endstone::core::EndstonePlayer::create(server, *player), item_stack.get()};
+    server.getPluginManager().callEvent(e);
+    return !e.isCancelled();
 }
 
 }  // namespace
@@ -54,9 +53,7 @@ GameplayHandlerResult<CoordinatorResult> ScriptItemGameplayHandler::handleEvent2
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<ItemCompleteUseEvent>>) {
             if (!handleEvent(arg.value())) {
-                if (!handleEvent(arg.value())) {
-                    return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
-                }
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
         }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptItemGameplayHandler::handleEvent2, this, event);
