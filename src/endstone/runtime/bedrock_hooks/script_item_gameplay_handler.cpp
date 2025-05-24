@@ -14,36 +14,9 @@
 
 #include "bedrock/scripting/event_handlers/script_item_gameplay_handler.h"
 
-#include "bedrock/world/item/item.h"
-#include "endstone/core/inventory/item_stack.h"
-#include "endstone/core/player.h"
-#include "endstone/core/server.h"
-#include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-
-bool handleEvent(ItemCompleteUseEvent &event)
-{
-    // todo: fix cancel
-    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    auto *player = event.actor.tryUnwrap<::Player>();
-    if (!player) {
-        return true;
-    }
-    const auto *item = event.item_instance.getItem();
-    const std::set<std::string> item_names{"minecraft:potion", "minecraft:milk_bucket", "minecraft:medicine"};
-    if (!item->isFood() && !item_names.contains(item->getFullItemName())) {
-        return true;
-    }
-    const auto item_stack =
-        endstone::core::EndstoneItemStack::fromMinecraft(reinterpret_cast<ItemStack &>(event.item_instance));
-
-    endstone::PlayerItemConsumeEvent e{*endstone::core::EndstonePlayer::create(server, *player), item_stack.get()};
-    server.getPluginManager().callEvent(e);
-    return !e.isCancelled();
-}
-
 }  // namespace
 
 GameplayHandlerResult<CoordinatorResult> ScriptItemGameplayHandler::handleEvent2(
@@ -51,11 +24,6 @@ GameplayHandlerResult<CoordinatorResult> ScriptItemGameplayHandler::handleEvent2
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<ItemCompleteUseEvent>>) {
-            if (!handleEvent(arg.value())) {
-                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
-            }
-        }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptItemGameplayHandler::handleEvent2, this, event);
     };
     return event.visit(visitor);

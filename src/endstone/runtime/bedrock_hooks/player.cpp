@@ -18,10 +18,13 @@
 
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/network/packet/available_commands_packet.h"
+#include "bedrock/world/item/item.h"
+#include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_teleport_event.h"
 #include "endstone/runtime/hook.h"
-
 void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
     Vec3 position = pos;
@@ -39,3 +42,23 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
                                 keep_velocity);
 }
 
+void Player::completeUsingItem()
+{
+    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto *item = item_in_use_.item.getItem();
+    const std::set<std::string> item_names{"minecraft:potion", "minecraft:milk_bucket", "minecraft:medicine"};
+    if (!item->isFood() && !item_names.contains(item->getFullItemName())) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
+        return;
+    }
+    const auto item_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_in_use_.item);
+    endstone::PlayerItemConsumeEvent e{*endstone::core::EndstonePlayer::create(server, *this), item_stack.get()};
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        stopUsingItem();
+    }
+    else {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
+        return;
+    }
+}

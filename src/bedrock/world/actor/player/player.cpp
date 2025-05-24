@@ -17,6 +17,7 @@
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/entity/components/player_component.h"
+#include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/symbol.h"
@@ -138,6 +139,18 @@ int Player::getPlayerLevel() const
 float Player::getLevelProgress() const
 {
     return getAttribute("minecraft:player.experience").getCurrentValue();
+}
+
+void Player::stopUsingItem()
+{
+    item_in_use_.duration = 0;
+    item_in_use_.item.setNull(std::nullopt);
+    item_in_use_.slot.slot = -1;
+    item_in_use_.slot.container_id = CONTAINER_ID_NONE;
+    item_in_use_.duration = 0;
+    if (getStatusFlag(ActorFlags::USINGITEM)) {
+        setStatusFlag(ActorFlags::USINGITEM, false);
+    }
 }
 
 int Player::getXpNeededForLevelRange(int start, int end)
