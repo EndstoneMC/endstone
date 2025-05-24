@@ -17,6 +17,7 @@
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/entity/components/player_component.h"
+#include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/symbol.h"

@@ -23,9 +23,7 @@ struct PlayerItemInUse {
 
     int duration;                              // +0
     bool should_send_interaction_game_events;  // +4
-
-private:
-    ItemStack item_;                // +8
-    PlayerInventorySlotData slot_;  // +160
+    ItemStack item;                            // +8
+    PlayerInventorySlotData slot;              // +160
 };
 static_assert(sizeof(PlayerItemInUse) == 168);

@@ -17,13 +17,6 @@
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-
-bool handleEvent(ItemCompleteUseEvent &event)
-{
-    // TODO(killcerr): add PlayerItemConsumeEvent here, return false to cancel the event
-    return true;
-}
-
 }  // namespace
 
 GameplayHandlerResult<CoordinatorResult> ScriptItemGameplayHandler::handleEvent2(
@@ -31,13 +24,6 @@ GameplayHandlerResult<CoordinatorResult> ScriptItemGameplayHandler::handleEvent2
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<ItemCompleteUseEvent>>) {
-            if (!handleEvent(arg.value())) {
-                if (!handleEvent(arg.value())) {
-                    return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
-                }
-            }
-        }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptItemGameplayHandler::handleEvent2, this, event);
     };
     return event.visit(visitor);
