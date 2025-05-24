@@ -141,18 +141,6 @@ float Player::getLevelProgress() const
     return getAttribute("minecraft:player.experience").getCurrentValue();
 }
 
-void Player::stopUsingItem()
-{
-    item_in_use_.duration = 0;
-    item_in_use_.item.setNull(std::nullopt);
-    item_in_use_.slot.slot = -1;
-    item_in_use_.slot.container_id = CONTAINER_ID_NONE;
-    item_in_use_.duration = 0;
-    if (getStatusFlag(ActorFlags::USINGITEM)) {
-        setStatusFlag(ActorFlags::USINGITEM, false);
-    }
-}
-
 int Player::getXpNeededForLevelRange(int start, int end)
 {
     auto xp = 0;

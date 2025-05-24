@@ -157,8 +157,6 @@ public:
     [[nodiscard]] int getPlayerLevel() const;
     [[nodiscard]] float getLevelProgress() const;
 
-    void stopUsingItem();
-
     static int getXpNeededForLevelRange(int start, int end);
 
     std::vector<std::uint16_t> ocean_biomes;  // +1120
