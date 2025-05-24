@@ -21,7 +21,7 @@
 namespace endstone {
 class PlayerItemConsumeEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerItemConsumeEvent(Player &player, ItemStack *item) : Cancellable<PlayerEvent>(player), item_(item) {}
+    explicit PlayerItemConsumeEvent(Player &player, ItemStack &item) : Cancellable<PlayerEvent>(player), item_(item) {}
     ~PlayerItemConsumeEvent() override = default;
     inline static const std::string NAME = "PlayerItemConsumeEvent";
     [[nodiscard]] std::string getEventName() const override
@@ -33,12 +33,12 @@ public:
      *
      * @return ItemStack the item used
      */
-    [[nodiscard]] ItemStack *getItem() const
+    [[nodiscard]] ItemStack &getItem() const
     {
         return item_;
     }
 
 private:
-    ItemStack *item_;
+    ItemStack &item_;
 };
 }  // namespace endstone

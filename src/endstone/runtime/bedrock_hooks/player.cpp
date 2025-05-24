@@ -52,13 +52,18 @@ void Player::completeUsingItem()
         return;
     }
     const auto item_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_in_use_.item);
-    endstone::PlayerItemConsumeEvent e{*endstone::core::EndstonePlayer::create(server, *this), item_stack.get()};
+    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), *item_stack};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
-        stopUsingItem();
-    }
-    else {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
+        item_in_use_.duration = 0;
+        item_in_use_.item.setNull(std::nullopt);
+        item_in_use_.slot.slot = -1;
+        item_in_use_.slot.container_id = CONTAINER_ID_NONE;
+        item_in_use_.duration = 0;
+        if (getStatusFlag(ActorFlags::USINGITEM)) {
+            setStatusFlag(ActorFlags::USINGITEM, false);
+        }
         return;
     }
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
 }
