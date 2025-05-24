@@ -56,6 +56,7 @@ version = "1.21.83"
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 12433280
 # Player
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 39187712
+"?completeUsingItem@Player@@QEAAXXZ" = 39206496
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 56306480
 # RakPeerHelper
