@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <endstone/inventory/item_type.h>
+
 #include "bedrock/nbt/compound_tag.h"
 #include "endstone/inventory/meta/item_meta.h"
 
@@ -48,7 +50,7 @@ public:
     [[nodiscard]] bool isUnbreakable() const override;
     void setUnbreakable(bool unbreakable) override;
 
-    [[nodiscard]] virtual bool applicableTo(std::string_view type) const;
+    [[nodiscard]] virtual bool applicableTo(const ItemType &type) const;
     [[nodiscard]] virtual bool equalsCommon(const EndstoneItemMeta &other) const;
     [[nodiscard]] virtual bool notUncommon() const;
     virtual void applyToItem(::CompoundTag &tag) const;

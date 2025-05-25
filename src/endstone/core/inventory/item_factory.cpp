@@ -21,12 +21,12 @@ EndstoneItemFactory &EndstoneItemFactory::instance()
     return factory;
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(std::string_view type) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemType &type) const
 {
     return getItemMeta(type, nullptr);
 }
 
-bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, std::string_view type) const
+bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemType &type) const
 {
     if (meta == nullptr) {
         return false;
@@ -58,14 +58,14 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
     return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, std::string_view type) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, const ItemType &type) const
 {
     return getItemMeta(type, static_cast<const EndstoneItemMeta *>(meta));
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(std::string_view type, const EndstoneItemMeta *meta) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemType &type, const EndstoneItemMeta *meta) const
 {
-    if (type == "minecraft:air") {
+    if (type.getId() == "minecraft:air") {
         return nullptr;
     }
     // TODO(item): add support for map meta

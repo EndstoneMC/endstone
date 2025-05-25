@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include "endstone/detail/endstone.h"
 #include "endstone/namespaced_key.h"
+#include "endstone/registry.h"
 
 namespace endstone {
 /**
@@ -57,5 +59,14 @@ public:
      * @return Maximum durability for this item type
      */
     [[nodiscard]] virtual int getMaxDurability() const = 0;
+
+    static const ItemType *getItemType(std::string_view name)
+    {
+        auto key = NamespacedKey::fromString(name);
+        if (!key) {
+            return nullptr;
+        }
+        return Endstone::getServer().getItemRegistry().get(key.value());
+    }
 };
 }  // namespace endstone

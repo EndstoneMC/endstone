@@ -68,8 +68,30 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def("as_meta_for", &ItemFactory::asMetaFor, py::arg("meta"), py::arg("type"),
              "Returns an appropriate item meta for the specified item type.");
 
-    item_stack.def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
-        .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
+    item_stack
+        .def(py::init([](std::variant<const ItemType *, std::string> type, int amount) {
+                 auto result =
+                     std::visit(overloaded{
+                                    [amount](const ItemType *arg) { return ItemStack::create(*arg, amount); },
+                                    [amount](const std::string &arg) { return ItemStack::create(arg, amount); },
+                                },
+                                type);
+                 if (!result) {
+                     throw std::runtime_error(result.error());
+                 }
+                 return result.value();
+             }),
+             py::arg("type"), py::arg("amount") = 1)
+        .def_property(
+            "type", &ItemStack::getType,
+            [](ItemStack &self, std::variant<const ItemType *, std::string> type) {
+                std::visit(overloaded{
+                               [&self](const ItemType *arg) { self.setType(*arg); },
+                               [&self](const std::string &arg) { self.setType(arg); },
+                           },
+                           type);
+            },
+            "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
                       "Gets or sets the amount of items in this stack.")
         .def_property_readonly("item_meta", &ItemStack::getItemMeta, "Gets a copy of the ItemMeta of this ItemStack.")

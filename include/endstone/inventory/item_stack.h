@@ -70,11 +70,8 @@ public:
      */
     virtual Result<void> setType(const std::string &type)
     {
-        auto key = NamespacedKey::fromString(type);
-        ENDSTONE_CHECK(key.has_value(), key.error());
-
-        const auto *item_type = Endstone::getServer().getItemRegistry().get(key.value());
-        ENDSTONE_CHECKF(item_type != nullptr, "Item type {} not found", key.value());
+        const auto *item_type = ItemType::getItemType(type);
+        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
         type_ = *item_type;
         return {};
     }
@@ -154,11 +151,8 @@ public:
 
     static Result<ItemStack> create(const std::string &type, const int amount = 1)
     {
-        auto key = NamespacedKey::fromString(type);
-        ENDSTONE_CHECK(key.has_value(), key.error());
-
-        const auto *item_type = Endstone::getServer().getItemRegistry().get(key.value());
-        ENDSTONE_CHECKF(item_type != nullptr, "Item type {} not found", key.value());
+        const auto *item_type = ItemType::getItemType(type);
+        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
         return ItemStack(*item_type, amount);
     }
 
@@ -193,6 +187,6 @@ struct fmt::formatter<endstone::ItemStack> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
+        return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType().getId(), val.getAmount());
     }
 };  // namespace fmt
