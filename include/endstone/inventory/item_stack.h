@@ -18,7 +18,9 @@
 
 #include "endstone/detail/endstone.h"
 #include "endstone/inventory/item_factory.h"
+#include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
+#include "endstone/registry.h"
 
 namespace endstone {
 
@@ -31,14 +33,11 @@ class EndstoneItemStack;
  */
 class ItemStack {
 protected:
-    ItemStack() = default;
+    explicit ItemStack(const ItemType &type, const int amount) : type_(type), amount_(amount) {}
 
 public:
-    explicit ItemStack(std::string type, const int amount = 1) : type_(std::move(type)), amount_(amount) {}
-    ItemStack(const ItemStack &stack)
+    ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount())
     {
-        type_ = stack.getType();
-        amount_ = stack.getAmount();
         if (stack.hasItemMeta()) {
             ItemStack::setItemMeta(stack.getItemMeta().get());
         }
@@ -59,7 +58,7 @@ public:
      *
      * @return Type of the items in this stack
      */
-    [[nodiscard]] virtual std::string getType() const
+    [[nodiscard]] virtual const ItemType &getType() const
     {
         return type_;
     }
@@ -69,10 +68,26 @@ public:
      *
      * @param type New type to set the items in this stack to
      */
-    virtual void setType(std::string type)
+    virtual Result<void> setType(const std::string &type)
+    {
+        auto key = NamespacedKey::fromString(type);
+        ENDSTONE_CHECK(key.has_value(), key.error());
+
+        const auto *item_type = Endstone::getServer().getItemRegistry().get(key.value());
+        ENDSTONE_CHECKF(item_type != nullptr, "Item type {} not found", key.value());
+        type_ = *item_type;
+        return {};
+    }
+
+    /**
+     * @brief Sets the type of this item
+     *
+     * @param type New type to set the items in this stack to
+     */
+    virtual void setType(const ItemType &type)
     {
         // TODO(item): clear item components when the type is changed
-        type_ = std::move(type);
+        type_ = type;
     }
 
     /**
@@ -90,7 +105,7 @@ public:
      *
      * @param amount New amount of items in this stack
      */
-    virtual void setAmount(int amount)
+    virtual void setAmount(const int amount)
     {
         amount_ = amount;
     }
@@ -131,8 +146,24 @@ public:
         return std::make_unique<ItemStack>(*this);
     }
 
+    static Result<ItemStack> create(const ItemType &type, const int amount = 1)
+    {
+        ENDSTONE_CHECKF(amount >= 1 && amount <= 255, "Item stack amount must be between 1 to 255, got {}.", amount);
+        return ItemStack(type, amount);
+    }
+
+    static Result<ItemStack> create(const std::string &type, const int amount = 1)
+    {
+        auto key = NamespacedKey::fromString(type);
+        ENDSTONE_CHECK(key.has_value(), key.error());
+
+        const auto *item_type = Endstone::getServer().getItemRegistry().get(key.value());
+        ENDSTONE_CHECKF(item_type != nullptr, "Item type {} not found", key.value());
+        return ItemStack(*item_type, amount);
+    }
+
 private:
-    bool setItemMeta0(ItemMeta *meta, const std::string_view type)
+    bool setItemMeta0(const ItemMeta *meta, const ItemType &type)
     {
         if (!meta) {
             meta_ = nullptr;
@@ -148,7 +179,7 @@ private:
         return true;
     }
 
-    std::string type_ = "minecraft:air";
+    std::reference_wrapper<const ItemType> type_;
     int amount_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;
 };
