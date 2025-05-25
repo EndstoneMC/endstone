@@ -15,15 +15,26 @@
 #pragma once
 
 #include "bedrock/world/actor/player/player_inventory_slot_data.h"
+#include "bedrock/world/item/item_stack.h"
 
 struct PlayerItemInUse {
     static constexpr int ITEM_USE_INTERVAL_DURATION = 4;
     static constexpr int ITEM_USE_INTERVAL_COUNT = 6;
     static constexpr int MAX_ITEM_USE_DURATION = 25;
+    [[nodiscard]] const ItemStack &getItemInUse() const;
+    [[nodiscard]] int getDuration(const EntityContext &) const;
+    [[nodiscard]] int getUsedDuration(const EntityContext &) const;
+    [[nodiscard]] int getMoveToMouthDuration() const;
+    [[nodiscard]] bool isInSlot(PlayerInventorySlotData) const;
+    void setItemInUse(const ItemStack &, EntityContext &, int, PlayerInventorySlotData);
+    void clearItemInUse(EntityContext &entity);
+    void releaseUsing(Player &);
+    bool shouldDisplayUseParticles(const EntityContext &);
+    int duration;
+    bool should_send_interaction_game_events;
 
-    int duration;                              // +0
-    bool should_send_interaction_game_events;  // +4
-    ItemStack item;                            // +8
-    PlayerInventorySlotData slot;              // +160
+private:
+    ItemStack item_;
+    PlayerInventorySlotData slot_;
 };
 static_assert(sizeof(PlayerItemInUse) == 168);
