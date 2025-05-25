@@ -15,10 +15,35 @@
 #include "bedrock/world/actor/player/player_item_in_use.h"
 
 #include "bedrock/entity/components/item_in_use_component.h"
+#include "bedrock/world/item/item.h"
+#include "bedrock/world/item/vanilla_item_tags.h"
 
 const ItemStack &PlayerItemInUse::getItemInUse() const
 {
     return item_;
+}
+
+int PlayerItemInUse::getDuration(const EntityContext &entity) const
+{
+    const auto *item_in_use = entity.tryGetComponent<ItemInUseComponent>();
+    if (!item_in_use) {
+        return 0;
+    }
+    return item_in_use->duration;
+}
+
+void PlayerItemInUse::setItemInUse(const ItemStack &new_item, EntityContext &owner, int duration,
+                                   PlayerInventorySlotData slot)
+{
+    item_ = new_item;
+    should_send_interaction_game_events = item_.getItem()->shouldSendInteractionGameEvents();
+    slot_ = slot;
+    auto &item_in_use = owner.getOrAddComponent<ItemInUseComponent>();
+    item_in_use.item = item_.getItemPtr();
+    item_in_use.duration = duration;
+    if (item_.hasTag(VanillaItemTags::Trident)) {
+        owner.getOrAddComponent<ItemInUseTicksDuringMovementComponent>();
+    }
 }
 
 void PlayerItemInUse::clearItemInUse(EntityContext &entity)

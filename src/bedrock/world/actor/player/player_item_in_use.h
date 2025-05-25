@@ -22,15 +22,14 @@ struct PlayerItemInUse {
     static constexpr int ITEM_USE_INTERVAL_COUNT = 6;
     static constexpr int MAX_ITEM_USE_DURATION = 25;
     [[nodiscard]] const ItemStack &getItemInUse() const;
-    [[nodiscard]] int getDuration(const EntityContext &) const;
-    [[nodiscard]] int getUsedDuration(const EntityContext &) const;
+    [[nodiscard]] int getDuration(const EntityContext &entity) const;
+    [[nodiscard]] int getUsedDuration(const EntityContext &entity) const;
     [[nodiscard]] int getMoveToMouthDuration() const;
     [[nodiscard]] bool isInSlot(PlayerInventorySlotData) const;
-    void setItemInUse(const ItemStack &, EntityContext &, int, PlayerInventorySlotData);
+    void setItemInUse(const ItemStack &new_item, EntityContext &owner, int duration, PlayerInventorySlotData slot);
     void clearItemInUse(EntityContext &entity);
     void releaseUsing(Player &);
     bool shouldDisplayUseParticles(const EntityContext &);
-    int duration;
     bool should_send_interaction_game_events;
 
 private:
