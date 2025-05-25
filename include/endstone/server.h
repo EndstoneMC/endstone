@@ -38,6 +38,7 @@ namespace endstone {
 
 class ConsoleCommandSender;
 class Enchantment;
+class ItemType;
 class Scheduler;
 class PluginCommand;
 class PluginManager;
@@ -375,6 +376,13 @@ public:
      * @return the enchantment registry.
      */
     [[nodiscard]] virtual Registry<Enchantment> &getEnchantmentRegistry() const = 0;
+
+    /**
+      * Returns the registry for all the item types.
+
+      * @return the item registry.
+      */
+    [[nodiscard]] virtual Registry<ItemType> &getItemRegistry() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.
