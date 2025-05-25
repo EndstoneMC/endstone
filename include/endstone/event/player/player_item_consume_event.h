@@ -20,12 +20,21 @@
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
+/**
+ * @brief Called when a player is finishing consuming an item (food, potion, milk bucket).
+ *
+ * @note If the ItemStack is modified the server will use the effects of the new item and not remove the original one
+ * from the player's inventory.
+ *
+ * @note If the event is cancelled the effect will not be applied and the item will not be removed from the player's
+ * inventory.
+ */
 class PlayerItemConsumeEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerItemConsumeEvent)
 
     explicit PlayerItemConsumeEvent(Player &player, const ItemStack &item, EquipmentSlot hand)
-        : Cancellable(player), item_(item.clone()), hand_(hand)
+        : Cancellable(player), item_(&item), hand_(hand)
     {
     }
 
@@ -38,6 +47,9 @@ public:
      */
     [[nodiscard]] std::unique_ptr<ItemStack> getItem() const
     {
+        if (!item_) {
+            return std::make_unique<ItemStack>("minecraft:air");
+        }
         return item_->clone();
     }
 
@@ -46,14 +58,9 @@ public:
      *
      * @param item the item being consumed
      */
-    void setItem(std::unique_ptr<ItemStack> item)
+    void setItem(const ItemStack *item)
     {
-        if (item == nullptr) {
-            item_ = std::make_unique<ItemStack>("minecraft:air");
-        }
-        else {
-            item_ = std::move(item);
-        }
+        item_ = item;
     }
 
     /**
@@ -67,7 +74,7 @@ public:
     }
 
 private:
-    std::unique_ptr<ItemStack> item_;
+    const ItemStack *item_;
     EquipmentSlot hand_;
 };
 }  // namespace endstone
