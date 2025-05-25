@@ -34,7 +34,7 @@ public:
     ENDSTONE_EVENT(PlayerItemConsumeEvent)
 
     explicit PlayerItemConsumeEvent(Player &player, const ItemStack &item, EquipmentSlot hand)
-        : Cancellable(player), item_(&item), hand_(hand)
+        : Cancellable(player), item_(item), hand_(hand)
     {
     }
 
@@ -47,20 +47,7 @@ public:
      */
     [[nodiscard]] std::unique_ptr<ItemStack> getItem() const
     {
-        if (!item_) {
-            return std::make_unique<ItemStack>("minecraft:air");
-        }
-        return item_->clone();
-    }
-
-    /**
-     * @brief Set the item being consumed
-     *
-     * @param item the item being consumed
-     */
-    void setItem(const ItemStack *item)
-    {
-        item_ = item;
+        return item_.clone();
     }
 
     /**
@@ -74,7 +61,7 @@ public:
     }
 
 private:
-    const ItemStack *item_;
+    const ItemStack &item_;
     EquipmentSlot hand_;
 };
 }  // namespace endstone

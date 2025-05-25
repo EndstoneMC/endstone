@@ -54,8 +54,5 @@ void Player::completeUsingItem()
         return;
     }
 
-    const auto item_stack = endstone::core::EndstoneItemStack::toMinecraft(e.getItem().get());
-    item_in_use_.setItemInUse(item_stack, getEntity(), item_in_use_.getDuration(getEntity()),
-                              inventory_->getSelectedSlot());
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
 }

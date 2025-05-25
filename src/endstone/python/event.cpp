@@ -178,10 +178,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor, py::return_value_policy::reference,
                                "Gets the actor that was right-clicked by the player.");
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(
-       m, "PlayerItemConsumeEvent", "Called when a player is finishing consuming an item (food, potion, milk bucket).")
-       .def_property("item", &PlayerItemConsumeEvent::getItem, &PlayerItemConsumeEvent::setItem,
-                     "Gets or sets the item that is being consumed.")
-       .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "Get the hand used to consume the item.");
+        m, "PlayerItemConsumeEvent", "Called when a player is finishing consuming an item (food, potion, milk bucket).")
+        .def_property_readonly("item", &PlayerItemConsumeEvent::getItem, py::return_value_policy::reference,
+                               "Gets or sets the item that is being consumed.")
+        .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "Get the hand used to consume the item.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "Gets or sets the join message to send to all online players.");

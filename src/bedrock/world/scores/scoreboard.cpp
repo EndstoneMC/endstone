@@ -94,18 +94,17 @@ const ScoreboardId &Scoreboard::getScoreboardId(const Actor &actor) const
 
 const ScoreboardId &Scoreboard::getScoreboardId(const std::string &fake) const
 {
-    auto &id = identity_dictionary_.getScoreboardId(fake);
+    const auto &id = identity_dictionary_.getScoreboardId(fake);
     if (id.isValid()) {
         return id;
     }
-    try {
-        ActorUniqueID actor_unique_id;
-        actor_unique_id.raw_id = std::stoll(fake);
+
+    ActorUniqueID actor_unique_id;
+    auto [ptr, ec] = std::from_chars(fake.data(), fake.data() + fake.size(), actor_unique_id.raw_id);
+    if (ec == std::errc()) {
         return identity_dictionary_.getScoreboardId(actor_unique_id);
     }
-    catch (std::exception &) {
-        return id;
-    }
+    return id;
 }
 
 bool Scoreboard::hasIdentityFor(const ScoreboardId &id) const
