@@ -106,6 +106,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "form/message_form.h"
 #include "form/modal_form.h"
 #include "game_mode.h"
+#include "inventory/equipment_slot.h"
 #include "inventory/inventory.h"
 #include "inventory/item_factory.h"
 #include "inventory/item_stack.h"
