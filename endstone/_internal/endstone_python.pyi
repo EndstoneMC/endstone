@@ -2935,9 +2935,6 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
         """
         Gets or sets the item that is being consumed.
         """
-    @item.setter
-    def item(self, arg1: ItemStack) -> None:
-        ...
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server
