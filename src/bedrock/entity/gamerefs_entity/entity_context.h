@@ -55,7 +55,7 @@ public:
     }
 
     template <typename Component, typename... Args>
-    Component &getOrAddComponent(Args &&...args) const
+    decltype(auto) getOrAddComponent(Args &&...args)
     {
         return entt_registry_.get_or_emplace<Component>(entity_, std::forward<Args>(args)...);
     }

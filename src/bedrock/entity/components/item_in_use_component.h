@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include "bedrock/shared_ptr.h"
+#include "bedrock/world/item/item.h"
+
 struct ItemInUseComponent {
     WeakPtr<const Item> item;
     int duration;
