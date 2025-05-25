@@ -42,16 +42,20 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
 void Player::completeUsingItem()
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    const auto item_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_in_use_.getItemInUse());
+    const auto item = endstone::core::EndstoneItemStack::fromMinecraft(item_in_use_.getItemInUse());
     const auto hand = inventory_->getSelectedSlot().container_id == CONTAINER_ID_INVENTORY
                         ? endstone::EquipmentSlot::Hand
                         : endstone::EquipmentSlot::OffHand;
-    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), *item_stack, hand};
+    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), *item, hand};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         setStatusFlag(ActorFlags::USINGITEM, false);
         item_in_use_.clearItemInUse(getEntity());
         return;
     }
+
+    const auto item_stack = endstone::core::EndstoneItemStack::toMinecraft(e.getItem().get());
+    item_in_use_.setItemInUse(item_stack, getEntity(), item_in_use_.getDuration(getEntity()),
+                              inventory_->getSelectedSlot());
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
 }

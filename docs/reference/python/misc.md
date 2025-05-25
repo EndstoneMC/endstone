@@ -1,6 +1,7 @@
 ::: endstone.ColorFormat
+::: endstone.EnchantmentRegistry
 ::: endstone.GameMode
 ::: endstone.Logger
-::: endstone.Skin
+::: endstone.NamespacedKey
 
 ::: endstone.util

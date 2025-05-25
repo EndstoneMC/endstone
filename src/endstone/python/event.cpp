@@ -63,6 +63,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
              "Cancel this event. A cancelled event will not be executed in the server, but will still pass to other "
              "plugins.");
 
+    // Actor events
     py::class_<ActorEvent<Actor>, Event>(m, "ActorEvent", "Represents an Actor-related event.")
         .def_property_readonly("actor", &ActorEvent<Actor>::getActor, py::return_value_policy::reference,
                                "Returns the Actor involved in this event");
@@ -119,6 +120,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "Gets or sets the location that this actor moved to.");
 
+    // Block events
     py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an Block-related event")
         .def_property_readonly("block", &BlockEvent::getBlock, py::return_value_policy::reference,
                                "Gets the block involved in this event.");
@@ -138,6 +140,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,
                                "Gets the block that this block was placed against");
 
+    // Player events
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the player involved in this event.");
@@ -174,6 +177,11 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor, py::return_value_policy::reference,
                                "Gets the actor that was right-clicked by the player.");
+    py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(
+       m, "PlayerItemConsumeEvent", "Called when a player is finishing consuming an item (food, potion, milk bucket).")
+       .def_property("item", &PlayerItemConsumeEvent::getItem, &PlayerItemConsumeEvent::setItem,
+                     "Gets or sets the item that is being consumed.")
+       .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "Get the hand used to consume the item.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "Gets or sets the join message to send to all online players.");
@@ -196,6 +204,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("to_location", &PlayerTeleportEvent::getTo, &PlayerTeleportEvent::setTo,
                       "Gets or sets the location that this player moved to.");
 
+    // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a server-related event");
     py::class_<BroadcastMessageEvent, ServerEvent, ICancellable>(
         m, "BroadcastMessageEvent", "Event triggered for server broadcast messages such as from Server.broadcast")
@@ -204,7 +213,6 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("recipients", &BroadcastMessageEvent::getRecipients,
                                py::return_value_policy::reference_internal,
                                "Gets a set of recipients that this broadcast message will be displayed to.");
-
     py::class_<PacketReceiveEvent, ServerEvent, ICancellable>(
         m, "PacketReceiveEvent", "Called when the server receives a packet from a connected client.")
         .def_property_readonly("packet_id", &PacketReceiveEvent::getPacketId, "Gets the ID of the packet.")
