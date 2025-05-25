@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" kind="struct" language="C++" prot="private">
+  <compounddef id="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" kind="struct" language="C++" prot="public">
     <compoundname>fmt::formatter&lt; endstone::ItemStack &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
     <templateparamlist>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_stack.h" line="146" column="5" bodyfile="include/endstone/inventory/item_stack.h" bodystart="146" bodyend="-1"/>
+        <location file="include/endstone/inventory/item_stack.h" line="160" column="5" bodyfile="include/endstone/inventory/item_stack.h" bodystart="160" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_stack.h" line="149" column="10" bodyfile="include/endstone/inventory/item_stack.h" bodystart="149" bodyend="152"/>
+        <location file="include/endstone/inventory/item_stack.h" line="163" column="10" bodyfile="include/endstone/inventory/item_stack.h" bodystart="163" bodyend="166"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -57,6 +57,7 @@
     <inheritancegraph>
       <node id="1">
         <label>fmt::formatter&lt; endstone::ItemStack &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
@@ -67,6 +68,7 @@
     <collaborationgraph>
       <node id="1">
         <label>fmt::formatter&lt; endstone::ItemStack &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
@@ -74,7 +76,7 @@
         <label>formatter&lt; string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/item_stack.h" line="145" column="1" bodyfile="include/endstone/inventory/item_stack.h" bodystart="145" bodyend="153"/>
+    <location file="include/endstone/inventory/item_stack.h" line="159" column="1" bodyfile="include/endstone/inventory/item_stack.h" bodystart="159" bodyend="167"/>
     <listofallmembers>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1a6116802aa2eb42ae63921aa2f140c160" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::ItemStack &gt;</scope><name>format</name></member>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1ad78d75e07f93f63fc0413cee2954d7f0" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::ItemStack &gt;</scope><name>Type</name></member>

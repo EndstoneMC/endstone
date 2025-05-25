@@ -86,7 +86,30 @@
 
 
 
+## Macros
 
+| Type | Name |
+| ---: | :--- |
+| define  | [**ENDSTONE\_EVENT**](event_8h.md#define-endstone_event) (type) `/* multi line expression */`<br> |
+
+## Macro Definition Documentation
+
+
+
+
+
+### define ENDSTONE\_EVENT 
+
+```C++
+#define ENDSTONE_EVENT (
+    type
+) `/* multi line expression */`
+```
+
+
+
+
+<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `include/endstone/event/event.h`

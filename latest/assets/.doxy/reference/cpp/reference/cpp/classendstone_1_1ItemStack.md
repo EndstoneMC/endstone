@@ -52,8 +52,9 @@ _Represents a stack of items._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ItemStack**](#function-itemstack-12) () = default<br> |
-|   | [**ItemStack**](#function-itemstack-22) (std::string type, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount=1) <br> |
+|   | [**ItemStack**](#function-itemstack-23) (std::string type, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount=1) <br> |
+|   | [**ItemStack**](#function-itemstack-33) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & stack) <br> |
+| virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**clone**](#function-clone) () const<br> |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual std::string | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
@@ -90,6 +91,7 @@ _Represents a stack of items._
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ItemStack**](#function-itemstack-13) () = default<br> |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isEndstoneItemStack**](#function-isendstoneitemstack) () const<br> |
 
 
@@ -100,10 +102,13 @@ _Represents a stack of items._
 
 
 
-### function ItemStack [1/2]
+### function ItemStack [2/3]
 
 ```C++
-endstone::ItemStack::ItemStack () = default
+inline explicit endstone::ItemStack::ItemStack (
+    std::string type,
+    const  int amount=1
+) 
 ```
 
 
@@ -113,13 +118,25 @@ endstone::ItemStack::ItemStack () = default
 
 
 
-### function ItemStack [2/2]
+### function ItemStack [3/3]
 
 ```C++
-inline explicit endstone::ItemStack::ItemStack (
-    std::string type,
-    const  int amount=1
+inline endstone::ItemStack::ItemStack (
+    const  ItemStack & stack
 ) 
+```
+
+
+
+
+<hr>
+
+
+
+### function clone 
+
+```C++
+inline virtual std::unique_ptr< ItemStack > endstone::ItemStack::clone () const
 ```
 
 
@@ -329,6 +346,19 @@ virtual endstone::ItemStack::~ItemStack () = default
 <hr>
 ## Protected Functions Documentation
 
+
+
+
+### function ItemStack [1/3]
+
+```C++
+endstone::ItemStack::ItemStack () = default
+```
+
+
+
+
+<hr>
 
 
 

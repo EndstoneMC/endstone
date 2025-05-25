@@ -6,7 +6,7 @@
 
 
 
-[**ClassList**](annotated.md) **>** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)
+[**ClassList**](annotated.md) **>** [**fmt**](namespacefmt.md) **>** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)
 
 
 
@@ -112,7 +112,7 @@ using fmt::formatter< endstone::ItemStack >::Type =  endstone::ItemStack;
 
 ```C++
 template<typename FormatContext>
-inline auto formatter< endstone::ItemStack >::format (
+inline auto fmt::formatter< endstone::ItemStack >::format (
     const Type & val,
     FormatContext & ctx
 ) const

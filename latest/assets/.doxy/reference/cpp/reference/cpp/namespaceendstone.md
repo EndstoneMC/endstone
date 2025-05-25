@@ -119,6 +119,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) <br>_Represents an event that is called when a player right-clicks an actor._  |
 | class | [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) <br>_Represents an event that is called when a player right-clicks a block._  |
 | class | [**PlayerInventory**](classendstone_1_1PlayerInventory.md) <br>_Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._ |
+| class | [**PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md) <br>_Called when a player is finishing consuming an item (food, potion, milk bucket)._  |
 | class | [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) <br>_Called when a player joins a server._  |
 | class | [**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md) <br>_Called when a player gets kicked from the server._  |
 | class | [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) <br>_Called when a player attempts to login in._  |
@@ -172,6 +173,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**BlockFace**](#enum-blockface)  <br> |
 | typedef std::unordered\_map&lt; std::string, std::variant&lt; [**bool**](classendstone_1_1Vector.md), std::string, [**int**](classendstone_1_1Vector.md) &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
+| enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br> |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
 | typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
@@ -348,6 +350,27 @@ enum endstone::DisplaySlot {
     BelowName,
     PlayerList,
     SideBar
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum EquipmentSlot 
+
+```C++
+enum endstone::EquipmentSlot {
+    Hand,
+    OffHand,
+    Feet,
+    Legs,
+    Chest,
+    Head,
+    Body
 };
 ```
 

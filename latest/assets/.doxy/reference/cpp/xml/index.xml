@@ -677,7 +677,9 @@
     <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" kind="variable"><name>amount_</name></member>
     <member refid="classendstone_1_1ItemStack_1a1c1edec51e5963fb5f4c054466bfa6c7" kind="variable"><name>meta_</name></member>
     <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a98d56b0907d2e07d3ccdb8f0b4639f0d" kind="function"><name>isEndstoneItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1abf05e145bee5fed202ed28d00551ec41" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1ad3c33286ebce8800dcf0285a6f0e301a" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" kind="function"><name>~ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" kind="function"><name>setType</name></member>
@@ -686,7 +688,7 @@
     <member refid="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" kind="function"><name>getItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kind="function"><name>hasItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kind="function"><name>setItemMeta</name></member>
-    <member refid="classendstone_1_1ItemStack_1a98d56b0907d2e07d3ccdb8f0b4639f0d" kind="function"><name>isEndstoneItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a2c8607d72960a4ac9189ad25eb1fd8a0" kind="function"><name>clone</name></member>
     <member refid="classendstone_1_1ItemStack_1a54eb999e7d8e376cb0bc66b90ec11d18" kind="function"><name>setItemMeta0</name></member>
   </compound>
   <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
@@ -1150,6 +1152,13 @@
     <member refid="classendstone_1_1PlayerInventory_1a1b5365a4d2081279549a63a817ffd7fd" kind="function"><name>setItemInOffHand</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kind="function"><name>getHeldItemSlot</name></member>
     <member refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" kind="function"><name>setHeldItemSlot</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerItemConsumeEvent" kind="class"><name>endstone::PlayerItemConsumeEvent</name>
+    <member refid="classendstone_1_1PlayerItemConsumeEvent_1abcd6574b568123db9d0c6601acd01f24" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerItemConsumeEvent_1aea8ad32c30b0d189f3fd02fa871ccc87" kind="variable"><name>hand_</name></member>
+    <member refid="classendstone_1_1PlayerItemConsumeEvent_1a1fc9118fc82b6e23fd2dd5def71601a2" kind="function"><name>PlayerItemConsumeEvent</name></member>
+    <member refid="classendstone_1_1PlayerItemConsumeEvent_1acf92431b4fefa6c42d450c301a03c9a5" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1PlayerItemConsumeEvent_1a4c71af194ee2c446fcb5c5eb28715050" kind="function"><name>getHand</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerJoinEvent" kind="class"><name>endstone::PlayerJoinEvent</name>
     <member refid="classendstone_1_1PlayerJoinEvent_1a7f02575361267d031b100a8b132e0d06" kind="variable"><name>NAME</name></member>
@@ -1744,6 +1753,14 @@
     <member refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa047c6bd032387e5c84e1e718f58f7e5a" kind="enumvalue"><name>Creative</name></member>
     <member refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aadc1d2a4d591857f0a0dd38b4ebcf5a72" kind="enumvalue"><name>Adventure</name></member>
     <member refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa38721bd8d7c0aa7e0e6999ae0c2cc98d" kind="enumvalue"><name>Spectator</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kind="enum"><name>EquipmentSlot</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aa78b1ac16c0cd02168097fc9a9bd7604" kind="enumvalue"><name>Hand</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a2cc539207caf1a7e1e986b92e4462d7c" kind="enumvalue"><name>OffHand</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a0f2e8e047e38898ec859c631576985e7" kind="enumvalue"><name>Feet</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a48423a9049b3065103ef1026a5fa08e5" kind="enumvalue"><name>Legs</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a080a546abcbea74459f27ba33313993d" kind="enumvalue"><name>Chest</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a98921133d10fbdb0fb6dbb7b2648befe" kind="enumvalue"><name>Head</name></member>
+    <member refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aac101b32dda4448cf13a93fe283dddd8" kind="enumvalue"><name>Body</name></member>
     <member refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kind="enum"><name>PermissionDefault</name></member>
     <member refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481af827cf462f62848df37c5e1e94a4da74" kind="enumvalue"><name>True</name></member>
     <member refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481af8320b26d30ab433c5a54546d21f414c" kind="enumvalue"><name>False</name></member>
@@ -1872,6 +1889,7 @@
   <compound refid="cancellable_8h" kind="file"><name>cancellable.h</name>
   </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
+    <member refid="event_8h_1a80b507d6ebc2a0dd5db7cabd52a9790f" kind="define"><name>ENDSTONE_EVENT</name></member>
   </compound>
   <compound refid="event__handler_8h" kind="file"><name>event_handler.h</name>
   </compound>
@@ -1894,6 +1912,8 @@
   <compound refid="player__interact__actor__event_8h" kind="file"><name>player_interact_actor_event.h</name>
   </compound>
   <compound refid="player__interact__event_8h" kind="file"><name>player_interact_event.h</name>
+  </compound>
+  <compound refid="player__item__consume__event_8h" kind="file"><name>player_item_consume_event.h</name>
   </compound>
   <compound refid="player__join__event_8h" kind="file"><name>player_join_event.h</name>
   </compound>
@@ -1960,6 +1980,8 @@
   <compound refid="modal__form_8h" kind="file"><name>modal_form.h</name>
   </compound>
   <compound refid="game__mode_8h" kind="file"><name>game_mode.h</name>
+  </compound>
+  <compound refid="equipment__slot_8h" kind="file"><name>equipment_slot.h</name>
   </compound>
   <compound refid="inventory_8h" kind="file"><name>inventory.h</name>
   </compound>

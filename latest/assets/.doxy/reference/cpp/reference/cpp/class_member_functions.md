@@ -62,7 +62,7 @@
 ## c
 
 * **captureState** ([**endstone::Block**](classendstone_1_1Block.md))
-* **clone** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
+* **clone** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **cancel** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
 * **Color** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Command** ([**endstone::Command**](classendstone_1_1Command.md))
@@ -125,7 +125,7 @@
 * **first** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **fromString** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **forEach** ([**endstone::Registry**](classendstone_1_1Registry.md))
-* **format** ([**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md))
+* **format** ([**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md), [**fmt::formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md))
 
 
 ## g
@@ -212,7 +212,7 @@
 * **getHeight** ([**endstone::Image**](classendstone_1_1Image.md))
 * **getWidth** ([**endstone::Image**](classendstone_1_1Image.md))
 * **getContents** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
-* **getItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **getItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md))
 * **getMaxStackSize** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **getSize** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **getAddress** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md), [**endstone::Player**](classendstone_1_1Player.md))
@@ -285,6 +285,7 @@
 * **getItemInMainHand** ([**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md))
 * **getItemInOffHand** ([**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md))
 * **getLeggings** ([**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md))
+* **getHand** ([**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md))
 * **getJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **getKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **getQuitMessage** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
@@ -511,6 +512,7 @@
 * **PlayerGameModeChangeEvent** ([**endstone::PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md))
 * **PlayerInteractActorEvent** ([**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
 * **PlayerInteractEvent** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **PlayerItemConsumeEvent** ([**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md))
 * **PlayerJoinEvent** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **PlayerKickEvent** ([**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md))
 * **PlayerLoginEvent** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))

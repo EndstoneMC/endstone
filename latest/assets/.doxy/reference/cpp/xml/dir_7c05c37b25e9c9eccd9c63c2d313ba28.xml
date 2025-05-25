@@ -10,6 +10,7 @@
     <innerfile refid="player__game__mode__change__event_8h">player_game_mode_change_event.h</innerfile>
     <innerfile refid="player__interact__actor__event_8h">player_interact_actor_event.h</innerfile>
     <innerfile refid="player__interact__event_8h">player_interact_event.h</innerfile>
+    <innerfile refid="player__item__consume__event_8h">player_item_consume_event.h</innerfile>
     <innerfile refid="player__join__event_8h">player_join_event.h</innerfile>
     <innerfile refid="player__kick__event_8h">player_kick_event.h</innerfile>
     <innerfile refid="player__login__event_8h">player_login_event.h</innerfile>

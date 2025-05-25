@@ -87,6 +87,7 @@
     <innerclass refid="classendstone_1_1PlayerInteractActorEvent" prot="public">endstone::PlayerInteractActorEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerInteractEvent" prot="public">endstone::PlayerInteractEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerInventory" prot="public">endstone::PlayerInventory</innerclass>
+    <innerclass refid="classendstone_1_1PlayerItemConsumeEvent" prot="public">endstone::PlayerItemConsumeEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerJoinEvent" prot="public">endstone::PlayerJoinEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerKickEvent" prot="public">endstone::PlayerKickEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerLoginEvent" prot="public">endstone::PlayerLoginEvent</innerclass>
@@ -455,6 +456,70 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/game_mode.h" line="22" column="1" bodyfile="include/endstone/game_mode.h" bodystart="22" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>EquipmentSlot</name>
+        <qualifiedname>endstone::EquipmentSlot</qualifiedname>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aa78b1ac16c0cd02168097fc9a9bd7604" prot="public">
+          <name>Hand</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a2cc539207caf1a7e1e986b92e4462d7c" prot="public">
+          <name>OffHand</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a0f2e8e047e38898ec859c631576985e7" prot="public">
+          <name>Feet</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a48423a9049b3065103ef1026a5fa08e5" prot="public">
+          <name>Legs</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a080a546abcbea74459f27ba33313993d" prot="public">
+          <name>Chest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a98921133d10fbdb0fb6dbb7b2648befe" prot="public">
+          <name>Head</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aac101b32dda4448cf13a93fe283dddd8" prot="public">
+          <name>Body</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="note"><para>Only for certain entities such as horses and wolves. </para>
+</simplesect>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/equipment_slot.h" line="21" column="1" bodyfile="include/endstone/inventory/equipment_slot.h" bodystart="21" bodyend="32"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" prot="public" static="no" strong="yes">
         <type></type>

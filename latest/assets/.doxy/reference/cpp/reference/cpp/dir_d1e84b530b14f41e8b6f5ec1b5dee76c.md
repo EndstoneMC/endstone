@@ -21,6 +21,7 @@
 
 | Type | Name |
 | ---: | :--- |
+| file | [**equipment\_slot.h**](equipment__slot_8h.md) <br> |
 | file | [**inventory.h**](inventory_8h.md) <br> |
 | file | [**item\_factory.h**](item__factory_8h.md) <br> |
 | file | [**item\_stack.h**](item__stack_8h.md) <br> |

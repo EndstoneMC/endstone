@@ -124,6 +124,7 @@
 * [**formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md)
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)
+([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md)
 ([**fmt**](namespacefmt.md))
 
@@ -246,6 +247,8 @@
 * [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerInventory**](classendstone_1_1PlayerInventory.md)
+([**endstone**](namespaceendstone.md))
+* [**PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md)
 ([**endstone**](namespaceendstone.md))

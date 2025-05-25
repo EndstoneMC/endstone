@@ -19,6 +19,7 @@
 
 ## e
 
+* **EquipmentSlot** ([**endstone**](namespaceendstone.md))
 * **EventPriority** ([**endstone**](namespaceendstone.md))
 
 
