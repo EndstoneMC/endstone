@@ -20,10 +20,10 @@
 namespace endstone::core {
 
 class EndstoneItemStack : public ItemStack {
-    EndstoneItemStack(const EndstoneItemStack &item);
 
 public:
     explicit EndstoneItemStack(const ::ItemStack &item);
+    EndstoneItemStack(const EndstoneItemStack &item);
 
 protected:
     [[nodiscard]] bool isEndstoneItemStack() const override;

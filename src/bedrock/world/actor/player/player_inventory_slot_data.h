@@ -17,6 +17,7 @@
 #include "bedrock/world/container_id.h"
 
 struct PlayerInventorySlotData {
+    PlayerInventorySlotData(int slot, ContainerID container_id) : slot(slot), container_id(container_id){};
     ContainerID container_id;
     int slot;
 };

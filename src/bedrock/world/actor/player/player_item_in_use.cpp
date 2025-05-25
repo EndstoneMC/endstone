@@ -16,6 +16,11 @@
 
 #include "bedrock/entity/components/item_in_use_component.h"
 
+const ItemStack &PlayerItemInUse::getItemInUse() const
+{
+    return item_;
+}
+
 void PlayerItemInUse::clearItemInUse(EntityContext &entity)
 {
     item_.setNull(std::nullopt);

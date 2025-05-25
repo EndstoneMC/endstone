@@ -16,9 +16,6 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/entity/components/abilities_component.h"
-#include "bedrock/network/packet/available_commands_packet.h"
-#include "bedrock/world/item/item.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -27,7 +24,6 @@
 #include "endstone/runtime/hook.h"
 void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
-    Vec3 position = pos;
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
     const endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
@@ -37,32 +33,24 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
     if (e.isCancelled()) {
         return;
     }
-    position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::teleportTo, this, position, should_stop_riding, cause, entity_type,
+
+    auto final_pos = Vec3(e.getTo().getX(), e.getTo().getY(), e.getTo().getZ());
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::teleportTo, this, final_pos, should_stop_riding, cause, entity_type,
                                 keep_velocity);
 }
 
 void Player::completeUsingItem()
 {
-    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    const auto *item = item_in_use_.item.getItem();
-    const std::set<std::string> item_names{"minecraft:potion", "minecraft:milk_bucket", "minecraft:medicine"};
-    if (!item->isFood() && !item_names.contains(item->getFullItemName())) {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
-        return;
-    }
-    const auto item_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_in_use_.item);
-    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), *item_stack};
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto item_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_in_use_.getItemInUse());
+    const auto hand = inventory_->getSelectedSlot().container_id == CONTAINER_ID_INVENTORY
+                        ? endstone::EquipmentSlot::Hand
+                        : endstone::EquipmentSlot::OffHand;
+    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), *item_stack, hand};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
-        item_in_use_.duration = 0;
-        item_in_use_.item.setNull(std::nullopt);
-        item_in_use_.slot.slot = -1;
-        item_in_use_.slot.container_id = CONTAINER_ID_NONE;
-        item_in_use_.duration = 0;
-        if (getStatusFlag(ActorFlags::USINGITEM)) {
-            setStatusFlag(ActorFlags::USINGITEM, false);
-        }
+        setStatusFlag(ActorFlags::USINGITEM, false);
+        item_in_use_.clearItemInUse(getEntity());
         return;
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);

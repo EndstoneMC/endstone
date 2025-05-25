@@ -66,7 +66,7 @@ const ItemStack &Player::setSelectedSlot(int slot)
         return ItemStack::EMPTY_ITEM;
     }
     const auto &container = inventory_->getContainer();
-    auto &item = container.getItem(slot);
+    const auto &item = container.getItem(slot);
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerEquipment);
     const auto pk = std::static_pointer_cast<MobEquipmentPacket>(packet);
     pk->runtime_id = getRuntimeID();

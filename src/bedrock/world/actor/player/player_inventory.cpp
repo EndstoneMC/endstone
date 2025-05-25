@@ -21,7 +21,7 @@ int PlayerInventory::getHotbarSize() const
 
 PlayerInventorySlotData PlayerInventory::getSelectedSlot() const
 {
-    return {selected_container_id_, selected_};
+    return PlayerInventorySlotData(selected_, selected_container_id_);
 }
 
 bool PlayerInventory::selectSlot(const int slot, const ContainerID container_id)

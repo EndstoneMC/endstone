@@ -20,15 +20,15 @@
 
 namespace endstone::core {
 
-EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &item) : ItemStack(item)
-{
-    handle_ = item.handle_;
-    EndstoneItemStack::setItemMeta(item.getItemMeta().get());
-}
-
 EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
     : handle_(item.isNull() ? nullptr : const_cast<::ItemStack *>(&item))
 {
+}
+
+EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &item)   : ItemStack(item)
+{
+    handle_ = item.handle_;
+    EndstoneItemStack::setItemMeta(item.getItemMeta().get());
 }
 
 bool EndstoneItemStack::isEndstoneItemStack() const
@@ -93,7 +93,7 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
 
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
-    if (!item || item->getType() == "minecraft:air") {
+    if (item == nullptr || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
     }
     if (item->isEndstoneItemStack()) {
