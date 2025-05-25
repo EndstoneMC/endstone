@@ -14,6 +14,8 @@
 
 #include "bedrock/world/scores/scoreboard.h"
 
+#include <charconv>
+
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/player/player.h"
 
