@@ -14,6 +14,9 @@
 
 #pragma once
 
-#include "bedrock/core/string/string_hash.h"
+#include "bedrock/world/item/vanilla_item_tag.h"
 
-class ItemTag : public HashedString {};
+class VanillaItemTags {
+public:
+    static const ItemTag Trident;
+};
