@@ -61,4 +61,12 @@ private:
     bool cancelled_{false};
 };
 
+#define ENDSTONE_EVENT(type)                                \
+public:                                                     \
+    inline static constexpr auto NAME = #type;              \
+    [[nodiscard]] std::string getEventName() const override \
+    {                                                       \
+        return NAME;                                        \
+    }
+
 }  // namespace endstone
