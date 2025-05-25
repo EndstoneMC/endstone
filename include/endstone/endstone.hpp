@@ -111,6 +111,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "inventory/inventory.h"
 #include "inventory/item_factory.h"
 #include "inventory/item_stack.h"
+#include "inventory/item_type.h"
 #include "inventory/meta/item_meta.h"
 #include "inventory/meta/map_meta.h"
 #include "inventory/player_inventory.h"
