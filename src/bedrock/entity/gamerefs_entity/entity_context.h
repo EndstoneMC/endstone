@@ -31,6 +31,12 @@ public:
     [[nodiscard]] bool isValid() const;
 
     template <typename Component>
+    void removeComponent()
+    {
+        entt_registry_.remove<Component>(entity_);
+    }
+
+    template <typename Component>
     [[nodiscard]] bool hasComponent() const
     {
         return entt_registry_.all_of<Component>(entity_);
