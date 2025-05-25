@@ -14,8 +14,7 @@
 
 #pragma once
 
-#include "endstone/inventory/meta/item_meta.h"
-#include "endstone/inventory/meta/map_meta.h"
+#include "endstone/namespaced_key.h"
 
 namespace endstone {
 /**
