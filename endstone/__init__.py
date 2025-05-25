@@ -1,11 +1,11 @@
 from endstone._internal.endstone_python import (
     ColorFormat,
+    EnchantmentRegistry,
     GameMode,
     Logger,
     NamespacedKey,
     OfflinePlayer,
     Player,
-    EnchantmentRegistry,
     Server,
     Skin,
 )
@@ -18,12 +18,12 @@ __all__ = [
     "__version__",
     "__minecraft_version__",
     "ColorFormat",
+    "EnchantmentRegistry",
     "GameMode",
     "Logger",
     "NamespacedKey",
     "OfflinePlayer",
     "Player",
-    "EnchantmentRegistry",
     "Server",
     "Skin",
 ]

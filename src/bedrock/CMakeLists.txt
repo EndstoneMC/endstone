@@ -73,6 +73,7 @@ add_library(bedrock STATIC
         world/actor/player/abilities.cpp
         world/actor/player/player.cpp
         world/actor/player/player_inventory.cpp
+        world/actor/player/player_item_in_use.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp
         world/inventory/network/item_stack_net_id_variant.cpp
@@ -81,6 +82,7 @@ add_library(bedrock STATIC
         world/item/item_instance.cpp
         world/item/item_stack.cpp
         world/item/item_stack_base.cpp
+        world/item/vanilla_item_tags.cpp
         world/item/enchanting/enchant.cpp
         world/item/registry/creative_group_info.cpp
         world/item/registry/creative_item_entry.cpp

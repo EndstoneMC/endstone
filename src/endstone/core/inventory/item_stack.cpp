@@ -25,6 +25,12 @@ EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
 {
 }
 
+EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &item)   : ItemStack(item)
+{
+    handle_ = item.handle_;
+    EndstoneItemStack::setItemMeta(item.getItemMeta().get());
+}
+
 bool EndstoneItemStack::isEndstoneItemStack() const
 {
     return true;
@@ -80,9 +86,14 @@ bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
     return setItemMeta(handle_, meta);
 }
 
+std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
+{
+    return std::make_unique<EndstoneItemStack>(*this);
+}
+
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
-    if (!item || item->getType() == "minecraft:air") {
+    if (item == nullptr || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
     }
     if (item->isEndstoneItemStack()) {

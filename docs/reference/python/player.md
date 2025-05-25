@@ -1,1 +1,2 @@
 ::: endstone.Player
+::: endstone.OfflinePlayer

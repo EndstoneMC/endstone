@@ -100,6 +100,18 @@ public:
     constexpr WeakPtr() noexcept = default;
     constexpr WeakPtr(nullptr_t) noexcept {}
 
+    template <typename TDerived>
+    friend class WeakPtr;
+
+    template <typename TDerived>
+    WeakPtr(const WeakPtr<TDerived> &other)
+    {
+        if (other.pc_) {
+            ++other.pc_->weak_count;
+        }
+        pc_ = reinterpret_cast<SharedCounter<T> *>(other.pc_);
+    }
+
     explicit WeakPtr(const SharedPtr<T> &shared_ptr) noexcept : pc_(shared_ptr.pc_)
     {
         if (pc_) {

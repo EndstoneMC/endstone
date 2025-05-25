@@ -20,20 +20,23 @@
 namespace endstone::core {
 
 class EndstoneItemStack : public ItemStack {
+
 public:
     explicit EndstoneItemStack(const ::ItemStack &item);
+    EndstoneItemStack(const EndstoneItemStack &item);
 
 protected:
-    bool isEndstoneItemStack() const override;
+    [[nodiscard]] bool isEndstoneItemStack() const override;
 
 public:
     [[nodiscard]] std::string getType() const override;
     void setType(std::string type) override;
     [[nodiscard]] int getAmount() const override;
     void setAmount(int amount) override;
-    std::unique_ptr<ItemMeta> getItemMeta() const override;
-    bool hasItemMeta() const override;
+    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const override;
+    [[nodiscard]] bool hasItemMeta() const override;
     bool setItemMeta(ItemMeta *meta) override;
+    [[nodiscard]] std::unique_ptr<ItemStack> clone() const override;
 
     static ::ItemStack toMinecraft(const ItemStack *item);
     static std::unique_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);

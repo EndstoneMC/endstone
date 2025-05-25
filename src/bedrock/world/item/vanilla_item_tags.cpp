@@ -12,13 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/item/vanilla_item_tags.h"
 
-#include "bedrock/world/container_id.h"
-
-struct PlayerInventorySlotData {
-    PlayerInventorySlotData(int slot, ContainerID container_id) : slot(slot), container_id(container_id){};
-    ContainerID container_id;
-    int slot;
-};
-static_assert(sizeof(PlayerInventorySlotData) == 8);
+const ItemTag VanillaItemTags::Trident = "minecraft:is_trident";

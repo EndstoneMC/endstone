@@ -14,6 +14,20 @@
 
 #pragma once
 
-#include "bedrock/core/string/string_hash.h"
+#include <memory>
+#include <vector>
 
-class ItemTag : public HashedString {};
+namespace endstone {
+enum class EquipmentSlot {
+    Hand,
+    OffHand,
+    Feet,
+    Legs,
+    Chest,
+    Head,
+    /**
+     * @note Only for certain entities such as horses and wolves.
+     */
+    Body
+};
+}  // namespace endstone

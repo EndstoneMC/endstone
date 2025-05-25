@@ -14,11 +14,9 @@
 
 #pragma once
 
-#include "bedrock/world/container_id.h"
+#include "bedrock/world/item/vanilla_item_tag.h"
 
-struct PlayerInventorySlotData {
-    PlayerInventorySlotData(int slot, ContainerID container_id) : slot(slot), container_id(container_id){};
-    ContainerID container_id;
-    int slot;
+class VanillaItemTags {
+public:
+    static const ItemTag Trident;
 };
-static_assert(sizeof(PlayerInventorySlotData) == 8);

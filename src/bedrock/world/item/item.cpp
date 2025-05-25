@@ -44,6 +44,11 @@ const WeakPtr<BlockLegacy> &Item::getLegacyBlock() const
     return legacy_block_;
 }
 
+bool Item::hasTag(const ItemTag &tag) const
+{
+    return std::ranges::any_of(tags_, [&tag](const auto &t) { return t == tag; });
+}
+
 const std::vector<ItemTag> &Item::getTags() const
 {
     return tags_;

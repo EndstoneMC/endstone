@@ -14,11 +14,8 @@
 
 #pragma once
 
-#include "bedrock/world/container_id.h"
+#include "bedrock/core/string/string_hash.h"
 
-struct PlayerInventorySlotData {
-    PlayerInventorySlotData(int slot, ContainerID container_id) : slot(slot), container_id(container_id){};
-    ContainerID container_id;
-    int slot;
+struct ItemTag : HashedString {
+    using HashedString::HashedString;
 };
-static_assert(sizeof(PlayerInventorySlotData) == 8);

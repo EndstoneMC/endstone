@@ -302,7 +302,7 @@ public:
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
 
 private:
-    EntityContext entity_context_;  // +8
+    mutable EntityContext entity_context_;  // +8
     VariantParameterList init_params_;
     std::string custom_init_event_name_;
     ActorInitializationMethod init_method_;

@@ -14,11 +14,12 @@
 
 #pragma once
 
-#include "bedrock/world/container_id.h"
+#include "bedrock/shared_ptr.h"
+#include "bedrock/world/item/item.h"
 
-struct PlayerInventorySlotData {
-    PlayerInventorySlotData(int slot, ContainerID container_id) : slot(slot), container_id(container_id){};
-    ContainerID container_id;
-    int slot;
+struct ItemInUseComponent {
+    WeakPtr<const Item> item;
+    int duration;
 };
-static_assert(sizeof(PlayerInventorySlotData) == 8);
+
+struct ItemInUseTicksDuringMovementComponent {};

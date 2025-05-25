@@ -27,9 +27,9 @@
 #include "bedrock/world/interactions/mining/mine_block_item_effect_type.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_helper.h"
-#include "bedrock/world/item/item_tag.h"
 #include "bedrock/world/item/rarity.h"
 #include "bedrock/world/item/registry/item_registry.h"
+#include "bedrock/world/item/vanilla_item_tag.h"
 #include "bedrock/world/level/block/block_legacy.h"
 
 using BlockShape = std::int64_t;
@@ -177,6 +177,7 @@ public:
     [[nodiscard]] const HashedString &getFullNameHash() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const;
+    [[nodiscard]] bool hasTag(const ItemTag & tag) const;
     [[nodiscard]] const std::vector<ItemTag> &getTags() const;
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
     ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;

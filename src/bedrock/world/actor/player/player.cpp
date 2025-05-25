@@ -17,6 +17,7 @@
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/entity/components/player_component.h"
+#include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/symbol.h"
@@ -65,7 +66,7 @@ const ItemStack &Player::setSelectedSlot(int slot)
         return ItemStack::EMPTY_ITEM;
     }
     const auto &container = inventory_->getContainer();
-    auto &item = container.getItem(slot);
+    const auto &item = container.getItem(slot);
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerEquipment);
     const auto pk = std::static_pointer_cast<MobEquipmentPacket>(packet);
     pk->runtime_id = getRuntimeID();

@@ -228,63 +228,32 @@ bool ItemStackBase::isNull() const
     return true;
 }
 
-bool ItemStackBase::hasCustomHoverName() const
+void ItemStackBase::set(const int count)
 {
-    if (!user_data_) {
-        return false;
+    auto max_stack_size = -1;
+    if (!item_.isNull()) {
+        max_stack_size = item_->getMaxStackSize(getDescriptor());
     }
-    const auto *tag = user_data_->getCompound(TAG_DISPLAY);
-    if (!tag) {
-        return false;
+    if (count > max_stack_size) {
+        count_ = max_stack_size;
     }
-    return tag->contains(TAG_DISPLAY_NAME);
+    else if (count == 0) {
+        count_ = 0;
+    }
+    else {
+        count_ = count;
+    }
+    if (!isNull()) {
+        setNull(std::nullopt);
+    }
 }
 
-std::string ItemStackBase::getCustomName() const
+bool ItemStackBase::hasTag(const ItemTag &tag) const
 {
-    if (user_data_) {
-        if (const auto *tag = user_data_->getCompound(TAG_DISPLAY); tag) {
-            if (tag->contains(TAG_DISPLAY_NAME)) {
-                return tag->getString(TAG_DISPLAY_NAME);
-            }
-        }
+    if (!item_.isNull()) {
+        return item_->hasTag(tag);
     }
-    return "";
-}
-
-std::int16_t ItemStackBase::getId() const
-{
-    if (!valid_deprecated_) {
-        return Item::INVALID_ITEM_ID;
-    }
-    if (item_.isNull()) {
-        return 0;
-    }
-    return item_->getId();
-}
-
-std::uint16_t ItemStackBase::getAuxValue() const
-{
-    if (!block_ || aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
-        return aux_value_;
-    }
-    return block_->data_;
-}
-
-std::string ItemStackBase::getName() const
-{
-    if (hasCustomHoverName()) {
-        return getCustomName();
-    }
-    if (item_.isNull()) {
-        return "";
-    }
-    return item_->buildDescriptionName(*this);
-}
-
-const Item *ItemStackBase::getItem() const
-{
-    return item_.get();
+    return false;
 }
 
 bool ItemStackBase::hasUserData() const
@@ -307,9 +276,14 @@ CompoundTag *ItemStackBase::getUserData()
     return user_data_.get();
 }
 
-bool ItemStackBase::isBlock() const
+const Item *ItemStackBase::getItem() const
 {
-    return !item_.isNull() && !item_->getLegacyBlock().isNull();
+    return item_.get();
+}
+
+WeakPtr<Item> ItemStackBase::getItemPtr() const
+{
+    return item_;
 }
 
 const Block *ItemStackBase::getBlock() const
@@ -317,24 +291,63 @@ const Block *ItemStackBase::getBlock() const
     return block_;
 }
 
-void ItemStackBase::set(const std::uint8_t count)
+std::int16_t ItemStackBase::getId() const
 {
-    auto max_stack_size = -1;
-    if (!item_.isNull()) {
-        max_stack_size = item_->getMaxStackSize(getDescriptor());
+    if (!valid_deprecated_) {
+        return Item::INVALID_ITEM_ID;
     }
-    if (count > max_stack_size) {
-        count_ = max_stack_size;
+    if (item_.isNull()) {
+        return 0;
     }
-    else if (count == 0) {
-        count_ = 0;
+    return item_->getId();
+}
+
+bool ItemStackBase::isBlock() const
+{
+    return !item_.isNull() && !item_->getLegacyBlock().isNull();
+}
+
+std::int16_t ItemStackBase::getAuxValue() const
+{
+    if (!block_ || aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
+        return aux_value_;
     }
-    else {
-        count_ = count;
+    return block_->data_;
+}
+
+std::string ItemStackBase::getName() const
+{
+    if (hasCustomHoverName()) {
+        return getCustomName();
     }
-    if (!isNull()) {
-        setNull(std::nullopt);
+    if (item_.isNull()) {
+        return "";
     }
+    return item_->buildDescriptionName(*this);
+}
+
+std::string ItemStackBase::getCustomName() const
+{
+    if (user_data_) {
+        if (const auto *tag = user_data_->getCompound(TAG_DISPLAY); tag) {
+            if (tag->contains(TAG_DISPLAY_NAME)) {
+                return tag->getString(TAG_DISPLAY_NAME);
+            }
+        }
+    }
+    return "";
+}
+
+bool ItemStackBase::hasCustomHoverName() const
+{
+    if (!user_data_) {
+        return false;
+    }
+    const auto *tag = user_data_->getCompound(TAG_DISPLAY);
+    if (!tag) {
+        return false;
+    }
+    return tag->contains(TAG_DISPLAY_NAME);
 }
 
 std::uint8_t ItemStackBase::getCount() const
