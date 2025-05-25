@@ -30,15 +30,25 @@ class EndstoneItemStack;
  * @brief Represents a stack of items.
  */
 class ItemStack {
-public:
+protected:
     ItemStack() = default;
+
+public:
     explicit ItemStack(std::string type, const int amount = 1) : type_(std::move(type)), amount_(amount) {}
+    ItemStack(const ItemStack &stack)
+    {
+        type_ = stack.getType();
+        amount_ = stack.getAmount();
+        if (stack.hasItemMeta()) {
+            ItemStack::setItemMeta(stack.getItemMeta().get());
+        }
+    }
 
     virtual ~ItemStack() = default;
 
 protected:
     friend class core::EndstoneItemStack;
-    virtual bool isEndstoneItemStack() const
+    [[nodiscard]] virtual bool isEndstoneItemStack() const
     {
         return false;
     }
@@ -90,7 +100,7 @@ public:
      *
      * @return a copy of the current ItemStack's ItemMeta
      */
-    virtual std::unique_ptr<ItemMeta> getItemMeta() const
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
         return meta_ == nullptr ? Endstone::getServer().getItemFactory().getItemMeta(type_) : meta_->clone();
     }
@@ -100,7 +110,7 @@ public:
      *
      * @return Returns true if some metadata has been set for this item
      */
-    virtual bool hasItemMeta() const
+    [[nodiscard]] virtual bool hasItemMeta() const
     {
         return !Endstone::getServer().getItemFactory().equals(meta_.get(), nullptr);
     }
@@ -114,6 +124,11 @@ public:
     virtual bool setItemMeta(ItemMeta *meta)
     {
         return setItemMeta0(meta, type_);
+    }
+
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> clone() const
+    {
+        return std::make_unique<ItemStack>(*this);
     }
 
 private:
@@ -140,9 +155,8 @@ private:
 
 }  // namespace endstone
 
-namespace fmt {
 template <>
-struct formatter<endstone::ItemStack> : formatter<string_view> {
+struct fmt::formatter<endstone::ItemStack> : formatter<string_view> {
     using Type = endstone::ItemStack;
 
     template <typename FormatContext>
@@ -150,5 +164,4 @@ struct formatter<endstone::ItemStack> : formatter<string_view> {
     {
         return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
     }
-};
-}  // namespace fmt
+};  // namespace fmt

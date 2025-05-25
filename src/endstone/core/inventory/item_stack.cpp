@@ -20,6 +20,12 @@
 
 namespace endstone::core {
 
+EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &item) : ItemStack(item)
+{
+    handle_ = item.handle_;
+    EndstoneItemStack::setItemMeta(item.getItemMeta().get());
+}
+
 EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
     : handle_(item.isNull() ? nullptr : const_cast<::ItemStack *>(&item))
 {
@@ -78,6 +84,11 @@ bool EndstoneItemStack::hasItemMeta() const
 bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
 {
     return setItemMeta(handle_, meta);
+}
+
+std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
+{
+    return std::make_unique<EndstoneItemStack>(*this);
 }
 
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
