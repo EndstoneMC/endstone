@@ -20,6 +20,15 @@ namespace endstone::python {
 
 void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 {
+    py::enum_<EquipmentSlot>(m, "EquipmentSlot")
+        .value("HAND", EquipmentSlot::Hand)
+        .value("OFF_HAND", EquipmentSlot::OffHand)
+        .value("FEET", EquipmentSlot::Feet)
+        .value("LEGS", EquipmentSlot::Legs)
+        .value("CHEST", EquipmentSlot::Chest)
+        .value("HEAD", EquipmentSlot::Head)
+        .value("BODY", EquipmentSlot::Body, "Only for certain entities such as horses and wolves.");
+
     py::class_<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, "Creates a clone of the current metadata.")
         .def_property_readonly("has_display_name", &ItemMeta::hasDisplayName, "Checks for existence of a display name.")
