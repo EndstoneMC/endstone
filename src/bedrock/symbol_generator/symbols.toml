@@ -1,4 +1,4 @@
-timestamp = 1747859708
+timestamp = 1748182708
 version = "1.21.83"
 
 [windows]
@@ -55,8 +55,8 @@ version = "1.21.83"
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 12433280
 # Player
-"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 39187712
 "?completeUsingItem@Player@@QEAAXXZ" = 39210592
+"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 39187712
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 56306480
 # RakPeerHelper
@@ -143,6 +143,7 @@ version = "1.21.83"
 # Pack
 "_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE" = 79306832
 # Player
+"_ZN6Player17completeUsingItemEv" = 126909760
 "_ZN6Player10teleportToERK4Vec3biib" = 126890704
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 153478736
