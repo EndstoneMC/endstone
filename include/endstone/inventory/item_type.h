@@ -23,9 +23,15 @@ namespace endstone {
 class ItemType {
 public:
     virtual ~ItemType() = default;
+    /**
+     * @brief Return the identifier of this item type.
+     *
+     * @return this item's identifier
+     */
+    [[nodiscard]] virtual std::string_view getId() const = 0;
 
     /**
-     * @brief Return the namespaced identifier for this item.
+     * @brief Return the namespaced identifier of this item type.
      *
      * @return this item's key
      */
