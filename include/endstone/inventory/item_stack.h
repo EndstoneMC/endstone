@@ -153,7 +153,7 @@ public:
     {
         const auto *item_type = ItemType::get(type);
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-        return ItemStack(*item_type, amount);
+        return create(*item_type, amount);
     }
 
 private:
