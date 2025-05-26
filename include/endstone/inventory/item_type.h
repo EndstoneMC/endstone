@@ -60,7 +60,16 @@ public:
      */
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
-    static const ItemType *getItemType(std::string_view name)
+    /**
+     * @brief Attempts to get the ItemType with the given name.
+     *
+     * @note This is a normal lookup, names must be the precise name.
+     *
+     * @param name Name of the item_type to get
+     *
+     * @return ItemType if found, or nullptr
+     */
+    static const ItemType *get(std::string_view name)
     {
         auto key = NamespacedKey::fromString(name);
         if (!key) {

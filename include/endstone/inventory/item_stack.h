@@ -70,7 +70,7 @@ public:
      */
     virtual Result<void> setType(const std::string &type)
     {
-        const auto *item_type = ItemType::getItemType(type);
+        const auto *item_type = ItemType::get(type);
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
         type_ = *item_type;
         return {};
@@ -151,7 +151,7 @@ public:
 
     static Result<ItemStack> create(const std::string &type, const int amount = 1)
     {
-        const auto *item_type = ItemType::getItemType(type);
+        const auto *item_type = ItemType::get(type);
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
         return ItemStack(*item_type, amount);
     }

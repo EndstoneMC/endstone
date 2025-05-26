@@ -9,7 +9,6 @@ from endstone._internal.endstone_python import (
     Server,
     Skin,
 )
-
 from endstone._internal.version import __version__
 
 __minecraft_version__ = "1.21.83"
