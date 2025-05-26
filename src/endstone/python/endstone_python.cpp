@@ -225,6 +225,7 @@ void init_logger(py::module &m)
 void init_registry(py::module_ &m)
 {
     python::registry<Enchantment>(m, "EnchantmentRegistry");
+    python::registry<ItemType>(m, "ItemRegistry");
 }
 
 void init_server(py::class_<Server> &server)
@@ -251,6 +252,8 @@ void init_server(py::class_<Server> &server)
                                "Gets the service manager.")
         .def_property_readonly("enchantment_registry", &Server::getEnchantmentRegistry,
                                py::return_value_policy::reference, "Returns the registry for all the enchantments.")
+        .def_property_readonly("item_registry", &Server::getItemRegistry, py::return_value_policy::reference,
+                               "Returns the registry for all the item types.")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "Gets the server level.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,
