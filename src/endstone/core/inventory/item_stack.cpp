@@ -48,10 +48,10 @@ Result<void> EndstoneItemStack::setType(const std::string &type)
 
 void EndstoneItemStack::setType(const ItemType &type)
 {
-    if (getType().getId() == type.getId()) {
+    if (getType() == type) {
         return;
     }
-    if (type.getId() == "minecraft:air") {
+    if (type == "minecraft:air") {
         reset();
         return;
     }
@@ -98,7 +98,7 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
 
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
-    if (item == nullptr || item->getType().getId() == "minecraft:air") {
+    if (item == nullptr || item->getType() == "minecraft:air") {
         return {};  // Empty item stack
     }
     if (item->isEndstoneItemStack()) {

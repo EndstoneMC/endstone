@@ -297,7 +297,7 @@ void EndstoneItemMeta::setUnbreakable(bool unbreakable)
 
 bool EndstoneItemMeta::applicableTo(const ItemType &type) const
 {
-    return type.getId() != "minecraft:air";
+    return type != "minecraft:air";
 }
 
 bool EndstoneItemMeta::equalsCommon(const EndstoneItemMeta &that) const

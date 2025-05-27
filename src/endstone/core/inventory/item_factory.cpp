@@ -65,7 +65,7 @@ std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, c
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemType &type, const EndstoneItemMeta *meta) const
 {
-    if (type.getId() == "minecraft:air") {
+    if (type == "minecraft:air") {
         return nullptr;
     }
     // TODO(item): add support for map meta

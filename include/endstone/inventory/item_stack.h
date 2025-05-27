@@ -32,10 +32,17 @@ class EndstoneItemStack;
  * @brief Represents a stack of items.
  */
 class ItemStack {
-protected:
-    explicit ItemStack(const ItemType &type, const int amount) : type_(type), amount_(amount) {}
-
 public:
+    explicit ItemStack(const std::string &type, const int amount = 1)
+    {
+        if (const auto *item_type = ItemType::get(type)) {
+            type_ = *item_type;
+            amount_ = amount;
+        }
+    }
+
+    explicit ItemStack(const ItemType &type, const int amount = 1) : type_(type), amount_(amount) {}
+
     ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount())
     {
         if (stack.hasItemMeta()) {
@@ -173,7 +180,7 @@ private:
         return true;
     }
 
-    std::reference_wrapper<const ItemType> type_;
+    std::reference_wrapper<const ItemType> type_ = *ItemType::get("minecraft:air");
     int amount_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;
 };
@@ -187,6 +194,6 @@ struct fmt::formatter<endstone::ItemStack> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType().getId(), val.getAmount());
+        return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
     }
 };  // namespace fmt

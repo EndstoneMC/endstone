@@ -99,3 +99,14 @@ public:
     }
 };
 }  // namespace endstone
+
+template <>
+struct fmt::formatter<endstone::ItemType> : formatter<string_view> {
+    using Type = endstone::ItemType;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}", val.getId());
+    }
+};  // namespace fmt
