@@ -111,8 +111,14 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
             py::return_value_policy::reference, "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
                       "Gets or sets the amount of items in this stack.")
+        .def_property_readonly("max_stack_size", &ItemStack::getMaxStackSize,
+                               "Get the maximum stack size for this item.")
+        .def("is_similar", &ItemStack::isSimilar, py::arg("other"),
+             "Checks if the two stacks are equal, but does not consider stack size (amount).")
         .def_property_readonly("item_meta", &ItemStack::getItemMeta, "Gets a copy of the ItemMeta of this ItemStack.")
         .def("set_item_meta", &ItemStack::setItemMeta, py::arg("meta"), "Set the ItemMeta of this ItemStack.")
+        .def(py::self == py::self)
+        .def(py::self != py::self)
         .def("__str__", [](const ItemStack &self) { return fmt::format("{}", self); });
 
     py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")

@@ -115,6 +115,46 @@ public:
     }
 
     /**
+     * @brief Get the maximum stack size for this item.
+     *
+     * @return The maximum you can stack this item to.
+     */
+    [[nodiscard]] virtual int getMaxStackSize() const
+    {
+        return getType().getMaxStackSize();
+    }
+
+    bool operator==(const ItemStack &other) const
+    {
+        if (&other == this) {
+            return true;
+        }
+        return getAmount() == other.getAmount() && isSimilar(other);
+    }
+
+    bool operator!=(const ItemStack &other) const
+    {
+        return !(*this == other);
+    }
+
+    /**
+     * @brief Checks if the two stacks are equal, but does not consider stack size (amount).
+     *
+     * @param other the item stack to compare to
+     * @return true if the two stacks are equal, ignoring the amount
+     */
+    [[nodiscard]] virtual bool isSimilar(const ItemStack &other) const
+    {
+        if (&other == this) {
+            return true;
+        }
+        return getType() == other.getType() && hasItemMeta() == other.hasItemMeta() &&
+               (hasItemMeta()
+                    ? Endstone::getServer().getItemFactory().equals(getItemMeta().get(), other.getItemMeta().get())
+                    : true);
+    }
+
+    /**
      * @brief Gets a copy of this ItemStack's ItemMeta.
      *
      * @return a copy of the current ItemStack's ItemMeta

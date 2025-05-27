@@ -1606,10 +1606,19 @@ class ItemStack:
     """
     Represents a stack of items.
     """
+    __hash__: typing.ClassVar[None] = None
+    def __eq__(self, arg0: ItemStack) -> bool:
+        ...
     def __init__(self, type: ItemType | str, amount: int = 1) -> None:
+        ...
+    def __ne__(self, arg0: ItemStack) -> bool:
         ...
     def __str__(self) -> str:
         ...
+    def is_similar(self, other: ItemStack) -> bool:
+        """
+        Checks if the two stacks are equal, but does not consider stack size (amount).
+        """
     def set_item_meta(self, meta: ItemMeta) -> bool:
         """
         Set the ItemMeta of this ItemStack.
@@ -1626,6 +1635,11 @@ class ItemStack:
     def item_meta(self) -> ItemMeta:
         """
         Gets a copy of the ItemMeta of this ItemStack.
+        """
+    @property
+    def max_stack_size(self) -> int:
+        """
+        Get the maximum stack size for this item.
         """
     @property
     def type(self) -> ItemType:

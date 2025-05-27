@@ -34,6 +34,8 @@ public:
     void setType(const ItemType &type) override;
     [[nodiscard]] int getAmount() const override;
     void setAmount(int amount) override;
+    [[nodiscard]] int getMaxStackSize() const override;
+    [[nodiscard]] bool isSimilar(const ItemStack &other) const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const override;
     [[nodiscard]] bool hasItemMeta() const override;
     bool setItemMeta(ItemMeta *meta) override;

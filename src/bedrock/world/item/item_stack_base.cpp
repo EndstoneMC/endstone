@@ -307,6 +307,14 @@ bool ItemStackBase::isBlock() const
     return !item_.isNull() && !item_->getLegacyBlock().isNull();
 }
 
+std::uint8_t ItemStackBase::getMaxStackSize() const
+{
+    if (item_.isNull()) {
+        return -1;
+    }
+    return item_->getMaxStackSize(getDescriptor());
+}
+
 std::int16_t ItemStackBase::getAuxValue() const
 {
     if (!block_ || aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {

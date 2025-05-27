@@ -60,6 +60,7 @@ public:
     [[nodiscard]] const Block *getBlock() const;
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] bool isBlock() const;
+    [[nodiscard]] std::uint8_t getMaxStackSize() const;
     [[nodiscard]] std::int16_t getAuxValue() const;
     [[nodiscard]] std::string getName() const;
     [[nodiscard]] std::string getCustomName() const;

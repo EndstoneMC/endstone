@@ -76,6 +76,37 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
+int EndstoneItemStack::getMaxStackSize() const
+{
+    if (handle_ == nullptr) {
+        return 0;
+    }
+    return handle_->getMaxStackSize();
+}
+
+bool EndstoneItemStack::isSimilar(const ItemStack &other) const
+{
+    if (&other == this) {
+        return true;
+    }
+    if (!other.isEndstoneItemStack()) {
+        return other.isSimilar(*this);
+    }
+
+    const auto &that = static_cast<const EndstoneItemStack &>(other);
+    if (handle_ == that.handle_) {
+        return true;
+    }
+    if (handle_ == nullptr || that.handle_ == nullptr) {
+        return false;
+    }
+    if (getType() != that.getType()) {
+        return false;
+    }
+    return hasItemMeta() ? that.hasItemMeta() && handle_->getUserData()->equals(*that.handle_->getUserData())
+                         : !that.hasItemMeta();
+}
+
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
 {
     return getItemMeta(handle_);
