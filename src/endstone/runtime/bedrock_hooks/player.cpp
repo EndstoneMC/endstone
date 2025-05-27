@@ -22,6 +22,7 @@
 #include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_teleport_event.h"
 #include "endstone/runtime/hook.h"
+
 void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();

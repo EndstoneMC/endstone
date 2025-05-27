@@ -1222,6 +1222,11 @@ class Enchantment:
         """
         Gets the level that this Enchantment should start at (also known as minimum level).
         """
+    @property
+    def translation_key(self) -> str:
+        """
+        Get the translation key, suitable for use in a translation component.
+        """
 class EnchantmentRegistry:
     @typing.overload
     def __contains__(self, key: NamespacedKey) -> bool:

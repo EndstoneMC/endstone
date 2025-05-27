@@ -24,6 +24,26 @@ ItemStack &ItemActor::getItemStack()
     return item_;
 }
 
+void ItemActor::setNoPickUpDelay()
+{
+    pickup_delay_ = 0;
+}
+
+void ItemActor::setNeverPickUp()
+{
+    setPickUpDelay(INFINITE_PICKUP_DELAY);
+}
+
+void ItemActor::setPickUpDelay(int delay)
+{
+    pickup_delay_ = delay;
+}
+
+void ItemActor::setThrowTime(int throw_time)
+{
+    throw_time_ = throw_time;
+}
+
 ItemActor *ItemActor::tryGetFromEntity(EntityContext &entity, bool include_removed)
 {
     auto *actor = Actor::tryGetFromEntity(entity, include_removed);

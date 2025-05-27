@@ -42,7 +42,6 @@
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-
 bool handleEvent(const PlayerDropItemEvent &event)
 {
     if (auto *p = WeakEntityRef(event.player).tryUnwrap<::Player>(); p) {
@@ -54,26 +53,8 @@ bool handleEvent(const PlayerDropItemEvent &event)
             server.getPluginManager().callEvent(e);
 
             if (e.isCancelled()) {
-                const auto current_item = player.getInventory().getItemInMainHand();
-                const auto dropped_item = endstone::core::EndstoneItemStack::fromMinecraft(item->getItemStack());
-                if (current_item == nullptr || current_item->getAmount() == 0) {
-                    // The complete stack was dropped
-                    player.getInventory().setItemInMainHand(dropped_item.get());
-                }
-                else if (current_item->isSimilar(*dropped_item) &&
-                         current_item->getAmount() < current_item->getMaxStackSize() &&
-                         dropped_item->getAmount() == 1) {
-                    // Only one item is dropped
-                    current_item->setAmount(current_item->getAmount() + 1);
-                    player.getInventory().setItemInMainHand(current_item.get());
-                }
-                else {
-                    // Fallback
-                    player.getInventory().addItem(*dropped_item);
-                }
-
-                // Remove dropped item
-                drop.remove();
+                item->setPickUpDelay(0);
+                item->setThrowTime(0);
                 return false;
             }
         }
