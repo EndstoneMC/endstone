@@ -58,8 +58,12 @@ _Represents a stack of items._
 | virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**clone**](#function-clone) () const<br> |
 | virtual int | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
+| virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
 | virtual const [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
 | virtual bool | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
+| virtual bool | [**isSimilar**](#function-issimilar) (const [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
+|  bool | [**operator!=**](#function-operator) (const [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
+|  bool | [**operator==**](#function-operator_1) (const [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
 | virtual void | [**setAmount**](#function-setamount) (const int amount) <br>_Sets the amount of items in this stack._  |
 | virtual bool | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual Result&lt; void &gt; | [**setType**](#function-settype-12) (const std::string & type) <br>_Sets the type of this item._  |
@@ -219,6 +223,31 @@ a copy of the current [**ItemStack**](classendstone_1_1ItemStack.md)'s [**ItemMe
 
 
 
+### function getMaxStackSize 
+
+_Get the maximum stack size for this item._ 
+```C++
+inline virtual int endstone::ItemStack::getMaxStackSize () const
+```
+
+
+
+
+
+**Returns:**
+
+The maximum you can stack this item to. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getType 
 
 _Gets the type of this item._ 
@@ -264,6 +293,70 @@ Returns true if some metadata has been set for this item
 
 
         
+
+<hr>
+
+
+
+### function isSimilar 
+
+_Checks if the two stacks are equal, but does not consider stack size (amount)._ 
+```C++
+inline virtual bool endstone::ItemStack::isSimilar (
+    const ItemStack & other
+) const
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `other` the item stack to compare to 
+
+
+
+**Returns:**
+
+true if the two stacks are equal, ignoring the amount 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function operator!= 
+
+```C++
+inline bool endstone::ItemStack::operator!= (
+    const ItemStack & other
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+inline bool endstone::ItemStack::operator== (
+    const ItemStack & other
+) const
+```
+
+
+
 
 <hr>
 

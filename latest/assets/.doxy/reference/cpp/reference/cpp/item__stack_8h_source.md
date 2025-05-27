@@ -96,6 +96,35 @@ public:
         amount_ = amount;
     }
 
+    [[nodiscard]] virtual int getMaxStackSize() const
+    {
+        return getType().getMaxStackSize();
+    }
+
+    bool operator==(const ItemStack &other) const
+    {
+        if (&other == this) {
+            return true;
+        }
+        return getAmount() == other.getAmount() && isSimilar(other);
+    }
+
+    bool operator!=(const ItemStack &other) const
+    {
+        return !(*this == other);
+    }
+
+    [[nodiscard]] virtual bool isSimilar(const ItemStack &other) const
+    {
+        if (&other == this) {
+            return true;
+        }
+        return getType() == other.getType() && hasItemMeta() == other.hasItemMeta() &&
+               (hasItemMeta()
+                    ? Endstone::getServer().getItemFactory().equals(getItemMeta().get(), other.getItemMeta().get())
+                    : true);
+    }
+
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
         return meta_ == nullptr ? Endstone::getServer().getItemFactory().getItemMeta(type_) : meta_->clone();

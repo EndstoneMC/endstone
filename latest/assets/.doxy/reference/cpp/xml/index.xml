@@ -689,6 +689,10 @@
     <member refid="classendstone_1_1ItemStack_1a27ca816b61e425b32c9f481044cb5279" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1afd9e055aeb937c5b3da9ecc2cf9baecc" kind="function"><name>setAmount</name></member>
+    <member refid="classendstone_1_1ItemStack_1add1c91b0b2f804dbe72efd6991a61b36" kind="function"><name>getMaxStackSize</name></member>
+    <member refid="classendstone_1_1ItemStack_1a6bacc04cea58d3b47668b78973af287d" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1ItemStack_1a4f314fd80081b60546b282bee4d255ed" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1ItemStack_1aeb93a9a474a043a67738f0838d79c2b4" kind="function"><name>isSimilar</name></member>
     <member refid="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" kind="function"><name>getItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kind="function"><name>hasItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kind="function"><name>setItemMeta</name></member>
@@ -1110,6 +1114,11 @@
     <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1ac76e5c152bc08891e8ecf76802c66682" kind="function"><name>getDeathMessage</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" kind="function"><name>setDeathMessage</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerDropItemEvent" kind="class"><name>endstone::PlayerDropItemEvent</name>
+    <member refid="classendstone_1_1PlayerDropItemEvent_1ad3d0f7268a34bb4b49f93c325535e193" kind="variable"><name>drop_</name></member>
+    <member refid="classendstone_1_1PlayerDropItemEvent_1a9f47f387003f1b01c58c24d4721394a8" kind="function"><name>PlayerDropItemEvent</name></member>
+    <member refid="classendstone_1_1PlayerDropItemEvent_1acb281b5daf32be54162cb68719663359" kind="function"><name>getItemDrop</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerEmoteEvent" kind="class"><name>endstone::PlayerEmoteEvent</name>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a74ecb4319b65d01b406f8c591d3aff18" kind="variable"><name>NAME</name></member>
@@ -1923,6 +1932,8 @@
   <compound refid="player__command__event_8h" kind="file"><name>player_command_event.h</name>
   </compound>
   <compound refid="player__death__event_8h" kind="file"><name>player_death_event.h</name>
+  </compound>
+  <compound refid="player__drop__item__event_8h" kind="file"><name>player_drop_item_event.h</name>
   </compound>
   <compound refid="player__emote__event_8h" kind="file"><name>player_emote_event.h</name>
   </compound>

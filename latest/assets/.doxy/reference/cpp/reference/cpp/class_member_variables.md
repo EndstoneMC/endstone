@@ -70,6 +70,7 @@
 * **DefaultPermission** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **default\_value\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::Toggle**](classendstone_1_1Toggle.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **death\_message\_** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
+* **drop\_** ([**endstone::PlayerDropItemEvent**](classendstone_1_1PlayerDropItemEvent.md))
 * **data\_folder\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **default\_permission\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
