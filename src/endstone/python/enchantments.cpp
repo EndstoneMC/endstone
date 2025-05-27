@@ -24,6 +24,8 @@ void init_enchantments(py::module_ &m)
 {
     py::class_<Enchantment, std::shared_ptr<Enchantment>>(m, "Enchantment")
         .def_property_readonly("key", &Enchantment::getKey, "Return the namespaced identifier for this enchantment.")
+        .def_property_readonly("translation_key", &Enchantment::getTranslationKey,
+                               "Get the translation key, suitable for use in a translation component.")
         .def_property_readonly("max_level", &Enchantment::getMaxLevel,
                                "Gets the maximum level that this Enchantment may become.")
         .def_property_readonly("start_level", &Enchantment::getStartLevel,

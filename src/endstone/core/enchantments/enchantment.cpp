@@ -28,6 +28,11 @@ NamespacedKey EndstoneEnchantment::getKey() const
     return key_;
 }
 
+std::string EndstoneEnchantment::getTranslationKey() const
+{
+    return getHandle().getDescriptionId();
+}
+
 int EndstoneEnchantment::getMaxLevel() const
 {
     return getHandle().getMaxLevel();

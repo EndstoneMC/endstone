@@ -31,6 +31,13 @@ public:
     [[nodiscard]] virtual NamespacedKey getKey() const = 0;
 
     /**
+     * @brief Get the translation key, suitable for use in a translation component.
+     *
+     * @return the translation key
+     */
+    [[nodiscard]] virtual std::string getTranslationKey() const = 0;
+
+    /**
      * @brief Gets the maximum level that this Enchantment may become.
      *
      * @return Maximum level of the Enchantment
