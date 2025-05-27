@@ -155,6 +155,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerDeathEvent, ActorDeathEvent, PlayerEvent>(m, "PlayerDeathEvent", "Called when a player dies")
         .def_property("death_message", &PlayerDeathEvent::getDeathMessage, &PlayerDeathEvent::setDeathMessage,
                       "Gets or sets the death message that will appear to everyone on the server.");
+    py::class_<PlayerDropItemEvent, PlayerEvent, ICancellable>(
+        m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory")
+        .def_property_readonly("item_drop", &PlayerDropItemEvent::getItemDrop, py::return_value_policy::reference,
+                               "Gets the Item actor created by the player");
     py::class_<PlayerEmoteEvent, PlayerEvent>(m, "PlayerEmoteEvent", "Called when a player uses and emote")
         .def_property_readonly("emote_id", &PlayerEmoteEvent::getEmoteId, "Gets the emote ID");
     py::class_<PlayerGameModeChangeEvent, PlayerEvent, ICancellable>(

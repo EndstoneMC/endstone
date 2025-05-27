@@ -21,6 +21,7 @@
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/network/packet/update_player_game_type_packet.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/item/item_actor.h"
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
@@ -31,16 +32,54 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_death_event.h"
+#include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
-#include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
+
+bool handleEvent(const PlayerDropItemEvent &event)
+{
+    if (auto *p = WeakEntityRef(event.player).tryUnwrap<::Player>(); p) {
+        if (auto *item = WeakEntityRef(event.spawned_item_actor).tryUnwrap<::ItemActor>(); item) {
+            const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+            auto &player = p->getEndstoneActor<endstone::core::EndstonePlayer>();
+            auto &drop = item->getEndstoneActor<endstone::core::EndstoneActor>();
+            endstone::PlayerDropItemEvent e(player, drop);
+            server.getPluginManager().callEvent(e);
+
+            if (e.isCancelled()) {
+                const auto current_item = player.getInventory().getItemInMainHand();
+                const auto dropped_item = endstone::core::EndstoneItemStack::fromMinecraft(item->getItemStack());
+                if (current_item == nullptr || current_item->getAmount() == 0) {
+                    // The complete stack was dropped
+                    player.getInventory().setItemInMainHand(dropped_item.get());
+                }
+                else if (current_item->isSimilar(*dropped_item) &&
+                         current_item->getAmount() < current_item->getMaxStackSize() &&
+                         dropped_item->getAmount() == 1) {
+                    // Only one item is dropped
+                    current_item->setAmount(current_item->getAmount() + 1);
+                    player.getInventory().setItemInMainHand(current_item.get());
+                }
+                else {
+                    // Fallback
+                    player.getInventory().addItem(*dropped_item);
+                }
+
+                // Remove dropped item
+                drop.remove();
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 bool handleEvent(const PlayerDamageEvent &event)
 {
@@ -219,7 +258,8 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
 {
     auto visitor = [&](auto &&arg) -> HandlerResult {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDropItemEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
