@@ -35,6 +35,8 @@ public:
 
     [[nodiscard]] virtual NamespacedKey getKey() const = 0;
 
+    [[nodiscard]] virtual std::string getTranslationKey() const = 0;
+
     [[nodiscard]] virtual int getMaxLevel() const = 0;
 
     [[nodiscard]] virtual int getStartLevel() const = 0;

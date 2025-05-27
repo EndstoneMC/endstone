@@ -479,6 +479,7 @@
   <compound refid="classendstone_1_1Enchantment" kind="class"><name>endstone::Enchantment</name>
     <member refid="classendstone_1_1Enchantment_1a52f4acd21d110aa3cf5ca3e41815310c" kind="function"><name>~Enchantment</name></member>
     <member refid="classendstone_1_1Enchantment_1a41203620bf41656373136674afe18921" kind="function"><name>getKey</name></member>
+    <member refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" kind="function"><name>getMaxLevel</name></member>
     <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" kind="function"><name>getStartLevel</name></member>
     <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" kind="function"><name>conflictsWith</name></member>

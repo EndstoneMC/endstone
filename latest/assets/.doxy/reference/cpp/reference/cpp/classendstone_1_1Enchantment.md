@@ -56,6 +56,7 @@
 | virtual [**NamespacedKey**](classendstone_1_1NamespacedKey.md) | [**getKey**](#function-getkey) () const = 0<br>_Return the namespaced identifier for this enchantment._  |
 | virtual int | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
 | virtual int | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
+| virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 | virtual  | [**~Enchantment**](#function-enchantment) () = default<br> |
 
 
@@ -225,6 +226,31 @@ virtual int endstone::Enchantment::getStartLevel () const = 0
 **Returns:**
 
 Starting level of the [**Enchantment**](classendstone_1_1Enchantment.md) 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getTranslationKey 
+
+_Get the translation key, suitable for use in a translation component._ 
+```C++
+virtual std::string endstone::Enchantment::getTranslationKey () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the translation key 
 
 
 
