@@ -37,7 +37,7 @@
         <location file="include/endstone/scoreboard/score.h" line="37" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Score_1af2ee6bac6b319da8830876d01be9cb89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
+        <type>Result&lt; int &gt;</type>
         <definition>virtual Result&lt; int &gt; endstone::Score::getValue</definition>
         <argsstring>() const =0</argsstring>
         <name>getValue</name>
@@ -55,13 +55,13 @@
         <location file="include/endstone/scoreboard/score.h" line="44" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Score_1af9354fe026c4039778140e04124dfce4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Score::setValue</definition>
         <argsstring>(int score)=0</argsstring>
         <name>setValue</name>
         <qualifiedname>endstone::Score::setValue</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>score</declname>
         </param>
         <briefdescription>
@@ -84,7 +84,7 @@
         <location file="include/endstone/scoreboard/score.h" line="51" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Score_1a9a67b67e08e453c1b18568dd7404a04f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref> &gt;</type>
+        <type>Result&lt; bool &gt;</type>
         <definition>virtual Result&lt; bool &gt; endstone::Score::isScoreSet</definition>
         <argsstring>() const =0</argsstring>
         <name>isScoreSet</name>

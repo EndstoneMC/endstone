@@ -7,7 +7,7 @@
     <includes refid="player__death__event_8h" local="no">endstone/event/player/player_death_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerDeathEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -99,7 +99,7 @@
         <location file="include/endstone/event/player/player_death_event.h" line="35" column="18" bodyfile="include/endstone/event/player/player_death_event.h" bodystart="35" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1ac76e5c152bc08891e8ecf76802c66682" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::PlayerDeathEvent::getDeathMessage</definition>
         <argsstring>() const</argsstring>
         <name>getDeathMessage</name>
@@ -117,13 +117,13 @@
         <location file="include/endstone/event/player/player_death_event.h" line="45" column="24" bodyfile="include/endstone/event/player/player_death_event.h" bodystart="45" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerDeathEvent::setDeathMessage</definition>
         <argsstring>(const std::string &amp;death_message)</argsstring>
         <name>setDeathMessage</name>
         <qualifiedname>endstone::PlayerDeathEvent::setDeathMessage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>death_message</declname>
         </param>
         <briefdescription>

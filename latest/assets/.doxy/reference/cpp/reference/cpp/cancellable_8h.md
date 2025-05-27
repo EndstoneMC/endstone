@@ -34,7 +34,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;[**typename**](classendstone_1_1Vector.md) EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
+| class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;typename EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
 | class | [**ICancellable**](classendstone_1_1ICancellable.md) <br> |
 
 

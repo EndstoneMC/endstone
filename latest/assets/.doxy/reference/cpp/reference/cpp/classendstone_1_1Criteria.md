@@ -59,7 +59,7 @@ _Represents a scoreboard criteria._
 | ---: | :--- |
 | virtual [**RenderType**](namespaceendstone.md#enum-rendertype) | [**getDefaultRenderType**](#function-getdefaultrendertype) () const = 0<br> |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Get the name of this criteria (its unique id)._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isReadOnly**](#function-isreadonly) () const = 0<br>_Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have their scores changed._  |
+| virtual bool | [**isReadOnly**](#function-isreadonly) () const = 0<br>_Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have their scores changed._  |
 | virtual  | [**~Criteria**](#function-criteria) () = default<br> |
 
 

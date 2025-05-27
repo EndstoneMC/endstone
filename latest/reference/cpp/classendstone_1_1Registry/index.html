@@ -2260,7 +2260,7 @@ For latest updates join the chat on
 
 
 <h1 id="class-endstoneregistry">Class endstone::Registry<a class="headerlink" href="#class-endstoneregistry" title="Permanent link">&para;</a></h1>
-<p><strong>template &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a>&gt;</strong></p>
+<p><strong>template &lt;typename T&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>Registry</strong></a></p>
 <p><em>Abstract registry interface for keyed objects.</em> <a href="#detailed-description">More...</a></p>
 <ul>
@@ -2276,24 +2276,24 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-foreach"><strong>forEach</strong></a> (std::function&lt; <a href="../classendstone_1_1Vector/"><strong>bool</strong></a>(<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &amp;)&gt; func) const = 0<br><em>Apply a function to each stored element.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-foreach"><strong>forEach</strong></a> (std::function&lt; bool(const T &amp;)&gt; func) const = 0<br><em>Apply a function to each stored element.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>T</strong></a> *</td>
+<td style="text-align: right;">virtual T *</td>
 <td style="text-align: left;"><a href="#function-get-12"><strong>get</strong></a> (<a href="../classendstone_1_1NamespacedKey/"><strong>NamespacedKey</strong></a> key) noexcept = 0<br><em>Get the object by its key.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a> *</td>
+<td style="text-align: right;">virtual const T *</td>
 <td style="text-align: left;"><a href="#function-get-22"><strong>get</strong></a> (<a href="../classendstone_1_1NamespacedKey/"><strong>NamespacedKey</strong></a> key) noexcept const = 0<br><em>Const overload of</em> <a href="./#function-get-12"><em><strong>get()</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getorthrow-12"><strong>getOrThrow</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1NamespacedKey/"><strong>NamespacedKey</strong></a> key) <br><em>Get the object by its key or throw if missing.</em></td>
+<td style="text-align: right;">virtual T &amp;</td>
+<td style="text-align: left;"><a href="#function-getorthrow-12"><strong>getOrThrow</strong></a> (const <a href="../classendstone_1_1NamespacedKey/"><strong>NamespacedKey</strong></a> key) <br><em>Get the object by its key or throw if missing.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getorthrow-22"><strong>getOrThrow</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1NamespacedKey/"><strong>NamespacedKey</strong></a> key) const<br><em>Const overload of</em> <a href="./#function-getorthrow-12"><em><strong>getOrThrow()</strong></em></a> <em>.</em></td>
+<td style="text-align: right;">virtual const T &amp;</td>
+<td style="text-align: left;"><a href="#function-getorthrow-22"><strong>getOrThrow</strong></a> (const <a href="../classendstone_1_1NamespacedKey/"><strong>NamespacedKey</strong></a> key) const<br><em>Const overload of</em> <a href="./#function-getorthrow-12"><em><strong>getOrThrow()</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2311,7 +2311,7 @@ For latest updates join the chat on
 <h3 id="function-foreach">function forEach<a class="headerlink" href="#function-foreach" title="Permanent link">&para;</a></h3>
 <p><em>Apply a function to each stored element.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">forEach</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>Iterates over all stored elements and applies the provided function to them. The iteration continues until the function returns false or all elements have been processed.</p>
@@ -2338,7 +2338,7 @@ For latest updates join the chat on
 
 <h3 id="function-get-22">function get [2/2]<a class="headerlink" href="#function-get-22" title="Permanent link">&para;</a></h3>
 <p><em>Const overload of</em> <a href="./#function-get-12"><em><strong>get()</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -2353,7 +2353,7 @@ For latest updates join the chat on
 <h3 id="function-getorthrow-12">function getOrThrow [&frac12;]<a class="headerlink" href="#function-getorthrow-12" title="Permanent link">&para;</a></h3>
 <p><em>Get the object by its key or throw if missing.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">getOrThrow</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="n">key</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2370,8 +2370,8 @@ For latest updates join the chat on
 
 <h3 id="function-getorthrow-22">function getOrThrow [2/2]<a class="headerlink" href="#function-getorthrow-22" title="Permanent link">&para;</a></h3>
 <p><em>Const overload of</em> <a href="./#function-getorthrow-12"><em><strong>getOrThrow()</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">getOrThrow</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="n">key</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">getOrThrow</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

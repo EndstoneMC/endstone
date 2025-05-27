@@ -2439,7 +2439,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getrelative-13"><strong>getRelative</strong></a> (<a href="../classendstone_1_1Vector/"><strong>int</strong></a> offset_x, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> offset_y, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> offset_z) = 0<br><em>Gets the block at the given offsets.</em></td>
+<td style="text-align: left;"><a href="#function-getrelative-13"><strong>getRelative</strong></a> (int offset_x, int offset_y, int offset_z) = 0<br><em>Gets the block at the given offsets.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt;</td>
@@ -2447,39 +2447,39 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getrelative-33"><strong>getRelative</strong></a> (BlockFace face, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> distance) = 0<br><em>Gets the block at the given distance of the given face.</em></td>
+<td style="text-align: left;"><a href="#function-getrelative-33"><strong>getRelative</strong></a> (BlockFace face, int distance) = 0<br><em>Gets the block at the given distance of the given face.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () const = 0<br><em>Get the type of the block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-getx"><strong>getX</strong></a> () const = 0<br><em>Gets the x-coordinate of this block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-gety"><strong>getY</strong></a> () const = 0<br><em>Gets the y-coordinate of this block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-getz"><strong>getZ</strong></a> () const = 0<br><em>Gets the z-coordinate of this block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-setdata-12"><strong>setData</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &amp; data) = 0<br><em>Sets the complete data for this block.</em></td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
+<td style="text-align: left;"><a href="#function-setdata-12"><strong>setData</strong></a> (const <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &amp; data) = 0<br><em>Sets the complete data for this block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-setdata-22"><strong>setData</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &amp; data, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> apply_physics) = 0<br><em>Sets the complete data for this block.</em></td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
+<td style="text-align: left;"><a href="#function-setdata-22"><strong>setData</strong></a> (const <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &amp; data, bool apply_physics) = 0<br><em>Sets the complete data for this block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
 <td style="text-align: left;"><a href="#function-settype-12"><strong>setType</strong></a> (std::string type) = 0<br><em>Sets the type of this block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-settype-22"><strong>setType</strong></a> (std::string type, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> apply_physics) = 0<br><em>Sets the type of this block.</em></td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
+<td style="text-align: left;"><a href="#function-settype-22"><strong>setType</strong></a> (std::string type, bool apply_physics) = 0<br><em>Sets the type of this block.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2616,7 +2616,7 @@ For latest updates join the chat on
 <h3 id="function-setdata-12">function setData [&frac12;]<a class="headerlink" href="#function-setdata-12" title="Permanent link">&para;</a></h3>
 <p><em>Sets the complete data for this block.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">setData</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2628,7 +2628,7 @@ For latest updates join the chat on
 <h3 id="function-setdata-22">function setData [2/2]<a class="headerlink" href="#function-setdata-22" title="Permanent link">&para;</a></h3>
 <p><em>Sets the complete data for this block.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">setData</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">,</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">,</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">apply_physics</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>

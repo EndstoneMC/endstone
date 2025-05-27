@@ -2317,16 +2317,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-additem"><strong>addItem</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-additem"><strong>addItem</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-clear"><strong>clear</strong></a> () = 0<br><em>Clears out the whole</em> <a href="./"><em><strong>Inventory</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-first"><strong>first</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) const = 0<br><em>Returns the first slot in the inventory containing an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>with the given stack.</em></td>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="#function-first"><strong>first</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) const = 0<br><em>Returns the first slot in the inventory containing an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>with the given stack.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
@@ -2334,23 +2334,23 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getitem"><strong>getItem</strong></a> (<a href="../classendstone_1_1Vector/"><strong>int</strong></a> index) const = 0<br><em>Returns the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>found in the slot at the given index.</em></td>
+<td style="text-align: left;"><a href="#function-getitem"><strong>getItem</strong></a> (int index) const = 0<br><em>Returns the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>found in the slot at the given index.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-getmaxstacksize"><strong>getMaxStackSize</strong></a> () const = 0<br><em>Returns the maximum stack size for an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>in this inventory.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-getsize"><strong>getSize</strong></a> () const = 0<br><em>Returns the size of the inventory.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-isempty"><strong>isEmpty</strong></a> () const = 0<br><em>Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setitem"><strong>setItem</strong></a> (<a href="../classendstone_1_1Vector/"><strong>int</strong></a> index, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item) = 0<br><em>Stores the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>at the given index of the inventory.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setitem"><strong>setItem</strong></a> (int index, const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item) = 0<br><em>Stores the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>at the given index of the inventory.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2362,7 +2362,7 @@ For latest updates join the chat on
 <h3 id="function-additem">function addItem<a class="headerlink" href="#function-additem" title="Permanent link">&para;</a></h3>
 <p><em>Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Inventory</span><span class="o">::</span><span class="n">addItem</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2380,7 +2380,7 @@ For latest updates join the chat on
 <h3 id="function-first">function first<a class="headerlink" href="#function-first" title="Permanent link">&para;</a></h3>
 <p><em>Returns the first slot in the inventory containing an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>with the given stack.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Inventory</span><span class="o">::</span><span class="n">first</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2441,7 +2441,7 @@ For latest updates join the chat on
 <p><em>Stores the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>at the given index of the inventory.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Inventory</span><span class="o">::</span><span class="n">setItem</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">item</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">item</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

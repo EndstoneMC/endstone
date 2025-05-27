@@ -42,7 +42,7 @@
         <name>PluginCommand</name>
         <qualifiedname>endstone::PluginCommand::PluginCommand</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &amp;</type>
           <declname>command</declname>
         </param>
         <param>
@@ -58,7 +58,7 @@
         <location file="include/endstone/command/plugin_command.h" line="28" column="5" bodyfile="include/endstone/command/plugin_command.h" bodystart="28" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::PluginCommand::execute</definition>
         <argsstring>(CommandSender &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const override</argsstring>
         <name>execute</name>
@@ -69,7 +69,7 @@
           <declname>sender</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; std::string &gt; &amp;</type>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -102,7 +102,7 @@
         <location file="include/endstone/command/plugin_command.h" line="30" column="10" bodyfile="include/endstone/command/plugin_command.h" bodystart="30" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PluginCommand::setExecutor</definition>
         <argsstring>(std::shared_ptr&lt; CommandExecutor &gt; executor)</argsstring>
         <name>setExecutor</name>

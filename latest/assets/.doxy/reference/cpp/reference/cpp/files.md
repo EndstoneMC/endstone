@@ -115,6 +115,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**inventory.h**](inventory_8h.md)     
             * **file** [**item\_factory.h**](item__factory_8h.md)     
             * **file** [**item\_stack.h**](item__stack_8h.md)     
+            * **file** [**item\_type.h**](item__type_8h.md)     
             * **file** [**player\_inventory.h**](player__inventory_8h.md)     
         * **dir** [**lang**](dir_cd2600a5c389b96acc106cf97f774d1c.md)     
             * **file** [**language.h**](language_8h.md)     

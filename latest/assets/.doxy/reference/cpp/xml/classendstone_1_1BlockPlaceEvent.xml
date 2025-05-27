@@ -6,7 +6,7 @@
     <includes refid="block__place__event_8h" local="no">endstone/event/block/block_place_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1BlockPlaceEvent_1ac4e2bdd1835d163b9eb5accdfbbd63c1" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::BlockPlaceEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>

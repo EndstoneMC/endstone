@@ -2357,7 +2357,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> std::string_view</td>
+<td style="text-align: right;">constexpr std::string_view</td>
 <td style="text-align: left;"><a href="#variable-minecraft"><strong>MINECRAFT</strong></a>   = <code>"minecraft"</code><br></td>
 </tr>
 </tbody>
@@ -2372,20 +2372,20 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp;</td>
+<td style="text-align: right;">const std::string &amp;</td>
 <td style="text-align: left;"><a href="#function-getkey"><strong>getKey</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string &amp;</td>
+<td style="text-align: right;">const std::string &amp;</td>
 <td style="text-align: left;"><a href="#function-getnamespace"><strong>getNamespace</strong></a> () noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="./"><strong>NamespacedKey</strong></a> &amp; other) noexcept const<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator"><strong>operator!=</strong></a> (const <a href="./"><strong>NamespacedKey</strong></a> &amp; other) noexcept const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_1"><strong>operator==</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="./"><strong>NamespacedKey</strong></a> &amp; other) noexcept const<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator_1"><strong>operator==</strong></a> (const <a href="./"><strong>NamespacedKey</strong></a> &amp; other) noexcept const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
@@ -2404,11 +2404,11 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">Result&lt; <a href="./"><strong>NamespacedKey</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-create"><strong>create</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::string_view key) <br><em>Create a key in the plugin's namespace.</em></td>
+<td style="text-align: left;"><a href="#function-create"><strong>create</strong></a> (const <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::string_view key) <br><em>Create a key in the plugin's namespace.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">Result&lt; <a href="./"><strong>NamespacedKey</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-fromstring"><strong>fromString</strong></a> (std::string_view input, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * plugin=<a href="../classendstone_1_1Vector/"><strong>nullptr</strong></a>) <br></td>
+<td style="text-align: left;"><a href="#function-fromstring"><strong>fromString</strong></a> (std::string_view input, const <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * plugin=nullptr) <br></td>
 </tr>
 </tbody>
 </table>
@@ -2434,14 +2434,14 @@ For latest updates join the chat on
 
 <h3 id="function-operator">function operator!=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_1">function operator==<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
@@ -2454,7 +2454,7 @@ For latest updates join the chat on
 <h3 id="function-create">function create<a class="headerlink" href="#function-create" title="Permanent link">&para;</a></h3>
 <p><em>Create a key in the plugin's namespace.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="n">create</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
@@ -2468,7 +2468,7 @@ For latest updates join the chat on
 <h3 id="function-fromstring">function fromString<a class="headerlink" href="#function-fromstring" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NamespacedKey</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NamespacedKey</span><span class="o">::</span><span class="n">fromString</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">input</span><span class="p">,</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">plugin</span><span class="o">=</span><span class="k">nullptr</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">plugin</span><span class="o">=</span><span class="k">nullptr</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Parse a <a href="./"><strong>NamespacedKey</strong></a> from a string, with an optional default namespace.</p>

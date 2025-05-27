@@ -2252,18 +2252,18 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-maprenderer"><strong>MapRenderer</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> is_contextual=<a href="../classendstone_1_1Vector/"><strong>false</strong></a>) <br><em>Initialize the map renderer base with the given contextual status.</em></td>
+<td style="text-align: left;"><a href="#function-maprenderer"><strong>MapRenderer</strong></a> (const bool is_contextual=false) <br><em>Initialize the map renderer base with the given contextual status.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-initialize"><strong>initialize</strong></a> (<a href="../classendstone_1_1MapView/"><strong>MapView</strong></a> &amp; map) <br><em>Initialize this</em> <a href="./"><em><strong>MapRenderer</strong></em></a> <em>for the given map.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-iscontextual"><strong>isContextual</strong></a> () const<br><em>Get whether the renderer is contextual, i.e. has different canvases for different players.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-render"><strong>render</strong></a> (<a href="../classendstone_1_1MapView/"><strong>MapView</strong></a> &amp; map, <a href="../classendstone_1_1MapCanvas/"><strong>MapCanvas</strong></a> &amp; canvas, <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) = 0<br><em>Render to the given map.</em></td>
 </tr>
 <tr>
@@ -2276,7 +2276,7 @@ For latest updates join the chat on
 <h3 id="function-maprenderer">function MapRenderer<a class="headerlink" href="#function-maprenderer" title="Permanent link">&para;</a></h3>
 <p><em>Initialize the map renderer base with the given contextual status.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapRenderer</span><span class="o">::</span><span class="n">MapRenderer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_contextual</span><span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_contextual</span><span class="o">=</span><span class="nb">false</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

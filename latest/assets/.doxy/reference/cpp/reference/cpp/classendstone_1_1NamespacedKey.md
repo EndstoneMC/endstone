@@ -38,7 +38,7 @@ _Represents a string-based key which consists of two components - a namespace an
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Vector.md) std::string\_view | [**MINECRAFT**](#variable-minecraft)   = `"minecraft"`<br> |
+|  constexpr std::string\_view | [**MINECRAFT**](#variable-minecraft)   = `"minecraft"`<br> |
 
 
 
@@ -57,10 +57,10 @@ _Represents a string-based key which consists of two components - a namespace an
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string & | [**getKey**](#function-getkey) () noexcept const<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string & | [**getNamespace**](#function-getnamespace) () noexcept const<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Vector.md) [**NamespacedKey**](classendstone_1_1NamespacedKey.md) & other) noexcept const<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Vector.md) [**NamespacedKey**](classendstone_1_1NamespacedKey.md) & other) noexcept const<br> |
+|  const std::string & | [**getKey**](#function-getkey) () noexcept const<br> |
+|  const std::string & | [**getNamespace**](#function-getnamespace) () noexcept const<br> |
+|  bool | [**operator!=**](#function-operator) (const [**NamespacedKey**](classendstone_1_1NamespacedKey.md) & other) noexcept const<br> |
+|  bool | [**operator==**](#function-operator_1) (const [**NamespacedKey**](classendstone_1_1NamespacedKey.md) & other) noexcept const<br> |
 |  std::string | [**toString**](#function-tostring) () noexcept const<br> |
 
 
@@ -68,8 +68,8 @@ _Represents a string-based key which consists of two components - a namespace an
 
 | Type | Name |
 | ---: | :--- |
-|  Result&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**create**](#function-create) ([**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin, std::string\_view key) <br>_Create a key in the plugin's namespace._  |
-|  Result&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**fromString**](#function-fromstring) (std::string\_view input, [**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) \* plugin=[**nullptr**](classendstone_1_1Vector.md)) <br> |
+|  Result&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**create**](#function-create) (const [**Plugin**](classendstone_1_1Plugin.md) & plugin, std::string\_view key) <br>_Create a key in the plugin's namespace._  |
+|  Result&lt; [**NamespacedKey**](classendstone_1_1NamespacedKey.md) &gt; | [**fromString**](#function-fromstring) (std::string\_view input, const [**Plugin**](classendstone_1_1Plugin.md) \* plugin=nullptr) <br> |
 
 
 
@@ -160,7 +160,7 @@ inline const std::string & endstone::NamespacedKey::getNamespace () noexcept con
 
 ```C++
 bool endstone::NamespacedKey::operator!= (
-    const  NamespacedKey & other
+    const NamespacedKey & other
 ) noexcept const
 ```
 
@@ -175,7 +175,7 @@ bool endstone::NamespacedKey::operator!= (
 
 ```C++
 bool endstone::NamespacedKey::operator== (
-    const  NamespacedKey & other
+    const NamespacedKey & other
 ) noexcept const
 ```
 
@@ -206,7 +206,7 @@ inline std::string endstone::NamespacedKey::toString () noexcept const
 _Create a key in the plugin's namespace._ 
 ```C++
 static inline Result< NamespacedKey > endstone::NamespacedKey::create (
-    const  Plugin & plugin,
+    const Plugin & plugin,
     std::string_view key
 ) 
 ```
@@ -235,7 +235,7 @@ static inline Result< NamespacedKey > endstone::NamespacedKey::create (
 ```C++
 static inline Result< NamespacedKey > endstone::NamespacedKey::fromString (
     std::string_view input,
-    const  Plugin * plugin=nullptr
+    const Plugin * plugin=nullptr
 ) 
 ```
 

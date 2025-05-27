@@ -6,7 +6,7 @@
     <includes refid="block__break__event_8h" local="no">endstone/event/block/block_break_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1BlockBreakEvent_1a64ca48725564c7fe543234eb464e4cbe" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::BlockBreakEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>

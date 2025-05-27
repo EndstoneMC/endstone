@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Abstract registry interface for keyed objects._  |
+| class | [**Registry**](classendstone_1_1Registry.md) &lt;typename T&gt;<br>_Abstract registry interface for keyed objects._  |
 
 
 

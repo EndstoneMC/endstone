@@ -16,9 +16,9 @@
         <name>Event</name>
         <qualifiedname>endstone::ServerEvent::Event</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>async</declname>
-          <defval><ref refid="classendstone_1_1Vector" kindref="compound">false</ref></defval>
+          <defval>false</defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -35,7 +35,7 @@
         <name>Event</name>
         <qualifiedname>endstone::ServerEvent::Event</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>

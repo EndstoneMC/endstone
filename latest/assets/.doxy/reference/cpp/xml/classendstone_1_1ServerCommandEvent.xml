@@ -6,7 +6,7 @@
     <includes refid="server__command__event_8h" local="no">endstone/event/server/server_command_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ServerCommandEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -112,7 +112,7 @@
         <location file="include/endstone/event/server/server_command_event.h" line="49" column="18" bodyfile="include/endstone/event/server/server_command_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerCommandEvent_1a738f83bdce175aed3493f4e15f7834a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ServerCommandEvent::setCommand</definition>
         <argsstring>(std::string message)</argsstring>
         <name>setCommand</name>

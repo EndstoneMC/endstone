@@ -34,7 +34,7 @@
         <location file="include/endstone/form/controls/dropdown.h" line="117" column="17" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Dropdown_1a92741c2026b72e956d368414a076a6d0" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
+        <type>std::optional&lt; int &gt;</type>
         <definition>std::optional&lt;int&gt; endstone::Dropdown::default_index_</definition>
         <argsstring></argsstring>
         <name>default_index_</name>
@@ -78,7 +78,7 @@
           <declname>options</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
+          <type>std::optional&lt; int &gt;</type>
           <declname>default_index</declname>
           <defval>std::nullopt</defval>
         </param>
@@ -146,7 +146,7 @@
         <name>addOption</name>
         <qualifiedname>endstone::Dropdown::addOption</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>option</declname>
         </param>
         <briefdescription>
@@ -220,7 +220,7 @@
         <location file="include/endstone/form/controls/dropdown.h" line="87" column="14" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="87" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
+        <type>std::optional&lt; int &gt;</type>
         <definition>std::optional&lt; int &gt; endstone::Dropdown::getDefaultIndex</definition>
         <argsstring>() const</argsstring>
         <name>getDefaultIndex</name>
@@ -244,7 +244,7 @@
         <name>setDefaultIndex</name>
         <qualifiedname>endstone::Dropdown::setDefaultIndex</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
+          <type>std::optional&lt; int &gt;</type>
           <declname>default_index</declname>
         </param>
         <briefdescription>

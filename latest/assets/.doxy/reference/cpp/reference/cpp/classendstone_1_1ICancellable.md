@@ -52,9 +52,9 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](#function-icancellable) () = default<br> |
 
 

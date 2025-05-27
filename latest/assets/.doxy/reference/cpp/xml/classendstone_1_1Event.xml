@@ -14,10 +14,10 @@
       <memberdef kind="friend" id="classendstone_1_1Event_1a7f434d804d3d19ce4876be9b2a540fcf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type><ref refid="classendstone_1_1Vector" kindref="compound">class</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
+            <type>class T</type>
           </param>
         </templateparamlist>
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">class</ref></type>
+        <type>class</type>
         <definition>friend class Cancellable</definition>
         <argsstring></argsstring>
         <name>Cancellable</name>
@@ -34,7 +34,7 @@
         <location file="include/endstone/event/event.h" line="57" column="18" bodyfile="include/endstone/event/event.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1Event_1a0b257358246ba8f9c2f228c35e4f3e85" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">class</ref></type>
+        <type>class</type>
         <definition>friend class EventHandler</definition>
         <argsstring></argsstring>
         <name>EventHandler</name>
@@ -53,7 +53,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Event_1a17c460fb3a1fa2b8b8f60a0744c0ab89" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Event::async_</definition>
         <argsstring></argsstring>
         <name>async_</name>
@@ -67,12 +67,12 @@
         <location file="include/endstone/event/event.h" line="60" column="10" bodyfile="include/endstone/event/event.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Event_1a5f9dfb12b76c9d6b46a42fb4238576f0" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Event::cancelled_</definition>
         <argsstring></argsstring>
         <name>cancelled_</name>
         <qualifiedname>endstone::Event::cancelled_</qualifiedname>
-        <initializer>{<ref refid="classendstone_1_1Vector" kindref="compound">false</ref>}</initializer>
+        <initializer>{false}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -90,9 +90,9 @@
         <name>Event</name>
         <qualifiedname>endstone::Event::Event</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>async</declname>
-          <defval><ref refid="classendstone_1_1Vector" kindref="compound">false</ref></defval>
+          <defval>false</defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -109,7 +109,7 @@
         <name>Event</name>
         <qualifiedname>endstone::Event::Event</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -126,7 +126,7 @@
         <name>operator=</name>
         <qualifiedname>endstone::Event::operator=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -203,7 +203,7 @@
         <location file="include/endstone/event/event.h" line="38" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Event::isAsynchronous</definition>
         <argsstring>() const</argsstring>
         <name>isAsynchronous</name>
@@ -223,7 +223,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classendstone_1_1Event_1a262e0232aa1ac5f2db91298dc404c9ec" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Event::isCancellable</definition>
         <argsstring>() const</argsstring>
         <name>isCancellable</name>

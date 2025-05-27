@@ -32,7 +32,7 @@ _Represents a map item._
 
 | Type | Name |
 | ---: | :--- |
-| enum [**uint8\_t**](classendstone_1_1Vector.md) | [**Scale**](#enum-scale)  <br>_An enum representing all possible scales a map can be set to._  |
+| enum uint8\_t | [**Scale**](#enum-scale)  <br>_An enum representing all possible scales a map can be set to._  |
 
 
 
@@ -57,23 +57,23 @@ _Represents a map item._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**addRenderer**](#function-addrenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) & renderer) = 0<br>_Add a renderer to this map._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getCenterX**](#function-getcenterx) () const = 0<br>_Get the center X position of this map._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getCenterZ**](#function-getcenterz) () const = 0<br>_Get the center Z position of this map._  |
+| virtual void | [**addRenderer**](#function-addrenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) & renderer) = 0<br>_Add a renderer to this map._  |
+| virtual int | [**getCenterX**](#function-getcenterx) () const = 0<br>_Get the center X position of this map._  |
+| virtual int | [**getCenterZ**](#function-getcenterz) () const = 0<br>_Get the center Z position of this map._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) () const = 0<br>_Get the dimension that this map is associated with._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Get the ID of this map item for use with_ [_**MapMeta**_](classendstone_1_1MapMeta.md) _._ |
 | virtual std::vector&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) \* &gt; | [**getRenderers**](#function-getrenderers) () const = 0<br>_Get a list of MapRenderers currently in effect._  |
 | virtual [**Scale**](classendstone_1_1MapView.md#enum-scale) | [**getScale**](#function-getscale) () const = 0<br>_Get the scale of this map._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isLocked**](#function-islocked) () const = 0<br>_Gets whether the map is locked or not. A locked map may not be explored further._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isUnlimitedTracking**](#function-isunlimitedtracking) () const = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isVirtual**](#function-isvirtual) () const = 0<br>_Check whether this map is virtual._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**removeRenderer**](#function-removerenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) \* renderer) = 0<br>_Remove a renderer from this map._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCenterX**](#function-setcenterx) ([**int**](classendstone_1_1Vector.md) x) = 0<br>_Set the center X position of this map._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCenterZ**](#function-setcenterz) ([**int**](classendstone_1_1Vector.md) z) = 0<br>_Set the center Z position of this map._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setDimension**](#function-setdimension) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension) = 0<br>_Set the dimension that this map is associated with._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setLocked**](#function-setlocked) ([**bool**](classendstone_1_1Vector.md) locked) = 0<br>_Sets whether the map is locked or not. A locked map may not be explored further._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setScale**](#function-setscale) ([**Scale**](classendstone_1_1MapView.md#enum-scale) scale) = 0<br>_Set the scale of this map._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setUnlimitedTracking**](#function-setunlimitedtracking) ([**bool**](classendstone_1_1Vector.md) unlimited) = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
+| virtual bool | [**isLocked**](#function-islocked) () const = 0<br>_Gets whether the map is locked or not. A locked map may not be explored further._  |
+| virtual bool | [**isUnlimitedTracking**](#function-isunlimitedtracking) () const = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
+| virtual bool | [**isVirtual**](#function-isvirtual) () const = 0<br>_Check whether this map is virtual._  |
+| virtual bool | [**removeRenderer**](#function-removerenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) \* renderer) = 0<br>_Remove a renderer from this map._  |
+| virtual void | [**setCenterX**](#function-setcenterx) (int x) = 0<br>_Set the center X position of this map._  |
+| virtual void | [**setCenterZ**](#function-setcenterz) (int z) = 0<br>_Set the center Z position of this map._  |
+| virtual void | [**setDimension**](#function-setdimension) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension) = 0<br>_Set the dimension that this map is associated with._  |
+| virtual void | [**setLocked**](#function-setlocked) (bool locked) = 0<br>_Sets whether the map is locked or not. A locked map may not be explored further._  |
+| virtual void | [**setScale**](#function-setscale) ([**Scale**](classendstone_1_1MapView.md#enum-scale) scale) = 0<br>_Set the scale of this map._  |
+| virtual void | [**setUnlimitedTracking**](#function-setunlimitedtracking) (bool unlimited) = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
 | virtual  | [**~MapView**](#function-mapview) () = default<br> |
 
 

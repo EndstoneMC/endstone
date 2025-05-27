@@ -33,15 +33,15 @@
           <declname>dimension</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -71,7 +71,7 @@
         <location file="include/endstone/level/position.h" line="39" column="16" bodyfile="include/endstone/level/position.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Position::setDimension</definition>
         <argsstring>(Dimension &amp;dimension)</argsstring>
         <name>setDimension</name>
@@ -100,7 +100,7 @@
         <location file="include/endstone/level/position.h" line="49" column="10" bodyfile="include/endstone/level/position.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Position::getBlockX</definition>
         <argsstring>() const</argsstring>
         <name>getBlockX</name>
@@ -118,7 +118,7 @@
         <location file="include/endstone/level/position.h" line="59" column="10" bodyfile="include/endstone/level/position.h" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Position::getBlockY</definition>
         <argsstring>() const</argsstring>
         <name>getBlockY</name>
@@ -136,7 +136,7 @@
         <location file="include/endstone/level/position.h" line="69" column="10" bodyfile="include/endstone/level/position.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Position::getBlockZ</definition>
         <argsstring>() const</argsstring>
         <name>getBlockZ</name>

@@ -6,7 +6,7 @@
     <includes refid="broadcast__message__event_8h" local="no">endstone/event/server/broadcast_message_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1BroadcastMessageEvent_1a46c6014d11f209582bf2839fec0dea35" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::BroadcastMessageEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -37,7 +37,7 @@
         <location file="include/endstone/event/server/broadcast_message_event.h" line="75" column="13" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BroadcastMessageEvent_1a53004e13a08c5694d14b948528bf91a9" prot="private" static="no" mutable="no">
-        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
+        <type>std::unordered_set&lt; const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
         <definition>std::unordered_set&lt;const CommandSender *&gt; endstone::BroadcastMessageEvent::recipients_</definition>
         <argsstring></argsstring>
         <name>recipients_</name>
@@ -59,7 +59,7 @@
         <name>BroadcastMessageEvent</name>
         <qualifiedname>endstone::BroadcastMessageEvent::BroadcastMessageEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>async</declname>
         </param>
         <param>
@@ -67,7 +67,7 @@
           <declname>message</declname>
         </param>
         <param>
-          <type>std::unordered_set&lt; <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
+          <type>std::unordered_set&lt; const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
           <declname>recipients</declname>
         </param>
         <briefdescription>
@@ -98,7 +98,7 @@
         <location file="include/endstone/event/server/broadcast_message_event.h" line="39" column="18" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1abded73e5b43b74bb3e0698691e4e34e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+        <type>const Message &amp;</type>
         <definition>const Message &amp; endstone::BroadcastMessageEvent::getMessage</definition>
         <argsstring>() const</argsstring>
         <name>getMessage</name>
@@ -116,7 +116,7 @@
         <location file="include/endstone/event/server/broadcast_message_event.h" line="49" column="20" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a38fe78c4c7758c30f1e08d930417c276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::BroadcastMessageEvent::setMessage</definition>
         <argsstring>(Message message)</argsstring>
         <name>setMessage</name>
@@ -145,7 +145,7 @@
         <location file="include/endstone/event/server/broadcast_message_event.h" line="59" column="10" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a32bd00d3d3836b81cef9852f7ace5a36" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::unordered_set&lt; <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt; &amp;</type>
+        <type>const std::unordered_set&lt; const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt; &amp;</type>
         <definition>const std::unordered_set&lt; const CommandSender * &gt; &amp; endstone::BroadcastMessageEvent::getRecipients</definition>
         <argsstring>() const</argsstring>
         <name>getRecipients</name>

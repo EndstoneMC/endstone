@@ -2632,7 +2632,7 @@ For latest updates join the chat on
 
 
 <h1 id="class-endstonevector">Class endstone::Vector<a class="headerlink" href="#class-endstonevector" title="Permanent link">&para;</a></h1>
-<p><strong>template &lt;<a href="./"><strong>typename</strong></a> <a href="./"><strong>T</strong></a>&gt;</strong></p>
+<p><strong>template &lt;typename T&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>Vector</strong></a></p>
 <p><em>Represents a 3-dimensional vector.</em> </p>
 <ul>
@@ -2648,104 +2648,104 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
+<td style="text-align: right;">constexpr</td>
 <td style="text-align: left;"><a href="#function-vector-12"><strong>Vector</strong></a> () <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-vector-22"><strong>Vector</strong></a> (<a href="./"><strong>T</strong></a> x, <a href="./"><strong>T</strong></a> y, <a href="./"><strong>T</strong></a> z) <br></td>
+<td style="text-align: right;">constexpr</td>
+<td style="text-align: left;"><a href="#function-vector-22"><strong>Vector</strong></a> (T x, T y, T z) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>T</strong></a></td>
-<td style="text-align: left;"><a href="#function-distance"><strong>distance</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr T</td>
+<td style="text-align: left;"><a href="#function-distance"><strong>distance</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>T</strong></a></td>
-<td style="text-align: left;"><a href="#function-distancesquared"><strong>distanceSquared</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr T</td>
+<td style="text-align: left;"><a href="#function-distancesquared"><strong>distanceSquared</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr T</td>
 <td style="text-align: left;"><a href="#function-getx"><strong>getX</strong></a> () const<br><em>Gets the X component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr T</td>
 <td style="text-align: left;"><a href="#function-gety"><strong>getY</strong></a> () const<br><em>Gets the Y component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr T</td>
 <td style="text-align: left;"><a href="#function-getz"><strong>getZ</strong></a> () const<br><em>Gets the Z component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr T</td>
 <td style="text-align: left;"><a href="#function-length"><strong>length</strong></a> () const<br><em>Gets the magnitude of the vector, defined as sqrt(x<sup>2+y</sup>2+z^2).</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr T</td>
 <td style="text-align: left;"><a href="#function-lengthsquared"><strong>lengthSquared</strong></a> () const<br><em>Gets the magnitude of the vector squared.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator"><strong>operator*</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator"><strong>operator*</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator_1"><strong>operator*</strong></a> (<a href="./"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator_1"><strong>operator*</strong></a> (T scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-operator_2"><strong>operator*=</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp;</td>
+<td style="text-align: left;"><a href="#function-operator_2"><strong>operator*=</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator_3"><strong>operator+</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator_3"><strong>operator+</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator_4"><strong>operator+</strong></a> (<a href="./"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator_4"><strong>operator+</strong></a> (T scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-operator_5"><strong>operator+=</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp;</td>
+<td style="text-align: left;"><a href="#function-operator_5"><strong>operator+=</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator_6"><strong>operator-</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator_6"><strong>operator-</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator_7"><strong>operator-</strong></a> (<a href="./"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator_7"><strong>operator-</strong></a> (T scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-operator_8"><strong>operator-=</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp;</td>
+<td style="text-align: left;"><a href="#function-operator_8"><strong>operator-=</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator_9"><strong>operator/</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator_9"><strong>operator/</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-operator_10"><strong>operator/</strong></a> (<a href="./"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt;</td>
+<td style="text-align: left;"><a href="#function-operator_10"><strong>operator/</strong></a> (T scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-operator_11"><strong>operator/=</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp;</td>
+<td style="text-align: left;"><a href="#function-operator_11"><strong>operator/=</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_12"><strong>operator==</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>Vector</strong></a>&lt; <a href="./"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr bool</td>
+<td style="text-align: left;"><a href="#function-operator_12"><strong>operator==</strong></a> (const <a href="./"><strong>Vector</strong></a>&lt; T &gt; &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setx"><strong>setX</strong></a> (<a href="./"><strong>T</strong></a> x) <br><em>Set the X component.</em></td>
+<td style="text-align: right;">constexpr void</td>
+<td style="text-align: left;"><a href="#function-setx"><strong>setX</strong></a> (T x) <br><em>Set the X component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-sety"><strong>setY</strong></a> (<a href="./"><strong>T</strong></a> y) <br><em>Set the Y component.</em></td>
+<td style="text-align: right;">constexpr void</td>
+<td style="text-align: left;"><a href="#function-sety"><strong>setY</strong></a> (T y) <br><em>Set the Y component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setz"><strong>setZ</strong></a> (<a href="./"><strong>T</strong></a> z) <br><em>Set the Z component.</em></td>
+<td style="text-align: right;">constexpr void</td>
+<td style="text-align: left;"><a href="#function-setz"><strong>setZ</strong></a> (T z) <br><em>Set the Z component.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2759,15 +2759,15 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">T</td>
 <td style="text-align: left;"><a href="#variable-x_"><strong>x_</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">T</td>
 <td style="text-align: left;"><a href="#variable-y_"><strong>y_</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>T</strong></a></td>
+<td style="text-align: right;">T</td>
 <td style="text-align: left;"><a href="#variable-z_"><strong>z_</strong></a>  <br></td>
 </tr>
 </tbody>
@@ -2788,8 +2788,8 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-distance">function distance<a class="headerlink" href="#function-distance" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">distance</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">distance</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Get the distance between this vector and another.</p>
@@ -2802,8 +2802,8 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-distancesquared">function distanceSquared<a class="headerlink" href="#function-distancesquared" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">distanceSquared</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">distanceSquared</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Get the squared distance between this vector and another.</p>
@@ -2817,7 +2817,7 @@ For latest updates join the chat on
 
 <h3 id="function-getx">function getX<a class="headerlink" href="#function-getx" title="Permanent link">&para;</a></h3>
 <p><em>Gets the X component.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">getX</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">getX</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The X component. </p>
@@ -2825,7 +2825,7 @@ For latest updates join the chat on
 
 <h3 id="function-gety">function getY<a class="headerlink" href="#function-gety" title="Permanent link">&para;</a></h3>
 <p><em>Gets the Y component.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">getY</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">getY</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The Y component. </p>
@@ -2833,7 +2833,7 @@ For latest updates join the chat on
 
 <h3 id="function-getz">function getZ<a class="headerlink" href="#function-getz" title="Permanent link">&para;</a></h3>
 <p><em>Gets the Z component.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">getZ</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">getZ</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The Z component. </p>
@@ -2841,7 +2841,7 @@ For latest updates join the chat on
 
 <h3 id="function-length">function length<a class="headerlink" href="#function-length" title="Permanent link">&para;</a></h3>
 <p><em>Gets the magnitude of the vector, defined as sqrt(x<sup>2+y</sup>2+z^2).</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">length</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">length</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the magnitude </p>
@@ -2849,15 +2849,15 @@ For latest updates join the chat on
 
 <h3 id="function-lengthsquared">function lengthSquared<a class="headerlink" href="#function-lengthsquared" title="Permanent link">&para;</a></h3>
 <p><em>Gets the magnitude of the vector squared.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">lengthSquared</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">lengthSquared</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the magnitude </p>
 <hr>
 
 <h3 id="function-operator">function operator*<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">*</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">*</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
@@ -2871,14 +2871,14 @@ For latest updates join the chat on
 
 <h3 id="function-operator_2">function operator*=<a class="headerlink" href="#function-operator_2" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">*=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_3">function operator+<a class="headerlink" href="#function-operator_3" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">+</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">+</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
@@ -2892,14 +2892,14 @@ For latest updates join the chat on
 
 <h3 id="function-operator_5">function operator+=<a class="headerlink" href="#function-operator_5" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">+=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator-">function operator-<a class="headerlink" href="#function-operator-" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">-</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">-</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
@@ -2913,14 +2913,14 @@ For latest updates join the chat on
 
 <h3 id="function-operator-_2">function operator-=<a class="headerlink" href="#function-operator-_2" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">-=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_6">function operator/<a class="headerlink" href="#function-operator_6" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">/</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">/</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
@@ -2934,21 +2934,21 @@ For latest updates join the chat on
 
 <h3 id="function-operator_8">function operator/=<a class="headerlink" href="#function-operator_8" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">/=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_9">function operator==<a class="headerlink" href="#function-operator_9" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-setx">function setX<a class="headerlink" href="#function-setx" title="Permanent link">&para;</a></h3>
 <p><em>Set the X component.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">setX</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">setX</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">x</span>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
@@ -2962,7 +2962,7 @@ For latest updates join the chat on
 
 <h3 id="function-sety">function setY<a class="headerlink" href="#function-sety" title="Permanent link">&para;</a></h3>
 <p><em>Set the Y component.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">setY</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">setY</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">y</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
@@ -2976,7 +2976,7 @@ For latest updates join the chat on
 
 <h3 id="function-setz">function setZ<a class="headerlink" href="#function-setz" title="Permanent link">&para;</a></h3>
 <p><em>Set the Z component.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">setZ</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="n">setZ</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">z</span>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
@@ -3006,7 +3006,7 @@ For latest updates join the chat on
 <h3 id="friend-operator">friend operator*<a class="headerlink" href="#friend-operator" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">*</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">scalar</span><span class="p">,</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
 </span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -3014,7 +3014,7 @@ For latest updates join the chat on
 <h3 id="friend-operator_1">friend operator+<a class="headerlink" href="#friend-operator_1" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">+</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">scalar</span><span class="p">,</span>
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -3022,7 +3022,7 @@ For latest updates join the chat on
 <h3 id="friend-operator-">friend operator-<a class="headerlink" href="#friend-operator-" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">-</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">scalar</span><span class="p">,</span>
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
 </span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -3030,7 +3030,7 @@ For latest updates join the chat on
 <h3 id="friend-operator_2">friend operator/<a class="headerlink" href="#friend-operator_2" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Vector</span><span class="o">::</span><span class="k">operator</span><span class="o">/</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">scalar</span><span class="p">,</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
 </span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>

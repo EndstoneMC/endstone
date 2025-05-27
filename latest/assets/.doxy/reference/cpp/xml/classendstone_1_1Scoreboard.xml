@@ -327,7 +327,7 @@
         <location file="include/endstone/scoreboard/scoreboard.h" line="104" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Scoreboard::resetScores</definition>
         <argsstring>(ScoreEntry entry)=0</argsstring>
         <name>resetScores</name>
@@ -374,7 +374,7 @@
         <location file="include/endstone/scoreboard/scoreboard.h" line="118" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Scoreboard::clearSlot</definition>
         <argsstring>(DisplaySlot slot)=0</argsstring>
         <name>clearSlot</name>

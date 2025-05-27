@@ -6,7 +6,7 @@
     <includes refid="player__game__mode__change__event_8h" local="no">endstone/event/player/player_game_mode_change_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerGameModeChangeEvent_1a6c0edd9e6eac2347d03c35509b4c6404" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerGameModeChangeEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>

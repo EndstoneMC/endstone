@@ -17,14 +17,14 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_factory.h" line="23" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemFactory_1acfce92dd018412d66224af727972cd69" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a8b61cf20280c522b2141a115114351a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; ItemMeta &gt; endstone::ItemFactory::getItemMeta</definition>
-        <argsstring>(std::string_view type) const =0</argsstring>
+        <argsstring>(const ItemType &amp;type) const =0</argsstring>
         <name>getItemMeta</name>
         <qualifiedname>endstone::ItemFactory::getItemMeta</qualifiedname>
         <param>
-          <type>std::string_view</type>
+          <type>const <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &amp;</type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -46,20 +46,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="31" column="29"/>
+        <location file="include/endstone/inventory/item_factory.h" line="31" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemFactory_1ad5b1bc24eea58025e21008c31a546fd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a45940d20cf95a97fec827d390674487c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
         <definition>virtual bool endstone::ItemFactory::isApplicable</definition>
-        <argsstring>(const ItemMeta *meta, std::string_view type) const =0</argsstring>
+        <argsstring>(const ItemMeta *meta, const ItemType &amp;type) const =0</argsstring>
         <name>isApplicable</name>
         <qualifiedname>endstone::ItemFactory::isApplicable</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <type>const <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
           <declname>meta</declname>
         </param>
         <param>
-          <type>std::string_view</type>
+          <type>const <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &amp;</type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -89,20 +89,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="41" column="18"/>
+        <location file="include/endstone/inventory/item_factory.h" line="41" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemFactory::equals</definition>
         <argsstring>(const ItemMeta *meta1, const ItemMeta *meta2) const =0</argsstring>
         <name>equals</name>
         <qualifiedname>endstone::ItemFactory::equals</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <type>const <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
           <declname>meta1</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <type>const <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
           <declname>meta2</declname>
         </param>
         <briefdescription>
@@ -132,20 +132,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="50" column="18"/>
+        <location file="include/endstone/inventory/item_factory.h" line="50" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a44aedfd7afd6b1fabc869c0ec14f63c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a0b2909d94f0944c34e5b606e79a63dd7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; ItemMeta &gt; endstone::ItemFactory::asMetaFor</definition>
-        <argsstring>(const ItemMeta *meta, std::string_view type) const =0</argsstring>
+        <argsstring>(const ItemMeta *meta, const ItemType &amp;type) const =0</argsstring>
         <name>asMetaFor</name>
         <qualifiedname>endstone::ItemFactory::asMetaFor</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <type>const <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
           <declname>meta</declname>
         </param>
         <param>
-          <type>std::string_view</type>
+          <type>const <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &amp;</type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -176,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="63" column="29"/>
+        <location file="include/endstone/inventory/item_factory.h" line="63" column="30"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -185,10 +185,10 @@
     </detaileddescription>
     <location file="include/endstone/inventory/item_factory.h" line="21" column="1" bodyfile="include/endstone/inventory/item_factory.h" bodystart="21" bodyend="64"/>
     <listofallmembers>
-      <member refid="classendstone_1_1ItemFactory_1a44aedfd7afd6b1fabc869c0ec14f63c1" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>asMetaFor</name></member>
+      <member refid="classendstone_1_1ItemFactory_1a0b2909d94f0944c34e5b606e79a63dd7" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>asMetaFor</name></member>
       <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>equals</name></member>
-      <member refid="classendstone_1_1ItemFactory_1acfce92dd018412d66224af727972cd69" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>getItemMeta</name></member>
-      <member refid="classendstone_1_1ItemFactory_1ad5b1bc24eea58025e21008c31a546fd9" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>isApplicable</name></member>
+      <member refid="classendstone_1_1ItemFactory_1a8b61cf20280c522b2141a115114351a7" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>getItemMeta</name></member>
+      <member refid="classendstone_1_1ItemFactory_1a45940d20cf95a97fec827d390674487c" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>isApplicable</name></member>
       <member refid="classendstone_1_1ItemFactory_1aad09d9483ab4cada38c27ef7b735f6da" prot="public" virt="virtual"><scope>endstone::ItemFactory</scope><name>~ItemFactory</name></member>
     </listofallmembers>
   </compounddef>

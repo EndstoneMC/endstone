@@ -22,7 +22,7 @@
     </sectiondef>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorExplodeEvent_1a538b328811580be48ba12a6e72d81f63" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ActorExplodeEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -128,7 +128,7 @@
         <location file="include/endstone/event/actor/actor_explode_event.h" line="38" column="18" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorExplodeEvent_1a503cfca64807cacb36ca3c41de78be28" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
         <definition>const Location &amp; endstone::ActorExplodeEvent::getLocation</definition>
         <argsstring>() const</argsstring>
         <name>getLocation</name>
@@ -147,7 +147,7 @@
         <location file="include/endstone/event/actor/actor_explode_event.h" line="50" column="21" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorExplodeEvent_1a0b009ccfd36dbb770f245f1d30d4e348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> BlockList &amp;</type>
+        <type>const BlockList &amp;</type>
         <definition>const BlockList &amp; endstone::ActorExplodeEvent::getBlockList</definition>
         <argsstring>() const</argsstring>
         <name>getBlockList</name>

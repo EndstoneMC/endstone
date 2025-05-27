@@ -125,6 +125,8 @@
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)
 ([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)
+([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md)
 ([**fmt**](namespacefmt.md))
 
@@ -158,6 +160,8 @@
 * [**ItemMeta**](classendstone_1_1ItemMeta.md)
 ([**endstone**](namespaceendstone.md))
 * [**ItemStack**](classendstone_1_1ItemStack.md)
+([**endstone**](namespaceendstone.md))
+* [**ItemType**](classendstone_1_1ItemType.md)
 ([**endstone**](namespaceendstone.md))
 
 

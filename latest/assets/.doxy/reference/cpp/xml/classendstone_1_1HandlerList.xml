@@ -47,12 +47,12 @@
         <location file="include/endstone/event/handler_list.h" line="123" column="25" bodyfile="include/endstone/event/handler_list.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1HandlerList_1a495f3b97e658b65ee688803e6058f98e" prot="private" static="no" mutable="yes">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::HandlerList::valid_</definition>
         <argsstring></argsstring>
         <name>valid_</name>
         <qualifiedname>endstone::HandlerList::valid_</qualifiedname>
-        <initializer>{<ref refid="classendstone_1_1Vector" kindref="compound">false</ref>}</initializer>
+        <initializer>{false}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -127,13 +127,13 @@
         <location file="include/endstone/event/handler_list.h" line="41" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="41" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1HandlerList_1ad2417dc763c19d61a627a7e43c09b81a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::HandlerList::unregister</definition>
         <argsstring>(const EventHandler &amp;handler)</argsstring>
         <name>unregister</name>
         <qualifiedname>endstone::HandlerList::unregister</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &amp;</type>
           <declname>handler</declname>
         </param>
         <briefdescription>
@@ -156,13 +156,13 @@
         <location file="include/endstone/event/handler_list.h" line="60" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="60" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1HandlerList_1a5950519aa05fb195d32afad8ea03addc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::HandlerList::unregister</definition>
         <argsstring>(const Plugin &amp;plugin)</argsstring>
         <name>unregister</name>
         <qualifiedname>endstone::HandlerList::unregister</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
         </param>
         <briefdescription>
@@ -205,7 +205,7 @@
     </sectiondef>
     <sectiondef kind="protected-func">
       <memberdef kind="function" id="classendstone_1_1HandlerList_1a60ca2f071683e43f5d601d886cc3a622" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::HandlerList::bake</definition>
         <argsstring>() const</argsstring>
         <name>bake</name>

@@ -6,7 +6,7 @@
     <includes refid="player__command__event_8h" local="no">endstone/event/player/player_command_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerCommandEvent_1a847453583d9293cfc93634b9e75ac377" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerCommandEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -112,7 +112,7 @@
         <location file="include/endstone/event/player/player_command_event.h" line="43" column="18" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerCommandEvent::setCommand</definition>
         <argsstring>(std::string command)</argsstring>
         <name>setCommand</name>

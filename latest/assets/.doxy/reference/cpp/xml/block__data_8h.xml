@@ -112,6 +112,14 @@
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
       </node>
+      <node id="23">
+        <label>include/endstone/event/player/player_interact_event.h</label>
+        <link refid="player__interact__event_8h_source"/>
+      </node>
+      <node id="24">
+        <label>include/endstone/event/player/player_item_consume_event.h</label>
+        <link refid="player__item__consume__event_8h_source"/>
+      </node>
       <node id="15">
         <label>include/endstone/event/server/plugin_disable_event.h</label>
         <link refid="plugin__disable__event_8h_source"/>
@@ -124,6 +132,28 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
+      <node id="21">
+        <label>include/endstone/inventory/item_factory.h</label>
+        <link refid="item__factory_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/endstone/inventory/item_stack.h</label>
+        <link refid="item__stack_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/endstone/inventory/item_type.h</label>
+        <link refid="item__type_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
       <node id="9">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
@@ -134,6 +164,8 @@
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -151,25 +183,29 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="16">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="20">
+      <node id="25">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
       </node>
-      <node id="22">
+      <node id="27">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="21">
+      <node id="26">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -225,11 +261,11 @@
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockData" kindref="compound">~BlockData</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>BlockStates<sp/><ref refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" kindref="member">getBlockStates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49" refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>BlockStates<sp/><ref refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" kindref="member">getBlockStates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::uint32_t<sp/><ref refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" kindref="member">getRuntimeId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56" refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::uint32_t<sp/><ref refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" kindref="member">getRuntimeId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

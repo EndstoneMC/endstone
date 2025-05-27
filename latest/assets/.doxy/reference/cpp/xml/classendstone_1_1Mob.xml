@@ -26,7 +26,7 @@
         <location file="include/endstone/actor/mob.h" line="25" column="10" bodyfile="include/endstone/actor/mob.h" bodystart="25" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Mob::isGliding</definition>
         <argsstring>() const =0</argsstring>
         <name>isGliding</name>

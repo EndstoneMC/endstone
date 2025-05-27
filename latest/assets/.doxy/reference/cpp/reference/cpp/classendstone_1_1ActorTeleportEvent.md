@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"ActorTeleportEvent"`<br> |
+|  const std::string | [**NAME**](#variable-name)   = `"ActorTeleportEvent"`<br> |
 
 
 
@@ -100,10 +100,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | ---: | :--- |
 |   | [**ActorTeleportEvent**](#function-actorteleportevent) ([**Actor**](classendstone_1_1Actor.md) & actor, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**const**](classendstone_1_1Vector.md) [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location that this actor moved from._  |
-|  [**const**](classendstone_1_1Vector.md) [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location that this actor moved to._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setFrom**](#function-setfrom) ([**const**](classendstone_1_1Vector.md) [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location that this actor moved from._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setTo**](#function-setto) ([**const**](classendstone_1_1Vector.md) [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this actor moved to._  |
+|  const [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location that this actor moved from._  |
+|  const [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location that this actor moved to._  |
+|  void | [**setFrom**](#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location that this actor moved from._  |
+|  void | [**setTo**](#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this actor moved to._  |
 |   | [**~ActorTeleportEvent**](#function-actorteleportevent) () override<br> |
 
 
@@ -113,9 +113,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -124,9 +124,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -285,7 +285,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 _Gets the location that this actor moved from._ 
 ```C++
-inline const  Location & endstone::ActorTeleportEvent::getFrom () const
+inline const Location & endstone::ActorTeleportEvent::getFrom () const
 ```
 
 
@@ -310,7 +310,7 @@ inline const  Location & endstone::ActorTeleportEvent::getFrom () const
 
 _Gets the location that this actor moved to._ 
 ```C++
-inline const  Location & endstone::ActorTeleportEvent::getTo () const
+inline const Location & endstone::ActorTeleportEvent::getTo () const
 ```
 
 
@@ -336,7 +336,7 @@ inline const  Location & endstone::ActorTeleportEvent::getTo () const
 _Sets the location that this actor moved from._ 
 ```C++
 inline void endstone::ActorTeleportEvent::setFrom (
-    const  Location & from
+    const Location & from
 ) 
 ```
 
@@ -363,7 +363,7 @@ inline void endstone::ActorTeleportEvent::setFrom (
 _Sets the location that this actor moved to._ 
 ```C++
 inline void endstone::ActorTeleportEvent::setTo (
-    const  Location & to
+    const Location & to
 ) 
 ```
 

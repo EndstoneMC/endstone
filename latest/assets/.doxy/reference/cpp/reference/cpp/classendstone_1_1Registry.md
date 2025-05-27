@@ -2,7 +2,7 @@
 
 # Class endstone::Registry
 
-**template &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;**
+**template &lt;typename T&gt;**
 
 
 
@@ -54,11 +54,11 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**forEach**](#function-foreach) (std::function&lt; [**bool**](classendstone_1_1Vector.md)([**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
-| virtual [**T**](classendstone_1_1Vector.md) \* | [**get**](#function-get-12) ([**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) noexcept = 0<br>_Get the object by its key._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) \* | [**get**](#function-get-22) ([**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) noexcept const = 0<br>_Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._ |
-| virtual [**T**](classendstone_1_1Vector.md) & | [**getOrThrow**](#function-getorthrow-12) ([**const**](classendstone_1_1Vector.md) [**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) <br>_Get the object by its key or throw if missing._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) & | [**getOrThrow**](#function-getorthrow-22) ([**const**](classendstone_1_1Vector.md) [**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) const<br>_Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._ |
+| virtual void | [**forEach**](#function-foreach) (std::function&lt; bool(const T &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
+| virtual T \* | [**get**](#function-get-12) ([**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) noexcept = 0<br>_Get the object by its key._  |
+| virtual const T \* | [**get**](#function-get-22) ([**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) noexcept const = 0<br>_Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._ |
+| virtual T & | [**getOrThrow**](#function-getorthrow-12) (const [**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) <br>_Get the object by its key or throw if missing._  |
+| virtual const T & | [**getOrThrow**](#function-getorthrow-22) (const [**NamespacedKey**](classendstone_1_1NamespacedKey.md) key) const<br>_Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._ |
 | virtual  | [**~Registry**](#function-registry) () = default<br> |
 
 
@@ -115,7 +115,7 @@ Provides lookup by key (nullable or exception-throwing) and iteration.
 _Apply a function to each stored element._ 
 ```C++
 virtual void endstone::Registry::forEach (
-    std::function< bool ( const  T &)> func
+    std::function< bool(const T &)> func
 ) const = 0
 ```
 
@@ -181,7 +181,7 @@ T\* Pointer to the object, or nullptr if it does not exist.
 
 _Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._
 ```C++
-virtual const  T * endstone::Registry::get (
+virtual const T * endstone::Registry::get (
     NamespacedKey key
 ) noexcept const = 0
 ```
@@ -216,7 +216,7 @@ const T\* Pointer to the object, or nullptr if it does not exist.
 _Get the object by its key or throw if missing._ 
 ```C++
 inline virtual T & endstone::Registry::getOrThrow (
-    const  NamespacedKey key
+    const NamespacedKey key
 ) 
 ```
 
@@ -256,8 +256,8 @@ T& Reference to the object with the given key.
 
 _Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._
 ```C++
-inline virtual const  T & endstone::Registry::getOrThrow (
-    const  NamespacedKey key
+inline virtual const T & endstone::Registry::getOrThrow (
+    const NamespacedKey key
 ) const
 ```
 

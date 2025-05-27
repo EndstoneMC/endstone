@@ -2265,10 +2265,10 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-eventhandler"><strong>EventHandler</strong></a> (std::string event, std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>(<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;)&gt; executor, <a href="../namespaceendstone/#enum-eventpriority"><strong>EventPriority</strong></a> priority, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> ignore_cancelled) <br></td>
+<td style="text-align: left;"><a href="#function-eventhandler"><strong>EventHandler</strong></a> (std::string event, std::function&lt; void(<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;)&gt; executor, <a href="../namespaceendstone/#enum-eventpriority"><strong>EventPriority</strong></a> priority, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, bool ignore_cancelled) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-callevent"><strong>callEvent</strong></a> (<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp; event) const<br></td>
 </tr>
 <tr>
@@ -2284,7 +2284,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getpriority"><strong>getPriority</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-isignorecancelled"><strong>isIgnoreCancelled</strong></a> () const<br></td>
 </tr>
 </tbody>
@@ -2293,7 +2293,7 @@ For latest updates join the chat on
 <h3 id="function-eventhandler">function EventHandler<a class="headerlink" href="#function-eventhandler" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EventHandler</span><span class="o">::</span><span class="n">EventHandler</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">event</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">executor</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">executor</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">EventPriority</span><span class="w"> </span><span class="n">priority</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_cancelled</span>

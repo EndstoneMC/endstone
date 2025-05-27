@@ -35,7 +35,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**Vector**](classendstone_1_1Vector.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Represents a 3-dimensional vector._  |
+| class | [**Vector**](classendstone_1_1Vector.md) &lt;typename T&gt;<br>_Represents a 3-dimensional vector._  |
 
 
 

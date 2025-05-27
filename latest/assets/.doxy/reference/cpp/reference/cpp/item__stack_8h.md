@@ -13,7 +13,9 @@
 * `#include <memory>`
 * `#include "endstone/detail/endstone.h"`
 * `#include "endstone/inventory/item_factory.h"`
+* `#include "endstone/inventory/item_type.h"`
 * `#include "endstone/inventory/meta/item_meta.h"`
+* `#include "endstone/registry.h"`
 
 
 

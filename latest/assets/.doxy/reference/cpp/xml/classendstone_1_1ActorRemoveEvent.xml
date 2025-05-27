@@ -6,7 +6,7 @@
     <includes refid="actor__remove__event_8h" local="no">endstone/event/actor/actor_remove_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorRemoveEvent_1a4d53a93b0651f115ce32b99dc5b0398d" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ActorRemoveEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -48,7 +48,7 @@
         <name>ActorEvent</name>
         <qualifiedname>endstone::ActorRemoveEvent::ActorEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">ActorType</ref> &amp;</type>
+          <type>ActorType &amp;</type>
           <declname>actor</declname>
         </param>
         <briefdescription>

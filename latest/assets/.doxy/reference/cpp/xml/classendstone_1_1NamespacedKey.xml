@@ -5,7 +5,7 @@
     <includes refid="namespaced__key_8h" local="no">endstone/namespaced_key.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1NamespacedKey_1a88dfddee7b93877c4aa732a5d9a66b64" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> std::string_view</type>
+        <type>constexpr std::string_view</type>
         <definition>constexpr std::string_view endstone::NamespacedKey::MINECRAFT</definition>
         <argsstring></argsstring>
         <name>MINECRAFT</name>
@@ -59,7 +59,7 @@
         <name>create</name>
         <qualifiedname>endstone::NamespacedKey::create</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
         </param>
         <param>
@@ -104,9 +104,9 @@
           <declname>input</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
+          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
           <declname>plugin</declname>
-          <defval><ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref></defval>
+          <defval>nullptr</defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -148,7 +148,7 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1aa08e51ed653aeaa8fe7f7504f1afba3f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::NamespacedKey::getNamespace</definition>
         <argsstring>() const noexcept</argsstring>
         <name>getNamespace</name>
@@ -162,7 +162,7 @@
         <location file="include/endstone/namespaced_key.h" line="101" column="24" bodyfile="include/endstone/namespaced_key.h" bodystart="101" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1ae86d202bb5a6f80144ca6d8c958510dc" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::NamespacedKey::getKey</definition>
         <argsstring>() const noexcept</argsstring>
         <name>getKey</name>
@@ -190,13 +190,13 @@
         <location file="include/endstone/namespaced_key.h" line="111" column="18" bodyfile="include/endstone/namespaced_key.h" bodystart="111" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1ab7f69986bc4b4710cfe7e1af8ed3cbbc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::NamespacedKey::operator==</definition>
         <argsstring>(const NamespacedKey &amp;other) const noexcept=default</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::NamespacedKey::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -208,13 +208,13 @@
         <location file="include/endstone/namespaced_key.h" line="116" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a4eb5cd3bda3e08cc29c296e4eb005739" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::NamespacedKey::operator!=</definition>
         <argsstring>(const NamespacedKey &amp;other) const noexcept=default</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::NamespacedKey::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -234,11 +234,11 @@
         <name>NamespacedKey</name>
         <qualifiedname>endstone::NamespacedKey::NamespacedKey</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>ns</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -259,7 +259,7 @@
         <name>normalizeString</name>
         <qualifiedname>endstone::NamespacedKey::normalizeString</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>str</declname>
         </param>
         <briefdescription>
@@ -272,13 +272,13 @@
         <location file="include/endstone/namespaced_key.h" line="131" column="24" bodyfile="include/endstone/namespaced_key.h" bodystart="131" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1aad565f313c469167ebedc75cdeb4ebd0" prot="private" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>constexpr bool</type>
         <definition>static constexpr bool endstone::NamespacedKey::isValidNamespaceChar</definition>
         <argsstring>(char c) noexcept</argsstring>
         <name>isValidNamespaceChar</name>
         <qualifiedname>endstone::NamespacedKey::isValidNamespaceChar</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">char</ref></type>
+          <type>char</type>
           <declname>c</declname>
         </param>
         <briefdescription>
@@ -290,13 +290,13 @@
         <location file="include/endstone/namespaced_key.h" line="138" column="27" bodyfile="include/endstone/namespaced_key.h" bodystart="138" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a559d6702571c04670c33b3696bf450f0" prot="private" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>constexpr bool</type>
         <definition>static constexpr bool endstone::NamespacedKey::isValidKeyChar</definition>
         <argsstring>(char c) noexcept</argsstring>
         <name>isValidKeyChar</name>
         <qualifiedname>endstone::NamespacedKey::isValidKeyChar</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">char</ref></type>
+          <type>char</type>
           <declname>c</declname>
         </param>
         <briefdescription>
@@ -308,13 +308,13 @@
         <location file="include/endstone/namespaced_key.h" line="143" column="27" bodyfile="include/endstone/namespaced_key.h" bodystart="143" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a68bc1ad253e1f6feb993aa6c880ab749" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>static bool endstone::NamespacedKey::isValidNamespace</definition>
         <argsstring>(const std::string_view ns) noexcept</argsstring>
         <name>isValidNamespace</name>
         <qualifiedname>endstone::NamespacedKey::isValidNamespace</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>ns</declname>
         </param>
         <briefdescription>
@@ -326,13 +326,13 @@
         <location file="include/endstone/namespaced_key.h" line="148" column="17" bodyfile="include/endstone/namespaced_key.h" bodystart="148" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NamespacedKey_1a4a3c5d0b50569d4f381d8af215a94d2e" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>static bool endstone::NamespacedKey::isValidKey</definition>
         <argsstring>(const std::string_view key) noexcept</argsstring>
         <name>isValidKey</name>
         <qualifiedname>endstone::NamespacedKey::isValidKey</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>key</declname>
         </param>
         <briefdescription>

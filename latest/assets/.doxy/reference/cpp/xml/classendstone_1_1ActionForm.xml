@@ -20,7 +20,7 @@
         <location file="include/endstone/form/action_form.h" line="33" column="5" bodyfile="include/endstone/form/action_form.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1ActionForm_1a0ca59e6772ff18f48423865050a4ef0c" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, <ref refid="classendstone_1_1Vector" kindref="compound">int</ref>)&gt;</type>
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, int)&gt;</type>
         <definition>using endstone::ActionForm::OnSubmitCallback =  std::function&lt;void(Player *, int)&gt;</definition>
         <argsstring></argsstring>
         <name>OnSubmitCallback</name>
@@ -149,11 +149,11 @@
         <name>addButton</name>
         <qualifiedname>endstone::ActionForm::addButton</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+          <type>const Message &amp;</type>
           <declname>text</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::optional&lt; std::string &gt; &amp;</type>
+          <type>const std::optional&lt; std::string &gt; &amp;</type>
           <declname>icon</declname>
           <defval>std::nullopt</defval>
         </param>
@@ -206,7 +206,7 @@
         <name>addLabel</name>
         <qualifiedname>endstone::ActionForm::addLabel</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+          <type>const Message &amp;</type>
           <declname>text</declname>
         </param>
         <briefdescription>
@@ -237,7 +237,7 @@
         <name>addHeader</name>
         <qualifiedname>endstone::ActionForm::addHeader</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+          <type>const Message &amp;</type>
           <declname>text</declname>
         </param>
         <briefdescription>
@@ -280,7 +280,7 @@
         <location file="include/endstone/form/action_form.h" line="105" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="105" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1a9490eb69d1bcee4ed940b9fd42681002" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; Control &gt; &amp;</type>
+        <type>const std::vector&lt; Control &gt; &amp;</type>
         <definition>const std::vector&lt; Control &gt; &amp; endstone::ActionForm::getControls</definition>
         <argsstring>() const</argsstring>
         <name>getControls</name>
@@ -304,7 +304,7 @@
         <name>setControls</name>
         <qualifiedname>endstone::ActionForm::setControls</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; Control &gt; &amp;</type>
+          <type>const std::vector&lt; Control &gt; &amp;</type>
           <declname>controls</declname>
         </param>
         <briefdescription>

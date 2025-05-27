@@ -58,20 +58,20 @@ _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1
 | Type | Name |
 | ---: | :--- |
 |  std::uint8\_t \* | [**begin**](#function-begin-12) () noexcept<br> |
-|  [**const**](classendstone_1_1Vector.md) [**uint8\_t**](classendstone_1_1Vector.md) \* | [**begin**](#function-begin-22) () noexcept const<br> |
+|  const uint8\_t \* | [**begin**](#function-begin-22) () noexcept const<br> |
 |  std::uint8\_t \* | [**end**](#function-end-12) () noexcept<br> |
-|  [**const**](classendstone_1_1Vector.md) [**uint8\_t**](classendstone_1_1Vector.md) \* | [**end**](#function-end-22) () noexcept const<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**isNil**](#function-isnil) () noexcept const<br> |
+|  const uint8\_t \* | [**end**](#function-end-22) () noexcept const<br> |
+|  bool | [**isNil**](#function-isnil) () noexcept const<br> |
 |  std::string | [**str**](#function-str) () const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
-|  [**int**](classendstone_1_1Vector.md) | [**version**](#function-version) () noexcept const<br> |
+|  void | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
+|  int | [**version**](#function-version) () noexcept const<br> |
 
 
 ## Public Static Functions
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Vector.md) std::size\_t | [**size**](#function-size) () noexcept<br> |
+|  constexpr std::size\_t | [**size**](#function-size) () noexcept<br> |
 
 
 
@@ -141,7 +141,7 @@ inline std::uint8_t * endstone::UUID::begin () noexcept
 ### function begin [2/2]
 
 ```C++
-inline const  uint8_t * endstone::UUID::begin () noexcept const
+inline const uint8_t * endstone::UUID::begin () noexcept const
 ```
 
 
@@ -167,7 +167,7 @@ inline std::uint8_t * endstone::UUID::end () noexcept
 ### function end [2/2]
 
 ```C++
-inline const  uint8_t * endstone::UUID::end () noexcept const
+inline const uint8_t * endstone::UUID::end () noexcept const
 ```
 
 

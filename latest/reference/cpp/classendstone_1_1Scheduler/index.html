@@ -2342,11 +2342,11 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-canceltask"><strong>cancelTask</strong></a> (TaskId id) = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-canceltasks"><strong>cancelTasks</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br></td>
 </tr>
 <tr>
@@ -2354,36 +2354,36 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getpendingtasks"><strong>getPendingTasks</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-isqueued"><strong>isQueued</strong></a> (TaskId id) = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-isrunning"><strong>isRunning</strong></a> (TaskId id) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtask"><strong>runTask</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>()&gt; task) = 0<br></td>
+<td style="text-align: left;"><a href="#function-runtask"><strong>runTask</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; void()&gt; task) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtaskasync"><strong>runTaskAsync</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>()&gt; task) = 0<br><em>Returns a task that will be executed asynchronously on the next server tick.</em></td>
+<td style="text-align: left;"><a href="#function-runtaskasync"><strong>runTaskAsync</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; void()&gt; task) = 0<br><em>Returns a task that will be executed asynchronously on the next server tick.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtasklater"><strong>runTaskLater</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>()&gt; task, std::uint64_t delay) = 0<br></td>
+<td style="text-align: left;"><a href="#function-runtasklater"><strong>runTaskLater</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; void()&gt; task, std::uint64_t delay) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtasklaterasync"><strong>runTaskLaterAsync</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>()&gt; task, std::uint64_t delay) = 0<br><em>Returns a task that will be executed asynchronously after the specified number of server ticks.</em></td>
+<td style="text-align: left;"><a href="#function-runtasklaterasync"><strong>runTaskLaterAsync</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; void()&gt; task, std::uint64_t delay) = 0<br><em>Returns a task that will be executed asynchronously after the specified number of server ticks.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtasktimer"><strong>runTaskTimer</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>()&gt; task, std::uint64_t delay, std::uint64_t period) = 0<br></td>
+<td style="text-align: left;"><a href="#function-runtasktimer"><strong>runTaskTimer</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; void()&gt; task, std::uint64_t delay, std::uint64_t period) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtasktimerasync"><strong>runTaskTimerAsync</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>()&gt; task, std::uint64_t delay, std::uint64_t period) = 0<br><em>Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks.</em></td>
+<td style="text-align: left;"><a href="#function-runtasktimerasync"><strong>runTaskTimerAsync</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; void()&gt; task, std::uint64_t delay, std::uint64_t period) = 0<br><em>Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2456,7 +2456,7 @@ For latest updates join the chat on
 <h3 id="function-runtask">function runTask<a class="headerlink" href="#function-runtask" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTask</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <p>Returns a task that will be executed synchronously on the next server tick.</p>
@@ -2473,7 +2473,7 @@ For latest updates join the chat on
 <p><em>Returns a task that will be executed asynchronously on the next server tick.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTaskAsync</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Remark:</strong></p>
@@ -2490,7 +2490,7 @@ For latest updates join the chat on
 <h3 id="function-runtasklater">function runTaskLater<a class="headerlink" href="#function-runtasklater" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTaskLater</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">delay</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
@@ -2509,7 +2509,7 @@ For latest updates join the chat on
 <p><em>Returns a task that will be executed asynchronously after the specified number of server ticks.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTaskLaterAsync</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">delay</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -2528,7 +2528,7 @@ For latest updates join the chat on
 <h3 id="function-runtasktimer">function runTaskTimer<a class="headerlink" href="#function-runtasktimer" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTaskTimer</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">delay</span><span class="p">,</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">period</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -2549,7 +2549,7 @@ For latest updates join the chat on
 <p><em>Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTaskTimerAsync</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">delay</span><span class="p">,</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">period</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>

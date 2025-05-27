@@ -6,7 +6,7 @@
     <includes refid="packet__receive__event_8h" local="no">endstone/event/server/packet_receive_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1a218801638ce951b0f39ba49d6a99e159" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PacketReceiveEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -37,7 +37,7 @@
         <location file="include/endstone/event/server/packet_receive_event.h" line="80" column="12" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1a223394f5245bf96c91c8416a79f1cff1" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PacketReceiveEvent::packet_id_</definition>
         <argsstring></argsstring>
         <name>packet_id_</name>
@@ -91,7 +91,7 @@
           <declname>player</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>packet_id</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
         <location file="include/endstone/event/server/packet_receive_event.h" line="33" column="18" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="33" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1a55fbf8774d4f1a7d069e542c685fdd48" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PacketReceiveEvent::getPacketId</definition>
         <argsstring>() const</argsstring>
         <name>getPacketId</name>
@@ -162,7 +162,7 @@
         <location file="include/endstone/event/server/packet_receive_event.h" line="53" column="23" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1a38da3d7aa9ee5431efbf9ef500b1df56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PacketReceiveEvent::setPayload</definition>
         <argsstring>(std::string_view payload)</argsstring>
         <name>setPayload</name>

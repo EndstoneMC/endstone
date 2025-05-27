@@ -44,7 +44,7 @@ Inherited by the following classes: [endstone::IpBanEntry](classendstone_1_1IpBa
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**DateFormat**](#variable-dateformat)   = `"%FT%[**T**](classendstone_1_1Vector.md)%[**Ez"**](classendstone_1_1Vector.md)`<br> |
+|  const std::string | [**DateFormat**](#variable-dateformat)   = `"%FT%T%Ez"`<br> |
 
 
 
@@ -67,10 +67,10 @@ Inherited by the following classes: [endstone::IpBanEntry](classendstone_1_1IpBa
 |  std::optional&lt; Date &gt; | [**getExpiration**](#function-getexpiration) () const<br>_Gets the date this ban expires on, or std::nullopt for no defined end date._  |
 |  std::string | [**getReason**](#function-getreason) () const<br>_Gets the reason for this ban._  |
 |  std::string | [**getSource**](#function-getsource) () const<br>_Gets the source of this ban._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setCreated**](#function-setcreated) (Date created) <br>_Sets the date this ban entry was created._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setExpiration**](#function-setexpiration) (std::optional&lt; Date &gt; expiration) <br>_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setReason**](#function-setreason) (std::string reason) <br>_Sets the reason for this ban._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setSource**](#function-setsource) (std::string source) <br>_Sets the source of this ban._  |
+|  void | [**setCreated**](#function-setcreated) (Date created) <br>_Sets the date this ban entry was created._  |
+|  void | [**setExpiration**](#function-setexpiration) (std::optional&lt; Date &gt; expiration) <br>_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._  |
+|  void | [**setReason**](#function-setreason) (std::string reason) <br>_Sets the reason for this ban._  |
+|  void | [**setSource**](#function-setsource) (std::string source) <br>_Sets the source of this ban._  |
 
 
 

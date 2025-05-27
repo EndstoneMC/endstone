@@ -2304,12 +2304,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-registerhandler"><strong>registerHandler</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> &gt; handler) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-unregister-12"><strong>unregister</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> &amp; handler) <br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-unregister-12"><strong>unregister</strong></a> (const <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> &amp; handler) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-unregister-22"><strong>unregister</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) <br></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-unregister-22"><strong>unregister</strong></a> (const <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) <br></td>
 </tr>
 </tbody>
 </table>
@@ -2323,7 +2323,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-bake"><strong>bake</strong></a> () const<br></td>
 </tr>
 </tbody>
@@ -2360,7 +2360,7 @@ For latest updates join the chat on
 
 <h3 id="function-unregister-12">function unregister [&frac12;]<a class="headerlink" href="#function-unregister-12" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">HandlerList</span><span class="o">::</span><span class="n">unregister</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">EventHandler</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">handler</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">EventHandler</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">handler</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Remove a handler from a specific order slot</p>
@@ -2372,7 +2372,7 @@ For latest updates join the chat on
 
 <h3 id="function-unregister-22">function unregister [2/2]<a class="headerlink" href="#function-unregister-22" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">HandlerList</span><span class="o">::</span><span class="n">unregister</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Remove a specific plugin's handlers from this handler</p>

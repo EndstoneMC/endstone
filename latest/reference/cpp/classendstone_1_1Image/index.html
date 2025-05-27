@@ -2317,27 +2317,27 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-image-12"><strong>Image</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> width, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> height) <br><em>Create an empty image (all pixels transparent black).</em></td>
+<td style="text-align: left;"><a href="#function-image-12"><strong>Image</strong></a> (const int width, const int height) <br><em>Create an empty image (all pixels transparent black).</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Color/"><strong>Color</strong></a></td>
-<td style="text-align: left;"><a href="#function-getcolor"><strong>getColor</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> y) const<br><em>Get the color of a pixel.</em></td>
+<td style="text-align: left;"><a href="#function-getcolor"><strong>getColor</strong></a> (const int x, const int y) const<br><em>Get the color of a pixel.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string_view</td>
 <td style="text-align: left;"><a href="#function-getdata"><strong>getData</strong></a> () const<br><em>Gets the raw pixel buffer (RGBA, row-major).</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">int</td>
 <td style="text-align: left;"><a href="#function-getheight"><strong>getHeight</strong></a> () const<br><em>Get the image height.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">int</td>
 <td style="text-align: left;"><a href="#function-getwidth"><strong>getWidth</strong></a> () const<br><em>Get the image width.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setcolor"><strong>setColor</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Color/"><strong>Color</strong></a> color) <br><em>Set the color of a pixel.</em></td>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-setcolor"><strong>setColor</strong></a> (const int x, const int y, const <a href="../classendstone_1_1Color/"><strong>Color</strong></a> color) <br><em>Set the color of a pixel.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2352,7 +2352,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">Result&lt; <a href="./"><strong>Image</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-frombuffer"><strong>fromBuffer</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> width, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>int</strong></a> height, std::string_view buffer) <br><em>Creates an image from the pixel data in a byte buffer.</em></td>
+<td style="text-align: left;"><a href="#function-frombuffer"><strong>fromBuffer</strong></a> (const int width, const int height, std::string_view buffer) <br><em>Creates an image from the pixel data in a byte buffer.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2362,8 +2362,8 @@ For latest updates join the chat on
 <h3 id="function-image-12">function Image [&frac12;]<a class="headerlink" href="#function-image-12" title="Permanent link">&para;</a></h3>
 <p><em>Create an empty image (all pixels transparent black).</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">Image</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2376,8 +2376,8 @@ For latest updates join the chat on
 <h3 id="function-getcolor">function getColor<a class="headerlink" href="#function-getcolor" title="Permanent link">&para;</a></h3>
 <p><em>Get the color of a pixel.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">getColor</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2416,9 +2416,9 @@ For latest updates join the chat on
 <h3 id="function-setcolor">function setColor<a class="headerlink" href="#function-setcolor" title="Permanent link">&para;</a></h3>
 <p><em>Set the color of a pixel.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">setColor</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Color</span><span class="w"> </span><span class="n">color</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">color</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2432,8 +2432,8 @@ For latest updates join the chat on
 <h3 id="function-frombuffer">function fromBuffer<a class="headerlink" href="#function-frombuffer" title="Permanent link">&para;</a></h3>
 <p><em>Creates an image from the pixel data in a byte buffer.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromBuffer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">buffer</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>

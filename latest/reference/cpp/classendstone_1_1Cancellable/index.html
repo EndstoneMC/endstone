@@ -2221,7 +2221,7 @@ For latest updates join the chat on
 
 
 <h1 id="class-endstonecancellable">Class endstone::Cancellable<a class="headerlink" href="#class-endstonecancellable" title="Permanent link">&para;</a></h1>
-<p><strong>template &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> EventType&gt;</strong></p>
+<p><strong>template &lt;typename EventType&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>Cancellable</strong></a></p>
 <p><em>A type characterizing events that may be cancelled by a plugin or the server.</em> </p>
 <ul>
@@ -2238,16 +2238,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-iscancelled"><strong>isCancelled</strong></a> () const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) <br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) <br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2262,16 +2262,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) = 0<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>

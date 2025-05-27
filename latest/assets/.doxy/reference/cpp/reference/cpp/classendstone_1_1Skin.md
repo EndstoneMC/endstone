@@ -53,10 +53,10 @@ _Represents a player skin._
 | Type | Name |
 | ---: | :--- |
 |   | [**Skin**](#function-skin) (std::string id, [**Image**](classendstone_1_1Image.md) image, std::optional&lt; std::string &gt; cape\_id=std::nullopt, std::optional&lt; [**Image**](classendstone_1_1Image.md) &gt; cape\_image=std::nullopt) <br> |
-|  [**const**](classendstone_1_1Vector.md) std::optional&lt; std::string &gt; & | [**getCapeId**](#function-getcapeid) () const<br>_Gets the cape id._  |
-|  [**const**](classendstone_1_1Vector.md) [**Image**](classendstone_1_1Image.md) \* | [**getCapeImage**](#function-getcapeimage) () const<br>_Gets the cape image._  |
-|  [**const**](classendstone_1_1Vector.md) std::string & | [**getId**](#function-getid) () const<br>_Gets the skin id._  |
-|  [**const**](classendstone_1_1Vector.md) [**Image**](classendstone_1_1Image.md) & | [**getImage**](#function-getimage) () const<br>_Gets the skin image._  |
+|  const std::optional&lt; std::string &gt; & | [**getCapeId**](#function-getcapeid) () const<br>_Gets the cape id._  |
+|  const [**Image**](classendstone_1_1Image.md) \* | [**getCapeImage**](#function-getcapeimage) () const<br>_Gets the cape image._  |
+|  const std::string & | [**getId**](#function-getid) () const<br>_Gets the skin id._  |
+|  const [**Image**](classendstone_1_1Image.md) & | [**getImage**](#function-getimage) () const<br>_Gets the skin image._  |
 
 
 
@@ -137,7 +137,7 @@ the cape id.
 
 _Gets the cape image._ 
 ```C++
-inline const  Image * endstone::Skin::getCapeImage () const
+inline const Image * endstone::Skin::getCapeImage () const
 ```
 
 
@@ -187,7 +187,7 @@ the skin id.
 
 _Gets the skin image._ 
 ```C++
-inline const  Image & endstone::Skin::getImage () const
+inline const Image & endstone::Skin::getImage () const
 ```
 
 

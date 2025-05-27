@@ -6,7 +6,7 @@
     <includes refid="block__piston__event_8h" local="no">endstone/event/block/block_piston_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1BlockPistonEvent_1ab8569c094d15573abb55f975fa7f5577" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::BlockPistonEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>

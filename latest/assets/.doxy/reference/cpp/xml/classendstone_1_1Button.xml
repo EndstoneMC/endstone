@@ -5,7 +5,7 @@
     <includes refid="button_8h" local="no">endstone/form/controls/button.h</includes>
     <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classendstone_1_1Button_1a52b4d719bc268f8d3543c83a3bf429ea" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *)&gt;</type>
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *)&gt;</type>
         <definition>using endstone::Button::OnClickCallback =  std::function&lt;void(Player *)&gt;</definition>
         <argsstring></argsstring>
         <name>OnClickCallback</name>

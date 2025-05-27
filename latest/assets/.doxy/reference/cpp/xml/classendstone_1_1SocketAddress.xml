@@ -71,7 +71,7 @@
         <location file="include/endstone/util/socket_address.h" line="27" column="5" bodyfile="include/endstone/util/socket_address.h" bodystart="27" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1SocketAddress_1ae29c126b04d9d5094323ae495c32f6dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::SocketAddress::getHostname</definition>
         <argsstring>() const</argsstring>
         <name>getHostname</name>

@@ -20,7 +20,7 @@
         <location file="include/endstone/command/command_executor.h" line="29" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::CommandExecutor::onCommand</definition>
         <argsstring>(CommandSender &amp;sender, const Command &amp;command, const std::vector&lt; std::string &gt; &amp;args)</argsstring>
         <name>onCommand</name>
@@ -30,11 +30,11 @@
           <declname>sender</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &amp;</type>
           <declname>command</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; std::string &gt; &amp;</type>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>args</declname>
         </param>
         <briefdescription>

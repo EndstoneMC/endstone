@@ -20,7 +20,7 @@
         <location file="include/endstone/form/modal_form.h" line="38" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classendstone_1_1ModalForm_1ab4f2f004b3e53a53b2ebe3c9ae04b740" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, std::string)&gt;</type>
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, std::string)&gt;</type>
         <definition>using endstone::ModalForm::OnSubmitCallback =  std::function&lt;void(Player *, std::string)&gt;</definition>
         <argsstring></argsstring>
         <name>OnSubmitCallback</name>
@@ -100,7 +100,7 @@
         <name>addControl</name>
         <qualifiedname>endstone::ModalForm::addControl</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Control &amp;</type>
+          <type>const Control &amp;</type>
           <declname>control</declname>
         </param>
         <briefdescription>

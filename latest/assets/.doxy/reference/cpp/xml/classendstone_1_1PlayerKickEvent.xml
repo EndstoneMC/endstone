@@ -6,7 +6,7 @@
     <includes refid="player__kick__event_8h" local="no">endstone/event/player/player_kick_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerKickEvent_1a3ad9fb66f559d36fb0e5940a5664b9dc" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerKickEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -112,7 +112,7 @@
         <location file="include/endstone/event/player/player_kick_event.h" line="44" column="18" bodyfile="include/endstone/event/player/player_kick_event.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerKickEvent_1a43bcc4f3ba93c059fc4e7f524c7d4888" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerKickEvent::setReason</definition>
         <argsstring>(std::string reason)</argsstring>
         <name>setReason</name>

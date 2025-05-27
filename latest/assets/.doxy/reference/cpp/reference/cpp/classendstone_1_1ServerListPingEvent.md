@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"ServerListPingEvent"`<br> |
+|  const std::string | [**NAME**](#variable-name)   = `"ServerListPingEvent"`<br> |
 
 
 
@@ -98,31 +98,31 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ServerListPingEvent**](#function-serverlistpingevent) (std::string remote\_host, [**int**](classendstone_1_1Vector.md) remote\_port, std::string ping\_response) <br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**deserialize**](#function-deserialize) () <br> |
+|   | [**ServerListPingEvent**](#function-serverlistpingevent) (std::string remote\_host, int remote\_port, std::string ping\_response) <br> |
+|  bool | [**deserialize**](#function-deserialize) () <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const<br> |
 |  std::string | [**getLevelName**](#function-getlevelname) () const<br> |
-|  [**int**](classendstone_1_1Vector.md) | [**getLocalPort**](#function-getlocalport) () const<br> |
-|  [**int**](classendstone_1_1Vector.md) | [**getLocalPortV6**](#function-getlocalportv6) () const<br> |
-|  [**int**](classendstone_1_1Vector.md) | [**getMaxPlayers**](#function-getmaxplayers) () const<br> |
+|  int | [**getLocalPort**](#function-getlocalport) () const<br> |
+|  int | [**getLocalPortV6**](#function-getlocalportv6) () const<br> |
+|  int | [**getMaxPlayers**](#function-getmaxplayers) () const<br> |
 |  std::string | [**getMinecraftVersionNetwork**](#function-getminecraftversionnetwork) () const<br> |
 |  std::string | [**getMotd**](#function-getmotd) () const<br> |
-|  [**int**](classendstone_1_1Vector.md) | [**getNetworkProtocolVersion**](#function-getnetworkprotocolversion) () const<br> |
-|  [**int**](classendstone_1_1Vector.md) | [**getNumPlayers**](#function-getnumplayers) () const<br> |
+|  int | [**getNetworkProtocolVersion**](#function-getnetworkprotocolversion) () const<br> |
+|  int | [**getNumPlayers**](#function-getnumplayers) () const<br> |
 |  std::string | [**getRemoteHost**](#function-getremotehost) () const<br> |
-|  [**int**](classendstone_1_1Vector.md) | [**getRemotePort**](#function-getremoteport) () const<br> |
+|  int | [**getRemotePort**](#function-getremoteport) () const<br> |
 |  std::string | [**getServerGuid**](#function-getserverguid) () const<br> |
 |  std::string | [**serialize**](#function-serialize) () <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setLocalPort**](#function-setlocalport) ([**int**](classendstone_1_1Vector.md) port) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setLocalPortV6**](#function-setlocalportv6) ([**int**](classendstone_1_1Vector.md) port) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Vector.md) max\_players) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setMotd**](#function-setmotd) (std::string motd) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setNumPlayers**](#function-setnumplayers) ([**int**](classendstone_1_1Vector.md) num\_players) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setServerGuid**](#function-setserverguid) (std::string guid) <br> |
+|  void | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br> |
+|  void | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br> |
+|  void | [**setLocalPort**](#function-setlocalport) (int port) <br> |
+|  void | [**setLocalPortV6**](#function-setlocalportv6) (int port) <br> |
+|  void | [**setMaxPlayers**](#function-setmaxplayers) (int max\_players) <br> |
+|  void | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br> |
+|  void | [**setMotd**](#function-setmotd) (std::string motd) <br> |
+|  void | [**setNumPlayers**](#function-setnumplayers) (int num\_players) <br> |
+|  void | [**setServerGuid**](#function-setserverguid) (std::string guid) <br> |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -131,9 +131,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -142,9 +142,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 

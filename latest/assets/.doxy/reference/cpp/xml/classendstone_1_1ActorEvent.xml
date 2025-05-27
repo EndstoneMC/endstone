@@ -6,12 +6,12 @@
     <includes refid="actor__event_8h" local="no">endstone/event/actor/actor_event.h</includes>
     <templateparamlist>
       <param>
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">ActorType</ref></type>
+        <type>typename ActorType</type>
       </param>
     </templateparamlist>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorEvent_1a5bda59f76a2df1a35f89d47c6ef2bcbf" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">ActorType</ref> &amp;</type>
+        <type>ActorType &amp;</type>
         <definition>ActorType&amp; endstone::ActorEvent&lt; ActorType &gt;::actor_</definition>
         <argsstring></argsstring>
         <name>actor_</name>
@@ -33,7 +33,7 @@
         <name>ActorEvent</name>
         <qualifiedname>endstone::ActorEvent::ActorEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">ActorType</ref> &amp;</type>
+          <type>ActorType &amp;</type>
           <declname>actor</declname>
         </param>
         <briefdescription>
@@ -59,7 +59,7 @@
         <location file="include/endstone/event/actor/actor_event.h" line="29" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">ActorType</ref> &amp;</type>
+        <type>ActorType &amp;</type>
         <definition>ActorType &amp; endstone::ActorEvent&lt; ActorType &gt;::getActor</definition>
         <argsstring>() const</argsstring>
         <name>getActor</name>

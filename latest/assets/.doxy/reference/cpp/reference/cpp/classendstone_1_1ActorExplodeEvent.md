@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"ActorExplodeEvent"`<br> |
+|  const std::string | [**NAME**](#variable-name)   = `"ActorExplodeEvent"`<br> |
 
 
 
@@ -99,10 +99,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorExplodeEvent**](#function-actorexplodeevent) ([**Actor**](classendstone_1_1Actor.md) & actor, [**Location**](classendstone_1_1Location.md) location, BlockList blocks) <br> |
-|  [**const**](classendstone_1_1Vector.md) BlockList & | [**getBlockList**](#function-getblocklist-12) () const<br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
+|  const BlockList & | [**getBlockList**](#function-getblocklist-12) () const<br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 |  BlockList & | [**getBlockList**](#function-getblocklist-22) () <br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**const**](classendstone_1_1Vector.md) [**Location**](classendstone_1_1Location.md) & | [**getLocation**](#function-getlocation) () const<br>_Returns the location where the explosion happened._  |
+|  const [**Location**](classendstone_1_1Location.md) & | [**getLocation**](#function-getlocation) () const<br>_Returns the location where the explosion happened._  |
 |   | [**~ActorExplodeEvent**](#function-actorexplodeevent) () override<br> |
 
 
@@ -112,9 +112,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -123,9 +123,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -327,7 +327,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 _Returns the location where the explosion happened._ 
 ```C++
-inline const  Location & endstone::ActorExplodeEvent::getLocation () const
+inline const Location & endstone::ActorExplodeEvent::getLocation () const
 ```
 
 

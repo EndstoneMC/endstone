@@ -37,7 +37,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="40" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::setTitle</definition>
         <argsstring>(std::string title)=0</argsstring>
         <name>setTitle</name>
@@ -84,7 +84,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="52" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::setColor</definition>
         <argsstring>(BarColor color)=0</argsstring>
         <name>setColor</name>
@@ -131,7 +131,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="64" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::setStyle</definition>
         <argsstring>(BarStyle style)=0</argsstring>
         <name>setStyle</name>
@@ -160,7 +160,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="70" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a059c621a5d4bb4bd32aa1567195f6332" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::BossBar::hasFlag</definition>
         <argsstring>(BarFlag flag) const =0</argsstring>
         <name>hasFlag</name>
@@ -191,7 +191,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="77" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::addFlag</definition>
         <argsstring>(BarFlag flag)=0</argsstring>
         <name>addFlag</name>
@@ -220,7 +220,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="83" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::removeFlag</definition>
         <argsstring>(BarFlag flag)=0</argsstring>
         <name>removeFlag</name>
@@ -249,7 +249,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="89" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>virtual float endstone::BossBar::getProgress</definition>
         <argsstring>() const =0</argsstring>
         <name>getProgress</name>
@@ -267,13 +267,13 @@
         <location file="include/endstone/boss/boss_bar.h" line="95" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1af9af318e8026186174ae0b729ab964f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::BossBar::setProgress</definition>
         <argsstring>(float progress)=0</argsstring>
         <name>setProgress</name>
         <qualifiedname>endstone::BossBar::setProgress</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>progress</declname>
         </param>
         <briefdescription>
@@ -296,7 +296,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="101" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::BossBar::isVisible</definition>
         <argsstring>() const =0</argsstring>
         <name>isVisible</name>
@@ -314,13 +314,13 @@
         <location file="include/endstone/boss/boss_bar.h" line="107" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::setVisible</definition>
         <argsstring>(bool visible)=0</argsstring>
         <name>setVisible</name>
         <qualifiedname>endstone::BossBar::setVisible</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>visible</declname>
         </param>
         <briefdescription>
@@ -343,7 +343,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="113" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::addPlayer</definition>
         <argsstring>(Player &amp;player)=0</argsstring>
         <name>addPlayer</name>
@@ -372,7 +372,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="119" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::removePlayer</definition>
         <argsstring>(Player &amp;player)=0</argsstring>
         <name>removePlayer</name>
@@ -401,7 +401,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="125" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BossBar::removeAll</definition>
         <argsstring>()=0</argsstring>
         <name>removeAll</name>

@@ -20,7 +20,7 @@
         <location file="include/endstone/inventory/inventory.h" line="27" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Inventory::getSize</definition>
         <argsstring>() const =0</argsstring>
         <name>getSize</name>
@@ -38,7 +38,7 @@
         <location file="include/endstone/inventory/inventory.h" line="33" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Inventory::getMaxStackSize</definition>
         <argsstring>() const =0</argsstring>
         <name>getMaxStackSize</name>
@@ -62,7 +62,7 @@
         <name>getItem</name>
         <qualifiedname>endstone::Inventory::getItem</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>index</declname>
         </param>
         <briefdescription>
@@ -87,17 +87,17 @@
         <location file="include/endstone/inventory/inventory.h" line="48" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Inventory::setItem</definition>
         <argsstring>(int index, const ItemStack *item)=0</argsstring>
         <name>setItem</name>
         <qualifiedname>endstone::Inventory::setItem</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>index</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
           <declname>item</declname>
         </param>
         <briefdescription>
@@ -128,13 +128,13 @@
         <location file="include/endstone/inventory/inventory.h" line="56" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1aa0b7467f203722c8224f4d0d2c18a6a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Inventory::addItem</definition>
         <argsstring>(const ItemStack &amp;item)=0</argsstring>
         <name>addItem</name>
         <qualifiedname>endstone::Inventory::addItem</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>item</declname>
         </param>
         <briefdescription>
@@ -175,13 +175,13 @@
         <location file="include/endstone/inventory/inventory.h" line="71" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1afd3997dd60d7f4f0649aa4280f05bc24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Inventory::first</definition>
         <argsstring>(const ItemStack &amp;item) const =0</argsstring>
         <name>first</name>
         <qualifiedname>endstone::Inventory::first</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>item</declname>
         </param>
         <briefdescription>
@@ -206,7 +206,7 @@
         <location file="include/endstone/inventory/inventory.h" line="79" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Inventory::isEmpty</definition>
         <argsstring>() const =0</argsstring>
         <name>isEmpty</name>
@@ -224,7 +224,7 @@
         <location file="include/endstone/inventory/inventory.h" line="87" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Inventory::clear</definition>
         <argsstring>()=0</argsstring>
         <name>clear</name>

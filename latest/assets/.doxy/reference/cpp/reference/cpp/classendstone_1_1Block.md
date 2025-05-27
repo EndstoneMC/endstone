@@ -57,17 +57,17 @@ _Represents a block._ [More...](#detailed-description)
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) ([**int**](classendstone_1_1Vector.md) offset\_x, [**int**](classendstone_1_1Vector.md) offset\_y, [**int**](classendstone_1_1Vector.md) offset\_z) = 0<br>_Gets the block at the given offsets._  |
+| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) (int offset\_x, int offset\_y, int offset\_z) = 0<br>_Gets the block at the given offsets._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) (BlockFace face) = 0<br>_Gets the block at the given face._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) (BlockFace face, [**int**](classendstone_1_1Vector.md) distance) = 0<br>_Gets the block at the given distance of the given face._  |
+| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) (BlockFace face, int distance) = 0<br>_Gets the block at the given distance of the given face._  |
 | virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setData**](#function-setdata-12) ([**const**](classendstone_1_1Vector.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the complete data for this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setData**](#function-setdata-22) ([**const**](classendstone_1_1Vector.md) [**BlockData**](classendstone_1_1BlockData.md) & data, [**bool**](classendstone_1_1Vector.md) apply\_physics) = 0<br>_Sets the complete data for this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setType**](#function-settype-22) (std::string type, [**bool**](classendstone_1_1Vector.md) apply\_physics) = 0<br>_Sets the type of this block._  |
+| virtual int | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
+| virtual int | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
+| virtual int | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
+| virtual Result&lt; void &gt; | [**setData**](#function-setdata-12) (const [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the complete data for this block._  |
+| virtual Result&lt; void &gt; | [**setData**](#function-setdata-22) (const [**BlockData**](classendstone_1_1BlockData.md) & data, bool apply\_physics) = 0<br>_Sets the complete data for this block._  |
+| virtual Result&lt; void &gt; | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
+| virtual Result&lt; void &gt; | [**setType**](#function-settype-22) (std::string type, bool apply\_physics) = 0<br>_Sets the type of this block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
 
 
@@ -456,7 +456,7 @@ x-coordinate
 _Sets the complete data for this block._ 
 ```C++
 virtual Result< void > endstone::Block::setData (
-    const  BlockData & data
+    const BlockData & data
 ) = 0
 ```
 
@@ -483,7 +483,7 @@ virtual Result< void > endstone::Block::setData (
 _Sets the complete data for this block._ 
 ```C++
 virtual Result< void > endstone::Block::setData (
-    const  BlockData & data,
+    const BlockData & data,
     bool apply_physics
 ) = 0
 ```

@@ -39,14 +39,14 @@ _Represents a button with text and an optional icon._
 | class | [**Actor**](classendstone_1_1Actor.md) <br>_Represents a base actor in the level._  |
 | class | [**ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is damaged._ |
 | class | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _dies._ |
-| class | [**ActorEvent**](classendstone_1_1ActorEvent.md) &lt;[**typename**](classendstone_1_1Vector.md) [**ActorType**](classendstone_1_1Vector.md)&gt;<br>_Represents an Actor-related event._  |
+| class | [**ActorEvent**](classendstone_1_1ActorEvent.md) &lt;typename ActorType&gt;<br>_Represents an Actor-related event._  |
 | class | [**ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md) <br>_Called when an actor explodes._  |
 | class | [**ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md) <br>_Called when a living entity receives knockback._  |
 | class | [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._ |
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
 | class | [**BanEntry**](classendstone_1_1BanEntry.md) <br>_A single entry from a ban list._  |
-| class | [**BanList**](classendstone_1_1BanList.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Represents a ban list, containing bans._  |
+| class | [**BanList**](classendstone_1_1BanList.md) &lt;typename T&gt;<br>_Represents a ban list, containing bans._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
 | class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
 | class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data related to a live block._  |
@@ -57,7 +57,7 @@ _Represents a button with text and an optional icon._
 | class | [**BossBar**](classendstone_1_1BossBar.md) <br>_Represents a boss bar that is displayed to players._  |
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
 | class | [**Button**](classendstone_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
-| class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;[**typename**](classendstone_1_1Vector.md) EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
+| class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;typename EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
 | class | [**Chunk**](classendstone_1_1Chunk.md) <br>_Represents a chunk of blocks._  |
 | class | [**Color**](classendstone_1_1Color.md) <br>_Represents a color with red, green, blue, and alpha components._  |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
@@ -75,7 +75,7 @@ _Represents a button with text and an optional icon._
 | class | [**Enchantment**](classendstone_1_1Enchantment.md) <br> |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
-| class | [**Form**](classendstone_1_1Form.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Represents a generic form._  |
+| class | [**Form**](classendstone_1_1Form.md) &lt;typename T&gt;<br>_Represents a generic form._  |
 | class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per-event basis._  |
 | class | [**Header**](classendstone_1_1Header.md) <br>_Represents a header with a label._  |
 | class | [**ICancellable**](classendstone_1_1ICancellable.md) <br> |
@@ -86,6 +86,7 @@ _Represents a button with text and an optional icon._
 | class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br> |
 | class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the metadata of a generic item._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
+| class | [**ItemType**](classendstone_1_1ItemType.md) <br>_Represents an item type._  |
 | class | [**Label**](classendstone_1_1Label.md) <br>_Represents a text label._  |
 | class | [**Language**](classendstone_1_1Language.md) <br>_Represents the interface for translating text into different languages._  |
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
@@ -135,7 +136,7 @@ _Represents a button with text and an optional icon._
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**Position**](classendstone_1_1Position.md) <br>_Represents a 3-dimensional position in a dimension within a level._  |
 | class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Represents a proxied command sender._  |
-| class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Abstract registry interface for keyed objects._  |
+| class | [**Registry**](classendstone_1_1Registry.md) &lt;typename T&gt;<br>_Abstract registry interface for keyed objects._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
 | class | [**Score**](classendstone_1_1Score.md) <br>_Represents a score for an objective on a scoreboard._  |
 | class | [**Scoreboard**](classendstone_1_1Scoreboard.md) <br>_Represents a scoreboard._  |
@@ -157,7 +158,7 @@ _Represents a button with text and an optional icon._
 | class | [**Toggle**](classendstone_1_1Toggle.md) <br>_Represents a toggle button with a label._  |
 | class | [**Translatable**](classendstone_1_1Translatable.md) <br>_Represents an object with a text representation that can be translated by the Minecraft client._  |
 | class | [**UUID**](classendstone_1_1UUID.md) <br>_Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_ |
-| class | [**Vector**](classendstone_1_1Vector.md) &lt;[**typename**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md)&gt;<br>_Represents a 3-dimensional vector._  |
+| class | [**Vector**](classendstone_1_1Vector.md) &lt;typename T&gt;<br>_Represents a 3-dimensional vector._  |
 | class | [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) <br>_Called when the weather (rain) state in a world is changing._  |
 | class | [**WeatherEvent**](classendstone_1_1WeatherEvent.md) <br>_Represents a Weather-related event._  |
 | struct | [**overloaded**](structendstone_1_1overloaded.md) &lt;Func&gt;<br>_Helper type for visitors._  |
@@ -171,7 +172,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**BarFlag**](#enum-barflag)  <br> |
 | enum  | [**BarStyle**](#enum-barstyle)  <br> |
 | enum  | [**BlockFace**](#enum-blockface)  <br> |
-| typedef std::unordered\_map&lt; std::string, std::variant&lt; [**bool**](classendstone_1_1Vector.md), std::string, [**int**](classendstone_1_1Vector.md) &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
+| typedef std::unordered\_map&lt; std::string, std::variant&lt; bool, std::string, int &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br> |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
@@ -179,10 +180,10 @@ _Represents a button with text and an optional icon._
 | typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
-| typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**const**](classendstone_1_1Vector.md) [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
+| typedef std::function&lt; void(const [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
-| typedef nonstd::expected&lt; [**T**](classendstone_1_1Vector.md), std::string &gt; | [**Result**](#typedef-result)  <br> |
+| typedef nonstd::expected&lt; T, std::string &gt; | [**Result**](#typedef-result)  <br> |
 | typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br> |
 | enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
 | typedef std::uint32\_t | [**TaskId**](#typedef-taskid)  <br> |
@@ -210,15 +211,15 @@ _Represents a button with text and an optional icon._
 
 | Type | Name |
 | ---: | :--- |
-|  std::size\_t | [**hash\_value**](#function-hash_value) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & u) noexcept<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator!=**](#function-operator) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator&lt;**](#function-operator_1) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator&lt;=**](#function-operator_2) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator==**](#function-operator_3) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator&gt;**](#function-operator_4) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**operator&gt;=**](#function-operator_5) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Vector.md) & rhs) noexcept<br> |
+|  std::size\_t | [**hash\_value**](#function-hash_value) ([**UUID**](classendstone_1_1UUID.md) const & u) noexcept<br> |
+|  bool | [**operator!=**](#function-operator) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
+|  bool | [**operator&lt;**](#function-operator_1) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
+|  bool | [**operator&lt;=**](#function-operator_2) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
+|  bool | [**operator==**](#function-operator_3) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
+|  bool | [**operator&gt;**](#function-operator_4) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
+|  bool | [**operator&gt;=**](#function-operator_5) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
 |   | [**overloaded**](#function-overloaded) (Func...) <br>_Deduction guide._  |
-|  [**void**](classendstone_1_1Vector.md) | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & lhs, [**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
+|  void | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & lhs, [**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
 
 
 
@@ -589,7 +590,7 @@ using endstone::TaskId = typedef std::uint32_t;
 
 ```C++
 inline std::size_t endstone::hash_value (
-    UUID  const & u
+    UUID const & u
 ) noexcept
 ```
 
@@ -604,8 +605,8 @@ inline std::size_t endstone::hash_value (
 
 ```C++
 inline bool endstone::operator!= (
-    UUID  const & lhs,
-    UUID  const & rhs
+    UUID const & lhs,
+    UUID const & rhs
 ) noexcept
 ```
 
@@ -620,8 +621,8 @@ inline bool endstone::operator!= (
 
 ```C++
 inline bool endstone::operator< (
-    UUID  const & lhs,
-    UUID  const & rhs
+    UUID const & lhs,
+    UUID const & rhs
 ) noexcept
 ```
 
@@ -636,8 +637,8 @@ inline bool endstone::operator< (
 
 ```C++
 inline bool endstone::operator<= (
-    UUID  const & lhs,
-    UUID  const & rhs
+    UUID const & lhs,
+    UUID const & rhs
 ) noexcept
 ```
 
@@ -652,8 +653,8 @@ inline bool endstone::operator<= (
 
 ```C++
 inline bool endstone::operator== (
-    UUID  const & lhs,
-    UUID  const & rhs
+    UUID const & lhs,
+    UUID const & rhs
 ) noexcept
 ```
 
@@ -668,8 +669,8 @@ inline bool endstone::operator== (
 
 ```C++
 inline bool endstone::operator> (
-    UUID  const & lhs,
-    UUID  const & rhs
+    UUID const & lhs,
+    UUID const & rhs
 ) noexcept
 ```
 
@@ -684,8 +685,8 @@ inline bool endstone::operator> (
 
 ```C++
 inline bool endstone::operator>= (
-    UUID  const & lhs,
-    UUID  const & rhs
+    UUID const & lhs,
+    UUID const & rhs
 ) noexcept
 ```
 

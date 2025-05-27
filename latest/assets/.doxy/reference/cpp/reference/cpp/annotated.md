@@ -56,6 +56,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ItemFactory**](classendstone_1_1ItemFactory.md)     
     * **class** [**ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._     
+    * **class** [**ItemType**](classendstone_1_1ItemType.md) _Represents an item type._     
     * **class** [**Label**](classendstone_1_1Label.md) _Represents a text label._     
     * **class** [**Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._     
     * **class** [**Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._     
@@ -146,6 +147,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md)     
     * **struct** [**formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md)     
     * **struct** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)     
+    * **struct** [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)     
     * **struct** [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md)     
 * **namespace** [**std**](namespacestd.md)     
     * **struct** [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md)     

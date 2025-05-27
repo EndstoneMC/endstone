@@ -5,7 +5,7 @@
     <includes refid="ban__list_8h" local="no">endstone/ban/ban_list.h</includes>
     <templateparamlist>
       <param>
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
+        <type>typename T</type>
       </param>
     </templateparamlist>
     <sectiondef kind="public-func">
@@ -24,7 +24,7 @@
         <location file="include/endstone/ban/ban_list.h" line="19" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1acbf544a1e7d2a8950b23668a6bc28488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
+        <type>const T *</type>
         <definition>virtual const T * endstone::BanList&lt; T &gt;::getBanEntry</definition>
         <argsstring>(std::string target) const =0</argsstring>
         <name>getBanEntry</name>
@@ -57,7 +57,7 @@
         <location file="include/endstone/ban/ban_list.h" line="27" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1a6bf71e53fc104040604afe2de4cea0c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
+        <type>T *</type>
         <definition>virtual T * endstone::BanList&lt; T &gt;::getBanEntry</definition>
         <argsstring>(std::string target)=0</argsstring>
         <name>getBanEntry</name>
@@ -90,7 +90,7 @@
         <location file="include/endstone/ban/ban_list.h" line="35" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1a61b4780100f97cc243ccc9195c556959" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
+        <type>T &amp;</type>
         <definition>virtual T &amp; endstone::BanList&lt; T &gt;::addBan</definition>
         <argsstring>(std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source)=0</argsstring>
         <name>addBan</name>
@@ -159,7 +159,7 @@
         <location file="include/endstone/ban/ban_list.h" line="46" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1a341a701b475641623b2ce42f7a8c8f73" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
+        <type>T &amp;</type>
         <definition>virtual T &amp; endstone::BanList&lt; T &gt;::addBan</definition>
         <argsstring>(std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source)=0</argsstring>
         <name>addBan</name>
@@ -228,7 +228,7 @@
         <location file="include/endstone/ban/ban_list.h" line="58" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1aad4b42721be143342e22d1ba2fa325e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> * &gt;</type>
+        <type>std::vector&lt; const T * &gt;</type>
         <definition>virtual std::vector&lt; const T * &gt; endstone::BanList&lt; T &gt;::getEntries</definition>
         <argsstring>() const =0</argsstring>
         <name>getEntries</name>
@@ -248,7 +248,7 @@
         <location file="include/endstone/ban/ban_list.h" line="66" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1afcd17dd71093a6ad37ae785797e09511" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> * &gt;</type>
+        <type>std::vector&lt; T * &gt;</type>
         <definition>virtual std::vector&lt; T * &gt; endstone::BanList&lt; T &gt;::getEntries</definition>
         <argsstring>()=0</argsstring>
         <name>getEntries</name>
@@ -268,7 +268,7 @@
         <location file="include/endstone/ban/ban_list.h" line="73" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1a7fd3e0a897b072736e9df35d91b12c19" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::BanList&lt; T &gt;::isBanned</definition>
         <argsstring>(std::string target) const =0</argsstring>
         <name>isBanned</name>
@@ -303,7 +303,7 @@
         <location file="include/endstone/ban/ban_list.h" line="82" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1abefb6ec9f4a696e98609579e3b87718a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::BanList&lt; T &gt;::removeBan</definition>
         <argsstring>(std::string target)=0</argsstring>
         <name>removeBan</name>

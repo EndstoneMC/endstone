@@ -6,7 +6,7 @@
     <includes refid="player__chat__event_8h" local="no">endstone/event/player/player_chat_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerChatEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -112,7 +112,7 @@
         <location file="include/endstone/event/player/player_chat_event.h" line="41" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6911b50e5f63878d746bdda07d8fcd58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerChatEvent::setMessage</definition>
         <argsstring>(std::string message)</argsstring>
         <name>setMessage</name>

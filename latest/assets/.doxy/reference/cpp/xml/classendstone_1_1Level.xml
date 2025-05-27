@@ -55,7 +55,7 @@
         <location file="include/endstone/level/level.h" line="43" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Level::getTime</definition>
         <argsstring>() const =0</argsstring>
         <name>getTime</name>
@@ -73,13 +73,13 @@
         <location file="include/endstone/level/level.h" line="50" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Level::setTime</definition>
         <argsstring>(int time)=0</argsstring>
         <name>setTime</name>
         <qualifiedname>endstone::Level::setTime</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>time</declname>
         </param>
         <briefdescription>

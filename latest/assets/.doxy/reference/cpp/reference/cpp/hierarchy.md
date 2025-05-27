@@ -75,6 +75,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**endstone::MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._ 
 * **class** [**endstone::ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._ 
+* **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 
 * **class** [**endstone::Label**](classendstone_1_1Label.md) _Represents a text label._ 
 * **class** [**endstone::Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._ 
 * **class** [**endstone::Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._ 
@@ -154,5 +155,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **struct** [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md) 
+    * **struct** [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md) 
 

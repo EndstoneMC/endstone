@@ -83,7 +83,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="43" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a43a0aa639900616ec5235f9ece8592e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::isEmpty</definition>
         <argsstring>() const =0</argsstring>
         <name>isEmpty</name>
@@ -119,7 +119,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="57" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::hasDisplayName</definition>
         <argsstring>() const =0</argsstring>
         <name>hasDisplayName</name>
@@ -155,7 +155,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="71" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ItemMeta::setDisplayName</definition>
         <argsstring>(std::optional&lt; std::string &gt; name)=0</argsstring>
         <name>setDisplayName</name>
@@ -184,7 +184,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="78" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::hasLore</definition>
         <argsstring>() const =0</argsstring>
         <name>hasLore</name>
@@ -220,7 +220,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="92" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ItemMeta::setLore</definition>
         <argsstring>(std::optional&lt; std::vector&lt; std::string &gt; &gt; lore)=0</argsstring>
         <name>setLore</name>
@@ -249,7 +249,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="99" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::hasDamage</definition>
         <argsstring>() const =0</argsstring>
         <name>hasDamage</name>
@@ -267,7 +267,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="106" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::ItemMeta::getDamage</definition>
         <argsstring>() const =0</argsstring>
         <name>getDamage</name>
@@ -285,13 +285,13 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="113" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ItemMeta::setDamage</definition>
         <argsstring>(int damage)=0</argsstring>
         <name>setDamage</name>
         <qualifiedname>endstone::ItemMeta::setDamage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>damage</declname>
         </param>
         <briefdescription>
@@ -314,7 +314,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="120" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::hasEnchants</definition>
         <argsstring>() const =0</argsstring>
         <name>hasEnchants</name>
@@ -332,13 +332,13 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="127" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::hasEnchant</definition>
         <argsstring>(const std::string &amp;id) const =0</argsstring>
         <name>hasEnchant</name>
         <qualifiedname>endstone::ItemMeta::hasEnchant</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
@@ -363,13 +363,13 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="135" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::ItemMeta::getEnchantLevel</definition>
         <argsstring>(const std::string &amp;id) const =0</argsstring>
         <name>getEnchantLevel</name>
         <qualifiedname>endstone::ItemMeta::getEnchantLevel</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
@@ -394,7 +394,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="143" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
+        <type>std::unordered_map&lt; std::string, int &gt;</type>
         <definition>virtual std::unordered_map&lt; std::string, int &gt; endstone::ItemMeta::getEnchants</definition>
         <argsstring>() const =0</argsstring>
         <name>getEnchants</name>
@@ -413,21 +413,21 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="152" column="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::addEnchant</definition>
         <argsstring>(const std::string &amp;id, int level, bool force)=0</argsstring>
         <name>addEnchant</name>
         <qualifiedname>endstone::ItemMeta::addEnchant</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>id</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>level</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>force</declname>
         </param>
         <briefdescription>
@@ -468,13 +468,13 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="162" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a2349b16d2c1414811c1c8f36dc19452c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::removeEnchant</definition>
         <argsstring>(const std::string &amp;id)=0</argsstring>
         <name>removeEnchant</name>
         <qualifiedname>endstone::ItemMeta::removeEnchant</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
@@ -499,7 +499,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="171" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ItemMeta::removeEnchants</definition>
         <argsstring>()=0</argsstring>
         <name>removeEnchants</name>
@@ -514,7 +514,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="176" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::hasRepairCost</definition>
         <argsstring>() const =0</argsstring>
         <name>hasRepairCost</name>
@@ -532,7 +532,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="183" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::ItemMeta::getRepairCost</definition>
         <argsstring>() const =0</argsstring>
         <name>getRepairCost</name>
@@ -550,13 +550,13 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="190" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ItemMeta::setRepairCost</definition>
         <argsstring>(int cost)=0</argsstring>
         <name>setRepairCost</name>
         <qualifiedname>endstone::ItemMeta::setRepairCost</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>cost</declname>
         </param>
         <briefdescription>
@@ -579,7 +579,7 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="197" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::ItemMeta::isUnbreakable</definition>
         <argsstring>() const =0</argsstring>
         <name>isUnbreakable</name>
@@ -597,13 +597,13 @@
         <location file="include/endstone/inventory/meta/item_meta.h" line="204" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ItemMeta::setUnbreakable</definition>
         <argsstring>(bool unbreakable)=0</argsstring>
         <name>setUnbreakable</name>
         <qualifiedname>endstone::ItemMeta::setUnbreakable</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>unbreakable</declname>
         </param>
         <briefdescription>

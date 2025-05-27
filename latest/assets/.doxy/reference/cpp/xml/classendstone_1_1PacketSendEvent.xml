@@ -6,7 +6,7 @@
     <includes refid="packet__send__event_8h" local="no">endstone/event/server/packet_send_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PacketSendEvent_1a9884fb846170b61bc2e49937664176a7" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PacketSendEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -37,7 +37,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="80" column="12" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketSendEvent_1af46ca7e7e55a4df812ca6cc38466d991" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PacketSendEvent::packet_id_</definition>
         <argsstring></argsstring>
         <name>packet_id_</name>
@@ -91,7 +91,7 @@
           <declname>player</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>packet_id</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="33" column="18" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="33" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PacketSendEvent::getPacketId</definition>
         <argsstring>() const</argsstring>
         <name>getPacketId</name>
@@ -162,7 +162,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="53" column="23" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PacketSendEvent::setPayload</definition>
         <argsstring>(std::string_view payload)</argsstring>
         <name>setPayload</name>

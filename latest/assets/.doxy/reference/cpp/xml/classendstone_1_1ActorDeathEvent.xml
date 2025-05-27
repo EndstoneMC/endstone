@@ -7,7 +7,7 @@
     <includes refid="actor__death__event_8h" local="no">endstone/event/actor/actor_death_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ActorDeathEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>

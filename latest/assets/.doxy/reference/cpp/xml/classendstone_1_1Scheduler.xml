@@ -29,7 +29,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>()&gt;</type>
+          <type>std::function&lt; void()&gt;</type>
           <declname>task</declname>
         </param>
         <briefdescription>
@@ -72,7 +72,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>()&gt;</type>
+          <type>std::function&lt; void()&gt;</type>
           <declname>task</declname>
         </param>
         <param>
@@ -127,7 +127,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>()&gt;</type>
+          <type>std::function&lt; void()&gt;</type>
           <declname>task</declname>
         </param>
         <param>
@@ -194,7 +194,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>()&gt;</type>
+          <type>std::function&lt; void()&gt;</type>
           <declname>task</declname>
         </param>
         <briefdescription>
@@ -239,7 +239,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>()&gt;</type>
+          <type>std::function&lt; void()&gt;</type>
           <declname>task</declname>
         </param>
         <param>
@@ -296,7 +296,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>()&gt;</type>
+          <type>std::function&lt; void()&gt;</type>
           <declname>task</declname>
         </param>
         <param>
@@ -355,7 +355,7 @@
         <location file="include/endstone/scheduler/scheduler.h" line="92" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Scheduler::cancelTask</definition>
         <argsstring>(TaskId id)=0</argsstring>
         <name>cancelTask</name>
@@ -384,7 +384,7 @@
         <location file="include/endstone/scheduler/scheduler.h" line="100" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Scheduler::cancelTasks</definition>
         <argsstring>(Plugin &amp;plugin)=0</argsstring>
         <name>cancelTasks</name>
@@ -413,7 +413,7 @@
         <location file="include/endstone/scheduler/scheduler.h" line="108" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Scheduler::isRunning</definition>
         <argsstring>(TaskId id)=0</argsstring>
         <name>isRunning</name>
@@ -444,7 +444,7 @@
         <location file="include/endstone/scheduler/scheduler.h" line="117" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Scheduler::isQueued</definition>
         <argsstring>(TaskId id)=0</argsstring>
         <name>isQueued</name>

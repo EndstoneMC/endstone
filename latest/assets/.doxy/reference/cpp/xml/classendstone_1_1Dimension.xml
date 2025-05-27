@@ -126,15 +126,15 @@
         <name>getBlockAt</name>
         <qualifiedname>endstone::Dimension::getBlockAt</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -206,17 +206,17 @@
         <location file="include/endstone/level/dimension.h" line="77" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a444efcebbf833e779384449f781a10c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Dimension::getHighestBlockYAt</definition>
         <argsstring>(int x, int z) const =0</argsstring>
         <name>getHighestBlockYAt</name>
         <qualifiedname>endstone::Dimension::getHighestBlockYAt</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -255,11 +255,11 @@
         <name>getHighestBlockAt</name>
         <qualifiedname>endstone::Dimension::getHighestBlockAt</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>z</declname>
         </param>
         <briefdescription>

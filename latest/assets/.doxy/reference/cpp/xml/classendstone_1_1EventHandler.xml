@@ -19,7 +19,7 @@
         <location file="include/endstone/event/event_handler.h" line="97" column="17" bodyfile="include/endstone/event/event_handler.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1EventHandler_1aee627e677f1e854f937fe83caadcb9a0" prot="private" static="no" mutable="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;)&gt;</type>
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;)&gt;</type>
         <definition>std::function&lt;void(Event &amp;)&gt; endstone::EventHandler::executor_</definition>
         <argsstring></argsstring>
         <name>executor_</name>
@@ -61,7 +61,7 @@
         <location file="include/endstone/event/event_handler.h" line="100" column="12" bodyfile="include/endstone/event/event_handler.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1EventHandler_1ad05de4cbc4c308cfd4a88b26a1fa28ca" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::EventHandler::ignore_cancelled_</definition>
         <argsstring></argsstring>
         <name>ignore_cancelled_</name>
@@ -87,7 +87,7 @@
           <declname>event</declname>
         </param>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;)&gt;</type>
+          <type>std::function&lt; void(<ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;)&gt;</type>
           <declname>executor</declname>
         </param>
         <param>
@@ -99,7 +99,7 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>ignore_cancelled</declname>
         </param>
         <briefdescription>
@@ -147,7 +147,7 @@
         <location file="include/endstone/event/event_handler.h" line="55" column="20" bodyfile="include/endstone/event/event_handler.h" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1EventHandler_1a09736eece61298b452a850f687b9a8ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::EventHandler::isIgnoreCancelled</definition>
         <argsstring>() const</argsstring>
         <name>isIgnoreCancelled</name>
@@ -165,7 +165,7 @@
         <location file="include/endstone/event/event_handler.h" line="65" column="11" bodyfile="include/endstone/event/event_handler.h" bodystart="65" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1EventHandler_1a9f180123779aa67ed32f51753a40290c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::EventHandler::callEvent</definition>
         <argsstring>(Event &amp;event) const</argsstring>
         <name>callEvent</name>

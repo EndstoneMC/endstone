@@ -20,7 +20,7 @@
         <location file="include/endstone/ban/player_ban_list.h" line="18" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanList_1ae7a3cd7facd4b02cfdcf60b299725712" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
+        <type>const <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
         <definition>virtual const PlayerBanEntry * endstone::PlayerBanList::getBanEntry</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>getBanEntry</name>
@@ -84,7 +84,7 @@
         <location file="include/endstone/ban/player_ban_list.h" line="34" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanList_1aa18b306149a1a4fb72e63cf9eb626b4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
+        <type>const <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
         <definition>virtual const PlayerBanEntry * endstone::PlayerBanList::getBanEntry</definition>
         <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid) const =0</argsstring>
         <name>getBanEntry</name>
@@ -512,7 +512,7 @@
         <location file="include/endstone/ban/player_ban_list.h" line="108" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a355c32b0bdbc5e1168b1296e50b09a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> * &gt;</type>
+        <type>std::vector&lt; const <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> * &gt;</type>
         <definition>virtual std::vector&lt; const PlayerBanEntry * &gt; endstone::PlayerBanList::getEntries</definition>
         <argsstring>() const =0</argsstring>
         <name>getEntries</name>
@@ -550,7 +550,7 @@
         <location file="include/endstone/ban/player_ban_list.h" line="124" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a61d16ed125ebe7dd63d54ce01ca7c886" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::PlayerBanList::isBanned</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>isBanned</name>
@@ -584,7 +584,7 @@
         <location file="include/endstone/ban/player_ban_list.h" line="133" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a7be12babcf8042a19a693895b81f44b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::PlayerBanList::isBanned</definition>
         <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid) const =0</argsstring>
         <name>isBanned</name>
@@ -641,7 +641,7 @@
         <location file="include/endstone/ban/player_ban_list.h" line="144" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanList_1aad775f3d7c09741817b4768a1e56a31a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerBanList::removeBan</definition>
         <argsstring>(std::string name)=0</argsstring>
         <name>removeBan</name>
@@ -671,7 +671,7 @@
         <location file="include/endstone/ban/player_ban_list.h" line="152" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanList_1ac46c7ca6a478bf175ff321c05cf5c0a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PlayerBanList::removeBan</definition>
         <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid)=0</argsstring>
         <name>removeBan</name>

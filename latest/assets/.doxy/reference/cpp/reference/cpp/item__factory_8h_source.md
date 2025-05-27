@@ -24,21 +24,21 @@
 
 #pragma once
 
+#include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
-#include "endstone/inventory/meta/map_meta.h"
 
 namespace endstone {
 class ItemFactory {
 public:
     virtual ~ItemFactory() = default;
 
-    virtual std::unique_ptr<ItemMeta> getItemMeta(std::string_view type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(const ItemType &type) const = 0;
 
-    virtual bool isApplicable(const ItemMeta *meta, std::string_view type) const = 0;
+    [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, const ItemType &type) const = 0;
 
-    virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
+    [[nodiscard]] virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
 
-    virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, std::string_view type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, const ItemType &type) const = 0;
 };
 }  // namespace endstone
 ```

@@ -69,22 +69,22 @@
         <name>Color</name>
         <qualifiedname>endstone::Color::Color</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>red</declname>
           <defval>0</defval>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>green</declname>
           <defval>0</defval>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>blue</declname>
           <defval>0</defval>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>alpha</declname>
           <defval>255</defval>
         </param>

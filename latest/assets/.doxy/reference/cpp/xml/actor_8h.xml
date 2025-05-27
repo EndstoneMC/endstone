@@ -147,15 +147,15 @@
         <link refid="actor_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -170,47 +170,47 @@
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
-      <node id="34">
+      <node id="37">
         <label>include/endstone/damage/damage_source.h</label>
         <link refid="damage__source_8h_source"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
       <node id="30">
         <label>include/endstone/enchantments/enchantment.h</label>
         <link refid="enchantment_8h_source"/>
       </node>
-      <node id="35">
+      <node id="38">
         <label>include/endstone/event/actor/actor_damage_event.h</label>
         <link refid="actor__damage__event_8h_source"/>
       </node>
-      <node id="36">
+      <node id="39">
         <label>include/endstone/event/actor/actor_death_event.h</label>
         <link refid="actor__death__event_8h_source"/>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="40">
         <label>include/endstone/event/actor/actor_event.h</label>
         <link refid="actor__event_8h_source"/>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
         <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
         <childnode refid="41" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
       </node>
-      <node id="38">
+      <node id="41">
         <label>include/endstone/event/actor/actor_explode_event.h</label>
         <link refid="actor__explode__event_8h_source"/>
       </node>
@@ -218,15 +218,15 @@
         <label>include/endstone/event/actor/actor_knockback_event.h</label>
         <link refid="actor__knockback__event_8h_source"/>
       </node>
-      <node id="39">
+      <node id="42">
         <label>include/endstone/event/actor/actor_remove_event.h</label>
         <link refid="actor__remove__event_8h_source"/>
       </node>
-      <node id="40">
+      <node id="43">
         <label>include/endstone/event/actor/actor_spawn_event.h</label>
         <link refid="actor__spawn__event_8h_source"/>
       </node>
-      <node id="41">
+      <node id="44">
         <label>include/endstone/event/actor/actor_teleport_event.h</label>
         <link refid="actor__teleport__event_8h_source"/>
       </node>
@@ -332,15 +332,15 @@
         <label>include/endstone/event/player/player_teleport_event.h</label>
         <link refid="player__teleport__event_8h_source"/>
       </node>
-      <node id="43">
+      <node id="46">
         <label>include/endstone/event/server/broadcast_message_event.h</label>
         <link refid="broadcast__message__event_8h_source"/>
       </node>
-      <node id="44">
+      <node id="47">
         <label>include/endstone/event/server/packet_receive_event.h</label>
         <link refid="packet__receive__event_8h_source"/>
       </node>
-      <node id="45">
+      <node id="48">
         <label>include/endstone/event/server/packet_send_event.h</label>
         <link refid="packet__send__event_8h_source"/>
       </node>
@@ -356,74 +356,96 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="49">
         <label>include/endstone/event/server/script_message_event.h</label>
         <link refid="script__message__event_8h_source"/>
       </node>
-      <node id="47">
+      <node id="50">
         <label>include/endstone/event/server/server_command_event.h</label>
         <link refid="server__command__event_8h_source"/>
       </node>
-      <node id="42">
+      <node id="45">
         <label>include/endstone/event/server/server_event.h</label>
         <link refid="server__event_8h_source"/>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-      </node>
-      <node id="48">
-        <label>include/endstone/event/server/server_list_ping_event.h</label>
-        <link refid="server__list__ping__event_8h_source"/>
-      </node>
-      <node id="49">
-        <label>include/endstone/event/server/server_load_event.h</label>
-        <link refid="server__load__event_8h_source"/>
-      </node>
-      <node id="54">
-        <label>include/endstone/event/weather/thunder_change_event.h</label>
-        <link refid="thunder__change__event_8h_source"/>
-      </node>
-      <node id="55">
-        <label>include/endstone/event/weather/weather_change_event.h</label>
-        <link refid="weather__change__event_8h_source"/>
-      </node>
-      <node id="53">
-        <label>include/endstone/event/weather/weather_event.h</label>
-        <link refid="weather__event_8h_source"/>
-        <childnode refid="54" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-      </node>
-      <node id="50">
-        <label>include/endstone/level/chunk.h</label>
-        <link refid="chunk_8h_source"/>
         <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
       <node id="51">
+        <label>include/endstone/event/server/server_list_ping_event.h</label>
+        <link refid="server__list__ping__event_8h_source"/>
+      </node>
+      <node id="52">
+        <label>include/endstone/event/server/server_load_event.h</label>
+        <link refid="server__load__event_8h_source"/>
+      </node>
+      <node id="57">
+        <label>include/endstone/event/weather/thunder_change_event.h</label>
+        <link refid="thunder__change__event_8h_source"/>
+      </node>
+      <node id="58">
+        <label>include/endstone/event/weather/weather_change_event.h</label>
+        <link refid="weather__change__event_8h_source"/>
+      </node>
+      <node id="56">
+        <label>include/endstone/event/weather/weather_event.h</label>
+        <link refid="weather__event_8h_source"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/endstone/inventory/item_factory.h</label>
+        <link refid="item__factory_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>include/endstone/inventory/item_stack.h</label>
+        <link refid="item__stack_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>include/endstone/inventory/item_type.h</label>
+        <link refid="item__type_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>include/endstone/level/chunk.h</label>
+        <link refid="chunk_8h_source"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
       </node>
-      <node id="52">
+      <node id="55">
         <label>include/endstone/level/level.h</label>
         <link refid="level_8h_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -434,6 +456,8 @@
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -461,25 +485,29 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="27">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="31">
+      <node id="34">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
       </node>
-      <node id="33">
+      <node id="36">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="32">
+      <node id="35">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="21">
@@ -525,70 +553,70 @@
 <codeline lineno="26" refid="classendstone_1_1Actor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CommandSender</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>*<ref refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c" kindref="member">asActor</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="29" refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>*<ref refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c" kindref="member">asActor</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="30"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::uint64_t<sp/><ref refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kindref="member">getRuntimeId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="48" refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::uint64_t<sp/><ref refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kindref="member">getRuntimeId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kindref="member">getLocation</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55" refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kindref="member">getLocation</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62" refid="classendstone_1_1Actor_1a0f73b7b1bcc0f18ce4cc238fdcea69b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Vector&lt;float&gt;</ref><sp/><ref refid="classendstone_1_1Actor_1a0f73b7b1bcc0f18ce4cc238fdcea69b4" kindref="member">getVelocity</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="62" refid="classendstone_1_1Actor_1a0f73b7b1bcc0f18ce4cc238fdcea69b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Vector&lt;float&gt;<sp/><ref refid="classendstone_1_1Actor_1a0f73b7b1bcc0f18ce4cc238fdcea69b4" kindref="member">getVelocity</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" kindref="member">isOnGround</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="69" refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" kindref="member">isOnGround</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" kindref="member">isInWater</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76" refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" kindref="member">isInWater</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" kindref="member">isInLava</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83" refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" kindref="member">isInLava</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90" refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90" refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97" refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="97" refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" kindref="member">setRotation</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">yaw</ref>,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">pitch</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="107" refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" kindref="member">setRotation</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yaw,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>pitch)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114" refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" kindref="member">teleport</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1Vector" kindref="compound">location</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="114" refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" kindref="member">teleport</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>location)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121" refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" kindref="member">teleport</ref>(<ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">target</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="121" refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" kindref="member">teleport</ref>(<ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;target)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128" refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::int64_t<sp/><ref refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" kindref="member">getId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="128" refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::int64_t<sp/><ref refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" kindref="member">getId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135" refid="classendstone_1_1Actor_1a896dcb16d037d3591b0d39480521a193" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a896dcb16d037d3591b0d39480521a193" kindref="member">remove</ref>()<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142" refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" kindref="member">isDead</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="142" refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" kindref="member">isDead</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149" refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" kindref="member">isValid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="149" refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" kindref="member">isValid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156" refid="classendstone_1_1Actor_1a547e0f2ecb4be6edb82f909f48946031" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a547e0f2ecb4be6edb82f909f48946031" kindref="member">getHealth</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="156" refid="classendstone_1_1Actor_1a547e0f2ecb4be6edb82f909f48946031" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a547e0f2ecb4be6edb82f909f48946031" kindref="member">getHealth</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163" refid="classendstone_1_1Actor_1a39c0d4e763cafb181f1071de2c31b647" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Result&lt;void&gt;</ref><sp/><ref refid="classendstone_1_1Actor_1a39c0d4e763cafb181f1071de2c31b647" kindref="member">setHealth</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">health</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="163" refid="classendstone_1_1Actor_1a39c0d4e763cafb181f1071de2c31b647" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;void&gt;<sp/><ref refid="classendstone_1_1Actor_1a39c0d4e763cafb181f1071de2c31b647" kindref="member">setHealth</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>health)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170" refid="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" kindref="member">getMaxHealth</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="170" refid="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" kindref="member">getMaxHealth</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177" refid="classendstone_1_1Actor_1aab1b3bf14d77e70515a6afacb3219e86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Actor_1aab1b3bf14d77e70515a6afacb3219e86" kindref="member">getScoreboardTags</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="177" refid="classendstone_1_1Actor_1aab1b3bf14d77e70515a6afacb3219e86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Actor_1aab1b3bf14d77e70515a6afacb3219e86" kindref="member">getScoreboardTags</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185" refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" kindref="member">addScoreboardTag</ref>(std::string<sp/><ref refid="classendstone_1_1Vector" kindref="compound">tag</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="185" refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" kindref="member">addScoreboardTag</ref>(std::string<sp/>tag)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193" refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" kindref="member">removeScoreboardTag</ref>(std::string<sp/><ref refid="classendstone_1_1Vector" kindref="compound">tag</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="193" refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" kindref="member">removeScoreboardTag</ref>(std::string<sp/>tag)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200" refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" kindref="member">isNameTagVisible</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="200" refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" kindref="member">isNameTagVisible</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"></highlight></codeline>
-<codeline lineno="207" refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" kindref="member">setNameTagVisible</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">visible</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="207" refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" kindref="member">setNameTagVisible</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>visible)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"></highlight></codeline>
-<codeline lineno="214" refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" kindref="member">isNameTagAlwaysVisible</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="214" refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" kindref="member">isNameTagAlwaysVisible</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="221" refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" kindref="member">setNameTagAlwaysVisible</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">visible</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="221" refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" kindref="member">setNameTagAlwaysVisible</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>visible)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="222"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228" refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" kindref="member">getNameTag</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="228" refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" kindref="member">getNameTag</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
-<codeline lineno="235" refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" kindref="member">setNameTag</ref>(std::string<sp/><ref refid="classendstone_1_1Vector" kindref="compound">name</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="235" refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" kindref="member">setNameTag</ref>(std::string<sp/>name)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="236"><highlight class="normal"></highlight></codeline>
-<codeline lineno="242" refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" kindref="member">getScoreTag</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="242" refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" kindref="member">getScoreTag</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight></codeline>
-<codeline lineno="249" refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" kindref="member">setScoreTag</ref>(std::string<sp/><ref refid="classendstone_1_1Vector" kindref="compound">score</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="249" refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" kindref="member">setScoreTag</ref>(std::string<sp/>score)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="250"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight></codeline>
 <codeline lineno="252"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

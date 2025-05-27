@@ -52,7 +52,7 @@ _Represents a color with red, green, blue, and alpha components._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Color**](#function-color) ([**const**](classendstone_1_1Vector.md) std::uint8\_t red=0, [**const**](classendstone_1_1Vector.md) std::uint8\_t green=0, [**const**](classendstone_1_1Vector.md) std::uint8\_t blue=0, [**const**](classendstone_1_1Vector.md) std::uint8\_t alpha=255) <br>_Creates a color with the specified red, green, blue, and alpha values in the range (0 - 255)._  |
+|   | [**Color**](#function-color) (const std::uint8\_t red=0, const std::uint8\_t green=0, const std::uint8\_t blue=0, const std::uint8\_t alpha=255) <br>_Creates a color with the specified red, green, blue, and alpha values in the range (0 - 255)._  |
 |  std::uint8\_t | [**getAlpha**](#function-getalpha) () const<br>_Gets the alpha component of the color._  |
 |  std::uint8\_t | [**getBlue**](#function-getblue) () const<br>_Gets the blue component of the color._  |
 |  std::uint8\_t | [**getGreen**](#function-getgreen) () const<br>_Gets the green component of the color._  |

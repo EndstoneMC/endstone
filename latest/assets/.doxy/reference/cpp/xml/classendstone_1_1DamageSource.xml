@@ -75,7 +75,7 @@
         <location file="include/endstone/damage/damage_source.h" line="56" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::DamageSource::isIndirect</definition>
         <argsstring>() const =0</argsstring>
         <name>isIndirect</name>

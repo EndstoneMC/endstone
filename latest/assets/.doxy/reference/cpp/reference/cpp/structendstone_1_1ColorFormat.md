@@ -38,39 +38,39 @@ _All supported color and format codes._
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Aqua**](#variable-aqua)   = `Escape + '[**b**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Black**](#variable-black)   = `Escape + '0'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Blue**](#variable-blue)   = `Escape + '9'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Bold**](#variable-bold)   = `Escape + '[**l**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**DarkAqua**](#variable-darkaqua)   = `Escape + '3'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**DarkBlue**](#variable-darkblue)   = `Escape + '1'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**DarkGray**](#variable-darkgray)   = `Escape + '8'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**DarkGreen**](#variable-darkgreen)   = `Escape + '2'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**DarkPurple**](#variable-darkpurple)   = `Escape + '5'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**DarkRed**](#variable-darkred)   = `Escape + '4'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Escape**](#variable-escape)   = `"§"`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Gold**](#variable-gold)   = `Escape + '6'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Gray**](#variable-gray)   = `Escape + '7'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Green**](#variable-green)   = `Escape + '[**a**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Italic**](#variable-italic)   = `Escape + '[**o**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**LightPurple**](#variable-lightpurple)   = `Escape + '[**d**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialAmethyst**](#variable-materialamethyst)   = `Escape + '[**u**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialCopper**](#variable-materialcopper)   = `Escape + '[**n**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialDiamond**](#variable-materialdiamond)   = `Escape + '[**s**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialEmerald**](#variable-materialemerald)   = `Escape + '[**q**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialGold**](#variable-materialgold)   = `Escape + '[**p**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialIron**](#variable-materialiron)   = `Escape + '[**i**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialLapis**](#variable-materiallapis)   = `Escape + '[**t**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialNetherite**](#variable-materialnetherite)   = `Escape + '[**j**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialQuartz**](#variable-materialquartz)   = `Escape + '[**h**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialRedstone**](#variable-materialredstone)   = `Escape + '[**m**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MaterialResin**](#variable-materialresin)   = `Escape + '[**v**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**MinecoinGold**](#variable-minecoingold)   = `Escape + '[**g**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Obfuscated**](#variable-obfuscated)   = `Escape + '[**k**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Red**](#variable-red)   = `Escape + '[**c**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Reset**](#variable-reset)   = `Escape + '[**r**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**White**](#variable-white)   = `Escape + '[**f**](classendstone_1_1Vector.md)'`<br> |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**Yellow**](#variable-yellow)   = `Escape + '[**e**](classendstone_1_1Vector.md)'`<br> |
+|  const std::string | [**Aqua**](#variable-aqua)   = `Escape + 'b'`<br> |
+|  const std::string | [**Black**](#variable-black)   = `Escape + '0'`<br> |
+|  const std::string | [**Blue**](#variable-blue)   = `Escape + '9'`<br> |
+|  const std::string | [**Bold**](#variable-bold)   = `Escape + 'l'`<br> |
+|  const std::string | [**DarkAqua**](#variable-darkaqua)   = `Escape + '3'`<br> |
+|  const std::string | [**DarkBlue**](#variable-darkblue)   = `Escape + '1'`<br> |
+|  const std::string | [**DarkGray**](#variable-darkgray)   = `Escape + '8'`<br> |
+|  const std::string | [**DarkGreen**](#variable-darkgreen)   = `Escape + '2'`<br> |
+|  const std::string | [**DarkPurple**](#variable-darkpurple)   = `Escape + '5'`<br> |
+|  const std::string | [**DarkRed**](#variable-darkred)   = `Escape + '4'`<br> |
+|  const std::string | [**Escape**](#variable-escape)   = `"§"`<br> |
+|  const std::string | [**Gold**](#variable-gold)   = `Escape + '6'`<br> |
+|  const std::string | [**Gray**](#variable-gray)   = `Escape + '7'`<br> |
+|  const std::string | [**Green**](#variable-green)   = `Escape + 'a'`<br> |
+|  const std::string | [**Italic**](#variable-italic)   = `Escape + 'o'`<br> |
+|  const std::string | [**LightPurple**](#variable-lightpurple)   = `Escape + 'd'`<br> |
+|  const std::string | [**MaterialAmethyst**](#variable-materialamethyst)   = `Escape + 'u'`<br> |
+|  const std::string | [**MaterialCopper**](#variable-materialcopper)   = `Escape + 'n'`<br> |
+|  const std::string | [**MaterialDiamond**](#variable-materialdiamond)   = `Escape + 's'`<br> |
+|  const std::string | [**MaterialEmerald**](#variable-materialemerald)   = `Escape + 'q'`<br> |
+|  const std::string | [**MaterialGold**](#variable-materialgold)   = `Escape + 'p'`<br> |
+|  const std::string | [**MaterialIron**](#variable-materialiron)   = `Escape + 'i'`<br> |
+|  const std::string | [**MaterialLapis**](#variable-materiallapis)   = `Escape + 't'`<br> |
+|  const std::string | [**MaterialNetherite**](#variable-materialnetherite)   = `Escape + 'j'`<br> |
+|  const std::string | [**MaterialQuartz**](#variable-materialquartz)   = `Escape + 'h'`<br> |
+|  const std::string | [**MaterialRedstone**](#variable-materialredstone)   = `Escape + 'm'`<br> |
+|  const std::string | [**MaterialResin**](#variable-materialresin)   = `Escape + 'v'`<br> |
+|  const std::string | [**MinecoinGold**](#variable-minecoingold)   = `Escape + 'g'`<br> |
+|  const std::string | [**Obfuscated**](#variable-obfuscated)   = `Escape + 'k'`<br> |
+|  const std::string | [**Red**](#variable-red)   = `Escape + 'c'`<br> |
+|  const std::string | [**Reset**](#variable-reset)   = `Escape + 'r'`<br> |
+|  const std::string | [**White**](#variable-white)   = `Escape + 'f'`<br> |
+|  const std::string | [**Yellow**](#variable-yellow)   = `Escape + 'e'`<br> |
 
 
 

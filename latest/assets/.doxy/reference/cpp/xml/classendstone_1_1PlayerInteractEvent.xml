@@ -6,7 +6,7 @@
     <includes refid="player__interact__event_8h" local="no">endstone/event/player/player_interact_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1abac8921bf78c78354ff50a94cd9d25b1" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerInteractEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -65,7 +65,7 @@
         <location file="include/endstone/event/player/player_interact_event.h" line="107" column="15" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1a50a670a3475715ed0b2e8d7ca24320ea" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
         <definition>Vector&lt;float&gt; endstone::PlayerInteractEvent::clicked_position_</definition>
         <argsstring></argsstring>
         <name>clicked_position_</name>
@@ -103,7 +103,7 @@
           <declname>block_face</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt; &amp;</type>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt; &amp;</type>
           <declname>clicked_position</declname>
         </param>
         <briefdescription>
@@ -148,7 +148,7 @@
         <location file="include/endstone/event/player/player_interact_event.h" line="37" column="18" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="37" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a24de1e03d7c563bc8cddc7ee7e4c73c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::PlayerInteractEvent::hasItem</definition>
         <argsstring>() const</argsstring>
         <name>hasItem</name>
@@ -184,7 +184,7 @@
         <location file="include/endstone/event/player/player_interact_event.h" line="57" column="16" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="57" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a34e1b96ac0ad624c40e8877a4696111e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::PlayerInteractEvent::hasBlock</definition>
         <argsstring>() const</argsstring>
         <name>hasBlock</name>
@@ -238,7 +238,7 @@
         <location file="include/endstone/event/player/player_interact_event.h" line="87" column="16" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="87" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1af320c80fe31afe89aeabe1f344e5a56d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
         <definition>Vector&lt; float &gt; endstone::PlayerInteractEvent::getClickedPosition</definition>
         <argsstring>() const</argsstring>
         <name>getClickedPosition</name>

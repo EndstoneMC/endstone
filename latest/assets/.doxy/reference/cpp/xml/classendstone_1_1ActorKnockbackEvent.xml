@@ -6,7 +6,7 @@
     <includes refid="actor__knockback__event_8h" local="no">endstone/event/actor/actor_knockback_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorKnockbackEvent_1a3612ace20ee9b1d15cc5d3f65aef90a0" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ActorKnockbackEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -51,7 +51,7 @@
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="75" column="11" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorKnockbackEvent_1a7ac0fa0d6814cf5665c25105624c5e34" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
         <definition>Vector&lt;float&gt; endstone::ActorKnockbackEvent::raw_knockback_</definition>
         <argsstring></argsstring>
         <name>raw_knockback_</name>
@@ -65,7 +65,7 @@
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="76" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorKnockbackEvent_1ab4ea2192fc105fe64e328ef3497824a1" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
         <definition>Vector&lt;float&gt; endstone::ActorKnockbackEvent::knockback_</definition>
         <argsstring></argsstring>
         <name>knockback_</name>
@@ -95,7 +95,7 @@
           <declname>source</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
           <declname>knockback</declname>
         </param>
         <briefdescription>
@@ -158,7 +158,7 @@
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="45" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="45" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1a7ec5c1018eb0c66d7143796837ebfff0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
         <definition>Vector&lt; float &gt; endstone::ActorKnockbackEvent::getKnockback</definition>
         <argsstring>() const</argsstring>
         <name>getKnockback</name>
@@ -167,7 +167,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Gets the knockback that will be applied to the entity.</para>
-<para><bold>Note:</bold> this method returns a copy, changes must be applied with <ref refid="classendstone_1_1ActorKnockbackEvent_1a17876ee6a06028878ff098bec3bb20f1" kindref="member">setKnockback(Vector)</ref></para>
+<para><bold>Note:</bold> this method returns a copy, changes must be applied with setKnockback(Vector)</para>
 <para><simplesect kind="return"><para>the knockback </para>
 </simplesect>
 </para>
@@ -177,13 +177,13 @@
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="58" column="13" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1a17876ee6a06028878ff098bec3bb20f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ActorKnockbackEvent::setKnockback</definition>
         <argsstring>(Vector&lt; float &gt; knockback)</argsstring>
         <name>setKnockback</name>
         <qualifiedname>endstone::ActorKnockbackEvent::setKnockback</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
           <declname>knockback</declname>
         </param>
         <briefdescription>

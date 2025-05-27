@@ -19,7 +19,7 @@
         <location file="include/endstone/plugin/service_manager.h" line="32" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1a8fbe97b8dcbc297e6386f0e6c1c6e3f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ServiceManager::registerService</definition>
         <argsstring>(std::string name, std::shared_ptr&lt; Service &gt; provider, const Plugin &amp;plugin, ServicePriority priority)=0</argsstring>
         <name>registerService</name>
@@ -33,7 +33,7 @@
           <declname>provider</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
         </param>
         <param>
@@ -84,13 +84,13 @@
         <location file="include/endstone/plugin/service_manager.h" line="42" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1af62f98b2abdd3fa261d372dd10b5d831" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ServiceManager::unregisterAll</definition>
         <argsstring>(const Plugin &amp;plugin)=0</argsstring>
         <name>unregisterAll</name>
         <qualifiedname>endstone::ServiceManager::unregisterAll</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
         </param>
         <briefdescription>
@@ -113,7 +113,7 @@
         <location file="include/endstone/plugin/service_manager.h" line="50" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ServiceManager::unregister</definition>
         <argsstring>(std::string name, const Service &amp;provider)=0</argsstring>
         <name>unregister</name>
@@ -123,7 +123,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &amp;</type>
           <declname>provider</declname>
         </param>
         <briefdescription>
@@ -154,13 +154,13 @@
         <location file="include/endstone/plugin/service_manager.h" line="58" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::ServiceManager::unregister</definition>
         <argsstring>(const Service &amp;provider)=0</argsstring>
         <name>unregister</name>
         <qualifiedname>endstone::ServiceManager::unregister</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &amp;</type>
           <declname>provider</declname>
         </param>
         <briefdescription>
@@ -216,10 +216,10 @@
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1ac2fcb33a1d0fc89902100b7244fa55b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
+            <type>typename T</type>
           </param>
         </templateparamlist>
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &gt;</type>
+        <type>std::shared_ptr&lt; T &gt;</type>
         <definition>std::shared_ptr&lt; T &gt; endstone::ServiceManager::load</definition>
         <argsstring>(std::string name) const</argsstring>
         <name>load</name>

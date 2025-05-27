@@ -5,7 +5,7 @@
     <includes refid="registry_8h" local="no">endstone/registry.h</includes>
     <templateparamlist>
       <param>
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
+        <type>typename T</type>
       </param>
     </templateparamlist>
     <sectiondef kind="public-func">
@@ -24,7 +24,7 @@
         <location file="include/endstone/registry.h" line="33" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a12086295fb74563d44e4e362cff1598b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
+        <type>T *</type>
         <definition>virtual T * endstone::Registry&lt; T &gt;::get</definition>
         <argsstring>(NamespacedKey key) noexcept=0</argsstring>
         <name>get</name>
@@ -56,7 +56,7 @@
         <location file="include/endstone/registry.h" line="43" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a99649cc36f14453c0013b82e0f3843db" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> *</type>
+        <type>const T *</type>
         <definition>virtual const T * endstone::Registry&lt; T &gt;::get</definition>
         <argsstring>(NamespacedKey key) const noexcept=0</argsstring>
         <name>get</name>
@@ -87,13 +87,13 @@
         <location file="include/endstone/registry.h" line="51" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a72a8c099b8f3fa87b3ecd6a3b1ef4834" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
+        <type>T &amp;</type>
         <definition>virtual T &amp; endstone::Registry&lt; T &gt;::getOrThrow</definition>
         <argsstring>(const NamespacedKey key)</argsstring>
         <name>getOrThrow</name>
         <qualifiedname>endstone::Registry::getOrThrow</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
+          <type>const <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -127,13 +127,13 @@
         <location file="include/endstone/registry.h" line="60" column="15" bodyfile="include/endstone/registry.h" bodystart="60" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a2e2e60ccbebb8aea3cb57afe54f5443c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
+        <type>const T &amp;</type>
         <definition>virtual const T &amp; endstone::Registry&lt; T &gt;::getOrThrow</definition>
         <argsstring>(const NamespacedKey key) const</argsstring>
         <name>getOrThrow</name>
         <qualifiedname>endstone::Registry::getOrThrow</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
+          <type>const <ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -167,13 +167,13 @@
         <location file="include/endstone/registry.h" line="75" column="21" bodyfile="include/endstone/registry.h" bodystart="75" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Registry&lt; T &gt;::forEach</definition>
         <argsstring>(std::function&lt; bool(const T &amp;)&gt; func) const =0</argsstring>
         <name>forEach</name>
         <qualifiedname>endstone::Registry::forEach</qualifiedname>
         <param>
-          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;)&gt;</type>
+          <type>std::function&lt; bool(const T &amp;)&gt;</type>
           <declname>func</declname>
         </param>
         <briefdescription>

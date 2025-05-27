@@ -28,7 +28,9 @@
 
 #include "endstone/detail/endstone.h"
 #include "endstone/inventory/item_factory.h"
+#include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
+#include "endstone/registry.h"
 
 namespace endstone {
 
@@ -37,15 +39,19 @@ class EndstoneItemStack;
 }
 
 class ItemStack {
-protected:
-    ItemStack() = default;
-
 public:
-    explicit ItemStack(std::string type, const int amount = 1) : type_(std::move(type)), amount_(amount) {}
-    ItemStack(const ItemStack &stack)
+    explicit ItemStack(const std::string &type, const int amount = 1)
     {
-        type_ = stack.getType();
-        amount_ = stack.getAmount();
+        if (const auto *item_type = ItemType::get(type)) {
+            type_ = *item_type;
+            amount_ = amount;
+        }
+    }
+
+    explicit ItemStack(const ItemType &type, const int amount = 1) : type_(type), amount_(amount) {}
+
+    ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount())
+    {
         if (stack.hasItemMeta()) {
             ItemStack::setItemMeta(stack.getItemMeta().get());
         }
@@ -61,15 +67,23 @@ protected:
     }
 
 public:
-    [[nodiscard]] virtual std::string getType() const
+    [[nodiscard]] virtual const ItemType &getType() const
     {
         return type_;
     }
 
-    virtual void setType(std::string type)
+    virtual Result<void> setType(const std::string &type)
+    {
+        const auto *item_type = ItemType::get(type);
+        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+        type_ = *item_type;
+        return {};
+    }
+
+    virtual void setType(const ItemType &type)
     {
         // TODO(item): clear item components when the type is changed
-        type_ = std::move(type);
+        type_ = type;
     }
 
     [[nodiscard]] virtual int getAmount() const
@@ -77,7 +91,7 @@ public:
         return amount_;
     }
 
-    virtual void setAmount(int amount)
+    virtual void setAmount(const int amount)
     {
         amount_ = amount;
     }
@@ -102,8 +116,21 @@ public:
         return std::make_unique<ItemStack>(*this);
     }
 
+    static Result<ItemStack> create(const ItemType &type, const int amount = 1)
+    {
+        ENDSTONE_CHECKF(amount >= 1 && amount <= 255, "Item stack amount must be between 1 to 255, got {}.", amount);
+        return ItemStack(type, amount);
+    }
+
+    static Result<ItemStack> create(const std::string &type, const int amount = 1)
+    {
+        const auto *item_type = ItemType::get(type);
+        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+        return create(*item_type, amount);
+    }
+
 private:
-    bool setItemMeta0(ItemMeta *meta, const std::string_view type)
+    bool setItemMeta0(const ItemMeta *meta, const ItemType &type)
     {
         if (!meta) {
             meta_ = nullptr;
@@ -119,7 +146,7 @@ private:
         return true;
     }
 
-    std::string type_ = "minecraft:air";
+    std::reference_wrapper<const ItemType> type_ = *ItemType::get("minecraft:air");
     int amount_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;
 };

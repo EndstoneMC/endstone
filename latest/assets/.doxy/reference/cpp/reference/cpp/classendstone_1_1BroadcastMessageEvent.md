@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"BroadcastMessageEvent"`<br> |
+|  const std::string | [**NAME**](#variable-name)   = `"BroadcastMessageEvent"`<br> |
 
 
 
@@ -98,11 +98,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BroadcastMessageEvent**](#function-broadcastmessageevent) ([**bool**](classendstone_1_1Vector.md) async, Message message, std::unordered\_set&lt; [**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; recipients) <br> |
+|   | [**BroadcastMessageEvent**](#function-broadcastmessageevent) (bool async, Message message, std::unordered\_set&lt; const [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; recipients) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**const**](classendstone_1_1Vector.md) Message & | [**getMessage**](#function-getmessage) () const<br> |
-|  [**const**](classendstone_1_1Vector.md) std::unordered\_set&lt; [**const**](classendstone_1_1Vector.md) [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; & | [**getRecipients**](#function-getrecipients) () const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setMessage**](#function-setmessage) (Message message) <br> |
+|  const Message & | [**getMessage**](#function-getmessage) () const<br> |
+|  const std::unordered\_set&lt; const [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; & | [**getRecipients**](#function-getrecipients) () const<br> |
+|  void | [**setMessage**](#function-setmessage) (Message message) <br> |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -111,9 +111,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -122,9 +122,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -239,7 +239,7 @@ const std::string endstone::BroadcastMessageEvent::NAME;
 inline endstone::BroadcastMessageEvent::BroadcastMessageEvent (
     bool async,
     Message message,
-    std::unordered_set< const  CommandSender * > recipients
+    std::unordered_set< const CommandSender * > recipients
 ) 
 ```
 
@@ -309,7 +309,7 @@ Message to broadcast
 ### function getRecipients 
 
 ```C++
-inline const std::unordered_set< const  CommandSender * > & endstone::BroadcastMessageEvent::getRecipients () const
+inline const std::unordered_set< const CommandSender * > & endstone::BroadcastMessageEvent::getRecipients () const
 ```
 
 

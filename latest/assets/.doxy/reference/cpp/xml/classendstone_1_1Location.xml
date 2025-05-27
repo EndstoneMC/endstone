@@ -6,7 +6,7 @@
     <includes refid="location_8h" local="no">endstone/level/location.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::pitch_</definition>
         <argsstring></argsstring>
         <name>pitch_</name>
@@ -20,7 +20,7 @@
         <location file="include/endstone/level/location.h" line="96" column="11" bodyfile="include/endstone/level/location.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::yaw_</definition>
         <argsstring></argsstring>
         <name>yaw_</name>
@@ -46,24 +46,24 @@
           <declname>dimension</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>z</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>pitch</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>yaw</declname>
           <defval>0.0</defval>
         </param>
@@ -86,24 +86,24 @@
           <declname>dimension</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>z</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>pitch</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>yaw</declname>
           <defval>0.0</defval>
         </param>
@@ -116,7 +116,7 @@
         <location file="include/endstone/level/location.h" line="34" column="5" bodyfile="include/endstone/level/location.h" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::getPitch</definition>
         <argsstring>() const</argsstring>
         <name>getPitch</name>
@@ -134,13 +134,13 @@
         <location file="include/endstone/level/location.h" line="44" column="12" bodyfile="include/endstone/level/location.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a27175a2731840cf6a10438adb80e8ad1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Location::setPitch</definition>
         <argsstring>(float pitch)</argsstring>
         <name>setPitch</name>
         <qualifiedname>endstone::Location::setPitch</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>pitch</declname>
         </param>
         <briefdescription>
@@ -174,7 +174,7 @@ Increasing pitch values the equivalent of looking down.</para>
         <location file="include/endstone/level/location.h" line="61" column="10" bodyfile="include/endstone/level/location.h" bodystart="61" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a15b337fd56d6e8e4cb24ba1b6b745a41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Location::getYaw</definition>
         <argsstring>() const</argsstring>
         <name>getYaw</name>
@@ -192,13 +192,13 @@ Increasing pitch values the equivalent of looking down.</para>
         <location file="include/endstone/level/location.h" line="71" column="12" bodyfile="include/endstone/level/location.h" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1adc5ba432e8d7e277ad1a004f51fe5e5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Location::setYaw</definition>
         <argsstring>(float yaw)</argsstring>
         <name>setYaw</name>
         <qualifiedname>endstone::Location::setYaw</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>yaw</declname>
         </param>
         <briefdescription>

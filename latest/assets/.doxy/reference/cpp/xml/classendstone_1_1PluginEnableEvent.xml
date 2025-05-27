@@ -6,7 +6,7 @@
     <includes refid="plugin__enable__event_8h" local="no">endstone/event/server/plugin_enable_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PluginEnableEvent_1a6cb2f949961229f901d9a577fc1f7524" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PluginEnableEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
