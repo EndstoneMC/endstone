@@ -39,7 +39,12 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property_readonly("max_durability", &ItemType::getMaxDurability,
                                "Gets the maximum durability of this item type")
         .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the ItemType with the given name.",
-                    py::return_value_policy::reference);
+                    py::return_value_policy::reference)
+        .def("__str__", &ItemType::getId)
+        .def(py::self == py::self)
+        .def(py::self != py::self)
+        .def(py::self == std::string_view())
+        .def(py::self != std::string_view());
 
     py::class_<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, "Creates a clone of the current metadata.")

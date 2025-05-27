@@ -77,5 +77,25 @@ public:
         }
         return Endstone::getServer().getItemRegistry().get(key.value());
     }
+
+    bool operator==(const std::string_view other) const
+    {
+        return getId() == other;
+    }
+
+    bool operator!=(const std::string_view other) const
+    {
+        return !(*this == other);
+    }
+
+    bool operator==(const ItemType &other) const
+    {
+        return getId() == other.getId();
+    }
+
+    bool operator!=(const ItemType &other) const
+    {
+        return !(*this == other);
+    }
 };
 }  // namespace endstone

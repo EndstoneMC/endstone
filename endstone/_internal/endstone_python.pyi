@@ -1639,11 +1639,26 @@ class ItemType:
     """
     Represents an item type.
     """
+    __hash__: typing.ClassVar[None] = None
     @staticmethod
     def get(name: str) -> ItemType:
         """
         Attempts to get the ItemType with the given name.
         """
+    @typing.overload
+    def __eq__(self, arg0: ItemType) -> bool:
+        ...
+    @typing.overload
+    def __eq__(self, arg0: str) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, arg0: ItemType) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, arg0: str) -> bool:
+        ...
+    def __str__(self) -> str:
+        ...
     @property
     def id(self) -> str:
         """
