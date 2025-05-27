@@ -29,6 +29,23 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .value("HEAD", EquipmentSlot::Head)
         .value("BODY", EquipmentSlot::Body, "Only for certain entities such as horses and wolves.");
 
+    py::class_<ItemType>(m, "ItemType", "Represents an item type.")
+        .def_property_readonly("id", &ItemType::getId, "Return the identifier of this item type.")
+        .def_property_readonly("key", &ItemType::getKey, "Return the namespaced identifier of this item type.")
+        .def_property_readonly("translation_key", &ItemType::getTranslationKey,
+                               "Get the translation key, suitable for use in a translation component.")
+        .def_property_readonly("max_stack_size", &ItemType::getMaxStackSize,
+                               "Gets the maximum amount of this item type that can be held in a stack.")
+        .def_property_readonly("max_durability", &ItemType::getMaxDurability,
+                               "Gets the maximum durability of this item type")
+        .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the ItemType with the given name.",
+                    py::return_value_policy::reference)
+        .def("__str__", &ItemType::getId)
+        .def(py::self == py::self)
+        .def(py::self != py::self)
+        .def(py::self == std::string_view())
+        .def(py::self != std::string_view());
+
     py::class_<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, "Creates a clone of the current metadata.")
         .def_property_readonly("has_display_name", &ItemMeta::hasDisplayName, "Checks for existence of a display name.")
@@ -68,8 +85,30 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def("as_meta_for", &ItemFactory::asMetaFor, py::arg("meta"), py::arg("type"),
              "Returns an appropriate item meta for the specified item type.");
 
-    item_stack.def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
-        .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
+    item_stack
+        .def(py::init([](std::variant<const ItemType *, std::string> type, int amount) {
+                 auto result =
+                     std::visit(overloaded{
+                                    [amount](const ItemType *arg) { return ItemStack::create(*arg, amount); },
+                                    [amount](const std::string &arg) { return ItemStack::create(arg, amount); },
+                                },
+                                type);
+                 if (!result) {
+                     throw std::runtime_error(result.error());
+                 }
+                 return result.value();
+             }),
+             py::arg("type"), py::arg("amount") = 1)
+        .def_property(
+            "type", &ItemStack::getType,
+            [](ItemStack &self, std::variant<const ItemType *, std::string> type) {
+                std::visit(overloaded{
+                               [&self](const ItemType *arg) { self.setType(*arg); },
+                               [&self](const std::string &arg) { self.setType(arg); },
+                           },
+                           type);
+            },
+            py::return_value_policy::reference, "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
                       "Gets or sets the amount of items in this stack.")
         .def_property_readonly("item_meta", &ItemStack::getItemMeta, "Gets a copy of the ItemMeta of this ItemStack.")

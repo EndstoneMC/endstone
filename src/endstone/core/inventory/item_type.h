@@ -14,22 +14,24 @@
 
 #pragma once
 
-#include "endstone/core/inventory/meta/item_meta.h"
-#include "endstone/inventory/item_factory.h"
+#include "bedrock/world/item/item.h"
+#include "endstone/inventory/item_type.h"
+#include "endstone/namespaced_key.h"
 
 namespace endstone::core {
 
-class EndstoneItemFactory : public ItemFactory {
+class EndstoneItemType : public ItemType {
 public:
-    static EndstoneItemFactory &instance();
-
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const ItemType &type) const override;
-    [[nodiscard]] bool isApplicable(const ItemMeta *meta, const ItemType &type) const override;
-    [[nodiscard]] bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const override;
-    [[nodiscard]] std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, const ItemType &type) const override;
+    EndstoneItemType(NamespacedKey key, const ::Item &item) : key_(std::move(key)), item_(item) {}
+    [[nodiscard]] std::string_view getId() const override;
+    [[nodiscard]] NamespacedKey getKey() const override;
+    [[nodiscard]] std::string_view getTranslationKey() const override;
+    [[nodiscard]] int getMaxStackSize() const override;
+    [[nodiscard]] int getMaxDurability() const override;
 
 private:
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const ItemType &type, const EndstoneItemMeta *meta) const;
+    NamespacedKey key_;
+    const ::Item &item_;
 };
 
 }  // namespace endstone::core

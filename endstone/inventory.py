@@ -4,8 +4,18 @@ from endstone._internal.endstone_python import (
     ItemFactory,
     ItemMeta,
     ItemStack,
+    ItemType,
     MapMeta,
     PlayerInventory,
 )
 
-__all__ = ["EquipmentSlot", "ItemStack", "ItemFactory", "ItemMeta", "Inventory", "MapMeta", "PlayerInventory"]
+__all__ = [
+    "EquipmentSlot",
+    "Inventory",
+    "ItemFactory",
+    "ItemMeta",
+    "ItemStack",
+    "ItemType",
+    "MapMeta",
+    "PlayerInventory",
+]

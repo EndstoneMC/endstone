@@ -105,6 +105,7 @@ public:
     [[nodiscard]] IpBanList &getIpBanList() const override;
     [[nodiscard]] ServiceManager &getServiceManager() const override;
     [[nodiscard]] Registry<Enchantment> &getEnchantmentRegistry() const override;
+    [[nodiscard]] Registry<ItemType> &getItemRegistry() const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
@@ -138,6 +139,7 @@ private:
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
     std::unique_ptr<Registry<Enchantment>> enchantment_registry_;
+    std::unique_ptr<Registry<ItemType>> item_registry_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
     std::unordered_map<UUID, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;

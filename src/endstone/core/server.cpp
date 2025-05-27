@@ -35,6 +35,7 @@
 #include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_factory.h"
+#include "endstone/core/inventory/item_type.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -104,7 +105,8 @@ void EndstoneServer::setLevel(::Level &level)
         throw std::runtime_error("Level already initialized.");
     }
     level_ = std::make_unique<EndstoneLevel>(level);
-    enchantment_registry_ = EndstoneRegistry<Enchantment, Enchant>::createRegistry();
+    enchantment_registry_ = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
+    item_registry_ = EndstoneRegistry<ItemType, ::Item>::createRegistry();
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
@@ -505,6 +507,11 @@ ServiceManager &EndstoneServer::getServiceManager() const
 Registry<Enchantment> &EndstoneServer::getEnchantmentRegistry() const
 {
     return *enchantment_registry_;
+}
+
+Registry<ItemType> &EndstoneServer::getItemRegistry() const
+{
+    return *item_registry_;
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

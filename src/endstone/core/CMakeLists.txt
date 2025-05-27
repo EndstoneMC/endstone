@@ -62,6 +62,7 @@ add_library(endstone_core
         inventory/inventory.cpp
         inventory/item_factory.cpp
         inventory/item_stack.cpp
+        inventory/item_type.cpp
         inventory/player_inventory.cpp
         lang/language.cpp
         level/chunk.cpp
