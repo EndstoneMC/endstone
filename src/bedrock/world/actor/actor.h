@@ -75,6 +75,17 @@ struct BuiltInActorComponents {
 class Actor {
 public:
     template <typename Component>
+    void addOrRemoveComponent(const bool should_add)
+    {
+        if (should_add) {
+            entity_context_.getOrAddComponent<Component>();
+        }
+        else {
+            entity_context_.removeComponent<Component>();
+        }
+    }
+
+    template <typename Component>
     [[nodiscard]] bool hasComponent() const
     {
         return entity_context_.hasComponent<Component>();
