@@ -1,4 +1,4 @@
-timestamp = 1748182708
+timestamp = 1748391787
 version = "1.21.83"
 
 [windows]
@@ -39,6 +39,8 @@ version = "1.21.83"
 # ItemStackBase
 "?init@ItemStackBase@@IEAAXHHH_N@Z" = 44037968
 "?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 44041632
+# InventoryTransaction
+"?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 46269712
 # Level
 "?tick@Level@@UEAAXXZ" = 43465200
 # MinecraftCommands
@@ -56,6 +58,7 @@ version = "1.21.83"
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 12433280
 # Player
 "?completeUsingItem@Player@@QEAAXXZ" = 39210592
+"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 39268512
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 39187712
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 56306480
@@ -127,6 +130,8 @@ version = "1.21.83"
 # ItemStackBase
 "_ZN13ItemStackBase4initEiiib" = 142919920
 "_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 142886384
+# InventoryTransaction
+"_ZNK20InventoryTransaction11executeFullER6Playerb" = 143420192
 # Level
 "_ZN5Level4tickEv" = 137370640
 # MinecraftCommands
@@ -144,6 +149,7 @@ version = "1.21.83"
 "_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE" = 79306832
 # Player
 "_ZN6Player17completeUsingItemEv" = 126909760
+"_ZN6Player4dropERK9ItemStackb" = 126985232
 "_ZN6Player10teleportToERK4Vec3biib" = 126890704
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 153478736
