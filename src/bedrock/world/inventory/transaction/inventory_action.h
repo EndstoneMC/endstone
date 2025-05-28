@@ -14,20 +14,63 @@
 
 #pragma once
 
+#include <fmt/format.h>
+
 #include "bedrock/world/inventory/transaction/inventory_source.h"
 #include "bedrock/world/item/network_item_stack_descriptor.h"
 
 class InventoryAction {
 public:
-    InventoryAction(InventorySource, uint32_t, const ItemStack &, const ItemStack &);
-    InventoryAction(InventorySource, uint32_t, const NetworkItemStackDescriptor &, const NetworkItemStackDescriptor &);
+    InventoryAction(InventorySource, std::uint32_t, const ItemStack &, const ItemStack &);
+    InventoryAction(InventorySource, std::uint32_t, const NetworkItemStackDescriptor &,
+                    const NetworkItemStackDescriptor &);
     ~InventoryAction();
+
+    [[nodiscard]] const InventorySource &getSource() const
+    {
+        return source_;
+    }
+
+    [[nodiscard]] std::uint32_t getSlot() const
+    {
+        return slot_;
+    }
+
+    [[nodiscard]] const ItemStack &getFromItem() const
+    {
+        return from_item_;
+    }
+
+    [[nodiscard]] const ItemStack &getToItem() const
+    {
+        return to_item_;
+    }
+
+    [[nodiscard]] const NetworkItemStackDescriptor &getToItemDescriptor() const
+    {
+        return from_item_descriptor_;
+    }
+
+    [[nodiscard]] const NetworkItemStackDescriptor &getFromItemDescriptor() const
+    {
+        return to_item_descriptor_;
+    }
 
 private:
     InventorySource source_;
-    uint32_t slot_;
+    std::uint32_t slot_;
     NetworkItemStackDescriptor from_item_descriptor_;
     NetworkItemStackDescriptor to_item_descriptor_;
     ItemStack from_item_;
     ItemStack to_item_;
+};
+
+template <>
+struct fmt::formatter<InventoryAction> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const InventoryAction &action, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "InventoryAction(source={}, slot={}, from={}, to={})", action.getSource(),
+                              action.getSlot(), action.getFromItem().toString(), action.getToItem().toString());
+    }
 };
