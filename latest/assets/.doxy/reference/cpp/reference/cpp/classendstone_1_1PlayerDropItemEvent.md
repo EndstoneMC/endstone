@@ -93,8 +93,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerDropItemEvent**](#function-playerdropitemevent) ([**Player**](classendstone_1_1Player.md) & player, const [**Actor**](classendstone_1_1Actor.md) & drop) <br> |
-|  const [**Actor**](classendstone_1_1Actor.md) & | [**getItemDrop**](#function-getitemdrop) () const<br>_Gets the ItemDrop created by the player._  |
+|   | [**PlayerDropItemEvent**](#function-playerdropitemevent) ([**Player**](classendstone_1_1Player.md) & player, const [**ItemStack**](classendstone_1_1ItemStack.md) & drop) <br> |
+|  const [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getItem**](#function-getitem) () const<br>_Gets the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _dropped by the player._ |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -208,7 +208,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 ```C++
 inline explicit endstone::PlayerDropItemEvent::PlayerDropItemEvent (
     Player & player,
-    const Actor & drop
+    const ItemStack & drop
 ) 
 ```
 
@@ -219,11 +219,11 @@ inline explicit endstone::PlayerDropItemEvent::PlayerDropItemEvent (
 
 
 
-### function getItemDrop 
+### function getItem 
 
-_Gets the ItemDrop created by the player._ 
+_Gets the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _dropped by the player._
 ```C++
-inline const Actor & endstone::PlayerDropItemEvent::getItemDrop () const
+inline const ItemStack & endstone::PlayerDropItemEvent::getItem () const
 ```
 
 
@@ -232,7 +232,7 @@ inline const Actor & endstone::PlayerDropItemEvent::getItemDrop () const
 
 **Returns:**
 
-ItemDrop created by the player 
+ItemDrop dropped by the player 
 
 
 
