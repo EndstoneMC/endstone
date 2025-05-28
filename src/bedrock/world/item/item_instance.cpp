@@ -14,4 +14,4 @@
 
 #include "bedrock/world/item/item_instance.h"
 
-#include "bedrock/symbol.h"
+const ItemInstance ItemInstance::EMPTY_ITEM{};

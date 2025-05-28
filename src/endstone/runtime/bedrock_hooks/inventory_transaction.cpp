@@ -100,10 +100,9 @@ std::function<InventoryTransactionError(Player &, const InventoryAction &, bool)
                 // If slot is valid, load the item and check it
                 if (action.getSlot() < container_size) {
                     // Pull the source item (only from inventory)
-                    ItemStack server_item;
-                    if (action.getSource().getContainerId() == CONTAINER_ID_INVENTORY) {
-                        server_item = player.getInventory().getItem(static_cast<int>(action.getSlot()));
-                    }
+                    const auto &server_item = action.getSource().getContainerId() == CONTAINER_ID_INVENTORY
+                                                ? player.getInventory().getItem(static_cast<int>(action.getSlot()))
+                                                : ItemStack::EMPTY_ITEM;
 
                     // If it matches, or the sender has authority, it's OK
                     if (checkTransactionItemsMatch(server_item, action.getFromItem()) || is_sender_authority) {

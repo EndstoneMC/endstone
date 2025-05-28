@@ -17,6 +17,7 @@
 #include "bedrock/util/string_byte_output.h"
 #include "bedrock/world/item/item_descriptor_count.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
+#include "bedrock/world/item/item_stack.h"
 
 class NetworkItemStackDescriptor : public ItemDescriptorCount {
 public:
