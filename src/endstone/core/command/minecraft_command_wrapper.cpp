@@ -90,8 +90,6 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
         case CommandOutputMessageType::Error:
             sender.sendErrorMessage(Translatable(message.getMessageId(), message.getParams()));
             break;
-        default:
-            throw std::runtime_error("Unsupported CommandOutputMessageType");
         }
     }
 
