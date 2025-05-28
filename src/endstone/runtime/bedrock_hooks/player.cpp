@@ -14,11 +14,14 @@
 
 #include "bedrock/world/actor/player/player.h"
 
+#include <iostream>
+
 #include <entt/entt.hpp>
 
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_teleport_event.h"
 #include "endstone/runtime/hook.h"
@@ -56,4 +59,17 @@ void Player::completeUsingItem()
     }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::completeUsingItem, this);
+}
+
+bool Player::drop(const ItemStack &item, bool randomly)
+{
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
+    const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);
+    endstone::PlayerDropItemEvent e(player, *drop);
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return false;
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::drop, this, item, randomly);
 }

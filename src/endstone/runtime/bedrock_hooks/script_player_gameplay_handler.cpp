@@ -42,26 +42,6 @@
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-bool handleEvent(const PlayerDropItemEvent &event)
-{
-    if (auto *p = WeakEntityRef(event.player).tryUnwrap<::Player>(); p) {
-        if (auto *item = WeakEntityRef(event.spawned_item_actor).tryUnwrap<::ItemActor>(); item) {
-            const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-            auto &player = p->getEndstoneActor<endstone::core::EndstonePlayer>();
-            auto &drop = item->getEndstoneActor<endstone::core::EndstoneActor>();
-            endstone::PlayerDropItemEvent e(player, drop);
-            server.getPluginManager().callEvent(e);
-
-            if (e.isCancelled()) {
-                item->setPickUpDelay(0);
-                item->setThrowTime(0);
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
 bool handleEvent(const PlayerDamageEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
@@ -239,12 +219,10 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
 {
     auto visitor = [&](auto &&arg) -> HandlerResult {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDropItemEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
-                      // std::is_same_v<T, Details::ValueOrRef<const PlayerInitialSpawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerEmoteEvent>>) {
             if (!handleEvent(arg.value())) {

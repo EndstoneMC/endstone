@@ -2883,9 +2883,9 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
     Called when a player drops an item from their inventory
     """
     @property
-    def item_drop(self) -> Actor:
+    def item(self) -> ItemStack:
         """
-        Gets the Item actor created by the player
+        Gets the ItemStack dropped by the player
         """
 class PlayerEmoteEvent(PlayerEvent):
     """

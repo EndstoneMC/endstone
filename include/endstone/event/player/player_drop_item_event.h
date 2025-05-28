@@ -27,19 +27,19 @@ class PlayerDropItemEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerDropItemEvent)
 
-    explicit PlayerDropItemEvent(Player &player, const Actor &drop) : Cancellable(player), drop_(drop) {}
+    explicit PlayerDropItemEvent(Player &player, const ItemStack &drop) : Cancellable(player), drop_(drop) {}
 
     /**
-     * @brief Gets the ItemDrop created by the player
+     * @brief Gets the ItemStack dropped by the player
      *
-     * @return ItemDrop created by the player
+     * @return ItemDrop dropped by the player
      */
-    [[nodiscard]] const Actor &getItemDrop() const
+    [[nodiscard]] const ItemStack &getItem() const
     {
         return drop_;
     }
 
 private:
-    const Actor &drop_;  // TODO(actor): add Item class
+    const ItemStack &drop_;
 };
 }  // namespace endstone
