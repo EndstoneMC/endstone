@@ -14,17 +14,30 @@
 
 #pragma once
 
-#include "bedrock/world/inventory/transaction/inventory_action.h"
-#include "bedrock/world/inventory/transaction/inventory_transaction.h"
-
-class InventoryTransactionManager {
-public:
-    InventoryTransactionManager(Player &);
-
-private:
-    Player &player_;
-    std::unique_ptr<InventoryTransaction> current_transaction_;
-    std::vector<InventoryAction> expected_actions_;
-    bool enable_logs_;
+enum class TransportLayer : int {
+    RakNet = 0,
+    NetherWebSockets = 2,
+    Unknown = 4,
+    Default = 2,
 };
-static_assert(sizeof(InventoryTransactionManager) == 48);
+
+enum class NetworkStatisticsConfig : int {
+    None = 0,
+    Client = 1,
+    Server = 2,
+};
+
+enum class PermissionIPv6 : int {
+    IPv6Denied = 0,
+    IPv6Allowed = 1,
+};
+
+enum class PermissionLAN : int {
+    LANDenied = 0,
+    LANAllowed = 1,
+};
+
+enum class RakNetServerLANVisibility : int {
+    Visible = 0,
+    Hidden = 1,
+};

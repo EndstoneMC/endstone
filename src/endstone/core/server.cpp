@@ -330,6 +330,19 @@ Player *EndstoneServer::getPlayer(std::string name) const
     }
     return nullptr;
 }
+int EndstoneServer::getPort() const
+{
+    return static_cast<const RakNetConnector &>(
+               *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector())
+        .getIPv4Port();
+}
+
+int EndstoneServer::getPortV6() const
+{
+    return static_cast<const RakNetConnector &>(
+               *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector())
+        .getIPv6Port();
+}
 
 bool EndstoneServer::getOnlineMode() const
 {

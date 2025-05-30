@@ -167,6 +167,20 @@ public:
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
     /**
+     * @brief Get the game port that the server runs on.
+     *
+     * @return the port number of this server
+     */
+    [[nodiscard]] virtual int getPort() const = 0;
+
+    /**
+     * @brief Get the game port (IPv6) that the server runs on.
+     *
+     * @return the port number of this server
+     */
+    [[nodiscard]] virtual int getPortV6() const = 0;
+
+    /**
      * @brief Gets whether the Server is in online mode or not.
      *
      * @return true if the server authenticates clients, false otherwise
