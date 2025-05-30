@@ -124,7 +124,6 @@ class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
 class InternalComponentRegistry;
-class InventoryTransaction;
 class IPackLoadContext;
 class IServerNetworkController;
 class ItemComponent;
@@ -179,7 +178,6 @@ class PropertyGroupManager;
 class PropertiesSettings;
 class ProjectileFactory;
 class Random;
-class RemoteConnector;
 class RenderParams;
 class ResolvedItemIconInfo;
 class ResolvedTextObject;
@@ -289,6 +287,7 @@ class ActiveTransfersManager;
 }  // namespace ClientBlobCache
 
 namespace Social {
+class GameConnectionInfo;
 class GamePublishSetting;
 class MultiplayerServiceManager;
 }  // namespace Social
