@@ -93,6 +93,8 @@ _Represents a server implementation._
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
+| virtual int | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
+| virtual int | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
 | virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br> |
@@ -1110,6 +1112,56 @@ virtual PluginManager & endstone::Server::getPluginManager () const = 0
 **Returns:**
 
 a plugin manager for this [**Server**](classendstone_1_1Server.md) instance 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getPort 
+
+_Get the game port that the server runs on._ 
+```C++
+virtual int endstone::Server::getPort () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the port number of this server 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getPortV6 
+
+_Get the game port (IPv6) that the server runs on._ 
+```C++
+virtual int endstone::Server::getPortV6 () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the port number of this server 
 
 
 

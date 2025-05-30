@@ -94,6 +94,10 @@ public:
 
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
+    [[nodiscard]] virtual int getPort() const = 0;
+
+    [[nodiscard]] virtual int getPortV6() const = 0;
+
     [[nodiscard]] virtual bool getOnlineMode() const = 0;
 
     [[nodiscard]] virtual Player *getPlayer(std::string name) const = 0;
