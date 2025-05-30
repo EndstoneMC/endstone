@@ -60,7 +60,7 @@ bool CompoundTag::equals(const Tag &other) const
     }
 
     const auto &other_tag = static_cast<const CompoundTag &>(other);
-    return std::all_of(tags_.begin(), tags_.end(), [&](const auto &kv) {
+    return std::ranges::all_of(tags_, [&](const auto &kv) {
         const auto *tag = other_tag.get(kv.first);
         return tag && kv.second.get()->equals(*tag);
     });
