@@ -9,6 +9,7 @@
     <innerfile refid="item__stack_8h">item_stack.h</innerfile>
     <innerfile refid="item__type_8h">item_type.h</innerfile>
     <innerfile refid="player__inventory_8h">player_inventory.h</innerfile>
+    <innerfile refid="recipe_8h">recipe.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

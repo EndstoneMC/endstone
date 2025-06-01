@@ -923,6 +923,8 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>include/endstone/inventory/item_type.h</label>
@@ -932,6 +934,10 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
+      <node id="9">
+        <label>include/endstone/inventory/recipe.h</label>
+        <link refid="recipe_8h_source"/>
+      </node>
       <node id="1">
         <label>include/endstone/namespaced_key.h</label>
         <link refid="namespaced__key_8h"/>
@@ -939,10 +945,10 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="5" relation="include">

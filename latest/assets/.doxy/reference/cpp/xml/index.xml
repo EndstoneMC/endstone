@@ -1413,6 +1413,10 @@
     <member refid="classendstone_1_1ProxiedCommandSender_1abf8c53e2b5c1a1f8e79a6740f23450d1" kind="function"><name>getCaller</name></member>
     <member refid="classendstone_1_1ProxiedCommandSender_1a0d463952b7f1889c87d4c76c4a15154a" kind="function"><name>getCallee</name></member>
   </compound>
+  <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
+    <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
+    <member refid="classendstone_1_1Recipe_1a9aa7cfa8bcb947ef1a0ad139ee68df1e" kind="function"><name>getResult</name></member>
+  </compound>
   <compound refid="classendstone_1_1Registry" kind="class"><name>endstone::Registry</name>
     <member refid="classendstone_1_1Registry_1a9396db9d9eea6543c7ed9d6162e9822a" kind="function"><name>~Registry</name></member>
     <member refid="classendstone_1_1Registry_1a12086295fb74563d44e4e362cff1598b" kind="function"><name>get</name></member>
@@ -2031,6 +2035,8 @@
   <compound refid="map__meta_8h" kind="file"><name>map_meta.h</name>
   </compound>
   <compound refid="player__inventory_8h" kind="file"><name>player_inventory.h</name>
+  </compound>
+  <compound refid="recipe_8h" kind="file"><name>recipe.h</name>
   </compound>
   <compound refid="language_8h" kind="file"><name>language.h</name>
   </compound>

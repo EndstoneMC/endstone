@@ -11,6 +11,7 @@
     <includedby refid="player__drop__item__event_8h" local="yes">include/endstone/event/player/player_drop_item_event.h</includedby>
     <includedby refid="player__interact__event_8h" local="yes">include/endstone/event/player/player_interact_event.h</includedby>
     <includedby refid="player__item__consume__event_8h" local="yes">include/endstone/event/player/player_item_consume_event.h</includedby>
+    <includedby refid="recipe_8h" local="yes">include/endstone/inventory/recipe.h</includedby>
     <incdepgraph>
       <node id="63">
         <label>endstone/actor/actor.h</label>
@@ -970,6 +971,12 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/endstone/inventory/recipe.h</label>
+        <link refid="recipe_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1ItemStack" prot="public">endstone::ItemStack</innerclass>

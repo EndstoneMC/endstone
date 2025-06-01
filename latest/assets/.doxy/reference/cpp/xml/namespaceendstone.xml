@@ -105,6 +105,7 @@
     <innerclass refid="classendstone_1_1PluginManager" prot="public">endstone::PluginManager</innerclass>
     <innerclass refid="classendstone_1_1Position" prot="public">endstone::Position</innerclass>
     <innerclass refid="classendstone_1_1ProxiedCommandSender" prot="public">endstone::ProxiedCommandSender</innerclass>
+    <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
     <innerclass refid="classendstone_1_1Registry" prot="public">endstone::Registry</innerclass>
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
     <innerclass refid="classendstone_1_1Score" prot="public">endstone::Score</innerclass>

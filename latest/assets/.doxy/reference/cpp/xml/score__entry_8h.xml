@@ -172,6 +172,8 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
       <node id="33">
         <label>include/endstone/inventory/item_type.h</label>
@@ -181,6 +183,10 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
+      <node id="36">
+        <label>include/endstone/inventory/recipe.h</label>
+        <link refid="recipe_8h_source"/>
+      </node>
       <node id="31">
         <label>include/endstone/namespaced_key.h</label>
         <link refid="namespaced__key_8h_source"/>
@@ -188,7 +194,7 @@
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -216,14 +222,14 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="29">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="36">
+      <node id="37">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="35" relation="include">
@@ -231,14 +237,14 @@
         <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="39">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="37">
+      <node id="38">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="38" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
       <node id="3">

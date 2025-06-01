@@ -291,6 +291,8 @@
 
 ## r
 
+* [**Recipe**](classendstone_1_1Recipe.md)
+([**endstone**](namespaceendstone.md))
 * [**Registry**](classendstone_1_1Registry.md)
 ([**endstone**](namespaceendstone.md))
 

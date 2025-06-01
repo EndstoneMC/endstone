@@ -137,6 +137,7 @@ _Represents a button with text and an optional icon._
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**Position**](classendstone_1_1Position.md) <br>_Represents a 3-dimensional position in a dimension within a level._  |
 | class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Represents a proxied command sender._  |
+| class | [**Recipe**](classendstone_1_1Recipe.md) <br>_Represents some type of crafting recipe._  |
 | class | [**Registry**](classendstone_1_1Registry.md) &lt;typename T&gt;<br>_Abstract registry interface for keyed objects._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
 | class | [**Score**](classendstone_1_1Score.md) <br>_Represents a score for an objective on a scoreboard._  |
