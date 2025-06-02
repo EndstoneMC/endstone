@@ -27,6 +27,8 @@
 #include <memory>
 #include <vector>
 
+#include "item_stack.h"
+
 namespace endstone {
 class ItemStack;
 class Inventory {
@@ -40,13 +42,43 @@ public:
 
     virtual void setItem(int index, const ItemStack *item) = 0;
 
-    virtual void addItem(const ItemStack &item) = 0;
+    virtual std::unordered_map<int, const ItemStack *> addItem(std::vector<const ItemStack *> items) = 0;
+
+    virtual std::unordered_map<int, const ItemStack *> removeItem(std::vector<const ItemStack *> items) = 0;
 
     [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getContents() const = 0;
 
+    virtual Result<void> setContents(std::vector<const ItemStack *> items) = 0;
+
+    virtual bool contains(const ItemType &type) const = 0;
+
+    virtual bool contains(const ItemStack *item) const = 0;
+
+    virtual bool contains(const ItemStack *item, int amount) const = 0;
+
+    virtual bool containsAtLeast(const ItemType &type, int amount) const = 0;
+
+    virtual bool containsAtLeast(const ItemStack *item, int amount) const = 0;
+
+    virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const ItemType &type) = 0;
+
+    virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const ItemStack *item) = 0;
+
+    [[nodiscard]] virtual int first(const ItemType &type) const = 0;
+
     [[nodiscard]] virtual int first(const ItemStack &item) const = 0;
 
+    [[nodiscard]] virtual int firstEmpty() const = 0;
+
     [[nodiscard]] virtual bool isEmpty() const = 0;
+
+    virtual bool add(const ItemStack &item) = 0;
+
+    virtual void remove(const ItemType &type) = 0;
+
+    virtual void remove(const ItemStack &item) = 0;
+
+    virtual void clear(int index) = 0;
 
     virtual void clear() = 0;
 };

@@ -2448,16 +2448,60 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-additem"><strong>addItem</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.</em></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-add"><strong>add</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Add the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>to the inventory.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unordered_map&lt; int, const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-additem"><strong>addItem</strong></a> (std::vector&lt; const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt; items) = 0<br><em>Stores the given ItemStacks in the inventory.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unordered_map&lt; int, std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-all-12"><strong>all</strong></a> (const <a href="../classendstone_1_1ItemType/"><strong>ItemType</strong></a> &amp; type) = 0<br><em>Finds all slots in the inventory containing any ItemStacks with the given</em> <a href="../classendstone_1_1ItemType/"><em><strong>ItemType</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unordered_map&lt; int, std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-all-22"><strong>all</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item) = 0<br><em>Finds all slots in the inventory containing any ItemStacks with the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-clear"><strong>clear</strong></a> () = 0<br><em>Clears out the whole</em> <a href="../classendstone_1_1Inventory/"><em><strong>Inventory</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-clear-12"><strong>clear</strong></a> (int index) = 0<br><em>Clears out a particular slot in the index.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-clear-22"><strong>clear</strong></a> () = 0<br><em>Clears out the whole</em> <a href="../classendstone_1_1Inventory/"><em><strong>Inventory</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-contains-13"><strong>contains</strong></a> (const <a href="../classendstone_1_1ItemType/"><strong>ItemType</strong></a> &amp; type) const = 0<br><em>Checks if the inventory contains any ItemStacks with the given</em> <a href="../classendstone_1_1ItemType/"><em><strong>ItemType</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-contains-23"><strong>contains</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item) const = 0<br><em>Checks if the inventory contains any ItemStacks with the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-contains-33"><strong>contains</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item, int amount) const = 0<br><em>Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-containsatleast-12"><strong>containsAtLeast</strong></a> (const <a href="../classendstone_1_1ItemType/"><strong>ItemType</strong></a> &amp; type, int amount) const = 0<br><em>Checks if the inventory contains any ItemStacks with the given</em> <a href="../classendstone_1_1ItemType/"><em><strong>ItemType</strong></em></a> <em>, adding to at least the minimum amount specified.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-containsatleast-22"><strong>containsAtLeast</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item, int amount) const = 0<br><em>Checks if the inventory contains ItemStacks matching the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>whose amounts sum to at least the minimum amount specified.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual int</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-first"><strong>first</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) const = 0<br><em>Returns the first slot in the inventory containing an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>with the given stack.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-first-12"><strong>first</strong></a> (const <a href="../classendstone_1_1ItemType/"><strong>ItemType</strong></a> &amp; type) const = 0<br><em>Finds the first slot in the inventory containing an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>with the given</em><a href="../classendstone_1_1ItemType/"><em><strong>ItemType</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-first-22"><strong>first</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) const = 0<br><em>Returns the first slot in the inventory containing an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>with the given stack.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-firstempty"><strong>firstEmpty</strong></a> () const = 0<br><em>Returns the first empty Slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
@@ -2478,6 +2522,22 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-isempty"><strong>isEmpty</strong></a> () const = 0<br><em>Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-remove-12"><strong>remove</strong></a> (const <a href="../classendstone_1_1ItemType/"><strong>ItemType</strong></a> &amp; type) = 0<br><em>Removes all stacks in the inventory matching the given</em> <a href="../classendstone_1_1ItemType/"><em><strong>ItemType</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-remove-22"><strong>remove</strong></a> (const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Removes all stacks in the inventory matching the given stack.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unordered_map&lt; int, const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-removeitem"><strong>removeItem</strong></a> (std::vector&lt; const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt; items) = 0<br><em>Removes the given ItemStacks from the inventory.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-setcontents"><strong>setContents</strong></a> (std::vector&lt; const <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt; items) = 0<br><em>Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>

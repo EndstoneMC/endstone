@@ -615,10 +615,25 @@
     <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" kind="function"><name>getMaxStackSize</name></member>
     <member refid="classendstone_1_1Inventory_1ade917e3c7719cb3ec7b6ffa8db27462b" kind="function"><name>getItem</name></member>
     <member refid="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" kind="function"><name>setItem</name></member>
-    <member refid="classendstone_1_1Inventory_1aa0b7467f203722c8224f4d0d2c18a6a1" kind="function"><name>addItem</name></member>
+    <member refid="classendstone_1_1Inventory_1a0bc1c6d346b8a4c02049a1422e67d897" kind="function"><name>addItem</name></member>
+    <member refid="classendstone_1_1Inventory_1ab00dd20292557613c384f069b5e40a18" kind="function"><name>removeItem</name></member>
     <member refid="classendstone_1_1Inventory_1aed3238de786bddbcf39761658b95c48b" kind="function"><name>getContents</name></member>
+    <member refid="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" kind="function"><name>setContents</name></member>
+    <member refid="classendstone_1_1Inventory_1a8e33456d270377900ee586b8e81cdf6c" kind="function"><name>contains</name></member>
+    <member refid="classendstone_1_1Inventory_1af6ae6fae79b04042335173c42f099dc3" kind="function"><name>contains</name></member>
+    <member refid="classendstone_1_1Inventory_1a14b5fd66978f420048415045630dca00" kind="function"><name>contains</name></member>
+    <member refid="classendstone_1_1Inventory_1ad1cff8f2f59f5b906d688a45e131f33a" kind="function"><name>containsAtLeast</name></member>
+    <member refid="classendstone_1_1Inventory_1aff967d0bf423d789bc9799d2bee6d718" kind="function"><name>containsAtLeast</name></member>
+    <member refid="classendstone_1_1Inventory_1a27559d16c98e1f007d04fd9d3e58ccb7" kind="function"><name>all</name></member>
+    <member refid="classendstone_1_1Inventory_1a3c856d89c9c939663134a7171ac36ded" kind="function"><name>all</name></member>
+    <member refid="classendstone_1_1Inventory_1acd952207a529dd97e1a59e5a8631ccf3" kind="function"><name>first</name></member>
     <member refid="classendstone_1_1Inventory_1afd3997dd60d7f4f0649aa4280f05bc24" kind="function"><name>first</name></member>
+    <member refid="classendstone_1_1Inventory_1a26fb3d2b14213b78a13a0cc46d9a6128" kind="function"><name>firstEmpty</name></member>
     <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" kind="function"><name>isEmpty</name></member>
+    <member refid="classendstone_1_1Inventory_1a184e92e13736a722adb7cb4b8d849c32" kind="function"><name>add</name></member>
+    <member refid="classendstone_1_1Inventory_1a2ea7da861928e8554f470277187752b2" kind="function"><name>remove</name></member>
+    <member refid="classendstone_1_1Inventory_1af3402b278d0775d48a56593bf49ee52e" kind="function"><name>remove</name></member>
+    <member refid="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" kind="function"><name>clear</name></member>
     <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" kind="function"><name>clear</name></member>
   </compound>
   <compound refid="classendstone_1_1IpBanEntry" kind="class"><name>endstone::IpBanEntry</name>
