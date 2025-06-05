@@ -124,61 +124,96 @@ public:
 template <>
 class type_caster<endstone::Image> {
 public:
-    explicit type_caster() : value(0, 0) {}
-
-    // Python -> C++ conversion
+    // Convert from Python -> C++
     bool load(handle src, bool)
     {
-        // Expect a numpy array with shape (H, W, 4) and dtype=uint8
-        array_t<uint8_t, array::c_style | array::forcecast> array;
-        try {
-            array = pybind11::cast<array_t<uint8_t, array::c_style | array::forcecast>>(src);
-        }
-        catch (const cast_error &) {
-            PyErr_SetString(PyExc_TypeError, "Expected a NumPy array with dtype=uint8 and C-style memory layout");
+        // Ensure the object is a NumPy array of uint8
+        auto array = pybind11::array_t<uint8_t, pybind11::array::c_style | pybind11::array::forcecast>::ensure(src);
+        if (!array) {
+            PyErr_SetString(PyExc_TypeError, "TypeError: expected a numpy.ndarray of uint8");
             return false;
         }
 
-        if (array.ndim() != 3 || array.shape(2) != 4) {
-            PyErr_SetString(PyExc_ValueError, "NumPy array must have 3 dimensions and 4 channels (shape: H x W x 4)");
+        int ndim = array.ndim();
+        int height, width, depth;
+        endstone::Image::Type img_type;
+
+        if (ndim == 2) {
+            // Grayscale image: shape = (height, width)
+            height = static_cast<int>(array.shape(0));
+            width = static_cast<int>(array.shape(1));
+            depth = 1;
+            img_type = endstone::Image::Type::Grayscale;
+        }
+        else if (ndim == 3) {
+            // RGB or RGBA image: shape = (height, width, depth)
+            height = static_cast<int>(array.shape(0));
+            width = static_cast<int>(array.shape(1));
+            depth = static_cast<int>(array.shape(2));
+            if (depth == 3) {
+                img_type = endstone::Image::Type::RGB;
+            }
+            else if (depth == 4) {
+                img_type = endstone::Image::Type::RGBA;
+            }
+            else {
+                PyErr_SetString(PyExc_TypeError, "TypeError: expected the last dimension to be 3 (RGB) or 4 (RGBA)");
+                return false;
+            }
+        }
+        else {
+            // Unsupported number of dimensions
+            PyErr_SetString(PyExc_TypeError, "TypeError: expected a 2D (grayscale) or 3D (RGB/RGBA) array");
             return false;
         }
 
-        const int height = static_cast<int>(array.shape(0));
-        const int width = static_cast<int>(array.shape(1));
+        // Compute expected buffer size
+        size_t expected_size = static_cast<size_t>(height) * width * depth;
+        // Pointer to the raw data in the NumPy array
+        uint8_t *data_ptr = reinterpret_cast<uint8_t *>(array.mutable_data());
 
-        auto result = endstone::Image::fromBuffer(
-            width, height, std::string_view(reinterpret_cast<const char *>(array.data()), height * width * 4));
+        // Copy into a std::string
+        std::string buffer(reinterpret_cast<char *>(data_ptr), expected_size);
+
+        // Construct an Image from the byte buffer
+        auto result = endstone::Image::fromBuffer(img_type, width, height, buffer);
         if (!result) {
-            PyErr_SetString(PyExc_ValueError, result.error().c_str());
+            PyErr_SetString(PyExc_TypeError, "TypeError: failed to construct Image from buffer");
             return false;
         }
+        // Move the constructed Image into the caster's value
         value = std::move(result.value());
-        return PyErr_Occurred() == nullptr;
+        return true;
     }
 
-    // C++ -> Python conversion
-    static handle cast(const endstone::Image &img, return_value_policy /* policy */, handle /* parent */)
+    // Convert from C++ -> Python
+    static handle cast(endstone::Image src, return_value_policy /* policy */, handle /* parent */)
     {
-        const int width = img.getWidth();
-        const int height = img.getHeight();
+        int width = src.getWidth();
+        int height = src.getHeight();
+        int depth = src.getDepth();
 
-        // Create a numpy array with shape (H, W, 4)
-        std::vector<ssize_t> shape = {height, width, 4};
-        std::vector<ssize_t> strides = {width * 4, 4, 1};
+        // Decide on the NumPy shape
+        std::vector<ssize_t> shape;
+        if (depth == 1) {
+            // Grayscale: 2D array
+            shape = {static_cast<ssize_t>(height), static_cast<ssize_t>(width)};
+        }
+        else {
+            // RGB or RGBA: 3D array
+            shape = {static_cast<ssize_t>(height), static_cast<ssize_t>(width), static_cast<ssize_t>(depth)};
+        }
 
-        // Allocate a new array and copy
-        array_t<uint8_t> array(buffer_info(const_cast<char *>(img.getData().data()), /* data */
-                                           1,                                        /* size of one scalar */
-                                           format_descriptor<uint8_t>::format(),     /* data type */
-                                           3,                                        /* number of dimensions */
-                                           shape,                                    /* shape */
-                                           strides                                   /* strides */
-                                           ));
+        // Allocate a new NumPy array of type uint8
+        auto array = pybind11::array_t<uint8_t>(shape);
+        // Copy the pixel data from the Image into the NumPy buffer
+        uint8_t *buffer_ptr = array.mutable_data();
+        auto data_view = src.getData();  // std::string_view of the underlying bytes
+        std::memcpy(buffer_ptr, data_view.data(), data_view.size());
 
-        // Make an owned copy so buffer can own it
-        return array.attr("copy")().release();
+        return array.release();
     }
+
     PYBIND11_TYPE_CASTER(endstone::Image, const_name("numpy.ndarray[numpy.uint8]"));
 };
 
@@ -203,8 +238,14 @@ public:
 
         // Cast elements to int
         try {
-            value = endstone::Color{seq[0].cast<uint8_t>(), seq[1].cast<uint8_t>(), seq[2].cast<uint8_t>(),
-                                    static_cast<uint8_t>(len == 4 ? seq[3].cast<uint8_t>() : 255)};
+            auto result =
+                endstone::Color::fromRGBA(seq[0].cast<uint8_t>(), seq[1].cast<uint8_t>(), seq[2].cast<uint8_t>(),
+                                          static_cast<uint8_t>(len == 4 ? seq[3].cast<uint8_t>() : 255));
+            if (!result) {
+                PyErr_SetString(PyExc_ValueError, result.error().c_str());
+                return false;
+            }
+            value = std::move(result.value());
         }
         catch (const cast_error &) {
             PyErr_SetString(PyExc_ValueError, "Color elements must be integers");
