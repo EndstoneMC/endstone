@@ -10,6 +10,8 @@
       <node id="3">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/util/image.h</label>
@@ -18,6 +20,15 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="4">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>nonstd/expected.hpp</label>
       </node>
       <node id="2">
         <label>string</label>

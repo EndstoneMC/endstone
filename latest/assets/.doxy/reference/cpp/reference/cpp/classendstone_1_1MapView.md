@@ -57,7 +57,7 @@ _Represents a map item._
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**addRenderer**](#function-addrenderer) (std::unique\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; renderer) = 0<br>_Add a renderer to this map._  |
+| virtual void | [**addRenderer**](#function-addrenderer) (std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; renderer) = 0<br>_Add a renderer to this map._  |
 | virtual int | [**getCenterX**](#function-getcenterx) () const = 0<br>_Get the center X position of this map._  |
 | virtual int | [**getCenterZ**](#function-getcenterz) () const = 0<br>_Get the center Z position of this map._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) () const = 0<br>_Get the dimension that this map is associated with._  |
@@ -113,7 +113,7 @@ _Represents a map item._
 _An enum representing all possible scales a map can be set to._ 
 ```C++
 enum endstone::MapView::Scale {
-    Closet = 0,
+    Closest = 0,
     Close = 1,
     Normal = 2,
     Far = 3,
@@ -135,7 +135,7 @@ enum endstone::MapView::Scale {
 _Add a renderer to this map._ 
 ```C++
 virtual void endstone::MapView::addRenderer (
-    std::unique_ptr< MapRenderer > renderer
+    std::shared_ptr< MapRenderer > renderer
 ) = 0
 ```
 

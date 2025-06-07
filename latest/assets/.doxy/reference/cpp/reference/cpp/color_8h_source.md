@@ -24,6 +24,8 @@
 
 #pragma once
 
+#include "endstone/util/result.h"
+
 namespace endstone {
 class Color {
 public:

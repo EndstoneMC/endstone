@@ -33,7 +33,7 @@ class Dimension;
 class MapView {
 public:
     enum class Scale : uint8_t {
-        Closet = 0,
+        Closest = 0,
         Close = 1,
         Normal = 2,
         Far = 3,
@@ -64,7 +64,7 @@ public:
 
     [[nodiscard]] virtual std::vector<MapRenderer *> getRenderers() const = 0;
 
-    virtual void addRenderer(std::unique_ptr<MapRenderer> renderer) = 0;
+    virtual void addRenderer(std::shared_ptr<MapRenderer> renderer) = 0;
 
     virtual bool removeRenderer(MapRenderer *renderer) = 0;
 

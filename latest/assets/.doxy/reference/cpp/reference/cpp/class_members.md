@@ -39,7 +39,6 @@
 * **addAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **addOption** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
-* **add** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **addItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **all** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **address\_** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md))

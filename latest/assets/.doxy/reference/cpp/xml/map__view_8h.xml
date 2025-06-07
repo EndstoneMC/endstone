@@ -9,7 +9,7 @@
         <link refid="map__canvas_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -27,16 +27,27 @@
       <node id="4">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
-      <node id="5">
+      <node id="7">
         <label>endstone/util/image.h</label>
         <link refid="image_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="5">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="6">
+        <label>nonstd/expected.hpp</label>
+      </node>
+      <node id="8">
         <label>string</label>
       </node>
     </incdepgraph>
@@ -72,7 +83,7 @@
 <codeline lineno="26" refid="classendstone_1_1MapView" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref><sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="31" refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" kindref="member">Scale</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Closet<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Closest<sp/>=<sp/>0,</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Close<sp/>=<sp/>1,</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" kindref="member">Normal</ref><sp/>=<sp/>2,</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Far<sp/>=<sp/>3,</highlight></codeline>
@@ -103,7 +114,7 @@
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
 <codeline lineno="118" refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;MapRenderer<sp/>*&gt;<sp/><ref refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" kindref="member">getRenderers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125" refid="classendstone_1_1MapView_1aed4428ea53012e4e4a8dda2c4ce3c0c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1aed4428ea53012e4e4a8dda2c4ce3c0c9" kindref="member">addRenderer</ref>(std::unique_ptr&lt;MapRenderer&gt;<sp/>renderer)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="125" refid="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" kindref="member">addRenderer</ref>(std::shared_ptr&lt;MapRenderer&gt;<sp/>renderer)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134" refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" kindref="member">removeRenderer</ref>(<ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref><sp/>*renderer)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>

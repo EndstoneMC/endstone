@@ -34,7 +34,6 @@
 * **asProxiedCommandSender** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md))
 * **addAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **addOption** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
-* **add** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **addItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **all** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **asMetaFor** ([**endstone::ItemFactory**](classendstone_1_1ItemFactory.md))

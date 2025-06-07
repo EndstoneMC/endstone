@@ -12,6 +12,7 @@
 
 * `#include <memory>`
 * `#include <vector>`
+* `#include "endstone/util/result.h"`
 
 
 

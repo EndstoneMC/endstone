@@ -56,7 +56,7 @@ public:
 
     [[nodiscard]] virtual int getHeldItemSlot() const = 0;
 
-    virtual void setHeldItemSlot(int slot) = 0;
+    virtual Result<void> setHeldItemSlot(int slot) = 0;
 };
 
 }  // namespace endstone

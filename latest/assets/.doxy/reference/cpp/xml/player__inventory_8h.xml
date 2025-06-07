@@ -12,6 +12,8 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/inventory/player_inventory.h</label>
@@ -19,8 +21,17 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
+      <node id="5">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="3">
         <label>memory</label>
+      </node>
+      <node id="6">
+        <label>nonstd/expected.hpp</label>
       </node>
       <node id="4">
         <label>vector</label>
@@ -315,7 +326,7 @@
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123" refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kindref="member">getHeldItemSlot</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132" refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" kindref="member">setHeldItemSlot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>slot)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="132" refid="classendstone_1_1PlayerInventory_1a0d7b635b4d5b4711a0c3f7bdd3f2e4e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;void&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a0d7b635b4d5b4711a0c3f7bdd3f2e4e8" kindref="member">setHeldItemSlot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>slot)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="133"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
