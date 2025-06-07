@@ -60,11 +60,11 @@ public:
 
     [[nodiscard]] virtual Dimension *getDimension() const = 0;
 
-    virtual void setDimension(Dimension *dimension) = 0;
+    virtual void setDimension(const Dimension &dimension) = 0;
 
     [[nodiscard]] virtual std::vector<MapRenderer *> getRenderers() const = 0;
 
-    virtual void addRenderer(MapRenderer &renderer) = 0;
+    virtual void addRenderer(std::unique_ptr<MapRenderer> renderer) = 0;
 
     virtual bool removeRenderer(MapRenderer *renderer) = 0;
 

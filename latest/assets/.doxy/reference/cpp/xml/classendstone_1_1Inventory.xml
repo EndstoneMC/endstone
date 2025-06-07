@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="29" column="13"/>
+        <location file="include/endstone/inventory/inventory.h" line="28" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="35" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="34" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="42" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="41" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ade917e3c7719cb3ec7b6ffa8db27462b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="50" column="30"/>
+        <location file="include/endstone/inventory/inventory.h" line="49" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="58" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="57" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a0bc1c6d346b8a4c02049a1422e67d897" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unordered_map&lt; int, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="71" column="32"/>
+        <location file="include/endstone/inventory/inventory.h" line="70" column="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ab00dd20292557613c384f069b5e40a18" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unordered_map&lt; int, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="84" column="32"/>
+        <location file="include/endstone/inventory/inventory.h" line="83" column="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1aed3238de786bddbcf39761658b95c48b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt; &gt;</type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="91" column="26"/>
+        <location file="include/endstone/inventory/inventory.h" line="90" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>Result&lt; void &gt;</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="99" column="20"/>
+        <location file="include/endstone/inventory/inventory.h" line="98" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a8e33456d270377900ee586b8e81cdf6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="107" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="106" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1af6ae6fae79b04042335173c42f099dc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="117" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="116" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a14b5fd66978f420048415045630dca00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -351,7 +351,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="130" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="129" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ad1cff8f2f59f5b906d688a45e131f33a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -394,7 +394,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="140" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="139" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1aff967d0bf423d789bc9799d2bee6d718" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -437,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="151" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="150" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a27559d16c98e1f007d04fd9d3e58ccb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unordered_map&lt; int, std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt; &gt;</type>
@@ -471,7 +471,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="164" column="32"/>
+        <location file="include/endstone/inventory/inventory.h" line="163" column="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a3c856d89c9c939663134a7171ac36ded" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unordered_map&lt; int, std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt; &gt;</type>
@@ -505,7 +505,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="177" column="32"/>
+        <location file="include/endstone/inventory/inventory.h" line="176" column="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1acd952207a529dd97e1a59e5a8631ccf3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -545,7 +545,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="186" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="185" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1afd3997dd60d7f4f0649aa4280f05bc24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -576,7 +576,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="194" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="193" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a26fb3d2b14213b78a13a0cc46d9a6128" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -594,7 +594,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="201" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="200" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -612,7 +612,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="209" column="19"/>
+        <location file="include/endstone/inventory/inventory.h" line="208" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a184e92e13736a722adb7cb4b8d849c32" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -643,7 +643,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="217" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="216" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a2ea7da861928e8554f470277187752b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -672,7 +672,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="224" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="223" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1af3402b278d0775d48a56593bf49ee52e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -703,7 +703,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="233" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="232" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -732,7 +732,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="240" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="239" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -747,7 +747,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="245" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="244" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -767,7 +767,7 @@ The returned map contains entries where, the key is the slot index, and the valu
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/inventory/inventory.h" line="27" column="1" bodyfile="include/endstone/inventory/inventory.h" bodystart="27" bodyend="246"/>
+    <location file="include/endstone/inventory/inventory.h" line="26" column="1" bodyfile="include/endstone/inventory/inventory.h" bodystart="26" bodyend="245"/>
     <listofallmembers>
       <member refid="classendstone_1_1Inventory_1a184e92e13736a722adb7cb4b8d849c32" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>add</name></member>
       <member refid="classendstone_1_1Inventory_1a0bc1c6d346b8a4c02049a1422e67d897" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>addItem</name></member>

@@ -24,41 +24,128 @@
 
 #pragma once
 
-#include <optional>
-#include <string>
-#include <utility>
-
 namespace endstone {
 class Color {
 public:
-    explicit Color(const std::uint8_t red = 0, const std::uint8_t green = 0, const std::uint8_t blue = 0,
-                   const std::uint8_t alpha = 255)
-        : r_(red), g_(green), b_(blue), a_(alpha)
+    static constexpr int BIT_MASK = 0xff;
+    static constexpr int DEFAULT_ALPHA = 255;
+
+    constexpr Color(const std::uint8_t red, const std::uint8_t green, const std::uint8_t blue,
+                    const std::uint8_t alpha = DEFAULT_ALPHA)
+        : red_(red), green_(green), blue_(blue), alpha_(alpha)
     {
     }
 
-    [[nodiscard]] std::uint8_t getRed() const
+    static Result<Color> fromRGBA(int red, int green, int blue, int alpha)
     {
-        return r_;
+        ENDSTONE_CHECKF(red >= 0 && red <= BIT_MASK, "Red[{}] must be between 0-255", red);
+        ENDSTONE_CHECKF(green >= 0 && green <= BIT_MASK, "Green[{}] must be between 0-255", green);
+        ENDSTONE_CHECKF(blue >= 0 && blue <= BIT_MASK, "Blue[{}] must be between 0-255", blue);
+        ENDSTONE_CHECKF(alpha >= 0 && alpha <= BIT_MASK, "Alpha[{}] must be between 0-255", alpha);
+        return Color(static_cast<std::uint8_t>(red), static_cast<std::uint8_t>(green), static_cast<std::uint8_t>(blue),
+                     static_cast<std::uint8_t>(alpha));
     }
 
-    [[nodiscard]] std::uint8_t getGreen() const
+    static Result<Color> fromRGB(const int red, const int green, const int blue)
     {
-        return g_;
+        return fromRGBA(red, green, blue, DEFAULT_ALPHA);
     }
 
-    [[nodiscard]] std::uint8_t getBlue() const
+    static Result<Color> fromBGR(const int blue, const int green, const int red)
     {
-        return b_;
+        return fromRGBA(red, green, blue, DEFAULT_ALPHA);
     }
 
-    [[nodiscard]] std::uint8_t getAlpha() const
+    static Result<Color> fromRGBA(const int rgba)
     {
-        return a_;
+        return fromRGBA(rgba >> 24 & BIT_MASK, rgba >> 16 & BIT_MASK, rgba >> 8 & BIT_MASK, rgba & BIT_MASK);
+    }
+
+    static Result<Color> fromRGB(const int rgb)
+    {
+        ENDSTONE_CHECKF((rgb >> 24) == 0, "Extraneous data in: {}", rgb);
+        return fromRGB(rgb >> 16 & BIT_MASK, rgb >> 8 & BIT_MASK, rgb & BIT_MASK);
+    }
+
+    static Result<Color> fromBGR(const int bgr)
+    {
+        ENDSTONE_CHECKF((bgr >> 24) == 0, "Extraneous data in: {}", bgr);
+        return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK);
+    }
+
+    [[nodiscard]] int getRed() const
+    {
+        return BIT_MASK & red_;
+    }
+
+    [[nodiscard]] Result<Color> setRed(const int red) const
+    {
+        return fromRGBA(red, getGreen(), getBlue(), getAlpha());
+    }
+
+    [[nodiscard]] int getGreen() const
+    {
+        return BIT_MASK & green_;
+    }
+
+    [[nodiscard]] Result<Color> setGreen(const int green) const
+    {
+        return fromRGBA(getRed(), green, getBlue(), getAlpha());
+    }
+
+    [[nodiscard]] int getBlue() const
+    {
+        return BIT_MASK & blue_;
+    }
+
+    [[nodiscard]] Result<Color> setBlue(const int blue) const
+    {
+        return fromRGBA(getRed(), getGreen(), blue, getAlpha());
+    }
+
+    [[nodiscard]] int getAlpha() const
+    {
+        return BIT_MASK & alpha_;
+    }
+
+    [[nodiscard]] Result<Color> setAlpha(const int alpha) const
+    {
+        return fromRGBA(getRed(), getGreen(), getBlue(), alpha);
+    }
+
+    [[nodiscard]] int asRGBA() const
+    {
+        return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha();
+    }
+
+    [[nodiscard]] int asRGB() const
+    {
+        return getRed() << 16 | getGreen() << 8 | getBlue();
+    }
+
+    [[nodiscard]] int asBGR() const
+    {
+        return getBlue() << 16 | getGreen() << 8 | getRed();
+    }
+
+    bool operator==(const Color &other) const
+    {
+        return alpha_ == other.alpha_ && red_ == other.red_ && green_ == other.green_ && blue_ == other.blue_;
+    }
+
+    bool operator!=(const Color &other) const
+    {
+        return !(*this == other);
     }
 
 private:
-    std::uint8_t r_, g_, b_, a_;
+    std::uint8_t red_, green_, blue_, alpha_;
+};
+
+class Colors {
+public:
+    static constexpr auto WHITE = Color(Color::DEFAULT_ALPHA, 255, 255, 255);
+    static constexpr auto BLACK = Color(Color::DEFAULT_ALPHA, 0, 0, 0);
 };
 }  // namespace endstone
 ```

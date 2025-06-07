@@ -43,7 +43,15 @@ public:
 
     [[nodiscard]] virtual Color getBasePixelColor(int x, int y) const = 0;
 
+    virtual void setPixel(int x, int y, int color) = 0;
+
+    [[nodiscard]] virtual int getPixel(int x, int y) const = 0;
+
+    [[nodiscard]] virtual int getBasePixel(int x, int y) const = 0;
+
     virtual void drawImage(int x, int y, const Image &image) = 0;
+
+    // TODO(map): getCursors and setCursors
 };
 
 }  // namespace endstone

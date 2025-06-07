@@ -3,137 +3,131 @@
   <compounddef id="classendstone_1_1Color" kind="class" language="C++" prot="public">
     <compoundname>endstone::Color</compoundname>
     <includes refid="color_8h" local="no">endstone/util/color.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Color_1a7c5e7653a0ede9a6e5da415ac93bcf51" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int endstone::Color::BIT_MASK</definition>
+        <argsstring></argsstring>
+        <name>BIT_MASK</name>
+        <qualifiedname>endstone::Color::BIT_MASK</qualifiedname>
+        <initializer>= 0xff</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="23" column="26" bodyfile="include/endstone/util/color.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Color_1a3c2563e89f8f1961ce3a41fa99f5f637" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int endstone::Color::DEFAULT_ALPHA</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_ALPHA</name>
+        <qualifiedname>endstone::Color::DEFAULT_ALPHA</qualifiedname>
+        <initializer>= 255</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="24" column="26" bodyfile="include/endstone/util/color.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1Color_1aaedaa1a87a1ea0ad74816c848401c9af" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1Color_1a59942d71ae2062a6466033a5c3e1805b" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::r_</definition>
+        <definition>std::uint8_t endstone::Color::red_</definition>
         <argsstring></argsstring>
-        <name>r_</name>
-        <qualifiedname>endstone::Color::r_</qualifiedname>
+        <name>red_</name>
+        <qualifiedname>endstone::Color::red_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="82" column="18" bodyfile="include/endstone/util/color.h" bodystart="82" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="242" column="18" bodyfile="include/endstone/util/color.h" bodystart="242" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Color_1a8e609d307561e9d3f4e378858b9f18f7" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1Color_1ad816c65b8a4163978e154bb0bcea61ae" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::g_</definition>
+        <definition>std::uint8_t endstone::Color::green_</definition>
         <argsstring></argsstring>
-        <name>g_</name>
-        <qualifiedname>endstone::Color::g_</qualifiedname>
+        <name>green_</name>
+        <qualifiedname>endstone::Color::green_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="82" column="21" bodyfile="include/endstone/util/color.h" bodystart="82" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="242" column="23" bodyfile="include/endstone/util/color.h" bodystart="242" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Color_1a8f82ea3cd7f8895813d59d5e67a53332" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1Color_1a4b065c127f1420adfd3b12251134e76a" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::b_</definition>
+        <definition>std::uint8_t endstone::Color::blue_</definition>
         <argsstring></argsstring>
-        <name>b_</name>
-        <qualifiedname>endstone::Color::b_</qualifiedname>
+        <name>blue_</name>
+        <qualifiedname>endstone::Color::blue_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="82" column="24" bodyfile="include/endstone/util/color.h" bodystart="82" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="242" column="30" bodyfile="include/endstone/util/color.h" bodystart="242" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Color_1ae9ac765f7eb072b40fc405df3d2fff38" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1Color_1ab466f486228d182461f45e7edf7df72a" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::a_</definition>
+        <definition>std::uint8_t endstone::Color::alpha_</definition>
         <argsstring></argsstring>
-        <name>a_</name>
-        <qualifiedname>endstone::Color::a_</qualifiedname>
+        <name>alpha_</name>
+        <qualifiedname>endstone::Color::alpha_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="82" column="27" bodyfile="include/endstone/util/color.h" bodystart="82" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="242" column="36" bodyfile="include/endstone/util/color.h" bodystart="242" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Color_1aa95ba2b187557119aa020d39b6d5b644" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>endstone::Color::Color</definition>
-        <argsstring>(const std::uint8_t red=0, const std::uint8_t green=0, const std::uint8_t blue=0, const std::uint8_t alpha=255)</argsstring>
+      <memberdef kind="function" id="classendstone_1_1Color_1a17541893a7122663b91e49f77f828475" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr endstone::Color::Color</definition>
+        <argsstring>(const std::uint8_t red, const std::uint8_t green, const std::uint8_t blue, const std::uint8_t alpha=DEFAULT_ALPHA)</argsstring>
         <name>Color</name>
         <qualifiedname>endstone::Color::Color</qualifiedname>
         <param>
           <type>const std::uint8_t</type>
           <declname>red</declname>
-          <defval>0</defval>
         </param>
         <param>
           <type>const std::uint8_t</type>
           <declname>green</declname>
-          <defval>0</defval>
         </param>
         <param>
           <type>const std::uint8_t</type>
           <declname>blue</declname>
-          <defval>0</defval>
         </param>
         <param>
           <type>const std::uint8_t</type>
           <declname>alpha</declname>
-          <defval>255</defval>
+          <defval>DEFAULT_ALPHA</defval>
         </param>
         <briefdescription>
-<para>Creates a color with the specified red, green, blue, and alpha values in the range (0 - 255). </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>red</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Red component (0–255) </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>green</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Green component (0–255) </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>blue</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Blue component (0–255) </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>alpha</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Alpha component (0–255, default 255 = opaque) </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="35" column="14" bodyfile="include/endstone/util/color.h" bodystart="35" bodyend="39"/>
+        <location file="include/endstone/util/color.h" line="26" column="15" bodyfile="include/endstone/util/color.h" bodystart="26" bodyend="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Color_1a41aef80cad811638a2816a110f9c2f69" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::getRed</definition>
+      <memberdef kind="function" id="classendstone_1_1Color_1a0ba516557cf1a2286149c620d95e00c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::Color::getRed</definition>
         <argsstring>() const</argsstring>
         <name>getRed</name>
         <qualifiedname>endstone::Color::getRed</qualifiedname>
@@ -147,11 +141,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="46" column="19" bodyfile="include/endstone/util/color.h" bodystart="46" bodyend="49"/>
+        <location file="include/endstone/util/color.h" line="118" column="10" bodyfile="include/endstone/util/color.h" bodystart="118" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Color_1a384263e871902d7fd9a2ae447a44365b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::getGreen</definition>
+      <memberdef kind="function" id="classendstone_1_1Color_1ad40dfce4204a27c04c55b5ea0de9cc73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>Result&lt; Color &gt; endstone::Color::setRed</definition>
+        <argsstring>(const int red) const</argsstring>
+        <name>setRed</name>
+        <qualifiedname>endstone::Color::setRed</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>red</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object with specified component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>red</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the red component, from 0 to 255</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new color object with the red component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="130" column="13" bodyfile="include/endstone/util/color.h" bodystart="130" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a301d32f39f8cffa44020cc9a62212ea1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::Color::getGreen</definition>
         <argsstring>() const</argsstring>
         <name>getGreen</name>
         <qualifiedname>endstone::Color::getGreen</qualifiedname>
@@ -165,11 +190,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="56" column="19" bodyfile="include/endstone/util/color.h" bodystart="56" bodyend="59"/>
+        <location file="include/endstone/util/color.h" line="140" column="10" bodyfile="include/endstone/util/color.h" bodystart="140" bodyend="143"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Color_1a73ade3d9733066746972cd4b56ee1126" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::getBlue</definition>
+      <memberdef kind="function" id="classendstone_1_1Color_1add7da4ae942f6368453e8136b4a08d96" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>Result&lt; Color &gt; endstone::Color::setGreen</definition>
+        <argsstring>(const int green) const</argsstring>
+        <name>setGreen</name>
+        <qualifiedname>endstone::Color::setGreen</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>green</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object with specified component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>green</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the green component, from 0 to 255</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new color object with the green component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="152" column="13" bodyfile="include/endstone/util/color.h" bodystart="152" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a9ed18343f473ed0a5b69a34040c9c6ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::Color::getBlue</definition>
         <argsstring>() const</argsstring>
         <name>getBlue</name>
         <qualifiedname>endstone::Color::getBlue</qualifiedname>
@@ -183,11 +239,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="66" column="19" bodyfile="include/endstone/util/color.h" bodystart="66" bodyend="69"/>
+        <location file="include/endstone/util/color.h" line="162" column="10" bodyfile="include/endstone/util/color.h" bodystart="162" bodyend="165"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Color_1a88648df22a3d71293052c3468a4d67aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::uint8_t</type>
-        <definition>std::uint8_t endstone::Color::getAlpha</definition>
+      <memberdef kind="function" id="classendstone_1_1Color_1af05e9817b91e4f72624a42f42cbe055f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>Result&lt; Color &gt; endstone::Color::setBlue</definition>
+        <argsstring>(const int blue) const</argsstring>
+        <name>setBlue</name>
+        <qualifiedname>endstone::Color::setBlue</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>blue</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object with specified component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>blue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the blue component, from 0 to 255</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new color object with the blue component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="174" column="13" bodyfile="include/endstone/util/color.h" bodystart="174" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a6696f9d17391d894745ddc0c202707b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::Color::getAlpha</definition>
         <argsstring>() const</argsstring>
         <name>getAlpha</name>
         <qualifiedname>endstone::Color::getAlpha</qualifiedname>
@@ -201,7 +288,387 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="76" column="19" bodyfile="include/endstone/util/color.h" bodystart="76" bodyend="79"/>
+        <location file="include/endstone/util/color.h" line="184" column="10" bodyfile="include/endstone/util/color.h" bodystart="184" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a90d9dc03bed7fd437a864b5a3a2e597e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>Result&lt; Color &gt; endstone::Color::setAlpha</definition>
+        <argsstring>(const int alpha) const</argsstring>
+        <name>setAlpha</name>
+        <qualifiedname>endstone::Color::setAlpha</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>alpha</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object with specified component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the alpha component, from 0 to 255</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new color object with the alpha component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="196" column="13" bodyfile="include/endstone/util/color.h" bodystart="196" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1aafd4045f6c816b868c35dc494c2713b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::Color::asRGBA</definition>
+        <argsstring>() const</argsstring>
+        <name>asRGBA</name>
+        <qualifiedname>endstone::Color::asRGBA</qualifiedname>
+        <briefdescription>
+<para>Gets the color as an RGBA integer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An integer representation of this color, as 0xRRGGBBAA </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="206" column="10" bodyfile="include/endstone/util/color.h" bodystart="206" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1ae79fd7ce5bc89837d82073ffdb7fab65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::Color::asRGB</definition>
+        <argsstring>() const</argsstring>
+        <name>asRGB</name>
+        <qualifiedname>endstone::Color::asRGB</qualifiedname>
+        <briefdescription>
+<para>Gets the color as an RGB integer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An integer representation of this color, as 0xRRGGBB </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="216" column="10" bodyfile="include/endstone/util/color.h" bodystart="216" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a49132ac0dcd6eb30d0c88b060e2145aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int endstone::Color::asBGR</definition>
+        <argsstring>() const</argsstring>
+        <name>asBGR</name>
+        <qualifiedname>endstone::Color::asBGR</qualifiedname>
+        <briefdescription>
+<para>Gets the color as an BGR integer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An integer representation of this color, as 0xBBGGRR </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="226" column="10" bodyfile="include/endstone/util/color.h" bodystart="226" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1aba327588593d6e8fd59114d831fb0b60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Color::operator==</definition>
+        <argsstring>(const Color &amp;other) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::Color::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="231" column="10" bodyfile="include/endstone/util/color.h" bodystart="231" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a4748a2087280419ccb2fda334d14c1a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Color::operator!=</definition>
+        <argsstring>(const Color &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::Color::operator!=</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="236" column="10" bodyfile="include/endstone/util/color.h" bodystart="236" bodyend="239"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1Color_1aa2f1bbfb5aa8fc939583d9d7c454651b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>static Result&lt; Color &gt; endstone::Color::fromRGBA</definition>
+        <argsstring>(int red, int green, int blue, int alpha)</argsstring>
+        <name>fromRGBA</name>
+        <qualifiedname>endstone::Color::fromRGBA</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>red</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>green</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>blue</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>alpha</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object from a red, green, blue, and alpha. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>red</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>green</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>blue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object for the red, green, blue, alpha </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="42" column="19" bodyfile="include/endstone/util/color.h" bodystart="42" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1ab5bdb830e17b94e429c36e519ba5d08f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>static Result&lt; Color &gt; endstone::Color::fromRGB</definition>
+        <argsstring>(const int red, const int green, const int blue)</argsstring>
+        <name>fromRGB</name>
+        <qualifiedname>endstone::Color::fromRGB</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>red</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>green</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>blue</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object from a red, green, and blue. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>red</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>green</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>blue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object for the red, green, blue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="61" column="19" bodyfile="include/endstone/util/color.h" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a9e54364845addf34dbc1641265479a50" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>static Result&lt; Color &gt; endstone::Color::fromBGR</definition>
+        <argsstring>(const int blue, const int green, const int red)</argsstring>
+        <name>fromBGR</name>
+        <qualifiedname>endstone::Color::fromBGR</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>blue</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>green</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>red</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object from a blue, green, and red. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>blue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>green</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>red</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer from 0-255</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> object for the red, green, blue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="75" column="19" bodyfile="include/endstone/util/color.h" bodystart="75" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a09bbf9dd83f827588692890fe9d4ebf7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>static Result&lt; Color &gt; endstone::Color::fromRGBA</definition>
+        <argsstring>(const int rgba)</argsstring>
+        <name>fromRGBA</name>
+        <qualifiedname>endstone::Color::fromRGBA</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>rgba</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new color object from an integer that contains the red, green, blue, and alpha bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rgba</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the integer storing the red, green, blue, and alpha values</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new color object for specified values </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="88" column="19" bodyfile="include/endstone/util/color.h" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a9bdf55abfb01aabe84e04b3e72da5ebe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>static Result&lt; Color &gt; endstone::Color::fromRGB</definition>
+        <argsstring>(const int rgb)</argsstring>
+        <name>fromRGB</name>
+        <qualifiedname>endstone::Color::fromRGB</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>rgb</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new color object from an integer that contains the red, green, and blue bytes in the lowest order 24 bits. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rgb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the integer storing the red, green, and blue values</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new color object for specified values </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="101" column="19" bodyfile="include/endstone/util/color.h" bodystart="101" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Color_1a15c60c7b1d2e5c368c9595a83429f1fd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>static Result&lt; Color &gt; endstone::Color::fromBGR</definition>
+        <argsstring>(const int bgr)</argsstring>
+        <name>fromBGR</name>
+        <qualifiedname>endstone::Color::fromBGR</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>bgr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="107" column="19" bodyfile="include/endstone/util/color.h" bodystart="107" bodyend="111"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -209,17 +676,34 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/color.h" line="25" column="1" bodyfile="include/endstone/util/color.h" bodystart="25" bodyend="83"/>
+    <location file="include/endstone/util/color.h" line="21" column="1" bodyfile="include/endstone/util/color.h" bodystart="21" bodyend="243"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Color_1ae9ac765f7eb072b40fc405df3d2fff38" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>a_</name></member>
-      <member refid="classendstone_1_1Color_1a8f82ea3cd7f8895813d59d5e67a53332" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>b_</name></member>
-      <member refid="classendstone_1_1Color_1aa95ba2b187557119aa020d39b6d5b644" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>Color</name></member>
-      <member refid="classendstone_1_1Color_1a8e609d307561e9d3f4e378858b9f18f7" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>g_</name></member>
-      <member refid="classendstone_1_1Color_1a88648df22a3d71293052c3468a4d67aa" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getAlpha</name></member>
-      <member refid="classendstone_1_1Color_1a73ade3d9733066746972cd4b56ee1126" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getBlue</name></member>
-      <member refid="classendstone_1_1Color_1a384263e871902d7fd9a2ae447a44365b" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getGreen</name></member>
-      <member refid="classendstone_1_1Color_1a41aef80cad811638a2816a110f9c2f69" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getRed</name></member>
-      <member refid="classendstone_1_1Color_1aaedaa1a87a1ea0ad74816c848401c9af" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>r_</name></member>
+      <member refid="classendstone_1_1Color_1ab466f486228d182461f45e7edf7df72a" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>alpha_</name></member>
+      <member refid="classendstone_1_1Color_1a49132ac0dcd6eb30d0c88b060e2145aa" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>asBGR</name></member>
+      <member refid="classendstone_1_1Color_1ae79fd7ce5bc89837d82073ffdb7fab65" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>asRGB</name></member>
+      <member refid="classendstone_1_1Color_1aafd4045f6c816b868c35dc494c2713b0" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>asRGBA</name></member>
+      <member refid="classendstone_1_1Color_1a7c5e7653a0ede9a6e5da415ac93bcf51" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>BIT_MASK</name></member>
+      <member refid="classendstone_1_1Color_1a4b065c127f1420adfd3b12251134e76a" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>blue_</name></member>
+      <member refid="classendstone_1_1Color_1a17541893a7122663b91e49f77f828475" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>Color</name></member>
+      <member refid="classendstone_1_1Color_1a3c2563e89f8f1961ce3a41fa99f5f637" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>DEFAULT_ALPHA</name></member>
+      <member refid="classendstone_1_1Color_1a9e54364845addf34dbc1641265479a50" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>fromBGR</name></member>
+      <member refid="classendstone_1_1Color_1a15c60c7b1d2e5c368c9595a83429f1fd" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>fromBGR</name></member>
+      <member refid="classendstone_1_1Color_1ab5bdb830e17b94e429c36e519ba5d08f" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>fromRGB</name></member>
+      <member refid="classendstone_1_1Color_1a9bdf55abfb01aabe84e04b3e72da5ebe" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>fromRGB</name></member>
+      <member refid="classendstone_1_1Color_1aa2f1bbfb5aa8fc939583d9d7c454651b" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>fromRGBA</name></member>
+      <member refid="classendstone_1_1Color_1a09bbf9dd83f827588692890fe9d4ebf7" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>fromRGBA</name></member>
+      <member refid="classendstone_1_1Color_1a6696f9d17391d894745ddc0c202707b1" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getAlpha</name></member>
+      <member refid="classendstone_1_1Color_1a9ed18343f473ed0a5b69a34040c9c6ce" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getBlue</name></member>
+      <member refid="classendstone_1_1Color_1a301d32f39f8cffa44020cc9a62212ea1" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getGreen</name></member>
+      <member refid="classendstone_1_1Color_1a0ba516557cf1a2286149c620d95e00c4" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>getRed</name></member>
+      <member refid="classendstone_1_1Color_1ad816c65b8a4163978e154bb0bcea61ae" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>green_</name></member>
+      <member refid="classendstone_1_1Color_1a4748a2087280419ccb2fda334d14c1a7" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Color_1aba327588593d6e8fd59114d831fb0b60" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Color_1a59942d71ae2062a6466033a5c3e1805b" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>red_</name></member>
+      <member refid="classendstone_1_1Color_1a90d9dc03bed7fd437a864b5a3a2e597e" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>setAlpha</name></member>
+      <member refid="classendstone_1_1Color_1af05e9817b91e4f72624a42f42cbe055f" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>setBlue</name></member>
+      <member refid="classendstone_1_1Color_1add7da4ae942f6368453e8136b4a08d96" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>setGreen</name></member>
+      <member refid="classendstone_1_1Color_1ad40dfce4204a27c04c55b5ea0de9cc73" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>setRed</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -53,6 +53,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._ 
 * **class** [**endstone::Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._ 
 * **class** [**endstone::Color**](classendstone_1_1Color.md) _Represents a color with red, green, blue, and alpha components._ 
+* **class** [**endstone::Colors**](classendstone_1_1Colors.md) 
 * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     

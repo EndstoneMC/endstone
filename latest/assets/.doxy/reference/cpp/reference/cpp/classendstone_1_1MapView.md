@@ -57,7 +57,7 @@ _Represents a map item._
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**addRenderer**](#function-addrenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) & renderer) = 0<br>_Add a renderer to this map._  |
+| virtual void | [**addRenderer**](#function-addrenderer) (std::unique\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; renderer) = 0<br>_Add a renderer to this map._  |
 | virtual int | [**getCenterX**](#function-getcenterx) () const = 0<br>_Get the center X position of this map._  |
 | virtual int | [**getCenterZ**](#function-getcenterz) () const = 0<br>_Get the center Z position of this map._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) () const = 0<br>_Get the dimension that this map is associated with._  |
@@ -70,7 +70,7 @@ _Represents a map item._
 | virtual bool | [**removeRenderer**](#function-removerenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) \* renderer) = 0<br>_Remove a renderer from this map._  |
 | virtual void | [**setCenterX**](#function-setcenterx) (int x) = 0<br>_Set the center X position of this map._  |
 | virtual void | [**setCenterZ**](#function-setcenterz) (int z) = 0<br>_Set the center Z position of this map._  |
-| virtual void | [**setDimension**](#function-setdimension) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension) = 0<br>_Set the dimension that this map is associated with._  |
+| virtual void | [**setDimension**](#function-setdimension) (const [**Dimension**](classendstone_1_1Dimension.md) & dimension) = 0<br>_Set the dimension that this map is associated with._  |
 | virtual void | [**setLocked**](#function-setlocked) (bool locked) = 0<br>_Sets whether the map is locked or not. A locked map may not be explored further._  |
 | virtual void | [**setScale**](#function-setscale) ([**Scale**](classendstone_1_1MapView.md#enum-scale) scale) = 0<br>_Set the scale of this map._  |
 | virtual void | [**setUnlimitedTracking**](#function-setunlimitedtracking) (bool unlimited) = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
@@ -135,7 +135,7 @@ enum endstone::MapView::Scale {
 _Add a renderer to this map._ 
 ```C++
 virtual void endstone::MapView::addRenderer (
-    MapRenderer & renderer
+    std::unique_ptr< MapRenderer > renderer
 ) = 0
 ```
 
@@ -478,7 +478,7 @@ virtual void endstone::MapView::setCenterZ (
 _Set the dimension that this map is associated with._ 
 ```C++
 virtual void endstone::MapView::setDimension (
-    Dimension * dimension
+    const Dimension & dimension
 ) = 0
 ```
 

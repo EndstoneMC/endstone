@@ -27,10 +27,9 @@
 #include <memory>
 #include <vector>
 
-#include "item_stack.h"
-
 namespace endstone {
 class ItemStack;
+class ItemType;
 class Inventory {
 public:
     virtual ~Inventory() = default;

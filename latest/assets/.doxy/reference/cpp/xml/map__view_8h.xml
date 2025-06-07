@@ -9,7 +9,7 @@
         <link refid="map__canvas_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -27,14 +27,8 @@
       <node id="4">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="8">
+      <node id="5">
         <label>endstone/util/image.h</label>
         <link refid="image_8h_source"/>
         <childnode refid="6" relation="include">
@@ -42,14 +36,8 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>optional</label>
-      </node>
       <node id="6">
         <label>string</label>
-      </node>
-      <node id="7">
-        <label>utility</label>
       </node>
     </incdepgraph>
     <innerclass refid="classendstone_1_1MapView" prot="public">endstone::MapView</innerclass>
@@ -111,11 +99,11 @@
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104" refid="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>*<ref refid="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111" refid="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" kindref="member">setDimension</ref>(<ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>*dimension)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="111" refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" kindref="member">setDimension</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;dimension)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
 <codeline lineno="118" refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;MapRenderer<sp/>*&gt;<sp/><ref refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" kindref="member">getRenderers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125" refid="classendstone_1_1MapView_1ad0eaecd9cf1b5fb0a8fb373c7c828aa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1ad0eaecd9cf1b5fb0a8fb373c7c828aa6" kindref="member">addRenderer</ref>(<ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref><sp/>&amp;renderer)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="125" refid="classendstone_1_1MapView_1aed4428ea53012e4e4a8dda2c4ce3c0c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1aed4428ea53012e4e4a8dda2c4ce3c0c9" kindref="member">addRenderer</ref>(std::unique_ptr&lt;MapRenderer&gt;<sp/>renderer)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134" refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" kindref="member">removeRenderer</ref>(<ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref><sp/>*renderer)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>

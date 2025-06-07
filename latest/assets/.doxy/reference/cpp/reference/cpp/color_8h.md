@@ -10,9 +10,6 @@
 
 
 
-* `#include <optional>`
-* `#include <string>`
-* `#include <utility>`
 
 
 
@@ -38,6 +35,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Color**](classendstone_1_1Color.md) <br>_Represents a color with red, green, blue, and alpha components._  |
+| class | [**Colors**](classendstone_1_1Colors.md) <br> |
 
 
 

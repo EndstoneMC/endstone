@@ -28,6 +28,11 @@ _Represents an RGBA image._ [More...](#detailed-description)
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| enum  | [**Type**](#enum-type)  <br> |
 
 
 
@@ -52,9 +57,10 @@ _Represents an RGBA image._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Image**](#function-image-12) (const int width, const int height) <br>_Create an empty image (all pixels transparent black)._  |
+|   | [**Image**](#function-image-12) (const [**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height) <br>_Create an empty image (all pixels transparent black)._  |
 |  [**Color**](classendstone_1_1Color.md) | [**getColor**](#function-getcolor) (const int x, const int y) const<br>_Get the color of a pixel._  |
-|  std::string\_view | [**getData**](#function-getdata) () const<br>_Gets the raw pixel buffer (RGBA, row-major)._  |
+|  std::string\_view | [**getData**](#function-getdata) () const<br>_Gets the raw pixel buffer (row-major, H x W x D)._  |
+|  int | [**getDepth**](#function-getdepth) () const<br>_Get the image depth._  |
 |  int | [**getHeight**](#function-getheight) () const<br>_Get the image height._  |
 |  int | [**getWidth**](#function-getwidth) () const<br>_Get the image width._  |
 |  void | [**setColor**](#function-setcolor) (const int x, const int y, const [**Color**](classendstone_1_1Color.md) color) <br>_Set the color of a pixel._  |
@@ -64,7 +70,7 @@ _Represents an RGBA image._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromBuffer**](#function-frombuffer) (const int width, const int height, std::string\_view buffer) <br>_Creates an image from the pixel data in a byte buffer._  |
+|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromBuffer**](#function-frombuffer) ([**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height, std::string\_view buffer) <br>_Creates an image from the pixel data in a byte buffer._  |
 
 
 
@@ -98,6 +104,26 @@ Each pixel is four bytes: R, G, B, A, in row-major order.
 
 
     
+## Public Types Documentation
+
+
+
+
+### enum Type 
+
+```C++
+enum endstone::Image::Type {
+    Invalid = 0,
+    Grayscale = 1,
+    RGB = 3,
+    RGBA = 4
+};
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -108,6 +134,7 @@ Each pixel is four bytes: R, G, B, A, in row-major order.
 _Create an empty image (all pixels transparent black)._ 
 ```C++
 inline explicit endstone::Image::Image (
+    const Type type,
     const int width,
     const int height
 ) 
@@ -120,6 +147,7 @@ inline explicit endstone::Image::Image (
 **Parameters:**
 
 
+* `type` [**Image**](classendstone_1_1Image.md) type 
 * `width` [**Image**](classendstone_1_1Image.md) width in pixels 
 * `height` [**Image**](classendstone_1_1Image.md) height in pixels 
 
@@ -170,7 +198,7 @@ inline Color endstone::Image::getColor (
 
 ### function getData 
 
-_Gets the raw pixel buffer (RGBA, row-major)._ 
+_Gets the raw pixel buffer (row-major, H x W x D)._ 
 ```C++
 inline std::string_view endstone::Image::getData () const
 ```
@@ -182,6 +210,31 @@ inline std::string_view endstone::Image::getData () const
 **Returns:**
 
 The underlying image data buffer 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getDepth 
+
+_Get the image depth._ 
+```C++
+inline int endstone::Image::getDepth () const
+```
+
+
+
+
+
+**Returns:**
+
+[**Image**](classendstone_1_1Image.md) depth 
 
 
 
@@ -281,6 +334,7 @@ inline void endstone::Image::setColor (
 _Creates an image from the pixel data in a byte buffer._ 
 ```C++
 static inline Result< Image > endstone::Image::fromBuffer (
+    Type type,
     const int width,
     const int height,
     std::string_view buffer
@@ -294,9 +348,10 @@ static inline Result< Image > endstone::Image::fromBuffer (
 **Parameters:**
 
 
+* `type` [**Image**](classendstone_1_1Image.md) type 
 * `width` [**Image**](classendstone_1_1Image.md) width in pixels 
 * `height` [**Image**](classendstone_1_1Image.md) height in pixels 
-* `buffer` A string\_view over exactly width\*height\*4 bytes of RGBA data 
+* `buffer` 
 
 
 

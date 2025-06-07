@@ -53,9 +53,12 @@ _Represents a canvas for drawing to a map. Each canvas is associated with a spec
 | Type | Name |
 | ---: | :--- |
 | virtual void | [**drawImage**](#function-drawimage) (int x, int y, const [**Image**](classendstone_1_1Image.md) & image) = 0<br>_Draw an image to the map. The image will be clipped if necessary._  |
+| virtual int | [**getBasePixel**](#function-getbasepixel) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
 | virtual [**Color**](classendstone_1_1Color.md) | [**getBasePixelColor**](#function-getbasepixelcolor) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**getMapView**](#function-getmapview) () const = 0<br>_Get the map this canvas is attached to._  |
+| virtual int | [**getPixel**](#function-getpixel) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
 | virtual std::optional&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getPixelColor**](#function-getpixelcolor) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
+| virtual void | [**setPixel**](#function-setpixel) (int x, int y, int color) = 0<br>_Draw a pixel to the canvas._  |
 | virtual void | [**setPixelColor**](#function-setpixelcolor) (int x, int y, std::optional&lt; [**Color**](classendstone_1_1Color.md) &gt; color) = 0<br>_Draw a pixel to the canvas._  |
 | virtual  | [**~MapCanvas**](#function-mapcanvas) () = default<br> |
 
@@ -122,6 +125,42 @@ virtual void endstone::MapCanvas::drawImage (
 
 
 
+### function getBasePixel 
+
+_Get a pixel from the layers below this canvas._ 
+```C++
+virtual int endstone::MapCanvas::getBasePixel (
+    int x,
+    int y
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `x` The x coordinate, from 0 to 127. 
+* `y` The y coordinate, from 0 to 127. 
+
+
+
+**Returns:**
+
+The color. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getBasePixelColor 
 
 _Get a pixel from the layers below this canvas._ 
@@ -139,7 +178,7 @@ virtual Color endstone::MapCanvas::getBasePixelColor (
 **Parameters:**
 
 
-* `x` The x coordinate, from 0 to 127. 
+* `x` The x coordinate, from 0 to 127.
 * `y` The y coordinate, from 0 to 127. 
 
 
@@ -183,6 +222,42 @@ The [**MapView**](classendstone_1_1MapView.md) this canvas is attached to.
 
 
 
+### function getPixel 
+
+_Get a pixel from the canvas._ 
+```C++
+virtual int endstone::MapCanvas::getPixel (
+    int x,
+    int y
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `x` The x coordinate, from 0 to 127. 
+* `y` The y coordinate, from 0 to 127. 
+
+
+
+**Returns:**
+
+The color. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getPixelColor 
 
 _Get a pixel from the canvas._ 
@@ -212,6 +287,37 @@ If no color is set at the given position for this canvas, then std::nullopt is r
 
 The color, or std::nullopt if no color is set. 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setPixel 
+
+_Draw a pixel to the canvas._ 
+```C++
+virtual void endstone::MapCanvas::setPixel (
+    int x,
+    int y,
+    int color
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `x` The x coordinate, from 0 to 127. 
+* `y` The y coordinate, from 0 to 127. 
+* `color` The color. 
 
 
 

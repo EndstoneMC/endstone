@@ -282,15 +282,32 @@
     <member refid="classendstone_1_1Chunk_1ab18bb55fcb0a26706f9cb59406bdf0cc" kind="function"><name>getDimension</name></member>
   </compound>
   <compound refid="classendstone_1_1Color" kind="class"><name>endstone::Color</name>
-    <member refid="classendstone_1_1Color_1aaedaa1a87a1ea0ad74816c848401c9af" kind="variable"><name>r_</name></member>
-    <member refid="classendstone_1_1Color_1a8e609d307561e9d3f4e378858b9f18f7" kind="variable"><name>g_</name></member>
-    <member refid="classendstone_1_1Color_1a8f82ea3cd7f8895813d59d5e67a53332" kind="variable"><name>b_</name></member>
-    <member refid="classendstone_1_1Color_1ae9ac765f7eb072b40fc405df3d2fff38" kind="variable"><name>a_</name></member>
-    <member refid="classendstone_1_1Color_1aa95ba2b187557119aa020d39b6d5b644" kind="function"><name>Color</name></member>
-    <member refid="classendstone_1_1Color_1a41aef80cad811638a2816a110f9c2f69" kind="function"><name>getRed</name></member>
-    <member refid="classendstone_1_1Color_1a384263e871902d7fd9a2ae447a44365b" kind="function"><name>getGreen</name></member>
-    <member refid="classendstone_1_1Color_1a73ade3d9733066746972cd4b56ee1126" kind="function"><name>getBlue</name></member>
-    <member refid="classendstone_1_1Color_1a88648df22a3d71293052c3468a4d67aa" kind="function"><name>getAlpha</name></member>
+    <member refid="classendstone_1_1Color_1a7c5e7653a0ede9a6e5da415ac93bcf51" kind="variable"><name>BIT_MASK</name></member>
+    <member refid="classendstone_1_1Color_1a3c2563e89f8f1961ce3a41fa99f5f637" kind="variable"><name>DEFAULT_ALPHA</name></member>
+    <member refid="classendstone_1_1Color_1a59942d71ae2062a6466033a5c3e1805b" kind="variable"><name>red_</name></member>
+    <member refid="classendstone_1_1Color_1ad816c65b8a4163978e154bb0bcea61ae" kind="variable"><name>green_</name></member>
+    <member refid="classendstone_1_1Color_1a4b065c127f1420adfd3b12251134e76a" kind="variable"><name>blue_</name></member>
+    <member refid="classendstone_1_1Color_1ab466f486228d182461f45e7edf7df72a" kind="variable"><name>alpha_</name></member>
+    <member refid="classendstone_1_1Color_1a17541893a7122663b91e49f77f828475" kind="function"><name>Color</name></member>
+    <member refid="classendstone_1_1Color_1a0ba516557cf1a2286149c620d95e00c4" kind="function"><name>getRed</name></member>
+    <member refid="classendstone_1_1Color_1ad40dfce4204a27c04c55b5ea0de9cc73" kind="function"><name>setRed</name></member>
+    <member refid="classendstone_1_1Color_1a301d32f39f8cffa44020cc9a62212ea1" kind="function"><name>getGreen</name></member>
+    <member refid="classendstone_1_1Color_1add7da4ae942f6368453e8136b4a08d96" kind="function"><name>setGreen</name></member>
+    <member refid="classendstone_1_1Color_1a9ed18343f473ed0a5b69a34040c9c6ce" kind="function"><name>getBlue</name></member>
+    <member refid="classendstone_1_1Color_1af05e9817b91e4f72624a42f42cbe055f" kind="function"><name>setBlue</name></member>
+    <member refid="classendstone_1_1Color_1a6696f9d17391d894745ddc0c202707b1" kind="function"><name>getAlpha</name></member>
+    <member refid="classendstone_1_1Color_1a90d9dc03bed7fd437a864b5a3a2e597e" kind="function"><name>setAlpha</name></member>
+    <member refid="classendstone_1_1Color_1aafd4045f6c816b868c35dc494c2713b0" kind="function"><name>asRGBA</name></member>
+    <member refid="classendstone_1_1Color_1ae79fd7ce5bc89837d82073ffdb7fab65" kind="function"><name>asRGB</name></member>
+    <member refid="classendstone_1_1Color_1a49132ac0dcd6eb30d0c88b060e2145aa" kind="function"><name>asBGR</name></member>
+    <member refid="classendstone_1_1Color_1aba327588593d6e8fd59114d831fb0b60" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1Color_1a4748a2087280419ccb2fda334d14c1a7" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1Color_1aa2f1bbfb5aa8fc939583d9d7c454651b" kind="function"><name>fromRGBA</name></member>
+    <member refid="classendstone_1_1Color_1ab5bdb830e17b94e429c36e519ba5d08f" kind="function"><name>fromRGB</name></member>
+    <member refid="classendstone_1_1Color_1a9e54364845addf34dbc1641265479a50" kind="function"><name>fromBGR</name></member>
+    <member refid="classendstone_1_1Color_1a09bbf9dd83f827588692890fe9d4ebf7" kind="function"><name>fromRGBA</name></member>
+    <member refid="classendstone_1_1Color_1a9bdf55abfb01aabe84e04b3e72da5ebe" kind="function"><name>fromRGB</name></member>
+    <member refid="classendstone_1_1Color_1a15c60c7b1d2e5c368c9595a83429f1fd" kind="function"><name>fromBGR</name></member>
   </compound>
   <compound refid="structendstone_1_1ColorFormat" kind="struct"><name>endstone::ColorFormat</name>
     <member refid="structendstone_1_1ColorFormat_1ae88506debc45287385eae171aa061154" kind="variable"><name>Escape</name></member>
@@ -326,6 +343,10 @@
     <member refid="structendstone_1_1ColorFormat_1a58141a8f5ff7780dc6b473fb08574e68" kind="variable"><name>Bold</name></member>
     <member refid="structendstone_1_1ColorFormat_1a90709e488b7b7879e783f3ffc80f9c61" kind="variable"><name>Italic</name></member>
     <member refid="structendstone_1_1ColorFormat_1ad0d9e7f6813d5a0529277cc29fa98da8" kind="variable"><name>Reset</name></member>
+  </compound>
+  <compound refid="classendstone_1_1Colors" kind="class"><name>endstone::Colors</name>
+    <member refid="classendstone_1_1Colors_1ac77fd4dd5e4eccb3e00e32064e71efdc" kind="variable"><name>WHITE</name></member>
+    <member refid="classendstone_1_1Colors_1a28bf16e643dd4b9a31c84551f8f5dd47" kind="variable"><name>BLACK</name></member>
   </compound>
   <compound refid="classendstone_1_1Command" kind="class"><name>endstone::Command</name>
     <member refid="classendstone_1_1Command_1a38260b8e8868c4008945a050adddd89d" kind="variable"><name>name_</name></member>
@@ -597,17 +618,24 @@
     <member refid="classendstone_1_1ICancellable_1a65036acf5f2520cb11d833b4a4daee29" kind="function"><name>cancel</name></member>
   </compound>
   <compound refid="classendstone_1_1Image" kind="class"><name>endstone::Image</name>
+    <member refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kind="enum"><name>Type</name></member>
+    <member refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba4bbb8f967da6d1a610596d7257179c2b" kind="enumvalue"><name>Invalid</name></member>
+    <member refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kind="enumvalue"><name>Grayscale</name></member>
+    <member refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kind="enumvalue"><name>RGB</name></member>
+    <member refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kind="enumvalue"><name>RGBA</name></member>
+    <member refid="classendstone_1_1Image_1adbbf675bb89a2b6595c5d9364afec233" kind="variable"><name>type_</name></member>
     <member refid="classendstone_1_1Image_1a432c905a350795e507e4c5ec20c46d3c" kind="variable"><name>width_</name></member>
     <member refid="classendstone_1_1Image_1ac756b938c6e000492398ab4137e7a15a" kind="variable"><name>height_</name></member>
     <member refid="classendstone_1_1Image_1abce3555f620032b2ae87b7098219257f" kind="variable"><name>data_</name></member>
-    <member refid="classendstone_1_1Image_1a0dfc422b1f2cc6a7e5ffb7c69d5fbd51" kind="function"><name>Image</name></member>
+    <member refid="classendstone_1_1Image_1a312c38a53a5e27f6b10c4d0e62f1f630" kind="function"><name>Image</name></member>
     <member refid="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" kind="function"><name>getWidth</name></member>
     <member refid="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" kind="function"><name>getHeight</name></member>
+    <member refid="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" kind="function"><name>getDepth</name></member>
     <member refid="classendstone_1_1Image_1a58311542846d5ed447a69f2c17d06d6c" kind="function"><name>getColor</name></member>
     <member refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" kind="function"><name>setColor</name></member>
     <member refid="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" kind="function"><name>getData</name></member>
-    <member refid="classendstone_1_1Image_1a7b4153fc26db1441b453678e29f5f92a" kind="function"><name>Image</name></member>
-    <member refid="classendstone_1_1Image_1a7a3782033f0bfdb6b297dc58604db03f" kind="function"><name>fromBuffer</name></member>
+    <member refid="classendstone_1_1Image_1adb854b500bb55257e067e3232c8511c2" kind="function"><name>Image</name></member>
+    <member refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" kind="function"><name>fromBuffer</name></member>
   </compound>
   <compound refid="classendstone_1_1Inventory" kind="class"><name>endstone::Inventory</name>
     <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" kind="function"><name>~Inventory</name></member>
@@ -802,17 +830,22 @@
     <member refid="classendstone_1_1MapCanvas_1a78d8511f22478ee4d575b2386dd04f2b" kind="function"><name>setPixelColor</name></member>
     <member refid="classendstone_1_1MapCanvas_1a62449e7abb0b7fe0fb4c6913aba65409" kind="function"><name>getPixelColor</name></member>
     <member refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" kind="function"><name>getBasePixelColor</name></member>
+    <member refid="classendstone_1_1MapCanvas_1aeda347adb5b53f59d6a06288fecd8e03" kind="function"><name>setPixel</name></member>
+    <member refid="classendstone_1_1MapCanvas_1ac89828d05275822fc1d4f22abb556f76" kind="function"><name>getPixel</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a6fa7b6cbe5a37fc5784491b64f83c3cb" kind="function"><name>getBasePixel</name></member>
     <member refid="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" kind="function"><name>drawImage</name></member>
   </compound>
   <compound refid="classendstone_1_1MapMeta" kind="class"><name>endstone::MapMeta</name>
   </compound>
   <compound refid="classendstone_1_1MapRenderer" kind="class"><name>endstone::MapRenderer</name>
+    <member refid="classendstone_1_1MapRenderer_1a241417d1788753148454dc43c62db045" kind="friend"><name>core::EndstoneMapView</name></member>
     <member refid="classendstone_1_1MapRenderer_1ac13cebc8a7857f8cd6e3bef11f34bace" kind="variable"><name>is_contextual_</name></member>
     <member refid="classendstone_1_1MapRenderer_1ac44bbcfebbdd168c39e5653ab03805ba" kind="function"><name>MapRenderer</name></member>
     <member refid="classendstone_1_1MapRenderer_1a8772440cd8520c99a6ab6b3c5f4d1cbc" kind="function"><name>~MapRenderer</name></member>
     <member refid="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" kind="function"><name>isContextual</name></member>
     <member refid="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" kind="function"><name>initialize</name></member>
     <member refid="classendstone_1_1MapRenderer_1a2ffd5d14ab9ff49f698f187b14159778" kind="function"><name>render</name></member>
+    <member refid="classendstone_1_1MapRenderer_1a6c4589d423e45ff060a37cb4f7e7a0c9" kind="function"><name>isEndstoneMapRenderer</name></member>
   </compound>
   <compound refid="classendstone_1_1MapView" kind="class"><name>endstone::MapView</name>
     <member refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" kind="enum"><name>Scale</name></member>
@@ -831,9 +864,9 @@
     <member refid="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" kind="function"><name>setCenterX</name></member>
     <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" kind="function"><name>setCenterZ</name></member>
     <member refid="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" kind="function"><name>getDimension</name></member>
-    <member refid="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" kind="function"><name>setDimension</name></member>
+    <member refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" kind="function"><name>setDimension</name></member>
     <member refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" kind="function"><name>getRenderers</name></member>
-    <member refid="classendstone_1_1MapView_1ad0eaecd9cf1b5fb0a8fb373c7c828aa6" kind="function"><name>addRenderer</name></member>
+    <member refid="classendstone_1_1MapView_1aed4428ea53012e4e4a8dda2c4ce3c0c9" kind="function"><name>addRenderer</name></member>
     <member refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" kind="function"><name>removeRenderer</name></member>
     <member refid="classendstone_1_1MapView_1ab94f8ff90f7ecef5e313f40696a993b8" kind="function"><name>isUnlimitedTracking</name></member>
     <member refid="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" kind="function"><name>setUnlimitedTracking</name></member>

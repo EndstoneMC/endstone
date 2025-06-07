@@ -2709,6 +2709,9 @@ For latest updates join the chat on
 <li><strong>addBan</strong> (<a href="../classendstone_1_1BanList/"><strong>endstone::BanList</strong></a>, <a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>, <a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>addFlag</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>addPlayer</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>asBGR</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
+<li><strong>asRGB</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
+<li><strong>asRGBA</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
 <li><strong>allowChangesFrom</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>asPluginCommand</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>, <a href="../classendstone_1_1PluginCommand/"><strong>endstone::PluginCommand</strong></a>)</li>
 <li><strong>asCommandSender</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>, <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
@@ -2806,6 +2809,9 @@ For latest updates join the chat on
 </ul>
 <h2 id="f">f<a class="headerlink" href="#f" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>fromBGR</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
+<li><strong>fromRGB</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
+<li><strong>fromRGBA</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
 <li><strong>Form</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>fromBuffer</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
 <li><strong>first</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
@@ -2896,6 +2902,7 @@ For latest updates join the chat on
 <li><strong>getPriority</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>getOnClose</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>getHandlers</strong> (<a href="../classendstone_1_1HandlerList/"><strong>endstone::HandlerList</strong></a>)</li>
+<li><strong>getDepth</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
 <li><strong>getHeight</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
 <li><strong>getWidth</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
 <li><strong>getContents</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
@@ -2918,8 +2925,10 @@ For latest updates join the chat on
 <li><strong>getTime</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>getPitch</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
 <li><strong>getYaw</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
+<li><strong>getBasePixel</strong> (<a href="../classendstone_1_1MapCanvas/"><strong>endstone::MapCanvas</strong></a>)</li>
 <li><strong>getBasePixelColor</strong> (<a href="../classendstone_1_1MapCanvas/"><strong>endstone::MapCanvas</strong></a>)</li>
 <li><strong>getMapView</strong> (<a href="../classendstone_1_1MapCanvas/"><strong>endstone::MapCanvas</strong></a>)</li>
+<li><strong>getPixel</strong> (<a href="../classendstone_1_1MapCanvas/"><strong>endstone::MapCanvas</strong></a>)</li>
 <li><strong>getPixelColor</strong> (<a href="../classendstone_1_1MapCanvas/"><strong>endstone::MapCanvas</strong></a>)</li>
 <li><strong>getCenterX</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
 <li><strong>getCenterZ</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
@@ -3111,6 +3120,7 @@ For latest updates join the chat on
 <li><strong>isEnabledFor</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
 <li><strong>initialize</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
 <li><strong>isContextual</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
+<li><strong>isEndstoneMapRenderer</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
 <li><strong>isLocked</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
 <li><strong>isUnlimitedTracking</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
 <li><strong>isVirtual</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
@@ -3161,10 +3171,10 @@ For latest updates join the chat on
 </ul>
 <h2 id="o">o<a class="headerlink" href="#o" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>operator!=</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a>, <a href="../classendstone_1_1NamespacedKey/"><strong>endstone::NamespacedKey</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
+<li><strong>operator==</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a>, <a href="../classendstone_1_1NamespacedKey/"><strong>endstone::NamespacedKey</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
 <li><strong>onCommand</strong> (<a href="../classendstone_1_1CommandExecutor/"><strong>endstone::CommandExecutor</strong></a>)</li>
 <li><strong>operator=</strong> (<a href="../classendstone_1_1CommandMap/"><strong>endstone::CommandMap</strong></a>, <a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>, <a href="../classendstone_1_1PluginLoader/"><strong>endstone::PluginLoader</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>, <a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
-<li><strong>operator!=</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a>, <a href="../classendstone_1_1NamespacedKey/"><strong>endstone::NamespacedKey</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
-<li><strong>operator==</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a>, <a href="../classendstone_1_1NamespacedKey/"><strong>endstone::NamespacedKey</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
 <li><strong>onDisable</strong> (<a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>)</li>
 <li><strong>onEnable</strong> (<a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>)</li>
 <li><strong>onLoad</strong> (<a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>)</li>
@@ -3282,6 +3292,10 @@ For latest updates join the chat on
 <li><strong>setOnClick</strong> (<a href="../classendstone_1_1Button/"><strong>endstone::Button</strong></a>)</li>
 <li><strong>setText</strong> (<a href="../classendstone_1_1Button/"><strong>endstone::Button</strong></a>, <a href="../classendstone_1_1Label/"><strong>endstone::Label</strong></a>)</li>
 <li><strong>setCancelled</strong> (<a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a>, <a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>)</li>
+<li><strong>setAlpha</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
+<li><strong>setBlue</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
+<li><strong>setGreen</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
+<li><strong>setRed</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>)</li>
 <li><strong>setAliases</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>setDescription</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>, <a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>setName</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
@@ -3307,6 +3321,7 @@ For latest updates join the chat on
 <li><strong>setPitch</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
 <li><strong>setYaw</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
 <li><strong>setLevel</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
+<li><strong>setPixel</strong> (<a href="../classendstone_1_1MapCanvas/"><strong>endstone::MapCanvas</strong></a>)</li>
 <li><strong>setPixelColor</strong> (<a href="../classendstone_1_1MapCanvas/"><strong>endstone::MapCanvas</strong></a>)</li>
 <li><strong>setCenterX</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
 <li><strong>setCenterZ</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>

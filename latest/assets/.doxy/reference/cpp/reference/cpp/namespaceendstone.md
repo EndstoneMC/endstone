@@ -61,6 +61,7 @@ _Represents a button with text and an optional icon._
 | class | [**Chunk**](classendstone_1_1Chunk.md) <br>_Represents a chunk of blocks._  |
 | class | [**Color**](classendstone_1_1Color.md) <br>_Represents a color with red, green, blue, and alpha components._  |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
+| class | [**Colors**](classendstone_1_1Colors.md) <br> |
 | class | [**Command**](classendstone_1_1Command.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._ |
 | class | [**CommandExecutor**](classendstone_1_1CommandExecutor.md) <br>_Represents a class which contains a single method for executing commands._  |
 | class | [**CommandMap**](classendstone_1_1CommandMap.md) <br>_Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._ |

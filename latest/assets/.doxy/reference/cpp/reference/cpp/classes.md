@@ -64,6 +64,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ColorFormat**](structendstone_1_1ColorFormat.md)
 ([**endstone**](namespaceendstone.md))
+* [**Colors**](classendstone_1_1Colors.md)
+([**endstone**](namespaceendstone.md))
 * [**Command**](classendstone_1_1Command.md)
 ([**endstone**](namespaceendstone.md))
 * [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)

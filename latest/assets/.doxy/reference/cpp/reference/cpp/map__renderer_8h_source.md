@@ -31,23 +31,35 @@ namespace endstone {
 class MapView;
 class Player;
 
+namespace core {
+class EndstoneMapView;
+}
+
 class MapRenderer {
 public:
- explicit MapRenderer(const bool is_contextual = false) : is_contextual_(is_contextual) {}
+    explicit MapRenderer(const bool is_contextual = false) : is_contextual_(is_contextual) {}
 
- virtual ~MapRenderer() = default;
-
- [[nodiscard]] bool isContextual() const
- {
-  return is_contextual_;
- }
-
- virtual void initialize(MapView &map) {}
-
- virtual void render(MapView &map, MapCanvas &canvas, Player &player) = 0;
+    virtual ~MapRenderer() = default;
 
 private:
- bool is_contextual_;
+    friend class core::EndstoneMapView;
+    [[nodiscard]] virtual bool isEndstoneMapRenderer() const
+    {
+        return false;
+    }
+
+public:
+    [[nodiscard]] bool isContextual() const
+    {
+        return is_contextual_;
+    }
+
+    virtual void initialize(MapView &map) {}
+
+    virtual void render(MapView &map, MapCanvas &canvas, Player &player) = 0;
+
+private:
+    bool is_contextual_;
 };
 
 }  // namespace endstone

@@ -209,6 +209,23 @@ virtual endstone::MapRenderer::~MapRenderer () = default
 
 
 
+<hr>## Friends Documentation
+
+
+
+
+
+### friend EndstoneMapView 
+
+```C++
+class endstone::MapRenderer::EndstoneMapView (
+    core::EndstoneMapView
+) 
+```
+
+
+
+
 <hr>
 
 ------------------------------

@@ -28,6 +28,7 @@
     <innerclass refid="classendstone_1_1Chunk" prot="public">endstone::Chunk</innerclass>
     <innerclass refid="classendstone_1_1Color" prot="public">endstone::Color</innerclass>
     <innerclass refid="structendstone_1_1ColorFormat" prot="public">endstone::ColorFormat</innerclass>
+    <innerclass refid="classendstone_1_1Colors" prot="public">endstone::Colors</innerclass>
     <innerclass refid="classendstone_1_1Command" prot="public">endstone::Command</innerclass>
     <innerclass refid="classendstone_1_1CommandExecutor" prot="public">endstone::CommandExecutor</innerclass>
     <innerclass refid="classendstone_1_1CommandMap" prot="public">endstone::CommandMap</innerclass>

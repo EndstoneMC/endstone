@@ -269,14 +269,14 @@
         </inbodydescription>
         <location file="include/endstone/map/map_view.h" line="104" column="24"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::MapView::setDimension</definition>
-        <argsstring>(Dimension *dimension)=0</argsstring>
+        <argsstring>(const Dimension &amp;dimension)=0</argsstring>
         <name>setDimension</name>
         <qualifiedname>endstone::MapView::setDimension</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
+          <type>const <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
           <declname>dimension</declname>
         </param>
         <briefdescription>
@@ -316,14 +316,14 @@
         </inbodydescription>
         <location file="include/endstone/map/map_view.h" line="118" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapView_1ad0eaecd9cf1b5fb0a8fb373c7c828aa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1MapView_1aed4428ea53012e4e4a8dda2c4ce3c0c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::MapView::addRenderer</definition>
-        <argsstring>(MapRenderer &amp;renderer)=0</argsstring>
+        <argsstring>(std::unique_ptr&lt; MapRenderer &gt; renderer)=0</argsstring>
         <name>addRenderer</name>
         <qualifiedname>endstone::MapView::addRenderer</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> &amp;</type>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> &gt;</type>
           <declname>renderer</declname>
         </param>
         <briefdescription>
@@ -478,7 +478,7 @@
     </detaileddescription>
     <location file="include/endstone/map/map_view.h" line="26" column="1" bodyfile="include/endstone/map/map_view.h" bodystart="26" bodyend="165"/>
     <listofallmembers>
-      <member refid="classendstone_1_1MapView_1ad0eaecd9cf1b5fb0a8fb373c7c828aa6" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>addRenderer</name></member>
+      <member refid="classendstone_1_1MapView_1aed4428ea53012e4e4a8dda2c4ce3c0c9" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>addRenderer</name></member>
       <member refid="classendstone_1_1MapView_1a9a42abd0ee68d6d858f29b313d334d99" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getCenterX</name></member>
       <member refid="classendstone_1_1MapView_1a730857d1da98ce90d93e6ef1da89af2d" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getCenterZ</name></member>
       <member refid="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getDimension</name></member>
@@ -492,7 +492,7 @@
       <member refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" prot="public" virt="non-virtual"><scope>endstone::MapView</scope><name>Scale</name></member>
       <member refid="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setCenterX</name></member>
       <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setCenterZ</name></member>
-      <member refid="classendstone_1_1MapView_1a7714504ec61de1eea563d72ea9fea2fb" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setDimension</name></member>
+      <member refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setDimension</name></member>
       <member refid="classendstone_1_1MapView_1ae265a39be350ec1e782a8035f867bda9" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setLocked</name></member>
       <member refid="classendstone_1_1MapView_1ac539ec1fa7f4055f8a662b6897f25073" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setScale</name></member>
       <member refid="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setUnlimitedTracking</name></member>

@@ -31,12 +31,21 @@
 namespace endstone {
 class Image {
 public:
-    explicit Image(const int width, const int height) : width_(width), height_(height), data_(width * height * 4, '\0')
+    enum class Type {
+        Invalid = 0,
+        Grayscale = 1,
+        RGB = 3,
+        RGBA = 4,
+    };
+
+    explicit Image(const Type type, const int width, const int height)
+        : type_(type), width_(width), height_(height), data_(width * height * 4, '\0')
     {
     }
 
 private:
-    Image(const int width, const int height, const std::string_view data) : width_(width), height_(height), data_(data)
+    Image(const Type type, const int width, const int height, const std::string_view data)
+        : type_(type), width_(width), height_(height), data_(data)
     {
     }
 
@@ -51,20 +60,66 @@ public:
         return height_;
     }
 
+    [[nodiscard]] int getDepth() const
+    {
+        switch (type_) {
+        case Type::Grayscale:
+            return 1;
+        case Type::RGB:
+            return 3;
+        case Type::RGBA:
+            return 4;
+        default:
+            return 0;
+        }
+    }
+
     [[nodiscard]] Color getColor(const int x, const int y) const
     {
         const size_t idx = (static_cast<size_t>(y) * width_ + x) * 4;
-        return Color(static_cast<uint8_t>(data_[idx]), static_cast<uint8_t>(data_[idx + 1]),
-                     static_cast<uint8_t>(data_[idx + 2]), static_cast<uint8_t>(data_[idx + 3]));
+        std::uint8_t r = 0, g = 0, b = 0, a = 255;
+        switch (type_) {
+        case Type::Grayscale:
+            r = g = b = static_cast<uint8_t>(data_[idx]);
+            break;
+        case Type::RGB:
+            r = static_cast<uint8_t>(data_[idx]);
+            g = static_cast<uint8_t>(data_[idx + 1]);
+            b = static_cast<uint8_t>(data_[idx + 2]);
+            break;
+        case Type::RGBA:
+            r = static_cast<uint8_t>(data_[idx]);
+            g = static_cast<uint8_t>(data_[idx + 1]);
+            b = static_cast<uint8_t>(data_[idx + 2]);
+            a = static_cast<uint8_t>(data_[idx + 3]);
+            break;
+        default:
+            break;
+        }
+        return {r, g, b, a};
     }
 
     void setColor(const int x, const int y, const Color color)
     {
         const size_t idx = (static_cast<size_t>(y) * width_ + x) * 4;
-        data_[idx + 0] = static_cast<char>(color.getRed());
-        data_[idx + 1] = static_cast<char>(color.getGreen());
-        data_[idx + 2] = static_cast<char>(color.getBlue());
-        data_[idx + 3] = static_cast<char>(color.getAlpha());
+        switch (type_) {
+        case Type::Grayscale:
+            data_[idx] = static_cast<char>(color.getRed());
+            break;
+        case Type::RGB:
+            data_[idx] = static_cast<char>(color.getRed());
+            data_[idx + 1] = static_cast<char>(color.getGreen());
+            data_[idx + 2] = static_cast<char>(color.getBlue());
+            break;
+        case Type::RGBA:
+            data_[idx] = static_cast<char>(color.getRed());
+            data_[idx + 1] = static_cast<char>(color.getGreen());
+            data_[idx + 2] = static_cast<char>(color.getBlue());
+            data_[idx + 3] = static_cast<char>(color.getAlpha());
+            break;
+        default:
+            return;
+        }
     }
 
     [[nodiscard]] std::string_view getData() const
@@ -72,16 +127,32 @@ public:
         return data_;
     }
 
-    static Result<Image> fromBuffer(const int width, const int height, std::string_view buffer)
+    static Result<Image> fromBuffer(Type type, const int width, const int height, std::string_view buffer)
     {
-        ENDSTONE_CHECK(width > 0 && height > 0, "Width and height must be positive");
-        ENDSTONE_CHECKF(buffer.size() == width * height * 4,
-                        "Buffer size {} does not match expected size {} (width * height * 4)", buffer.size(),
-                        width * height * 4);
-        return Image(width, height, buffer);
+        size_t depth = 0;
+        switch (type) {
+        case Type::Grayscale:
+            depth = 1;
+            break;
+        case Type::RGB:
+            depth = 3;
+            break;
+        case Type::RGBA:
+            depth = 4;
+            break;
+        default:
+            return nonstd::make_unexpected("Image::fromBuffer: invalid image type");
+        }
+
+        ENDSTONE_CHECKF(buffer.size() == width * height * depth,
+                        "Image::fromBuffer: invalid buffer size, got {} bytes, expected {} bytes.", buffer.size(),
+                        width * height * depth);
+
+        return Image(type, width, height, buffer);
     }
 
 private:
+    Type type_;
     int width_;
     int height_;
     std::string data_;

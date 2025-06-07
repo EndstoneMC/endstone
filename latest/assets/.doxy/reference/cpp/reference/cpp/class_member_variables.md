@@ -6,7 +6,7 @@
 ## a
 
 * **actor\_** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
-* **a\_** ([**endstone::Color**](classendstone_1_1Color.md))
+* **alpha\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **aliases\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
@@ -22,10 +22,12 @@
 
 * **blocks\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **block\_** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md))
-* **b\_** ([**endstone::Color**](classendstone_1_1Color.md))
+* **BIT\_MASK** ([**endstone::Color**](classendstone_1_1Color.md))
+* **blue\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Black** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Blue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Bold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **BLACK** ([**endstone::Colors**](classendstone_1_1Colors.md))
 * **baked\_handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **button1\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **button2\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
@@ -58,6 +60,7 @@
 * **damage\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md))
 * **damage\_source\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **DateFormat** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
+* **DEFAULT\_ALPHA** ([**endstone::Color**](classendstone_1_1Color.md))
 * **DarkAqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **DarkBlue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **DarkGray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -100,7 +103,7 @@
 
 ## g
 
-* **g\_** ([**endstone::Color**](classendstone_1_1Color.md))
+* **green\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Gold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Gray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Green** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -239,7 +242,7 @@
 * **raw\_knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **reason\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md))
 * **recipients\_** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
-* **r\_** ([**endstone::Color**](classendstone_1_1Color.md))
+* **red\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Red** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Reset** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **removed\_** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
@@ -264,7 +267,7 @@
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **text\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
-* **type\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **type\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 
 
 ## u
@@ -283,6 +286,7 @@
 ## w
 
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **WHITE** ([**endstone::Colors**](classendstone_1_1Colors.md))
 * **width\_** ([**endstone::Image**](classendstone_1_1Image.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **website** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
