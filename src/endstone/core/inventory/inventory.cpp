@@ -41,11 +41,11 @@ void EndstoneInventory::setItem(int index, const ItemStack *item)
     container_.setItemWithForceBalance(index, item_stack, true);
 }
 
-void EndstoneInventory::addItem(const ItemStack &item)
-{
-    auto item_stack = EndstoneItemStack::toMinecraft(&item);
-    container_.addItemWithForceBalance(item_stack);
-}
+// void EndstoneInventory::addItem(const ItemStack &item)
+// {
+//     auto item_stack = EndstoneItemStack::toMinecraft(&item);
+//     container_.addItemWithForceBalance(item_stack);
+// }
 
 std::vector<std::unique_ptr<ItemStack>> EndstoneInventory::getContents() const
 {

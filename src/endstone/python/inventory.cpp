@@ -129,21 +129,94 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Returns the ItemStack found in the slot at the given index")
         .def("set_item", &Inventory::setItem, py::arg("index"), py::arg("item"),
              "Stores the ItemStack at the given index of the inventory.")
-        .def("add_item", &Inventory::addItem, py::arg("item"),
-             "Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as "
-             "well as it can.")
-        .def_property_readonly("contents", &Inventory::getContents, "Returns all ItemStacks from the inventory")
-        .def("first", &Inventory::first, py::arg("item"),
-             "Returns the first slot in the inventory containing an ItemStack with the given stack.")
+        .def(
+            "add_item",
+            [](Inventory &self, const py::args &args) {
+                std::vector<const ItemStack *> items;
+                items.reserve(args.size());
+                for (auto obj : args) {
+                    items.push_back(obj.cast<const ItemStack *>());
+                }
+                return self.addItem(items);
+            },
+            "Stores the given ItemStacks in the inventory.\n"
+            "This will try to fill existing stacks and empty slots as well as it can.\n\n"
+            "The returned map contains what it couldn't store, where the key is the index, and the value is the "
+            "ItemStack.\nIf all items are stored, it will return an empty dict.")
+        .def(
+            "remove_item",
+            [](Inventory &self, const py::args &args) {
+                std::vector<const ItemStack *> items;
+                items.reserve(args.size());
+                for (auto obj : args) {
+                    items.push_back(obj.cast<const ItemStack *>());
+                }
+                return self.removeItem(items);
+            },
+            "Removes the given ItemStacks from the inventory.\n"
+            "It will try to remove 'as much as possible' from the types and amounts you give as arguments.\n\n"
+            "The returned HashMap contains what it couldn't remove, where the key is the index, and the value is the "
+            "ItemStack.\nIf all the given ItemStacks are removed, it will return an empty dict.")
+        .def_property("contents", &Inventory::getContents, &Inventory::setContents,
+                      "Returns all ItemStacks from the inventory")
+        .def("contains", py::overload_cast<const ItemStack &, int>(&Inventory::contains, py::const_),
+             "Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.\n"
+             "An ItemStack only counts if both the type and the amount of the stack match.",
+             py::arg("item"), py::arg("amount"))
+        .def("contains", py::overload_cast<const ItemStack &>(&Inventory::contains, py::const_),
+             "Checks if the inventory contains any ItemStacks with the given ItemStack.\n"
+             "This will only return true if both the type and the amount of the stack match.",
+             py::arg("item"))
+        .def("contains", py::overload_cast<const std::string &>(&Inventory::contains, py::const_),
+             "Checks if the inventory contains any ItemStacks with the given ItemType.", py::arg("type"))
+        .def("contains_at_least", py::overload_cast<const ItemStack &, int>(&Inventory::containsAtLeast, py::const_),
+             "Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least "
+             "the minimum amount specified.",
+             py::arg("item"), py::arg("amount"))
+        .def("contains_at_least", py::overload_cast<const std::string &, int>(&Inventory::containsAtLeast, py::const_),
+             "Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum "
+             "amount specified.",
+             py::arg("type"), py::arg("amount"))
+        .def("all", py::overload_cast<const ItemStack &>(&Inventory::all, py::const_), py::arg("item"),
+             "Finds all slots in the inventory containing any ItemStacks with the given ItemStack.\n"
+             "This will only match slots if both the type and the amount of the stack match\n"
+             "The returned map contains entries where, the key is the slot index, and the value is the "
+             "ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.")
+        .def("all", py::overload_cast<const std::string &>(&Inventory::all, py::const_), py::arg("type"),
+             "Finds all slots in the inventory containing any ItemStacks with the given ItemType.\n"
+             "The returned map contains entries where, the key is the slot index, and the value is the "
+             "ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.")
+        .def("first", py::overload_cast<const ItemStack &>(&Inventory::first, py::const_), py::arg("item"),
+             "Returns the first slot in the inventory containing an ItemStack with the given stack.\n"
+             "This will only match slots if both the type and the amount of the stack match\n"
+             "The returned map contains entries where, the key is the slot index, and the value is the "
+             "ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.")
+        .def("first", py::overload_cast<const std::string &>(&Inventory::first, py::const_), py::arg("type"),
+             "Finds the first slot in the inventory containing an ItemStack with the given ItemType.\n"
+             "The returned map contains entries where, the key is the slot index, and the value is the "
+             "ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.")
+        .def_property_readonly("first_empty", &Inventory::firstEmpty, "Returns the first empty Slot.")
         .def_property_readonly("is_empty", &Inventory::isEmpty,
                                " Check whether this inventory is empty. An inventory is considered to be empty if "
                                "there are no ItemStacks in any slot of this inventory.")
-        .def("clear", &Inventory::clear, "Clears out the whole Inventory.")
+        .def("add", &Inventory::add, "Add the given ItemStack to the inventory.", py::arg("item"))
+        .def("remove", py::overload_cast<const ItemStack &>(&Inventory::remove), py::arg("item"),
+             "Removes all stacks in the inventory matching the given stack.\n"
+             "This will only match a slot if both the type and the amount of the stack match")
+        .def("remove", py::overload_cast<const std::string &>(&Inventory::remove), py::arg("type"),
+             "Removes all stacks in the inventory matching the given ItemType.")
+        .def("clear", py::overload_cast<int>(&Inventory::clear), py::arg("index"),
+             "Clears out a particular slot in the index.")
+        .def("clear", py::overload_cast<>(&Inventory::clear), "Clears out the whole Inventory.")
         .def("__len__", &Inventory::getSize, "Returns the size of the inventory")
-        .def("__get_item__", &Inventory::getItem, py::arg("index"),
+        .def("__getitem__", &Inventory::getItem, py::arg("index"),
              "Returns the ItemStack found in the slot at the given index")
-        .def("__set_item__", &Inventory::setItem, py::arg("index"), py::arg("item"),
-             "Stores the ItemStack at the given index of the inventory.");
+        .def("__setitem__", &Inventory::setItem, py::arg("index"), py::arg("item"),
+             "Stores the ItemStack at the given index of the inventory.")
+        .def("__contains__", py::overload_cast<const ItemStack &>(&Inventory::contains, py::const_),
+             "Checks if the inventory contains any ItemStacks with the given ItemStack.", py::arg("item"))
+        .def("__contains__", py::overload_cast<const std::string &>(&Inventory::contains, py::const_),
+             "Checks if the inventory contains any ItemStacks with the given ItemType.", py::arg("type"));
 
     py::class_<PlayerInventory, Inventory>(
         m, "PlayerInventory",

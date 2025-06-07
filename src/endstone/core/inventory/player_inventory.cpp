@@ -39,10 +39,11 @@ void EndstonePlayerInventory::setItem(int index, const ItemStack *item)
     holder_.sendInventory(false);
 }
 
-void EndstonePlayerInventory::addItem(const ItemStack &item)
+std::unordered_map<int, const ItemStack *> EndstonePlayerInventory::addItem(std::vector<ItemStack const *> items)
 {
-    EndstoneInventory::addItem(item);
+    auto result = EndstoneInventory::addItem(items);
     holder_.sendInventory(false);
+    return result;
 }
 
 std::vector<std::unique_ptr<ItemStack>> EndstonePlayerInventory::getContents() const
