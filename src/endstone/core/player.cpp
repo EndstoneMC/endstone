@@ -906,7 +906,7 @@ void EndstonePlayer::initFromConnectionRequest(
                 auto skin_id = req->getData("SkinId").asString();
                 auto skin_height = req->getData("SkinImageHeight").asInt();
                 auto skin_width = req->getData("SkinImageWidth").asInt();
-                auto skin_image = Image::fromBuffer(skin_width, skin_height,
+                auto skin_image = Image::fromBuffer(Image::Type::RGBA, skin_width, skin_height,
                                                     base64_decode(req->getData("SkinData").asString()).value_or(""));
                 if (!skin_image) {
                     server_.getLogger().error("Player {} has an invalid skin: {}", getName(), skin_image.error());
@@ -916,7 +916,7 @@ void EndstonePlayer::initFromConnectionRequest(
                 auto cape_id = req->getData("CapeId").asString();
                 auto cape_height = req->getData("CapeImageHeight").asInt();
                 auto cape_width = req->getData("CapeImageWidth").asInt();
-                auto cape_image = Image::fromBuffer(skin_width, skin_height,
+                auto cape_image = Image::fromBuffer(Image::Type::RGBA, skin_width, skin_height,
                                                     base64_decode(req->getData("CapeData").asString()).value_or(""));
                 if (cape_id.empty() || !cape_image) {
                     skin_ = std::make_unique<Skin>(skin_id, skin_image.value());

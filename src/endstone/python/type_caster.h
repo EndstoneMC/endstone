@@ -124,6 +124,8 @@ public:
 template <>
 class type_caster<endstone::Image> {
 public:
+    explicit type_caster() : value(endstone::Image::Type::Invalid, 0, 0) {}
+
     // Convert from Python -> C++
     bool load(handle src, bool)
     {
@@ -220,6 +222,8 @@ public:
 template <>
 class type_caster<endstone::Color> {
 public:
+    explicit type_caster() : value(0, 0, 0) {}
+
     // Python -> C++
     bool load(handle src, bool)
     {
