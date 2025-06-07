@@ -15,7 +15,8 @@
 #pragma once
 
 #include "bedrock/world/inventory/transaction/inventory_action.h"
-#include "bedrock/world/inventory/transaction/inventory_transaction.h"
+
+class InventoryTransaction;
 
 class InventoryTransactionManager {
 public:
