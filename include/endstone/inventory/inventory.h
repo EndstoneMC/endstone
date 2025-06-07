@@ -144,7 +144,7 @@ public:
      *
      * @return true if an ItemStack is found with the given ItemType
      */
-    [[nodiscard]] virtual bool contains(const std::string &type) const = 0;
+    [[nodiscard]] virtual Result<bool> contains(const std::string &type) const = 0;
 
     /**
      * @brief Checks if the inventory contains any ItemStacks with the given ItemStack.
@@ -177,7 +177,7 @@ public:
      *
      * @return true if amount is less than 1, true if enough ItemStacks were found to add to the given amount
      */
-    [[nodiscard]] virtual bool containsAtLeast(const std::string &type, int amount) const = 0;
+    [[nodiscard]] virtual Result<bool> containsAtLeast(const std::string &type, int amount) const = 0;
 
     /**
      * @brief Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the
@@ -200,7 +200,8 @@ public:
      *
      * @return A map from slot indexes to item at index
      */
-    [[nodiscard]] virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const std::string &type) const = 0;
+    [[nodiscard]] virtual Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> all(
+        const std::string &type) const = 0;
 
     /**
      * @brief Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
@@ -223,7 +224,7 @@ public:
      *
      * @return The slot index of the given ItemType or -1 if not found
      */
-    [[nodiscard]] virtual int first(const std::string &type) const = 0;
+    [[nodiscard]] virtual Result<int> first(const std::string &type) const = 0;
 
     /**
      * @brief Returns the first slot in the inventory containing an ItemStack with the given stack.
@@ -250,20 +251,11 @@ public:
     [[nodiscard]] virtual bool isEmpty() const = 0;
 
     /**
-     * @brief Add the given ItemStack to the inventory.
-     *
-     * @param item The ItemStack to add
-     *
-     * @return true if the item is added, false otherwise
-     */
-    virtual bool add(const ItemStack &item) = 0;
-
-    /**
      * @brief Removes all stacks in the inventory matching the given ItemType.
      *
      * @param type The ItemType to remove
      */
-    virtual void remove(const std::string &type) = 0;
+    virtual Result<void> remove(const std::string &type) = 0;
 
     /**
      * @brief Removes all stacks in the inventory matching the given stack.

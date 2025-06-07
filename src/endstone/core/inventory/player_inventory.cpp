@@ -36,14 +36,16 @@ std::unique_ptr<ItemStack> EndstonePlayerInventory::getItem(int index) const
 void EndstonePlayerInventory::setItem(int index, const ItemStack *item)
 {
     EndstoneInventory::setItem(index, item);
-    holder_.sendInventory(false);
 }
 
 std::unordered_map<int, const ItemStack *> EndstonePlayerInventory::addItem(std::vector<ItemStack const *> items)
 {
-    auto result = EndstoneInventory::addItem(items);
-    holder_.sendInventory(false);
-    return result;
+    return EndstoneInventory::addItem(items);
+}
+
+std::unordered_map<int, const ItemStack *> EndstonePlayerInventory::removeItem(std::vector<ItemStack const *> items)
+{
+    return EndstoneInventory::removeItem(items);
 }
 
 std::vector<std::unique_ptr<ItemStack>> EndstonePlayerInventory::getContents() const
@@ -51,9 +53,74 @@ std::vector<std::unique_ptr<ItemStack>> EndstonePlayerInventory::getContents() c
     return EndstoneInventory::getContents();
 }
 
+Result<void> EndstonePlayerInventory::setContents(std::vector<ItemStack const *> items)
+{
+    return EndstoneInventory::setContents(items);
+}
+
+Result<bool> EndstonePlayerInventory::contains(const std::string &type) const
+{
+    return EndstoneInventory::contains(type);
+}
+
+bool EndstonePlayerInventory::contains(const ItemStack &item) const
+{
+    return EndstoneInventory::contains(item);
+}
+
+bool EndstonePlayerInventory::contains(const ItemStack &item, int amount) const
+{
+    return EndstoneInventory::contains(item, amount);
+}
+
+Result<bool> EndstonePlayerInventory::containsAtLeast(const std::string &type, int amount) const
+{
+    return EndstoneInventory::containsAtLeast(type, amount);
+}
+
+bool EndstonePlayerInventory::containsAtLeast(const ItemStack &item, int amount) const
+{
+    return EndstoneInventory::containsAtLeast(item, amount);
+}
+
+Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> EndstonePlayerInventory::all(const std::string &type) const
+{
+    return EndstoneInventory::all(type);
+}
+
+std::unordered_map<int, std::unique_ptr<ItemStack>> EndstonePlayerInventory::all(const ItemStack &item) const
+{
+    return EndstoneInventory::all(item);
+}
+
+Result<int> EndstonePlayerInventory::first(const std::string &type) const
+{
+    return EndstoneInventory::first(type);
+}
+
 int EndstonePlayerInventory::first(const ItemStack &item) const
 {
     return EndstoneInventory::first(item);
+}
+
+int EndstonePlayerInventory::firstEmpty() const
+{
+    return EndstoneInventory::firstEmpty();
+}
+
+Result<void> EndstonePlayerInventory::remove(const std::string &type)
+{
+    return EndstoneInventory::remove(type);
+}
+
+void EndstonePlayerInventory::remove(const ItemStack &item)
+{
+    EndstoneInventory::remove(item);
+}
+
+void EndstonePlayerInventory::clear(int index)
+{
+    EndstoneInventory::clear(index);
 }
 
 bool EndstonePlayerInventory::isEmpty() const
@@ -64,7 +131,6 @@ bool EndstonePlayerInventory::isEmpty() const
 void EndstonePlayerInventory::clear()
 {
     EndstoneInventory::clear();
-    holder_.sendInventory(false);
 }
 
 std::unique_ptr<ItemStack> EndstonePlayerInventory::getHelmet() const

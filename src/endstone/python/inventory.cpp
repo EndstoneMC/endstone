@@ -199,7 +199,6 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property_readonly("is_empty", &Inventory::isEmpty,
                                " Check whether this inventory is empty. An inventory is considered to be empty if "
                                "there are no ItemStacks in any slot of this inventory.")
-        .def("add", &Inventory::add, "Add the given ItemStack to the inventory.", py::arg("item"))
         .def("remove", py::overload_cast<const ItemStack &>(&Inventory::remove), py::arg("item"),
              "Removes all stacks in the inventory matching the given stack.\n"
              "This will only match a slot if both the type and the amount of the stack match")
