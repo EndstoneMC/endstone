@@ -62,10 +62,38 @@ public:
     /**
      * @brief Get a pixel from the layers below this canvas.
      * @param x The x coordinate, from 0 to 127.
+     *
      * @param y The y coordinate, from 0 to 127.
      * @return The color.
      */
     [[nodiscard]] virtual Color getBasePixelColor(int x, int y) const = 0;
+
+    /**
+     * @brief Draw a pixel to the canvas.
+     *
+     * @param x The x coordinate, from 0 to 127.
+     * @param y The y coordinate, from 0 to 127.
+     * @param color The color.
+     */
+    virtual void setPixel(int x, int y, int color) = 0;
+
+    /**
+     * @brief Get a pixel from the canvas.
+     *
+     * @param x The x coordinate, from 0 to 127.
+     * @param y The y coordinate, from 0 to 127.
+     * @return The color.
+     */
+    [[nodiscard]] virtual int getPixel(int x, int y) const = 0;
+
+    /**
+     * @brief Get a pixel from the layers below this canvas.
+     *
+     * @param x The x coordinate, from 0 to 127.
+     * @param y The y coordinate, from 0 to 127.
+     * @return The color.
+     */
+    [[nodiscard]] virtual int getBasePixel(int x, int y) const = 0;
 
     /**
      * @brief Draw an image to the map. The image will be clipped if necessary.
@@ -75,6 +103,8 @@ public:
      * @param image The Image to draw.
      */
     virtual void drawImage(int x, int y, const Image &image) = 0;
+
+    // TODO(map): getCursors and setCursors
 };
 
 }  // namespace endstone

@@ -68,6 +68,8 @@ add_library(endstone_core
         level/chunk.cpp
         level/dimension.cpp
         level/level.cpp
+        map/map_renderer.cpp
+        map/map_view.cpp
         network/data_packet.cpp
         packs/endstone_pack_source.cpp
         permissions/default_permissions.cpp
