@@ -95,7 +95,7 @@ std::vector<MapRenderer *> EndstoneMapView::getRenderers() const
     return result;
 }
 
-void EndstoneMapView::addRenderer(std::unique_ptr<MapRenderer> renderer)
+void EndstoneMapView::addRenderer(std::shared_ptr<MapRenderer> renderer)
 {
     renderer->initialize(*this);
     renderers_.emplace_back(std::move(renderer));
@@ -105,7 +105,7 @@ void EndstoneMapView::addRenderer(std::unique_ptr<MapRenderer> renderer)
 bool EndstoneMapView::removeRenderer(MapRenderer *renderer)
 {
     auto it = std::remove_if(renderers_.begin(), renderers_.end(),
-                             [=](const std::unique_ptr<MapRenderer> &ptr) { return ptr.get() == renderer; });
+                             [=](const std::shared_ptr<MapRenderer> &ptr) { return ptr.get() == renderer; });
     if (it != renderers_.end()) {
         renderers_.erase(it, renderers_.end());
         // TODO(map): clear canvas

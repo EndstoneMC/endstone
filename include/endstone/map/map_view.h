@@ -29,7 +29,7 @@ public:
      * @brief An enum representing all possible scales a map can be set to.
      */
     enum class Scale : uint8_t {
-        Closet = 0,
+        Closest = 0,
         Close = 1,
         Normal = 2,
         Far = 3,
@@ -122,7 +122,7 @@ public:
      *
      * @param renderer The MapRenderer to add.
      */
-    virtual void addRenderer(std::unique_ptr<MapRenderer> renderer) = 0;
+    virtual void addRenderer(std::shared_ptr<MapRenderer> renderer) = 0;
 
     /**
      * @brief Remove a renderer from this map.

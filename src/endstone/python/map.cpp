@@ -53,7 +53,8 @@ void init_map(py::module_ &m)
         .def("draw_image", &MapCanvas::drawImage, py::arg("x"), py::arg("y"), py::arg("image"),
              "Draw an image to the map. The image will be clipped if necessary.");
 
-    py::class_<MapRenderer, PyMapRenderer>(m, "MapRenderer", "Represents a renderer for a map.")
+    py::class_<MapRenderer, PyMapRenderer, std::shared_ptr<MapRenderer>>(m, "MapRenderer",
+                                                                         "Represents a renderer for a map.")
         .def(py::init<bool>(), py::arg("is_contextual") = false,
              "Initialize the map renderer base with the given contextual status.")
         .def("initialize", &MapRenderer::initialize, py::arg("view"), "Initialize this MapRenderer for the given map.")
@@ -61,7 +62,7 @@ void init_map(py::module_ &m)
              "Render to the given map.");
 
     py::enum_<MapView::Scale>(view, "Scale", "An enum representing all possible scales a map can be set to.")
-        .value("CLOSET", MapView::Scale::Closet)
+        .value("CLOSEST", MapView::Scale::Closest)
         .value("CLOSE", MapView::Scale::Close)
         .value("NORMAL", MapView::Scale::Normal)
         .value("FAR", MapView::Scale::Far)
@@ -80,11 +81,11 @@ void init_map(py::module_ &m)
                                "Get a copied list of MapRenderers currently in effect.",
                                py::return_value_policy::reference_internal)
         .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), "Add a renderer to this map.")
-        .def("remove_renderer", &MapView::addRenderer, py::arg("renderer"), "Remove a renderer from this map.")
+        .def("remove_renderer", &MapView::removeRenderer, py::arg("renderer"), "Remove a renderer from this map.")
         .def_property("is_unlimited_tracking", &MapView::isUnlimitedTracking, &MapView::setUnlimitedTracking,
                       "Whether the map will show a smaller position cursor (true), or no position cursor (false) when "
                       "cursor is outside of map's range.")
-        .def_property("locked", &MapView::isUnlimitedTracking, &MapView::setUnlimitedTracking,
+        .def_property("locked", &MapView::isLocked, &MapView::setLocked,
                       "Whether the map is locked or not. A locked map may not be explored further.");
 }
 

@@ -32,7 +32,7 @@ public:
     [[nodiscard]] Dimension *getDimension() const override;
     void setDimension(const Dimension &dimension) override;
     [[nodiscard]] std::vector<MapRenderer *> getRenderers() const override;
-    void addRenderer(std::unique_ptr<MapRenderer> renderer) override;
+    void addRenderer(std::shared_ptr<MapRenderer> renderer) override;
     bool removeRenderer(MapRenderer *renderer) override;
     [[nodiscard]] bool isUnlimitedTracking() const override;
     void setUnlimitedTracking(bool unlimited) override;
@@ -42,7 +42,7 @@ public:
 private:
     bool isContextual() const;
 
-    std::vector<std::unique_ptr<MapRenderer>> renderers_;
+    std::vector<std::shared_ptr<MapRenderer>> renderers_;
     MapItemSavedData &map_;
 };
 }  // namespace endstone::core
