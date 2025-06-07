@@ -62,7 +62,7 @@ public:
     [[nodiscard]] std::unique_ptr<ItemStack> getItemInOffHand() const override;
     void setItemInOffHand(const ItemStack *item) override;
     [[nodiscard]] int getHeldItemSlot() const override;
-    void setHeldItemSlot(int slot) override;
+    Result<void> setHeldItemSlot(int slot) override;
 
 private:
     ::Player &holder_;

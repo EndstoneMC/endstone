@@ -132,11 +132,12 @@ int EndstonePlayerInventory::getHeldItemSlot() const
     return holder_.getSelectedItemSlot();
 }
 
-void EndstonePlayerInventory::setHeldItemSlot(int slot)
+Result<void> EndstonePlayerInventory::setHeldItemSlot(int slot)
 {
-    // TODO: Preconditions.checkArgument(slot >= 0 && slot < PlayerInventory.getSelectionSize(), "Slot (%s) is not
-    //  between 0 and %s inclusive", slot, PlayerInventory.getSelectionSize() - 1);
+    ENDSTONE_CHECKF(slot >= 0 && slot < FillingContainer::HOTBAR_SIZE, "Slot ({}) is not between 0 and {} inclusive",
+                    slot, FillingContainer::HOTBAR_SIZE - 1)
     holder_.setSelectedSlot(slot);
+    return {};
 }
 
 }  // namespace endstone::core
