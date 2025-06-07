@@ -1,14 +1,18 @@
 name: Windows (Portable)
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-    tags:
-      - '*'
-  workflow_dispatch:
+      - stable
+      - v*
+  release:
+    types:
+      - published
 
-permissions: read-all
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -84,7 +88,7 @@ jobs:
           name: endstone-win_amd64-portable.zip
 
   release:
-    if: contains(github.ref, 'refs/tags/')
+    if: github.event_name == 'release' && github.event.action == 'published'
     runs-on: ubuntu-latest
     needs: [ build ]
     permissions:
@@ -99,7 +103,7 @@ jobs:
           path: dist
           merge-multiple: true
 
-      - name: Create a Release
+      - name: Release
         uses: softprops/action-gh-release@v2
         with:
           files: dist/*
