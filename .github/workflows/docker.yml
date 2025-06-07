@@ -1,13 +1,17 @@
 name: Docker
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
   push:
     branches:
       - main
-    tags:
-      - '*'
+      - stable
+      - v*
+  release:
+    types:
+      - published
 
 permissions: read-all
 
@@ -72,7 +76,7 @@ jobs:
   build_and_publish_dockerhub:
     name: Build and Publish to Docker Hub
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
+    if: github.event_name == 'release' && github.event.action == 'published'
     permissions:
       packages: write
     steps:

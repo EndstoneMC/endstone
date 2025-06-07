@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-    tags:
-      - '*'
     paths:
       - '.github/workflows/*'
       - 'docs/**'
@@ -46,5 +44,5 @@ jobs:
       - run: pip install -r docs/requirements.txt
       - if: github.event_name == 'push'
         run: mike deploy --push latest
-      - if: contains(github.ref, 'refs/tags/')
+      - if: github.event_name == 'release' && github.event.action == 'published'
         run: mike deploy --push --update-aliases ${{ github.ref_name }} stable

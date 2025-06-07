@@ -8,6 +8,11 @@ on:
       - synchronize
       - reopened
       - ready_for_review
+  push:
+    branches:
+      - main
+      - stable
+      - v*
 
 permissions: read-all
 
