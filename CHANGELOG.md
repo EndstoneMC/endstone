@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.8.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.2) - 2025-06-07
+
+<small>[Compare with 0.8.1](https://github.com/EndstoneMC/endstone/compare/v0.8.1...v0.8.2)</small>
+
+### Added
+
+- Added support for BDS version 1.21.84.1
+
+### Fixed
+
+- Fixed an issue when parsing arguments in custom commands (#190)
+- Ensure only certain server files are overwritten during update (#185)
+
 ## [0.8.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.1) - 2025-05-20
 
 <small>[Compare with 0.8.0](https://github.com/EndstoneMC/endstone/compare/v0.8.0...v0.8.1)</small>
