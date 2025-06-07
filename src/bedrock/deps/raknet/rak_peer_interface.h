@@ -40,10 +40,6 @@ class List;
 }
 
 // NOLINTBEGIN
-struct RakPeerConfiguration {
-    bool useJoinfloodProtection;
-};
-
 class RakPeerInterface {
 public:
     virtual ~RakPeerInterface() = 0;

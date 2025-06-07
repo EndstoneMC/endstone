@@ -49,16 +49,6 @@ void patchPacket(const ResourcePackStackPacket &packet)
 }
 }  // namespace
 
-Bedrock::NotNullNonOwnerPtr<RemoteConnector> NetworkSystem::getRemoteConnector()
-{
-    return remote_connector_.get();
-}
-
-Bedrock::NotNullNonOwnerPtr<const RemoteConnector> NetworkSystem::getRemoteConnector() const
-{
-    return remote_connector_.get();
-}
-
 void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)
 {
     if (packet.getName() != "DataPacket") {

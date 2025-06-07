@@ -16,8 +16,6 @@
 
 #include "bedrock/world/inventory/transaction/inventory_action.h"
 
-class InventoryTransaction;
-
 class InventoryTransactionManager {
 public:
     InventoryTransactionManager(Player &);

@@ -3519,16 +3519,6 @@ class Server:
         Gets the plugin manager for interfacing with plugins.
         """
     @property
-    def port(self) -> int:
-        """
-        Get the game port that the server runs on.
-        """
-    @property
-    def port_v6(self) -> int:
-        """
-        Get the game port (IPv6) that the server runs on.
-        """
-    @property
     def scheduler(self) -> Scheduler:
         """
         Gets the scheduler for managing scheduled events.

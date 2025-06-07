@@ -74,8 +74,6 @@ public:
     [[nodiscard]] Player *getPlayer(UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
 
-    [[nodiscard]] int getPort() const override;
-    [[nodiscard]] int getPortV6() const override;
     [[nodiscard]] bool getOnlineMode() const override;
     void shutdown() override;
     void reload() override;
