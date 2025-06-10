@@ -1385,7 +1385,17 @@ class Inventory:
     """
     Interface to the various inventories.
     """
-    def __get_item__(self, index: int) -> ItemStack:
+    @typing.overload
+    def __contains__(self, item: ItemStack) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemStack.
+        """
+    @typing.overload
+    def __contains__(self, type: str) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemType.
+        """
+    def __getitem__(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
         """
@@ -1393,25 +1403,103 @@ class Inventory:
         """
         Returns the size of the inventory
         """
-    def __set_item__(self, index: int, item: ItemStack) -> None:
+    def __setitem__(self, index: int, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
-    def add_item(self, item: ItemStack) -> None:
+    def add_item(self, *args) -> dict[int, ItemStack]:
         """
-        Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.
+        Stores the given ItemStacks in the inventory.
+        This will try to fill existing stacks and empty slots as well as it can.
+        
+        The returned map contains what it couldn't store, where the key is the index, and the value is the ItemStack.
+        If all items are stored, it will return an empty dict.
         """
+    @typing.overload
+    def all(self, item: ItemStack) -> dict[int, ItemStack]:
+        """
+        Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
+        This will only match slots if both the type and the amount of the stack match
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+        """
+    @typing.overload
+    def all(self, type: str) -> dict[int, ItemStack]:
+        """
+        Finds all slots in the inventory containing any ItemStacks with the given ItemType.
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+        """
+    @typing.overload
+    def clear(self, index: int) -> None:
+        """
+        Clears out a particular slot in the index.
+        """
+    @typing.overload
     def clear(self) -> None:
         """
         Clears out the whole Inventory.
         """
+    @typing.overload
+    def contains(self, item: ItemStack, amount: int) -> bool:
+        """
+        Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
+        An ItemStack only counts if both the type and the amount of the stack match.
+        """
+    @typing.overload
+    def contains(self, item: ItemStack) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemStack.
+        This will only return true if both the type and the amount of the stack match.
+        """
+    @typing.overload
+    def contains(self, type: str) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemType.
+        """
+    @typing.overload
+    def contains_at_least(self, item: ItemStack, amount: int) -> bool:
+        """
+        Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the minimum amount specified.
+        """
+    @typing.overload
+    def contains_at_least(self, type: str, amount: int) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum amount specified.
+        """
+    @typing.overload
     def first(self, item: ItemStack) -> int:
         """
         Returns the first slot in the inventory containing an ItemStack with the given stack.
+        This will only match slots if both the type and the amount of the stack match
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+        """
+    @typing.overload
+    def first(self, type: str) -> int:
+        """
+        Finds the first slot in the inventory containing an ItemStack with the given ItemType.
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
         """
     def get_item(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
+        """
+    @typing.overload
+    def remove(self, item: ItemStack) -> None:
+        """
+        Removes all stacks in the inventory matching the given stack.
+        This will only match a slot if both the type and the amount of the stack match
+        """
+    @typing.overload
+    def remove(self, type: str) -> None:
+        """
+        Removes all stacks in the inventory matching the given ItemType.
+        """
+    def remove_item(self, *args) -> dict[int, ItemStack]:
+        """
+        Removes the given ItemStacks from the inventory.
+        It will try to remove 'as much as possible' from the types and amounts you give as arguments.
+        
+        The returned HashMap contains what it couldn't remove, where the key is the index, and the value is the ItemStack.
+        If all the given ItemStacks are removed, it will return an empty dict.
         """
     def set_item(self, index: int, item: ItemStack) -> None:
         """
@@ -1421,6 +1509,14 @@ class Inventory:
     def contents(self) -> list[ItemStack]:
         """
         Returns all ItemStacks from the inventory
+        """
+    @contents.setter
+    def contents(self, arg1: list[ItemStack]) -> None:
+        ...
+    @property
+    def first_empty(self) -> int:
+        """
+        Returns the first empty Slot.
         """
     @property
     def is_empty(self) -> bool:
@@ -1932,11 +2028,11 @@ class MapView:
         An enum representing all possible scales a map can be set to.
         """
         CLOSE: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSE: 1>
-        CLOSET: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSET: 0>
+        CLOSEST: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSEST: 0>
         FAR: typing.ClassVar[MapView.Scale]  # value = <Scale.FAR: 3>
         FARTHEST: typing.ClassVar[MapView.Scale]  # value = <Scale.FARTHEST: 4>
         NORMAL: typing.ClassVar[MapView.Scale]  # value = <Scale.NORMAL: 2>
-        __members__: typing.ClassVar[dict[str, MapView.Scale]]  # value = {'CLOSET': <Scale.CLOSET: 0>, 'CLOSE': <Scale.CLOSE: 1>, 'NORMAL': <Scale.NORMAL: 2>, 'FAR': <Scale.FAR: 3>, 'FARTHEST': <Scale.FARTHEST: 4>}
+        __members__: typing.ClassVar[dict[str, MapView.Scale]]  # value = {'CLOSEST': <Scale.CLOSEST: 0>, 'CLOSE': <Scale.CLOSE: 1>, 'NORMAL': <Scale.NORMAL: 2>, 'FAR': <Scale.FAR: 3>, 'FARTHEST': <Scale.FARTHEST: 4>}
         def __eq__(self, other: typing.Any) -> bool:
             ...
         def __getstate__(self) -> int:
@@ -1967,7 +2063,7 @@ class MapView:
         """
         Add a renderer to this map.
         """
-    def remove_renderer(self, renderer: MapRenderer) -> None:
+    def remove_renderer(self, renderer: MapRenderer) -> bool:
         """
         Remove a renderer from this map.
         """
