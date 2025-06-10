@@ -40,6 +40,7 @@
 #include "endstone/core/network/data_packet.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
+#include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
@@ -339,23 +340,7 @@ SocketAddress EndstonePlayer::getAddress() const
 {
     const static SocketAddress EMPTY{};
     auto component = getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
-    switch (component->getNetworkId().getType()) {
-    case NetworkIdentifier::Type::RakNet: {
-        const auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
-        const auto addr = peer->GetSystemAddressFromGuid(component->getNetworkId().guid);
-        char buffer[INET6_ADDRSTRLEN + 5 + 1] = {};
-        addr.ToString(false, buffer);
-        return {buffer, addr.GetPort()};
-    }
-    case NetworkIdentifier::Type::Address:
-    case NetworkIdentifier::Type::Address6: {
-        return {component->getNetworkId().getAddress(), component->getNetworkId().getPort()};
-    }
-    case NetworkIdentifier::Type::NetherNet:
-    case NetworkIdentifier::Type::Invalid:
-    default:
-        return EMPTY;
-    }
+    return EndstoneSocketAddress::fromNetworkIdentifier(component->getNetworkId());
 }
 
 void EndstonePlayer::sendPopup(std::string message) const
