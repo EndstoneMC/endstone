@@ -51,6 +51,7 @@ constexpr void foreach_symbol(Func &&func)
 template <typename Func, typename... Args>
 constexpr decltype(auto) invoke(const char *function, Func &&func, Args &&...args)
 {
+    (void)function;
     return std::invoke(func, std::forward<Args>(args)...);
 }
 }  // namespace endstone::detail
