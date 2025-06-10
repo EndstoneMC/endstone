@@ -41,6 +41,99 @@ void EndstoneInventory::setItem(int index, const ItemStack *item)
     container_.setItemWithForceBalance(index, item_stack, true);
 }
 
+std::unordered_map<int, ItemStack *> EndstoneInventory::addItem(std::vector<ItemStack *> items)
+{
+    std::unordered_map<int, ItemStack *> leftover;
+    for (auto i = 0; i < items.size(); ++i) {
+        auto *item = items[i];
+        if (item == nullptr) {
+            continue;
+        }
+
+        while (true) {
+            auto slot = firstPartial(*item);
+
+            if (slot == -1) {
+                slot = firstEmpty();
+                if (slot == -1) {
+                    // No space at all!
+                    leftover[i] = item;
+                    break;
+                }
+
+                if (item->getAmount() > item->getMaxStackSize()) {
+                    // More than a single stack!
+                    auto stack = item->clone();
+                    stack->setAmount(item->getMaxStackSize());
+                    setItem(slot, stack.get());
+                    item->setAmount(item->getAmount() - item->getMaxStackSize());
+                }
+                else {
+                    // Just store it
+                    setItem(slot, item);
+                    break;
+                }
+            }
+            else {
+                auto partial = getItem(slot);
+                if (item->getAmount() + partial->getAmount() <= partial->getMaxStackSize()) {
+                    // Fully fits!
+                    partial->setAmount(item->getAmount() + partial->getAmount());
+                    setItem(slot, partial.get());
+                    break;
+                }
+
+                // Fits partially
+                item->setAmount(item->getAmount() + partial->getAmount() - partial->getMaxStackSize());
+                partial->setAmount(partial->getMaxStackSize());
+                setItem(slot, partial.get());
+            }
+        }
+    }
+    return leftover;
+}
+
+std::unordered_map<int, ItemStack *> EndstoneInventory::removeItem(std::vector<ItemStack *> items)
+{
+    std::unordered_map<int, ItemStack *> leftover;
+    for (auto i = 0; i < items.size(); ++i) {
+        auto *item = items[i];
+        if (item == nullptr) {
+            continue;
+        }
+
+        int to_delete = item->getAmount();
+        while (true) {
+            const auto slot = first(*item, false);
+
+            // we don't have this type in the inventory
+            if (slot == -1) {
+                item->setAmount(to_delete);
+                leftover[i] = item;
+                break;
+            }
+
+            auto item_stack = getItem(slot);
+            int amount = item_stack->getAmount();
+
+            if (amount <= to_delete) {
+                to_delete -= amount;
+                clear(slot);  // clear the slot, all used up
+            }
+            else {
+                item_stack->setAmount(amount - to_delete);
+                setItem(slot, item_stack.get());
+                to_delete = 0;
+            }
+
+            if (to_delete <= 0) {
+                break;
+            }
+        }
+    }
+    return leftover;
+}
+
 std::vector<std::unique_ptr<ItemStack>> EndstoneInventory::getContents() const
 {
     const auto slots = container_.getSlots();
@@ -255,6 +348,18 @@ int EndstoneInventory::first(const ItemStack &item, bool with_amount) const
         }
 
         if (with_amount ? item == *it : item.isSimilar(*it)) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int EndstoneInventory::firstPartial(const ItemStack &item) const
+{
+    const auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        const auto &it = inventory[i];
+        if (it != nullptr && it->getAmount() < item.getMaxStackSize() && item.isSimilar(*it)) {
             return i;
         }
     }

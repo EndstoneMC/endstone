@@ -71,7 +71,7 @@ public:
      *
      * @return A map containing items that couldn't be added.
      */
-    virtual std::unordered_map<int, const ItemStack *> addItem(std::vector<const ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack *> addItem(std::vector<ItemStack *> items) = 0;
 
     /**
      * @brief Removes the given ItemStacks from the inventory.
@@ -85,7 +85,7 @@ public:
      *
      * @return A map containing items that couldn't be removed.
      */
-    virtual std::unordered_map<int, const ItemStack *> removeItem(std::vector<const ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) = 0;
 
     /**
      * @brief Stores the given ItemStacks in the inventory.
@@ -116,10 +116,10 @@ public:
      * @param items The ItemStacks to remove
      * @return A map containing items that couldn't be removed.
      */
-    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, const ItemStack &> && ...)>>
-    std::unordered_map<int, const ItemStack *> removeItem(Args &&...items)
+    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
+    std::unordered_map<int, ItemStack *> removeItem(Args &&...items)
     {
-        return removeItem(std::vector<const ItemStack *>{&items...});
+        return removeItem(std::vector<ItemStack *>{&items...});
     }
 
     /**

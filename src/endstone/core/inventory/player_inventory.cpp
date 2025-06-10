@@ -38,12 +38,12 @@ void EndstonePlayerInventory::setItem(int index, const ItemStack *item)
     EndstoneInventory::setItem(index, item);
 }
 
-std::unordered_map<int, const ItemStack *> EndstonePlayerInventory::addItem(std::vector<ItemStack const *> items)
+std::unordered_map<int, ItemStack *> EndstonePlayerInventory::addItem(std::vector<ItemStack *> items)
 {
     return EndstoneInventory::addItem(items);
 }
 
-std::unordered_map<int, const ItemStack *> EndstonePlayerInventory::removeItem(std::vector<ItemStack const *> items)
+std::unordered_map<int, ItemStack *> EndstonePlayerInventory::removeItem(std::vector<ItemStack *> items)
 {
     return EndstoneInventory::removeItem(items);
 }

@@ -131,11 +131,11 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Stores the ItemStack at the given index of the inventory.")
         .def(
             "add_item",
-            [](Inventory &self, const py::args &args) {
-                std::vector<const ItemStack *> items;
-                items.reserve(args.size());
-                for (auto obj : args) {
-                    items.push_back(obj.cast<const ItemStack *>());
+            [](Inventory &self, const py::args &item) {
+                std::vector<ItemStack *> items;
+                items.reserve(item.size());
+                for (auto obj : item) {
+                    items.push_back(&obj.cast<ItemStack &>());
                 }
                 return self.addItem(items);
             },
@@ -145,11 +145,11 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
             "ItemStack.\nIf all items are stored, it will return an empty dict.")
         .def(
             "remove_item",
-            [](Inventory &self, const py::args &args) {
-                std::vector<const ItemStack *> items;
-                items.reserve(args.size());
-                for (auto obj : args) {
-                    items.push_back(obj.cast<const ItemStack *>());
+            [](Inventory &self, const py::args &item) {
+                std::vector<ItemStack *> items;
+                items.reserve(item.size());
+                for (auto obj : item) {
+                    items.push_back(&obj.cast<ItemStack &>());
                 }
                 return self.removeItem(items);
             },
