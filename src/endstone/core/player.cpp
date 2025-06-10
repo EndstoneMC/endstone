@@ -559,8 +559,8 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
 
 std::chrono::milliseconds EndstonePlayer::getPing() const
 {
-    auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
-    auto *component = getPlayer().tryGetComponent<UserEntityIdentifierComponent>();
+    auto *peer = server_.getRakNetConnector().getPeer();
+    const auto *component = getPlayer().tryGetComponent<UserEntityIdentifierComponent>();
     return std::chrono::milliseconds(peer->GetAveragePing(component->getNetworkId().guid));
 }
 
