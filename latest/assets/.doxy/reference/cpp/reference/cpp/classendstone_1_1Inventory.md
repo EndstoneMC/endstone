@@ -54,7 +54,7 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 | Type | Name |
 | ---: | :--- |
 | virtual std::unordered\_map&lt; int, [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**addItem**](#function-additem-12) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Stores the given ItemStacks in the inventory._  |
-|  std::unordered\_map&lt; int, const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**addItem**](#function-additem-22) (Args &&... items) <br>_Stores the given ItemStacks in the inventory._  |
+|  std::unordered\_map&lt; int, [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**addItem**](#function-additem-22) (Args &&... items) <br>_Stores the given ItemStacks in the inventory._  |
 | virtual Result&lt; std::unordered\_map&lt; int, std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; &gt; | [**all**](#function-all-12) (const std::string & type) const = 0<br>_Finds all slots in the inventory containing any ItemStacks with the given_ [_**ItemType**_](classendstone_1_1ItemType.md) _._ |
 | virtual std::unordered\_map&lt; int, std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; | [**all**](#function-all-22) (const [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Finds all slots in the inventory containing any ItemStacks with the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual void | [**clear**](#function-clear-12) (int index) = 0<br>_Clears out a particular slot in the index._  |
@@ -165,7 +165,7 @@ A map containing items that couldn't be added.
 _Stores the given ItemStacks in the inventory._ 
 ```C++
 template<typename... Args, typename>
-inline std::unordered_map< int, const ItemStack * > endstone::Inventory::addItem (
+inline std::unordered_map< int, ItemStack * > endstone::Inventory::addItem (
     Args &&... items
 ) 
 ```

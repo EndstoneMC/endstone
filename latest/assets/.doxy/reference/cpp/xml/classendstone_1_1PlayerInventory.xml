@@ -372,7 +372,7 @@
     <location file="include/endstone/inventory/player_inventory.h" line="24" column="1" bodyfile="include/endstone/inventory/player_inventory.h" bodystart="24" bodyend="133"/>
     <listofallmembers>
       <member refid="classendstone_1_1Inventory_1a70dc622a7f4ecaf2e6bae130a2326f78" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
-      <member refid="classendstone_1_1Inventory_1a4c5db2e1b1b567123cf49538276d4960" prot="public" virt="non-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
+      <member refid="classendstone_1_1Inventory_1adb3dc76d1831c648ce06f265ea58ac23" prot="public" virt="non-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1aedbde69f2a6217ddaf34e9a28ec4a512" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>all</name></member>
       <member refid="classendstone_1_1Inventory_1abbe720b7ba894612f866a8cf060077ae" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>all</name></member>
       <member refid="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>clear</name></member>

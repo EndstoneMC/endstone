@@ -197,7 +197,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/inventory.h" line="88" column="32"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Inventory_1a4c5db2e1b1b567123cf49538276d4960" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Inventory_1adb3dc76d1831c648ce06f265ea58ac23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -206,11 +206,11 @@
           </param>
           <param>
             <type>typename</type>
-            <defval>std::enable_if_t&lt;(std::is_convertible_v&lt;Args, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;&gt; &amp;&amp; ...)&gt;</defval>
+            <defval>std::enable_if_t&lt;(std::is_convertible_v&lt;Args, <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;&gt; &amp;&amp; ...)&gt;</defval>
           </param>
         </templateparamlist>
-        <type>std::unordered_map&lt; int, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
-        <definition>std::unordered_map&lt; int, const ItemStack * &gt; endstone::Inventory::addItem</definition>
+        <type>std::unordered_map&lt; int, <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
+        <definition>std::unordered_map&lt; int, ItemStack * &gt; endstone::Inventory::addItem</definition>
         <argsstring>(Args &amp;&amp;...items)</argsstring>
         <name>addItem</name>
         <qualifiedname>endstone::Inventory::addItem</qualifiedname>
@@ -820,7 +820,7 @@ The returned map contains entries where, the key is the slot index, and the valu
     <location file="include/endstone/inventory/inventory.h" line="28" column="1" bodyfile="include/endstone/inventory/inventory.h" bodystart="28" bodyend="280"/>
     <listofallmembers>
       <member refid="classendstone_1_1Inventory_1a70dc622a7f4ecaf2e6bae130a2326f78" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>addItem</name></member>
-      <member refid="classendstone_1_1Inventory_1a4c5db2e1b1b567123cf49538276d4960" prot="public" virt="non-virtual"><scope>endstone::Inventory</scope><name>addItem</name></member>
+      <member refid="classendstone_1_1Inventory_1adb3dc76d1831c648ce06f265ea58ac23" prot="public" virt="non-virtual"><scope>endstone::Inventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1aedbde69f2a6217ddaf34e9a28ec4a512" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>all</name></member>
       <member refid="classendstone_1_1Inventory_1abbe720b7ba894612f866a8cf060077ae" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>all</name></member>
       <member refid="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>clear</name></member>

@@ -47,10 +47,10 @@ public:
 
     virtual std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) = 0;
 
-    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, const ItemStack &> && ...)>>
-    std::unordered_map<int, const ItemStack *> addItem(Args &&...items)
+    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
+    std::unordered_map<int, ItemStack *> addItem(Args &&...items)
     {
-        return addItem(std::vector<const ItemStack *>{&items...});
+        return addItem(std::vector<ItemStack *>{&items...});
     }
 
     template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
