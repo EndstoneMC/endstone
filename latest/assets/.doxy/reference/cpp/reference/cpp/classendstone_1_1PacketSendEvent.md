@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"PacketSendEvent"`<br> |
 
 
 
@@ -98,11 +93,13 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) & player, int packet\_id, std::string\_view payload) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PacketSendEvent**](classendstone_1_1PacketSendEvent.md)) <br> |
+|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) \* player, int packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, const int sub\_client\_id) <br> |
+|  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Gets the network address to which this packet is being sent._  |
 |  int | [**getPacketId**](#function-getpacketid) () const<br>_Gets the ID of the packet._  |
 |  std::string\_view | [**getPayload**](#function-getpayload) () const<br>_Gets the raw packet data_ **excluding** _the header._ |
-|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br> |
+|  [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer) () const<br>_Returns the player involved in this event._  |
+|  int | [**getSubClientId**](#function-getsubclientid) () const<br>_Gets the SubClient ID._  |
 |  void | [**setPayload**](#function-setpayload) (std::string\_view payload) <br>_Sets the raw packet data_ **excluding** _the header._ |
 
 
@@ -207,33 +204,16 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::PacketSendEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
 
 
-### function PacketSendEvent 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline endstone::PacketSendEvent::PacketSendEvent (
-    Player & player,
-    int packet_id,
-    std::string_view payload
+endstone::PacketSendEvent::ENDSTONE_EVENT (
+    PacketSendEvent
 ) 
 ```
 
@@ -244,30 +224,45 @@ inline endstone::PacketSendEvent::PacketSendEvent (
 
 
 
-### function getEventName 
+### function PacketSendEvent 
 
 ```C++
-inline virtual std::string endstone::PacketSendEvent::getEventName () override const
+inline endstone::PacketSendEvent::PacketSendEvent (
+    Player * player,
+    int packet_id,
+    std::string_view payload,
+    SocketAddress address,
+    const int sub_client_id
+) 
 ```
 
 
 
-Gets a user-friendly identifier for this event.
+
+<hr>
+
+
+
+### function getAddress 
+
+_Gets the network address to which this packet is being sent._ 
+```C++
+inline SocketAddress endstone::PacketSendEvent::getAddress () const
+```
+
 
 
 
 
 **Returns:**
 
-name of this event 
+The [**SocketAddress**](classendstone_1_1SocketAddress.md) of the destination client. 
 
 
 
 
 
         
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 
@@ -325,13 +320,18 @@ The packet payload data.
 
 ### function getPlayer 
 
+_Returns the player involved in this event._ 
 ```C++
-inline Player & endstone::PacketSendEvent::getPlayer () const
+inline Player * endstone::PacketSendEvent::getPlayer () const
 ```
 
 
 
-Returns the player involved in this event
+
+
+**Note:**
+
+This may return nullptr if the packet is sent before the player completes the login process.
 
 
 
@@ -339,6 +339,38 @@ Returns the player involved in this event
 **Returns:**
 
 [**Player**](classendstone_1_1Player.md) who is involved in this event 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getSubClientId 
+
+_Gets the SubClient ID._ 
+```C++
+inline int endstone::PacketSendEvent::getSubClientId () const
+```
+
+
+
+
+
+**Note:**
+
+Range is 0–3 (0 = primary client; 1–3 = split-screen clients).
+
+
+
+
+**Returns:**
+
+The SubClient ID. 
 
 
 

@@ -181,7 +181,6 @@
         <reimplementedby refid="classendstone_1_1PlayerTeleportEvent_1a58a064da0b7bad2f61d36937f3da9cae">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PacketSendEvent_1af8783d019d3cfd1ae4d8d83cc17d3267">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginDisableEvent_1a9083d88e6a5e47ed6307cc5f8ee12d4c">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginEnableEvent_1a80a2a76f95e0c011b04994475905d79b">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703">getEventName</reimplementedby>

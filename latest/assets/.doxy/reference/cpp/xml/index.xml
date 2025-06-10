@@ -969,17 +969,20 @@
     <member refid="classendstone_1_1PacketReceiveEvent_1a1ae979ea681991973f171e06c64756ec" kind="function"><name>getPlayer</name></member>
   </compound>
   <compound refid="classendstone_1_1PacketSendEvent" kind="class"><name>endstone::PacketSendEvent</name>
-    <member refid="classendstone_1_1PacketSendEvent_1a9884fb846170b61bc2e49937664176a7" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PacketSendEvent_1a28a7e34679b9893400a6fb2138a77479" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a46315b667af5c6f3ec3763c082451502" kind="variable"><name>player_</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1af46ca7e7e55a4df812ca6cc38466d991" kind="variable"><name>packet_id_</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a4c99fc98acca93b96d3bc9730e5e83ab" kind="variable"><name>payload_</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1adfcb982eecf45e887068559173faf47e" kind="variable"><name>owned_payload_</name></member>
-    <member refid="classendstone_1_1PacketSendEvent_1a4ccee97085c453392154aaf96b6a573e" kind="function"><name>PacketSendEvent</name></member>
-    <member refid="classendstone_1_1PacketSendEvent_1af8783d019d3cfd1ae4d8d83cc17d3267" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a0413bb418f5599517cc3b6e1f0832ed4" kind="variable"><name>address_</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1ab71556ab20b8c96135c756337ffa1a78" kind="variable"><name>sub_client_id_</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a0dd456687bcaac313777f30cfd48ded0" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1afbbdae41c71c48d40a82d9f40aa006c3" kind="function"><name>PacketSendEvent</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" kind="function"><name>getPacketId</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" kind="function"><name>getPayload</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" kind="function"><name>setPayload</name></member>
-    <member refid="classendstone_1_1PacketSendEvent_1a620efa660c957b4dc7f1c08ee6a0e8a5" kind="function"><name>getPlayer</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" kind="function"><name>getPlayer</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" kind="function"><name>getAddress</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" kind="function"><name>getSubClientId</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
