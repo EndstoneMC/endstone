@@ -127,14 +127,14 @@
         </inbodydescription>
         <location file="include/endstone/inventory/inventory.h" line="60" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Inventory_1a0bc1c6d346b8a4c02049a1422e67d897" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unordered_map&lt; int, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
-        <definition>virtual std::unordered_map&lt; int, const ItemStack * &gt; endstone::Inventory::addItem</definition>
-        <argsstring>(std::vector&lt; const ItemStack * &gt; items)=0</argsstring>
+      <memberdef kind="function" id="classendstone_1_1Inventory_1a70dc622a7f4ecaf2e6bae130a2326f78" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_map&lt; int, <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
+        <definition>virtual std::unordered_map&lt; int, ItemStack * &gt; endstone::Inventory::addItem</definition>
+        <argsstring>(std::vector&lt; ItemStack * &gt; items)=0</argsstring>
         <name>addItem</name>
         <qualifiedname>endstone::Inventory::addItem</qualifiedname>
         <param>
-          <type>std::vector&lt; const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
+          <type>std::vector&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
           <declname>items</declname>
         </param>
         <briefdescription>
@@ -162,14 +162,14 @@
         </inbodydescription>
         <location file="include/endstone/inventory/inventory.h" line="74" column="32"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Inventory_1ab00dd20292557613c384f069b5e40a18" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unordered_map&lt; int, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
-        <definition>virtual std::unordered_map&lt; int, const ItemStack * &gt; endstone::Inventory::removeItem</definition>
-        <argsstring>(std::vector&lt; const ItemStack * &gt; items)=0</argsstring>
+      <memberdef kind="function" id="classendstone_1_1Inventory_1a7cc5b3f5922baff4b878398a21ded738" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_map&lt; int, <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
+        <definition>virtual std::unordered_map&lt; int, ItemStack * &gt; endstone::Inventory::removeItem</definition>
+        <argsstring>(std::vector&lt; ItemStack * &gt; items)=0</argsstring>
         <name>removeItem</name>
         <qualifiedname>endstone::Inventory::removeItem</qualifiedname>
         <param>
-          <type>std::vector&lt; const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
+          <type>std::vector&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
           <declname>items</declname>
         </param>
         <briefdescription>
@@ -243,7 +243,7 @@
         </inbodydescription>
         <location file="include/endstone/inventory/inventory.h" line="103" column="24" bodyfile="include/endstone/inventory/inventory.h" bodystart="103" bodyend="106"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Inventory_1a5e8521ea0cc1a910bb01b7f06308c42d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Inventory_1a2f4af3f93e53605d1c1540084305fdf4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -252,11 +252,11 @@
           </param>
           <param>
             <type>typename</type>
-            <defval>std::enable_if_t&lt;(std::is_convertible_v&lt;Args, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;&gt; &amp;&amp; ...)&gt;</defval>
+            <defval>std::enable_if_t&lt;(std::is_convertible_v&lt;Args, <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;&gt; &amp;&amp; ...)&gt;</defval>
           </param>
         </templateparamlist>
-        <type>std::unordered_map&lt; int, const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
-        <definition>std::unordered_map&lt; int, const ItemStack * &gt; endstone::Inventory::removeItem</definition>
+        <type>std::unordered_map&lt; int, <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> * &gt;</type>
+        <definition>std::unordered_map&lt; int, ItemStack * &gt; endstone::Inventory::removeItem</definition>
         <argsstring>(Args &amp;&amp;...items)</argsstring>
         <name>removeItem</name>
         <qualifiedname>endstone::Inventory::removeItem</qualifiedname>
@@ -819,7 +819,7 @@ The returned map contains entries where, the key is the slot index, and the valu
     </inheritancegraph>
     <location file="include/endstone/inventory/inventory.h" line="28" column="1" bodyfile="include/endstone/inventory/inventory.h" bodystart="28" bodyend="280"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Inventory_1a0bc1c6d346b8a4c02049a1422e67d897" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>addItem</name></member>
+      <member refid="classendstone_1_1Inventory_1a70dc622a7f4ecaf2e6bae130a2326f78" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1a4c5db2e1b1b567123cf49538276d4960" prot="public" virt="non-virtual"><scope>endstone::Inventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1aedbde69f2a6217ddaf34e9a28ec4a512" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>all</name></member>
       <member refid="classendstone_1_1Inventory_1abbe720b7ba894612f866a8cf060077ae" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>all</name></member>
@@ -840,8 +840,8 @@ The returned map contains entries where, the key is the slot index, and the valu
       <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>isEmpty</name></member>
       <member refid="classendstone_1_1Inventory_1a09b31e51bf891c8f33bfca46707bf573" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>remove</name></member>
       <member refid="classendstone_1_1Inventory_1af3402b278d0775d48a56593bf49ee52e" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>remove</name></member>
-      <member refid="classendstone_1_1Inventory_1ab00dd20292557613c384f069b5e40a18" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>removeItem</name></member>
-      <member refid="classendstone_1_1Inventory_1a5e8521ea0cc1a910bb01b7f06308c42d" prot="public" virt="non-virtual"><scope>endstone::Inventory</scope><name>removeItem</name></member>
+      <member refid="classendstone_1_1Inventory_1a7cc5b3f5922baff4b878398a21ded738" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>removeItem</name></member>
+      <member refid="classendstone_1_1Inventory_1a2f4af3f93e53605d1c1540084305fdf4" prot="public" virt="non-virtual"><scope>endstone::Inventory</scope><name>removeItem</name></member>
       <member refid="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>setContents</name></member>
       <member refid="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>setItem</name></member>
       <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" prot="public" virt="virtual"><scope>endstone::Inventory</scope><name>~Inventory</name></member>

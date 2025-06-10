@@ -53,7 +53,7 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unordered\_map&lt; int, const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**addItem**](#function-additem-12) (std::vector&lt; const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Stores the given ItemStacks in the inventory._  |
+| virtual std::unordered\_map&lt; int, [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**addItem**](#function-additem-12) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Stores the given ItemStacks in the inventory._  |
 |  std::unordered\_map&lt; int, const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**addItem**](#function-additem-22) (Args &&... items) <br>_Stores the given ItemStacks in the inventory._  |
 | virtual Result&lt; std::unordered\_map&lt; int, std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; &gt; | [**all**](#function-all-12) (const std::string & type) const = 0<br>_Finds all slots in the inventory containing any ItemStacks with the given_ [_**ItemType**_](classendstone_1_1ItemType.md) _._ |
 | virtual std::unordered\_map&lt; int, std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; | [**all**](#function-all-22) (const [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Finds all slots in the inventory containing any ItemStacks with the given_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
@@ -74,8 +74,8 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 | virtual bool | [**isEmpty**](#function-isempty) () const = 0<br>_Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory._  |
 | virtual Result&lt; void &gt; | [**remove**](#function-remove-12) (const std::string & type) = 0<br>_Removes all stacks in the inventory matching the given_ [_**ItemType**_](classendstone_1_1ItemType.md) _._ |
 | virtual void | [**remove**](#function-remove-22) (const [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Removes all stacks in the inventory matching the given stack._  |
-| virtual std::unordered\_map&lt; int, const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**removeItem**](#function-removeitem-12) (std::vector&lt; const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Removes the given ItemStacks from the inventory._  |
-|  std::unordered\_map&lt; int, const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**removeItem**](#function-removeitem-22) (Args &&... items) <br>_Removes the given ItemStacks from the inventory._  |
+| virtual std::unordered\_map&lt; int, [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**removeItem**](#function-removeitem-12) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Removes the given ItemStacks from the inventory._  |
+|  std::unordered\_map&lt; int, [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**removeItem**](#function-removeitem-22) (Args &&... items) <br>_Removes the given ItemStacks from the inventory._  |
 | virtual Result&lt; void &gt; | [**setContents**](#function-setcontents) (std::vector&lt; const [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array._  |
 | virtual void | [**setItem**](#function-setitem) (int index, const [**ItemStack**](classendstone_1_1ItemStack.md) \* item) = 0<br>_Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given index of the inventory._ |
 | virtual  | [**~Inventory**](#function-inventory) () = default<br> |
@@ -116,8 +116,8 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 
 _Stores the given ItemStacks in the inventory._ 
 ```C++
-virtual std::unordered_map< int, const ItemStack * > endstone::Inventory::addItem (
-    std::vector< const ItemStack * > items
+virtual std::unordered_map< int, ItemStack * > endstone::Inventory::addItem (
+    std::vector< ItemStack * > items
 ) = 0
 ```
 
@@ -813,8 +813,8 @@ This will only match a slot if both the type and the amount of the stack match
 
 _Removes the given ItemStacks from the inventory._ 
 ```C++
-virtual std::unordered_map< int, const ItemStack * > endstone::Inventory::removeItem (
-    std::vector< const ItemStack * > items
+virtual std::unordered_map< int, ItemStack * > endstone::Inventory::removeItem (
+    std::vector< ItemStack * > items
 ) = 0
 ```
 
@@ -862,7 +862,7 @@ A map containing items that couldn't be removed.
 _Removes the given ItemStacks from the inventory._ 
 ```C++
 template<typename... Args, typename>
-inline std::unordered_map< int, const ItemStack * > endstone::Inventory::removeItem (
+inline std::unordered_map< int, ItemStack * > endstone::Inventory::removeItem (
     Args &&... items
 ) 
 ```

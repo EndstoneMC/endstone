@@ -43,9 +43,9 @@ public:
 
     virtual void setItem(int index, const ItemStack *item) = 0;
 
-    virtual std::unordered_map<int, const ItemStack *> addItem(std::vector<const ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack *> addItem(std::vector<ItemStack *> items) = 0;
 
-    virtual std::unordered_map<int, const ItemStack *> removeItem(std::vector<const ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) = 0;
 
     template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, const ItemStack &> && ...)>>
     std::unordered_map<int, const ItemStack *> addItem(Args &&...items)
@@ -53,10 +53,10 @@ public:
         return addItem(std::vector<const ItemStack *>{&items...});
     }
 
-    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, const ItemStack &> && ...)>>
-    std::unordered_map<int, const ItemStack *> removeItem(Args &&...items)
+    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
+    std::unordered_map<int, ItemStack *> removeItem(Args &&...items)
     {
-        return removeItem(std::vector<const ItemStack *>{&items...});
+        return removeItem(std::vector<ItemStack *>{&items...});
     }
 
     [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getContents() const = 0;

@@ -643,10 +643,10 @@
     <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" kind="function"><name>getMaxStackSize</name></member>
     <member refid="classendstone_1_1Inventory_1ade917e3c7719cb3ec7b6ffa8db27462b" kind="function"><name>getItem</name></member>
     <member refid="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" kind="function"><name>setItem</name></member>
-    <member refid="classendstone_1_1Inventory_1a0bc1c6d346b8a4c02049a1422e67d897" kind="function"><name>addItem</name></member>
-    <member refid="classendstone_1_1Inventory_1ab00dd20292557613c384f069b5e40a18" kind="function"><name>removeItem</name></member>
+    <member refid="classendstone_1_1Inventory_1a70dc622a7f4ecaf2e6bae130a2326f78" kind="function"><name>addItem</name></member>
+    <member refid="classendstone_1_1Inventory_1a7cc5b3f5922baff4b878398a21ded738" kind="function"><name>removeItem</name></member>
     <member refid="classendstone_1_1Inventory_1a4c5db2e1b1b567123cf49538276d4960" kind="function"><name>addItem</name></member>
-    <member refid="classendstone_1_1Inventory_1a5e8521ea0cc1a910bb01b7f06308c42d" kind="function"><name>removeItem</name></member>
+    <member refid="classendstone_1_1Inventory_1a2f4af3f93e53605d1c1540084305fdf4" kind="function"><name>removeItem</name></member>
     <member refid="classendstone_1_1Inventory_1aed3238de786bddbcf39761658b95c48b" kind="function"><name>getContents</name></member>
     <member refid="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" kind="function"><name>setContents</name></member>
     <member refid="classendstone_1_1Inventory_1a0a7ae4ea788ee3da73d32c3e891081e1" kind="function"><name>contains</name></member>
