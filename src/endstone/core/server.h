@@ -121,6 +121,9 @@ public:
     [[nodiscard]] bool getAllowClientPacks() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
+    [[nodiscard]] RakNetConnector &getRakNetConnector() const;
+
+    [[nodiscard]] static EndstoneServer &getInstance();
 
 private:
     friend class EndstonePlayer;

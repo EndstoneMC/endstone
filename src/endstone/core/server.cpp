@@ -330,18 +330,15 @@ Player *EndstoneServer::getPlayer(std::string name) const
     }
     return nullptr;
 }
+
 int EndstoneServer::getPort() const
 {
-    return static_cast<const RakNetConnector &>(
-               *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector())
-        .getIPv4Port();
+    return getRakNetConnector().getIPv4Port();
 }
 
 int EndstoneServer::getPortV6() const
 {
-    return static_cast<const RakNetConnector &>(
-               *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector())
-        .getIPv6Port();
+    return getRakNetConnector().getIPv6Port();
 }
 
 bool EndstoneServer::getOnlineMode() const
@@ -594,6 +591,17 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
 ServerInstance &EndstoneServer::getServer() const
 {
     return *server_instance_;
+}
+
+RakNetConnector &EndstoneServer::getRakNetConnector() const
+{
+    return static_cast<RakNetConnector &>(
+        *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector());
+}
+
+EndstoneServer &EndstoneServer::getInstance()
+{
+    return entt::locator<EndstoneServer>::value();
 }
 
 }  // namespace endstone::core
