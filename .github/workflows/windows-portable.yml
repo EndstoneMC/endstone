@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: windows-2022
     env:
       WP_URL: https://github.com/winpython/winpython/releases/download/11.2.20241228final/Winpython64-3.12.8.0dot.exe
       WP_SHA256: 2727f61b2702232337a46e39c006f24bd1084395cdf27d076c55d39756c406cc

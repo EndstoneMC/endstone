@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         build_type: [ Release ]
-        os: [ ubuntu-22.04, windows-2019 ]
+        os: [ ubuntu-22.04, windows-2022 ]
         include:
           - os: ubuntu-22.04
             build_type: Debug
