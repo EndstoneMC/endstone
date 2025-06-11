@@ -18,22 +18,11 @@
 #include "bedrock/world/scores/scoreboard.h"
 
 struct ResolveData {
-    ResolveData(const Actor &, const Scoreboard &);
+    ResolveData(const Actor &actor, const Scoreboard &scoreboard);
     const gsl::not_null<const Actor *> actor;
     const gsl::not_null<const Scoreboard *> scoreboard;
 };
 static_assert(sizeof(ResolveData) == 16);
-
-class ResolvedTextObject {
-public:
-    ResolvedTextObject(const TextObjectRoot &, const Actor &, const Scoreboard &);
-    const Json::Value &getJson() const;
-    std::string getAsJsonString() const;
-
-private:
-    const Json::Value resolved_text_object_json_;
-};
-static_assert(sizeof(ResolvedTextObject) == 16);
 
 class ITextObject {
 public:
@@ -63,29 +52,27 @@ public:
 
     void addChild(std::unique_ptr<ITextObject> child)
     {
-        children.push_back(std::move(child));
+        children_.push_back(std::move(child));
     }
 
-    virtual Json::Value resolve(const ResolveData &) const;
-    virtual std::string asString() const;
-    virtual Json::Value asJsonValue() const;
+    [[nodiscard]] std::string asString() const override;
+    [[nodiscard]] Json::Value asJsonValue() const override;
+    [[nodiscard]] Json::Value resolve(const ResolveData &resolve_data) const override;
 
-    std::vector<std::string> asStringVector() const;
     void clear();
-    bool isEmpty() const;
+    [[nodiscard]] bool isEmpty() const;
 
 private:
-    std::vector<std::unique_ptr<ITextObject>> children;  // +8
+    std::vector<std::unique_ptr<ITextObject>> children_;
 };
 static_assert(sizeof(TextObjectRoot) == 32);
 
 class TextObjectText : public ITextObject {
 public:
-    TextObjectText(std::string text);
-    virtual std::string asString() const;
-    virtual Json::Value asJsonValue() const;
-    virtual Json::Value resolve(const ResolveData &) const;
-    static Json::Value asJsonValue(const std::string &);
+    explicit TextObjectText(std::string text);
+    [[nodiscard]] std::string asString() const override;
+    [[nodiscard]] Json::Value asJsonValue() const override;
+    [[nodiscard]] Json::Value resolve(const ResolveData & /*unused*/) const override;
 
 private:
     std::string text_;
@@ -93,10 +80,10 @@ private:
 
 class TextObjectLocalizedText : public ITextObject {
 public:
-    TextObjectLocalizedText(std::string);
-    virtual std::string asString() const;
-    virtual Json::Value asJsonValue() const;
-    virtual Json::Value resolve(const ResolveData &) const;
+    explicit TextObjectLocalizedText(std::string text);
+    [[nodiscard]] std::string asString() const override;
+    [[nodiscard]] Json::Value asJsonValue() const override;
+    [[nodiscard]] Json::Value resolve(const ResolveData & /*unused*/) const override;
 
 private:
     std::string text_;  // +8
