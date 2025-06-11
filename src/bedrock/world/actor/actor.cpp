@@ -16,6 +16,7 @@
 
 #include "bedrock/entity/components/actor_definition_identifier_component.h"
 #include "bedrock/entity/components/actor_equipment_component.h"
+#include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
@@ -107,6 +108,11 @@ bool Actor::isClientSide() const
         return true;
     }
     return level_->isClientSide();
+}
+
+BlockSource &Actor::getDimensionBlockSource() const
+{
+    return dimension_.unwrap()->getBlockSourceFromMainChunkSource();
 }
 
 Dimension &Actor::getDimension() const
@@ -359,4 +365,13 @@ const ItemStack &Actor::getArmor(ArmorSlot slot) const
 {
     auto component = getPersistentComponent<ActorEquipmentComponent>();
     return component->armor->getItem(static_cast<int>(slot));
+}
+
+bool Actor::isCreative() const
+{
+    if (const auto *component = tryGetComponent<ActorGameTypeComponent>()) {
+        return component->game_type == GameType::Creative || (component->game_type == GameType::WorldDefault &&
+                                                              getLevel().getDefaultGameType() == GameType::Creative);
+    }
+    return false;
 }

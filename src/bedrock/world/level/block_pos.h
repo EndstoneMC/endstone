@@ -23,7 +23,9 @@
 class BlockPos {
 public:
     static const BlockPos ZERO;
+    static const BlockPos MIN;
 
+    explicit BlockPos(int v) : x(v), y(v), z(v) {}
     BlockPos() = default;
     BlockPos(int x, int y, int z) : x(x), y(y), z(z){};
     BlockPos(const Vec3 &vec)
@@ -46,7 +48,8 @@ public:
     int z;
 };
 
-inline const BlockPos BlockPos::ZERO{0, 0, 0};
+inline const BlockPos BlockPos::ZERO(0);
+inline const BlockPos BlockPos::MIN(std::numeric_limits<int>::min());
 
 namespace std {
 template <>

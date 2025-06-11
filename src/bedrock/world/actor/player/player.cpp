@@ -21,7 +21,10 @@
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/symbol.h"
+#include "bedrock/textobject/text_object.h"
+#include "bedrock/util/color_format.h"
 #include "bedrock/world/actor/actor_flags.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 
 Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_removed)
@@ -30,6 +33,19 @@ Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_remov
         return nullptr;
     }
     return static_cast<Player *>(Actor::tryGetFromEntity(entity, include_removed));
+}
+
+bool Player::hasBedPosition() const
+{
+    if (player_respawn_point_.spawn_block_pos == BlockPos::MIN) {
+        return false;
+    }
+    return player_respawn_point_.dimension == VanillaDimensions::Overworld;
+}
+
+const BlockPos &Player::getBedPosition() const
+{
+    return player_respawn_point_.spawn_block_pos;
 }
 
 const PlayerInventory &Player::getSupplies() const
@@ -90,6 +106,17 @@ void Player::setPermissions(CommandPermissionLevel permission)
 {
     const auto component = getPersistentComponent<AbilitiesComponent>();
     component->abilities.setCommandPermissions(permission);
+}
+
+void Player::setBedRespawnPosition(const BlockPos &bed_position)
+{
+    if (!setSpawnBlockRespawnPosition(bed_position, VanillaDimensions::Overworld)) {
+        return;
+    }
+    TextObjectRoot object;
+    object.addChild<TextObjectText>(ColorFormat::GRAY);
+    object.addChild<TextObjectLocalizedText>("tile.bed.respawnSet");
+    displayTextObjectMessage(object, "", "");
 }
 
 GameType Player::getPlayerGameType() const

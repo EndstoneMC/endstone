@@ -60,6 +60,8 @@ add_library(bedrock STATIC
         server/commands/command_utils.cpp
         server/commands/minecraft_commands.cpp
         server/commands/standard/teleport_command.cpp
+        textobject/text_object.cpp
+        util/color_format.cpp
         util/data_io.cpp
         util/index_set.cpp
         util/string_byte_output.cpp

@@ -147,8 +147,8 @@ protected:
 public:
     static Player *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
-    bool hasBedPosition() const;
-    const BlockPos &getBedPosition() const;
+    [[nodiscard]] bool hasBedPosition() const;
+    [[nodiscard]] const BlockPos &getBedPosition() const;
     [[nodiscard]] const PlayerInventory &getSupplies() const;
     PlayerInventory &getSupplies();
     [[nodiscard]] const Container &getInventory() const;
@@ -158,6 +158,7 @@ public:
     [[nodiscard]] const std::string &getName() const;
     void setPermissions(CommandPermissionLevel permission);
     void setBedRespawnPosition(const BlockPos &);
+    bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
     bool canSleep() const;
 
     [[nodiscard]] GameType getPlayerGameType() const;

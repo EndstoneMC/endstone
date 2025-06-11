@@ -12,29 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/textobject/text_object.h"
 
-bool Dimension::isBrightOutside() const
-{
-    return isNaturalDimension() && sky_darken_.value < 4;
-}
-
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
-
-ChunkSource &Dimension::getChunkSource() const
-{
-    return *chunk_source_;
-}
-
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
-
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+const std::string ITextObject::RAW_TEXT_OBJECT_KEY = "rawText";
+const std::string ITextObject::RAW_TEXT_TEXT_KEY = "text";
+const std::string ITextObject::RAW_TEXT_TRANSLATE_KEY = "translate";
+const std::string ITextObject::RAW_TEXT_WITH_KEY = "with";

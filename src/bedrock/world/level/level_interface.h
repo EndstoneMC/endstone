@@ -60,6 +60,7 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/explosion.h"
 #include "bedrock/world/level/game_type.h"
+#include "bedrock/world/level/difficulty.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"

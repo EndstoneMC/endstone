@@ -126,8 +126,6 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos)
 
 BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool force)
 {
-    using endstone::PlayerBedEnterEvent::BedEnterResult;
-
     auto bed_result = getBedResult(bed_block_pos);
     if (bed_result == BedSleepingResult::OTHER_PROBLEM) {
         return bed_result;  // return immediately if the result is not bypass-able
@@ -137,22 +135,22 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool fo
         bed_result = BedSleepingResult::OK;
     }
 
-    auto bed_enter_result = BedEnterResult::OtherProblem;
+    auto bed_enter_result = endstone::PlayerBedEnterEvent::BedEnterResult::OtherProblem;
     switch (bed_result) {
     case BedSleepingResult::OK:
-        bed_enter_result = BedEnterResult::Ok;
+        bed_enter_result = endstone::PlayerBedEnterEvent::BedEnterResult::Ok;
         break;
     case BedSleepingResult::NOT_POSSIBLE_HERE:
-        bed_enter_result = BedEnterResult::NotPossibleHere;
+        bed_enter_result = endstone::PlayerBedEnterEvent::BedEnterResult::NotPossibleHere;
         break;
     case BedSleepingResult::NOT_POSSIBLE_NOW:
-        bed_enter_result = BedEnterResult::NotPossibleNow;
+        bed_enter_result = endstone::PlayerBedEnterEvent::BedEnterResult::NotPossibleNow;
         break;
     case BedSleepingResult::TOO_FAR_AWAY:
-        bed_enter_result = BedEnterResult::TooFarAway;
+        bed_enter_result = endstone::PlayerBedEnterEvent::BedEnterResult::TooFarAway;
         break;
     case BedSleepingResult::NOT_SAFE:
-        bed_enter_result = BedEnterResult::NotSafe;
+        bed_enter_result = endstone::PlayerBedEnterEvent::BedEnterResult::NotSafe;
         break;
     default:
         break;
