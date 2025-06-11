@@ -12,7 +12,7 @@ def cls():
 
 def test_skin_invalid_data_shape(cls):
     skin_id = "test_skin"
-    skin_image = np.random.randint(255, size=(16, 32, 3), dtype=np.uint8)
+    skin_image = np.random.randint(255, size=(16, 32, 2), dtype=np.uint8)
 
     with pytest.raises(TypeError):
         cls(skin_id, skin_image)
