@@ -241,7 +241,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("address", &PacketSendEvent::getAddress,
                                "Gets the network address to which this packet is being sent.")
         .def_property_readonly("sub_client_id", &PacketSendEvent::getSubClientId,
-                               "Gets the SubClient ID (0 = primary client; 1–3 = split-screen clients).");
+                               "Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).");
 
     py::class_<PluginEnableEvent, ServerEvent>(m, "PluginEnableEvent", "Called when a plugin is enabled.")
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference);

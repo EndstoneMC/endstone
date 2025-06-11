@@ -14,15 +14,14 @@
 
 #include "bedrock/network/network_system.h"
 
-#include <endstone/core/util/socket_address.h>
 #include <entt/entt.hpp>
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
 #include "endstone/core/level/level.h"
-#include "endstone/core/network/data_packet.h"
 #include "endstone/core/server.h"
+#include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/packet_send_event.h"
 #include "endstone/runtime/hook.h"
 

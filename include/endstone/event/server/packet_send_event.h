@@ -26,7 +26,7 @@ class PacketSendEvent : public Cancellable<ServerEvent> {
 public:
     ENDSTONE_EVENT(PacketSendEvent);
 
-    PacketSendEvent(Player *player, int packet_id, std::string_view payload, SocketAddress address,
+    PacketSendEvent(Player *player, const int packet_id, std::string_view payload, SocketAddress address,
                     const int sub_client_id)
         : player_(player), packet_id_(packet_id), payload_(payload), address_(std::move(address)),
           sub_client_id_(sub_client_id)
@@ -89,7 +89,7 @@ public:
     /**
      * @brief Gets the SubClient ID.
      *
-     * @note Range is 0–3 (0 = primary client; 1–3 = split-screen clients).
+     * @note Range is 0 to 3 (0 = primary client; 1-3 = split-screen clients).
      *
      * @return The SubClient ID.
      */
