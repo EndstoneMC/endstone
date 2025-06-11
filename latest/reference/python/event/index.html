@@ -1952,6 +1952,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.event.PacketReceiveEvent.address" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;address
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.event.PacketReceiveEvent.packet_id" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;packet_id
@@ -1981,6 +1994,19 @@ For latest updates join the chat on
     <a href="#endstone.event.PacketReceiveEvent.player" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;player
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PacketReceiveEvent.sub_client_id" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;sub_client_id
       </span>
     </a>
 
@@ -4918,6 +4944,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.event.PacketReceiveEvent.address" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;address
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.event.PacketReceiveEvent.packet_id" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;packet_id
@@ -4947,6 +4986,19 @@ For latest updates join the chat on
     <a href="#endstone.event.PacketReceiveEvent.player" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;player
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PacketReceiveEvent.sub_client_id" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;sub_client_id
       </span>
     </a>
 
@@ -8950,6 +9002,22 @@ For latest updates join the chat on
       </thead>
       <tbody>
           <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            address
+
+
+  
+      property
+   (endstone.event.PacketReceiveEvent.address)" href="#endstone.event.PacketReceiveEvent.address">address</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            SocketAddress (endstone._internal.endstone_python.SocketAddress)" href="../misc/#endstone.util.SocketAddress">SocketAddress</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the network address to which this packet is being sent.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
             <td><code><a class="autorefs autorefs-internal" title="            packet_id
 
 
@@ -8998,6 +9066,22 @@ For latest updates join the chat on
               </div>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            sub_client_id
+
+
+  
+      property
+   (endstone.event.PacketReceiveEvent.sub_client_id)" href="#endstone.event.PacketReceiveEvent.sub_client_id">sub_client_id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -9011,6 +9095,30 @@ For latest updates join the chat on
 
 
 
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.event.PacketReceiveEvent.address" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">address</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.event.PacketReceiveEvent.address" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            SocketAddress (endstone._internal.endstone_python.SocketAddress)" href="../misc/#endstone.util.SocketAddress">SocketAddress</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets the network address to which this packet is being sent.</p>
+
+    </div>
+
+</div>
 
 <div class="doc doc-object doc-attribute">
 
@@ -9079,7 +9187,32 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the player involved in this event</p>
+        <p>Gets the player involved in this event
+NOTE: This may return None if the packet is sent before the player completes the login process.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.event.PacketReceiveEvent.sub_client_id" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">sub_client_id</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.event.PacketReceiveEvent.sub_client_id" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sub_client_id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).</p>
 
     </div>
 
@@ -9211,7 +9344,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the SubClient ID (0 = primary client; 1–3 = split-screen clients).</p>
+                <p>Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).</p>
               </div>
             </td>
           </tr>
@@ -9345,7 +9478,7 @@ NOTE: This may return None if the packet is sent before the player completes the
 
     <div class="doc doc-contents ">
 
-        <p>Gets the SubClient ID (0 = primary client; 1–3 = split-screen clients).</p>
+        <p>Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).</p>
 
     </div>
 
