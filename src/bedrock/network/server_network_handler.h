@@ -71,6 +71,7 @@ public:
 
 private:
     friend class endstone::core::EndstoneServer;
+    friend class NetworkConnection;
     friend class NetworkSystem;
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
                                                  SubClientId);

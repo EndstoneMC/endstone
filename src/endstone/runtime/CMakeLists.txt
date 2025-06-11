@@ -23,6 +23,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/level.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/network_connection.cpp
         bedrock_hooks/network_system.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/raknet_socket2.cpp

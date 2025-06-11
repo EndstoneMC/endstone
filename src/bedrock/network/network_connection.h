@@ -14,7 +14,13 @@
 
 #pragma once
 
+#include <array>
+#include <bitset>
 #include <queue>
+
+#include "bedrock/bedrock.h"
+#include "bedrock/network/network_identifier.h"
+#include "bedrock/network/network_peer.h"
 
 class NetworkConnection {
 public:
@@ -24,6 +30,12 @@ public:
     };
     NetworkConnection() = delete;
 
+    [[nodiscard]] bool isChannelPaused(uint32_t) const;
+    void setChannelPaused(uint32_t, bool);
+    [[nodiscard]] ENDSTONE_HOOK NetworkPeer::DataStatus receivePacket(
+        std::string &receive_buffer, const NetworkPeer::PacketRecvTimepointPtr &timepoint_ptr);
+    void update();
+    void disconnect();
     [[nodiscard]] bool shouldCloseConnection() const
     {
         return should_close_connection_;
@@ -37,7 +49,6 @@ public:
     std::weak_ptr<class BatchedNetworkPeer> batched_peer;
     std::weak_ptr<class LatencyNetworkPeer> latency_peer;
     std::shared_ptr<NetworkPeer> peer;
-    // std::shared_ptr<NetworkPeer> transport_peer;
     std::chrono::steady_clock::time_point last_packet_time;
     std::chrono::steady_clock::time_point closed_time;
 

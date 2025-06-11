@@ -43,6 +43,16 @@ bool Packet::isValid() const
     return true;
 }
 
+Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const SubClientId &sub_id)
+{
+    client_sub_id_ = sub_id;
+    auto result = read(stream);
+    if (!result.ignoreError()) {
+        return BEDROCK_RETHROW(result);
+    }
+    return result;
+}
+
 SubClientId Packet::getClientSubId() const
 {
     return client_sub_id_;

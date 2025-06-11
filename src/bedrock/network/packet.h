@@ -274,6 +274,8 @@ public:
     [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &stream);
     [[nodiscard]] virtual bool disallowBatching() const;
     [[nodiscard]] virtual bool isValid() const;
+
+    Bedrock::Result<void> readNoHeader(ReadOnlyBinaryStream &stream, const SubClientId &sub_id);
     [[nodiscard]] SubClientId getClientSubId() const;
     [[nodiscard]] Compressibility getCompressible() const;
     [[nodiscard]] NetworkPeer::Reliability getReliability() const;

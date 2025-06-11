@@ -1,4 +1,4 @@
-timestamp = 1749292462
+timestamp = 1749643113
 version = "1.21.84"
 
 [windows]
@@ -51,6 +51,8 @@ version = "1.21.84"
 # Mob
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 41530256
 "?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 41526736
+# NetworkConnection
+"?receivePacket@NetworkConnection@@QEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z" = 13034848
 # NetworkSystem
 "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z" = 13077824
 "?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 13078736
@@ -142,6 +144,8 @@ version = "1.21.84"
 # Mob
 "_ZN3Mob9knockbackEP5Actorifffff" = 129783648
 "_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 129780400
+# NetworkConnection
+"_ZN17NetworkConnection13receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE" = 82225488
 # NetworkSystem
 "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId" = 82197024
 "_ZN13NetworkSystem14sendToMultipleERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet" = 82197824

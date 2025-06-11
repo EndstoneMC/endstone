@@ -2409,6 +2409,11 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     Called when the server receives a packet from a connected client.
     """
     @property
+    def address(self) -> SocketAddress:
+        """
+        Gets the network address to which this packet is being sent.
+        """
+    @property
     def packet_id(self) -> int:
         """
         Gets the ID of the packet.
@@ -2425,6 +2430,12 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     def player(self) -> Player:
         """
         Gets the player involved in this event
+        NOTE: This may return None if the packet is sent before the player completes the login process.
+        """
+    @property
+    def sub_client_id(self) -> int:
+        """
+        Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).
         """
 class PacketSendEvent(ServerEvent, Cancellable):
     """
@@ -2457,7 +2468,7 @@ class PacketSendEvent(ServerEvent, Cancellable):
     @property
     def sub_client_id(self) -> int:
         """
-        Gets the SubClient ID (0 = primary client; 1–3 = split-screen clients).
+        Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).
         """
 class Permissible:
     """
