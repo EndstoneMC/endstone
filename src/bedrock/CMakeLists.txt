@@ -93,6 +93,7 @@ add_library(bedrock STATIC
         world/level/explosion.cpp
         world/level/level.cpp
         world/level/biome/registry/biome_registry.cpp
+        world/level/block/bed_block.cpp
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
         world/level/block/block_legacy.cpp

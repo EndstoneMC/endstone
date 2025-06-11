@@ -90,7 +90,6 @@ class CraftingContainer;
 class CraftingContext;
 class DataLoadHelper;
 class DeathTickingComponent;
-class Difficulty;
 class DimensionBrightnessRamp;
 class DimensionConversionData;
 class DimensionManager;

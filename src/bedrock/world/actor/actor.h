@@ -272,6 +272,8 @@ public:
     [[nodiscard]] bool isInWater() const;
     [[nodiscard]] bool isInLava() const;
     [[nodiscard]] bool isClientSide() const;
+    BlockSource &getDimensionBlockSource() const;
+    [[nodiscard]] const BlockSource &getDimensionBlockSourceConst() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel();
     [[nodiscard]] const Level &getLevel() const;
@@ -308,6 +310,10 @@ public:
     [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;
     [[nodiscard]] const ItemStack &getOffhandSlot() const;
     [[nodiscard]] const ItemStack &getArmor(ArmorSlot) const;
+    bool isCreative() const;
+    bool isAdventure() const;
+    bool isSurvival() const;
+    bool isSpectator() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);

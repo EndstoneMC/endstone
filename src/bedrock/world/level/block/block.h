@@ -69,6 +69,7 @@ public:
     const AABB &getUIShape(AABB &buffer) const;
     bool getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
+    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getThickness() const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
