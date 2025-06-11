@@ -976,7 +976,7 @@
     <member refid="classendstone_1_1PacketSendEvent_1a0413bb418f5599517cc3b6e1f0832ed4" kind="variable"><name>address_</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1ab71556ab20b8c96135c756337ffa1a78" kind="variable"><name>sub_client_id_</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a0dd456687bcaac313777f30cfd48ded0" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1PacketSendEvent_1afbbdae41c71c48d40a82d9f40aa006c3" kind="function"><name>PacketSendEvent</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a5d4752bfb59aa606b2a92c577f1ca251" kind="function"><name>PacketSendEvent</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" kind="function"><name>getPacketId</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" kind="function"><name>getPayload</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" kind="function"><name>setPayload</name></member>

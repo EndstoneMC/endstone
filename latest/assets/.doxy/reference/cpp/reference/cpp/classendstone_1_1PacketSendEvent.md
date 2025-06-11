@@ -94,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PacketSendEvent**](classendstone_1_1PacketSendEvent.md)) <br> |
-|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) \* player, int packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, const int sub\_client\_id) <br> |
+|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) \* player, const int packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, const int sub\_client\_id) <br> |
 |  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Gets the network address to which this packet is being sent._  |
 |  int | [**getPacketId**](#function-getpacketid) () const<br>_Gets the ID of the packet._  |
 |  std::string\_view | [**getPayload**](#function-getpayload) () const<br>_Gets the raw packet data_ **excluding** _the header._ |
@@ -229,7 +229,7 @@ endstone::PacketSendEvent::ENDSTONE_EVENT (
 ```C++
 inline endstone::PacketSendEvent::PacketSendEvent (
     Player * player,
-    int packet_id,
+    const int packet_id,
     std::string_view payload,
     SocketAddress address,
     const int sub_client_id
@@ -363,7 +363,7 @@ inline int endstone::PacketSendEvent::getSubClientId () const
 
 **Note:**
 
-Range is 0–3 (0 = primary client; 1–3 = split-screen clients).
+Range is 0 to 3 (0 = primary client; 1-3 = split-screen clients).
 
 
 
