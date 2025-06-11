@@ -18,9 +18,12 @@
 
 #include <entt/entt.hpp>
 
+#include "endstone/core/block/block.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_bed_enter_event.h"
+#include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_teleport_event.h"
@@ -72,4 +75,54 @@ bool Player::drop(const ItemStack &item, bool randomly)
         return false;
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::drop, this, item, randomly);
+}
+
+BedSleepingResult Player::startSleepInBed(BlockPos const &pos)
+{
+    auto convertFromEndstoneResult = [](endstone::PlayerBedEnterEvent::BedSleepingResult res) -> BedSleepingResult {
+        switch (res) {
+        case endstone::PlayerBedEnterEvent::BedSleepingResult::OK:
+            return BedSleepingResult::OK;
+        case endstone::PlayerBedEnterEvent::BedSleepingResult::NOT_POSSIBLE_HERE:
+            return BedSleepingResult::NOT_POSSIBLE_HERE;
+        case endstone::PlayerBedEnterEvent::BedSleepingResult::NOT_POSSIBLE_NOW:
+            return BedSleepingResult::NOT_POSSIBLE_NOW;
+        case endstone::PlayerBedEnterEvent::BedSleepingResult::TOO_FAR_AWAY:
+            return BedSleepingResult::TOO_FAR_AWAY;
+        case endstone::PlayerBedEnterEvent::BedSleepingResult::OTHER_PROBLEM:
+            return BedSleepingResult::OTHER_PROBLEM;
+        case endstone::PlayerBedEnterEvent::BedSleepingResult::NOT_SAFE:
+            return BedSleepingResult::NOT_SAFE;
+        case endstone::PlayerBedEnterEvent::BedSleepingResult::BED_OBSTRUCTED:
+            return BedSleepingResult::BED_OBSTRUCTED;
+        default:
+            return BedSleepingResult::OTHER_PROBLEM;
+        }
+    };
+
+    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
+    const auto block = player.getDimension().getBlockAt(pos.x,pos.y,pos.z);
+    endstone::PlayerBedEnterEvent e(player, *block, endstone::PlayerBedEnterEvent::BedSleepingResult::OK);
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return convertFromEndstoneResult(e.getBedEnterResult());
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::startSleepInBed, this, pos);
+}
+
+void Player::stopSleepInBed(bool forcefulWakeUp, bool updateLevelList)
+{
+     if(isSleeping()) {
+         const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+         auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
+         auto pos = player_respawn_point_.spawn_block_pos;
+         const auto block = player.getDimension().getBlockAt(pos.x,pos.y,pos.z);
+         endstone::PlayerBedLeaveEvent e(player, *block);
+         server.getPluginManager().callEvent(e);
+         if (e.isCancelled()) {
+             return;
+         }
+     }
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::stopSleepInBed, this, forcefulWakeUp, updateLevelList);
 }

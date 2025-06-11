@@ -207,6 +207,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                       "Gets or sets the location that this player moved from.")
         .def_property("to_location", &PlayerTeleportEvent::getTo, &PlayerTeleportEvent::setTo,
                       "Gets or sets the location that this player moved to.");
+    py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
+        m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
+    py::class_<PlayerBedLeaveEvent, PlayerEvent, ICancellable>(m, "PlayerBedLeaveEvent",
+                                                               "Called when a player is leaving a bed.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a server-related event");

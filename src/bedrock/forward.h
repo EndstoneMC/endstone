@@ -226,7 +226,6 @@ struct SyncedClientOptionsComponent;
 // Enums
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
-enum class BedSleepingResult;
 enum class BlockActorType;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;

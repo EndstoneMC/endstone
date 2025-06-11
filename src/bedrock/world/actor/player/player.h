@@ -39,6 +39,16 @@
 
 class PlayerRespawnRandomizer;
 
+enum class BedSleepingResult : int {
+    OK = 0,
+    NOT_POSSIBLE_HERE = 1,
+    NOT_POSSIBLE_NOW = 2,
+    TOO_FAR_AWAY = 3,
+    OTHER_PROBLEM = 4,
+    NOT_SAFE = 5,
+    BED_OBSTRUCTED = 6,
+};
+
 class Player : public Mob {
 public:
     Player(Level &, PacketSender &, GameType, bool, const NetworkIdentifier &, SubClientId, mce::UUID,
@@ -84,8 +94,8 @@ public:
     virtual void displayTextObjectWhisperMessage(std::string const &, std::string const &, std::string const &) = 0;
     virtual void displayWhisperMessage(std::string const &, std::string const &, std::string const &,
                                        std::string const &) = 0;
-    virtual BedSleepingResult startSleepInBed(BlockPos const &) = 0;
-    virtual void stopSleepInBed(bool, bool) = 0;
+    ENDSTONE_HOOK virtual BedSleepingResult startSleepInBed(BlockPos const &);
+    ENDSTONE_HOOK virtual void stopSleepInBed(bool, bool);
     virtual bool canStartSleepInBed() = 0;
     virtual void openSign(BlockPos const &, bool) = 0;
     virtual void playEmote(std::string const &, bool) = 0;
