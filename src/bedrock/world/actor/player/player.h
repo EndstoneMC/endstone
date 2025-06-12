@@ -160,6 +160,7 @@ public:
     void setBedRespawnPosition(const BlockPos &);
     bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
     bool canSleep() const;
+    void stopGliding();
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;

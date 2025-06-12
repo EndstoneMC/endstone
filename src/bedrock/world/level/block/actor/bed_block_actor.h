@@ -14,27 +14,18 @@
 
 #pragma once
 
-#include "bedrock/entity/components/replay_state_policy.h"
-#include "bedrock/world/actor/actor_history.h"
+#include "bedrock/world/level/block/actor/block_actor.h"
 
-class ReplayStateComponent {
+class BedBlockActor : public BlockActor {
 public:
-    ReplayStateComponent(std::unique_ptr<ActorHistory>, std::unique_ptr<IReplayStatePolicy>);
-    [[nodiscard]] std::uint64_t getCurrentTick() const
+    void startSleepingOn()
     {
-        return current_tick_;
+        pet_sleeping_on_bed_ = ActorUniqueID::INVALID_ID;
     }
-
-    void clearHistory()
-    {
-        if (history_) {
-            history_->clearFrames();
-        }
-    }
-    bool force_correction;
 
 private:
-    std::unique_ptr<ActorHistory> history_;
-    std::unique_ptr<IReplayStatePolicy> policy_;
-    std::uint64_t current_tick_;
+    int dye_color;
+    bool dirty;
+    ActorUniqueID pet_sleeping_on_bed_;
+    const Block &bed_block;
 };

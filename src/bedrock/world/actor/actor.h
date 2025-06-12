@@ -279,6 +279,7 @@ public:
     [[nodiscard]] const Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
     [[nodiscard]] Vec3 const &getPosPrev() const;
+    void setPos(const Vec3 &);
     void applyImpulse(Vec3 const &impulse);
     [[nodiscard]] Vec3 const &getPosDelta() const;
     void setPosDelta(const Vec3 &);
@@ -289,6 +290,9 @@ public:
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
     [[nodiscard]] Actor *getVehicle() const;
     [[nodiscard]] bool isRiding() const;
+    void stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles, bool);
+    [[nodiscard]] bool hasPassenger() const;
+    void removeAllPassengers(bool being_destroyed);
     [[nodiscard]] bool hasCategory(ActorCategory categories) const;
     [[nodiscard]] bool isJumping() const;
     [[nodiscard]] std::vector<std::string> getTags() const;
@@ -304,6 +308,7 @@ public:
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
+    void setFallDistance(float);
     [[nodiscard]] bool isDead() const;
     EntityContext &getEntity();
     [[nodiscard]] const EntityContext &getEntity() const;
@@ -314,9 +319,13 @@ public:
     bool isAdventure() const;
     bool isSurvival() const;
     bool isSpectator() const;
+    void queueBBUpdateFromValue(const Vec2 &);
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
+
+protected:
+    void _setHeightOffset(const float);
 
 private:
     mutable EntityContext entity_context_;  // +8

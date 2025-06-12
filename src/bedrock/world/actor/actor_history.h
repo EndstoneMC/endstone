@@ -14,4 +14,7 @@
 
 #pragma once
 
-class ActorHistory {};
+class ActorHistory {
+public:
+    void clearFrames();
+};

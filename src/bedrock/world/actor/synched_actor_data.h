@@ -93,6 +93,9 @@ public:
     template <typename T>
     void set(SynchedActorData::ID, const T &);
 
+    template <typename T>
+    void setFlag(SynchedActorData::ID id, int index);
+
 private:
     gsl::not_null<SynchedActorData *> _get() const;
 

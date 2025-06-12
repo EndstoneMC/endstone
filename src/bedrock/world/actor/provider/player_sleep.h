@@ -14,27 +14,13 @@
 
 #pragma once
 
-#include "bedrock/entity/components/replay_state_policy.h"
-#include "bedrock/world/actor/actor_history.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 
-class ReplayStateComponent {
-public:
-    ReplayStateComponent(std::unique_ptr<ActorHistory>, std::unique_ptr<IReplayStatePolicy>);
-    [[nodiscard]] std::uint64_t getCurrentTick() const
-    {
-        return current_tick_;
-    }
-
-    void clearHistory()
-    {
-        if (history_) {
-            history_->clearFrames();
-        }
-    }
-    bool force_correction;
-
-private:
-    std::unique_ptr<ActorHistory> history_;
-    std::unique_ptr<IReplayStatePolicy> policy_;
-    std::uint64_t current_tick_;
-};
+namespace PlayerSleep {
+void initializePlayer(EntityContext &);
+short getSleepCounter(const EntityContext &);
+bool isSleepingLongEnough(const EntityContext &);
+void resetSleepCounter(EntityContext &);
+void setSleepCounter(EntityContext &, short);
+void setSleepCounterToMax(EntityContext &);
+}  // namespace PlayerSleep

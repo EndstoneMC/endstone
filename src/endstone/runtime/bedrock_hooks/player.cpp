@@ -18,6 +18,13 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/entity/components/block_source_component.h"
+#include "bedrock/entity/components/movement_interpolator_component.h"
+#include "bedrock/entity/components/replay_state_component.h"
+#include "bedrock/world/actor/provider/player_sleep.h"
+#include "bedrock/world/level/block/actor/bed_block_actor.h"
+#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/bed_block.h"
 #include "bedrock/world/level/difficulty.h"
 #include "endstone/core/block/block.h"
@@ -175,6 +182,81 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool fo
         startSleeping(bed_block_pos);
     }
     return bed_result;
+}
+
+void Player::startSleeping(BlockPos const &bed_block_pos)
+{
+    if (isRiding()) {
+        stopRiding(true, false, false, false);
+    }
+    if (isGliding()) {
+        stopGliding();
+    }
+    if (hasPassenger()) {
+        removeAllPassengers(false);
+    }
+
+    setBedRespawnPosition(bed_block_pos);
+    entity_data.set<BlockPos>(static_cast<SynchedActorData::ID>(ActorDataIDs::BED_POSITION), bed_block_pos);
+
+    if (auto *replay = tryGetComponent<ReplayStateComponent>()) {
+        replay->clearHistory();
+    }
+
+    queueBBUpdateFromValue(Vec2(0.2f, 0.2f));
+    _setHeightOffset(0.2f);
+
+    BlockSource *block_source = nullptr;
+    if (auto *component = tryGetComponent<BlockSourceComponent>(); component) {
+        if (auto ref = component->tryGetBlockSource(); ref) {
+            block_source = &ref.value();
+        }
+    }
+
+    if (block_source == nullptr || !block_source->hasBlock(bed_block_pos)) {
+        setPos({bed_block_pos.x + 0.5f, bed_block_pos.y + 0.0625f, bed_block_pos.z + 0.5f});
+    }
+    else {
+        auto &block = block_source->getBlock(bed_block_pos);
+        switch (block.getState<int>("direction")) {
+        case Direction::SOUTH:
+            setRotationWrapped({0.0f, 0.0f});
+            break;
+        case Direction::WEST:
+            setRotationWrapped({0.0f, 90.0f});
+            break;
+        case Direction::NORTH:
+            setRotationWrapped({0.0f, 180.0f});
+            break;
+        case Direction::EAST:
+            setRotationWrapped({0.0f, -90.0f});
+            break;
+        default:
+            break;
+        }
+        setPos({bed_block_pos.x + 0.5f, bed_block_pos.y + 0.90625F, bed_block_pos.z + 0.5f});
+        setSprinting(false);
+    }
+
+    if (auto *interp = tryGetComponent<MovementInterpolatorComponent>()) {
+        interp->reset();
+    }
+
+    setSleeping(true);
+    PlayerSleep::resetSleepCounter(getEntity());
+    setPosDelta(Vec3::ZERO);
+    if (!getLevel().isClientSide()) {
+        getLevel().updateSleepingPlayerList();
+    }
+
+    entity_data.setFlag<signed char>(static_cast<SynchedActorData::ID>(ActorDataIDs::PLAYER_FLAGS), 1);
+
+    if (auto *block_actor = getDimensionBlockSource().getBlockEntity(bed_block_pos)) {
+        if (block_actor->isType(BlockActorType::Bed)) {
+            const_cast<BedBlockActor *>(static_cast<const BedBlockActor *>(block_actor))->startSleepingOn();
+        }
+    }
+    setFallDistance(0.0F);
 }
 
 void Player::stopSleepInBed(bool forceful_wake_up, bool update_level_list)

@@ -14,27 +14,15 @@
 
 #pragma once
 
-#include "bedrock/entity/components/replay_state_policy.h"
-#include "bedrock/world/actor/actor_history.h"
-
-class ReplayStateComponent {
+class BlockSourceComponent {
 public:
-    ReplayStateComponent(std::unique_ptr<ActorHistory>, std::unique_ptr<IReplayStatePolicy>);
-    [[nodiscard]] std::uint64_t getCurrentTick() const
+    BlockSourceComponent(WeakRef<BlockSource>);
+    [[nodiscard]] StackRefResult<BlockSource> tryGetBlockSource() const
     {
-        return current_tick_;
+        return block_source_.unwrap();
     }
-
-    void clearHistory()
-    {
-        if (history_) {
-            history_->clearFrames();
-        }
-    }
-    bool force_correction;
 
 private:
-    std::unique_ptr<ActorHistory> history_;
-    std::unique_ptr<IReplayStatePolicy> policy_;
-    std::uint64_t current_tick_;
+    WeakRef<BlockSource> block_source_;
 };
+static_assert(sizeof(BlockSourceComponent) == 16);

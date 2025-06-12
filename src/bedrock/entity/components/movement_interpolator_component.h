@@ -14,27 +14,20 @@
 
 #pragma once
 
-#include "bedrock/entity/components/replay_state_policy.h"
-#include "bedrock/world/actor/actor_history.h"
-
-class ReplayStateComponent {
-public:
-    ReplayStateComponent(std::unique_ptr<ActorHistory>, std::unique_ptr<IReplayStatePolicy>);
-    [[nodiscard]] std::uint64_t getCurrentTick() const
-    {
-        return current_tick_;
-    }
-
-    void clearHistory()
-    {
-        if (history_) {
-            history_->clearFrames();
-        }
-    }
-    bool force_correction;
-
-private:
-    std::unique_ptr<ActorHistory> history_;
-    std::unique_ptr<IReplayStatePolicy> policy_;
-    std::uint64_t current_tick_;
+struct MovementInterpolatorComponent {
+    void lerpTo(const Vec3 &, const Vec2 &, int);
+    void lerpToRotation(const Vec2 &, int);
+    void reset();
+    void setHeadYawLerpTarget(float, int);
+    bool isActive() const;
+    static void startLerpTo(EntityContext &, const Vec3 &, const Vec2 &, int);
+    Vec3 pos;
+    Vec2 rot;
+    float head_yaw;
+    int position_steps;
+    int rotation_steps;
+    int head_yaw_steps;
+    bool player_control_server_vehicle;
+    static constexpr int MAX_LERP_STEPS = 3;
 };
+static_assert(sizeof(MovementInterpolatorComponent) == 40);
