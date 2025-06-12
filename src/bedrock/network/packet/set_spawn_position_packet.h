@@ -12,34 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/block/states/block_state.h"
+#pragma once
 
-size_t BlockState::getID() const
-{
-    return id_;
-}
+#include <string>
 
-const HashedString &BlockState::getName() const
-{
-    return name_;
-}
+#include "bedrock/network/network_block_position.h"
+#include "bedrock/network/packet.h"
 
-uint32_t BlockStateInstance::getMask() const
-{
-    return mask_;
-}
+enum class SpawnPositionType : int {
+    PlayerRespawn = 0,
+    WorldSpawn = 1,
+};
 
-std::uint32_t BlockStateInstance::getNumBits() const
-{
-    return num_bits_;
-}
-
-bool BlockStateInstance::isValidData(std::uint32_t id) const
-{
-    return (mask_ & id) >> (end_bit_ - num_bits_ + 1) < variation_count_;
-}
-
-const BlockState &BlockStateInstance::getState() const
-{
-    return *state_;
-}
+class SetSpawnPositionPacket : public Packet {
+public:
+    NetworkBlockPosition pos;
+    SpawnPositionType spawn_pos_type;
+    DimensionType dimension_type;
+    NetworkBlockPosition spawn_block_pos;
+};
+static_assert(sizeof(SetSpawnPositionPacket) == 80);

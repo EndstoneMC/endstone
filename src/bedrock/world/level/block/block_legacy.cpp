@@ -20,7 +20,7 @@
 bool BlockLegacy::hasProperty(BlockProperty property) const
 {
     return (static_cast<std::underlying_type_t<BlockProperty>>(property) &
-           static_cast<std::underlying_type_t<BlockProperty>>(properties_)) != 0;
+            static_cast<std::underlying_type_t<BlockProperty>>(properties_)) != 0;
 }
 
 const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
@@ -28,9 +28,24 @@ const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
     return BEDROCK_CALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
 }
 
+bool BlockLegacy::hasState(const HashedString &name) const
+{
+    if (state_name_map_.contains(name)) {
+        return true;
+    }
+
+    for (const auto &altered_state : altered_state_collections_) {
+        if (altered_state->getBlockState().getName() == name) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 bool BlockLegacy::requiresCorrectToolForDrops() const
 {
-    return requires_correct_tool_for_drops;
+    return requires_correct_tool_for_drops_;
 }
 
 bool BlockLegacy::isSolid() const
@@ -109,4 +124,17 @@ void BlockLegacy::forEachBlockPermutation(std::function<bool(Block const &)> cal
             (void)callback(*block_permutation);
         }
     }
+}
+
+std::optional<int> BlockLegacy::_tryLookupAlteredStateCollection(size_t id, DataID data) const
+{
+    if (altered_state_collections_.empty()) {
+        return std::nullopt;
+    }
+    for (const auto &altered_state : altered_state_collections_) {
+        if (altered_state->getBlockState().getID() == id) {
+            return altered_state->getState(*this, data);
+        }
+    }
+    return std::nullopt;
 }

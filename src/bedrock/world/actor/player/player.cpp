@@ -20,10 +20,12 @@
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
+#include "bedrock/network/packet/set_spawn_position_packet.h"
 #include "bedrock/symbol.h"
 #include "bedrock/textobject/text_object.h"
 #include "bedrock/util/color_format.h"
 #include "bedrock/world/actor/actor_flags.h"
+#include "bedrock/world/actor/actor_value_validation.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 
@@ -117,6 +119,33 @@ void Player::setBedRespawnPosition(const BlockPos &bed_position)
     object.addChild<TextObjectText>(ColorFormat::GRAY);
     object.addChild<TextObjectLocalizedText>("tile.bed.respawnSet");
     displayTextObjectMessage(object, "", "");
+}
+
+bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, DimensionType dimension)
+{
+    auto pos = getPosition();
+    pos.y = std::ceilf(getAABB().min.y);
+    const auto is_set =
+        dimension != player_respawn_point_.dimension || player_respawn_point_.spawn_block_pos != spawn_block_position;
+    player_respawn_point_.player_position = pos;
+    player_respawn_point_.dimension = dimension;
+    ActorValueValidation::validateBlockPos(spawn_block_position, "1 setSpawnPoint");
+    player_respawn_point_.spawn_block_pos = spawn_block_position;
+
+    if (is_initial_spawn_done_ && isAlive() && !respawning_from_the_end_ && !isLoading()) {
+        moveSpawnView(player_respawn_point_.player_position, player_respawn_point_.dimension);
+    }
+
+    if (!getLevel().isClientSide()) {
+        const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetSpawnPosition);
+        auto &pk = *std::static_pointer_cast<SetSpawnPositionPacket>(packet);
+        pk.pos = player_respawn_point_.player_position;
+        pk.spawn_pos_type = SpawnPositionType::PlayerRespawn;
+        pk.dimension_type = player_respawn_point_.dimension;
+        pk.spawn_block_pos = player_respawn_point_.spawn_block_pos;
+        sendNetworkPacket(pk);
+    }
+    return is_set;
 }
 
 bool Player::canSleep() const

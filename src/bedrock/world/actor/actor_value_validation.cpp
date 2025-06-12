@@ -12,34 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/block/states/block_state.h"
+#include "bedrock/world/actor/actor_value_validation.h"
 
-size_t BlockState::getID() const
+bool ActorValueValidation::validateBlockPos(const BlockPos &pos, const char *caller)
 {
-    return id_;
-}
-
-const HashedString &BlockState::getName() const
-{
-    return name_;
-}
-
-uint32_t BlockStateInstance::getMask() const
-{
-    return mask_;
-}
-
-std::uint32_t BlockStateInstance::getNumBits() const
-{
-    return num_bits_;
-}
-
-bool BlockStateInstance::isValidData(std::uint32_t id) const
-{
-    return (mask_ & id) >> (end_bit_ - num_bits_ + 1) < variation_count_;
-}
-
-const BlockState &BlockStateInstance::getState() const
-{
-    return *state_;
+    if (pos.x <= MAX_ALLOWED_INT && pos.z > MAX_ALLOWED_INT) {
+        return false;
+    }
+    if (pos.y < MIN_ALLOWED_INT || pos.y > MAX_ALLOWED_INT) {
+        return false;
+    }
+    return true;
 }

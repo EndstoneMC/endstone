@@ -70,6 +70,7 @@ add_library(bedrock STATIC
         world/actor/actor.cpp
         world/actor/actor_damage_source.cpp
         world/actor/actor_definition_identifier.cpp
+        world/actor/actor_value_validation.cpp
         world/actor/mob.cpp
         world/actor/synched_actor_data.cpp
         world/actor/item/item_actor.cpp

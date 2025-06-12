@@ -290,7 +290,13 @@ public:
     [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
     [[nodiscard]] bool hasState(const HashedString &) const;
     template <typename T>
-    int getState(const size_t &state_id, DataID data) const;
+    T getState(const size_t &id, DataID data) const
+    {
+        if (const auto it = states_.find(id); it != states_.end()) {
+            return it->second.get<T>(data);
+        }
+        return _tryLookupAlteredStateCollection(id, data).value_or(0);
+    }
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
@@ -309,9 +315,24 @@ public:
 
     // Endstone begins
     template <typename T>
-    int getState(const HashedString &name, DataID data) const;
+    T getState(const HashedString &name, DataID data) const
+    {
+        if (const auto it = state_name_map_.find(name); it != state_name_map_.end()) {
+            return getState<T>(it->second, data);
+        }
+        for (const auto &altered_state : altered_state_collections_) {
+            if (altered_state->getBlockState().getName() == name) {
+                return altered_state->getState(*this, data).value_or(0);
+            }
+        }
+        return 0;
+    }
     // Endstone ends
 
+private:
+    std::optional<int> _tryLookupAlteredStateCollection(size_t, DataID) const;
+
+public:
     std::string description_id;  // +8
 
 private:
@@ -385,5 +406,26 @@ private:
     std::unique_ptr<void *> block_state_group_;
     std::unique_ptr<void *> resource_drops_strategy_;
     IntRange experience_drop_;
-    bool requires_correct_tool_for_drops;
+    bool requires_correct_tool_for_drops_;
+    BlockComponentStorage net_ease_component_storage_;
+
+public:
+    struct AlteredStateCollection {
+        [[nodiscard]] const BlockState &getBlockState() const
+        {
+            return block_state_;
+        }
+        [[nodiscard]] virtual std::optional<int> getState(const BlockLegacy &, int) const = 0;
+        [[nodiscard]] virtual const Block *setState(const BlockLegacy &, int, int) const = 0;
+
+    protected:
+        AlteredStateCollection(const BlockState &);
+        virtual ~AlteredStateCollection() = default;
+
+    private:
+        std::reference_wrapper<const BlockState> block_state_;
+    };
+
+private:
+    std::vector<std::shared_ptr<AlteredStateCollection>> altered_state_collections_;
 };

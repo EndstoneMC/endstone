@@ -112,6 +112,11 @@ public:
         return !(*this == rhs);
     }
 
+    operator Vec3() const
+    {
+        return Vec3(x, y, z);
+    }
+
     [[nodiscard]] BlockPos offset(int dx, int dy, int dz) const
     {
         return {x + dx, y + dy, z + dz};
