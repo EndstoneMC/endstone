@@ -129,5 +129,5 @@ public:
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
 
-    bool isEmptyBlock(const BlockPos &) const;
+    [[nodiscard]] bool isEmptyBlock(const BlockPos &) const;
 };

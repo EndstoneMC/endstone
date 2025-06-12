@@ -286,8 +286,9 @@ public:
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 
+    [[nodiscard]] bool hasProperty(BlockProperty property) const;
     [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
-    bool hasState(const HashedString &) const;
+    [[nodiscard]] bool hasState(const HashedString &) const;
     template <typename T>
     int getState(const size_t &state_id, DataID data) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
@@ -295,6 +296,7 @@ public:
     [[nodiscard]] float getThickness() const;
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
+    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] const std::string &getDescriptionId() const;
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;

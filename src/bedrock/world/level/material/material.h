@@ -29,7 +29,10 @@ public:
     Material &operator=(const Material &) = delete;
     bool operator==(const Material &) const;
     bool operator!=(const Material &) const;
-    [[nodiscard]] bool isType(MaterialType) const;
+    [[nodiscard]] bool isType(MaterialType type) const
+    {
+        return type == MaterialType::Any || type == type_;
+    }
     [[nodiscard]] bool isSolidBlocking() const;
     [[nodiscard]] bool isLiquid() const;
     [[nodiscard]] bool getBlocksMotion() const;

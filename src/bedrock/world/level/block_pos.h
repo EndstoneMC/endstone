@@ -112,12 +112,35 @@ public:
         return !(*this == rhs);
     }
 
-    [[nodiscard]] BlockPos offset(int, int, int) const;
-    [[nodiscard]] BlockPos offset(const BlockPos &) const;
-    [[nodiscard]] BlockPos above() const;
-    [[nodiscard]] BlockPos above(int) const;
-    [[nodiscard]] BlockPos below() const;
-    [[nodiscard]] BlockPos below(int) const;
+    [[nodiscard]] BlockPos offset(int dx, int dy, int dz) const
+    {
+        return {x + dx, y + dy, z + dz};
+    }
+
+    [[nodiscard]] BlockPos offset(const BlockPos &other) const
+    {
+        return {x + other.x, y + other.y, z + other.z};
+    }
+
+    [[nodiscard]] BlockPos above() const
+    {
+        return offset(0, 1, 0);
+    }
+
+    [[nodiscard]] BlockPos above(int n) const
+    {
+        return offset(0, n, 0);
+    }
+
+    [[nodiscard]] BlockPos below() const
+    {
+        return offset(0, -1, 0);
+    }
+
+    [[nodiscard]] BlockPos below(int n) const
+    {
+        return offset(0, -n, 0);
+    }
 
     [[nodiscard]] BlockPos transform(Rotation rotation, Mirror mirror, const Vec3 &pivot) const
     {

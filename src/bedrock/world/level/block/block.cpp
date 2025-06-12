@@ -36,6 +36,11 @@ bool Block::operator==(const HashType64 &other) const
     return getHashedSerializedId() == other;
 }
 
+bool Block::hasProperty(BlockProperty property) const
+{
+    return legacy_block_->hasProperty(property);
+}
+
 Brightness Block::getLightEmission() const
 {
     return direct_data_.light_emission;
@@ -117,6 +122,11 @@ bool Block::getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &
 bool Block::requiresCorrectToolForDrops() const
 {
     return legacy_block_->requiresCorrectToolForDrops();
+}
+
+const Material &Block::getMaterial() const
+{
+    return legacy_block_->getMaterial();
 }
 
 float Block::getThickness() const

@@ -17,6 +17,12 @@
 #include "bedrock/symbol.h"
 #include "bedrock/world/item/registry/item_registry.h"
 
+bool BlockLegacy::hasProperty(BlockProperty property) const
+{
+    return (static_cast<std::underlying_type_t<BlockProperty>>(property) &
+           static_cast<std::underlying_type_t<BlockProperty>>(properties_)) != 0;
+}
+
 const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
 {
     return BEDROCK_CALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
@@ -45,6 +51,11 @@ float BlockLegacy::getTranslucency() const
 const std::vector<HashedString> &BlockLegacy::getTags() const
 {
     return tags_;
+}
+
+const Material &BlockLegacy::getMaterial() const
+{
+    return material_;
 }
 
 const std::string &BlockLegacy::getDescriptionId() const
