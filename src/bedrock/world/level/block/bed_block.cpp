@@ -15,7 +15,9 @@
 #include "bedrock/world/level/block/bed_block.h"
 
 #include "bedrock/world/direction.h"
+#include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
+#include "bedrock/world/level/material/material_type.h"
 
 std::optional<BlockPos> BedBlock::findWakeupPosition(BlockSource &region, const BlockPos &pos,
                                                      const std::optional<Vec3> &entered_bed_pos)
@@ -82,4 +84,21 @@ std::optional<BlockPos> BedBlock::findWakeupPosition(BlockSource &region, const 
     }
 
     return first_valid_standup_pos;
+}
+
+bool BedBlock::isDangerousSpawnPosition(BlockSource &region, const BlockPos &pos)
+{
+    const auto &block = region.getBlock(pos);
+    if (block.hasProperty(BlockProperty::CausesDamage) || block.getMaterial().isType(MaterialType::Lava) ||
+        block.getName() == VanillaBlockTypeIds::WitherRose) {
+        return true;
+    }
+
+    const auto &block_below = region.getBlock(pos.below());
+    if (block_below.hasProperty(BlockProperty::CausesDamage) || block_below.getMaterial().isType(MaterialType::Lava) ||
+        block_below.getName() == VanillaBlockTypeIds::WitherRose) {
+        return true;
+    }
+
+    return false;
 }

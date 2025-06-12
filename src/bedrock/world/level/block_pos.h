@@ -112,6 +112,9 @@ public:
         return !(*this == rhs);
     }
 
+    [[nodiscard]] BlockPos below() const;
+    [[nodiscard]] BlockPos below(int) const;
+
     [[nodiscard]] BlockPos transform(Rotation rotation, Mirror mirror, const Vec3 &pivot) const
     {
         BlockPos out = *this;

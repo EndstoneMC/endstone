@@ -26,6 +26,7 @@
 #include "bedrock/world/level/block/components/block_component_direct_data.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block/states/block_state.h"
+#include "bedrock/world/level/material/material.h"
 
 enum class BlockOcclusionType : int {
     Unknown = 0,
@@ -52,6 +53,11 @@ class Block {
 public:
     virtual ~Block() = default;
 
+    [[nodiscard]] HashType64 getHashedSerializedId() const;
+    [[nodiscard]] std::uint32_t getSerializationIdHashForNetwork() const;
+    [[nodiscard]] bool operator!=(const HashType64 &other) const;
+    [[nodiscard]] bool operator==(const HashType64 &other) const;
+    [[nodiscard]] bool hasProperty(BlockProperty) const;
     [[nodiscard]] Brightness getLightEmission() const;
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] bool isSolid() const;

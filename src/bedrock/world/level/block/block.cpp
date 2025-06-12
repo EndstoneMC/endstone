@@ -16,6 +16,26 @@
 
 #include "bedrock/world/level/block_source.h"
 
+HashType64 Block::getHashedSerializedId() const
+{
+    return serialization_id_hash_;
+}
+
+uint32_t Block::getSerializationIdHashForNetwork() const
+{
+    return serialization_id_hash_for_network_;
+}
+
+bool Block::operator!=(const HashType64 &other) const
+{
+    return !(*this == other);
+}
+
+bool Block::operator==(const HashType64 &other) const
+{
+    return getHashedSerializedId() == other;
+}
+
 Brightness Block::getLightEmission() const
 {
     return direct_data_.light_emission;

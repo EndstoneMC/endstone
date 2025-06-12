@@ -27,11 +27,10 @@
 #include "bedrock/world/level/clip_parameters.h"
 #include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_seed.h"
+#include "bedrock/world/level/material/material.h"
 
 class ILevel;
 class Level;
-class Material;
-class MaterialType;
 
 using ActorSpan = gsl::span<gsl::not_null<Actor *>>;
 using ConstActorSpan = gsl::span<gsl::not_null<const Actor *>>;
