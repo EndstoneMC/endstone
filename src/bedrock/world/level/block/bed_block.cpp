@@ -15,6 +15,7 @@
 #include "bedrock/world/level/block/bed_block.h"
 
 #include "bedrock/world/direction.h"
+#include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
 #include "bedrock/world/level/material/material_type.h"
@@ -101,4 +102,31 @@ bool BedBlock::isDangerousSpawnPosition(BlockSource &region, const BlockPos &pos
     }
 
     return false;
+}
+
+bool BedBlock::isValidStandUpPosition(BlockSource &region, const BlockPos &pos)
+{
+    const auto &block = region.getBlock(pos);
+    const auto is_bed = block.getName() == VanillaBlockTypeIds::Bed;
+    const auto &block_below = region.getBlock(pos.below());
+    if (AABB aabb; !block_below.getCollisionShape(aabb, region, pos, nullptr)) {
+        return false;
+    }
+
+    if (!is_bed && (region.isSolidBlockingBlock(pos) || block.getName() == VanillaBlockTypeIds::EndPortal ||
+                    block.getName() == VanillaBlockTypeIds::EndPortalFrame)) {
+        return false;
+    }
+
+    // Check that one block above is air
+    if (!region.isEmptyBlock(pos.above())) {
+        return false;
+    }
+
+    // If standing on a bed, ensure two blocks of clearance
+    if (is_bed && !region.isEmptyBlock(pos.above(2))) {
+        return false;
+    }
+
+    return true;
 }

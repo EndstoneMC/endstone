@@ -18,5 +18,7 @@
 
 namespace VanillaBlockTypeIds {
 static const HashedString Bed = "minecraft:bed";
+static const HashedString EndPortal = "minecraft:end_portal";
+static const HashedString EndPortalFrame = "minecraft:end_portal_frame";
 static const HashedString WitherRose = "minecraft:wither_rose";
 }  // namespace VanillaBlockTypeIds

@@ -112,6 +112,10 @@ public:
         return !(*this == rhs);
     }
 
+    [[nodiscard]] BlockPos offset(int, int, int) const;
+    [[nodiscard]] BlockPos offset(const BlockPos &) const;
+    [[nodiscard]] BlockPos above() const;
+    [[nodiscard]] BlockPos above(int) const;
     [[nodiscard]] BlockPos below() const;
     [[nodiscard]] BlockPos below(int) const;
 

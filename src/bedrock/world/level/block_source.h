@@ -128,4 +128,6 @@ public:
     explicit BlockSource(ChunkSource &, bool, bool);
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
+
+    bool isEmptyBlock(const BlockPos &) const;
 };
