@@ -28,8 +28,8 @@
 #include "bedrock/world/flip.h"
 #include "bedrock/world/item/item_category.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
-#include "bedrock/world/level/block/block_state_instance.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
+#include "bedrock/world/level/block/states/block_state.h"
 #include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/phys/aabb.h"
@@ -288,6 +288,9 @@ public:
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 
     [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
+    bool hasState(const HashedString &) const;
+    template <typename T>
+    int getState(const size_t &state_id, DataID data) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
@@ -302,6 +305,11 @@ public:
     [[nodiscard]] std::int16_t getBlockItemId() const;
     [[nodiscard]] TintMethod getTintMethod() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
+
+    // Endstone begins
+    template <typename T>
+    int getState(const HashedString &name, DataID data) const;
+    // Endstone ends
 
     std::string description_id;  // +8
 

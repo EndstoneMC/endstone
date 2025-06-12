@@ -119,6 +119,14 @@ void Player::setBedRespawnPosition(const BlockPos &bed_position)
     displayTextObjectMessage(object, "", "");
 }
 
+bool Player::canSleep() const
+{
+    if (isSpectator()) {
+        return false;
+    }
+    return isAlive();
+}
+
 GameType Player::getPlayerGameType() const
 {
     auto game_type = GameType::Undefined;

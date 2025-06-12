@@ -375,3 +375,12 @@ bool Actor::isCreative() const
     }
     return false;
 }
+
+bool Actor::isSpectator() const
+{
+    if (const auto *component = tryGetComponent<ActorGameTypeComponent>()) {
+        return component->game_type == GameType::Spectator || (component->game_type == GameType::WorldDefault &&
+                                                               getLevel().getDefaultGameType() == GameType::Spectator);
+    }
+    return false;
+}

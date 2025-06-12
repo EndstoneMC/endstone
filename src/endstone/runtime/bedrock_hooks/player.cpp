@@ -104,10 +104,10 @@ BedSleepingResult Player::getBedResult(const BlockPos &bed_pos)
         }
 
         if (!isCreative() && getLevel().getDifficulty() != Difficulty::Peaceful) {
-            const AABB area(static_cast<float>(bed_pos.x) - 8.0F, static_cast<float>(bed_pos.y) - 5.0F,
-                            static_cast<float>(bed_pos.z) - 8.0F, static_cast<float>(bed_pos.x) + 8.0F,
-                            static_cast<float>(bed_pos.y) + 5.0F, static_cast<float>(bed_pos.z) + 8.0F);
-            auto monsters = getDimensionBlockSource().fetchEntities(ActorType::Monster, area, nullptr, nullptr);
+            const AABB bb(static_cast<float>(bed_pos.x) - 8.0F, static_cast<float>(bed_pos.y) - 5.0F,
+                          static_cast<float>(bed_pos.z) - 8.0F, static_cast<float>(bed_pos.x) + 8.0F,
+                          static_cast<float>(bed_pos.y) + 5.0F, static_cast<float>(bed_pos.z) + 8.0F);
+            auto monsters = getDimensionBlockSource().fetchEntities(ActorType::Monster, bb, nullptr, nullptr);
             if (!monsters.empty()) {
                 return BedSleepingResult::NOT_SAFE;
             }

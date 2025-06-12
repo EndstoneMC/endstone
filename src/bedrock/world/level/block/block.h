@@ -25,6 +25,7 @@
 #include "bedrock/world/level/block/block_serialization_id.h"
 #include "bedrock/world/level/block/components/block_component_direct_data.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
+#include "bedrock/world/level/block/states/block_state.h"
 
 enum class BlockOcclusionType : int {
     Unknown = 0,
@@ -58,6 +59,7 @@ public:
     [[nodiscard]] FlameOdds getFlameOdds() const;
     [[nodiscard]] BurnOdds getBurnOdds() const;
     [[nodiscard]] float getExplosionResistance() const;
+    [[nodiscard]] bool hasState(const HashedString &name) const;
     bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                            optional_ref<GetCollisionShapeInterface const> entity) const;
     bool addCollisionShapes(IConstBlockSource const &region, BlockPos const &pos, AABB const *intersect_test_box,
@@ -71,6 +73,7 @@ public:
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getThickness() const;
+    bool getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
     [[nodiscard]] const HashedString &getName() const;
@@ -80,6 +83,14 @@ public:
     [[nodiscard]] const BlockLegacy &getLegacyBlock() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
     [[nodiscard]] const BlockComponentDirectData &getDirectData() const;
+
+    // Endstone begin
+    template <typename T>
+    T getState(const HashedString &name) const
+    {
+        return getLegacyBlock().getState<T>(name, data_);
+    }
+    // Endstone end
 
 private:
     friend class ItemStackBase;

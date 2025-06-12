@@ -14,6 +14,8 @@
 
 #include "bedrock/world/level/block/block.h"
 
+#include "bedrock/world/level/block_source.h"
+
 Brightness Block::getLightEmission() const
 {
     return direct_data_.light_emission;
@@ -46,6 +48,11 @@ BurnOdds Block::getBurnOdds() const
 float Block::getExplosionResistance() const
 {
     return direct_data_.explosion_resistance;
+}
+
+bool Block::hasState(const HashedString &name) const
+{
+    return legacy_block_->hasState(name);
 }
 
 bool Block::getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
@@ -95,6 +102,11 @@ bool Block::requiresCorrectToolForDrops() const
 float Block::getThickness() const
 {
     return legacy_block_->getThickness();
+}
+
+bool Block::getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const
+{
+    return legacy_block_->getSecondPart(region, pos, out);
 }
 
 float Block::getFriction() const
