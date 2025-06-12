@@ -14,17 +14,9 @@
 
 #pragma once
 
-#include <cstdint>
-
-class BlockStateInstance {
-public:
-private:
-    constexpr inline static std::uint32_t max_bits = 16;
-
-    std::uint32_t start_bit_;        // +0
-    std::uint32_t num_bits_;         // +4
-    std::uint32_t variation_count_;  // +8
-    std::uint32_t mask_;             // +12
-    bool initialised_;               // +16
-    BlockState *state_;              // +24
+enum class Mirror : std::uint8_t {
+    None = 0,
+    X = 1,
+    Z = 2,
+    XZ = 3,
 };
