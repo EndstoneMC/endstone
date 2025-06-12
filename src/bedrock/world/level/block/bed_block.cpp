@@ -13,3 +13,73 @@
 // limitations under the License.
 
 #include "bedrock/world/level/block/bed_block.h"
+
+#include "bedrock/world/direction.h"
+#include "bedrock/world/level/block/vanilla_block_type_ids.h"
+
+std::optional<BlockPos> BedBlock::findWakeupPosition(BlockSource &region, const BlockPos &pos,
+                                                     const std::optional<Vec3> &entered_bed_pos)
+{
+    const auto &block = region.getBlock(pos);
+
+    if (block.getName() != VanillaBlockTypeIds::Bed) {
+        return std::nullopt;
+    }
+
+    // Determine bed orientation
+    const auto direction = block.getState<int>("direction");
+
+    // Find the head piece position
+    auto head_of_bed_pos = pos;
+    if (!block.hasState("head_piece_bit")) {
+        block.getSecondPart(region, pos, head_of_bed_pos);
+    }
+
+    const auto &rotation = BedBlockSpawnOffset::RESPAWN_OFFSET_ROTATION_FROM_DIRECTION[direction];
+
+    // Decide which side of the bed the player entered from
+    bool use_right_offset = true;
+    if (entered_bed_pos) {
+        const auto &entered_pos = entered_bed_pos.value();
+        switch (direction) {
+        case Direction::SOUTH:
+            use_right_offset = (static_cast<float>(head_of_bed_pos.x) + 0.5F) >= entered_pos.x;
+            break;
+        case Direction::WEST:
+            use_right_offset = (static_cast<float>(head_of_bed_pos.z) + 0.5F) >= entered_pos.z;
+            break;
+        case Direction::NORTH:
+            use_right_offset = (static_cast<float>(head_of_bed_pos.x) + 0.5F) <= entered_pos.x;
+            break;
+        case Direction::EAST:
+            use_right_offset = (static_cast<float>(head_of_bed_pos.z) + 0.5F) <= entered_pos.z;
+            break;
+        default:
+            break;
+        }
+    }
+
+    const auto &offsets = use_right_offset ? BedBlockSpawnOffset::RESPAWN_OFFSETS_NORTH_RIGHT
+                                           : BedBlockSpawnOffset::RESPAWN_OFFSETS_NORTH_LEFT;
+
+    std::optional<BlockPos> first_valid_standup_pos;
+    for (const auto &offset : offsets) {
+        // Rotate and translate offset
+        auto relative = offset.transform(rotation, Mirror::None, Vec3::ZERO);
+        auto standup_position = head_of_bed_pos + relative;
+
+        // Check for a valid stand-up position
+        if (isValidStandUpPosition(region, standup_position)) {
+            // Prefer non-dangerous positions
+            if (!isDangerousSpawnPosition(region, standup_position)) {
+                return standup_position;
+            }
+            // Remember the first valid but dangerous position as fallback
+            if (!first_valid_standup_pos) {
+                first_valid_standup_pos = standup_position;
+            }
+        }
+    }
+
+    return first_valid_standup_pos;
+}

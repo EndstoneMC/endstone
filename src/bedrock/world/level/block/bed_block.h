@@ -17,9 +17,39 @@
 #include <optional>
 #include <string>
 
+#include "bedrock/util/rotation.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/block_source.h"
+
+namespace BedBlockSpawnOffset {
+static constexpr std::array<const BlockPos, 12UL> RESPAWN_OFFSETS_NORTH_LEFT = {{{-1, 0, 0},
+                                                                                 {-1, 0, 1},
+                                                                                 {-1, 0, 2},
+                                                                                 {0, 0, 2},
+                                                                                 {1, 0, 2},
+                                                                                 {1, 0, 1},
+                                                                                 {1, 0, 0},
+                                                                                 {1, 0, -1},
+                                                                                 {0, 0, -1},
+                                                                                 {-1, 0, -1},
+                                                                                 {0, 1, 0},
+                                                                                 {0, 1, 1}}};
+static constexpr std::array<const BlockPos, 12UL> RESPAWN_OFFSETS_NORTH_RIGHT = {{{1, 0, 0},
+                                                                                  {1, 0, 1},
+                                                                                  {1, 0, 2},
+                                                                                  {0, 0, 2},
+                                                                                  {-1, 0, 2},
+                                                                                  {-1, 0, 1},
+                                                                                  {-1, 0, 0},
+                                                                                  {-1, 0, -1},
+                                                                                  {0, 0, -1},
+                                                                                  {1, 0, -1},
+                                                                                  {0, 1, 0},
+                                                                                  {0, 1, 1}}};
+static constexpr Rotation RESPAWN_OFFSET_ROTATION_FROM_DIRECTION[4] = {Rotation::Rotate180, Rotation::Rotate270,
+                                                                       Rotation::None, Rotation::Rotate90};
+}  // namespace BedBlockSpawnOffset
 
 class BedBlock : public BlockLegacy {
 public:
