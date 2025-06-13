@@ -26,6 +26,7 @@
 #include "bedrock/util/color_format.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_value_validation.h"
+#include "bedrock/world/actor/provider/player_movement.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 
@@ -154,6 +155,15 @@ bool Player::canSleep() const
         return false;
     }
     return isAlive();
+}
+
+void Player::stopGliding()
+{
+    setStatusFlag(ActorFlags::GLIDING, false);
+    queueBBUpdateFromDefinition();
+    if (!isClientSide()) {
+        PlayerMovement::setElytraFlightTimeTicks(getEntity(), Tick(0));
+    }
 }
 
 GameType Player::getPlayerGameType() const

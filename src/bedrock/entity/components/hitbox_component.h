@@ -14,28 +14,17 @@
 
 #pragma once
 
-#include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
+#include "bedrock/world/phys/aabb.h"
 
-struct MovementInterpolatorComponent {
-    void lerpTo(const Vec3 &, const Vec2 &, int);
-    void lerpToRotation(const Vec2 &, int);
-    void reset()
-    {
-        pos = Vec3::ZERO;
-        rot = Vec2::ZERO;
-        head_yaw = 0;
-    }
-    void setHeadYawLerpTarget(float, int);
-    bool isActive() const;
-    static void startLerpTo(EntityContext &, const Vec3 &, const Vec2 &, int);
-    Vec3 pos;
-    Vec2 rot;
-    float head_yaw;
-    int position_steps;
-    int rotation_steps;
-    int head_yaw_steps;
-    bool player_control_server_vehicle;
-    static constexpr int MAX_LERP_STEPS = 3;
+struct Hitbox {
+    Vec3 pivot;
+    AABB aabb;
 };
-static_assert(sizeof(MovementInterpolatorComponent) == 40);
+static_assert(sizeof(Hitbox) == 36);
+
+class HitboxComponent {
+public:
+    std::vector<Hitbox> hitboxes;
+};
+static_assert(sizeof(HitboxComponent) == 24);

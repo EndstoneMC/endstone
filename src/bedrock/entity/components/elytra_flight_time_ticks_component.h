@@ -14,12 +14,7 @@
 
 #pragma once
 
-#include "bedrock/entity/components/sleep_counter_component.h"
-#include "bedrock/world/actor/provider/actor_entity_access.h"
-
-namespace PlayerSleep {
-void resetSleepCounter(EntityContext &entity)
-{
-    ActorEntityAccess::getPersistentComponent<SleepCounterComponent>(entity)->sleep_counter = 0;
-}
-}  // namespace PlayerSleep
+struct ElytraFlightTimeTicksComponent {
+    Tick value;  // +0
+};
+static_assert(sizeof(ElytraFlightTimeTicksComponent) == 8);

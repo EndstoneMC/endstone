@@ -13,13 +13,20 @@
 // limitations under the License.
 
 #pragma once
-
-#include "bedrock/entity/components/sleep_counter_component.h"
+#include "bedrock/entity/components/offsets_component.h"
 #include "bedrock/world/actor/provider/actor_entity_access.h"
 
-namespace PlayerSleep {
-void resetSleepCounter(EntityContext &entity)
+namespace ActorOffset {
+void initializeActor(EntityContext &);
+void initializePlayer(EntityContext &);
+float getHeightOffset(const EntityContext &);
+void setHeightOffset(EntityContext &entity, float height_offset)
 {
-    ActorEntityAccess::getPersistentComponent<SleepCounterComponent>(entity)->sleep_counter = 0;
+    ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset = height_offset;
 }
-}  // namespace PlayerSleep
+void setExplosionOffset(EntityContext &, float);
+Vec3 getHeadOffset(const EntityContext &);
+Vec3 getEyeOffset(const EntityContext &);
+void setEyeOffset(EntityContext &, const Vec3 &);
+void setBreathingOffset(EntityContext &, const Vec3 &);
+}  // namespace ActorOffset

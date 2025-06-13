@@ -17,8 +17,7 @@
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/world/phys/aabb.h"
 
-
 struct AABBShapeComponent {
     AABB aabb;
-    Vec2 dim;
+    Vec2 bb_dim;
 };

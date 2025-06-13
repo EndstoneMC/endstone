@@ -14,12 +14,9 @@
 
 #pragma once
 
-#include "bedrock/entity/components/sleep_counter_component.h"
-#include "bedrock/world/actor/provider/actor_entity_access.h"
+#include "bedrock/entity/components/strict_actor_id_entity_context_pair.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 
-namespace PlayerSleep {
-void resetSleepCounter(EntityContext &entity)
-{
-    ActorEntityAccess::getPersistentComponent<SleepCounterComponent>(entity)->sleep_counter = 0;
-}
-}  // namespace PlayerSleep
+namespace ActorRiding {
+const std::vector<StrictActorIDEntityContextPair> &getPassengers(const EntityContext &);
+}  // namespace ActorRiding

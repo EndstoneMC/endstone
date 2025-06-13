@@ -15,27 +15,17 @@
 #pragma once
 
 #include "bedrock/core/math/vec2.h"
-#include "bedrock/core/math/vec3.h"
 
-struct MovementInterpolatorComponent {
-    void lerpTo(const Vec3 &, const Vec2 &, int);
-    void lerpToRotation(const Vec2 &, int);
-    void reset()
-    {
-        pos = Vec3::ZERO;
-        rot = Vec2::ZERO;
-        head_yaw = 0;
-    }
-    void setHeadYawLerpTarget(float, int);
-    bool isActive() const;
-    static void startLerpTo(EntityContext &, const Vec3 &, const Vec2 &, int);
-    Vec3 pos;
-    Vec2 rot;
-    float head_yaw;
-    int position_steps;
-    int rotation_steps;
-    int head_yaw_steps;
-    bool player_control_server_vehicle;
-    static constexpr int MAX_LERP_STEPS = 3;
+struct ShouldUpdateBoundingBoxRequestComponent {
+    struct UpdateFromDefinition {};
+    static_assert(sizeof(UpdateFromDefinition) == 1);
+    struct UpdateFromValue {
+        Vec2 value;
+    };
+    static_assert(sizeof(UpdateFromValue) == 8);
+    std::variant<UpdateFromDefinition, UpdateFromValue> update;
 };
-static_assert(sizeof(MovementInterpolatorComponent) == 40);
+static_assert(sizeof(ShouldUpdateBoundingBoxRequestComponent) == 12);
+
+struct NeverChangesSizeFlagComponent {};
+static_assert(sizeof(NeverChangesSizeFlagComponent) == 1);

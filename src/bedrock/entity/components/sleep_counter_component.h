@@ -14,12 +14,10 @@
 
 #pragma once
 
-#include "bedrock/entity/components/sleep_counter_component.h"
-#include "bedrock/world/actor/provider/actor_entity_access.h"
-
-namespace PlayerSleep {
-void resetSleepCounter(EntityContext &entity)
-{
-    ActorEntityAccess::getPersistentComponent<SleepCounterComponent>(entity)->sleep_counter = 0;
-}
-}  // namespace PlayerSleep
+struct SleepCounterComponent {
+    static const short SLEEP_DURATION = 100;
+    static const short WAKE_UP_DURATION = 10;
+    short sleep_counter;      // +0
+    short prev_sleep_counter;  // +2
+};
+static_assert(sizeof(SleepCounterComponent) == 4);

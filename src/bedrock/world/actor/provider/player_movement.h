@@ -14,12 +14,12 @@
 
 #pragma once
 
-#include "bedrock/entity/components/sleep_counter_component.h"
+#include "bedrock/entity/components/elytra_flight_time_ticks_component.h"
 #include "bedrock/world/actor/provider/actor_entity_access.h"
 
-namespace PlayerSleep {
-void resetSleepCounter(EntityContext &entity)
+namespace PlayerMovement {
+void setElytraFlightTimeTicks(EntityContext &entity, const Tick &tick)
 {
-    ActorEntityAccess::getPersistentComponent<SleepCounterComponent>(entity)->sleep_counter = 0;
+    ActorEntityAccess::getPersistentComponent<ElytraFlightTimeTicksComponent>(entity)->value = tick;
 }
-}  // namespace PlayerSleep
+}  // namespace PlayerMovement

@@ -104,10 +104,16 @@ public:
     }
 
     template <typename Component>
-    gsl::not_null<Component *> getPersistentComponent() const
+    gsl::not_null<Component *> getPersistentComponent()
     {
         return entity_context_.tryGetComponent<Component>();
-    };
+    }
+
+    template <typename Component>
+    gsl::not_null<const Component *> getPersistentComponent() const
+    {
+        return entity_context_.tryGetComponent<Component>();
+    }
 
     virtual void outOfWorld() = 0;
     virtual void reloadHardcoded(ActorInitializationMethod, VariantParameterList const &) = 0;
@@ -277,6 +283,9 @@ public:
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel();
     [[nodiscard]] const Level &getLevel() const;
+    void setAABB(const AABB &bb);
+    [[nodiscard]] const AABB &getAABB() const;
+    [[nodiscard]] const Vec2 &getAABBDim() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
     [[nodiscard]] Vec3 const &getPosPrev() const;
     void setPos(const Vec3 &);
@@ -285,7 +294,6 @@ public:
     void setPosDelta(const Vec3 &);
     [[nodiscard]] Vec2 const &getRotation() const;
     void setRotationWrapped(const Vec2 &);
-    [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
     [[nodiscard]] Actor *getVehicle() const;
@@ -320,12 +328,14 @@ public:
     bool isSurvival() const;
     bool isSpectator() const;
     void queueBBUpdateFromValue(const Vec2 &);
+    void queueBBUpdateFromDefinition();
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
 
 protected:
-    void _setHeightOffset(const float);
+    void _setHeightOffset(float offset);
+    void _moveHitboxTo(const Vec3 &position);
 
 private:
     mutable EntityContext entity_context_;  // +8
