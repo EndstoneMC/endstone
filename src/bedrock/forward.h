@@ -223,7 +223,6 @@ class _TickPtr;  // NOLINT
 struct SyncedClientOptionsComponent;
 
 // Enums
-enum class AdvanceFrameResult;
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
 enum class BlockActorRendererId : unsigned int;
@@ -304,6 +303,9 @@ class ScriptBlockComponentRegistry;
 class ScriptItemComponentRegistry;
 class ScriptPropertyRegistry;
 }  // namespace ScriptModuleMinecraft
+namespace MovementDataExtractionUtility {
+class SnapshotAccessor;
+}
 
 // Template Classes
 template <typename A, typename B, typename C>

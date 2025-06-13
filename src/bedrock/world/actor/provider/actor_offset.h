@@ -14,16 +14,13 @@
 
 #pragma once
 #include "bedrock/entity/components/offsets_component.h"
-#include "bedrock/world/actor/provider/actor_entity_access.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 
 namespace ActorOffset {
 void initializeActor(EntityContext &);
 void initializePlayer(EntityContext &);
-float getHeightOffset(const EntityContext &);
-void setHeightOffset(EntityContext &entity, float height_offset)
-{
-    ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset = height_offset;
-}
+float getHeightOffset(const EntityContext &entity);
+void setHeightOffset(EntityContext &entity, float height_offset);
 void setExplosionOffset(EntityContext &, float);
 Vec3 getHeadOffset(const EntityContext &);
 Vec3 getEyeOffset(const EntityContext &);

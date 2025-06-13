@@ -12,21 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/actor/provider/actor_offset.h"
 
-#include "bedrock/entity/components/strict_actor_id_entity_context_pair.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/world/actor/provider/actor_entity_access.h"
 
-namespace ActorEntityAccess {
-template <typename T>
-gsl::not_null<const T *> getPersistentComponent(const EntityContext &entity)
+float ActorOffset::getHeightOffset(const EntityContext &entity)
 {
-    return entity.tryGetComponent<T>();
+    return ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset;
 }
 
-template <typename T>
-gsl::not_null<T *> getPersistentComponent(EntityContext &entity)
+void ActorOffset::setHeightOffset(EntityContext &entity, float height_offset)
 {
-    return entity.tryGetComponent<T>();
+    ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset = height_offset;
 }
-}  // namespace ActorEntityAccess

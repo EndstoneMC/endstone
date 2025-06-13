@@ -26,7 +26,10 @@ public:
     BlockActor(BlockActorType, const BlockPos &, const std::string &);
     virtual ~BlockActor() = default;
 
-    [[nodiscard]] bool isType(BlockActorType) const;
+    [[nodiscard]] bool isType(BlockActorType type) const
+    {
+        return type_ == type;
+    }
 
     int tick_count_;  // +8
 
