@@ -14,11 +14,12 @@
 
 #include "bedrock/entity/systems/server_player_movement_correction_system.h"
 
-#include "bedrock/entity/components/depenetration_component.h"
 #include "bedrock/entity/systems/actor_set_pos_system.h"
-#include "bedrock/network/packet/correct_player_move_prediction_packet.h"
-#include "bedrock/network/packet/player_input_tick.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/core/server.h"
+#include "endstone/event/player/player_jump_event.h"
+#include "endstone/event/player/player_move_event.h"
+#include "endstone/runtime/hook.h"
 
 void ServerPlayerMovementCorrectionSystem::_afterMovementSimulation(
     const UserEntityIdentifierComponent &user_identifier, Actor &actor, const PlayerAuthInputPacket &packet,
@@ -26,73 +27,51 @@ void ServerPlayerMovementCorrectionSystem::_afterMovementSimulation(
     ServerPlayerMovementComponent &server_player_movement, StateVectorComponent &state_vector,
     const BoatMovementComponent *boat)
 {
-    auto &ctx = actor.getEntity();
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayerMovementCorrectionSystem::_afterMovementSimulation, user_identifier, actor,
+                                packet, replay, actor_rotation, server_player_movement, state_vector, boat);
 
-    // 1) Check if we should accept the client's position directly
-    if (server_player_movement.accept_client_pos_if_within_distance_sq) {
-        const Vec3 &server_pos = state_vector.pos;
-        const Vec3 &client_pos = packet.pos;
-        float dist_sq = (server_pos - client_pos).lengthSquared();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    if (auto *p = Player::tryGetFromEntity(actor.getEntity()); p) {
+        auto &player = actor.getEndstoneActor<endstone::core::EndstonePlayer>();
 
-        if (dist_sq <= server_player_movement.accept_client_pos_if_within_distance_sq.value()) {
-            ActorSetPosSystem::setPosition(ctx, client_pos, actor.isClientSide());
+        const auto pos = actor.getPosition();
+        const auto pos_prev = actor.getPosPrev();
+        const auto delta = pos - pos_prev;
 
-            auto &dep = ctx.getOrAddComponent<DepenetrationComponent>();
-            Vec3 temporary_override = dep.temporary_override.has_value() ? dep.temporary_override.value() : Vec3::ZERO;
+        const auto rot = actor.getRotation();
+        const auto rot_prev = actor.getRotationPrev();
+        const auto delta_angle = rot - rot_prev;
 
-            // Clamp per-axis overrides
-            temporary_override.x = std::max(temporary_override.x, DepenetrationComponentUtility::TEMP_Y_OVERRIDE.x);
-            temporary_override.y = std::max(temporary_override.y, DepenetrationComponentUtility::TEMP_Y_OVERRIDE.y);
-            temporary_override.z = std::max(temporary_override.z, DepenetrationComponentUtility::TEMP_Y_OVERRIDE.z);
-            dep.temporary_override = temporary_override;
-
-            replay.force_correction = false;
-            server_player_movement.accept_client_pos_if_within_distance_sq.reset();
-            return;
-        }
-    }
-
-    // 2) Determine correction strategy
-    MovementCorrection correction(CorrectionMethod::None, Vec3::ZERO);
-    if (replay.force_correction) {
-        correction.method = CorrectionMethod::CorrectClient;  // force full correction
-    }
-    else {
-        const auto &policy = server_player_movement.getPolicy();
-        bool strict = policy && policy->isStrictMovement();
-        correction = replay.policy->shouldCorrectMovement(ctx, packet, replay.getCurrentTick(),
-                                                          replay.getDivergenceCounter(), strict);
-    }
-    replay.setDivergenceCounter(correction.new_divergence_counter);
-
-    // 3) Apply prediction delta or send correction packet
-    if (correction.method == CorrectionMethod::AcceptClient) {
-        state_vector.pos_delta += (correction.accept_position - state_vector.pos);
-    }
-    else if (correction.method == CorrectionMethod::CorrectClient) {
-        // Build and send a correction packet
-        CorrectPlayerMovePredictionPacket pk;
-        pk.pos = state_vector.pos;
-        pk.pos_delta = state_vector.pos_delta;
-
-        // If not a player, include vehicle/boat data
-        if (!actor.isPlayer()) {
-            if (actor_rotation) {
-                pk.rotation = actor_rotation->rotation_degree;
-            }
-            if (boat) {
-                pk.vehicle_angular_velocity = boat->y_rot_degree;
-            }
+        if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && p->wasOnGround() && !p->isOnGround() &&
+            delta.y > 0.0F) {
+            auto &dimension = player.getDimension();
+            const endstone::Location from{&dimension, pos_prev.x, pos_prev.y, pos_prev.z, rot_prev.x, rot_prev.y};
+            const endstone::Location to{&dimension, pos.x, pos.y, pos.z, rot.x, rot.y};
+            endstone::PlayerJumpEvent e{player, from, to};
+            server.getPluginManager().callEvent(e);
+            // if (e.isCancelled()) {
+            //     player.teleport(e.getFrom());
+            //     return;
+            // }
         }
 
-        pk.tick = PlayerInputTick(replay.getCurrentTick());
-        pk.on_ground = actor.isOnGround();
-        pk.prediction_type = actor.isPlayer() ? RewindType::Player : RewindType::Vehicle;
+        // Prevent intensive event calls on tiny movement using the thresholds from Spigot
+        if (delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) {
+            auto &dimension = player.getDimension();
+            const endstone::Location from{&dimension, pos_prev.x, pos_prev.y, pos_prev.z, rot_prev.x, rot_prev.y};
+            const endstone::Location to{&dimension, pos.x, pos.y, pos.z, rot.x, rot.y};
 
-        actor.getLevel().getPacketSender()->sendToClient(&user_identifier, pk);
+            endstone::PlayerMoveEvent e{player, from, to};
+            server.getPluginManager().callEvent(e);
+            // if (e.isCancelled()) {
+            //     player.teleport(e.getFrom());
+            //     return;
+            // }
+            //
+            // if (to != e.getTo()) {
+            //     player.teleport(e.getTo());
+            //     return;
+            // }
+        }
     }
-
-    // 4) Clear force-correction flag and accept-distance
-    replay.force_correction = false;
-    server_player_movement.accept_client_pos_if_within_distance_sq.reset();
 }

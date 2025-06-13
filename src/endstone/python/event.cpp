@@ -197,16 +197,18 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                             "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "Gets or sets kick message to display if event is cancelled");
+    py::class_<PlayerMoveEvent, PlayerEvent, ICancellable>(m, "PlayerMoveEvent", "Called when a player moves.")
+        .def_property("from_location", &PlayerMoveEvent::getFrom, &PlayerMoveEvent::setFrom,
+                      "Gets or sets the location that this player moved from.")
+        .def_property("to_location", &PlayerMoveEvent::getTo, &PlayerMoveEvent::setTo,
+                      "Gets or sets the location that this player moved to.");
+    py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "Gets or sets the quit message to send to all online players.");
     py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
-    py::class_<PlayerTeleportEvent, PlayerEvent, ICancellable>(
-        m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.")
-        .def_property("from_location", &PlayerTeleportEvent::getFrom, &PlayerTeleportEvent::setFrom,
-                      "Gets or sets the location that this player moved from.")
-        .def_property("to_location", &PlayerTeleportEvent::getTo, &PlayerTeleportEvent::setTo,
-                      "Gets or sets the location that this player moved to.");
+    py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
+        m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a server-related event");

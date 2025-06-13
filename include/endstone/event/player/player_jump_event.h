@@ -19,11 +19,11 @@
 namespace endstone {
 
 /**
- * @brief Called when a player is teleported from one location to another.
+ * @brief Called when a player jumps.
  */
-class PlayerTeleportEvent : public PlayerMoveEvent {
+class PlayerJumpEvent : public PlayerMoveEvent {
 public:
-    ENDSTONE_EVENT(PlayerTeleportEvent);
+    ENDSTONE_EVENT(PlayerJumpEvent);
     using PlayerMoveEvent::PlayerMoveEvent;
 };
 
