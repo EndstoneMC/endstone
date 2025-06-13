@@ -19,6 +19,21 @@
 
 namespace endstone {
 
+enum class EventResult {
+    /**
+     * Deny the event.
+     */
+    Deny,
+    /**
+     * Neither deny nor allow the event. The server will proceed with its normal handling.
+     */
+    Default,
+    /**
+     * Allow / Force the event.
+     */
+    Allow
+};
+
 /**
  * @brief Represents an event.
  */
@@ -46,21 +61,6 @@ public:
     {
         return async_;
     }
-
-    enum class Result {
-        /**
-         * Deny the event.
-         */
-        Deny,
-        /**
-         * Neither deny nor allow the event. The server will proceed with its normal handling.
-         */
-        Default,
-        /**
-         * Allow / Force the event.
-         */
-        Allow
-    };
 
 private:
     [[nodiscard]] virtual bool isCancellable() const

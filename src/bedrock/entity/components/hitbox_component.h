@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <vector>
+
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/world/phys/aabb.h"
 

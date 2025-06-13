@@ -171,10 +171,10 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool fo
     server.getPluginManager().callEvent(e);
 
     const auto result = e.useBed();
-    if (result == endstone::Event::Result::Allow) {
+    if (result == endstone::EventResult::Allow) {
         bed_result = BedSleepingResult::OK;
     }
-    else if (result == endstone::Event::Result::Deny) {
+    else if (result == endstone::EventResult::Deny) {
         bed_result = BedSleepingResult::OTHER_PROBLEM;
     }
 

@@ -1,9 +1,11 @@
-timestamp = 1749826753
+timestamp = 1749839428
 version = "1.21.84"
 
 [windows]
 # Actor
 "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 39558112
+# ActorSetPosSystem
+"?setPosition@ActorSetPosSystem@@SAXAEAVEntityContext@@AEBVVec3@@_N@Z" = 10438352
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 69520608
 # BlockDescriptor
@@ -101,6 +103,8 @@ version = "1.21.84"
 "_Z7getI18nv" = 82514464
 # Actor
 "_ZN5Actor10teleportToERK4Vec3biib" = 132602016
+# ActorSetPosSystem
+"_ZN17ActorSetPosSystem11setPositionER13EntityContextRK4Vec3b" = 72019344
 # BedrockLog
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 172890112
 # BlockDescriptor

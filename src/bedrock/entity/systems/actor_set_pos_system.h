@@ -15,37 +15,13 @@
 #pragma once
 
 #include "bedrock/core/math/vec3.h"
+#include "bedrock/core/math/vec2.h"
 #include "bedrock/entity/components/hitbox_component.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
 
 class ActorSetPosSystem {
 public:
-    static void moveHitboxTo(const Vec3 &pos, std::vector<Hitbox> &hitboxes)
-    {
-        for (auto &hitbox : hitboxes) {
-            Vec3 half;
-            half.x = (hitbox.aabb.max.x - hitbox.aabb.min.x) * 0.5F;
-            half.y = (hitbox.aabb.max.y - hitbox.aabb.min.y) * 0.5F;
-            half.z = (hitbox.aabb.max.z - hitbox.aabb.min.z) * 0.5F;
-
-            Vec3 centered_min = {pos.x - half.x, pos.y - half.y, pos.z - half.z};
-            Vec3 centered_max = {pos.x + half.x, pos.y + half.y, pos.z + half.z};
-
-            hitbox.aabb.min.x = centered_min.x + hitbox.pivot.x;
-            hitbox.aabb.min.y = centered_min.y + hitbox.pivot.y;
-            hitbox.aabb.min.z = centered_min.z + hitbox.pivot.z;
-            hitbox.aabb.max.x = centered_max.x + hitbox.pivot.x;
-            hitbox.aabb.max.y = centered_max.y + hitbox.pivot.y;
-            hitbox.aabb.max.z = centered_max.z + hitbox.pivot.z;
-        }
-    }
-
-    static AABB refreshAABB(float offset, const Vec3 &position, const Vec2 &bb_dim)
-    {
-        return {position.x - (0.5F * bb_dim.x), position.y - offset,
-                position.z - (0.5F * bb_dim.x), position.x + (0.5F * bb_dim.x),
-                position.y - offset + bb_dim.y, position.z + (0.5F * bb_dim.x)};
-    }
-
+    static void moveHitboxTo(const Vec3 &pos, std::vector<Hitbox> &hitboxes);
+    static AABB refreshAABB(float offset, const Vec3 &position, const Vec2 &bb_dim);
     static void setPosition(EntityContext &entity, const Vec3 &position, bool is_client_side);
 };

@@ -20,10 +20,10 @@ namespace endstone::python {
 
 void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriority> &event_priority)
 {
-    py::enum_<Event::Result>(event, "Result")
-    .value("DENY", Event::Result::Deny)
-    .value("DEFAULT", Event::Result::Default)
-    .value("ALLOW", Event::Result::Allow);
+    py::enum_<EventResult>(m, "EventResult")
+        .value("DENY", EventResult::Deny)
+        .value("DEFAULT", EventResult::Default)
+        .value("ALLOW", EventResult::Allow);
 
     event.def_property_readonly("event_name", &Event::getEventName, "Gets a user-friendly identifier for this event.")
         .def_property_readonly("is_asynchronous", &Event::isAsynchronous, "Whether the event fires asynchronously.");
@@ -149,6 +149,27 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the player involved in this event.");
+    auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
+        m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
+    py::enum_<PlayerBedEnterEvent::BedEnterResult>(player_bed_enter_event, "BedEnterResult")
+        .value("OK", PlayerBedEnterEvent::BedEnterResult::Ok)
+        .value("NOT_POSSIBLE_HERE", PlayerBedEnterEvent::BedEnterResult::NotPossibleHere)
+        .value("NOT_POSSIBLE_NOW", PlayerBedEnterEvent::BedEnterResult::NotPossibleNow)
+        .value("TOO_FAR_AWAY", PlayerBedEnterEvent::BedEnterResult::TooFarAway)
+        .value("NOT_SAFE", PlayerBedEnterEvent::BedEnterResult::NotSafe)
+        .value("OTHER_PROBLEM", PlayerBedEnterEvent::BedEnterResult::OtherProblem);
+    player_bed_enter_event
+        .def_property_readonly("bed", &PlayerBedEnterEvent::getBed, py::return_value_policy::reference,
+                               "Returns the bed block involved in this event.")
+        .def_property_readonly("bed_enter_result", &PlayerBedEnterEvent::getBedEnterResult,
+                               "Returns the outcome of this event")
+        .def_property("use_bed", &PlayerBedEnterEvent::useBed, &PlayerBedEnterEvent::setUseBed,
+                      "Gets or sets the action to take with the bed that was clicked on.");
+
+    py::class_<PlayerBedLeaveEvent, PlayerEvent, ICancellable>(m, "PlayerBedLeaveEvent",
+                                                               "Called when a player is leaving a bed.")
+        .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
+                               "Returns the bed block involved in this event.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
@@ -214,27 +235,6 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
     py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
-    auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
-        m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
-    py::enum_<PlayerBedEnterEvent::BedEnterResult>(player_bed_enter_event, "BedEnterResult")
-        .value("OK", PlayerBedEnterEvent::BedEnterResult::Ok)
-        .value("NOT_POSSIBLE_HERE", PlayerBedEnterEvent::BedEnterResult::NotPossibleHere)
-        .value("NOT_POSSIBLE_NOW", PlayerBedEnterEvent::BedEnterResult::NotPossibleNow)
-        .value("TOO_FAR_AWAY", PlayerBedEnterEvent::BedEnterResult::TooFarAway)
-        .value("NOT_SAFE", PlayerBedEnterEvent::BedEnterResult::NotSafe)
-        .value("OTHER_PROBLEM", PlayerBedEnterEvent::BedEnterResult::OtherProblem);
-    player_bed_enter_event
-        .def_property_readonly("bed", &PlayerBedEnterEvent::getBed, py::return_value_policy::reference,
-                               "Returns the bed block involved in this event.")
-        .def_property_readonly("bed_enter_result", &PlayerBedEnterEvent::getBedEnterResult,
-                               "Returns the outcome of this event")
-        .def_property("use_bed", &PlayerBedEnterEvent::useBed, &PlayerBedEnterEvent::setUseBed,
-                      "Gets or sets the action to take with the bed that was clicked on.");
-
-    py::class_<PlayerBedLeaveEvent, PlayerEvent, ICancellable>(m, "PlayerBedLeaveEvent",
-                                                               "Called when a player is leaving a bed.")
-        .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
-                               "Returns the bed block involved in this event.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a server-related event");

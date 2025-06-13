@@ -77,7 +77,7 @@ public:
      *
      * @return the action to take with the interacted bed
      */
-    [[nodiscard]] Result useBed() const
+    [[nodiscard]] EventResult useBed() const
     {
         return use_bed_;
     }
@@ -92,7 +92,7 @@ public:
      *
      * @param use_bed the action to take with the interacted bed
      */
-    void setUseBed(Result use_bed)
+    void setUseBed(EventResult use_bed)
     {
         use_bed_ = use_bed;
     }
@@ -106,7 +106,8 @@ public:
      */
     [[nodiscard]] bool isCancelled() const override
     {
-        return use_bed_ == Result::Deny || (use_bed_ == Result::Default && bed_enter_result_ != BedEnterResult::Ok);
+        return use_bed_ == EventResult::Deny ||
+               (use_bed_ == EventResult::Default && bed_enter_result_ != BedEnterResult::Ok);
     }
 
     /**
@@ -119,11 +120,11 @@ public:
      */
     void setCancelled(bool cancel) override
     {
-        if (useBed() == Result::Deny) {
-            setUseBed(cancel ? Result::Deny : Result::Default);
+        if (useBed() == EventResult::Deny) {
+            setUseBed(cancel ? EventResult::Deny : EventResult::Default);
         }
         else {
-            setUseBed(cancel ? Result::Deny : useBed());
+            setUseBed(cancel ? EventResult::Deny : useBed());
         }
     }
 
@@ -140,7 +141,7 @@ public:
 private:
     Block &bed_;
     BedEnterResult bed_enter_result_;
-    Result use_bed_ = Result::Default;
+    EventResult use_bed_ = EventResult::Default;
 };
 
 }  // namespace endstone

@@ -29,6 +29,7 @@ add_library(bedrock STATIC
         entity/gamerefs_entity/entity_registry.cpp
         entity/gamerefs_entity/stack_result_storage_entity.cpp
         entity/gamerefs_entity/weak_storage_entity.cpp
+        entity/systems/actor_set_pos_system.cpp
         entity/utilities/synched_actor_data_access.cpp
         locale/i18n.cpp
         locale/localization.cpp
