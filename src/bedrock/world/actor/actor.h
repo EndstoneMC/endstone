@@ -300,7 +300,8 @@ public:
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
     [[nodiscard]] Actor *getVehicle() const;
     [[nodiscard]] bool isRiding() const;
-    void stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles, bool);
+    void stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
+                    bool is_being_teleported);
     [[nodiscard]] bool hasPassenger() const;
     void removeAllPassengers(bool being_destroyed);
     [[nodiscard]] bool hasCategory(ActorCategory categories) const;

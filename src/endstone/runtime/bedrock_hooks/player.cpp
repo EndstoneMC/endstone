@@ -170,11 +170,10 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool fo
     endstone::PlayerBedEnterEvent e(player, *block, bed_enter_result);
     server.getPluginManager().callEvent(e);
 
-    const auto result = e.useBed();
-    if (result == endstone::EventResult::Allow) {
+    if (e.useBed() == endstone::EventResult::Allow) {
         bed_result = BedSleepingResult::OK;
     }
-    else if (result == endstone::EventResult::Deny) {
+    else if (e.useBed() == endstone::EventResult::Deny) {
         bed_result = BedSleepingResult::OTHER_PROBLEM;
     }
 
@@ -203,11 +202,11 @@ void Player::startSleeping(BlockPos const &bed_block_pos)
         replay->clearHistory();
     }
 
-    queueBBUpdateFromValue(Vec2(0.2f, 0.2f));
-    _setHeightOffset(0.2f);
+    queueBBUpdateFromValue(Vec2(0.2F, 0.2F));
+    _setHeightOffset(0.2F);
 
-    BlockSource *block_source = nullptr;
-    if (auto *component = tryGetComponent<BlockSourceComponent>(); component) {
+    const BlockSource *block_source = nullptr;
+    if (const auto *component = tryGetComponent<BlockSourceComponent>(); component) {
         if (auto ref = component->tryGetBlockSource(); ref) {
             block_source = &ref.value();
         }
