@@ -151,6 +151,7 @@ public:
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
+    void handlePacket(const ::Packet &packet);
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();

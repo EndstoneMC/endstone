@@ -69,13 +69,14 @@ public:
     void updateServerAnnouncement();
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
 
+    ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
+
 private:
     friend class endstone::core::EndstoneServer;
     friend class NetworkConnection;
     friend class NetworkSystem;
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
                                                  SubClientId);
-    ServerPlayer *_getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone: virtual -> non-virtual
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
 
 protected:

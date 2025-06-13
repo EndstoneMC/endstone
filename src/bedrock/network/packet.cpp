@@ -80,7 +80,4 @@ void Packet::handle(const NetworkIdentifier &id, NetEventCallback &callback, std
     }
 }
 
-std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
-{
-    return BEDROCK_CALL(&MinecraftPackets::createPacket, id);
-}
+

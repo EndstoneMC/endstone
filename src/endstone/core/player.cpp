@@ -139,6 +139,18 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
     getPlayer().sendNetworkPacket(pk);
 }
 
+void EndstonePlayer::handlePacket(const Packet &packet)
+{
+    switch (packet.getId()) {
+    case MinecraftPacketIds::SetLocalPlayerAsInit: {
+        doFirstSpawn();
+        break;
+    }
+    default:
+        break;
+    }
+}
+
 Result<void> EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
 {
     return perm_->removeAttachment(attachment);

@@ -283,6 +283,7 @@ public:
     void handle(const NetworkIdentifier &id, NetEventCallback &callback, std::shared_ptr<Packet> &packet);
 
 private:
+    friend class MinecraftPackets;
     friend class NetworkSystem;
     [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
@@ -298,5 +299,5 @@ BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);
 
 class MinecraftPackets {
 public:
-    static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
+    ENDSTONE_HOOK static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
 };
