@@ -31,6 +31,7 @@
 #include "bedrock/entity/systems/tag_system.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
+#include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/actor/armor_slot.h"
@@ -227,6 +228,13 @@ Actor *Actor::getVehicle() const
 bool Actor::isRiding() const
 {
     return getVehicle() != nullptr;
+}
+
+void Actor::stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
+                       bool is_being_teleported)
+{
+    BEDROCK_CALL(&Actor::stopRiding, this, exit_from_passenger, actor_is_being_destroyed, switching_vehicles,
+                 is_being_teleported);
 }
 
 bool Actor::hasPassenger() const

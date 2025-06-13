@@ -188,12 +188,18 @@ void Player::startSleeping(BlockPos const &bed_block_pos)
     if (isRiding()) {
         stopRiding(true, false, false, false);
     }
+
     if (isGliding()) {
         stopGliding();
     }
-    if (hasPassenger()) {
-        removeAllPassengers(false);
-    }
+
+    // TODO(feature): passenger removal is currently disabled because
+    //  Player does not yet support having passengers. Once `removeAllPassengers`
+    //  is implemented (and Player can hold passengers), uncomment this to
+    //  ensure all passengers are dismounted before sleeping.
+    // if (hasPassenger()) {
+    //     removeAllPassengers(false);
+    // }
 
     setBedRespawnPosition(bed_block_pos);
     entity_data.set<BlockPos>(static_cast<SynchedActorData::ID>(ActorDataIDs::BED_POSITION), bed_block_pos);

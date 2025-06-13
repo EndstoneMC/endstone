@@ -1,9 +1,10 @@
-timestamp = 1749839428
+timestamp = 1749846978
 version = "1.21.84"
 
 [windows]
 # Actor
 "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 39558112
+"?stopRiding@Actor@@QEAAX_N000@Z" = 39552528
 # ActorSetPosSystem
 "?setPosition@ActorSetPosSystem@@SAXAEAVEntityContext@@AEBVVec3@@_N@Z" = 10438352
 # BedrockLog
@@ -103,6 +104,7 @@ version = "1.21.84"
 "_Z7getI18nv" = 82514464
 # Actor
 "_ZN5Actor10teleportToERK4Vec3biib" = 132602016
+"_ZN5Actor10stopRidingEbbb" = 132595392
 # ActorSetPosSystem
 "_ZN17ActorSetPosSystem11setPositionER13EntityContextRK4Vec3b" = 72019344
 # BedrockLog

@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/synched_actor_data.h"
 
 #include "bedrock/entity/components/synched_actor_data_component.h"
+#include "bedrock/world/level/block_pos.h"
 
 SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
 {
@@ -76,24 +77,43 @@ void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt8>(SynchedActor
                                                                     const SynchedActorData::TypeInt8 &value)
 {
     auto data = _get();
-    auto *item = data->_find(id);
-    if (!item || item->getType() != DataItemType::Byte) {
+    auto &item = data->_get(id);
+    if (item.getType() != DataItemType::Byte) {
         return;
     }
-    auto *string_item = static_cast<DataItem2<SynchedActorData::TypeInt8> *>(item);
-    string_item->data = value;
-    data->dirty_flags_.set(id, true);
+    auto &item2 = static_cast<DataItem2<SynchedActorData::TypeInt8> &>(item);
+    if (item2.data != value) {
+        item2.data = value;
+        data->dirty_flags_.set(item.getId(), true);
+    }
 }
 
 template <>
 void SynchedActorDataEntityWrapper::set<std::string>(SynchedActorData::ID id, const std::string &value)
 {
     auto data = _get();
-    auto *item = data->_find(id);
-    if (!item || item->getType() != DataItemType::String) {
+    auto &item = data->_get(id);
+    if (item.getType() != DataItemType::String) {
         return;
     }
-    auto *string_item = static_cast<DataItem2<std::string> *>(item);
-    string_item->data = value;
-    data->dirty_flags_.set(id, true);
+    auto &item2 = static_cast<DataItem2<std::string> &>(item);
+    if (item2.data != value) {
+        item2.data = value;
+        data->dirty_flags_.set(item.getId(), true);
+    }
+}
+
+template <>
+void SynchedActorDataEntityWrapper::set<BlockPos>(SynchedActorData::ID id, const BlockPos &value)
+{
+    auto data = _get();
+    auto &item = data->_get(id);
+    if (item.getType() != DataItemType::Pos) {
+        return;
+    }
+    auto &item2 = static_cast<DataItem2<BlockPos> &>(item);
+    if (item2.data != value) {
+        item2.data = value;
+        data->dirty_flags_.set(item.getId(), true);
+    }
 }

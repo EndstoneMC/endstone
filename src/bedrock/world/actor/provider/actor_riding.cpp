@@ -20,7 +20,7 @@ constexpr std::vector<StrictActorIDEntityContextPair> EMPTY;
 
 const std::vector<StrictActorIDEntityContextPair> &ActorRiding::getPassengers(const EntityContext &entity)
 {
-    if (auto *vehicle = entity.tryGetComponent<VehicleComponent>(); vehicle) {
+    if (const auto *vehicle = entity.tryGetComponent<VehicleComponent>(); vehicle) {
         return vehicle->passengers;
     }
     return EMPTY;
