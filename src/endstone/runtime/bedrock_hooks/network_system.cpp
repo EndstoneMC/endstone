@@ -98,7 +98,7 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     const auto *server_player =
-        server.getServer().getMinecraft()->getServerNetworkHandler()->_getServerPlayer(network_id, sender_sub_id);
+        server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(network_id, sender_sub_id);
     endstone::Player *player = nullptr;
     if (server_player) {
         player = &server_player->getEndstoneActor<endstone::core::EndstonePlayer>();

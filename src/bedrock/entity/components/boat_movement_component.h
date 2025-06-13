@@ -14,17 +14,9 @@
 
 #pragma once
 
-#include "endstone/event/player/player_move_event.h"
-
-namespace endstone {
-
-/**
- * @brief Called when a player is teleported from one location to another.
- */
-class PlayerTeleportEvent : public PlayerMoveEvent {
-public:
-    ENDSTONE_EVENT(PlayerTeleportEvent);
-    using PlayerMoveEvent::PlayerMoveEvent;
+struct BoatMovementComponent {
+    int out_of_control_ticks;
+    float y_rot_degree;
+    float inv_friction;
 };
-
-}  // namespace endstone
+static_assert(sizeof(BoatMovementComponent) == 12);

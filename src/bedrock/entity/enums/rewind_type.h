@@ -14,17 +14,9 @@
 
 #pragma once
 
-#include "endstone/event/player/player_move_event.h"
+#include <cstdint>
 
-namespace endstone {
-
-/**
- * @brief Called when a player is teleported from one location to another.
- */
-class PlayerTeleportEvent : public PlayerMoveEvent {
-public:
-    ENDSTONE_EVENT(PlayerTeleportEvent);
-    using PlayerMoveEvent::PlayerMoveEvent;
+enum class RewindType : uint8_t {
+    Player = 0,
+    Vehicle = 1,
 };
-
-}  // namespace endstone

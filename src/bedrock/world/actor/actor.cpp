@@ -97,6 +97,11 @@ bool Actor::isOnGround() const
     return ActorCollision::isOnGround(entity_context_);
 }
 
+bool Actor::wasOnGround() const
+{
+    return ActorCollision::wasOnGround(entity_context_);
+}
+
 bool Actor::isInWater() const
 {
     return ActorEnvironment::getIsInWater(entity_context_);
@@ -172,6 +177,11 @@ void Actor::setPosDelta(const Vec3 &pos_delta)
 Vec2 const &Actor::getRotation() const
 {
     return built_in_components_.actor_rotation_component->rotation_degree;
+}
+
+const Vec2 &Actor::getRotationPrev() const
+{
+    return built_in_components_.actor_rotation_component->rotation_degree_previous;
 }
 
 void Actor::setRotationWrapped(const Vec2 &rot)

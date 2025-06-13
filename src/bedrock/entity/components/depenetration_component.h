@@ -14,17 +14,22 @@
 
 #pragma once
 
-#include "endstone/event/player/player_move_event.h"
-
-namespace endstone {
-
-/**
- * @brief Called when a player is teleported from one location to another.
- */
-class PlayerTeleportEvent : public PlayerMoveEvent {
-public:
-    ENDSTONE_EVENT(PlayerTeleportEvent);
-    using PlayerMoveEvent::PlayerMoveEvent;
+struct DepenetrationComponent {
+    enum class Bit : int {
+        IsAlwaysOneWayCollision = 0,
+        WasPenetratingLastFrame = 1,
+        IsStuckInCollider = 2,
+        IsStuckItem = 3,
+        PushTowardsClosestSpace = 4,
+        Count = 5,
+    };
+    using Bitset = std::bitset<static_cast<std::underlying_type_t<Bit>>(Bit::Count)>;
+    Bitset bits;
+    Vec3 min_depenetration;
+    std::vector<AABB> one_way_physics_blocks;
+    std::optional<Vec3> temporary_override;
 };
 
-}  // namespace endstone
+namespace DepenetrationComponentUtility {
+static constexpr Vec3 TEMP_Y_OVERRIDE(0, 0.05, 0);
+}  // namespace DepenetrationComponentUtility

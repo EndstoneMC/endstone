@@ -1,4 +1,4 @@
-timestamp = 1749643113
+timestamp = 1749826753
 version = "1.21.84"
 
 [windows]
@@ -84,6 +84,8 @@ version = "1.21.84"
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 13334368
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 13354496
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 13363072
+# ServerPlayerMovementCorrectionSystem
+"?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 14875600
 # ServerScoreboard
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 52071664
 # ServerScriptManager
@@ -179,6 +181,8 @@ version = "1.21.84"
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 81792368
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 81894496
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 81793168
+# ServerPlayerMovementCorrectionSystem
+"_ZN36ServerPlayerMovementCorrectionSystem24_afterMovementSimulationERK29UserEntityIdentifierComponentR5ActorRK21PlayerAuthInputPacketR20ReplayStateComponentPK22ActorRotationComponentR29ServerPlayerMovementComponentR20StateVectorComponentPK21BoatMovementComponent" = 84795616
 # ServerScoreboard
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 144065664
 # ServerScriptManager

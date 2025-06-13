@@ -275,6 +275,7 @@ public:
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] bool isOnGround() const;
+    [[nodiscard]] bool wasOnGround() const;
     [[nodiscard]] bool isInWater() const;
     [[nodiscard]] bool isInLava() const;
     [[nodiscard]] bool isClientSide() const;
@@ -293,6 +294,7 @@ public:
     [[nodiscard]] Vec3 const &getPosDelta() const;
     void setPosDelta(const Vec3 &);
     [[nodiscard]] Vec2 const &getRotation() const;
+    [[nodiscard]] const Vec2 &getRotationPrev() const;
     void setRotationWrapped(const Vec2 &);
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;

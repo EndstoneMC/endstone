@@ -18,6 +18,38 @@
 
 class Vec2 {
 public:
+    constexpr Vec2 operator+(const Vec2 &other) const
+    {
+        return {x + other.x, y + other.y};
+    }
+
+    constexpr Vec2 operator-(const Vec2 &other) const
+    {
+        return {x - other.x, y - other.y};
+    }
+
+    constexpr Vec2 operator*(const Vec2 &other) const
+    {
+        return {x * other.x, y * other.y};
+    }
+
+    constexpr Vec2 operator/(const Vec2 &other) const
+    {
+        return {x / other.x, y / other.y};
+    }
+
+    constexpr Vec2 &operator+=(const Vec2 &other)
+    {
+        x += other.x;
+        y += other.y;
+        return *this;
+    }
+
+    [[nodiscard]] float lengthSquared() const
+    {
+        return x * x + y * y;
+    }
+
     float x;
     float y;
 

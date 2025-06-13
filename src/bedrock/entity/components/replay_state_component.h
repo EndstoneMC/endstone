@@ -22,7 +22,12 @@ public:
     ReplayStateComponent(std::unique_ptr<ActorHistory>, std::unique_ptr<IReplayStatePolicy>);
     [[nodiscard]] std::uint64_t getCurrentTick() const
     {
-        return current_tick_;
+        return current_tick;
+    }
+
+    [[nodiscard]] std::uint8_t getDivergenceCounter() const
+    {
+        return divergence_counter;
     }
 
     void clearHistory()
@@ -31,10 +36,17 @@ public:
             history_->clearFrames();
         }
     }
-    bool force_correction;
 
-private:
-    std::unique_ptr<ActorHistory> history_;
-    std::unique_ptr<IReplayStatePolicy> policy_;
-    std::uint64_t current_tick_;
+    void setDivergenceCounter(std::uint8_t counter)
+    {
+        divergence_counter = counter;
+    }
+
+    bool force_correction;
+    bool should_report_next_correction_telemetry;
+    bool is_correction_telemetry_enabled;
+    std::uint8_t divergence_counter;
+    std::unique_ptr<ActorHistory> history;
+    std::unique_ptr<IReplayStatePolicy> policy;
+    std::uint64_t current_tick;
 };

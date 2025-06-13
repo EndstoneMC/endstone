@@ -44,15 +44,8 @@ NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_bu
 
         endstone::core::EndstonePlayer *player = nullptr;
         if (const auto *p =
-                server.getServer().getMinecraft()->getServerNetworkHandler()->_getServerPlayer(id, sub_client_id)) {
+                server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, sub_client_id)) {
             player = &p->getEndstoneActor<endstone::core::EndstonePlayer>();
-        }
-
-        if (player) {
-            // TODO(refactor): move custom handling logics out from this function
-            if (packet_id == MinecraftPacketIds::SetLocalPlayerAsInit) {
-                player->doFirstSpawn();
-            }
         }
 
         const auto payload = stream.getView().substr(stream.getReadPointer());
