@@ -41,6 +41,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
+        bedrock_hooks/server_player_movement_correction_system.cpp
         bedrock_hooks/server_script_manager.cpp
         main.cpp
         hook.cpp
