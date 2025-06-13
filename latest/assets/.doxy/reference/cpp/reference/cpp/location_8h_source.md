@@ -67,8 +67,24 @@ private:
     float pitch_;  // Rotation around the right axis (around X axis).
     float yaw_;    // Rotation around the up axis (around Y axis)
 };
-
 }  // namespace endstone
+
+template <>
+struct fmt::formatter<endstone::Location> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::Location &self, FormatContext &ctx) const -> format_context::iterator
+    {
+        auto out = ctx.out();
+        if (self.getDimension()) {
+            out = fmt::format_to(out, "Location(dimension={},", *self.getDimension());
+        }
+        else {
+            out = fmt::format_to(out, "Location(dimension=null,");
+        }
+        return fmt::format_to(out, "x={},y={},z={},pitch={},yaw={})", self.getX(), self.getY(), self.getZ(),
+                              self.getPitch(), self.getYaw());
+    }
+};
 ```
 
 

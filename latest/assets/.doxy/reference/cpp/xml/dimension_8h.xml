@@ -193,6 +193,7 @@
       </node>
     </incdepgraph>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4" prot="public">fmt::formatter&lt; endstone::Dimension &gt;</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -251,6 +252,15 @@
 <codeline lineno="110" refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::unique_ptr&lt;Chunk&gt;&gt;<sp/><ref refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" kindref="member">getLoadedChunks</ref>()<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="111"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="112"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="115" refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::Dimension&gt;<sp/>:<sp/>formatter&lt;string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">endstone::Dimension</ref><sp/>&amp;self,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;Dimension(name={})&quot;</highlight><highlight class="normal">,<sp/>self.<ref refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" kindref="member">getName</ref>());</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/endstone/level/dimension.h"/>
   </compounddef>

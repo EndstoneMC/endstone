@@ -60,6 +60,15 @@ public:
     [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
 };
 }  // namespace endstone
+
+template <>
+struct fmt::formatter<endstone::Dimension> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::Dimension &self, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "Dimension(name={})", self.getName());
+    }
+};
 ```
 
 

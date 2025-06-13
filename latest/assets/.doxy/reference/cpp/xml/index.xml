@@ -574,6 +574,9 @@
     <member refid="structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4_1a550a3ede03ae8cb3363f4506b352053a" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4_1a28a57016ce7ccd62f11a6a308793c01f" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Dimension &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4_1abeecaceec6db778e76499dcd635ba82a" kind="function"><name>format</name></member>
+  </compound>
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" kind="struct"><name>fmt::formatter&lt; endstone::ItemStack &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1ad78d75e07f93f63fc0413cee2954d7f0" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1a6116802aa2eb42ae63921aa2f140c160" kind="function"><name>format</name></member>
@@ -581,6 +584,9 @@
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4" kind="struct"><name>fmt::formatter&lt; endstone::ItemType &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4_1af86040eb443c33219a63d3dd1158fe4e" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4_1a787932a2a8b044ef7df518d268f4b19f" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Location &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4_1aacd1087e93588052d3587935edd93eab" kind="function"><name>format</name></member>
   </compound>
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4" kind="struct"><name>fmt::formatter&lt; endstone::NamespacedKey &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1afcf12b2150ee0d6347f8120c2565bbf6" kind="function"><name>format</name></member>
@@ -1255,6 +1261,10 @@
     <member refid="classendstone_1_1PlayerJoinEvent_1a81c71ecd00651758cd7f2e31eebad892" kind="function"><name>getJoinMessage</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1afa17a2324546ffd0cdeeb9d4ec259d6b" kind="function"><name>setJoinMessage</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerJumpEvent" kind="class"><name>endstone::PlayerJumpEvent</name>
+    <member refid="classendstone_1_1PlayerJumpEvent_1a3866aeca3afbfd2844cdc2e52173aa4d" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerJumpEvent_1a8a1cf3638b2074e1d7845129adbbfed5" kind="function"><name>PlayerMoveEvent</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerKickEvent" kind="class"><name>endstone::PlayerKickEvent</name>
     <member refid="classendstone_1_1PlayerKickEvent_1a3ad9fb66f559d36fb0e5940a5664b9dc" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerKickEvent_1ac8c658cd31eeb3b8aaef769927a88459" kind="variable"><name>reason_</name></member>
@@ -1273,6 +1283,16 @@
     <member refid="classendstone_1_1PlayerLoginEvent_1a25b7ba1f99219f7b07dc41a2aa36b840" kind="function"><name>getKickMessage</name></member>
     <member refid="classendstone_1_1PlayerLoginEvent_1a8f5b97ba68ebdaf921e4d9a9e6f8219e" kind="function"><name>setKickMessage</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerMoveEvent" kind="class"><name>endstone::PlayerMoveEvent</name>
+    <member refid="classendstone_1_1PlayerMoveEvent_1ab13ad4f9c7456bf710fcb329233cf4c7" kind="variable"><name>from_</name></member>
+    <member refid="classendstone_1_1PlayerMoveEvent_1a4b5dde5fe4cfcebba45d3864de199d79" kind="variable"><name>to_</name></member>
+    <member refid="classendstone_1_1PlayerMoveEvent_1a545efb1716ac4e5a9ff1c50b81f2df69" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerMoveEvent_1a8a1cf3638b2074e1d7845129adbbfed5" kind="function"><name>PlayerMoveEvent</name></member>
+    <member refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" kind="function"><name>getFrom</name></member>
+    <member refid="classendstone_1_1PlayerMoveEvent_1a8917f8be7ae5bdeb109e58ddc7d3b723" kind="function"><name>setFrom</name></member>
+    <member refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" kind="function"><name>getTo</name></member>
+    <member refid="classendstone_1_1PlayerMoveEvent_1a733ae2307c00ed312652389f1e26317f" kind="function"><name>setTo</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerQuitEvent" kind="class"><name>endstone::PlayerQuitEvent</name>
     <member refid="classendstone_1_1PlayerQuitEvent_1a9a422070fcabd4719e3c1711af48fbcb" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a1c96bd265b80988f2b45a3a7576aad97" kind="variable"><name>quit_message_</name></member>
@@ -1289,16 +1309,8 @@
     <member refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8" kind="function"><name>getEventName</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerTeleportEvent" kind="class"><name>endstone::PlayerTeleportEvent</name>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a65255877510836658e5cda1429403f91" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a4d1f49ddbc33c47de8e2521fb804a170" kind="variable"><name>from_</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a32ac0caa99422bdab2ac2bde141b1d49" kind="variable"><name>to_</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a9ab9f29f3e3dcd10bff208b2eca850f9" kind="function"><name>PlayerTeleportEvent</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1ae9c8d32bfb9ddf9c5e7cdb98b82f81b1" kind="function"><name>~PlayerTeleportEvent</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a58a064da0b7bad2f61d36937f3da9cae" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a1b887891187b8979f3514ce86c4fda40" kind="function"><name>getFrom</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1aaa1f6fe464e73b5b9fc11e49c0d1e712" kind="function"><name>setFrom</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a9d1e67e4a07e90e1d3e22fd514312102" kind="function"><name>getTo</name></member>
-    <member refid="classendstone_1_1PlayerTeleportEvent_1a04475d4a275c57bb760e174a6411a101" kind="function"><name>setTo</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a43539d2448ad4540de9a2be61bbe47e8" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a8a1cf3638b2074e1d7845129adbbfed5" kind="function"><name>PlayerMoveEvent</name></member>
   </compound>
   <compound refid="classendstone_1_1Plugin" kind="class"><name>endstone::Plugin</name>
     <member refid="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" kind="friend"><name>PluginLoader</name></member>
@@ -2012,9 +2024,13 @@
   </compound>
   <compound refid="player__join__event_8h" kind="file"><name>player_join_event.h</name>
   </compound>
+  <compound refid="player__jump__event_8h" kind="file"><name>player_jump_event.h</name>
+  </compound>
   <compound refid="player__kick__event_8h" kind="file"><name>player_kick_event.h</name>
   </compound>
   <compound refid="player__login__event_8h" kind="file"><name>player_login_event.h</name>
+  </compound>
+  <compound refid="player__move__event_8h" kind="file"><name>player_move_event.h</name>
   </compound>
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
   </compound>

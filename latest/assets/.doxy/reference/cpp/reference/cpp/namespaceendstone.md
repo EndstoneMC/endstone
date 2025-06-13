@@ -124,8 +124,10 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerInventory**](classendstone_1_1PlayerInventory.md) <br>_Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._ |
 | class | [**PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md) <br>_Called when a player is finishing consuming an item (food, potion, milk bucket)._  |
 | class | [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) <br>_Called when a player joins a server._  |
+| class | [**PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md) <br>_Called when a player jumps._  |
 | class | [**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md) <br>_Called when a player gets kicked from the server._  |
 | class | [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) <br>_Called when a player attempts to login in._  |
+| class | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md) <br>_Called when a player moves._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
 | class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |

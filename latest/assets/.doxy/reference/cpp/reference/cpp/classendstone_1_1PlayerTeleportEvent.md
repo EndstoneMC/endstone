@@ -14,7 +14,7 @@ _Called when a player is teleported from one location to another._
 
 
 
-Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
+Inherits the following classes: [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
 
 
 
@@ -47,11 +47,34 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
+## Public Attributes inherited from endstone::PlayerMoveEvent
+
+See [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"PlayerTeleportEvent"`<br> |
+|  [**Location**](classendstone_1_1Location.md) | [**from\_**](classendstone_1_1PlayerMoveEvent.md#variable-from_)  <br> |
+|  [**Location**](classendstone_1_1Location.md) | [**to\_**](classendstone_1_1PlayerMoveEvent.md#variable-to_)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -98,13 +121,22 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerTeleportEvent**](#function-playerteleportevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  const [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location that this player moved from._  |
-|  const [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location that this player moved to._  |
-|  void | [**setFrom**](#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location that this player moved from._  |
-|  void | [**setTo**](#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this player moved to._  |
-|   | [**~PlayerTeleportEvent**](#function-playerteleportevent) () override<br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md)) <br> |
+|   | [**PlayerMoveEvent**](#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
+
+
+## Public Functions inherited from endstone::PlayerMoveEvent
+
+See [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
+
+| Type | Name |
+| ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](classendstone_1_1PlayerMoveEvent.md#function-endstone_event) ([**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md)) <br> |
+|   | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
+|  const [**Location**](classendstone_1_1Location.md) & | [**getFrom**](classendstone_1_1PlayerMoveEvent.md#function-getfrom) () const<br>_Gets the location this player moved from._  |
+|  const [**Location**](classendstone_1_1Location.md) & | [**getTo**](classendstone_1_1PlayerMoveEvent.md#function-getto) () const<br>_Gets the location this player moved to._  |
+|  Result&lt; void &gt; | [**setFrom**](classendstone_1_1PlayerMoveEvent.md#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location to mark as where the player moved from._  |
+|  Result&lt; void &gt; | [**setTo**](classendstone_1_1PlayerMoveEvent.md#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this player will move to._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -208,180 +240,60 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
 
 
 
 
-### variable NAME 
-
-```C++
-const std::string endstone::PlayerTeleportEvent::NAME;
-```
 
 
 
 
-<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Public Functions Documentation
 
 
 
 
-### function PlayerTeleportEvent 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline explicit endstone::PlayerTeleportEvent::PlayerTeleportEvent (
+endstone::PlayerTeleportEvent::ENDSTONE_EVENT (
+    PlayerTeleportEvent
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function PlayerMoveEvent 
+
+```C++
+inline explicit endstone::PlayerTeleportEvent::PlayerMoveEvent (
     Player & player,
     Location from,
     Location to
 ) 
-```
-
-
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerTeleportEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
-
-<hr>
-
-
-
-### function getFrom 
-
-_Gets the location that this player moved from._ 
-```C++
-inline const Location & endstone::PlayerTeleportEvent::getFrom () const
-```
-
-
-
-
-
-**Returns:**
-
-[**Location**](classendstone_1_1Location.md) this player moved from 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getTo 
-
-_Gets the location that this player moved to._ 
-```C++
-inline const Location & endstone::PlayerTeleportEvent::getTo () const
-```
-
-
-
-
-
-**Returns:**
-
-[**Location**](classendstone_1_1Location.md) this player moved to 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setFrom 
-
-_Sets the location that this player moved from._ 
-```C++
-inline void endstone::PlayerTeleportEvent::setFrom (
-    const Location & from
-) 
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `from` New location this player moved from 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setTo 
-
-_Sets the location that this player moved to._ 
-```C++
-inline void endstone::PlayerTeleportEvent::setTo (
-    const Location & to
-) 
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `to` New [**Location**](classendstone_1_1Location.md) this player moved to 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function ~PlayerTeleportEvent 
-
-```C++
-endstone::PlayerTeleportEvent::~PlayerTeleportEvent () override
 ```
 
 
