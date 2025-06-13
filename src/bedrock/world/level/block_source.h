@@ -27,11 +27,10 @@
 #include "bedrock/world/level/clip_parameters.h"
 #include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_seed.h"
+#include "bedrock/world/level/material/material.h"
 
 class ILevel;
 class Level;
-class Material;
-class MaterialType;
 
 using ActorSpan = gsl::span<gsl::not_null<Actor *>>;
 using ConstActorSpan = gsl::span<gsl::not_null<const Actor *>>;
@@ -83,7 +82,8 @@ public:
     virtual void addListener(Listener &) = 0;
     virtual void removeListener(Listener &) = 0;
     virtual ActorSpan fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
-    virtual ActorSpan fetchEntities(ActorType, AABB const &, Actor const *, std::function<bool(Actor *)>) = 0;
+    virtual ActorSpan fetchEntities(ActorType entity_type_id, AABB const &bb, Actor const *except,
+                                    std::function<bool(Actor *)> selector) = 0;
     virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
     [[nodiscard]] virtual Height getMinHeight() const = 0;
     [[nodiscard]] virtual Height getMaxHeight() const = 0;
@@ -128,4 +128,6 @@ public:
     explicit BlockSource(ChunkSource &, bool, bool);
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
+
+    [[nodiscard]] bool isEmptyBlock(const BlockPos &) const;
 };

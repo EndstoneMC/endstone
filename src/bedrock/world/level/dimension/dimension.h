@@ -58,6 +58,7 @@ class Dimension : public IDimension,
 public:
     Dimension(ILevel &, DimensionType, DimensionHeightRange, Scheduler &, std::string);
 
+    [[nodiscard]] bool isBrightOutside() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] ChunkSource &getChunkSource() const;
     BlockSource &getBlockSourceFromMainChunkSource() const;

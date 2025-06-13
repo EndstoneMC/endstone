@@ -43,7 +43,7 @@ public:
     }
 
     template <typename Component>
-    Component *tryGetComponent() const
+    const Component *tryGetComponent() const
     {
         return entt_registry_.try_get<Component>(entity_);
     }

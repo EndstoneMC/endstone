@@ -14,17 +14,18 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/core/math/vec2.h"
 
-class BlockStateInstance {
-public:
-private:
-    constexpr inline static std::uint32_t max_bits = 16;
-
-    std::uint32_t start_bit_;        // +0
-    std::uint32_t num_bits_;         // +4
-    std::uint32_t variation_count_;  // +8
-    std::uint32_t mask_;             // +12
-    bool initialised_;               // +16
-    BlockState *state_;              // +24
+struct ShouldUpdateBoundingBoxRequestComponent {
+    struct UpdateFromDefinition {};
+    static_assert(sizeof(UpdateFromDefinition) == 1);
+    struct UpdateFromValue {
+        Vec2 value;
+    };
+    static_assert(sizeof(UpdateFromValue) == 8);
+    std::variant<UpdateFromDefinition, UpdateFromValue> update;
 };
+static_assert(sizeof(ShouldUpdateBoundingBoxRequestComponent) == 12);
+
+struct NeverChangesSizeFlagComponent {};
+static_assert(sizeof(NeverChangesSizeFlagComponent) == 1);

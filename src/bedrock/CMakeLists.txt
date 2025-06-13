@@ -29,6 +29,7 @@ add_library(bedrock STATIC
         entity/gamerefs_entity/entity_registry.cpp
         entity/gamerefs_entity/stack_result_storage_entity.cpp
         entity/gamerefs_entity/weak_storage_entity.cpp
+        entity/systems/actor_set_pos_system.cpp
         entity/utilities/synched_actor_data_access.cpp
         locale/i18n.cpp
         locale/localization.cpp
@@ -60,6 +61,8 @@ add_library(bedrock STATIC
         server/commands/command_utils.cpp
         server/commands/minecraft_commands.cpp
         server/commands/standard/teleport_command.cpp
+        textobject/text_object.cpp
+        util/color_format.cpp
         util/data_io.cpp
         util/index_set.cpp
         util/string_byte_output.cpp
@@ -68,6 +71,7 @@ add_library(bedrock STATIC
         world/actor/actor.cpp
         world/actor/actor_damage_source.cpp
         world/actor/actor_definition_identifier.cpp
+        world/actor/actor_value_validation.cpp
         world/actor/mob.cpp
         world/actor/synched_actor_data.cpp
         world/actor/item/item_actor.cpp
@@ -75,6 +79,8 @@ add_library(bedrock STATIC
         world/actor/player/player.cpp
         world/actor/player/player_inventory.cpp
         world/actor/player/player_item_in_use.cpp
+        world/actor/provider/actor_offset.cpp
+        world/actor/provider/actor_riding.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp
         world/inventory/network/item_stack_net_id_variant.cpp
@@ -90,14 +96,17 @@ add_library(bedrock STATIC
         world/item/registry/creative_item_registry.cpp
         world/item/registry/item_registry.cpp
         world/item/registry/item_registry_ref.cpp
+        world/level/block_source.cpp
         world/level/explosion.cpp
         world/level/level.cpp
         world/level/biome/registry/biome_registry.cpp
+        world/level/block/bed_block.cpp
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
         world/level/block/block_legacy.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/registry/block_type_registry.cpp
+        world/level/block/states/block_state.cpp
         world/level/chunk/level_chunk.cpp
         world/level/dimension/dimension.cpp
         world/level/saveddata/map_item_saved_data.cpp

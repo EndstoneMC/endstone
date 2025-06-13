@@ -93,6 +93,20 @@ public:
     template <typename T>
     void set(SynchedActorData::ID, const T &);
 
+    template <typename T>
+    void setFlag(SynchedActorData::ID id, int index)
+    {
+        auto data = _get();
+        auto &item = data->_get(id);
+
+        auto &item2 = static_cast<DataItem2<T> &>(item);
+        T value = item2.data | (1 << index);
+        if (item2.data != value) {
+            item2.data = value;
+            data->dirty_flags_.set(item.getId(), true);
+        }
+    }
+
 private:
     gsl::not_null<SynchedActorData *> _get() const;
 
