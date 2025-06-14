@@ -62,6 +62,7 @@ version = "1.21.84"
 "?completeUsingItem@Player@@QEAAXXZ" = 39210608
 "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 39268528
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 39187728
+"?take@Player@@QEAA_NAEAVActor@@HH@Z" = 39234592
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 56306496
 # RakPeerHelper
@@ -157,6 +158,7 @@ version = "1.21.84"
 "_ZN6Player17completeUsingItemEv" = 126909696
 "_ZN6Player4dropERK9ItemStackb" = 126985168
 "_ZN6Player10teleportToERK4Vec3biib" = 126890640
+"_ZN6Player4takeER5Actorii" = 126942848
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 153478656
 # RakPeerHelper
