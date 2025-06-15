@@ -20,8 +20,15 @@
 
 #include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/identity/game_server_token.h"
+#include "bedrock/certificates/identity/legacy_multiplayer_token.h"
+#include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/certificates/web_token.h"
+#include "bedrock/common_types.h"
+#include "bedrock/core/math/color.h"
 #include "bedrock/deps/json/value.h"
+#include "bedrock/input/input_mode.h"
+#include "bedrock/platform/build_platform.h"
+#include "bedrock/resources/min_engine_version.h"
 
 class SubClientConnectionRequest {
 public:
