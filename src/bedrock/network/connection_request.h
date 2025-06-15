@@ -25,22 +25,14 @@
 
 class ConnectionRequest {
 public:
-    [[nodiscard]] const GameServerToken &getGameServerToken() const
-    {
-        return game_server_token_;
-    }
-
-    [[nodiscard]] Json::Value getData(const std::string &key) const
-    {
-        if (game_server_token_ && raw_token_) {
-            return raw_token_->getData().get(key, Json::nullValue);
-        }
-        return Json::nullValue;
-    }
+    PlayerAuthenticationType getAuthenticationType() const;
 
 private:
-    std::unique_ptr<WebToken> raw_token_;                      // +0
-    std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +8
-    GameServerToken game_server_token_;                        // +16
-    SubClientId client_sub_id_;                                // +24
+    [[nodiscard]] Json::Value getData(const std::string &key) const;
+
+    std::unique_ptr<WebToken> raw_token_;
+    std::unique_ptr<UnverifiedCertificate> certificate_data_;
+    LegacyMultiplayerToken legacy_multiplayer_token_;
+    RawGameServerToken game_server_token_;
+    PlayerAuthenticationType authentication_type_;
 };

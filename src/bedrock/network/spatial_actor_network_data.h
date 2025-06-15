@@ -14,21 +14,22 @@
 
 #pragma once
 
-#include <cstdint>
-#include <unordered_set>
+#include <unordered_map>
 
 #include "bedrock/network/packet/move_actor_absolute_data.h"
 #include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/level/tick.h"
 
 class Actor;
 
 class SpatialActorNetworkData {
 public:
-    Actor *actor;                                                 // +0
-    bool has_initialized_last_sent;                               // +8
-    bool auto_send;                                               // +9
-    MoveActorAbsoluteData last_sent_move_data;                    // +16
-    MoveActorAbsoluteData last_received_move_data;                // +48
-    std::unordered_set<ActorUniqueID> last_spatial_update_ticks;  // +80
+    Actor *actor;
+    bool has_initialized_last_sent;
+    bool auto_send;
+    MoveActorAbsoluteData last_sent_move_data;
+    MoveActorAbsoluteData last_received_move_data;
+    ForceSendSpatialDataValue last_force_send_spatial_data_value_;
+    std::unordered_map<ActorUniqueID, Tick> last_spatial_update_ticks;
 };
 // static_assert(sizeof(SpatialActorNetworkData) == 144);

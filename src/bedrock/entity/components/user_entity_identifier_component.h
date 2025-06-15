@@ -25,13 +25,12 @@
 class UserEntityIdentifierComponent {
 public:
     UserEntityIdentifierComponent(const NetworkIdentifier &, SubClientId, mce::UUID, const std::string &,
-                                  const GameServerToken &);
+                                  PlayerAuthenticationType, const PlayerAuthenticationInfo &);
 
     static UserEntityIdentifierComponent *tryGetFromEntity(EntityContext &);
     static const UserEntityIdentifierComponent *tryGetFromEntity(const EntityContext &);
 
     [[nodiscard]] bool isPrimaryClient() const;
-    [[nodiscard]] bool isAuthenticated() const;
     [[nodiscard]] bool isLoggedIntoXboxLive() const;
     [[nodiscard]] const NetworkIdentifier &getNetworkId() const
     {
@@ -46,20 +45,19 @@ public:
     {
         return client_uuid_;
     }
-    [[nodiscard]] mce::UUID getAuthenticatedUUID() const;
     [[nodiscard]] std::string getIdentityName() const;
     [[nodiscard]] std::string getXuid(bool trust_self_signed) const
     {
         return game_server_token_.getXuid(trust_self_signed);
     }
-    [[nodiscard]] std::string getTitleId() const;
 
 private:
     NetworkIdentifier network_id_;
     SubClientId client_sub_id_;
     std::string playfab_id_unverified_;
     mce::UUID client_uuid_;
-    GameServerToken game_server_token_;
+    PlayerAuthenticationType authentication_type_;
+    PlayerAuthenticationInfo trusted_player_info_;
 };
 #if defined __clang__ || defined __GNUC__
 static_assert(entt::type_hash<UserEntityIdentifierComponent>::value() == 0xB845379);

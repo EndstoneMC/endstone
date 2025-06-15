@@ -713,8 +713,8 @@ void EndstonePlayer::transfer(std::string host, int port) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
-    pk->address = std::move(host);
-    pk->port = port;
+    pk->destination = std::move(host);
+    pk->destination_port = port;
     getPlayer().sendNetworkPacket(*packet);
 }
 

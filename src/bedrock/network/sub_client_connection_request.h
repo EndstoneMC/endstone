@@ -24,16 +24,12 @@
 
 class SubClientConnectionRequest {
 public:
-    [[nodiscard]] Json::Value getData(const std::string &key) const
-    {
-        if (game_server_token_ && raw_token_) {
-            return raw_token_->getData().get(key, Json::nullValue);
-        }
-        return Json::nullValue;
-    }
-
 private:
-    std::unique_ptr<WebToken> raw_token_;                      // +0
-    std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +0
-    GameServerToken game_server_token_;                        // +16
+    [[nodiscard]] Json::Value getData(const std::string &key) const;
+
+    std::unique_ptr<WebToken> raw_token_;
+    std::unique_ptr<UnverifiedCertificate> certificate_data_;
+    LegacyMultiplayerToken legacy_multiplayer_token_;
+    RawGameServerToken game_server_token_;
+    PlayerAuthenticationType authentication_type_;
 };
