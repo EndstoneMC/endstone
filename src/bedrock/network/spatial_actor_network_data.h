@@ -17,10 +17,13 @@
 #include <unordered_map>
 
 #include "bedrock/network/packet/move_actor_absolute_data.h"
+#include "bedrock/util/new_type.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/tick.h"
 
 class Actor;
+
+struct ForceSendSpatialDataValue : NewType<unsigned int> {};
 
 class SpatialActorNetworkData {
 public:
@@ -29,7 +32,7 @@ public:
     bool auto_send;
     MoveActorAbsoluteData last_sent_move_data;
     MoveActorAbsoluteData last_received_move_data;
-    ForceSendSpatialDataValue last_force_send_spatial_data_value_;
+    ForceSendSpatialDataValue last_force_send_spatial_data_value;
     std::unordered_map<ActorUniqueID, Tick> last_spatial_update_ticks;
 };
 // static_assert(sizeof(SpatialActorNetworkData) == 144);

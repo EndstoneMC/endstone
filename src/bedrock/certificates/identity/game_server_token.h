@@ -17,6 +17,9 @@
 #include <memory>
 
 #include "bedrock/certificates/certificate.h"
+#include "bedrock/util/new_type.h"
+
+struct RawGameServerToken : NewType<std::string> {};
 
 class GameServerToken {
 public:

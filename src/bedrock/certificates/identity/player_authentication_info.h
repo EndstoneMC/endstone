@@ -14,31 +14,17 @@
 
 #pragma once
 
-#include <functional>
-#include <memory>
 #include <string>
-#include <vector>
 
-#include "bedrock/core/file/path.h"
-#include "bedrock/core/threading/async.h"
-#include "bedrock/forward.h"
-#include "bedrock/nbt/compound_tag.h"
-#include "bedrock/world/level/chunk/chunk_source.h"
-#include "bedrock/world/level/storage/db_storage_performance_data.h"
-
-struct PlayerStorageIds {
-    std::string msa_id;
-    std::string guest_id;
-    std::string platform_id;
-    std::string platform_online_id;
-    std::string platform_offline_id;
-    std::string self_signed_id;
-    std::string random_client_id;
+enum class PlayerAuthenticationType : int {
+    Invalid = -1,
+    Full = 0,
+    Guest = 1,
+    SelfSigned = 2,
 };
 
-class LevelStorage {
-public:
-    enum class StatsType;
-
-    virtual ~LevelStorage() = 0;
+struct PlayerAuthenticationInfo {
+    std::string xuid;
+    std::string xbox_live_name;
 };
+

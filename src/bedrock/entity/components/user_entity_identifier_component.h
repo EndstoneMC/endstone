@@ -16,7 +16,7 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/certificates/identity/game_server_token.h"
+#include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/common_types.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/network/network_identifier.h"
@@ -48,7 +48,7 @@ public:
     [[nodiscard]] std::string getIdentityName() const;
     [[nodiscard]] std::string getXuid(bool trust_self_signed) const
     {
-        return game_server_token_.getXuid(trust_self_signed);
+        return trusted_player_info_.xuid;
     }
 
 private:

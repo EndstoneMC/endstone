@@ -57,7 +57,7 @@ bool ScoreboardIdentityRef::removeFromObjective(Scoreboard &scoreboard, Objectiv
     return true;
 }
 
-bool ScoreboardIdentityRef::modifyScoreInObjective(int &result, Objective &objective, int score,
+bool ScoreboardIdentityRef::modifyScoreInObjective(ScoreboardOperationResult &result, Objective &objective, int score,
                                                    PlayerScoreSetFunction action)
 {
     const bool was_set = objective.getPlayerScore(scoreboard_id_).valid;

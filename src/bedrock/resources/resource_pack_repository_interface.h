@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/threading/async.h"
 #include "bedrock/resources/invalid_packs_filter_group.h"
 #include "bedrock/resources/pack_source.h"
 #include "bedrock/resources/pack_source_factory.h"
@@ -23,6 +24,7 @@ class IResourcePackRepository : public Bedrock::EnableNonOwnerReferences {
 public:
     virtual void getResourcePacksByPackId(std::vector<PackInstanceId> const &, std::vector<PackInstance> &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackId(PackIdVersion const &) const = 0;
+    [[nodiscard]] virtual ResourcePack *getResourcePackOfDifferentVersionForPackId(const PackIdVersion &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdInPath(PackIdVersion const &,
                                                                        Core::Path const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackByUUID(mce::UUID const &) const = 0;
@@ -41,6 +43,8 @@ public:
     virtual void addCachedResourcePacks(ContentKeyMap const *) = 0;
     virtual void addWorldResourcePacks(Core::Path const &) = 0;
     virtual void addPremiumWorldTemplateResourcePacks(Core::Path const &, ContentIdentity const &) = 0;
+    virtual void addWorldPackSource(const Core::Path &) = 0;
+    virtual void addPremiumWorldTemplatePackSource(const Core::Path &, const ContentIdentity &) = 0;
     virtual void addTempWorldTemplateResourcePacks(mce::UUID const &) = 0;
     virtual void removePacksLoadedFromCache() = 0;
     virtual void removePacksLoadedFromWorld() = 0;
@@ -52,6 +56,7 @@ public:
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentSkinPacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getTreatmentPacksPath() const = 0;
     virtual void refreshPacks() = 0;
+    virtual Bedrock::Threading::Async<void> refreshPacksAsync() = 0;
     virtual void requestReloadUserPacks() = 0;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> getKeyProvider() const = 0;
     virtual PackManifestFactory &getPackManifestFactory() = 0;
@@ -61,6 +66,7 @@ public:
     [[nodiscard]] virtual std::vector<ResourcePack *> getPacksByResourceLocation(PackOrigin) const = 0;
     [[nodiscard]] virtual std::vector<ResourcePack *> getPacksByType(PackType) const = 0;
     [[nodiscard]] virtual std::vector<ResourcePack *> getPacksByCategory(PackCategory) const = 0;
+    virtual void forEachPack(const std::function<void(const ResourcePack &)> &) const = 0;
     virtual void addInvalidPack(ResourceLocation const &, PackType) = 0;
     [[nodiscard]] virtual std::vector<ResourceLocation> const &getInvalidPacks(PackType) const = 0;
     [[nodiscard]] virtual std::vector<ResourceLocation> getInvalidPacks(InvalidPacksFilterGroup const &) const = 0;
@@ -70,5 +76,5 @@ public:
     virtual void untrackInvalidPack(ResourceLocation const &) = 0;
     virtual void registerResourcePackRemovedCallback(void *, std::function<void(ResourcePack *)>) = 0;
     virtual void unregisterResourcePackRemovedCallback(void *) = 0;
-    virtual bool isInitialized() = 0;
+    virtual bool isInitialized() const = 0;
 };
