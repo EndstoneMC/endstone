@@ -14,8 +14,13 @@
 
 #include "bedrock/world/level/level.h"
 
+#include "bedrock/world/level/chunk/chunk_source.h"
+#include "bedrock/world/level/chunk/level_chunk.h"
+#include "endstone/core/level/chunk.h"
 #include "endstone/core/scheduler/scheduler.h"
 #include "endstone/core/server.h"
+#include "endstone/event/chunk/chunk_load_event.h"
+#include "endstone/event/chunk/chunk_unload_event.h"
 #include "endstone/runtime/hook.h"
 
 using endstone::core::EndstoneScheduler;
@@ -27,4 +32,22 @@ void Level::tick()
     auto &server = entt::locator<EndstoneServer>::value();
     server.tick(getCurrentServerTick().tick_id,
                 [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, symbol, this); });
+}
+
+void Level::onChunkDiscarded(LevelChunk &lc)
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
+    endstone::ChunkUnloadEvent e{*es_chunk};
+    server.getPluginManager().callEvent(e);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Level::onChunkDiscarded, this, lc);
+}
+
+void Level::onChunkLoaded(ChunkSource &source, LevelChunk &lc)
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
+    endstone::ChunkLoadEvent e{*es_chunk};
+    server.getPluginManager().callEvent(e);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Level::onChunkLoaded, this, source, lc);
 }

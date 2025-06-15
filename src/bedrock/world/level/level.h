@@ -20,11 +20,15 @@
 namespace endstone::core {
 class EndstoneServer;
 }
+class ChunkSource;
+class LevelChunk;
 
 class Level : public ILevel {
 public:
     ENDSTONE_HOOK void tick() override;
-
+    ENDSTONE_HOOK void onChunkDiscarded(LevelChunk &);
+    ENDSTONE_HOOK void onChunkLoaded(ChunkSource &, LevelChunk &);
+    
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
     virtual void *getPlayerSleepManager() = 0;
@@ -43,4 +47,7 @@ public:
 protected:
     virtual void _initializeMapDataManager() = 0;
     friend class endstone::core::EndstoneServer;
+
+private:
+    ENDSTONE_HOOK void _onChunkLoaded(ChunkSource &, LevelChunk &, int);
 };

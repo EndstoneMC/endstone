@@ -140,6 +140,13 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,
                                "Gets the block that this block was placed against");
 
+    // Chunk events
+    py::class_<ChunkEvent, Event>(m, "ChunkEvent", "Represents a Chunk related event")
+        .def_property_readonly("chunk", &ChunkEvent::getChunk, py::return_value_policy::reference,
+                               "Gets the chunk being loaded/unloaded");
+    py::class_<ChunkLoadEvent, Event>(m, "ChunkLoadEvent", "Called when a chunk is loaded");
+    py::class_<ChunkUnloadEvent, Event>(m, "ChunkUnloadEvent", "Called when a chunk is unloaded");
+    
     // Player events
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
@@ -209,6 +216,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
     py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
+    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
+        .def_property_readonly("item", &PlayerPickupItemEvent::getItem, py::return_value_policy::reference,
+                               "Gets the Item picked up by the entity.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a server-related event");
@@ -316,6 +327,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "WeatherChangeEvent", "Called when the weather (rain) state in a world is changing.")
         .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,
                                "Gets the state of weather that the world is being set to");
+
+    py::class_<WorldEvent, Event>(m, "WorldEvent", "Represents events within a world")
+        .def_property_readonly("dimension", &WorldEvent::getDimension, py::return_value_policy::reference,
+                               "Gets the world primarily involved with this event");
 }
 
 }  // namespace endstone::python

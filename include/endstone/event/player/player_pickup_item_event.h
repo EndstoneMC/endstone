@@ -24,19 +24,8 @@ namespace endstone {
  */
 class PlayerPickupItemEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerPickupItemEvent(Player &player, const ItemStack &item, int remaining)
-        : Cancellable(player), item_(item), remaining_(remaining) {};
+    explicit PlayerPickupItemEvent(Player &player, const ItemStack &item) : Cancellable(player), item_(item) {};
     ENDSTONE_EVENT(PlayerPickupItemEvent)
-
-    /**
-     * @brief Gets the amount remaining on the ground, if any
-     *
-     * @return amount remaining on the ground
-     */
-    int getRemaining()
-    {
-        return remaining_;
-    }
 
     /**
      * @brief Gets the Item picked up by the entity.
@@ -50,7 +39,6 @@ public:
 
 private:
     const ItemStack &item_;
-    int remaining_;
 };
 
 }  // namespace endstone

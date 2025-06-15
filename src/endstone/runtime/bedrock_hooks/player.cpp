@@ -83,7 +83,7 @@ bool Player::take(Actor &actor, int orgCount, int favoredSlot)
         auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
         const auto &ori_item = static_cast<ItemActor &>(actor).getItemStack();
         const auto item = endstone::core::EndstoneItemStack::fromMinecraft(ori_item);
-        endstone::PlayerPickupItemEvent e(player, *item, ori_item.getCount() - 1);
+        endstone::PlayerPickupItemEvent e(player, *item);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
