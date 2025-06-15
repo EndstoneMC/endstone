@@ -43,6 +43,8 @@ version = "1.21.84"
 "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 46269728
 # Level
 "?tick@Level@@UEAAXXZ" = 43465216
+"?onChunkDiscarded@Level@@UEAAXAEAVLevelChunk@@@Z" = 43500928
+"?onChunkLoaded@Level@@UEAAXAEAVChunkSource@@AEAVLevelChunk@@@Z" = 43500608
 # MinecraftCommands
 "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 17713472
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 17711104
@@ -62,6 +64,7 @@ version = "1.21.84"
 "?completeUsingItem@Player@@QEAAXXZ" = 39210608
 "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 39268528
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 39187728
+"?take@Player@@QEAA_NAEAVActor@@HH@Z" = 39234592
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 56306496
 # RakPeerHelper
@@ -138,6 +141,8 @@ version = "1.21.84"
 "_ZNK20InventoryTransaction11executeFullER6Playerb" = 143420128
 # Level
 "_ZN5Level4tickEv" = 137370576
+"_ZN5Level13onChunkLoadedER11ChunkSourceR10LevelChunk" = 137395360
+"_ZN5Level16onChunkDiscardedER10LevelChunk" = 137395440
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 86652304
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 86619920
@@ -157,6 +162,7 @@ version = "1.21.84"
 "_ZN6Player17completeUsingItemEv" = 126909696
 "_ZN6Player4dropERK9ItemStackb" = 126985168
 "_ZN6Player10teleportToERK4Vec3biib" = 126890640
+"_ZN6Player4takeER5Actorii" = 126942848
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 153478656
 # RakPeerHelper

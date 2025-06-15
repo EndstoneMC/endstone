@@ -14,25 +14,31 @@
 
 #pragma once
 
-#include "bedrock/world/level/chunk/level_chunk.h"
-#include "endstone/level/chunk.h"
+#include "endstone/event/cancellable.h"
+#include "endstone/event/player/player_event.h"
 
-namespace endstone::core {
+namespace endstone {
 
-class EndstoneChunk : public Chunk {
+/**
+ * @brief Called when a player picks an item up from the ground.
+ */
+class PlayerPickupItemEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit EndstoneChunk(const LevelChunk &chunk);
-    [[nodiscard]] int getX() const override;
-    [[nodiscard]] int getZ() const override;
-    [[nodiscard]] Level &getLevel() const override;
-    [[nodiscard]] Dimension &getDimension() const override;
+    explicit PlayerPickupItemEvent(Player &player, const ItemStack &item) : Cancellable(player), item_(item) {};
+    ENDSTONE_EVENT(PlayerPickupItemEvent)
 
-    static std::unique_ptr<EndstoneChunk> fromMinecraft(const LevelChunk &lc);
+    /**
+     * @brief Gets the Item picked up by the entity.
+     *
+     * @return Item
+     */
+    const ItemStack &getItem()
+    {
+        return item_;
+    }
 
 private:
-    ::Dimension &dimension_;
-    int x_;
-    int z_;
+    const ItemStack &item_;
 };
 
-}  // namespace endstone::core
+}  // namespace endstone

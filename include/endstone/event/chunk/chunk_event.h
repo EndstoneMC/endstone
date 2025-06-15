@@ -14,25 +14,32 @@
 
 #pragma once
 
-#include "bedrock/world/level/chunk/level_chunk.h"
+#include "endstone/event/event.h"
+#include "endstone/event/world/world_event.h"
 #include "endstone/level/chunk.h"
 
-namespace endstone::core {
+namespace endstone {
 
-class EndstoneChunk : public Chunk {
+/**
+ * @brief Represents a Chunk related event
+ */
+class ChunkEvent : public WorldEvent {
 public:
-    explicit EndstoneChunk(const LevelChunk &chunk);
-    [[nodiscard]] int getX() const override;
-    [[nodiscard]] int getZ() const override;
-    [[nodiscard]] Level &getLevel() const override;
-    [[nodiscard]] Dimension &getDimension() const override;
+    explicit ChunkEvent(Chunk &chunk) : WorldEvent(chunk.getDimension()), chunk_(chunk) {};
+    ~ChunkEvent() override = default;
 
-    static std::unique_ptr<EndstoneChunk> fromMinecraft(const LevelChunk &lc);
+    /**
+     * Gets the chunk being loaded/unloaded
+     *
+     * @return Chunk that triggered this event
+     */
+    [[nodiscard]] Chunk &getChunk() const
+    {
+        return chunk_;
+    }
 
 private:
-    ::Dimension &dimension_;
-    int x_;
-    int z_;
+    Chunk &chunk_;
 };
 
-}  // namespace endstone::core
+}  // namespace endstone

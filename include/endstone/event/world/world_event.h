@@ -14,25 +14,31 @@
 
 #pragma once
 
-#include "bedrock/world/level/chunk/level_chunk.h"
-#include "endstone/level/chunk.h"
+#include "endstone/event/event.h"
+#include "endstone/level/dimension.h"
 
-namespace endstone::core {
+namespace endstone {
 
-class EndstoneChunk : public Chunk {
+/**
+ * @brief Represents events within a world
+ */
+class WorldEvent : public Event {
 public:
-    explicit EndstoneChunk(const LevelChunk &chunk);
-    [[nodiscard]] int getX() const override;
-    [[nodiscard]] int getZ() const override;
-    [[nodiscard]] Level &getLevel() const override;
-    [[nodiscard]] Dimension &getDimension() const override;
+    explicit WorldEvent(Dimension &dimension) : dimension_(dimension) {};
+    ~WorldEvent() override = default;
 
-    static std::unique_ptr<EndstoneChunk> fromMinecraft(const LevelChunk &lc);
+    /**
+     * Gets the world primarily involved with this event
+     *
+     * @return World which caused this event
+     */
+    [[nodiscard]] Dimension &getDimension() const
+    {
+        return dimension_;
+    }
 
 private:
-    ::Dimension &dimension_;
-    int x_;
-    int z_;
+    Dimension &dimension_;
 };
 
-}  // namespace endstone::core
+}  // namespace endstone
