@@ -713,8 +713,8 @@ void EndstonePlayer::transfer(std::string host, int port) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
-    pk->address = std::move(host);
-    pk->port = port;
+    pk->destination = std::move(host);
+    pk->destination_port = port;
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -847,52 +847,50 @@ void EndstonePlayer::initFromConnectionRequest(
 {
     std::visit(
         [&](auto &&req) {
-            if (auto locale = req->getData("LanguageCode").asString(); !locale.empty()) {
+            if (auto locale = req->getLanguageCode(); !locale.empty()) {
                 locale_ = locale;
             }
 
             // https://github.com/GeyserMC/Geyser/blob/master/common/src/main/java/org/geysermc/floodgate/util/DeviceOs.java
-            if (auto device_os = req->getData("DeviceOS").asInt(); device_os > 0) {
-                auto platform = magic_enum::enum_cast<BuildPlatform>(device_os).value_or(BuildPlatform::Unknown);
-                switch (platform) {
-                case BuildPlatform::Google:
-                    device_os_ = "Android";
-                    break;
-                case BuildPlatform::OSX:
-                    device_os_ = "macOS";
-                    break;
-                case BuildPlatform::GearVR_Deprecated:
-                    device_os_ = "Gear VR";
-                    break;
-                case BuildPlatform::UWP:
-                    device_os_ = "Windows";
-                    break;
-                case BuildPlatform::Win32:
-                    device_os_ = "Windows x86";
-                    break;
-                case BuildPlatform::tvOS_Deprecated:
-                    device_os_ = "Apple TV";
-                    break;
-                case BuildPlatform::Sony:
-                    device_os_ = "PlayStation";
-                    break;
-                case BuildPlatform::Nx:
-                    device_os_ = "Switch";
-                    break;
-                case BuildPlatform::WindowsPhone_Deprecated:
-                    device_os_ = "Windows Phone";
-                    break;
-                default:
-                    device_os_ = magic_enum::enum_name(platform);
-                    break;
-                }
+            auto platform = req->getDeviceOS();
+            switch (platform) {
+            case BuildPlatform::Google:
+                device_os_ = "Android";
+                break;
+            case BuildPlatform::OSX:
+                device_os_ = "macOS";
+                break;
+            case BuildPlatform::GearVR_Deprecated:
+                device_os_ = "Gear VR";
+                break;
+            case BuildPlatform::UWP:
+                device_os_ = "Windows";
+                break;
+            case BuildPlatform::Win32:
+                device_os_ = "Windows x86";
+                break;
+            case BuildPlatform::tvOS_Deprecated:
+                device_os_ = "Apple TV";
+                break;
+            case BuildPlatform::Sony:
+                device_os_ = "PlayStation";
+                break;
+            case BuildPlatform::Nx:
+                device_os_ = "Switch";
+                break;
+            case BuildPlatform::WindowsPhone_Deprecated:
+                device_os_ = "Windows Phone";
+                break;
+            default:
+                device_os_ = magic_enum::enum_name(platform);
+                break;
             }
 
-            if (auto device_id = req->getData("DeviceId").asString(); !device_id.empty()) {
+            if (auto device_id = req->getDeviceId(); !device_id.empty()) {
                 device_id_ = device_id;
             }
 
-            if (auto game_version = req->getData("GameVersion").asString(); !game_version.empty()) {
+            if (auto game_version = req->getGameVersionString(); !game_version.empty()) {
                 game_version_ = game_version;
             }
             else {
@@ -900,21 +898,19 @@ void EndstonePlayer::initFromConnectionRequest(
             }
 
             {
-                auto skin_id = req->getData("SkinId").asString();
-                auto skin_height = req->getData("SkinImageHeight").asInt();
-                auto skin_width = req->getData("SkinImageWidth").asInt();
-                auto skin_image = Image::fromBuffer(Image::Type::RGBA, skin_width, skin_height,
-                                                    base64_decode(req->getData("SkinData").asString()).value_or(""));
+                auto skin_id = req->getSkinId();
+                auto skin_height = req->getSkinImageHeight();
+                auto skin_width = req->getSkinImageWidth();
+                auto skin_image = Image::fromArray(Image::Type::RGBA, skin_width, skin_height, req->getSkinData());
                 if (!skin_image) {
                     server_.getLogger().error("Player {} has an invalid skin: {}", getName(), skin_image.error());
                     return;
                 }
 
-                auto cape_id = req->getData("CapeId").asString();
-                auto cape_height = req->getData("CapeImageHeight").asInt();
-                auto cape_width = req->getData("CapeImageWidth").asInt();
-                auto cape_image = Image::fromBuffer(Image::Type::RGBA, skin_width, skin_height,
-                                                    base64_decode(req->getData("CapeData").asString()).value_or(""));
+                auto cape_id = req->getCapeId();
+                auto cape_height = req->getCapeImageHeight();
+                auto cape_width = req->getCapeImageWidth();
+                auto cape_image = Image::fromArray(Image::Type::RGBA, skin_width, skin_height, req->getCapeData());
                 if (cape_id.empty() || !cape_image) {
                     skin_ = std::make_unique<Skin>(skin_id, skin_image.value());
                 }

@@ -47,7 +47,6 @@ public:
         return id_;
     }
 
-    HashedString hash;
     float temperature;
     float downfall;
     float red_spore_density;
@@ -67,15 +66,16 @@ public:
 
 protected:
     MobList mobs_;
-    MobCategoryMap mobs_map_;  // +152
+    MobCategoryMap mobs_map_;
     struct CachedClientComponentData {
         bool has_noise_based_color_palette;
         bool is_roofed_forest;
     };
     static_assert(sizeof(CachedClientComponentData) == 2);
-    CachedClientComponentData cached_client_component_data_;  // +408
+    CachedClientComponentData cached_client_component_data_;
 
 private:
-    BiomeIdType id_;                                 // +410
-    BiomeComponentStorage biome_component_storage_;  // +416
+    BiomeIdType id_;
+    BiomeComponentStorage biome_component_storage_;
+    const HashedString hash;
 };

@@ -12,19 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/crypto/encoding/base64.h"
 
-#include "bedrock/deps/json/value.h"
+#include <libbase64.h>
 
-class WebToken {
-public:
-    [[nodiscard]] const Json::Value &getHeader() const;
-    [[nodiscard]] const Json::Value &getData() const;
-
-private:
-    std::string header_;       // +0
-    Json::Value header_info_;  // +32
-    std::string data_;         // +48
-    Json::Value data_info_;    // +80
-    std::string signature_;    // +96
-};
+namespace Util {
+std::string base64_decode(const std::string &input)
+{
+    std::string output;
+    output.reserve(input.size() * 3 / 4);
+    std::size_t decoded_size;
+    ::base64_decode(input.data(), input.size(), output.data(), &decoded_size, 0);
+    output.resize(decoded_size);
+    return output;
+}
+}  // namespace Util

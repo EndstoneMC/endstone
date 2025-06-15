@@ -123,8 +123,11 @@ private:
     std::vector<mce::UUID> known_emote_piece_ids_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::string, std::shared_ptr<ResourcePackFileUploadManager>>>
         resource_upload_managers_;
+    gsl::not_null<std::shared_ptr<std::shared_ptr<Bedrock::Threading::IAsyncResult<void>>>> previous_upload_;
+    gsl::not_null<std::unique_ptr<ResourcePackPathLifetimeHelpers::ResourcePackPathCache>> resource_pack_path_cache_;
+    gsl::not_null<std::unique_ptr<TaskGroup>> async_join_task_group_;
+    gsl::not_null<std::unique_ptr<AsyncJoinTaskManager>> async_join_task_manager_;
     std::unique_ptr<TaskGroup> io_task_group_;
-    std::unique_ptr<TaskGroup> async_join_task_group_;
     bool is_trial_;
-    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;
+    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;  // TODO(fixme): check offset
 };

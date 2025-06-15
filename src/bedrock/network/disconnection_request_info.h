@@ -136,5 +136,8 @@ public:
         SubClientLoginDisabled = 116,
         DeepLinkTryingToOpenDemoWorldWhileSignedIn = 117,
         AsyncJoinTaskDenied = 118,
+        RealmsTimelineRequired = 119,
+        GuestWithoutHost = 120,
+        FailedToJoinExperience = 121,
     };
 };

@@ -173,6 +173,22 @@ public:
     }
 
     /**
+     * @brief Creates an image from the pixel data in a byte array.
+     *
+     * @param type     Image type
+     * @param width    Image width in pixels
+     * @param height   Image height in pixels
+     * @param array
+     * @return         The image on success, or an error on failure.
+     */
+    static Result<Image> fromArray(Type type, const int width, const int height,
+                                    const std::vector<unsigned char> &array)
+    {
+        const std::string_view buffer(reinterpret_cast<const char *>(array.data()), array.size());
+        return fromBuffer(type, width, height, buffer);
+    }
+
+    /**
      * @brief Creates an image from the pixel data in a byte buffer.
      *
      * @param type     Image type

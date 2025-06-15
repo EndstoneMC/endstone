@@ -31,6 +31,14 @@ public:
     [[nodiscard]] PackType getPackType() const override;
     PackSourceReport load(IPackManifestFactory &factory,
                           const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) override;
+    PackSourceLoadResult loadImmediate(IPackManifestFactory &,
+                                       const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) override;
+    void _buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &) override;
+
+protected:
+    PackSourceLoadResult _loadImpl(PackSourceLoadOptions &&) override;
+
+public:
     [[nodiscard]] std::unordered_map<PackIdVersion, std::string> getContentKeys() const;
 
 private:

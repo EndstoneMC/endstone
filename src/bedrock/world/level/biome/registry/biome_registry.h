@@ -38,6 +38,7 @@ private:
     struct BiomeComparator {};
 
     WellKnownBiomeTags well_known_biome_tags_;
+    bool surface_builders_resolved;
     bool client_initialized_;
     BiomeNameLookupMap biomes_by_name_;
     brstd::flat_set<gsl::not_null<Biome *>, BiomeComparator> biomes_by_id_;  // +1080

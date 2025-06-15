@@ -15,8 +15,10 @@
 #pragma once
 
 struct BoatMovementComponent {
+    bool is_in_air;
     int out_of_control_ticks;
     float y_rot_degree;
     float inv_friction;
+    float air_friction;
 };
-static_assert(sizeof(BoatMovementComponent) == 12);
+static_assert(sizeof(BoatMovementComponent) == 20);

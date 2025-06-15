@@ -18,8 +18,7 @@
 #include "bedrock/entity/components/replay_state_config.h"
 
 struct SyncedPlayerMovementSettings {
-    ServerAuthMovementMode authority_mode;
     int rewind_history_size;
     bool server_auth_block_breaking;
 };
-BEDROCK_STATIC_ASSERT_SIZE(SyncedPlayerMovementSettings, 12, 12);
+static_assert(sizeof(SyncedPlayerMovementSettings) == 8);

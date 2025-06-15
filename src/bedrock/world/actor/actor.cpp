@@ -359,11 +359,11 @@ WeakRef<EntityContext> Actor::getWeakEntity() const
     return entity_context_.getWeakRef();
 }
 
-const ItemStack &Actor::getOffhandSlot() const
-{
-    auto component = getPersistentComponent<ActorEquipmentComponent>();
-    return component->hand->getItem(static_cast<int>(HandSlot::Offhand));
-}
+// const ItemStack &Actor::getOffhandSlot() const
+// {
+//     auto component = getPersistentComponent<ActorEquipmentComponent>();
+//     return component->hand->getItem(static_cast<int>(HandSlot::Offhand));
+// }
 
 const ItemStack &Actor::getArmor(ArmorSlot slot) const
 {

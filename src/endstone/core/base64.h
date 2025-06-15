@@ -37,6 +37,7 @@ inline OutputBuffer base64_encode(InputIterator begin, InputIterator end)
     char *out = reinterpret_cast<char *>(&encoded[0]);
     std::size_t encoded_size;
     ::base64_encode(bytes, size, out, &encoded_size, 0);
+    encoded.resize(encoded_size);
     return encoded;
 }
 
@@ -80,6 +81,7 @@ inline std::optional<OutputBuffer> base64_decode(std::string_view data)
     char *out = reinterpret_cast<char *>(&decoded[0]);
     std::size_t decoded_size;
     if (::base64_decode(bytes, data.size(), out, &decoded_size, 0)) {
+        decoded.resize(decoded_size);
         return decoded;
     }
     return std::nullopt;

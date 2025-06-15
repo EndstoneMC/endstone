@@ -28,6 +28,7 @@
 
 struct PlayerStorageIds {
     std::string msa_id;
+    std::string guest_id;
     std::string platform_id;
     std::string platform_online_id;
     std::string platform_offline_id;
@@ -40,37 +41,4 @@ public:
     enum class StatsType;
 
     virtual ~LevelStorage() = 0;
-    virtual void addStorageObserver(std::unique_ptr<LevelStorageObserver>) = 0;
-    virtual std::unique_ptr<CompoundTag> getCompoundTag(std::string const &, DBHelpers::Category) = 0;
-    [[nodiscard]] virtual bool hasKey(std::string_view, DBHelpers::Category) const = 0;
-    virtual void forEachKeyWithPrefix(std::string_view, DBHelpers::Category,
-                                      std::function<void(std::string_view, std::string_view)> const &) const = 0;
-    virtual bool loadLevelData(LevelData &) = 0;
-    virtual std::unique_ptr<ChunkSource> createChunkStorage(std::unique_ptr<ChunkSource>, StorageVersion) = 0;
-    virtual void saveLevelData(LevelData const &) = 0;
-    [[nodiscard]] virtual Core::PathBuffer<std::string> const &getFullPath() const = 0;
-    virtual std::shared_ptr<Bedrock::Threading::IAsyncResult<void>> saveData(std::string const &, std::string &&,
-                                                                             DBHelpers::Category) = 0;
-    virtual std::shared_ptr<Bedrock::Threading::IAsyncResult<void>> saveData(LevelStorageWriteBatch const &) = 0;
-    virtual std::shared_ptr<Bedrock::Threading::IAsyncResult<void>> deleteData(std::string const &,
-                                                                               DBHelpers::Category) = 0;
-    virtual void getStatistics(std::string &, LevelStorage::StatsType) const = 0;
-    virtual bool clonePlayerData(std::string_view, std::string_view) = 0;
-    [[nodiscard]] virtual Core::LevelStorageResult getLevelStorageState() const = 0;
-    virtual void startShutdown() = 0;
-    [[nodiscard]] virtual bool isShuttingDown() const = 0;
-    virtual bool checkShutdownDone() = 0;
-    virtual bool loadData(std::string_view, std::string &, DBHelpers::Category) const = 0;
-    [[nodiscard]] virtual Core::LevelStorageResult getState() const = 0;
-    virtual std::vector<SnapshotFilenameAndLength> createSnapshot(std::string const &, bool) = 0;
-    virtual void releaseSnapshot() = 0;
-    virtual std::shared_ptr<Bedrock::Threading::IAsyncResult<void>> compactStorage() = 0;
-    virtual void syncAndSuspendStorage() = 0;
-    virtual void resumeStorage() = 0;
-    virtual void setFlushAllowed(bool) = 0;
-    virtual void flushToPermanentStorage() = 0;
-    virtual void freeCaches() = 0;
-    virtual void setCompactionCallback(std::function<void(CompactionStatus)>) = 0;
-    virtual void setCriticalSyncSaveCallback(std::function<void()>) = 0;
-    virtual void corruptLevel() = 0;
 };

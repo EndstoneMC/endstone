@@ -19,28 +19,77 @@
 
 #include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/identity/game_server_token.h"
+#include "bedrock/certificates/identity/legacy_multiplayer_token.h"
+#include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/certificates/web_token.h"
 #include "bedrock/common_types.h"
+#include "bedrock/core/math/color.h"
 #include "bedrock/deps/json/value.h"
+#include "bedrock/input/input_mode.h"
+#include "bedrock/platform/build_platform.h"
+#include "bedrock/resources/min_engine_version.h"
 
 class ConnectionRequest {
 public:
-    [[nodiscard]] const GameServerToken &getGameServerToken() const
-    {
-        return game_server_token_;
-    }
+    [[nodiscard]] PlayerAuthenticationType getAuthenticationType() const;
+    [[nodiscard]] std::string getSelfSignedId() const;
+    [[nodiscard]] std::string getServerAddress() const;
+    [[nodiscard]] uint64_t getClientRandomId() const;
+    [[nodiscard]] std::string getClientPlatformId() const;
+    [[nodiscard]] std::string getClientThirdPartyName() const;
+    [[nodiscard]] std::string getClientPlatformOnlineId() const;
+    [[nodiscard]] std::string getClientPlatformOfflineId() const;
+    [[nodiscard]] std::string getSkinId() const;
+    [[nodiscard]] std::string getPlayFabIdUnverified() const;
+    [[nodiscard]] std::string getCapeId() const;
+    [[nodiscard]] std::vector<unsigned char> getSkinData() const;
+    [[nodiscard]] std::string getSkinDataAsString() const;
+    [[nodiscard]] uint16_t getSkinImageWidth() const;
+    [[nodiscard]] uint16_t getSkinImageHeight() const;
+    [[nodiscard]] std::vector<unsigned char> getCapeData() const;
+    [[nodiscard]] uint16_t getCapeImageWidth() const;
+    [[nodiscard]] uint16_t getCapeImageHeight() const;
+    // std::vector<AnimatedImageData> getAnimatedImageData() const;
+    // std::vector<SerializedPersonaPieceHandle> getPersonaPieces() const;
+    // std::unordered_map<persona::PieceType, TintMapColor> getPieceTintColors() const;
+    [[nodiscard]] std::string getArmSize() const;
+    [[nodiscard]] Color getSkinColor() const;
+    [[nodiscard]] std::string getSkinResourcePatch() const;
+    [[nodiscard]] std::string getSkinGeometry() const;
+    [[nodiscard]] MinEngineVersion getSkinGeometryMinEngineVersion() const;
+    [[nodiscard]] std::string getSkinAnimationData() const;
+    [[nodiscard]] std::string getEduTokenChain() const;
+    // edu::Role getADRole() const;
+    [[nodiscard]] bool isEduMode() const;
+    [[nodiscard]] bool isEditorMode() const;
+    [[nodiscard]] std::string getGameVersionString() const;
+    [[nodiscard]] std::string getDeviceModel() const;
+    [[nodiscard]] BuildPlatform getDeviceOS() const;
+    [[nodiscard]] InputMode getDefaultInputMode() const;
+    [[nodiscard]] InputMode getCurrentInputMode() const;
+    [[nodiscard]] int getGuiScale() const;
+    [[nodiscard]] std::string getDeviceId() const;
+    [[nodiscard]] bool isPremiumSkin() const;
+    [[nodiscard]] bool isPersonaSkin() const;
+    [[nodiscard]] bool isTrustedSkin() const;
+    [[nodiscard]] bool isOverrideSkin() const;
+    [[nodiscard]] bool isCapeOnClassicSkin() const;
+    [[nodiscard]] bool isVerified() const;
+    bool verify(const std::vector<std::string> &, int64_t, bool);
+    bool verifySelfSigned(bool);
+    [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
+    [[nodiscard]] PlatformType getPlatformType() const;
+    [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
+    [[nodiscard]] bool isValid() const;
 
-    [[nodiscard]] Json::Value getData(const std::string &key) const
-    {
-        if (game_server_token_ && raw_token_) {
-            return raw_token_->getData().get(key, Json::nullValue);
-        }
-        return Json::nullValue;
-    }
+    [[nodiscard]] std::string getLanguageCode() const;  // Endstone
 
 private:
-    std::unique_ptr<WebToken> raw_token_;                      // +0
-    std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +8
-    GameServerToken game_server_token_;                        // +16
-    SubClientId client_sub_id_;                                // +24
+    [[nodiscard]] Json::Value getData(const std::string &key) const;
+
+    std::unique_ptr<WebToken> raw_token_;
+    std::unique_ptr<UnverifiedCertificate> certificate_data_;
+    LegacyMultiplayerToken legacy_multiplayer_token_;
+    RawGameServerToken game_server_token_;
+    PlayerAuthenticationType authentication_type_;
 };

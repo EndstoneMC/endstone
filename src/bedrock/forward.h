@@ -45,12 +45,12 @@ class ActorFactory;
 class ActorInteraction;
 class ActorSoundIdentifier;
 class ActorUnloadedChunkTransferEntry;
-class AddActorBasePacket;
 class AdventureSettings;
 class AllowList;
 class AnimationComponent;
 class AppConfigs;
 class AppPlatform;
+class AsyncJoinTaskManager {};
 class AttributeInstanceDelegate;
 class AutomationBehaviorTreeGroup;
 class BaseLightTextureImageBuilder;
@@ -306,6 +306,9 @@ class ScriptBlockComponentRegistry;
 class ScriptItemComponentRegistry;
 class ScriptPropertyRegistry;
 }  // namespace ScriptModuleMinecraft
+namespace ResourcePackPathLifetimeHelpers {
+class ResourcePackPathCache {};
+}  // namespace ResourcePackPathLifetimeHelpers
 
 // Template Classes
 template <typename A, typename B, typename C>

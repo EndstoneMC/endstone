@@ -51,4 +51,7 @@ public:
     virtual void addOnComplete(CompletionHandler) = 0;
 };
 
+template <typename T>
+using Async = typename IAsyncResult<T>::Handle;
+
 }  // namespace Bedrock::Threading

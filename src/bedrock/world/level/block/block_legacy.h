@@ -67,19 +67,19 @@ enum class BlockProperty : std::uint64_t {
     Sign = 0x8000,
     Walkable = 0x10000,
     PressurePlate = 0x20000,
-    PistonBlockGrabber = 0x40000,
+    // PistonBlockGrabber = 0x40000,
     TopSolidBlocking = 0x80000,
     CubeShaped = 0x200000,
     Power_NO = 0x400000,
     Power_BlockDown = 0x800000,
     Immovable = 0x1000000,
-    BreakOnPush = 0x2000000,
+    // BreakOnPush = 0x2000000,
     Piston = 0x4000000,
     InfiniBurn = 0x8000000,
     RequiresWorldBuilder = 0x10000000,
     CausesDamage = 0x20000000,
     BreaksWhenFallenOnByFallingBlock = 0x40000000,
-    OnlyPistonPush = 0x80000000,
+    // OnlyPistonPush = 0x80000000,
     Liquid = 0x100000000,
     // CanBeBuiltOver = 0x200000000,
     SnowRecoverable = 0x400000000,
@@ -273,7 +273,7 @@ public:
     virtual void onStandOn(EntityContext &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTickOnSetBlock() const = 0;
     // virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
-    virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
+    // virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
     [[nodiscard]] virtual bool isInteractiveBlock() const = 0;
     // [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID, std::optional<Vec3>) const = 0;
     // [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID) const = 0;
@@ -334,7 +334,7 @@ private:
     bool is_door_;
     bool is_opaque_full_block_;
     float translucency_;
-    bool should_random_tick_;
+    // bool should_random_tick_;
     bool should_random_tick_extra_layer_;
     bool is_mob_piece_;
     bool can_be_extra_block_;

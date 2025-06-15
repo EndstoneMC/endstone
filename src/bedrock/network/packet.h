@@ -243,7 +243,7 @@ enum class MinecraftPacketIds : int {
     CameraAimAssist = 316,
     ContainerRegistryCleanup = 317,
     MovementEffect = 318,
-    SetMovementAuthorityMode = 319,
+    SetMovementAuthorityMode_DEPRECATED = 319,
     CameraAimAssistPresets = 320,
     ClientCameraAimAssist = 321,
     ClientMovementPredictionSyncPacket = 322,
@@ -251,8 +251,9 @@ enum class MinecraftPacketIds : int {
     PlayerVideoCapturePacket = 324,
     PlayerUpdateEntityOverridesPacket = 325,
     PlayerLocation = 326,
-    ClientboundControlSchemeSet = 327,
-    EndId
+    ClientboundControlSchemeSetPacket = 327,
+    ServerScriptDebugDrawerPacket = 328,
+    EndId = 329,
 };
 
 class NetEventCallback;
