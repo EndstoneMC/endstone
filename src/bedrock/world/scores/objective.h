@@ -50,8 +50,8 @@ public:
 
 private:
     friend class ScoreboardIdentityRef;
-    bool _modifyPlayerScore(ScoreboardOperationResult &result, const ScoreboardId &id, int value,
-                            PlayerScoreSetFunction action);  // NOLINT
+    ScoreboardOperationResult _modifyPlayerScore(int &result, const ScoreboardId &id, int value,
+                                                 PlayerScoreSetFunction action);  // NOLINT
 
     std::unordered_map<ScoreboardId, int> scores_;  // +24
     std::string name_;                              // +88

@@ -84,3 +84,11 @@ std::string ConnectionRequest::getLanguageCode() const
 {
     return getData("LanguageCode").asString();
 }
+
+Json::Value ConnectionRequest::getData(const std::string &key) const
+{
+    if (raw_token_) {
+        return raw_token_->getData().get(key, Json::nullValue);
+    }
+    return Json::nullValue;
+}

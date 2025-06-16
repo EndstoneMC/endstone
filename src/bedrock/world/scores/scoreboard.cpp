@@ -168,24 +168,22 @@ bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
     return id_ref->removeFromObjective(*this, objective);
 }
 
-// TODO(fixme): update the implementation
-// int Scoreboard::modifyPlayerScore(ScoreboardOperationResult &success, const ScoreboardId &id, Objective &objective,
-// int score,
-//                                   PlayerScoreSetFunction action)
-// {
-//     int result = 0;
-//     auto *id_ref = getScoreboardIdentityRef(id);
-//     if (!id_ref) {
-//         success = false;
-//         return result;
-//     }
-//
-//     success = id_ref->modifyScoreInObjective(result, objective, score, action);
-//     if (success) {
-//         onScoreChanged(id, objective);
-//     }
-//     return result;
-// }
+int Scoreboard::modifyPlayerScore(ScoreboardOperationResult &result, const ScoreboardId &id, Objective &objective,
+                                  int score, PlayerScoreSetFunction action)
+{
+    int flag = 0;
+    auto *id_ref = getScoreboardIdentityRef(id);
+    if (!id_ref) {
+        result = ScoreboardOperationResult::UnknownId;
+        return 0;
+    }
+
+    result = id_ref->modifyScoreInObjective(flag, objective, score, action);
+    if (result == ScoreboardOperationResult::Success) {
+        onScoreChanged(id, objective);
+    }
+    return flag;
+}
 
 bool Scoreboard::clearScoreboardIdentity(const ScoreboardId &id)
 {

@@ -134,6 +134,20 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
     return report;
 }
 
+PackSourceLoadResult EndstonePackSource::loadImmediate(
+    IPackManifestFactory &pack_manifest_factory,
+    const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &content_key_provider)
+{
+    return _loadImpl({&pack_manifest_factory, content_key_provider});
+}
+
+void EndstonePackSource::_buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &) {}
+
+PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&)
+{
+    return {};
+}
+
 std::unordered_map<PackIdVersion, std::string> EndstonePackSource::getContentKeys() const
 {
     return content_keys_;

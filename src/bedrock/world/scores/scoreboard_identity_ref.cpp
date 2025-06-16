@@ -57,13 +57,13 @@ bool ScoreboardIdentityRef::removeFromObjective(Scoreboard &scoreboard, Objectiv
     return true;
 }
 
-bool ScoreboardIdentityRef::modifyScoreInObjective(ScoreboardOperationResult &result, Objective &objective, int score,
-                                                   PlayerScoreSetFunction action)
+ScoreboardOperationResult ScoreboardIdentityRef::modifyScoreInObjective(int &result, Objective &objective, int score,
+                                                                        PlayerScoreSetFunction action)
 {
     const bool was_set = objective.getPlayerScore(scoreboard_id_).valid;
-    const auto success = objective._modifyPlayerScore(result, scoreboard_id_, score, action);
-    if (!was_set && success) {
+    const auto operation_result = objective._modifyPlayerScore(result, scoreboard_id_, score, action);
+    if (!was_set && operation_result == ScoreboardOperationResult::Success) {
         ++objective_references_;
     }
-    return success;
+    return operation_result;
 }

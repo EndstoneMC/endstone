@@ -20,6 +20,7 @@
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/resources/content_key_provider.h"
 #include "bedrock/resources/pack.h"
+#include "bedrock/resources/pack_command_pipeline.h"
 #include "bedrock/resources/pack_manifest_factory.h"
 
 using PackCallback = std::function<void(Pack &)>;
@@ -57,8 +58,8 @@ public:
     virtual PackSourceReport load(IPackManifestFactory &factory,
                                   Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &) = 0;
     virtual PackSourceLoadResult loadImmediate(IPackManifestFactory &,
-                                               const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &);
-    virtual void _buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &);
+                                               const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) = 0;
+    virtual void _buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &) = 0;
 
 protected:
     PackSource(std::unique_ptr<IPackIOProvider> io) : io_(std::move(io)) {}  // Endstone
@@ -71,7 +72,16 @@ private:
     PackSourceReport report_;
 };
 
-class DirectoryPackSource : public PackSource {};
+class DirectoryPackSource : public PackSource {
+private:
+    Core::HeapPathBuffer path_;
+    const PackType pack_type_;
+    const PackOrigin pack_origin_;
+    bool discovered_;
+    const bool is_rediscoverable_;
+    const bool is_dev_directory_;
+    Bedrock::NonOwnerPointer<PackCommand::IPackCommandPipeline> commands_;
+};
 class RealmsUnknownPackSource : public PackSource {};
 class InPackagePackSource : public PackSource {};
 

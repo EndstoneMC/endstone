@@ -33,7 +33,7 @@ public:
     [[nodiscard]] int getNumReferences() const;
     [[nodiscard]] IdentityDefinition::Type getIdentityType() const;
     bool removeFromObjective(Scoreboard &, Objective &);
-    bool modifyScoreInObjective(ScoreboardOperationResult &result, Objective &objective, int score,
+    ScoreboardOperationResult modifyScoreInObjective(int &result, Objective &objective, int score,
                                                      PlayerScoreSetFunction action);
 
 private:
