@@ -37,6 +37,7 @@ struct PacksInfoData {
     bool resource_pack_required;
     bool has_addon_packs;
     bool has_scripts;
+    bool force_disable_vibrant_visuals;
     PackIdVersion world_template_id_and_version;
     std::vector<PackInfoData> resource_packs;
 };

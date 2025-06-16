@@ -14,7 +14,12 @@
 
 #include "bedrock/certificates/web_token.h"
 
-Json::Value const &WebToken::getData() const
+const Json::Value &WebToken::getHeader() const
+{
+    return header_info_;
+}
+
+const Json::Value &WebToken::getData() const
 {
     return data_info_;
 }

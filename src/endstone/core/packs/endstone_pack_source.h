@@ -21,23 +21,29 @@
 
 namespace endstone::core {
 
+struct EndstonePackSourceOptions {
+    PackSourceOptions base;
+    std::filesystem::path path;
+    PackType pack_type;
+};
+
 class EndstonePackSource : public PackSource {
 public:
-    EndstonePackSource(std::filesystem::path path, ::PackType pack_type, std::unique_ptr<IPackIOProvider> io);
+    EndstonePackSource(EndstonePackSourceOptions options);
     ~EndstonePackSource() override = default;
-    void forEachPackConst(ConstPackCallback callback) const override;
-    void forEachPack(PackCallback callback) override;
     [[nodiscard]] PackOrigin getPackOrigin() const override;
     [[nodiscard]] PackType getPackType() const override;
-    PackSourceReport load(IPackManifestFactory &factory,
-                          const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) override;
+
+protected:
+    PackSourceLoadResult _loadImpl(PackSourceLoadOptions &&) override;
+
+public:
     [[nodiscard]] std::unordered_map<PackIdVersion, std::string> getContentKeys() const;
 
 private:
     std::filesystem::path path_;
     ::PackType pack_type_;
     bool discovered_{false};
-    std::vector<std::unique_ptr<Pack>> packs_;
     std::unordered_map<PackIdVersion, std::string> content_keys_;
 };
 

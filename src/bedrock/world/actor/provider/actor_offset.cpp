@@ -12,19 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/actor/provider/actor_offset.h"
 
-#include "bedrock/deps/json/value.h"
+#include "bedrock/world/actor/provider/actor_entity_access.h"
 
-class WebToken {
-public:
-    [[nodiscard]] const Json::Value &getHeader() const;
-    [[nodiscard]] const Json::Value &getData() const;
+float ActorOffset::getHeightOffset(const EntityContext &entity)
+{
+    return ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset;
+}
 
-private:
-    std::string header_;       // +0
-    Json::Value header_info_;  // +32
-    std::string data_;         // +48
-    Json::Value data_info_;    // +80
-    std::string signature_;    // +96
-};
+void ActorOffset::setHeightOffset(EntityContext &entity, float height_offset)
+{
+    ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset = height_offset;
+}

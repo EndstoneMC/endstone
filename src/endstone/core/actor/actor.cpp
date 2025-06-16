@@ -19,6 +19,7 @@
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/server/commands/standard/teleport_command.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/level/level.h"
@@ -112,11 +113,10 @@ std::uint64_t EndstoneActor::getRuntimeId() const
 
 Location EndstoneActor::getLocation() const
 {
-    auto position = getActor().getPosition();
-    position.y -= getActor().getPersistentComponent<OffsetsComponent>()->height_offset;
-    const auto &rotation = getActor().getRotation();
-
-    return {&getDimension(), position.x, position.y, position.z, rotation.x, rotation.y};
+    auto [x, y, z] = getActor().getPosition();
+    y -= ActorOffset::getHeightOffset(getActor().getEntity());
+    const auto &[pitch, yaw] = getActor().getRotation();
+    return {&getDimension(), x, y, z, pitch, yaw};
 }
 
 Vector<float> EndstoneActor::getVelocity() const

@@ -52,7 +52,7 @@ private:
     std::unique_ptr<ServerLocator> server_locator_;
     Bedrock::Threading::RecursiveMutex connections_mutex_;
     std::size_t current_connection_;
-    Bedrock::Threading::IAsyncResult<void>::Handle receive_task_;
+    Bedrock::Threading::Async<void> receive_task_;
     std::unique_ptr<TaskGroup> receive_task_group_;
     Bedrock::NonOwnerPointer<IPacketObserver> packet_observer_;
     Scheduler &main_thread_;

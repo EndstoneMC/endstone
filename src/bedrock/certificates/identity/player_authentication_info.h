@@ -14,17 +14,17 @@
 
 #pragma once
 
-#include "bedrock/deps/json/value.h"
+#include <string>
 
-class WebToken {
-public:
-    [[nodiscard]] const Json::Value &getHeader() const;
-    [[nodiscard]] const Json::Value &getData() const;
-
-private:
-    std::string header_;       // +0
-    Json::Value header_info_;  // +32
-    std::string data_;         // +48
-    Json::Value data_info_;    // +80
-    std::string signature_;    // +96
+enum class PlayerAuthenticationType : int {
+    Invalid = -1,
+    Full = 0,
+    Guest = 1,
+    SelfSigned = 2,
 };
+
+struct PlayerAuthenticationInfo {
+    std::string xuid;
+    std::string xbox_live_name;
+};
+

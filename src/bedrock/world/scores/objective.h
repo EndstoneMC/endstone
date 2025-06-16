@@ -21,6 +21,7 @@
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/score.h"
 #include "bedrock/world/scores/scoreboard_id.h"
+#include "bedrock/world/scores/scoreboard_operation_result.h"
 
 enum class ObjectiveSortOrder : std::uint8_t {
     Ascending = 0,
@@ -49,7 +50,8 @@ public:
 
 private:
     friend class ScoreboardIdentityRef;
-    bool _modifyPlayerScore(int &result, const ScoreboardId &id, int value, PlayerScoreSetFunction action);  // NOLINT
+    ScoreboardOperationResult _modifyPlayerScore(int &result, const ScoreboardId &id, int value,
+                                                 PlayerScoreSetFunction action);  // NOLINT
 
     std::unordered_map<ScoreboardId, int> scores_;  // +24
     std::string name_;                              // +88

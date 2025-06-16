@@ -14,17 +14,19 @@
 
 #pragma once
 
-#include "bedrock/deps/json/value.h"
+#include "bedrock/entity/components/strict_actor_id_entity_context_pair.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 
-class WebToken {
-public:
-    [[nodiscard]] const Json::Value &getHeader() const;
-    [[nodiscard]] const Json::Value &getData() const;
+namespace ActorEntityAccess {
+template <typename T>
+gsl::not_null<const T *> getPersistentComponent(const EntityContext &entity)
+{
+    return entity.tryGetComponent<T>();
+}
 
-private:
-    std::string header_;       // +0
-    Json::Value header_info_;  // +32
-    std::string data_;         // +48
-    Json::Value data_info_;    // +80
-    std::string signature_;    // +96
-};
+template <typename T>
+gsl::not_null<T *> getPersistentComponent(EntityContext &entity)
+{
+    return entity.tryGetComponent<T>();
+}
+}  // namespace ActorEntityAccess

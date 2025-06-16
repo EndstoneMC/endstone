@@ -52,11 +52,11 @@ Result<void> EndstoneScore::setValue(int score)
             return obj->isModifiable().and_then([&](bool modifiable) -> Result<void> {
                 ENDSTONE_CHECK(modifiable, "Cannot modify read-only score.");
 
-                bool success = false;
-                obj->scoreboard_.board_.modifyPlayerScore(success, *id, obj->objective_, score,
+                ScoreboardOperationResult result;
+                obj->scoreboard_.board_.modifyPlayerScore(result, *id, obj->objective_, score,
                                                           PlayerScoreSetFunction::Set);
 
-                ENDSTONE_CHECK(success, "Unable to modify score.");
+                ENDSTONE_CHECK(result != ScoreboardOperationResult::Success, "Unable to modify score.");
                 return {};
             });
         });

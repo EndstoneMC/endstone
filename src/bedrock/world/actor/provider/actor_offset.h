@@ -13,18 +13,17 @@
 // limitations under the License.
 
 #pragma once
+#include "bedrock/entity/components/offsets_component.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 
-#include "bedrock/deps/json/value.h"
-
-class WebToken {
-public:
-    [[nodiscard]] const Json::Value &getHeader() const;
-    [[nodiscard]] const Json::Value &getData() const;
-
-private:
-    std::string header_;       // +0
-    Json::Value header_info_;  // +32
-    std::string data_;         // +48
-    Json::Value data_info_;    // +80
-    std::string signature_;    // +96
-};
+namespace ActorOffset {
+void initializeActor(EntityContext &);
+void initializePlayer(EntityContext &);
+float getHeightOffset(const EntityContext &entity);
+void setHeightOffset(EntityContext &entity, float height_offset);
+void setExplosionOffset(EntityContext &, float);
+Vec3 getHeadOffset(const EntityContext &);
+Vec3 getEyeOffset(const EntityContext &);
+void setEyeOffset(EntityContext &, const Vec3 &);
+void setBreathingOffset(EntityContext &, const Vec3 &);
+}  // namespace ActorOffset
