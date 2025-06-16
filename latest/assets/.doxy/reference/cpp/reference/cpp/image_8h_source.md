@@ -127,6 +127,13 @@ public:
         return data_;
     }
 
+    static Result<Image> fromArray(Type type, const int width, const int height,
+                                    const std::vector<unsigned char> &array)
+    {
+        const std::string_view buffer(reinterpret_cast<const char *>(array.data()), array.size());
+        return fromBuffer(type, width, height, buffer);
+    }
+
     static Result<Image> fromBuffer(Type type, const int width, const int height, std::string_view buffer)
     {
         size_t depth = 0;

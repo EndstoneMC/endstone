@@ -641,6 +641,7 @@
     <member refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" kind="function"><name>setColor</name></member>
     <member refid="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" kind="function"><name>getData</name></member>
     <member refid="classendstone_1_1Image_1adb854b500bb55257e067e3232c8511c2" kind="function"><name>Image</name></member>
+    <member refid="classendstone_1_1Image_1a3a1c8f43ddaa26480349a1bb1e13132f" kind="function"><name>fromArray</name></member>
     <member refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" kind="function"><name>fromBuffer</name></member>
   </compound>
   <compound refid="classendstone_1_1Inventory" kind="class"><name>endstone::Inventory</name>

@@ -70,6 +70,7 @@ _Represents an RGBA image._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
+|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromArray**](#function-fromarray) ([**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height, const std::vector&lt; unsigned char &gt; & array) <br>_Creates an image from the pixel data in a byte array._  |
 |  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromBuffer**](#function-frombuffer) ([**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height, std::string\_view buffer) <br>_Creates an image from the pixel data in a byte buffer._  |
 
 
@@ -326,6 +327,46 @@ inline void endstone::Image::setColor (
 <hr>
 ## Public Static Functions Documentation
 
+
+
+
+### function fromArray 
+
+_Creates an image from the pixel data in a byte array._ 
+```C++
+static inline Result< Image > endstone::Image::fromArray (
+    Type type,
+    const int width,
+    const int height,
+    const std::vector< unsigned char > & array
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `type` [**Image**](classendstone_1_1Image.md) type 
+* `width` [**Image**](classendstone_1_1Image.md) width in pixels 
+* `height` [**Image**](classendstone_1_1Image.md) height in pixels 
+* `array` 
+
+
+
+**Returns:**
+
+The image on success, or an error on failure. 
+
+
+
+
+
+        
+
+<hr>
 
 
 

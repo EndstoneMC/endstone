@@ -2306,6 +2306,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-fromarray" class="md-nav__link">
+      <span class="md-ellipsis">
+        function fromArray
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-frombuffer" class="md-nav__link">
       <span class="md-ellipsis">
         function fromBuffer
@@ -2425,6 +2438,10 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">Result&lt; <a href="./"><strong>Image</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-fromarray"><strong>fromArray</strong></a> (<a href="./#enum-type"><strong>Type</strong></a> type, const int width, const int height, const std::vector&lt; unsigned char &gt; &amp; array) <br><em>Creates an image from the pixel data in a byte array.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">Result&lt; <a href="./"><strong>Image</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-frombuffer"><strong>fromBuffer</strong></a> (<a href="./#enum-type"><strong>Type</strong></a> type, const int width, const int height, std::string_view buffer) <br><em>Creates an image from the pixel data in a byte buffer.</em></td>
 </tr>
 </tbody>
@@ -2522,14 +2539,34 @@ For latest updates join the chat on
 </ul>
 <hr>
 <h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-frombuffer">function fromBuffer<a class="headerlink" href="#function-frombuffer" title="Permanent link">&para;</a></h3>
-<p><em>Creates an image from the pixel data in a byte buffer.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromBuffer</span><span class="w"> </span><span class="p">(</span>
+<h3 id="function-fromarray">function fromArray<a class="headerlink" href="#function-fromarray" title="Permanent link">&para;</a></h3>
+<p><em>Creates an image from the pixel data in a byte array.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromArray</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">buffer</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">array</span>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>type</code> <a href="./"><strong>Image</strong></a> type </li>
+<li><code>width</code> <a href="./"><strong>Image</strong></a> width in pixels </li>
+<li><code>height</code> <a href="./"><strong>Image</strong></a> height in pixels </li>
+<li><code>array</code> </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>The image on success, or an error on failure. </p>
+<hr>
+
+<h3 id="function-frombuffer">function fromBuffer<a class="headerlink" href="#function-frombuffer" title="Permanent link">&para;</a></h3>
+<p><em>Creates an image from the pixel data in a byte buffer.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromBuffer</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">buffer</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>

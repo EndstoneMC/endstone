@@ -207,6 +207,7 @@
 * **fromRGB** ([**endstone::Color**](classendstone_1_1Color.md))
 * **fromRGBA** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Form** ([**endstone::Form**](classendstone_1_1Form.md))
+* **fromArray** ([**endstone::Image**](classendstone_1_1Image.md))
 * **fromBuffer** ([**endstone::Image**](classendstone_1_1Image.md))
 * **first** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **firstEmpty** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
