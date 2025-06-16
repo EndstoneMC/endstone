@@ -123,8 +123,9 @@ void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IReso
     }
     resource_pack_repository_ = std::move(repo);
     auto io = resource_pack_repository_->getPackSourceFactory().createPackIOProvider();
-    resource_pack_source_ = std::make_unique<EndstonePackSource>(
-        resource_pack_repository_->getResourcePacksPath().getContainer(), PackType::Resources, std::move(io));
+    resource_pack_source_ = std::make_unique<EndstonePackSource>(EndstonePackSourceOptions(
+        PackSourceOptions(std::move(io)), resource_pack_repository_->getResourcePacksPath().getContainer(),
+        PackType::Resources));
 }
 
 PackSource &EndstoneServer::getPackSource() const

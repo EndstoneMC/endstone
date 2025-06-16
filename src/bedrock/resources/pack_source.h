@@ -27,6 +27,14 @@ using PackCallback = std::function<void(Pack &)>;
 using ConstPackCallback = std::function<void(const Pack &)>;
 using PackSourcePacks = std::vector<gsl::not_null<std::shared_ptr<Pack>>>;
 
+struct PackSourceOptions {
+    PackSourceOptions() = default;
+    PackSourceOptions(std::unique_ptr<IPackIOProvider> io) : io(std::move(io)){};
+    PackSourceOptions(PackSourceOptions &&) noexcept = default;
+    std::unique_ptr<IPackIOProvider> io;
+};
+static_assert(sizeof(PackSourceOptions) == 8);
+
 class PackSourceReport {
 public:
     PackSourceReport() = default;
@@ -51,18 +59,14 @@ struct PackSourceLoadOptions {
 class PackSource {
 public:
     virtual ~PackSource() = default;
-    virtual void forEachPackConst(ConstPackCallback callback) const = 0;
-    virtual void forEachPack(PackCallback callback) = 0;
+    virtual void forEachPackConst(ConstPackCallback callback) const;
+    virtual void forEachPack(PackCallback callback) ;
     [[nodiscard]] virtual PackOrigin getPackOrigin() const = 0;
     [[nodiscard]] virtual PackType getPackType() const = 0;
-    virtual PackSourceReport load(IPackManifestFactory &factory,
-                                  Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &) = 0;
-    virtual PackSourceLoadResult loadImmediate(IPackManifestFactory &,
-                                               const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) = 0;
-    virtual void _buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &) = 0;
+    virtual void _buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &);
 
 protected:
-    PackSource(std::unique_ptr<IPackIOProvider> io) : io_(std::move(io)) {}  // Endstone
+    PackSource(PackSourceOptions options);
 
     virtual PackSourceLoadResult _loadImpl(PackSourceLoadOptions &&) = 0;
     const gsl::not_null<std::unique_ptr<IPackIOProvider>> io_;
