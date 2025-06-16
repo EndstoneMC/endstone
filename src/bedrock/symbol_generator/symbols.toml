@@ -1,4 +1,4 @@
-timestamp = 1750080153
+timestamp = 1750104537
 version = "1.21.90-preview.28"
 
 [windows]
@@ -88,7 +88,7 @@ version = "1.21.90-preview.28"
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 18325568
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 18336240
 # ServerPlayerMovementCorrectionSystem
-"?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 16617456
+"?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 14940992
 # ServerScoreboard
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 61409184
 # ServerScriptManager

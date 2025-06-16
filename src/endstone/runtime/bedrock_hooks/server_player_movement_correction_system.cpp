@@ -14,8 +14,7 @@
 
 #include "bedrock/entity/systems/server_player_movement_correction_system.h"
 
-#include "bedrock/entity/systems/actor_set_pos_system.h"
-#include "bedrock/world/level/level.h"
+#include "bedrock/world/actor/provider/actor_offset.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"
@@ -42,36 +41,35 @@ void ServerPlayerMovementCorrectionSystem::_afterMovementSimulation(
         const auto rot_prev = actor.getRotationPrev();
         const auto delta_angle = rot - rot_prev;
 
+        auto &dimension = player.getDimension();
+        const endstone::Location from{
+            &dimension, pos_prev.x, pos_prev.y - ActorOffset::getHeightOffset(actor.getEntity()),
+            pos_prev.z, rot_prev.x, rot_prev.y};
+        const endstone::Location to = player.getLocation();
+
         if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && p->wasOnGround() && !p->isOnGround() &&
             delta.y > 0.0F) {
-            auto &dimension = player.getDimension();
-            const endstone::Location from{&dimension, pos_prev.x, pos_prev.y, pos_prev.z, rot_prev.x, rot_prev.y};
-            const endstone::Location to{&dimension, pos.x, pos.y, pos.z, rot.x, rot.y};
             endstone::PlayerJumpEvent e{player, from, to};
             server.getPluginManager().callEvent(e);
-            // if (e.isCancelled()) {
-            //     player.teleport(e.getFrom());
-            //     return;
-            // }
+            if (e.isCancelled()) {
+                player.teleport(e.getFrom());  // TODO(fixme): this would call PlayerTeleportEvent
+                return;
+            }
         }
 
         // Prevent intensive event calls on tiny movement using the thresholds from Spigot
         if (delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) {
-            auto &dimension = player.getDimension();
-            const endstone::Location from{&dimension, pos_prev.x, pos_prev.y, pos_prev.z, rot_prev.x, rot_prev.y};
-            const endstone::Location to{&dimension, pos.x, pos.y, pos.z, rot.x, rot.y};
-
             endstone::PlayerMoveEvent e{player, from, to};
             server.getPluginManager().callEvent(e);
-            // if (e.isCancelled()) {
-            //     player.teleport(e.getFrom());
-            //     return;
-            // }
-            //
-            // if (to != e.getTo()) {
-            //     player.teleport(e.getTo());
-            //     return;
-            // }
+            if (e.isCancelled()) {
+                player.teleport(e.getFrom());  // TODO(fixme): this would call PlayerTeleportEvent
+                return;
+            }
+
+            if (to != e.getTo()) {
+                player.teleport(e.getTo());  // TODO(fixme): this would call PlayerTeleportEvent
+                return;
+            }
         }
     }
 }
