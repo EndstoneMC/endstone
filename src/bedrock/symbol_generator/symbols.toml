@@ -14,7 +14,7 @@ version = "1.21.90-preview.28"
 # BlockLegacy
 "?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 55264896
 # BlockTypeRegistry
-"?forEachBlock@BlockTypeRegistry@@SAXV?$function@$$A6A_NAEBVBlockLegacy@@@Z@std@@@Z" = 57582480
+"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockLegacy@@@Z$$A6A_N0@Z@brstd@@@Z" = 57582480
 # Command
 "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 37485360
 # CommandOriginLoader
@@ -114,7 +114,7 @@ version = "1.21.90-preview.28"
 # BlockLegacy
 "_ZNK11BlockLegacy25tryGetStateFromLegacyDataEt" = 157291824
 # BlockTypeRegistry
-"_ZN17BlockTypeRegistry12forEachBlockENSt3__18functionIFbRK11BlockLegacyEEE" = 162017184
+"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK11BlockLegacyES5_EE" = 162017184
 # Command
 "_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 135076064
 # CommandOriginLoader
