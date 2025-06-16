@@ -34,7 +34,14 @@ public:
     [[nodiscard]] time_t getNotBeforeDate() const;
     [[nodiscard]] time_t getExpirationDate() const;
     [[nodiscard]] std::string getIdentityPublicKey() const;
-    [[nodiscard]] operator bool() const;
+    [[nodiscard]] bool isValid() const
+    {
+        return certificate && certificate->isValid();
+    }
+    [[nodiscard]] operator bool() const
+    {
+        return isValid();
+    }
     [[nodiscard]] bool isLoggedIntoXboxLive() const;
     void invalidate();
     [[nodiscard]] PlayerAuthenticationInfo getTrustedInfo(bool) const;

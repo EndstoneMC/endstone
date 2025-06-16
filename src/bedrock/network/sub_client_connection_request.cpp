@@ -80,7 +80,7 @@ std::string SubClientConnectionRequest::getLanguageCode() const
 
 Json::Value SubClientConnectionRequest::getData(const std::string &key) const
 {
-    if (raw_token_) {
+    if (legacy_multiplayer_token_.isValid() && raw_token_) {
         return raw_token_->getData().get(key, Json::nullValue);
     }
     return Json::nullValue;
