@@ -54,8 +54,7 @@ error_handlers_bottom: list[type] = [
     SuggestCxxSignatureFix,
 ]
 
-numpy_fixes: list[type] = [
-]
+numpy_fixes: list[type] = []
 
 
 class Parser(
@@ -98,9 +97,7 @@ class Parser(
 def main():
     output_path = Path(__file__).resolve().parent.parent
     parser = Parser()
-    parser.set_pybind11_enum_locations({
-        re.compile("RenderType"): "endstone._internal.endstone_python"
-    })
+    parser.set_pybind11_enum_locations({re.compile("RenderType"): "endstone._internal.endstone_python"})
 
     printer = Printer(invalid_expr_as_ellipses=True)
 
