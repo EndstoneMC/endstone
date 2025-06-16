@@ -188,16 +188,40 @@ void Value::swap(Value &other) noexcept
     std::swap(value_, other.value_);
 }
 
-const Value &Value::operator[](int index) const
+Value &Value::operator[](ArrayIndex index)
 {
-    if (type_ == nullValue) {
+    if (type_ != arrayValue) {
+        *this = Value(arrayValue);
+    }
+
+    if (index >= value_.array_->size()) {
+        resize(index);
+    }
+    return *(*value_.array_)[index];
+}
+
+Value &Value::operator[](int index)
+{
+    return (*this)[static_cast<ArrayIndex>(index)];
+}
+
+const Value &Value::operator[](ArrayIndex index) const
+{
+    if (type_ != arrayValue) {
         return null;
     }
 
-    if (index < 0 || index >= value_.array_->size()) {
-        return null;
-    }
-    return *value_.array_->at(index);
+    return *(*value_.array_)[index];
+}
+
+const Value &Value::operator[](int index) const
+{
+    return (*this)[static_cast<ArrayIndex>(index)];
+}
+
+Value &Value::operator[](const char *key)
+{
+    return resolveReference(key);
 }
 
 const Value &Value::operator[](const char *key) const
@@ -207,11 +231,21 @@ const Value &Value::operator[](const char *key) const
     }
 
     CZString actual_key(key);
-    ObjectValues::const_iterator it = value_.map_->find(actual_key);
+    const ObjectValues::const_iterator it = value_.map_->find(actual_key);
     if (it == value_.map_->end()) {
         return null;
     }
     return it->second;
+}
+
+Value &Value::operator[](const std::string &key)
+{
+    return (*this)[key.c_str()];
+}
+
+const Value &Value::operator[](const std::string &key) const
+{
+    return (*this)[key.c_str()];
 }
 
 Value Value::get(const char *key, const Value &default_value) const
@@ -223,6 +257,24 @@ Value Value::get(const char *key, const Value &default_value) const
 Value Value::get(const std::string &key, const Value &default_value) const
 {
     return get(key.c_str(), default_value);
+}
+
+Value &Value::resolveReference(const char *key)
+{
+    if (type_ != objectValue) {
+        *this = Value(objectValue);
+    }
+
+    CZString actual_key(key);
+    auto it = value_.map_->lower_bound(actual_key);
+    if (it != value_.map_->end() && it->first == actual_key) {
+        return it->second;
+    }
+
+    ObjectValues::value_type default_value(actual_key, null);
+    it = value_.map_->insert(it, default_value);
+    Value &value = it->second;
+    return value;
 }
 
 ValueType Value::type() const
@@ -359,7 +411,7 @@ std::vector<std::string> Value::getMemberNames() const
     return members;
 }
 
-std::size_t Value::size() const
+Value::ArrayIndex Value::size() const
 {
     switch (type_) {
     case arrayValue:
@@ -369,6 +421,19 @@ std::size_t Value::size() const
     default:
         return 0;
     }
+}
+
+Value &Value::append(const Value &value)
+{
+    return (*this)[size()] = value;
+}
+
+void Value::resize(const ArrayIndex size)
+{
+    if (type_ != arrayValue) {
+        *this = Value(arrayValue);
+    }
+    value_.array_->resize(size);
 }
 
 }  // namespace Json

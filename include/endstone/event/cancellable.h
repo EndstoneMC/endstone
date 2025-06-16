@@ -38,7 +38,7 @@ public:
      *
      * @return true if this event is cancelled
      */
-    [[nodiscard]] bool isCancelled() const final
+    [[nodiscard]] bool isCancelled() const override
     {
         return EventType::cancelled_;
     }
@@ -49,7 +49,7 @@ public:
      *
      * @param cancel true if you wish to cancel this event
      */
-    void setCancelled(bool cancel) final
+    void setCancelled(bool cancel) override
     {
         EventType::cancelled_ = cancel;
     }

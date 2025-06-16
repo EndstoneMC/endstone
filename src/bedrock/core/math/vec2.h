@@ -52,6 +52,10 @@ public:
 
     float x;
     float y;
+
+    static const Vec2 ZERO;
 };
+
+inline const Vec2 Vec2::ZERO{0, 0};
 
 BEDROCK_STATIC_ASSERT_SIZE(Vec2, 8, 8);

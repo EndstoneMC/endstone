@@ -20,6 +20,13 @@
 class ReplayStateComponent {
 public:
     ReplayStateComponent(std::unique_ptr<ActorHistory>, std::unique_ptr<IReplayStatePolicy>);
+
+    MovementCorrection shouldSendCorrectionToClient(EntityContext &entity, const PlayerAuthInputPacket &packet,
+                                                    bool is_strict_movement) const
+    {
+        return policy->shouldCorrectMovement(entity, packet, current_tick, divergence_counter, is_strict_movement);
+    }
+
     [[nodiscard]] std::uint64_t getCurrentTick() const
     {
         return current_tick;
@@ -28,6 +35,13 @@ public:
     [[nodiscard]] std::uint8_t getDivergenceCounter() const
     {
         return divergence_counter;
+    }
+
+    void clearHistory()
+    {
+        if (history) {
+            history->clearFrames();
+        }
     }
 
     void setDivergenceCounter(std::uint8_t counter)

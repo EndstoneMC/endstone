@@ -1,9 +1,12 @@
-timestamp = 1749826753
+timestamp = 1749846978
 version = "1.21.84"
 
 [windows]
 # Actor
 "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 39558112
+"?stopRiding@Actor@@QEAAX_N000@Z" = 39552528
+# ActorSetPosSystem
+"?setPosition@ActorSetPosSystem@@SAXAEAVEntityContext@@AEBVVec3@@_N@Z" = 10438352
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 69520608
 # BlockDescriptor
@@ -62,6 +65,8 @@ version = "1.21.84"
 "?completeUsingItem@Player@@QEAAXXZ" = 39210608
 "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 39268528
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 39187728
+"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z" = 39192240
+"?stopSleepInBed@Player@@UEAAX_N0@Z" = 39196032
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 56306496
 # RakPeerHelper
@@ -99,6 +104,9 @@ version = "1.21.84"
 "_Z7getI18nv" = 82514464
 # Actor
 "_ZN5Actor10teleportToERK4Vec3biib" = 132602016
+"_ZN5Actor10stopRidingEbbb" = 132595392
+# ActorSetPosSystem
+"_ZN17ActorSetPosSystem11setPositionER13EntityContextRK4Vec3b" = 72019344
 # BedrockLog
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 172890112
 # BlockDescriptor
@@ -157,6 +165,8 @@ version = "1.21.84"
 "_ZN6Player17completeUsingItemEv" = 126909696
 "_ZN6Player4dropERK9ItemStackb" = 126985168
 "_ZN6Player10teleportToERK4Vec3biib" = 126890640
+"_ZN6Player15startSleepInBedERK8BlockPos" = 126894112
+"_ZN6Player14stopSleepInBedEbb" = 126897120
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 153478656
 # RakPeerHelper

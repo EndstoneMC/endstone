@@ -15,6 +15,7 @@
 #pragma once
 
 #include <optional>
+#include <string>
 
 namespace Bedrock::Safety {
 class RedactableString {

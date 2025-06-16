@@ -90,7 +90,6 @@ class CraftingContainer;
 class CraftingContext;
 class DataLoadHelper;
 class DeathTickingComponent;
-class Difficulty;
 class DimensionBrightnessRamp;
 class DimensionConversionData;
 class DimensionManager;
@@ -224,11 +223,9 @@ class _TickPtr;  // NOLINT
 struct SyncedClientOptionsComponent;
 
 // Enums
-enum class AdvanceFrameResult;
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
-enum class BedSleepingResult;
-enum class BlockActorType;
+enum class BlockActorRendererId : unsigned int;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
 enum class BurnOdds;
@@ -306,6 +303,9 @@ class ScriptBlockComponentRegistry;
 class ScriptItemComponentRegistry;
 class ScriptPropertyRegistry;
 }  // namespace ScriptModuleMinecraft
+namespace MovementDataExtractionUtility {
+class SnapshotAccessor;
+}
 
 // Template Classes
 template <typename A, typename B, typename C>
