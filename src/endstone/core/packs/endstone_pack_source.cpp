@@ -115,6 +115,8 @@ PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&optio
     }
 
     discovered_ = true;
+    _setPacks(PackSourcePacks(result.packs));
+    _setReport(PackSourceReport(result.report));
     return result;
 }
 

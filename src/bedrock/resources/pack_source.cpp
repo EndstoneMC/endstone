@@ -53,6 +53,16 @@ void PackSource::_buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &
 
 PackSource::PackSource(PackSourceOptions options) : io_(std::move(options.io)) {}
 
+void PackSource::_setPacks(PackSourcePacks &&packs)
+{
+    packs_ = std::move(packs);
+}
+
+void PackSource::_setReport(PackSourceReport &&report)
+{
+    report_ = std::move(report);
+}
+
 void CompositePackSource::addPackSource(PackSource *pack_source)
 {
     pack_sources_.emplace_back(pack_source);
