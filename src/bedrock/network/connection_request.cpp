@@ -28,8 +28,7 @@ std::string ConnectionRequest::getCapeId() const
 
 std::vector<unsigned char> ConnectionRequest::getSkinData() const
 {
-    auto skin_data = getData("SkinData").asString();
-    auto result = Util::base64_decode({skin_data, skin_data.size()});
+    auto result = Util::base64_decode(getData("SkinData").asString());
     return {result.begin(), result.end()};
 }
 
@@ -50,8 +49,7 @@ uint16_t ConnectionRequest::getSkinImageHeight() const
 
 std::vector<unsigned char> ConnectionRequest::getCapeData() const
 {
-    auto cape_data = getData("CapeData").asString();
-    auto result = Util::base64_decode({cape_data, cape_data.size()});
+    auto result = Util::base64_decode(getData("CapeData").asString());
     return {result.begin(), result.end()};
 }
 

@@ -194,7 +194,6 @@ public:
     virtual void setCarriedItem(ItemStack const &) = 0;
     [[nodiscard]] virtual ItemStack const &getCarriedItem() const = 0;
     virtual void setOffhandSlot(ItemStack const &) = 0;
-    [[nodiscard]] virtual const ItemStack &getOffhandSlot() const;
     [[nodiscard]] virtual ItemStack const &getEquippedTotem() const = 0;
     virtual bool consumeTotem() = 0;
     virtual bool load(CompoundTag const &, DataLoadHelper &) = 0;
@@ -309,6 +308,7 @@ public:
     EntityContext &getEntity();
     [[nodiscard]] const EntityContext &getEntity() const;
     [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;
+    [[nodiscard]] const ItemStack &getOffhandSlot() const;
     [[nodiscard]] const ItemStack &getArmor(ArmorSlot) const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
