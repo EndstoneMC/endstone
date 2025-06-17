@@ -2123,6 +2123,27 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#090-2025-06-17" class="md-nav__link">
+      <span class="md-ellipsis">
+        0.9.0 - 2025-06-17
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="0.9.0 - 2025-06-17">
+        <ul class="md-nav__list">
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#082-2025-06-07" class="md-nav__link">
       <span class="md-ellipsis">
         0.8.2 - 2025-06-07
@@ -2853,6 +2874,27 @@ For latest updates join the chat on
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+    <a href="#090-2025-06-17" class="md-nav__link">
+      <span class="md-ellipsis">
+        0.9.0 - 2025-06-17
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="0.9.0 - 2025-06-17">
+        <ul class="md-nav__list">
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    
+</li>
       
         <li class="md-nav__item">
     <a href="#082-2025-06-07" class="md-nav__link">
@@ -3588,9 +3630,33 @@ For latest updates join the chat on
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="090-2025-06-17"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.9.0">0.9.0</a> - 2025-06-17<a class="headerlink" href="#090-2025-06-17" title="Permanent link">&para;</a></h2>
+<p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.8.2...v0.9.0">Compare with 0.8.2</a></small></p>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added support for BDS version 1.21.90.28 (preview).</li>
+<li>Added <code>PlayerConsumeItemEvent</code>, triggered when a player consumes an item (e.g., food, milk bucket).</li>
+<li>Added <code>PlayerMoveEvent</code>, triggered when a player moves.</li>
+<li>Added <code>PlayerJumpEvent</code>, triggered when a player jumps.</li>
+<li>Added the <code>ItemType</code> API to retrieve inherent attributes of a known item type, such as max durability.</li>
+<li>Added <code>Server::getPort</code> and <code>Server::getPortV6</code> to retrieve server ports.</li>
+<li>Expanded the <code>Inventory</code> API with additional methods.</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>BREAKING CHANGE</strong>: Renamed various fields in the <code>Skin</code> class:<ul>
+<li><code>Skin::getSkinImage</code> -&gt; <code>Skin::getImage</code></li>
+<li><code>Skin::getSkinId</code> -&gt; <code>Skin::getId</code></li>
+</ul>
+</li>
+<li><strong>BREAKING CHANGE</strong>: <code>ItemStack::getType</code> now returns <code>ItemType</code> instead of <code>std::string</code>. You can still compare an
+  <code>ItemType</code> with a string.</li>
+<li><strong>BREAKING CHANGE</strong>: <code>PacketSendEvent</code> and <code>PacketReceiveEvent</code> now fire for both pre-login and post-login packets.
+  Ensure null safety when accessing the player object, as it may be <code>null</code> during pre-login.</li>
+</ul>
 <h2 id="082-2025-06-07"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.8.2">0.8.2</a> - 2025-06-07<a class="headerlink" href="#082-2025-06-07" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.8.1...v0.8.2">Compare with 0.8.1</a></small></p>
-<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for BDS version 1.21.84.1</li>
 </ul>
@@ -3601,7 +3667,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="081-2025-05-20"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.8.1">0.8.1</a> - 2025-05-20<a class="headerlink" href="#081-2025-05-20" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.8.0...v0.8.1">Compare with 0.8.0</a></small></p>
-<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for BDS version 1.21.82.1</li>
 </ul>
@@ -3617,7 +3683,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="080-2025-05-11"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.8.0">0.8.0</a> - 2025-05-11<a class="headerlink" href="#080-2025-05-11" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.7.3...v0.8.0">Compare with 0.7.3</a></small></p>
-<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">&para;</a></h3>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for BDS version 1.21.80.3</li>
 <li>Introduced a new Registry API for accessing the built-in definitions (e.g., all available enchantments via
@@ -3629,13 +3695,13 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>C++ plugins can now register event handlers for <code>PlayerDeathEvent</code></li>
 </ul>
-<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Simplified <code>endstone::Result</code> for improved error handling</li>
 </ul>
 <h2 id="073-2025-05-06"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.7.3">0.7.3</a> – 2025-05-06<a class="headerlink" href="#073-2025-05-06" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.7.2...v0.7.3">Compare with 0.7.2</a></small></p>
-<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">&para;</a></h3>
+<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.80.</li>
 <li>Added divider and header for <code>ActionForm</code>.</li>
@@ -3649,7 +3715,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="072-2025-03-29"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.7.2">0.7.2</a> – 2025-03-29<a class="headerlink" href="#072-2025-03-29" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.7.1...v0.7.2">Compare with 0.7.1</a></small></p>
-<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">&para;</a></h3>
+<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for BDS version 1.21.71.01.</li>
 <li>Added <code>getDamage</code> and <code>setDamage</code> to <code>ItemMeta</code> for handling item durability.</li>
@@ -3662,7 +3728,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="071-2025-03-27"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.7.1">0.7.1</a> - 2025-03-27<a class="headerlink" href="#071-2025-03-27" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.7.0...v0.7.1">Compare with 0.7.0</a></small></p>
-<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">&para;</a></h3>
+<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for BDS version 1.21.70.04.</li>
 <li>Added new <code>setPayload</code> method in <code>PacketSendEvent</code> and <code>PacketReceiveEvent</code> for editing packet contents.</li>
@@ -3672,7 +3738,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>Resolved a crash caused by sending packets within the <code>PacketSendEvent</code> handler.</li>
 </ul>
-<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">&para;</a></h3>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Updated the behavior of server pack enforcement to match vanilla BDS: clients are not allowed to use custom packs when
   <code>texturepack-required</code> is set to <code>true</code> in <code>server.properties</code>. This behavior can be overridden by setting
@@ -3680,7 +3746,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="070-2025-03-25"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.7.0">0.7.0</a> - 2025-03-25<a class="headerlink" href="#070-2025-03-25" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.6.2...v0.7.0">Compare with 0.6.2</a></small></p>
-<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">&para;</a></h3>
+<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.70.</li>
 <li>Introduced the <code>Service</code> API, enabling plugins to register services that can be utilized by other plugins.</li>
@@ -3695,7 +3761,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>Fixed a crash caused by a conflict with the event system of the scripting API.</li>
 </ul>
-<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">&para;</a></h3>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>BREAKING CHANGE</strong>: <code>DataPacketReceiveEvent</code> and <code>DataPacketSendEvent</code> have been renamed to <code>PacketReceiveEvent</code>
   and<br />
@@ -3705,7 +3771,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="062-2025-03-09"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.6.2">0.6.2</a> - 2025-03-09<a class="headerlink" href="#062-2025-03-09" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.6.1...v0.6.2">Compare with 0.6.1</a></small></p>
-<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">&para;</a></h3>
+<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.62.</li>
 <li>Added <code>DataPacketReceiveEvent</code> and <code>DataPacketSendEvent</code> to allow viewing/intercepting low-level packet payloads.</li>
@@ -3729,7 +3795,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="060-2025-02-19"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.6.0">0.6.0</a> – 2025-02-19<a class="headerlink" href="#060-2025-02-19" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.7.1...v0.6.0">Compare with 0.5.7.1</a></small></p>
-<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">&para;</a></h3>
+<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.60.</li>
 <li>Added more liquid-related data to the DevTools by <a href="https://github.com/smartcmd">@smartcmd</a> in <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/113" title="GitHub Issue: squidfunk/mkdocs-material #113">#113</a>.</li>
@@ -3755,7 +3821,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   by <a href="https://github.com/killcerr">@killcerr</a> in <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/114" title="GitHub Issue: squidfunk/mkdocs-material #114">#114</a>.</li>
 <li>Fixed the logic for parsing the <code>message</code> command parameter type.</li>
 </ul>
-<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">&para;</a></h3>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Python API</strong>: Events that are cancellable now inherit from <code>Cancellable</code>. You can check if an event is cancellable
   by using <code>isinstance(event, Cancellable)</code>.</li>
@@ -3772,7 +3838,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="057-2024-12-23"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.7">0.5.7</a> - 2024-12-23<a class="headerlink" href="#057-2024-12-23" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.6...v0.5.7">Compare with 0.5.6</a></small></p>
-<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">&para;</a></h3>
+<h3 id="added_10">Added<a class="headerlink" href="#added_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added getter and setter for name tags and score tags in the <code>Actor</code> class.</li>
 <li>Added the <code>Actor::getType</code> function to retrieve actor types (e.g., <code>minecraft:pig</code>).</li>
@@ -3792,14 +3858,14 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   by <a href="https://github.com/engsr6982">@engsr6982</a>.</li>
 <li>Ensured players with matching IP addresses are immediately kicked upon banning.</li>
 </ul>
-<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">&para;</a></h3>
+<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Renamed <code>Server::getPlayerBanList</code> to <code>Server::getBanList</code>.</li>
 <li>Removed deprecated material from DevTools by <a href="https://github.com/smartcmd">@smartcmd</a>.</li>
 </ul>
 <h2 id="056-2024-12-06"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.6">0.5.6</a> - 2024-12-06<a class="headerlink" href="#056-2024-12-06" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.5...v0.5.6">Compare with 0.5.5</a></small></p>
-<h3 id="added_10">Added<a class="headerlink" href="#added_10" title="Permanent link">&para;</a></h3>
+<h3 id="added_11">Added<a class="headerlink" href="#added_11" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.50 (The Garden Awakens).</li>
 <li>Added <code>Inventory::getItem</code> and <code>Inventory::setItem</code> methods to manipulate a player's inventory.</li>
@@ -3813,14 +3879,14 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>Fixed an issue where <code>block_palette.nbt</code> was dumped twice in the DevTools.</li>
 </ul>
-<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">&para;</a></h3>
+<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for loading a mixture of folder packs listed in <code>world_resource_packs.json</code> (the conventional method)
   and zipped packs in <code>.zip</code> or <code>.mcpack</code> format placed under <code>resource_packs</code>.</li>
 </ul>
 <h2 id="055-2024-10-26"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.5">0.5.5</a> - 2024-10-26<a class="headerlink" href="#055-2024-10-26" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.4.1...v0.5.5">Compare with 0.5.4.1</a></small></p>
-<h3 id="added_11">Added<a class="headerlink" href="#added_11" title="Permanent link">&para;</a></h3>
+<h3 id="added_12">Added<a class="headerlink" href="#added_12" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.40 (Bundles of Bravery).</li>
 <li>CommandSender will now be downcast to the correct derived type on the Python side.</li>
@@ -3838,7 +3904,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Added <code>CommandSenderWrapper</code> to capture the output of command execution for any command sender.</li>
 <li>Added <code>Player::spawnParticle</code> to send a particle effect that is only visible to the player.</li>
 </ul>
-<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">&para;</a></h3>
+<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Error messages from DevTools, when OpenGL is not available, are now suppressed.</li>
 <li>The return type of several methods has been changed to <code>endstone::Result</code> to include error messages, which will
@@ -3857,13 +3923,13 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="054-2024-09-19"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.4">0.5.4</a> - 2024-09-19<a class="headerlink" href="#054-2024-09-19" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.3...v0.5.4">Compare with 0.5.3</a></small></p>
-<h3 id="added_12">Added<a class="headerlink" href="#added_12" title="Permanent link">&para;</a></h3>
+<h3 id="added_13">Added<a class="headerlink" href="#added_13" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.30.</li>
 <li>Added support for Python 3.13.</li>
 <li>Added biome data to the DevTools by <a href="https://github.com/CoolLoong">@CoolLoong</a>.</li>
 </ul>
-<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">&para;</a></h3>
+<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>BREAKING CHANGE</strong>: <code>Player::performCommand</code> now executes the command as a Player to
   resolve <a href="https://github.com/EndstoneMC/endstone/issues/53">#53</a>. This means the command execution will now depend on
@@ -3880,7 +3946,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="053-2024-09-12"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.3">0.5.3</a> - 2024-09-12<a class="headerlink" href="#053-2024-09-12" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.2...v0.5.3">Compare with 0.5.2</a></small></p>
-<h3 id="added_13">Added<a class="headerlink" href="#added_13" title="Permanent link">&para;</a></h3>
+<h3 id="added_14">Added<a class="headerlink" href="#added_14" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for Minecraft v1.21.23.</li>
 <li>Introduced the <code>BlockData</code> class, which encapsulates both the block type and a specific state from all possible block
@@ -3894,7 +3960,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><code>PlayerJoinEvent</code> and <code>PlayerQuitEvent</code> now include getter and setter methods for customizing join/quit messages.</li>
 <li>Integrated bStats metrics.</li>
 </ul>
-<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">&para;</a></h3>
+<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>BREAKING CHANGE</strong>: Renamed <code>Server::getNewScoreboard</code> to <code>Server::createScoreboard</code> for consistency with other
   methods like <code>createBossbar</code> and <code>createBlockData</code>.</li>
@@ -3911,7 +3977,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="052-2024-08-30"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.2">0.5.2</a> - 2024-08-30<a class="headerlink" href="#052-2024-08-30" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.1...v0.5.2">Compare with 0.5.1</a></small></p>
-<h3 id="added_14">Added<a class="headerlink" href="#added_14" title="Permanent link">&para;</a></h3>
+<h3 id="added_15">Added<a class="headerlink" href="#added_15" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for Minecraft v1.21.22.</li>
 <li>Boss bar API.</li>
@@ -3922,7 +3988,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><code>PlayerInteractActorEvent</code> triggered when a player interacts with an actor.</li>
 <li>An auto installer script for installing Endstone on Linux (thanks to <a href="https://github.com/legitbox">@legitbox</a>).</li>
 </ul>
-<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">&para;</a></h3>
+<h3 id="changed_10">Changed<a class="headerlink" href="#changed_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Check chunk states before getting the block in <code>Dimension::getBlockAt</code>.</li>
 </ul>
@@ -3933,7 +3999,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="051-2024-08-24"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.1">0.5.1</a> - 2024-08-24<a class="headerlink" href="#051-2024-08-24" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.0...v0.5.1">Compare with 0.5.0</a></small></p>
-<h3 id="added_15">Added<a class="headerlink" href="#added_15" title="Permanent link">&para;</a></h3>
+<h3 id="added_16">Added<a class="headerlink" href="#added_16" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for Minecraft v1.21.20.</li>
 <li><code>Player::getScoreboard</code> and <code>Player::setScoreboard</code> methods to allow each player to have their own scoreboard (
@@ -3947,7 +4013,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><code>Player::sendToast</code> method to send a toast message to players.</li>
 <li>Furnace-related item data to DevTools by <a href="https://github.com/smartcmd">@smartcmd</a>.</li>
 </ul>
-<h3 id="changed_10">Changed<a class="headerlink" href="#changed_10" title="Permanent link">&para;</a></h3>
+<h3 id="changed_11">Changed<a class="headerlink" href="#changed_11" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Player::isOp</code> and <code>Player::setOp</code> methods are now consistent with the similar methods in the scripting API.</li>
 <li>The fix for the warning message about empty packets is now redundant and has been removed.</li>
@@ -3967,7 +4033,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="050-2024-07-29"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.0">0.5.0</a> - 2024-07-29<a class="headerlink" href="#050-2024-07-29" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.10...v0.5.0">Compare with 0.4.10</a></small></p>
-<h3 id="added_16">Added<a class="headerlink" href="#added_16" title="Permanent link">&para;</a></h3>
+<h3 id="added_17">Added<a class="headerlink" href="#added_17" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for Minecraft v1.21.3.</li>
 <li><code>Actor::getId</code> function to get an actor's unique id, persisting between server runs.</li>
@@ -3982,7 +4048,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><strong>Experimental</strong> Scoreboard API.</li>
 <li><strong>Experimental</strong> Form API.</li>
 </ul>
-<h3 id="changed_11">Changed<a class="headerlink" href="#changed_11" title="Permanent link">&para;</a></h3>
+<h3 id="changed_12">Changed<a class="headerlink" href="#changed_12" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Player</code> class now inherits from the <code>Mob</code> class instead of <code>Actor</code> class.</li>
 <li><strong>BREAKING CHANGE:</strong> Plugin names should only contain lowercase letters, numbers, and underscores. Use the prefix
@@ -3996,7 +4062,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="0410-2024-07-10"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.10">0.4.10</a> - 2024-07-10<a class="headerlink" href="#0410-2024-07-10" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.9...v0.4.10">Compare with 0.4.9</a></small></p>
-<h3 id="added_17">Added<a class="headerlink" href="#added_17" title="Permanent link">&para;</a></h3>
+<h3 id="added_18">Added<a class="headerlink" href="#added_18" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for Minecraft v1.21.2.</li>
 <li><code>Player::getSkin</code> method to retrieve the current skin of a player.</li>
@@ -4009,7 +4075,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="049-2024-07-05"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.9">0.4.9</a> - 2024-07-05<a class="headerlink" href="#049-2024-07-05" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.8.1...v0.4.9">Compare with 0.4.8.1</a></small></p>
-<h3 id="added_18">Added<a class="headerlink" href="#added_18" title="Permanent link">&para;</a></h3>
+<h3 id="added_19">Added<a class="headerlink" href="#added_19" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for Minecraft v1.21.1.</li>
 <li><code>ActorDeathEvent</code> and <code>PlayerDeathEvent</code> triggers when an actor or a player dies.</li>
@@ -4027,7 +4093,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>A DevTools to help community projects get necessary data from BDS (currently only available on Windows). To open the
   DevTools, use command <code>/devtools</code> in the console.</li>
 </ul>
-<h3 id="changed_12">Changed<a class="headerlink" href="#changed_12" title="Permanent link">&para;</a></h3>
+<h3 id="changed_13">Changed<a class="headerlink" href="#changed_13" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Permissible.op</code> property in the python binding is renamed to <code>Permissible.is_op</code>.</li>
 <li>Crash dumps will now print system and version info in addition to stacktraces.</li>
@@ -4038,7 +4104,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="0481-2024-06-15"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.8.1">0.4.8.1</a> - 2024-06-15<a class="headerlink" href="#0481-2024-06-15" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.7...v0.4.8.1">Compare with 0.4.7</a></small></p>
-<h3 id="added_19">Added<a class="headerlink" href="#added_19" title="Permanent link">&para;</a></h3>
+<h3 id="added_20">Added<a class="headerlink" href="#added_20" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support Minecraft v1.21 (Tricky Trials)</li>
 </ul>
@@ -4052,7 +4118,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="047-2024-06-13"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.7">0.4.7</a> - 2024-06-13<a class="headerlink" href="#047-2024-06-13" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.6...v0.4.7">Compare with 0.4.6</a></small></p>
-<h3 id="added_20">Added<a class="headerlink" href="#added_20" title="Permanent link">&para;</a></h3>
+<h3 id="added_21">Added<a class="headerlink" href="#added_21" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Player::performCommand</code> allows a player to execute a given command. During the command execution, the player is
   temporarily granted the operator permission.</li>
@@ -4070,7 +4136,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   be logged in.</li>
 <li><code>Server::getPlayer</code> now also accepts a string argument to get a player by name instead of UUID.</li>
 </ul>
-<h3 id="changed_13">Changed<a class="headerlink" href="#changed_13" title="Permanent link">&para;</a></h3>
+<h3 id="changed_14">Changed<a class="headerlink" href="#changed_14" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Changed logging level look-up from using a hashmap to using a switch by <a href="https://github.com/Duckos-Mods">@Duckos-Mods</a>
   in <a href="https://github.com/EndstoneMC/endstone/pull/12">#12</a></li>
@@ -4089,7 +4155,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="045-2024-05-14"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.5">0.4.5</a> - 2024-05-14<a class="headerlink" href="#045-2024-05-14" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.3...v0.4.5">Compare with 0.4.3</a></small></p>
-<h3 id="added_21">Added<a class="headerlink" href="#added_21" title="Permanent link">&para;</a></h3>
+<h3 id="added_22">Added<a class="headerlink" href="#added_22" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Bootstrap now protects specific files from overwriting during update.</li>
 <li>Python plugin loader now loads all <code>*.whl</code> plugins under the <code>plguins</code> folder and their dependencies during server
@@ -4101,7 +4167,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="043-2024-05-13"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.3">0.4.3</a> - 2024-05-13<a class="headerlink" href="#043-2024-05-13" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.2...v0.4.3">Compare with 0.4.2</a></small></p>
-<h3 id="added_22">Added<a class="headerlink" href="#added_22" title="Permanent link">&para;</a></h3>
+<h3 id="added_23">Added<a class="headerlink" href="#added_23" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Server::getOnlinePlayers</code> for getting all online players.</li>
 <li><code>Player::kick</code> for kicking a specific player with a custom message.</li>
@@ -4109,7 +4175,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><code>Actor::getLocation</code> and <code>Actor::getVelocity</code> for getting the location and velocity of an actor respectively.</li>
 <li><code>Actor::getLevel</code> for getting the <code>Level</code> that an actor resides in.</li>
 </ul>
-<h3 id="changed_14">Changed<a class="headerlink" href="#changed_14" title="Permanent link">&para;</a></h3>
+<h3 id="changed_15">Changed<a class="headerlink" href="#changed_15" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Level</code> is no longer created for each <code>Dimension</code> in a Minecraft world. Instead, one <code>Level</code> now manages multiple
   <code>Dimension</code>s.</li>
@@ -4121,7 +4187,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 </ul>
 <h2 id="042-2024-04-30"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.2">0.4.2</a> - 2024-04-30<a class="headerlink" href="#042-2024-04-30" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.1...v0.4.2">Compare with 0.4.1</a></small></p>
-<h3 id="added_23">Added<a class="headerlink" href="#added_23" title="Permanent link">&para;</a></h3>
+<h3 id="added_24">Added<a class="headerlink" href="#added_24" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Level::getDimension</code> for getting the dimension of a specific level.</li>
 <li><code>Player::getAddress</code> and <code>Player::getPort</code> for getting the socket address and port of a specific player, respectively.</li>
@@ -4129,7 +4195,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Basic scheduler implementation, currently supporting only synchronized task execution.</li>
 <li><code>PlayerLoginEvent</code> is called when a player attempts to log in.</li>
 </ul>
-<h3 id="changed_15">Changed<a class="headerlink" href="#changed_15" title="Permanent link">&para;</a></h3>
+<h3 id="changed_16">Changed<a class="headerlink" href="#changed_16" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for Minecraft v1.20.81 (Bedrock)</li>
 </ul>
@@ -4141,7 +4207,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.0...v0.4.1">Compare with 0.4.0</a></small></p>
 <p>This release focuses on supporting game version v1.20.80, which adds several new features.
 Additionally, we add a few useful functions to <code>Player</code> and <code>Server</code>.</p>
-<h3 id="added_24">Added<a class="headerlink" href="#added_24" title="Permanent link">&para;</a></h3>
+<h3 id="added_25">Added<a class="headerlink" href="#added_25" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Commands executed by players are now logged to the console.</li>
 <li>Message of <code>/say</code> command will be logged to the console.</li>
@@ -4149,7 +4215,7 @@ Additionally, we add a few useful functions to <code>Player</code> and <code>Ser
 <li><code>Server::broadcastMessage</code> for broadcasting messages to all players.</li>
 <li><code>BroadcastMessageEvent</code> is called when a message is broadcast by the server.</li>
 </ul>
-<h3 id="changed_16">Changed<a class="headerlink" href="#changed_16" title="Permanent link">&para;</a></h3>
+<h3 id="changed_17">Changed<a class="headerlink" href="#changed_17" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Support for Minecraft v1.20.80 - Armored Paws (Bedrock)</li>
 </ul>
@@ -4162,7 +4228,7 @@ Additionally, we add a few useful functions to <code>Player</code> and <code>Ser
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.3.0...v0.4.0">Compare with 0.3.0</a></small></p>
 <p>In this release, we added an event system and several basic interfaces for game objects like <code>Level</code>, <code>Actor</code>
 and <code>Player</code>.</p>
-<h3 id="added_25">Added<a class="headerlink" href="#added_25" title="Permanent link">&para;</a></h3>
+<h3 id="added_26">Added<a class="headerlink" href="#added_26" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Event system that allows plugins to listen for specific events.</li>
 <li><code>ServerLoadEvent</code> is called when a server is started up.</li>
@@ -4183,7 +4249,7 @@ and <code>Player</code>.</p>
 <li><code>ActorRemoveEvent</code> is called when an actor is removed from the level.</li>
 <li><code>PlayerChatEvent</code> is called when a player sends a message.</li>
 </ul>
-<h3 id="changed_17">Changed<a class="headerlink" href="#changed_17" title="Permanent link">&para;</a></h3>
+<h3 id="changed_18">Changed<a class="headerlink" href="#changed_18" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Singletons are now managed using <code>entt::locator</code>.</li>
 <li>Macro <code>ENDSTONE_PLUGIN</code> is improved to simplify the definition of plugin metadata.</li>
@@ -4199,7 +4265,7 @@ and <code>Player</code>.</p>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.2.0...v0.3.0">Compare with 0.2.0</a></small></p>
 <p>This is the second release of Endstone with a focus on the permission system and improving the plugin loading
 mechanisms.</p>
-<h3 id="added_26">Added<a class="headerlink" href="#added_26" title="Permanent link">&para;</a></h3>
+<h3 id="added_27">Added<a class="headerlink" href="#added_27" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Basic permission systems.</li>
 <li>Enforced Plugin API version checks for C++ and Python plugins to ensure ABI/API compatibility.</li>
@@ -4208,7 +4274,7 @@ mechanisms.</p>
 <li>PluginDescription properties are extended to support <code>website</code>, <code>load_order</code>, <code>depend</code>, <code>soft_depend</code>, <code>load_before</code>,
   and <code>provides</code>.</li>
 </ul>
-<h3 id="changed_18">Changed<a class="headerlink" href="#changed_18" title="Permanent link">&para;</a></h3>
+<h3 id="changed_19">Changed<a class="headerlink" href="#changed_19" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Improved <code>ENDSTONE_PLUGIN</code> macro to further simplify the definition of plugin metadata.</li>
 <li>Plugin names and websites are now displayed when using <code>/version [plugin: PluginName]</code>.</li>
@@ -4220,7 +4286,7 @@ mechanisms.</p>
 </ul>
 <h2 id="020-2024-03-19"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.2.0">0.2.0</a> - 2024-03-19<a class="headerlink" href="#020-2024-03-19" title="Permanent link">&para;</a></h2>
 <p>Hello World! This is the first release of Endstone.</p>
-<h3 id="added_27">Added<a class="headerlink" href="#added_27" title="Permanent link">&para;</a></h3>
+<h3 id="added_28">Added<a class="headerlink" href="#added_28" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Basic plugin loader for C++ and Python plugins.</li>
 <li>Basic command system that allows plugins to register custom commands.</li>
