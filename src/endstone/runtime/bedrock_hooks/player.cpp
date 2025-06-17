@@ -65,11 +65,13 @@ bool Player::drop(const ItemStack &item, bool randomly)
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-    const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);
-    endstone::PlayerDropItemEvent e(player, *drop);
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return false;
+    if (isAlive()) {
+        const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);
+        endstone::PlayerDropItemEvent e(player, *drop);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::drop, this, item, randomly);
 }
