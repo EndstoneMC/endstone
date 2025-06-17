@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerItemConsumeEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerItemConsumeEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <includes refid="player__item__consume__event_8h" local="no">endstone/event/player/player_item_consume_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerItemConsumeEvent_1abcd6574b568123db9d0c6601acd01f24" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <definition>const ItemStack&amp; endstone::PlayerItemConsumeEvent::item_</definition>
+        <argsstring></argsstring>
+        <name>item_</name>
+        <qualifiedname>endstone::PlayerItemConsumeEvent::item_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="64" column="21" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerItemConsumeEvent_1aea8ad32c30b0d189f3fd02fa871ccc87" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
+        <definition>EquipmentSlot endstone::PlayerItemConsumeEvent::hand_</definition>
+        <argsstring></argsstring>
+        <name>hand_</name>
+        <qualifiedname>endstone::PlayerItemConsumeEvent::hand_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="65" column="19" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerItemConsumeEvent_1a1fc9118fc82b6e23fd2dd5def71601a2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerItemConsumeEvent::PlayerItemConsumeEvent</definition>
+        <argsstring>(Player &amp;player, const ItemStack &amp;item, EquipmentSlot hand)</argsstring>
+        <name>PlayerItemConsumeEvent</name>
+        <qualifiedname>endstone::PlayerItemConsumeEvent::PlayerItemConsumeEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
+          <declname>hand</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="36" column="14" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerItemConsumeEvent_1acf92431b4fefa6c42d450c301a03c9a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; ItemStack &gt; endstone::PlayerItemConsumeEvent::getItem</definition>
+        <argsstring>() const</argsstring>
+        <name>getItem</name>
+        <qualifiedname>endstone::PlayerItemConsumeEvent::getItem</qualifiedname>
+        <briefdescription>
+<para>Gets the item that is being consumed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Modifying the returned item will have no effect, you must use setItem(ItemStack) instead.</para>
+</simplesect>
+<simplesect kind="return"><para>an <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> for the item being consumed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="48" column="22" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerItemConsumeEvent_1a4c71af194ee2c446fcb5c5eb28715050" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
+        <definition>EquipmentSlot endstone::PlayerItemConsumeEvent::getHand</definition>
+        <argsstring>() const</argsstring>
+        <name>getHand</name>
+        <qualifiedname>endstone::PlayerItemConsumeEvent::getHand</qualifiedname>
+        <briefdescription>
+<para>Get the hand used to consume the item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the hand </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="58" column="20" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="58" bodyend="61"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player is finishing consuming an item (food, potion, milk bucket). </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>If the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> is modified the server will use the effects of the new item and not remove the original one from the player&apos;s inventory.</para>
+</simplesect>
+<simplesect kind="note"><para>If the event is cancelled the effect will not be applied and the item will not be removed from the player&apos;s inventory. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerItemConsumeEvent</label>
+        <link refid="classendstone_1_1PlayerItemConsumeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerItemConsumeEvent</label>
+        <link refid="classendstone_1_1PlayerItemConsumeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_item_consume_event.h" line="32" column="1" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="32" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerItemConsumeEvent_1a4c71af194ee2c446fcb5c5eb28715050" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>getHand</name></member>
+      <member refid="classendstone_1_1PlayerItemConsumeEvent_1acf92431b4fefa6c42d450c301a03c9a5" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerItemConsumeEvent_1aea8ad32c30b0d189f3fd02fa871ccc87" prot="private" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>hand_</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1PlayerItemConsumeEvent_1abcd6574b568123db9d0c6601acd01f24" prot="private" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>item_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerItemConsumeEvent_1a1fc9118fc82b6e23fd2dd5def71601a2" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>PlayerItemConsumeEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
