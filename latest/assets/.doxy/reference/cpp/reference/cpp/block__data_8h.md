@@ -14,6 +14,7 @@
 * `#include <unordered_map>`
 * `#include <variant>`
 * `#include <fmt/format.h>`
+* `#include <fmt/ranges.h>`
 * `#include "endstone/variant.h"`
 
 

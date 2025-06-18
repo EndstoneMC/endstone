@@ -14,11 +14,11 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -34,8 +34,10 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
-      <node id="11">
+      <node id="12">
         <label>endstone/block/block_face.h</label>
         <link refid="block__face_8h_source"/>
       </node>
@@ -44,7 +46,7 @@
         <link refid="block__break__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -52,73 +54,76 @@
         <link refid="block__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>endstone/event/cancellable.h</label>
         <link refid="cancellable_8h_source"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="13">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>endstone/level/position.h</label>
         <link refid="position_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-      </node>
-      <node id="17">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>endstone/util/vector.h</label>
-        <link refid="vector_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="18">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>endstone/util/vector.h</label>
+        <link refid="vector_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
         <label>endstone/variant.h</label>
         <link refid="variant_8h_source"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>cmath</label>
       </node>
       <node id="9">
         <label>fmt/format.h</label>
       </node>
+      <node id="10">
+        <label>fmt/ranges.h</label>
+      </node>
       <node id="4">
         <label>memory</label>
       </node>
-      <node id="18">
+      <node id="19">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="14">
+      <node id="15">
         <label>optional</label>
       </node>
-      <node id="20">
+      <node id="21">
         <label>stdexcept</label>
       </node>
       <node id="5">

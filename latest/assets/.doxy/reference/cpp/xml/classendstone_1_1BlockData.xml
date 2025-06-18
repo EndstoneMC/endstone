@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="34" column="13"/>
+        <location file="include/endstone/block/block_data.h" line="35" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="41" column="26"/>
+        <location file="include/endstone/block/block_data.h" line="42" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>BlockStates</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="49" column="26"/>
+        <location file="include/endstone/block/block_data.h" line="50" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::uint32_t</type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="56" column="28"/>
+        <location file="include/endstone/block/block_data.h" line="57" column="28"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -78,7 +78,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/block/block_data.h" line="32" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="32" bodyend="57"/>
+    <location file="include/endstone/block/block_data.h" line="33" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="33" bodyend="58"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getBlockStates</name></member>
       <member refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getRuntimeId</name></member>
