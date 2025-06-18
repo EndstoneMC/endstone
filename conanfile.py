@@ -63,14 +63,14 @@ class EndstoneRecipe(ConanFile):
         self.requires("date/3.0.3")
         self.requires("entt/3.14.0")
         self.requires("expected-lite/0.8.0")
-        self.requires("fmt/[~10]", transitive_headers=True, transitive_libs=True)
+        self.requires("fmt/11.2.0", transitive_headers=True, transitive_libs=True)
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.7")
         self.requires("ms-gsl/4.1.0")
         self.requires("nlohmann_json/3.11.3")
         self.requires("pybind11/2.13.6")
         self.requires("sentry-native/0.7.17")
-        self.requires("spdlog/1.14.1")
+        self.requires("spdlog/1.15.3")
         self.requires("tomlplusplus/3.3.0")
 
         if self.settings.os == "Linux":
