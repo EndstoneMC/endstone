@@ -59,15 +59,15 @@ class EndstoneRecipe(ConanFile):
         self.requires("base64/0.5.2")
         self.requires("boost/1.86.0")
         self.requires("concurrentqueue/1.0.4")
-        self.requires("cpptrace/0.7.5")
-        self.requires("date/3.0.3")
-        self.requires("entt/3.14.0")
+        self.requires("cpptrace/1.0.0")
+        self.requires("date/3.0.4")
+        self.requires("entt/3.15.0")
         self.requires("expected-lite/0.8.0")
         self.requires("fmt/11.2.0", transitive_headers=True, transitive_libs=True)
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.7")
-        self.requires("ms-gsl/4.1.0")
-        self.requires("nlohmann_json/3.11.3")
+        self.requires("ms-gsl/4.2.0")
+        self.requires("nlohmann_json/3.12.0")
         self.requires("pybind11/2.13.6")
         self.requires("sentry-native/0.7.17")
         self.requires("spdlog/1.15.3")
@@ -79,10 +79,10 @@ class EndstoneRecipe(ConanFile):
         if self._with_devtools:
             self.requires("glew/2.2.0")
             self.requires("glfw/3.4")
-            self.requires("imgui/1.91.5-docking")
+            self.requires("imgui/1.91.8-docking")
             self.requires("zstr/1.0.7")
 
-        self.test_requires("gtest/1.15.0")
+        self.test_requires("gtest/1.16.0")
 
     def config_options(self):
         if self.settings.os == "Windows":
