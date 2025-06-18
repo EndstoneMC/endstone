@@ -59,7 +59,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("base64/0.5.2")
         self.requires("boost/1.86.0")
         self.requires("concurrentqueue/1.0.4")
-        self.requires("cpptrace/1.0.0")
+        self.requires("cpptrace/0.7.5")
         self.requires("date/3.0.4")
         self.requires("entt/3.15.0")
         self.requires("expected-lite/0.8.0")
