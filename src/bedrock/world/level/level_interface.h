@@ -57,6 +57,7 @@
 #include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/block_palette.h"
+#include "bedrock/world/level/chunk/level_chunk_event_manager.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/explosion.h"
 #include "bedrock/world/level/game_type.h"
@@ -307,7 +308,7 @@ public:
     virtual void *getSubChunkManager() = 0;
     virtual void onChunkLoaded(ChunkSource &, LevelChunk &) = 0;
     virtual void onChunkDiscarded(LevelChunk &) = 0;
-    virtual void *getLevelChunkEventManager() = 0;
+    virtual Bedrock::NotNullNonOwnerPtr<LevelChunkEventManager> getLevelChunkEventManager() = 0;
     virtual void *getLevelChunkMetaDataManager() = 0;
     virtual void queueEntityDestruction(OwnerPtr<EntityContext>) = 0;
     virtual OwnerPtr<EntityContext> removeEntity(Actor &) = 0;

@@ -118,6 +118,7 @@ class IFileAccess;
 class IFoodItemComponent;
 class IGameModuleShared;
 class IInPackagePacks;
+class ILevelChunkEventManagerProxy {};
 class ILevelRandom;
 class ILevelStorageManagerConnector;
 class IMinecraftEventing;
