@@ -5,6 +5,7 @@
     <includes refid="block_8h" local="yes">endstone/block/block.h</includes>
     <includes refid="chunk_8h" local="yes">endstone/level/chunk.h</includes>
     <includes refid="result_8h" local="yes">endstone/util/result.h</includes>
+    <includedby refid="dimension__event_8h" local="yes">include/endstone/event/level/dimension_event.h</includedby>
     <incdepgraph>
       <node id="20">
         <label>endstone/actor/actor.h</label>
@@ -197,6 +198,36 @@
         <label>vector</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/endstone/event/chunk/chunk_event.h</label>
+        <link refid="chunk__event_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/endstone/event/chunk/chunk_load_event.h</label>
+        <link refid="chunk__load__event_8h_source"/>
+      </node>
+      <node id="5">
+        <label>include/endstone/event/chunk/chunk_unload_event.h</label>
+        <link refid="chunk__unload__event_8h_source"/>
+      </node>
+      <node id="2">
+        <label>include/endstone/event/level/dimension_event.h</label>
+        <link refid="dimension__event_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/level/dimension.h</label>
+        <link refid="dimension_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
     <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4" prot="public">fmt::formatter&lt; endstone::Dimension &gt;</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>

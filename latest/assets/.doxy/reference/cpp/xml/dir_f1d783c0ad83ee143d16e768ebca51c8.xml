@@ -4,6 +4,8 @@
     <compoundname>include/endstone/event</compoundname>
     <innerdir refid="dir_621c26b5fd4198aba66e7e31570ce44a">include/endstone/event/actor</innerdir>
     <innerdir refid="dir_992e9ad7dc69726476903ba283e33c71">include/endstone/event/block</innerdir>
+    <innerdir refid="dir_7eabd153c13720ffd29490c98a6f4dde">include/endstone/event/chunk</innerdir>
+    <innerdir refid="dir_9972879ee1a1ab85aef1f41c76fb712c">include/endstone/event/level</innerdir>
     <innerdir refid="dir_7c05c37b25e9c9eccd9c63c2d313ba28">include/endstone/event/player</innerdir>
     <innerdir refid="dir_77022909323d5ad872c4820a738a5429">include/endstone/event/server</innerdir>
     <innerdir refid="dir_7fcf87d2683114df01ea446fea23c187">include/endstone/event/weather</innerdir>

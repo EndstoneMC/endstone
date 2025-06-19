@@ -16,7 +16,7 @@ _Represents an event._
 
 
 
-Inherited by the following classes: [endstone::ActorEvent](classendstone_1_1ActorEvent.md),  [endstone::ActorEvent](classendstone_1_1ActorEvent.md),  [endstone::ActorEvent](classendstone_1_1ActorEvent.md),  [endstone::BlockEvent](classendstone_1_1BlockEvent.md),  [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md),  [endstone::ServerEvent](classendstone_1_1ServerEvent.md),  [endstone::WeatherEvent](classendstone_1_1WeatherEvent.md)
+Inherited by the following classes: [endstone::ActorEvent](classendstone_1_1ActorEvent.md),  [endstone::ActorEvent](classendstone_1_1ActorEvent.md),  [endstone::ActorEvent](classendstone_1_1ActorEvent.md),  [endstone::BlockEvent](classendstone_1_1BlockEvent.md),  [endstone::LevelEvent](classendstone_1_1LevelEvent.md),  [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md),  [endstone::ServerEvent](classendstone_1_1ServerEvent.md),  [endstone::WeatherEvent](classendstone_1_1WeatherEvent.md)
 
 
 

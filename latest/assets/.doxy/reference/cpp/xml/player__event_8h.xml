@@ -17,6 +17,7 @@
     <includedby refid="player__kick__event_8h" local="yes">include/endstone/event/player/player_kick_event.h</includedby>
     <includedby refid="player__login__event_8h" local="yes">include/endstone/event/player/player_login_event.h</includedby>
     <includedby refid="player__move__event_8h" local="yes">include/endstone/event/player/player_move_event.h</includedby>
+    <includedby refid="player__pickup__item__event_8h" local="yes">include/endstone/event/player/player_pickup_item_event.h</includedby>
     <includedby refid="player__quit__event_8h" local="yes">include/endstone/event/player/player_quit_event.h</includedby>
     <includedby refid="player__respawn__event_8h" local="yes">include/endstone/event/player/player_respawn_event.h</includedby>
     <incdepgraph>
@@ -569,6 +570,8 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
       </node>
       <node id="7">
         <label>include/endstone/event/player/player_game_mode_change_event.h</label>
@@ -611,10 +614,14 @@
         </childnode>
       </node>
       <node id="17">
+        <label>include/endstone/event/player/player_pickup_item_event.h</label>
+        <link refid="player__pickup__item__event_8h_source"/>
+      </node>
+      <node id="18">
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
-      <node id="18">
+      <node id="19">
         <label>include/endstone/event/player/player_respawn_event.h</label>
         <link refid="player__respawn__event_8h_source"/>
       </node>

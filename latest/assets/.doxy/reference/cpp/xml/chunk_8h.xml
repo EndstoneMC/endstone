@@ -3,6 +3,7 @@
   <compounddef id="chunk_8h" kind="file" language="C++">
     <compoundname>chunk.h</compoundname>
     <includes refid="actor_8h" local="yes">endstone/actor/actor.h</includes>
+    <includedby refid="chunk__event_8h" local="yes">include/endstone/event/chunk/chunk_event.h</includedby>
     <includedby refid="dimension_8h" local="yes">include/endstone/level/dimension.h</includedby>
     <incdepgraph>
       <node id="2">
@@ -141,15 +142,41 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/event/chunk/chunk_event.h</label>
+        <link refid="chunk__event_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/endstone/event/chunk/chunk_load_event.h</label>
+        <link refid="chunk__load__event_8h_source"/>
+      </node>
+      <node id="4">
+        <label>include/endstone/event/chunk/chunk_unload_event.h</label>
+        <link refid="chunk__unload__event_8h_source"/>
+      </node>
+      <node id="6">
+        <label>include/endstone/event/level/dimension_event.h</label>
+        <link refid="dimension__event_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/endstone/level/chunk.h</label>
         <link refid="chunk_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
-      <node id="2">
+      <node id="5">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1Chunk" prot="public">endstone::Chunk</innerclass>

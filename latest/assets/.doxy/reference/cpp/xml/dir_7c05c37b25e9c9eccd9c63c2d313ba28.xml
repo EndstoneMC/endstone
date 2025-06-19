@@ -17,6 +17,7 @@
     <innerfile refid="player__kick__event_8h">player_kick_event.h</innerfile>
     <innerfile refid="player__login__event_8h">player_login_event.h</innerfile>
     <innerfile refid="player__move__event_8h">player_move_event.h</innerfile>
+    <innerfile refid="player__pickup__item__event_8h">player_pickup_item_event.h</innerfile>
     <innerfile refid="player__quit__event_8h">player_quit_event.h</innerfile>
     <innerfile refid="player__respawn__event_8h">player_respawn_event.h</innerfile>
     <innerfile refid="player__teleport__event_8h">player_teleport_event.h</innerfile>

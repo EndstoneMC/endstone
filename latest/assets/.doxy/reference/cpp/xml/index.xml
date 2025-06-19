@@ -281,6 +281,21 @@
     <member refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Chunk_1ab18bb55fcb0a26706f9cb59406bdf0cc" kind="function"><name>getDimension</name></member>
   </compound>
+  <compound refid="classendstone_1_1ChunkEvent" kind="class"><name>endstone::ChunkEvent</name>
+    <member refid="classendstone_1_1ChunkEvent_1aa4583a861ca944ce8a28202fe959dd60" kind="variable"><name>chunk_</name></member>
+    <member refid="classendstone_1_1ChunkEvent_1a0a31bd1419d3b2a6ec089b194e11fcb2" kind="function"><name>ChunkEvent</name></member>
+    <member refid="classendstone_1_1ChunkEvent_1aa78f307af69ce820f4a75b74a4485f0c" kind="function"><name>getChunk</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ChunkLoadEvent" kind="class"><name>endstone::ChunkLoadEvent</name>
+    <member refid="classendstone_1_1ChunkLoadEvent_1ad1a4e1ce2adab937a4313231efe5dcd8" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1ChunkLoadEvent_1a9ff79720197da4050b8aebdd39067097" kind="function"><name>ChunkLoadEvent</name></member>
+    <member refid="classendstone_1_1ChunkLoadEvent_1a12dd8c991021e5543491629dcd798a00" kind="function"><name>~ChunkLoadEvent</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ChunkUnloadEvent" kind="class"><name>endstone::ChunkUnloadEvent</name>
+    <member refid="classendstone_1_1ChunkUnloadEvent_1a3a7ae31d1ab834194f56590d390d2199" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1ChunkUnloadEvent_1aaf42a47c7fe2b92eff323ebc9326a18a" kind="function"><name>ChunkUnloadEvent</name></member>
+    <member refid="classendstone_1_1ChunkUnloadEvent_1a529d5701455ab739443d191ef51a39eb" kind="function"><name>~ChunkUnloadEvent</name></member>
+  </compound>
   <compound refid="classendstone_1_1Color" kind="class"><name>endstone::Color</name>
     <member refid="classendstone_1_1Color_1a7c5e7653a0ede9a6e5da415ac93bcf51" kind="variable"><name>BIT_MASK</name></member>
     <member refid="classendstone_1_1Color_1a3c2563e89f8f1961ce3a41fa99f5f637" kind="variable"><name>DEFAULT_ALPHA</name></member>
@@ -479,6 +494,11 @@
     <member refid="classendstone_1_1Dimension_1a59ce26e75b00ffc1b6a3dff6ab35331c" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1aaf801dc0b5f2d696178b5770d7466d79" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" kind="function"><name>getLoadedChunks</name></member>
+  </compound>
+  <compound refid="classendstone_1_1DimensionEvent" kind="class"><name>endstone::DimensionEvent</name>
+    <member refid="classendstone_1_1DimensionEvent_1a06fb7621f6fd742856ae7b24537365d7" kind="variable"><name>dimension_</name></member>
+    <member refid="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" kind="function"><name>DimensionEvent</name></member>
+    <member refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" kind="function"><name>getDimension</name></member>
   </compound>
   <compound refid="classendstone_1_1Divider" kind="class"><name>endstone::Divider</name>
     <member refid="classendstone_1_1Divider_1a8a5122832b87ae7c59cb6786e9d3c8d1" kind="function"><name>Divider</name></member>
@@ -792,6 +812,11 @@
     <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" kind="function"><name>setTime</name></member>
     <member refid="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" kind="function"><name>getDimensions</name></member>
     <member refid="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" kind="function"><name>getDimension</name></member>
+  </compound>
+  <compound refid="classendstone_1_1LevelEvent" kind="class"><name>endstone::LevelEvent</name>
+    <member refid="classendstone_1_1LevelEvent_1ab3a3f5c2858709f045ea2195567b7892" kind="variable"><name>level_</name></member>
+    <member refid="classendstone_1_1LevelEvent_1a75f2817cfb11480dedbf70c1d3ddc162" kind="function"><name>LevelEvent</name></member>
+    <member refid="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" kind="function"><name>getLevel</name></member>
   </compound>
   <compound refid="classendstone_1_1Location" kind="class"><name>endstone::Location</name>
     <member refid="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" kind="variable"><name>pitch_</name></member>
@@ -1293,6 +1318,11 @@
     <member refid="classendstone_1_1PlayerMoveEvent_1a8917f8be7ae5bdeb109e58ddc7d3b723" kind="function"><name>setFrom</name></member>
     <member refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1PlayerMoveEvent_1a733ae2307c00ed312652389f1e26317f" kind="function"><name>setTo</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerPickupItemEvent" kind="class"><name>endstone::PlayerPickupItemEvent</name>
+    <member refid="classendstone_1_1PlayerPickupItemEvent_1a8e50badda8428e17c4fcefb0f4cece8b" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerPickupItemEvent_1a1e5e6b2de33ea9564c6db057f4e366e2" kind="function"><name>PlayerPickupItemEvent</name></member>
+    <member refid="classendstone_1_1PlayerPickupItemEvent_1a7e07078e045c11f522375157447cceb8" kind="function"><name>getItem</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerQuitEvent" kind="class"><name>endstone::PlayerQuitEvent</name>
     <member refid="classendstone_1_1PlayerQuitEvent_1a9a422070fcabd4719e3c1711af48fbcb" kind="variable"><name>NAME</name></member>
@@ -1994,6 +2024,12 @@
   </compound>
   <compound refid="cancellable_8h" kind="file"><name>cancellable.h</name>
   </compound>
+  <compound refid="chunk__event_8h" kind="file"><name>chunk_event.h</name>
+  </compound>
+  <compound refid="chunk__load__event_8h" kind="file"><name>chunk_load_event.h</name>
+  </compound>
+  <compound refid="chunk__unload__event_8h" kind="file"><name>chunk_unload_event.h</name>
+  </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
     <member refid="event_8h_1a80b507d6ebc2a0dd5db7cabd52a9790f" kind="define"><name>ENDSTONE_EVENT</name></member>
   </compound>
@@ -2002,6 +2038,10 @@
   <compound refid="event__priority_8h" kind="file"><name>event_priority.h</name>
   </compound>
   <compound refid="handler__list_8h" kind="file"><name>handler_list.h</name>
+  </compound>
+  <compound refid="dimension__event_8h" kind="file"><name>dimension_event.h</name>
+  </compound>
+  <compound refid="level__event_8h" kind="file"><name>level_event.h</name>
   </compound>
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>
@@ -2032,6 +2072,8 @@
   <compound refid="player__login__event_8h" kind="file"><name>player_login_event.h</name>
   </compound>
   <compound refid="player__move__event_8h" kind="file"><name>player_move_event.h</name>
+  </compound>
+  <compound refid="player__pickup__item__event_8h" kind="file"><name>player_pickup_item_event.h</name>
   </compound>
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
   </compound>
@@ -2223,6 +2265,8 @@
   </compound>
   <compound refid="dir_d0a7fd8d5b72659767e2a2651b1ff51c" kind="dir"><name>include/endstone/boss</name>
   </compound>
+  <compound refid="dir_7eabd153c13720ffd29490c98a6f4dde" kind="dir"><name>include/endstone/event/chunk</name>
+  </compound>
   <compound refid="dir_5c7b2dbfabcd1115569d1e20a260545c" kind="dir"><name>include/endstone/command</name>
   </compound>
   <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
@@ -2242,6 +2286,8 @@
   <compound refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c" kind="dir"><name>include/endstone/inventory</name>
   </compound>
   <compound refid="dir_cd2600a5c389b96acc106cf97f774d1c" kind="dir"><name>include/endstone/lang</name>
+  </compound>
+  <compound refid="dir_9972879ee1a1ab85aef1f41c76fb712c" kind="dir"><name>include/endstone/event/level</name>
   </compound>
   <compound refid="dir_8e239ca1e5fd0d936d66a30330d3a329" kind="dir"><name>include/endstone/level</name>
   </compound>
