@@ -34,20 +34,20 @@ void Level::tick()
                 [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, symbol, this); });
 }
 
-void Level::onChunkDiscarded(LevelChunk &lc)
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
-    endstone::ChunkUnloadEvent e{*es_chunk};
-    server.getPluginManager().callEvent(e);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Level::onChunkDiscarded, this, lc);
-}
-
-void Level::onChunkLoaded(ChunkSource &source, LevelChunk &lc)
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
-    endstone::ChunkLoadEvent e{*es_chunk};
-    server.getPluginManager().callEvent(e);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Level::onChunkLoaded, this, source, lc);
-}
+// void Level::onChunkDiscarded(LevelChunk &lc)
+// {
+//     auto &server = entt::locator<EndstoneServer>::value();
+//     auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
+//     endstone::ChunkUnloadEvent e{*es_chunk};
+//     server.getPluginManager().callEvent(e);
+//     ENDSTONE_HOOK_CALL_ORIGINAL(&Level::onChunkDiscarded, this, lc);
+// }
+//
+// void Level::onChunkLoaded(ChunkSource &source, LevelChunk &lc)
+// {
+//     auto &server = entt::locator<EndstoneServer>::value();
+//     auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
+//     endstone::ChunkLoadEvent e{*es_chunk};
+//     server.getPluginManager().callEvent(e);
+//     ENDSTONE_HOOK_CALL_ORIGINAL(&Level::onChunkLoaded, this, source, lc);
+// }
