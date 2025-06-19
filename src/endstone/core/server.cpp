@@ -80,11 +80,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     }
 }
 
-EndstoneServer::~EndstoneServer()
-{
-    py::gil_scoped_acquire acquire{};
-    disablePlugins();
-}
+EndstoneServer::~EndstoneServer() = default;
 
 void EndstoneServer::init(ServerInstance &server_instance)
 {
