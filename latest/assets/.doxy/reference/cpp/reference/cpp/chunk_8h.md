@@ -36,6 +36,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Chunk**](classendstone_1_1Chunk.md) <br>_Represents a chunk of blocks._  |
+| struct | [**formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md) &lt;&gt;<br> |
 
 
 

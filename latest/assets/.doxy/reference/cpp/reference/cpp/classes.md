@@ -131,6 +131,8 @@
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md)
 ([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md)
+([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md)
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md)
