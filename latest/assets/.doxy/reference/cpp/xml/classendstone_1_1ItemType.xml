@@ -54,9 +54,9 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_type.h" line="40" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemType_1a2ae9fbf37fc199b2f531df4139e5a327" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::string_view</type>
-        <definition>virtual std::string_view endstone::ItemType::getTranslationKey</definition>
+      <memberdef kind="function" id="classendstone_1_1ItemType_1a2e673b2a8d514e0d5697d5c15bee9e3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::ItemType::getTranslationKey</definition>
         <argsstring>() const =0</argsstring>
         <name>getTranslationKey</name>
         <qualifiedname>endstone::ItemType::getTranslationKey</qualifiedname>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="47" column="31"/>
+        <location file="include/endstone/inventory/item_type.h" line="47" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -228,7 +228,7 @@
       <member refid="classendstone_1_1ItemType_1ac6e624e2ada4e0b00e649da7eef9c895" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getKey</name></member>
       <member refid="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getMaxDurability</name></member>
       <member refid="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getMaxStackSize</name></member>
-      <member refid="classendstone_1_1ItemType_1a2ae9fbf37fc199b2f531df4139e5a327" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1ItemType_1a2e673b2a8d514e0d5697d5c15bee9e3c" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getTranslationKey</name></member>
       <member refid="classendstone_1_1ItemType_1af744ff14c9521369c6935eb8993d640f" prot="public" virt="non-virtual"><scope>endstone::ItemType</scope><name>operator!=</name></member>
       <member refid="classendstone_1_1ItemType_1a81b1aeb108d98457a98c801207b92f21" prot="public" virt="non-virtual"><scope>endstone::ItemType</scope><name>operator!=</name></member>
       <member refid="classendstone_1_1ItemType_1a30a71758b6797ce64715172fbc187e7f" prot="public" virt="non-virtual"><scope>endstone::ItemType</scope><name>operator==</name></member>

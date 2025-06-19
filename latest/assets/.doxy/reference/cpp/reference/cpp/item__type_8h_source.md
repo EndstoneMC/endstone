@@ -36,7 +36,7 @@ public:
 
     [[nodiscard]] virtual NamespacedKey getKey() const = 0;
 
-    [[nodiscard]] virtual std::string_view getTranslationKey() const = 0;
+    [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 

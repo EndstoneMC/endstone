@@ -56,7 +56,7 @@ _Represents an item type._
 | virtual [**NamespacedKey**](classendstone_1_1NamespacedKey.md) | [**getKey**](#function-getkey) () const = 0<br>_Return the namespaced identifier of this item type._  |
 | virtual int | [**getMaxDurability**](#function-getmaxdurability) () const = 0<br>_Gets the maximum durability of this item type._  |
 | virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Gets the maximum amount of this item type that can be held in a stack._  |
-| virtual std::string\_view | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
+| virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 |  bool | [**operator!=**](#function-operator) (const std::string\_view other) const<br> |
 |  bool | [**operator!=**](#function-operator_1) (const [**ItemType**](classendstone_1_1ItemType.md) & other) const<br> |
 |  bool | [**operator==**](#function-operator_2) (const std::string\_view other) const<br> |
@@ -204,7 +204,7 @@ Maximum stack size for this item type
 
 _Get the translation key, suitable for use in a translation component._ 
 ```C++
-virtual std::string_view endstone::ItemType::getTranslationKey () const = 0
+virtual std::string endstone::ItemType::getTranslationKey () const = 0
 ```
 
 

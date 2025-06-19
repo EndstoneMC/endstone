@@ -758,7 +758,7 @@
     <member refid="classendstone_1_1ItemType_1a0d214cfa5e07bd5310b1ad134f873bc7" kind="function"><name>~ItemType</name></member>
     <member refid="classendstone_1_1ItemType_1a56424331592c8d52c505a381ff15480d" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1ItemType_1ac6e624e2ada4e0b00e649da7eef9c895" kind="function"><name>getKey</name></member>
-    <member refid="classendstone_1_1ItemType_1a2ae9fbf37fc199b2f531df4139e5a327" kind="function"><name>getTranslationKey</name></member>
+    <member refid="classendstone_1_1ItemType_1a2e673b2a8d514e0d5697d5c15bee9e3c" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" kind="function"><name>getMaxStackSize</name></member>
     <member refid="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" kind="function"><name>getMaxDurability</name></member>
     <member refid="classendstone_1_1ItemType_1a30a71758b6797ce64715172fbc187e7f" kind="function"><name>operator==</name></member>
