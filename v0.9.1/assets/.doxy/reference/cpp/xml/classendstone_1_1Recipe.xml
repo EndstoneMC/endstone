@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Recipe" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Recipe</compoundname>
+    <includes refid="recipe_8h" local="no">endstone/inventory/recipe.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Recipe::~Recipe</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Recipe</name>
+        <qualifiedname>endstone::Recipe::~Recipe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/recipe.h" line="25" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Recipe_1a9aa7cfa8bcb947ef1a0ad139ee68df1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; ItemStack &gt; endstone::Recipe::getResult</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getResult</name>
+        <qualifiedname>endstone::Recipe::getResult</qualifiedname>
+        <briefdescription>
+<para>Get the result of this recipe. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The result stack </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/recipe.h" line="32" column="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents some type of crafting recipe. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/inventory/recipe.h" line="23" column="1" bodyfile="include/endstone/inventory/recipe.h" bodystart="23" bodyend="33"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Recipe_1a9aa7cfa8bcb947ef1a0ad139ee68df1e" prot="public" virt="pure-virtual"><scope>endstone::Recipe</scope><name>getResult</name></member>
+      <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" prot="public" virt="virtual"><scope>endstone::Recipe</scope><name>~Recipe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
