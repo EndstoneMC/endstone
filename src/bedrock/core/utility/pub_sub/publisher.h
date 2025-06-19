@@ -35,8 +35,8 @@ public:
 
 private:
     using FunctionType = typename Connector<Signature>::FunctionType;
-    virtual Subscription _connectInternal(FunctionType &&fn, ConnectPosition at, ContextType &&context,
-                                          std::optional<int> group);
+    Subscription _connectInternal(FunctionType &&fn, ConnectPosition at, ContextType &&context,
+                                  std::optional<int> group) override;
 };
 
 template <typename Signature, typename ThreadingModel>
