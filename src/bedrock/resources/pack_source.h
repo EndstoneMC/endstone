@@ -30,7 +30,7 @@ using PackSourcePacks = std::vector<gsl::not_null<std::shared_ptr<Pack>>>;
 
 struct PackSourceOptions {
     PackSourceOptions() = default;
-    PackSourceOptions(std::unique_ptr<IPackIOProvider> io) : io(std::move(io)){};
+    PackSourceOptions(std::unique_ptr<IPackIOProvider> io) : io(std::move(io)) {};
     PackSourceOptions(PackSourceOptions &&) noexcept = default;
     std::unique_ptr<IPackIOProvider> io;
 };
@@ -83,7 +83,12 @@ private:
     PackSourceReport report_;
 };
 
+struct DirectoryPackSourceOptions;
+
 class DirectoryPackSource : public PackSource {
+public:
+    DirectoryPackSource(DirectoryPackSourceOptions);
+
 private:
     Core::HeapPathBuffer path_;
     const PackType pack_type_;

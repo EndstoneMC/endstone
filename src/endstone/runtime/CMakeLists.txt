@@ -50,6 +50,7 @@ add_library(endstone_runtime SHARED
         windows.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
+set_target_properties(endstone_runtime PROPERTIES COMPILE_WARNING_AS_ERROR ON)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
 if (MSVC)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
