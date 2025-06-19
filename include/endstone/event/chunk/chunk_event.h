@@ -14,8 +14,7 @@
 
 #pragma once
 
-#include "endstone/event/event.h"
-#include "endstone/event/world/world_event.h"
+#include "endstone/event/level/dimension_event.h"
 #include "endstone/level/chunk.h"
 
 namespace endstone {
@@ -23,10 +22,9 @@ namespace endstone {
 /**
  * @brief Represents a Chunk related event
  */
-class ChunkEvent : public WorldEvent {
+class ChunkEvent : public DimensionEvent {
 public:
-    explicit ChunkEvent(Chunk &chunk) : WorldEvent(chunk.getDimension()), chunk_(chunk) {};
-    ~ChunkEvent() override = default;
+    explicit ChunkEvent(Chunk &chunk) : DimensionEvent(chunk.getDimension()), chunk_(chunk){};
 
     /**
      * Gets the chunk being loaded/unloaded
