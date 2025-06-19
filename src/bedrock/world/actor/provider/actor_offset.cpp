@@ -12,33 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/item_type.h"
+#include "bedrock/world/actor/provider/actor_offset.h"
 
-namespace endstone::core {
+#include "bedrock/world/actor/provider/actor_entity_access.h"
 
-std::string_view EndstoneItemType::getId() const
+float ActorOffset::getHeightOffset(const EntityContext &entity)
 {
-    return item_.getFullItemName();
+    return ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset;
 }
 
-NamespacedKey EndstoneItemType::getKey() const
+void ActorOffset::setHeightOffset(EntityContext &entity, float height_offset)
 {
-    return key_;
+    ActorEntityAccess::getPersistentComponent<OffsetsComponent>(entity)->height_offset = height_offset;
 }
-
-std::string EndstoneItemType::getTranslationKey() const
-{
-    return item_.buildDescriptionId(ItemDescriptor(item_, 0), nullptr);
-}
-
-int EndstoneItemType::getMaxStackSize() const
-{
-    return item_.getMaxStackSize(ItemDescriptor(item_, 0));
-}
-
-int EndstoneItemType::getMaxDurability() const
-{
-    return item_.getMaxDamage();
-}
-
-}  // namespace endstone::core

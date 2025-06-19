@@ -241,8 +241,8 @@ public:
     virtual void createPhotoStorage() = 0;
     virtual void *getPhotoManager() = 0;
     [[nodiscard]] virtual void *getPhotoManager() const = 0;
-    virtual void setEducationLevelSettings(EducationLevelSettings) = 0;
-    [[nodiscard]] virtual std::optional<EducationLevelSettings> const &getEducationLevelSettings() const = 0;
+    // virtual void setEducationLevelSettings(EducationLevelSettings) = 0;
+    // [[nodiscard]] virtual std::optional<EducationLevelSettings> const &getEducationLevelSettings() const = 0;
     virtual void *getEducationSettingsManager() = 0;
     [[nodiscard]] virtual void *getEducationSettingsManager() const = 0;
     virtual void save() = 0;
@@ -425,7 +425,7 @@ public:
     [[nodiscard]] virtual PermissionsHandler const &getDefaultPermissions() const = 0;
     [[nodiscard]] virtual bool getTearingDown() const = 0;
     virtual void takePicture(cg::ImageBuffer &, Actor *, Actor *, ScreenshotOptions &) = 0;
-    virtual Bedrock::NonOwnerPointer<LevelSoundManager> getLevelSoundManager() = 0;
+    virtual LevelSoundManager &getLevelSoundManager() = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<SoundPlayerInterface> getSoundPlayer() const = 0;
     virtual void setSimPaused(bool) = 0;
     virtual bool getSimPaused() = 0;

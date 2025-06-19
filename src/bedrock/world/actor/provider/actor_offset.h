@@ -12,33 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/item_type.h"
+#pragma once
+#include "bedrock/entity/components/offsets_component.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 
-namespace endstone::core {
-
-std::string_view EndstoneItemType::getId() const
-{
-    return item_.getFullItemName();
-}
-
-NamespacedKey EndstoneItemType::getKey() const
-{
-    return key_;
-}
-
-std::string EndstoneItemType::getTranslationKey() const
-{
-    return item_.buildDescriptionId(ItemDescriptor(item_, 0), nullptr);
-}
-
-int EndstoneItemType::getMaxStackSize() const
-{
-    return item_.getMaxStackSize(ItemDescriptor(item_, 0));
-}
-
-int EndstoneItemType::getMaxDurability() const
-{
-    return item_.getMaxDamage();
-}
-
-}  // namespace endstone::core
+namespace ActorOffset {
+void initializeActor(EntityContext &);
+void initializePlayer(EntityContext &);
+float getHeightOffset(const EntityContext &entity);
+void setHeightOffset(EntityContext &entity, float height_offset);
+void setExplosionOffset(EntityContext &, float);
+Vec3 getHeadOffset(const EntityContext &);
+Vec3 getEyeOffset(const EntityContext &);
+void setEyeOffset(EntityContext &, const Vec3 &);
+void setBreathingOffset(EntityContext &, const Vec3 &);
+}  // namespace ActorOffset

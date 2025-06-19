@@ -12,33 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/item_type.h"
+#pragma once
 
-namespace endstone::core {
+#include "bedrock/entity/components/strict_actor_id_entity_context_pair.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 
-std::string_view EndstoneItemType::getId() const
+namespace ActorEntityAccess {
+template <typename T>
+gsl::not_null<const T *> getPersistentComponent(const EntityContext &entity)
 {
-    return item_.getFullItemName();
+    return entity.tryGetComponent<T>();
 }
 
-NamespacedKey EndstoneItemType::getKey() const
+template <typename T>
+gsl::not_null<T *> getPersistentComponent(EntityContext &entity)
 {
-    return key_;
+    return entity.tryGetComponent<T>();
 }
-
-std::string EndstoneItemType::getTranslationKey() const
-{
-    return item_.buildDescriptionId(ItemDescriptor(item_, 0), nullptr);
-}
-
-int EndstoneItemType::getMaxStackSize() const
-{
-    return item_.getMaxStackSize(ItemDescriptor(item_, 0));
-}
-
-int EndstoneItemType::getMaxDurability() const
-{
-    return item_.getMaxDamage();
-}
-
-}  // namespace endstone::core
+}  // namespace ActorEntityAccess

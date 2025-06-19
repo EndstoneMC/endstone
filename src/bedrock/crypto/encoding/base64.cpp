@@ -12,33 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/item_type.h"
+#include "bedrock/crypto/encoding/base64.h"
 
-namespace endstone::core {
+#include <libbase64.h>
 
-std::string_view EndstoneItemType::getId() const
+namespace Util {
+std::string base64_decode(const std::string &input)
 {
-    return item_.getFullItemName();
+    std::string output;
+    output.reserve(input.size() * 3 / 4);
+    std::size_t decoded_size;
+    ::base64_decode(input.data(), input.size(), output.data(), &decoded_size, 0);
+    output.resize(decoded_size);
+    return output;
 }
-
-NamespacedKey EndstoneItemType::getKey() const
-{
-    return key_;
-}
-
-std::string EndstoneItemType::getTranslationKey() const
-{
-    return item_.buildDescriptionId(ItemDescriptor(item_, 0), nullptr);
-}
-
-int EndstoneItemType::getMaxStackSize() const
-{
-    return item_.getMaxStackSize(ItemDescriptor(item_, 0));
-}
-
-int EndstoneItemType::getMaxDurability() const
-{
-    return item_.getMaxDamage();
-}
-
-}  // namespace endstone::core
+}  // namespace Util

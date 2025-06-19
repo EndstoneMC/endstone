@@ -42,8 +42,8 @@ class PlayerRespawnRandomizer;
 class Player : public Mob {
 public:
     Player(Level &, PacketSender &, GameType, bool, const NetworkIdentifier &, SubClientId, mce::UUID,
-           const std::string &, const std::string &, std::unique_ptr<Certificate>, EntityContext &, const std::string &,
-           const std::string &);
+           const std::string &, const std::string &, PlayerAuthenticationType, const PlayerAuthenticationInfo &,
+           EntityContext &, const std::string &, const std::string &);
 
     ~Player() override = 0;
     ENDSTONE_HOOK void teleportTo(const Vec3 &, bool, int, int, bool) override;

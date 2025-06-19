@@ -12,33 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/item_type.h"
+#pragma once
 
-namespace endstone::core {
+#include <string>
 
-std::string_view EndstoneItemType::getId() const
-{
-    return item_.getFullItemName();
-}
-
-NamespacedKey EndstoneItemType::getKey() const
-{
-    return key_;
-}
-
-std::string EndstoneItemType::getTranslationKey() const
-{
-    return item_.buildDescriptionId(ItemDescriptor(item_, 0), nullptr);
-}
-
-int EndstoneItemType::getMaxStackSize() const
-{
-    return item_.getMaxStackSize(ItemDescriptor(item_, 0));
-}
-
-int EndstoneItemType::getMaxDurability() const
-{
-    return item_.getMaxDamage();
-}
-
-}  // namespace endstone::core
+enum class ScoreboardOperationResult : uint8_t {
+    Success = 0,
+    IntegerOverflow = 1,
+    ReadOnlyCriteria = 2,
+    UnknownId = 3,
+    UnknownOperator = 4,
+};

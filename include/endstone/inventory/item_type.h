@@ -44,7 +44,7 @@ public:
      *
      * @return the translation key
      */
-    [[nodiscard]] virtual std::string_view getTranslationKey() const = 0;
+    [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     /**
      * @brief Gets the maximum amount of this item type that can be held in a stack

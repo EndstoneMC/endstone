@@ -136,7 +136,7 @@ public:
     virtual bool canDisableShield() = 0;
     ENDSTONE_HOOK virtual void teleportTo(Vec3 const &, bool, int, int, bool) = 0;
     virtual Vec3 lerpMotion(Vec3 const &) = 0;
-    virtual std::unique_ptr<AddActorBasePacket> tryCreateAddActorPacket() = 0;
+    virtual std::unique_ptr<Packet> tryCreateAddActorPacket() = 0;
     virtual void normalTick() = 0;
     virtual void baseTick() = 0;
     virtual void passengerTick() = 0;

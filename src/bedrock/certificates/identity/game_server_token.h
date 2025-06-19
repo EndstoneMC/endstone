@@ -17,6 +17,9 @@
 #include <memory>
 
 #include "bedrock/certificates/certificate.h"
+#include "bedrock/util/new_type.h"
+
+struct RawGameServerToken : NewType<std::string> {};
 
 class GameServerToken {
 public:
@@ -28,25 +31,18 @@ public:
     GameServerToken();
     GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
-    [[nodiscard]] std::string getXuid(bool trust_self_signed) const
-    {
-        if (!isValid() || (!trust_self_signed && certificate_->isSelfSigned())) {
-            return "";
-        }
-        return certificate_->getExtraData("XUID", {}).asString();
-    }
+    [[nodiscard]] std::string getXuid(bool trust_self_signed) const;
 
     operator bool() const
     {
         return isValid();
     }
 
-    [[nodiscard]] bool isValid() const
-    {
-        return certificate_ && certificate_->isValid();
-    }
+    [[nodiscard]] bool isValid() const;
 
 protected:
-    GameServerToken(std::unique_ptr<Certificate>, bool);
-    std::unique_ptr<Certificate> certificate_;  // +0
+    GameServerToken(const std::string &);
+    bool is_self_signed_;
+    bool is_valid_;
+    WebToken raw_token_;
 };
