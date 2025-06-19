@@ -19,6 +19,7 @@
 #include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/level_events.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/weather/thunder_change_event.h"
@@ -29,10 +30,11 @@ namespace {
 bool handleEvent(const LevelAddedActorEvent &event)
 {
     if (auto *actor = WeakEntityRef(event.actor).tryUnwrap<::Actor>(); actor && !actor->isPlayer()) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::ActorSpawnEvent e{actor->getEndstoneActor()};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
+            actor->addOrRemoveComponent<endstone::core::JustSpawnedFlagComponent>(true);
             actor->despawn();
         }
     }

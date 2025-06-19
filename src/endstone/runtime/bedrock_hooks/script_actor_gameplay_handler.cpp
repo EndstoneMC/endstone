@@ -16,6 +16,7 @@
 
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/damage/damage_source.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_death_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
@@ -35,10 +36,20 @@ bool handleEvent(const ActorKilledEvent &event)
 
 bool handleEvent(const ActorRemovedEvent &event)
 {
-    if (const auto *actor = WeakEntityRef(event.entity).tryUnwrap<::Actor>(); actor && !actor->isPlayer()) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    if (auto *actor = WeakEntityRef(event.entity).tryUnwrap<::Actor>(); actor) {
+        if (actor->isPlayer()) {
+            // Don't call for player
+            return true;
+        }
+
+        if (actor->hasComponent<endstone::core::JustSpawnedFlagComponent>()) {
+            // Don't call if the entity is removed before it is even spawned (when the spawn event is cancelled)
+            actor->addOrRemoveComponent<endstone::core::JustSpawnedFlagComponent>(false);
+            return true;
+        }
+
         endstone::ActorRemoveEvent e{actor->getEndstoneActor()};
-        server.getPluginManager().callEvent(e);
+        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
     }
     return true;
 }
