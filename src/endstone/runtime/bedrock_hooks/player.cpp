@@ -18,11 +18,13 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/world/actor/item/item_actor.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
+#include "endstone/event/player/player_pickup_item_event.h"
 #include "endstone/event/player/player_teleport_event.h"
 #include "endstone/runtime/hook.h"
 
@@ -74,4 +76,24 @@ bool Player::drop(const ItemStack &item, bool randomly)
         }
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::drop, this, item, randomly);
+}
+
+bool Player::take(Actor &actor, int unknown, int favored_slot)
+{
+    if (isClientSide() || !canInteractWithOtherEntitiesInGame()) {
+        return false;
+    }
+
+    if (actor.hasCategory(ActorCategory::Item)) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
+        const auto &item_stack = static_cast<ItemActor &>(actor).getItemStack();
+        const auto item = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
+        endstone::PlayerPickupItemEvent e(player, *item);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::take, this, actor, unknown, favored_slot);
 }

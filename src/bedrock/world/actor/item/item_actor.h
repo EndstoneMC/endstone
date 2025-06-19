@@ -56,7 +56,6 @@ public:
     bool isInItemFrame();
     bool isFromFishing() const;
     void setSourceEntity(const Actor *);
-    void setThrowTime(int throw_time);  // Endstone
     static ItemActor *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
 private:

@@ -1,4 +1,4 @@
-timestamp = 1750290368
+timestamp = 1750351493
 version = "1.21.91"
 
 [windows]
@@ -64,6 +64,7 @@ version = "1.21.91"
 # Player
 "?completeUsingItem@Player@@QEAAXXZ" = 42825456
 "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 42883600
+"?take@Player@@QEAA_NAEAVActor@@HH@Z" = 42849600
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 42802800
 "?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z" = 42807184
 "?stopSleepInBed@Player@@UEAAX_N0@Z" = 42810976
@@ -164,6 +165,7 @@ version = "1.21.91"
 # Player
 "_ZN6Player17completeUsingItemEv" = 136135552
 "_ZN6Player4dropERK9ItemStackb" = 136209888
+"_ZN6Player4takeER5Actorii" = 136168336
 "_ZN6Player10teleportToERK4Vec3biib" = 136116576
 "_ZN6Player15startSleepInBedERK8BlockPos" = 136120176
 "_ZN6Player14stopSleepInBedEbb" = 136123184

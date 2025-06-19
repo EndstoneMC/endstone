@@ -49,6 +49,7 @@ public:
     ENDSTONE_HOOK void teleportTo(const Vec3 &, bool, int, int, bool) override;
     ENDSTONE_HOOK void completeUsingItem();
     ENDSTONE_HOOK bool drop(const ItemStack &item, bool randomly) override;
+    ENDSTONE_HOOK bool take(Actor &actor, int, int favored_slot);
 
     virtual void prepareRegion(ChunkSource &) = 0;
     virtual void destroyRegion() = 0;
