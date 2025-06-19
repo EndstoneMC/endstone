@@ -50,8 +50,3 @@ ItemActor *ItemActor::tryGetFromEntity(EntityContext &entity, bool include_remov
     }
     return static_cast<ItemActor *>(actor);
 }
-
-int ItemActor::getPickUpDelay() const
-{
-    return pickup_delay_;
-}
