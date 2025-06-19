@@ -78,18 +78,22 @@ bool Player::drop(const ItemStack &item, bool randomly)
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::drop, this, item, randomly);
 }
 
-bool Player::take(Actor &actor, int orgCount, int favoredSlot)
+bool Player::take(Actor &actor, int unknown, int favored_slot)
 {
+    if (isClientSide() || !canInteractWithOtherEntitiesInGame()) {
+        return false;
+    }
+
     if (actor.hasCategory(ActorCategory::Item)) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-        const auto &ori_item = static_cast<ItemActor &>(actor).getItemStack();
-        const auto item = endstone::core::EndstoneItemStack::fromMinecraft(ori_item);
+        const auto &item_stack = static_cast<ItemActor &>(actor).getItemStack();
+        const auto item = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
         endstone::PlayerPickupItemEvent e(player, *item);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
         }
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::take, this, actor, orgCount, favoredSlot);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::take, this, actor, unknown, favored_slot);
 }
