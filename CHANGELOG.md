@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.9.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.1) - 2025-06-19
+
+<small>[Compare with 0.9.0](https://github.com/EndstoneMC/endstone/compare/v0.9.0...v0.9.1)</small>
+
+### Added
+
+- Added support for BDS version 1.21.91.1.
+
+### Fixed
+
+- `ItemType::getTranslationKey` now returns the correct translation key.
+
 ## [0.9.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.0) - 2025-06-17
 
 <small>[Compare with 0.8.2](https://github.com/EndstoneMC/endstone/compare/v0.8.2...v0.9.0)</small>
