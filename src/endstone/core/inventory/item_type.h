@@ -25,7 +25,7 @@ public:
     EndstoneItemType(NamespacedKey key, const ::Item &item) : key_(std::move(key)), item_(item) {}
     [[nodiscard]] std::string_view getId() const override;
     [[nodiscard]] NamespacedKey getKey() const override;
-    [[nodiscard]] std::string_view getTranslationKey() const override;
+    [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] int getMaxDurability() const override;
 

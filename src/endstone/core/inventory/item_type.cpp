@@ -26,9 +26,9 @@ NamespacedKey EndstoneItemType::getKey() const
     return key_;
 }
 
-std::string_view EndstoneItemType::getTranslationKey() const
+std::string EndstoneItemType::getTranslationKey() const
 {
-    return item_.getDescriptionId();
+    return item_.buildDescriptionId(ItemDescriptor(item_, 0), nullptr);
 }
 
 int EndstoneItemType::getMaxStackSize() const
