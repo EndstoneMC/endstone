@@ -45,8 +45,4 @@ Dimension &EndstoneChunk::getDimension() const
     return dimension_.getEndstoneDimension();
 }
 
-std::unique_ptr<EndstoneChunk> EndstoneChunk::fromMinecraft(const LevelChunk &lc)
-{
-    return std::make_unique<EndstoneChunk>(lc);
-}
 }  // namespace endstone::core

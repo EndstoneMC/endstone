@@ -27,8 +27,6 @@ public:
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] Dimension &getDimension() const override;
 
-    static std::unique_ptr<EndstoneChunk> fromMinecraft(const LevelChunk &lc);
-
 private:
     ::Dimension &dimension_;
     int x_;

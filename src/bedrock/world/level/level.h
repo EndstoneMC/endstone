@@ -20,8 +20,6 @@
 namespace endstone::core {
 class EndstoneServer;
 }
-class ChunkSource;
-class LevelChunk;
 
 class Level : public ILevel {
 public:
@@ -47,7 +45,4 @@ public:
 protected:
     virtual void _initializeMapDataManager() = 0;
     friend class endstone::core::EndstoneServer;
-
-private:
-    ENDSTONE_HOOK void _onChunkLoaded(ChunkSource &, LevelChunk &, int);
 };
