@@ -15,30 +15,29 @@
 #pragma once
 
 #include "endstone/event/event.h"
-#include "endstone/level/dimension.h"
+#include "endstone/level/level.h"
 
 namespace endstone {
 
 /**
- * @brief Represents events within a world
+ * @brief Represents events within a level
  */
-class WorldEvent : public Event {
+class LevelEvent : public Event {
 public:
-    explicit WorldEvent(Dimension &dimension) : dimension_(dimension) {};
-    ~WorldEvent() override = default;
+    explicit LevelEvent(Level &level) : level_(level){};
 
     /**
-     * Gets the world primarily involved with this event
+     * Gets the level primarily involved with this event
      *
-     * @return World which caused this event
+     * @return Level which caused this event
      */
-    [[nodiscard]] Dimension &getDimension() const
+    [[nodiscard]] Level &getLevel() const
     {
-        return dimension_;
+        return level_;
     }
 
 private:
-    Dimension &dimension_;
+    Level &level_;
 };
 
 }  // namespace endstone
