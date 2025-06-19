@@ -42,9 +42,9 @@ bool handleEvent(const ActorRemovedEvent &event)
             return true;
         }
 
-        if (actor->hasComponent<endstone::core::JustSpawnedFlagComponent>()) {
+        if (actor->hasComponent<endstone::core::InternalRemoveFlagComponent>()) {
             // Don't call if the entity is removed before it is even spawned (when the spawn event is cancelled)
-            actor->addOrRemoveComponent<endstone::core::JustSpawnedFlagComponent>(false);
+            actor->addOrRemoveComponent<endstone::core::InternalRemoveFlagComponent>(false);
             return true;
         }
 

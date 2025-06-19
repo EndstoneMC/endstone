@@ -34,7 +34,7 @@ bool handleEvent(const LevelAddedActorEvent &event)
         endstone::ActorSpawnEvent e{actor->getEndstoneActor()};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
-            actor->addOrRemoveComponent<endstone::core::JustSpawnedFlagComponent>(true);
+            actor->addOrRemoveComponent<endstone::core::InternalRemoveFlagComponent>(true);
             actor->despawn();
         }
     }

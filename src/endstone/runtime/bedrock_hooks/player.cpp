@@ -19,6 +19,7 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/world/actor/item/item_actor.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -30,12 +31,20 @@
 
 void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    // Do not call PlayerTeleportEvent if EndstonePlayer::teleport was called internally
+    // - (for example, when PlayerMoveEvent is cancelled).
+    if (hasComponent<endstone::core::InternalTeleportFlagComponent>()) {
+        addOrRemoveComponent<endstone::core::InternalTeleportFlagComponent>(false);
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::teleportTo, this, pos, should_stop_riding, cause, entity_type,
+                                    keep_velocity);
+        return;
+    }
+
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
     const endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
     endstone::PlayerTeleportEvent e{player, player.getLocation(), to};
     server.getPluginManager().callEvent(e);
-
     if (e.isCancelled()) {
         return;
     }
