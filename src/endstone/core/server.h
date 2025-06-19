@@ -158,6 +158,8 @@ private:
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     bool allow_client_packs_ = false;
+    ::Bedrock::PubSub::Subscription on_chunk_load_subscription_;
+    ::Bedrock::PubSub::Subscription on_chunk_unload_subscription_;
 };
 
 }  // namespace endstone::core

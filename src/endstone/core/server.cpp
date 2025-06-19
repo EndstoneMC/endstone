@@ -15,6 +15,7 @@
 #include "endstone/core/server.h"
 
 #include <filesystem>
+#include <iostream>
 #include <memory>
 
 #include <boost/algorithm/string.hpp>
@@ -36,6 +37,7 @@
 #include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_type.h"
+#include "endstone/core/level/chunk.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -45,6 +47,8 @@
 #include "endstone/core/registry.h"
 #include "endstone/core/signal_handler.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/chunk/chunk_load_event.h"
+#include "endstone/event/chunk/chunk_unload_event.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
@@ -107,6 +111,23 @@ void EndstoneServer::setLevel(::Level &level)
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
+    on_chunk_load_subscription_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
+        [&](ChunkSource & /*chunk_source*/, LevelChunk &lc, int /*closest_player_distance_squared*/) -> void {
+            if (lc.getState() >= ChunkState::Loaded) {
+                const auto chunk = std::make_unique<EndstoneChunk>(lc);
+                ChunkLoadEvent e(*chunk);
+                getPluginManager().callEvent(e);
+            }
+        },
+        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+    on_chunk_unload_subscription_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
+        [&](LevelChunk &lc) -> void {
+            const auto chunk = std::make_unique<EndstoneChunk>(lc);
+            ChunkUnloadEvent e(*chunk);
+            getPluginManager().callEvent(e);
+        },
+        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     getPluginManager().callEvent(event);

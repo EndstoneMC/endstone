@@ -65,7 +65,9 @@ void init_level(py::module_ &m)
         .def_property_readonly("level", &Chunk::getLevel, "Gets the level containing this chunk",
                                py::return_value_policy::reference)
         .def_property_readonly("dimension", &Chunk::getDimension, "Gets the dimension containing this chunk",
-                               py::return_value_policy::reference);
+                               py::return_value_policy::reference)
+        .def("__repr__", [](const Chunk &self) { return fmt::format("{}", self); })
+        .def("__str__", [](const Chunk &self) { return fmt::format("{}", self); });
 
     py::enum_<Dimension::Type>(dimension, "Type", "Represents various dimension types.")
         .value("OVERWORLD", Dimension::Type::Overworld)
