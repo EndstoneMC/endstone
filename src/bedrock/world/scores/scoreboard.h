@@ -17,6 +17,8 @@
 #include <string>
 #include <unordered_map>
 
+#include "bedrock/core/hash/hash_types.h"
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/server/commands/command_soft_enum_registry.h"
 #include "bedrock/world/events/player_scoreboard_event_listener.h"
@@ -32,6 +34,10 @@ class Player;
 
 class Scoreboard {
 public:
+    static constexpr std::string DISPLAY_SLOT_LIST = "list";
+    static constexpr std::string DISPLAY_SLOT_SIDEBAR = "sidebar";
+    static constexpr std::string DISPLAY_SLOT_BELOWNAME = "belowname";
+
     virtual ~Scoreboard();
     virtual DisplayObjective const *setDisplayObjective(std::string const &, Objective const &, ObjectiveSortOrder) = 0;
     virtual Objective *clearDisplayObjective(std::string const &) = 0;
@@ -49,34 +55,67 @@ public:
     virtual void writeToLevelStorage() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
 
-    Objective *addObjective(const std::string &, const std::string &, const ObjectiveCriteria &criteria);
+    Objective *getObjective(const std::string &) const;
+    Objective *addObjective(const std::string &, const std::string &, const ObjectiveCriteria &);
     bool removeObjective(Objective *);
-    [[nodiscard]] Objective *getObjective(const std::string &name) const;
-    [[nodiscard]] const DisplayObjective *getDisplayObjective(const std::string &name) const;
-    [[nodiscard]] const ScoreboardId &getScoreboardId(const Player &player) const;
-    [[nodiscard]] const ScoreboardId &getScoreboardId(const Actor &actor) const;
-    [[nodiscard]] const ScoreboardId &getScoreboardId(const std::string &fake) const;
-    [[nodiscard]] bool hasIdentityFor(const ScoreboardId &id) const;
-    [[nodiscard]] ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &id);
-    [[nodiscard]] ObjectiveCriteria *getCriteria(const std::string &name) const;
-    void forEachObjective(std::function<void(Objective &)> callback) const;
-    void forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback) const;
-    void resetPlayerScore(const ScoreboardId &);
-    bool resetPlayerScore(const ScoreboardId &, Objective &);
-    int modifyPlayerScore(ScoreboardOperationResult &result, const ScoreboardId &, Objective &, int,
+    std::vector<const Objective *> getObjectives() const;
+    std::vector<Objective *> getObjectives();
+    std::vector<std::string> getObjectiveNames() const;
+    void forEachObjective(const std::function<void(Objective &)>);
+    const ObjectiveCriteria &createObjectiveCriteria(const std::string &, bool, ObjectiveRenderType);
+    ObjectiveCriteria *getCriteria(const std::string &) const;
+    const ObjectiveCriteria &getDefaultCriteria() const;
+    std::vector<std::string> getCriteriaNames() const;
+    const DisplayObjective *getDisplayObjective(const std::string &) const;
+    std::vector<std::string> getDisplayObjectiveSlotNames() const;
+    std::vector<ScoreboardId> getTrackedIds() const;
+    bool isObjectiveDisplayed(const Objective &) const;
+    std::vector<const DisplayObjective *> getAssociatedDisplaySlots(const Objective &) const;
+    int modifyPlayerScore(ScoreboardOperationResult &, ScoreboardIdentityRef *, Objective &, int,
                           PlayerScoreSetFunction);
+    int modifyPlayerScore(ScoreboardOperationResult &, const ScoreboardId &, Objective &, int, PlayerScoreSetFunction);
+    bool resetPlayerScore(const ScoreboardId &, Objective &);
+    void resetPlayerScore(const ScoreboardId &);
+    std::vector<PlayerScore> getDisplayInfoSorted(
+        const std::string &, const std::function<void(ObjectiveSortOrder, std::vector<PlayerScore> &)>) const;
+    std::vector<PlayerScore> getDisplayInfoFiltered(const std::string &) const;
+    std::optional<ScoreInfo> tryGetIdScore(const ScoreboardId &, const HashType64 &) const;
+    std::vector<ScoreInfo> getIdScores(const ScoreboardId &) const;
+    std::vector<ScoreboardIdentityRef> getScoreboardIdentityRefs() const;
+    void forEachIdentityRef(const std::function<void(ScoreboardIdentityRef &)>);
+    const ScoreboardId &getScoreboardId(const Actor &) const;
+    const ScoreboardId &getScoreboardId(const Player &) const;
+    const ScoreboardId &getScoreboardId(const PlayerScoreboardId &) const;
+    const ScoreboardId &getScoreboardId(const ActorUniqueID &) const;
+    const ScoreboardId &getScoreboardId(const std::string &) const;
+    bool hasIdentityFor(const ScoreboardId &) const;
+    size_t getNumTrackedIdentities() const;
+    ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &);
+    const ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &) const;
+    const ScoreboardIdentityRef &registerScoreboardIdentity(const ScoreboardId &, const PlayerScoreboardId &);
+    const ScoreboardIdentityRef &registerScoreboardIdentity(const ScoreboardId &, const ActorUniqueID &);
+    const ScoreboardIdentityRef &registerScoreboardIdentity(const ScoreboardId &, const std::string &);
+    const ScoreboardIdentityRef &registerScoreboardIdentity(const CompoundTag &);
     bool clearScoreboardIdentity(const ScoreboardId &);
+    bool shouldUpdateUI() const;
+    void onUpdateUI();
+    void replaceFakePlayer(const ScoreboardId &, const PlayerScoreboardId &);
+    void addScoreListener(Player &, const std::string &);
+    void removeScoreListener(const Player &, const std::string &);
+    ScoreboardEventCoordinator &getScoreboardEventCoordinator();
+
+protected:
+    CommandSoftEnumRegistry registry_;
+    std::unordered_map<std::string, DisplayObjective> display_objectives_;
+    IdentityDictionary identity_dictionary_;
+    std::unordered_map<ScoreboardId, ScoreboardIdentityRef> identity_refs_;
 
 private:
-    CommandSoftEnumRegistry registry_;                                                        // +8
-    std::unordered_map<std::string, DisplayObjective> display_objectives_;                    // +16
-    IdentityDictionary identity_dictionary_;                                                  // +80
-    std::unordered_map<ScoreboardId, ScoreboardIdentityRef> identity_refs_;                   // +336 (+216)
-    bool should_update_ui_;                                                                   // +400 (+256)
-    std::unordered_map<std::string, std::unique_ptr<Objective>> objectives_;                  // +408 (+264)
-    std::unordered_map<std::size_t, Bedrock::NonOwnerPointer<Objective>> objectives_lookup_;  // +472 (+304)
-    std::unordered_map<std::string, std::unique_ptr<ObjectiveCriteria>> criteria_;            // +536 (+344)
-    ScoreboardEventCoordinator scoreboard_event_coordinator_;                                 // +600 (+384)
-    PlayerScoreboardEventListener player_listener_;                                           // +712 (+504)
+    bool should_update_ui_;
+    std::unordered_map<std::string, std::unique_ptr<Objective>> objectives_;
+    std::unordered_map<std::size_t, Bedrock::NonOwnerPointer<Objective>> objectives_lookup_;
+    std::unordered_map<std::string, std::unique_ptr<ObjectiveCriteria>> criteria_;
+    ScoreboardEventCoordinator scoreboard_event_coordinator_;
+    PlayerScoreboardEventListener player_listener_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Scoreboard, 768, 536);

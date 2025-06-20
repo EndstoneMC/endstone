@@ -81,6 +81,11 @@ const DisplayObjective *Scoreboard::getDisplayObjective(const std::string &name)
     return &it->second;
 }
 
+std::vector<std::string> Scoreboard::getDisplayObjectiveSlotNames() const
+{
+    return {DISPLAY_SLOT_LIST, DISPLAY_SLOT_SIDEBAR, DISPLAY_SLOT_BELOWNAME};
+}
+
 const ScoreboardId &Scoreboard::getScoreboardId(const Player &player) const
 {
     return identity_dictionary_.getScoreboardId(PlayerScoreboardId{player.getOrCreateUniqueID()});
@@ -131,14 +136,14 @@ ObjectiveCriteria *Scoreboard::getCriteria(const std::string &name) const
     return nullptr;
 }
 
-void Scoreboard::forEachObjective(std::function<void(Objective &)> callback) const
+void Scoreboard::forEachObjective(std::function<void(Objective &)> callback)
 {
     for (const auto &[key, value] : objectives_) {
         callback(*value);
     }
 }
 
-void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback) const
+void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback)
 {
     for (const auto &[key, value] : identity_refs_) {
         callback(const_cast<ScoreboardIdentityRef &>(value));

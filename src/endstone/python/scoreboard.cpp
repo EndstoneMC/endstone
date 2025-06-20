@@ -21,7 +21,8 @@ namespace endstone::python {
 void init_scoreboard(py::module_ &m)
 {
     py::enum_<RenderType>(m, "RenderType", "Controls the way in which an Objective is rendered on the client side.")
-        .value("INTEGER", RenderType::Integer);
+        .value("INTEGER", RenderType::Integer)
+        .value("HEARTS", RenderType::Hearts);
 
     py::enum_<DisplaySlot>(m, "DisplaySlot", "Locations for displaying objectives to the player")
         .value("BELOW_NAME", DisplaySlot::BelowName, "Displays the score below the player's name.")
@@ -69,24 +70,22 @@ void init_scoreboard(py::module_ &m)
         .def("unregister", &Objective::unregister, "Unregisters this objective from the associated Scoreboard.")
         .def_property_readonly("is_displayed", &Objective::isDisplayed,
                                "Gets if the objective is currently displayed in a slot.")
-        .def_property_readonly(
+        .def_property(
             "display_slot",
-            [](const Objective &self) -> std::variant<Result<DisplaySlot>, py::none> {
-                if (self.isDisplayed().value_or(false)) {
-                    return self.getDisplaySlot();
+            [](const Objective &self) -> std::optional<DisplaySlot> {
+                if (auto result = self.isDisplayed(); result) {
+                    if (result.value()) {
+                        return self.getDisplaySlot().value();
+                    }
+                    return std::nullopt;
                 }
-                return py::none();
-            },
-            "Gets the display slot this objective is displayed at")
-        .def_property_readonly(
-            "sort_order",
-            [](const Objective &self) -> std::variant<Result<ObjectiveSortOrder>, py::none> {
-                if (self.isDisplayed().value_or(false)) {
-                    return self.getSortOrder();
+                else {
+                    throw std::runtime_error(result.error());
                 }
-                return py::none();
             },
-            "Gets and sets the sort order for this objective")
+            &Objective::setDisplaySlot, "Gets or sets the display slot this objective is displayed at")
+        .def_property("sort_order", &Objective::getSortOrder, &Objective::setSortOrder,
+                      "Gets or sets the sort order for this objective")
         .def(
             "set_display",
             [](Objective &self, std::optional<DisplaySlot> slot, std::optional<ObjectiveSortOrder> order) {
@@ -94,8 +93,9 @@ void init_scoreboard(py::module_ &m)
             },
             "Sets the display slot and sort order for this objective. This will remove it from any other display slot.",
             py::arg("slot"), py::arg("order") = std::nullopt)
-        .def_property("render_type", &Objective::getRenderType, &Objective::setRenderType,
-                      "Gets and sets the manner in which this objective will be rendered.")
+
+        .def_property_readonly("render_type", &Objective::getRenderType,
+                               "Gets the manner in which this objective will be rendered.")
         .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"))
         .def(py::self == py::self)
         .def(py::self != py::self);

@@ -2369,8 +2369,11 @@ class Objective:
     @property
     def display_slot(self) -> DisplaySlot | None:
         """
-        Gets the display slot this objective is displayed at
+        Gets or sets the display slot this objective is displayed at
         """
+    @display_slot.setter
+    def display_slot(self, arg1: DisplaySlot | None) -> None:
+        ...
     @property
     def is_displayed(self) -> bool:
         """
@@ -2389,21 +2392,21 @@ class Objective:
     @property
     def render_type(self) -> RenderType:
         """
-        Gets and sets the manner in which this objective will be rendered.
+        Gets the manner in which this objective will be rendered.
         """
-    @render_type.setter
-    def render_type(self, arg1: RenderType) -> None:
-        ...
     @property
     def scoreboard(self) -> Scoreboard:
         """
         Gets the scoreboard to which this objective is attached
         """
     @property
-    def sort_order(self) -> ObjectiveSortOrder | None:
+    def sort_order(self) -> ObjectiveSortOrder:
         """
-        Gets and sets the sort order for this objective
+        Gets or sets the sort order for this objective
         """
+    @sort_order.setter
+    def sort_order(self, arg1: ObjectiveSortOrder) -> None:
+        ...
 class ObjectiveSortOrder:
     """
     Represents the sort order of objectives on a DisplaySlot.
@@ -3693,8 +3696,9 @@ class RenderType:
     """
     Controls the way in which an Objective is rendered on the client side.
     """
+    HEARTS: typing.ClassVar[RenderType]  # value = <RenderType.HEARTS: 1>
     INTEGER: typing.ClassVar[RenderType]  # value = <RenderType.INTEGER: 0>
-    __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>}
+    __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>, 'HEARTS': <RenderType.HEARTS: 1>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:

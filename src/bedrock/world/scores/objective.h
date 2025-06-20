@@ -34,6 +34,16 @@ enum class PlayerScoreSetFunction : std::uint8_t {
     Subtract = 2
 };
 
+struct PlayerScore {
+    PlayerScore() = default;
+    PlayerScore(const ScoreboardId &scoreboard_id, int score);
+    [[nodiscard]] const ScoreboardId &getId() const;
+    [[nodiscard]] int getScore() const;
+    ScoreboardId scoreboard_id;
+    int score;
+};
+static_assert(sizeof(PlayerScore) == 24);
+
 class Objective : public Bedrock::EnableNonOwnerReferences {
 public:
     Objective(const std::string &name, const ObjectiveCriteria &criteria);

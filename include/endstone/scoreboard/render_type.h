@@ -24,6 +24,10 @@ enum class RenderType : std::uint8_t {
      * @brief Display integer value.
      */
     Integer,
+    /**
+     * Display number of hearts corresponding to value.
+     */
+    Hearts,
 };
 
 }  // namespace endstone
