@@ -76,6 +76,20 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
+int EndstoneItemStack::getData() const
+{
+    return handle_ != nullptr ? handle_->getAuxValue() : 0;
+}
+
+void EndstoneItemStack::setData(const int data)
+{
+    const auto aux_value = static_cast<std::int16_t>(data & 0X7fff);
+    if (handle_ == nullptr || handle_->isNull()) {
+        return;
+    }
+    handle_->setAuxValue(aux_value);
+}
+
 int EndstoneItemStack::getMaxStackSize() const
 {
     if (handle_ == nullptr) {

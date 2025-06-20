@@ -1740,7 +1740,7 @@ class ItemStack:
     __hash__: typing.ClassVar[None] = None
     def __eq__(self, arg0: ItemStack) -> bool:
         ...
-    def __init__(self, type: ItemType | str, amount: int = 1) -> None:
+    def __init__(self, type: str, amount: int = 1, data: int = 0) -> None:
         ...
     def __ne__(self, arg0: ItemStack) -> bool:
         ...
@@ -1763,6 +1763,14 @@ class ItemStack:
     def amount(self, arg1: int) -> None:
         ...
     @property
+    def data(self) -> int:
+        """
+        Gets or sets the data for this stack of items.
+        """
+    @data.setter
+    def data(self, arg1: int) -> None:
+        ...
+    @property
     def item_meta(self) -> ItemMeta:
         """
         Gets a copy of the ItemMeta of this ItemStack.
@@ -1778,7 +1786,7 @@ class ItemStack:
         Gets or sets the type of this item.
         """
     @type.setter
-    def type(self, arg1: ItemType | str) -> None:
+    def type(self, arg1: str) -> None:
         ...
 class ItemType:
     """
