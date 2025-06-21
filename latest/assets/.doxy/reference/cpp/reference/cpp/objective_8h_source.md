@@ -58,13 +58,15 @@ public:
 
     [[nodiscard]] virtual Result<ObjectiveSortOrder> getSortOrder() const = 0;
 
-    virtual Result<void> setDisplay(std::optional<DisplaySlot> slot) = 0;
+    virtual Result<void> setDisplaySlot(std::optional<DisplaySlot> slot) = 0;
+
+    virtual Result<void> setSortOrder(ObjectiveSortOrder order) = 0;
 
     virtual Result<void> setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) = 0;
 
     [[nodiscard]] virtual Result<RenderType> getRenderType() const = 0;
 
-    virtual Result<void> setRenderType(RenderType render_type) = 0;
+    // virtual Result<void> setRenderType(RenderType render_type) = 0;
 
     [[nodiscard]] virtual Result<std::unique_ptr<Score>> getScore(ScoreEntry entry) const = 0;
 

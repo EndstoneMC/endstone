@@ -521,7 +521,8 @@ enum endstone::PluginLoadOrder {
 _Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._
 ```C++
 enum endstone::RenderType {
-    Integer
+    Integer,
+    Hearts
 };
 ```
 

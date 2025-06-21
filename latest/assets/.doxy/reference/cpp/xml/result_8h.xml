@@ -731,6 +731,19 @@
         </inbodydescription>
         <location file="include/endstone/util/result.h" line="28" column="9" bodyfile="include/endstone/util/result.h" bodystart="28" bodyend="30"/>
       </memberdef>
+      <memberdef kind="define" id="result_8h_1a39d01cf799293f644cc2135439d02180" prot="public" static="no">
+        <name>ENDSTONE_CHECK_RESULT</name>
+        <param><defname>RESULT</defname></param>
+        <initializer>    if (!(RESULT))                    \
+        return nonstd::make_unexpected(std::move(RESULT.error()));</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/result.h" line="32" column="9" bodyfile="include/endstone/util/result.h" bodystart="32" bodyend="34"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
@@ -768,7 +781,11 @@
 <codeline lineno="29"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if<sp/>(!(EXPRESSION))<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>nonstd::make_unexpected(fmt::format(ERROR_MSG,<sp/>##__VA_ARGS__));</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_CHECK_RESULT(RESULT)<sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if<sp/>(!(RESULT))<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>nonstd::make_unexpected(std::move(RESULT.error()));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/util/result.h"/>
   </compounddef>

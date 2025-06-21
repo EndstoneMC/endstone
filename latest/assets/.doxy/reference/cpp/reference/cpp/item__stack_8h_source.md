@@ -40,17 +40,21 @@ class EndstoneItemStack;
 
 class ItemStack {
 public:
-    explicit ItemStack(const std::string &type, const int amount = 1)
+    explicit ItemStack(const std::string &type, const int amount = 1, const int data = 0)
     {
         if (const auto *item_type = ItemType::get(type)) {
             type_ = *item_type;
             amount_ = amount;
+            data_ = data;
         }
     }
 
-    explicit ItemStack(const ItemType &type, const int amount = 1) : type_(type), amount_(amount) {}
+    explicit ItemStack(const ItemType &type, const int amount = 1, const int data = 0)
+        : type_(type), amount_(amount), data_(data)
+    {
+    }
 
-    ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount())
+    ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount()), data_(stack.getData())
     {
         if (stack.hasItemMeta()) {
             ItemStack::setItemMeta(stack.getItemMeta().get());
@@ -76,7 +80,7 @@ public:
     {
         const auto *item_type = ItemType::get(type);
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-        type_ = *item_type;
+        setType(*item_type);
         return {};
     }
 
@@ -94,6 +98,16 @@ public:
     virtual void setAmount(const int amount)
     {
         amount_ = amount;
+    }
+
+    [[nodiscard]] virtual int getData() const
+    {
+        return data_;
+    }
+
+    virtual void setData(const int data)
+    {
+        data_ = data;
     }
 
     [[nodiscard]] virtual int getMaxStackSize() const
@@ -145,17 +159,17 @@ public:
         return std::make_unique<ItemStack>(*this);
     }
 
-    static Result<ItemStack> create(const ItemType &type, const int amount = 1)
+    static Result<ItemStack> create(const ItemType &type, const int amount = 1, const int data = 0)
     {
         ENDSTONE_CHECKF(amount >= 1 && amount <= 255, "Item stack amount must be between 1 to 255, got {}.", amount);
-        return ItemStack(type, amount);
+        return ItemStack(type, amount, data);
     }
 
-    static Result<ItemStack> create(const std::string &type, const int amount = 1)
+    static Result<ItemStack> create(const std::string &type, const int amount = 1, const int data = 0)
     {
         const auto *item_type = ItemType::get(type);
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-        return create(*item_type, amount);
+        return create(*item_type, amount, data);
     }
 
 private:
@@ -177,6 +191,7 @@ private:
 
     std::reference_wrapper<const ItemType> type_ = *ItemType::get("minecraft:air");
     int amount_ = 0;
+    int data_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;
 };
 

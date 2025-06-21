@@ -39,6 +39,10 @@ using Result = nonstd::expected<T, std::string>;
     if (!(EXPRESSION))                              \
         return nonstd::make_unexpected(fmt::format(ERROR_MSG, ##__VA_ARGS__));
 
+#define ENDSTONE_CHECK_RESULT(RESULT) \
+    if (!(RESULT))                    \
+        return nonstd::make_unexpected(std::move(RESULT.error()));
+
 }  // namespace endstone
 ```
 

@@ -729,6 +729,14 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="namespaceendstone_1ae444241ed516d06f778078ee798db9e9a6af4bf214d6cf054f9528da5b6054817" prot="public">
+          <name>Hearts</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Display number of hearts corresponding to value. </para>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
 <para>Controls the way in which an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> is rendered on the client side. </para>
         </briefdescription>
@@ -736,7 +744,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/render_type.h" line="22" column="1" bodyfile="include/endstone/scoreboard/render_type.h" bodystart="22" bodyend="27"/>
+        <location file="include/endstone/scoreboard/render_type.h" line="22" column="1" bodyfile="include/endstone/scoreboard/render_type.h" bodystart="22" bodyend="31"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">

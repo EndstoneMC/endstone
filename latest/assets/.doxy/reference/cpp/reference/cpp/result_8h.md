@@ -86,6 +86,7 @@
 | ---: | :--- |
 | define  | [**ENDSTONE\_CHECK**](result_8h.md#define-endstone_check) (EXPRESSION, ERROR\_MSG) `/* multi line expression */`<br> |
 | define  | [**ENDSTONE\_CHECKF**](result_8h.md#define-endstone_checkf) (EXPRESSION, ERROR\_MSG, ...) `/* multi line expression */`<br> |
+| define  | [**ENDSTONE\_CHECK\_RESULT**](result_8h.md#define-endstone_check_result) (RESULT) `/* multi line expression */`<br> |
 
 ## Macro Definition Documentation
 
@@ -116,6 +117,21 @@
     EXPRESSION,
     ERROR_MSG,
     ...
+) `/* multi line expression */`
+```
+
+
+
+
+<hr>
+
+
+
+### define ENDSTONE\_CHECK\_RESULT 
+
+```C++
+#define ENDSTONE_CHECK_RESULT (
+    RESULT
 ) `/* multi line expression */`
 ```
 

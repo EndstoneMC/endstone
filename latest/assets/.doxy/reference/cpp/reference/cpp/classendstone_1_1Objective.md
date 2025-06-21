@@ -57,17 +57,17 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | virtual Result&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
 | virtual Result&lt; std::string &gt; | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
 | virtual Result&lt; [**RenderType**](namespaceendstone.md#enum-rendertype) &gt; | [**getRenderType**](#function-getrendertype) () const = 0<br> |
-| virtual Result&lt; std::unique\_ptr&lt; [**Score**](classendstone_1_1Score.md) &gt; &gt; | [**getScore**](#function-getscore) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) const = 0<br>_Gets an entry's_ [_**Score**_](classendstone_1_1Score.md) _for this objective._ |
+| virtual Result&lt; std::unique\_ptr&lt; [**Score**](classendstone_1_1Score.md) &gt; &gt; | [**getScore**](#function-getscore) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) const = 0<br>_Sets manner in which this objective will be rendered._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
 | virtual Result&lt; [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) &gt; | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
 | virtual Result&lt; bool &gt; | [**isDisplayed**](#function-isdisplayed) () const = 0<br>_Gets if the objective is currently displayed in a slot._  |
 | virtual Result&lt; bool &gt; | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
 | virtual bool | [**operator!=**](#function-operator) (const [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
 | virtual bool | [**operator==**](#function-operator_1) (const [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
-| virtual Result&lt; void &gt; | [**setDisplay**](#function-setdisplay-12) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
-| virtual Result&lt; void &gt; | [**setDisplay**](#function-setdisplay-22) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot, [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
+| virtual Result&lt; void &gt; | [**setDisplay**](#function-setdisplay) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot, [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
 | virtual Result&lt; void &gt; | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
-| virtual Result&lt; void &gt; | [**setRenderType**](#function-setrendertype) ([**RenderType**](namespaceendstone.md#enum-rendertype) render\_type) = 0<br>_Sets manner in which this objective will be rendered._  |
+| virtual Result&lt; void &gt; | [**setDisplaySlot**](#function-setdisplayslot) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
+| virtual Result&lt; void &gt; | [**setSortOrder**](#function-setsortorder) ([**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the sort order for this objective._  |
 | virtual Result&lt; void &gt; | [**unregister**](#function-unregister) () const = 0<br>_Unregisters this objective from the associated_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Objective**](#function-objective) () = default<br> |
 
@@ -232,13 +232,23 @@ the render type
 
 ### function getScore 
 
-_Gets an entry's_ [_**Score**_](classendstone_1_1Score.md) _for this objective._
+_Sets manner in which this objective will be rendered._ 
 ```C++
 virtual Result< std::unique_ptr< Score > > endstone::Objective::getScore (
     ScoreEntry entry
 ) const = 0
 ```
 
+
+
+
+
+**Parameters:**
+
+
+* `render_type` new render type
+
+Gets an entry's [**Score**](classendstone_1_1Score.md) for this objective.
 
 
 
@@ -394,34 +404,7 @@ virtual bool endstone::Objective::operator== (
 
 
 
-### function setDisplay [1/2]
-
-_Sets the display slot for this objective. This will remove it from any other display slot._ 
-```C++
-virtual Result< void > endstone::Objective::setDisplay (
-    std::optional< DisplaySlot > slot
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `slot` The display slot where this objective should be displayed. 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setDisplay [2/2]
+### function setDisplay 
 
 _Sets the display slot and sort order for this objective. This will remove it from any other display slot._ 
 ```C++
@@ -477,12 +460,12 @@ virtual Result< void > endstone::Objective::setDisplayName (
 
 
 
-### function setRenderType 
+### function setDisplaySlot 
 
-_Sets manner in which this objective will be rendered._ 
+_Sets the display slot for this objective. This will remove it from any other display slot._ 
 ```C++
-virtual Result< void > endstone::Objective::setRenderType (
-    RenderType render_type
+virtual Result< void > endstone::Objective::setDisplaySlot (
+    std::optional< DisplaySlot > slot
 ) = 0
 ```
 
@@ -493,7 +476,34 @@ virtual Result< void > endstone::Objective::setRenderType (
 **Parameters:**
 
 
-* `render_type` new render type 
+* `slot` The display slot where this objective should be displayed. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setSortOrder 
+
+_Sets the sort order for this objective._ 
+```C++
+virtual Result< void > endstone::Objective::setSortOrder (
+    ObjectiveSortOrder order
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `order` The sort order for this objective in the display slot. 
 
 
 
