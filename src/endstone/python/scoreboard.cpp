@@ -73,19 +73,29 @@ void init_scoreboard(py::module_ &m)
         .def_property(
             "display_slot",
             [](const Objective &self) -> std::optional<DisplaySlot> {
-                if (auto result = self.isDisplayed(); result) {
+                auto result = self.isDisplayed();
+                if (result) {
                     if (result.value()) {
                         return self.getDisplaySlot().value();
                     }
                     return std::nullopt;
                 }
-                else {
-                    throw std::runtime_error(result.error());
-                }
+                throw std::runtime_error(result.error());
             },
             &Objective::setDisplaySlot, "Gets or sets the display slot this objective is displayed at")
-        .def_property("sort_order", &Objective::getSortOrder, &Objective::setSortOrder,
-                      "Gets or sets the sort order for this objective")
+        .def_property(
+            "sort_order",
+            [](const Objective &self) -> std::optional<ObjectiveSortOrder> {
+                auto result = self.isDisplayed();
+                if (result) {
+                    if (result.value()) {
+                        return self.getSortOrder().value();
+                    }
+                    return std::nullopt;
+                }
+                throw std::runtime_error(result.error());
+            },
+            &Objective::setSortOrder, "Gets or sets the sort order for this objective")
         .def(
             "set_display",
             [](Objective &self, std::optional<DisplaySlot> slot, std::optional<ObjectiveSortOrder> order) {
