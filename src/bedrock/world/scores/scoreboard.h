@@ -34,9 +34,9 @@ class Player;
 
 class Scoreboard {
 public:
-    static constexpr std::string DISPLAY_SLOT_LIST = "list";
-    static constexpr std::string DISPLAY_SLOT_SIDEBAR = "sidebar";
-    static constexpr std::string DISPLAY_SLOT_BELOWNAME = "belowname";
+    static const std::string DISPLAY_SLOT_LIST;
+    static const std::string DISPLAY_SLOT_SIDEBAR;
+    static const std::string DISPLAY_SLOT_BELOWNAME;
 
     virtual ~Scoreboard();
     virtual DisplayObjective const *setDisplayObjective(std::string const &, Objective const &, ObjectiveSortOrder) = 0;

@@ -19,6 +19,10 @@
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/player/player.h"
 
+const std::string Scoreboard::DISPLAY_SLOT_LIST = "list";
+const std::string Scoreboard::DISPLAY_SLOT_SIDEBAR = "sidebar";
+const std::string Scoreboard::DISPLAY_SLOT_BELOWNAME = "belowname";
+
 Scoreboard::~Scoreboard() = default;
 
 Objective *Scoreboard::addObjective(const std::string &name, const std::string &display_name,
