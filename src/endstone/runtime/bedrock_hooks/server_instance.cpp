@@ -14,13 +14,17 @@
 
 #include "bedrock/server/server_instance.h"
 
+#include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
 void ServerInstance::_resetServerScriptManager()
 {
-    // TODO(hook): maybe we could use ScriptModuleShutdownEvent?
     // This function is called when the server loop stops (safely executed from the server thread)
     // or during the destruction of the ServerInstance object.
+    if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
+        auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        server.disablePlugins();
+    }
     entt::locator<endstone::core::EndstoneServer>::reset();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::_resetServerScriptManager, this);
 }

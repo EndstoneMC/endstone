@@ -26,13 +26,31 @@ public:
     [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] std::unique_ptr<ItemStack> getItem(int index) const override;
     void setItem(int index, const ItemStack *item) override;
-    void addItem(const ItemStack &item) override;
+    std::unordered_map<int, ItemStack *> addItem(std::vector<ItemStack *> items) override;
+    std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) override;
     [[nodiscard]] std::vector<std::unique_ptr<ItemStack>> getContents() const override;
+    Result<void> setContents(std::vector<ItemStack const *> items) override;
+    [[nodiscard]] Result<bool> contains(const std::string &type) const override;
+    [[nodiscard]] bool contains(const ItemStack &item) const override;
+    [[nodiscard]] bool contains(const ItemStack &item, int amount) const override;
+    [[nodiscard]] Result<bool> containsAtLeast(const std::string &type, int amount) const override;
+    [[nodiscard]] bool containsAtLeast(const ItemStack &item, int amount) const override;
+    [[nodiscard]] Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> all(
+        const std::string &type) const override;
+    [[nodiscard]] std::unordered_map<int, std::unique_ptr<ItemStack>> all(const ItemStack &item) const override;
+    [[nodiscard]] Result<int> first(const std::string &type) const override;
     [[nodiscard]] int first(const ItemStack &item) const override;
+    [[nodiscard]] int firstEmpty() const override;
     [[nodiscard]] bool isEmpty() const override;
+    Result<void> remove(const std::string &type) override;
+    void remove(const ItemStack &item) override;
+    void clear(int index) override;
     void clear() override;
 
 private:
+    [[nodiscard]] int first(const ItemStack &item, bool with_amount) const;
+    [[nodiscard]] int firstPartial(const ItemStack &item) const;
+
     ::Container &container_;
 };
 

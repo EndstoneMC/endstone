@@ -14,23 +14,41 @@
 
 #pragma once
 
-#include "bedrock/network/network_identifier.h"
-#include "bedrock/network/network_peer.h"
+#include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/network/disconnection_request_info.h"
+#include "bedrock/network/network_identifier.h"
+#include "bedrock/network/remote_connector.h"
 
-class RakNetConnector {
+class RakNetConnector : public RemoteConnector {
 
 public:
-    class ConnectionCallbacks {
+    class ConnectionCallbacks : public Connector::ConnectionCallbacks {
     public:
-        virtual ~ConnectionCallbacks() = default;
-        virtual bool onNewIncomingConnection(const NetworkIdentifier &, std::shared_ptr<NetworkPeer> &&) = 0;
-        virtual bool onNewOutgoingConnection(const NetworkIdentifier &, std::shared_ptr<NetworkPeer> &&) = 0;
-        virtual void onConnectionClosed(const NetworkIdentifier &, Connection::DisconnectFailReason,
-                                        const std::string &, bool) = 0;
         virtual void onAllConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
         virtual void onAllRemoteConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
         virtual void onOutgoingConnectionFailed(Connection::DisconnectFailReason, const std::string &) = 0;
         virtual void onWebsocketRequest(const std::string &, const std::string &, std::function<void()>) = 0;
     };
+
+    RakNetConnector(ConnectionCallbacks &, RakPeerHelper::IPSupportInterface &,
+                    const Bedrock::NonOwnerPointer<AppPlatform> &, const RakNet::RakPeerConfiguration &);
+    ~RakNetConnector() override;
+    bool host(const ConnectionDefinition &) override;
+    bool connect(const Social::GameConnectionInfo &, const Social::GameConnectionInfo &) override;
+    void disconnect() override;
+    void tick() override;
+    void runEvents() override;
+    void closeNetworkConnection(const NetworkIdentifier &) override;
+    bool setApplicationHandshakeCompleted(const NetworkIdentifier &) override;
+    [[nodiscard]] bool isServer() const override;
+    std::string getLocalIp() override;
+    [[nodiscard]] uint16_t getPort() const override;
+    [[nodiscard]] const Social::GameConnectionInfo &getConnectedGameInfo() const override;
+    [[nodiscard]] bool isIPv4Supported() const override;
+    [[nodiscard]] bool isIPv6Supported() const override;
+    [[nodiscard]] uint16_t getIPv4Port() const override;
+    [[nodiscard]] uint16_t getIPv6Port() const override;
+    [[nodiscard]] NetworkIdentifier getNetworkIdentifier() const override;
+    virtual RakNet::RakPeerInterface *getPeer();
+    [[nodiscard]] virtual const RakNet::RakPeerInterface *getPeer() const;
 };

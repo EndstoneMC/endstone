@@ -114,11 +114,11 @@ ItemStackBase &ItemStackBase::operator=(const ItemStackBase &rhs)
 
 ItemStackBase::~ItemStackBase() = default;
 
-void ItemStackBase::reinit(Item const &, int, int) {}
+void ItemStackBase::reinit(Item const & item, int count, int aux_value) {}
 
-void ItemStackBase::reinit(BlockLegacy const &, int) {}
+void ItemStackBase::reinit(BlockLegacy const &block, int count) {}
 
-void ItemStackBase::reinit(std::string_view, int, int) {}
+void ItemStackBase::reinit(std::string_view name, int count, int aux_value) {}
 
 ItemDescriptor ItemStackBase::getDescriptor() const
 {
@@ -228,96 +228,71 @@ bool ItemStackBase::isNull() const
     return true;
 }
 
-bool ItemStackBase::hasCustomHoverName() const
+bool ItemStackBase::operator==(const ItemStackBase &other) const
 {
-    if (!user_data_) {
-        return false;
-    }
-    const auto *tag = user_data_->getCompound(TAG_DISPLAY);
-    if (!tag) {
-        return false;
-    }
-    return tag->contains(TAG_DISPLAY_NAME);
+    return matchesItem(other) && (count_ == other.count_);
 }
 
-std::string ItemStackBase::getCustomName() const
+bool ItemStackBase::operator!=(const ItemStackBase &other) const
 {
-    if (user_data_) {
-        if (const auto *tag = user_data_->getCompound(TAG_DISPLAY); tag) {
-            if (tag->contains(TAG_DISPLAY_NAME)) {
-                return tag->getString(TAG_DISPLAY_NAME);
-            }
+    return !(*this == other);
+}
+
+bool ItemStackBase::matchesItem(const ItemStackBase &other) const  // NOLINT(*-no-recursion)
+{
+    if (item_.isNull()) {
+        if (!other.item_.isNull()) {
+            return false;
         }
     }
-    return "";
-}
-
-std::int16_t ItemStackBase::getId() const
-{
-    if (!valid_deprecated_) {
-        return Item::INVALID_ITEM_ID;
+    else {
+        if (other.item_.isNull() || *item_.get() != *other.item_.get()) {
+            return false;
+        }
     }
-    if (item_.isNull()) {
-        return 0;
+
+    if (aux_value_ != other.aux_value_) {
+        return false;
     }
-    return item_->getId();
-}
 
-std::uint16_t ItemStackBase::getAuxValue() const
-{
-    if (!block_ || aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
-        return aux_value_;
+    if (block_ && block_ != other.block_) {
+        return false;
     }
-    return block_->data_;
-}
 
-std::string ItemStackBase::getName() const
-{
-    if (hasCustomHoverName()) {
-        return getCustomName();
+    if (!hasSameUserData(other)) {
+        return false;
     }
-    if (item_.isNull()) {
-        return "";
+
+    if (can_destroy_hash_ != other.can_destroy_hash_ || can_place_on_hash_ != other.can_place_on_hash_) {
+        return false;
     }
-    return item_->buildDescriptionName(*this);
+
+    if (blocking_tick_.tick_id != other.blocking_tick_.tick_id) {
+        return false;
+    }
+
+    bool has_charged_item = charged_item_ && !charged_item_->isNull();
+    bool other_has_charged_item = other.charged_item_ && !other.charged_item_->isNull();
+    if (has_charged_item != other_has_charged_item) {
+        return false;
+    }
+
+    if (has_charged_item) {
+        const ItemInstance &my_charge = *charged_item_;
+        const ItemInstance &other_charge = other_has_charged_item ? *other.charged_item_ : ItemInstance::EMPTY_ITEM;
+
+        if (!my_charge.matchesItem(other_charge)) {
+            return false;
+        }
+        if (my_charge.count_ != other_charge.count_) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
-const Item *ItemStackBase::getItem() const
-{
-    return item_.get();
-}
-
-bool ItemStackBase::hasUserData() const
-{
-    return user_data_ != nullptr;
-}
-
-void ItemStackBase::setUserData(std::unique_ptr<CompoundTag> tag)
-{
-    BEDROCK_CALL(&ItemStackBase::setUserData, this, std::move(tag));
-}
-
-const CompoundTag *ItemStackBase::getUserData() const
-{
-    return user_data_.get();
-}
-
-CompoundTag *ItemStackBase::getUserData()
-{
-    return user_data_.get();
-}
-
-bool ItemStackBase::isBlock() const
-{
-    return !item_.isNull() && !item_->getLegacyBlock().isNull();
-}
-
-const Block *ItemStackBase::getBlock() const
-{
-    return block_;
-}
-
-void ItemStackBase::set(const std::uint8_t count)
+void ItemStackBase::set(const int count)
 {
     auto max_stack_size = -1;
     if (!item_.isNull()) {
@@ -335,6 +310,183 @@ void ItemStackBase::set(const std::uint8_t count)
     if (!isNull()) {
         setNull(std::nullopt);
     }
+}
+
+bool ItemStackBase::hasTag(const ItemTag &tag) const
+{
+    if (!item_.isNull()) {
+        return item_->hasTag(tag);
+    }
+    return false;
+}
+
+bool ItemStackBase::hasUserData() const
+{
+    return user_data_ != nullptr;
+}
+
+bool ItemStackBase::hasSameUserData(const ItemStackBase &other) const
+{
+    if (isNull() && other.isNull()) {
+        return true;
+    }
+    if (isNull() || other.isNull()) {
+        return false;
+    }
+
+    const auto *my_tag = getUserData();
+    const auto *other_tag = other.getUserData();
+    const auto has_tags = my_tag != nullptr && !my_tag->isEmpty();
+    const auto other_has_tags = other_tag != nullptr && !other_tag->isEmpty();
+    if (!has_tags && !other_has_tags) {
+        return true;
+    }
+    if (!has_tags || !other_has_tags) {
+        return false;
+    }
+    return my_tag->equals(*other_tag);
+}
+
+void ItemStackBase::setUserData(std::unique_ptr<CompoundTag> tag)
+{
+    BEDROCK_CALL(&ItemStackBase::setUserData, this, std::move(tag));
+}
+
+const CompoundTag *ItemStackBase::getUserData() const
+{
+    return user_data_.get();
+}
+
+CompoundTag *ItemStackBase::getUserData()
+{
+    return user_data_.get();
+}
+
+const Item *ItemStackBase::getItem() const
+{
+    return item_.get();
+}
+
+WeakPtr<Item> ItemStackBase::getItemPtr() const
+{
+    return item_;
+}
+
+const Block *ItemStackBase::getBlock() const
+{
+    return block_;
+}
+
+std::int16_t ItemStackBase::getId() const
+{
+    if (!valid_deprecated_) {
+        return Item::INVALID_ITEM_ID;
+    }
+    if (item_.isNull()) {
+        return 0;
+    }
+    return item_->getId();
+}
+
+bool ItemStackBase::isBlock() const
+{
+    return !item_.isNull() && !item_->getLegacyBlock().isNull();
+}
+
+bool ItemStackBase::isValid_DeprecatedSeeComment() const
+{
+    return valid_deprecated_;
+}
+
+ItemStackBase::operator bool() const
+{
+    return isValid_DeprecatedSeeComment() && !item_.isNull() && !isNull() && count_ != 0;
+}
+
+std::uint8_t ItemStackBase::getMaxStackSize() const
+{
+    if (item_.isNull()) {
+        return -1;
+    }
+    return item_->getMaxStackSize(getDescriptor());
+}
+
+std::int16_t ItemStackBase::getDamageValue() const
+{
+    if (item_.isNull()) {
+        return 0;
+    }
+    return item_->getDamageValue(getUserData());
+}
+
+bool ItemStackBase::hasDamageValue() const
+{
+    if (item_.isNull()) {
+        return false;
+    }
+    return item_->hasDamageValue(getUserData());
+}
+
+void ItemStackBase::removeDamageValue()
+{
+    if (!item_.isNull()) {
+        item_->removeDamageValue(*this);
+    }
+}
+
+void ItemStackBase::setDamageValue(std::int16_t damage)
+{
+    if (!item_.isNull()) {
+        item_->setDamageValue(*this, damage);
+    }
+}
+
+std::int16_t ItemStackBase::getAuxValue() const
+{
+    if (!block_ || aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
+        return aux_value_;
+    }
+    return static_cast<std::int16_t>(block_->data_);
+}
+
+void ItemStackBase::setAuxValue(const std::int16_t aux_value)
+{
+    aux_value_ = aux_value;
+}
+
+std::string ItemStackBase::getName() const
+{
+    if (hasCustomHoverName()) {
+        return getCustomName();
+    }
+    if (item_.isNull()) {
+        return "";
+    }
+    return item_->buildDescriptionName(*this);
+}
+
+std::string ItemStackBase::getCustomName() const
+{
+    if (user_data_) {
+        if (const auto *tag = user_data_->getCompound(TAG_DISPLAY); tag) {
+            if (tag->contains(TAG_DISPLAY_NAME)) {
+                return tag->getString(TAG_DISPLAY_NAME);
+            }
+        }
+    }
+    return "";
+}
+
+bool ItemStackBase::hasCustomHoverName() const
+{
+    if (!user_data_) {
+        return false;
+    }
+    const auto *tag = user_data_->getCompound(TAG_DISPLAY);
+    if (!tag) {
+        return false;
+    }
+    return tag->contains(TAG_DISPLAY_NAME);
 }
 
 std::uint8_t ItemStackBase::getCount() const

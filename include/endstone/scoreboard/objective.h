@@ -105,7 +105,14 @@ public:
      *
      * @param slot The display slot where this objective should be displayed.
      */
-    virtual Result<void> setDisplay(std::optional<DisplaySlot> slot) = 0;
+    virtual Result<void> setDisplaySlot(std::optional<DisplaySlot> slot) = 0;
+
+    /**
+     * @brief Sets the sort order for this objective.
+     *
+     * @param order The sort order for this objective in the display slot.
+     */
+    virtual Result<void> setSortOrder(ObjectiveSortOrder order) = 0;
 
     /**
      * @brief Sets the display slot and sort order for this objective.
@@ -128,7 +135,7 @@ public:
      *
      * @param render_type new render type
      */
-    virtual Result<void> setRenderType(RenderType render_type) = 0;
+    // virtual Result<void> setRenderType(RenderType render_type) = 0;
 
     /**
      * @brief Gets an entry's Score for this objective.

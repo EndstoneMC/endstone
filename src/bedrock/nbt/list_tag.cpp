@@ -81,8 +81,11 @@ Tag::Type ListTag::getId() const
 
 bool ListTag::equals(const Tag &other) const
 {
-    return Tag::equals(other) && list_ == static_cast<const ListTag &>(other).list_ &&
-           type_ == static_cast<const ListTag &>(other).type_;
+    if (Tag::equals(other) && type_ == static_cast<const ListTag &>(other).type_) {
+        return std::ranges::equal(list_, static_cast<const ListTag &>(other).list_,
+                                  [](const auto &lhs, const auto &rhs) { return lhs->equals(*rhs); });
+    }
+    return false;
 }
 
 std::unique_ptr<Tag> ListTag::copy() const

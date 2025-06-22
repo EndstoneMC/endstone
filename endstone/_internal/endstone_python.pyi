@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapMeta', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -802,6 +802,10 @@ class Chunk:
     """
     Represents a chunk of blocks.
     """
+    def __repr__(self) -> str:
+        ...
+    def __str__(self) -> str:
+        ...
     @property
     def dimension(self) -> Dimension:
         """
@@ -822,6 +826,23 @@ class Chunk:
         """
         Gets the Z-coordinate of this chunk
         """
+class ChunkEvent(DimensionEvent):
+    """
+    Represents a Chunk related event
+    """
+    @property
+    def chunk(self) -> Chunk:
+        """
+        Gets the chunk being loaded/unloaded
+        """
+class ChunkLoadEvent(ChunkEvent):
+    """
+    Called when a chunk is loaded
+    """
+class ChunkUnloadEvent(ChunkEvent):
+    """
+    Called when a chunk is unloaded
+    """
 class ColorFormat:
     """
     All supported color and format codes.
@@ -1122,6 +1143,15 @@ class Dimension:
         """
         Gets the type of this dimension
         """
+class DimensionEvent(LevelEvent):
+    """
+    Represents events within a dimension
+    """
+    @property
+    def dimension(self) -> Dimension:
+        """
+        Gets the dimension primarily involved with this event
+        """
 class DisplaySlot:
     """
     Locations for displaying objectives to the player
@@ -1222,6 +1252,11 @@ class Enchantment:
         """
         Gets the level that this Enchantment should start at (also known as minimum level).
         """
+    @property
+    def translation_key(self) -> str:
+        """
+        Get the translation key, suitable for use in a translation component.
+        """
 class EnchantmentRegistry:
     @typing.overload
     def __contains__(self, key: NamespacedKey) -> bool:
@@ -1240,6 +1275,41 @@ class EnchantmentRegistry:
     def get(self, key: NamespacedKey) -> Enchantment:
         ...
     def get_or_throw(self, key: NamespacedKey) -> Enchantment:
+        ...
+class EquipmentSlot:
+    BODY: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.BODY: 6>
+    CHEST: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.CHEST: 4>
+    FEET: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.FEET: 2>
+    HAND: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.HAND: 0>
+    HEAD: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.HEAD: 5>
+    LEGS: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.LEGS: 3>
+    OFF_HAND: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.OFF_HAND: 1>
+    __members__: typing.ClassVar[dict[str, EquipmentSlot]]  # value = {'HAND': <EquipmentSlot.HAND: 0>, 'OFF_HAND': <EquipmentSlot.OFF_HAND: 1>, 'FEET': <EquipmentSlot.FEET: 2>, 'LEGS': <EquipmentSlot.LEGS: 3>, 'CHEST': <EquipmentSlot.CHEST: 4>, 'HEAD': <EquipmentSlot.HEAD: 5>, 'BODY': <EquipmentSlot.BODY: 6>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
         ...
 class Event:
     """
@@ -1345,7 +1415,17 @@ class Inventory:
     """
     Interface to the various inventories.
     """
-    def __get_item__(self, index: int) -> ItemStack:
+    @typing.overload
+    def __contains__(self, item: ItemStack) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemStack.
+        """
+    @typing.overload
+    def __contains__(self, type: str) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemType.
+        """
+    def __getitem__(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
         """
@@ -1353,25 +1433,103 @@ class Inventory:
         """
         Returns the size of the inventory
         """
-    def __set_item__(self, index: int, item: ItemStack) -> None:
+    def __setitem__(self, index: int, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
-    def add_item(self, item: ItemStack) -> None:
+    def add_item(self, *args) -> dict[int, ItemStack]:
         """
-        Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.
+        Stores the given ItemStacks in the inventory.
+        This will try to fill existing stacks and empty slots as well as it can.
+        
+        The returned map contains what it couldn't store, where the key is the index, and the value is the ItemStack.
+        If all items are stored, it will return an empty dict.
         """
+    @typing.overload
+    def all(self, item: ItemStack) -> dict[int, ItemStack]:
+        """
+        Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
+        This will only match slots if both the type and the amount of the stack match
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+        """
+    @typing.overload
+    def all(self, type: str) -> dict[int, ItemStack]:
+        """
+        Finds all slots in the inventory containing any ItemStacks with the given ItemType.
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+        """
+    @typing.overload
+    def clear(self, index: int) -> None:
+        """
+        Clears out a particular slot in the index.
+        """
+    @typing.overload
     def clear(self) -> None:
         """
         Clears out the whole Inventory.
         """
+    @typing.overload
+    def contains(self, item: ItemStack, amount: int) -> bool:
+        """
+        Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
+        An ItemStack only counts if both the type and the amount of the stack match.
+        """
+    @typing.overload
+    def contains(self, item: ItemStack) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemStack.
+        This will only return true if both the type and the amount of the stack match.
+        """
+    @typing.overload
+    def contains(self, type: str) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemType.
+        """
+    @typing.overload
+    def contains_at_least(self, item: ItemStack, amount: int) -> bool:
+        """
+        Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the minimum amount specified.
+        """
+    @typing.overload
+    def contains_at_least(self, type: str, amount: int) -> bool:
+        """
+        Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum amount specified.
+        """
+    @typing.overload
     def first(self, item: ItemStack) -> int:
         """
         Returns the first slot in the inventory containing an ItemStack with the given stack.
+        This will only match slots if both the type and the amount of the stack match
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+        """
+    @typing.overload
+    def first(self, type: str) -> int:
+        """
+        Finds the first slot in the inventory containing an ItemStack with the given ItemType.
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
         """
     def get_item(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
+        """
+    @typing.overload
+    def remove(self, item: ItemStack) -> None:
+        """
+        Removes all stacks in the inventory matching the given stack.
+        This will only match a slot if both the type and the amount of the stack match
+        """
+    @typing.overload
+    def remove(self, type: str) -> None:
+        """
+        Removes all stacks in the inventory matching the given ItemType.
+        """
+    def remove_item(self, *args) -> dict[int, ItemStack]:
+        """
+        Removes the given ItemStacks from the inventory.
+        It will try to remove 'as much as possible' from the types and amounts you give as arguments.
+        
+        The returned HashMap contains what it couldn't remove, where the key is the index, and the value is the ItemStack.
+        If all the given ItemStacks are removed, it will return an empty dict.
         """
     def set_item(self, index: int, item: ItemStack) -> None:
         """
@@ -1381,6 +1539,14 @@ class Inventory:
     def contents(self) -> list[ItemStack]:
         """
         Returns all ItemStacks from the inventory
+        """
+    @contents.setter
+    def contents(self, arg1: list[ItemStack]) -> None:
+        ...
+    @property
+    def first_empty(self) -> int:
+        """
+        Returns the first empty Slot.
         """
     @property
     def is_empty(self) -> bool:
@@ -1434,7 +1600,7 @@ class IpBanList:
         Gets a vector of pointers to entries in the ban list.
         """
 class ItemFactory:
-    def as_meta_for(self, meta: ItemMeta, type: str) -> ItemMeta:
+    def as_meta_for(self, meta: ItemMeta, type: ItemType) -> ItemMeta:
         """
         Returns an appropriate item meta for the specified item type.
         """
@@ -1442,11 +1608,11 @@ class ItemFactory:
         """
         This method is used to compare two ItemMeta objects.
         """
-    def get_item_meta(self, type: str) -> ItemMeta:
+    def get_item_meta(self, type: ItemType) -> ItemMeta:
         """
         This creates a new item meta for the item type.
         """
-    def is_applicable(self, meta: ItemMeta, type: str) -> bool:
+    def is_applicable(self, meta: ItemMeta, type: ItemType) -> bool:
         """
         This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack
         """
@@ -1548,14 +1714,42 @@ class ItemMeta:
     @repair_cost.setter
     def repair_cost(self, arg1: int) -> None:
         ...
+class ItemRegistry:
+    @typing.overload
+    def __contains__(self, key: NamespacedKey) -> bool:
+        ...
+    @typing.overload
+    def __contains__(self, key: str) -> bool:
+        ...
+    @typing.overload
+    def __getitem__(self, key: NamespacedKey) -> ItemType:
+        ...
+    @typing.overload
+    def __getitem__(self, key: str) -> ItemType:
+        ...
+    def __iter__(self) -> list:
+        ...
+    def get(self, key: NamespacedKey) -> ItemType:
+        ...
+    def get_or_throw(self, key: NamespacedKey) -> ItemType:
+        ...
 class ItemStack:
     """
     Represents a stack of items.
     """
-    def __init__(self, type: str = 'minecraft:air', amount: int = 1) -> None:
+    __hash__: typing.ClassVar[None] = None
+    def __eq__(self, arg0: ItemStack) -> bool:
+        ...
+    def __init__(self, type: str, amount: int = 1, data: int = 0) -> None:
+        ...
+    def __ne__(self, arg0: ItemStack) -> bool:
         ...
     def __str__(self) -> str:
         ...
+    def is_similar(self, other: ItemStack) -> bool:
+        """
+        Checks if the two stacks are equal, but does not consider stack size (amount).
+        """
     def set_item_meta(self, meta: ItemMeta) -> bool:
         """
         Set the ItemMeta of this ItemStack.
@@ -1569,18 +1763,80 @@ class ItemStack:
     def amount(self, arg1: int) -> None:
         ...
     @property
+    def data(self) -> int:
+        """
+        Gets or sets the data for this stack of items.
+        """
+    @data.setter
+    def data(self, arg1: int) -> None:
+        ...
+    @property
     def item_meta(self) -> ItemMeta:
         """
         Gets a copy of the ItemMeta of this ItemStack.
         """
     @property
-    def type(self) -> str:
+    def max_stack_size(self) -> int:
+        """
+        Get the maximum stack size for this item.
+        """
+    @property
+    def type(self) -> ItemType:
         """
         Gets or sets the type of this item.
         """
     @type.setter
     def type(self, arg1: str) -> None:
         ...
+class ItemType:
+    """
+    Represents an item type.
+    """
+    __hash__: typing.ClassVar[None] = None
+    @staticmethod
+    def get(name: str) -> ItemType:
+        """
+        Attempts to get the ItemType with the given name.
+        """
+    @typing.overload
+    def __eq__(self, arg0: ItemType) -> bool:
+        ...
+    @typing.overload
+    def __eq__(self, arg0: str) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, arg0: ItemType) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, arg0: str) -> bool:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def id(self) -> str:
+        """
+        Return the identifier of this item type.
+        """
+    @property
+    def key(self) -> NamespacedKey:
+        """
+        Return the namespaced identifier of this item type.
+        """
+    @property
+    def max_durability(self) -> int:
+        """
+        Gets the maximum durability of this item type
+        """
+    @property
+    def max_stack_size(self) -> int:
+        """
+        Gets the maximum amount of this item type that can be held in a stack.
+        """
+    @property
+    def translation_key(self) -> str:
+        """
+        Get the translation key, suitable for use in a translation component.
+        """
 class Label:
     """
     Represents a text label.
@@ -1642,6 +1898,15 @@ class Level:
     @time.setter
     def time(self, arg1: int) -> None:
         ...
+class LevelEvent(Event):
+    """
+    Represents events within a level
+    """
+    @property
+    def level(self) -> Level:
+        """
+        Gets the level primarily involved with this event
+        """
 class Location(Position):
     """
     Represents a 3-dimensional location in a dimension within a level.
@@ -1752,10 +2017,166 @@ class Logger:
         """
         Get the name of this Logger instance.
         """
+class MapCanvas:
+    """
+    Represents a canvas for drawing to a map. Each canvas is associated with a specific MapRenderer and represents that renderer's layer on the map.
+    """
+    def draw_image(self, x: int, y: int, image: numpy.ndarray[numpy.uint8]) -> None:
+        """
+        Draw an image to the map. The image will be clipped if necessary.
+        """
+    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
+        """
+        Get a pixel from the layers below this canvas.
+        """
+    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...] | None:
+        """
+        Get a pixel from the canvas.
+        
+        If no color is set at the given position for this canvas, then None is returned and the color returned by get_base_pixel_color() is shown on the map
+        """
+    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...] | None) -> None:
+        """
+        Draw a pixel to the canvas.
+        
+        If None is used as color, then the color returned by get_base_pixel_color() is shown on the map.
+        """
+    @property
+    def map_view(self) -> MapView:
+        """
+        Get the map this canvas is attached to.
+        """
 class MapMeta(ItemMeta):
     """
     Represents the metadata for a map item.
     """
+class MapRenderer:
+    """
+    Represents a renderer for a map.
+    """
+    def __init__(self, is_contextual: bool = False) -> None:
+        """
+        Initialize the map renderer base with the given contextual status.
+        """
+    def initialize(self, view: MapView) -> None:
+        """
+        Initialize this MapRenderer for the given map.
+        """
+    def render(self, map: MapView, canvas: MapCanvas, player: Player) -> None:
+        """
+        Render to the given map.
+        """
+class MapView:
+    """
+    Represents a map item.
+    """
+    class Scale:
+        """
+        An enum representing all possible scales a map can be set to.
+        """
+        CLOSE: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSE: 1>
+        CLOSEST: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSEST: 0>
+        FAR: typing.ClassVar[MapView.Scale]  # value = <Scale.FAR: 3>
+        FARTHEST: typing.ClassVar[MapView.Scale]  # value = <Scale.FARTHEST: 4>
+        NORMAL: typing.ClassVar[MapView.Scale]  # value = <Scale.NORMAL: 2>
+        __members__: typing.ClassVar[dict[str, MapView.Scale]]  # value = {'CLOSEST': <Scale.CLOSEST: 0>, 'CLOSE': <Scale.CLOSE: 1>, 'NORMAL': <Scale.NORMAL: 2>, 'FAR': <Scale.FAR: 3>, 'FARTHEST': <Scale.FARTHEST: 4>}
+        def __eq__(self, other: typing.Any) -> bool:
+            ...
+        def __getstate__(self) -> int:
+            ...
+        def __hash__(self) -> int:
+            ...
+        def __index__(self) -> int:
+            ...
+        def __init__(self, value: int) -> None:
+            ...
+        def __int__(self) -> int:
+            ...
+        def __ne__(self, other: typing.Any) -> bool:
+            ...
+        def __repr__(self) -> str:
+            ...
+        def __setstate__(self, state: int) -> None:
+            ...
+        def __str__(self) -> str:
+            ...
+        @property
+        def name(self) -> str:
+            ...
+        @property
+        def value(self) -> int:
+            ...
+    def add_renderer(self, renderer: MapRenderer) -> None:
+        """
+        Add a renderer to this map.
+        """
+    def remove_renderer(self, renderer: MapRenderer) -> bool:
+        """
+        Remove a renderer from this map.
+        """
+    @property
+    def center_x(self) -> int:
+        """
+        Get or set the center X position of this map.
+        """
+    @center_x.setter
+    def center_x(self, arg1: int) -> None:
+        ...
+    @property
+    def center_z(self) -> int:
+        """
+        Get or set the center Z position of this map.
+        """
+    @center_z.setter
+    def center_z(self, arg1: int) -> None:
+        ...
+    @property
+    def dimension(self) -> Dimension:
+        """
+        Get or set the dimension that this map is associated with.
+        """
+    @dimension.setter
+    def dimension(self, arg1: Dimension) -> None:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Get the ID of this map item for use with MapMeta.
+        """
+    @property
+    def is_unlimited_tracking(self) -> bool:
+        """
+        Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range.
+        """
+    @is_unlimited_tracking.setter
+    def is_unlimited_tracking(self, arg1: bool) -> None:
+        ...
+    @property
+    def is_virtual(self) -> bool:
+        """
+        Check whether this map is virtual.
+        """
+    @property
+    def locked(self) -> bool:
+        """
+        Whether the map is locked or not. A locked map may not be explored further.
+        """
+    @locked.setter
+    def locked(self, arg1: bool) -> None:
+        ...
+    @property
+    def renderers(self) -> list[MapRenderer]:
+        """
+        Get a copied list of MapRenderers currently in effect.
+        """
+    @property
+    def scale(self) -> MapView.Scale:
+        """
+        Get or set the scale of this map.
+        """
+    @scale.setter
+    def scale(self, arg1: MapView.Scale) -> None:
+        ...
 class MessageForm:
     """
     Represents a form with two buttons.
@@ -1948,8 +2369,11 @@ class Objective:
     @property
     def display_slot(self) -> DisplaySlot | None:
         """
-        Gets the display slot this objective is displayed at
+        Gets or sets the display slot this objective is displayed at
         """
+    @display_slot.setter
+    def display_slot(self, arg1: DisplaySlot | None) -> None:
+        ...
     @property
     def is_displayed(self) -> bool:
         """
@@ -1968,21 +2392,21 @@ class Objective:
     @property
     def render_type(self) -> RenderType:
         """
-        Gets and sets the manner in which this objective will be rendered.
+        Gets the manner in which this objective will be rendered.
         """
-    @render_type.setter
-    def render_type(self, arg1: RenderType) -> None:
-        ...
     @property
     def scoreboard(self) -> Scoreboard:
         """
         Gets the scoreboard to which this objective is attached
         """
     @property
-    def sort_order(self) -> ObjectiveSortOrder | None:
+    def sort_order(self) -> ObjectiveSortOrder:
         """
-        Gets and sets the sort order for this objective
+        Gets or sets the sort order for this objective
         """
+    @sort_order.setter
+    def sort_order(self, arg1: ObjectiveSortOrder) -> None:
+        ...
 class ObjectiveSortOrder:
     """
     Represents the sort order of objectives on a DisplaySlot.
@@ -2035,6 +2459,11 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     Called when the server receives a packet from a connected client.
     """
     @property
+    def address(self) -> SocketAddress:
+        """
+        Gets the network address to which this packet is being sent.
+        """
+    @property
     def packet_id(self) -> int:
         """
         Gets the ID of the packet.
@@ -2051,12 +2480,23 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     def player(self) -> Player:
         """
         Gets the player involved in this event
+        NOTE: This may return None if the packet is sent before the player completes the login process.
+        """
+    @property
+    def sub_client_id(self) -> int:
+        """
+        Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).
         """
 class PacketSendEvent(ServerEvent, Cancellable):
     """
     Called when the server sends a packet to a connected client.
     """
     @property
+    def address(self) -> SocketAddress:
+        """
+        Gets the network address to which this packet is being sent.
+        """
+    @property
     def packet_id(self) -> int:
         """
         Gets the ID of the packet.
@@ -2073,6 +2513,12 @@ class PacketSendEvent(ServerEvent, Cancellable):
     def player(self) -> Player:
         """
         Gets the player involved in this event
+        NOTE: This may return None if the packet is sent before the player completes the login process.
+        """
+    @property
+    def sub_client_id(self) -> int:
+        """
+        Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).
         """
 class Permissible:
     """
@@ -2122,10 +2568,13 @@ class Permissible:
         Gets effective permissions.
         """
     @property
-    def permission_level(self) -> PermissionLevel:
+    def is_op(self) -> bool:
         """
-        Gets the permission level of this object
+        The operator status of this object
         """
+    @is_op.setter
+    def is_op(self, arg1: bool) -> None:
+        ...
 class Permission:
     """
     Represents a unique permission that may be attached to a Permissible
@@ -2260,46 +2709,13 @@ class PermissionDefault:
     """
     Represents the possible default values for permissions
     """
-    CONSOLE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.CONSOLE: 4>
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
     NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     TRUE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.TRUE: 0>
-    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>, 'CONSOLE': <PermissionDefault.CONSOLE: 4>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
-class PermissionLevel:
-    CONSOLE: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.CONSOLE: 2>
-    DEFAULT: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.DEFAULT: 0>
-    OP: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
-    OPERATOR: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
-    __members__: typing.ClassVar[dict[str, PermissionLevel]]  # value = {'DEFAULT': <PermissionLevel.DEFAULT: 0>, 'OP': <PermissionLevel.OP: 1>, 'OPERATOR': <PermissionLevel.OP: 1>, 'CONSOLE': <PermissionLevel.CONSOLE: 2>}
+    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -2482,14 +2898,6 @@ class Player(Mob, OfflinePlayer):
     def is_flying(self, arg1: bool) -> None:
         ...
     @property
-    def is_op(self) -> bool:
-        """
-        The operator status of this player
-        """
-    @is_op.setter
-    def is_op(self, arg1: bool) -> None:
-        ...
-    @property
     def is_sneaking(self) -> bool:
         """
         Gets or sets the sneak mode of the player
@@ -2638,6 +3046,15 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     @death_message.setter
     def death_message(self, arg1: str) -> None:
         ...
+class PlayerDropItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player drops an item from their inventory
+    """
+    @property
+    def item(self) -> ItemStack:
+        """
+        Gets the ItemStack dropped by the player
+        """
 class PlayerEmoteEvent(PlayerEvent):
     """
     Called when a player uses and emote
@@ -2768,6 +3185,20 @@ class PlayerInventory(Inventory):
     @leggings.setter
     def leggings(self, arg1: ItemStack) -> None:
         ...
+class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player is finishing consuming an item (food, potion, milk bucket).
+    """
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        Get the hand used to consume the item.
+        """
+    @property
+    def item(self) -> ItemStack:
+        """
+        Gets or sets the item that is being consumed.
+        """
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server
@@ -2780,6 +3211,10 @@ class PlayerJoinEvent(PlayerEvent):
     @join_message.setter
     def join_message(self, arg1: str) -> None:
         ...
+class PlayerJumpEvent(PlayerMoveEvent):
+    """
+    Called when a player jumps.
+    """
 class PlayerKickEvent(PlayerEvent, Cancellable):
     """
     Called when a player gets kicked from the server
@@ -2804,25 +3239,9 @@ class PlayerLoginEvent(PlayerEvent, Cancellable):
     @kick_message.setter
     def kick_message(self, arg1: str) -> None:
         ...
-class PlayerQuitEvent(PlayerEvent):
+class PlayerMoveEvent(PlayerEvent, Cancellable):
     """
-    Called when a player leaves a server.
-    """
-    @property
-    def quit_message(self) -> str:
-        """
-        Gets or sets the quit message to send to all online players.
-        """
-    @quit_message.setter
-    def quit_message(self, arg1: str) -> None:
-        ...
-class PlayerRespawnEvent(PlayerEvent):
-    """
-    Called when a player respawns.
-    """
-class PlayerTeleportEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player is teleported from one location to another.
+    Called when a player moves.
     """
     @property
     def from_location(self) -> Location:
@@ -2840,6 +3259,35 @@ class PlayerTeleportEvent(PlayerEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None:
         ...
+class PlayerPickupItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks an item up from the ground.
+    """
+    @property
+    def item(self) -> ItemStack:
+        """
+        Gets the Item picked up by the entity.
+        """
+class PlayerQuitEvent(PlayerEvent):
+    """
+    Called when a player leaves a server.
+    """
+    @property
+    def quit_message(self) -> str:
+        """
+        Gets or sets the quit message to send to all online players.
+        """
+    @quit_message.setter
+    def quit_message(self, arg1: str) -> None:
+        ...
+class PlayerRespawnEvent(PlayerEvent):
+    """
+    Called when a player respawns.
+    """
+class PlayerTeleportEvent(PlayerMoveEvent):
+    """
+    Called when a player is teleported from one location to another.
+    """
 class Plugin(CommandExecutor):
     """
     Represents a Plugin
@@ -3109,11 +3557,11 @@ class PluginManager:
         """
         Enable all the loaded plugins
         """
-    def get_default_perm_subscriptions(self, op: PermissionLevel) -> set[Permissible]:
+    def get_default_perm_subscriptions(self, op: bool) -> set[Permissible]:
         """
         Gets a set containing all subscribed Permissibles to the given default list, by op status.
         """
-    def get_default_permissions(self, op: PermissionLevel) -> set[Permission]:
+    def get_default_permissions(self, op: bool) -> set[Permission]:
         """
         Gets the default permissions for the given op status.
         """
@@ -3171,7 +3619,7 @@ class PluginManager:
         """
         Removes a Permission registration from this plugin manager by name.
         """
-    def subscribe_to_default_perms(self, op: PermissionLevel, permissible: Permissible) -> None:
+    def subscribe_to_default_perms(self, op: bool, permissible: Permissible) -> None:
         """
         Subscribes to the given Default permissions by operator status.
         """
@@ -3179,7 +3627,7 @@ class PluginManager:
         """
         Subscribes the given Permissible for information about the requested Permission.
         """
-    def unsubscribe_from_default_perms(self, op: PermissionLevel, permissible: Permissible) -> None:
+    def unsubscribe_from_default_perms(self, op: bool, permissible: Permissible) -> None:
         """
         Unsubscribes from the given Default permissions by operator status.
         """
@@ -3230,12 +3678,27 @@ class Position(Vector):
     @dimension.setter
     def dimension(self, arg1: Dimension) -> None:
         ...
+class ProxiedCommandSender(CommandSender):
+    """
+    Represents a proxied command sender.
+    """
+    @property
+    def callee(self) -> CommandSender:
+        """
+        Returns the CommandSender which is being used to call the command.
+        """
+    @property
+    def caller(self) -> CommandSender:
+        """
+        Returns the CommandSender which triggered this proxied command.
+        """
 class RenderType:
     """
     Controls the way in which an Objective is rendered on the client side.
     """
+    HEARTS: typing.ClassVar[RenderType]  # value = <RenderType.HEARTS: 1>
     INTEGER: typing.ClassVar[RenderType]  # value = <RenderType.INTEGER: 0>
-    __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>}
+    __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>, 'HEARTS': <RenderType.HEARTS: 1>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -3495,6 +3958,11 @@ class Server:
         Gets the instance of the item factory (for ItemMeta).
         """
     @property
+    def item_registry(self) -> ItemRegistry:
+        """
+        Returns the registry for all the item types.
+        """
+    @property
     def language(self) -> Language:
         """
         Gets the current language interface used by the server.
@@ -3541,6 +4009,16 @@ class Server:
     def plugin_manager(self) -> PluginManager:
         """
         Gets the plugin manager for interfacing with plugins.
+        """
+    @property
+    def port(self) -> int:
+        """
+        Get the game port that the server runs on.
+        """
+    @property
+    def port_v6(self) -> int:
+        """
+        Get the game port (IPv6) that the server runs on.
         """
     @property
     def scheduler(self) -> Scheduler:
@@ -3786,27 +4264,27 @@ class Skin:
     """
     Represents a player skin.
     """
-    def __init__(self, skin_id: str, skin_data: numpy.ndarray[numpy.uint8], cape_id: str | None = None, cape_data: numpy.ndarray[numpy.uint8] | None = None) -> None:
+    def __init__(self, id: str, image: numpy.ndarray[numpy.uint8], cape_id: str | None = None, cape_image: numpy.ndarray[numpy.uint8] | None = None) -> None:
         ...
-    @property
-    def cape_data(self) -> numpy.ndarray[numpy.uint8] | None:
-        """
-        Get the Cape data.
-        """
     @property
     def cape_id(self) -> str | None:
         """
         Get the Cape ID.
         """
     @property
-    def skin_data(self) -> numpy.ndarray[numpy.uint8]:
+    def cape_image(self) -> numpy.ndarray[numpy.uint8]:
         """
-        Get the Skin data.
+        Get the Cape image.
         """
     @property
-    def skin_id(self) -> str:
+    def id(self) -> str:
         """
         Get the Skin ID.
+        """
+    @property
+    def image(self) -> numpy.ndarray[numpy.uint8]:
+        """
+        Get the Skin image.
         """
 class Slider:
     """

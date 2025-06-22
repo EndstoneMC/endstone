@@ -243,7 +243,7 @@ enum class MinecraftPacketIds : int {
     CameraAimAssist = 316,
     ContainerRegistryCleanup = 317,
     MovementEffect = 318,
-    SetMovementAuthorityMode = 319,
+    SetMovementAuthorityMode_DEPRECATED = 319,
     CameraAimAssistPresets = 320,
     ClientCameraAimAssist = 321,
     ClientMovementPredictionSyncPacket = 322,
@@ -251,8 +251,9 @@ enum class MinecraftPacketIds : int {
     PlayerVideoCapturePacket = 324,
     PlayerUpdateEntityOverridesPacket = 325,
     PlayerLocation = 326,
-    ClientboundControlSchemeSet = 327,
-    EndId
+    ClientboundControlSchemeSetPacket = 327,
+    ServerScriptDebugDrawerPacket = 328,
+    EndId = 329,
 };
 
 class NetEventCallback;
@@ -274,6 +275,8 @@ public:
     [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &stream);
     [[nodiscard]] virtual bool disallowBatching() const;
     [[nodiscard]] virtual bool isValid() const;
+
+    Bedrock::Result<void> readNoHeader(ReadOnlyBinaryStream &stream, const SubClientId &sub_id);
     [[nodiscard]] SubClientId getClientSubId() const;
     [[nodiscard]] Compressibility getCompressible() const;
     [[nodiscard]] NetworkPeer::Reliability getReliability() const;
@@ -281,6 +284,7 @@ public:
     void handle(const NetworkIdentifier &id, NetEventCallback &callback, std::shared_ptr<Packet> &packet);
 
 private:
+    friend class MinecraftPackets;
     friend class NetworkSystem;
     [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
@@ -296,5 +300,5 @@ BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);
 
 class MinecraftPackets {
 public:
-    static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
+    ENDSTONE_HOOK static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
 };

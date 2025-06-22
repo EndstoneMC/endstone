@@ -35,40 +35,38 @@ ScoreEntry EndstoneScore::getEntry() const
 
 Result<int> EndstoneScore::getValue() const
 {
-    return objective_->checkState().and_then([&](const auto *obj) -> Result<int> {
-        return getScoreboardId().and_then([&](const auto *id) -> Result<int> {
-            if (id->isValid() && obj->objective_.hasScore(*id)) {
-                return obj->objective_.getPlayerScore(*id).value;
-            }
-            return 0;
-        });
-    });
+    auto board = objective_->checkState();
+    ENDSTONE_CHECK_RESULT(board);
+    const auto &id = board.value()->getScoreboardId(entry_);
+    if (id.isValid() && objective_->objective_.hasScore(id)) {
+        return objective_->objective_.getPlayerScore(id).value;
+    }
+    return 0;
 }
 
 Result<void> EndstoneScore::setValue(int score)
 {
-    return objective_->checkState().and_then([&](const auto *obj) -> Result<void> {
-        return getOrCreateScoreboardId().and_then([&](const auto *id) -> Result<void> {
-            return obj->isModifiable().and_then([&](bool modifiable) -> Result<void> {
-                ENDSTONE_CHECK(modifiable, "Cannot modify read-only score.");
-
-                bool success = false;
-                obj->scoreboard_.board_.modifyPlayerScore(success, *id, obj->objective_, score,
-                                                          PlayerScoreSetFunction::Set);
-
-                ENDSTONE_CHECK(success, "Unable to modify score.");
-                return {};
-            });
-        });
-    });
+    auto board = objective_->checkState();
+    ENDSTONE_CHECK_RESULT(board);
+    const auto &id = board.value()->getOrCreateScoreboardId(entry_);
+    ScoreboardOperationResult result;
+    board.value()->board_.modifyPlayerScore(result, id, objective_->objective_, score, PlayerScoreSetFunction::Set);
+    switch (result) {
+    case ScoreboardOperationResult::ReadOnlyCriteria:
+        return nonstd::make_unexpected("Cannot modify read-only score.");
+    case ScoreboardOperationResult::Success:
+        return {};
+    default:
+        return nonstd::make_unexpected("Unable to modify score.");
+    }
 }
 
 Result<bool> EndstoneScore::isScoreSet() const
 {
-    return objective_->checkState().and_then([&](const auto *obj) -> Result<bool> {
-        return getScoreboardId().and_then(
-            [&](const auto *id) -> Result<bool> { return id->isValid() && obj->objective_.hasScore(*id); });
-    });
+    auto board = objective_->checkState();
+    ENDSTONE_CHECK_RESULT(board);
+    const auto &id = board.value()->getScoreboardId(entry_);
+    return id.isValid() && objective_->objective_.hasScore(id);
 }
 
 Objective &EndstoneScore::getObjective() const
@@ -79,19 +77,6 @@ Objective &EndstoneScore::getObjective() const
 Scoreboard &EndstoneScore::getScoreboard() const
 {
     return objective_->getScoreboard();
-}
-
-Result<const ScoreboardId *> EndstoneScore::getScoreboardId() const
-{
-    return objective_->checkState().and_then(
-        [this](const auto *obj) -> Result<const ScoreboardId *> { return &obj->scoreboard_.getScoreboardId(entry_); });
-}
-
-Result<const ScoreboardId *> EndstoneScore::getOrCreateScoreboardId()
-{
-    return objective_->checkState().and_then([this](const auto *obj) -> Result<const ScoreboardId *> {
-        return &obj->scoreboard_.getOrCreateScoreboardId(entry_);
-    });
 }
 
 }  // namespace endstone::core

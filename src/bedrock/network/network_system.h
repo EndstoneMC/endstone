@@ -29,6 +29,9 @@ class NetworkSystem : public RakNetConnector::ConnectionCallbacks,
                       public RakPeerHelper::IPSupportInterface,
                       public NetworkEnableDisableListener {
 public:
+    Bedrock::NotNullNonOwnerPtr<RemoteConnector> getRemoteConnector();
+    [[nodiscard]] Bedrock::NotNullNonOwnerPtr<const RemoteConnector> getRemoteConnector() const;
+
     ENDSTONE_HOOK void send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id);
     ENDSTONE_HOOK void sendToMultiple(const std::vector<NetworkIdentifierWithSubId> &recipients, const Packet &packet);
 
@@ -49,7 +52,7 @@ private:
     std::unique_ptr<ServerLocator> server_locator_;
     Bedrock::Threading::RecursiveMutex connections_mutex_;
     std::size_t current_connection_;
-    Bedrock::Threading::IAsyncResult<void>::Handle receive_task_;
+    Bedrock::Threading::Async<void> receive_task_;
     std::unique_ptr<TaskGroup> receive_task_group_;
     Bedrock::NonOwnerPointer<IPacketObserver> packet_observer_;
     Scheduler &main_thread_;

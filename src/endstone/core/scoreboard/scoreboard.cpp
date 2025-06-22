@@ -82,7 +82,7 @@ std::unique_ptr<Objective> EndstoneScoreboard::getObjective(std::string name) co
 
 std::unique_ptr<Objective> EndstoneScoreboard::getObjective(DisplaySlot slot) const
 {
-    const auto *display_objective = board_.getDisplayObjective(getDisplaySlotName(slot));
+    const auto *display_objective = board_.getDisplayObjective(toMinecraftSlot(slot));
     if (!display_objective) {
         return nullptr;
     }
@@ -166,7 +166,7 @@ std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
 
 void EndstoneScoreboard::clearSlot(DisplaySlot slot)
 {
-    board_.clearDisplayObjective(getDisplaySlotName(slot));
+    board_.clearDisplayObjective(toMinecraftSlot(slot));
 }
 
 std::string EndstoneScoreboard::getCriteriaName(Criteria::Type type)
@@ -179,7 +179,7 @@ std::string EndstoneScoreboard::getCriteriaName(Criteria::Type type)
     }
 }
 
-std::string EndstoneScoreboard::getDisplaySlotName(DisplaySlot slot)
+std::string EndstoneScoreboard::toMinecraftSlot(DisplaySlot slot)
 {
     switch (slot) {
     case DisplaySlot::BelowName:
@@ -191,6 +191,15 @@ std::string EndstoneScoreboard::getDisplaySlotName(DisplaySlot slot)
     default:
         throw std::runtime_error("Unknown DisplaySlot!");
     }
+}
+DisplaySlot EndstoneScoreboard::fromMinecraftSlot(std::string slot)
+{
+    static std::unordered_map<std::string, DisplaySlot> lookup_map = {
+        {::Scoreboard::DISPLAY_SLOT_LIST, DisplaySlot::PlayerList},
+        {::Scoreboard::DISPLAY_SLOT_SIDEBAR, DisplaySlot::SideBar},
+        {::Scoreboard::DISPLAY_SLOT_BELOWNAME, DisplaySlot::BelowName},
+    };
+    return lookup_map.at(slot);
 }
 
 const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry) const

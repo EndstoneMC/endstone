@@ -63,6 +63,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
              "Cancel this event. A cancelled event will not be executed in the server, but will still pass to other "
              "plugins.");
 
+    // Actor events
     py::class_<ActorEvent<Actor>, Event>(m, "ActorEvent", "Represents an Actor-related event.")
         .def_property_readonly("actor", &ActorEvent<Actor>::getActor, py::return_value_policy::reference,
                                "Returns the Actor involved in this event");
@@ -119,6 +120,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "Gets or sets the location that this actor moved to.");
 
+    // Block events
     py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an Block-related event")
         .def_property_readonly("block", &BlockEvent::getBlock, py::return_value_policy::reference,
                                "Gets the block involved in this event.");
@@ -138,6 +140,22 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,
                                "Gets the block that this block was placed against");
 
+    // Level events
+    py::class_<LevelEvent, Event>(m, "LevelEvent", "Represents events within a level")
+        .def_property_readonly("level", &LevelEvent::getLevel, py::return_value_policy::reference,
+                               "Gets the level primarily involved with this event");
+    py::class_<DimensionEvent, LevelEvent>(m, "DimensionEvent", "Represents events within a dimension")
+        .def_property_readonly("dimension", &DimensionEvent::getDimension, py::return_value_policy::reference,
+                               "Gets the dimension primarily involved with this event");
+
+    // Chunk events
+    py::class_<ChunkEvent, DimensionEvent>(m, "ChunkEvent", "Represents a Chunk related event")
+        .def_property_readonly("chunk", &ChunkEvent::getChunk, py::return_value_policy::reference,
+                               "Gets the chunk being loaded/unloaded");
+    py::class_<ChunkLoadEvent, ChunkEvent>(m, "ChunkLoadEvent", "Called when a chunk is loaded");
+    py::class_<ChunkUnloadEvent, ChunkEvent>(m, "ChunkUnloadEvent", "Called when a chunk is unloaded");
+
+    // Player events
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the player involved in this event.");
@@ -152,6 +170,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerDeathEvent, ActorDeathEvent, PlayerEvent>(m, "PlayerDeathEvent", "Called when a player dies")
         .def_property("death_message", &PlayerDeathEvent::getDeathMessage, &PlayerDeathEvent::setDeathMessage,
                       "Gets or sets the death message that will appear to everyone on the server.");
+    py::class_<PlayerDropItemEvent, PlayerEvent, ICancellable>(
+        m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory")
+        .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference,
+                               "Gets the ItemStack dropped by the player");
     py::class_<PlayerEmoteEvent, PlayerEvent>(m, "PlayerEmoteEvent", "Called when a player uses and emote")
         .def_property_readonly("emote_id", &PlayerEmoteEvent::getEmoteId, "Gets the emote ID");
     py::class_<PlayerGameModeChangeEvent, PlayerEvent, ICancellable>(
@@ -174,6 +196,11 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor, py::return_value_policy::reference,
                                "Gets the actor that was right-clicked by the player.");
+    py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(
+        m, "PlayerItemConsumeEvent", "Called when a player is finishing consuming an item (food, potion, milk bucket).")
+        .def_property_readonly("item", &PlayerItemConsumeEvent::getItem, py::return_value_policy::reference,
+                               "Gets or sets the item that is being consumed.")
+        .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "Get the hand used to consume the item.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "Gets or sets the join message to send to all online players.");
@@ -185,17 +212,24 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                             "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "Gets or sets kick message to display if event is cancelled");
+    py::class_<PlayerMoveEvent, PlayerEvent, ICancellable>(m, "PlayerMoveEvent", "Called when a player moves.")
+        .def_property("from_location", &PlayerMoveEvent::getFrom, &PlayerMoveEvent::setFrom,
+                      "Gets or sets the location that this player moved from.")
+        .def_property("to_location", &PlayerMoveEvent::getTo, &PlayerMoveEvent::setTo,
+                      "Gets or sets the location that this player moved to.");
+    py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "Gets or sets the quit message to send to all online players.");
     py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
-    py::class_<PlayerTeleportEvent, PlayerEvent, ICancellable>(
-        m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.")
-        .def_property("from_location", &PlayerTeleportEvent::getFrom, &PlayerTeleportEvent::setFrom,
-                      "Gets or sets the location that this player moved from.")
-        .def_property("to_location", &PlayerTeleportEvent::getTo, &PlayerTeleportEvent::setTo,
-                      "Gets or sets the location that this player moved to.");
+    py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
+        m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
+    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
+        .def_property_readonly("item", &PlayerPickupItemEvent::getItem, py::return_value_policy::reference,
+                               "Gets the Item picked up by the entity.");
 
+    // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a server-related event");
     py::class_<BroadcastMessageEvent, ServerEvent, ICancellable>(
         m, "BroadcastMessageEvent", "Event triggered for server broadcast messages such as from Server.broadcast")
@@ -204,7 +238,6 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("recipients", &BroadcastMessageEvent::getRecipients,
                                py::return_value_policy::reference_internal,
                                "Gets a set of recipients that this broadcast message will be displayed to.");
-
     py::class_<PacketReceiveEvent, ServerEvent, ICancellable>(
         m, "PacketReceiveEvent", "Called when the server receives a packet from a connected client.")
         .def_property_readonly("packet_id", &PacketReceiveEvent::getPacketId, "Gets the ID of the packet.")
@@ -212,8 +245,14 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
             "payload", [](const PacketReceiveEvent &self) { return py::bytes(self.getPayload()); },
             [](PacketReceiveEvent &self, const py::bytes &payload) { self.setPayload(payload); },
             "Gets or sets the raw packet data **excluding** the header.")
-        .def_property_readonly("player", &PacketReceiveEvent::getPlayer, py::return_value_policy::reference,
-                               "Gets the player involved in this event");
+        .def_property_readonly(
+            "player", &PacketReceiveEvent::getPlayer, py::return_value_policy::reference,
+            "Gets the player involved in this event\n"
+            "NOTE: This may return None if the packet is sent before the player completes the login process.")
+        .def_property_readonly("address", &PacketReceiveEvent::getAddress,
+                               "Gets the network address to which this packet is being sent.")
+        .def_property_readonly("sub_client_id", &PacketReceiveEvent::getSubClientId,
+                               "Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).");
 
     py::class_<PacketSendEvent, ServerEvent, ICancellable>(
         m, "PacketSendEvent", "Called when the server sends a packet to a connected client.")
@@ -222,8 +261,14 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
             "payload", [](const PacketSendEvent &self) { return py::bytes(self.getPayload()); },
             [](PacketSendEvent &self, const py::bytes &payload) { self.setPayload(payload); },
             "Gets or sets the raw packet data **excluding** the header.")
-        .def_property_readonly("player", &PacketSendEvent::getPlayer, py::return_value_policy::reference,
-                               "Gets the player involved in this event");
+        .def_property_readonly(
+            "player", &PacketSendEvent::getPlayer, py::return_value_policy::reference,
+            "Gets the player involved in this event\n"
+            "NOTE: This may return None if the packet is sent before the player completes the login process.")
+        .def_property_readonly("address", &PacketSendEvent::getAddress,
+                               "Gets the network address to which this packet is being sent.")
+        .def_property_readonly("sub_client_id", &PacketSendEvent::getSubClientId,
+                               "Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).");
 
     py::class_<PluginEnableEvent, ServerEvent>(m, "PluginEnableEvent", "Called when a plugin is enabled.")
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference);

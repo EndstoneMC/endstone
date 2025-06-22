@@ -15,6 +15,7 @@
 #include "endstone/core/server.h"
 
 #include <filesystem>
+#include <iostream>
 #include <memory>
 
 #include <boost/algorithm/string.hpp>
@@ -35,6 +36,8 @@
 #include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_factory.h"
+#include "endstone/core/inventory/item_type.h"
+#include "endstone/core/level/chunk.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
@@ -44,6 +47,8 @@
 #include "endstone/core/registry.h"
 #include "endstone/core/signal_handler.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/chunk/chunk_load_event.h"
+#include "endstone/event/chunk/chunk_unload_event.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
@@ -79,11 +84,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     }
 }
 
-EndstoneServer::~EndstoneServer()
-{
-    py::gil_scoped_acquire acquire{};
-    disablePlugins();
-}
+EndstoneServer::~EndstoneServer() = default;
 
 void EndstoneServer::init(ServerInstance &server_instance)
 {
@@ -104,11 +105,29 @@ void EndstoneServer::setLevel(::Level &level)
         throw std::runtime_error("Level already initialized.");
     }
     level_ = std::make_unique<EndstoneLevel>(level);
-    enchantment_registry_ = EndstoneRegistry<Enchantment, Enchant>::createRegistry();
+    enchantment_registry_ = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
+    item_registry_ = EndstoneRegistry<ItemType, ::Item>::createRegistry();
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
+    on_chunk_load_subscription_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
+        [&](ChunkSource & /*chunk_source*/, LevelChunk &lc, int /*closest_player_distance_squared*/) -> void {
+            if (lc.getState() >= ChunkState::Loaded) {
+                const auto chunk = std::make_unique<EndstoneChunk>(lc);
+                ChunkLoadEvent e(*chunk);
+                getPluginManager().callEvent(e);
+            }
+        },
+        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+    on_chunk_unload_subscription_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
+        [&](LevelChunk &lc) -> void {
+            const auto chunk = std::make_unique<EndstoneChunk>(lc);
+            ChunkUnloadEvent e(*chunk);
+            getPluginManager().callEvent(e);
+        },
+        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     getPluginManager().callEvent(event);
@@ -121,8 +140,9 @@ void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IReso
     }
     resource_pack_repository_ = std::move(repo);
     auto io = resource_pack_repository_->getPackSourceFactory().createPackIOProvider();
-    resource_pack_source_ = std::make_unique<EndstonePackSource>(
-        resource_pack_repository_->getResourcePacksPath().getContainer(), PackType::Resources, std::move(io));
+    resource_pack_source_ = std::make_unique<EndstonePackSource>(EndstonePackSourceOptions(
+        PackSourceOptions(std::move(io)), resource_pack_repository_->getResourcePacksPath().getContainer(),
+        PackType::Resources));
 }
 
 PackSource &EndstoneServer::getPackSource() const
@@ -330,6 +350,16 @@ Player *EndstoneServer::getPlayer(std::string name) const
     return nullptr;
 }
 
+int EndstoneServer::getPort() const
+{
+    return getRakNetConnector().getIPv4Port();
+}
+
+int EndstoneServer::getPortV6() const
+{
+    return getRakNetConnector().getIPv6Port();
+}
+
 bool EndstoneServer::getOnlineMode() const
 {
     return getServer().getMinecraft()->getServerNetworkHandler()->network_server_config_.require_trusted_authentication;
@@ -508,6 +538,11 @@ Registry<Enchantment> &EndstoneServer::getEnchantmentRegistry() const
     return *enchantment_registry_;
 }
 
+Registry<ItemType> &EndstoneServer::getItemRegistry() const
+{
+    return *item_registry_;
+}
+
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const
 {
     auto it = player_boards_.find(player.getUniqueId());
@@ -549,16 +584,22 @@ void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
 
 void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()> &tick_function)
 {
-    using namespace std::chrono;
+    using std::chrono::milliseconds;
+    using std::chrono::steady_clock;
 
-    const auto tick_time = steady_clock::now();
-
+    const auto start = steady_clock::now();
+    // tick start
     scheduler_->mainThreadHeartbeat(current_tick);
     tick_function();
+    for (const auto &p : getOnlinePlayers()) {
+        auto *player = static_cast<EndstonePlayer *>(p);
+        player->checkOpStatus();
+    }
+    // tick end
+    const auto end = steady_clock::now();
 
-    current_mspt_ = static_cast<float>(duration_cast<milliseconds>(steady_clock::now() - tick_time).count());
-    current_tps_ =
-        std::min(static_cast<float>(SharedConstants::TicksPerSecond), 1000.0F / std::max(1.0F, current_mspt_));
+    current_mspt_ = static_cast<float>(duration_cast<milliseconds>(end - start).count());
+    current_tps_ = std::min(1.0F * SharedConstants::TicksPerSecond, 1000.0F / std::max(1.0F, current_mspt_));
     current_usage_ = std::min(1.0F, current_mspt_ / SharedConstants::MilliSecondsPerTick);
     const auto idx = current_tick % SharedConstants::TicksPerSecond;
     average_mspt_[idx] = current_mspt_;
@@ -569,6 +610,17 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
 ServerInstance &EndstoneServer::getServer() const
 {
     return *server_instance_;
+}
+
+RakNetConnector &EndstoneServer::getRakNetConnector() const
+{
+    return static_cast<RakNetConnector &>(
+        *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector());
+}
+
+EndstoneServer &EndstoneServer::getInstance()
+{
+    return entt::locator<EndstoneServer>::value();
 }
 
 }  // namespace endstone::core

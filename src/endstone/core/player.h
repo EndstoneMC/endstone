@@ -148,10 +148,11 @@ public:
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] std::string getDeviceId() const override;
     [[nodiscard]] std::string getGameVersion() const override;
-    [[nodiscard]] const Skin &getSkin() const override;
+    [[nodiscard]] const Skin *getSkin() const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
+    void handlePacket(const ::Packet &packet);
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();
@@ -160,7 +161,7 @@ public:
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
     void disconnect();
     void updateAbilities() const;
-    bool checkRightClickSpam(Vector<int> block_pos, Vector<float> click_pos);
+    void checkOpStatus();
 
     ::Player &getPlayer() const;
 
@@ -177,10 +178,11 @@ private:
     std::string device_os_ = "Unknown";
     std::string device_id_;
     std::string game_version_;
-    Skin skin_{};
+    std::unique_ptr<Skin> skin_;
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     bool spawned_ = false;
+    bool last_op_status_ = false;
 };
 
 }  // namespace endstone::core

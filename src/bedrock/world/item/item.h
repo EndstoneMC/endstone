@@ -27,9 +27,9 @@
 #include "bedrock/world/interactions/mining/mine_block_item_effect_type.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_helper.h"
-#include "bedrock/world/item/item_tag.h"
 #include "bedrock/world/item/rarity.h"
 #include "bedrock/world/item/registry/item_registry.h"
+#include "bedrock/world/item/vanilla_item_tag.h"
 #include "bedrock/world/level/block/block_legacy.h"
 
 using BlockShape = std::int64_t;
@@ -172,17 +172,24 @@ private:
     virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face, Vec3 const &) const = 0;
 
 public:
+    bool operator==(const Item &other) const;
+    bool operator!=(const Item &other) const;
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] const std::string &getFullItemName() const;
     [[nodiscard]] const HashedString &getFullNameHash() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const;
+    [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] const std::vector<ItemTag> &getTags() const;
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
     ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;
     [[nodiscard]] float getFurnaceBurnIntervalMultipler() const;
     [[nodiscard]] const std::string &getCreativeGroup() const;
     [[nodiscard]] CreativeItemCategory getCreativeCategory() const;
+    [[nodiscard]] std::int16_t getDamageValue(const CompoundTag *tag) const;
+    [[nodiscard]] bool hasDamageValue(const CompoundTag *tag) const;
+    void removeDamageValue(ItemStackBase &item) const;
+    void setDamageValue(ItemStackBase &item, std::int16_t damage) const;
 
 public:
     ItemVersion item_parse_version;

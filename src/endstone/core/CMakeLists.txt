@@ -61,11 +61,14 @@ add_library(endstone_core
         inventory/inventory.cpp
         inventory/item_factory.cpp
         inventory/item_stack.cpp
+        inventory/item_type.cpp
         inventory/player_inventory.cpp
         lang/language.cpp
         level/chunk.cpp
         level/dimension.cpp
         level/level.cpp
+        map/map_renderer.cpp
+        map/map_view.cpp
         network/data_packet.cpp
         packs/endstone_pack_source.cpp
         permissions/default_permissions.cpp
@@ -88,6 +91,7 @@ add_library(endstone_core
         spdlog/level_formatter.cpp
         spdlog/spdlog_adapter.cpp
         spdlog/text_formatter.cpp
+        util/socket_address.cpp
         util/uuid.cpp
 )
 add_library(endstone::core ALIAS endstone_core)

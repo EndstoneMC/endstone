@@ -11,8 +11,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #pragma once
+
 #include <chrono>
+#include <functional>
 
 enum class Compressibility {
     Compressible = 0,
@@ -40,9 +43,9 @@ public:
     virtual ~NetworkPeer() = default;
     virtual void sendPacket(const std::string &, Reliability, Compressibility) = 0;
     virtual DataStatus receivePacket(std::string &, const PacketRecvTimepointPtr &) = 0;
-    virtual NetworkStatus getNetworkStatus() const = 0;
+    [[nodiscard]] virtual NetworkStatus getNetworkStatus() const = 0;
     virtual void update() = 0;
     virtual void flush(std::function<void()> &&) = 0;
-    virtual bool isLocal() const = 0;
-    virtual bool isEncrypted() const = 0;
+    [[nodiscard]] virtual bool isLocal() const = 0;
+    [[nodiscard]] virtual bool isEncrypted() const = 0;
 };

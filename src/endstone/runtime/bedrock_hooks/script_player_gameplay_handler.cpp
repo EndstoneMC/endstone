@@ -21,6 +21,7 @@
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/network/packet/update_player_game_type_packet.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/item/item_actor.h"
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
@@ -31,17 +32,16 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_death_event.h"
+#include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
-#include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-
 bool handleEvent(const PlayerDamageEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
@@ -223,7 +223,6 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
-                      // std::is_same_v<T, Details::ValueOrRef<const PlayerInitialSpawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerEmoteEvent>>) {
             if (!handleEvent(arg.value())) {

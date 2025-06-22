@@ -14,10 +14,11 @@
 
 #pragma once
 
-#include <memory>
 #include <functional>
+#include <memory>
 
 #include "bedrock/core/container/intrusive_list.h"
+#include "bedrock/core/utility/pub_sub/detail/return_policy.h"
 #include "bedrock/core/utility/pub_sub/publisher_config.h"
 #include "bedrock/core/utility/pub_sub/return_policy_type.h"
 
@@ -40,8 +41,14 @@ private:
 };
 
 template <typename Signature, ReturnPolicyType PolicyType>
-class SubscriptionBody : public SubscriptionBodyBase {
-    using FunctionType = std::function<Signature>;
+class SubscriptionBody;
+
+template <typename Return, typename... Xs, ReturnPolicyType PolicyType>
+class SubscriptionBody<Return(Xs...), PolicyType> : public SubscriptionBodyBase {
+public:
+    using ReturnPolicy = ReturnPolicy<Return, PolicyType>;
+    using ReturnType = typename ReturnPolicy::ReturnType;
+    using FunctionType = std::function<ReturnType(Xs...)>;
 
 protected:
     FunctionType function_;  // +64

@@ -24,7 +24,6 @@
 #include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
-#include "endstone/inventory/item_factory.h"
 #include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
@@ -38,6 +37,8 @@ namespace endstone {
 
 class ConsoleCommandSender;
 class Enchantment;
+class ItemFactory;
+class ItemType;
 class Scheduler;
 class PluginCommand;
 class PluginManager;
@@ -164,6 +165,20 @@ public:
      * @return a player object if one was found, null otherwise
      */
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
+
+    /**
+     * @brief Get the game port that the server runs on.
+     *
+     * @return the port number of this server
+     */
+    [[nodiscard]] virtual int getPort() const = 0;
+
+    /**
+     * @brief Get the game port (IPv6) that the server runs on.
+     *
+     * @return the port number of this server
+     */
+    [[nodiscard]] virtual int getPortV6() const = 0;
 
     /**
      * @brief Gets whether the Server is in online mode or not.
@@ -375,6 +390,13 @@ public:
      * @return the enchantment registry.
      */
     [[nodiscard]] virtual Registry<Enchantment> &getEnchantmentRegistry() const = 0;
+
+    /**
+      * Returns the registry for all the item types.
+
+      * @return the item registry.
+      */
+    [[nodiscard]] virtual Registry<ItemType> &getItemRegistry() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

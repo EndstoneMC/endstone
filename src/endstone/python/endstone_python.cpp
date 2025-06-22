@@ -41,6 +41,7 @@ void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
 void init_level(py::module_ &);
 void init_logger(py::module_ &);
+void init_map(py::module_ &);
 void init_namespaced_key(py::module_ &, py::class_<NamespacedKey> &namespaced_key);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default, py::enum_<PermissionLevel> &permission_level);
@@ -98,6 +99,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_util(m);
     init_ban(m);
     init_level(m);
+    init_map(m);
     init_scoreboard(m);
     init_block(m, block);
     init_actor(m, actor, mob);
@@ -224,6 +226,7 @@ void init_logger(py::module &m)
 void init_registry(py::module_ &m)
 {
     python::registry<Enchantment>(m, "EnchantmentRegistry");
+    python::registry<ItemType>(m, "ItemRegistry");
 }
 
 void init_server(py::class_<Server> &server)
@@ -250,6 +253,8 @@ void init_server(py::class_<Server> &server)
                                "Gets the service manager.")
         .def_property_readonly("enchantment_registry", &Server::getEnchantmentRegistry,
                                py::return_value_policy::reference, "Returns the registry for all the enchantments.")
+        .def_property_readonly("item_registry", &Server::getItemRegistry, py::return_value_policy::reference,
+                               "Returns the registry for all the item types.")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "Gets the server level.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,
@@ -262,6 +267,8 @@ void init_server(py::class_<Server> &server)
              py::return_value_policy::reference, "Gets the player with the given UUID.")
         .def_property_readonly("online_mode", &Server::getOnlineMode,
                                "Gets whether the Server is in online mode or not.")
+        .def_property_readonly("port", &Server::getPort, "Get the game port that the server runs on.")
+        .def_property_readonly("port_v6", &Server::getPortV6, "Get the game port (IPv6) that the server runs on.")
         .def("shutdown", &Server::shutdown, "Shutdowns the server, stopping everything.")
         .def("reload", &Server::reload, "Reloads the server configuration, functions, scripts and plugins.")
         .def("reload_data", &Server::reloadData, "Reload only the Minecraft data for the server.")
@@ -318,53 +325,13 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player)
 {
     py::class_<Skin>(m, "Skin", "Represents a player skin.")
-        .def(py::init([](std::string skin_id, const py::array_t<std::uint8_t> &skin_data,
-                         std::optional<std::string> cape_id, std::optional<py::array_t<std::uint8_t>> cape_data) {
-                 py::buffer_info info1 = skin_data.request();
-                 if (info1.ndim != 3 || info1.shape[2] != 4) {
-                     throw std::runtime_error("Incompatible shape. Expected (h, w, 4)");
-                 }
-                 Skin::ImageData sd = {static_cast<int>(info1.shape[0]), static_cast<int>(info1.shape[1]),
-                                       std::string(static_cast<char *>(info1.ptr), info1.size)};
-
-                 std::optional<Skin::ImageData> cd = std::nullopt;
-                 if (cape_data.has_value()) {
-                     py::buffer_info info2 = cape_data.value().request();
-                     if (info2.ndim != 3 || info2.shape[2] != 4) {
-                         throw std::runtime_error("Incompatible shape. Expected (h, w, 4)");
-                     }
-                     cd = {static_cast<int>(info2.shape[0]), static_cast<int>(info2.shape[1]),
-                           std::string(static_cast<char *>(info2.ptr), info2.size)};
-                 }
-                 return Skin(std::move(skin_id), sd, std::move(cape_id), cd);
-             }),
-             py::arg("skin_id"), py::arg("skin_data"), py::arg("cape_id") = py::none(),
-             py::arg("cape_data") = py::none())
-        .def_property_readonly("skin_id", &Skin::getSkinId, "Get the Skin ID.")
-        .def_property_readonly(
-            "skin_data",
-            [](const Skin &self) {
-                const auto &data = self.getSkinData();
-                return py::array_t<std::uint8_t>(py::buffer_info(
-                    const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
-                    py::format_descriptor<std::uint8_t>::format(), 3, {data.height, data.width, 4},
-                    {sizeof(std::uint8_t) * data.width * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
-            },
-            "Get the Skin data.")
+        .def(py::init<std::string, Image, std::optional<std::string>, std::optional<Image>>(), py::arg("id"),
+             py::arg("image"), py::arg("cape_id") = py::none(), py::arg("cape_image") = py::none())
+        .def_property_readonly("id", &Skin::getId, "Get the Skin ID.")
+        .def_property_readonly("image", &Skin::getImage, "Get the Skin image.", py::return_value_policy::reference)
         .def_property_readonly("cape_id", &Skin::getCapeId, "Get the Cape ID.")
-        .def_property_readonly(
-            "cape_data",
-            [](const Skin &self) -> std::optional<py::array_t<std::uint8_t>> {
-                if (!self.getCapeData().has_value()) {
-                    return std::nullopt;
-                }
-                const auto &data = self.getCapeData().value();
-                return py::array_t<std::uint8_t>(py::buffer_info(
-                    const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
-                    py::format_descriptor<std::uint8_t>::format(), 3, {data.height, data.width, 4},
-                    {sizeof(std::uint8_t) * data.width * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
-            },
-            "Get the Cape data.");
+        .def_property_readonly("cape_image", &Skin::getCapeImage, "Get the Cape image.",
+                               py::return_value_policy::reference);
 
     offline_player  //
         .def_property_readonly("name", &OfflinePlayer::getName, "Returns the name of this player")

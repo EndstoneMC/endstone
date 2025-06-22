@@ -33,6 +33,11 @@ bool Enchant::canEnchant(int slot, bool allow_non_vanilla) const
     return false;
 }
 
+std::string Enchant::getDescriptionId() const
+{
+    return description_;
+}
+
 const HashedString &Enchant::getStringId() const
 {
     return string_id_;

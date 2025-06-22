@@ -17,11 +17,13 @@
 #include <memory>
 #include <vector>
 
+#include "bedrock/core/utility/buffer_span.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/saveddata/maps/map_decoration.h"
 #include "bedrock/world/level/saveddata/maps/map_item_tracked_actor.h"
+#include "bedrock/world/level/storage/level_storage.h"
 
 struct ClientTerrainPixel {
     std::uint32_t pixel;
@@ -30,13 +32,89 @@ struct ClientTerrainPixel {
 };
 static_assert(sizeof(ClientTerrainPixel) == 8);
 
+namespace endstone::core {
+class EndstoneMapView;
+}
+
 class MapItemSavedData {
+public:
+    struct ChunkBounds {
+        uint32_t x0;
+        uint32_t z0;
+        uint32_t x1;
+        uint32_t z1;
+    };
+
+private:
     using DecorationCollection = std::vector<std::pair<MapItemTrackedActor::UniqueId, std::shared_ptr<MapDecoration>>>;
 
 public:
     MapItemSavedData(ActorUniqueID, bool);
+    void setOrigin(Vec3 origin, int scale, DimensionType dimension, bool is_legacy_level, bool is_centered,
+                   const BlockPos &world_center);
+    void setScale(int);
+    void setDimensionId(DimensionType);
+    void setScaleAndParentMapId(int, ActorUniqueID);
+    [[nodiscard]] int getScale() const;
+    [[nodiscard]] const BlockPos &getOrigin() const;
+    [[nodiscard]] DimensionType getDimensionId() const;
+    [[nodiscard]] const DecorationCollection &getDecorations() const;
+    void enableUnlimitedTracking();
+    void deserialize(const CompoundTag &);
+    void serialize(CompoundTag &) const;
+    void save(LevelStorage &);
+    void trySave(LevelStorage &);
+    void tickCarriedBy(Actor &, const CompoundTag *);
+    void tickByBlock(const BlockPos &, BlockSource &);
+    std::shared_ptr<MapItemTrackedActor> addTrackedMapEntity(Actor &, MapDecoration::Type);
+    std::shared_ptr<MapItemTrackedActor> addTrackedMapEntity(const BlockPos &, BlockSource &, MapDecoration::Type);
+    void removeTrackedMapEntity(Actor &);
+    void removeTrackedMapEntity(const BlockPos &);
+    [[nodiscard]] std::unique_ptr<Packet> getUpdatePacket(const ItemStack &, Level &, Actor &) const;
+    [[nodiscard]] std::unique_ptr<Packet> getUpdatePacket(Level &, const BlockPos &) const;
+    [[nodiscard]] std::unique_ptr<Packet> getFullDataPacket() const;
+    void setLocked();
+    [[nodiscard]] bool isLocked() const;
+    void setDirtyForSave();
+    [[nodiscard]] bool isDirtyForSave() const;
+    void setDirtyForSaveAndPixelData();
+    void setPixelDirty(uint32_t, uint32_t);
+    void setAllPixelsDirty();
+    bool setPixel(uint32_t, uint32_t, uint32_t);
+    [[nodiscard]] bool isChunkAllEmpty(ChunkBounds) const;
+    void setMapSection(buffer_span<unsigned int>, ChunkBounds);
+    [[nodiscard]] ActorUniqueID getMapId() const;
+    std::shared_ptr<MapItemTrackedActor> getTrackedMapEntity(Actor &);
+    std::shared_ptr<MapItemTrackedActor> getTrackedMapEntity(const BlockPos &, BlockSource &);
+    void replaceDecorations(std::vector<std::shared_ptr<MapDecoration>>,
+                            const std::vector<MapItemTrackedActor::UniqueId> &);
+    void replacePixels(buffer_span<unsigned int>, uint32_t, uint32_t, uint32_t, uint32_t);
+    void addDecoration(const MapItemTrackedActor::UniqueId &, const std::shared_ptr<MapDecoration> &);
+    static bool pointInMapBounds(float, float);
+    [[nodiscard]] ActorUniqueID getParentMapId() const;
+    [[nodiscard]] bool hasParentMap() const;
+    [[nodiscard]] bool isAdjacent(const MapItemSavedData &, int) const;
+    [[nodiscard]] bool isFullyExplored() const;
+    [[nodiscard]] bool isPreviewIncomplete() const;
+    void _setPreviewIncomplete(bool);
+    void setPixelDataClean();
+    [[nodiscard]] bool isPixelDataDirty() const;
+    [[nodiscard]] buffer_span<unsigned int> getPixels() const;
+    std::vector<ClientTerrainPixel> &getClientPixels();
+    void copyMapData(const MapItemSavedData &);
+    static AABB getMapWorldBounds(const BlockPos &, int, int);
+
+    void setClientPixelsDirty(bool);
+    [[nodiscard]] bool areClientPixelsDirty() const;
+    SpinLock *getClientSamplingLock();
+    [[nodiscard]] bool needsResampling() const;
+    void checkNeedsResampling();
+
+    size_t update_interval;
 
 private:
+    friend class endstone::core::EndstoneMapView;
+
     ActorUniqueID map_id_;
     ActorUniqueID parent_map_id_;
     bool is_fully_explored_;
@@ -57,3 +135,4 @@ private:
     bool needs_resampling_;
     bool is_dlc_world_;
 };
+static_assert(sizeof(MapItemSavedData) == 176);

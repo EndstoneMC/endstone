@@ -24,6 +24,8 @@ class EndstoneServer;
 class Level : public ILevel {
 public:
     ENDSTONE_HOOK void tick() override;
+    // ENDSTONE_HOOK void onChunkDiscarded(LevelChunk &);
+    // ENDSTONE_HOOK void onChunkLoaded(ChunkSource &, LevelChunk &);
 
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;

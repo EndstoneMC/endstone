@@ -74,6 +74,8 @@ public:
     [[nodiscard]] Player *getPlayer(UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
 
+    [[nodiscard]] int getPort() const override;
+    [[nodiscard]] int getPortV6() const override;
     [[nodiscard]] bool getOnlineMode() const override;
     void shutdown() override;
     void reload() override;
@@ -105,6 +107,7 @@ public:
     [[nodiscard]] IpBanList &getIpBanList() const override;
     [[nodiscard]] ServiceManager &getServiceManager() const override;
     [[nodiscard]] Registry<Enchantment> &getEnchantmentRegistry() const override;
+    [[nodiscard]] Registry<ItemType> &getItemRegistry() const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
@@ -118,6 +121,9 @@ public:
     [[nodiscard]] bool getAllowClientPacks() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
+    [[nodiscard]] RakNetConnector &getRakNetConnector() const;
+
+    [[nodiscard]] static EndstoneServer &getInstance();
 
 private:
     friend class EndstonePlayer;
@@ -138,6 +144,7 @@ private:
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
     std::unique_ptr<Registry<Enchantment>> enchantment_registry_;
+    std::unique_ptr<Registry<ItemType>> item_registry_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
     std::unordered_map<UUID, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
@@ -151,6 +158,8 @@ private:
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     bool allow_client_packs_ = false;
+    ::Bedrock::PubSub::Subscription on_chunk_load_subscription_;
+    ::Bedrock::PubSub::Subscription on_chunk_unload_subscription_;
 };
 
 }  // namespace endstone::core

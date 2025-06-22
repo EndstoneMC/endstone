@@ -1,5 +1,5 @@
 [build-system]
-requires = ["scikit-build-core-conan>=0.5.3"]
+requires = ["scikit-build-core-conan>=0.7.1"]
 build-backend = "scikit_build_core_conan.build"
 
 [project]

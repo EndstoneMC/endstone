@@ -75,6 +75,17 @@ struct BuiltInActorComponents {
 class Actor {
 public:
     template <typename Component>
+    void addOrRemoveComponent(const bool should_add)
+    {
+        if (should_add) {
+            entity_context_.getOrAddComponent<Component>();
+        }
+        else {
+            entity_context_.removeComponent<Component>();
+        }
+    }
+
+    template <typename Component>
     [[nodiscard]] bool hasComponent() const
     {
         return entity_context_.hasComponent<Component>();
@@ -125,7 +136,7 @@ public:
     virtual bool canDisableShield() = 0;
     ENDSTONE_HOOK virtual void teleportTo(Vec3 const &, bool, int, int, bool) = 0;
     virtual Vec3 lerpMotion(Vec3 const &) = 0;
-    virtual std::unique_ptr<AddActorBasePacket> tryCreateAddActorPacket() = 0;
+    virtual std::unique_ptr<Packet> tryCreateAddActorPacket() = 0;
     virtual void normalTick() = 0;
     virtual void baseTick() = 0;
     virtual void passengerTick() = 0;
@@ -258,6 +269,7 @@ public:
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] bool isOnGround() const;
+    [[nodiscard]] bool wasOnGround() const;
     [[nodiscard]] bool isInWater() const;
     [[nodiscard]] bool isInLava() const;
     [[nodiscard]] bool isClientSide() const;
@@ -270,6 +282,7 @@ public:
     [[nodiscard]] Vec3 const &getPosDelta() const;
     void setPosDelta(const Vec3 &);
     [[nodiscard]] Vec2 const &getRotation() const;
+    [[nodiscard]] const Vec2 &getRotationPrev() const;
     void setRotationWrapped(const Vec2 &);
     [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
@@ -302,7 +315,7 @@ public:
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
 
 private:
-    EntityContext entity_context_;  // +8
+    mutable EntityContext entity_context_;  // +8
     VariantParameterList init_params_;
     std::string custom_init_event_name_;
     ActorInitializationMethod init_method_;

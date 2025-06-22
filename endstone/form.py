@@ -1,6 +1,8 @@
 from endstone._internal.endstone_python import (
     ActionForm,
+    Divider,
     Dropdown,
+    Header,
     Label,
     MessageForm,
     ModalForm,
@@ -8,8 +10,6 @@ from endstone._internal.endstone_python import (
     StepSlider,
     TextInput,
     Toggle,
-    Divider,
-    Header,
 )
 
 __all__ = [

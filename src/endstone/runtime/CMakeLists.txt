@@ -18,11 +18,14 @@ add_library(funchook::funchook ALIAS funchook-static)
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
         bedrock_hooks/bedrock_event_logger.cpp
+        bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item_registry_manager.cpp
         bedrock_hooks/level.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/network_connection.cpp
         bedrock_hooks/network_system.cpp
+        bedrock_hooks/packet.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/raknet_socket2.cpp
         bedrock_hooks/rak_peer_helper.cpp
@@ -30,6 +33,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/say_command.cpp
         bedrock_hooks/script_actor_gameplay_handler.cpp
         bedrock_hooks/script_block_gameplay_handler.cpp
+        bedrock_hooks/script_item_gameplay_handler.cpp
         bedrock_hooks/script_level_gameplay_handler.cpp
         bedrock_hooks/script_player_gameplay_handler.cpp
         bedrock_hooks/script_scripting_event_handler.cpp
@@ -37,6 +41,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
+        bedrock_hooks/server_player_movement_correction_system.cpp
         bedrock_hooks/server_script_manager.cpp
         main.cpp
         hook.cpp
@@ -45,6 +50,7 @@ add_library(endstone_runtime SHARED
         windows.cpp
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
+set_target_properties(endstone_runtime PROPERTIES COMPILE_WARNING_AS_ERROR ON)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
 if (MSVC)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)

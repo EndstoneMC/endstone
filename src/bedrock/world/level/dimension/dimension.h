@@ -58,6 +58,7 @@ class Dimension : public IDimension,
 public:
     Dimension(ILevel &, DimensionType, DimensionHeightRange, Scheduler &, std::string);
 
+    [[nodiscard]] std::string getLocalizationKey() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] ChunkSource &getChunkSource() const;
     BlockSource &getBlockSourceFromMainChunkSource() const;

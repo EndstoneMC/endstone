@@ -31,6 +31,12 @@ public:
     [[nodiscard]] bool isValid() const;
 
     template <typename Component>
+    void removeComponent()
+    {
+        entt_registry_.remove<Component>(entity_);
+    }
+
+    template <typename Component>
     [[nodiscard]] bool hasComponent() const
     {
         return entt_registry_.all_of<Component>(entity_);
@@ -49,7 +55,7 @@ public:
     }
 
     template <typename Component, typename... Args>
-    Component &getOrAddComponent(Args &&...args) const
+    decltype(auto) getOrAddComponent(Args &&...args)
     {
         return entt_registry_.get_or_emplace<Component>(entity_, std::forward<Args>(args)...);
     }

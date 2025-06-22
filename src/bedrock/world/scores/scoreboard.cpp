@@ -14,8 +14,14 @@
 
 #include "bedrock/world/scores/scoreboard.h"
 
+#include <charconv>
+
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/player/player.h"
+
+const std::string Scoreboard::DISPLAY_SLOT_LIST = "list";
+const std::string Scoreboard::DISPLAY_SLOT_SIDEBAR = "sidebar";
+const std::string Scoreboard::DISPLAY_SLOT_BELOWNAME = "belowname";
 
 Scoreboard::~Scoreboard() = default;
 
@@ -79,6 +85,11 @@ const DisplayObjective *Scoreboard::getDisplayObjective(const std::string &name)
     return &it->second;
 }
 
+std::vector<std::string> Scoreboard::getDisplayObjectiveSlotNames() const
+{
+    return {DISPLAY_SLOT_LIST, DISPLAY_SLOT_SIDEBAR, DISPLAY_SLOT_BELOWNAME};
+}
+
 const ScoreboardId &Scoreboard::getScoreboardId(const Player &player) const
 {
     return identity_dictionary_.getScoreboardId(PlayerScoreboardId{player.getOrCreateUniqueID()});
@@ -94,18 +105,17 @@ const ScoreboardId &Scoreboard::getScoreboardId(const Actor &actor) const
 
 const ScoreboardId &Scoreboard::getScoreboardId(const std::string &fake) const
 {
-    auto &id = identity_dictionary_.getScoreboardId(fake);
+    const auto &id = identity_dictionary_.getScoreboardId(fake);
     if (id.isValid()) {
         return id;
     }
-    try {
-        ActorUniqueID actor_unique_id;
-        actor_unique_id.raw_id = std::stoll(fake);
+
+    ActorUniqueID actor_unique_id;
+    auto [ptr, ec] = std::from_chars(fake.data(), fake.data() + fake.size(), actor_unique_id.raw_id);
+    if (ec == std::errc()) {
         return identity_dictionary_.getScoreboardId(actor_unique_id);
     }
-    catch (std::exception &) {
-        return id;
-    }
+    return id;
 }
 
 bool Scoreboard::hasIdentityFor(const ScoreboardId &id) const
@@ -130,14 +140,14 @@ ObjectiveCriteria *Scoreboard::getCriteria(const std::string &name) const
     return nullptr;
 }
 
-void Scoreboard::forEachObjective(std::function<void(Objective &)> callback) const
+void Scoreboard::forEachObjective(std::function<void(Objective &)> callback)
 {
     for (const auto &[key, value] : objectives_) {
         callback(*value);
     }
 }
 
-void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback) const
+void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback)
 {
     for (const auto &[key, value] : identity_refs_) {
         callback(const_cast<ScoreboardIdentityRef &>(value));
@@ -167,21 +177,21 @@ bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
     return id_ref->removeFromObjective(*this, objective);
 }
 
-int Scoreboard::modifyPlayerScore(bool &success, const ScoreboardId &id, Objective &objective, int score,
-                                  PlayerScoreSetFunction action)
+int Scoreboard::modifyPlayerScore(ScoreboardOperationResult &result, const ScoreboardId &id, Objective &objective,
+                                  int score, PlayerScoreSetFunction action)
 {
-    int result = 0;
+    int flag = 0;
     auto *id_ref = getScoreboardIdentityRef(id);
     if (!id_ref) {
-        success = false;
-        return result;
+        result = ScoreboardOperationResult::UnknownId;
+        return 0;
     }
 
-    success = id_ref->modifyScoreInObjective(result, objective, score, action);
-    if (success) {
+    result = id_ref->modifyScoreInObjective(flag, objective, score, action);
+    if (result == ScoreboardOperationResult::Success) {
         onScoreChanged(id, objective);
     }
-    return result;
+    return flag;
 }
 
 bool Scoreboard::clearScoreboardIdentity(const ScoreboardId &id)

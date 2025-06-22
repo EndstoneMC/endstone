@@ -23,12 +23,13 @@ class EndstoneEnchantment : public Enchantment {
 public:
     EndstoneEnchantment(NamespacedKey key, const Enchant &handle);
     [[nodiscard]] NamespacedKey getKey() const override;
+    [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] int getMaxLevel() const override;
     [[nodiscard]] int getStartLevel() const override;
     [[nodiscard]] bool conflictsWith(const Enchantment &other) const override;
     [[nodiscard]] bool canEnchantItem(const ItemStack &item) const override;
 
-    const Enchant &getHandle() const;
+    [[nodiscard]] const Enchant &getHandle() const;
 
 private:
     NamespacedKey key_;

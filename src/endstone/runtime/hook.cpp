@@ -28,16 +28,24 @@
 
 namespace endstone::hook {
 namespace details {
-using OriginalMap = std::unordered_map<entt::hashed_string::hash_type, void *>;
+/**
+ * @brief Mapping of hooked targets to their original implementations.
+ *
+ * Key   : the function pointer for the hooked (detour) target.
+ * Value : the function pointer returned by the hooking framework;
+ *         invoke this pointer to call the original function.
+ */
+using OriginalMap = std::unordered_map<void *, void *>;
+
 static OriginalMap &originals()  // NOLINT(*-use-anonymous-namespace)
 {
     static OriginalMap originals;
     return originals;
 }
 
-void *&get_original(entt::hashed_string::hash_type name)
+void *&get_original(void *target)
 {
-    const auto it = originals().find(name);
+    const auto it = originals().find(target);
     if (it == originals().end()) {
         throw std::runtime_error("original function not found");
     }
@@ -128,7 +136,7 @@ void install()
             }
 
             SPDLOG_DEBUG("{}: {} -> {} -> {}", name, target, detour, original);
-            details::originals().emplace(entt::hashed_string::value(name.c_str()), original);
+            details::originals().emplace(target, original);
         }
         else {
             throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));

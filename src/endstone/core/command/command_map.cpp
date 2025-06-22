@@ -60,11 +60,16 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
         return false;
     }
 
-    const auto target = getCommand(args[0]);
-    if (!target) {
+    const auto &registry = getHandle().getRegistry();
+    const auto *signature = registry.findCommand(args[0]);
+    if (!signature) {
         sender.sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
         return false;
     }
+
+    const auto target =
+        std::make_shared<MinecraftCommandWrapper>(const_cast<MinecraftCommands &>(getHandle()), *signature);
+    target->registerTo(*this);
 
     try {
         return target->execute(sender, std::vector(args.begin() + 1, args.end()));
@@ -166,7 +171,8 @@ void EndstoneCommandMap::unregisterCommand(std::string name)
                 if (param.param_type != CommandParameterDataType::Enum || !param.enum_name_or_postfix) {
                     continue;
                 }
-                if (param.enum_name_or_postfix == "Boolean" || param.enum_name_or_postfix == "Block") {
+                if (std::string_view(param.enum_name_or_postfix) == "Boolean" ||
+                    std::string_view(param.enum_name_or_postfix) == "Block") {
                     continue;
                 }
                 clearEnumValues(param.enum_name_or_postfix);

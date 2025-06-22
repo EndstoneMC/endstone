@@ -192,8 +192,8 @@ public:
     class Symbol {
     public:
         Symbol() = default;
-        Symbol(size_t value) : value_(static_cast<int>(value)){};
-        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)){};
+        Symbol(size_t value) : value_(static_cast<int>(value)) {};
+        Symbol(HardNonTerminal value) : value_(static_cast<int>(value)) {};
         Symbol(const Symbol &other)
         {
             value_ = other.value_;
@@ -296,7 +296,6 @@ public:
     };
     BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry::ParseToken, 40, 40);
 
-    friend struct fmt::formatter<ParseToken>;
     struct ParseRule;
     struct OptionalParameterChain;
     struct Factorization;
@@ -486,42 +485,29 @@ const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *n
 namespace fmt {
 template <>
 struct formatter<CommandRegistry::ParseToken> : formatter<string_view> {
-    using Type = CommandRegistry::ParseToken;
-
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) -> format_context::iterator
+    auto format(const CommandRegistry::ParseToken &token, FormatContext &ctx) -> format_context::iterator
     {
-        std::stack<std::pair<const CommandRegistry::ParseToken *, int>> to_visit;
-        auto out = ctx.out();
-
-        to_visit.emplace(&val, 0);
-        while (!to_visit.empty()) {
-            auto node_level = to_visit.top();
-            to_visit.pop();
-
-            const auto *node = node_level.first;
-            auto level = node_level.second;
-
-            for (int i = 0; i < level * 4; ++i) {
-                out = fmt::format_to(out, " ");
+        auto out = fmt::format_to(ctx.out(), "[");
+        for (const auto *it = &token; it; it = it->next.get()) {
+            if (it != &token) {
+                out = fmt::format_to(out, ", ");
             }
-
-            if (node) {
-                out = fmt::format_to(out, "Symbol: 0x{:x}", node->type.value());
-                if (node->length > 0) {
-                    out = fmt::format_to(out, ", Data: {}", std::string(node->text, node->length));
+            out = fmt::format_to(out, R"({{"type": "{}")", it->type.value());
+            if (it->text != nullptr && it->length > 0) {
+                std::string_view text(it->text, it->length);
+                if (it->type == CommandRegistry::HardNonTerminal::Id && text.size() >= 2 && text.front() == '"' &&
+                    text.back() == '"') {
+                    text = text.substr(1, text.size() - 2);
                 }
-                out = fmt::format_to(out, "\n");
-
-                if (node->next) {
-                    to_visit.emplace(node->next.get(), level);
-                }
-                if (node->child) {
-                    to_visit.emplace(node->child.get(), level + 1);
-                }
+                out = fmt::format_to(out, R"(, "text": "{}")", text);
             }
+            if (it->child != nullptr) {
+                out = fmt::format_to(out, R"(, "children": {})", *it->child);
+            }
+            out = fmt::format_to(out, "}}");
         }
-
+        out = fmt::format_to(ctx.out(), "]");
         return out;
     }
 };

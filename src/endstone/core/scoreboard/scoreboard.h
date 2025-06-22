@@ -47,7 +47,8 @@ public:
     [[nodiscard]] ::Scoreboard &getHandle() const;
 
     static std::string getCriteriaName(Criteria::Type type);
-    static std::string getDisplaySlotName(DisplaySlot slot);
+    static std::string toMinecraftSlot(DisplaySlot slot);
+    static DisplaySlot fromMinecraftSlot(std::string slot);
 
 private:
     friend class EndstoneObjective;

@@ -14,53 +14,98 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/coordinator_result.h"
+#include <gsl/gsl>
 
-template <std::size_t N>
-struct ItemEventPlaceHolder {
-    char pad[N];
+#include "bedrock/gameplayhandlers/coordinator_result.h"
+#include "bedrock/world/events/event_variant.h"
+#include "bedrock/world/item/crafting/recipe.h"
+#include "bedrock/world/item/item_instance.h"
+
+struct ShapedRecipeTriggeredEvent {
+    gsl::not_null<const Recipe *> crafting_recipe;
+    bool is_auto_craft;
 };
+static_assert(sizeof(ShapedRecipeTriggeredEvent) == 16);
+
+struct ItemDefinitionEventTriggeredEvent {
+    ItemInstance item_instance;
+    WeakEntityRef actor;
+    std::string event_name;
+};
+
+struct ItemUseOnEvent {
+    ItemInstance item_before_use;
+    WeakEntityRef actor;
+    FacingID face;
+    Vec3 face_location;
+    BlockPos block_position;
+    bool is_first_event;
+};
+static_assert(sizeof(ItemUseOnEvent) == 184);
+
+struct ItemUsedOnEvent : ItemUseOnEvent {
+    ItemInstance item_after_use;
+};
+static_assert(sizeof(ItemUsedOnEvent) == 312);
+
+struct ItemStartUseOnEvent {
+    ItemInstance item_instance;
+    WeakEntityRef actor;
+    FacingID face;
+    BlockPos block_position;
+    BlockPos build_block_position;
+};
+static_assert(sizeof(ItemStartUseOnEvent) == 184);
+
+struct ItemStopUseOnEvent {
+    ItemInstance item_instance;
+    WeakEntityRef actor;
+    BlockPos block_position;
+};
+static_assert(sizeof(ItemStopUseOnEvent) == 168);
+
+struct ItemUseEvent {
+    ItemInstance item_instance;
+    WeakEntityRef actor;
+};
+static_assert(sizeof(ItemUseEvent) == 152);
+
+struct ItemChargeEvent {
+    ItemInstance item_instance;
+    WeakEntityRef actor;
+    int use_duration;
+};
+static_assert(sizeof(ItemChargeEvent) == 160);
+
+struct ItemStartUseEvent : ItemChargeEvent {};
+static_assert(sizeof(ItemStartUseEvent) == 160);
+
+struct ItemCompleteUseEvent : ItemChargeEvent {};
+static_assert(sizeof(ItemCompleteUseEvent) == 160);
+
+struct ItemReleaseUseEvent : ItemChargeEvent {};
+static_assert(sizeof(ItemReleaseUseEvent) == 160);
+
+struct ItemStopUseEvent : ItemChargeEvent {};
+static_assert(sizeof(ItemStopUseEvent) == 160);
+
+struct CraftUpdateResultItemClientEvent {
+    WeakRef<EntityContext> actor;
+    const ItemInstance item;
+};
+static_assert(sizeof(CraftUpdateResultItemClientEvent) == 152);
 
 template <typename Return>
 struct ItemGameplayEvent;
 
-struct ShapedRecipeTriggeredEvent {};
-struct CraftUpdateResultItemClientEvent {};
-
 template <>
-struct ItemGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<ShapedRecipeTriggeredEvent const>,        // 0
-                 Details::ValueOrRef<CraftUpdateResultItemClientEvent const>,  // 1
-                 Details::ValueOrRef<ItemEventPlaceHolder<160> const>>         // TODO(fixme): check size on Windows
-        event;
-};
+struct ItemGameplayEvent<void> : ConstEventVariant<ShapedRecipeTriggeredEvent, CraftUpdateResultItemClientEvent> {};
 
 template <typename Return>
 struct MutableItemGameplayEvent;
 
-struct ItemDefinitionEventTriggeredEvent {};
-struct ItemUseOnEvent {};
-struct ItemUseEvent {};
-struct ItemUsedOnEvent {};
-struct ItemStartUseOnEvent {};
-struct ItemStopUseOnEvent {};
-struct ItemStartUseEvent {};
-struct ItemCompleteUseEvent {};
-struct ItemReleaseUseEvent {};
-struct ItemStopUseEvent {};
-
 template <>
-struct MutableItemGameplayEvent<CoordinatorResult> {
-    std::variant<Details::ValueOrRef<ItemDefinitionEventTriggeredEvent>,  // 0
-                 Details::ValueOrRef<ItemUseOnEvent>,                     // 1
-                 Details::ValueOrRef<ItemUseEvent>,                       // 2
-                 Details::ValueOrRef<ItemUsedOnEvent>,                    // 3
-                 Details::ValueOrRef<ItemStartUseOnEvent>,                // 4
-                 Details::ValueOrRef<ItemStopUseOnEvent>,                 // 5
-                 Details::ValueOrRef<ItemStartUseEvent>,                  // 6
-                 Details::ValueOrRef<ItemCompleteUseEvent>,               // 7
-                 Details::ValueOrRef<ItemReleaseUseEvent>,                // 8
-                 Details::ValueOrRef<ItemStopUseEvent>,                   // 9
-                 Details::ValueOrRef<ItemEventPlaceHolder<328> const>>
-        event;
-};
+struct MutableItemGameplayEvent<CoordinatorResult>
+    : MutableEventVariant<ItemDefinitionEventTriggeredEvent, ItemUseOnEvent, ItemUseEvent, ItemUsedOnEvent,
+                          ItemStartUseOnEvent, ItemStopUseOnEvent, ItemStartUseEvent, ItemCompleteUseEvent,
+                          ItemReleaseUseEvent, ItemStopUseEvent> {};

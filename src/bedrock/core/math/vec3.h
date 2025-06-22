@@ -50,6 +50,11 @@ public:
         return *this;
     }
 
+    [[nodiscard]] float lengthSquared() const
+    {
+        return x * x + y * y + z * z;
+    }
+
     static const Vec3 ZERO;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Vec3, 12, 12);

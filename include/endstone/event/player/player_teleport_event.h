@@ -14,71 +14,17 @@
 
 #pragma once
 
-#include "endstone/event/cancellable.h"
-#include "endstone/event/player/player_event.h"
-#include "endstone/level/location.h"
+#include "endstone/event/player/player_move_event.h"
 
 namespace endstone {
 
 /**
  * @brief Called when a player is teleported from one location to another.
  */
-class PlayerTeleportEvent : public Cancellable<PlayerEvent> {
+class PlayerTeleportEvent : public PlayerMoveEvent {
 public:
-    explicit PlayerTeleportEvent(Player &player, Location from, Location to) : Cancellable(player), from_(from), to_(to)
-    {
-    }
-    ~PlayerTeleportEvent() override = default;
-
-    inline static const std::string NAME = "PlayerTeleportEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
-
-    /**
-     * @brief Gets the location that this player moved from
-     *
-     * @return Location this player moved from
-     */
-    [[nodiscard]] const Location &getFrom() const
-    {
-        return from_;
-    }
-
-    /**
-     * @brief Sets the location that this player moved from
-     *
-     * @param from New location this player moved from
-     */
-    void setFrom(const Location &from)
-    {
-        from_ = from;
-    }
-
-    /**
-     * @brief Gets the location that this player moved to
-     *
-     * @return Location this player moved to
-     */
-    [[nodiscard]] const Location &getTo() const
-    {
-        return to_;
-    }
-
-    /**
-     * @brief Sets the location that this player moved to
-     *
-     * @param to New Location this player moved to
-     */
-    void setTo(const Location &to)
-    {
-        to_ = to;
-    }
-
-private:
-    Location from_;
-    Location to_;
+    ENDSTONE_EVENT(PlayerTeleportEvent);
+    using PlayerMoveEvent::PlayerMoveEvent;
 };
 
 }  // namespace endstone

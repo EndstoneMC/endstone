@@ -129,7 +129,7 @@ public:
      *
      * @param slot The new slot number
      */
-    virtual void setHeldItemSlot(int slot) = 0;
+    virtual Result<void> setHeldItemSlot(int slot) = 0;
 };
 
 }  // namespace endstone

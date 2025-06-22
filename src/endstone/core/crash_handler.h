@@ -14,7 +14,11 @@
 
 #pragma once
 
+#include <cpptrace/cpptrace.hpp>
+
 namespace endstone::core {
+
+void print_stacktrace(std::ostream &stream, const cpptrace::stacktrace &stacktrace);
 
 class CrashHandler {
 public:

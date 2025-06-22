@@ -19,6 +19,16 @@
 
 const std::string Item::TAG_DAMAGE = "Damage";
 
+bool Item::operator==(const Item &other) const
+{
+    return full_name_ == other.full_name_ && id_ == other.id_;
+}
+
+bool Item::operator!=(const Item &other) const
+{
+    return !(*this == other);
+}
+
 std::int16_t Item::getId() const
 {
     return id_;
@@ -42,6 +52,11 @@ const BaseGameVersion &Item::getRequiredBaseGameVersion() const
 const WeakPtr<BlockLegacy> &Item::getLegacyBlock() const
 {
     return legacy_block_;
+}
+
+bool Item::hasTag(const ItemTag &tag) const
+{
+    return std::ranges::any_of(tags_, [&tag](const auto &t) { return t == tag; });
 }
 
 const std::vector<ItemTag> &Item::getTags() const
@@ -73,4 +88,43 @@ const std::string &Item::getCreativeGroup() const
 CreativeItemCategory Item::getCreativeCategory() const
 {
     return creative_category_;
+}
+
+std::int16_t Item::getDamageValue(const CompoundTag *tag) const
+{
+    if (!hasDamageValue(tag)) {
+        return 0;
+    }
+    return static_cast<std::int16_t>(tag->getInt(TAG_DAMAGE));
+}
+
+bool Item::hasDamageValue(const CompoundTag *tag) const
+{
+    if (!tag) {
+        return false;
+    }
+    return tag->contains(TAG_DAMAGE);
+}
+
+void Item::removeDamageValue(ItemStackBase &item) const
+{
+    if (!item.hasUserData()) {
+        return;
+    }
+    auto tag = item.getUserData()->clone();
+    tag->remove(TAG_DAMAGE);
+    item.setUserData(std::move(tag));
+}
+
+void Item::setDamageValue(ItemStackBase &item, std::int16_t damage) const
+{
+    std::unique_ptr<CompoundTag> tag;
+    if (item.hasUserData()) {
+        tag = item.getUserData()->clone();
+    }
+    else {
+        tag = std::make_unique<CompoundTag>();
+    }
+    tag->putInt(TAG_DAMAGE, damage);
+    item.setUserData(std::move(tag));
 }

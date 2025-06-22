@@ -41,23 +41,21 @@ public:
     [[nodiscard]] Result<bool> isDisplayed() const override;
     [[nodiscard]] Result<DisplaySlot> getDisplaySlot() const override;
     [[nodiscard]] Result<ObjectiveSortOrder> getSortOrder() const override;
-    Result<void> setDisplay(std::optional<DisplaySlot> slot) override;
+    Result<void> setDisplaySlot(std::optional<DisplaySlot> slot) override;
+    Result<void> setSortOrder(ObjectiveSortOrder order) override;
     Result<void> setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) override;
     [[nodiscard]] Result<RenderType> getRenderType() const override;
-    Result<void> setRenderType(RenderType render_type) override;
+    // Result<void> setRenderType(RenderType render_type) override;
     [[nodiscard]] Result<std::unique_ptr<Score>> getScore(ScoreEntry entry) const override;
     bool operator==(const Objective &other) const override;
     bool operator!=(const Objective &other) const override;
 
-    [[nodiscard]] Result<const EndstoneObjective *> checkState() const;
+    [[nodiscard]] Result<EndstoneScoreboard *> checkState() const;
+
     [[nodiscard]] std::unique_ptr<EndstoneObjective> copy() const;
 
 private:
     friend class EndstoneScore;
-
-    Result<void> forEachDisplayObjective(
-        const std::function<bool(DisplaySlot, const DisplayObjective &)> &callback) const;
-
     std::string name_;
     EndstoneScoreboard &scoreboard_;
     ::Objective &objective_;

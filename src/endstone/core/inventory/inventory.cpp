@@ -41,10 +41,97 @@ void EndstoneInventory::setItem(int index, const ItemStack *item)
     container_.setItemWithForceBalance(index, item_stack, true);
 }
 
-void EndstoneInventory::addItem(const ItemStack &item)
+std::unordered_map<int, ItemStack *> EndstoneInventory::addItem(std::vector<ItemStack *> items)
 {
-    auto item_stack = EndstoneItemStack::toMinecraft(&item);
-    container_.addItemWithForceBalance(item_stack);
+    std::unordered_map<int, ItemStack *> leftover;
+    for (auto i = 0; i < items.size(); ++i) {
+        auto *item = items[i];
+        if (item == nullptr) {
+            continue;
+        }
+
+        while (true) {
+            auto slot = firstPartial(*item);
+
+            if (slot == -1) {
+                slot = firstEmpty();
+                if (slot == -1) {
+                    // No space at all!
+                    leftover[i] = item;
+                    break;
+                }
+
+                if (item->getAmount() > item->getMaxStackSize()) {
+                    // More than a single stack!
+                    auto stack = item->clone();
+                    stack->setAmount(item->getMaxStackSize());
+                    setItem(slot, stack.get());
+                    item->setAmount(item->getAmount() - item->getMaxStackSize());
+                }
+                else {
+                    // Just store it
+                    setItem(slot, item);
+                    break;
+                }
+            }
+            else {
+                auto partial = getItem(slot);
+                if (item->getAmount() + partial->getAmount() <= partial->getMaxStackSize()) {
+                    // Fully fits!
+                    partial->setAmount(item->getAmount() + partial->getAmount());
+                    setItem(slot, partial.get());
+                    break;
+                }
+
+                // Fits partially
+                item->setAmount(item->getAmount() + partial->getAmount() - partial->getMaxStackSize());
+                partial->setAmount(partial->getMaxStackSize());
+                setItem(slot, partial.get());
+            }
+        }
+    }
+    return leftover;
+}
+
+std::unordered_map<int, ItemStack *> EndstoneInventory::removeItem(std::vector<ItemStack *> items)
+{
+    std::unordered_map<int, ItemStack *> leftover;
+    for (auto i = 0; i < items.size(); ++i) {
+        auto *item = items[i];
+        if (item == nullptr) {
+            continue;
+        }
+
+        int to_delete = item->getAmount();
+        while (true) {
+            const auto slot = first(*item, false);
+
+            // we don't have this type in the inventory
+            if (slot == -1) {
+                item->setAmount(to_delete);
+                leftover[i] = item;
+                break;
+            }
+
+            auto item_stack = getItem(slot);
+            int amount = item_stack->getAmount();
+
+            if (amount <= to_delete) {
+                to_delete -= amount;
+                clear(slot);  // clear the slot, all used up
+            }
+            else {
+                item_stack->setAmount(amount - to_delete);
+                setItem(slot, item_stack.get());
+                to_delete = 0;
+            }
+
+            if (to_delete <= 0) {
+                break;
+            }
+        }
+    }
+    return leftover;
 }
 
 std::vector<std::unique_ptr<ItemStack>> EndstoneInventory::getContents() const
@@ -62,10 +149,150 @@ std::vector<std::unique_ptr<ItemStack>> EndstoneInventory::getContents() const
     return contents;
 }
 
+Result<void> EndstoneInventory::setContents(std::vector<const ItemStack *> items)
+{
+    ENDSTONE_CHECKF(items.size() <= getSize(), "Invalid inventory size ({}); expected {} or less", items.size(),
+                    getSize());
+    for (auto i = 0; i < getSize(); i++) {
+        if (i >= items.size()) {
+            setItem(i, nullptr);
+        }
+        else {
+            setItem(i, items[i]);
+        }
+    }
+    return {};
+}
+
+Result<bool> EndstoneInventory::contains(const std::string &type) const
+{
+    const auto *item_type = ItemType::get(type);
+    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+
+    for (const auto &item : getContents()) {
+        if (item != nullptr && item->getType() == *item_type) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool EndstoneInventory::contains(const ItemStack &item) const
+{
+    for (const auto &i : getContents()) {
+        if (i != nullptr && item == *i) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool EndstoneInventory::contains(const ItemStack &item, int amount) const
+{
+    if (amount <= 0) {
+        return true;
+    }
+
+    for (const auto &i : getContents()) {
+        if (i != nullptr && item == *i && --amount <= 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+Result<bool> EndstoneInventory::containsAtLeast(const std::string &type, int amount) const
+{
+    const auto *item_type = ItemType::get(type);
+    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+
+    if (amount <= 0) {
+        return true;
+    }
+
+    for (const auto &item : getContents()) {
+        if (item != nullptr && item->getType() == *item_type) {
+            if ((amount -= item->getAmount()) <= 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool EndstoneInventory::containsAtLeast(const ItemStack &item, int amount) const
+{
+    if (amount <= 0) {
+        return true;
+    }
+
+    for (const auto &i : getContents()) {
+        if (i != nullptr && item.isSimilar(*i) && (amount -= i->getAmount()) <= 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> EndstoneInventory::all(const std::string &type) const
+{
+    const auto *item_type = ItemType::get(type);
+    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+
+    std::unordered_map<int, std::unique_ptr<ItemStack>> slots;
+    auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        auto &item = inventory[i];
+        if (item != nullptr && item->getType() == *item_type) {
+            slots[i] = std::move(item);
+        }
+    }
+    return slots;
+}
+
+std::unordered_map<int, std::unique_ptr<ItemStack>> EndstoneInventory::all(const ItemStack &item) const
+{
+    std::unordered_map<int, std::unique_ptr<ItemStack>> slots;
+    auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        auto &it = inventory[i];
+        if (it != nullptr && item == *it) {
+            slots[i] = std::move(it);
+        }
+    }
+    return slots;
+}
+
+Result<int> EndstoneInventory::first(const std::string &type) const
+{
+    const auto *item_type = ItemType::get(type);
+    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+
+    const auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        const auto &item = inventory[i];
+        if (item != nullptr && item->getType() == *item_type) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 int EndstoneInventory::first(const ItemStack &item) const
 {
-    const auto item_stack = EndstoneItemStack::toMinecraft(&item);
-    return container_.findFirstSlotForItem(item_stack);
+    return first(item, true);
+}
+
+int EndstoneInventory::firstEmpty() const
+{
+    const auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        const auto &item = inventory[i];
+        if (item == nullptr) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 bool EndstoneInventory::isEmpty() const
@@ -73,9 +300,70 @@ bool EndstoneInventory::isEmpty() const
     return container_.isEmpty();
 }
 
+Result<void> EndstoneInventory::remove(const std::string &type)
+{
+    const auto *item_type = ItemType::get(type);
+    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+
+    const auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        auto &item = inventory[i];
+        if (item != nullptr && item->getType() == *item_type) {
+            clear(i);
+        }
+    }
+    return {};
+}
+
+void EndstoneInventory::remove(const ItemStack &item)
+{
+    const auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        auto &it = inventory[i];
+        if (it != nullptr && item == *it) {
+            clear(i);
+        }
+    }
+}
+
+void EndstoneInventory::clear(int index)
+{
+    setItem(index, nullptr);
+}
+
 void EndstoneInventory::clear()
 {
-    container_.removeAllItems();
+    for (auto i = 0; i < getSize(); i++) {
+        clear(i);
+    }
+}
+
+int EndstoneInventory::first(const ItemStack &item, bool with_amount) const
+{
+    const auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        const auto &it = inventory[i];
+        if (it == nullptr) {
+            continue;
+        }
+
+        if (with_amount ? item == *it : item.isSimilar(*it)) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int EndstoneInventory::firstPartial(const ItemStack &item) const
+{
+    const auto inventory = getContents();
+    for (auto i = 0; i < inventory.size(); i++) {
+        const auto &it = inventory[i];
+        if (it != nullptr && it->getAmount() < item.getMaxStackSize() && item.isSimilar(*it)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 }  // namespace endstone::core

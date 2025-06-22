@@ -445,7 +445,7 @@ public:
      *
      * @return the player's skin
      */
-    [[nodiscard]] virtual const Skin &getSkin() const = 0;
+    [[nodiscard]] virtual const Skin *getSkin() const = 0;
 
     /**
      * @brief Sends a form to the player.

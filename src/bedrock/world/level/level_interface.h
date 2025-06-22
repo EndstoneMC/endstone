@@ -57,6 +57,7 @@
 #include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/block_palette.h"
+#include "bedrock/world/level/chunk/level_chunk_event_manager.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/explosion.h"
 #include "bedrock/world/level/game_type.h"
@@ -241,8 +242,8 @@ public:
     virtual void createPhotoStorage() = 0;
     virtual void *getPhotoManager() = 0;
     [[nodiscard]] virtual void *getPhotoManager() const = 0;
-    virtual void setEducationLevelSettings(EducationLevelSettings) = 0;
-    [[nodiscard]] virtual std::optional<EducationLevelSettings> const &getEducationLevelSettings() const = 0;
+    // virtual void setEducationLevelSettings(EducationLevelSettings) = 0;
+    // [[nodiscard]] virtual std::optional<EducationLevelSettings> const &getEducationLevelSettings() const = 0;
     virtual void *getEducationSettingsManager() = 0;
     [[nodiscard]] virtual void *getEducationSettingsManager() const = 0;
     virtual void save() = 0;
@@ -307,7 +308,7 @@ public:
     virtual void *getSubChunkManager() = 0;
     virtual void onChunkLoaded(ChunkSource &, LevelChunk &) = 0;
     virtual void onChunkDiscarded(LevelChunk &) = 0;
-    virtual void *getLevelChunkEventManager() = 0;
+    virtual Bedrock::NotNullNonOwnerPtr<LevelChunkEventManager> getLevelChunkEventManager() = 0;
     virtual void *getLevelChunkMetaDataManager() = 0;
     virtual void queueEntityDestruction(OwnerPtr<EntityContext>) = 0;
     virtual OwnerPtr<EntityContext> removeEntity(Actor &) = 0;
@@ -425,7 +426,7 @@ public:
     [[nodiscard]] virtual PermissionsHandler const &getDefaultPermissions() const = 0;
     [[nodiscard]] virtual bool getTearingDown() const = 0;
     virtual void takePicture(cg::ImageBuffer &, Actor *, Actor *, ScreenshotOptions &) = 0;
-    virtual Bedrock::NonOwnerPointer<LevelSoundManager> getLevelSoundManager() = 0;
+    virtual LevelSoundManager &getLevelSoundManager() = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<SoundPlayerInterface> getSoundPlayer() const = 0;
     virtual void setSimPaused(bool) = 0;
     virtual bool getSimPaused() = 0;

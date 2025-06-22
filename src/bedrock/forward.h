@@ -45,12 +45,12 @@ class ActorFactory;
 class ActorInteraction;
 class ActorSoundIdentifier;
 class ActorUnloadedChunkTransferEntry;
-class AddActorBasePacket;
 class AdventureSettings;
 class AllowList;
 class AnimationComponent;
 class AppConfigs;
 class AppPlatform;
+class AsyncJoinTaskManager {};
 class AttributeInstanceDelegate;
 class AutomationBehaviorTreeGroup;
 class BaseLightTextureImageBuilder;
@@ -118,13 +118,13 @@ class IFileAccess;
 class IFoodItemComponent;
 class IGameModuleShared;
 class IInPackagePacks;
+class ILevelChunkEventManagerProxy {};
 class ILevelRandom;
 class ILevelStorageManagerConnector;
 class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
 class InternalComponentRegistry;
-class InventoryTransaction;
 class IPackLoadContext;
 class IServerNetworkController;
 class ItemComponent;
@@ -179,7 +179,6 @@ class PropertyGroupManager;
 class PropertiesSettings;
 class ProjectileFactory;
 class Random;
-class RemoteConnector;
 class RenderParams;
 class ResolvedItemIconInfo;
 class ResolvedTextObject;
@@ -226,6 +225,7 @@ class _TickPtr;  // NOLINT
 struct SyncedClientOptionsComponent;
 
 // Enums
+enum class AdvanceFrameResult;
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
 enum class BedSleepingResult;
@@ -289,6 +289,7 @@ class ActiveTransfersManager;
 }  // namespace ClientBlobCache
 
 namespace Social {
+class GameConnectionInfo;
 class GamePublishSetting;
 class MultiplayerServiceManager;
 }  // namespace Social
@@ -306,6 +307,9 @@ class ScriptBlockComponentRegistry;
 class ScriptItemComponentRegistry;
 class ScriptPropertyRegistry;
 }  // namespace ScriptModuleMinecraft
+namespace ResourcePackPathLifetimeHelpers {
+class ResourcePackPathCache {};
+}  // namespace ResourcePackPathLifetimeHelpers
 
 // Template Classes
 template <typename A, typename B, typename C>

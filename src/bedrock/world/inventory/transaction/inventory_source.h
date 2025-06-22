@@ -14,6 +14,11 @@
 
 #pragma once
 
+#include <fmt/format.h>
+#include <magic_enum/magic_enum.hpp>
+
+#include "bedrock/world/container_id.h"
+
 enum class InventorySourceType : uint32_t {
     InvalidInventory = static_cast<std::underlying_type_t<InventorySourceType>>(-1),
     ContainerInventory = 0,
@@ -30,6 +35,21 @@ public:
         WorldInteraction_Random = 1,
     };
 
+    [[nodiscard]] InventorySourceType getType() const
+    {
+        return type_;
+    }
+
+    [[nodiscard]] ContainerID getContainerId() const
+    {
+        return container_id_;
+    }
+
+    [[nodiscard]] std::uint32_t getFlags() const
+    {
+        return flags_;
+    }
+
 private:
     InventorySource(ContainerID);
     InventorySource(InventorySourceType);
@@ -39,3 +59,14 @@ private:
     InventorySourceFlags flags_;
 };
 static_assert(sizeof(InventorySource) == 12);
+
+template <>
+struct fmt::formatter<InventorySource> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const InventorySource &source, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "InventorySource(type={}, container_id={}, flags={})",
+                              magic_enum::enum_name(source.getType()), magic_enum::enum_name(source.getContainerId()),
+                              source.getFlags());
+    }
+};

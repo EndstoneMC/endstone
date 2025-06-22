@@ -16,4 +16,8 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
-class ItemInstance final : public ItemStackBase {};
+class ItemInstance final : public ItemStackBase {
+public:
+    static const ItemInstance EMPTY_ITEM;
+    using ItemStackBase::ItemStackBase;
+};

@@ -14,6 +14,6 @@
 
 #pragma once
 
-#include "bedrock/core/string/string_hash.h"
-
-class ItemTag : public HashedString {};
+namespace MapConstants {
+static constexpr int MAP_SIZE = 128;
+}

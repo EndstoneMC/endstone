@@ -29,7 +29,7 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     auto disconnect_message = message;
-    if (auto *player = _getServerPlayer(network_id, sub_client_id)) {
+    if (auto *player = getServerPlayer(network_id, sub_client_id)) {
         auto kick_message = getI18n().get(message, nullptr);
         endstone::PlayerKickEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), kick_message};
         server.getPluginManager().callEvent(e);
@@ -104,7 +104,7 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
     return server_player;
 }
 
-ServerPlayer *ServerNetworkHandler::_getServerPlayer(const NetworkIdentifier &source, SubClientId sub_id)
+ServerPlayer *ServerNetworkHandler::getServerPlayer(const NetworkIdentifier &source, SubClientId sub_id)
 {
     for (const auto &entity_context : level_->getUsers()) {
         if (!entity_context.hasValue()) {

@@ -22,6 +22,7 @@
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/item/item_descriptor.h"
+#include "bedrock/world/item/vanilla_item_tag.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/tick.h"
 
@@ -48,19 +49,33 @@ public:
     [[nodiscard]] virtual std::string toDebugString() const;
 
     [[nodiscard]] bool isNull() const;
-    [[nodiscard]] bool hasCustomHoverName() const;
-    [[nodiscard]] std::string getCustomName() const;
-    [[nodiscard]] std::int16_t getId() const;
-    [[nodiscard]] std::uint16_t getAuxValue() const;
-    [[nodiscard]] std::string getName() const;
-    [[nodiscard]] const Item *getItem() const;
+    bool operator==(const ItemStackBase &) const;
+    bool operator!=(const ItemStackBase &) const;
+    [[nodiscard]] bool matchesItem(const ItemStackBase &) const;
+    void set(int count);
+    [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] bool hasUserData() const;
+    [[nodiscard]] bool hasSameUserData(const ItemStackBase & other) const;
     void setUserData(std::unique_ptr<CompoundTag>);
     [[nodiscard]] const CompoundTag *getUserData() const;
     CompoundTag *getUserData();
-    [[nodiscard]] bool isBlock() const;
+    [[nodiscard]] const Item *getItem() const;
+    [[nodiscard]] WeakPtr<Item> getItemPtr() const;
     [[nodiscard]] const Block *getBlock() const;
-    void set(std::uint8_t count);
+    [[nodiscard]] std::int16_t getId() const;
+    [[nodiscard]] bool isBlock() const;
+    [[nodiscard]] bool isValid_DeprecatedSeeComment() const;
+    explicit operator bool() const;
+    [[nodiscard]] std::uint8_t getMaxStackSize() const;
+    [[nodiscard]] std::int16_t getDamageValue() const;
+    [[nodiscard]] bool hasDamageValue() const;
+    void removeDamageValue();
+    void setDamageValue(std::int16_t);
+    [[nodiscard]] std::int16_t getAuxValue() const;
+    void setAuxValue(std::int16_t);
+    [[nodiscard]] std::string getName() const;
+    [[nodiscard]] std::string getCustomName() const;
+    [[nodiscard]] bool hasCustomHoverName() const;
     [[nodiscard]] std::uint8_t getCount() const;  // Endstone
 
     static const std::string TAG_DISPLAY;

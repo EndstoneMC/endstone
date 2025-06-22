@@ -14,7 +14,11 @@
 
 #pragma once
 
-#include "bedrock/world/events/item_event_listener.h"
+#include "bedrock/gameplayhandlers/item_gameplay_handler.h"
 #include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/world/events/item_event_listener.h"
 
-class ItemEventCoordinator : public EventCoordinatorPimpl<ItemEventListener> {};
+class ItemEventCoordinator : public EventCoordinator<ItemEventListener> {
+public:
+    std::unique_ptr<ItemGameplayHandler> item_gameplay_handler;  // Endstone: private -> public
+};

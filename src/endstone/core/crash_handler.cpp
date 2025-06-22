@@ -162,24 +162,7 @@ sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event
     const auto stacktrace = cpptrace::generate_trace();
     auto &stream = std::cerr;
     print_crash_message(stream, ctx);
-
-    stream << "Stack trace (most recent call first):" << '\n';
-    if (const auto &frames = stacktrace.frames; frames.empty()) {
-        stream << "<empty trace>" << '\n';
-    }
-    else {
-        std::size_t counter = 0;
-        const auto color = cpptrace::isatty(cpptrace::stderr_fileno);
-        const auto frame_number_width = std::to_string(frames.size()).length();
-        for (const auto &frame : frames) {
-            print_frame(stream, color, frame_number_width, counter, frame);
-            stream << '\n';
-            if (frame.line.has_value() && !frame.filename.empty()) {
-                stream << cpptrace::get_snippet(frame.filename, frame.line.value(), 2, color);
-            }
-            counter++;
-        }
-    }
+    print_stacktrace(stream, stacktrace);
 
     if (!should_report(stacktrace, ctx)) {
         sentry_value_decref(event);
@@ -208,6 +191,27 @@ CrashHandler::CrashHandler()
 CrashHandler::~CrashHandler()
 {
     sentry_close();
+}
+
+void print_stacktrace(std::ostream &stream, const cpptrace::stacktrace &stacktrace)
+{
+    stream << "Stack trace (most recent call first):" << '\n';
+    if (const auto &frames = stacktrace.frames; frames.empty()) {
+        stream << "<empty trace>" << '\n';
+    }
+    else {
+        std::size_t counter = 0;
+        const auto color = cpptrace::isatty(cpptrace::stderr_fileno);
+        const auto frame_number_width = std::to_string(frames.size()).length();
+        for (const auto &frame : frames) {
+            print_frame(stream, color, frame_number_width, counter, frame);
+            stream << '\n';
+            if (frame.line.has_value() && !frame.filename.empty()) {
+                stream << cpptrace::get_snippet(frame.filename, frame.line.value(), 2, color);
+            }
+            counter++;
+        }
+    }
 }
 
 }  // namespace endstone::core
