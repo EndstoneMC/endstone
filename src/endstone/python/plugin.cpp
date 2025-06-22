@@ -235,8 +235,9 @@ void init_plugin(py::module &m)
              "Removes a Permission registration from this plugin manager by permission object.")
         .def("remove_permission", py::overload_cast<std::string>(&PluginManager::removePermission), py::arg("name"),
              "Removes a Permission registration from this plugin manager by name.")
-        .def("get_default_permissions", &PluginManager::getDefaultPermissions, py::arg("op"),
-             py::return_value_policy::reference_internal, "Gets the default permissions for the given op status.")
+        .def("get_default_permissions", &PluginManager::getDefaultPermissions, py::arg("level"),
+             py::return_value_policy::reference_internal,
+             "Gets the default permissions for the given permission level.")
         .def("recalculate_permission_defaults", &PluginManager::recalculatePermissionDefaults, py::arg("perm"),
              "Recalculates the defaults for the given Permission.")
         .def("subscribe_to_permission", &PluginManager::subscribeToPermission, py::arg("permission"),
@@ -247,13 +248,13 @@ void init_plugin(py::module &m)
         .def("get_permission_subscriptions", &PluginManager::getPermissionSubscriptions, py::arg("permission"),
              py::return_value_policy::reference_internal,
              "Gets a set containing all subscribed Permissibles to the given permission.")
-        .def("subscribe_to_default_perms", &PluginManager::subscribeToDefaultPerms, py::arg("op"),
-             py::arg("permissible"), "Subscribes to the given Default permissions by operator status.")
-        .def("unsubscribe_from_default_perms", &PluginManager::unsubscribeFromDefaultPerms, py::arg("op"),
-             py::arg("permissible"), "Unsubscribes from the given Default permissions by operator status.")
-        .def("get_default_perm_subscriptions", &PluginManager::getDefaultPermSubscriptions, py::arg("op"),
+        .def("subscribe_to_default_perms", &PluginManager::subscribeToDefaultPerms, py::arg("level"),
+             py::arg("permissible"), "Subscribes to the given Default permissions by permission level.")
+        .def("unsubscribe_from_default_perms", &PluginManager::unsubscribeFromDefaultPerms, py::arg("level"),
+             py::arg("permissible"), "Unsubscribes from the given Default permissions by permission level.")
+        .def("get_default_perm_subscriptions", &PluginManager::getDefaultPermSubscriptions, py::arg("level"),
              py::return_value_policy::reference_internal,
-             "Gets a set containing all subscribed Permissibles to the given default list, by op status.")
+             "Gets a set containing all subscribed Permissibles to the given default list, by permission level.")
         .def_property_readonly("permissions", &PluginManager::getPermissions,
                                "Gets a set of all registered permissions.");
 
