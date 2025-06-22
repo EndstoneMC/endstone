@@ -40,8 +40,9 @@ Permission *DefaultPermissions::registerPermission(const std::string &name, Perm
 
 void DefaultPermissions::registerCorePermissions()
 {
-    auto *root = registerPermission("endstone", nullptr,
-                                    "Gives the user the ability to use all Endstone utilities and commands");
+    auto *root =
+        registerPermission("endstone", nullptr, "Gives the user the ability to use all Endstone utilities and commands",
+                           PermissionDefault::Console);
     registerCommandPermissions(root);
     registerBroadcastPermissions(root);
     root->recalculatePermissibles();
@@ -49,10 +50,12 @@ void DefaultPermissions::registerCorePermissions()
 
 void DefaultPermissions::registerMinecraftPermissions()
 {
-    auto *root = registerPermission("minecraft", nullptr,
-                                    "Gives the user the ability to use all vanilla utilities and commands");
+    auto *root =
+        registerPermission("minecraft", nullptr, "Gives the user the ability to use all vanilla utilities and commands",
+                           PermissionDefault::Console);
     auto *parent = registerPermission(root->getName() + ".command", root,
-                                      "Gives the user the ability to use all vanilla minecraft commands");
+                                      "Gives the user the ability to use all vanilla minecraft commands",
+                                      PermissionDefault::Console);
     registerPermission(parent->getName() + ".help", parent, "Allows the user to access Vanilla command help.",
                        PermissionDefault::True);
     registerPermission(parent->getName() + ".list", parent, "Allows the user to list all online players.",
@@ -65,8 +68,9 @@ void DefaultPermissions::registerMinecraftPermissions()
 
 void DefaultPermissions::registerCommandPermissions(Permission *parent)
 {
-    auto *root = registerPermission(parent->getName() + ".command", parent,
-                                    "Gives the user the ability to use all Endstone command");
+    auto *root =
+        registerPermission(parent->getName() + ".command", parent,
+                           "Gives the user the ability to use all Endstone command", PermissionDefault::Console);
 
     registerPermission(root->getName() + ".ban", root, "Allows the user to ban players.", PermissionDefault::Operator);
     registerPermission(root->getName() + ".banip", root, "Allows the user to ban IP addresses.",
@@ -91,7 +95,7 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
 
 #ifdef ENDSTONE_WITH_DEVTOOLS
     registerPermission(root->getName() + ".devtools", root, "Allows the user to open the DevTools.",
-                       PermissionDefault::Operator);
+                       PermissionDefault::Console);
 #endif
     root->recalculatePermissibles();
 }
@@ -99,7 +103,7 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
 void DefaultPermissions::registerBroadcastPermissions(Permission *parent)
 {
     auto *root = registerPermission(parent->getName() + ".broadcast", parent,
-                                    "Allows the user to receive all broadcast messages");
+                                    "Allows the user to receive all broadcast messages", PermissionDefault::Operator);
     registerPermission(root->getName() + ".admin", root, "Allows the user to receive administrative broadcasts",
                        PermissionDefault::Operator);
     registerPermission(root->getName() + ".user", root, "Allows the user to receive user broadcasts",

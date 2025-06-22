@@ -27,9 +27,8 @@ class DefaultPermissions {
 public:
     static Permission *registerPermission(std::unique_ptr<Permission> perm, Permission *parent = nullptr);
 
-    static Permission *registerPermission(const std::string &name, Permission *parent = nullptr,
-                                          const std::string &desc = "",
-                                          PermissionDefault default_value = Permission::DefaultPermission,
+    static Permission *registerPermission(const std::string &name, Permission *parent, const std::string &desc,
+                                          PermissionDefault default_value,
                                           const std::unordered_map<std::string, bool> &children = {});
     static void registerCorePermissions();
     static void registerMinecraftPermissions();
