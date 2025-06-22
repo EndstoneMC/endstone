@@ -582,17 +582,21 @@ void EndstonePluginManager::removePermission(std::string name)
     permissions_.erase(name);
 }
 
-std::unordered_set<Permission *> EndstonePluginManager::getDefaultPermissions(PermissionLevel level) const
+std::vector<Permission *> EndstonePluginManager::getDefaultPermissions(PermissionLevel level) const
 {
-    return default_perms_.at(level);
+    std::vector<Permission *> permissions;
+    for (const auto &perm : default_perms_.at(level).get<0>()) {
+        permissions.emplace_back(perm);
+    }
+    return permissions;
 }
 
 void EndstonePluginManager::recalculatePermissionDefaults(Permission &perm)
 {
     if (getPermission(perm.getName()) != nullptr) {
-        default_perms_.at(PermissionLevel::Default).erase(&perm);
-        default_perms_.at(PermissionLevel::Operator).erase(&perm);
-        default_perms_.at(PermissionLevel::Console).erase(&perm);
+        default_perms_.at(PermissionLevel::Default).get<1>().erase(&perm);
+        default_perms_.at(PermissionLevel::Operator).get<1>().erase(&perm);
+        default_perms_.at(PermissionLevel::Console).get<1>().erase(&perm);
         calculatePermissionDefault(perm);
     }
 }
@@ -601,23 +605,23 @@ void EndstonePluginManager::calculatePermissionDefault(Permission &perm)
 {
     switch (perm.getDefault()) {
     case PermissionDefault::Console:
-        default_perms_.at(PermissionLevel::Console).insert(&perm);
+        default_perms_.at(PermissionLevel::Console).emplace_back(&perm);
         dirtyPermissibles(PermissionLevel::Console);
         break;
     case PermissionDefault::Operator:
-        default_perms_.at(PermissionLevel::Operator).insert(&perm);
-        default_perms_.at(PermissionLevel::Console).insert(&perm);
+        default_perms_.at(PermissionLevel::Operator).emplace_back(&perm);
+        default_perms_.at(PermissionLevel::Console).emplace_back(&perm);
         dirtyPermissibles(PermissionLevel::Operator);
         dirtyPermissibles(PermissionLevel::Console);
         break;
     case PermissionDefault::NotOperator:
-        default_perms_.at(PermissionLevel::Default).insert(&perm);
+        default_perms_.at(PermissionLevel::Default).emplace_back(&perm);
         dirtyPermissibles(PermissionLevel::Default);
         break;
     case PermissionDefault::True:
-        default_perms_.at(PermissionLevel::Default).insert(&perm);
-        default_perms_.at(PermissionLevel::Operator).insert(&perm);
-        default_perms_.at(PermissionLevel::Console).insert(&perm);
+        default_perms_.at(PermissionLevel::Default).emplace_back(&perm);
+        default_perms_.at(PermissionLevel::Operator).emplace_back(&perm);
+        default_perms_.at(PermissionLevel::Console).emplace_back(&perm);
         dirtyPermissibles(PermissionLevel::Default);
         dirtyPermissibles(PermissionLevel::Operator);
         dirtyPermissibles(PermissionLevel::Console);

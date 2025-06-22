@@ -199,7 +199,7 @@ public:
      * @param level Which set of default permissions to get
      * @return The default permissions
      */
-    [[nodiscard]] virtual std::unordered_set<Permission *> getDefaultPermissions(PermissionLevel level) const = 0;
+    [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissionLevel level) const = 0;
 
     /**
      * Recalculates the defaults for the given {@link Permission}.
