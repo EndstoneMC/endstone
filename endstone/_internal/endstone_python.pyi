@@ -3599,7 +3599,7 @@ class PluginManager:
         """
         Gets a set containing all subscribed Permissibles to the given default list, by permission level.
         """
-    def get_default_permissions(self, level: PermissionLevel) -> set[Permission]:
+    def get_default_permissions(self, level: PermissionLevel) -> list[Permission]:
         """
         Gets the default permissions for the given permission level.
         """
