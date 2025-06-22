@@ -9,7 +9,6 @@
     <innerfile refid="command__sender__wrapper_8h">command_sender_wrapper.h</innerfile>
     <innerfile refid="console__command__sender_8h">console_command_sender.h</innerfile>
     <innerfile refid="plugin__command_8h">plugin_command.h</innerfile>
-    <innerfile refid="proxied__command__sender_8h">proxied_command_sender.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

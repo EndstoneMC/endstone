@@ -1,10 +1,10 @@
 
 
-# File proxied\_command\_sender.h
+# File permission\_level.h
 
-[**File List**](files.md) **>** [**command**](dir_5c7b2dbfabcd1115569d1e20a260545c.md) **>** [**proxied\_command\_sender.h**](proxied__command__sender_8h.md)
+[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**permissions**](dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc.md) **>** [**permission\_level.h**](permission__level_8h.md)
 
-[Go to the documentation of this file](proxied__command__sender_8h.md)
+[Go to the documentation of this file](permission__level_8h.md)
 
 
 ```C++
@@ -24,22 +24,12 @@
 
 #pragma once
 
-#include "endstone/command/command_sender.h"
-
 namespace endstone {
-
-class ProxiedCommandSender : public CommandSender {
-public:
-    [[nodiscard]] ProxiedCommandSender *asProxiedCommandSender() const override
-    {
-        return const_cast<ProxiedCommandSender *>(this);
-    }
-
-    [[nodiscard]] virtual CommandSender &getCaller() const = 0;
-
-    [[nodiscard]] virtual CommandSender &getCallee() const = 0;
+enum class PermissionLevel {
+    Default = 0,
+    Operator = 1,
+    Console = 2,
 };
-
 }  // namespace endstone
 ```
 

@@ -2328,6 +2328,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getpermissionlevel" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getPermissionLevel
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getserver" class="md-nav__link">
       <span class="md-ellipsis">
         function getServer
@@ -2357,19 +2370,6 @@ For latest updates join the chat on
     <a href="#function-haspermission-22" class="md-nav__link">
       <span class="md-ellipsis">
         function hasPermission [2/2]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-isop" class="md-nav__link">
-      <span class="md-ellipsis">
-        function isOp
       </span>
     </a>
 
@@ -2456,19 +2456,6 @@ For latest updates join the chat on
 </li>
                 
             
-                
-                    <li class="md-nav__item">
-    <a href="#function-setop" class="md-nav__link">
-      <span class="md-ellipsis">
-        function setOp
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
         </ul>
     </nav>
     
@@ -2543,11 +2530,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, const std::string &amp; name, bool value) override<br></td>
+<td style="text-align: left;"><a href="#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, const std::string &amp; name, bool value) override<br><em>Adds a new</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>with a single permission by name and value.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) override<br></td>
+<td style="text-align: left;"><a href="#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) override<br><em>Adds a new empty</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>to this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> *</td>
@@ -2571,11 +2558,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_set&lt; <a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>PermissionAttachmentInfo</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-geteffectivepermissions"><strong>getEffectivePermissions</strong></a> () override const<br></td>
+<td style="text-align: left;"><a href="#function-geteffectivepermissions"><strong>getEffectivePermissions</strong></a> () override const<br><em>Gets a set containing all the permissions currently in effect by this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () override const<br><em>Gets the name of this command sender.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual PermissionLevel</td>
+<td style="text-align: left;"><a href="#function-getpermissionlevel"><strong>getPermissionLevel</strong></a> () override const<br><em>Gets the permission level of this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Server/"><strong>Server</strong></a> &amp;</td>
@@ -2583,31 +2574,27 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) override const<br></td>
+<td style="text-align: left;"><a href="#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) override const<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-haspermission-22"><strong>hasPermission</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) override const<br></td>
+<td style="text-align: left;"><a href="#function-haspermission-22"><strong>hasPermission</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) override const<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-isop"><strong>isOp</strong></a> () override const<br><em>Checks if this object is a server operator.</em></td>
+<td style="text-align: left;"><a href="#function-ispermissionset-12"><strong>isPermissionSet</strong></a> (std::string name) override const<br><em>Checks if this object contains an override for the specified permission, by fully qualified name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-ispermissionset-12"><strong>isPermissionSet</strong></a> (std::string name) override const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-ispermissionset-22"><strong>isPermissionSet</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) override const<br></td>
+<td style="text-align: left;"><a href="#function-ispermissionset-22"><strong>isPermissionSet</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) override const<br><em>Checks if this object contains an override for the specified</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () override<br></td>
+<td style="text-align: left;"><a href="#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () override<br><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; void &gt;</td>
-<td style="text-align: left;"><a href="#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) override<br></td>
+<td style="text-align: left;"><a href="#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) override<br><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -2616,10 +2603,6 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-sendmessage"><strong>sendMessage</strong></a> (const Message &amp; message) override const<br><em>Sends this sender a message.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setop"><strong>setOp</strong></a> (bool value) override<br><em>Sets the operator status of this object.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2652,10 +2635,6 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Player/"><strong>Player</strong></a> *</td>
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asplayer"><strong>asPlayer</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1ProxiedCommandSender/"><strong>ProxiedCommandSender</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asproxiedcommandsender"><strong>asProxiedCommandSender</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1ProxiedCommandSender/"><em><strong>ProxiedCommandSender</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2695,11 +2674,11 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, const std::string &amp; name, bool value) = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, const std::string &amp; name, bool value) = 0<br><em>Adds a new</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>with a single permission by name and value.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br><em>Adds a new empty</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>to this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> *</td>
@@ -2707,39 +2686,35 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_set&lt; <a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>PermissionAttachmentInfo</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-geteffectivepermissions"><strong>getEffectivePermissions</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-geteffectivepermissions"><strong>getEffectivePermissions</strong></a> () const = 0<br><em>Gets a set containing all the permissions currently in effect by this object.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual PermissionLevel</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-getpermissionlevel"><strong>getPermissionLevel</strong></a> () const = 0<br><em>Gets the permission level of this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) const = 0<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-22"><strong>hasPermission</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-22"><strong>hasPermission</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-isop"><strong>isOp</strong></a> () const = 0<br><em>Checks if this object is a server operator.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-12"><strong>isPermissionSet</strong></a> (std::string name) const = 0<br><em>Checks if this object contains an override for the specified permission, by fully qualified name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-12"><strong>isPermissionSet</strong></a> (std::string name) const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-22"><strong>isPermissionSet</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-22"><strong>isPermissionSet</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br><em>Checks if this object contains an override for the specified</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; void &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-setop"><strong>setOp</strong></a> (bool value) = 0<br><em>Sets the operator status of this object.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) = 0<br><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2763,13 +2738,13 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-addattachment-12">function addAttachment [&frac12;]<a class="headerlink" href="#function-addattachment-12" title="Permanent link">&para;</a></h3>
+<p><em>Adds a new</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>with a single permission by name and value.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">addAttachment</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
-<p>Adds a new <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> with a single permission by name and value</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> responsible for this attachment, may not be null or disabled </li>
@@ -2782,11 +2757,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-addattachment-22">function addAttachment [2/2]<a class="headerlink" href="#function-addattachment-22" title="Permanent link">&para;</a></h3>
+<p><em>Adds a new empty</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>to this object.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">addAttachment</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
-<p>Adds a new empty <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> to this object</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> responsible for this attachment, may not be null or disabled </li>
@@ -2842,9 +2817,9 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-geteffectivepermissions">function getEffectivePermissions<a class="headerlink" href="#function-geteffectivepermissions" title="Permanent link">&para;</a></h3>
+<p><em>Gets a set containing all the permissions currently in effect by this object.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PermissionAttachmentInfo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getEffectivePermissions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a set containing all the permissions currently in effect by this object</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Set of currently effective permissions </p>
 <p>Implements <a href="../classendstone_1_1Permissible/#function-geteffectivepermissions"><em>endstone::Permissible::getEffectivePermissions</em></a></p>
@@ -2859,9 +2834,18 @@ For latest updates join the chat on
 <p>Implements <a href="../classendstone_1_1CommandSender/#function-getname"><em>endstone::CommandSender::getName</em></a></p>
 <hr>
 
+<h3 id="function-getpermissionlevel">function getPermissionLevel<a class="headerlink" href="#function-getpermissionlevel" title="Permanent link">&para;</a></h3>
+<p><em>Gets the permission level of this object.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">PermissionLevel</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getPermissionLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The permission level </p>
+<p>Implements <a href="../classendstone_1_1Permissible/#function-getpermissionlevel"><em>endstone::Permissible::getPermissionLevel</em></a></p>
+<hr>
+
 <h3 id="function-getserver">function getServer<a class="headerlink" href="#function-getserver" title="Permanent link">&para;</a></h3>
 <p><em>Returns the server instance that this command is running on.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Server/"><strong>Server</strong></a> instance </p>
@@ -2869,11 +2853,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-haspermission-12">function hasPermission [&frac12;]<a class="headerlink" href="#function-haspermission-12" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</p>
+<p><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> Name of the permission </li>
@@ -2884,11 +2868,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-haspermission-22">function hasPermission [2/2]<a class="headerlink" href="#function-haspermission-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</p>
+<p><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>perm</code> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> to get </li>
@@ -2898,21 +2882,12 @@ For latest updates join the chat on
 <p>Implements <a href="../classendstone_1_1Permissible/#function-haspermission-22"><em>endstone::Permissible::hasPermission</em></a></p>
 <hr>
 
-<h3 id="function-isop">function isOp<a class="headerlink" href="#function-isop" title="Permanent link">&para;</a></h3>
-<p><em>Checks if this object is a server operator.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isOp</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>true if this is an operator, otherwise false </p>
-<p>Implements <a href="../classendstone_1_1Permissible/#function-isop"><em>endstone::Permissible::isOp</em></a></p>
-<hr>
-
 <h3 id="function-ispermissionset-12">function isPermissionSet [&frac12;]<a class="headerlink" href="#function-ispermissionset-12" title="Permanent link">&para;</a></h3>
+<p><em>Checks if this object contains an override for the specified permission, by fully qualified name.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isPermissionSet</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Checks if this object contains an override for the specified permission, by fully qualified name</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> Name of the permission </li>
@@ -2923,11 +2898,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-ispermissionset-22">function isPermissionSet [2/2]<a class="headerlink" href="#function-ispermissionset-22" title="Permanent link">&para;</a></h3>
+<p><em>Checks if this object contains an override for the specified</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isPermissionSet</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Checks if this object contains an override for the specified <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a></p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>perm</code> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> to check </li>
@@ -2938,18 +2913,18 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-recalculatepermissions">function recalculatePermissions<a class="headerlink" href="#function-recalculatepermissions" title="Permanent link">&para;</a></h3>
+<p><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">recalculatePermissions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
-<p>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin. </p>
+</span></code></pre></div></p>
 <p>Implements <a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><em>endstone::Permissible::recalculatePermissions</em></a></p>
 <hr>
 
 <h3 id="function-removeattachment">function removeAttachment<a class="headerlink" href="#function-removeattachment" title="Permanent link">&para;</a></h3>
+<p><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">removeAttachment</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">attachment</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
-<p>Removes the given <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> from this object</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>attachment</code> Attachment to remove </li>
@@ -2983,19 +2958,6 @@ For latest updates join the chat on
 <li><code>message</code> Message to be displayed </li>
 </ul>
 <p>Implements <a href="../classendstone_1_1CommandSender/#function-sendmessage-12"><em>endstone::CommandSender::sendMessage</em></a></p>
-<hr>
-
-<h3 id="function-setop">function setOp<a class="headerlink" href="#function-setop" title="Permanent link">&para;</a></h3>
-<p><em>Sets the operator status of this object.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">setOp</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>value</code> New operator value </li>
-</ul>
-<p>Implements <a href="../classendstone_1_1Permissible/#function-setop"><em>endstone::Permissible::setOp</em></a></p>
 <hr>
 
 <hr />

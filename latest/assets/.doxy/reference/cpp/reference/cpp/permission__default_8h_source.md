@@ -31,6 +31,7 @@ enum class PermissionDefault {
     False,
     Operator,
     NotOperator,
+    Console
 };
 
 }  // namespace endstone

@@ -113,7 +113,6 @@
     <innerclass refid="classendstone_1_1PluginLoader" prot="public">endstone::PluginLoader</innerclass>
     <innerclass refid="classendstone_1_1PluginManager" prot="public">endstone::PluginManager</innerclass>
     <innerclass refid="classendstone_1_1Position" prot="public">endstone::Position</innerclass>
-    <innerclass refid="classendstone_1_1ProxiedCommandSender" prot="public">endstone::ProxiedCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
     <innerclass refid="classendstone_1_1Registry" prot="public">endstone::Registry</innerclass>
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
@@ -565,6 +564,13 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481abccaa4aa80831b76c11240a16447975f" prot="public">
+          <name>Console</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
 <para>Represents the possible default values for permissions. </para>
         </briefdescription>
@@ -572,7 +578,43 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_default.h" line="22" column="1" bodyfile="include/endstone/permissions/permission_default.h" bodystart="22" bodyend="27"/>
+        <location file="include/endstone/permissions/permission_default.h" line="22" column="1" bodyfile="include/endstone/permissions/permission_default.h" bodystart="22" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>PermissionLevel</name>
+        <qualifiedname>endstone::PermissionLevel</qualifiedname>
+        <enumvalue id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbba7a1920d61156abc05a60135aefe8bc67" prot="public">
+          <name>Default</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbbae1b3ec89ead7f83a9245ed5c9cacfdbf" prot="public">
+          <name>Operator</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbbabccaa4aa80831b76c11240a16447975f" prot="public">
+          <name>Console</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission_level.h" line="18" column="1" bodyfile="include/endstone/permissions/permission_level.h" bodystart="18" bodyend="22"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" prot="public" static="no" strong="yes">
         <type></type>

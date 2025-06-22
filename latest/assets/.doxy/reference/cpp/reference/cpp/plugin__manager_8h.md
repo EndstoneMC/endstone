@@ -16,6 +16,7 @@
 * `#include <vector>`
 * `#include "endstone/event/event.h"`
 * `#include "endstone/event/event_priority.h"`
+* `#include "endstone/permissions/permission_level.h"`
 
 
 

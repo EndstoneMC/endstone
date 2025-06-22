@@ -38,7 +38,6 @@ class ConsoleCommandSender;
 class Mob;
 class Server;
 class Player;
-class ProxiedCommandSender;
 
 class CommandSender : public Permissible {
 public:
@@ -64,11 +63,6 @@ public:
     }
 
     [[nodiscard]] virtual Player *asPlayer() const
-    {
-        return nullptr;
-    }
-
-    [[nodiscard]] virtual ProxiedCommandSender *asProxiedCommandSender() const
     {
         return nullptr;
     }

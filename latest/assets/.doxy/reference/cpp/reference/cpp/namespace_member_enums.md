@@ -35,6 +35,7 @@
 ## p
 
 * **PermissionDefault** ([**endstone**](namespaceendstone.md))
+* **PermissionLevel** ([**endstone**](namespaceendstone.md))
 * **PluginLoadOrder** ([**endstone**](namespaceendstone.md))
 
 

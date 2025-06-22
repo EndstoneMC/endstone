@@ -426,7 +426,6 @@
     <member refid="classendstone_1_1CommandSender_1a981997682a69961a0cb5e92b7a70f4ff" kind="function"><name>asActor</name></member>
     <member refid="classendstone_1_1CommandSender_1aacfc66c9c74e9f8419ada38a1beb6913" kind="function"><name>asMob</name></member>
     <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" kind="function"><name>asPlayer</name></member>
-    <member refid="classendstone_1_1CommandSender_1a52b174972923fb6dcb578166846c707a" kind="function"><name>asProxiedCommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kind="function"><name>sendErrorMessage</name></member>
@@ -442,8 +441,7 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1a0f9429e921096e79eeb39a5d8d78ea57" kind="function"><name>CommandSenderWrapper</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf" kind="function"><name>sendErrorMessage</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a3677c8f7a848edc3ee53c5a23ab58b52" kind="function"><name>isOp</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1adc6b57a30c34ea968b81ceb660a1e976" kind="function"><name>setOp</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a35ea40a86d08d2e675932a8532b1851b" kind="function"><name>getPermissionLevel</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" kind="function"><name>hasPermission</name></member>
@@ -1028,8 +1026,7 @@
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
-    <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" kind="function"><name>isOp</name></member>
-    <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" kind="function"><name>setOp</name></member>
+    <member refid="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" kind="function"><name>getPermissionLevel</name></member>
     <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" kind="function"><name>hasPermission</name></member>
@@ -1104,6 +1101,8 @@
     <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" kind="typedef"><name>FormVariant</name></member>
     <member refid="classendstone_1_1Player_1a9488f5cc958e803acdae2610fa4448aa" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af" kind="function"><name>getName</name></member>
+    <member refid="classendstone_1_1Player_1abac4577ca5fcd890b21f148b3df1e441" kind="function"><name>isOp</name></member>
+    <member refid="classendstone_1_1Player_1ab0988eb2cd4067117f2419a5a06fcedb" kind="function"><name>setOp</name></member>
     <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" kind="function"><name>getXuid</name></member>
     <member refid="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" kind="function"><name>transfer</name></member>
@@ -1494,14 +1493,14 @@
     <member refid="classendstone_1_1PluginManager_1adf54011d2e7f3b831a1d9276119946a1" kind="function"><name>addPermission</name></member>
     <member refid="classendstone_1_1PluginManager_1a8e228f95cb9ae2fa7691a0bab7a4ab15" kind="function"><name>removePermission</name></member>
     <member refid="classendstone_1_1PluginManager_1a88d24d0be87c7a5905c69638c667e324" kind="function"><name>removePermission</name></member>
-    <member refid="classendstone_1_1PluginManager_1afadf86b717c8ca5e152aec3fdd9058d8" kind="function"><name>getDefaultPermissions</name></member>
+    <member refid="classendstone_1_1PluginManager_1a2a17944a7454c57e59e24d9da35c2603" kind="function"><name>getDefaultPermissions</name></member>
     <member refid="classendstone_1_1PluginManager_1a6b871de71ea1884cf526b4c5880e732e" kind="function"><name>recalculatePermissionDefaults</name></member>
     <member refid="classendstone_1_1PluginManager_1a368d558addb19a455e0616a134a32e51" kind="function"><name>subscribeToPermission</name></member>
     <member refid="classendstone_1_1PluginManager_1a701f8e4b82cf233b04a0aeb5f9fba330" kind="function"><name>unsubscribeFromPermission</name></member>
     <member refid="classendstone_1_1PluginManager_1a51aaf24ca653d67c3ea010637ecca94d" kind="function"><name>getPermissionSubscriptions</name></member>
-    <member refid="classendstone_1_1PluginManager_1a2adbff6684c18d854c1b98f155380c8c" kind="function"><name>subscribeToDefaultPerms</name></member>
-    <member refid="classendstone_1_1PluginManager_1a63338f3bc2efba65583c19a03e605a78" kind="function"><name>unsubscribeFromDefaultPerms</name></member>
-    <member refid="classendstone_1_1PluginManager_1a4135e985436e12ef5120cabb7f79aeb6" kind="function"><name>getDefaultPermSubscriptions</name></member>
+    <member refid="classendstone_1_1PluginManager_1ad6f9c928e31f02639e0f2bc39a97bd96" kind="function"><name>subscribeToDefaultPerms</name></member>
+    <member refid="classendstone_1_1PluginManager_1a933fe9395fb93db5bcad5e687523ccbc" kind="function"><name>unsubscribeFromDefaultPerms</name></member>
+    <member refid="classendstone_1_1PluginManager_1a9a414d170b547bce47ac00933a4f1020" kind="function"><name>getDefaultPermSubscriptions</name></member>
     <member refid="classendstone_1_1PluginManager_1ad2545d188bff41477fe3fd5264251cfc" kind="function"><name>getPermissions</name></member>
   </compound>
   <compound refid="classendstone_1_1Position" kind="class"><name>endstone::Position</name>
@@ -1512,11 +1511,6 @@
     <member refid="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" kind="function"><name>getBlockX</name></member>
     <member refid="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" kind="function"><name>getBlockY</name></member>
     <member refid="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" kind="function"><name>getBlockZ</name></member>
-  </compound>
-  <compound refid="classendstone_1_1ProxiedCommandSender" kind="class"><name>endstone::ProxiedCommandSender</name>
-    <member refid="classendstone_1_1ProxiedCommandSender_1adb867847d0112b1aada0fe46a869f090" kind="function"><name>asProxiedCommandSender</name></member>
-    <member refid="classendstone_1_1ProxiedCommandSender_1abf8c53e2b5c1a1f8e79a6740f23450d1" kind="function"><name>getCaller</name></member>
-    <member refid="classendstone_1_1ProxiedCommandSender_1a0d463952b7f1889c87d4c76c4a15154a" kind="function"><name>getCallee</name></member>
   </compound>
   <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
     <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
@@ -1908,6 +1902,11 @@
     <member refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481af8320b26d30ab433c5a54546d21f414c" kind="enumvalue"><name>False</name></member>
     <member refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481ae1b3ec89ead7f83a9245ed5c9cacfdbf" kind="enumvalue"><name>Operator</name></member>
     <member refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481a536205216181a240bf213a21598278dd" kind="enumvalue"><name>NotOperator</name></member>
+    <member refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481abccaa4aa80831b76c11240a16447975f" kind="enumvalue"><name>Console</name></member>
+    <member refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" kind="enum"><name>PermissionLevel</name></member>
+    <member refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbba7a1920d61156abc05a60135aefe8bc67" kind="enumvalue"><name>Default</name></member>
+    <member refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbbae1b3ec89ead7f83a9245ed5c9cacfdbf" kind="enumvalue"><name>Operator</name></member>
+    <member refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbbabccaa4aa80831b76c11240a16447975f" kind="enumvalue"><name>Console</name></member>
     <member refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kind="enum"><name>PluginLoadOrder</name></member>
     <member refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" kind="enumvalue"><name>Startup</name></member>
     <member refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kind="enumvalue"><name>PostWorld</name></member>
@@ -1998,8 +1997,6 @@
   <compound refid="console__command__sender_8h" kind="file"><name>console_command_sender.h</name>
   </compound>
   <compound refid="plugin__command_8h" kind="file"><name>plugin_command.h</name>
-  </compound>
-  <compound refid="proxied__command__sender_8h" kind="file"><name>proxied_command_sender.h</name>
   </compound>
   <compound refid="damage__source_8h" kind="file"><name>damage_source.h</name>
   </compound>
@@ -2197,6 +2194,8 @@
   <compound refid="permission__attachment__info_8h" kind="file"><name>permission_attachment_info.h</name>
   </compound>
   <compound refid="permission__default_8h" kind="file"><name>permission_default.h</name>
+  </compound>
+  <compound refid="permission__level_8h" kind="file"><name>permission_level.h</name>
   </compound>
   <compound refid="player_8h" kind="file"><name>player.h</name>
   </compound>

@@ -309,8 +309,6 @@
 ([**endstone**](namespaceendstone.md))
 * [**Position**](classendstone_1_1Position.md)
 ([**endstone**](namespaceendstone.md))
-* [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md)
-([**endstone**](namespaceendstone.md))
 
 
 ## r

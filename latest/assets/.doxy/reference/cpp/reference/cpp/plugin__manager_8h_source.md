@@ -31,6 +31,7 @@
 
 #include "endstone/event/event.h"
 #include "endstone/event/event_priority.h"
+#include "endstone/permissions/permission_level.h"
 
 namespace endstone {
 
@@ -85,7 +86,7 @@ public:
 
     virtual void removePermission(std::string name) = 0;
 
-    [[nodiscard]] virtual std::unordered_set<Permission *> getDefaultPermissions(bool op) const = 0;
+    [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissionLevel level) const = 0;
 
     virtual void recalculatePermissionDefaults(Permission &perm) = 0;
 
@@ -96,11 +97,12 @@ public:
     [[nodiscard]] virtual std::unordered_set<Permissible *> getPermissionSubscriptions(
         std::string permission) const = 0;
 
-    virtual void subscribeToDefaultPerms(bool op, Permissible &permissible) = 0;
+    virtual void subscribeToDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
 
-    virtual void unsubscribeFromDefaultPerms(bool op, Permissible &permissible) = 0;
+    virtual void unsubscribeFromDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
 
-    [[nodiscard]] virtual std::unordered_set<Permissible *> getDefaultPermSubscriptions(bool op) const = 0;
+    [[nodiscard]] virtual std::unordered_set<Permissible *> getDefaultPermSubscriptions(
+        PermissionLevel level) const = 0;
 
     [[nodiscard]] virtual std::unordered_set<Permission *> getPermissions() const = 0;
 };

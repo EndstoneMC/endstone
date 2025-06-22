@@ -7239,7 +7239,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            get_default_perm_subscriptions (endstone.plugin.PluginManager.get_default_perm_subscriptions)" href="#endstone.plugin.PluginManager.get_default_perm_subscriptions">get_default_perm_subscriptions</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Gets a set containing all subscribed Permissibles to the given default list, by op status.</p>
+                  <p>Gets a set containing all subscribed Permissibles to the given default list, by permission level.</p>
                 </div>
               </td>
             </tr>
@@ -7247,7 +7247,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            get_default_permissions (endstone.plugin.PluginManager.get_default_permissions)" href="#endstone.plugin.PluginManager.get_default_permissions">get_default_permissions</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Gets the default permissions for the given op status.</p>
+                  <p>Gets the default permissions for the given permission level.</p>
                 </div>
               </td>
             </tr>
@@ -7327,7 +7327,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            subscribe_to_default_perms (endstone.plugin.PluginManager.subscribe_to_default_perms)" href="#endstone.plugin.PluginManager.subscribe_to_default_perms">subscribe_to_default_perms</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Subscribes to the given Default permissions by operator status.</p>
+                  <p>Subscribes to the given Default permissions by permission level.</p>
                 </div>
               </td>
             </tr>
@@ -7343,7 +7343,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            unsubscribe_from_default_perms (endstone.plugin.PluginManager.unsubscribe_from_default_perms)" href="#endstone.plugin.PluginManager.unsubscribe_from_default_perms">unsubscribe_from_default_perms</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Unsubscribes from the given Default permissions by operator status.</p>
+                  <p>Unsubscribes from the given Default permissions by permission level.</p>
                 </div>
               </td>
             </tr>
@@ -7596,13 +7596,13 @@ For latest updates join the chat on
 
 <a href="#endstone.plugin.PluginManager.get_default_perm_subscriptions" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_default_perm_subscriptions</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">op</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">level</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionLevel (endstone._internal.endstone_python.PermissionLevel)" href="../permissions/#endstone.permissions.PermissionLevel">PermissionLevel</a></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="../permissions/#endstone.permissions.Permissible">Permissible</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Gets a set containing all subscribed Permissibles to the given default list, by op status.</p>
+        <p>Gets a set containing all subscribed Permissibles to the given default list, by permission level.</p>
 
 
     </div>
@@ -7617,12 +7617,14 @@ For latest updates join the chat on
 
 
 <a href="#endstone.plugin.PluginManager.get_default_permissions" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_default_permissions</span><span class="p">(</span><span class="n">op</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="../permissions/#endstone.permissions.Permission">Permission</a></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_default_permissions</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">level</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionLevel (endstone._internal.endstone_python.PermissionLevel)" href="../permissions/#endstone.permissions.PermissionLevel">PermissionLevel</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Permission (endstone._internal.endstone_python.Permission)" href="../permissions/#endstone.permissions.Permission">Permission</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Gets the default permissions for the given op status.</p>
+        <p>Gets the default permissions for the given permission level.</p>
 
 
     </div>
@@ -7841,13 +7843,13 @@ For latest updates join the chat on
 
 <a href="#endstone.plugin.PluginManager.subscribe_to_default_perms" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">subscribe_to_default_perms</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">op</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">,</span> <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="../permissions/#endstone.permissions.Permissible">Permissible</a></span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">level</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionLevel (endstone._internal.endstone_python.PermissionLevel)" href="../permissions/#endstone.permissions.PermissionLevel">PermissionLevel</a></span><span class="p">,</span> <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="../permissions/#endstone.permissions.Permissible">Permissible</a></span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Subscribes to the given Default permissions by operator status.</p>
+        <p>Subscribes to the given Default permissions by permission level.</p>
 
 
     </div>
@@ -7885,13 +7887,13 @@ For latest updates join the chat on
 
 <a href="#endstone.plugin.PluginManager.unsubscribe_from_default_perms" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">unsubscribe_from_default_perms</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">op</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">,</span> <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="../permissions/#endstone.permissions.Permissible">Permissible</a></span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">level</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            PermissionLevel (endstone._internal.endstone_python.PermissionLevel)" href="../permissions/#endstone.permissions.PermissionLevel">PermissionLevel</a></span><span class="p">,</span> <span class="n">permissible</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Permissible (endstone._internal.endstone_python.Permissible)" href="../permissions/#endstone.permissions.Permissible">Permissible</a></span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Unsubscribes from the given Default permissions by operator status.</p>
+        <p>Unsubscribes from the given Default permissions by permission level.</p>
 
 
     </div>

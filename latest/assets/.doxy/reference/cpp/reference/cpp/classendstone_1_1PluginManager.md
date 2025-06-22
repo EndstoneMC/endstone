@@ -61,8 +61,8 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | virtual void | [**disablePlugins**](#function-disableplugins) () = 0<br> |
 | virtual void | [**enablePlugin**](#function-enableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) const = 0<br> |
 | virtual void | [**enablePlugins**](#function-enableplugins) () const = 0<br> |
-| virtual std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getDefaultPermSubscriptions**](#function-getdefaultpermsubscriptions) (bool op) const = 0<br> |
-| virtual std::unordered\_set&lt; [**Permission**](classendstone_1_1Permission.md) \* &gt; | [**getDefaultPermissions**](#function-getdefaultpermissions) (bool op) const = 0<br> |
+| virtual std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getDefaultPermSubscriptions**](#function-getdefaultpermsubscriptions) (PermissionLevel level) const = 0<br> |
+| virtual std::vector&lt; [**Permission**](classendstone_1_1Permission.md) \* &gt; | [**getDefaultPermissions**](#function-getdefaultpermissions) (PermissionLevel level) const = 0<br> |
 | virtual [**Permission**](classendstone_1_1Permission.md) \* | [**getPermission**](#function-getpermission) (std::string name) const = 0<br> |
 | virtual std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getPermissionSubscriptions**](#function-getpermissionsubscriptions) (std::string permission) const = 0<br> |
 | virtual std::unordered\_set&lt; [**Permission**](classendstone_1_1Permission.md) \* &gt; | [**getPermissions**](#function-getpermissions) () const = 0<br> |
@@ -79,9 +79,9 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | virtual void | [**registerLoader**](#function-registerloader) (std::unique\_ptr&lt; [**PluginLoader**](classendstone_1_1PluginLoader.md) &gt; loader) = 0<br> |
 | virtual void | [**removePermission**](#function-removepermission-12) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br> |
 | virtual void | [**removePermission**](#function-removepermission-22) (std::string name) = 0<br> |
-| virtual void | [**subscribeToDefaultPerms**](#function-subscribetodefaultperms) (bool op, [**Permissible**](classendstone_1_1Permissible.md) & permissible) = 0<br> |
+| virtual void | [**subscribeToDefaultPerms**](#function-subscribetodefaultperms) (PermissionLevel level, [**Permissible**](classendstone_1_1Permissible.md) & permissible) = 0<br> |
 | virtual void | [**subscribeToPermission**](#function-subscribetopermission) (std::string permission, [**Permissible**](classendstone_1_1Permissible.md) & permissible) = 0<br> |
-| virtual void | [**unsubscribeFromDefaultPerms**](#function-unsubscribefromdefaultperms) (bool op, [**Permissible**](classendstone_1_1Permissible.md) & permissible) = 0<br> |
+| virtual void | [**unsubscribeFromDefaultPerms**](#function-unsubscribefromdefaultperms) (PermissionLevel level, [**Permissible**](classendstone_1_1Permissible.md) & permissible) = 0<br> |
 | virtual void | [**unsubscribeFromPermission**](#function-unsubscribefrompermission) (std::string permission, [**Permissible**](classendstone_1_1Permissible.md) & permissible) = 0<br> |
 | virtual  | [**~PluginManager**](#function-pluginmanager) () = default<br> |
 
@@ -323,13 +323,13 @@ Enable all the loaded plugins
 
 ```C++
 virtual std::unordered_set< Permissible * > endstone::PluginManager::getDefaultPermSubscriptions (
-    bool op
+    PermissionLevel level
 ) const = 0
 ```
 
 
 
-Gets a set containing all subscribed `Permissible`s to the given default list, by op status
+Gets a set containing all subscribed Permissibles to the given default list, by permission level
 
 
 
@@ -337,7 +337,7 @@ Gets a set containing all subscribed `Permissible`s to the given default list, b
 **Parameters:**
 
 
-* `op` Default list to query for 
+* `level` Default list to query for 
 
 
 
@@ -358,14 +358,14 @@ Set containing all subscribed permissions
 ### function getDefaultPermissions 
 
 ```C++
-virtual std::unordered_set< Permission * > endstone::PluginManager::getDefaultPermissions (
-    bool op
+virtual std::vector< Permission * > endstone::PluginManager::getDefaultPermissions (
+    PermissionLevel level
 ) const = 0
 ```
 
 
 
-Gets the default permissions for the given op status
+Gets the default permissions for the given permission level
 
 
 
@@ -373,7 +373,7 @@ Gets the default permissions for the given op status
 **Parameters:**
 
 
-* `op` Which set of default permissions to get 
+* `level` Which set of default permissions to get 
 
 
 
@@ -920,14 +920,14 @@ If the specified permission does not exist in this plugin manager, nothing will 
 
 ```C++
 virtual void endstone::PluginManager::subscribeToDefaultPerms (
-    bool op,
+    PermissionLevel level,
     Permissible & permissible
 ) = 0
 ```
 
 
 
-Subscribes to the given Default permissions by operator status
+Subscribes to the given Default permissions by permission level
 
 
 If the specified defaults change in any form, the [**Permissible**](classendstone_1_1Permissible.md) will be asked to recalculate.
@@ -938,7 +938,7 @@ If the specified defaults change in any form, the [**Permissible**](classendston
 **Parameters:**
 
 
-* `op` Default list to subscribe to 
+* `level` Default list to subscribe to 
 * `permissible` [**Permissible**](classendstone_1_1Permissible.md) subscribing 
 
 
@@ -985,14 +985,14 @@ Subscribes the given [**Permissible**](classendstone_1_1Permissible.md) for info
 
 ```C++
 virtual void endstone::PluginManager::unsubscribeFromDefaultPerms (
-    bool op,
+    PermissionLevel level,
     Permissible & permissible
 ) = 0
 ```
 
 
 
-Unsubscribes from the given Default permissions by operator status
+Unsubscribes from the given Default permissions by permission level
 
 
 
@@ -1000,7 +1000,7 @@ Unsubscribes from the given Default permissions by operator status
 **Parameters:**
 
 
-* `op` Default list to unsubscribe from 
+* `level` Default list to unsubscribe from 
 * `permissible` [**Permissible**](classendstone_1_1Permissible.md) subscribing 
 
 

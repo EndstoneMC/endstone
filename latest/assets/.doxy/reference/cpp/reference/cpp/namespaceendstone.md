@@ -145,7 +145,6 @@ _Represents a button with text and an optional icon._
 | class | [**PluginLoader**](classendstone_1_1PluginLoader.md) <br>_Represents a plugin loader, which handles direct access to specific types of plugins._  |
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**Position**](classendstone_1_1Position.md) <br>_Represents a 3-dimensional position in a dimension within a level._  |
-| class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Represents a proxied command sender._  |
 | class | [**Recipe**](classendstone_1_1Recipe.md) <br>_Represents some type of crafting recipe._  |
 | class | [**Registry**](classendstone_1_1Registry.md) &lt;typename T&gt;<br>_Abstract registry interface for keyed objects._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
@@ -191,6 +190,7 @@ _Represents a button with text and an optional icon._
 | typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
+| enum  | [**PermissionLevel**](#enum-permissionlevel)  <br> |
 | typedef std::function&lt; void(const [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
@@ -475,7 +475,25 @@ enum endstone::PermissionDefault {
     True,
     False,
     Operator,
-    NotOperator
+    NotOperator,
+    Console
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum PermissionLevel 
+
+```C++
+enum endstone::PermissionLevel {
+    Default = 0,
+    Operator = 1,
+    Console = 2
 };
 ```
 

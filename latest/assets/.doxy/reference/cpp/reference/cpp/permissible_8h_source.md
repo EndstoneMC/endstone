@@ -29,6 +29,7 @@
 #include <unordered_set>
 
 #include "endstone/permissions/permission_attachment_info.h"
+#include "endstone/permissions/permission_level.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -42,9 +43,7 @@ class Permissible {
 public:
     virtual ~Permissible() = default;
 
-    [[nodiscard]] virtual bool isOp() const = 0;
-
-    virtual void setOp(bool value) = 0;
+    [[nodiscard]] virtual PermissionLevel getPermissionLevel() const = 0;
 
     [[nodiscard]] virtual bool isPermissionSet(std::string name) const = 0;
 

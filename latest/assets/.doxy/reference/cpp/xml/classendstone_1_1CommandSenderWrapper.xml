@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="117" column="19" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="117" bodyend="-1"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="129" column="19" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1CommandSenderWrapper_1ab9681dee5565195c3f25dcb2e5f25d43" prot="private" static="no" mutable="no">
         <type>Callback</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="118" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="118" bodyend="-1"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="130" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" prot="private" static="no" mutable="no">
         <type>Callback</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="119" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="119" bodyend="-1"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="131" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="131" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -153,54 +153,24 @@
         </inbodydescription>
         <location file="include/endstone/command/command_sender_wrapper.h" line="36" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="36" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a3677c8f7a848edc3ee53c5a23ab58b52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool endstone::CommandSenderWrapper::isOp</definition>
+      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a35ea40a86d08d2e675932a8532b1851b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>PermissionLevel</type>
+        <definition>PermissionLevel endstone::CommandSenderWrapper::getPermissionLevel</definition>
         <argsstring>() const override</argsstring>
-        <name>isOp</name>
-        <qualifiedname>endstone::CommandSenderWrapper::isOp</qualifiedname>
-        <reimplements refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53">isOp</reimplements>
+        <name>getPermissionLevel</name>
+        <qualifiedname>endstone::CommandSenderWrapper::getPermissionLevel</qualifiedname>
+        <reimplements refid="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c">getPermissionLevel</reimplements>
         <briefdescription>
-<para>Checks if this object is a server operator. </para>
+<para>Gets the permission level of this object. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if this is an operator, otherwise false </para>
+<para><simplesect kind="return"><para>The permission level </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="43" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="43" bodyend="46"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1adc6b57a30c34ea968b81ceb660a1e976" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void endstone::CommandSenderWrapper::setOp</definition>
-        <argsstring>(bool value) override</argsstring>
-        <name>setOp</name>
-        <qualifiedname>endstone::CommandSenderWrapper::setOp</qualifiedname>
-        <reimplements refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233">setOp</reimplements>
-        <param>
-          <type>bool</type>
-          <declname>value</declname>
-        </param>
-        <briefdescription>
-<para>Sets the operator status of this object. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>value</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>New operator value </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="47" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="47" bodyend="50"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="43" column="22" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -214,9 +184,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Checks if this object contains an override for the specified permission, by fully qualified name. </para>
         </briefdescription>
         <detaileddescription>
-<para>Checks if this object contains an override for the specified permission, by fully qualified name</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -232,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="51" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="51" bodyend="54"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="48" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="48" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -246,9 +216,9 @@
           <declname>perm</declname>
         </param>
         <briefdescription>
+<para>Checks if this object contains an override for the specified <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Checks if this object contains an override for the specified <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>perm</parametername>
@@ -264,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="55" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="55" bodyend="58"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="53" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -278,9 +248,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -296,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="59" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="59" bodyend="62"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="58" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -310,9 +280,9 @@
           <declname>perm</declname>
         </param>
         <briefdescription>
+<para>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>perm</parametername>
@@ -350,9 +320,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Adds a new <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> with a single permission by name and value. </para>
         </briefdescription>
         <detaileddescription>
-<para>Adds a new <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> with a single permission by name and value</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>plugin</parametername>
@@ -384,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="67" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="67" bodyend="70"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="68" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="68" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> *</type>
@@ -398,9 +368,9 @@
           <declname>plugin</declname>
         </param>
         <briefdescription>
+<para>Adds a new empty <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> to this object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Adds a new empty <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> to this object</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>plugin</parametername>
@@ -416,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="71" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="71" bodyend="74"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="73" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>Result&lt; void &gt;</type>
@@ -430,9 +400,9 @@
           <declname>attachment</declname>
         </param>
         <briefdescription>
+<para>Removes the given <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> from this object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Removes the given <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> from this object</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>attachment</parametername>
@@ -448,7 +418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="75" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="75" bodyend="78"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="78" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -458,13 +428,13 @@
         <qualifiedname>endstone::CommandSenderWrapper::recalculatePermissions</qualifiedname>
         <reimplements refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5">recalculatePermissions</reimplements>
         <briefdescription>
+<para>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin. </para>
         </briefdescription>
         <detaileddescription>
-<para>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="79" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="79" bodyend="82"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="83" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="83" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1aeeb41c929000b7f74f64d289d509edba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::unordered_set&lt; <ref refid="classendstone_1_1PermissionAttachmentInfo" kindref="compound">PermissionAttachmentInfo</ref> * &gt;</type>
@@ -474,16 +444,16 @@
         <qualifiedname>endstone::CommandSenderWrapper::getEffectivePermissions</qualifiedname>
         <reimplements refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6">getEffectivePermissions</reimplements>
         <briefdescription>
+<para>Gets a set containing all the permissions currently in effect by this object. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets a set containing all the permissions currently in effect by this object</para>
 <para><simplesect kind="return"><para>Set of currently effective permissions </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="83" column="25" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="83" bodyend="86"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="88" column="25" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="88" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a5fc91f3c240a91dc5a37d1e0345da2c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> *</type>
@@ -502,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="87" column="20" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="87" bodyend="90"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="93" column="20" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="93" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a1ad4a226bbf1e73d89839d743585b678" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref> *</type>
@@ -521,7 +491,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="91" column="27" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="91" bodyend="94"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="98" column="27" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="98" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a44729e5299e551a8058e457a60c64900" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
@@ -540,7 +510,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="95" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="95" bodyend="98"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="103" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="103" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ad53fb2fc3c38f3d8add6b409eac0bdf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref> *</type>
@@ -559,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="99" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="99" bodyend="102"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="108" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="108" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a367f090917a2dc9a34bfad1fb0fb29c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
@@ -578,7 +548,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="103" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="103" bodyend="106"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="113" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="113" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
@@ -597,7 +567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="107" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="107" bodyend="110"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="118" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="118" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -616,7 +586,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="111" column="18" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="111" bodyend="114"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="123" column="18" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="123" bodyend="126"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -660,7 +630,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/command/command_sender_wrapper.h" line="24" column="1" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="24" bodyend="120"/>
+    <location file="include/endstone/command/command_sender_wrapper.h" line="24" column="1" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="24" bodyend="132"/>
     <listofallmembers>
       <member refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>
@@ -669,15 +639,14 @@
       <member refid="classendstone_1_1CommandSenderWrapper_1a1ad4a226bbf1e73d89839d743585b678" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1ad53fb2fc3c38f3d8add6b409eac0bdf4" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>asMob</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a367f090917a2dc9a34bfad1fb0fb29c2" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>asPlayer</name></member>
-      <member refid="classendstone_1_1CommandSender_1a52b174972923fb6dcb578166846c707a" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>asProxiedCommandSender</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1aecfc3f07c79d140b40d890b7a7a2d541" prot="public" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>Callback</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a0f9429e921096e79eeb39a5d8d78ea57" prot="public" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>CommandSenderWrapper</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1aeeb41c929000b7f74f64d289d509edba" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getName</name></member>
+      <member refid="classendstone_1_1CommandSenderWrapper_1a35ea40a86d08d2e675932a8532b1851b" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getPermissionLevel</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getServer</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>hasPermission</name></member>
-      <member refid="classendstone_1_1CommandSenderWrapper_1a3677c8f7a848edc3ee53c5a23ab58b52" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isOp</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" prot="private" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>on_error_</name></member>
@@ -689,7 +658,6 @@
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>sendMessage</name></member>
-      <member refid="classendstone_1_1CommandSenderWrapper_1adc6b57a30c34ea968b81ceb660a1e976" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>~Permissible</name></member>
     </listofallmembers>
   </compounddef>

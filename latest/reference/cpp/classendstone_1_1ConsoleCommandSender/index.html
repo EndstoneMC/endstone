@@ -2202,10 +2202,6 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asplayer"><strong>asPlayer</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1ProxiedCommandSender/"><strong>ProxiedCommandSender</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asproxiedcommandsender"><strong>asProxiedCommandSender</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1ProxiedCommandSender/"><em><strong>ProxiedCommandSender</strong></em></a> <em>.</em></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-getname"><strong>getName</strong></a> () const = 0<br><em>Gets the name of this command sender.</em></td>
 </tr>
@@ -2243,11 +2239,11 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, const std::string &amp; name, bool value) = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, const std::string &amp; name, bool value) = 0<br><em>Adds a new</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>with a single permission by name and value.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br><em>Adds a new empty</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>to this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> *</td>
@@ -2255,39 +2251,35 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_set&lt; <a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>PermissionAttachmentInfo</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-geteffectivepermissions"><strong>getEffectivePermissions</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-geteffectivepermissions"><strong>getEffectivePermissions</strong></a> () const = 0<br><em>Gets a set containing all the permissions currently in effect by this object.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual PermissionLevel</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-getpermissionlevel"><strong>getPermissionLevel</strong></a> () const = 0<br><em>Gets the permission level of this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) const = 0<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-22"><strong>hasPermission</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-22"><strong>hasPermission</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-isop"><strong>isOp</strong></a> () const = 0<br><em>Checks if this object is a server operator.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-12"><strong>isPermissionSet</strong></a> (std::string name) const = 0<br><em>Checks if this object contains an override for the specified permission, by fully qualified name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-12"><strong>isPermissionSet</strong></a> (std::string name) const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-22"><strong>isPermissionSet</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-ispermissionset-22"><strong>isPermissionSet</strong></a> (const <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br><em>Checks if this object contains an override for the specified</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; void &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-setop"><strong>setOp</strong></a> (bool value) = 0<br><em>Sets the operator status of this object.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) = 0<br><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>

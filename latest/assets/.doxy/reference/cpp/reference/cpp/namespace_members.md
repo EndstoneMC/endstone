@@ -53,6 +53,7 @@
 ## p
 
 * **PermissionDefault** ([**endstone**](namespaceendstone.md))
+* **PermissionLevel** ([**endstone**](namespaceendstone.md))
 * **PermissionRemovedExecutor** ([**endstone**](namespaceendstone.md))
 * **PluginLoadOrder** ([**endstone**](namespaceendstone.md))
 

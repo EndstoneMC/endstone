@@ -7,6 +7,7 @@
     <innerfile refid="permission__attachment_8h">permission_attachment.h</innerfile>
     <innerfile refid="permission__attachment__info_8h">permission_attachment_info.h</innerfile>
     <innerfile refid="permission__default_8h">permission_default.h</innerfile>
+    <innerfile refid="permission__level_8h">permission_level.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
