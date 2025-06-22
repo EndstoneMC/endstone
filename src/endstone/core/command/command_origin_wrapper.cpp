@@ -49,19 +49,15 @@ std::string CommandOriginWrapper::getName() const
     return origin_.getName();
 }
 
-bool CommandOriginWrapper::isOp() const
+PermissionLevel CommandOriginWrapper::getPermissionLevel() const
 {
-    switch (origin_.getPermissionsLevel()) {
-    case CommandPermissionLevel::Any:
-        return false;
-    default:
-        return true;
+    if (origin_.getPermissionsLevel() >= CommandPermissionLevel::Host) {
+        return PermissionLevel::Console;
     }
-}
-
-void CommandOriginWrapper::setOp(bool value)
-{
-    getServer().getLogger().error("Changing the operator status of {} is not supported.", getName());
+    if (origin_.getPermissionsLevel() > CommandPermissionLevel::Any) {
+        return PermissionLevel::Operator;
+    }
+    return PermissionLevel::Default;
 }
 
 std::shared_ptr<CommandOriginWrapper> CommandOriginWrapper::create(const CommandOrigin &origin, CommandOutput &output)

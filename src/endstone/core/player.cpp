@@ -103,6 +103,11 @@ std::string EndstonePlayer::getName() const
     return EndstoneMob::getName();
 }
 
+PermissionLevel EndstonePlayer::getPermissionLevel() const
+{
+    return isOp() ? PermissionLevel::Operator : PermissionLevel::Default;
+}
+
 bool EndstonePlayer::isPermissionSet(std::string name) const
 {
     return perm_->isPermissionSet(name);
@@ -586,9 +591,7 @@ void EndstonePlayer::updateCommands() const
     for (auto it = packet.commands.begin(); it != packet.commands.end();) {
         const auto &name = it->name;
         const auto command = command_map.getCommand(name);
-        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this)) &&
-            it->permission_level < CommandPermissionLevel::Host  // TODO(permission): remove after refactor
-        ) {
+        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this))) {
             if (auto symbol = registry.findEnumValue(name); symbol.value() != 0) {
                 auto symbol_index = static_cast<std::uint32_t>(symbol.toIndex());
                 if (it->permission_level >= CommandPermissionLevel::Host) {

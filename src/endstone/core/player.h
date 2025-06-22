@@ -45,6 +45,7 @@ public:
     [[nodiscard]] std::string getName() const override;
 
     // Permissible
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
@@ -54,8 +55,6 @@ public:
     Result<void> removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
-    [[nodiscard]] bool isOp() const override;
-    void setOp(bool value) override;
 
     // Actor
     [[nodiscard]] std::string getType() const override;
@@ -96,6 +95,8 @@ public:
     [[nodiscard]] UUID getUniqueId() const override;
 
     // Player
+    [[nodiscard]] bool isOp() const override;
+    void setOp(bool value) override;
     [[nodiscard]] std::string getXuid() const override;
     [[nodiscard]] SocketAddress getAddress() const override;
     void transfer(std::string host, int port) const override;

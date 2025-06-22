@@ -41,12 +41,19 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_co
     setUsages(std::move(usages));
 
     // Permissions
+    const auto &server = EndstoneServer::getInstance();
     const auto permission = getPermission(signature);
     setPermissions(permission);
-    DefaultPermissions::registerPermission(
-        permission, nullptr, "Gives the user the ability to use the /" + getName() + " command",
-        signature.permission_level > CommandPermissionLevel::Any ? PermissionDefault::Operator
-                                                                 : PermissionDefault::True);
+    auto permission_default = PermissionDefault::True;
+    if (signature.permission_level >= CommandPermissionLevel::Host) {
+        permission_default = PermissionDefault::Console;
+    }
+    else if (signature.permission_level > CommandPermissionLevel::Any) {
+        permission_default = PermissionDefault::Operator;
+    }
+    DefaultPermissions::registerPermission(permission, server.getPluginManager().getPermission("minecraft.command"),
+                                           "Gives the user the ability to use the /" + getName() + " command",
+                                           permission_default);
 }
 
 bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<std::string> &args) const
@@ -72,11 +79,8 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
         return false;
     }
 
-    // run the command
-    if (command->permission_level_ < CommandPermissionLevel::Host) {  // TODO(permission): remove after refactor
-        //  We've already done the permission check above
-        command->permission_level_ = CommandPermissionLevel::Any;
-    }
+    //  We've already done the permission check above
+    command->permission_level_ = CommandPermissionLevel::Any;
 
     CommandOutput output{MinecraftCommands::getOutputType(*command_origin)};
     command->run(*command_origin, output);

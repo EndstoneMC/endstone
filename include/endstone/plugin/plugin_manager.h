@@ -21,6 +21,7 @@
 
 #include "endstone/event/event.h"
 #include "endstone/event/event_priority.h"
+#include "endstone/permissions/permission_level.h"
 
 namespace endstone {
 
@@ -193,12 +194,12 @@ public:
     virtual void removePermission(std::string name) = 0;
 
     /**
-     * Gets the default permissions for the given op status
+     * Gets the default permissions for the given permission level
      *
-     * @param op Which set of default permissions to get
+     * @param level Which set of default permissions to get
      * @return The default permissions
      */
-    [[nodiscard]] virtual std::unordered_set<Permission *> getDefaultPermissions(bool op) const = 0;
+    [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissionLevel level) const = 0;
 
     /**
      * Recalculates the defaults for the given {@link Permission}.
@@ -236,30 +237,31 @@ public:
         std::string permission) const = 0;
 
     /**
-     * Subscribes to the given Default permissions by operator status
+     * Subscribes to the given Default permissions by permission level
      *
      * If the specified defaults change in any form, the Permissible will be asked to recalculate.
      *
-     * @param op Default list to subscribe to
+     * @param level Default list to subscribe to
      * @param permissible Permissible subscribing
      */
-    virtual void subscribeToDefaultPerms(bool op, Permissible &permissible) = 0;
+    virtual void subscribeToDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
 
     /**
-     * Unsubscribes from the given Default permissions by operator status
+     * Unsubscribes from the given Default permissions by permission level
      *
-     * @param op Default list to unsubscribe from
+     * @param level Default list to unsubscribe from
      * @param permissible Permissible subscribing
      */
-    virtual void unsubscribeFromDefaultPerms(bool op, Permissible &permissible) = 0;
+    virtual void unsubscribeFromDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
 
     /**
-     * Gets a set containing all subscribed {@link Permissible}s to the given default list, by op status
+     * Gets a set containing all subscribed Permissibles to the given default list, by permission level
      *
-     * @param op Default list to query for
+     * @param level Default list to query for
      * @return Set containing all subscribed permissions
      */
-    [[nodiscard]] virtual std::unordered_set<Permissible *> getDefaultPermSubscriptions(bool op) const = 0;
+    [[nodiscard]] virtual std::unordered_set<Permissible *> getDefaultPermSubscriptions(
+        PermissionLevel level) const = 0;
 
     /**
      * Gets a set of all registered permissions.

@@ -31,8 +31,7 @@ public:
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] bool isOp() const override;
-    void setOp(bool value) override;
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;

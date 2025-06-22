@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -2400,7 +2400,7 @@ class Objective:
         Gets the scoreboard to which this objective is attached
         """
     @property
-    def sort_order(self) -> ObjectiveSortOrder:
+    def sort_order(self) -> ObjectiveSortOrder | None:
         """
         Gets or sets the sort order for this objective
         """
@@ -2568,13 +2568,10 @@ class Permissible:
         Gets effective permissions.
         """
     @property
-    def is_op(self) -> bool:
+    def permission_level(self) -> PermissionLevel:
         """
-        The operator status of this object
+        Gets the permission level of this object
         """
-    @is_op.setter
-    def is_op(self, arg1: bool) -> None:
-        ...
 class Permission:
     """
     Represents a unique permission that may be attached to a Permissible
@@ -2709,13 +2706,46 @@ class PermissionDefault:
     """
     Represents the possible default values for permissions
     """
+    CONSOLE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.CONSOLE: 4>
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
     NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     TRUE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.TRUE: 0>
-    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>}
+    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>, 'CONSOLE': <PermissionDefault.CONSOLE: 4>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class PermissionLevel:
+    CONSOLE: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.CONSOLE: 2>
+    DEFAULT: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.DEFAULT: 0>
+    OP: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
+    OPERATOR: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
+    __members__: typing.ClassVar[dict[str, PermissionLevel]]  # value = {'DEFAULT': <PermissionLevel.DEFAULT: 0>, 'OP': <PermissionLevel.OP: 1>, 'OPERATOR': <PermissionLevel.OP: 1>, 'CONSOLE': <PermissionLevel.CONSOLE: 2>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -2896,6 +2926,14 @@ class Player(Mob, OfflinePlayer):
         """
     @is_flying.setter
     def is_flying(self, arg1: bool) -> None:
+        ...
+    @property
+    def is_op(self) -> bool:
+        """
+        The operator status of this playerall
+        """
+    @is_op.setter
+    def is_op(self, arg1: bool) -> None:
         ...
     @property
     def is_sneaking(self) -> bool:
@@ -3557,13 +3595,13 @@ class PluginManager:
         """
         Enable all the loaded plugins
         """
-    def get_default_perm_subscriptions(self, op: bool) -> set[Permissible]:
+    def get_default_perm_subscriptions(self, level: PermissionLevel) -> set[Permissible]:
         """
-        Gets a set containing all subscribed Permissibles to the given default list, by op status.
+        Gets a set containing all subscribed Permissibles to the given default list, by permission level.
         """
-    def get_default_permissions(self, op: bool) -> set[Permission]:
+    def get_default_permissions(self, level: PermissionLevel) -> set[Permission]:
         """
-        Gets the default permissions for the given op status.
+        Gets the default permissions for the given permission level.
         """
     def get_permission(self, name: str) -> Permission:
         """
@@ -3619,17 +3657,17 @@ class PluginManager:
         """
         Removes a Permission registration from this plugin manager by name.
         """
-    def subscribe_to_default_perms(self, op: bool, permissible: Permissible) -> None:
+    def subscribe_to_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
-        Subscribes to the given Default permissions by operator status.
+        Subscribes to the given Default permissions by permission level.
         """
     def subscribe_to_permission(self, permission: str, permissible: Permissible) -> None:
         """
         Subscribes the given Permissible for information about the requested Permission.
         """
-    def unsubscribe_from_default_perms(self, op: bool, permissible: Permissible) -> None:
+    def unsubscribe_from_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
-        Unsubscribes from the given Default permissions by operator status.
+        Unsubscribes from the given Default permissions by permission level.
         """
     def unsubscribe_from_permission(self, permission: str, permissible: Permissible) -> None:
         """
@@ -3678,20 +3716,6 @@ class Position(Vector):
     @dimension.setter
     def dimension(self, arg1: Dimension) -> None:
         ...
-class ProxiedCommandSender(CommandSender):
-    """
-    Represents a proxied command sender.
-    """
-    @property
-    def callee(self) -> CommandSender:
-        """
-        Returns the CommandSender which is being used to call the command.
-        """
-    @property
-    def caller(self) -> CommandSender:
-        """
-        Returns the CommandSender which triggered this proxied command.
-        """
 class RenderType:
     """
     Controls the way in which an Objective is rendered on the client side.
