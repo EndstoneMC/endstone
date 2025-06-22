@@ -599,21 +599,32 @@ void EndstonePluginManager::recalculatePermissionDefaults(Permission &perm)
 
 void EndstonePluginManager::calculatePermissionDefault(Permission &perm)
 {
-    if (perm.getDefault() == PermissionDefault::Console) {
+    switch (perm.getDefault()) {
+    case PermissionDefault::Console:
         default_perms_.at(PermissionLevel::Console).insert(&perm);
         dirtyPermissibles(PermissionLevel::Console);
-    }
-
-    if (perm.getDefault() == PermissionDefault::Operator || perm.getDefault() == PermissionDefault::True) {
+        break;
+    case PermissionDefault::Operator:
         default_perms_.at(PermissionLevel::Operator).insert(&perm);
         default_perms_.at(PermissionLevel::Console).insert(&perm);
         dirtyPermissibles(PermissionLevel::Operator);
         dirtyPermissibles(PermissionLevel::Console);
-    }
-
-    if (perm.getDefault() == PermissionDefault::NotOperator || perm.getDefault() == PermissionDefault::True) {
+        break;
+    case PermissionDefault::NotOperator:
         default_perms_.at(PermissionLevel::Default).insert(&perm);
         dirtyPermissibles(PermissionLevel::Default);
+        break;
+    case PermissionDefault::True:
+        default_perms_.at(PermissionLevel::Default).insert(&perm);
+        default_perms_.at(PermissionLevel::Operator).insert(&perm);
+        default_perms_.at(PermissionLevel::Console).insert(&perm);
+        dirtyPermissibles(PermissionLevel::Default);
+        dirtyPermissibles(PermissionLevel::Operator);
+        dirtyPermissibles(PermissionLevel::Console);
+        break;
+    case PermissionDefault::False:
+    default:
+        break;
     }
 }
 
