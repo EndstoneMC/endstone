@@ -94,7 +94,7 @@ public:
      *
      * @return The number of arrowhead segments.
      */
-    [[nodiscard]] std::optional<int> getArrowHeadSegments() const
+    [[nodiscard]] std::optional<std::uint8_t> getArrowHeadSegments() const
     {
         return arrow_head_segments_;
     }
@@ -105,7 +105,7 @@ public:
      * @param arrow_head_segments The desired number of segments.
      * @return A reference to the current debug shape.
      */
-    DebugArrow &setArrowHeadSegments(const std::optional<int> arrow_head_segments)
+    DebugArrow &setArrowHeadSegments(const std::optional<std::uint8_t> arrow_head_segments)
     {
         arrow_head_segments_ = arrow_head_segments;
         return *this;
@@ -115,7 +115,7 @@ private:
     std::optional<Vector<float>> end_position_;
     std::optional<float> arrow_head_length_;
     std::optional<float> arrow_head_radius_;
-    std::optional<int> arrow_head_segments_;
+    std::optional<std::uint8_t> arrow_head_segments_;
 };
 
 }  // namespace endstone

@@ -51,7 +51,7 @@ public:
      *
      * @return The number of circle segments.
      */
-    [[nodiscard]] std::optional<int> getSegments() const
+    [[nodiscard]] std::optional<std::uint8_t> getSegments() const
     {
         return segments_;
     }
@@ -62,7 +62,7 @@ public:
      * @param segments The desired number of segments.
      * @return A reference to the current debug shape.
      */
-    DebugCircle &setSegments(const std::optional<int> segments)
+    DebugCircle &setSegments(const std::optional<std::uint8_t> segments)
     {
         segments_ = segments;
         return *this;
@@ -70,7 +70,7 @@ public:
 
 private:
     std::optional<float> scale_;
-    std::optional<int> segments_;
+    std::optional<std::uint8_t> segments_;
 };
 
 }  // namespace endstone
