@@ -27,6 +27,7 @@
 #include "bedrock/network/packet/toast_request_packet.h"
 #include "bedrock/network/packet/transfer_packet.h"
 #include "bedrock/network/packet/update_abilities_packet.h"
+#include "bedrock/network/packet/server_script_debug_drawer_packet.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/world/actor/player/player.h"
@@ -45,6 +46,12 @@
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
+#include "endstone/debugshape/debug_arrow.h"
+#include "endstone/debugshape/debug_box.h"
+#include "endstone/debugshape/debug_circle.h"
+#include "endstone/debugshape/debug_line.h"
+#include "endstone/debugshape/debug_sphere.h"
+#include "endstone/debugshape/debug_text.h"
 
 namespace endstone::core {
 
@@ -743,6 +750,27 @@ void EndstonePlayer::closeForm()
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ClientboundCloseScreen);
     getPlayer().sendNetworkPacket(*packet);
     forms_.clear();
+}
+
+void EndstonePlayer::sendDebugShape(DebugShapeVariant debug_shape)
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
+    std::shared_ptr<ServerScriptDebugDrawerPacket> pk = std::static_pointer_cast<ServerScriptDebugDrawerPacket>(packet);
+}
+
+void EndstonePlayer::sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes)
+{
+    // TODO
+}
+
+void EndstonePlayer::removeDebugShape(DebugShapeVariant debug_shape)
+{
+    // TODO
+}
+
+void EndstonePlayer::removeDebugShapes(std::vector<DebugShapeVariant> debug_shapes)
+{
+    // TODO
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)
