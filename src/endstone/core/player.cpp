@@ -754,23 +754,106 @@ void EndstonePlayer::closeForm()
 
 void EndstonePlayer::sendDebugShape(DebugShapeVariant debug_shape)
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
-    std::shared_ptr<ServerScriptDebugDrawerPacket> pk = std::static_pointer_cast<ServerScriptDebugDrawerPacket>(packet);
+    EndstonePlayer::sendDebugShapes({debug_shape});
 }
 
 void EndstonePlayer::sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes)
 {
-    // TODO
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
+    std::shared_ptr<ServerScriptDebugDrawerPacket> pk = std::static_pointer_cast<ServerScriptDebugDrawerPacket>(packet);
+    std::vector<DebugShapeData> debug_shape_data;
+    for (auto &debug_shape : debug_shapes) {
+        if (std::holds_alternative<DebugArrow>(debug_shape)) {
+            auto &arrow = std::get<DebugArrow>(debug_shape);
+            auto pos = arrow.getPosition();
+            auto end_pos = arrow.getEndPosition();
+            auto color = arrow.getColor();
+            debug_shape_data.push_back({
+                arrow.getId(), DebugShapeType::Arrow, Vec3(pos->getX(), pos->getY(), pos->getZ()), std::nullopt, std::nullopt,
+                std::nullopt, mce::Color(color->getRed(), color->getGreen(), color->getBlue(), color->getAlpha()),
+                std::nullopt, std::nullopt, Vec3(end_pos->getX(), end_pos->getY(), end_pos->getZ()),
+                arrow.getArrowHeadLength(), arrow.getArrowHeadRadius(), arrow.getArrowHeadSegments()
+            });
+        }
+        if (std::holds_alternative<DebugBox>(debug_shape)) {
+            auto &box = std::get<DebugBox>(debug_shape);
+            auto pos = box.getPosition();
+            auto box_bounds = box.getBoxBounds();
+            auto color = box.getColor();
+            debug_shape_data.push_back({
+                box.getId(), DebugShapeType::Box, Vec3(pos->getX(), pos->getY(), pos->getZ()), box.getScale(), std::nullopt,
+                std::nullopt, mce::Color(color->getRed(), color->getGreen(), color->getBlue(), color->getAlpha()),
+                std::nullopt, Vec3(box_bounds->getX(), box_bounds->getY(), box_bounds->getZ()), std::nullopt,
+                std::nullopt, std::nullopt, std::nullopt
+            });
+        }
+        if (std::holds_alternative<DebugCircle>(debug_shape)) {
+            auto &circle = std::get<DebugCircle>(debug_shape);
+            auto pos = circle.getPosition();
+            auto color = circle.getColor();
+            debug_shape_data.push_back({
+                circle.getId(), DebugShapeType::Circle, Vec3(pos->getX(), pos->getY(), pos->getZ()), circle.getScale(), std::nullopt,
+                std::nullopt, mce::Color(color->getRed(), color->getGreen(), color->getBlue(), color->getAlpha()),
+                std::nullopt, std::nullopt, std::nullopt,
+                std::nullopt, std::nullopt, circle.getSegments()
+            });
+        }
+        if (std::holds_alternative<DebugLine>(debug_shape)) {
+            auto &line = std::get<DebugLine>(debug_shape);
+            auto pos = line.getPosition();
+            auto end_pos = line.getEndPosition();
+            auto color = line.getColor();
+            debug_shape_data.push_back({
+                line.getId(), DebugShapeType::Line, Vec3(pos->getX(), pos->getY(), pos->getZ()), std::nullopt, std::nullopt,
+                std::nullopt, mce::Color(color->getRed(), color->getGreen(), color->getBlue(), color->getAlpha()),
+                std::nullopt, std::nullopt, Vec3(end_pos->getX(), end_pos->getY(), end_pos->getZ()),
+                std::nullopt, std::nullopt, std::nullopt
+            });
+        }
+        if (std::holds_alternative<DebugSphere>(debug_shape)) {
+            auto &sphere = std::get<DebugSphere>(debug_shape);
+            auto pos = sphere.getPosition();
+            auto color = sphere.getColor();
+            debug_shape_data.push_back({
+                sphere.getId(), DebugShapeType::Sphere, Vec3(pos->getX(), pos->getY(), pos->getZ()), sphere.getScale(), std::nullopt,
+                std::nullopt, mce::Color(color->getRed(), color->getGreen(), color->getBlue(), color->getAlpha()),
+                std::nullopt, std::nullopt, std::nullopt,
+                std::nullopt, std::nullopt, sphere.getSegments()
+            });
+        }
+        if (std::holds_alternative<DebugText>(debug_shape)) {
+            auto &text = std::get<DebugText>(debug_shape);
+            auto pos = text.getPosition();
+            auto color = text.getColor();
+            debug_shape_data.push_back({
+                text.getId(), DebugShapeType::Text, Vec3(pos->getX(), pos->getY(), pos->getZ()), std::nullopt, std::nullopt,
+                std::nullopt, mce::Color(color->getRed(), color->getGreen(), color->getBlue(), color->getAlpha()),
+                text.getText(), std::nullopt, std::nullopt,
+                std::nullopt, std::nullopt, std::nullopt
+            });
+        }
+    }
+    pk->shapes = std::move(debug_shape_data);
+    getPlayer().sendNetworkPacket(*pk);
 }
 
 void EndstonePlayer::removeDebugShape(DebugShapeVariant debug_shape)
 {
-    // TODO
+    EndstonePlayer::removeDebugShapes({debug_shape});
 }
 
 void EndstonePlayer::removeDebugShapes(std::vector<DebugShapeVariant> debug_shapes)
 {
-    // TODO
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
+    std::shared_ptr<ServerScriptDebugDrawerPacket> pk = std::static_pointer_cast<ServerScriptDebugDrawerPacket>(packet);
+    std::vector<DebugShapeData> debug_shape_data;
+    for (auto &debug_shape : debug_shapes) {
+        std::visit([&debug_shape_data](auto &&arg) {
+            debug_shape_data.push_back({(arg.getId())});
+        }, debug_shape);
+    }
+    pk->shapes = std::move(debug_shape_data);
+    getPlayer().sendNetworkPacket(*pk);
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)
