@@ -39,9 +39,9 @@ public:
      * @param scale The desired scale of the box.
      * @return A reference to the current debug shape.
      */
-    DebugBox &setScale(std::optional<float> scale)
+    DebugBox &setScale(const std::optional<float> scale)
     {
-        scale_ = std::move(scale);
+        scale_ = scale;
         return *this;
     }
 
@@ -50,7 +50,7 @@ public:
      *
      * @return The bounds of the box.
      */
-    [[nodiscard]] std::optional<Vector> getBoxBounds() const
+    [[nodiscard]] std::optional<Vector<float>> getBoxBounds() const
     {
         return box_bounds_;
     }
@@ -61,15 +61,15 @@ public:
      * @param box_bounds The desired bounds of the box.
      * @return A reference to the current debug shape.
      */
-    DebugBox &setBoxBounds(std::optional<Vector> box_bounds)
+    DebugBox &setBoxBounds(const std::optional<Vector<float>> box_bounds)
     {
-        box_bounds_ = std::move(box_bounds);
+        box_bounds_ = box_bounds;
         return *this;
     }
 
 private:
     std::optional<float> scale_;
-    std::optional<Vector> box_bounds_;
+    std::optional<Vector<float>> box_bounds_;
 };
 
 }  // namespace endstone

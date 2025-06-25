@@ -14,13 +14,17 @@
 
 #pragma once
 
-#include <cstdint>
 #include <optional>
+#include <atomic>
 
-#include "endstone/color.h"
-#include "endstone/vector.h"
+#include "endstone/util/color.h"
+#include "endstone/util/vector.h"
 
 namespace endstone {
+
+namespace debugshape_internal {
+    inline std::atomic<int64_t> id_counter{0};
+}  // namespace debugshape_internal
 
 /**
  * @brief Represents a generic debug shape.
@@ -35,7 +39,7 @@ public:
     using DebugShapeId = int64_t;
     explicit DebugShape()
     {
-        id_ = --id_counter_;
+        id_ = --debugshape_internal::id_counter;
     }
 
     /**
@@ -53,7 +57,7 @@ public:
      *
      * @return The position of the debug shape.
      */
-    [[nodiscard]] std::optional<Vector> getPosition() const
+    [[nodiscard]] std::optional<Vector<float>> getPosition() const
     {
         return position_;
     }
@@ -64,9 +68,9 @@ public:
      * @param position The position to set for the debug shape.
      * @return A reference to the current debug shape.
      */
-    T &setPosition(std::optional<Vector> position)
+    T &setPosition(const std::optional<Vector<float>> position)
     {
-        position_ = std::move(position);
+        position_ = position;
         return *static_cast<T *>(this);
     }
 
@@ -86,16 +90,15 @@ public:
      * @param color The color to set for the debug shape.
      * @return A reference to the current debug shape.
      */
-    T &setColor(std::optional<Color> color)
+    T &setColor(const std::optional<Color> color)
     {
-        color_ = std::move(color);
+        color_ = color;
         return *static_cast<T *>(this);
     }
 
 protected:
-    static DebugShapeId id_counter_;
     DebugShapeId id_;
-    std::optional<Vector> position_;
+    std::optional<Vector<float>> position_;
     std::optional<Color> color_;
 };
 

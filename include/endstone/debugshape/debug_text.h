@@ -20,6 +20,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a debug text.
+ */
 class DebugText : public DebugShape<DebugText> {
 public:
     /**
@@ -35,12 +38,12 @@ public:
     /**
      * @brief Sets the the text of the debug text.
      *
-     * @param scale The desired the text of the debug text.
+     * @param text The desired the text of the debug text.
      * @return A reference to the current debug shape.
      */
-    DebugText &setText(std::string text)
+    DebugText &setText(const std::string &text)
     {
-        text_ = std::move(text);
+        text_ = text;
         return *this;
     }
 

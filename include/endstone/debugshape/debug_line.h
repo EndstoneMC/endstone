@@ -18,6 +18,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a debug line.
+ */
 class DebugLine : public DebugShape<DebugLine> {
 public:
     /**
@@ -25,7 +28,7 @@ public:
      *
      * @return The end position of the line.
      */
-    [[nodiscard]] std::optional<Vector> getEndPosition() const
+    [[nodiscard]] std::optional<Vector<float>> getEndPosition() const
     {
         return end_position_;
     }
@@ -36,14 +39,14 @@ public:
      * @param end_position The desired end position of the line
      * @return A reference to the current debug shape.
      */
-    DebugLine &setEndPosition(std::optional<Vector> end_position)
+    DebugLine &setEndPosition(const std::optional<Vector<float>> end_position)
     {
-        end_position_ = std::move(end_position);
+        end_position_ = end_position;
         return *this;
     }
 
 private:
-    std::optional<Vector> end_position_;
+    std::optional<Vector<float>> end_position_;
 };
 
 }  // namespace endstone

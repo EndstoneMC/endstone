@@ -28,7 +28,7 @@ public:
      *
      * @return The end position of the arrow.
      */
-    [[nodiscard]] std::optional<Vector> getEndPosition() const
+    [[nodiscard]] std::optional<Vector<float>> getEndPosition() const
     {
         return end_position_;
     }
@@ -39,9 +39,9 @@ public:
      * @param end_position The desired end position of the arrow
      * @return A reference to the current debug shape.
      */
-    DebugArrow &setEndPosition(std::optional<Vector> end_position)
+    DebugArrow &setEndPosition(const std::optional<Vector<float>> end_position)
     {
-        end_position_ = std::move(end_position);
+        end_position_ = end_position;
         return *this;
     }
 
@@ -61,9 +61,9 @@ public:
      * @param arrow_head_length The desired length of the arrowhead.
      * @return A reference to the current debug shape.
      */
-    DebugArrow &setArrowHeadLength(std::optional<float> arrow_head_length)
+    DebugArrow &setArrowHeadLength(const std::optional<float> arrow_head_length)
     {
-        arrow_head_length_ = std::move(arrow_head_length);
+        arrow_head_length_ = arrow_head_length;
         return *this;
     }
 
@@ -83,9 +83,9 @@ public:
      * @param arrow_head_radius The desired radius of the arrowhead.
      * @return A reference to the current debug shape.
      */
-    DebugArrow &setArrowHeadRadius(std::optional<float> arrow_head_radius)
+    DebugArrow &setArrowHeadRadius(const std::optional<float> arrow_head_radius)
     {
-        arrow_head_radius_ = std::move(arrow_head_radius);
+        arrow_head_radius_ = arrow_head_radius;
         return *this;
     }
 
@@ -105,14 +105,14 @@ public:
      * @param arrow_head_segments The desired number of segments.
      * @return A reference to the current debug shape.
      */
-    DebugArrow &setArrowHeadSegments(std::optional<int> arrow_head_segments)
+    DebugArrow &setArrowHeadSegments(const std::optional<int> arrow_head_segments)
     {
-        arrow_head_segments_ = std::move(arrow_head_segments);
+        arrow_head_segments_ = arrow_head_segments;
         return *this;
     }
 
 private:
-    std::optional<Vector> end_position_;
+    std::optional<Vector<float>> end_position_;
     std::optional<float> arrow_head_length_;
     std::optional<float> arrow_head_radius_;
     std::optional<int> arrow_head_segments_;

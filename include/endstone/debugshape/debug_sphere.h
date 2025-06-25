@@ -18,6 +18,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a debug sphere.
+ */
 class DebugSphere : public DebugShape<DebugSphere> {
 public:
     /**
@@ -38,7 +41,7 @@ public:
      */
     DebugSphere &setScale(std::optional<float> scale)
     {
-        scale_ = std::move(scale);
+        scale_ = scale;
         return *this;
     }
 
@@ -55,12 +58,12 @@ public:
     /**
      * @brief Sets the number of segments used to render the sphere.
      *
-     * @param arrow_head_segments The desired number of segments.
+     * @param segments The desired number of segments.
      * @return A reference to the current debug shape.
      */
-    DebugSphere &setSegments(std::optional<int> segments_)
+    DebugSphere &setSegments(const std::optional<int> segments)
     {
-        segments_ = std::move(segments_);
+        segments_ = segments;
         return *this;
     }
 

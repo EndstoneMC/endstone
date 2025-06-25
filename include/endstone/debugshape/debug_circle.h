@@ -18,6 +18,10 @@
 
 namespace endstone {
 
+
+/**
+ * @brief Represents a debug circle.
+ */
 class DebugCircle : public DebugShape<DebugCircle> {
 public:
     /**
@@ -36,9 +40,9 @@ public:
      * @param scale The desired scale of the circle.
      * @return A reference to the current debug shape.
      */
-    DebugCircle &setScale(std::optional<float> scale)
+    DebugCircle &setScale(const std::optional<float> scale)
     {
-        scale_ = std::move(scale);
+        scale_ = scale;
         return *this;
     }
 
@@ -55,12 +59,12 @@ public:
     /**
      * @brief Sets the number of segments used to render the circle.
      *
-     * @param arrow_head_segments The desired number of segments.
+     * @param segments The desired number of segments.
      * @return A reference to the current debug shape.
      */
-    DebugCircle &setSegments(std::optional<int> segments_)
+    DebugCircle &setSegments(const std::optional<int> segments)
     {
-        segments_ = std::move(segments_);
+        segments_ = segments;
         return *this;
     }
 

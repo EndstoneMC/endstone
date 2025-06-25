@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'DebugArrow', 'DebugBox', 'DebugCircle', 'DebugLine', 'DebugSphere', 'DebugText', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1056,6 +1056,264 @@ class DamageSource:
         """
         Get the damage type.
         """
+class DebugArrow:
+    """
+    Represents a debug arrow.
+    """
+    def __init__(self) -> None:
+        ...
+    @property
+    def arrow_head_length(self) -> float | None:
+        """
+        Gets or sets the length of the arrowhead.
+        """
+    @arrow_head_length.setter
+    def arrow_head_length(self, arg1: float | None) -> DebugArrow:
+        ...
+    @property
+    def arrow_head_radius(self) -> float | None:
+        """
+        Gets or sets the radius of the arrowhead.
+        """
+    @arrow_head_radius.setter
+    def arrow_head_radius(self, arg1: float | None) -> DebugArrow:
+        ...
+    @property
+    def arrow_head_segments(self) -> int | None:
+        """
+        Gets or sets the number of segments used to render the arrowhead.
+        """
+    @arrow_head_segments.setter
+    def arrow_head_segments(self, arg1: int | None) -> DebugArrow:
+        ...
+    @property
+    def color(self) -> tuple[int, ...] | None:
+        """
+        Gets or sets the color of the debug arrow.
+        """
+    @color.setter
+    def color(self, arg1: tuple[int, ...] | None) -> DebugArrow:
+        ...
+    @property
+    def end_position(self) -> Vector | None:
+        """
+        Gets or sets the end position of the arrow.
+        """
+    @end_position.setter
+    def end_position(self, arg1: Vector | None) -> DebugArrow:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Gets the id of the debug arrow.
+        """
+    @property
+    def position(self) -> Vector | None:
+        """
+        Gets or sets the position of the debug arrow.
+        """
+    @position.setter
+    def position(self, arg1: Vector | None) -> DebugArrow:
+        ...
+class DebugBox:
+    """
+    Represents a debug box.
+    """
+    def __init__(self) -> None:
+        ...
+    @property
+    def box_bounds(self) -> Vector | None:
+        """
+        Gets or sets the bounds of the box.
+        """
+    @box_bounds.setter
+    def box_bounds(self, arg1: Vector | None) -> DebugBox:
+        ...
+    @property
+    def color(self) -> tuple[int, ...] | None:
+        """
+        Gets or sets the color of the debug box.
+        """
+    @color.setter
+    def color(self, arg1: tuple[int, ...] | None) -> DebugBox:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Gets the id of the debug box.
+        """
+    @property
+    def position(self) -> Vector | None:
+        """
+        Gets or sets the position of the debug box.
+        """
+    @position.setter
+    def position(self, arg1: Vector | None) -> DebugBox:
+        ...
+    @property
+    def scale(self) -> float | None:
+        """
+        Gets or sets the scale of the box.
+        """
+    @scale.setter
+    def scale(self, arg1: float | None) -> DebugBox:
+        ...
+class DebugCircle:
+    """
+    Represents a debug circle.
+    """
+    def __init__(self) -> None:
+        ...
+    @property
+    def color(self) -> tuple[int, ...] | None:
+        """
+        Gets or sets the color of the debug circle.
+        """
+    @color.setter
+    def color(self, arg1: tuple[int, ...] | None) -> DebugCircle:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Gets the id of the debug circle.
+        """
+    @property
+    def position(self) -> Vector | None:
+        """
+        Gets or sets the position of the debug circle.
+        """
+    @position.setter
+    def position(self, arg1: Vector | None) -> DebugCircle:
+        ...
+    @property
+    def scale(self) -> float | None:
+        """
+        Gets or sets the scale of the circle.
+        """
+    @scale.setter
+    def scale(self, arg1: float | None) -> DebugCircle:
+        ...
+    @property
+    def segments(self) -> int | None:
+        """
+        Gets or sets the number of segments used to render the circle.
+        """
+    @segments.setter
+    def segments(self, arg1: int | None) -> DebugCircle:
+        ...
+class DebugLine:
+    """
+    Represents a debug line.
+    """
+    def __init__(self) -> None:
+        ...
+    @property
+    def color(self) -> tuple[int, ...] | None:
+        """
+        Gets or sets the color of the debug line.
+        """
+    @color.setter
+    def color(self, arg1: tuple[int, ...] | None) -> DebugLine:
+        ...
+    @property
+    def end_position(self) -> Vector | None:
+        """
+        Gets or sets the end position of the line.
+        """
+    @end_position.setter
+    def end_position(self, arg1: Vector | None) -> DebugLine:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Gets the id of the debug line.
+        """
+    @property
+    def position(self) -> Vector | None:
+        """
+        Gets or sets the position of the debug line.
+        """
+    @position.setter
+    def position(self, arg1: Vector | None) -> DebugLine:
+        ...
+class DebugSphere:
+    """
+    Represents a debug sphere.
+    """
+    def __init__(self) -> None:
+        ...
+    @property
+    def color(self) -> tuple[int, ...] | None:
+        """
+        Gets or sets the color of the debug sphere.
+        """
+    @color.setter
+    def color(self, arg1: tuple[int, ...] | None) -> DebugSphere:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Gets the id of the debug sphere.
+        """
+    @property
+    def position(self) -> Vector | None:
+        """
+        Gets or sets the position of the debug sphere.
+        """
+    @position.setter
+    def position(self, arg1: Vector | None) -> DebugSphere:
+        ...
+    @property
+    def scale(self) -> float | None:
+        """
+        Gets or sets the scale of the sphere.
+        """
+    @scale.setter
+    def scale(self, arg1: float | None) -> DebugSphere:
+        ...
+    @property
+    def segments(self) -> int | None:
+        """
+        Gets or sets the number of segments used to render the sphere.
+        """
+    @segments.setter
+    def segments(self, arg1: int | None) -> DebugSphere:
+        ...
+class DebugText:
+    """
+    Represents a debug text.
+    """
+    def __init__(self) -> None:
+        ...
+    @property
+    def color(self) -> tuple[int, ...] | None:
+        """
+        Gets or sets the color of the debug text.
+        """
+    @color.setter
+    def color(self, arg1: tuple[int, ...] | None) -> DebugText:
+        ...
+    @property
+    def id(self) -> int:
+        """
+        Gets the id of the debug text.
+        """
+    @property
+    def position(self) -> Vector | None:
+        """
+        Gets or sets the position of the debug text.
+        """
+    @position.setter
+    def position(self, arg1: Vector | None) -> DebugText:
+        ...
+    @property
+    def text(self) -> str:
+        """
+        Gets or sets the text of the debug text.
+        """
+    @text.setter
+    def text(self, arg1: str) -> DebugText:
+        ...
 class Dimension:
     """
     Represents a dimension within a Level.
