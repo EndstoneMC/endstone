@@ -3058,9 +3058,25 @@ class Player(Mob, OfflinePlayer):
         """
         Play a sound for a player at the location.
         """
+    def remove_debug_shape(self, debug_shape: DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText) -> None:
+        """
+        Removes a debug shape from the player.
+        """
+    def remove_debug_shapes(self, debug_shapes: list[DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText]) -> None:
+        """
+        Removes a number of debug shapes from the player.
+        """
     def reset_title(self) -> None:
         """
         Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.
+        """
+    def send_debug_shape(self, debug_shape: DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText) -> None:
+        """
+        Sends a debug shape to the player.
+        """
+    def send_debug_shapes(self, debug_shapes: list[DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText]) -> None:
+        """
+        Sends a number of debug shapes to the player.
         """
     def send_form(self, form: MessageForm | ActionForm | ModalForm) -> None:
         """
