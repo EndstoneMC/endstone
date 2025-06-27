@@ -761,7 +761,7 @@ void EndstonePlayer::sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
     auto pk = std::static_pointer_cast<ServerScriptDebugDrawerPacket>(packet);
-    std::vector<DebugShapeData> debug_shape_data;
+    std::vector<PacketShapeData> packet_shape_data;
 
     auto toVec3 = [](const auto &opt) -> std::optional<Vec3> {
         if (opt) {
@@ -781,26 +781,26 @@ void EndstonePlayer::sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes
     for (auto &debug_shape : debug_shapes) {
         if (std::holds_alternative<DebugArrow>(debug_shape)) {
             auto arrow = std::get<DebugArrow>(debug_shape);
-            debug_shape_data.push_back({arrow.getId(), DebugShapeType::Arrow, (toVec3(arrow.getPosition())), {}, {}, {}, toColor(arrow.getColor()), {}, {}, toVec3(arrow.getEndPosition()), arrow.getArrowHeadLength(), arrow.getArrowHeadRadius(), arrow.getArrowHeadSegments()});
+            packet_shape_data.push_back({arrow.getId(), ScriptDebugShapeType::Arrow, (toVec3(arrow.getPosition())), {}, {}, {}, toColor(arrow.getColor()), {}, {}, toVec3(arrow.getEndPosition()), arrow.getArrowHeadLength(), arrow.getArrowHeadRadius(), arrow.getArrowHeadSegments()});
         } else if (std::holds_alternative<DebugBox>(debug_shape)) {
             auto box = std::get<DebugBox>(debug_shape);
-            debug_shape_data.push_back({box.getId(), DebugShapeType::Box, (toVec3(box.getPosition())), box.getScale(), {}, {}, toColor(box.getColor()), {}, toVec3(box.getBoxBounds()), {}, {}, {}, {}});
+            packet_shape_data.push_back({box.getId(), ScriptDebugShapeType::Box, (toVec3(box.getPosition())), box.getScale(), {}, {}, toColor(box.getColor()), {}, toVec3(box.getBoxBounds()), {}, {}, {}, {}});
         } else if (std::holds_alternative<DebugCircle>(debug_shape)) {
             auto circle = std::get<DebugCircle>(debug_shape);
-            debug_shape_data.push_back({circle.getId(), DebugShapeType::Circle, (toVec3(circle.getPosition())), circle.getScale(), {}, {}, toColor(circle.getColor()), {}, {}, {}, {}, {}, circle.getSegments()});
+            packet_shape_data.push_back({circle.getId(), ScriptDebugShapeType::Circle, (toVec3(circle.getPosition())), circle.getScale(), {}, {}, toColor(circle.getColor()), {}, {}, {}, {}, {}, circle.getSegments()});
         } else if (std::holds_alternative<DebugLine>(debug_shape)) {
             auto line = std::get<DebugLine>(debug_shape);
-            debug_shape_data.push_back({line.getId(), DebugShapeType::Line, (toVec3(line.getPosition())), {}, {}, {}, toColor(line.getColor()), {}, {}, toVec3(line.getEndPosition()), {}, {}, {}});
+            packet_shape_data.push_back({line.getId(), ScriptDebugShapeType::Line, (toVec3(line.getPosition())), {}, {}, {}, toColor(line.getColor()), {}, {}, toVec3(line.getEndPosition()), {}, {}, {}});
         } else if (std::holds_alternative<DebugSphere>(debug_shape)) {
             auto sphere = std::get<DebugSphere>(debug_shape);
-            debug_shape_data.push_back({sphere.getId(), DebugShapeType::Sphere, (toVec3(sphere.getPosition())), sphere.getScale(), {}, {}, toColor(sphere.getColor()), {}, {}, {}, {}, {}, sphere.getSegments()});
+            packet_shape_data.push_back({sphere.getId(), ScriptDebugShapeType::Sphere, (toVec3(sphere.getPosition())), sphere.getScale(), {}, {}, toColor(sphere.getColor()), {}, {}, {}, {}, {}, sphere.getSegments()});
         } else if (std::holds_alternative<DebugText>(debug_shape)) {
             auto text = std::get<DebugText>(debug_shape);
-            debug_shape_data.push_back({text.getId(), DebugShapeType::Text, (toVec3(text.getPosition())), {}, {}, {}, toColor(text.getColor()), text.getText(), {}, {}, {}, {}, {}});
+            packet_shape_data.push_back({text.getId(), ScriptDebugShapeType::Text, (toVec3(text.getPosition())), {}, {}, {}, toColor(text.getColor()), text.getText(), {}, {}, {}, {}, {}});
         }
     }
 
-    pk->shapes = std::move(debug_shape_data);
+    pk->shapes = std::move(packet_shape_data);
     getPlayer().sendNetworkPacket(*pk);
 }
 
@@ -813,7 +813,7 @@ void EndstonePlayer::removeDebugShapes(std::vector<DebugShapeVariant> debug_shap
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
     std::shared_ptr<ServerScriptDebugDrawerPacket> pk = std::static_pointer_cast<ServerScriptDebugDrawerPacket>(packet);
-    std::vector<DebugShapeData> debug_shape_data;
+    std::vector<PacketShapeData> debug_shape_data;
     for (auto &debug_shape : debug_shapes) {
         std::visit([&debug_shape_data](auto &&arg) {
             debug_shape_data.push_back({(arg.getId())});

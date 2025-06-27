@@ -18,7 +18,7 @@
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/network/packet.h"
 
-enum class DebugShapeType : std::uint8_t {
+enum class ScriptDebugShapeType : std::uint8_t {
     Line = 0,
     Box = 1,
     Sphere = 2,
@@ -27,9 +27,9 @@ enum class DebugShapeType : std::uint8_t {
     Arrow = 5
 };
 
-struct DebugShapeData {
-    std::int64_t id;
-    std::optional<DebugShapeType> type;
+struct PacketShapeData {
+    std::int64_t network_id;
+    std::optional<ScriptDebugShapeType> type;
     std::optional<Vec3> position;
     std::optional<float> scale;
     std::optional<Vec3> rotation;
@@ -45,5 +45,5 @@ struct DebugShapeData {
 
 class ServerScriptDebugDrawerPacket : public Packet {
 public:
-    std::vector<DebugShapeData> shapes;
+    std::vector<PacketShapeData> shapes;
 };
