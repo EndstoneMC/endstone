@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/event/block/leaves_decay_event.h"
 #include "endstone_python.h"
 
 namespace py = pybind11;
