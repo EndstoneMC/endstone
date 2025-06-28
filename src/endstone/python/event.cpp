@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "endstone/event/block/leaves_decay_event.h"
 #include "endstone_python.h"
 
 namespace py = pybind11;
@@ -139,6 +140,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                "Gets the block which was replaced.")
         .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,
                                "Gets the block that this block was placed against");
+    py::class_<LeavesDecayEvent, BlockEvent, ICancellable>(m, "LeavesDecayEvent", "Call when leaves decay.");
 
     // Level events
     py::class_<LevelEvent, Event>(m, "LevelEvent", "Represents events within a level")

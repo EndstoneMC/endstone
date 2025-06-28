@@ -97,6 +97,8 @@ version = "1.21.92"
 # TeleportCommand
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 38678000
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 38678656
+# Leaves
+"?_die@LeavesBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 53319920
 # Variables
 "getI18n::result" = 95402608
 "Enchant::mEnchants" = 95282976
