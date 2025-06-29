@@ -18,32 +18,34 @@
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/network/packet.h"
 
+namespace ScriptModuleDebugUtilities {
 enum class ScriptDebugShapeType : std::uint8_t {
     Line = 0,
     Box = 1,
     Sphere = 2,
     Circle = 3,
     Text = 4,
-    Arrow = 5
+    Arrow = 5,
+    NumShapeTypes = 6,
 };
 
 struct PacketShapeData {
-    std::int64_t network_id;
-    std::optional<ScriptDebugShapeType> type;
-    std::optional<Vec3> position;
-    std::optional<float> scale;
+    std::optional<ScriptDebugShapeType> shape_type;
+    std::optional<Vec3> location;
     std::optional<Vec3> rotation;
-    std::optional<float> total_time_left;
-    std::optional<Color> color;
+    std::optional<float> scale;
+    std::optional<mce::Color> color;
+    std::optional<float> time_left_total_sec;
     std::optional<std::string> text;
-    std::optional<Vec3> box_bounds;
-    std::optional<Vec3> line_end_position;
+    std::optional<Vec3> box_bound;
+    std::optional<Vec3> end_location;
     std::optional<float> arrow_head_length;
     std::optional<float> arrow_head_radius;
-    std::optional<std::uint8_t> segments;
+    std::optional<std::uint8_t> num_segments;
 };
 
 class ServerScriptDebugDrawerPacket : public Packet {
 public:
     std::vector<PacketShapeData> shapes;
 };
+}  // namespace ScriptModuleDebugUtilities
