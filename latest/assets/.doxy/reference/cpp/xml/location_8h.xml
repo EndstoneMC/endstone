@@ -167,6 +167,8 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
       </node>
       <node id="74">
         <label>include/endstone/event/block/block_piston_event.h</label>
@@ -175,6 +177,10 @@
       <node id="6">
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
+      </node>
+      <node id="75">
+        <label>include/endstone/event/block/leaves_decay_event.h</label>
+        <link refid="leaves__decay__event_8h_source"/>
       </node>
       <node id="60">
         <label>include/endstone/event/chunk/chunk_event.h</label>

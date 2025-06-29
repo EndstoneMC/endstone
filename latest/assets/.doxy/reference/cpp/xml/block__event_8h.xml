@@ -7,6 +7,7 @@
     <includedby refid="block__break__event_8h" local="yes">include/endstone/event/block/block_break_event.h</includedby>
     <includedby refid="block__piston__event_8h" local="yes">include/endstone/event/block/block_piston_event.h</includedby>
     <includedby refid="block__place__event_8h" local="yes">include/endstone/event/block/block_place_event.h</includedby>
+    <includedby refid="leaves__decay__event_8h" local="yes">include/endstone/event/block/leaves_decay_event.h</includedby>
     <incdepgraph>
       <node id="2">
         <label>endstone/block/block.h</label>
@@ -141,6 +142,8 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>include/endstone/event/block/block_piston_event.h</label>
@@ -149,6 +152,10 @@
       <node id="4">
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
+      </node>
+      <node id="5">
+        <label>include/endstone/event/block/leaves_decay_event.h</label>
+        <link refid="leaves__decay__event_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1BlockEvent" prot="public">endstone::BlockEvent</innerclass>

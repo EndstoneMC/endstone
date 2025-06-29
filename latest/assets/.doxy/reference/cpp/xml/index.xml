@@ -808,6 +808,10 @@
     <member refid="classendstone_1_1Language_1a41d81b4bfb0d53c5aae61c7312b8a11c" kind="function"><name>translate</name></member>
     <member refid="classendstone_1_1Language_1a4a6fdc89482f25a189791fda12b083e6" kind="function"><name>getLocale</name></member>
   </compound>
+  <compound refid="classendstone_1_1LeavesDecayEvent" kind="class"><name>endstone::LeavesDecayEvent</name>
+    <member refid="classendstone_1_1LeavesDecayEvent_1a23c36eb8a563622f3aa57814e8f807a4" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1LeavesDecayEvent_1a0c8717d9be393e96e0461e61756aeeba" kind="function"><name>LeavesDecayEvent</name></member>
+  </compound>
   <compound refid="classendstone_1_1Level" kind="class"><name>endstone::Level</name>
     <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" kind="function"><name>~Level</name></member>
     <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" kind="function"><name>getName</name></member>
@@ -2025,6 +2029,8 @@
   <compound refid="block__piston__event_8h" kind="file"><name>block_piston_event.h</name>
   </compound>
   <compound refid="block__place__event_8h" kind="file"><name>block_place_event.h</name>
+  </compound>
+  <compound refid="leaves__decay__event_8h" kind="file"><name>leaves_decay_event.h</name>
   </compound>
   <compound refid="cancellable_8h" kind="file"><name>cancellable.h</name>
   </compound>

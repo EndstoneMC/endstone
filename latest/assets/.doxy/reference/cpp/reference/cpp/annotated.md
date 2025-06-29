@@ -64,6 +64,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ItemType**](classendstone_1_1ItemType.md) _Represents an item type._     
     * **class** [**Label**](classendstone_1_1Label.md) _Represents a text label._     
     * **class** [**Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._     
+    * **class** [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) _Called when leaves are decaying naturally._     
     * **class** [**Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._     
     * **class** [**LevelEvent**](classendstone_1_1LevelEvent.md) _Represents events within a level._     
     * **class** [**Location**](classendstone_1_1Location.md) _Represents a 3-dimensional location in a dimension within a level._     

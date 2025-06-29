@@ -115,19 +115,19 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="19">
+      <node id="20">
         <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="12">
+      <node id="13">
         <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>endstone::Cancellable&lt; WeatherEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -175,13 +175,13 @@
         <childnode refid="9" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>endstone::BroadcastMessageEvent</label>
         <link refid="classendstone_1_1BroadcastMessageEvent"/>
-        <childnode refid="12" relation="public-inheritance">
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="36">
+      <node id="37">
         <label>endstone::Cancellable&lt; EventType &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -191,124 +191,130 @@
         <label>endstone::ICancellable</label>
         <link refid="classendstone_1_1ICancellable"/>
       </node>
-      <node id="14">
-        <label>endstone::PacketReceiveEvent</label>
-        <link refid="classendstone_1_1PacketReceiveEvent"/>
-        <childnode refid="12" relation="public-inheritance">
+      <node id="12">
+        <label>endstone::LeavesDecayEvent</label>
+        <link refid="classendstone_1_1LeavesDecayEvent"/>
+        <childnode refid="9" relation="public-inheritance">
         </childnode>
       </node>
       <node id="15">
-        <label>endstone::PacketSendEvent</label>
-        <link refid="classendstone_1_1PacketSendEvent"/>
-        <childnode refid="12" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>endstone::PlayerChatEvent</label>
-        <link refid="classendstone_1_1PlayerChatEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>endstone::PlayerCommandEvent</label>
-        <link refid="classendstone_1_1PlayerCommandEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>endstone::PlayerDropItemEvent</label>
-        <link refid="classendstone_1_1PlayerDropItemEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>endstone::PlayerGameModeChangeEvent</label>
-        <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>endstone::PlayerInteractActorEvent</label>
-        <link refid="classendstone_1_1PlayerInteractActorEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>endstone::PlayerInteractEvent</label>
-        <link refid="classendstone_1_1PlayerInteractEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>endstone::PlayerItemConsumeEvent</label>
-        <link refid="classendstone_1_1PlayerItemConsumeEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>endstone::PlayerJumpEvent</label>
-        <link refid="classendstone_1_1PlayerJumpEvent"/>
-        <childnode refid="29" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>endstone::PlayerKickEvent</label>
-        <link refid="classendstone_1_1PlayerKickEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>endstone::PlayerLoginEvent</label>
-        <link refid="classendstone_1_1PlayerLoginEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>endstone::PlayerMoveEvent</label>
-        <link refid="classendstone_1_1PlayerMoveEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>endstone::PlayerPickupItemEvent</label>
-        <link refid="classendstone_1_1PlayerPickupItemEvent"/>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>endstone::PlayerTeleportEvent</label>
-        <link refid="classendstone_1_1PlayerTeleportEvent"/>
-        <childnode refid="29" relation="public-inheritance">
+        <label>endstone::PacketReceiveEvent</label>
+        <link refid="classendstone_1_1PacketReceiveEvent"/>
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
       <node id="16">
-        <label>endstone::ScriptMessageEvent</label>
-        <link refid="classendstone_1_1ScriptMessageEvent"/>
-        <childnode refid="12" relation="public-inheritance">
+        <label>endstone::PacketSendEvent</label>
+        <link refid="classendstone_1_1PacketSendEvent"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>endstone::PlayerChatEvent</label>
+        <link refid="classendstone_1_1PlayerChatEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>endstone::PlayerCommandEvent</label>
+        <link refid="classendstone_1_1PlayerCommandEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>endstone::PlayerDropItemEvent</label>
+        <link refid="classendstone_1_1PlayerDropItemEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>endstone::PlayerGameModeChangeEvent</label>
+        <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>endstone::PlayerInteractActorEvent</label>
+        <link refid="classendstone_1_1PlayerInteractActorEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>endstone::PlayerInteractEvent</label>
+        <link refid="classendstone_1_1PlayerInteractEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>endstone::PlayerItemConsumeEvent</label>
+        <link refid="classendstone_1_1PlayerItemConsumeEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>endstone::PlayerJumpEvent</label>
+        <link refid="classendstone_1_1PlayerJumpEvent"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>endstone::PlayerKickEvent</label>
+        <link refid="classendstone_1_1PlayerKickEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>endstone::PlayerLoginEvent</label>
+        <link refid="classendstone_1_1PlayerLoginEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>endstone::PlayerMoveEvent</label>
+        <link refid="classendstone_1_1PlayerMoveEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>endstone::PlayerPickupItemEvent</label>
+        <link refid="classendstone_1_1PlayerPickupItemEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>endstone::PlayerTeleportEvent</label>
+        <link refid="classendstone_1_1PlayerTeleportEvent"/>
+        <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
       <node id="17">
-        <label>endstone::ServerCommandEvent</label>
-        <link refid="classendstone_1_1ServerCommandEvent"/>
-        <childnode refid="12" relation="public-inheritance">
+        <label>endstone::ScriptMessageEvent</label>
+        <link refid="classendstone_1_1ScriptMessageEvent"/>
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
       <node id="18">
-        <label>endstone::ServerListPingEvent</label>
-        <link refid="classendstone_1_1ServerListPingEvent"/>
-        <childnode refid="12" relation="public-inheritance">
+        <label>endstone::ServerCommandEvent</label>
+        <link refid="classendstone_1_1ServerCommandEvent"/>
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="34">
-        <label>endstone::ThunderChangeEvent</label>
-        <link refid="classendstone_1_1ThunderChangeEvent"/>
-        <childnode refid="33" relation="public-inheritance">
+      <node id="19">
+        <label>endstone::ServerListPingEvent</label>
+        <link refid="classendstone_1_1ServerListPingEvent"/>
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
       <node id="35">
+        <label>endstone::ThunderChangeEvent</label>
+        <link refid="classendstone_1_1ThunderChangeEvent"/>
+        <childnode refid="34" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
         <label>endstone::WeatherChangeEvent</label>
         <link refid="classendstone_1_1WeatherChangeEvent"/>
-        <childnode refid="33" relation="public-inheritance">
+        <childnode refid="34" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

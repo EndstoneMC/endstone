@@ -98,7 +98,7 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::BlockPistonEvent</label>
         <link refid="classendstone_1_1BlockPistonEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -113,6 +113,12 @@
       <node id="2">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="6">
+        <label>endstone::LeavesDecayEvent</label>
+        <link refid="classendstone_1_1LeavesDecayEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>

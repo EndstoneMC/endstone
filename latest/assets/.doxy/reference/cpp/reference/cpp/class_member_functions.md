@@ -116,7 +116,7 @@
 
 ## e
 
-* **ENDSTONE\_EVENT** ([**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
+* **ENDSTONE\_EVENT** ([**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **execute** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **Event** ([**endstone::Event**](classendstone_1_1Event.md), [**endstone::ServerEvent**](classendstone_1_1ServerEvent.md))
 * **EventHandler** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
@@ -479,6 +479,7 @@
 ## l
 
 * **Label** ([**endstone::Label**](classendstone_1_1Label.md))
+* **LeavesDecayEvent** ([**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md))
 * **LevelEvent** ([**endstone::LevelEvent**](classendstone_1_1LevelEvent.md))
 * **Location** ([**endstone::Location**](classendstone_1_1Location.md))
 * **Logger** ([**endstone::Logger**](classendstone_1_1Logger.md))

@@ -6,6 +6,7 @@
     <innerfile refid="block__event_8h">block_event.h</innerfile>
     <innerfile refid="block__piston__event_8h">block_piston_event.h</innerfile>
     <innerfile refid="block__place__event_8h">block_place_event.h</innerfile>
+    <innerfile refid="leaves__decay__event_8h">leaves_decay_event.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

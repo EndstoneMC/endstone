@@ -61,6 +61,7 @@
     <innerclass refid="classendstone_1_1ItemType" prot="public">endstone::ItemType</innerclass>
     <innerclass refid="classendstone_1_1Label" prot="public">endstone::Label</innerclass>
     <innerclass refid="classendstone_1_1Language" prot="public">endstone::Language</innerclass>
+    <innerclass refid="classendstone_1_1LeavesDecayEvent" prot="public">endstone::LeavesDecayEvent</innerclass>
     <innerclass refid="classendstone_1_1Level" prot="public">endstone::Level</innerclass>
     <innerclass refid="classendstone_1_1LevelEvent" prot="public">endstone::LevelEvent</innerclass>
     <innerclass refid="classendstone_1_1Location" prot="public">endstone::Location</innerclass>

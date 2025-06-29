@@ -187,6 +187,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Language**](classendstone_1_1Language.md)
 ([**endstone**](namespaceendstone.md))
+* [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**Level**](classendstone_1_1Level.md)
 ([**endstone**](namespaceendstone.md))
 * [**LevelEvent**](classendstone_1_1LevelEvent.md)

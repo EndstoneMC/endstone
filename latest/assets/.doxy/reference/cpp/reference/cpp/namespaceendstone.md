@@ -94,6 +94,7 @@ _Represents a button with text and an optional icon._
 | class | [**ItemType**](classendstone_1_1ItemType.md) <br>_Represents an item type._  |
 | class | [**Label**](classendstone_1_1Label.md) <br>_Represents a text label._  |
 | class | [**Language**](classendstone_1_1Language.md) <br>_Represents the interface for translating text into different languages._  |
+| class | [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) <br>_Called when leaves are decaying naturally._  |
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
 | class | [**LevelEvent**](classendstone_1_1LevelEvent.md) <br>_Represents events within a level._  |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |

@@ -187,7 +187,7 @@
 ## e
 
 * **expiration\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
-* **ENDSTONE\_EVENT** ([**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
+* **ENDSTONE\_EVENT** ([**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **execute** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **Event** ([**endstone::Event**](classendstone_1_1Event.md), [**endstone::ServerEvent**](classendstone_1_1ServerEvent.md))
@@ -584,6 +584,7 @@
 * **LightPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **label\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **Label** ([**endstone::Label**](classendstone_1_1Label.md))
+* **LeavesDecayEvent** ([**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md))
 * **LevelEvent** ([**endstone::LevelEvent**](classendstone_1_1LevelEvent.md))
 * **level\_** ([**endstone::LevelEvent**](classendstone_1_1LevelEvent.md), [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 * **Location** ([**endstone::Location**](classendstone_1_1Location.md))
