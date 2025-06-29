@@ -43,6 +43,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_player.cpp
         bedrock_hooks/server_player_movement_correction_system.cpp
         bedrock_hooks/server_script_manager.cpp
+        bedrock_hooks/leaves_block.cpp
         main.cpp
         hook.cpp
         vtable_hook.cpp
