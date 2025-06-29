@@ -61,6 +61,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/block/block_break_event.h"
 #include "event/block/block_event.h"
 #include "event/block/block_place_event.h"
+#include "event/block/leaves_decay_event.h"
 #include "event/cancellable.h"
 #include "event/chunk/chunk_event.h"
 #include "event/chunk/chunk_load_event.h"
