@@ -19,16 +19,16 @@
 
 namespace endstone {
 
+/**
+ * @brief Called when leaves are decaying naturally.
+ *
+ * @note If a Leaves Decay event is cancelled, the leaves will not decay.
+ */
 class LeavesDecayEvent : public Cancellable<BlockEvent> {
 public:
-    explicit LeavesDecayEvent(Block &block) : Cancellable(block) {}
-    ~LeavesDecayEvent() override = default;
+    ENDSTONE_EVENT(LeavesDecayEvent);
 
-    inline static const std::string NAME = "LeavesDecayEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    explicit LeavesDecayEvent(Block &block) : Cancellable(block) {}
 };
 
 }  // namespace endstone

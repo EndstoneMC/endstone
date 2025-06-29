@@ -1,4 +1,4 @@
-timestamp = 1750352831
+timestamp = 1751205583
 version = "1.21.92"
 
 [windows]
@@ -44,6 +44,8 @@ version = "1.21.92"
 "?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 44708720
 # InventoryTransaction
 "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 47659984
+# LeavesBlock
+"?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 53319920
 # Level
 "?tick@Level@@UEAAXXZ" = 49616064
 # MinecraftCommands
@@ -97,8 +99,6 @@ version = "1.21.92"
 # TeleportCommand
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 38678000
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 38678656
-# Leaves
-"?_die@LeavesBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 53319920
 # Variables
 "getI18n::result" = 95402608
 "Enchant::mEnchants" = 95282976
@@ -147,6 +147,8 @@ version = "1.21.92"
 "_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 143077200
 # InventoryTransaction
 "_ZNK20InventoryTransaction11executeFullER6Playerb" = 143664736
+# LeavesBlock
+"_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 152923952
 # Level
 "_ZN5Level4tickEv" = 146620960
 # MinecraftCommands
