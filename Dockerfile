@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.12-slim-bookworm AS base
+FROM python:3.12-slim-bullseye AS base
 
 LABEL maintainer="Endstone <hello@endstone.dev>"
 
@@ -59,7 +59,7 @@ RUN --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
     && pytest tests/endstone/python
 
 # Final stage
-FROM base AS final
+FROM python:3.12-slim-bookworm AS final
 
 # Install runtime dependencies
 RUN apt-get update -y -qq \
