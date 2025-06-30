@@ -21,14 +21,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/namespaced_key.h" line="163" column="12" bodyfile="include/endstone/namespaced_key.h" bodystart="163" bodyend="168"/>
+        <location file="include/endstone/namespaced_key.h" line="174" column="12" bodyfile="include/endstone/namespaced_key.h" bodystart="174" bodyend="179"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/namespaced_key.h" line="162" column="1" bodyfile="include/endstone/namespaced_key.h" bodystart="162" bodyend="169"/>
+    <location file="include/endstone/namespaced_key.h" line="173" column="1" bodyfile="include/endstone/namespaced_key.h" bodystart="173" bodyend="180"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4_1a310e8844362559c807406a13612c969b" prot="public" virt="non-virtual"><scope>std::hash&lt; endstone::NamespacedKey &gt;</scope><name>operator()</name></member>
     </listofallmembers>

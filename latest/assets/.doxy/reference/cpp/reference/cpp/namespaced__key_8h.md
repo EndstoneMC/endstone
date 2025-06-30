@@ -12,7 +12,6 @@
 
 * `#include <algorithm>`
 * `#include <cctype>`
-* `#include <locale>`
 * `#include <optional>`
 * `#include <string>`
 * `#include <string_view>`

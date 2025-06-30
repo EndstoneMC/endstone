@@ -26,7 +26,6 @@
 
 #include <algorithm>
 #include <cctype>
-#include <locale>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -46,7 +45,7 @@ public:
         std::string k = normalizeString(key);
 
         ENDSTONE_CHECKF(isValidNamespace(ns), "Invalid namespace. Must be [a-z0-9._-]: {}", ns);
-        ENDSTONE_CHECKF(isValidKey(key), "Invalid key. Must be [a-z0-9/._-]: {}", k);
+        ENDSTONE_CHECKF(isValidKey(k), "Invalid key. Must be [a-z0-9/._-]: {}", k);
         return NamespacedKey(std::move(ns), std::move(k));
     }
 
@@ -54,35 +53,34 @@ public:
     {
         ENDSTONE_CHECK(!input.empty(), "Input string must not be empty or null");
 
-        const auto colon_count = std::ranges::count(input, ':');
+        auto colon_count = static_cast<size_t>(std::count(input.begin(), input.end(), ':'));
         ENDSTONE_CHECK(colon_count <= 1, "Input string is invalid: " + std::string(input));
 
         std::string_view ns;
-        std::string_view key;
+        std::string_view k;
         if (colon_count == 1) {
             const auto pos = input.find(':');
             ns = input.substr(0, pos);
-            key = input.substr(pos + 1);
+            k = input.substr(pos + 1);
         }
         else {
-            key = input;
+            k = input;
         }
 
-        ENDSTONE_CHECK(isValidKey(key), "Invalid key. Must be [a-z0-9/._-]: " + std::string(key));
+        ENDSTONE_CHECK(isValidKey(k), "Invalid key. Must be [a-z0-9/._-]: " + std::string(k));
 
         if (colon_count == 0 || ns.empty()) {
-            return plugin ? create(*plugin, key) : NamespacedKey(MINECRAFT, key);
+            return plugin ? create(*plugin, k) : NamespacedKey(MINECRAFT, k);
         }
 
         ENDSTONE_CHECK(isValidNamespace(ns), "Invalid namespace. Must be [a-z0-9._-]: " + std::string(ns));
-        return NamespacedKey(ns, key);
+        return NamespacedKey(ns, k);
     }
 
     [[nodiscard]] const std::string &getNamespace() const noexcept
     {
         return namespace_;
     }
-
     [[nodiscard]] const std::string &getKey() const noexcept
     {
         return key_;
@@ -93,8 +91,15 @@ public:
         return namespace_ + ':' + key_;
     }
 
-    bool operator==(const NamespacedKey &other) const noexcept = default;
-    bool operator!=(const NamespacedKey &other) const noexcept = default;
+    bool operator==(const NamespacedKey &other) const noexcept
+    {
+        return namespace_ == other.namespace_ && key_ == other.key_;
+    }
+
+    bool operator!=(const NamespacedKey &other) const noexcept
+    {
+        return !(*this == other);
+    }
 
 private:
     std::string namespace_;
@@ -105,7 +110,7 @@ private:
     static std::string normalizeString(const std::string_view str)
     {
         std::string s(str);
-        std::ranges::transform(s, s.begin(), ::tolower);
+        std::transform(s.begin(), s.end(), s.begin(), ::tolower);
         return s;
     }
 
@@ -121,12 +126,18 @@ private:
 
     static bool isValidNamespace(const std::string_view ns) noexcept
     {
-        return !ns.empty() && std::ranges::all_of(ns, isValidNamespaceChar);
+        if (ns.empty()) {
+            return false;
+        }
+        return std::all_of(ns.begin(), ns.end(), isValidNamespaceChar);
     }
 
     static bool isValidKey(const std::string_view key) noexcept
     {
-        return !key.empty() && std::ranges::all_of(key, isValidKeyChar);
+        if (key.empty()) {
+            return false;
+        }
+        return std::all_of(key.begin(), key.end(), isValidKeyChar);
     }
 };
 
@@ -145,11 +156,11 @@ struct std::hash<endstone::NamespacedKey> {
 template <>
 struct fmt::formatter<endstone::NamespacedKey> : formatter<string_view> {
     template <typename FormatContext>
-    auto format(const endstone::NamespacedKey &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const endstone::NamespacedKey &val, FormatContext &ctx) const -> decltype(ctx.out())
     {
         return fmt::format_to(ctx.out(), "{}:{}", val.getNamespace(), val.getKey());
     }
-};  // namespace fmt
+};
 ```
 
 

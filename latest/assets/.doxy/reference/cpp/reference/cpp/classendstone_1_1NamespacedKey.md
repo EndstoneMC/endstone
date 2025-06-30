@@ -159,7 +159,7 @@ inline const std::string & endstone::NamespacedKey::getNamespace () noexcept con
 ### function operator!= 
 
 ```C++
-bool endstone::NamespacedKey::operator!= (
+inline bool endstone::NamespacedKey::operator!= (
     const NamespacedKey & other
 ) noexcept const
 ```
@@ -174,7 +174,7 @@ bool endstone::NamespacedKey::operator!= (
 ### function operator== 
 
 ```C++
-bool endstone::NamespacedKey::operator== (
+inline bool endstone::NamespacedKey::operator== (
     const NamespacedKey & other
 ) noexcept const
 ```

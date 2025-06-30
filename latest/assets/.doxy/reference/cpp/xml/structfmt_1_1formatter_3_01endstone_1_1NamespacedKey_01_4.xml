@@ -6,7 +6,7 @@
     <templateparamlist>
     </templateparamlist>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1afcf12b2150ee0d6347f8120c2565bbf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1ad2c4329a4e13094eabb62aff2cd8a005" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -14,7 +14,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto fmt::formatter&lt; endstone::NamespacedKey &gt;::format</definition>
-        <argsstring>(const endstone::NamespacedKey &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const endstone::NamespacedKey &amp;val, FormatContext &amp;ctx) const -&gt; decltype(ctx.out())</argsstring>
         <name>format</name>
         <qualifiedname>fmt::formatter&lt; endstone::NamespacedKey &gt;::format</qualifiedname>
         <param>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/namespaced_key.h" line="174" column="10" bodyfile="include/endstone/namespaced_key.h" bodystart="174" bodyend="177"/>
+        <location file="include/endstone/namespaced_key.h" line="185" column="10" bodyfile="include/endstone/namespaced_key.h" bodystart="185" bodyend="188"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,9 +60,9 @@
         <label>formatter&lt; string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/namespaced_key.h" line="172" column="1" bodyfile="include/endstone/namespaced_key.h" bodystart="172" bodyend="178"/>
+    <location file="include/endstone/namespaced_key.h" line="183" column="1" bodyfile="include/endstone/namespaced_key.h" bodystart="183" bodyend="189"/>
     <listofallmembers>
-      <member refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1afcf12b2150ee0d6347f8120c2565bbf6" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::NamespacedKey &gt;</scope><name>format</name></member>
+      <member refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1ad2c4329a4e13094eabb62aff2cd8a005" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::NamespacedKey &gt;</scope><name>format</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

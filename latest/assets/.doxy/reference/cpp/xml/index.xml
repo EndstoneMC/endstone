@@ -610,7 +610,7 @@
     <member refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4_1aacd1087e93588052d3587935edd93eab" kind="function"><name>format</name></member>
   </compound>
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4" kind="struct"><name>fmt::formatter&lt; endstone::NamespacedKey &gt;</name>
-    <member refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1afcf12b2150ee0d6347f8120c2565bbf6" kind="function"><name>format</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4_1ad2c4329a4e13094eabb62aff2cd8a005" kind="function"><name>format</name></member>
   </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
@@ -959,8 +959,8 @@
     <member refid="classendstone_1_1NamespacedKey_1aa08e51ed653aeaa8fe7f7504f1afba3f" kind="function"><name>getNamespace</name></member>
     <member refid="classendstone_1_1NamespacedKey_1ae86d202bb5a6f80144ca6d8c958510dc" kind="function"><name>getKey</name></member>
     <member refid="classendstone_1_1NamespacedKey_1a6bb36e46913fae93d955ea8c397338e8" kind="function"><name>toString</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1ab7f69986bc4b4710cfe7e1af8ed3cbbc" kind="function"><name>operator==</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a4eb5cd3bda3e08cc29c296e4eb005739" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a39780068d4848490dbd8a68bb2e153ef" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1NamespacedKey_1a5e9af0d0e091cd039b6140b4b66b109b" kind="function"><name>operator!=</name></member>
     <member refid="classendstone_1_1NamespacedKey_1a97b31335f69af4741727566f5c3f4113" kind="function"><name>NamespacedKey</name></member>
     <member refid="classendstone_1_1NamespacedKey_1ac6c1cf58648d35f41287bc739dff0aea" kind="function"><name>normalizeString</name></member>
     <member refid="classendstone_1_1NamespacedKey_1aad565f313c469167ebedc75cdeb4ebd0" kind="function"><name>isValidNamespaceChar</name></member>
