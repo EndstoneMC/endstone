@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structfmt_1_1formatter_3_01endstone_1_1Location_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>fmt::formatter&lt; endstone::Location &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1Location_01_4_1aacd1087e93588052d3587935edd93eab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FormatContext</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto fmt::formatter&lt; endstone::Location &gt;::format</definition>
+        <argsstring>(const endstone::Location &amp;self, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <name>format</name>
+        <qualifiedname>fmt::formatter&lt; endstone::Location &gt;::format</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Location" kindref="compound">endstone::Location</ref> &amp;</type>
+          <declname>self</declname>
+        </param>
+        <param>
+          <type>FormatContext &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/location.h" line="104" column="10" bodyfile="include/endstone/level/location.h" bodystart="104" bodyend="115"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::Location &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::Location &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/level/location.h" line="102" column="1" bodyfile="include/endstone/level/location.h" bodystart="102" bodyend="116"/>
+    <listofallmembers>
+      <member refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4_1aacd1087e93588052d3587935edd93eab" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::Location &gt;</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
