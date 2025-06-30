@@ -19,7 +19,7 @@
 // We do not support compiling under MSVC Debug mode because it sets _ITERATOR_DEBUG_LEVEL
 // to a nonzero value, changing the standard library's iterator implementation and resulting
 // in an ABI incompatible with the BDS environment, which is built in Release mode.
-#if defined(_MSC_VER) and defined(_ITERATOR_DEBUG_LEVEL)
+#ifdef _ITERATOR_DEBUG_LEVEL
 static_assert(_ITERATOR_DEBUG_LEVEL == 0,
               "Error: Endstone plugins must be built in Release or RelWithDebInfo mode with MSVC!");
 #endif
@@ -70,8 +70,8 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/event_handler.h"
 #include "event/event_priority.h"
 #include "event/handler_list.h"
-#include "event/level/level_event.h"
 #include "event/level/dimension_event.h"
+#include "event/level/level_event.h"
 #include "event/player/player_chat_event.h"
 #include "event/player/player_command_event.h"
 #include "event/player/player_death_event.h"

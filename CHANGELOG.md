@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.9.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.2) - 2025-06-30
+
+<small>[Compare with 0.9.1](https://github.com/EndstoneMC/endstone/compare/v0.9.1...v0.9.2)</small>
+
+### Added
+
+* Added support for BDS version 1.21.92.1.
+* Added `ChunkLoadEvent` and `ChunkUnloadEvent`, which are called during chunk loading and unloading.
+* Added `PlayerPickupItemEvent`, which is called when a player is about to pick up an item from the ground.
+
+### Fixed
+
+* `Chunk::getZ()` now returns the correct value.
+* Fixed a crash when accessing a registry entry multiple times.
+
+### Changed
+
+* `ActorRemoveEvent` is no longer triggered if `ActorSpawnEvent` is cancelled.
+* `PlayerTeleportEvent` is no longer triggered if `PlayerMoveEvent` or `PlayerJumpEvent` is cancelled.
+
 ## [0.9.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.1) - 2025-06-19
 
 <small>[Compare with 0.9.0](https://github.com/EndstoneMC/endstone/compare/v0.9.0...v0.9.1)</small>
