@@ -29,29 +29,29 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Static Attributes
+## Public Types
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"PlayerInteractEvent"`<br> |
+| enum  | [**Action**](#enum-action)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -98,15 +98,15 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**ItemStack**](classendstone_1_1ItemStack.md) \* item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, BlockFace block\_face, const [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; & clicked\_position) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md)) <br> |
+|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) action, [**ItemStack**](classendstone_1_1ItemStack.md) \* item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, BlockFace block\_face, const std::optional&lt; [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; &gt; & clicked\_position) <br> |
+|  [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) | [**getAction**](#function-getaction) () const<br>_Returns the action type._  |
 |  [**Block**](classendstone_1_1Block.md) \* | [**getBlock**](#function-getblock) () const<br>_Returns the clicked block._  |
 |  BlockFace | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br>_Gets the exact position on the block the player interacted with._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|  std::optional&lt; [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br>_Gets the exact position on the block the player interacted with._  |
 |  [**ItemStack**](classendstone_1_1ItemStack.md) \* | [**getItem**](#function-getitem) () const<br>_Returns the item in hand represented by this event._  |
 |  bool | [**hasBlock**](#function-hasblock) () const<br>_Check if this event involved a block._  |
 |  bool | [**hasItem**](#function-hasitem) () const<br>_Check if this event involved an item._  |
-|   | [**~PlayerInteractEvent**](#function-playerinteractevent) () override<br> |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -210,15 +210,20 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Types Documentation
 
 
 
 
-### variable NAME 
+### enum Action 
 
 ```C++
-const std::string endstone::PlayerInteractEvent::NAME;
+enum endstone::PlayerInteractEvent::Action {
+    LeftClickBlock,
+    RightClickBlock,
+    LeftClickAir,
+    RightClickAir
+};
 ```
 
 
@@ -230,20 +235,61 @@ const std::string endstone::PlayerInteractEvent::NAME;
 
 
 
-### function PlayerInteractEvent 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline endstone::PlayerInteractEvent::PlayerInteractEvent (
-    Player & player,
-    ItemStack * item,
-    Block * block_clicked,
-    BlockFace block_face,
-    const Vector < float > & clicked_position
+endstone::PlayerInteractEvent::ENDSTONE_EVENT (
+    PlayerInteractEvent
 ) 
 ```
 
 
 
+
+<hr>
+
+
+
+### function PlayerInteractEvent 
+
+```C++
+inline endstone::PlayerInteractEvent::PlayerInteractEvent (
+    Player & player,
+    Action action,
+    ItemStack * item,
+    Block * block_clicked,
+    BlockFace block_face,
+    const std::optional< Vector < float > > & clicked_position
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function getAction 
+
+_Returns the action type._ 
+```C++
+inline Action endstone::PlayerInteractEvent::getAction () const
+```
+
+
+
+
+
+**Returns:**
+
+Action returns the type of interaction 
+
+
+
+
+
+        
 
 <hr>
 
@@ -303,10 +349,21 @@ BlockFace returns the face of the block that was clicked
 
 _Gets the exact position on the block the player interacted with._ 
 ```C++
-inline Vector < float > endstone::PlayerInteractEvent::getClickedPosition () const
+inline std::optional< Vector < float > > endstone::PlayerInteractEvent::getClickedPosition () const
 ```
 
 
+
+
+
+**Note:**
+
+This will be std::nullopt outside of Action.RightClickBlock 
+
+
+
+
+**Note:**
 
 All vector components are between 0.0 and 1.0 inclusive.
 
@@ -322,35 +379,6 @@ the clicked position.
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerInteractEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 
@@ -426,19 +454,6 @@ boolean true if it did
 
 
         
-
-<hr>
-
-
-
-### function ~PlayerInteractEvent 
-
-```C++
-endstone::PlayerInteractEvent::~PlayerInteractEvent () override
-```
-
-
-
 
 <hr>
 

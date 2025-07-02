@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2111,9 +2111,9 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes" class="md-nav__link">
+    <a href="#public-types" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Static Attributes
+        Public Types
       </span>
     </a>
 
@@ -2155,22 +2155,22 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes-documentation" class="md-nav__link">
+    <a href="#public-types-documentation" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Static Attributes Documentation
+        Public Types Documentation
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="Public Static Attributes Documentation">
+    <nav class="md-nav" aria-label="Public Types Documentation">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#variable-name" class="md-nav__link">
+    <a href="#enum-action" class="md-nav__link">
       <span class="md-ellipsis">
-        variable NAME
+        enum Action
       </span>
     </a>
 
@@ -2198,9 +2198,35 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-endstone_event" class="md-nav__link">
+      <span class="md-ellipsis">
+        function ENDSTONE_EVENT
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-playerinteractevent" class="md-nav__link">
       <span class="md-ellipsis">
         function PlayerInteractEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getaction" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getAction
       </span>
     </a>
 
@@ -2250,19 +2276,6 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-geteventname" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getEventName
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#function-getitem" class="md-nav__link">
       <span class="md-ellipsis">
         function getItem
@@ -2300,19 +2313,6 @@ For latest updates join the chat on
 </li>
                 
             
-                
-                    <li class="md-nav__item">
-    <a href="#function-playerinteractevent_1" class="md-nav__link">
-      <span class="md-ellipsis">
-        function ~PlayerInteractEvent
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
         </ul>
     </nav>
     
@@ -2334,7 +2334,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/classendstone_1_1PlayerInteractEvent.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/classendstone_1_1PlayerInteractEvent.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2357,7 +2357,7 @@ For latest updates join the chat on
 <li><code>#include &lt;endstone/event/player/player_interact_event.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
-<h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
+<h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2367,8 +2367,8 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">const std::string</td>
-<td style="text-align: left;"><a href="#variable-name"><strong>NAME</strong></a>   = <code>"PlayerInteractEvent"</code><br></td>
+<td style="text-align: right;">enum</td>
+<td style="text-align: left;"><a href="#enum-action"><strong>Action</strong></a>  <br></td>
 </tr>
 </tbody>
 </table>
@@ -2383,7 +2383,15 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerinteractevent"><strong>PlayerInteractEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item, <a href="../classendstone_1_1Block/"><strong>Block</strong></a> * block_clicked, BlockFace block_face, const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; float &gt; &amp; clicked_position) <br></td>
+<td style="text-align: left;"><a href="#function-endstone_event"><strong>ENDSTONE_EVENT</strong></a> (<a href="./"><strong>PlayerInteractEvent</strong></a>) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-playerinteractevent"><strong>PlayerInteractEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="./#enum-action"><strong>Action</strong></a> action, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item, <a href="../classendstone_1_1Block/"><strong>Block</strong></a> * block_clicked, BlockFace block_face, const std::optional&lt; <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; float &gt; &gt; &amp; clicked_position) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="./#enum-action"><strong>Action</strong></a></td>
+<td style="text-align: left;"><a href="#function-getaction"><strong>getAction</strong></a> () const<br><em>Returns the action type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Block/"><strong>Block</strong></a> *</td>
@@ -2394,12 +2402,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getblockface"><strong>getBlockFace</strong></a> () const<br><em>Returns the face of the block that was clicked.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; float &gt;</td>
+<td style="text-align: right;">std::optional&lt; <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; float &gt; &gt;</td>
 <td style="text-align: left;"><a href="#function-getclickedposition"><strong>getClickedPosition</strong></a> () const<br><em>Gets the exact position on the block the player interacted with.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> *</td>
@@ -2412,10 +2416,6 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-hasitem"><strong>hasItem</strong></a> () const<br><em>Check if this event involved an item.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerinteractevent"><strong>~PlayerInteractEvent</strong></a> () override<br></td>
 </tr>
 </tbody>
 </table>
@@ -2471,26 +2471,47 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-static-attributes-documentation">Public Static Attributes Documentation<a class="headerlink" href="#public-static-attributes-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="variable-name">variable NAME<a class="headerlink" href="#variable-name" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">NAME</span><span class="p">;</span>
+<h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="enum-action">enum Action<a class="headerlink" href="#enum-action" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">Action</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">LeftClickBlock</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">RightClickBlock</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">LeftClickAir</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">RightClickAir</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-playerinteractevent">function PlayerInteractEvent<a class="headerlink" href="#function-playerinteractevent" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">Block</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">block_clicked</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">block_face</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clicked_position</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span><span class="w"> </span>
+<h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">ENDSTONE_EVENT</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">PlayerInteractEvent</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
+<hr>
+
+<h3 id="function-playerinteractevent">function PlayerInteractEvent<a class="headerlink" href="#function-playerinteractevent" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Action</span><span class="w"> </span><span class="n">action</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">Block</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">block_clicked</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">block_face</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clicked_position</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-getaction">function getAction<a class="headerlink" href="#function-getaction" title="Permanent link">&para;</a></h3>
+<p><em>Returns the action type.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getAction</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Action returns the type of interaction </p>
 <hr>
 
 <h3 id="function-getblock">function getBlock<a class="headerlink" href="#function-getblock" title="Permanent link">&para;</a></h3>
 <p><em>Returns the clicked block.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getBlock</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getBlock</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Block/"><strong>Block</strong></a> returns the block clicked with this item. </p>
@@ -2498,7 +2519,7 @@ For latest updates join the chat on
 
 <h3 id="function-getblockface">function getBlockFace<a class="headerlink" href="#function-getblockface" title="Permanent link">&para;</a></h3>
 <p><em>Returns the face of the block that was clicked.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getBlockFace</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getBlockFace</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>BlockFace returns the face of the block that was clicked </p>
@@ -2506,25 +2527,19 @@ For latest updates join the chat on
 
 <h3 id="function-getclickedposition">function getClickedPosition<a class="headerlink" href="#function-getclickedposition" title="Permanent link">&para;</a></h3>
 <p><em>Gets the exact position on the block the player interacted with.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getClickedPosition</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getClickedPosition</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p><strong>Note:</strong></p>
+<p>This will be std::nullopt outside of Action.RightClickBlock </p>
+<p><strong>Note:</strong></p>
 <p>All vector components are between 0.0 and 1.0 inclusive.</p>
 <p><strong>Returns:</strong></p>
 <p>the clicked position. </p>
 <hr>
 
-<h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a user-friendly identifier for this event.</p>
-<p><strong>Returns:</strong></p>
-<p>name of this event </p>
-<p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
-<hr>
-
 <h3 id="function-getitem">function getItem<a class="headerlink" href="#function-getitem" title="Permanent link">&para;</a></h3>
 <p><em>Returns the item in hand represented by this event.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getItem</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getItem</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> the item used </p>
@@ -2532,7 +2547,7 @@ For latest updates join the chat on
 
 <h3 id="function-hasblock">function hasBlock<a class="headerlink" href="#function-hasblock" title="Permanent link">&para;</a></h3>
 <p><em>Check if this event involved a block.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">hasBlock</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">hasBlock</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>boolean true if it did </p>
@@ -2540,15 +2555,10 @@ For latest updates join the chat on
 
 <h3 id="function-hasitem">function hasItem<a class="headerlink" href="#function-hasitem" title="Permanent link">&para;</a></h3>
 <p><em>Check if this event involved an item.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">hasItem</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">hasItem</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>boolean true if it did </p>
-<hr>
-
-<h3 id="function-playerinteractevent_1">function ~PlayerInteractEvent<a class="headerlink" href="#function-playerinteractevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::~</span><span class="n">PlayerInteractEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
 <hr>
 
 <hr />
@@ -2677,7 +2687,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
