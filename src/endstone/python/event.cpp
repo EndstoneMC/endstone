@@ -183,8 +183,15 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "PlayerGameModeChangeEvent", "Called when the GameMode of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "Gets the GameMode the player is switched to.");
-    py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
-        m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.")
+    auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
+        m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.");
+    py::enum_<PlayerInteractEvent::Action>(player_interact_event, "Action")
+        .value("LEFT_CLICK_BLOCK", PlayerInteractEvent::Action::LeftClickBlock)
+        .value("RIGHT_CLICK_BLOCK", PlayerInteractEvent::Action::RightClickBlock)
+        .value("LEFT_CLICK_AIR", PlayerInteractEvent::Action::LeftClickAir)
+        .value("RIGHT_CLICK_AIR", PlayerInteractEvent::Action::RightClickAir);
+    player_interact_event
+        .def_property_readonly("action", &PlayerInteractEvent::getAction, "Returns the action type of interaction")
         .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "Check if this event involved an item")
         .def_property_readonly("item", &PlayerInteractEvent::getItem, py::return_value_policy::reference,
                                "Returns the item in hand represented by this event")

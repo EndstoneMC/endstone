@@ -3138,6 +3138,43 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks a block.
     """
+    class Action:
+        LEFT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_AIR: 2>
+        LEFT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_BLOCK: 0>
+        RIGHT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_AIR: 3>
+        RIGHT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_BLOCK: 1>
+        __members__: typing.ClassVar[dict[str, PlayerInteractEvent.Action]]  # value = {'LEFT_CLICK_BLOCK': <Action.LEFT_CLICK_BLOCK: 0>, 'RIGHT_CLICK_BLOCK': <Action.RIGHT_CLICK_BLOCK: 1>, 'LEFT_CLICK_AIR': <Action.LEFT_CLICK_AIR: 2>, 'RIGHT_CLICK_AIR': <Action.RIGHT_CLICK_AIR: 3>}
+        def __eq__(self, other: typing.Any) -> bool:
+            ...
+        def __getstate__(self) -> int:
+            ...
+        def __hash__(self) -> int:
+            ...
+        def __index__(self) -> int:
+            ...
+        def __init__(self, value: int) -> None:
+            ...
+        def __int__(self) -> int:
+            ...
+        def __ne__(self, other: typing.Any) -> bool:
+            ...
+        def __repr__(self) -> str:
+            ...
+        def __setstate__(self, state: int) -> None:
+            ...
+        def __str__(self) -> str:
+            ...
+        @property
+        def name(self) -> str:
+            ...
+        @property
+        def value(self) -> int:
+            ...
+    @property
+    def action(self) -> PlayerInteractEvent.Action:
+        """
+        Returns the action type of interaction
+        """
     @property
     def block(self) -> Block:
         """
@@ -3149,7 +3186,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         Returns the face of the block that was clicked
         """
     @property
-    def clicked_position(self) -> Vector:
+    def clicked_position(self) -> Vector | None:
         """
         Gets the exact position on the block the player interacted with.
         """
