@@ -46,10 +46,6 @@
         <link refid="player__drop__item__event_8h_source"/>
       </node>
       <node id="5">
-        <label>include/endstone/event/player/player_interact_event.h</label>
-        <link refid="player__interact__event_8h_source"/>
-      </node>
-      <node id="6">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -68,8 +64,6 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/inventory/meta/item_meta.h</label>
@@ -79,7 +73,7 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>

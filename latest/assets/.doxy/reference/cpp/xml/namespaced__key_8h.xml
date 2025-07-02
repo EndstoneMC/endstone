@@ -906,10 +906,6 @@
         <link refid="player__drop__item__event_8h_source"/>
       </node>
       <node id="7">
-        <label>include/endstone/event/player/player_interact_event.h</label>
-        <link refid="player__interact__event_8h_source"/>
-      </node>
-      <node id="8">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -928,8 +924,6 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
       </node>
       <node id="3">
         <label>include/endstone/inventory/item_type.h</label>
@@ -939,7 +933,7 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
@@ -950,10 +944,10 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="9">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="5" relation="include">

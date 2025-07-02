@@ -908,10 +908,6 @@
         <link refid="player__drop__item__event_8h_source"/>
       </node>
       <node id="14">
-        <label>include/endstone/event/player/player_interact_event.h</label>
-        <link refid="player__interact__event_8h_source"/>
-      </node>
-      <node id="15">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -942,8 +938,6 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
       </node>
       <node id="10">
         <label>include/endstone/inventory/item_type.h</label>
@@ -953,7 +947,7 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="15">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
@@ -964,7 +958,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -982,14 +976,14 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="6">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="17">
+      <node id="16">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="12" relation="include">
@@ -997,14 +991,14 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="18">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="18">
+      <node id="17">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
