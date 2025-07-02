@@ -16,8 +16,11 @@
 
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
+#include "bedrock/entity/components/player_block_actions.h"
 #include "bedrock/input/input_mode.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/player_input_tick.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 
 class PlayerAuthInputPacket : public Packet {
 public:
@@ -108,11 +111,11 @@ public:
     Vec2 raw_move_vector;
     std::bitset<INPUT_NUM> input_data;
     InputMode input_mode;
-    // ClientPlayMode player_mode;
-    // NewInteractionModel new_interaction_model;
-    // PlayerInputTick client_tick;
-    // std::unique_ptr<PackedItemUseLegacyInventoryTransaction> item_use_transaction;
-    // std::unique_ptr<ItemStackRequestData> item_stack_request;
-    // PlayerBlockActions player_block_actions;
-    // ActorUniqueID mClientPredictedVehicle;
+    ClientPlayMode player_mode;
+    NewInteractionModel new_interaction_model;
+    PlayerInputTick client_tick;
+    std::unique_ptr<PackedItemUseLegacyInventoryTransaction> item_use_transaction;
+    std::unique_ptr<ItemStackRequestData> item_stack_request;
+    PlayerBlockActions player_block_actions;
+    ActorUniqueID client_predicted_vehicle;
 };
