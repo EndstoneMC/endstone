@@ -21,6 +21,7 @@
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
+#include "bedrock/network/packet/player_auth_input_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -31,10 +32,12 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
@@ -42,6 +45,7 @@
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -144,15 +148,42 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
     getPlayer().sendNetworkPacket(pk);
 }
 
-void EndstonePlayer::handlePacket(const Packet &packet)
+bool EndstonePlayer::handlePacket(Packet &packet)
 {
     switch (packet.getId()) {
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
-        break;
+        return true;
+    }
+    case MinecraftPacketIds::PlayerAuthInputPacket: {
+        auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
+        auto &actions = pk.player_block_actions.actions_;
+        for (auto it = actions.begin(); it != actions.end();) {
+            const auto &action = *it;
+            if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
+                const auto item = getInventory().getItemInMainHand();
+                const auto block = getDimension().getBlockAt(action.pos.x, action.pos.y, action.pos.z);
+                PlayerInteractEvent e{
+                    *this,
+                    PlayerInteractEvent::Action::LeftClickBlock,
+                    item.get(),
+                    block.get(),
+                    static_cast<BlockFace>(action.facing),
+                    endstone::Vector<float>{static_cast<float>(action.pos.x), static_cast<float>(action.pos.y),
+                                            static_cast<float>(action.pos.z)},
+                };
+                getServer().getPluginManager().callEvent(e);
+                if (e.isCancelled()) {
+                    it = actions.erase(it);
+                    continue;
+                }
+            }
+            ++it;
+        }
+        return true;
     }
     default:
-        break;
+        return true;
     }
 }
 

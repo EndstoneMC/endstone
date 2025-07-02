@@ -23,18 +23,13 @@ public:
     void handle(const NetworkIdentifier &network_id, NetEventCallback &callback,
                 std::shared_ptr<Packet> &packet) const override
     {
-        original_.handle(network_id, callback, packet);
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
         if (const auto *p = network_handler->getServerPlayer(network_id, packet->getClientSubId())) {
-            p->getEndstoneActor<endstone::core::EndstonePlayer>().handlePacket(*packet);
+            if (p->getEndstoneActor<endstone::core::EndstonePlayer>().handlePacket(*packet)) {
+                original_.handle(network_id, callback, packet);
+            }
         }
-    }
-
-    static PlayerPacketHandler &instance(const IPacketHandlerDispatcher &original)
-    {
-        static PlayerPacketHandler handler(original);
-        return handler;
     }
 
 private:
@@ -46,11 +41,14 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     auto packet = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftPackets::createPacket, id);
     switch (id) {
     case MinecraftPacketIds::SetLocalPlayerAsInit:
+    case MinecraftPacketIds::PlayerAuthInputPacket: {
+        static std::unordered_map<MinecraftPacketIds, std::unique_ptr<PlayerPacketHandler>> handlers;
         if (packet->handler_) {
-            // trampoline
-            packet->handler_ = &PlayerPacketHandler::instance(*packet->handler_);
+            handlers.emplace(id, std::make_unique<PlayerPacketHandler>(*packet->handler_));
+            packet->handler_ = handlers[id].get();
         }
         break;
+    }
     default:
         break;
     }
