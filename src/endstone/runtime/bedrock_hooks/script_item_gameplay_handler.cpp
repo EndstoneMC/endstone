@@ -14,16 +14,46 @@
 
 #include "bedrock/scripting/event_handlers/script_item_gameplay_handler.h"
 
+#include <iostream>
+
+#include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/server.h"
+#include "endstone/event/player/player_interact_event.h"
 #include "endstone/runtime/vtable_hook.h"
 
-namespace {
-}  // namespace
+bool handleEvent(ItemUseEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.actor).tryUnwrap<::Player>(); player) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        const auto item = ItemStack(event.item_instance);
+        const auto item_stack = endstone::core::EndstoneItemStack::fromMinecraft(item);
+
+        endstone::PlayerInteractEvent e{
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+            endstone::PlayerInteractEvent::Action::RightClickAir,
+            item_stack.get(),
+            nullptr,
+            endstone::BlockFace::South,
+            std::nullopt,
+        };
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+    }
+    return true;
+}
 
 GameplayHandlerResult<CoordinatorResult> ScriptItemGameplayHandler::handleEvent2(
     MutableItemGameplayEvent<CoordinatorResult> &event)
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<ItemUseEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+        }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptItemGameplayHandler::handleEvent2, this, event);
     };
     return event.visit(visitor);

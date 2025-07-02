@@ -153,7 +153,7 @@ bool handleEvent(const ::PlayerEmoteEvent &event)
 bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = endstone::core::EndstoneBlock::at(block_source, BlockPos(event.block_location));
         const auto item_stack =
@@ -161,10 +161,11 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 
         endstone::PlayerInteractEvent e{
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+            endstone::PlayerInteractEvent::Action::RightClickBlock,
             item_stack.get(),
             block.get(),
             static_cast<endstone::BlockFace>(event.block_face),
-            {event.face_location.x, event.face_location.y, event.face_location.z},
+            endstone::Vector<float>{event.face_location.x, event.face_location.y, event.face_location.z},
         };
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
