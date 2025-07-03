@@ -21,6 +21,12 @@
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
+#include "endstone/debugshape/debug_arrow.h"
+#include "endstone/debugshape/debug_box.h"
+#include "endstone/debugshape/debug_circle.h"
+#include "endstone/debugshape/debug_line.h"
+#include "endstone/debugshape/debug_sphere.h"
+#include "endstone/debugshape/debug_text.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/offline_player.h"
@@ -37,6 +43,7 @@ namespace endstone {
 class Player : public Mob, public OfflinePlayer {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
+    using DebugShapeVariant = std::variant<DebugArrow, DebugBox, DebugCircle, DebugLine, DebugSphere, DebugText>;
 
 public:
     // CommandSender
@@ -458,6 +465,34 @@ public:
      * @brief Closes the forms that are currently open for the player.
      */
     virtual void closeForm() = 0;
+
+    /**
+     * @brief Sends a debug shape to the player.
+     *
+     * @param debug_shape The debug shape to send
+     */
+    virtual void sendDebugShape(DebugShapeVariant debug_shape) = 0;
+
+    /**
+     * @brief Sends a number of debug shapes to the player.
+     *
+     * @param debug_shapes The debug shapes to send
+     */
+    virtual void sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes) = 0;
+
+    /**
+     * @brief Removes a debug shape from the player.
+     *
+     * @param debug_shape The debug shape to remove
+     */
+    virtual void removeDebugShape(DebugShapeVariant debug_shape) = 0;
+
+    /**
+     * @brief Removes a number of debug shapes from the player.
+     *
+     * @param debug_shapes The debug shapes to remove
+     */
+    virtual void removeDebugShapes(std::vector<DebugShapeVariant> debug_shapes) = 0;
 
     /**
      * @brief Sends a packet to the player.
