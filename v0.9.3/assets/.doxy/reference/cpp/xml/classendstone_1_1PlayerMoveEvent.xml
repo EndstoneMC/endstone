@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerMoveEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PlayerMoveEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerJumpEvent" prot="public" virt="non-virtual">endstone::PlayerJumpEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerTeleportEvent" prot="public" virt="non-virtual">endstone::PlayerTeleportEvent</derivedcompoundref>
+    <includes refid="player__move__event_8h" local="no">endstone/event/player/player_move_event.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerMoveEvent_1ab13ad4f9c7456bf710fcb329233cf4c7" prot="public" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::PlayerMoveEvent::from_</definition>
+        <argsstring></argsstring>
+        <name>from_</name>
+        <qualifiedname>endstone::PlayerMoveEvent::from_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="76" column="14" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerMoveEvent_1a4b5dde5fe4cfcebba45d3864de199d79" prot="public" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::PlayerMoveEvent::to_</definition>
+        <argsstring></argsstring>
+        <name>to_</name>
+        <qualifiedname>endstone::PlayerMoveEvent::to_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="77" column="14" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a545efb1716ac4e5a9ff1c50b81f2df69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerMoveEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerMoveEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerMoveEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerMoveEvent" kindref="compound">PlayerMoveEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="28" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a8a1cf3638b2074e1d7845129adbbfed5" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerMoveEvent::PlayerMoveEvent</definition>
+        <argsstring>(Player &amp;player, Location from, Location to)</argsstring>
+        <name>PlayerMoveEvent</name>
+        <qualifiedname>endstone::PlayerMoveEvent::PlayerMoveEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="30" column="14" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <definition>const Location &amp; endstone::PlayerMoveEvent::getFrom</definition>
+        <argsstring>() const</argsstring>
+        <name>getFrom</name>
+        <qualifiedname>endstone::PlayerMoveEvent::getFrom</qualifiedname>
+        <briefdescription>
+<para>Gets the location this player moved from. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> the player moved from </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="37" column="21" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a8917f8be7ae5bdeb109e58ddc7d3b723" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>Result&lt; void &gt; endstone::PlayerMoveEvent::setFrom</definition>
+        <argsstring>(const Location &amp;from)</argsstring>
+        <name>setFrom</name>
+        <qualifiedname>endstone::PlayerMoveEvent::setFrom</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+<para>Sets the location to mark as where the player moved from. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New location to mark as the players previous location </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="47" column="12" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="47" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <definition>const Location &amp; endstone::PlayerMoveEvent::getTo</definition>
+        <argsstring>() const</argsstring>
+        <name>getTo</name>
+        <qualifiedname>endstone::PlayerMoveEvent::getTo</qualifiedname>
+        <briefdescription>
+<para>Gets the location this player moved to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> the player moved to </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="59" column="21" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a733ae2307c00ed312652389f1e26317f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>Result&lt; void &gt; endstone::PlayerMoveEvent::setTo</definition>
+        <argsstring>(const Location &amp;to)</argsstring>
+        <name>setTo</name>
+        <qualifiedname>endstone::PlayerMoveEvent::setTo</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+<para>Sets the location that this player will move to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>to</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> this player will move to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_move_event.h" line="69" column="12" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="69" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player moves. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::PlayerJumpEvent</label>
+        <link refid="classendstone_1_1PlayerJumpEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerMoveEvent</label>
+        <link refid="classendstone_1_1PlayerMoveEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::PlayerTeleportEvent</label>
+        <link refid="classendstone_1_1PlayerTeleportEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>endstone::Vector&lt; float &gt;</label>
+        <link refid="classendstone_1_1Vector"/>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="6">
+        <label>endstone::Location</label>
+        <link refid="classendstone_1_1Location"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerMoveEvent</label>
+        <link refid="classendstone_1_1PlayerMoveEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>from_</edgelabel>
+          <edgelabel>to_</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::Position</label>
+        <link refid="classendstone_1_1Position"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_move_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="26" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a545efb1716ac4e5a9ff1c50b81f2df69" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1ab13ad4f9c7456bf710fcb329233cf4c7" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>from_</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getFrom</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getTo</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a8a1cf3638b2074e1d7845129adbbfed5" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerMoveEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a8917f8be7ae5bdeb109e58ddc7d3b723" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>setFrom</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a733ae2307c00ed312652389f1e26317f" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>setTo</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a4b5dde5fe4cfcebba45d3864de199d79" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>to_</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

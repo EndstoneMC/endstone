@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Enchantment" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Enchantment</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a52f4acd21d110aa3cf5ca3e41815310c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Enchantment::~Enchantment</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Enchantment</name>
+        <qualifiedname>endstone::Enchantment::~Enchantment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="24" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a41203620bf41656373136674afe18921" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NamespacedKey" kindref="compound">NamespacedKey</ref></type>
+        <definition>virtual NamespacedKey endstone::Enchantment::getKey</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getKey</name>
+        <qualifiedname>endstone::Enchantment::getKey</qualifiedname>
+        <briefdescription>
+<para>Return the namespaced identifier for this enchantment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>this enchantment&apos;s key </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="31" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Enchantment::getTranslationKey</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getTranslationKey</name>
+        <qualifiedname>endstone::Enchantment::getTranslationKey</qualifiedname>
+        <briefdescription>
+<para>Get the translation key, suitable for use in a translation component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the translation key </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="38" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int endstone::Enchantment::getMaxLevel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMaxLevel</name>
+        <qualifiedname>endstone::Enchantment::getMaxLevel</qualifiedname>
+        <briefdescription>
+<para>Gets the maximum level that this <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> may become. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum level of the <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="45" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int endstone::Enchantment::getStartLevel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getStartLevel</name>
+        <qualifiedname>endstone::Enchantment::getStartLevel</qualifiedname>
+        <briefdescription>
+<para>Gets the level that this <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> should start at (also known as minimum level). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Starting level of the <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="52" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Enchantment::conflictsWith</definition>
+        <argsstring>(const Enchantment &amp;other) const =0</argsstring>
+        <name>conflictsWith</name>
+        <qualifiedname>endstone::Enchantment::conflictsWith</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Check if this enchantment conflicts with another enchantment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The enchantment to check against </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if there is a conflict. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="60" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Enchantment::canEnchantItem</definition>
+        <argsstring>(const ItemStack &amp;item) const =0</argsstring>
+        <name>canEnchantItem</name>
+        <qualifiedname>endstone::Enchantment::canEnchantItem</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Checks if this <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> may be applied to the given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This does not check if it conflicts with any enchantments already applied to the item.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Item to test </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the enchantment may be applied, otherwise False </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="70" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/enchantments/enchantment.h" line="22" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="22" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>canEnchantItem</name></member>
+      <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>conflictsWith</name></member>
+      <member refid="classendstone_1_1Enchantment_1a41203620bf41656373136674afe18921" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getKey</name></member>
+      <member refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getMaxLevel</name></member>
+      <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getStartLevel</name></member>
+      <member refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1Enchantment_1a52f4acd21d110aa3cf5ca3e41815310c" prot="public" virt="virtual"><scope>endstone::Enchantment</scope><name>~Enchantment</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
