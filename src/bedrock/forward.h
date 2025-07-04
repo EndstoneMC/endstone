@@ -65,7 +65,6 @@ class BlockEventDispatcher;
 class BlockGraphicsModeChangeContext;
 class BlockItem;
 class BlockReducer;
-class BlockState;
 class BodyControl;
 class BossEventSubscriptionManager;
 class BoundingBox;

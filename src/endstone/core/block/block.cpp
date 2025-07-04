@@ -136,5 +136,4 @@ std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, Bloc
 {
     return std::make_unique<EndstoneBlock>(block_source, block_pos);
 }
-
 }  // namespace endstone::core

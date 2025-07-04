@@ -80,6 +80,14 @@ public:
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
     [[nodiscard]] const BlockComponentDirectData &getDirectData() const;
 
+    // Endstone begin
+    template <typename T>
+    T getState(const HashedString &name) const
+    {
+        return getLegacyBlock().getState<T>(name, data_);
+    }
+    // Endstone end
+
 private:
     friend class ItemStackBase;
     friend class ItemDescriptor;

@@ -27,8 +27,8 @@ public:
     Result<void> setType(std::string type) override;
     Result<void> setType(std::string type, bool apply_physics) override;
     [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
-    Result<void> setData(const BlockData&  data) override;
-    Result<void> setData(const BlockData&  data, bool apply_physics) override;
+    Result<void> setData(const BlockData &data) override;
+    Result<void> setData(const BlockData &data, bool apply_physics) override;
     std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) override;
     std::unique_ptr<Block> getRelative(BlockFace face) override;
     std::unique_ptr<Block> getRelative(BlockFace face, int distance) override;
@@ -44,6 +44,7 @@ public:
     [[nodiscard]] ::Block &getMinecraftBlock() const;
 
     static std::unique_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
+    static BlockFace toBlockFace(Direction::Type direction);
 
 private:
     std::reference_wrapper<BlockSource> block_source_;
