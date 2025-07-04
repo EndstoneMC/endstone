@@ -128,6 +128,13 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                           "Called when a block is broken by a player.")
         .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the Player that is breaking the block involved in this event.");
+    py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
+                                                           "Called when a piston block is triggered")
+        .def_property_readonly("direction", &BlockPistonEvent::getDirection,
+                               "Return the direction in which the piston will operate.");
+    py::class_<BlockPistonExtendEvent, BlockPistonEvent>(m, "BlockPistonExtendEvent", "Called when a piston extends.");
+    py::class_<BlockPistonRetractEvent, BlockPistonEvent>(m, "BlockPistonRetractEvent",
+                                                          "Called when a piston retracts.");
     py::class_<BlockPlaceEvent, BlockEvent, ICancellable>(m, "BlockPlaceEvent",
                                                           "Called when a block is placed by a player.")
         .def_property_readonly("player", &BlockPlaceEvent::getPlayer, py::return_value_policy::reference,

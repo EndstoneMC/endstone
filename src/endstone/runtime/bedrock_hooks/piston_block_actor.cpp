@@ -1,11 +1,13 @@
 #include "bedrock/world/level/block/actor/piston_block_actor.h"
 
-#include <endstone/core/server.h>
-#include <endstone/event/block/block_piston_event.h>
-#include <endstone/runtime/hook.h>
-
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/server.h"
+#include "endstone/event/block/block_piston_event.h"
+#include "endstone/event/block/block_piston_extend_event.h"
+#include "endstone/event/block/block_piston_retract_event.h"
+#include "endstone/runtime/hook.h"
 
 void PistonBlockActor::tick(BlockSource &region)
 {
@@ -17,14 +19,18 @@ void PistonBlockActor::tick(BlockSource &region)
         if (strength != -1) {
             if (strength <= 0) {
                 if (state_ == PistonState::Expanded && new_state_ == PistonState::Expanded) {
-                    // TODO: call BlockPistonRetractEvent
-                    printf("BlockPistonRetractEvent\n");
+                    const auto block = endstone::core::EndstoneBlock::at(region, position_);
+                    const auto face = block->getMinecraftBlock().getState<FacingID>("facing_direction");
+                    event = std::make_unique<endstone::BlockPistonRetractEvent>(*block,
+                                                                                static_cast<endstone::BlockFace>(face));
                 }
             }
             else {
                 if (state_ == PistonState::Retracted && new_state_ == PistonState::Retracted) {
-                    // TODO: call BlockPistonExtendEvent
-                    printf("BlockPistonExtendEvent\n");
+                    const auto block = endstone::core::EndstoneBlock::at(region, position_);
+                    const auto face = block->getMinecraftBlock().getState<FacingID>("facing_direction");
+                    event = std::make_unique<endstone::BlockPistonExtendEvent>(*block,
+                                                                               static_cast<endstone::BlockFace>(face));
                 }
             }
         }
@@ -34,8 +40,8 @@ void PistonBlockActor::tick(BlockSource &region)
         auto &server = endstone::core::EndstoneServer::getInstance();
         server.getPluginManager().callEvent(*event);
         if (event->isCancelled()) {
-            BlockActor::tick(region);
-            _tryFixupStickyPistonArm(region);
+            // BlockActor::tick(region);
+            // _tryFixupStickyPistonArm(region); // TODO: implement this
             return;
         }
     }

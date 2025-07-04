@@ -25,7 +25,7 @@ enum class PistonState : char {
 
 class PistonBlockActor : public BlockActor {
 public:
-    ENDSTONE_HOOK virtual void tick(BlockSource &region);
+    ENDSTONE_HOOK void tick(BlockSource &region) override;
 
 private:
     void _tryFixupStickyPistonArm(BlockSource &region);

@@ -14,17 +14,17 @@
 
 #pragma once
 
-#include <cstdint>
+#include "endstone/event/block/block_piston_event.h"
 
-class BlockStateInstance {
+namespace endstone {
+
+/**
+ * @brief Called when a piston retracts
+ */
+class BlockPistonRetractEvent final : public BlockPistonEvent {
 public:
-private:
-    constexpr inline static std::uint32_t max_bits = 16;
-
-    std::uint32_t start_bit_;        // +0
-    std::uint32_t num_bits_;         // +4
-    std::uint32_t variation_count_;  // +8
-    std::uint32_t mask_;             // +12
-    bool initialised_;               // +16
-    BlockState *state_;              // +24
+    ENDSTONE_EVENT(BlockPistonRetractEvent);
+    using BlockPistonEvent::BlockPistonEvent;
 };
+
+}  // namespace endstone

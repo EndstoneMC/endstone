@@ -14,31 +14,17 @@
 
 #pragma once
 
-#include "endstone/block/block_face.h"
-#include "endstone/event/block/block_event.h"
-#include "endstone/event/cancellable.h"
+#include "endstone/event/block/block_piston_event.h"
 
 namespace endstone {
 
 /**
- * @brief Called when a piston block is triggered
+ * @brief Called when a piston extends
  */
-class BlockPistonEvent : public Cancellable<BlockEvent> {
+class BlockPistonExtendEvent final : public BlockPistonEvent {
 public:
-    explicit BlockPistonEvent(Block &block, BlockFace direction) : Cancellable(block), direction_(direction) {}
-
-    /**
-     * @brief Return the direction in which the piston will operate.
-     *
-     * @return direction of the piston
-     */
-    [[nodiscard]] BlockFace getDirection() const
-    {
-        return direction_;
-    }
-
-private:
-    BlockFace direction_;
+    ENDSTONE_EVENT(BlockPistonExtendEvent);
+    using BlockPistonEvent::BlockPistonEvent;
 };
 
 }  // namespace endstone
