@@ -1,4 +1,4 @@
-timestamp = 1751609378
+timestamp = 1751671026
 version = "1.21.93"
 
 [windows]
@@ -63,6 +63,8 @@ version = "1.21.93"
 "?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 16704400
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 15972512
+# PistonBlockActor
+"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z" = 53476208
 # Player
 "?completeUsingItem@Player@@QEAAXXZ" = 42828432
 "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 42886576
