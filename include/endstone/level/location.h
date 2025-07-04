@@ -14,7 +14,8 @@
 
 #pragma once
 
-#include <memory>
+#include <cmath>
+#include <numbers>
 
 #include "endstone/level/position.h"
 #include "endstone/util/vector.h"
@@ -90,6 +91,23 @@ public:
     void setYaw(float yaw)
     {
         yaw_ = yaw;
+    }
+
+    /**
+     * Gets a unit-vector pointing in the direction that this Location is facing.
+     *
+     * @return a vector pointing the direction of this location's pitch and yaw
+     */
+    [[nodiscard]] Vector getDirection() const
+    {
+        Vector vector;
+        const auto rot_x = getYaw() * std::numbers::pi / 180.0F;
+        const auto rot_y = getPitch() * std::numbers::pi / 180.0F;
+        vector.setY(-std::sin(rot_y));
+        const double xz = std::cos(rot_y);
+        vector.setX(-xz * std::sin(rot_x));
+        vector.setZ(xz * std::cos(rot_x));
+        return vector;
     }
 
 private:

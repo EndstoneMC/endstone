@@ -14,11 +14,40 @@
 
 #pragma once
 
+#include <functional>
+
+#include "bedrock/core/math/vec3.h"
+
+class Actor;
 class Block;
 class BlockSource;
+
+enum class ShapeType : uint8_t {
+    Outline = 0,
+    Collision = 1,
+    CollisionForCamera = 2,
+};
 
 namespace ClipUtils {
 using ShouldCheckBlockFunction = std::function<bool(const BlockSource &, const Block &, bool)>;
 };
 
-struct ClipParameters;
+struct ClipParameters {
+    ClipParameters(const Vec3 &a, const Vec3 &b)
+        : ClipParameters(a, b, [](const auto &, const auto &, auto) { return true; })
+    {
+    }
+    ClipParameters(const Vec3 &a, const Vec3 &b, const ClipUtils::ShouldCheckBlockFunction &should_check_block)
+        : a(a), b(b), should_check_block(should_check_block)
+    {
+    }
+    const Vec3 &a;
+    const Vec3 &b;
+    Actor *actor = nullptr;
+    bool liquid = false;
+    bool full_only = false;
+    bool ignore_border_block = false;
+    ShapeType shape_type = ShapeType::Outline;
+    int max_distance = 0;
+    const ClipUtils::ShouldCheckBlockFunction should_check_block;
+};
