@@ -27,7 +27,6 @@
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
 #include "bedrock/world/item/item_category.h"
-#include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/block_state_instance.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block/tint_method.h"
@@ -38,6 +37,7 @@
 
 class Actor;
 class Block;
+class BlockActor;
 class BlockSource;
 class Container;
 class IBlockSource;

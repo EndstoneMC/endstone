@@ -24,12 +24,22 @@ ChunkSource &Dimension::getChunkSource() const
     return *chunk_source_;
 }
 
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
-
 BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
 {
     return *block_source_;
+}
+
+CircuitSystem &Dimension::getCircuitSystem()
+{
+    return *circuit_system_;
+}
+
+bool Dimension::isRedstoneTick() const
+{
+    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
+}
+
+const std::string &Dimension::getName() const
+{
+    return name_;
 }

@@ -30,6 +30,7 @@
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/levelgen/v2/providers/int_provider.h"
 #include "bedrock/world/level/saveddata/saved_data.h"
+#include "bedrock/world/redstone/circuit/circuit_system.h"
 
 class Level;
 
@@ -61,9 +62,10 @@ public:
     [[nodiscard]] std::string getLocalizationKey() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] ChunkSource &getChunkSource() const;
-    BlockSource &getBlockSourceFromMainChunkSource() const;
-
-    [[nodiscard]] const std::string &getName() const;                 // Endstone
+    [[nodiscard]] BlockSource &getBlockSourceFromMainChunkSource() const;
+    CircuitSystem &getCircuitSystem();
+    [[nodiscard]] bool isRedstoneTick() const;
+    [[nodiscard]] const std::string &getName() const;
     [[nodiscard]] endstone::Dimension &getEndstoneDimension() const;  // Endstone
 
 private:
@@ -95,4 +97,11 @@ private:
     std::unique_ptr<PostprocessingManager> post_processing_manager_;
     std::unique_ptr<SubChunkInterlocker> sub_chunk_interlocker_;
     std::unique_ptr<ChunkSource> chunk_source_;
+    WorldGenerator *world_generator_;
+    std::unique_ptr<Weather> weather_;
+    std::unique_ptr<Seasons> seasons_;
+    std::unique_ptr<GameEventDispatcher> game_event_dispatcher_;
+    std::unique_ptr<CircuitSystem> circuit_system_;
+    const int CIRCUIT_TICK_RATE;
+    int circuit_system_tick_rate_;
 };
