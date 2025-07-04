@@ -44,6 +44,8 @@ version = "1.21.93"
 "?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 44710304
 # InventoryTransaction
 "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 47661808
+# LeavesBlock
+"?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 53321792
 # Level
 "?tick@Level@@UEAAXXZ" = 49617936
 # MinecraftCommands
@@ -145,6 +147,8 @@ version = "1.21.93"
 "_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 143080496
 # InventoryTransaction
 "_ZNK20InventoryTransaction11executeFullER6Playerb" = 143668032
+# LeavesBlock
+"_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 152927248
 # Level
 "_ZN5Level4tickEv" = 146624256
 # MinecraftCommands
