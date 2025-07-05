@@ -25,7 +25,10 @@ namespace endstone {
  */
 class BlockPistonEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockPistonEvent(Block &block, BlockFace direction) : Cancellable(block), direction_(direction) {}
+    explicit BlockPistonEvent(std::unique_ptr<Block> block, BlockFace direction)
+        : Cancellable(std::move(block)), direction_(direction)
+    {
+    }
 
     /**
      * @brief Return the direction in which the piston will operate.

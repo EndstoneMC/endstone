@@ -9,8 +9,7 @@
 void LeavesBlock::_die(::BlockSource &region, ::BlockPos const &pos) const
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    const auto block = endstone::core::EndstoneBlock::at(region, pos);
-    endstone::LeavesDecayEvent event(*block);
+    endstone::LeavesDecayEvent event(endstone::core::EndstoneBlock::at(region, pos));
     server.getPluginManager().callEvent(event);
     if (event.isCancelled()) {
         return;
