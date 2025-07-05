@@ -67,6 +67,12 @@ const HashedString &BlockLegacy::getName() const
     return name_info_.full_name;
 }
 
+bool BlockLegacy::anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &block_type_ids) const
+{
+    return std::ranges::any_of(block_type_ids,
+                               [this](const auto &block_type_id) { return block_type_id.get() == getName(); });
+}
+
 const Block &BlockLegacy::getDefaultState() const
 {
     return *default_state_;

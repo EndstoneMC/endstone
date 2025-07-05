@@ -310,7 +310,7 @@ public:
     [[nodiscard]] const std::string &getNamespace() const;
     [[nodiscard]] const HashedString &getName() const;
     bool anyOf(std::initializer_list<std::reference_wrapper<const HashedString>>) const;
-    bool anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &) const;
+    bool anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &block_type_ids) const;
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;
