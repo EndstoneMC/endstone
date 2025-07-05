@@ -3,6 +3,7 @@
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/block/block_face.h"
 #include "endstone/core/server.h"
 #include "endstone/event/block/block_piston_event.h"
 #include "endstone/event/block/block_piston_extend_event.h"
@@ -19,17 +20,18 @@ void PistonBlockActor::tick(BlockSource &region)
         if (strength != -1) {
             if (strength <= 0) {
                 if (state_ == PistonState::Expanded && new_state_ == PistonState::Expanded) {
-                    const auto block = endstone::core::EndstoneBlock::at(region, position_);
+                    auto block = endstone::core::EndstoneBlock::at(region, position_);
                     const auto face = block->getMinecraftBlock().getState<FacingID>("facing_direction");
-                    event = std::make_unique<endstone::BlockPistonRetractEvent>(*block,
-                                                                                static_cast<endstone::BlockFace>(face));
+                    event = std::make_unique<endstone::BlockPistonRetractEvent>(
+                        std::move(block),
+                        endstone::core::EndstoneBlockFace::getOpposite(static_cast<endstone::BlockFace>(face)));
                 }
             }
             else {
                 if (state_ == PistonState::Retracted && new_state_ == PistonState::Retracted) {
-                    const auto block = endstone::core::EndstoneBlock::at(region, position_);
+                    auto block = endstone::core::EndstoneBlock::at(region, position_);
                     const auto face = block->getMinecraftBlock().getState<FacingID>("facing_direction");
-                    event = std::make_unique<endstone::BlockPistonExtendEvent>(*block,
+                    event = std::make_unique<endstone::BlockPistonExtendEvent>(std::move(block),
                                                                                static_cast<endstone::BlockFace>(face));
                 }
             }
