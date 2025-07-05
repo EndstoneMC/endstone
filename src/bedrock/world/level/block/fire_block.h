@@ -32,5 +32,6 @@ private:
     bool _trySpawnSoulFire(BlockSource &, const BlockPos &) const;
     void _tryEvictBeehive(BlockSource &region, const BlockPos &block_pos) const;
     void _tryAddToTickingQueue(BlockSource &, const BlockPos &, Random &) const;
-    bool isValidFireLocation(BlockSource &, const BlockPos &) const;
+    bool isValidFireLocation(BlockSource & region, const BlockPos & pos) const;
+    float getFireOdds(BlockSource & region, const BlockPos & pos) const;
 };

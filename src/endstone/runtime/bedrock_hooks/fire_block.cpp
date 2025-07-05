@@ -64,3 +64,4 @@ void FireBlock::checkBurn(BlockSource &region, const BlockPos &pos, int chance, 
         region.removeBlock(pos);
     }
 }
+

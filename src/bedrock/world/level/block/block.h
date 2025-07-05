@@ -55,8 +55,8 @@ public:
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] Brightness getLight() const;
-    [[nodiscard]] FlameOdds getFlameOdds() const;
-    [[nodiscard]] BurnOdds getBurnOdds() const;
+    [[nodiscard]] int getFlameOdds() const;
+    [[nodiscard]] int getBurnOdds() const;
     [[nodiscard]] float getExplosionResistance() const;
     bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                            optional_ref<GetCollisionShapeInterface const> entity) const;
@@ -70,6 +70,7 @@ public:
     bool getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] float getThickness() const;
+    void destroy(BlockSource &, const BlockPos &, Actor *) const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
     [[nodiscard]] const HashedString &getName() const;
@@ -86,6 +87,12 @@ public:
     {
         return getLegacyBlock().getState<T>(name, data_);
     }
+
+    template <typename T>
+    const Block *trySetState(const HashedString &, T) const;
+
+    template <typename T>
+    gsl::strict_not_null<const Block *> setState(const HashedString &, T) const;
     // Endstone end
 
 private:
