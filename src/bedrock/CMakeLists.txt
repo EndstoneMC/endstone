@@ -101,8 +101,10 @@ add_library(bedrock STATIC
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
         world/level/block/block_legacy.cpp
+        world/level/block/vanilla_block_type_ids.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/registry/block_type_registry.cpp
+        world/level/block/states/vanilla_block_states.cpp
         world/level/chunk/level_chunk.cpp
         world/level/dimension/dimension.cpp
         world/level/saveddata/map_item_saved_data.cpp

@@ -33,12 +33,12 @@ Brightness Block::getLight() const
     return direct_data_.light;
 }
 
-FlameOdds Block::getFlameOdds() const
+int Block::getFlameOdds() const
 {
     return direct_data_.flame_odds;
 }
 
-BurnOdds Block::getBurnOdds() const
+int Block::getBurnOdds() const
 {
     return direct_data_.burn_odds;
 }

@@ -16,6 +16,8 @@
 
 #include <optional>
 
+#include <gsl/span>
+
 #include "bedrock/common_types.h"
 #include "bedrock/core/container/cache.h"
 #include "bedrock/core/math/color.h"
@@ -108,14 +110,14 @@ public:
         HashedString full_name;            // +80
         HashedString pre_flattening_name;  // +128
     };
-    static const int UPDATE_NEIGHBORS = 1;
-    static const int UPDATE_CLIENTS = 2;
-    static const int UPDATE_INVISIBLE = 4;
-    static const int UPDATE_ITEM_DATA = 16;
-    static const int UPDATE_NONE = 4;
-    static const int UPDATE_ALL = 3;
-    static const int TILE_NUM_SHIFT = 12;
-    static const int NUM_LEGACY_BLOCK_TYPES = 512;
+    static constexpr int UPDATE_NEIGHBORS = 1;
+    static constexpr int UPDATE_CLIENTS = 2;
+    static constexpr int UPDATE_INVISIBLE = 4;
+    static constexpr int UPDATE_ITEM_DATA = 16;
+    static constexpr int UPDATE_NONE = 4;
+    static constexpr int UPDATE_ALL = 3;
+    static constexpr int TILE_NUM_SHIFT = 12;
+    static constexpr int NUM_LEGACY_BLOCK_TYPES = 512;
 
     BlockLegacy(const std::string &, int, const Material &);
 
@@ -307,6 +309,8 @@ public:
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;
     [[nodiscard]] const HashedString &getName() const;
+    bool anyOf(std::initializer_list<std::reference_wrapper<const HashedString>>) const;
+    bool anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &) const;
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;

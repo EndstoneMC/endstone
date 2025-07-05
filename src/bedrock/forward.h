@@ -221,7 +221,6 @@ class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class UpdateEntityAfterFallOnInterface;
 class VolumeEntityManagerServer;
-class Weather {};
 class WorldGenerator;
 class WorldHistoryPackSource;
 class _TickPtr;  // NOLINT
@@ -287,6 +286,7 @@ namespace Core {
 class FilePathManager;
 class LevelStorageResult;
 class StorageAreaState;
+class Random {};
 }  // namespace Core
 namespace ClientBlobCache {
 namespace Server {
