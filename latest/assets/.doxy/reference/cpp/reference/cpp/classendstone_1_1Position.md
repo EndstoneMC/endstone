@@ -97,6 +97,7 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 |  constexpr T | [**getZ**](classendstone_1_1Vector.md#function-getz) () const<br>_Gets the Z component._  |
 |  constexpr T | [**length**](classendstone_1_1Vector.md#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
 |  constexpr T | [**lengthSquared**](classendstone_1_1Vector.md#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**normalize**](classendstone_1_1Vector.md#function-normalize) () <br> |
 |  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator_1) (T scalar) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator\*=**](classendstone_1_1Vector.md#function-operator_2) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |

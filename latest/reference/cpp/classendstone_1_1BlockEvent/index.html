@@ -2227,7 +2227,7 @@ For latest updates join the chat on
 <li><code>#include &lt;endstone/event/block/block_event.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Event/">endstone::Event</a></p>
-<p>Inherited by the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1BlockPistonEvent/">endstone::BlockPistonEvent</a></p>
+<p>Inherited by the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2239,7 +2239,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-blockevent"><strong>BlockEvent</strong></a> (<a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp; block) <br></td>
+<td style="text-align: left;"><a href="#function-blockevent"><strong>BlockEvent</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; block) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp;</td>
@@ -2290,7 +2290,7 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-blockevent">function BlockEvent<a class="headerlink" href="#function-blockevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockEvent</span><span class="o">::</span><span class="n">BlockEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Block</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">block</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">block</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>

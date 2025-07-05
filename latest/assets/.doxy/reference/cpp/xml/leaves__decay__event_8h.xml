@@ -18,7 +18,7 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -46,7 +46,7 @@
         <link refid="block__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -54,17 +54,17 @@
         <link refid="leaves__decay__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>endstone/event/cancellable.h</label>
         <link refid="cancellable_8h_source"/>
       </node>
-      <node id="20">
+      <node id="21">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -72,40 +72,42 @@
       <node id="13">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>endstone/level/position.h</label>
-        <link refid="position_8h_source"/>
-        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-      </node>
-      <node id="18">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="16">
+        <label>endstone/level/position.h</label>
+        <link refid="position_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>endstone/variant.h</label>
         <link refid="variant_8h_source"/>
       </node>
-      <node id="17">
+      <node id="14">
         <label>cmath</label>
       </node>
       <node id="9">
@@ -117,13 +119,16 @@
       <node id="4">
         <label>memory</label>
       </node>
-      <node id="19">
+      <node id="20">
         <label>nonstd/expected.hpp</label>
       </node>
       <node id="15">
+        <label>numbers</label>
+      </node>
+      <node id="17">
         <label>optional</label>
       </node>
-      <node id="21">
+      <node id="22">
         <label>stdexcept</label>
       </node>
       <node id="5">
@@ -167,11 +172,10 @@
 <codeline lineno="27" refid="classendstone_1_1LeavesDecayEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1LeavesDecayEvent" kindref="compound">LeavesDecayEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;BlockEvent&gt;<sp/>{</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1LeavesDecayEvent" kindref="compound">LeavesDecayEvent</ref>);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1LeavesDecayEvent" kindref="compound">LeavesDecayEvent</ref>(<ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;block)<sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(block)<sp/>{}</highlight></codeline>
-<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Cancellable::Cancellable;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/block/leaves_decay_event.h"/>
   </compounddef>

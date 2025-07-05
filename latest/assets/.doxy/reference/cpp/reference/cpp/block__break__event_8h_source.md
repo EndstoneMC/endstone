@@ -31,7 +31,10 @@ namespace endstone {
 
 class BlockBreakEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockBreakEvent(Block &block, Player &player) : Cancellable(block), player_(player) {}
+    explicit BlockBreakEvent(std::unique_ptr<Block> block, Player &player)
+        : Cancellable(std::move(block)), player_(player)
+    {
+    }
     ~BlockBreakEvent() override = default;
 
     inline static const std::string NAME = "BlockBreakEvent";

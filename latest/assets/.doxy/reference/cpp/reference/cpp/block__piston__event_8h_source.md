@@ -24,23 +24,26 @@
 
 #pragma once
 
+#include "endstone/block/block_face.h"
 #include "endstone/event/block/block_event.h"
+#include "endstone/event/cancellable.h"
 
 namespace endstone {
 
-class BlockPistonEvent : public BlockEvent {
+class BlockPistonEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockPistonEvent(Block &block, Player &player) : BlockEvent(block), player_(player) {}
-    ~BlockPistonEvent() override = default;
-
-    inline static const std::string NAME = "BlockPistonEvent";
-    [[nodiscard]] std::string getEventName() const override
+    explicit BlockPistonEvent(std::unique_ptr<Block> block, BlockFace direction)
+        : Cancellable(std::move(block)), direction_(direction)
     {
-        return NAME;
+    }
+
+    [[nodiscard]] BlockFace getDirection() const
+    {
+        return direction_;
     }
 
 private:
-    Player &player_;
+    BlockFace direction_;
 };
 
 }  // namespace endstone

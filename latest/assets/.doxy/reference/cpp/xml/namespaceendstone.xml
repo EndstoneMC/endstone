@@ -19,6 +19,8 @@
     <innerclass refid="classendstone_1_1BlockData" prot="public">endstone::BlockData</innerclass>
     <innerclass refid="classendstone_1_1BlockEvent" prot="public">endstone::BlockEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockPistonEvent" prot="public">endstone::BlockPistonEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockPistonExtendEvent" prot="public">endstone::BlockPistonExtendEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockPistonRetractEvent" prot="public">endstone::BlockPistonRetractEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockPlaceEvent" prot="public">endstone::BlockPlaceEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockState" prot="public">endstone::BlockState</innerclass>
     <innerclass refid="classendstone_1_1BossBar" prot="public">endstone::BossBar</innerclass>

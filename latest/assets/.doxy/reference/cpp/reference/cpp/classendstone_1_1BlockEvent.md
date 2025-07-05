@@ -17,7 +17,7 @@ _Represents an Block-related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::BlockPistonEvent](classendstone_1_1BlockPistonEvent.md)
+Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 
 
@@ -74,7 +74,7 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockEvent**](#function-blockevent) ([**Block**](classendstone_1_1Block.md) & block) <br> |
+|   | [**BlockEvent**](#function-blockevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlock**](#function-getblock) () const<br>_Gets the block involved in this event._  |
 |   | [**~BlockEvent**](#function-blockevent) () override<br> |
 
@@ -154,7 +154,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 inline explicit endstone::BlockEvent::BlockEvent (
-    Block & block
+    std::unique_ptr< Block > block
 ) 
 ```
 

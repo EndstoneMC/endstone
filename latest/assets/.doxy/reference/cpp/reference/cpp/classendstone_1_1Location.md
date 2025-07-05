@@ -95,6 +95,7 @@ Inherits the following classes: [endstone::Position](classendstone_1_1Position.m
 | ---: | :--- |
 |   | [**Location**](#function-location-12) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, int x, int y, int z, float pitch=0.0, float yaw=0.0) <br> |
 |   | [**Location**](#function-location-22) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, float x, float y, float z, float pitch=0.0, float yaw=0.0) <br> |
+|  [**Vector**](classendstone_1_1Vector.md) | [**getDirection**](#function-getdirection) () const<br> |
 |  float | [**getPitch**](#function-getpitch) () const<br> |
 |  float | [**getYaw**](#function-getyaw) () const<br> |
 |  void | [**setPitch**](#function-setpitch) (float pitch) <br> |
@@ -130,6 +131,7 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 |  constexpr T | [**getZ**](classendstone_1_1Vector.md#function-getz) () const<br>_Gets the Z component._  |
 |  constexpr T | [**length**](classendstone_1_1Vector.md#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
 |  constexpr T | [**lengthSquared**](classendstone_1_1Vector.md#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**normalize**](classendstone_1_1Vector.md#function-normalize) () <br> |
 |  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator_1) (T scalar) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator\*=**](classendstone_1_1Vector.md#function-operator_2) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
@@ -275,6 +277,33 @@ inline endstone::Location::Location (
 
 
 
+
+<hr>
+
+
+
+### function getDirection 
+
+```C++
+inline Vector endstone::Location::getDirection () const
+```
+
+
+
+Gets a unit-vector pointing in the direction that this [**Location**](classendstone_1_1Location.md) is facing.
+
+
+
+
+**Returns:**
+
+a vector pointing the direction of this location's pitch and yaw 
+
+
+
+
+
+        
 
 <hr>
 

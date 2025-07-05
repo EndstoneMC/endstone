@@ -22,24 +22,6 @@
         </inbodydescription>
         <location file="include/endstone/event/block/leaves_decay_event.h" line="29" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1LeavesDecayEvent_1a0c8717d9be393e96e0461e61756aeeba" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>endstone::LeavesDecayEvent::LeavesDecayEvent</definition>
-        <argsstring>(Block &amp;block)</argsstring>
-        <name>LeavesDecayEvent</name>
-        <qualifiedname>endstone::LeavesDecayEvent::LeavesDecayEvent</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
-          <declname>block</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/block/leaves_decay_event.h" line="31" column="14" bodyfile="include/endstone/event/block/leaves_decay_event.h" bodystart="31" bodyend="31"/>
-      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Called when leaves are decaying naturally. </para>
@@ -109,9 +91,9 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/block/leaves_decay_event.h" line="27" column="1" bodyfile="include/endstone/event/block/leaves_decay_event.h" bodystart="27" bodyend="32"/>
+    <location file="include/endstone/event/block/leaves_decay_event.h" line="27" column="1" bodyfile="include/endstone/event/block/leaves_decay_event.h" bodystart="27" bodyend="31"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>BlockEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::LeavesDecayEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1LeavesDecayEvent_1a23c36eb8a563622f3aa57814e8f807a4" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>Event</name></member>
@@ -120,7 +102,6 @@
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::LeavesDecayEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::LeavesDecayEvent</scope><name>isCancelled</name></member>
-      <member refid="classendstone_1_1LeavesDecayEvent_1a0c8717d9be393e96e0461e61756aeeba" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>LeavesDecayEvent</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::LeavesDecayEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" virt="non-virtual"><scope>endstone::LeavesDecayEvent</scope><name>~BlockEvent</name></member>

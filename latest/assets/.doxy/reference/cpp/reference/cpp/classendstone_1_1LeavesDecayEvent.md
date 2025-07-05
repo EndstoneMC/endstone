@@ -94,7 +94,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md)) <br> |
-|   | [**LeavesDecayEvent**](#function-leavesdecayevent) ([**Block**](classendstone_1_1Block.md) & block) <br> |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -222,21 +221,6 @@ If a Leaves Decay event is cancelled, the leaves will not decay.
 ```C++
 endstone::LeavesDecayEvent::ENDSTONE_EVENT (
     LeavesDecayEvent
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function LeavesDecayEvent 
-
-```C++
-inline explicit endstone::LeavesDecayEvent::LeavesDecayEvent (
-    Block & block
 ) 
 ```
 

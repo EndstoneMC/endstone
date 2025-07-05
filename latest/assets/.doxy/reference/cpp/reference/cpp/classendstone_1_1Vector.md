@@ -63,6 +63,7 @@ _Represents a 3-dimensional vector._
 |  constexpr T | [**getZ**](#function-getz) () const<br>_Gets the Z component._  |
 |  constexpr T | [**length**](#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
 |  constexpr T | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**normalize**](#function-normalize) () <br> |
 |  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](#function-operator) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](#function-operator_1) (T scalar) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator\*=**](#function-operator_2) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
@@ -335,6 +336,33 @@ inline constexpr T endstone::Vector::lengthSquared () const
 **Returns:**
 
 the magnitude 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function normalize 
+
+```C++
+inline Vector < T > & endstone::Vector::normalize () 
+```
+
+
+
+Converts this vector to a unit vector (a vector with length of 1).
+
+
+
+
+**Returns:**
+
+the same vector 
 
 
 

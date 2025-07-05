@@ -136,18 +136,30 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
       </node>
       <node id="75">
         <label>include/endstone/event/block/block_piston_event.h</label>
         <link refid="block__piston__event_8h_source"/>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>include/endstone/event/block/block_piston_extend_event.h</label>
+        <link refid="block__piston__extend__event_8h_source"/>
+      </node>
+      <node id="77">
+        <label>include/endstone/event/block/block_piston_retract_event.h</label>
+        <link refid="block__piston__retract__event_8h_source"/>
       </node>
       <node id="7">
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
       </node>
-      <node id="76">
+      <node id="78">
         <label>include/endstone/event/block/leaves_decay_event.h</label>
         <link refid="leaves__decay__event_8h_source"/>
       </node>
@@ -445,7 +457,7 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="77">
+      <node id="79">
         <label>include/endstone/level/position.h</label>
         <link refid="position_8h_source"/>
         <childnode refid="3" relation="include">
@@ -526,7 +538,7 @@
         <link refid="vector_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -711,13 +723,22 @@
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((z_<sp/>-<sp/>other.z_)<sp/>*<sp/>(z_<sp/>-<sp/>other.z_));</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>x_;</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>y_;</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>z_;</highlight></codeline>
-<codeline lineno="237"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classendstone_1_1Vector_1a6b9c6d9be33dd08928d20a74a2f2e3ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>Vector&lt;T&gt;<sp/>&amp;<ref refid="classendstone_1_1Vector_1a6b9c6d9be33dd08928d20a74a2f2e3ac" kindref="member">normalize</ref>()</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>len<sp/>=<sp/><ref refid="classendstone_1_1Vector_1ac1d344ebd47c06ee1fce6b75a996eacc" kindref="member">length</ref>();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x_<sp/>/=<sp/>len;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y_<sp/>/=<sp/>len;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z_<sp/>/=<sp/>len;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>x_;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>y_;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>z_;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/util/vector.h"/>
   </compounddef>

@@ -14,7 +14,10 @@ _Called when a piston block is triggered._
 
 
 
-Inherits the following classes: [endstone::BlockEvent](classendstone_1_1BlockEvent.md)
+Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
+
+
+Inherited by the following classes: [endstone::BlockPistonExtendEvent](classendstone_1_1BlockPistonExtendEvent.md),  [endstone::BlockPistonRetractEvent](classendstone_1_1BlockPistonRetractEvent.md)
 
 
 
@@ -45,13 +48,6 @@ Inherits the following classes: [endstone::BlockEvent](classendstone_1_1BlockEve
 
 
 
-
-
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"BlockPistonEvent"`<br> |
 
 
 
@@ -98,38 +94,31 @@ Inherits the following classes: [endstone::BlockEvent](classendstone_1_1BlockEve
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPistonEvent**](#function-blockpistonevent) ([**Block**](classendstone_1_1Block.md) & block, [**Player**](classendstone_1_1Player.md) & player) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|   | [**~BlockPistonEvent**](#function-blockpistonevent) () override<br> |
+|   | [**BlockPistonEvent**](#function-blockpistonevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, BlockFace direction) <br> |
+|  BlockFace | [**getDirection**](#function-getdirection) () const<br>_Return the direction in which the piston will operate._  |
 
 
-## Public Functions inherited from endstone::BlockEvent
+## Public Functions inherited from endstone::Cancellable
 
-See [endstone::BlockEvent](classendstone_1_1BlockEvent.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**BlockEvent**](classendstone_1_1BlockEvent.md#function-blockevent) ([**Block**](classendstone_1_1Block.md) & block) <br> |
-|  [**Block**](classendstone_1_1Block.md) & | [**getBlock**](classendstone_1_1BlockEvent.md#function-getblock) () const<br>_Gets the block involved in this event._  |
-|   | [**~BlockEvent**](classendstone_1_1BlockEvent.md#function-blockevent) () override<br> |
-
-
-## Public Functions inherited from endstone::Event
-
-See [endstone::Event](classendstone_1_1Event.md)
+See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-12) (bool async=false) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-| virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-| virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
+## Public Functions inherited from endstone::ICancellable
 
+See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
+| Type | Name |
+| ---: | :--- |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
+| virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
 
@@ -206,21 +195,10 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-## Public Static Attributes Documentation
 
 
 
 
-### variable NAME 
-
-```C++
-const std::string endstone::BlockPistonEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -230,8 +208,8 @@ const std::string endstone::BlockPistonEvent::NAME;
 
 ```C++
 inline explicit endstone::BlockPistonEvent::BlockPistonEvent (
-    Block & block,
-    Player & player
+    std::unique_ptr< Block > block,
+    BlockFace direction
 ) 
 ```
 
@@ -242,43 +220,26 @@ inline explicit endstone::BlockPistonEvent::BlockPistonEvent (
 
 
 
-### function getEventName 
+### function getDirection 
 
+_Return the direction in which the piston will operate._ 
 ```C++
-inline virtual std::string endstone::BlockPistonEvent::getEventName () override const
+inline BlockFace endstone::BlockPistonEvent::getDirection () const
 ```
 
-
-
-Gets a user-friendly identifier for this event.
 
 
 
 
 **Returns:**
 
-name of this event 
+direction of the piston 
 
 
 
 
 
         
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
-
-<hr>
-
-
-
-### function ~BlockPistonEvent 
-
-```C++
-endstone::BlockPistonEvent::~BlockPistonEvent () override
-```
-
-
-
 
 <hr>
 

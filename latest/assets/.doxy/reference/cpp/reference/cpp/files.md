@@ -59,6 +59,8 @@ Here is a list of all files with brief descriptions:
                 * **file** [**block\_break\_event.h**](block__break__event_8h.md)     
                 * **file** [**block\_event.h**](block__event_8h.md)     
                 * **file** [**block\_piston\_event.h**](block__piston__event_8h.md)     
+                * **file** [**block\_piston\_extend\_event.h**](block__piston__extend__event_8h.md)     
+                * **file** [**block\_piston\_retract\_event.h**](block__piston__retract__event_8h.md)     
                 * **file** [**block\_place\_event.h**](block__place__event_8h.md)     
                 * **file** [**leaves\_decay\_event.h**](leaves__decay__event_8h.md)     
             * **dir** [**chunk**](dir_7eabd153c13720ffd29490c98a6f4dde.md)     

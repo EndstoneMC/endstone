@@ -182,6 +182,15 @@ public:
                ((z_ - other.z_) * (z_ - other.z_));
     }
 
+    [[nodiscard]] Vector<T> &normalize()
+    {
+        double len = length();
+        x_ /= len;
+        y_ /= len;
+        z_ /= len;
+        return *this;
+    }
+
 protected:
     T x_;
     T y_;

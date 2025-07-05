@@ -2194,6 +2194,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getdirection" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getDirection
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getpitch" class="md-nav__link">
       <span class="md-ellipsis">
         function getPitch
@@ -2306,6 +2319,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-location-22"><strong>Location</strong></a> (<a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> * dimension, float x, float y, float z, float pitch=0.0, float yaw=0.0) <br></td>
 </tr>
 <tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="#function-getdirection"><strong>getDirection</strong></a> () const<br></td>
+</tr>
+<tr>
 <td style="text-align: right;">float</td>
 <td style="text-align: left;"><a href="#function-getpitch"><strong>getPitch</strong></a> () const<br></td>
 </tr>
@@ -2404,6 +2421,10 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">constexpr T</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-lengthsquared"><strong>lengthSquared</strong></a> () const<br><em>Gets the magnitude of the vector squared.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; T &gt; &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-normalize"><strong>normalize</strong></a> () <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; T &gt;</td>
@@ -2520,8 +2541,16 @@ For latest updates join the chat on
 </span></code></pre></div>
 <hr>
 
+<h3 id="function-getdirection">function getDirection<a class="headerlink" href="#function-getdirection" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getDirection</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div>
+<p>Gets a unit-vector pointing in the direction that this <a href="./"><strong>Location</strong></a> is facing.</p>
+<p><strong>Returns:</strong></p>
+<p>a vector pointing the direction of this location's pitch and yaw </p>
+<hr>
+
 <h3 id="function-getpitch">function getPitch<a class="headerlink" href="#function-getpitch" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getPitch</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getPitch</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Gets the pitch of this location, measured in degrees.</p>
 <p><strong>Returns:</strong></p>
@@ -2529,7 +2558,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getyaw">function getYaw<a class="headerlink" href="#function-getyaw" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getYaw</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getYaw</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Gets the yaw of this location, measured in degrees.</p>
 <p><strong>Returns:</strong></p>
@@ -2537,9 +2566,9 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setpitch">function setPitch<a class="headerlink" href="#function-setpitch" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setPitch</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setPitch</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Sets the pitch of this location, measured in degrees. 
 * A pitch of 0 represents level forward facing. 
@@ -2553,9 +2582,9 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setyaw">function setYaw<a class="headerlink" href="#function-setyaw" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setYaw</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setYaw</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Sets the yaw of this location, measured in degrees. 
 * A yaw of 0 or 360 represents the positive z direction. 

@@ -2111,17 +2111,6 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Attributes
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -2133,9 +2122,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneblockevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstonecancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::BlockEvent
+        Public Functions inherited from endstone::Cancellable
       </span>
     </a>
 
@@ -2144,43 +2133,13 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstoneicancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::Event
+        Public Functions inherited from endstone::ICancellable
       </span>
     </a>
 
     <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#public-static-attributes-documentation" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Attributes Documentation
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label="Public Static Attributes Documentation">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#variable-name" class="md-nav__link">
-      <span class="md-ellipsis">
-        variable NAME
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-        </ul>
-    </nav>
     
 </li>
       
@@ -2211,22 +2170,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-geteventname" class="md-nav__link">
+    <a href="#function-getdirection" class="md-nav__link">
       <span class="md-ellipsis">
-        function getEventName
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-blockpistonevent_1" class="md-nav__link">
-      <span class="md-ellipsis">
-        function ~BlockPistonEvent
+        function getDirection
       </span>
     </a>
 
@@ -2278,22 +2224,8 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/event/block/block_piston_event.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1BlockEvent/">endstone::BlockEvent</a></p>
-<h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">const std::string</td>
-<td style="text-align: left;"><a href="#variable-name"><strong>NAME</strong></a>   = <code>"BlockPistonEvent"</code><br></td>
-</tr>
-</tbody>
-</table>
+<p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
+<p>Inherited by the following classes: <a href="../classendstone_1_1BlockPistonExtendEvent/">endstone::BlockPistonExtendEvent</a>,  <a href="../classendstone_1_1BlockPistonRetractEvent/">endstone::BlockPistonRetractEvent</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2305,20 +2237,16 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-blockpistonevent"><strong>BlockPistonEvent</strong></a> (<a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp; block, <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
+<td style="text-align: left;"><a href="#function-blockpistonevent"><strong>BlockPistonEvent</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; block, BlockFace direction) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-blockpistonevent"><strong>~BlockPistonEvent</strong></a> () override<br></td>
+<td style="text-align: right;">BlockFace</td>
+<td style="text-align: left;"><a href="#function-getdirection"><strong>getDirection</strong></a> () const<br><em>Return the direction in which the piston will operate.</em></td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneblockevent">Public Functions inherited from endstone::BlockEvent<a class="headerlink" href="#public-functions-inherited-from-endstoneblockevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1BlockEvent/">endstone::BlockEvent</a></p>
+<h2 id="public-functions-inherited-from-endstonecancellable">Public Functions inherited from endstone::Cancellable<a class="headerlink" href="#public-functions-inherited-from-endstonecancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <table>
 <thead>
 <tr>
@@ -2328,21 +2256,21 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1BlockEvent/#function-blockevent"><strong>BlockEvent</strong></a> (<a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp; block) <br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BlockEvent/#function-getblock"><strong>getBlock</strong></a> () const<br><em>Gets the block involved in this event.</em></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1BlockEvent/#function-blockevent"><strong>~BlockEvent</strong></a> () override<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) <br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneevent">Public Functions inherited from endstone::Event<a class="headerlink" href="#public-functions-inherited-from-endstoneevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1Event/">endstone::Event</a></p>
+<h2 id="public-functions-inherited-from-endstoneicancellable">Public Functions inherited from endstone::ICancellable<a class="headerlink" href="#public-functions-inherited-from-endstoneicancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1ICancellable/">endstone::ICancellable</a></p>
 <table>
 <thead>
 <tr>
@@ -2352,57 +2280,38 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-12"><strong>Event</strong></a> (bool async=false) <br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-22"><strong>Event</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event"><strong>~Event</strong></a> () = default<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-icancellable"><strong>~ICancellable</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-static-attributes-documentation">Public Static Attributes Documentation<a class="headerlink" href="#public-static-attributes-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="variable-name">variable NAME<a class="headerlink" href="#variable-name" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="o">::</span><span class="n">NAME</span><span class="p">;</span>
-</span></code></pre></div>
-<hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-blockpistonevent">function BlockPistonEvent<a class="headerlink" href="#function-blockpistonevent" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Block</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">block</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">block</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">direction</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a user-friendly identifier for this event.</p>
+<h3 id="function-getdirection">function getDirection<a class="headerlink" href="#function-getdirection" title="Permanent link">&para;</a></h3>
+<p><em>Return the direction in which the piston will operate.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="o">::</span><span class="n">getDirection</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>name of this event </p>
-<p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
-<hr>
-
-<h3 id="function-blockpistonevent_1">function ~BlockPistonEvent<a class="headerlink" href="#function-blockpistonevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPistonEvent</span><span class="o">::~</span><span class="n">BlockPistonEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
+<p>direction of the piston </p>
 <hr>
 
 <hr />

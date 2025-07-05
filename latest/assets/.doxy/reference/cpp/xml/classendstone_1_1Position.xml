@@ -203,6 +203,7 @@
       <member refid="classendstone_1_1Vector_1a84588ede264dbea3273c9fc3812ba82b" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>getZ</name></member>
       <member refid="classendstone_1_1Vector_1ac1d344ebd47c06ee1fce6b75a996eacc" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>length</name></member>
       <member refid="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>lengthSquared</name></member>
+      <member refid="classendstone_1_1Vector_1a6b9c6d9be33dd08928d20a74a2f2e3ac" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>normalize</name></member>
       <member refid="classendstone_1_1Vector_1a5485042a4e6973e83660c590aa03a791" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*</name></member>
       <member refid="classendstone_1_1Vector_1a7296335b054365c0747066f44f969fca" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*</name></member>
       <member refid="classendstone_1_1Vector_1abd4abd618ccad756cd3a10ccb437446a" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator*=</name></member>

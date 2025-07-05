@@ -15,7 +15,7 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -77,21 +77,23 @@
       <node id="22">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>endstone/level/position.h</label>
-        <link refid="position_8h_source"/>
-        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>endstone/level/position.h</label>
+        <link refid="position_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -140,13 +142,13 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="27">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="23">
         <label>cmath</label>
       </node>
       <node id="4">
@@ -159,6 +161,9 @@
         <label>nonstd/expected.hpp</label>
       </node>
       <node id="24">
+        <label>numbers</label>
+      </node>
+      <node id="26">
         <label>optional</label>
       </node>
       <node id="19">
