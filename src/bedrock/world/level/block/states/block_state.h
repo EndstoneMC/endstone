@@ -40,7 +40,8 @@ public:
     virtual bool fromNBT(const CompoundTag &, int &) const = 0;
     static void forEachState(std::function<bool(const BlockState &)> callback)
     {
-        const auto *node = BEDROCK_VAR(StateListNode *, "BlockState::StateListNode::head");
+        static StateListNode *head = *BEDROCK_VAR(StateListNode **, "BlockState::StateListNode::head");
+        auto *node = head;
         while (node != nullptr) {
             if (!callback(*node->stat)) {
                 break;
@@ -54,12 +55,10 @@ protected:
     const size_t variation_count_;
     const HashedString name_;
     struct StateListNode {
-        static StateListNode *head;
+        // static StateListNode *head;
         StateListNode *next;
         StateListNode *prev;
         BlockState *stat;
-        StateListNode(BlockState *);
-        ~StateListNode();
     };
     static_assert(sizeof(StateListNode) == 24);
     StateListNode node_;

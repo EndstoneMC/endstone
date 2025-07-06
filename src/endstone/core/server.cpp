@@ -107,6 +107,7 @@ void EndstoneServer::setLevel(::Level &level)
     level_ = std::make_unique<EndstoneLevel>(level);
     enchantment_registry_ = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
     item_registry_ = EndstoneRegistry<ItemType, ::Item>::createRegistry();
+    BlockStateRegistry::get();
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
