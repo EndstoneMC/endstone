@@ -53,6 +53,20 @@ public:
     [[nodiscard]] std::string getName() const override = 0;
 
     /**
+     * @brief Checks if this player is a server operator
+     *
+     * @return true if this is an operator, otherwise false
+     */
+    [[nodiscard]] virtual bool isOp() const = 0;
+
+    /**
+     * @brief Sets the operator status of this player
+     *
+     * @param value New operator value
+     */
+    virtual void setOp(bool value) = 0;
+
+    /**
      * @brief Returns the Xbox User ID (XUID) of this player
      *
      * @return Player XUID

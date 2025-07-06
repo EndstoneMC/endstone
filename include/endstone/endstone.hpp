@@ -19,7 +19,7 @@
 // We do not support compiling under MSVC Debug mode because it sets _ITERATOR_DEBUG_LEVEL
 // to a nonzero value, changing the standard library's iterator implementation and resulting
 // in an ABI incompatible with the BDS environment, which is built in Release mode.
-#if defined(_MSC_VER) and defined(_ITERATOR_DEBUG_LEVEL)
+#ifdef _ITERATOR_DEBUG_LEVEL
 static_assert(_ITERATOR_DEBUG_LEVEL == 0,
               "Error: Endstone plugins must be built in Release or RelWithDebInfo mode with MSVC!");
 #endif
@@ -48,7 +48,6 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "command/command_sender_wrapper.h"
 #include "command/console_command_sender.h"
 #include "command/plugin_command.h"
-#include "command/proxied_command_sender.h"
 #include "damage/damage_source.h"
 #include "enchantments/enchantment.h"
 #include "event/actor/actor_damage_event.h"
@@ -60,15 +59,23 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/actor/actor_spawn_event.h"
 #include "event/actor/actor_teleport_event.h"
 #include "event/block/block_break_event.h"
+#include "event/block/block_cook_event.h"
 #include "event/block/block_event.h"
+#include "event/block/block_piston_event.h"
+#include "event/block/block_piston_extend_event.h"
+#include "event/block/block_piston_retract_event.h"
 #include "event/block/block_place_event.h"
+#include "event/block/leaves_decay_event.h"
 #include "event/cancellable.h"
+#include "event/chunk/chunk_event.h"
+#include "event/chunk/chunk_load_event.h"
+#include "event/chunk/chunk_unload_event.h"
 #include "event/event.h"
 #include "event/event_handler.h"
 #include "event/event_priority.h"
 #include "event/handler_list.h"
-#include "event/player/player_bed_enter_event.h"
-#include "event/player/player_bed_leave_event.h"
+#include "event/level/dimension_event.h"
+#include "event/level/level_event.h"
 #include "event/player/player_chat_event.h"
 #include "event/player/player_command_event.h"
 #include "event/player/player_death_event.h"
@@ -84,6 +91,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_kick_event.h"
 #include "event/player/player_login_event.h"
 #include "event/player/player_move_event.h"
+#include "event/player/player_pickup_item_event.h"
 #include "event/player/player_quit_event.h"
 #include "event/player/player_respawn_event.h"
 #include "event/player/player_teleport_event.h"
@@ -140,6 +148,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "permissions/permission_attachment.h"
 #include "permissions/permission_attachment_info.h"
 #include "permissions/permission_default.h"
+#include "permissions/permission_level.h"
 #include "player.h"
 #include "plugin/plugin.h"
 #include "plugin/plugin_description.h"

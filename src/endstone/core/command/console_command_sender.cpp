@@ -45,14 +45,9 @@ std::string EndstoneConsoleCommandSender::getName() const
     return "Server";
 }
 
-bool EndstoneConsoleCommandSender::isOp() const
+PermissionLevel EndstoneConsoleCommandSender::getPermissionLevel() const
 {
-    return true;
-}
-
-void EndstoneConsoleCommandSender::setOp(bool value)
-{
-    getServer().getLogger().error("Cannot change operator status of server console");
+    return PermissionLevel::Console;
 }
 
 bool EndstoneConsoleCommandSender::isPermissionSet(std::string name) const

@@ -14,12 +14,32 @@
 
 #pragma once
 
+#include <functional>
+#include <optional>
+
+#include "bedrock/core/utility/pub_sub/publisher_config.h"
+#include "bedrock/core/utility/pub_sub/subscription.h"
+
 namespace Bedrock::PubSub {
 
-template <typename Func>
+template <typename Signature>
 class Connector {
 public:
+    using FunctionType = std::function<Signature>;
+
+    template <typename Fn>
+    Subscription connect(const Fn &fn, ConnectPosition at, ContextType &&context)
+    {
+        return _connectInternal(fn, at, std::move(context), std::nullopt);
+    }
+
+protected:
+    Connector() = default;
     virtual ~Connector() = default;
+
+private:
+    virtual Subscription _connectInternal(FunctionType &&fn, ConnectPosition at, ContextType &&context,
+                                          std::optional<int> group) = 0;
 };
 
 }  // namespace Bedrock::PubSub

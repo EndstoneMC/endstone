@@ -16,6 +16,8 @@
 
 #include <optional>
 
+#include <gsl/span>
+
 #include "bedrock/common_types.h"
 #include "bedrock/core/container/cache.h"
 #include "bedrock/core/math/color.h"
@@ -24,20 +26,22 @@
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/int_range.h"
+#include "bedrock/util/random.h"
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
 #include "bedrock/world/item/item_category.h"
-#include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block/states/block_state.h"
 #include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block_pos.h"
+#include "bedrock/world/level/clip_parameters.h"
 #include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
 #include "bedrock/world/phys/hit_result.h"
 
 class Actor;
 class Block;
+class BlockActor;
 class BlockSource;
 class Container;
 class IBlockSource;
@@ -45,6 +49,7 @@ class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
+enum class BlockActorType;
 
 enum class BlockProperty : std::uint64_t {
     None = 0x0,
@@ -66,19 +71,19 @@ enum class BlockProperty : std::uint64_t {
     Sign = 0x8000,
     Walkable = 0x10000,
     PressurePlate = 0x20000,
-    PistonBlockGrabber = 0x40000,
+    // PistonBlockGrabber = 0x40000,
     TopSolidBlocking = 0x80000,
     CubeShaped = 0x200000,
     Power_NO = 0x400000,
     Power_BlockDown = 0x800000,
     Immovable = 0x1000000,
-    BreakOnPush = 0x2000000,
+    // BreakOnPush = 0x2000000,
     Piston = 0x4000000,
     InfiniBurn = 0x8000000,
     RequiresWorldBuilder = 0x10000000,
     CausesDamage = 0x20000000,
     BreaksWhenFallenOnByFallingBlock = 0x40000000,
-    OnlyPistonPush = 0x80000000,
+    // OnlyPistonPush = 0x80000000,
     Liquid = 0x100000000,
     // CanBeBuiltOver = 0x200000000,
     SnowRecoverable = 0x400000000,
@@ -106,14 +111,14 @@ public:
         HashedString full_name;            // +80
         HashedString pre_flattening_name;  // +128
     };
-    static const int UPDATE_NEIGHBORS = 1;
-    static const int UPDATE_CLIENTS = 2;
-    static const int UPDATE_INVISIBLE = 4;
-    static const int UPDATE_ITEM_DATA = 16;
-    static const int UPDATE_NONE = 4;
-    static const int UPDATE_ALL = 3;
-    static const int TILE_NUM_SHIFT = 12;
-    static const int NUM_LEGACY_BLOCK_TYPES = 512;
+    static constexpr int UPDATE_NEIGHBORS = 1;
+    static constexpr int UPDATE_CLIENTS = 2;
+    static constexpr int UPDATE_INVISIBLE = 4;
+    static constexpr int UPDATE_ITEM_DATA = 16;
+    static constexpr int UPDATE_NONE = 4;
+    static constexpr int UPDATE_ALL = 3;
+    static constexpr int TILE_NUM_SHIFT = 12;
+    static constexpr int NUM_LEGACY_BLOCK_TYPES = 512;
 
     BlockLegacy(const std::string &, int, const Material &);
 
@@ -272,7 +277,7 @@ public:
     virtual void onStandOn(EntityContext &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTickOnSetBlock() const = 0;
     // virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
-    virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
+    // virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
     [[nodiscard]] virtual bool isInteractiveBlock() const = 0;
     // [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID, std::optional<Vec3>) const = 0;
     // [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID) const = 0;
@@ -286,9 +291,14 @@ public:
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 
-    [[nodiscard]] bool hasProperty(BlockProperty property) const;
     [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
     [[nodiscard]] bool hasState(const HashedString &) const;
+    template <typename T>
+    int getState(const BlockState &block_state, DataID data) const
+    {
+        return getState<T>(block_state.getID(), data);
+    }
+
     template <typename T>
     T getState(const size_t &id, DataID data) const
     {
@@ -297,6 +307,22 @@ public:
         }
         return _tryLookupAlteredStateCollection(id, data).value_or(0);
     }
+
+    template <typename T>
+    const Block *trySetState(const BlockState &block_state, T val, DataID data) const
+    {
+        if (const auto it = states_.find(block_state.getID()); it != states_.end()) {
+            return it->second.trySet<T>(data, val, block_permutations_);
+        }
+        if (auto *result = _trySetStateFromAlteredStateCollection(block_state.getID(), static_cast<int>(val), data)) {
+            return result;
+        }
+        if (return_default_block_on_unidentified_block_state_) {
+            return &getDefaultState();
+        }
+        return nullptr;
+    }
+
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
@@ -307,30 +333,17 @@ public:
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;
     [[nodiscard]] const HashedString &getName() const;
+    bool anyOf(std::initializer_list<std::reference_wrapper<const HashedString>>) const;
+    bool anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &block_type_ids) const;
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;
     [[nodiscard]] TintMethod getTintMethod() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
-    // Endstone begins
-    template <typename T>
-    T getState(const HashedString &name, DataID data) const
-    {
-        if (const auto it = state_name_map_.find(name); it != state_name_map_.end()) {
-            return getState<T>(it->second, data);
-        }
-        for (const auto &altered_state : altered_state_collections_) {
-            if (altered_state->getBlockState().getName() == name) {
-                return altered_state->getState(*this, data).value_or(0);
-            }
-        }
-        return 0;
-    }
-    // Endstone ends
-
 private:
     std::optional<int> _tryLookupAlteredStateCollection(size_t, DataID) const;
+    const Block *_trySetStateFromAlteredStateCollection(size_t, int, DataID) const;
 
 public:
     std::string description_id;  // +8
@@ -364,7 +377,7 @@ private:
     bool is_door_;
     bool is_opaque_full_block_;
     float translucency_;
-    bool should_random_tick_;
+    // bool should_random_tick_;
     bool should_random_tick_extra_layer_;
     bool is_mob_piece_;
     bool can_be_extra_block_;

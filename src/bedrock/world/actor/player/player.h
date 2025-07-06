@@ -52,13 +52,14 @@ enum class BedSleepingResult : int {
 class Player : public Mob {
 public:
     Player(Level &, PacketSender &, GameType, bool, const NetworkIdentifier &, SubClientId, mce::UUID,
-           const std::string &, const std::string &, std::unique_ptr<Certificate>, EntityContext &, const std::string &,
-           const std::string &);
+           const std::string &, const std::string &, PlayerAuthenticationType, const PlayerAuthenticationInfo &,
+           EntityContext &, const std::string &, const std::string &);
 
     ~Player() override = 0;
     ENDSTONE_HOOK void teleportTo(const Vec3 &, bool, int, int, bool) override;
     ENDSTONE_HOOK void completeUsingItem();
     ENDSTONE_HOOK bool drop(const ItemStack &item, bool randomly) override;
+    ENDSTONE_HOOK bool take(Actor &actor, int, int favored_slot);
 
     virtual void prepareRegion(ChunkSource &) = 0;
     virtual void destroyRegion() = 0;

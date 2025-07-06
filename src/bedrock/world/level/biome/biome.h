@@ -19,6 +19,7 @@
 #include "bedrock/common_types.h"
 #include "bedrock/world/level/biome/components/biome_component_storage.h"
 #include "bedrock/world/level/biome/mob_spawner_data.h"
+#include "bedrock/world/level/block_pos.h"
 
 enum class OceanTempCategory {
     COLD = 0,
@@ -31,11 +32,14 @@ struct OceanRuinConfiguration {
     float cluster_probability;
 };
 
+class BlockSource;
 class Biome {
 public:
     Biome(BiomeIdType, std::string_view);
 
     virtual ~Biome() = 0;
+
+    [[nodiscard]] float getTemperature(const BlockSource &region, const BlockPos &pos) const;
 
     [[nodiscard]] const std::string &getName() const
     {
@@ -47,7 +51,6 @@ public:
         return id_;
     }
 
-    HashedString hash;
     float temperature;
     float downfall;
     float red_spore_density;
@@ -67,15 +70,16 @@ public:
 
 protected:
     MobList mobs_;
-    MobCategoryMap mobs_map_;  // +152
+    MobCategoryMap mobs_map_;
     struct CachedClientComponentData {
         bool has_noise_based_color_palette;
         bool is_roofed_forest;
     };
     static_assert(sizeof(CachedClientComponentData) == 2);
-    CachedClientComponentData cached_client_component_data_;  // +408
+    CachedClientComponentData cached_client_component_data_;
 
 private:
-    BiomeIdType id_;                                 // +410
-    BiomeComponentStorage biome_component_storage_;  // +416
+    BiomeIdType id_;
+    BiomeComponentStorage biome_component_storage_;
+    const HashedString hash;
 };

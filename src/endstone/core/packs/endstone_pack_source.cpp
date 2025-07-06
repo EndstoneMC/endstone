@@ -24,24 +24,9 @@ namespace fs = std::filesystem;
 
 namespace endstone::core {
 
-EndstonePackSource::EndstonePackSource(std::filesystem::path path, PackType pack_type,
-                                       std::unique_ptr<IPackIOProvider> io)
-    : PackSource(std::move(io)), path_(std::move(path)), pack_type_(pack_type)
+EndstonePackSource::EndstonePackSource(EndstonePackSourceOptions options)
+    : PackSource(std::move(options.base)), path_(std::move(options.path)), pack_type_(options.pack_type)
 {
-}
-
-void EndstonePackSource::forEachPackConst(ConstPackCallback callback) const
-{
-    for (const auto &pack : packs_) {
-        callback(*pack);
-    }
-}
-
-void EndstonePackSource::forEachPack(PackCallback callback)
-{
-    for (const auto &pack : packs_) {
-        callback(*pack);
-    }
 }
 
 PackOrigin EndstonePackSource::getPackOrigin() const
@@ -54,8 +39,7 @@ PackType EndstonePackSource::getPackType() const
     return pack_type_;
 }
 
-PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory,
-                                          const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &key_provider)
+PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&options)
 {
     if (discovered_) {
         return {};
@@ -64,7 +48,7 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
     auto &server = entt::locator<EndstoneServer>::value_or();
     server.getLogger().info("Loading resource packs...");
 
-    PackSourceReport report;
+    PackSourceLoadResult result;
     for (const auto &entry : fs::directory_iterator(path_)) {
         fs::path file;
 
@@ -105,8 +89,8 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
             }
 
             const auto file_location = ResourceLocation(Core::Path(file.string()), ResourceFileSystem::Raw);
-            auto pack = Pack::createPack(*io_, file_location, getPackType(), getPackOrigin(), manifest_factory,
-                                         key_provider, &report, Core::Path::EMPTY);
+            auto pack = Pack::createPack(*io_, file_location, getPackType(), getPackOrigin(), *options.manifest_factory,
+                                         options.key_provider, &result.report, Core::Path::EMPTY);
             if (!pack) {
                 server.getLogger().error("Could not load resource pack from '{}':",
                                          file_location.getRelativePath().getContainer());
@@ -116,11 +100,11 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
             if (!key.empty()) {
                 content_keys_[pack->getManifest().getIdentity()] = key;
             }
-            packs_.emplace_back(std::move(pack));
+            result.packs.emplace_back(std::move(pack));
         }
     }
 
-    for (const auto &[pack_id, report] : report.getReports()) {
+    for (const auto &[pack_id, report] : result.report.getReports()) {
         if (report.hasErrors()) {
             server.getLogger().error("Could not load resource pack from '{}':",
                                      report.getLocation().getRelativePath().getContainer());
@@ -131,7 +115,9 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
     }
 
     discovered_ = true;
-    return report;
+    _setPacks(PackSourcePacks(result.packs));
+    _setReport(PackSourceReport(result.report));
+    return result;
 }
 
 std::unordered_map<PackIdVersion, std::string> EndstonePackSource::getContentKeys() const

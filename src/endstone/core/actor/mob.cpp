@@ -46,6 +46,11 @@ std::string EndstoneMob::getName() const
     return EndstoneActor::getName();
 }
 
+PermissionLevel EndstoneMob::getPermissionLevel() const
+{
+    return EndstoneActor::getPermissionLevel();
+}
+
 bool EndstoneMob::isPermissionSet(std::string name) const
 {
     return EndstoneActor::isPermissionSet(name);
@@ -89,16 +94,6 @@ void EndstoneMob::recalculatePermissions()
 std::unordered_set<PermissionAttachmentInfo *> EndstoneMob::getEffectivePermissions() const
 {
     return EndstoneActor::getEffectivePermissions();
-}
-
-bool EndstoneMob::isOp() const
-{
-    return EndstoneActor::isOp();
-}
-
-void EndstoneMob::setOp(bool value)
-{
-    EndstoneActor::setOp(value);
 }
 
 std::string EndstoneMob::getType() const

@@ -67,11 +67,11 @@ ScoreInfo Objective::getPlayerScore(const ScoreboardId &id) const
     return result;
 }
 
-bool Objective::_modifyPlayerScore(int &result, const ScoreboardId &id, int value, PlayerScoreSetFunction action)
+ScoreboardOperationResult Objective::_modifyPlayerScore(int &result, const ScoreboardId &id, int value,
+                                                        PlayerScoreSetFunction action)
 {
     if (criteria_.isReadOnly()) {
-        result = 0;
-        return false;
+        return ScoreboardOperationResult::ReadOnlyCriteria;
     }
 
     auto &score = scores_[id];
@@ -86,8 +86,8 @@ bool Objective::_modifyPlayerScore(int &result, const ScoreboardId &id, int valu
         score -= value;
         break;
     default:
-        throw std::runtime_error("Unknown PlayerScoreSetFunction!");
+        break;
     }
     result = score;
-    return true;
+    return ScoreboardOperationResult::Success;
 }

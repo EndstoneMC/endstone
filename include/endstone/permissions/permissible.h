@@ -19,6 +19,7 @@
 #include <unordered_set>
 
 #include "endstone/permissions/permission_attachment_info.h"
+#include "endstone/permissions/permission_level.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -36,21 +37,14 @@ public:
     virtual ~Permissible() = default;
 
     /**
-     * @brief Checks if this object is a server operator
+     * @brief Gets the permission level of this object
      *
-     * @return true if this is an operator, otherwise false
+     * @return The permission level
      */
-    [[nodiscard]] virtual bool isOp() const = 0;
+    [[nodiscard]] virtual PermissionLevel getPermissionLevel() const = 0;
 
     /**
-     * @brief Sets the operator status of this object
-     *
-     * @param value New operator value
-     */
-    virtual void setOp(bool value) = 0;
-
-    /**
-     * Checks if this object contains an override for the specified permission, by fully qualified name
+     * @brief Checks if this object contains an override for the specified permission, by fully qualified name
      *
      * @param name Name of the permission
      * @return true if the permission is set, otherwise false
@@ -58,7 +52,7 @@ public:
     [[nodiscard]] virtual bool isPermissionSet(std::string name) const = 0;
 
     /**
-     * Checks if this object contains an override for the specified Permission
+     * @brief Checks if this object contains an override for the specified Permission
      *
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
@@ -66,7 +60,7 @@ public:
     [[nodiscard]] virtual bool isPermissionSet(const Permission &perm) const = 0;
 
     /**
-     * Gets the value of the specified permission, if set.
+     * @brief Gets the value of the specified permission, if set.
      * If a permission override is not set on this object, the default value of the permission will be returned.
      *
      * @param name Name of the permission
@@ -75,7 +69,7 @@ public:
     [[nodiscard]] virtual bool hasPermission(std::string name) const = 0;
 
     /**
-     * Gets the value of the specified permission, if set.
+     * @brief Gets the value of the specified permission, if set.
      * If a permission override is not set on this object, the default value of the permission will be returned.
      *
      * @param perm Permission to get
@@ -84,7 +78,7 @@ public:
     [[nodiscard]] virtual bool hasPermission(const Permission &perm) const = 0;
 
     /**
-     * Adds a new PermissionAttachment with a single permission by name and value
+     * @brief Adds a new PermissionAttachment with a single permission by name and value
      *
      * @param plugin Plugin responsible for this attachment, may not be null or disabled
      * @param name Name of the permission to attach
@@ -94,7 +88,7 @@ public:
     virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
     /**
-     * Adds a new empty PermissionAttachment to this object
+     * @brief Adds a new empty PermissionAttachment to this object
      *
      * @param plugin Plugin responsible for this attachment, may not be null or disabled
      * @return The PermissionAttachment that was just created
@@ -102,7 +96,7 @@ public:
     virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
 
     /**
-     * Removes the given PermissionAttachment from this object
+     * @brief Removes the given PermissionAttachment from this object
      *
      * @param attachment Attachment to remove
      * @return true if the specified attachment was removed successfully, false when it isn't part of this object
@@ -110,13 +104,13 @@ public:
     virtual Result<void> removeAttachment(PermissionAttachment &attachment) = 0;
 
     /**
-     * Recalculates the permissions for this object, if the attachments have changed values.
+     * @brief Recalculates the permissions for this object, if the attachments have changed values.
      * This should very rarely need to be called from a plugin.
      */
     virtual void recalculatePermissions() = 0;
 
     /**
-     * Gets a set containing all the permissions currently in effect by this object
+     * @brief Gets a set containing all the permissions currently in effect by this object
      *
      * @return Set of currently effective permissions
      */

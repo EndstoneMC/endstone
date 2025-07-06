@@ -86,31 +86,21 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Returns an appropriate item meta for the specified item type.");
 
     item_stack
-        .def(py::init([](std::variant<const ItemType *, std::string> type, int amount) {
-                 auto result =
-                     std::visit(overloaded{
-                                    [amount](const ItemType *arg) { return ItemStack::create(*arg, amount); },
-                                    [amount](const std::string &arg) { return ItemStack::create(arg, amount); },
-                                },
-                                type);
+        .def(py::init([](const std::string &type, const int amount, const int data) {
+                 auto result = ItemStack::create(type, amount, data);
                  if (!result) {
                      throw std::runtime_error(result.error());
                  }
                  return result.value();
              }),
-             py::arg("type"), py::arg("amount") = 1)
+             py::arg("type"), py::arg("amount") = 1, py::arg("data") = 0)
         .def_property(
-            "type", &ItemStack::getType,
-            [](ItemStack &self, std::variant<const ItemType *, std::string> type) {
-                std::visit(overloaded{
-                               [&self](const ItemType *arg) { self.setType(*arg); },
-                               [&self](const std::string &arg) { self.setType(arg); },
-                           },
-                           type);
-            },
+            "type", &ItemStack::getType, [](ItemStack &self, const std::string &type) { self.setType(type); },
             py::return_value_policy::reference, "Gets or sets the type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
                       "Gets or sets the amount of items in this stack.")
+        .def_property("data", &ItemStack::getData, &ItemStack::setData,
+                      "Gets or sets the data for this stack of items.")
         .def_property_readonly("max_stack_size", &ItemStack::getMaxStackSize,
                                "Get the maximum stack size for this item.")
         .def("is_similar", &ItemStack::isSimilar, py::arg("other"),

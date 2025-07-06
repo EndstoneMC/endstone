@@ -25,8 +25,7 @@
 #include "bedrock/world/level/block/block_serialization_id.h"
 #include "bedrock/world/level/block/components/block_component_direct_data.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
-#include "bedrock/world/level/block/states/block_state.h"
-#include "bedrock/world/level/material/material.h"
+#include "bedrock/world/level/block/states/block_state_registry.h"
 
 enum class BlockOcclusionType : int {
     Unknown = 0,
@@ -53,19 +52,13 @@ class Block {
 public:
     virtual ~Block() = default;
 
-    [[nodiscard]] HashType64 getHashedSerializedId() const;
-    [[nodiscard]] std::uint32_t getSerializationIdHashForNetwork() const;
-    [[nodiscard]] bool operator!=(const HashType64 &other) const;
-    [[nodiscard]] bool operator==(const HashType64 &other) const;
-    [[nodiscard]] bool hasProperty(BlockProperty) const;
     [[nodiscard]] Brightness getLightEmission() const;
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] Brightness getLight() const;
-    [[nodiscard]] FlameOdds getFlameOdds() const;
-    [[nodiscard]] BurnOdds getBurnOdds() const;
+    [[nodiscard]] int getFlameOdds() const;
+    [[nodiscard]] int getBurnOdds() const;
     [[nodiscard]] float getExplosionResistance() const;
-    [[nodiscard]] bool hasState(const HashedString &name) const;
     bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                            optional_ref<GetCollisionShapeInterface const> entity) const;
     bool addCollisionShapes(IConstBlockSource const &region, BlockPos const &pos, AABB const *intersect_test_box,
@@ -77,9 +70,9 @@ public:
     const AABB &getUIShape(AABB &buffer) const;
     bool getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
-    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getThickness() const;
-    bool getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const;
+    void destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const;
+    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
     [[nodiscard]] const HashedString &getName() const;
@@ -94,7 +87,28 @@ public:
     template <typename T>
     T getState(const HashedString &name) const
     {
-        return getLegacyBlock().getState<T>(name, data_);
+        const auto *state = BlockStateRegistry::get().getState(name);
+        if (!state) {
+            T default_value{};
+            return default_value;
+        }
+        return getLegacyBlock().getState<T>(*state, data_);
+    }
+
+    template <typename T>
+    const Block *trySetState(const HashedString &name, T val) const
+    {
+        const auto *state = BlockStateRegistry::get().getState(name);
+        if (!state) {
+            return nullptr;
+        }
+        return getLegacyBlock().trySetState<T>(*state, val, data_);
+    }
+
+    template <typename T>
+    gsl::strict_not_null<const Block *> setState(const HashedString &name, T val) const
+    {
+        return gsl::make_strict_not_null(trySetState(name, val));
     }
     // Endstone end
 

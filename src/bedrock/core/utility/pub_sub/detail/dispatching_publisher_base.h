@@ -19,6 +19,12 @@
 namespace Bedrock::PubSub::Detail {
 
 template <typename ThreadingModel, typename SubscriptionBody>
-class DispatchingPublisherBase : public ThreadingPublisherBase<ThreadingModel> {};
+class DispatchingPublisherBase : public ThreadingPublisherBase<ThreadingModel> {
+    using ReturnType = typename SubscriptionBody::ReturnType;
+
+protected:
+    DispatchingPublisherBase() = default;
+    DispatchingPublisherBase(DispatchingPublisherBase &&) noexcept = default;
+};
 
 }  // namespace Bedrock::PubSub::Detail

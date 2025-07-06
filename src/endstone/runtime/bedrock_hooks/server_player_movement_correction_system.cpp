@@ -14,9 +14,8 @@
 
 #include "bedrock/entity/systems/server_player_movement_correction_system.h"
 
-#include "bedrock/entity/systems/actor_set_pos_system.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
-#include "bedrock/world/level/level.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"
@@ -53,8 +52,11 @@ void ServerPlayerMovementCorrectionSystem::_afterMovementSimulation(
             delta.y > 0.0F) {
             endstone::PlayerJumpEvent e{player, from, to};
             server.getPluginManager().callEvent(e);
+
+            // If the event is cancelled we move the player back to their location before jump.
             if (e.isCancelled()) {
-                player.teleport(e.getFrom());  // TODO(fixme): this would call PlayerTeleportEvent
+                p->addOrRemoveComponent<endstone::core::InternalTeleportFlagComponent>(true);
+                player.teleport(e.getFrom());
                 return;
             }
         }
@@ -63,13 +65,18 @@ void ServerPlayerMovementCorrectionSystem::_afterMovementSimulation(
         if (delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) {
             endstone::PlayerMoveEvent e{player, from, to};
             server.getPluginManager().callEvent(e);
+
+            // If the event is cancelled we move the player back to their old location.
             if (e.isCancelled()) {
-                player.teleport(e.getFrom());  // TODO(fixme): this would call PlayerTeleportEvent
+                p->addOrRemoveComponent<endstone::core::InternalTeleportFlagComponent>(true);
+                player.teleport(e.getFrom());
                 return;
             }
 
+            // If a Plugin has changed the To destination then we teleport the Player there
             if (to != e.getTo()) {
-                player.teleport(e.getTo());  // TODO(fixme): this would call PlayerTeleportEvent
+                p->addOrRemoveComponent<endstone::core::InternalTeleportFlagComponent>(true);
+                player.teleport(e.getTo());
                 return;
             }
         }

@@ -25,25 +25,25 @@ struct BlockComponentDirectData {
         RENDERING = 0x2,
     };
 
-    class BlockTransformationComponent const *block_transformation_component;          //
-    class BlockCollisionBoxComponent const *block_collision_box_component;             //
-    class BlockSelectionBoxComponent const *block_selection_box_component;             //
-    class BlockRedstoneComponent const *block_redstone_component;                      //
-    class BlockGeometryComponent const *block_geometry_component;                      //
-    class BlockBakedMaterialDataComponent const *block_baked_material_data_component;  //
-    class BlockItemVisualComponent const *block_item_visual_component;                 //
-    bool is_full_block_geometry;                                                       //
-    bool use_new_tessellation;                                                         //
-    bool needs_legacy_top_rotation;                                                    //
-    bool is_opaque_full_block;                                                         //
-    Brightness light_emission;                                                         //
-    Brightness light;                                                                  //
-    float explosion_resistance;                                                        //
-    BurnOdds burn_odds;                                                                //
-    FlameOdds flame_odds;                                                              //
-    float friction;                                                                    //
-    float destroy_speed;                                                               //
-    DetectionRule water_detection_rule;                                                //
-    LayerBitMask finalized;                                                            //
-    class BlockDestructibleByMiningComponent const *destructible_by_mining_component;  //
+    class BlockTransformationComponent const *block_transformation_component;
+    class BlockCollisionBoxComponent const *block_collision_box_component;
+    class BlockSelectionBoxComponent const *block_selection_box_component;
+    class BlockRedstoneComponent const *block_redstone_component;
+    class BlockGeometryComponent const *block_geometry_component;
+    class BlockBakedMaterialDataComponent const *block_baked_material_data_component;
+    class BlockItemVisualComponent const *block_item_visual_component;
+    bool is_full_block_geometry;
+    bool use_new_tessellation;
+    bool needs_legacy_top_rotation;
+    bool is_opaque_full_block;
+    Brightness light_emission;
+    Brightness light;
+    float explosion_resistance;
+    int burn_odds;
+    int flame_odds;
+    float friction;
+    float destroy_speed;
+    DetectionRule water_detection_rule;
+    LayerBitMask finalized;
+    class BlockDestructibleByMiningComponent const *destructible_by_mining_component;
 };

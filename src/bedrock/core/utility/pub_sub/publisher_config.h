@@ -19,7 +19,10 @@
 #include "bedrock/core/utility/pub_sub/subscription_context.h"
 
 namespace Bedrock::PubSub {
-
+enum class ConnectPosition : int {
+    AtBack = 0,
+    AtFront = 1,
+};
 using ContextType = std::unique_ptr<SubscriptionContext>;
 using GroupType = int;
 

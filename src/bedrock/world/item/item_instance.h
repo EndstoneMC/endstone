@@ -21,3 +21,8 @@ public:
     static const ItemInstance EMPTY_ITEM;
     using ItemStackBase::ItemStackBase;
 };
+
+struct SortItemInstanceIdAux {
+    bool operator()(const ItemInstance &lhs, const ItemInstance &rhs) const;
+};
+static_assert(sizeof(SortItemInstanceIdAux) == 1);

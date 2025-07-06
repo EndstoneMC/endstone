@@ -133,6 +133,21 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                           "Called when a block is broken by a player.")
         .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the Player that is breaking the block involved in this event.");
+    py::class_<BlockCookEvent, BlockEvent, ICancellable>(m, "BlockCookEvent",
+                                                         "Called when an ItemStack is successfully cooked in a block.")
+        .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,
+                               "Gets the smelted ItemStack for this event")
+        .def_property(
+            "result", &BlockCookEvent::getResult,
+            [](BlockCookEvent &self, const ItemStack &result) { self.setResult(result.clone()); },
+            py::return_value_policy::reference, "Gets or sets the resultant ItemStack for this event");
+    py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
+                                                           "Called when a piston block is triggered")
+        .def_property_readonly("direction", &BlockPistonEvent::getDirection,
+                               "Return the direction in which the piston will operate.");
+    py::class_<BlockPistonExtendEvent, BlockPistonEvent>(m, "BlockPistonExtendEvent", "Called when a piston extends.");
+    py::class_<BlockPistonRetractEvent, BlockPistonEvent>(m, "BlockPistonRetractEvent",
+                                                          "Called when a piston retracts.");
     py::class_<BlockPlaceEvent, BlockEvent, ICancellable>(m, "BlockPlaceEvent",
                                                           "Called when a block is placed by a player.")
         .def_property_readonly("player", &BlockPlaceEvent::getPlayer, py::return_value_policy::reference,
@@ -144,6 +159,24 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                "Gets the block which was replaced.")
         .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,
                                "Gets the block that this block was placed against");
+    py::class_<LeavesDecayEvent, BlockEvent, ICancellable>(
+        m, "LeavesDecayEvent",
+        "Called when leaves are decaying naturally.\nIf a Leaves Decay event is cancelled, the leaves will not decay.");
+
+    // Level events
+    py::class_<LevelEvent, Event>(m, "LevelEvent", "Represents events within a level")
+        .def_property_readonly("level", &LevelEvent::getLevel, py::return_value_policy::reference,
+                               "Gets the level primarily involved with this event");
+    py::class_<DimensionEvent, LevelEvent>(m, "DimensionEvent", "Represents events within a dimension")
+        .def_property_readonly("dimension", &DimensionEvent::getDimension, py::return_value_policy::reference,
+                               "Gets the dimension primarily involved with this event");
+
+    // Chunk events
+    py::class_<ChunkEvent, DimensionEvent>(m, "ChunkEvent", "Represents a Chunk related event")
+        .def_property_readonly("chunk", &ChunkEvent::getChunk, py::return_value_policy::reference,
+                               "Gets the chunk being loaded/unloaded");
+    py::class_<ChunkLoadEvent, ChunkEvent>(m, "ChunkLoadEvent", "Called when a chunk is loaded");
+    py::class_<ChunkUnloadEvent, ChunkEvent>(m, "ChunkUnloadEvent", "Called when a chunk is unloaded");
 
     // Player events
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
@@ -191,8 +224,15 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "PlayerGameModeChangeEvent", "Called when the GameMode of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "Gets the GameMode the player is switched to.");
-    py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
-        m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.")
+    auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
+        m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.");
+    py::enum_<PlayerInteractEvent::Action>(player_interact_event, "Action")
+        .value("LEFT_CLICK_BLOCK", PlayerInteractEvent::Action::LeftClickBlock)
+        .value("RIGHT_CLICK_BLOCK", PlayerInteractEvent::Action::RightClickBlock)
+        .value("LEFT_CLICK_AIR", PlayerInteractEvent::Action::LeftClickAir)
+        .value("RIGHT_CLICK_AIR", PlayerInteractEvent::Action::RightClickAir);
+    player_interact_event
+        .def_property_readonly("action", &PlayerInteractEvent::getAction, "Returns the action type of interaction")
         .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "Check if this event involved an item")
         .def_property_readonly("item", &PlayerInteractEvent::getItem, py::return_value_policy::reference,
                                "Returns the item in hand represented by this event")
@@ -235,6 +275,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
     py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
+    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
+        .def_property_readonly("item", &PlayerPickupItemEvent::getItem, py::return_value_policy::reference,
+                               "Gets the Item picked up by the entity.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a server-related event");

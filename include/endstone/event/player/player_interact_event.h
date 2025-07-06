@@ -14,9 +14,9 @@
 
 #pragma once
 
+#include "endstone/block/block_face.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
-#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
 
@@ -25,18 +25,42 @@ namespace endstone {
  */
 class PlayerInteractEvent : public Cancellable<PlayerEvent> {
 public:
-    PlayerInteractEvent(Player &player, ItemStack *item, Block *block_clicked, BlockFace block_face,
-                        const Vector<float> &clicked_position)
-        : Cancellable(player), item_(item), block_clicked_(block_clicked), block_face_(block_face),
+    enum class Action {
+        /**
+         * Left-clicking a block
+         */
+        LeftClickBlock,
+        /**
+         * Right-clicking a block
+         */
+        RightClickBlock,
+        /**
+         * Left-clicking the air
+         */
+        LeftClickAir,
+        /**
+         * Right-clicking the air
+         */
+        RightClickAir,
+    };
+
+    ENDSTONE_EVENT(PlayerInteractEvent);
+
+    PlayerInteractEvent(Player &player, Action action, ItemStack *item, Block *block_clicked, BlockFace block_face,
+                        const std::optional<Vector<float>> &clicked_position)
+        : Cancellable(player), action_(action), item_(item), block_clicked_(block_clicked), block_face_(block_face),
           clicked_position_(clicked_position)
     {
     }
-    ~PlayerInteractEvent() override = default;
 
-    inline static const std::string NAME = "PlayerInteractEvent";
-    [[nodiscard]] std::string getEventName() const override
+    /**
+     * @brief Returns the action type
+     *
+     * @return Action returns the type of interaction
+     */
+    [[nodiscard]] Action getAction() const
     {
-        return NAME;
+        return action_;
     }
 
     /**
@@ -91,21 +115,23 @@ public:
 
     /**
      * @brief Gets the exact position on the block the player interacted with.
-     * <p>
-     * All vector components are between 0.0 and 1.0 inclusive.
+     *
+     * @note This will be std::nullopt outside of Action.RightClickBlock
+     * @note All vector components are between 0.0 and 1.0 inclusive.
      *
      * @return the clicked position.
      */
-    [[nodiscard]] Vector<float> getClickedPosition() const
+    [[nodiscard]] std::optional<Vector<float>> getClickedPosition() const
     {
         return clicked_position_;
     }
 
 private:
     ItemStack *item_;
+    Action action_;
     Block *block_clicked_;
     BlockFace block_face_;
-    Vector<float> clicked_position_;
+    std::optional<Vector<float>> clicked_position_;
 };
 
 }  // namespace endstone

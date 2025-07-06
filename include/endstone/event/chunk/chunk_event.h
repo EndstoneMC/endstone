@@ -14,33 +14,30 @@
 
 #pragma once
 
-#include "endstone/command/command_sender.h"
+#include "endstone/event/level/dimension_event.h"
+#include "endstone/level/chunk.h"
 
 namespace endstone {
 
 /**
- * @brief Represents a proxied command sender
+ * @brief Represents a Chunk related event
  */
-class ProxiedCommandSender : public CommandSender {
+class ChunkEvent : public DimensionEvent {
 public:
-    [[nodiscard]] ProxiedCommandSender *asProxiedCommandSender() const override
+    explicit ChunkEvent(Chunk &chunk) : DimensionEvent(chunk.getDimension()), chunk_(chunk){};
+
+    /**
+     * Gets the chunk being loaded/unloaded
+     *
+     * @return Chunk that triggered this event
+     */
+    [[nodiscard]] Chunk &getChunk() const
     {
-        return const_cast<ProxiedCommandSender *>(this);
+        return chunk_;
     }
 
-    /**
-     * @brief Returns the CommandSender which triggered this proxied command.
-     *
-     * @return the caller which triggered the command
-     */
-    [[nodiscard]] virtual CommandSender &getCaller() const = 0;
-
-    /**
-     * @brief Returns the CommandSender which is being used to call the command.
-     *
-     * @return the caller which the command is being run as
-     */
-    [[nodiscard]] virtual CommandSender &getCallee() const = 0;
+private:
+    Chunk &chunk_;
 };
 
 }  // namespace endstone

@@ -18,4 +18,4 @@
 
 namespace BedrockBlockNames {
 static const HashedString Air = "minecraft:air";
-}
+}  // namespace BedrockBlockNames

@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'ProxiedCommandSender', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -540,6 +540,23 @@ class BlockBreakEvent(BlockEvent, Cancellable):
         """
         Gets the Player that is breaking the block involved in this event.
         """
+class BlockCookEvent(BlockEvent, Cancellable):
+    """
+    Called when an ItemStack is successfully cooked in a block.
+    """
+    @property
+    def result(self) -> ItemStack:
+        """
+        Gets or sets the resultant ItemStack for this event
+        """
+    @result.setter
+    def result(self, arg1: ItemStack) -> None:
+        ...
+    @property
+    def source(self) -> ItemStack:
+        """
+        Gets the smelted ItemStack for this event
+        """
 class BlockData:
     """
     Represents the data related to a live block
@@ -604,6 +621,23 @@ class BlockFace:
     @property
     def value(self) -> int:
         ...
+class BlockPistonEvent(BlockEvent, Cancellable):
+    """
+    Called when a piston block is triggered
+    """
+    @property
+    def direction(self) -> BlockFace:
+        """
+        Return the direction in which the piston will operate.
+        """
+class BlockPistonExtendEvent(BlockPistonEvent):
+    """
+    Called when a piston extends.
+    """
+class BlockPistonRetractEvent(BlockPistonEvent):
+    """
+    Called when a piston retracts.
+    """
 class BlockPlaceEvent(BlockEvent, Cancellable):
     """
     Called when a block is placed by a player.
@@ -802,6 +836,10 @@ class Chunk:
     """
     Represents a chunk of blocks.
     """
+    def __repr__(self) -> str:
+        ...
+    def __str__(self) -> str:
+        ...
     @property
     def dimension(self) -> Dimension:
         """
@@ -822,6 +860,23 @@ class Chunk:
         """
         Gets the Z-coordinate of this chunk
         """
+class ChunkEvent(DimensionEvent):
+    """
+    Represents a Chunk related event
+    """
+    @property
+    def chunk(self) -> Chunk:
+        """
+        Gets the chunk being loaded/unloaded
+        """
+class ChunkLoadEvent(ChunkEvent):
+    """
+    Called when a chunk is loaded
+    """
+class ChunkUnloadEvent(ChunkEvent):
+    """
+    Called when a chunk is unloaded
+    """
 class ColorFormat:
     """
     All supported color and format codes.
@@ -1121,6 +1176,15 @@ class Dimension:
     def type(self) -> Dimension.Type:
         """
         Gets the type of this dimension
+        """
+class DimensionEvent(LevelEvent):
+    """
+    Represents events within a dimension
+    """
+    @property
+    def dimension(self) -> Dimension:
+        """
+        Gets the dimension primarily involved with this event
         """
 class DisplaySlot:
     """
@@ -1710,7 +1774,7 @@ class ItemStack:
     __hash__: typing.ClassVar[None] = None
     def __eq__(self, arg0: ItemStack) -> bool:
         ...
-    def __init__(self, type: ItemType | str, amount: int = 1) -> None:
+    def __init__(self, type: str, amount: int = 1, data: int = 0) -> None:
         ...
     def __ne__(self, arg0: ItemStack) -> bool:
         ...
@@ -1733,6 +1797,14 @@ class ItemStack:
     def amount(self, arg1: int) -> None:
         ...
     @property
+    def data(self) -> int:
+        """
+        Gets or sets the data for this stack of items.
+        """
+    @data.setter
+    def data(self, arg1: int) -> None:
+        ...
+    @property
     def item_meta(self) -> ItemMeta:
         """
         Gets a copy of the ItemMeta of this ItemStack.
@@ -1748,7 +1820,7 @@ class ItemStack:
         Gets or sets the type of this item.
         """
     @type.setter
-    def type(self, arg1: ItemType | str) -> None:
+    def type(self, arg1: str) -> None:
         ...
 class ItemType:
     """
@@ -1832,6 +1904,11 @@ class Language:
         """
         Gets the current locale.
         """
+class LeavesDecayEvent(BlockEvent, Cancellable):
+    """
+    Called when leaves are decaying naturally.
+    If a Leaves Decay event is cancelled, the leaves will not decay.
+    """
 class Level:
     def get_dimension(self, name: str) -> Dimension:
         """
@@ -1860,6 +1937,15 @@ class Level:
     @time.setter
     def time(self, arg1: int) -> None:
         ...
+class LevelEvent(Event):
+    """
+    Represents events within a level
+    """
+    @property
+    def level(self) -> Level:
+        """
+        Gets the level primarily involved with this event
+        """
 class Location(Position):
     """
     Represents a 3-dimensional location in a dimension within a level.
@@ -2322,8 +2408,11 @@ class Objective:
     @property
     def display_slot(self) -> DisplaySlot | None:
         """
-        Gets the display slot this objective is displayed at
+        Gets or sets the display slot this objective is displayed at
         """
+    @display_slot.setter
+    def display_slot(self, arg1: DisplaySlot | None) -> None:
+        ...
     @property
     def is_displayed(self) -> bool:
         """
@@ -2342,11 +2431,8 @@ class Objective:
     @property
     def render_type(self) -> RenderType:
         """
-        Gets and sets the manner in which this objective will be rendered.
+        Gets the manner in which this objective will be rendered.
         """
-    @render_type.setter
-    def render_type(self, arg1: RenderType) -> None:
-        ...
     @property
     def scoreboard(self) -> Scoreboard:
         """
@@ -2355,8 +2441,11 @@ class Objective:
     @property
     def sort_order(self) -> ObjectiveSortOrder | None:
         """
-        Gets and sets the sort order for this objective
+        Gets or sets the sort order for this objective
         """
+    @sort_order.setter
+    def sort_order(self, arg1: ObjectiveSortOrder) -> None:
+        ...
 class ObjectiveSortOrder:
     """
     Represents the sort order of objectives on a DisplaySlot.
@@ -2518,13 +2607,10 @@ class Permissible:
         Gets effective permissions.
         """
     @property
-    def is_op(self) -> bool:
+    def permission_level(self) -> PermissionLevel:
         """
-        The operator status of this object
+        Gets the permission level of this object
         """
-    @is_op.setter
-    def is_op(self, arg1: bool) -> None:
-        ...
 class Permission:
     """
     Represents a unique permission that may be attached to a Permissible
@@ -2659,13 +2745,46 @@ class PermissionDefault:
     """
     Represents the possible default values for permissions
     """
+    CONSOLE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.CONSOLE: 4>
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
     NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     TRUE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.TRUE: 0>
-    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>}
+    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>, 'CONSOLE': <PermissionDefault.CONSOLE: 4>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class PermissionLevel:
+    CONSOLE: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.CONSOLE: 2>
+    DEFAULT: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.DEFAULT: 0>
+    OP: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
+    OPERATOR: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
+    __members__: typing.ClassVar[dict[str, PermissionLevel]]  # value = {'DEFAULT': <PermissionLevel.DEFAULT: 0>, 'OP': <PermissionLevel.OP: 1>, 'OPERATOR': <PermissionLevel.OP: 1>, 'CONSOLE': <PermissionLevel.CONSOLE: 2>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -2846,6 +2965,14 @@ class Player(Mob, OfflinePlayer):
         """
     @is_flying.setter
     def is_flying(self, arg1: bool) -> None:
+        ...
+    @property
+    def is_op(self) -> bool:
+        """
+        The operator status of this playerall
+        """
+    @is_op.setter
+    def is_op(self, arg1: bool) -> None:
         ...
     @property
     def is_sneaking(self) -> bool:
@@ -3045,6 +3172,43 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks a block.
     """
+    class Action:
+        LEFT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_AIR: 2>
+        LEFT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_BLOCK: 0>
+        RIGHT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_AIR: 3>
+        RIGHT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_BLOCK: 1>
+        __members__: typing.ClassVar[dict[str, PlayerInteractEvent.Action]]  # value = {'LEFT_CLICK_BLOCK': <Action.LEFT_CLICK_BLOCK: 0>, 'RIGHT_CLICK_BLOCK': <Action.RIGHT_CLICK_BLOCK: 1>, 'LEFT_CLICK_AIR': <Action.LEFT_CLICK_AIR: 2>, 'RIGHT_CLICK_AIR': <Action.RIGHT_CLICK_AIR: 3>}
+        def __eq__(self, other: typing.Any) -> bool:
+            ...
+        def __getstate__(self) -> int:
+            ...
+        def __hash__(self) -> int:
+            ...
+        def __index__(self) -> int:
+            ...
+        def __init__(self, value: int) -> None:
+            ...
+        def __int__(self) -> int:
+            ...
+        def __ne__(self, other: typing.Any) -> bool:
+            ...
+        def __repr__(self) -> str:
+            ...
+        def __setstate__(self, state: int) -> None:
+            ...
+        def __str__(self) -> str:
+            ...
+        @property
+        def name(self) -> str:
+            ...
+        @property
+        def value(self) -> int:
+            ...
+    @property
+    def action(self) -> PlayerInteractEvent.Action:
+        """
+        Returns the action type of interaction
+        """
     @property
     def block(self) -> Block:
         """
@@ -3056,7 +3220,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         Returns the face of the block that was clicked
         """
     @property
-    def clicked_position(self) -> Vector:
+    def clicked_position(self) -> Vector | None:
         """
         Gets the exact position on the block the player interacted with.
         """
@@ -3209,6 +3373,15 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None:
         ...
+class PlayerPickupItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks an item up from the ground.
+    """
+    @property
+    def item(self) -> ItemStack:
+        """
+        Gets the Item picked up by the entity.
+        """
 class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
@@ -3498,13 +3671,13 @@ class PluginManager:
         """
         Enable all the loaded plugins
         """
-    def get_default_perm_subscriptions(self, op: bool) -> set[Permissible]:
+    def get_default_perm_subscriptions(self, level: PermissionLevel) -> set[Permissible]:
         """
-        Gets a set containing all subscribed Permissibles to the given default list, by op status.
+        Gets a set containing all subscribed Permissibles to the given default list, by permission level.
         """
-    def get_default_permissions(self, op: bool) -> set[Permission]:
+    def get_default_permissions(self, level: PermissionLevel) -> list[Permission]:
         """
-        Gets the default permissions for the given op status.
+        Gets the default permissions for the given permission level.
         """
     def get_permission(self, name: str) -> Permission:
         """
@@ -3560,17 +3733,17 @@ class PluginManager:
         """
         Removes a Permission registration from this plugin manager by name.
         """
-    def subscribe_to_default_perms(self, op: bool, permissible: Permissible) -> None:
+    def subscribe_to_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
-        Subscribes to the given Default permissions by operator status.
+        Subscribes to the given Default permissions by permission level.
         """
     def subscribe_to_permission(self, permission: str, permissible: Permissible) -> None:
         """
         Subscribes the given Permissible for information about the requested Permission.
         """
-    def unsubscribe_from_default_perms(self, op: bool, permissible: Permissible) -> None:
+    def unsubscribe_from_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
-        Unsubscribes from the given Default permissions by operator status.
+        Unsubscribes from the given Default permissions by permission level.
         """
     def unsubscribe_from_permission(self, permission: str, permissible: Permissible) -> None:
         """
@@ -3619,26 +3792,13 @@ class Position(Vector):
     @dimension.setter
     def dimension(self, arg1: Dimension) -> None:
         ...
-class ProxiedCommandSender(CommandSender):
-    """
-    Represents a proxied command sender.
-    """
-    @property
-    def callee(self) -> CommandSender:
-        """
-        Returns the CommandSender which is being used to call the command.
-        """
-    @property
-    def caller(self) -> CommandSender:
-        """
-        Returns the CommandSender which triggered this proxied command.
-        """
 class RenderType:
     """
     Controls the way in which an Objective is rendered on the client side.
     """
+    HEARTS: typing.ClassVar[RenderType]  # value = <RenderType.HEARTS: 1>
     INTEGER: typing.ClassVar[RenderType]  # value = <RenderType.INTEGER: 0>
-    __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>}
+    __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>, 'HEARTS': <RenderType.HEARTS: 1>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:

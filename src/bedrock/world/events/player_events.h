@@ -208,21 +208,38 @@ struct PlayerScriptInputEvent {
     ScriptingInputButtonState new_state;
 };
 
+struct PlayerInventoryItemChangeEvent {
+    WeakEntityRef player;
+    ItemStack previous_item;
+    ItemStack new_item;
+    int slot_number;
+    bool is_quantity_changed_only;
+};
+static_assert(sizeof(PlayerInventoryItemChangeEvent) == 336);
+
+struct PlayerHotbarSelectedSlotChangeEvent {
+    WeakEntityRef player;
+    int previous_slot_selected;
+    int new_slot_selected;
+    ItemStack item;
+};
+static_assert(sizeof(PlayerHotbarSelectedSlotChangeEvent) == 184);
+
 template <typename Return>
 struct PlayerGameplayEvent;
 
 template <>
 struct PlayerGameplayEvent<void>
-    : ConstEventVariant<PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent,
-                        PlayerArmorExchangeEvent, PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent,
-                        PlayerEatFoodEvent, PlayerDamageEvent, PlayerDisconnectEvent, PlayerFormCloseEvent,
-                        PlayerFormResponseEvent, PlayerInputModeChangeEvent, PlayerInitialSpawnEvent,
-                        PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
-                        PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
-                        PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
-                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerScriptInputEvent,
-                        PlayerInputPermissionCategoryChangeEvent> {};
-BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
+    : ConstEventVariant<
+          PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent, PlayerArmorExchangeEvent,
+          PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
+          PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerInputModeChangeEvent,
+          PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent,
+          PlayerStopLoadingEvent, PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent,
+          PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
+          PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerScriptInputEvent, PlayerInventoryItemChangeEvent,
+          PlayerHotbarSelectedSlotChangeEvent, PlayerInputPermissionCategoryChangeEvent> {};
+static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>

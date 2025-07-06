@@ -21,6 +21,7 @@
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
+#include "bedrock/network/packet/player_auth_input_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -31,10 +32,12 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
@@ -42,6 +45,7 @@
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -103,6 +107,11 @@ std::string EndstonePlayer::getName() const
     return EndstoneMob::getName();
 }
 
+PermissionLevel EndstonePlayer::getPermissionLevel() const
+{
+    return isOp() ? PermissionLevel::Operator : PermissionLevel::Default;
+}
+
 bool EndstonePlayer::isPermissionSet(std::string name) const
 {
     return perm_->isPermissionSet(name);
@@ -139,15 +148,42 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
     getPlayer().sendNetworkPacket(pk);
 }
 
-void EndstonePlayer::handlePacket(const Packet &packet)
+bool EndstonePlayer::handlePacket(Packet &packet)
 {
     switch (packet.getId()) {
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
-        break;
+        return true;
+    }
+    case MinecraftPacketIds::PlayerAuthInputPacket: {
+        auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
+        auto &actions = pk.player_block_actions.actions_;
+        for (auto it = actions.begin(); it != actions.end();) {
+            const auto &action = *it;
+            if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
+                const auto item = getInventory().getItemInMainHand();
+                const auto block = getDimension().getBlockAt(action.pos.x, action.pos.y, action.pos.z);
+                PlayerInteractEvent e{
+                    *this,
+                    PlayerInteractEvent::Action::LeftClickBlock,
+                    item.get(),
+                    block.get(),
+                    static_cast<BlockFace>(action.facing),
+                    endstone::Vector<float>{static_cast<float>(action.pos.x), static_cast<float>(action.pos.y),
+                                            static_cast<float>(action.pos.z)},
+                };
+                getServer().getPluginManager().callEvent(e);
+                if (e.isCancelled()) {
+                    it = actions.erase(it);
+                    continue;
+                }
+            }
+            ++it;
+        }
+        return true;
     }
     default:
-        break;
+        return true;
     }
 }
 
@@ -586,9 +622,7 @@ void EndstonePlayer::updateCommands() const
     for (auto it = packet.commands.begin(); it != packet.commands.end();) {
         const auto &name = it->name;
         const auto command = command_map.getCommand(name);
-        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this)) &&
-            it->permission_level < CommandPermissionLevel::Host  // TODO(permission): remove after refactor
-        ) {
+        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this))) {
             if (auto symbol = registry.findEnumValue(name); symbol.value() != 0) {
                 auto symbol_index = static_cast<std::uint32_t>(symbol.toIndex());
                 if (it->permission_level >= CommandPermissionLevel::Host) {
@@ -713,8 +747,8 @@ void EndstonePlayer::transfer(std::string host, int port) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
-    pk->address = std::move(host);
-    pk->port = port;
+    pk->destination = std::move(host);
+    pk->destination_port = port;
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -847,52 +881,50 @@ void EndstonePlayer::initFromConnectionRequest(
 {
     std::visit(
         [&](auto &&req) {
-            if (auto locale = req->getData("LanguageCode").asString(); !locale.empty()) {
+            if (auto locale = req->getLanguageCode(); !locale.empty()) {
                 locale_ = locale;
             }
 
             // https://github.com/GeyserMC/Geyser/blob/master/common/src/main/java/org/geysermc/floodgate/util/DeviceOs.java
-            if (auto device_os = req->getData("DeviceOS").asInt(); device_os > 0) {
-                auto platform = magic_enum::enum_cast<BuildPlatform>(device_os).value_or(BuildPlatform::Unknown);
-                switch (platform) {
-                case BuildPlatform::Google:
-                    device_os_ = "Android";
-                    break;
-                case BuildPlatform::OSX:
-                    device_os_ = "macOS";
-                    break;
-                case BuildPlatform::GearVR_Deprecated:
-                    device_os_ = "Gear VR";
-                    break;
-                case BuildPlatform::UWP:
-                    device_os_ = "Windows";
-                    break;
-                case BuildPlatform::Win32:
-                    device_os_ = "Windows x86";
-                    break;
-                case BuildPlatform::tvOS_Deprecated:
-                    device_os_ = "Apple TV";
-                    break;
-                case BuildPlatform::Sony:
-                    device_os_ = "PlayStation";
-                    break;
-                case BuildPlatform::Nx:
-                    device_os_ = "Switch";
-                    break;
-                case BuildPlatform::WindowsPhone_Deprecated:
-                    device_os_ = "Windows Phone";
-                    break;
-                default:
-                    device_os_ = magic_enum::enum_name(platform);
-                    break;
-                }
+            auto platform = req->getDeviceOS();
+            switch (platform) {
+            case BuildPlatform::Google:
+                device_os_ = "Android";
+                break;
+            case BuildPlatform::OSX:
+                device_os_ = "macOS";
+                break;
+            case BuildPlatform::GearVR_Deprecated:
+                device_os_ = "Gear VR";
+                break;
+            case BuildPlatform::UWP:
+                device_os_ = "Windows";
+                break;
+            case BuildPlatform::Win32:
+                device_os_ = "Windows x86";
+                break;
+            case BuildPlatform::tvOS_Deprecated:
+                device_os_ = "Apple TV";
+                break;
+            case BuildPlatform::Sony:
+                device_os_ = "PlayStation";
+                break;
+            case BuildPlatform::Nx:
+                device_os_ = "Switch";
+                break;
+            case BuildPlatform::WindowsPhone_Deprecated:
+                device_os_ = "Windows Phone";
+                break;
+            default:
+                device_os_ = magic_enum::enum_name(platform);
+                break;
             }
 
-            if (auto device_id = req->getData("DeviceId").asString(); !device_id.empty()) {
+            if (auto device_id = req->getDeviceId(); !device_id.empty()) {
                 device_id_ = device_id;
             }
 
-            if (auto game_version = req->getData("GameVersion").asString(); !game_version.empty()) {
+            if (auto game_version = req->getGameVersionString(); !game_version.empty()) {
                 game_version_ = game_version;
             }
             else {
@@ -900,21 +932,19 @@ void EndstonePlayer::initFromConnectionRequest(
             }
 
             {
-                auto skin_id = req->getData("SkinId").asString();
-                auto skin_height = req->getData("SkinImageHeight").asInt();
-                auto skin_width = req->getData("SkinImageWidth").asInt();
-                auto skin_image = Image::fromBuffer(Image::Type::RGBA, skin_width, skin_height,
-                                                    base64_decode(req->getData("SkinData").asString()).value_or(""));
+                auto skin_id = req->getSkinId();
+                auto skin_height = req->getSkinImageHeight();
+                auto skin_width = req->getSkinImageWidth();
+                auto skin_image = Image::fromArray(Image::Type::RGBA, skin_width, skin_height, req->getSkinData());
                 if (!skin_image) {
                     server_.getLogger().error("Player {} has an invalid skin: {}", getName(), skin_image.error());
                     return;
                 }
 
-                auto cape_id = req->getData("CapeId").asString();
-                auto cape_height = req->getData("CapeImageHeight").asInt();
-                auto cape_width = req->getData("CapeImageWidth").asInt();
-                auto cape_image = Image::fromBuffer(Image::Type::RGBA, skin_width, skin_height,
-                                                    base64_decode(req->getData("CapeData").asString()).value_or(""));
+                auto cape_id = req->getCapeId();
+                auto cape_height = req->getCapeImageHeight();
+                auto cape_width = req->getCapeImageWidth();
+                auto cape_image = Image::fromArray(Image::Type::RGBA, skin_width, skin_height, req->getCapeData());
                 if (cape_id.empty() || !cape_image) {
                     skin_ = std::make_unique<Skin>(skin_id, skin_image.value());
                 }

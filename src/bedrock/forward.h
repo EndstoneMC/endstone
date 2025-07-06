@@ -44,13 +44,14 @@ class ActorEvent;
 class ActorFactory;
 class ActorInteraction;
 class ActorSoundIdentifier;
+class ActorSpawnRuleGroup;
 class ActorUnloadedChunkTransferEntry;
-class AddActorBasePacket;
 class AdventureSettings;
 class AllowList;
 class AnimationComponent;
 class AppConfigs;
 class AppPlatform;
+class AsyncJoinTaskManager {};
 class AttributeInstanceDelegate;
 class AutomationBehaviorTreeGroup;
 class BaseLightTextureImageBuilder;
@@ -65,7 +66,6 @@ class BlockEventDispatcher;
 class BlockGraphicsModeChangeContext;
 class BlockItem;
 class BlockReducer;
-class BlockState;
 class BodyControl;
 class BossEventSubscriptionManager;
 class BoundingBox;
@@ -90,6 +90,7 @@ class CraftingContainer;
 class CraftingContext;
 class DataLoadHelper;
 class DeathTickingComponent;
+class Difficulty;
 class DimensionBrightnessRamp;
 class DimensionConversionData;
 class DimensionManager;
@@ -104,7 +105,7 @@ class FeatureRegistry;
 class FeatureTypeFactory;
 class FogDefinition;
 class FrameUpdateContextBase;
-class GameEvent;
+class GameEventDispatcher {};
 class GameMode;
 class GameModuleServer;
 class GetCollisionShapeInterface;
@@ -117,6 +118,7 @@ class IFileAccess;
 class IFoodItemComponent;
 class IGameModuleShared;
 class IInPackagePacks;
+class ILevelChunkEventManagerProxy {};
 class ILevelRandom;
 class ILevelStorageManagerConnector;
 class IMinecraftEventing;
@@ -129,10 +131,13 @@ class ItemComponent;
 class ItemComponentPacket;
 class ItemData;
 class ItemStackNetManagerBase;
+class ItemStackRequestData {};
+class IWorldRegistriesProvider;
 class JigsawStructureRegistry;
 class LevelChunkBuilderData;
 class LevelChunkMetaData;
 class LevelChunkMetaDataDictionary;
+class LevelChunkVolumeData;
 class LevelData;
 class LevelSoundManager;
 class LevelStorageObserver;
@@ -149,7 +154,6 @@ class MolangVariable;
 class NavigationComponent;
 class NetworkChunkPublisher;
 class NetworkSessionOwner;
-class NewInteractionModel;
 class Options;
 class PackManifestFactory;
 class PackMetadata;
@@ -161,6 +165,7 @@ class PermissionsFile;
 class PhotoStorage;
 class PlayerAbilitiesManager;
 class PlayerContainerRefresher;
+class PackedItemUseLegacyInventoryTransaction {};
 class PlayerPermissionsManager;
 class PlayerPermissionsSynchroniser;
 class PlayerDestroyProgressCacheComponent;
@@ -176,7 +181,6 @@ class PrivateKeyManager;
 class PropertyGroupManager;
 class PropertiesSettings;
 class ProjectileFactory;
-class Random;
 class RenderParams;
 class ResolvedItemIconInfo;
 class ResolvedTextObject;
@@ -191,13 +195,15 @@ class Scheduler;
 class ScreenSetupCleanupHelper;
 class ScreenshotOptions;
 class SearchQuery;
+class Seasons {};
 class SerializedSkin;
 class ServerLocator;
 class ServerMetrics;
 class SnapshotFilenameAndLength;
 class SoundPlayerInterface;
 class SpawnConditions;
-class Spawner;
+class SpawnGroupRegistry;
+class SpawnSettings;
 class StorageVersion;
 class StructureManager;
 class SubChunkInterlocker;
@@ -217,21 +223,25 @@ class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class UpdateEntityAfterFallOnInterface;
 class VolumeEntityManagerServer;
+class WorldGenerator;
 class WorldHistoryPackSource;
 class _TickPtr;  // NOLINT
 
 struct SyncedClientOptionsComponent;
 
 // Enums
+enum class AdvanceFrameResult;
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
-enum class BlockActorRendererId : unsigned int;
+enum class BedSleepingResult;
+enum BlockActorRendererId : unsigned int;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
 enum class BurnOdds;
 enum class ChunkCachedDataState : std::int8_t;
 enum class ChunkDebugDisplaySavedState : std::int8_t;
 enum class ChunkTerrainDataState : std::int8_t;
+enum class ClientPlayMode : uint32_t;
 enum class DeviceMemoryTier : int;
 enum class FertilizerType;
 enum class FlameOdds;
@@ -241,12 +251,11 @@ enum class JsonBetaState;
 enum class LavaFlammable;
 enum class LevelChunkFormat : std::int8_t;
 enum class LevelEvent;
-enum class LevelSoundEvent;
+enum class NewInteractionModel : int;
 enum class NoteBlockInstrument;
 enum class ParticleType;
 enum class PlatformType : int;
 enum class PlayerSleepStatus;
-enum class ShapeType : std::int8_t;
 enum class ShowStoreOfferRedirectType : unsigned char;
 enum class StructureFeatureType;
 
@@ -277,21 +286,22 @@ namespace Core {
 class FilePathManager;
 class LevelStorageResult;
 class StorageAreaState;
+class Random {};
 }  // namespace Core
 namespace ClientBlobCache {
 namespace Server {
 class ActiveTransfersManager;
 }
 }  // namespace ClientBlobCache
+namespace SpawnCategory {
+enum Type : int32_t;
+}
 
 namespace Social {
 class GameConnectionInfo;
 class GamePublishSetting;
 class MultiplayerServiceManager;
 }  // namespace Social
-namespace Puv::Legacy {
-enum class LevelSoundEvent : int;
-}
 namespace Scripting {
 class LifetimeRegistryReference;
 template <typename T>
@@ -303,9 +313,15 @@ class ScriptBlockComponentRegistry;
 class ScriptItemComponentRegistry;
 class ScriptPropertyRegistry;
 }  // namespace ScriptModuleMinecraft
-namespace MovementDataExtractionUtility {
-class SnapshotAccessor;
-}
+namespace ResourcePackPathLifetimeHelpers {
+class ResourcePackPathCache {};
+}  // namespace ResourcePackPathLifetimeHelpers
+
+namespace br::spawn {
+class EntityTypeCache;
+struct State;
+class SpawnPlacements;
+}  // namespace br::spawn
 
 // Template Classes
 template <typename A, typename B, typename C>

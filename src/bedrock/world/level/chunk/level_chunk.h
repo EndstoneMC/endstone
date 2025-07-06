@@ -51,27 +51,27 @@ public:
     [[nodiscard]] Level &getLevel() const;
 
 private:
-    Bedrock::Threading::Mutex block_entity_access_lock_;     // +0
-    Level &level_;                                           // +80
-    Dimension &dimension_;                                   // +88
-    BlockPos min_;                                           // +96
-    BlockPos max_;                                           // +108
-    ChunkPos position_;                                      // +120
-    bool lighting_fixup_done_;                               // +128
-    std::atomic<bool> lighting_task_active_;                 // +129
-    bool read_only_;                                         // +130
-    ChunkSource *generator_;                                 // +136
-    std::optional<LevelChunkFormat> loaded_format_;          // +144
-    std::string serialized_entities_buffer_;                 // +152
-    std::string failed_serialized_entities_buffer_;          // +184
-    bool had_serialized_entities_;                           // +216
-    std::vector<void *> unresolved_actor_links_;             // +224 ActorLink::List
-    std::atomic<ChunkState> load_state_;                     // +248
-    ChunkTerrainDataState terrain_data_state_;               // +249
-    ChunkDebugDisplaySavedState debug_display_saved_state_;  // +250
-    ChunkCachedDataState cached_data_state_;                 // +251
-    SpinLock cached_data_state_spin_lock_;                   // +256
-    SpinLock client_request_heightmap_adjust_spin_lock_;     // +288
-    Tick last_tick_;                                         // +320
+    Bedrock::Threading::Mutex block_entity_access_lock_;
+    Level &level_;
+    Dimension &dimension_;
+    BlockPos min_;
+    BlockPos max_;
+    ChunkPos position_;
+    bool lighting_fixup_done_;
+    std::atomic<bool> lighting_task_active_;
+    bool read_only_;
+    ChunkSource *generator_;
+    std::optional<LevelChunkFormat> loaded_format_;
+    std::string serialized_entities_buffer_;
+    std::string failed_serialized_entities_buffer_;
+    bool had_serialized_entities_;
+    std::vector<void *> unresolved_actor_links_;
+    std::atomic<ChunkState> load_state_;
+    ChunkTerrainDataState terrain_data_state_;
+    ChunkDebugDisplaySavedState debug_display_saved_state_;
+    ChunkCachedDataState cached_data_state_;
+    SpinLock cached_data_state_spin_lock_;
+    SpinLock client_request_heightmap_adjust_spin_lock_;
+    Tick last_tick_;
     // ...
 };

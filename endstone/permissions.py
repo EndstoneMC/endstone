@@ -4,6 +4,14 @@ from endstone._internal.endstone_python import (
     PermissionAttachment,
     PermissionAttachmentInfo,
     PermissionDefault,
+    PermissionLevel,
 )
 
-__all__ = ["Permission", "Permissible", "PermissionAttachment", "PermissionAttachmentInfo", "PermissionDefault"]
+__all__ = [
+    "Permission",
+    "Permissible",
+    "PermissionAttachment",
+    "PermissionAttachmentInfo",
+    "PermissionDefault",
+    "PermissionLevel",
+]

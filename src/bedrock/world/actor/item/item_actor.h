@@ -26,7 +26,7 @@ public:
     ~ItemActor() override;
     virtual void postNormalTick();
     void playerTouch(Player &) override;
-    std::unique_ptr<AddActorBasePacket> tryCreateAddActorPacket() override;
+    std::unique_ptr<Packet> tryCreateAddActorPacket() override;
     ActorUniqueID getSourceUniqueID() const override;
     bool isInvulnerableTo(const ActorDamageSource &) const override;
     bool canSynchronizeNewEntity() const override;
@@ -56,7 +56,6 @@ public:
     bool isInItemFrame();
     bool isFromFishing() const;
     void setSourceEntity(const Actor *);
-    void setThrowTime(int throw_time);  // Endstone
     static ItemActor *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
 private:

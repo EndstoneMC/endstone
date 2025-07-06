@@ -14,11 +14,19 @@
 
 #pragma once
 
+#include <vector>
+
 #include "bedrock/core/string/string_hash.h"
 
 namespace VanillaBlockTypeIds {
-static const HashedString Bed = "minecraft:bed";
-static const HashedString EndPortal = "minecraft:end_portal";
-static const HashedString EndPortalFrame = "minecraft:end_portal_frame";
-static const HashedString WitherRose = "minecraft:wither_rose";
+extern const HashedString BeeNest;
+extern const HashedString Beehive;
+extern const HashedString CampFire;
+extern const HashedString SoulCampfire;
+extern const HashedString Tnt;
+extern const HashedString UnderwaterTnt;
 }  // namespace VanillaBlockTypeIds
+
+namespace VanillaBlockTypeGroups {
+extern const std::vector<std::reference_wrapper<const HashedString>> TntIds;
+}  // namespace VanillaBlockTypeGroups

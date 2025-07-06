@@ -19,7 +19,9 @@
 #include "bedrock/forward.h"
 #include "bedrock/shared_types/height.h"
 #include "bedrock/world/actor/actor_types.h"
+#include "bedrock/world/events/gameevents/game_event.h"
 #include "bedrock/world/item/item_stack_base.h"
+#include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_source_listener.h"
@@ -27,10 +29,10 @@
 #include "bedrock/world/level/clip_parameters.h"
 #include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_seed.h"
-#include "bedrock/world/level/material/material.h"
 
 class ILevel;
 class Level;
+class Material;
 
 using ActorSpan = gsl::span<gsl::not_null<Actor *>>;
 using ConstActorSpan = gsl::span<gsl::not_null<const Actor *>>;
@@ -82,8 +84,7 @@ public:
     virtual void addListener(Listener &) = 0;
     virtual void removeListener(Listener &) = 0;
     virtual ActorSpan fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
-    virtual ActorSpan fetchEntities(ActorType entity_type_id, AABB const &bb, Actor const *except,
-                                    std::function<bool(Actor *)> selector) = 0;
+    virtual ActorSpan fetchEntities(ActorType, AABB const &, Actor const *, std::function<bool(Actor *)>) = 0;
     virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
     [[nodiscard]] virtual Height getMinHeight() const = 0;
     [[nodiscard]] virtual Height getMaxHeight() const = 0;
@@ -118,7 +119,6 @@ public:
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual bool removeBlock(BlockPos const &) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
-    virtual void postGameEvent(Actor *, const GameEvent &, const Vec3 &, const Block *) = 0;
 };
 
 class BlockSource : public IBlockSource,
@@ -129,5 +129,5 @@ public:
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
 
-    [[nodiscard]] bool isEmptyBlock(const BlockPos &) const;
+    [[nodiscard]] const Biome &getBiome(const BlockPos &) const;
 };

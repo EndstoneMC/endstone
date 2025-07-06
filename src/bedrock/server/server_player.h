@@ -25,9 +25,10 @@ public:
     using OnPlayerLoadedCallback = std::function<void(ServerPlayer &)>;
 
     ServerPlayer(Level &, PacketSender &, ServerNetworkSystem &, ClientBlobCache::Server::ActiveTransfersManager &,
-                 GameType, bool, const NetworkIdentifier &, SubClientId, OnPlayerLoadedCallback, mce::UUID,
-                 const std::string &, const std::string &, const GameServerToken &, int, bool, EntityContext &,
-                 PlatformType, InputMode, SyncedClientOptionsComponent);
+                 GameType, bool, const NetworkIdentifier &, const SubClientId, ServerPlayer::OnPlayerLoadedCallback,
+                 mce::UUID, const std::string &, const std::string &, PlayerAuthenticationType,
+                 const PlayerAuthenticationInfo &, int, bool, EntityContext &, PlatformType, InputMode,
+                 SyncedClientOptionsComponent);
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void disconnect();
     void setLocalPlayerAsInitialized();
@@ -51,5 +52,5 @@ private:
     bool is_compatible_with_client_side_chunk_gen_;
     int remaining_structure_refresh_ticks_;
     StructureFeatureType current_structure_feature_;
-    int last_known_sync_tick_;
+    // ...
 };

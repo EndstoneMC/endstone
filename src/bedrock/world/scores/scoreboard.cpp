@@ -19,6 +19,10 @@
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/player/player.h"
 
+const std::string Scoreboard::DISPLAY_SLOT_LIST = "list";
+const std::string Scoreboard::DISPLAY_SLOT_SIDEBAR = "sidebar";
+const std::string Scoreboard::DISPLAY_SLOT_BELOWNAME = "belowname";
+
 Scoreboard::~Scoreboard() = default;
 
 Objective *Scoreboard::addObjective(const std::string &name, const std::string &display_name,
@@ -81,6 +85,11 @@ const DisplayObjective *Scoreboard::getDisplayObjective(const std::string &name)
     return &it->second;
 }
 
+std::vector<std::string> Scoreboard::getDisplayObjectiveSlotNames() const
+{
+    return {DISPLAY_SLOT_LIST, DISPLAY_SLOT_SIDEBAR, DISPLAY_SLOT_BELOWNAME};
+}
+
 const ScoreboardId &Scoreboard::getScoreboardId(const Player &player) const
 {
     return identity_dictionary_.getScoreboardId(PlayerScoreboardId{player.getOrCreateUniqueID()});
@@ -131,14 +140,14 @@ ObjectiveCriteria *Scoreboard::getCriteria(const std::string &name) const
     return nullptr;
 }
 
-void Scoreboard::forEachObjective(std::function<void(Objective &)> callback) const
+void Scoreboard::forEachObjective(std::function<void(Objective &)> callback)
 {
     for (const auto &[key, value] : objectives_) {
         callback(*value);
     }
 }
 
-void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback) const
+void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback)
 {
     for (const auto &[key, value] : identity_refs_) {
         callback(const_cast<ScoreboardIdentityRef &>(value));
@@ -168,21 +177,21 @@ bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
     return id_ref->removeFromObjective(*this, objective);
 }
 
-int Scoreboard::modifyPlayerScore(bool &success, const ScoreboardId &id, Objective &objective, int score,
-                                  PlayerScoreSetFunction action)
+int Scoreboard::modifyPlayerScore(ScoreboardOperationResult &result, const ScoreboardId &id, Objective &objective,
+                                  int score, PlayerScoreSetFunction action)
 {
-    int result = 0;
+    int flag = 0;
     auto *id_ref = getScoreboardIdentityRef(id);
     if (!id_ref) {
-        success = false;
-        return result;
+        result = ScoreboardOperationResult::UnknownId;
+        return 0;
     }
 
-    success = id_ref->modifyScoreInObjective(result, objective, score, action);
-    if (success) {
+    result = id_ref->modifyScoreInObjective(flag, objective, score, action);
+    if (result == ScoreboardOperationResult::Success) {
         onScoreChanged(id, objective);
     }
-    return result;
+    return flag;
 }
 
 bool Scoreboard::clearScoreboardIdentity(const ScoreboardId &id)

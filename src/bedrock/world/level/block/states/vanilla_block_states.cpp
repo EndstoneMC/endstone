@@ -12,20 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/block/states/vanilla_block_states.h"
 
-#include "bedrock/world/level/block/actor/block_actor.h"
-
-class BedBlockActor : public BlockActor {
-public:
-    void startSleepingOn()
-    {
-        pet_sleeping_on_bed_ = ActorUniqueID::INVALID_ID;
-    }
-
-private:
-    int dye_color;
-    bool dirty;
-    ActorUniqueID pet_sleeping_on_bed_;
-    const Block &bed_block;
-};
+namespace VanillaStateIds {
+static const HashedString Age = "age";
+static const HashedString ExplodeBit = "explode_bit";
+static const HashedString Extinguished = "extinguished";
+static const HashedString FacingDirection = "facing_direction";
+}  // namespace VanillaStateIds

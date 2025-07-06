@@ -37,6 +37,7 @@
 #include "bedrock/input/input_mode.h"
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/server/commands/command_permission_level.h"
+#include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/util/molang_variable_map.h"
 #include "bedrock/util/variant_parameter_list.h"
 #include "bedrock/world/actor/actor_category.h"
@@ -142,7 +143,7 @@ public:
     virtual bool canDisableShield() = 0;
     ENDSTONE_HOOK virtual void teleportTo(Vec3 const &, bool, int, int, bool) = 0;
     virtual Vec3 lerpMotion(Vec3 const &) = 0;
-    virtual std::unique_ptr<AddActorBasePacket> tryCreateAddActorPacket() = 0;
+    virtual std::unique_ptr<Packet> tryCreateAddActorPacket() = 0;
     virtual void normalTick() = 0;
     virtual void baseTick() = 0;
     virtual void passengerTick() = 0;
@@ -183,7 +184,7 @@ public:
     [[nodiscard]] virtual bool canPowerJump() const = 0;
     [[nodiscard]] virtual bool isEnchanted() const = 0;
     virtual void playAmbientSound() = 0;
-    [[nodiscard]] virtual Puv::Legacy::LevelSoundEvent getAmbientSound() const = 0;
+    [[nodiscard]] virtual LevelSoundEvent getAmbientSound() const = 0;
     [[nodiscard]] virtual bool isInvulnerableTo(ActorDamageSource const &) const = 0;
     [[nodiscard]] virtual ActorDamageCause getBlockDamageCause(Block const &) const = 0;
     virtual bool doFireHurt(int) = 0;

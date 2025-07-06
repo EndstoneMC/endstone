@@ -20,7 +20,7 @@
 
 class TransferPacket : public Packet {
 public:
-    std::string address;
-    int port;
+    std::string destination;
+    int destination_port;
     bool reload_world;
 };

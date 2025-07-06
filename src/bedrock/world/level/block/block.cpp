@@ -14,33 +14,6 @@
 
 #include "bedrock/world/level/block/block.h"
 
-#include "bedrock/world/level/block_source.h"
-
-HashType64 Block::getHashedSerializedId() const
-{
-    return serialization_id_hash_;
-}
-
-uint32_t Block::getSerializationIdHashForNetwork() const
-{
-    return serialization_id_hash_for_network_;
-}
-
-bool Block::operator!=(const HashType64 &other) const
-{
-    return !(*this == other);
-}
-
-bool Block::operator==(const HashType64 &other) const
-{
-    return getHashedSerializedId() == other;
-}
-
-bool Block::hasProperty(BlockProperty property) const
-{
-    return legacy_block_->hasProperty(property);
-}
-
 Brightness Block::getLightEmission() const
 {
     return direct_data_.light_emission;
@@ -60,12 +33,12 @@ Brightness Block::getLight() const
     return direct_data_.light;
 }
 
-FlameOdds Block::getFlameOdds() const
+int Block::getFlameOdds() const
 {
     return direct_data_.flame_odds;
 }
 
-BurnOdds Block::getBurnOdds() const
+int Block::getBurnOdds() const
 {
     return direct_data_.burn_odds;
 }
@@ -73,11 +46,6 @@ BurnOdds Block::getBurnOdds() const
 float Block::getExplosionResistance() const
 {
     return direct_data_.explosion_resistance;
-}
-
-bool Block::hasState(const HashedString &name) const
-{
-    return legacy_block_->hasState(name);
 }
 
 bool Block::getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
@@ -124,19 +92,19 @@ bool Block::requiresCorrectToolForDrops() const
     return legacy_block_->requiresCorrectToolForDrops();
 }
 
-const Material &Block::getMaterial() const
-{
-    return legacy_block_->getMaterial();
-}
-
 float Block::getThickness() const
 {
     return legacy_block_->getThickness();
 }
 
-bool Block::getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const
+void Block::destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const
 {
-    return legacy_block_->getSecondPart(region, pos, out);
+    getLegacyBlock().destroy(region, pos, *this, entity_source);
+}
+
+const Material &Block::getMaterial() const
+{
+    return getLegacyBlock().getMaterial();
 }
 
 float Block::getFriction() const

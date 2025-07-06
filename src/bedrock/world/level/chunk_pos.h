@@ -18,7 +18,7 @@ class ChunkPos {
 public:
     union {
         std::int64_t packed{0};
-        union {
+        struct {
             int x;
             int z;
         };

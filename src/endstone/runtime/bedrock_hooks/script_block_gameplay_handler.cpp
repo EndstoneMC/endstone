@@ -47,11 +47,12 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
     const auto block_face = static_cast<endstone::BlockFace>(event.face);
     auto block_placed =
         std::make_unique<endstone::core::EndstoneBlockState>(dimension, event.pos, event.permutation_to_place);
-    const auto block_replaced = endstone::core::EndstoneBlock::at(block_source, event.pos);
+    auto block_replaced = endstone::core::EndstoneBlock::at(block_source, event.pos);
     const auto opposite = endstone::core::EndstoneBlockFace::getOpposite(block_face);
-    const auto block_against = block_replaced->getRelative(opposite);
+    auto block_against = block_replaced->getRelative(opposite);
 
-    endstone::BlockPlaceEvent e{std::move(block_placed), *block_replaced, *block_against, endstone_player};
+    endstone::BlockPlaceEvent e{std::move(block_placed), std::move(block_replaced), std::move(block_against),
+                                endstone_player};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return false;
@@ -95,15 +96,14 @@ bool handleEvent(BlockTryDestroyByPlayerEvent &event)
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
-        const auto block = endstone::core::EndstoneBlock::at(block_source, event.pos);
-
         if (player->getPlayerGameType() == GameType::Creative) {
             if (!event.item_used.isNull() && !event.item_used.getItem()->canDestroyInCreative()) {
                 return false;
             }
         }
 
-        endstone::BlockBreakEvent e{*block, player->getEndstoneActor<endstone::core::EndstonePlayer>()};
+        endstone::BlockBreakEvent e{endstone::core::EndstoneBlock::at(block_source, event.pos),
+                                    player->getEndstoneActor<endstone::core::EndstonePlayer>()};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;

@@ -18,6 +18,9 @@
 #include <optional>
 #include <string_view>
 
+#include <fmt/format.h>
+#include <fmt/ranges.h>
+
 #include "bedrock/diagnostics/log_area.h"
 #include "bedrock/diagnostics/log_fmt.h"
 #include "bedrock/diagnostics/log_level.h"

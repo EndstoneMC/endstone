@@ -18,6 +18,7 @@
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
+#include "bedrock/network/packet/resource_packs_info_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/server.h"
@@ -37,6 +38,14 @@ void patchPacket(const StartGamePacket &packet)
         auto &pk = const_cast<StartGamePacket &>(packet);
         pk.settings.setRandomSeed(0);
     }
+}
+
+void patchPacket(const ResourcePacksInfoPacket &packet)
+{
+    if (packet.getName() != "ResourcePacksInfoPacket") {
+        return;
+    }
+    // TODO(refactor): inject content key here instead of adding to ServerNetworkHandler
 }
 
 void patchPacket(const ResourcePackStackPacket &packet)
@@ -70,6 +79,9 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     switch (packet.getId()) {
     case MinecraftPacketIds::StartGame:
         patchPacket(static_cast<const StartGamePacket &>(packet));
+        break;
+    case MinecraftPacketIds::ResourcePacksInfo:
+        patchPacket(static_cast<const ResourcePacksInfoPacket &>(packet));
         break;
     case MinecraftPacketIds::ResourcePackStack:
         patchPacket(static_cast<const ResourcePackStackPacket &>(packet));

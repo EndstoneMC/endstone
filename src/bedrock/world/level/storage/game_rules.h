@@ -58,7 +58,7 @@ public:
     using ValidateValueCallback = std::function<bool(const Value &, class ValidationError *)>;
 
     GameRule();
-    bool getBool() const
+    [[nodiscard]] bool getBool() const
     {
         return value_.bool_val;
     }
@@ -91,7 +91,7 @@ class GameRules : public Bedrock::EnableNonOwnerReferences {
     using WorldPolicyMap = std::map<HashedString, GameRule>;
 
 public:
-    bool getBool(GameRuleId id, bool default_value) const
+    [[nodiscard]] bool getBool(GameRuleId id, bool default_value) const
     {
         if (id >= 0 && id < game_rules_.size()) {
             return game_rules_[id].getBool();
@@ -99,7 +99,7 @@ public:
         return default_value;
     }
 
-    enum GameRulesIndex : int {
+    enum GameRulesIndex : int {  // NOLINTBEGIN
         INVALID_GAME_RULE = -1,
         COMMAND_BLOCK_OUTPUT = 0,
         DO_DAYLIGHT_CYCLE = 1,
@@ -147,7 +147,7 @@ public:
         EDU_CLOUD_SAVE = 42,
         EDU_GAME_RULE_COUNT = 43,
         GAME_RULE_COUNT = 43,
-    };
+    };  // NOLINTEND
 
 private:
     GameRuleMap game_rules_;

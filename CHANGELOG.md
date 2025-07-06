@@ -5,6 +5,70 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.9.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.3) - 2025-07-04
+
+<small>[Compare with 0.9.2](https://github.com/EndstoneMC/endstone/compare/v0.9.2...v0.9.3)</small>
+
+### Added
+
+* Added support for BDS version 1.21.93.1.
+
+## [0.9.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.2) - 2025-06-30
+
+<small>[Compare with 0.9.1](https://github.com/EndstoneMC/endstone/compare/v0.9.1...v0.9.2)</small>
+
+### Added
+
+* Added support for BDS version 1.21.92.1.
+* Added `ChunkLoadEvent` and `ChunkUnloadEvent`, which are called during chunk loading and unloading.
+* Added `PlayerPickupItemEvent`, which is called when a player is about to pick up an item from the ground.
+
+### Fixed
+
+* `Chunk::getZ()` now returns the correct value.
+* Fixed a crash when accessing a registry entry multiple times.
+
+### Changed
+
+* `ActorRemoveEvent` is no longer triggered if `ActorSpawnEvent` is cancelled.
+* `PlayerTeleportEvent` is no longer triggered if `PlayerMoveEvent` or `PlayerJumpEvent` is cancelled.
+
+## [0.9.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.1) - 2025-06-19
+
+<small>[Compare with 0.9.0](https://github.com/EndstoneMC/endstone/compare/v0.9.0...v0.9.1)</small>
+
+### Added
+
+- Added support for BDS version 1.21.91.1.
+
+### Fixed
+
+- `ItemType::getTranslationKey` now returns the correct translation key.
+
+## [0.9.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.0) - 2025-06-17
+
+<small>[Compare with 0.8.2](https://github.com/EndstoneMC/endstone/compare/v0.8.2...v0.9.0)</small>
+
+### Added
+
+- Added support for BDS version 1.21.90.28 (preview).
+- Added `PlayerConsumeItemEvent`, triggered when a player consumes an item (e.g., food, milk bucket).
+- Added `PlayerMoveEvent`, triggered when a player moves.
+- Added `PlayerJumpEvent`, triggered when a player jumps.
+- Added the `ItemType` API to retrieve inherent attributes of a known item type, such as max durability.
+- Added `Server::getPort` and `Server::getPortV6` to retrieve server ports.
+- Expanded the `Inventory` API with additional methods.
+
+### Changed
+
+- **BREAKING CHANGE**: Renamed various fields in the `Skin` class:
+    - `Skin::getSkinImage` -> `Skin::getImage`
+    - `Skin::getSkinId` -> `Skin::getId`
+- **BREAKING CHANGE**: `ItemStack::getType` now returns `ItemType` instead of `std::string`. You can still compare an
+  `ItemType` with a string.
+- **BREAKING CHANGE**: `PacketSendEvent` and `PacketReceiveEvent` now fire for both pre-login and post-login packets.
+  Ensure null safety when accessing the player object, as it may be `null` during pre-login.
+
 ## [0.8.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.2) - 2025-06-07
 
 <small>[Compare with 0.8.1](https://github.com/EndstoneMC/endstone/compare/v0.8.1...v0.8.2)</small>

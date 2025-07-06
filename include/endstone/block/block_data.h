@@ -19,6 +19,7 @@
 #include <variant>
 
 #include <fmt/format.h>
+#include <fmt/ranges.h>
 
 #include "endstone/variant.h"
 
@@ -93,7 +94,7 @@ struct formatter<endstone::BlockStates> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "[{}]", join(val.begin(), val.end(), ","));
+        return fmt::format_to(ctx.out(), "[{}]", fmt::join(val.begin(), val.end(), ","));
     }
 };
 

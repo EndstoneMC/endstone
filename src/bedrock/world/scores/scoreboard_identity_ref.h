@@ -17,6 +17,7 @@
 #include "bedrock/world/scores/identity_definition.h"
 #include "bedrock/world/scores/objective.h"
 #include "bedrock/world/scores/scoreboard_id.h"
+#include "bedrock/world/scores/scoreboard_operation_result.h"
 
 class Scoreboard;
 
@@ -32,7 +33,8 @@ public:
     [[nodiscard]] int getNumReferences() const;
     [[nodiscard]] IdentityDefinition::Type getIdentityType() const;
     bool removeFromObjective(Scoreboard &, Objective &);
-    bool modifyScoreInObjective(int &result, Objective &objective, int score, PlayerScoreSetFunction action);
+    ScoreboardOperationResult modifyScoreInObjective(int &result, Objective &objective, int score,
+                                                     PlayerScoreSetFunction action);
 
 private:
     std::uint32_t objective_references_;
