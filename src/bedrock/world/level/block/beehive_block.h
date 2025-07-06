@@ -24,7 +24,7 @@ public:
     BeehiveBlock(const std::string &, int);
     void evictAll(BlockSource &region, const BlockPos &pos, bool angry) const
     {
-        auto *block_actor = region.getBlockEntity(pos);
+        auto *block_actor = const_cast<BlockActor *>(region.getBlockEntity(pos));
         if (!block_actor) {
             return;
         }

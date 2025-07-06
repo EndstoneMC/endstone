@@ -21,5 +21,6 @@
 namespace VanillaStateIds {
 extern const HashedString Age;
 extern const HashedString ExplodeBit;
+extern const HashedString Extinguished;
 extern const HashedString FacingDirection;
 }  // namespace VanillaStateIds

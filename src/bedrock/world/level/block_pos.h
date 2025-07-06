@@ -31,6 +31,11 @@ public:
           z(static_cast<int>(std::floorf(vec.z))){};
     BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)) {}
 
+    operator Vec3() const
+    {
+        return Vec3(x, y, z);
+    }
+
     [[nodiscard]] BlockPos offset(int dx, int dy, int dz) const
     {
         return {x + dx, y + dy, z + dz};

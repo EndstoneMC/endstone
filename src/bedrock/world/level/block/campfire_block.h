@@ -19,5 +19,5 @@
 class CampfireBlock : public ActorBlock {
 public:
     CampfireBlock(const std::string &, int, const bool, bool);
-    static bool tryLightFire(BlockSource &, const BlockPos &, Actor *);
+    static bool tryLightFire(BlockSource &region, const BlockPos &pos, Actor *source_actor);
 };

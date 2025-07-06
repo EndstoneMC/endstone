@@ -17,5 +17,6 @@
 namespace VanillaStateIds {
 static const HashedString Age = "age";
 static const HashedString ExplodeBit = "explode_bit";
+static const HashedString Extinguished = "extinguished";
 static const HashedString FacingDirection = "facing_direction";
 }  // namespace VanillaStateIds

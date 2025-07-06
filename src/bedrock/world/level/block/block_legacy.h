@@ -35,6 +35,7 @@
 #include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/clip_parameters.h"
+#include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
 #include "bedrock/world/phys/hit_result.h"
 
@@ -48,8 +49,6 @@ class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
-class Material;
-class MaterialType;
 enum class BlockActorType;
 
 enum class BlockProperty : std::uint64_t {

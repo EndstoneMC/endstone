@@ -72,6 +72,7 @@ public:
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] float getThickness() const;
     void destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const;
+    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
     [[nodiscard]] const HashedString &getName() const;
