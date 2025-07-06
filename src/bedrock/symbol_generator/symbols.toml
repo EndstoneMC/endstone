@@ -1,4 +1,4 @@
-timestamp = 1751818757
+timestamp = 1751826813
 version = "1.21.93"
 
 [windows]
@@ -10,7 +10,7 @@ version = "1.21.93"
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 70315616
 # BeehiveBlockActor
-"?evictAll@BeehiveBlockActor@@QEAAXAEAVBlockSource@@_N@Z"=52149232
+"?evictAll@BeehiveBlockActor@@QEAAXAEAVBlockSource@@_N@Z" = 52149232
 # BlockDescriptor
 "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 50230336
 # BlockLegacy
@@ -109,7 +109,7 @@ version = "1.21.93"
 "?isRainingAt@Weather@@QEBA_NAEAVBlockSource@@AEBVBlockPos@@@Z" = 50044848
 # Variables
 "getI18n::result" = 95406816
-"BlockState::StateListNode::head" = 94905592
+"BlockState::StateListNode::mHead" = 94905592
 "Enchant::mEnchants" = 95287168
 
 [linux]
@@ -121,6 +121,8 @@ version = "1.21.93"
 "_ZN17ActorSetPosSystem11setPositionER13EntityContextRK4Vec3b" = 75745312
 # BedrockLog
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 177267008
+# BeehiveBlockActor
+"_ZN17BeehiveBlockActor8evictAllER11BlockSourceb" = 151990240
 # BlockDescriptor
 "_ZN15BlockDescriptor13ResolveHelper7resolveEb" = 144828512
 # BlockLegacy
@@ -215,6 +217,8 @@ version = "1.21.93"
 # TeleportCommand
 "_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 122055040
 "_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 122055424
+# Weather
+"_ZNK7Weather11isRainingAtER11BlockSourceRK8BlockPos" = 146351248
 # Variables
-"BlockState::StateListNode::head" = 0
+"BlockState::StateListNode::mHead" = 184386616
 "Enchant::mEnchants" = 184273952

@@ -40,7 +40,7 @@ public:
     virtual bool fromNBT(const CompoundTag &, int &) const = 0;
     static void forEachState(std::function<bool(const BlockState &)> callback)
     {
-        static StateListNode *head = *BEDROCK_VAR(StateListNode **, "BlockState::StateListNode::head");
+        static StateListNode *head = *BEDROCK_VAR(StateListNode **, "BlockState::StateListNode::mHead");
         auto *node = head;
         while (node != nullptr) {
             if (!callback(*node->stat)) {
