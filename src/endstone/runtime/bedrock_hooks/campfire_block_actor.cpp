@@ -23,7 +23,7 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
 
         auto source = ItemStack(cooking_item_[slot]);
         auto result = ItemStack(region.getLevel().getRecipes().getFurnaceRecipeResult(cooking_item_[slot], tag));
-        if (result.getAuxValue() == 0x7FFF) {
+        if (result.getAuxValue() == ItemDescriptor::ANY_AUX_VALUE) {
             result.setAuxValue(0);
         }
 
@@ -43,6 +43,6 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
         region.postGameEvent(nullptr, GameEventRegistry::blockChange, position_, nullptr);
         cooking_item_[slot].setNull(std::nullopt);
         cooking_time_[slot] = 0;
-        changed_ = true;
+        setChanged();
     }
 }

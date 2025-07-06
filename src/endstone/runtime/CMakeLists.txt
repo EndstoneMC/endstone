@@ -18,6 +18,7 @@ add_library(funchook::funchook ALIAS funchook-static)
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
         bedrock_hooks/bedrock_event_logger.cpp
+        bedrock_hooks/campfire_block_actor.cpp
         bedrock_hooks/fire_block.cpp
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item_registry_manager.cpp
@@ -46,7 +47,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_player_movement_correction_system.cpp
         bedrock_hooks/server_script_manager.cpp
         bedrock_hooks/leaves_block.cpp
-        bedrock_hooks/campfire_block_actor.cpp
         main.cpp
         hook.cpp
         vtable_hook.cpp

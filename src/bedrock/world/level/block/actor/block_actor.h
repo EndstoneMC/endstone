@@ -97,6 +97,16 @@ public:
     virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
     virtual void tick(BlockSource &) = 0;
 
+    void setChanged()
+    {
+        changed_ = true;
+    }
+
+    [[nodiscard]] bool isChanged() const
+    {
+        return changed_;
+    }
+
     [[nodiscard]] const BlockActorType &getType() const
     {
         return type_;
@@ -122,6 +132,8 @@ protected:
     bool can_render_custom_name_;
     const float sign_shadow_radius_;
     ActorTerrainInterlockData terrain_interlock_data_;
+
+private:
     bool changed_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 240, 216);

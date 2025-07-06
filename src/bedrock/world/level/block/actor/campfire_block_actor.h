@@ -13,12 +13,20 @@
 // limitations under the License.
 
 #pragma once
+
 #include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
+
 class CampfireBlockActor : public BlockActor {
-    ItemInstance cooking_item_[4];
-    int cooking_time_[4];
+public:
+    static constexpr int MAX_COOKING_ITEMS = 4;
+    CampfireBlockActor(const BlockPos &);
+
+private:
+    ENDSTONE_HOOK void _finishCooking(::BlockSource &region, int slot);
+
+    ItemInstance cooking_item_[MAX_COOKING_ITEMS];
+    int cooking_time_[MAX_COOKING_ITEMS];
     bool was_lit_;
     int next_smoke_particle_tick_;
-    ENDSTONE_HOOK void _finishCooking(::BlockSource &region, int slot);
 };
