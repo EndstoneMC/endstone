@@ -16,8 +16,6 @@
 
 void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CampfireBlockActor::_finishCooking, this, region, slot);
-
     if (region.canDoBlockDrops()) {
         const auto &block = region.getBlock(this->position_);
         HashedString tag = CAMPFIRE_TAG;
