@@ -54,9 +54,29 @@ void PistonBlockActor::tick(BlockSource &region)
     if (extending || retracting) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto block = endstone::core::EndstoneBlock::at(region, position_);
-        const auto face = block->getMinecraftBlock().getState<FacingID>(VanillaStateIds::FacingDirection);
+        auto face = endstone::BlockFace::Down;
+        switch (block->getMinecraftBlock().getState<FacingID>(VanillaStateIds::FacingDirection)) {
+        case 1:
+            face = endstone::BlockFace::Up;
+            break;
+        case 2:
+            face = endstone::BlockFace::South;
+            break;
+        case 3:
+            face = endstone::BlockFace::North;
+            break;
+        case 4:
+            face = endstone::BlockFace::East;
+            break;
+        case 5:
+            face = endstone::BlockFace::West;
+            break;
+        default:
+            break;
+        }
+
         if (extending) {
-            endstone::BlockPistonExtendEvent e(std::move(block), static_cast<endstone::BlockFace>(face));
+            endstone::BlockPistonExtendEvent e(std::move(block), face);
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 // We mark the new state with a value that the original function does not recognise.
@@ -66,8 +86,7 @@ void PistonBlockActor::tick(BlockSource &region)
             }
         }
         else {
-            endstone::BlockPistonRetractEvent e(std::move(block), endstone::core::EndstoneBlockFace::getOpposite(
-                                                                      static_cast<endstone::BlockFace>(face)));
+            endstone::BlockPistonRetractEvent e(std::move(block), endstone::core::EndstoneBlockFace::getOpposite(face));
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 new_state_ = static_cast<PistonState>(PistonStateEx::RetractingCancelled);
