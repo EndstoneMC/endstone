@@ -19,6 +19,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/shared_types/height.h"
 #include "bedrock/world/actor/actor_types.h"
+#include "bedrock/world/events/gameevents/game_event.h"
 #include "bedrock/world/item/item_stack_base.h"
 #include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/block/block.h"
@@ -118,7 +119,6 @@ public:
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual bool removeBlock(BlockPos const &) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
-    virtual void postGameEvent(Actor *, const GameEvent &, const Vec3 &, const Block *) = 0;
 };
 
 class BlockSource : public IBlockSource,

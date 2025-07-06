@@ -97,6 +97,16 @@ public:
     virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
     virtual void tick(BlockSource &) = 0;
 
+    void setChanged()
+    {
+        changed_ = true;
+    }
+
+    [[nodiscard]] bool isChanged() const
+    {
+        return changed_;
+    }
+
     [[nodiscard]] const BlockActorType &getType() const
     {
         return type_;

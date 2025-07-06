@@ -1,4 +1,4 @@
-timestamp = 1751802966
+timestamp = 1751818757
 version = "1.21.93"
 
 [windows]
@@ -17,6 +17,8 @@ version = "1.21.93"
 "?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 50242224
 # BlockTypeRegistry
 "?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockLegacy@@@Z$$A6A_N0@Z@brstd@@@Z" = 52399648
+# CampfireBlockActor
+"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 52190928
 # Command
 "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 33708224
 # CommandOriginLoader
@@ -125,6 +127,8 @@ version = "1.21.93"
 "_ZNK11BlockLegacy25tryGetStateFromLegacyDataEt" = 144834896
 # BlockTypeRegistry
 "_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK11BlockLegacyES5_EE" = 149374048
+# CampfireBlockActor
+"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 152022448
 # Command
 "_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 123449488
 # CommandOriginLoader

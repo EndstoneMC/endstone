@@ -44,6 +44,7 @@ class ActorEvent;
 class ActorFactory;
 class ActorInteraction;
 class ActorSoundIdentifier;
+class ActorSpawnRuleGroup;
 class ActorUnloadedChunkTransferEntry;
 class AdventureSettings;
 class AllowList;
@@ -104,7 +105,6 @@ class FeatureRegistry;
 class FeatureTypeFactory;
 class FogDefinition;
 class FrameUpdateContextBase;
-class GameEvent;
 class GameEventDispatcher {};
 class GameMode;
 class GameModuleServer;
@@ -132,10 +132,12 @@ class ItemComponentPacket;
 class ItemData;
 class ItemStackNetManagerBase;
 class ItemStackRequestData {};
+class IWorldRegistriesProvider;
 class JigsawStructureRegistry;
 class LevelChunkBuilderData;
 class LevelChunkMetaData;
 class LevelChunkMetaDataDictionary;
+class LevelChunkVolumeData;
 class LevelData;
 class LevelSoundManager;
 class LevelStorageObserver;
@@ -200,7 +202,8 @@ class ServerMetrics;
 class SnapshotFilenameAndLength;
 class SoundPlayerInterface;
 class SpawnConditions;
-class Spawner;
+class SpawnGroupRegistry;
+class SpawnSettings;
 class StorageVersion;
 class StructureManager;
 class SubChunkInterlocker;
@@ -290,6 +293,9 @@ namespace Server {
 class ActiveTransfersManager;
 }
 }  // namespace ClientBlobCache
+namespace SpawnCategory {
+enum Type : int32_t;
+}
 
 namespace Social {
 class GameConnectionInfo;
@@ -310,6 +316,12 @@ class ScriptPropertyRegistry;
 namespace ResourcePackPathLifetimeHelpers {
 class ResourcePackPathCache {};
 }  // namespace ResourcePackPathLifetimeHelpers
+
+namespace br::spawn {
+class EntityTypeCache;
+struct State;
+class SpawnPlacements;
+}  // namespace br::spawn
 
 // Template Classes
 template <typename A, typename B, typename C>
