@@ -16,17 +16,17 @@
 
 #include <iostream>
 
-#include <endstone/core/block/block.h>
-#include <endstone/event/player/player_bed_enter_event.h>
-#include <endstone/event/player/player_bed_leave_event.h>
 #include <entt/entt.hpp>
 
 #include "bedrock/world/actor/item/item_actor.h"
 #include "bedrock/world/level/block/bed_block.h"
+#include "endstone/core/block/block.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_bed_enter_event.h"
+#include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_pickup_item_event.h"
