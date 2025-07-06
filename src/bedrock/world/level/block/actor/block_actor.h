@@ -57,8 +57,6 @@ protected:
     bool can_render_custom_name_;
     const float sign_shadow_radius_;
     ActorTerrainInterlockData terrain_interlock_data_;
-
-private:
     bool changed_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 240, 216);

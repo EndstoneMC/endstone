@@ -101,6 +101,8 @@ version = "1.21.93"
 # TeleportCommand
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 38679584
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 38680240
+# CampfireBlockActor
+"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 52187856
 # Variables
 "getI18n::result" = 95406816
 "Enchant::mEnchants" = 95287168
