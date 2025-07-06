@@ -29,6 +29,11 @@ BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
     return *block_source_;
 }
 
+Weather &Dimension::getWeather() const
+{
+    return *weather_;
+}
+
 CircuitSystem &Dimension::getCircuitSystem()
 {
     return *circuit_system_;

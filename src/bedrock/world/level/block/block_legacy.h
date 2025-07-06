@@ -293,6 +293,12 @@ public:
     [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
     [[nodiscard]] bool hasState(const HashedString &) const;
     template <typename T>
+    int getState(const BlockState &block_state, DataID data) const
+    {
+        return getState<T>(block_state.getID(), data);
+    }
+
+    template <typename T>
     T getState(const size_t &id, DataID data) const
     {
         if (const auto it = states_.find(id); it != states_.end()) {
@@ -300,6 +306,10 @@ public:
         }
         return _tryLookupAlteredStateCollection(id, data).value_or(0);
     }
+
+    template <typename T>
+    const Block *trySetState(const BlockState & block_state, T val, DataID data) const;
+
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
@@ -317,24 +327,9 @@ public:
     [[nodiscard]] TintMethod getTintMethod() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
-    // Endstone begins
-    template <typename T>
-    T getState(const HashedString &name, DataID data) const
-    {
-        if (const auto it = state_name_map_.find(name); it != state_name_map_.end()) {
-            return getState<T>(it->second, data);
-        }
-        for (const auto &altered_state : altered_state_collections_) {
-            if (altered_state->getBlockState().getName() == name) {
-                return altered_state->getState(*this, data).value_or(0);
-            }
-        }
-        return 0;
-    }
-    // Endstone ends
-
 private:
     std::optional<int> _tryLookupAlteredStateCollection(size_t, DataID) const;
+    const Block *_trySetStateFromAlteredStateCollection(size_t, int, DataID) const;
 
 public:
     std::string description_id;  // +8

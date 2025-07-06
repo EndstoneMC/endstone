@@ -97,6 +97,11 @@ float Block::getThickness() const
     return legacy_block_->getThickness();
 }
 
+void Block::destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const
+{
+    getLegacyBlock().destroy(region, pos, *this, entity_source);
+}
+
 float Block::getFriction() const
 {
     return direct_data_.friction;
