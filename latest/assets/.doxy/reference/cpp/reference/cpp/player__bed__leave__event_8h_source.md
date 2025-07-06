@@ -30,11 +30,11 @@
 
 namespace endstone {
 
-class PlayerBedLeaveEvent : public Cancellable<PlayerEvent> {
+class PlayerBedLeaveEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerBedLeaveEvent)
 
-    explicit PlayerBedLeaveEvent(Player &player, Block &bed) : Cancellable(player), bed_(bed) {}
+    explicit PlayerBedLeaveEvent(Player &player, Block &bed) : PlayerEvent(player), bed_(bed) {}
     ~PlayerBedLeaveEvent() override = default;
 
     [[nodiscard]] Block &getBed() const

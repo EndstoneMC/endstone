@@ -14,7 +14,7 @@ _Called when a player is leaving a bed._
 
 
 
-Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
+Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 
 
@@ -98,27 +98,29 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |   | [**~PlayerBedLeaveEvent**](#function-playerbedleaveevent) () override<br> |
 
 
-## Public Functions inherited from endstone::Cancellable
+## Public Functions inherited from endstone::PlayerEvent
 
-See [endstone::Cancellable](classendstone_1_1Cancellable.md)
-
-| Type | Name |
-| ---: | :--- |
-| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-
-
-## Public Functions inherited from endstone::ICancellable
-
-See [endstone::ICancellable](classendstone_1_1ICancellable.md)
+See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
-| virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
+|   | [**PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
+|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](classendstone_1_1PlayerEvent.md#function-getplayer) () const<br> |
+|   | [**~PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) () override<br> |
+
+
+## Public Functions inherited from endstone::Event
+
+See [endstone::Event](classendstone_1_1Event.md)
+
+| Type | Name |
+| ---: | :--- |
+|   | [**Event**](classendstone_1_1Event.md#function-event-12) (bool async=false) <br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+| virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
+|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
+|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+| virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
 
 
 
