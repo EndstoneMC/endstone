@@ -169,29 +169,3 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos)
 
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::startSleepInBed, this, bed_block_pos);
 }
-
-void Player::stopSleepInBed(bool forceful_wake_up, bool update_level_list)
-{
-    if (!isSleeping()) {
-        return;
-    }
-
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-
-    std::unique_ptr<endstone::Block> bed;
-    if (hasBedPosition()) {
-        const auto bed_position = getBedPosition();
-        bed = player.getDimension().getBlockAt(bed_position.x, bed_position.y, bed_position.z);
-    }
-    else {
-        bed = player.getDimension().getBlockAt(player.getLocation());
-    }
-
-    endstone::PlayerBedLeaveEvent e(player, *bed);
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return;
-    }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::stopSleepInBed, this, forceful_wake_up, update_level_list);
-}

@@ -45,6 +45,7 @@
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
@@ -151,6 +152,23 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
 bool EndstonePlayer::handlePacket(Packet &packet)
 {
     switch (packet.getId()) {
+    case MinecraftPacketIds::PlayerAction: {
+        auto &pk = static_cast<PlayerActionPacket &>(packet);
+        if (pk.action == PlayerActionType::StopSleeping && getPlayer().isSleeping()) {
+            std::unique_ptr<Block> bed;
+            if (getPlayer().hasBedPosition()) {
+                const auto bed_position = getPlayer().getBedPosition();
+                bed = getDimension().getBlockAt(bed_position.x, bed_position.y, bed_position.z);
+            }
+            else {
+                bed = getDimension().getBlockAt(getLocation());
+            }
+
+            PlayerBedLeaveEvent e(*this, *bed);
+            getServer().getPluginManager().callEvent(e);
+        }
+        return true;
+    }
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
         return true;

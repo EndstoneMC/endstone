@@ -97,7 +97,7 @@ public:
     virtual void displayWhisperMessage(std::string const &, std::string const &, std::string const &,
                                        std::string const &) = 0;
     ENDSTONE_HOOK virtual BedSleepingResult startSleepInBed(BlockPos const &bed_block_pos);
-    ENDSTONE_HOOK virtual void stopSleepInBed(bool, bool);
+    virtual void stopSleepInBed(bool, bool) = 0;
     virtual bool canStartSleepInBed() = 0;
     virtual void openSign(BlockPos const &, bool) = 0;
     virtual void playEmote(std::string const &, bool) = 0;

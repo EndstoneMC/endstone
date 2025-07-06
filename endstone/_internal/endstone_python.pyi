@@ -3127,7 +3127,7 @@ class PlayerBedEnterEvent(PlayerEvent, Cancellable):
         """
         Returns the bed block involved in this event.
         """
-class PlayerBedLeaveEvent(PlayerEvent, Cancellable):
+class PlayerBedLeaveEvent(PlayerEvent):
     """
     Called when a player is leaving a bed.
     """

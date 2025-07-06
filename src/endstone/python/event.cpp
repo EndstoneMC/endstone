@@ -199,8 +199,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     // .def_property("use_bed", &PlayerBedEnterEvent::useBed, &PlayerBedEnterEvent::setUseBed,
     //               "Gets or sets the action to take with the bed that was clicked on.");
 
-    py::class_<PlayerBedLeaveEvent, PlayerEvent, ICancellable>(m, "PlayerBedLeaveEvent",
-                                                               "Called when a player is leaving a bed.")
+    py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "Returns the bed block involved in this event.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
