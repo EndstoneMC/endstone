@@ -14,19 +14,15 @@
 
 #pragma once
 
-#include <vector>
+#include "bedrock/world/level/block/actor_block.h"
 
-#include "bedrock/core/string/string_hash.h"
+class FaceDirectionalActorBlock : public ActorBlock {
+public:
+    FaceDirectionalActorBlock(const std::string &, int, const Material &, bool, float);
+    const Block &getRenderBlock() const override;
+    FacingID getMappedFace(FacingID, const Block &) const override;
+    Flip getFaceFlip(FacingID, const Block &) const override;
+    const Block &getPlacementBlock(const Actor &, const BlockPos &, FacingID, const Vec3 &, int) const override;
+};
 
-namespace VanillaBlockTypeIds {
-extern const HashedString BeeNest;
-extern const HashedString Beehive;
-extern const HashedString CampFire;
-extern const HashedString SoulCampfire;
-extern const HashedString Tnt;
-extern const HashedString UnderwaterTnt;
-}  // namespace VanillaBlockTypeIds
-
-namespace VanillaBlockTypeGroups {
-extern const std::vector<std::reference_wrapper<const HashedString>> TntIds;
-}  // namespace VanillaBlockTypeGroups
+using ActorBlock = ActorBlockBase<BlockLegacy>;

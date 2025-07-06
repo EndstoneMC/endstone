@@ -15,6 +15,8 @@
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
 
 namespace VanillaBlockTypeIds {
+static const HashedString BeeNest = "minecraft:bee_nest";
+static const HashedString Beehive = "minecraft:beehive";
 static const HashedString CampFire = "minecraft:campfire";
 static const HashedString SoulCampfire = "minecraft:soul_campfire";
 static const HashedString Tnt = "minecraft:tnt";

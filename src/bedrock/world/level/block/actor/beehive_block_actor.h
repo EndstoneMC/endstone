@@ -14,19 +14,11 @@
 
 #pragma once
 
-#include <vector>
+#include "bedrock/world/level/block/actor/block_actor.h"
 
-#include "bedrock/core/string/string_hash.h"
-
-namespace VanillaBlockTypeIds {
-extern const HashedString BeeNest;
-extern const HashedString Beehive;
-extern const HashedString CampFire;
-extern const HashedString SoulCampfire;
-extern const HashedString Tnt;
-extern const HashedString UnderwaterTnt;
-}  // namespace VanillaBlockTypeIds
-
-namespace VanillaBlockTypeGroups {
-extern const std::vector<std::reference_wrapper<const HashedString>> TntIds;
-}  // namespace VanillaBlockTypeGroups
+class BeehiveBlockActor : public BlockActor {
+public:
+    static constexpr BlockActorType TypeId = BlockActorType::Beehive;
+    BeehiveBlockActor(const BlockPos &);
+    void evictAll(BlockSource &, bool);
+};

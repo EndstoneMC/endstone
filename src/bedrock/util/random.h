@@ -19,6 +19,7 @@
 
 #include <glm/glm.hpp>
 
+#include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/forward.h"
 #include "bedrock/util/thread_owner.h"
 #include "bedrock/world/level/block_pos.h"

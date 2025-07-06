@@ -26,6 +26,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/int_range.h"
+#include "bedrock/util/random.h"
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
 #include "bedrock/world/item/item_category.h"
@@ -49,6 +50,7 @@ class ItemInstance;
 class Player;
 class Material;
 class MaterialType;
+enum class BlockActorType;
 
 enum class BlockProperty : std::uint64_t {
     None = 0x0,
@@ -308,7 +310,7 @@ public:
     }
 
     template <typename T>
-    const Block *trySetState(const BlockState & block_state, T val, DataID data) const;
+    const Block *trySetState(const BlockState &block_state, T val, DataID data) const;
 
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;

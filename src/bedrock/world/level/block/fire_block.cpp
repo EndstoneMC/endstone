@@ -14,6 +14,17 @@
 
 #include "bedrock/world/level/block/fire_block.h"
 
+#include "bedrock/world/level/block/beehive_block.h"
+#include "bedrock/world/level/block/vanilla_block_type_ids.h"
+
+void FireBlock::_tryEvictBeehive(BlockSource &region, const BlockPos &pos) const
+{
+    auto &block = region.getBlock(pos);
+    if (block.getName() == VanillaBlockTypeIds::Beehive || block.getName() == VanillaBlockTypeIds::BeeNest) {
+        static_cast<const BeehiveBlock &>(block.getLegacyBlock()).evictAll(region, pos, false);
+    }
+}
+
 bool FireBlock::isValidFireLocation(BlockSource &region, const BlockPos &pos) const
 {
     return getFireOdds(region, pos) > 0;

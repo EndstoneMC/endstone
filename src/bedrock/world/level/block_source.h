@@ -128,4 +128,9 @@ public:
     explicit BlockSource(ChunkSource &, bool, bool);
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
+
+    BlockActor *getBlockEntity(const BlockPos &pos)
+    {
+        return const_cast<BlockActor *>(IBlockSource::getBlockEntity(pos));
+    }
 };
