@@ -44,7 +44,7 @@ public:
     ENDSTONE_HOOK virtual void knockback(Actor *, int, float, float, float, float, float);
     virtual void spawnAnim() = 0;
     virtual void setSprinting(bool) = 0;
-    virtual Puv::Legacy::LevelSoundEvent getDeathSound() = 0;
+    virtual LevelSoundEvent getDeathSound() = 0;
     [[nodiscard]] virtual float getSpeed() const = 0;
     virtual void setSpeed(float) = 0;
     virtual void hurtEffects(ActorDamageSource const &, float, bool, bool) = 0;

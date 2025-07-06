@@ -248,7 +248,6 @@ enum class JsonBetaState;
 enum class LavaFlammable;
 enum class LevelChunkFormat : std::int8_t;
 enum class LevelEvent;
-enum class LevelSoundEvent;
 enum class NewInteractionModel : int;
 enum class NoteBlockInstrument;
 enum class ParticleType;
@@ -297,9 +296,6 @@ class GameConnectionInfo;
 class GamePublishSetting;
 class MultiplayerServiceManager;
 }  // namespace Social
-namespace Puv::Legacy {
-enum class LevelSoundEvent : int;
-}
 namespace Scripting {
 class LifetimeRegistryReference;
 template <typename T>

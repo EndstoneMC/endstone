@@ -17,6 +17,7 @@
 #include <optional>
 #include <unordered_set>
 
+#include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/block_source.h"

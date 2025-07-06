@@ -253,14 +253,13 @@ public:
     virtual TickingAreasManager &getTickingAreasMgr() = 0;
     virtual void addTickingAreaList(DimensionType, std::shared_ptr<TickingAreaList> const &) = 0;
     virtual void sendServerLegacyParticle(ParticleType, Vec3 const &, Vec3 const &, int) = 0;
-    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool,
-                           bool) = 0;
-    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, float, float) = 0;
+    virtual void playSound(LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool, bool) = 0;
+    virtual void playSound(LevelSoundEvent, Vec3 const &, float, float) = 0;
     virtual void playSound(std::string const &, Vec3 const &, float, float) = 0;
-    virtual void playSound(IConstBlockSource const &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                           ActorSoundIdentifier const &, bool, bool) = 0;
-    virtual void playSound(DimensionType, Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
+    virtual void playSound(IConstBlockSource const &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
                            bool, bool) = 0;
+    virtual void playSound(DimensionType, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool,
+                           bool) = 0;
     virtual PlayerEventCoordinator &getRemotePlayerEventCoordinator() = 0;
     virtual ServerPlayerEventCoordinator &getServerPlayerEventCoordinator() = 0;
     virtual ClientPlayerEventCoordinator &getClientPlayerEventCoordinator() = 0;
@@ -281,12 +280,12 @@ public:
     virtual void broadcastLevelEvent(LevelEvent, CompoundTag const &, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, int) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, Block const &) = 0;
-    virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, Block const &,
-                                     ActorSoundIdentifier const &, bool, bool) = 0;
-    virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                                     ActorSoundIdentifier const &, bool, bool) = 0;
-    virtual void broadcastSoundEvent(Dimension &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                                     ActorSoundIdentifier const &, bool, bool) = 0;
+    virtual void broadcastSoundEvent(BlockSource &, LevelSoundEvent, Vec3 const &, Block const &,
+                                     ActorSoundIdentifier const &, bool) = 0;
+    virtual void broadcastSoundEvent(BlockSource &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
+                                     bool) = 0;
+    virtual void broadcastSoundEvent(Dimension &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
+                                     bool) = 0;
     virtual void broadcastActorEvent(Actor &, ActorEvent, int) const = 0;
     [[nodiscard]] virtual void *getActorEventBroadcaster() const = 0;
     virtual void addChunkViewTracker(std::weak_ptr<ChunkViewSource>) = 0;
