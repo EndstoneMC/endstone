@@ -222,10 +222,10 @@
       <member refid="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>getResult</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>getSource</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::BlockCookEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::BlockCookEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1ac3d1d77752f5e185acc1174a72d5a64d" prot="private" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>result_</name></member>
-      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::BlockCookEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::BlockCookEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1abba7e5e677bb7f21a49ebcbf84a0aa2f" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>setResult</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1ae1299c73c6b86f8996f4b5b011d6faf3" prot="private" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>source_</name></member>
       <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>~BlockEvent</name></member>

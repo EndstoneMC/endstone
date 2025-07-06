@@ -121,6 +121,8 @@ _Represents a button with text and an optional icon._
 | class | [**Player**](classendstone_1_1Player.md) <br>_Represents a player._  |
 | class | [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) <br> |
 | class | [**PlayerBanList**](classendstone_1_1PlayerBanList.md) <br>_Represents a ban list, containing banned players._  |
+| class | [**PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md) <br>_Called when a player is almost about to enter the bed._  |
+| class | [**PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md) <br>_Called when a player is leaving a bed._  |
 | class | [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) <br>_Called when a player sends a chat message._  |
 | class | [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) <br>_Called whenever a player runs a command._  |
 | class | [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) <br>_Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._ |
@@ -190,6 +192,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br> |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
+| enum  | [**EventResult**](#enum-eventresult)  <br> |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
 | typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
@@ -417,6 +420,23 @@ Listeners with lower priority are called first will listeners with higher priori
 
 
         
+
+<hr>
+
+
+
+### enum EventResult 
+
+```C++
+enum endstone::EventResult {
+    Deny,
+    Default,
+    Allow
+};
+```
+
+
+
 
 <hr>
 

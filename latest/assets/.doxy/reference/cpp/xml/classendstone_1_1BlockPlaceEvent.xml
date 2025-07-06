@@ -282,13 +282,13 @@
       <member refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1aaa28353cb0631c1c63a84504abf7067e" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1ac4e2bdd1835d163b9eb5accdfbbd63c1" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1ab58f51c0b2c6e6faad8b5f990bcdd2fa" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>placed_against_</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a5ff8f8ed7c32f7d49f2cd81196fe0d93" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>placed_block_</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a916d00309007668efdf242a1207e45e3" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>player_</name></member>
-      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>~BlockEvent</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1ab1bb2ece0d15adb5704b90587d971bed" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>~BlockPlaceEvent</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>~Event</name></member>

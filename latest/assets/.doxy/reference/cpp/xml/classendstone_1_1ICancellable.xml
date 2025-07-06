@@ -30,13 +30,13 @@
         <argsstring>() const =0</argsstring>
         <name>isCancelled</name>
         <qualifiedname>endstone::ICancellable::isCancelled</qualifiedname>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057">isCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057">isCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057">isCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057">isCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057">isCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057">isCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057">isCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,13 +51,13 @@
         <argsstring>(bool cancel)=0</argsstring>
         <name>setCancelled</name>
         <qualifiedname>endstone::ICancellable::setCancelled</qualifiedname>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9">setCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9">setCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9">setCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9">setCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9">setCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9">setCancelled</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9">setCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
         <param>
           <type>bool</type>
           <declname>cancel</declname>
@@ -127,7 +127,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="38">
+      <node id="40">
         <label>endstone::Cancellable&lt; WeatherEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -205,7 +205,7 @@
         <childnode refid="17" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="41">
+      <node id="43">
         <label>endstone::Cancellable&lt; EventType &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -234,81 +234,93 @@
         </childnode>
       </node>
       <node id="25">
+        <label>endstone::PlayerBedEnterEvent</label>
+        <link refid="classendstone_1_1PlayerBedEnterEvent"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>endstone::PlayerBedLeaveEvent</label>
+        <link refid="classendstone_1_1PlayerBedLeaveEvent"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
         <label>endstone::PlayerChatEvent</label>
         <link refid="classendstone_1_1PlayerChatEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="26">
+      <node id="28">
         <label>endstone::PlayerCommandEvent</label>
         <link refid="classendstone_1_1PlayerCommandEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="27">
+      <node id="29">
         <label>endstone::PlayerDropItemEvent</label>
         <link refid="classendstone_1_1PlayerDropItemEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="28">
+      <node id="30">
         <label>endstone::PlayerGameModeChangeEvent</label>
         <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="29">
+      <node id="31">
         <label>endstone::PlayerInteractActorEvent</label>
         <link refid="classendstone_1_1PlayerInteractActorEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="30">
+      <node id="32">
         <label>endstone::PlayerInteractEvent</label>
         <link refid="classendstone_1_1PlayerInteractEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="31">
+      <node id="33">
         <label>endstone::PlayerItemConsumeEvent</label>
         <link refid="classendstone_1_1PlayerItemConsumeEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="35">
+      <node id="37">
         <label>endstone::PlayerJumpEvent</label>
         <link refid="classendstone_1_1PlayerJumpEvent"/>
-        <childnode refid="34" relation="public-inheritance">
+        <childnode refid="36" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="32">
+      <node id="34">
         <label>endstone::PlayerKickEvent</label>
         <link refid="classendstone_1_1PlayerKickEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="33">
+      <node id="35">
         <label>endstone::PlayerLoginEvent</label>
         <link refid="classendstone_1_1PlayerLoginEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="34">
+      <node id="36">
         <label>endstone::PlayerMoveEvent</label>
         <link refid="classendstone_1_1PlayerMoveEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="37">
+      <node id="39">
         <label>endstone::PlayerPickupItemEvent</label>
         <link refid="classendstone_1_1PlayerPickupItemEvent"/>
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="36">
+      <node id="38">
         <label>endstone::PlayerTeleportEvent</label>
         <link refid="classendstone_1_1PlayerTeleportEvent"/>
-        <childnode refid="34" relation="public-inheritance">
+        <childnode refid="36" relation="public-inheritance">
         </childnode>
       </node>
       <node id="21">
@@ -329,16 +341,16 @@
         <childnode refid="17" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="39">
+      <node id="41">
         <label>endstone::ThunderChangeEvent</label>
         <link refid="classendstone_1_1ThunderChangeEvent"/>
-        <childnode refid="38" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="40">
+      <node id="42">
         <label>endstone::WeatherChangeEvent</label>
         <link refid="classendstone_1_1WeatherChangeEvent"/>
-        <childnode refid="38" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

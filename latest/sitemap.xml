@@ -489,6 +489,14 @@
          <lastmod>2025-07-06</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerBedEnterEvent/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerBedLeaveEvent/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerChatEvent/</loc>
          <lastmod>2025-07-06</lastmod>
     </url>
@@ -1282,6 +1290,22 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_7c05c37b25e9c9eccd9c63c2d313ba28/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__bed__enter__event_8h/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__bed__enter__event_8h_source/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__bed__leave__event_8h/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__bed__leave__event_8h_source/</loc>
          <lastmod>2025-07-06</lastmod>
     </url>
     <url>

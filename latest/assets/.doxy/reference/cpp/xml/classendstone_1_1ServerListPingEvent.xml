@@ -843,7 +843,7 @@
       <member refid="classendstone_1_1ServerListPingEvent_1a96dbff8031414d99f72fc62eb208c7fd" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getRemotePort</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1aa6a64659d29e47acf3af3e860c1d16da" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getServerGuid</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::ServerListPingEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ServerListPingEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a0445fcfd1719ff62e013ce5f499f5872" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>level_name_</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a2bb3386b5d3530ccefdff7fae10a557c" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>local_port_</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1aa04477f40872fd8c43bccd24e10eff65" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>local_port_v6_</name></member>
@@ -860,7 +860,7 @@
       <member refid="classendstone_1_1ServerListPingEvent_1a8f98acd60d3bc56c5bfec18ce06b9649" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>serialize</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a9eccbd82f7c4d756be8344ab6f30a0cb" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>server_guid_</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a668a2d7aa1363a13b32877e094cda4ba" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>ServerListPingEvent</name></member>
-      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::ServerListPingEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ServerListPingEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a49e07d699cfebca6d747c7e0b4495920" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1acd8b497f6d642a9fcda052788b0d3087" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setLevelName</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a5da7cb54f3d9d5a97a5c9696a5a7123a" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setLocalPort</name></member>

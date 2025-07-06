@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="57" column="18" bodyfile="include/endstone/event/event.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/event/event.h" line="72" column="18" bodyfile="include/endstone/event/event.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1Event_1a0b257358246ba8f9c2f228c35e4f3e85" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>class</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="58" column="18" bodyfile="include/endstone/event/event.h" bodystart="58" bodyend="-1"/>
+        <location file="include/endstone/event/event.h" line="73" column="18" bodyfile="include/endstone/event/event.h" bodystart="73" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="60" column="10" bodyfile="include/endstone/event/event.h" bodystart="60" bodyend="-1"/>
+        <location file="include/endstone/event/event.h" line="75" column="10" bodyfile="include/endstone/event/event.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Event_1a5f9dfb12b76c9d6b46a42fb4238576f0" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="61" column="10" bodyfile="include/endstone/event/event.h" bodystart="61" bodyend="61"/>
+        <location file="include/endstone/event/event.h" line="76" column="10" bodyfile="include/endstone/event/event.h" bodystart="76" bodyend="76"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="27" column="14" bodyfile="include/endstone/event/event.h" bodystart="27" bodyend="27"/>
+        <location file="include/endstone/event/event.h" line="42" column="14" bodyfile="include/endstone/event/event.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="28" column="5"/>
+        <location file="include/endstone/event/event.h" line="43" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="29" column="11"/>
+        <location file="include/endstone/event/event.h" line="44" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="31" column="13"/>
+        <location file="include/endstone/event/event.h" line="46" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -197,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="38" column="26"/>
+        <location file="include/endstone/event/event.h" line="53" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="45" column="11" bodyfile="include/endstone/event/event.h" bodystart="45" bodyend="48"/>
+        <location file="include/endstone/event/event.h" line="60" column="11" bodyfile="include/endstone/event/event.h" bodystart="60" bodyend="63"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/event.h" line="51" column="19" bodyfile="include/endstone/event/event.h" bodystart="51" bodyend="54"/>
+        <location file="include/endstone/event/event.h" line="66" column="19" bodyfile="include/endstone/event/event.h" bodystart="66" bodyend="69"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -282,16 +282,16 @@
         <childnode refid="29" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="49">
+      <node id="51">
         <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="50" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="60">
+      <node id="62">
         <label>endstone::Cancellable&lt; WeatherEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="59" relation="public-inheritance">
+        <childnode refid="61" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
@@ -384,10 +384,10 @@
         <childnode refid="16" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="50">
+      <node id="52">
         <label>endstone::BroadcastMessageEvent</label>
         <link refid="classendstone_1_1BroadcastMessageEvent"/>
-        <childnode refid="49" relation="public-inheritance">
+        <childnode refid="51" relation="public-inheritance">
         </childnode>
       </node>
       <node id="26">
@@ -430,25 +430,37 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="51">
+      <node id="53">
         <label>endstone::PacketReceiveEvent</label>
         <link refid="classendstone_1_1PacketReceiveEvent"/>
-        <childnode refid="49" relation="public-inheritance">
+        <childnode refid="51" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="52">
+      <node id="54">
         <label>endstone::PacketSendEvent</label>
         <link refid="classendstone_1_1PacketSendEvent"/>
-        <childnode refid="49" relation="public-inheritance">
+        <childnode refid="51" relation="public-inheritance">
         </childnode>
       </node>
       <node id="31">
+        <label>endstone::PlayerBedEnterEvent</label>
+        <link refid="classendstone_1_1PlayerBedEnterEvent"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>endstone::PlayerBedLeaveEvent</label>
+        <link refid="classendstone_1_1PlayerBedLeaveEvent"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
         <label>endstone::PlayerChatEvent</label>
         <link refid="classendstone_1_1PlayerChatEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="32">
+      <node id="34">
         <label>endstone::PlayerCommandEvent</label>
         <link refid="classendstone_1_1PlayerCommandEvent"/>
         <childnode refid="30" relation="public-inheritance">
@@ -462,13 +474,13 @@
         <childnode refid="29" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="33">
+      <node id="35">
         <label>endstone::PlayerDropItemEvent</label>
         <link refid="classendstone_1_1PlayerDropItemEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="44">
+      <node id="46">
         <label>endstone::PlayerEmoteEvent</label>
         <link refid="classendstone_1_1PlayerEmoteEvent"/>
         <childnode refid="29" relation="public-inheritance">
@@ -480,146 +492,146 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="34">
+      <node id="36">
         <label>endstone::PlayerGameModeChangeEvent</label>
         <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="35">
+      <node id="37">
         <label>endstone::PlayerInteractActorEvent</label>
         <link refid="classendstone_1_1PlayerInteractActorEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="36">
+      <node id="38">
         <label>endstone::PlayerInteractEvent</label>
         <link refid="classendstone_1_1PlayerInteractEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="37">
+      <node id="39">
         <label>endstone::PlayerItemConsumeEvent</label>
         <link refid="classendstone_1_1PlayerItemConsumeEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="45">
+      <node id="47">
         <label>endstone::PlayerJoinEvent</label>
         <link refid="classendstone_1_1PlayerJoinEvent"/>
         <childnode refid="29" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="41">
+      <node id="43">
         <label>endstone::PlayerJumpEvent</label>
         <link refid="classendstone_1_1PlayerJumpEvent"/>
-        <childnode refid="40" relation="public-inheritance">
+        <childnode refid="42" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="38">
+      <node id="40">
         <label>endstone::PlayerKickEvent</label>
         <link refid="classendstone_1_1PlayerKickEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="39">
+      <node id="41">
         <label>endstone::PlayerLoginEvent</label>
         <link refid="classendstone_1_1PlayerLoginEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="40">
+      <node id="42">
         <label>endstone::PlayerMoveEvent</label>
         <link refid="classendstone_1_1PlayerMoveEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="43">
+      <node id="45">
         <label>endstone::PlayerPickupItemEvent</label>
         <link refid="classendstone_1_1PlayerPickupItemEvent"/>
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="46">
+      <node id="48">
         <label>endstone::PlayerQuitEvent</label>
         <link refid="classendstone_1_1PlayerQuitEvent"/>
         <childnode refid="29" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="47">
+      <node id="49">
         <label>endstone::PlayerRespawnEvent</label>
         <link refid="classendstone_1_1PlayerRespawnEvent"/>
         <childnode refid="29" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="42">
+      <node id="44">
         <label>endstone::PlayerTeleportEvent</label>
         <link refid="classendstone_1_1PlayerTeleportEvent"/>
-        <childnode refid="40" relation="public-inheritance">
+        <childnode refid="42" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>endstone::PluginDisableEvent</label>
+        <link refid="classendstone_1_1PluginDisableEvent"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>endstone::PluginEnableEvent</label>
+        <link refid="classendstone_1_1PluginEnableEvent"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>endstone::ScriptMessageEvent</label>
+        <link refid="classendstone_1_1ScriptMessageEvent"/>
+        <childnode refid="51" relation="public-inheritance">
         </childnode>
       </node>
       <node id="56">
-        <label>endstone::PluginDisableEvent</label>
-        <link refid="classendstone_1_1PluginDisableEvent"/>
-        <childnode refid="48" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="57">
-        <label>endstone::PluginEnableEvent</label>
-        <link refid="classendstone_1_1PluginEnableEvent"/>
-        <childnode refid="48" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="53">
-        <label>endstone::ScriptMessageEvent</label>
-        <link refid="classendstone_1_1ScriptMessageEvent"/>
-        <childnode refid="49" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="54">
         <label>endstone::ServerCommandEvent</label>
         <link refid="classendstone_1_1ServerCommandEvent"/>
-        <childnode refid="49" relation="public-inheritance">
+        <childnode refid="51" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="48">
+      <node id="50">
         <label>endstone::ServerEvent</label>
         <link refid="classendstone_1_1ServerEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="55">
+      <node id="57">
         <label>endstone::ServerListPingEvent</label>
         <link refid="classendstone_1_1ServerListPingEvent"/>
-        <childnode refid="49" relation="public-inheritance">
+        <childnode refid="51" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="58">
+      <node id="60">
         <label>endstone::ServerLoadEvent</label>
         <link refid="classendstone_1_1ServerLoadEvent"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>endstone::ThunderChangeEvent</label>
+        <link refid="classendstone_1_1ThunderChangeEvent"/>
+        <childnode refid="62" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>endstone::WeatherChangeEvent</label>
+        <link refid="classendstone_1_1WeatherChangeEvent"/>
+        <childnode refid="62" relation="public-inheritance">
         </childnode>
       </node>
       <node id="61">
-        <label>endstone::ThunderChangeEvent</label>
-        <link refid="classendstone_1_1ThunderChangeEvent"/>
-        <childnode refid="60" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="62">
-        <label>endstone::WeatherChangeEvent</label>
-        <link refid="classendstone_1_1WeatherChangeEvent"/>
-        <childnode refid="60" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="59">
         <label>endstone::WeatherEvent</label>
         <link refid="classendstone_1_1WeatherEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/event/event.h" line="25" column="1" bodyfile="include/endstone/event/event.h" bodystart="25" bodyend="62"/>
+    <location file="include/endstone/event/event.h" line="40" column="1" bodyfile="include/endstone/event/event.h" bodystart="40" bodyend="77"/>
     <listofallmembers>
       <member refid="classendstone_1_1Event_1a17c460fb3a1fa2b8b8f60a0744c0ab89" prot="private" virt="non-virtual"><scope>endstone::Event</scope><name>async_</name></member>
       <member refid="classendstone_1_1Event_1a7f434d804d3d19ce4876be9b2a540fcf" prot="private" virt="non-virtual"><scope>endstone::Event</scope><name>Cancellable</name></member>

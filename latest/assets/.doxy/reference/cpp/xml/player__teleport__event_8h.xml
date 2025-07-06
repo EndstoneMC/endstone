@@ -61,6 +61,8 @@
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/event/player/player_teleport_event.h</label>

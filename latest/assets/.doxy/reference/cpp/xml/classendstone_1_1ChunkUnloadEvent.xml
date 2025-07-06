@@ -120,7 +120,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/chunk/chunk_unload_event.h" line="24" column="1" bodyfile="include/endstone/event/chunk/chunk_unload_event.h" bodystart="24" bodyend="32"/>
+    <location file="include/endstone/event/chunk/chunk_unload_event.h" line="24" column="1" bodyfile="include/endstone/event/chunk/chunk_unload_event.h" bodystart="24" bodyend="30"/>
     <listofallmembers>
       <member refid="classendstone_1_1ChunkEvent_1a0a31bd1419d3b2a6ec089b194e11fcb2" prot="public" virt="non-virtual"><scope>endstone::ChunkUnloadEvent</scope><name>ChunkEvent</name></member>
       <member refid="classendstone_1_1ChunkUnloadEvent_1aaf42a47c7fe2b92eff323ebc9326a18a" prot="public" virt="non-virtual"><scope>endstone::ChunkUnloadEvent</scope><name>ChunkUnloadEvent</name></member>

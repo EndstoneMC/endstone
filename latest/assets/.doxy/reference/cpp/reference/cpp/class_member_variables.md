@@ -32,6 +32,7 @@
 * **baked\_handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **button1\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **button2\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **bed\_** ([**endstone::PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md), [**endstone::PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md))
 * **block\_clicked\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **block\_face\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **BroadcastChannelAdmin** ([**endstone::Server**](classendstone_1_1Server.md))

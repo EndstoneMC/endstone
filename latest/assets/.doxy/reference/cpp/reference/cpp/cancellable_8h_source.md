@@ -39,12 +39,12 @@ class Cancellable : public EventType, public ICancellable {
 public:
     using EventType::EventType;
 
-    [[nodiscard]] bool isCancelled() const final
+    [[nodiscard]] bool isCancelled() const override
     {
         return EventType::cancelled_;
     }
 
-    void setCancelled(bool cancel) final
+    void setCancelled(bool cancel) override
     {
         EventType::cancelled_ = cancel;
     }

@@ -338,14 +338,14 @@
       <member refid="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getSubClientId</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::PacketSendEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PacketSendEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1adfcb982eecf45e887068559173faf47e" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>owned_payload_</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1af46ca7e7e55a4df812ca6cc38466d991" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>packet_id_</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a5d4752bfb59aa606b2a92c577f1ca251" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>PacketSendEvent</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a4c99fc98acca93b96d3bc9730e5e83ab" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>payload_</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a46315b667af5c6f3ec3763c082451502" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>player_</name></member>
-      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::PacketSendEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PacketSendEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>setPayload</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1ab71556ab20b8c96135c756337ffa1a78" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>sub_client_id_</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PacketSendEvent</scope><name>~Event</name></member>

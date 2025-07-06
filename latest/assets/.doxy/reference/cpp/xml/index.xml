@@ -284,8 +284,8 @@
     <member refid="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" kind="function"><name>setOnClick</name></member>
   </compound>
   <compound refid="classendstone_1_1Cancellable" kind="class"><name>endstone::Cancellable</name>
-    <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" kind="function"><name>isCancelled</name></member>
-    <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" kind="function"><name>setCancelled</name></member>
+    <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" kind="function"><name>isCancelled</name></member>
+    <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" kind="function"><name>setCancelled</name></member>
     <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" kind="function"><name>cancel</name></member>
     <member refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418" kind="function"><name>isCancellable</name></member>
   </compound>
@@ -1201,6 +1201,17 @@
     <member refid="classendstone_1_1PlayerBanList_1aad775f3d7c09741817b4768a1e56a31a" kind="function"><name>removeBan</name></member>
     <member refid="classendstone_1_1PlayerBanList_1ac46c7ca6a478bf175ff321c05cf5c0a5" kind="function"><name>removeBan</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerBedEnterEvent" kind="class"><name>endstone::PlayerBedEnterEvent</name>
+    <member refid="classendstone_1_1PlayerBedEnterEvent_1adbe5020df822b71c78edbfde08633881" kind="variable"><name>bed_</name></member>
+    <member refid="classendstone_1_1PlayerBedEnterEvent_1af989cb5f5f3c58103e7eb2083977d31c" kind="function"><name>PlayerBedEnterEvent</name></member>
+    <member refid="classendstone_1_1PlayerBedEnterEvent_1a5e4bf0d94da73a970c346f33e9cae394" kind="function"><name>getBed</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerBedLeaveEvent" kind="class"><name>endstone::PlayerBedLeaveEvent</name>
+    <member refid="classendstone_1_1PlayerBedLeaveEvent_1a1efc7ba2b5c6f04bdcd70a4c84dd0966" kind="variable"><name>bed_</name></member>
+    <member refid="classendstone_1_1PlayerBedLeaveEvent_1accad2b701e80790adc36ddd390720d01" kind="function"><name>PlayerBedLeaveEvent</name></member>
+    <member refid="classendstone_1_1PlayerBedLeaveEvent_1a1961df4cabf3fb7a281c01379ce1cbf5" kind="function"><name>~PlayerBedLeaveEvent</name></member>
+    <member refid="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" kind="function"><name>getBed</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerChatEvent_1a5a2fadea22a0df7dcfd1e3229ace5414" kind="variable"><name>message_</name></member>
@@ -1902,6 +1913,10 @@
     <member refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734a10cc77057fdaaeb85630c7ba35423a21" kind="enumvalue"><name>Segmented10</name></member>
     <member refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734a78a0e9a4e6b5cde6eb5f30e264ea5cd6" kind="enumvalue"><name>Segmented12</name></member>
     <member refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734a92359dcedf3f43775a3e540c8cac0b46" kind="enumvalue"><name>Segmented20</name></member>
+    <member refid="namespaceendstone_1a5415420c66b97075d7306679e05c931a" kind="enum"><name>EventResult</name></member>
+    <member refid="namespaceendstone_1a5415420c66b97075d7306679e05c931aa3682d1665cf331373000c20680732d3a" kind="enumvalue"><name>Deny</name></member>
+    <member refid="namespaceendstone_1a5415420c66b97075d7306679e05c931aa7a1920d61156abc05a60135aefe8bc67" kind="enumvalue"><name>Default</name></member>
+    <member refid="namespaceendstone_1a5415420c66b97075d7306679e05c931aa45f0fb72a0defdfdb01de4b5a5a6876b" kind="enumvalue"><name>Allow</name></member>
     <member refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kind="enum"><name>EventPriority</name></member>
     <member refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342ab5b8e20937205384be7b9e0c29a28fdb" kind="enumvalue"><name>Lowest</name></member>
     <member refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a28d0edd045e05cf5af64e35ae0c4c6ef" kind="enumvalue"><name>Low</name></member>
@@ -2079,6 +2094,10 @@
   <compound refid="dimension__event_8h" kind="file"><name>dimension_event.h</name>
   </compound>
   <compound refid="level__event_8h" kind="file"><name>level_event.h</name>
+  </compound>
+  <compound refid="player__bed__enter__event_8h" kind="file"><name>player_bed_enter_event.h</name>
+  </compound>
+  <compound refid="player__bed__leave__event_8h" kind="file"><name>player_bed_leave_event.h</name>
   </compound>
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>

@@ -89,6 +89,8 @@
     <innerclass refid="classendstone_1_1Player" prot="public">endstone::Player</innerclass>
     <innerclass refid="classendstone_1_1PlayerBanEntry" prot="public">endstone::PlayerBanEntry</innerclass>
     <innerclass refid="classendstone_1_1PlayerBanList" prot="public">endstone::PlayerBanList</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBedEnterEvent" prot="public">endstone::PlayerBedEnterEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBedLeaveEvent" prot="public">endstone::PlayerBedLeaveEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerChatEvent" prot="public">endstone::PlayerChatEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerCommandEvent" prot="public">endstone::PlayerCommandEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerDeathEvent" prot="public">endstone::PlayerDeathEvent</innerclass>
@@ -354,6 +356,42 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/boss/bar_style.h" line="19" column="1" bodyfile="include/endstone/boss/bar_style.h" bodystart="19" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a5415420c66b97075d7306679e05c931a" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>EventResult</name>
+        <qualifiedname>endstone::EventResult</qualifiedname>
+        <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa3682d1665cf331373000c20680732d3a" prot="public">
+          <name>Deny</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Deny the event. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa7a1920d61156abc05a60135aefe8bc67" prot="public">
+          <name>Default</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Neither deny nor allow the event. The server will proceed with its normal handling. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa45f0fb72a0defdfdb01de4b5a5a6876b" prot="public">
+          <name>Allow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Allow / Force the event. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="22" column="1" bodyfile="include/endstone/event/event.h" bodystart="22" bodyend="35"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" prot="public" static="no" strong="yes">
         <type></type>

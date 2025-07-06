@@ -29,6 +29,12 @@
 
 namespace endstone {
 
+enum class EventResult {
+    Deny,
+    Default,
+    Allow
+};
+
 class Event {
 public:
     explicit Event(bool async = false) : async_(async){};

@@ -72,6 +72,8 @@ Here is a list of all files with brief descriptions:
                 * **file** [**dimension\_event.h**](dimension__event_8h.md)     
                 * **file** [**level\_event.h**](level__event_8h.md)     
             * **dir** [**player**](dir_7c05c37b25e9c9eccd9c63c2d313ba28.md)     
+                * **file** [**player\_bed\_enter\_event.h**](player__bed__enter__event_8h.md)     
+                * **file** [**player\_bed\_leave\_event.h**](player__bed__leave__event_8h.md)     
                 * **file** [**player\_chat\_event.h**](player__chat__event_8h.md)     
                 * **file** [**player\_command\_event.h**](player__command__event_8h.md)     
                 * **file** [**player\_death\_event.h**](player__death__event_8h.md)     

@@ -76,8 +76,8 @@ Inherits the following classes: EventType,  [endstone::ICancellable](classendsto
 | Type | Name |
 | ---: | :--- |
 | virtual void | [**cancel**](#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual bool | [**isCancelled**](#function-iscancelled) () const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual void | [**setCancelled**](#function-setcancelled) (bool cancel) <br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -169,7 +169,7 @@ Implements [*endstone::ICancellable::cancel*](classendstone_1_1ICancellable.md#f
 
 _Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._ 
 ```C++
-inline virtual bool endstone::Cancellable::isCancelled () const
+inline virtual bool endstone::Cancellable::isCancelled () override const
 ```
 
 
@@ -198,7 +198,7 @@ _Sets the cancellation state of this event. A cancelled event will not be execut
 ```C++
 inline virtual void endstone::Cancellable::setCancelled (
     bool cancel
-) 
+) override
 ```
 
 

@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_event.h" line="27" column="5" bodyfile="include/endstone/event/event.h" bodystart="27" bodyend="27"/>
+        <location file="include/endstone/event/server/server_event.h" line="27" column="5" bodyfile="include/endstone/event/event.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

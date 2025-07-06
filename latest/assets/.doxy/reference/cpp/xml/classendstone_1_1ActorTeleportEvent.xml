@@ -285,10 +285,10 @@
       <member refid="classendstone_1_1ActorTeleportEvent_1a2d41334b6b7b8362cad60430d56febb2" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>getFrom</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1ab0bce5bf080702eb2808d46e7e1ab612" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>getTo</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1Cancellable_1a75cf54ed448c1aa27fed28b0e75b3057" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1a2f7ffbf56f181255a139b024ba509783" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>operator=</name></member>
-      <member refid="classendstone_1_1Cancellable_1a27e3aa0086fb116acce6fa98aaa417e9" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>setFrom</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>setTo</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1a57f1bfdf09d6f173e5fe1d34f2a2c3c6" prot="private" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>to_</name></member>
