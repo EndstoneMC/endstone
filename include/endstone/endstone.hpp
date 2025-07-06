@@ -59,6 +59,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/actor/actor_spawn_event.h"
 #include "event/actor/actor_teleport_event.h"
 #include "event/block/block_break_event.h"
+#include "event/block/block_cook_event.h"
 #include "event/block/block_event.h"
 #include "event/block/block_piston_event.h"
 #include "event/block/block_piston_extend_event.h"

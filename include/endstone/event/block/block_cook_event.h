@@ -19,26 +19,50 @@
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
+/**
+ * @brief Called when an ItemStack is successfully cooked in a block.
+ */
 class BlockCookEvent : public Cancellable<BlockEvent> {
+public:
     ENDSTONE_EVENT(BlockCookEvent);
 
-public:
-    BlockCookEvent(std::unique_ptr<Block> block, const ItemStack &source, const ItemStack &result)
-        : Cancellable(std::move(block)), source_(source), result_(result)
+    BlockCookEvent(std::unique_ptr<Block> block, std::unique_ptr<ItemStack> source, std::unique_ptr<ItemStack> result)
+        : Cancellable(std::move(block)), source_(std::move(source)), result_(std::move(result))
     {
     }
 
-    const ItemStack &getSource()
+    /**
+     * @brief Gets the smelted ItemStack for this event
+     *
+     * @return smelting source ItemStack
+     */
+    [[nodiscard]] const ItemStack &getSource() const
     {
-        return source_;
+        return *source_;
     }
 
-    const ItemStack &getResult()
+    /**
+     * @brief Gets the resultant ItemStack for this event
+     *
+     * @return smelting result ItemStack
+     */
+    [[nodiscard]] const ItemStack &getResult() const
     {
-        return result_;
+        return *result_;
+    }
+
+    /**
+     * @brief Sets the resultant ItemStack for this event
+     *
+     * @param result new result ItemStack
+     */
+    void setResult(std::unique_ptr<ItemStack> result)
+    {
+        result_ = std::move(result);
     }
 
 private:
-    const ItemStack &source_, &result_;
+    std::unique_ptr<ItemStack> source_;
+    std::unique_ptr<ItemStack> result_;
 };
 }  // namespace endstone
