@@ -47,6 +47,11 @@ const std::vector<HashedString> &BlockLegacy::getTags() const
     return tags_;
 }
 
+const Material &BlockLegacy::getMaterial() const
+{
+    return material_;
+}
+
 const std::string &BlockLegacy::getDescriptionId() const
 {
     return description_id;
@@ -65,6 +70,12 @@ const std::string &BlockLegacy::getNamespace() const
 const HashedString &BlockLegacy::getName() const
 {
     return name_info_.full_name;
+}
+
+bool BlockLegacy::anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &block_type_ids) const
+{
+    return std::ranges::any_of(block_type_ids,
+                               [this](const auto &block_type_id) { return block_type_id.get() == getName(); });
 }
 
 const Block &BlockLegacy::getDefaultState() const
@@ -111,4 +122,17 @@ std::optional<int> BlockLegacy::_tryLookupAlteredStateCollection(size_t id, Data
         }
     }
     return std::nullopt;
+}
+
+const Block *BlockLegacy::_trySetStateFromAlteredStateCollection(size_t id, int val, DataID data) const
+{
+    if (altered_state_collections_.empty()) {
+        return nullptr;
+    }
+    for (const auto &altered_state : altered_state_collections_) {
+        if (altered_state->getBlockState().getID() == id) {
+            return altered_state->setState(*this, data, val);
+        }
+    }
+    return nullptr;
 }

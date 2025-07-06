@@ -12,39 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#pragma once
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+#include "bedrock/world/level/block/block_legacy.h"
 
-ChunkSource &Dimension::getChunkSource() const
-{
-    return *chunk_source_;
-}
+template <typename TBase>
+class ActorBlockBase : public TBase {
+public:
 
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+    virtual void neighborChanged(BlockSource &, const BlockPos &, const BlockPos &) const = 0;
+    virtual void triggerEvent(BlockSource &, const BlockPos &, int, int) const = 0;
+};
 
-Weather &Dimension::getWeather() const
-{
-    return *weather_;
-}
-
-CircuitSystem &Dimension::getCircuitSystem()
-{
-    return *circuit_system_;
-}
-
-bool Dimension::isRedstoneTick() const
-{
-    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
-}
-
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
+using ActorBlock = ActorBlockBase<BlockLegacy>;

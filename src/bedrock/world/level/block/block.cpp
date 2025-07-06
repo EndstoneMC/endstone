@@ -33,12 +33,12 @@ Brightness Block::getLight() const
     return direct_data_.light;
 }
 
-FlameOdds Block::getFlameOdds() const
+int Block::getFlameOdds() const
 {
     return direct_data_.flame_odds;
 }
 
-BurnOdds Block::getBurnOdds() const
+int Block::getBurnOdds() const
 {
     return direct_data_.burn_odds;
 }
@@ -95,6 +95,16 @@ bool Block::requiresCorrectToolForDrops() const
 float Block::getThickness() const
 {
     return legacy_block_->getThickness();
+}
+
+void Block::destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const
+{
+    getLegacyBlock().destroy(region, pos, *this, entity_source);
+}
+
+const Material &Block::getMaterial() const
+{
+    return getLegacyBlock().getMaterial();
 }
 
 float Block::getFriction() const

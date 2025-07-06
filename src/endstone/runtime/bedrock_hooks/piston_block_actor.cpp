@@ -1,5 +1,6 @@
 #include "bedrock/world/level/block/actor/piston_block_actor.h"
 
+#include "bedrock/world/level/block/states/vanilla_block_states.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/core/block/block.h"
@@ -53,7 +54,7 @@ void PistonBlockActor::tick(BlockSource &region)
     if (extending || retracting) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto block = endstone::core::EndstoneBlock::at(region, position_);
-        const auto face = block->getMinecraftBlock().getState<FacingID>("facing_direction");
+        const auto face = block->getMinecraftBlock().getState<FacingID>(VanillaStateIds::FacingDirection);
         if (extending) {
             endstone::BlockPistonExtendEvent e(std::move(block), static_cast<endstone::BlockFace>(face));
             server.getPluginManager().callEvent(e);

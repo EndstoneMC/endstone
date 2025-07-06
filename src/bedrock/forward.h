@@ -179,7 +179,6 @@ class PrivateKeyManager;
 class PropertyGroupManager;
 class PropertiesSettings;
 class ProjectileFactory;
-class Random;
 class RenderParams;
 class ResolvedItemIconInfo;
 class ResolvedTextObject;
@@ -221,7 +220,6 @@ class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class UpdateEntityAfterFallOnInterface;
 class VolumeEntityManagerServer;
-class Weather {};
 class WorldGenerator;
 class WorldHistoryPackSource;
 class _TickPtr;  // NOLINT
@@ -233,7 +231,6 @@ enum class AdvanceFrameResult;
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
 enum class BedSleepingResult;
-enum class BlockActorType;
 enum BlockActorRendererId : unsigned int;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
@@ -251,7 +248,6 @@ enum class JsonBetaState;
 enum class LavaFlammable;
 enum class LevelChunkFormat : std::int8_t;
 enum class LevelEvent;
-enum class LevelSoundEvent;
 enum class NewInteractionModel : int;
 enum class NoteBlockInstrument;
 enum class ParticleType;
@@ -287,6 +283,7 @@ namespace Core {
 class FilePathManager;
 class LevelStorageResult;
 class StorageAreaState;
+class Random {};
 }  // namespace Core
 namespace ClientBlobCache {
 namespace Server {
@@ -299,9 +296,6 @@ class GameConnectionInfo;
 class GamePublishSetting;
 class MultiplayerServiceManager;
 }  // namespace Social
-namespace Puv::Legacy {
-enum class LevelSoundEvent : int;
-}
 namespace Scripting {
 class LifetimeRegistryReference;
 template <typename T>

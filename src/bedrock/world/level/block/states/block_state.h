@@ -19,6 +19,7 @@
 #include "bedrock/common_types.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/nbt/nbt_io.h"
+#include "bedrock/symbol.h"
 
 class BlockState {
 protected:
@@ -37,7 +38,16 @@ public:
     }
     virtual void toNBT(CompoundTag &, int) const = 0;
     virtual bool fromNBT(const CompoundTag &, int &) const = 0;
-    static void forEachState(std::function<bool(const BlockState &)>);
+    static void forEachState(std::function<bool(const BlockState &)> callback)
+    {
+        const auto *node = BEDROCK_VAR(StateListNode *, "BlockState::StateListNode::head");
+        while (node != nullptr) {
+            if (!callback(*node->stat)) {
+                break;
+            }
+            node = node->next;
+        }
+    }
 
 protected:
     const size_t id_;
@@ -76,8 +86,23 @@ public:
     [[nodiscard]] bool fromNBT(const CompoundTag &, int &) const override;
 };
 
+class Block;
 class BlockStateInstance {
 public:
+    template <typename T>
+    const Block *trySet(DataID data, const T &val, const std::vector<std::unique_ptr<Block>> &permutations) const
+    {
+        auto v = static_cast<std::uint32_t>(val);
+        if (v >= variation_count_) {
+            return nullptr;
+        }
+        auto index = (data & ~mask_) | ((v << (end_bit_ - num_bits_ + 1)) & mask_);
+        if (index >= permutations.size()) {
+            return nullptr;
+        }
+        return permutations[index].get();
+    }
+
     template <typename T>
     T get(const DataID &data) const
     {

@@ -12,39 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/level/block/states/vanilla_block_states.h"
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
-
-ChunkSource &Dimension::getChunkSource() const
-{
-    return *chunk_source_;
-}
-
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
-
-Weather &Dimension::getWeather() const
-{
-    return *weather_;
-}
-
-CircuitSystem &Dimension::getCircuitSystem()
-{
-    return *circuit_system_;
-}
-
-bool Dimension::isRedstoneTick() const
-{
-    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
-}
-
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
+namespace VanillaStateIds {
+static const HashedString Age = "age";
+static const HashedString ExplodeBit = "explode_bit";
+static const HashedString Extinguished = "extinguished";
+static const HashedString FacingDirection = "facing_direction";
+}  // namespace VanillaStateIds

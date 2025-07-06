@@ -16,6 +16,8 @@
 
 #include <optional>
 
+#include <gsl/span>
+
 #include "bedrock/common_types.h"
 #include "bedrock/core/container/cache.h"
 #include "bedrock/core/math/color.h"
@@ -24,6 +26,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/int_range.h"
+#include "bedrock/util/random.h"
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
 #include "bedrock/world/item/item_category.h"
@@ -32,6 +35,7 @@
 #include "bedrock/world/level/block/tint_method.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/clip_parameters.h"
+#include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
 #include "bedrock/world/phys/hit_result.h"
 
@@ -45,8 +49,7 @@ class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
-class Material;
-class MaterialType;
+enum class BlockActorType;
 
 enum class BlockProperty : std::uint64_t {
     None = 0x0,
@@ -108,14 +111,14 @@ public:
         HashedString full_name;            // +80
         HashedString pre_flattening_name;  // +128
     };
-    static const int UPDATE_NEIGHBORS = 1;
-    static const int UPDATE_CLIENTS = 2;
-    static const int UPDATE_INVISIBLE = 4;
-    static const int UPDATE_ITEM_DATA = 16;
-    static const int UPDATE_NONE = 4;
-    static const int UPDATE_ALL = 3;
-    static const int TILE_NUM_SHIFT = 12;
-    static const int NUM_LEGACY_BLOCK_TYPES = 512;
+    static constexpr int UPDATE_NEIGHBORS = 1;
+    static constexpr int UPDATE_CLIENTS = 2;
+    static constexpr int UPDATE_INVISIBLE = 4;
+    static constexpr int UPDATE_ITEM_DATA = 16;
+    static constexpr int UPDATE_NONE = 4;
+    static constexpr int UPDATE_ALL = 3;
+    static constexpr int TILE_NUM_SHIFT = 12;
+    static constexpr int NUM_LEGACY_BLOCK_TYPES = 512;
 
     BlockLegacy(const std::string &, int, const Material &);
 
@@ -291,6 +294,12 @@ public:
     [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
     [[nodiscard]] bool hasState(const HashedString &) const;
     template <typename T>
+    int getState(const BlockState &block_state, DataID data) const
+    {
+        return getState<T>(block_state.getID(), data);
+    }
+
+    template <typename T>
     T getState(const size_t &id, DataID data) const
     {
         if (const auto it = states_.find(id); it != states_.end()) {
@@ -298,39 +307,43 @@ public:
         }
         return _tryLookupAlteredStateCollection(id, data).value_or(0);
     }
+
+    template <typename T>
+    const Block *trySetState(const BlockState &block_state, T val, DataID data) const
+    {
+        if (const auto it = states_.find(block_state.getID()); it != states_.end()) {
+            return it->second.trySet<T>(data, val, block_permutations_);
+        }
+        if (auto *result = _trySetStateFromAlteredStateCollection(block_state.getID(), static_cast<int>(val), data)) {
+            return result;
+        }
+        if (return_default_block_on_unidentified_block_state_) {
+            return &getDefaultState();
+        }
+        return nullptr;
+    }
+
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
+    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] const std::string &getDescriptionId() const;
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;
     [[nodiscard]] const HashedString &getName() const;
+    bool anyOf(std::initializer_list<std::reference_wrapper<const HashedString>>) const;
+    bool anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &block_type_ids) const;
     [[nodiscard]] const Block &getDefaultState() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] std::int16_t getBlockItemId() const;
     [[nodiscard]] TintMethod getTintMethod() const;
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const;
 
-    // Endstone begins
-    template <typename T>
-    T getState(const HashedString &name, DataID data) const
-    {
-        if (const auto it = state_name_map_.find(name); it != state_name_map_.end()) {
-            return getState<T>(it->second, data);
-        }
-        for (const auto &altered_state : altered_state_collections_) {
-            if (altered_state->getBlockState().getName() == name) {
-                return altered_state->getState(*this, data).value_or(0);
-            }
-        }
-        return 0;
-    }
-    // Endstone ends
-
 private:
     std::optional<int> _tryLookupAlteredStateCollection(size_t, DataID) const;
+    const Block *_trySetStateFromAlteredStateCollection(size_t, int, DataID) const;
 
 public:
     std::string description_id;  // +8

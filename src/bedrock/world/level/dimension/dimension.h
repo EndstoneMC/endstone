@@ -30,6 +30,7 @@
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/levelgen/v2/providers/int_provider.h"
 #include "bedrock/world/level/saveddata/saved_data.h"
+#include "bedrock/world/level/weather.h"
 #include "bedrock/world/redstone/circuit/circuit_system.h"
 
 class Level;
@@ -63,6 +64,7 @@ public:
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] ChunkSource &getChunkSource() const;
     [[nodiscard]] BlockSource &getBlockSourceFromMainChunkSource() const;
+    Weather &getWeather() const;
     CircuitSystem &getCircuitSystem();
     [[nodiscard]] bool isRedstoneTick() const;
     [[nodiscard]] const std::string &getName() const;
