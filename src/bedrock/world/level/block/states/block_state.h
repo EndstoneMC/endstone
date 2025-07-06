@@ -19,6 +19,7 @@
 #include "bedrock/common_types.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/nbt/nbt_io.h"
+#include "bedrock/symbol.h"
 
 class BlockState {
 protected:
@@ -37,7 +38,16 @@ public:
     }
     virtual void toNBT(CompoundTag &, int) const = 0;
     virtual bool fromNBT(const CompoundTag &, int &) const = 0;
-    static void forEachState(std::function<bool(const BlockState &)>);
+    static void forEachState(std::function<bool(const BlockState &)> callback)
+    {
+        const auto *node = BEDROCK_VAR(StateListNode *, "BlockState::StateListNode::head");
+        while (node != nullptr) {
+            if (!callback(*node->stat)) {
+                break;
+            }
+            node = node->next;
+        }
+    }
 
 protected:
     const size_t id_;
