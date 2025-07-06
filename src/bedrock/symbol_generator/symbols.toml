@@ -1,4 +1,4 @@
-timestamp = 1751802966
+timestamp = 1751812809
 version = "1.21.93"
 
 [windows]
@@ -17,6 +17,8 @@ version = "1.21.93"
 "?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 50242224
 # BlockTypeRegistry
 "?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockLegacy@@@Z$$A6A_N0@Z@brstd@@@Z" = 52399648
+# CampfireBlockActor
+"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 52190928
 # Command
 "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 33708224
 # CommandOriginLoader
@@ -103,8 +105,6 @@ version = "1.21.93"
 # TeleportCommand
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 38679584
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 38680240
-# CampfireBlockActor
-"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 52187856
 # Weather
 "?isRainingAt@Weather@@QEBA_NAEAVBlockSource@@AEBVBlockPos@@@Z" = 50044848
 # Variables
