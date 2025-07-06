@@ -132,7 +132,7 @@ public:
 
     [[nodiscard]] bool isEmptyBlock(const BlockPos &pos) const
     {
-        return getBlock(pos).getName() != BedrockBlockNames::Air;
+        return getBlock(pos).getName() == BedrockBlockNames::Air;
     }
 
     [[nodiscard]] const Biome &getBiome(const BlockPos &) const;

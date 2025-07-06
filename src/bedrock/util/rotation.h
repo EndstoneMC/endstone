@@ -14,7 +14,7 @@
 
 #pragma once
 
-enum class Rotation :std:: uint8_t {
+enum class Rotation : std::uint8_t {
     None = 0,
     Rotate90 = 1,
     Rotate180 = 2,

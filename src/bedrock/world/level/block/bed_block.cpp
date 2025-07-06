@@ -111,7 +111,9 @@ bool BedBlock::isValidStandUpPosition(BlockSource &region, const BlockPos &pos)
     const auto &block = region.getBlock(pos);
     const auto is_bed = block.getName() == VanillaBlockTypeIds::Bed;
     const auto &block_below = region.getBlock(pos.below());
-    if (AABB aabb; !block_below.getCollisionShape(aabb, region, pos, nullptr)) {
+
+    AABB buffer_aabb(0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
+    if (!block_below.getCollisionShape(buffer_aabb, region, pos, nullptr)) {
         return false;
     }
 
