@@ -21,6 +21,7 @@
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/shared_ptr.h"
+#include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/gamemode/interaction_result.h"
@@ -104,7 +105,7 @@ public:
     virtual int getEnchantValue() const = 0;
     virtual int getArmorValue() const = 0;
     virtual int getToughnessValue() const = 0;
-    virtual Puv::Legacy::LevelSoundEvent getBreakSound() const = 0;
+    virtual LevelSoundEvent getBreakSound() const = 0;
     virtual bool isComplex() const = 0;
     virtual bool isValidAuxValue(int) const = 0;
     virtual int getDamageChance(int) const = 0;
@@ -149,7 +150,7 @@ public:
     virtual bool validFishInteraction(int) const = 0;
     virtual void enchantProjectile(ItemStackBase const &, Actor &) const = 0;
     virtual ActorLocation getEquipLocation() const = 0;
-    virtual Puv::Legacy::LevelSoundEvent getEquipSound() const = 0;
+    virtual LevelSoundEvent getEquipSound() const = 0;
     virtual bool shouldSendInteractionGameEvents() const = 0;
     virtual bool useInterruptedByAttacking() const = 0;
     virtual bool hasSameRelevantUserData(ItemStackBase const &, ItemStackBase const &) const = 0;

@@ -12,39 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#pragma once
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+#include <optional>
+#include <thread>
 
-ChunkSource &Dimension::getChunkSource() const
-{
-    return *chunk_source_;
-}
+namespace Bedrock::Application {
+enum class ThreadOwnerBehavior : int {
+    Assert = 0,
+    Log = 1,
+};
 
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+class ThreadOwnerBase {
+protected:
+    std::optional<std::thread::id> thread_id;
+    unsigned int thread_check_index_;
+    int thread_transfer_count_;
 
-Weather &Dimension::getWeather() const
-{
-    return *weather_;
-}
+public:
+    void releaseThread();
+};
 
-CircuitSystem &Dimension::getCircuitSystem()
-{
-    return *circuit_system_;
-}
-
-bool Dimension::isRedstoneTick() const
-{
-    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
-}
-
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
+template <typename T, ThreadOwnerBehavior WrongThreadBehavior = ThreadOwnerBehavior::Assert>
+class ThreadOwner : public ThreadOwnerBase {
+public:
+private:
+    T object_;  // +24
+};
+}  // namespace Bedrock::Application

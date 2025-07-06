@@ -12,39 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#pragma once
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+#include <bedrock/core/utility/non_owner_pointer.h>
 
-ChunkSource &Dimension::getChunkSource() const
-{
-    return *chunk_source_;
-}
+#include "actor.h"
 
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+class ActorFetcher;
+class ActorSoundIdentifier {
+public:
+    ActorSoundIdentifier() : identifier_(EMPTY_IDENTIFIER) {}
 
-Weather &Dimension::getWeather() const
-{
-    return *weather_;
-}
-
-CircuitSystem &Dimension::getCircuitSystem()
-{
-    return *circuit_system_;
-}
-
-bool Dimension::isRedstoneTick() const
-{
-    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
-}
-
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
+private:
+    inline static ActorDefinitionIdentifier EMPTY_IDENTIFIER;
+    const ActorDefinitionIdentifier &identifier_;
+    Bedrock::NonOwnerPointer<const ActorFetcher> actor_fetcher_;
+    ActorUniqueID actor_id_ = ActorUniqueID::INVALID_ID;
+    bool is_baby_ = false;
+};
+static_assert(sizeof(ActorSoundIdentifier) == 48);

@@ -12,39 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#pragma once
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+#include "bedrock/world/level/block/actor/block_actor.h"
 
-ChunkSource &Dimension::getChunkSource() const
-{
-    return *chunk_source_;
-}
-
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
-
-Weather &Dimension::getWeather() const
-{
-    return *weather_;
-}
-
-CircuitSystem &Dimension::getCircuitSystem()
-{
-    return *circuit_system_;
-}
-
-bool Dimension::isRedstoneTick() const
-{
-    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
-}
-
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
+class BeehiveBlockActor : public BlockActor {
+public:
+    static constexpr BlockActorType TypeId = BlockActorType::Beehive;
+    BeehiveBlockActor(const BlockPos &);
+    void evictAll(BlockSource &, bool);
+};

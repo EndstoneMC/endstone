@@ -12,39 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/level/weather.h"
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+#include "bedrock/symbol.h"
 
-ChunkSource &Dimension::getChunkSource() const
+bool Weather::isRainingAt(BlockSource &region, const BlockPos &pos) const
 {
-    return *chunk_source_;
-}
-
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
-
-Weather &Dimension::getWeather() const
-{
-    return *weather_;
-}
-
-CircuitSystem &Dimension::getCircuitSystem()
-{
-    return *circuit_system_;
-}
-
-bool Dimension::isRedstoneTick() const
-{
-    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
-}
-
-const std::string &Dimension::getName() const
-{
-    return name_;
+    return BEDROCK_CALL(&Weather::isRainingAt, this, region, pos);
 }
