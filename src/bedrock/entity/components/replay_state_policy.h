@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/entity/utilities/movement_correction_interface.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
 

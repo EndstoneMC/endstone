@@ -19,17 +19,98 @@
 #include <fmt/format.h>
 
 #include "bedrock/core/math/vec3.h"
+#include "bedrock/util/mirror.h"
+#include "bedrock/util/rotation.h"
 
 class BlockPos {
 public:
+    static const BlockPos MIN;
     static const BlockPos ZERO;
 
-    BlockPos() = default;
-    BlockPos(int x, int y, int z) : x(x), y(y), z(z){};
+    explicit constexpr BlockPos(int v) : x(v), y(v), z(v) {}
+    constexpr BlockPos() = default;
+    constexpr BlockPos(int x, int y, int z) : x(x), y(y), z(z){};
     BlockPos(const Vec3 &vec)
         : x(static_cast<int>(std::floorf(vec.x))), y(static_cast<int>(std::floorf(vec.y))),
           z(static_cast<int>(std::floorf(vec.z))){};
     BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)) {}
+
+    BlockPos operator*(int scalar) const
+    {
+        return {x * scalar, y * scalar, z * scalar};
+    }
+
+    const BlockPos &operator*=(int scalar)
+    {
+        x *= scalar;
+        y *= scalar;
+        z *= scalar;
+        return *this;
+    }
+
+    BlockPos operator/(int divisor) const
+    {
+        return {x / divisor, y / divisor, z / divisor};
+    }
+
+    BlockPos operator+(const BlockPos &rhs) const
+    {
+        return {x + rhs.x, y + rhs.y, z + rhs.z};
+    }
+
+    BlockPos operator-(const BlockPos &rhs) const
+    {
+        return {x - rhs.x, y - rhs.y, z - rhs.z};
+    }
+
+    BlockPos operator+(int delta) const
+    {
+        return {x + delta, y + delta, z + delta};
+    }
+
+    BlockPos operator-(int delta) const
+    {
+        return {x - delta, y - delta, z - delta};
+    }
+
+    const BlockPos &operator+=(const Vec3 &vec)
+    {
+        x += static_cast<int>(std::floor(vec.x));
+        y += static_cast<int>(std::floor(vec.y));
+        z += static_cast<int>(std::floor(vec.z));
+        return *this;
+    }
+
+    const BlockPos &operator+=(const BlockPos &rhs)
+    {
+        x += rhs.x;
+        y += rhs.y;
+        z += rhs.z;
+        return *this;
+    }
+
+    const BlockPos &operator-=(const BlockPos &rhs)
+    {
+        x -= rhs.x;
+        y -= rhs.y;
+        z -= rhs.z;
+        return *this;
+    }
+
+    BlockPos operator-() const
+    {
+        return {-x, -y, -z};
+    }
+
+    bool operator==(const BlockPos &rhs) const
+    {
+        return x == rhs.x && y == rhs.y && z == rhs.z;
+    }
+
+    bool operator!=(const BlockPos &rhs) const
+    {
+        return !(*this == rhs);
+    }
 
     operator Vec3() const
     {
@@ -106,14 +187,54 @@ public:
         return offset(n, 0, 0);
     }
 
-    bool operator==(const BlockPos &rhs) const
+    [[nodiscard]] BlockPos transform(Rotation rotation, Mirror mirror, const Vec3 &pivot) const
     {
-        return x == rhs.x && y == rhs.y && z == rhs.z;
-    }
+        BlockPos out = *this;
 
-    bool operator!=(const BlockPos &rhs) const
-    {
-        return !(*this == rhs);
+        switch (mirror) {
+        case Mirror::None:
+            break;
+        case Mirror::X:
+            out.z = 2.0F * pivot.z - out.z;
+            break;
+        case Mirror::Z:
+            out.x = 2.0F * pivot.x - out.x;
+            break;
+        case Mirror::XZ:
+            out.z = 2.0F * pivot.z - out.z;
+            out.x = 2.0F * pivot.x - out.x;
+            break;
+        }
+
+        // 2) Rotation step about pivot in the X–Z plane
+        float dx = out.x - pivot.x;
+        float dz = out.z - pivot.z;
+        float rx, rz;
+
+        switch (rotation) {
+        case Rotation::Rotate90:
+            rx = dz;
+            rz = -dx;
+            break;
+        case Rotation::Rotate180:
+            rx = -dx;
+            rz = -dz;
+            break;
+        case Rotation::Rotate270:
+            rx = -dz;
+            rz = dx;
+            break;
+        case Rotation::None:
+        default:
+            rx = dx;
+            rz = dz;
+            break;
+        }
+
+        out.x = pivot.x + rx;
+        out.z = pivot.z + rz;
+
+        return out;
     }
 
     int x;
@@ -121,11 +242,11 @@ public:
     int z;
 };
 
-inline const BlockPos BlockPos::ZERO{0, 0, 0};
+inline const BlockPos BlockPos::ZERO(0);
+inline const BlockPos BlockPos::MIN(std::numeric_limits<int>::min());
 
-namespace std {
 template <>
-struct hash<BlockPos> {
+struct std::hash<BlockPos> {
     std::size_t operator()(const BlockPos &pos) const noexcept
     {
         static std::hash<int> hasher;
@@ -136,11 +257,9 @@ struct hash<BlockPos> {
         return seed;
     }
 };
-}  // namespace std
 
-namespace fmt {
 template <>
-struct formatter<BlockPos> : formatter<string_view> {
+struct fmt::formatter<BlockPos> : formatter<string_view> {
     using Type = BlockPos;
 
     template <typename FormatContext>
@@ -149,4 +268,3 @@ struct formatter<BlockPos> : formatter<string_view> {
         return format_to(ctx.out(), "BlockPos(x={}, y={}, z={})", val.x, val.y, val.z);
     }
 };
-}  // namespace fmt

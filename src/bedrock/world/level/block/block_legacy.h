@@ -291,8 +291,10 @@ public:
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 
+    [[nodiscard]] bool hasProperty(BlockProperty property) const;
     [[nodiscard]] const Block *tryGetStateFromLegacyData(DataID) const;
-    [[nodiscard]] bool hasState(const HashedString &) const;
+    [[nodiscard]] bool hasState(const BlockState &block_state) const;
+    [[nodiscard]] bool hasState(const HashedString &name) const;
     template <typename T>
     int getState(const BlockState &block_state, DataID data) const
     {

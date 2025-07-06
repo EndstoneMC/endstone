@@ -23,6 +23,7 @@
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/commands/command_permission_level.h"
+#include "bedrock/textobject/text_object.h"
 #include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/player_inventory.h"
@@ -38,6 +39,16 @@
 #include "bedrock/world/player_ui_container.h"
 
 class PlayerRespawnRandomizer;
+
+enum class BedSleepingResult : int {  // NOLINTBEGIN
+    OK = 0,
+    NOT_POSSIBLE_HERE = 1,
+    NOT_POSSIBLE_NOW = 2,
+    TOO_FAR_AWAY = 3,
+    OTHER_PROBLEM = 4,
+    NOT_SAFE = 5,
+    BED_OBSTRUCTED = 6,  // NOLINTEND
+};
 
 class Player : public Mob {
 public:
@@ -85,8 +96,8 @@ public:
     virtual void displayTextObjectWhisperMessage(std::string const &, std::string const &, std::string const &) = 0;
     virtual void displayWhisperMessage(std::string const &, std::string const &, std::string const &,
                                        std::string const &) = 0;
-    virtual BedSleepingResult startSleepInBed(BlockPos const &) = 0;
-    virtual void stopSleepInBed(bool, bool) = 0;
+    ENDSTONE_HOOK virtual BedSleepingResult startSleepInBed(BlockPos const &bed_block_pos);
+    ENDSTONE_HOOK virtual void stopSleepInBed(bool, bool);
     virtual bool canStartSleepInBed() = 0;
     virtual void openSign(BlockPos const &, bool) = 0;
     virtual void playEmote(std::string const &, bool) = 0;
@@ -138,6 +149,8 @@ protected:
 public:
     static Player *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
+    [[nodiscard]] bool hasBedPosition() const;
+    [[nodiscard]] const BlockPos &getBedPosition() const;
     [[nodiscard]] const PlayerInventory &getSupplies() const;
     PlayerInventory &getSupplies();
     [[nodiscard]] const Container &getInventory() const;
@@ -146,6 +159,10 @@ public:
     const ItemStack &setSelectedSlot(int);
     [[nodiscard]] const std::string &getName() const;
     void setPermissions(CommandPermissionLevel permission);
+    void setBedRespawnPosition(const BlockPos &);
+    bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
+    bool canSleep() const;
+    void stopGliding();
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;
@@ -160,6 +177,10 @@ public:
     [[nodiscard]] float getLevelProgress() const;
 
     static int getXpNeededForLevelRange(int start, int end);
+
+    // Endstone begins
+    BedSleepingResult getBedResult(BlockPos const &bed_pos);  // moved from startSleepInBed into separate method
+    // Endstone ends
 
     std::vector<std::uint16_t> ocean_biomes;  // +1120
     std::vector<std::uint16_t> froglights;

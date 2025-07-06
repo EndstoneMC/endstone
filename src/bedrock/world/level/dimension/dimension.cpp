@@ -14,6 +14,11 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 
+bool Dimension::isBrightOutside() const
+{
+    return isNaturalDimension() && sky_darken_.value < 4;
+}
+
 Level &Dimension::getLevel() const
 {
     return *level_;

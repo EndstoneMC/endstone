@@ -22,6 +22,7 @@
 #include "bedrock/world/events/gameevents/game_event.h"
 #include "bedrock/world/item/item_stack_base.h"
 #include "bedrock/world/level/biome/biome.h"
+#include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_source_listener.h"
@@ -128,6 +129,11 @@ public:
     explicit BlockSource(ChunkSource &, bool, bool);
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
+
+    [[nodiscard]] bool isEmptyBlock(const BlockPos &pos) const
+    {
+        return getBlock(pos).getName() != BedrockBlockNames::Air;
+    }
 
     [[nodiscard]] const Biome &getBiome(const BlockPos &) const;
 };

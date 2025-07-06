@@ -16,11 +16,11 @@
 
 class Direction {
 public:
-    enum class Type : std::uint8_t {
-        South = 0,
-        West = 1,
-        North = 2,
-        East = 3,
-        Undefined = 255,
+    enum Type : std::uint8_t {
+        SOUTH = 0,
+        WEST = 1,
+        NORTH = 2,
+        EAST = 3,
+        UNDEFINED = 255,
     };
 };

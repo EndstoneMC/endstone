@@ -18,10 +18,10 @@
 #include <string>
 #include <unordered_set>
 
-#include <bedrock/world/actor/item/item_actor.h>
 #include <gsl/gsl>
 
 #include "bedrock/forward.h"
+#include "bedrock/world/actor/item/item_actor.h"
 
 class Spawner {
 public:

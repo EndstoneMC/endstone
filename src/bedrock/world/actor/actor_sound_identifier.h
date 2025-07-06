@@ -14,9 +14,8 @@
 
 #pragma once
 
-#include <bedrock/core/utility/non_owner_pointer.h>
-
 #include "actor.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 
 class ActorFetcher;
 class ActorSoundIdentifier {

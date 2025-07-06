@@ -14,8 +14,7 @@
 
 #pragma once
 
-#include <bedrock/core/utility/non_owner_pointer.h>
-
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/util/random.h"
 
 class Randomize {

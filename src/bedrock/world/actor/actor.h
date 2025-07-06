@@ -105,10 +105,16 @@ public:
     }
 
     template <typename Component>
-    gsl::not_null<Component *> getPersistentComponent() const
+    gsl::not_null<Component *> getPersistentComponent()
     {
         return entity_context_.tryGetComponent<Component>();
-    };
+    }
+
+    template <typename Component>
+    gsl::not_null<const Component *> getPersistentComponent() const
+    {
+        return entity_context_.tryGetComponent<Component>();
+    }
 
     virtual void outOfWorld() = 0;
     virtual void reloadHardcoded(ActorInitializationMethod, VariantParameterList const &) = 0;
@@ -274,22 +280,31 @@ public:
     [[nodiscard]] bool isInWater() const;
     [[nodiscard]] bool isInLava() const;
     [[nodiscard]] bool isClientSide() const;
+    BlockSource &getDimensionBlockSource() const;
+    [[nodiscard]] const BlockSource &getDimensionBlockSourceConst() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel();
     [[nodiscard]] const Level &getLevel() const;
+    void setAABB(const AABB &bb);
+    [[nodiscard]] const AABB &getAABB() const;
+    [[nodiscard]] const Vec2 &getAABBDim() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
     [[nodiscard]] Vec3 const &getPosPrev() const;
+    void setPos(const Vec3 &);
     void applyImpulse(Vec3 const &impulse);
     [[nodiscard]] Vec3 const &getPosDelta() const;
     void setPosDelta(const Vec3 &);
     [[nodiscard]] Vec2 const &getRotation() const;
     [[nodiscard]] const Vec2 &getRotationPrev() const;
     void setRotationWrapped(const Vec2 &);
-    [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
     [[nodiscard]] Actor *getVehicle() const;
     [[nodiscard]] bool isRiding() const;
+    void stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
+                    bool is_being_teleported);
+    [[nodiscard]] bool hasPassenger() const;
+    void removeAllPassengers(bool being_destroyed);
     [[nodiscard]] bool hasCategory(ActorCategory categories) const;
     [[nodiscard]] bool isJumping() const;
     [[nodiscard]] std::vector<std::string> getTags() const;
@@ -305,15 +320,26 @@ public:
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
+    void setFallDistance(float);
     [[nodiscard]] bool isDead() const;
     EntityContext &getEntity();
     [[nodiscard]] const EntityContext &getEntity() const;
     [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;
     [[nodiscard]] const ItemStack &getOffhandSlot() const;
     [[nodiscard]] const ItemStack &getArmor(ArmorSlot) const;
+    bool isCreative() const;
+    bool isAdventure() const;
+    bool isSurvival() const;
+    bool isSpectator() const;
+    void queueBBUpdateFromValue(const Vec2 &);
+    void queueBBUpdateFromDefinition();
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
+
+protected:
+    void _setHeightOffset(float offset);
+    void _moveHitboxTo(const Vec3 &position);
 
 private:
     mutable EntityContext entity_context_;  // +8

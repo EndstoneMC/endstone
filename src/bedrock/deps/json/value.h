@@ -51,6 +51,7 @@ class Value {
 public:
     using ObjectValues = std::map<CZString, Value>;
     using ArrayValues = std::vector<Value *>;
+    using ArrayIndex = unsigned int;
 
     Value(ValueType type = nullValue);  // NOLINT(*-explicit-constructor)
     Value(const std::string &);
@@ -69,18 +70,48 @@ public:
     [[nodiscard]] bool asBool() const;
 
     [[nodiscard]] std::vector<std::string> getMemberNames() const;
-    [[nodiscard]] std::size_t size() const;
 
+    /// Number of values in array or object
+    [[nodiscard]] ArrayIndex size() const;
+
+    /// \brief Append value to array at the end.
+    ///
+    /// Equivalent to jsonvalue[jsonvalue.size()] = value;
+    Value &append(const Value &value);
+
+    /// Resize the array to size elements.
+    /// New elements are initialized to null.
+    /// May only be called on nullValue or arrayValue.
+    /// \pre type() is arrayValue or nullValue
+    /// \post type() is arrayValue
+    void resize(ArrayIndex size);
+
+    /// Access an array element (zero based index).
+    /// If the array contains less than index element, then null value are inserted
+    Value &operator[](ArrayIndex index);
+    /// Access an array element (zero based index).
+    /// If the array contains less than index element, then null value are inserted
+    Value &operator[](int index);
+    /// Access an array element (zero based index)
+    const Value &operator[](ArrayIndex index) const;
     /// Access an array element (zero based index)
     const Value &operator[](int index) const;
+    /// Access an object value by name, create a null member if it does not exist.
+    Value &operator[](const char *key);
     /// Access an object value by name, returns null if there is no member with that name.
     const Value &operator[](const char *key) const;
+    /// Access an object value by name, create a null member if it does not exist.
+    Value &operator[](const std::string &key);
+    /// Access an object value by name, returns null if there is no member with that name.
+    const Value &operator[](const std::string &key) const;
     /// Return the member named key if it exist, defaultValue otherwise.
     Value get(const char *key, const Value &default_value) const;
     /// Return the member named key if it exist, defaultValue otherwise.
     [[nodiscard]] Value get(const std::string &key, const Value &default_value) const;
 
 private:
+    Value &resolveReference(const char *key);
+
     union ValueHolder {
         std::int64_t int_;
         std::uint64_t uint_;
