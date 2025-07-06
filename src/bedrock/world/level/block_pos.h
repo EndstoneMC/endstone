@@ -189,40 +189,39 @@ public:
 
     [[nodiscard]] BlockPos transform(Rotation rotation, Mirror mirror, const Vec3 &pivot) const
     {
-        BlockPos out = *this;
+        float dx = static_cast<float>(x) - pivot.x;
+        float dy = static_cast<float>(y) - pivot.y;
+        float dz = static_cast<float>(z) - pivot.z;
 
         switch (mirror) {
-        case Mirror::None:
-            break;
         case Mirror::X:
-            out.z = 2.0F * pivot.z - out.z;
+            dz = -dz;
             break;
         case Mirror::Z:
-            out.x = 2.0F * pivot.x - out.x;
+            dx = -dx;
             break;
         case Mirror::XZ:
-            out.z = 2.0F * pivot.z - out.z;
-            out.x = 2.0F * pivot.x - out.x;
+            dx = -dx;
+            dz = -dz;
+            break;
+        case Mirror::None:
+        default:
             break;
         }
 
-        // 2) Rotation step about pivot in the X–Z plane
-        float dx = out.x - pivot.x;
-        float dz = out.z - pivot.z;
         float rx, rz;
-
         switch (rotation) {
         case Rotation::Rotate90:
-            rx = dz;
-            rz = -dx;
+            rx = -dz;
+            rz = dx;
             break;
         case Rotation::Rotate180:
             rx = -dx;
             rz = -dz;
             break;
         case Rotation::Rotate270:
-            rx = -dz;
-            rz = dx;
+            rx = dz;
+            rz = -dx;
             break;
         case Rotation::None:
         default:
@@ -231,10 +230,10 @@ public:
             break;
         }
 
-        out.x = pivot.x + rx;
-        out.z = pivot.z + rz;
-
-        return out;
+        float nx = pivot.x + rx;
+        float ny = pivot.y + dy;
+        float nz = pivot.z + rz;
+        return {nx, ny, nz};
     }
 
     int x;

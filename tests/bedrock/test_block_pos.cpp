@@ -1,14 +1,14 @@
 // Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
+// you may not use this file except in coMirrorliance with the License.
 // You may obtain a copy of the License at
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or iMirrorlied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
@@ -16,76 +16,147 @@
 
 #include "bedrock/world/level/block_pos.h"
 
-struct TestParam {
-    Mirror mirror;
-    Rotation rotation;
-    Vec3 pivot;
-    int expected_x;
-    int expected_z;
+// Test fixture for shared pivots
+class TransformTest : public ::testing::Test {
+protected:
+    // Zero pivot
+    Vec3 originPivot{0.0, 0.0, 0.0};
+    // Non-zero pivot for secondary tests
+    Vec3 nonZeroPivot{1.0, 0.0, 2.0};
 };
 
-class BlockPosTest : public ::testing::TestWithParam<TestParam> {};
-
-TEST_P(BlockPosTest, TransformTest)
+// ----- Zero-Pivot Tests -----
+TEST_F(TransformTest, NoMirrorNoRotation)
 {
-    auto const &param = GetParam();
-
-    // Always start at pos = (1, 2, 5)
-    BlockPos pos{1, 2, 5};
-
-    // Perform mirror+rotate around the given pivot
-    BlockPos out = pos.transform(param.rotation, param.mirror, param.pivot);
-
-    // Verify X,Z as expected; Y stays 2
-    EXPECT_EQ(out.x, param.expected_x) << "mirror=" << static_cast<int>(param.mirror)
-                                       << " rot=" << static_cast<int>(param.rotation) << " pivot=(" << param.pivot.x
-                                       << "," << param.pivot.z << ")";
-    EXPECT_EQ(out.y, 2);
-    EXPECT_EQ(out.z, param.expected_z) << "mirror=" << static_cast<int>(param.mirror)
-                                       << " rot=" << static_cast<int>(param.rotation) << " pivot=(" << param.pivot.x
-                                       << "," << param.pivot.z << ")";
+    BlockPos p(2, 5, -3);
+    BlockPos res = p.transform(Rotation::None, Mirror::None, originPivot);
+    EXPECT_EQ(res, BlockPos(2, 5, -3));
 }
 
-INSTANTIATE_TEST_SUITE_P(FullCoverage, BlockPosTest,
-                         ::testing::Values(
-                             // Pivot = (0,0,0), pos=(1,2,5)
-                             TestParam{Mirror::None, Rotation::None, Vec3{0, 0, 0}, 1, 5},
-                             TestParam{Mirror::None, Rotation::Rotate90, Vec3{0, 0, 0}, 5, -1},
-                             TestParam{Mirror::None, Rotation::Rotate180, Vec3{0, 0, 0}, -1, -5},
-                             TestParam{Mirror::None, Rotation::Rotate270, Vec3{0, 0, 0}, -5, 1},
+TEST_F(TransformTest, MirrorX_NoRotation)
+{
+    BlockPos p(4, 1, 7);
+    BlockPos res = p.transform(Rotation::None, Mirror::X, originPivot);
+    EXPECT_EQ(res, BlockPos(4, 1, -7));
+}
 
-                             TestParam{Mirror::X, Rotation::None, Vec3{0, 0, 0}, 1, -5},
-                             TestParam{Mirror::X, Rotation::Rotate90, Vec3{0, 0, 0}, -5, -1},
-                             TestParam{Mirror::X, Rotation::Rotate180, Vec3{0, 0, 0}, -1, 5},
-                             TestParam{Mirror::X, Rotation::Rotate270, Vec3{0, 0, 0}, 5, 1},
+TEST_F(TransformTest, MirrorZ_NoRotation)
+{
+    BlockPos p(4, 1, 7);
+    BlockPos res = p.transform(Rotation::None, Mirror::Z, originPivot);
+    EXPECT_EQ(res, BlockPos(-4, 1, 7));
+}
 
-                             TestParam{Mirror::Z, Rotation::None, Vec3{0, 0, 0}, -1, 5},
-                             TestParam{Mirror::Z, Rotation::Rotate90, Vec3{0, 0, 0}, 5, 1},
-                             TestParam{Mirror::Z, Rotation::Rotate180, Vec3{0, 0, 0}, 1, -5},
-                             TestParam{Mirror::Z, Rotation::Rotate270, Vec3{0, 0, 0}, -5, -1},
+TEST_F(TransformTest, MirrorXZ_NoRotation)
+{
+    BlockPos p(4, 1, 7);
+    BlockPos res = p.transform(Rotation::None, Mirror::XZ, originPivot);
+    EXPECT_EQ(res, BlockPos(-4, 1, -7));
+}
 
-                             TestParam{Mirror::XZ, Rotation::None, Vec3{0, 0, 0}, -1, -5},
-                             TestParam{Mirror::XZ, Rotation::Rotate90, Vec3{0, 0, 0}, -5, 1},
-                             TestParam{Mirror::XZ, Rotation::Rotate180, Vec3{0, 0, 0}, 1, 5},
-                             TestParam{Mirror::XZ, Rotation::Rotate270, Vec3{0, 0, 0}, 5, -1},
+TEST_F(TransformTest, NoMirror_Rotate90)
+{
+    BlockPos p(1, 0, 2);
+    BlockPos res = p.transform(Rotation::Rotate90, Mirror::None, originPivot);
+    EXPECT_EQ(res, BlockPos(-2, 0, 1));
+}
 
-                             // Pivot = (10,0,20), pos=(1,2,5)
-                             TestParam{Mirror::None, Rotation::None, Vec3{10, 0, 20}, 1, 5},
-                             TestParam{Mirror::None, Rotation::Rotate90, Vec3{10, 0, 20}, -5, 29},
-                             TestParam{Mirror::None, Rotation::Rotate180, Vec3{10, 0, 20}, 19, 35},
-                             TestParam{Mirror::None, Rotation::Rotate270, Vec3{10, 0, 20}, 25, 11},
+TEST_F(TransformTest, NoMirror_Rotate180)
+{
+    BlockPos p(1, 0, 2);
+    BlockPos res = p.transform(Rotation::Rotate180, Mirror::None, originPivot);
+    EXPECT_EQ(res, BlockPos(-1, 0, -2));
+}
 
-                             TestParam{Mirror::X, Rotation::None, Vec3{10, 0, 20}, 1, 35},
-                             TestParam{Mirror::X, Rotation::Rotate90, Vec3{10, 0, 20}, 25, 29},
-                             TestParam{Mirror::X, Rotation::Rotate180, Vec3{10, 0, 20}, 19, 5},
-                             TestParam{Mirror::X, Rotation::Rotate270, Vec3{10, 0, 20}, -5, 11},
+TEST_F(TransformTest, NoMirror_Rotate270)
+{
+    BlockPos p(1, 0, 2);
+    BlockPos res = p.transform(Rotation::Rotate270, Mirror::None, originPivot);
+    EXPECT_EQ(res, BlockPos(2, 0, -1));
+}
 
-                             TestParam{Mirror::Z, Rotation::None, Vec3{10, 0, 20}, 19, 5},
-                             TestParam{Mirror::Z, Rotation::Rotate90, Vec3{10, 0, 20}, -5, 11},
-                             TestParam{Mirror::Z, Rotation::Rotate180, Vec3{10, 0, 20}, 1, 35},
-                             TestParam{Mirror::Z, Rotation::Rotate270, Vec3{10, 0, 20}, 25, 29},
+TEST_F(TransformTest, MirrorX_Rotate90)
+{
+    BlockPos p(1, 0, 2);
+    BlockPos res = p.transform(Rotation::Rotate90, Mirror::X, originPivot);
+    EXPECT_EQ(res, BlockPos(2, 0, 1));
+}
 
-                             TestParam{Mirror::XZ, Rotation::None, Vec3{10, 0, 20}, 19, 35},
-                             TestParam{Mirror::XZ, Rotation::Rotate90, Vec3{10, 0, 20}, 25, 11},
-                             TestParam{Mirror::XZ, Rotation::Rotate180, Vec3{10, 0, 20}, 1, 5},
-                             TestParam{Mirror::XZ, Rotation::Rotate270, Vec3{10, 0, 20}, -5, 29}));
+TEST_F(TransformTest, MirrorZ_Rotate90)
+{
+    BlockPos p(1, 0, 2);
+    BlockPos res = p.transform(Rotation::Rotate90, Mirror::Z, originPivot);
+    EXPECT_EQ(res, BlockPos(-2, 0, -1));
+}
+
+// ----- Non-Zero-Pivot Tests -----
+TEST_F(TransformTest, NonZeroPivot_NoMirrorNoRotation)
+{
+    BlockPos p(2, 5, -3);
+    BlockPos res = p.transform(Rotation::None, Mirror::None, nonZeroPivot);
+    EXPECT_EQ(res, BlockPos(2, 5, -3));
+}
+
+TEST_F(TransformTest, NonZeroPivot_MirrorX_NoRotation)
+{
+    BlockPos p(4, 1, 7);
+    BlockPos res = p.transform(Rotation::None, Mirror::X, nonZeroPivot);
+    // dz=5->-5 => z=2-5=-3, x stays 1+3=4
+    EXPECT_EQ(res, BlockPos(4, 1, -3));
+}
+
+TEST_F(TransformTest, NonZeroPivot_MirrorZ_NoRotation)
+{
+    BlockPos p(4, 1, 7);
+    BlockPos res = p.transform(Rotation::None, Mirror::Z, nonZeroPivot);
+    // dx=3->-3 => x=1-3=-2, z stays 2+5=7
+    EXPECT_EQ(res, BlockPos(-2, 1, 7));
+}
+
+TEST_F(TransformTest, NonZeroPivot_MirrorXZ_NoRotation)
+{
+    BlockPos p(4, 1, 7);
+    BlockPos res = p.transform(Rotation::None, Mirror::XZ, nonZeroPivot);
+    // dx=3->-3, dz=5->-5 => x=1-3=-2, z=2-5=-3
+    EXPECT_EQ(res, BlockPos(-2, 1, -3));
+}
+
+TEST_F(TransformTest, NonZeroPivot_NoMirror_Rotate90)
+{
+    BlockPos p(2, 0, 3);
+    BlockPos res = p.transform(Rotation::Rotate90, Mirror::None, nonZeroPivot);
+    // dx=1,dz=1 -> rx=-1, rz=1 => x=0,z=3
+    EXPECT_EQ(res, BlockPos(0, 0, 3));
+}
+
+TEST_F(TransformTest, NonZeroPivot_NoMirror_Rotate180)
+{
+    BlockPos p(2, 0, 3);
+    BlockPos res = p.transform(Rotation::Rotate180, Mirror::None, nonZeroPivot);
+    // dx=1,dz=1 -> rx=-1, rz=-1 => x=0,z=1
+    EXPECT_EQ(res, BlockPos(0, 0, 1));
+}
+
+TEST_F(TransformTest, NonZeroPivot_NoMirror_Rotate270)
+{
+    BlockPos p(2, 0, 3);
+    BlockPos res = p.transform(Rotation::Rotate270, Mirror::None, nonZeroPivot);
+    // dx=1,dz=1 -> rx=1, rz=-1 => x=2,z=1
+    EXPECT_EQ(res, BlockPos(2, 0, 1));
+}
+
+TEST_F(TransformTest, NonZeroPivot_MirrorX_Rotate90)
+{
+    BlockPos p(2, 0, 3);
+    BlockPos res = p.transform(Rotation::Rotate90, Mirror::X, nonZeroPivot);
+    // dz=1->-1 => (dx=1,dz=-1) -> rotate90: rx=1,rz=1 => x=2,z=3
+    EXPECT_EQ(res, BlockPos(2, 0, 3));
+}
+
+TEST_F(TransformTest, NonZeroPivot_MirrorZ_Rotate90)
+{
+    BlockPos p(2, 0, 3);
+    BlockPos res = p.transform(Rotation::Rotate90, Mirror::Z, nonZeroPivot);
+    // dx=1->-1 => (dx=-1,dz=1) -> rotate90: rx=-1,rz=-1 => x=0,z=1
+    EXPECT_EQ(res, BlockPos(0, 0, 1));
+}

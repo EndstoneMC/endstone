@@ -18,6 +18,7 @@
 
 TEST(HashedStringTest, ComputerHash)
 {
+    ASSERT_EQ(HashedString::computeHash("minecraft:air"), 0xBD584BAF00003448);
     ASSERT_EQ(HashedString::computeHash("minecraft:player.exhaustion"), 0x8afb6992bde84d57);
     ASSERT_EQ(HashedString::computeHash("minecraft:player.experience"), 0xd5c6a6b9319a39cb);
     ASSERT_EQ(HashedString::computeHash("minecraft:player.hunger"), 0x3c90c06ed4382c12);
