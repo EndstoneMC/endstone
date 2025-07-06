@@ -14,6 +14,13 @@
 
 #include "bedrock/world/level/block/block.h"
 
+#include "bedrock/world/level/block_source.h"
+
+bool Block::hasProperty(BlockProperty property) const
+{
+    return legacy_block_->hasProperty(property);
+}
+
 Brightness Block::getLightEmission() const
 {
     return direct_data_.light_emission;
@@ -46,6 +53,16 @@ int Block::getBurnOdds() const
 float Block::getExplosionResistance() const
 {
     return direct_data_.explosion_resistance;
+}
+
+bool Block::hasState(const BlockState & block_state) const
+{
+    return getLegacyBlock().hasState(block_state);
+}
+
+bool Block::hasState(const HashedString &name) const
+{
+    return getLegacyBlock().hasState(name);
 }
 
 bool Block::getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
@@ -95,6 +112,11 @@ bool Block::requiresCorrectToolForDrops() const
 float Block::getThickness() const
 {
     return legacy_block_->getThickness();
+}
+
+bool Block::getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const
+{
+    return legacy_block_->getSecondPart(region, pos, out);
 }
 
 void Block::destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const

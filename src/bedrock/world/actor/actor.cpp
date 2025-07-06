@@ -155,10 +155,10 @@ Vec3 const &Actor::getPosPrev() const
     return built_in_components_.state_vector_component->pos_prev;
 }
 
-void Actor::setPos(const Vec3 &position)
-{
-    ActorSetPosSystem::setPosition(getEntity(), position, level_ == nullptr || level_->isClientSide());
-}
+// void Actor::setPos(const Vec3 &position)
+// {
+//     ActorSetPosSystem::setPosition(getEntity(), position, level_ == nullptr || level_->isClientSide());
+// }
 
 void Actor::applyImpulse(Vec3 const &impulse)
 {
@@ -237,10 +237,10 @@ void Actor::stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, 
                  is_being_teleported);
 }
 
-bool Actor::hasPassenger() const
-{
-    return !ActorRiding::getPassengers(getEntity()).empty();
-}
+// bool Actor::hasPassenger() const
+// {
+//     return !ActorRiding::getPassengers(getEntity()).empty();
+// }
 
 bool Actor::hasCategory(ActorCategory categories) const
 {
@@ -269,20 +269,20 @@ Actor *Actor::tryGetFromEntity(StackRefResult<EntityContext> entity, bool includ
     return tryGetFromEntity(*entity, include_removed);
 }
 
-void Actor::_setHeightOffset(float offset)
-{
-    ActorOffset::setHeightOffset(getEntity(), offset);
-    auto pos = getPosition();
-    setAABB(ActorSetPosSystem::refreshAABB(offset, pos, getAABBDim()));
-    _moveHitboxTo(pos);
-}
+// void Actor::_setHeightOffset(float offset)
+// {
+//     ActorOffset::setHeightOffset(getEntity(), offset);
+//     auto pos = getPosition();
+//     setAABB(ActorSetPosSystem::refreshAABB(offset, pos, getAABBDim()));
+//     _moveHitboxTo(pos);
+// }
 
-void Actor::_moveHitboxTo(const Vec3 &position)
-{
-    if (auto *component = tryGetComponent<HitboxComponent>(); component != nullptr) {
-        ActorSetPosSystem::moveHitboxTo(position, component->hitboxes);
-    }
-}
+// void Actor::_moveHitboxTo(const Vec3 &position)
+// {
+//     if (auto *component = tryGetComponent<HitboxComponent>(); component != nullptr) {
+//         ActorSetPosSystem::moveHitboxTo(position, component->hitboxes);
+//     }
+// }
 
 bool Actor::isJumping() const
 {

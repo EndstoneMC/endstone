@@ -17,7 +17,9 @@
 #include "bedrock/world/direction.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
+#include "bedrock/world/level/block/states/vanilla_block_states.h"
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
+#include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/material/material_type.h"
 
 std::optional<BlockPos> BedBlock::findWakeupPosition(BlockSource &region, const BlockPos &pos,
@@ -30,11 +32,11 @@ std::optional<BlockPos> BedBlock::findWakeupPosition(BlockSource &region, const 
     }
 
     // Determine bed orientation
-    const auto direction = block.getState<int>("direction");
+    const auto direction = block.getState<int>(VanillaStateIds::Direction);
 
     // Find the head piece position
     auto head_of_bed_pos = pos;
-    if (!block.hasState("head_piece_bit")) {
+    if (!block.hasState(VanillaStateIds::HeadPieceBit)) {
         block.getSecondPart(region, pos, head_of_bed_pos);
     }
 

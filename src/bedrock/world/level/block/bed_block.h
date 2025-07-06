@@ -20,7 +20,6 @@
 #include "bedrock/util/rotation.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_pos.h"
-#include "bedrock/world/level/block_source.h"
 
 namespace BedBlockSpawnOffset {
 static constexpr std::array<const BlockPos, 12UL> RESPAWN_OFFSETS_NORTH_LEFT = {{{-1, 0, 0},

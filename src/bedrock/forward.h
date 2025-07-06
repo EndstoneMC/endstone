@@ -43,7 +43,6 @@ class ActorDefinitionGroup;
 class ActorEvent;
 class ActorFactory;
 class ActorInteraction;
-class ActorSoundIdentifier;
 class ActorSpawnRuleGroup;
 class ActorUnloadedChunkTransferEntry;
 class AdventureSettings;
@@ -90,7 +89,6 @@ class CraftingContainer;
 class CraftingContext;
 class DataLoadHelper;
 class DeathTickingComponent;
-class Difficulty;
 class DimensionBrightnessRamp;
 class DimensionConversionData;
 class DimensionManager;
@@ -213,7 +211,6 @@ class SurfaceBuilderRegistry;
 class SubpackInfoCollection;
 class TextFilteringProcessor;
 class TestPackSource;
-class TextObjectRoot;
 class TaskGroup;
 class TickingAreaList;
 class TickingAreasManager;
@@ -230,10 +227,8 @@ class _TickPtr;  // NOLINT
 struct SyncedClientOptionsComponent;
 
 // Enums
-enum class AdvanceFrameResult;
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
-enum class BedSleepingResult;
 enum BlockActorRendererId : unsigned int;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
@@ -322,6 +317,10 @@ class EntityTypeCache;
 struct State;
 class SpawnPlacements;
 }  // namespace br::spawn
+
+namespace MovementDataExtractionUtility {
+class SnapshotAccessor;
+}
 
 // Template Classes
 template <typename A, typename B, typename C>

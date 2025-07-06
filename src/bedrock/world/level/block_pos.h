@@ -35,81 +35,6 @@ public:
           z(static_cast<int>(std::floorf(vec.z))){};
     BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)) {}
 
-    operator Vec3() const
-    {
-        return Vec3(x, y, z);
-    }
-
-    [[nodiscard]] BlockPos offset(int dx, int dy, int dz) const
-    {
-        return {x + dx, y + dy, z + dz};
-    }
-
-    [[nodiscard]] BlockPos offset(const BlockPos &other) const
-    {
-        return offset(other.x, other.y, other.z);
-    }
-
-    [[nodiscard]] BlockPos above() const
-    {
-        return above(1);
-    }
-
-    [[nodiscard]] BlockPos above(int n) const
-    {
-        return offset(0, n, 0);
-    }
-
-    [[nodiscard]] BlockPos below() const
-    {
-        return below(1);
-    }
-
-    [[nodiscard]] BlockPos below(int n) const
-    {
-        return offset(0, -n, 0);
-    }
-
-    [[nodiscard]] BlockPos north() const
-    {
-        return north(1);
-    }
-
-    [[nodiscard]] BlockPos north(int n) const
-    {
-        return offset(0, 0, -n);
-    }
-
-    [[nodiscard]] BlockPos south() const
-    {
-        return south(1);
-    }
-
-    [[nodiscard]] BlockPos south(int n) const
-    {
-        return offset(0, 0, n);
-    }
-
-    [[nodiscard]] BlockPos west() const
-    {
-        return west(1);
-    }
-
-    [[nodiscard]] BlockPos west(int n) const
-    {
-        return offset(-n, 0, 0);
-    }
-
-    [[nodiscard]] BlockPos east() const
-    {
-        return east(1);
-    }
-
-    [[nodiscard]] BlockPos east(int n) const
-    {
-        return offset(n, 0, 0);
-    }
-
     BlockPos operator*(int scalar) const
     {
         return {x * scalar, y * scalar, z * scalar};
@@ -199,12 +124,12 @@ public:
 
     [[nodiscard]] BlockPos offset(const BlockPos &other) const
     {
-        return {x + other.x, y + other.y, z + other.z};
+        return offset(other.x, other.y, other.z);
     }
 
     [[nodiscard]] BlockPos above() const
     {
-        return offset(0, 1, 0);
+        return above(1);
     }
 
     [[nodiscard]] BlockPos above(int n) const
@@ -214,12 +139,52 @@ public:
 
     [[nodiscard]] BlockPos below() const
     {
-        return offset(0, -1, 0);
+        return below(1);
     }
 
     [[nodiscard]] BlockPos below(int n) const
     {
         return offset(0, -n, 0);
+    }
+
+    [[nodiscard]] BlockPos north() const
+    {
+        return north(1);
+    }
+
+    [[nodiscard]] BlockPos north(int n) const
+    {
+        return offset(0, 0, -n);
+    }
+
+    [[nodiscard]] BlockPos south() const
+    {
+        return south(1);
+    }
+
+    [[nodiscard]] BlockPos south(int n) const
+    {
+        return offset(0, 0, n);
+    }
+
+    [[nodiscard]] BlockPos west() const
+    {
+        return west(1);
+    }
+
+    [[nodiscard]] BlockPos west(int n) const
+    {
+        return offset(-n, 0, 0);
+    }
+
+    [[nodiscard]] BlockPos east() const
+    {
+        return east(1);
+    }
+
+    [[nodiscard]] BlockPos east(int n) const
+    {
+        return offset(n, 0, 0);
     }
 
     [[nodiscard]] BlockPos transform(Rotation rotation, Mirror mirror, const Vec3 &pivot) const

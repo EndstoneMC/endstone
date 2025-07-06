@@ -15,12 +15,16 @@
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
 
 namespace VanillaBlockTypeIds {
+static const HashedString Bed = "minecraft:bed";
 static const HashedString BeeNest = "minecraft:bee_nest";
 static const HashedString Beehive = "minecraft:beehive";
 static const HashedString CampFire = "minecraft:campfire";
+static const HashedString EndPortal = "minecraft:end_portal";
+static const HashedString EndPortalFrame = "minecraft:end_portal_frame";
 static const HashedString SoulCampfire = "minecraft:soul_campfire";
 static const HashedString Tnt = "minecraft:tnt";
 static const HashedString UnderwaterTnt = "minecraft:underwater_tnt";
+static const HashedString WitherRose = "minecraft:wither_rose";
 }  // namespace VanillaBlockTypeIds
 
 namespace VanillaBlockTypeGroups {

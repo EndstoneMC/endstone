@@ -23,6 +23,7 @@
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/commands/command_permission_level.h"
+#include "bedrock/textobject/text_object.h"
 #include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/player_inventory.h"
@@ -39,14 +40,14 @@
 
 class PlayerRespawnRandomizer;
 
-enum class BedSleepingResult : int {
+enum class BedSleepingResult : int {  // NOLINTBEGIN
     OK = 0,
     NOT_POSSIBLE_HERE = 1,
     NOT_POSSIBLE_NOW = 2,
     TOO_FAR_AWAY = 3,
     OTHER_PROBLEM = 4,
     NOT_SAFE = 5,
-    BED_OBSTRUCTED = 6,
+    BED_OBSTRUCTED = 6,  // NOLINTEND
 };
 
 class Player : public Mob {
@@ -179,8 +180,6 @@ public:
 
     // Endstone begins
     BedSleepingResult getBedResult(BlockPos const &bed_pos);  // moved from startSleepInBed into separate method
-    BedSleepingResult startSleepInBed(BlockPos const &, bool force);
-    void startSleeping(BlockPos const &);
     // Endstone ends
 
     std::vector<std::uint16_t> ocean_biomes;  // +1120

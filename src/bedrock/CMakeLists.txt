@@ -64,6 +64,7 @@ add_library(bedrock STATIC
         server/commands/command_utils.cpp
         server/commands/minecraft_commands.cpp
         server/commands/standard/teleport_command.cpp
+        textobject/text_object.cpp
         util/data_io.cpp
         util/index_set.cpp
         util/string_byte_output.cpp
@@ -100,6 +101,7 @@ add_library(bedrock STATIC
         world/level/level.cpp
         world/level/weather.cpp
         world/level/biome/registry/biome_registry.cpp
+        world/level/block/bed_block.cpp
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
         world/level/block/block_legacy.cpp

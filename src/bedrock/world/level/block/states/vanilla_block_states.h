@@ -20,7 +20,9 @@
 
 namespace VanillaStateIds {
 extern const HashedString Age;
+extern const HashedString Direction;
 extern const HashedString ExplodeBit;
 extern const HashedString Extinguished;
 extern const HashedString FacingDirection;
+extern const HashedString HeadPieceBit;
 }  // namespace VanillaStateIds

@@ -17,9 +17,37 @@
 #include "bedrock/symbol.h"
 #include "bedrock/world/item/registry/item_registry.h"
 
+bool BlockLegacy::hasProperty(BlockProperty property) const
+{
+    return (static_cast<std::underlying_type_t<BlockProperty>>(property) &
+            static_cast<std::underlying_type_t<BlockProperty>>(properties_)) != 0;
+}
+
 const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
 {
     return BEDROCK_CALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
+}
+
+bool BlockLegacy::hasState(const BlockState &block_state) const
+{
+    if (states_.contains(block_state.getID())) {
+        return true;
+    }
+    for (const auto &altered_state : altered_state_collections_) {
+        if (altered_state->getBlockState().getID() == block_state.getID()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool BlockLegacy::hasState(const HashedString &name) const
+{
+    auto *state = BlockStateRegistry::get().getState(name);
+    if (!state) {
+        return false;
+    }
+    return hasState(*state);
 }
 
 bool BlockLegacy::requiresCorrectToolForDrops() const

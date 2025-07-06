@@ -14,22 +14,6 @@
 
 #pragma once
 
-<<<<<<<< HEAD:src/bedrock/world/level/block/actor/bed_block_actor.h
-#include "bedrock/world/level/block/actor/block_actor.h"
-
-class BedBlockActor : public BlockActor {
-public:
-    void startSleepingOn()
-    {
-        pet_sleeping_on_bed_ = ActorUniqueID::INVALID_ID;
-    }
-
-private:
-    int dye_color;
-    bool dirty;
-    ActorUniqueID pet_sleeping_on_bed_;
-    const Block &bed_block;
-========
 #include "endstone/event/chunk/chunk_event.h"
 
 namespace endstone {
@@ -43,9 +27,6 @@ public:
 
     explicit ChunkLoadEvent(Chunk &chunk) : ChunkEvent(chunk) {}
     ~ChunkLoadEvent() override = default;
-
-private:
->>>>>>>> origin/main:include/endstone/event/chunk/chunk_load_event.h
 };
 
 }  // namespace endstone

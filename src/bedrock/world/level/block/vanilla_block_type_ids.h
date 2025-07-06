@@ -19,12 +19,16 @@
 #include "bedrock/core/string/string_hash.h"
 
 namespace VanillaBlockTypeIds {
+extern const HashedString Bed;
 extern const HashedString BeeNest;
 extern const HashedString Beehive;
 extern const HashedString CampFire;
+extern const HashedString EndPortal;
+extern const HashedString EndPortalFrame;
 extern const HashedString SoulCampfire;
 extern const HashedString Tnt;
 extern const HashedString UnderwaterTnt;
+extern const HashedString WitherRose;
 }  // namespace VanillaBlockTypeIds
 
 namespace VanillaBlockTypeGroups {

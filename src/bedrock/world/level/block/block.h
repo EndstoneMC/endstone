@@ -52,6 +52,7 @@ class Block {
 public:
     virtual ~Block() = default;
 
+    [[nodiscard]] bool hasProperty(BlockProperty) const;
     [[nodiscard]] Brightness getLightEmission() const;
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] bool isSolid() const;
@@ -59,6 +60,8 @@ public:
     [[nodiscard]] int getFlameOdds() const;
     [[nodiscard]] int getBurnOdds() const;
     [[nodiscard]] float getExplosionResistance() const;
+    [[nodiscard]] bool hasState(const BlockState &) const;
+    [[nodiscard]] bool hasState(const HashedString &) const;
     bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                            optional_ref<GetCollisionShapeInterface const> entity) const;
     bool addCollisionShapes(IConstBlockSource const &region, BlockPos const &pos, AABB const *intersect_test_box,
@@ -71,6 +74,7 @@ public:
     bool getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] float getThickness() const;
+    bool getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const;
     void destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const;
     [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getFriction() const;
