@@ -1,4 +1,4 @@
-timestamp = 1751812809
+timestamp = 1751818757
 version = "1.21.93"
 
 [windows]
@@ -127,6 +127,8 @@ version = "1.21.93"
 "_ZNK11BlockLegacy25tryGetStateFromLegacyDataEt" = 144834896
 # BlockTypeRegistry
 "_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK11BlockLegacyES5_EE" = 149374048
+# CampfireBlockActor
+"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 152022448
 # Command
 "_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 123449488
 # CommandOriginLoader
