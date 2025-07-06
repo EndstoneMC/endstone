@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/block/actor/beehive_block_actor.h"
 
-#include "bedrock/world/level/block_source.h"
-#include "bedrock/world/level/level_listener.h"
+#include "bedrock/symbol.h"
 
-class Weather : public LevelListener {
-public:
-    bool isRainingAt(BlockSource &region, const BlockPos &pos) const;
-};
+void BeehiveBlockActor::evictAll(BlockSource &region, bool angry)
+{
+    BEDROCK_CALL(&BeehiveBlockActor::evictAll, this, region, angry);
+}

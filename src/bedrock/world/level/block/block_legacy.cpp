@@ -47,6 +47,11 @@ const std::vector<HashedString> &BlockLegacy::getTags() const
     return tags_;
 }
 
+const Material &BlockLegacy::getMaterial() const
+{
+    return material_;
+}
+
 const std::string &BlockLegacy::getDescriptionId() const
 {
     return description_id;

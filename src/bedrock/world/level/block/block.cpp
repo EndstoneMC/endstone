@@ -102,6 +102,11 @@ void Block::destroy(BlockSource &region, const BlockPos &pos, Actor *entity_sour
     getLegacyBlock().destroy(region, pos, *this, entity_source);
 }
 
+const Material &Block::getMaterial() const
+{
+    return getLegacyBlock().getMaterial();
+}
+
 float Block::getFriction() const
 {
     return direct_data_.friction;

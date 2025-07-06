@@ -1,4 +1,4 @@
-timestamp = 1751761654
+timestamp = 1751802966
 version = "1.21.93"
 
 [windows]
@@ -9,6 +9,8 @@ version = "1.21.93"
 "?setPosition@ActorSetPosSystem@@SAXAEAVEntityContext@@AEBVVec3@@_N@Z" = 11273328
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 70315616
+# BeehiveBlockActor
+"?evictAll@BeehiveBlockActor@@QEAAXAEAVBlockSource@@_N@Z"=52149232
 # BlockDescriptor
 "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 50230336
 # BlockLegacy
@@ -101,6 +103,8 @@ version = "1.21.93"
 # TeleportCommand
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 38679584
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 38680240
+# Weather
+"?isRainingAt@Weather@@QEBA_NAEAVBlockSource@@AEBVBlockPos@@@Z" = 50044848
 # Variables
 "getI18n::result" = 95406816
 "BlockState::StateListNode::head" = 94905592

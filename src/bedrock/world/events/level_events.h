@@ -21,6 +21,7 @@
 #include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/scripting/lifetime_registry/lifetime_scope.h"
 #include "bedrock/scripting/lifetime_registry/smart_object_handle.h"
+#include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/level/storage/game_rules.h"
 

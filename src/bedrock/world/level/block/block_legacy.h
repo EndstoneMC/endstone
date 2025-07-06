@@ -316,6 +316,7 @@ public:
     [[nodiscard]] float getThickness() const;
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
+    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] const std::string &getDescriptionId() const;
     [[nodiscard]] const std::string &getRawNameId() const;
     [[nodiscard]] const std::string &getNamespace() const;

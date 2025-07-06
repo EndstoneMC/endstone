@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/weather.h"
 
-#include "bedrock/world/level/block_source.h"
-#include "bedrock/world/level/level_listener.h"
+#include "bedrock/symbol.h"
 
-class Weather : public LevelListener {
-public:
-    bool isRainingAt(BlockSource &region, const BlockPos &pos) const;
-};
+bool Weather::isRainingAt(BlockSource &region, const BlockPos &pos) const
+{
+    return BEDROCK_CALL(&Weather::isRainingAt, this, region, pos);
+}

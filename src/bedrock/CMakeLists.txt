@@ -97,6 +97,7 @@ add_library(bedrock STATIC
         world/item/registry/item_registry_ref.cpp
         world/level/explosion.cpp
         world/level/level.cpp
+        world/level/weather.cpp
         world/level/biome/registry/biome_registry.cpp
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
@@ -104,6 +105,7 @@ add_library(bedrock STATIC
         world/level/block/campfire_block.cpp
         world/level/block/fire_block.cpp
         world/level/block/vanilla_block_type_ids.cpp
+        world/level/block/actor/beehive_block_actor.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/registry/block_type_registry.cpp
         world/level/block/states/vanilla_block_states.cpp
