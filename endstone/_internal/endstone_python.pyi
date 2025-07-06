@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1370,6 +1370,37 @@ class EventPriority:
     MONITOR: typing.ClassVar[EventPriority]  # value = <EventPriority.MONITOR: 5>
     NORMAL: typing.ClassVar[EventPriority]  # value = <EventPriority.NORMAL: 2>
     __members__: typing.ClassVar[dict[str, EventPriority]]  # value = {'LOWEST': <EventPriority.LOWEST: 0>, 'LOW': <EventPriority.LOW: 1>, 'NORMAL': <EventPriority.NORMAL: 2>, 'HIGH': <EventPriority.HIGH: 3>, 'HIGHEST': <EventPriority.HIGHEST: 4>, 'MONITOR': <EventPriority.MONITOR: 5>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class EventResult:
+    ALLOW: typing.ClassVar[EventResult]  # value = <EventResult.ALLOW: 2>
+    DEFAULT: typing.ClassVar[EventResult]  # value = <EventResult.DEFAULT: 1>
+    DENY: typing.ClassVar[EventResult]  # value = <EventResult.DENY: 0>
+    __members__: typing.ClassVar[dict[str, EventResult]]  # value = {'DENY': <EventResult.DENY: 0>, 'DEFAULT': <EventResult.DEFAULT: 1>, 'ALLOW': <EventResult.ALLOW: 2>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -3086,6 +3117,24 @@ class PlayerBanList:
     def entries(self) -> list[PlayerBanEntry]:
         """
         Gets a vector of pointers to entries in the ban list.
+        """
+class PlayerBedEnterEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player is almost about to enter the bed.
+    """
+    @property
+    def bed(self) -> Block:
+        """
+        Returns the bed block involved in this event.
+        """
+class PlayerBedLeaveEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player is leaving a bed.
+    """
+    @property
+    def bed(self) -> Block:
+        """
+        Returns the bed block involved in this event.
         """
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
