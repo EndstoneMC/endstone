@@ -128,6 +128,14 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                           "Called when a block is broken by a player.")
         .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the Player that is breaking the block involved in this event.");
+    py::class_<BlockCookEvent, BlockEvent, ICancellable>(m, "BlockCookEvent",
+                                                         "Called when an ItemStack is successfully cooked in a block.")
+        .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,
+                               "Gets the smelted ItemStack for this event")
+        .def_property(
+            "result", &BlockCookEvent::getResult,
+            [](BlockCookEvent &self, const ItemStack &result) { self.setResult(result.clone()); },
+            py::return_value_policy::reference, "Gets or sets the resultant ItemStack for this event");
     py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
                                                            "Called when a piston block is triggered")
         .def_property_readonly("direction", &BlockPistonEvent::getDirection,

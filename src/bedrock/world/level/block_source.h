@@ -119,7 +119,6 @@ public:
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual bool removeBlock(BlockPos const &) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
-    virtual void postGameEvent(Actor *, const GameEvent &, const Vec3 &, const Block *) = 0;
 };
 
 class BlockSource : public IBlockSource,
