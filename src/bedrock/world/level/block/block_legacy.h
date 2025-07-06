@@ -309,7 +309,19 @@ public:
     }
 
     template <typename T>
-    const Block *trySetState(const BlockState &block_state, T val, DataID data) const;
+    const Block *trySetState(const BlockState &block_state, T val, DataID data) const
+    {
+        if (const auto it = states_.find(block_state.getID()); it != states_.end()) {
+            return it->second.trySet<T>(data, val, block_permutations_);
+        }
+        if (auto *result = _trySetStateFromAlteredStateCollection(block_state.getID(), static_cast<int>(val), data)) {
+            return result;
+        }
+        if (return_default_block_on_unidentified_block_state_) {
+            return &getDefaultState();
+        }
+        return nullptr;
+    }
 
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;

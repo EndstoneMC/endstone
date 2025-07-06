@@ -86,8 +86,23 @@ public:
     [[nodiscard]] bool fromNBT(const CompoundTag &, int &) const override;
 };
 
+class Block;
 class BlockStateInstance {
 public:
+    template <typename T>
+    const Block *trySet(DataID data, const T &val, const std::vector<std::unique_ptr<Block>> &permutations) const
+    {
+        auto v = static_cast<std::uint32_t>(val);
+        if (v >= variation_count_) {
+            return nullptr;
+        }
+        auto index = (data & ~mask_) | ((v << (end_bit_ - num_bits_ + 1)) & mask_);
+        if (index >= permutations.size()) {
+            return nullptr;
+        }
+        return permutations[index].get();
+    }
+
     template <typename T>
     T get(const DataID &data) const
     {

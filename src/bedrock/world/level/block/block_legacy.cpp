@@ -123,3 +123,16 @@ std::optional<int> BlockLegacy::_tryLookupAlteredStateCollection(size_t id, Data
     }
     return std::nullopt;
 }
+
+const Block *BlockLegacy::_trySetStateFromAlteredStateCollection(size_t id, int val, DataID data) const
+{
+    if (altered_state_collections_.empty()) {
+        return nullptr;
+    }
+    for (const auto &altered_state : altered_state_collections_) {
+        if (altered_state->getBlockState().getID() == id) {
+            return altered_state->setState(*this, data, val);
+        }
+    }
+    return nullptr;
+}
