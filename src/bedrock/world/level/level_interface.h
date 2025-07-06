@@ -66,6 +66,7 @@
 #include "bedrock/world/level/level_settings.h"
 #include "bedrock/world/level/player_death_manager.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
+#include "bedrock/world/level/spawner.h"
 #include "bedrock/world/level/storage/game_rules.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
