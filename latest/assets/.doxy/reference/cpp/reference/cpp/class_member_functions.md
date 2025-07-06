@@ -48,6 +48,7 @@
 ## b
 
 * **BlockBreakEvent** ([**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md))
+* **BlockCookEvent** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
 * **BlockEvent** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md))
 * **BlockPistonEvent** ([**endstone::BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md), [**endstone::BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md), [**endstone::BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md))
 * **BlockPlaceEvent** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
@@ -116,7 +117,7 @@
 
 ## e
 
-* **ENDSTONE\_EVENT** ([**endstone::BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md), [**endstone::BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md), [**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
+* **ENDSTONE\_EVENT** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md), [**endstone::BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md), [**endstone::BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md), [**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **execute** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **Event** ([**endstone::Event**](classendstone_1_1Event.md), [**endstone::ServerEvent**](classendstone_1_1ServerEvent.md))
 * **EventHandler** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
@@ -166,7 +167,7 @@
 * **getActor** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::DamageSource**](classendstone_1_1DamageSource.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
 * **getBlockList** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **getKnockback** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
-* **getSource** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BanEntry**](classendstone_1_1BanEntry.md))
+* **getSource** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
 * **getFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **getCreated** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
@@ -180,6 +181,7 @@
 * **getY** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **getZ** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **getPlayer** ([**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md), [**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md), [**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerEvent**](classendstone_1_1PlayerEvent.md), [**endstone::Server**](classendstone_1_1Server.md))
+* **getResult** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md), [**endstone::Recipe**](classendstone_1_1Recipe.md))
 * **getBlockStates** ([**endstone::BlockData**](classendstone_1_1BlockData.md))
 * **getBlock** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getDirection** ([**endstone::BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md), [**endstone::Location**](classendstone_1_1Location.md))
@@ -341,7 +343,6 @@
 * **getBlockX** ([**endstone::Position**](classendstone_1_1Position.md))
 * **getBlockY** ([**endstone::Position**](classendstone_1_1Position.md))
 * **getBlockZ** ([**endstone::Position**](classendstone_1_1Position.md))
-* **getResult** ([**endstone::Recipe**](classendstone_1_1Recipe.md))
 * **getOrThrow** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **getPendingTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **getEntry** ([**endstone::Score**](classendstone_1_1Score.md))
@@ -621,6 +622,7 @@
 * **setSource** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **setData** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **setType** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
+* **setResult** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
 * **setColor** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Image**](classendstone_1_1Image.md))
 * **setProgress** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **setStyle** ([**endstone::BossBar**](classendstone_1_1BossBar.md))

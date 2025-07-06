@@ -8,6 +8,7 @@
     <includes refid="item__type_8h" local="yes">endstone/inventory/item_type.h</includes>
     <includes refid="item__meta_8h" local="yes">endstone/inventory/meta/item_meta.h</includes>
     <includes refid="registry_8h" local="yes">endstone/registry.h</includes>
+    <includedby refid="block__cook__event_8h" local="yes">include/endstone/event/block/block_cook_event.h</includedby>
     <includedby refid="player__drop__item__event_8h" local="yes">include/endstone/event/player/player_drop_item_event.h</includedby>
     <includedby refid="player__item__consume__event_8h" local="yes">include/endstone/event/player/player_item_consume_event.h</includedby>
     <includedby refid="recipe_8h" local="yes">include/endstone/inventory/recipe.h</includedby>
@@ -961,10 +962,14 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
+        <label>include/endstone/event/block/block_cook_event.h</label>
+        <link refid="block__cook__event_8h_source"/>
+      </node>
+      <node id="3">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
         <link refid="player__drop__item__event_8h_source"/>
       </node>
-      <node id="3">
+      <node id="4">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -977,8 +982,10 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>

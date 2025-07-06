@@ -19,6 +19,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._     
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     
     * **class** [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._     
+    * **class** [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) _Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._    
     * **class** [**BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._     
     * **class** [**BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
     * **class** [**BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md) _Called when a piston block is triggered._     

@@ -2734,6 +2734,7 @@ For latest updates join the chat on
 <h2 id="b">b<a class="headerlink" href="#b" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>BlockBreakEvent</strong> (<a href="../classendstone_1_1BlockBreakEvent/"><strong>endstone::BlockBreakEvent</strong></a>)</li>
+<li><strong>BlockCookEvent</strong> (<a href="../classendstone_1_1BlockCookEvent/"><strong>endstone::BlockCookEvent</strong></a>)</li>
 <li><strong>BlockEvent</strong> (<a href="../classendstone_1_1BlockEvent/"><strong>endstone::BlockEvent</strong></a>)</li>
 <li><strong>BlockPistonEvent</strong> (<a href="../classendstone_1_1BlockPistonEvent/"><strong>endstone::BlockPistonEvent</strong></a>, <a href="../classendstone_1_1BlockPistonExtendEvent/"><strong>endstone::BlockPistonExtendEvent</strong></a>, <a href="../classendstone_1_1BlockPistonRetractEvent/"><strong>endstone::BlockPistonRetractEvent</strong></a>)</li>
 <li><strong>BlockPlaceEvent</strong> (<a href="../classendstone_1_1BlockPlaceEvent/"><strong>endstone::BlockPlaceEvent</strong></a>)</li>
@@ -2799,7 +2800,7 @@ For latest updates join the chat on
 </ul>
 <h2 id="e">e<a class="headerlink" href="#e" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>ENDSTONE_EVENT</strong> (<a href="../classendstone_1_1BlockPistonExtendEvent/"><strong>endstone::BlockPistonExtendEvent</strong></a>, <a href="../classendstone_1_1BlockPistonRetractEvent/"><strong>endstone::BlockPistonRetractEvent</strong></a>, <a href="../classendstone_1_1ChunkLoadEvent/"><strong>endstone::ChunkLoadEvent</strong></a>, <a href="../classendstone_1_1ChunkUnloadEvent/"><strong>endstone::ChunkUnloadEvent</strong></a>, <a href="../classendstone_1_1LeavesDecayEvent/"><strong>endstone::LeavesDecayEvent</strong></a>, <a href="../classendstone_1_1PacketSendEvent/"><strong>endstone::PacketSendEvent</strong></a>, <a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>, <a href="../classendstone_1_1PlayerJumpEvent/"><strong>endstone::PlayerJumpEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>)</li>
+<li><strong>ENDSTONE_EVENT</strong> (<a href="../classendstone_1_1BlockCookEvent/"><strong>endstone::BlockCookEvent</strong></a>, <a href="../classendstone_1_1BlockPistonExtendEvent/"><strong>endstone::BlockPistonExtendEvent</strong></a>, <a href="../classendstone_1_1BlockPistonRetractEvent/"><strong>endstone::BlockPistonRetractEvent</strong></a>, <a href="../classendstone_1_1ChunkLoadEvent/"><strong>endstone::ChunkLoadEvent</strong></a>, <a href="../classendstone_1_1ChunkUnloadEvent/"><strong>endstone::ChunkUnloadEvent</strong></a>, <a href="../classendstone_1_1LeavesDecayEvent/"><strong>endstone::LeavesDecayEvent</strong></a>, <a href="../classendstone_1_1PacketSendEvent/"><strong>endstone::PacketSendEvent</strong></a>, <a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>, <a href="../classendstone_1_1PlayerJumpEvent/"><strong>endstone::PlayerJumpEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>)</li>
 <li><strong>execute</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>, <a href="../classendstone_1_1PluginCommand/"><strong>endstone::PluginCommand</strong></a>)</li>
 <li><strong>Event</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1ServerEvent/"><strong>endstone::ServerEvent</strong></a>)</li>
 <li><strong>EventHandler</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
@@ -2847,7 +2848,7 @@ For latest updates join the chat on
 <li><strong>getActor</strong> (<a href="../classendstone_1_1ActorEvent/"><strong>endstone::ActorEvent</strong></a>, <a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>, <a href="../classendstone_1_1PlayerInteractActorEvent/"><strong>endstone::PlayerInteractActorEvent</strong></a>)</li>
 <li><strong>getBlockList</strong> (<a href="../classendstone_1_1ActorExplodeEvent/"><strong>endstone::ActorExplodeEvent</strong></a>)</li>
 <li><strong>getKnockback</strong> (<a href="../classendstone_1_1ActorKnockbackEvent/"><strong>endstone::ActorKnockbackEvent</strong></a>)</li>
-<li><strong>getSource</strong> (<a href="../classendstone_1_1ActorKnockbackEvent/"><strong>endstone::ActorKnockbackEvent</strong></a>, <a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
+<li><strong>getSource</strong> (<a href="../classendstone_1_1ActorKnockbackEvent/"><strong>endstone::ActorKnockbackEvent</strong></a>, <a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>, <a href="../classendstone_1_1BlockCookEvent/"><strong>endstone::BlockCookEvent</strong></a>)</li>
 <li><strong>getFrom</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>)</li>
 <li><strong>getTo</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>)</li>
 <li><strong>getCreated</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
@@ -2861,6 +2862,7 @@ For latest updates join the chat on
 <li><strong>getY</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
 <li><strong>getZ</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1Chunk/"><strong>endstone::Chunk</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
 <li><strong>getPlayer</strong> (<a href="../classendstone_1_1BlockBreakEvent/"><strong>endstone::BlockBreakEvent</strong></a>, <a href="../classendstone_1_1BlockPlaceEvent/"><strong>endstone::BlockPlaceEvent</strong></a>, <a href="../classendstone_1_1PacketReceiveEvent/"><strong>endstone::PacketReceiveEvent</strong></a>, <a href="../classendstone_1_1PacketSendEvent/"><strong>endstone::PacketSendEvent</strong></a>, <a href="../classendstone_1_1PlayerEvent/"><strong>endstone::PlayerEvent</strong></a>, <a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
+<li><strong>getResult</strong> (<a href="../classendstone_1_1BlockCookEvent/"><strong>endstone::BlockCookEvent</strong></a>, <a href="../classendstone_1_1Recipe/"><strong>endstone::Recipe</strong></a>)</li>
 <li><strong>getBlockStates</strong> (<a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>)</li>
 <li><strong>getBlock</strong> (<a href="../classendstone_1_1BlockEvent/"><strong>endstone::BlockEvent</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>)</li>
 <li><strong>getDirection</strong> (<a href="../classendstone_1_1BlockPistonEvent/"><strong>endstone::BlockPistonEvent</strong></a>, <a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
@@ -3022,7 +3024,6 @@ For latest updates join the chat on
 <li><strong>getBlockX</strong> (<a href="../classendstone_1_1Position/"><strong>endstone::Position</strong></a>)</li>
 <li><strong>getBlockY</strong> (<a href="../classendstone_1_1Position/"><strong>endstone::Position</strong></a>)</li>
 <li><strong>getBlockZ</strong> (<a href="../classendstone_1_1Position/"><strong>endstone::Position</strong></a>)</li>
-<li><strong>getResult</strong> (<a href="../classendstone_1_1Recipe/"><strong>endstone::Recipe</strong></a>)</li>
 <li><strong>getOrThrow</strong> (<a href="../classendstone_1_1Registry/"><strong>endstone::Registry</strong></a>)</li>
 <li><strong>getPendingTasks</strong> (<a href="../classendstone_1_1Scheduler/"><strong>endstone::Scheduler</strong></a>)</li>
 <li><strong>getEntry</strong> (<a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a>)</li>
@@ -3292,6 +3293,7 @@ For latest updates join the chat on
 <li><strong>setSource</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
 <li><strong>setData</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>setType</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
+<li><strong>setResult</strong> (<a href="../classendstone_1_1BlockCookEvent/"><strong>endstone::BlockCookEvent</strong></a>)</li>
 <li><strong>setColor</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>, <a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
 <li><strong>setProgress</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>setStyle</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>

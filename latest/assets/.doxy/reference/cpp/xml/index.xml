@@ -176,6 +176,15 @@
     <member refid="classendstone_1_1BlockBreakEvent_1a51513f05d20b347797c31be3fb6db1d2" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1BlockBreakEvent_1aaa5791d3da729f993bf7cdcb07356ef5" kind="function"><name>getPlayer</name></member>
   </compound>
+  <compound refid="classendstone_1_1BlockCookEvent" kind="class"><name>endstone::BlockCookEvent</name>
+    <member refid="classendstone_1_1BlockCookEvent_1ae1299c73c6b86f8996f4b5b011d6faf3" kind="variable"><name>source_</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1ac3d1d77752f5e185acc1174a72d5a64d" kind="variable"><name>result_</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1a0c022b567cdab73d5f74da17326cd88e" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1a75e3ce9d305c7273ddadd7cb345a5259" kind="function"><name>BlockCookEvent</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" kind="function"><name>getSource</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" kind="function"><name>getResult</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1abba7e5e677bb7f21a49ebcbf84a0aa2f" kind="function"><name>setResult</name></member>
+  </compound>
   <compound refid="classendstone_1_1BlockData" kind="class"><name>endstone::BlockData</name>
     <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" kind="function"><name>~BlockData</name></member>
     <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kind="function"><name>getType</name></member>
@@ -2035,6 +2044,8 @@
   <compound refid="actor__teleport__event_8h" kind="file"><name>actor_teleport_event.h</name>
   </compound>
   <compound refid="block__break__event_8h" kind="file"><name>block_break_event.h</name>
+  </compound>
+  <compound refid="block__cook__event_8h" kind="file"><name>block_cook_event.h</name>
   </compound>
   <compound refid="block__event_8h" kind="file"><name>block_event.h</name>
   </compound>

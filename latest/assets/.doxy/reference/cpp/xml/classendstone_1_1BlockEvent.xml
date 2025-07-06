@@ -91,31 +91,37 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="5">
+        <label>endstone::BlockCookEvent</label>
+        <link refid="classendstone_1_1BlockCookEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="1">
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::BlockPistonEvent</label>
         <link refid="classendstone_1_1BlockPistonEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::BlockPistonExtendEvent</label>
         <link refid="classendstone_1_1BlockPistonExtendEvent"/>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>endstone::BlockPistonRetractEvent</label>
-        <link refid="classendstone_1_1BlockPistonRetractEvent"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
       </node>
       <node id="8">
+        <label>endstone::BlockPistonRetractEvent</label>
+        <link refid="classendstone_1_1BlockPistonRetractEvent"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
         <label>endstone::BlockPlaceEvent</label>
         <link refid="classendstone_1_1BlockPlaceEvent"/>
         <childnode refid="3" relation="public-inheritance">
@@ -125,7 +131,7 @@
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="9">
+      <node id="10">
         <label>endstone::LeavesDecayEvent</label>
         <link refid="classendstone_1_1LeavesDecayEvent"/>
         <childnode refid="3" relation="public-inheritance">

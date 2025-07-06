@@ -57,6 +57,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**actor\_teleport\_event.h**](actor__teleport__event_8h.md)     
             * **dir** [**block**](dir_992e9ad7dc69726476903ba283e33c71.md)     
                 * **file** [**block\_break\_event.h**](block__break__event_8h.md)     
+                * **file** [**block\_cook\_event.h**](block__cook__event_8h.md)     
                 * **file** [**block\_event.h**](block__event_8h.md)     
                 * **file** [**block\_piston\_event.h**](block__piston__event_8h.md)     
                 * **file** [**block\_piston\_extend\_event.h**](block__piston__extend__event_8h.md)     
