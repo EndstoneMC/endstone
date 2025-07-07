@@ -230,12 +230,12 @@ bool Actor::isRiding() const
     return getVehicle() != nullptr;
 }
 
-void Actor::stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
-                       bool is_being_teleported)
-{
-    BEDROCK_CALL(&Actor::stopRiding, this, exit_from_passenger, actor_is_being_destroyed, switching_vehicles,
-                 is_being_teleported);
-}
+// void Actor::stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
+//                        bool is_being_teleported)
+// {
+//     BEDROCK_CALL(&Actor::stopRiding, this, exit_from_passenger, actor_is_being_destroyed, switching_vehicles,
+//                  is_being_teleported);
+// }
 
 // bool Actor::hasPassenger() const
 // {

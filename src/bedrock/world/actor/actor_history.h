@@ -32,6 +32,7 @@ public:
         bool is_correction;
     };
 
+    ActorHistory(size_t history_window) : history_window_(history_window) {}
     void clearFrames()
     {
         oldest_frame_ = 0;
