@@ -16,42 +16,41 @@
 
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
+#include "endstone/inventory/equipment_slot.h"
+#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
 /**
  * @brief Called when a player changes their currently held item.
+ *
  */
 class PlayerItemHeldEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerItemHeldEvent)
 
-    explicit PlayerItemHeldEvent(Player &player, const int previous, const int current)
-        : Cancellable(player), previous_(previous), current_(current)
+    explicit PlayerItemHeldEvent(Player &player, int new_slot, int previous_slot)
+        : Cancellable(player), new_slot_(new_slot), previous_slot_(previous_slot)
     {
-    }
-
-    /**
-     * @brief Gets the previous held slot index.
-     *
-     * @return Previous slot index
-     */
-    [[nodiscard]] int getPreviousSlot() const
-    {
-        return previous_;
     }
 
     /**
      * @brief Gets the new held slot index.
-     *
-     * @return New slot index
      */
     [[nodiscard]] int getNewSlot() const
     {
-        return current_;
+        return new_slot_;
+    }
+
+    /**
+     * @brief Gets the previous held slot index.
+     */
+    [[nodiscard]] int getPreviousSlot() const
+    {
+        return previous_slot_;
     }
 
 private:
-    int previous_;
-    int current_;
+    int new_slot_;
+    int previous_slot_;
 };
 }  // namespace endstone
