@@ -286,6 +286,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerItemHeldEvent**](classendstone_1_1PlayerItemHeldEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md)

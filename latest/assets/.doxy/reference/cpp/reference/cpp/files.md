@@ -84,6 +84,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_interact\_actor\_event.h**](player__interact__actor__event_8h.md)     
                 * **file** [**player\_interact\_event.h**](player__interact__event_8h.md)     
                 * **file** [**player\_item\_consume\_event.h**](player__item__consume__event_8h.md)     
+                * **file** [**player\_item\_held\_event.h**](player__item__held__event_8h.md)     
                 * **file** [**player\_join\_event.h**](player__join__event_8h.md)     
                 * **file** [**player\_jump\_event.h**](player__jump__event_8h.md)     
                 * **file** [**player\_kick\_event.h**](player__kick__event_8h.md)     

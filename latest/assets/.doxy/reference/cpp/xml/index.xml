@@ -1318,6 +1318,13 @@
     <member refid="classendstone_1_1PlayerItemConsumeEvent_1acf92431b4fefa6c42d450c301a03c9a5" kind="function"><name>getItem</name></member>
     <member refid="classendstone_1_1PlayerItemConsumeEvent_1a4c71af194ee2c446fcb5c5eb28715050" kind="function"><name>getHand</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerItemHeldEvent" kind="class"><name>endstone::PlayerItemHeldEvent</name>
+    <member refid="classendstone_1_1PlayerItemHeldEvent_1a383427dc9255d5298fcadb64a9151195" kind="variable"><name>previous_</name></member>
+    <member refid="classendstone_1_1PlayerItemHeldEvent_1a5082d2da1001d82b0c9a6dcfb2844997" kind="variable"><name>current_</name></member>
+    <member refid="classendstone_1_1PlayerItemHeldEvent_1a7eec5505b61ad5165f902c407721f5bb" kind="function"><name>PlayerItemHeldEvent</name></member>
+    <member refid="classendstone_1_1PlayerItemHeldEvent_1afd86e8a183c753785358dc92841d4d78" kind="function"><name>getPreviousSlot</name></member>
+    <member refid="classendstone_1_1PlayerItemHeldEvent_1a73d70b44a39f70b1a253d4f4ff3a4b7f" kind="function"><name>getNewSlot</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerJoinEvent" kind="class"><name>endstone::PlayerJoinEvent</name>
     <member refid="classendstone_1_1PlayerJoinEvent_1a7f02575361267d031b100a8b132e0d06" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1ad5539db6b1101aa95e83b0c17c125725" kind="variable"><name>join_message_</name></member>
@@ -2118,6 +2125,8 @@
   <compound refid="player__interact__event_8h" kind="file"><name>player_interact_event.h</name>
   </compound>
   <compound refid="player__item__consume__event_8h" kind="file"><name>player_item_consume_event.h</name>
+  </compound>
+  <compound refid="player__item__held__event_8h" kind="file"><name>player_item_held_event.h</name>
   </compound>
   <compound refid="player__join__event_8h" kind="file"><name>player_join_event.h</name>
   </compound>

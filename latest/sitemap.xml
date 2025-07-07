@@ -541,6 +541,10 @@
          <lastmod>2025-07-07</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerItemHeldEvent/</loc>
+         <lastmod>2025-07-07</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerJoinEvent/</loc>
          <lastmod>2025-07-07</lastmod>
     </url>
@@ -1386,6 +1390,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__item__consume__event_8h_source/</loc>
+         <lastmod>2025-07-07</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__item__held__event_8h/</loc>
+         <lastmod>2025-07-07</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__item__held__event_8h_source/</loc>
          <lastmod>2025-07-07</lastmod>
     </url>
     <url>
