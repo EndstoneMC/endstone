@@ -40,6 +40,7 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {
     auto packet = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftPackets::createPacket, id);
     switch (id) {
+    case MinecraftPacketIds::PlayerEquipment:
     case MinecraftPacketIds::PlayerAction:
     case MinecraftPacketIds::SetLocalPlayerAsInit:
     case MinecraftPacketIds::PlayerAuthInputPacket: {
