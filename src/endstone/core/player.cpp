@@ -19,6 +19,7 @@
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
@@ -47,6 +48,7 @@
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_interact_event.h"
+#include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -197,6 +199,17 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                 }
             }
             ++it;
+        }
+        return true;
+    }
+    case MinecraftPacketIds::PlayerEquipment: {
+        auto &pk = static_cast<MobEquipmentPacket &>(packet);
+        PlayerItemHeldEvent e(*this, pk.selected_slot, this->inventory_->getHeldItemSlot());
+        getServer().getPluginManager().callEvent(e);
+        sendMessage(this->getName());
+        if (e.isCancelled()) {
+            this->inventory_->setHeldItemSlot(this->inventory_->getHeldItemSlot());
+            return false;
         }
         return true;
     }

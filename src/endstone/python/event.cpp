@@ -251,6 +251,11 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("item", &PlayerItemConsumeEvent::getItem, py::return_value_policy::reference,
                                "Gets or sets the item that is being consumed.")
         .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "Get the hand used to consume the item.");
+    py::class_<PlayerItemHeldEvent, PlayerEvent, ICancellable>(
+        m, "PlayerItemHeldEvent", "Called when a player changes their currently held item.")
+        .def_property_readonly("new_slot", &PlayerItemHeldEvent::getNewSlot, "Gets the new held slot index")
+        .def_property_readonly("previous_slot", &PlayerItemHeldEvent::getPreviousSlot,
+                               "Gets the previous held slot index.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "Gets or sets the join message to send to all online players.");

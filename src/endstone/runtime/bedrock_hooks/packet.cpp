@@ -42,7 +42,8 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     switch (id) {
     case MinecraftPacketIds::PlayerAction:
     case MinecraftPacketIds::SetLocalPlayerAsInit:
-    case MinecraftPacketIds::PlayerAuthInputPacket: {
+    case MinecraftPacketIds::PlayerAuthInputPacket:
+    case MinecraftPacketIds::PlayerEquipment: {
         static std::unordered_map<MinecraftPacketIds, std::unique_ptr<PlayerPacketHandler>> handlers;
         if (packet->handler_) {
             handlers.emplace(id, std::make_unique<PlayerPacketHandler>(*packet->handler_));

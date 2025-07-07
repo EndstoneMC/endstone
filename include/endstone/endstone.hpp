@@ -88,6 +88,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_interact_actor_event.h"
 #include "event/player/player_interact_event.h"
 #include "event/player/player_item_consume_event.h"
+#include "event/player/player_item_held_event.h"
 #include "event/player/player_join_event.h"
 #include "event/player/player_jump_event.h"
 #include "event/player/player_kick_event.h"
