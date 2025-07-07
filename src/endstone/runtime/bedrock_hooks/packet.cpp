@@ -40,10 +40,10 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {
     auto packet = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftPackets::createPacket, id);
     switch (id) {
+    case MinecraftPacketIds::PlayerEquipment:
     case MinecraftPacketIds::PlayerAction:
     case MinecraftPacketIds::SetLocalPlayerAsInit:
-    case MinecraftPacketIds::PlayerAuthInputPacket:
-    case MinecraftPacketIds::PlayerEquipment: {
+    case MinecraftPacketIds::PlayerAuthInputPacket: {
         static std::unordered_map<MinecraftPacketIds, std::unique_ptr<PlayerPacketHandler>> handlers;
         if (packet->handler_) {
             handlers.emplace(id, std::make_unique<PlayerPacketHandler>(*packet->handler_));

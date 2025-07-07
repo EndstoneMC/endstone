@@ -154,6 +154,16 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
 bool EndstonePlayer::handlePacket(Packet &packet)
 {
     switch (packet.getId()) {
+    case MinecraftPacketIds::PlayerEquipment: {
+        auto &pk = static_cast<MobEquipmentPacket &>(packet);
+        PlayerItemHeldEvent e(*this, this->inventory_->getHeldItemSlot(), pk.selected_slot);
+        getServer().getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            this->inventory_->setHeldItemSlot(this->inventory_->getHeldItemSlot());
+            return false;
+        }
+        return true;
+    }
     case MinecraftPacketIds::PlayerAction: {
         auto &pk = static_cast<PlayerActionPacket &>(packet);
         if (pk.action == PlayerActionType::StopSleeping && getPlayer().isSleeping()) {
@@ -199,17 +209,6 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                 }
             }
             ++it;
-        }
-        return true;
-    }
-    case MinecraftPacketIds::PlayerEquipment: {
-        auto &pk = static_cast<MobEquipmentPacket &>(packet);
-        PlayerItemHeldEvent e(*this, pk.selected_slot, this->inventory_->getHeldItemSlot());
-        getServer().getPluginManager().callEvent(e);
-        sendMessage(this->getName());
-        if (e.isCancelled()) {
-            this->inventory_->setHeldItemSlot(this->inventory_->getHeldItemSlot());
-            return false;
         }
         return true;
     }

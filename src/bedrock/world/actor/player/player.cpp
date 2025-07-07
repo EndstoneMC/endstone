@@ -93,8 +93,8 @@ const ItemStack &Player::setSelectedSlot(int slot)
     pk->slot = slot;
     pk->selected_slot = slot;
     pk->container_id = CONTAINER_ID_INVENTORY;
-    pk->slot_byte = slot;
-    pk->selected_slot_byte = slot;
+    pk->slot_byte = static_cast<char>(slot);
+    pk->selected_slot_byte = static_cast<char>(slot);
     pk->container_id_byte = CONTAINER_ID_INVENTORY;
     getDimension().sendPacketForEntity(*this, *pk, nullptr);
     return item;
@@ -127,7 +127,8 @@ void Player::setPermissions(CommandPermissionLevel permission)
 //     auto pos = getPosition();
 //     pos.y = std::ceilf(getAABB().min.y);
 //     const auto is_set =
-//         dimension != player_respawn_point_.dimension || player_respawn_point_.spawn_block_pos != spawn_block_position;
+//         dimension != player_respawn_point_.dimension || player_respawn_point_.spawn_block_pos !=
+//         spawn_block_position;
 //     player_respawn_point_.player_position = pos;
 //     player_respawn_point_.dimension = dimension;
 //     ActorValueValidation::validateBlockPos(spawn_block_position, "1 setSpawnPoint");
