@@ -23,8 +23,9 @@ namespace endstone {
 class MapView;
 
 /**
- * @brief Represents a canvas for drawing to a map. Each canvas is associated with a
- *        specific MapRenderer and represents that renderer's layer on the map.
+ * @brief Represents a canvas for drawing to a map.
+ *
+ * @note Each canvas is associated with a specific MapRenderer and represents that renderer's layer on the map.
  */
 class MapCanvas {
 public:
@@ -54,34 +55,21 @@ public:
     /**
      * @brief Draw a pixel to the canvas.
      *
-     * If std::nullopt is used as color, then the color returned by getBasePixelColor() is shown on the map.
-     *
      * @param x The x coordinate, from 0 to 127.
      * @param y The y coordinate, from 0 to 127.
-     * @param color The color, or std::nullopt for base color.
+     * @param color The color
      */
-    virtual void setPixelColor(int x, int y, std::optional<Color> color) = 0;
+    virtual void setPixelColor(int x, int y, Color color) = 0;
 
     /**
      * @brief Get a pixel from the canvas.
      *
-     * If no color is set at the given position for this canvas, then std::nullopt is
-     * returned and the color returned by getBasePixelColor() is shown on the map.
-     *
      * @param x The x coordinate, from 0 to 127.
      * @param y The y coordinate, from 0 to 127.
-     * @return The color, or std::nullopt if no color is set.
-     */
-    [[nodiscard]] virtual std::optional<Color> getPixelColor(int x, int y) const = 0;
-
-    /**
-     * @brief Get a pixel from the layers below this canvas.
-     * @param x The x coordinate, from 0 to 127.
      *
-     * @param y The y coordinate, from 0 to 127.
-     * @return The color.
+     * @return The color
      */
-    [[nodiscard]] virtual Color getBasePixelColor(int x, int y) const = 0;
+    [[nodiscard]] virtual Result<Color> getPixelColor(int x, int y) const = 0;
 
     /**
      * @brief Draw a pixel to the canvas.
@@ -90,7 +78,7 @@ public:
      * @param y The y coordinate, from 0 to 127.
      * @param color The color.
      */
-    virtual void setPixel(int x, int y, int color) = 0;
+    virtual void setPixel(int x, int y, std::uint32_t color) = 0;
 
     /**
      * @brief Get a pixel from the canvas.
@@ -99,16 +87,7 @@ public:
      * @param y The y coordinate, from 0 to 127.
      * @return The color.
      */
-    [[nodiscard]] virtual int getPixel(int x, int y) const = 0;
-
-    /**
-     * @brief Get a pixel from the layers below this canvas.
-     *
-     * @param x The x coordinate, from 0 to 127.
-     * @param y The y coordinate, from 0 to 127.
-     * @return The color.
-     */
-    [[nodiscard]] virtual int getBasePixel(int x, int y) const = 0;
+    [[nodiscard]] virtual std::uint32_t getPixel(int x, int y) const = 0;
 
     /**
      * @brief Draw an image to the map. The image will be clipped if necessary.

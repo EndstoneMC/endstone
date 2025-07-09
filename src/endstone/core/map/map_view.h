@@ -41,6 +41,7 @@ public:
 
 private:
     bool isContextual() const;
+    friend class EndstoneMapCanvas;
 
     std::vector<std::shared_ptr<MapRenderer>> renderers_;
     MapItemSavedData &map_;

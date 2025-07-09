@@ -60,13 +60,11 @@ void init_map(py::module_ &m)
         .def_property_readonly("map_view", &MapCanvas::getMapView, "Get the map this canvas is attached to.",
                                py::return_value_policy::reference)
         .def("set_pixel_color", &MapCanvas::setPixelColor, py::arg("x"), py::arg("y"), py::arg("color"),
-             "Draw a pixel to the canvas.\n\nIf None is used as color, then the color returned by "
-             "get_base_pixel_color() is shown on the map.")
-        .def("get_pixel_color", &MapCanvas::getPixelColor, py::arg("x"), py::arg("y"),
-             "Get a pixel from the canvas.\n\nIf no color is set at the given position for this canvas, then None is "
-             "returned and the color returned by get_base_pixel_color() is shown on the map")
-        .def("get_base_pixel_color", &MapCanvas::getBasePixelColor, py::arg("x"), py::arg("y"),
-             "Get a pixel from the layers below this canvas.")
+             "Draw a pixel to the canvas.")
+        .def("get_pixel_color", &MapCanvas::getPixelColor, py::arg("x"), py::arg("y"), "Get a pixel from the canvas.")
+        .def("set_pixel", &MapCanvas::setPixel, py::arg("x"), py::arg("y"), py::arg("color"),
+             "Draw a pixel to the canvas.")
+        .def("get_pixel", &MapCanvas::getPixel, py::arg("x"), py::arg("y"), "Get a pixel from the canvas.")
         .def("draw_image", &MapCanvas::drawImage, py::arg("x"), py::arg("y"), py::arg("image"),
              "Draw an image to the map. The image will be clipped if necessary.");
 

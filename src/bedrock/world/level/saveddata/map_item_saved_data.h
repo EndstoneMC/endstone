@@ -78,7 +78,7 @@ public:
     void setDirtyForSave();
     [[nodiscard]] bool isDirtyForSave() const;
     void setDirtyForSaveAndPixelData();
-    void setPixelDirty(uint32_t, uint32_t);
+    void setPixelDirty(uint32_t x, uint32_t y);
     void setAllPixelsDirty();
     bool setPixel(uint32_t, uint32_t, uint32_t);
     [[nodiscard]] bool isChunkAllEmpty(ChunkBounds) const;
