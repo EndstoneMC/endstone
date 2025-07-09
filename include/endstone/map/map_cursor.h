@@ -24,6 +24,31 @@ public:
      * @brief Represents the standard types of map cursors.
      */
     enum class Type {
+        Player = 0,
+        Frame = 1,
+        RedMarker = 2,
+        BlueMarker = 3,
+        TargetX = 4,
+        TargetPoint = 5,
+        PlayerOffMap = 6,
+        SignMarker = 7,
+        PinkMarker = 8,
+        OrangeMarker = 9,
+        YellowMarker = 10,
+        CyanMarker = 11,
+        GreenPoint = 12,
+        PlayerOffLimits = 13,
+        Mansion = 14,
+        Monument = 15,
+        // PlayerHidden = 16,
+        VillageDesert = 17,
+        VillagePlains = 18,
+        VillageSavanna = 19,
+        VillageSnowy = 20,
+        VillageTaiga = 21,
+        JungleTemple = 22,
+        SwampHut = 23,
+        TrialChambers = 24,
     };
 
     /**

@@ -39,14 +39,14 @@ public:
     [[nodiscard]] virtual MapView &getMapView() const = 0;
 
     /**
-     * @brief Get the cursor collection associated with this canvas.
+     * @brief Get the cursors associated with this canvas.
      *
      * @return The MapCursorCollection associated with this canvas.
      */
     [[nodiscard]] virtual std::vector<MapCursor> getCursors() const = 0;
 
     /**
-     * @brief Set the cursor collection associated with this canvas.
+     * @brief Set the cursors associated with this canvas.
      *
      * @param cursors The MapCursorCollection to associate with this canvas.
      */
@@ -97,8 +97,6 @@ public:
      * @param image The Image to draw.
      */
     virtual void drawImage(int x, int y, const Image &image) = 0;
-
-    // TODO(map): getCursors and setCursors
 };
 
 }  // namespace endstone

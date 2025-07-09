@@ -37,7 +37,31 @@ void init_map(py::module_ &m)
 {
     auto cursor = py::class_<MapCursor>(m, "MapCursor", "Represents a cursor on a map.");
 
-    py::enum_<MapCursor::Type>(cursor, "Type", "Represents the standard types of map cursors.");
+    py::enum_<MapCursor::Type>(cursor, "Type", "Represents the standard types of map cursors.")
+        .value("PLAYER", MapCursor::Type::Player)
+        .value("FRAME", MapCursor::Type::Frame)
+        .value("RED_MARKER", MapCursor::Type::RedMarker)
+        .value("BLUE_MARKER", MapCursor::Type::BlueMarker)
+        .value("TARGET_X", MapCursor::Type::TargetX)
+        .value("TARGET_POINT", MapCursor::Type::TargetPoint)
+        .value("PLAYER_OFF_MAP", MapCursor::Type::PlayerOffMap)
+        .value("SIGN_MARKER", MapCursor::Type::SignMarker)
+        .value("PINK_MARKER", MapCursor::Type::PinkMarker)
+        .value("ORANGE_MARKER", MapCursor::Type::OrangeMarker)
+        .value("YELLOW_MARKER", MapCursor::Type::YellowMarker)
+        .value("CYAN_MARKER", MapCursor::Type::CyanMarker)
+        .value("GREEN_POINT", MapCursor::Type::GreenPoint)
+        .value("PLAYER_OFF_LIMITS", MapCursor::Type::PlayerOffLimits)
+        .value("MANSION", MapCursor::Type::Mansion)
+        .value("MONUMENT", MapCursor::Type::Monument)
+        .value("VILLAGE_DESERT", MapCursor::Type::VillageDesert)
+        .value("VILLAGE_PLAINS", MapCursor::Type::VillagePlains)
+        .value("VILLAGE_SAVANNA", MapCursor::Type::VillageSavanna)
+        .value("VILLAGE_SNOWY", MapCursor::Type::VillageSnowy)
+        .value("VILLAGE_TAIGA", MapCursor::Type::VillageTaiga)
+        .value("JUNGLE_TEMPLE", MapCursor::Type::JungleTemple)
+        .value("SWAMP_HUT", MapCursor::Type::SwampHut)
+        .value("TRIAL_CHAMBERS", MapCursor::Type::TrialChambers);
 
     cursor
         .def(py::init<std::int8_t, std::int8_t, std::int8_t, MapCursor::Type, bool, std::string>(), py::arg("x"),
@@ -59,6 +83,8 @@ void init_map(py::module_ &m)
                           "MapRenderer and represents that renderer's layer on the map.")
         .def_property_readonly("map_view", &MapCanvas::getMapView, "Get the map this canvas is attached to.",
                                py::return_value_policy::reference)
+        .def_property("cursors", &MapCanvas::getCursors, &MapCanvas::setCursors,
+                      "Get the cursorS associated with this canvas.")
         .def("set_pixel_color", &MapCanvas::setPixelColor, py::arg("x"), py::arg("y"), py::arg("color"),
              "Draw a pixel to the canvas.")
         .def("get_pixel_color", &MapCanvas::getPixelColor, py::arg("x"), py::arg("y"), "Get a pixel from the canvas.")

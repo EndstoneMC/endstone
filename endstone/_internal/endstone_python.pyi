@@ -2095,22 +2095,30 @@ class MapCanvas:
         """
         Draw an image to the map. The image will be clipped if necessary.
         """
-    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
-        """
-        Get a pixel from the layers below this canvas.
-        """
-    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...] | None:
+    def get_pixel(self, x: int, y: int) -> int:
         """
         Get a pixel from the canvas.
-        
-        If no color is set at the given position for this canvas, then None is returned and the color returned by get_base_pixel_color() is shown on the map
         """
-    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...] | None) -> None:
+    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
+        """
+        Get a pixel from the canvas.
+        """
+    def set_pixel(self, x: int, y: int, color: int) -> None:
         """
         Draw a pixel to the canvas.
-        
-        If None is used as color, then the color returned by get_base_pixel_color() is shown on the map.
         """
+    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...]) -> None:
+        """
+        Draw a pixel to the canvas.
+        """
+    @property
+    def cursors(self) -> list[MapCursor]:
+        """
+        Get the cursorS associated with this canvas.
+        """
+    @cursors.setter
+    def cursors(self, arg1: list[MapCursor]) -> None:
+        ...
     @property
     def map_view(self) -> MapView:
         """
@@ -2124,7 +2132,31 @@ class MapCursor:
         """
         Represents the standard types of map cursors.
         """
-        __members__: typing.ClassVar[dict] = {}
+        BLUE_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.BLUE_MARKER: 3>
+        CYAN_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.CYAN_MARKER: 11>
+        FRAME: typing.ClassVar[MapCursor.Type]  # value = <Type.FRAME: 1>
+        GREEN_POINT: typing.ClassVar[MapCursor.Type]  # value = <Type.GREEN_POINT: 12>
+        JUNGLE_TEMPLE: typing.ClassVar[MapCursor.Type]  # value = <Type.JUNGLE_TEMPLE: 22>
+        MANSION: typing.ClassVar[MapCursor.Type]  # value = <Type.MANSION: 14>
+        MONUMENT: typing.ClassVar[MapCursor.Type]  # value = <Type.MONUMENT: 15>
+        ORANGE_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.ORANGE_MARKER: 9>
+        PINK_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.PINK_MARKER: 8>
+        PLAYER: typing.ClassVar[MapCursor.Type]  # value = <Type.PLAYER: 0>
+        PLAYER_OFF_LIMITS: typing.ClassVar[MapCursor.Type]  # value = <Type.PLAYER_OFF_LIMITS: 13>
+        PLAYER_OFF_MAP: typing.ClassVar[MapCursor.Type]  # value = <Type.PLAYER_OFF_MAP: 6>
+        RED_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.RED_MARKER: 2>
+        SIGN_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.SIGN_MARKER: 7>
+        SWAMP_HUT: typing.ClassVar[MapCursor.Type]  # value = <Type.SWAMP_HUT: 23>
+        TARGET_POINT: typing.ClassVar[MapCursor.Type]  # value = <Type.TARGET_POINT: 5>
+        TARGET_X: typing.ClassVar[MapCursor.Type]  # value = <Type.TARGET_X: 4>
+        TRIAL_CHAMBERS: typing.ClassVar[MapCursor.Type]  # value = <Type.TRIAL_CHAMBERS: 24>
+        VILLAGE_DESERT: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_DESERT: 17>
+        VILLAGE_PLAINS: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_PLAINS: 18>
+        VILLAGE_SAVANNA: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_SAVANNA: 19>
+        VILLAGE_SNOWY: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_SNOWY: 20>
+        VILLAGE_TAIGA: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_TAIGA: 21>
+        YELLOW_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.YELLOW_MARKER: 10>
+        __members__: typing.ClassVar[dict[str, MapCursor.Type]]  # value = {'PLAYER': <Type.PLAYER: 0>, 'FRAME': <Type.FRAME: 1>, 'RED_MARKER': <Type.RED_MARKER: 2>, 'BLUE_MARKER': <Type.BLUE_MARKER: 3>, 'TARGET_X': <Type.TARGET_X: 4>, 'TARGET_POINT': <Type.TARGET_POINT: 5>, 'PLAYER_OFF_MAP': <Type.PLAYER_OFF_MAP: 6>, 'SIGN_MARKER': <Type.SIGN_MARKER: 7>, 'PINK_MARKER': <Type.PINK_MARKER: 8>, 'ORANGE_MARKER': <Type.ORANGE_MARKER: 9>, 'YELLOW_MARKER': <Type.YELLOW_MARKER: 10>, 'CYAN_MARKER': <Type.CYAN_MARKER: 11>, 'GREEN_POINT': <Type.GREEN_POINT: 12>, 'PLAYER_OFF_LIMITS': <Type.PLAYER_OFF_LIMITS: 13>, 'MANSION': <Type.MANSION: 14>, 'MONUMENT': <Type.MONUMENT: 15>, 'VILLAGE_DESERT': <Type.VILLAGE_DESERT: 17>, 'VILLAGE_PLAINS': <Type.VILLAGE_PLAINS: 18>, 'VILLAGE_SAVANNA': <Type.VILLAGE_SAVANNA: 19>, 'VILLAGE_SNOWY': <Type.VILLAGE_SNOWY: 20>, 'VILLAGE_TAIGA': <Type.VILLAGE_TAIGA: 21>, 'JUNGLE_TEMPLE': <Type.JUNGLE_TEMPLE: 22>, 'SWAMP_HUT': <Type.SWAMP_HUT: 23>, 'TRIAL_CHAMBERS': <Type.TRIAL_CHAMBERS: 24>}
         def __eq__(self, other: typing.Any) -> bool:
             ...
         def __getstate__(self) -> int:
