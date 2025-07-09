@@ -16,6 +16,7 @@
 
 #include "endstone/util/color.h"
 #include "endstone/util/image.h"
+#include "map_cursor.h"
 
 namespace endstone {
 
@@ -35,6 +36,20 @@ public:
      * @return The MapView this canvas is attached to.
      */
     [[nodiscard]] virtual MapView &getMapView() const = 0;
+
+    /**
+     * @brief Get the cursor collection associated with this canvas.
+     *
+     * @return The MapCursorCollection associated with this canvas.
+     */
+    [[nodiscard]] virtual std::vector<MapCursor> getCursors() const = 0;
+
+    /**
+     * @brief Set the cursor collection associated with this canvas.
+     *
+     * @param cursors The MapCursorCollection to associate with this canvas.
+     */
+    virtual void setCursors(const std::vector<MapCursor> &cursors) = 0;
 
     /**
      * @brief Draw a pixel to the canvas.
