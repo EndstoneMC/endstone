@@ -14,10 +14,18 @@
 
 #pragma once
 
+#include "bedrock/world/item/map_constants.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 #include "endstone/map/map_view.h"
 
 namespace endstone::core {
+
+struct RenderData {
+    RenderData() : buffer(MapConstants::MAP_SIZE * MapConstants::MAP_SIZE, 0) {}
+    std::vector<std::uint32_t> buffer;
+    std::vector<MapCursor> cursors;
+};
+
 class EndstoneMapView : public MapView {
 public:
     explicit EndstoneMapView(MapItemSavedData &map);
@@ -33,17 +41,23 @@ public:
     void setDimension(const Dimension &dimension) override;
     [[nodiscard]] std::vector<MapRenderer *> getRenderers() const override;
     void addRenderer(std::shared_ptr<MapRenderer> renderer) override;
-    bool removeRenderer(MapRenderer *renderer) override;
+    bool removeRenderer(const std::shared_ptr<MapRenderer> &renderer) override;
     [[nodiscard]] bool isUnlimitedTracking() const override;
     void setUnlimitedTracking(bool unlimited) override;
     [[nodiscard]] bool isLocked() const override;
     void setLocked(bool locked) override;
 
+    const RenderData &render(EndstonePlayer &player);
+
 private:
     bool isContextual() const;
     friend class EndstoneMapCanvas;
 
+    std::unordered_map<std::uint64_t, RenderData> render_cache_;
     std::vector<std::shared_ptr<MapRenderer>> renderers_;
+    std::unordered_map<std::shared_ptr<MapRenderer>,
+                       std::unordered_map<std::uint64_t, std::unique_ptr<EndstoneMapCanvas>>>
+        canvases_;
     MapItemSavedData &map_;
 };
 }  // namespace endstone::core

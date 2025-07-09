@@ -31,6 +31,8 @@ public:
     void drawImage(int x, int y, const Image &image) override;
 
 private:
+    friend class EndstoneMapView;
+
     std::vector<std::uint32_t> buffer_;
     EndstoneMapView &map_view_;
     std::vector<MapCursor> cursors_;

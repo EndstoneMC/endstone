@@ -131,7 +131,7 @@ public:
      *
      * @return True if the renderer was successfully removed.
      */
-    virtual bool removeRenderer(MapRenderer *renderer) = 0;
+    virtual bool removeRenderer(const std::shared_ptr<MapRenderer> &renderer) = 0;
 
     /**
      * @brief Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is
