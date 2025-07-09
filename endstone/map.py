@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import MapCanvas, MapRenderer, MapView
+from endstone._internal.endstone_python import MapCanvas, MapCursor, MapRenderer, MapView
 
-__all__ = ["MapCanvas", "MapRenderer", "MapView"]
+__all__ = ["MapCanvas", "MapCursor", "MapRenderer", "MapView"]

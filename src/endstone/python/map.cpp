@@ -35,6 +35,23 @@ public:
 
 void init_map(py::module_ &m)
 {
+    auto cursor = py::class_<MapCursor>(m, "MapCursor", "Represents a cursor on a map.");
+
+    py::enum_<MapCursor::Type>(cursor, "Type", "Represents the standard types of map cursors.");
+
+    cursor
+        .def(py::init<std::int8_t, std::int8_t, std::int8_t, MapCursor::Type, bool, std::string>(), py::arg("x"),
+             py::arg("y"), py::arg("direction"), py::arg("type"), py::arg("visible"), py::arg("caption") = "")
+        .def_property("x", &MapCursor::getX, &MapCursor::setX, "Get or set the X position of this cursor.")
+        .def_property("y", &MapCursor::getY, &MapCursor::setY, "Get or set the Y position of this cursor.")
+        .def_property("direction", &MapCursor::getDirection, &MapCursor::setDirection,
+                      "Get or set the direction of this cursor")
+        .def_property("type", &MapCursor::getType, &MapCursor::setType, "Get or set the type of this cursor.")
+        .def_property("is_visible", &MapCursor::isVisible, &MapCursor::setVisible,
+                      "Get or set the visibility statis of this cursor.")
+        .def_property("caption", &MapCursor::getCaption, &MapCursor::setCaption,
+                      "Get or set the caption on this cursor.");
+
     auto view = py::class_<MapView>(m, "MapView", "Represents a map item.");
 
     py::class_<MapCanvas>(m, "MapCanvas",

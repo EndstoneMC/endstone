@@ -20,6 +20,9 @@ namespace endstone {
  */
 class MapCursor {
 public:
+    /**
+     * @brief Represents the standard types of map cursors.
+     */
     enum class Type {
     };
 
