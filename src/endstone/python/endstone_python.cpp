@@ -318,7 +318,9 @@ void init_server(py::class_<Server> &server)
         .def_property_readonly("ban_list", &Server::getBanList, "Gets the player ban list.",
                                py::return_value_policy::reference)
         .def_property_readonly("ip_ban_list", &Server::getIpBanList, "Gets the IP ban list.",
-                               py::return_value_policy::reference);
+                               py::return_value_policy::reference)
+        .def("create_map", &Server::createMap, "Create a new map with an automatically assigned ID.",
+             py::arg("dimension"));
 }
 
 void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,

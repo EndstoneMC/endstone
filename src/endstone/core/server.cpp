@@ -52,6 +52,8 @@
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
+#include "level/dimension.h"
+#include "map/map_view.h"
 
 namespace fs = std::filesystem;
 namespace py = pybind11;
@@ -542,6 +544,15 @@ Registry<Enchantment> &EndstoneServer::getEnchantmentRegistry() const
 Registry<ItemType> &EndstoneServer::getItemRegistry() const
 {
     return *item_registry_;
+}
+
+std::unique_ptr<MapView> EndstoneServer::createMap(const Dimension &dimension) const
+{
+    auto &dim = static_cast<const EndstoneDimension &>(dimension).getHandle();
+    auto &level = dim.getLevel();
+    // creates a new map at world spawn with the scale of 3, without tracking position and unlimited tracking
+    auto &map = level.createMapSavedData(level.getNewUniqueID(), dim.getSpawnPos(), dim.getDimensionId(), 3);
+    return std::make_unique<EndstoneMapView>(map);
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const
