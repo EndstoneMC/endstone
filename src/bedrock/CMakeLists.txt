@@ -80,6 +80,7 @@ add_library(bedrock STATIC
         world/actor/player/player.cpp
         world/actor/player/player_inventory.cpp
         world/actor/player/player_item_in_use.cpp
+        world/actor/player/serialized_skin.cpp
         world/actor/provider/actor_offset.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp

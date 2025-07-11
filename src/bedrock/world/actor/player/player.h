@@ -29,6 +29,7 @@
 #include "bedrock/world/actor/player/player_inventory.h"
 #include "bedrock/world/actor/player/player_item_in_use.h"
 #include "bedrock/world/actor/player/player_types.h"
+#include "bedrock/world/actor/player/serialized_skin.h"
 #include "bedrock/world/containers/managers/container_manager.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/player_event_coordinator.h"
