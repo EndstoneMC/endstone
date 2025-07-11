@@ -19,6 +19,7 @@
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/emote_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
@@ -47,6 +48,7 @@
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_bed_leave_event.h"
+#include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
@@ -183,6 +185,24 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
+        return true;
+    }
+    case MinecraftPacketIds::Emote: {
+        auto &pk = static_cast<EmotePacket &>(packet);
+        if (pk.isServerSide()) {
+            return true;
+        }
+        PlayerEmoteEvent e(*this, pk.piece_id, pk.isEmoteChatMuted());
+        getServer().getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+        if (e.isMuted()) {
+            pk.flags |= static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
+        }
+        else {
+            pk.flags &= ~static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
+        }
         return true;
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {

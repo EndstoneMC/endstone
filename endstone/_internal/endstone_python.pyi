@@ -3181,15 +3181,23 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
         """
         Gets the ItemStack dropped by the player
         """
-class PlayerEmoteEvent(PlayerEvent):
+class PlayerEmoteEvent(PlayerEvent, Cancellable):
     """
     Called when a player uses and emote
     """
     @property
     def emote_id(self) -> str:
         """
-        Gets the emote ID
+        Gets the emote piece ID
         """
+    @property
+    def is_muted(self) -> bool:
+        """
+        Gets or sets the muted state for the emote.
+        """
+    @is_muted.setter
+    def is_muted(self, arg1: bool) -> None:
+        ...
 class PlayerEvent(Event):
     """
     Represents a player related event

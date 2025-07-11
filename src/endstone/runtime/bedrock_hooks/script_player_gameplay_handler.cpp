@@ -140,16 +140,6 @@ bool handleEvent(const ::PlayerRespawnEvent &event)
     return true;
 }
 
-bool handleEvent(const ::PlayerEmoteEvent &event)
-{
-    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-        endstone::PlayerEmoteEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.emote_piece_id};
-        server.getPluginManager().callEvent(e);
-    }
-    return true;
-}
-
 bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
@@ -224,8 +214,7 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerEmoteEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
