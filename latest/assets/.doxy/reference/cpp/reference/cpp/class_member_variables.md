@@ -181,6 +181,7 @@
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **meta\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **MINECRAFT** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
+* **muted\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **message\_id\_** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **max\_players\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **minecraft\_version\_network\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))

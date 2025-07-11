@@ -2133,9 +2133,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneplayerevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstonecancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::PlayerEvent
+        Public Functions inherited from endstone::Cancellable
       </span>
     </a>
 
@@ -2144,9 +2144,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstoneicancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::Event
+        Public Functions inherited from endstone::ICancellable
       </span>
     </a>
 
@@ -2237,6 +2237,32 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-ismuted" class="md-nav__link">
+      <span class="md-ellipsis">
+        function isMuted
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-setmuted" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setMuted
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-playeremoteevent_1" class="md-nav__link">
       <span class="md-ellipsis">
         function ~PlayerEmoteEvent
@@ -2291,7 +2317,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/event/player/player_emote_event.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2318,15 +2344,23 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playeremoteevent"><strong>PlayerEmoteEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string emote_id) <br></td>
+<td style="text-align: left;"><a href="#function-playeremoteevent"><strong>PlayerEmoteEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string emote_id, bool muted) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getemoteid"><strong>getEmoteId</strong></a> () const<br><em>Gets the emote ID.</em></td>
+<td style="text-align: left;"><a href="#function-getemoteid"><strong>getEmoteId</strong></a> () const<br><em>Gets the emote piece ID.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-ismuted"><strong>isMuted</strong></a> () const<br><em>Gets the muted state for the emote.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-setmuted"><strong>setMuted</strong></a> (bool muted) <br><em>Sets the muted state for the emote.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2334,8 +2368,8 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneplayerevent">Public Functions inherited from endstone::PlayerEvent<a class="headerlink" href="#public-functions-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<h2 id="public-functions-inherited-from-endstonecancellable">Public Functions inherited from endstone::Cancellable<a class="headerlink" href="#public-functions-inherited-from-endstonecancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <table>
 <thead>
 <tr>
@@ -2345,21 +2379,21 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>PlayerEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-getplayer"><strong>getPlayer</strong></a> () const<br></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>~PlayerEvent</strong></a> () override<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneevent">Public Functions inherited from endstone::Event<a class="headerlink" href="#public-functions-inherited-from-endstoneevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1Event/">endstone::Event</a></p>
+<h2 id="public-functions-inherited-from-endstoneicancellable">Public Functions inherited from endstone::ICancellable<a class="headerlink" href="#public-functions-inherited-from-endstoneicancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1ICancellable/">endstone::ICancellable</a></p>
 <table>
 <thead>
 <tr>
@@ -2369,28 +2403,20 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-12"><strong>Event</strong></a> (bool async=false) <br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-22"><strong>Event</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event"><strong>~Event</strong></a> () = default<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-icancellable"><strong>~ICancellable</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
@@ -2403,17 +2429,18 @@ For latest updates join the chat on
 <h3 id="function-playeremoteevent">function PlayerEmoteEvent<a class="headerlink" href="#function-playeremoteevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEmoteEvent</span><span class="o">::</span><span class="n">PlayerEmoteEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">emote_id</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">emote_id</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">muted</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-getemoteid">function getEmoteId<a class="headerlink" href="#function-getemoteid" title="Permanent link">&para;</a></h3>
-<p><em>Gets the emote ID.</em> 
+<p><em>Gets the emote piece ID.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEmoteEvent</span><span class="o">::</span><span class="n">getEmoteId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The emote ID </p>
+<p>The emote piece ID </p>
 <hr>
 
 <h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
@@ -2425,8 +2452,31 @@ For latest updates join the chat on
 <p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
 <hr>
 
+<h3 id="function-ismuted">function isMuted<a class="headerlink" href="#function-ismuted" title="Permanent link">&para;</a></h3>
+<p><em>Gets the muted state for the emote.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEmoteEvent</span><span class="o">::</span><span class="n">isMuted</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p>This method determines whether the emote is being executed without sending a chat message about the emote.</p>
+<p><strong>Returns:</strong></p>
+<p>true if the emote is muted, false otherwise. </p>
+<hr>
+
+<h3 id="function-setmuted">function setMuted<a class="headerlink" href="#function-setmuted" title="Permanent link">&para;</a></h3>
+<p><em>Sets the muted state for the emote.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEmoteEvent</span><span class="o">::</span><span class="n">setMuted</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">muted</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Note:</strong></p>
+<p>If set to true, the emote will be executed silently, and no chat messages will be sent.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>muted</code> true to mute the emote and disable chat messages, false to unmute it. </li>
+</ul>
+<hr>
+
 <h3 id="function-playeremoteevent_1">function ~PlayerEmoteEvent<a class="headerlink" href="#function-playeremoteevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEmoteEvent</span><span class="o">::~</span><span class="n">PlayerEmoteEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEmoteEvent</span><span class="o">::~</span><span class="n">PlayerEmoteEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 

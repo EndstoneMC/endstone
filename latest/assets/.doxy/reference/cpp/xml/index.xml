@@ -1247,10 +1247,13 @@
   <compound refid="classendstone_1_1PlayerEmoteEvent" kind="class"><name>endstone::PlayerEmoteEvent</name>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a74ecb4319b65d01b406f8c591d3aff18" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a74fb29919f23124f944930495dccc486" kind="variable"><name>emote_id_</name></member>
-    <member refid="classendstone_1_1PlayerEmoteEvent_1a5b8cf2941e6759692eedcd1257b7a108" kind="function"><name>PlayerEmoteEvent</name></member>
+    <member refid="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" kind="variable"><name>muted_</name></member>
+    <member refid="classendstone_1_1PlayerEmoteEvent_1ac2488935ceb6439496161cad234f16aa" kind="function"><name>PlayerEmoteEvent</name></member>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a197c850f0d19456039fa2371f4476ff6" kind="function"><name>~PlayerEmoteEvent</name></member>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" kind="function"><name>getEmoteId</name></member>
+    <member refid="classendstone_1_1PlayerEmoteEvent_1a44bd292db6e8d2326ac16126cadfcf1a" kind="function"><name>isMuted</name></member>
+    <member refid="classendstone_1_1PlayerEmoteEvent_1a8b3923ba2a6d0867d03ea8ec89ab299a" kind="function"><name>setMuted</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerEvent" kind="class"><name>endstone::PlayerEvent</name>
     <member refid="classendstone_1_1PlayerEvent_1af4eb1d01665dafc47db34a43d7e96281" kind="variable"><name>player_</name></member>

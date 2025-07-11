@@ -14,7 +14,7 @@ _Called when a player uses an emote._
 
 
 
-Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
+Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 
 
@@ -98,35 +98,35 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerEmoteEvent**](#function-playeremoteevent) ([**Player**](classendstone_1_1Player.md) & player, std::string emote\_id) <br> |
-|  std::string | [**getEmoteId**](#function-getemoteid) () const<br>_Gets the emote ID._  |
+|   | [**PlayerEmoteEvent**](#function-playeremoteevent) ([**Player**](classendstone_1_1Player.md) & player, std::string emote\_id, bool muted) <br> |
+|  std::string | [**getEmoteId**](#function-getemoteid) () const<br>_Gets the emote piece ID._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|  bool | [**isMuted**](#function-ismuted) () const<br>_Gets the muted state for the emote._  |
+|  void | [**setMuted**](#function-setmuted) (bool muted) <br>_Sets the muted state for the emote._  |
 |   | [**~PlayerEmoteEvent**](#function-playeremoteevent) () override<br> |
 
 
-## Public Functions inherited from endstone::PlayerEvent
+## Public Functions inherited from endstone::Cancellable
 
-See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
-|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](classendstone_1_1PlayerEvent.md#function-getplayer) () const<br> |
-|   | [**~PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) () override<br> |
-
-
-## Public Functions inherited from endstone::Event
-
-See [endstone::Event](classendstone_1_1Event.md)
+See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-12) (bool async=false) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-| virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-| virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+
+
+## Public Functions inherited from endstone::ICancellable
+
+See [endstone::ICancellable](classendstone_1_1ICancellable.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
+| virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
 
@@ -232,7 +232,8 @@ const std::string endstone::PlayerEmoteEvent::NAME;
 ```C++
 inline explicit endstone::PlayerEmoteEvent::PlayerEmoteEvent (
     Player & player,
-    std::string emote_id
+    std::string emote_id,
+    bool muted
 ) 
 ```
 
@@ -245,7 +246,7 @@ inline explicit endstone::PlayerEmoteEvent::PlayerEmoteEvent (
 
 ### function getEmoteId 
 
-_Gets the emote ID._ 
+_Gets the emote piece ID._ 
 ```C++
 inline std::string endstone::PlayerEmoteEvent::getEmoteId () const
 ```
@@ -256,7 +257,7 @@ inline std::string endstone::PlayerEmoteEvent::getEmoteId () const
 
 **Returns:**
 
-The emote ID 
+The emote piece ID 
 
 
 
@@ -292,6 +293,68 @@ name of this event
         
 Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
+
+<hr>
+
+
+
+### function isMuted 
+
+_Gets the muted state for the emote._ 
+```C++
+inline bool endstone::PlayerEmoteEvent::isMuted () const
+```
+
+
+
+This method determines whether the emote is being executed without sending a chat message about the emote.
+
+
+
+
+**Returns:**
+
+true if the emote is muted, false otherwise. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setMuted 
+
+_Sets the muted state for the emote._ 
+```C++
+inline void endstone::PlayerEmoteEvent::setMuted (
+    bool muted
+) 
+```
+
+
+
+
+
+**Note:**
+
+If set to true, the emote will be executed silently, and no chat messages will be sent.
+
+
+
+
+**Parameters:**
+
+
+* `muted` true to mute the emote and disable chat messages, false to unmute it. 
+
+
+
+
+        
 
 <hr>
 
