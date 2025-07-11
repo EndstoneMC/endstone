@@ -1627,6 +1627,7 @@
     <member refid="classendstone_1_1Server_1a2478b382f6098c157032048b0f6f64ad" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Server_1a29d50cb9b2c09942f11148c2e78a9d6b" kind="function"><name>getVersion</name></member>
     <member refid="classendstone_1_1Server_1a849bb8c24789cc5130abd4d4bbb5dddb" kind="function"><name>getMinecraftVersion</name></member>
+    <member refid="classendstone_1_1Server_1a18c9bcc8cd31afdf4e5294c64135d2f4" kind="function"><name>getProtocolVersion</name></member>
     <member refid="classendstone_1_1Server_1a2c15860e3e6cf3347e9d485a44f8be1d" kind="function"><name>getLogger</name></member>
     <member refid="classendstone_1_1Server_1a90941565489a85794e4e0ff9d8378c68" kind="function"><name>getLanguage</name></member>
     <member refid="classendstone_1_1Server_1afd16655cd119fe34c52f3658245093d1" kind="function"><name>getPluginManager</name></member>

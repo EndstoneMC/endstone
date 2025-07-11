@@ -70,6 +70,8 @@ public:
 
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 
+    [[nodiscard]] virtual int getProtocolVersion() const = 0;
+
     [[nodiscard]] virtual Logger &getLogger() const = 0;
 
     [[nodiscard]] virtual Language &getLanguage() const = 0;

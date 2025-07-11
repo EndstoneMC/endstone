@@ -95,6 +95,7 @@ _Represents a server implementation._
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual int | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
 | virtual int | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
+| virtual int | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
 | virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br> |
@@ -1162,6 +1163,31 @@ virtual int endstone::Server::getPortV6 () const = 0
 **Returns:**
 
 the port number of this server 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getProtocolVersion 
+
+_Gets the network protocol version that this server supports._ 
+```C++
+virtual int endstone::Server::getProtocolVersion () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+version of network protocol 
 
 
 

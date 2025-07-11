@@ -376,6 +376,7 @@
 * **getPluginManager** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getPort** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **getPortV6** ([**endstone::Server**](classendstone_1_1Server.md))
+* **getProtocolVersion** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getScheduler** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getServiceManager** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getStartTime** ([**endstone::Server**](classendstone_1_1Server.md))
