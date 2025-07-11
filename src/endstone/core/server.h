@@ -51,6 +51,7 @@ public:
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;
+    [[nodiscard]] int getProtocolVersion() const override;
 
     [[nodiscard]] Logger &getLogger() const override;
     [[nodiscard]] Language &getLanguage() const override;

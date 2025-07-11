@@ -235,6 +235,8 @@ void init_server(py::class_<Server> &server)
         .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
                                "Gets the Minecraft version that this server is running.")
+        .def_property_readonly("protocol_version", &Server::getProtocolVersion,
+                               "Gets the network protocol version that this server supports.")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")
         .def_property_readonly("language", &Server::getLanguage, py::return_value_policy::reference,

@@ -4192,6 +4192,11 @@ class Server:
         Get the game port (IPv6) that the server runs on.
         """
     @property
+    def protocol_version(self) -> int:
+        """
+        Gets the network protocol version that this server supports.
+        """
+    @property
     def scheduler(self) -> Scheduler:
         """
         Gets the scheduler for managing scheduled events.
