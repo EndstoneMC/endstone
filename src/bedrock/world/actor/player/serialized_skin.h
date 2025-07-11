@@ -121,7 +121,6 @@ public:
     void updateGeometryName();
     [[nodiscard]] bool isValid() const;
     [[nodiscard]] bool overridesPlayerAppearance() const;
-    static bool isSkinDisabled(const SerializedSkin &, const LevelData &);
     void releaseThread();
     void clear();
 

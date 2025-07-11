@@ -17,6 +17,7 @@
 #include <functional>
 
 #include "bedrock/core/string/string_hash.h"
+#include "bedrock/core/utility/pub_sub/publisher.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/new_type.h"
 
@@ -152,4 +153,6 @@ public:
 private:
     GameRuleMap game_rules_;
     WorldPolicyMap world_policies_;
+    Bedrock::PubSub::Publisher<void(const GameRules &, const GameRuleId &), Bedrock::PubSub::ThreadModel::MultiThreaded>
+        game_rule_change_publisher_;
 };
