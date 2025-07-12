@@ -268,6 +268,7 @@ class AutomationClient;
 }
 namespace br::worldgen {
 struct SpawnerData;
+class StructureSetRegistry;
 }
 namespace cereal {
 class ReflectionCtx;

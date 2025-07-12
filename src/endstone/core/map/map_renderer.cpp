@@ -14,6 +14,8 @@
 
 #include "endstone/core/map/map_renderer.h"
 
+#include <endstone/player.h>
+
 #include "bedrock/world/item/map_constants.h"
 
 namespace endstone::core {
@@ -32,6 +34,15 @@ void EndstoneMapRenderer::render(MapView &map, MapCanvas &canvas, Player &player
         }
     }
 
-    // TODO(map): Cursors
+    // Cursors
+    std::vector<MapCursor> cursors;
+    for (const auto &[unique_id, decoration] : map_.getDecorations()) {
+        if (unique_id.key_entity_id.raw_id != player.getId()) {
+            continue;
+        }
+        cursors.emplace_back(decoration->getX(), decoration->getY(), decoration->getRot(),
+                             static_cast<MapCursor::Type>(decoration->getImg()), true, decoration->getLabel());
+    }
+    canvas.setCursors(cursors);
 }
 }  // namespace endstone::core

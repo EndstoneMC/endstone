@@ -141,6 +141,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "level/position.h"
 #include "logger.h"
 #include "map/map_canvas.h"
+#include "map/map_cursor.h"
 #include "map/map_renderer.h"
 #include "map/map_view.h"
 #include "message.h"
