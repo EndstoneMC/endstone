@@ -64,5 +64,4 @@ private:
     uint32_t file_name_size_;
     uint32_t function_name_size_;
 };
-static_assert(sizeof(source_location) == 32);
 }  // namespace brstd

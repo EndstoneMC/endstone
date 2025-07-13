@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <mutex>
+#include <condition_variable>
 
 namespace Bedrock::Threading {
 using ConditionVariable = std::condition_variable;
