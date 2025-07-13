@@ -907,12 +907,14 @@ void EndstonePlayer::doFirstSpawn()
     }
     spawned_ = true;
 
-    const auto &server = getServer();
+    const auto &server = static_cast<EndstoneServer &>(getServer());
     Message join_message = Translatable(ColorFormat::Yellow + "%multiplayer.player.joined", {getName()});
     PlayerJoinEvent e{*this, join_message};
     server.getPluginManager().callEvent(e);
     join_message = e.getJoinMessage().value_or("");
-    if (!std::holds_alternative<std::string>(join_message) || !std::get<std::string>(join_message).empty()) {
+    if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+            static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection)) &&
+        (!std::holds_alternative<std::string>(join_message) || !std::get<std::string>(join_message).empty())) {
         server.broadcastMessage(join_message);
     }
 

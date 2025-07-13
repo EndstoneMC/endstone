@@ -28,3 +28,13 @@ PacketSender &ServerInstance::getPacketSender()
 {
     return *packet_sender_;
 }
+
+Bedrock::NonOwnerPointer<CDNConfig> ServerInstance::getCDNConfig() const
+{
+    return cdn_config_;
+}
+
+Bedrock::NonOwnerPointer<ServerTextSettings> ServerInstance::getServerTextSettings() const
+{
+    return server_text_settings_;
+}

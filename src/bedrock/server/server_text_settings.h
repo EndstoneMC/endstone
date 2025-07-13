@@ -26,7 +26,8 @@ enum class ServerTextEvent : std::uint8_t {
     _Count = 3,
 };
 
-using ServerTextSettingsBitset = std::bitset<3UL>;
+using ServerTextSettingsBitset =
+    std::bitset<static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::_Count)>;
 
 class ServerTextSettings : public Bedrock::EnableNonOwnerReferences {
 public:

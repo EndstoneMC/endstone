@@ -100,7 +100,9 @@ bool handleEvent(const PlayerDisconnectEvent &event)
         server.getPluginManager().callEvent(e);
 
         quit_message = e.getQuitMessage().value_or("");
-        if (!std::holds_alternative<std::string>(quit_message) || !std::get<std::string>(quit_message).empty()) {
+        if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+                static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection)) &&
+            (!std::holds_alternative<std::string>(quit_message) || !std::get<std::string>(quit_message).empty())) {
             server.broadcastMessage(quit_message);
         }
     }

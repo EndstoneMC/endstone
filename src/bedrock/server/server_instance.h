@@ -48,6 +48,8 @@ public:
     Minecraft *getMinecraft();
     ServerNetworkSystem &getNetwork();
     PacketSender &getPacketSender();
+    Bedrock::NonOwnerPointer<CDNConfig> getCDNConfig() const;
+    Bedrock::NonOwnerPointer<ServerTextSettings> getServerTextSettings() const;
 
 private:
     ENDSTONE_HOOK void _resetServerScriptManager();
