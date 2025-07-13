@@ -45,6 +45,7 @@
 #include "endstone/core/network/data_packet.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
+#include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_bed_leave_event.h"
@@ -788,9 +789,9 @@ std::string EndstonePlayer::getGameVersion() const
     return game_version_;
 }
 
-const Skin *EndstonePlayer::getSkin() const
+Skin EndstonePlayer::getSkin() const
 {
-    return skin_.get();
+    return EndstoneSkin::fromMinecraft(getPlayer().getSkin());
 }
 
 void EndstonePlayer::transfer(std::string host, int port) const

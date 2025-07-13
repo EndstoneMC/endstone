@@ -164,6 +164,8 @@ public:
     bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
     bool canSleep() const;
     void stopGliding();
+    [[nodiscard]] const SerializedSkin &getSkin() const;
+    SerializedSkin &getSkin();
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;
