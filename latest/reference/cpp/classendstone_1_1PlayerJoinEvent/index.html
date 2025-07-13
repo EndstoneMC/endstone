@@ -2331,19 +2331,19 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerjoinevent"><strong>PlayerJoinEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string join_message) <br></td>
+<td style="text-align: left;"><a href="#function-playerjoinevent"><strong>PlayerJoinEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::optional&lt; Message &gt; join_message) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::string</td>
+<td style="text-align: right;">std::optional&lt; Message &gt;</td>
 <td style="text-align: left;"><a href="#function-getjoinmessage"><strong>getJoinMessage</strong></a> () const<br><em>Gets the join message to send to all online players.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-setjoinmessage"><strong>setJoinMessage</strong></a> (std::string message) <br><em>Sets the join message to send to all online players.</em></td>
+<td style="text-align: left;"><a href="#function-setjoinmessage"><strong>setJoinMessage</strong></a> (std::optional&lt; Message &gt; message) <br><em>Sets the join message to send to all online players.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2420,7 +2420,7 @@ For latest updates join the chat on
 <h3 id="function-playerjoinevent">function PlayerJoinEvent<a class="headerlink" href="#function-playerjoinevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">join_message</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">join_message</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -2436,7 +2436,7 @@ For latest updates join the chat on
 
 <h3 id="function-getjoinmessage">function getJoinMessage<a class="headerlink" href="#function-getjoinmessage" title="Permanent link">&para;</a></h3>
 <p><em>Gets the join message to send to all online players.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">getJoinMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">getJoinMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Message to appear to other players on the server. </p>
@@ -2445,7 +2445,7 @@ For latest updates join the chat on
 <h3 id="function-setjoinmessage">function setJoinMessage<a class="headerlink" href="#function-setjoinmessage" title="Permanent link">&para;</a></h3>
 <p><em>Sets the join message to send to all online players.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">setJoinMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">message</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

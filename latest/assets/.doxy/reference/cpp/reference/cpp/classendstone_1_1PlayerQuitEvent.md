@@ -98,10 +98,10 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerQuitEvent**](#function-playerquitevent) ([**Player**](classendstone_1_1Player.md) & player, std::string quit\_message) <br> |
+|   | [**PlayerQuitEvent**](#function-playerquitevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; Message &gt; quit\_message) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  std::string | [**getQuitMessage**](#function-getquitmessage) () const<br>_Gets the quit message to send to all online players._  |
-|  void | [**setQuitMessage**](#function-setquitmessage) (std::string message) <br>_Sets the quit message to send to all online players._  |
+|  std::optional&lt; Message &gt; | [**getQuitMessage**](#function-getquitmessage) () const<br>_Gets the quit message to send to all online players._  |
+|  void | [**setQuitMessage**](#function-setquitmessage) (std::optional&lt; Message &gt; message) <br>_Sets the quit message to send to all online players._  |
 |   | [**~PlayerQuitEvent**](#function-playerquitevent) () override<br> |
 
 
@@ -233,7 +233,7 @@ const std::string endstone::PlayerQuitEvent::NAME;
 ```C++
 inline explicit endstone::PlayerQuitEvent::PlayerQuitEvent (
     Player & player,
-    std::string quit_message
+    std::optional< Message > quit_message
 ) 
 ```
 
@@ -277,7 +277,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 _Gets the quit message to send to all online players._ 
 ```C++
-inline std::string endstone::PlayerQuitEvent::getQuitMessage () const
+inline std::optional< Message > endstone::PlayerQuitEvent::getQuitMessage () const
 ```
 
 
@@ -303,7 +303,7 @@ Message to appear to other players on the server.
 _Sets the quit message to send to all online players._ 
 ```C++
 inline void endstone::PlayerQuitEvent::setQuitMessage (
-    std::string message
+    std::optional< Message > message
 ) 
 ```
 

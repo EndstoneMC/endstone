@@ -30,7 +30,7 @@ namespace endstone {
 
 class PlayerJoinEvent : public PlayerEvent {
 public:
-    explicit PlayerJoinEvent(Player &player, std::string join_message)
+    explicit PlayerJoinEvent(Player &player, std::optional<Message> join_message)
         : PlayerEvent(player), join_message_(std::move(join_message))
     {
     }
@@ -42,18 +42,18 @@ public:
         return NAME;
     }
 
-    [[nodiscard]] std::string getJoinMessage() const
+    [[nodiscard]] std::optional<Message> getJoinMessage() const
     {
         return join_message_;
     }
 
-    void setJoinMessage(std::string message)
+    void setJoinMessage(std::optional<Message> message)
     {
         join_message_ = std::move(message);
     }
 
 private:
-    std::string join_message_;
+    std::optional<Message> join_message_;
 };
 
 }  // namespace endstone

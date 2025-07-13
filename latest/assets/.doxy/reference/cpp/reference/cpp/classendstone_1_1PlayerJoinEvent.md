@@ -98,10 +98,10 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player, std::string join\_message) <br> |
+|   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; Message &gt; join\_message) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  std::string | [**getJoinMessage**](#function-getjoinmessage) () const<br>_Gets the join message to send to all online players._  |
-|  void | [**setJoinMessage**](#function-setjoinmessage) (std::string message) <br>_Sets the join message to send to all online players._  |
+|  std::optional&lt; Message &gt; | [**getJoinMessage**](#function-getjoinmessage) () const<br>_Gets the join message to send to all online players._  |
+|  void | [**setJoinMessage**](#function-setjoinmessage) (std::optional&lt; Message &gt; message) <br>_Sets the join message to send to all online players._  |
 |   | [**~PlayerJoinEvent**](#function-playerjoinevent) () override<br> |
 
 
@@ -233,7 +233,7 @@ const std::string endstone::PlayerJoinEvent::NAME;
 ```C++
 inline explicit endstone::PlayerJoinEvent::PlayerJoinEvent (
     Player & player,
-    std::string join_message
+    std::optional< Message > join_message
 ) 
 ```
 
@@ -277,7 +277,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 _Gets the join message to send to all online players._ 
 ```C++
-inline std::string endstone::PlayerJoinEvent::getJoinMessage () const
+inline std::optional< Message > endstone::PlayerJoinEvent::getJoinMessage () const
 ```
 
 
@@ -303,7 +303,7 @@ Message to appear to other players on the server.
 _Sets the join message to send to all online players._ 
 ```C++
 inline void endstone::PlayerJoinEvent::setJoinMessage (
-    std::string message
+    std::optional< Message > message
 ) 
 ```
 

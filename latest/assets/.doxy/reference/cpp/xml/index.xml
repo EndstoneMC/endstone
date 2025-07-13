@@ -1330,12 +1330,12 @@
   </compound>
   <compound refid="classendstone_1_1PlayerJoinEvent" kind="class"><name>endstone::PlayerJoinEvent</name>
     <member refid="classendstone_1_1PlayerJoinEvent_1a7f02575361267d031b100a8b132e0d06" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerJoinEvent_1ad5539db6b1101aa95e83b0c17c125725" kind="variable"><name>join_message_</name></member>
-    <member refid="classendstone_1_1PlayerJoinEvent_1a477a8fb52e955542787d29647c2ca56b" kind="function"><name>PlayerJoinEvent</name></member>
+    <member refid="classendstone_1_1PlayerJoinEvent_1a8874cd603a6d3ab0f294f728acb8373c" kind="variable"><name>join_message_</name></member>
+    <member refid="classendstone_1_1PlayerJoinEvent_1a57649db75a39610202ffecf345d4e09b" kind="function"><name>PlayerJoinEvent</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1ab2bf0af5f74f7be8fcbbcf4d436b387a" kind="function"><name>~PlayerJoinEvent</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1a7eb6abb31fececc05830dc7d2fb0dc75" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1PlayerJoinEvent_1a81c71ecd00651758cd7f2e31eebad892" kind="function"><name>getJoinMessage</name></member>
-    <member refid="classendstone_1_1PlayerJoinEvent_1afa17a2324546ffd0cdeeb9d4ec259d6b" kind="function"><name>setJoinMessage</name></member>
+    <member refid="classendstone_1_1PlayerJoinEvent_1af6a9da33988a5734a055434ba384faeb" kind="function"><name>getJoinMessage</name></member>
+    <member refid="classendstone_1_1PlayerJoinEvent_1a63594b91d25a768fef8edcd5ca24bd93" kind="function"><name>setJoinMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerJumpEvent" kind="class"><name>endstone::PlayerJumpEvent</name>
     <member refid="classendstone_1_1PlayerJumpEvent_1a3866aeca3afbfd2844cdc2e52173aa4d" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -1376,12 +1376,12 @@
   </compound>
   <compound refid="classendstone_1_1PlayerQuitEvent" kind="class"><name>endstone::PlayerQuitEvent</name>
     <member refid="classendstone_1_1PlayerQuitEvent_1a9a422070fcabd4719e3c1711af48fbcb" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerQuitEvent_1a1c96bd265b80988f2b45a3a7576aad97" kind="variable"><name>quit_message_</name></member>
-    <member refid="classendstone_1_1PlayerQuitEvent_1a3c2cb28b233b0b7f6ad92ffed7bb6752" kind="function"><name>PlayerQuitEvent</name></member>
+    <member refid="classendstone_1_1PlayerQuitEvent_1ae70ebd19593a4a08fee645106ba8678a" kind="variable"><name>quit_message_</name></member>
+    <member refid="classendstone_1_1PlayerQuitEvent_1ac6ffac80709929a051bd364c84dd65ce" kind="function"><name>PlayerQuitEvent</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a23ad697a0c345589396c5fc8c2ddbf18" kind="function"><name>~PlayerQuitEvent</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1aa34fac241269914a9d141d4f8f1f362b" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1PlayerQuitEvent_1a00b0ae58f2924784ed2e2ce0ca4ab8b4" kind="function"><name>getQuitMessage</name></member>
-    <member refid="classendstone_1_1PlayerQuitEvent_1ae21d854c5df9d4a4631346a858356098" kind="function"><name>setQuitMessage</name></member>
+    <member refid="classendstone_1_1PlayerQuitEvent_1a1dc49d81c8a458e1a45d8d2c33f03f15" kind="function"><name>getQuitMessage</name></member>
+    <member refid="classendstone_1_1PlayerQuitEvent_1a33ac4f643cbabfbaec170ba5ef88551a" kind="function"><name>setQuitMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerRespawnEvent" kind="class"><name>endstone::PlayerRespawnEvent</name>
     <member refid="classendstone_1_1PlayerRespawnEvent_1ab47c1f5797bfb607b21b5fdbd1e35336" kind="variable"><name>NAME</name></member>
