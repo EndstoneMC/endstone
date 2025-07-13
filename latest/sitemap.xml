@@ -577,6 +577,10 @@
          <lastmod>2025-07-13</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerSkinChangeEvent/</loc>
+         <lastmod>2025-07-13</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerTeleportEvent/</loc>
          <lastmod>2025-07-13</lastmod>
     </url>
@@ -1462,6 +1466,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__respawn__event_8h_source/</loc>
+         <lastmod>2025-07-13</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__skin__change__event_8h/</loc>
+         <lastmod>2025-07-13</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__skin__change__event_8h_source/</loc>
          <lastmod>2025-07-13</lastmod>
     </url>
     <url>

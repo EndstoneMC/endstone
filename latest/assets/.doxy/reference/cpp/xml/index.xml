@@ -1170,7 +1170,7 @@
     <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" kind="function"><name>getDeviceOS</name></member>
     <member refid="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" kind="function"><name>getDeviceId</name></member>
     <member refid="classendstone_1_1Player_1af27fa164812bf2653148836631b98732" kind="function"><name>getGameVersion</name></member>
-    <member refid="classendstone_1_1Player_1a8487451241c1dece2c1d2aa92851f735" kind="function"><name>getSkin</name></member>
+    <member refid="classendstone_1_1Player_1ad4ba000ca191ec1f66d75839c7bfe109" kind="function"><name>getSkin</name></member>
     <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" kind="function"><name>sendForm</name></member>
     <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" kind="function"><name>closeForm</name></member>
     <member refid="classendstone_1_1Player_1a68b095f25d166158a3e03d1840194896" kind="function"><name>sendPacket</name></member>
@@ -1388,6 +1388,15 @@
     <member refid="classendstone_1_1PlayerRespawnEvent_1abb6a9abde0432b56b4ce24b1ebfdbcbb" kind="function"><name>PlayerRespawnEvent</name></member>
     <member refid="classendstone_1_1PlayerRespawnEvent_1a6d85e0d878c46548c97daab6e89bad91" kind="function"><name>~PlayerRespawnEvent</name></member>
     <member refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8" kind="function"><name>getEventName</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerSkinChangeEvent" kind="class"><name>endstone::PlayerSkinChangeEvent</name>
+    <member refid="classendstone_1_1PlayerSkinChangeEvent_1a57dfa1e3c9e9fe052d06911c8665dae2" kind="variable"><name>new_skin_</name></member>
+    <member refid="classendstone_1_1PlayerSkinChangeEvent_1a1d15c271ad8e7efc269f237d5f3e06d4" kind="variable"><name>message_</name></member>
+    <member refid="classendstone_1_1PlayerSkinChangeEvent_1aa1bde5cf2f4a623f3bbb6d43ca97c3d2" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerSkinChangeEvent_1a9559d39b2ad83634184c6c1beabc04e1" kind="function"><name>PlayerSkinChangeEvent</name></member>
+    <member refid="classendstone_1_1PlayerSkinChangeEvent_1a4728133136eeee43c55f4c130890fdad" kind="function"><name>getNewSkin</name></member>
+    <member refid="classendstone_1_1PlayerSkinChangeEvent_1a243027ad8b931684bf1c0d0aa6bdac30" kind="function"><name>getSkinChangeMessage</name></member>
+    <member refid="classendstone_1_1PlayerSkinChangeEvent_1a1c36f45cb1c6f64c234efedefa12f834" kind="function"><name>setSkinChangeMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerTeleportEvent" kind="class"><name>endstone::PlayerTeleportEvent</name>
     <member refid="classendstone_1_1PlayerTeleportEvent_1a43539d2448ad4540de9a2be61bbe47e8" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -2147,6 +2156,8 @@
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
   </compound>
   <compound refid="player__respawn__event_8h" kind="file"><name>player_respawn_event.h</name>
+  </compound>
+  <compound refid="player__skin__change__event_8h" kind="file"><name>player_skin_change_event.h</name>
   </compound>
   <compound refid="player__teleport__event_8h" kind="file"><name>player_teleport_event.h</name>
   </compound>

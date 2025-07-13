@@ -193,7 +193,7 @@
 ## e
 
 * **expiration\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
-* **ENDSTONE\_EVENT** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md), [**endstone::BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md), [**endstone::BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md), [**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
+* **ENDSTONE\_EVENT** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md), [**endstone::BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md), [**endstone::BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md), [**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **execute** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **Event** ([**endstone::Event**](classendstone_1_1Event.md), [**endstone::ServerEvent**](classendstone_1_1ServerEvent.md))
@@ -408,6 +408,8 @@
 * **getJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **getKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **getQuitMessage** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
+* **getNewSkin** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
+* **getSkinChangeMessage** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **getDataFolder** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **getLogger** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginLoader** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
@@ -622,7 +624,7 @@
 ## m
 
 * **mob\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
-* **message\_** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
+* **message\_** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **MaterialAmethyst** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MaterialCopper** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MaterialDiamond** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -656,6 +658,7 @@
 * **namespace\_** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **normalizeString** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **new\_game\_mode\_** ([**endstone::PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md))
+* **new\_skin\_** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **network\_protocol\_version\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **num\_players\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **normalize** ([**endstone::Vector**](classendstone_1_1Vector.md))
@@ -736,6 +739,7 @@
 * **PlayerPickupItemEvent** ([**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md))
 * **PlayerQuitEvent** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
 * **PlayerRespawnEvent** ([**endstone::PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md))
+* **PlayerSkinChangeEvent** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **Plugin** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **PluginCommand** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **PluginDescription** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -924,6 +928,7 @@
 * **setJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **setKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **setQuitMessage** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
+* **setSkinChangeMessage** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **server\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **setEnabled** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **setExecutor** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))

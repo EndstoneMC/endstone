@@ -143,6 +143,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) <br>_Called when a player picks an item up from the ground._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
 | class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
+| class | [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md) <br>_Called when a player changes their skin._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |
 | class | [**Plugin**](classendstone_1_1Plugin.md) <br>_Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**PluginCommand**](classendstone_1_1PluginCommand.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |

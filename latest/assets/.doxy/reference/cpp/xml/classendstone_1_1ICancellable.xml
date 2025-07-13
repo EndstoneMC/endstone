@@ -127,7 +127,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="41">
+      <node id="42">
         <label>endstone::Cancellable&lt; WeatherEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -205,7 +205,7 @@
         <childnode refid="17" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="44">
+      <node id="45">
         <label>endstone::Cancellable&lt; EventType &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -323,6 +323,12 @@
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="41">
+        <label>endstone::PlayerSkinChangeEvent</label>
+        <link refid="classendstone_1_1PlayerSkinChangeEvent"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="39">
         <label>endstone::PlayerTeleportEvent</label>
         <link refid="classendstone_1_1PlayerTeleportEvent"/>
@@ -347,16 +353,16 @@
         <childnode refid="17" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="42">
+      <node id="43">
         <label>endstone::ThunderChangeEvent</label>
         <link refid="classendstone_1_1ThunderChangeEvent"/>
-        <childnode refid="41" relation="public-inheritance">
+        <childnode refid="42" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="43">
+      <node id="44">
         <label>endstone::WeatherChangeEvent</label>
         <link refid="classendstone_1_1WeatherChangeEvent"/>
-        <childnode refid="41" relation="public-inheritance">
+        <childnode refid="42" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

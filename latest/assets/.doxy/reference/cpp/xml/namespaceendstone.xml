@@ -111,6 +111,7 @@
     <innerclass refid="classendstone_1_1PlayerPickupItemEvent" prot="public">endstone::PlayerPickupItemEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerQuitEvent" prot="public">endstone::PlayerQuitEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerRespawnEvent" prot="public">endstone::PlayerRespawnEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerSkinChangeEvent" prot="public">endstone::PlayerSkinChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerTeleportEvent" prot="public">endstone::PlayerTeleportEvent</innerclass>
     <innerclass refid="classendstone_1_1Plugin" prot="public">endstone::Plugin</innerclass>
     <innerclass refid="classendstone_1_1PluginCommand" prot="public">endstone::PluginCommand</innerclass>
