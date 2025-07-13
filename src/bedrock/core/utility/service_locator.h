@@ -14,12 +14,13 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/scripting/plugin_execution_group.h"
-
-class ServerInstance;
-class ServerScriptManager {
+template <typename T>
+class ServiceRegistrationToken {
 public:
+    ServiceRegistrationToken() = default;
+    ServiceRegistrationToken(T *);
+    void unregister();
+
 private:
-    ENDSTONE_HOOK void _runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance);
+    T *service = nullptr;
 };

@@ -125,8 +125,8 @@ ServerPlayer *ServerNetworkHandler::getServerPlayer(const NetworkIdentifier &sou
 
 bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const
 {
-    if (event == ServerTextEvent::Connection) {
-        // Note: return false to prevent BDS from sending the join/quit message
+    if (event == ServerTextEvent::PlayerConnection) {
+        // Note: return false to prevent BDS from sending the join/quit message - we will take over
         return false;
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this, event);

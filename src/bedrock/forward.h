@@ -139,7 +139,7 @@ class LevelChunkVolumeData;
 class LevelSoundManager;
 class LevelStorageObserver;
 class LevelStorageWriteBatch;
-class LinkedAssetValidator;
+class LinkedAssetValidator {};
 class LocalConnector;
 class LootTables;
 class MapDataManager;
@@ -220,6 +220,7 @@ class UpdateEntityAfterFallOnInterface;
 class VolumeEntityManagerServer;
 class WorldGenerator;
 class WorldHistoryPackSource;
+class WorldSessionEndPoint {};
 class _TickPtr;  // NOLINT
 
 struct SyncedClientOptionsComponent;
@@ -277,6 +278,7 @@ class ImageBuffer;
 }
 namespace Core {
 class FilePathManager;
+class FileStorageArea;
 class LevelStorageResult;
 class StorageAreaState;
 class Random {};
@@ -289,7 +291,9 @@ class ActiveTransfersManager;
 namespace SpawnCategory {
 enum Type : int32_t;
 }
-
+namespace Editor {
+class IEditorManager {};
+}  // namespace Editor
 namespace Social {
 class GameConnectionInfo;
 class GamePublishSetting;
@@ -297,6 +301,7 @@ class MultiplayerServiceManager;
 }  // namespace Social
 namespace Scripting {
 class LifetimeRegistryReference;
+class RegistryManager {};
 template <typename T>
 class TypedObjectHandle;
 }  // namespace Scripting

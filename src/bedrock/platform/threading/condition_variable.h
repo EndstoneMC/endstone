@@ -14,12 +14,9 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/scripting/plugin_execution_group.h"
+#include <mutex>
 
-class ServerInstance;
-class ServerScriptManager {
-public:
-private:
-    ENDSTONE_HOOK void _runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance);
-};
+namespace Bedrock::Threading {
+using ConditionVariable = std::condition_variable;
+using ConditionVariableAny = std::condition_variable_any;
+}  // namespace Bedrock::Threading

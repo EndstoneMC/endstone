@@ -14,12 +14,19 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/scripting/plugin_execution_group.h"
+#include "bedrock/core/file/path.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 
-class ServerInstance;
-class ServerScriptManager {
+class CDNConfig : public Bedrock::EnableNonOwnerReferences {
 public:
+    CDNConfig(const Core::Path &);
+    std::vector<std::pair<std::string, std::string>> getCDNUrls()
+    {
+        return pack_cdn_urls_;
+    }
+
 private:
-    ENDSTONE_HOOK void _runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance);
+    void _readConfigFile(const Core::Path &);
+    std::vector<std::pair<std::string, std::string>> pack_cdn_urls_;
 };
+static_assert(sizeof(CDNConfig) == 48);
