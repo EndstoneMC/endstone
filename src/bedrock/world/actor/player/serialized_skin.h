@@ -65,64 +65,20 @@ class SerializedSkin {
 public:
     SerializedSkin();
     SerializedSkin(bool);
-    SerializedSkin(const SerializedSkin &);
-    SerializedSkin(SerializedSkin &&);
     SerializedSkin(const ConnectionRequest &);
     SerializedSkin(const SubClientConnectionRequest &);
     SerializedSkin(const std::string &, const std::string &, const std::string &, const mce::Image &, const uint16_t &,
                    const uint16_t &, const mce::Image &, const uint16_t &, const uint16_t &, Json::Value &&,
                    const MinEngineVersion &, const std::string &, const std::string &, bool, bool, bool, bool,
                    const bool, bool);
-    Bedrock::Result<void> read(ReadOnlyBinaryStream &);
-    void write(BinaryStream &) const;
-    void setGeometryData(const Json::Value &, const MinEngineVersion &);
-    void setPersonaAppearanceData(const persona::ArmSize::Type &, const Color &,
-                                  const std::vector<SerializedPersonaPieceHandle>,
-                                  const std::unordered_map<persona::PieceType, TintMapColor> &);
-    [[nodiscard]] const std::string &getName() const;
-    [[nodiscard]] const std::string &getPlayFabId() const;
-    [[nodiscard]] const std::string &getFullId() const;
-    void setPlayFabId(const std::string &);
-    void setAnimatedImageData(const std::vector<AnimatedImageData> &);
-    [[nodiscard]] const std::string &getResourcePatch() const;
-    void setResourcePatch(const std::string &);
-    [[nodiscard]] const std::string &getDefaultGeometryName() const;
-    mce::Image &getImageData();
-    mce::Image &getCapeImageData();
+
     [[nodiscard]] const mce::Image &getImageData() const;
-    mce::Image &getImageDataMutable();
     [[nodiscard]] const mce::Image &getCapeImageData() const;
-    std::vector<AnimatedImageData> &getAnimatedImageData();
-    [[nodiscard]] const std::vector<AnimatedImageData> &getAnimatedImageData() const;
-    [[nodiscard]] float getAnimationFrames(persona::AnimatedTextureType) const;
-    [[nodiscard]] bool useBlinkingAnimation() const;
-    [[nodiscard]] const Json::Value &getGeometryData() const;
-    [[nodiscard]] const MinEngineVersion &getGeometryDataMinEngineVersion() const;
-    [[nodiscard]] Json::Value &getGeometryDataMutable() const;
-    [[nodiscard]] const std::vector<SerializedPersonaPieceHandle> &getPersonaPieces() const;
-    [[nodiscard]] const std::unordered_map<persona::PieceType, TintMapColor> &getPieceTintColors() const;
-    [[nodiscard]] const persona::ArmSize::Type &getArmSize() const;
-    [[nodiscard]] std::string getArmSizeAsString() const;
-    void setArmSizeFromString(const std::string &);
-    [[nodiscard]] const Color &getSkinColor() const;
-    [[nodiscard]] std::string getGeometryDataStr() const;
-    [[nodiscard]] const std::string &getAnimationData() const;
-    [[nodiscard]] bool getIsPremium() const;
-    [[nodiscard]] bool getIsPersona() const;
-    [[nodiscard]] bool getIsPersonaCapeOnClassicSkin() const;
-    void setIsPersonaCapeOnClassicSkin(bool);
-    void setImageData(const mce::Image *);
-    void setCapeImageData(const mce::Image *);
-    void setCapeId(const std::string &);
-    [[nodiscard]] bool isTrustedSkin() const;
-    void setIsTrustedSkin(bool);
-    [[nodiscard]] bool isPrimaryUser() const;
-    void setIsPrimaryUser(const bool);
-    void updateGeometryName();
-    [[nodiscard]] bool isValid() const;
-    [[nodiscard]] bool overridesPlayerAppearance() const;
-    void releaseThread();
-    void clear();
+
+    // Endstone begin
+    [[nodiscard]] const std::string &getId() const;
+    [[nodiscard]] const std::string &getCapeId() const;
+    // Endstone end
 
 private:
     std::shared_ptr<Bedrock::Application::ThreadOwner<SerializedSkinImpl>> skin_impl_;

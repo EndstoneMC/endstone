@@ -25,6 +25,28 @@ public:
     SerializedSkinImpl(const ConnectionRequest &);
     SerializedSkinImpl(const SubClientConnectionRequest &);
 
+    [[nodiscard]] const mce::Image &getImageData() const
+    {
+        return skin_image_;
+    }
+
+    [[nodiscard]] const mce::Image &getCapeImageData() const
+    {
+        return cape_image_;
+    }
+
+    // Endstone begin
+    [[nodiscard]] const std::string &getId() const
+    {
+        return id_;
+    }
+
+    [[nodiscard]] const std::string &getCapeId() const
+    {
+        return cape_id_;
+    }
+    // Endstone end
+
 private:
     std::string id_;
     std::string play_fab_id_;
@@ -50,3 +72,23 @@ private:
     bool is_primary_user_;
     bool overrides_player_appearance_;
 };
+
+const mce::Image &SerializedSkin::getImageData() const
+{
+    return skin_impl_->get().getImageData();
+}
+
+const mce::Image &SerializedSkin::getCapeImageData() const
+{
+    return skin_impl_->get().getCapeImageData();
+}
+
+const std::string &SerializedSkin::getId() const
+{
+    return skin_impl_->get().getId();
+}
+
+const std::string &SerializedSkin::getCapeId() const
+{
+    return skin_impl_->get().getCapeId();
+}
