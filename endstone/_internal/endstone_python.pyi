@@ -3389,12 +3389,12 @@ class PlayerJoinEvent(PlayerEvent):
     Called when a player joins a server
     """
     @property
-    def join_message(self) -> str:
+    def join_message(self) -> str | Translatable | None:
         """
         Gets or sets the join message to send to all online players.
         """
     @join_message.setter
-    def join_message(self, arg1: str) -> None:
+    def join_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerJumpEvent(PlayerMoveEvent):
     """

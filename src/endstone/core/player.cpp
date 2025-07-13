@@ -908,20 +908,14 @@ void EndstonePlayer::doFirstSpawn()
     spawned_ = true;
 
     const auto &server = getServer();
-    Translatable tr{ColorFormat::Yellow + "%multiplayer.player.joined", {getName()}};
-    const std::string join_message = EndstoneMessage::toString(tr);
-
+    Message join_message = Translatable(ColorFormat::Yellow + "%multiplayer.player.joined", {getName()});
     PlayerJoinEvent e{*this, join_message};
     server.getPluginManager().callEvent(e);
-    if (e.getJoinMessage() != join_message) {
-        tr = Translatable{e.getJoinMessage(), {}};
+    join_message = e.getJoinMessage().value_or("");
+    if (!std::holds_alternative<std::string>(join_message) || !std::get<std::string>(join_message).empty()) {
+        server.broadcastMessage(join_message);
     }
 
-    if (!e.getJoinMessage().empty()) {
-        for (const auto &online_player : server.getOnlinePlayers()) {
-            online_player->sendMessage(tr);
-        }
-    }
     recalculatePermissions();
     updateCommands();
 }
