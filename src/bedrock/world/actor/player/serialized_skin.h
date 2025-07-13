@@ -74,6 +74,7 @@ public:
 
     [[nodiscard]] const mce::Image &getImageData() const;
     [[nodiscard]] const mce::Image &getCapeImageData() const;
+    [[nodiscard]] bool getIsPersona() const;
 
     // Endstone begin
     [[nodiscard]] const std::string &getId() const;
@@ -81,6 +82,6 @@ public:
     // Endstone end
 
 private:
-    std::shared_ptr<Bedrock::Application::ThreadOwner<SerializedSkinImpl>> skin_impl_;
+    std::shared_ptr<SerializedSkinImpl> skin_impl_;  // TODO(check): is the type correct?
 };
 static_assert(sizeof(SerializedSkin) == 16);

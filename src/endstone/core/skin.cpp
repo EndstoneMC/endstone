@@ -28,6 +28,11 @@ Skin EndstoneSkin::fromMinecraft(const SerializedSkin &skin)
         cape_id = skin.getCapeId();
     }
 
+    auto skin_id = skin.getId();
+    if (cape_id.has_value() && skin_id.size() > cape_id->size()) {
+        skin_id = skin_id.substr(0, skin_id.size() - cape_id->size());
+    }
+
     const auto &cape_data = skin.getCapeImageData();
     std::optional<Image> cape_image = std::nullopt;
     if (!cape_data.image_bytes.empty()) {
@@ -39,6 +44,6 @@ Skin EndstoneSkin::fromMinecraft(const SerializedSkin &skin)
         }
     }
 
-    return {skin.getId(), image.value(), cape_id, cape_image};
+    return {skin_id, image.value(), cape_id, cape_image};
 }
 }  // namespace endstone::core

@@ -24,6 +24,7 @@
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
+#include "bedrock/network/packet/player_skin_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -53,6 +54,7 @@
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -181,6 +183,37 @@ bool EndstonePlayer::handlePacket(Packet &packet)
 
             PlayerBedLeaveEvent e(*this, *bed);
             getServer().getPluginManager().callEvent(e);
+        }
+        return true;
+    }
+    case MinecraftPacketIds::PlayerSkin: {
+        auto &server = static_cast<EndstoneServer &>(getServer());
+        auto &pk = static_cast<PlayerSkinPacket &>(packet);
+        if (getPlayer().getPersistentComponent<UserEntityIdentifierComponent>()->getClientUUID() == pk.uuid) {
+            Message skin_change_message =
+                Translatable(ColorFormat::Yellow + (pk.skin.getIsPersona() ? "%multiplayer.player.changeToPersona"
+                                                                           : "%multiplayer.player.changeToSkin"),
+                             {getName()});
+            PlayerSkinChangeEvent e{*this, EndstoneSkin::fromMinecraft(pk.skin), skin_change_message};
+            getServer().getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
+                auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
+                new_pk.uuid = pk.uuid;
+                new_pk.skin = getPlayer().getSkin();
+                new_pk.localized_new_skin_name = pk.localized_old_skin_name;
+                new_pk.localized_old_skin_name = pk.localized_new_skin_name;
+                getPlayer().sendNetworkPacket(new_pk);
+                return false;
+            }
+
+            skin_change_message = e.getSkinChangeMessage().value_or("");
+            if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+                    static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin)) &&
+                (!std::holds_alternative<std::string>(skin_change_message) ||
+                 !std::get<std::string>(skin_change_message).empty())) {
+                server.broadcastMessage(skin_change_message);
+            }
         }
         return true;
     }

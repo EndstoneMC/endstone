@@ -35,6 +35,11 @@ public:
         return cape_image_;
     }
 
+    [[nodiscard]] bool getIsPersona() const
+    {
+        return is_persona_;
+    }
+
     // Endstone begin
     [[nodiscard]] const std::string &getId() const
     {
@@ -75,20 +80,25 @@ private:
 
 const mce::Image &SerializedSkin::getImageData() const
 {
-    return skin_impl_->get().getImageData();
+    return skin_impl_->getImageData();
 }
 
 const mce::Image &SerializedSkin::getCapeImageData() const
 {
-    return skin_impl_->get().getCapeImageData();
+    return skin_impl_->getCapeImageData();
+}
+
+bool SerializedSkin::getIsPersona() const
+{
+    return skin_impl_->getIsPersona();
 }
 
 const std::string &SerializedSkin::getId() const
 {
-    return skin_impl_->get().getId();
+    return skin_impl_->getId();
 }
 
 const std::string &SerializedSkin::getCapeId() const
 {
-    return skin_impl_->get().getCapeId();
+    return skin_impl_->getCapeId();
 }
