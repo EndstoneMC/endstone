@@ -3458,12 +3458,12 @@ class PlayerQuitEvent(PlayerEvent):
     Called when a player leaves a server.
     """
     @property
-    def quit_message(self) -> str:
+    def quit_message(self) -> str | Translatable | None:
         """
         Gets or sets the quit message to send to all online players.
         """
     @quit_message.setter
-    def quit_message(self, arg1: str) -> None:
+    def quit_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerRespawnEvent(PlayerEvent):
     """
