@@ -64,7 +64,8 @@ public:
     void updateServerAnnouncement();
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
 
-    ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
+    ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);                                // Endstone
+    void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id, std::string const &reason);  // Endstone
 
 private:
     friend class endstone::core::EndstoneServer;

@@ -470,7 +470,6 @@ std::string EndstonePlayer::getXuid() const
 
 SocketAddress EndstonePlayer::getAddress() const
 {
-    const static SocketAddress EMPTY{};
     auto component = getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
     return EndstoneSocketAddress::fromNetworkIdentifier(component->getNetworkId());
 }

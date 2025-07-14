@@ -18,6 +18,7 @@
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/locale/i18n.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
@@ -27,19 +28,22 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,
                                             std::optional<std::string> filtered_message, bool skip_message)
 {
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     auto disconnect_message = message;
     if (auto *player = getServerPlayer(network_id, sub_client_id)) {
-        auto kick_message = getI18n().get(message, nullptr);
-        endstone::PlayerKickEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), kick_message};
-        server.getPluginManager().callEvent(e);
-
-        if (e.isCancelled()) {
-            return;
+        if (player->hasComponent<endstone::core::InternalDisconnectFlagComponent>()) {
+            player->addOrRemoveComponent<endstone::core::InternalDisconnectFlagComponent>(false);
         }
-
-        if (e.getReason() != disconnect_message) {
-            disconnect_message = e.getReason();
+        else {
+            auto kick_message = getI18n().get(message, nullptr);
+            endstone::PlayerKickEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), kick_message};
+            server.getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                return;
+            }
+            if (e.getReason() != disconnect_message) {
+                disconnect_message = e.getReason();
+            }
         }
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
@@ -50,26 +54,15 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
 {
     const auto new_player =
         ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player, connection_request);
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&connection_request);
 
-    if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
-                                     endstone_player.getXuid())) {
-        endstone_player.kick("You have been banned from this server.");
-        return new_player;
-    }
-
-    if (server.getIpBanList().isBanned(endstone_player.getAddress().getHostname())) {
-        endstone_player.kick("You have been IP banned from this server.");
-        return new_player;
-    }
-
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
-
     if (e.isCancelled()) {
-        endstone_player.kick(e.getKickMessage());
+        const auto identifier = server_player.getPersistentComponent<UserEntityIdentifierComponent>();
+        disconnect(identifier->getNetworkId(), identifier->getSubClientId(), e.getKickMessage());
     }
     return new_player;
 }
@@ -80,26 +73,16 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
 {
     auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
                                                       sub_client_connection_request, sub_client_id);
-    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&sub_client_connection_request);
-
-    if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
-                                     endstone_player.getXuid())) {
-        endstone_player.kick("You have been banned from this server.");
-        return server_player;
-    }
-
-    if (server.getIpBanList().isBanned(endstone_player.getAddress().getHostname())) {
-        endstone_player.kick("You have been IP banned from this server.");
-        return server_player;
-    }
 
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
-        endstone_player.kick(e.getKickMessage());
+        const auto identifier = server_player.getPersistentComponent<UserEntityIdentifierComponent>();
+        disconnect(identifier->getNetworkId(), identifier->getSubClientId(), e.getKickMessage());
     }
     return server_player;
 }
@@ -121,6 +104,16 @@ ServerPlayer *ServerNetworkHandler::getServerPlayer(const NetworkIdentifier &sou
         }
     }
     return nullptr;
+}
+
+void ServerNetworkHandler::disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id,
+                                      std::string const &reason)
+{
+    if (auto *player = getServerPlayer(network_id, sub_client_id)) {
+        player->addOrRemoveComponent<endstone::core::InternalDisconnectFlagComponent>(true);
+    }
+    disconnectClient(network_id, sub_client_id, Connection::DisconnectFailReason::NoReason, reason, std::nullopt,
+                     false);
 }
 
 bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const
