@@ -1,5 +1,5 @@
-timestamp = 1751609378
-version = "1.21.93"
+timestamp = 1752513072
+version = "1.21.94"
 
 [windows]
 # Actor
@@ -8,7 +8,7 @@ version = "1.21.93"
 # ActorSetPosSystem
 "?setPosition@ActorSetPosSystem@@SAXAEAVEntityContext@@AEBVVec3@@_N@Z" = 11273328
 # BedrockLog
-"?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 70315616
+"?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 70315568
 # BlockDescriptor
 "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 50230336
 # BlockLegacy
@@ -109,7 +109,7 @@ version = "1.21.93"
 # ActorSetPosSystem
 "_ZN17ActorSetPosSystem11setPositionER13EntityContextRK4Vec3b" = 75745312
 # BedrockLog
-"_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 177267008
+"_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 177266992
 # BlockDescriptor
 "_ZN15BlockDescriptor13ResolveHelper7resolveEb" = 144828512
 # BlockLegacy
@@ -199,4 +199,4 @@ version = "1.21.93"
 "_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 122055040
 "_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 122055424
 # Variables
-"Enchant::mEnchants" = 184273952
+"Enchant::mEnchants" = 184273936
