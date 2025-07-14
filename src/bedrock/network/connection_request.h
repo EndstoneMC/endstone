@@ -82,7 +82,8 @@ public:
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
     [[nodiscard]] bool isValid() const;
 
-    [[nodiscard]] std::string getLanguageCode() const;  // Endstone
+    [[nodiscard]] std::string getLanguageCode() const;                              // Endstone
+    [[nodiscard]] const LegacyMultiplayerToken &getLegacyMultiplayerToken() const;  // Endstone
 
 private:
     [[nodiscard]] Json::Value getData(const std::string &key) const;

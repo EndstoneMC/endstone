@@ -148,7 +148,7 @@ public:
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] std::string getDeviceId() const override;
     [[nodiscard]] std::string getGameVersion() const override;
-    [[nodiscard]] const Skin *getSkin() const override;
+    [[nodiscard]] Skin getSkin() const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;

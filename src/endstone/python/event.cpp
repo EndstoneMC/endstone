@@ -217,8 +217,11 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory")
         .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference,
                                "Gets the ItemStack dropped by the player");
-    py::class_<PlayerEmoteEvent, PlayerEvent>(m, "PlayerEmoteEvent", "Called when a player uses and emote")
-        .def_property_readonly("emote_id", &PlayerEmoteEvent::getEmoteId, "Gets the emote ID");
+    py::class_<PlayerEmoteEvent, PlayerEvent, ICancellable>(m, "PlayerEmoteEvent",
+                                                            "Called when a player uses and emote")
+        .def_property_readonly("emote_id", &PlayerEmoteEvent::getEmoteId, "Gets the emote piece ID")
+        .def_property("is_muted", &PlayerEmoteEvent::isMuted, &PlayerEmoteEvent::setMuted,
+                      "Gets or sets the muted state for the emote.");
     py::class_<PlayerGameModeChangeEvent, PlayerEvent, ICancellable>(
         m, "PlayerGameModeChangeEvent", "Called when the GameMode of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
@@ -277,6 +280,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "Gets or sets the quit message to send to all online players.");
     py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
+    py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
+                                                                 "Called when a player changes their skin.")
+        .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "Gets the player's new skin.")
+        .def_property("skin_change_message", &PlayerSkinChangeEvent::getSkinChangeMessage,
+                      &PlayerSkinChangeEvent::setSkinChangeMessage,
+                      "Gets or sets the message to send to all online players for this skin change.");
     py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
     py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(

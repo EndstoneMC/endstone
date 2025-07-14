@@ -16,8 +16,8 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/scripting/plugin_execution_group.h"
-#include "bedrock/server/server_instance.h"
 
+class ServerInstance;
 class ServerScriptManager {
 public:
 private:

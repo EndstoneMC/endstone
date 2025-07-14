@@ -70,6 +70,7 @@
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 #include "bedrock/world/level/spawner.h"
 #include "bedrock/world/level/storage/game_rules.h"
+#include "bedrock/world/level/storage/level_data.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
 

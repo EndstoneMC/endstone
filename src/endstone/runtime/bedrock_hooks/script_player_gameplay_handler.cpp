@@ -94,21 +94,16 @@ bool handleEvent(const PlayerDisconnectEvent &event)
         auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
         endstone_player.disconnect();
 
-        endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.left",
-                                  {endstone_player.getName()}};
-        const std::string quit_message = endstone::core::EndstoneMessage::toString(tr);
-
+        endstone::Message quit_message = endstone::Translatable{
+            endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};
         endstone::PlayerQuitEvent e{endstone_player, quit_message};
         server.getPluginManager().callEvent(e);
 
-        if (e.getQuitMessage() != quit_message) {
-            tr = endstone::Translatable{e.getQuitMessage(), {}};
-        }
-
-        if (!e.getQuitMessage().empty()) {
-            for (const auto &online_player : server.getOnlinePlayers()) {
-                online_player->sendMessage(tr);
-            }
+        quit_message = e.getQuitMessage().value_or("");
+        if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+                static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection)) &&
+            (!std::holds_alternative<std::string>(quit_message) || !std::get<std::string>(quit_message).empty())) {
+            server.broadcastMessage(quit_message);
         }
     }
     return true;
@@ -135,16 +130,6 @@ bool handleEvent(const ::PlayerRespawnEvent &event)
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
         endstone::PlayerRespawnEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>()};
-        server.getPluginManager().callEvent(e);
-    }
-    return true;
-}
-
-bool handleEvent(const ::PlayerEmoteEvent &event)
-{
-    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-        endstone::PlayerEmoteEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.emote_piece_id};
         server.getPluginManager().callEvent(e);
     }
     return true;
@@ -224,8 +209,7 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerEmoteEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }

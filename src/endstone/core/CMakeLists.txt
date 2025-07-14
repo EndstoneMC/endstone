@@ -26,6 +26,7 @@ add_library(endstone_core
         registry.cpp
         server.cpp
         signal_handler.cpp
+        skin.cpp
         actor/actor.cpp
         actor/mob.cpp
         ban/ip_ban_list.cpp

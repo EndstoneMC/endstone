@@ -19,10 +19,12 @@
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/emote_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
+#include "bedrock/network/packet/player_skin_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -44,12 +46,15 @@
 #include "endstone/core/network/data_packet.h"
 #include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
+#include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_bed_leave_event.h"
+#include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -181,8 +186,57 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
         return true;
     }
+    case MinecraftPacketIds::PlayerSkin: {
+        auto &server = static_cast<EndstoneServer &>(getServer());
+        auto &pk = static_cast<PlayerSkinPacket &>(packet);
+        if (getPlayer().getPersistentComponent<UserEntityIdentifierComponent>()->getClientUUID() == pk.uuid) {
+            Message skin_change_message =
+                Translatable(ColorFormat::Yellow + (pk.skin.getIsPersona() ? "%multiplayer.player.changeToPersona"
+                                                                           : "%multiplayer.player.changeToSkin"),
+                             {getName()});
+            PlayerSkinChangeEvent e{*this, EndstoneSkin::fromMinecraft(pk.skin), skin_change_message};
+            getServer().getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
+                auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
+                new_pk.uuid = pk.uuid;
+                new_pk.skin = getPlayer().getSkin();
+                new_pk.localized_new_skin_name = pk.localized_old_skin_name;
+                new_pk.localized_old_skin_name = pk.localized_new_skin_name;
+                getPlayer().sendNetworkPacket(new_pk);
+                return false;
+            }
+
+            skin_change_message = e.getSkinChangeMessage().value_or("");
+            if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+                    static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin)) &&
+                (!std::holds_alternative<std::string>(skin_change_message) ||
+                 !std::get<std::string>(skin_change_message).empty())) {
+                server.broadcastMessage(skin_change_message);
+            }
+        }
+        return true;
+    }
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
+        return true;
+    }
+    case MinecraftPacketIds::Emote: {
+        auto &pk = static_cast<EmotePacket &>(packet);
+        if (pk.isServerSide()) {
+            return true;
+        }
+        PlayerEmoteEvent e(*this, pk.piece_id, pk.isEmoteChatMuted());
+        getServer().getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+        if (e.isMuted()) {
+            pk.flags |= static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
+        }
+        else {
+            pk.flags &= ~static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
+        }
         return true;
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {
@@ -416,7 +470,6 @@ std::string EndstonePlayer::getXuid() const
 
 SocketAddress EndstonePlayer::getAddress() const
 {
-    const static SocketAddress EMPTY{};
     auto component = getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
     return EndstoneSocketAddress::fromNetworkIdentifier(component->getNetworkId());
 }
@@ -768,9 +821,9 @@ std::string EndstonePlayer::getGameVersion() const
     return game_version_;
 }
 
-const Skin *EndstonePlayer::getSkin() const
+Skin EndstonePlayer::getSkin() const
 {
-    return skin_.get();
+    return EndstoneSkin::fromMinecraft(getPlayer().getSkin());
 }
 
 void EndstonePlayer::transfer(std::string host, int port) const
@@ -887,21 +940,17 @@ void EndstonePlayer::doFirstSpawn()
     }
     spawned_ = true;
 
-    const auto &server = getServer();
-    Translatable tr{ColorFormat::Yellow + "%multiplayer.player.joined", {getName()}};
-    const std::string join_message = EndstoneMessage::toString(tr);
-
+    const auto &server = static_cast<EndstoneServer &>(getServer());
+    Message join_message = Translatable(ColorFormat::Yellow + "%multiplayer.player.joined", {getName()});
     PlayerJoinEvent e{*this, join_message};
     server.getPluginManager().callEvent(e);
-    if (e.getJoinMessage() != join_message) {
-        tr = Translatable{e.getJoinMessage(), {}};
+    join_message = e.getJoinMessage().value_or("");
+    if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+            static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection)) &&
+        (!std::holds_alternative<std::string>(join_message) || !std::get<std::string>(join_message).empty())) {
+        server.broadcastMessage(join_message);
     }
 
-    if (!e.getJoinMessage().empty()) {
-        for (const auto &online_player : server.getOnlinePlayers()) {
-            online_player->sendMessage(tr);
-        }
-    }
     recalculatePermissions();
     updateCommands();
 }

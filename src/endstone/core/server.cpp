@@ -214,6 +214,11 @@ std::string EndstoneServer::getMinecraftVersion() const
     return minecraft_version;
 }
 
+int EndstoneServer::getProtocolVersion() const
+{
+    return NETWORK_PROTOCOL_VERSION;
+}
+
 Logger &EndstoneServer::getLogger() const
 {
     return logger_;

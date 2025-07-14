@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapCursor', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerItemHeldEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerItemHeldEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerSkinChangeEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -2095,144 +2095,27 @@ class MapCanvas:
         """
         Draw an image to the map. The image will be clipped if necessary.
         """
-    def get_pixel(self, x: int, y: int) -> int:
+    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
+        """
+        Get a pixel from the layers below this canvas.
+        """
+    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...] | None:
         """
         Get a pixel from the canvas.
+        
+        If no color is set at the given position for this canvas, then None is returned and the color returned by get_base_pixel_color() is shown on the map
         """
-    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
-        """
-        Get a pixel from the canvas.
-        """
-    def set_pixel(self, x: int, y: int, color: int) -> None:
+    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...] | None) -> None:
         """
         Draw a pixel to the canvas.
+        
+        If None is used as color, then the color returned by get_base_pixel_color() is shown on the map.
         """
-    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...]) -> None:
-        """
-        Draw a pixel to the canvas.
-        """
-    @property
-    def cursors(self) -> list[MapCursor]:
-        """
-        Get the cursorS associated with this canvas.
-        """
-    @cursors.setter
-    def cursors(self, arg1: list[MapCursor]) -> None:
-        ...
     @property
     def map_view(self) -> MapView:
         """
         Get the map this canvas is attached to.
         """
-class MapCursor:
-    """
-    Represents a cursor on a map.
-    """
-    class Type:
-        """
-        Represents the standard types of map cursors.
-        """
-        BLUE_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.BLUE_MARKER: 3>
-        CYAN_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.CYAN_MARKER: 11>
-        FRAME: typing.ClassVar[MapCursor.Type]  # value = <Type.FRAME: 1>
-        GREEN_POINT: typing.ClassVar[MapCursor.Type]  # value = <Type.GREEN_POINT: 12>
-        JUNGLE_TEMPLE: typing.ClassVar[MapCursor.Type]  # value = <Type.JUNGLE_TEMPLE: 22>
-        MANSION: typing.ClassVar[MapCursor.Type]  # value = <Type.MANSION: 14>
-        MONUMENT: typing.ClassVar[MapCursor.Type]  # value = <Type.MONUMENT: 15>
-        ORANGE_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.ORANGE_MARKER: 9>
-        PINK_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.PINK_MARKER: 8>
-        PLAYER: typing.ClassVar[MapCursor.Type]  # value = <Type.PLAYER: 0>
-        PLAYER_OFF_LIMITS: typing.ClassVar[MapCursor.Type]  # value = <Type.PLAYER_OFF_LIMITS: 13>
-        PLAYER_OFF_MAP: typing.ClassVar[MapCursor.Type]  # value = <Type.PLAYER_OFF_MAP: 6>
-        RED_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.RED_MARKER: 2>
-        SIGN_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.SIGN_MARKER: 7>
-        SWAMP_HUT: typing.ClassVar[MapCursor.Type]  # value = <Type.SWAMP_HUT: 23>
-        TARGET_POINT: typing.ClassVar[MapCursor.Type]  # value = <Type.TARGET_POINT: 5>
-        TARGET_X: typing.ClassVar[MapCursor.Type]  # value = <Type.TARGET_X: 4>
-        TRIAL_CHAMBERS: typing.ClassVar[MapCursor.Type]  # value = <Type.TRIAL_CHAMBERS: 24>
-        VILLAGE_DESERT: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_DESERT: 17>
-        VILLAGE_PLAINS: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_PLAINS: 18>
-        VILLAGE_SAVANNA: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_SAVANNA: 19>
-        VILLAGE_SNOWY: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_SNOWY: 20>
-        VILLAGE_TAIGA: typing.ClassVar[MapCursor.Type]  # value = <Type.VILLAGE_TAIGA: 21>
-        YELLOW_MARKER: typing.ClassVar[MapCursor.Type]  # value = <Type.YELLOW_MARKER: 10>
-        __members__: typing.ClassVar[dict[str, MapCursor.Type]]  # value = {'PLAYER': <Type.PLAYER: 0>, 'FRAME': <Type.FRAME: 1>, 'RED_MARKER': <Type.RED_MARKER: 2>, 'BLUE_MARKER': <Type.BLUE_MARKER: 3>, 'TARGET_X': <Type.TARGET_X: 4>, 'TARGET_POINT': <Type.TARGET_POINT: 5>, 'PLAYER_OFF_MAP': <Type.PLAYER_OFF_MAP: 6>, 'SIGN_MARKER': <Type.SIGN_MARKER: 7>, 'PINK_MARKER': <Type.PINK_MARKER: 8>, 'ORANGE_MARKER': <Type.ORANGE_MARKER: 9>, 'YELLOW_MARKER': <Type.YELLOW_MARKER: 10>, 'CYAN_MARKER': <Type.CYAN_MARKER: 11>, 'GREEN_POINT': <Type.GREEN_POINT: 12>, 'PLAYER_OFF_LIMITS': <Type.PLAYER_OFF_LIMITS: 13>, 'MANSION': <Type.MANSION: 14>, 'MONUMENT': <Type.MONUMENT: 15>, 'VILLAGE_DESERT': <Type.VILLAGE_DESERT: 17>, 'VILLAGE_PLAINS': <Type.VILLAGE_PLAINS: 18>, 'VILLAGE_SAVANNA': <Type.VILLAGE_SAVANNA: 19>, 'VILLAGE_SNOWY': <Type.VILLAGE_SNOWY: 20>, 'VILLAGE_TAIGA': <Type.VILLAGE_TAIGA: 21>, 'JUNGLE_TEMPLE': <Type.JUNGLE_TEMPLE: 22>, 'SWAMP_HUT': <Type.SWAMP_HUT: 23>, 'TRIAL_CHAMBERS': <Type.TRIAL_CHAMBERS: 24>}
-        def __eq__(self, other: typing.Any) -> bool:
-            ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
-    def __init__(self, x: int, y: int, direction: int, type: MapCursor.Type, visible: bool, caption: str = '') -> None:
-        ...
-    @property
-    def caption(self) -> str:
-        """
-        Get or set the caption on this cursor.
-        """
-    @caption.setter
-    def caption(self, arg1: str) -> None:
-        ...
-    @property
-    def direction(self) -> int:
-        """
-        Get or set the direction of this cursor
-        """
-    @direction.setter
-    def direction(self, arg1: int) -> None:
-        ...
-    @property
-    def is_visible(self) -> bool:
-        """
-        Get or set the visibility statis of this cursor.
-        """
-    @is_visible.setter
-    def is_visible(self, arg1: bool) -> None:
-        ...
-    @property
-    def type(self) -> MapCursor.Type:
-        """
-        Get or set the type of this cursor.
-        """
-    @type.setter
-    def type(self, arg1: MapCursor.Type) -> None:
-        ...
-    @property
-    def x(self) -> int:
-        """
-        Get or set the X position of this cursor.
-        """
-    @x.setter
-    def x(self, arg1: int) -> None:
-        ...
-    @property
-    def y(self) -> int:
-        """
-        Get or set the Y position of this cursor.
-        """
-    @y.setter
-    def y(self, arg1: int) -> None:
-        ...
 class MapMeta(ItemMeta):
     """
     Represents the metadata for a map item.
@@ -3298,15 +3181,23 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
         """
         Gets the ItemStack dropped by the player
         """
-class PlayerEmoteEvent(PlayerEvent):
+class PlayerEmoteEvent(PlayerEvent, Cancellable):
     """
     Called when a player uses and emote
     """
     @property
     def emote_id(self) -> str:
         """
-        Gets the emote ID
+        Gets the emote piece ID
         """
+    @property
+    def is_muted(self) -> bool:
+        """
+        Gets or sets the muted state for the emote.
+        """
+    @is_muted.setter
+    def is_muted(self, arg1: bool) -> None:
+        ...
 class PlayerEvent(Event):
     """
     Represents a player related event
@@ -3498,12 +3389,12 @@ class PlayerJoinEvent(PlayerEvent):
     Called when a player joins a server
     """
     @property
-    def join_message(self) -> str:
+    def join_message(self) -> str | Translatable | None:
         """
         Gets or sets the join message to send to all online players.
         """
     @join_message.setter
-    def join_message(self, arg1: str) -> None:
+    def join_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerJumpEvent(PlayerMoveEvent):
     """
@@ -3567,17 +3458,34 @@ class PlayerQuitEvent(PlayerEvent):
     Called when a player leaves a server.
     """
     @property
-    def quit_message(self) -> str:
+    def quit_message(self) -> str | Translatable | None:
         """
         Gets or sets the quit message to send to all online players.
         """
     @quit_message.setter
-    def quit_message(self, arg1: str) -> None:
+    def quit_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerRespawnEvent(PlayerEvent):
     """
     Called when a player respawns.
     """
+class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player changes their skin.
+    """
+    @property
+    def new_skin(self) -> Skin:
+        """
+        Gets the player's new skin.
+        """
+    @property
+    def skin_change_message(self) -> str | Translatable | None:
+        """
+        Gets or sets the message to send to all online players for this skin change.
+        """
+    @skin_change_message.setter
+    def skin_change_message(self, arg1: str | Translatable | None) -> None:
+        ...
 class PlayerTeleportEvent(PlayerMoveEvent):
     """
     Called when a player is teleported from one location to another.
@@ -4299,6 +4207,11 @@ class Server:
     def port_v6(self) -> int:
         """
         Get the game port (IPv6) that the server runs on.
+        """
+    @property
+    def protocol_version(self) -> int:
+        """
+        Gets the network protocol version that this server supports.
         """
     @property
     def scheduler(self) -> Scheduler:

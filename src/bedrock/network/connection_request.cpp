@@ -83,6 +83,11 @@ std::string ConnectionRequest::getLanguageCode() const
     return getData("LanguageCode").asString();
 }
 
+const LegacyMultiplayerToken &ConnectionRequest::getLegacyMultiplayerToken() const
+{
+    return legacy_multiplayer_token_;
+}
+
 Json::Value ConnectionRequest::getData(const std::string &key) const
 {
     if (legacy_multiplayer_token_.isValid() && raw_token_) {

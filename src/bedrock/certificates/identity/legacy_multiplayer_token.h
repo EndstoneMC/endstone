@@ -27,9 +27,33 @@ public:
         IgnoreTimestamp = 1,
     };
 
-    [[nodiscard]] mce::UUID getIdentity() const;
-    [[nodiscard]] std::string getIdentityName() const;
-    [[nodiscard]] std::string getXuid(bool) const;
+    [[nodiscard]] mce::UUID getIdentity() const
+    {
+        if (!isValid()) {
+            return mce::UUID::EMPTY;
+        }
+        auto uuid = certificate->getExtraData("identity", {}).asString();
+        if (!mce::UUID::canParse(uuid)) {
+            return mce::UUID::EMPTY;
+        }
+        return mce::UUID::fromString(uuid);
+    }
+
+    [[nodiscard]] std::string getIdentityName() const
+    {
+        if (!isValid()) {
+            return "";
+        }
+        return certificate->getExtraData("displayName", {}).asString();
+    }
+
+    [[nodiscard]] std::string getXuid(bool trust_self_signed) const
+    {
+        if (!isValid() || (!trust_self_signed && certificate->isSelfSigned())) {
+            return "";
+        }
+        return certificate->getExtraData("XUID", {}).asString();
+    }
     [[nodiscard]] std::string getSignerPublicKey() const;
     [[nodiscard]] time_t getNotBeforeDate() const;
     [[nodiscard]] time_t getExpirationDate() const;

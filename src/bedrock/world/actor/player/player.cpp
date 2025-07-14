@@ -167,6 +167,16 @@ void Player::stopGliding()
     }
 }
 
+const SerializedSkin &Player::getSkin() const
+{
+    return *skin_;
+}
+
+SerializedSkin &Player::getSkin()
+{
+    return *skin_;
+}
+
 GameType Player::getPlayerGameType() const
 {
     auto game_type = GameType::Undefined;

@@ -136,11 +136,10 @@ class LevelChunkBuilderData;
 class LevelChunkMetaData;
 class LevelChunkMetaDataDictionary;
 class LevelChunkVolumeData;
-class LevelData;
 class LevelSoundManager;
 class LevelStorageObserver;
 class LevelStorageWriteBatch;
-class LinkedAssetValidator;
+class LinkedAssetValidator {};
 class LocalConnector;
 class LootTables;
 class MapDataManager;
@@ -194,7 +193,6 @@ class ScreenSetupCleanupHelper;
 class ScreenshotOptions;
 class SearchQuery;
 class Seasons {};
-class SerializedSkin;
 class ServerLocator;
 class ServerMetrics;
 class SnapshotFilenameAndLength;
@@ -202,7 +200,6 @@ class SoundPlayerInterface;
 class SpawnConditions;
 class SpawnGroupRegistry;
 class SpawnSettings;
-class StorageVersion;
 class StructureManager;
 class SubChunkInterlocker;
 class SubChunkPacket;
@@ -214,6 +211,7 @@ class TestPackSource;
 class TaskGroup;
 class TickingAreaList;
 class TickingAreasManager;
+class TintMapColor;
 class TrackedPacketDataContainer;
 class TrackedUniqueChunkPtr;
 class TrimMaterialRegistry;
@@ -222,6 +220,7 @@ class UpdateEntityAfterFallOnInterface;
 class VolumeEntityManagerServer;
 class WorldGenerator;
 class WorldHistoryPackSource;
+class WorldSessionEndPoint {};
 class _TickPtr;  // NOLINT
 
 struct SyncedClientOptionsComponent;
@@ -280,6 +279,7 @@ class ImageBuffer;
 }
 namespace Core {
 class FilePathManager;
+class FileStorageArea;
 class LevelStorageResult;
 class StorageAreaState;
 class Random {};
@@ -292,7 +292,9 @@ class ActiveTransfersManager;
 namespace SpawnCategory {
 enum Type : int32_t;
 }
-
+namespace Editor {
+class IEditorManager {};
+}  // namespace Editor
 namespace Social {
 class GameConnectionInfo;
 class GamePublishSetting;
@@ -300,6 +302,7 @@ class MultiplayerServiceManager;
 }  // namespace Social
 namespace Scripting {
 class LifetimeRegistryReference;
+class RegistryManager {};
 template <typename T>
 class TypedObjectHandle;
 }  // namespace Scripting

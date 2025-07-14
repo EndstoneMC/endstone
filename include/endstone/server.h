@@ -80,6 +80,13 @@ public:
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 
     /**
+     * @brief Gets the network protocol version that this server supports.
+     *
+     * @return version of network protocol
+     */
+    [[nodiscard]] virtual int getProtocolVersion() const = 0;
+
+    /**
      * @brief Returns the primary logger associated with this server instance.
      *
      * @return Logger associated with this server

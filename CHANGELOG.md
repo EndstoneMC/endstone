@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.0 (Unreleased)]
+
+### Added
+
+- Added `ItemStack::getData` and `ItemStack#setData` methods for accessing item data values.
+- Added ability to register commands as console-only by setting `console` in the `default` field.
+- Added `LeavesDecayEvent` by @killcerr.
+- Added `PlayerItemHeldEvent` by @killcerr.
+- Added `PlayerInteractEvent::Action` enum for distinguishing interaction types.
+- Added `BlockPistonExtendEvent` and `BlockPistonRetractEvent` for piston-related events.
+- Added `PlayerBedEnterEvent` and `PlayerBedLeaveEvent` for player sleeping events.
+- Added `Server::getProtocolVersion` to retrieve the supported network protocol version.
+- Added `PlayerEmoteEvent::setMuted` to suppress server broadcasts for player emotes.
+- Added `PlayerSkinChangeEvent`, triggered when a player changes their in-game skin.
+
+### Changed
+
+- `PlayerInteractEvent` now triggers on right- and left-clicks with both air and blocks.
+- `PlayerEmoteEvent` is now cancellable, cancelling prevents broadcasting to other players.
+- `PlayerJoinEvent` and `PlayerQuitEvent` now support `Translatable` messages.
+- Player bans and IP bans are now checked before the server sends resource packs to clients.
+
+### Fixed
+
+- `PlayerKickEvent` no longer triggers when `PlayerLoginEvent` is cancelled.
+
+## [0.9.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.4) - 2025-07-14
+
+<small>[Compare with 0.9.2](https://github.com/EndstoneMC/endstone/compare/v0.9.3...v0.9.4)</small>
+
+### Added
+
+* Added support for BDS version 1.21.94.2.
+
 ## [0.9.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.3) - 2025-07-04
 
 <small>[Compare with 0.9.2](https://github.com/EndstoneMC/endstone/compare/v0.9.2...v0.9.3)</small>
