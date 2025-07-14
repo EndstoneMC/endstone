@@ -76,8 +76,8 @@ public:
 private:
     std::string label_;
     Type image_;
-    int8_t x;
-    int8_t y;
+    int8_t x_;
+    int8_t y_;
     int8_t rotation_;
-    Color color;
+    Color color_;
 };

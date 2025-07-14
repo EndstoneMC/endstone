@@ -42,7 +42,7 @@ public:
     static_assert(sizeof(UniqueId) == 32);
 
     MapItemTrackedActor(const UniqueId &, BlockSource &);
-    void setPixelDirty(std::uint32_t, std::uint32_t);
+    void setPixelDirty(std::uint32_t x, std::uint32_t y);
     Actor *getEntity(BlockSource &);
     BlockActor *getBlockEntity(BlockSource &);
     const UniqueId &getUniqueId() const;

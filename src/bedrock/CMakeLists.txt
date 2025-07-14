@@ -115,6 +115,8 @@ add_library(bedrock STATIC
         world/level/block/states/vanilla_block_states.cpp
         world/level/chunk/level_chunk.cpp
         world/level/dimension/dimension.cpp
+        world/level/saveddata/maps/map_decoration.cpp
+        world/level/saveddata/maps/map_item_tracked_actor.cpp
         world/level/saveddata/map_item_saved_data.cpp
         world/scores/objective.cpp
         world/scores/scoreboard.cpp

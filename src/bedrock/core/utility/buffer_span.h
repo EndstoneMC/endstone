@@ -55,6 +55,8 @@ public:
 
     buffer_span(const T *begin, const T *end) : begin_(begin), end_(end) {}
 
+    buffer_span(const std::vector<T> &vector) : begin_(vector.data()), end_(vector.data() + vector.size()) {}
+
     [[nodiscard]] std::size_t byte_size() const
     {
         return size() * sizeof(T);

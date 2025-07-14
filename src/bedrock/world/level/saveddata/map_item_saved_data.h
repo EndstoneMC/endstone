@@ -52,8 +52,8 @@ public:
     MapItemSavedData(ActorUniqueID, bool);
     void setOrigin(Vec3 origin, int scale, DimensionType dimension, bool is_legacy_level, bool is_centered,
                    const BlockPos &world_center);
-    void setScale(int);
-    void setDimensionId(DimensionType);
+    void setScale(int scale);
+    void setDimensionId(DimensionType dimension);
     void setScaleAndParentMapId(int, ActorUniqueID);
     [[nodiscard]] int getScale() const;
     [[nodiscard]] const BlockPos &getOrigin() const;
