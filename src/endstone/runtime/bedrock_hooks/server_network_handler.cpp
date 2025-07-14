@@ -109,6 +109,8 @@ ServerPlayer *ServerNetworkHandler::getServerPlayer(const NetworkIdentifier &sou
 void ServerNetworkHandler::disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id,
                                       std::string const &reason)
 {
+    // Add InternalDisconnectFlagComponent to indicate this is an intended disconnect by us internally
+    // to avoid calling PlayerKickEvent
     if (auto *player = getServerPlayer(network_id, sub_client_id)) {
         player->addOrRemoveComponent<endstone::core::InternalDisconnectFlagComponent>(true);
     }
