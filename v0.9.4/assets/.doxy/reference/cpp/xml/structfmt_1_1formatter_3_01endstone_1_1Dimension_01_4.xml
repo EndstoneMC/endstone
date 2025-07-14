@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>fmt::formatter&lt; endstone::Dimension &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4_1abeecaceec6db778e76499dcd635ba82a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FormatContext</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto fmt::formatter&lt; endstone::Dimension &gt;::format</definition>
+        <argsstring>(const endstone::Dimension &amp;self, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <name>format</name>
+        <qualifiedname>fmt::formatter&lt; endstone::Dimension &gt;::format</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Dimension" kindref="compound">endstone::Dimension</ref> &amp;</type>
+          <declname>self</declname>
+        </param>
+        <param>
+          <type>FormatContext &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="117" column="10" bodyfile="include/endstone/level/dimension.h" bodystart="117" bodyend="120"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::Dimension &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::Dimension &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/level/dimension.h" line="115" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="115" bodyend="121"/>
+    <listofallmembers>
+      <member refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4_1abeecaceec6db778e76499dcd635ba82a" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::Dimension &gt;</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ChunkLoadEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ChunkLoadEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1ChunkEvent" prot="public" virt="non-virtual">endstone::ChunkEvent</basecompoundref>
+    <includes refid="chunk__load__event_8h" local="no">endstone/event/chunk/chunk_load_event.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ChunkLoadEvent_1ad1a4e1ce2adab937a4313231efe5dcd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ChunkLoadEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(ChunkLoadEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::ChunkLoadEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1ChunkLoadEvent" kindref="compound">ChunkLoadEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/chunk/chunk_load_event.h" line="26" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ChunkLoadEvent_1a9ff79720197da4050b8aebdd39067097" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ChunkLoadEvent::ChunkLoadEvent</definition>
+        <argsstring>(Chunk &amp;chunk)</argsstring>
+        <name>ChunkLoadEvent</name>
+        <qualifiedname>endstone::ChunkLoadEvent::ChunkLoadEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> &amp;</type>
+          <declname>chunk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/chunk/chunk_load_event.h" line="28" column="14" bodyfile="include/endstone/event/chunk/chunk_load_event.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ChunkLoadEvent_1a12dd8c991021e5543491629dcd798a00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ChunkLoadEvent::~ChunkLoadEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~ChunkLoadEvent</name>
+        <qualifiedname>endstone::ChunkLoadEvent::~ChunkLoadEvent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/chunk/chunk_load_event.h" line="29" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a chunk is loaded. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::ChunkEvent</label>
+        <link refid="classendstone_1_1ChunkEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ChunkLoadEvent</label>
+        <link refid="classendstone_1_1ChunkLoadEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::DimensionEvent</label>
+        <link refid="classendstone_1_1DimensionEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="4">
+        <label>endstone::LevelEvent</label>
+        <link refid="classendstone_1_1LevelEvent"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::ChunkEvent</label>
+        <link refid="classendstone_1_1ChunkEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ChunkLoadEvent</label>
+        <link refid="classendstone_1_1ChunkLoadEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::DimensionEvent</label>
+        <link refid="classendstone_1_1DimensionEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="4">
+        <label>endstone::LevelEvent</label>
+        <link refid="classendstone_1_1LevelEvent"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/chunk/chunk_load_event.h" line="24" column="1" bodyfile="include/endstone/event/chunk/chunk_load_event.h" bodystart="24" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ChunkEvent_1a0a31bd1419d3b2a6ec089b194e11fcb2" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>ChunkEvent</name></member>
+      <member refid="classendstone_1_1ChunkLoadEvent_1a9ff79720197da4050b8aebdd39067097" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>ChunkLoadEvent</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>DimensionEvent</name></member>
+      <member refid="classendstone_1_1ChunkLoadEvent_1ad1a4e1ce2adab937a4313231efe5dcd8" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ChunkEvent_1aa78f307af69ce820f4a75b74a4485f0c" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getChunk</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1LevelEvent_1a75f2817cfb11480dedbf70c1d3ddc162" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>LevelEvent</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1ChunkLoadEvent_1a12dd8c991021e5543491629dcd798a00" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>~ChunkLoadEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ChunkLoadEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
