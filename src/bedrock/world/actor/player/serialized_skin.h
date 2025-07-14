@@ -82,6 +82,6 @@ public:
     // Endstone end
 
 private:
-    std::shared_ptr<SerializedSkinImpl> skin_impl_;  // TODO(check): is the type correct?
+    std::shared_ptr<Bedrock::Application::ThreadOwner<SerializedSkinImpl>> skin_impl_;
 };
 static_assert(sizeof(SerializedSkin) == 16);

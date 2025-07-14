@@ -80,25 +80,25 @@ private:
 
 const mce::Image &SerializedSkin::getImageData() const
 {
-    return skin_impl_->getImageData();
+    return skin_impl_->get().getImageData();
 }
 
 const mce::Image &SerializedSkin::getCapeImageData() const
 {
-    return skin_impl_->getCapeImageData();
+    return skin_impl_->get().getCapeImageData();
 }
 
 bool SerializedSkin::getIsPersona() const
 {
-    return skin_impl_->getIsPersona();
+    return skin_impl_->get().getIsPersona();
 }
 
 const std::string &SerializedSkin::getId() const
 {
-    return skin_impl_->getId();
+    return skin_impl_->get().getId();
 }
 
 const std::string &SerializedSkin::getCapeId() const
 {
-    return skin_impl_->getCapeId();
+    return skin_impl_->get().getCapeId();
 }

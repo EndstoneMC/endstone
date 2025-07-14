@@ -25,15 +25,7 @@ enum class ThreadOwnerBehavior : int {
     Log = 1,
 };
 
-class ThreadOwnerBase {
-protected:
-    std::optional<std::thread::id> thread_id;
-    unsigned int thread_check_index_;
-    int thread_transfer_count_;
-
-public:
-    void releaseThread();
-};
+class ThreadOwnerBase {};
 
 template <typename T, ThreadOwnerBehavior WrongThreadBehavior = ThreadOwnerBehavior::Assert>
 class ThreadOwner : public ThreadOwnerBase {
