@@ -551,13 +551,13 @@ Registry<ItemType> &EndstoneServer::getItemRegistry() const
     return *item_registry_;
 }
 
-std::unique_ptr<MapView> EndstoneServer::createMap(const Dimension &dimension) const
+MapView &EndstoneServer::createMap(const Dimension &dimension) const
 {
     auto &dim = static_cast<const EndstoneDimension &>(dimension).getHandle();
     auto &level = dim.getLevel();
     // creates a new map at world spawn with the scale of 3, without tracking position and unlimited tracking
     auto &map = level.createMapSavedData(level.getNewUniqueID(), dim.getSpawnPos(), dim.getDimensionId(), 3);
-    return std::make_unique<EndstoneMapView>(map);
+    return map.getMapView();
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

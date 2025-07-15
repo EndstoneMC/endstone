@@ -110,6 +110,7 @@ public:
     [[nodiscard]] bool needsResampling() const;
     void checkNeedsResampling();
 
+    endstone::core::EndstoneMapView &getMapView() const;  // Endstone
     size_t update_interval;
 
 private:

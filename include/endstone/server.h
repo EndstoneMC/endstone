@@ -413,7 +413,7 @@ public:
      *
      * @return a newly created map view
      */
-    [[nodiscard]] virtual std::unique_ptr<MapView> createMap(const Dimension &dimension) const = 0;
+    [[nodiscard]] virtual MapView& createMap(const Dimension &dimension) const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.
