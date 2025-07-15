@@ -14,9 +14,9 @@
 
 #pragma once
 
+#include "endstone/map/map_cursor.h"
 #include "endstone/util/color.h"
 #include "endstone/util/image.h"
-#include "map_cursor.h"
 
 namespace endstone {
 

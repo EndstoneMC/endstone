@@ -87,13 +87,9 @@ void EndstoneMapView::setDimension(const Dimension &dimension)
     map_.setDimensionId({static_cast<int>(dimension.getType())});
 }
 
-std::vector<MapRenderer *> EndstoneMapView::getRenderers() const
+std::vector<std::shared_ptr<MapRenderer>> EndstoneMapView::getRenderers() const
 {
-    std::vector<MapRenderer *> result;
-    for (const auto &renderer : renderers_) {
-        result.push_back(renderer.get());
-    }
-    return result;
+    return renderers_;
 }
 
 void EndstoneMapView::addRenderer(std::shared_ptr<MapRenderer> renderer)

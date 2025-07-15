@@ -99,7 +99,7 @@ void init_map(py::module_ &m)
         .def(py::init<bool>(), py::arg("is_contextual") = false,
              "Initialize the map renderer base with the given contextual status.")
         .def("initialize", &MapRenderer::initialize, py::arg("view"), "Initialize this MapRenderer for the given map.")
-        .def("render", &MapRenderer::render, py::arg("map"), py::arg("canvas"), py::arg("player"),
+        .def("render", &MapRenderer::render, py::arg("view"), py::arg("canvas"), py::arg("player"),
              "Render to the given map.");
 
     py::enum_<MapView::Scale>(view, "Scale", "An enum representing all possible scales a map can be set to.")
@@ -121,7 +121,8 @@ void init_map(py::module_ &m)
         .def_property_readonly("renderers", &MapView::getRenderers,
                                "Get a copied list of MapRenderers currently in effect.",
                                py::return_value_policy::reference_internal)
-        .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), "Add a renderer to this map.")
+        .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), "Add a renderer to this map.",
+             py::keep_alive<1, 2>())
         .def("remove_renderer", &MapView::removeRenderer, py::arg("renderer"), "Remove a renderer from this map.")
         .def_property("is_unlimited_tracking", &MapView::isUnlimitedTracking, &MapView::setUnlimitedTracking,
                       "Whether the map will show a smaller position cursor (true), or no position cursor (false) when "

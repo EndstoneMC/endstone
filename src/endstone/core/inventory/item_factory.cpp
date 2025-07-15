@@ -14,8 +14,8 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
-#include "item_type.h"
-#include "meta/map_meta.h"
+#include "endstone/core/inventory/item_type.h"
+#include "endstone/core/inventory/meta/map_meta.h"
 
 namespace endstone::core {
 EndstoneItemFactory &EndstoneItemFactory::instance()

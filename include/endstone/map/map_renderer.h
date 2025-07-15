@@ -28,7 +28,7 @@ class EndstoneMapView;
 /**
  * @brief Represents a renderer for a map.
  */
-class MapRenderer {
+class MapRenderer : public std::enable_shared_from_this<MapRenderer> {
 public:
     /**
      * @brief Initialize the map renderer base with the given contextual status.

@@ -47,7 +47,5 @@ public:
      * @param map the map to set
      */
     virtual void setMapView(const MapView *map) = 0;
-
-    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override = 0;
 };
 }  // namespace endstone

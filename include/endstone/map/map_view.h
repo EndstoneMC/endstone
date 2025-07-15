@@ -115,7 +115,7 @@ public:
      *
      * @return A list of references to each MapRenderer.
      */
-    [[nodiscard]] virtual std::vector<MapRenderer *> getRenderers() const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<MapRenderer>> getRenderers() const = 0;
 
     /**
      * @brief Add a renderer to this map.

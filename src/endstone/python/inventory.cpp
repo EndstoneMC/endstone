@@ -72,7 +72,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("is_unbreakable", &ItemMeta::isUnbreakable, &ItemMeta::setUnbreakable,
                       "Gets or sets the unbreakable tag. An unbreakable item will not lose durability.");
 
-    py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.", py::multiple_inheritance())
+    py::class_<MapMeta, ItemMeta, std::unique_ptr<ItemMeta>>(m, "MapMeta", "Represents the metadata for a map item.",
+                                                             py::multiple_inheritance())
         .def_property_readonly("has_map_view", &MapMeta::hasMapView, "Checks for existence of an associated map.")
         .def_property("map_view", &MapMeta::getMapView, &MapMeta::setMapView, py::return_value_policy::reference,
                       "Gets or sets the map view that is associated with this map item.");

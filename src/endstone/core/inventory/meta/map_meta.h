@@ -18,7 +18,7 @@
 #include "endstone/inventory/meta/map_meta.h"
 
 namespace endstone::core {
-class EndstoneMapMeta : public EndstoneItemMeta, public virtual MapMeta {
+class EndstoneMapMeta : public EndstoneItemMeta, public MapMeta {
 public:
     EndstoneMapMeta(const EndstoneItemMeta *meta);
     EndstoneMapMeta(const ::CompoundTag &tag);

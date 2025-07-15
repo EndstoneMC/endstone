@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "endstone/util/result.h"
+
 namespace endstone {
 /**
  * @brief Represents a cursor on a map.

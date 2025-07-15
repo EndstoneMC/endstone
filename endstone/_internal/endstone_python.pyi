@@ -2262,7 +2262,7 @@ class MapRenderer:
         """
         Initialize this MapRenderer for the given map.
         """
-    def render(self, map: MapView, canvas: MapCanvas, player: Player) -> None:
+    def render(self, view: MapView, canvas: MapCanvas, player: Player) -> None:
         """
         Render to the given map.
         """
