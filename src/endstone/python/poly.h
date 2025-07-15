@@ -82,4 +82,22 @@ struct polymorphic_type_hook<endstone::Permissible> {
         return src;
     }
 };
+
+template <>
+struct polymorphic_type_hook<endstone::ItemMeta> {
+    static const void *get(const endstone::ItemMeta *src, const std::type_info *&type)
+    {
+        if (!src) {
+            return src;
+        }
+
+        if (src->getType() == endstone::ItemMeta::Type::Map) {
+            type = &typeid(endstone::MapMeta);
+            return src;
+        }
+
+        type = &typeid(endstone::ItemMeta);
+        return src;
+    }
+};
 }  // namespace PYBIND11_NAMESPACE
