@@ -316,7 +316,7 @@ bool EndstoneItemMeta::equalsCommon(const EndstoneItemMeta &that) const
         && (hasDamage() ? that.hasDamage() && damage_ == that.damage_ : !that.hasDamage());                       //
 }
 
-bool EndstoneItemMeta::notUncommon() const
+bool EndstoneItemMeta::notUncommon(const EndstoneItemMeta &other) const
 {
     return true;
 }

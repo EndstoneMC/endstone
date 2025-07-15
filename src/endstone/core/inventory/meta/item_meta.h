@@ -52,7 +52,7 @@ public:
 
     [[nodiscard]] virtual bool applicableTo(const ItemType &type) const;
     [[nodiscard]] virtual bool equalsCommon(const EndstoneItemMeta &other) const;
-    [[nodiscard]] virtual bool notUncommon() const;
+    [[nodiscard]] virtual bool notUncommon(const EndstoneItemMeta &other) const;
     virtual void applyToItem(::CompoundTag &tag) const;
 
 private:

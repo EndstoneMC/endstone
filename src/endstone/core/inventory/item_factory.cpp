@@ -40,7 +40,7 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemType &typ
 namespace {
 bool equals0(const EndstoneItemMeta &meta1, const EndstoneItemMeta &meta2)
 {
-    return meta1.equalsCommon(meta2) && meta1.notUncommon() && meta2.notUncommon();
+    return meta1.equalsCommon(meta2) && meta1.notUncommon(meta1) && meta2.notUncommon(meta1);
 }
 }  // namespace
 

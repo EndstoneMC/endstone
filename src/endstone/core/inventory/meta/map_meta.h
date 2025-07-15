@@ -18,15 +18,28 @@
 #include "endstone/inventory/meta/map_meta.h"
 
 namespace endstone::core {
-class EndstoneMapMeta : public EndstoneItemMeta, public MapMeta {
+class EndstoneMapMeta : public EndstoneItemMeta, public virtual MapMeta {
 public:
     EndstoneMapMeta(const EndstoneItemMeta *meta);
     EndstoneMapMeta(const ::CompoundTag &tag);
     [[nodiscard]] Type getType() const override;
+    [[nodiscard]] bool isEmpty() const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override;
-    bool hasMapView() const override;
-    MapView *getMapView() const override;
+    [[nodiscard]] bool equalsCommon(const EndstoneItemMeta &other) const override;
+    [[nodiscard]] bool notUncommon(const EndstoneItemMeta &other) const override;
+    void applyToItem(CompoundTag &tag) const override;
+    [[nodiscard]] bool hasMapView() const override;
+    [[nodiscard]] MapView *getMapView() const override;
     void setMapView(const MapView *map) override;
+
+    [[nodiscard]] bool hasMapId() const;
+    [[nodiscard]] std::int64_t getMapId() const;
+    void setMapId(std::int64_t id);
+
+private:
+    bool isMapEmpty() const;
+
+    std::optional<int64_t> map_id_;
 };
 
 }  // namespace endstone::core
