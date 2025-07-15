@@ -39,7 +39,7 @@ void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
-void init_level(py::module_ &);
+void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
 void init_namespaced_key(py::module_ &, py::class_<NamespacedKey> &namespaced_key);
@@ -61,11 +61,12 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
+    auto dimension = py::class_<Dimension>(m, "Dimension", "Represents a dimension within a Level.");
     auto event = py::class_<Event>(m, "Event", "Represents an event.");
     auto event_priority = py::enum_<EventPriority>(
         m, "EventPriority",
         "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR");
-
+    auto level = py::class_<Level>(m, "Level");
     auto permissible = py::class_<Permissible>(
         m, "Permissible", "Represents an object that may become a server operator and can be assigned permissions.");
     auto permission =
@@ -95,11 +96,11 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_lang(m);
     init_form(m);
     init_enchantments(m);
+    init_map(m);
     init_inventory(m, item_stack);
     init_util(m);
     init_ban(m);
-    init_level(m);
-    init_map(m);
+    init_level(m, level, dimension);
     init_scoreboard(m);
     init_block(m, block);
     init_actor(m, actor, mob);

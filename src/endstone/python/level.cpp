@@ -18,11 +18,8 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-void init_level(py::module_ &m)
+void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> &dimension)
 {
-    auto level = py::class_<Level>(m, "Level");
-    auto dimension = py::class_<Dimension>(m, "Dimension", "Represents a dimension within a Level.");
-
     auto position_to_string = [](const Position &p) {
         return fmt::format("Position(dimension={}, x={}, y={}, z={})",
                            p.getDimension() ? p.getDimension()->getName() : "None", p.getX(), p.getY(), p.getZ());
