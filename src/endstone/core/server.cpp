@@ -551,6 +551,15 @@ Registry<ItemType> &EndstoneServer::getItemRegistry() const
     return *item_registry_;
 }
 
+MapView *EndstoneServer::getMap(std::int64_t id) const
+{
+    const auto *saved_data = level_->getHandle().getMapSavedData(ActorUniqueID(id));
+    if (!saved_data) {
+        return nullptr;
+    }
+    return &saved_data->getMapView();
+}
+
 MapView &EndstoneServer::createMap(const Dimension &dimension) const
 {
     auto &dim = static_cast<const EndstoneDimension &>(dimension).getHandle();

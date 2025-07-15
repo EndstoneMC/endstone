@@ -109,7 +109,8 @@ public:
     [[nodiscard]] ServiceManager &getServiceManager() const override;
     [[nodiscard]] Registry<Enchantment> &getEnchantmentRegistry() const override;
     [[nodiscard]] Registry<ItemType> &getItemRegistry() const override;
-    [[nodiscard]] MapView& createMap(const Dimension &dimension) const override;
+    [[nodiscard]] MapView *getMap(std::int64_t id) const;
+    [[nodiscard]] MapView &createMap(const Dimension &dimension) const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
