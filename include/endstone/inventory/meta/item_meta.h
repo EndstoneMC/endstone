@@ -21,6 +21,9 @@
 #include <vector>
 
 namespace endstone {
+namespace core {
+class EndstoneItemMeta;
+}
 /**
  * @brief Represents the metadata of a generic item.
  */
@@ -34,6 +37,10 @@ public:
     };
 
     virtual ~ItemMeta() = default;
+    virtual core::EndstoneItemMeta *asEndstoneItemMeta() const
+    {
+        return nullptr;
+    }
 
     /**
      * @brief Gets the type of this item meta

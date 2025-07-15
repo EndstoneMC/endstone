@@ -143,6 +143,11 @@ EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
     }
 }
 
+EndstoneItemMeta *EndstoneItemMeta::asEndstoneItemMeta() const
+{
+    return const_cast<EndstoneItemMeta *>(this);
+}
+
 ItemMeta::Type EndstoneItemMeta::getType() const
 {
     return Type::Item;

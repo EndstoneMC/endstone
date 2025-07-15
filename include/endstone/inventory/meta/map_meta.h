@@ -23,14 +23,14 @@ namespace endstone {
 /**
  * @brief Represents the metadata for a map item.
  */
-class MapMeta : public ItemMeta {
+class MapMeta : public virtual ItemMeta {
 public:
     /**
      * @brief Checks for existence of an associated map.
      *
      * @return true if this item has an associated map
      */
-    virtual bool hasMapView() const = 0;
+    [[nodiscard]] virtual bool hasMapView() const = 0;
 
     /**
      * @brief Gets the map view that is associated with this map item.
@@ -39,7 +39,7 @@ public:
      *
      * @return the map view, or nullptr if the item hasMapView(), but this map does not exist on the server
      */
-    virtual MapView *getMapView() const = 0;
+    [[nodiscard]] virtual MapView *getMapView() const = 0;
 
     /**
      * @brief Sets the associated map. This is used to determine what map is displayed.

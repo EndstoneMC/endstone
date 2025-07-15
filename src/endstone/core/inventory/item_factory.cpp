@@ -34,7 +34,7 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemType &typ
     if (meta == nullptr) {
         return false;
     }
-    return static_cast<const EndstoneItemMeta *>(meta)->applicableTo(type);
+    return meta->asEndstoneItemMeta()->applicableTo(type);
 }
 
 namespace {
@@ -58,12 +58,12 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
         return meta1->isEmpty();
     }
 
-    return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
+    return equals0(*meta1->asEndstoneItemMeta(), *meta2->asEndstoneItemMeta());
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, const ItemType &type) const
 {
-    return getItemMeta(type, static_cast<const EndstoneItemMeta *>(meta));
+    return getItemMeta(type, meta->asEndstoneItemMeta());
 }
 
 namespace {
