@@ -18,6 +18,19 @@
 
 namespace PYBIND11_NAMESPACE {
 
+// This specialization is used to allow a class to specify a holder for its base class.
+// By default, py::class_<Derived, Base, std::unique_ptr<Base>> is not permitted in pybind11.
+// In scenarios involving virtual inheritance, when a Base pointer is down-cast to a Derived pointer
+// using dynamic_cast, pybind11 will incorrectly attempt to deallocate the pointer using std::unique_ptr<Derived>.
+// This behavior is invalid and can cause runtime crashes.
+// To handle this properly, we explicitly specify std::unique_ptr<Base> as the holder for a Derived class
+// that inherits virtually from Base, e.g., class Derived : public virtual Base {}.
+namespace detail {
+template <typename type, typename base, typename deleter>
+struct is_holder_type<type, std::unique_ptr<base, deleter>>
+    : std::integral_constant<bool, std::is_base_of_v<base, type>> {};
+}  // namespace detail
+
 template <>
 struct polymorphic_type_hook<endstone::Mob> {
     static const void *get(const endstone::Mob *src, const std::type_info *&type)
@@ -93,7 +106,7 @@ struct polymorphic_type_hook<endstone::ItemMeta> {
 
         if (src->getType() == endstone::ItemMeta::Type::Map) {
             type = &typeid(endstone::MapMeta);
-            return src;
+            return dynamic_cast<const endstone::MapMeta *>(src);
         }
 
         type = &typeid(endstone::ItemMeta);
