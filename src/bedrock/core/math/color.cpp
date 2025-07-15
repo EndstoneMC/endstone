@@ -14,6 +14,8 @@
 
 #include "bedrock/core/math/color.h"
 
+const Color Color::WHITE;
+
 std::string mce::Color::toHexString() const
 {
     std::stringstream stream;

@@ -14,6 +14,8 @@
 
 #include "bedrock/world/level/saveddata/maps/map_item_tracked_actor.h"
 
+#include "bedrock/world/level/level.h"
+
 void MapItemTrackedActor::setPixelDirty(std::uint32_t x, std::uint32_t y)
 {
     if (needs_resend_) {
@@ -29,4 +31,12 @@ void MapItemTrackedActor::setPixelDirty(std::uint32_t x, std::uint32_t y)
         max_dirty_x_ = x;
         max_dirty_y_ = y;
     }
+}
+
+Actor *MapItemTrackedActor::getEntity(BlockSource &region)
+{
+    if (unique_id_.type != Type::Entity) {
+        return nullptr;
+    }
+    return region.getLevel().fetchEntity(unique_id_.key_entity_id, false);
 }

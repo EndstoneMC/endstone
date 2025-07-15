@@ -14,6 +14,11 @@
 
 #include "bedrock/world/level/saveddata/maps/map_decoration.h"
 
+MapDecoration::MapDecoration(Type img, int8_t x, int8_t y, int8_t rot, const std::string &label, const Color &color)
+    : label_(label), image_(img), x_(x), y_(y), rotation_(rot), color_(color)
+{
+}
+
 MapDecoration::Type MapDecoration::getImg() const
 {
     return image_;

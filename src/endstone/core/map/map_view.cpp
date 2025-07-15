@@ -152,7 +152,7 @@ const RenderData &EndstoneMapView::render(EndstonePlayer &player)
         render_cache_.erase(ActorUniqueID::INVALID_ID.raw_id);
     }
 
-    std::fill(render.buffer.begin(), render.buffer.end(), 0);
+    std::ranges::fill(render.buffer, 0);
     render.cursors.clear();
 
     for (const auto &renderer : renderers_) {

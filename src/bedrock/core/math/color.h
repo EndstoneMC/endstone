@@ -22,13 +22,18 @@
 namespace mce {
 class Color {
 public:
+    static const Color WHITE;
+
     [[nodiscard]] std::string toHexString() const;
     static Color fromHexString(const std::string &hex_string);
 
-    float r;
-    float g;
-    float b;
-    float a;
+    Color() = default;
+    Color(float, float, float, float);
+
+    float r = 1.0;
+    float g = 1.0;
+    float b = 1.0;
+    float a = 1.0;
 };
 }  // namespace mce
 

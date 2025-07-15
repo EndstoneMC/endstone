@@ -45,10 +45,8 @@ public:
         uint32_t z1;
     };
 
-private:
     using DecorationCollection = std::vector<std::pair<MapItemTrackedActor::UniqueId, std::shared_ptr<MapDecoration>>>;
 
-public:
     MapItemSavedData(ActorUniqueID, bool);
     void setOrigin(Vec3 origin, int scale, DimensionType dimension, bool is_legacy_level, bool is_centered,
                    const BlockPos &world_center);

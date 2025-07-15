@@ -54,7 +54,7 @@ public:
     };
 
     MapDecoration();
-    MapDecoration(Type, int8_t, int8_t, int8_t, const std::string &, const Color &);
+    MapDecoration(Type img, int8_t x, int8_t y, int8_t rot, const std::string &label, const Color &color);
     MapDecoration(const MapDecoration &);
     MapDecoration &operator=(const MapDecoration &);
     [[nodiscard]] Type getImg() const;

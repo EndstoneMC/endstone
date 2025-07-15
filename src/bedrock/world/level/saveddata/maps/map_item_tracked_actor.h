@@ -23,6 +23,7 @@
 #include "bedrock/world/level/chunk/chunk_source.h"
 #include "bedrock/world/level/saveddata/maps/map_decoration.h"
 
+class MapItemSavedData;
 class MapItemTrackedActor {
     enum class Type : int {
         Entity = 0,
@@ -42,6 +43,7 @@ public:
     static_assert(sizeof(UniqueId) == 32);
 
     MapItemTrackedActor(const UniqueId &, BlockSource &);
+    ENDSTONE_HOOK std::unique_ptr<Packet> nextUpdatePacket(const MapItemSavedData &);
     void setPixelDirty(std::uint32_t x, std::uint32_t y);
     Actor *getEntity(BlockSource &);
     BlockActor *getBlockEntity(BlockSource &);
