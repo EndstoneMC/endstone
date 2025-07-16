@@ -71,6 +71,16 @@ Container &Player::getInventory()
     return inventory_->getContainer();
 }
 
+EnderChestContainer *Player::getEnderChestContainer()
+{
+    return ender_chest_inventory_.get();
+}
+
+const EnderChestContainer *Player::getEnderChestContainer() const
+{
+    return ender_chest_inventory_.get();
+}
+
 int Player::getSelectedItemSlot() const
 {
     return inventory_->getSelectedSlot().slot;

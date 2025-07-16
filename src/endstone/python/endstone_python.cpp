@@ -404,6 +404,8 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.")
         .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
                                "Get the player's inventory.")
+        .def_property_readonly("ender_chest", &Player::getEnderChest, py::return_value_policy::reference,
+                               "Get the player's EnderChest inventory.")
         .def_property_readonly("locale", &Player::getLocale, "Get the player's current locale.")
         .def_property_readonly("device_os", &Player::getDeviceOS,
                                "Get the player's current device's operation system (OS).")

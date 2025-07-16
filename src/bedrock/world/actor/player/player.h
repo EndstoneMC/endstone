@@ -33,6 +33,7 @@
 #include "bedrock/world/containers/managers/container_manager.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/player_event_coordinator.h"
+#include "bedrock/world/inventory/ender_chest_inventory.h"
 #include "bedrock/world/inventory/inventory_options.h"
 #include "bedrock/world/inventory/transaction/inventory_transaction_manager.h"
 #include "bedrock/world/item/item_group.h"
@@ -156,6 +157,8 @@ public:
     PlayerInventory &getSupplies();
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
+    EnderChestContainer *getEnderChestContainer();
+    [[nodiscard]] const EnderChestContainer *getEnderChestContainer() const;
     [[nodiscard]] int getSelectedItemSlot() const;
     const ItemStack &setSelectedSlot(int);
     [[nodiscard]] const std::string &getName() const;

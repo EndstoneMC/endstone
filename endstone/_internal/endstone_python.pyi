@@ -2948,6 +2948,11 @@ class Player(Mob, OfflinePlayer):
         Get the player's current device's operation system (OS).
         """
     @property
+    def ender_chest(self) -> Inventory:
+        """
+        Get the player's EnderChest inventory.
+        """
+    @property
     def exp_level(self) -> int:
         """
         Gets or sets the players current experience level.

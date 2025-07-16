@@ -142,6 +142,7 @@ public:
     void updateCommands() const override;
 
     [[nodiscard]] PlayerInventory &getInventory() const override;
+    [[nodiscard]] Inventory &getEnderChest() const override;
     [[nodiscard]] GameMode getGameMode() const override;
     void setGameMode(GameMode mode) override;
     [[nodiscard]] std::string getLocale() const override;
@@ -174,6 +175,7 @@ private:
     std::string xuid_;
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
+    std::unique_ptr<EndstoneInventory> ender_chest_;
     std::string locale_ = "en_US";
     std::string device_os_ = "Unknown";
     std::string device_id_;

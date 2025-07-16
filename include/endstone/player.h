@@ -406,6 +406,13 @@ public:
     [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
 
     /**
+     * @brief Get the player's EnderChest inventory
+     *
+     * @return The EnderChest of the player
+     */
+    [[nodiscard]] virtual Inventory &getEnderChest() const = 0;
+
+    /**
      * @brief Gets this player's current GameMode
      *
      * @return Current game mode
