@@ -565,7 +565,7 @@ MapView &EndstoneServer::createMap(const Dimension &dimension) const
     auto &dim = static_cast<const EndstoneDimension &>(dimension).getHandle();
     auto &level = dim.getLevel();
     // creates a new map at world spawn with the scale of 3, without tracking position and unlimited tracking
-    auto &map = level.createMapSavedData(level.getNewUniqueID(), dim.getSpawnPos(), dim.getDimensionId(), 3);
+    const auto &map = level.createMapSavedData(ActorUniqueID::INVALID_ID, dim.getSpawnPos(), dim.getDimensionId(), 3);
     return map.getMapView();
 }
 
