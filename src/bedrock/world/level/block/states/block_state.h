@@ -27,15 +27,9 @@ protected:
 
 public:
     virtual ~BlockState() = default;
-    [[nodiscard]] size_t getID() const
-    {
-        return id_;
-    }
+    [[nodiscard]] size_t getID() const;
     [[nodiscard]] size_t getVariationCount() const;
-    [[nodiscard]] const HashedString &getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] const HashedString &getName() const;
     virtual void toNBT(CompoundTag &, int) const = 0;
     virtual bool fromNBT(const CompoundTag &, int &) const = 0;
     static void forEachState(std::function<bool(const BlockState &)> callback)
@@ -108,26 +102,10 @@ public:
         return static_cast<T>((0xFFFF >> (MAX_STATE_BITS - num_bits_)) & (data >> (end_bit_ - num_bits_ + 1)));
     }
 
-    [[nodiscard]] std::uint32_t getMask() const
-    {
-        return mask_;
-    }
-
-    [[nodiscard]] std::uint32_t getNumBits() const
-    {
-        return num_bits_;
-    }
-
-    [[nodiscard]] bool isValidData(std::uint32_t id) const
-    {
-        return (mask_ & id) >> (end_bit_ - num_bits_ + 1) < variation_count_;
-    }
-
-    [[nodiscard]] const BlockState &getState() const
-    {
-        return *state_;
-    }
-
+    [[nodiscard]] std::uint32_t getMask() const;
+    [[nodiscard]] std::uint32_t getNumBits() const;
+    [[nodiscard]] bool isValidData(std::uint32_t id) const;
+    [[nodiscard]] const BlockState &getState() const;
 private:
     static constexpr std::uint32_t MAX_STATE_BITS = 16;
 

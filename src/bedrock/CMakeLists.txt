@@ -112,6 +112,7 @@ add_library(bedrock STATIC
         world/level/block/actor/beehive_block_actor.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/registry/block_type_registry.cpp
+        world/level/block/states/block_state.cpp
         world/level/block/states/vanilla_block_states.cpp
         world/level/chunk/level_chunk.cpp
         world/level/dimension/dimension.cpp
