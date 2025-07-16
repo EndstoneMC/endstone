@@ -130,10 +130,6 @@ public:
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
 
-    [[nodiscard]] bool isEmptyBlock(const BlockPos &pos) const
-    {
-        return getBlock(pos).getName() == BedrockBlockNames::Air;
-    }
-
+    [[nodiscard]] bool isEmptyBlock(const BlockPos &pos) const;
     [[nodiscard]] const Biome &getBiome(const BlockPos &) const;
 };

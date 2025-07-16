@@ -98,6 +98,7 @@ add_library(bedrock STATIC
         world/item/registry/creative_item_registry.cpp
         world/item/registry/item_registry.cpp
         world/item/registry/item_registry_ref.cpp
+        world/level/block_source.cpp
         world/level/explosion.cpp
         world/level/level.cpp
         world/level/weather.cpp
