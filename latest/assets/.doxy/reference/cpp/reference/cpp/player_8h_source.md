@@ -155,6 +155,8 @@ public:
     // === EntityHuman === //
     [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
 
+    [[nodiscard]] virtual Inventory &getEnderChest() const = 0;
+
     [[nodiscard]] virtual GameMode getGameMode() const = 0;
 
     virtual void setGameMode(GameMode mode) = 0;

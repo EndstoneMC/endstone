@@ -1165,6 +1165,7 @@
     <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" kind="function"><name>getLocale</name></member>
     <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" kind="function"><name>updateCommands</name></member>
     <member refid="classendstone_1_1Player_1aad8a415455bf2fc1aff188329c311eea" kind="function"><name>getInventory</name></member>
+    <member refid="classendstone_1_1Player_1ad9d170fdff4261ba963e5c006e317831" kind="function"><name>getEnderChest</name></member>
     <member refid="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" kind="function"><name>getGameMode</name></member>
     <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" kind="function"><name>setGameMode</name></member>
     <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" kind="function"><name>getDeviceOS</name></member>
