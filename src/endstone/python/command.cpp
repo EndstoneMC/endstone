@@ -62,7 +62,8 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
              py::arg("sender"), py::arg("on_message") = CommandSenderWrapper::Callback{},
              py::arg("on_error") = CommandSenderWrapper::Callback{});
 
-    py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.");
+    py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.",
+                                                    py::multiple_inheritance());
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command",
                                                   "Represents a Command, which executes various tasks upon user input")
