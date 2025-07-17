@@ -71,11 +71,9 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     last_op_status_ = EndstonePlayer::isOp();
 }
 
-EndstonePlayer::~EndstonePlayer() = default;
-
 Player *EndstonePlayer::asPlayer() const
 {
-    return Player::asPlayer();
+    return const_cast<EndstonePlayer *>(this);
 }
 
 void EndstonePlayer::sendMessage(const Message &message) const
@@ -106,13 +104,9 @@ void EndstonePlayer::sendErrorMessage(const Message &message) const
                message);
 }
 
-Server &EndstonePlayer::getServer() const
-{
-    return EndstoneMob::getServer();
-}
-
 std::string EndstonePlayer::getName() const
 {
+    // TODO(fixme): remove this
     return EndstoneMob::getName();
 }
 
@@ -304,159 +298,9 @@ void EndstonePlayer::setOp(bool value)
     last_op_status_ = value;
 }
 
-std::string EndstonePlayer::getType() const
-{
-    return EndstoneMob::getType();
-}
-
-std::uint64_t EndstonePlayer::getRuntimeId() const
-{
-    return EndstoneMob::getRuntimeId();
-}
-
-Location EndstonePlayer::getLocation() const
-{
-    return EndstoneMob::getLocation();
-}
-
-Vector<float> EndstonePlayer::getVelocity() const
-{
-    return EndstoneMob::getVelocity();
-}
-
-bool EndstonePlayer::isOnGround() const
-{
-    return EndstoneMob::isOnGround();
-}
-
-bool EndstonePlayer::isInWater() const
-{
-    return EndstoneMob::isInWater();
-}
-
-bool EndstonePlayer::isInLava() const
-{
-    return EndstoneMob::isInLava();
-}
-
-Level &EndstonePlayer::getLevel() const
-{
-    return EndstoneMob::getLevel();
-}
-
-Dimension &EndstonePlayer::getDimension() const
-{
-    return EndstoneMob::getDimension();
-}
-
-void EndstonePlayer::setRotation(float yaw, float pitch)
-{
-    EndstoneMob::setRotation(yaw, pitch);
-}
-
-void EndstonePlayer::teleport(Location location)
-{
-    EndstoneMob::teleport(location);
-}
-
-void EndstonePlayer::teleport(Actor &target)
-{
-    EndstoneMob::teleport(target);
-}
-
-std::int64_t EndstonePlayer::getId() const
-{
-    return EndstoneMob::getId();
-}
-
 void EndstonePlayer::remove()
 {
     getServer().getLogger().error("Cannot remove player {}, use Player::kick instead.", getName());
-}
-
-bool EndstonePlayer::isValid() const
-{
-    return EndstoneMob::isValid();
-}
-
-bool EndstonePlayer::isDead() const
-{
-    return EndstoneMob::isDead();
-}
-
-int EndstonePlayer::getHealth() const
-{
-    return EndstoneMob::getHealth();
-}
-
-Result<void> EndstonePlayer::setHealth(int health) const
-{
-    return EndstoneMob::setHealth(health);
-}
-
-int EndstonePlayer::getMaxHealth() const
-{
-    return EndstoneMob::getMaxHealth();
-}
-
-std::vector<std::string> EndstonePlayer::getScoreboardTags() const
-{
-    return EndstoneMob::getScoreboardTags();
-}
-
-bool EndstonePlayer::addScoreboardTag(std::string tag) const
-{
-    return EndstoneMob::addScoreboardTag(tag);
-}
-
-bool EndstonePlayer::removeScoreboardTag(std::string tag) const
-{
-    return EndstoneMob::removeScoreboardTag(tag);
-}
-
-bool EndstonePlayer::isNameTagVisible() const
-{
-    return EndstoneMob::isNameTagVisible();
-}
-
-void EndstonePlayer::setNameTagVisible(bool visible)
-{
-    EndstoneMob::setNameTagVisible(visible);
-}
-
-bool EndstonePlayer::isNameTagAlwaysVisible() const
-{
-    return EndstoneMob::isNameTagAlwaysVisible();
-}
-
-void EndstonePlayer::setNameTagAlwaysVisible(bool visible)
-{
-    EndstoneMob::setNameTagAlwaysVisible(visible);
-}
-
-std::string EndstonePlayer::getNameTag() const
-{
-    return EndstoneMob::getNameTag();
-}
-
-void EndstonePlayer::setNameTag(std::string name)
-{
-    EndstoneMob::setNameTag(name);
-}
-
-std::string EndstonePlayer::getScoreTag() const
-{
-    return EndstoneMob::getScoreTag();
-}
-
-void EndstonePlayer::setScoreTag(std::string score)
-{
-    EndstoneMob::setScoreTag(score);
-}
-
-bool EndstonePlayer::isGliding() const
-{
-    return EndstoneMob::isGliding();
 }
 
 UUID EndstonePlayer::getUniqueId() const

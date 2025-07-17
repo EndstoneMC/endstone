@@ -34,17 +34,11 @@ namespace endstone {
 /**
  * @brief Represents a player.
  */
-class Player : public Mob, public OfflinePlayer {
+class Player : public virtual Mob, public OfflinePlayer {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
-    // CommandSender
-    [[nodiscard]] Player *asPlayer() const override
-    {
-        return const_cast<Player *>(this);
-    }
-
     /**
      * @brief Returns the name of this player
      *

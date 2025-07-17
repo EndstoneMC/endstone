@@ -83,7 +83,8 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         m, "OfflinePlayer",
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
         "can, thus, be retrieved without the player needing to be online.");
-    auto player = py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.");
+    auto player =
+        py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.", py::multiple_inheritance());
     auto item_stack = py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.");
     auto namespaced_key = py::class_<NamespacedKey>(
         m, "NamespacedKey", "Represents a string-based key which consists of two components - a namespace and a key.");

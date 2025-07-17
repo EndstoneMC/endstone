@@ -20,7 +20,7 @@
 class Mob;
 
 namespace endstone::core {
-class EndstoneMob : public EndstoneActor, public Mob {
+class EndstoneMob : public EndstoneActor, public virtual Mob {
 protected:
     explicit EndstoneMob(EndstoneServer &server, ::Mob &mob);
 
