@@ -24,12 +24,12 @@ public:
 
     void initialize(MapView &map) override
     {
-        PYBIND11_OVERRIDE(void, MapRenderer, initialize, map);
+        PYBIND11_OVERRIDE(void, MapRenderer, initialize, std::ref(map));
     }
 
     void render(MapView &map, MapCanvas &canvas, Player &player) override
     {
-        PYBIND11_OVERRIDE_PURE(void, MapRenderer, render, map, canvas, player);
+        PYBIND11_OVERRIDE_PURE(void, MapRenderer, render, std::ref(map), std::ref(canvas), std::ref(player));
     }
 };
 
