@@ -39,12 +39,12 @@ void EndstoneMapCanvas::setCursors(const std::vector<MapCursor> &cursors)
 
 void EndstoneMapCanvas::setPixelColor(int x, int y, Color color)
 {
-    setPixel(x, y, color.asRGBA());
+    setPixel(x, y, color.asABGR());
 }
 
 Result<Color> EndstoneMapCanvas::getPixelColor(int x, int y) const
 {
-    return Color::fromRGBA(getPixel(x, y));
+    return Color::fromABGR(getPixel(x, y));
 }
 
 void EndstoneMapCanvas::setPixel(int x, int y, std::uint32_t color)
