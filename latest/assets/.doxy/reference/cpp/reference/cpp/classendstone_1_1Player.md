@@ -153,7 +153,6 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual void | [**closeForm**](#function-closeform) () = 0<br>_Closes the forms that are currently open for the player._  |
 | virtual [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
 | virtual bool | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
@@ -474,33 +473,6 @@ See [endstone::OfflinePlayer](classendstone_1_1OfflinePlayer.md)
 
 ## Public Functions Documentation
 
-
-
-
-### function asPlayer 
-
-_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._
-```C++
-inline virtual Player * endstone::Player::asPlayer () override const
-```
-
-
-
-
-
-**Returns:**
-
-[**Player**](classendstone_1_1Player.md), nullptr if not a [**Player**](classendstone_1_1Player.md) 
-
-
-
-
-
-        
-Implements [*endstone::CommandSender::asPlayer*](classendstone_1_1CommandSender.md#function-asplayer)
-
-
-<hr>
 
 
 

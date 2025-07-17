@@ -41,17 +41,11 @@
 
 namespace endstone {
 
-class Player : public Mob, public OfflinePlayer {
+class Player : public virtual Mob, public OfflinePlayer {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
-    // CommandSender
-    [[nodiscard]] Player *asPlayer() const override
-    {
-        return const_cast<Player *>(this);
-    }
-
     [[nodiscard]] std::string getName() const override = 0;
 
     [[nodiscard]] virtual bool isOp() const = 0;

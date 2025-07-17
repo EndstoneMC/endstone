@@ -3,7 +3,7 @@
   <compounddef id="classendstone_1_1Mob" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Mob</compoundname>
     <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
-    <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="virtual">endstone::Player</derivedcompoundref>
     <includes refid="mob_8h" local="no">endstone/actor/mob.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Mob_1aefb6264f480587f4baaeb0eb23277760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">

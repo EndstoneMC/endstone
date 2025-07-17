@@ -94,7 +94,6 @@
         <name>asPlayer</name>
         <qualifiedname>endstone::CommandSender::asPlayer</qualifiedname>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a367f090917a2dc9a34bfad1fb0fb29c2">asPlayer</reimplementedby>
-        <reimplementedby refid="classendstone_1_1Player_1a9488f5cc958e803acdae2610fa4448aa">asPlayer</reimplementedby>
         <briefdescription>
 <para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>. </para>
         </briefdescription>

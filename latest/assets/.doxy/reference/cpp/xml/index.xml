@@ -1118,7 +1118,6 @@
   </compound>
   <compound refid="classendstone_1_1Player" kind="class"><name>endstone::Player</name>
     <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" kind="typedef"><name>FormVariant</name></member>
-    <member refid="classendstone_1_1Player_1a9488f5cc958e803acdae2610fa4448aa" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Player_1abac4577ca5fcd890b21f148b3df1e441" kind="function"><name>isOp</name></member>
     <member refid="classendstone_1_1Player_1ab0988eb2cd4067117f2419a5a06fcedb" kind="function"><name>setOp</name></member>
