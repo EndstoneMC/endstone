@@ -38,8 +38,10 @@
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_type.h"
 #include "endstone/core/level/chunk.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
+#include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
@@ -52,8 +54,6 @@
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
-#include "level/dimension.h"
-#include "map/map_view.h"
 
 namespace fs = std::filesystem;
 namespace py = pybind11;
@@ -513,10 +513,7 @@ Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) {
-                       states.emplace(state.first, arg);
-                   }},
-                   state.second);
+        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
     }
 
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);

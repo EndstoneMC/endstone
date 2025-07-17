@@ -14,9 +14,8 @@
 
 #include "endstone/core/map/map_renderer.h"
 
-#include <endstone/player.h>
-
 #include "bedrock/world/item/map_constants.h"
+#include "endstone/player.h"
 
 namespace endstone::core {
 EndstoneMapRenderer::EndstoneMapRenderer(EndstoneMapView &map_view, MapItemSavedData &map)

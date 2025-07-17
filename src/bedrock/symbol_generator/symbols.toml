@@ -1,4 +1,4 @@
-timestamp = 1752683828
+timestamp = 1752767164
 version = "1.21.95"
 
 [windows]
@@ -166,6 +166,8 @@ version = "1.21.95"
 "_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 152924944
 # Level
 "_ZN5Level4tickEv" = 146621952
+# MapItemSavedData
+"_ZN19MapItemTrackedActor16nextUpdatePacketERK16MapItemSavedData" = 154792768
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 123228848
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 123196880
