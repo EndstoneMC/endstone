@@ -14,19 +14,17 @@
 
 #pragma once
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
+#include "bedrock/world/inventory/filling_container.h"
 
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 9
-#define ENDSTONE_VERSION_PATCH 5
+class EnderChestContainer : public FillingContainer {
+public:
+    EnderChestContainer();
+    void setActiveChest(ChestBlockActor *active_chest);
+    void startOpen(Player &player) override;
+    void stopOpen(Player &player) override;
+    Bedrock::PubSub::Connector<void()> *getContainerRemovedConnector() override;
+    [[nodiscard]] bool hasRemovedSubscribers() const override;
 
-#define NETWORK_PROTOCOL_VERSION 819
-
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
+private:
+    ChestBlockActor *active_chest_;
+};

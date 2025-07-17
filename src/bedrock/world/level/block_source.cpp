@@ -18,5 +18,5 @@
 
 bool BlockSource::isEmptyBlock(const BlockPos &pos) const
 {
-    return getBlock(pos).getName() != BedrockBlockNames::Air;
+    return getBlock(pos).getName() == BedrockBlockNames::Air;
 }

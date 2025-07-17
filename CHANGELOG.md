@@ -31,9 +31,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `PlayerKickEvent` no longer triggers when `PlayerLoginEvent` is cancelled.
 
+## 0.9.5
+
+<small>[Compare with 0.9.4](https://github.com/EndstoneMC/endstone/compare/v0.9.4...v0.9.6)</small>
+
+### Added
+
+* Added support for BDS version 1.21.95.1.
+
 ## [0.9.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.4) - 2025-07-14
 
-<small>[Compare with 0.9.2](https://github.com/EndstoneMC/endstone/compare/v0.9.3...v0.9.4)</small>
+<small>[Compare with 0.9.3](https://github.com/EndstoneMC/endstone/compare/v0.9.3...v0.9.4)</small>
 
 ### Added
 

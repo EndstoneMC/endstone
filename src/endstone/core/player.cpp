@@ -62,7 +62,8 @@ namespace endstone::core {
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     : EndstoneMob(server, player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
-      inventory_(std::make_unique<EndstonePlayerInventory>(player))
+      inventory_(std::make_unique<EndstonePlayerInventory>(player)),
+      ender_chest_(std::make_unique<EndstoneInventory>(*player.getEnderChestContainer()))
 {
     const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
     uuid_ = EndstoneUUID::fromMinecraft(component->getClientUUID());
@@ -799,6 +800,11 @@ void EndstonePlayer::setGameMode(GameMode mode)
 PlayerInventory &EndstonePlayer::getInventory() const
 {
     return *inventory_;
+}
+
+Inventory &EndstonePlayer::getEnderChest() const
+{
+    return *ender_chest_;
 }
 
 std::string EndstonePlayer::getLocale() const
