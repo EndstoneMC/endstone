@@ -70,14 +70,8 @@ namespace {
 std::unordered_map<std::string,
                    std::function<std::unique_ptr<EndstoneItemMeta>(const ItemType &type, const EndstoneItemMeta *meta)>>
     item_meta_factories = {
-        {"minecraft:air",
-         [](auto &, auto *) {
-             return nullptr;
-         }},
-        {"minecraft:filled_map",
-         [](auto &, auto *m) {
-             return std::make_unique<EndstoneMapMeta>(m);
-         }},
+        {"minecraft:air", [](auto &, auto *) { return nullptr; }},
+        {"minecraft:filled_map", [](auto &, auto *m) { return std::make_unique<EndstoneMapMeta>(m); }},
 };
 
 }  // namespace
