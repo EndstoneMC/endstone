@@ -28,7 +28,7 @@
 
 namespace endstone {
 
-class ConsoleCommandSender : public CommandSender {};
+class ConsoleCommandSender : public virtual CommandSender {};
 
 }  // namespace endstone
 ```
