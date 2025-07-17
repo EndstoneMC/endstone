@@ -148,9 +148,9 @@ EndstoneItemMeta *EndstoneItemMeta::asEndstoneItemMeta() const
     return const_cast<EndstoneItemMeta *>(this);
 }
 
-ItemMeta::Type EndstoneItemMeta::getType() const
+MapMeta *EndstoneItemMeta::asMapMeta() const
 {
-    return Type::Item;
+    return nullptr;
 }
 
 bool EndstoneItemMeta::isEmpty() const

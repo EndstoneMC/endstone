@@ -104,9 +104,9 @@ struct polymorphic_type_hook<endstone::ItemMeta> {
             return src;
         }
 
-        if (src->getType() == endstone::ItemMeta::Type::Map) {
+        if (const auto *meta = src->asMapMeta(); meta) {
             type = &typeid(endstone::MapMeta);
-            return dynamic_cast<const endstone::MapMeta *>(src);
+            return meta;
         }
 
         type = &typeid(endstone::ItemMeta);

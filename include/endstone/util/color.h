@@ -80,8 +80,7 @@ public:
     }
 
     /**
-     * @brief Creates a new color object from an integer that contains the red, green,
-     * blue, and alpha bytes.
+     * @brief Creates a new color object from an integer that contains the red, green, blue, and alpha bytes.
      *
      * @param rgba the integer storing the red, green, blue, and alpha values
      *
@@ -93,10 +92,9 @@ public:
     }
 
     /**
-     * @brief Creates a new color object from an integer that contains the red, green,
-     * blue, and alpha bytes.
+     * @brief Creates a new color object from an integer that contains the alpha, blue, green, and red bytes.
      *
-     * @param rgba the integer storing the red, green, blue, and alpha values
+     * @param abgr the integer storing the alpha, blue, green, and red values
      *
      * @return a new color object for specified values
      */

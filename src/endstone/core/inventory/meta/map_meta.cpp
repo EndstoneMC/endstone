@@ -20,7 +20,7 @@
 namespace endstone::core {
 EndstoneMapMeta::EndstoneMapMeta(const EndstoneItemMeta *meta) : EndstoneItemMeta(meta)
 {
-    if (!meta || meta->getType() != Type::Map) {
+    if (!meta || !meta->asMapMeta()) {
         return;
     }
     *this = *static_cast<const EndstoneMapMeta *>(meta);
@@ -33,9 +33,9 @@ EndstoneMapMeta::EndstoneMapMeta(const CompoundTag &tag) : EndstoneItemMeta(tag)
     }
 }
 
-ItemMeta::Type EndstoneMapMeta::getType() const
+MapMeta *EndstoneMapMeta::asMapMeta() const
 {
-    return Type::Map;
+    return const_cast<EndstoneMapMeta *>(this);
 }
 
 bool EndstoneMapMeta::isEmpty() const
@@ -54,7 +54,7 @@ bool EndstoneMapMeta::equalsCommon(const EndstoneItemMeta &other) const
     if (!EndstoneItemMeta::equalsCommon(other)) {
         return false;
     }
-    if (other.getType() == Type::Map) {
+    if (other.asMapMeta()) {
         const auto &that = static_cast<const EndstoneMapMeta &>(other);
         return (hasMapId() ? that.hasMapId() && map_id_ == that.map_id_ : !that.hasMapId());
     }
@@ -63,7 +63,7 @@ bool EndstoneMapMeta::equalsCommon(const EndstoneItemMeta &other) const
 
 bool EndstoneMapMeta::notUncommon(const EndstoneItemMeta &other) const
 {
-    return EndstoneItemMeta::notUncommon(other) && (other.getType() == Type::Map || isMapEmpty());
+    return EndstoneItemMeta::notUncommon(other) && (other.asMapMeta() || isMapEmpty());
 }
 
 void EndstoneMapMeta::applyToItem(CompoundTag &tag) const

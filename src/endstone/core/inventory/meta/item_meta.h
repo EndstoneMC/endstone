@@ -25,7 +25,7 @@ public:
     EndstoneItemMeta(const EndstoneItemMeta *meta);
     EndstoneItemMeta(const ::CompoundTag &tag);
     EndstoneItemMeta *asEndstoneItemMeta() const override;
-    [[nodiscard]] Type getType() const override;
+    [[nodiscard]] MapMeta *asMapMeta() const override;
     [[nodiscard]] bool isEmpty() const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override;
     [[nodiscard]] bool hasDisplayName() const override;

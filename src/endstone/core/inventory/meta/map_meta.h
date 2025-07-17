@@ -22,7 +22,7 @@ class EndstoneMapMeta : public EndstoneItemMeta, public MapMeta {
 public:
     EndstoneMapMeta(const EndstoneItemMeta *meta);
     EndstoneMapMeta(const ::CompoundTag &tag);
-    [[nodiscard]] Type getType() const override;
+    [[nodiscard]] MapMeta *asMapMeta() const override;
     [[nodiscard]] bool isEmpty() const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override;
     [[nodiscard]] bool equalsCommon(const EndstoneItemMeta &other) const override;
