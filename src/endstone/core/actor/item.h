@@ -14,25 +14,26 @@
 
 #pragma once
 
-#include "endstone/actor/mob.h"
+#include "bedrock/world/actor/item/item_actor.h"
+#include "endstone/actor/item.h"
 #include "endstone/core/actor/actor.h"
 
-class Mob;
-
 namespace endstone::core {
-class EndstoneMob : public EndstoneActor, public virtual Mob {
+class EndstoneItem : public EndstoneActor, public virtual Item {
 public:
-    explicit EndstoneMob(EndstoneServer &server, ::Mob &mob);
+    explicit EndstoneItem(EndstoneServer &server, ::ItemActor &item);
 
-    // CommandSender
-    [[nodiscard]] Mob *asMob() const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> getItemStack() const override;
+    void setItemStack(const ItemStack &stack) override;
+    [[nodiscard]] int getPickupDelay() const override;
+    void setPickupDelay(int delay) override;
+    void setUnlimitedLifetime(bool unlimited) override;
+    bool isUnlimitedLifetime() const override;
+    void setOwner(UUID owner) override;
+    UUID getOwner() const override;
+    void setThrower(UUID uuid) override;
+    UUID getThrower() const override;
 
-    // Actor
-    void setRotation(float yaw, float pitch) override;
-
-    // Mob
-    [[nodiscard]] bool isGliding() const override;
-
-    ::Mob &getMob() const;
+    [[nodiscard]] Item *asItem() const override;
 };
 }  // namespace endstone::core

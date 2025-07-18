@@ -71,7 +71,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
-    command_sender_ = EndstoneConsoleCommandSender::create();
+    command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
 

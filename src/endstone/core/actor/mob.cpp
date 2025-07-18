@@ -14,7 +14,6 @@
 
 #include "endstone/core/actor/mob.h"
 
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -40,11 +39,6 @@ bool EndstoneMob::isGliding() const
 ::Mob &EndstoneMob::getMob() const
 {
     return getHandle<::Mob>();
-}
-
-std::shared_ptr<EndstoneMob> EndstoneMob::create(EndstoneServer &server, ::Mob &mob)
-{
-    return PermissibleFactory::create<EndstoneMob>(server, mob);
 }
 
 }  // namespace endstone::core

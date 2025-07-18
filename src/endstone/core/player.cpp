@@ -44,7 +44,6 @@
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 #include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
@@ -61,7 +60,7 @@
 namespace endstone::core {
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
-    : EndstoneMob(server, player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
+    : EndstoneMob(server, player), perm_(std::make_shared<PermissibleBase>(static_cast<Player *>(this))),
       inventory_(std::make_unique<EndstonePlayerInventory>(player)),
       ender_chest_(std::make_unique<EndstoneInventory>(*player.getEnderChestContainer()))
 {
@@ -905,11 +904,6 @@ void EndstonePlayer::checkOpStatus()
         updateCommands();
         last_op_status_ = isOp();
     }
-}
-
-std::shared_ptr<EndstonePlayer> EndstonePlayer::create(EndstoneServer &server, ::Player &player)
-{
-    return PermissibleFactory::create<EndstonePlayer>(server, player);
 }
 
 ::Player &EndstonePlayer::getPlayer() const

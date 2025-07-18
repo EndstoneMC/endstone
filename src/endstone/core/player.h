@@ -31,10 +31,9 @@ class ServerNetworkHandler;
 namespace endstone::core {
 
 class EndstonePlayer : public EndstoneMob, public Player {
-protected:
+public:
     explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
 
-public:
     // CommandSender
     [[nodiscard]] Player *asPlayer() const override;
     void sendMessage(const Message &message) const override;
@@ -130,9 +129,6 @@ public:
     void checkOpStatus();
 
     ::Player &getPlayer() const;
-
-    static std::shared_ptr<EndstonePlayer> create(EndstoneServer &server, ::Player &player);
-
 private:
     friend class ::ServerNetworkHandler;
 

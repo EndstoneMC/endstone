@@ -16,7 +16,6 @@
 
 #include <memory>
 
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
@@ -211,11 +210,6 @@ void PermissibleBase::clearPermissions()
     getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Operator, parent_);
     getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Console, parent_);
     permissions_.clear();
-}
-
-std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
-{
-    return PermissibleFactory::create<PermissibleBase>(opable);
 }
 
 PluginManager *PermissibleBase::getPluginManager()

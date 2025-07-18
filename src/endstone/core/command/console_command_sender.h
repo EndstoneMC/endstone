@@ -22,17 +22,14 @@ namespace endstone::core {
 class EndstoneConsoleCommandSender : public ServerCommandSender,
                                      public ConsoleCommandSender,
                                      public std::enable_shared_from_this<EndstoneConsoleCommandSender> {
-protected:
+public:
     EndstoneConsoleCommandSender() = default;
 
-public:
     [[nodiscard]] ConsoleCommandSender *asConsole() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
-
-    static std::shared_ptr<EndstoneConsoleCommandSender> create();
 };
 
 }  // namespace endstone::core

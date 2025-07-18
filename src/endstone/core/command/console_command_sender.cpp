@@ -15,7 +15,6 @@
 #include "endstone/core/command/console_command_sender.h"
 
 #include "endstone/core/message.h"
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -43,11 +42,6 @@ std::string EndstoneConsoleCommandSender::getName() const
 PermissionLevel EndstoneConsoleCommandSender::getPermissionLevel() const
 {
     return PermissionLevel::Console;
-}
-
-std::shared_ptr<EndstoneConsoleCommandSender> EndstoneConsoleCommandSender::create()
-{
-    return PermissibleFactory::create<EndstoneConsoleCommandSender>();
 }
 
 }  // namespace endstone::core

@@ -304,18 +304,13 @@ void EndstoneActor::setScoreTag(std::string score)
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
-    static std::shared_ptr<PermissibleBase> perm = PermissibleBase::create(nullptr);
+    static std::shared_ptr<PermissibleBase> perm = std::make_shared<PermissibleBase>(nullptr);
     return *perm;
 }
 
 ::Actor &EndstoneActor::getActor() const
 {
     return getHandle<::Actor>();
-}
-
-std::shared_ptr<EndstoneActor> EndstoneActor::create(EndstoneServer &server, ::Actor &actor)
-{
-    return PermissibleFactory::create<EndstoneActor>(server, actor);
 }
 
 }  // namespace endstone::core
@@ -330,16 +325,16 @@ endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
 
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = Player::tryGetFromEntity(self->entity_context_); player) {
-        component.actor = endstone::core::EndstonePlayer::create(server, *player);
+        component.actor = std::make_shared<endstone::core::EndstonePlayer>(server, *player);
     }
     else if (auto *mob = Mob::tryGetFromEntity(self->entity_context_); mob) {
-        component.actor = endstone::core::EndstoneMob::create(server, *mob);
+        component.actor = std::make_shared<endstone::core::EndstoneMob>(server, *mob);
     }
     else if (auto *item = ItemActor::tryGetFromEntity(self->entity_context_); item) {
-        component.actor = endstone::core::EndstoneItem::create(server, *item);
+        component.actor = std::make_shared<endstone::core::EndstoneItem>(server, *item);
     }
     else {
-        component.actor = endstone::core::EndstoneActor::create(server, *self);
+        component.actor = std::make_shared<endstone::core::EndstoneActor>(server, *self);
     }
     return *component.actor;
 }

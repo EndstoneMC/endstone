@@ -30,7 +30,7 @@ void ServerCommandSender::init(std::shared_ptr<PermissibleBase> perm)
         perm_ = std::move(perm);
     }
     else {
-        perm_ = PermissibleBase::create(this);
+        perm_ = std::make_shared<PermissibleBase>(this);
     }
 }
 

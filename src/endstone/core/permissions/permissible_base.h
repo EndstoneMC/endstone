@@ -32,11 +32,10 @@ namespace endstone::core {
  * Base Permissible for use in any Permissible object via proxy or extension
  */
 class PermissibleBase : public Permissible {
-protected:
+public:
     explicit PermissibleBase(Permissible *opable);
     ~PermissibleBase() override;
 
-public:
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
@@ -49,8 +48,6 @@ public:
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
     [[nodiscard]] CommandSender *asCommandSender() const override;
     void clearPermissions();
-
-    static std::shared_ptr<PermissibleBase> create(Permissible *opable);
 
 private:
     [[nodiscard]] static PluginManager *getPluginManager();
