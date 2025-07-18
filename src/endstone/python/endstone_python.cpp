@@ -78,7 +78,8 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
     auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
     auto mob = py::class_<Mob, Actor>(m, "Mob",
-                                      "Represents a mobile entity (i.e. living entity), such as a monster or player.");
+                                      "Represents a mobile entity (i.e. living entity), such as a monster or player.",
+                                      py::multiple_inheritance());
     auto offline_player = py::class_<OfflinePlayer>(
         m, "OfflinePlayer",
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
