@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerItemHeldEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerSkinChangeEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'Item', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerItemHeldEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerSkinChangeEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1664,6 +1664,42 @@ class IpBanList:
         """
         Gets a vector of pointers to entries in the ban list.
         """
+class Item(Actor):
+    """
+    Represents a base actor in the level.
+    """
+    @property
+    def is_unlimited_lifetime(self) -> bool:
+        """
+        Gets or sets if this Item lives forever
+        """
+    @is_unlimited_lifetime.setter
+    def is_unlimited_lifetime(self, arg1: bool) -> None:
+        ...
+    @property
+    def item_stack(self) -> ItemStack:
+        """
+        Gets or sets the item stack associated with this item drop.
+        """
+    @item_stack.setter
+    def item_stack(self, arg1: ItemStack) -> None:
+        ...
+    @property
+    def pickup_delay(self) -> int:
+        """
+        Gets or sets the delay before this Item is available to be picked up by players.
+        """
+    @pickup_delay.setter
+    def pickup_delay(self, arg1: int) -> None:
+        ...
+    @property
+    def thrower(self) -> int | None:
+        """
+        Gets or sets the thrower of this item.
+        """
+    @thrower.setter
+    def thrower(self, arg1: int | None) -> None:
+        ...
 class ItemFactory:
     def as_meta_for(self, meta: ItemMeta, type: ItemType) -> ItemMeta:
         """
@@ -3454,7 +3490,7 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     Called when a player picks an item up from the ground.
     """
     @property
-    def item(self) -> ItemStack:
+    def item(self) -> Item:
         """
         Gets the Item picked up by the entity.
         """

@@ -62,6 +62,15 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.");
+
+    py::class_<Item, Actor>(m, "Item", "Represents a base actor in the level.", py::multiple_inheritance())
+        .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,
+                      "Gets or sets the item stack associated with this item drop.")
+        .def_property("pickup_delay", &Item::getPickupDelay, &Item::setPickupDelay,
+                      "Gets or sets the delay before this Item is available to be picked up by players.")
+        .def_property("is_unlimited_lifetime", &Item::isUnlimitedLifetime, &Item::setUnlimitedLifetime,
+                      "Gets or sets if this Item lives forever")
+        .def_property("thrower", &Item::getThrower, &Item::setThrower, "Gets or sets the thrower of this item.");
 }
 
 }  // namespace endstone::python

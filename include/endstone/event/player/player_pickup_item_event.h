@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/actor/item.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 
@@ -24,21 +25,22 @@ namespace endstone {
  */
 class PlayerPickupItemEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerPickupItemEvent(Player &player, const ItemStack &item) : Cancellable(player), item_(item) {};
-    ENDSTONE_EVENT(PlayerPickupItemEvent)
+    ENDSTONE_EVENT(PlayerPickupItemEvent);
+
+    explicit PlayerPickupItemEvent(Player &player, Item &item) : Cancellable(player), item_(item){};
 
     /**
      * @brief Gets the Item picked up by the entity.
      *
      * @return Item
      */
-    const ItemStack &getItem()
+    Item &getItem() const
     {
         return item_;
     }
 
 private:
-    const ItemStack &item_;
+    Item &item_;
 };
 
 }  // namespace endstone

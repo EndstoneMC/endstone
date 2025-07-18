@@ -61,7 +61,7 @@ public:
 
     // Endstone begins
     int getPickUpDelay() const;
-    void setLifeTime(int life_time);
+    void setLifeTime(int lifetime);
     // Endstone ends
 
 private:
