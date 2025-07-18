@@ -369,6 +369,10 @@
          <lastmod>2025-07-18</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Item/</loc>
+         <lastmod>2025-07-18</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ItemFactory/</loc>
          <lastmod>2025-07-18</lastmod>
     </url>
@@ -850,6 +854,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor_8h_source/</loc>
+         <lastmod>2025-07-18</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/item_8h/</loc>
+         <lastmod>2025-07-18</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/item_8h_source/</loc>
          <lastmod>2025-07-18</lastmod>
     </url>
     <url>

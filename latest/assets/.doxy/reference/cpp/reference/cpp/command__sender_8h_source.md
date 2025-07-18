@@ -57,11 +57,6 @@ public:
         return nullptr;
     }
 
-    [[nodiscard]] virtual Mob *asMob() const
-    {
-        return nullptr;
-    }
-
     [[nodiscard]] virtual Player *asPlayer() const
     {
         return nullptr;

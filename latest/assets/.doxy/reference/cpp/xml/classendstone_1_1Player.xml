@@ -1682,7 +1682,8 @@
       <member refid="classendstone_1_1CommandSender_1a981997682a69961a0cb5e92b7a70f4ff" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asActor</name></member>
       <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asConsole</name></member>
-      <member refid="classendstone_1_1CommandSender_1aacfc66c9c74e9f8419ada38a1beb6913" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asMob</name></member>
+      <member refid="classendstone_1_1Actor_1a6c81fe219b046d28cdf13c5c400793c6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>asItem</name></member>
+      <member refid="classendstone_1_1Actor_1acbd7afe34e58507083765ae5d27ff9c0" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>asMob</name></member>
       <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asPlayer</name></member>
       <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>closeForm</name></member>
       <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>FormVariant</name></member>

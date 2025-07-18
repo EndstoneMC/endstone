@@ -93,8 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerPickupItemEvent**](#function-playerpickupitemevent) ([**Player**](classendstone_1_1Player.md) & player, const [**ItemStack**](classendstone_1_1ItemStack.md) & item) <br> |
-|  const [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getItem**](#function-getitem) () <br>_Gets the Item picked up by the entity._  |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md)) <br> |
+|   | [**PlayerPickupItemEvent**](#function-playerpickupitemevent) ([**Player**](classendstone_1_1Player.md) & player, [**Item**](classendstone_1_1Item.md) & item) <br> |
+|  [**Item**](classendstone_1_1Item.md) & | [**getItem**](#function-getitem) () const<br>_Gets the_ [_**Item**_](classendstone_1_1Item.md) _picked up by the entity._ |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -203,12 +204,27 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::PlayerPickupItemEvent::ENDSTONE_EVENT (
+    PlayerPickupItemEvent
+) 
+```
+
+
+
+
+<hr>
+
+
+
 ### function PlayerPickupItemEvent 
 
 ```C++
 inline explicit endstone::PlayerPickupItemEvent::PlayerPickupItemEvent (
     Player & player,
-    const ItemStack & item
+    Item & item
 ) 
 ```
 
@@ -221,9 +237,9 @@ inline explicit endstone::PlayerPickupItemEvent::PlayerPickupItemEvent (
 
 ### function getItem 
 
-_Gets the Item picked up by the entity._ 
+_Gets the_ [_**Item**_](classendstone_1_1Item.md) _picked up by the entity._
 ```C++
-inline const ItemStack & endstone::PlayerPickupItemEvent::getItem () 
+inline Item & endstone::PlayerPickupItemEvent::getItem () const
 ```
 
 
@@ -232,7 +248,7 @@ inline const ItemStack & endstone::PlayerPickupItemEvent::getItem ()
 
 **Returns:**
 
-Item 
+[**Item**](classendstone_1_1Item.md) 
 
 
 

@@ -17,7 +17,7 @@ _Represents a base actor in the level._
 Inherits the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
 
 
-Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
+Inherited by the following classes: [endstone::Item](classendstone_1_1Item.md),  [endstone::Mob](classendstone_1_1Mob.md)
 
 
 
@@ -95,6 +95,8 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | Type | Name |
 | ---: | :--- |
 | virtual bool | [**addScoreboardTag**](#function-addscoreboardtag) (std::string tag) const = 0<br>_Adds a tag to this actor._  |
+| virtual [**Item**](classendstone_1_1Item.md) \* | [**asItem**](#function-asitem) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Item**_](classendstone_1_1Item.md) _._ |
+| virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](#function-asmob) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
 | virtual int | [**getHealth**](#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
@@ -135,7 +137,6 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](classendstone_1_1CommandSender.md#function-asactor) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](classendstone_1_1CommandSender.md#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](classendstone_1_1CommandSender.md#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
-| virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](classendstone_1_1CommandSender.md#function-asmob) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](classendstone_1_1CommandSender.md#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](classendstone_1_1CommandSender.md#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](classendstone_1_1CommandSender.md#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
@@ -271,6 +272,56 @@ virtual bool endstone::Actor::addScoreboardTag (
 **Returns:**
 
 true if the tag was successfully added, false if the tag already exists. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function asItem 
+
+_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Item**_](classendstone_1_1Item.md) _._
+```C++
+virtual Item * endstone::Actor::asItem () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+[**Item**](classendstone_1_1Item.md), nullptr if not an [**Item**](classendstone_1_1Item.md) 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function asMob 
+
+_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._
+```C++
+virtual Mob * endstone::Actor::asMob () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+[**Mob**](classendstone_1_1Mob.md), nullptr if not an [**Mob**](classendstone_1_1Mob.md) 
 
 
 

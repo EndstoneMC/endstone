@@ -177,6 +177,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**IpBanList**](classendstone_1_1IpBanList.md)
 ([**endstone**](namespaceendstone.md))
+* [**Item**](classendstone_1_1Item.md)
+([**endstone**](namespaceendstone.md))
 * [**ItemFactory**](classendstone_1_1ItemFactory.md)
 ([**endstone**](namespaceendstone.md))
 * [**ItemMeta**](classendstone_1_1ItemMeta.md)

@@ -29,8 +29,14 @@
 #include "endstone/level/position.h"
 
 namespace endstone {
+class Item;
+class Mob;
 class Actor : public CommandSender {
 public:
+    [[nodiscard]] virtual Mob *asMob() const = 0;
+
+    [[nodiscard]] virtual Item *asItem() const = 0;
+
     [[nodiscard]] virtual std::string getType() const = 0;
 
     [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;

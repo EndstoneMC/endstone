@@ -19,6 +19,8 @@
     <member refid="classendstone_1_1ActionForm_1ad6432d9fec3543615bc2a79a33c846a5" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1Actor" kind="class"><name>endstone::Actor</name>
+    <member refid="classendstone_1_1Actor_1acbd7afe34e58507083765ae5d27ff9c0" kind="function"><name>asMob</name></member>
+    <member refid="classendstone_1_1Actor_1a6c81fe219b046d28cdf13c5c400793c6" kind="function"><name>asItem</name></member>
     <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kind="function"><name>getRuntimeId</name></member>
     <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kind="function"><name>getLocation</name></member>
@@ -438,7 +440,6 @@
     <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" kind="function"><name>asCommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSender_1a981997682a69961a0cb5e92b7a70f4ff" kind="function"><name>asActor</name></member>
-    <member refid="classendstone_1_1CommandSender_1aacfc66c9c74e9f8419ada38a1beb6913" kind="function"><name>asMob</name></member>
     <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
@@ -468,7 +469,6 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1a5fc91f3c240a91dc5a37d1e0345da2c6" kind="function"><name>asCommandSender</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a1ad4a226bbf1e73d89839d743585b678" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a44729e5299e551a8058e457a60c64900" kind="function"><name>asActor</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1ad53fb2fc3c38f3d8add6b409eac0bdf4" kind="function"><name>asMob</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a367f090917a2dc9a34bfad1fb0fb29c2" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" kind="function"><name>getName</name></member>
@@ -722,6 +722,16 @@
     <member refid="classendstone_1_1IpBanList_1a92dc2f845462160a98a86112dafd73ff" kind="function"><name>getEntries</name></member>
     <member refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" kind="function"><name>isBanned</name></member>
     <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kind="function"><name>removeBan</name></member>
+  </compound>
+  <compound refid="classendstone_1_1Item" kind="class"><name>endstone::Item</name>
+    <member refid="classendstone_1_1Item_1a7a898259f1715a166bfdd5ac7300cab8" kind="function"><name>getItemStack</name></member>
+    <member refid="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" kind="function"><name>setItemStack</name></member>
+    <member refid="classendstone_1_1Item_1a3256b7b25cc3a2e8a59a18ea471c386d" kind="function"><name>getPickupDelay</name></member>
+    <member refid="classendstone_1_1Item_1a9ecb3d011f118920d313d406b0e1f7cf" kind="function"><name>setPickupDelay</name></member>
+    <member refid="classendstone_1_1Item_1aa75743e9275be2335852f72f8e77a879" kind="function"><name>setUnlimitedLifetime</name></member>
+    <member refid="classendstone_1_1Item_1ae9d1acdd426e2abdaa9a7d0772e013a9" kind="function"><name>isUnlimitedLifetime</name></member>
+    <member refid="classendstone_1_1Item_1a76a67449432660c8c549c9e578fbf549" kind="function"><name>setThrower</name></member>
+    <member refid="classendstone_1_1Item_1ab8e408c96b5ddb96277d89bdebf186ae" kind="function"><name>getThrower</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemFactory" kind="class"><name>endstone::ItemFactory</name>
     <member refid="classendstone_1_1ItemFactory_1aad09d9483ab4cada38c27ef7b735f6da" kind="function"><name>~ItemFactory</name></member>
@@ -1368,9 +1378,10 @@
     <member refid="classendstone_1_1PlayerMoveEvent_1a733ae2307c00ed312652389f1e26317f" kind="function"><name>setTo</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerPickupItemEvent" kind="class"><name>endstone::PlayerPickupItemEvent</name>
-    <member refid="classendstone_1_1PlayerPickupItemEvent_1a8e50badda8428e17c4fcefb0f4cece8b" kind="variable"><name>item_</name></member>
-    <member refid="classendstone_1_1PlayerPickupItemEvent_1a1e5e6b2de33ea9564c6db057f4e366e2" kind="function"><name>PlayerPickupItemEvent</name></member>
-    <member refid="classendstone_1_1PlayerPickupItemEvent_1a7e07078e045c11f522375157447cceb8" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1PlayerPickupItemEvent_1ad4b4af1a9ca78f0f02b27dabfc88eafd" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerPickupItemEvent_1af8d09456f82338437efebcc77773909b" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerPickupItemEvent_1a2ffe5a51d8b0c22799ba4db466fc6f91" kind="function"><name>PlayerPickupItemEvent</name></member>
+    <member refid="classendstone_1_1PlayerPickupItemEvent_1af2e2a3c35dde44219709a5303569979c" kind="function"><name>getItem</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerQuitEvent" kind="class"><name>endstone::PlayerQuitEvent</name>
     <member refid="classendstone_1_1PlayerQuitEvent_1a9a422070fcabd4719e3c1711af48fbcb" kind="variable"><name>NAME</name></member>
@@ -2009,6 +2020,8 @@
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
   <compound refid="actor_8h" kind="file"><name>actor.h</name>
+  </compound>
+  <compound refid="item_8h" kind="file"><name>item.h</name>
   </compound>
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>

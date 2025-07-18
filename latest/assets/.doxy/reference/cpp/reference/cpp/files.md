@@ -10,6 +10,7 @@ Here is a list of all files with brief descriptions:
         * **file** [**game\_mode.h**](game__mode_8h.md)     
         * **dir** [**actor**](dir_dd7779a583e02d88c9a89a2c881c3946.md)     
             * **file** [**actor.h**](actor_8h.md)     
+            * **file** [**item.h**](item_8h.md)     
             * **file** [**mob.h**](mob_8h.md)     
         * **dir** [**ban**](dir_f1b1f2e9abb31749ef58cd98f22bcd78.md)     
             * **file** [**ban\_entry.h**](ban__entry_8h.md)     

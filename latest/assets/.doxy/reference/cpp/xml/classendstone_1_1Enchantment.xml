@@ -140,7 +140,7 @@
 <parametername>item</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Item to test </para>
+<para><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> to test </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

@@ -110,7 +110,7 @@ This does not check if it conflicts with any enchantments already applied to the
 **Parameters:**
 
 
-* `item` Item to test 
+* `item` [**Item**](classendstone_1_1Item.md) to test 
 
 
 

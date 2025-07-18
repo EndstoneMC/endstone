@@ -91,6 +91,7 @@ _Represents a button with text and an optional icon._
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br> |
 | class | [**IpBanList**](classendstone_1_1IpBanList.md) <br>_Represents a ban list, containing banned IP addresses._  |
+| class | [**Item**](classendstone_1_1Item.md) <br>_Represents a base actor in the level._  |
 | class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br> |
 | class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the metadata of a generic item._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
