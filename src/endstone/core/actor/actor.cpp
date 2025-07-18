@@ -21,9 +21,10 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "endstone/core/actor/item.h"
+#include "endstone/core/actor/mob.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/level/level.h"
-#include "endstone/core/permissions/permissible.h"
 
 namespace endstone::core {
 
@@ -102,6 +103,11 @@ std::unordered_set<PermissionAttachmentInfo *> EndstoneActor::getEffectivePermis
 }
 
 Mob *EndstoneActor::asMob() const
+{
+    return nullptr;
+}
+
+Item *EndstoneActor::asItem() const
 {
     return nullptr;
 }
@@ -328,6 +334,9 @@ endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
     }
     else if (auto *mob = Mob::tryGetFromEntity(self->entity_context_); mob) {
         component.actor = endstone::core::EndstoneMob::create(server, *mob);
+    }
+    else if (auto *item = ItemActor::tryGetFromEntity(self->entity_context_); item) {
+        component.actor = endstone::core::EndstoneItem::create(server, *item);
     }
     else {
         component.actor = endstone::core::EndstoneActor::create(server, *self);

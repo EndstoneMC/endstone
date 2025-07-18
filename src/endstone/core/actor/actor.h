@@ -56,6 +56,7 @@ public:
 
     // Actor
     [[nodiscard]] Mob *asMob() const override;
+    [[nodiscard]] Item *asItem() const override;
     [[nodiscard]] std::string getType() const override;
     [[nodiscard]] std::uint64_t getRuntimeId() const override;
     [[nodiscard]] Location getLocation() const override;
@@ -102,8 +103,6 @@ protected:
         return *ptr;
     }
 
-private:
-protected:
     EndstoneServer &server_;
 
 private:

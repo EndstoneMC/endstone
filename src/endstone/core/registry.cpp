@@ -48,14 +48,14 @@ std::unique_ptr<Registry<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::c
 }
 
 template <>
-const Item *MinecraftRegistry<Item>::get(const NamespacedKey &key) const
+const ::Item *MinecraftRegistry<::Item>::get(const NamespacedKey &key) const
 {
     const auto item = ItemRegistryManager::getItemRegistry().getItem(key.toString());
     return item.get();
 }
 
 template <>
-std::vector<NamespacedKey> MinecraftRegistry<Item>::keys() const
+std::vector<NamespacedKey> MinecraftRegistry<::Item>::keys() const
 {
     std::vector<NamespacedKey> keys;
     for (const auto &[name, _] : ItemRegistryManager::getItemRegistry().getNameToItemMap()) {
