@@ -581,7 +581,7 @@ void EndstonePlayer::updateCommands() const
 
 bool EndstonePlayer::performCommand(std::string command) const
 {
-    return server_.dispatchCommand(*Player::asPlayer(), command);
+    return server_.dispatchCommand(*asPlayer(), command);
 }
 
 bool EndstonePlayer::isSneaking() const
