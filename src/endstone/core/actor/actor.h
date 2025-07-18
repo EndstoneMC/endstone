@@ -30,12 +30,13 @@ struct EndstoneActorComponent {
     std::shared_ptr<EndstoneActor> actor;
 };
 
-class EndstoneActor : public Actor, public std::enable_shared_from_this<EndstoneActor> {
+class EndstoneActor : public virtual Actor, public std::enable_shared_from_this<EndstoneActor> {
 protected:
     EndstoneActor(EndstoneServer &server, ::Actor &actor);
 
 public:
     // CommandSender
+    [[nodiscard]] Actor *asActor() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] Server &getServer() const override;

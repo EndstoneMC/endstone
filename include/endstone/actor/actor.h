@@ -19,18 +19,11 @@
 #include "endstone/level/position.h"
 
 namespace endstone {
-
 /**
  * @brief Represents a base actor in the level.
  */
 class Actor : public CommandSender {
 public:
-    // CommandSender
-    [[nodiscard]] Actor *asActor() const override
-    {
-        return const_cast<Actor *>(this);
-    }
-
     /**
      * @brief Get the type of the actor.
      *

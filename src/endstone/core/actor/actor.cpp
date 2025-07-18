@@ -32,6 +32,11 @@ EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(s
     getPermissibleBase();
 }
 
+Actor *EndstoneActor::asActor() const
+{
+    return const_cast<EndstoneActor *>(this);
+}
+
 void EndstoneActor::sendMessage(const Message &message) const {}
 
 void EndstoneActor::sendErrorMessage(const Message &message) const {}

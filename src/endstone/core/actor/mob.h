@@ -27,54 +27,9 @@ protected:
 public:
     // CommandSender
     [[nodiscard]] Mob *asMob() const override;
-    void sendMessage(const Message &message) const override;
-    void sendErrorMessage(const Message &message) const override;
-    [[nodiscard]] Server &getServer() const override;
-    [[nodiscard]] std::string getName() const override;
-
-    // Permissible
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
-    [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
-    [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment * addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment * addAttachment(Plugin &plugin) override;
-    Result<void> removeAttachment(PermissionAttachment &attachment) override;
-    void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 
     // Actor
-    [[nodiscard]] std::string getType() const override;
-    [[nodiscard]] std::uint64_t getRuntimeId() const override;
-    [[nodiscard]] Location getLocation() const override;
-    [[nodiscard]] Vector<float> getVelocity() const override;
-    [[nodiscard]] bool isOnGround() const override;
-    [[nodiscard]] bool isInWater() const override;
-    [[nodiscard]] bool isInLava() const override;
-    [[nodiscard]] Level &getLevel() const override;
-    [[nodiscard]] Dimension &getDimension() const override;
     void setRotation(float yaw, float pitch) override;
-    void teleport(Location location) override;
-    void teleport(Actor &target) override;
-    [[nodiscard]] std::int64_t getId() const override;
-    void remove() override;
-    [[nodiscard]] bool isValid() const override;
-    [[nodiscard]] bool isDead() const override;
-    [[nodiscard]] int getHealth() const override;
-    [[nodiscard]] Result<void> setHealth(int health) const override;
-    [[nodiscard]] int getMaxHealth() const override;
-    [[nodiscard]] std::vector<std::string> getScoreboardTags() const override;
-    [[nodiscard]] bool addScoreboardTag(std::string tag) const override;
-    [[nodiscard]] bool removeScoreboardTag(std::string tag) const override;
-    [[nodiscard]] bool isNameTagVisible() const override;
-    void setNameTagVisible(bool visible) override;
-    [[nodiscard]] bool isNameTagAlwaysVisible() const override;
-    void setNameTagAlwaysVisible(bool visible) override;
-    [[nodiscard]] std::string getNameTag() const override;
-    void setNameTag(std::string name) override;
-    [[nodiscard]] std::string getScoreTag() const override;
-    void setScoreTag(std::string score) override;
 
     // Mob
     [[nodiscard]] bool isGliding() const override;
