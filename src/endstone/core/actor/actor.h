@@ -55,6 +55,7 @@ public:
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 
     // Actor
+    [[nodiscard]] Mob *asMob() const override;
     [[nodiscard]] std::string getType() const override;
     [[nodiscard]] std::uint64_t getRuntimeId() const override;
     [[nodiscard]] Location getLocation() const override;

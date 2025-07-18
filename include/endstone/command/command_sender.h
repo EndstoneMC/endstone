@@ -61,16 +61,6 @@ public:
     }
 
     /**
-     * @brief Gets a CommandSender as Mob
-     *
-     * @return Mob, nullptr if not an Mob
-     */
-    [[nodiscard]] virtual Mob *asMob() const
-    {
-        return nullptr;
-    }
-
-    /**
      * @brief Gets a CommandSender as Player
      *
      * @return Player, nullptr if not a Player

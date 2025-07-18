@@ -105,11 +105,6 @@ public:
         return sender_.asActor();
     }
 
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return sender_.asMob();
-    }
-
     [[nodiscard]] Player *asPlayer() const override
     {
         return sender_.asPlayer();

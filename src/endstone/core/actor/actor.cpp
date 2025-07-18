@@ -101,6 +101,11 @@ std::unordered_set<PermissionAttachmentInfo *> EndstoneActor::getEffectivePermis
     return getPermissibleBase().getEffectivePermissions();
 }
 
+Mob *EndstoneActor::asMob() const
+{
+    return nullptr;
+}
+
 std::string EndstoneActor::getType() const
 {
     return getActor().getActorIdentifier().getCanonicalName();

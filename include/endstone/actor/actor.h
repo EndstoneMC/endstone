@@ -25,6 +25,13 @@ namespace endstone {
 class Actor : public CommandSender {
 public:
     /**
+     * @brief Gets a CommandSender as Mob
+     *
+     * @return Mob, nullptr if not an Mob
+     */
+    [[nodiscard]] virtual Mob *asMob() const = 0;
+
+    /**
      * @brief Get the type of the actor.
      *
      * This method returns the type of the actor as a string, for example, minecraft:pig.
