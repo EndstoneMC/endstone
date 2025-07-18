@@ -19,7 +19,6 @@
     <member refid="classendstone_1_1ActionForm_1ad6432d9fec3543615bc2a79a33c846a5" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1Actor" kind="class"><name>endstone::Actor</name>
-    <member refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c" kind="function"><name>asActor</name></member>
     <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kind="function"><name>getRuntimeId</name></member>
     <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kind="function"><name>getLocation</name></member>
@@ -945,7 +944,6 @@
     <member refid="classendstone_1_1MessageForm_1a32ad03e1b55f5a98009d34d5f442c248" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1Mob" kind="class"><name>endstone::Mob</name>
-    <member refid="classendstone_1_1Mob_1aefb6264f480587f4baaeb0eb23277760" kind="function"><name>asMob</name></member>
     <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kind="function"><name>isGliding</name></member>
   </compound>
   <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>

@@ -27,13 +27,8 @@
 #include "endstone/actor/actor.h"
 
 namespace endstone {
-class Mob : public Actor {
+class Mob : public virtual Actor {
 public:
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return const_cast<Mob *>(this);
-    }
-
     [[nodiscard]] virtual bool isGliding() const = 0;
 };
 }  // namespace endstone

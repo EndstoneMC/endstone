@@ -2,29 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Mob" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Mob</compoundname>
-    <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
+    <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="virtual">endstone::Actor</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="virtual">endstone::Player</derivedcompoundref>
     <includes refid="mob_8h" local="no">endstone/actor/mob.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Mob_1aefb6264f480587f4baaeb0eb23277760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref> *</type>
-        <definition>Mob * endstone::Mob::asMob</definition>
-        <argsstring>() const override</argsstring>
-        <name>asMob</name>
-        <qualifiedname>endstone::Mob::asMob</qualifiedname>
-        <reimplements refid="classendstone_1_1CommandSender_1aacfc66c9c74e9f8419ada38a1beb6913">asMob</reimplements>
-        <briefdescription>
-<para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as <ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref>. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para><ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref>, nullptr if not an <ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref> </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="25" column="10" bodyfile="include/endstone/actor/mob.h" bodystart="25" bodyend="28"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool endstone::Mob::isGliding</definition>
@@ -41,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="34" column="19"/>
+        <location file="include/endstone/actor/mob.h" line="29" column="19"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -103,15 +84,15 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/mob.h" line="23" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="23" bodyend="35"/>
+    <location file="include/endstone/actor/mob.h" line="23" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="23" bodyend="30"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addScoreboardTag</name></member>
-      <member refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asActor</name></member>
+      <member refid="classendstone_1_1CommandSender_1a981997682a69961a0cb5e92b7a70f4ff" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asActor</name></member>
       <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asConsole</name></member>
-      <member refid="classendstone_1_1Mob_1aefb6264f480587f4baaeb0eb23277760" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asMob</name></member>
+      <member refid="classendstone_1_1CommandSender_1aacfc66c9c74e9f8419ada38a1beb6913" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asMob</name></member>
       <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>asPlayer</name></member>
       <member refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getEffectivePermissions</name></member>

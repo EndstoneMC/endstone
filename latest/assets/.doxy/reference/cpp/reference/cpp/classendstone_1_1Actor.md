@@ -95,7 +95,6 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | Type | Name |
 | ---: | :--- |
 | virtual bool | [**addScoreboardTag**](#function-addscoreboardtag) (std::string tag) const = 0<br>_Adds a tag to this actor._  |
-| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](#function-asactor) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
 | virtual int | [**getHealth**](#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
@@ -278,33 +277,6 @@ true if the tag was successfully added, false if the tag already exists.
 
 
         
-
-<hr>
-
-
-
-### function asActor 
-
-_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._
-```C++
-inline virtual Actor * endstone::Actor::asActor () override const
-```
-
-
-
-
-
-**Returns:**
-
-[**Actor**](classendstone_1_1Actor.md), nullptr if not an [**Actor**](classendstone_1_1Actor.md) 
-
-
-
-
-
-        
-Implements [*endstone::CommandSender::asActor*](classendstone_1_1CommandSender.md#function-asactor)
-
 
 <hr>
 

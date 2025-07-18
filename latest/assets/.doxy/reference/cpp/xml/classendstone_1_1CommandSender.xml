@@ -53,7 +53,6 @@
         <argsstring>() const</argsstring>
         <name>asActor</name>
         <qualifiedname>endstone::CommandSender::asActor</qualifiedname>
-        <reimplementedby refid="classendstone_1_1Actor_1a80bcaa26d26b884d5435af9ca9aeb06c">asActor</reimplementedby>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a44729e5299e551a8058e457a60c64900">asActor</reimplementedby>
         <briefdescription>
 <para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref>. </para>
@@ -73,7 +72,6 @@
         <argsstring>() const</argsstring>
         <name>asMob</name>
         <qualifiedname>endstone::CommandSender::asMob</qualifiedname>
-        <reimplementedby refid="classendstone_1_1Mob_1aefb6264f480587f4baaeb0eb23277760">asMob</reimplementedby>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1ad53fb2fc3c38f3d8add6b409eac0bdf4">asMob</reimplementedby>
         <briefdescription>
 <para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as <ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref>. </para>

@@ -29,15 +29,8 @@
 #include "endstone/level/position.h"
 
 namespace endstone {
-
 class Actor : public CommandSender {
 public:
-    // CommandSender
-    [[nodiscard]] Actor *asActor() const override
-    {
-        return const_cast<Actor *>(this);
-    }
-
     [[nodiscard]] virtual std::string getType() const = 0;
 
     [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;

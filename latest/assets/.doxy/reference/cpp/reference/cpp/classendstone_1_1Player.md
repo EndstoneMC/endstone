@@ -217,7 +217,6 @@ See [endstone::Mob](classendstone_1_1Mob.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](classendstone_1_1Mob.md#function-asmob) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
 | virtual bool | [**isGliding**](classendstone_1_1Mob.md#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
 
 
@@ -228,7 +227,6 @@ See [endstone::Actor](classendstone_1_1Actor.md)
 | Type | Name |
 | ---: | :--- |
 | virtual bool | [**addScoreboardTag**](classendstone_1_1Actor.md#function-addscoreboardtag) (std::string tag) const = 0<br>_Adds a tag to this actor._  |
-| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](classendstone_1_1Actor.md#function-asactor) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](classendstone_1_1Actor.md#function-getdimension) () const = 0<br> |
 | virtual int | [**getHealth**](classendstone_1_1Actor.md#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual std::int64\_t | [**getId**](classendstone_1_1Actor.md#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
