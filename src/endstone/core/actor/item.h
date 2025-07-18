@@ -23,17 +23,16 @@ class EndstoneItem : public EndstoneActor, public virtual Item {
 public:
     explicit EndstoneItem(EndstoneServer &server, ::ItemActor &item);
 
+    [[nodiscard]] Item *asItem() const override;
     [[nodiscard]] std::unique_ptr<ItemStack> getItemStack() const override;
     void setItemStack(const ItemStack &stack) override;
     [[nodiscard]] int getPickupDelay() const override;
     void setPickupDelay(int delay) override;
     void setUnlimitedLifetime(bool unlimited) override;
-    bool isUnlimitedLifetime() const override;
-    void setOwner(UUID owner) override;
-    UUID getOwner() const override;
-    void setThrower(UUID uuid) override;
-    UUID getThrower() const override;
+    [[nodiscard]] bool isUnlimitedLifetime() const override;
+    void setThrower(std::optional<std::int64_t> thrower) override;
+    [[nodiscard]] std::optional<std::int64_t> getThrower() const override;
 
-    [[nodiscard]] Item *asItem() const override;
+    ::ItemActor &getItem() const;
 };
 }  // namespace endstone::core

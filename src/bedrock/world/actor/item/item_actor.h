@@ -18,9 +18,10 @@
 #include "bedrock/world/item/item_stack.h"
 
 class ItemActor : public Actor {
+public:
+    static constexpr int LIFETIME = 6000;
     static constexpr int INFINITE_PICKUP_DELAY = 65535;
 
-public:
     ItemActor(ActorDefinitionGroup *, const ActorDefinitionIdentifier &, EntityContext &);
     void reloadHardcoded(ActorInitializationMethod, const VariantParameterList &) override = 0;
     ~ItemActor() override;
@@ -57,6 +58,11 @@ public:
     bool isFromFishing() const;
     void setSourceEntity(const Actor *);
     static ItemActor *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
+
+    // Endstone begins
+    int getPickUpDelay() const;
+    void setLifeTime(int life_time);
+    // Endstone ends
 
 private:
     ItemStack item_;

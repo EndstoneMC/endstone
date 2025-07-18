@@ -63,42 +63,25 @@ public:
      *
      * @return true if the lifetime is unlimited
      */
-    virtual bool isUnlimitedLifetime() const = 0;
-
-    /**
-     * @brief Sets the owner of this item.
-     *
-     * Other entities will not be able to pickup this item when an owner is set.
-     *
-     * @param owner UUID of new owner
-     */
-    virtual void setOwner(UUID owner) = 0;
-
-    /**
-     * @brief Get the owner of this item.
-     *
-     * @return UUID of owner
-     */
-    virtual UUID getOwner() const = 0;
+    [[nodiscard]] virtual bool isUnlimitedLifetime() const = 0;
 
     /**
      * @brief Set the thrower of this item.
      *
-     * The thrower is the entity which dropped the item. This affects the
-     * trigger criteria for item pickups, for things such as advancements.
+     * @note The thrower is the entity which dropped the item.
      *
-     * @param uuid UUID of thrower
+     * @param thrower unique id of thrower
      */
-    virtual void setThrower(UUID uuid) = 0;
+    virtual void setThrower(std::optional<std::int64_t> thrower) = 0;
 
     /**
      * @brief Get the thrower of this item.
      *
-     * The thrower is the entity which dropped the item.
+     * @note The thrower is the entity which dropped the item.
      *
-     * @return UUID of thrower
+     * @return unique id of thrower
      */
-    virtual UUID getThrower() const = 0;
+    [[nodiscard]] virtual std::optional<std::int64_t> getThrower() const = 0;
 };
 
 }  // namespace endstone

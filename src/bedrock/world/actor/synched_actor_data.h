@@ -20,6 +20,8 @@
 #include "bedrock/entity/components/actor_data_dirty_flags_component.h"
 #include "bedrock/entity/components/actor_data_flag_component.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/nbt/compound_tag.h"
+#include "bedrock/world/level/block_pos.h"
 
 enum class DataItemType : std::uint8_t {
     Byte = 0,
@@ -70,7 +72,14 @@ public:
     using ID = DataItem::ID;
 
     [[nodiscard]] TypeInt8 getInt8(ID) const;
+    [[nodiscard]] TypeShort getShort(ID) const;
+    [[nodiscard]] TypeInt getInt(ID) const;
+    [[nodiscard]] TypeInt64 getInt64(ID) const;
+    [[nodiscard]] TypeFloat getFloat(ID) const;
     [[nodiscard]] const std::string &getString(ID) const;
+    [[nodiscard]] const CompoundTag &getCompoundTag(ID) const;
+    [[nodiscard]] BlockPos getPosition(ID) const;
+    [[nodiscard]] TypeVec3 getVec3(ID) const;
     [[nodiscard]] bool hasData(ID) const;
 
 private:
@@ -89,23 +98,38 @@ struct SynchedActorDataComponent;
 class SynchedActorDataEntityWrapper {
 public:
     [[nodiscard]] SynchedActorData::TypeInt8 getInt8(SynchedActorData::ID) const;
+    [[nodiscard]] SynchedActorData::TypeShort getShort(SynchedActorData::ID) const;
+    [[nodiscard]] SynchedActorData::TypeInt getInt(SynchedActorData::ID) const;
+    [[nodiscard]] SynchedActorData::TypeInt64 getInt64(SynchedActorData::ID) const;
+    [[nodiscard]] SynchedActorData::TypeFloat getFloat(SynchedActorData::ID) const;
     [[nodiscard]] const std::string &getString(SynchedActorData::ID) const;
+    [[nodiscard]] const CompoundTag &getCompoundTag(SynchedActorData::ID) const;
+    [[nodiscard]] BlockPos getPosition(SynchedActorData::ID) const;
+    [[nodiscard]] SynchedActorData::TypeVec3 getVec3(SynchedActorData::ID) const;
+    [[nodiscard]] bool hasData(SynchedActorData::ID) const;
+    [[nodiscard]] bool getStatusFlag(ActorFlags) const;
+    void setStatusFlag(ActorFlags, bool);
+
     template <typename T>
     void set(SynchedActorData::ID, const T &);
 
-    template <typename T>
-    void setFlag(SynchedActorData::ID id, int index)
-    {
-        auto data = _get();
-        auto &item = data->_get(id);
+    void markDirty(DataItem &);
+    void markDirty(SynchedActorData::ID);
+    [[nodiscard]] bool isDirty() const;
 
-        auto &item2 = static_cast<DataItem2<T> &>(item);
-        T value = item2.data | (1 << index);
-        if (item2.data != value) {
-            item2.data = value;
-            data->dirty_flags_.set(item.getId(), true);
-        }
-    }
+    // template <typename T>
+    // void setFlag(SynchedActorData::ID id, int index)
+    // {
+    //     auto data = _get();
+    //     auto &item = data->_get(id);
+    //
+    //     auto &item2 = static_cast<DataItem2<T> &>(item);
+    //     T value = item2.data | (1 << index);
+    //     if (item2.data != value) {
+    //         item2.data = value;
+    //         data->dirty_flags_.set(item.getId(), true);
+    //     }
+    // }
 
 private:
     gsl::not_null<SynchedActorData *> _get() const;
