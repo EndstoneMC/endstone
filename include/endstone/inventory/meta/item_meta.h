@@ -21,26 +21,18 @@
 #include <vector>
 
 namespace endstone {
+namespace core {
+class EndstoneItemMeta;
+}
 /**
  * @brief Represents the metadata of a generic item.
  */
+class MapMeta;
 class ItemMeta {
 public:
-    enum class Type {
-        Item = 0,
-        Map = 1,
-        Count,
-        None = Item,
-    };
-
     virtual ~ItemMeta() = default;
-
-    /**
-     * @brief Gets the type of this item meta
-     *
-     * @return type of this item meta
-     */
-    [[nodiscard]] virtual Type getType() const = 0;
+    virtual core::EndstoneItemMeta *asEndstoneItemMeta() const = 0;
+    virtual MapMeta *asMapMeta() const = 0;
 
     /**
      * @brief Checks if the item metadata is empty.

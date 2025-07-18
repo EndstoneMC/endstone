@@ -14,27 +14,9 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include "bedrock/world/item/item.h"
 
-namespace mce {
-class Color {
+class ComplexItem : public Item {
 public:
-    static const Color WHITE;
-
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
-
-    Color() = default;
-    Color(float, float, float, float);
-
-    float r = 1.0;
-    float g = 1.0;
-    float b = 1.0;
-    float a = 1.0;
+    using Item::Item;
 };
-}  // namespace mce
-
-using Color = mce::Color;

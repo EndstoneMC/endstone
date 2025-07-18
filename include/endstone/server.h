@@ -27,6 +27,7 @@
 #include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
+#include "endstone/map/map_view.h"
 #include "endstone/player.h"
 #include "endstone/plugin/service_manager.h"
 #include "endstone/scoreboard/scoreboard.h"
@@ -404,6 +405,15 @@ public:
       * @return the item registry.
       */
     [[nodiscard]] virtual Registry<ItemType> &getItemRegistry() const = 0;
+
+    /**
+     * @brief Create a new map with an automatically assigned ID.
+     *
+     * @param dimension the Dimension the map will belong to
+     *
+     * @return a newly created map view
+     */
+    [[nodiscard]] virtual MapView& createMap(const Dimension &dimension) const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

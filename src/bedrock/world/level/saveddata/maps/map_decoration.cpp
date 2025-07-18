@@ -12,29 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/saveddata/maps/map_decoration.h"
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+MapDecoration::MapDecoration(Type img, int8_t x, int8_t y, int8_t rot, const std::string &label, const Color &color)
+    : label_(label), image_(img), x_(x), y_(y), rotation_(rot), color_(color)
+{
+}
 
-namespace mce {
-class Color {
-public:
-    static const Color WHITE;
+MapDecoration::Type MapDecoration::getImg() const
+{
+    return image_;
+}
 
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
+std::int8_t MapDecoration::getX() const
+{
+    return x_;
+}
 
-    Color() = default;
-    Color(float, float, float, float);
+std::int8_t MapDecoration::getY() const
+{
+    return y_;
+}
 
-    float r = 1.0;
-    float g = 1.0;
-    float b = 1.0;
-    float a = 1.0;
-};
-}  // namespace mce
+std::int8_t MapDecoration::getRot() const
+{
+    return rotation_;
+}
 
-using Color = mce::Color;
+const std::string &MapDecoration::getLabel() const
+{
+    return label_;
+}

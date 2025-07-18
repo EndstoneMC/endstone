@@ -80,8 +80,7 @@ public:
     }
 
     /**
-     * @brief Creates a new color object from an integer that contains the red, green,
-     * blue, and alpha bytes.
+     * @brief Creates a new color object from an integer that contains the red, green, blue, and alpha bytes.
      *
      * @param rgba the integer storing the red, green, blue, and alpha values
      *
@@ -90,6 +89,18 @@ public:
     static Result<Color> fromRGBA(const int rgba)
     {
         return fromRGBA(rgba >> 24 & BIT_MASK, rgba >> 16 & BIT_MASK, rgba >> 8 & BIT_MASK, rgba & BIT_MASK);
+    }
+
+    /**
+     * @brief Creates a new color object from an integer that contains the alpha, blue, green, and red bytes.
+     *
+     * @param abgr the integer storing the alpha, blue, green, and red values
+     *
+     * @return a new color object for specified values
+     */
+    static Result<Color> fromABGR(const int abgr)
+    {
+        return fromRGBA(abgr & BIT_MASK, abgr >> 8 & BIT_MASK, abgr >> 16 & BIT_MASK, abgr >> 24 & BIT_MASK);
     }
 
     /**
@@ -208,6 +219,16 @@ public:
     [[nodiscard]] int asRGBA() const
     {
         return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha();
+    }
+
+    /**
+     * @brief Gets the color as an ABGR integer.
+     *
+     * @return An integer representation of this color, as 0xAABBGGRR
+     */
+    [[nodiscard]] int asABGR() const
+    {
+        return getAlpha() << 24 | getBlue() << 16 | getGreen() << 8 | getRed();
     }
 
     /**

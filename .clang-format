@@ -4,7 +4,7 @@ AlignConsecutiveMacros: Consecutive
 AlignEscapedNewlines: Left
 AlignOperands: AlignAfterOperator
 AllowShortFunctionsOnASingleLine: Empty
-AllowShortLambdasOnASingleLine: Inline
+AllowShortLambdasOnASingleLine: All
 AlwaysBreakTemplateDeclarations: Yes
 BreakBeforeBraces: Stroustrup
 IncludeBlocks: Regroup

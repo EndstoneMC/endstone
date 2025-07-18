@@ -213,7 +213,7 @@ bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
     }
 
     auto tag = std::make_unique<CompoundTag>();
-    static_cast<const EndstoneItemMeta *>(item_meta.get())->applyToItem(*tag);
+    item_meta->asEndstoneItemMeta()->applyToItem(*tag);
     item->setUserData(std::move(tag));
     return true;
 }

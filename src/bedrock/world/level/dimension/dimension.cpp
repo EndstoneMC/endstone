@@ -29,10 +29,10 @@ ChunkSource &Dimension::getChunkSource() const
     return *chunk_source_;
 }
 
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+// BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
+// {
+//     return *block_source_;
+// }
 
 Weather &Dimension::getWeather() const
 {

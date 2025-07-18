@@ -59,6 +59,7 @@ add_library(endstone_core
         event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/meta/item_meta.cpp
+        inventory/meta/map_meta.cpp
         inventory/inventory.cpp
         inventory/item_factory.cpp
         inventory/item_stack.cpp
@@ -68,6 +69,7 @@ add_library(endstone_core
         level/chunk.cpp
         level/dimension.cpp
         level/level.cpp
+        map/map_canvas.cpp
         map/map_renderer.cpp
         map/map_view.cpp
         network/data_packet.cpp

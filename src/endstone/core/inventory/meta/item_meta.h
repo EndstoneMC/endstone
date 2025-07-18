@@ -20,11 +20,12 @@
 
 namespace endstone::core {
 
-class EndstoneItemMeta : public ItemMeta {
+class EndstoneItemMeta : public virtual ItemMeta {
 public:
     EndstoneItemMeta(const EndstoneItemMeta *meta);
     EndstoneItemMeta(const ::CompoundTag &tag);
-    [[nodiscard]] Type getType() const override;
+    EndstoneItemMeta *asEndstoneItemMeta() const override;
+    [[nodiscard]] MapMeta *asMapMeta() const override;
     [[nodiscard]] bool isEmpty() const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override;
     [[nodiscard]] bool hasDisplayName() const override;
@@ -51,7 +52,7 @@ public:
 
     [[nodiscard]] virtual bool applicableTo(const ItemType &type) const;
     [[nodiscard]] virtual bool equalsCommon(const EndstoneItemMeta &other) const;
-    [[nodiscard]] virtual bool notUncommon() const;
+    [[nodiscard]] virtual bool notUncommon(const EndstoneItemMeta &other) const;
     virtual void applyToItem(::CompoundTag &tag) const;
 
 private:

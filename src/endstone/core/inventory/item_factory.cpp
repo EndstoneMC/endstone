@@ -14,6 +14,9 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
+#include "endstone/core/inventory/item_type.h"
+#include "endstone/core/inventory/meta/map_meta.h"
+
 namespace endstone::core {
 EndstoneItemFactory &EndstoneItemFactory::instance()
 {
@@ -31,13 +34,13 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemType &typ
     if (meta == nullptr) {
         return false;
     }
-    return static_cast<const EndstoneItemMeta *>(meta)->applicableTo(type);
+    return meta->asEndstoneItemMeta()->applicableTo(type);
 }
 
 namespace {
 bool equals0(const EndstoneItemMeta &meta1, const EndstoneItemMeta &meta2)
 {
-    return meta1.equalsCommon(meta2) && meta1.notUncommon() && meta2.notUncommon();
+    return meta1.equalsCommon(meta2) && meta1.notUncommon(meta1) && meta2.notUncommon(meta1);
 }
 }  // namespace
 
@@ -55,20 +58,29 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
         return meta1->isEmpty();
     }
 
-    return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
+    return equals0(*meta1->asEndstoneItemMeta(), *meta2->asEndstoneItemMeta());
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, const ItemType &type) const
 {
-    return getItemMeta(type, static_cast<const EndstoneItemMeta *>(meta));
+    return getItemMeta(type, meta->asEndstoneItemMeta());
 }
+
+namespace {
+std::unordered_map<std::string,
+                   std::function<std::unique_ptr<EndstoneItemMeta>(const ItemType &type, const EndstoneItemMeta *meta)>>
+    item_meta_factories = {
+        {"minecraft:air", [](auto &, auto *) { return nullptr; }},
+        {"minecraft:filled_map", [](auto &, auto *m) { return std::make_unique<EndstoneMapMeta>(m); }},
+};
+
+}  // namespace
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemType &type, const EndstoneItemMeta *meta) const
 {
-    if (type == "minecraft:air") {
-        return nullptr;
+    if (auto it = item_meta_factories.find(std::string(type.getId())); it != item_meta_factories.end()) {
+        return it->second(type, meta);
     }
-    // TODO(item): add support for map meta
     return std::make_unique<EndstoneItemMeta>(meta);
 }
 }  // namespace endstone::core

@@ -14,27 +14,17 @@
 
 #pragma once
 
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <string_view>
+#include "bedrock/world/item/complex_item.h"
 
-namespace mce {
-class Color {
+class MapItem : public ComplexItem {
 public:
-    static const Color WHITE;
+    static const std::string TAG_MAP_SCALING;
+    static const std::string TAG_MAP_SCALE;
+    static const std::string TAG_MAP_PLAYER_DISPLAY;
+    inline static const std::string TAG_MAP_UUID = "map_uuid";
+    static const std::string TAG_MAP_NAME_INDEX;
+    static const std::string TAG_MAP_INIT;
+    static const std::string TAG_MAP_REGENERATE;
 
-    [[nodiscard]] std::string toHexString() const;
-    static Color fromHexString(const std::string &hex_string);
-
-    Color() = default;
-    Color(float, float, float, float);
-
-    float r = 1.0;
-    float g = 1.0;
-    float b = 1.0;
-    float a = 1.0;
+    using ComplexItem::ComplexItem;
 };
-}  // namespace mce
-
-using Color = mce::Color;
