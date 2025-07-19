@@ -233,7 +233,7 @@ void init_registry(py::module_ &m)
 
 void init_server(py::class_<Server> &server)
 {
-    server.def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
+    server.def_property_readonly("name", &Server::getName, "Gets the name of this server implementation.")
         .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
                                "Gets the Minecraft version that this server is running.")
