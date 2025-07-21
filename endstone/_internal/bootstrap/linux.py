@@ -41,9 +41,6 @@ class LinuxBootstrap(Bootstrap):
     def _run(self, *args, **kwargs) -> int:
         process = subprocess.Popen(
             [str(self.executable_path.absolute())],
-            stdin=sys.stdin,
-            stdout=sys.stdout,
-            stderr=subprocess.STDOUT,
             text=True,
             encoding="utf-8",
             cwd=str(self.server_path.absolute()),
