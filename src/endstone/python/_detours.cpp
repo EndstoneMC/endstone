@@ -50,7 +50,7 @@ py::tuple CreateProcessWithDllEx(
     ZeroMemory(&si, sizeof(si));
     si.StartupInfo.cb = sizeof(si);
     si.StartupInfo.dwFlags = startup_info_obj.attr("dwFlags").cast<DWORD>();
-    si.StartupInfo.wShowWindow = startup_info_obj.attr("wShowWindow").cast<DWORD>();
+    si.StartupInfo.wShowWindow = startup_info_obj.attr("wShowWindow").cast<WORD>();
     si.StartupInfo.hStdInput = get_handle(startup_info_obj, "hStdInput");
     si.StartupInfo.hStdOutput = get_handle(startup_info_obj, "hStdOutput");
     si.StartupInfo.hStdError = get_handle(startup_info_obj, "hStdError");
