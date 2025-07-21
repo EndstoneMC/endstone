@@ -49,12 +49,11 @@ class PopenWithDll(subprocess.Popen):
             pass
         elif isinstance(args, bytes):
             if shell:
-                raise TypeError('bytes args is not allowed on Windows')
+                raise TypeError("bytes args is not allowed on Windows")
             args = list2cmdline([args])
         elif isinstance(args, os.PathLike):
             if shell:
-                raise TypeError('path-like args is not allowed when '
-                                'shell is true')
+                raise TypeError("path-like args is not allowed when shell is true")
             args = list2cmdline([args])
         else:
             args = list2cmdline(args)
@@ -173,9 +172,6 @@ class WindowsBootstrap(Bootstrap):
         self._add_loopback_exemption()
         process = PopenWithDll(
             [str(self.executable_path.absolute())],
-            stdin=sys.stdin,
-            stdout=sys.stdout,
-            stderr=sys.stderr,
             text=True,
             encoding="utf-8",
             cwd=str(self.server_path.absolute()),
