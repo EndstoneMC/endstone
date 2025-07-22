@@ -18,7 +18,7 @@
 #include <string>
 
 #include "bedrock/util/rotation.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_pos.h"
 
 namespace BedBlockSpawnOffset {

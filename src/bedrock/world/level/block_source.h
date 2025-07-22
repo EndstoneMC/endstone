@@ -24,7 +24,7 @@
 #include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/block.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_source_listener.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
 #include "bedrock/world/level/clip_parameters.h"

@@ -21,7 +21,7 @@
 #include "bedrock/deps/json/value.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/block/block.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 class Item;
 

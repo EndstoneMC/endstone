@@ -12,23 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 #include "bedrock/symbol.h"
 #include "bedrock/world/item/registry/item_registry.h"
 
-bool BlockLegacy::hasProperty(BlockProperty property) const
+bool BlockType::hasProperty(BlockProperty property) const
 {
     return (static_cast<std::underlying_type_t<BlockProperty>>(property) &
             static_cast<std::underlying_type_t<BlockProperty>>(properties_)) != 0;
 }
 
-const Block *BlockLegacy::tryGetStateFromLegacyData(DataID data) const
+const Block *BlockType::tryGetStateFromLegacyData(DataID data) const
 {
-    return BEDROCK_CALL(&BlockLegacy::tryGetStateFromLegacyData, this, data);
+    return BEDROCK_CALL(&BlockType::tryGetStateFromLegacyData, this, data);
 }
 
-bool BlockLegacy::hasState(const BlockState &block_state) const
+bool BlockType::hasState(const BlockState &block_state) const
 {
     if (states_.contains(block_state.getID())) {
         return true;
@@ -41,7 +41,7 @@ bool BlockLegacy::hasState(const BlockState &block_state) const
     return false;
 }
 
-bool BlockLegacy::hasState(const HashedString &name) const
+bool BlockType::hasState(const HashedString &name) const
 {
     auto *state = BlockStateRegistry::get().getState(name);
     if (!state) {
@@ -50,73 +50,73 @@ bool BlockLegacy::hasState(const HashedString &name) const
     return hasState(*state);
 }
 
-bool BlockLegacy::requiresCorrectToolForDrops() const
+bool BlockType::requiresCorrectToolForDrops() const
 {
     return requires_correct_tool_for_drops_;
 }
 
-bool BlockLegacy::isSolid() const
+bool BlockType::isSolid() const
 {
     return solid_;
 }
 
-float BlockLegacy::getThickness() const
+float BlockType::getThickness() const
 {
     return thickness_;
 }
 
-float BlockLegacy::getTranslucency() const
+float BlockType::getTranslucency() const
 {
     return translucency_;
 }
 
-const std::vector<HashedString> &BlockLegacy::getTags() const
+const std::vector<HashedString> &BlockType::getTags() const
 {
     return tags_;
 }
 
-const Material &BlockLegacy::getMaterial() const
+const Material &BlockType::getMaterial() const
 {
     return material_;
 }
 
-const std::string &BlockLegacy::getDescriptionId() const
+const std::string &BlockType::getDescriptionId() const
 {
     return description_id;
 }
 
-const std::string &BlockLegacy::getRawNameId() const
+const std::string &BlockType::getRawNameId() const
 {
     return name_info_.raw_name.getString();
 }
 
-const std::string &BlockLegacy::getNamespace() const
+const std::string &BlockType::getNamespace() const
 {
     return name_info_.namespace_name;
 }
 
-const HashedString &BlockLegacy::getName() const
+const HashedString &BlockType::getName() const
 {
     return name_info_.full_name;
 }
 
-bool BlockLegacy::anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &block_type_ids) const
+bool BlockType::anyOf(const gsl::span<const std::reference_wrapper<const HashedString>> &block_type_ids) const
 {
     return std::ranges::any_of(block_type_ids,
                                [this](const auto &block_type_id) { return block_type_id.get() == getName(); });
 }
 
-const Block &BlockLegacy::getDefaultState() const
+const Block &BlockType::getDefaultState() const
 {
     return *default_state_;
 }
 
-const BaseGameVersion &BlockLegacy::getRequiredBaseGameVersion() const
+const BaseGameVersion &BlockType::getRequiredBaseGameVersion() const
 {
     return min_required_game_version_;
 }
 
-std::int16_t BlockLegacy::getBlockItemId() const
+std::int16_t BlockType::getBlockItemId() const
 {
     const auto value = id_.value;
     if (value < ItemRegistry::START_ITEM_ID) {
@@ -125,12 +125,12 @@ std::int16_t BlockLegacy::getBlockItemId() const
     return static_cast<std::int16_t>((ItemRegistry::START_ITEM_ID - 1u) - value);
 }
 
-TintMethod BlockLegacy::getTintMethod() const
+TintMethod BlockType::getTintMethod() const
 {
     return tint_method_;
 }
 
-void BlockLegacy::forEachBlockPermutation(std::function<bool(Block const &)> callback) const
+void BlockType::forEachBlockPermutation(std::function<bool(Block const &)> callback) const
 {
     for (const auto &block_permutation : block_permutations_) {
         if (block_permutation) {
@@ -139,7 +139,7 @@ void BlockLegacy::forEachBlockPermutation(std::function<bool(Block const &)> cal
     }
 }
 
-std::optional<int> BlockLegacy::_tryLookupAlteredStateCollection(size_t id, DataID data) const
+std::optional<int> BlockType::_tryLookupAlteredStateCollection(size_t id, DataID data) const
 {
     if (altered_state_collections_.empty()) {
         return std::nullopt;
@@ -152,7 +152,7 @@ std::optional<int> BlockLegacy::_tryLookupAlteredStateCollection(size_t id, Data
     return std::nullopt;
 }
 
-const Block *BlockLegacy::_trySetStateFromAlteredStateCollection(size_t id, int val, DataID data) const
+const Block *BlockType::_trySetStateFromAlteredStateCollection(size_t id, int val, DataID data) const
 {
     if (altered_state_collections_.empty()) {
         return nullptr;

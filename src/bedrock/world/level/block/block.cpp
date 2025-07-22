@@ -161,7 +161,7 @@ std::string Block::toDebugString() const
     return ss.str();
 }
 
-const BlockLegacy &Block::getLegacyBlock() const
+const BlockType &Block::getLegacyBlock() const
 {
     return *legacy_block_;
 }

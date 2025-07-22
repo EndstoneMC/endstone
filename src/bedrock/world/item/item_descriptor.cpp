@@ -130,7 +130,7 @@ ItemDescriptor::ItemDescriptor(const Block &block)
     }
 }
 
-ItemDescriptor::ItemDescriptor(const BlockLegacy &block)
+ItemDescriptor::ItemDescriptor(const BlockType &block)
 {
     const auto registry_ref = ItemRegistryManager::getItemRegistry();
     const auto block_item_id = block.getBlockItemId();

@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/util/randomize.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_source.h"
 
 class FireBlock : public BlockLegacy {

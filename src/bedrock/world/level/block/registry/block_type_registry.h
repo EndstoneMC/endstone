@@ -18,7 +18,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/platform/brstd/function_ref.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 class BlockTypeRegistry {
 public:

@@ -53,7 +53,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
     auto &region = overworld.unwrap()->getBlockSourceFromMainChunkSource();
     auto item_registry = level.getItemRegistry();
 
-    BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
+    BlockTypeRegistry::forEachBlock([&](const BlockType &block_legacy) {
         const auto &name = block_legacy.getName().getString();
 
         nlohmann::json tags;

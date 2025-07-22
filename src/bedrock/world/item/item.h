@@ -31,7 +31,7 @@
 #include "bedrock/world/item/rarity.h"
 #include "bedrock/world/item/registry/item_registry.h"
 #include "bedrock/world/item/vanilla_item_tag.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 using BlockShape = std::int64_t;
 

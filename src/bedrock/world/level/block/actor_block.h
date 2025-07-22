@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 template <typename TBase>
 class ActorBlockBase : public TBase {

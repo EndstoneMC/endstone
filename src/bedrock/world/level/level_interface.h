@@ -452,7 +452,7 @@ public:
     virtual std::weak_ptr<TrimPatternRegistry> getTrimPatternRegistry() = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimMaterialRegistry const> getTrimMaterialRegistry() const = 0;
     virtual std::weak_ptr<TrimMaterialRegistry> getTrimMaterialRegistry() = 0;
-    [[nodiscard]] virtual BlockLegacy const &getRegisteredBorderBlock() const = 0;
+    [[nodiscard]] virtual BlockType const &getRegisteredBorderBlock() const = 0;
     virtual void *getLevelChunkPerformanceTelemetry() = 0;
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
     virtual void addBlockSourceForValidityTracking(BlockSource *) = 0;

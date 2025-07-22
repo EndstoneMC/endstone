@@ -23,7 +23,7 @@
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/vanilla_item_tag.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/tick.h"
 
 class Item;

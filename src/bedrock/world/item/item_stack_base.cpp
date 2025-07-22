@@ -24,7 +24,7 @@ ItemStackBase::ItemStackBase()
     ItemStackBase::setNull(std::nullopt);
 }
 
-ItemStackBase::ItemStackBase(const BlockLegacy &block, int count)
+ItemStackBase::ItemStackBase(const BlockType &block, int count)
 {
     block_ = &block.getRenderBlock();
     init(block, count);
@@ -116,7 +116,7 @@ ItemStackBase::~ItemStackBase() = default;
 
 void ItemStackBase::reinit(Item const & item, int count, int aux_value) {}
 
-void ItemStackBase::reinit(BlockLegacy const &block, int count) {}
+void ItemStackBase::reinit(BlockType const &block, int count) {}
 
 void ItemStackBase::reinit(std::string_view name, int count, int aux_value) {}
 
@@ -494,7 +494,7 @@ std::uint8_t ItemStackBase::getCount() const
     return count_;
 }
 
-void ItemStackBase::init(const BlockLegacy &block, const int count)
+void ItemStackBase::init(const BlockType &block, const int count)
 {
     init(block.getBlockItemId(), count, 0, true);
     if (!item_.isNull() && item_->getRequiredBaseGameVersion() == BaseGameVersion::EMPTY) {
@@ -544,7 +544,7 @@ void ItemStackBase::init(const int id, const int count, const int aux_value, con
 
 void ItemStackBase::_updateCompareHashes()
 {
-    static std::hash<const BlockLegacy *> hasher;
+    static std::hash<const BlockType *> hasher;
     std::ranges::sort(can_place_on_);
     can_place_on_hash_ = 0;
     for (const auto &block : can_place_on_) {

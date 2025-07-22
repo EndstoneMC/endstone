@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #pragma once
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 class LeavesBlock : public BlockLegacy {
 public:
 protected:
