@@ -19,7 +19,7 @@
 
 class Randomize {
 public:
-    Randomize(Random &);
+    Randomize(IRandom &);
     virtual ~Randomize() = default;
     [[nodiscard]] virtual bool chance(int, int) const = 0;
     [[nodiscard]] virtual bool chanceOneIn(int) const = 0;
@@ -34,6 +34,6 @@ public:
 
 protected:
     Randomize();
-    Bedrock::NonOwnerPointer<Random> random_;
+    Bedrock::NonOwnerPointer<IRandom> random_;
 };
 static_assert(sizeof(Randomize) == 32);

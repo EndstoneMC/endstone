@@ -31,14 +31,14 @@ public:
     GameServerToken();
     GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
-    [[nodiscard]] std::string getXuid(bool trust_self_signed) const;
-
     operator bool() const
     {
         return isValid();
     }
 
     [[nodiscard]] bool isValid() const;
+
+    PlayerAuthenticationInfo getTrustedInfo() const;
 
 protected:
     GameServerToken(const std::string &);

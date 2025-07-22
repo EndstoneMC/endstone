@@ -56,6 +56,6 @@ private:
     std::unique_ptr<void *> subpack_info_pack_;  // SubpackInfoCollection
     std::unique_ptr<void *> metadata_;           // PackMetadata
     std::unique_ptr<const LegacyDependenciesUpgrade> dependencies_upgrade_;
-    std::map<void *, std::function<void(Pack &)>> pack_updated_callbacks_;
-    std::map<void *, std::function<void(Pack &)>> pack_deleted_callbacks_;
+    // std::map<void *, std::function<void(Pack &)>> pack_updated_callbacks_;
+    // std::map<void *, std::function<void(Pack &)>> pack_deleted_callbacks_;
 };

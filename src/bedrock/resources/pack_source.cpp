@@ -14,6 +14,15 @@
 
 #include "bedrock/resources/pack_source.h"
 
+#include <shared_mutex>
+
+struct PackStorage {
+    PackSourcePacks packs;
+    PackSourceReport report;
+};
+
+class PackStorageContainer : public Bedrock::Threading::SharedLockbox<PackStorage, std::shared_timed_mutex> {};
+
 void PackSourceReport::addReport(PackIdVersion const &pack_id, PackReport &&report)
 {
     reports_[pack_id] = std::move(report);

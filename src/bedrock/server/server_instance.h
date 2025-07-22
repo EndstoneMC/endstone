@@ -89,7 +89,7 @@ private:
     std::unique_ptr<WorldSessionEndPoint> world_session_end_point_;
     std::shared_ptr<Core::FileStorageArea> storage_area_for_level_;
     std::shared_ptr<ItemRegistry> server_item_registry_;
-    std::shared_ptr<BlockTypeRegistry> block_registry_;
+    // std::shared_ptr<BlockTypeRegistry> block_registry_;
     bool enable_item_stack_net_manager_;
     bool initialized_;
     bool flagged_for_early_destruction_;
