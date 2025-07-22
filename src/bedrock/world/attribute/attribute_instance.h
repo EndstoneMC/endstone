@@ -19,6 +19,7 @@
 
 #include "bedrock/forward.h"
 #include "bedrock/world/attribute/attribute.h"
+#include "bedrock/world/attribute/attribute_buff.h"
 #include "bedrock/world/attribute/mutable_attribute_with_context.h"
 
 class BaseAttributeMap;
@@ -32,32 +33,33 @@ public:
     [[nodiscard]] float getMaxValue() const;
     void setCurrentValue(float value, AttributeModificationContext ctx);
     [[nodiscard]] Attribute *getAttribute() const;
+    void addBuff(const AttributeBuff &, AttributeModificationContext);
 
 private:
     friend class BaseAttributeMap;
 
     void _setDirty(AttributeModificationContext ctx);
 
-    Attribute *attribute_;                                 // +16
-    std::vector<void *> modifier_list_;                    // +24 std::vector<AttributeModifier>
-    std::vector<void *> temporal_buffs_;                   // +48 std::vector<TemporalAttributeBuff>
-    std::vector<void *> listeners_;                        // +72 std::vector<AttributeInstanceHandle>
-    std::shared_ptr<AttributeInstanceDelegate> delegate_;  // +96
-    union {                                                //
-        float default_values_[3];                          //
-        struct {                                           //
-            float default_min_value_;                      // (+112)
-            float default_max_value_;                      // (+116)
-            float default_value_;                          // (+120)
-        };                                                 //
-    };                                                     // +112
-    union {                                                //
-        float current_values_[3];                          //
-        struct {                                           //
-            float current_min_value_;                      // (+124)
-            float current_max_value_;                      // (+128)
-            float current_value_;                          // (+132)
-        };                                                 //
-    };                                                     // +124
+    Attribute *attribute_;
+    std::vector<void *> modifier_list_;
+    std::vector<void *> temporal_buffs_;
+    std::vector<void *> listeners_;
+    std::shared_ptr<AttributeInstanceDelegate> delegate_;
+    union {
+        float default_values_[3];
+        struct {
+            float default_min_value_;
+            float default_max_value_;
+            float default_value_;
+        };
+    };
+    union {
+        float current_values_[3];
+        struct {
+            float current_min_value_;
+            float current_max_value_;
+            float current_value_;
+        };
+    };
 };
 static_assert(sizeof(AttributeInstance) == 128);

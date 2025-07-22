@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/mob.h"
 
 #include "bedrock/entity/components/damage_sensor_component.h"
+#include "bedrock/entity/components/no_action_time_component.h"
 #include "endstone/actor/actor.h"
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/mob.h"
@@ -46,12 +47,14 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
 
 bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)
 {
+    // Only apply on server, if alive and vulnerable
     const auto &level = getLevel();
     if (level.isClientSide() || isInvulnerableTo(source) || isDead()) {
         return false;
     }
 
-    // https://github.com/EndstoneMC/endstone/issues/175
+    // FIX: https://github.com/EndstoneMC/endstone/issues/175
+    // Damage sensor handling
     if (auto *damage_sensor = tryGetComponent<DamageSensorComponent>(); damage_sensor) {
         const auto damage_result = damage_sensor->recordGenericDamageAndCheckIfDealt(
             *this, source, damage, static_cast<float>(getHealth()), {}, false);
@@ -63,12 +66,26 @@ bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool 
         }
     }
 
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    auto &mob = getEndstoneActor<endstone::core::EndstoneMob>();
-    endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return false;
+    // FIX: https://github.com/EndstoneMC/endstone/issues/198
+    // Compute the effective damage considering invulnerability window
+    float damage_difference;
+    if ((invulnerable_time <= 0) || source.getCause() == ActorDamageCause::Override ||
+        source.getCause() == ActorDamageCause::SelfDestruct) {
+        damage_difference = damage;
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, e.getDamage(), knock, ignite);
+    else {
+        damage_difference = std::max(0.0F, damage - getLastHurtDamage());
+    }
+
+    if (damage_difference <= 0.0F || checkForPostHitDamageImmunity(damage_difference, source)) {
+        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        auto &mob = getEndstoneActor<endstone::core::EndstoneMob>();
+        endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+        damage = e.getDamage();
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, damage, knock, ignite);
 }

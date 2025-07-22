@@ -14,32 +14,23 @@
 
 #pragma once
 
-class AttributeInstance;
-class BaseAttributeMap;
+class Amplifier {
+public:
+    virtual ~Amplifier() = default;
 
-struct AttributeModificationContext {
-    BaseAttributeMap *attribute_map;
-};
-static_assert(sizeof(AttributeModificationContext) == 8);
+    [[nodiscard]] virtual float getAmount(int, float) const
+    {
+        return 0.0;
+    }
 
-struct MutableAttributeWithContext {
-    [[nodiscard]] bool isValid() const
+    [[nodiscard]] virtual bool shouldBuff(int, int) const
     {
-        return instance != nullptr;
+        return true;
     }
-    explicit operator bool() const
+
+    [[nodiscard]] virtual int getTickInterval(int) const
     {
-        return isValid();
+        return 1;
     }
-    bool operator==(std::nullptr_t) const
-    {
-        return instance == nullptr;
-    }
-    bool operator!=(std::nullptr_t) const
-    {
-        return instance != nullptr;
-    }
-    AttributeInstance *instance;
-    AttributeModificationContext context;
 };
-static_assert(sizeof(MutableAttributeWithContext) == 16);
+static_assert(sizeof(Amplifier) == 8);

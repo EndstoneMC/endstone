@@ -94,6 +94,9 @@ public:
     [[nodiscard]] bool isGliding() const;
     [[nodiscard]] bool isSprinting() const;
     void setYBodyRotation(float rotation);
+    int getNoActionTime() const;
+    void resetNoActionTime();
+    bool checkForPostHitDamageImmunity(float damage_difference, const ActorDamageSource &source);
 
 public:
     float hurt_dir;

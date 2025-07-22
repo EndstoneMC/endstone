@@ -272,6 +272,8 @@ public:
     [[nodiscard]] bool hasType(ActorType types) const;
     [[nodiscard]] ActorType getEntityTypeId() const;
     [[nodiscard]] const ActorDefinitionIdentifier &getActorIdentifier() const;
+    BuiltInActorComponents &getBuiltInActorComponents();
+    [[nodiscard]] const BuiltInActorComponents &getBuiltInActorComponents() const;
     [[nodiscard]] bool isSneaking() const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
@@ -319,6 +321,8 @@ public:
     void setScoreTag(const std::string &);
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
+    [[nodiscard]] gsl::not_null<MutableAttributeWithContext> getNotNullMutableAttribute(
+        const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
     void setFallDistance(float);
     [[nodiscard]] bool isDead() const;
@@ -327,12 +331,35 @@ public:
     [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;
     [[nodiscard]] const ItemStack &getOffhandSlot() const;
     [[nodiscard]] const ItemStack &getArmor(ArmorSlot) const;
-    bool isCreative() const;
-    bool isAdventure() const;
-    bool isSurvival() const;
-    bool isSpectator() const;
+    [[nodiscard]] bool isCreative() const;
+    [[nodiscard]] bool isAdventure() const;
+    [[nodiscard]] bool isSurvival() const;
+    [[nodiscard]] bool isSpectator() const;
     void queueBBUpdateFromValue(const Vec2 &);
     void queueBBUpdateFromDefinition();
+    void setChainedDamageEffects(bool);
+    [[nodiscard]] bool getChainedDamageEffects() const;
+    Mob *getLastHurtByMob();
+    [[nodiscard]] ActorUniqueID getLastHurtByMobID() const;
+    void setLastHurtByMob(Mob *);
+    Player *getLastHurtByPlayer();
+    [[nodiscard]] ActorUniqueID getLastHurtByPlayerID() const;
+    void setLastHurtByPlayer(Player *);
+    Mob *getLastHurtMob();
+    void setLastHurtMob(Actor *);
+    int getLastHurtMobTimestamp();
+    int getLastHurtByMobTime();
+    int getLastHurtByMobTimestamp();
+    [[nodiscard]] bool hasBeenHurtByMobInLastTicks(int) const;
+    [[nodiscard]] float getLastHurtDamage() const;
+    [[nodiscard]] ActorDamageCause getLastHurtCause() const;
+    [[nodiscard]] std::uint64_t getLastHurtTimestamp() const;
+    [[nodiscard]] bool isUseNewTradeScreen() const;
+    [[nodiscard]] bool canSeeDaylight() const;
+    [[nodiscard]] const Block *getInsideBlock() const;
+    void setInsideBlock(const Block *);
+    [[nodiscard]] const BlockPos &getInsideBlockPos() const;
+    void setInsideBlockPos(const BlockPos &);
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);

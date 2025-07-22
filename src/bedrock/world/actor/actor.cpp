@@ -78,6 +78,11 @@ const ActorDefinitionIdentifier &Actor::getActorIdentifier() const
     return empty;
 }
 
+const BuiltInActorComponents &Actor::getBuiltInActorComponents() const
+{
+    return built_in_components_;
+}
+
 bool Actor::isSneaking() const
 {
     return getStatusFlag(ActorFlags::SNEAKING);
@@ -247,6 +252,11 @@ bool Actor::hasCategory(ActorCategory categories) const
     return (categories & categories_) == categories;
 }
 
+float Actor::getLastHurtDamage() const
+{
+    return last_hurt_;
+}
+
 Actor *Actor::tryGetFromEntity(EntityContext const &entity, bool include_removed)
 {
     auto *component = entity.tryGetComponent<ActorOwnerComponent>();
@@ -386,6 +396,12 @@ MutableAttributeWithContext Actor::getMutableAttribute(const HashedString &name)
     return component->attributes.getMutableInstanceWithContext(name);
 }
 
+gsl::not_null<MutableAttributeWithContext> Actor::getNotNullMutableAttribute(const HashedString &name)
+{
+    auto component = getPersistentComponent<AttributesComponent>();
+    return component->attributes.getMutableInstanceWithContext(name);
+}
+
 float Actor::getFallDistance() const
 {
     auto component = getPersistentComponent<FallDistanceComponent>();
@@ -457,4 +473,9 @@ void Actor::queueBBUpdateFromDefinition()
 {
     getEntity().getOrAddComponent<ShouldUpdateBoundingBoxRequestComponent>().update =
         ShouldUpdateBoundingBoxRequestComponent::UpdateFromDefinition();
+}
+
+bool Actor::getChainedDamageEffects() const
+{
+    return chained_damage_effects_;
 }
