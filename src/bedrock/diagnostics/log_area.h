@@ -82,5 +82,8 @@ enum class LogAreaID {
     Store,
     World,
     Messaging,
-    Invalid = 10000
+    NetherNet,
+    Serialization,
+    DisconnectionScreen,
+    NumLogAreas,
 };

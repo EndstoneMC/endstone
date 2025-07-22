@@ -86,7 +86,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
             visual_shape = block.getVisualShape(visual_shape);
             ui_shape = block.getUIShape(ui_shape);
             block.getLiquidClipVolume(region, {0, 0, 0}, liquid_clip_shape);
-            auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
+            auto map_color = block.getBlockType().getMapColor(region, {0, 10, 0}, block);
             data.block_states.push_back({
                 {"name", name},
                 {"blockStateHash", block.getRuntimeId()},
@@ -105,7 +105,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
                 {"isSolid", block.isSolid()},
                 {"translucency", block.getTranslucency()},
                 {"mapColor", map_color.toHexString()},
-                {"tintMethod", magic_enum::enum_name(block.getLegacyBlock().getTintMethod())},
+                {"tintMethod", magic_enum::enum_name(block.getBlockType().getTintMethod())},
                 {"collisionShape", collision_shape},
                 {"outlineShape", outline_shape},
                 {"visualShape", visual_shape},
@@ -370,7 +370,7 @@ void dumpBiomes(VanillaData &data, ::Level &level)
 {
     auto &biomes = data.biomes;
     level.getBiomeRegistry().forEachBiome([&biomes](const Biome &biome) {
-        biomes[biome.getName()] = {{"id", biome.getId()}};
+        biomes[biome.getFullName()] = {{"id", biome.getId()}};
     });
 }
 

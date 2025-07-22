@@ -19,9 +19,8 @@
 template <typename TBase>
 class ActorBlockBase : public TBase {
 public:
-
     virtual void neighborChanged(BlockSource &, const BlockPos &, const BlockPos &) const = 0;
     virtual void triggerEvent(BlockSource &, const BlockPos &, int, int) const = 0;
 };
 
-using ActorBlock = ActorBlockBase<BlockLegacy>;
+using ActorBlock = ActorBlockBase<BlockType>;

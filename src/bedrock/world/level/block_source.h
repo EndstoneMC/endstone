@@ -106,7 +106,7 @@ public:
     virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
                                                     std::vector<AABB> *) = 0;
     virtual HitResult clip(Vec3 const &, Vec3 const &, bool, ShapeType, int, bool, bool, Actor *,
-                           std::function<bool(BlockSource const &, Block const &, bool)> const &) const = 0;
+                           std::function<bool(BlockSource const &, Block const &, bool)> const &, bool) const = 0;
     [[nodiscard]] virtual HitResult clip(const ClipParameters &) const = 0;
     virtual ChunkSource &getChunkSource() = 0;
     [[nodiscard]] virtual bool isSolidBlockingBlock(BlockPos const &) const = 0;

@@ -58,7 +58,7 @@ ItemStackBase::ItemStackBase(const ItemStackBase &rhs)
     block_ = rhs.block_;
     aux_value_ = rhs.aux_value_;
     if (block_ && aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
-        init(block_->getLegacyBlock(), rhs.count_);
+        init(block_->getBlockType(), rhs.count_);
     }
     else {
         int id;
@@ -124,7 +124,7 @@ ItemDescriptor ItemStackBase::getDescriptor() const
 {
     if (block_) {
         if (aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
-            return ItemDescriptor(block_->getLegacyBlock());
+            return ItemDescriptor(block_->getBlockType());
         }
         auto block_descriptor = ItemDescriptor(*block_);
         if (block_descriptor.getId() == getId()) {
@@ -390,7 +390,7 @@ std::int16_t ItemStackBase::getId() const
 
 bool ItemStackBase::isBlock() const
 {
-    return !item_.isNull() && !item_->getLegacyBlock().isNull();
+    return !item_.isNull() && !item_->getBlockType().isNull();
 }
 
 bool ItemStackBase::isValid_DeprecatedSeeComment() const
@@ -504,7 +504,7 @@ void ItemStackBase::init(const BlockType &block, const int count)
 
 void ItemStackBase::init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap)
 {
-    const auto &block_legacy = item.getLegacyBlock();
+    const auto &block_legacy = item.getBlockType();
     const auto id = item.getId();
     if (!block_legacy.isNull()) {
         if (id < ItemRegistry::START_ITEM_ID) {
@@ -519,7 +519,7 @@ void ItemStackBase::init(const Item &item, int count, int aux_value, const Compo
                     init(*block_legacy, count);
                 }
                 else {
-                    init(block_->getLegacyBlock(), count);
+                    init(block_->getBlockType(), count);
                 }
             }
         }
@@ -572,7 +572,7 @@ void ItemStackBase::_checkForItemWorldCompatibility()
         compatible = item_->getRequiredBaseGameVersion().isCompatibleWith(world_version);
     }
     else if (block_) {
-        compatible = block_->getLegacyBlock().getRequiredBaseGameVersion().isCompatibleWith(world_version);
+        compatible = block_->getBlockType().getRequiredBaseGameVersion().isCompatibleWith(world_version);
     }
 
     if (!compatible) {

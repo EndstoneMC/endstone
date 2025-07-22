@@ -124,7 +124,7 @@ size_t InternalItemDescriptor::getHash() const
 ItemDescriptor::ItemDescriptor(const Block &block)
 {
     const auto registry_ref = ItemRegistryManager::getItemRegistry();
-    const auto block_item_id = block.getLegacyBlock().getBlockItemId();
+    const auto block_item_id = block.getBlockType().getBlockItemId();
     if (auto item = registry_ref.getItem(block_item_id); !item.isNull()) {
         impl_ = std::make_unique<InternalItemDescriptor>(std::move(item), block.data_);
     }
@@ -228,7 +228,7 @@ const Block *ItemDescriptor::ItemEntry::getBlock() const
     if (!item) {
         return nullptr;
     }
-    const auto &block_legacy = item->getLegacyBlock();
+    const auto &block_legacy = item->getBlockType();
     if (block_legacy.isNull()) {
         return nullptr;
     }

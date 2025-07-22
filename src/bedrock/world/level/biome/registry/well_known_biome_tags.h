@@ -48,5 +48,7 @@ struct WellKnownBiomeTags {
     WellKnownTagID NO_LEGACY_WORLDGEN_TAG_ID;
     WellKnownTagID OVERWORLD_TAG_ID;
     WellKnownTagID FOREST_GEN_TAG_ID;
+    WellKnownTagID PALE_GARDEN_TAG_ID;
+    WellKnownTagID MEADOW_TAG_ID;
 };
-static_assert(sizeof(WellKnownBiomeTags) == 552);
+static_assert(sizeof(WellKnownBiomeTags) == 600);

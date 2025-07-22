@@ -168,6 +168,7 @@ enum class ActorType : int {
     OminousItemSpawner = 145,
     Creaking = 146 | Monster,
     HappyGhast = 147 | Animal,
+    CopperGolem = 148 | PathfinderMob,
 };
 
 constexpr ActorType operator&(const ActorType lhs, const ActorType rhs)

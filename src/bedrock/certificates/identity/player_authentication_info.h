@@ -16,6 +16,8 @@
 
 #include <string>
 
+#include "bedrock/platform/uuid.h"
+
 enum class PlayerAuthenticationType : int {
     Invalid = -1,
     Full = 0,

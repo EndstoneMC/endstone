@@ -17,6 +17,7 @@
 #include <memory>
 
 #include "bedrock/certificates/certificate.h"
+#include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/util/new_type.h"
 
 struct RawGameServerToken : NewType<std::string> {};
@@ -38,7 +39,7 @@ public:
 
     [[nodiscard]] bool isValid() const;
 
-    PlayerAuthenticationInfo getTrustedInfo() const;
+    [[nodiscard]] PlayerAuthenticationInfo getTrustedInfo() const;
 
 protected:
     GameServerToken(const std::string &);

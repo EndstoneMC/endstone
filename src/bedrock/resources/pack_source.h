@@ -15,8 +15,10 @@
 #pragma once
 
 #include <functional>
+#include <shared_mutex>
 
 #include "bedrock/core/resource/resource_helper.h"
+#include "bedrock/core/threading/lockbox.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/resources/content_key_provider.h"
@@ -58,6 +60,13 @@ struct PackSourceLoadOptions {
     Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> key_provider;
 };
 
+struct PackStorage {
+    PackSourcePacks packs;
+    PackSourceReport report;
+};
+
+class PackStorageContainer : public Bedrock::Threading::SharedLockbox<PackStorage, std::shared_timed_mutex> {};
+
 class PackSource : public Bedrock::EnableNonOwnerReferences {
 public:
     ~PackSource() override = default;
@@ -82,7 +91,7 @@ protected:
     gsl::not_null<std::unique_ptr<TaskGroup>> task_group_;
 
 private:
-    gsl::not_null<std::unique_ptr<class PackStorageContainer>> container_;
+    gsl::not_null<std::unique_ptr<PackStorageContainer>> container_;
 };
 
 struct DirectoryPackSourceOptions;

@@ -14,26 +14,15 @@
 
 #pragma once
 
-#include <cstdint>
-#include <string>
-
-#include "bedrock/bedrock.h"
-
-namespace mce {
-class UUID {
+namespace brstd::detail {
+template <typename Derived, typename UnderlyingContainer>
+class bitset_base {
 public:
-    static UUID EMPTY;
-    UUID() = default;
-    UUID(uint64_t high, uint64_t low);
-    [[nodiscard]] std::string asString() const;
-    bool operator==(const UUID &other) const = default;
-    bool operator!=(const UUID &other) const = default;
-    bool operator<(const UUID &other) const;
+    using underlying_container = UnderlyingContainer;
+    using underlying_type = UnderlyingContainer::value_type;
+    using size_type = UnderlyingContainer::size_type;
 
-    static bool canParse(std::string_view in);
-    static UUID fromString(std::string_view in);
-
-    std::uint64_t data[2]{0, 0};
+protected:
+    underlying_container container_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(UUID, 16, 16);
-}  // namespace mce
+};  // namespace brstd::detail

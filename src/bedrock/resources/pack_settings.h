@@ -15,8 +15,7 @@
 #pragma once
 
 #include <unordered_map>
-
-#include "bedrock/deps/json/value.h"
+#include <variant>
 
 class PackSettings {
     using UnorderedNameValueMap = std::unordered_map<std::string, std::variant<float, bool>>;

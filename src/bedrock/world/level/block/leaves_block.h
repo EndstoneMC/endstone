@@ -14,7 +14,7 @@
 
 #pragma once
 #include "bedrock/world/level/block/block_type.h"
-class LeavesBlock : public BlockLegacy {
+class LeavesBlock : public BlockType {
 public:
 protected:
     ENDSTONE_HOOK void _die(BlockSource &region, BlockPos const &pos) const;

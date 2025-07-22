@@ -13,10 +13,10 @@ version = "1.21.95"
 "?evictAll@BeehiveBlockActor@@QEAAXAEAVBlockSource@@_N@Z" = 52149104
 # BlockDescriptor
 "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 50230208
-# BlockLegacy
-"?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 50242096
+# BlockType
+"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z" = 50242096
 # BlockTypeRegistry
-"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockLegacy@@@Z$$A6A_N0@Z@brstd@@@Z" = 52399520
+"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 52399520
 # CampfireBlockActor
 "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 52190800
 # Command
@@ -125,10 +125,10 @@ version = "1.21.95"
 "_ZN17BeehiveBlockActor8evictAllER11BlockSourceb" = 151987936
 # BlockDescriptor
 "_ZN15BlockDescriptor13ResolveHelper7resolveEb" = 144826208
-# BlockLegacy
-"_ZNK11BlockLegacy25tryGetStateFromLegacyDataEt" = 144832592
+# BlockType
+"_ZNK9BlockType25tryGetStateFromLegacyDataEt" = 144832592
 # BlockTypeRegistry
-"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK11BlockLegacyES5_EE" = 149371744
+"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 149371744
 # CampfireBlockActor
 "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 152020144
 # Command

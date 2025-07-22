@@ -24,5 +24,3 @@ public:
     Flip getFaceFlip(FacingID, const Block &) const override;
     const Block &getPlacementBlock(const Actor &, const BlockPos &, FacingID, const Vec3 &, int) const override;
 };
-
-using ActorBlock = ActorBlockBase<BlockLegacy>;

@@ -208,7 +208,7 @@ class SurfaceBuilderRegistry;
 class SubpackInfoCollection;
 class TextFilteringProcessor;
 class TestPackSource;
-class TaskGroup;
+class TaskGroup {};
 class TickingAreaList;
 class TickingAreasManager;
 class TintMapColor;
@@ -228,7 +228,7 @@ struct SyncedClientOptionsComponent;
 // Enums
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
-enum BlockActorRendererId : unsigned int;
+enum BlockActorRendererId : std::uint8_t;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
 enum class BurnOdds;
