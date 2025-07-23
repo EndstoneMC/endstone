@@ -63,7 +63,7 @@ void BaseAttributeMap::_onAttributeModified(AttributeInstance const &instance)
     if (!attribute) {
         return;
     }
-    dirty_attributes_.push_back({this, attribute->getIDValue()});
+    dirty_attributes_.push_back({attribute->getIDValue()});
 }
 
 void BaseAttributeMap::_onAttributeModifiedDisabled(const AttributeInstance &instance) {}

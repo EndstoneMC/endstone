@@ -16,7 +16,6 @@
 
 class AttributeInstanceHandle {
 public:
-    BaseAttributeMap *attribute_map;
     std::uint32_t attribute_id;
 };
-BEDROCK_STATIC_ASSERT_SIZE(AttributeInstanceHandle, 16, 16);
+static_assert(sizeof(AttributeInstanceHandle) == 4);

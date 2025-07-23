@@ -14,23 +14,17 @@
 
 #pragma once
 
-#include "bedrock/shared_types/legacy/actor/deals_damage.h"
-#include "bedrock/symbol.h"
+#include "bedrock/world/attribute/attribute_instance.h"
+#include "bedrock/world/attribute/attribute_instance_delegate.h"
 
-using DealsDamage = SharedTypes::Legacy::DealsDamage;
-
-struct DamageSensorTrigger {};
-
-class DamageSensorComponent {
+class Mob;
+class HealthAttributeDelegate : public AttributeInstanceDelegate {
 public:
-    DamageSensorComponent();
-    DealsDamage recordGenericDamageAndCheckIfDealt(Actor &owner, const ActorDamageSource &source, float damage,
-                                                   float pre_damage_health, VariantParameterList parameters,
-                                                   bool will_trigger);
+    HealthAttributeDelegate(const AttributeInstance &, Mob *);
+    ENDSTONE_HOOK float change(float old_value, float new_value, const AttributeBuff &buff) override;
 
 private:
-    int damage_amount_;
-    bool damage_is_fatal_;
-    int damage_cause_;
-    std::vector<DamageSensorTrigger> triggers_;
+    std::int32_t tick_counter_;  // +12
+    Mob *mob_;                   // +16
 };
+static_assert(sizeof(HealthAttributeDelegate) == 32);
