@@ -5,11 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.10.0 (Unreleased)]
+## 0.10.0 (Unreleased)
+
+<small>[Compare with 0.9](https://github.com/EndstoneMC/endstone/compare/v0.9...main)</small>
 
 ### Added
 
-- Added `ItemStack::getData` and `ItemStack#setData` methods for accessing item data values.
+- Added `ItemStack::getData` and `ItemStack::setData` methods for accessing item data values.
 - Added ability to register commands as console-only by setting `console` in the `default` field.
 - Added `LeavesDecayEvent` by @killcerr.
 - Added `PlayerItemHeldEvent` by @killcerr.
@@ -19,6 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `Server::getProtocolVersion` to retrieve the supported network protocol version.
 - Added `PlayerEmoteEvent::setMuted` to suppress server broadcasts for player emotes.
 - Added `PlayerSkinChangeEvent`, triggered when a player changes their in-game skin.
+- Added `Player::getEnderChest` to get a player’s Ender Chest inventory.
+- Added `Item` entity for dropped items.
 
 ### Changed
 
@@ -26,10 +30,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `PlayerEmoteEvent` is now cancellable, cancelling prevents broadcasting to other players.
 - `PlayerJoinEvent` and `PlayerQuitEvent` now support `Translatable` messages.
 - Player bans and IP bans are now checked before the server sends resource packs to clients.
+- `PlayerPickupItemEvent::getItem()` now returns an `Item` entity instead of an `ItemStack`.
+- **BREAKING CHANGE (Python API)**: `Button` class has been moved from the `ActionForm` class to the `endstone.form`
+  module.
 
 ### Fixed
 
 - `PlayerKickEvent` no longer triggers when `PlayerLoginEvent` is cancelled.
+- Input (`stdin`) can now be passed down from a parent process when Endstone is running as a subprocess.
+- `ActorDamageEvent` now respects the invulnerable time after hurt and will be triggered by damage from a potion.
 
 ## 0.9.5
 
