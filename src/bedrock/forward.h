@@ -148,6 +148,7 @@ class MinecraftGameTest;
 class MobAnimationComponent;
 class MobHurtTimeComponent;
 class MolangVariable;
+class MoveInputComponent;
 class NavigationComponent;
 class NetworkChunkPublisher;
 class NetworkSessionOwner;

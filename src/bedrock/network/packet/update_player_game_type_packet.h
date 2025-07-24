@@ -17,9 +17,27 @@
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/player_input_tick.h"
 
-class UpdatePlayerGameTypePacket : public Packet {
-public:
+struct UpdatePlayerGameTypePacketInfo {
+    static constexpr char *const PACKET_NAME;
+    static constexpr MinecraftPacketIds PACKET_ID = MinecraftPacketIds::UpdatePlayerGameType;
+    static constexpr char *const PAYLOAD_NAME;
+    static constexpr char *const PACKET_SUMMARY;
+    static constexpr char *const PACKET_DETAILS;
+    static constexpr SerializationMode DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
+    static constexpr Compressibility COMPRESSIBILITY = Compressibility::Compressible;
+};
+
+struct UpdatePlayerGameTypePacketPayload {
+    UpdatePlayerGameTypePacketPayload();
+    UpdatePlayerGameTypePacketPayload(GameType, const ActorUniqueID &, uint64_t);
+
     GameType player_game_type;
     ActorUniqueID target_player;
-    PlayerInputTick tick;  // Endstone: private -> public
+    PlayerInputTick tick;
+};
+
+class UpdatePlayerGameTypePacket
+    : public SerializedPayloadPacket<UpdatePlayerGameTypePacketInfo, UpdatePlayerGameTypePacketPayload> {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
 };
