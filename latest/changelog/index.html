@@ -2125,13 +2125,13 @@ For latest updates join the chat on
         <li class="md-nav__item">
     <a href="#0100-unreleased" class="md-nav__link">
       <span class="md-ellipsis">
-        [0.10.0 (Unreleased)]
+        0.10.0 (Unreleased)
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="[0.10.0 (Unreleased)]">
+    <nav class="md-nav" aria-label="0.10.0 (Unreleased)">
         <ul class="md-nav__list">
             
                 
@@ -3002,13 +3002,13 @@ For latest updates join the chat on
         <li class="md-nav__item">
     <a href="#0100-unreleased" class="md-nav__link">
       <span class="md-ellipsis">
-        [0.10.0 (Unreleased)]
+        0.10.0 (Unreleased)
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="[0.10.0 (Unreleased)]">
+    <nav class="md-nav" aria-label="0.10.0 (Unreleased)">
         <ul class="md-nav__list">
             
                 
@@ -3878,10 +3878,11 @@ For latest updates join the chat on
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2 id="0100-unreleased">[0.10.0 (Unreleased)]<a class="headerlink" href="#0100-unreleased" title="Permanent link">&para;</a></h2>
+<h2 id="0100-unreleased">0.10.0 (Unreleased)<a class="headerlink" href="#0100-unreleased" title="Permanent link">&para;</a></h2>
+<p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.9...main">Compare with 0.9</a></small></p>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Added <code>ItemStack::getData</code> and <code>ItemStack#setData</code> methods for accessing item data values.</li>
+<li>Added <code>ItemStack::getData</code> and <code>ItemStack::setData</code> methods for accessing item data values.</li>
 <li>Added ability to register commands as console-only by setting <code>console</code> in the <code>default</code> field.</li>
 <li>Added <code>LeavesDecayEvent</code> by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/killcerr" title="GitHub User: killcerr">@killcerr</a>.</li>
 <li>Added <code>PlayerItemHeldEvent</code> by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/killcerr" title="GitHub User: killcerr">@killcerr</a>.</li>
@@ -3891,6 +3892,8 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Added <code>Server::getProtocolVersion</code> to retrieve the supported network protocol version.</li>
 <li>Added <code>PlayerEmoteEvent::setMuted</code> to suppress server broadcasts for player emotes.</li>
 <li>Added <code>PlayerSkinChangeEvent</code>, triggered when a player changes their in-game skin.</li>
+<li>Added <code>Player::getEnderChest</code> to get a player’s Ender Chest inventory.</li>
+<li>Added <code>Item</code> entity for dropped items.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3898,10 +3901,15 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><code>PlayerEmoteEvent</code> is now cancellable, cancelling prevents broadcasting to other players.</li>
 <li><code>PlayerJoinEvent</code> and <code>PlayerQuitEvent</code> now support <code>Translatable</code> messages.</li>
 <li>Player bans and IP bans are now checked before the server sends resource packs to clients.</li>
+<li><code>PlayerPickupItemEvent::getItem()</code> now returns an <code>Item</code> entity instead of an <code>ItemStack</code>.</li>
+<li><strong>BREAKING CHANGE (Python API)</strong>: <code>Button</code> class has been moved from the <code>ActionForm</code> class to the <code>endstone.form</code>
+  module.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>PlayerKickEvent</code> no longer triggers when <code>PlayerLoginEvent</code> is cancelled.</li>
+<li>Input (<code>stdin</code>) can now be passed down from a parent process when Endstone is running as a subprocess.</li>
+<li><code>ActorDamageEvent</code> now respects the invulnerable time after hurt and will be triggered by damage from a potion.</li>
 </ul>
 <h2 id="095">0.9.5<a class="headerlink" href="#095" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.9.4...v0.9.6">Compare with 0.9.4</a></small></p>
