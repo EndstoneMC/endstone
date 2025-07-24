@@ -3,7 +3,7 @@
 # @legitbox here! this file enters the virtual environment and starts endstone, if the software crashes or stops, it autorestarts itself
 
 # Define the virtual environment directory
-VENV_DIR="$HOME/venv"
+VENV_DIR="$HOME/.virtualenvs/endstone"
 
 # ASCII Art
 echo -e "\e[0;33m"
