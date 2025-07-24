@@ -16,6 +16,11 @@
 
 #include "bedrock/crypto/encoding/base64.h"
 
+const PlayerAuthenticationInfo &ConnectionRequest::getAuthenticationInfo() const
+{
+    return authentication_info_;
+}
+
 std::string ConnectionRequest::getSkinId() const
 {
     return getData("SkinId").asString();
@@ -81,11 +86,6 @@ std::string ConnectionRequest::getDeviceId() const
 std::string ConnectionRequest::getLanguageCode() const
 {
     return getData("LanguageCode").asString();
-}
-
-const LegacyMultiplayerToken &ConnectionRequest::getLegacyMultiplayerToken() const
-{
-    return legacy_multiplayer_token_;
 }
 
 Json::Value ConnectionRequest::getData(const std::string &key) const

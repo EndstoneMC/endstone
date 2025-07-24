@@ -140,4 +140,11 @@ enum class DisconnectFailReason : int {
     FailedToJoinExperience = 121,
     NetherNetDataChannelClosed = 122,
 };
+
+enum class DisconnectionStage : unsigned int {
+    Unknown = 0,
+    InitialConnection = 1,
+    ClientDisconnection = 2,
+    ServerDisconnection = 3,
+};
 };  // namespace Connection

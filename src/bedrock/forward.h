@@ -325,6 +325,11 @@ namespace MovementDataExtractionUtility {
 class SnapshotAccessor;
 }
 
+class PacketGroupDefinition {
+public:
+    struct PacketGroupBuilder;
+};
+
 // Template Classes
 template <typename A, typename B, typename C>
 class OwnerPtrFactory;
