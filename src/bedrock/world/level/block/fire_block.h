@@ -15,10 +15,10 @@
 #pragma once
 
 #include "bedrock/util/randomize.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_source.h"
 
-class FireBlock : public BlockLegacy {
+class FireBlock : public BlockType {
 public:
     static constexpr int NEIGHBOR_UPDATE_TICK_DELAY = 3;
     static constexpr int CARDINAL_DIRECTION_BURN_CHANCE = 300;
@@ -32,6 +32,6 @@ private:
     bool _trySpawnSoulFire(BlockSource &, const BlockPos &) const;
     void _tryEvictBeehive(BlockSource &region, const BlockPos &block_pos) const;
     void _tryAddToTickingQueue(BlockSource &, const BlockPos &, Random &) const;
-    bool isValidFireLocation(BlockSource & region, const BlockPos & pos) const;
-    float getFireOdds(BlockSource & region, const BlockPos & pos) const;
+    bool isValidFireLocation(BlockSource &region, const BlockPos &pos) const;
+    float getFireOdds(BlockSource &region, const BlockPos &pos) const;
 };

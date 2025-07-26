@@ -30,8 +30,8 @@ public:
     bool operator!=(const UUID &other) const = default;
     bool operator<(const UUID &other) const;
 
-    static bool canParse(const std::string &in);
-    static UUID fromString(const std::string &in);
+    static bool canParse(std::string_view in);
+    static UUID fromString(std::string_view in);
 
     std::uint64_t data[2]{0, 0};
 };

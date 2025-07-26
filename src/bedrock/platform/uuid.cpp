@@ -51,7 +51,7 @@ bool UUID::operator<(const UUID &other) const
     return data[0] < other.data[0];
 }
 
-bool UUID::canParse(const std::string &in)
+bool UUID::canParse(std::string_view in)
 {
     // Compact form: 32 hex digits
     if (in.size() == 32) {
@@ -80,7 +80,7 @@ bool UUID::canParse(const std::string &in)
     return false;
 }
 
-UUID UUID::fromString(const std::string &in)
+UUID UUID::fromString(std::string_view in)
 {
     if (!canParse(in)) {
         return UUID::EMPTY;

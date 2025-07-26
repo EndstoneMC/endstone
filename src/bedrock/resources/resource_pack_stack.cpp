@@ -24,7 +24,7 @@ PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int s
 
 const PackManifest &PackInstance::getManifest() const
 {
-    static PackManifest empty_manifest;
+    static PackManifest empty_manifest(ManifestType::Pack);
     if (!pack_) {
         return empty_manifest;
     }

@@ -103,7 +103,7 @@ enum class BlockProperty : std::uint64_t {
     _entt_enum_as_bitmask
 };
 
-class BlockLegacy {
+class BlockType {
 public:
     struct NameInfo {
         HashedString raw_name;             // +0
@@ -120,9 +120,9 @@ public:
     static constexpr int TILE_NUM_SHIFT = 12;
     static constexpr int NUM_LEGACY_BLOCK_TYPES = 512;
 
-    BlockLegacy(const std::string &, int, const Material &);
+    BlockType(const std::string &, int, const Material &);
 
-    virtual ~BlockLegacy() = 0;
+    virtual ~BlockType() = 0;
     [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;
     [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
@@ -203,7 +203,7 @@ public:
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
     virtual void updateEntityAfterFallOn(BlockPos const &, UpdateEntityAfterFallOnInterface &) const = 0;
     [[nodiscard]] virtual bool isBounceBlock() const = 0;
-    [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockLegacy const *) const = 0;
+    [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockType const *) const = 0;
     [[nodiscard]] virtual bool isFilteredOut(BlockRenderLayer) const = 0;
     [[nodiscard]] virtual bool canRenderSelectionOverlay(BlockRenderLayer) const = 0;
     [[nodiscard]] virtual bool ignoreEntitiesOnPistonMove(Block const &) const = 0;
@@ -265,7 +265,7 @@ public:
     [[nodiscard]] virtual Flip getFaceFlip(FacingID, Block const &) const = 0;
     virtual void animateTickBedrockLegacy(BlockSource &, BlockPos const &, Random &) const = 0;
     virtual void animateTick(BlockSource &, BlockPos const &, Random &) const = 0;
-    [[nodiscard]] virtual BlockLegacy &init() = 0;
+    [[nodiscard]] virtual BlockType &init() = 0;
     [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     [[nodiscard]] virtual Block const *tryLegacyUpgrade(DataID) const = 0;
     [[nodiscard]] virtual bool dealsContactDamage(Actor const &, Block const &, bool) const = 0;
@@ -430,8 +430,8 @@ public:
         {
             return block_state_;
         }
-        [[nodiscard]] virtual std::optional<int> getState(const BlockLegacy &, int) const = 0;
-        [[nodiscard]] virtual const Block *setState(const BlockLegacy &, int, int) const = 0;
+        [[nodiscard]] virtual std::optional<int> getState(const BlockType &, int) const = 0;
+        [[nodiscard]] virtual const Block *setState(const BlockType &, int, int) const = 0;
 
     protected:
         AlteredStateCollection(const BlockState &);

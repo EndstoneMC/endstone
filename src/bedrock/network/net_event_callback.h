@@ -38,8 +38,8 @@ public:
     virtual void onTick() = 0;
     virtual void onValidPacketReceived(const NetworkIdentifier &, MinecraftPacketIds, SubClientId, SubClientId) = 0;
     virtual void onStoreOfferReceive(ShowStoreOfferRedirectType, const std::string &) = 0;
-    virtual void onDisconnect(const NetworkIdentifier &, Connection::DisconnectFailReason, const std::string &, bool,
-                              const std::string &) = 0;
+    virtual void onDisconnect(const NetworkIdentifier &, Connection::DisconnectFailReason,
+                              Connection::DisconnectionStage, const std::string &, bool, const std::string &) = 0;
     virtual IncomingPacketFilterResult allowIncomingPacketId(const NetworkIdentifierWithSubId &, MinecraftPacketIds,
                                                              size_t) = 0;
     virtual OutgoingPacketFilterResult allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &,

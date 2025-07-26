@@ -20,9 +20,9 @@
 #include "bedrock/resources/pack_error.h"
 #include "bedrock/resources/pack_manifest.h"
 
-class IPackManifestFactory {
+class IPackManifestFactory : public Bedrock::EnableNonOwnerReferences {
 public:
-    virtual ~IPackManifestFactory() = 0;
+    ~IPackManifestFactory() override = default;
     virtual std::unique_ptr<PackManifest> create(PackAccessStrategy &access_strategy,
                                                  ResourceLocation const &resource_location, PackReport &report,
                                                  SubpackInfoCollection *subpack_info) = 0;

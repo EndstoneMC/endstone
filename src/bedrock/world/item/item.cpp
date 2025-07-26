@@ -49,9 +49,9 @@ const BaseGameVersion &Item::getRequiredBaseGameVersion() const
     return min_required_base_game_version_;
 }
 
-const WeakPtr<BlockLegacy> &Item::getLegacyBlock() const
+const WeakPtr<BlockType> &Item::getBlockType() const
 {
-    return legacy_block_;
+    return block_type_;
 }
 
 bool Item::hasTag(const ItemTag &tag) const

@@ -34,14 +34,14 @@ std::unordered_map<PackIdVersion, PackReport> const &PackSourceReport::getReport
 
 void PackSource::forEachPackConst(ConstPackCallback callback) const
 {
-    for (const auto &pack : packs_) {
+    for (const auto &pack : _getPacks()) {
         callback(*pack);
     }
 }
 
 void PackSource::forEachPack(PackCallback callback)
 {
-    for (const auto &pack : packs_) {
+    for (const auto &pack : _getPacks()) {
         callback(*pack);
     }
 }
@@ -51,17 +51,7 @@ void PackSource::_buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &
     out.emplace_back(this);
 }
 
-PackSource::PackSource(PackSourceOptions options) : io_(std::move(options.io)) {}
-
-void PackSource::_setPacks(PackSourcePacks &&packs)
-{
-    packs_ = std::move(packs);
-}
-
-void PackSource::_setReport(PackSourceReport &&report)
-{
-    report_ = std::move(report);
-}
+// PackSource::PackSource(PackSourceOptions options) : io_(std::move(options.io)) {}
 
 void CompositePackSource::addPackSource(PackSource *pack_source)
 {

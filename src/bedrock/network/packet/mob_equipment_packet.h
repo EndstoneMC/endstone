@@ -17,9 +17,23 @@
 #include <string>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/inventory_transaction_packet.h"
 
-class MobEquipmentPacket : public Packet {
+class MobEquipmentPacket : public InventoryPacket {
 public:
+    static constexpr bool SHARE_WITH_HANDLER = true;
+
+    MobEquipmentPacket();
+    MobEquipmentPacket(ActorRuntimeID, const ItemStack &, int, int, ContainerID);
+    MobEquipmentPacket(ActorRuntimeID, const NetworkItemStackDescriptor &, int, int, ContainerID);
+
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string getName() const override;
+    void handle(ServerPlayer &, BlockPalette &, const MoveInputComponent &, ActorRotationComponent &,
+                bool) const override;
+    [[nodiscard]] const ComplexInventoryTransaction *getComplexInventoryTransaction() const override;
+    void write(BinaryStream &) const override;
+
     ActorRuntimeID runtime_id;
     NetworkItemStackDescriptor item;
     int slot;

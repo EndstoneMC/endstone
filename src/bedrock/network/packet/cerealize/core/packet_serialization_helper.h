@@ -14,22 +14,8 @@
 
 #pragma once
 
-#include <string>
-
-#include "bedrock/network/packet.h"
-
-class AnimatePacket : public Packet {
-public:
-    enum class Action : int {
-        NoAction = 0,
-        Swing = 1,
-        WakeUp = 3,
-        CriticalHit = 4,
-        MagicCriticalHit = 5,
-    };
-
-    ActorRuntimeID runtime_id;
-    Action action;
-    float data;
+template <typename T, typename Tag>
+struct TypeWrapper : T {
+    TypeWrapper();
+    TypeWrapper(const T &);
 };
-static_assert(sizeof(AnimatePacket) == 64);

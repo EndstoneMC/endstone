@@ -34,7 +34,7 @@ void FireBlock::checkBurn(BlockSource &region, const BlockPos &pos, int chance, 
         return;
     }
 
-    if (!block.getLegacyBlock().anyOf(VanillaBlockTypeGroups::TntIds)) {
+    if (!block.getBlockType().anyOf(VanillaBlockTypeGroups::TntIds)) {
         // the block is NOT a TNT
         // TODO(event): call BlockBurnEvent, return if cancelled
         const auto &weather = region.getDimension().getWeather();

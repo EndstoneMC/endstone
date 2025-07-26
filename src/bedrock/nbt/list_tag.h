@@ -38,6 +38,7 @@ public:
     [[nodiscard]] std::size_t hash() const override;
     void print(const std::string &string, PrintStream &stream) const override;
 
+    [[nodiscard]] Type getType() const;
     void add(std::unique_ptr<Tag> tag);
     [[nodiscard]] Tag *get(int index) const;
     [[nodiscard]] float getFloat(int index) const;

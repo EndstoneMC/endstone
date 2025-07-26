@@ -62,11 +62,11 @@ Result<void> EndstoneBlock::setData(const BlockData &data, bool apply_physics)
 {
     const ::Block &block = static_cast<const EndstoneBlockData &>(data).getHandle();
     if (apply_physics) {
-        block_source_.get().setBlock(block_pos_, block, BlockLegacy::UPDATE_NEIGHBORS | BlockLegacy::UPDATE_CLIENTS,
+        block_source_.get().setBlock(block_pos_, block, BlockType::UPDATE_NEIGHBORS | BlockType::UPDATE_CLIENTS,
                                      nullptr, nullptr);
     }
     else {
-        block_source_.get().setBlock(block_pos_, block, BlockLegacy::UPDATE_CLIENTS, nullptr, nullptr);  // NETWORK
+        block_source_.get().setBlock(block_pos_, block, BlockType::UPDATE_CLIENTS, nullptr, nullptr);  // NETWORK
     }
     return {};
 }

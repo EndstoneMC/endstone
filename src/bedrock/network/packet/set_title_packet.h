@@ -18,9 +18,18 @@
 
 #include "bedrock/network/packet.h"
 
-class SetTitlePacket : public Packet {
-public:
-    enum class TitleType {
+struct SetTitlePacketInfo {
+    static constexpr char *const PACKET_NAME;
+    static constexpr MinecraftPacketIds PACKET_ID = MinecraftPacketIds::SetTitle;
+    static constexpr char *const PAYLOAD_NAME;
+    static constexpr char *const PACKET_SUMMARY;
+    static constexpr char *const PACKET_DETAILS;
+    static constexpr SerializationMode DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
+    static constexpr Compressibility COMPRESSIBILITY = Compressibility::Compressible;
+};
+
+struct SetTitlePacketPayload {
+    enum class TitleType : int {
         Clear = 0,
         Reset = 1,
         Title = 2,
@@ -29,15 +38,26 @@ public:
         Times = 5,
         TitleTextObject = 6,
         SubtitleTextObject = 7,
-        ActionbarTextObject = 8
+        ActionbarTextObject = 8,
     };
 
-    TitleType type;                                  // +48
-    std::string title_text;                          // +56
-    std::optional<std::string> filtered_title_text;  // +88
-    int fade_in_time;                                // +128
-    int stay_time;                                   // +132
-    int fade_out_time;                               // +136
-    std::string xuid;                                // +144
-    std::string platform_online_id;                  // +176
+    SetTitlePacketPayload();
+    SetTitlePacketPayload(TitleType);
+    SetTitlePacketPayload(TitleType, const std::string &, std::optional<std::string>);
+    SetTitlePacketPayload(TitleType, const ResolvedTextObject &);
+    SetTitlePacketPayload(int, int, int);
+
+    TitleType type;
+    std::string title_text;
+    std::string filtered_title_text;
+    int fade_in_time;
+    int stay_time;
+    int fade_out_time;
+    std::string xuid;
+    std::string platform_online_id;
+};
+
+class SetTitlePacket : public SerializedPayloadPacket<SetTitlePacketInfo, SetTitlePacketPayload> {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
 };

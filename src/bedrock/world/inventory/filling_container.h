@@ -42,7 +42,7 @@ public:
     const ItemStack &getItem(int) const override;
     int getMaxStackSize() const override;
     int getContainerSize() const override;
-    void startOpen(Player &) override;
+    void startOpen(Actor &) override;
     void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) override;
 
     [[nodiscard]] int getHotbarSize() const

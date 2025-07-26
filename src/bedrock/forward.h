@@ -149,6 +149,7 @@ class MinecraftGameTest;
 class MobAnimationComponent;
 class MobHurtTimeComponent;
 class MolangVariable;
+class MoveInputComponent;
 class NavigationComponent;
 class NetworkChunkPublisher;
 class NetworkSessionOwner;
@@ -209,7 +210,7 @@ class SurfaceBuilderRegistry;
 class SubpackInfoCollection;
 class TextFilteringProcessor;
 class TestPackSource;
-class TaskGroup;
+class TaskGroup {};
 class TickingAreaList;
 class TickingAreasManager;
 class TintMapColor;
@@ -229,7 +230,7 @@ struct SyncedClientOptionsComponent;
 // Enums
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
-enum BlockActorRendererId : unsigned int;
+enum BlockActorRendererId : std::uint8_t;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
 enum class BurnOdds;
@@ -325,6 +326,11 @@ class SpawnPlacements;
 namespace MovementDataExtractionUtility {
 class SnapshotAccessor;
 }
+
+class PacketGroupDefinition {
+public:
+    struct PacketGroupBuilder;
+};
 
 // Template Classes
 template <typename A, typename B, typename C>

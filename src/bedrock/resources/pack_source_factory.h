@@ -19,9 +19,9 @@
 #include "bedrock/resources/pack_command_pipeline.h"
 #include "bedrock/resources/pack_source.h"
 
-class IPackSourceFactory {
+class IPackSourceFactory : public Bedrock::EnableNonOwnerReferences {
 public:
-    virtual ~IPackSourceFactory() = default;
+    ~IPackSourceFactory() override = default;
 };
 
 class PackSourceFactory : public IPackSourceFactory {

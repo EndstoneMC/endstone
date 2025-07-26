@@ -106,7 +106,7 @@ add_library(bedrock STATIC
         world/level/block/bed_block.cpp
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
-        world/level/block/block_legacy.cpp
+        world/level/block/block_type.cpp
         world/level/block/campfire_block.cpp
         world/level/block/fire_block.cpp
         world/level/block/vanilla_block_type_ids.cpp
