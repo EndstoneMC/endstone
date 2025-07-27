@@ -19,13 +19,10 @@
 #include "bedrock/network/packet.h"
 
 struct SetTitlePacketInfo {
-    static constexpr char *const PACKET_NAME;
-    static constexpr MinecraftPacketIds PACKET_ID = MinecraftPacketIds::SetTitle;
-    static constexpr char *const PAYLOAD_NAME;
-    static constexpr char *const PACKET_SUMMARY;
-    static constexpr char *const PACKET_DETAILS;
-    static constexpr SerializationMode DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
-    static constexpr Compressibility COMPRESSIBILITY = Compressibility::Compressible;
+    static constexpr auto PACKET_NAME = "SetTitlePacket";
+    static constexpr auto PACKET_ID = MinecraftPacketIds::SetTitle;
+    static constexpr auto DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
+    static constexpr auto COMPRESSIBILITY = Compressibility::Compressible;
 };
 
 struct SetTitlePacketPayload {

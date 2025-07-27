@@ -21,11 +21,8 @@
 #include "bedrock/network/packet/serialize/serialized_packet.h"
 
 struct DeathInfoPacketInfo {
-    static constexpr char *const PACKET_NAME;
-    static constexpr MinecraftPacketIds PACKET_ID = MinecraftPacketIds::DeathInfo;
-    static constexpr char *const PAYLOAD_NAME;
-    static constexpr char *const PACKET_SUMMARY;
-    static constexpr char *const PACKET_DETAILS;
+    static constexpr auto PACKET_NAME = "DeathInfoPacket";
+    static constexpr auto PACKET_ID = MinecraftPacketIds::DeathInfo;
     static constexpr SerializationMode DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
     static constexpr Compressibility COMPRESSIBILITY = Compressibility::Compressible;
 };
