@@ -43,7 +43,10 @@ public:
     [[nodiscard]] float getAmount() const;
     [[nodiscard]] AttributeBuffType getType() const;
     [[nodiscard]] ActorDamageCause getCause() const;
-    [[nodiscard]] const ActorDamageSource &getSource() const;
+    [[nodiscard]] const ActorDamageSource &getSource() const
+    {
+        return *source_;
+    }
     bool operator==(const AttributeBuff &) const;
     void setValueAmplifier(std::shared_ptr<Amplifier>);
     void setAmplificationAmount(int, float);

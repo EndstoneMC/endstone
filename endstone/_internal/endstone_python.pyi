@@ -3206,12 +3206,12 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     Called when a player dies
     """
     @property
-    def death_message(self) -> str:
+    def death_message(self) -> str | Translatable | None:
         """
         Gets or sets the death message that will appear to everyone on the server.
         """
     @death_message.setter
-    def death_message(self, arg1: str) -> None:
+    def death_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """

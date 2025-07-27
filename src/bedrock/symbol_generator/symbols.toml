@@ -1,4 +1,4 @@
-timestamp = 1752655123
+timestamp = 1753356180
 version = "1.21.95"
 
 [windows]
@@ -37,10 +37,10 @@ version = "1.21.95"
 "?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 8612480
 # CraftingDataPacket
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 17524672
-# DamageSensorComponent
-"?recordGenericDamageAndCheckIfDealt@DamageSensorComponent@@QEAA?AW4DealsDamage@Legacy@SharedTypes@@AEAVActor@@AEBVActorDamageSource@@MMUVariantParameterList@@_N@Z" = 12383104
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 53401840
+# HealthAttributeDelegate
+"?change@HealthAttributeDelegate@@UEAAMMMAEBVAttributeBuff@@@Z" = 44235328
 # ItemRegistry
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 44412320
 # ItemStackBase
@@ -59,7 +59,6 @@ version = "1.21.95"
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 16708736
 # Mob
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 42090544
-"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 42086848
 # NetworkConnection
 "?receivePacket@NetworkConnection@@QEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z" = 16658784
 # NetworkSystem
@@ -149,10 +148,10 @@ version = "1.21.95"
 "_ZN6Common20getGameVersionStringEv" = 73489184
 # CraftingDataPacket
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 95750736
-# DamageSensorComponent
-"_ZN21DamageSensorComponent34recordGenericDamageAndCheckIfDealtER5ActorRK17ActorDamageSourceff20VariantParameterListb" = 79785760
 # FurnaceBlockActor
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 151827056
+# HealthAttributeDelegate
+"_ZN23HealthAttributeDelegate6changeEffRK13AttributeBuff" = 135770912
 # ItemRegsitry
 "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 138085904
 # ItemStackBase
@@ -171,7 +170,6 @@ version = "1.21.95"
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 96646864
 # Mob
 "_ZN3Mob9knockbackEP5Actorifffff" = 129077056
-"_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 129073808
 # NetworkConnection
 "_ZN17NetworkConnection13receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE" = 96630704
 # NetworkSystem

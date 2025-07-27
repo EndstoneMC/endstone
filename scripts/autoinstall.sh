@@ -4,7 +4,7 @@
 
 
 # Define the virtual environment directory
-VENV_DIR="$HOME/venv"
+VENV_DIR="$HOME/.virtualenvs/endstone"
 
 # ASCII Art
 echo -e "\e[0;33m"

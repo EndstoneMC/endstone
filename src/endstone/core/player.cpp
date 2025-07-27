@@ -761,7 +761,9 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                                for (const auto &controls = form.getControls(); const auto &control : controls) {
                                    if (std::holds_alternative<Button>(control)) {
                                        if (index == selection) {
-                                           std::get<Button>(control).getOnClick()(this);
+                                           if (const auto on_click = std::get<Button>(control).getOnClick()) {
+                                               on_click(this);
+                                           }
                                            break;
                                        }
                                        ++index;

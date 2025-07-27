@@ -54,15 +54,13 @@ bool handleEvent(const PlayerDamageEvent &event)
 
             // Fire player death event
             auto death_cause_message = event.damage_source->getDeathMessage(player->getName(), player);
-            auto death_message = getI18n().get(death_cause_message.first, death_cause_message.second, nullptr);
+            endstone::Message death_message =
+                endstone::Translatable(death_cause_message.first, death_cause_message.second);
             const auto e = std::make_unique<endstone::PlayerDeathEvent>(
                 endstone_player, std::make_unique<endstone::core::EndstoneDamageSource>(*event.damage_source),
                 death_message);
             server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
-            if (e->getDeathMessage() != death_message) {
-                death_cause_message.first = e->getDeathMessage();
-                death_cause_message.second.clear();
-            }
+            death_message = e->getDeathMessage().value_or("");
 
             // Send death info
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
@@ -70,17 +68,11 @@ bool handleEvent(const PlayerDamageEvent &event)
             pk->payload.death_cause_message = death_cause_message;
             player->sendNetworkPacket(*packet);
 
-            // Log death message to console if not empty
-            if (e->getDeathMessage().empty()) {
-                return true;
-            }
-
             // Broadcast death messages
-            if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false)) {
-                server.broadcastMessage(endstone::Translatable{death_cause_message.first, death_cause_message.second});
-            }
-            else {
-                server.getLogger().info(e->getDeathMessage());
+            if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false) &&
+                (!std::holds_alternative<std::string>(death_message) ||
+                 !std::get<std::string>(death_message).empty())) {
+                server.broadcastMessage(death_message);
             }
         }
     }

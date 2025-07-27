@@ -30,6 +30,8 @@ class EndstoneServerNetworkEventHandler;
 }  // namespace core
 }  // namespace endstone
 
+using AttributeMessageType = int64_t;
+
 // Classes
 class ActionQueue;
 class ActorAnimationControllerGroup;
@@ -45,7 +47,6 @@ class ActorFactory;
 class ActorInteraction;
 class ActorSpawnRuleGroup;
 class ActorUnloadedChunkTransferEntry;
-class AdventureSettings;
 class AllowList;
 class AnimationComponent;
 class AppConfigs;
