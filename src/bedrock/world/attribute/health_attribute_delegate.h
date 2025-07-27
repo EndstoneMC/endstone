@@ -24,7 +24,7 @@ public:
     ENDSTONE_HOOK float change(float old_value, float new_value, const AttributeBuff &buff) override;
 
 private:
-    std::int32_t tick_counter_;  // +12
-    Mob *mob_;                   // +16
+    std::int32_t tick_counter_;
+    Mob *mob_;
 };
-static_assert(sizeof(HealthAttributeDelegate) == 32);
+BEDROCK_STATIC_ASSERT_SIZE(HealthAttributeDelegate, 32, 24);
