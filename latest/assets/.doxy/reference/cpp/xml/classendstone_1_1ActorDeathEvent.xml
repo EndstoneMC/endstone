@@ -68,7 +68,6 @@
         <name>getEventName</name>
         <qualifiedname>endstone::ActorDeathEvent::getEventName</qualifiedname>
         <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
-        <reimplementedby refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0">getEventName</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

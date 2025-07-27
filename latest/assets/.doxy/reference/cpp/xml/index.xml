@@ -1239,13 +1239,11 @@
     <member refid="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" kind="function"><name>setCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
-    <member refid="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a8d43b4af4294e73278d0d88b27a8ad03" kind="variable"><name>death_message_</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1af523e0468d3f29577029c070abf498c4" kind="function"><name>PlayerDeathEvent</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a5babbc8a8524edf5b68b86c9e9d21380" kind="function"><name>~PlayerDeathEvent</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" kind="function"><name>getEventName</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1ac76e5c152bc08891e8ecf76802c66682" kind="function"><name>getDeathMessage</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" kind="function"><name>setDeathMessage</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a6480e2399396eaa3fb8ed7bfcb56da21" kind="variable"><name>death_message_</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a65fb428be5bdb70e91101198e73416dd" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a3104f4d23f97f8c6231b5b6be585d18e" kind="function"><name>PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" kind="function"><name>getDeathMessage</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" kind="function"><name>setDeathMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerDropItemEvent" kind="class"><name>endstone::PlayerDropItemEvent</name>
     <member refid="classendstone_1_1PlayerDropItemEvent_1a21dea382f8e0ffcea0b348b6834dfe85" kind="variable"><name>drop_</name></member>
@@ -1337,11 +1335,9 @@
     <member refid="classendstone_1_1PlayerItemHeldEvent_1a73d70b44a39f70b1a253d4f4ff3a4b7f" kind="function"><name>getNewSlot</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerJoinEvent" kind="class"><name>endstone::PlayerJoinEvent</name>
-    <member refid="classendstone_1_1PlayerJoinEvent_1a7f02575361267d031b100a8b132e0d06" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1a8874cd603a6d3ab0f294f728acb8373c" kind="variable"><name>join_message_</name></member>
+    <member refid="classendstone_1_1PlayerJoinEvent_1a8d98db7f36578c9563fa158defc791f1" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1a57649db75a39610202ffecf345d4e09b" kind="function"><name>PlayerJoinEvent</name></member>
-    <member refid="classendstone_1_1PlayerJoinEvent_1ab2bf0af5f74f7be8fcbbcf4d436b387a" kind="function"><name>~PlayerJoinEvent</name></member>
-    <member refid="classendstone_1_1PlayerJoinEvent_1a7eb6abb31fececc05830dc7d2fb0dc75" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1af6a9da33988a5734a055434ba384faeb" kind="function"><name>getJoinMessage</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1a63594b91d25a768fef8edcd5ca24bd93" kind="function"><name>setJoinMessage</name></member>
   </compound>
@@ -1350,11 +1346,9 @@
     <member refid="classendstone_1_1PlayerJumpEvent_1a8a1cf3638b2074e1d7845129adbbfed5" kind="function"><name>PlayerMoveEvent</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerKickEvent" kind="class"><name>endstone::PlayerKickEvent</name>
-    <member refid="classendstone_1_1PlayerKickEvent_1a3ad9fb66f559d36fb0e5940a5664b9dc" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerKickEvent_1ac8c658cd31eeb3b8aaef769927a88459" kind="variable"><name>reason_</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1a4a3007cd7b33e2f92890279d9547b988" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1PlayerKickEvent_1a26c23c662f6234317eda7faf454c8ff5" kind="function"><name>PlayerKickEvent</name></member>
-    <member refid="classendstone_1_1PlayerKickEvent_1af46ef160d35cf3f8d0930a8077c68a00" kind="function"><name>~PlayerKickEvent</name></member>
-    <member refid="classendstone_1_1PlayerKickEvent_1aa1641ce45a84ef3d8c2fbd9d36b9bd9d" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerKickEvent_1a8421ba745037cb00ef5fc333d43a790b" kind="function"><name>getReason</name></member>
     <member refid="classendstone_1_1PlayerKickEvent_1a43bcc4f3ba93c059fc4e7f524c7d4888" kind="function"><name>setReason</name></member>
   </compound>
@@ -1384,11 +1378,9 @@
     <member refid="classendstone_1_1PlayerPickupItemEvent_1af2e2a3c35dde44219709a5303569979c" kind="function"><name>getItem</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerQuitEvent" kind="class"><name>endstone::PlayerQuitEvent</name>
-    <member refid="classendstone_1_1PlayerQuitEvent_1a9a422070fcabd4719e3c1711af48fbcb" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1ae70ebd19593a4a08fee645106ba8678a" kind="variable"><name>quit_message_</name></member>
+    <member refid="classendstone_1_1PlayerQuitEvent_1a4cafa40ad32d17a9df4dd202ca3bb58c" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1ac6ffac80709929a051bd364c84dd65ce" kind="function"><name>PlayerQuitEvent</name></member>
-    <member refid="classendstone_1_1PlayerQuitEvent_1a23ad697a0c345589396c5fc8c2ddbf18" kind="function"><name>~PlayerQuitEvent</name></member>
-    <member refid="classendstone_1_1PlayerQuitEvent_1aa34fac241269914a9d141d4f8f1f362b" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a1dc49d81c8a458e1a45d8d2c33f03f15" kind="function"><name>getQuitMessage</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a33ac4f643cbabfbaec170ba5ef88551a" kind="function"><name>setQuitMessage</name></member>
   </compound>

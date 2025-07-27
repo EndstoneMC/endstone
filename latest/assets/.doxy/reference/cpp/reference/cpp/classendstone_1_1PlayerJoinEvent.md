@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"PlayerJoinEvent"`<br> |
 
 
 
@@ -98,11 +93,10 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md)) <br> |
 |   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; Message &gt; join\_message) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  std::optional&lt; Message &gt; | [**getJoinMessage**](#function-getjoinmessage) () const<br>_Gets the join message to send to all online players._  |
 |  void | [**setJoinMessage**](#function-setjoinmessage) (std::optional&lt; Message &gt; message) <br>_Sets the join message to send to all online players._  |
-|   | [**~PlayerJoinEvent**](#function-playerjoinevent) () override<br> |
 
 
 ## Public Functions inherited from endstone::PlayerEvent
@@ -208,23 +202,23 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerJoinEvent::NAME;
+endstone::PlayerJoinEvent::ENDSTONE_EVENT (
+    PlayerJoinEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -238,35 +232,6 @@ inline explicit endstone::PlayerJoinEvent::PlayerJoinEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerJoinEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>
@@ -320,19 +285,6 @@ inline void endstone::PlayerJoinEvent::setJoinMessage (
 
 
         
-
-<hr>
-
-
-
-### function ~PlayerJoinEvent 
-
-```C++
-endstone::PlayerJoinEvent::~PlayerJoinEvent () override
-```
-
-
-
 
 <hr>
 

@@ -168,14 +168,10 @@
         <reimplementedby refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerChatEvent_1ac7473c18e7328d7fa402d49c143c152a">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerCommandEvent_1a64066f629ce1473239141c71c1177010">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PlayerJoinEvent_1a7eb6abb31fececc05830dc7d2fb0dc75">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PlayerKickEvent_1aa1641ce45a84ef3d8c2fbd9d36b9bd9d">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerLoginEvent_1a9593905e32bd292c3782ccc93190f92b">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PlayerQuitEvent_1aa34fac241269914a9d141d4f8f1f362b">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3">getEventName</reimplementedby>

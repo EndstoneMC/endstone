@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"PlayerQuitEvent"`<br> |
 
 
 
@@ -98,11 +93,10 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md)) <br> |
 |   | [**PlayerQuitEvent**](#function-playerquitevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; Message &gt; quit\_message) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  std::optional&lt; Message &gt; | [**getQuitMessage**](#function-getquitmessage) () const<br>_Gets the quit message to send to all online players._  |
 |  void | [**setQuitMessage**](#function-setquitmessage) (std::optional&lt; Message &gt; message) <br>_Sets the quit message to send to all online players._  |
-|   | [**~PlayerQuitEvent**](#function-playerquitevent) () override<br> |
 
 
 ## Public Functions inherited from endstone::PlayerEvent
@@ -208,23 +202,23 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerQuitEvent::NAME;
+endstone::PlayerQuitEvent::ENDSTONE_EVENT (
+    PlayerQuitEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -238,35 +232,6 @@ inline explicit endstone::PlayerQuitEvent::PlayerQuitEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerQuitEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>
@@ -320,19 +285,6 @@ inline void endstone::PlayerQuitEvent::setQuitMessage (
 
 
         
-
-<hr>
-
-
-
-### function ~PlayerQuitEvent 
-
-```C++
-endstone::PlayerQuitEvent::~PlayerQuitEvent () override
-```
-
-
-
 
 <hr>
 

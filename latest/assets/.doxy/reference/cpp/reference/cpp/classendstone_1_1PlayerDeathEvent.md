@@ -65,11 +65,6 @@ Inherits the following classes: [endstone::ActorDeathEvent](classendstone_1_1Act
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"PlayerDeathEvent"`<br> |
 
 
 ## Public Static Attributes inherited from endstone::ActorDeathEvent
@@ -165,11 +160,10 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, std::string death\_message) <br> |
-|  const std::string & | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  void | [**setDeathMessage**](#function-setdeathmessage) (const std::string & death\_message) <br>_Set the death message that will appear to everyone on the server._  |
-|   | [**~PlayerDeathEvent**](#function-playerdeathevent) () override<br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md)) <br> |
+|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, std::optional&lt; Message &gt; death\_message) <br> |
+|  std::optional&lt; Message &gt; | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
+|  void | [**setDeathMessage**](#function-setdeathmessage) (std::optional&lt; Message &gt; death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 
 
 ## Public Functions inherited from endstone::ActorDeathEvent
@@ -389,23 +383,23 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerDeathEvent::NAME;
+endstone::PlayerDeathEvent::ENDSTONE_EVENT (
+    PlayerDeathEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -415,7 +409,7 @@ const std::string endstone::PlayerDeathEvent::NAME;
 inline explicit endstone::PlayerDeathEvent::PlayerDeathEvent (
     Player & player,
     std::unique_ptr< DamageSource > damage_source,
-    std::string death_message
+    std::optional< Message > death_message
 ) 
 ```
 
@@ -430,7 +424,7 @@ inline explicit endstone::PlayerDeathEvent::PlayerDeathEvent (
 
 _Get the death message that will appear to everyone on the server._ 
 ```C++
-inline const std::string & endstone::PlayerDeathEvent::getDeathMessage () const
+inline std::optional< Message > endstone::PlayerDeathEvent::getDeathMessage () const
 ```
 
 
@@ -451,41 +445,12 @@ Message to appear to other players on the server.
 
 
 
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerDeathEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::ActorDeathEvent::getEventName*](classendstone_1_1ActorDeathEvent.md#function-geteventname)
-
-
-<hr>
-
-
-
 ### function setDeathMessage 
 
 _Set the death message that will appear to everyone on the server._ 
 ```C++
 inline void endstone::PlayerDeathEvent::setDeathMessage (
-    const std::string & death_message
+    std::optional< Message > death_message
 ) 
 ```
 
@@ -502,19 +467,6 @@ inline void endstone::PlayerDeathEvent::setDeathMessage (
 
 
         
-
-<hr>
-
-
-
-### function ~PlayerDeathEvent 
-
-```C++
-endstone::PlayerDeathEvent::~PlayerDeathEvent () override
-```
-
-
-
 
 <hr>
 

@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"PlayerKickEvent"`<br> |
 
 
 
@@ -98,11 +93,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md)) <br> |
 |   | [**PlayerKickEvent**](#function-playerkickevent) ([**Player**](classendstone_1_1Player.md) & player, std::string reason) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  std::string | [**getReason**](#function-getreason) () const<br>_Gets the reason why the player is getting kicked._  |
 |  void | [**setReason**](#function-setreason) (std::string reason) <br>_Sets the reason why the player is getting kicked._  |
-|   | [**~PlayerKickEvent**](#function-playerkickevent) () override<br> |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -206,23 +200,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerKickEvent::NAME;
+endstone::PlayerKickEvent::ENDSTONE_EVENT (
+    PlayerKickEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -236,35 +230,6 @@ inline explicit endstone::PlayerKickEvent::PlayerKickEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerKickEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>
@@ -318,19 +283,6 @@ inline void endstone::PlayerKickEvent::setReason (
 
 
         
-
-<hr>
-
-
-
-### function ~PlayerKickEvent 
-
-```C++
-endstone::PlayerKickEvent::~PlayerKickEvent () override
-```
-
-
-
 
 <hr>
 

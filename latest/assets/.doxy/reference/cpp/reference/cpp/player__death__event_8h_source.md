@@ -31,31 +31,27 @@ namespace endstone {
 
 class PlayerDeathEvent : public ActorDeathEvent, public PlayerEvent {
 public:
-    explicit PlayerDeathEvent(Player &player, std::unique_ptr<DamageSource> damage_source, std::string death_message)
+    ENDSTONE_EVENT(PlayerDeathEvent);
+
+    explicit PlayerDeathEvent(Player &player, std::unique_ptr<DamageSource> damage_source,
+                              std::optional<Message> death_message)
         : ActorDeathEvent(player, std::move(damage_source)), PlayerEvent(player),
           death_message_(std::move(death_message))
     {
     }
-    ~PlayerDeathEvent() override = default;
 
-    inline static const std::string NAME = "PlayerDeathEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
-
-    [[nodiscard]] const std::string &getDeathMessage() const
+    [[nodiscard]] std::optional<Message> getDeathMessage() const
     {
         return death_message_;
     }
 
-    void setDeathMessage(const std::string &death_message)
+    void setDeathMessage(std::optional<Message> death_message)
     {
-        death_message_ = death_message;
+        death_message_ = std::move(death_message);
     }
 
 private:
-    std::string death_message_;
+    std::optional<Message> death_message_;
 
     // TODO(event): new exp, new level, new total exp, keep level, keep inventory
 };
