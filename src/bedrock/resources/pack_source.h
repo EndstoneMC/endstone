@@ -72,7 +72,7 @@ public:
     ~PackSource() override = default;
     virtual void forEachPackConst(ConstPackCallback callback) const;
     virtual void forEachPack(PackCallback callback);
-    virtual void forEachPackShared(SharedPackCallback);
+    virtual void forEachPackShared(SharedPackCallback callback);
     [[nodiscard]] virtual PackOrigin getPackOrigin() const = 0;
     [[nodiscard]] virtual PackType getPackType() const = 0;
     virtual void _buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &);
@@ -81,14 +81,15 @@ protected:
     PackSource(PackSourceOptions options);
     virtual PackSourceLoadResult _loadImpl(PackSourceLoadOptions &&) = 0;
 
-    PackSourcePacks _getPacks() const;
+    [[nodiscard]] PackSourcePacks _getPacks() const;
     void _setPacks(PackSourcePacks &&packs);
     void _setReport(PackSourceReport &&report);
     void _addPack(std::shared_ptr<Pack> pack);
     bool _removePack(brstd::function_ref<bool(const Pack &)>);
 
     const gsl::not_null<std::unique_ptr<IPackIOProvider>> io_;
-    gsl::not_null<std::unique_ptr<TaskGroup>> task_group_;
+    // gsl::not_null<std::unique_ptr<TaskGroup>> task_group_;
+    std::unique_ptr<TaskGroup> task_group_;
 
 private:
     gsl::not_null<std::unique_ptr<PackStorageContainer>> container_;

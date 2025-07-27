@@ -39,7 +39,11 @@ public:
 
     virtual ~Biome() = 0;
 
-    [[nodiscard]] const std::string &getFullName() const;
+    [[nodiscard]] const std::string &getFullName() const
+    {
+        return hash.getString();
+    }
+
     [[nodiscard]] const std::string getNameWithoutNamespace() const;
 
     [[nodiscard]] BiomeIdType getId() const

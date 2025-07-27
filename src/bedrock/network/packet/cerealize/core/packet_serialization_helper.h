@@ -16,6 +16,6 @@
 
 template <typename T, typename Tag>
 struct TypeWrapper : T {
-    TypeWrapper();
-    TypeWrapper(const T &);
+    TypeWrapper() = default;
+    TypeWrapper(const T &) {}
 };

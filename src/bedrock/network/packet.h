@@ -294,9 +294,9 @@ public:
     [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
     [[nodiscard]] virtual std::string getName() const = 0;
     [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t packet_size, bool is_receiver_server) const;
-    virtual void writeWithSerializationMode(BinaryStream &, const cereal::ReflectionCtx &,
-                                            std::optional<SerializationMode>) const;
-    virtual void write(BinaryStream &, const cereal::ReflectionCtx &) const;
+    virtual void writeWithSerializationMode(BinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx,
+                                            std::optional<SerializationMode> mode) const;
+    virtual void write(BinaryStream & bit_stream, const cereal::ReflectionCtx & reflection_ctx) const;
     virtual void write(BinaryStream &) const = 0;
     virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &, const cereal::ReflectionCtx &);
     [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &stream);
@@ -315,7 +315,7 @@ public:
 private:
     friend class MinecraftPackets;
     friend class NetworkSystem;
-    virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &, const cereal::ReflectionCtx &);
+    virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream & bit_stream, const cereal::ReflectionCtx & reflection_ctx);
     [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
     PacketPriority priority_{PacketPriority::MEDIUM_PRIORITY};                         // + 8

@@ -46,12 +46,37 @@ void PackSource::forEachPack(PackCallback callback)
     }
 }
 
+void PackSource::forEachPackShared(SharedPackCallback callback)
+{
+    for (const auto &pack : _getPacks()) {
+        callback(pack);
+    }
+}
+
 void PackSource::_buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &out)
 {
     out.emplace_back(this);
 }
 
-// PackSource::PackSource(PackSourceOptions options) : io_(std::move(options.io)) {}
+PackSourcePacks PackSource::_getPacks() const
+{
+    return container_->lockShared([&](const PackStorage &storage) { return storage.packs; });
+}
+
+void PackSource::_setPacks(PackSourcePacks &&packs)
+{
+    container_->lockShared([&](PackStorage &storage) { storage.packs = packs; });
+}
+
+void PackSource::_setReport(PackSourceReport &&report)
+{
+    container_->lockShared([&](PackStorage &storage) { storage.report = report; });
+}
+
+PackSource::PackSource(PackSourceOptions options)
+    : io_(std::move(options.io)), container_(std::make_unique<PackStorageContainer>())
+{
+}
 
 void CompositePackSource::addPackSource(PackSource *pack_source)
 {
