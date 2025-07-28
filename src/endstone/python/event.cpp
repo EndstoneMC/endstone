@@ -205,7 +205,14 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
-                      "Gets or sets the message that the player will send.");
+                      "Gets or sets the message that the player will send.")
+        .def_property("player", &PlayerChatEvent::getPlayer, &PlayerChatEvent::setPlayer,
+                      py::return_value_policy::reference, "Gets or sets the player that this message will display as")
+        .def_property("format", &PlayerChatEvent::getFormat, &PlayerChatEvent::setFormat,
+                      "Sets the format to use to display this chat message")
+        .def_property_readonly("recipients", &PlayerChatEvent::getRecipients,
+                               py::return_value_policy::reference_internal,
+                               "Gets a set of recipients that this chat message will be displayed to");
     py::class_<PlayerCommandEvent, PlayerEvent, ICancellable>(m, "PlayerCommandEvent",
                                                               "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
