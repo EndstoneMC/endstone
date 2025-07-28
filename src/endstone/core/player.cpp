@@ -105,8 +105,7 @@ void EndstonePlayer::sendErrorMessage(const Message &message) const
 
 std::string EndstonePlayer::getName() const
 {
-    // TODO(fixme): remove this
-    return EndstoneMob::getName();
+    return getPlayer().getName();
 }
 
 PermissionLevel EndstonePlayer::getPermissionLevel() const
