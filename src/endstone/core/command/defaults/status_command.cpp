@@ -56,20 +56,31 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
         sender.sendMessage("{}Uptime: {}{} seconds", ColorFormat::Gold, ColorFormat::Red, seconds);
     }
 
+    auto tps = server.getCurrentTicksPerSecond();
+    auto avg_tps = server.getAverageTicksPerSecond();
+
     auto tps_color = ColorFormat::Green;
-    if (server.getCurrentTicksPerSecond() < 12) {
+    if (tps < 12) {
         tps_color = ColorFormat::Red;
     }
-    else if (server.getCurrentTicksPerSecond() < 17) {
+    else if (tps < 17) {
         tps_color = ColorFormat::Gold;
     }
 
+    auto avg_tps_color = ColorFormat::Green;
+    if (avg_tps < 12) {
+        avg_tps_color = ColorFormat::Red;
+    }
+    else if (avg_tps < 17) {
+        avg_tps_color = ColorFormat::Gold;
+    }
+
     sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color,
-                       server.getCurrentTicksPerSecond(), server.getCurrentTickUsage() * 100, ColorFormat::Gold,
+                       tps, server.getCurrentTickUsage() * 100, ColorFormat::Gold,
                        tps_color, server.getCurrentMillisecondsPerTick());
-    sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color,
-                       server.getAverageTicksPerSecond(), server.getAverageTickUsage() * 100, ColorFormat::Gold,
-                       tps_color, server.getAverageMillisecondsPerTick());
+    sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, avg_tps_color,
+                       avg_tps, server.getAverageTickUsage() * 100, ColorFormat::Gold,
+                       avg_tps_color, server.getAverageMillisecondsPerTick());
 
     sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, detail::get_thread_count());
 
