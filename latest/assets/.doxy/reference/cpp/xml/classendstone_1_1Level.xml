@@ -138,7 +138,7 @@
 <parametername>name</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the name of the dimension to retrieve </para>
+<para>the name of the dimension to retrieve. For example, &quot;overworld&quot;, &quot;nether&quot; or &quot;the_end&quot;.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="72" column="24"/>
+        <location file="include/endstone/level/level.h" line="73" column="24"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -156,7 +156,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/level.h" line="27" column="1" bodyfile="include/endstone/level/level.h" bodystart="27" bodyend="73"/>
+    <location file="include/endstone/level/level.h" line="27" column="1" bodyfile="include/endstone/level/level.h" bodystart="27" bodyend="74"/>
     <listofallmembers>
       <member refid="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getActors</name></member>
       <member refid="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimension</name></member>

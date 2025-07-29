@@ -133,7 +133,7 @@ virtual Dimension * endstone::Level::getDimension (
 **Parameters:**
 
 
-* `name` the name of the dimension to retrieve 
+* `name` the name of the dimension to retrieve. For example, "overworld", "nether" or "the\_end".
 
 
 
