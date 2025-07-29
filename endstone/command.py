@@ -1,4 +1,5 @@
 from endstone._internal.endstone_python import (
+    BlockCommandSender,
     Command,
     CommandExecutor,
     CommandSender,
@@ -7,6 +8,7 @@ from endstone._internal.endstone_python import (
 )
 
 __all__ = [
+    "BlockCommandSender",
     "Command",
     "CommandExecutor",
     "CommandSender",
