@@ -67,6 +67,10 @@ struct polymorphic_type_hook<endstone::CommandSender> {
             type = &typeid(endstone::ConsoleCommandSender);
             return console;
         }
+        if (const auto *block = src->asBlock()) {
+            type = &typeid(endstone::BlockCommandSender);
+            return block;
+        }
         type = &typeid(endstone::CommandSender);
         return src;
     }

@@ -37,6 +37,7 @@ add_library(endstone_core
         block/block_face.cpp
         block/block_state.cpp
         boss/boss_bar.cpp
+        command/block_command_sender.cpp
         command/command_lexer.cpp
         command/command_map.cpp
         command/command_origin_wrapper.cpp

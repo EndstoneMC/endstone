@@ -33,13 +33,7 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
         throw std::runtime_error("Command not found");
     }
 
-    auto sender = origin.getEndstoneSender();
-    if (!sender) {
-        // Fallback to command origin via a wrapper for unsupported types
-        sender = std::make_shared<CommandOriginWrapper>(origin, output);
-        sender->recalculatePermissions();
-    }
-
+    auto sender = origin.getEndstoneSender(output);
     if (command->execute(*sender, args_)) {
         output.success();
     }
