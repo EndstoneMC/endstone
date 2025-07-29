@@ -99,10 +99,11 @@ Dimension *EndstoneLevel::getDimension(std::string name) const
 void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
 {
     auto name = dimension->getName();
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-    if (dimensions_.find(name) != dimensions_.end()) {
+    std::ranges::transform(name, name.begin(), ::tolower);
+    if (dimensions_.contains(name)) {
         server_.getLogger().error(
-            "Dimension {} is a duplicate of another dimension and has been prevented from loading.", name);
+            "Dimension {} is a duplicate of another dimension and has been prevented from loading.",
+            dimension->getName());
         return;
     }
     dimensions_[name] = std::move(dimension);
