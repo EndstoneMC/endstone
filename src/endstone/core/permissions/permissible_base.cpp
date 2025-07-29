@@ -194,9 +194,6 @@ std::unordered_set<PermissionAttachmentInfo *> PermissibleBase::getEffectivePerm
 
 CommandSender *PermissibleBase::asCommandSender() const
 {
-    if (opable_) {
-        return opable_->asCommandSender();
-    }
     return nullptr;
 }
 
