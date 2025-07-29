@@ -19,9 +19,7 @@
 
 namespace endstone::core {
 
-class EndstoneConsoleCommandSender : public ServerCommandSender,
-                                     public ConsoleCommandSender,
-                                     public std::enable_shared_from_this<EndstoneConsoleCommandSender> {
+class EndstoneConsoleCommandSender : public ServerCommandSender, public ConsoleCommandSender {
 public:
     EndstoneConsoleCommandSender() = default;
 

@@ -250,6 +250,11 @@ ConsoleCommandSender &EndstoneServer::getCommandSender() const
     return *command_sender_;
 }
 
+std::shared_ptr<ConsoleCommandSender> EndstoneServer::getCommandSenderPtr() const
+{
+    return command_sender_;
+}
+
 bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command_line) const
 {
     return command_map_->dispatch(sender, std::move(command_line));

@@ -59,6 +59,7 @@ public:
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
     [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
+    [[nodiscard]] std::shared_ptr<ConsoleCommandSender> getCommandSenderPtr() const;
     [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command_line) const override;
 
     void loadPlugins();

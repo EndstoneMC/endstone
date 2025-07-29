@@ -317,10 +317,15 @@ PermissibleBase &EndstoneActor::getPermissibleBase()
 
 endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
 {
+    return *getEndstoneActorPtr();
+}
+
+std::shared_ptr<endstone::core::EndstoneActor> Actor::getEndstoneActorPtr0() const
+{
     auto *self = const_cast<Actor *>(this);
     auto &component = entity_context_.getOrAddComponent<endstone::core::EndstoneActorComponent>();
     if (component.actor) {
-        return *component.actor;
+        return component.actor;
     }
 
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
@@ -336,5 +341,5 @@ endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
     else {
         component.actor = std::make_shared<endstone::core::EndstoneActor>(server, *self);
     }
-    return *component.actor;
+    return component.actor;
 }

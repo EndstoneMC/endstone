@@ -28,14 +28,12 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() cons
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     switch (getOriginType()) {
     case CommandOriginType::DedicatedServer: {
-        return std::static_pointer_cast<endstone::ConsoleCommandSender>(
-            static_cast<endstone::core::EndstoneConsoleCommandSender &>(server.getCommandSender()).shared_from_this());
+        return server.getCommandSenderPtr();
     }
     case CommandOriginType::Player:
     case CommandOriginType::Entity: {
-        return std::static_pointer_cast<endstone::Actor>(getEntity()->getEndstoneActor().shared_from_this());
+        return getEntity()->getEndstoneActorPtr();
     }
-    case CommandOriginType::Virtual:
     case CommandOriginType::CommandBlock:
     case CommandOriginType::MinecartCommandBlock:
         // TODO(permission): add BlockCommandSender, Entity and CommandMinecart

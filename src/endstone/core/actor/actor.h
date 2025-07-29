@@ -30,7 +30,7 @@ struct EndstoneActorComponent {
     std::shared_ptr<EndstoneActor> actor;
 };
 
-class EndstoneActor : public virtual Actor, public std::enable_shared_from_this<EndstoneActor> {
+class EndstoneActor : public virtual Actor {
 public:
     EndstoneActor(EndstoneServer &server, ::Actor &actor);
 
