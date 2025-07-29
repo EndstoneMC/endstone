@@ -304,7 +304,11 @@ void EndstoneActor::setScoreTag(std::string score)
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
-    static std::shared_ptr<PermissibleBase> perm = std::make_shared<PermissibleBase>(nullptr);
+    static std::shared_ptr<PermissibleBase> perm;
+    if (!perm) {
+        perm = std::make_shared<PermissibleBase>(nullptr);
+        perm->recalculatePermissions();
+    }
     return *perm;
 }
 
@@ -331,6 +335,7 @@ std::shared_ptr<endstone::core::EndstoneActor> Actor::getEndstoneActorPtr0() con
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = Player::tryGetFromEntity(self->entity_context_); player) {
         component.actor = std::make_shared<endstone::core::EndstonePlayer>(server, *player);
+        component.actor->recalculatePermissions();
     }
     else if (auto *mob = Mob::tryGetFromEntity(self->entity_context_); mob) {
         component.actor = std::make_shared<endstone::core::EndstoneMob>(server, *mob);

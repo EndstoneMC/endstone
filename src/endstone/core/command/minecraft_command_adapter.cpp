@@ -36,9 +36,8 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
     auto sender = origin.getEndstoneSender();
     if (!sender) {
         // Fallback to command origin via a wrapper for unsupported types
-        const auto wrapper = std::make_shared<CommandOriginWrapper>(origin, output);
-        wrapper->init();
-        sender = wrapper;
+        sender = std::make_shared<CommandOriginWrapper>(origin, output);
+        sender->recalculatePermissions();
     }
 
     if (command->execute(*sender, args_)) {
