@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_5c7b2dbfabcd1115569d1e20a260545c" kind="dir">
     <compoundname>include/endstone/command</compoundname>
+    <innerfile refid="block__command__sender_8h">block_command_sender.h</innerfile>
     <innerfile refid="command_8h">command.h</innerfile>
     <innerfile refid="command__executor_8h">command_executor.h</innerfile>
     <innerfile refid="command__map_8h">command_map.h</innerfile>

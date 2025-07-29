@@ -1,41 +1,20 @@
 
 
-# Class endstone::Mob
+# Class endstone::BlockCommandSender
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Mob**](classendstone_1_1Mob.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md)
 
 
 
-_Represents a mobile entity (i.e. living entity), such as a monster or player._ 
+_Represents a block command sender._ 
 
-* `#include <endstone/actor/mob.h>`
-
-
-
-Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
-
-
-Inherited by the following classes: [endstone::Player](classendstone_1_1Player.md)
+* `#include <endstone/command/block_command_sender.h>`
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Inherits the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
 
 
 
@@ -114,47 +93,7 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 
 | Type | Name |
 | ---: | :--- |
-| virtual bool | [**isGliding**](#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
-
-
-## Public Functions inherited from endstone::Actor
-
-See [endstone::Actor](classendstone_1_1Actor.md)
-
-| Type | Name |
-| ---: | :--- |
-| virtual bool | [**addScoreboardTag**](classendstone_1_1Actor.md#function-addscoreboardtag) (std::string tag) const = 0<br>_Adds a tag to this actor._  |
-| virtual [**Item**](classendstone_1_1Item.md) \* | [**asItem**](classendstone_1_1Actor.md#function-asitem) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Item**_](classendstone_1_1Item.md) _._ |
-| virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](classendstone_1_1Actor.md#function-asmob) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](classendstone_1_1Actor.md#function-getdimension) () const = 0<br> |
-| virtual int | [**getHealth**](classendstone_1_1Actor.md#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
-| virtual std::int64\_t | [**getId**](classendstone_1_1Actor.md#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
-| virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](classendstone_1_1Actor.md#function-getlevel) () const = 0<br> |
-| virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](classendstone_1_1Actor.md#function-getlocation) () const = 0<br> |
-| virtual int | [**getMaxHealth**](classendstone_1_1Actor.md#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
-| virtual std::string | [**getNameTag**](classendstone_1_1Actor.md#function-getnametag) () const = 0<br>_Gets the current name tag of the actor._  |
-| virtual std::uint64\_t | [**getRuntimeId**](classendstone_1_1Actor.md#function-getruntimeid) () const = 0<br> |
-| virtual std::string | [**getScoreTag**](classendstone_1_1Actor.md#function-getscoretag) () const = 0<br>_Gets the current score tag of the actor._  |
-| virtual std::vector&lt; std::string &gt; | [**getScoreboardTags**](classendstone_1_1Actor.md#function-getscoreboardtags) () const = 0<br>_Returns a list of scoreboard tags for this actor._  |
-| virtual std::string | [**getType**](classendstone_1_1Actor.md#function-gettype) () const = 0<br>_Get the type of the actor._  |
-| virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](classendstone_1_1Actor.md#function-getvelocity) () const = 0<br> |
-| virtual bool | [**isDead**](classendstone_1_1Actor.md#function-isdead) () const = 0<br>_Returns true if this actor has been marked for removal._  |
-| virtual bool | [**isInLava**](classendstone_1_1Actor.md#function-isinlava) () const = 0<br> |
-| virtual bool | [**isInWater**](classendstone_1_1Actor.md#function-isinwater) () const = 0<br> |
-| virtual bool | [**isNameTagAlwaysVisible**](classendstone_1_1Actor.md#function-isnametagalwaysvisible) () const = 0<br>_Checks if the actor's name tag is always visible._  |
-| virtual bool | [**isNameTagVisible**](classendstone_1_1Actor.md#function-isnametagvisible) () const = 0<br>_Checks if the actor's name tag is currently visible._  |
-| virtual bool | [**isOnGround**](classendstone_1_1Actor.md#function-isonground) () const = 0<br> |
-| virtual bool | [**isValid**](classendstone_1_1Actor.md#function-isvalid) () const = 0<br> |
-| virtual void | [**remove**](classendstone_1_1Actor.md#function-remove) () = 0<br> |
-| virtual bool | [**removeScoreboardTag**](classendstone_1_1Actor.md#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
-| virtual Result&lt; void &gt; | [**setHealth**](classendstone_1_1Actor.md#function-sethealth) (int health) const = 0<br> |
-| virtual void | [**setNameTag**](classendstone_1_1Actor.md#function-setnametag) (std::string name) = 0<br>_Sets the name tag for the actor._  |
-| virtual void | [**setNameTagAlwaysVisible**](classendstone_1_1Actor.md#function-setnametagalwaysvisible) (bool visible) = 0<br>_Sets whether the actor's name tag should always be visible._  |
-| virtual void | [**setNameTagVisible**](classendstone_1_1Actor.md#function-setnametagvisible) (bool visible) = 0<br>_Sets if the actor's name tag is visible or not._  |
-| virtual void | [**setRotation**](classendstone_1_1Actor.md#function-setrotation) (float yaw, float pitch) = 0<br> |
-| virtual void | [**setScoreTag**](classendstone_1_1Actor.md#function-setscoretag) (std::string score) = 0<br>_Sets the score tag for the actor._  |
-| virtual void | [**teleport**](classendstone_1_1Actor.md#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
-| virtual void | [**teleport**](classendstone_1_1Actor.md#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
+| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Returns the block this command sender belongs to._  |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -274,42 +213,16 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Public Functions Documentation
 
 
 
 
-### function isGliding 
+### function getBlock 
 
-_Checks to see if an actor is gliding, such as using an Elytra._ 
+_Returns the block this command sender belongs to._ 
 ```C++
-virtual bool endstone::Mob::isGliding () const = 0
+virtual std::unique_ptr< Block > endstone::BlockCommandSender::getBlock () const = 0
 ```
 
 
@@ -318,7 +231,7 @@ virtual bool endstone::Mob::isGliding () const = 0
 
 **Returns:**
 
-True if this actor is gliding. 
+[**Block**](classendstone_1_1Block.md) for the command sender 
 
 
 
@@ -329,5 +242,5 @@ True if this actor is gliding.
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/actor/mob.h`
+The documentation for this class was generated from the following file `include/endstone/command/block_command_sender.h`
 

@@ -32,7 +32,7 @@ class CommandSenderWrapper final : public CommandSender {
 public:
     using Callback = std::function<void(const Message &)>;
     explicit CommandSenderWrapper(CommandSender &sender, Callback on_message = {}, Callback on_error = {})
-        : sender_(sender), on_message_(std::move(on_message)), on_error_(std::move(on_error)){};
+        : sender_(sender), on_message_(std::move(on_message)), on_error_(std::move(on_error)) {};
 
     void sendMessage(const Message &message) const override
     {
@@ -95,11 +95,6 @@ public:
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
     {
         return sender_.getEffectivePermissions();
-    }
-
-    [[nodiscard]] CommandSender *asCommandSender() const override
-    {
-        return sender_.asCommandSender();
     }
 
     [[nodiscard]] ConsoleCommandSender *asConsole() const override

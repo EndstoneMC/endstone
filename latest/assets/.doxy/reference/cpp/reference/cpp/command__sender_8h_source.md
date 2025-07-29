@@ -34,6 +34,7 @@
 namespace endstone {
 
 class Actor;
+class BlockCommandSender;
 class ConsoleCommandSender;
 class Mob;
 class Server;
@@ -48,6 +49,11 @@ public:
     }
 
     [[nodiscard]] virtual ConsoleCommandSender *asConsole() const
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] virtual BlockCommandSender *asBlock() const
     {
         return nullptr;
     }

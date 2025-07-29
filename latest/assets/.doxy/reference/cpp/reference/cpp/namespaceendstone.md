@@ -49,6 +49,7 @@ _Represents a button with text and an optional icon._
 | class | [**BanList**](classendstone_1_1BanList.md) &lt;typename T&gt;<br>_Represents a ban list, containing bans._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
 | class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
+| class | [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) <br>_Represents a block command sender._  |
 | class | [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) <br>_Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._ |
 | class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data related to a live block._  |
 | class | [**BlockEvent**](classendstone_1_1BlockEvent.md) <br>_Represents an Block-related event._  |

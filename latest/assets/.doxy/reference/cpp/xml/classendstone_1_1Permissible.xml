@@ -328,7 +328,6 @@
         <name>asCommandSender</name>
         <qualifiedname>endstone::Permissible::asCommandSender</qualifiedname>
         <reimplementedby refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893">asCommandSender</reimplementedby>
-        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a5fc91f3c240a91dc5a37d1e0345da2c6">asCommandSender</reimplementedby>
         <briefdescription>
 <para>Casts a <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> as <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref>. </para>
         </briefdescription>
@@ -354,19 +353,25 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="7">
+        <label>endstone::BlockCommandSender</label>
+        <link refid="classendstone_1_1BlockCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::CommandSender</label>
         <link refid="classendstone_1_1CommandSender"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::CommandSenderWrapper</label>
         <link refid="classendstone_1_1CommandSenderWrapper"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>endstone::ConsoleCommandSender</label>
         <link refid="classendstone_1_1ConsoleCommandSender"/>
         <childnode refid="2" relation="public-inheritance">

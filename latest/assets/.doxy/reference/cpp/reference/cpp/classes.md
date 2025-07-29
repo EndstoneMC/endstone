@@ -36,6 +36,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md)
+([**endstone**](namespaceendstone.md))
 * [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**BlockData**](classendstone_1_1BlockData.md)

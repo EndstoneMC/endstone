@@ -50,6 +50,7 @@
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1CommandSender_1a981997682a69961a0cb5e92b7a70f4ff" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asActor</name></member>
+      <member refid="classendstone_1_1CommandSender_1afece60cdcb1ef41acc69bcb8a482320f" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asBlock</name></member>
       <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asPlayer</name></member>

@@ -17,7 +17,7 @@ _Represents a command sender._
 Inherits the following classes: [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
-Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md),  [endstone::CommandSenderWrapper](classendstone_1_1CommandSenderWrapper.md),  [endstone::ConsoleCommandSender](classendstone_1_1ConsoleCommandSender.md)
+Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md),  [endstone::BlockCommandSender](classendstone_1_1BlockCommandSender.md),  [endstone::CommandSenderWrapper](classendstone_1_1CommandSenderWrapper.md),  [endstone::ConsoleCommandSender](classendstone_1_1ConsoleCommandSender.md)
 
 
 
@@ -75,8 +75,9 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | Type | Name |
 | ---: | :--- |
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](#function-asactor) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
+| virtual [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) \* | [**asBlock**](#function-asblock) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**BlockCommandSender**_](classendstone_1_1BlockCommandSender.md) _._ |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
-| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
+| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**ConsoleCommandSender**_](classendstone_1_1ConsoleCommandSender.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
@@ -188,6 +189,31 @@ inline virtual Actor * endstone::CommandSender::asActor () const
 
 
 
+### function asBlock 
+
+_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**BlockCommandSender**_](classendstone_1_1BlockCommandSender.md) _._
+```C++
+inline virtual BlockCommandSender * endstone::CommandSender::asBlock () const
+```
+
+
+
+
+
+**Returns:**
+
+[**CommandSender**](classendstone_1_1CommandSender.md), nullptr if not a [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function asCommandSender 
 
 _Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._
@@ -217,7 +243,7 @@ Implements [*endstone::Permissible::asCommandSender*](classendstone_1_1Permissib
 
 ### function asConsole 
 
-_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._
+_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**ConsoleCommandSender**_](classendstone_1_1ConsoleCommandSender.md) _._
 ```C++
 inline virtual ConsoleCommandSender * endstone::CommandSender::asConsole () const
 ```
@@ -228,7 +254,7 @@ inline virtual ConsoleCommandSender * endstone::CommandSender::asConsole () cons
 
 **Returns:**
 
-[**CommandSender**](classendstone_1_1CommandSender.md), nullptr if not a Console 
+[**CommandSender**](classendstone_1_1CommandSender.md), nullptr if not a [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) 
 
 
 

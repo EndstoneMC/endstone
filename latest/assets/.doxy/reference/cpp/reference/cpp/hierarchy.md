@@ -11,6 +11,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
             * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
                 * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
+        * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
         * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
         * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
 * **class** [**endstone::ICancellable**](classendstone_1_1ICancellable.md)     

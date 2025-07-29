@@ -30,6 +30,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**bar\_style.h**](bar__style_8h.md)     
             * **file** [**boss\_bar.h**](boss__bar_8h.md)     
         * **dir** [**command**](dir_5c7b2dbfabcd1115569d1e20a260545c.md)     
+            * **file** [**block\_command\_sender.h**](block__command__sender_8h.md)     
             * **file** [**command.h**](command_8h.md)     
             * **file** [**command\_executor.h**](command__executor_8h.md)     
             * **file** [**command\_map.h**](command__map_8h.md)     

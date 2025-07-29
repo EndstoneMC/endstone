@@ -55,16 +55,20 @@
         </childnode>
       </node>
       <node id="78">
+        <label>include/endstone/command/block_command_sender.h</label>
+        <link refid="block__command__sender_8h_source"/>
+      </node>
+      <node id="79">
         <label>include/endstone/command/command.h</label>
         <link refid="command_8h_source"/>
-        <childnode refid="79" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
       </node>
-      <node id="79">
+      <node id="80">
         <label>include/endstone/command/command_executor.h</label>
         <link refid="command__executor_8h_source"/>
         <childnode refid="35" relation="include">
@@ -72,10 +76,10 @@
         <childnode refid="34" relation="include">
         </childnode>
       </node>
-      <node id="81">
+      <node id="82">
         <label>include/endstone/command/command_map.h</label>
         <link refid="command__map_8h_source"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -87,11 +91,13 @@
         </childnode>
         <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
@@ -100,11 +106,11 @@
         <childnode refid="66" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="83">
         <label>include/endstone/command/command_sender_wrapper.h</label>
         <link refid="command__sender__wrapper_8h_source"/>
       </node>
-      <node id="83">
+      <node id="84">
         <label>include/endstone/command/console_command_sender.h</label>
         <link refid="console__command__sender_8h_source"/>
       </node>
@@ -503,22 +509,22 @@
         <link refid="permissible_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
-        </childnode>
         <childnode refid="85" relation="include">
         </childnode>
-      </node>
-      <node id="84">
-        <label>include/endstone/permissions/permission.h</label>
-        <link refid="permission_8h_source"/>
-        <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="86" relation="include">
         </childnode>
       </node>
       <node id="85">
+        <label>include/endstone/permissions/permission.h</label>
+        <link refid="permission_8h_source"/>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
         <label>include/endstone/permissions/permission_attachment.h</label>
         <link refid="permission__attachment_8h_source"/>
       </node>
@@ -556,7 +562,7 @@
         <childnode refid="49" relation="include">
         </childnode>
       </node>
-      <node id="80">
+      <node id="81">
         <label>include/endstone/plugin/plugin_description.h</label>
         <link refid="plugin__description_8h_source"/>
         <childnode refid="34" relation="include">
