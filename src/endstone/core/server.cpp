@@ -71,7 +71,6 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
-    command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
 
@@ -92,7 +91,8 @@ void EndstoneServer::init(ServerInstance &server_instance)
         throw std::runtime_error("Server instance already initialized.");
     }
     server_instance_ = &server_instance;
-    command_sender_->init();
+    command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
+    command_sender_->recalculatePermissions();
     player_ban_list_->load();
     ip_ban_list_->load();
     loadPlugins();
@@ -248,6 +248,11 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 ConsoleCommandSender &EndstoneServer::getCommandSender() const
 {
     return *command_sender_;
+}
+
+std::shared_ptr<ConsoleCommandSender> EndstoneServer::getCommandSenderPtr() const
+{
+    return command_sender_;
 }
 
 bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command_line) const

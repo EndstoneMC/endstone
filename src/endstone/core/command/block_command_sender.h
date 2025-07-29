@@ -14,20 +14,27 @@
 
 #pragma once
 
-#include "endstone/command/console_command_sender.h"
+#include "bedrock/server/commands/command_origin.h"
+#include "bedrock/server/commands/command_output.h"
+#include "endstone/command/block_command_sender.h"
 #include "endstone/core/command/server_command_sender.h"
 
 namespace endstone::core {
-
-class EndstoneConsoleCommandSender : public ServerCommandSender, public ConsoleCommandSender {
+class EndstoneBlockCommandSender : public ServerCommandSender, public BlockCommandSender {
 public:
-    EndstoneConsoleCommandSender() = default;
+    EndstoneBlockCommandSender(const CommandOrigin &origin, CommandOutput &output);
 
-    [[nodiscard]] ConsoleCommandSender *asConsole() const override;
+    [[nodiscard]] BlockCommandSender *asBlock() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
+
+    [[nodiscard]] std::unique_ptr<Block> getBlock() const override;
+
+private:
+    const CommandOrigin &origin_;
+    CommandOutput &output_;
 };
 
 }  // namespace endstone::core

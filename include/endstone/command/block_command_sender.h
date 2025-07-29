@@ -14,20 +14,22 @@
 
 #pragma once
 
-#include "endstone/command/console_command_sender.h"
-#include "endstone/core/command/server_command_sender.h"
+#include "endstone/block/block.h"
+#include "endstone/command/command_sender.h"
 
-namespace endstone::core {
+namespace endstone {
 
-class EndstoneConsoleCommandSender : public ServerCommandSender, public ConsoleCommandSender {
+/**
+ * @brief Represents a block command sender
+ */
+class BlockCommandSender : public virtual CommandSender {
 public:
-    EndstoneConsoleCommandSender() = default;
-
-    [[nodiscard]] ConsoleCommandSender *asConsole() const override;
-    void sendMessage(const Message &message) const override;
-    void sendErrorMessage(const Message &message) const override;
-    [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
+    /**
+     * @brief Returns the block this command sender belongs to
+     *
+     * @return Block for the command sender
+     */
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 };
 
-}  // namespace endstone::core
+}  // namespace endstone

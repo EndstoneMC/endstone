@@ -77,7 +77,7 @@ protected:
     virtual void _setUUID(const mce::UUID &uuid) = 0;  // 31
 
 public:
-    [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender() const;  // Endstone
+    [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender(CommandOutput &output) const;  // Endstone
 
 protected:
     mce::UUID uuid_;

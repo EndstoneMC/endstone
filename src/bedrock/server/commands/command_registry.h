@@ -482,11 +482,9 @@ const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *n
     return &signature->overloads.back();
 }
 
-namespace fmt {
 template <>
-struct formatter<CommandRegistry::ParseToken> : formatter<string_view> {
-    template <typename FormatContext>
-    auto format(const CommandRegistry::ParseToken &token, FormatContext &ctx) -> format_context::iterator
+struct fmt::formatter<CommandRegistry::ParseToken> : formatter<string_view> {
+    auto format(const CommandRegistry::ParseToken &token, format_context &ctx) const -> format_context::iterator
     {
         auto out = fmt::format_to(ctx.out(), "[");
         for (const auto *it = &token; it; it = it->next.get()) {
@@ -510,5 +508,4 @@ struct formatter<CommandRegistry::ParseToken> : formatter<string_view> {
         out = fmt::format_to(ctx.out(), "]");
         return out;
     }
-};
-}  // namespace fmt
+};  // namespace fmt

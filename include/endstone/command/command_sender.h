@@ -24,6 +24,7 @@
 namespace endstone {
 
 class Actor;
+class BlockCommandSender;
 class ConsoleCommandSender;
 class Mob;
 class Server;
@@ -41,11 +42,21 @@ public:
     }
 
     /**
-     * @brief Gets a CommandSender as Console
+     * @brief Gets a CommandSender as ConsoleCommandSender
      *
-     * @return CommandSender, nullptr if not a Console
+     * @return CommandSender, nullptr if not a ConsoleCommandSender
      */
     [[nodiscard]] virtual ConsoleCommandSender *asConsole() const
+    {
+        return nullptr;
+    }
+
+    /**
+     * @brief Gets a CommandSender as BlockCommandSender
+     *
+     * @return CommandSender, nullptr if not a BlockCommandSender
+     */
+    [[nodiscard]] virtual BlockCommandSender *asBlock() const
     {
         return nullptr;
     }
