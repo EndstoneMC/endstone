@@ -2123,15 +2123,15 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#0100-unreleased" class="md-nav__link">
+    <a href="#0100-2025-07-30" class="md-nav__link">
       <span class="md-ellipsis">
-        0.10.0 (Unreleased)
+        0.10.0 - 2025-07-30
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="0.10.0 (Unreleased)">
+    <nav class="md-nav" aria-label="0.10.0 - 2025-07-30">
         <ul class="md-nav__list">
             
                 
@@ -2981,15 +2981,15 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#0100-unreleased" class="md-nav__link">
+    <a href="#0100-2025-07-30" class="md-nav__link">
       <span class="md-ellipsis">
-        0.10.0 (Unreleased)
+        0.10.0 - 2025-07-30
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="0.10.0 (Unreleased)">
+    <nav class="md-nav" aria-label="0.10.0 - 2025-07-30">
         <ul class="md-nav__list">
             
                 
@@ -3840,18 +3840,20 @@ For latest updates join the chat on
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2 id="0100-unreleased">0.10.0 (Unreleased)<a class="headerlink" href="#0100-unreleased" title="Permanent link">&para;</a></h2>
+<h2 id="0100-2025-07-30"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.10.0">0.10.0</a> - 2025-07-30<a class="headerlink" href="#0100-2025-07-30" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.9...v0.10.0">Compare with 0.9</a></small></p>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for BDS version 1.21.95.1.</li>
 <li>Added ability to register commands as console-only by setting <code>console</code> in the <code>default</code> field.</li>
 <li>Added <code>ItemStack::getData</code> and <code>ItemStack::setData</code> methods for accessing item data values.</li>
-<li>Added <code>LeavesDecayEvent</code> by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/killcerr" title="GitHub User: killcerr">@killcerr</a>.</li>
-<li>Added <code>PlayerItemHeldEvent</code> by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/killcerr" title="GitHub User: killcerr">@killcerr</a>.</li>
+<li>Added <code>LeavesDecayEvent</code> by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/killcerr" title="GitHub User: killcerr">@killcerr</a> in <a href="https://github.com/EndstoneMC/endstone/pull/209">#209</a></li>
+<li>Added <code>BlockCookEvent</code> by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/killcerr" title="GitHub User: killcerr">@killcerr</a> in <a href="https://github.com/EndstoneMC/endstone/pull/212">#212</a></li>
+<li>Added <code>PlayerItemHeldEvent</code> by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/killcerr" title="GitHub User: killcerr">@killcerr</a> in <a href="https://github.com/EndstoneMC/endstone/pull/213">#213</a></li>
 <li>Added <code>PlayerInteractEvent::Action</code> enum for distinguishing interaction types.</li>
 <li>Added <code>BlockPistonExtendEvent</code> and <code>BlockPistonRetractEvent</code> for piston-related events.</li>
-<li>Added <code>PlayerBedEnterEvent</code> and <code>PlayerBedLeaveEvent</code> for player sleeping events by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/dreamguxiang" title="GitHub User: dreamguxiang">@dreamguxiang</a>.</li>
+<li>Added <code>PlayerBedEnterEvent</code> and <code>PlayerBedLeaveEvent</code> for player sleeping events by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/dreamguxiang" title="GitHub User: dreamguxiang">@dreamguxiang</a>
+  in <a href="https://github.com/EndstoneMC/endstone/pull/196">#196</a></li>
 <li>Added <code>Server::getProtocolVersion</code> to retrieve the supported network protocol version.</li>
 <li>Added <code>PlayerEmoteEvent::setMuted</code> to suppress server broadcasts for player emotes.</li>
 <li>Added <code>PlayerSkinChangeEvent</code>, triggered when a player changes their in-game skin.</li>
@@ -3870,6 +3872,8 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   module.</li>
 <li><strong>BREAKING CHANGE (Python API)</strong>: <code>PlayerJoinEvent</code>, <code>PlayerQuitEvent</code> and <code>PlayerDeathEvent</code> now use <code>Translatable</code>
   for messages by default.</li>
+<li>Changed VENV_DIR to "$HOME/.virtualenvs/endstone" in <code>autoinstall.sh</code> and <code>start.sh</code> to avoid polluting users' home
+  directory by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/GyanPrakash2483" title="GitHub User: GyanPrakash2483">@GyanPrakash2483</a> in <a href="https://github.com/EndstoneMC/endstone/pull/226">#226</a></li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3877,8 +3881,10 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Input (<code>stdin</code>) can now be passed down from a parent process when Endstone is running as a subprocess.</li>
 <li><code>ActorDamageEvent</code> now respects the invulnerable time after hurt and will be triggered by damage from a potion.</li>
 <li>Fixed an error that could occur with <code>ActionForm</code> when a button's <code>onClick</code> is not set.</li>
-<li>Use correct colour for average TPS in <code>/status</code> command output.</li>
+<li>Use the correct colour for average TPS in <code>/status</code> command output by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/MisledWater79" title="GitHub User: MisledWater79">@MisledWater79</a>
+  in <a href="https://github.com/EndstoneMC/endstone/pull/232">#232</a></li>
 <li>Fixed a bug where the selector argument got cut short when parsing commands.</li>
+<li>Fixed <code>Server.name</code> property in Python API by <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/cenk" title="GitHub User: cenk">@cenk</a> in <a href="https://github.com/EndstoneMC/endstone/pull/220">#220</a></li>
 </ul>
 <h2 id="094-2025-07-14"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.9.4">0.9.4</a> - 2025-07-14<a class="headerlink" href="#094-2025-07-14" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.9.3...v0.9.4">Compare with 0.9.3</a></small></p>
