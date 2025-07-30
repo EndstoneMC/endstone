@@ -122,10 +122,11 @@ public:
 
     BlockType(const std::string &, int, const Material &);
 
-    virtual ~BlockType() = 0;
+    virtual ~BlockType() = default;
     [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;
-    [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
+    bool hasTag(const HashedString &) const;
+    bool hasTag(const HashType64 &) const;
     [[nodiscard]] virtual HitResult clip(Block const &, BlockSource const &, BlockPos const &, Vec3 const &,
                                          Vec3 const &, ShapeType,
                                          optional_ref<GetCollisionShapeInterface const>) const = 0;
@@ -240,6 +241,7 @@ public:
     virtual void triggerEvent(BlockSource &, BlockPos const &, int b0, int b1) const = 0;
     virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &eventName,
                               Actor &sourceEntity) const = 0;
+    [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
     [[nodiscard]] virtual MobSpawnerData const *getMobToSpawn(SpawnConditions const &conditions,
                                                               BlockSource &) const = 0;
     [[nodiscard]] virtual bool shouldStopFalling(Actor &) const = 0;

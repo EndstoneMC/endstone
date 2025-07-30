@@ -19,7 +19,7 @@
 
 #include "bedrock/network/packet.h"
 
-enum class TextPacketType : char {
+enum class TextPacketType : std::uint8_t {
     Raw = 0,
     Chat = 1,
     Translate = 2,
@@ -36,13 +36,50 @@ enum class TextPacketType : char {
 
 class TextPacket : public Packet {
 public:
-    TextPacketType type{TextPacketType::Raw};     // +48
-    std::string author;                           // +56
-    std::string message;                          // +88
-    std::optional<std::string> filtered_message;  // +120
-    std::vector<std::string> params;              // +160
-    bool localize;                                // +184
-    std::string xuid;                             // +192
-    std::string platform_id;                      // +224
+    TextPacket() = default;
+    ~TextPacket() override = default;
+
+    static TextPacket createRaw(const std::string & message);
+    static TextPacket createChat(const std::string &author, const std::string &message,
+                                 std::optional<std::string> filtered_message, const std::string &xuid,
+                                 const std::string &platform_id);
+    static TextPacket createTranslatedChat(const std::string &, const std::string &, const std::string &,
+                                           const std::string &);
+    static TextPacket createTranslated(const std::string &, const std::vector<std::string> &);
+    static TextPacket createTextObjectMessage(const ResolvedTextObject &, std::string, std::string);
+    static TextPacket createTextObjectWhisperMessage(const ResolvedTextObject &, const std::string &,
+                                                     const std::string &);
+    static TextPacket createTextObjectWhisperMessage(const std::string &, const std::string &, const std::string &);
+    static TextPacket createRawJsonObjectMessage(const std::string &);
+    static TextPacket createRawJsonObjectAnnouncement(const std::string &);
+    static TextPacket createSystemMessage(const std::string &);
+    static TextPacket createWhisper(const std::string &, const std::string &, const std::optional<std::string>,
+                                    const std::string &, const std::string &);
+    static TextPacket createAnnouncement(const std::string &, const std::string &, const std::optional<std::string>,
+                                         const std::string &, const std::string &);
+    static TextPacket createTranslatedAnnouncement(const std::string &, const std::string &, const std::string &,
+                                                   const std::string &);
+    static TextPacket createJukeboxPopup(const std::string &, const std::vector<std::string> &);
+
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string getName() const override;
+    void write(BinaryStream &) const override;
+
+    TextPacketType type;
+    std::string author;
+    std::string message;
+    std::optional<std::string> filtered_message;
+    std::vector<std::string> params;
+    bool localize;
+    std::string xuid;
+    std::string platform_id;
+
+    static constexpr int MAX_CHAT_LENGTH = 512;
+
+private:
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &) override;
+    TextPacket(TextPacketType type, const std::string &author, const std::string &message,
+               std::optional<std::string> filtered_message, const std::vector<std::string> &params, bool localize,
+               const std::string &xuid, const std::string &platform_id);
 };
 // static_assert(sizeof(TextPacket) == 216);

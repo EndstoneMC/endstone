@@ -77,20 +77,15 @@ Player *EndstonePlayer::asPlayer() const
 
 void EndstonePlayer::sendMessage(const Message &message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    auto pk = std::static_pointer_cast<TextPacket>(packet);
-    std::visit(overloaded{[&pk](const std::string &msg) {
-                              pk->type = TextPacketType::Raw;
-                              pk->message = msg;
+    std::visit(overloaded{[this](const std::string &msg) {
+                              auto packet = TextPacket::createRaw(msg);
+                              getPlayer().sendNetworkPacket(packet);
                           },
-                          [&pk](const Translatable &msg) {
-                              pk->type = TextPacketType::Translate;
-                              pk->message = msg.getText();
-                              pk->params = msg.getParameters();
-                              pk->localize = true;
+                          [this](const Translatable &msg) {
+                              auto packet = TextPacket::createTranslated(msg.getText(), msg.getParameters());
+                              getPlayer().sendNetworkPacket(packet);
                           }},
                message);
-    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendErrorMessage(const Message &message) const
@@ -319,20 +314,18 @@ SocketAddress EndstonePlayer::getAddress() const
 
 void EndstonePlayer::sendPopup(std::string message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    auto pk = std::static_pointer_cast<TextPacket>(packet);
-    pk->type = TextPacketType::Popup;
-    pk->message = std::move(message);
-    getPlayer().sendNetworkPacket(*packet);
+    TextPacket packet;
+    packet.type = TextPacketType::Popup;
+    packet.message = std::move(message);
+    getPlayer().sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendTip(std::string message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    auto pk = std::static_pointer_cast<TextPacket>(packet);
-    pk->type = TextPacketType::Tip;
-    pk->message = std::move(message);
-    getPlayer().sendNetworkPacket(*packet);
+    TextPacket packet;
+    packet.type = TextPacketType::Tip;
+    packet.message = std::move(message);
+    getPlayer().sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendToast(std::string title, std::string content) const

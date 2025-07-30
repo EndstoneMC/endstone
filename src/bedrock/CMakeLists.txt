@@ -23,6 +23,7 @@ add_library(bedrock STATIC
         core/sem_ver/sem_version.cpp
         core/string/string_hash.cpp
         core/utility/binary_stream.cpp
+        core/utility/serialize_simple_types.cpp
         crypto/encoding/base64.cpp
         deps/json/value.cpp
         deps/raknet/get_time.cpp
@@ -42,6 +43,7 @@ add_library(bedrock STATIC
         network/network_identifier.cpp
         network/packet/types/world/actor/serialized_abilities_data.cpp
         network/packet/crafting_data_packet.cpp
+        network/packet/text_packet.cpp
         network/packet.cpp
         network/server_network_handler.cpp
         network/sub_client_connection_request.cpp
