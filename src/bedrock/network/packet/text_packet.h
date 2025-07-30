@@ -39,7 +39,7 @@ public:
     TextPacket() = default;
     ~TextPacket() override = default;
 
-    static TextPacket createRaw(const std::string &);
+    static TextPacket createRaw(const std::string & message);
     static TextPacket createChat(const std::string &author, const std::string &message,
                                  std::optional<std::string> filtered_message, const std::string &xuid,
                                  const std::string &platform_id);

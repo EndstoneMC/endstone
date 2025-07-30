@@ -14,11 +14,21 @@
 
 #include "bedrock/network/packet/text_packet.h"
 
+TextPacket TextPacket::createRaw(const std::string &message)
+{
+    return {TextPacketType::Raw, "", message, std::nullopt, {}, false, "", ""};
+}
+
 TextPacket TextPacket::createChat(const std::string &author, const std::string &message,
                                   std::optional<std::string> filtered_message, const std::string &xuid,
                                   const std::string &platform_id)
 {
     return {TextPacketType::Chat, author, message, std::move(filtered_message), {}, false, xuid, platform_id};
+}
+
+TextPacket TextPacket::createTranslated(const std::string &message, const std::vector<std::string> &params)
+{
+    return {TextPacketType::Translate, "", message, std::nullopt, params, true, "", ""};
 }
 
 MinecraftPacketIds TextPacket::getId() const
@@ -108,6 +118,11 @@ void TextPacket::write(BinaryStream &stream) const
     stream.writeString(xuid, "Sender's XUID", nullptr);
     stream.writeString(platform_id, "Platform Id", nullptr);
     stream.writeString(filtered_message.value_or(""), "Filtered Message", nullptr);
+}
+
+Bedrock::Result<void> TextPacket::_read(ReadOnlyBinaryStream &)
+{
+    throw std::runtime_error("Not implemented");
 }
 
 TextPacket::TextPacket(TextPacketType type, const std::string &author, const std::string &message,
