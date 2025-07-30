@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.10.0 (Unreleased)
+## [0.10.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.0) - 2025-07-30
 
 <small>[Compare with 0.9](https://github.com/EndstoneMC/endstone/compare/v0.9...v0.10.0)</small>
 
@@ -14,11 +14,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for BDS version 1.21.95.1.
 - Added ability to register commands as console-only by setting `console` in the `default` field.
 - Added `ItemStack::getData` and `ItemStack::setData` methods for accessing item data values.
-- Added `LeavesDecayEvent` by @killcerr.
-- Added `PlayerItemHeldEvent` by @killcerr.
+- Added `LeavesDecayEvent` by @killcerr in [#209](https://github.com/EndstoneMC/endstone/pull/209)
+- Added `BlockCookEvent` by @killcerr in [#212](https://github.com/EndstoneMC/endstone/pull/212)
+- Added `PlayerItemHeldEvent` by @killcerr in [#213](https://github.com/EndstoneMC/endstone/pull/213)
 - Added `PlayerInteractEvent::Action` enum for distinguishing interaction types.
 - Added `BlockPistonExtendEvent` and `BlockPistonRetractEvent` for piston-related events.
-- Added `PlayerBedEnterEvent` and `PlayerBedLeaveEvent` for player sleeping events by @dreamguxiang.
+- Added `PlayerBedEnterEvent` and `PlayerBedLeaveEvent` for player sleeping events by @dreamguxiang
+  in [#196](https://github.com/EndstoneMC/endstone/pull/196)
 - Added `Server::getProtocolVersion` to retrieve the supported network protocol version.
 - Added `PlayerEmoteEvent::setMuted` to suppress server broadcasts for player emotes.
 - Added `PlayerSkinChangeEvent`, triggered when a player changes their in-game skin.
@@ -37,6 +39,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   module.
 - **BREAKING CHANGE (Python API)**: `PlayerJoinEvent`, `PlayerQuitEvent` and `PlayerDeathEvent` now use `Translatable`
   for messages by default.
+- Changed VENV_DIR to "$HOME/.virtualenvs/endstone" in `autoinstall.sh` and `start.sh` to avoid polluting users' home
+  directory by @GyanPrakash2483 in [#226](https://github.com/EndstoneMC/endstone/pull/226)
 
 ### Fixed
 
@@ -44,8 +48,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Input (`stdin`) can now be passed down from a parent process when Endstone is running as a subprocess.
 - `ActorDamageEvent` now respects the invulnerable time after hurt and will be triggered by damage from a potion.
 - Fixed an error that could occur with `ActionForm` when a button's `onClick` is not set.
-- Use correct colour for average TPS in `/status` command output.
+- Use the correct colour for average TPS in `/status` command output by @MisledWater79
+  in [#232](https://github.com/EndstoneMC/endstone/pull/232)
 - Fixed a bug where the selector argument got cut short when parsing commands.
+- Fixed `Server.name` property in Python API by @cenk in [#220](https://github.com/EndstoneMC/endstone/pull/220)
 
 ## [0.9.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.4) - 2025-07-14
 
