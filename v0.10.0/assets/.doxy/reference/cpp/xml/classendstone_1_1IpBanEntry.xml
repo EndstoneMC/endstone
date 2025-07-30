@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1IpBanEntry" kind="class" language="C++" prot="public">
+    <compoundname>endstone::IpBanEntry</compoundname>
+    <basecompoundref refid="classendstone_1_1BanEntry" prot="public" virt="non-virtual">endstone::BanEntry</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1IpBanEntry_1a5d1d45ba5dfa2993909e03d945e33125" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::IpBanEntry::address_</definition>
+        <argsstring></argsstring>
+        <name>address_</name>
+        <qualifiedname>endstone::IpBanEntry::address_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_entry.h" line="38" column="17" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1IpBanEntry_1a0268afb79ea778f4a19d51f268bcb656" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::IpBanEntry::IpBanEntry</definition>
+        <argsstring>(std::string address)</argsstring>
+        <name>IpBanEntry</name>
+        <qualifiedname>endstone::IpBanEntry::IpBanEntry</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_entry.h" line="25" column="14" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IpBanEntry_1a015a82a92b1a448b5e4235c15e75baa2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::IpBanEntry::getAddress</definition>
+        <argsstring>() const</argsstring>
+        <name>getAddress</name>
+        <qualifiedname>endstone::IpBanEntry::getAddress</qualifiedname>
+        <briefdescription>
+<para>Gets the banned IP address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the IP address </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_entry.h" line="32" column="18" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::BanEntry</label>
+        <link refid="classendstone_1_1BanEntry"/>
+      </node>
+      <node id="1">
+        <label>endstone::IpBanEntry</label>
+        <link refid="classendstone_1_1IpBanEntry"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::BanEntry</label>
+        <link refid="classendstone_1_1BanEntry"/>
+      </node>
+      <node id="1">
+        <label>endstone::IpBanEntry</label>
+        <link refid="classendstone_1_1IpBanEntry"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/ban/ip_ban_entry.h" line="23" column="1" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="23" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1IpBanEntry_1a5d1d45ba5dfa2993909e03d945e33125" prot="private" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>address_</name></member>
+      <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>Date</name></member>
+      <member refid="classendstone_1_1BanEntry_1ab6991f9c822ac9cd969188b71aabae4a" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>DateFormat</name></member>
+      <member refid="classendstone_1_1IpBanEntry_1a015a82a92b1a448b5e4235c15e75baa2" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>getAddress</name></member>
+      <member refid="classendstone_1_1BanEntry_1a3d58f91d59173138b7e5530b604ae70d" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>getCreated</name></member>
+      <member refid="classendstone_1_1BanEntry_1a62dd29dd801c12d3c99e283924c83246" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>getExpiration</name></member>
+      <member refid="classendstone_1_1BanEntry_1ae64cc8ac600a8a35f2420ddc0709ade0" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>getReason</name></member>
+      <member refid="classendstone_1_1BanEntry_1ad72c12362e0b7d4d5f4fcc9874f4f375" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>getSource</name></member>
+      <member refid="classendstone_1_1IpBanEntry_1a0268afb79ea778f4a19d51f268bcb656" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>IpBanEntry</name></member>
+      <member refid="classendstone_1_1BanEntry_1a25928ad6ec89d5a53291fac94de08af2" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>setCreated</name></member>
+      <member refid="classendstone_1_1BanEntry_1a034fd3be01a6210a5be8b1436df544e3" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>setExpiration</name></member>
+      <member refid="classendstone_1_1BanEntry_1a59ff6c4f71850c5f1d006199d987d049" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>setReason</name></member>
+      <member refid="classendstone_1_1BanEntry_1a475b96ed193e395608804f4d31fb96d4" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>setSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

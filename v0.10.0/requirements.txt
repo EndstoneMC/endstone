@@ -1,0 +1,8 @@
+black
+griffe-endstone
+mike
+mkdocs-material
+mkdocs-git-committers-plugin-2
+mkdocs-git-revision-date-localized-plugin
+mkdocstrings-python
+mkdoxy
