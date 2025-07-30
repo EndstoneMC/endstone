@@ -11,42 +11,41 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Added support for BDS version 1.21.95.1.
 - Added `ItemStack::getData` and `ItemStack::setData` methods for accessing item data values.
 - Added ability to register commands as console-only by setting `console` in the `default` field.
 - Added `LeavesDecayEvent` by @killcerr.
 - Added `PlayerItemHeldEvent` by @killcerr.
 - Added `PlayerInteractEvent::Action` enum for distinguishing interaction types.
 - Added `BlockPistonExtendEvent` and `BlockPistonRetractEvent` for piston-related events.
-- Added `PlayerBedEnterEvent` and `PlayerBedLeaveEvent` for player sleeping events.
+- Added `PlayerBedEnterEvent` and `PlayerBedLeaveEvent` for player sleeping events by @dreamguxiang.
 - Added `Server::getProtocolVersion` to retrieve the supported network protocol version.
 - Added `PlayerEmoteEvent::setMuted` to suppress server broadcasts for player emotes.
 - Added `PlayerSkinChangeEvent`, triggered when a player changes their in-game skin.
-- Added `Player::getEnderChest` to get a player’s Ender Chest inventory.
+- Added `Player::getEnderChest` to get a player's Ender Chest inventory.
 - Added `Item` entity for dropped items.
+- Added a new configuration option `commands.log` to `endstone.toml` to control whether the server logs when a player
+  executes a command.
 
 ### Changed
 
 - `PlayerInteractEvent` now triggers on right- and left-clicks with both air and blocks.
-- `PlayerEmoteEvent` is now cancellable, cancelling prevents broadcasting to other players.
-- `PlayerJoinEvent` and `PlayerQuitEvent` now support `Translatable` messages.
+- `PlayerEmoteEvent` is now cancellable; cancelling prevents broadcasting to other players.
 - Player bans and IP bans are now checked before the server sends resource packs to clients.
 - `PlayerPickupItemEvent::getItem()` now returns an `Item` entity instead of an `ItemStack`.
 - **BREAKING CHANGE (Python API)**: `Button` class has been moved from the `ActionForm` class to the `endstone.form`
   module.
+- **BREAKING CHANGE (Python API)**: `PlayerJoinEvent`, `PlayerQuitEvent` and `PlayerDeathEvent` now use `Translatable`
+  for messages by default.
 
 ### Fixed
 
 - `PlayerKickEvent` no longer triggers when `PlayerLoginEvent` is cancelled.
 - Input (`stdin`) can now be passed down from a parent process when Endstone is running as a subprocess.
 - `ActorDamageEvent` now respects the invulnerable time after hurt and will be triggered by damage from a potion.
-
-## 0.9.5
-
-<small>[Compare with 0.9.4](https://github.com/EndstoneMC/endstone/compare/v0.9.4...v0.9.6)</small>
-
-### Added
-
-* Added support for BDS version 1.21.95.1.
+- Fixed an error that could occur with `ActionForm` when a button's `onClick` is not set.
+- Use correct colour for average TPS in `/status` command output.
+- Fixed a bug where the selector argument got cut short when parsing commands.
 
 ## [0.9.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.4) - 2025-07-14
 
@@ -54,7 +53,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.94.2.
+- Added support for BDS version 1.21.94.2.
 
 ## [0.9.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.3) - 2025-07-04
 
@@ -62,7 +61,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.93.1.
+- Added support for BDS version 1.21.93.1.
 
 ## [0.9.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.2) - 2025-06-30
 
@@ -70,19 +69,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.92.1.
-* Added `ChunkLoadEvent` and `ChunkUnloadEvent`, which are called during chunk loading and unloading.
-* Added `PlayerPickupItemEvent`, which is called when a player is about to pick up an item from the ground.
+- Added support for BDS version 1.21.92.1.
+- Added `ChunkLoadEvent` and `ChunkUnloadEvent`, which are called during chunk loading and unloading.
+- Added `PlayerPickupItemEvent`, which is called when a player is about to pick up an item from the ground.
 
 ### Fixed
 
-* `Chunk::getZ()` now returns the correct value.
-* Fixed a crash when accessing a registry entry multiple times.
+- `Chunk::getZ()` now returns the correct value.
+- Fixed a crash when accessing a registry entry multiple times.
 
 ### Changed
 
-* `ActorRemoveEvent` is no longer triggered if `ActorSpawnEvent` is cancelled.
-* `PlayerTeleportEvent` is no longer triggered if `PlayerMoveEvent` or `PlayerJumpEvent` is cancelled.
+- `ActorRemoveEvent` is no longer triggered if `ActorSpawnEvent` is cancelled.
+- `PlayerTeleportEvent` is no longer triggered if `PlayerMoveEvent` or `PlayerJumpEvent` is cancelled.
 
 ## [0.9.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.1) - 2025-06-19
 
@@ -149,7 +148,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix [#150](https://github.com/EndstoneMC/endstone/issues/150) by allowing explicit permission grants for non-OP
   players to execute OP commands.
 - `ActorDamageEvent` will no longer fire if the `damage_sensor` determines that no damage should be dealt.
-- `BlockBreakEvent` will no longer fire when a player uses an item that’s not supposed to break blocks in Creative mode.
+- `BlockBreakEvent` will no longer fire when a player uses an item that's not supposed to break blocks in Creative mode.
 
 ## [0.8.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.0) - 2025-05-11
 
@@ -161,7 +160,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Introduced a new Registry API for accessing the built-in definitions (e.g., all available enchantments via
   `Server::getEnchantmentRegistry`)
 - Added ability to edit item enchantments via the `ItemMeta` API
-- Added ability to get and set an item’s repair cost and mark it as unbreakable via the `ItemMeta` API
+- Added ability to get and set an item's repair cost and mark it as unbreakable via the `ItemMeta` API
 
 ### Fixed
 
@@ -521,8 +520,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `Player::isOp` and `Player::setOp` methods are now consistent with the similar methods in the scripting API.
 - The fix for the warning message about empty packets is now redundant and has been removed.
-- **BREAKING CHANGE:** `Server::getLevels` has been replaced by `Server::getLevel`.
-- **BREAKING CHANGE:** `Player::getDeviceId` now returns a string object instead of a UUID object, as it is not
+- **BREAKING CHANGE:*- `Server::getLevels` has been replaced by `Server::getLevel`.
+- **BREAKING CHANGE:*- `Player::getDeviceId` now returns a string object instead of a UUID object, as it is not
   guaranteed to be a UUID on all platforms.
 
 ### Fixed
@@ -551,15 +550,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `Player::getXuid` to get the Xbox User ID (XUID) of the player.
 - Python: package metadata can now be used as a fallback for plugin metadata.
 - Python: `isinstance` function can now be used to check if a `CommandSender` is a `Player` or `ConsoleCommandSender`.
-- **Experimental** Scoreboard API.
-- **Experimental** Form API.
+- **Experimental*- Scoreboard API.
+- **Experimental*- Form API.
 
 ### Changed
 
 - `Player` class now inherits from the `Mob` class instead of `Actor` class.
-- **BREAKING CHANGE:** Plugin names should only contain lowercase letters, numbers, and underscores. Use the prefix
+- **BREAKING CHANGE:*- Plugin names should only contain lowercase letters, numbers, and underscores. Use the prefix
   property to display a different name for the plugin logger.
-- **BREAKING CHANGE:** The `player.ping` property now returns an `int` instead of `datetime.timedelta`.
+- **BREAKING CHANGE:*- The `player.ping` property now returns an `int` instead of `datetime.timedelta`.
 
 ### Fixed
 
