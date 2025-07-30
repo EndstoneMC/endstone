@@ -7,13 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## 0.10.0 (Unreleased)
 
-<small>[Compare with 0.9](https://github.com/EndstoneMC/endstone/compare/v0.9...main)</small>
+<small>[Compare with 0.9](https://github.com/EndstoneMC/endstone/compare/v0.9...v0.10.0)</small>
 
 ### Added
 
 - Added support for BDS version 1.21.95.1.
-- Added `ItemStack::getData` and `ItemStack::setData` methods for accessing item data values.
 - Added ability to register commands as console-only by setting `console` in the `default` field.
+- Added `ItemStack::getData` and `ItemStack::setData` methods for accessing item data values.
 - Added `LeavesDecayEvent` by @killcerr.
 - Added `PlayerItemHeldEvent` by @killcerr.
 - Added `PlayerInteractEvent::Action` enum for distinguishing interaction types.
