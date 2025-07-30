@@ -76,6 +76,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 
     try {
         toml::table tbl = toml::parse_file("endstone.toml");
+        log_commands_ = tbl.at_path("commands.log").value_or(true);
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
     }
     catch (const toml::parse_error &err) {
