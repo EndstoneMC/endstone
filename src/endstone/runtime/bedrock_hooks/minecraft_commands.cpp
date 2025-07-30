@@ -40,7 +40,9 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         }
 
         command_line = e.getCommand();
-        server.getLogger().info("{} issued server command: {}", player.getName(), command_line);
+        if (server.logCommands()) {
+            server.getLogger().info("{} issued server command: {}", player.getName(), command_line);
+        }
         if (server.dispatchCommand(player, command_line)) {
             return MCRESULT_Success;
         }

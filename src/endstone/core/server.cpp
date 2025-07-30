@@ -156,6 +156,11 @@ bool EndstoneServer::getAllowClientPacks() const
     return allow_client_packs_;
 }
 
+bool EndstoneServer::logCommands() const
+{
+    return log_commands_;
+}
+
 void EndstoneServer::loadResourcePacks()
 {
     const auto *manager = level_->getHandle().getClientResourcePackManager();
