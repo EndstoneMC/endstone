@@ -2111,6 +2111,17 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#public-static-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Static Attributes
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -2144,6 +2155,36 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-static-attributes-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Static Attributes Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Static Attributes Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#variable-name" class="md-nav__link">
+      <span class="md-ellipsis">
+        variable NAME
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2170,19 +2211,6 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-endstone_event" class="md-nav__link">
-      <span class="md-ellipsis">
-        function ENDSTONE_EVENT
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#function-getdamage" class="md-nav__link">
       <span class="md-ellipsis">
         function getDamage
@@ -2199,6 +2227,19 @@ For latest updates join the chat on
     <a href="#function-getdamagesource" class="md-nav__link">
       <span class="md-ellipsis">
         function getDamageSource
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-geteventname" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getEventName
       </span>
     </a>
 
@@ -2264,6 +2305,21 @@ For latest updates join the chat on
 <li><code>#include &lt;endstone/event/actor/actor_damage_event.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
+<h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">const std::string</td>
+<td style="text-align: left;"><a href="#variable-name"><strong>NAME</strong></a>   = <code>"ActorDamageEvent"</code><br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2275,11 +2331,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-actordamageevent"><strong>ActorDamageEvent</strong></a> (<a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; actor, std::unique_ptr&lt; <a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> &gt; damage_source, const float damage) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-endstone_event"><strong>ENDSTONE_EVENT</strong></a> (<a href="./"><strong>ActorDamageEvent</strong></a>) <br></td>
+<td style="text-align: left;"><a href="#function-actordamageevent"><strong>ActorDamageEvent</strong></a> (<a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> &amp; actor, std::unique_ptr&lt; <a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> &gt; damage_source, const float damage) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">float</td>
@@ -2288,6 +2340,10 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getdamagesource"><strong>getDamageSource</strong></a> () const<br><em>Get the source of damage.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::string</td>
+<td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
@@ -2347,20 +2403,18 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-actordamageevent">function ActorDamageEvent<a class="headerlink" href="#function-actordamageevent" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DamageSource</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">damage_source</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">damage</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>
+<h2 id="public-static-attributes-documentation">Public Static Attributes Documentation<a class="headerlink" href="#public-static-attributes-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="variable-name">variable NAME<a class="headerlink" href="#variable-name" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">NAME</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
-
-<h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">ENDSTONE_EVENT</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">ActorDamageEvent</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span>
+<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-actordamageevent">function ActorDamageEvent<a class="headerlink" href="#function-actordamageevent" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Mob</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DamageSource</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">damage_source</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">damage</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
@@ -2380,11 +2434,20 @@ For latest updates join the chat on
 <p>a <a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> detailing the source of the damage. </p>
 <hr>
 
+<h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div>
+<p>Gets a user-friendly identifier for this event.</p>
+<p><strong>Returns:</strong></p>
+<p>name of this event </p>
+<p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
+<hr>
+
 <h3 id="function-setdamage">function setDamage<a class="headerlink" href="#function-setdamage" title="Permanent link">&para;</a></h3>
 <p><em>Sets the raw amount of damage caused by the event.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">setDamage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">damage</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorDamageEvent</span><span class="o">::</span><span class="n">setDamage</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">damage</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>

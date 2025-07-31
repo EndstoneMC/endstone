@@ -53,10 +53,11 @@
     <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" kind="function"><name>setScoreTag</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorDamageEvent" kind="class"><name>endstone::ActorDamageEvent</name>
+    <member refid="classendstone_1_1ActorDamageEvent_1a319f71e214cfbb92d77667fc03583b2a" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1ActorDamageEvent_1ac7b9815258c9fed79e45b7b5544a590e" kind="variable"><name>damage_source_</name></member>
     <member refid="classendstone_1_1ActorDamageEvent_1a867187c57a779cad0f19459222377320" kind="variable"><name>damage_</name></member>
-    <member refid="classendstone_1_1ActorDamageEvent_1af4fe623c9cdd3978bb352e067273ee61" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1ActorDamageEvent_1a6bdb9f27c8ec91571e310d53fbd88419" kind="function"><name>ActorDamageEvent</name></member>
+    <member refid="classendstone_1_1ActorDamageEvent_1a663583a9e7ec44a0b01a04dce342296f" kind="function"><name>ActorDamageEvent</name></member>
+    <member refid="classendstone_1_1ActorDamageEvent_1adc39392f2370363313d09e4dde688e08" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1ActorDamageEvent_1a44564e018ef4caa37965500a468026e6" kind="function"><name>getDamage</name></member>
     <member refid="classendstone_1_1ActorDamageEvent_1a077458e25c7329f2cb4c02a2b0ed0bde" kind="function"><name>setDamage</name></member>
     <member refid="classendstone_1_1ActorDamageEvent_1a538c8cedc5f6f72088aaf4351d9e32f4" kind="function"><name>getDamageSource</name></member>

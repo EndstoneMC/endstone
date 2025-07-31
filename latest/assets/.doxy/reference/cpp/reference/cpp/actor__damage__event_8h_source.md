@@ -30,12 +30,17 @@
 
 namespace endstone {
 
-class ActorDamageEvent : public Cancellable<ActorEvent<Actor>> {
+class ActorDamageEvent : public Cancellable<ActorEvent<Mob>> {
 public:
-    ENDSTONE_EVENT(ActorDamageEvent);
-    ActorDamageEvent(Actor &actor, std::unique_ptr<DamageSource> damage_source, const float damage)
+    ActorDamageEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source, const float damage)
         : Cancellable(actor), damage_source_(std::move(damage_source)), damage_(damage)
     {
+    }
+
+    inline static const std::string NAME = "ActorDamageEvent";
+    [[nodiscard]] std::string getEventName() const override
+    {
+        return NAME;
     }
 
     [[nodiscard]] float getDamage() const
