@@ -2,7 +2,6 @@ import ctypes.util
 import os
 import stat
 import subprocess
-import sys
 from pathlib import Path
 
 from endstone._internal.bootstrap.base import Bootstrap

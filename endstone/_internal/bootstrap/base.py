@@ -95,10 +95,10 @@ class Bootstrap:
             m = hashlib.sha256()
 
             with Progress(
-                    TextColumn("[progress.description]{task.description}"),
-                    BarColumn(),
-                    DownloadColumn(),
-                    TimeRemainingColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                BarColumn(),
+                DownloadColumn(),
+                TimeRemainingColumn(),
             ) as progress:
                 task = progress.add_task("[bold blue]Downloading...", total=total_size)
                 for data in response.iter_content(chunk_size=1024):
@@ -168,7 +168,7 @@ class Bootstrap:
                 with open(path, "r", encoding="utf-8") as f:
                     default_config = tomlkit.load(f)
 
-            with open(self.config_path, 'r', encoding='utf-8') as f:
+            with open(self.config_path, "r", encoding="utf-8") as f:
                 config = tomlkit.load(f)
 
             def migrate_config(from_doc: tomlkit.TOMLDocument, to_doc: tomlkit.TOMLDocument) -> None:
@@ -182,7 +182,7 @@ class Bootstrap:
                             migrate_config(val, to_doc[key])
 
             migrate_config(default_config, config)
-            with open(self.config_path, 'w', encoding='utf-8') as f:
+            with open(self.config_path, "w", encoding="utf-8") as f:
                 tomlkit.dump(config, f)
 
     def _install(self) -> None:
