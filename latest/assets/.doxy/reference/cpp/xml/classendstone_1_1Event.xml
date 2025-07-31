@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Event" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Event</compoundname>
-    <derivedcompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Mob &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Actor &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Mob &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; ActorType &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1BlockEvent" prot="public" virt="non-virtual">endstone::BlockEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1LevelEvent" prot="public" virt="non-virtual">endstone::LevelEvent</derivedcompoundref>
@@ -157,7 +157,6 @@
         <argsstring>() const =0</argsstring>
         <name>getEventName</name>
         <qualifiedname>endstone::Event::getEventName</qualifiedname>
-        <reimplementedby refid="classendstone_1_1ActorDamageEvent_1adc39392f2370363313d09e4dde688e08">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ActorDeathEvent_1ad3572783702cd3e40447a3d6344a8094">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ActorExplodeEvent_1a5cc3e0325db3f67173ae516314fae999">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ActorKnockbackEvent_1a6b3eee184de0d29360031cf48680c25a">getEventName</reimplementedby>
@@ -242,28 +241,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="8">
+      <node id="2">
         <label>endstone::ActorEvent&lt; Actor &gt;</label>
         <link refid="classendstone_1_1ActorEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="9">
         <label>endstone::ActorEvent&lt; Mob &gt;</label>
         <link refid="classendstone_1_1ActorEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
+      <node id="3">
         <label>endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="8" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="10">
         <label>endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="9" relation="public-inheritance">
         </childnode>
       </node>
       <node id="16">
@@ -296,10 +295,10 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="12">
         <label>endstone::ActorDeathEvent</label>
         <link refid="classendstone_1_1ActorDeathEvent"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="9" relation="public-inheritance">
         </childnode>
       </node>
       <node id="14">
@@ -308,34 +307,34 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="10">
+      <node id="5">
         <label>endstone::ActorExplodeEvent</label>
         <link refid="classendstone_1_1ActorExplodeEvent"/>
-        <childnode refid="9" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>endstone::ActorKnockbackEvent</label>
-        <link refid="classendstone_1_1ActorKnockbackEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="13">
+      <node id="11">
+        <label>endstone::ActorKnockbackEvent</label>
+        <link refid="classendstone_1_1ActorKnockbackEvent"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
         <label>endstone::ActorRemoveEvent</label>
         <link refid="classendstone_1_1ActorRemoveEvent"/>
-        <childnode refid="8" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="11">
+      <node id="6">
         <label>endstone::ActorSpawnEvent</label>
         <link refid="classendstone_1_1ActorSpawnEvent"/>
-        <childnode refid="9" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="12">
+      <node id="7">
         <label>endstone::ActorTeleportEvent</label>
         <link refid="classendstone_1_1ActorTeleportEvent"/>
-        <childnode refid="9" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="17">
@@ -462,10 +461,10 @@
         <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="13">
         <label>endstone::PlayerDeathEvent</label>
         <link refid="classendstone_1_1PlayerDeathEvent"/>
-        <childnode refid="6" relation="public-inheritance">
+        <childnode refid="12" relation="public-inheritance">
         </childnode>
         <childnode refid="29" relation="public-inheritance">
         </childnode>

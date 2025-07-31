@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1ICancellable" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::ICancellable</compoundname>
-    <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; BlockEvent &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ServerEvent &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</derivedcompoundref>
@@ -97,13 +97,13 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="5">
+      <node id="2">
         <label>endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="7">
         <label>endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -139,28 +139,28 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="4">
         <label>endstone::ActorExplodeEvent</label>
         <link refid="classendstone_1_1ActorExplodeEvent"/>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>endstone::ActorKnockbackEvent</label>
-        <link refid="classendstone_1_1ActorKnockbackEvent"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
-        <label>endstone::ActorSpawnEvent</label>
-        <link refid="classendstone_1_1ActorSpawnEvent"/>
-        <childnode refid="5" relation="public-inheritance">
+      <node id="8">
+        <label>endstone::ActorKnockbackEvent</label>
+        <link refid="classendstone_1_1ActorKnockbackEvent"/>
+        <childnode refid="7" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="8">
+      <node id="5">
+        <label>endstone::ActorSpawnEvent</label>
+        <link refid="classendstone_1_1ActorSpawnEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
         <label>endstone::ActorTeleportEvent</label>
         <link refid="classendstone_1_1ActorTeleportEvent"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
       <node id="10">
