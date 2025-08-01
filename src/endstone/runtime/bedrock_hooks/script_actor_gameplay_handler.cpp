@@ -37,8 +37,6 @@ bool handleEvent(const ActorKilledEvent &event)
         ExperienceRewardDefinition reward;
         reward.addDeathExpressionNode(ExpressionNode(e.getDroppedExp()));
         reward.initialize(mob->getEntity(), exp_reward);
-
-        server.getLogger().warning("{}", mob->getOnDeathExperience());
     }
     return true;
 }
