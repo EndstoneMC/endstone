@@ -14,6 +14,7 @@
 
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 
+#include "bedrock/entity/components/experience_reward_component.h"
 #include "bedrock/world/actor/actor.h"
 #include "endstone/core/damage/damage_source.h"
 #include "endstone/core/entity/components/flag_components.h"
@@ -25,11 +26,19 @@
 namespace {
 bool handleEvent(const ActorKilledEvent &event)
 {
-    if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
+    if (auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
         const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
         endstone::ActorDeathEvent e{mob->getEndstoneActor<endstone::core::EndstoneMob>(),
-                                    std::make_unique<endstone::core::EndstoneDamageSource>(*event.source)};
+                                    std::make_unique<endstone::core::EndstoneDamageSource>(*event.source),
+                                    mob->getOnDeathExperience()};
         server.getPluginManager().callEvent(e);
+
+        auto &exp_reward = mob->getEntity().getOrAddComponent<ExperienceRewardComponent>();
+        ExperienceRewardDefinition reward;
+        reward.addDeathExpressionNode(ExpressionNode(e.getDroppedExp()));
+        reward.initialize(mob->getEntity(), exp_reward);
+
+        server.getLogger().warning("{}", mob->getOnDeathExperience());
     }
     return true;
 }

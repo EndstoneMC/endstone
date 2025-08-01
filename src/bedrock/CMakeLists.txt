@@ -28,6 +28,7 @@ add_library(bedrock STATIC
         deps/json/value.cpp
         deps/raknet/get_time.cpp
         deps/raknet/raknet_types.cpp
+        entity/components/experience_reward_component.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp
         entity/gamerefs_entity/stack_result_storage_entity.cpp

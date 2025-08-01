@@ -83,7 +83,9 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                "Gets the source of damage.");
     py::class_<ActorDeathEvent, ActorEvent<Mob>>(m, "ActorDeathEvent", "Called when an Actor dies.")
         .def_property_readonly("damage_source", &ActorDeathEvent::getDamageSource, py::return_value_policy::reference,
-                               "Gets the source of damage which caused the death.");
+                               "Gets the source of damage which caused the death.")
+        .def_property("dropped_exp", &ActorDeathEvent::getDroppedExp, &ActorDeathEvent::setDroppedExp,
+                      "Gets how much EXP should be dropped from this death.");
     py::class_<ActorExplodeEvent, ActorEvent<Actor>, ICancellable>(m, "ActorExplodeEvent",
                                                                    "Called when an Actor explodes.")
         .def_property_readonly("location", &ActorExplodeEvent::getLocation,

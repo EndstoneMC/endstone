@@ -26,9 +26,9 @@ class PlayerDeathEvent : public ActorDeathEvent, public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerDeathEvent);
 
-    explicit PlayerDeathEvent(Player &player, std::unique_ptr<DamageSource> damage_source,
+    explicit PlayerDeathEvent(Player &player, std::unique_ptr<DamageSource> damage_source, int dropped_exp,
                               std::optional<Message> death_message)
-        : ActorDeathEvent(player, std::move(damage_source)), PlayerEvent(player),
+        : ActorDeathEvent(player, std::move(damage_source), dropped_exp), PlayerEvent(player),
           death_message_(std::move(death_message))
     {
     }

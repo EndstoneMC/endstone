@@ -3,6 +3,7 @@ version = "1.21.95"
 
 [windows]
 # Actor
+"?getOnDeathExperience@Actor@@QEAAHXZ" = 39420704
 "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 39447232
 "?stopRiding@Actor@@QEAAX_N000@Z" = 39441232
 # ActorSetPosSystem

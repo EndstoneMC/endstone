@@ -14,6 +14,7 @@
 
 #include "bedrock/server/server_player.h"
 
+#include "bedrock/entity/components/experience_reward_component.h"
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/world/level/storage/game_rules.h"
 #include "endstone/core/damage/damage_source.h"
@@ -33,9 +34,18 @@ void ServerPlayer::die(const ActorDamageSource &source)
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     auto death_cause_message = source.getDeathMessage(getName(), this);
     endstone::Message death_message = endstone::Translatable(death_cause_message.first, death_cause_message.second);
-    endstone::PlayerDeathEvent e{player, std::make_unique<endstone::core::EndstoneDamageSource>(source), death_message};
+    endstone::PlayerDeathEvent e{player, std::make_unique<endstone::core::EndstoneDamageSource>(source),
+                                 getOnDeathExperience(), death_message};
     server.getPluginManager().callEvent(static_cast<endstone::PlayerEvent &>(e));
+
+    // Update death message
     death_message = e.getDeathMessage().value_or("");
+
+    // Update dropped experience amount
+    auto &exp_reward = getEntity().getOrAddComponent<ExperienceRewardComponent>();
+    ExperienceRewardDefinition reward;
+    reward.addDeathExpressionNode(ExpressionNode(e.getDroppedExp()));
+    reward.initialize(getEntity(), exp_reward);
 
     // Send death info
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
