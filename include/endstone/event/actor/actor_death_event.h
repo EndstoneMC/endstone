@@ -24,15 +24,11 @@ namespace endstone {
  */
 class ActorDeathEvent : public ActorEvent<Mob> {
 public:
-    ActorDeathEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source)
-        : ActorEvent(actor), damage_source_(std::move(damage_source))
-    {
-    }
+    ENDSTONE_EVENT(ActorDeathEvent);
 
-    inline static const std::string NAME = "ActorDeathEvent";
-    [[nodiscard]] std::string getEventName() const override
+    ActorDeathEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source, int dropped_exp)
+        : ActorEvent(actor), damage_source_(std::move(damage_source)), drop_exp_(dropped_exp)
     {
-        return NAME;
     }
 
     /**
@@ -45,9 +41,35 @@ public:
         return *damage_source_;
     }
 
+    /**
+     * @brief Gets how much EXP should be dropped from this death.
+     *
+     * @note This does not indicate how much EXP should be taken from the entity in
+     * question, merely how much should be created after its death.
+     *
+     * @return Amount of EXP to drop.
+     */
+    [[nodiscard]] int getDroppedExp() const
+    {
+        return drop_exp_;
+    }
+
+    /**
+     * @brief Sets how much EXP should be dropped from this death.
+     *
+     * @note This does not indicate how much EXP should be taken from the entity in
+     * question, merely how much should be created after its death.
+     *
+     * @param exp Amount of EXP to drop.
+     */
+    void setDroppedExp(int exp)
+    {
+        drop_exp_ = exp;
+    }
+
 private:
     std::unique_ptr<DamageSource> damage_source_;
-    // TODO(event): add drops and dropExp
+    int drop_exp_;
 };
 
 }  // namespace endstone
