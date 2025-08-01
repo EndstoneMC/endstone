@@ -39,7 +39,7 @@ enum class ActorDataIDs : uint8_t {
     OLD_SWELL = 20,
     SWELL_DIR = 21,
     CHARGE_AMOUNT = 22,
-    CARRY_BLOCK_RUNTIME_ID = 23,
+    DEPRECATED_CARRY_BLOCK_RUNTIME_ID = 23,
     CLIENT_EVENT = 24,
     USING_ITEM = 25,
     PLAYER_FLAGS = 26,

@@ -46,6 +46,7 @@ struct ClipParameters {
     Actor *actor = nullptr;
     bool liquid = false;
     bool full_only = false;
+    bool stop_on_first_liquid_hit;
     bool ignore_border_block = false;
     ShapeType shape_type = ShapeType::Outline;
     int max_distance = 0;

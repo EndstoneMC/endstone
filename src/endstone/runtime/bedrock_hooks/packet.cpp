@@ -46,10 +46,10 @@ public:
             return;
         }
 
-        const auto &token = pk.connection_request->getLegacyMultiplayerToken();
-        const auto name = token.getIdentityName();
-        const auto uuid = endstone::core::EndstoneUUID::fromMinecraft(token.getIdentity());
-        const auto xuid = token.getXuid(false);
+        const auto &info = pk.connection_request->getAuthenticationInfo();
+        const auto name = info.xuid.empty() ? pk.connection_request->getClientThirdPartyName() : info.xbox_live_name;
+        const auto uuid = endstone::core::EndstoneUUID::fromMinecraft(info.authenticated_uuid);
+        const auto xuid = info.xuid;
         if (server.getBanList().isBanned(name, uuid, xuid)) {
             const gsl::not_null ban_entry = server.getBanList().getBanEntry(name, uuid, xuid);
             if (const auto reason = ban_entry->getReason(); !reason.empty()) {

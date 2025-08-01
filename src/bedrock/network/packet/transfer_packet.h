@@ -18,9 +18,25 @@
 
 #include "bedrock/network/packet.h"
 
-class TransferPacket : public Packet {
-public:
+struct TransferPacketInfo {
+    static constexpr auto PACKET_NAME = "TransferPacket";
+    static constexpr auto PACKET_ID = MinecraftPacketIds::Transfer;
+    static constexpr auto DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
+    static constexpr auto COMPRESSIBILITY = Compressibility::Compressible;
+};
+
+struct TransferPacketPayload {
+    TransferPacketPayload();
+    TransferPacketPayload(const std::string &, int);
+    TransferPacketPayload(const NetherNet::NetworkID &);
+    TransferPacketPayload(bool);
+
     std::string destination;
-    int destination_port;
+    uint16_t destination_port;
     bool reload_world;
+};
+
+class TransferPacket : public SerializedPayloadPacket<TransferPacketInfo, TransferPacketPayload> {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
 };

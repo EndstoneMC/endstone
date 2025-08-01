@@ -22,17 +22,66 @@
 #include "bedrock/resources/min_engine_version.h"
 #include "bedrock/resources/pack_capabililty.h"
 
+enum class ManifestOrigin : char {
+    Directory = 0,
+    Archive = 1,
+    Realms = 2,
+    Catalog = 3,
+    WorldHistory = 4,
+    Invalid = 5,
+};
+
+enum class ManifestType : char {
+    Pack = 0,
+    WorldTemplate = 1,
+    Catalog = 2,
+};
+
+enum class PackScope : uint8_t {
+    Global = 1,
+    AddOn = 2,
+    Level = 4,
+    System = 8,
+    World = 6,
+    Any = 7,
+    Default = 7,
+};
+
+enum class PackManifestFormat : uint8_t {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+};
 class PackManifest : public Bedrock::EnableNonOwnerReferences {
 public:
+    PackManifest(ManifestType type) : manifest_type_(type) {}
+
     [[nodiscard]] PackIdVersion const &getIdentity() const;
     [[nodiscard]] std::string getName() const;
 
 private:
+    ManifestType manifest_type_;
+    ManifestOrigin manifest_origin_;
     ResourceLocation location_;
-    PackIdVersion identity_;
+    ResourceLocation pack_icon_location_;
     ContentIdentity content_identity_;
-    MinEngineVersion min_engine_version_;
-    BaseGameVersion required_base_game_version_;
-    std::unordered_map<std::string, PackCapability::TrustLevel> capabilities_;
+    ContentIdentity source_identity_;
+    PackCategory pack_category_;
+    PackOrigin pack_origin_;
+    bool is_title_locked_;
+    bool expired_;
+    uint64_t size_;
+    std::string last_modified_date_;
+    std::vector<std::string> language_codes_for_pack_keywords_;
+    PackManifestFormat format_version_;
+    PackManifestFormat original_format_version_;
     std::string name_;
+    std::string description_;
+    PackIdVersion identity_;
+    PackScope pack_scope_;
+    PackType pack_type_;
+    BaseGameVersion required_base_game_version_;
+    MinEngineVersion min_engine_version_;
+    // ...
 };

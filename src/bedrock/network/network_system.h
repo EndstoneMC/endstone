@@ -40,8 +40,10 @@ protected:
     NetworkSystem(Dependencies &&);
 
     Bedrock::NotNullNonOwnerPtr<NetworkSessionOwner> network_session_owner_;
+    Bedrock::Threading::RecursiveMutex connections_mutex_;
     std::vector<std::unique_ptr<NetworkConnection>> connections_;
     std::unique_ptr<LocalConnector> local_connector_;
+    std::shared_ptr<PacketGroupDefinition::PacketGroupBuilder> packet_group_builder_;
 
 public:
     NetworkConnection *_getConnectionFromId(const NetworkIdentifier &) const;  // Endstone: private -> public
@@ -50,7 +52,6 @@ private:
     void _sendInternal(const NetworkIdentifier &id, const Packet &packet, const std::string &data);
     std::unique_ptr<RemoteConnector> remote_connector_;
     std::unique_ptr<ServerLocator> server_locator_;
-    Bedrock::Threading::RecursiveMutex connections_mutex_;
     std::size_t current_connection_;
     Bedrock::Threading::Async<void> receive_task_;
     std::unique_ptr<TaskGroup> receive_task_group_;

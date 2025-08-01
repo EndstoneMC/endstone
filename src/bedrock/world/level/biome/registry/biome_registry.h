@@ -42,6 +42,7 @@ private:
     bool client_initialized_;
     BiomeNameLookupMap biomes_by_name_;
     brstd::flat_set<gsl::not_null<Biome *>, BiomeComparator> biomes_by_id_;  // +1080
+    std::vector<std::pair<const BiomeIdType, const std::string &>> removed_biomes_id_and_full_name_;
     std::uint32_t next_custom_biome_id_;
     std::atomic<bool> closed_for_registration_;
     bool load_from_all_packs_;

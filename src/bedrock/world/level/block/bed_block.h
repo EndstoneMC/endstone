@@ -18,7 +18,7 @@
 #include <string>
 
 #include "bedrock/util/rotation.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_pos.h"
 
 namespace BedBlockSpawnOffset {
@@ -50,7 +50,7 @@ static constexpr Rotation RESPAWN_OFFSET_ROTATION_FROM_DIRECTION[4] = {Rotation:
                                                                        Rotation::None, Rotation::Rotate90};
 }  // namespace BedBlockSpawnOffset
 
-class BedBlock : public BlockLegacy {
+class BedBlock : public BlockType {
 public:
     BedBlock(const std::string &, int);
     static void setOccupied(BlockSource &, const BlockPos &, bool);

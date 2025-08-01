@@ -16,6 +16,7 @@
 
 #include "bedrock/network/network_block_position.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/serialize/serialized_packet.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 
 enum class PlayerActionType : int {
@@ -61,8 +62,17 @@ enum class PlayerActionType : int {
     Count = 38,
 };
 
-class PlayerActionPacket : public Packet {
-public:
+struct PlayerActionPacketPayload {
+    PlayerActionPacketPayload();
+    PlayerActionPacketPayload(PlayerActionType, const BlockPos &, FacingID, ActorRuntimeID);
+    PlayerActionPacketPayload(PlayerActionType, ActorRuntimeID);
+    PlayerActionPacketPayload(PlayerActionType, const BlockPos &, ActorRuntimeID);
+    PlayerActionPacketPayload(PlayerActionType, int, ActorRuntimeID);
+    PlayerActionPacketPayload(PlayerActionType, const BlockPos &, int, ActorRuntimeID);
+    PlayerActionPacketPayload(PlayerActionType, const BlockPos &, const BlockPos &, int, ActorRuntimeID);
+    [[nodiscard]] bool getIsFromServerPlayerMovementSystem() const;
+    void setFromServerPlayerMovementSystem(bool);
+
     NetworkBlockPosition pos;
     NetworkBlockPosition result_pos;
     int face;
@@ -70,6 +80,17 @@ public:
     ActorRuntimeID runtime_id;
 
 private:
-    bool is_from_server_player_movement_system_;
+    bool is_from_server_player_movement_system_;  // +40
 };
-static_assert(sizeof(PlayerActionPacket) == 96);
+
+struct PlayerActionPacketInfo {
+    static constexpr auto PACKET_NAME = "PlayerActionPacket";
+    static constexpr auto PACKET_ID = MinecraftPacketIds::PlayerAction;
+    static constexpr auto DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
+    static constexpr auto COMPRESSIBILITY = Compressibility::Compressible;
+};
+
+class PlayerActionPacket : public SerializedPayloadPacket<PlayerActionPacketInfo, PlayerActionPacketPayload> {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
+};

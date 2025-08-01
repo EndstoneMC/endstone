@@ -20,8 +20,8 @@ class EnderChestContainer : public FillingContainer {
 public:
     EnderChestContainer();
     void setActiveChest(ChestBlockActor *active_chest);
-    void startOpen(Player &player) override;
-    void stopOpen(Player &player) override;
+    void startOpen(Actor &) override;
+    void stopOpen(Actor &) override;
     Bedrock::PubSub::Connector<void()> *getContainerRemovedConnector() override;
     [[nodiscard]] bool hasRemovedSubscribers() const override;
 

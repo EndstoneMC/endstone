@@ -39,12 +39,12 @@ public:
 
     virtual ~Biome() = 0;
 
-    [[nodiscard]] float getTemperature(const BlockSource &region, const BlockPos &pos) const;
-
-    [[nodiscard]] const std::string &getName() const
+    [[nodiscard]] const std::string &getFullName() const
     {
         return hash.getString();
     }
+
+    [[nodiscard]] const std::string getNameWithoutNamespace() const;
 
     [[nodiscard]] BiomeIdType getId() const
     {

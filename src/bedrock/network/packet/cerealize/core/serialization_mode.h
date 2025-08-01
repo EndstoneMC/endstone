@@ -14,22 +14,11 @@
 
 #pragma once
 
-#include <string>
-
-#include "bedrock/network/packet.h"
-
-class AnimatePacket : public Packet {
-public:
-    enum class Action : int {
-        NoAction = 0,
-        Swing = 1,
-        WakeUp = 3,
-        CriticalHit = 4,
-        MagicCriticalHit = 5,
-    };
-
-    ActorRuntimeID runtime_id;
-    Action action;
-    float data;
+enum class SerializationMode : int {
+    ManualOnly = 0,
+    SideBySide_LogOnMismatch = 1,
+    SideBySide_AssertOnMismatch = 2,
+    SemanticSideBySide_LogOnMismatch = 3,
+    SemanticSideBySide_AssertOnMismatch = 4,
+    CerealOnly = 5,
 };
-static_assert(sizeof(AnimatePacket) == 64);

@@ -21,8 +21,8 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/nbt/compound_tag.h"
-#include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block/block_serialization_id.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block/components/block_component_direct_data.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block/states/block_state_registry.h"
@@ -83,7 +83,7 @@ public:
     [[nodiscard]] const CompoundTag &getSerializationId() const;
     [[nodiscard]] BlockRuntimeId getRuntimeId() const;
     [[nodiscard]] std::string toDebugString() const;
-    [[nodiscard]] const BlockLegacy &getLegacyBlock() const;
+    [[nodiscard]] const BlockType &getBlockType() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
     [[nodiscard]] const BlockComponentDirectData &getDirectData() const;
 
@@ -96,7 +96,7 @@ public:
             T default_value{};
             return default_value;
         }
-        return getLegacyBlock().getState<T>(*state, data_);
+        return getBlockType().getState<T>(*state, data_);
     }
 
     template <typename T>
@@ -106,7 +106,7 @@ public:
         if (!state) {
             return nullptr;
         }
-        return getLegacyBlock().trySetState<T>(*state, val, data_);
+        return getBlockType().trySetState<T>(*state, val, data_);
     }
 
     template <typename T>
@@ -122,7 +122,7 @@ private:
 
     BlockComponentStorage components_;                 // +8
     DataID data_;                                      // +112
-    gsl::not_null<BlockLegacy *> legacy_block_;        // +120
+    gsl::not_null<BlockType *> block_type_;            // +120
     CachedComponentData cached_component_data_;        //
     BlockComponentDirectData direct_data_;             //
     std::vector<HashedString> tags_;                   //

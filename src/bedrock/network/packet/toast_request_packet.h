@@ -18,8 +18,37 @@
 
 #include "bedrock/network/packet.h"
 
-class ToastRequestPacket : public Packet {
-public:
+struct ToastRequestPacketPayload {
+    ToastRequestPacketPayload();
+    ToastRequestPacketPayload(const std::string &, const std::string &);
+
     std::string title;
     std::string content;
+};
+
+class ToastRequestPacket : public Packet {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
+
+    ToastRequestPacket();
+    ToastRequestPacket(ToastRequestPacketPayload);
+
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] SerializationMode getSerializationMode() const override;
+    void setSerializationMode(SerializationMode) override;
+    void writeWithSerializationMode(BinaryStream &, const cereal::ReflectionCtx &,
+                                    std::optional<SerializationMode>) const override;
+    void write(BinaryStream &, const cereal::ReflectionCtx &) const override;
+    Bedrock::Result<void> read(ReadOnlyBinaryStream &, const cereal::ReflectionCtx &) override;
+    void write(BinaryStream &) const override;
+    Bedrock::Result<void> read(ReadOnlyBinaryStream &) override;
+
+private:
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &) override;
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &, const cereal::ReflectionCtx &) override;
+
+public:
+    ToastRequestPacketPayload payload;
+    SerializationMode serialization_mode;
 };

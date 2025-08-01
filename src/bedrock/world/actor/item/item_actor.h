@@ -64,6 +64,11 @@ public:
     void setLifeTime(int lifetime);
     // Endstone ends
 
+    struct ItemRenderAdjustments {
+        bool use_adjustments;
+        float first_rendered_yaw;
+    };
+
 private:
     ItemStack item_;
     int age_;
@@ -74,4 +79,5 @@ private:
     int lifetime_;
     bool is_in_item_frame_;
     bool is_from_fishing_;
+    std::optional<ItemRenderAdjustments> render_adjustment_;
 };
