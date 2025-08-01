@@ -42,43 +42,6 @@
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-bool handleEvent(const PlayerDamageEvent &event)
-{
-    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-        auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
-
-        if (!player->isAlive()) {
-            // Close any open form on player death
-            endstone_player.closeForm();
-
-            // Fire player death event
-            auto death_cause_message = event.damage_source->getDeathMessage(player->getName(), player);
-            endstone::Message death_message =
-                endstone::Translatable(death_cause_message.first, death_cause_message.second);
-            endstone::PlayerDeathEvent e{endstone_player,
-                                         std::make_unique<endstone::core::EndstoneDamageSource>(*event.damage_source),
-                                         death_message};
-            server.getPluginManager().callEvent(static_cast<endstone::PlayerEvent &>(e));
-            death_message = e.getDeathMessage().value_or("");
-
-            // Send death info
-            const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
-            const auto pk = std::static_pointer_cast<DeathInfoPacket>(packet);
-            pk->death_cause_message = death_cause_message;
-            player->sendNetworkPacket(*packet);
-
-            // Broadcast death messages
-            if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false) &&
-                (!std::holds_alternative<std::string>(death_message) ||
-                 !std::get<std::string>(death_message).empty())) {
-                server.broadcastMessage(death_message);
-            }
-        }
-    }
-    return true;
-}
-
 bool handleEvent(const PlayerDisconnectEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
@@ -197,8 +160,7 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
 {
     auto visitor = [&](auto &&arg) -> HandlerResult {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>>) {

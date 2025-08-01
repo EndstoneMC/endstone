@@ -30,8 +30,7 @@ public:
                  const PlayerAuthenticationInfo &, int, bool, EntityContext &, PlatformType, InputMode,
                  SyncedClientOptionsComponent);
     ~ServerPlayer() override = 0;
-    ENDSTONE_HOOK void disconnect();
-    void setLocalPlayerAsInitialized();
+    ENDSTONE_HOOK void die(const ActorDamageSource &source) override;
 
 protected:
     PlatformType platform_type_;

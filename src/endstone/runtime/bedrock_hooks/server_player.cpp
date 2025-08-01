@@ -13,3 +13,41 @@
 // limitations under the License.
 
 #include "bedrock/server/server_player.h"
+
+#include "bedrock/network/packet/death_info_packet.h"
+#include "bedrock/world/level/storage/game_rules.h"
+#include "endstone/core/damage/damage_source.h"
+#include "endstone/core/player.h"
+#include "endstone/core/server.h"
+#include "endstone/event/player/player_death_event.h"
+#include "endstone/message.h"
+#include "endstone/runtime/hook.h"
+
+void ServerPlayer::die(const ActorDamageSource &source)
+{
+    // Close any open form on player death
+    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
+    player.closeForm();
+
+    // Fire player death event
+    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto death_cause_message = source.getDeathMessage(getName(), this);
+    endstone::Message death_message = endstone::Translatable(death_cause_message.first, death_cause_message.second);
+    endstone::PlayerDeathEvent e{player, std::make_unique<endstone::core::EndstoneDamageSource>(source), death_message};
+    server.getPluginManager().callEvent(static_cast<endstone::PlayerEvent &>(e));
+    death_message = e.getDeathMessage().value_or("");
+
+    // Send death info
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
+    const auto pk = std::static_pointer_cast<DeathInfoPacket>(packet);
+    pk->death_cause_message = death_cause_message;
+    sendNetworkPacket(*packet);
+
+    // Broadcast death messages
+    if (getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false) &&
+        (!std::holds_alternative<std::string>(death_message) || !std::get<std::string>(death_message).empty())) {
+        server.broadcastMessage(death_message);
+    }
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::die, this, source);
+}
