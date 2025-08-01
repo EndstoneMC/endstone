@@ -25,16 +25,21 @@
 
 float HealthAttributeDelegate::change(float old_value, float new_value, const AttributeBuff &buff)
 {
-    if (const auto damage = old_value - new_value; damage > 0) {
+    const auto original_damage = old_value - new_value;
+    if (original_damage > 0) {
         const auto &source = buff.getSource();
         const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
         auto &mob = mob_->getEndstoneActor<endstone::core::EndstoneMob>();
-        endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
+        endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source),
+                                     original_damage};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return old_value;
         }
         new_value = old_value - e.getDamage();
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change, this, old_value, new_value, buff);
+
+    new_value = ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change, this, old_value, new_value, buff);
+    mob_->setLastHurtDamage(original_damage);
+    return new_value;
 }

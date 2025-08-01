@@ -279,6 +279,11 @@ Actor *Actor::tryGetFromEntity(StackRefResult<EntityContext> entity, bool includ
     return tryGetFromEntity(*entity, include_removed);
 }
 
+void Actor::setLastHurtDamage(float damage)
+{
+    last_hurt_ = damage;
+}
+
 // void Actor::_setHeightOffset(float offset)
 // {
 //     ActorOffset::setHeightOffset(getEntity(), offset);
