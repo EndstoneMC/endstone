@@ -268,6 +268,9 @@ public:
     Actor(ILevel &, EntityContext &);
     [[nodiscard]] bool getStatusFlag(ActorFlags) const;
     void setStatusFlag(ActorFlags, bool);
+    int getOnDeathExperience();
+    [[nodiscard]] bool getIsExperienceDropEnabled() const;
+    void setIsExperienceDropEnabled(bool);
     [[nodiscard]] bool isType(ActorType type) const;
     [[nodiscard]] bool hasType(ActorType types) const;
     [[nodiscard]] ActorType getEntityTypeId() const;

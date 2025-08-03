@@ -51,6 +51,11 @@ void Actor::setStatusFlag(ActorFlags flag, bool value)
     SynchedActorDataAccess::setActorFlag(entity_context_, flag, value);
 }
 
+int Actor::getOnDeathExperience()
+{
+    return BEDROCK_CALL(&Actor::getOnDeathExperience, this);
+}
+
 bool Actor::isType(ActorType type) const
 {
     return type == getEntityTypeId();

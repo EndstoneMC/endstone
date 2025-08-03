@@ -233,6 +233,14 @@ class ActorDeathEvent(MobEvent):
         """
         Gets the source of damage which caused the death.
         """
+    @property
+    def dropped_exp(self) -> int:
+        """
+        Gets how much EXP should be dropped from this death.
+        """
+    @dropped_exp.setter
+    def dropped_exp(self, arg1: int) -> None:
+        ...
 class ActorEvent(Event):
     """
     Represents an Actor-related event.
