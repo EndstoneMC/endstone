@@ -1,4 +1,4 @@
-timestamp = 1754318922
+timestamp = 1754334287
 version = "1.21.100-preview.25"
 
 [windows]
@@ -160,15 +160,15 @@ version = "1.21.100-preview.25"
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 145265248
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 145232624
 # MinecraftPackets
-"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 0
+"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 116381248
 # Mob
-"_ZN3Mob9knockbackEP5Actorifffff" = 0
+"_ZN3Mob9knockbackEP5Actorifffff" = 152549856
 "_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 152546736
 # NetworkConnection
 "_ZN17NetworkConnection13receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE" = 116775888
 # NetworkSystem
 "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId" = 116398272
-"_ZN13NetworkSystem14sendToMultipleERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet" = 0
+"_ZN13NetworkSystem14sendToMultipleERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet" = 116443472
 # Pack
 "_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE" = 138851232
 # PistonBlockActor
@@ -185,7 +185,7 @@ version = "1.21.100-preview.25"
 # RakPeerHelper
 "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 116468528
 # ResourcePackRepository
-"_ZN22ResourcePackRepository21_initializePackSourceEv" = 0
+"_ZN22ResourcePackRepository21_initializePackSourceEv" = 138442720
 # ResourcePackStack
 "_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEE" = 138494592
 # SayCommand
@@ -196,7 +196,7 @@ version = "1.21.100-preview.25"
 "_ZN14ServerInstance25_resetServerScriptManagerEv" = 145929792
 # ServerNetworkHandler
 "_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 115830992
-"_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 0
+"_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 115936944
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 115868896
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 115977488
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 115870320
