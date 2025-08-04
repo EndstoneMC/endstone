@@ -53,11 +53,11 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
     auto &region = overworld.unwrap()->getBlockSourceFromMainChunkSource();
     auto item_registry = level.getItemRegistry();
 
-    BlockTypeRegistry::forEachBlock([&](const BlockType &block_legacy) {
-        const auto &name = block_legacy.getName().getString();
+    BlockTypeRegistry::forEachBlock([&](const BlockType &block_type) {
+        const auto &name = block_type.getName().getString();
 
         nlohmann::json tags;
-        for (const auto &tag : block_legacy.getTags()) {
+        for (const auto &tag : block_type.getTags()) {
             auto tag_name = tag.getString();
             if (tag_name.rfind("minecraft:", 0) == std::string::npos) {
                 tag_name = "minecraft:" + tag_name;
@@ -70,12 +70,12 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
             data.block_tags[tag_name].push_back(name);
         }
 
-        data.block_types[name] = {{"defaultBlockStateHash", block_legacy.getDefaultState().getRuntimeId()}};
+        data.block_types[name] = {{"defaultBlockStateHash", block_type.getDefaultState().getRuntimeId()}};
         if (!tags.is_null()) {
             data.block_types[name]["tags"] = tags;
         }
 
-        block_legacy.forEachBlockPermutation([&](const ::Block &block) {
+        block_type.forEachBlockPermutation([&](const ::Block &block) {
             std::vector<AABB> collision_shape;
             AABB outline_shape;
             AABB visual_shape;

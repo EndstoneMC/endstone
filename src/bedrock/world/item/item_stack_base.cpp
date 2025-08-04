@@ -114,7 +114,7 @@ ItemStackBase &ItemStackBase::operator=(const ItemStackBase &rhs)
 
 ItemStackBase::~ItemStackBase() = default;
 
-void ItemStackBase::reinit(Item const & item, int count, int aux_value) {}
+void ItemStackBase::reinit(Item const &item, int count, int aux_value) {}
 
 void ItemStackBase::reinit(BlockType const &block, int count) {}
 
@@ -504,19 +504,19 @@ void ItemStackBase::init(const BlockType &block, const int count)
 
 void ItemStackBase::init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap)
 {
-    const auto &block_legacy = item.getBlockType();
+    const auto &block_type = item.getBlockType();
     const auto id = item.getId();
-    if (!block_legacy.isNull()) {
+    if (!block_type.isNull()) {
         if (id < ItemRegistry::START_ITEM_ID) {
             if (aux_value == ItemDescriptor::ANY_AUX_VALUE) {
-                block_ = &block_legacy->getRenderBlock();
-                init(*block_legacy, count);
+                block_ = &block_type->getRenderBlock();
+                init(*block_type, count);
                 aux_value_ = ItemDescriptor::ANY_AUX_VALUE;
             }
             else {
-                block_ = block_legacy->tryGetStateFromLegacyData(aux_value);
+                block_ = block_type->tryGetStateFromLegacyData(aux_value);
                 if (!block_) {
-                    init(*block_legacy, count);
+                    init(*block_type, count);
                 }
                 else {
                     init(block_->getBlockType(), count);
@@ -524,7 +524,7 @@ void ItemStackBase::init(const Item &item, int count, int aux_value, const Compo
             }
         }
         else {
-            block_ = block_legacy->tryGetStateFromLegacyData(aux_value);
+            block_ = block_type->tryGetStateFromLegacyData(aux_value);
             init(id, count, aux_value, true);
         }
     }

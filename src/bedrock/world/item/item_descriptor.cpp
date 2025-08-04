@@ -228,14 +228,14 @@ const Block *ItemDescriptor::ItemEntry::getBlock() const
     if (!item) {
         return nullptr;
     }
-    const auto &block_legacy = item->getBlockType();
-    if (block_legacy.isNull()) {
+    const auto &block_type = item->getBlockType();
+    if (block_type.isNull()) {
         return nullptr;
     }
     if (aux_value == ANY_AUX_VALUE) {
-        return &block_legacy->getRenderBlock();
+        return &block_type->getRenderBlock();
     }
-    return block_legacy->tryGetStateFromLegacyData(aux_value);
+    return block_type->tryGetStateFromLegacyData(aux_value);
 }
 
 bool ItemDescriptor::BaseDescriptor::sameItems(BaseDescriptor const &, bool flag) const
