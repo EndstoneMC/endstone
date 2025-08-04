@@ -16,7 +16,7 @@
 
 #include "bedrock/symbol.h"
 
-void BeehiveBlockActor::evictAll(BlockSource &region, bool angry)
-{
-    BEDROCK_CALL(&BeehiveBlockActor::evictAll, this, region, angry);
-}
+// void BeehiveBlockActor::evictAll(BlockSource &region, bool angry)
+// {
+//     BEDROCK_CALL(&BeehiveBlockActor::evictAll, this, region, angry);
+// }

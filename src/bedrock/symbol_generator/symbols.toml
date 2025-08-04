@@ -1,4 +1,4 @@
-timestamp = 1754336411
+timestamp = 1754336980
 version = "1.21.100-preview.25"
 
 [windows]
@@ -9,10 +9,10 @@ version = "1.21.100-preview.25"
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 86247568
 # BlockDescriptor
 "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 64210064
-# BlockLegacy
-"?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 63982208
+# BlockType
+"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z" = 63982208
 # BlockTypeRegistry
-"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockLegacy@@@Z$$A6A_N0@Z@brstd@@@Z" = 66186976
+"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 66186976
 # CampfireBlockActor
 "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 93301680
 # Command
@@ -35,6 +35,8 @@ version = "1.21.100-preview.25"
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 22378496
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 67162384
+# HealthAttributeDelegate
+"?change@HealthAttributeDelegate@@UEAAMMMAEBVAttributeBuff@@@Z" = 57642624
 # ItemRegistry
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 57846240
 # ItemStackBase
@@ -113,10 +115,10 @@ version = "1.21.100-preview.25"
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 205612208
 # BlockDescriptor
 "_ZN15BlockDescriptor13ResolveHelper7resolveEb" = 170809424
-# BlockLegacy
-"_ZNK11BlockLegacy25tryGetStateFromLegacyDataEt" = 169776240
+# BlockType
+"_ZNK9BlockType25tryGetStateFromLegacyDataEt" = 169776240
 # BlockTypeRegistry
-"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK11BlockLegacyES5_EE" = 174028704
+"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 174028704
 # CampfireBlockActor
 "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 177532960
 # Command
