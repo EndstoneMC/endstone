@@ -50,15 +50,13 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
 
 bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)
 {
+    addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(true);
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, damage, knock, ignite);
-    if (!result) {
+    if (!hasComponent<endstone::core::MobHurtFlagComponent>()) {
+        // A related ActorDamageEvent is triggered and cancelled, propagate the result to the caller to prevent kb
+        // See also: HealthAttributeDelegate::change
         return false;
     }
-    if (hasComponent<endstone::core::MobHurtCancelledFlagComponent>()) {
-        // A related ActorDamageEvent is triggered and cancelled, we need to propagate the result to the caller
-        // Otherwise, knockback may still apply even if the damage itself is cancelled.
-        addOrRemoveComponent<endstone::core::MobHurtCancelledFlagComponent>(false);
-        return false;
-    }
-    return true;
+    addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(false);
+    return result;
 }

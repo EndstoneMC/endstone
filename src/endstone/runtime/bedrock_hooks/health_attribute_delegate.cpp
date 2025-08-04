@@ -49,9 +49,9 @@ float HealthAttributeDelegate::change(float old_value, float new_value, const At
     endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
-        // This flag will be checked in Mob::_hurt and if the damage is cancelled, the Mob::_hurt will return false to
-        // prevent side effects like knockback from being applied without damage.
-        mob_->addOrRemoveComponent<endstone::core::MobHurtCancelledFlagComponent>(true);
+        // Remove the flag to signal the damage is cancelled
+        // See also: Mob::_hurt
+        mob_->addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(false);
         return old_value;
     }
     new_value = ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change,  //
