@@ -54,10 +54,10 @@ bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool 
     if (!result) {
         return false;
     }
-    if (hasComponent<endstone::core::ActorDamageEventCancelledFlagComponent>()) {
-        // A related event is triggered and cancelled, let's propagate the results to the caller
+    if (hasComponent<endstone::core::MobHurtCancelledFlagComponent>()) {
+        // A related ActorDamageEvent is triggered and cancelled, we need to propagate the result to the caller
         // Otherwise, knockback may still apply even if the damage itself is cancelled.
-        addOrRemoveComponent<endstone::core::ActorDamageEventCancelledFlagComponent>(false);
+        addOrRemoveComponent<endstone::core::MobHurtCancelledFlagComponent>(false);
         return false;
     }
     return true;

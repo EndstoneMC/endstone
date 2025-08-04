@@ -51,11 +51,11 @@ float HealthAttributeDelegate::change(float old_value, float new_value, const At
     if (e.isCancelled()) {
         // This flag will be checked in Mob::_hurt and if the damage is cancelled, the Mob::_hurt will return false to
         // prevent side effects like knockback from being applied without damage.
-        mob_->addOrRemoveComponent<endstone::core::ActorDamageEventCancelledFlagComponent>(true);
+        mob_->addOrRemoveComponent<endstone::core::MobHurtCancelledFlagComponent>(true);
         return old_value;
     }
     new_value = ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change,  //
-                                            this, old_value - e.getDamage(), new_value, buff);
+                                            this, old_value, old_value - e.getDamage(), buff);
 
     // Make sure the correct value of last hurt damage is set (see notes above)
     mob_->setLastHurtDamage(last_hurt);
