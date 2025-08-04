@@ -30,6 +30,7 @@
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
 #include "bedrock/world/item/item_category.h"
+#include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block/states/block_state.h"
 #include "bedrock/world/level/block/tint_method.h"
@@ -49,7 +50,6 @@ class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
-enum class BlockActorType;
 
 enum class BlockProperty : std::uint64_t {
     None = 0x0,
@@ -400,7 +400,7 @@ protected:
     bool return_default_block_on_unidentified_block_state_;
 
 private:
-    NewBlockID id_;
+    NewBlockID id_;  // +462
     BaseGameVersion min_required_game_version_;
     bool is_vanilla_;
     std::vector<HashedString> tags_;
