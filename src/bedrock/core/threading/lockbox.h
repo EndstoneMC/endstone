@@ -14,8 +14,10 @@
 
 #pragma once
 
+#include "bedrock/platform/threading/mutex_details.h"
+
 namespace Bedrock::Threading {
-template <typename ContentT, typename MutexT>
+template <typename ContentT, typename MutexT = Mutex>
 class BasicLockbox {
 public:
     template <typename CallableT>
@@ -40,19 +42,21 @@ protected:
     ContentT content_;
 };
 
-template <typename ContentT, typename MutexT = std::shared_timed_mutex>
+template <typename ContentT, typename MutexT = SharedMutex>
 class SharedLockbox : BasicLockbox<ContentT, MutexT> {
 public:
     template <typename Fn>
     auto lockShared(Fn &&callable) const
     {
-        return BasicLockbox<ContentT, MutexT>::lock(callable);
+        std::shared_lock<MutexT> lock(BasicLockbox<ContentT, MutexT>::mutex_);
+        return callable(BasicLockbox<ContentT, MutexT>::content_);
     }
 
     template <typename Fn>
     auto lockShared(Fn &&callable)
     {
-        return BasicLockbox<ContentT, MutexT>::lock(callable);
+        std::shared_lock<MutexT> lock(BasicLockbox<ContentT, MutexT>::mutex_);
+        return callable(BasicLockbox<ContentT, MutexT>::content_);
     }
 };
 }  // namespace Bedrock::Threading

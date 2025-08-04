@@ -1,4 +1,4 @@
-timestamp = 1754336980
+timestamp = 1754343466
 version = "1.21.100-preview.25"
 
 [windows]
@@ -14,7 +14,7 @@ version = "1.21.100-preview.25"
 # BlockTypeRegistry
 "?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 66186976
 # CampfireBlockActor
-"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 93301680
+"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 65919872
 # Command
 "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 45347392
 # CommandOriginLoader
