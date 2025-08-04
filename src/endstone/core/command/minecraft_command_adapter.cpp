@@ -94,11 +94,14 @@ std::string_view parseNode(const CommandRegistry::ParseToken &root)
 
     // Otherwise:
     const auto &child = *root.child;
-    auto *begin = findFirstWithText(&child)->text;
+    const auto *begin = findFirstWithText(&child);
+    if (!begin) {
+        return "";
+    }
 
     // (1) If this node has no next sibling, it's the last argument: consume all remaining text until the end
     if (!root.next) {
-        const auto view = rstrip(begin);
+        const auto view = rstrip(begin->text);
         if (child.type == CommandRegistry::HardNonTerminal::Id) {
             return removeQuotes(view);
         }
@@ -107,8 +110,16 @@ std::string_view parseNode(const CommandRegistry::ParseToken &root)
 
     // (2) Otherwise, find the start of the next argument and extract the substring between begin and end, then trim
     // trailing whitespace.
-    auto *end = findFirstWithText(root.next.get())->text;
-    const auto view = rstrip({begin, end});
+    const auto *end = findFirstWithText(root.next.get());
+    if (!end) {
+        const auto view = rstrip(begin->text);
+        if (child.type == CommandRegistry::HardNonTerminal::Id) {
+            return removeQuotes(view);
+        }
+        return view;
+    }
+
+    const auto view = rstrip({begin->text, end->text});
     if (child.type == CommandRegistry::HardNonTerminal::Id) {
         return removeQuotes(view);
     }

@@ -364,6 +364,8 @@ public:
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
 
+    void setLastHurtDamage(float damage);  // Endstone
+
 protected:
     void _setHeightOffset(float offset);
     void _moveHitboxTo(const Vec3 &position);

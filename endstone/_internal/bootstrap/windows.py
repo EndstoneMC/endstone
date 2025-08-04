@@ -2,12 +2,11 @@ import _winapi
 import ctypes
 import os
 import subprocess
-import sys
 import warnings
+from subprocess import STARTUPINFO, Handle, list2cmdline
 
-from endstone._internal.bootstrap.base import Bootstrap
 from endstone._internal import _detours
-from subprocess import STARTUPINFO, list2cmdline, Handle
+from endstone._internal.bootstrap.base import Bootstrap
 
 
 class PopenWithDll(subprocess.Popen):

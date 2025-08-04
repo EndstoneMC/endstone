@@ -56,11 +56,11 @@ bool handleEvent(const PlayerDamageEvent &event)
             auto death_cause_message = event.damage_source->getDeathMessage(player->getName(), player);
             endstone::Message death_message =
                 endstone::Translatable(death_cause_message.first, death_cause_message.second);
-            const auto e = std::make_unique<endstone::PlayerDeathEvent>(
-                endstone_player, std::make_unique<endstone::core::EndstoneDamageSource>(*event.damage_source),
-                death_message);
-            server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
-            death_message = e->getDeathMessage().value_or("");
+            endstone::PlayerDeathEvent e{endstone_player,
+                                         std::make_unique<endstone::core::EndstoneDamageSource>(*event.damage_source),
+                                         death_message};
+            server.getPluginManager().callEvent(static_cast<endstone::PlayerEvent &>(e));
+            death_message = e.getDeathMessage().value_or("");
 
             // Send death info
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);

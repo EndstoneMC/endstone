@@ -121,6 +121,7 @@ public:
     void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
     [[nodiscard]] PackSource &getPackSource() const;
     [[nodiscard]] bool getAllowClientPacks() const;
+    [[nodiscard]] bool logCommands() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RakNetConnector &getRakNetConnector() const;
@@ -159,7 +160,9 @@ private:
     float average_tps_[SharedConstants::TicksPerSecond] = {SharedConstants::TicksPerSecond};
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
+    // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
+    bool log_commands_ = true;
     ::Bedrock::PubSub::Subscription on_chunk_load_subscription_;
     ::Bedrock::PubSub::Subscription on_chunk_unload_subscription_;
 };

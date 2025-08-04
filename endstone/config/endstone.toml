@@ -1,4 +1,9 @@
+[commands]
+# Whether to log commands executed by players, in chat or on signs.
+# This currently logs in the format "<playername> issued server command: <command>".
+log = true
+
 [settings]
-# Allow clients to use their own packs when texturepack-required is set to true in server.properties.
+# Allow clients to use their own packs when texturepack-required is true.
 # Has no effect if texturepack-required is false.
 allow-client-packs = false
