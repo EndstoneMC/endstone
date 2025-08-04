@@ -1,12 +1,10 @@
-timestamp = 1754334287
+timestamp = 1754336411
 version = "1.21.100-preview.25"
 
 [windows]
 # Actor
 "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 52209248
 "?stopRiding@Actor@@QEAAX_N000@Z" = 52203264
-# ActorSetPosSystem
-"?setPosition@ActorSetPosSystem@@SAXAEAVEntityContext@@AEBVVec3@@_N@Z" = 0
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 86247568
 # BlockDescriptor
@@ -14,7 +12,7 @@ version = "1.21.100-preview.25"
 # BlockLegacy
 "?tryGetStateFromLegacyData@BlockLegacy@@QEBAPEBVBlock@@G@Z" = 63982208
 # BlockTypeRegistry
-"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockLegacy@@@Z$$A6A_N0@Z@brstd@@@Z" = 0
+"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockLegacy@@@Z$$A6A_N0@Z@brstd@@@Z" = 66186976
 # CampfireBlockActor
 "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 93301680
 # Command
@@ -45,7 +43,7 @@ version = "1.21.100-preview.25"
 # InventoryTransaction
 "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 59609360
 # LeavesBlock
-"?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 0
+"?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 67051344
 # Level
 "?tick@Level@@UEAAXXZ" = 63256704
 # MinecraftCommands
@@ -54,23 +52,23 @@ version = "1.21.100-preview.25"
 # MinecraftPackets
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 19571552
 # Mob
-"?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 0
-"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 54504320
+"?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 54508208
+"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 54508208
 # NetworkConnection
 "?receivePacket@NetworkConnection@@QEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z" = 21391072
 # NetworkSystem
 "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z" = 19566176
-"?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 0
+"?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 19567280
 # Pack
 "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 27811536
 # PistonBlockActor
-"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z" = 0
+"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z" = 67966352
 # Player
 "?completeUsingItem@Player@@QEAAXXZ" = 56209552
 "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 56271456
 "?take@Player@@QEAA_NAEAVActor@@HH@Z" = 56236208
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 56184880
-"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z" = 0
+"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z" = 56189568
 "?stopSleepInBed@Player@@UEAAX_N0@Z" = 56193392
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 71947504
@@ -83,7 +81,7 @@ version = "1.21.100-preview.25"
 # SayCommand
 "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 48878176
 # ScriptModuleMinecraft::ScriptBlockUtils
-"?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z" = 0
+"?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z" = 35537376
 # ServerInstance
 "?_resetServerScriptManager@ServerInstance@@AEAAXXZ" = 45799760
 # ServerNetworkHandler
@@ -102,7 +100,7 @@ version = "1.21.100-preview.25"
 "?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 51575552
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 51576448
 # Variables
-"getI18n::result" = 0
+"getI18n::result" = 120964576
 "BlockState::StateListNode::mHead" = 120810880
 "Enchant::mEnchants" = 120831120
 
@@ -111,8 +109,6 @@ version = "1.21.100-preview.25"
 # Actor
 "_ZN5Actor10teleportToERK4Vec3biib" = 153274704
 "_ZN5Actor10stopRidingEbbb" = 153266928
-# ActorSetPosSystem
-"_ZN17ActorSetPosSystem11setPositionER13EntityContextRK4Vec3b" = 98325040
 # BedrockLog
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 205612208
 # BlockDescriptor
