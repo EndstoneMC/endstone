@@ -18,5 +18,5 @@
 
 void BlockTypeRegistry::forEachBlock(brstd::function_ref<bool(const BlockType &)> callback)
 {
-    BEDROCK_CALL(&BlockTypeRegistry::forEachBlock, callback);
+    BEDROCK_CALL(&BlockTypeRegistry::forEachBlock, this, callback);
 }

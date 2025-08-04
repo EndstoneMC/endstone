@@ -1,4 +1,4 @@
-timestamp = 1754343466
+timestamp = 1754348679
 version = "1.21.100-preview.25"
 
 [windows]
@@ -12,7 +12,7 @@ version = "1.21.100-preview.25"
 # BlockType
 "?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z" = 63982208
 # BlockTypeRegistry
-"?forEachBlock@BlockTypeRegistry@@SAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 66186976
+"?forEachBlock@BlockTypeRegistry@@QEAAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 66186976
 # CampfireBlockActor
 "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 65919872
 # Command
@@ -103,7 +103,7 @@ version = "1.21.100-preview.25"
 "?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 51576448
 # Variables
 "getI18n::result" = 120964576
-"BlockState::StateListNode::mHead" = 120810880
+"BlockState::StateListNode::mHead" = 120439424
 "Enchant::mEnchants" = 120831120
 
 [linux]
