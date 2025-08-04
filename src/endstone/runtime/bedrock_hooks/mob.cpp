@@ -22,6 +22,7 @@
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/damage/damage_source.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_damage_event.h"
 #include "endstone/event/actor/actor_knockback_event.h"
@@ -45,4 +46,19 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
     const auto knockback = e.getKnockback();
     diff = e.isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};
     setPosDelta(before + diff);
+}
+
+bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)
+{
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, damage, knock, ignite);
+    if (!result) {
+        return false;
+    }
+    if (hasComponent<endstone::core::ActorDamageEventCancelledFlagComponent>()) {
+        // A related event is triggered and cancelled, let's propagate the results to the caller
+        // Otherwise, knockback may still apply even if the damage itself is cancelled.
+        addOrRemoveComponent<endstone::core::ActorDamageEventCancelledFlagComponent>(false);
+        return false;
+    }
+    return true;
 }
