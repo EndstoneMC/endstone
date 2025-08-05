@@ -32,6 +32,18 @@ std::unordered_map<PackIdVersion, PackReport> const &PackSourceReport::getReport
     return reports_;
 }
 
+void PackSource::forEachPackShared(SharedPackCallback callback)
+{
+    for (const auto &pack : _getPacks()) {
+        callback(pack);
+    }
+}
+
+void PackSource::_buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &out)
+{
+    out.emplace_back(this);
+}
+
 void PackSource::forEachPackConst(ConstPackCallback callback) const
 {
     for (const auto &pack : _getPacks()) {
@@ -44,18 +56,6 @@ void PackSource::forEachPack(PackCallback callback)
     for (const auto &pack : _getPacks()) {
         callback(*pack);
     }
-}
-
-void PackSource::forEachPackShared(SharedPackCallback callback)
-{
-    for (const auto &pack : _getPacks()) {
-        callback(pack);
-    }
-}
-
-void PackSource::_buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &out)
-{
-    out.emplace_back(this);
 }
 
 PackSourcePacks PackSource::_getPacks() const

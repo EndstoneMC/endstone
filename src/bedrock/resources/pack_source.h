@@ -27,8 +27,8 @@
 #include "bedrock/resources/pack_manifest_factory.h"
 
 using SharedPackCallback = brstd::function_ref<void(gsl::not_null<std::shared_ptr<Pack>>)>;
-using PackCallback = brstd::function_ref<void(Pack &)>;
-using ConstPackCallback = brstd::function_ref<void(const Pack &)>;
+using PackCallback = std::function<void(Pack &)>;
+using ConstPackCallback = std::function<void(const Pack &)>;
 using PackSourcePacks = std::vector<gsl::not_null<std::shared_ptr<Pack>>>;
 
 struct PackSourceOptions {
@@ -70,12 +70,13 @@ class PackStorageContainer : public Bedrock::Threading::SharedLockbox<PackStorag
 class PackSource : public Bedrock::EnableNonOwnerReferences {
 public:
     ~PackSource() override = default;
-    virtual void forEachPackConst(ConstPackCallback callback) const;
-    virtual void forEachPack(PackCallback callback);
     virtual void forEachPackShared(SharedPackCallback callback);
     [[nodiscard]] virtual PackOrigin getPackOrigin() const = 0;
     [[nodiscard]] virtual PackType getPackType() const = 0;
     virtual void _buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &);
+
+    void forEachPackConst(ConstPackCallback callback) const;
+    void forEachPack(PackCallback callback);
 
 protected:
     PackSource(PackSourceOptions options);
