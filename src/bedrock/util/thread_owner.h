@@ -27,9 +27,11 @@ enum class ThreadOwnerBehavior : int {
 
 class ThreadOwnerBase {
 protected:
+#ifdef BEDROCK_PREVIEW_SUPPORT
     std::optional<std::thread::id> thread_id_;
     unsigned int thread_check_index_;
     int thread_transfer_count_;
+#endif
 };
 
 template <typename T, ThreadOwnerBehavior WrongThreadBehavior = ThreadOwnerBehavior::Assert>
