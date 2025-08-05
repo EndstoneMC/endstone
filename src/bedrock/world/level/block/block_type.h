@@ -173,6 +173,7 @@ public:
     [[nodiscard]] virtual bool isStairBlock() const = 0;
     [[nodiscard]] virtual bool isSlabBlock() const = 0;
     [[nodiscard]] virtual bool isDoorBlock() const = 0;
+    [[nodiscard]] virtual bool isChestBlock() const = 0;
     [[nodiscard]] virtual bool isRailBlock() const = 0;
     [[nodiscard]] virtual bool isButtonBlock() const = 0;
     [[nodiscard]] virtual bool isLeverBlock() const = 0;
