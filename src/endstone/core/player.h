@@ -51,6 +51,7 @@ public:
     Result<void> removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] Server &getServer() const override;
 
     // Actor
     void remove() override;
@@ -129,6 +130,7 @@ public:
     void checkOpStatus();
 
     ::Player &getPlayer() const;
+
 private:
     friend class ::ServerNetworkHandler;
 
@@ -146,6 +148,19 @@ private:
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     bool spawned_ = false;
     bool last_op_status_ = false;
+
+public:
+    // forward
+    ENDSTONE_FORWARD_IMPL_ACTOR(EndstoneMob);
+    ENDSTONE_FORWARD_IMPL_MOB(EndstoneMob);
+    [[nodiscard]] Mob *asMob() const override
+    {
+        return EndstoneMob::asMob();
+    }
+    [[nodiscard]] Item *asItem() const override
+    {
+        return EndstoneMob::asItem();
+    }
 };
 
 }  // namespace endstone::core

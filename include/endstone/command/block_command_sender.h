@@ -22,7 +22,7 @@ namespace endstone {
 /**
  * @brief Represents a block command sender
  */
-class BlockCommandSender : public virtual CommandSender {
+class BlockCommandSender : public CommandSender {
 public:
     /**
      * @brief Returns the block this command sender belongs to

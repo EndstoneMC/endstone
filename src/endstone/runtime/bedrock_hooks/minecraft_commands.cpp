@@ -31,7 +31,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
     switch (ctx.getOrigin().getOriginType()) {
     case CommandOriginType::Player: {
         auto command_line = ctx.getCommand();
-        auto &player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
+        endstone::Player &player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
 
         endstone::PlayerCommandEvent e(player, command_line);
         server.getPluginManager().callEvent(e);

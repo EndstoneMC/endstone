@@ -34,7 +34,7 @@ namespace endstone {
 /**
  * @brief Represents a player.
  */
-class Player : public virtual Mob, public OfflinePlayer {
+class Player : public Mob, public OfflinePlayer {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 

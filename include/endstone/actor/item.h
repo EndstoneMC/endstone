@@ -21,7 +21,7 @@ namespace endstone {
 /**
  * @brief Represents a base actor in the level.
  */
-class Item : public virtual Actor {
+class Item : public Actor {
 public:
     /**
      * @brief Gets the item stack associated with this item drop.

@@ -274,6 +274,11 @@ std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermi
     return perm_->getEffectivePermissions();
 }
 
+Server &EndstonePlayer::getServer() const
+{
+    return EndstoneMob::getServer();
+}
+
 bool EndstonePlayer::isOp() const
 {
     return getPlayer().getCommandPermissionLevel() > CommandPermissionLevel::Any;

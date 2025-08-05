@@ -19,7 +19,7 @@
 
 namespace endstone::core {
 
-class ServerCommandSender : public virtual CommandSender {
+class ServerCommandSender : public CommandSender {
 protected:
     explicit ServerCommandSender(std::shared_ptr<PermissibleBase> perm = nullptr);
 
