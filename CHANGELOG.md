@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.0) - 2025-08-05
+
+<small>[Compare with 0.10.1](https://github.com/EndstoneMC/endstone/compare/v0.10.1...v0.10.2)</small>
+
+### Added
+
+- Added support for game version 1.21.100
+
+### Fixed
+
+- Fixed an issue where knockback is still applied when `ActorDamageEvent` is cancelled
+
 ## [0.10.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.1) - 2025-07-31
 
 <small>[Compare with 0.10.0](https://github.com/EndstoneMC/endstone/compare/v0.10.0...v0.10.1)</small>
