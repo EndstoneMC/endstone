@@ -182,6 +182,7 @@ class PropertyGroupManager;
 class PropertiesSettings;
 class ProjectileFactory;
 class RenderParams;
+class RepositoryPacks;
 class ResolvedItemIconInfo;
 class ResolvedTextObject;
 class ResourceDropsContext;
