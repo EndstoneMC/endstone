@@ -52,7 +52,7 @@ public:
     virtual RakNet::RakPeerInterface *getPeer();
     [[nodiscard]] virtual const RakNet::RakPeerInterface *getPeer() const;
     TransportLayer getNetworkType() const override;
-    void setDisableLanSignaligng(bool) override;
+    void setDisableLanSignaling(bool) override;
 
 private:
     void _onDisable() override;
