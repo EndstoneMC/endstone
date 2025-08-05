@@ -4,9 +4,9 @@
     <compoundname>endstone::CommandSender</compoundname>
     <basecompoundref refid="classendstone_1_1Permissible" prot="public" virt="non-virtual">endstone::Permissible</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1BlockCommandSender" prot="public" virt="virtual">endstone::BlockCommandSender</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1BlockCommandSender" prot="public" virt="non-virtual">endstone::BlockCommandSender</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1CommandSenderWrapper" prot="public" virt="non-virtual">endstone::CommandSenderWrapper</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1ConsoleCommandSender" prot="public" virt="virtual">endstone::ConsoleCommandSender</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ConsoleCommandSender" prot="public" virt="non-virtual">endstone::ConsoleCommandSender</derivedcompoundref>
     <includes refid="command__sender_8h" local="no">endstone/command/command_sender.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">

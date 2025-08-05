@@ -3,8 +3,8 @@
   <compounddef id="classendstone_1_1Actor" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Actor</compoundname>
     <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
-    <derivedcompoundref refid="classendstone_1_1Item" prot="public" virt="virtual">endstone::Item</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1Mob" prot="public" virt="virtual">endstone::Mob</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Item" prot="public" virt="non-virtual">endstone::Item</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Mob" prot="public" virt="non-virtual">endstone::Mob</derivedcompoundref>
     <includes refid="actor_8h" local="no">endstone/actor/actor.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Actor_1acbd7afe34e58507083765ae5d27ff9c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

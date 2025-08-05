@@ -29,7 +29,7 @@
 
 namespace endstone {
 
-class BlockCommandSender : public virtual CommandSender {
+class BlockCommandSender : public CommandSender {
 public:
     [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 };

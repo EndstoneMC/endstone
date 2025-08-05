@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Player" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Player</compoundname>
-    <basecompoundref refid="classendstone_1_1Mob" prot="public" virt="virtual">endstone::Mob</basecompoundref>
+    <basecompoundref refid="classendstone_1_1Mob" prot="public" virt="non-virtual">endstone::Mob</basecompoundref>
     <basecompoundref refid="classendstone_1_1OfflinePlayer" prot="public" virt="non-virtual">endstone::OfflinePlayer</basecompoundref>
     <includes refid="player_8h" local="no">endstone/player.h</includes>
     <sectiondef kind="protected-type">

@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Mob" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Mob</compoundname>
-    <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="virtual">endstone::Actor</basecompoundref>
-    <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="virtual">endstone::Player</derivedcompoundref>
+    <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
     <includes refid="mob_8h" local="no">endstone/actor/mob.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

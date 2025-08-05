@@ -28,7 +28,7 @@
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
-class Item : public virtual Actor {
+class Item : public Actor {
 public:
     [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemStack() const = 0;
 

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1BlockCommandSender" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BlockCommandSender</compoundname>
-    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="virtual">endstone::CommandSender</basecompoundref>
+    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
     <includes refid="block__command__sender_8h" local="no">endstone/command/block_command_sender.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1BlockCommandSender_1a4b8542ff30c04bccecba373dde32188b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1ConsoleCommandSender" kind="class" language="C++" prot="public">
     <compoundname>endstone::ConsoleCommandSender</compoundname>
-    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="virtual">endstone::CommandSender</basecompoundref>
+    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
     <includes refid="console__command__sender_8h" local="no">endstone/command/console_command_sender.h</includes>
     <briefdescription>
 <para>Represents a console command sender. </para>
