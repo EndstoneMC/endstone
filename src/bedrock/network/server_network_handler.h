@@ -64,8 +64,9 @@ public:
     void updateServerAnnouncement();
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
 
-    ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);                                // Endstone
-    void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id, std::string const &reason);  // Endstone
+    ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
+    void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id,
+                    std::string const &reason);  // Endstone
 
 private:
     friend class endstone::core::EndstoneServer;
@@ -119,7 +120,7 @@ private:
     std::vector<mce::UUID> known_emote_piece_ids_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::string, std::shared_ptr<ResourcePackFileUploadManager>>>
         resource_upload_managers_;
-    gsl::not_null<std::shared_ptr<std::shared_ptr<Bedrock::Threading::IAsyncResult<void>>>> previous_upload_;
+    gsl::not_null<std::shared_ptr<Bedrock::Threading::SharedAsync<void>>> previous_upload_;
     gsl::not_null<std::unique_ptr<ResourcePackPathLifetimeHelpers::ResourcePackPathCache>> resource_pack_path_cache_;
     gsl::not_null<std::unique_ptr<TaskGroup>> async_join_task_group_;
     gsl::not_null<std::unique_ptr<AsyncJoinTaskManager>> async_join_task_manager_;

@@ -14,14 +14,7 @@
 
 #pragma once
 
-#include "bedrock/core/math/vec3.h"
-#include "bedrock/core/math/vec2.h"
-#include "bedrock/entity/components/hitbox_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-
-class ActorSetPosSystem {
-public:
-    static void moveHitboxTo(const Vec3 &pos, std::vector<Hitbox> &hitboxes);
-    static AABB refreshAABB(float offset, const Vec3 &position, const Vec2 &bb_dim);
-    static void setPosition(EntityContext &entity, const Vec3 &position, bool is_client_side);
+struct TickDeathSettings {
+    bool enabled;
 };
+static_assert(sizeof(TickDeathSettings) == 1);

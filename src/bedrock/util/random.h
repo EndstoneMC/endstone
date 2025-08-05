@@ -50,7 +50,7 @@ public:
     virtual std::unique_ptr<IPositionalRandomFactory> forkPositional();
 };
 
-class Random : public IRandom, public Bedrock::EnableNonOwnerReferences {
+class Random : public IRandom {
     using result_type = uint32_t;
 
 public:

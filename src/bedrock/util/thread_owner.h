@@ -25,7 +25,12 @@ enum class ThreadOwnerBehavior : int {
     Log = 1,
 };
 
-class ThreadOwnerBase {};
+class ThreadOwnerBase {
+protected:
+    std::optional<std::thread::id> thread_id_;
+    unsigned int thread_check_index_;
+    int thread_transfer_count_;
+};
 
 template <typename T, ThreadOwnerBehavior WrongThreadBehavior = ThreadOwnerBehavior::Assert>
 class ThreadOwner : public ThreadOwnerBase {
@@ -41,6 +46,6 @@ public:
     }
 
 private:
-    T object_;  // +24
+    T object_;
 };
 }  // namespace Bedrock::Application

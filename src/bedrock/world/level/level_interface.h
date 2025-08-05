@@ -30,6 +30,7 @@
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/gamerefs/stack_ref_result.h"
 #include "bedrock/network/net_event_callback.h"
+#include "bedrock/network/packet/start_game_packet.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/resources/resource_pack_manager.h"
@@ -41,6 +42,7 @@
 #include "bedrock/util/random.h"
 #include "bedrock/util/tag_registry.h"
 #include "bedrock/world/actor/actor_sound_identifier.h"
+#include "bedrock/world/actor/death/tick_death_setting.h"
 #include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 #include "bedrock/world/events/actor_event_coordinator.h"
@@ -122,6 +124,8 @@ public:
     virtual Actor *addAutonomousEntity(BlockSource &, OwnerPtr<EntityContext>) = 0;
     virtual void addUser(OwnerPtr<EntityContext>) = 0;
     virtual Actor *addDisplayEntity(BlockSource &, OwnerPtr<EntityContext>) = 0;
+    virtual Actor *putEntity(BlockSource &, ActorUniqueID, ActorRuntimeID, OwnerPtr<EntityContext>) = 0;
+    virtual Actor *putEntity(BlockSource &, ActorUniqueID, OwnerPtr<EntityContext>) = 0;
     virtual void removeDisplayEntity(WeakEntityRef) = 0;
     virtual void *getDisplayActorManager() = 0;
     virtual void suspendPlayer(Player &) = 0;
@@ -386,6 +390,8 @@ public:
     virtual void setPlayerMovementSettings(PlayerMovementSettings const &) = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() const = 0;
+    [[nodiscard]] virtual const TickDeathSettings &getTickDeathSettings() const = 0;
+    virtual void setTickDeathSettings(const TickDeathSettings &) = 0;
     [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &,
                                           ActorUniqueID const &) const = 0;
     [[nodiscard]] virtual void *getTrustedSkinHelper() const = 0;
@@ -452,7 +458,7 @@ public:
     virtual std::weak_ptr<TrimPatternRegistry> getTrimPatternRegistry() = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimMaterialRegistry const> getTrimMaterialRegistry() const = 0;
     virtual std::weak_ptr<TrimMaterialRegistry> getTrimMaterialRegistry() = 0;
-    [[nodiscard]] virtual BlockLegacy const &getRegisteredBorderBlock() const = 0;
+    [[nodiscard]] virtual BlockType const &getRegisteredBorderBlock() const = 0;
     virtual void *getLevelChunkPerformanceTelemetry() = 0;
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
     virtual void addBlockSourceForValidityTracking(BlockSource *) = 0;
@@ -469,10 +475,12 @@ public:
     virtual bool isClientSideGenerationEnabled() = 0;
     virtual bool blockNetworkIdsAreHashes() = 0;
     [[nodiscard]] virtual ItemRegistryRef getItemRegistry() const = 0;
-    [[nodiscard]] virtual std::weak_ptr<BlockTypeRegistry> getBlockRegistry() const = 0;
+    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<BlockTypeRegistry> getBlockTypeRegistry() const = 0;
     virtual void pauseAndFlushTaskGroups() = 0;
+    virtual cereal::ReflectionCtx &cerealContext() = 0;
     [[nodiscard]] virtual const cereal::ReflectionCtx &cerealContext() const = 0;
     virtual void subChunkTickAndSendRequests() = 0;
+    virtual void digestServerBlockProperties(const StartGamePacket &) = 0;
 
 protected:
     virtual PlayerDeathManager *_getPlayerDeathManager() = 0;

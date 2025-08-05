@@ -17,10 +17,39 @@
 #include <chrono>
 #include <functional>
 
+enum class DevConnectionQuality : int {
+    OFF = 0,
+    NO_LIMIT = 1,
+    PHONE_4G = 2,
+    PHONE_3G = 3,
+    SLOW = 4,
+    VERY_SLOW = 5,
+};
+
 enum class Compressibility {
     Compressible = 0,
     Incompressible = 1,
 };
+
+enum class PacketCompressionAlgorithm : std::uint16_t {
+    ZLib = 0,
+    Snappy = 1,
+    None = static_cast<std::uint16_t>(-1),
+};
+
+struct NetworkSettingOptions {
+    NetworkSettingOptions();
+    NetworkSettingOptions(uint16_t, PacketCompressionAlgorithm, int, float, bool, bool);
+    uint16_t compression_threshold;
+    PacketCompressionAlgorithm compression_algorithm;
+    bool client_throttle_enabled;
+    int client_throttle_threshold;
+    float client_throttle_scalar;
+    bool raknet_join_flood_protection_enabled;
+    bool encryption_disabled;
+    DevConnectionQuality dev_connection_quality;
+};
+static_assert(sizeof(NetworkSettingOptions) == 24);
 
 class NetworkPeer {
 public:
@@ -42,10 +71,12 @@ public:
 
     virtual ~NetworkPeer() = default;
     virtual void sendPacket(const std::string &, Reliability, Compressibility) = 0;
-    virtual DataStatus receivePacket(std::string &, const PacketRecvTimepointPtr &) = 0;
     [[nodiscard]] virtual NetworkStatus getNetworkStatus() const = 0;
     virtual void update() = 0;
     virtual void flush(std::function<void()> &&) = 0;
     [[nodiscard]] virtual bool isLocal() const = 0;
     [[nodiscard]] virtual bool isEncrypted() const = 0;
+
+protected:
+    virtual DataStatus _receivePacket(std::string &, const PacketRecvTimepointPtr &) = 0;
 };

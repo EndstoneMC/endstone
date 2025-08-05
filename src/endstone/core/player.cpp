@@ -159,7 +159,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::PlayerAction: {
         auto &pk = static_cast<PlayerActionPacket &>(packet);
-        if (pk.action == PlayerActionType::StopSleeping && getPlayer().isSleeping()) {
+        if (pk.payload.action == PlayerActionType::StopSleeping && getPlayer().isSleeping()) {
             std::unique_ptr<Block> bed;
             if (getPlayer().hasBedPosition()) {
                 const auto bed_position = getPlayer().getBedPosition();
@@ -332,8 +332,8 @@ void EndstonePlayer::sendToast(std::string title, std::string content) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ToastRequest);
     auto pk = std::static_pointer_cast<ToastRequestPacket>(packet);
-    pk->title = std::move(title);
-    pk->content = std::move(content);
+    pk->payload.title = std::move(title);
+    pk->payload.content = std::move(content);
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -462,21 +462,21 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
         auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
-        pk->type = SetTitlePacket::TitleType::Title;
-        pk->title_text = std::move(title);
-        pk->fade_in_time = fade_in;
-        pk->stay_time = stay;
-        pk->fade_out_time = fade_out;
+        pk->payload.type = SetTitlePacketPayload::TitleType::Title;
+        pk->payload.title_text = std::move(title);
+        pk->payload.fade_in_time = fade_in;
+        pk->payload.stay_time = stay;
+        pk->payload.fade_out_time = fade_out;
         getPlayer().sendNetworkPacket(*packet);
     }
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
         auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
-        pk->type = SetTitlePacket::TitleType::Subtitle;
-        pk->title_text = std::move(subtitle);
-        pk->fade_in_time = fade_in;
-        pk->stay_time = stay;
-        pk->fade_out_time = fade_out;
+        pk->payload.type = SetTitlePacketPayload::TitleType::Subtitle;
+        pk->payload.title_text = std::move(subtitle);
+        pk->payload.fade_in_time = fade_in;
+        pk->payload.stay_time = stay;
+        pk->payload.fade_out_time = fade_out;
         getPlayer().sendNetworkPacket(*packet);
     }
 }
@@ -485,7 +485,7 @@ void EndstonePlayer::resetTitle() const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
     auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
-    pk->type = SetTitlePacket::TitleType::Reset;
+    pk->payload.type = SetTitlePacketPayload::TitleType::Reset;
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -671,8 +671,8 @@ void EndstonePlayer::transfer(std::string host, int port) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
-    pk->destination = std::move(host);
-    pk->destination_port = port;
+    pk->payload.destination = std::move(host);
+    pk->payload.destination_port = port;
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -683,13 +683,13 @@ void EndstonePlayer::sendForm(FormVariant form)
     }
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
-    pk->form_id = ++form_ids_;
-    pk->form_json = std::visit(overloaded{[](auto &&arg) {
-                                   return FormCodec::toJson(arg);
-                               }},
-                               form)
-                        .dump();
-    forms_.emplace(pk->form_id, std::move(form));
+    pk->payload.form_id = ++form_ids_;
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
+                                           return FormCodec::toJson(arg);
+                                       }},
+                                       form)
+                                .dump();
+    forms_.emplace(pk->payload.form_id, std::move(form));
     getPlayer().sendNetworkPacket(*packet);
 }
 

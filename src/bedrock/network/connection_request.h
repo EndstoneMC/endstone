@@ -31,6 +31,7 @@
 
 class ConnectionRequest {
 public:
+    [[nodiscard]] const PlayerAuthenticationInfo &getAuthenticationInfo() const;
     [[nodiscard]] PlayerAuthenticationType getAuthenticationType() const;
     [[nodiscard]] std::string getSelfSignedId() const;
     [[nodiscard]] std::string getServerAddress() const;
@@ -82,15 +83,17 @@ public:
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
     [[nodiscard]] bool isValid() const;
 
-    [[nodiscard]] std::string getLanguageCode() const;                              // Endstone
-    [[nodiscard]] const LegacyMultiplayerToken &getLegacyMultiplayerToken() const;  // Endstone
+    [[nodiscard]] std::string getLanguageCode() const;  // Endstone
 
 private:
     [[nodiscard]] Json::Value getData(const std::string &key) const;
 
+    bool is_verified_;
     std::unique_ptr<WebToken> raw_token_;
     std::unique_ptr<UnverifiedCertificate> certificate_data_;
     LegacyMultiplayerToken legacy_multiplayer_token_;
-    RawGameServerToken game_server_token_;
+    RawGameServerToken unverified_game_server_token_;
+    GameServerToken verified_game_server_token_;
     PlayerAuthenticationType authentication_type_;
+    PlayerAuthenticationInfo authentication_info_;
 };

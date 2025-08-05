@@ -16,7 +16,7 @@
 
 #include "bedrock/symbol.h"
 
-bool Weather::isRainingAt(BlockSource &region, const BlockPos &pos) const
-{
-    return BEDROCK_CALL(&Weather::isRainingAt, this, region, pos);
-}
+// bool Weather::isRainingAt(BlockSource &region, const BlockPos &pos) const
+// {
+//     return BEDROCK_CALL(&Weather::isRainingAt, this, region, pos);
+// }

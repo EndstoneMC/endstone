@@ -65,7 +65,7 @@ bool handleEvent(const PlayerDamageEvent &event)
             // Send death info
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
             const auto pk = std::static_pointer_cast<DeathInfoPacket>(packet);
-            pk->death_cause_message = death_cause_message;
+            pk->payload.death_cause_message = death_cause_message;
             player->sendNetworkPacket(*packet);
 
             // Broadcast death messages
@@ -179,11 +179,11 @@ bool handleEvent(::PlayerGameModeChangeEvent &event)
         if (e.isCancelled()) {
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdatePlayerGameType);
             const auto pk = std::static_pointer_cast<UpdatePlayerGameTypePacket>(packet);
-            pk->player_game_type = event.from_game_mode;
-            pk->target_player = player->getOrCreateUniqueID();
-            pk->tick = 0;
+            pk->payload.player_game_type = event.from_game_mode;
+            pk->payload.target_player = player->getOrCreateUniqueID();
+            pk->payload.tick = 0;
             if (const auto *component = player->tryGetComponent<ReplayStateComponent>(); component) {
-                pk->tick = component->getCurrentTick();
+                pk->payload.tick = component->getCurrentTick();
             }
             server.getServer().getPacketSender().sendBroadcast(*pk);
             return false;

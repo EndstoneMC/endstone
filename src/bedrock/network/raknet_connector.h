@@ -51,4 +51,10 @@ public:
     [[nodiscard]] NetworkIdentifier getNetworkIdentifier() const override;
     virtual RakNet::RakPeerInterface *getPeer();
     [[nodiscard]] virtual const RakNet::RakPeerInterface *getPeer() const;
+    TransportLayer getNetworkType() const override;
+    void setDisableLanSignaling(bool) override;
+
+private:
+    void _onDisable() override;
+    void _onEnable() override;
 };

@@ -106,7 +106,8 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     const auto header = packet_id | (static_cast<unsigned>(sender_sub_id) << 10) |
                         (static_cast<unsigned>(packet.getClientSubId()) << 12);
     stream.writeUnsignedVarInt(header, "Header Data", nullptr);
-    packet.write(stream);
+    packet.writeWithSerializationMode(stream, *reflection_ctx_.get(),
+                                      packet_overrides_->getOverrideModeForPacket(packet.getId()));
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     const auto *server_player =

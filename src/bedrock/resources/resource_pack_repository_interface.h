@@ -31,7 +31,8 @@ public:
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdOwned(PackIdVersion const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackSatisfiesPackId(PackIdVersion const &, bool) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackContainingModule(PackIdVersion const &) const = 0;
-    [[nodiscard]] virtual ResourcePack *getResourcePackInPath(Core::Path const &) const = 0;
+    [[nodiscard]] virtual Bedrock::Threading::Async<std::shared_ptr<ResourcePack>> getResourcePackInPath(
+        Core::Path const &) const = 0;
     virtual bool isResourcePackLoaded(PackIdVersion const &, PackOrigin const &) = 0;
     [[nodiscard]] virtual PackSourceReport const *getPackLoadingReport() const = 0;
     [[nodiscard]] virtual ResourcePack *getEditorPack() const = 0;
@@ -74,7 +75,7 @@ public:
     virtual void deletePackFiles(ResourceLocation const &) = 0;
     virtual void postDeletePack(ResourceLocation const &) = 0;
     virtual void untrackInvalidPack(ResourceLocation const &) = 0;
-    virtual void registerResourcePackRemovedCallback(void *, std::function<void(ResourcePack *)>) = 0;
-    virtual void unregisterResourcePackRemovedCallback(void *) = 0;
-    virtual bool isInitialized() const = 0;
+    // virtual void registerResourcePackRemovedCallback(void *, std::function<void(ResourcePack *)>) = 0;
+    // virtual void unregisterResourcePackRemovedCallback(void *) = 0;
+    [[nodiscard]] virtual bool isInitialized() const = 0;
 };
