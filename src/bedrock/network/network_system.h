@@ -21,6 +21,7 @@
 #include "bedrock/network/network_connection.h"
 #include "bedrock/network/network_enable_disable_listener.h"
 #include "bedrock/network/packet_observer_interface.h"
+#include "bedrock/network/packet_serialization_controller.h"
 #include "bedrock/network/rak_peer_helper.h"
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/platform/threading/mutex_details.h"
@@ -73,6 +74,9 @@ private:
     uint16_t default_game_port_;
     uint16_t default_game_port_v6_;
     bool is_lan_discovery_enabled_;
-    void *network_statistics_;
-    // ...
+    std::unique_ptr<NetworkStatistics> network_statistics_;
+    bool websockets_enabled_;
+    NetworkSettingOptions network_setting_options_;
+    gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> reflection_ctx_;             // +512
+    gsl::not_null<std::unique_ptr<IPacketSerializationController>> packet_overrides_;  // +520
 };

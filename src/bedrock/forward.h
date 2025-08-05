@@ -153,6 +153,7 @@ class MoveInputComponent;
 class NavigationComponent;
 class NetworkChunkPublisher;
 class NetworkSessionOwner;
+class NetworkStatistics {};
 class Options;
 class PackManifestFactory;
 class PackMetadata;
