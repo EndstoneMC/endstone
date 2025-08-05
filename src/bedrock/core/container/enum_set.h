@@ -19,12 +19,12 @@
 namespace Bedrock {
 template <typename TEnum, TEnum SizeEnum>
 class EnumSet {
+public:
     using size_type = size_t;
     static constexpr size_type MaxSize = static_cast<size_type>(SizeEnum);
-    using container_type = brstd::bitset<5UL, unsigned char>;
+    using container_type = brstd::bitset<MaxSize, std::underlying_type_t<TEnum>>;
     using value_type = TEnum;
 
-public:
     class iterator {
         using reference = TEnum;
 
@@ -35,28 +35,42 @@ public:
         iterator operator++(int);
 
     private:
-        iterator(const EnumSet &, const size_type);
+        friend class EnumSet;
+        iterator(const EnumSet &set, size_type index) : set_(&set), index_(index) {}
         const EnumSet *set_;
         size_type index_;
     };
     static_assert(sizeof(iterator) == 16);
 
-private:
     using const_iterator = iterator;
 
-public:
     EnumSet();
-    EnumSet(std::initializer_list<TEnum>);
+    EnumSet(std::initializer_list<value_type>);
     bool empty() const;
     size_type size() const;
     size_type max_size() const;
     void clear();
-    std::pair<iterator, bool> insert(const value_type);
-    void insert(std::initializer_list<TEnum>);
+
+    constexpr std::pair<iterator, bool> insert(value_type value)
+    {
+        using U = std::underlying_type_t<TEnum>;
+        auto idx = static_cast<U>(value);
+        if (container_.test(idx)) {
+            return {iterator(*this, idx), false};
+        }
+        container_.set(idx);
+        return {iterator(*this, idx), true};
+    }
+
+    void insert(std::initializer_list<value_type>);
     bool erase(const value_type);
     iterator erase(const const_iterator);
     const_iterator find(const value_type) const;
-    bool contains(const value_type) const;
+    constexpr bool contains(const value_type value) const
+    {
+        using U = std::underlying_type_t<TEnum>;
+        return container_.test(static_cast<U>(value));
+    }
     void merge(const EnumSet &);
     void intersect(const EnumSet &);
     void difference(const EnumSet &);

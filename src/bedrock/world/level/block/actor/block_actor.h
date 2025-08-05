@@ -51,12 +51,12 @@ public:
 
     void setChanged()
     {
-        changed_ = true;
+        properties_.insert(Property::Changed);
     }
 
     [[nodiscard]] bool isChanged() const
     {
-        return changed_;
+        return properties_.contains(Property::Changed);
     }
 
     [[nodiscard]] BlockActorType getType() const
@@ -77,7 +77,7 @@ protected:
     Bedrock::Safety::RedactableString custom_name_;
     ActorTerrainInterlockData terrain_interlock_data_;
 
-private:
-    bool changed_;
+    // private:
+    //     bool changed_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 168, 144);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 160, 144);
