@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.10.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.0) - 2025-08-05
+## [0.10.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.3) - 2025-08-06
+
+<small>[Compare with 0.10.2](https://github.com/EndstoneMC/endstone/compare/v0.10.2...v0.10.3)</small>
+
+### Added
+
+- Added support for BDS version 1.21.100.7
+
+## [0.10.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.2) - 2025-08-05
 
 <small>[Compare with 0.10.1](https://github.com/EndstoneMC/endstone/compare/v0.10.1...v0.10.2)</small>
 
@@ -548,8 +556,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `Player::isOp` and `Player::setOp` methods are now consistent with the similar methods in the scripting API.
 - The fix for the warning message about empty packets is now redundant and has been removed.
-- **BREAKING CHANGE:*- `Server::getLevels` has been replaced by `Server::getLevel`.
-- **BREAKING CHANGE:*- `Player::getDeviceId` now returns a string object instead of a UUID object, as it is not
+- **BREAKING CHANGE:** `Server::getLevels` has been replaced by `Server::getLevel`.
+- **BREAKING CHANGE:** `Player::getDeviceId` now returns a string object instead of a UUID object, as it is not
   guaranteed to be a UUID on all platforms.
 
 ### Fixed
@@ -578,15 +586,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `Player::getXuid` to get the Xbox User ID (XUID) of the player.
 - Python: package metadata can now be used as a fallback for plugin metadata.
 - Python: `isinstance` function can now be used to check if a `CommandSender` is a `Player` or `ConsoleCommandSender`.
-- **Experimental*- Scoreboard API.
-- **Experimental*- Form API.
+- **Experimental** Scoreboard API.
+- **Experimental** Form API.
 
 ### Changed
 
 - `Player` class now inherits from the `Mob` class instead of `Actor` class.
-- **BREAKING CHANGE:*- Plugin names should only contain lowercase letters, numbers, and underscores. Use the prefix
+- **BREAKING CHANGE:** Plugin names should only contain lowercase letters, numbers, and underscores. Use the prefix
   property to display a different name for the plugin logger.
-- **BREAKING CHANGE:*- The `player.ping` property now returns an `int` instead of `datetime.timedelta`.
+- **BREAKING CHANGE:** The `player.ping` property now returns an `int` instead of `datetime.timedelta`.
 
 ### Fixed
 
