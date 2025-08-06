@@ -855,13 +855,16 @@
   <compound refid="classendstone_1_1Location" kind="class"><name>endstone::Location</name>
     <member refid="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" kind="variable"><name>pitch_</name></member>
     <member refid="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" kind="variable"><name>yaw_</name></member>
-    <member refid="classendstone_1_1Location_1ae9e92105e8564dc4bad48f2403ed8c8f" kind="function"><name>Location</name></member>
-    <member refid="classendstone_1_1Location_1a21b717a3b891dd762352517c93c700be" kind="function"><name>Location</name></member>
+    <member refid="classendstone_1_1Location_1a1ec203c20e222d518b12a065703f62d2" kind="function"><name>Location</name></member>
+    <member refid="classendstone_1_1Location_1afa5301b5666075dd78b66145003b7beb" kind="function"><name>Location</name></member>
+    <member refid="classendstone_1_1Location_1af13e92b895db527ad011c8438ed9ca93" kind="function"><name>Location</name></member>
     <member refid="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" kind="function"><name>getPitch</name></member>
     <member refid="classendstone_1_1Location_1a27175a2731840cf6a10438adb80e8ad1" kind="function"><name>setPitch</name></member>
     <member refid="classendstone_1_1Location_1a15b337fd56d6e8e4cb24ba1b6b745a41" kind="function"><name>getYaw</name></member>
     <member refid="classendstone_1_1Location_1adc5ba432e8d7e277ad1a004f51fe5e5d" kind="function"><name>setYaw</name></member>
     <member refid="classendstone_1_1Location_1ac7bbf98fefeb8b94ed69c98382fec84e" kind="function"><name>getDirection</name></member>
+    <member refid="classendstone_1_1Location_1afd7f8dbb082f27f480135d4ba430bdaa" kind="function"><name>Position</name></member>
+    <member refid="classendstone_1_1Location_1a4d254166aee4f58209134e7e56c16597" kind="function"><name>Position</name></member>
   </compound>
   <compound refid="classendstone_1_1Logger" kind="class"><name>endstone::Logger</name>
     <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144" kind="enum"><name>Level</name></member>
@@ -1563,7 +1566,8 @@
   </compound>
   <compound refid="classendstone_1_1Position" kind="class"><name>endstone::Position</name>
     <member refid="classendstone_1_1Position_1a30efe8f141cbd247bf6cb6a243bb0c41" kind="variable"><name>dimension_</name></member>
-    <member refid="classendstone_1_1Position_1a514089ce3532bcb0eaf40d847957ae6b" kind="function"><name>Position</name></member>
+    <member refid="classendstone_1_1Position_1afd7f8dbb082f27f480135d4ba430bdaa" kind="function"><name>Position</name></member>
+    <member refid="classendstone_1_1Position_1a4d254166aee4f58209134e7e56c16597" kind="function"><name>Position</name></member>
     <member refid="classendstone_1_1Position_1a02a939bf78aa4870eec36ec10e2757da" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" kind="function"><name>setDimension</name></member>
     <member refid="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" kind="function"><name>getBlockX</name></member>

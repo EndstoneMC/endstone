@@ -18,30 +18,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/position.h" line="85" column="15" bodyfile="include/endstone/level/position.h" bodystart="85" bodyend="-1"/>
+        <location file="include/endstone/level/position.h" line="95" column="15" bodyfile="include/endstone/level/position.h" bodystart="95" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Position_1a514089ce3532bcb0eaf40d847957ae6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Position_1afd7f8dbb082f27f480135d4ba430bdaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;T, float&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
         <type></type>
         <definition>endstone::Position::Position</definition>
-        <argsstring>(Dimension *dimension, float x, float y, float z)</argsstring>
+        <argsstring>(T x, T y, T z)</argsstring>
         <name>Position</name>
         <qualifiedname>endstone::Position::Position</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
-          <declname>dimension</declname>
-        </param>
-        <param>
-          <type>float</type>
+          <type>T</type>
           <declname>x</declname>
         </param>
         <param>
-          <type>float</type>
+          <type>T</type>
           <declname>y</declname>
         </param>
         <param>
-          <type>float</type>
+          <type>T</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -50,7 +55,46 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/position.h" line="32" column="5" bodyfile="include/endstone/level/position.h" bodystart="32" bodyend="32"/>
+        <location file="include/endstone/level/position.h" line="33" column="5" bodyfile="include/endstone/level/position.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Position_1a4d254166aee4f58209134e7e56c16597" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;T, float&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::Position::Position</definition>
+        <argsstring>(T x, T y, T z, Dimension &amp;dimension)</argsstring>
+        <name>Position</name>
+        <qualifiedname>endstone::Position::Position</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
+          <declname>dimension</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/position.h" line="39" column="5" bodyfile="include/endstone/level/position.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1a02a939bf78aa4870eec36ec10e2757da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
@@ -68,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/position.h" line="39" column="16" bodyfile="include/endstone/level/position.h" bodystart="39" bodyend="42"/>
+        <location file="include/endstone/level/position.h" line="49" column="16" bodyfile="include/endstone/level/position.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -97,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/position.h" line="49" column="10" bodyfile="include/endstone/level/position.h" bodystart="49" bodyend="52"/>
+        <location file="include/endstone/level/position.h" line="59" column="10" bodyfile="include/endstone/level/position.h" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -115,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/position.h" line="59" column="10" bodyfile="include/endstone/level/position.h" bodystart="59" bodyend="62"/>
+        <location file="include/endstone/level/position.h" line="69" column="10" bodyfile="include/endstone/level/position.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -133,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/position.h" line="69" column="10" bodyfile="include/endstone/level/position.h" bodystart="69" bodyend="72"/>
+        <location file="include/endstone/level/position.h" line="79" column="10" bodyfile="include/endstone/level/position.h" bodystart="79" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -151,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/position.h" line="79" column="10" bodyfile="include/endstone/level/position.h" bodystart="79" bodyend="82"/>
+        <location file="include/endstone/level/position.h" line="89" column="10" bodyfile="include/endstone/level/position.h" bodystart="89" bodyend="92"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -189,7 +233,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/level/position.h" line="30" column="1" bodyfile="include/endstone/level/position.h" bodystart="30" bodyend="86"/>
+    <location file="include/endstone/level/position.h" line="30" column="1" bodyfile="include/endstone/level/position.h" bodystart="30" bodyend="96"/>
     <listofallmembers>
       <member refid="classendstone_1_1Position_1a30efe8f141cbd247bf6cb6a243bb0c41" prot="private" virt="non-virtual"><scope>endstone::Position</scope><name>dimension_</name></member>
       <member refid="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>distance</name></member>
@@ -217,7 +261,8 @@
       <member refid="classendstone_1_1Vector_1a4501ecc7c065ffc7de8fec9a5341c520" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/</name></member>
       <member refid="classendstone_1_1Vector_1ac4bc1aeef782ff41ca2c37b3e760f2bf" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator/=</name></member>
       <member refid="classendstone_1_1Vector_1adeb43307778c502701288edb44b975db" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>operator==</name></member>
-      <member refid="classendstone_1_1Position_1a514089ce3532bcb0eaf40d847957ae6b" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>Position</name></member>
+      <member refid="classendstone_1_1Position_1afd7f8dbb082f27f480135d4ba430bdaa" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>Position</name></member>
+      <member refid="classendstone_1_1Position_1a4d254166aee4f58209134e7e56c16597" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>Position</name></member>
       <member refid="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>setDimension</name></member>
       <member refid="classendstone_1_1Vector_1aaddaeaa8e19c615a2ebc0ed97ee4e9db" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>setX</name></member>
       <member refid="classendstone_1_1Vector_1a9a871a7080fc93e201885582a54a6b19" prot="public" virt="non-virtual"><scope>endstone::Position</scope><name>setY</name></member>

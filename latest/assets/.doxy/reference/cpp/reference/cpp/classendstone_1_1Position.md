@@ -74,7 +74,8 @@ Inherited by the following classes: [endstone::Location](classendstone_1_1Locati
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Position**](#function-position) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, float x, float y, float z) <br> |
+|   | [**Position**](#function-position-12) (T x, T y, T z) <br> |
+|   | [**Position**](#function-position-22) (T x, T y, T z, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
 |  int | [**getBlockX**](#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this location is contained with._  |
 |  int | [**getBlockY**](#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this location is contained with._  |
 |  int | [**getBlockZ**](#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this location is contained with._  |
@@ -182,14 +183,33 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 
 
 
-### function Position 
+### function Position [1/2]
 
 ```C++
+template<typename T, typename>
 inline endstone::Position::Position (
-    Dimension * dimension,
-    float x,
-    float y,
-    float z
+    T x,
+    T y,
+    T z
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Position [2/2]
+
+```C++
+template<typename T, typename>
+inline endstone::Position::Position (
+    T x,
+    T y,
+    T z,
+    Dimension & dimension
 ) 
 ```
 

@@ -93,8 +93,11 @@ Inherits the following classes: [endstone::Position](classendstone_1_1Position.m
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Location**](#function-location-12) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, int x, int y, int z, float pitch=0.0, float yaw=0.0) <br> |
-|   | [**Location**](#function-location-22) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, float x, float y, float z, float pitch=0.0, float yaw=0.0) <br> |
+|   | [**Location**](#function-location-13) (T x, T y, T z, float pitch=0.0, float yaw=0.0) <br> |
+|   | [**Location**](#function-location-23) (T x, T y, T z, float pitch, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
+|   | [**Location**](#function-location-33) (T x, T y, T z, float pitch, float yaw, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
+|   | [**Position**](#function-position-12) (T x, T y, T z) <br> |
+|   | [**Position**](#function-position-22) (T x, T y, T z, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
 |  [**Vector**](classendstone_1_1Vector.md) | [**getDirection**](#function-getdirection) () const<br> |
 |  float | [**getPitch**](#function-getpitch) () const<br> |
 |  float | [**getYaw**](#function-getyaw) () const<br> |
@@ -108,7 +111,8 @@ See [endstone::Position](classendstone_1_1Position.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Position**](classendstone_1_1Position.md#function-position) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, float x, float y, float z) <br> |
+|   | [**Position**](classendstone_1_1Position.md#function-position-12) (T x, T y, T z) <br> |
+|   | [**Position**](classendstone_1_1Position.md#function-position-22) (T x, T y, T z, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
 |  int | [**getBlockX**](classendstone_1_1Position.md#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this location is contained with._  |
 |  int | [**getBlockY**](classendstone_1_1Position.md#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this location is contained with._  |
 |  int | [**getBlockZ**](classendstone_1_1Position.md#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this location is contained with._  |
@@ -242,14 +246,14 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 
 
 
-### function Location [1/2]
+### function Location [1/3]
 
 ```C++
+template<typename T, typename>
 inline endstone::Location::Location (
-    Dimension * dimension,
-    int x,
-    int y,
-    int z,
+    T x,
+    T y,
+    T z,
     float pitch=0.0,
     float yaw=0.0
 ) 
@@ -262,16 +266,74 @@ inline endstone::Location::Location (
 
 
 
-### function Location [2/2]
+### function Location [2/3]
 
 ```C++
+template<typename T, typename>
 inline endstone::Location::Location (
-    Dimension * dimension,
-    float x,
-    float y,
-    float z,
-    float pitch=0.0,
-    float yaw=0.0
+    T x,
+    T y,
+    T z,
+    float pitch,
+    Dimension & dimension
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Location [3/3]
+
+```C++
+template<typename T, typename>
+inline endstone::Location::Location (
+    T x,
+    T y,
+    T z,
+    float pitch,
+    float yaw,
+    Dimension & dimension
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Position [1/2]
+
+```C++
+template<typename T, typename>
+inline endstone::Location::Position (
+    T x,
+    T y,
+    T z
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Position [2/2]
+
+```C++
+template<typename T, typename>
+inline endstone::Location::Position (
+    T x,
+    T y,
+    T z,
+    Dimension & dimension
 ) 
 ```
 

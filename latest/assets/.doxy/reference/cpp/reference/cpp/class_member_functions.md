@@ -541,6 +541,7 @@
 
 ## p
 
+* **Position** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::Position**](classendstone_1_1Position.md))
 * **PacketReceiveEvent** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md))
 * **PacketSendEvent** ([**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **Permission** ([**endstone::Permission**](classendstone_1_1Permission.md))
@@ -577,7 +578,6 @@
 * **PluginEnableEvent** ([**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md))
 * **PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **Position** ([**endstone::Position**](classendstone_1_1Position.md))
 * **permissions** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 * **PermissionBuilder** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **permission** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
