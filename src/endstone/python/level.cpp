@@ -18,6 +18,24 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
+namespace {
+Position create_position(float x, float y, float z, Dimension *dimension)
+{
+    if (dimension == nullptr) {
+        return Position(x, y, z);
+    }
+    return Position(x, y, z, *dimension);
+}
+
+Location create_location(float x, float y, float z, float pitch, float yaw, Dimension *dimension)
+{
+    if (dimension == nullptr) {
+        return Location(x, y, z, pitch, yaw);
+    }
+    return Location(x, y, z, pitch, yaw, *dimension);
+}
+}  // namespace
+
 void init_level(py::module_ &m)
 {
     auto level = py::class_<Level>(m, "Level");
@@ -29,8 +47,7 @@ void init_level(py::module_ &m)
     };
     py::class_<Position, Vector<float>>(m, "Position",
                                         "Represents a 3-dimensional position in a dimension within a level.")
-        .def(py::init<Dimension *, float, float, float>(), py::arg("dimension"), py::arg("x"), py::arg("y"),
-             py::arg("z"))
+        .def(py::init(&create_position), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("dimension") = nullptr)
         .def_property("dimension", &Position::getDimension, &Position::setDimension, py::return_value_policy::reference,
                       "The Dimension that contains this position")
         .def_property_readonly(
@@ -51,8 +68,8 @@ void init_level(py::module_ &m)
                            l.getPitch(), l.getYaw());
     };
     py::class_<Location, Position>(m, "Location", "Represents a 3-dimensional location in a dimension within a level.")
-        .def(py::init<Dimension *, float, float, float, float, float>(), py::arg("dimension"), py::arg("x"),
-             py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
+        .def(py::init(&create_location), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0,
+             py::arg("yaw") = 0.0, py::arg("dimension") = nullptr)
         .def_property("pitch", &Location::getPitch, &Location::setPitch,
                       "The pitch of this location, measured in degrees.")
         .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.")

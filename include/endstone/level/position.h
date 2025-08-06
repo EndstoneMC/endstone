@@ -29,7 +29,17 @@ class Dimension;
  */
 class Position : public Vector<float> {
 public:
-    Position(Dimension *dimension, float x, float y, float z) : Vector(x, y, z), dimension_(dimension) {}
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Position(T x, T y, T z)
+        : Vector(static_cast<float>(x), static_cast<float>(y), static_cast<float>(z)), dimension_(nullptr)
+    {
+    }
+
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Position(T x, T y, T z, Dimension &dimension)
+        : Vector(static_cast<float>(x), static_cast<float>(y), static_cast<float>(z)), dimension_(&dimension)
+    {
+    }
 
     /**
      * Gets the dimension that this position resides in

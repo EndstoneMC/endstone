@@ -127,7 +127,7 @@ Location EndstoneActor::getLocation() const
     auto [x, y, z] = getActor().getPosition();
     y -= ActorOffset::getHeightOffset(getActor().getEntity());
     const auto &[pitch, yaw] = getActor().getRotation();
-    return {&getDimension(), x, y, z, pitch, yaw};
+    return {x, y, z, pitch, yaw, getDimension()};
 }
 
 Vector<float> EndstoneActor::getVelocity() const
