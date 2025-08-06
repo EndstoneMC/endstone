@@ -25,6 +25,7 @@
 #pragma once
 
 #include "endstone/block/block.h"
+#include "endstone/inventory/item_stack.h"
 #include "endstone/level/chunk.h"
 #include "endstone/util/result.h"
 
@@ -58,6 +59,8 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(Location location) const = 0;
 
     [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
+
+    [[nodiscard]] virtual Item &dropItem(Location location, ItemStack &item) = 0;
 };
 }  // namespace endstone
 

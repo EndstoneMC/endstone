@@ -163,6 +163,7 @@
 * **DarkRed** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **description\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **dispatch** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
+* **dropItem** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **DimensionEvent** ([**endstone::DimensionEvent**](classendstone_1_1DimensionEvent.md))
 * **dimension\_** ([**endstone::DimensionEvent**](classendstone_1_1DimensionEvent.md), [**endstone::Position**](classendstone_1_1Position.md))
 * **Divider** ([**endstone::Divider**](classendstone_1_1Divider.md))

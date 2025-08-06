@@ -250,6 +250,22 @@
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
+      <node id="22">
+        <label>include/endstone/event/chunk/chunk_event.h</label>
+        <link refid="chunk__event_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>include/endstone/event/chunk/chunk_load_event.h</label>
+        <link refid="chunk__load__event_8h_source"/>
+      </node>
+      <node id="24">
+        <label>include/endstone/event/chunk/chunk_unload_event.h</label>
+        <link refid="chunk__unload__event_8h_source"/>
+      </node>
       <node id="4">
         <label>include/endstone/event/event_handler.h</label>
         <link refid="event__handler_8h_source"/>
@@ -259,6 +275,12 @@
       <node id="5">
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
+      </node>
+      <node id="21">
+        <label>include/endstone/event/level/dimension_event.h</label>
+        <link refid="dimension__event_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
       <node id="17">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
@@ -303,6 +325,8 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
       </node>
       <node id="11">
         <label>include/endstone/inventory/item_type.h</label>
@@ -316,6 +340,12 @@
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
+      <node id="20">
+        <label>include/endstone/level/dimension.h</label>
+        <link refid="dimension_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
       <node id="9">
         <label>include/endstone/namespaced_key.h</label>
         <link refid="namespaced__key_8h_source"/>
@@ -323,7 +353,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -341,7 +371,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -354,7 +384,7 @@
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="20">
+      <node id="25">
         <label>include/endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="13" relation="include">
@@ -362,14 +392,14 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="27">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="21">
+      <node id="26">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

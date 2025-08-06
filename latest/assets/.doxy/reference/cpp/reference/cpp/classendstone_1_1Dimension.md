@@ -57,6 +57,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 | Type | Name |
 | ---: | :--- |
+| virtual [**Item**](classendstone_1_1Item.md) & | [**dropItem**](#function-dropitem) ([**Location**](classendstone_1_1Location.md) location, [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Drops an item at the specified_ [_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-12) (int x, int y, int z) const = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-22) ([**Location**](classendstone_1_1Location.md) location) const = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given_[_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getHighestBlockAt**](#function-gethighestblockat-12) (int x, int z) const = 0<br>_Gets the highest non-empty (impassable) block at the given coordinates._  |
@@ -118,6 +119,42 @@ enum endstone::Dimension::Type {
 <hr>
 ## Public Functions Documentation
 
+
+
+
+### function dropItem 
+
+_Drops an item at the specified_ [_**Location**_](classendstone_1_1Location.md) _._
+```C++
+virtual Item & endstone::Dimension::dropItem (
+    Location location,
+    ItemStack & item
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `location` [**Location**](classendstone_1_1Location.md) to drop the item 
+* `item` [**ItemStack**](classendstone_1_1ItemStack.md) to drop
+
+
+
+**Returns:**
+
+[**Item**](classendstone_1_1Item.md) entity created as a result of this method 
+
+
+
+
+
+        
+
+<hr>
 
 
 

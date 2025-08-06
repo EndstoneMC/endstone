@@ -102,6 +102,7 @@
 ## d
 
 * **dispatch** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
+* **dropItem** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **DimensionEvent** ([**endstone::DimensionEvent**](classendstone_1_1DimensionEvent.md))
 * **Divider** ([**endstone::Divider**](classendstone_1_1Divider.md))
 * **Dropdown** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::StepSlider**](classendstone_1_1StepSlider.md))

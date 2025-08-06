@@ -509,6 +509,7 @@
     <member refid="classendstone_1_1Dimension_1a59ce26e75b00ffc1b6a3dff6ab35331c" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1aaf801dc0b5f2d696178b5770d7466d79" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" kind="function"><name>getLoadedChunks</name></member>
+    <member refid="classendstone_1_1Dimension_1a2e5a4db170608345dac498ffd627ef6c" kind="function"><name>dropItem</name></member>
   </compound>
   <compound refid="classendstone_1_1DimensionEvent" kind="class"><name>endstone::DimensionEvent</name>
     <member refid="classendstone_1_1DimensionEvent_1a06fb7621f6fd742856ae7b24537365d7" kind="variable"><name>dimension_</name></member>

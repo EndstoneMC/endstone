@@ -13,6 +13,7 @@
     <includedby refid="player__drop__item__event_8h" local="yes">include/endstone/event/player/player_drop_item_event.h</includedby>
     <includedby refid="player__item__consume__event_8h" local="yes">include/endstone/event/player/player_item_consume_event.h</includedby>
     <includedby refid="recipe_8h" local="yes">include/endstone/inventory/recipe.h</includedby>
+    <includedby refid="dimension_8h" local="yes">include/endstone/level/dimension.h</includedby>
     <incdepgraph>
       <node id="64">
         <label>endstone/actor/actor.h</label>
@@ -972,6 +973,28 @@
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
+      <node id="10">
+        <label>include/endstone/event/chunk/chunk_event.h</label>
+        <link refid="chunk__event_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/endstone/event/chunk/chunk_load_event.h</label>
+        <link refid="chunk__load__event_8h_source"/>
+      </node>
+      <node id="12">
+        <label>include/endstone/event/chunk/chunk_unload_event.h</label>
+        <link refid="chunk__unload__event_8h_source"/>
+      </node>
+      <node id="9">
+        <label>include/endstone/event/level/dimension_event.h</label>
+        <link refid="dimension__event_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
         <link refid="player__drop__item__event_8h_source"/>
@@ -997,10 +1020,18 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="7">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
+      </node>
+      <node id="8">
+        <label>include/endstone/level/dimension.h</label>
+        <link refid="dimension_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1ItemStack" prot="public">endstone::ItemStack</innerclass>
