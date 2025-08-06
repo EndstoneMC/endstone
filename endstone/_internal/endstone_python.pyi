@@ -1142,6 +1142,10 @@ class Dimension:
     NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
     THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
+    def drop_item(self, location: Location, item: ItemStack) -> Item:
+        """
+        Drops an item at the specified Location
+        """
     @typing.overload
     def get_block_at(self, location: Location) -> Block:
         """

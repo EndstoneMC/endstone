@@ -14,6 +14,9 @@
 
 #include "endstone/core/level/dimension.h"
 
+#include <endstone/core/actor/item.h>
+#include <endstone/core/inventory/item_stack.h>
+
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/block/block.h"
@@ -90,6 +93,15 @@ std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
         }
     }
     return chunks;
+}
+
+Item &EndstoneDimension::dropItem(const Location location, ItemStack &item)
+{
+    auto item_stack = EndstoneItemStack::toMinecraft(&item);
+    auto *actor = getHandle().getLevel().getSpawner().spawnItem(
+        getHandle().getBlockSourceFromMainChunkSource(), item_stack, nullptr,
+        Vec3{location.getX(), location.getY(), location.getZ()}, 10);
+    return actor->getEndstoneActor<EndstoneItem>();
 }
 
 ::Dimension &EndstoneDimension::getHandle() const
