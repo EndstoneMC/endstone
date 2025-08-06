@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Colors" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Colors</compoundname>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Colors_1ac77fd4dd5e4eccb3e00e32064e71efdc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto endstone::Colors::WHITE</definition>
+        <argsstring></argsstring>
+        <name>WHITE</name>
+        <qualifiedname>endstone::Colors::WHITE</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Color" kindref="compound">Color</ref>(Color::DEFAULT_ALPHA, 255, 255, 255)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="249" column="27" bodyfile="include/endstone/util/color.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Colors_1a28bf16e643dd4b9a31c84551f8f5dd47" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto endstone::Colors::BLACK</definition>
+        <argsstring></argsstring>
+        <name>BLACK</name>
+        <qualifiedname>endstone::Colors::BLACK</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Color" kindref="compound">Color</ref>(Color::DEFAULT_ALPHA, 0, 0, 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/color.h" line="250" column="27" bodyfile="include/endstone/util/color.h" bodystart="250" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/util/color.h" line="247" column="1" bodyfile="include/endstone/util/color.h" bodystart="247" bodyend="251"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Colors_1a28bf16e643dd4b9a31c84551f8f5dd47" prot="public" virt="non-virtual"><scope>endstone::Colors</scope><name>BLACK</name></member>
+      <member refid="classendstone_1_1Colors_1ac77fd4dd5e4eccb3e00e32064e71efdc" prot="public" virt="non-virtual"><scope>endstone::Colors</scope><name>WHITE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
