@@ -30,7 +30,7 @@ public:
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
 
 private:
-    std::vector<std::unique_ptr<Plugin>> plugins_;
+    std::vector<std::unique_ptr<Plugin,std::function<void(Plugin*)>>> plugins_;
 };
 
 }  // namespace endstone::core

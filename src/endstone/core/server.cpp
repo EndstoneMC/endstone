@@ -391,8 +391,8 @@ void EndstoneServer::shutdown()
 
 void EndstoneServer::reload()
 {
-    plugin_manager_->clearPlugins();
     command_map_->clearCommands();
+    plugin_manager_->clearPlugins();
     reloadData();
 
     // TODO(server): Wait for at most 2.5 seconds for all async tasks to finish, otherwise issue a warning
