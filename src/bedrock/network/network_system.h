@@ -32,9 +32,9 @@ class NetworkSystem : public RakNetConnector::ConnectionCallbacks,
 public:
     Bedrock::NotNullNonOwnerPtr<RemoteConnector> getRemoteConnector();
     [[nodiscard]] Bedrock::NotNullNonOwnerPtr<const RemoteConnector> getRemoteConnector() const;
-
     ENDSTONE_HOOK void send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id);
     ENDSTONE_HOOK void sendToMultiple(const std::vector<NetworkIdentifierWithSubId> &recipients, const Packet &packet);
+    [[nodiscard]] const cereal::ReflectionCtx &getPacketReflectionCtx() const;
 
 protected:
     struct Dependencies;
