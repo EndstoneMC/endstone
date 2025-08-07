@@ -64,9 +64,10 @@ bool handleEvent(const PlayerDamageEvent &event)
 
             // Send death info
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
-            const auto pk = std::static_pointer_cast<DeathInfoPacket>(packet);
-            pk->payload.death_cause_message = death_cause_message;
-            player->sendNetworkPacket(*packet);
+            auto &pk = static_cast<DeathInfoPacket &>(*packet);
+            auto death_message_tr = endstone::core::EndstoneMessage::toTranslatable(death_message);
+            pk.payload.death_cause_message = {{death_message_tr.getText(), death_message_tr.getParameters()}};
+            player->sendNetworkPacket(pk);
 
             // Broadcast death messages
             if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false) &&

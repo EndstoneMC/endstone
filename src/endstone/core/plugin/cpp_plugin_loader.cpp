@@ -77,7 +77,13 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
         return nullptr;
     }
 
-    return plugins_.emplace_back(plugin).get();
+    return plugins_
+        .emplace_back(plugin,
+                      [module](const Plugin *plugin) {
+                          delete plugin;
+                          CLOSE_LIBRARY(module);
+                      })
+        .get();
 }
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const

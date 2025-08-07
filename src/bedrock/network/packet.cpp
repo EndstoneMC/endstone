@@ -66,10 +66,11 @@ SerializationMode Packet::getSerializationMode() const
 
 void Packet::setSerializationMode(SerializationMode) {}
 
-Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const SubClientId &sub_id)
+Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
+                                           const SubClientId &sub_id)
 {
     client_sub_id_ = sub_id;
-    auto result = read(stream);
+    auto result = read(stream, reflection_ctx);
     if (!result.ignoreError()) {
         return BEDROCK_RETHROW(result);
     }
