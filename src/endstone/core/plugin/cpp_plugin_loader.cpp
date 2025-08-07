@@ -54,7 +54,6 @@ CppPluginLoader::CppPluginLoader(Server &server) : PluginLoader(server)
         const auto &file = entry.path();
         for (const auto &pattern : CppPluginLoader::getPluginFileFilters()) {
             if (std::regex r(pattern); std::regex_search(file.string(), r)) {
-                getServer().getLogger().warning("deleting: {}", file.string());
                 remove(file);
             }
         }
