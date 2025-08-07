@@ -13,7 +13,7 @@ Let's start with a simple command `/hello` that greets the command sender.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         commands = {
             "hello": {
@@ -56,7 +56,7 @@ Let's make the following changes to our code.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         commands = {
             "hello": {
@@ -82,10 +82,11 @@ Let's make the following changes to our code.
 
         The `default` field sets the permission level required for executing the command. Possible values are:
 
-        - `True`: everyone can execute this command
-        - `False`: on one can execute this command, unless explicitly granted the permission.
+        - `True` or `"true"`: everyone can execute this command
+        - `False` or `"false"`: on one can execute this command, unless explicitly granted the permission.
         - `"op"`: only operators can execute this command
         - `"not_op"`: only non-operators can execute this command
+        - `"console"`: only console can execute this command
 
 === ":simple-cplusplus: C++"
 
@@ -117,6 +118,7 @@ Let's make the following changes to our code.
         - `endstone::PermissionDefault::False`: on one can execute this command, unless explicitly granted the permission.
         - `endstone::PermissionDefault::Operator`: only operators can execute this command
         - `endstone::PermissionDefault::NotOperator`: only non-operators can execute this command
+        - `endstone::PermissionDefault::Console`: only console can execute this command
 
 ## Handle the commands
 
@@ -130,7 +132,7 @@ message to whoever execute this command. It's just a few more lines away from th
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         commands = {
             "hello": {
@@ -159,7 +161,7 @@ message to whoever execute this command. It's just a few more lines away from th
 === ":simple-cplusplus: C++"
 
     ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="5-12"
-    #include <endstone/plugin/plugin.h>
+    #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {
     public:
@@ -207,7 +209,7 @@ should be `[msg: message]`. Let's add it to our code.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         commands = {
             "hello": {
@@ -259,7 +261,7 @@ should be `[msg: message]`. Let's add it to our code.
     ```
 
     ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="9-14"
-    #include <endstone/plugin/plugin.h>
+    #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {
     public:

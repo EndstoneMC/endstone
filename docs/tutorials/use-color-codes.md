@@ -33,7 +33,7 @@ use api is provided.
     This code shows how easy it is to use colored text in endstone:
     
     ```cpp
-    #include <endstone/color_format.h>
+    #include <endstone/endstone.hpp>
 
     auto my_beautiful_text = "This is " + endstone::ColorFormat::DarkGreen + "dark green." + endstone::ColorFormat::Reset;
     ```
