@@ -16,6 +16,25 @@
 
 #include "bedrock/platform/brstd/variant.h"
 
+void ItemStackNetIdVariant::serialize(BinaryStream &stream) const
+{
+    if (std::holds_alternative<TypedClientNetId<ItemStackLegacyRequestIdTag>>(variant_)) {
+        stream.writeVarInt(std::get<TypedClientNetId<ItemStackLegacyRequestIdTag>>(variant_).raw_id,
+                           "Raw Id (32 bit signed)", nullptr);
+    }
+    else if (std::holds_alternative<TypedClientNetId<ItemStackRequestIdTag>>(variant_)) {
+        stream.writeVarInt(std::get<TypedClientNetId<ItemStackRequestIdTag>>(variant_).raw_id, "Raw Id (32 bit signed)",
+                           nullptr);
+    }
+    else if (std::holds_alternative<TypedServerNetId<ItemStackNetIdTag>>(variant_)) {
+        stream.writeVarInt(std::get<TypedServerNetId<ItemStackNetIdTag>>(variant_).raw_id, "Raw Id (32 bit signed)",
+                           nullptr);
+    }
+    else {
+        stream.writeUnsignedVarInt(0, "Item stack net ID variant", nullptr);
+    }
+}
+
 std::string ItemStackNetIdVariant::toString() const
 {
     return std::visit(brstd::overloaded{

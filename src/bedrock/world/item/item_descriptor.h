@@ -42,6 +42,9 @@ public:
 
     ItemDescriptor &operator=(ItemDescriptor &&) = default;
     [[nodiscard]] const Item *getItem() const;
+    [[nodiscard]] const Block *getBlock() const;
+    [[nodiscard]] bool isValid(bool should_resolve) const;
+    [[nodiscard]] bool isNull() const;
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] std::int16_t getAuxValue() const;
     [[nodiscard]] std::string getFullName() const;

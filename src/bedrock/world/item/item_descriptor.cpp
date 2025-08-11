@@ -187,6 +187,25 @@ const Item *ItemDescriptor::getItem() const
     return impl_->getItem().item;
 }
 
+const Block *ItemDescriptor::getBlock() const
+{
+    if (!impl_) {
+        return nullptr;
+    }
+    if (impl_->shouldResolve()) {
+        impl_ = std::move(impl_->resolve());
+    }
+    return impl_->getItem().getBlock();
+}
+
+bool ItemDescriptor::isValid(bool should_resolve) const
+{
+    if (should_resolve && impl_ && impl_->shouldResolve()) {
+        impl_ = std::move(impl_->resolve());
+    }
+    return impl_ != nullptr;
+}
+
 std::int16_t ItemDescriptor::getId() const
 {
     if (!impl_) {
