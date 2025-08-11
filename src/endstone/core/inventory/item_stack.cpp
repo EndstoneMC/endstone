@@ -40,17 +40,12 @@ std::string EndstoneItemStack::getType() const
     return getType(&handle_);
 }
 
-Result<void> EndstoneItemStack::setType(const std::string &type)
+void EndstoneItemStack::setType(const std::string &type)
 {
     if (getType() == type) {
-        return {};
+        return;
     }
-
-    auto *item_type = ItemType::get(type);
-    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-
     handle_.reinit(type, getAmount(), getData());
-    return {};
 }
 
 int EndstoneItemStack::getAmount() const
@@ -129,12 +124,17 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
     if (item == nullptr || item->getType() == "minecraft:air") {
-        return {};  // Empty item stack
+        return ::ItemStack::EMPTY_ITEM;
     }
+
     if (item->isEndstoneItemStack()) {
         const auto *stack = static_cast<const EndstoneItemStack *>(item);
+        if (stack->handle_.isNull()) {
+            return ::ItemStack::EMPTY_ITEM;
+        }
         return stack->handle_;  // Call the copy constructor to make a copy
     }
+
     auto stack = ::ItemStack(item->getType(), item->getAmount());
     if (item->hasItemMeta()) {
         setItemMeta(&stack, item->getItemMeta().get());

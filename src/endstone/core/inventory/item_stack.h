@@ -29,7 +29,7 @@ protected:
 
 public:
     [[nodiscard]] std::string getType() const override;
-    Result<void> setType(const std::string &type) override;
+    void setType(const std::string &type) override;
     [[nodiscard]] int getAmount() const override;
     void setAmount(int amount) override;
     [[nodiscard]] int getData() const override;
