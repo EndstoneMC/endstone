@@ -295,7 +295,7 @@ void EndstoneItemMeta::setUnbreakable(bool unbreakable)
     unbreakable_ = unbreakable;
 }
 
-bool EndstoneItemMeta::applicableTo(const ItemType &type) const
+bool EndstoneItemMeta::applicableTo(const std::string &type) const
 {
     return type != "minecraft:air";
 }

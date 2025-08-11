@@ -67,7 +67,7 @@ Result<void> EndstonePlayerInventory::setContents(std::vector<ItemStack const *>
     return EndstoneInventory::setContents(items);
 }
 
-Result<bool> EndstonePlayerInventory::contains(const std::string &type) const
+bool EndstonePlayerInventory::contains(const std::string &type) const
 {
     return EndstoneInventory::contains(type);
 }
@@ -82,7 +82,7 @@ bool EndstonePlayerInventory::contains(const ItemStack &item, int amount) const
     return EndstoneInventory::contains(item, amount);
 }
 
-Result<bool> EndstonePlayerInventory::containsAtLeast(const std::string &type, int amount) const
+bool EndstonePlayerInventory::containsAtLeast(const std::string &type, int amount) const
 {
     return EndstoneInventory::containsAtLeast(type, amount);
 }
@@ -92,7 +92,7 @@ bool EndstonePlayerInventory::containsAtLeast(const ItemStack &item, int amount)
     return EndstoneInventory::containsAtLeast(item, amount);
 }
 
-Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> EndstonePlayerInventory::all(const std::string &type) const
+std::unordered_map<int, std::unique_ptr<ItemStack>> EndstonePlayerInventory::all(const std::string &type) const
 {
     return EndstoneInventory::all(type);
 }
@@ -102,7 +102,7 @@ std::unordered_map<int, std::unique_ptr<ItemStack>> EndstonePlayerInventory::all
     return EndstoneInventory::all(item);
 }
 
-Result<int> EndstonePlayerInventory::first(const std::string &type) const
+int EndstonePlayerInventory::first(const std::string &type) const
 {
     return EndstoneInventory::first(type);
 }
@@ -117,7 +117,7 @@ int EndstonePlayerInventory::firstEmpty() const
     return EndstoneInventory::firstEmpty();
 }
 
-Result<void> EndstonePlayerInventory::remove(const std::string &type)
+void EndstonePlayerInventory::remove(const std::string &type)
 {
     return EndstoneInventory::remove(type);
 }

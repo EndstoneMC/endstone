@@ -33,7 +33,7 @@ public:
 
     void reinit(const BlockType &, int) override;
     void reinit(const Item &, int, int) override;
-    void reinit(std::string_view, int, int) override;
+    void reinit(std::string_view name, int count, int aux_value) override;
     void setNull(std::optional<std::string>) override;
     [[nodiscard]] std::string toString() const override;
     [[nodiscard]] std::string toDebugString() const override;
