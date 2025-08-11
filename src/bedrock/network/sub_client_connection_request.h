@@ -80,9 +80,12 @@ public:
 private:
     [[nodiscard]] Json::Value getData(const std::string &key) const;
 
+    bool is_verified_;
     std::unique_ptr<WebToken> raw_token_;
     std::unique_ptr<UnverifiedCertificate> certificate_data_;
     LegacyMultiplayerToken legacy_multiplayer_token_;
     RawGameServerToken game_server_token_;
+    GameServerToken verified_game_server_token_;
     PlayerAuthenticationType authentication_type_;
+    PlayerAuthenticationInfo authentication_info_;
 };

@@ -19,6 +19,7 @@
 #include <variant>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/utility/binary_stream.h"
 
 template <typename Tag, typename RawIdT = int, RawIdT RawInvalid = 0>
 class TypedServerNetId {
@@ -48,6 +49,7 @@ public:
 };
 
 struct ItemStackNetIdVariant {
+    void serialize(BinaryStream &) const;
     [[nodiscard]] std::string toString() const;
 
 private:
