@@ -1714,7 +1714,7 @@ class Item(Actor):
     def thrower(self, arg1: int | None) -> None:
         ...
 class ItemFactory:
-    def as_meta_for(self, meta: ItemMeta, type: ItemType) -> ItemMeta:
+    def as_meta_for(self, meta: ItemMeta, type: str) -> ItemMeta:
         """
         Returns an appropriate item meta for the specified item type.
         """
@@ -1722,11 +1722,11 @@ class ItemFactory:
         """
         This method is used to compare two ItemMeta objects.
         """
-    def get_item_meta(self, type: ItemType) -> ItemMeta:
+    def get_item_meta(self, type: str) -> ItemMeta:
         """
         This creates a new item meta for the item type.
         """
-    def is_applicable(self, meta: ItemMeta, type: ItemType) -> bool:
+    def is_applicable(self, meta: ItemMeta, type: str) -> bool:
         """
         This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack
         """
@@ -1895,7 +1895,7 @@ class ItemStack:
         Get the maximum stack size for this item.
         """
     @property
-    def type(self) -> ItemType:
+    def type(self) -> str:
         """
         Gets or sets the type of this item.
         """
