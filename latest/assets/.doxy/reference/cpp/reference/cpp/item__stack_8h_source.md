@@ -40,21 +40,11 @@ class EndstoneItemStack;
 
 class ItemStack {
 public:
-    static Result<ItemStack> create(const std::string &type, const int amount = 1, const int data = 0)
-    {
-        const auto *item_type = ItemType::get(type);
-        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-        ENDSTONE_CHECKF(amount >= 1 && amount <= 255, "Item stack amount must be between 1 to 255, got {}.", amount);
-        return ItemStack(type, amount, data);
-    }
-
     explicit ItemStack(const std::string &type = "minecraft:air", const int amount = 1, const int data = 0)
     {
-        if (auto *item_type = ItemType::get(type); item_type != nullptr) {
-            type_ = type;
-            amount_ = amount;
-            data_ = data;
-        }
+        type_ = type;
+        amount_ = amount;
+        data_ = data;
     }
 
     ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount()), data_(stack.getData())
@@ -79,10 +69,8 @@ public:
         return type_;
     }
 
-    virtual Result<void> setType(const std::string &type)
+    virtual void setType(const std::string &type)
     {
-        const auto *item_type = ItemType::get(type);
-        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
         type_ = type;
         if (meta_ != nullptr) {
             meta_ = Endstone::getServer().getItemFactory().asMetaFor(meta_.get(), type);
