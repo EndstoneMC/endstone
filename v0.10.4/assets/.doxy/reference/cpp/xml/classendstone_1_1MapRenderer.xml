@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1MapRenderer" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::MapRenderer</compoundname>
+    <includes refid="map__renderer_8h" local="no">endstone/map/map_renderer.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classendstone_1_1MapRenderer_1a241417d1788753148454dc43c62db045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class core::EndstoneMapView</definition>
+        <argsstring></argsstring>
+        <name>core::EndstoneMapView</name>
+        <qualifiedname>endstone::MapRenderer::EndstoneMapView</qualifiedname>
+        <param>
+          <type>core::EndstoneMapView</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="43" column="18" bodyfile="include/endstone/map/map_renderer.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1MapRenderer_1ac13cebc8a7857f8cd6e3bef11f34bace" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool endstone::MapRenderer::is_contextual_</definition>
+        <argsstring></argsstring>
+        <name>is_contextual_</name>
+        <qualifiedname>endstone::MapRenderer::is_contextual_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="77" column="10" bodyfile="include/endstone/map/map_renderer.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MapRenderer_1ac44bbcfebbdd168c39e5653ab03805ba" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::MapRenderer::MapRenderer</definition>
+        <argsstring>(const bool is_contextual=false)</argsstring>
+        <name>MapRenderer</name>
+        <qualifiedname>endstone::MapRenderer::MapRenderer</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>is_contextual</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Initialize the map renderer base with the given contextual status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>is_contextual</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the renderer is contextual. See <ref refid="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" kindref="member">isContextual()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="38" column="14" bodyfile="include/endstone/map/map_renderer.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapRenderer_1a8772440cd8520c99a6ab6b3c5f4d1cbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::MapRenderer::~MapRenderer</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MapRenderer</name>
+        <qualifiedname>endstone::MapRenderer::~MapRenderer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="40" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::MapRenderer::isContextual</definition>
+        <argsstring>() const</argsstring>
+        <name>isContextual</name>
+        <qualifiedname>endstone::MapRenderer::isContextual</qualifiedname>
+        <briefdescription>
+<para>Get whether the renderer is contextual, i.e. has different canvases for different players. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if contextual, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="55" column="11" bodyfile="include/endstone/map/map_renderer.h" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapRenderer::initialize</definition>
+        <argsstring>(MapView &amp;map)</argsstring>
+        <name>initialize</name>
+        <qualifiedname>endstone::MapRenderer::initialize</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+<para>Initialize this <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> for the given map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> being initialized. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="65" column="18" bodyfile="include/endstone/map/map_renderer.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapRenderer_1a2ffd5d14ab9ff49f698f187b14159778" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapRenderer::render</definition>
+        <argsstring>(MapView &amp;map, MapCanvas &amp;canvas, Player &amp;player)=0</argsstring>
+        <name>render</name>
+        <qualifiedname>endstone::MapRenderer::render</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1MapCanvas" kindref="compound">MapCanvas</ref> &amp;</type>
+          <declname>canvas</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+<para>Render to the given map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> being rendered to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>canvas</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The canvas to use for rendering. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>player</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player who triggered the rendering. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="74" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classendstone_1_1MapRenderer_1a6c4589d423e45ff060a37cb4f7e7a0c9" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::MapRenderer::isEndstoneMapRenderer</definition>
+        <argsstring>() const</argsstring>
+        <name>isEndstoneMapRenderer</name>
+        <qualifiedname>endstone::MapRenderer::isEndstoneMapRenderer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_renderer.h" line="44" column="19" bodyfile="include/endstone/map/map_renderer.h" bodystart="44" bodyend="47"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a renderer for a map. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/map/map_renderer.h" line="31" column="1" bodyfile="include/endstone/map/map_renderer.h" bodystart="31" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1MapRenderer_1a241417d1788753148454dc43c62db045" prot="public" virt="non-virtual"><scope>endstone::MapRenderer</scope><name>core::EndstoneMapView</name></member>
+      <member refid="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" prot="public" virt="virtual"><scope>endstone::MapRenderer</scope><name>initialize</name></member>
+      <member refid="classendstone_1_1MapRenderer_1ac13cebc8a7857f8cd6e3bef11f34bace" prot="private" virt="non-virtual"><scope>endstone::MapRenderer</scope><name>is_contextual_</name></member>
+      <member refid="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" prot="public" virt="non-virtual"><scope>endstone::MapRenderer</scope><name>isContextual</name></member>
+      <member refid="classendstone_1_1MapRenderer_1a6c4589d423e45ff060a37cb4f7e7a0c9" prot="private" virt="virtual"><scope>endstone::MapRenderer</scope><name>isEndstoneMapRenderer</name></member>
+      <member refid="classendstone_1_1MapRenderer_1ac44bbcfebbdd168c39e5653ab03805ba" prot="public" virt="non-virtual"><scope>endstone::MapRenderer</scope><name>MapRenderer</name></member>
+      <member refid="classendstone_1_1MapRenderer_1a2ffd5d14ab9ff49f698f187b14159778" prot="public" virt="pure-virtual"><scope>endstone::MapRenderer</scope><name>render</name></member>
+      <member refid="classendstone_1_1MapRenderer_1a8772440cd8520c99a6ab6b3c5f4d1cbc" prot="public" virt="virtual"><scope>endstone::MapRenderer</scope><name>~MapRenderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
