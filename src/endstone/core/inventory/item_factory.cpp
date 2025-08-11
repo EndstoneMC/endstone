@@ -21,12 +21,12 @@ EndstoneItemFactory &EndstoneItemFactory::instance()
     return factory;
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemType &type) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string &type) const
 {
     return getItemMeta(type, nullptr);
 }
 
-bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemType &type) const
+bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const std::string &type) const
 {
     if (meta == nullptr) {
         return false;
@@ -58,12 +58,12 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
     return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, const ItemType &type) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, const std::string &type) const
 {
     return getItemMeta(type, static_cast<const EndstoneItemMeta *>(meta));
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemType &type, const EndstoneItemMeta *meta) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string &type, const EndstoneItemMeta *meta) const
 {
     if (type == "minecraft:air") {
         return nullptr;
