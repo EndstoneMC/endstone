@@ -4,7 +4,7 @@
     <compoundname>endstone::Colors</compoundname>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1Colors_1ac77fd4dd5e4eccb3e00e32064e71efdc" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr auto</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">auto</ref></type>
         <definition>constexpr auto endstone::Colors::WHITE</definition>
         <argsstring></argsstring>
         <name>WHITE</name>
@@ -19,7 +19,7 @@
         <location file="include/endstone/util/color.h" line="249" column="27" bodyfile="include/endstone/util/color.h" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Colors_1a28bf16e643dd4b9a31c84551f8f5dd47" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr auto</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">auto</ref></type>
         <definition>constexpr auto endstone::Colors::BLACK</definition>
         <argsstring></argsstring>
         <name>BLACK</name>

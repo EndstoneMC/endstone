@@ -52,11 +52,11 @@ _Represents a task being executed by the scheduler._
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**cancel**](#function-cancel) () = 0<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](#function-cancel) () = 0<br> |
 | virtual [**Plugin**](classendstone_1_1Plugin.md) \* | [**getOwner**](#function-getowner) () const = 0<br> |
 | virtual TaskId | [**getTaskId**](#function-gettaskid) () const = 0<br> |
-| virtual bool | [**isCancelled**](#function-iscancelled) () const = 0<br> |
-| virtual bool | [**isSync**](#function-issync) () const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](#function-iscancelled) () const = 0<br> |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isSync**](#function-issync) () const = 0<br> |
 | virtual  | [**~Task**](#function-task) () = default<br> |
 
 

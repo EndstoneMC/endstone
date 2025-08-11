@@ -93,16 +93,16 @@ Inherits the following classes: [endstone::Position](classendstone_1_1Position.m
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Location**](#function-location-13) (T x, T y, T z, float pitch=0.0, float yaw=0.0) <br> |
-|   | [**Location**](#function-location-23) (T x, T y, T z, float pitch, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
-|   | [**Location**](#function-location-33) (T x, T y, T z, float pitch, float yaw, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
-|   | [**Position**](#function-position-12) (T x, T y, T z) <br> |
-|   | [**Position**](#function-position-22) (T x, T y, T z, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
+|   | [**Location**](#function-location-13) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z, [**float**](classendstone_1_1Vector.md) pitch=0.0, [**float**](classendstone_1_1Vector.md) yaw=0.0) <br> |
+|   | [**Location**](#function-location-23) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z, [**float**](classendstone_1_1Vector.md) pitch, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
+|   | [**Location**](#function-location-33) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z, [**float**](classendstone_1_1Vector.md) pitch, [**float**](classendstone_1_1Vector.md) yaw, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
+|   | [**Position**](#function-position-12) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z) <br> |
+|   | [**Position**](#function-position-22) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
 |  [**Vector**](classendstone_1_1Vector.md) | [**getDirection**](#function-getdirection) () const<br> |
-|  float | [**getPitch**](#function-getpitch) () const<br> |
-|  float | [**getYaw**](#function-getyaw) () const<br> |
-|  void | [**setPitch**](#function-setpitch) (float pitch) <br> |
-|  void | [**setYaw**](#function-setyaw) (float yaw) <br> |
+|  [**float**](classendstone_1_1Vector.md) | [**getPitch**](#function-getpitch) () const<br> |
+|  [**float**](classendstone_1_1Vector.md) | [**getYaw**](#function-getyaw) () const<br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setPitch**](#function-setpitch) ([**float**](classendstone_1_1Vector.md) pitch) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setYaw**](#function-setyaw) ([**float**](classendstone_1_1Vector.md) yaw) <br> |
 
 
 ## Public Functions inherited from endstone::Position
@@ -111,13 +111,13 @@ See [endstone::Position](classendstone_1_1Position.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Position**](classendstone_1_1Position.md#function-position-12) (T x, T y, T z) <br> |
-|   | [**Position**](classendstone_1_1Position.md#function-position-22) (T x, T y, T z, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
-|  int | [**getBlockX**](classendstone_1_1Position.md#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this location is contained with._  |
-|  int | [**getBlockY**](classendstone_1_1Position.md#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this location is contained with._  |
-|  int | [**getBlockZ**](classendstone_1_1Position.md#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this location is contained with._  |
+|   | [**Position**](classendstone_1_1Position.md#function-position-12) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z) <br> |
+|   | [**Position**](classendstone_1_1Position.md#function-position-22) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z, [**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
+|  [**int**](classendstone_1_1Vector.md) | [**getBlockX**](classendstone_1_1Position.md#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this location is contained with._  |
+|  [**int**](classendstone_1_1Vector.md) | [**getBlockY**](classendstone_1_1Position.md#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this location is contained with._  |
+|  [**int**](classendstone_1_1Vector.md) | [**getBlockZ**](classendstone_1_1Position.md#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this location is contained with._  |
 |  [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](classendstone_1_1Position.md#function-getdimension) () const<br> |
-|  void | [**setDimension**](classendstone_1_1Position.md#function-setdimension) ([**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**setDimension**](classendstone_1_1Position.md#function-setdimension) ([**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
 
 
 ## Public Functions inherited from endstone::Vector
@@ -126,32 +126,32 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 
 | Type | Name |
 | ---: | :--- |
-|  constexpr | [**Vector**](classendstone_1_1Vector.md#function-vector-12) () <br> |
-|  constexpr | [**Vector**](classendstone_1_1Vector.md#function-vector-22) (T x, T y, T z) <br> |
-|  constexpr T | [**distance**](classendstone_1_1Vector.md#function-distance) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  constexpr T | [**distanceSquared**](classendstone_1_1Vector.md#function-distancesquared) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  constexpr T | [**getX**](classendstone_1_1Vector.md#function-getx) () const<br>_Gets the X component._  |
-|  constexpr T | [**getY**](classendstone_1_1Vector.md#function-gety) () const<br>_Gets the Y component._  |
-|  constexpr T | [**getZ**](classendstone_1_1Vector.md#function-getz) () const<br>_Gets the Z component._  |
-|  constexpr T | [**length**](classendstone_1_1Vector.md#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
-|  constexpr T | [**lengthSquared**](classendstone_1_1Vector.md#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**normalize**](classendstone_1_1Vector.md#function-normalize) () <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator_1) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator\*=**](classendstone_1_1Vector.md#function-operator_2) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator+**](classendstone_1_1Vector.md#function-operator_3) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator+**](classendstone_1_1Vector.md#function-operator_4) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator+=**](classendstone_1_1Vector.md#function-operator_5) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator-**](classendstone_1_1Vector.md#function-operator_6) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator-**](classendstone_1_1Vector.md#function-operator_7) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator-=**](classendstone_1_1Vector.md#function-operator_8) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](classendstone_1_1Vector.md#function-operator_9) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](classendstone_1_1Vector.md#function-operator_10) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator/=**](classendstone_1_1Vector.md#function-operator_11) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr bool | [**operator==**](classendstone_1_1Vector.md#function-operator_12) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  constexpr void | [**setX**](classendstone_1_1Vector.md#function-setx) (T x) <br>_Set the X component._  |
-|  constexpr void | [**setY**](classendstone_1_1Vector.md#function-sety) (T y) <br>_Set the Y component._  |
-|  constexpr void | [**setZ**](classendstone_1_1Vector.md#function-setz) (T z) <br>_Set the Z component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) | [**Vector**](classendstone_1_1Vector.md#function-vector-12) () <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) | [**Vector**](classendstone_1_1Vector.md#function-vector-22) ([**T**](classendstone_1_1Vector.md) x, [**T**](classendstone_1_1Vector.md) y, [**T**](classendstone_1_1Vector.md) z) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**distance**](classendstone_1_1Vector.md#function-distance) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**distanceSquared**](classendstone_1_1Vector.md#function-distancesquared) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**getX**](classendstone_1_1Vector.md#function-getx) () const<br>_Gets the X component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**getY**](classendstone_1_1Vector.md#function-gety) () const<br>_Gets the Y component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**getZ**](classendstone_1_1Vector.md#function-getz) () const<br>_Gets the Z component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**length**](classendstone_1_1Vector.md#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) | [**lengthSquared**](classendstone_1_1Vector.md#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**normalize**](classendstone_1_1Vector.md#function-normalize) () <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator\***](classendstone_1_1Vector.md#function-operator_1) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator\*=**](classendstone_1_1Vector.md#function-operator_2) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator+**](classendstone_1_1Vector.md#function-operator_3) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator+**](classendstone_1_1Vector.md#function-operator_4) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator+=**](classendstone_1_1Vector.md#function-operator_5) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator-**](classendstone_1_1Vector.md#function-operator_6) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator-**](classendstone_1_1Vector.md#function-operator_7) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator-=**](classendstone_1_1Vector.md#function-operator_8) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator/**](classendstone_1_1Vector.md#function-operator_9) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; | [**operator/**](classendstone_1_1Vector.md#function-operator_10) ([**T**](classendstone_1_1Vector.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & | [**operator/=**](classendstone_1_1Vector.md#function-operator_11) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) <br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**bool**](classendstone_1_1Vector.md) | [**operator==**](classendstone_1_1Vector.md#function-operator_12) ([**const**](classendstone_1_1Vector.md) [**Vector**](classendstone_1_1Vector.md)&lt; [**T**](classendstone_1_1Vector.md) &gt; & other) const<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**void**](classendstone_1_1Vector.md) | [**setX**](classendstone_1_1Vector.md#function-setx) ([**T**](classendstone_1_1Vector.md) x) <br>_Set the X component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**void**](classendstone_1_1Vector.md) | [**setY**](classendstone_1_1Vector.md#function-sety) ([**T**](classendstone_1_1Vector.md) y) <br>_Set the Y component._  |
+|  [**constexpr**](classendstone_1_1Vector.md) [**void**](classendstone_1_1Vector.md) | [**setZ**](classendstone_1_1Vector.md#function-setz) ([**T**](classendstone_1_1Vector.md) z) <br>_Set the Z component._  |
 
 
 
@@ -182,9 +182,9 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 
 | Type | Name |
 | ---: | :--- |
-|  T | [**x\_**](classendstone_1_1Vector.md#variable-x_)  <br> |
-|  T | [**y\_**](classendstone_1_1Vector.md#variable-y_)  <br> |
-|  T | [**z\_**](classendstone_1_1Vector.md#variable-z_)  <br> |
+|  [**T**](classendstone_1_1Vector.md) | [**x\_**](classendstone_1_1Vector.md#variable-x_)  <br> |
+|  [**T**](classendstone_1_1Vector.md) | [**y\_**](classendstone_1_1Vector.md#variable-y_)  <br> |
+|  [**T**](classendstone_1_1Vector.md) | [**z\_**](classendstone_1_1Vector.md#variable-z_)  <br> |
 
 
 
@@ -249,7 +249,7 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 ### function Location [1/3]
 
 ```C++
-template<typename T, typename>
+template<typename  T, typename>
 inline endstone::Location::Location (
     T x,
     T y,
@@ -269,7 +269,7 @@ inline endstone::Location::Location (
 ### function Location [2/3]
 
 ```C++
-template<typename T, typename>
+template<typename  T, typename>
 inline endstone::Location::Location (
     T x,
     T y,
@@ -289,7 +289,7 @@ inline endstone::Location::Location (
 ### function Location [3/3]
 
 ```C++
-template<typename T, typename>
+template<typename  T, typename>
 inline endstone::Location::Location (
     T x,
     T y,
@@ -310,7 +310,7 @@ inline endstone::Location::Location (
 ### function Position [1/2]
 
 ```C++
-template<typename T, typename>
+template<typename  T, typename>
 inline endstone::Location::Position (
     T x,
     T y,
@@ -328,7 +328,7 @@ inline endstone::Location::Position (
 ### function Position [2/2]
 
 ```C++
-template<typename T, typename>
+template<typename  T, typename>
 inline endstone::Location::Position (
     T x,
     T y,

@@ -63,22 +63,21 @@ public:
 
     virtual Result<void> setContents(std::vector<const ItemStack *> items) = 0;
 
-    [[nodiscard]] virtual Result<bool> contains(const std::string &type) const = 0;
+    [[nodiscard]] virtual bool contains(const std::string &type) const = 0;
 
     [[nodiscard]] virtual bool contains(const ItemStack &item) const = 0;
 
     [[nodiscard]] virtual bool contains(const ItemStack &item, int amount) const = 0;
 
-    [[nodiscard]] virtual Result<bool> containsAtLeast(const std::string &type, int amount) const = 0;
+    [[nodiscard]] virtual bool containsAtLeast(const std::string &type, int amount) const = 0;
 
     [[nodiscard]] virtual bool containsAtLeast(const ItemStack &item, int amount) const = 0;
 
-    [[nodiscard]] virtual Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> all(
-        const std::string &type) const = 0;
+    [[nodiscard]] virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const std::string &type) const = 0;
 
     [[nodiscard]] virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const ItemStack &item) const = 0;
 
-    [[nodiscard]] virtual Result<int> first(const std::string &type) const = 0;
+    [[nodiscard]] virtual int first(const std::string &type) const = 0;
 
     [[nodiscard]] virtual int first(const ItemStack &item) const = 0;
 
@@ -86,7 +85,7 @@ public:
 
     [[nodiscard]] virtual bool isEmpty() const = 0;
 
-    virtual Result<void> remove(const std::string &type) = 0;
+    virtual void remove(const std::string &type) = 0;
 
     virtual void remove(const ItemStack &item) = 0;
 

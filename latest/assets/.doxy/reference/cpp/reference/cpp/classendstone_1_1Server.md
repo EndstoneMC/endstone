@@ -38,8 +38,8 @@ _Represents a server implementation._
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**BroadcastChannelAdmin**](#variable-broadcastchanneladmin)   = `"endstone.broadcast.admin"`<br>_Used for all administrative messages, such as an operator using a command._  |
-|  const std::string | [**BroadcastChannelUser**](#variable-broadcastchanneluser)   = `"endstone.broadcast.user"`<br>_Used for all announcement messages, such as informing users that a player has joined._  |
+|  [**const**](classendstone_1_1Vector.md) std::string | [**BroadcastChannelAdmin**](#variable-broadcastchanneladmin)   = `"endstone.broadcast.admin"`<br>_Used for all administrative messages, such as an operator using a command._  |
+|  [**const**](classendstone_1_1Vector.md) std::string | [**BroadcastChannelUser**](#variable-broadcastchanneluser)   = `"endstone.broadcast.user"`<br>_Used for all announcement messages, such as informing users that a player has joined._  |
 
 
 
@@ -59,24 +59,24 @@ _Represents a server implementation._
 | Type | Name |
 | ---: | :--- |
 |   | [**Server**](#function-server-12) () = default<br> |
-|   | [**Server**](#function-server-22) (const [**Server**](classendstone_1_1Server.md) &) = delete<br> |
-| virtual void | [**broadcast**](#function-broadcast) (const Message & message, const std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
-| virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
-|  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+|   | [**Server**](#function-server-22) ([**const**](classendstone_1_1Vector.md) [**Server**](classendstone_1_1Server.md) &) = delete<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Vector.md) Message & message, [**const**](classendstone_1_1Vector.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Vector.md) Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
+|  [**void**](classendstone_1_1Vector.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Vector.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Vector.md) &&... args) const<br> |
 | virtual Result&lt; std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
 | virtual Result&lt; std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
-| virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
-| virtual float | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
-| virtual float | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
-| virtual float | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
+| virtual [**float**](classendstone_1_1Vector.md) | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
+| virtual [**float**](classendstone_1_1Vector.md) | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
+| virtual [**float**](classendstone_1_1Vector.md) | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
 | virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getBanList**](#function-getbanlist) () const = 0<br> |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
-| virtual float | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
-| virtual float | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
-| virtual float | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
+| virtual [**float**](classendstone_1_1Vector.md) | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
+| virtual [**float**](classendstone_1_1Vector.md) | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
+| virtual [**float**](classendstone_1_1Vector.md) | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
 | virtual [**Registry**](classendstone_1_1Registry.md)&lt; [**Enchantment**](classendstone_1_1Enchantment.md) &gt; & | [**getEnchantmentRegistry**](#function-getenchantmentregistry) () const = 0<br> |
 | virtual [**IpBanList**](classendstone_1_1IpBanList.md) & | [**getIpBanList**](#function-getipbanlist) () const = 0<br> |
 | virtual [**ItemFactory**](classendstone_1_1ItemFactory.md) & | [**getItemFactory**](#function-getitemfactory) () const = 0<br> |
@@ -84,29 +84,29 @@ _Represents a server implementation._
 | virtual [**Language**](classendstone_1_1Language.md) & | [**getLanguage**](#function-getlanguage) () const = 0<br>_Gets the current language interface used by the server._  |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
-| virtual int | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
 | virtual std::string | [**getMinecraftVersion**](#function-getminecraftversion) () const = 0<br>_Gets the Minecraft version that this server is running._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this server implementation._  |
-| virtual bool | [**getOnlineMode**](#function-getonlinemode) () const = 0<br>_Gets whether the_ [_**Server**_](classendstone_1_1Server.md) _is in online mode or not._ |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**getOnlineMode**](#function-getonlinemode) () const = 0<br>_Gets whether the_ [_**Server**_](classendstone_1_1Server.md) _is in online mode or not._ |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
-| virtual int | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
-| virtual int | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
-| virtual int | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
+| virtual [**int**](classendstone_1_1Vector.md) | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
 | virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br> |
 | virtual std::chrono::system\_clock::time\_point | [**getStartTime**](#function-getstarttime) () = 0<br>_Gets the start time of the server._  |
 | virtual std::string | [**getVersion**](#function-getversion) () const = 0<br>_Gets the version string of this server implementation._  |
-| virtual bool | [**isPrimaryThread**](#function-isprimarythread) () const = 0<br>_Checks the current thread against the expected primary server thread._  |
-|  [**Server**](classendstone_1_1Server.md) & | [**operator=**](#function-operator) (const [**Server**](classendstone_1_1Server.md) &) = delete<br> |
-| virtual void | [**reload**](#function-reload) () = 0<br>_Reloads the server configuration, functions, scripts and plugins._  |
-| virtual void | [**reloadData**](#function-reloaddata) () = 0<br>_Reload only the Minecraft data for the server._  |
-| virtual Result&lt; void &gt; | [**setMaxPlayers**](#function-setmaxplayers) (int max\_players) = 0<br>_Set the maximum amount of players allowed to be logged in at once._  |
-| virtual void | [**shutdown**](#function-shutdown) () = 0<br>_Shutdowns the server, stopping everything._  |
+| virtual [**bool**](classendstone_1_1Vector.md) | [**isPrimaryThread**](#function-isprimarythread) () const = 0<br>_Checks the current thread against the expected primary server thread._  |
+|  [**Server**](classendstone_1_1Server.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Vector.md) [**Server**](classendstone_1_1Server.md) &) = delete<br> |
+| virtual [**void**](classendstone_1_1Vector.md) | [**reload**](#function-reload) () = 0<br>_Reloads the server configuration, functions, scripts and plugins._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**reloadData**](#function-reloaddata) () = 0<br>_Reload only the Minecraft data for the server._  |
+| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Vector.md) max\_players) = 0<br>_Set the maximum amount of players allowed to be logged in at once._  |
+| virtual [**void**](classendstone_1_1Vector.md) | [**shutdown**](#function-shutdown) () = 0<br>_Shutdowns the server, stopping everything._  |
 | virtual  | [**~Server**](#function-server) () = default<br> |
 
 
@@ -188,7 +188,7 @@ endstone::Server::Server () = default
 
 ```C++
 endstone::Server::Server (
-    const Server &
+    const  Server &
 ) = delete
 ```
 
@@ -1358,7 +1358,7 @@ true if the current thread matches the expected primary thread, false otherwise
 
 ```C++
 Server & endstone::Server::operator= (
-    const Server &
+    const  Server &
 ) = delete
 ```
 

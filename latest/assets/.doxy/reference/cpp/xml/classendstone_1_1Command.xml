@@ -76,12 +76,12 @@
         <location file="include/endstone/command/command.h" line="274" column="17" bodyfile="include/endstone/command/command.h" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" prot="private" static="no" mutable="no">
-        <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
         <definition>const CommandMap* endstone::Command::command_map_</definition>
         <argsstring></argsstring>
         <name>command_map_</name>
         <qualifiedname>endstone::Command::command_map_</qualifiedname>
-        <initializer>= nullptr</initializer>
+        <initializer>= <ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -145,7 +145,7 @@
         <location file="include/endstone/command/command.h" line="45" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Command::execute</definition>
         <argsstring>(CommandSender &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const</argsstring>
         <name>execute</name>
@@ -156,7 +156,7 @@
           <declname>sender</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; std::string &gt; &amp;</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -207,7 +207,7 @@
         <location file="include/endstone/command/command.h" line="64" column="18" bodyfile="include/endstone/command/command.h" bodystart="64" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Command::setName</definition>
         <argsstring>(std::string name)</argsstring>
         <name>setName</name>
@@ -255,7 +255,7 @@
         <location file="include/endstone/command/command.h" line="89" column="18" bodyfile="include/endstone/command/command.h" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Command::setDescription</definition>
         <argsstring>(std::string description)</argsstring>
         <name>setDescription</name>
@@ -309,7 +309,7 @@
             <defname>Alias</defname>
           </param>
         </templateparamlist>
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Command::setAliases</definition>
         <argsstring>(Alias... aliases)</argsstring>
         <name>setAliases</name>
@@ -363,7 +363,7 @@
             <defname>Usage</defname>
           </param>
         </templateparamlist>
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Command::setUsages</definition>
         <argsstring>(Usage... usages)</argsstring>
         <name>setUsages</name>
@@ -417,7 +417,7 @@
             <defname>Permission</defname>
           </param>
         </templateparamlist>
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Command::setPermissions</definition>
         <argsstring>(Permission... permissions)</argsstring>
         <name>setPermissions</name>
@@ -446,13 +446,13 @@
         <location file="include/endstone/command/command.h" line="178" column="10" bodyfile="include/endstone/command/command.h" bodystart="178" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Command::testPermission</definition>
         <argsstring>(const CommandSender &amp;target) const</argsstring>
         <name>testPermission</name>
         <qualifiedname>endstone::Command::testPermission</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -477,13 +477,13 @@
         <location file="include/endstone/command/command.h" line="190" column="11" bodyfile="include/endstone/command/command.h" bodystart="190" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Command::testPermissionSilently</definition>
         <argsstring>(const CommandSender &amp;target) const</argsstring>
         <name>testPermissionSilently</name>
         <qualifiedname>endstone::Command::testPermissionSilently</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -508,13 +508,13 @@
         <location file="include/endstone/command/command.h" line="207" column="11" bodyfile="include/endstone/command/command.h" bodystart="207" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Command::registerTo</definition>
         <argsstring>(const CommandMap &amp;command_map)</argsstring>
         <name>registerTo</name>
         <qualifiedname>endstone::Command::registerTo</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
           <declname>command_map</declname>
         </param>
         <briefdescription>
@@ -539,13 +539,13 @@
         <location file="include/endstone/command/command.h" line="223" column="10" bodyfile="include/endstone/command/command.h" bodystart="223" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Command::unregisterFrom</definition>
         <argsstring>(const CommandMap &amp;command_map)</argsstring>
         <name>unregisterFrom</name>
         <qualifiedname>endstone::Command::unregisterFrom</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
           <declname>command_map</declname>
         </param>
         <briefdescription>
@@ -570,7 +570,7 @@
         <location file="include/endstone/command/command.h" line="239" column="10" bodyfile="include/endstone/command/command.h" bodystart="239" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Command::isRegistered</definition>
         <argsstring>() const</argsstring>
         <name>isRegistered</name>
@@ -605,13 +605,13 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Command::allowChangesFrom</definition>
         <argsstring>(const CommandMap &amp;command_map) const</argsstring>
         <name>allowChangesFrom</name>
         <qualifiedname>endstone::Command::allowChangesFrom</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
           <declname>command_map</declname>
         </param>
         <briefdescription>

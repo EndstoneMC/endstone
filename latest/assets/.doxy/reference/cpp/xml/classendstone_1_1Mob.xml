@@ -7,7 +7,7 @@
     <includes refid="mob_8h" local="no">endstone/actor/mob.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Mob::isGliding</definition>
         <argsstring>() const =0</argsstring>
         <name>isGliding</name>

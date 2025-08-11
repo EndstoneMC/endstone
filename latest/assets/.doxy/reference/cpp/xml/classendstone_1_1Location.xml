@@ -6,7 +6,7 @@
     <includes refid="location_8h" local="no">endstone/level/location.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" prot="private" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
         <definition>float endstone::Location::pitch_</definition>
         <argsstring></argsstring>
         <name>pitch_</name>
@@ -20,7 +20,7 @@
         <location file="include/endstone/level/location.h" line="122" column="11" bodyfile="include/endstone/level/location.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" prot="private" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
         <definition>float endstone::Location::yaw_</definition>
         <argsstring></argsstring>
         <name>yaw_</name>
@@ -38,11 +38,11 @@
       <memberdef kind="function" id="classendstone_1_1Location_1a1ec203c20e222d518b12a065703f62d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           </param>
           <param>
-            <type>typename</type>
-            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;T, float&gt;&gt;</defval>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref></type>
+            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;<ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, <ref refid="classendstone_1_1Vector" kindref="compound">float</ref>&gt;&gt;</defval>
           </param>
         </templateparamlist>
         <type></type>
@@ -51,24 +51,24 @@
         <name>Location</name>
         <qualifiedname>endstone::Location::Location</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>z</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>pitch</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>yaw</declname>
           <defval>0.0</defval>
         </param>
@@ -83,11 +83,11 @@
       <memberdef kind="function" id="classendstone_1_1Location_1afa5301b5666075dd78b66145003b7beb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           </param>
           <param>
-            <type>typename</type>
-            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;T, float&gt;&gt;</defval>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref></type>
+            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;<ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, <ref refid="classendstone_1_1Vector" kindref="compound">float</ref>&gt;&gt;</defval>
           </param>
         </templateparamlist>
         <type></type>
@@ -96,19 +96,19 @@
         <name>Location</name>
         <qualifiedname>endstone::Location::Location</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>z</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>pitch</declname>
         </param>
         <param>
@@ -126,11 +126,11 @@
       <memberdef kind="function" id="classendstone_1_1Location_1af13e92b895db527ad011c8438ed9ca93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           </param>
           <param>
-            <type>typename</type>
-            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;T, float&gt;&gt;</defval>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref></type>
+            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;<ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, <ref refid="classendstone_1_1Vector" kindref="compound">float</ref>&gt;&gt;</defval>
           </param>
         </templateparamlist>
         <type></type>
@@ -139,23 +139,23 @@
         <name>Location</name>
         <qualifiedname>endstone::Location::Location</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>z</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>pitch</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>yaw</declname>
         </param>
         <param>
@@ -171,7 +171,7 @@
         <location file="include/endstone/level/location.h" line="43" column="5" bodyfile="include/endstone/level/location.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
         <definition>float endstone::Location::getPitch</definition>
         <argsstring>() const</argsstring>
         <name>getPitch</name>
@@ -189,13 +189,13 @@
         <location file="include/endstone/level/location.h" line="53" column="12" bodyfile="include/endstone/level/location.h" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a27175a2731840cf6a10438adb80e8ad1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Location::setPitch</definition>
         <argsstring>(float pitch)</argsstring>
         <name>setPitch</name>
         <qualifiedname>endstone::Location::setPitch</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>pitch</declname>
         </param>
         <briefdescription>
@@ -229,7 +229,7 @@ Increasing pitch values the equivalent of looking down.</para>
         <location file="include/endstone/level/location.h" line="70" column="10" bodyfile="include/endstone/level/location.h" bodystart="70" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a15b337fd56d6e8e4cb24ba1b6b745a41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
         <definition>float endstone::Location::getYaw</definition>
         <argsstring>() const</argsstring>
         <name>getYaw</name>
@@ -247,13 +247,13 @@ Increasing pitch values the equivalent of looking down.</para>
         <location file="include/endstone/level/location.h" line="80" column="12" bodyfile="include/endstone/level/location.h" bodystart="80" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1adc5ba432e8d7e277ad1a004f51fe5e5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Location::setYaw</definition>
         <argsstring>(float yaw)</argsstring>
         <name>setYaw</name>
         <qualifiedname>endstone::Location::setYaw</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
           <declname>yaw</declname>
         </param>
         <briefdescription>
@@ -310,11 +310,11 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
       <memberdef kind="function" id="classendstone_1_1Location_1afd7f8dbb082f27f480135d4ba430bdaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           </param>
           <param>
-            <type>typename</type>
-            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;T, float&gt;&gt;</defval>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref></type>
+            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;<ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, <ref refid="classendstone_1_1Vector" kindref="compound">float</ref>&gt;&gt;</defval>
           </param>
         </templateparamlist>
         <type></type>
@@ -323,15 +323,15 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
         <name>Position</name>
         <qualifiedname>endstone::Location::Position</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -345,11 +345,11 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
       <memberdef kind="function" id="classendstone_1_1Location_1a4d254166aee4f58209134e7e56c16597" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           </param>
           <param>
-            <type>typename</type>
-            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;T, float&gt;&gt;</defval>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref></type>
+            <defval>std::enable_if_t&lt;std::is_convertible_v&lt;<ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, <ref refid="classendstone_1_1Vector" kindref="compound">float</ref>&gt;&gt;</defval>
           </param>
         </templateparamlist>
         <type></type>
@@ -358,15 +358,15 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
         <name>Position</name>
         <qualifiedname>endstone::Location::Position</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           <declname>z</declname>
         </param>
         <param>

@@ -695,18 +695,18 @@
     <member refid="classendstone_1_1Inventory_1a2f4af3f93e53605d1c1540084305fdf4" kind="function"><name>removeItem</name></member>
     <member refid="classendstone_1_1Inventory_1aed3238de786bddbcf39761658b95c48b" kind="function"><name>getContents</name></member>
     <member refid="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" kind="function"><name>setContents</name></member>
-    <member refid="classendstone_1_1Inventory_1a0a7ae4ea788ee3da73d32c3e891081e1" kind="function"><name>contains</name></member>
+    <member refid="classendstone_1_1Inventory_1a621dd957d66ba16baf072ccc5e3ac55a" kind="function"><name>contains</name></member>
     <member refid="classendstone_1_1Inventory_1a5c25510c8e1b29286608bc04b42512dc" kind="function"><name>contains</name></member>
     <member refid="classendstone_1_1Inventory_1afdc19f459553b5b6fa058600e9aea8f1" kind="function"><name>contains</name></member>
-    <member refid="classendstone_1_1Inventory_1a3400bbe27b7ab65c14d3d1194d60535f" kind="function"><name>containsAtLeast</name></member>
+    <member refid="classendstone_1_1Inventory_1a780dcea7873db6b997799f1a65cda982" kind="function"><name>containsAtLeast</name></member>
     <member refid="classendstone_1_1Inventory_1a1ad7af2b4f4e7ae60e1c9067e8e0af29" kind="function"><name>containsAtLeast</name></member>
-    <member refid="classendstone_1_1Inventory_1aedbde69f2a6217ddaf34e9a28ec4a512" kind="function"><name>all</name></member>
+    <member refid="classendstone_1_1Inventory_1a57fc0a3dcecac9bfe137b3072239764d" kind="function"><name>all</name></member>
     <member refid="classendstone_1_1Inventory_1abbe720b7ba894612f866a8cf060077ae" kind="function"><name>all</name></member>
-    <member refid="classendstone_1_1Inventory_1a7ed0e640354bf650679ac160b5225738" kind="function"><name>first</name></member>
+    <member refid="classendstone_1_1Inventory_1a7e262d30e950644ab36e84ad346e83d6" kind="function"><name>first</name></member>
     <member refid="classendstone_1_1Inventory_1afd3997dd60d7f4f0649aa4280f05bc24" kind="function"><name>first</name></member>
     <member refid="classendstone_1_1Inventory_1a26fb3d2b14213b78a13a0cc46d9a6128" kind="function"><name>firstEmpty</name></member>
     <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" kind="function"><name>isEmpty</name></member>
-    <member refid="classendstone_1_1Inventory_1a09b31e51bf891c8f33bfca46707bf573" kind="function"><name>remove</name></member>
+    <member refid="classendstone_1_1Inventory_1a6a34081f5a017d312d4aa43f5c94c197" kind="function"><name>remove</name></member>
     <member refid="classendstone_1_1Inventory_1af3402b278d0775d48a56593bf49ee52e" kind="function"><name>remove</name></member>
     <member refid="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" kind="function"><name>clear</name></member>
     <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" kind="function"><name>clear</name></member>
@@ -739,10 +739,10 @@
   </compound>
   <compound refid="classendstone_1_1ItemFactory" kind="class"><name>endstone::ItemFactory</name>
     <member refid="classendstone_1_1ItemFactory_1aad09d9483ab4cada38c27ef7b735f6da" kind="function"><name>~ItemFactory</name></member>
-    <member refid="classendstone_1_1ItemFactory_1a8b61cf20280c522b2141a115114351a7" kind="function"><name>getItemMeta</name></member>
-    <member refid="classendstone_1_1ItemFactory_1a45940d20cf95a97fec827d390674487c" kind="function"><name>isApplicable</name></member>
+    <member refid="classendstone_1_1ItemFactory_1afb7e6bf34ea8428da0faa4b49ec70f6e" kind="function"><name>getItemMeta</name></member>
+    <member refid="classendstone_1_1ItemFactory_1ad23cc36994459bd2182ff507d30e760c" kind="function"><name>isApplicable</name></member>
     <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" kind="function"><name>equals</name></member>
-    <member refid="classendstone_1_1ItemFactory_1a0b2909d94f0944c34e5b606e79a63dd7" kind="function"><name>asMetaFor</name></member>
+    <member refid="classendstone_1_1ItemFactory_1ae0dbbe25981c64f3d65e770cc72bf6c5" kind="function"><name>asMetaFor</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemMeta" kind="class"><name>endstone::ItemMeta</name>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" kind="enum"><name>Type</name></member>
@@ -778,17 +778,16 @@
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1a064536b9d671c4527d9fdac36d184bad" kind="variable"><name>type_</name></member>
+    <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" kind="variable"><name>type_</name></member>
     <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" kind="variable"><name>amount_</name></member>
     <member refid="classendstone_1_1ItemStack_1a5446d005144db4818e2fce96da70bd9d" kind="variable"><name>data_</name></member>
     <member refid="classendstone_1_1ItemStack_1a1c1edec51e5963fb5f4c054466bfa6c7" kind="variable"><name>meta_</name></member>
-    <member refid="classendstone_1_1ItemStack_1a1983ff913fd11679966684980a0660d0" kind="function"><name>ItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1a4831193c95b03711c5e10c0a3b2d654d" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1afb6bac113f7368ac64d9d152af0d55e2" kind="function"><name>create</name></member>
+    <member refid="classendstone_1_1ItemStack_1a461336ebca90be761e3d5316621ec234" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1ad3c33286ebce8800dcf0285a6f0e301a" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" kind="function"><name>~ItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ItemStack_1afb1703adc41138ff6a9ddb0c1b67af26" kind="function"><name>setType</name></member>
-    <member refid="classendstone_1_1ItemStack_1a27ca816b61e425b32c9f481044cb5279" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1afd9e055aeb937c5b3da9ecc2cf9baecc" kind="function"><name>setAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1a3f2c4792c2ddb697945ad8458a41e319" kind="function"><name>getData</name></member>
@@ -802,9 +801,7 @@
     <member refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kind="function"><name>setItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a2c8607d72960a4ac9189ad25eb1fd8a0" kind="function"><name>clone</name></member>
     <member refid="classendstone_1_1ItemStack_1a98d56b0907d2e07d3ccdb8f0b4639f0d" kind="function"><name>isEndstoneItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1a0e3f9ff0530fdc155e79360af582157f" kind="function"><name>create</name></member>
-    <member refid="classendstone_1_1ItemStack_1afb6bac113f7368ac64d9d152af0d55e2" kind="function"><name>create</name></member>
-    <member refid="classendstone_1_1ItemStack_1a31f8366e7d1f4e500bcfa64f14e9f356" kind="function"><name>setItemMeta0</name></member>
+    <member refid="classendstone_1_1ItemStack_1ad18900f0c9460bb45556111d41e4e09c" kind="function"><name>setItemMeta0</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemType" kind="class"><name>endstone::ItemType</name>
     <member refid="classendstone_1_1ItemType_1a0d214cfa5e07bd5310b1ad134f873bc7" kind="function"><name>~ItemType</name></member>

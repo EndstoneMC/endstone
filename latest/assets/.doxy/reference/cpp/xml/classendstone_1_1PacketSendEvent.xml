@@ -20,7 +20,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="102" column="12" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketSendEvent_1af46ca7e7e55a4df812ca6cc38466d991" prot="private" static="no" mutable="no">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>int endstone::PacketSendEvent::packet_id_</definition>
         <argsstring></argsstring>
         <name>packet_id_</name>
@@ -76,7 +76,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="106" column="19" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketSendEvent_1ab71556ab20b8c96135c756337ffa1a78" prot="private" static="no" mutable="no">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>int endstone::PacketSendEvent::sub_client_id_</definition>
         <argsstring></argsstring>
         <name>sub_client_id_</name>
@@ -119,7 +119,7 @@
           <declname>player</declname>
         </param>
         <param>
-          <type>const int</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
           <declname>packet_id</declname>
         </param>
         <param>
@@ -131,7 +131,7 @@
           <declname>address</declname>
         </param>
         <param>
-          <type>const int</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
           <declname>sub_client_id</declname>
         </param>
         <briefdescription>
@@ -143,7 +143,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="29" column="5" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="29" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>int endstone::PacketSendEvent::getPacketId</definition>
         <argsstring>() const</argsstring>
         <name>getPacketId</name>
@@ -179,7 +179,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="51" column="23" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::PacketSendEvent::setPayload</definition>
         <argsstring>(std::string_view payload)</argsstring>
         <name>setPayload</name>
@@ -239,7 +239,7 @@
         <location file="include/endstone/event/server/packet_send_event.h" line="84" column="20" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="84" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>int endstone::PacketSendEvent::getSubClientId</definition>
         <argsstring>() const</argsstring>
         <name>getSubClientId</name>

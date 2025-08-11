@@ -52,11 +52,11 @@ _Holds information on a permission and which_ [_**PermissionAttachment**_](class
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PermissionAttachmentInfo**](#function-permissionattachmentinfo) ([**Permissible**](classendstone_1_1Permissible.md) & permissible, std::string permission, [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* attachment, bool value) <br> |
+|   | [**PermissionAttachmentInfo**](#function-permissionattachmentinfo) ([**Permissible**](classendstone_1_1Permissible.md) & permissible, std::string permission, [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* attachment, [**bool**](classendstone_1_1Vector.md) value) <br> |
 |  [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**getAttachment**](#function-getattachment) () const<br> |
 |  [**Permissible**](classendstone_1_1Permissible.md) & | [**getPermissible**](#function-getpermissible) () const<br> |
 |  std::string | [**getPermission**](#function-getpermission) () const<br> |
-|  bool | [**getValue**](#function-getvalue) () const<br> |
+|  [**bool**](classendstone_1_1Vector.md) | [**getValue**](#function-getvalue) () const<br> |
 
 
 

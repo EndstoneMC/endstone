@@ -37,8 +37,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  constexpr auto | [**BLACK**](#variable-black)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 0, 0, 0)`<br> |
-|  constexpr auto | [**WHITE**](#variable-white)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 255, 255, 255)`<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**auto**](classendstone_1_1Vector.md) | [**BLACK**](#variable-black)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 0, 0, 0)`<br> |
+|  [**constexpr**](classendstone_1_1Vector.md) [**auto**](classendstone_1_1Vector.md) | [**WHITE**](#variable-white)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 255, 255, 255)`<br> |
 
 
 

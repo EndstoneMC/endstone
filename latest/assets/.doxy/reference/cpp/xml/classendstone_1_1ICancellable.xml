@@ -25,7 +25,7 @@
         <location file="include/endstone/event/cancellable.h" line="21" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ICancellable_1ad7d9998d26e5339233a01cf718a779ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::ICancellable::isCancelled</definition>
         <argsstring>() const =0</argsstring>
         <name>isCancelled</name>
@@ -46,7 +46,7 @@
         <location file="include/endstone/event/cancellable.h" line="22" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ICancellable_1a348a8d847632c98e42510134d82086ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ICancellable::setCancelled</definition>
         <argsstring>(bool cancel)=0</argsstring>
         <name>setCancelled</name>
@@ -59,7 +59,7 @@
         <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
         <reimplementedby refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e">setCancelled</reimplementedby>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
           <declname>cancel</declname>
         </param>
         <briefdescription>
@@ -71,7 +71,7 @@
         <location file="include/endstone/event/cancellable.h" line="23" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ICancellable_1a65036acf5f2520cb11d833b4a4daee29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ICancellable::cancel</definition>
         <argsstring>()=0</argsstring>
         <name>cancel</name>

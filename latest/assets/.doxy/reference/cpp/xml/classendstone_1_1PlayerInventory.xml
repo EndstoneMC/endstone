@@ -78,13 +78,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="52" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a811b329ef42ce228d737e4228aade626" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::PlayerInventory::setHelmet</definition>
         <argsstring>(const ItemStack *helmet)=0</argsstring>
         <name>setHelmet</name>
         <qualifiedname>endstone::PlayerInventory::setHelmet</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
           <declname>helmet</declname>
         </param>
         <briefdescription>
@@ -108,13 +108,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="61" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a50825fd18b6f9ec27b6043081edd39e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::PlayerInventory::setChestplate</definition>
         <argsstring>(const ItemStack *chestplate)=0</argsstring>
         <name>setChestplate</name>
         <qualifiedname>endstone::PlayerInventory::setChestplate</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
           <declname>chestplate</declname>
         </param>
         <briefdescription>
@@ -138,13 +138,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="70" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a4ab9df3c892e7c8adfd7770ad6442bbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::PlayerInventory::setLeggings</definition>
         <argsstring>(const ItemStack *leggings)=0</argsstring>
         <name>setLeggings</name>
         <qualifiedname>endstone::PlayerInventory::setLeggings</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
           <declname>leggings</declname>
         </param>
         <briefdescription>
@@ -168,13 +168,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="79" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a3d2a8c9ccdfe6e6d668a5c64305c0d44" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::PlayerInventory::setBoots</definition>
         <argsstring>(const ItemStack *boots)=0</argsstring>
         <name>setBoots</name>
         <qualifiedname>endstone::PlayerInventory::setBoots</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
           <declname>boots</declname>
         </param>
         <briefdescription>
@@ -216,13 +216,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="95" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a13913ac8928251b4078bc8b7599db44f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::PlayerInventory::setItemInMainHand</definition>
         <argsstring>(const ItemStack *item)=0</argsstring>
         <name>setItemInMainHand</name>
         <qualifiedname>endstone::PlayerInventory::setItemInMainHand</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
           <declname>item</declname>
         </param>
         <briefdescription>
@@ -263,13 +263,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="109" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a1b5365a4d2081279549a63a817ffd7fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::PlayerInventory::setItemInOffHand</definition>
         <argsstring>(const ItemStack *item)=0</argsstring>
         <name>setItemInOffHand</name>
         <qualifiedname>endstone::PlayerInventory::setItemInOffHand</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
           <declname>item</declname>
         </param>
         <briefdescription>
@@ -292,7 +292,7 @@
         <location file="include/endstone/inventory/player_inventory.h" line="116" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
         <definition>virtual int endstone::PlayerInventory::getHeldItemSlot</definition>
         <argsstring>() const =0</argsstring>
         <name>getHeldItemSlot</name>
@@ -310,13 +310,13 @@
         <location file="include/endstone/inventory/player_inventory.h" line="123" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a0d7b635b4d5b4711a0c3f7bdd3f2e4e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::PlayerInventory::setHeldItemSlot</definition>
         <argsstring>(int slot)=0</argsstring>
         <name>setHeldItemSlot</name>
         <qualifiedname>endstone::PlayerInventory::setHeldItemSlot</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
           <declname>slot</declname>
         </param>
         <briefdescription>
@@ -373,16 +373,16 @@
     <listofallmembers>
       <member refid="classendstone_1_1Inventory_1a70dc622a7f4ecaf2e6bae130a2326f78" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
       <member refid="classendstone_1_1Inventory_1adb3dc76d1831c648ce06f265ea58ac23" prot="public" virt="non-virtual"><scope>endstone::PlayerInventory</scope><name>addItem</name></member>
-      <member refid="classendstone_1_1Inventory_1aedbde69f2a6217ddaf34e9a28ec4a512" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>all</name></member>
+      <member refid="classendstone_1_1Inventory_1a57fc0a3dcecac9bfe137b3072239764d" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>all</name></member>
       <member refid="classendstone_1_1Inventory_1abbe720b7ba894612f866a8cf060077ae" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>all</name></member>
       <member refid="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>clear</name></member>
       <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>clear</name></member>
-      <member refid="classendstone_1_1Inventory_1a0a7ae4ea788ee3da73d32c3e891081e1" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>contains</name></member>
+      <member refid="classendstone_1_1Inventory_1a621dd957d66ba16baf072ccc5e3ac55a" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>contains</name></member>
       <member refid="classendstone_1_1Inventory_1a5c25510c8e1b29286608bc04b42512dc" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>contains</name></member>
       <member refid="classendstone_1_1Inventory_1afdc19f459553b5b6fa058600e9aea8f1" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>contains</name></member>
-      <member refid="classendstone_1_1Inventory_1a3400bbe27b7ab65c14d3d1194d60535f" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>containsAtLeast</name></member>
+      <member refid="classendstone_1_1Inventory_1a780dcea7873db6b997799f1a65cda982" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>containsAtLeast</name></member>
       <member refid="classendstone_1_1Inventory_1a1ad7af2b4f4e7ae60e1c9067e8e0af29" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>containsAtLeast</name></member>
-      <member refid="classendstone_1_1Inventory_1a7ed0e640354bf650679ac160b5225738" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>first</name></member>
+      <member refid="classendstone_1_1Inventory_1a7e262d30e950644ab36e84ad346e83d6" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>first</name></member>
       <member refid="classendstone_1_1Inventory_1afd3997dd60d7f4f0649aa4280f05bc24" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>first</name></member>
       <member refid="classendstone_1_1Inventory_1a26fb3d2b14213b78a13a0cc46d9a6128" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>firstEmpty</name></member>
       <member refid="classendstone_1_1PlayerInventory_1adee7ce6d4f195755d45b2b69e62a3817" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getBoots</name></member>
@@ -397,7 +397,7 @@
       <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getMaxStackSize</name></member>
       <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getSize</name></member>
       <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>isEmpty</name></member>
-      <member refid="classendstone_1_1Inventory_1a09b31e51bf891c8f33bfca46707bf573" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>remove</name></member>
+      <member refid="classendstone_1_1Inventory_1a6a34081f5a017d312d4aa43f5c94c197" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>remove</name></member>
       <member refid="classendstone_1_1Inventory_1af3402b278d0775d48a56593bf49ee52e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>remove</name></member>
       <member refid="classendstone_1_1Inventory_1a7cc5b3f5922baff4b878398a21ded738" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>removeItem</name></member>
       <member refid="classendstone_1_1Inventory_1a2f4af3f93e53605d1c1540084305fdf4" prot="public" virt="non-virtual"><scope>endstone::PlayerInventory</scope><name>removeItem</name></member>

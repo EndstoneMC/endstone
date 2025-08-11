@@ -55,8 +55,8 @@ _A list of event handlers. Should be instantiated on a per-event basis._
 |   | [**HandlerList**](#function-handlerlist) (std::string event) <br> |
 |  std::vector&lt; [**EventHandler**](classendstone_1_1EventHandler.md) \* &gt; | [**getHandlers**](#function-gethandlers) () const<br> |
 |  [**EventHandler**](classendstone_1_1EventHandler.md) \* | [**registerHandler**](#function-registerhandler) (std::unique\_ptr&lt; [**EventHandler**](classendstone_1_1EventHandler.md) &gt; handler) <br> |
-|  void | [**unregister**](#function-unregister-12) (const [**EventHandler**](classendstone_1_1EventHandler.md) & handler) <br> |
-|  void | [**unregister**](#function-unregister-22) (const [**Plugin**](classendstone_1_1Plugin.md) & plugin) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**unregister**](#function-unregister-12) ([**const**](classendstone_1_1Vector.md) [**EventHandler**](classendstone_1_1EventHandler.md) & handler) <br> |
+|  [**void**](classendstone_1_1Vector.md) | [**unregister**](#function-unregister-22) ([**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin) <br> |
 
 
 
@@ -85,7 +85,7 @@ _A list of event handlers. Should be instantiated on a per-event basis._
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**bake**](#function-bake) () const<br> |
+|  [**void**](classendstone_1_1Vector.md) | [**bake**](#function-bake) () const<br> |
 
 
 
@@ -177,7 +177,7 @@ the pointer to the registered handler
 
 ```C++
 inline void endstone::HandlerList::unregister (
-    const EventHandler & handler
+    const  EventHandler & handler
 ) 
 ```
 
@@ -206,7 +206,7 @@ Remove a handler from a specific order slot
 
 ```C++
 inline void endstone::HandlerList::unregister (
-    const Plugin & plugin
+    const  Plugin & plugin
 ) 
 ```
 

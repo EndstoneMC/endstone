@@ -2277,15 +2277,15 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-plugincommand"><strong>PluginCommand</strong></a> (const <a href="../classendstone_1_1Command/"><strong>Command</strong></a> &amp; command, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; owner) <br></td>
+<td style="text-align: left;"><a href="#function-plugincommand"><strong>PluginCommand</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Command/"><strong>Command</strong></a> &amp; command, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; owner) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="./"><strong>PluginCommand</strong></a> *</td>
 <td style="text-align: left;"><a href="#function-asplugincommand"><strong>asPluginCommand</strong></a> () override const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-execute"><strong>execute</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, const std::vector&lt; std::string &gt; &amp; args) override const<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-execute"><strong>execute</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::vector&lt; std::string &gt; &amp; args) override const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CommandExecutor/"><strong>CommandExecutor</strong></a> &amp;</td>
@@ -2296,7 +2296,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getplugin"><strong>getPlugin</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual void</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="#function-setexecutor"><strong>setExecutor</strong></a> (std::shared_ptr&lt; <a href="../classendstone_1_1CommandExecutor/"><strong>CommandExecutor</strong></a> &gt; executor) <br></td>
 </tr>
 </tbody>
@@ -2320,8 +2320,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-asplugincommand"><strong>asPluginCommand</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-execute"><strong>execute</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, const std::vector&lt; std::string &gt; &amp; args) const<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-execute"><strong>execute</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::vector&lt; std::string &gt; &amp; args) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::vector&lt; std::string &gt;</td>
@@ -2344,44 +2344,44 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-getusages"><strong>getUsages</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">bool</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-isregistered"><strong>isRegistered</strong></a> () const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-registerto"><strong>registerTo</strong></a> (const <a href="../classendstone_1_1CommandMap/"><strong>CommandMap</strong></a> &amp; command_map) <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-registerto"><strong>registerTo</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1CommandMap/"><strong>CommandMap</strong></a> &amp; command_map) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">void</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-setaliases"><strong>setAliases</strong></a> (Alias... aliases) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">void</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-setdescription"><strong>setDescription</strong></a> (std::string description) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">void</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-setname"><strong>setName</strong></a> (std::string name) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">void</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-setpermissions"><strong>setPermissions</strong></a> (Permission... permissions) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">void</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Command/#function-setusages"><strong>setUsages</strong></a> (Usage... usages) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-testpermission"><strong>testPermission</strong></a> (const <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; target) const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-testpermission"><strong>testPermission</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; target) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-testpermissionsilently"><strong>testPermissionSilently</strong></a> (const <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; target) const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-testpermissionsilently"><strong>testPermissionSilently</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; target) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-unregisterfrom"><strong>unregisterFrom</strong></a> (const <a href="../classendstone_1_1CommandMap/"><strong>CommandMap</strong></a> &amp; command_map) <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Command/#function-unregisterfrom"><strong>unregisterFrom</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1CommandMap/"><strong>CommandMap</strong></a> &amp; command_map) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2392,7 +2392,7 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-plugincommand">function PluginCommand<a class="headerlink" href="#function-plugincommand" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginCommand</span><span class="o">::</span><span class="n">PluginCommand</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">command</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Command</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">command</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">owner</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>

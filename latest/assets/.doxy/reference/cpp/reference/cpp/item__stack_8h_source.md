@@ -40,18 +40,21 @@ class EndstoneItemStack;
 
 class ItemStack {
 public:
-    explicit ItemStack(const std::string &type, const int amount = 1, const int data = 0)
+    static Result<ItemStack> create(const std::string &type, const int amount = 1, const int data = 0)
     {
-        if (const auto *item_type = ItemType::get(type)) {
-            type_ = *item_type;
+        const auto *item_type = ItemType::get(type);
+        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+        ENDSTONE_CHECKF(amount >= 1 && amount <= 255, "Item stack amount must be between 1 to 255, got {}.", amount);
+        return ItemStack(type, amount, data);
+    }
+
+    explicit ItemStack(const std::string &type = "minecraft:air", const int amount = 1, const int data = 0)
+    {
+        if (auto *item_type = ItemType::get(type); item_type != nullptr) {
+            type_ = type;
             amount_ = amount;
             data_ = data;
         }
-    }
-
-    explicit ItemStack(const ItemType &type, const int amount = 1, const int data = 0)
-        : type_(type), amount_(amount), data_(data)
-    {
     }
 
     ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount()), data_(stack.getData())
@@ -71,7 +74,7 @@ protected:
     }
 
 public:
-    [[nodiscard]] virtual const ItemType &getType() const
+    [[nodiscard]] virtual std::string getType() const
     {
         return type_;
     }
@@ -80,14 +83,10 @@ public:
     {
         const auto *item_type = ItemType::get(type);
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-        setType(*item_type);
-        return {};
-    }
-
-    virtual void setType(const ItemType &type)
-    {
-        // TODO(item): clear item components when the type is changed
         type_ = type;
+        if (meta_ != nullptr) {
+            meta_ = Endstone::getServer().getItemFactory().asMetaFor(meta_.get(), type);
+        }
     }
 
     [[nodiscard]] virtual int getAmount() const
@@ -112,7 +111,11 @@ public:
 
     [[nodiscard]] virtual int getMaxStackSize() const
     {
-        return getType().getMaxStackSize();
+        auto *item_type = ItemType::get(getType());
+        if (!item_type) {
+            return 0;
+        }
+        return item_type->getMaxStackSize();
     }
 
     bool operator==(const ItemStack &other) const
@@ -159,21 +162,8 @@ public:
         return std::make_unique<ItemStack>(*this);
     }
 
-    static Result<ItemStack> create(const ItemType &type, const int amount = 1, const int data = 0)
-    {
-        ENDSTONE_CHECKF(amount >= 1 && amount <= 255, "Item stack amount must be between 1 to 255, got {}.", amount);
-        return ItemStack(type, amount, data);
-    }
-
-    static Result<ItemStack> create(const std::string &type, const int amount = 1, const int data = 0)
-    {
-        const auto *item_type = ItemType::get(type);
-        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-        return create(*item_type, amount, data);
-    }
-
 private:
-    bool setItemMeta0(const ItemMeta *meta, const ItemType &type)
+    bool setItemMeta0(const ItemMeta *meta, const std::string &type)
     {
         if (!meta) {
             meta_ = nullptr;
@@ -189,7 +179,7 @@ private:
         return true;
     }
 
-    std::reference_wrapper<const ItemType> type_ = *ItemType::get("minecraft:air");
+    std::string type_ = "minecraft:air";
     int amount_ = 0;
     int data_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;

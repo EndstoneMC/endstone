@@ -6,7 +6,7 @@
     <includes refid="plugin_8h" local="no">endstone/plugin/plugin.h</includes>
     <sectiondef kind="friend">
       <memberdef kind="friend" id="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>class</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">class</ref></type>
         <definition>friend class PluginLoader</definition>
         <argsstring></argsstring>
         <name>PluginLoader</name>
@@ -23,7 +23,7 @@
         <location file="include/endstone/plugin/plugin.h" line="172" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1Plugin_1af89a58b391c1b932c5d3580fc2ccb764" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>class</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">class</ref></type>
         <definition>friend class core::EndstonePluginManager</definition>
         <argsstring></argsstring>
         <name>core::EndstonePluginManager</name>
@@ -42,12 +42,12 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Plugin_1aee2a3ea3a977bc44ea80f5a74ca5c454" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Plugin::enabled_</definition>
         <argsstring></argsstring>
         <name>enabled_</name>
         <qualifiedname>endstone::Plugin::enabled_</qualifiedname>
-        <initializer>{false}</initializer>
+        <initializer>{<ref refid="classendstone_1_1Vector" kindref="compound">false</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -62,7 +62,7 @@
         <argsstring></argsstring>
         <name>loader_</name>
         <qualifiedname>endstone::Plugin::loader_</qualifiedname>
-        <initializer>{nullptr}</initializer>
+        <initializer>{<ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -77,7 +77,7 @@
         <argsstring></argsstring>
         <name>server_</name>
         <qualifiedname>endstone::Plugin::server_</qualifiedname>
-        <initializer>{nullptr}</initializer>
+        <initializer>{<ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -92,7 +92,7 @@
         <argsstring></argsstring>
         <name>logger_</name>
         <qualifiedname>endstone::Plugin::logger_</qualifiedname>
-        <initializer>{nullptr}</initializer>
+        <initializer>{<ref refid="classendstone_1_1Vector" kindref="compound">nullptr</ref>}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -138,7 +138,7 @@
         <name>Plugin</name>
         <qualifiedname>endstone::Plugin::Plugin</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -155,7 +155,7 @@
         <name>operator=</name>
         <qualifiedname>endstone::Plugin::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -180,7 +180,7 @@
         <location file="include/endstone/plugin/plugin.h" line="47" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Plugin_1afbb41d0901dc0ba90e6f07e33f1222ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref> &amp;</type>
         <definition>virtual const PluginDescription &amp; endstone::Plugin::getDescription</definition>
         <argsstring>() const =0</argsstring>
         <name>getDescription</name>
@@ -198,7 +198,7 @@
         <location file="include/endstone/plugin/plugin.h" line="54" column="38"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Plugin_1af5d90225a0057bf88d97144acfae2ff4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Plugin::onLoad</definition>
         <argsstring>()</argsstring>
         <name>onLoad</name>
@@ -214,7 +214,7 @@
         <location file="include/endstone/plugin/plugin.h" line="62" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Plugin_1ae2a98beb4cfdc042da7e0d7ed0cd5856" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Plugin::onEnable</definition>
         <argsstring>()</argsstring>
         <name>onEnable</name>
@@ -229,7 +229,7 @@
         <location file="include/endstone/plugin/plugin.h" line="67" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Plugin_1aadd23b4ac5c6603e6961728d6586b121" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Plugin::onDisable</definition>
         <argsstring>()</argsstring>
         <name>onDisable</name>
@@ -262,7 +262,7 @@
         <location file="include/endstone/plugin/plugin.h" line="81" column="13" bodyfile="include/endstone/plugin/plugin.h" bodystart="81" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Plugin_1ab06a53213e2521dd7d2cde4a260f80f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>bool endstone::Plugin::isEnabled</definition>
         <argsstring>() const</argsstring>
         <name>isEnabled</name>
@@ -366,7 +366,7 @@
         <location file="include/endstone/plugin/plugin.h" line="136" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="136" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Plugin_1a3181846afa77e1801c009aa535b25ea0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::filesystem::path &amp;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::filesystem::path &amp;</type>
         <definition>const std::filesystem::path &amp; endstone::Plugin::getDataFolder</definition>
         <argsstring>() const</argsstring>
         <name>getDataFolder</name>
@@ -386,23 +386,23 @@
       <memberdef kind="function" id="classendstone_1_1Plugin_1ae552be9edf85435a6b70361de0f0c133" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename EventType</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> EventType</type>
           </param>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> <ref refid="classendstone_1_1Vector" kindref="compound">T</ref></type>
           </param>
         </templateparamlist>
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Plugin::registerEvent</definition>
         <argsstring>(void(T::*func)(EventType &amp;), T &amp;instance, EventPriority priority=EventPriority::Normal, bool ignore_cancelled=false)</argsstring>
         <name>registerEvent</name>
         <qualifiedname>endstone::Plugin::registerEvent</qualifiedname>
         <param>
-          <type>void(T::*)(EventType &amp;)</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(T::*)(EventType &amp;)</type>
           <declname>func</declname>
         </param>
         <param>
-          <type>T &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">T</ref> &amp;</type>
           <declname>instance</declname>
         </param>
         <param>
@@ -411,9 +411,9 @@
           <defval><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" kindref="member">EventPriority::Normal</ref></defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
           <declname>ignore_cancelled</declname>
-          <defval>false</defval>
+          <defval><ref refid="classendstone_1_1Vector" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -426,16 +426,16 @@
       <memberdef kind="function" id="classendstone_1_1Plugin_1a5a480b1117f2d8459e4923e1808f1239" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename EventType</type>
+            <type><ref refid="classendstone_1_1Vector" kindref="compound">typename</ref> EventType</type>
           </param>
         </templateparamlist>
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Plugin::registerEvent</definition>
         <argsstring>(std::function&lt; void(EventType &amp;)&gt; func, EventPriority priority=EventPriority::Normal, bool ignore_cancelled=false)</argsstring>
         <name>registerEvent</name>
         <qualifiedname>endstone::Plugin::registerEvent</qualifiedname>
         <param>
-          <type>std::function&lt; void(EventType &amp;)&gt;</type>
+          <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(EventType &amp;)&gt;</type>
           <declname>func</declname>
         </param>
         <param>
@@ -444,9 +444,9 @@
           <defval><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" kindref="member">EventPriority::Normal</ref></defval>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
           <declname>ignore_cancelled</declname>
-          <defval>false</defval>
+          <defval><ref refid="classendstone_1_1Vector" kindref="compound">false</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -459,13 +459,13 @@
     </sectiondef>
     <sectiondef kind="protected-func">
       <memberdef kind="function" id="classendstone_1_1Plugin_1aaadd57e597b76aae651de39c005b2a37" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::Plugin::setEnabled</definition>
         <argsstring>(bool enabled)</argsstring>
         <name>setEnabled</name>
         <qualifiedname>endstone::Plugin::setEnabled</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
           <declname>enabled</declname>
         </param>
         <briefdescription>

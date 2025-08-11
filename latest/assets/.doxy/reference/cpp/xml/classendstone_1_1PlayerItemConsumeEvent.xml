@@ -6,7 +6,7 @@
     <includes refid="player__item__consume__event_8h" local="no">endstone/event/player/player_item_consume_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerItemConsumeEvent_1abcd6574b568123db9d0c6601acd01f24" prot="private" static="no" mutable="no">
-        <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
         <definition>const ItemStack&amp; endstone::PlayerItemConsumeEvent::item_</definition>
         <argsstring></argsstring>
         <name>item_</name>
@@ -46,7 +46,7 @@
           <declname>player</declname>
         </param>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>item</declname>
         </param>
         <param>

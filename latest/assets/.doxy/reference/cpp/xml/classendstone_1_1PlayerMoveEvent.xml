@@ -81,7 +81,7 @@
         <location file="include/endstone/event/player/player_move_event.h" line="31" column="14" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
         <definition>const Location &amp; endstone::PlayerMoveEvent::getFrom</definition>
         <argsstring>() const</argsstring>
         <name>getFrom</name>
@@ -99,13 +99,13 @@
         <location file="include/endstone/event/player/player_move_event.h" line="38" column="21" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a8917f8be7ae5bdeb109e58ddc7d3b723" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
         <definition>Result&lt; void &gt; endstone::PlayerMoveEvent::setFrom</definition>
         <argsstring>(const Location &amp;from)</argsstring>
         <name>setFrom</name>
         <qualifiedname>endstone::PlayerMoveEvent::setFrom</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
           <declname>from</declname>
         </param>
         <briefdescription>
@@ -128,7 +128,7 @@
         <location file="include/endstone/event/player/player_move_event.h" line="48" column="12" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="48" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
         <definition>const Location &amp; endstone::PlayerMoveEvent::getTo</definition>
         <argsstring>() const</argsstring>
         <name>getTo</name>
@@ -146,13 +146,13 @@
         <location file="include/endstone/event/player/player_move_event.h" line="60" column="21" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a733ae2307c00ed312652389f1e26317f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
         <definition>Result&lt; void &gt; endstone::PlayerMoveEvent::setTo</definition>
         <argsstring>(const Location &amp;to)</argsstring>
         <name>setTo</name>
         <qualifiedname>endstone::PlayerMoveEvent::setTo</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
           <declname>to</declname>
         </param>
         <briefdescription>

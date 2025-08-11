@@ -79,7 +79,7 @@
         <location file="include/endstone/event/block/block_cook_event.h" line="29" column="5" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="29" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
         <definition>const ItemStack &amp; endstone::BlockCookEvent::getSource</definition>
         <argsstring>() const</argsstring>
         <name>getSource</name>
@@ -97,7 +97,7 @@
         <location file="include/endstone/event/block/block_cook_event.h" line="39" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
         <definition>const ItemStack &amp; endstone::BlockCookEvent::getResult</definition>
         <argsstring>() const</argsstring>
         <name>getResult</name>
@@ -115,7 +115,7 @@
         <location file="include/endstone/event/block/block_cook_event.h" line="49" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1abba7e5e677bb7f21a49ebcbf84a0aa2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::BlockCookEvent::setResult</definition>
         <argsstring>(std::unique_ptr&lt; ItemStack &gt; result)</argsstring>
         <name>setResult</name>

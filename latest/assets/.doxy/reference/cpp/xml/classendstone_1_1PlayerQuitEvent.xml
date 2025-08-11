@@ -79,7 +79,7 @@
         <location file="include/endstone/event/player/player_quit_event.h" line="38" column="20" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1a33ac4f643cbabfbaec170ba5ef88551a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>void endstone::PlayerQuitEvent::setQuitMessage</definition>
         <argsstring>(std::optional&lt; Message &gt; message)</argsstring>
         <name>setQuitMessage</name>

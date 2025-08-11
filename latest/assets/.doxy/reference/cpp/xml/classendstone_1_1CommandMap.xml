@@ -25,7 +25,7 @@
         <name>CommandMap</name>
         <qualifiedname>endstone::CommandMap::CommandMap</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -42,7 +42,7 @@
         <name>operator=</name>
         <qualifiedname>endstone::CommandMap::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -101,7 +101,7 @@
         <location file="include/endstone/command/command_map.h" line="38" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::CommandMap::registerCommand</definition>
         <argsstring>(std::shared_ptr&lt; Command &gt; command)=0</argsstring>
         <name>registerCommand</name>
@@ -132,7 +132,7 @@
         <location file="include/endstone/command/command_map.h" line="46" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::CommandMap::dispatch</definition>
         <argsstring>(CommandSender &amp;sender, std::string command_line) const =0</argsstring>
         <name>dispatch</name>
@@ -175,7 +175,7 @@
         <location file="include/endstone/command/command_map.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
         <definition>virtual void endstone::CommandMap::clearCommands</definition>
         <argsstring>()=0</argsstring>
         <name>clearCommands</name>
