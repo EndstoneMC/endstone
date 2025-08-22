@@ -324,7 +324,7 @@ virtual Result< std::unique_ptr< BlockData > > endstone::Server::createBlockData
 
 
 * `type` the block type 
-* `block_states` block states, for example {"old\_leaf\_type":"birch", "persistent\_bit":true} 
+* `block_states` block states, for example `{"old_leaf_type":"birch", "persistent_bit":true}` 
 
 
 

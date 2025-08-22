@@ -1066,7 +1066,7 @@
 <parametername>block_states</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>block states, for example {&quot;old_leaf_type&quot;:&quot;birch&quot;, &quot;persistent_bit&quot;:true} </para>
+<para>block states, for example <computeroutput>{&quot;old_leaf_type&quot;:&quot;birch&quot;, &quot;persistent_bit&quot;:true}</computeroutput> </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
