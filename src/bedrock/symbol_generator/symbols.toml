@@ -1,212 +1,212 @@
-timestamp = 1754438418
-version = "1.21.100"
+timestamp = 1755855950
+version = "1.21.102"
 
 [windows]
 # Actor
-"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 47422064
-"?stopRiding@Actor@@QEAAX_N000@Z" = 47416064
+"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 47421552
+"?stopRiding@Actor@@QEAAX_N000@Z" = 47415552
 # BedrockLog
-"?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 79881760
+"?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 79881616
 # BlockDescriptor
-"?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 58806544
+"?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 58806080
 # BlockType
-"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z" = 58575664
+"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z" = 58575200
 # BlockTypeRegistry
-"?forEachBlock@BlockTypeRegistry@@QEAAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 60626208
+"?forEachBlock@BlockTypeRegistry@@QEAAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 60625808
 # CampfireBlockActor
-"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 60380272
+"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 60379872
 # Command
-"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 41213024
+"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 41213936
 # CommandOriginLoader
-"?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z" = 41265248
+"?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z" = 41266160
 # CommandRegistry
-"?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z" = 41382864
-"?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVCommandParameterData@@@Z" = 41395232
-"?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z" = 41352576
-"?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z" = 41349936
-"?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z" = 41358944
-"?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ" = 41406224
-"?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z" = 41401376
+"?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z" = 41383776
+"?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVCommandParameterData@@@Z" = 41396144
+"?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z" = 41353488
+"?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z" = 41350848
+"?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z" = 41359856
+"?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ" = 41407136
+"?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z" = 41402288
 # CommandUtils
-"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z" = 41809184
+"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z" = 41809136
 # Common
-"?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 8821808
+"?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 8821600
 # CraftingDataPacket
-"?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 20510064
+"?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 20510976
 # FurnaceBlockActor
-"?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 61519936
+"?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 61519536
 # HealthAttributeDelegate
-"?change@HealthAttributeDelegate@@UEAAMMMAEBVAttributeBuff@@@Z" = 52467696
+"?change@HealthAttributeDelegate@@UEAAMMMAEBVAttributeBuff@@@Z" = 52467232
 # ItemRegistry
-"?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 52664912
+"?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 52664448
 # ItemStackBase
-"?init@ItemStackBase@@IEAAXHHH_N@Z" = 52778368
-"?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 52782032
+"?init@ItemStackBase@@IEAAXHHH_N@Z" = 52777904
+"?setUserData@ItemStackBase@@QEAAXV?$unique_ptr@VCompoundTag@@U?$default_delete@VCompoundTag@@@std@@@std@@@Z" = 52781568
 # InventoryTransaction
-"?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 54336560
+"?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 54336096
 # LeavesBlock
-"?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 61418448
+"?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 61418048
 # Level
-"?tick@Level@@UEAAXXZ" = 57870816
+"?tick@Level@@UEAAXXZ" = 57870352
 # MinecraftCommands
-"?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 41849312
-"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 41846656
+"?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 41849264
+"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 41846608
 # MinecraftPackets
-"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 18224064
+"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 18224048
 # Mob
-"?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 49594352
-"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 49590656
+"?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 49593696
+"?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z" = 49590000
 # NetworkConnection
-"?receivePacket@NetworkConnection@@QEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z" = 19584976
+"?receivePacket@NetworkConnection@@QEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z" = 19585888
 # NetworkSystem
-"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z" = 18220160
-"?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 18221184
+"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z" = 18220144
+"?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z" = 18221168
 # Pack
-"?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 25990112
+"?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 25991232
 # PistonBlockActor
-"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z" = 62220384
+"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z" = 62219984
 # Player
-"?completeUsingItem@Player@@QEAAXXZ" = 51132368
-"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 51190880
-"?take@Player@@QEAA_NAEAVActor@@HH@Z" = 51156544
-"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 51109664
-"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z" = 51114048
-"?stopSleepInBed@Player@@UEAAX_N0@Z" = 51117840
+"?completeUsingItem@Player@@QEAAXXZ" = 51131664
+"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z" = 51190176
+"?take@Player@@QEAA_NAEAVActor@@HH@Z" = 51155840
+"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 51108960
+"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z" = 51113344
+"?stopSleepInBed@Player@@UEAAX_N0@Z" = 51117136
 # RakNet
-"?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 65892080
+"?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 65891632
 # RakPeerHelper
-"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 18284352
+"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 18284336
 # ResourcePackRepository
-"?_initializePackSource@ResourcePackRepository@@AEAAXXZ" = 26371792
+"?_initializePackSource@ResourcePackRepository@@AEAAXXZ" = 26372752
 # ResourcePackStack
-"?deserialize@ResourcePackStack@@SA?AV?$unique_ptr@VResourcePackStack@@U?$default_delete@VResourcePackStack@@@std@@@std@@AEAV?$basic_istream@DU?$char_traits@D@std@@@3@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIResourcePackRepository@@@Bedrock@@@gsl@@@Z" = 26415232
+"?deserialize@ResourcePackStack@@SA?AV?$unique_ptr@VResourcePackStack@@U?$default_delete@VResourcePackStack@@@std@@@std@@AEAV?$basic_istream@DU?$char_traits@D@std@@@3@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIResourcePackRepository@@@Bedrock@@@gsl@@@Z" = 26416192
 # SayCommand
-"?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 44424080
+"?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 44423568
 # ScriptModuleMinecraft::ScriptBlockUtils
-"?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z" = 32814880
+"?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z" = 32815840
 # ServerInstance
-"?_resetServerScriptManager@ServerInstance@@AEAAXXZ" = 41635744
+"?_resetServerScriptManager@ServerInstance@@AEAAXXZ" = 41636656
 # ServerNetworkHandler
-"?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 19034640
-"?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 19107728
-"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 19150848
-"?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 19171984
-"?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 19180896
+"?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 19034624
+"?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 19107744
+"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 19150864
+"?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 19172000
+"?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 19180912
 # ServerPlayerMovementCorrectionSystem
-"?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 15728256
+"?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 15727984
 # ServerScoreboard
-"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 64373904
+"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 64373504
 # ServerScriptManager
-"?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 26596096
+"?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 26597056
 # TeleportCommand
-"?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 46835264
-"?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 46835920
+"?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 46834752
+"?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 46835408
 # Variables
-"getI18n::result" = 104859520
+"getI18n::result" = 104859344
 "BlockState::StateListNode::mHead" = 104346944
 "Enchant::mEnchants" = 104728848
 
 [linux]
-"_Z7getI18nv" = 105989072
+"_Z7getI18nv" = 105991200
 # Actor
-"_ZN5Actor10teleportToERK4Vec3biib" = 140222656
-"_ZN5Actor10stopRidingEbbb" = 140214272
+"_ZN5Actor10teleportToERK4Vec3biib" = 140222832
+"_ZN5Actor10stopRidingEbbb" = 140214448
 # BedrockLog
-"_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 190819200
+"_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 190820800
 # BlockDescriptor
-"_ZN15BlockDescriptor13ResolveHelper7resolveEb" = 157175456
+"_ZN15BlockDescriptor13ResolveHelper7resolveEb" = 157176608
 # BlockType
-"_ZNK9BlockType25tryGetStateFromLegacyDataEt" = 156140304
+"_ZNK9BlockType25tryGetStateFromLegacyDataEt" = 156141456
 # BlockTypeRegistry
-"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 160202704
+"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 160203856
 # CampfireBlockActor
-"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 163623744
+"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 163624896
 # Command
-"_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 132992736
+"_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 132993056
 # CommandOriginLoader
-"_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel" = 133044304
+"_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel" = 133044624
 # CommandRegistry
-"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE" = 132398576
-"_ZNK15CommandRegistry8describeERK20CommandParameterData" = 132478032
-"_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_" = 132407024
-"_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_" = 132401184
-"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE" = 132409552
-"_ZNK15CommandRegistry26serializeAvailableCommandsEv" = 132497824
-"_ZNK15CommandRegistry14symbolToStringENS_6SymbolE" = 132303328
+"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE" = 132400704
+"_ZNK15CommandRegistry8describeERK20CommandParameterData" = 132480160
+"_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_" = 132409152
+"_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_" = 132403312
+"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE" = 132411680
+"_ZNK15CommandRegistry26serializeAvailableCommandsEv" = 132499952
+"_ZNK15CommandRegistry14symbolToStringENS_6SymbolE" = 132305456
 # CommandUtils
-"_ZN12CommandUtils12getActorNameERK5Actor" = 132544704
+"_ZN12CommandUtils12getActorNameERK5Actor" = 132545504
 # Common
-"_ZN6Common20getGameVersionStringEv" = 86102576
+"_ZN6Common20getGameVersionStringEv" = 86102864
 # CraftingDataPacket
-"_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 104050688
+"_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 104051104
 # FurnaceBlockActor
-"_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 163441392
+"_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 163442544
 # HealthAttributeDelegate
-"_ZN23HealthAttributeDelegate6changeEffRK13AttributeBuff" = 146838784
+"_ZN23HealthAttributeDelegate6changeEffRK13AttributeBuff" = 146839888
 # ItemRegsitry
-"_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 149298992
+"_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 149300144
 # ItemStackBase
-"_ZN13ItemStackBase4initEiiib" = 154264512
-"_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 154231008
+"_ZN13ItemStackBase4initEiiib" = 154265664
+"_ZN13ItemStackBase11setUserDataENSt3__110unique_ptrI11CompoundTagNS0_14default_deleteIS2_EEEE" = 154232160
 # InventoryTransaction
-"_ZNK20InventoryTransaction11executeFullER6Playerb" = 154766240
+"_ZNK20InventoryTransaction11executeFullER6Playerb" = 154767392
 # LeavesBlock
-"_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 164457056
+"_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 164458208
 # Level
-"_ZN5Level4tickEv" = 158239024
+"_ZN5Level4tickEv" = 158240176
 # MinecraftCommands
-"_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 132582768
-"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 132550512
+"_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 132583568
+"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 132551312
 # MinecraftPackets
-"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 105405104
+"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 105406352
 # Mob
-"_ZN3Mob9knockbackEP5Actorifffff" = 139523440
-"_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 139520192
+"_ZN3Mob9knockbackEP5Actorifffff" = 139523616
+"_ZN3Mob5_hurtERK17ActorDamageSourcefbb" = 139520368
 # NetworkConnection
-"_ZN17NetworkConnection13receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE" = 105782464
+"_ZN17NetworkConnection13receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE" = 105784592
 # NetworkSystem
-"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId" = 105420016
-"_ZN13NetworkSystem14sendToMultipleERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet" = 105463376
+"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId" = 105421264
+"_ZN13NetworkSystem14sendToMultipleERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet" = 105464624
 # Pack
-"_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE" = 126550592
+"_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE" = 126552720
 # PistonBlockActor
-"_ZN16PistonBlockActor4tickER11BlockSource" = 162606272
+"_ZN16PistonBlockActor4tickER11BlockSource" = 162607424
 # Player
-"_ZN6Player17completeUsingItemEv" = 147192656
-"_ZN6Player4dropERK9ItemStackb" = 147267616
-"_ZN6Player4takeER5Actorii" = 147225472
-"_ZN6Player10teleportToERK4Vec3biib" = 147173680
-"_ZN6Player15startSleepInBedERK8BlockPos" = 147177280
-"_ZN6Player14stopSleepInBedEbb" = 147180288
+"_ZN6Player17completeUsingItemEv" = 147193760
+"_ZN6Player4dropERK9ItemStackb" = 147268720
+"_ZN6Player4takeER5Actorii" = 147226576
+"_ZN6Player10teleportToERK4Vec3biib" = 147174784
+"_ZN6Player15startSleepInBedERK8BlockPos" = 147178384
+"_ZN6Player14stopSleepInBedEbb" = 147181392
 # RakNet
-"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 168661136
+"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 168662256
 # RakPeerHelper
-"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 105487648
+"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 105488896
 # ResourcePackRepository
-"_ZN22ResourcePackRepository21_initializePackSourceEv" = 126148864
+"_ZN22ResourcePackRepository21_initializePackSourceEv" = 126150992
 # ResourcePackStack
-"_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEE" = 126197632
+"_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEE" = 126199760
 # SayCommand
-"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level" = 131631760
+"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level" = 131633888
 # ScriptModuleMinecraft::ScriptBlockUtils
-"_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE" = 116565488
+"_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE" = 116567616
 # ServerInstance
-"_ZN14ServerInstance25_resetServerScriptManagerEv" = 133231072
+"_ZN14ServerInstance25_resetServerScriptManagerEv" = 133231392
 # ServerNetworkHandler
-"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 104902448
-"_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 104988880
-"_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 104933440
-"_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 105026656
-"_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 104934240
+"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 104902864
+"_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 104990128
+"_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 104934688
+"_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 105027904
+"_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 104935488
 # ServerPlayerMovementCorrectionSystem
-"_ZN36ServerPlayerMovementCorrectionSystem24_afterMovementSimulationERK29UserEntityIdentifierComponentR5ActorRK21PlayerAuthInputPacketR20ReplayStateComponentPK22ActorRotationComponentR29ServerPlayerMovementComponentR20StateVectorComponentPK21BoatMovementComponent" = 96185200
+"_ZN36ServerPlayerMovementCorrectionSystem24_afterMovementSimulationERK29UserEntityIdentifierComponentR5ActorRK21PlayerAuthInputPacketR20ReplayStateComponentPK22ActorRotationComponentR29ServerPlayerMovementComponentR20StateVectorComponentPK21BoatMovementComponent" = 96185456
 # ServerScoreboard
-"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 164575984
+"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 164577136
 # ServerScriptManager
-"_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 125158624
+"_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 125160752
 # TeleportCommand
-"_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 131190832
-"_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 131191216
+"_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 131192960
+"_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 131193344
 # Variables
-"BlockState::StateListNode::mHead" = 198148536
-"Enchant::mEnchants" = 198030992
+"BlockState::StateListNode::mHead" = 198150136
+"Enchant::mEnchants" = 198032592
