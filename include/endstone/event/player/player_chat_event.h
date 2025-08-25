@@ -22,19 +22,18 @@ namespace endstone {
 /**
  * @brief Called when a player sends a chat message.
  */
-class PlayerChatEvent : public Cancellable<PlayerEvent> {
+class PlayerChatEvent final : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerChatEvent(Player &player, std::string message) : Cancellable(player), message_(std::move(message)) {}
-    ~PlayerChatEvent() override = default;
-
-    inline static const std::string NAME = "PlayerChatEvent";
-    [[nodiscard]] std::string getEventName() const override
+    ENDSTONE_EVENT(PlayerChatEvent);
+    explicit PlayerChatEvent(Player &player, std::string message, std::optional<std::vector<Player *>> recipients,
+                             std::string format = "<{0}> {1}")
+        : Cancellable(player), message_(std::move(message)), format_(std::move(format)),
+          recipients_(std::move(recipients))
     {
-        return NAME;
     }
 
     /**
-     * Gets the message that the player is attempting to send.
+     * @brief Gets the message that the player is attempting to send.
      *
      * @return Message the player is attempting to send
      */
@@ -44,7 +43,7 @@ public:
     }
 
     /**
-     * Sets the message that the player will send.
+     * @brief Sets the message that the player will send.
      *
      * @param message New message that the player will send
      */
@@ -53,8 +52,56 @@ public:
         message_ = std::move(message);
     }
 
+    /**
+     * @brief Sets the player that this message will display as
+     *
+     * @param player New player which this event will execute as
+     */
+    void setPlayer(Player &player)
+    {
+        player_ = player;
+    }
+
+    /**
+     * @brief Gets the format to use to display this chat message
+     *
+     * See <a href="https://en.cppreference.com/w/cpp/utility/format/spec.html">the format string syntax</a>
+     *
+     * @return format string
+     */
+    [[nodiscard]] std::string getFormat() const
+    {
+        return format_;
+    }
+
+    /**
+     * @brief Sets the format to use to display this chat message
+     *
+     * @param format format string
+     */
+
+    void setFormat(std::string format)
+    {
+        format_ = std::move(format);
+    }
+
+    /**
+     * @brief Gets a set of recipients that this chat message will be displayed to
+     *
+     * @return All Players who will see this chat message
+     */
+    [[nodiscard]] std::vector<Player *> getRecipients() const
+    {
+        if (!recipients_) {
+            recipients_ = player_.get().getServer().getOnlinePlayers();
+        }
+        return recipients_.value();
+    }
+
 private:
     std::string message_;
+    std::string format_;
+    mutable std::optional<std::vector<Player *>> recipients_;
 };
 
 }  // namespace endstone
