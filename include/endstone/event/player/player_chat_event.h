@@ -25,9 +25,8 @@ namespace endstone {
 class PlayerChatEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerChatEvent);
-    explicit PlayerChatEvent(Player &player, std::string message,
-                             std::optional<std::vector<Player *>> recipients = std::nullopt,
-                             std::string format = "<%1$s> %2$s")
+    explicit PlayerChatEvent(Player &player, std::string message, std::optional<std::vector<Player *>> recipients,
+                             std::string format = "<{0}> {1}")
         : Cancellable(player), message_(std::move(message)), format_(std::move(format)),
           recipients_(std::move(recipients))
     {
@@ -66,9 +65,9 @@ public:
     /**
      * @brief Gets the format to use to display this chat message
      *
-     * See <a href="https://wiki.bedrock.dev/text/text-intro#format">supported format</a>
+     * See <a href="https://en.cppreference.com/w/cpp/utility/format/spec.html">the format string syntax</a>
      *
-     * @return Minecraft compatible format string
+     * @return format string
      */
     [[nodiscard]] std::string getFormat() const
     {
@@ -78,7 +77,7 @@ public:
     /**
      * @brief Sets the format to use to display this chat message
      *
-     * @param format Minecraft compatible format string
+     * @param format format string
      */
 
     void setFormat(std::string format)
@@ -98,8 +97,6 @@ public:
         }
         return recipients_.value();
     }
-
-    bool operator==(const PlayerChatEvent &other) const noexcept = default;
 
 private:
     std::string message_;
