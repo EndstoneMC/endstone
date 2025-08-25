@@ -15,6 +15,7 @@
 #pragma once
 
 #include <filesystem>
+#include <regex>
 
 #include "bedrock/resources/pack.h"
 #include "bedrock/resources/pack_source.h"
