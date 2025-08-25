@@ -35,14 +35,48 @@ bool handleEvent(ChatEvent &event)
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
-        endstone::PlayerChatEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.message};
+        // populate recipient list
+        std::optional<std::vector<endstone::Player *>> recipients = std::nullopt;
+        if (event.targets.has_value()) {
+            auto r = std::vector<endstone::Player *>();
+            for (const auto &weak_ref : event.targets.value()) {
+                if (const auto *receipt = WeakEntityRef(weak_ref).tryUnwrap<::Player>(); receipt) {
+                    r.emplace_back(&receipt->getEndstoneActor<endstone::core::EndstonePlayer>());
+                }
+            }
+            recipients = r;
+        }
+
+        // create chat event
+        endstone::PlayerChatEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.message,
+                                    recipients};
+        auto original_format = e.getFormat();
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
         }
 
+        std::string message;
+        try {
+            message = fmt::format(fmt::runtime(e.getFormat()), e.getPlayer().getName(), e.getMessage());
+        }
+        catch (const std::exception & /*e*/) {
+            server.getLogger().error("Invalid format string encountered in PlayerChatEvent.");
+            return false;
+        }
+
+        // if format's changed, send as normal message instead of text message
+        if (e.getFormat() != original_format) {
+            for (const auto &recipient : e.getRecipients()) {
+                recipient->sendMessage(message);
+            }
+            server.getLogger().info(message);
+            return false;
+        }
+
+        event.author = e.getPlayer().getName();
         event.message = std::move(e.getMessage());
-        server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
+        server.getLogger().info(message);
     }
     return true;
 }
