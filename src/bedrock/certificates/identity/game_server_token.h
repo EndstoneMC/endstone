@@ -17,6 +17,7 @@
 #include <memory>
 
 #include "bedrock/certificates/certificate.h"
+#include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/util/new_type.h"
 
 struct RawGameServerToken : NewType<std::string> {};
@@ -31,14 +32,14 @@ public:
     GameServerToken();
     GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
-    [[nodiscard]] std::string getXuid(bool trust_self_signed) const;
-
     operator bool() const
     {
         return isValid();
     }
 
     [[nodiscard]] bool isValid() const;
+
+    [[nodiscard]] PlayerAuthenticationInfo getTrustedInfo() const;
 
 protected:
     GameServerToken(const std::string &);

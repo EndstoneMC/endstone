@@ -21,7 +21,7 @@
 #include "bedrock/deps/json/value.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/block/block.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 class Item;
 
@@ -31,7 +31,7 @@ public:
     static constexpr HashType64 EMPTY_INGREDIENT_HASH = 0xB7F87A68;
     explicit ItemDescriptor() = default;
     explicit ItemDescriptor(const Block &);
-    explicit ItemDescriptor(const BlockLegacy &);
+    explicit ItemDescriptor(const BlockType &);
     explicit ItemDescriptor(const Item &, int);
     ItemDescriptor(const ItemDescriptor &);
     ItemDescriptor(ItemDescriptor &&) = default;
@@ -42,6 +42,9 @@ public:
 
     ItemDescriptor &operator=(ItemDescriptor &&) = default;
     [[nodiscard]] const Item *getItem() const;
+    [[nodiscard]] const Block *getBlock() const;
+    [[nodiscard]] bool isValid(bool should_resolve) const;
+    [[nodiscard]] bool isNull() const;
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] std::int16_t getAuxValue() const;
     [[nodiscard]] std::string getFullName() const;

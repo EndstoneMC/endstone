@@ -22,10 +22,7 @@
 
 namespace endstone::core {
 
-PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this)
-{
-    PermissibleBase::recalculatePermissions();
-}
+PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
 
 PermissibleBase::~PermissibleBase()
 {
@@ -194,9 +191,6 @@ std::unordered_set<PermissionAttachmentInfo *> PermissibleBase::getEffectivePerm
 
 CommandSender *PermissibleBase::asCommandSender() const
 {
-    if (opable_) {
-        return opable_->asCommandSender();
-    }
     return nullptr;
 }
 

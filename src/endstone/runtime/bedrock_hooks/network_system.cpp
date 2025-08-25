@@ -64,16 +64,6 @@ void patchPacket(const ResourcePackStackPacket &packet)
 }
 }  // namespace
 
-Bedrock::NotNullNonOwnerPtr<RemoteConnector> NetworkSystem::getRemoteConnector()
-{
-    return remote_connector_.get();
-}
-
-Bedrock::NotNullNonOwnerPtr<const RemoteConnector> NetworkSystem::getRemoteConnector() const
-{
-    return remote_connector_.get();
-}
-
 void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)
 {
     switch (packet.getId()) {
@@ -106,7 +96,8 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     const auto header = packet_id | (static_cast<unsigned>(sender_sub_id) << 10) |
                         (static_cast<unsigned>(packet.getClientSubId()) << 12);
     stream.writeUnsignedVarInt(header, "Header Data", nullptr);
-    packet.write(stream);
+    packet.writeWithSerializationMode(stream, getPacketReflectionCtx(),
+                                      packet_overrides_->getOverrideModeForPacket(packet.getId()));
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     const auto *server_player =
@@ -145,29 +136,4 @@ void NetworkSystem::sendToMultiple(const std::vector<NetworkIdentifierWithSubId>
     for (const auto &recipient : recipients) {
         send(recipient.id, packet, recipient.sub_client_id);
     }
-}
-
-NetworkConnection *NetworkSystem::_getConnectionFromId(const NetworkIdentifier &id) const
-{
-    for (const auto &connection : connections_) {
-        if (connection->id == id) {
-            return connection.get();
-        }
-    }
-    return nullptr;
-}
-
-void NetworkSystem::_sendInternal(const NetworkIdentifier &id, const Packet &packet, const std::string &data)
-{
-    const auto *connection = _getConnectionFromId(id);
-    if (!connection || connection->shouldCloseConnection()) {
-        return;
-    }
-    if (!connection->peer) {
-        return;
-    }
-    if (packet_observer_) {
-        packet_observer_->packetSentTo(id, packet, data.size());
-    }
-    connection->peer->sendPacket(data, packet.getReliability(), packet.getCompressible());
 }

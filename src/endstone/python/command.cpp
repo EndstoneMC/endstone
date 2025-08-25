@@ -55,6 +55,10 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
+    py::class_<BlockCommandSender, CommandSender>(m, "BlockCommandSender", "Represents a block command sender.")
+        .def_property_readonly("block", &BlockCommandSender::getBlock,
+                               "Returns the block this command sender belongs to");
+
     py::class_<CommandSenderWrapper, CommandSender>(
         m, "CommandSenderWrapper",
         "Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output")
@@ -62,8 +66,7 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
              py::arg("sender"), py::arg("on_message") = CommandSenderWrapper::Callback{},
              py::arg("on_error") = CommandSenderWrapper::Callback{});
 
-    py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.",
-                                                    py::multiple_inheritance());
+    py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.");
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command",
                                                   "Represents a Command, which executes various tasks upon user input")

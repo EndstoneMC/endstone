@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "endstone/namespaced_key.h"
-
 namespace endstone {
 class ItemStack;
 
@@ -24,11 +22,11 @@ public:
     virtual ~Enchantment() = default;
 
     /**
-     * @brief Return the namespaced identifier for this enchantment.
+     * @brief Return the identifier for this enchantment.
      *
-     * @return this enchantment's key
+     * @return this enchantment's id
      */
-    [[nodiscard]] virtual NamespacedKey getKey() const = 0;
+    [[nodiscard]] virtual std::string getId() const = 0;
 
     /**
      * @brief Get the translation key, suitable for use in a translation component.

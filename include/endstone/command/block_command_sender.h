@@ -14,22 +14,22 @@
 
 #pragma once
 
-#include <string>
+#include "endstone/block/block.h"
+#include "endstone/command/command_sender.h"
 
-#include "bedrock/network/packet.h"
+namespace endstone {
 
-class AnimatePacket : public Packet {
+/**
+ * @brief Represents a block command sender
+ */
+class BlockCommandSender : public CommandSender {
 public:
-    enum class Action : int {
-        NoAction = 0,
-        Swing = 1,
-        WakeUp = 3,
-        CriticalHit = 4,
-        MagicCriticalHit = 5,
-    };
-
-    ActorRuntimeID runtime_id;
-    Action action;
-    float data;
+    /**
+     * @brief Returns the block this command sender belongs to
+     *
+     * @return Block for the command sender
+     */
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 };
-static_assert(sizeof(AnimatePacket) == 64);
+
+}  // namespace endstone

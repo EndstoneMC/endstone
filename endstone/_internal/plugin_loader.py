@@ -48,7 +48,7 @@ def find_python():
 
 
 class PythonPluginLoader(PluginLoader):
-    SUPPORTED_API = ["0.5", "0.6", "0.7", "0.8", "0.9"]
+    SUPPORTED_API = ["0.5", "0.6", "0.7", "0.8", "0.9", "0.10"]
 
     def __init__(self, server: Server):
         PluginLoader.__init__(self, server)
@@ -67,9 +67,20 @@ class PythonPluginLoader(PluginLoader):
 
         # prepare the temp site-dir
         self._prefix = os.path.join("plugins", ".local")
-        shutil.rmtree(self._prefix, ignore_errors=True)
         for site_dir in site.getsitepackages(prefixes=[self._prefix]):
             site.addsitedir(site_dir)
+
+            # delete old and/or invalid packages
+            if (
+                os.path.exists(site_dir)
+                and os.path.commonpath([site_dir, self._prefix]) == self._prefix
+                and site_dir != self._prefix
+            ):
+                for directory in os.listdir(site_dir):
+                    if not os.path.isdir(os.path.join(site_dir, directory)):
+                        continue
+                    if directory.startswith("endstone_") or directory.startswith("~"):
+                        shutil.rmtree(os.path.join(site_dir, directory))
 
         # initialize the metrics
         self._metrics = Metrics(self.server)

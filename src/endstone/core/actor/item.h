@@ -19,7 +19,7 @@
 #include "endstone/core/actor/actor.h"
 
 namespace endstone::core {
-class EndstoneItem : public EndstoneActor, public virtual Item {
+class EndstoneItem : public EndstoneActor, public Item {
 public:
     explicit EndstoneItem(EndstoneServer &server, ::ItemActor &item);
 
@@ -33,6 +33,38 @@ public:
     void setThrower(std::optional<std::int64_t> thrower) override;
     [[nodiscard]] std::optional<std::int64_t> getThrower() const override;
 
-    ::ItemActor &getItem() const;
+    [[nodiscard]] ::ItemActor &getItem() const;
+
+    // forward
+    ENDSTONE_FORWARD_IMPL_PERMISSIBLE(EndstoneActor);
+    ENDSTONE_FORWARD_IMPL_ACTOR(EndstoneActor);
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override
+    {
+        return EndstoneActor::getPermissionLevel();
+    }
+    void sendMessage(const Message &message) const override
+    {
+        EndstoneActor::sendMessage(message);
+    }
+    void sendErrorMessage(const Message &message) const override
+    {
+        EndstoneActor::sendErrorMessage(message);
+    }
+    [[nodiscard]] std::string getName() const override
+    {
+        return EndstoneActor::getName();
+    }
+    [[nodiscard]] Mob *asMob() const override
+    {
+        return EndstoneActor::asMob();
+    }
+    void setRotation(float yaw, float pitch) override
+    {
+        EndstoneActor::setRotation(yaw, pitch);
+    }
+    void remove() override
+    {
+        EndstoneActor::remove();
+    }
 };
 }  // namespace endstone::core

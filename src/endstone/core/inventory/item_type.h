@@ -16,21 +16,18 @@
 
 #include "bedrock/world/item/item.h"
 #include "endstone/inventory/item_type.h"
-#include "endstone/namespaced_key.h"
 
 namespace endstone::core {
 
 class EndstoneItemType : public ItemType {
 public:
-    EndstoneItemType(NamespacedKey key, const ::Item &item) : key_(std::move(key)), item_(item) {}
+    explicit EndstoneItemType(const ::Item &item);
     [[nodiscard]] std::string_view getId() const override;
-    [[nodiscard]] NamespacedKey getKey() const override;
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] int getMaxDurability() const override;
 
 private:
-    NamespacedKey key_;
     const ::Item &item_;
 };
 

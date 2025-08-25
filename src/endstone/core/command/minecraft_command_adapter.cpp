@@ -33,14 +33,7 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
         throw std::runtime_error("Command not found");
     }
 
-    auto sender = origin.getEndstoneSender();
-    if (!sender) {
-        // Fallback to command origin via a wrapper for unsupported types
-        const auto wrapper = std::make_shared<CommandOriginWrapper>(origin, output);
-        wrapper->init();
-        sender = wrapper;
-    }
-
+    auto sender = origin.getEndstoneSender(output);
     if (command->execute(*sender, args_)) {
         output.success();
     }
@@ -49,7 +42,6 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
 }  // namespace endstone::core
 
 namespace {
-
 std::string_view removeQuotes(const std::string_view &str)
 {
     if (str.size() < 2) {
@@ -61,42 +53,78 @@ std::string_view removeQuotes(const std::string_view &str)
     return str;
 }
 
-std::string parseNode(const CommandRegistry::ParseToken &root)
+const CommandRegistry::ParseToken *findFirstWithText(const CommandRegistry::ParseToken *node)
 {
-    auto get_string = [](const CommandRegistry::ParseToken &token) -> std::string {
-        const std::string_view result = {token.text, token.length};
-        if (token.type == CommandRegistry::HardNonTerminal::Id) {
-            return std::string(removeQuotes(result));
-        }
-        return std::string(result);
-    };
-
-    if (!root.child) {
-        return get_string(root);
+    if (!node) {
+        return nullptr;
     }
 
-    auto *child = root.child.get();
-    auto *last_sibling = child;
-    for (auto *it = child->next.get(); it; it = it->next.get()) {
-        last_sibling = it;
+    // Check current node first (pre-order)
+    if (node->text) {
+        return node;
     }
 
-    auto *begin = child;
-    for (auto *it = child->child.get(); it; it = it->child.get()) {
-        begin = it;
+    // Recurse into child
+    if (const CommandRegistry::ParseToken *found = findFirstWithText(node->child.get())) {
+        return found;
     }
 
-    auto *end = last_sibling;
-    for (auto *it = last_sibling->child.get(); it; it = it->child.get()) {
-        end = it;
-    }
-
-    if (begin == end) {
-        return get_string(*begin);
-    }
-    return {begin->text, end->text + end->length};
+    // Recurse into next sibling
+    return findFirstWithText(node->next.get());
 }
 
+std::string_view rstrip(std::string_view str, std::string_view chars = " \t\n\r\f\v")
+{
+    size_t end = str.size();
+    while (end > 0 && chars.find(str[end - 1]) != std::string_view::npos) {
+        --end;
+    }
+    return str.substr(0, end);
+}
+
+std::string_view parseNode(const CommandRegistry::ParseToken &root)
+{
+    // If there are no children, this is a leaf text node.
+    if (!root.child) {
+        if (root.type == CommandRegistry::HardNonTerminal::Id) {
+            return removeQuotes({root.text, root.length});
+        }
+        return {root.text, root.length};
+    }
+
+    // Otherwise:
+    const auto &child = *root.child;
+    const auto *begin = findFirstWithText(&child);
+    if (!begin) {
+        return "";
+    }
+
+    // (1) If this node has no next sibling, it's the last argument: consume all remaining text until the end
+    if (!root.next) {
+        const auto view = rstrip(begin->text);
+        if (child.type == CommandRegistry::HardNonTerminal::Id) {
+            return removeQuotes(view);
+        }
+        return view;
+    }
+
+    // (2) Otherwise, find the start of the next argument and extract the substring between begin and end, then trim
+    // trailing whitespace.
+    const auto *end = findFirstWithText(root.next.get());
+    if (!end) {
+        const auto view = rstrip(begin->text);
+        if (child.type == CommandRegistry::HardNonTerminal::Id) {
+            return removeQuotes(view);
+        }
+        return view;
+    }
+
+    const auto view = rstrip({begin->text, end->text});
+    if (child.type == CommandRegistry::HardNonTerminal::Id) {
+        return removeQuotes(view);
+    }
+    return view;
+}
 }  // namespace
 
 template <>

@@ -40,10 +40,10 @@ twine upload -r testpypi dist/*
 Twine will prompt for your **API token** or username and password.
 
 !!! tip
-For security reasons it is strongly recommended to **create an API token** instead of using your username and
-password when uploading a package to PyPI. If you haven’t done so, create an API token on both
-[PyPI](https://pypi.org/manage/account/token/) and the [TestPyPI](https://test.pypi.org/manage/account/token/).
-You will also be asked to choose the scope of this token, for now you can just leave the token unrestricted.
+    For security reasons it is strongly recommended to **create an API token** instead of using your username and
+    password when uploading a package to PyPI. If you haven’t done so, create an API token on both
+    [PyPI](https://pypi.org/manage/account/token/) and the [TestPyPI](https://test.pypi.org/manage/account/token/).
+    You will also be asked to choose the scope of this token, for now you can just leave the token unrestricted.
 
 ## Upload to [PyPI]
 

@@ -27,13 +27,21 @@ namespace endstone {
  */
 class Location : public Position {
 public:
-    Location(Dimension *dimension, int x, int y, int z, float pitch = 0.0, float yaw = 0.0)
-        : Location(dimension, static_cast<float>(x), static_cast<float>(y), static_cast<float>(z), pitch, yaw)
+    using Position::Position;
+
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Location(T x, T y, T z, float pitch = 0.0, float yaw = 0.0) : Position(x, y, z), pitch_(pitch), yaw_(yaw)
     {
     }
 
-    Location(Dimension *dimension, float x, float y, float z, float pitch = 0.0, float yaw = 0.0)
-        : Position(dimension, x, y, z), pitch_(pitch), yaw_(yaw)
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Location(T x, T y, T z, float pitch, Dimension &dimension) : Location(x, y, z, pitch, 0.0, dimension)
+    {
+    }
+
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Location(T x, T y, T z, float pitch, float yaw, Dimension &dimension)
+        : Position(x, y, z, dimension), pitch_(pitch), yaw_(yaw)
     {
     }
 

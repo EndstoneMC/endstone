@@ -20,19 +20,52 @@
 class Mob;
 
 namespace endstone::core {
-class EndstoneMob : public EndstoneActor, public virtual Mob {
+class EndstoneMob : public EndstoneActor, public Mob {
 public:
     explicit EndstoneMob(EndstoneServer &server, ::Mob &mob);
 
-    // CommandSender
     [[nodiscard]] Mob *asMob() const override;
-
-    // Actor
     void setRotation(float yaw, float pitch) override;
-
-    // Mob
     [[nodiscard]] bool isGliding() const override;
 
     ::Mob &getMob() const;
+
+    // forward
+    ENDSTONE_FORWARD_IMPL_PERMISSIBLE(EndstoneActor);
+    ENDSTONE_FORWARD_IMPL_ACTOR(EndstoneActor);
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override
+    {
+        return EndstoneActor::getPermissionLevel();
+    }
+    void sendMessage(const Message &message) const override
+    {
+        EndstoneActor::sendMessage(message);
+    }
+    void sendErrorMessage(const Message &message) const override
+    {
+        EndstoneActor::sendErrorMessage(message);
+    }
+    [[nodiscard]] std::string getName() const override
+    {
+        return EndstoneActor::getName();
+    }
+    [[nodiscard]] Item *asItem() const override
+    {
+        return EndstoneActor::asItem();
+    }
+    void remove() override
+    {
+        EndstoneActor::remove();
+    }
 };
 }  // namespace endstone::core
+
+#define ENDSTONE_FORWARD_IMPL_MOB(IMPL)               \
+    void setRotation(float yaw, float pitch) override \
+    {                                                 \
+        IMPL::setRotation(yaw, pitch);                \
+    }                                                 \
+    [[nodiscard]] bool isGliding() const override     \
+    {                                                 \
+        return IMPL::isGliding();                     \
+    }

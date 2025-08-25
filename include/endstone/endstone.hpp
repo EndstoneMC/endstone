@@ -25,8 +25,8 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #endif
 
 #include "actor/actor.h"
-#include "actor/mob.h"
 #include "actor/item.h"
+#include "actor/mob.h"
 #include "ban/ban_entry.h"
 #include "ban/ban_list.h"
 #include "ban/ip_ban_entry.h"
@@ -42,6 +42,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "boss/bar_style.h"
 #include "boss/boss_bar.h"
 #include "color_format.h"
+#include "command/block_command_sender.h"
 #include "command/command.h"
 #include "command/command_executor.h"
 #include "command/command_map.h"
@@ -146,7 +147,6 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "map/map_renderer.h"
 #include "map/map_view.h"
 #include "message.h"
-#include "namespaced_key.h"
 #include "offline_player.h"
 #include "permissions/permissible.h"
 #include "permissions/permission.h"

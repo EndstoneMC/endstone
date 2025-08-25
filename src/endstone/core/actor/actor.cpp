@@ -127,7 +127,7 @@ Location EndstoneActor::getLocation() const
     auto [x, y, z] = getActor().getPosition();
     y -= ActorOffset::getHeightOffset(getActor().getEntity());
     const auto &[pitch, yaw] = getActor().getRotation();
-    return {&getDimension(), x, y, z, pitch, yaw};
+    return {x, y, z, pitch, yaw, getDimension()};
 }
 
 Vector<float> EndstoneActor::getVelocity() const
@@ -304,7 +304,11 @@ void EndstoneActor::setScoreTag(std::string score)
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
-    static std::shared_ptr<PermissibleBase> perm = std::make_shared<PermissibleBase>(nullptr);
+    static std::shared_ptr<PermissibleBase> perm;
+    if (!perm) {
+        perm = std::make_shared<PermissibleBase>(nullptr);
+        perm->recalculatePermissions();
+    }
     return *perm;
 }
 
@@ -317,15 +321,21 @@ PermissibleBase &EndstoneActor::getPermissibleBase()
 
 endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
 {
+    return *getEndstoneActorPtr();
+}
+
+std::shared_ptr<endstone::core::EndstoneActor> Actor::getEndstoneActorPtr0() const
+{
     auto *self = const_cast<Actor *>(this);
     auto &component = entity_context_.getOrAddComponent<endstone::core::EndstoneActorComponent>();
     if (component.actor) {
-        return *component.actor;
+        return component.actor;
     }
 
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = Player::tryGetFromEntity(self->entity_context_); player) {
         component.actor = std::make_shared<endstone::core::EndstonePlayer>(server, *player);
+        component.actor->recalculatePermissions();
     }
     else if (auto *mob = Mob::tryGetFromEntity(self->entity_context_); mob) {
         component.actor = std::make_shared<endstone::core::EndstoneMob>(server, *mob);
@@ -336,5 +346,5 @@ endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
     else {
         component.actor = std::make_shared<endstone::core::EndstoneActor>(server, *self);
     }
-    return *component.actor;
+    return component.actor;
 }

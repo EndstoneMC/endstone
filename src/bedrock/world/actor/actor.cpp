@@ -27,7 +27,6 @@
 #include "bedrock/entity/components/runtime_id_component.h"
 #include "bedrock/entity/components/should_update_bounding_box_request_component.h"
 #include "bedrock/entity/components/tags_component.h"
-#include "bedrock/entity/systems/actor_set_pos_system.h"
 #include "bedrock/entity/systems/tag_system.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
@@ -277,6 +276,11 @@ Actor *Actor::tryGetFromEntity(StackRefResult<EntityContext> entity, bool includ
         return nullptr;
     }
     return tryGetFromEntity(*entity, include_removed);
+}
+
+void Actor::setLastHurtDamage(float damage)
+{
+    last_hurt_ = damage;
 }
 
 // void Actor::_setHeightOffset(float offset)

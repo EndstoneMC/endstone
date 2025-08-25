@@ -19,6 +19,7 @@
 #include "bedrock/deps/raknet/packet_priority.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_peer.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 #include "bedrock/platform/result.h"
 
 enum class MinecraftPacketIds : int {
@@ -265,18 +266,47 @@ public:
     virtual void handle(const NetworkIdentifier &, NetEventCallback &, std::shared_ptr<Packet> &) const = 0;
 };
 
+class PacketHeader {
+public:
+    static constexpr std::uint32_t NUM_CHANNEL_BITS = 1;
+    static constexpr std::uint32_t NUM_CHANNELS = 2;
+    PacketHeader(SubClientId, MinecraftPacketIds, SubClientId);
+    static PacketHeader fromRaw(std::uint32_t);
+    [[nodiscard]] MinecraftPacketIds getPacketId() const;
+    [[nodiscard]] SubClientId getRecipientSubId() const;
+    [[nodiscard]] SubClientId getSenderSubId() const;
+    [[nodiscard]] std::uint32_t getChannel() const;
+    void write(BinaryStream &);
+
+private:
+    static constexpr unsigned int NUM_BITS_FOR_SUBID = 2;
+    static constexpr unsigned int NUM_BITS_FOR_PACKETID = 10;
+    static constexpr uint32_t PACKET_ID_MASK = (1 << NUM_BITS_FOR_PACKETID) - 1;
+    static constexpr uint32_t SUBCLIENT_ID_MASK = (1 << NUM_BITS_FOR_SUBID) - 1;
+    std::uint32_t header_data_;
+    PacketHeader();
+};
+static_assert(sizeof(PacketHeader) == 4);
+
 class Packet {
 public:
     virtual ~Packet() = default;
     [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
     [[nodiscard]] virtual std::string getName() const = 0;
     [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t packet_size, bool is_receiver_server) const;
+    virtual void writeWithSerializationMode(BinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx,
+                                            std::optional<SerializationMode> mode) const;
+    virtual void write(BinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx) const;
     virtual void write(BinaryStream &) const = 0;
+    virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &, const cereal::ReflectionCtx &);
     [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &stream);
     [[nodiscard]] virtual bool disallowBatching() const;
     [[nodiscard]] virtual bool isValid() const;
+    [[nodiscard]] virtual SerializationMode getSerializationMode() const;
+    virtual void setSerializationMode(SerializationMode);
 
-    Bedrock::Result<void> readNoHeader(ReadOnlyBinaryStream &stream, const SubClientId &sub_id);
+    Bedrock::Result<void> readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
+                                       const SubClientId &sub_id);
     [[nodiscard]] SubClientId getClientSubId() const;
     [[nodiscard]] Compressibility getCompressible() const;
     [[nodiscard]] NetworkPeer::Reliability getReliability() const;
@@ -286,6 +316,7 @@ public:
 private:
     friend class MinecraftPackets;
     friend class NetworkSystem;
+    virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx);
     [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
     PacketPriority priority_{PacketPriority::MEDIUM_PRIORITY};                         // + 8

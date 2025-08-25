@@ -71,12 +71,12 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
-    command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
 
     try {
         toml::table tbl = toml::parse_file("endstone.toml");
+        log_commands_ = tbl.at_path("commands.log").value_or(true);
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
     }
     catch (const toml::parse_error &err) {
@@ -92,7 +92,8 @@ void EndstoneServer::init(ServerInstance &server_instance)
         throw std::runtime_error("Server instance already initialized.");
     }
     server_instance_ = &server_instance;
-    command_sender_->init();
+    command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
+    command_sender_->recalculatePermissions();
     player_ban_list_->load();
     ip_ban_list_->load();
     loadPlugins();
@@ -154,6 +155,11 @@ PackSource &EndstoneServer::getPackSource() const
 bool EndstoneServer::getAllowClientPacks() const
 {
     return allow_client_packs_;
+}
+
+bool EndstoneServer::logCommands() const
+{
+    return log_commands_;
 }
 
 void EndstoneServer::loadResourcePacks()
@@ -248,6 +254,11 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 ConsoleCommandSender &EndstoneServer::getCommandSender() const
 {
     return *command_sender_;
+}
+
+std::shared_ptr<ConsoleCommandSender> EndstoneServer::getCommandSenderPtr() const
+{
+    return command_sender_;
 }
 
 bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command_line) const
@@ -380,8 +391,8 @@ void EndstoneServer::shutdown()
 
 void EndstoneServer::reload()
 {
-    plugin_manager_->clearPlugins();
     command_map_->clearCommands();
+    plugin_manager_->clearPlugins();
     reloadData();
 
     // TODO(server): Wait for at most 2.5 seconds for all async tasks to finish, otherwise issue a warning

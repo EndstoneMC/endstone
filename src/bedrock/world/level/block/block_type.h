@@ -30,6 +30,7 @@
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
 #include "bedrock/world/item/item_category.h"
+#include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block/states/block_state.h"
 #include "bedrock/world/level/block/tint_method.h"
@@ -49,7 +50,6 @@ class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
-enum class BlockActorType;
 
 enum class BlockProperty : std::uint64_t {
     None = 0x0,
@@ -103,7 +103,7 @@ enum class BlockProperty : std::uint64_t {
     _entt_enum_as_bitmask
 };
 
-class BlockLegacy {
+class BlockType {
 public:
     struct NameInfo {
         HashedString raw_name;             // +0
@@ -120,12 +120,13 @@ public:
     static constexpr int TILE_NUM_SHIFT = 12;
     static constexpr int NUM_LEGACY_BLOCK_TYPES = 512;
 
-    BlockLegacy(const std::string &, int, const Material &);
+    BlockType(const std::string &, int, const Material &);
 
-    virtual ~BlockLegacy() = 0;
+    virtual ~BlockType() = default;
     [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;
-    [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
+    bool hasTag(const HashedString &) const;
+    bool hasTag(const HashType64 &) const;
     [[nodiscard]] virtual HitResult clip(Block const &, BlockSource const &, BlockPos const &, Vec3 const &,
                                          Vec3 const &, ShapeType,
                                          optional_ref<GetCollisionShapeInterface const>) const = 0;
@@ -172,6 +173,7 @@ public:
     [[nodiscard]] virtual bool isStairBlock() const = 0;
     [[nodiscard]] virtual bool isSlabBlock() const = 0;
     [[nodiscard]] virtual bool isDoorBlock() const = 0;
+    [[nodiscard]] virtual bool isChestBlock() const = 0;
     [[nodiscard]] virtual bool isRailBlock() const = 0;
     [[nodiscard]] virtual bool isButtonBlock() const = 0;
     [[nodiscard]] virtual bool isLeverBlock() const = 0;
@@ -203,7 +205,7 @@ public:
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
     virtual void updateEntityAfterFallOn(BlockPos const &, UpdateEntityAfterFallOnInterface &) const = 0;
     [[nodiscard]] virtual bool isBounceBlock() const = 0;
-    [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockLegacy const *) const = 0;
+    [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockType const *) const = 0;
     [[nodiscard]] virtual bool isFilteredOut(BlockRenderLayer) const = 0;
     [[nodiscard]] virtual bool canRenderSelectionOverlay(BlockRenderLayer) const = 0;
     [[nodiscard]] virtual bool ignoreEntitiesOnPistonMove(Block const &) const = 0;
@@ -240,6 +242,7 @@ public:
     virtual void triggerEvent(BlockSource &, BlockPos const &, int b0, int b1) const = 0;
     virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &eventName,
                               Actor &sourceEntity) const = 0;
+    [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
     [[nodiscard]] virtual MobSpawnerData const *getMobToSpawn(SpawnConditions const &conditions,
                                                               BlockSource &) const = 0;
     [[nodiscard]] virtual bool shouldStopFalling(Actor &) const = 0;
@@ -265,7 +268,7 @@ public:
     [[nodiscard]] virtual Flip getFaceFlip(FacingID, Block const &) const = 0;
     virtual void animateTickBedrockLegacy(BlockSource &, BlockPos const &, Random &) const = 0;
     virtual void animateTick(BlockSource &, BlockPos const &, Random &) const = 0;
-    [[nodiscard]] virtual BlockLegacy &init() = 0;
+    [[nodiscard]] virtual BlockType &init() = 0;
     [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     [[nodiscard]] virtual Block const *tryLegacyUpgrade(DataID) const = 0;
     [[nodiscard]] virtual bool dealsContactDamage(Actor const &, Block const &, bool) const = 0;
@@ -398,7 +401,7 @@ protected:
     bool return_default_block_on_unidentified_block_state_;
 
 private:
-    NewBlockID id_;
+    NewBlockID id_;  // +462
     BaseGameVersion min_required_game_version_;
     bool is_vanilla_;
     std::vector<HashedString> tags_;
@@ -430,8 +433,8 @@ public:
         {
             return block_state_;
         }
-        [[nodiscard]] virtual std::optional<int> getState(const BlockLegacy &, int) const = 0;
-        [[nodiscard]] virtual const Block *setState(const BlockLegacy &, int, int) const = 0;
+        [[nodiscard]] virtual std::optional<int> getState(const BlockType &, int) const = 0;
+        [[nodiscard]] virtual const Block *setState(const BlockType &, int, int) const = 0;
 
     protected:
         AlteredStateCollection(const BlockState &);

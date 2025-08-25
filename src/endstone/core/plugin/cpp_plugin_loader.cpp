@@ -38,18 +38,55 @@ namespace fs = std::filesystem;
 
 namespace endstone::core {
 
+CppPluginLoader::CppPluginLoader(Server &server) : PluginLoader(server)
+{
+    // prepare the temp folder
+    prefix_ = fs::current_path() / "plugins" / ".local";
+    if (!exists(prefix_)) {
+        create_directory(prefix_);
+    }
+
+    // remove old plugin files
+    for (const auto &entry : std::filesystem::directory_iterator(prefix_)) {
+        if (!is_regular_file(entry.status())) {
+            continue;
+        }
+        const auto &file = entry.path();
+        for (const auto &pattern : CppPluginLoader::getPluginFileFilters()) {
+            if (std::regex r(pattern); std::regex_search(file.string(), r)) {
+                remove(file);
+            }
+        }
+    }
+}
+
 Plugin *CppPluginLoader::loadPlugin(std::string file)
 {
     auto &logger = server_.getLogger();
-    auto path = fs::path(file);
+    auto path = absolute(fs::path(file));
+
+    // Check if file exists
     if (!exists(path)) {
-        logger.error("Could not load plugin from '{}': Provided file does not exist.", path.string());
+        logger.error("Could not load plugin from '{}': Provided file does not exist.", path);
         return nullptr;
     }
 
-    auto *module = LOAD_LIBRARY(file.c_str());
+    // Make a shadow copy
+    auto hash = std::hash<std::string>{}(path.string());
+    fs::path temp_path = prefix_ / (fmt::format("{}-{:016x}", path.stem(), hash) + path.extension().string());
+    try {
+        copy_file(path, temp_path, fs::copy_options::overwrite_existing);
+    }
+    catch (const fs::filesystem_error &e) {
+        logger.error("Could not load plugin from '{}': {}", path, e.what());
+        return nullptr;
+    }
+
+    // Load from the copy to allow safe reloading and hot-swapping
+    // https://github.com/EndstoneMC/endstone/issues/228
+    auto *module = LOAD_LIBRARY(temp_path.string().c_str());
     if (!module) {
-        logger.error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.", file, GET_ERROR());
+        logger.error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.", path, GET_ERROR());
         return nullptr;
     }
 
@@ -57,14 +94,14 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
     auto init_plugin = GET_FUNCTION(module, "init_endstone_plugin");
     if (!init_plugin) {
         CLOSE_LIBRARY(module);
-        logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?", file);
+        logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?", path);
         return nullptr;
     }
 
     auto *plugin = reinterpret_cast<InitPlugin>(init_plugin)();
     if (!plugin) {
         CLOSE_LIBRARY(module);
-        logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", file);
+        logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", path);
         return nullptr;
     }
 
@@ -77,7 +114,13 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
         return nullptr;
     }
 
-    return plugins_.emplace_back(plugin).get();
+    return plugins_
+        .emplace_back(plugin,
+                      [module](const Plugin *plugin) {
+                          delete plugin;
+                          CLOSE_LIBRARY(module);
+                      })
+        .get();
 }
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const

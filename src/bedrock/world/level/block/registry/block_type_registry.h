@@ -14,13 +14,10 @@
 
 #pragma once
 
-#include <functional>
-
-#include "bedrock/bedrock.h"
 #include "bedrock/platform/brstd/function_ref.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 class BlockTypeRegistry {
 public:
-    static void forEachBlock(brstd::function_ref<bool(BlockLegacy const &)>);
+    void forEachBlock(brstd::function_ref<bool(BlockType const &)>);
 };

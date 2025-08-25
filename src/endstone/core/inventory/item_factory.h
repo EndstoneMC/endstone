@@ -23,13 +23,13 @@ class EndstoneItemFactory : public ItemFactory {
 public:
     static EndstoneItemFactory &instance();
 
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const ItemType &type) const override;
-    [[nodiscard]] bool isApplicable(const ItemMeta *meta, const ItemType &type) const override;
+    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const std::string &type) const override;
+    [[nodiscard]] bool isApplicable(const ItemMeta *meta, const std::string &type) const override;
     [[nodiscard]] bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const override;
-    [[nodiscard]] std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, const ItemType &type) const override;
+    [[nodiscard]] std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, const std::string &type) const override;
 
 private:
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const ItemType &type, const EndstoneItemMeta *meta) const;
+    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const std::string &type, const EndstoneItemMeta *meta) const;
 };
 
 }  // namespace endstone::core

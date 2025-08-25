@@ -27,14 +27,9 @@ namespace endstone {
  */
 class PlayerKickEvent : public Cancellable<PlayerEvent> {
 public:
-    explicit PlayerKickEvent(Player &player, std::string reason) : Cancellable(player), reason_(std::move(reason)) {}
-    ~PlayerKickEvent() override = default;
+    ENDSTONE_EVENT(PlayerKickEvent);
 
-    inline static const std::string NAME = "PlayerKickEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    explicit PlayerKickEvent(Player &player, std::string reason) : Cancellable(player), reason_(std::move(reason)) {}
 
     /**
      * @brief Gets the reason why the player is getting kicked

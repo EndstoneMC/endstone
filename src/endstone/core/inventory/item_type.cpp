@@ -16,14 +16,11 @@
 
 namespace endstone::core {
 
+EndstoneItemType::EndstoneItemType(const ::Item &item) : item_(item) {}
+
 std::string_view EndstoneItemType::getId() const
 {
     return item_.getFullItemName();
-}
-
-NamespacedKey EndstoneItemType::getKey() const
-{
-    return key_;
 }
 
 std::string EndstoneItemType::getTranslationKey() const

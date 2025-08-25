@@ -364,6 +364,8 @@ public:
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
 
+    void setLastHurtDamage(float damage);  // Endstone
+
 protected:
     void _setHeightOffset(float offset);
     void _moveHitboxTo(const Vec3 &position);
@@ -484,6 +486,13 @@ public:
         return static_cast<T &>(getEndstoneActor0());
     }
 
+    template <typename T = endstone::core::EndstoneActor>
+    [[nodiscard]] std::shared_ptr<T> getEndstoneActorPtr() const
+    {
+        return std::static_pointer_cast<T>(getEndstoneActorPtr0());
+    }
+
 private:
     endstone::core::EndstoneActor &getEndstoneActor0() const;
+    std::shared_ptr<endstone::core::EndstoneActor> getEndstoneActorPtr0() const;
 };

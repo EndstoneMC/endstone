@@ -5,48 +5,93 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.10.0 (Unreleased)
+## [0.10.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.4) - 2025-08-10
 
-<small>[Compare with 0.9](https://github.com/EndstoneMC/endstone/compare/v0.9...main)</small>
+<small>[Compare with 0.10.3](https://github.com/EndstoneMC/endstone/compare/v0.10.3...v0.10.4)</small>
+
+### Fixed
+
+- Death messages are now correctly displayed on the death screen.
+- Resolved a crash that could occur after payload updates in `PacketReceiveEvent`.
+- Resolved a crash when running `/reload` after updating native plugins.
+
+## [0.10.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.3) - 2025-08-06
+
+<small>[Compare with 0.10.2](https://github.com/EndstoneMC/endstone/compare/v0.10.2...v0.10.3)</small>
 
 ### Added
 
-- Added `ItemStack::getData` and `ItemStack::setData` methods for accessing item data values.
+- Added support for BDS version 1.21.100.7
+
+## [0.10.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.2) - 2025-08-05
+
+<small>[Compare with 0.10.1](https://github.com/EndstoneMC/endstone/compare/v0.10.1...v0.10.2)</small>
+
+### Added
+
+- Added support for game version 1.21.100
+
+### Fixed
+
+- Fixed an issue where knockback is still applied when `ActorDamageEvent` is cancelled
+
+## [0.10.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.1) - 2025-07-31
+
+<small>[Compare with 0.10.0](https://github.com/EndstoneMC/endstone/compare/v0.10.0...v0.10.1)</small>
+
+### Fixed
+
+- Fixed a crash that occurred when parsing a command with an empty message argument.
+- Resolve an issue where an actor could be damaged again in their invulnerability window if the damage value from a
+  prior `ActorDamageEvent` had been lowered.
+
+## [0.10.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.0) - 2025-07-30
+
+<small>[Compare with 0.9](https://github.com/EndstoneMC/endstone/compare/v0.9...v0.10.0)</small>
+
+### Added
+
+- Added support for BDS version 1.21.95.1.
 - Added ability to register commands as console-only by setting `console` in the `default` field.
-- Added `LeavesDecayEvent` by @killcerr.
-- Added `PlayerItemHeldEvent` by @killcerr.
+- Added `ItemStack::getData` and `ItemStack::setData` methods for accessing item data values.
+- Added `LeavesDecayEvent` by @killcerr in [#209](https://github.com/EndstoneMC/endstone/pull/209)
+- Added `BlockCookEvent` by @killcerr in [#212](https://github.com/EndstoneMC/endstone/pull/212)
+- Added `PlayerItemHeldEvent` by @killcerr in [#213](https://github.com/EndstoneMC/endstone/pull/213)
 - Added `PlayerInteractEvent::Action` enum for distinguishing interaction types.
 - Added `BlockPistonExtendEvent` and `BlockPistonRetractEvent` for piston-related events.
-- Added `PlayerBedEnterEvent` and `PlayerBedLeaveEvent` for player sleeping events.
+- Added `PlayerBedEnterEvent` and `PlayerBedLeaveEvent` for player sleeping events by @dreamguxiang
+  in [#196](https://github.com/EndstoneMC/endstone/pull/196)
 - Added `Server::getProtocolVersion` to retrieve the supported network protocol version.
 - Added `PlayerEmoteEvent::setMuted` to suppress server broadcasts for player emotes.
 - Added `PlayerSkinChangeEvent`, triggered when a player changes their in-game skin.
-- Added `Player::getEnderChest` to get a player’s Ender Chest inventory.
+- Added `Player::getEnderChest` to get a player's Ender Chest inventory.
 - Added `Item` entity for dropped items.
+- Added a new configuration option `commands.log` to `endstone.toml` to control whether the server logs when a player
+  executes a command.
 
 ### Changed
 
 - `PlayerInteractEvent` now triggers on right- and left-clicks with both air and blocks.
-- `PlayerEmoteEvent` is now cancellable, cancelling prevents broadcasting to other players.
-- `PlayerJoinEvent` and `PlayerQuitEvent` now support `Translatable` messages.
+- `PlayerEmoteEvent` is now cancellable; cancelling prevents broadcasting to other players.
 - Player bans and IP bans are now checked before the server sends resource packs to clients.
 - `PlayerPickupItemEvent::getItem()` now returns an `Item` entity instead of an `ItemStack`.
 - **BREAKING CHANGE (Python API)**: `Button` class has been moved from the `ActionForm` class to the `endstone.form`
   module.
+- **BREAKING CHANGE (Python API)**: `PlayerJoinEvent`, `PlayerQuitEvent` and `PlayerDeathEvent` now use `Translatable`
+  for messages by default.
+- Changed VENV_DIR to "$HOME/.virtualenvs/endstone" in `autoinstall.sh` and `start.sh` to avoid polluting users' home
+  directory by @GyanPrakash2483 in [#226](https://github.com/EndstoneMC/endstone/pull/226)
 
 ### Fixed
 
 - `PlayerKickEvent` no longer triggers when `PlayerLoginEvent` is cancelled.
 - Input (`stdin`) can now be passed down from a parent process when Endstone is running as a subprocess.
 - `ActorDamageEvent` now respects the invulnerable time after hurt and will be triggered by damage from a potion.
-
-## 0.9.5
-
-<small>[Compare with 0.9.4](https://github.com/EndstoneMC/endstone/compare/v0.9.4...v0.9.6)</small>
-
-### Added
-
-* Added support for BDS version 1.21.95.1.
+- Fixed an error that could occur with `ActionForm` when a button's `onClick` is not set.
+- Use the correct colour for average TPS in `/status` command output by @MisledWater79
+  in [#232](https://github.com/EndstoneMC/endstone/pull/232)
+- Fixed a bug where the selector argument got cut short when parsing commands.
+- Fixed `Server.name` property in Python API by @cenk in [#220](https://github.com/EndstoneMC/endstone/pull/220)
 
 ## [0.9.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.4) - 2025-07-14
 
@@ -54,7 +99,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.94.2.
+- Added support for BDS version 1.21.94.2.
 
 ## [0.9.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.3) - 2025-07-04
 
@@ -62,7 +107,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.93.1.
+- Added support for BDS version 1.21.93.1.
 
 ## [0.9.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.2) - 2025-06-30
 
@@ -70,19 +115,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.92.1.
-* Added `ChunkLoadEvent` and `ChunkUnloadEvent`, which are called during chunk loading and unloading.
-* Added `PlayerPickupItemEvent`, which is called when a player is about to pick up an item from the ground.
+- Added support for BDS version 1.21.92.1.
+- Added `ChunkLoadEvent` and `ChunkUnloadEvent`, which are called during chunk loading and unloading.
+- Added `PlayerPickupItemEvent`, which is called when a player is about to pick up an item from the ground.
 
 ### Fixed
 
-* `Chunk::getZ()` now returns the correct value.
-* Fixed a crash when accessing a registry entry multiple times.
+- `Chunk::getZ()` now returns the correct value.
+- Fixed a crash when accessing a registry entry multiple times.
 
 ### Changed
 
-* `ActorRemoveEvent` is no longer triggered if `ActorSpawnEvent` is cancelled.
-* `PlayerTeleportEvent` is no longer triggered if `PlayerMoveEvent` or `PlayerJumpEvent` is cancelled.
+- `ActorRemoveEvent` is no longer triggered if `ActorSpawnEvent` is cancelled.
+- `PlayerTeleportEvent` is no longer triggered if `PlayerMoveEvent` or `PlayerJumpEvent` is cancelled.
 
 ## [0.9.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.9.1) - 2025-06-19
 
@@ -149,7 +194,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix [#150](https://github.com/EndstoneMC/endstone/issues/150) by allowing explicit permission grants for non-OP
   players to execute OP commands.
 - `ActorDamageEvent` will no longer fire if the `damage_sensor` determines that no damage should be dealt.
-- `BlockBreakEvent` will no longer fire when a player uses an item that’s not supposed to break blocks in Creative mode.
+- `BlockBreakEvent` will no longer fire when a player uses an item that's not supposed to break blocks in Creative mode.
 
 ## [0.8.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.8.0) - 2025-05-11
 
@@ -161,7 +206,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Introduced a new Registry API for accessing the built-in definitions (e.g., all available enchantments via
   `Server::getEnchantmentRegistry`)
 - Added ability to edit item enchantments via the `ItemMeta` API
-- Added ability to get and set an item’s repair cost and mark it as unbreakable via the `ItemMeta` API
+- Added ability to get and set an item's repair cost and mark it as unbreakable via the `ItemMeta` API
 
 ### Fixed
 

@@ -111,6 +111,11 @@ void ListTag::print(const std::string &string, PrintStream &stream) const
     stream.print("}\n");
 }
 
+Tag::Type ListTag::getType() const
+{
+    return type_;
+}
+
 void ListTag::add(std::unique_ptr<Tag> tag)
 {
     type_ = tag->getId();
