@@ -42,7 +42,6 @@
 | struct | [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md) &lt;&gt;<br> |
 | struct | [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md) &lt;&gt;<br> |
 | struct | [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md) &lt;&gt;<br> |
-| struct | [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md) &lt;&gt;<br> |
 
 
 

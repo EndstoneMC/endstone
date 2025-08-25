@@ -29,7 +29,6 @@
 
 | Type | Name |
 | ---: | :--- |
-| struct | [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md) &lt;&gt;<br> |
 | struct | [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) &lt;&gt;<br> |
 
 

@@ -11,7 +11,6 @@
 
 
 * `#include "endstone/detail/endstone.h"`
-* `#include "endstone/namespaced_key.h"`
 * `#include "endstone/registry.h"`
 
 

@@ -142,7 +142,6 @@
 ## k
 
 * **knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
-* **key\_** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 
 
 ## l
@@ -180,7 +179,6 @@
 * **MinecoinGold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **meta\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
-* **MINECRAFT** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **muted\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **message\_id\_** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **max\_players\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
@@ -194,7 +192,6 @@
 
 * **NAME** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md), [**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md), [**endstone::PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **name\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
-* **namespace\_** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **new\_game\_mode\_** ([**endstone::PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md))
 * **new\_skin\_** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **network\_protocol\_version\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))

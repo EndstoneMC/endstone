@@ -85,7 +85,6 @@
 * **contains** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **containsAtLeast** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
-* **create** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
@@ -142,9 +141,8 @@
 * **fromBuffer** ([**endstone::Image**](classendstone_1_1Image.md))
 * **first** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **firstEmpty** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
-* **fromString** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **forEach** ([**endstone::Registry**](classendstone_1_1Registry.md))
-* **format** ([**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md), [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md), [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md), [**fmt::formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md))
+* **format** ([**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md), [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md), [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md))
 
 
 ## g
@@ -154,7 +152,7 @@
 * **getOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getDimension** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::DimensionEvent**](classendstone_1_1DimensionEvent.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::MapView**](classendstone_1_1MapView.md), [**endstone::Position**](classendstone_1_1Position.md))
 * **getHealth** ([**endstone::Actor**](classendstone_1_1Actor.md))
-* **getId** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::MapView**](classendstone_1_1MapView.md), [**endstone::Skin**](classendstone_1_1Skin.md))
+* **getId** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::MapView**](classendstone_1_1MapView.md), [**endstone::Skin**](classendstone_1_1Skin.md))
 * **getLevel** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::LevelEvent**](classendstone_1_1LevelEvent.md), [**endstone::Server**](classendstone_1_1Server.md), [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 * **getLocation** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md))
 * **getMaxHealth** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -224,7 +222,6 @@
 * **getDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
-* **getKey** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **getMaxLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getStartLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getTranslationKey** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemType**](classendstone_1_1ItemType.md))
@@ -271,7 +268,6 @@
 * **getButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getSubmitButton** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **getNamespace** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **getCriteria** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplaySlot** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -467,10 +463,6 @@
 * **isUnlimitedTracking** ([**endstone::MapView**](classendstone_1_1MapView.md))
 * **isVirtual** ([**endstone::MapView**](classendstone_1_1MapView.md))
 * **isGliding** ([**endstone::Mob**](classendstone_1_1Mob.md))
-* **isValidKey** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
-* **isValidKeyChar** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
-* **isValidNamespace** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
-* **isValidNamespaceChar** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **isDisplayed** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **isModifiable** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **init** ([**endstone::Permission**](classendstone_1_1Permission.md))
@@ -515,15 +507,13 @@
 
 ## n
 
-* **NamespacedKey** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
-* **normalizeString** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **normalize** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
 
 ## o
 
-* **operator!=** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md), [**endstone::Objective**](classendstone_1_1Objective.md))
-* **operator==** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Vector**](classendstone_1_1Vector.md))
+* **operator!=** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::Objective**](classendstone_1_1Objective.md))
+* **operator==** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **onCommand** ([**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md))
 * **operator=** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **onDisable** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
@@ -537,7 +527,7 @@
 * **operator-=** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator/** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator/=** ([**endstone::Vector**](classendstone_1_1Vector.md))
-* **operator()** ([**std::hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md), [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md))
+* **operator()** ([**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md))
 
 
 ## p
@@ -779,7 +769,6 @@
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **translate** ([**endstone::Language**](classendstone_1_1Language.md))
 * **trace** ([**endstone::Logger**](classendstone_1_1Logger.md))
-* **toString** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **transfer** ([**endstone::Player**](classendstone_1_1Player.md))
 * **TextInput** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))

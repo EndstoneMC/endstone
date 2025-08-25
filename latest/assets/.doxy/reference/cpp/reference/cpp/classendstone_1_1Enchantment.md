@@ -53,7 +53,7 @@
 | ---: | :--- |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**canEnchantItem**](#function-canenchantitem) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**conflictsWith**](#function-conflictswith) ([**const**](classendstone_1_1Vector.md) [**Enchantment**](classendstone_1_1Enchantment.md) & other) const = 0<br>_Check if this enchantment conflicts with another enchantment._  |
-| virtual [**NamespacedKey**](classendstone_1_1NamespacedKey.md) | [**getKey**](#function-getkey) () const = 0<br>_Return the namespaced identifier for this enchantment._  |
+| virtual std::string | [**getId**](#function-getid) () const = 0<br>_Return the identifier for this enchantment._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
@@ -162,11 +162,11 @@ True if there is a conflict.
 
 
 
-### function getKey 
+### function getId 
 
-_Return the namespaced identifier for this enchantment._ 
+_Return the identifier for this enchantment._ 
 ```C++
-virtual NamespacedKey endstone::Enchantment::getKey () const = 0
+virtual std::string endstone::Enchantment::getId () const = 0
 ```
 
 
@@ -175,7 +175,7 @@ virtual NamespacedKey endstone::Enchantment::getKey () const = 0
 
 **Returns:**
 
-this enchantment's key 
+this enchantment's id 
 
 
 

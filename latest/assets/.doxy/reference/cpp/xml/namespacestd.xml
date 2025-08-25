@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="namespacestd" kind="namespace" language="C++">
     <compoundname>std</compoundname>
-    <innerclass refid="structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4" prot="public">std::hash&lt; endstone::NamespacedKey &gt;</innerclass>
     <innerclass refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4" prot="public">std::hash&lt; endstone::UUID &gt;</innerclass>
     <briefdescription>
     </briefdescription>

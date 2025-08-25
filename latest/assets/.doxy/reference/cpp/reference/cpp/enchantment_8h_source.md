@@ -24,8 +24,6 @@
 
 #pragma once
 
-#include "endstone/namespaced_key.h"
-
 namespace endstone {
 class ItemStack;
 
@@ -33,7 +31,7 @@ class Enchantment {
 public:
     virtual ~Enchantment() = default;
 
-    [[nodiscard]] virtual NamespacedKey getKey() const = 0;
+    [[nodiscard]] virtual std::string getId() const = 0;
 
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 

@@ -90,7 +90,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::MapCanvas**](classendstone_1_1MapCanvas.md) _Represents a canvas for drawing to a map. Each canvas is associated with a specific_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _and represents that renderer's layer on the map._
 * **class** [**endstone::MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._ 
 * **class** [**endstone::MapView**](classendstone_1_1MapView.md) _Represents a map item._ 
-* **class** [**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md) _Represents a string-based key which consists of two components - a namespace and a key._ 
 * **class** [**endstone::Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._ 
 * **class** [**endstone::OfflinePlayer**](classendstone_1_1OfflinePlayer.md) _Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._     
     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
@@ -118,7 +117,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) 
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
-* **struct** [**std::hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
 * **class** **EventType**    
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
@@ -179,5 +177,4 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **struct** [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md) 
-    * **struct** [**fmt::formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md) 
 

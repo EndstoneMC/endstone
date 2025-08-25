@@ -24,9 +24,10 @@
 
 #pragma once
 
+#include <functional>
 #include <stdexcept>
 
-#include "endstone/namespaced_key.h"
+#include <fmt/format.h>
 
 namespace endstone {
 
@@ -35,24 +36,24 @@ class Registry {
 public:
     virtual ~Registry() = default;
 
-    virtual T *get(NamespacedKey key) noexcept = 0;
+    virtual T *get(const std::string & key) noexcept = 0;
 
-    virtual const T *get(NamespacedKey key) const noexcept = 0;
+    virtual const T *get(const std::string & key) const noexcept = 0;
 
-    virtual T &getOrThrow(const NamespacedKey key)
+    virtual T &getOrThrow(const std::string & key)
     {
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No registry entry found for key: "} + key.toString());
+        throw std::invalid_argument(fmt::format("No registry entry found for key: {}", key));
     }
 
-    virtual const T &getOrThrow(const NamespacedKey key) const
+    virtual const T &getOrThrow(const std::string & key) const
     {
         if (auto *p = get(key)) {
             return *p;
         }
-        throw std::invalid_argument(std::string{"No registry entry found for key: "} + key.toString());
+        throw std::invalid_argument(fmt::format("No registry entry found for key: {}", key));
     }
 
     virtual void forEach(std::function<bool(const T &)> func) const = 0;

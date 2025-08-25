@@ -151,16 +151,12 @@
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md)
 ([**fmt**](namespacefmt.md))
-* [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md)
-([**fmt**](namespacefmt.md))
 
 
 ## h
 
 * [**HandlerList**](classendstone_1_1HandlerList.md)
 ([**endstone**](namespaceendstone.md))
-* [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md)
-([**std**](namespacestd.md))
 * [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)
 ([**std**](namespacestd.md))
 * [**Header**](classendstone_1_1Header.md)
@@ -224,12 +220,6 @@
 * [**Mob**](classendstone_1_1Mob.md)
 ([**endstone**](namespaceendstone.md))
 * [**ModalForm**](classendstone_1_1ModalForm.md)
-([**endstone**](namespaceendstone.md))
-
-
-## n
-
-* [**NamespacedKey**](classendstone_1_1NamespacedKey.md)
 ([**endstone**](namespaceendstone.md))
 
 

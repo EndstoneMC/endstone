@@ -10,8 +10,9 @@
 
 
 
+* `#include <functional>`
 * `#include <stdexcept>`
-* `#include "endstone/namespaced_key.h"`
+* `#include <fmt/format.h>`
 
 
 

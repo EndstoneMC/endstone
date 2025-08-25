@@ -25,7 +25,6 @@
 #pragma once
 
 #include "endstone/detail/endstone.h"
-#include "endstone/namespaced_key.h"
 #include "endstone/registry.h"
 
 namespace endstone {
@@ -34,21 +33,15 @@ public:
     virtual ~ItemType() = default;
     [[nodiscard]] virtual std::string_view getId() const = 0;
 
-    [[nodiscard]] virtual NamespacedKey getKey() const = 0;
-
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
-    static const ItemType *get(std::string_view name)
+    static const ItemType *get(const std::string & name)
     {
-        auto key = NamespacedKey::fromString(name);
-        if (!key) {
-            return nullptr;
-        }
-        return Endstone::getServer().getItemRegistry().get(key.value());
+        return Endstone::getServer().getItemRegistry().get(name);
     }
 
     bool operator==(const std::string_view other) const

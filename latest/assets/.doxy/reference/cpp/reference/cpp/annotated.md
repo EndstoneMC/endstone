@@ -81,7 +81,6 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
-    * **class** [**NamespacedKey**](classendstone_1_1NamespacedKey.md) _Represents a string-based key which consists of two components - a namespace and a key._     
     * **class** [**Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._     
     * **class** [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) _Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._     
     * **class** [**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md) _Called when the server receives a packet from a connected client._     
@@ -171,8 +170,6 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)     
     * **struct** [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)     
     * **struct** [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md)     
-    * **struct** [**formatter&lt; endstone::NamespacedKey &gt;**](structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4.md)     
 * **namespace** [**std**](namespacestd.md)     
-    * **struct** [**hash&lt; endstone::NamespacedKey &gt;**](structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4.md)     
     * **struct** [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)     
 

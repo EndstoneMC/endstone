@@ -449,10 +449,6 @@
          <lastmod>2025-08-25</lastmod>
     </url>
     <url>
-         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1NamespacedKey/</loc>
-         <lastmod>2025-08-25</lastmod>
-    </url>
-    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Objective/</loc>
          <lastmod>2025-08-25</lastmod>
     </url>
@@ -809,15 +805,7 @@
          <lastmod>2025-08-25</lastmod>
     </url>
     <url>
-         <loc>https://endstone.dev/latest/reference/cpp/structfmt_1_1formatter_3_01endstone_1_1NamespacedKey_01_4/</loc>
-         <lastmod>2025-08-25</lastmod>
-    </url>
-    <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespacestd/</loc>
-         <lastmod>2025-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/structstd_1_1hash_3_01endstone_1_1NamespacedKey_01_4/</loc>
          <lastmod>2025-08-25</lastmod>
     </url>
     <url>
@@ -2178,14 +2166,6 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message_8h_source/</loc>
-         <lastmod>2025-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/namespaced__key_8h/</loc>
-         <lastmod>2025-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/namespaced__key_8h_source/</loc>
          <lastmod>2025-08-25</lastmod>
     </url>
     <url>
