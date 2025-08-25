@@ -152,7 +152,7 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
         }
         return {};  // Empty item stack
     }
-    auto stack = ::ItemStack(item->getType().getId(), item->getAmount());
+    auto stack = ::ItemStack(item->getType().getId(), item->getAmount(), item->getData());
     if (item->hasItemMeta()) {
         setItemMeta(&stack, item->getItemMeta().get());
     }
