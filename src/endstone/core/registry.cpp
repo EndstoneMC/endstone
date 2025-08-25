@@ -23,19 +23,17 @@
 namespace endstone::core {
 
 template <>
-const Enchant *MinecraftRegistry<Enchant>::get(const NamespacedKey &key) const
+const Enchant *MinecraftRegistry<Enchant>::get(const std::string &key) const
 {
-    return Enchant::getEnchantFromName(key.getKey());
+    return Enchant::getEnchantFromName(key);
 }
 
 template <>
-std::vector<NamespacedKey> MinecraftRegistry<Enchant>::keys() const
+std::vector<std::string> MinecraftRegistry<Enchant>::keys() const
 {
-    std::vector<NamespacedKey> keys;
+    std::vector<std::string> keys;
     for (const auto &enchant : Enchant::getEnchants()) {
-        if (auto key = NamespacedKey::fromString(enchant->getStringId().getString()); key.has_value()) {
-            keys.emplace_back(key.value());
-        }
+        keys.emplace_back(enchant->getStringId().getString());
     }
     return keys;
 }
@@ -48,20 +46,18 @@ std::unique_ptr<Registry<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::c
 }
 
 template <>
-const ::Item *MinecraftRegistry<::Item>::get(const NamespacedKey &key) const
+const ::Item *MinecraftRegistry<::Item>::get(const std::string &key) const
 {
-    const auto item = ItemRegistryManager::getItemRegistry().getItem(key.toString());
+    const auto item = ItemRegistryManager::getItemRegistry().getItem(key);
     return item.get();
 }
 
 template <>
-std::vector<NamespacedKey> MinecraftRegistry<::Item>::keys() const
+std::vector<std::string> MinecraftRegistry<::Item>::keys() const
 {
-    std::vector<NamespacedKey> keys;
+    std::vector<std::string> keys;
     for (const auto &[name, _] : ItemRegistryManager::getItemRegistry().getNameToItemMap()) {
-        if (auto key = NamespacedKey::fromString(name.getString()); key.has_value()) {
-            keys.emplace_back(key.value());
-        }
+        keys.emplace_back(name.getString());
     }
     return keys;
 }
@@ -70,7 +66,7 @@ template <>
 std::unique_ptr<Registry<ItemType>> EndstoneRegistry<ItemType, ::Item>::createRegistry()
 {
     return std::make_unique<EndstoneRegistry>(
-        [](auto key, const auto &handle) { return std::make_unique<EndstoneItemType>(key, handle); });
+        [](auto key, const auto &handle) { return std::make_unique<EndstoneItemType>(handle); });
 }
 
 }  // namespace endstone::core
