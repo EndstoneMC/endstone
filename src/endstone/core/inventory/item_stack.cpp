@@ -135,7 +135,7 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
         return stack->handle_;  // Call the copy constructor to make a copy
     }
 
-    auto stack = ::ItemStack(item->getType(), item->getAmount());
+    auto stack = ::ItemStack(item->getType(), item->getAmount(), item->getData());
     if (item->hasItemMeta()) {
         setItemMeta(&stack, item->getItemMeta().get());
     }
