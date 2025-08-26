@@ -88,6 +88,8 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
     registerPermission(root->getName() + ".reload", root,
                        "Allows the user to reload the configuration and plugins of the server",
                        PermissionDefault::Operator);
+    registerPermission(root->getName() + ".seed", root, "Allows the user to view the seed of the level.",
+                       PermissionDefault::Operator);
     registerPermission(root->getName() + ".status", root, "Allows the user to view the status of the server",
                        PermissionDefault::Operator);
     registerPermission(root->getName() + ".version", root, "Allows the user to view the version of the server",
