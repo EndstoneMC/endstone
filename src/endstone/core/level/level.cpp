@@ -109,6 +109,11 @@ void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
     dimensions_[name] = std::move(dimension);
 }
 
+std::int64_t EndstoneLevel::getSeed() const
+{
+    return level_.getLevelSeed64();
+}
+
 EndstoneServer &EndstoneLevel::getServer() const
 {
     return server_;

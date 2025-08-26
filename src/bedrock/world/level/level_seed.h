@@ -19,7 +19,12 @@ class LevelSeed64 {
 
 public:
     LevelSeed64();
-    LevelSeed64(ValueType value) : value(value){};
+    LevelSeed64(ValueType value) : value_(value) {}
+    operator ValueType() const
+    {
+        return value_;
+    }
 
-    ValueType value{0};
+private:
+    ValueType value_;
 };

@@ -71,6 +71,13 @@ public:
      * @return The Dimension with the given name, or nullptr if none exists
      */
     [[nodiscard]] virtual Dimension *getDimension(std::string name) const = 0;
+
+    /**
+     * @brief Gets the Seed for this level.
+     *
+     * @return This level's Seed
+     */
+    [[nodiscard]] virtual std::int64_t getSeed() const = 0;
 };
 
 }  // namespace endstone
