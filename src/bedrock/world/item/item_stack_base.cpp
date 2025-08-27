@@ -307,7 +307,7 @@ void ItemStackBase::set(const int count)
     else {
         count_ = count;
     }
-    if (!isNull()) {
+    if (!*this) {
         setNull(std::nullopt);
     }
 }
