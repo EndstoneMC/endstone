@@ -38,6 +38,7 @@ public:
     [[nodiscard]] std::vector<Dimension *> getDimensions() const override;
     [[nodiscard]] Dimension *getDimension(std::string name) const override;
     void addDimension(std::unique_ptr<Dimension> dimension);
+    [[nodiscard]] std::int64_t getSeed() const override;
 
     [[nodiscard]] EndstoneServer &getServer() const;
     [[nodiscard]] ::Level &getHandle() const;

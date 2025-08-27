@@ -1989,6 +1989,11 @@ class Level:
         Gets the unique name of this level
         """
     @property
+    def seed(self) -> int:
+        """
+        Gets the Seed for this level.
+        """
+    @property
     def time(self) -> int:
         """
         Gets and sets the relative in-game time on the server

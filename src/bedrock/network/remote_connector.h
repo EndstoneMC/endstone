@@ -31,5 +31,6 @@ public:
     [[nodiscard]] virtual NetworkIdentifier getNetworkIdentifier() const = 0;
     virtual bool setApplicationHandshakeCompleted(const NetworkIdentifier &) = 0;
     virtual void setDisableLanSignaling(bool) = 0;
+    virtual void unknown() = 0; // TODO(fixme): what is this?
 };
 static_assert(sizeof(RemoteConnector) == 80);

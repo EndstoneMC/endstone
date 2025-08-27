@@ -61,7 +61,8 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def_property_readonly("dimensions", &Level::getDimensions, "Gets a list of all dimensions within this level.",
                                py::return_value_policy::reference_internal)
         .def("get_dimension", &Level::getDimension, py::arg("name"), "Gets the dimension with the given name.",
-             py::return_value_policy::reference);
+             py::return_value_policy::reference)
+        .def_property_readonly("seed", &Level::getSeed, "Gets the Seed for this level.");
 }
 
 }  // namespace endstone::python

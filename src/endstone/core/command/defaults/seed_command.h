@@ -14,17 +14,15 @@
 
 #pragma once
 
-class LevelSeed64 {
-    using ValueType = uint64_t;
+#include "endstone/core/command/endstone_command.h"
+#include "endstone/plugin/plugin.h"
 
+namespace endstone::core {
+
+class SeedCommand : public EndstoneCommand {
 public:
-    LevelSeed64();
-    LevelSeed64(ValueType value) : value_(value) {}
-    operator ValueType() const
-    {
-        return value_;
-    }
-
-private:
-    ValueType value_;
+    SeedCommand();
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
+
+}  // namespace endstone::core

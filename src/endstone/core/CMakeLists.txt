@@ -54,6 +54,7 @@ add_library(endstone_core
         command/defaults/pardon_ip_command.cpp
         command/defaults/plugins_command.cpp
         command/defaults/reload_command.cpp
+        command/defaults/seed_command.cpp
         command/defaults/status_command.cpp
         command/defaults/version_command.cpp
         damage/damage_source.cpp
