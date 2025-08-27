@@ -202,6 +202,7 @@
       <member refid="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual" ambiguityscope="endstone::"><scope>endstone::PlayerDeathEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual" ambiguityscope="endstone::PlayerEvent::"><scope>endstone::PlayerDeathEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerDeathEvent_1a3104f4d23f97f8c6231b5b6be585d18e" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>PlayerDeathEvent</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>setDeathMessage</name></member>

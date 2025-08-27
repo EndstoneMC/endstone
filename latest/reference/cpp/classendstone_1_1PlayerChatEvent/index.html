@@ -2111,17 +2111,6 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Attributes
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -2155,36 +2144,6 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes-documentation" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Attributes Documentation
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label="Public Static Attributes Documentation">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#variable-name" class="md-nav__link">
-      <span class="md-ellipsis">
-        variable NAME
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-        </ul>
-    </nav>
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2195,6 +2154,19 @@ For latest updates join the chat on
     
     <nav class="md-nav" aria-label="Public Functions Documentation">
         <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-endstone_event" class="md-nav__link">
+      <span class="md-ellipsis">
+        function ENDSTONE_EVENT
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
             
                 
                     <li class="md-nav__item">
@@ -2211,9 +2183,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-geteventname" class="md-nav__link">
+    <a href="#function-getformat" class="md-nav__link">
       <span class="md-ellipsis">
-        function getEventName
+        function getFormat
       </span>
     </a>
 
@@ -2237,6 +2209,32 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getrecipients" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getRecipients
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-setformat" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setFormat
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-setmessage" class="md-nav__link">
       <span class="md-ellipsis">
         function setMessage
@@ -2250,9 +2248,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-playerchatevent_1" class="md-nav__link">
+    <a href="#function-setplayer" class="md-nav__link">
       <span class="md-ellipsis">
-        function ~PlayerChatEvent
+        function setPlayer
       </span>
     </a>
 
@@ -2305,21 +2303,6 @@ For latest updates join the chat on
 <li><code>#include &lt;endstone/event/player/player_chat_event.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
-<h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string</td>
-<td style="text-align: left;"><a href="#variable-name"><strong>NAME</strong></a>   = <code>"PlayerChatEvent"</code><br></td>
-</tr>
-</tbody>
-</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2331,23 +2314,35 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerchatevent"><strong>PlayerChatEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string message) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setmessage"><strong>setMessage</strong></a> (std::string message) <br></td>
+<td style="text-align: left;"><a href="#function-endstone_event"><strong>ENDSTONE_EVENT</strong></a> (<a href="./"><strong>PlayerChatEvent</strong></a>) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerchatevent"><strong>~PlayerChatEvent</strong></a> () override<br></td>
+<td style="text-align: left;"><a href="#function-playerchatevent"><strong>PlayerChatEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string message, std::optional&lt; std::vector&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> * &gt; &gt; recipients, std::string format="&lt;{0}&gt; {1}") <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::string</td>
+<td style="text-align: left;"><a href="#function-getformat"><strong>getFormat</strong></a> () const<br><em>Gets the format to use to display this chat message.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::string</td>
+<td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br><em>Gets the message that the player is attempting to send.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::vector&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> * &gt;</td>
+<td style="text-align: left;"><a href="#function-getrecipients"><strong>getRecipients</strong></a> () const<br><em>Gets a set of recipients that this chat message will be displayed to.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-setformat"><strong>setFormat</strong></a> (std::string format) <br><em>Sets the format to use to display this chat message.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-setmessage"><strong>setMessage</strong></a> (std::string message) <br><em>Sets the message that the player will send.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-setplayer"><strong>setPlayer</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br><em>Sets the player that this message will display as.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2403,52 +2398,83 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-static-attributes-documentation">Public Static Attributes Documentation<a class="headerlink" href="#public-static-attributes-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="variable-name">variable NAME<a class="headerlink" href="#variable-name" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">NAME</span><span class="p">;</span>
+<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">ENDSTONE_EVENT</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">PlayerChatEvent</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
-<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+
 <h3 id="function-playerchatevent">function PlayerChatEvent<a class="headerlink" href="#function-playerchatevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">recipients</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s">&quot;&lt;{0}&gt; {1}&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a user-friendly identifier for this event.</p>
+<h3 id="function-getformat">function getFormat<a class="headerlink" href="#function-getformat" title="Permanent link">&para;</a></h3>
+<p><em>Gets the format to use to display this chat message.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">getFormat</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p>See <a href="https://en.cppreference.com/w/cpp/utility/format/spec.html">the format string syntax</a></p>
 <p><strong>Returns:</strong></p>
-<p>name of this event </p>
-<p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
+<p>format string </p>
 <hr>
 
 <h3 id="function-getmessage">function getMessage<a class="headerlink" href="#function-getmessage" title="Permanent link">&para;</a></h3>
+<p><em>Gets the message that the player is attempting to send.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">getMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the message that the player is attempting to send.</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Message the player is attempting to send </p>
 <hr>
 
+<h3 id="function-getrecipients">function getRecipients<a class="headerlink" href="#function-getrecipients" title="Permanent link">&para;</a></h3>
+<p><em>Gets a set of recipients that this chat message will be displayed to.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">getRecipients</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>All Players who will see this chat message </p>
+<hr>
+
+<h3 id="function-setformat">function setFormat<a class="headerlink" href="#function-setformat" title="Permanent link">&para;</a></h3>
+<p><em>Sets the format to use to display this chat message.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">setFormat</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">format</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>format</code> format string </li>
+</ul>
+<hr>
+
 <h3 id="function-setmessage">function setMessage<a class="headerlink" href="#function-setmessage" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">setMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Sets the message that the player will send.</p>
+<p><em>Sets the message that the player will send.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">setMessage</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>message</code> New message that the player will send </li>
 </ul>
 <hr>
 
-<h3 id="function-playerchatevent_1">function ~PlayerChatEvent<a class="headerlink" href="#function-playerchatevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::~</span><span class="n">PlayerChatEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
+<h3 id="function-setplayer">function setPlayer<a class="headerlink" href="#function-setplayer" title="Permanent link">&para;</a></h3>
+<p><em>Sets the player that this message will display as.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerChatEvent</span><span class="o">::</span><span class="n">setPlayer</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>player</code> New player which this event will execute as </li>
+</ul>
 <hr>
 
 <hr />

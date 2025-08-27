@@ -836,6 +836,7 @@
     <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" kind="function"><name>setTime</name></member>
     <member refid="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" kind="function"><name>getDimensions</name></member>
     <member refid="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" kind="function"><name>getSeed</name></member>
   </compound>
   <compound refid="classendstone_1_1LevelEvent" kind="class"><name>endstone::LevelEvent</name>
     <member refid="classendstone_1_1LevelEvent_1ab3a3f5c2858709f045ea2195567b7892" kind="variable"><name>level_</name></member>
@@ -1199,13 +1200,17 @@
     <member refid="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" kind="function"><name>getBed</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
-    <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerChatEvent_1a5a2fadea22a0df7dcfd1e3229ace5414" kind="variable"><name>message_</name></member>
-    <member refid="classendstone_1_1PlayerChatEvent_1ae0ef119ee5dd4d80ba0db94d7927e011" kind="function"><name>PlayerChatEvent</name></member>
-    <member refid="classendstone_1_1PlayerChatEvent_1a84de57a1184f0d6384f32ac95c21864e" kind="function"><name>~PlayerChatEvent</name></member>
-    <member refid="classendstone_1_1PlayerChatEvent_1ac7473c18e7328d7fa402d49c143c152a" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1a6f547117792397c1aa4dfeed946d6452" kind="variable"><name>format_</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1aa44281fed81a0f6ec7d366bb1e055079" kind="variable"><name>recipients_</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1a6d8d09a5415905191c0f75b4e029b4c2" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1a7b502ca97396f42b9a828464885afc07" kind="function"><name>PlayerChatEvent</name></member>
     <member refid="classendstone_1_1PlayerChatEvent_1a6aaa932d6bf8d004a1aa67f9332587e3" kind="function"><name>getMessage</name></member>
     <member refid="classendstone_1_1PlayerChatEvent_1a6911b50e5f63878d746bdda07d8fcd58" kind="function"><name>setMessage</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1a13300f0afa05d3b3643bf60c9f8f2778" kind="function"><name>setPlayer</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1a4ca2281553851adb20356f1d15fff91e" kind="function"><name>getFormat</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1a16bf30f1143a3b116ce865bbc8dedc62" kind="function"><name>setFormat</name></member>
+    <member refid="classendstone_1_1PlayerChatEvent_1ae72e5e69a2f537ecac4c33d065e1fdc2" kind="function"><name>getRecipients</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerCommandEvent" kind="class"><name>endstone::PlayerCommandEvent</name>
     <member refid="classendstone_1_1PlayerCommandEvent_1a847453583d9293cfc93634b9e75ac377" kind="variable"><name>NAME</name></member>
@@ -1240,7 +1245,7 @@
     <member refid="classendstone_1_1PlayerEmoteEvent_1a8b3923ba2a6d0867d03ea8ec89ab299a" kind="function"><name>setMuted</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerEvent" kind="class"><name>endstone::PlayerEvent</name>
-    <member refid="classendstone_1_1PlayerEvent_1af4eb1d01665dafc47db34a43d7e96281" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" kind="variable"><name>player_</name></member>
     <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" kind="function"><name>PlayerEvent</name></member>
     <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" kind="function"><name>~PlayerEvent</name></member>
     <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" kind="function"><name>getPlayer</name></member>

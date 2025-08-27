@@ -143,6 +143,13 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
+## Protected Attributes inherited from endstone::PlayerEvent
+
+See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
+
+| Type | Name |
+| ---: | :--- |
+|  std::reference\_wrapper&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](classendstone_1_1PlayerEvent.md#variable-player_)  <br> |
 
 
 

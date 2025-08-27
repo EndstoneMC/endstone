@@ -105,6 +105,11 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
+## Protected Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  std::reference\_wrapper&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](#variable-player_)  <br> |
 
 
 
@@ -196,6 +201,21 @@ Returns the player involved in this event
 
 ```C++
 endstone::PlayerEvent::~PlayerEvent () override
+```
+
+
+
+
+<hr>
+## Protected Attributes Documentation
+
+
+
+
+### variable player\_ 
+
+```C++
+std::reference_wrapper<Player> endstone::PlayerEvent::player_;
 ```
 
 

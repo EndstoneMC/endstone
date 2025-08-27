@@ -398,6 +398,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerInteractEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1ad1d466d344a89164b579dc62d9f2a86c" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>item_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1af0c0b0c0d24f7af231b5da2c03fa5568" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>PlayerInteractEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerInteractEvent</scope><name>setCancelled</name></member>

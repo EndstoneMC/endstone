@@ -166,7 +166,6 @@
         <reimplementedby refid="classendstone_1_1ActorTeleportEvent_1a60979e7b5222885d3b072c8dde7185d2">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1BlockBreakEvent_1a51513f05d20b347797c31be3fb6db1d2">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PlayerChatEvent_1ac7473c18e7328d7fa402d49c143c152a">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerCommandEvent_1a64066f629ce1473239141c71c1177010">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab">getEventName</reimplementedby>

@@ -46,6 +46,8 @@ public:
     [[nodiscard]] virtual std::vector<Dimension *> getDimensions() const = 0;
 
     [[nodiscard]] virtual Dimension *getDimension(std::string name) const = 0;
+
+    [[nodiscard]] virtual std::int64_t getSeed() const = 0;
 };
 
 }  // namespace endstone

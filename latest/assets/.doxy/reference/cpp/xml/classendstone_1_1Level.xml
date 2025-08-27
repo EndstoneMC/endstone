@@ -150,18 +150,37 @@
         </inbodydescription>
         <location file="include/endstone/level/level.h" line="73" column="24"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int64_t</type>
+        <definition>virtual std::int64_t endstone::Level::getSeed</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getSeed</name>
+        <qualifiedname>endstone::Level::getSeed</qualifiedname>
+        <briefdescription>
+<para>Gets the Seed for this level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>This level&apos;s Seed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/level.h" line="80" column="27"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Represents a level, which may contain actors, chunks and blocks. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/level.h" line="27" column="1" bodyfile="include/endstone/level/level.h" bodystart="27" bodyend="74"/>
+    <location file="include/endstone/level/level.h" line="27" column="1" bodyfile="include/endstone/level/level.h" bodystart="27" bodyend="81"/>
     <listofallmembers>
       <member refid="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getActors</name></member>
       <member refid="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimensions</name></member>
       <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getSeed</name></member>
       <member refid="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getTime</name></member>
       <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>setTime</name></member>
       <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" prot="public" virt="virtual"><scope>endstone::Level</scope><name>~Level</name></member>

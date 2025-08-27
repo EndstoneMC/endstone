@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"PlayerChatEvent"`<br> |
 
 
 
@@ -98,11 +93,14 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerChatEvent**](#function-playerchatevent) ([**Player**](classendstone_1_1Player.md) & player, std::string message) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  std::string | [**getMessage**](#function-getmessage) () const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setMessage**](#function-setmessage) (std::string message) <br> |
-|   | [**~PlayerChatEvent**](#function-playerchatevent) () override<br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md)) <br> |
+|   | [**PlayerChatEvent**](#function-playerchatevent) ([**Player**](classendstone_1_1Player.md) & player, std::string message, std::optional&lt; std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; &gt; recipients, std::string format="&lt;{0}&gt; {1}") <br> |
+|  std::string | [**getFormat**](#function-getformat) () const<br>_Gets the format to use to display this chat message._  |
+|  std::string | [**getMessage**](#function-getmessage) () const<br>_Gets the message that the player is attempting to send._  |
+|  std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getRecipients**](#function-getrecipients) () const<br>_Gets a set of recipients that this chat message will be displayed to._  |
+|  [**void**](classendstone_1_1Vector.md) | [**setFormat**](#function-setformat) (std::string format) <br>_Sets the format to use to display this chat message._  |
+|  [**void**](classendstone_1_1Vector.md) | [**setMessage**](#function-setmessage) (std::string message) <br>_Sets the message that the player will send._  |
+|  [**void**](classendstone_1_1Vector.md) | [**setPlayer**](#function-setplayer) ([**Player**](classendstone_1_1Player.md) & player) <br>_Sets the player that this message will display as._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -206,32 +204,16 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::PlayerChatEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
 
 
-### function PlayerChatEvent 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline explicit endstone::PlayerChatEvent::PlayerChatEvent (
-    Player & player,
-    std::string message
+endstone::PlayerChatEvent::ENDSTONE_EVENT (
+    PlayerChatEvent
 ) 
 ```
 
@@ -242,30 +224,47 @@ inline explicit endstone::PlayerChatEvent::PlayerChatEvent (
 
 
 
-### function getEventName 
+### function PlayerChatEvent 
 
 ```C++
-inline virtual std::string endstone::PlayerChatEvent::getEventName () override const
+inline explicit endstone::PlayerChatEvent::PlayerChatEvent (
+    Player & player,
+    std::string message,
+    std::optional< std::vector< Player * > > recipients,
+    std::string format="<{0}> {1}"
+) 
 ```
 
 
 
-Gets a user-friendly identifier for this event.
+
+<hr>
+
+
+
+### function getFormat 
+
+_Gets the format to use to display this chat message._ 
+```C++
+inline std::string endstone::PlayerChatEvent::getFormat () const
+```
+
+
+
+See [the format string syntax](https://en.cppreference.com/w/cpp/utility/format/spec.html)
 
 
 
 
 **Returns:**
 
-name of this event 
+format string 
 
 
 
 
 
         
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 
@@ -273,13 +272,11 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getMessage 
 
+_Gets the message that the player is attempting to send._ 
 ```C++
 inline std::string endstone::PlayerChatEvent::getMessage () const
 ```
 
-
-
-Gets the message that the player is attempting to send.
 
 
 
@@ -298,17 +295,67 @@ Message the player is attempting to send
 
 
 
+### function getRecipients 
+
+_Gets a set of recipients that this chat message will be displayed to._ 
+```C++
+inline std::vector< Player * > endstone::PlayerChatEvent::getRecipients () const
+```
+
+
+
+
+
+**Returns:**
+
+All Players who will see this chat message 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setFormat 
+
+_Sets the format to use to display this chat message._ 
+```C++
+inline void endstone::PlayerChatEvent::setFormat (
+    std::string format
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `format` format string 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setMessage 
 
+_Sets the message that the player will send._ 
 ```C++
 inline void endstone::PlayerChatEvent::setMessage (
     std::string message
 ) 
 ```
 
-
-
-Sets the message that the player will send.
 
 
 
@@ -327,14 +374,28 @@ Sets the message that the player will send.
 
 
 
-### function ~PlayerChatEvent 
+### function setPlayer 
 
+_Sets the player that this message will display as._ 
 ```C++
-endstone::PlayerChatEvent::~PlayerChatEvent () override
+inline void endstone::PlayerChatEvent::setPlayer (
+    Player & player
+) 
 ```
 
 
 
+
+
+**Parameters:**
+
+
+* `player` New player which this event will execute as 
+
+
+
+
+        
 
 <hr>
 

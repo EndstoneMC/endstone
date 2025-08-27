@@ -56,6 +56,7 @@ _Represents a level, which may contain actors, chunks and blocks._
 | virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) (std::string name) const = 0<br>_Gets the dimension with the given name._  |
 | virtual std::vector&lt; [**Dimension**](classendstone_1_1Dimension.md) \* &gt; | [**getDimensions**](#function-getdimensions) () const = 0<br>_Gets a list of all dimensions within this level._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the unique name of this level._  |
+| virtual std::int64\_t | [**getSeed**](#function-getseed) () const = 0<br>_Gets the Seed for this level._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getTime**](#function-gettime) () const = 0<br>_Gets the relative in-game time of this level._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setTime**](#function-settime) ([**int**](classendstone_1_1Vector.md) time) = 0<br>_Sets the relative in-game time on the server._  |
 | virtual  | [**~Level**](#function-level) () = default<br> |
@@ -190,6 +191,31 @@ virtual std::string endstone::Level::getName () const = 0
 **Returns:**
 
 Name of this level 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getSeed 
+
+_Gets the Seed for this level._ 
+```C++
+virtual std::int64_t endstone::Level::getSeed () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+This level's Seed 
 
 
 
