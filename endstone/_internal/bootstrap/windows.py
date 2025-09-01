@@ -154,7 +154,7 @@ class WindowsBootstrap(Bootstrap):
         env["_NT_SYMBOL_PATH"] = os.pathsep.join(symbol_path_list)
         return env
 
-    def _add_loopback_exemption(self) -> bool:
+    def _add_loopback_exemption(self) -> None:
         sid = "S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436"
         ret = subprocess.run(
             ["CheckNetIsolation", "LoopbackExempt", "-s", f"-p={sid}"], check=True, capture_output=True
@@ -163,12 +163,17 @@ class WindowsBootstrap(Bootstrap):
             ret = ctypes.windll.shell32.ShellExecuteW(
                 None, "runas", "CheckNetIsolation", " ".join(["LoopbackExempt", "-a", f"-p={sid}"]), None, 1
             )
-            return ret > 32
-        else:
-            return True
+            if ret <= 32:
+                raise RuntimeError(f"CheckNetIsolation LoopbackExempt -a failed with exit code {ret}.")
 
     def _run(self, *args, **kwargs) -> int:
-        self._add_loopback_exemption()
+        try:
+            self._add_loopback_exemption()
+        except Exception as e:
+            self._logger.warning(
+                f"Unable to add loopback exemption: %s. See bedrock_server_how_to.html for more details. {e}"
+            )
+
         process = PopenWithDll(
             [str(self.executable_path.absolute())],
             text=True,

@@ -14,6 +14,7 @@
 
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
+#include "bedrock/network/packet/text_packet.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/server/packet_receive_event.h"
@@ -51,6 +52,7 @@ bool handleEvent(ChatEvent &event)
         endstone::PlayerChatEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.message,
                                     recipients};
         auto original_format = e.getFormat();
+
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
@@ -65,7 +67,7 @@ bool handleEvent(ChatEvent &event)
             return false;
         }
 
-        // if format's changed, send as normal message instead of text message
+        // Format has been changed, send formatted messages as raw and cancel the original event to avoid double sending
         if (e.getFormat() != original_format) {
             for (const auto &recipient : e.getRecipients()) {
                 recipient->sendMessage(message);
@@ -74,8 +76,18 @@ bool handleEvent(ChatEvent &event)
             return false;
         }
 
-        event.author = e.getPlayer().getName();
-        event.message = std::move(e.getMessage());
+        // Message has been changed, send new text messages and cancel the original event to avoid double sending
+        if (e.getMessage() != event.message) {
+            player = &static_cast<endstone::core::EndstonePlayer &>(e.getPlayer()).getPlayer();
+            for (const auto &recipient : e.getRecipients()) {
+                auto packet = TextPacket::createChat(player->getName(), e.getMessage(), std::nullopt, player->getXuid(),
+                                                     player->getPlatformOnlineId());
+                static_cast<endstone::core::EndstonePlayer *>(recipient)->getPlayer().sendNetworkPacket(packet);
+            }
+            return false;
+        }
+
+        // Nothing changed, proceed to original route and log to console
         server.getLogger().info(message);
     }
     return true;

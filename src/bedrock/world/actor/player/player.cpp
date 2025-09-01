@@ -110,6 +110,11 @@ const ItemStack &Player::setSelectedSlot(int slot)
     return item;
 }
 
+const std::string &Player::getPlatformOnlineId() const
+{
+    return platform_online_id_;
+}
+
 const std::string &Player::getName() const
 {
     return name_;

@@ -338,6 +338,15 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
             }
             else {
+                if (parameter.type == "message" && (&parameter != &parameters.back())) {
+                    server_.getLogger().error(
+                        "Unable to register command '{}'. Argument '{}' of 'message' type must be "
+                        "the last argument in usage '{}'.",
+                        name, parameter.name, usage);
+                    success = false;
+                    break;
+                }
+
                 auto it = TYPE_SYMBOLS.find(std::string(parameter.type));
                 if (it == TYPE_SYMBOLS.end()) {
                     server_.getLogger().error("Unable to register command '{}'. Unsupported type '{}' in usage '{}'.",
