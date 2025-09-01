@@ -53,7 +53,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  std::size\_t | [**operator()**](#function-operator()) (const [**endstone::UUID**](classendstone_1_1UUID.md) & value) noexcept const<br> |
+|  std::size\_t | [**operator()**](#function-operator) (const [**endstone::UUID**](classendstone_1_1UUID.md) & value) noexcept const<br> |
 
 
 
