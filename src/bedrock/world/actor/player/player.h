@@ -161,6 +161,7 @@ public:
     [[nodiscard]] const EnderChestContainer *getEnderChestContainer() const;
     [[nodiscard]] int getSelectedItemSlot() const;
     const ItemStack &setSelectedSlot(int);
+    [[nodiscard]] const std::string &getPlatformOnlineId() const;
     [[nodiscard]] const std::string &getName() const;
     void setPermissions(CommandPermissionLevel permission);
     void setBedRespawnPosition(const BlockPos &);
