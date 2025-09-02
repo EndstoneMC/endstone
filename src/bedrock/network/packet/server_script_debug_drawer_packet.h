@@ -30,6 +30,7 @@ enum class ScriptDebugShapeType : std::uint8_t {
 };
 
 struct PacketShapeData {
+    std::uint64_t network_id;
     std::optional<ScriptDebugShapeType> shape_type;
     std::optional<Vec3> location;
     std::optional<Vec3> rotation;

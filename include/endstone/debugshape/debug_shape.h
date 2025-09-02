@@ -23,7 +23,8 @@
 namespace endstone {
 
 namespace debugshape_internal {
-    inline std::atomic<int64_t> id_counter{0};
+    // Decreases from the maximum value to avoid conflicts with sapi's id allocation
+    inline std::atomic id_counter{UINT64_MAX};
 }  // namespace debugshape_internal
 
 /**
@@ -31,12 +32,12 @@ namespace debugshape_internal {
  *
  * The DebugShape class provides a base abstraction for different types of debug shapes.
  * It supports six types of debug shapes: Arrow, Box, Circle, Line, Sphere and Text.
- * Each debug shape has a id, position and color.
+ * Each debug shape has an id, position and color.
  */
 template <typename T>
 class DebugShape {
 public:
-    using DebugShapeId = int64_t;
+    using DebugShapeId = uint64_t;
     explicit DebugShape()
     {
         id_ = --debugshape_internal::id_counter;
