@@ -1122,6 +1122,14 @@ class DebugArrow:
     def arrow_head_radius(self, arg1: float | None) -> DebugArrow:
         ...
     @property
+    def arrow_head_scale(self) -> float | None:
+        """
+        Gets or sets the scale of the arrowhead.
+        """
+    @arrow_head_scale.setter
+    def arrow_head_scale(self, arg1: float | None) -> DebugArrow:
+        ...
+    @property
     def arrow_head_segments(self) -> int | None:
         """
         Gets or sets the number of segments used to render the arrowhead.

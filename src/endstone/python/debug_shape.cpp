@@ -34,8 +34,9 @@ void init_debug_shape(py::module_ &m)
         .def_property("arrow_head_radius", &DebugArrow::getArrowHeadRadius, &DebugArrow::setArrowHeadRadius,
                       "Gets or sets the radius of the arrowhead.", py::return_value_policy::reference)
         .def_property("arrow_head_segments", &DebugArrow::getArrowHeadSegments, &DebugArrow::setArrowHeadSegments,
-                      "Gets or sets the number of segments used to render the arrowhead.",
-                      py::return_value_policy::reference);
+                      "Gets or sets the number of segments used to render the arrowhead.", py::return_value_policy::reference)
+        .def_property("arrow_head_scale", &DebugArrow::getArrowHeadScale, &DebugArrow::setArrowHeadScale,
+                      "Gets or sets the scale of the arrowhead.", py::return_value_policy::reference);
 
     py::class_<DebugBox>(m, "DebugBox", "Represents a debug box.")
         .def(py::init<>())
