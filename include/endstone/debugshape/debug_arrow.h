@@ -111,11 +111,34 @@ public:
         return *this;
     }
 
+    /**
+     * @brief Gets the scale of the arrowhead.
+     *
+     * @return The arrowhead scale.
+     */
+    [[nodiscard]] std::optional<float> getArrowHeadScale() const
+    {
+        return arrow_head_scale_;
+    }
+
+    /**
+     * @brief Sets the scale of the arrowhead.
+     *
+     * @param arrow_head_scale The desired scale of the arrowhead.
+     * @return A reference to the current debug shape.
+     */
+    DebugArrow &setArrowHeadScale(const std::optional<float> arrow_head_scale)
+    {
+        arrow_head_scale_ = arrow_head_scale;
+        return *this;
+    }
+
 private:
     std::optional<Vector<float>> end_position_;
     std::optional<float> arrow_head_length_;
     std::optional<float> arrow_head_radius_;
     std::optional<std::uint8_t> arrow_head_segments_;
+    std::optional<float> arrow_head_scale_;
 };
 
 }  // namespace endstone

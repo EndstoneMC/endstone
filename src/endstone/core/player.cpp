@@ -742,7 +742,7 @@ void EndstonePlayer::sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes
     for (auto &debug_shape : debug_shapes) {
         if (std::holds_alternative<DebugArrow>(debug_shape)) {
             auto arrow = std::get<DebugArrow>(debug_shape);
-            packet_shape_data.push_back({arrow.getId(), ScriptDebugShapeType::Arrow, (toVec3(arrow.getPosition())), {}, {}, toColor(arrow.getColor()), {}, {}, {}, toVec3(arrow.getEndPosition()), arrow.getArrowHeadLength(), arrow.getArrowHeadRadius(), arrow.getArrowHeadSegments()});
+            packet_shape_data.push_back({arrow.getId(), ScriptDebugShapeType::Arrow, (toVec3(arrow.getPosition())), {}, arrow.getArrowHeadScale(), toColor(arrow.getColor()), {}, {}, {}, toVec3(arrow.getEndPosition()), arrow.getArrowHeadLength(), arrow.getArrowHeadRadius(), arrow.getArrowHeadSegments()});
         } else if (std::holds_alternative<DebugBox>(debug_shape)) {
             auto box = std::get<DebugBox>(debug_shape);
             packet_shape_data.push_back({box.getId(), ScriptDebugShapeType::Box, (toVec3(box.getPosition())), {}, box.getScale(), toColor(box.getColor()), {}, {}, toVec3(box.getBoxBounds()), {}, {}, {}, {}});
