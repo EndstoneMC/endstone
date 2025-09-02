@@ -19,8 +19,12 @@
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/emote_packet.h"
+#include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
+#include "bedrock/network/packet/player_auth_input_packet.h"
+#include "bedrock/network/packet/player_skin_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -32,18 +36,25 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
+#include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/player/player_bed_leave_event.h"
+#include "endstone/event/player/player_emote_event.h"
+#include "endstone/event/player/player_interact_event.h"
+#include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/debugshape/debug_arrow.h"
@@ -56,8 +67,9 @@
 namespace endstone::core {
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
-    : EndstoneMob(server, player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
-      inventory_(std::make_unique<EndstonePlayerInventory>(player))
+    : EndstoneMob(server, player), perm_(std::make_shared<PermissibleBase>(static_cast<Player *>(this))),
+      inventory_(std::make_unique<EndstonePlayerInventory>(player)),
+      ender_chest_(std::make_unique<EndstoneInventory>(*player.getEnderChestContainer()))
 {
     const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
     uuid_ = EndstoneUUID::fromMinecraft(component->getClientUUID());
@@ -65,29 +77,22 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     last_op_status_ = EndstonePlayer::isOp();
 }
 
-EndstonePlayer::~EndstonePlayer() = default;
-
 Player *EndstonePlayer::asPlayer() const
 {
-    return Player::asPlayer();
+    return const_cast<EndstonePlayer *>(this);
 }
 
 void EndstonePlayer::sendMessage(const Message &message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    auto pk = std::static_pointer_cast<TextPacket>(packet);
-    std::visit(overloaded{[&pk](const std::string &msg) {
-                              pk->type = TextPacketType::Raw;
-                              pk->message = msg;
+    std::visit(overloaded{[this](const std::string &msg) {
+                              auto packet = TextPacket::createRaw(msg);
+                              getPlayer().sendNetworkPacket(packet);
                           },
-                          [&pk](const Translatable &msg) {
-                              pk->type = TextPacketType::Translate;
-                              pk->message = msg.getText();
-                              pk->params = msg.getParameters();
-                              pk->localize = true;
+                          [this](const Translatable &msg) {
+                              auto packet = TextPacket::createTranslated(msg.getText(), msg.getParameters());
+                              getPlayer().sendNetworkPacket(packet);
                           }},
                message);
-    getPlayer().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendErrorMessage(const Message &message) const
@@ -100,14 +105,9 @@ void EndstonePlayer::sendErrorMessage(const Message &message) const
                message);
 }
 
-Server &EndstonePlayer::getServer() const
-{
-    return EndstoneMob::getServer();
-}
-
 std::string EndstonePlayer::getName() const
 {
-    return EndstoneMob::getName();
+    return getPlayer().getName();
 }
 
 PermissionLevel EndstonePlayer::getPermissionLevel() const
@@ -151,15 +151,118 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
     getPlayer().sendNetworkPacket(pk);
 }
 
-void EndstonePlayer::handlePacket(const Packet &packet)
+bool EndstonePlayer::handlePacket(Packet &packet)
 {
     switch (packet.getId()) {
+    case MinecraftPacketIds::PlayerEquipment: {
+        auto &pk = static_cast<MobEquipmentPacket &>(packet);
+        PlayerItemHeldEvent e(*this, this->inventory_->getHeldItemSlot(), pk.selected_slot);
+        getServer().getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            this->inventory_->setHeldItemSlot(this->inventory_->getHeldItemSlot());
+            return false;
+        }
+        return true;
+    }
+    case MinecraftPacketIds::PlayerAction: {
+        auto &pk = static_cast<PlayerActionPacket &>(packet);
+        if (pk.payload.action == PlayerActionType::StopSleeping && getPlayer().isSleeping()) {
+            std::unique_ptr<Block> bed;
+            if (getPlayer().hasBedPosition()) {
+                const auto bed_position = getPlayer().getBedPosition();
+                bed = getDimension().getBlockAt(bed_position.x, bed_position.y, bed_position.z);
+            }
+            else {
+                bed = getDimension().getBlockAt(getLocation());
+            }
+
+            PlayerBedLeaveEvent e(*this, *bed);
+            getServer().getPluginManager().callEvent(e);
+        }
+        return true;
+    }
+    case MinecraftPacketIds::PlayerSkin: {
+        auto &server = static_cast<EndstoneServer &>(getServer());
+        auto &pk = static_cast<PlayerSkinPacket &>(packet);
+        if (getPlayer().getPersistentComponent<UserEntityIdentifierComponent>()->getClientUUID() == pk.uuid) {
+            Message skin_change_message =
+                Translatable(ColorFormat::Yellow + (pk.skin.getIsPersona() ? "%multiplayer.player.changeToPersona"
+                                                                           : "%multiplayer.player.changeToSkin"),
+                             {getName()});
+            PlayerSkinChangeEvent e{*this, EndstoneSkin::fromMinecraft(pk.skin), skin_change_message};
+            getServer().getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
+                auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
+                new_pk.uuid = pk.uuid;
+                new_pk.skin = getPlayer().getSkin();
+                new_pk.localized_new_skin_name = pk.localized_old_skin_name;
+                new_pk.localized_old_skin_name = pk.localized_new_skin_name;
+                getPlayer().sendNetworkPacket(new_pk);
+                return false;
+            }
+
+            skin_change_message = e.getSkinChangeMessage().value_or("");
+            if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+                    static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin)) &&
+                (!std::holds_alternative<std::string>(skin_change_message) ||
+                 !std::get<std::string>(skin_change_message).empty())) {
+                server.broadcastMessage(skin_change_message);
+            }
+        }
+        return true;
+    }
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
-        break;
+        return true;
+    }
+    case MinecraftPacketIds::Emote: {
+        auto &pk = static_cast<EmotePacket &>(packet);
+        if (pk.isServerSide()) {
+            return true;
+        }
+        PlayerEmoteEvent e(*this, pk.piece_id, pk.isEmoteChatMuted());
+        getServer().getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+        if (e.isMuted()) {
+            pk.flags |= static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
+        }
+        else {
+            pk.flags &= ~static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
+        }
+        return true;
+    }
+    case MinecraftPacketIds::PlayerAuthInputPacket: {
+        auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
+        auto &actions = pk.player_block_actions.actions_;
+        for (auto it = actions.begin(); it != actions.end();) {
+            const auto &action = *it;
+            if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
+                const auto item = getInventory().getItemInMainHand();
+                const auto block = getDimension().getBlockAt(action.pos.x, action.pos.y, action.pos.z);
+                PlayerInteractEvent e{
+                    *this,
+                    PlayerInteractEvent::Action::LeftClickBlock,
+                    item.get(),
+                    block.get(),
+                    static_cast<BlockFace>(action.facing),
+                    endstone::Vector<float>{static_cast<float>(action.pos.x), static_cast<float>(action.pos.y),
+                                            static_cast<float>(action.pos.z)},
+                };
+                getServer().getPluginManager().callEvent(e);
+                if (e.isCancelled()) {
+                    it = actions.erase(it);
+                    continue;
+                }
+            }
+            ++it;
+        }
+        return true;
     }
     default:
-        break;
+        return true;
     }
 }
 
@@ -176,6 +279,11 @@ void EndstonePlayer::recalculatePermissions()
 std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermissions() const
 {
     return perm_->getEffectivePermissions();
+}
+
+Server &EndstonePlayer::getServer() const
+{
+    return EndstoneMob::getServer();
 }
 
 bool EndstonePlayer::isOp() const
@@ -195,159 +303,9 @@ void EndstonePlayer::setOp(bool value)
     last_op_status_ = value;
 }
 
-std::string EndstonePlayer::getType() const
-{
-    return EndstoneMob::getType();
-}
-
-std::uint64_t EndstonePlayer::getRuntimeId() const
-{
-    return EndstoneMob::getRuntimeId();
-}
-
-Location EndstonePlayer::getLocation() const
-{
-    return EndstoneMob::getLocation();
-}
-
-Vector<float> EndstonePlayer::getVelocity() const
-{
-    return EndstoneMob::getVelocity();
-}
-
-bool EndstonePlayer::isOnGround() const
-{
-    return EndstoneMob::isOnGround();
-}
-
-bool EndstonePlayer::isInWater() const
-{
-    return EndstoneMob::isInWater();
-}
-
-bool EndstonePlayer::isInLava() const
-{
-    return EndstoneMob::isInLava();
-}
-
-Level &EndstonePlayer::getLevel() const
-{
-    return EndstoneMob::getLevel();
-}
-
-Dimension &EndstonePlayer::getDimension() const
-{
-    return EndstoneMob::getDimension();
-}
-
-void EndstonePlayer::setRotation(float yaw, float pitch)
-{
-    EndstoneMob::setRotation(yaw, pitch);
-}
-
-void EndstonePlayer::teleport(Location location)
-{
-    EndstoneMob::teleport(location);
-}
-
-void EndstonePlayer::teleport(Actor &target)
-{
-    EndstoneMob::teleport(target);
-}
-
-std::int64_t EndstonePlayer::getId() const
-{
-    return EndstoneMob::getId();
-}
-
 void EndstonePlayer::remove()
 {
     getServer().getLogger().error("Cannot remove player {}, use Player::kick instead.", getName());
-}
-
-bool EndstonePlayer::isValid() const
-{
-    return EndstoneMob::isValid();
-}
-
-bool EndstonePlayer::isDead() const
-{
-    return EndstoneMob::isDead();
-}
-
-int EndstonePlayer::getHealth() const
-{
-    return EndstoneMob::getHealth();
-}
-
-Result<void> EndstonePlayer::setHealth(int health) const
-{
-    return EndstoneMob::setHealth(health);
-}
-
-int EndstonePlayer::getMaxHealth() const
-{
-    return EndstoneMob::getMaxHealth();
-}
-
-std::vector<std::string> EndstonePlayer::getScoreboardTags() const
-{
-    return EndstoneMob::getScoreboardTags();
-}
-
-bool EndstonePlayer::addScoreboardTag(std::string tag) const
-{
-    return EndstoneMob::addScoreboardTag(tag);
-}
-
-bool EndstonePlayer::removeScoreboardTag(std::string tag) const
-{
-    return EndstoneMob::removeScoreboardTag(tag);
-}
-
-bool EndstonePlayer::isNameTagVisible() const
-{
-    return EndstoneMob::isNameTagVisible();
-}
-
-void EndstonePlayer::setNameTagVisible(bool visible)
-{
-    EndstoneMob::setNameTagVisible(visible);
-}
-
-bool EndstonePlayer::isNameTagAlwaysVisible() const
-{
-    return EndstoneMob::isNameTagAlwaysVisible();
-}
-
-void EndstonePlayer::setNameTagAlwaysVisible(bool visible)
-{
-    EndstoneMob::setNameTagAlwaysVisible(visible);
-}
-
-std::string EndstonePlayer::getNameTag() const
-{
-    return EndstoneMob::getNameTag();
-}
-
-void EndstonePlayer::setNameTag(std::string name)
-{
-    EndstoneMob::setNameTag(name);
-}
-
-std::string EndstonePlayer::getScoreTag() const
-{
-    return EndstoneMob::getScoreTag();
-}
-
-void EndstonePlayer::setScoreTag(std::string score)
-{
-    EndstoneMob::setScoreTag(score);
-}
-
-bool EndstonePlayer::isGliding() const
-{
-    return EndstoneMob::isGliding();
 }
 
 UUID EndstonePlayer::getUniqueId() const
@@ -362,35 +320,32 @@ std::string EndstonePlayer::getXuid() const
 
 SocketAddress EndstonePlayer::getAddress() const
 {
-    const static SocketAddress EMPTY{};
     auto component = getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
     return EndstoneSocketAddress::fromNetworkIdentifier(component->getNetworkId());
 }
 
 void EndstonePlayer::sendPopup(std::string message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    auto pk = std::static_pointer_cast<TextPacket>(packet);
-    pk->type = TextPacketType::Popup;
-    pk->message = std::move(message);
-    getPlayer().sendNetworkPacket(*packet);
+    TextPacket packet;
+    packet.type = TextPacketType::Popup;
+    packet.message = std::move(message);
+    getPlayer().sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendTip(std::string message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    auto pk = std::static_pointer_cast<TextPacket>(packet);
-    pk->type = TextPacketType::Tip;
-    pk->message = std::move(message);
-    getPlayer().sendNetworkPacket(*packet);
+    TextPacket packet;
+    packet.type = TextPacketType::Tip;
+    packet.message = std::move(message);
+    getPlayer().sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendToast(std::string title, std::string content) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ToastRequest);
     auto pk = std::static_pointer_cast<ToastRequestPacket>(packet);
-    pk->title = std::move(title);
-    pk->content = std::move(content);
+    pk->payload.title = std::move(title);
+    pk->payload.content = std::move(content);
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -519,21 +474,21 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
         auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
-        pk->type = SetTitlePacket::TitleType::Title;
-        pk->title_text = std::move(title);
-        pk->fade_in_time = fade_in;
-        pk->stay_time = stay;
-        pk->fade_out_time = fade_out;
+        pk->payload.type = SetTitlePacketPayload::TitleType::Title;
+        pk->payload.title_text = std::move(title);
+        pk->payload.fade_in_time = fade_in;
+        pk->payload.stay_time = stay;
+        pk->payload.fade_out_time = fade_out;
         getPlayer().sendNetworkPacket(*packet);
     }
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
         auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
-        pk->type = SetTitlePacket::TitleType::Subtitle;
-        pk->title_text = std::move(subtitle);
-        pk->fade_in_time = fade_in;
-        pk->stay_time = stay;
-        pk->fade_out_time = fade_out;
+        pk->payload.type = SetTitlePacketPayload::TitleType::Subtitle;
+        pk->payload.title_text = std::move(subtitle);
+        pk->payload.fade_in_time = fade_in;
+        pk->payload.stay_time = stay;
+        pk->payload.fade_out_time = fade_out;
         getPlayer().sendNetworkPacket(*packet);
     }
 }
@@ -542,7 +497,7 @@ void EndstonePlayer::resetTitle() const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
     auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
-    pk->type = SetTitlePacket::TitleType::Reset;
+    pk->payload.type = SetTitlePacketPayload::TitleType::Reset;
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -629,7 +584,7 @@ void EndstonePlayer::updateCommands() const
 
 bool EndstonePlayer::performCommand(std::string command) const
 {
-    return server_.dispatchCommand(*Player::asPlayer(), command);
+    return server_.dispatchCommand(*asPlayer(), command);
 }
 
 bool EndstonePlayer::isSneaking() const
@@ -694,6 +649,11 @@ PlayerInventory &EndstonePlayer::getInventory() const
     return *inventory_;
 }
 
+Inventory &EndstonePlayer::getEnderChest() const
+{
+    return *ender_chest_;
+}
+
 std::string EndstonePlayer::getLocale() const
 {
     return locale_;
@@ -714,17 +674,17 @@ std::string EndstonePlayer::getGameVersion() const
     return game_version_;
 }
 
-const Skin *EndstonePlayer::getSkin() const
+Skin EndstonePlayer::getSkin() const
 {
-    return skin_.get();
+    return EndstoneSkin::fromMinecraft(getPlayer().getSkin());
 }
 
 void EndstonePlayer::transfer(std::string host, int port) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
-    pk->destination = std::move(host);
-    pk->destination_port = port;
+    pk->payload.destination = std::move(host);
+    pk->payload.destination_port = port;
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -735,13 +695,13 @@ void EndstonePlayer::sendForm(FormVariant form)
     }
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
-    pk->form_id = ++form_ids_;
-    pk->form_json = std::visit(overloaded{[](auto &&arg) {
-                                   return FormCodec::toJson(arg);
-                               }},
-                               form)
-                        .dump();
-    forms_.emplace(pk->form_id, std::move(form));
+    pk->payload.form_id = ++form_ids_;
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
+                                           return FormCodec::toJson(arg);
+                                       }},
+                                       form)
+                                .dump();
+    forms_.emplace(pk->payload.form_id, std::move(form));
     getPlayer().sendNetworkPacket(*packet);
 }
 
@@ -876,7 +836,9 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                                for (const auto &controls = form.getControls(); const auto &control : controls) {
                                    if (std::holds_alternative<Button>(control)) {
                                        if (index == selection) {
-                                           std::get<Button>(control).getOnClick()(this);
+                                           if (const auto on_click = std::get<Button>(control).getOnClick()) {
+                                               on_click(this);
+                                           }
                                            break;
                                        }
                                        ++index;
@@ -904,21 +866,17 @@ void EndstonePlayer::doFirstSpawn()
     }
     spawned_ = true;
 
-    const auto &server = getServer();
-    Translatable tr{ColorFormat::Yellow + "%multiplayer.player.joined", {getName()}};
-    const std::string join_message = EndstoneMessage::toString(tr);
-
+    const auto &server = static_cast<EndstoneServer &>(getServer());
+    Message join_message = Translatable(ColorFormat::Yellow + "%multiplayer.player.joined", {getName()});
     PlayerJoinEvent e{*this, join_message};
     server.getPluginManager().callEvent(e);
-    if (e.getJoinMessage() != join_message) {
-        tr = Translatable{e.getJoinMessage(), {}};
+    join_message = e.getJoinMessage().value_or("");
+    if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+            static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection)) &&
+        (!std::holds_alternative<std::string>(join_message) || !std::get<std::string>(join_message).empty())) {
+        server.broadcastMessage(join_message);
     }
 
-    if (!e.getJoinMessage().empty()) {
-        for (const auto &online_player : server.getOnlinePlayers()) {
-            online_player->sendMessage(tr);
-        }
-    }
     recalculatePermissions();
     updateCommands();
 }
@@ -1023,11 +981,6 @@ void EndstonePlayer::checkOpStatus()
         updateCommands();
         last_op_status_ = isOp();
     }
-}
-
-std::shared_ptr<EndstonePlayer> EndstonePlayer::create(EndstoneServer &server, ::Player &player)
-{
-    return PermissibleFactory::create<EndstonePlayer>(server, player);
 }
 
 ::Player &EndstonePlayer::getPlayer() const

@@ -15,7 +15,7 @@
 #pragma once
 #include "bedrock/input/input_mode.h"
 #include "bedrock/world/item/item_stack.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_pos.h"
 
 class Player;

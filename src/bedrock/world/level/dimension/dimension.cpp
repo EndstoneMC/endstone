@@ -14,6 +14,11 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 
+bool Dimension::isBrightOutside() const
+{
+    return isNaturalDimension() && sky_darken_.value < 4;
+}
+
 Level &Dimension::getLevel() const
 {
     return *level_;
@@ -24,12 +29,27 @@ ChunkSource &Dimension::getChunkSource() const
     return *chunk_source_;
 }
 
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
-
 BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
 {
     return *block_source_;
+}
+
+Weather &Dimension::getWeather() const
+{
+    return *weather_;
+}
+
+CircuitSystem &Dimension::getCircuitSystem()
+{
+    return *circuit_system_;
+}
+
+bool Dimension::isRedstoneTick() const
+{
+    return circuit_system_tick_rate_ >= CIRCUIT_TICK_RATE;
+}
+
+const std::string &Dimension::getName() const
+{
+    return name_;
 }

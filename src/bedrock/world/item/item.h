@@ -21,6 +21,7 @@
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/shared_ptr.h"
+#include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/gamemode/interaction_result.h"
@@ -30,7 +31,7 @@
 #include "bedrock/world/item/rarity.h"
 #include "bedrock/world/item/registry/item_registry.h"
 #include "bedrock/world/item/vanilla_item_tag.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 using BlockShape = std::int64_t;
 
@@ -52,7 +53,7 @@ public:
     virtual Item &setDescriptionId(std::string const &) = 0;
     virtual std::string const &getDescriptionId() const = 0;
     virtual int getMaxUseDuration(ItemStack const *) const = 0;
-    virtual WeakPtr<const BlockLegacy> const &getLegacyBlockForRendering() const = 0;
+    virtual WeakPtr<const BlockType> const &getBlockTypeForRendering() const = 0;
     virtual bool isMusicDisk() const = 0;
     virtual void executeEvent(ItemStackBase &, std::string const &, RenderParams &) const = 0;
     virtual bool isComponentBased() const = 0;
@@ -104,7 +105,7 @@ public:
     virtual int getEnchantValue() const = 0;
     virtual int getArmorValue() const = 0;
     virtual int getToughnessValue() const = 0;
-    virtual Puv::Legacy::LevelSoundEvent getBreakSound() const = 0;
+    virtual LevelSoundEvent getBreakSound() const = 0;
     virtual bool isComplex() const = 0;
     virtual bool isValidAuxValue(int) const = 0;
     virtual int getDamageChance(int) const = 0;
@@ -149,7 +150,7 @@ public:
     virtual bool validFishInteraction(int) const = 0;
     virtual void enchantProjectile(ItemStackBase const &, Actor &) const = 0;
     virtual ActorLocation getEquipLocation() const = 0;
-    virtual Puv::Legacy::LevelSoundEvent getEquipSound() const = 0;
+    virtual LevelSoundEvent getEquipSound() const = 0;
     virtual bool shouldSendInteractionGameEvents() const = 0;
     virtual bool useInterruptedByAttacking() const = 0;
     virtual bool hasSameRelevantUserData(ItemStackBase const &, ItemStackBase const &) const = 0;
@@ -178,7 +179,7 @@ public:
     [[nodiscard]] const std::string &getFullItemName() const;
     [[nodiscard]] const HashedString &getFullNameHash() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
-    [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const;
+    [[nodiscard]] const WeakPtr<BlockType> &getBlockType() const;
     [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] const std::vector<ItemTag> &getTags() const;
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
@@ -227,7 +228,7 @@ protected:
     bool ignores_permission_ : 1;
     int max_use_duration_;
     BaseGameVersion min_required_base_game_version_;
-    WeakPtr<BlockLegacy> legacy_block_;
+    WeakPtr<BlockType> block_type_;
     CreativeItemCategory creative_category_;
     Item *crafting_remaining_item_;
     std::string creative_group_;  // +400

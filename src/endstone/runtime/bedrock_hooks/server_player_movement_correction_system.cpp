@@ -42,10 +42,9 @@ void ServerPlayerMovementCorrectionSystem::_afterMovementSimulation(
         const auto rot_prev = actor.getRotationPrev();
         const auto delta_angle = rot - rot_prev;
 
-        auto &dimension = player.getDimension();
-        const endstone::Location from{
-            &dimension, pos_prev.x, pos_prev.y - ActorOffset::getHeightOffset(actor.getEntity()),
-            pos_prev.z, rot_prev.x, rot_prev.y};
+        const endstone::Location from{pos_prev.x, pos_prev.y - ActorOffset::getHeightOffset(actor.getEntity()),
+                                      pos_prev.z, rot_prev.x,
+                                      rot_prev.y, player.getDimension()};
         const endstone::Location to = player.getLocation();
 
         if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && p->wasOnGround() && !p->isOnGround() &&

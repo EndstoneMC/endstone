@@ -16,7 +16,7 @@ server.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         # ...
 
@@ -30,10 +30,8 @@ server.
 
 === ":simple-cplusplus: C++"
 
-    ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="1-2 14-17"
-    #include <endstone/color_format.h>
-    #include <endstone/event/player/player_join_event.h>
-    #include <endstone/plugin/plugin.h>
+    ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="12-15"
+    #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {
     public:
@@ -63,7 +61,7 @@ Now, we need to register our event handlers to the Endstone event system.
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         # ...
 
@@ -81,10 +79,8 @@ Now, we need to register our event handlers to the Endstone event system.
 
 === ":simple-cplusplus: C++"
 
-    ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="12"
-    #include <endstone/color_format.h>
-    #include <endstone/event/player/player_join_event.h>
-    #include <endstone/plugin/plugin.h>
+    ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="10"
+    #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {
     public:

@@ -6,7 +6,7 @@ repo_name: EndstoneMC/endstone
 repo_url: https://github.com/EndstoneMC/endstone
 edit_uri: edit/main/docs/
 
-copyright: Copyright &copy; 2023 - 2024 EndstoneMC
+copyright: Copyright &copy; 2023 - 2025 EndstoneMC
 
 extra:
   social:
@@ -40,6 +40,7 @@ plugins:
       enabled: !ENV [ CI, false ]
       repository: EndstoneMC/endstone
       branch: main
+  - macros
   - mkdocstrings:
       enabled: !ENV [ CI, false ]
       custom_templates: docs/templates

@@ -18,14 +18,11 @@
 #include "endstone/core/inventory/item_stack.h"
 
 namespace endstone::core {
-EndstoneEnchantment::EndstoneEnchantment(NamespacedKey key, const Enchant &handle)
-    : key_(std::move(key)), handle_(handle)
-{
-}
+EndstoneEnchantment::EndstoneEnchantment(std::string id, const Enchant &handle) : id_(std::move(id)), handle_(handle) {}
 
-NamespacedKey EndstoneEnchantment::getKey() const
+std::string EndstoneEnchantment::getId() const
 {
-    return key_;
+    return id_;
 }
 
 std::string EndstoneEnchantment::getTranslationKey() const

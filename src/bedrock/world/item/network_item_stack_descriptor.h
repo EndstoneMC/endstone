@@ -16,11 +16,12 @@
 
 #include "bedrock/util/string_byte_output.h"
 #include "bedrock/world/item/item_descriptor_count.h"
-#include "bedrock/world/item/registry/item_registry_manager.h"
 #include "bedrock/world/item/item_stack.h"
+#include "bedrock/world/item/registry/item_registry_manager.h"
 
 class NetworkItemStackDescriptor : public ItemDescriptorCount {
 public:
+    NetworkItemStackDescriptor() = default;
     NetworkItemStackDescriptor(const ItemStack &item_stack)
         : ItemDescriptorCount(item_stack.getDescriptor(), item_stack.getCount())
     {
@@ -37,8 +38,26 @@ public:
         }
     }
 
+    void write(BinaryStream &stream) const
+    {
+        stream.writeBool(include_net_ids_, "Include Net Id", 0);
+        stream.writeIf(
+            include_net_ids_, "Include Net Id", [&](BinaryStream &out) { net_id_variant_.serialize(out); },
+            std::nullopt);
+        stream.writeVarInt(block_runtime_id_, "Block Runtime Id", nullptr);
+        stream.writeString(user_data_buffer_, "User Data Buffer",
+                           "The @ItemInstanceUserData.html#ItemInstanceUserData@  binary blob encoded as a String, so "
+                           "it's unsigned varint length prefixed. Get all your nbt+property bytes, calculate the "
+                           "length, write that length, THEN write the data.");
+    }
+
+    void setIncludeNetIds(bool include_net_ids) const
+    {
+        include_net_ids_ = include_net_ids;
+    }
+
 private:
-    bool include_net_ids_{false};
+    mutable bool include_net_ids_{false};
     ItemStackNetIdVariant net_id_variant_{};
     BlockRuntimeId block_runtime_id_{0};
     std::string user_data_buffer_;

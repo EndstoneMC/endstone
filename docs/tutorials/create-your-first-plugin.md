@@ -68,7 +68,7 @@ toc_depth: 2
     You show see something like this:
     ```
     Name: endstone
-    Version: 0.4.2
+    Version: {{ git.short_tag[1:] }}
     Summary: Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++.
     Home-page:
     Author:
@@ -111,7 +111,7 @@ toc_depth: 2
 
     ![New CLion Project](screenshots/clion-create-project.png)
 
-    In the side bar, select **C++ Library**. Select **C++ 17** for **Language standard**. 
+    In the side bar, select **C++ Library**. Select **C++ 20** for **Language standard**. 
     Select **shared** for **Library type**. Click on **Create**. The CLion workspace will pop up and you will see this.
 
     ![CLion Workspace](screenshots/clion-workspace.png)
@@ -137,19 +137,19 @@ toc_depth: 2
     
     project(my_plugin CXX)
     
-    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_STANDARD 20)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
     
     include(FetchContent)
     FetchContent_Declare(
         endstone
         GIT_REPOSITORY https://github.com/EndstoneMC/endstone.git
-        GIT_TAG main #(1)!
+        GIT_TAG v{{ git.short_tag[1:].rsplit('.', 1)[0] }} #(1)!
     )
     FetchContent_MakeAvailable(endstone)
     ```
 
-    1.  :warning: This will use the latest development version of Endstone. Consider use a release tag (e.g. `v0.4.0`) instead of `main`.
+    1.  :warning: **Important:** This specifies the targeted API version of Endstone. Ensure you update it after every major release of Endstone to stay up to date.
     
     [JetBrains CLion]: https://www.jetbrains.com/clion/
 
@@ -203,14 +203,14 @@ toc_depth: 2
     
     project(my_plugin CXX)
     
-    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_STANDARD 20)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
     
     include(FetchContent)
     FetchContent_Declare(
         endstone
         GIT_REPOSITORY https://github.com/EndstoneMC/endstone.git
-        GIT_TAG main
+        GIT_TAG v{{ git.short_tag[1:].rsplit('.', 1)[0] }}
     )
     FetchContent_MakeAvailable(endstone)
 
@@ -224,7 +224,7 @@ toc_depth: 2
     Open `include/my_plugin.h` and add a new class `MyPlugin` which extends the `endstone::Plugin` class.
 
     ``` c++ title="include/my_plugin.h" linenums="1" 
-    #include <endstone/plugin/plugin.h>
+    #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {};
     ```
@@ -272,7 +272,7 @@ toc_depth: 2
     You can use the logger to log a message when the plugin is loaded, enabled and disabled like below:
 
     ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="4-8 10-13 15-18"
-    #include <endstone/plugin/plugin.h>
+    #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {
     public:
@@ -303,7 +303,7 @@ toc_depth: 2
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         def on_load(self) -> None:
             self.logger.info("on_load is called!")

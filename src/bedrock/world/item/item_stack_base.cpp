@@ -24,7 +24,7 @@ ItemStackBase::ItemStackBase()
     ItemStackBase::setNull(std::nullopt);
 }
 
-ItemStackBase::ItemStackBase(const BlockLegacy &block, int count)
+ItemStackBase::ItemStackBase(const BlockType &block, int count)
 {
     block_ = &block.getRenderBlock();
     init(block, count);
@@ -58,7 +58,7 @@ ItemStackBase::ItemStackBase(const ItemStackBase &rhs)
     block_ = rhs.block_;
     aux_value_ = rhs.aux_value_;
     if (block_ && aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
-        init(block_->getLegacyBlock(), rhs.count_);
+        init(block_->getBlockType(), rhs.count_);
     }
     else {
         int id;
@@ -114,9 +114,9 @@ ItemStackBase &ItemStackBase::operator=(const ItemStackBase &rhs)
 
 ItemStackBase::~ItemStackBase() = default;
 
-void ItemStackBase::reinit(Item const & item, int count, int aux_value) {}
+void ItemStackBase::reinit(Item const &item, int count, int aux_value) {}
 
-void ItemStackBase::reinit(BlockLegacy const &block, int count) {}
+void ItemStackBase::reinit(BlockType const &block, int count) {}
 
 void ItemStackBase::reinit(std::string_view name, int count, int aux_value) {}
 
@@ -124,7 +124,7 @@ ItemDescriptor ItemStackBase::getDescriptor() const
 {
     if (block_) {
         if (aux_value_ == ItemDescriptor::ANY_AUX_VALUE) {
-            return ItemDescriptor(block_->getLegacyBlock());
+            return ItemDescriptor(block_->getBlockType());
         }
         auto block_descriptor = ItemDescriptor(*block_);
         if (block_descriptor.getId() == getId()) {
@@ -307,7 +307,7 @@ void ItemStackBase::set(const int count)
     else {
         count_ = count;
     }
-    if (!isNull()) {
+    if (!*this) {
         setNull(std::nullopt);
     }
 }
@@ -390,7 +390,7 @@ std::int16_t ItemStackBase::getId() const
 
 bool ItemStackBase::isBlock() const
 {
-    return !item_.isNull() && !item_->getLegacyBlock().isNull();
+    return !item_.isNull() && !item_->getBlockType().isNull();
 }
 
 bool ItemStackBase::isValid_DeprecatedSeeComment() const
@@ -494,7 +494,7 @@ std::uint8_t ItemStackBase::getCount() const
     return count_;
 }
 
-void ItemStackBase::init(const BlockLegacy &block, const int count)
+void ItemStackBase::init(const BlockType &block, const int count)
 {
     init(block.getBlockItemId(), count, 0, true);
     if (!item_.isNull() && item_->getRequiredBaseGameVersion() == BaseGameVersion::EMPTY) {
@@ -504,27 +504,27 @@ void ItemStackBase::init(const BlockLegacy &block, const int count)
 
 void ItemStackBase::init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap)
 {
-    const auto &block_legacy = item.getLegacyBlock();
+    const auto &block_type = item.getBlockType();
     const auto id = item.getId();
-    if (!block_legacy.isNull()) {
+    if (!block_type.isNull()) {
         if (id < ItemRegistry::START_ITEM_ID) {
             if (aux_value == ItemDescriptor::ANY_AUX_VALUE) {
-                block_ = &block_legacy->getRenderBlock();
-                init(*block_legacy, count);
+                block_ = &block_type->getRenderBlock();
+                init(*block_type, count);
                 aux_value_ = ItemDescriptor::ANY_AUX_VALUE;
             }
             else {
-                block_ = block_legacy->tryGetStateFromLegacyData(aux_value);
+                block_ = block_type->tryGetStateFromLegacyData(aux_value);
                 if (!block_) {
-                    init(*block_legacy, count);
+                    init(*block_type, count);
                 }
                 else {
-                    init(block_->getLegacyBlock(), count);
+                    init(block_->getBlockType(), count);
                 }
             }
         }
         else {
-            block_ = block_legacy->tryGetStateFromLegacyData(aux_value);
+            block_ = block_type->tryGetStateFromLegacyData(aux_value);
             init(id, count, aux_value, true);
         }
     }
@@ -544,7 +544,7 @@ void ItemStackBase::init(const int id, const int count, const int aux_value, con
 
 void ItemStackBase::_updateCompareHashes()
 {
-    static std::hash<const BlockLegacy *> hasher;
+    static std::hash<const BlockType *> hasher;
     std::ranges::sort(can_place_on_);
     can_place_on_hash_ = 0;
     for (const auto &block : can_place_on_) {
@@ -572,7 +572,7 @@ void ItemStackBase::_checkForItemWorldCompatibility()
         compatible = item_->getRequiredBaseGameVersion().isCompatibleWith(world_version);
     }
     else if (block_) {
-        compatible = block_->getLegacyBlock().getRequiredBaseGameVersion().isCompatibleWith(world_version);
+        compatible = block_->getBlockType().getRequiredBaseGameVersion().isCompatibleWith(world_version);
     }
 
     if (!compatible) {

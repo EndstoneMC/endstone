@@ -19,7 +19,7 @@
 
 #include "bedrock/platform/threading/mutex_details.h"
 #include "bedrock/world/level/block/block.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 class BlockPalette {
 public:

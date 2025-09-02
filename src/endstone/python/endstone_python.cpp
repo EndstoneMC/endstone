@@ -40,10 +40,9 @@ void init_debug_shape(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
-void init_level(py::module_ &);
+void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
-void init_namespaced_key(py::module_ &, py::class_<NamespacedKey> &namespaced_key);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default, py::enum_<PermissionLevel> &permission_level);
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
@@ -66,7 +65,6 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto event_priority = py::enum_<EventPriority>(
         m, "EventPriority",
         "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR");
-
     auto permissible = py::class_<Permissible>(
         m, "Permissible", "Represents an object that may become a server operator and can be assigned permissions.");
     auto permission =
@@ -86,8 +84,8 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         "can, thus, be retrieved without the player needing to be online.");
     auto player = py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.");
     auto item_stack = py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.");
-    auto namespaced_key = py::class_<NamespacedKey>(
-        m, "NamespacedKey", "Represents a string-based key which consists of two components - a namespace and a key.");
+    auto level = py::class_<Level>(m, "Level");
+    auto dimension = py::class_<Dimension>(m, "Dimension", "Represents a dimension within a Level.");
 
     init_color_format(m);
     init_damage(m);
@@ -100,18 +98,17 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_util(m);
     init_debug_shape(m);
     init_ban(m);
-    init_level(m);
     init_map(m);
     init_scoreboard(m);
     init_block(m, block);
     init_actor(m, actor, mob);
+    init_level(m, level, dimension);
     init_player(m, offline_player, player);
     init_boss(m);
     init_command(m, command_sender);
     init_plugin(m);
     init_scheduler(m);
     init_permissions(m, permissible, permission, permission_default, permission_level);
-    init_namespaced_key(m, namespaced_key);
     init_registry(m);
     init_server(server);
     init_event(m, event, event_priority);
@@ -157,26 +154,6 @@ void init_color_format(py::module_ &m)
         .def_property_readonly_static("BOLD", [](const py::object &) { return ColorFormat::Bold; })
         .def_property_readonly_static("ITALIC", [](const py::object &) { return ColorFormat::Italic; })
         .def_property_readonly_static("RESET", [](const py::object &) { return ColorFormat::Reset; });
-}
-
-void init_namespaced_key(py::module_ &m, py::class_<NamespacedKey> &namespaced_key)
-{
-    namespaced_key
-        .def(py::init([](const Plugin &plugin, std::string key) {
-            auto result = NamespacedKey::create(plugin, key);
-            if (!result) {
-                throw std::runtime_error(result.error());
-            }
-            return result.value();
-        }))
-        .def_property_readonly("namespace", &NamespacedKey::getNamespace, "Returns the namespace of the NamespacedKey.")
-        .def_property_readonly("key", &NamespacedKey::getKey, "Returns the key of the NamespacedKey.")
-        .def_static("from_string", &NamespacedKey::fromString, "Parses a NamespacedKey from a string.",
-                    py::arg("input"), py::arg("plugin") = py::none())
-        .def("__str__", &NamespacedKey::toString)
-        .def("__repr__", [](const NamespacedKey &key) {
-            return "NamespacedKey(namespace='" + key.getNamespace() + "', key='" + key.getKey() + "')";
-        });
 }
 
 void init_game_mode(py::module_ &m)
@@ -233,10 +210,12 @@ void init_registry(py::module_ &m)
 
 void init_server(py::class_<Server> &server)
 {
-    server.def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
+    server.def_property_readonly("name", &Server::getName, "Gets the name of this server implementation.")
         .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
                                "Gets the Minecraft version that this server is running.")
+        .def_property_readonly("protocol_version", &Server::getProtocolVersion,
+                               "Gets the network protocol version that this server supports.")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")
         .def_property_readonly("language", &Server::getLanguage, py::return_value_policy::reference,
@@ -404,6 +383,8 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.")
         .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
                                "Get the player's inventory.")
+        .def_property_readonly("ender_chest", &Player::getEnderChest, py::return_value_policy::reference,
+                               "Get the player's EnderChest inventory.")
         .def_property_readonly("locale", &Player::getLocale, "Get the player's current locale.")
         .def_property_readonly("device_os", &Player::getDeviceOS,
                                "Get the player's current device's operation system (OS).")

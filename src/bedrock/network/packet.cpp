@@ -25,6 +25,22 @@ Bedrock::Result<void> Packet::checkSize(std::uint64_t packet_size, bool is_recei
     return {};
 }
 
+void Packet::writeWithSerializationMode(BinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx,
+                                        std::optional<SerializationMode> mode) const
+{
+    write(bit_stream, reflection_ctx);
+}
+
+void Packet::write(BinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx) const
+{
+    write(bit_stream);
+}
+
+Bedrock::Result<void> Packet::read(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &)
+{
+    return read(stream);
+}
+
 Bedrock::Result<void> Packet::read(ReadOnlyBinaryStream &stream)
 {
     if (auto result = _read(stream); !result.ignoreError()) {
@@ -43,10 +59,18 @@ bool Packet::isValid() const
     return true;
 }
 
-Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const SubClientId &sub_id)
+SerializationMode Packet::getSerializationMode() const
+{
+    return SerializationMode::ManualOnly;
+}
+
+void Packet::setSerializationMode(SerializationMode) {}
+
+Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
+                                           const SubClientId &sub_id)
 {
     client_sub_id_ = sub_id;
-    auto result = read(stream);
+    auto result = read(stream, reflection_ctx);
     if (!result.ignoreError()) {
         return BEDROCK_RETHROW(result);
     }
@@ -80,4 +104,7 @@ void Packet::handle(const NetworkIdentifier &id, NetEventCallback &callback, std
     }
 }
 
-
+Bedrock::Result<void> Packet::_read(ReadOnlyBinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx)
+{
+    return _read(bit_stream);
+}

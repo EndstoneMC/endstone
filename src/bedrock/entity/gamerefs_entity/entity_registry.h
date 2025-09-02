@@ -31,8 +31,9 @@ public:
 protected:
     friend class EntityContext;
 
-    // NOTE: uncomment the next line if you are running endstone on preview instead of release
-    // bool is_viewing_;
+#ifdef BEDROCK_PREVIEW_SUPPORT
+    bool is_viewing_;
+#endif
     std::string debug_name_;
     EnTTRegistry registry_;
     std::uint32_t id_;

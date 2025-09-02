@@ -35,16 +35,11 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/server/deny_list.h"
 #include "bedrock/server/server_player.h"
+#include "bedrock/server/server_text_settings.h"
 #include "bedrock/world/events/server_network_events.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"
-
-enum class ServerTextEvent : std::uint8_t {
-    Sleeping = 0,
-    Connection = 1,
-    ChangedSkin = 2,
-};
 
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,
                              public NetEventCallback,
@@ -70,6 +65,8 @@ public:
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
 
     ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
+    void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id,
+                    std::string const &reason);  // Endstone
 
 private:
     friend class endstone::core::EndstoneServer;
@@ -123,7 +120,7 @@ private:
     std::vector<mce::UUID> known_emote_piece_ids_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::string, std::shared_ptr<ResourcePackFileUploadManager>>>
         resource_upload_managers_;
-    gsl::not_null<std::shared_ptr<std::shared_ptr<Bedrock::Threading::IAsyncResult<void>>>> previous_upload_;
+    gsl::not_null<std::shared_ptr<Bedrock::Threading::SharedAsync<void>>> previous_upload_;
     gsl::not_null<std::unique_ptr<ResourcePackPathLifetimeHelpers::ResourcePackPathCache>> resource_pack_path_cache_;
     gsl::not_null<std::unique_ptr<TaskGroup>> async_join_task_group_;
     gsl::not_null<std::unique_ptr<AsyncJoinTaskManager>> async_join_task_manager_;

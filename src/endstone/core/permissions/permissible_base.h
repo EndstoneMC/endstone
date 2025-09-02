@@ -32,11 +32,10 @@ namespace endstone::core {
  * Base Permissible for use in any Permissible object via proxy or extension
  */
 class PermissibleBase : public Permissible {
-protected:
+public:
     explicit PermissibleBase(Permissible *opable);
     ~PermissibleBase() override;
 
-public:
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
@@ -50,8 +49,6 @@ public:
     [[nodiscard]] CommandSender *asCommandSender() const override;
     void clearPermissions();
 
-    static std::shared_ptr<PermissibleBase> create(Permissible *opable);
-
 private:
     [[nodiscard]] static PluginManager *getPluginManager();
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
@@ -63,3 +60,45 @@ private:
     std::unordered_map<std::string, std::unique_ptr<PermissionAttachmentInfo>> permissions_;
 };
 }  // namespace endstone::core
+
+#define ENDSTONE_FORWARD_IMPL_PERMISSIBLE(IMPL)                                                           \
+    [[nodiscard]] bool isPermissionSet(std::string name) const override                                   \
+    {                                                                                                     \
+        return IMPL::isPermissionSet(name);                                                               \
+    }                                                                                                     \
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override                             \
+    {                                                                                                     \
+        return IMPL::isPermissionSet(perm);                                                               \
+    }                                                                                                     \
+    [[nodiscard]] bool hasPermission(std::string name) const override                                     \
+    {                                                                                                     \
+        return IMPL::hasPermission(name);                                                                 \
+    }                                                                                                     \
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override                               \
+    {                                                                                                     \
+        return IMPL::hasPermission(perm);                                                                 \
+    }                                                                                                     \
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override     \
+    {                                                                                                     \
+        return IMPL::addAttachment(plugin, name, value);                                                  \
+    }                                                                                                     \
+    PermissionAttachment *addAttachment(Plugin &plugin) override                                          \
+    {                                                                                                     \
+        return IMPL::addAttachment(plugin);                                                               \
+    }                                                                                                     \
+    Result<void> removeAttachment(PermissionAttachment &attachment) override                              \
+    {                                                                                                     \
+        return IMPL::removeAttachment(attachment);                                                        \
+    }                                                                                                     \
+    void recalculatePermissions() override                                                                \
+    {                                                                                                     \
+        IMPL::recalculatePermissions();                                                                   \
+    }                                                                                                     \
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override \
+    {                                                                                                     \
+        return IMPL::getEffectivePermissions();                                                           \
+    }                                                                                                     \
+    [[nodiscard]] Server &getServer() const override                                                      \
+    {                                                                                                     \
+        return IMPL::getServer();                                                                         \
+    }

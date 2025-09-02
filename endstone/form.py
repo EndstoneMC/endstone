@@ -1,5 +1,6 @@
 from endstone._internal.endstone_python import (
     ActionForm,
+    Button,
     Divider,
     Dropdown,
     Header,
@@ -14,6 +15,7 @@ from endstone._internal.endstone_python import (
 
 __all__ = [
     "ActionForm",
+    "Button",
     "MessageForm",
     "ModalForm",
     "Dropdown",

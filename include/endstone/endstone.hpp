@@ -19,12 +19,13 @@
 // We do not support compiling under MSVC Debug mode because it sets _ITERATOR_DEBUG_LEVEL
 // to a nonzero value, changing the standard library's iterator implementation and resulting
 // in an ABI incompatible with the BDS environment, which is built in Release mode.
-#if defined(_MSC_VER) and defined(_ITERATOR_DEBUG_LEVEL)
+#ifdef _ITERATOR_DEBUG_LEVEL
 static_assert(_ITERATOR_DEBUG_LEVEL == 0,
               "Error: Endstone plugins must be built in Release or RelWithDebInfo mode with MSVC!");
 #endif
 
 #include "actor/actor.h"
+#include "actor/item.h"
 #include "actor/mob.h"
 #include "ban/ban_entry.h"
 #include "ban/ban_list.h"
@@ -41,6 +42,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "boss/bar_style.h"
 #include "boss/boss_bar.h"
 #include "color_format.h"
+#include "command/block_command_sender.h"
 #include "command/command.h"
 #include "command/command_executor.h"
 #include "command/command_map.h"
@@ -59,7 +61,11 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/actor/actor_spawn_event.h"
 #include "event/actor/actor_teleport_event.h"
 #include "event/block/block_break_event.h"
+#include "event/block/block_cook_event.h"
 #include "event/block/block_event.h"
+#include "event/block/block_piston_event.h"
+#include "event/block/block_piston_extend_event.h"
+#include "event/block/block_piston_retract_event.h"
 #include "event/block/block_place_event.h"
 #include "event/block/leaves_decay_event.h"
 #include "event/cancellable.h"
@@ -70,8 +76,10 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/event_handler.h"
 #include "event/event_priority.h"
 #include "event/handler_list.h"
-#include "event/level/level_event.h"
 #include "event/level/dimension_event.h"
+#include "event/level/level_event.h"
+#include "event/player/player_bed_enter_event.h"
+#include "event/player/player_bed_leave_event.h"
 #include "event/player/player_chat_event.h"
 #include "event/player/player_command_event.h"
 #include "event/player/player_death_event.h"
@@ -82,6 +90,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_interact_actor_event.h"
 #include "event/player/player_interact_event.h"
 #include "event/player/player_item_consume_event.h"
+#include "event/player/player_item_held_event.h"
 #include "event/player/player_join_event.h"
 #include "event/player/player_jump_event.h"
 #include "event/player/player_kick_event.h"
@@ -90,6 +99,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_pickup_item_event.h"
 #include "event/player/player_quit_event.h"
 #include "event/player/player_respawn_event.h"
+#include "event/player/player_skin_change_event.h"
 #include "event/player/player_teleport_event.h"
 #include "event/server/broadcast_message_event.h"
 #include "event/server/packet_receive_event.h"
@@ -144,7 +154,6 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "map/map_renderer.h"
 #include "map/map_view.h"
 #include "message.h"
-#include "namespaced_key.h"
 #include "offline_player.h"
 #include "permissions/permissible.h"
 #include "permissions/permission.h"

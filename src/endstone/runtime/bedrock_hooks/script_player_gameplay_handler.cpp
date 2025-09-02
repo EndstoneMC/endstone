@@ -54,33 +54,26 @@ bool handleEvent(const PlayerDamageEvent &event)
 
             // Fire player death event
             auto death_cause_message = event.damage_source->getDeathMessage(player->getName(), player);
-            auto death_message = getI18n().get(death_cause_message.first, death_cause_message.second, nullptr);
-            const auto e = std::make_unique<endstone::PlayerDeathEvent>(
-                endstone_player, std::make_unique<endstone::core::EndstoneDamageSource>(*event.damage_source),
-                death_message);
-            server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
-            if (e->getDeathMessage() != death_message) {
-                death_cause_message.first = e->getDeathMessage();
-                death_cause_message.second.clear();
-            }
+            endstone::Message death_message =
+                endstone::Translatable(death_cause_message.first, death_cause_message.second);
+            endstone::PlayerDeathEvent e{endstone_player,
+                                         std::make_unique<endstone::core::EndstoneDamageSource>(*event.damage_source),
+                                         death_message};
+            server.getPluginManager().callEvent(static_cast<endstone::PlayerEvent &>(e));
+            death_message = e.getDeathMessage().value_or("");
 
             // Send death info
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
-            const auto pk = std::static_pointer_cast<DeathInfoPacket>(packet);
-            pk->death_cause_message = death_cause_message;
-            player->sendNetworkPacket(*packet);
-
-            // Log death message to console if not empty
-            if (e->getDeathMessage().empty()) {
-                return true;
-            }
+            auto &pk = static_cast<DeathInfoPacket &>(*packet);
+            auto death_message_tr = endstone::core::EndstoneMessage::toTranslatable(death_message);
+            pk.payload.death_cause_message = {{death_message_tr.getText(), death_message_tr.getParameters()}};
+            player->sendNetworkPacket(pk);
 
             // Broadcast death messages
-            if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false)) {
-                server.broadcastMessage(endstone::Translatable{death_cause_message.first, death_cause_message.second});
-            }
-            else {
-                server.getLogger().info(e->getDeathMessage());
+            if (player->getLevel().getGameRules().getBool(GameRuleId(GameRules::SHOW_DEATH_MESSAGES), false) &&
+                (!std::holds_alternative<std::string>(death_message) ||
+                 !std::get<std::string>(death_message).empty())) {
+                server.broadcastMessage(death_message);
             }
         }
     }
@@ -94,21 +87,16 @@ bool handleEvent(const PlayerDisconnectEvent &event)
         auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
         endstone_player.disconnect();
 
-        endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.left",
-                                  {endstone_player.getName()}};
-        const std::string quit_message = endstone::core::EndstoneMessage::toString(tr);
-
+        endstone::Message quit_message = endstone::Translatable{
+            endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};
         endstone::PlayerQuitEvent e{endstone_player, quit_message};
         server.getPluginManager().callEvent(e);
 
-        if (e.getQuitMessage() != quit_message) {
-            tr = endstone::Translatable{e.getQuitMessage(), {}};
-        }
-
-        if (!e.getQuitMessage().empty()) {
-            for (const auto &online_player : server.getOnlinePlayers()) {
-                online_player->sendMessage(tr);
-            }
+        quit_message = e.getQuitMessage().value_or("");
+        if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
+                static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection)) &&
+            (!std::holds_alternative<std::string>(quit_message) || !std::get<std::string>(quit_message).empty())) {
+            server.broadcastMessage(quit_message);
         }
     }
     return true;
@@ -140,20 +128,10 @@ bool handleEvent(const ::PlayerRespawnEvent &event)
     return true;
 }
 
-bool handleEvent(const ::PlayerEmoteEvent &event)
-{
-    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-        endstone::PlayerEmoteEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.emote_piece_id};
-        server.getPluginManager().callEvent(e);
-    }
-    return true;
-}
-
 bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = endstone::core::EndstoneBlock::at(block_source, BlockPos(event.block_location));
         const auto item_stack =
@@ -161,10 +139,11 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 
         endstone::PlayerInteractEvent e{
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+            endstone::PlayerInteractEvent::Action::RightClickBlock,
             item_stack.get(),
             block.get(),
             static_cast<endstone::BlockFace>(event.block_face),
-            {event.face_location.x, event.face_location.y, event.face_location.z},
+            endstone::Vector<float>{event.face_location.x, event.face_location.y, event.face_location.z},
         };
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
@@ -201,11 +180,11 @@ bool handleEvent(::PlayerGameModeChangeEvent &event)
         if (e.isCancelled()) {
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdatePlayerGameType);
             const auto pk = std::static_pointer_cast<UpdatePlayerGameTypePacket>(packet);
-            pk->player_game_type = event.from_game_mode;
-            pk->target_player = player->getOrCreateUniqueID();
-            pk->tick = 0;
+            pk->payload.player_game_type = event.from_game_mode;
+            pk->payload.target_player = player->getOrCreateUniqueID();
+            pk->payload.tick = 0;
             if (const auto *component = player->tryGetComponent<ReplayStateComponent>(); component) {
-                pk->tick = component->getCurrentTick();
+                pk->payload.tick = component->getCurrentTick();
             }
             server.getServer().getPacketSender().sendBroadcast(*pk);
             return false;
@@ -223,8 +202,7 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerEmoteEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }

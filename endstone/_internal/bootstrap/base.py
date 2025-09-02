@@ -16,6 +16,7 @@ import click
 import importlib_resources
 import requests
 import sentry_crashpad
+import tomlkit
 from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
 
@@ -161,6 +162,28 @@ class Bootstrap:
             ref = importlib_resources.files("endstone") / "config" / "endstone.toml"
             with importlib_resources.as_file(ref) as path:
                 shutil.copy(path, self.config_path)
+        else:
+            ref = importlib_resources.files("endstone") / "config" / "endstone.toml"
+            with importlib_resources.as_file(ref) as path:
+                with open(path, "r", encoding="utf-8") as f:
+                    default_config = tomlkit.load(f)
+
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = tomlkit.load(f)
+
+            def migrate_config(from_doc: tomlkit.TOMLDocument, to_doc: tomlkit.TOMLDocument) -> None:
+                for key, val in from_doc.items():
+                    if key not in to_doc:
+                        # if the user hasn’t set it, copy it (with comments!)
+                        to_doc[key] = val
+                    else:
+                        # if both are tables, dive deeper
+                        if isinstance(val, tomlkit.TOMLDocument) and isinstance(to_doc[key], tomlkit.TOMLDocument):
+                            migrate_config(val, to_doc[key])
+
+            migrate_config(default_config, config)
+            with open(self.config_path, "w", encoding="utf-8") as f:
+                tomlkit.dump(config, f)
 
     def _install(self) -> None:
         """

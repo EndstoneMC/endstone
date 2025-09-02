@@ -23,7 +23,7 @@
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/vanilla_item_tag.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/tick.h"
 
 class Item;
@@ -31,7 +31,7 @@ class Item;
 class ItemStackBase {
 protected:
     ItemStackBase();
-    explicit ItemStackBase(const BlockLegacy &block, int count = 1);
+    explicit ItemStackBase(const BlockType &block, int count = 1);
     explicit ItemStackBase(std::string_view name, int count = 1, int aux_value = 0,
                            CompoundTag const *user_data = nullptr);
     explicit ItemStackBase(Item const &item, int count = 1, int aux_value = 0, CompoundTag const *user_data = nullptr);
@@ -41,8 +41,8 @@ protected:
 public:
     virtual ~ItemStackBase();
     virtual void reinit(Item const &, int, int);
-    virtual void reinit(BlockLegacy const &, int);
-    virtual void reinit(std::string_view, int, int);
+    virtual void reinit(BlockType const &, int);
+    virtual void reinit(std::string_view name, int count, int aux_value);
     [[nodiscard]] ItemDescriptor getDescriptor() const;
     virtual void setNull(std::optional<std::string>);
     [[nodiscard]] virtual std::string toString() const;
@@ -55,7 +55,7 @@ public:
     void set(int count);
     [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] bool hasUserData() const;
-    [[nodiscard]] bool hasSameUserData(const ItemStackBase & other) const;
+    [[nodiscard]] bool hasSameUserData(const ItemStackBase &other) const;
     void setUserData(std::unique_ptr<CompoundTag>);
     [[nodiscard]] const CompoundTag *getUserData() const;
     CompoundTag *getUserData();
@@ -88,7 +88,7 @@ public:
     static constexpr int AUX_VALUE_MASK = 0x7fff;
 
 protected:
-    void init(const BlockLegacy &block, int count);
+    void init(const BlockType &block, int count);
     void init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap);
     void init(int id, int count, int aux_value, bool do_remap);
 
@@ -107,9 +107,9 @@ protected:
     bool show_pick_up_{true};                              // +36
     bool was_picked_up_{false};                            // +37
     std::chrono::steady_clock::time_point pick_up_time_;   // +40
-    std::vector<const BlockLegacy *> can_place_on_;        // +56
+    std::vector<const BlockType *> can_place_on_;          // +56
     std::size_t can_place_on_hash_{0};                     // +80
-    std::vector<const BlockLegacy *> can_destroy_;         // +88
+    std::vector<const BlockType *> can_destroy_;           // +88
     std::size_t can_destroy_hash_{0};                      // +112
     Tick blocking_tick_{};                                 // +120
     std::unique_ptr<ItemInstance> charged_item_{nullptr};  // +128

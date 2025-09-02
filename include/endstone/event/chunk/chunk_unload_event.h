@@ -27,8 +27,6 @@ public:
 
     explicit ChunkUnloadEvent(Chunk &chunk) : ChunkEvent(chunk) {}
     ~ChunkUnloadEvent() override = default;
-
-private:
 };
 
 }  // namespace endstone

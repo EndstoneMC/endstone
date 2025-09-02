@@ -19,6 +19,7 @@
 #include "bedrock/common_types.h"
 #include "bedrock/world/level/biome/components/biome_component_storage.h"
 #include "bedrock/world/level/biome/mob_spawner_data.h"
+#include "bedrock/world/level/block_pos.h"
 
 enum class OceanTempCategory {
     COLD = 0,
@@ -31,16 +32,19 @@ struct OceanRuinConfiguration {
     float cluster_probability;
 };
 
+class BlockSource;
 class Biome {
 public:
     Biome(BiomeIdType, std::string_view);
 
     virtual ~Biome() = 0;
 
-    [[nodiscard]] const std::string &getName() const
+    [[nodiscard]] const std::string &getFullName() const
     {
         return hash.getString();
     }
+
+    [[nodiscard]] const std::string getNameWithoutNamespace() const;
 
     [[nodiscard]] BiomeIdType getId() const
     {

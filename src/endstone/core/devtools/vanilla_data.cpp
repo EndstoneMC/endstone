@@ -52,12 +52,12 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
     auto overworld = level.getDimension(VanillaDimensions::Overworld);
     auto &region = overworld.unwrap()->getBlockSourceFromMainChunkSource();
     auto item_registry = level.getItemRegistry();
-
-    BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
-        const auto &name = block_legacy.getName().getString();
+    auto block_registry = level.getBlockTypeRegistry();
+    block_registry->forEachBlock([&](const BlockType &block_type) {
+        const auto &name = block_type.getName().getString();
 
         nlohmann::json tags;
-        for (const auto &tag : block_legacy.getTags()) {
+        for (const auto &tag : block_type.getTags()) {
             auto tag_name = tag.getString();
             if (tag_name.rfind("minecraft:", 0) == std::string::npos) {
                 tag_name = "minecraft:" + tag_name;
@@ -70,12 +70,12 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
             data.block_tags[tag_name].push_back(name);
         }
 
-        data.block_types[name] = {{"defaultBlockStateHash", block_legacy.getDefaultState().getRuntimeId()}};
+        data.block_types[name] = {{"defaultBlockStateHash", block_type.getDefaultState().getRuntimeId()}};
         if (!tags.is_null()) {
             data.block_types[name]["tags"] = tags;
         }
 
-        block_legacy.forEachBlockPermutation([&](const ::Block &block) {
+        block_type.forEachBlockPermutation([&](const ::Block &block) {
             std::vector<AABB> collision_shape;
             AABB outline_shape;
             AABB visual_shape;
@@ -86,7 +86,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
             visual_shape = block.getVisualShape(visual_shape);
             ui_shape = block.getUIShape(ui_shape);
             block.getLiquidClipVolume(region, {0, 0, 0}, liquid_clip_shape);
-            auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
+            auto map_color = block.getBlockType().getMapColor(region, {0, 10, 0}, block);
             data.block_states.push_back({
                 {"name", name},
                 {"blockStateHash", block.getRuntimeId()},
@@ -105,7 +105,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
                 {"isSolid", block.isSolid()},
                 {"translucency", block.getTranslucency()},
                 {"mapColor", map_color.toHexString()},
-                {"tintMethod", magic_enum::enum_name(block.getLegacyBlock().getTintMethod())},
+                {"tintMethod", magic_enum::enum_name(block.getBlockType().getTintMethod())},
                 {"collisionShape", collision_shape},
                 {"outlineShape", outline_shape},
                 {"visualShape", visual_shape},
@@ -370,7 +370,7 @@ void dumpBiomes(VanillaData &data, ::Level &level)
 {
     auto &biomes = data.biomes;
     level.getBiomeRegistry().forEachBiome([&biomes](const Biome &biome) {
-        biomes[biome.getName()] = {{"id", biome.getId()}};
+        biomes[biome.getFullName()] = {{"id", biome.getId()}};
     });
 }
 

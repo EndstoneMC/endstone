@@ -15,7 +15,6 @@
 #pragma once
 
 #include "endstone/detail/endstone.h"
-#include "endstone/namespaced_key.h"
 #include "endstone/registry.h"
 
 namespace endstone {
@@ -31,13 +30,6 @@ public:
      * @return this item's identifier
      */
     [[nodiscard]] virtual std::string_view getId() const = 0;
-
-    /**
-     * @brief Return the namespaced identifier of this item type.
-     *
-     * @return this item's key
-     */
-    [[nodiscard]] virtual NamespacedKey getKey() const = 0;
 
     /**
      * @brief Get the translation key, suitable for use in a translation component.
@@ -69,13 +61,9 @@ public:
      *
      * @return ItemType if found, or nullptr
      */
-    static const ItemType *get(std::string_view name)
+    static const ItemType *get(const std::string & name)
     {
-        auto key = NamespacedKey::fromString(name);
-        if (!key) {
-            return nullptr;
-        }
-        return Endstone::getServer().getItemRegistry().get(key.value());
+        return Endstone::getServer().getItemRegistry().get(name);
     }
 
     bool operator==(const std::string_view other) const

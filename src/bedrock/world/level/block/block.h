@@ -21,10 +21,11 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/nbt/compound_tag.h"
-#include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block/block_serialization_id.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block/components/block_component_direct_data.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
+#include "bedrock/world/level/block/states/block_state_registry.h"
 
 enum class BlockOcclusionType : int {
     Unknown = 0,
@@ -51,13 +52,16 @@ class Block {
 public:
     virtual ~Block() = default;
 
+    [[nodiscard]] bool hasProperty(BlockProperty) const;
     [[nodiscard]] Brightness getLightEmission() const;
     [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] Brightness getLight() const;
-    [[nodiscard]] FlameOdds getFlameOdds() const;
-    [[nodiscard]] BurnOdds getBurnOdds() const;
+    [[nodiscard]] int getFlameOdds() const;
+    [[nodiscard]] int getBurnOdds() const;
     [[nodiscard]] float getExplosionResistance() const;
+    [[nodiscard]] bool hasState(const BlockState &) const;
+    [[nodiscard]] bool hasState(const HashedString &) const;
     bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                            optional_ref<GetCollisionShapeInterface const> entity) const;
     bool addCollisionShapes(IConstBlockSource const &region, BlockPos const &pos, AABB const *intersect_test_box,
@@ -70,15 +74,47 @@ public:
     bool getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] float getThickness() const;
+    bool getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const;
+    void destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const;
+    [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
     [[nodiscard]] const HashedString &getName() const;
     [[nodiscard]] const CompoundTag &getSerializationId() const;
     [[nodiscard]] BlockRuntimeId getRuntimeId() const;
     [[nodiscard]] std::string toDebugString() const;
-    [[nodiscard]] const BlockLegacy &getLegacyBlock() const;
+    [[nodiscard]] const BlockType &getBlockType() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
     [[nodiscard]] const BlockComponentDirectData &getDirectData() const;
+
+    // Endstone begin
+    template <typename T>
+    T getState(const HashedString &name) const
+    {
+        const auto *state = BlockStateRegistry::get().getState(name);
+        if (!state) {
+            T default_value{};
+            return default_value;
+        }
+        return getBlockType().getState<T>(*state, data_);
+    }
+
+    template <typename T>
+    const Block *trySetState(const HashedString &name, T val) const
+    {
+        const auto *state = BlockStateRegistry::get().getState(name);
+        if (!state) {
+            return nullptr;
+        }
+        return getBlockType().trySetState<T>(*state, val, data_);
+    }
+
+    template <typename T>
+    gsl::strict_not_null<const Block *> setState(const HashedString &name, T val) const
+    {
+        return gsl::make_strict_not_null(trySetState(name, val));
+    }
+    // Endstone end
 
 private:
     friend class ItemStackBase;
@@ -86,7 +122,7 @@ private:
 
     BlockComponentStorage components_;                 // +8
     DataID data_;                                      // +112
-    gsl::not_null<BlockLegacy *> legacy_block_;        // +120
+    gsl::not_null<BlockType *> block_type_;            // +120
     CachedComponentData cached_component_data_;        //
     BlockComponentDirectData direct_data_;             //
     std::vector<HashedString> tags_;                   //

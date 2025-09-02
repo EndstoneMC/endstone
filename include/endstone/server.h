@@ -79,6 +79,13 @@ public:
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 
     /**
+     * @brief Gets the network protocol version that this server supports.
+     *
+     * @return version of network protocol
+     */
+    [[nodiscard]] virtual int getProtocolVersion() const = 0;
+
+    /**
      * @brief Returns the primary logger associated with this server instance.
      *
      * @return Logger associated with this server
@@ -357,7 +364,7 @@ public:
      * defaults, except for those provided in data.
      *
      * @param type the block type
-     * @param block_states block states, for example {"old_leaf_type":"birch", "persistent_bit":true}
+     * @param block_states block states, for example `{"old_leaf_type":"birch", "persistent_bit":true}`
      * @return new data instance
      */
     [[nodiscard]] virtual Result<std::unique_ptr<BlockData>> createBlockData(std::string type,

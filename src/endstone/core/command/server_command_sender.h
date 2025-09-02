@@ -21,17 +21,16 @@ namespace endstone::core {
 
 class ServerCommandSender : public CommandSender {
 protected:
-    explicit ServerCommandSender();
+    explicit ServerCommandSender(std::shared_ptr<PermissibleBase> perm = nullptr);
 
 public:
-    void init(std::shared_ptr<PermissibleBase> perm = nullptr);
     [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
     [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment * addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment * addAttachment(Plugin &plugin) override;
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    PermissionAttachment *addAttachment(Plugin &plugin) override;
     Result<void> removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;

@@ -20,8 +20,14 @@
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
+#include "bedrock/network/packet/set_spawn_position_packet.h"
 #include "bedrock/symbol.h"
+#include "bedrock/textobject/text_object.h"
+#include "bedrock/util/color_format.h"
 #include "bedrock/world/actor/actor_flags.h"
+#include "bedrock/world/actor/actor_value_validation.h"
+#include "bedrock/world/actor/provider/player_movement.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 
 Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_removed)
@@ -30,6 +36,19 @@ Player *Player::tryGetFromEntity(EntityContext &entity, const bool include_remov
         return nullptr;
     }
     return static_cast<Player *>(Actor::tryGetFromEntity(entity, include_removed));
+}
+
+bool Player::hasBedPosition() const
+{
+    if (player_respawn_point_.spawn_block_pos == BlockPos::MIN) {
+        return false;
+    }
+    return player_respawn_point_.dimension == VanillaDimensions::Overworld;
+}
+
+const BlockPos &Player::getBedPosition() const
+{
+    return player_respawn_point_.spawn_block_pos;
 }
 
 const PlayerInventory &Player::getSupplies() const
@@ -50,6 +69,16 @@ const Container &Player::getInventory() const
 Container &Player::getInventory()
 {
     return inventory_->getContainer();
+}
+
+EnderChestContainer *Player::getEnderChestContainer()
+{
+    return ender_chest_inventory_.get();
+}
+
+const EnderChestContainer *Player::getEnderChestContainer() const
+{
+    return ender_chest_inventory_.get();
 }
 
 int Player::getSelectedItemSlot() const
@@ -74,11 +103,16 @@ const ItemStack &Player::setSelectedSlot(int slot)
     pk->slot = slot;
     pk->selected_slot = slot;
     pk->container_id = CONTAINER_ID_INVENTORY;
-    pk->slot_byte = slot;
-    pk->selected_slot_byte = slot;
+    pk->slot_byte = static_cast<char>(slot);
+    pk->selected_slot_byte = static_cast<char>(slot);
     pk->container_id_byte = CONTAINER_ID_INVENTORY;
     getDimension().sendPacketForEntity(*this, *pk, nullptr);
     return item;
+}
+
+const std::string &Player::getPlatformOnlineId() const
+{
+    return platform_online_id_;
 }
 
 const std::string &Player::getName() const
@@ -90,6 +124,72 @@ void Player::setPermissions(CommandPermissionLevel permission)
 {
     const auto component = getPersistentComponent<AbilitiesComponent>();
     component->abilities.setCommandPermissions(permission);
+}
+
+// void Player::setBedRespawnPosition(const BlockPos &bed_position)
+// {
+//     if (!setSpawnBlockRespawnPosition(bed_position, VanillaDimensions::Overworld)) {
+//         return;
+//     }
+//     TextObjectRoot object;
+//     object.addChild<TextObjectText>(ColorFormat::GRAY);
+//     object.addChild<TextObjectLocalizedText>("tile.bed.respawnSet");
+//     displayTextObjectMessage(object, "", "");
+// }
+
+// bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, DimensionType dimension)
+// {
+//     auto pos = getPosition();
+//     pos.y = std::ceilf(getAABB().min.y);
+//     const auto is_set =
+//         dimension != player_respawn_point_.dimension || player_respawn_point_.spawn_block_pos !=
+//         spawn_block_position;
+//     player_respawn_point_.player_position = pos;
+//     player_respawn_point_.dimension = dimension;
+//     ActorValueValidation::validateBlockPos(spawn_block_position, "1 setSpawnPoint");
+//     player_respawn_point_.spawn_block_pos = spawn_block_position;
+//
+//     if (is_initial_spawn_done_ && isAlive() && !respawning_from_the_end_ && !isLoading()) {
+//         moveSpawnView(player_respawn_point_.player_position, player_respawn_point_.dimension);
+//     }
+//
+//     if (!getLevel().isClientSide()) {
+//         const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetSpawnPosition);
+//         auto &pk = *std::static_pointer_cast<SetSpawnPositionPacket>(packet);
+//         pk.pos = player_respawn_point_.player_position;
+//         pk.spawn_pos_type = SpawnPositionType::PlayerRespawn;
+//         pk.dimension_type = player_respawn_point_.dimension;
+//         pk.spawn_block_pos = player_respawn_point_.spawn_block_pos;
+//         sendNetworkPacket(pk);
+//     }
+//     return is_set;
+// }
+
+bool Player::canSleep() const
+{
+    if (isSpectator()) {
+        return false;
+    }
+    return isAlive();
+}
+
+void Player::stopGliding()
+{
+    setStatusFlag(ActorFlags::GLIDING, false);
+    queueBBUpdateFromDefinition();
+    if (!isClientSide()) {
+        PlayerMovement::setElytraFlightTimeTicks(getEntity(), Tick(0));
+    }
+}
+
+const SerializedSkin &Player::getSkin() const
+{
+    return *skin_;
+}
+
+SerializedSkin &Player::getSkin()
+{
+    return *skin_;
 }
 
 GameType Player::getPlayerGameType() const

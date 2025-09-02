@@ -24,6 +24,8 @@ NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_bu
                                                          const NetworkPeer::PacketRecvTimepointPtr &timepoint_ptr)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
+    auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
+    auto &network = server.getServer().getNetwork();
 
     while (true) {
         const auto status =
@@ -43,8 +45,7 @@ NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_bu
         const auto sub_client_id = static_cast<SubClientId>((header >> 12) & 0x3);
 
         endstone::core::EndstonePlayer *player = nullptr;
-        if (const auto *p =
-                server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, sub_client_id)) {
+        if (const auto *p = network_handler->getServerPlayer(id, sub_client_id)) {
             player = &p->getEndstoneActor<endstone::core::EndstonePlayer>();
         }
 
@@ -79,11 +80,12 @@ NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_bu
             continue;
         }
 
-        if (auto result = packet->readNoHeader(read_stream, sub_client_id); !result.ignoreError()) {
+        if (auto result = packet->readNoHeader(read_stream, network.getPacketReflectionCtx(), sub_client_id);
+            !result.ignoreError()) {
             server.getLogger().error("PacketReceiveEvent: Bad packet!");
             continue;
         }
 
-        packet->handle(id, *server.getServer().getMinecraft()->getServerNetworkHandler(), packet);
+        packet->handle(id, *network_handler, packet);
     }
 }

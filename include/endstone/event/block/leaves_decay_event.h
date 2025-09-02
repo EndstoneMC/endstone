@@ -27,8 +27,7 @@ namespace endstone {
 class LeavesDecayEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(LeavesDecayEvent);
-
-    explicit LeavesDecayEvent(Block &block) : Cancellable(block) {}
+    using Cancellable::Cancellable;
 };
 
 }  // namespace endstone

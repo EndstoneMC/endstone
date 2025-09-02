@@ -14,6 +14,13 @@
 
 #include "bedrock/world/level/block/block.h"
 
+#include "bedrock/world/level/block_source.h"
+
+bool Block::hasProperty(BlockProperty property) const
+{
+    return block_type_->hasProperty(property);
+}
+
 Brightness Block::getLightEmission() const
 {
     return direct_data_.light_emission;
@@ -21,24 +28,24 @@ Brightness Block::getLightEmission() const
 
 float Block::getTranslucency() const
 {
-    return legacy_block_->getTranslucency();
+    return block_type_->getTranslucency();
 }
 
 bool Block::isSolid() const
 {
-    return legacy_block_->isSolid();
+    return block_type_->isSolid();
 }
 Brightness Block::getLight() const
 {
     return direct_data_.light;
 }
 
-FlameOdds Block::getFlameOdds() const
+int Block::getFlameOdds() const
 {
     return direct_data_.flame_odds;
 }
 
-BurnOdds Block::getBurnOdds() const
+int Block::getBurnOdds() const
 {
     return direct_data_.burn_odds;
 }
@@ -48,10 +55,20 @@ float Block::getExplosionResistance() const
     return direct_data_.explosion_resistance;
 }
 
+bool Block::hasState(const BlockState &block_state) const
+{
+    return getBlockType().hasState(block_state);
+}
+
+bool Block::hasState(const HashedString &name) const
+{
+    return getBlockType().hasState(name);
+}
+
 bool Block::getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                               optional_ref<GetCollisionShapeInterface const> entity) const
 {
-    out_aabb = legacy_block_->getCollisionShape(*this, region, pos, entity);
+    out_aabb = block_type_->getCollisionShape(*this, region, pos, entity);
     return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
 }
 
@@ -59,42 +76,57 @@ bool Block::addCollisionShapes(IConstBlockSource const &region, BlockPos const &
                                std::vector<AABB> &in_out_boxes,
                                optional_ref<GetCollisionShapeInterface const> entity) const
 {
-    return legacy_block_->addCollisionShapes(*this, region, pos, intersect_test_box, in_out_boxes, entity);
+    return block_type_->addCollisionShapes(*this, region, pos, intersect_test_box, in_out_boxes, entity);
 }
 
 bool Block::getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
 {
-    return legacy_block_->getCollisionShapeForCamera(out_aabb, *this, region, pos);
+    return block_type_->getCollisionShapeForCamera(out_aabb, *this, region, pos);
 }
 
 const AABB &Block::getOutline(IConstBlockSource const &region, BlockPos const &pos, AABB &buffer) const
 {
-    return legacy_block_->getOutline(*this, region, pos, buffer);
+    return block_type_->getOutline(*this, region, pos, buffer);
 }
 
 const AABB &Block::getVisualShape(AABB &buffer) const
 {
-    return legacy_block_->getVisualShape(*this, buffer);
+    return block_type_->getVisualShape(*this, buffer);
 }
 
 const AABB &Block::getUIShape(AABB &buffer) const
 {
-    return legacy_block_->getUIShape(*this, buffer);
+    return block_type_->getUIShape(*this, buffer);
 }
 
 bool Block::getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const
 {
-    return legacy_block_->getLiquidClipVolume(*this, region, pos, include_box);
+    return block_type_->getLiquidClipVolume(*this, region, pos, include_box);
 }
 
 bool Block::requiresCorrectToolForDrops() const
 {
-    return legacy_block_->requiresCorrectToolForDrops();
+    return block_type_->requiresCorrectToolForDrops();
 }
 
 float Block::getThickness() const
 {
-    return legacy_block_->getThickness();
+    return block_type_->getThickness();
+}
+
+bool Block::getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const
+{
+    return block_type_->getSecondPart(region, pos, out);
+}
+
+void Block::destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const
+{
+    getBlockType().destroy(region, pos, *this, entity_source);
+}
+
+const Material &Block::getMaterial() const
+{
+    return getBlockType().getMaterial();
 }
 
 float Block::getFriction() const
@@ -109,7 +141,7 @@ float Block::getDestroySpeed() const
 
 const HashedString &Block::getName() const
 {
-    return legacy_block_->getName();
+    return block_type_->getName();
 }
 
 const CompoundTag &Block::getSerializationId() const
@@ -129,9 +161,9 @@ std::string Block::toDebugString() const
     return ss.str();
 }
 
-const BlockLegacy &Block::getLegacyBlock() const
+const BlockType &Block::getBlockType() const
 {
-    return *legacy_block_;
+    return *block_type_;
 }
 
 const std::vector<HashedString> &Block::getTags() const
@@ -139,7 +171,7 @@ const std::vector<HashedString> &Block::getTags() const
     if (!tags_.empty()) {
         return tags_;
     }
-    return legacy_block_->getTags();
+    return block_type_->getTags();
 }
 
 const BlockComponentDirectData &Block::getDirectData() const

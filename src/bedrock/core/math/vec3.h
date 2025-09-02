@@ -27,6 +27,11 @@ public:
         return {x + other.x, y + other.y, z + other.z};
     }
 
+    constexpr Vec3 operator+(float val) const
+    {
+        return {this->x + val, this->y + val, this->z + val};
+    }
+
     constexpr Vec3 operator-(const Vec3 &other) const
     {
         return {x - other.x, y - other.y, z - other.z};

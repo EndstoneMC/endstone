@@ -31,7 +31,7 @@ private:
     ENDSTONE_HOOK void _initializePackSource();  // NOLINT
 
     Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> file_path_manager_;
-    std::vector<std::unique_ptr<ResourcePack>> all_resource_packs_;
+    gsl::not_null<std::shared_ptr<RepositoryPacks>> all_resource_packs_;
     std::unique_ptr<CompositePackSource> pack_source_;
     std::unique_ptr<CompositePackSource> cache_pack_source_;
     std::unique_ptr<CompositePackSource> world_pack_source_;
@@ -54,14 +54,12 @@ private:
     std::unique_ptr<PackSettingsFactory> pack_settings_factory_;
     PackSourceFactory &pack_source_factory_;
     Bedrock::NonOwnerPointer<PackCommand::IPackCommandPipeline> commands_;
-    std::map<void *, std::function<void(ResourcePack *)>> remove_resource_pack_callback_;
     std::unique_ptr<TaskGroup> init_task_group_;
     Bedrock::Threading::Mutex initialize_mutex_;
     bool cancel_initialization_;
     bool initialized_;
     bool reload_user_packs_requested_;
-    bool reload_dynamic_package_packs_requested_;
     bool refresh_packs_requested_;
     ContentIdentity current_premium_world_template_identity_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 600, 528);
+BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 576, 496);

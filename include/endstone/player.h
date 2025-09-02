@@ -46,12 +46,6 @@ protected:
     using DebugShapeVariant = std::variant<DebugArrow, DebugBox, DebugCircle, DebugLine, DebugSphere, DebugText>;
 
 public:
-    // CommandSender
-    [[nodiscard]] Player *asPlayer() const override
-    {
-        return const_cast<Player *>(this);
-    }
-
     /**
      * @brief Returns the name of this player
      *
@@ -413,6 +407,13 @@ public:
     [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
 
     /**
+     * @brief Get the player's EnderChest inventory
+     *
+     * @return The EnderChest of the player
+     */
+    [[nodiscard]] virtual Inventory &getEnderChest() const = 0;
+
+    /**
      * @brief Gets this player's current GameMode
      *
      * @return Current game mode
@@ -452,7 +453,7 @@ public:
      *
      * @return the player's skin
      */
-    [[nodiscard]] virtual const Skin *getSkin() const = 0;
+    [[nodiscard]] virtual Skin getSkin() const = 0;
 
     /**
      * @brief Sends a form to the player.

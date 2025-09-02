@@ -14,6 +14,7 @@
 
 #include "endstone/core/inventory/player_inventory.h"
 
+#include "bedrock/network/packet/inventory_slot_packet.h"
 #include "endstone/core/inventory/item_stack.h"
 
 namespace endstone::core {
@@ -36,6 +37,14 @@ std::unique_ptr<ItemStack> EndstonePlayerInventory::getItem(int index) const
 void EndstonePlayerInventory::setItem(int index, const ItemStack *item)
 {
     EndstoneInventory::setItem(index, item);
+    // Notify the client about the updated item in the slot
+    // https://github.com/EndstoneMC/endstone/issues/242
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::InventorySlot);
+    auto &pk = static_cast<InventorySlotPacket &>(*packet);
+    pk.inventory_id = holder_.getSupplies().getSelectedContainerId();
+    pk.item = EndstoneItemStack::toMinecraft(item);
+    pk.slot = index;
+    holder_.sendNetworkPacket(pk);
 }
 
 std::unordered_map<int, ItemStack *> EndstonePlayerInventory::addItem(std::vector<ItemStack *> items)
@@ -58,7 +67,7 @@ Result<void> EndstonePlayerInventory::setContents(std::vector<ItemStack const *>
     return EndstoneInventory::setContents(items);
 }
 
-Result<bool> EndstonePlayerInventory::contains(const std::string &type) const
+bool EndstonePlayerInventory::contains(const std::string &type) const
 {
     return EndstoneInventory::contains(type);
 }
@@ -73,7 +82,7 @@ bool EndstonePlayerInventory::contains(const ItemStack &item, int amount) const
     return EndstoneInventory::contains(item, amount);
 }
 
-Result<bool> EndstonePlayerInventory::containsAtLeast(const std::string &type, int amount) const
+bool EndstonePlayerInventory::containsAtLeast(const std::string &type, int amount) const
 {
     return EndstoneInventory::containsAtLeast(type, amount);
 }
@@ -83,7 +92,7 @@ bool EndstonePlayerInventory::containsAtLeast(const ItemStack &item, int amount)
     return EndstoneInventory::containsAtLeast(item, amount);
 }
 
-Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> EndstonePlayerInventory::all(const std::string &type) const
+std::unordered_map<int, std::unique_ptr<ItemStack>> EndstonePlayerInventory::all(const std::string &type) const
 {
     return EndstoneInventory::all(type);
 }
@@ -93,7 +102,7 @@ std::unordered_map<int, std::unique_ptr<ItemStack>> EndstonePlayerInventory::all
     return EndstoneInventory::all(item);
 }
 
-Result<int> EndstonePlayerInventory::first(const std::string &type) const
+int EndstonePlayerInventory::first(const std::string &type) const
 {
     return EndstoneInventory::first(type);
 }
@@ -108,7 +117,7 @@ int EndstonePlayerInventory::firstEmpty() const
     return EndstoneInventory::firstEmpty();
 }
 
-Result<void> EndstonePlayerInventory::remove(const std::string &type)
+void EndstonePlayerInventory::remove(const std::string &type)
 {
     return EndstoneInventory::remove(type);
 }

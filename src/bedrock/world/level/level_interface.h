@@ -30,6 +30,7 @@
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/gamerefs/stack_ref_result.h"
 #include "bedrock/network/net_event_callback.h"
+#include "bedrock/network/packet/start_game_packet.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/resources/resource_pack_manager.h"
@@ -40,6 +41,8 @@
 #include "bedrock/util/level_tag_registry_types.h"
 #include "bedrock/util/random.h"
 #include "bedrock/util/tag_registry.h"
+#include "bedrock/world/actor/actor_sound_identifier.h"
+#include "bedrock/world/actor/death/tick_death_setting.h"
 #include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 #include "bedrock/world/events/actor_event_coordinator.h"
@@ -58,6 +61,7 @@
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/block_palette.h"
 #include "bedrock/world/level/chunk/level_chunk_event_manager.h"
+#include "bedrock/world/level/difficulty.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/explosion.h"
 #include "bedrock/world/level/game_type.h"
@@ -66,7 +70,9 @@
 #include "bedrock/world/level/level_settings.h"
 #include "bedrock/world/level/player_death_manager.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
+#include "bedrock/world/level/spawner.h"
 #include "bedrock/world/level/storage/game_rules.h"
+#include "bedrock/world/level/storage/level_data.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
 
@@ -118,6 +124,8 @@ public:
     virtual Actor *addAutonomousEntity(BlockSource &, OwnerPtr<EntityContext>) = 0;
     virtual void addUser(OwnerPtr<EntityContext>) = 0;
     virtual Actor *addDisplayEntity(BlockSource &, OwnerPtr<EntityContext>) = 0;
+    virtual Actor *putEntity(BlockSource &, ActorUniqueID, ActorRuntimeID, OwnerPtr<EntityContext>) = 0;
+    virtual Actor *putEntity(BlockSource &, ActorUniqueID, OwnerPtr<EntityContext>) = 0;
     virtual void removeDisplayEntity(WeakEntityRef) = 0;
     virtual void *getDisplayActorManager() = 0;
     virtual void suspendPlayer(Player &) = 0;
@@ -253,14 +261,13 @@ public:
     virtual TickingAreasManager &getTickingAreasMgr() = 0;
     virtual void addTickingAreaList(DimensionType, std::shared_ptr<TickingAreaList> const &) = 0;
     virtual void sendServerLegacyParticle(ParticleType, Vec3 const &, Vec3 const &, int) = 0;
-    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool,
-                           bool) = 0;
-    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, float, float) = 0;
+    virtual void playSound(LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool, bool) = 0;
+    virtual void playSound(LevelSoundEvent, Vec3 const &, float, float) = 0;
     virtual void playSound(std::string const &, Vec3 const &, float, float) = 0;
-    virtual void playSound(IConstBlockSource const &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                           ActorSoundIdentifier const &, bool, bool) = 0;
-    virtual void playSound(DimensionType, Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
+    virtual void playSound(IConstBlockSource const &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
                            bool, bool) = 0;
+    virtual void playSound(DimensionType, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool,
+                           bool) = 0;
     virtual PlayerEventCoordinator &getRemotePlayerEventCoordinator() = 0;
     virtual ServerPlayerEventCoordinator &getServerPlayerEventCoordinator() = 0;
     virtual ClientPlayerEventCoordinator &getClientPlayerEventCoordinator() = 0;
@@ -281,12 +288,12 @@ public:
     virtual void broadcastLevelEvent(LevelEvent, CompoundTag const &, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, int) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, Block const &) = 0;
-    virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, Block const &,
-                                     ActorSoundIdentifier const &, bool, bool) = 0;
-    virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                                     ActorSoundIdentifier const &, bool, bool) = 0;
-    virtual void broadcastSoundEvent(Dimension &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                                     ActorSoundIdentifier const &, bool, bool) = 0;
+    virtual void broadcastSoundEvent(BlockSource &, LevelSoundEvent, Vec3 const &, Block const &,
+                                     ActorSoundIdentifier const &, bool) = 0;
+    virtual void broadcastSoundEvent(BlockSource &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
+                                     bool) = 0;
+    virtual void broadcastSoundEvent(Dimension &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
+                                     bool) = 0;
     virtual void broadcastActorEvent(Actor &, ActorEvent, int) const = 0;
     [[nodiscard]] virtual void *getActorEventBroadcaster() const = 0;
     virtual void addChunkViewTracker(std::weak_ptr<ChunkViewSource>) = 0;
@@ -383,6 +390,8 @@ public:
     virtual void setPlayerMovementSettings(PlayerMovementSettings const &) = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() const = 0;
+    [[nodiscard]] virtual const TickDeathSettings &getTickDeathSettings() const = 0;
+    virtual void setTickDeathSettings(const TickDeathSettings &) = 0;
     [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &,
                                           ActorUniqueID const &) const = 0;
     [[nodiscard]] virtual void *getTrustedSkinHelper() const = 0;
@@ -449,7 +458,7 @@ public:
     virtual std::weak_ptr<TrimPatternRegistry> getTrimPatternRegistry() = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimMaterialRegistry const> getTrimMaterialRegistry() const = 0;
     virtual std::weak_ptr<TrimMaterialRegistry> getTrimMaterialRegistry() = 0;
-    [[nodiscard]] virtual BlockLegacy const &getRegisteredBorderBlock() const = 0;
+    [[nodiscard]] virtual BlockType const &getRegisteredBorderBlock() const = 0;
     virtual void *getLevelChunkPerformanceTelemetry() = 0;
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
     virtual void addBlockSourceForValidityTracking(BlockSource *) = 0;
@@ -466,10 +475,12 @@ public:
     virtual bool isClientSideGenerationEnabled() = 0;
     virtual bool blockNetworkIdsAreHashes() = 0;
     [[nodiscard]] virtual ItemRegistryRef getItemRegistry() const = 0;
-    [[nodiscard]] virtual std::weak_ptr<BlockTypeRegistry> getBlockRegistry() const = 0;
+    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<BlockTypeRegistry> getBlockTypeRegistry() const = 0;
     virtual void pauseAndFlushTaskGroups() = 0;
+    virtual cereal::ReflectionCtx &cerealContext() = 0;
     [[nodiscard]] virtual const cereal::ReflectionCtx &cerealContext() const = 0;
     virtual void subChunkTickAndSendRequests() = 0;
+    virtual void digestServerBlockProperties(const StartGamePacket &) = 0;
 
 protected:
     virtual PlayerDeathManager *_getPlayerDeathManager() = 0;

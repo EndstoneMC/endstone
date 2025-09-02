@@ -40,7 +40,7 @@ static_assert(sizeof(ContainerContentChangeListener) == 8);
 
 class ContainerCloseListener {
 public:
-    virtual void containerClosed(Player &) = 0;
+    virtual void containerClosed(Actor &) = 0;
     virtual ~ContainerCloseListener();
 };
 static_assert(sizeof(ContainerCloseListener) == 8);
@@ -138,8 +138,8 @@ public:
     virtual void dropContents(BlockSource &, Vec3 const &, bool);
     [[nodiscard]] virtual int getContainerSize() const = 0;
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
-    virtual void startOpen(Player &) = 0;
-    virtual void stopOpen(Player &player);
+    virtual void startOpen(Actor &) = 0;
+    virtual void stopOpen(Actor &);
     [[nodiscard]] virtual std::vector<ItemStack> getSlotCopies() const;
     [[nodiscard]] virtual std::vector<const ItemStack *> const getSlots() const;
     [[nodiscard]] virtual int getEmptySlotsCount() const;

@@ -14,6 +14,11 @@
 
 #include "bedrock/world/actor/item/item_actor.h"
 
+int ItemActor::getLifeTime() const
+{
+    return lifetime_;
+}
+
 const ItemStack &ItemActor::getItemStack() const
 {
     return item_;
@@ -22,6 +27,11 @@ const ItemStack &ItemActor::getItemStack() const
 ItemStack &ItemActor::getItemStack()
 {
     return item_;
+}
+
+void ItemActor::setItemStack(const ItemStack &item)
+{
+    item_ = item;
 }
 
 void ItemActor::setNoPickUpDelay()
@@ -49,4 +59,14 @@ ItemActor *ItemActor::tryGetFromEntity(EntityContext &entity, bool include_remov
         return nullptr;
     }
     return static_cast<ItemActor *>(actor);
+}
+
+int ItemActor::getPickUpDelay() const
+{
+    return pickup_delay_;
+}
+
+void ItemActor::setLifeTime(int lifetime)
+{
+    lifetime_ = lifetime;
 }

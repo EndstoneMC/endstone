@@ -19,27 +19,34 @@
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/actor.h"
+#include "command_origin_wrapper.h"
+#include "endstone/core/command/block_command_sender.h"
 #include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
-std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() const
+std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender(CommandOutput &output) const
 {
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     switch (getOriginType()) {
     case CommandOriginType::DedicatedServer: {
-        return std::static_pointer_cast<endstone::ConsoleCommandSender>(
-            static_cast<endstone::core::EndstoneConsoleCommandSender &>(server.getCommandSender()).shared_from_this());
+        return server.getCommandSenderPtr();
     }
     case CommandOriginType::Player:
     case CommandOriginType::Entity: {
-        return std::static_pointer_cast<endstone::Actor>(getEntity()->getEndstoneActor().shared_from_this());
+        return getEntity()->getEndstoneActorPtr();
     }
-    case CommandOriginType::Virtual:
-    case CommandOriginType::CommandBlock:
+    case CommandOriginType::CommandBlock: {
+        return std::static_pointer_cast<endstone::BlockCommandSender>(
+            std::make_shared<endstone::core::EndstoneBlockCommandSender>(*this, output));
+    }
     case CommandOriginType::MinecartCommandBlock:
-        // TODO(permission): add BlockCommandSender, Entity and CommandMinecart
-    default:
-        return nullptr;
+        // TODO(permission): add CommandMinecart
+    default: {
+        // Fallback to command origin via a wrapper for unsupported types
+        auto sender = std::make_shared<endstone::core::CommandOriginWrapper>(*this, output);
+        sender->recalculatePermissions();
+        return sender;
+    }
     }
 }

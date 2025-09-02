@@ -15,6 +15,8 @@
 #pragma once
 
 namespace endstone::core {
+struct InternalDisconnectFlagComponent {};
 struct InternalRemoveFlagComponent {};
 struct InternalTeleportFlagComponent {};
+struct MobHurtFlagComponent {};
 }  // namespace endstone::core

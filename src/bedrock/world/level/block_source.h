@@ -19,9 +19,12 @@
 #include "bedrock/forward.h"
 #include "bedrock/shared_types/height.h"
 #include "bedrock/world/actor/actor_types.h"
+#include "bedrock/world/events/gameevents/game_event.h"
 #include "bedrock/world/item/item_stack_base.h"
+#include "bedrock/world/level/biome/biome.h"
+#include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/block.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_source_listener.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
 #include "bedrock/world/level/clip_parameters.h"
@@ -31,7 +34,6 @@
 class ILevel;
 class Level;
 class Material;
-class MaterialType;
 
 using ActorSpan = gsl::span<gsl::not_null<Actor *>>;
 using ConstActorSpan = gsl::span<gsl::not_null<const Actor *>>;
@@ -104,7 +106,7 @@ public:
     virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
                                                     std::vector<AABB> *) = 0;
     virtual HitResult clip(Vec3 const &, Vec3 const &, bool, ShapeType, int, bool, bool, Actor *,
-                           std::function<bool(BlockSource const &, Block const &, bool)> const &) const = 0;
+                           std::function<bool(BlockSource const &, Block const &, bool)> const &, bool) const = 0;
     [[nodiscard]] virtual HitResult clip(const ClipParameters &) const = 0;
     virtual ChunkSource &getChunkSource() = 0;
     [[nodiscard]] virtual bool isSolidBlockingBlock(BlockPos const &) const = 0;
@@ -118,7 +120,6 @@ public:
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual bool removeBlock(BlockPos const &) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
-    virtual void postGameEvent(Actor *, const GameEvent &, const Vec3 &, const Block *) = 0;
 };
 
 class BlockSource : public IBlockSource,
@@ -128,4 +129,7 @@ public:
     explicit BlockSource(ChunkSource &, bool, bool);
     BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
+
+    [[nodiscard]] bool isEmptyBlock(const BlockPos &pos) const;
+    [[nodiscard]] const Biome &getBiome(const BlockPos &) const;
 };

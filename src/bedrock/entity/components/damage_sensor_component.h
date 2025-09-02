@@ -26,11 +26,7 @@ public:
     DamageSensorComponent();
     DealsDamage recordGenericDamageAndCheckIfDealt(Actor &owner, const ActorDamageSource &source, float damage,
                                                    float pre_damage_health, VariantParameterList parameters,
-                                                   bool will_trigger)
-    {
-        return BEDROCK_CALL(&DamageSensorComponent::recordGenericDamageAndCheckIfDealt, this, owner, source, damage,
-                            pre_damage_health, parameters, will_trigger);
-    }
+                                                   bool will_trigger);
 
 private:
     int damage_amount_;

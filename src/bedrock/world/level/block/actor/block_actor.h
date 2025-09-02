@@ -14,7 +14,70 @@
 
 #pragma once
 
+#include <string>
+
+#include "bedrock/core/container/enum_set.h"
+#include "bedrock/safety/redactable_string.h"
+#include "bedrock/world/actor/actor_terrain_interlock_data.h"
+#include "bedrock/world/item/save_context.h"
+#include "bedrock/world/level/block/actor/block_actor_type.h"
+#include "bedrock/world/level/block/block.h"
+
+class ILevel;
+
 class BlockActor {
 public:
-    virtual ~BlockActor() = 0;
+    enum class Property : uint8_t {
+        Changed = 0,
+        Movable = 1,
+        ClientSideOnly = 2,
+        SaveCustomName = 3,
+        CanRenderCustomName = 4,
+        _count = 5,
+    };
+    using Properties = Bedrock::EnumSet<Property, Property::_count>;
+
+    BlockActor(BlockActorType, const BlockPos &, const std::string &);
+    virtual ~BlockActor() = default;
+    virtual void load(ILevel &, const CompoundTag &, DataLoadHelper &) = 0;
+    virtual bool save(CompoundTag &, const SaveContext &) const = 0;
+    virtual bool saveItemInstanceData(CompoundTag &, const SaveContext &) const = 0;
+    virtual void saveBlockData(CompoundTag &, BlockSource &) const = 0;
+    virtual void loadBlockData(const CompoundTag &, BlockSource &, DataLoadHelper &) = 0;
+    virtual void onCustomTagLoadDone(BlockSource &) = 0;
+    [[nodiscard]] virtual bool isPermanentlyRendered() const = 0;
+    [[nodiscard]] virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
+    virtual void tick(BlockSource &) = 0;
+
+    void setChanged()
+    {
+        properties_.insert(Property::Changed);
+    }
+
+    [[nodiscard]] bool isChanged() const
+    {
+        return properties_.contains(Property::Changed);
+    }
+
+    [[nodiscard]] BlockActorType getType() const
+    {
+        return type_;
+    }
+
+    int tick_count;
+
+protected:
+    int repair_cost_;
+    const Block *block_;
+    BlockPos position_;
+    AABB bb_;
+    BlockActorRendererId renderer_id_;
+    const BlockActorType type_;
+    Properties properties_;
+    Bedrock::Safety::RedactableString custom_name_;
+    ActorTerrainInterlockData terrain_interlock_data_;
+
+    // private:
+    //     bool changed_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 160, 144);

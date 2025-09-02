@@ -20,6 +20,7 @@
 
 class ItemDescriptorCount : public ItemDescriptor {
 public:
+    ItemDescriptorCount() = default;
     explicit ItemDescriptorCount(const ItemDescriptor &item_descriptor, uint16_t count)
         : ItemDescriptor(item_descriptor), stack_size_(count)
     {
@@ -33,6 +34,14 @@ public:
     void setStackSize(std::uint16_t stack_size)
     {
         stack_size_ = stack_size;
+    }
+
+    explicit operator bool() const
+    {
+        if (getItem() == nullptr) {
+            return false;
+        }
+        return getItem() && !isNull() && stack_size_ > 0;
     }
 
 private:

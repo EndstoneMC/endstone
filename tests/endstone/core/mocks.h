@@ -23,6 +23,7 @@ public:
     MOCK_METHOD(std::string, getName, (), (const, override));
     MOCK_METHOD(std::string, getVersion, (), (const, override));
     MOCK_METHOD(std::string, getMinecraftVersion, (), (const, override));
+    MOCK_METHOD(int, getProtocolVersion, (), (const, override));
     MOCK_METHOD(endstone::Logger &, getLogger, (), (const, override));
     MOCK_METHOD(endstone::Language &, getLanguage, (), (const, override));
     MOCK_METHOD(endstone::PluginManager &, getPluginManager, (), (const, override));

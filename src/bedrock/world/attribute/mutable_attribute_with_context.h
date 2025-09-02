@@ -23,6 +23,22 @@ struct AttributeModificationContext {
 static_assert(sizeof(AttributeModificationContext) == 8);
 
 struct MutableAttributeWithContext {
+    [[nodiscard]] bool isValid() const
+    {
+        return instance != nullptr;
+    }
+    explicit operator bool() const
+    {
+        return isValid();
+    }
+    bool operator==(std::nullptr_t) const
+    {
+        return instance == nullptr;
+    }
+    bool operator!=(std::nullptr_t) const
+    {
+        return instance != nullptr;
+    }
     AttributeInstance *instance;
     AttributeModificationContext context;
 };

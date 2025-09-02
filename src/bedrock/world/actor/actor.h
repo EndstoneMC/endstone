@@ -37,6 +37,7 @@
 #include "bedrock/input/input_mode.h"
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/server/commands/command_permission_level.h"
+#include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/util/molang_variable_map.h"
 #include "bedrock/util/variant_parameter_list.h"
 #include "bedrock/world/actor/actor_category.h"
@@ -104,10 +105,16 @@ public:
     }
 
     template <typename Component>
-    gsl::not_null<Component *> getPersistentComponent() const
+    gsl::not_null<Component *> getPersistentComponent()
     {
         return entity_context_.tryGetComponent<Component>();
-    };
+    }
+
+    template <typename Component>
+    gsl::not_null<const Component *> getPersistentComponent() const
+    {
+        return entity_context_.tryGetComponent<Component>();
+    }
 
     virtual void outOfWorld() = 0;
     virtual void reloadHardcoded(ActorInitializationMethod, VariantParameterList const &) = 0;
@@ -177,7 +184,7 @@ public:
     [[nodiscard]] virtual bool canPowerJump() const = 0;
     [[nodiscard]] virtual bool isEnchanted() const = 0;
     virtual void playAmbientSound() = 0;
-    [[nodiscard]] virtual Puv::Legacy::LevelSoundEvent getAmbientSound() const = 0;
+    [[nodiscard]] virtual LevelSoundEvent getAmbientSound() const = 0;
     [[nodiscard]] virtual bool isInvulnerableTo(ActorDamageSource const &) const = 0;
     [[nodiscard]] virtual ActorDamageCause getBlockDamageCause(Block const &) const = 0;
     virtual bool doFireHurt(int) = 0;
@@ -265,6 +272,8 @@ public:
     [[nodiscard]] bool hasType(ActorType types) const;
     [[nodiscard]] ActorType getEntityTypeId() const;
     [[nodiscard]] const ActorDefinitionIdentifier &getActorIdentifier() const;
+    BuiltInActorComponents &getBuiltInActorComponents();
+    [[nodiscard]] const BuiltInActorComponents &getBuiltInActorComponents() const;
     [[nodiscard]] bool isSneaking() const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
@@ -273,22 +282,31 @@ public:
     [[nodiscard]] bool isInWater() const;
     [[nodiscard]] bool isInLava() const;
     [[nodiscard]] bool isClientSide() const;
+    BlockSource &getDimensionBlockSource() const;
+    [[nodiscard]] const BlockSource &getDimensionBlockSourceConst() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel();
     [[nodiscard]] const Level &getLevel() const;
+    void setAABB(const AABB &bb);
+    [[nodiscard]] const AABB &getAABB() const;
+    [[nodiscard]] const Vec2 &getAABBDim() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
     [[nodiscard]] Vec3 const &getPosPrev() const;
+    void setPos(const Vec3 &);
     void applyImpulse(Vec3 const &impulse);
     [[nodiscard]] Vec3 const &getPosDelta() const;
     void setPosDelta(const Vec3 &);
     [[nodiscard]] Vec2 const &getRotation() const;
     [[nodiscard]] const Vec2 &getRotationPrev() const;
     void setRotationWrapped(const Vec2 &);
-    [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
     [[nodiscard]] Actor *getVehicle() const;
     [[nodiscard]] bool isRiding() const;
+    void stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
+                    bool is_being_teleported);
+    [[nodiscard]] bool hasPassenger() const;
+    void removeAllPassengers(bool being_destroyed);
     [[nodiscard]] bool hasCategory(ActorCategory categories) const;
     [[nodiscard]] bool isJumping() const;
     [[nodiscard]] std::vector<std::string> getTags() const;
@@ -303,16 +321,54 @@ public:
     void setScoreTag(const std::string &);
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
+    [[nodiscard]] gsl::not_null<MutableAttributeWithContext> getNotNullMutableAttribute(
+        const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
+    void setFallDistance(float);
     [[nodiscard]] bool isDead() const;
     EntityContext &getEntity();
     [[nodiscard]] const EntityContext &getEntity() const;
     [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;
     [[nodiscard]] const ItemStack &getOffhandSlot() const;
     [[nodiscard]] const ItemStack &getArmor(ArmorSlot) const;
+    [[nodiscard]] bool isCreative() const;
+    [[nodiscard]] bool isAdventure() const;
+    [[nodiscard]] bool isSurvival() const;
+    [[nodiscard]] bool isSpectator() const;
+    void queueBBUpdateFromValue(const Vec2 &);
+    void queueBBUpdateFromDefinition();
+    void setChainedDamageEffects(bool);
+    [[nodiscard]] bool getChainedDamageEffects() const;
+    Mob *getLastHurtByMob();
+    [[nodiscard]] ActorUniqueID getLastHurtByMobID() const;
+    void setLastHurtByMob(Mob *);
+    Player *getLastHurtByPlayer();
+    [[nodiscard]] ActorUniqueID getLastHurtByPlayerID() const;
+    void setLastHurtByPlayer(Player *);
+    Mob *getLastHurtMob();
+    void setLastHurtMob(Actor *);
+    int getLastHurtMobTimestamp();
+    int getLastHurtByMobTime();
+    int getLastHurtByMobTimestamp();
+    [[nodiscard]] bool hasBeenHurtByMobInLastTicks(int) const;
+    [[nodiscard]] float getLastHurtDamage() const;
+    [[nodiscard]] ActorDamageCause getLastHurtCause() const;
+    [[nodiscard]] std::uint64_t getLastHurtTimestamp() const;
+    [[nodiscard]] bool isUseNewTradeScreen() const;
+    [[nodiscard]] bool canSeeDaylight() const;
+    [[nodiscard]] const Block *getInsideBlock() const;
+    void setInsideBlock(const Block *);
+    [[nodiscard]] const BlockPos &getInsideBlockPos() const;
+    void setInsideBlockPos(const BlockPos &);
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
+
+    void setLastHurtDamage(float damage);  // Endstone
+
+protected:
+    void _setHeightOffset(float offset);
+    void _moveHitboxTo(const Vec3 &position);
 
 private:
     mutable EntityContext entity_context_;  // +8
@@ -430,6 +486,13 @@ public:
         return static_cast<T &>(getEndstoneActor0());
     }
 
+    template <typename T = endstone::core::EndstoneActor>
+    [[nodiscard]] std::shared_ptr<T> getEndstoneActorPtr() const
+    {
+        return std::static_pointer_cast<T>(getEndstoneActorPtr0());
+    }
+
 private:
     endstone::core::EndstoneActor &getEndstoneActor0() const;
+    std::shared_ptr<endstone::core::EndstoneActor> getEndstoneActorPtr0() const;
 };

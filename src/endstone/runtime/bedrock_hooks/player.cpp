@@ -19,10 +19,15 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/world/actor/item/item_actor.h"
+#include "bedrock/world/level/block/bed_block.h"
+#include "endstone/core/actor/item.h"
+#include "endstone/core/block/block.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_bed_enter_event.h"
+#include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_pickup_item_event.h"
@@ -42,7 +47,7 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-    const endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
+    const endstone::Location to{pos.x, pos.y, pos.z, getRotation().x, getRotation().y, player.getDimension()};
     endstone::PlayerTeleportEvent e{player, player.getLocation(), to};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
@@ -96,13 +101,71 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
     if (actor.hasCategory(ActorCategory::Item)) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-        const auto &item_stack = static_cast<ItemActor &>(actor).getItemStack();
-        const auto item = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
-        endstone::PlayerPickupItemEvent e(player, *item);
+        auto &item = actor.getEndstoneActor<endstone::core::EndstoneItem>();
+        endstone::PlayerPickupItemEvent e(player, item);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
         }
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::take, this, actor, unknown, favored_slot);
+}
+
+BedSleepingResult Player::getBedResult(const BlockPos &bed_pos)
+{
+    if (!isSleeping() && isAlive() && canSleep()) {
+        const auto pos = getPosition();
+        if (std::fabs(pos.x - static_cast<float>(bed_pos.x)) > 3.0F ||
+            std::fabs(pos.y - static_cast<float>(bed_pos.y)) > 4.0F ||
+            std::fabs(pos.z - static_cast<float>(bed_pos.z)) > 3.0F) {
+            return BedSleepingResult::TOO_FAR_AWAY;
+        }
+
+        if (!getDimension().isNaturalDimension()) {
+            return BedSleepingResult::NOT_POSSIBLE_HERE;
+        }
+
+        auto wakeup = BedBlock::findWakeupPosition(getDimensionBlockSource(), bed_pos, std::nullopt);
+        if (!wakeup) {
+            return BedSleepingResult::BED_OBSTRUCTED;
+        }
+
+        // setBedRespawnPosition(bed_pos);
+
+        if (getDimension().isBrightOutside()) {
+            return BedSleepingResult::NOT_POSSIBLE_NOW;
+        }
+
+        if (!isCreative() && getLevel().getDifficulty() != Difficulty::Peaceful) {
+            const AABB bb(static_cast<float>(bed_pos.x) - 8.0F, static_cast<float>(bed_pos.y) - 5.0F,
+                          static_cast<float>(bed_pos.z) - 8.0F, static_cast<float>(bed_pos.x) + 8.0F,
+                          static_cast<float>(bed_pos.y) + 5.0F, static_cast<float>(bed_pos.z) + 8.0F);
+            auto monsters = getDimensionBlockSource().fetchEntities(ActorType::Monster, bb, nullptr, nullptr);
+            if (!monsters.empty()) {
+                return BedSleepingResult::NOT_SAFE;
+            }
+        }
+
+        return BedSleepingResult::OK;
+    }
+
+    return BedSleepingResult::OTHER_PROBLEM;
+}
+
+BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos)
+{
+    auto bed_result = getBedResult(bed_block_pos);
+    if (bed_result == BedSleepingResult::OK) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
+        const auto block = endstone::core::EndstoneBlock::at(getDimensionBlockSource(), bed_block_pos);
+
+        endstone::PlayerBedEnterEvent e(player, *block);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return BedSleepingResult::OTHER_PROBLEM;
+        }
+    }
+
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::startSleepInBed, this, bed_block_pos);
 }

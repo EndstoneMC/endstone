@@ -44,6 +44,10 @@ struct polymorphic_type_hook<endstone::Actor> {
         if (const auto *mob = src->asMob()) {
             return polymorphic_type_hook<endstone::Mob>::get(mob, type);
         }
+        if (const auto *item = src->asItem()) {
+            type = &typeid(endstone::Item);
+            return item;
+        }
         type = &typeid(endstone::Actor);
         return src;
     }
@@ -62,6 +66,10 @@ struct polymorphic_type_hook<endstone::CommandSender> {
         if (const auto *console = src->asConsole()) {
             type = &typeid(endstone::ConsoleCommandSender);
             return console;
+        }
+        if (const auto *block = src->asBlock()) {
+            type = &typeid(endstone::BlockCommandSender);
+            return block;
         }
         type = &typeid(endstone::CommandSender);
         return src;

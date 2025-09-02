@@ -23,6 +23,7 @@ add_library(bedrock STATIC
         core/sem_ver/sem_version.cpp
         core/string/string_hash.cpp
         core/utility/binary_stream.cpp
+        core/utility/serialize_simple_types.cpp
         crypto/encoding/base64.cpp
         deps/json/value.cpp
         deps/raknet/get_time.cpp
@@ -42,6 +43,9 @@ add_library(bedrock STATIC
         network/network_identifier.cpp
         network/packet/types/world/actor/serialized_abilities_data.cpp
         network/packet/crafting_data_packet.cpp
+        network/packet/inventory_slot_packet.cpp
+        network/packet/text_packet.cpp
+        network/network_system.cpp
         network/packet.cpp
         network/server_network_handler.cpp
         network/sub_client_connection_request.cpp
@@ -64,6 +68,7 @@ add_library(bedrock STATIC
         server/commands/command_utils.cpp
         server/commands/minecraft_commands.cpp
         server/commands/standard/teleport_command.cpp
+        textobject/text_object.cpp
         util/data_io.cpp
         util/index_set.cpp
         util/string_byte_output.cpp
@@ -79,6 +84,7 @@ add_library(bedrock STATIC
         world/actor/player/player.cpp
         world/actor/player/player_inventory.cpp
         world/actor/player/player_item_in_use.cpp
+        world/actor/player/serialized_skin.cpp
         world/actor/provider/actor_offset.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp
@@ -89,20 +95,30 @@ add_library(bedrock STATIC
         world/item/item_stack.cpp
         world/item/item_stack_base.cpp
         world/item/vanilla_item_tags.cpp
+        world/item/crafting/recipes.cpp
         world/item/enchanting/enchant.cpp
         world/item/registry/creative_group_info.cpp
         world/item/registry/creative_item_entry.cpp
         world/item/registry/creative_item_registry.cpp
         world/item/registry/item_registry.cpp
         world/item/registry/item_registry_ref.cpp
+        world/level/block_source.cpp
         world/level/explosion.cpp
         world/level/level.cpp
+        world/level/weather.cpp
         world/level/biome/registry/biome_registry.cpp
+        world/level/block/bed_block.cpp
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
-        world/level/block/block_legacy.cpp
+        world/level/block/block_type.cpp
+        world/level/block/campfire_block.cpp
+        world/level/block/fire_block.cpp
+        world/level/block/vanilla_block_type_ids.cpp
+        world/level/block/actor/beehive_block_actor.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/registry/block_type_registry.cpp
+        world/level/block/states/block_state.cpp
+        world/level/block/states/vanilla_block_states.cpp
         world/level/chunk/level_chunk.cpp
         world/level/dimension/dimension.cpp
         world/level/saveddata/map_item_saved_data.cpp

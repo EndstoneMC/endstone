@@ -14,7 +14,8 @@
 
 #pragma once
 
-#include <memory>
+#include <cmath>
+#include <numbers>
 
 #include "endstone/level/position.h"
 #include "endstone/util/vector.h"
@@ -26,13 +27,21 @@ namespace endstone {
  */
 class Location : public Position {
 public:
-    Location(Dimension *dimension, int x, int y, int z, float pitch = 0.0, float yaw = 0.0)
-        : Location(dimension, static_cast<float>(x), static_cast<float>(y), static_cast<float>(z), pitch, yaw)
+    using Position::Position;
+
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Location(T x, T y, T z, float pitch = 0.0, float yaw = 0.0) : Position(x, y, z), pitch_(pitch), yaw_(yaw)
     {
     }
 
-    Location(Dimension *dimension, float x, float y, float z, float pitch = 0.0, float yaw = 0.0)
-        : Position(dimension, x, y, z), pitch_(pitch), yaw_(yaw)
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Location(T x, T y, T z, float pitch, Dimension &dimension) : Location(x, y, z, pitch, 0.0, dimension)
+    {
+    }
+
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Location(T x, T y, T z, float pitch, float yaw, Dimension &dimension)
+        : Position(x, y, z, dimension), pitch_(pitch), yaw_(yaw)
     {
     }
 
@@ -90,6 +99,23 @@ public:
     void setYaw(float yaw)
     {
         yaw_ = yaw;
+    }
+
+    /**
+     * Gets a unit-vector pointing in the direction that this Location is facing.
+     *
+     * @return a vector pointing the direction of this location's pitch and yaw
+     */
+    [[nodiscard]] Vector getDirection() const
+    {
+        Vector vector;
+        const auto rot_x = getYaw() * std::numbers::pi / 180.0F;
+        const auto rot_y = getPitch() * std::numbers::pi / 180.0F;
+        vector.setY(-std::sin(rot_y));
+        const double xz = std::cos(rot_y);
+        vector.setX(-xz * std::sin(rot_x));
+        vector.setZ(xz * std::cos(rot_x));
+        return vector;
     }
 
 private:

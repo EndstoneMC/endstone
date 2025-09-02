@@ -23,8 +23,8 @@ public:
     void setItem(int, const ItemStack &) override;
     [[nodiscard]] int getContainerSize() const override;
     [[nodiscard]] int getMaxStackSize() const override;
-    void startOpen(Player &) override;
-    void stopOpen(Player &) override;
+    void startOpen(Actor &) override;
+    void stopOpen(Actor &) override;
     void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) override;
 
 protected:

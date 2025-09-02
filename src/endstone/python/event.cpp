@@ -20,6 +20,11 @@ namespace endstone::python {
 
 void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriority> &event_priority)
 {
+    py::enum_<EventResult>(m, "EventResult")
+        .value("DENY", EventResult::Deny)
+        .value("DEFAULT", EventResult::Default)
+        .value("ALLOW", EventResult::Allow);
+
     event.def_property_readonly("event_name", &Event::getEventName, "Gets a user-friendly identifier for this event.")
         .def_property_readonly("is_asynchronous", &Event::isAsynchronous, "Whether the event fires asynchronously.");
 
@@ -128,6 +133,21 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                                           "Called when a block is broken by a player.")
         .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the Player that is breaking the block involved in this event.");
+    py::class_<BlockCookEvent, BlockEvent, ICancellable>(m, "BlockCookEvent",
+                                                         "Called when an ItemStack is successfully cooked in a block.")
+        .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,
+                               "Gets the smelted ItemStack for this event")
+        .def_property(
+            "result", &BlockCookEvent::getResult,
+            [](BlockCookEvent &self, const ItemStack &result) { self.setResult(result.clone()); },
+            py::return_value_policy::reference, "Gets or sets the resultant ItemStack for this event");
+    py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
+                                                           "Called when a piston block is triggered")
+        .def_property_readonly("direction", &BlockPistonEvent::getDirection,
+                               "Return the direction in which the piston will operate.");
+    py::class_<BlockPistonExtendEvent, BlockPistonEvent>(m, "BlockPistonExtendEvent", "Called when a piston extends.");
+    py::class_<BlockPistonRetractEvent, BlockPistonEvent>(m, "BlockPistonRetractEvent",
+                                                          "Called when a piston retracts.");
     py::class_<BlockPlaceEvent, BlockEvent, ICancellable>(m, "BlockPlaceEvent",
                                                           "Called when a block is placed by a player.")
         .def_property_readonly("player", &BlockPlaceEvent::getPlayer, py::return_value_policy::reference,
@@ -162,10 +182,37 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the player involved in this event.");
+    auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
+        m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
+    // py::enum_<PlayerBedEnterEvent::BedEnterResult>(player_bed_enter_event, "BedEnterResult")
+    //     .value("OK", PlayerBedEnterEvent::BedEnterResult::Ok)
+    //     .value("NOT_POSSIBLE_HERE", PlayerBedEnterEvent::BedEnterResult::NotPossibleHere)
+    //     .value("NOT_POSSIBLE_NOW", PlayerBedEnterEvent::BedEnterResult::NotPossibleNow)
+    //     .value("TOO_FAR_AWAY", PlayerBedEnterEvent::BedEnterResult::TooFarAway)
+    //     .value("NOT_SAFE", PlayerBedEnterEvent::BedEnterResult::NotSafe)
+    //     .value("OTHER_PROBLEM", PlayerBedEnterEvent::BedEnterResult::OtherProblem);
+    player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,
+                                                 py::return_value_policy::reference,
+                                                 "Returns the bed block involved in this event.");
+    // .def_property_readonly("bed_enter_result", &PlayerBedEnterEvent::getBedEnterResult,
+    //                        "Returns the outcome of this event")
+    // .def_property("use_bed", &PlayerBedEnterEvent::useBed, &PlayerBedEnterEvent::setUseBed,
+    //               "Gets or sets the action to take with the bed that was clicked on.");
+
+    py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
+        .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
+                               "Returns the bed block involved in this event.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
-                      "Gets or sets the message that the player will send.");
+                      "Gets or sets the message that the player will send.")
+        .def_property("player", &PlayerChatEvent::getPlayer, &PlayerChatEvent::setPlayer,
+                      py::return_value_policy::reference, "Gets or sets the player that this message will display as")
+        .def_property("format", &PlayerChatEvent::getFormat, &PlayerChatEvent::setFormat,
+                      "Sets the format to use to display this chat message")
+        .def_property_readonly("recipients", &PlayerChatEvent::getRecipients,
+                               py::return_value_policy::reference_internal,
+                               "Gets a set of recipients that this chat message will be displayed to");
     py::class_<PlayerCommandEvent, PlayerEvent, ICancellable>(m, "PlayerCommandEvent",
                                                               "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
@@ -177,14 +224,24 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory")
         .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference,
                                "Gets the ItemStack dropped by the player");
-    py::class_<PlayerEmoteEvent, PlayerEvent>(m, "PlayerEmoteEvent", "Called when a player uses and emote")
-        .def_property_readonly("emote_id", &PlayerEmoteEvent::getEmoteId, "Gets the emote ID");
+    py::class_<PlayerEmoteEvent, PlayerEvent, ICancellable>(m, "PlayerEmoteEvent",
+                                                            "Called when a player uses and emote")
+        .def_property_readonly("emote_id", &PlayerEmoteEvent::getEmoteId, "Gets the emote piece ID")
+        .def_property("is_muted", &PlayerEmoteEvent::isMuted, &PlayerEmoteEvent::setMuted,
+                      "Gets or sets the muted state for the emote.");
     py::class_<PlayerGameModeChangeEvent, PlayerEvent, ICancellable>(
         m, "PlayerGameModeChangeEvent", "Called when the GameMode of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "Gets the GameMode the player is switched to.");
-    py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
-        m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.")
+    auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
+        m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.");
+    py::enum_<PlayerInteractEvent::Action>(player_interact_event, "Action")
+        .value("LEFT_CLICK_BLOCK", PlayerInteractEvent::Action::LeftClickBlock)
+        .value("RIGHT_CLICK_BLOCK", PlayerInteractEvent::Action::RightClickBlock)
+        .value("LEFT_CLICK_AIR", PlayerInteractEvent::Action::LeftClickAir)
+        .value("RIGHT_CLICK_AIR", PlayerInteractEvent::Action::RightClickAir);
+    player_interact_event
+        .def_property_readonly("action", &PlayerInteractEvent::getAction, "Returns the action type of interaction")
         .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "Check if this event involved an item")
         .def_property_readonly("item", &PlayerInteractEvent::getItem, py::return_value_policy::reference,
                                "Returns the item in hand represented by this event")
@@ -204,6 +261,11 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("item", &PlayerItemConsumeEvent::getItem, py::return_value_policy::reference,
                                "Gets or sets the item that is being consumed.")
         .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "Get the hand used to consume the item.");
+    py::class_<PlayerItemHeldEvent, PlayerEvent, ICancellable>(
+        m, "PlayerItemHeldEvent", "Called when a player changes their currently held item.")
+        .def_property_readonly("new_slot", &PlayerItemHeldEvent::getNewSlot, "Gets the new held slot index")
+        .def_property_readonly("previous_slot", &PlayerItemHeldEvent::getPreviousSlot,
+                               "Gets the previous held slot index.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "Gets or sets the join message to send to all online players.");
@@ -225,6 +287,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "Gets or sets the quit message to send to all online players.");
     py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
+    py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
+                                                                 "Called when a player changes their skin.")
+        .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "Gets the player's new skin.")
+        .def_property("skin_change_message", &PlayerSkinChangeEvent::getSkinChangeMessage,
+                      &PlayerSkinChangeEvent::setSkinChangeMessage,
+                      "Gets or sets the message to send to all online players for this skin change.");
     py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
     py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(

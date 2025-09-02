@@ -24,12 +24,16 @@ class UUID {
 public:
     static UUID EMPTY;
     UUID() = default;
+    UUID(uint64_t high, uint64_t low);
     [[nodiscard]] std::string asString() const;
     bool operator==(const UUID &other) const = default;
     bool operator!=(const UUID &other) const = default;
     bool operator<(const UUID &other) const;
 
-    std::int64_t data[2]{0, 0};
+    static bool canParse(std::string_view in);
+    static UUID fromString(std::string_view in);
+
+    std::uint64_t data[2]{0, 0};
 };
 BEDROCK_STATIC_ASSERT_SIZE(UUID, 16, 16);
 }  // namespace mce

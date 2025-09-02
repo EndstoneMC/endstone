@@ -124,13 +124,13 @@ size_t InternalItemDescriptor::getHash() const
 ItemDescriptor::ItemDescriptor(const Block &block)
 {
     const auto registry_ref = ItemRegistryManager::getItemRegistry();
-    const auto block_item_id = block.getLegacyBlock().getBlockItemId();
+    const auto block_item_id = block.getBlockType().getBlockItemId();
     if (auto item = registry_ref.getItem(block_item_id); !item.isNull()) {
         impl_ = std::make_unique<InternalItemDescriptor>(std::move(item), block.data_);
     }
 }
 
-ItemDescriptor::ItemDescriptor(const BlockLegacy &block)
+ItemDescriptor::ItemDescriptor(const BlockType &block)
 {
     const auto registry_ref = ItemRegistryManager::getItemRegistry();
     const auto block_item_id = block.getBlockItemId();
@@ -187,6 +187,25 @@ const Item *ItemDescriptor::getItem() const
     return impl_->getItem().item;
 }
 
+const Block *ItemDescriptor::getBlock() const
+{
+    if (!impl_) {
+        return nullptr;
+    }
+    if (impl_->shouldResolve()) {
+        impl_ = std::move(impl_->resolve());
+    }
+    return impl_->getItem().getBlock();
+}
+
+bool ItemDescriptor::isValid(bool should_resolve) const
+{
+    if (should_resolve && impl_ && impl_->shouldResolve()) {
+        impl_ = std::move(impl_->resolve());
+    }
+    return impl_ != nullptr;
+}
+
 std::int16_t ItemDescriptor::getId() const
 {
     if (!impl_) {
@@ -228,14 +247,14 @@ const Block *ItemDescriptor::ItemEntry::getBlock() const
     if (!item) {
         return nullptr;
     }
-    const auto &block_legacy = item->getLegacyBlock();
-    if (block_legacy.isNull()) {
+    const auto &block_type = item->getBlockType();
+    if (block_type.isNull()) {
         return nullptr;
     }
     if (aux_value == ANY_AUX_VALUE) {
-        return &block_legacy->getRenderBlock();
+        return &block_type->getRenderBlock();
     }
-    return block_legacy->tryGetStateFromLegacyData(aux_value);
+    return block_type->tryGetStateFromLegacyData(aux_value);
 }
 
 bool ItemDescriptor::BaseDescriptor::sameItems(BaseDescriptor const &, bool flag) const

@@ -2,7 +2,6 @@ import ctypes.util
 import os
 import stat
 import subprocess
-import sys
 from pathlib import Path
 
 from endstone._internal.bootstrap.base import Bootstrap
@@ -41,9 +40,6 @@ class LinuxBootstrap(Bootstrap):
     def _run(self, *args, **kwargs) -> int:
         process = subprocess.Popen(
             [str(self.executable_path.absolute())],
-            stdin=sys.stdin,
-            stdout=sys.stdout,
-            stderr=subprocess.STDOUT,
             text=True,
             encoding="utf-8",
             cwd=str(self.server_path.absolute()),

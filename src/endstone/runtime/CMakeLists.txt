@@ -18,6 +18,9 @@ add_library(funchook::funchook ALIAS funchook-static)
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
         bedrock_hooks/bedrock_event_logger.cpp
+        bedrock_hooks/campfire_block_actor.cpp
+        bedrock_hooks/fire_block.cpp
+        bedrock_hooks/health_attribute_delegate.cpp
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item_registry_manager.cpp
         bedrock_hooks/level.cpp
@@ -26,6 +29,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/network_connection.cpp
         bedrock_hooks/network_system.cpp
         bedrock_hooks/packet.cpp
+        bedrock_hooks/piston_block_actor.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/raknet_socket2.cpp
         bedrock_hooks/rak_peer_helper.cpp

@@ -25,7 +25,7 @@ class CommandSenderWrapper final : public CommandSender {
 public:
     using Callback = std::function<void(const Message &)>;
     explicit CommandSenderWrapper(CommandSender &sender, Callback on_message = {}, Callback on_error = {})
-        : sender_(sender), on_message_(std::move(on_message)), on_error_(std::move(on_error)){};
+        : sender_(sender), on_message_(std::move(on_message)), on_error_(std::move(on_error)) {};
 
     void sendMessage(const Message &message) const override
     {
@@ -90,11 +90,6 @@ public:
         return sender_.getEffectivePermissions();
     }
 
-    [[nodiscard]] CommandSender *asCommandSender() const override
-    {
-        return sender_.asCommandSender();
-    }
-
     [[nodiscard]] ConsoleCommandSender *asConsole() const override
     {
         return sender_.asConsole();
@@ -103,11 +98,6 @@ public:
     [[nodiscard]] Actor *asActor() const override
     {
         return sender_.asActor();
-    }
-
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return sender_.asMob();
     }
 
     [[nodiscard]] Player *asPlayer() const override

@@ -103,34 +103,34 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
 std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(CommandSender &sender)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
+    const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
     if (const auto *console = sender.asConsole(); console) {
         CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::DedicatedServer));
-            tag.putString("RequestId", "00000000-0000-0000-0000-000000000000");
+            tag.putString("RequestId", mce::UUID::EMPTY.asString());
             tag.putByte("CommandPermissionLevel", static_cast<std::uint8_t>(CommandPermissionLevel::Owner));
             tag.putString("DimensionId", "overworld");
         }
-        const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 
-    if (const auto *player = static_cast<EndstonePlayer *>(sender.asPlayer()); player) {
+    if (const auto *player = sender.asPlayer(); player) {
         CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
-            tag.putInt64("PlayerId", player->getPlayer().getOrCreateUniqueID().raw_id);
+            tag.putInt64("PlayerId", player->getId());
         }
-        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getPlayer().getLevel()));
+        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 
-    if (const auto *actor = static_cast<EndstoneActor *>(sender.asActor()); actor) {
+    if (const auto *actor = sender.asActor(); actor) {
         CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Entity));
-            tag.putInt64("EntityId", actor->getActor().getOrCreateUniqueID().raw_id);
+            tag.putInt64("EntityId", actor->getId());
         }
-        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(actor->getActor().getLevel()));
+        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 
     return nullptr;

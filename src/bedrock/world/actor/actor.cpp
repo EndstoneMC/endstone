@@ -16,6 +16,7 @@
 
 #include "bedrock/entity/components/actor_definition_identifier_component.h"
 #include "bedrock/entity/components/actor_equipment_component.h"
+#include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
@@ -24,15 +25,19 @@
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
+#include "bedrock/entity/components/should_update_bounding_box_request_component.h"
 #include "bedrock/entity/components/tags_component.h"
 #include "bedrock/entity/systems/tag_system.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
+#include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/actor/mob_jump.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/actor/provider/actor_offset.h"
+#include "bedrock/world/actor/provider/actor_riding.h"
 #include "bedrock/world/level/level.h"
 
 bool Actor::getStatusFlag(ActorFlags flag) const
@@ -70,6 +75,11 @@ const ActorDefinitionIdentifier &Actor::getActorIdentifier() const
         return component->identifier;
     }
     return empty;
+}
+
+const BuiltInActorComponents &Actor::getBuiltInActorComponents() const
+{
+    return built_in_components_;
 }
 
 bool Actor::isSneaking() const
@@ -114,6 +124,11 @@ bool Actor::isClientSide() const
     return level_->isClientSide();
 }
 
+BlockSource &Actor::getDimensionBlockSource() const
+{
+    return dimension_.unwrap()->getBlockSourceFromMainChunkSource();
+}
+
 Dimension &Actor::getDimension() const
 {
     return *dimension_.unwrap();
@@ -129,6 +144,11 @@ const Level &Actor::getLevel() const
     return *static_cast<Level *>(level_);
 }
 
+void Actor::setAABB(const AABB &bb)
+{
+    built_in_components_.aabb_shape_component->aabb = bb;
+}
+
 Vec3 const &Actor::getPosition() const
 {
     return built_in_components_.state_vector_component->pos;
@@ -138,6 +158,11 @@ Vec3 const &Actor::getPosPrev() const
 {
     return built_in_components_.state_vector_component->pos_prev;
 }
+
+// void Actor::setPos(const Vec3 &position)
+// {
+//     ActorSetPosSystem::setPosition(getEntity(), position, level_ == nullptr || level_->isClientSide());
+// }
 
 void Actor::applyImpulse(Vec3 const &impulse)
 {
@@ -175,6 +200,11 @@ AABB const &Actor::getAABB() const
     return built_in_components_.aabb_shape_component->aabb;
 }
 
+const Vec2 &Actor::getAABBDim() const
+{
+    return built_in_components_.aabb_shape_component->bb_dim;
+}
+
 ActorRuntimeID Actor::getRuntimeID() const
 {
     return tryGetComponent<RuntimeIDComponent>()->runtime_id;
@@ -204,9 +234,26 @@ bool Actor::isRiding() const
     return getVehicle() != nullptr;
 }
 
+// void Actor::stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
+//                        bool is_being_teleported)
+// {
+//     BEDROCK_CALL(&Actor::stopRiding, this, exit_from_passenger, actor_is_being_destroyed, switching_vehicles,
+//                  is_being_teleported);
+// }
+
+// bool Actor::hasPassenger() const
+// {
+//     return !ActorRiding::getPassengers(getEntity()).empty();
+// }
+
 bool Actor::hasCategory(ActorCategory categories) const
 {
     return (categories & categories_) == categories;
+}
+
+float Actor::getLastHurtDamage() const
+{
+    return last_hurt_;
 }
 
 Actor *Actor::tryGetFromEntity(EntityContext const &entity, bool include_removed)
@@ -230,6 +277,26 @@ Actor *Actor::tryGetFromEntity(StackRefResult<EntityContext> entity, bool includ
     }
     return tryGetFromEntity(*entity, include_removed);
 }
+
+void Actor::setLastHurtDamage(float damage)
+{
+    last_hurt_ = damage;
+}
+
+// void Actor::_setHeightOffset(float offset)
+// {
+//     ActorOffset::setHeightOffset(getEntity(), offset);
+//     auto pos = getPosition();
+//     setAABB(ActorSetPosSystem::refreshAABB(offset, pos, getAABBDim()));
+//     _moveHitboxTo(pos);
+// }
+
+// void Actor::_moveHitboxTo(const Vec3 &position)
+// {
+//     if (auto *component = tryGetComponent<HitboxComponent>(); component != nullptr) {
+//         ActorSetPosSystem::moveHitboxTo(position, component->hitboxes);
+//     }
+// }
 
 bool Actor::isJumping() const
 {
@@ -333,10 +400,21 @@ MutableAttributeWithContext Actor::getMutableAttribute(const HashedString &name)
     return component->attributes.getMutableInstanceWithContext(name);
 }
 
+gsl::not_null<MutableAttributeWithContext> Actor::getNotNullMutableAttribute(const HashedString &name)
+{
+    auto component = getPersistentComponent<AttributesComponent>();
+    return component->attributes.getMutableInstanceWithContext(name);
+}
+
 float Actor::getFallDistance() const
 {
     auto component = getPersistentComponent<FallDistanceComponent>();
     return component->value;
+}
+
+void Actor::setFallDistance(float value)
+{
+    getPersistentComponent<FallDistanceComponent>()->value = value;
 }
 
 bool Actor::isDead() const
@@ -369,4 +447,39 @@ const ItemStack &Actor::getArmor(ArmorSlot slot) const
 {
     auto component = getPersistentComponent<ActorEquipmentComponent>();
     return component->armor->getItem(static_cast<int>(slot));
+}
+
+bool Actor::isCreative() const
+{
+    if (const auto *component = tryGetComponent<ActorGameTypeComponent>()) {
+        return component->game_type == GameType::Creative || (component->game_type == GameType::WorldDefault &&
+                                                              getLevel().getDefaultGameType() == GameType::Creative);
+    }
+    return false;
+}
+
+bool Actor::isSpectator() const
+{
+    if (const auto *component = tryGetComponent<ActorGameTypeComponent>()) {
+        return component->game_type == GameType::Spectator || (component->game_type == GameType::WorldDefault &&
+                                                               getLevel().getDefaultGameType() == GameType::Spectator);
+    }
+    return false;
+}
+
+void Actor::queueBBUpdateFromValue(const Vec2 &value)
+{
+    getEntity().getOrAddComponent<ShouldUpdateBoundingBoxRequestComponent>().update =
+        ShouldUpdateBoundingBoxRequestComponent::UpdateFromValue(value);
+}
+
+void Actor::queueBBUpdateFromDefinition()
+{
+    getEntity().getOrAddComponent<ShouldUpdateBoundingBoxRequestComponent>().update =
+        ShouldUpdateBoundingBoxRequestComponent::UpdateFromDefinition();
+}
+
+bool Actor::getChainedDamageEffects() const
+{
+    return chained_damage_effects_;
 }

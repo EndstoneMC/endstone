@@ -138,7 +138,7 @@ EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
     }
 
     // Damage
-    if (const auto damage = tag.getInt(Item::TAG_DAMAGE)) {
+    if (const auto damage = tag.getInt(::Item::TAG_DAMAGE)) {
         damage_ = damage;
     }
 }
@@ -295,7 +295,7 @@ void EndstoneItemMeta::setUnbreakable(bool unbreakable)
     unbreakable_ = unbreakable;
 }
 
-bool EndstoneItemMeta::applicableTo(const ItemType &type) const
+bool EndstoneItemMeta::applicableTo(const std::string &type) const
 {
     return type != "minecraft:air";
 }
@@ -337,7 +337,7 @@ void EndstoneItemMeta::applyToItem(CompoundTag &tag) const
     }
 
     if (hasDamage()) {
-        tag.putInt(Item::TAG_DAMAGE, damage_);
+        tag.putInt(::Item::TAG_DAMAGE, damage_);
     }
 }
 }  // namespace endstone::core

@@ -4,42 +4,12 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'DebugArrow', 'DebugBox', 'DebugCircle', 'DebugLine', 'DebugSphere', 'DebugText', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'NamespacedKey', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCommandSender', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Button', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'Item', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerItemHeldEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerSkinChangeEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
     """
-    class Button:
-        """
-        Represents a button with text and an optional icon.
-        """
-        def __init__(self, text: str | Translatable = '', icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> None:
-            ...
-        @property
-        def icon(self) -> str | None:
-            """
-            Gets or sets the icon path or URL of the button
-            """
-        @icon.setter
-        def icon(self, arg1: str) -> ActionForm.Button:
-            ...
-        @property
-        def on_click(self) -> typing.Callable[[Player], None]:
-            """
-            Gets or sets the on click callback.
-            """
-        @on_click.setter
-        def on_click(self, arg1: typing.Callable[[Player], None]) -> ActionForm.Button:
-            ...
-        @property
-        def text(self) -> str | Translatable:
-            """
-            Gets or sets the text of the button
-            """
-        @text.setter
-        def text(self, arg1: str | Translatable) -> ActionForm.Button:
-            ...
-    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button | Divider | Header | Label] | None = None, on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[Button | Divider | Header | Label] | None = None, on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     def add_button(self, text: str | Translatable, icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> ActionForm:
         """
@@ -66,12 +36,12 @@ class ActionForm:
     def content(self, arg1: str | Translatable) -> ActionForm:
         ...
     @property
-    def controls(self) -> list[ActionForm.Button | Divider | Header | Label]:
+    def controls(self) -> list[Button | Divider | Header | Label]:
         """
         Gets or sets the controls of the action form.
         """
     @controls.setter
-    def controls(self, arg1: list[ActionForm.Button | Divider | Header | Label]) -> ActionForm:
+    def controls(self, arg1: list[Button | Divider | Header | Label]) -> ActionForm:
         ...
     @property
     def on_close(self) -> typing.Callable[[Player], None]:
@@ -540,6 +510,32 @@ class BlockBreakEvent(BlockEvent, Cancellable):
         """
         Gets the Player that is breaking the block involved in this event.
         """
+class BlockCommandSender(CommandSender):
+    """
+    Represents a block command sender.
+    """
+    @property
+    def block(self) -> Block:
+        """
+        Returns the block this command sender belongs to
+        """
+class BlockCookEvent(BlockEvent, Cancellable):
+    """
+    Called when an ItemStack is successfully cooked in a block.
+    """
+    @property
+    def result(self) -> ItemStack:
+        """
+        Gets or sets the resultant ItemStack for this event
+        """
+    @result.setter
+    def result(self, arg1: ItemStack) -> None:
+        ...
+    @property
+    def source(self) -> ItemStack:
+        """
+        Gets the smelted ItemStack for this event
+        """
 class BlockData:
     """
     Represents the data related to a live block
@@ -604,6 +600,23 @@ class BlockFace:
     @property
     def value(self) -> int:
         ...
+class BlockPistonEvent(BlockEvent, Cancellable):
+    """
+    Called when a piston block is triggered
+    """
+    @property
+    def direction(self) -> BlockFace:
+        """
+        Return the direction in which the piston will operate.
+        """
+class BlockPistonExtendEvent(BlockPistonEvent):
+    """
+    Called when a piston extends.
+    """
+class BlockPistonRetractEvent(BlockPistonEvent):
+    """
+    Called when a piston retracts.
+    """
 class BlockPlaceEvent(BlockEvent, Cancellable):
     """
     Called when a block is placed by a player.
@@ -774,6 +787,36 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
         """
         Gets a set of recipients that this broadcast message will be displayed to.
         """
+class Button:
+    """
+    Represents a button with text and an optional icon.
+    """
+    def __init__(self, text: str | Translatable = '', icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> None:
+        ...
+    @property
+    def icon(self) -> str | None:
+        """
+        Gets or sets the icon path or URL of the button
+        """
+    @icon.setter
+    def icon(self, arg1: str) -> Button:
+        ...
+    @property
+    def on_click(self) -> typing.Callable[[Player], None]:
+        """
+        Gets or sets the on click callback.
+        """
+    @on_click.setter
+    def on_click(self, arg1: typing.Callable[[Player], None]) -> Button:
+        ...
+    @property
+    def text(self) -> str | Translatable:
+        """
+        Gets or sets the text of the button
+        """
+    @text.setter
+    def text(self, arg1: str | Translatable) -> Button:
+        ...
 class Cancellable:
     """
     Represents an event that may be cancelled by a plugin or the server.
@@ -1056,264 +1099,6 @@ class DamageSource:
         """
         Get the damage type.
         """
-class DebugArrow:
-    """
-    Represents a debug arrow.
-    """
-    def __init__(self) -> None:
-        ...
-    @property
-    def arrow_head_length(self) -> float | None:
-        """
-        Gets or sets the length of the arrowhead.
-        """
-    @arrow_head_length.setter
-    def arrow_head_length(self, arg1: float | None) -> DebugArrow:
-        ...
-    @property
-    def arrow_head_radius(self) -> float | None:
-        """
-        Gets or sets the radius of the arrowhead.
-        """
-    @arrow_head_radius.setter
-    def arrow_head_radius(self, arg1: float | None) -> DebugArrow:
-        ...
-    @property
-    def arrow_head_segments(self) -> int | None:
-        """
-        Gets or sets the number of segments used to render the arrowhead.
-        """
-    @arrow_head_segments.setter
-    def arrow_head_segments(self, arg1: int | None) -> DebugArrow:
-        ...
-    @property
-    def color(self) -> tuple[int, ...] | None:
-        """
-        Gets or sets the color of the debug arrow.
-        """
-    @color.setter
-    def color(self, arg1: tuple[int, ...] | None) -> DebugArrow:
-        ...
-    @property
-    def end_position(self) -> Vector | None:
-        """
-        Gets or sets the end position of the arrow.
-        """
-    @end_position.setter
-    def end_position(self, arg1: Vector | None) -> DebugArrow:
-        ...
-    @property
-    def id(self) -> int:
-        """
-        Gets the id of the debug arrow.
-        """
-    @property
-    def position(self) -> Vector | None:
-        """
-        Gets or sets the position of the debug arrow.
-        """
-    @position.setter
-    def position(self, arg1: Vector | None) -> DebugArrow:
-        ...
-class DebugBox:
-    """
-    Represents a debug box.
-    """
-    def __init__(self) -> None:
-        ...
-    @property
-    def box_bounds(self) -> Vector | None:
-        """
-        Gets or sets the bounds of the box.
-        """
-    @box_bounds.setter
-    def box_bounds(self, arg1: Vector | None) -> DebugBox:
-        ...
-    @property
-    def color(self) -> tuple[int, ...] | None:
-        """
-        Gets or sets the color of the debug box.
-        """
-    @color.setter
-    def color(self, arg1: tuple[int, ...] | None) -> DebugBox:
-        ...
-    @property
-    def id(self) -> int:
-        """
-        Gets the id of the debug box.
-        """
-    @property
-    def position(self) -> Vector | None:
-        """
-        Gets or sets the position of the debug box.
-        """
-    @position.setter
-    def position(self, arg1: Vector | None) -> DebugBox:
-        ...
-    @property
-    def scale(self) -> float | None:
-        """
-        Gets or sets the scale of the box.
-        """
-    @scale.setter
-    def scale(self, arg1: float | None) -> DebugBox:
-        ...
-class DebugCircle:
-    """
-    Represents a debug circle.
-    """
-    def __init__(self) -> None:
-        ...
-    @property
-    def color(self) -> tuple[int, ...] | None:
-        """
-        Gets or sets the color of the debug circle.
-        """
-    @color.setter
-    def color(self, arg1: tuple[int, ...] | None) -> DebugCircle:
-        ...
-    @property
-    def id(self) -> int:
-        """
-        Gets the id of the debug circle.
-        """
-    @property
-    def position(self) -> Vector | None:
-        """
-        Gets or sets the position of the debug circle.
-        """
-    @position.setter
-    def position(self, arg1: Vector | None) -> DebugCircle:
-        ...
-    @property
-    def scale(self) -> float | None:
-        """
-        Gets or sets the scale of the circle.
-        """
-    @scale.setter
-    def scale(self, arg1: float | None) -> DebugCircle:
-        ...
-    @property
-    def segments(self) -> int | None:
-        """
-        Gets or sets the number of segments used to render the circle.
-        """
-    @segments.setter
-    def segments(self, arg1: int | None) -> DebugCircle:
-        ...
-class DebugLine:
-    """
-    Represents a debug line.
-    """
-    def __init__(self) -> None:
-        ...
-    @property
-    def color(self) -> tuple[int, ...] | None:
-        """
-        Gets or sets the color of the debug line.
-        """
-    @color.setter
-    def color(self, arg1: tuple[int, ...] | None) -> DebugLine:
-        ...
-    @property
-    def end_position(self) -> Vector | None:
-        """
-        Gets or sets the end position of the line.
-        """
-    @end_position.setter
-    def end_position(self, arg1: Vector | None) -> DebugLine:
-        ...
-    @property
-    def id(self) -> int:
-        """
-        Gets the id of the debug line.
-        """
-    @property
-    def position(self) -> Vector | None:
-        """
-        Gets or sets the position of the debug line.
-        """
-    @position.setter
-    def position(self, arg1: Vector | None) -> DebugLine:
-        ...
-class DebugSphere:
-    """
-    Represents a debug sphere.
-    """
-    def __init__(self) -> None:
-        ...
-    @property
-    def color(self) -> tuple[int, ...] | None:
-        """
-        Gets or sets the color of the debug sphere.
-        """
-    @color.setter
-    def color(self, arg1: tuple[int, ...] | None) -> DebugSphere:
-        ...
-    @property
-    def id(self) -> int:
-        """
-        Gets the id of the debug sphere.
-        """
-    @property
-    def position(self) -> Vector | None:
-        """
-        Gets or sets the position of the debug sphere.
-        """
-    @position.setter
-    def position(self, arg1: Vector | None) -> DebugSphere:
-        ...
-    @property
-    def scale(self) -> float | None:
-        """
-        Gets or sets the scale of the sphere.
-        """
-    @scale.setter
-    def scale(self, arg1: float | None) -> DebugSphere:
-        ...
-    @property
-    def segments(self) -> int | None:
-        """
-        Gets or sets the number of segments used to render the sphere.
-        """
-    @segments.setter
-    def segments(self, arg1: int | None) -> DebugSphere:
-        ...
-class DebugText:
-    """
-    Represents a debug text.
-    """
-    def __init__(self) -> None:
-        ...
-    @property
-    def color(self) -> tuple[int, ...] | None:
-        """
-        Gets or sets the color of the debug text.
-        """
-    @color.setter
-    def color(self, arg1: tuple[int, ...] | None) -> DebugText:
-        ...
-    @property
-    def id(self) -> int:
-        """
-        Gets the id of the debug text.
-        """
-    @property
-    def position(self) -> Vector | None:
-        """
-        Gets or sets the position of the debug text.
-        """
-    @position.setter
-    def position(self, arg1: Vector | None) -> DebugText:
-        ...
-    @property
-    def text(self) -> str:
-        """
-        Gets or sets the text of the debug text.
-        """
-    @text.setter
-    def text(self, arg1: str) -> DebugText:
-        ...
 class Dimension:
     """
     Represents a dimension within a Level.
@@ -1357,6 +1142,10 @@ class Dimension:
     NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
     THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
+    def drop_item(self, location: Location, item: ItemStack) -> Item:
+        """
+        Drops an item at the specified Location
+        """
     @typing.overload
     def get_block_at(self, location: Location) -> Block:
         """
@@ -1496,9 +1285,9 @@ class Enchantment:
         Check if this enchantment conflicts with another enchantment.
         """
     @property
-    def key(self) -> NamespacedKey:
+    def id(self) -> str:
         """
-        Return the namespaced identifier for this enchantment.
+        Return the identifier for this enchantment.
         """
     @property
     def max_level(self) -> int:
@@ -1516,23 +1305,15 @@ class Enchantment:
         Get the translation key, suitable for use in a translation component.
         """
 class EnchantmentRegistry:
-    @typing.overload
-    def __contains__(self, key: NamespacedKey) -> bool:
-        ...
-    @typing.overload
     def __contains__(self, key: str) -> bool:
         ...
-    @typing.overload
-    def __getitem__(self, key: NamespacedKey) -> Enchantment:
-        ...
-    @typing.overload
     def __getitem__(self, key: str) -> Enchantment:
         ...
     def __iter__(self) -> list:
         ...
-    def get(self, key: NamespacedKey) -> Enchantment:
+    def get(self, key: str) -> Enchantment:
         ...
-    def get_or_throw(self, key: NamespacedKey) -> Enchantment:
+    def get_or_throw(self, key: str) -> Enchantment:
         ...
 class EquipmentSlot:
     BODY: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.BODY: 6>
@@ -1594,6 +1375,37 @@ class EventPriority:
     MONITOR: typing.ClassVar[EventPriority]  # value = <EventPriority.MONITOR: 5>
     NORMAL: typing.ClassVar[EventPriority]  # value = <EventPriority.NORMAL: 2>
     __members__: typing.ClassVar[dict[str, EventPriority]]  # value = {'LOWEST': <EventPriority.LOWEST: 0>, 'LOW': <EventPriority.LOW: 1>, 'NORMAL': <EventPriority.NORMAL: 2>, 'HIGH': <EventPriority.HIGH: 3>, 'HIGHEST': <EventPriority.HIGHEST: 4>, 'MONITOR': <EventPriority.MONITOR: 5>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class EventResult:
+    ALLOW: typing.ClassVar[EventResult]  # value = <EventResult.ALLOW: 2>
+    DEFAULT: typing.ClassVar[EventResult]  # value = <EventResult.DEFAULT: 1>
+    DENY: typing.ClassVar[EventResult]  # value = <EventResult.DENY: 0>
+    __members__: typing.ClassVar[dict[str, EventResult]]  # value = {'DENY': <EventResult.DENY: 0>, 'DEFAULT': <EventResult.DEFAULT: 1>, 'ALLOW': <EventResult.ALLOW: 2>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -1857,8 +1669,44 @@ class IpBanList:
         """
         Gets a vector of pointers to entries in the ban list.
         """
+class Item(Actor):
+    """
+    Represents a base actor in the level.
+    """
+    @property
+    def is_unlimited_lifetime(self) -> bool:
+        """
+        Gets or sets if this Item lives forever
+        """
+    @is_unlimited_lifetime.setter
+    def is_unlimited_lifetime(self, arg1: bool) -> None:
+        ...
+    @property
+    def item_stack(self) -> ItemStack:
+        """
+        Gets or sets the item stack associated with this item drop.
+        """
+    @item_stack.setter
+    def item_stack(self, arg1: ItemStack) -> None:
+        ...
+    @property
+    def pickup_delay(self) -> int:
+        """
+        Gets or sets the delay before this Item is available to be picked up by players.
+        """
+    @pickup_delay.setter
+    def pickup_delay(self, arg1: int) -> None:
+        ...
+    @property
+    def thrower(self) -> int | None:
+        """
+        Gets or sets the thrower of this item.
+        """
+    @thrower.setter
+    def thrower(self, arg1: int | None) -> None:
+        ...
 class ItemFactory:
-    def as_meta_for(self, meta: ItemMeta, type: ItemType) -> ItemMeta:
+    def as_meta_for(self, meta: ItemMeta, type: str) -> ItemMeta:
         """
         Returns an appropriate item meta for the specified item type.
         """
@@ -1866,11 +1714,11 @@ class ItemFactory:
         """
         This method is used to compare two ItemMeta objects.
         """
-    def get_item_meta(self, type: ItemType) -> ItemMeta:
+    def get_item_meta(self, type: str) -> ItemMeta:
         """
         This creates a new item meta for the item type.
         """
-    def is_applicable(self, meta: ItemMeta, type: ItemType) -> bool:
+    def is_applicable(self, meta: ItemMeta, type: str) -> bool:
         """
         This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack
         """
@@ -1973,23 +1821,15 @@ class ItemMeta:
     def repair_cost(self, arg1: int) -> None:
         ...
 class ItemRegistry:
-    @typing.overload
-    def __contains__(self, key: NamespacedKey) -> bool:
-        ...
-    @typing.overload
     def __contains__(self, key: str) -> bool:
         ...
-    @typing.overload
-    def __getitem__(self, key: NamespacedKey) -> ItemType:
-        ...
-    @typing.overload
     def __getitem__(self, key: str) -> ItemType:
         ...
     def __iter__(self) -> list:
         ...
-    def get(self, key: NamespacedKey) -> ItemType:
+    def get(self, key: str) -> ItemType:
         ...
-    def get_or_throw(self, key: NamespacedKey) -> ItemType:
+    def get_or_throw(self, key: str) -> ItemType:
         ...
 class ItemStack:
     """
@@ -2039,7 +1879,7 @@ class ItemStack:
         Get the maximum stack size for this item.
         """
     @property
-    def type(self) -> ItemType:
+    def type(self) -> str:
         """
         Gets or sets the type of this item.
         """
@@ -2074,11 +1914,6 @@ class ItemType:
     def id(self) -> str:
         """
         Return the identifier of this item type.
-        """
-    @property
-    def key(self) -> NamespacedKey:
-        """
-        Return the namespaced identifier of this item type.
         """
     @property
     def max_durability(self) -> int:
@@ -2128,6 +1963,11 @@ class Language:
         """
         Gets the current locale.
         """
+class LeavesDecayEvent(BlockEvent, Cancellable):
+    """
+    Called when leaves are decaying naturally.
+    If a Leaves Decay event is cancelled, the leaves will not decay.
+    """
 class Level:
     def get_dimension(self, name: str) -> Dimension:
         """
@@ -2147,6 +1987,11 @@ class Level:
     def name(self) -> str:
         """
         Gets the unique name of this level
+        """
+    @property
+    def seed(self) -> int:
+        """
+        Gets the Seed for this level.
         """
     @property
     def time(self) -> int:
@@ -2169,7 +2014,7 @@ class Location(Position):
     """
     Represents a 3-dimensional location in a dimension within a level.
     """
-    def __init__(self, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0) -> None:
+    def __init__(self, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0, dimension: Dimension = None) -> None:
         ...
     def __repr__(self) -> str:
         ...
@@ -2565,31 +2410,6 @@ class ModalForm:
     @title.setter
     def title(self, arg1: str | Translatable) -> ModalForm:
         ...
-class NamespacedKey:
-    """
-    Represents a string-based key which consists of two components - a namespace and a key.
-    """
-    @staticmethod
-    def from_string(input: str, plugin: Plugin = None) -> NamespacedKey:
-        """
-        Parses a NamespacedKey from a string.
-        """
-    def __init__(self, arg0: Plugin, arg1: str) -> None:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def key(self) -> str:
-        """
-        Returns the key of the NamespacedKey.
-        """
-    @property
-    def namespace(self) -> str:
-        """
-        Returns the namespace of the NamespacedKey.
-        """
 class Objective:
     """
     Represents an objective on a scoreboard that can show scores specific to entries.
@@ -3058,25 +2878,9 @@ class Player(Mob, OfflinePlayer):
         """
         Play a sound for a player at the location.
         """
-    def remove_debug_shape(self, debug_shape: DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText) -> None:
-        """
-        Removes a debug shape from the player.
-        """
-    def remove_debug_shapes(self, debug_shapes: list[DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText]) -> None:
-        """
-        Removes a number of debug shapes from the player.
-        """
     def reset_title(self) -> None:
         """
         Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.
-        """
-    def send_debug_shape(self, debug_shape: DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText) -> None:
-        """
-        Sends a debug shape to the player.
-        """
-    def send_debug_shapes(self, debug_shapes: list[DebugArrow | DebugBox | DebugCircle | DebugLine | DebugSphere | DebugText]) -> None:
-        """
-        Sends a number of debug shapes to the player.
         """
     def send_form(self, form: MessageForm | ActionForm | ModalForm) -> None:
         """
@@ -3150,6 +2954,11 @@ class Player(Mob, OfflinePlayer):
     def device_os(self) -> str:
         """
         Get the player's current device's operation system (OS).
+        """
+    @property
+    def ender_chest(self) -> Inventory:
+        """
+        Get the player's EnderChest inventory.
         """
     @property
     def exp_level(self) -> int:
@@ -3322,10 +3131,36 @@ class PlayerBanList:
         """
         Gets a vector of pointers to entries in the ban list.
         """
+class PlayerBedEnterEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player is almost about to enter the bed.
+    """
+    @property
+    def bed(self) -> Block:
+        """
+        Returns the bed block involved in this event.
+        """
+class PlayerBedLeaveEvent(PlayerEvent):
+    """
+    Called when a player is leaving a bed.
+    """
+    @property
+    def bed(self) -> Block:
+        """
+        Returns the bed block involved in this event.
+        """
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
     """
+    @property
+    def format(self) -> str:
+        """
+        Sets the format to use to display this chat message
+        """
+    @format.setter
+    def format(self, arg1: str) -> None:
+        ...
     @property
     def message(self) -> str:
         """
@@ -3334,6 +3169,19 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @message.setter
     def message(self, arg1: str) -> None:
         ...
+    @property
+    def player(self) -> Player:
+        """
+        Gets or sets the player that this message will display as
+        """
+    @player.setter
+    def player(self, arg1: Player) -> None:
+        ...
+    @property
+    def recipients(self) -> list[Player]:
+        """
+        Gets a set of recipients that this chat message will be displayed to
+        """
 class PlayerCommandEvent(PlayerEvent, Cancellable):
     """
     Called whenever a player runs a command.
@@ -3351,12 +3199,12 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     Called when a player dies
     """
     @property
-    def death_message(self) -> str:
+    def death_message(self) -> str | Translatable | None:
         """
         Gets or sets the death message that will appear to everyone on the server.
         """
     @death_message.setter
-    def death_message(self, arg1: str) -> None:
+    def death_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """
@@ -3367,15 +3215,23 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
         """
         Gets the ItemStack dropped by the player
         """
-class PlayerEmoteEvent(PlayerEvent):
+class PlayerEmoteEvent(PlayerEvent, Cancellable):
     """
     Called when a player uses and emote
     """
     @property
     def emote_id(self) -> str:
         """
-        Gets the emote ID
+        Gets the emote piece ID
         """
+    @property
+    def is_muted(self) -> bool:
+        """
+        Gets or sets the muted state for the emote.
+        """
+    @is_muted.setter
+    def is_muted(self, arg1: bool) -> None:
+        ...
 class PlayerEvent(Event):
     """
     Represents a player related event
@@ -3407,6 +3263,43 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks a block.
     """
+    class Action:
+        LEFT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_AIR: 2>
+        LEFT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_BLOCK: 0>
+        RIGHT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_AIR: 3>
+        RIGHT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_BLOCK: 1>
+        __members__: typing.ClassVar[dict[str, PlayerInteractEvent.Action]]  # value = {'LEFT_CLICK_BLOCK': <Action.LEFT_CLICK_BLOCK: 0>, 'RIGHT_CLICK_BLOCK': <Action.RIGHT_CLICK_BLOCK: 1>, 'LEFT_CLICK_AIR': <Action.LEFT_CLICK_AIR: 2>, 'RIGHT_CLICK_AIR': <Action.RIGHT_CLICK_AIR: 3>}
+        def __eq__(self, other: typing.Any) -> bool:
+            ...
+        def __getstate__(self) -> int:
+            ...
+        def __hash__(self) -> int:
+            ...
+        def __index__(self) -> int:
+            ...
+        def __init__(self, value: int) -> None:
+            ...
+        def __int__(self) -> int:
+            ...
+        def __ne__(self, other: typing.Any) -> bool:
+            ...
+        def __repr__(self) -> str:
+            ...
+        def __setstate__(self, state: int) -> None:
+            ...
+        def __str__(self) -> str:
+            ...
+        @property
+        def name(self) -> str:
+            ...
+        @property
+        def value(self) -> int:
+            ...
+    @property
+    def action(self) -> PlayerInteractEvent.Action:
+        """
+        Returns the action type of interaction
+        """
     @property
     def block(self) -> Block:
         """
@@ -3418,7 +3311,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         Returns the face of the block that was clicked
         """
     @property
-    def clicked_position(self) -> Vector:
+    def clicked_position(self) -> Vector | None:
         """
         Gets the exact position on the block the player interacted with.
         """
@@ -3511,17 +3404,31 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
         """
         Gets or sets the item that is being consumed.
         """
+class PlayerItemHeldEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player changes their currently held item.
+    """
+    @property
+    def new_slot(self) -> int:
+        """
+        Gets the new held slot index
+        """
+    @property
+    def previous_slot(self) -> int:
+        """
+        Gets the previous held slot index.
+        """
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server
     """
     @property
-    def join_message(self) -> str:
+    def join_message(self) -> str | Translatable | None:
         """
         Gets or sets the join message to send to all online players.
         """
     @join_message.setter
-    def join_message(self, arg1: str) -> None:
+    def join_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerJumpEvent(PlayerMoveEvent):
     """
@@ -3576,7 +3483,7 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     Called when a player picks an item up from the ground.
     """
     @property
-    def item(self) -> ItemStack:
+    def item(self) -> Item:
         """
         Gets the Item picked up by the entity.
         """
@@ -3585,17 +3492,34 @@ class PlayerQuitEvent(PlayerEvent):
     Called when a player leaves a server.
     """
     @property
-    def quit_message(self) -> str:
+    def quit_message(self) -> str | Translatable | None:
         """
         Gets or sets the quit message to send to all online players.
         """
     @quit_message.setter
-    def quit_message(self, arg1: str) -> None:
+    def quit_message(self, arg1: str | Translatable | None) -> None:
         ...
 class PlayerRespawnEvent(PlayerEvent):
     """
     Called when a player respawns.
     """
+class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player changes their skin.
+    """
+    @property
+    def new_skin(self) -> Skin:
+        """
+        Gets the player's new skin.
+        """
+    @property
+    def skin_change_message(self) -> str | Translatable | None:
+        """
+        Gets or sets the message to send to all online players for this skin change.
+        """
+    @skin_change_message.setter
+    def skin_change_message(self, arg1: str | Translatable | None) -> None:
+        ...
 class PlayerTeleportEvent(PlayerMoveEvent):
     """
     Called when a player is teleported from one location to another.
@@ -3961,7 +3885,7 @@ class Position(Vector):
     """
     Represents a 3-dimensional position in a dimension within a level.
     """
-    def __init__(self, dimension: Dimension, x: float, y: float, z: float) -> None:
+    def __init__(self, x: float, y: float, z: float, dimension: Dimension = None) -> None:
         ...
     def __repr__(self) -> str:
         ...
@@ -4317,6 +4241,11 @@ class Server:
     def port_v6(self) -> int:
         """
         Get the game port (IPv6) that the server runs on.
+        """
+    @property
+    def protocol_version(self) -> int:
+        """
+        Gets the network protocol version that this server supports.
         """
     @property
     def scheduler(self) -> Scheduler:
