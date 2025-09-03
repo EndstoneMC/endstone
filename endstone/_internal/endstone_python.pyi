@@ -1103,8 +1103,24 @@ class DebugArrow:
     """
     Represents a debug arrow.
     """
+    @typing.overload
     def __init__(self) -> None:
         ...
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    def add_player(self, player: Player) -> None:
+        """
+        Adds a player to this debug shape causing it to display on the player's screen.
+        """
+    def remove_all(self) -> None:
+        """
+        Removes all players from this debug shape.
+        """
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes a player from this debug shape causing it to be removed from the player's screen.
+        """
     @property
     def arrow_head_length(self) -> float | None:
         """
@@ -1140,7 +1156,7 @@ class DebugArrow:
     @property
     def color(self) -> tuple[int, ...] | None:
         """
-        Gets or sets the color of the debug arrow.
+        Gets or sets the color of the debug shape.
         """
     @color.setter
     def color(self, arg1: tuple[int, ...] | None) -> DebugArrow:
@@ -1156,12 +1172,17 @@ class DebugArrow:
     @property
     def id(self) -> int:
         """
-        Gets the id of the debug arrow.
+        Gets the id of the debug shape.
+        """
+    @property
+    def players(self) -> list[Player]:
+        """
+        Gets the players of the debug shape.
         """
     @property
     def position(self) -> Vector | None:
         """
-        Gets or sets the position of the debug arrow.
+        Gets or sets the position of the debug shape.
         """
     @position.setter
     def position(self, arg1: Vector | None) -> DebugArrow:
@@ -1170,8 +1191,24 @@ class DebugBox:
     """
     Represents a debug box.
     """
+    @typing.overload
     def __init__(self) -> None:
         ...
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    def add_player(self, player: Player) -> None:
+        """
+        Adds a player to this debug shape causing it to display on the player's screen.
+        """
+    def remove_all(self) -> None:
+        """
+        Removes all players from this debug shape.
+        """
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes a player from this debug shape causing it to be removed from the player's screen.
+        """
     @property
     def box_bounds(self) -> Vector | None:
         """
@@ -1183,7 +1220,7 @@ class DebugBox:
     @property
     def color(self) -> tuple[int, ...] | None:
         """
-        Gets or sets the color of the debug box.
+        Gets or sets the color of the debug shape.
         """
     @color.setter
     def color(self, arg1: tuple[int, ...] | None) -> DebugBox:
@@ -1191,12 +1228,17 @@ class DebugBox:
     @property
     def id(self) -> int:
         """
-        Gets the id of the debug box.
+        Gets the id of the debug shape.
+        """
+    @property
+    def players(self) -> list[Player]:
+        """
+        Gets the players of the debug shape.
         """
     @property
     def position(self) -> Vector | None:
         """
-        Gets or sets the position of the debug box.
+        Gets or sets the position of the debug shape.
         """
     @position.setter
     def position(self, arg1: Vector | None) -> DebugBox:
@@ -1213,12 +1255,28 @@ class DebugCircle:
     """
     Represents a debug circle.
     """
+    @typing.overload
     def __init__(self) -> None:
         ...
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    def add_player(self, player: Player) -> None:
+        """
+        Adds a player to this debug shape causing it to display on the player's screen.
+        """
+    def remove_all(self) -> None:
+        """
+        Removes all players from this debug shape.
+        """
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes a player from this debug shape causing it to be removed from the player's screen.
+        """
     @property
     def color(self) -> tuple[int, ...] | None:
         """
-        Gets or sets the color of the debug circle.
+        Gets or sets the color of the debug shape.
         """
     @color.setter
     def color(self, arg1: tuple[int, ...] | None) -> DebugCircle:
@@ -1226,12 +1284,17 @@ class DebugCircle:
     @property
     def id(self) -> int:
         """
-        Gets the id of the debug circle.
+        Gets the id of the debug shape.
+        """
+    @property
+    def players(self) -> list[Player]:
+        """
+        Gets the players of the debug shape.
         """
     @property
     def position(self) -> Vector | None:
         """
-        Gets or sets the position of the debug circle.
+        Gets or sets the position of the debug shape.
         """
     @position.setter
     def position(self, arg1: Vector | None) -> DebugCircle:
@@ -1256,12 +1319,28 @@ class DebugLine:
     """
     Represents a debug line.
     """
+    @typing.overload
     def __init__(self) -> None:
         ...
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    def add_player(self, player: Player) -> None:
+        """
+        Adds a player to this debug shape causing it to display on the player's screen.
+        """
+    def remove_all(self) -> None:
+        """
+        Removes all players from this debug shape.
+        """
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes a player from this debug shape causing it to be removed from the player's screen.
+        """
     @property
     def color(self) -> tuple[int, ...] | None:
         """
-        Gets or sets the color of the debug line.
+        Gets or sets the color of the debug shape.
         """
     @color.setter
     def color(self, arg1: tuple[int, ...] | None) -> DebugLine:
@@ -1277,12 +1356,17 @@ class DebugLine:
     @property
     def id(self) -> int:
         """
-        Gets the id of the debug line.
+        Gets the id of the debug shape.
+        """
+    @property
+    def players(self) -> list[Player]:
+        """
+        Gets the players of the debug shape.
         """
     @property
     def position(self) -> Vector | None:
         """
-        Gets or sets the position of the debug line.
+        Gets or sets the position of the debug shape.
         """
     @position.setter
     def position(self, arg1: Vector | None) -> DebugLine:
@@ -1291,12 +1375,28 @@ class DebugSphere:
     """
     Represents a debug sphere.
     """
+    @typing.overload
     def __init__(self) -> None:
         ...
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    def add_player(self, player: Player) -> None:
+        """
+        Adds a player to this debug shape causing it to display on the player's screen.
+        """
+    def remove_all(self) -> None:
+        """
+        Removes all players from this debug shape.
+        """
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes a player from this debug shape causing it to be removed from the player's screen.
+        """
     @property
     def color(self) -> tuple[int, ...] | None:
         """
-        Gets or sets the color of the debug sphere.
+        Gets or sets the color of the debug shape.
         """
     @color.setter
     def color(self, arg1: tuple[int, ...] | None) -> DebugSphere:
@@ -1304,12 +1404,17 @@ class DebugSphere:
     @property
     def id(self) -> int:
         """
-        Gets the id of the debug sphere.
+        Gets the id of the debug shape.
+        """
+    @property
+    def players(self) -> list[Player]:
+        """
+        Gets the players of the debug shape.
         """
     @property
     def position(self) -> Vector | None:
         """
-        Gets or sets the position of the debug sphere.
+        Gets or sets the position of the debug shape.
         """
     @position.setter
     def position(self, arg1: Vector | None) -> DebugSphere:
@@ -1334,12 +1439,28 @@ class DebugText:
     """
     Represents a debug text.
     """
+    @typing.overload
     def __init__(self) -> None:
         ...
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    def add_player(self, player: Player) -> None:
+        """
+        Adds a player to this debug shape causing it to display on the player's screen.
+        """
+    def remove_all(self) -> None:
+        """
+        Removes all players from this debug shape.
+        """
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes a player from this debug shape causing it to be removed from the player's screen.
+        """
     @property
     def color(self) -> tuple[int, ...] | None:
         """
-        Gets or sets the color of the debug text.
+        Gets or sets the color of the debug shape.
         """
     @color.setter
     def color(self, arg1: tuple[int, ...] | None) -> DebugText:
@@ -1347,12 +1468,17 @@ class DebugText:
     @property
     def id(self) -> int:
         """
-        Gets the id of the debug text.
+        Gets the id of the debug shape.
+        """
+    @property
+    def players(self) -> list[Player]:
+        """
+        Gets the players of the debug shape.
         """
     @property
     def position(self) -> Vector | None:
         """
-        Gets or sets the position of the debug text.
+        Gets or sets the position of the debug shape.
         """
     @position.setter
     def position(self, arg1: Vector | None) -> DebugText:
