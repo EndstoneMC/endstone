@@ -1,0 +1,1 @@
+::: endstone.debug_shape
