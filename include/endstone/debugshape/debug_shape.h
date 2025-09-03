@@ -27,8 +27,8 @@
 namespace endstone {
 
 namespace debugshape_internal {
-    // Decreases from the maximum value to avoid conflicts with sapi's id allocation
-    inline std::atomic id_counter{UINT64_MAX};
+// Decreases from the maximum value to avoid conflicts with sapi's id allocation
+inline std::atomic id_counter{UINT64_MAX};
 }  // namespace debugshape_internal
 
 /**
@@ -107,20 +107,20 @@ public:
      * @brief Adds the player to this debug shape causing it to display on the player's screen.
      * @param player the player to add.
      */
-    void addPlayer(const Player &player)
+    void addPlayer(Player &player)
     {
         players_.emplace(player.getUniqueId());
-        player.sendDebugShape(this);
+        player.sendDebugShape(static_cast<const T &>(*this));
     }
 
     /**
      * @brief Removes the player from this debug shape causing it to be removed from the player's screen.
      * @param player the player to remove.
      */
-    void removePlayer(const Player &player)
+    void removePlayer(Player &player)
     {
         players_.erase(player.getUniqueId());
-        player.removeDebugShape(this);
+        player.removeDebugShape(static_cast<const T &>(*this));
     }
 
     /**
@@ -157,12 +157,12 @@ protected:
     DebugShapeId id_;
     std::optional<Vector<float>> position_;
     std::optional<Color> color_;
-    std::unordered_set<UUID> players_;
+    mutable std::unordered_set<UUID> players_;
 
     void onChange() const
     {
         for (const auto &player : getPlayers()) {
-            player->sendDebugShape(this);
+            player->sendDebugShape(static_cast<const T &>(*this));
         }
     }
 };
