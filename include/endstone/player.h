@@ -21,12 +21,6 @@
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
-#include "endstone/debugshape/debug_arrow.h"
-#include "endstone/debugshape/debug_box.h"
-#include "endstone/debugshape/debug_circle.h"
-#include "endstone/debugshape/debug_line.h"
-#include "endstone/debugshape/debug_sphere.h"
-#include "endstone/debugshape/debug_text.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/offline_player.h"
@@ -36,6 +30,13 @@
 #include "endstone/util/uuid.h"
 
 namespace endstone {
+
+class DebugArrow;
+class DebugBox;
+class DebugCircle;
+class DebugLine;
+class DebugSphere;
+class DebugText;
 
 /**
  * @brief Represents a player.
