@@ -117,6 +117,10 @@ public:
     [[nodiscard]] Skin getSkin() const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
+    void sendDebugShape(DebugShapeVariant debug_shape) override;
+    void sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes) override;
+    void removeDebugShape(DebugShapeVariant debug_shape) override;
+    void removeDebugShapes(std::vector<DebugShapeVariant> debug_shapes) override;
     void sendPacket(int packet_id, std::string_view payload) const override;
     bool handlePacket(Packet &packet);
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);

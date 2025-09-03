@@ -15,6 +15,7 @@ pybind11_add_module(endstone_python MODULE
         endstone_python.cpp
         event.cpp
         form.cpp
+        debug_shape.cpp
         inventory.cpp
         lang.cpp
         level.cpp

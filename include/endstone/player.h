@@ -31,12 +31,20 @@
 
 namespace endstone {
 
+class DebugArrow;
+class DebugBox;
+class DebugCircle;
+class DebugLine;
+class DebugSphere;
+class DebugText;
+
 /**
  * @brief Represents a player.
  */
 class Player : public Mob, public OfflinePlayer {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
+    using DebugShapeVariant = std::variant<DebugArrow, DebugBox, DebugCircle, DebugLine, DebugSphere, DebugText>;
 
 public:
     /**
@@ -459,6 +467,34 @@ public:
      * @brief Closes the forms that are currently open for the player.
      */
     virtual void closeForm() = 0;
+
+    /**
+     * @brief Sends a debug shape to the player.
+     *
+     * @param debug_shape The debug shape to send
+     */
+    virtual void sendDebugShape(DebugShapeVariant debug_shape) = 0;
+
+    /**
+     * @brief Sends a number of debug shapes to the player.
+     *
+     * @param debug_shapes The debug shapes to send
+     */
+    virtual void sendDebugShapes(std::vector<DebugShapeVariant> debug_shapes) = 0;
+
+    /**
+     * @brief Removes a debug shape from the player.
+     *
+     * @param debug_shape The debug shape to remove
+     */
+    virtual void removeDebugShape(DebugShapeVariant debug_shape) = 0;
+
+    /**
+     * @brief Removes a number of debug shapes from the player.
+     *
+     * @param debug_shapes The debug shapes to remove
+     */
+    virtual void removeDebugShapes(std::vector<DebugShapeVariant> debug_shapes) = 0;
 
     /**
      * @brief Sends a packet to the player.
