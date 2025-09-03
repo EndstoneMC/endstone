@@ -42,6 +42,7 @@ public:
     DebugBox &setScale(const std::optional<float> scale)
     {
         scale_ = scale;
+        onChange();
         return *this;
     }
 
@@ -64,6 +65,7 @@ public:
     DebugBox &setBoxBounds(const std::optional<Vector<float>> box_bounds)
     {
         box_bounds_ = box_bounds;
+        onChange();
         return *this;
     }
 

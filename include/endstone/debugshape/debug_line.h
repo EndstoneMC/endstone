@@ -42,6 +42,7 @@ public:
     DebugLine &setEndPosition(const std::optional<Vector<float>> end_position)
     {
         end_position_ = end_position;
+        onChange();
         return *this;
     }
 

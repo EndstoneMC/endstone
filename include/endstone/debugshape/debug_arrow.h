@@ -42,6 +42,7 @@ public:
     DebugArrow &setEndPosition(const std::optional<Vector<float>> end_position)
     {
         end_position_ = end_position;
+        onChange();
         return *this;
     }
 
@@ -64,6 +65,7 @@ public:
     DebugArrow &setArrowHeadLength(const std::optional<float> arrow_head_length)
     {
         arrow_head_length_ = arrow_head_length;
+        onChange();
         return *this;
     }
 
@@ -86,6 +88,7 @@ public:
     DebugArrow &setArrowHeadRadius(const std::optional<float> arrow_head_radius)
     {
         arrow_head_radius_ = arrow_head_radius;
+        onChange();
         return *this;
     }
 
@@ -108,6 +111,7 @@ public:
     DebugArrow &setArrowHeadSegments(const std::optional<std::uint8_t> arrow_head_segments)
     {
         arrow_head_segments_ = arrow_head_segments;
+        onChange();
         return *this;
     }
 
@@ -130,6 +134,7 @@ public:
     DebugArrow &setArrowHeadScale(const std::optional<float> arrow_head_scale)
     {
         arrow_head_scale_ = arrow_head_scale;
+        onChange();
         return *this;
     }
 

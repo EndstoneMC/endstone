@@ -44,6 +44,7 @@ public:
     DebugText &setText(const std::string &text)
     {
         text_ = text;
+        onChange();
         return *this;
     }
 

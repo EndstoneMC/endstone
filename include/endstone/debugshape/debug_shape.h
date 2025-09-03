@@ -14,10 +14,14 @@
 
 #pragma once
 
-#include <optional>
 #include <atomic>
+#include <optional>
+#include <unordered_set>
 
+#include "endstone/detail/endstone.h"
+#include "endstone/player.h"
 #include "endstone/util/color.h"
+#include "endstone/util/uuid.h"
 #include "endstone/util/vector.h"
 
 namespace endstone {
@@ -72,6 +76,7 @@ public:
     T &setPosition(const std::optional<Vector<float>> position)
     {
         position_ = position;
+        onChange();
         return *static_cast<T *>(this);
     }
 
@@ -94,13 +99,72 @@ public:
     T &setColor(const std::optional<Color> color)
     {
         color_ = color;
+        onChange();
         return *static_cast<T *>(this);
+    }
+
+    /**
+     * @brief Adds the player to this debug shape causing it to display on the player's screen.
+     * @param player the player to add.
+     */
+    void addPlayer(const Player &player)
+    {
+        players_.emplace(player.getUniqueId());
+        player.sendDebugShape(this);
+    }
+
+    /**
+     * @brief Removes the player from this debug shape causing it to be removed from the player's screen.
+     * @param player the player to remove.
+     */
+    void removePlayer(const Player &player)
+    {
+        players_.erase(player.getUniqueId());
+        player.removeDebugShape(this);
+    }
+
+    /**
+     * @brief Removes all players from this debug shape.
+     */
+    void removeAll()
+    {
+        for (const auto &player : getPlayers()) {
+            removePlayer(*player);
+        }
+    }
+
+    /**
+     * @brief Returns all players viewing this debug shape.
+     * @return a list of players.
+     */
+    std::vector<Player *> getPlayers() const
+    {
+        std::vector<Player *> players;
+        const auto &server = Endstone::getServer();
+        for (auto it = players_.begin(); it != players_.end();) {
+            if (auto *player = server.getPlayer(*it); player) {
+                players.emplace_back(player);
+                ++it;
+            }
+            else {
+                it = players_.erase(it);
+            }
+        }
+        return players;
     }
 
 protected:
     DebugShapeId id_;
     std::optional<Vector<float>> position_;
     std::optional<Color> color_;
+    std::unordered_set<UUID> players_;
+
+    void onChange() const
+    {
+        for (const auto &player : getPlayers()) {
+            player->sendDebugShape(this);
+        }
+    }
 };
 
 }  // namespace endstone

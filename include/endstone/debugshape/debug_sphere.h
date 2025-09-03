@@ -42,6 +42,7 @@ public:
     DebugSphere &setScale(std::optional<float> scale)
     {
         scale_ = scale;
+        onChange();
         return *this;
     }
 
@@ -64,6 +65,7 @@ public:
     DebugSphere &setSegments(const std::optional<std::uint8_t> segments)
     {
         segments_ = segments;
+        onChange();
         return *this;
     }
 

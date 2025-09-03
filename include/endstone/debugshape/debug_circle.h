@@ -43,6 +43,7 @@ public:
     DebugCircle &setScale(const std::optional<float> scale)
     {
         scale_ = scale;
+        onChange();
         return *this;
     }
 
@@ -65,6 +66,7 @@ public:
     DebugCircle &setSegments(const std::optional<std::uint8_t> segments)
     {
         segments_ = segments;
+        onChange();
         return *this;
     }
 
