@@ -118,6 +118,7 @@ public:
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
     void init(ServerInstance &server_instance);
     void setLevel(::Level &level);
+    void initRegistries();
     void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
     [[nodiscard]] PackSource &getPackSource() const;
     [[nodiscard]] bool getAllowClientPacks() const;
