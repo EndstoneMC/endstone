@@ -52,7 +52,6 @@ _Represents a stack of items._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ItemStack**](#function-itemstack-12) ([**const**](classendstone_1_1Vector.md) std::string & type="minecraft:air", [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount=1, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) data=0) <br> |
 |   | [**ItemStack**](#function-itemstack-22) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & stack) <br> |
 | virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**clone**](#function-clone) () const<br> |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
@@ -64,13 +63,19 @@ _Represents a stack of items._
 | virtual [**bool**](classendstone_1_1Vector.md) | [**isSimilar**](#function-issimilar) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
 |  [**bool**](classendstone_1_1Vector.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
 |  [**bool**](classendstone_1_1Vector.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setAmount**](#function-setamount) ([**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount) <br>_Sets the amount of items in this stack._  |
+| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setAmount**](#function-setamount) ([**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount) <br>_Sets the amount of items in this stack._  |
 | virtual [**void**](classendstone_1_1Vector.md) | [**setData**](#function-setdata) ([**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) data) <br>_Sets the data for this stack of items._  |
 | virtual [**bool**](classendstone_1_1Vector.md) | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setType**](#function-settype) ([**const**](classendstone_1_1Vector.md) std::string & type) <br>_Sets the type of this item._  |
+| virtual Result&lt; [**void**](classendstone_1_1Vector.md) &gt; | [**setType**](#function-settype) ([**const**](classendstone_1_1Vector.md) std::string & type) <br>_Sets the type of this item._  |
 | virtual  | [**~ItemStack**](#function-itemstack) () = default<br> |
 
 
+## Public Static Functions
+
+| Type | Name |
+| ---: | :--- |
+|  Result&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**create**](#function-create-12) ([**const**](classendstone_1_1Vector.md) [**ItemType**](classendstone_1_1ItemType.md) & type, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount=1, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) data=0) <br> |
+|  Result&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**create**](#function-create-22) ([**const**](classendstone_1_1Vector.md) std::string & type, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) amount=1, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) data=0) <br> |
 
 
 
@@ -104,23 +109,6 @@ _Represents a stack of items._
 
 ## Public Functions Documentation
 
-
-
-
-### function ItemStack [1/2]
-
-```C++
-inline explicit endstone::ItemStack::ItemStack (
-    const std::string & type="minecraft:air",
-    const  int amount=1,
-    const  int data=0
-) 
-```
-
-
-
-
-<hr>
 
 
 
@@ -370,7 +358,7 @@ inline bool endstone::ItemStack::operator== (
 
 _Sets the amount of items in this stack._ 
 ```C++
-inline virtual void endstone::ItemStack::setAmount (
+inline virtual Result< void > endstone::ItemStack::setAmount (
     const  int amount
 ) 
 ```
@@ -458,7 +446,7 @@ True if successfully applied [**ItemMeta**](classendstone_1_1ItemMeta.md)
 
 _Sets the type of this item._ 
 ```C++
-inline virtual void endstone::ItemStack::setType (
+inline virtual Result< void > endstone::ItemStack::setType (
     const std::string & type
 ) 
 ```
@@ -485,6 +473,42 @@ inline virtual void endstone::ItemStack::setType (
 
 ```C++
 virtual endstone::ItemStack::~ItemStack () = default
+```
+
+
+
+
+<hr>
+## Public Static Functions Documentation
+
+
+
+
+### function create [1/2]
+
+```C++
+static inline Result< ItemStack > endstone::ItemStack::create (
+    const  ItemType & type,
+    const  int amount=1,
+    const  int data=0
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function create [2/2]
+
+```C++
+static inline Result< ItemStack > endstone::ItemStack::create (
+    const std::string & type,
+    const  int amount=1,
+    const  int data=0
+) 
 ```
 
 

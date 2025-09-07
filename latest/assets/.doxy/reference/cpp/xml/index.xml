@@ -777,12 +777,13 @@
     <member refid="classendstone_1_1ItemStack_1a5446d005144db4818e2fce96da70bd9d" kind="variable"><name>data_</name></member>
     <member refid="classendstone_1_1ItemStack_1a1c1edec51e5963fb5f4c054466bfa6c7" kind="variable"><name>meta_</name></member>
     <member refid="classendstone_1_1ItemStack_1a461336ebca90be761e3d5316621ec234" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1ad18900f0c9460bb45556111d41e4e09c" kind="function"><name>setItemMeta0</name></member>
     <member refid="classendstone_1_1ItemStack_1ad3c33286ebce8800dcf0285a6f0e301a" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" kind="function"><name>~ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" kind="function"><name>getType</name></member>
-    <member refid="classendstone_1_1ItemStack_1a5e9d312e084681c548c2260f2a1f32ce" kind="function"><name>setType</name></member>
+    <member refid="classendstone_1_1ItemStack_1afb1703adc41138ff6a9ddb0c1b67af26" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
-    <member refid="classendstone_1_1ItemStack_1afd9e055aeb937c5b3da9ecc2cf9baecc" kind="function"><name>setAmount</name></member>
+    <member refid="classendstone_1_1ItemStack_1afcf062a1f118ac761cb23dd139dc4f4f" kind="function"><name>setAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1a3f2c4792c2ddb697945ad8458a41e319" kind="function"><name>getData</name></member>
     <member refid="classendstone_1_1ItemStack_1a319d00f3ef1c99fed2b9366a7519e482" kind="function"><name>setData</name></member>
     <member refid="classendstone_1_1ItemStack_1add1c91b0b2f804dbe72efd6991a61b36" kind="function"><name>getMaxStackSize</name></member>
@@ -793,12 +794,13 @@
     <member refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kind="function"><name>hasItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kind="function"><name>setItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a2c8607d72960a4ac9189ad25eb1fd8a0" kind="function"><name>clone</name></member>
+    <member refid="classendstone_1_1ItemStack_1a0e3f9ff0530fdc155e79360af582157f" kind="function"><name>create</name></member>
+    <member refid="classendstone_1_1ItemStack_1afb6bac113f7368ac64d9d152af0d55e2" kind="function"><name>create</name></member>
     <member refid="classendstone_1_1ItemStack_1a98d56b0907d2e07d3ccdb8f0b4639f0d" kind="function"><name>isEndstoneItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1ad18900f0c9460bb45556111d41e4e09c" kind="function"><name>setItemMeta0</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemType" kind="class"><name>endstone::ItemType</name>
     <member refid="classendstone_1_1ItemType_1a0d214cfa5e07bd5310b1ad134f873bc7" kind="function"><name>~ItemType</name></member>
-    <member refid="classendstone_1_1ItemType_1a56424331592c8d52c505a381ff15480d" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1ItemType_1aac2fc561eb00013f4cebf61b4a4fbd19" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1ItemType_1a2e673b2a8d514e0d5697d5c15bee9e3c" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" kind="function"><name>getMaxStackSize</name></member>
     <member refid="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" kind="function"><name>getMaxDurability</name></member>

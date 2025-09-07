@@ -122,6 +122,7 @@
 * **clear** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **contains** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **containsAtLeast** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
+* **create** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))

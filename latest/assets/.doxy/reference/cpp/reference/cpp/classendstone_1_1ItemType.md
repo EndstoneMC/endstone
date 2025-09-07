@@ -52,7 +52,7 @@ _Represents an item type._
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::string\_view | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this item type._  |
+| virtual std::string | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this item type._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getMaxDurability**](#function-getmaxdurability) () const = 0<br>_Gets the maximum durability of this item type._  |
 | virtual [**int**](classendstone_1_1Vector.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Gets the maximum amount of this item type that can be held in a stack._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
@@ -103,7 +103,7 @@ _Represents an item type._
 
 _Return the identifier of this item type._ 
 ```C++
-virtual std::string_view endstone::ItemType::getId () const = 0
+virtual std::string endstone::ItemType::getId () const = 0
 ```
 
 

@@ -31,7 +31,7 @@ namespace endstone {
 class ItemType {
 public:
     virtual ~ItemType() = default;
-    [[nodiscard]] virtual std::string_view getId() const = 0;
+    [[nodiscard]] virtual std::string getId() const = 0;
 
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
