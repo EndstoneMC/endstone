@@ -30,9 +30,9 @@ protected:
 
 public:
     [[nodiscard]] std::string getType() const override;
-    void setType(const std::string &type) override;
+    Result<void> setType(const std::string &type) override;
     [[nodiscard]] int getAmount() const override;
-    void setAmount(int amount) override;
+    Result<void> setAmount(int amount) override;
     [[nodiscard]] int getData() const override;
     void setData(int data) override;
     [[nodiscard]] int getMaxStackSize() const override;

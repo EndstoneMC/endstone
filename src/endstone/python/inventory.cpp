@@ -85,7 +85,14 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Returns an appropriate item meta for the specified item type.");
 
     item_stack
-        .def(py::init<const std::string &, int, int>(), py::arg("type"), py::arg("amount") = 1, py::arg("data") = 0)
+        .def(py::init([](const std::string &type, const int amount, const int data) {
+                 auto result = ItemStack::create(type, amount, data);
+                 if (!result) {
+                     throw std::runtime_error(result.error());
+                 }
+                 return result.value();
+             }),
+             py::arg("type"), py::arg("amount") = 1, py::arg("data") = 0)
         .def_property(
             "type", &ItemStack::getType, [](ItemStack &self, const std::string &type) { self.setType(type); },
             py::return_value_policy::reference, "Gets or sets the type of this item.")

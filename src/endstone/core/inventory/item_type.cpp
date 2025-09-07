@@ -18,7 +18,7 @@ namespace endstone::core {
 
 EndstoneItemType::EndstoneItemType(const ::Item &item) : item_(item) {}
 
-std::string_view EndstoneItemType::getId() const
+std::string EndstoneItemType::getId() const
 {
     return item_.getFullItemName();
 }

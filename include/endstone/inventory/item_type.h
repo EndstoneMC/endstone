@@ -29,7 +29,7 @@ public:
      *
      * @return this item's identifier
      */
-    [[nodiscard]] virtual std::string_view getId() const = 0;
+    [[nodiscard]] virtual std::string getId() const = 0;
 
     /**
      * @brief Get the translation key, suitable for use in a translation component.

@@ -20,9 +20,7 @@
 
 namespace endstone::core {
 
-EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item) : ItemStack(getType(&item), item.getCount()), item_(item)
-{
-}
+EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item) : item_(item) {}
 
 EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &rhs) : ItemStack(rhs), item_(rhs.item_)
 {
@@ -39,12 +37,12 @@ std::string EndstoneItemStack::getType() const
     return getType(&item_);
 }
 
-void EndstoneItemStack::setType(const std::string &type)
+Result<void> EndstoneItemStack::setType(const std::string &type)
 {
-    if (getType() == type) {
-        return;
-    }
+    const auto *item_type = ItemType::get(type);
+    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
     item_.reinit(type, getAmount(), getData());
+    return {};
 }
 
 int EndstoneItemStack::getAmount() const
@@ -52,9 +50,11 @@ int EndstoneItemStack::getAmount() const
     return !item_.isNull() ? item_.getCount() : 0;
 }
 
-void EndstoneItemStack::setAmount(int amount)
+Result<void> EndstoneItemStack::setAmount(int amount)
 {
-    item_.set(amount);
+    ENDSTONE_CHECKF(amount >= 1 && amount <= 0xff, "Item stack amount must be between 1 to 255, got {}.", amount);
+    item_.set(amount & 0xff);
+    return {};
 }
 
 int EndstoneItemStack::getData() const
