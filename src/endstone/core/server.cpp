@@ -106,12 +106,10 @@ void EndstoneServer::setLevel(::Level &level)
         throw std::runtime_error("Level already initialized.");
     }
     level_ = std::make_unique<EndstoneLevel>(level);
-    enchantment_registry_ = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
-    item_registry_ = EndstoneRegistry<ItemType, ::Item>::createRegistry();
-    BlockStateRegistry::get();
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
+    initRegistries();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
     on_chunk_load_subscription_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
         [&](ChunkSource & /*chunk_source*/, LevelChunk &lc, int /*closest_player_distance_squared*/) -> void {
@@ -133,6 +131,17 @@ void EndstoneServer::setLevel(::Level &level)
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     getPluginManager().callEvent(event);
+}
+
+void EndstoneServer::initRegistries()
+{
+    enchantment_registry_ = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
+    item_registry_ = EndstoneRegistry<ItemType, ::Item>::createRegistry();
+    BlockStateRegistry::get().unregisterBlockStates();
+    ::BlockState::forEachState([this](const auto &state) {
+        BlockStateRegistry::get().registerBlockState(state);
+        return true;
+    });
 }
 
 void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
@@ -412,6 +421,7 @@ void EndstoneServer::reloadData()
 {
     server_instance_->getMinecraft()->requestResourceReload();
     level_->getHandle().loadFunctionManager();
+    initRegistries();
 }
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const

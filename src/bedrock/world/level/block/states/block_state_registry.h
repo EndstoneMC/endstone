@@ -17,15 +17,19 @@
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 
 class BlockStateRegistry {
-    BlockStateRegistry()
-    {
-        BlockState::forEachState([this](const auto &state) {
-            block_state_map_[state.getName()] = &state;
-            return true;
-        });
-    }
+    BlockStateRegistry() = default;
 
 public:
+    void registerBlockState(const BlockState &state)
+    {
+        block_state_map_[state.getName()] = &state;
+    }
+
+    void unregisterBlockStates()
+    {
+        block_state_map_.clear();
+    }
+
     static BlockStateRegistry &get()
     {
         static BlockStateRegistry instance;
