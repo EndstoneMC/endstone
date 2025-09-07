@@ -15,3 +15,5 @@
 #include "bedrock/world/item/item_instance.h"
 
 const ItemInstance ItemInstance::EMPTY_ITEM{};
+
+ItemInstance::ItemInstance(const ItemStackBase &item) : ItemStackBase(item) {}

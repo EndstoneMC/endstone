@@ -19,7 +19,8 @@
 class ItemInstance final : public ItemStackBase {
 public:
     static const ItemInstance EMPTY_ITEM;
-    using ItemStackBase::ItemStackBase;
+    ItemInstance() = default;
+    explicit ItemInstance(const ItemStackBase &);
 };
 
 struct SortItemInstanceIdAux {
