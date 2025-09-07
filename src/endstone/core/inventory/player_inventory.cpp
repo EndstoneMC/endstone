@@ -37,14 +37,6 @@ std::unique_ptr<ItemStack> EndstonePlayerInventory::getItem(int index) const
 void EndstonePlayerInventory::setItem(int index, const ItemStack *item)
 {
     EndstoneInventory::setItem(index, item);
-    // Notify the client about the updated item in the slot
-    // https://github.com/EndstoneMC/endstone/issues/242
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::InventorySlot);
-    auto &pk = static_cast<InventorySlotPacket &>(*packet);
-    pk.inventory_id = holder_.getSupplies().getSelectedContainerId();
-    pk.item = EndstoneItemStack::toMinecraft(item);
-    pk.slot = index;
-    holder_.sendNetworkPacket(pk);
 }
 
 std::unordered_map<int, ItemStack *> EndstonePlayerInventory::addItem(std::vector<ItemStack *> items)

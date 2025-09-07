@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/item/item_stack.h"
 #include "endstone/inventory/item_stack.h"
 
@@ -43,13 +44,13 @@ public:
 
     static ::ItemStack toMinecraft(const ItemStack *item);
     static std::unique_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
-    static std::string getType(const ::ItemStack *item);
-    static std::unique_ptr<ItemMeta> getItemMeta(const ::ItemStack *item);
-    static bool hasItemMeta(const ::ItemStack *item);
-    static bool setItemMeta(::ItemStack *item, const ItemMeta *meta);
+    static std::string getType(const ItemStackBase *item);
+    static std::unique_ptr<ItemMeta> getItemMeta(const ItemStackBase *item);
+    static bool hasItemMeta(const ItemStackBase *item);
+    static bool setItemMeta(ItemStackBase *item, const ItemMeta *meta);
 
 private:
-    ::ItemStack &handle_;
+    ItemInstance item_;
 };
 
 }  // namespace endstone::core

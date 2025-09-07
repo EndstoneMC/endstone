@@ -20,14 +20,13 @@
 
 namespace endstone::core {
 
-EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item)
-    : ItemStack(getType(&item), item.getCount()), handle_(const_cast<::ItemStack &>(item))
+EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item) : ItemStack(getType(&item), item.getCount()), item_(item)
 {
 }
 
-EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &item) : ItemStack(item), handle_(item.handle_)
+EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &rhs) : ItemStack(rhs), item_(rhs.item_)
 {
-    EndstoneItemStack::setItemMeta(item.getItemMeta().get());
+    EndstoneItemStack::setItemMeta(rhs.getItemMeta().get());
 }
 
 bool EndstoneItemStack::isEndstoneItemStack() const
@@ -37,7 +36,7 @@ bool EndstoneItemStack::isEndstoneItemStack() const
 
 std::string EndstoneItemStack::getType() const
 {
-    return getType(&handle_);
+    return getType(&item_);
 }
 
 void EndstoneItemStack::setType(const std::string &type)
@@ -45,40 +44,39 @@ void EndstoneItemStack::setType(const std::string &type)
     if (getType() == type) {
         return;
     }
-    handle_.reinit(type, getAmount(), getData());
+    item_.reinit(type, getAmount(), getData());
 }
 
 int EndstoneItemStack::getAmount() const
 {
-    return !handle_.isNull() ? handle_.getCount() : 0;
+    return !item_.isNull() ? item_.getCount() : 0;
 }
 
 void EndstoneItemStack::setAmount(int amount)
 {
-    const std::uint8_t count = amount & 0xff;
-    handle_.set(count);
+    item_.set(amount);
 }
 
 int EndstoneItemStack::getData() const
 {
-    return !handle_.isNull() ? handle_.getAuxValue() : 0;
+    return !item_.isNull() ? item_.getAuxValue() : 0;
 }
 
 void EndstoneItemStack::setData(const int data)
 {
-    const auto aux_value = static_cast<std::int16_t>(data & 0X7fff);
-    if (handle_.isNull()) {
+    const auto aux_value = static_cast<std::int16_t>(data & 0x7fff);
+    if (item_.isNull()) {
         return;
     }
-    handle_.setAuxValue(aux_value);
+    item_.setAuxValue(aux_value);
 }
 
 int EndstoneItemStack::getMaxStackSize() const
 {
-    if (handle_.isNull()) {
+    if (item_.isNull()) {
         return 0;
     }
-    return handle_.getMaxStackSize();
+    return item_.getMaxStackSize();
 }
 
 bool EndstoneItemStack::isSimilar(const ItemStack &other) const
@@ -91,29 +89,29 @@ bool EndstoneItemStack::isSimilar(const ItemStack &other) const
     }
 
     const auto &that = static_cast<const EndstoneItemStack &>(other);
-    if (handle_ == that.handle_) {
+    if (&item_ == &that.item_) {
         return true;
     }
     if (getType() != that.getType()) {
         return false;
     }
-    return hasItemMeta() ? that.hasItemMeta() && handle_.getUserData()->equals(*that.handle_.getUserData())
+    return hasItemMeta() ? that.hasItemMeta() && item_.getUserData()->equals(*that.item_.getUserData())
                          : !that.hasItemMeta();
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
 {
-    return getItemMeta(&handle_);
+    return getItemMeta(&item_);
 }
 
 bool EndstoneItemStack::hasItemMeta() const
 {
-    return hasItemMeta(&handle_) && !EndstoneItemFactory::instance().equals(getItemMeta().get(), nullptr);
+    return hasItemMeta(&item_) && !EndstoneItemFactory::instance().equals(getItemMeta().get(), nullptr);
 }
 
 bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
 {
-    return setItemMeta(&handle_, meta);
+    return setItemMeta(&item_, meta);
 }
 
 std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
@@ -128,11 +126,11 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
     }
 
     if (item->isEndstoneItemStack()) {
-        const auto *stack = static_cast<const EndstoneItemStack *>(item);
-        if (stack->handle_.isNull()) {
+        auto *stack = static_cast<const EndstoneItemStack *>(item);
+        if (stack->item_.isNull()) {
             return ::ItemStack::EMPTY_ITEM;
         }
-        return stack->handle_;  // Call the copy constructor to make a copy
+        return ::ItemStack(stack->item_);  // Call the copy constructor to make a copy
     }
 
     auto stack = ::ItemStack(item->getType(), item->getAmount(), item->getData());
@@ -150,14 +148,13 @@ std::unique_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::Item
     return std::make_unique<EndstoneItemStack>(item);
 }
 
-std::string EndstoneItemStack::getType(const ::ItemStack *item)
+std::string EndstoneItemStack::getType(const ItemStackBase *item)
 {
     return (item && !item->isNull()) ? item->getItem()->getFullItemName() : "minecraft:air";
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item)
+std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ItemStackBase *item)
 {
-    const auto &type = getType(item);
     if (!hasItemMeta(item)) {
         return EndstoneItemFactory::instance().getItemMeta(getType(item));
     }
@@ -169,12 +166,12 @@ std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ::ItemStack *item
     return std::make_unique<EndstoneItemMeta>(*item->getUserData());
 }
 
-bool EndstoneItemStack::hasItemMeta(const ::ItemStack *item)
+bool EndstoneItemStack::hasItemMeta(const ItemStackBase *item)
 {
     return item != nullptr && !item->isNull() && item->getUserData() != nullptr && !item->getUserData()->isEmpty();
 }
 
-bool EndstoneItemStack::setItemMeta(::ItemStack *item, const ItemMeta *meta)
+bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
 {
     if (item == nullptr || item->isNull()) {
         return false;
