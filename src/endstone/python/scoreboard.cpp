@@ -117,14 +117,14 @@ void init_scoreboard(py::module_ &m)
         .def(py::self != py::self);
 
     scoreboard
-        .def("add_objective",
-             // [](Scoreboard &self, const std::string &name, Criteria::Type criteria,
-             //    const std::optional<std::string> &display_name, RenderType render_type) {
-             //     return self.addObjective(name, criteria, display_name.value_or(name), render_type);
-             // },
-             py::overload_cast<std::string, Criteria::Type, std::string, RenderType>(&Scoreboard::addObjective),
-             "Registers an Objective on this Scoreboard with a name displayed to players", py::arg("name"),
-             py::arg("criteria"), py::arg("display_name"), py::arg("render_type") = RenderType::Integer)
+        .def(
+            "add_objective",
+            [](Scoreboard &self, const std::string &name, Criteria::Type criteria,
+               const std::optional<std::string> &display_name, RenderType render_type) {
+                return self.addObjective(name, criteria, display_name.value_or(name), render_type);
+            },
+            "Registers an Objective on this Scoreboard with a name displayed to players", py::arg("name"),
+            py::arg("criteria"), py::arg("display_name") = py::none(), py::arg_v("render_type", RenderType::Integer))
         .def("get_objective", py::overload_cast<std::string>(&Scoreboard::getObjective, py::const_),
              "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert())
         .def("get_objective", py::overload_cast<DisplaySlot>(&Scoreboard::getObjective, py::const_),

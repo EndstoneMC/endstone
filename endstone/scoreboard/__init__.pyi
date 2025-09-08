@@ -194,7 +194,7 @@ class Scoreboard:
         self,
         name: str,
         criteria: Criteria.Type,
-        display_name: str,
+        display_name: str | None = None,
         render_type: RenderType = RenderType.INTEGER,
     ) -> Objective:
         """
