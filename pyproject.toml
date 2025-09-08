@@ -29,6 +29,7 @@ dependencies = [
     "endstone-bstats",
     "importlib-metadata",
     "importlib-resources",
+    "lazy-loader",
     "numpy",
     "packaging",
     "pkginfo",
