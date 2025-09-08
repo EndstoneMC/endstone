@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import collections
 import typing
 
 __all__: list[str] = ["Language", "Translatable"]

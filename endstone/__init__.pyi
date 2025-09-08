@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import collections
 import datetime
 import enum
 import typing
@@ -265,7 +266,7 @@ class Player(actor.Mob, OfflinePlayer):
 
     def send_form(
         self,
-        form: endstone._python.form.MessageForm | endstone._python.form.ActionForm | endstone._python.form.ModalForm,
+        form: form.MessageForm | form.ActionForm | form.ModalForm,
     ) -> None:
         """
         Sends a form to the player.
@@ -513,12 +514,12 @@ class Server:
     Represents a server implementation.
     """
 
-    def broadcast(self, message: str | endstone._python.lang.Translatable, permission: str) -> None:
+    def broadcast(self, message: str | lang.Translatable, permission: str) -> None:
         """
         Broadcasts the specified message to every user with the given permission name.
         """
 
-    def broadcast_message(self, message: str | endstone._python.lang.Translatable) -> None:
+    def broadcast_message(self, message: str | lang.Translatable) -> None:
         """
         Broadcasts the specified message to every user with permission endstone.broadcast.user
         """

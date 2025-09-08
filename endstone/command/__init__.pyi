@@ -6,9 +6,10 @@ from __future__ import annotations
 
 import collections.abc
 
-import endstone._python
-import endstone._python.block
-import endstone._python.permissions
+from endstone import Server
+from endstone.block import Block
+from endstone.lang import Translatable
+from endstone.permissions import Permissible
 
 __all__: list[str] = [
     "BlockCommandSender",
@@ -25,7 +26,7 @@ class BlockCommandSender(CommandSender):
     """
 
     @property
-    def block(self) -> endstone._python.block.Block:
+    def block(self) -> Block:
         """
         Returns the block this command sender belongs to
         """
@@ -118,17 +119,17 @@ class CommandExecutor:
         Executes the given command, returning its success.
         """
 
-class CommandSender(endstone._python.permissions.Permissible):
+class CommandSender(Permissible):
     """
     Represents a command sender.
     """
 
-    def send_error_message(self, message: str | endstone._python.lang.Translatable) -> None:
+    def send_error_message(self, message: str | Translatable) -> None:
         """
         Sends this sender an error message
         """
 
-    def send_message(self, message: str | endstone._python.lang.Translatable) -> None:
+    def send_message(self, message: str | Translatable) -> None:
         """
         Sends this sender a message
         """
@@ -140,7 +141,7 @@ class CommandSender(endstone._python.permissions.Permissible):
         """
 
     @property
-    def server(self) -> endstone._python.Server:
+    def server(self) -> Server:
         """
         Returns the server instance that this command is running on
         """
@@ -153,8 +154,8 @@ class CommandSenderWrapper(CommandSender):
     def __init__(
         self,
         sender: CommandSender,
-        on_message: collections.abc.Callable[[str | endstone._python.lang.Translatable], None] = None,
-        on_error: collections.abc.Callable[[str | endstone._python.lang.Translatable], None] = None,
+        on_message: collections.abc.Callable[[str | Translatable], None] = None,
+        on_error: collections.abc.Callable[[str | Translatable], None] = None,
     ) -> None: ...
 
 class ConsoleCommandSender(CommandSender):

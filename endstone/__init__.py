@@ -1,7 +1,5 @@
 import lazy_loader as lazy
 
-from endstone._version import __version__
-
 __minecraft_version__ = "1.21.102"
 
 __getattr__, __dir__, __all__ = lazy.attach(
@@ -36,12 +34,8 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "scoreboard",
             "util",
         ],
+        "_version": ["__version__"],
     },
 )
 
-__all__.extend(
-    [
-        "__version__",
-        "__minecraft_version__",
-    ]
-)
+__all__.extend(["__minecraft_version__"])

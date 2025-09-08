@@ -3,10 +3,10 @@ from __future__ import annotations
 import enum
 import typing
 
-import endstone._python.actor
-import endstone._python.block
-import endstone._python.inventory
-import endstone._python.util
+from endstone.actor import Actor, Item
+from endstone.block import Block
+from endstone.inventory import ItemStack
+from endstone.util import Vector
 
 __all__: list[str] = ["Chunk", "Dimension", "Level", "Location"]
 
@@ -61,33 +61,31 @@ class Dimension:
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
     THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
 
-    def drop_item(self, location: Location, item: endstone._python.inventory.ItemStack) -> endstone._python.actor.Item:
+    def drop_item(self, location: Location, item: ItemStack) -> Item:
         """
         Drops an item at the specified Location
         """
 
     @typing.overload
-    def get_block_at(self, location: Location) -> endstone._python.block.Block:
+    def get_block_at(self, location: Location) -> Block:
         """
         Gets the Block at the given Location
         """
 
     @typing.overload
-    def get_block_at(
-        self, x: typing.SupportsInt, y: typing.SupportsInt, z: typing.SupportsInt
-    ) -> endstone._python.block.Block:
+    def get_block_at(self, x: typing.SupportsInt, y: typing.SupportsInt, z: typing.SupportsInt) -> Block:
         """
         Gets the Block at the given coordinates
         """
 
     @typing.overload
-    def get_highest_block_at(self, location: Location) -> endstone._python.block.Block:
+    def get_highest_block_at(self, location: Location) -> Block:
         """
         Gets the highest non-empty (impassable) block at the given Location.
         """
 
     @typing.overload
-    def get_highest_block_at(self, x: typing.SupportsInt, z: typing.SupportsInt) -> endstone._python.block.Block:
+    def get_highest_block_at(self, x: typing.SupportsInt, z: typing.SupportsInt) -> Block:
         """
         Gets the highest non-empty (impassable) block at the given coordinates.
         """
@@ -128,7 +126,7 @@ class Level:
         """
 
     @property
-    def actors(self) -> list[endstone._python.actor.Actor]:
+    def actors(self) -> list[Actor]:
         """
         Get a list of all actors in this level
         """
@@ -160,7 +158,7 @@ class Level:
     @time.setter
     def time(self, arg1: typing.SupportsInt) -> None: ...
 
-class Location(endstone._python.util.Vector):
+class Location(Vector):
     """
     Represents a 3-dimensional location in a dimension within a level.
     """

@@ -4,12 +4,12 @@ Classes relating to the specialized enhancements to ItemStacks.
 
 from __future__ import annotations
 
-import endstone._python.inventory
+from endstone.inventory import ItemStack
 
 __all__: list[str] = ["Enchantment"]
 
 class Enchantment:
-    def can_enchant_item(self, item: endstone._python.inventory.ItemStack) -> bool:
+    def can_enchant_item(self, item: ItemStack) -> bool:
         """
         Checks if this Enchantment may be applied to the given ItemStack.
 

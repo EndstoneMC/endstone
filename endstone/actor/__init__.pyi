@@ -7,7 +7,9 @@ from __future__ import annotations
 import typing
 
 from endstone.command import CommandSender
-from endstone.util import Location
+from endstone.inventory import ItemStack
+from endstone.level import Dimension, Level, Location
+from endstone.util import Vector
 
 __all__: list[str] = ["Actor", "Item", "Mob"]
 

@@ -7,6 +7,9 @@ from __future__ import annotations
 import enum
 import typing
 
+from endstone import Player
+from endstone.actor import Actor
+
 __all__: list[str] = ["Criteria", "DisplaySlot", "Objective", "ObjectiveSortOrder", "RenderType", "Score", "Scoreboard"]
 
 class Criteria:
@@ -48,15 +51,15 @@ class Objective:
 
     def __eq__(self, arg0: Objective) -> bool: ...
     def __ne__(self, arg0: Objective) -> bool: ...
-    def get_score(self, entry: endstone._python.Player | endstone._python.actor.Actor | str) -> Score:
+    def get_score(self, entry: Player | Actor | str) -> Score:
         """
         Gets an entry's Score for this objective
         """
 
     def set_display(
         self,
-        slot: endstone._python.scoreboard.DisplaySlot | None,
-        order: endstone._python.scoreboard.ObjectiveSortOrder | None = None,
+        slot: DisplaySlot | None,
+        order: ObjectiveSortOrder | None = None,
     ) -> None:
         """
         Sets the display slot and sort order for this objective. This will remove it from any other display slot.
@@ -82,13 +85,13 @@ class Objective:
     @display_name.setter
     def display_name(self, arg1: str) -> None: ...
     @property
-    def display_slot(self) -> endstone._python.scoreboard.DisplaySlot | None:
+    def display_slot(self) -> DisplaySlot | None:
         """
         Gets or sets the display slot this objective is displayed at
         """
 
     @display_slot.setter
-    def display_slot(self, arg1: endstone._python.scoreboard.DisplaySlot | None) -> None: ...
+    def display_slot(self, arg1: DisplaySlot | None) -> None: ...
     @property
     def is_displayed(self) -> bool:
         """
@@ -120,7 +123,7 @@ class Objective:
         """
 
     @property
-    def sort_order(self) -> endstone._python.scoreboard.ObjectiveSortOrder | None:
+    def sort_order(self) -> ObjectiveSortOrder | None:
         """
         Gets or sets the sort order for this objective
         """
@@ -150,7 +153,7 @@ class Score:
     """
 
     @property
-    def entry(self) -> endstone._python.Player | endstone._python.actor.Actor | str:
+    def entry(self) -> Player | Actor | str:
         """
         Gets the entry being tracked by this Score
         """
@@ -192,7 +195,7 @@ class Scoreboard:
         name: str,
         criteria: Criteria.Type,
         display_name: str,
-        render_type: RenderType = endstone._python.RenderType.INTEGER,
+        render_type: RenderType = RenderType.INTEGER,
     ) -> Objective:
         """
         Registers an Objective on this Scoreboard with a name displayed to players
@@ -220,18 +223,18 @@ class Scoreboard:
         Gets all Objectives of a Criteria on the Scoreboard
         """
 
-    def get_scores(self, entry: endstone._python.Player | endstone._python.actor.Actor | str) -> list[Score]:
+    def get_scores(self, entry: Player | Actor | str) -> list[Score]:
         """
         Gets all scores for an entry on this Scoreboard
         """
 
-    def reset_scores(self, entry: endstone._python.Player | endstone._python.actor.Actor | str) -> None:
+    def reset_scores(self, entry: Player | Actor | str) -> None:
         """
         Removes all scores for an entry on this Scoreboard
         """
 
     @property
-    def entries(self) -> list[endstone._python.Player | endstone._python.actor.Actor | str]:
+    def entries(self) -> list[Player | Actor | str]:
         """
         Gets all entries tracked by this Scoreboard
         """

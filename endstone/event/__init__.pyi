@@ -8,15 +8,16 @@ import collections.abc
 import enum
 import typing
 
-import endstone._python
-import endstone._python.actor
-import endstone._python.block
-import endstone._python.command
-import endstone._python.damage
-import endstone._python.inventory
-import endstone._python.level
-import endstone._python.plugin
-import endstone._python.util
+from endstone import GameMode, Player, Skin
+from endstone.actor import Actor, Item, Mob
+from endstone.block import Block, BlockFace, BlockState
+from endstone.command import CommandSender
+from endstone.damage import DamageSource
+from endstone.inventory import EquipmentSlot, ItemStack
+from endstone.lang import Translatable
+from endstone.level import Chunk, Dimension, Level, Location
+from endstone.plugin import Plugin
+from endstone.util import SocketAddress, Vector
 
 __all__: list[str] = [
     "ActorDamageEvent",
@@ -81,9 +82,8 @@ __all__: list[str] = [
     "ThunderChangeEvent",
     "WeatherChangeEvent",
     "WeatherEvent",
+    "event_handler",
 ]
-
-def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False): ...
 
 class ActorDamageEvent(MobEvent, Cancellable):
     """
@@ -99,7 +99,7 @@ class ActorDamageEvent(MobEvent, Cancellable):
     @damage.setter
     def damage(self, arg1: typing.SupportsFloat) -> None: ...
     @property
-    def damage_source(self) -> endstone._python.damage.DamageSource:
+    def damage_source(self) -> DamageSource:
         """
         Gets the source of damage.
         """
@@ -110,7 +110,7 @@ class ActorDeathEvent(MobEvent):
     """
 
     @property
-    def damage_source(self) -> endstone._python.damage.DamageSource:
+    def damage_source(self) -> DamageSource:
         """
         Gets the source of damage which caused the death.
         """
@@ -121,7 +121,7 @@ class ActorEvent(Event):
     """
 
     @property
-    def actor(self) -> endstone._python.actor.Actor:
+    def actor(self) -> Actor:
         """
         Returns the Actor involved in this event
         """
@@ -132,15 +132,15 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
     """
 
     @property
-    def block_list(self) -> list[endstone._python.block.Block]:
+    def block_list(self) -> list[Block]:
         """
         Gets or sets the list of blocks that would have been removed or were removed from the explosion event.
         """
 
     @block_list.setter
-    def block_list(self, arg1: collections.abc.Sequence[endstone._python.block.Block]) -> None: ...
+    def block_list(self, arg1: collections.abc.Sequence[Block]) -> None: ...
     @property
-    def location(self) -> endstone._python.util.Location:
+    def location(self) -> Location:
         """
         Returns the location where the explosion happened.
         """
@@ -151,15 +151,15 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
     """
 
     @property
-    def knockback(self) -> endstone._python.util.Vector:
+    def knockback(self) -> Vector:
         """
         Gets or sets the knockback that will be applied to the entity.
         """
 
     @knockback.setter
-    def knockback(self, arg1: endstone._python.util.Vector) -> None: ...
+    def knockback(self, arg1: Vector) -> None: ...
     @property
-    def source(self) -> endstone._python.actor.Actor:
+    def source(self) -> Actor:
         """
         Get the source actor that has caused knockback to the defender, if exists.
         """
@@ -180,21 +180,21 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
     """
 
     @property
-    def from_location(self) -> endstone._python.util.Location:
+    def from_location(self) -> Location:
         """
         Gets or sets the location that this actor moved from.
         """
 
     @from_location.setter
-    def from_location(self, arg1: endstone._python.util.Location) -> None: ...
+    def from_location(self, arg1: Location) -> None: ...
     @property
-    def to_location(self) -> endstone._python.util.Location:
+    def to_location(self) -> Location:
         """
         Gets or sets the location that this actor moved to.
         """
 
     @to_location.setter
-    def to_location(self, arg1: endstone._python.util.Location) -> None: ...
+    def to_location(self, arg1: Location) -> None: ...
 
 class BlockBreakEvent(BlockEvent, Cancellable):
     """
@@ -202,7 +202,7 @@ class BlockBreakEvent(BlockEvent, Cancellable):
     """
 
     @property
-    def player(self) -> endstone._python.Player:
+    def player(self) -> Player:
         """
         Gets the Player that is breaking the block involved in this event.
         """
@@ -213,15 +213,15 @@ class BlockCookEvent(BlockEvent, Cancellable):
     """
 
     @property
-    def result(self) -> endstone._python.inventory.ItemStack:
+    def result(self) -> ItemStack:
         """
         Gets or sets the resultant ItemStack for this event
         """
 
     @result.setter
-    def result(self, arg1: endstone._python.inventory.ItemStack) -> None: ...
+    def result(self, arg1: ItemStack) -> None: ...
     @property
-    def source(self) -> endstone._python.inventory.ItemStack:
+    def source(self) -> ItemStack:
         """
         Gets the smelted ItemStack for this event
         """
@@ -232,7 +232,7 @@ class BlockEvent(Event):
     """
 
     @property
-    def block(self) -> endstone._python.block.Block:
+    def block(self) -> Block:
         """
         Gets the block involved in this event.
         """
@@ -243,7 +243,7 @@ class BlockPistonEvent(BlockEvent, Cancellable):
     """
 
     @property
-    def direction(self) -> endstone._python.block.BlockFace:
+    def direction(self) -> BlockFace:
         """
         Return the direction in which the piston will operate.
         """
@@ -264,25 +264,25 @@ class BlockPlaceEvent(BlockEvent, Cancellable):
     """
 
     @property
-    def block_against(self) -> endstone._python.block.Block:
+    def block_against(self) -> Block:
         """
         Gets the block that this block was placed against
         """
 
     @property
-    def block_placed_state(self) -> endstone._python.block.BlockState:
+    def block_placed_state(self) -> BlockState:
         """
         Gets the BlockState for the block which was placed.
         """
 
     @property
-    def block_replaced(self) -> endstone._python.block.Block:
+    def block_replaced(self) -> Block:
         """
         Gets the block which was replaced.
         """
 
     @property
-    def player(self) -> endstone._python.Player:
+    def player(self) -> Player:
         """
         Gets the player who placed the block involved in this event.
         """
@@ -293,15 +293,15 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
     """
 
     @property
-    def message(self) -> str | endstone._python.lang.Translatable:
+    def message(self) -> str | Translatable:
         """
         Gets or sets the message to broadcast.
         """
 
     @message.setter
-    def message(self, arg1: str | endstone._python.lang.Translatable) -> None: ...
+    def message(self, arg1: str | Translatable) -> None: ...
     @property
-    def recipients(self) -> set[endstone._python.command.CommandSender]:
+    def recipients(self) -> set[CommandSender]:
         """
         Gets a set of recipients that this broadcast message will be displayed to.
         """
@@ -339,7 +339,7 @@ class ChunkEvent(DimensionEvent):
     """
 
     @property
-    def chunk(self) -> endstone._python.level.Chunk:
+    def chunk(self) -> Chunk:
         """
         Gets the chunk being loaded/unloaded
         """
@@ -360,7 +360,7 @@ class DimensionEvent(LevelEvent):
     """
 
     @property
-    def dimension(self) -> endstone._python.level.Dimension:
+    def dimension(self) -> Dimension:
         """
         Gets the dimension primarily involved with this event
         """
@@ -418,7 +418,7 @@ class LevelEvent(Event):
     """
 
     @property
-    def level(self) -> endstone._python.level.Level:
+    def level(self) -> Level:
         """
         Gets the level primarily involved with this event
         """
@@ -429,7 +429,7 @@ class MobEvent(Event):
     """
 
     @property
-    def actor(self) -> endstone._python.actor.Mob:
+    def actor(self) -> Mob:
         """
         Returns the Mob involved in this event
         """
@@ -440,7 +440,7 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     """
 
     @property
-    def address(self) -> endstone._python.util.SocketAddress:
+    def address(self) -> SocketAddress:
         """
         Gets the network address to which this packet is being sent.
         """
@@ -460,7 +460,7 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     @payload.setter
     def payload(self, arg1: bytes) -> None: ...
     @property
-    def player(self) -> endstone._python.Player:
+    def player(self) -> Player:
         """
         Gets the player involved in this event
         NOTE: This may return None if the packet is sent before the player completes the login process.
@@ -478,7 +478,7 @@ class PacketSendEvent(ServerEvent, Cancellable):
     """
 
     @property
-    def address(self) -> endstone._python.util.SocketAddress:
+    def address(self) -> SocketAddress:
         """
         Gets the network address to which this packet is being sent.
         """
@@ -498,7 +498,7 @@ class PacketSendEvent(ServerEvent, Cancellable):
     @payload.setter
     def payload(self, arg1: bytes) -> None: ...
     @property
-    def player(self) -> endstone._python.Player:
+    def player(self) -> Player:
         """
         Gets the player involved in this event
         NOTE: This may return None if the packet is sent before the player completes the login process.
@@ -516,7 +516,7 @@ class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def bed(self) -> endstone._python.block.Block:
+    def bed(self) -> Block:
         """
         Returns the bed block involved in this event.
         """
@@ -527,7 +527,7 @@ class PlayerBedLeaveEvent(PlayerEvent):
     """
 
     @property
-    def bed(self) -> endstone._python.block.Block:
+    def bed(self) -> Block:
         """
         Returns the bed block involved in this event.
         """
@@ -554,15 +554,15 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @message.setter
     def message(self, arg1: str) -> None: ...
     @property
-    def player(self) -> endstone._python.Player:
+    def player(self) -> Player:
         """
         Gets or sets the player that this message will display as
         """
 
     @player.setter
-    def player(self, arg1: endstone._python.Player) -> None: ...
+    def player(self, arg1: Player) -> None: ...
     @property
-    def recipients(self) -> list[endstone._python.Player]:
+    def recipients(self) -> list[Player]:
         """
         Gets a set of recipients that this chat message will be displayed to
         """
@@ -587,13 +587,13 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     """
 
     @property
-    def death_message(self) -> str | endstone._python.lang.Translatable | None:
+    def death_message(self) -> str | Translatable | None:
         """
         Gets or sets the death message that will appear to everyone on the server.
         """
 
     @death_message.setter
-    def death_message(self, arg1: str | endstone._python.lang.Translatable | None) -> None: ...
+    def death_message(self, arg1: str | Translatable | None) -> None: ...
 
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """
@@ -601,7 +601,7 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def item(self) -> endstone._python.inventory.ItemStack:
+    def item(self) -> ItemStack:
         """
         Gets the ItemStack dropped by the player
         """
@@ -632,7 +632,7 @@ class PlayerEvent(Event):
     """
 
     @property
-    def player(self) -> endstone._python.Player:
+    def player(self) -> Player:
         """
         Returns the player involved in this event.
         """
@@ -643,7 +643,7 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def new_game_mode(self) -> endstone._python.GameMode:
+    def new_game_mode(self) -> GameMode:
         """
         Gets the GameMode the player is switched to.
         """
@@ -654,7 +654,7 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def actor(self) -> endstone._python.actor.Actor:
+    def actor(self) -> Actor:
         """
         Gets the actor that was right-clicked by the player.
         """
@@ -682,19 +682,19 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         """
 
     @property
-    def block(self) -> endstone._python.block.Block:
+    def block(self) -> Block:
         """
         Returns the clicked block
         """
 
     @property
-    def block_face(self) -> endstone._python.block.BlockFace:
+    def block_face(self) -> BlockFace:
         """
         Returns the face of the block that was clicked
         """
 
     @property
-    def clicked_position(self) -> endstone._python.util.Vector | None:
+    def clicked_position(self) -> Vector | None:
         """
         Gets the exact position on the block the player interacted with.
         """
@@ -712,7 +712,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         """
 
     @property
-    def item(self) -> endstone._python.inventory.ItemStack:
+    def item(self) -> ItemStack:
         """
         Returns the item in hand represented by this event
         """
@@ -723,13 +723,13 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def hand(self) -> endstone._python.inventory.EquipmentSlot:
+    def hand(self) -> EquipmentSlot:
         """
         Get the hand used to consume the item.
         """
 
     @property
-    def item(self) -> endstone._python.inventory.ItemStack:
+    def item(self) -> ItemStack:
         """
         Gets or sets the item that is being consumed.
         """
@@ -757,13 +757,13 @@ class PlayerJoinEvent(PlayerEvent):
     """
 
     @property
-    def join_message(self) -> str | endstone._python.lang.Translatable | None:
+    def join_message(self) -> str | Translatable | None:
         """
         Gets or sets the join message to send to all online players.
         """
 
     @join_message.setter
-    def join_message(self, arg1: str | endstone._python.lang.Translatable | None) -> None: ...
+    def join_message(self, arg1: str | Translatable | None) -> None: ...
 
 class PlayerJumpEvent(PlayerMoveEvent):
     """
@@ -804,21 +804,21 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def from_location(self) -> endstone._python.util.Location:
+    def from_location(self) -> Location:
         """
         Gets or sets the location that this player moved from.
         """
 
     @from_location.setter
-    def from_location(self, arg1: endstone._python.util.Location) -> None: ...
+    def from_location(self, arg1: Location) -> None: ...
     @property
-    def to_location(self) -> endstone._python.util.Location:
+    def to_location(self) -> Location:
         """
         Gets or sets the location that this player moved to.
         """
 
     @to_location.setter
-    def to_location(self, arg1: endstone._python.util.Location) -> None: ...
+    def to_location(self, arg1: Location) -> None: ...
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """
@@ -826,7 +826,7 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def item(self) -> endstone._python.actor.Item:
+    def item(self) -> Item:
         """
         Gets the Item picked up by the entity.
         """
@@ -837,13 +837,13 @@ class PlayerQuitEvent(PlayerEvent):
     """
 
     @property
-    def quit_message(self) -> str | endstone._python.lang.Translatable | None:
+    def quit_message(self) -> str | Translatable | None:
         """
         Gets or sets the quit message to send to all online players.
         """
 
     @quit_message.setter
-    def quit_message(self, arg1: str | endstone._python.lang.Translatable | None) -> None: ...
+    def quit_message(self, arg1: str | Translatable | None) -> None: ...
 
 class PlayerRespawnEvent(PlayerEvent):
     """
@@ -856,19 +856,19 @@ class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
     """
 
     @property
-    def new_skin(self) -> endstone._python.Skin:
+    def new_skin(self) -> Skin:
         """
         Gets the player's new skin.
         """
 
     @property
-    def skin_change_message(self) -> str | endstone._python.lang.Translatable | None:
+    def skin_change_message(self) -> str | Translatable | None:
         """
         Gets or sets the message to send to all online players for this skin change.
         """
 
     @skin_change_message.setter
-    def skin_change_message(self, arg1: str | endstone._python.lang.Translatable | None) -> None: ...
+    def skin_change_message(self, arg1: str | Translatable | None) -> None: ...
 
 class PlayerTeleportEvent(PlayerMoveEvent):
     """
@@ -881,7 +881,7 @@ class PluginDisableEvent(ServerEvent):
     """
 
     @property
-    def plugin(self) -> endstone._python.plugin.Plugin: ...
+    def plugin(self) -> Plugin: ...
 
 class PluginEnableEvent(ServerEvent):
     """
@@ -889,7 +889,7 @@ class PluginEnableEvent(ServerEvent):
     """
 
     @property
-    def plugin(self) -> endstone._python.plugin.Plugin: ...
+    def plugin(self) -> Plugin: ...
 
 class ScriptMessageEvent(ServerEvent, Cancellable):
     """
@@ -909,7 +909,7 @@ class ScriptMessageEvent(ServerEvent, Cancellable):
         """
 
     @property
-    def sender(self) -> endstone._python.command.CommandSender:
+    def sender(self) -> CommandSender:
         """
         Gets the command sender who initiated the command.
         """
@@ -928,7 +928,7 @@ class ServerCommandEvent(ServerEvent, Cancellable):
     @command.setter
     def command(self, arg1: str) -> None: ...
     @property
-    def sender(self) -> endstone._python.command.CommandSender:
+    def sender(self) -> CommandSender:
         """
         Get the command sender.
         """
@@ -944,13 +944,13 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     """
 
     @property
-    def game_mode(self) -> endstone._python.GameMode:
+    def game_mode(self) -> GameMode:
         """
         Gets or sets the current game mode.
         """
 
     @game_mode.setter
-    def game_mode(self, arg1: endstone._python.GameMode) -> None: ...
+    def game_mode(self, arg1: GameMode) -> None: ...
     @property
     def level_name(self) -> str:
         """
@@ -1075,7 +1075,9 @@ class WeatherEvent(Event):
     """
 
     @property
-    def level(self) -> endstone._python.level.Level:
+    def level(self) -> Level:
         """
         Returns the Level where this event is occurring
         """
+
+def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False): ...

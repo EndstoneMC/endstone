@@ -9,8 +9,8 @@ import typing
 
 import numpy
 
-import endstone._python
-import endstone._python.level
+from endstone import Player
+from endstone.level import Dimension
 
 __all__: list[str] = ["MapCanvas", "MapRenderer", "MapView"]
 
@@ -64,7 +64,7 @@ class MapRenderer:
         Initialize this MapRenderer for the given map.
         """
 
-    def render(self, map: MapView, canvas: MapCanvas, player: endstone._python.Player) -> None:
+    def render(self, map: MapView, canvas: MapCanvas, player: Player) -> None:
         """
         Render to the given map.
         """
@@ -125,13 +125,13 @@ class MapView:
     @center_z.setter
     def center_z(self, arg1: typing.SupportsInt) -> None: ...
     @property
-    def dimension(self) -> endstone._python.level.Dimension:
+    def dimension(self) -> Dimension:
         """
         Get or set the dimension that this map is associated with.
         """
 
     @dimension.setter
-    def dimension(self, arg1: endstone._python.level.Dimension) -> None: ...
+    def dimension(self, arg1: Dimension) -> None: ...
     @property
     def id(self) -> int:
         """
