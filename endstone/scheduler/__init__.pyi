@@ -7,7 +7,7 @@ from __future__ import annotations
 import collections.abc
 import typing
 
-import endstone._python.plugin
+from endstone.plugin import Plugin
 
 __all__: list[str] = ["Scheduler", "Task"]
 
@@ -21,7 +21,7 @@ class Scheduler:
         Removes task from scheduler.
         """
 
-    def cancel_tasks(self, plugin: endstone._python.plugin.Plugin) -> None:
+    def cancel_tasks(self, plugin: Plugin) -> None:
         """
         Removes all tasks associated with a particular plugin from the scheduler.
         """
@@ -43,7 +43,7 @@ class Scheduler:
 
     def run_task(
         self,
-        plugin: endstone._python.plugin.Plugin,
+        plugin: Plugin,
         task: collections.abc.Callable[[], None],
         delay: typing.SupportsInt = 0,
         period: typing.SupportsInt = 0,
@@ -75,7 +75,7 @@ class Task:
         """
 
     @property
-    def owner(self) -> endstone._python.plugin.Plugin:
+    def owner(self) -> Plugin:
         """
         Returns the Plugin that owns the task.
         """

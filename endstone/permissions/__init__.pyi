@@ -8,8 +8,7 @@ import collections.abc
 import enum
 import typing
 
-import endstone._python
-import endstone._python.plugin
+from endstone.plugin import Plugin
 
 __all__: list[str] = [
     "Permissible",
@@ -26,13 +25,13 @@ class Permissible:
     """
 
     @typing.overload
-    def add_attachment(self, plugin: endstone._python.plugin.Plugin, name: str, value: bool) -> PermissionAttachment:
+    def add_attachment(self, plugin: Plugin, name: str, value: bool) -> PermissionAttachment:
         """
         Adds a new PermissionAttachment.
         """
 
     @typing.overload
-    def add_attachment(self, plugin: endstone._python.plugin.Plugin) -> PermissionAttachment:
+    def add_attachment(self, plugin: Plugin) -> PermissionAttachment:
         """
         Adds a new PermissionAttachment.
         """
@@ -78,7 +77,7 @@ class Permissible:
         """
 
     @property
-    def permission_level(self) -> endstone._python.PermissionLevel:
+    def permission_level(self) -> PermissionLevel:
         """
         Gets the permission level of this object
         """
@@ -92,7 +91,7 @@ class Permission:
         self,
         name: str,
         description: str | None = None,
-        default: endstone._python.PermissionDefault | None = None,
+        default: PermissionDefault | None = None,
         children: collections.abc.Mapping[str, bool] | None = None,
         *args,
         **kwargs,
@@ -121,13 +120,13 @@ class Permission:
         """
 
     @property
-    def default(self) -> endstone._python.PermissionDefault:
+    def default(self) -> PermissionDefault:
         """
         The default value of this permission.
         """
 
     @default.setter
-    def default(self, arg1: endstone._python.PermissionDefault) -> None: ...
+    def default(self, arg1: PermissionDefault) -> None: ...
     @property
     def description(self) -> str:
         """
@@ -153,7 +152,7 @@ class PermissionAttachment:
     Holds information about a permission attachment on a Permissible object
     """
 
-    def __init__(self, plugin: endstone._python.plugin.Plugin, permissible: Permissible) -> None: ...
+    def __init__(self, plugin: Plugin, permissible: Permissible) -> None: ...
     def remove(self) -> bool:
         """
         Removes this attachment from its registered Permissible.
@@ -196,7 +195,7 @@ class PermissionAttachment:
         """
 
     @property
-    def plugin(self) -> endstone._python.plugin.Plugin:
+    def plugin(self) -> Plugin:
         """
         Gets the plugin responsible for this attachment.
         """
