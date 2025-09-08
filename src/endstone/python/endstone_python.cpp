@@ -49,7 +49,7 @@ void init_scoreboard(py::module_ &);
 void init_server(py::class_<Server> &server);
 void init_util(py::module_ &);
 
-PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
+PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
     py::options options;
     options.disable_enum_members_docstring();
@@ -87,52 +87,81 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         .value("CONSOLE", PermissionLevel::Console)
         .finalize();
 
+    // Submodules
+    auto m_actor =
+        m.def_submodule("actor", "Classes relating to actors (entities) that can exist in a world, including all "
+                                 "players, monsters, projectiles, etc.");
+    auto m_ban = m.def_submodule("ban", "Classes relevant to bans.");
+    auto m_block = m.def_submodule("block", "Classes relating to the blocks in a world, including special states.");
+    auto m_boss =
+        m.def_submodule("boss", "Classes relating to the boss bars that appear at the top of the player's screen.");
+    auto m_command = m.def_submodule("command", "Classes relating to handling specialized non-chat player input.");
+    auto m_damage =
+        m.def_submodule("damage", "Classes relating to damage types and sources applicable to mobs (living entities).");
+    auto m_enchantments =
+        m.def_submodule("enchantments", "Classes relating to the specialized enhancements to ItemStacks.");
+    auto m_event = m.def_submodule("event", "Classes relating to handling triggered code executions.");
+    auto m_form = m.def_submodule("form");
+    auto m_inventory = m.def_submodule("inventory", "Classes relating to player inventories and item interactions.");
+    auto m_lang = m.def_submodule("lang");
+    auto m_level = m.def_submodule("level");
+    auto m_map = m.def_submodule("map", "Classes relating to plugin handling of map displays.");
+    auto m_permissions = m.def_submodule("permissions", "Classes relating to permissions of players.");
+    auto m_plugin = m.def_submodule("plugin", "Classes relating to loading and managing plugins.");
+    auto m_scheduler =
+        m.def_submodule("scheduler", "Classes relating to letting plugins run code at specific time intervals.");
+    auto m_scoreboard =
+        m.def_submodule("scoreboard", "Classes relating to manage the client side score display system.");
+    auto m_util = m.def_submodule("util", "Multi and single purpose classes.");
+
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
-    auto event = py::class_<Event>(m, "Event", "Represents an event.");
+    auto event = py::class_<Event>(m_event, "Event", "Represents an event.");
     auto permissible = py::class_<Permissible>(
-        m, "Permissible", "Represents an object that may become a server operator and can be assigned permissions.");
-    auto permission =
-        py::class_<Permission>(m, "Permission", "Represents a unique permission that may be attached to a Permissible");
+        m_permissions, "Permissible",
+        "Represents an object that may become a server operator and can be assigned permissions.");
+    auto permission = py::class_<Permission>(m_permissions, "Permission",
+                                             "Represents a unique permission that may be attached to a Permissible");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
-    auto block = py::class_<Block>(m, "Block", "Represents a block.");
-    auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
-    auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
-    auto mob = py::class_<Mob, Actor>(m, "Mob",
+    auto block = py::class_<Block>(m_block, "Block", "Represents a block.");
+    auto command_sender =
+        py::class_<CommandSender, Permissible>(m_command, "CommandSender", "Represents a command sender.");
+    auto actor = py::class_<Actor, CommandSender>(m_actor, "Actor", "Represents a base actor in the level.");
+    auto mob = py::class_<Mob, Actor>(m_actor, "Mob",
                                       "Represents a mobile entity (i.e. living entity), such as a monster or player.");
     auto offline_player = py::class_<OfflinePlayer>(
         m, "OfflinePlayer",
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
         "can, thus, be retrieved without the player needing to be online.");
     auto player = py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.");
-    auto item_stack = py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.");
-    auto level = py::class_<Level>(m, "Level");
-    auto dimension = py::class_<Dimension>(m, "Dimension", "Represents a dimension within a Level.");
+    auto item_stack = py::class_<ItemStack>(m_inventory, "ItemStack", "Represents a stack of items.");
+    auto level = py::class_<Level>(m_level, "Level");
+    auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a Level.");
 
     init_color_format(m);
-    init_damage(m);
+    init_damage(m_damage);
     init_game_mode(m);
     init_logger(m);
-    init_lang(m);
-    init_form(m);
-    init_enchantments(m);
-    init_inventory(m, item_stack);
-    init_util(m);
-    init_ban(m);
-    init_map(m);
-    init_scoreboard(m);
-    init_block(m, block);
-    init_actor(m, actor, mob);
-    init_level(m, level, dimension);
+    init_lang(m_lang);
+    init_form(m_form);
+    init_enchantments(m_enchantments);
+    init_inventory(m_inventory, item_stack);
+    init_util(m_util);
+    init_ban(m_ban);
+    init_map(m_map);
+    init_scoreboard(m_scoreboard);
+    init_block(m_block, block);
+    init_actor(m_actor, actor, mob);
+    init_level(m_level, level, dimension);
     init_player(m, offline_player, player);
-    init_boss(m);
-    init_command(m, command_sender);
-    init_plugin(m);
-    init_scheduler(m);
-    init_permissions(m, permissible, permission);
+    init_boss(m_boss);
+    init_command(m_command, command_sender);
+    init_plugin(m_plugin);
+    init_scheduler(m_scheduler);
+    init_permissions(m_permissions, permissible, permission);
     init_registry(m);
     init_server(server);
-    init_event(m, event);
+    init_event(m_event, event);
 }
 
 void init_color_format(py::module_ &m)
