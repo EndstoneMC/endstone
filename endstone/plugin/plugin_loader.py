@@ -15,7 +15,7 @@ import pkginfo
 from importlib_metadata import EntryPoint, distribution, entry_points, metadata
 
 from endstone import Server
-from endstone._internal.metrics import Metrics
+from endstone._metrics import Metrics
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
 from endstone.plugin import Plugin, PluginDescription, PluginLoader, PluginLoadOrder
