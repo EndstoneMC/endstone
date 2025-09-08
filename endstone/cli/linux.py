@@ -4,7 +4,7 @@ import stat
 import subprocess
 from pathlib import Path
 
-from endstone._internal.bootstrap.base import Bootstrap
+from .base import Bootstrap
 
 
 class LinuxBootstrap(Bootstrap):

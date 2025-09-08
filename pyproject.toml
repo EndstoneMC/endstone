@@ -54,7 +54,7 @@ Homepage = "https://github.com/EndstoneMC/endstone"
 Issues = "https://github.com/EndstoneMC/endstone/issues"
 
 [project.scripts]
-endstone = "endstone._internal.bootstrap:cli"
+endstone = "endstone.cli:main"
 
 [tool.scikit-build]
 build-dir = "build/{wheel_tag}"

@@ -6,7 +6,7 @@ import time
 
 import click
 
-from endstone._internal.version import __version__
+from endstone._version import __version__
 
 logging.basicConfig(
     level=logging.INFO,
@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-__all__ = ["cli"]
+__all__ = ["main"]
 
 
 def catch_exceptions(func):
@@ -56,15 +56,15 @@ def catch_exceptions(func):
 )
 @click.version_option(__version__)
 @catch_exceptions
-def cli(server_folder: str, no_confirm: bool, remote: str) -> None:
+def main(server_folder: str, no_confirm: bool, remote: str) -> None:
     system = platform.system()
     if system == "Windows":
-        from endstone._internal.bootstrap.windows import WindowsBootstrap
+        from .windows import WindowsBootstrap
 
         cls = WindowsBootstrap
 
     elif system == "Linux":
-        from endstone._internal.bootstrap.linux import LinuxBootstrap
+        from .linux import LinuxBootstrap
 
         cls = LinuxBootstrap
     else:

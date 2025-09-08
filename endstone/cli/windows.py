@@ -5,8 +5,9 @@ import subprocess
 import warnings
 from subprocess import STARTUPINFO, Handle, list2cmdline
 
-from endstone._internal import _detours
-from endstone._internal.bootstrap.base import Bootstrap
+from endstone import _detours
+
+from .base import Bootstrap
 
 
 class PopenWithDll(subprocess.Popen):
