@@ -85,4 +85,4 @@ __getattr__, __dir__, __all__ = lazy.attach(
     },
 )
 
-__all__.append("event_handler")
+__all__.extend(["EventPriority", "event_handler"])
