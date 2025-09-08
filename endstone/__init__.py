@@ -1,6 +1,6 @@
 import lazy_loader as lazy
 
-from endstone._internal.version import __version__
+from endstone._version import __version__
 
 __minecraft_version__ = "1.21.102"
 
