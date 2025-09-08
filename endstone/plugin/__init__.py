@@ -14,7 +14,6 @@ from endstone.event import Event
 
 class Plugin(_Plugin):
     # Metadata
-    name = None
     version = None
     api_version = None
 
