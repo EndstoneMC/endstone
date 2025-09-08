@@ -1,17 +1,19 @@
 from __future__ import annotations
+import collections.abc
 import datetime
+import enum
 import numpy
-import os
+import pathlib
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCommandSender', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Button', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'Item', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerItemHeldEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerSkinChangeEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
+__all__: list[str] = ['ActionForm', 'Actor', 'ActorDamageEvent', 'ActorDeathEvent', 'ActorEvent', 'ActorExplodeEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockCommandSender', 'BlockCookEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPistonEvent', 'BlockPistonExtendEvent', 'BlockPistonRetractEvent', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'Button', 'Cancellable', 'Chunk', 'ChunkEvent', 'ChunkLoadEvent', 'ChunkUnloadEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'DamageSource', 'Dimension', 'DimensionEvent', 'DisplaySlot', 'Divider', 'Dropdown', 'Enchantment', 'EnchantmentRegistry', 'EquipmentSlot', 'Event', 'EventPriority', 'EventResult', 'GameMode', 'Header', 'Inventory', 'IpBanEntry', 'IpBanList', 'Item', 'ItemFactory', 'ItemMeta', 'ItemRegistry', 'ItemStack', 'ItemType', 'Label', 'Language', 'LeavesDecayEvent', 'Level', 'LevelEvent', 'Location', 'Logger', 'MapCanvas', 'MapMeta', 'MapRenderer', 'MapView', 'MessageForm', 'Mob', 'MobEvent', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'OfflinePlayer', 'PacketReceiveEvent', 'PacketSendEvent', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'PermissionLevel', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerBedEnterEvent', 'PlayerBedLeaveEvent', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerDropItemEvent', 'PlayerEmoteEvent', 'PlayerEvent', 'PlayerGameModeChangeEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerItemConsumeEvent', 'PlayerItemHeldEvent', 'PlayerJoinEvent', 'PlayerJumpEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerMoveEvent', 'PlayerPickupItemEvent', 'PlayerQuitEvent', 'PlayerRespawnEvent', 'PlayerSkinChangeEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Service', 'ServiceManager', 'ServicePriority', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent', 'WeatherEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
     """
-    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[Button | Divider | Header | Label] | None = None, on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: collections.abc.Sequence[Button | Divider | Header | Label] | None = None, on_submit: collections.abc.Callable[[Player, typing.SupportsInt], None] = None, on_close: collections.abc.Callable[[Player], None] = None) -> None:
         ...
-    def add_button(self, text: str | Translatable, icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> ActionForm:
+    def add_button(self, text: str | Translatable, icon: str | None = None, on_click: collections.abc.Callable[[Player], None] = None) -> ActionForm:
         """
         Adds a button to the form.
         """
@@ -41,23 +43,23 @@ class ActionForm:
         Gets or sets the controls of the action form.
         """
     @controls.setter
-    def controls(self, arg1: list[Button | Divider | Header | Label]) -> ActionForm:
+    def controls(self, arg1: collections.abc.Sequence[Button | Divider | Header | Label]) -> ActionForm:
         ...
     @property
-    def on_close(self) -> typing.Callable[[Player], None]:
+    def on_close(self) -> collections.abc.Callable[[Player], None]:
         """
         Gets or sets the on close callback.
         """
     @on_close.setter
-    def on_close(self, arg1: typing.Callable[[Player], None]) -> ActionForm:
+    def on_close(self, arg1: collections.abc.Callable[[Player], None]) -> ActionForm:
         ...
     @property
-    def on_submit(self) -> typing.Callable[[Player, int], None]:
+    def on_submit(self) -> collections.abc.Callable[[Player, typing.SupportsInt], None]:
         """
         Gets or sets the on submit callback.
         """
     @on_submit.setter
-    def on_submit(self, arg1: typing.Callable[[Player, int], None]) -> ActionForm:
+    def on_submit(self, arg1: collections.abc.Callable[[Player, typing.SupportsInt], None]) -> ActionForm:
         ...
     @property
     def title(self) -> str | Translatable:
@@ -83,7 +85,7 @@ class Actor(CommandSender):
         """
         Removes a given tag from this actor.
         """
-    def set_rotation(self, yaw: float, pitch: float) -> None:
+    def set_rotation(self, yaw: typing.SupportsFloat, pitch: typing.SupportsFloat) -> None:
         """
         Sets the actor's rotation.
         """
@@ -108,7 +110,7 @@ class Actor(CommandSender):
         Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.
         """
     @health.setter
-    def health(self, arg1: int) -> None:
+    def health(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def id(self) -> int:
@@ -217,7 +219,7 @@ class ActorDamageEvent(MobEvent, Cancellable):
         Gets or sets the amount of damage caused by the event
         """
     @damage.setter
-    def damage(self, arg1: float) -> None:
+    def damage(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def damage_source(self) -> DamageSource:
@@ -252,7 +254,7 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
         Gets or sets the list of blocks that would have been removed or were removed from the explosion event.
         """
     @block_list.setter
-    def block_list(self, arg1: list[Block]) -> None:
+    def block_list(self, arg1: collections.abc.Sequence[Block]) -> None:
         ...
     @property
     def location(self) -> Location:
@@ -340,7 +342,7 @@ class BanEntry:
     @source.setter
     def source(self, arg1: str) -> None:
         ...
-class BarColor:
+class BarColor(enum.Enum):
     BLUE: typing.ClassVar[BarColor]  # value = <BarColor.BLUE: 1>
     GREEN: typing.ClassVar[BarColor]  # value = <BarColor.GREEN: 3>
     PINK: typing.ClassVar[BarColor]  # value = <BarColor.PINK: 0>
@@ -349,95 +351,14 @@ class BarColor:
     RED: typing.ClassVar[BarColor]  # value = <BarColor.RED: 2>
     WHITE: typing.ClassVar[BarColor]  # value = <BarColor.WHITE: 7>
     YELLOW: typing.ClassVar[BarColor]  # value = <BarColor.YELLOW: 4>
-    __members__: typing.ClassVar[dict[str, BarColor]]  # value = {'PINK': <BarColor.PINK: 0>, 'BLUE': <BarColor.BLUE: 1>, 'RED': <BarColor.RED: 2>, 'GREEN': <BarColor.GREEN: 3>, 'YELLOW': <BarColor.YELLOW: 4>, 'PURPLE': <BarColor.PURPLE: 5>, 'REBECCA_PURPLE': <BarColor.REBECCA_PURPLE: 6>, 'WHITE': <BarColor.WHITE: 7>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
-class BarFlag:
+class BarFlag(enum.Enum):
     DARKEN_SKY: typing.ClassVar[BarFlag]  # value = <BarFlag.DARKEN_SKY: 0>
-    __members__: typing.ClassVar[dict[str, BarFlag]]  # value = {'DARKEN_SKY': <BarFlag.DARKEN_SKY: 0>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
-class BarStyle:
+class BarStyle(enum.Enum):
     SEGMENTED_10: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_10: 2>
     SEGMENTED_12: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_12: 3>
     SEGMENTED_20: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_20: 4>
     SEGMENTED_6: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_6: 1>
     SOLID: typing.ClassVar[BarStyle]  # value = <BarStyle.SOLID: 0>
-    __members__: typing.ClassVar[dict[str, BarStyle]]  # value = {'SOLID': <BarStyle.SOLID: 0>, 'SEGMENTED_6': <BarStyle.SEGMENTED_6: 1>, 'SEGMENTED_10': <BarStyle.SEGMENTED_10: 2>, 'SEGMENTED_12': <BarStyle.SEGMENTED_12: 3>, 'SEGMENTED_20': <BarStyle.SEGMENTED_20: 4>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class Block:
     """
     Represents a block.
@@ -449,12 +370,12 @@ class Block:
         Captures the current state of this block. The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a sign after you capture its state.
         """
     @typing.overload
-    def get_relative(self, offset_x: int, offset_y: int, offset_z: int) -> Block:
+    def get_relative(self, offset_x: typing.SupportsInt, offset_y: typing.SupportsInt, offset_z: typing.SupportsInt) -> Block:
         """
         Gets the block at the given offsets
         """
     @typing.overload
-    def get_relative(self, face: BlockFace, distance: int = 1) -> Block:
+    def get_relative(self, face: BlockFace, distance: typing.SupportsInt = 1) -> Block:
         """
         Gets the block at the given distance of the given face
         """
@@ -566,40 +487,13 @@ class BlockEvent(Event):
         """
         Gets the block involved in this event.
         """
-class BlockFace:
+class BlockFace(enum.Enum):
     DOWN: typing.ClassVar[BlockFace]  # value = <BlockFace.DOWN: 0>
     EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.EAST: 5>
     NORTH: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH: 2>
     SOUTH: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH: 3>
     UP: typing.ClassVar[BlockFace]  # value = <BlockFace.UP: 1>
     WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.WEST: 4>
-    __members__: typing.ClassVar[dict[str, BlockFace]]  # value = {'DOWN': <BlockFace.DOWN: 0>, 'UP': <BlockFace.UP: 1>, 'NORTH': <BlockFace.NORTH: 2>, 'SOUTH': <BlockFace.SOUTH: 3>, 'WEST': <BlockFace.WEST: 4>, 'EAST': <BlockFace.EAST: 5>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class BlockPistonEvent(BlockEvent, Cancellable):
     """
     Called when a piston block is triggered
@@ -752,7 +646,7 @@ class BossBar:
         The progress of the bar between 0.0 and 1.0.
         """
     @progress.setter
-    def progress(self, arg1: float) -> None:
+    def progress(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def style(self) -> BarStyle:
@@ -791,7 +685,7 @@ class Button:
     """
     Represents a button with text and an optional icon.
     """
-    def __init__(self, text: str | Translatable = '', icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, text: str | Translatable = '', icon: str | None = None, on_click: collections.abc.Callable[[Player], None] = None) -> None:
         ...
     @property
     def icon(self) -> str | None:
@@ -802,12 +696,12 @@ class Button:
     def icon(self, arg1: str) -> Button:
         ...
     @property
-    def on_click(self) -> typing.Callable[[Player], None]:
+    def on_click(self) -> collections.abc.Callable[[Player], None]:
         """
         Gets or sets the on click callback.
         """
     @on_click.setter
-    def on_click(self, arg1: typing.Callable[[Player], None]) -> Button:
+    def on_click(self, arg1: collections.abc.Callable[[Player], None]) -> Button:
         ...
     @property
     def text(self) -> str | Translatable:
@@ -926,9 +820,9 @@ class Command:
     """
     Represents a Command, which executes various tasks upon user input
     """
-    def __init__(self, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None, permissions: list[str] | None = None, *args, **kwargs) -> None:
+    def __init__(self, name: str, description: str | None = None, usages: collections.abc.Sequence[str] | None = None, aliases: collections.abc.Sequence[str] | None = None, permissions: collections.abc.Sequence[str] | None = None, *args, **kwargs) -> None:
         ...
-    def execute(self, sender: CommandSender, args: list[str]) -> bool:
+    def execute(self, sender: CommandSender, args: collections.abc.Sequence[str]) -> bool:
         """
         Executes the command, returning its success
         """
@@ -946,7 +840,7 @@ class Command:
         List of aliases of this command
         """
     @aliases.setter
-    def aliases(self, arg1: list[str]) -> None:
+    def aliases(self, arg1: collections.abc.Sequence[str]) -> None:
         ...
     @property
     def description(self) -> str:
@@ -975,7 +869,7 @@ class Command:
         The permissions required by users to be able to perform this command
         """
     @permissions.setter
-    def permissions(self, arg1: list[str]) -> None:
+    def permissions(self, arg1: collections.abc.Sequence[str]) -> None:
         ...
     @property
     def usages(self) -> list[str]:
@@ -983,7 +877,7 @@ class Command:
         List of usages of this command
         """
     @usages.setter
-    def usages(self, arg1: list[str]) -> None:
+    def usages(self, arg1: collections.abc.Sequence[str]) -> None:
         ...
 class CommandExecutor:
     """
@@ -991,7 +885,7 @@ class CommandExecutor:
     """
     def __init__(self) -> None:
         ...
-    def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
+    def on_command(self, sender: CommandSender, command: Command, args: collections.abc.Sequence[str]) -> bool:
         """
         Executes the given command, returning its success.
         """
@@ -1021,7 +915,7 @@ class CommandSenderWrapper(CommandSender):
     """
     Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output
     """
-    def __init__(self, sender: CommandSender, on_message: typing.Callable[[str | Translatable], None] = None, on_error: typing.Callable[[str | Translatable], None] = None) -> None:
+    def __init__(self, sender: CommandSender, on_message: collections.abc.Callable[[str | Translatable], None] = None, on_error: collections.abc.Callable[[str | Translatable], None] = None) -> None:
         ...
 class ConsoleCommandSender(CommandSender):
     """
@@ -1031,38 +925,11 @@ class Criteria:
     """
     Represents a scoreboard criteria.
     """
-    class Type:
+    class Type(enum.Enum):
         """
         Represents a scoreboard criteria.
         """
         DUMMY: typing.ClassVar[Criteria.Type]  # value = <Type.DUMMY: 0>
-        __members__: typing.ClassVar[dict[str, Criteria.Type]]  # value = {'DUMMY': <Type.DUMMY: 0>}
-        def __eq__(self, other: typing.Any) -> bool:
-            ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
     DUMMY: typing.ClassVar[Criteria.Type]  # value = <Type.DUMMY: 0>
     @property
     def default_render_type(self) -> RenderType:
@@ -1103,7 +970,7 @@ class Dimension:
     """
     Represents a dimension within a Level.
     """
-    class Type:
+    class Type(enum.Enum):
         """
         Represents various dimension types.
         """
@@ -1111,33 +978,6 @@ class Dimension:
         NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
         OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
         THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
-        __members__: typing.ClassVar[dict[str, Dimension.Type]]  # value = {'OVERWORLD': <Type.OVERWORLD: 0>, 'NETHER': <Type.NETHER: 1>, 'THE_END': <Type.THE_END: 2>, 'CUSTOM': <Type.CUSTOM: 999>}
-        def __eq__(self, other: typing.Any) -> bool:
-            ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
     CUSTOM: typing.ClassVar[Dimension.Type]  # value = <Type.CUSTOM: 999>
     NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
@@ -1152,7 +992,7 @@ class Dimension:
         Gets the Block at the given Location
         """
     @typing.overload
-    def get_block_at(self, x: int, y: int, z: int) -> Block:
+    def get_block_at(self, x: typing.SupportsInt, y: typing.SupportsInt, z: typing.SupportsInt) -> Block:
         """
         Gets the Block at the given coordinates
         """
@@ -1162,11 +1002,11 @@ class Dimension:
         Gets the highest non-empty (impassable) block at the given Location.
         """
     @typing.overload
-    def get_highest_block_at(self, x: int, z: int) -> Block:
+    def get_highest_block_at(self, x: typing.SupportsInt, z: typing.SupportsInt) -> Block:
         """
         Gets the highest non-empty (impassable) block at the given coordinates.
         """
-    def get_highest_block_y_at(self, x: int, z: int) -> int:
+    def get_highest_block_y_at(self, x: typing.SupportsInt, z: typing.SupportsInt) -> int:
         """
         Gets the highest non-empty (impassable) coordinate at the given coordinates.
         """
@@ -1199,40 +1039,13 @@ class DimensionEvent(LevelEvent):
         """
         Gets the dimension primarily involved with this event
         """
-class DisplaySlot:
+class DisplaySlot(enum.Enum):
     """
     Locations for displaying objectives to the player
     """
     BELOW_NAME: typing.ClassVar[DisplaySlot]  # value = <DisplaySlot.BELOW_NAME: 0>
     PLAYER_LIST: typing.ClassVar[DisplaySlot]  # value = <DisplaySlot.PLAYER_LIST: 1>
     SIDE_BAR: typing.ClassVar[DisplaySlot]  # value = <DisplaySlot.SIDE_BAR: 2>
-    __members__: typing.ClassVar[dict[str, DisplaySlot]]  # value = {'BELOW_NAME': <DisplaySlot.BELOW_NAME: 0>, 'PLAYER_LIST': <DisplaySlot.PLAYER_LIST: 1>, 'SIDE_BAR': <DisplaySlot.SIDE_BAR: 2>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class Divider:
     """
     Represents a divider.
@@ -1243,7 +1056,7 @@ class Dropdown:
     """
     Represents a dropdown with a set of predefined options.
     """
-    def __init__(self, label: str | Translatable = '', options: list[str] | None = None, default_index: int | None = None) -> None:
+    def __init__(self, label: str | Translatable = '', options: collections.abc.Sequence[str] | None = None, default_index: typing.SupportsInt | None = None) -> None:
         ...
     def add_option(self, option: str) -> Dropdown:
         """
@@ -1255,7 +1068,7 @@ class Dropdown:
         Gets or sets the optional default index of the dropdown.
         """
     @default_index.setter
-    def default_index(self, arg1: int | None) -> Dropdown:
+    def default_index(self, arg1: typing.SupportsInt | None) -> Dropdown:
         ...
     @property
     def label(self) -> str | Translatable:
@@ -1271,7 +1084,7 @@ class Dropdown:
         Gets or sets the options of the dropdown.
         """
     @options.setter
-    def options(self, arg1: list[str]) -> Dropdown:
+    def options(self, arg1: collections.abc.Sequence[str]) -> Dropdown:
         ...
 class Enchantment:
     def can_enchant_item(self, item: ItemStack) -> bool:
@@ -1315,7 +1128,7 @@ class EnchantmentRegistry:
         ...
     def get_or_throw(self, key: str) -> Enchantment:
         ...
-class EquipmentSlot:
+class EquipmentSlot(enum.Enum):
     BODY: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.BODY: 6>
     CHEST: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.CHEST: 4>
     FEET: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.FEET: 2>
@@ -1323,33 +1136,6 @@ class EquipmentSlot:
     HEAD: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.HEAD: 5>
     LEGS: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.LEGS: 3>
     OFF_HAND: typing.ClassVar[EquipmentSlot]  # value = <EquipmentSlot.OFF_HAND: 1>
-    __members__: typing.ClassVar[dict[str, EquipmentSlot]]  # value = {'HAND': <EquipmentSlot.HAND: 0>, 'OFF_HAND': <EquipmentSlot.OFF_HAND: 1>, 'FEET': <EquipmentSlot.FEET: 2>, 'LEGS': <EquipmentSlot.LEGS: 3>, 'CHEST': <EquipmentSlot.CHEST: 4>, 'HEAD': <EquipmentSlot.HEAD: 5>, 'BODY': <EquipmentSlot.BODY: 6>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class Event:
     """
     Represents an event.
@@ -1364,7 +1150,7 @@ class Event:
         """
         Whether the event fires asynchronously.
         """
-class EventPriority:
+class EventPriority(enum.IntEnum):
     """
     Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
     """
@@ -1374,65 +1160,18 @@ class EventPriority:
     LOWEST: typing.ClassVar[EventPriority]  # value = <EventPriority.LOWEST: 0>
     MONITOR: typing.ClassVar[EventPriority]  # value = <EventPriority.MONITOR: 5>
     NORMAL: typing.ClassVar[EventPriority]  # value = <EventPriority.NORMAL: 2>
-    __members__: typing.ClassVar[dict[str, EventPriority]]  # value = {'LOWEST': <EventPriority.LOWEST: 0>, 'LOW': <EventPriority.LOW: 1>, 'NORMAL': <EventPriority.NORMAL: 2>, 'HIGH': <EventPriority.HIGH: 3>, 'HIGHEST': <EventPriority.HIGHEST: 4>, 'MONITOR': <EventPriority.MONITOR: 5>}
-    def __eq__(self, other: typing.Any) -> bool:
+    @classmethod
+    def __new__(cls, value):
         ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
-class EventResult:
+    def __format__(self, format_spec):
+        """
+        Convert to a string according to format_spec.
+        """
+class EventResult(enum.Enum):
     ALLOW: typing.ClassVar[EventResult]  # value = <EventResult.ALLOW: 2>
     DEFAULT: typing.ClassVar[EventResult]  # value = <EventResult.DEFAULT: 1>
     DENY: typing.ClassVar[EventResult]  # value = <EventResult.DENY: 0>
-    __members__: typing.ClassVar[dict[str, EventResult]]  # value = {'DENY': <EventResult.DENY: 0>, 'DEFAULT': <EventResult.DEFAULT: 1>, 'ALLOW': <EventResult.ALLOW: 2>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
-class GameMode:
+class GameMode(enum.Enum):
     """
     Represents the various type of game modes that Players may have.
     """
@@ -1440,33 +1179,6 @@ class GameMode:
     CREATIVE: typing.ClassVar[GameMode]  # value = <GameMode.CREATIVE: 1>
     SPECTATOR: typing.ClassVar[GameMode]  # value = <GameMode.SPECTATOR: 3>
     SURVIVAL: typing.ClassVar[GameMode]  # value = <GameMode.SURVIVAL: 0>
-    __members__: typing.ClassVar[dict[str, GameMode]]  # value = {'SURVIVAL': <GameMode.SURVIVAL: 0>, 'CREATIVE': <GameMode.CREATIVE: 1>, 'ADVENTURE': <GameMode.ADVENTURE: 2>, 'SPECTATOR': <GameMode.SPECTATOR: 3>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class Header:
     """
     Represents a header with a label.
@@ -1495,7 +1207,7 @@ class Inventory:
         """
         Checks if the inventory contains any ItemStacks with the given ItemType.
         """
-    def __getitem__(self, index: int) -> ItemStack:
+    def __getitem__(self, index: typing.SupportsInt) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
         """
@@ -1503,7 +1215,7 @@ class Inventory:
         """
         Returns the size of the inventory
         """
-    def __setitem__(self, index: int, item: ItemStack) -> None:
+    def __setitem__(self, index: typing.SupportsInt, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
@@ -1529,7 +1241,7 @@ class Inventory:
         The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
         """
     @typing.overload
-    def clear(self, index: int) -> None:
+    def clear(self, index: typing.SupportsInt) -> None:
         """
         Clears out a particular slot in the index.
         """
@@ -1539,7 +1251,7 @@ class Inventory:
         Clears out the whole Inventory.
         """
     @typing.overload
-    def contains(self, item: ItemStack, amount: int) -> bool:
+    def contains(self, item: ItemStack, amount: typing.SupportsInt) -> bool:
         """
         Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
         An ItemStack only counts if both the type and the amount of the stack match.
@@ -1556,12 +1268,12 @@ class Inventory:
         Checks if the inventory contains any ItemStacks with the given ItemType.
         """
     @typing.overload
-    def contains_at_least(self, item: ItemStack, amount: int) -> bool:
+    def contains_at_least(self, item: ItemStack, amount: typing.SupportsInt) -> bool:
         """
         Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the minimum amount specified.
         """
     @typing.overload
-    def contains_at_least(self, type: str, amount: int) -> bool:
+    def contains_at_least(self, type: str, amount: typing.SupportsInt) -> bool:
         """
         Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum amount specified.
         """
@@ -1578,7 +1290,7 @@ class Inventory:
         Finds the first slot in the inventory containing an ItemStack with the given ItemType.
         The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
         """
-    def get_item(self, index: int) -> ItemStack:
+    def get_item(self, index: typing.SupportsInt) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
         """
@@ -1601,7 +1313,7 @@ class Inventory:
         The returned HashMap contains what it couldn't remove, where the key is the index, and the value is the ItemStack.
         If all the given ItemStacks are removed, it will return an empty dict.
         """
-    def set_item(self, index: int, item: ItemStack) -> None:
+    def set_item(self, index: typing.SupportsInt, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
@@ -1611,7 +1323,7 @@ class Inventory:
         Returns all ItemStacks from the inventory
         """
     @contents.setter
-    def contents(self, arg1: list[ItemStack]) -> None:
+    def contents(self, arg1: collections.abc.Sequence[ItemStack]) -> None:
         ...
     @property
     def first_empty(self) -> int:
@@ -1695,7 +1407,7 @@ class Item(Actor):
         Gets or sets the delay before this Item is available to be picked up by players.
         """
     @pickup_delay.setter
-    def pickup_delay(self, arg1: int) -> None:
+    def pickup_delay(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def thrower(self) -> int | None:
@@ -1703,7 +1415,7 @@ class Item(Actor):
         Gets or sets the thrower of this item.
         """
     @thrower.setter
-    def thrower(self, arg1: int | None) -> None:
+    def thrower(self, arg1: typing.SupportsInt | None) -> None:
         ...
 class ItemFactory:
     def as_meta_for(self, meta: ItemMeta, type: str) -> ItemMeta:
@@ -1726,7 +1438,7 @@ class ItemMeta:
     """
     Represents the metadata of a generic item.
     """
-    def add_enchant(self, id: str, level: int, force: bool = False) -> bool:
+    def add_enchant(self, id: str, level: typing.SupportsInt, force: bool = False) -> bool:
         """
         Adds the specified enchantment to this item meta.
         """
@@ -1756,7 +1468,7 @@ class ItemMeta:
         Gets or sets the damage.
         """
     @damage.setter
-    def damage(self, arg1: int) -> None:
+    def damage(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def display_name(self) -> str | None:
@@ -1810,7 +1522,7 @@ class ItemMeta:
         Gets or sets the lore for this item.
         """
     @lore.setter
-    def lore(self, arg1: list[str] | None) -> None:
+    def lore(self, arg1: collections.abc.Sequence[str] | None) -> None:
         ...
     @property
     def repair_cost(self) -> int:
@@ -1818,7 +1530,7 @@ class ItemMeta:
         Gets or sets the repair penalty.
         """
     @repair_cost.setter
-    def repair_cost(self, arg1: int) -> None:
+    def repair_cost(self, arg1: typing.SupportsInt) -> None:
         ...
 class ItemRegistry:
     def __contains__(self, key: str) -> bool:
@@ -1838,7 +1550,7 @@ class ItemStack:
     __hash__: typing.ClassVar[None] = None
     def __eq__(self, arg0: ItemStack) -> bool:
         ...
-    def __init__(self, type: str, amount: int = 1, data: int = 0) -> None:
+    def __init__(self, type: str, amount: typing.SupportsInt = 1, data: typing.SupportsInt = 0) -> None:
         ...
     def __ne__(self, arg0: ItemStack) -> bool:
         ...
@@ -1858,7 +1570,7 @@ class ItemStack:
         Gets or sets the amount of items in this stack.
         """
     @amount.setter
-    def amount(self, arg1: int) -> None:
+    def amount(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def data(self) -> int:
@@ -1866,7 +1578,7 @@ class ItemStack:
         Gets or sets the data for this stack of items.
         """
     @data.setter
-    def data(self, arg1: int) -> None:
+    def data(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def item_meta(self) -> ItemMeta:
@@ -1949,7 +1661,7 @@ class Language:
     Represents the interface for translating text into different languages.
     """
     @typing.overload
-    def translate(self, text: str, params: list[str] | None = None, locale: str | None = None) -> str:
+    def translate(self, text: str, params: collections.abc.Sequence[str] | None = None, locale: str | None = None) -> str:
         """
         Translates a given text using a set of parameters for a specific locale.
         """
@@ -1999,7 +1711,7 @@ class Level:
         Gets and sets the relative in-game time on the server
         """
     @time.setter
-    def time(self, arg1: int) -> None:
+    def time(self, arg1: typing.SupportsInt) -> None:
         ...
 class LevelEvent(Event):
     """
@@ -2014,7 +1726,7 @@ class Location(Position):
     """
     Represents a 3-dimensional location in a dimension within a level.
     """
-    def __init__(self, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0, dimension: Dimension = None) -> None:
+    def __init__(self, x: typing.SupportsFloat, y: typing.SupportsFloat, z: typing.SupportsFloat, pitch: typing.SupportsFloat = 0.0, yaw: typing.SupportsFloat = 0.0, dimension: Dimension = None) -> None:
         ...
     def __repr__(self) -> str:
         ...
@@ -2026,7 +1738,7 @@ class Location(Position):
         The pitch of this location, measured in degrees.
         """
     @pitch.setter
-    def pitch(self, arg1: float) -> None:
+    def pitch(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def yaw(self) -> float:
@@ -2034,13 +1746,13 @@ class Location(Position):
         The yaw of this location, measured in degrees.
         """
     @yaw.setter
-    def yaw(self, arg1: float) -> None:
+    def yaw(self, arg1: typing.SupportsFloat) -> None:
         ...
 class Logger:
     """
     Logger class which can format and output varies levels of logs.
     """
-    class Level:
+    class Level(enum.IntEnum):
         """
         Specifies the log level.
         """
@@ -2050,33 +1762,13 @@ class Logger:
         INFO: typing.ClassVar[Logger.Level]  # value = <Level.INFO: 2>
         TRACE: typing.ClassVar[Logger.Level]  # value = <Level.TRACE: 0>
         WARNING: typing.ClassVar[Logger.Level]  # value = <Level.WARNING: 3>
-        __members__: typing.ClassVar[dict[str, Logger.Level]]  # value = {'TRACE': <Level.TRACE: 0>, 'DEBUG': <Level.DEBUG: 1>, 'INFO': <Level.INFO: 2>, 'WARNING': <Level.WARNING: 3>, 'ERROR': <Level.ERROR: 4>, 'CRITICAL': <Level.CRITICAL: 5>}
-        def __eq__(self, other: typing.Any) -> bool:
+        @classmethod
+        def __new__(cls, value):
             ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
+        def __format__(self, format_spec):
+            """
+            Convert to a string according to format_spec.
+            """
     CRITICAL: typing.ClassVar[Logger.Level]  # value = <Level.CRITICAL: 5>
     DEBUG: typing.ClassVar[Logger.Level]  # value = <Level.DEBUG: 1>
     ERROR: typing.ClassVar[Logger.Level]  # value = <Level.ERROR: 4>
@@ -2124,21 +1816,21 @@ class MapCanvas:
     """
     Represents a canvas for drawing to a map. Each canvas is associated with a specific MapRenderer and represents that renderer's layer on the map.
     """
-    def draw_image(self, x: int, y: int, image: numpy.ndarray[numpy.uint8]) -> None:
+    def draw_image(self, x: typing.SupportsInt, y: typing.SupportsInt, image: numpy.ndarray[numpy.uint8]) -> None:
         """
         Draw an image to the map. The image will be clipped if necessary.
         """
-    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
+    def get_base_pixel_color(self, x: typing.SupportsInt, y: typing.SupportsInt) -> tuple[int, ...]:
         """
         Get a pixel from the layers below this canvas.
         """
-    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...] | None:
+    def get_pixel_color(self, x: typing.SupportsInt, y: typing.SupportsInt) -> tuple[int, ...] | None:
         """
         Get a pixel from the canvas.
         
         If no color is set at the given position for this canvas, then None is returned and the color returned by get_base_pixel_color() is shown on the map
         """
-    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...] | None) -> None:
+    def set_pixel_color(self, x: typing.SupportsInt, y: typing.SupportsInt, color: tuple[int, ...] | None) -> None:
         """
         Draw a pixel to the canvas.
         
@@ -2173,7 +1865,7 @@ class MapView:
     """
     Represents a map item.
     """
-    class Scale:
+    class Scale(enum.IntEnum):
         """
         An enum representing all possible scales a map can be set to.
         """
@@ -2182,33 +1874,18 @@ class MapView:
         FAR: typing.ClassVar[MapView.Scale]  # value = <Scale.FAR: 3>
         FARTHEST: typing.ClassVar[MapView.Scale]  # value = <Scale.FARTHEST: 4>
         NORMAL: typing.ClassVar[MapView.Scale]  # value = <Scale.NORMAL: 2>
-        __members__: typing.ClassVar[dict[str, MapView.Scale]]  # value = {'CLOSEST': <Scale.CLOSEST: 0>, 'CLOSE': <Scale.CLOSE: 1>, 'NORMAL': <Scale.NORMAL: 2>, 'FAR': <Scale.FAR: 3>, 'FARTHEST': <Scale.FARTHEST: 4>}
-        def __eq__(self, other: typing.Any) -> bool:
+        @classmethod
+        def __new__(cls, value):
             ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
+        def __format__(self, format_spec):
+            """
+            Convert to a string according to format_spec.
+            """
+    CLOSE: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSE: 1>
+    CLOSEST: typing.ClassVar[MapView.Scale]  # value = <Scale.CLOSEST: 0>
+    FAR: typing.ClassVar[MapView.Scale]  # value = <Scale.FAR: 3>
+    FARTHEST: typing.ClassVar[MapView.Scale]  # value = <Scale.FARTHEST: 4>
+    NORMAL: typing.ClassVar[MapView.Scale]  # value = <Scale.NORMAL: 2>
     def add_renderer(self, renderer: MapRenderer) -> None:
         """
         Add a renderer to this map.
@@ -2223,7 +1900,7 @@ class MapView:
         Get or set the center X position of this map.
         """
     @center_x.setter
-    def center_x(self, arg1: int) -> None:
+    def center_x(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def center_z(self) -> int:
@@ -2231,7 +1908,7 @@ class MapView:
         Get or set the center Z position of this map.
         """
     @center_z.setter
-    def center_z(self, arg1: int) -> None:
+    def center_z(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def dimension(self) -> Dimension:
@@ -2284,7 +1961,7 @@ class MessageForm:
     """
     Represents a form with two buttons.
     """
-    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', button1: str | Translatable = '', button2: str | Translatable = '', on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', button1: str | Translatable = '', button2: str | Translatable = '', on_submit: collections.abc.Callable[[Player, typing.SupportsInt], None] = None, on_close: collections.abc.Callable[[Player], None] = None) -> None:
         ...
     @property
     def button1(self) -> str | Translatable:
@@ -2311,20 +1988,20 @@ class MessageForm:
     def content(self, arg1: str | Translatable) -> MessageForm:
         ...
     @property
-    def on_close(self) -> typing.Callable[[Player], None]:
+    def on_close(self) -> collections.abc.Callable[[Player], None]:
         """
         Gets or sets the on close callback.
         """
     @on_close.setter
-    def on_close(self, arg1: typing.Callable[[Player], None]) -> MessageForm:
+    def on_close(self, arg1: collections.abc.Callable[[Player], None]) -> MessageForm:
         ...
     @property
-    def on_submit(self) -> typing.Callable[[Player, int], None]:
+    def on_submit(self) -> collections.abc.Callable[[Player, typing.SupportsInt], None]:
         """
         Gets or sets the on submit callback.
         """
     @on_submit.setter
-    def on_submit(self, arg1: typing.Callable[[Player, int], None]) -> MessageForm:
+    def on_submit(self, arg1: collections.abc.Callable[[Player, typing.SupportsInt], None]) -> MessageForm:
         ...
     @property
     def title(self) -> str | Translatable:
@@ -2356,7 +2033,7 @@ class ModalForm:
     """
     Represents a modal form with controls.
     """
-    def __init__(self, title: str | Translatable = '', controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: typing.Callable[[Player, str], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, title: str | Translatable = '', controls: collections.abc.Sequence[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: collections.abc.Callable[[Player, str], None] = None, on_close: collections.abc.Callable[[Player], None] = None) -> None:
         ...
     def add_control(self, control: Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header) -> ModalForm:
         """
@@ -2368,7 +2045,7 @@ class ModalForm:
         Gets or sets the controls of the modal form.
         """
     @controls.setter
-    def controls(self, arg1: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header]) -> ModalForm:
+    def controls(self, arg1: collections.abc.Sequence[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header]) -> ModalForm:
         ...
     @property
     def icon(self) -> str | None:
@@ -2379,20 +2056,20 @@ class ModalForm:
     def icon(self, arg1: str | None) -> ModalForm:
         ...
     @property
-    def on_close(self) -> typing.Callable[[Player], None]:
+    def on_close(self) -> collections.abc.Callable[[Player], None]:
         """
         Gets or sets the on close callback.
         """
     @on_close.setter
-    def on_close(self, arg1: typing.Callable[[Player], None]) -> ModalForm:
+    def on_close(self, arg1: collections.abc.Callable[[Player], None]) -> ModalForm:
         ...
     @property
-    def on_submit(self) -> typing.Callable[[Player, str], None]:
+    def on_submit(self) -> collections.abc.Callable[[Player, str], None]:
         """
         Gets or sets the on submit callback.
         """
     @on_submit.setter
-    def on_submit(self, arg1: typing.Callable[[Player, str], None]) -> ModalForm:
+    def on_submit(self, arg1: collections.abc.Callable[[Player, str], None]) -> ModalForm:
         ...
     @property
     def submit_button(self) -> str | Translatable | None:
@@ -2485,39 +2162,12 @@ class Objective:
     @sort_order.setter
     def sort_order(self, arg1: ObjectiveSortOrder) -> None:
         ...
-class ObjectiveSortOrder:
+class ObjectiveSortOrder(enum.Enum):
     """
     Represents the sort order of objectives on a DisplaySlot.
     """
     ASCENDING: typing.ClassVar[ObjectiveSortOrder]  # value = <ObjectiveSortOrder.ASCENDING: 0>
     DESCENDING: typing.ClassVar[ObjectiveSortOrder]  # value = <ObjectiveSortOrder.DESCENDING: 1>
-    __members__: typing.ClassVar[dict[str, ObjectiveSortOrder]]  # value = {'ASCENDING': <ObjectiveSortOrder.ASCENDING: 0>, 'DESCENDING': <ObjectiveSortOrder.DESCENDING: 1>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class OfflinePlayer:
     """
     Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online.
@@ -2654,7 +2304,7 @@ class Permission:
     """
     Represents a unique permission that may be attached to a Permissible
     """
-    def __init__(self, name: str, description: str | None = None, default: PermissionDefault | None = None, children: dict[str, bool] | None = None, *args, **kwargs) -> None:
+    def __init__(self, name: str, description: str | None = None, default: PermissionDefault | None = None, children: collections.abc.Mapping[str, bool] | None = None, *args, **kwargs) -> None:
         ...
     @typing.overload
     def add_parent(self, name: str, value: bool) -> Permission:
@@ -2747,12 +2397,12 @@ class PermissionAttachment:
         Gets the plugin responsible for this attachment.
         """
     @property
-    def removal_callback(self) -> typing.Callable[[PermissionAttachment], None]:
+    def removal_callback(self) -> collections.abc.Callable[[PermissionAttachment], None]:
         """
         The callback to be called when this attachment is removed.
         """
     @removal_callback.setter
-    def removal_callback(self, arg1: typing.Callable[[PermissionAttachment], None]) -> None:
+    def removal_callback(self, arg1: collections.abc.Callable[[PermissionAttachment], None]) -> None:
         ...
 class PermissionAttachmentInfo:
     """
@@ -2780,76 +2430,26 @@ class PermissionAttachmentInfo:
         """
         Gets the value of this permission
         """
-class PermissionDefault:
+class PermissionDefault(enum.Enum):
     """
     Represents the possible default values for permissions
     """
     CONSOLE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.CONSOLE: 4>
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
     NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
-    NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
-    OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     TRUE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.TRUE: 0>
-    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>, 'CONSOLE': <PermissionDefault.CONSOLE: 4>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
-class PermissionLevel:
+class PermissionLevel(enum.IntEnum):
     CONSOLE: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.CONSOLE: 2>
     DEFAULT: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.DEFAULT: 0>
     OP: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
-    OPERATOR: typing.ClassVar[PermissionLevel]  # value = <PermissionLevel.OP: 1>
-    __members__: typing.ClassVar[dict[str, PermissionLevel]]  # value = {'DEFAULT': <PermissionLevel.DEFAULT: 0>, 'OP': <PermissionLevel.OP: 1>, 'OPERATOR': <PermissionLevel.OP: 1>, 'CONSOLE': <PermissionLevel.CONSOLE: 2>}
-    def __eq__(self, other: typing.Any) -> bool:
+    @classmethod
+    def __new__(cls, value):
         ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
+    def __format__(self, format_spec):
+        """
+        Convert to a string according to format_spec.
+        """
 class Player(Mob, OfflinePlayer):
     """
     Represents a player.
@@ -2858,11 +2458,11 @@ class Player(Mob, OfflinePlayer):
         """
         Closes the forms that are currently open for the player.
         """
-    def give_exp(self, amount: int) -> None:
+    def give_exp(self, amount: typing.SupportsInt) -> None:
         """
         Gives the player the amount of experience specified.
         """
-    def give_exp_levels(self, amount: int) -> None:
+    def give_exp_levels(self, amount: typing.SupportsInt) -> None:
         """
         Gives the player the amount of experience levels specified.
         """
@@ -2874,7 +2474,7 @@ class Player(Mob, OfflinePlayer):
         """
         Makes the player perform the given command.
         """
-    def play_sound(self, location: Location, sound: str, volume: float = 1.0, pitch: float = 1.0) -> None:
+    def play_sound(self, location: Location, sound: str, volume: typing.SupportsFloat = 1.0, pitch: typing.SupportsFloat = 1.0) -> None:
         """
         Play a sound for a player at the location.
         """
@@ -2886,7 +2486,7 @@ class Player(Mob, OfflinePlayer):
         """
         Sends a form to the player.
         """
-    def send_packet(self, packet_id: int, payload: bytes) -> None:
+    def send_packet(self, packet_id: typing.SupportsInt, payload: bytes) -> None:
         """
         Sends a packet to the player.
         """
@@ -2898,7 +2498,7 @@ class Player(Mob, OfflinePlayer):
         """
         Sends this player a tip message
         """
-    def send_title(self, title: str, subtitle: str, fade_in: int = 10, stay: int = 70, fade_out: int = 20) -> None:
+    def send_title(self, title: str, subtitle: str, fade_in: typing.SupportsInt = 10, stay: typing.SupportsInt = 70, fade_out: typing.SupportsInt = 20) -> None:
         """
         Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.
         """
@@ -2912,7 +2512,7 @@ class Player(Mob, OfflinePlayer):
         Spawns the particle at the target location.
         """
     @typing.overload
-    def spawn_particle(self, name: str, x: float, y: float, z: float, molang_variables_json: str | None = None) -> None:
+    def spawn_particle(self, name: str, x: typing.SupportsFloat, y: typing.SupportsFloat, z: typing.SupportsFloat, molang_variables_json: str | None = None) -> None:
         """
         Spawns the particle at the target location.
         """
@@ -2924,7 +2524,7 @@ class Player(Mob, OfflinePlayer):
         """
         Stop the specified sound from playing.
         """
-    def transfer(self, host: str, port: int = 19132) -> None:
+    def transfer(self, host: str, port: typing.SupportsInt = 19132) -> None:
         """
         Transfers the player to another server.
         """
@@ -2966,7 +2566,7 @@ class Player(Mob, OfflinePlayer):
         Gets or sets the players current experience level.
         """
     @exp_level.setter
-    def exp_level(self, arg1: int) -> None:
+    def exp_level(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def exp_progress(self) -> float:
@@ -2974,7 +2574,7 @@ class Player(Mob, OfflinePlayer):
         Gets or sets the players current experience progress towards the next level.
         """
     @exp_progress.setter
-    def exp_progress(self, arg1: float) -> None:
+    def exp_progress(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def fly_speed(self) -> float:
@@ -2982,7 +2582,7 @@ class Player(Mob, OfflinePlayer):
         Gets or sets the current allowed speed that a client can fly.
         """
     @fly_speed.setter
-    def fly_speed(self, arg1: float) -> None:
+    def fly_speed(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def game_mode(self) -> GameMode:
@@ -3078,7 +2678,7 @@ class Player(Mob, OfflinePlayer):
         Gets or sets the current allowed speed that a client can walk.
         """
     @walk_speed.setter
-    def walk_speed(self, arg1: float) -> None:
+    def walk_speed(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def xuid(self) -> str:
@@ -3263,38 +2863,15 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks a block.
     """
-    class Action:
+    class Action(enum.Enum):
         LEFT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_AIR: 2>
         LEFT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_BLOCK: 0>
         RIGHT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_AIR: 3>
         RIGHT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_BLOCK: 1>
-        __members__: typing.ClassVar[dict[str, PlayerInteractEvent.Action]]  # value = {'LEFT_CLICK_BLOCK': <Action.LEFT_CLICK_BLOCK: 0>, 'RIGHT_CLICK_BLOCK': <Action.RIGHT_CLICK_BLOCK: 1>, 'LEFT_CLICK_AIR': <Action.LEFT_CLICK_AIR: 2>, 'RIGHT_CLICK_AIR': <Action.RIGHT_CLICK_AIR: 3>}
-        def __eq__(self, other: typing.Any) -> bool:
-            ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
+    LEFT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_AIR: 2>
+    LEFT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.LEFT_CLICK_BLOCK: 0>
+    RIGHT_CLICK_AIR: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_AIR: 3>
+    RIGHT_CLICK_BLOCK: typing.ClassVar[PlayerInteractEvent.Action]  # value = <Action.RIGHT_CLICK_BLOCK: 1>
     @property
     def action(self) -> PlayerInteractEvent.Action:
         """
@@ -3356,7 +2933,7 @@ class PlayerInventory(Inventory):
         Gets or sets the slot number of the currently held item
         """
     @held_item_slot.setter
-    def held_item_slot(self, arg1: int) -> None:
+    def held_item_slot(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def helmet(self) -> ItemStack:
@@ -3549,7 +3126,7 @@ class Plugin(CommandExecutor):
         Called after a plugin is loaded but before it has been enabled.
         """
     @property
-    def data_folder(self) -> os.PathLike:
+    def data_folder(self) -> pathlib.Path:
         """
         Returns the folder that the plugin data's files are located in.
         """
@@ -3599,7 +3176,7 @@ class PluginDescription:
     """
     Represents the basic information about a plugin that the plugin loader needs to know.
     """
-    def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: list[str] | None = None, contributors: list[str] | None = None, website: str | None = None, prefix: str | None = None, provides: list[str] | None = None, depend: list[str] | None = None, soft_depend: list[str] | None = None, load_before: list[str] | None = None, default_permission: PermissionDefault | None = None, commands: list[Command] | None = None, permissions: list[Permission] | None = None, *args, **kwargs) -> None:
+    def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: collections.abc.Sequence[str] | None = None, contributors: collections.abc.Sequence[str] | None = None, website: str | None = None, prefix: str | None = None, provides: collections.abc.Sequence[str] | None = None, depend: collections.abc.Sequence[str] | None = None, soft_depend: collections.abc.Sequence[str] | None = None, load_before: collections.abc.Sequence[str] | None = None, default_permission: PermissionDefault | None = None, commands: collections.abc.Sequence[Command] | None = None, permissions: collections.abc.Sequence[Permission] | None = None, *args, **kwargs) -> None:
         ...
     @property
     def api_version(self) -> str:
@@ -3700,39 +3277,12 @@ class PluginEnableEvent(ServerEvent):
     @property
     def plugin(self) -> Plugin:
         ...
-class PluginLoadOrder:
+class PluginLoadOrder(enum.Enum):
     """
     Represents the order in which a plugin should be initialized and enabled.
     """
     POSTWORLD: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.POSTWORLD: 1>
     STARTUP: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.STARTUP: 0>
-    __members__: typing.ClassVar[dict[str, PluginLoadOrder]]  # value = {'STARTUP': <PluginLoadOrder.STARTUP: 0>, 'POSTWORLD': <PluginLoadOrder.POSTWORLD: 1>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class PluginLoader:
     """
     Represents a plugin loader, which handles direct access to specific types of plugins
@@ -3833,7 +3383,7 @@ class PluginManager:
         Loads the plugin contained within the specified directory
         """
     @typing.overload
-    def load_plugins(self, files: list[str]) -> list[Plugin]:
+    def load_plugins(self, files: collections.abc.Sequence[str]) -> list[Plugin]:
         """
         Loads the plugins in the list of the files
         """
@@ -3841,7 +3391,7 @@ class PluginManager:
         """
         Recalculates the defaults for the given Permission.
         """
-    def register_event(self, name: str, executor: typing.Callable[[Event], None], priority: EventPriority, plugin: Plugin, ignore_cancelled: bool) -> None:
+    def register_event(self, name: str, executor: collections.abc.Callable[[Event], None], priority: EventPriority, plugin: Plugin, ignore_cancelled: bool) -> None:
         """
         Registers the given event
         """
@@ -3885,7 +3435,7 @@ class Position(Vector):
     """
     Represents a 3-dimensional position in a dimension within a level.
     """
-    def __init__(self, x: float, y: float, z: float, dimension: Dimension = None) -> None:
+    def __init__(self, x: typing.SupportsFloat, y: typing.SupportsFloat, z: typing.SupportsFloat, dimension: Dimension = None) -> None:
         ...
     def __repr__(self) -> str:
         ...
@@ -3914,44 +3464,17 @@ class Position(Vector):
     @dimension.setter
     def dimension(self, arg1: Dimension) -> None:
         ...
-class RenderType:
+class RenderType(enum.Enum):
     """
     Controls the way in which an Objective is rendered on the client side.
     """
     HEARTS: typing.ClassVar[RenderType]  # value = <RenderType.HEARTS: 1>
     INTEGER: typing.ClassVar[RenderType]  # value = <RenderType.INTEGER: 0>
-    __members__: typing.ClassVar[dict[str, RenderType]]  # value = {'INTEGER': <RenderType.INTEGER: 0>, 'HEARTS': <RenderType.HEARTS: 1>}
-    def __eq__(self, other: typing.Any) -> bool:
-        ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
 class Scheduler:
     """
     Represents a scheduler that executes various tasks
     """
-    def cancel_task(self, id: int) -> None:
+    def cancel_task(self, id: typing.SupportsInt) -> None:
         """
         Removes task from scheduler.
         """
@@ -3963,15 +3486,15 @@ class Scheduler:
         """
         Returns a vector of all pending tasks.
         """
-    def is_queued(self, id: int) -> bool:
+    def is_queued(self, id: typing.SupportsInt) -> bool:
         """
         Check if the task queued to be run later.
         """
-    def is_running(self, id: int) -> bool:
+    def is_running(self, id: typing.SupportsInt) -> bool:
         """
         Check if the task currently running.
         """
-    def run_task(self, plugin: Plugin, task: typing.Callable[[], None], delay: int = 0, period: int = 0) -> Task:
+    def run_task(self, plugin: Plugin, task: collections.abc.Callable[[], None], delay: typing.SupportsInt = 0, period: typing.SupportsInt = 0) -> Task:
         """
         Returns a task that will be executed synchronously
         """
@@ -4005,13 +3528,13 @@ class Score:
         Gets or sets the current score.
         """
     @value.setter
-    def value(self, arg1: int) -> None:
+    def value(self, arg1: typing.SupportsInt) -> None:
         ...
 class Scoreboard:
     """
     Represents a scoreboard
     """
-    def add_objective(self, name: str, criteria: Criteria.Type, display_name: str | None = None, render_type: RenderType = RenderType.INTEGER) -> Objective:
+    def add_objective(self, name: str, criteria: Criteria.Type, display_name: str, render_type: RenderType = RenderType.INTEGER) -> Objective:
         """
         Registers an Objective on this Scoreboard with a name displayed to players
         """
@@ -4082,11 +3605,11 @@ class Server:
         """
         Broadcasts the specified message to every user with permission endstone.broadcast.user
         """
-    def create_block_data(self, type: str, block_states: dict[str, bool | str | int] | None = None) -> BlockData:
+    def create_block_data(self, type: str, block_states: collections.abc.Mapping[str, bool | str | typing.SupportsInt] | None = None) -> BlockData:
         """
         Creates a new BlockData instance for the specified block type, with all properties initialized to defaults, except for those provided.
         """
-    def create_boss_bar(self, title: str, color: BarColor, style: BarStyle, flags: list[BarFlag] | None = None) -> BossBar:
+    def create_boss_bar(self, title: str, color: BarColor, style: BarStyle, flags: collections.abc.Sequence[BarFlag] | None = None) -> BossBar:
         """
         Creates a boss bar instance to display to players. The progress defaults to 1.0.
         """
@@ -4205,7 +3728,7 @@ class Server:
         The maximum amount of players which can login to this server.
         """
     @max_players.setter
-    def max_players(self, arg1: int) -> None:
+    def max_players(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def minecraft_version(self) -> str:
@@ -4319,7 +3842,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         Get or set the local port of the server.
         """
     @local_port.setter
-    def local_port(self, arg1: int) -> None:
+    def local_port(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def local_port_v6(self) -> int:
@@ -4327,7 +3850,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         Get or set the local port of the server for IPv6 support
         """
     @local_port_v6.setter
-    def local_port_v6(self, arg1: int) -> None:
+    def local_port_v6(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def max_players(self) -> int:
@@ -4335,7 +3858,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         Gets or sets the maximum number of players allowed.
         """
     @max_players.setter
-    def max_players(self, arg1: int) -> None:
+    def max_players(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def minecraft_version_network(self) -> str:
@@ -4364,7 +3887,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         Gets or sets the number of players online.
         """
     @num_players.setter
-    def num_players(self, arg1: int) -> None:
+    def num_players(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
     def remote_host(self) -> str:
@@ -4388,35 +3911,8 @@ class ServerLoadEvent(Event):
     """
     Called when either the server startup or reload has completed.
     """
-    class LoadType:
+    class LoadType(enum.Enum):
         STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
-        __members__: typing.ClassVar[dict[str, ServerLoadEvent.LoadType]]  # value = {'STARTUP': <LoadType.STARTUP: 0>}
-        def __eq__(self, other: typing.Any) -> bool:
-            ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
     STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
     @property
     def type(self) -> ServerLoadEvent.LoadType:
@@ -4451,7 +3947,7 @@ class ServiceManager:
         """
         Unregister all the services registered by a particular plugin.
         """
-class ServicePriority:
+class ServicePriority(enum.IntEnum):
     """
     Represents various priorities of a provider.
     """
@@ -4460,33 +3956,13 @@ class ServicePriority:
     LOW: typing.ClassVar[ServicePriority]  # value = <ServicePriority.LOW: 1>
     LOWEST: typing.ClassVar[ServicePriority]  # value = <ServicePriority.LOWEST: 0>
     NORMAL: typing.ClassVar[ServicePriority]  # value = <ServicePriority.NORMAL: 2>
-    __members__: typing.ClassVar[dict[str, ServicePriority]]  # value = {'LOWEST': <ServicePriority.LOWEST: 0>, 'LOW': <ServicePriority.LOW: 1>, 'NORMAL': <ServicePriority.NORMAL: 2>, 'HIGH': <ServicePriority.HIGH: 3>, 'HIGHEST': <ServicePriority.HIGHEST: 4>}
-    def __eq__(self, other: typing.Any) -> bool:
+    @classmethod
+    def __new__(cls, value):
         ...
-    def __getstate__(self) -> int:
-        ...
-    def __hash__(self) -> int:
-        ...
-    def __index__(self) -> int:
-        ...
-    def __init__(self, value: int) -> None:
-        ...
-    def __int__(self) -> int:
-        ...
-    def __ne__(self, other: typing.Any) -> bool:
-        ...
-    def __repr__(self) -> str:
-        ...
-    def __setstate__(self, state: int) -> None:
-        ...
-    def __str__(self) -> str:
-        ...
-    @property
-    def name(self) -> str:
-        ...
-    @property
-    def value(self) -> int:
-        ...
+    def __format__(self, format_spec):
+        """
+        Convert to a string according to format_spec.
+        """
 class Skin:
     """
     Represents a player skin.
@@ -4517,7 +3993,7 @@ class Slider:
     """
     Represents a slider with a label.
     """
-    def __init__(self, label: str | Translatable = '', min: float = 0, max: float = 100, step: float = 20, default_value: float | None = None) -> None:
+    def __init__(self, label: str | Translatable = '', min: typing.SupportsFloat = 0, max: typing.SupportsFloat = 100, step: typing.SupportsFloat = 20, default_value: typing.SupportsFloat | None = None) -> None:
         ...
     @property
     def default_value(self) -> float | None:
@@ -4525,7 +4001,7 @@ class Slider:
         Gets or sets the optional default value of the slider.
         """
     @default_value.setter
-    def default_value(self, arg1: float | None) -> Slider:
+    def default_value(self, arg1: typing.SupportsFloat | None) -> Slider:
         ...
     @property
     def label(self) -> str | Translatable:
@@ -4541,7 +4017,7 @@ class Slider:
         Gets or sets the maximum value of the slider.
         """
     @max.setter
-    def max(self, arg1: float) -> Slider:
+    def max(self, arg1: typing.SupportsFloat) -> Slider:
         ...
     @property
     def min(self) -> float:
@@ -4549,7 +4025,7 @@ class Slider:
         Gets or sets the minimum value of the slider.
         """
     @min.setter
-    def min(self, arg1: float) -> Slider:
+    def min(self, arg1: typing.SupportsFloat) -> Slider:
         ...
     @property
     def step(self) -> float:
@@ -4557,7 +4033,7 @@ class Slider:
         Gets or sets the step size of the slider.
         """
     @step.setter
-    def step(self, arg1: float) -> Slider:
+    def step(self, arg1: typing.SupportsFloat) -> Slider:
         ...
 class SocketAddress:
     """
@@ -4567,7 +4043,7 @@ class SocketAddress:
     def __init__(self) -> None:
         ...
     @typing.overload
-    def __init__(self, hostname: str, port: int) -> None:
+    def __init__(self, hostname: str, port: typing.SupportsInt) -> None:
         ...
     def __repr__(self) -> str:
         ...
@@ -4587,7 +4063,7 @@ class StepSlider:
     """
     Represents a step slider with a set of predefined options.
     """
-    def __init__(self, label: str | Translatable = '', options: list[str] | None = None, default_index: int | None = None) -> None:
+    def __init__(self, label: str | Translatable = '', options: collections.abc.Sequence[str] | None = None, default_index: typing.SupportsInt | None = None) -> None:
         ...
     def add_option(self, option: str) -> Dropdown:
         """
@@ -4599,7 +4075,7 @@ class StepSlider:
         Gets or sets the optional default index of the step slider.
         """
     @default_index.setter
-    def default_index(self, arg1: int | None) -> Dropdown:
+    def default_index(self, arg1: typing.SupportsInt | None) -> Dropdown:
         ...
     @property
     def label(self) -> str | Translatable:
@@ -4615,7 +4091,7 @@ class StepSlider:
         Gets or sets the options of the step slider.
         """
     @options.setter
-    def options(self, arg1: list[str]) -> Dropdown:
+    def options(self, arg1: collections.abc.Sequence[str]) -> Dropdown:
         ...
 class Task:
     """
@@ -4710,7 +4186,7 @@ class Translatable:
     """
     Represents an object with a text representation that can be translated by the Minecraft client.
     """
-    def __init__(self, text: str, params: list[str] | None = None) -> None:
+    def __init__(self, text: str, params: collections.abc.Sequence[str] | None = None) -> None:
         ...
     @property
     def params(self) -> list[str]:
@@ -4730,7 +4206,7 @@ class Vector:
     def __add__(self, arg0: Vector) -> Vector:
         ...
     @typing.overload
-    def __add__(self, arg0: float) -> Vector:
+    def __add__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
     def __iadd__(self, arg0: Vector) -> Vector:
         ...
@@ -4740,7 +4216,7 @@ class Vector:
     def __init__(self) -> None:
         ...
     @typing.overload
-    def __init__(self, x: float, y: float, z: float) -> None:
+    def __init__(self, x: typing.SupportsFloat, y: typing.SupportsFloat, z: typing.SupportsFloat) -> None:
         ...
     def __isub__(self, arg0: Vector) -> Vector:
         ...
@@ -4750,17 +4226,17 @@ class Vector:
     def __mul__(self, arg0: Vector) -> Vector:
         ...
     @typing.overload
-    def __mul__(self, arg0: float) -> Vector:
+    def __mul__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
-    def __radd__(self, arg0: float) -> Vector:
+    def __radd__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
     def __repr__(self) -> str:
         ...
-    def __rmul__(self, arg0: float) -> Vector:
+    def __rmul__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
-    def __rsub__(self, arg0: float) -> Vector:
+    def __rsub__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
-    def __rtruediv__(self, arg0: float) -> Vector:
+    def __rtruediv__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
     def __str__(self) -> str:
         ...
@@ -4768,13 +4244,13 @@ class Vector:
     def __sub__(self, arg0: Vector) -> Vector:
         ...
     @typing.overload
-    def __sub__(self, arg0: float) -> Vector:
+    def __sub__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
     @typing.overload
     def __truediv__(self, arg0: Vector) -> Vector:
         ...
     @typing.overload
-    def __truediv__(self, arg0: float) -> Vector:
+    def __truediv__(self, arg0: typing.SupportsFloat) -> Vector:
         ...
     def distance(self, other: Vector) -> float:
         """
@@ -4800,7 +4276,7 @@ class Vector:
         The X component of the vector
         """
     @x.setter
-    def x(self, arg1: float) -> None:
+    def x(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def y(self) -> float:
@@ -4808,7 +4284,7 @@ class Vector:
         The Y component of the vector
         """
     @y.setter
-    def y(self, arg1: float) -> None:
+    def y(self, arg1: typing.SupportsFloat) -> None:
         ...
     @property
     def z(self) -> float:
@@ -4816,7 +4292,7 @@ class Vector:
         The Z component of the vector
         """
     @z.setter
-    def z(self, arg1: float) -> None:
+    def z(self, arg1: typing.SupportsFloat) -> None:
         ...
 class WeatherChangeEvent(WeatherEvent, Cancellable):
     """

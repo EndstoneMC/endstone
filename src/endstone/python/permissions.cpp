@@ -29,24 +29,8 @@ Permission createPermission(std::string name, const std::optional<std::string> &
 }
 }  // namespace
 
-void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
-                      py::enum_<PermissionDefault> &permission_default, py::enum_<PermissionLevel> &permission_level)
+void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::class_<Permission> &permission)
 {
-    permission_default  //
-        .value("TRUE", PermissionDefault::True)
-        .value("FALSE", PermissionDefault::False)
-        .value("OP", PermissionDefault::Operator)
-        .value("OPERATOR", PermissionDefault::Operator)
-        .value("NOT_OP", PermissionDefault::NotOperator)
-        .value("NOT_OPERATOR", PermissionDefault::NotOperator)
-        .value("CONSOLE", PermissionDefault::Console);
-
-    permission_level  //
-        .value("DEFAULT", PermissionLevel::Default)
-        .value("OP", PermissionLevel::Operator)
-        .value("OPERATOR", PermissionLevel::Operator)
-        .value("CONSOLE", PermissionLevel::Console);
-
     permission  //
         .def(py::init(&createPermission), py::arg("name"), py::arg("description") = py::none(),
              py::arg("default") = py::none(), py::arg("children") = py::none())

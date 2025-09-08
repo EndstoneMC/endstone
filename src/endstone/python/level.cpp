@@ -29,12 +29,13 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def("__repr__", [](const Chunk &self) { return fmt::format("{}", self); })
         .def("__str__", [](const Chunk &self) { return fmt::format("{}", self); });
 
-    py::enum_<Dimension::Type>(dimension, "Type", "Represents various dimension types.")
+    py::native_enum<Dimension::Type>(dimension, "Type", "enum.Enum", "Represents various dimension types.")
         .value("OVERWORLD", Dimension::Type::Overworld)
         .value("NETHER", Dimension::Type::Nether)
         .value("THE_END", Dimension::Type::TheEnd)
         .value("CUSTOM", Dimension::Type::Custom)
-        .export_values();
+        .export_values()
+        .finalize();
 
     dimension.def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
         .def_property_readonly("type", &Dimension::getType, "Gets the type of this dimension")

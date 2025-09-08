@@ -20,7 +20,7 @@ namespace endstone::python {
 
 void init_boss(py::module_ &m)
 {
-    py::enum_<BarColor>(m, "BarColor")  //
+    py::native_enum<BarColor>(m, "BarColor", "enum.Enum")  //
         .value("PINK", BarColor::Pink)
         .value("BLUE", BarColor::Blue)
         .value("RED", BarColor::Red)
@@ -28,17 +28,20 @@ void init_boss(py::module_ &m)
         .value("YELLOW", BarColor::Yellow)
         .value("PURPLE", BarColor::Purple)
         .value("REBECCA_PURPLE", BarColor::RebeccaPurple)
-        .value("WHITE", BarColor::White);
+        .value("WHITE", BarColor::White)
+        .finalize();
 
-    py::enum_<BarFlag>(m, "BarFlag")  //
-        .value("DARKEN_SKY", BarFlag::DarkenSky);
+    py::native_enum<BarFlag>(m, "BarFlag", "enum.Enum")  //
+        .value("DARKEN_SKY", BarFlag::DarkenSky)
+        .finalize();
 
-    py::enum_<BarStyle>(m, "BarStyle")  //
+    py::native_enum<BarStyle>(m, "BarStyle", "enum.Enum")  //
         .value("SOLID", BarStyle::Solid)
         .value("SEGMENTED_6", BarStyle::Segmented6)
         .value("SEGMENTED_10", BarStyle::Segmented10)
         .value("SEGMENTED_12", BarStyle::Segmented12)
-        .value("SEGMENTED_20", BarStyle::Segmented20);
+        .value("SEGMENTED_20", BarStyle::Segmented20)
+        .finalize();
 
     py::class_<BossBar>(m, "BossBar", "Represents a boss bar that is displayed to players.")
         .def_property("title", &BossBar::getTitle, &BossBar::setTitle, "The title of this boss bar.")

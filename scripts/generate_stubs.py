@@ -98,15 +98,12 @@ def main():
     output_path = Path(__file__).resolve().parent.parent
     parser = Parser()
     parser.set_pybind11_enum_locations({re.compile("RenderType"): "endstone._internal.endstone_python"})
-
     printer = Printer(invalid_expr_as_ellipses=True)
-
     out_dir, sub_dir = to_output_and_subdir(
         output_dir=str(output_path),
         module_name="endstone._internal.endstone_python",
         root_suffix=None,
     )
-
     run(
         parser,
         printer,
@@ -116,6 +113,16 @@ def main():
         dry_run=False,
         writer=Writer(),
     )
+
+    with open(output_path / "endstone" / "_internal" / "endstone_python.pyi", 'r',
+              encoding='utf-8') as file:
+        content = file.read()
+
+    content = content.replace("endstone._internal.endstone_python.", "")
+
+    with open(output_path / "endstone" / "_internal" / "endstone_python.pyi", 'w',
+              encoding='utf-8') as file:
+        file.write(content)
 
     print(f"Stubs generated successfully to: {output_path}")
 

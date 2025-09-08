@@ -22,13 +22,14 @@ namespace endstone::python {
 
 void init_block(py::module_ &m, py::class_<Block> &block)
 {
-    py::enum_<BlockFace>(m, "BlockFace")
+    py::native_enum<BlockFace>(m, "BlockFace", "enum.Enum")
         .value("DOWN", BlockFace::Down)
         .value("UP", BlockFace::Up)
         .value("NORTH", BlockFace::North)
         .value("SOUTH", BlockFace::South)
         .value("WEST", BlockFace::West)
-        .value("EAST", BlockFace::East);
+        .value("EAST", BlockFace::East)
+        .finalize();
 
     py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block")
         .def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")

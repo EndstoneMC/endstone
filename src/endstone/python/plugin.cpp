@@ -112,10 +112,11 @@ PluginDescription createPluginDescription(
 
 void init_plugin(py::module &m)
 {
-    py::enum_<PluginLoadOrder>(m, "PluginLoadOrder",
-                               "Represents the order in which a plugin should be initialized and enabled.")
+    py::native_enum<PluginLoadOrder>(m, "PluginLoadOrder", "enum.Enum",
+                                     "Represents the order in which a plugin should be initialized and enabled.")
         .value("STARTUP", PluginLoadOrder::Startup)
-        .value("POSTWORLD", PluginLoadOrder::PostWorld);
+        .value("POSTWORLD", PluginLoadOrder::PostWorld)
+        .finalize();
 
     auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(
         m, "PluginLoader", "Represents a plugin loader, which handles direct access to specific types of plugins");
@@ -264,12 +265,14 @@ void init_plugin(py::module &m)
                       py::return_value_policy::reference, "The CommandExecutor to run when parsing this command")
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this PluginCommand");
 
-    py::enum_<ServicePriority>(m, "ServicePriority", "Represents various priorities of a provider.")
+    py::native_enum<ServicePriority>(m, "ServicePriority", "enum.IntEnum",
+                                     "Represents various priorities of a provider.")
         .value("LOWEST", ServicePriority::Lowest)
         .value("LOW", ServicePriority::Low)
         .value("NORMAL", ServicePriority::Normal)
         .value("HIGH", ServicePriority::High)
-        .value("HIGHEST", ServicePriority::Highest);
+        .value("HIGHEST", ServicePriority::Highest)
+        .finalize();
 
     py::class_<Service, std::shared_ptr<Service>>(m, "Service", "Represents a list of methods.").def(py::init<>());
 

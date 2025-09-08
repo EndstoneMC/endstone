@@ -12,12 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <utility>
+#include "endstone_python.h"
 
-#include <pybind11/chrono.h>
-#include <pybind11/numpy.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include <utility>
 
 #include "endstone/endstone.hpp"
 #include "registry.h"
@@ -34,7 +31,7 @@ void init_color_format(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_damage(py::module_ &);
 void init_enchantments(py::module_ &);
-void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
+void init_event(py::module_ &, py::class_<Event> &event);
 void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
@@ -42,8 +39,7 @@ void init_lang(py::module_ &);
 void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
-void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
-                      py::enum_<PermissionDefault> &permission_default, py::enum_<PermissionLevel> &permission_level);
+void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission);
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player);
 void init_plugin(py::module_ &);
@@ -58,19 +54,46 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     py::options options;
     options.disable_enum_members_docstring();
 
+    py::native_enum<EventPriority>(
+        m, "EventPriority", "enum.IntEnum",
+        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR")
+        .value("LOWEST", EventPriority::Lowest,
+               "Event call is of very low importance and should be run first, to allow other plugins to further "
+               "customise the outcome")
+        .value("LOW", EventPriority::Low, "Event call is of low importance")
+        .value("NORMAL", EventPriority::Normal,
+               " Event call is neither important nor unimportant, and may be run normally")
+        .value("HIGH", EventPriority::High, "Event call is of high importance")
+        .value("HIGHEST", EventPriority::Highest,
+               "Event call is critical and must have the final say in what happens to the event")
+        .value("MONITOR", EventPriority::Monitor,
+               "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
+               "should be made under this priority.")
+        .finalize();
+    py::native_enum<PermissionDefault>(m, "PermissionDefault", "enum.Enum",
+                                       "Represents the possible default values for permissions")
+        .value("TRUE", PermissionDefault::True)
+        .value("FALSE", PermissionDefault::False)
+        .value("OP", PermissionDefault::Operator)
+        .value("OPERATOR", PermissionDefault::Operator)
+        .value("NOT_OP", PermissionDefault::NotOperator)
+        .value("NOT_OPERATOR", PermissionDefault::NotOperator)
+        .value("CONSOLE", PermissionDefault::Console)
+        .finalize();
+    py::native_enum<PermissionLevel>(m, "PermissionLevel", "enum.IntEnum")
+        .value("DEFAULT", PermissionLevel::Default)
+        .value("OP", PermissionLevel::Operator)
+        .value("OPERATOR", PermissionLevel::Operator)
+        .value("CONSOLE", PermissionLevel::Console)
+        .finalize();
+
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
     auto event = py::class_<Event>(m, "Event", "Represents an event.");
-    auto event_priority = py::enum_<EventPriority>(
-        m, "EventPriority",
-        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR");
     auto permissible = py::class_<Permissible>(
         m, "Permissible", "Represents an object that may become a server operator and can be assigned permissions.");
     auto permission =
         py::class_<Permission>(m, "Permission", "Represents a unique permission that may be attached to a Permissible");
-    auto permission_default =
-        py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
-    auto permission_level = py::enum_<PermissionLevel>(m, "PermissionLevel");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto block = py::class_<Block>(m, "Block", "Represents a block.");
     auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
@@ -106,10 +129,10 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_command(m, command_sender);
     init_plugin(m);
     init_scheduler(m);
-    init_permissions(m, permissible, permission, permission_default, permission_level);
+    init_permissions(m, permissible, permission);
     init_registry(m);
     init_server(server);
-    init_event(m, event, event_priority);
+    init_event(m, event);
 }
 
 void init_color_format(py::module_ &m)
@@ -156,25 +179,28 @@ void init_color_format(py::module_ &m)
 
 void init_game_mode(py::module_ &m)
 {
-    py::enum_<GameMode>(m, "GameMode", "Represents the various type of game modes that Players may have.")
+    py::native_enum<GameMode>(m, "GameMode", "enum.Enum",
+                              "Represents the various type of game modes that Players may have.")
         .value("SURVIVAL", GameMode::Survival)
         .value("CREATIVE", GameMode::Creative)
         .value("ADVENTURE", GameMode::Adventure)
-        .value("SPECTATOR", GameMode::Spectator);
+        .value("SPECTATOR", GameMode::Spectator)
+        .finalize();
 }
 
 void init_logger(py::module &m)
 {
     auto logger = py::class_<Logger>(m, "Logger", "Logger class which can format and output varies levels of logs.");
 
-    py::enum_<Logger::Level>(logger, "Level", "Specifies the log level.")
+    py::native_enum<Logger::Level>(logger, "Level", "enum.IntEnum", "Specifies the log level.")
         .value("TRACE", Logger::Level::Trace)
         .value("DEBUG", Logger::Level::Debug)
         .value("INFO", Logger::Level::Info)
         .value("WARNING", Logger::Level::Warning)
         .value("ERROR", Logger::Level::Error)
         .value("CRITICAL", Logger::Level::Critical)
-        .export_values();
+        .export_values()
+        .finalize();
 
     logger.def("set_level", &Logger::setLevel, py::arg("level"), "Set the logging level for this Logger instance.")
         .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"),
