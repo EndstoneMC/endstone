@@ -36,6 +36,7 @@ void init_damage(py::module_ &);
 void init_enchantments(py::module_ &);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
 void init_form(py::module_ &);
+void init_debug_shape(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
@@ -95,6 +96,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_enchantments(m);
     init_inventory(m, item_stack);
     init_util(m);
+    init_debug_shape(m);
     init_ban(m);
     init_map(m);
     init_scoreboard(m);
@@ -391,6 +393,10 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
         .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.")
         .def("send_form", &Player::sendForm, "Sends a form to the player.", py::arg("form"))
         .def("close_form", &Player::closeForm, "Closes the forms that are currently open for the player.")
+        .def("send_debug_shape", &Player::sendDebugShape, "Sends a debug shape to the player.", py::arg("debug_shape"))
+        .def("send_debug_shapes", &Player::sendDebugShapes, "Sends a number of debug shapes to the player.", py::arg("debug_shapes"))
+        .def("remove_debug_shape", &Player::removeDebugShape, "Removes a debug shape from the player.", py::arg("debug_shape"))
+        .def("remove_debug_shapes", &Player::removeDebugShapes, "Removes a number of debug shapes from the player.", py::arg("debug_shapes"))
         .def(
             "send_packet",
             [](const Player &self, const int packet_id, const py::bytes &payload) {
