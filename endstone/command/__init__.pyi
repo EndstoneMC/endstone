@@ -114,7 +114,7 @@ class CommandExecutor:
     """
 
     def __init__(self) -> None: ...
-    def on_command(self, sender: CommandSender, command: Command, args: collections.abc.Sequence[str]) -> bool:
+    def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
         """
         Executes the given command, returning its success.
         """
