@@ -12,6 +12,7 @@ class SocketAddress:
     """
     Represents an IP Socket Address (hostname + port number).
     """
+
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
@@ -23,6 +24,7 @@ class SocketAddress:
         """
         Gets the hostname.
         """
+
     @property
     def port(self) -> int:
         """
@@ -33,6 +35,7 @@ class Vector:
     """
     Represents a 3-dimensional vector.
     """
+
     @typing.overload
     def __add__(self, arg0: Vector) -> Vector: ...
     @typing.overload
@@ -67,25 +70,30 @@ class Vector:
         """
         The distance between this Vector and another
         """
+
     def distance_squared(self, other: Vector) -> float:
         """
         The squared distance between this Vector and another
         """
+
     @property
     def length(self) -> float:
         """
         The magnitude of the Vector
         """
+
     @property
     def length_squared(self) -> float:
         """
         The squared magnitude of the Vector
         """
+
     @property
     def x(self) -> float:
         """
         The X component of the vector
         """
+
     @x.setter
     def x(self, arg1: typing.SupportsFloat) -> None: ...
     @property
@@ -93,6 +101,7 @@ class Vector:
         """
         The Y component of the vector
         """
+
     @y.setter
     def y(self, arg1: typing.SupportsFloat) -> None: ...
     @property
@@ -100,5 +109,6 @@ class Vector:
         """
         The Z component of the vector
         """
+
     @z.setter
     def z(self, arg1: typing.SupportsFloat) -> None: ...

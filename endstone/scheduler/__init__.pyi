@@ -15,26 +15,32 @@ class Scheduler:
     """
     Represents a scheduler that executes various tasks
     """
+
     def cancel_task(self, id: typing.SupportsInt) -> None:
         """
         Removes task from scheduler.
         """
+
     def cancel_tasks(self, plugin: endstone._python.plugin.Plugin) -> None:
         """
         Removes all tasks associated with a particular plugin from the scheduler.
         """
+
     def get_pending_tasks(self) -> list[Task]:
         """
         Returns a vector of all pending tasks.
         """
+
     def is_queued(self, id: typing.SupportsInt) -> bool:
         """
         Check if the task queued to be run later.
         """
+
     def is_running(self, id: typing.SupportsInt) -> bool:
         """
         Check if the task currently running.
         """
+
     def run_task(
         self,
         plugin: endstone._python.plugin.Plugin,
@@ -50,25 +56,30 @@ class Task:
     """
     Represents a task being executed by the scheduler
     """
+
     def cancel(self) -> None:
         """
         Attempts to cancel this task.
         """
+
     @property
     def is_cancelled(self) -> bool:
         """
         Returns true if the task has been cancelled.
         """
+
     @property
     def is_sync(self) -> bool:
         """
         Returns true if the task is run by server thread.
         """
+
     @property
     def owner(self) -> endstone._python.plugin.Plugin:
         """
         Returns the Plugin that owns the task.
         """
+
     @property
     def task_id(self) -> int:
         """

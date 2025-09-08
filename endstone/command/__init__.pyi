@@ -23,6 +23,7 @@ class BlockCommandSender(CommandSender):
     """
     Represents a block command sender.
     """
+
     @property
     def block(self) -> endstone._python.block.Block:
         """
@@ -33,6 +34,7 @@ class Command:
     """
     Represents a Command, which executes various tasks upon user input
     """
+
     def __init__(
         self,
         name: str,
@@ -47,19 +49,23 @@ class Command:
         """
         Executes the command, returning its success
         """
+
     def test_permission(self, target: CommandSender) -> bool:
         """
         Tests the given CommandSender to see if they can perform this command.
         """
+
     def test_permission_silently(self, target: CommandSender) -> bool:
         """
         Tests the given CommandSender to see if they can perform this command. No error is sent to the sender.
         """
+
     @property
     def aliases(self) -> list[str]:
         """
         List of aliases of this command
         """
+
     @aliases.setter
     def aliases(self, arg1: collections.abc.Sequence[str]) -> None: ...
     @property
@@ -67,6 +73,7 @@ class Command:
         """
         Brief description of this command
         """
+
     @description.setter
     def description(self, arg1: str) -> None: ...
     @property
@@ -74,11 +81,13 @@ class Command:
         """
         Returns the current registered state of this command
         """
+
     @property
     def name(self) -> str:
         """
         Name of this command.
         """
+
     @name.setter
     def name(self, arg1: str) -> None: ...
     @property
@@ -86,6 +95,7 @@ class Command:
         """
         The permissions required by users to be able to perform this command
         """
+
     @permissions.setter
     def permissions(self, arg1: collections.abc.Sequence[str]) -> None: ...
     @property
@@ -93,6 +103,7 @@ class Command:
         """
         List of usages of this command
         """
+
     @usages.setter
     def usages(self, arg1: collections.abc.Sequence[str]) -> None: ...
 
@@ -100,6 +111,7 @@ class CommandExecutor:
     """
     Represents a class which contains a single method for executing commands
     """
+
     def __init__(self) -> None: ...
     def on_command(self, sender: CommandSender, command: Command, args: collections.abc.Sequence[str]) -> bool:
         """
@@ -110,19 +122,23 @@ class CommandSender(endstone._python.permissions.Permissible):
     """
     Represents a command sender.
     """
+
     def send_error_message(self, message: str | endstone._python.lang.Translatable) -> None:
         """
         Sends this sender an error message
         """
+
     def send_message(self, message: str | endstone._python.lang.Translatable) -> None:
         """
         Sends this sender a message
         """
+
     @property
     def name(self) -> str:
         """
         Gets the name of this command sender
         """
+
     @property
     def server(self) -> endstone._python.Server:
         """
@@ -133,6 +149,7 @@ class CommandSenderWrapper(CommandSender):
     """
     Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output
     """
+
     def __init__(
         self,
         sender: CommandSender,

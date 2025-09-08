@@ -15,25 +15,30 @@ class Enchantment:
 
         This does not check if it conflicts with any enchantments already applied to the item.
         """
+
     def conflicts_with(self, other: Enchantment) -> bool:
         """
         Check if this enchantment conflicts with another enchantment.
         """
+
     @property
     def id(self) -> str:
         """
         Return the identifier for this enchantment.
         """
+
     @property
     def max_level(self) -> int:
         """
         Gets the maximum level that this Enchantment may become.
         """
+
     @property
     def start_level(self) -> int:
         """
         Gets the level that this Enchantment should start at (also known as minimum level).
         """
+
     @property
     def translation_key(self) -> str:
         """
