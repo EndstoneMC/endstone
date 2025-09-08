@@ -136,4 +136,4 @@ __getattr__, __dir__, __all__ = lazy.attach(
     },
 )
 
-__all__.append("Plugin", "PluginDescription")
+__all__.extend(["Plugin", "PluginDescription"])

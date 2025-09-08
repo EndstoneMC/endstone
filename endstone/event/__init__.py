@@ -1,6 +1,6 @@
 import lazy_loader as lazy
 
-from endstone._python import EventPriority
+from endstone._python.event import EventPriority
 
 
 def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False):
