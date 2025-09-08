@@ -54,39 +54,6 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     py::options options;
     options.disable_enum_members_docstring();
 
-    py::native_enum<EventPriority>(
-        m, "EventPriority", "enum.IntEnum",
-        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR")
-        .value("LOWEST", EventPriority::Lowest,
-               "Event call is of very low importance and should be run first, to allow other plugins to further "
-               "customise the outcome")
-        .value("LOW", EventPriority::Low, "Event call is of low importance")
-        .value("NORMAL", EventPriority::Normal,
-               " Event call is neither important nor unimportant, and may be run normally")
-        .value("HIGH", EventPriority::High, "Event call is of high importance")
-        .value("HIGHEST", EventPriority::Highest,
-               "Event call is critical and must have the final say in what happens to the event")
-        .value("MONITOR", EventPriority::Monitor,
-               "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
-               "should be made under this priority.")
-        .finalize();
-    py::native_enum<PermissionDefault>(m, "PermissionDefault", "enum.Enum",
-                                       "Represents the possible default values for permissions")
-        .value("TRUE", PermissionDefault::True)
-        .value("FALSE", PermissionDefault::False)
-        .value("OP", PermissionDefault::Operator)
-        .value("OPERATOR", PermissionDefault::Operator)
-        .value("NOT_OP", PermissionDefault::NotOperator)
-        .value("NOT_OPERATOR", PermissionDefault::NotOperator)
-        .value("CONSOLE", PermissionDefault::Console)
-        .finalize();
-    py::native_enum<PermissionLevel>(m, "PermissionLevel", "enum.IntEnum")
-        .value("DEFAULT", PermissionLevel::Default)
-        .value("OP", PermissionLevel::Operator)
-        .value("OPERATOR", PermissionLevel::Operator)
-        .value("CONSOLE", PermissionLevel::Console)
-        .finalize();
-
     // Submodules
     auto m_actor =
         m.def_submodule("actor", "Classes relating to actors (entities) that can exist in a world, including all "
@@ -113,6 +80,39 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto m_scoreboard =
         m.def_submodule("scoreboard", "Classes relating to manage the client side score display system.");
     auto m_util = m.def_submodule("util", "Multi and single purpose classes.");
+
+    py::native_enum<EventPriority>(
+        m_event, "EventPriority", "enum.IntEnum",
+        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR")
+        .value("LOWEST", EventPriority::Lowest,
+               "Event call is of very low importance and should be run first, to allow other plugins to further "
+               "customise the outcome")
+        .value("LOW", EventPriority::Low, "Event call is of low importance")
+        .value("NORMAL", EventPriority::Normal,
+               " Event call is neither important nor unimportant, and may be run normally")
+        .value("HIGH", EventPriority::High, "Event call is of high importance")
+        .value("HIGHEST", EventPriority::Highest,
+               "Event call is critical and must have the final say in what happens to the event")
+        .value("MONITOR", EventPriority::Monitor,
+               "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
+               "should be made under this priority.")
+        .finalize();
+    py::native_enum<PermissionDefault>(m_permissions, "PermissionDefault", "enum.Enum",
+                                       "Represents the possible default values for permissions")
+        .value("TRUE", PermissionDefault::True)
+        .value("FALSE", PermissionDefault::False)
+        .value("OP", PermissionDefault::Operator)
+        .value("OPERATOR", PermissionDefault::Operator)
+        .value("NOT_OP", PermissionDefault::NotOperator)
+        .value("NOT_OPERATOR", PermissionDefault::NotOperator)
+        .value("CONSOLE", PermissionDefault::Console)
+        .finalize();
+    py::native_enum<PermissionLevel>(m_permissions, "PermissionLevel", "enum.IntEnum")
+        .value("DEFAULT", PermissionLevel::Default)
+        .value("OP", PermissionLevel::Operator)
+        .value("OPERATOR", PermissionLevel::Operator)
+        .value("CONSOLE", PermissionLevel::Console)
+        .finalize();
 
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
