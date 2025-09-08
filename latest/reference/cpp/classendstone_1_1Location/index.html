@@ -2122,17 +2122,6 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneposition" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Functions inherited from endstone::Position
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions-inherited-from-endstonevector" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions inherited from endstone::Vector
@@ -2168,9 +2157,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-location-13" class="md-nav__link">
+    <a href="#function-location-14" class="md-nav__link">
       <span class="md-ellipsis">
-        function Location [&#8531;]
+        function Location [&frac14;]
       </span>
     </a>
 
@@ -2181,9 +2170,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-location-23" class="md-nav__link">
+    <a href="#function-location-24" class="md-nav__link">
       <span class="md-ellipsis">
-        function Location [&#8532;]
+        function Location [2/4]
       </span>
     </a>
 
@@ -2194,9 +2183,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-location-33" class="md-nav__link">
+    <a href="#function-location-34" class="md-nav__link">
       <span class="md-ellipsis">
-        function Location [3/3]
+        function Location [&frac34;]
       </span>
     </a>
 
@@ -2207,9 +2196,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-position-12" class="md-nav__link">
+    <a href="#function-location-44" class="md-nav__link">
       <span class="md-ellipsis">
-        function Position [&frac12;]
+        function Location [4/4]
       </span>
     </a>
 
@@ -2220,9 +2209,48 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-position-22" class="md-nav__link">
+    <a href="#function-getblockx" class="md-nav__link">
       <span class="md-ellipsis">
-        function Position [2/2]
+        function getBlockX
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getblocky" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getBlockY
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getblockz" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getBlockZ
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getdimension" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getDimension
       </span>
     </a>
 
@@ -2262,6 +2290,19 @@ For latest updates join the chat on
     <a href="#function-getyaw" class="md-nav__link">
       <span class="md-ellipsis">
         function getYaw
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-setdimension" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setDimension
       </span>
     </a>
 
@@ -2339,7 +2380,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/level/location.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1Position/">endstone::Position</a></p>
+<p>Inherits the following classes: <a href="../classendstone_1_1Vector/">endstone::Vector</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2351,83 +2392,59 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-location-13"><strong>Location</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z, <a href="../classendstone_1_1Vector/"><strong>float</strong></a> pitch=0.0, <a href="../classendstone_1_1Vector/"><strong>float</strong></a> yaw=0.0) <br></td>
+<td style="text-align: left;"><a href="#function-location-14"><strong>Location</strong></a> (T x, T y, T z, const float pitch=0.0, const float yaw=0.0) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-location-23"><strong>Location</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z, <a href="../classendstone_1_1Vector/"><strong>float</strong></a> pitch, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
+<td style="text-align: left;"><a href="#function-location-24"><strong>Location</strong></a> (T x, T y, T z, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-location-33"><strong>Location</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z, <a href="../classendstone_1_1Vector/"><strong>float</strong></a> pitch, <a href="../classendstone_1_1Vector/"><strong>float</strong></a> yaw, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
+<td style="text-align: left;"><a href="#function-location-34"><strong>Location</strong></a> (T x, T y, T z, const float pitch, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-position-12"><strong>Position</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z) <br></td>
+<td style="text-align: left;"><a href="#function-location-44"><strong>Location</strong></a> (T x, T y, T z, const float pitch, const float yaw, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-position-22"><strong>Position</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="#function-getblockx"><strong>getBlockX</strong></a> () const<br><em>Gets the floored value of the X component, indicating the block that this location is contained with.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="#function-getdirection"><strong>getDirection</strong></a> () const<br></td>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="#function-getblocky"><strong>getBlockY</strong></a> () const<br><em>Gets the floored value of the Y component, indicating the block that this location is contained with.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>float</strong></a></td>
-<td style="text-align: left;"><a href="#function-getpitch"><strong>getPitch</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>float</strong></a></td>
-<td style="text-align: left;"><a href="#function-getyaw"><strong>getYaw</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setpitch"><strong>setPitch</strong></a> (<a href="../classendstone_1_1Vector/"><strong>float</strong></a> pitch) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setyaw"><strong>setYaw</strong></a> (<a href="../classendstone_1_1Vector/"><strong>float</strong></a> yaw) <br></td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-functions-inherited-from-endstoneposition">Public Functions inherited from endstone::Position<a class="headerlink" href="#public-functions-inherited-from-endstoneposition" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1Position/">endstone::Position</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-position-12"><strong>Position</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-position-22"><strong>Position</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getblockx"><strong>getBlockX</strong></a> () const<br><em>Gets the floored value of the X component, indicating the block that this location is contained with.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getblocky"><strong>getBlockY</strong></a> () const<br><em>Gets the floored value of the Y component, indicating the block that this location is contained with.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getblockz"><strong>getBlockZ</strong></a> () const<br><em>Gets the floored value of the Z component, indicating the block that this location is contained with.</em></td>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="#function-getblockz"><strong>getBlockZ</strong></a> () const<br><em>Gets the floored value of the Z component, indicating the block that this location is contained with.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getdimension"><strong>getDimension</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getdimension"><strong>getDimension</strong></a> () const<br><em>Gets the dimension that this position resides in.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-setdimension"><strong>setDimension</strong></a> (<a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="#function-getdirection"><strong>getDirection</strong></a> () const<br><em>Gets a unit-vector pointing in the direction that this</em> <a href="./"><em><strong>Location</strong></em></a> <em>is facing.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">float</td>
+<td style="text-align: left;"><a href="#function-getpitch"><strong>getPitch</strong></a> () const<br><em>Gets the pitch of this location, measured in degrees.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">float</td>
+<td style="text-align: left;"><a href="#function-getyaw"><strong>getYaw</strong></a> () const<br><em>Gets the yaw of this location, measured in degrees.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-setdimension"><strong>setDimension</strong></a> (<a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) <br><em>Sets the dimension that this position resides in.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-setpitch"><strong>setPitch</strong></a> (float pitch) <br><em>Sets the pitch of this location, measured in degrees.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-setyaw"><strong>setYaw</strong></a> (float yaw) <br><em>Sets the yaw of this location, measured in degrees.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2442,108 +2459,108 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-12"><strong>Vector</strong></a> () <br></td>
+<td style="text-align: right;">constexpr</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-12"><strong>Vector</strong></a> () = default<br><em>Construct the vector with all components as 0.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-22"><strong>Vector</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> y, <a href="../classendstone_1_1Vector/"><strong>T</strong></a> z) <br></td>
+<td style="text-align: right;">constexpr</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-22"><strong>Vector</strong></a> (T x, T y, T z) <br><em>Construct the vector with provided components.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distance"><strong>distance</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">float</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distance"><strong>distance</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distancesquared"><strong>distanceSquared</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr float</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distancesquared"><strong>distanceSquared</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr float</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getx"><strong>getX</strong></a> () const<br><em>Gets the X component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr float</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-gety"><strong>getY</strong></a> () const<br><em>Gets the Y component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr float</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getz"><strong>getZ</strong></a> () const<br><em>Gets the Z component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
+<td style="text-align: right;">float</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-length"><strong>length</strong></a> () const<br><em>Gets the magnitude of the vector, defined as sqrt(x<sup>2+y</sup>2+z^2).</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
+<td style="text-align: right;">constexpr float</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-lengthsquared"><strong>lengthSquared</strong></a> () const<br><em>Gets the magnitude of the vector squared.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp;</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-normalize"><strong>normalize</strong></a> () <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator"><strong>operator*</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator"><strong>operator*</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_1"><strong>operator*</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_1"><strong>operator*</strong></a> (float scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_2"><strong>operator*=</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_2"><strong>operator*=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_3"><strong>operator+</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_3"><strong>operator+</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_4"><strong>operator+</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_4"><strong>operator+</strong></a> (float scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_5"><strong>operator+=</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_5"><strong>operator+=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-"><strong>operator-</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-"><strong>operator-</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-_1"><strong>operator-</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-_1"><strong>operator-</strong></a> (float scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-_2"><strong>operator-=</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-_2"><strong>operator-=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_6"><strong>operator/</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_6"><strong>operator/</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_7"><strong>operator/</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> scalar) const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_7"><strong>operator/</strong></a> (float scalar) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_8"><strong>operator/=</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_8"><strong>operator/=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_9"><strong>operator==</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &gt; &amp; other) const<br></td>
+<td style="text-align: right;">constexpr bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_9"><strong>operator==</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setx"><strong>setX</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> x) <br><em>Set the X component.</em></td>
+<td style="text-align: right;">constexpr void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setx"><strong>setX</strong></a> (float x) <br><em>Set the X component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-sety"><strong>setY</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> y) <br><em>Set the Y component.</em></td>
+<td style="text-align: right;">constexpr void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-sety"><strong>setY</strong></a> (float y) <br><em>Set the Y component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setz"><strong>setZ</strong></a> (<a href="../classendstone_1_1Vector/"><strong>T</strong></a> z) <br><em>Set the Z component.</em></td>
+<td style="text-align: right;">constexpr void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setz"><strong>setZ</strong></a> (float z) <br><em>Set the Z component.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2558,111 +2575,147 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-x_"><strong>x_</strong></a>  <br></td>
+<td style="text-align: right;">float</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-x_"><strong>x_</strong></a>   = <code>0.0</code><br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-y_"><strong>y_</strong></a>  <br></td>
+<td style="text-align: right;">float</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-y_"><strong>y_</strong></a>   = <code>0.0</code><br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>T</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-z_"><strong>z_</strong></a>  <br></td>
+<td style="text-align: right;">float</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-z_"><strong>z_</strong></a>   = <code>0.0</code><br></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-location-13">function Location [&#8531;]<a class="headerlink" href="#function-location-13" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
+<h3 id="function-location-14">function Location [&frac14;]<a class="headerlink" href="#function-location-14" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span><span class="o">=</span><span class="mf">0.0</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span><span class="o">=</span><span class="mf">0.0</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-location-23">function Location [&#8532;]<a class="headerlink" href="#function-location-23" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
+<h3 id="function-location-24">function Location [2/4]<a class="headerlink" href="#function-location-24" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-location-33">function Location [3/3]<a class="headerlink" href="#function-location-33" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
+<h3 id="function-location-34">function Location [&frac34;]<a class="headerlink" href="#function-location-34" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-position-12">function Position [&frac12;]<a class="headerlink" href="#function-position-12" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">Position</span><span class="w"> </span><span class="p">(</span>
+<h3 id="function-location-44">function Location [4/4]<a class="headerlink" href="#function-location-44" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">z</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-position-22">function Position [2/2]<a class="headerlink" href="#function-position-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="o">&gt;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">Position</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+<h3 id="function-getblockx">function getBlockX<a class="headerlink" href="#function-getblockx" title="Permanent link">&para;</a></h3>
+<p><em>Gets the floored value of the X component, indicating the block that this location is contained with.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getBlockX</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>block X </p>
+<hr>
+
+<h3 id="function-getblocky">function getBlockY<a class="headerlink" href="#function-getblocky" title="Permanent link">&para;</a></h3>
+<p><em>Gets the floored value of the Y component, indicating the block that this location is contained with.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getBlockY</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>block Y </p>
+<hr>
+
+<h3 id="function-getblockz">function getBlockZ<a class="headerlink" href="#function-getblockz" title="Permanent link">&para;</a></h3>
+<p><em>Gets the floored value of the Z component, indicating the block that this location is contained with.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getBlockZ</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>block Z </p>
+<hr>
+
+<h3 id="function-getdimension">function getDimension<a class="headerlink" href="#function-getdimension" title="Permanent link">&para;</a></h3>
+<p><em>Gets the dimension that this position resides in.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getDimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> that contains this position, or nullptr if the dimension is not set. </p>
 <hr>
 
 <h3 id="function-getdirection">function getDirection<a class="headerlink" href="#function-getdirection" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getDirection</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a unit-vector pointing in the direction that this <a href="./"><strong>Location</strong></a> is facing.</p>
+<p><em>Gets a unit-vector pointing in the direction that this</em> <a href="./"><em><strong>Location</strong></em></a> <em>is facing.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getDirection</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a vector pointing the direction of this location's pitch and yaw </p>
 <hr>
 
 <h3 id="function-getpitch">function getPitch<a class="headerlink" href="#function-getpitch" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getPitch</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the pitch of this location, measured in degrees.</p>
+<p><em>Gets the pitch of this location, measured in degrees.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getPitch</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the incline's pitch </p>
 <hr>
 
 <h3 id="function-getyaw">function getYaw<a class="headerlink" href="#function-getyaw" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getYaw</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the yaw of this location, measured in degrees.</p>
+<p><em>Gets the yaw of this location, measured in degrees.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">getYaw</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the rotation's yaw </p>
 <hr>
 
+<h3 id="function-setdimension">function setDimension<a class="headerlink" href="#function-setdimension" title="Permanent link">&para;</a></h3>
+<p><em>Sets the dimension that this position resides in.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setDimension</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dimension</code> New dimension that this position resides in </li>
+</ul>
+<hr>
+
 <h3 id="function-setpitch">function setPitch<a class="headerlink" href="#function-setpitch" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setPitch</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Sets the pitch of this location, measured in degrees. 
-* A pitch of 0 represents level forward facing. 
-* A pitch of 90 represents downward facing, or negative y direction. 
-* A pitch of -90 represents upward facing, or positive y direction. </p>
+<p><em>Sets the pitch of this location, measured in degrees.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setPitch</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<ul>
+<li>A pitch of 0 represents level forward facing.</li>
+<li>A pitch of 90 represents downward facing, or negative y direction.</li>
+<li>A pitch of -90 represents upward facing, or positive y direction.</li>
+</ul>
 <p>Increasing pitch values the equivalent of looking down.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2671,15 +2724,17 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setyaw">function setYaw<a class="headerlink" href="#function-setyaw" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setYaw</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Sets the yaw of this location, measured in degrees. 
-* A yaw of 0 or 360 represents the positive z direction. 
-* A yaw of 180 represents the negative z direction. 
-* A yaw of 90 represents the negative x direction. 
-* A yaw of 270 represents the positive x direction. </p>
+<p><em>Sets the yaw of this location, measured in degrees.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">::</span><span class="n">setYaw</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">yaw</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<ul>
+<li>A yaw of 0 or 360 represents the positive z direction.</li>
+<li>A yaw of 180 represents the negative z direction.</li>
+<li>A yaw of 90 represents the negative x direction.</li>
+<li>A yaw of 270 represents the positive x direction.</li>
+</ul>
 <p>Increasing yaw values are the equivalent of turning to your right-facing, increasing the scale of the next respective axis, and decreasing the scale of the previous axis.</p>
 <p><strong>Parameters:</strong></p>
 <ul>

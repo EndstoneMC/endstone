@@ -58,7 +58,7 @@
         <location file="include/endstone/lang/translatable.h" line="28" column="14" bodyfile="include/endstone/lang/translatable.h" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Translatable_1a74a8227d976679d03711bbe75155d4a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::Translatable::getText</definition>
         <argsstring>() const</argsstring>
         <name>getText</name>
@@ -76,7 +76,7 @@
         <location file="include/endstone/lang/translatable.h" line="38" column="24" bodyfile="include/endstone/lang/translatable.h" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Translatable_1a70e78893682fb89d49eb95f01d1ef60f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; std::string &gt; &amp;</type>
+        <type>const std::vector&lt; std::string &gt; &amp;</type>
         <definition>const std::vector&lt; std::string &gt; &amp; endstone::Translatable::getParameters</definition>
         <argsstring>() const</argsstring>
         <name>getParameters</name>
@@ -94,7 +94,7 @@
         <location file="include/endstone/lang/translatable.h" line="48" column="24" bodyfile="include/endstone/lang/translatable.h" bodystart="48" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Translatable_1aeb41cd43cf6f4123c5159e1958e4c383" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Translatable::empty</definition>
         <argsstring>() const</argsstring>
         <name>empty</name>

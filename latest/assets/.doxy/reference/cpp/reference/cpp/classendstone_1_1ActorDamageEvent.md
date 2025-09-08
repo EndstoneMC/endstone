@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"ActorDamageEvent"`<br> |
+|  const std::string | [**NAME**](#variable-name)   = `"ActorDamageEvent"`<br> |
 
 
 
@@ -98,11 +98,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorDamageEvent**](#function-actordamageevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, [**const**](classendstone_1_1Vector.md) [**float**](classendstone_1_1Vector.md) damage) <br> |
-|  [**float**](classendstone_1_1Vector.md) | [**getDamage**](#function-getdamage) () const<br>_Gets the raw amount of damage caused by the event._  |
+|   | [**ActorDamageEvent**](#function-actordamageevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, const float damage) <br> |
+|  float | [**getDamage**](#function-getdamage) () const<br>_Gets the raw amount of damage caused by the event._  |
 |  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](#function-getdamagesource) () const<br>_Get the source of damage._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**setDamage**](#function-setdamage) ([**const**](classendstone_1_1Vector.md) [**float**](classendstone_1_1Vector.md) damage) <br>_Sets the raw amount of damage caused by the event._  |
+|  void | [**setDamage**](#function-setdamage) (const float damage) <br>_Sets the raw amount of damage caused by the event._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -111,9 +111,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -122,9 +122,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -232,7 +232,7 @@ const std::string endstone::ActorDamageEvent::NAME;
 inline endstone::ActorDamageEvent::ActorDamageEvent (
     Mob & actor,
     std::unique_ptr< DamageSource > damage_source,
-    const  float damage
+    const float damage
 ) 
 ```
 
@@ -327,7 +327,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 _Sets the raw amount of damage caused by the event._ 
 ```C++
 inline void endstone::ActorDamageEvent::setDamage (
-    const  float damage
+    const float damage
 ) 
 ```
 

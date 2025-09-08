@@ -6,7 +6,7 @@
     <includes refid="message__form_8h" local="no">endstone/form/message_form.h</includes>
     <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classendstone_1_1MessageForm_1ae80b40d9e184bdb006df4227c18bc7a0" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, <ref refid="classendstone_1_1Vector" kindref="compound">int</ref>)&gt;</type>
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, int)&gt;</type>
         <definition>using endstone::MessageForm::OnSubmitCallback =  std::function&lt;void(Player *, int)&gt;</definition>
         <argsstring></argsstring>
         <name>OnSubmitCallback</name>

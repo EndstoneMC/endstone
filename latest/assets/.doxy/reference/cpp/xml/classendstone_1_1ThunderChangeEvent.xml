@@ -6,7 +6,7 @@
     <includes refid="thunder__change__event_8h" local="no">endstone/event/weather/thunder_change_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ThunderChangeEvent_1af5811528ec4395a5c8bb78e00815c4ab" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ThunderChangeEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -23,7 +23,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1ThunderChangeEvent_1aaaba13b478e077148ec46fda6a9e50ee" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::ThunderChangeEvent::to_</definition>
         <argsstring></argsstring>
         <name>to_</name>
@@ -49,7 +49,7 @@
           <declname>level</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>to</declname>
         </param>
         <briefdescription>
@@ -75,7 +75,7 @@
         <location file="include/endstone/event/weather/thunder_change_event.h" line="28" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ThunderChangeEvent_1ae3e78b8cabe8c813b36f186c3573c476" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::ThunderChangeEvent::toThunderState</definition>
         <argsstring>() const</argsstring>
         <name>toThunderState</name>

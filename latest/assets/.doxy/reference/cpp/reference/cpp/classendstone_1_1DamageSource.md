@@ -55,7 +55,7 @@ _Represents a source of damage._
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**getActor**](#function-getactor) () const = 0<br>_Get the actor that caused the damage to occur._  |
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**getDamagingActor**](#function-getdamagingactor) () const = 0<br>_Get the actor that directly caused the damage._  |
 | virtual std::string\_view | [**getType**](#function-gettype) () const = 0<br>_Get the damage type._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isIndirect**](#function-isindirect) () const = 0<br>_Get if this damage is indirect._  |
+| virtual bool | [**isIndirect**](#function-isindirect) () const = 0<br>_Get if this damage is indirect._  |
 | virtual  | [**~DamageSource**](#function-damagesource) () = default<br> |
 
 

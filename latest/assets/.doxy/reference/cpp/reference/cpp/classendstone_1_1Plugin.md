@@ -74,21 +74,21 @@ Inherits the following classes: [endstone::CommandExecutor](classendstone_1_1Com
 | Type | Name |
 | ---: | :--- |
 |   | [**Plugin**](#function-plugin-12) () = default<br> |
-|   | [**Plugin**](#function-plugin-22) ([**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
+|   | [**Plugin**](#function-plugin-22) (const [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
 |  [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getCommand**](#function-getcommand) (std::string name) const<br>_Gets the command with the given name, specific to this plugin._  |
-|  [**const**](classendstone_1_1Vector.md) std::filesystem::path & | [**getDataFolder**](#function-getdatafolder) () const<br>_Returns the folder that the plugin data's files are located in. The folder may not yet exist._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**PluginDescription**](classendstone_1_1PluginDescription.md) & | [**getDescription**](#function-getdescription) () const = 0<br>_Returns the details of this plugin._  |
+|  const std::filesystem::path & | [**getDataFolder**](#function-getdatafolder) () const<br>_Returns the folder that the plugin data's files are located in. The folder may not yet exist._  |
+| virtual const [**PluginDescription**](classendstone_1_1PluginDescription.md) & | [**getDescription**](#function-getdescription) () const = 0<br>_Returns the details of this plugin._  |
 |  [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const<br>_Returns the plugin logger associated with this server's logger. The returned logger automatically tags all log messages with the plugin's name._  |
 |  std::string | [**getName**](#function-getname) () const<br>_Returns the name of the plugin._  |
 |  [**PluginLoader**](classendstone_1_1PluginLoader.md) & | [**getPluginLoader**](#function-getpluginloader) () const<br>_Gets the associated_ [_**PluginLoader**_](classendstone_1_1PluginLoader.md) _responsible for this plugin._ |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const<br>_Returns the_ [_**Server**_](classendstone_1_1Server.md) _instance currently running this plugin._ |
-|  [**bool**](classendstone_1_1Vector.md) | [**isEnabled**](#function-isenabled) () const<br>_Returns a value indicating whether this plugin is currently enabled._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**onDisable**](#function-ondisable) () <br>_Called when this plugin is disabled._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**onEnable**](#function-onenable) () <br>_Called when this plugin is enabled._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**onLoad**](#function-onload) () <br>_Called after a plugin is loaded but before it has been enabled._  |
-|  [**Plugin**](classendstone_1_1Plugin.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Vector.md) [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
-|  [**void**](classendstone_1_1Vector.md) | [**registerEvent**](#function-registerevent-12) ([**void**](classendstone_1_1Vector.md)(T::\*)(EventType &) func, [**T**](classendstone_1_1Vector.md) & instance, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled=[**false**](classendstone_1_1Vector.md)) <br> |
-|  [**void**](classendstone_1_1Vector.md) | [**registerEvent**](#function-registerevent-22) (std::function&lt; [**void**](classendstone_1_1Vector.md)(EventType &)&gt; func, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Vector.md) ignore\_cancelled=[**false**](classendstone_1_1Vector.md)) <br> |
+|  bool | [**isEnabled**](#function-isenabled) () const<br>_Returns a value indicating whether this plugin is currently enabled._  |
+| virtual void | [**onDisable**](#function-ondisable) () <br>_Called when this plugin is disabled._  |
+| virtual void | [**onEnable**](#function-onenable) () <br>_Called when this plugin is enabled._  |
+| virtual void | [**onLoad**](#function-onload) () <br>_Called after a plugin is loaded but before it has been enabled._  |
+|  [**Plugin**](classendstone_1_1Plugin.md) & | [**operator=**](#function-operator) (const [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
+|  void | [**registerEvent**](#function-registerevent-12) (void(T::\*)(EventType &) func, T & instance, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, bool ignore\_cancelled=false) <br> |
+|  void | [**registerEvent**](#function-registerevent-22) (std::function&lt; void(EventType &)&gt; func, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, bool ignore\_cancelled=false) <br> |
 |   | [**~Plugin**](#function-plugin) () override<br> |
 
 
@@ -98,7 +98,7 @@ See [endstone::CommandExecutor](classendstone_1_1CommandExecutor.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**onCommand**](classendstone_1_1CommandExecutor.md#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Vector.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Vector.md) std::vector&lt; std::string &gt; & args) <br> |
+| virtual bool | [**onCommand**](classendstone_1_1CommandExecutor.md#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const [**Command**](classendstone_1_1Command.md) & command, const std::vector&lt; std::string &gt; & args) <br> |
 | virtual  | [**~CommandExecutor**](classendstone_1_1CommandExecutor.md#function-commandexecutor) () = default<br> |
 
 
@@ -150,7 +150,7 @@ See [endstone::CommandExecutor](classendstone_1_1CommandExecutor.md)
 
 | Type | Name |
 | ---: | :--- |
-|  [**void**](classendstone_1_1Vector.md) | [**setEnabled**](#function-setenabled) ([**bool**](classendstone_1_1Vector.md) enabled) <br> |
+|  void | [**setEnabled**](#function-setenabled) (bool enabled) <br> |
 
 
 
@@ -181,7 +181,7 @@ endstone::Plugin::Plugin () = default
 
 ```C++
 endstone::Plugin::Plugin (
-    const  Plugin &
+    const Plugin &
 ) = delete
 ```
 
@@ -255,7 +255,7 @@ The folder
 
 _Returns the details of this plugin._ 
 ```C++
-virtual const  PluginDescription & endstone::Plugin::getDescription () const = 0
+virtual const PluginDescription & endstone::Plugin::getDescription () const = 0
 ```
 
 
@@ -454,7 +454,7 @@ When multiple plugins are loaded, the [**onLoad()**](classendstone_1_1Plugin.md#
 
 ```C++
 Plugin & endstone::Plugin::operator= (
-    const  Plugin &
+    const Plugin &
 ) = delete
 ```
 
@@ -468,9 +468,9 @@ Plugin & endstone::Plugin::operator= (
 ### function registerEvent [1/2]
 
 ```C++
-template<typename EventType, typename  T>
+template<typename EventType, typename T>
 inline void endstone::Plugin::registerEvent (
-    void (T::*)(EventType &) func,
+    void(T::*)(EventType &) func,
     T & instance,
     EventPriority priority=EventPriority::Normal,
     bool ignore_cancelled=false
@@ -489,7 +489,7 @@ inline void endstone::Plugin::registerEvent (
 ```C++
 template<typename EventType>
 inline void endstone::Plugin::registerEvent (
-    std::function< void (EventType &)> func,
+    std::function< void(EventType &)> func,
     EventPriority priority=EventPriority::Normal,
     bool ignore_cancelled=false
 ) 

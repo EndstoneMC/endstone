@@ -6,7 +6,7 @@
     <includes refid="player__item__held__event_8h" local="no">endstone/event/player/player_item_held_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerItemHeldEvent_1a383427dc9255d5298fcadb64a9151195" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PlayerItemHeldEvent::previous_</definition>
         <argsstring></argsstring>
         <name>previous_</name>
@@ -20,7 +20,7 @@
         <location file="include/endstone/event/player/player_item_held_event.h" line="54" column="9" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerItemHeldEvent_1a5082d2da1001d82b0c9a6dcfb2844997" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PlayerItemHeldEvent::current_</definition>
         <argsstring></argsstring>
         <name>current_</name>
@@ -46,11 +46,11 @@
           <declname>player</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>previous</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>current</declname>
         </param>
         <briefdescription>
@@ -62,7 +62,7 @@
         <location file="include/endstone/event/player/player_item_held_event.h" line="28" column="14" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerItemHeldEvent_1afd86e8a183c753785358dc92841d4d78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PlayerItemHeldEvent::getPreviousSlot</definition>
         <argsstring>() const</argsstring>
         <name>getPreviousSlot</name>
@@ -80,7 +80,7 @@
         <location file="include/endstone/event/player/player_item_held_event.h" line="38" column="10" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerItemHeldEvent_1a73d70b44a39f70b1a253d4f4ff3a4b7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::PlayerItemHeldEvent::getNewSlot</definition>
         <argsstring>() const</argsstring>
         <name>getNewSlot</name>

@@ -51,11 +51,11 @@
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**canEnchantItem**](#function-canenchantitem) ([**const**](classendstone_1_1Vector.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**conflictsWith**](#function-conflictswith) ([**const**](classendstone_1_1Vector.md) [**Enchantment**](classendstone_1_1Enchantment.md) & other) const = 0<br>_Check if this enchantment conflicts with another enchantment._  |
+| virtual bool | [**canEnchantItem**](#function-canenchantitem) (const [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
+| virtual bool | [**conflictsWith**](#function-conflictswith) (const [**Enchantment**](classendstone_1_1Enchantment.md) & other) const = 0<br>_Check if this enchantment conflicts with another enchantment._  |
 | virtual std::string | [**getId**](#function-getid) () const = 0<br>_Return the identifier for this enchantment._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
+| virtual int | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
+| virtual int | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 | virtual  | [**~Enchantment**](#function-enchantment) () = default<br> |
 
@@ -96,7 +96,7 @@
 _Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._
 ```C++
 virtual bool endstone::Enchantment::canEnchantItem (
-    const  ItemStack & item
+    const ItemStack & item
 ) const = 0
 ```
 
@@ -133,7 +133,7 @@ True if the enchantment may be applied, otherwise False
 _Check if this enchantment conflicts with another enchantment._ 
 ```C++
 virtual bool endstone::Enchantment::conflictsWith (
-    const  Enchantment & other
+    const Enchantment & other
 ) const = 0
 ```
 

@@ -2328,7 +2328,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::string</td>
+<td style="text-align: right;">const std::string</td>
 <td style="text-align: left;"><a href="#variable-name"><strong>NAME</strong></a>   = <code>"ActorExplodeEvent"</code><br></td>
 </tr>
 </tbody>
@@ -2347,7 +2347,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-actorexplodeevent"><strong>ActorExplodeEvent</strong></a> (<a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; actor, <a href="../classendstone_1_1Location/"><strong>Location</strong></a> location, BlockList blocks) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> BlockList &amp;</td>
+<td style="text-align: right;">const BlockList &amp;</td>
 <td style="text-align: left;"><a href="#function-getblocklist-12"><strong>getBlockList</strong></a> () const<br><em>Returns the list of blocks that would have been removed or were removed from the explosion event.</em></td>
 </tr>
 <tr>
@@ -2359,7 +2359,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
+<td style="text-align: right;">const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getlocation"><strong>getLocation</strong></a> () const<br><em>Returns the location where the explosion happened.</em></td>
 </tr>
 <tr>
@@ -2379,16 +2379,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2403,16 +2403,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) = 0<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2462,7 +2462,7 @@ For latest updates join the chat on
 
 <h3 id="function-getlocation">function getLocation<a class="headerlink" href="#function-getlocation" title="Permanent link">&para;</a></h3>
 <p><em>Returns the location where the explosion happened.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorExplodeEvent</span><span class="o">::</span><span class="n">getLocation</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorExplodeEvent</span><span class="o">::</span><span class="n">getLocation</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p>It is not possible to get this value from the Entity as the Entity no longer exists in the world.</p>
 <p><strong>Returns:</strong></p>

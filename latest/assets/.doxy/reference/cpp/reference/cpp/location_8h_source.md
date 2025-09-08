@@ -27,28 +27,33 @@
 #include <cmath>
 #include <numbers>
 
-#include "endstone/level/position.h"
 #include "endstone/util/vector.h"
 
 namespace endstone {
 
-class Location : public Position {
+class Dimension;
+
+class Location : public Vector {
 public:
-    using Position::Position;
-
     template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
-    Location(T x, T y, T z, float pitch = 0.0, float yaw = 0.0) : Position(x, y, z), pitch_(pitch), yaw_(yaw)
+    Location(T x, T y, T z, const float pitch = 0.0, const float yaw = 0.0)
+        : Vector(x, y, z), dimension_(nullptr), pitch_(pitch), yaw_(yaw)
     {
     }
 
     template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
-    Location(T x, T y, T z, float pitch, Dimension &dimension) : Location(x, y, z, pitch, 0.0, dimension)
+    Location(T x, T y, T z, Dimension &dimension) : Location(x, y, z, 0.0, dimension)
     {
     }
 
     template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
-    Location(T x, T y, T z, float pitch, float yaw, Dimension &dimension)
-        : Position(x, y, z, dimension), pitch_(pitch), yaw_(yaw)
+    Location(T x, T y, T z, const float pitch, Dimension &dimension) : Location(x, y, z, pitch, 0.0, dimension)
+    {
+    }
+
+    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
+    Location(T x, T y, T z, const float pitch, const float yaw, Dimension &dimension)
+        : Vector(x, y, z), dimension_(&dimension), pitch_(pitch), yaw_(yaw)
     {
     }
 
@@ -72,6 +77,31 @@ public:
         yaw_ = yaw;
     }
 
+    [[nodiscard]] Dimension *getDimension() const
+    {
+        return dimension_;
+    }
+
+    void setDimension(Dimension &dimension)
+    {
+        dimension_ = &dimension;
+    }
+
+    [[nodiscard]] int getBlockX() const
+    {
+        return static_cast<int>(std::floorf(x_));
+    }
+
+    [[nodiscard]] int getBlockY() const
+    {
+        return static_cast<int>(std::floorf(y_));
+    }
+
+    [[nodiscard]] int getBlockZ() const
+    {
+        return static_cast<int>(std::floorf(z_));
+    }
+
     [[nodiscard]] Vector getDirection() const
     {
         Vector vector;
@@ -87,6 +117,7 @@ public:
 private:
     float pitch_;  // Rotation around the right axis (around X axis).
     float yaw_;    // Rotation around the up axis (around Y axis)
+    Dimension *dimension_;
 };
 }  // namespace endstone
 

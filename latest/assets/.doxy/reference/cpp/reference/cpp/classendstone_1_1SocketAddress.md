@@ -54,7 +54,7 @@ _Represents an IP Socket Address (hostname + port number)._
 | ---: | :--- |
 |   | [**SocketAddress**](#function-socketaddress-12) () = default<br> |
 |   | [**SocketAddress**](#function-socketaddress-22) (std::string hostname, std::uint32\_t port) <br> |
-|  [**const**](classendstone_1_1Vector.md) std::string & | [**getHostname**](#function-gethostname) () const<br> |
+|  const std::string & | [**getHostname**](#function-gethostname) () const<br> |
 |  std::uint32\_t | [**getPort**](#function-getport) () const<br> |
 
 

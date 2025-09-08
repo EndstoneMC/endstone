@@ -45,7 +45,7 @@
         <name>PluginLoader</name>
         <qualifiedname>endstone::PluginLoader::PluginLoader</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -62,7 +62,7 @@
         <name>operator=</name>
         <qualifiedname>endstone::PluginLoader::operator=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -167,7 +167,7 @@
         <location file="include/endstone/plugin/plugin_loader.h" line="97" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginLoader_1aa14e843ba2f369aae119f8284fd4ce77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PluginLoader::enablePlugin</definition>
         <argsstring>(Plugin &amp;plugin) const</argsstring>
         <name>enablePlugin</name>
@@ -196,7 +196,7 @@
         <location file="include/endstone/plugin/plugin_loader.h" line="105" column="18" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="105" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginLoader_1ae3223c941eb3c61add708b064811310a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::PluginLoader::disablePlugin</definition>
         <argsstring>(Plugin &amp;plugin) const</argsstring>
         <name>disablePlugin</name>

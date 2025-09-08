@@ -34,7 +34,7 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 | typedef std::variant&lt; [**Button**](classendstone_1_1Button.md), [**Divider**](classendstone_1_1Divider.md), [**Header**](classendstone_1_1Header.md), [**Label**](classendstone_1_1Label.md) &gt; | [**Control**](#typedef-control)  <br> |
-| typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**Player**](classendstone_1_1Player.md) \*, [**int**](classendstone_1_1Vector.md))&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*, int)&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
 
 
 ## Public Types inherited from endstone::Form
@@ -43,7 +43,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; [**void**](classendstone_1_1Vector.md)([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](classendstone_1_1Form.md#typedef-onclosecallback)  <br> |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](classendstone_1_1Form.md#typedef-onclosecallback)  <br> |
 
 
 
@@ -87,15 +87,15 @@ See [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**ActionForm**](#function-actionform) () = default<br> |
-|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addButton**](#function-addbutton) ([**const**](classendstone_1_1Vector.md) Message & text, [**const**](classendstone_1_1Vector.md) std::optional&lt; std::string &gt; & icon=std::nullopt, Button::OnClickCallback on\_click={}) <br>_Adds a button to the form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addButton**](#function-addbutton) (const Message & text, const std::optional&lt; std::string &gt; & icon=std::nullopt, Button::OnClickCallback on\_click={}) <br>_Adds a button to the form._  |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addDivider**](#function-adddivider) () <br>_Adds a divider to the form._  |
-|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addHeader**](#function-addheader) ([**const**](classendstone_1_1Vector.md) Message & text) <br>_Adds a header to the form._  |
-|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addLabel**](#function-addlabel) ([**const**](classendstone_1_1Vector.md) Message & text) <br>_Adds a label to the form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addHeader**](#function-addheader) (const Message & text) <br>_Adds a header to the form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addLabel**](#function-addlabel) (const Message & text) <br>_Adds a label to the form._  |
 |  Message | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
-|  [**const**](classendstone_1_1Vector.md) std::vector&lt; Control &gt; & | [**getControls**](#function-getcontrols) () const<br>_Get the controls of the action form._  |
+|  const std::vector&lt; Control &gt; & | [**getControls**](#function-getcontrols) () const<br>_Get the controls of the action form._  |
 |  OnSubmitCallback | [**getOnSubmit**](#function-getonsubmit) () const<br>_Gets the on submit callback of the form._  |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setContent**](#function-setcontent) (Message text) <br>_Set the content of the form._  |
-|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setControls**](#function-setcontrols) ([**const**](classendstone_1_1Vector.md) std::vector&lt; Control &gt; & controls) <br>_Set the controls of the action form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setControls**](#function-setcontrols) (const std::vector&lt; Control &gt; & controls) <br>_Set the controls of the action form._  |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setOnSubmit**](#function-setonsubmit) (OnSubmitCallback on\_submit) <br>_Sets the on submit callback of the form._  |
 
 
@@ -108,8 +108,8 @@ See [endstone::Form](classendstone_1_1Form.md)
 |   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
 |  OnCloseCallback | [**getOnClose**](classendstone_1_1Form.md#function-getonclose) () const<br>_Gets the on close callback of the form._  |
 |  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
-|  [**T**](classendstone_1_1Vector.md) & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
-|  [**T**](classendstone_1_1Vector.md) & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
+|  T & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
+|  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
 
 

@@ -146,7 +146,6 @@ Here is a list of all files with brief descriptions:
             * **file** [**dimension.h**](dimension_8h.md)     
             * **file** [**level.h**](level_8h.md)     
             * **file** [**location.h**](location_8h.md)     
-            * **file** [**position.h**](position_8h.md)     
         * **dir** [**map**](dir_35fd4abc90217931459f3a8776f2bf4e.md)     
             * **file** [**map\_canvas.h**](map__canvas_8h.md)     
             * **file** [**map\_renderer.h**](map__renderer_8h.md)     

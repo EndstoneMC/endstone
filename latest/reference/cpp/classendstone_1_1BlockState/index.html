@@ -2399,36 +2399,36 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () const = 0<br><em>Gets the type of this block state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-getx"><strong>getX</strong></a> () const = 0<br><em>Gets the x-coordinate of this block state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-gety"><strong>getY</strong></a> () const = 0<br><em>Gets the y-coordinate of this block state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>int</strong></a></td>
+<td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="#function-getz"><strong>getZ</strong></a> () const = 0<br><em>Gets the z-coordinate of this block state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-setdata"><strong>setData</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &amp; data) = 0<br><em>Sets the data for this block state.</em></td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
+<td style="text-align: left;"><a href="#function-setdata"><strong>setData</strong></a> (const <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &amp; data) = 0<br><em>Sets the data for this block state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
 <td style="text-align: left;"><a href="#function-settype"><strong>setType</strong></a> (std::string type) = 0<br><em>Sets the type of this block state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-update-13"><strong>update</strong></a> () = 0<br><em>Attempts to update the block represented by this state, setting it to yhe new values as defined by this state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-update-23"><strong>update</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> force) = 0<br><em>Attempts to update the block represented by this state, setting it to the new values as defined by this state.</em></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="#function-update-23"><strong>update</strong></a> (bool force) = 0<br><em>Attempts to update the block represented by this state, setting it to the new values as defined by this state.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-update-33"><strong>update</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> force, <a href="../classendstone_1_1Vector/"><strong>bool</strong></a> apply_physics) = 0<br><em>Attempts to update the block represented by this state, setting it to the new values as defined by this state.</em></td>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="#function-update-33"><strong>update</strong></a> (bool force, bool apply_physics) = 0<br><em>Attempts to update the block represented by this state, setting it to the new values as defined by this state.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2506,7 +2506,7 @@ For latest updates join the chat on
 <h3 id="function-setdata">function setData<a class="headerlink" href="#function-setdata" title="Permanent link">&para;</a></h3>
 <p><em>Sets the data for this block state.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockState</span><span class="o">::</span><span class="n">setData</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2531,7 +2531,7 @@ For latest updates join the chat on
 <p><em>Attempts to update the block represented by this state, setting it to yhe new values as defined by this state.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockState</span><span class="o">::</span><span class="n">update</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>This has the same effect as calling <a href="./#function-update-23"><strong>update(false)</strong></a>. That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.</p>
+<p>This has the same effect as calling update(false). That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.</p>
 <p><strong>Returns:</strong></p>
 <p>true if the update was successful, otherwise false </p>
 <hr>
@@ -2542,7 +2542,7 @@ For latest updates join the chat on
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">force</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>This has the same effect as calling <a href="./#function-update-33"><strong>update(force, true)</strong></a>. That is to say, this will trigger a physics update to surrounding blocks.</p>
+<p>This has the same effect as calling update(force, true). That is to say, this will trigger a physics update to surrounding blocks.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>force</code> true to forcefully set the state </li>

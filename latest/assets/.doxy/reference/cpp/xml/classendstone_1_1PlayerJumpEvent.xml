@@ -99,10 +99,6 @@
         <childnode refid="6" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
-        <label>endstone::Vector&lt; float &gt;</label>
-        <link refid="classendstone_1_1Vector"/>
-      </node>
       <node id="5">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
@@ -140,10 +136,8 @@
         </childnode>
       </node>
       <node id="8">
-        <label>endstone::Position</label>
-        <link refid="classendstone_1_1Position"/>
-        <childnode refid="9" relation="public-inheritance">
-        </childnode>
+        <label>endstone::Vector</label>
+        <link refid="classendstone_1_1Vector"/>
       </node>
     </collaborationgraph>
     <location file="include/endstone/event/player/player_jump_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_jump_event.h" bodystart="24" bodyend="28"/>

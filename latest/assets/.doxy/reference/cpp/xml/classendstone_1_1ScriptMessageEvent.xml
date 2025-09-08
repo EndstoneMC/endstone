@@ -6,7 +6,7 @@
     <includes refid="script__message__event_8h" local="no">endstone/event/server/script_message_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ScriptMessageEvent_1a640a9ad1b0b372ef2c0abc125e49bc04" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ScriptMessageEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -51,7 +51,7 @@
         <location file="include/endstone/event/server/script_message_event.h" line="70" column="17" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ScriptMessageEvent_1a1947b8b1a29c49b0302268f093ca5506" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+        <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
         <definition>const CommandSender&amp; endstone::ScriptMessageEvent::sender_</definition>
         <argsstring></argsstring>
         <name>sender_</name>
@@ -81,7 +81,7 @@
           <declname>message</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
           <declname>sender</declname>
         </param>
         <briefdescription>
@@ -112,7 +112,7 @@
         <location file="include/endstone/event/server/script_message_event.h" line="33" column="18" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="33" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ScriptMessageEvent_1ab02541c1eb8d43ffb49c7a0fd11bd1bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::ScriptMessageEvent::getMessageId</definition>
         <argsstring>() const</argsstring>
         <name>getMessageId</name>
@@ -130,7 +130,7 @@
         <location file="include/endstone/event/server/script_message_event.h" line="43" column="24" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ScriptMessageEvent_1a55b3bd04740ef0190905a76341117530" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::ScriptMessageEvent::getMessage</definition>
         <argsstring>() const</argsstring>
         <name>getMessage</name>
@@ -148,7 +148,7 @@
         <location file="include/endstone/event/server/script_message_event.h" line="53" column="24" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ScriptMessageEvent_1af4876c77b5ba5b1a898318cc2fd71fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+        <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
         <definition>const CommandSender &amp; endstone::ScriptMessageEvent::getSender</definition>
         <argsstring>() const</argsstring>
         <name>getSender</name>

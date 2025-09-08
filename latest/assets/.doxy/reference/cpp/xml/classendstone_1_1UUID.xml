@@ -35,7 +35,7 @@
         <location file="include/endstone/util/uuid.h" line="31" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1af0a0cf716be9f38cc598f04cc3dc69f9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">uint8_t</ref> *</type>
+        <type>const uint8_t *</type>
         <definition>const uint8_t * endstone::UUID::begin</definition>
         <argsstring>() const noexcept</argsstring>
         <name>begin</name>
@@ -63,7 +63,7 @@
         <location file="include/endstone/util/uuid.h" line="41" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a2a4791e3c8e433cb181f0f2e5cd16093" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">uint8_t</ref> *</type>
+        <type>const uint8_t *</type>
         <definition>const uint8_t * endstone::UUID::end</definition>
         <argsstring>() const noexcept</argsstring>
         <name>end</name>
@@ -77,7 +77,7 @@
         <location file="include/endstone/util/uuid.h" line="46" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a4e2f46b83b69f6bfc59456083849da00" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::UUID::isNil</definition>
         <argsstring>() const noexcept</argsstring>
         <name>isNil</name>
@@ -91,7 +91,7 @@
         <location file="include/endstone/util/uuid.h" line="56" column="11" bodyfile="include/endstone/util/uuid.h" bodystart="56" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a1d5154c476140540420483ac9e435c59" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::UUID::version</definition>
         <argsstring>() const noexcept</argsstring>
         <name>version</name>
@@ -105,7 +105,7 @@
         <location file="include/endstone/util/uuid.h" line="61" column="10" bodyfile="include/endstone/util/uuid.h" bodystart="61" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a0f9e2913aaa2ce04017cd62bfca446d9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::UUID::swap</definition>
         <argsstring>(UUID &amp;rhs) noexcept</argsstring>
         <name>swap</name>
@@ -139,7 +139,7 @@
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classendstone_1_1UUID_1a887f4ce97cfcceb75784345c13c691ed" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> std::size_t</type>
+        <type>constexpr std::size_t</type>
         <definition>static constexpr std::size_t endstone::UUID::size</definition>
         <argsstring>() noexcept</argsstring>
         <name>size</name>

@@ -51,7 +51,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Vector.md) std::string | [**NAME**](#variable-name)   = `"PlayerEmoteEvent"`<br> |
+|  const std::string | [**NAME**](#variable-name)   = `"PlayerEmoteEvent"`<br> |
 
 
 
@@ -98,11 +98,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerEmoteEvent**](#function-playeremoteevent) ([**Player**](classendstone_1_1Player.md) & player, std::string emote\_id, [**bool**](classendstone_1_1Vector.md) muted) <br> |
+|   | [**PlayerEmoteEvent**](#function-playeremoteevent) ([**Player**](classendstone_1_1Player.md) & player, std::string emote\_id, bool muted) <br> |
 |  std::string | [**getEmoteId**](#function-getemoteid) () const<br>_Gets the emote piece ID._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**isMuted**](#function-ismuted) () const<br>_Gets the muted state for the emote._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setMuted**](#function-setmuted) ([**bool**](classendstone_1_1Vector.md) muted) <br>_Sets the muted state for the emote._  |
+|  bool | [**isMuted**](#function-ismuted) () const<br>_Gets the muted state for the emote._  |
+|  void | [**setMuted**](#function-setmuted) (bool muted) <br>_Sets the muted state for the emote._  |
 |   | [**~PlayerEmoteEvent**](#function-playeremoteevent) () override<br> |
 
 
@@ -112,9 +112,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -123,9 +123,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 

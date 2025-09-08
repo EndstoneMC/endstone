@@ -53,7 +53,7 @@ Inherited by the following classes: [endstone::Plugin](classendstone_1_1Plugin.m
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**onCommand**](#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Vector.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Vector.md) std::vector&lt; std::string &gt; & args) <br> |
+| virtual bool | [**onCommand**](#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const [**Command**](classendstone_1_1Command.md) & command, const std::vector&lt; std::string &gt; & args) <br> |
 | virtual  | [**~CommandExecutor**](#function-commandexecutor) () = default<br> |
 
 
@@ -93,7 +93,7 @@ Inherited by the following classes: [endstone::Plugin](classendstone_1_1Plugin.m
 ```C++
 inline virtual bool endstone::CommandExecutor::onCommand (
     CommandSender & sender,
-    const  Command & command,
+    const Command & command,
     const std::vector< std::string > & args
 ) 
 ```

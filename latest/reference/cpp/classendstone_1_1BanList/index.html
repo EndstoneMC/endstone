@@ -2299,7 +2299,7 @@ For latest updates join the chat on
 
 
 <h1 id="class-endstonebanlist">Class endstone::BanList<a class="headerlink" href="#class-endstonebanlist" title="Permanent link">&para;</a></h1>
-<p><strong>template &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a>&gt;</strong></p>
+<p><strong>template &lt;typename T&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>BanList</strong></a></p>
 <p><em>Represents a ban list, containing bans.</em> <a href="#detailed-description">More...</a></p>
 <ul>
@@ -2315,35 +2315,35 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &amp;</td>
+<td style="text-align: right;">virtual T &amp;</td>
 <td style="text-align: left;"><a href="#function-addban-12"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>T</strong></a> &amp;</td>
+<td style="text-align: right;">virtual T &amp;</td>
 <td style="text-align: left;"><a href="#function-addban-22"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a> *</td>
+<td style="text-align: right;">virtual const T *</td>
 <td style="text-align: left;"><a href="#function-getbanentry-12"><strong>getBanEntry</strong></a> (std::string target) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>T</strong></a> *</td>
+<td style="text-align: right;">virtual T *</td>
 <td style="text-align: left;"><a href="#function-getbanentry-22"><strong>getBanEntry</strong></a> (std::string target) = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a> * &gt;</td>
+<td style="text-align: right;">virtual std::vector&lt; const T * &gt;</td>
 <td style="text-align: left;"><a href="#function-getentries-12"><strong>getEntries</strong></a> () const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a> * &gt;</td>
+<td style="text-align: right;">virtual std::vector&lt; T * &gt;</td>
 <td style="text-align: left;"><a href="#function-getentries-22"><strong>getEntries</strong></a> () = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-isbanned"><strong>isBanned</strong></a> (std::string target) const = 0<br><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-removeban"><strong>removeBan</strong></a> (std::string target) = 0<br><em>Removes the specified target from this list, therefore indicating a "not banned" status.</em></td>
 </tr>
 <tr>
@@ -2400,7 +2400,7 @@ For latest updates join the chat on
 
 <h3 id="function-getbanentry-12">function getBanEntry [&frac12;]<a class="headerlink" href="#function-getbanentry-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">target</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -2428,7 +2428,7 @@ For latest updates join the chat on
 
 <h3 id="function-getentries-12">function getEntries [&frac12;]<a class="headerlink" href="#function-getentries-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanList</span><span class="o">::</span><span class="n">getEntries</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanList</span><span class="o">::</span><span class="n">getEntries</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A vector containing pointers to every entry tracked by this list. </p>

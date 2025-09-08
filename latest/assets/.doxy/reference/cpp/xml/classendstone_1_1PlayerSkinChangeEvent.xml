@@ -115,7 +115,7 @@
         <location file="include/endstone/event/player/player_skin_change_event.h" line="49" column="20" bodyfile="include/endstone/event/player/player_skin_change_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerSkinChangeEvent_1a1c36f45cb1c6f64c234efedefa12f834" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerSkinChangeEvent::setSkinChangeMessage</definition>
         <argsstring>(std::optional&lt; Message &gt; message)</argsstring>
         <name>setSkinChangeMessage</name>

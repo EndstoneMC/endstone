@@ -14,8 +14,6 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
       </node>
       <node id="3">
         <label>endstone/command/command_sender.h</label>
@@ -76,18 +74,6 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>endstone/level/position.h</label>
-        <link refid="position_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
       </node>
       <node id="5">
         <label>endstone/message.h</label>
@@ -135,7 +121,7 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="24">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
         <childnode refid="22" relation="include">
@@ -155,9 +141,6 @@
       </node>
       <node id="23">
         <label>numbers</label>
-      </node>
-      <node id="25">
-        <label>optional</label>
       </node>
       <node id="18">
         <label>stdexcept</label>
@@ -216,15 +199,15 @@
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Reload</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ServerLoadEvent" kindref="compound">ServerLoadEvent</ref>(LoadType<sp/><ref refid="classendstone_1_1Vector" kindref="compound">type</ref>)<sp/>:<sp/>type_(<ref refid="classendstone_1_1Vector" kindref="compound">type</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ServerLoadEvent" kindref="compound">ServerLoadEvent</ref>(LoadType<sp/>type)<sp/>:<sp/>type_(type)<sp/>{}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>LoadType<sp/>getType()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>LoadType<sp/>getType()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="38"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>type_;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ServerLoadEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="43" refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="43" refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="44"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

@@ -6,7 +6,7 @@
     <includes refid="actor__teleport__event_8h" local="no">endstone/event/actor/actor_teleport_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorTeleportEvent_1a2f7ffbf56f181255a139b024ba509783" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ActorTeleportEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -112,7 +112,7 @@
         <location file="include/endstone/event/actor/actor_teleport_event.h" line="37" column="18" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="37" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a2d41334b6b7b8362cad60430d56febb2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
         <definition>const Location &amp; endstone::ActorTeleportEvent::getFrom</definition>
         <argsstring>() const</argsstring>
         <name>getFrom</name>
@@ -130,13 +130,13 @@
         <location file="include/endstone/event/actor/actor_teleport_event.h" line="47" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ActorTeleportEvent::setFrom</definition>
         <argsstring>(const Location &amp;from)</argsstring>
         <name>setFrom</name>
         <qualifiedname>endstone::ActorTeleportEvent::setFrom</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
           <declname>from</declname>
         </param>
         <briefdescription>
@@ -159,7 +159,7 @@
         <location file="include/endstone/event/actor/actor_teleport_event.h" line="57" column="10" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="57" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1ab0bce5bf080702eb2808d46e7e1ab612" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+        <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
         <definition>const Location &amp; endstone::ActorTeleportEvent::getTo</definition>
         <argsstring>() const</argsstring>
         <name>getTo</name>
@@ -177,13 +177,13 @@
         <location file="include/endstone/event/actor/actor_teleport_event.h" line="67" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::ActorTeleportEvent::setTo</definition>
         <argsstring>(const Location &amp;to)</argsstring>
         <name>setTo</name>
         <qualifiedname>endstone::ActorTeleportEvent::setTo</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
           <declname>to</declname>
         </param>
         <briefdescription>

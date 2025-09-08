@@ -2659,7 +2659,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1ActorEvent/"><strong>ActorEvent</strong></a> &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> <a href="../classendstone_1_1Vector/"><strong>ActorType</strong></a>&gt;<br><em>Represents an Actor-related event.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ActorEvent/"><strong>ActorEvent</strong></a> &lt;typename ActorType&gt;<br><em>Represents an Actor-related event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -2687,7 +2687,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanList/"><strong>BanList</strong></a> &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a>&gt;<br><em>Represents a ban list, containing bans.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/"><strong>BanList</strong></a> &lt;typename T&gt;<br><em>Represents a ban list, containing bans.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -2747,7 +2747,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/"><strong>Cancellable</strong></a> &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> EventType&gt;<br><em>A type characterizing events that may be cancelled by a plugin or the server.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/"><strong>Cancellable</strong></a> &lt;typename EventType&gt;<br><em>A type characterizing events that may be cancelled by a plugin or the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -2839,7 +2839,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Form/"><strong>Form</strong></a> &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a>&gt;<br><em>Represents a generic form.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Form/"><strong>Form</strong></a> &lt;typename T&gt;<br><em>Represents a generic form.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -3115,15 +3115,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Position/"><strong>Position</strong></a> <br><em>Represents a 3-dimensional position in a dimension within a level.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">class</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Recipe/"><strong>Recipe</strong></a> <br><em>Represents some type of crafting recipe.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry/"><strong>Registry</strong></a> &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a>&gt;<br><em>Abstract registry interface for keyed objects.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry/"><strong>Registry</strong></a> &lt;typename T&gt;<br><em>Abstract registry interface for keyed objects.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -3211,7 +3207,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &lt;<a href="../classendstone_1_1Vector/"><strong>typename</strong></a> <a href="../classendstone_1_1Vector/"><strong>T</strong></a>&gt;<br><em>Represents a 3-dimensional vector.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> <br><em>Represents a 3-dimensional vector.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -3253,7 +3249,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#enum-blockface"><strong>BlockFace</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::unordered_map&lt; std::string, std::variant&lt; <a href="../classendstone_1_1Vector/"><strong>bool</strong></a>, std::string, <a href="../classendstone_1_1Vector/"><strong>int</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">typedef std::unordered_map&lt; std::string, std::variant&lt; bool, std::string, int &gt; &gt;</td>
 <td style="text-align: left;"><a href="#typedef-blockstates"><strong>BlockStates</strong></a>  <br></td>
 </tr>
 <tr>
@@ -3293,7 +3289,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#enum-permissionlevel"><strong>PermissionLevel</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::function&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a>(<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp;)&gt;</td>
+<td style="text-align: right;">typedef std::function&lt; void(const <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp;)&gt;</td>
 <td style="text-align: left;"><a href="#typedef-permissionremovedexecutor"><strong>PermissionRemovedExecutor</strong></a>  <br></td>
 </tr>
 <tr>
@@ -3305,7 +3301,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#enum-rendertype"><strong>RenderType</strong></a>  <br><em>Controls the way in which an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>is rendered on the client side.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef nonstd::expected&lt; <a href="../classendstone_1_1Vector/"><strong>T</strong></a>, std::string &gt;</td>
+<td style="text-align: right;">typedef nonstd::expected&lt; T, std::string &gt;</td>
 <td style="text-align: left;"><a href="#typedef-result"><strong>Result</strong></a>  <br></td>
 </tr>
 <tr>
@@ -3333,38 +3329,38 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">std::size_t</td>
-<td style="text-align: left;"><a href="#function-hash_value"><strong>hash_value</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; u) noexcept<br></td>
+<td style="text-align: left;"><a href="#function-hash_value"><strong>hash_value</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; u) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; rhs) noexcept<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; rhs) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_1"><strong>operator&lt;</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; rhs) noexcept<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator_1"><strong>operator&lt;</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; rhs) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_2"><strong>operator&lt;=</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; rhs) noexcept<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator_2"><strong>operator&lt;=</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; rhs) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_3"><strong>operator==</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; rhs) noexcept<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator_3"><strong>operator==</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; rhs) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_4"><strong>operator&gt;</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; rhs) noexcept<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator_4"><strong>operator&gt;</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; rhs) noexcept<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-operator_5"><strong>operator&gt;=</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> <a href="../classendstone_1_1Vector/"><strong>const</strong></a> &amp; rhs) noexcept<br></td>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="#function-operator_5"><strong>operator&gt;=</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; rhs) noexcept<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
 <td style="text-align: left;"><a href="#function-overloaded"><strong>overloaded</strong></a> (Func...) <br><em>Deduction guide.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-swap"><strong>swap</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &amp; rhs) noexcept<br></td>
 </tr>
 </tbody>
@@ -3565,55 +3561,55 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-hash_value">function hash_value<a class="headerlink" href="#function-hash_value" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">hash_value</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator">function operator!=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_1">function operator&lt;<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_2">function operator&lt;=<a class="headerlink" href="#function-operator_2" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_3">function operator==<a class="headerlink" href="#function-operator_3" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_4">function operator&gt;<a class="headerlink" href="#function-operator_4" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_5">function operator&gt;=<a class="headerlink" href="#function-operator_5" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>

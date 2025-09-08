@@ -93,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerItemHeldEvent**](#function-playeritemheldevent) ([**Player**](classendstone_1_1Player.md) & player, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) previous, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) current) <br> |
-|  [**int**](classendstone_1_1Vector.md) | [**getNewSlot**](#function-getnewslot) () const<br>_Gets the new held slot index._  |
-|  [**int**](classendstone_1_1Vector.md) | [**getPreviousSlot**](#function-getpreviousslot) () const<br>_Gets the previous held slot index._  |
+|   | [**PlayerItemHeldEvent**](#function-playeritemheldevent) ([**Player**](classendstone_1_1Player.md) & player, const int previous, const int current) <br> |
+|  int | [**getNewSlot**](#function-getnewslot) () const<br>_Gets the new held slot index._  |
+|  int | [**getPreviousSlot**](#function-getpreviousslot) () const<br>_Gets the previous held slot index._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -104,9 +104,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -115,9 +115,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -209,8 +209,8 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 ```C++
 inline explicit endstone::PlayerItemHeldEvent::PlayerItemHeldEvent (
     Player & player,
-    const  int previous,
-    const  int current
+    const int previous,
+    const int current
 ) 
 ```
 

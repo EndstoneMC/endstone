@@ -13,8 +13,6 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/actor/mob.h</label>
@@ -52,18 +50,6 @@
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>endstone/level/position.h</label>
-        <link refid="position_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -112,7 +98,7 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="21">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
         <childnode refid="19" relation="include">
@@ -132,9 +118,6 @@
       </node>
       <node id="20">
         <label>numbers</label>
-      </node>
-      <node id="22">
-        <label>optional</label>
       </node>
       <node id="4">
         <label>string</label>
@@ -408,7 +391,7 @@
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="23" refid="classendstone_1_1Mob" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="29" refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kindref="member">isGliding</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="29" refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kindref="member">isGliding</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="31"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>

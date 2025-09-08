@@ -12,7 +12,6 @@
 
 * `#include <cmath>`
 * `#include <numbers>`
-* `#include "endstone/level/position.h"`
 * `#include "endstone/util/vector.h"`
 
 

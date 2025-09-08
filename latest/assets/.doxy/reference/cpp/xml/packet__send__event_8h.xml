@@ -12,8 +12,6 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
       </node>
       <node id="5">
         <label>endstone/command/command_sender.h</label>
@@ -31,10 +29,10 @@
         <label>endstone/event/cancellable.h</label>
         <link refid="cancellable_8h_source"/>
       </node>
-      <node id="26">
+      <node id="24">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -52,7 +50,7 @@
         <link refid="server__event_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -73,18 +71,6 @@
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>endstone/level/position.h</label>
-        <link refid="position_8h_source"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -133,7 +119,7 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="23">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
         <childnode refid="21" relation="include">
@@ -154,10 +140,7 @@
       <node id="22">
         <label>numbers</label>
       </node>
-      <node id="24">
-        <label>optional</label>
-      </node>
-      <node id="27">
+      <node id="25">
         <label>stdexcept</label>
       </node>
       <node id="6">
@@ -208,40 +191,40 @@
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1PacketSendEvent" kindref="compound">PacketSendEvent</ref>);</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PacketSendEvent" kindref="compound">PacketSendEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>*<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">packet_id</ref>,<sp/>std::string_view<sp/><ref refid="classendstone_1_1Vector" kindref="compound">payload</ref>,<sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/><ref refid="classendstone_1_1Vector" kindref="compound">address</ref>,</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">sub_client_id</ref>)</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>player_(<ref refid="classendstone_1_1Vector" kindref="compound">player</ref>),<sp/>packet_id_(<ref refid="classendstone_1_1Vector" kindref="compound">packet_id</ref>),<sp/>payload_(<ref refid="classendstone_1_1Vector" kindref="compound">payload</ref>),<sp/>address_(std::move(<ref refid="classendstone_1_1Vector" kindref="compound">address</ref>)),</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sub_client_id_(<ref refid="classendstone_1_1Vector" kindref="compound">sub_client_id</ref>)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PacketSendEvent" kindref="compound">PacketSendEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>*player,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>packet_id,<sp/>std::string_view<sp/>payload,<sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/>address,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sub_client_id)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>player_(player),<sp/>packet_id_(packet_id),<sp/>payload_(payload),<sp/>address_(std::move(address)),</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sub_client_id_(sub_client_id)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" kindref="member">getPacketId</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" kindref="member">getPacketId</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="42"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>packet_id_;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51" refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" kindref="member">getPayload</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="51" refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" kindref="member">getPayload</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="52"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>payload_;</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" kindref="member">setPayload</ref>(std::string_view<sp/><ref refid="classendstone_1_1Vector" kindref="compound">payload</ref>)</highlight></codeline>
+<codeline lineno="61" refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" kindref="member">setPayload</ref>(std::string_view<sp/>payload)</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>owned_payload_<sp/>=<sp/><ref refid="classendstone_1_1Vector" kindref="compound">payload</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>owned_payload_<sp/>=<sp/>payload;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>payload_<sp/>=<sp/>owned_payload_;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>*<ref refid="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="74" refid="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>*<ref refid="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="75"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>player_;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84" refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/><ref refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" kindref="member">getAddress</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="84" refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/><ref refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" kindref="member">getAddress</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="85"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>address_;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96" refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" kindref="member">getSubClientId</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="96" refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" kindref="member">getSubClientId</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="97"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sub_client_id_;</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

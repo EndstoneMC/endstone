@@ -13,42 +13,40 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
       </node>
-      <node id="29">
+      <node id="27">
         <label>endstone/block/block.h</label>
         <link refid="block_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="28">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="32">
         <label>endstone/block/block_face.h</label>
         <link refid="block__face_8h_source"/>
       </node>
@@ -77,7 +75,7 @@
         <link refid="dimension__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -88,46 +86,46 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="35">
         <label>endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="38" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="33">
         <label>endstone/inventory/item_stack.h</label>
         <link refid="item__stack_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-      </node>
-      <node id="39">
-        <label>endstone/inventory/item_type.h</label>
-        <link refid="item__type_8h_source"/>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
       <node id="38">
+        <label>endstone/inventory/item_type.h</label>
+        <link refid="item__type_8h_source"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
         <label>endstone/inventory/meta/item_meta.h</label>
         <link refid="item__meta_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -142,20 +140,20 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="41">
         <label>endstone/level/chunk.h</label>
         <link refid="chunk_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="26">
         <label>endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -178,18 +176,6 @@
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>endstone/level/position.h</label>
-        <link refid="position_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -232,10 +218,10 @@
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="40">
+      <node id="39">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -248,29 +234,29 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="25">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="31">
         <label>endstone/variant.h</label>
         <link refid="variant_8h_source"/>
       </node>
       <node id="23">
         <label>cmath</label>
       </node>
-      <node id="36">
+      <node id="34">
         <label>endstone/detail/endstone.h</label>
       </node>
       <node id="10">
         <label>fmt/format.h</label>
       </node>
-      <node id="32">
+      <node id="30">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="41">
+      <node id="40">
         <label>functional</label>
       </node>
       <node id="7">
@@ -282,7 +268,7 @@
       <node id="24">
         <label>numbers</label>
       </node>
-      <node id="26">
+      <node id="37">
         <label>optional</label>
       </node>
       <node id="4">
@@ -291,7 +277,7 @@
       <node id="5">
         <label>string</label>
       </node>
-      <node id="31">
+      <node id="29">
         <label>unordered_map</label>
       </node>
       <node id="17">
@@ -361,9 +347,9 @@
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25" refid="classendstone_1_1DimensionEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1DimensionEvent" kindref="compound">DimensionEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1LevelEvent" kindref="compound">LevelEvent</ref><sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DimensionEvent" kindref="compound">DimensionEvent</ref>(<ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1Vector" kindref="compound">dimension</ref>)<sp/>:<sp/><ref refid="classendstone_1_1LevelEvent" kindref="compound">LevelEvent</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">dimension</ref>.getLevel()),<sp/>dimension_(<ref refid="classendstone_1_1Vector" kindref="compound">dimension</ref>){};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DimensionEvent" kindref="compound">DimensionEvent</ref>(<ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;dimension)<sp/>:<sp/><ref refid="classendstone_1_1LevelEvent" kindref="compound">LevelEvent</ref>(dimension.<ref refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" kindref="member">getLevel</ref>()),<sp/>dimension_(dimension){};</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34" refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Vector" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" kindref="member">getDimension</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="34" refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" kindref="member">getDimension</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="35"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dimension_;</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

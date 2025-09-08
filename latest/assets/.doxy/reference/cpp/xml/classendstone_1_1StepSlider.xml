@@ -34,7 +34,7 @@
           <declname>options</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt;</type>
+          <type>std::optional&lt; int &gt;</type>
           <declname>default_index</declname>
           <defval>std::nullopt</defval>
         </param>

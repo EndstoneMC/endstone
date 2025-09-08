@@ -94,13 +94,13 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PacketSendEvent**](classendstone_1_1PacketSendEvent.md)) <br> |
-|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) \* player, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, [**const**](classendstone_1_1Vector.md) [**int**](classendstone_1_1Vector.md) sub\_client\_id) <br> |
+|   | [**PacketSendEvent**](#function-packetsendevent) ([**Player**](classendstone_1_1Player.md) \* player, const int packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, const int sub\_client\_id) <br> |
 |  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Gets the network address to which this packet is being sent._  |
-|  [**int**](classendstone_1_1Vector.md) | [**getPacketId**](#function-getpacketid) () const<br>_Gets the ID of the packet._  |
+|  int | [**getPacketId**](#function-getpacketid) () const<br>_Gets the ID of the packet._  |
 |  std::string\_view | [**getPayload**](#function-getpayload) () const<br>_Gets the raw packet data_ **excluding** _the header._ |
 |  [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer) () const<br>_Returns the player involved in this event._  |
-|  [**int**](classendstone_1_1Vector.md) | [**getSubClientId**](#function-getsubclientid) () const<br>_Gets the SubClient ID._  |
-|  [**void**](classendstone_1_1Vector.md) | [**setPayload**](#function-setpayload) (std::string\_view payload) <br>_Sets the raw packet data_ **excluding** _the header._ |
+|  int | [**getSubClientId**](#function-getsubclientid) () const<br>_Gets the SubClient ID._  |
+|  void | [**setPayload**](#function-setpayload) (std::string\_view payload) <br>_Sets the raw packet data_ **excluding** _the header._ |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -109,9 +109,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -120,9 +120,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Vector.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Vector.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Vector.md) cancel) = 0<br> |
+| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
@@ -229,10 +229,10 @@ endstone::PacketSendEvent::ENDSTONE_EVENT (
 ```C++
 inline endstone::PacketSendEvent::PacketSendEvent (
     Player * player,
-    const  int packet_id,
+    const int packet_id,
     std::string_view payload,
     SocketAddress address,
-    const  int sub_client_id
+    const int sub_client_id
 ) 
 ```
 

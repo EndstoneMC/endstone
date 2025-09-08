@@ -2387,7 +2387,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerinteractevent"><strong>PlayerInteractEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="./#enum-action"><strong>Action</strong></a> action, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item, <a href="../classendstone_1_1Block/"><strong>Block</strong></a> * block_clicked, BlockFace block_face, <a href="../classendstone_1_1Vector/"><strong>const</strong></a> std::optional&lt; <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>float</strong></a> &gt; &gt; &amp; clicked_position) <br></td>
+<td style="text-align: left;"><a href="#function-playerinteractevent"><strong>PlayerInteractEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="./#enum-action"><strong>Action</strong></a> action, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item, <a href="../classendstone_1_1Block/"><strong>Block</strong></a> * block_clicked, BlockFace block_face, const std::optional&lt; <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &gt; &amp; clicked_position) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./#enum-action"><strong>Action</strong></a></td>
@@ -2402,7 +2402,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getblockface"><strong>getBlockFace</strong></a> () const<br><em>Returns the face of the block that was clicked.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::optional&lt; <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; <a href="../classendstone_1_1Vector/"><strong>float</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">std::optional&lt; <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getclickedposition"><strong>getClickedPosition</strong></a> () const<br><em>Gets the exact position on the block the player interacted with.</em></td>
 </tr>
 <tr>
@@ -2410,11 +2410,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getitem"><strong>getItem</strong></a> () const<br><em>Returns the item in hand represented by this event.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-hasblock"><strong>hasBlock</strong></a> () const<br><em>Check if this event involved a block.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-hasitem"><strong>hasItem</strong></a> () const<br><em>Check if this event involved an item.</em></td>
 </tr>
 </tbody>
@@ -2430,16 +2430,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2454,16 +2454,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) = 0<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2496,7 +2496,7 @@ For latest updates join the chat on
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">,</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">Block</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">block_clicked</span><span class="p">,</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">block_face</span><span class="p">,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clicked_position</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clicked_position</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -2527,7 +2527,7 @@ For latest updates join the chat on
 
 <h3 id="function-getclickedposition">function getClickedPosition<a class="headerlink" href="#function-getclickedposition" title="Permanent link">&para;</a></h3>
 <p><em>Gets the exact position on the block the player interacted with.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getClickedPosition</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInteractEvent</span><span class="o">::</span><span class="n">getClickedPosition</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Note:</strong></p>
 <p>This will be std::nullopt outside of Action.RightClickBlock </p>

@@ -54,12 +54,12 @@ Inherited by the following classes: [endstone::StepSlider](classendstone_1_1Step
 | Type | Name |
 | ---: | :--- |
 |   | [**Dropdown**](#function-dropdown-12) () = default<br> |
-|   | [**Dropdown**](#function-dropdown-22) (Message label, std::vector&lt; std::string &gt; options, std::optional&lt; [**int**](classendstone_1_1Vector.md) &gt; default\_index=std::nullopt) <br> |
-|  [**Dropdown**](classendstone_1_1Dropdown.md) & | [**addOption**](#function-addoption) ([**const**](classendstone_1_1Vector.md) std::string & option) <br>_Adds a new option to the dropdown._  |
-|  std::optional&lt; [**int**](classendstone_1_1Vector.md) &gt; | [**getDefaultIndex**](#function-getdefaultindex) () const<br>_Gets the default index of the dropdown._  |
+|   | [**Dropdown**](#function-dropdown-22) (Message label, std::vector&lt; std::string &gt; options, std::optional&lt; int &gt; default\_index=std::nullopt) <br> |
+|  [**Dropdown**](classendstone_1_1Dropdown.md) & | [**addOption**](#function-addoption) (const std::string & option) <br>_Adds a new option to the dropdown._  |
+|  std::optional&lt; int &gt; | [**getDefaultIndex**](#function-getdefaultindex) () const<br>_Gets the default index of the dropdown._  |
 |  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the dropdown._  |
 |  std::vector&lt; std::string &gt; | [**getOptions**](#function-getoptions) () const<br>_Gets the options of the dropdown._  |
-|  [**Dropdown**](classendstone_1_1Dropdown.md) & | [**setDefaultIndex**](#function-setdefaultindex) (std::optional&lt; [**int**](classendstone_1_1Vector.md) &gt; default\_index) <br>_Sets the default index of the dropdown._  |
+|  [**Dropdown**](classendstone_1_1Dropdown.md) & | [**setDefaultIndex**](#function-setdefaultindex) (std::optional&lt; int &gt; default\_index) <br>_Sets the default index of the dropdown._  |
 |  [**Dropdown**](classendstone_1_1Dropdown.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the dropdown._  |
 |  [**Dropdown**](classendstone_1_1Dropdown.md) & | [**setOptions**](#function-setoptions) (std::vector&lt; std::string &gt; options) <br>_Sets the options of the dropdown._  |
 

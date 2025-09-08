@@ -54,8 +54,8 @@ _Represents a chunk of blocks._
 | ---: | :--- |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension containing this chunk._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level containing this chunk._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getX**](#function-getx) () const = 0<br>_Gets the X-coordinate of this chunk._  |
-| virtual [**int**](classendstone_1_1Vector.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the Z-coordinate of this chunk._  |
+| virtual int | [**getX**](#function-getx) () const = 0<br>_Gets the X-coordinate of this chunk._  |
+| virtual int | [**getZ**](#function-getz) () const = 0<br>_Gets the Z-coordinate of this chunk._  |
 | virtual  | [**~Chunk**](#function-chunk) () = default<br> |
 
 

@@ -116,7 +116,7 @@
         <location file="include/endstone/event/player/player_chat_event.h" line="40" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="40" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6911b50e5f63878d746bdda07d8fcd58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerChatEvent::setMessage</definition>
         <argsstring>(std::string message)</argsstring>
         <name>setMessage</name>
@@ -145,7 +145,7 @@
         <location file="include/endstone/event/player/player_chat_event.h" line="50" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a13300f0afa05d3b3643bf60c9f8f2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerChatEvent::setPlayer</definition>
         <argsstring>(Player &amp;player)</argsstring>
         <name>setPlayer</name>
@@ -193,7 +193,7 @@
         <location file="include/endstone/event/player/player_chat_event.h" line="72" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a16bf30f1143a3b116ce865bbc8dedc62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerChatEvent::setFormat</definition>
         <argsstring>(std::string format)</argsstring>
         <name>setFormat</name>

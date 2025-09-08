@@ -6,7 +6,7 @@
     <includes refid="player__login__event_8h" local="no">endstone/event/player/player_login_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerLoginEvent_1aaea7a39a26c68c5436ee3f050d6be2e6" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerLoginEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -95,7 +95,7 @@
         <location file="include/endstone/event/player/player_login_event.h" line="34" column="18" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a25b7ba1f99219f7b07dc41a2aa36b840" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+        <type>const std::string &amp;</type>
         <definition>const std::string &amp; endstone::PlayerLoginEvent::getKickMessage</definition>
         <argsstring>() const</argsstring>
         <name>getKickMessage</name>
@@ -113,13 +113,13 @@
         <location file="include/endstone/event/player/player_login_event.h" line="44" column="24" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a8f5b97ba68ebdaf921e4d9a9e6f8219e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::PlayerLoginEvent::setKickMessage</definition>
         <argsstring>(const std::string &amp;message)</argsstring>
         <name>setKickMessage</name>
         <qualifiedname>endstone::PlayerLoginEvent::setKickMessage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>

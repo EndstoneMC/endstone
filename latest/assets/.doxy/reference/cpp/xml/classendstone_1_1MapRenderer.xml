@@ -5,7 +5,7 @@
     <includes refid="map__renderer_8h" local="no">endstone/map/map_renderer.h</includes>
     <sectiondef kind="friend">
       <memberdef kind="friend" id="classendstone_1_1MapRenderer_1a241417d1788753148454dc43c62db045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">class</ref></type>
+        <type>class</type>
         <definition>friend class core::EndstoneMapView</definition>
         <argsstring></argsstring>
         <name>core::EndstoneMapView</name>
@@ -24,7 +24,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1MapRenderer_1ac13cebc8a7857f8cd6e3bef11f34bace" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::MapRenderer::is_contextual_</definition>
         <argsstring></argsstring>
         <name>is_contextual_</name>
@@ -46,9 +46,9 @@
         <name>MapRenderer</name>
         <qualifiedname>endstone::MapRenderer::MapRenderer</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>const bool</type>
           <declname>is_contextual</declname>
-          <defval><ref refid="classendstone_1_1Vector" kindref="compound">false</ref></defval>
+          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Initialize the map renderer base with the given contextual status. </para>
@@ -84,7 +84,7 @@
         <location file="include/endstone/map/map_renderer.h" line="40" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::MapRenderer::isContextual</definition>
         <argsstring>() const</argsstring>
         <name>isContextual</name>
@@ -102,7 +102,7 @@
         <location file="include/endstone/map/map_renderer.h" line="55" column="11" bodyfile="include/endstone/map/map_renderer.h" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::MapRenderer::initialize</definition>
         <argsstring>(MapView &amp;map)</argsstring>
         <name>initialize</name>
@@ -131,7 +131,7 @@
         <location file="include/endstone/map/map_renderer.h" line="65" column="18" bodyfile="include/endstone/map/map_renderer.h" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1a2ffd5d14ab9ff49f698f187b14159778" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::MapRenderer::render</definition>
         <argsstring>(MapView &amp;map, MapCanvas &amp;canvas, Player &amp;player)=0</argsstring>
         <name>render</name>
@@ -186,7 +186,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classendstone_1_1MapRenderer_1a6c4589d423e45ff060a37cb4f7e7a0c9" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::MapRenderer::isEndstoneMapRenderer</definition>
         <argsstring>() const</argsstring>
         <name>isEndstoneMapRenderer</name>

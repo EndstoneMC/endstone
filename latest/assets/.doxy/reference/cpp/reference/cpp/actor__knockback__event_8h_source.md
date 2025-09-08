@@ -32,16 +32,11 @@ namespace endstone {
 
 class ActorKnockbackEvent : public Cancellable<ActorEvent<Mob>> {
 public:
-    explicit ActorKnockbackEvent(Mob &mob, Actor *source, Vector<float> knockback)
+    ENDSTONE_EVENT(ActorKnockbackEvent);
+
+    explicit ActorKnockbackEvent(Mob &mob, Actor *source, Vector knockback)
         : Cancellable(mob), mob_(mob), source_(source), knockback_(knockback)
     {
-    }
-    ~ActorKnockbackEvent() override = default;
-
-    inline static const std::string NAME = "ActorKnockbackEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
     }
 
     [[nodiscard]] Actor *getSource() const
@@ -49,12 +44,12 @@ public:
         return source_;
     }
 
-    [[nodiscard]] Vector<float> getKnockback() const
+    [[nodiscard]] Vector getKnockback() const
     {
         return knockback_;
     }
 
-    void setKnockback(Vector<float> knockback)
+    void setKnockback(Vector knockback)
     {
         knockback_ = knockback;
     }
@@ -62,8 +57,8 @@ public:
 private:
     Mob &mob_;
     Actor *source_;
-    Vector<float> raw_knockback_;
-    Vector<float> knockback_;
+    Vector raw_knockback_;
+    Vector knockback_;
 };
 
 }  // namespace endstone

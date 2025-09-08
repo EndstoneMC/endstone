@@ -54,7 +54,7 @@
         <location file="include/endstone/enchantments/enchantment.h" line="36" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Enchantment::getMaxLevel</definition>
         <argsstring>() const =0</argsstring>
         <name>getMaxLevel</name>
@@ -72,7 +72,7 @@
         <location file="include/endstone/enchantments/enchantment.h" line="43" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Enchantment::getStartLevel</definition>
         <argsstring>() const =0</argsstring>
         <name>getStartLevel</name>
@@ -90,13 +90,13 @@
         <location file="include/endstone/enchantments/enchantment.h" line="50" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Enchantment::conflictsWith</definition>
         <argsstring>(const Enchantment &amp;other) const =0</argsstring>
         <name>conflictsWith</name>
         <qualifiedname>endstone::Enchantment::conflictsWith</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -121,13 +121,13 @@
         <location file="include/endstone/enchantments/enchantment.h" line="58" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Enchantment::canEnchantItem</definition>
         <argsstring>(const ItemStack &amp;item) const =0</argsstring>
         <name>canEnchantItem</name>
         <qualifiedname>endstone::Enchantment::canEnchantItem</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>item</declname>
         </param>
         <briefdescription>

@@ -2607,6 +2607,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents first">
 
+        <p>Classes relating to letting plugins run code at specific time intervals.</p>
+
 
 
 
@@ -2791,7 +2793,7 @@ For latest updates join the chat on
 
 
 <a href="#endstone.scheduler.Scheduler.cancel_tasks" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">cancel_tasks</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">cancel_tasks</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._python.plugin.Plugin">Plugin</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2811,7 +2813,7 @@ For latest updates join the chat on
 
 
 <a href="#endstone.scheduler.Scheduler.get_pending_tasks" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_pending_tasks</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Task (endstone._internal.endstone_python.Task)" href="#endstone.scheduler.Task">Task</a></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_pending_tasks</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Task (endstone.scheduler.Task)" href="#endstone.scheduler.Task">Task</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2872,11 +2874,11 @@ For latest updates join the chat on
 
 <a href="#endstone.scheduler.Scheduler.run_task" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">run_task</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._python.plugin.Plugin">Plugin</span></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">task</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[[],</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">delay</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.SupportsInt" href="https://docs.python.org/3/library/typing.html#typing.SupportsInt">SupportsInt</a></span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">period</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.SupportsInt" href="https://docs.python.org/3/library/typing.html#typing.SupportsInt">SupportsInt</a></span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Task (endstone._internal.endstone_python.Task)" href="#endstone.scheduler.Task">Task</a></span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Task (endstone.scheduler.Task)" href="#endstone.scheduler.Task">Task</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2996,7 +2998,7 @@ For latest updates join the chat on
       property
    (endstone.scheduler.Task.owner)" href="#endstone.scheduler.Task.owner">owner</a></code></td>
             <td>
-                  <code><span title="endstone._internal.endstone_python.Plugin">Plugin</span></code>
+                  <code><span title="endstone._python.plugin.Plugin">Plugin</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3095,7 +3097,7 @@ For latest updates join the chat on
   </span>
 
 <a href="#endstone.scheduler.Task.owner" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">owner</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">owner</span><span class="p">:</span> <span class="n"><span title="endstone._python.plugin.Plugin">Plugin</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">

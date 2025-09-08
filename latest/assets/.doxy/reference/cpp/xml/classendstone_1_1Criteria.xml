@@ -59,7 +59,7 @@
         <location file="include/endstone/scoreboard/criteria.h" line="40" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Criteria::isReadOnly</definition>
         <argsstring>() const =0</argsstring>
         <name>isReadOnly</name>

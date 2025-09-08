@@ -6,7 +6,7 @@
     <includes refid="player__respawn__event_8h" local="no">endstone/event/player/player_respawn_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerRespawnEvent_1ab47c1f5797bfb607b21b5fdbd1e35336" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::PlayerRespawnEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>

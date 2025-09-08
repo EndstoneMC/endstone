@@ -55,7 +55,7 @@
         <location file="include/endstone/scheduler/task.h" line="44" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Task_1ad091016fe3fae7796852709bade2c079" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Task::isSync</definition>
         <argsstring>() const =0</argsstring>
         <name>isSync</name>
@@ -73,7 +73,7 @@
         <location file="include/endstone/scheduler/task.h" line="51" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Task_1ab758d7bc88367c07f090b758496daada" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Task::isCancelled</definition>
         <argsstring>() const =0</argsstring>
         <name>isCancelled</name>
@@ -91,7 +91,7 @@
         <location file="include/endstone/scheduler/task.h" line="58" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Task_1a3455812d65cf5c8f173e5cf5ab8a1fd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Task::cancel</definition>
         <argsstring>()=0</argsstring>
         <name>cancel</name>

@@ -55,7 +55,7 @@
         <location file="include/endstone/inventory/item_type.h" line="39" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::ItemType::getMaxStackSize</definition>
         <argsstring>() const =0</argsstring>
         <name>getMaxStackSize</name>
@@ -73,7 +73,7 @@
         <location file="include/endstone/inventory/item_type.h" line="46" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::ItemType::getMaxDurability</definition>
         <argsstring>() const =0</argsstring>
         <name>getMaxDurability</name>
@@ -91,13 +91,13 @@
         <location file="include/endstone/inventory/item_type.h" line="53" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a30a71758b6797ce64715172fbc187e7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::ItemType::operator==</definition>
         <argsstring>(const std::string_view other) const</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::ItemType::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -109,13 +109,13 @@
         <location file="include/endstone/inventory/item_type.h" line="69" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1af744ff14c9521369c6935eb8993d640f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::ItemType::operator!=</definition>
         <argsstring>(const std::string_view other) const</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::ItemType::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -127,13 +127,13 @@
         <location file="include/endstone/inventory/item_type.h" line="74" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="74" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1af875aee911c2b3f95b2efb7dfd2dc8fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::ItemType::operator==</definition>
         <argsstring>(const ItemType &amp;other) const</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::ItemType::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -145,13 +145,13 @@
         <location file="include/endstone/inventory/item_type.h" line="79" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="79" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a81b1aeb108d98457a98c801207b92f21" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::ItemType::operator!=</definition>
         <argsstring>(const ItemType &amp;other) const</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::ItemType::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -165,13 +165,13 @@
     </sectiondef>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classendstone_1_1ItemType_1a339c385d024ffd1881d31fa552f3cf6a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> *</type>
+        <type>const <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> *</type>
         <definition>static const ItemType * endstone::ItemType::get</definition>
         <argsstring>(const std::string &amp;name)</argsstring>
         <name>get</name>
         <qualifiedname>endstone::ItemType::get</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <briefdescription>

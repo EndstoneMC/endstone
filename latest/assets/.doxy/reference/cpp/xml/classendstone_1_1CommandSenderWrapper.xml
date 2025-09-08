@@ -6,7 +6,7 @@
     <includes refid="command__sender__wrapper_8h" local="no">endstone/command/command_sender_wrapper.h</includes>
     <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classendstone_1_1CommandSenderWrapper_1aecfc3f07c79d140b40d890b7a7a2d541" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;)&gt;</type>
+        <type>std::function&lt; void(const Message &amp;)&gt;</type>
         <definition>using endstone::CommandSenderWrapper::Callback =  std::function&lt;void(const Message &amp;)&gt;</definition>
         <argsstring></argsstring>
         <name>Callback</name>
@@ -94,14 +94,14 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="27" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="27" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::CommandSenderWrapper::sendMessage</definition>
         <argsstring>(const Message &amp;message) const override</argsstring>
         <name>sendMessage</name>
         <qualifiedname>endstone::CommandSenderWrapper::sendMessage</qualifiedname>
         <reimplements refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea">sendMessage</reimplements>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+          <type>const Message &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>
@@ -124,14 +124,14 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="30" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="30" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::CommandSenderWrapper::sendErrorMessage</definition>
         <argsstring>(const Message &amp;message) const override</argsstring>
         <name>sendErrorMessage</name>
         <qualifiedname>endstone::CommandSenderWrapper::sendErrorMessage</qualifiedname>
         <reimplements refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb">sendErrorMessage</reimplements>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> Message &amp;</type>
+          <type>const Message &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>
@@ -173,7 +173,7 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="43" column="22" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::CommandSenderWrapper::isPermissionSet</definition>
         <argsstring>(std::string name) const override</argsstring>
         <name>isPermissionSet</name>
@@ -205,14 +205,14 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="48" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="48" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::CommandSenderWrapper::isPermissionSet</definition>
         <argsstring>(const Permission &amp;perm) const override</argsstring>
         <name>isPermissionSet</name>
         <qualifiedname>endstone::CommandSenderWrapper::isPermissionSet</qualifiedname>
         <reimplements refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995">isPermissionSet</reimplements>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
           <declname>perm</declname>
         </param>
         <briefdescription>
@@ -237,7 +237,7 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="53" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::CommandSenderWrapper::hasPermission</definition>
         <argsstring>(std::string name) const override</argsstring>
         <name>hasPermission</name>
@@ -269,14 +269,14 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="58" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::CommandSenderWrapper::hasPermission</definition>
         <argsstring>(const Permission &amp;perm) const override</argsstring>
         <name>hasPermission</name>
         <qualifiedname>endstone::CommandSenderWrapper::hasPermission</qualifiedname>
         <reimplements refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6">hasPermission</reimplements>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
           <declname>perm</declname>
         </param>
         <briefdescription>
@@ -312,11 +312,11 @@
           <declname>plugin</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -389,7 +389,7 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="73" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>Result&lt; void &gt; endstone::CommandSenderWrapper::removeAttachment</definition>
         <argsstring>(PermissionAttachment &amp;attachment) override</argsstring>
         <name>removeAttachment</name>
@@ -421,7 +421,7 @@
         <location file="include/endstone/command/command_sender_wrapper.h" line="78" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::CommandSenderWrapper::recalculatePermissions</definition>
         <argsstring>() override</argsstring>
         <name>recalculatePermissions</name>

@@ -5,7 +5,7 @@
     <includes refid="color_8h" local="no">endstone/util/color.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1Color_1a7c5e7653a0ede9a6e5da415ac93bcf51" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>constexpr int</type>
         <definition>constexpr int endstone::Color::BIT_MASK</definition>
         <argsstring></argsstring>
         <name>BIT_MASK</name>
@@ -20,7 +20,7 @@
         <location file="include/endstone/util/color.h" line="25" column="26" bodyfile="include/endstone/util/color.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Color_1a3c2563e89f8f1961ce3a41fa99f5f637" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>constexpr int</type>
         <definition>constexpr int endstone::Color::DEFAULT_ALPHA</definition>
         <argsstring></argsstring>
         <name>DEFAULT_ALPHA</name>
@@ -95,25 +95,25 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Color_1a17541893a7122663b91e49f77f828475" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">constexpr</ref></type>
+        <type>constexpr</type>
         <definition>constexpr endstone::Color::Color</definition>
         <argsstring>(const std::uint8_t red, const std::uint8_t green, const std::uint8_t blue, const std::uint8_t alpha=DEFAULT_ALPHA)</argsstring>
         <name>Color</name>
         <qualifiedname>endstone::Color::Color</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>red</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>green</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>blue</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::uint8_t</type>
+          <type>const std::uint8_t</type>
           <declname>alpha</declname>
           <defval>DEFAULT_ALPHA</defval>
         </param>
@@ -126,7 +126,7 @@
         <location file="include/endstone/util/color.h" line="28" column="15" bodyfile="include/endstone/util/color.h" bodystart="28" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a0ba516557cf1a2286149c620d95e00c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Color::getRed</definition>
         <argsstring>() const</argsstring>
         <name>getRed</name>
@@ -150,7 +150,7 @@
         <name>setRed</name>
         <qualifiedname>endstone::Color::setRed</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>red</declname>
         </param>
         <briefdescription>
@@ -175,7 +175,7 @@
         <location file="include/endstone/util/color.h" line="132" column="13" bodyfile="include/endstone/util/color.h" bodystart="132" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a301d32f39f8cffa44020cc9a62212ea1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Color::getGreen</definition>
         <argsstring>() const</argsstring>
         <name>getGreen</name>
@@ -199,7 +199,7 @@
         <name>setGreen</name>
         <qualifiedname>endstone::Color::setGreen</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>green</declname>
         </param>
         <briefdescription>
@@ -224,7 +224,7 @@
         <location file="include/endstone/util/color.h" line="154" column="13" bodyfile="include/endstone/util/color.h" bodystart="154" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a9ed18343f473ed0a5b69a34040c9c6ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Color::getBlue</definition>
         <argsstring>() const</argsstring>
         <name>getBlue</name>
@@ -248,7 +248,7 @@
         <name>setBlue</name>
         <qualifiedname>endstone::Color::setBlue</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>blue</declname>
         </param>
         <briefdescription>
@@ -273,7 +273,7 @@
         <location file="include/endstone/util/color.h" line="176" column="13" bodyfile="include/endstone/util/color.h" bodystart="176" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a6696f9d17391d894745ddc0c202707b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Color::getAlpha</definition>
         <argsstring>() const</argsstring>
         <name>getAlpha</name>
@@ -297,7 +297,7 @@
         <name>setAlpha</name>
         <qualifiedname>endstone::Color::setAlpha</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>alpha</declname>
         </param>
         <briefdescription>
@@ -322,7 +322,7 @@
         <location file="include/endstone/util/color.h" line="198" column="13" bodyfile="include/endstone/util/color.h" bodystart="198" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1aafd4045f6c816b868c35dc494c2713b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Color::asRGBA</definition>
         <argsstring>() const</argsstring>
         <name>asRGBA</name>
@@ -340,7 +340,7 @@
         <location file="include/endstone/util/color.h" line="208" column="10" bodyfile="include/endstone/util/color.h" bodystart="208" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1ae79fd7ce5bc89837d82073ffdb7fab65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Color::asRGB</definition>
         <argsstring>() const</argsstring>
         <name>asRGB</name>
@@ -358,7 +358,7 @@
         <location file="include/endstone/util/color.h" line="218" column="10" bodyfile="include/endstone/util/color.h" bodystart="218" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a49132ac0dcd6eb30d0c88b060e2145aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Color::asBGR</definition>
         <argsstring>() const</argsstring>
         <name>asBGR</name>
@@ -376,13 +376,13 @@
         <location file="include/endstone/util/color.h" line="228" column="10" bodyfile="include/endstone/util/color.h" bodystart="228" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1aba327588593d6e8fd59114d831fb0b60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Color::operator==</definition>
         <argsstring>(const Color &amp;other) const</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::Color::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -394,13 +394,13 @@
         <location file="include/endstone/util/color.h" line="233" column="10" bodyfile="include/endstone/util/color.h" bodystart="233" bodyend="236"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a4748a2087280419ccb2fda334d14c1a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::Color::operator!=</definition>
         <argsstring>(const Color &amp;other) const</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::Color::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -420,19 +420,19 @@
         <name>fromRGBA</name>
         <qualifiedname>endstone::Color::fromRGBA</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>red</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>green</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>blue</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>alpha</declname>
         </param>
         <briefdescription>
@@ -487,15 +487,15 @@
         <name>fromRGB</name>
         <qualifiedname>endstone::Color::fromRGB</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>red</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>green</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>blue</declname>
         </param>
         <briefdescription>
@@ -542,15 +542,15 @@
         <name>fromBGR</name>
         <qualifiedname>endstone::Color::fromBGR</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>blue</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>green</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>red</declname>
         </param>
         <briefdescription>
@@ -597,7 +597,7 @@
         <name>fromRGBA</name>
         <qualifiedname>endstone::Color::fromRGBA</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>rgba</declname>
         </param>
         <briefdescription>
@@ -628,7 +628,7 @@
         <name>fromRGB</name>
         <qualifiedname>endstone::Color::fromRGB</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>rgb</declname>
         </param>
         <briefdescription>
@@ -659,7 +659,7 @@
         <name>fromBGR</name>
         <qualifiedname>endstone::Color::fromBGR</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>bgr</declname>
         </param>
         <briefdescription>

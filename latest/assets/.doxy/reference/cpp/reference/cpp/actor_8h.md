@@ -12,7 +12,6 @@
 
 * `#include "endstone/command/command_sender.h"`
 * `#include "endstone/level/location.h"`
-* `#include "endstone/level/position.h"`
 
 
 
@@ -31,7 +30,6 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
-| namespace | [**fmt**](namespacefmt.md) <br> |
 
 
 ## Classes

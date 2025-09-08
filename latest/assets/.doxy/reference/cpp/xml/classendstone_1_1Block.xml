@@ -38,7 +38,7 @@
         <location file="include/endstone/block/block.h" line="48" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1afc6493c7fae9703684a17ebcc6c92a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Block::setType</definition>
         <argsstring>(std::string type)=0</argsstring>
         <name>setType</name>
@@ -67,7 +67,7 @@
         <location file="include/endstone/block/block.h" line="55" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1a6235d565c41138ea5ed584250d84617f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Block::setType</definition>
         <argsstring>(std::string type, bool apply_physics)=0</argsstring>
         <name>setType</name>
@@ -77,7 +77,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>apply_physics</declname>
         </param>
         <briefdescription>
@@ -126,13 +126,13 @@
         <location file="include/endstone/block/block.h" line="70" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1a7f24c60e47c3bcd49f0b1122b80b7b47" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Block::setData</definition>
         <argsstring>(const BlockData &amp;data)=0</argsstring>
         <name>setData</name>
         <qualifiedname>endstone::Block::setData</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
           <declname>data</declname>
         </param>
         <briefdescription>
@@ -155,17 +155,17 @@
         <location file="include/endstone/block/block.h" line="77" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1a4dbd6ae72829e456925cc5a86d93ea42" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Block::setData</definition>
         <argsstring>(const BlockData &amp;data, bool apply_physics)=0</argsstring>
         <name>setData</name>
         <qualifiedname>endstone::Block::setData</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
           <declname>data</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>apply_physics</declname>
         </param>
         <briefdescription>
@@ -202,15 +202,15 @@
         <name>getRelative</name>
         <qualifiedname>endstone::Block::getRelative</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>offset_x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>offset_y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>offset_z</declname>
         </param>
         <briefdescription>
@@ -293,7 +293,7 @@
           <declname>face</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>distance</declname>
         </param>
         <briefdescription>
@@ -344,7 +344,7 @@
         <location file="include/endstone/block/block.h" line="121" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1a1ec1fc7c6fe1aab63db232b0f0684c76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Block::getX</definition>
         <argsstring>() const =0</argsstring>
         <name>getX</name>
@@ -362,7 +362,7 @@
         <location file="include/endstone/block/block.h" line="128" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Block::getY</definition>
         <argsstring>() const =0</argsstring>
         <name>getY</name>
@@ -380,7 +380,7 @@
         <location file="include/endstone/block/block.h" line="135" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Block::getZ</definition>
         <argsstring>() const =0</argsstring>
         <name>getZ</name>

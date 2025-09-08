@@ -42,7 +42,7 @@
         <location file="include/endstone/player.h" line="47" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1abac4577ca5fcd890b21f148b3df1e441" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Player::isOp</definition>
         <argsstring>() const =0</argsstring>
         <name>isOp</name>
@@ -60,13 +60,13 @@
         <location file="include/endstone/player.h" line="54" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ab0988eb2cd4067117f2419a5a06fcedb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setOp</definition>
         <argsstring>(bool value)=0</argsstring>
         <name>setOp</name>
         <qualifiedname>endstone::Player::setOp</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -125,7 +125,7 @@
         <location file="include/endstone/player.h" line="75" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::transfer</definition>
         <argsstring>(std::string host, int port) const =0</argsstring>
         <name>transfer</name>
@@ -135,7 +135,7 @@
           <declname>host</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>port</declname>
         </param>
         <briefdescription>
@@ -166,7 +166,7 @@
         <location file="include/endstone/player.h" line="83" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::kick</definition>
         <argsstring>(std::string message) const =0</argsstring>
         <name>kick</name>
@@ -195,7 +195,7 @@
         <location file="include/endstone/player.h" line="90" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Player::performCommand</definition>
         <argsstring>(std::string command) const =0</argsstring>
         <name>performCommand</name>
@@ -226,7 +226,7 @@
         <location file="include/endstone/player.h" line="100" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a5cdb79fdd152c6c6ed8f251bd1e31523" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Player::isSneaking</definition>
         <argsstring>() const =0</argsstring>
         <name>isSneaking</name>
@@ -244,13 +244,13 @@
         <location file="include/endstone/player.h" line="107" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a23622b02f067bad332947a0b9459fd0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setSneaking</definition>
         <argsstring>(bool sneak)=0</argsstring>
         <name>setSneaking</name>
         <qualifiedname>endstone::Player::setSneaking</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>sneak</declname>
         </param>
         <briefdescription>
@@ -273,7 +273,7 @@
         <location file="include/endstone/player.h" line="114" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1abb2a1b9ae99b24fc1e80ed5f73d55646" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Player::isSprinting</definition>
         <argsstring>() const =0</argsstring>
         <name>isSprinting</name>
@@ -291,13 +291,13 @@
         <location file="include/endstone/player.h" line="121" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a605f8e9b23c3d73b187c7eeb3959d8e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setSprinting</definition>
         <argsstring>(bool sprinting)=0</argsstring>
         <name>setSprinting</name>
         <qualifiedname>endstone::Player::setSprinting</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>sprinting</declname>
         </param>
         <briefdescription>
@@ -320,7 +320,7 @@
         <location file="include/endstone/player.h" line="128" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1aa1ceee8a331905251a258d2a81df0120" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::playSound</definition>
         <argsstring>(Location location, std::string sound, float volume, float pitch)=0</argsstring>
         <name>playSound</name>
@@ -334,11 +334,11 @@
           <declname>sound</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>volume</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>pitch</declname>
         </param>
         <briefdescription>
@@ -385,7 +385,7 @@
         <location file="include/endstone/player.h" line="140" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a3cb05d6341f6edc50f3fe6d519cc82d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::stopSound</definition>
         <argsstring>(std::string sound)=0</argsstring>
         <name>stopSound</name>
@@ -414,7 +414,7 @@
         <location file="include/endstone/player.h" line="147" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a413039a8c159c88eb8d9aa4923a08521" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::stopAllSounds</definition>
         <argsstring>()=0</argsstring>
         <name>stopAllSounds</name>
@@ -429,13 +429,13 @@
         <location file="include/endstone/player.h" line="152" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::giveExp</definition>
         <argsstring>(int amount)=0</argsstring>
         <name>giveExp</name>
         <qualifiedname>endstone::Player::giveExp</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>amount</declname>
         </param>
         <briefdescription>
@@ -458,13 +458,13 @@
         <location file="include/endstone/player.h" line="161" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::giveExpLevels</definition>
         <argsstring>(int amount)=0</argsstring>
         <name>giveExpLevels</name>
         <qualifiedname>endstone::Player::giveExpLevels</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>amount</declname>
         </param>
         <briefdescription>
@@ -487,7 +487,7 @@
         <location file="include/endstone/player.h" line="168" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1aefef97a98e1c193a0eeaf710f417b835" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>virtual float endstone::Player::getExpProgress</definition>
         <argsstring>() const =0</argsstring>
         <name>getExpProgress</name>
@@ -506,13 +506,13 @@
         <location file="include/endstone/player.h" line="177" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1af8eae30043e68aa0bc8dc28e55fa7005" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Player::setExpProgress</definition>
         <argsstring>(float progress)=0</argsstring>
         <name>setExpProgress</name>
         <qualifiedname>endstone::Player::setExpProgress</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>progress</declname>
         </param>
         <briefdescription>
@@ -536,7 +536,7 @@
         <location file="include/endstone/player.h" line="186" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1af38317c0a52ffc820eb751388ebbb7b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Player::getExpLevel</definition>
         <argsstring>() const =0</argsstring>
         <name>getExpLevel</name>
@@ -554,13 +554,13 @@
         <location file="include/endstone/player.h" line="193" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a272713ff7d75ac8baae498e0ffb4a764" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Player::setExpLevel</definition>
         <argsstring>(int level)=0</argsstring>
         <name>setExpLevel</name>
         <qualifiedname>endstone::Player::setExpLevel</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>level</declname>
         </param>
         <briefdescription>
@@ -583,7 +583,7 @@
         <location file="include/endstone/player.h" line="200" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Player::getTotalExp</definition>
         <argsstring>() const =0</argsstring>
         <name>getTotalExp</name>
@@ -602,7 +602,7 @@
         <location file="include/endstone/player.h" line="210" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Player::getAllowFlight</definition>
         <argsstring>() const =0</argsstring>
         <name>getAllowFlight</name>
@@ -620,13 +620,13 @@
         <location file="include/endstone/player.h" line="217" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a7fa8057141ec4e2a2f7f7191f0d063a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setAllowFlight</definition>
         <argsstring>(bool flight)=0</argsstring>
         <name>setAllowFlight</name>
         <qualifiedname>endstone::Player::setAllowFlight</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>flight</declname>
         </param>
         <briefdescription>
@@ -649,7 +649,7 @@
         <location file="include/endstone/player.h" line="224" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>virtual bool endstone::Player::isFlying</definition>
         <argsstring>() const =0</argsstring>
         <name>isFlying</name>
@@ -667,13 +667,13 @@
         <location file="include/endstone/player.h" line="231" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1aab226c60567a1904fe77765659a82e05" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref> &gt;</type>
+        <type>Result&lt; void &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Player::setFlying</definition>
         <argsstring>(bool value)=0</argsstring>
         <name>setFlying</name>
         <qualifiedname>endstone::Player::setFlying</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -696,7 +696,7 @@
         <location file="include/endstone/player.h" line="238" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9ee0dac306f3c2a8da7441d2f5bf5850" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>virtual float endstone::Player::getFlySpeed</definition>
         <argsstring>() const =0</argsstring>
         <name>getFlySpeed</name>
@@ -714,13 +714,13 @@
         <location file="include/endstone/player.h" line="245" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a36fe0a887b27ac602c0392cc0154001b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setFlySpeed</definition>
         <argsstring>(float value) const =0</argsstring>
         <name>setFlySpeed</name>
         <qualifiedname>endstone::Player::setFlySpeed</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -743,7 +743,7 @@
         <location file="include/endstone/player.h" line="252" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1af8f804891833ccea4e124df9390557b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>virtual float endstone::Player::getWalkSpeed</definition>
         <argsstring>() const =0</argsstring>
         <name>getWalkSpeed</name>
@@ -761,13 +761,13 @@
         <location file="include/endstone/player.h" line="259" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setWalkSpeed</definition>
         <argsstring>(float value) const =0</argsstring>
         <name>setWalkSpeed</name>
         <qualifiedname>endstone::Player::setWalkSpeed</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -808,7 +808,7 @@
         <location file="include/endstone/player.h" line="273" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setScoreboard</definition>
         <argsstring>(Scoreboard &amp;scoreboard)=0</argsstring>
         <name>setScoreboard</name>
@@ -837,7 +837,7 @@
         <location file="include/endstone/player.h" line="280" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::sendPopup</definition>
         <argsstring>(std::string message) const =0</argsstring>
         <name>sendPopup</name>
@@ -866,7 +866,7 @@
         <location file="include/endstone/player.h" line="287" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::sendTip</definition>
         <argsstring>(std::string message) const =0</argsstring>
         <name>sendTip</name>
@@ -895,7 +895,7 @@
         <location file="include/endstone/player.h" line="294" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a2558a7cac1d76547e05eee61db8cc1ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::sendToast</definition>
         <argsstring>(std::string title, std::string content) const =0</argsstring>
         <name>sendToast</name>
@@ -936,7 +936,7 @@
         <location file="include/endstone/player.h" line="302" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a8d5283dfea450c42458778ee059ccfe6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::sendTitle</definition>
         <argsstring>(std::string title, std::string subtitle) const =0</argsstring>
         <name>sendTitle</name>
@@ -977,7 +977,7 @@
         <location file="include/endstone/player.h" line="311" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a8294c943551a0e2fa0e31362d332f41e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::sendTitle</definition>
         <argsstring>(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const =0</argsstring>
         <name>sendTitle</name>
@@ -991,15 +991,15 @@
           <declname>subtitle</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>fade_in</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>stay</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>fade_out</declname>
         </param>
         <briefdescription>
@@ -1054,7 +1054,7 @@
         <location file="include/endstone/player.h" line="323" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::resetTitle</definition>
         <argsstring>() const =0</argsstring>
         <name>resetTitle</name>
@@ -1069,7 +1069,7 @@
         <location file="include/endstone/player.h" line="329" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a296b131565af237f3942bb932d26f15e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::spawnParticle</definition>
         <argsstring>(std::string name, Location location) const =0</argsstring>
         <name>spawnParticle</name>
@@ -1110,7 +1110,7 @@
         <location file="include/endstone/player.h" line="337" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1adb0ea6e6f598df36802fa507051fa017" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::spawnParticle</definition>
         <argsstring>(std::string name, float x, float y, float z) const =0</argsstring>
         <name>spawnParticle</name>
@@ -1120,15 +1120,15 @@
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -1175,7 +1175,7 @@
         <location file="include/endstone/player.h" line="347" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1aa0489a19f104d571d9bc991c6a7b318c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::spawnParticle</definition>
         <argsstring>(std::string name, Location location, std::optional&lt; std::string &gt; molang_variables_json) const =0</argsstring>
         <name>spawnParticle</name>
@@ -1228,7 +1228,7 @@
         <location file="include/endstone/player.h" line="356" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a91fd4054da2dc306633023de123a94cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::spawnParticle</definition>
         <argsstring>(std::string name, float x, float y, float z, std::optional&lt; std::string &gt; molang_variables_json) const =0</argsstring>
         <name>spawnParticle</name>
@@ -1238,15 +1238,15 @@
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>z</declname>
         </param>
         <param>
@@ -1341,7 +1341,7 @@
         <location file="include/endstone/player.h" line="385" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::updateCommands</definition>
         <argsstring>() const =0</argsstring>
         <name>updateCommands</name>
@@ -1411,7 +1411,7 @@
         <location file="include/endstone/player.h" line="414" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::setGameMode</definition>
         <argsstring>(GameMode mode)=0</argsstring>
         <name>setGameMode</name>
@@ -1512,7 +1512,7 @@
         <location file="include/endstone/player.h" line="449" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::sendForm</definition>
         <argsstring>(FormVariant form)=0</argsstring>
         <name>sendForm</name>
@@ -1541,7 +1541,7 @@
         <location file="include/endstone/player.h" line="456" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::closeForm</definition>
         <argsstring>()=0</argsstring>
         <name>closeForm</name>
@@ -1556,13 +1556,13 @@
         <location file="include/endstone/player.h" line="461" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a68b095f25d166158a3e03d1840194896" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>virtual void endstone::Player::sendPacket</definition>
         <argsstring>(int packet_id, std::string_view payload) const =0</argsstring>
         <name>sendPacket</name>
         <qualifiedname>endstone::Player::sendPacket</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>int</type>
           <declname>packet_id</declname>
         </param>
         <param>
@@ -1720,7 +1720,7 @@
       <member refid="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getTotalExp</name></member>
       <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getType</name></member>
       <member refid="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getUniqueId</name></member>
-      <member refid="classendstone_1_1Actor_1a0f73b7b1bcc0f18ce4cc238fdcea69b4" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getVelocity</name></member>
+      <member refid="classendstone_1_1Actor_1a991a21714a41b82ee7785c0dbf176c3a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getVelocity</name></member>
       <member refid="classendstone_1_1Player_1af8f804891833ccea4e124df9390557b6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getWalkSpeed</name></member>
       <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getXuid</name></member>
       <member refid="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>giveExp</name></member>

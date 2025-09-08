@@ -2305,20 +2305,20 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1PlayerMoveEvent/#function-playermoveevent"><strong>PlayerMoveEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="../classendstone_1_1Location/"><strong>Location</strong></a> from, <a href="../classendstone_1_1Location/"><strong>Location</strong></a> to) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
+<td style="text-align: right;">const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1PlayerMoveEvent/#function-getfrom"><strong>getFrom</strong></a> () const<br><em>Gets the location this player moved from.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
+<td style="text-align: right;">const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1PlayerMoveEvent/#function-getto"><strong>getTo</strong></a> () const<br><em>Gets the location this player moved to.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerMoveEvent/#function-setfrom"><strong>setFrom</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; from) <br><em>Sets the location to mark as where the player moved from.</em></td>
+<td style="text-align: right;">Result&lt; void &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1PlayerMoveEvent/#function-setfrom"><strong>setFrom</strong></a> (const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; from) <br><em>Sets the location to mark as where the player moved from.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">Result&lt; <a href="../classendstone_1_1Vector/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerMoveEvent/#function-setto"><strong>setTo</strong></a> (<a href="../classendstone_1_1Vector/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; to) <br><em>Sets the location that this player will move to.</em></td>
+<td style="text-align: right;">Result&lt; void &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1PlayerMoveEvent/#function-setto"><strong>setTo</strong></a> (const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; to) <br><em>Sets the location that this player will move to.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2333,16 +2333,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2357,16 +2357,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>bool</strong></a></td>
+<td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Vector/"><strong>bool</strong></a> cancel) = 0<br></td>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (bool cancel) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>

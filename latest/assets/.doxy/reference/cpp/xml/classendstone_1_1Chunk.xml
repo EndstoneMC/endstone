@@ -19,7 +19,7 @@
         <location file="include/endstone/level/chunk.h" line="26" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Chunk::getX</definition>
         <argsstring>() const =0</argsstring>
         <name>getX</name>
@@ -37,7 +37,7 @@
         <location file="include/endstone/level/chunk.h" line="33" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>virtual int endstone::Chunk::getZ</definition>
         <argsstring>() const =0</argsstring>
         <name>getZ</name>

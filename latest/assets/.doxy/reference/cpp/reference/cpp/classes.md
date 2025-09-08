@@ -317,8 +317,6 @@
 ([**endstone**](namespaceendstone.md))
 * [**PluginManager**](classendstone_1_1PluginManager.md)
 ([**endstone**](namespaceendstone.md))
-* [**Position**](classendstone_1_1Position.md)
-([**endstone**](namespaceendstone.md))
 
 
 ## r

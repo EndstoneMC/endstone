@@ -6,7 +6,7 @@
     <includes refid="weather__change__event_8h" local="no">endstone/event/weather/weather_change_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1WeatherChangeEvent_1af684c3b39e6a91f4453f14e46ade558e" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::WeatherChangeEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -23,7 +23,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1WeatherChangeEvent_1a2bde9420885bad855573e4557f771a8d" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::WeatherChangeEvent::to_</definition>
         <argsstring></argsstring>
         <name>to_</name>
@@ -49,7 +49,7 @@
           <declname>level</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>const bool</type>
           <declname>to</declname>
         </param>
         <briefdescription>
@@ -75,7 +75,7 @@
         <location file="include/endstone/event/weather/weather_change_event.h" line="28" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1a6f1a7f2b0be3478b85737c52f35da02e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::WeatherChangeEvent::toWeatherState</definition>
         <argsstring>() const</argsstring>
         <name>toWeatherState</name>

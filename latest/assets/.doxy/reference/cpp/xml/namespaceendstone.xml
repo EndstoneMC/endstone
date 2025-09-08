@@ -121,7 +121,6 @@
     <innerclass refid="classendstone_1_1PluginEnableEvent" prot="public">endstone::PluginEnableEvent</innerclass>
     <innerclass refid="classendstone_1_1PluginLoader" prot="public">endstone::PluginLoader</innerclass>
     <innerclass refid="classendstone_1_1PluginManager" prot="public">endstone::PluginManager</innerclass>
-    <innerclass refid="classendstone_1_1Position" prot="public">endstone::Position</innerclass>
     <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
     <innerclass refid="classendstone_1_1Registry" prot="public">endstone::Registry</innerclass>
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
@@ -836,7 +835,7 @@
     </sectiondef>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespaceendstone_1a688abbe501a61374454a55553d25e08f" prot="public" static="no">
-        <type>std::unordered_map&lt; std::string, std::variant&lt; <ref refid="classendstone_1_1Vector" kindref="compound">bool</ref>, std::string, <ref refid="classendstone_1_1Vector" kindref="compound">int</ref> &gt; &gt;</type>
+        <type>std::unordered_map&lt; std::string, std::variant&lt; bool, std::string, int &gt; &gt;</type>
         <definition>using endstone::BlockStates = typedef std::unordered_map&lt;std::string, std::variant&lt;bool, std::string, int&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>BlockStates</name>
@@ -864,7 +863,7 @@
         <location file="include/endstone/message.h" line="25" column="1" bodyfile="include/endstone/message.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Vector" kindref="compound">void</ref>(<ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
+        <type>std::function&lt; void(const <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
         <definition>using endstone::PermissionRemovedExecutor = typedef std::function&lt;void(const PermissionAttachment &amp;)&gt;</definition>
         <argsstring></argsstring>
         <name>PermissionRemovedExecutor</name>
@@ -912,7 +911,7 @@
             <type>typename T</type>
           </param>
         </templateparamlist>
-        <type>nonstd::expected&lt; <ref refid="classendstone_1_1Vector" kindref="compound">T</ref>, std::string &gt;</type>
+        <type>nonstd::expected&lt; T, std::string &gt;</type>
         <definition>using endstone::Result = typedef nonstd::expected&lt;T, std::string&gt;</definition>
         <argsstring></argsstring>
         <name>Result</name>
@@ -928,17 +927,17 @@
     </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::operator==</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -950,17 +949,17 @@
         <location file="include/endstone/util/uuid.h" line="111" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="111" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1ac40f4f96efb610d56f90c6541fc8b400" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::operator&lt;</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&lt;</name>
         <qualifiedname>endstone::operator&lt;</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -972,17 +971,17 @@
         <location file="include/endstone/util/uuid.h" line="116" column="8" bodyfile="include/endstone/util/uuid.h" bodystart="116" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1a96fb3e11970608db1df12feb7a3a829e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::operator!=</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -994,17 +993,17 @@
         <location file="include/endstone/util/uuid.h" line="121" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="121" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1aba0d90c3040dfe93ee11500a1923dfad" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::operator&gt;</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&gt;</name>
         <qualifiedname>endstone::operator&gt;</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -1016,17 +1015,17 @@
         <location file="include/endstone/util/uuid.h" line="126" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="126" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1a467aa3012a4c69958f16d9e0d713bf3a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::operator&lt;=</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&lt;=</name>
         <qualifiedname>endstone::operator&lt;=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -1038,17 +1037,17 @@
         <location file="include/endstone/util/uuid.h" line="130" column="8" bodyfile="include/endstone/util/uuid.h" bodystart="130" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1af337ccd795abe8d4ca38aeffcd6066e7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::operator&gt;=</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&gt;=</name>
         <qualifiedname>endstone::operator&gt;=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -1060,7 +1059,7 @@
         <location file="include/endstone/util/uuid.h" line="135" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1af2cf5277faf4607f09dbd0060c401d53" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::swap</definition>
         <argsstring>(UUID &amp;lhs, UUID &amp;rhs) noexcept</argsstring>
         <name>swap</name>
@@ -1088,7 +1087,7 @@
         <name>hash_value</name>
         <qualifiedname>endstone::hash_value</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Vector" kindref="compound">const</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
           <declname>u</declname>
         </param>
         <briefdescription>
@@ -1140,6 +1139,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/actor/actor.h" line="21" column="1"/>
+    <location file="include/endstone/actor/actor.h" line="20" column="1"/>
   </compounddef>
 </doxygen>

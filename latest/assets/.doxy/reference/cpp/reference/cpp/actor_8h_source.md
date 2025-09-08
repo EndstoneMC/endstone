@@ -26,11 +26,11 @@
 
 #include "endstone/command/command_sender.h"
 #include "endstone/level/location.h"
-#include "endstone/level/position.h"
 
 namespace endstone {
 class Item;
 class Mob;
+class Level;
 class Actor : public CommandSender {
 public:
     [[nodiscard]] virtual Mob *asMob() const = 0;
@@ -43,7 +43,7 @@ public:
 
     [[nodiscard]] virtual Location getLocation() const = 0;
 
-    [[nodiscard]] virtual Vector<float> getVelocity() const = 0;
+    [[nodiscard]] virtual Vector getVelocity() const = 0;
 
     [[nodiscard]] virtual bool isOnGround() const = 0;
 
@@ -100,9 +100,8 @@ public:
 
 }  // namespace endstone
 
-namespace fmt {
 template <>
-struct formatter<endstone::Actor> : formatter<string_view> {
+struct fmt::formatter<endstone::Actor> : formatter<string_view> {
     using Type = endstone::Actor;
 
     template <typename FormatContext>
@@ -110,8 +109,7 @@ struct formatter<endstone::Actor> : formatter<string_view> {
     {
         return fmt::format_to(ctx.out(), "{}", val.getName());
     }
-};
-}  // namespace fmt
+};  // namespace fmt
 ```
 
 

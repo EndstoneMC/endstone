@@ -47,7 +47,7 @@
         <location file="include/endstone/permissions/permission_attachment_info.h" line="81" column="26" bodyfile="include/endstone/permissions/permission_attachment_info.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PermissionAttachmentInfo_1ad177fca025ea8803a4e5eef40a96f50f" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::PermissionAttachmentInfo::value_</definition>
         <argsstring></argsstring>
         <name>value_</name>
@@ -81,7 +81,7 @@
           <declname>attachment</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+          <type>bool</type>
           <declname>value</declname>
         </param>
         <briefdescription>
@@ -147,7 +147,7 @@
         <location file="include/endstone/permissions/permission_attachment_info.h" line="63" column="27" bodyfile="include/endstone/permissions/permission_attachment_info.h" bodystart="63" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachmentInfo_1a86e337719e9f2625f7a8a1760c630ecb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">bool</ref></type>
+        <type>bool</type>
         <definition>bool endstone::PermissionAttachmentInfo::getValue</definition>
         <argsstring>() const</argsstring>
         <name>getValue</name>

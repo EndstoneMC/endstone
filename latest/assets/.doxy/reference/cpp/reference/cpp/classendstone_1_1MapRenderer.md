@@ -52,10 +52,10 @@ _Represents a renderer for a map._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**MapRenderer**](#function-maprenderer) ([**const**](classendstone_1_1Vector.md) [**bool**](classendstone_1_1Vector.md) is\_contextual=[**false**](classendstone_1_1Vector.md)) <br>_Initialize the map renderer base with the given contextual status._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**initialize**](#function-initialize) ([**MapView**](classendstone_1_1MapView.md) & map) <br>_Initialize this_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _for the given map._ |
-|  [**bool**](classendstone_1_1Vector.md) | [**isContextual**](#function-iscontextual) () const<br>_Get whether the renderer is contextual, i.e. has different canvases for different players._  |
-| virtual [**void**](classendstone_1_1Vector.md) | [**render**](#function-render) ([**MapView**](classendstone_1_1MapView.md) & map, [**MapCanvas**](classendstone_1_1MapCanvas.md) & canvas, [**Player**](classendstone_1_1Player.md) & player) = 0<br>_Render to the given map._  |
+|   | [**MapRenderer**](#function-maprenderer) (const bool is\_contextual=false) <br>_Initialize the map renderer base with the given contextual status._  |
+| virtual void | [**initialize**](#function-initialize) ([**MapView**](classendstone_1_1MapView.md) & map) <br>_Initialize this_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _for the given map._ |
+|  bool | [**isContextual**](#function-iscontextual) () const<br>_Get whether the renderer is contextual, i.e. has different canvases for different players._  |
+| virtual void | [**render**](#function-render) ([**MapView**](classendstone_1_1MapView.md) & map, [**MapCanvas**](classendstone_1_1MapCanvas.md) & canvas, [**Player**](classendstone_1_1Player.md) & player) = 0<br>_Render to the given map._  |
 | virtual  | [**~MapRenderer**](#function-maprenderer) () = default<br> |
 
 
@@ -95,7 +95,7 @@ _Represents a renderer for a map._
 _Initialize the map renderer base with the given contextual status._ 
 ```C++
 inline explicit endstone::MapRenderer::MapRenderer (
-    const  bool is_contextual=false
+    const bool is_contextual=false
 ) 
 ```
 

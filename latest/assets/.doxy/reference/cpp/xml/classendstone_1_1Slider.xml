@@ -19,7 +19,7 @@
         <location file="include/endstone/form/controls/slider.h" line="147" column="13" bodyfile="include/endstone/form/controls/slider.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1a533faf19fbbacf7836946a8acf67098f" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Slider::min_</definition>
         <argsstring></argsstring>
         <name>min_</name>
@@ -33,7 +33,7 @@
         <location file="include/endstone/form/controls/slider.h" line="148" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1a4e50207f6be325caace8ded16ac89433" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Slider::max_</definition>
         <argsstring></argsstring>
         <name>max_</name>
@@ -47,7 +47,7 @@
         <location file="include/endstone/form/controls/slider.h" line="149" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1afaa5db51fe0b1a6692163439a4c709b6" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Slider::step_</definition>
         <argsstring></argsstring>
         <name>step_</name>
@@ -61,7 +61,7 @@
         <location file="include/endstone/form/controls/slider.h" line="150" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1aa445d8623cf5c8e0e2fcdb09da3f5b4d" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+        <type>std::optional&lt; float &gt;</type>
         <definition>std::optional&lt;float&gt; endstone::Slider::default_value_</definition>
         <argsstring></argsstring>
         <name>default_value_</name>
@@ -101,19 +101,19 @@
           <declname>label</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>min</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>max</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>step</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+          <type>std::optional&lt; float &gt;</type>
           <declname>default_value</declname>
           <defval>std::nullopt</defval>
         </param>
@@ -175,7 +175,7 @@
         <location file="include/endstone/form/controls/slider.h" line="52" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="52" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a888e209ddf6c3e769b319e9728843a63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Slider::getMin</definition>
         <argsstring>() const</argsstring>
         <name>getMin</name>
@@ -199,7 +199,7 @@
         <name>setMin</name>
         <qualifiedname>endstone::Slider::setMin</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>min</declname>
         </param>
         <briefdescription>
@@ -224,7 +224,7 @@
         <location file="include/endstone/form/controls/slider.h" line="74" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="74" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a678964a83e4820871d4b99dd2c7a1b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Slider::getMax</definition>
         <argsstring>() const</argsstring>
         <name>getMax</name>
@@ -248,7 +248,7 @@
         <name>setMax</name>
         <qualifiedname>endstone::Slider::setMax</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>max</declname>
         </param>
         <briefdescription>
@@ -273,7 +273,7 @@
         <location file="include/endstone/form/controls/slider.h" line="96" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="96" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1acc5394db6cb1a0c2750702f2473163ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+        <type>float</type>
         <definition>float endstone::Slider::getStep</definition>
         <argsstring>() const</argsstring>
         <name>getStep</name>
@@ -297,7 +297,7 @@
         <name>setStep</name>
         <qualifiedname>endstone::Slider::setStep</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">float</ref></type>
+          <type>float</type>
           <declname>step</declname>
         </param>
         <briefdescription>
@@ -322,7 +322,7 @@
         <location file="include/endstone/form/controls/slider.h" line="118" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="118" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a40402a633fa41306b80e4da2cd84b99a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+        <type>std::optional&lt; float &gt;</type>
         <definition>std::optional&lt; float &gt; endstone::Slider::getDefaultValue</definition>
         <argsstring>() const</argsstring>
         <name>getDefaultValue</name>
@@ -346,7 +346,7 @@
         <name>setDefaultValue</name>
         <qualifiedname>endstone::Slider::setDefaultValue</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">float</ref> &gt;</type>
+          <type>std::optional&lt; float &gt;</type>
           <declname>default_value</declname>
         </param>
         <briefdescription>

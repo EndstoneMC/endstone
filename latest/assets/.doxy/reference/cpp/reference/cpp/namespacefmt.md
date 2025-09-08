@@ -94,5 +94,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/actor/actor.h`
+The documentation for this class was generated from the following file `include/endstone/block/block.h`
 

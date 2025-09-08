@@ -68,7 +68,7 @@
         <location file="include/endstone/util/image.h" line="225" column="10" bodyfile="include/endstone/util/image.h" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Image_1a432c905a350795e507e4c5ec20c46d3c" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Image::width_</definition>
         <argsstring></argsstring>
         <name>width_</name>
@@ -82,7 +82,7 @@
         <location file="include/endstone/util/image.h" line="226" column="9" bodyfile="include/endstone/util/image.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Image_1ac756b938c6e000492398ab4137e7a15a" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Image::height_</definition>
         <argsstring></argsstring>
         <name>height_</name>
@@ -118,15 +118,15 @@
         <name>Image</name>
         <qualifiedname>endstone::Image::Image</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref></type>
+          <type>const <ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref></type>
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>width</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>height</declname>
         </param>
         <briefdescription>
@@ -165,7 +165,7 @@
         <location file="include/endstone/util/image.h" line="52" column="14" bodyfile="include/endstone/util/image.h" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Image::getWidth</definition>
         <argsstring>() const</argsstring>
         <name>getWidth</name>
@@ -183,7 +183,7 @@
         <location file="include/endstone/util/image.h" line="69" column="10" bodyfile="include/endstone/util/image.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Image::getHeight</definition>
         <argsstring>() const</argsstring>
         <name>getHeight</name>
@@ -201,7 +201,7 @@
         <location file="include/endstone/util/image.h" line="79" column="10" bodyfile="include/endstone/util/image.h" bodystart="79" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+        <type>int</type>
         <definition>int endstone::Image::getDepth</definition>
         <argsstring>() const</argsstring>
         <name>getDepth</name>
@@ -225,11 +225,11 @@
         <name>getColor</name>
         <qualifiedname>endstone::Image::getColor</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -262,21 +262,21 @@
         <location file="include/endstone/util/image.h" line="111" column="12" bodyfile="include/endstone/util/image.h" bodystart="111" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">void</ref></type>
+        <type>void</type>
         <definition>void endstone::Image::setColor</definition>
         <argsstring>(const int x, const int y, const Color color)</argsstring>
         <name>setColor</name>
         <qualifiedname>endstone::Image::setColor</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
+          <type>const <ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
           <declname>color</declname>
         </param>
         <briefdescription>
@@ -341,19 +341,19 @@
         <name>Image</name>
         <qualifiedname>endstone::Image::Image</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref></type>
+          <type>const <ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref></type>
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>width</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>height</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string_view</type>
+          <type>const std::string_view</type>
           <declname>data</declname>
         </param>
         <briefdescription>
@@ -377,15 +377,15 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>width</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>height</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::vector&lt; <ref refid="classendstone_1_1Vector" kindref="compound">unsigned</ref> <ref refid="classendstone_1_1Vector" kindref="compound">char</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
           <declname>array</declname>
         </param>
         <briefdescription>
@@ -444,11 +444,11 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>width</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">int</ref></type>
+          <type>const int</type>
           <declname>height</declname>
         </param>
         <param>

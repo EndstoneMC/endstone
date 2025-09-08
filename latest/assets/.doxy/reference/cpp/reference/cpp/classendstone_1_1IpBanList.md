@@ -75,12 +75,12 @@ Inherits the following classes: [endstone::BanList](classendstone_1_1BanList.md)
 | ---: | :--- |
 | virtual [**IpBanEntry**](classendstone_1_1IpBanEntry.md) & | [**addBan**](#function-addban-12) (std::string address, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) override = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
 | virtual [**IpBanEntry**](classendstone_1_1IpBanEntry.md) & | [**addBan**](#function-addban-22) (std::string address, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) override = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**IpBanEntry**](classendstone_1_1IpBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-12) (std::string address) override const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by IP address._ |
+| virtual const [**IpBanEntry**](classendstone_1_1IpBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-12) (std::string address) override const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by IP address._ |
 | virtual [**IpBanEntry**](classendstone_1_1IpBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-22) (std::string address) override = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by IP address._ |
-| virtual std::vector&lt; [**const**](classendstone_1_1Vector.md) [**IpBanEntry**](classendstone_1_1IpBanEntry.md) \* &gt; | [**getEntries**](#function-getentries-12) () override const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
+| virtual std::vector&lt; const [**IpBanEntry**](classendstone_1_1IpBanEntry.md) \* &gt; | [**getEntries**](#function-getentries-12) () override const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
 | virtual std::vector&lt; [**IpBanEntry**](classendstone_1_1IpBanEntry.md) \* &gt; | [**getEntries**](#function-getentries-22) () override = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isBanned**](#function-isbanned) (std::string address) override const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
-| virtual [**void**](classendstone_1_1Vector.md) | [**removeBan**](#function-removeban) (std::string address) override = 0<br>_Removes the specified IP address from this list, therefore indicating a "not banned" status._  |
+| virtual bool | [**isBanned**](#function-isbanned) (std::string address) override const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
+| virtual void | [**removeBan**](#function-removeban) (std::string address) override = 0<br>_Removes the specified IP address from this list, therefore indicating a "not banned" status._  |
 |   | [**~IpBanList**](#function-ipbanlist) () override<br> |
 
 
@@ -90,14 +90,14 @@ See [endstone::BanList](classendstone_1_1BanList.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**T**](classendstone_1_1Vector.md) & | [**addBan**](classendstone_1_1BanList.md#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**T**](classendstone_1_1Vector.md) & | [**addBan**](classendstone_1_1BanList.md#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) \* | [**getBanEntry**](classendstone_1_1BanList.md#function-getbanentry-12) (std::string target) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
-| virtual [**T**](classendstone_1_1Vector.md) \* | [**getBanEntry**](classendstone_1_1BanList.md#function-getbanentry-22) (std::string target) = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
-| virtual std::vector&lt; [**const**](classendstone_1_1Vector.md) [**T**](classendstone_1_1Vector.md) \* &gt; | [**getEntries**](classendstone_1_1BanList.md#function-getentries-12) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
-| virtual std::vector&lt; [**T**](classendstone_1_1Vector.md) \* &gt; | [**getEntries**](classendstone_1_1BanList.md#function-getentries-22) () = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
-| virtual [**bool**](classendstone_1_1Vector.md) | [**isBanned**](classendstone_1_1BanList.md#function-isbanned) (std::string target) const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
-| virtual [**void**](classendstone_1_1Vector.md) | [**removeBan**](classendstone_1_1BanList.md#function-removeban) (std::string target) = 0<br>_Removes the specified target from this list, therefore indicating a "not banned" status._  |
+| virtual T & | [**addBan**](classendstone_1_1BanList.md#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual T & | [**addBan**](classendstone_1_1BanList.md#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual const T \* | [**getBanEntry**](classendstone_1_1BanList.md#function-getbanentry-12) (std::string target) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
+| virtual T \* | [**getBanEntry**](classendstone_1_1BanList.md#function-getbanentry-22) (std::string target) = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
+| virtual std::vector&lt; const T \* &gt; | [**getEntries**](classendstone_1_1BanList.md#function-getentries-12) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
+| virtual std::vector&lt; T \* &gt; | [**getEntries**](classendstone_1_1BanList.md#function-getentries-22) () = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
+| virtual bool | [**isBanned**](classendstone_1_1BanList.md#function-isbanned) (std::string target) const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
+| virtual void | [**removeBan**](classendstone_1_1BanList.md#function-removeban) (std::string target) = 0<br>_Removes the specified target from this list, therefore indicating a "not banned" status._  |
 | virtual  | [**~BanList**](classendstone_1_1BanList.md#function-banlist) () = default<br> |
 
 
@@ -246,7 +246,7 @@ Implements [*endstone::BanList::addBan*](classendstone_1_1BanList.md#function-ad
 
 _Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by IP address._
 ```C++
-virtual const  IpBanEntry * endstone::IpBanList::getBanEntry (
+virtual const IpBanEntry * endstone::IpBanList::getBanEntry (
     std::string address
 ) override const = 0
 ```
@@ -318,7 +318,7 @@ Implements [*endstone::BanList::getBanEntry*](classendstone_1_1BanList.md#functi
 
 _Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._
 ```C++
-virtual std::vector< const  IpBanEntry * > endstone::IpBanList::getEntries () override const = 0
+virtual std::vector< const IpBanEntry * > endstone::IpBanList::getEntries () override const = 0
 ```
 
 

@@ -53,9 +53,9 @@ _Represents an object with a text representation that can be translated by the M
 | Type | Name |
 | ---: | :--- |
 |   | [**Translatable**](#function-translatable) (std::string text, std::vector&lt; std::string &gt; params={}) <br> |
-|  [**bool**](classendstone_1_1Vector.md) | [**empty**](#function-empty) () const<br>_Check if the message to be translated is empty._  |
-|  [**const**](classendstone_1_1Vector.md) std::vector&lt; std::string &gt; & | [**getParameters**](#function-getparameters) () const<br>_Get the translation parameters._  |
-|  [**const**](classendstone_1_1Vector.md) std::string & | [**getText**](#function-gettext) () const<br>_Get the text to be translated._  |
+|  bool | [**empty**](#function-empty) () const<br>_Check if the message to be translated is empty._  |
+|  const std::vector&lt; std::string &gt; & | [**getParameters**](#function-getparameters) () const<br>_Get the translation parameters._  |
+|  const std::string & | [**getText**](#function-gettext) () const<br>_Get the text to be translated._  |
 
 
 

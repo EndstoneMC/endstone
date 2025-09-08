@@ -34,7 +34,7 @@
     </sectiondef>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ServerLoadEvent_1aadade0b34a9857cae4d6eca19401cfb6" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Vector" kindref="compound">const</ref> std::string</type>
+        <type>const std::string</type>
         <definition>const std::string endstone::ServerLoadEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
