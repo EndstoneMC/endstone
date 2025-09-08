@@ -28,8 +28,10 @@ from . import (
     scoreboard,
     util,
 )
+from ._version import __version__
 
 __all__: list[str] = [
+    "__version__",
     "__minecraft_version__",
     "ColorFormat",
     "EnchantmentRegistry",
