@@ -1,0 +1,114 @@
+"""
+Classes relating to the boss bars that appear at the top of the player's screen.
+"""
+
+from __future__ import annotations
+
+import enum
+import typing
+
+from endstone import Player
+
+__all__: list[str] = ["BarColor", "BarFlag", "BarStyle", "BossBar"]
+
+class BarColor(enum.Enum):
+    BLUE: typing.ClassVar[BarColor]  # value = <BarColor.BLUE: 1>
+    GREEN: typing.ClassVar[BarColor]  # value = <BarColor.GREEN: 3>
+    PINK: typing.ClassVar[BarColor]  # value = <BarColor.PINK: 0>
+    PURPLE: typing.ClassVar[BarColor]  # value = <BarColor.PURPLE: 5>
+    REBECCA_PURPLE: typing.ClassVar[BarColor]  # value = <BarColor.REBECCA_PURPLE: 6>
+    RED: typing.ClassVar[BarColor]  # value = <BarColor.RED: 2>
+    WHITE: typing.ClassVar[BarColor]  # value = <BarColor.WHITE: 7>
+    YELLOW: typing.ClassVar[BarColor]  # value = <BarColor.YELLOW: 4>
+
+class BarFlag(enum.Enum):
+    DARKEN_SKY: typing.ClassVar[BarFlag]  # value = <BarFlag.DARKEN_SKY: 0>
+
+class BarStyle(enum.Enum):
+    SEGMENTED_10: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_10: 2>
+    SEGMENTED_12: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_12: 3>
+    SEGMENTED_20: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_20: 4>
+    SEGMENTED_6: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_6: 1>
+    SOLID: typing.ClassVar[BarStyle]  # value = <BarStyle.SOLID: 0>
+
+class BossBar:
+    """
+    Represents a boss bar that is displayed to players.
+    """
+
+    def add_flag(self, flag: BarFlag) -> None:
+        """
+        Adds an optional flag to this boss bar.
+        """
+
+    def add_player(self, player: Player) -> None:
+        """
+        Adds the player to this boss bar causing it to display on their screen.
+        """
+
+    def has_flag(self, flag: BarFlag) -> bool:
+        """
+        Checks whether this boss bar has the passed flag set.
+        """
+
+    def remove_all(self) -> None:
+        """
+        Removes all players from this boss bar.
+        """
+
+    def remove_flag(self, flag: BarFlag) -> None:
+        """
+        Removes an existing flag on this boss bar.
+        """
+
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes the player from this boss bar causing it to be removed from their screen.
+        """
+
+    @property
+    def color(self) -> BarColor:
+        """
+        The color of this boss bar.
+        """
+
+    @color.setter
+    def color(self, arg1: BarColor) -> None: ...
+    @property
+    def is_visible(self) -> bool:
+        """
+        If the boss bar is displayed to attached players.
+        """
+
+    @is_visible.setter
+    def is_visible(self, arg1: bool) -> None: ...
+    @property
+    def players(self) -> list[Player]:
+        """
+        Returns all players viewing this boss bar.
+        """
+
+    @property
+    def progress(self) -> float:
+        """
+        The progress of the bar between 0.0 and 1.0.
+        """
+
+    @progress.setter
+    def progress(self, arg1: typing.SupportsFloat) -> None: ...
+    @property
+    def style(self) -> BarStyle:
+        """
+        The style of this boss bar.
+        """
+
+    @style.setter
+    def style(self, arg1: BarStyle) -> None: ...
+    @property
+    def title(self) -> str:
+        """
+        The title of this boss bar.
+        """
+
+    @title.setter
+    def title(self, arg1: str) -> None: ...

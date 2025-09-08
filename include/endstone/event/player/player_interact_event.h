@@ -47,7 +47,7 @@ public:
     ENDSTONE_EVENT(PlayerInteractEvent);
 
     PlayerInteractEvent(Player &player, Action action, ItemStack *item, Block *block_clicked, BlockFace block_face,
-                        const std::optional<Vector<float>> &clicked_position)
+                        const std::optional<Vector> &clicked_position)
         : Cancellable(player), action_(action), item_(item), block_clicked_(block_clicked), block_face_(block_face),
           clicked_position_(clicked_position)
     {
@@ -121,7 +121,7 @@ public:
      *
      * @return the clicked position.
      */
-    [[nodiscard]] std::optional<Vector<float>> getClickedPosition() const
+    [[nodiscard]] std::optional<Vector> getClickedPosition() const
     {
         return clicked_position_;
     }
@@ -131,7 +131,7 @@ private:
     Action action_;
     Block *block_clicked_;
     BlockFace block_face_;
-    std::optional<Vector<float>> clicked_position_;
+    std::optional<Vector> clicked_position_;
 };
 
 }  // namespace endstone

@@ -143,7 +143,7 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
             item_stack.get(),
             block.get(),
             static_cast<endstone::BlockFace>(event.block_face),
-            endstone::Vector<float>{event.face_location.x, event.face_location.y, event.face_location.z},
+            endstone::Vector{event.face_location.x, event.face_location.y, event.face_location.z},
         };
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {

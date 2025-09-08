@@ -25,7 +25,7 @@ PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
 {
     try {
         py::gil_scoped_acquire gil{};
-        auto module = py::module_::import("endstone._internal.plugin_loader");
+        auto module = py::module_::import("endstone.plugin.plugin_loader");
         auto cls = module.attr("PythonPluginLoader");
         obj_ = cls(std::ref(server));
     }
