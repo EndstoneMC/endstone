@@ -97,7 +97,7 @@ class Parser(
 def main():
     output_path = Path(__file__).resolve().parent.parent
     parser = Parser()
-    parser.set_pybind11_enum_locations({re.compile("RenderType"): "endstone._python"})
+    parser.set_pybind11_enum_locations({re.compile("RenderType"): "endstone._python.scoreboard"})
     printer = Printer(invalid_expr_as_ellipses=True)
     out_dir, sub_dir = to_output_and_subdir(
         output_dir=str(output_path),
