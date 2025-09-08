@@ -9,10 +9,10 @@ import enum
 import pathlib
 import typing
 
-import endstone._python
-import endstone._python.command
-import endstone._python.event
-import endstone._python.permissions
+from endstone import Logger, Server
+from endstone.command import Command, CommandExecutor
+from endstone.event import Event, EventPriority
+from endstone.permissions import Permissible, Permission, PermissionDefault, PermissionLevel
 
 __all__: list[str] = [
     "Plugin",
@@ -26,10 +26,26 @@ __all__: list[str] = [
     "ServicePriority",
 ]
 
-class Plugin(endstone._python.command.CommandExecutor):
+class Plugin(CommandExecutor):
     """
     Represents a Plugin
     """
+
+    version = None
+    api_version = None
+    description = None
+    load = None
+    authors = None
+    contributors = None
+    website = None
+    prefix = None
+    provides = None
+    depend = None
+    soft_depend = None
+    load_before = None
+    commands = None
+    default_permission = None
+    permissions = None
 
     def __init__(self) -> None: ...
     def _get_description(self) -> PluginDescription: ...
@@ -66,7 +82,7 @@ class Plugin(endstone._python.command.CommandExecutor):
         """
 
     @property
-    def logger(self) -> endstone._python.Logger:
+    def logger(self) -> Logger:
         """
         Returns the plugin logger associated with this server's logger.
         """
@@ -84,24 +100,32 @@ class Plugin(endstone._python.command.CommandExecutor):
         """
 
     @property
-    def server(self) -> endstone._python.Server:
+    def server(self) -> Server:
         """
         Returns the Server instance currently running this plugin
         """
 
-class PluginCommand(endstone._python.command.Command):
+    def register_events(self, listener: object) -> None: ...
+    @property
+    def config(self) -> dict: ...
+    def reload_config(self) -> dict: ...
+    def save_config(self) -> None: ...
+    def save_default_config(self) -> None: ...
+    def save_resources(self, path: str, replace: bool = False) -> None: ...
+
+class PluginCommand(Command):
     """
     Represents a Command belonging to a Plugin
     """
 
     @property
-    def executor(self) -> endstone._python.command.CommandExecutor:
+    def executor(self) -> CommandExecutor:
         """
         The CommandExecutor to run when parsing this command
         """
 
     @executor.setter
-    def executor(self, arg1: endstone._python.command.CommandExecutor) -> None: ...
+    def executor(self, arg1: CommandExecutor) -> None: ...
     @property
     def plugin(self) -> Plugin:
         """
@@ -118,7 +142,7 @@ class PluginDescription:
         name: str,
         version: str,
         description: str | None = None,
-        load: endstone._python.plugin.PluginLoadOrder | None = None,
+        load: PluginLoadOrder | None = None,
         authors: collections.abc.Sequence[str] | None = None,
         contributors: collections.abc.Sequence[str] | None = None,
         website: str | None = None,
@@ -127,9 +151,9 @@ class PluginDescription:
         depend: collections.abc.Sequence[str] | None = None,
         soft_depend: collections.abc.Sequence[str] | None = None,
         load_before: collections.abc.Sequence[str] | None = None,
-        default_permission: endstone._python.PermissionDefault | None = None,
-        commands: collections.abc.Sequence[endstone._python.command.Command] | None = None,
-        permissions: collections.abc.Sequence[endstone._python.permissions.Permission] | None = None,
+        default_permission: PermissionDefault | None = None,
+        commands: collections.abc.Sequence[Command] | None = None,
+        permissions: collections.abc.Sequence[Permission] | None = None,
         *args,
         **kwargs,
     ) -> None: ...
@@ -146,7 +170,7 @@ class PluginDescription:
         """
 
     @property
-    def commands(self) -> list[endstone._python.command.Command]:
+    def commands(self) -> list[Command]:
         """
         Gives the list of commands the plugin will register at runtime.
         """
@@ -158,7 +182,7 @@ class PluginDescription:
         """
 
     @property
-    def default_permission(self) -> endstone._python.PermissionDefault:
+    def default_permission(self) -> PermissionDefault:
         """
         Gives the default value of permissions registered for the plugin.
         """
@@ -200,7 +224,7 @@ class PluginDescription:
         """
 
     @property
-    def permissions(self) -> list[endstone._python.permissions.Permission]:
+    def permissions(self) -> list[Permission]:
         """
         Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.
         """
@@ -248,7 +272,7 @@ class PluginLoader:
     Represents a plugin loader, which handles direct access to specific types of plugins
     """
 
-    def __init__(self, server: endstone._python.Server) -> None: ...
+    def __init__(self, server: Server) -> None: ...
     def disable_plugin(self, plugin: Plugin) -> None:
         """
         Disables the specified plugin
@@ -276,7 +300,7 @@ class PluginLoader:
         """
 
     @property
-    def server(self) -> endstone._python.Server:
+    def server(self) -> Server:
         """
         Retrieves the Server object associated with the PluginLoader.
         """
@@ -286,7 +310,7 @@ class PluginManager:
     Represents a plugin manager that handles all plugins from the Server
     """
 
-    def call_event(self, event: endstone._python.event.Event) -> None:
+    def call_event(self, event: Event) -> None:
         """
         Calls an event which will be passed to plugins.
         """
@@ -316,26 +340,22 @@ class PluginManager:
         Enable all the loaded plugins
         """
 
-    def get_default_perm_subscriptions(
-        self, level: endstone._python.PermissionLevel
-    ) -> set[endstone._python.permissions.Permissible]:
+    def get_default_perm_subscriptions(self, level: PermissionLevel) -> set[Permissible]:
         """
         Gets a set containing all subscribed Permissibles to the given default list, by permission level.
         """
 
-    def get_default_permissions(
-        self, level: endstone._python.PermissionLevel
-    ) -> list[endstone._python.permissions.Permission]:
+    def get_default_permissions(self, level: PermissionLevel) -> list[Permission]:
         """
         Gets the default permissions for the given permission level.
         """
 
-    def get_permission(self, name: str) -> endstone._python.permissions.Permission:
+    def get_permission(self, name: str) -> Permission:
         """
         Gets a Permission from its fully qualified name.
         """
 
-    def get_permission_subscriptions(self, permission: str) -> set[endstone._python.permissions.Permissible]:
+    def get_permission_subscriptions(self, permission: str) -> set[Permissible]:
         """
         Gets a set containing all subscribed Permissibles to the given permission.
         """
@@ -374,7 +394,7 @@ class PluginManager:
         Loads the plugins in the list of the files
         """
 
-    def recalculate_permission_defaults(self, perm: endstone._python.permissions.Permission) -> None:
+    def recalculate_permission_defaults(self, perm: Permission) -> None:
         """
         Recalculates the defaults for the given Permission.
         """
@@ -382,8 +402,8 @@ class PluginManager:
     def register_event(
         self,
         name: str,
-        executor: collections.abc.Callable[[endstone._python.event.Event], None],
-        priority: endstone._python.EventPriority,
+        executor: collections.abc.Callable[[Event], None],
+        priority: EventPriority,
         plugin: Plugin,
         ignore_cancelled: bool,
     ) -> None:
@@ -392,7 +412,7 @@ class PluginManager:
         """
 
     @typing.overload
-    def remove_permission(self, perm: endstone._python.permissions.Permission) -> None:
+    def remove_permission(self, perm: Permission) -> None:
         """
         Removes a Permission registration from this plugin manager by permission object.
         """
@@ -403,34 +423,28 @@ class PluginManager:
         Removes a Permission registration from this plugin manager by name.
         """
 
-    def subscribe_to_default_perms(
-        self, level: endstone._python.PermissionLevel, permissible: endstone._python.permissions.Permissible
-    ) -> None:
+    def subscribe_to_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
         Subscribes to the given Default permissions by permission level.
         """
 
-    def subscribe_to_permission(self, permission: str, permissible: endstone._python.permissions.Permissible) -> None:
+    def subscribe_to_permission(self, permission: str, permissible: Permissible) -> None:
         """
         Subscribes the given Permissible for information about the requested Permission.
         """
 
-    def unsubscribe_from_default_perms(
-        self, level: endstone._python.PermissionLevel, permissible: endstone._python.permissions.Permissible
-    ) -> None:
+    def unsubscribe_from_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
         Unsubscribes from the given Default permissions by permission level.
         """
 
-    def unsubscribe_from_permission(
-        self, permission: str, permissible: endstone._python.permissions.Permissible
-    ) -> None:
+    def unsubscribe_from_permission(self, permission: str, permissible: Permissible) -> None:
         """
         Unsubscribes the given Permissible for information about the requested Permission.
         """
 
     @property
-    def permissions(self) -> set[endstone._python.permissions.Permission]:
+    def permissions(self) -> set[Permission]:
         """
         Gets a set of all registered permissions.
         """
