@@ -11,7 +11,6 @@ from endstone.util import Location
 
 __all__: list[str] = ["Actor", "Item", "Mob"]
 
-
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -63,7 +62,6 @@ class Actor(CommandSender):
 
     @health.setter
     def health(self, arg1: typing.SupportsInt) -> None: ...
-
     @property
     def id(self) -> int:
         """
@@ -96,7 +94,6 @@ class Actor(CommandSender):
 
     @is_name_tag_always_visible.setter
     def is_name_tag_always_visible(self, arg1: bool) -> None: ...
-
     @property
     def is_name_tag_visible(self) -> bool:
         """
@@ -105,7 +102,6 @@ class Actor(CommandSender):
 
     @is_name_tag_visible.setter
     def is_name_tag_visible(self, arg1: bool) -> None: ...
-
     @property
     def is_on_ground(self) -> bool:
         """
@@ -144,7 +140,6 @@ class Actor(CommandSender):
 
     @name_tag.setter
     def name_tag(self, arg1: str) -> None: ...
-
     @property
     def runtime_id(self) -> int:
         """
@@ -159,7 +154,6 @@ class Actor(CommandSender):
 
     @score_tag.setter
     def score_tag(self, arg1: str) -> None: ...
-
     @property
     def scoreboard_tags(self) -> list[str]:
         """
@@ -178,7 +172,6 @@ class Actor(CommandSender):
         Gets this actor's current velocity.
         """
 
-
 class Item(Actor):
     """
     Represents a base actor in the level.
@@ -192,7 +185,6 @@ class Item(Actor):
 
     @is_unlimited_lifetime.setter
     def is_unlimited_lifetime(self, arg1: bool) -> None: ...
-
     @property
     def item_stack(self) -> ItemStack:
         """
@@ -201,7 +193,6 @@ class Item(Actor):
 
     @item_stack.setter
     def item_stack(self, arg1: ItemStack) -> None: ...
-
     @property
     def pickup_delay(self) -> int:
         """
@@ -210,7 +201,6 @@ class Item(Actor):
 
     @pickup_delay.setter
     def pickup_delay(self, arg1: typing.SupportsInt) -> None: ...
-
     @property
     def thrower(self) -> int | None:
         """
@@ -219,7 +209,6 @@ class Item(Actor):
 
     @thrower.setter
     def thrower(self, arg1: typing.SupportsInt | None) -> None: ...
-
 
 class Mob(Actor):
     """

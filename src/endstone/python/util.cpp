@@ -19,17 +19,7 @@
 namespace py = pybind11;
 
 namespace endstone::python {
-namespace {
-Location create_location(float x, float y, float z, float pitch, float yaw, Dimension *dimension)
-{
-    if (dimension == nullptr) {
-        return Location(x, y, z, pitch, yaw);
-    }
-    return Location(x, y, z, pitch, yaw, *dimension);
-}
-}  // namespace
-
-void init_util(py::module &m)
+void init_util(py::module &m, py::class_<Vector> &vector)
 {
     py::class_<SocketAddress>(m, "SocketAddress", "Represents an IP Socket Address (hostname + port number).")
         .def(py::init<>())
@@ -43,8 +33,7 @@ void init_util(py::module &m)
         .def("__str__",
              [](const SocketAddress &self) { return self.getHostname() + ":" + std::to_string(self.getPort()); });
 
-    py::class_<Vector>(m, "Vector", "Represents a 3-dimensional vector.")
-        .def(py::init<>())
+    vector.def(py::init<>())
         .def(py::init<float, float, float>(), py::arg("x"), py::arg("y"), py::arg("z"))
         .def_property("x", &Vector::getX, &Vector::setX, "The X component of the vector")
         .def_property("y", &Vector::getY, &Vector::setY, "The Y component of the vector")
@@ -73,31 +62,6 @@ void init_util(py::module &m)
         .def("distance", &Vector::distance, py::arg("other"), "The distance between this Vector and another")
         .def("distance_squared", &Vector::distanceSquared, py::arg("other"),
              "The squared distance between this Vector and another");
-
-    auto location_to_string = [](const Location &l) {
-        return fmt::format("Location(dimension={}, x={}, y={}, z={}, pitch={}, yaw={})",
-                           l.getDimension() ? l.getDimension()->getName() : "None", l.getX(), l.getY(), l.getZ(),
-                           l.getPitch(), l.getYaw());
-    };
-    py::class_<Location, Vector>(m, "Location", "Represents a 3-dimensional location in a dimension within a level.")
-        .def(py::init(&create_location), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0,
-             py::arg("yaw") = 0.0, py::arg("dimension") = nullptr)
-        .def_property("pitch", &Location::getPitch, &Location::setPitch,
-                      "The pitch of this location, measured in degrees.")
-        .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.")
-        .def_property("dimension", &Location::getDimension, &Location::setDimension, py::return_value_policy::reference,
-                      "The Dimension that contains this position")
-        .def_property_readonly(
-            "block_x", &Location::getBlockX,
-            "Gets the floored value of the X component, indicating the block that this location is contained with.")
-        .def_property_readonly(
-            "block_y", &Location::getBlockY,
-            "Gets the floored value of the Y component, indicating the block that this location is contained with.")
-        .def_property_readonly(
-            "block_z", &Location::getBlockZ,
-            "Gets the floored value of the Z component, indicating the block that this location is contained with.")
-        .def("__repr__", location_to_string)
-        .def("__str__", location_to_string);
 }
 
 }  // namespace endstone::python

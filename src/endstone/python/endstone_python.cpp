@@ -36,7 +36,8 @@ void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
-void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension);
+void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension,
+                py::class_<Location, Vector> &location);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission);
@@ -47,7 +48,7 @@ void init_registry(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
 void init_server(py::class_<Server> &server);
-void init_util(py::module_ &);
+void init_util(py::module_ &, py::class_<Vector> &);
 
 PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
@@ -137,6 +138,9 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto item_stack = py::class_<ItemStack>(m_inventory, "ItemStack", "Represents a stack of items.");
     auto level = py::class_<Level>(m_level, "Level");
     auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a Level.");
+    auto vector = py::class_<Vector>(m_util, "Vector", "Represents a 3-dimensional vector.");
+    auto location = py::class_<Location, Vector>(m_level, "Location",
+                                                 "Represents a 3-dimensional location in a dimension within a level.");
 
     init_color_format(m);
     init_damage(m_damage);
@@ -146,13 +150,13 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_form(m_form);
     init_enchantments(m_enchantments);
     init_inventory(m_inventory, item_stack);
-    init_util(m_util);
+    init_util(m_util, vector);
     init_ban(m_ban);
     init_map(m_map);
     init_scoreboard(m_scoreboard);
     init_block(m_block, block);
     init_actor(m_actor, actor, mob);
-    init_level(m_level, level, dimension);
+    init_level(m_level, level, dimension, location);
     init_player(m, offline_player, player);
     init_boss(m_boss);
     init_command(m_command, command_sender);
