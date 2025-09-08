@@ -1,4 +1,18 @@
-class Plugin(endstone_python.Plugin):
+import inspect
+import os
+import shutil
+from pathlib import Path
+
+import lazy_loader as lazy
+import tomlkit
+from importlib_resources import as_file, files
+
+from endstone._python.plugin import Plugin as _Plugin
+from endstone._python.plugin import PluginDescription
+from endstone.event import Event
+
+
+class Plugin(_Plugin):
     # Metadata
     name = None
     version = None
@@ -26,8 +40,8 @@ class Plugin(endstone_python.Plugin):
     permissions = None
 
     def __init__(self):
-        endstone_python.Plugin.__init__(self)
-        self._description: typing.Optional[PluginDescription] = None
+        _Plugin.__init__(self)
+        self._description: PluginDescription | None = None
         self._config = None
         self._listeners = []
 
@@ -105,3 +119,21 @@ class Plugin(endstone_python.Plugin):
         else:
             self.logger.warning(f"Could not save {out_path.name} to {out_path}: file already exists.")
             return
+
+
+__getattr__, __dir__, __all__ = lazy.attach(
+    "endstone._python",
+    submod_attrs={
+        "plugin": [
+            "PluginCommand",
+            "PluginLoadOrder",
+            "PluginLoader",
+            "PluginManager",
+            "Service",
+            "ServiceManager",
+            "ServicePriority",
+        ]
+    },
+)
+
+__all__.append("Plugin", "PluginDescription")
