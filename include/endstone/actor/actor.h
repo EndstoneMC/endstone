@@ -16,11 +16,11 @@
 
 #include "endstone/command/command_sender.h"
 #include "endstone/level/location.h"
-#include "endstone/level/position.h"
 
 namespace endstone {
 class Item;
 class Mob;
+class Level;
 /**
  * @brief Represents a base actor in the level.
  */
@@ -68,7 +68,7 @@ public:
      *
      * @return Current traveling velocity of this actor
      */
-    [[nodiscard]] virtual Vector<float> getVelocity() const = 0;
+    [[nodiscard]] virtual Vector getVelocity() const = 0;
 
     /**
      * Returns true if the actor is supported by a block.
@@ -260,9 +260,8 @@ public:
 
 }  // namespace endstone
 
-namespace fmt {
 template <>
-struct formatter<endstone::Actor> : formatter<string_view> {
+struct fmt::formatter<endstone::Actor> : formatter<string_view> {
     using Type = endstone::Actor;
 
     template <typename FormatContext>
@@ -270,5 +269,4 @@ struct formatter<endstone::Actor> : formatter<string_view> {
     {
         return fmt::format_to(ctx.out(), "{}", val.getName());
     }
-};
-}  // namespace fmt
+};  // namespace fmt

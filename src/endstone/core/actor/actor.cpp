@@ -130,7 +130,7 @@ Location EndstoneActor::getLocation() const
     return {x, y, z, pitch, yaw, getDimension()};
 }
 
-Vector<float> EndstoneActor::getVelocity() const
+Vector EndstoneActor::getVelocity() const
 {
     if (getActor().hasCategory(ActorCategory::Mob) || getActor().hasCategory(ActorCategory::Ridable)) {
         auto *actor = getActor().getVehicle();

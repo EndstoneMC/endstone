@@ -241,8 +241,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                     item.get(),
                     block.get(),
                     static_cast<BlockFace>(action.facing),
-                    endstone::Vector<float>{static_cast<float>(action.pos.x), static_cast<float>(action.pos.y),
-                                            static_cast<float>(action.pos.z)},
+                    Vector{action.pos.x, action.pos.y, action.pos.z},
                 };
                 getServer().getPluginManager().callEvent(e);
                 if (e.isCancelled()) {
