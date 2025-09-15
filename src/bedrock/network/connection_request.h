@@ -41,7 +41,7 @@ public:
     [[nodiscard]] std::string getClientPlatformOnlineId() const;
     [[nodiscard]] std::string getClientPlatformOfflineId() const;
     [[nodiscard]] std::string getSkinId() const;
-    [[nodiscard]] std::string getPlayFabIdUnverified() const;
+    [[nodiscard]] std::string getPlayFabId() const;
     [[nodiscard]] std::string getCapeId() const;
     [[nodiscard]] std::vector<unsigned char> getSkinData() const;
     [[nodiscard]] std::string getSkinDataAsString() const;
@@ -60,6 +60,8 @@ public:
     [[nodiscard]] MinEngineVersion getSkinGeometryMinEngineVersion() const;
     [[nodiscard]] std::string getSkinAnimationData() const;
     [[nodiscard]] std::string getEduTokenChain() const;
+    [[nodiscard]] std::string getJoinerToHostNonce() const;
+    [[nodiscard]] std::string getHostToJoinerNonce();
     // edu::Role getADRole() const;
     [[nodiscard]] bool isEduMode() const;
     [[nodiscard]] bool isEditorMode() const;
@@ -76,7 +78,6 @@ public:
     [[nodiscard]] bool isOverrideSkin() const;
     [[nodiscard]] bool isCapeOnClassicSkin() const;
     [[nodiscard]] bool isVerified() const;
-    bool verify(const std::vector<std::string> &, int64_t, bool);
     bool verifySelfSigned(bool);
     [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
     [[nodiscard]] PlatformType getPlatformType() const;
