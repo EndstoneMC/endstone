@@ -22,8 +22,7 @@
 class RakNetConnector : public RemoteConnector {
 
 public:
-    class ConnectionCallbacks : public Connector::ConnectionCallbacks {
-    public:
+    struct ConnectionCallbacks : Connector::ConnectionCallbacks {
         virtual void onAllConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
         virtual void onAllRemoteConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
         virtual void onOutgoingConnectionFailed(Connection::DisconnectFailReason, const std::string &) = 0;

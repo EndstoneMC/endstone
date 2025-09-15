@@ -253,8 +253,8 @@ enum class MinecraftPacketIds : int {
     PlayerUpdateEntityOverridesPacket = 325,
     PlayerLocation = 326,
     ClientboundControlSchemeSetPacket = 327,
-    ServerScriptDebugDrawerPacket = 328,
-    EndId = 329,
+    ServerboundPackSettingChangePacket = 329,
+    EndId = 330,
 };
 
 class NetEventCallback;
@@ -304,6 +304,7 @@ public:
     [[nodiscard]] virtual bool isValid() const;
     [[nodiscard]] virtual SerializationMode getSerializationMode() const;
     virtual void setSerializationMode(SerializationMode);
+    virtual std::string toString() const;
 
     Bedrock::Result<void> readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
                                        const SubClientId &sub_id);
