@@ -20,18 +20,18 @@
 #include "bedrock/resources/pack_access_strategy.h"
 #include "bedrock/resources/resource_signature.h"
 
-class ResourcePack : public Bedrock::EnableNonOwnerReferences {
+class ResourcePack {
 public:
     [[nodiscard]] PackManifest &getManifest() const;
 
 private:
     bool hidden_;
     bool error_;
-    Bedrock::NotNullNonOwnerPtr<Pack> pack_;
+    NotNullPack pack_;
     std::unique_ptr<PackAccessStrategy> subpack_access_strategy_;
     PackReport pack_report_;
-    std::vector<std::unique_ptr<Pack>> sub_packs_;
-    std::vector<std::unique_ptr<ResourcePack>> sub_resource_packs_;
+    std::vector<std::shared_ptr<Pack>> sub_packs_;
+    std::vector<std::shared_ptr<ResourcePack>> sub_resource_packs_;
     Core::HeapPathBuffer icon_path_;
     double load_time_;
     bool is_base_game_pack_;
@@ -39,3 +39,5 @@ private:
     ResourceSignature resource_signature_;
     bool is_marked_for_removal_;
 };
+
+using NotNullResourcePack = gsl::not_null<std::shared_ptr<ResourcePack>>;

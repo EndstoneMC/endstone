@@ -16,7 +16,7 @@
 
 #include "bedrock/symbol.h"
 
-PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool /*is_dependent*/,
+PackInstance::PackInstance(NotNullResourcePack pack, int subpack_index, bool /*is_dependent*/,
                            PackSettings *pack_settings)
     : pack_(pack), subpack_index_(subpack_index), pack_settings_(pack_settings)
 {
@@ -25,7 +25,7 @@ PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int s
 const PackManifest &PackInstance::getManifest() const
 {
     static PackManifest empty_manifest(ManifestType::Pack);
-    if (!pack_) {
+    if (!pack_.get()) {
         return empty_manifest;
     }
     return pack_->getManifest();

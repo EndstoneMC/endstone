@@ -34,8 +34,7 @@ public:
 
 class PackInstance {
 public:
-    PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool is_dependent,
-                 PackSettings *pack_settings);
+    PackInstance(NotNullResourcePack pack, int subpack_index, bool is_dependent, PackSettings *pack_settings);
 
     [[nodiscard]] const PackManifest &getManifest() const;
 
@@ -43,7 +42,7 @@ public:
 
 private:
     PackSettings *pack_settings_;
-    Bedrock::NonOwnerPointer<ResourcePack> pack_;
+    NotNullResourcePack pack_;
     PackStats stats_{};
     int subpack_index_;
 };

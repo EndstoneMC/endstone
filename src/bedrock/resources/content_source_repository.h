@@ -12,16 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/resources/resource_pack_repository.h"
+#pragma once
+#include "bedrock/core/resource/resource_helper.h"
+#include "bedrock/resources/invalid_packs_filter_group.h"
+#include "bedrock/resources/resource_pack_stack.h"
 
-#include "endstone/core/packs/endstone_pack_source.h"
-#include "endstone/core/server.h"
-#include "endstone/runtime/hook.h"
-
-void ResourcePackRepository::_initializePackSource()
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
-    auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
-    server.setResourcePackRepository(*this);
-    sources_->pack_source->addPackSource(&server.getPackSource());
-}
+class IContentSourceRepository {
+public:
+    virtual ~IContentSourceRepository();
+    virtual void deletePackFiles(const ResourceLocation &) {}
+    virtual void postDeletePack(const ResourceLocation &) = 0;
+    virtual std::vector<ResourceLocation> getInvalidPacks(const InvalidPacksFilterGroup &) = 0;
+    virtual ResourcePackStack createStack(const std::vector<PackInstanceId> &) = 0;
+};

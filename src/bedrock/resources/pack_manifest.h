@@ -74,6 +74,7 @@ private:
     uint64_t size_;
     std::string last_modified_date_;
     std::vector<std::string> language_codes_for_pack_keywords_;
+    bool fails_game_version_match_;
     PackManifestFormat format_version_;
     PackManifestFormat original_format_version_;
     std::string name_;
