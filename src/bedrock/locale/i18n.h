@@ -18,6 +18,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <optional>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/threading/async.h"
@@ -40,8 +41,9 @@ public:
     virtual void loadAllLanguages(ResourcePackManager &) = 0;
     virtual std::vector<std::string> getLanguageCodesFromPack(PackAccessStrategy const &) = 0;
     virtual void loadLanguageKeywordsFromPack(PackManifest const &, PackAccessStrategy const &) = 0;
-    virtual void loadLanguageKeywordsFromPack(PackManifest const &, PackAccessStrategy const &,
-                                              std::vector<std::string> const &) = 0;
+    virtual void loadLanguageKeywordsFromPack(const PackManifest &, const PackAccessStrategy &,
+                                              const std::vector<std::string> &,
+                                              const std::optional<std::vector<std::string>> &) = 0;
     virtual void appendLanguageStringsFromPack(
         PackManifest const &, std::multimap<std::string, std::pair<std::string, std::string>> const &) = 0;
     virtual std::unordered_map<std::string, std::string> getLanguageKeywordsFromPack(PackManifest const &,
