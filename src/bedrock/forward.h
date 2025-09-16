@@ -322,6 +322,9 @@ class ScriptPropertyRegistry;
 namespace ResourcePackPathLifetimeHelpers {
 class ResourcePackPathCache {};
 }  // namespace ResourcePackPathLifetimeHelpers
+namespace VoxelShapes {
+class VoxelShapeRegistry;
+}
 
 namespace br::spawn {
 class EntityTypeCache;

@@ -87,6 +87,7 @@ public:
     virtual ActorSpan fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
     virtual ActorSpan fetchEntities(ActorType, AABB const &, Actor const *, std::function<bool(Actor *)>) = 0;
     virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
+    virtual bool removeBlock(const BlockPos &) = 0;
     [[nodiscard]] virtual Height getMinHeight() const = 0;
     [[nodiscard]] virtual Height getMaxHeight() const = 0;
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
@@ -118,7 +119,6 @@ public:
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
     virtual void updateCheckForValidityState(bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
-    virtual bool removeBlock(BlockPos const &) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
 };
 

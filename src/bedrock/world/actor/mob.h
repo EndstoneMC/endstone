@@ -63,7 +63,7 @@ public:
     virtual void setDamagedArmor(ArmorSlot, ItemStack const &) = 0;
     virtual void sendArmorDamage(std::bitset<4>) = 0;
     virtual void sendArmor(std::bitset<4>) = 0;
-    [[nodiscard]] virtual std::vector<ItemStack const *> getAllHand() const = 0;
+    [[nodiscard]] virtual std::vector<ItemStack const *> getAllHandEquipment() const = 0;
     [[nodiscard]] virtual std::vector<ItemStack const *> getAllEquipment() const = 0;
     virtual void dropEquipmentOnDeath(ActorDamageSource const &, int) = 0;
     virtual void dropEquipmentOnDeath() = 0;

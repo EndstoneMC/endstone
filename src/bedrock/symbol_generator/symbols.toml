@@ -12,7 +12,7 @@ version = "1.21.102"
 # BlockType
 "?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z" = 58575200
 # BlockTypeRegistry
-"?forEachBlock@BlockTypeRegistry@@QEAAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 60625808
+"?forEachBlockType@BlockTypeRegistry@@QEAAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 60625808
 # CampfireBlockActor
 "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 60379872
 # Command
@@ -118,7 +118,7 @@ version = "1.21.102"
 # BlockType
 "_ZNK9BlockType25tryGetStateFromLegacyDataEt" = 156141456
 # BlockTypeRegistry
-"_ZN17BlockTypeRegistry12forEachBlockEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 160203856
+"_ZN17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 160203856
 # CampfireBlockActor
 "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 163624896
 # Command

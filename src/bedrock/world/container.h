@@ -124,7 +124,7 @@ public:
     virtual Bedrock::PubSub::Connector<void()> *getContainerRemovedConnector();
     [[nodiscard]] virtual bool hasRemovedSubscribers() const;
     [[nodiscard]] virtual ItemStack const &getItem(int) const = 0;
-    virtual bool hasRoomForItem(ItemStack const &);
+    [[nodiscard]] virtual bool hasRoomForItem(ItemStack const &) const;
     virtual bool addItem(ItemStack &);
     virtual bool addItemWithForceBalance(ItemStack &);
     virtual bool addItemToFirstEmptySlot(ItemStack const &);

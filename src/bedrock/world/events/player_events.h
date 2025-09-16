@@ -96,6 +96,10 @@ struct PlayerShootArrowEvent {
     ItemStack weapon_item;
     ItemStack arrow_item;
 };
+struct PlayerSwingStartEvent {
+    WeakEntityRef player;
+    ItemStack held_item;
+};
 struct PlayerInitialSpawnEvent {
     WeakRef<EntityContext> player;
 };

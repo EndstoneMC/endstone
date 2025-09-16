@@ -346,7 +346,7 @@ public:
     [[nodiscard]] ActorUniqueID getLastHurtByPlayerID() const;
     void setLastHurtByPlayer(Player *);
     Mob *getLastHurtMob();
-    void setLastHurtMob(Actor *);
+    void setLastHurtMob(const Mob &target);
     int getLastHurtMobTimestamp();
     int getLastHurtByMobTime();
     int getLastHurtByMobTimestamp();
