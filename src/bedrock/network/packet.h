@@ -253,6 +253,7 @@ enum class MinecraftPacketIds : int {
     PlayerUpdateEntityOverridesPacket = 325,
     PlayerLocation = 326,
     ClientboundControlSchemeSetPacket = 327,
+    ServerScriptDebugDrawerPacket = 328,
     ServerboundPackSettingChangePacket = 329,
     EndId = 330,
 };
