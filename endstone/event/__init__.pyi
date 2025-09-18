@@ -4,7 +4,6 @@ Classes relating to handling triggered code executions.
 
 from __future__ import annotations
 
-import collections.abc
 import enum
 import typing
 
@@ -97,7 +96,7 @@ class ActorDamageEvent(MobEvent, Cancellable):
         """
 
     @damage.setter
-    def damage(self, arg1: typing.SupportsFloat) -> None: ...
+    def damage(self, arg1: float) -> None: ...
     @property
     def damage_source(self) -> DamageSource:
         """
@@ -138,7 +137,7 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
         """
 
     @block_list.setter
-    def block_list(self, arg1: collections.abc.Sequence[Block]) -> None: ...
+    def block_list(self, arg1: list[Block]) -> None: ...
     @property
     def location(self) -> Location:
         """
@@ -966,7 +965,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         """
 
     @local_port.setter
-    def local_port(self, arg1: typing.SupportsInt) -> None: ...
+    def local_port(self, arg1: int) -> None: ...
     @property
     def local_port_v6(self) -> int:
         """
@@ -974,7 +973,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         """
 
     @local_port_v6.setter
-    def local_port_v6(self, arg1: typing.SupportsInt) -> None: ...
+    def local_port_v6(self, arg1: int) -> None: ...
     @property
     def max_players(self) -> int:
         """
@@ -982,7 +981,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         """
 
     @max_players.setter
-    def max_players(self, arg1: typing.SupportsInt) -> None: ...
+    def max_players(self, arg1: int) -> None: ...
     @property
     def minecraft_version_network(self) -> str:
         """
@@ -1012,7 +1011,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         """
 
     @num_players.setter
-    def num_players(self, arg1: typing.SupportsInt) -> None: ...
+    def num_players(self, arg1: int) -> None: ...
     @property
     def remote_host(self) -> str:
         """

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import collections.abc
-import typing
 
 from endstone import Player
 from endstone.lang import Translatable
@@ -30,8 +29,8 @@ class ActionForm:
         self,
         title: str | Translatable = "",
         content: str | Translatable = "",
-        buttons: collections.abc.Sequence[Button | Divider | Header | Label] | None = None,
-        on_submit: collections.abc.Callable[[Player, typing.SupportsInt], None] = None,
+        buttons: list[Button | Divider | Header | Label] | None = None,
+        on_submit: collections.abc.Callable[[Player, int], None] = None,
         on_close: collections.abc.Callable[[Player], None] = None,
     ) -> None: ...
     def add_button(
@@ -78,7 +77,7 @@ class ActionForm:
     @controls.setter
     def controls(
         self,
-        arg1: collections.abc.Sequence[Button | Divider | Header | Label],
+        arg1: list[Button | Divider | Header | Label],
     ) -> ActionForm: ...
     @property
     def on_close(self) -> collections.abc.Callable[[Player], None]:
@@ -89,13 +88,13 @@ class ActionForm:
     @on_close.setter
     def on_close(self, arg1: collections.abc.Callable[[Player], None]) -> ActionForm: ...
     @property
-    def on_submit(self) -> collections.abc.Callable[[Player, typing.SupportsInt], None]:
+    def on_submit(self) -> collections.abc.Callable[[Player, int], None]:
         """
         Gets or sets the on submit callback.
         """
 
     @on_submit.setter
-    def on_submit(self, arg1: collections.abc.Callable[[Player, typing.SupportsInt], None]) -> ActionForm: ...
+    def on_submit(self, arg1: collections.abc.Callable[[Player, int], None]) -> ActionForm: ...
     @property
     def title(self) -> str | Translatable:
         """
@@ -156,8 +155,8 @@ class Dropdown:
     def __init__(
         self,
         label: str | Translatable = "",
-        options: collections.abc.Sequence[str] | None = None,
-        default_index: typing.SupportsInt | None = None,
+        options: list[str] | None = None,
+        default_index: int | None = None,
     ) -> None: ...
     def add_option(self, option: str) -> Dropdown:
         """
@@ -171,7 +170,7 @@ class Dropdown:
         """
 
     @default_index.setter
-    def default_index(self, arg1: typing.SupportsInt | None) -> Dropdown: ...
+    def default_index(self, arg1: int | None) -> Dropdown: ...
     @property
     def label(self) -> str | Translatable:
         """
@@ -187,7 +186,7 @@ class Dropdown:
         """
 
     @options.setter
-    def options(self, arg1: collections.abc.Sequence[str]) -> Dropdown: ...
+    def options(self, arg1: list[str]) -> Dropdown: ...
 
 class Header:
     """
@@ -230,7 +229,7 @@ class MessageForm:
         content: str | Translatable = "",
         button1: str | Translatable = "",
         button2: str | Translatable = "",
-        on_submit: collections.abc.Callable[[Player, typing.SupportsInt], None] = None,
+        on_submit: collections.abc.Callable[[Player, int], None] = None,
         on_close: collections.abc.Callable[[Player], None] = None,
     ) -> None: ...
     @property
@@ -266,13 +265,13 @@ class MessageForm:
     @on_close.setter
     def on_close(self, arg1: collections.abc.Callable[[Player], None]) -> MessageForm: ...
     @property
-    def on_submit(self) -> collections.abc.Callable[[Player, typing.SupportsInt], None]:
+    def on_submit(self) -> collections.abc.Callable[[Player, int], None]:
         """
         Gets or sets the on submit callback.
         """
 
     @on_submit.setter
-    def on_submit(self, arg1: collections.abc.Callable[[Player, typing.SupportsInt], None]) -> MessageForm: ...
+    def on_submit(self, arg1: collections.abc.Callable[[Player, int], None]) -> MessageForm: ...
     @property
     def title(self) -> str | Translatable:
         """
@@ -290,10 +289,7 @@ class ModalForm:
     def __init__(
         self,
         title: str | Translatable = "",
-        controls: collections.abc.Sequence[
-            Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header
-        ]
-        | None = None,
+        controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header] | None = None,
         submit_button: str | Translatable | None = None,
         icon: str | None = None,
         on_submit: collections.abc.Callable[[Player, str], None] = None,
@@ -318,7 +314,7 @@ class ModalForm:
     @controls.setter
     def controls(
         self,
-        arg1: collections.abc.Sequence[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header],
+        arg1: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header],
     ) -> ModalForm: ...
     @property
     def icon(self) -> str | None:
@@ -369,10 +365,10 @@ class Slider:
     def __init__(
         self,
         label: str | Translatable = "",
-        min: typing.SupportsFloat = 0,
-        max: typing.SupportsFloat = 100,
-        step: typing.SupportsFloat = 20,
-        default_value: typing.SupportsFloat | None = None,
+        min: float = 0,
+        max: float = 100,
+        step: float = 20,
+        default_value: float | None = None,
     ) -> None: ...
     @property
     def default_value(self) -> float | None:
@@ -381,7 +377,7 @@ class Slider:
         """
 
     @default_value.setter
-    def default_value(self, arg1: typing.SupportsFloat | None) -> Slider: ...
+    def default_value(self, arg1: float | None) -> Slider: ...
     @property
     def label(self) -> str | Translatable:
         """
@@ -397,7 +393,7 @@ class Slider:
         """
 
     @max.setter
-    def max(self, arg1: typing.SupportsFloat) -> Slider: ...
+    def max(self, arg1: float) -> Slider: ...
     @property
     def min(self) -> float:
         """
@@ -405,7 +401,7 @@ class Slider:
         """
 
     @min.setter
-    def min(self, arg1: typing.SupportsFloat) -> Slider: ...
+    def min(self, arg1: float) -> Slider: ...
     @property
     def step(self) -> float:
         """
@@ -413,7 +409,7 @@ class Slider:
         """
 
     @step.setter
-    def step(self, arg1: typing.SupportsFloat) -> Slider: ...
+    def step(self, arg1: float) -> Slider: ...
 
 class StepSlider:
     """
@@ -423,8 +419,8 @@ class StepSlider:
     def __init__(
         self,
         label: str | Translatable = "",
-        options: collections.abc.Sequence[str] | None = None,
-        default_index: typing.SupportsInt | None = None,
+        options: list[str] | None = None,
+        default_index: int | None = None,
     ) -> None: ...
     def add_option(self, option: str) -> Dropdown:
         """
@@ -438,7 +434,7 @@ class StepSlider:
         """
 
     @default_index.setter
-    def default_index(self, arg1: typing.SupportsInt | None) -> Dropdown: ...
+    def default_index(self, arg1: int | None) -> Dropdown: ...
     @property
     def label(self) -> str | Translatable:
         """
@@ -454,7 +450,7 @@ class StepSlider:
         """
 
     @options.setter
-    def options(self, arg1: collections.abc.Sequence[str]) -> Dropdown: ...
+    def options(self, arg1: list[str]) -> Dropdown: ...
 
 class TextInput:
     """

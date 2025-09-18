@@ -92,7 +92,7 @@ class Permission:
         name: str,
         description: str | None = None,
         default: PermissionDefault | None = None,
-        children: collections.abc.Mapping[str, bool] | None = None,
+        children: dict[str, bool] | None = None,
         *args,
         **kwargs,
     ) -> None: ...

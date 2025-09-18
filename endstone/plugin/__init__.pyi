@@ -143,17 +143,17 @@ class PluginDescription:
         version: str,
         description: str | None = None,
         load: PluginLoadOrder | None = None,
-        authors: collections.abc.Sequence[str] | None = None,
-        contributors: collections.abc.Sequence[str] | None = None,
+        authors: list[str] | None = None,
+        contributors: list[str] | None = None,
         website: str | None = None,
         prefix: str | None = None,
-        provides: collections.abc.Sequence[str] | None = None,
-        depend: collections.abc.Sequence[str] | None = None,
-        soft_depend: collections.abc.Sequence[str] | None = None,
-        load_before: collections.abc.Sequence[str] | None = None,
+        provides: list[str] | None = None,
+        depend: list[str] | None = None,
+        soft_depend: list[str] | None = None,
+        load_before: list[str] | None = None,
         default_permission: PermissionDefault | None = None,
-        commands: collections.abc.Sequence[Command] | None = None,
-        permissions: collections.abc.Sequence[Permission] | None = None,
+        commands: list[Command] | None = None,
+        permissions: list[Permission] | None = None,
         *args,
         **kwargs,
     ) -> None: ...
@@ -389,7 +389,7 @@ class PluginManager:
         """
 
     @typing.overload
-    def load_plugins(self, files: collections.abc.Sequence[str]) -> list[Plugin]:
+    def load_plugins(self, files: list[str]) -> list[Plugin]:
         """
         Loads the plugins in the list of the files
         """

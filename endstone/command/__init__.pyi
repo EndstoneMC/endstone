@@ -40,13 +40,13 @@ class Command:
         self,
         name: str,
         description: str | None = None,
-        usages: collections.abc.Sequence[str] | None = None,
-        aliases: collections.abc.Sequence[str] | None = None,
-        permissions: collections.abc.Sequence[str] | None = None,
+        usages: list[str] | None = None,
+        aliases: list[str] | None = None,
+        permissions: list[str] | None = None,
         *args,
         **kwargs,
     ) -> None: ...
-    def execute(self, sender: CommandSender, args: collections.abc.Sequence[str]) -> bool:
+    def execute(self, sender: CommandSender, args: list[str]) -> bool:
         """
         Executes the command, returning its success
         """
@@ -68,7 +68,7 @@ class Command:
         """
 
     @aliases.setter
-    def aliases(self, arg1: collections.abc.Sequence[str]) -> None: ...
+    def aliases(self, arg1: list[str]) -> None: ...
     @property
     def description(self) -> str:
         """
@@ -98,7 +98,7 @@ class Command:
         """
 
     @permissions.setter
-    def permissions(self, arg1: collections.abc.Sequence[str]) -> None: ...
+    def permissions(self, arg1: list[str]) -> None: ...
     @property
     def usages(self) -> list[str]:
         """
@@ -106,7 +106,7 @@ class Command:
         """
 
     @usages.setter
-    def usages(self, arg1: collections.abc.Sequence[str]) -> None: ...
+    def usages(self, arg1: list[str]) -> None: ...
 
 class CommandExecutor:
     """

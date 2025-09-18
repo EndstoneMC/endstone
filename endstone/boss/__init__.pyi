@@ -95,7 +95,7 @@ class BossBar:
         """
 
     @progress.setter
-    def progress(self, arg1: typing.SupportsFloat) -> None: ...
+    def progress(self, arg1: float) -> None: ...
     @property
     def style(self) -> BarStyle:
         """

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import collections
 import datetime
 import enum
 import typing
@@ -230,12 +229,12 @@ class Player(actor.Mob, OfflinePlayer):
         Closes the forms that are currently open for the player.
         """
 
-    def give_exp(self, amount: typing.SupportsInt) -> None:
+    def give_exp(self, amount: int) -> None:
         """
         Gives the player the amount of experience specified.
         """
 
-    def give_exp_levels(self, amount: typing.SupportsInt) -> None:
+    def give_exp_levels(self, amount: int) -> None:
         """
         Gives the player the amount of experience levels specified.
         """
@@ -254,8 +253,8 @@ class Player(actor.Mob, OfflinePlayer):
         self,
         location: level.Location,
         sound: str,
-        volume: typing.SupportsFloat = 1.0,
-        pitch: typing.SupportsFloat = 1.0,
+        volume: float = 1.0,
+        pitch: float = 1.0,
     ) -> None:
         """
         Play a sound for a player at the location.
@@ -274,7 +273,7 @@ class Player(actor.Mob, OfflinePlayer):
         Sends a form to the player.
         """
 
-    def send_packet(self, packet_id: typing.SupportsInt, payload: bytes) -> None:
+    def send_packet(self, packet_id: int, payload: bytes) -> None:
         """
         Sends a packet to the player.
         """
@@ -293,9 +292,9 @@ class Player(actor.Mob, OfflinePlayer):
         self,
         title: str,
         subtitle: str,
-        fade_in: typing.SupportsInt = 10,
-        stay: typing.SupportsInt = 70,
-        fade_out: typing.SupportsInt = 20,
+        fade_in: int = 10,
+        stay: int = 70,
+        fade_out: int = 20,
     ) -> None:
         """
         Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.
@@ -316,9 +315,9 @@ class Player(actor.Mob, OfflinePlayer):
     def spawn_particle(
         self,
         name: str,
-        x: typing.SupportsFloat,
-        y: typing.SupportsFloat,
-        z: typing.SupportsFloat,
+        x: float,
+        y: float,
+        z: float,
         molang_variables_json: str | None = None,
     ) -> None:
         """
@@ -335,7 +334,7 @@ class Player(actor.Mob, OfflinePlayer):
         Stop the specified sound from playing.
         """
 
-    def transfer(self, host: str, port: typing.SupportsInt = 19132) -> None:
+    def transfer(self, host: str, port: int = 19132) -> None:
         """
         Transfers the player to another server.
         """
@@ -384,7 +383,7 @@ class Player(actor.Mob, OfflinePlayer):
         """
 
     @exp_level.setter
-    def exp_level(self, arg1: typing.SupportsInt) -> None: ...
+    def exp_level(self, arg1: int) -> None: ...
     @property
     def exp_progress(self) -> float:
         """
@@ -392,7 +391,7 @@ class Player(actor.Mob, OfflinePlayer):
         """
 
     @exp_progress.setter
-    def exp_progress(self, arg1: typing.SupportsFloat) -> None: ...
+    def exp_progress(self, arg1: float) -> None: ...
     @property
     def fly_speed(self) -> float:
         """
@@ -400,7 +399,7 @@ class Player(actor.Mob, OfflinePlayer):
         """
 
     @fly_speed.setter
-    def fly_speed(self, arg1: typing.SupportsFloat) -> None: ...
+    def fly_speed(self, arg1: float) -> None: ...
     @property
     def game_mode(self) -> GameMode:
         """
@@ -504,7 +503,7 @@ class Player(actor.Mob, OfflinePlayer):
         """
 
     @walk_speed.setter
-    def walk_speed(self, arg1: typing.SupportsFloat) -> None: ...
+    def walk_speed(self, arg1: float) -> None: ...
     @property
     def xuid(self) -> str:
         """
@@ -526,9 +525,7 @@ class Server:
         Broadcasts the specified message to every user with permission endstone.broadcast.user
         """
 
-    def create_block_data(
-        self, type: str, block_states: collections.abc.Mapping[str, bool | str | typing.SupportsInt] | None = None
-    ) -> block.BlockData:
+    def create_block_data(self, type: str, block_states: dict[str, bool | str | int] | None = None) -> block.BlockData:
         """
         Creates a new BlockData instance for the specified block type, with all properties initialized to defaults, except for those provided.
         """
@@ -538,7 +535,7 @@ class Server:
         title: str,
         color: boss.BarColor,
         style: boss.BarStyle,
-        flags: collections.abc.Sequence[boss.BarFlag] | None = None,
+        flags: list[boss.BarFlag] | None = None,
     ) -> boss.BossBar:
         """
         Creates a boss bar instance to display to players. The progress defaults to 1.0.
@@ -683,7 +680,7 @@ class Server:
         """
 
     @max_players.setter
-    def max_players(self, arg1: typing.SupportsInt) -> None: ...
+    def max_players(self, arg1: int) -> None: ...
     @property
     def minecraft_version(self) -> str:
         """

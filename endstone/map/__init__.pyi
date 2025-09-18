@@ -19,24 +19,24 @@ class MapCanvas:
     Represents a canvas for drawing to a map. Each canvas is associated with a specific MapRenderer and represents that renderer's layer on the map.
     """
 
-    def draw_image(self, x: typing.SupportsInt, y: typing.SupportsInt, image: numpy.ndarray[numpy.uint8]) -> None:
+    def draw_image(self, x: int, y: int, image: numpy.ndarray[numpy.uint8]) -> None:
         """
         Draw an image to the map. The image will be clipped if necessary.
         """
 
-    def get_base_pixel_color(self, x: typing.SupportsInt, y: typing.SupportsInt) -> tuple[int, ...]:
+    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
         """
         Get a pixel from the layers below this canvas.
         """
 
-    def get_pixel_color(self, x: typing.SupportsInt, y: typing.SupportsInt) -> tuple[int, ...] | None:
+    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...] | None:
         """
         Get a pixel from the canvas.
 
         If no color is set at the given position for this canvas, then None is returned and the color returned by get_base_pixel_color() is shown on the map
         """
 
-    def set_pixel_color(self, x: typing.SupportsInt, y: typing.SupportsInt, color: tuple[int, ...] | None) -> None:
+    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...] | None) -> None:
         """
         Draw a pixel to the canvas.
 
@@ -115,7 +115,7 @@ class MapView:
         """
 
     @center_x.setter
-    def center_x(self, arg1: typing.SupportsInt) -> None: ...
+    def center_x(self, arg1: int) -> None: ...
     @property
     def center_z(self) -> int:
         """
@@ -123,7 +123,7 @@ class MapView:
         """
 
     @center_z.setter
-    def center_z(self, arg1: typing.SupportsInt) -> None: ...
+    def center_z(self, arg1: int) -> None: ...
     @property
     def dimension(self) -> Dimension:
         """

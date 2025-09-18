@@ -85,7 +85,6 @@ version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 
 [tool.ruff]
-extend-exclude = ["endstone_python.pyi"]
 line-length = 120
 lint.extend-select = ["I"]
 

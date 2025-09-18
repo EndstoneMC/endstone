@@ -73,7 +73,7 @@ class Dimension:
         """
 
     @typing.overload
-    def get_block_at(self, x: typing.SupportsInt, y: typing.SupportsInt, z: typing.SupportsInt) -> Block:
+    def get_block_at(self, x: int, y: int, z: int) -> Block:
         """
         Gets the Block at the given coordinates
         """
@@ -85,12 +85,12 @@ class Dimension:
         """
 
     @typing.overload
-    def get_highest_block_at(self, x: typing.SupportsInt, z: typing.SupportsInt) -> Block:
+    def get_highest_block_at(self, x: int, z: int) -> Block:
         """
         Gets the highest non-empty (impassable) block at the given coordinates.
         """
 
-    def get_highest_block_y_at(self, x: typing.SupportsInt, z: typing.SupportsInt) -> int:
+    def get_highest_block_y_at(self, x: int, z: int) -> int:
         """
         Gets the highest non-empty (impassable) coordinate at the given coordinates.
         """
@@ -156,7 +156,7 @@ class Level:
         """
 
     @time.setter
-    def time(self, arg1: typing.SupportsInt) -> None: ...
+    def time(self, arg1: int) -> None: ...
 
 class Location(Vector):
     """
@@ -165,11 +165,11 @@ class Location(Vector):
 
     def __init__(
         self,
-        x: typing.SupportsFloat,
-        y: typing.SupportsFloat,
-        z: typing.SupportsFloat,
-        pitch: typing.SupportsFloat = 0.0,
-        yaw: typing.SupportsFloat = 0.0,
+        x: float,
+        y: float,
+        z: float,
+        pitch: float = 0.0,
+        yaw: float = 0.0,
         dimension: Dimension = None,
     ) -> None: ...
     def __repr__(self) -> str: ...
@@ -207,7 +207,7 @@ class Location(Vector):
         """
 
     @pitch.setter
-    def pitch(self, arg1: typing.SupportsFloat) -> None: ...
+    def pitch(self, arg1: float) -> None: ...
     @property
     def yaw(self) -> float:
         """
@@ -215,4 +215,4 @@ class Location(Vector):
         """
 
     @yaw.setter
-    def yaw(self, arg1: typing.SupportsFloat) -> None: ...
+    def yaw(self, arg1: float) -> None: ...

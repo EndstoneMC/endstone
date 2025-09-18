@@ -183,7 +183,7 @@ class Score:
         """
 
     @value.setter
-    def value(self, arg1: typing.SupportsInt) -> None: ...
+    def value(self, arg1: int) -> None: ...
 
 class Scoreboard:
     """

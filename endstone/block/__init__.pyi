@@ -23,15 +23,13 @@ class Block:
         """
 
     @typing.overload
-    def get_relative(
-        self, offset_x: typing.SupportsInt, offset_y: typing.SupportsInt, offset_z: typing.SupportsInt
-    ) -> Block:
+    def get_relative(self, offset_x: int, offset_y: int, offset_z: int) -> Block:
         """
         Gets the block at the given offsets
         """
 
     @typing.overload
-    def get_relative(self, face: BlockFace, distance: typing.SupportsInt = 1) -> Block:
+    def get_relative(self, face: BlockFace, distance: int = 1) -> Block:
         """
         Gets the block at the given distance of the given face
         """

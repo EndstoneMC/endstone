@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import collections
 import typing
 
 __all__: list[str] = ["Language", "Translatable"]
@@ -11,9 +10,7 @@ class Language:
     """
 
     @typing.overload
-    def translate(
-        self, text: str, params: collections.abc.Sequence[str] | None = None, locale: str | None = None
-    ) -> str:
+    def translate(self, text: str, params: list[str] | None = None, locale: str | None = None) -> str:
         """
         Translates a given text using a set of parameters for a specific locale.
         """
@@ -35,7 +32,7 @@ class Translatable:
     Represents an object with a text representation that can be translated by the Minecraft client.
     """
 
-    def __init__(self, text: str, params: collections.abc.Sequence[str] | None = None) -> None: ...
+    def __init__(self, text: str, params: list[str] | None = None) -> None: ...
     @property
     def params(self) -> list[str]:
         """

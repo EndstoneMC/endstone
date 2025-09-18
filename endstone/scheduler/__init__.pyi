@@ -5,7 +5,6 @@ Classes relating to letting plugins run code at specific time intervals.
 from __future__ import annotations
 
 import collections.abc
-import typing
 
 from endstone.plugin import Plugin
 
@@ -16,7 +15,7 @@ class Scheduler:
     Represents a scheduler that executes various tasks
     """
 
-    def cancel_task(self, id: typing.SupportsInt) -> None:
+    def cancel_task(self, id: int) -> None:
         """
         Removes task from scheduler.
         """
@@ -31,12 +30,12 @@ class Scheduler:
         Returns a vector of all pending tasks.
         """
 
-    def is_queued(self, id: typing.SupportsInt) -> bool:
+    def is_queued(self, id: int) -> bool:
         """
         Check if the task queued to be run later.
         """
 
-    def is_running(self, id: typing.SupportsInt) -> bool:
+    def is_running(self, id: int) -> bool:
         """
         Check if the task currently running.
         """
@@ -45,8 +44,8 @@ class Scheduler:
         self,
         plugin: Plugin,
         task: collections.abc.Callable[[], None],
-        delay: typing.SupportsInt = 0,
-        period: typing.SupportsInt = 0,
+        delay: int = 0,
+        period: int = 0,
     ) -> Task:
         """
         Returns a task that will be executed synchronously

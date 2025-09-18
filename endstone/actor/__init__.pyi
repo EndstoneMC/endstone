@@ -33,7 +33,7 @@ class Actor(CommandSender):
         Removes a given tag from this actor.
         """
 
-    def set_rotation(self, yaw: typing.SupportsFloat, pitch: typing.SupportsFloat) -> None:
+    def set_rotation(self, yaw: float, pitch: float) -> None:
         """
         Sets the actor's rotation.
         """
@@ -63,7 +63,7 @@ class Actor(CommandSender):
         """
 
     @health.setter
-    def health(self, arg1: typing.SupportsInt) -> None: ...
+    def health(self, arg1: int) -> None: ...
     @property
     def id(self) -> int:
         """
@@ -202,7 +202,7 @@ class Item(Actor):
         """
 
     @pickup_delay.setter
-    def pickup_delay(self, arg1: typing.SupportsInt) -> None: ...
+    def pickup_delay(self, arg1: int) -> None: ...
     @property
     def thrower(self) -> int | None:
         """
@@ -210,7 +210,7 @@ class Item(Actor):
         """
 
     @thrower.setter
-    def thrower(self, arg1: typing.SupportsInt | None) -> None: ...
+    def thrower(self, arg1: int | None) -> None: ...
 
 class Mob(Actor):
     """

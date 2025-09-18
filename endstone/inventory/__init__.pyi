@@ -4,7 +4,6 @@ Classes relating to player inventories and item interactions.
 
 from __future__ import annotations
 
-import collections.abc
 import enum
 import typing
 
@@ -45,7 +44,7 @@ class Inventory:
         Checks if the inventory contains any ItemStacks with the given ItemType.
         """
 
-    def __getitem__(self, index: typing.SupportsInt) -> ItemStack:
+    def __getitem__(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
         """
@@ -55,7 +54,7 @@ class Inventory:
         Returns the size of the inventory
         """
 
-    def __setitem__(self, index: typing.SupportsInt, item: ItemStack) -> None:
+    def __setitem__(self, index: int, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
@@ -85,7 +84,7 @@ class Inventory:
         """
 
     @typing.overload
-    def clear(self, index: typing.SupportsInt) -> None:
+    def clear(self, index: int) -> None:
         """
         Clears out a particular slot in the index.
         """
@@ -97,7 +96,7 @@ class Inventory:
         """
 
     @typing.overload
-    def contains(self, item: ItemStack, amount: typing.SupportsInt) -> bool:
+    def contains(self, item: ItemStack, amount: int) -> bool:
         """
         Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
         An ItemStack only counts if both the type and the amount of the stack match.
@@ -117,13 +116,13 @@ class Inventory:
         """
 
     @typing.overload
-    def contains_at_least(self, item: ItemStack, amount: typing.SupportsInt) -> bool:
+    def contains_at_least(self, item: ItemStack, amount: int) -> bool:
         """
         Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the minimum amount specified.
         """
 
     @typing.overload
-    def contains_at_least(self, type: str, amount: typing.SupportsInt) -> bool:
+    def contains_at_least(self, type: str, amount: int) -> bool:
         """
         Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum amount specified.
         """
@@ -143,7 +142,7 @@ class Inventory:
         The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
         """
 
-    def get_item(self, index: typing.SupportsInt) -> ItemStack:
+    def get_item(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
         """
@@ -170,7 +169,7 @@ class Inventory:
         If all the given ItemStacks are removed, it will return an empty dict.
         """
 
-    def set_item(self, index: typing.SupportsInt, item: ItemStack) -> None:
+    def set_item(self, index: int, item: ItemStack) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
@@ -182,7 +181,7 @@ class Inventory:
         """
 
     @contents.setter
-    def contents(self, arg1: collections.abc.Sequence[ItemStack]) -> None: ...
+    def contents(self, arg1: list[ItemStack]) -> None: ...
     @property
     def first_empty(self) -> int:
         """
@@ -233,7 +232,7 @@ class ItemMeta:
     Represents the metadata of a generic item.
     """
 
-    def add_enchant(self, id: str, level: typing.SupportsInt, force: bool = False) -> bool:
+    def add_enchant(self, id: str, level: int, force: bool = False) -> bool:
         """
         Adds the specified enchantment to this item meta.
         """
@@ -270,7 +269,7 @@ class ItemMeta:
         """
 
     @damage.setter
-    def damage(self, arg1: typing.SupportsInt) -> None: ...
+    def damage(self, arg1: int) -> None: ...
     @property
     def display_name(self) -> str | None:
         """
@@ -330,7 +329,7 @@ class ItemMeta:
         """
 
     @lore.setter
-    def lore(self, arg1: collections.abc.Sequence[str] | None) -> None: ...
+    def lore(self, arg1: list[str] | None) -> None: ...
     @property
     def repair_cost(self) -> int:
         """
@@ -338,7 +337,7 @@ class ItemMeta:
         """
 
     @repair_cost.setter
-    def repair_cost(self, arg1: typing.SupportsInt) -> None: ...
+    def repair_cost(self, arg1: int) -> None: ...
 
 class ItemStack:
     """
@@ -348,7 +347,7 @@ class ItemStack:
     __hash__: typing.ClassVar[None] = None
 
     def __eq__(self, arg0: ItemStack) -> bool: ...
-    def __init__(self, type: str, amount: typing.SupportsInt = 1, data: typing.SupportsInt = 0) -> None: ...
+    def __init__(self, type: str, amount: int = 1, data: int = 0) -> None: ...
     def __ne__(self, arg0: ItemStack) -> bool: ...
     def __str__(self) -> str: ...
     def is_similar(self, other: ItemStack) -> bool:
@@ -368,7 +367,7 @@ class ItemStack:
         """
 
     @amount.setter
-    def amount(self, arg1: typing.SupportsInt) -> None: ...
+    def amount(self, arg1: int) -> None: ...
     @property
     def data(self) -> int:
         """
@@ -376,7 +375,7 @@ class ItemStack:
         """
 
     @data.setter
-    def data(self, arg1: typing.SupportsInt) -> None: ...
+    def data(self, arg1: int) -> None: ...
     @property
     def item_meta(self) -> ItemMeta:
         """
@@ -477,7 +476,7 @@ class PlayerInventory(Inventory):
         """
 
     @held_item_slot.setter
-    def held_item_slot(self, arg1: typing.SupportsInt) -> None: ...
+    def held_item_slot(self, arg1: int) -> None: ...
     @property
     def helmet(self) -> ItemStack:
         """
