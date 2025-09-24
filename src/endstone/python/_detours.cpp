@@ -40,7 +40,7 @@ HANDLE get_handle(py::object object, const char *name)
 py::tuple CreateProcessWithDllEx(
     // positional-only args, like _winapi.CreateProcess
     std::optional<std::wstring> application_name, std::optional<std::wstring> command_line, py::object proc_attrs_obj,
-    py::object thread_attrs_obj, bool inherit_handles, unsigned long creation_flags,
+    py::object thread_attrs_obj, bool inherit_handles, std::uint32_t creation_flags,
     std::map<std::wstring, std::wstring> env, std::optional<std::wstring> current_directory,
     py::object startup_info_obj,
     // keyword-only
@@ -115,10 +115,9 @@ PYBIND11_MODULE(_detours, m)
 {
     m.def("CreateProcessWithDllEx", &CreateProcessWithDllEx,
           // positional‐only, matching _winapi.CreateProcess
-          py::arg("application_name") = py::none(), py::arg("command_line") = py::none(),
-          py::arg("proc_attrs") = py::none(), py::arg("thread_attrs") = py::none(), py::arg("inherit_handles"),
-          py::arg("creation_flags"), py::arg("env_mapping") = std::map<std::string, std::string>{},
-          py::arg("current_directory") = py::none(), py::arg("startup_info"), py::kw_only(),
+          py::arg("application_name"), py::arg("command_line"), py::arg("proc_attrs"), py::arg("thread_attrs"),
+          py::arg("inherit_handles"), py::arg("creation_flags"), py::arg("env_mapping"), py::arg("current_directory"),
+          py::arg("startup_info"), py::kw_only(),
           // extra keyword‐only args
           py::arg("dll_name"));
 }
