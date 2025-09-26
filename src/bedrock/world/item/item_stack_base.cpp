@@ -61,19 +61,7 @@ ItemStackBase::ItemStackBase(const ItemStackBase &rhs)
         init(block_->getBlockType(), rhs.count_);
     }
     else {
-        int id;
-        if (rhs.valid_deprecated_) {
-            if (!rhs.item_.isNull()) {
-                id = rhs.item_->getId();
-            }
-            else {
-                id = 0;
-            }
-        }
-        else {
-            id = Item::INVALID_ITEM_ID;
-        }
-        init(id, rhs.count_, aux_value_, false);
+        init(rhs.getId(), rhs.count_, aux_value_, false);
     }
 
     if (rhs.user_data_) {
@@ -214,18 +202,17 @@ std::string ItemStackBase::toDebugString() const
 
 bool ItemStackBase::isNull() const
 {
-    if (valid_deprecated_) {
-        const auto *item = getItem();
-        if (!item || item->getFullNameHash() != BedrockBlockNames::Air) {
-            if (count_ > 0 || block_ != nullptr || aux_value_ > 0) {
-                return false;
-            }
-            if (item || user_data_ || can_destroy_hash_ > 0 || can_place_on_hash_) {
-                return false;
-            }
-        }
+    if (!valid_deprecated_) {
+        return true;
     }
-    return true;
+    if (const auto *item = getItem(); item && item->getFullNameHash() == BedrockBlockNames::Air) {
+        return true;
+    }
+    if (count_ == 0 && block_ == nullptr && aux_value_ == 0 && getItem() == nullptr && user_data_ == nullptr &&
+        can_destroy_hash_ == 0 && can_place_on_hash_ == 0) {
+        return true;
+    }
+    return false;
 }
 
 bool ItemStackBase::operator==(const ItemStackBase &other) const

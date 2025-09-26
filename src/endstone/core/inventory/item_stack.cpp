@@ -150,7 +150,7 @@ std::unique_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::Item
 
 std::string EndstoneItemStack::getType(const ItemStackBase *item)
 {
-    return (item && !item->isNull()) ? item->getItem()->getFullItemName() : "minecraft:air";
+    return (item && *item) ? item->getItem()->getFullItemName() : "minecraft:air";
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ItemStackBase *item)
