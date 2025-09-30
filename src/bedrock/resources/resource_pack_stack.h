@@ -54,7 +54,8 @@ public:
     virtual ~ResourcePackStack() = 0;
 
     static std::unique_ptr<ResourcePackStack> deserialize(
-        std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo);
+        std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo,
+        std::optional<std::string> level_id);
 
     PackInstanceStack stack;
 

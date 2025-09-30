@@ -32,7 +32,8 @@ const PackManifest &PackInstance::getManifest() const
 }
 
 std::unique_ptr<ResourcePackStack> ResourcePackStack::deserialize(
-    std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo)
+    std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo,
+    std::optional<std::string> level_id)
 {
-    return BEDROCK_CALL(&ResourcePackStack::deserialize, file_stream, repo);
+    return BEDROCK_CALL(&ResourcePackStack::deserialize, file_stream, repo, level_id);
 }
