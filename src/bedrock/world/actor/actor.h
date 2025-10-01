@@ -399,12 +399,10 @@ public:
     AABB *last_hit_bb;
     HashType64 name_tag_hash;
     float shadow_offset;
-    float pushthrough;
+    float push_through;
     int tick_count;
     int invulnerable_time;
     int last_health;
-    bool hurt_marked;
-    bool was_hurt_last_frame;
     bool invulnerable;
     int flame_tex_frame_index;
     float flame_frame_increment_time;

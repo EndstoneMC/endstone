@@ -1,4 +1,4 @@
-timestamp = 1759342122
+timestamp = 1759347245
 version = "1.21.111"
 
 [windows]
@@ -85,7 +85,7 @@ version = "1.21.111"
 "?_resetServerScriptManager@ServerInstance@@AEAAXXZ" = 53002224
 # ServerNetworkHandler
 "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 26596288
-"?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 61076416
+"?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 26670528
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 26712736
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 26733152
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 26741808
