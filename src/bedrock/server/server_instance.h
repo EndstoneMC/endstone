@@ -86,11 +86,12 @@ private:
     std::unique_ptr<TextFilteringProcessor> text_filtering_processor_;
     std::chrono::microseconds wakeup_interval_;
     std::string level_id_;
+    std::string server_name_;
     std::unique_ptr<WorldSessionEndPoint> world_session_end_point_;
     std::shared_ptr<Core::FileStorageArea> storage_area_for_level_;
     std::shared_ptr<ItemRegistry> server_item_registry_;
-    // std::shared_ptr<BlockTypeRegistry> block_registry_;
     bool enable_item_stack_net_manager_;
+    bool enable_realms_stories_;
     bool initialized_;
     bool flagged_for_early_destruction_;
     ServiceRegistrationToken<ServerInstance> service_registration_token_;
@@ -98,7 +99,7 @@ private:
     bool critical_disk_error_telemetry_sent_;
     std::unique_ptr<Editor::IEditorManager> editor_manager_;
     Bedrock::NonOwnerPointer<CDNConfig> cdn_config_;
-    Bedrock::NonOwnerPointer<ServerTextSettings> server_text_settings_;  // +936
+    Bedrock::NonOwnerPointer<ServerTextSettings> server_text_settings_;  // +952
     Bedrock::NotNullNonOwnerPtr<cereal::ReflectionCtx> cereal_context_;
     std::unique_ptr<LinkedAssetValidator> linked_asset_validator_;
 };

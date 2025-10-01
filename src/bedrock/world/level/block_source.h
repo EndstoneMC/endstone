@@ -42,7 +42,6 @@ using GetBlockFunction = std::function<const Block &(const BlockPos &)>;
 class IConstBlockSource {
 public:
     virtual ~IConstBlockSource() = 0;
-    [[nodiscard]] virtual Block const &getBlock(int, int, int) const = 0;
     [[nodiscard]] virtual Block const &getBlock(BlockPos const &) const = 0;
     [[nodiscard]] virtual Block const &getBlock(BlockPos const &, std::uint32_t) const = 0;
     [[nodiscard]] virtual BlockActor const *getBlockEntity(BlockPos const &) const = 0;

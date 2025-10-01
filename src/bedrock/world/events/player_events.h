@@ -240,10 +240,11 @@ struct PlayerGameplayEvent<void>
           PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
           PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerInputModeChangeEvent,
           PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerCloseContainerEvent, PlayerShootArrowEvent,
-          PlayerRespawnEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent,
-          PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
-          PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerScriptInputEvent, PlayerInventoryItemChangeEvent,
-          PlayerHotbarSelectedSlotChangeEvent, PlayerInputPermissionCategoryChangeEvent> {};
+          PlayerSwingStartEvent, PlayerRespawnEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
+          PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent,
+          PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent,
+          PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, PlayerHotbarSelectedSlotChangeEvent,
+          PlayerInputPermissionCategoryChangeEvent> {};
 static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 
 template <>

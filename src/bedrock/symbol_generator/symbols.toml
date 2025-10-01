@@ -1,4 +1,4 @@
-timestamp = 1759347245
+timestamp = 1759360750
 version = "1.21.111"
 
 [windows]
@@ -152,7 +152,7 @@ version = "1.21.111"
 "_ZN5Level4tickEv" = 169199136
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 140497264
-"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = -1335418064
+"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 140465120
 # MinecraftPackets
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 114813904
 # Mob
@@ -185,7 +185,7 @@ version = "1.21.111"
 # ScriptModuleMinecraft::ScriptBlockUtils
 "_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE" = 124389856
 # ServerInstance
-"_ZN14ServerInstance25_resetServerScriptManagerEv" = 201176336
+"_ZN14ServerInstance25_resetServerScriptManagerEv" = 142233616
 # ServerNetworkHandler
 "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 114441152
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 114525600
