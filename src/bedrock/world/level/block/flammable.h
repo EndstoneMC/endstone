@@ -16,18 +16,23 @@
 
 #include <cstdint>
 
-#include "bedrock/bedrock.h"
-
-class BlockComponentStorage {
-public:
-    struct ComponentBase {
-        virtual ~ComponentBase();
-    };
-
-private:
-    std::size_t padding_[12];                            // +0
-    bool allow_adding_components_;                       // +96
-    bool allow_replacement_components_;                  // +97
-    bool allow_try_get_components_before_finalization_;  // +98
+enum class BurnOdds : uint16_t {
+    INSTANT = 100,
+    EASY = 60,
+    MEDIUM = 20,
+    HARD = 5,
+    NEVER = 0,
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockComponentStorage, 104, 104);
+
+enum class FlameOdds : uint16_t {
+    INSTANT = 60,
+    EASY = 30,
+    MEDIUM = 15,
+    HARD = 5,
+    NEVER = 0,
+};
+
+enum class LavaFlammable : bool {
+    ALWAYS = 1,
+    NEVER = 0,
+};

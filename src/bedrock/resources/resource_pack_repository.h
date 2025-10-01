@@ -41,7 +41,7 @@ public:
 private:
     friend class endstone::core::EndstoneServer;
 
-    ENDSTONE_HOOK void _initializePackSource();  // NOLINT
+    // ENDSTONE_HOOK void _initializePackSource();  // NOLINT
 
     Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> file_path_manager_;
     gsl::not_null<std::shared_ptr<RepositoryPacks>> all_resource_packs_;
