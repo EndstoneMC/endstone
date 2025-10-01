@@ -48,6 +48,7 @@ public:
     [[nodiscard]] virtual float getSpeed() const = 0;
     virtual void setSpeed(float) = 0;
     virtual void hurtEffects(ActorDamageSource const &, float, bool, bool) = 0;
+    virtual void damageCarriedItemOnAttack(Actor &target, float) = 0;
     virtual void aiStep() = 0;
     virtual void pushActors() = 0;
     virtual bool checkSpawnRules(bool) = 0;

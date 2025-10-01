@@ -134,9 +134,11 @@ public:
     [[nodiscard]] virtual PlayerMovementSettings getMovementSettings() const = 0;
     virtual void requestMissingSubChunk(SubChunkPos const &) = 0;
     [[nodiscard]] virtual std::uint8_t getMaxChunkBuildRadius() const = 0;
-    virtual void onMovePlayerPacketNormal(Vec3 const &, Vec2 const &, float) = 0;
+    virtual void setBehaviorCommandStatus(const std::string &, BehaviorStatus) = 0;
+    virtual void setRemotePlayerTicked(bool) = 0;
 
 protected:
+    virtual void onMovePlayerPacketNormal(Vec3 const &, Vec2 const &, float) = 0;
     virtual std::shared_ptr<ChunkViewSource> _createChunkSource(ChunkSource &) = 0;
 
 public:

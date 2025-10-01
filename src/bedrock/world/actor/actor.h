@@ -232,7 +232,7 @@ public:
     [[nodiscard]] virtual bool canObstructSpawningAndBlockPlacement() const = 0;
     virtual AnimationComponent &getAnimationComponent() = 0;
     virtual void openContainerComponent(Player &) = 0;
-    virtual void swing() = 0;
+    virtual bool swing() = 0;
     virtual void useItem(ItemStackBase &, ItemUseMethod, bool) = 0;
     virtual void getDebugText(std::vector<std::string> &) = 0;
     [[nodiscard]] virtual float getMapDecorationRotation() const = 0;
@@ -452,6 +452,8 @@ protected:
     ActorDefinitionPtr actor_definition_ptr_;
     std::string filtered_name_tag_;
     ActorTerrainInterlockData terrain_interlock_data_;
+    bool was_hurt_this_tick_;
+    bool was_hurt_last_tick_;
     ActorUniqueID last_hurt_mob_id_;
     ActorUniqueID last_hurt_by_mob_id_;
     ActorUniqueID last_hurt_by_player_id_;
