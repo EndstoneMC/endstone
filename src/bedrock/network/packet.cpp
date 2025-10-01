@@ -66,6 +66,11 @@ SerializationMode Packet::getSerializationMode() const
 
 void Packet::setSerializationMode(SerializationMode) {}
 
+std::string Packet::toString() const
+{
+    return "";
+}
+
 Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
                                            const SubClientId &sub_id)
 {

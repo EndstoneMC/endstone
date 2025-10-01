@@ -57,8 +57,10 @@ public:
 
     ~ServerNetworkHandler() override = 0;
 
-    ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
-                                        std::string const &, std::optional<std::string>, bool);
+    ENDSTONE_HOOK void disconnectClientWithMessage(const NetworkIdentifier &id, SubClientId sub_id,
+                                                   Connection::DisconnectFailReason disconnect_reason,
+                                                   const std::string &message,
+                                                   std::optional<std::string> filtered_message, bool skip_message);
     [[nodiscard]] int getMaxNumPlayers() const;
     int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();

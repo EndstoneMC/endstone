@@ -13,35 +13,23 @@
 // limitations under the License.
 
 #pragma once
+
 #include "pack_source_factory.h"
 
 struct RepositorySourceOptions;
 
 class RepositorySources {
 public:
-    PackSource *getPackSource();
-    PackSource *getPremiumWorldTemplatePackSource();
-    const Core::Path &getOnDiskScratchPath() const;
-    const Core::Path &getDevelopmentResourcePacksPath() const;
-    const Core::Path &getDevelopmentBehaviorPacksPath() const;
-    const Core::Path &getDevelopmentSkinPacksPath() const;
-    const Core::Path &getTreatmentPacksPath() const;
-    const Core::Path &getResourcePacksPath() const;
-    const Core::Path &getBehaviorPacksPath() const;
-    const Core::Path &getPremiumWorldTemplatePath() const;
-    const Core::Path &getPremiumBehaviorPackPath() const;
-    const Core::Path &getPremiumResourcePackPath() const;
-    const Core::Path &getPremiumPackPath() const;
-    const Core::Path &getSystemServicePackPath() const;
-    const Core::Path &getTemporaryPremiumResourcePacksPath() const;
-    const Core::Path &getTemporaryPremiumBehaviorPacksPath() const;
-    const Core::Path &getCachedResourcePacksPath() const;
-    const Core::Path &getCachedBehaviorPacksPath() const;
-    bool saveEncryptedWorldTemplatePacksAsZips() const;
-    std::unique_ptr<const RepositorySourceOptions> options;
-    std::unique_ptr<CompositePackSource> pack_source;
-    std::unique_ptr<CompositePackSource> cache_pack_source;
-    std::unique_ptr<CompositePackSource> world_pack_source;
-    std::unique_ptr<CompositePackSource> premium_world_template_pack_source;
-    std::unique_ptr<CompositePackSource> temp_world_template_pack_source;
+    PackSource *getPackSource()
+    {
+        return pack_source_.get();
+    }
+
+private:
+    std::unique_ptr<const RepositorySourceOptions> options_;
+    std::unique_ptr<CompositePackSource> pack_source_;
+    std::unique_ptr<CompositePackSource> cache_pack_source_;
+    std::unique_ptr<CompositePackSource> world_pack_source_;
+    std::unique_ptr<CompositePackSource> premium_world_template_pack_source_;
+    std::unique_ptr<CompositePackSource> temp_world_template_pack_source_;
 };

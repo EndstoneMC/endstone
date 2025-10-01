@@ -345,7 +345,7 @@ void EndstonePlayer::sendToast(std::string title, std::string content) const
 void EndstonePlayer::kick(std::string message) const
 {
     auto *component = getPlayer().tryGetComponent<UserEntityIdentifierComponent>();
-    server_.getServer().getMinecraft()->getServerNetworkHandler()->disconnectClient(
+    server_.getServer().getMinecraft()->getServerNetworkHandler()->disconnectClientWithMessage(
         component->getNetworkId(), component->getSubClientId(), Connection::DisconnectFailReason::Kicked, message,
         std::nullopt, false);
 }

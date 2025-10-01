@@ -24,13 +24,14 @@
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/runtime/hook.h"
 
-void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
-                                            Connection::DisconnectFailReason reason, const std::string &message,
-                                            std::optional<std::string> filtered_message, bool skip_message)
+void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &id, const SubClientId sub_id,
+                                                       const Connection::DisconnectFailReason reason,
+                                                       const std::string &message,
+                                                       std::optional<std::string> filtered_message, bool skip_message)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto disconnect_message = message;
-    if (auto *player = getServerPlayer(network_id, sub_client_id)) {
+    if (auto *player = getServerPlayer(id, sub_id)) {
         if (player->hasComponent<endstone::core::InternalDisconnectFlagComponent>()) {
             player->addOrRemoveComponent<endstone::core::InternalDisconnectFlagComponent>(false);
         }
@@ -46,7 +47,7 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
             }
         }
     }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClientWithMessage, this, id, sub_id, reason,
                                 disconnect_message, std::move(filtered_message), skip_message);
 }
 
@@ -114,8 +115,8 @@ void ServerNetworkHandler::disconnect(NetworkIdentifier const &network_id, SubCl
     if (auto *player = getServerPlayer(network_id, sub_client_id)) {
         player->addOrRemoveComponent<endstone::core::InternalDisconnectFlagComponent>(true);
     }
-    disconnectClient(network_id, sub_client_id, Connection::DisconnectFailReason::NoReason, reason, std::nullopt,
-                     false);
+    disconnectClientWithMessage(network_id, sub_client_id, Connection::DisconnectFailReason::NoReason, reason,
+                                std::nullopt, false);
 }
 
 bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const

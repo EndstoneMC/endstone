@@ -18,10 +18,10 @@
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-void ResourcePackRepository::_initializePackSource()
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
-    auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
-    server.setResourcePackRepository(*this);
-    sources_->pack_source->addPackSource(&server.getPackSource());
-}
+// void ResourcePackRepository::_initializePackSource()
+// {
+//     ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
+//     auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
+//     server.setResourcePackRepository(*this);
+//     sources_->pack_source->addPackSource(&server.getPackSource());
+// }

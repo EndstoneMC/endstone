@@ -185,7 +185,8 @@ void EndstoneServer::loadResourcePacks()
         });
     });
     std::stringstream ss(json.dump());
-    const auto pack_stack = ResourcePackStack::deserialize(ss, *resource_pack_repository_);
+    const auto pack_stack =
+        ResourcePackStack::deserialize(ss, *resource_pack_repository_, level_->getHandle().getLevelId());
 
     // Add encryption keys to network handler to be sent to clients
     auto content_keys = resource_pack_source_->getContentKeys();
