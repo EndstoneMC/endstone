@@ -124,6 +124,8 @@ public:
     virtual int buildIdAux(std::int16_t, CompoundTag const *) const = 0;
     virtual bool canUseOnSimTick() const = 0;
     virtual ItemStack &use(ItemStack &, Player &) const = 0;
+    virtual bool canUseAsAttack() const=0;
+    virtual ItemStack & useAsAttack(ItemStack & itemStack, Player &) const=0;
     virtual Actor *createProjectileActor(BlockSource &, ItemStack const &, Vec3 const &, Vec3 const &) const = 0;
     virtual bool dispense(BlockSource &, Container &, int slot, Vec3 const &, FacingID face) const = 0;
     virtual ItemUseMethod useTimeDepleted(ItemStack &, Level *, Player *) const = 0;
