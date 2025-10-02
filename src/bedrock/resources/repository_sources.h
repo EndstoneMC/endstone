@@ -14,16 +14,17 @@
 
 #pragma once
 
-#include "pack_source_factory.h"
+#include <memory>
+
+#include "bedrock/resources/pack_source.h"
+#include "bedrock/resources/pack_source_factory.h"
 
 struct RepositorySourceOptions;
 
 class RepositorySources {
 public:
-    PackSource *getPackSource()
-    {
-        return pack_source_.get();
-    }
+    RepositorySources(RepositorySourceOptions &&options);
+    ENDSTONE_HOOK void initializePackSource(PackSourceFactory &pack_source_factory);
 
 private:
     std::unique_ptr<const RepositorySourceOptions> options_;

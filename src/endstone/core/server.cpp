@@ -165,13 +165,20 @@ void EndstoneServer::initRegistries()
     });
 }
 
-void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
+void EndstoneServer::setResourcePackRepository(IResourcePackRepository &repo)
 {
     if (resource_pack_repository_) {
         throw std::runtime_error("Resource pack repository already set.");
     }
-    resource_pack_repository_ = std::move(repo);
-    auto io = resource_pack_repository_->getPackSourceFactory().createPackIOProvider();
+    resource_pack_repository_ = repo;
+}
+
+void EndstoneServer::initPackSource(const PackSourceFactory &pack_source_factory)
+{
+    if (resource_pack_source_) {
+        throw std::runtime_error("Resource pack source already created.");
+    }
+    auto io = pack_source_factory.createPackIOProvider();
     resource_pack_source_ = std::make_unique<EndstonePackSource>(EndstonePackSourceOptions(
         PackSourceOptions(std::move(io)), resource_pack_repository_->getResourcePacksPath().getContainer(),
         PackType::Resources));

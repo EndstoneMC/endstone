@@ -33,6 +33,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/player.cpp
         bedrock_hooks/raknet_socket2.cpp
         bedrock_hooks/rak_peer_helper.cpp
+        bedrock_hooks/repository_sources.cpp
         bedrock_hooks/resource_pack_repository.cpp
         bedrock_hooks/say_command.cpp
         bedrock_hooks/script_actor_gameplay_handler.cpp

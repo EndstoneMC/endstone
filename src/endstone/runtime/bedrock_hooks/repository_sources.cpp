@@ -12,15 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/resources/resource_pack_repository.h"
+#include "bedrock/resources/repository_sources.h"
 
 #include "endstone/core/packs/endstone_pack_source.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-void RepositoryFactory::createSources(const IResourcePackRepository &resource_pack_repository)
+void RepositorySources::initializePackSource(PackSourceFactory &pack_source_factory)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&RepositoryFactory::createSources, this, resource_pack_repository);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&RepositorySources::initializePackSource, this, pack_source_factory);
     auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
-    server.setResourcePackRepository(const_cast<IResourcePackRepository &>(resource_pack_repository));
+    server.initPackSource(pack_source_factory);
+    pack_source_->addPackSource(&server.getPackSource());
 }
