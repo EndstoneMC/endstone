@@ -129,7 +129,7 @@ void EndstoneServer::setLevel(::Level &level)
     level_ = std::make_unique<EndstoneLevel>(level);
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
-    // loadResourcePacks();
+    loadResourcePacks();
     initRegistries();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
     on_chunk_load_subscription_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(

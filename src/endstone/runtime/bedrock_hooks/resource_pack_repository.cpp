@@ -18,9 +18,10 @@
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-void RepositoryFactory::createSources(const IResourcePackRepository &resource_pack_repository)
+std::shared_ptr<RepositorySources> RepositoryFactory::createSources(
+    const IResourcePackRepository &resource_pack_repository) const
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&RepositoryFactory::createSources, this, resource_pack_repository);
     auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
     server.setResourcePackRepository(const_cast<IResourcePackRepository &>(resource_pack_repository));
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&RepositoryFactory::createSources, this, resource_pack_repository);
 }

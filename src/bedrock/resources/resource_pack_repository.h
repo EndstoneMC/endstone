@@ -24,13 +24,13 @@
 class IRepositoryFactory {
 public:
     virtual ~IRepositoryFactory();
-    virtual std::shared_ptr<RepositorySources> createSources(const IResourcePackRepository &) = 0;
+    virtual std::shared_ptr<RepositorySources> createSources(const IResourcePackRepository &) const = 0;
     virtual std::unique_ptr<IPackIOProvider> createIO() = 0;
 };
 
 class RepositoryFactory : public IRepositoryFactory {
 public:
-    ENDSTONE_HOOK std::shared_ptr<RepositorySources> createSources(const IResourcePackRepository &) override;
+    ENDSTONE_HOOK std::shared_ptr<RepositorySources> createSources(const IResourcePackRepository &) const override;
 };
 
 class ResourcePackRepository : public IResourcePackRepository, public IContentSourceRepository {
