@@ -17,6 +17,7 @@
 #include <cstdint>
 
 #include "bedrock/world/level/block/detection_rule.h"
+#include "bedrock/world/level/block/flammable.h"
 
 struct BlockComponentDirectData {
     enum LayerBitMask : std::uint32_t {
@@ -38,9 +39,10 @@ struct BlockComponentDirectData {
     bool is_opaque_full_block;
     Brightness light_emission;
     Brightness light;
+    LavaFlammable lava_flammable;
+    FlameOdds flame_odds;
+    BurnOdds burn_odds;
     float explosion_resistance;
-    int burn_odds;
-    int flame_odds;
     float friction;
     float destroy_speed;
     DetectionRule water_detection_rule;

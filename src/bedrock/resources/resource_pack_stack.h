@@ -34,8 +34,7 @@ public:
 
 class PackInstance {
 public:
-    PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool is_dependent,
-                 PackSettings *pack_settings);
+    PackInstance(NotNullResourcePack pack, int subpack_index, bool is_dependent, PackSettings *pack_settings);
 
     [[nodiscard]] const PackManifest &getManifest() const;
 
@@ -43,7 +42,7 @@ public:
 
 private:
     PackSettings *pack_settings_;
-    Bedrock::NonOwnerPointer<ResourcePack> pack_;
+    NotNullResourcePack pack_;
     PackStats stats_{};
     int subpack_index_;
 };
@@ -55,7 +54,8 @@ public:
     virtual ~ResourcePackStack() = 0;
 
     static std::unique_ptr<ResourcePackStack> deserialize(
-        std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo);
+        std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo,
+        std::optional<std::string> level_id);
 
     PackInstanceStack stack;
 

@@ -13,20 +13,15 @@
 // limitations under the License.
 
 #pragma once
+#include "bedrock/core/resource/resource_helper.h"
+#include "bedrock/resources/invalid_packs_filter_group.h"
+#include "bedrock/resources/resource_pack_stack.h"
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
-
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 10
-#define ENDSTONE_VERSION_PATCH 5
-
-#define NETWORK_PROTOCOL_VERSION 844
-
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
+class IContentSourceRepository {
+public:
+    virtual ~IContentSourceRepository();
+    virtual void deletePackFiles(const ResourceLocation &) {}
+    virtual void postDeletePack(const ResourceLocation &) = 0;
+    virtual std::vector<ResourceLocation> getInvalidPacks(const InvalidPacksFilterGroup &) = 0;
+    virtual ResourcePackStack createStack(const std::vector<PackInstanceId> &) = 0;
+};

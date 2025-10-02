@@ -68,8 +68,9 @@ public:
     [[nodiscard]] InputMode getCurrentInputMode() const;
     [[nodiscard]] std::string getThirdPartyName() const;
     [[nodiscard]] bool isVerified() const;
-    bool verify(const std::vector<std::string> &, int64_t);
+    [[nodiscard]] bool isWellFormed() const;
     bool verifySelfSigned();
+    void invalidate();
     [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
     [[nodiscard]] PlatformType getPlatformType() const;
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;

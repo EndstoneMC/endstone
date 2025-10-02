@@ -158,6 +158,7 @@ public:
     [[nodiscard]] virtual Tick const &getCurrentTick() const = 0;
     [[nodiscard]] virtual Tick getCurrentServerTick() const = 0;
     [[nodiscard]] virtual void *getTickDeltaTimeManager() const = 0;
+    virtual const VoxelShapes::VoxelShapeRegistry *getShapeRegistry() = 0;
     [[nodiscard]] virtual BiomeRegistry const &getBiomeRegistry() const = 0;
     virtual BiomeRegistry &getBiomeRegistry() = 0;
     [[nodiscard]] virtual BlockPalette const &getBlockPalette() const = 0;

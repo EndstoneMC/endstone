@@ -42,12 +42,12 @@ Brightness Block::getLight() const
 
 int Block::getFlameOdds() const
 {
-    return direct_data_.flame_odds;
+    return static_cast<int>(direct_data_.flame_odds);
 }
 
 int Block::getBurnOdds() const
 {
-    return direct_data_.burn_odds;
+    return static_cast<int>(direct_data_.burn_odds);
 }
 
 float Block::getExplosionResistance() const

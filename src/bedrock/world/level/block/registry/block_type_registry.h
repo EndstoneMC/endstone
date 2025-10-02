@@ -19,5 +19,5 @@
 
 class BlockTypeRegistry {
 public:
-    void forEachBlock(brstd::function_ref<bool(BlockType const &)>);
+    void forEachBlockType(brstd::function_ref<bool(BlockType const &)>);
 };

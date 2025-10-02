@@ -14,7 +14,60 @@
 
 #pragma once
 
+#include "bedrock/world/events/server_instance_events.h"
+
+class Minecraft;
+
 class ServerInstanceEventListener {
 public:
-    virtual ~ServerInstanceEventListener() = 0;
+    using EventType = ServerInstanceNotificationEvent;
+    virtual ~ServerInstanceEventListener() = default;
+    virtual EventResult onServerInitializeStart(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerInitializeEnd(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerMinecraftInitialized(ServerInstance &, const Bedrock::NotNullNonOwnerPtr<Minecraft> &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerLevelInitialized(ServerInstance &, Level &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerUpdateStart(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerUpdateEnd(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerSuspend(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerResume(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerThreadStarted(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onServerThreadStopped(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onStartLeaveGame(ServerInstance &)
+    {
+        return EventResult::KeepGoing;
+    }
+    virtual EventResult onEvent(const EventType &)
+    {
+        return EventResult::KeepGoing;
+    }
 };

@@ -23,20 +23,21 @@
 class IResourcePackRepository : public Bedrock::EnableNonOwnerReferences {
 public:
     virtual void getResourcePacksByPackId(std::vector<PackInstanceId> const &, std::vector<PackInstance> &) const = 0;
-    [[nodiscard]] virtual ResourcePack *getResourcePackForPackId(PackIdVersion const &) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<ResourcePack> getResourcePackForPackId(PackIdVersion const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackOfDifferentVersionForPackId(const PackIdVersion &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdInPath(PackIdVersion const &,
                                                                        Core::Path const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackByUUID(mce::UUID const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdOwned(PackIdVersion const &) const = 0;
-    [[nodiscard]] virtual ResourcePack *getResourcePackSatisfiesPackId(PackIdVersion const &, bool) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<ResourcePack> getResourcePackSatisfiesPackId(PackIdVersion const &,
+                                                                                       bool) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackContainingModule(PackIdVersion const &) const = 0;
     [[nodiscard]] virtual Bedrock::Threading::Async<std::shared_ptr<ResourcePack>> getResourcePackInPath(
         Core::Path const &) const = 0;
     virtual bool isResourcePackLoaded(PackIdVersion const &, PackOrigin const &) = 0;
     [[nodiscard]] virtual PackSourceReport const *getPackLoadingReport() const = 0;
-    [[nodiscard]] virtual ResourcePack *getEditorPack() const = 0;
-    [[nodiscard]] virtual ResourcePack *getVanillaPack() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<ResourcePack> getEditorPack() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<ResourcePack> getVanillaPack() const = 0;
     virtual bool setServicePacks(std::vector<PackIdVersion>) = 0;
     [[nodiscard]] virtual bool hasServicePacks(std::vector<PackIdVersion> const &) const = 0;
     [[nodiscard]] virtual std::vector<PackIdVersion> const &getServicePacks() const = 0;
@@ -63,19 +64,17 @@ public:
     virtual PackManifestFactory &getPackManifestFactory() = 0;
     [[nodiscard]] virtual PackSettingsFactory &getPackSettingsFactory() const = 0;
     virtual PackSourceFactory &getPackSourceFactory() = 0;
-    [[nodiscard]] virtual CompositePackSource const *getWorldPackSource() const = 0;
+    // [[nodiscard]] virtual CompositePackSource const *getWorldPackSource() const = 0;
     [[nodiscard]] virtual std::vector<ResourcePack *> getPacksByResourceLocation(PackOrigin) const = 0;
     [[nodiscard]] virtual std::vector<ResourcePack *> getPacksByType(PackType) const = 0;
-    [[nodiscard]] virtual std::vector<ResourcePack *> getPacksByCategory(PackCategory) const = 0;
+    [[nodiscard]] virtual std::vector<gsl::not_null<std::shared_ptr<ResourcePack>>> getPacksByCategory(
+        PackCategory) = 0;
     virtual void forEachPack(const std::function<void(const ResourcePack &)> &) const = 0;
-    virtual void addInvalidPack(ResourceLocation const &, PackType) = 0;
     [[nodiscard]] virtual std::vector<ResourceLocation> const &getInvalidPacks(PackType) const = 0;
     [[nodiscard]] virtual std::vector<ResourceLocation> getInvalidPacks(InvalidPacksFilterGroup const &) const = 0;
     virtual void deletePack(ResourceLocation const &) = 0;
     virtual void deletePackFiles(ResourceLocation const &) = 0;
     virtual void postDeletePack(ResourceLocation const &) = 0;
     virtual void untrackInvalidPack(ResourceLocation const &) = 0;
-    // virtual void registerResourcePackRemovedCallback(void *, std::function<void(ResourcePack *)>) = 0;
-    // virtual void unregisterResourcePackRemovedCallback(void *) = 0;
     [[nodiscard]] virtual bool isInitialized() const = 0;
 };

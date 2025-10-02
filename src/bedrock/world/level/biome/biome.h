@@ -53,14 +53,10 @@ public:
 
     float temperature;
     float downfall;
-    float red_spore_density;
-    float blue_spore_density;
-    float ash_density;
-    float white_ash_density;
+    float red_spore_density, blue_spore_density, ash_density, white_ash_density;
     float snow_accumulation;
     float foliage_snow;
-    float min_snow_level;
-    float max_snow_level;
+    float min_snow_level, max_snow_level;
     float depth;
     float scale;
     int map_water_color;
@@ -71,15 +67,9 @@ public:
 protected:
     MobList mobs_;
     MobCategoryMap mobs_map_;
-    struct CachedClientComponentData {
-        bool has_noise_based_color_palette;
-        bool is_roofed_forest;
-    };
-    static_assert(sizeof(CachedClientComponentData) == 2);
-    CachedClientComponentData cached_client_component_data_;
 
 private:
-    BiomeIdType id_;
+    const BiomeIdType id_;
     BiomeComponentStorage biome_component_storage_;
     const HashedString hash;
 };

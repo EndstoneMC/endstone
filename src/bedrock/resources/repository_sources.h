@@ -14,19 +14,22 @@
 
 #pragma once
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
+#include "pack_source_factory.h"
 
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 10
-#define ENDSTONE_VERSION_PATCH 5
+struct RepositorySourceOptions;
 
-#define NETWORK_PROTOCOL_VERSION 844
+class RepositorySources {
+public:
+    PackSource *getPackSource()
+    {
+        return pack_source_.get();
+    }
 
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
+private:
+    std::unique_ptr<const RepositorySourceOptions> options_;
+    std::unique_ptr<CompositePackSource> pack_source_;
+    std::unique_ptr<CompositePackSource> cache_pack_source_;
+    std::unique_ptr<CompositePackSource> world_pack_source_;
+    std::unique_ptr<CompositePackSource> premium_world_template_pack_source_;
+    std::unique_ptr<CompositePackSource> temp_world_template_pack_source_;
+};
