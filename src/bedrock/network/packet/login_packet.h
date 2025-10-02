@@ -17,8 +17,13 @@
 #include "bedrock/network/connection_request.h"
 #include "bedrock/network/packet.h"
 
-class LoginPacket : public Packet {
-public:
+struct LoginPacketPayload {
     int client_network_version;
     std::unique_ptr<ConnectionRequest> connection_request;
+};
+
+class LoginPacket : public Packet {
+public:
+    LoginPacketPayload payload;
+    SerializationMode serialization_mode;
 };
