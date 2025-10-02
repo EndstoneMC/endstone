@@ -21,10 +21,10 @@
 class ServerInstance;
 
 struct ServerInstanceLeaveGameDoneEvent {
-    gsl::not_null<Bedrock::NonOwnerPointer<ServerInstance>> mServerInstance;
+    gsl::not_null<Bedrock::NonOwnerPointer<ServerInstance>> server_instance;
 };
 struct ServerInstanceRequestResourceReload {
-    gsl::not_null<Bedrock::NonOwnerPointer<ServerInstance>> mServerInstance;
+    gsl::not_null<Bedrock::NonOwnerPointer<ServerInstance>> server_instance;
 };
 
 template <typename Return>
@@ -33,3 +33,5 @@ struct ServerInstanceGameplayEvent;
 template <>
 struct ServerInstanceGameplayEvent<void>
     : ConstEventVariant<ServerInstanceLeaveGameDoneEvent, ServerInstanceRequestResourceReload> {};
+
+struct ServerInstanceNotificationEvent;

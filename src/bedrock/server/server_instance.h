@@ -25,11 +25,10 @@
 #include "bedrock/server/cdn_config.h"
 #include "bedrock/server/server_text_settings.h"
 #include "bedrock/util/timer.h"
+#include "bedrock/world/events/server_instance_event_coordinator.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
 #include "bedrock/world/minecraft.h"
-
-class ServerInstanceEventCoordinator;
 
 class ServerInstance : public Bedrock::EnableNonOwnerReferences,
                        public AppPlatformListener,
@@ -48,11 +47,9 @@ public:
     Minecraft *getMinecraft();
     ServerNetworkSystem &getNetwork();
     PacketSender &getPacketSender();
+    Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> getEventCoordinator();
     Bedrock::NonOwnerPointer<CDNConfig> getCDNConfig() const;
     Bedrock::NonOwnerPointer<ServerTextSettings> getServerTextSettings() const;
-
-private:
-    ENDSTONE_HOOK void _resetServerScriptManager();
 
 public:
     std::chrono::steady_clock::time_point last_sync_time;
