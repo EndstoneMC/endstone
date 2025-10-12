@@ -23,7 +23,7 @@
 
 class IRepositoryFactory {
 public:
-    virtual ~IRepositoryFactory();
+    virtual ~IRepositoryFactory() = default;
     virtual std::shared_ptr<RepositorySources> createSources(const IResourcePackRepository &) const = 0;
     virtual std::unique_ptr<IPackIOProvider> createIO() = 0;
 };
