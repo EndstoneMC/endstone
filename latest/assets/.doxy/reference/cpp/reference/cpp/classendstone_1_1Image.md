@@ -58,6 +58,7 @@ _Represents an RGBA image._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 |   | [**Image**](#function-image-12) (const [**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height) <br>_Create an empty image (all pixels transparent black)._  |
+|   | [**Image**](#function-image-22) ([**Type**](classendstone_1_1Image.md#enum-type) type, int width, int height, const T & data) <br> |
 |  [**Color**](classendstone_1_1Color.md) | [**getColor**](#function-getcolor) (const int x, const int y) const<br>_Get the color of a pixel._  |
 |  std::string\_view | [**getData**](#function-getdata) () const<br>_Gets the raw pixel buffer (row-major, H x W x D)._  |
 |  int | [**getDepth**](#function-getdepth) () const<br>_Get the image depth._  |
@@ -156,6 +157,25 @@ inline explicit endstone::Image::Image (
 
 
         
+
+<hr>
+
+
+
+### function Image [2/2]
+
+```C++
+template<typename T>
+inline endstone::Image::Image (
+    Type type,
+    int width,
+    int height,
+    const T & data
+) 
+```
+
+
+
 
 <hr>
 

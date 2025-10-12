@@ -43,13 +43,19 @@ public:
     {
     }
 
-private:
-    Image(const Type type, const int width, const int height, const std::string_view data)
-        : type_(type), width_(width), height_(height), data_(data)
+    template <typename T>
+        requires requires(const T &x) {
+            { x.data() } -> std::convertible_to<const void *>;
+            { x.size() } -> std::convertible_to<std::size_t>;
+        }
+    Image(Type type, int width, int height, const T &data) : Image(type, width, height)
     {
+        const std::size_t n = std::min(data.size(), data_.size());
+        if (n > 0) {
+            std::memcpy(data_.data(), data.data(), n);
+        }
     }
 
-public:
     [[nodiscard]] int getWidth() const
     {
         return width_;
@@ -128,7 +134,7 @@ public:
     }
 
     static Result<Image> fromArray(Type type, const int width, const int height,
-                                    const std::vector<unsigned char> &array)
+                                   const std::vector<unsigned char> &array)
     {
         const std::string_view buffer(reinterpret_cast<const char *>(array.data()), array.size());
         return fromBuffer(type, width, height, buffer);

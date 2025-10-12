@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="225" column="10" bodyfile="include/endstone/util/image.h" bodystart="225" bodyend="-1"/>
+        <location file="include/endstone/util/image.h" line="231" column="10" bodyfile="include/endstone/util/image.h" bodystart="231" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Image_1a432c905a350795e507e4c5ec20c46d3c" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="226" column="9" bodyfile="include/endstone/util/image.h" bodystart="226" bodyend="-1"/>
+        <location file="include/endstone/util/image.h" line="232" column="9" bodyfile="include/endstone/util/image.h" bodystart="232" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Image_1ac756b938c6e000492398ab4137e7a15a" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="227" column="9" bodyfile="include/endstone/util/image.h" bodystart="227" bodyend="-1"/>
+        <location file="include/endstone/util/image.h" line="233" column="9" bodyfile="include/endstone/util/image.h" bodystart="233" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Image_1abce3555f620032b2ae87b7098219257f" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="228" column="17" bodyfile="include/endstone/util/image.h" bodystart="228" bodyend="-1"/>
+        <location file="include/endstone/util/image.h" line="234" column="17" bodyfile="include/endstone/util/image.h" bodystart="234" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -164,6 +164,42 @@
         </inbodydescription>
         <location file="include/endstone/util/image.h" line="52" column="14" bodyfile="include/endstone/util/image.h" bodystart="52" bodyend="55"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Image_1a371caf871910b57abb71f2b4f4435eb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::Image::Image</definition>
+        <argsstring>(Type type, int width, int height, const T &amp;data)</argsstring>
+        <name>Image</name>
+        <qualifiedname>endstone::Image::Image</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>data</declname>
+        </param>
+    <requiresclause>requires(const T &amp;x) { { x.data() } -&gt; std::convertible_to&lt;const void *&gt;; { x.size() } -&gt; std::convertible_to&lt;std::size_t&gt;; }    </requiresclause>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/image.h" line="62" column="5" bodyfile="include/endstone/util/image.h" bodystart="62" bodyend="68"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
         <definition>int endstone::Image::getWidth</definition>
@@ -180,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="69" column="10" bodyfile="include/endstone/util/image.h" bodystart="69" bodyend="72"/>
+        <location file="include/endstone/util/image.h" line="75" column="10" bodyfile="include/endstone/util/image.h" bodystart="75" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -198,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="79" column="10" bodyfile="include/endstone/util/image.h" bodystart="79" bodyend="82"/>
+        <location file="include/endstone/util/image.h" line="85" column="10" bodyfile="include/endstone/util/image.h" bodystart="85" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -216,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="89" column="10" bodyfile="include/endstone/util/image.h" bodystart="89" bodyend="101"/>
+        <location file="include/endstone/util/image.h" line="95" column="10" bodyfile="include/endstone/util/image.h" bodystart="95" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1a58311542846d5ed447a69f2c17d06d6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -259,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="111" column="12" bodyfile="include/endstone/util/image.h" bodystart="111" bodyend="134"/>
+        <location file="include/endstone/util/image.h" line="117" column="12" bodyfile="include/endstone/util/image.h" bodystart="117" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -312,7 +348,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="142" column="10" bodyfile="include/endstone/util/image.h" bodystart="142" bodyend="163"/>
+        <location file="include/endstone/util/image.h" line="148" column="10" bodyfile="include/endstone/util/image.h" bodystart="148" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string_view</type>
@@ -330,39 +366,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="170" column="23" bodyfile="include/endstone/util/image.h" bodystart="170" bodyend="173"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
-      <memberdef kind="function" id="classendstone_1_1Image_1adb854b500bb55257e067e3232c8511c2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>endstone::Image::Image</definition>
-        <argsstring>(const Type type, const int width, const int height, const std::string_view data)</argsstring>
-        <name>Image</name>
-        <qualifiedname>endstone::Image::Image</qualifiedname>
-        <param>
-          <type>const <ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref></type>
-          <declname>type</declname>
-        </param>
-        <param>
-          <type>const int</type>
-          <declname>width</declname>
-        </param>
-        <param>
-          <type>const int</type>
-          <declname>height</declname>
-        </param>
-        <param>
-          <type>const std::string_view</type>
-          <declname>data</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/util/image.h" line="58" column="5" bodyfile="include/endstone/util/image.h" bodystart="58" bodyend="61"/>
+        <location file="include/endstone/util/image.h" line="176" column="23" bodyfile="include/endstone/util/image.h" bodystart="176" bodyend="179"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -431,7 +435,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="184" column="19" bodyfile="include/endstone/util/image.h" bodystart="184" bodyend="189"/>
+        <location file="include/endstone/util/image.h" line="190" column="19" bodyfile="include/endstone/util/image.h" bodystart="190" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Result&lt; <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> &gt;</type>
@@ -498,7 +502,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/image.h" line="200" column="19" bodyfile="include/endstone/util/image.h" bodystart="200" bodyend="222"/>
+        <location file="include/endstone/util/image.h" line="206" column="19" bodyfile="include/endstone/util/image.h" bodystart="206" bodyend="228"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -507,7 +511,7 @@
     <detaileddescription>
 <para>Each pixel is four bytes: R, G, B, A, in row-major order. </para>
     </detaileddescription>
-    <location file="include/endstone/util/image.h" line="27" column="1" bodyfile="include/endstone/util/image.h" bodystart="27" bodyend="229"/>
+    <location file="include/endstone/util/image.h" line="27" column="1" bodyfile="include/endstone/util/image.h" bodystart="27" bodyend="235"/>
     <listofallmembers>
       <member refid="classendstone_1_1Image_1abce3555f620032b2ae87b7098219257f" prot="private" virt="non-virtual"><scope>endstone::Image</scope><name>data_</name></member>
       <member refid="classendstone_1_1Image_1a3a1c8f43ddaa26480349a1bb1e13132f" prot="public" virt="non-virtual"><scope>endstone::Image</scope><name>fromArray</name></member>
@@ -519,7 +523,7 @@
       <member refid="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" prot="public" virt="non-virtual"><scope>endstone::Image</scope><name>getWidth</name></member>
       <member refid="classendstone_1_1Image_1ac756b938c6e000492398ab4137e7a15a" prot="private" virt="non-virtual"><scope>endstone::Image</scope><name>height_</name></member>
       <member refid="classendstone_1_1Image_1a312c38a53a5e27f6b10c4d0e62f1f630" prot="public" virt="non-virtual"><scope>endstone::Image</scope><name>Image</name></member>
-      <member refid="classendstone_1_1Image_1adb854b500bb55257e067e3232c8511c2" prot="private" virt="non-virtual"><scope>endstone::Image</scope><name>Image</name></member>
+      <member refid="classendstone_1_1Image_1a371caf871910b57abb71f2b4f4435eb8" prot="public" virt="non-virtual"><scope>endstone::Image</scope><name>Image</name></member>
       <member refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" prot="public" virt="non-virtual"><scope>endstone::Image</scope><name>setColor</name></member>
       <member refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" prot="public" virt="non-virtual"><scope>endstone::Image</scope><name>Type</name></member>
       <member refid="classendstone_1_1Image_1adbbf675bb89a2b6595c5d9364afec233" prot="private" virt="non-virtual"><scope>endstone::Image</scope><name>type_</name></member>

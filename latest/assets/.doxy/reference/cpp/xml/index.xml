@@ -665,13 +665,13 @@
     <member refid="classendstone_1_1Image_1ac756b938c6e000492398ab4137e7a15a" kind="variable"><name>height_</name></member>
     <member refid="classendstone_1_1Image_1abce3555f620032b2ae87b7098219257f" kind="variable"><name>data_</name></member>
     <member refid="classendstone_1_1Image_1a312c38a53a5e27f6b10c4d0e62f1f630" kind="function"><name>Image</name></member>
+    <member refid="classendstone_1_1Image_1a371caf871910b57abb71f2b4f4435eb8" kind="function"><name>Image</name></member>
     <member refid="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" kind="function"><name>getWidth</name></member>
     <member refid="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" kind="function"><name>getHeight</name></member>
     <member refid="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" kind="function"><name>getDepth</name></member>
     <member refid="classendstone_1_1Image_1a58311542846d5ed447a69f2c17d06d6c" kind="function"><name>getColor</name></member>
     <member refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" kind="function"><name>setColor</name></member>
     <member refid="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" kind="function"><name>getData</name></member>
-    <member refid="classendstone_1_1Image_1adb854b500bb55257e067e3232c8511c2" kind="function"><name>Image</name></member>
     <member refid="classendstone_1_1Image_1a3a1c8f43ddaa26480349a1bb1e13132f" kind="function"><name>fromArray</name></member>
     <member refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" kind="function"><name>fromBuffer</name></member>
   </compound>
