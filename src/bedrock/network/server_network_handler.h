@@ -57,8 +57,10 @@ public:
 
     ~ServerNetworkHandler() override = 0;
 
-    ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
-                                        std::string const &, std::optional<std::string>, bool);
+    ENDSTONE_HOOK void disconnectClientWithMessage(const NetworkIdentifier &id, SubClientId sub_id,
+                                                   Connection::DisconnectFailReason disconnect_reason,
+                                                   const std::string &message,
+                                                   std::optional<std::string> filtered_message, bool skip_message);
     [[nodiscard]] int getMaxNumPlayers() const;
     int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();
@@ -94,6 +96,7 @@ private:
     Bedrock::NonOwnerPointer<ILevel> level_;
     ServerNetworkSystem &network_;
     PrivateKeyManager &server_keys_;
+    Bedrock::NotNullNonOwnerPtr<MinecraftServiceKeyManager> minecraft_service_keys_;
     ServerLocator &server_locator_;
     gsl::not_null<PacketSender *> packet_sender_;  // +200
     bool use_allow_list_;
@@ -102,6 +105,7 @@ private:
     DenyList server_deny_list_;
     NetworkServerConfig network_server_config_;
     bool has_displayed_pack_errors_;
+    std::shared_ptr<PackSettingsCache> pack_settings_cache_;
     NetworkIdentifier my_id_;
     int max_chunk_radius_;
     MinecraftCommands &minecraft_commands_;

@@ -29,6 +29,11 @@ PacketSender &ServerInstance::getPacketSender()
     return *packet_sender_;
 }
 
+Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> ServerInstance::getEventCoordinator()
+{
+    return event_coordinator_;
+}
+
 Bedrock::NonOwnerPointer<CDNConfig> ServerInstance::getCDNConfig() const
 {
     return cdn_config_;

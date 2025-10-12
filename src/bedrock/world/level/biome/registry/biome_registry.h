@@ -32,6 +32,11 @@ class BiomeRegistry : public Bedrock::EnableNonOwnerReferences {
 public:
     void forEachBiome(std::function<void(Biome const &)>) const;
     void forEachNonConstBiome(std::function<void(Biome &)>);
+    struct SeasonTextureRowSettings {
+        float temperature;
+        float downfall;
+        float foliage_snow;
+    };
 
 private:
     using BiomeNameLookupMap = std::unordered_map<HashType64, std::unique_ptr<Biome>>;
@@ -45,9 +50,9 @@ private:
     std::vector<std::pair<const BiomeIdType, const std::string &>> removed_biomes_id_and_full_name_;
     std::uint32_t next_custom_biome_id_;
     std::atomic<bool> closed_for_registration_;
-    bool load_from_all_packs_;
     BiomeTagRegistry tag_registry_;
     Biome *empty_biome_;  // +1256
     Bedrock::PubSub::Subscription on_save_subscription_;
     Bedrock::PubSub::Subscription on_level_storage_manager_start_leave_game_subscription_;
+    std::vector<SeasonTextureRowSettings> season_texture_row_settings_;
 };

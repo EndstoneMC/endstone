@@ -48,6 +48,7 @@ public:
     std::weak_ptr<class CompressedNetworkPeer> compressed_peer;
     std::weak_ptr<class BatchedNetworkPeer> batched_peer;
     std::weak_ptr<class LatencyNetworkPeer> latency_peer;
+    std::weak_ptr<class PacketTraceNetworkPeer> packet_trace_peer;
     std::shared_ptr<NetworkPeer> peer;
     std::chrono::steady_clock::time_point last_packet_time;
     std::chrono::steady_clock::time_point closed_time;

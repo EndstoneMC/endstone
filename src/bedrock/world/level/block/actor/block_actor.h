@@ -68,7 +68,6 @@ public:
 
 protected:
     int repair_cost_;
-    const Block *block_;
     BlockPos position_;
     AABB bb_;
     BlockActorRendererId renderer_id_;
@@ -80,4 +79,4 @@ protected:
     // private:
     //     bool changed_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 160, 144);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 152, 136);

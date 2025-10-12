@@ -26,14 +26,36 @@ template <typename ListenerType>
 class EventCoordinatorPimpl {
 public:
     virtual ~EventCoordinatorPimpl() = default;
+    bool registerListener(gsl::not_null<ListenerType *> listener)
+    {
+        if (std::ranges::find(listeners_, listener.get()) != listeners_.end()) {
+            return false;
+        }
+
+        if (events_to_process_.empty()) {
+            listeners_.emplace_back(std::move(listener.get()));
+            return true;
+        }
+
+        if (std::ranges::find(pending_registrations_, listener.get()) != pending_registrations_.end()) {
+            return false;
+        }
+
+        has_pending_registrations_ = true;
+        pending_registrations_.emplace_back(std::move(listener.get()));
+        return true;
+    }
 
 protected:
+    void processEvent(std::function<EventResult(ListenerType &)>);
     std::vector<ListenerType *> listeners_;                                      // +8
     std::vector<std::function<EventResult(ListenerType &)>> events_to_process_;  // +32
     std::vector<ListenerType *> pending_registrations_;                          // +56
     bool has_pending_registrations_;                                             // +80
 
 private:
+    void _processPendingRegistrations();
+    void _checkThreadId();
     std::thread::id thread_id_;        // +84
     bool thread_id_initialized_;       //
     std::int32_t thread_check_index_;  //

@@ -254,7 +254,8 @@ enum class MinecraftPacketIds : int {
     PlayerLocation = 326,
     ClientboundControlSchemeSetPacket = 327,
     ServerScriptDebugDrawerPacket = 328,
-    EndId = 329,
+    ServerboundPackSettingChangePacket = 329,
+    EndId = 330,
 };
 
 class NetEventCallback;
@@ -304,10 +305,11 @@ public:
     [[nodiscard]] virtual bool isValid() const;
     [[nodiscard]] virtual SerializationMode getSerializationMode() const;
     virtual void setSerializationMode(SerializationMode);
+    [[nodiscard]] virtual std::string toString() const;
 
     Bedrock::Result<void> readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
                                        const SubClientId &sub_id);
-    [[nodiscard]] SubClientId getClientSubId() const;
+    [[nodiscard]] SubClientId getSenderSubId() const;
     [[nodiscard]] Compressibility getCompressible() const;
     [[nodiscard]] NetworkPeer::Reliability getReliability() const;
     void setReceiveTimestamp(const NetworkPeer::PacketRecvTimepoint &recv_timepoint);
@@ -319,13 +321,16 @@ private:
     virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx);
     [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
+protected:
     PacketPriority priority_{PacketPriority::MEDIUM_PRIORITY};                         // + 8
     NetworkPeer::Reliability reliability_{NetworkPeer::Reliability::ReliableOrdered};  // + 12
-    SubClientId client_sub_id_{SubClientId::PrimaryClient};                            // + 16
+    SubClientId sender_sub_id_{SubClientId::PrimaryClient};                            // + 16
     bool is_handled_{false};                                                           // + 17
     NetworkPeer::PacketRecvTimepoint recv_timepoint_;                                  // + 24
-    const IPacketHandlerDispatcher *handler_{nullptr};                                 // + 32
-    Compressibility compressible_{Compressibility::Compressible};                      // + 40
+
+private:
+    const IPacketHandlerDispatcher *handler_{nullptr};             // + 32
+    Compressibility compressible_{Compressibility::Compressible};  // + 40
 };
 BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);
 

@@ -124,6 +124,7 @@ class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
 class InternalComponentRegistry;
+class InvalidPacks {};
 class IPackLoadContext;
 class IServerNetworkController;
 class ItemComponent;
@@ -146,6 +147,7 @@ class LootTables;
 class MapDataManager;
 class MaterialTypeHelper;
 class MinecraftGameTest;
+class MinecraftServiceKeyManager;
 class MobAnimationComponent;
 class MobHurtTimeComponent;
 class MolangVariable;
@@ -157,6 +159,7 @@ class NetworkStatistics {};
 class Options;
 class PackManifestFactory;
 class PackMetadata;
+class PackSettingsCache;
 class PackSettingsFactory;
 class Particle;
 class Path;
@@ -189,6 +192,7 @@ class ResourceDropsContext;
 class ResourceLoadManager;
 class ResourcePackFileUploadManager;
 class ResourcePackListener;
+class ResourcePackRepositoryRefreshQueue {};
 class RopeSystem;
 class RuntimeLightingManager;
 class SavedDataStorage;
@@ -197,6 +201,7 @@ class ScreenSetupCleanupHelper;
 class ScreenshotOptions;
 class SearchQuery;
 class Seasons {};
+class ServerInstanceEventHandler;
 class ServerLocator;
 class ServerMetrics;
 class SnapshotFilenameAndLength;
@@ -232,21 +237,19 @@ struct SyncedClientOptionsComponent;
 // Enums
 enum class ArmorMaterialType;
 enum class ArmorTextureType;
+enum class BehaviorStatus;
 enum BlockActorRendererId : std::uint8_t;
 enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
-enum class BurnOdds;
 enum class ChunkCachedDataState : std::int8_t;
 enum class ChunkDebugDisplaySavedState : std::int8_t;
 enum class ChunkTerrainDataState : std::int8_t;
 enum class ClientPlayMode : uint32_t;
 enum class DeviceMemoryTier : int;
 enum class FertilizerType;
-enum class FlameOdds;
 enum class InHandUpdateType : std::int8_t;
 enum class ItemColor : std::int8_t;
 enum class JsonBetaState;
-enum class LavaFlammable;
 enum class LevelChunkFormat : std::int8_t;
 enum class LevelEvent;
 enum class NewInteractionModel : int;
@@ -318,6 +321,9 @@ class ScriptPropertyRegistry;
 namespace ResourcePackPathLifetimeHelpers {
 class ResourcePackPathCache {};
 }  // namespace ResourcePackPathLifetimeHelpers
+namespace VoxelShapes {
+class VoxelShapeRegistry;
+}
 
 namespace br::spawn {
 class EntityTypeCache;

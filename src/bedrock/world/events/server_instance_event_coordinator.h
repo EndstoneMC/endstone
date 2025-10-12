@@ -14,15 +14,13 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
+#include "bedrock/forward.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/server_instance_event_listener.h"
 
-class ServerInstanceEventCoordinator : public EventCoordinatorPimpl<ServerInstanceEventListener> {
+class ServerInstanceEventCoordinator : public EventCoordinator<ServerInstanceEventListener> {
 public:
-    void sendServerInitializeStart(ServerInstance &instance);
-    void sendServerInitializeEnd(ServerInstance &instance);
-    void sendServerThreadStarted(ServerInstance &instance);
-    void sendServerThreadStopped(ServerInstance &instance);
+protected:
+    std::unique_ptr<ServerInstanceEventHandler> server_instance_event_handler_;
 };

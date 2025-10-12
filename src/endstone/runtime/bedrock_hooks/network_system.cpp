@@ -94,7 +94,7 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     BinaryStream stream;
     const auto packet_id = static_cast<int>(packet.getId());
     const auto header = packet_id | (static_cast<unsigned>(sender_sub_id) << 10) |
-                        (static_cast<unsigned>(packet.getClientSubId()) << 12);
+                        (static_cast<unsigned>(packet.getSenderSubId()) << 12);
     stream.writeUnsignedVarInt(header, "Header Data", nullptr);
     packet.writeWithSerializationMode(stream, getPacketReflectionCtx(),
                                       packet_overrides_->getOverrideModeForPacket(packet.getId()));

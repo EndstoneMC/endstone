@@ -14,19 +14,25 @@
 
 #pragma once
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
+#include <cstdint>
 
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 11
-#define ENDSTONE_VERSION_PATCH 0
+enum class BurnOdds : uint16_t {
+    INSTANT = 100,
+    EASY = 60,
+    MEDIUM = 20,
+    HARD = 5,
+    NEVER = 0,
+};
 
-#define NETWORK_PROTOCOL_VERSION 844
+enum class FlameOdds : uint16_t {
+    INSTANT = 60,
+    EASY = 30,
+    MEDIUM = 15,
+    HARD = 5,
+    NEVER = 0,
+};
 
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
+enum class LavaFlammable : bool {
+    ALWAYS = 1,
+    NEVER = 0,
+};

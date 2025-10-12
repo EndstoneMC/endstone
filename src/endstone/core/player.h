@@ -143,7 +143,6 @@ private:
     std::string device_os_ = "Unknown";
     std::string device_id_;
     std::string game_version_;
-    std::unique_ptr<Skin> skin_;
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     bool spawned_ = false;

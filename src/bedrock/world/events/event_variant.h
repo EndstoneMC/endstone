@@ -143,3 +143,21 @@ public:
 private:
     EventVariant variant_;
 };
+
+namespace Details {
+template <typename...>
+struct TemplateArgumentCat;
+
+template <typename... Xs>
+struct TemplateArgumentCat<EventVariantImpl<Xs...>> {
+    using type = EventVariantImpl<Xs...>;
+};
+
+template <typename... Xs, typename... Ys, typename... Rest>
+struct TemplateArgumentCat<EventVariantImpl<Xs...>, EventVariantImpl<Ys...>, Rest...> {
+    using type = TemplateArgumentCat<EventVariantImpl<Xs..., Ys...>, Rest...>::type;
+};
+}  // namespace Details
+
+template <typename... Events>
+using NotificationEventVariant = Details::TemplateArgumentCat<Events...>::type;

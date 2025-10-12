@@ -119,7 +119,8 @@ public:
     void init(ServerInstance &server_instance);
     void setLevel(::Level &level);
     void initRegistries();
-    void setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
+    void setResourcePackRepository(IResourcePackRepository &repo);
+    void initPackSource(const PackSourceFactory &pack_source_factory);
     [[nodiscard]] PackSource &getPackSource() const;
     [[nodiscard]] bool getAllowClientPacks() const;
     [[nodiscard]] bool logCommands() const;

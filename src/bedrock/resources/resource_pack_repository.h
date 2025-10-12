@@ -16,36 +16,44 @@
 
 #include "bedrock/forward.h"
 #include "bedrock/platform/threading/mutex_details.h"
+#include "bedrock/resources/content_source_repository.h"
+#include "bedrock/resources/repository_loading.h"
+#include "bedrock/resources/repository_sources.h"
 #include "bedrock/resources/resource_pack_repository_interface.h"
 
-class ResourcePackRepository : public IResourcePackRepository {
+class IRepositoryFactory {
 public:
-    ResourcePackRepository(IMinecraftEventing &, PackManifestFactory &,
-                           const Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> &,
-                           const Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> &,
-                           Bedrock::NonOwnerPointer<PackCommand::IPackCommandPipeline>, PackSourceFactory &, bool);
+    virtual ~IRepositoryFactory() = default;
+    virtual std::shared_ptr<RepositorySources> createSources(const IResourcePackRepository &) const = 0;
+    virtual std::unique_ptr<IPackIOProvider> createIO() = 0;
+};
+
+class RepositoryFactory : public IRepositoryFactory {
+public:
+    ENDSTONE_HOOK std::shared_ptr<RepositorySources> createSources(const IResourcePackRepository &) const override;
+};
+
+class ResourcePackRepository : public IResourcePackRepository, public IContentSourceRepository {
+public:
+    ResourcePackRepository(gsl::not_null<std::shared_ptr<RepositoryPacks>> repository_packs,
+                           PackManifestFactory &manifest_factory,
+                           const Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> &content_accessibility,
+                           const Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> &path_manager,
+                           Bedrock::NonOwnerPointer<PackCommand::IPackCommandPipeline> commands,
+                           PackSourceFactory &pack_source_factory, bool init_async,
+                           std::unique_ptr<IRepositoryFactory> factory);
 
 private:
     friend class endstone::core::EndstoneServer;
 
-    ENDSTONE_HOOK void _initializePackSource();  // NOLINT
-
     Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> file_path_manager_;
     gsl::not_null<std::shared_ptr<RepositoryPacks>> all_resource_packs_;
-    std::unique_ptr<CompositePackSource> pack_source_;
-    std::unique_ptr<CompositePackSource> cache_pack_source_;
-    std::unique_ptr<CompositePackSource> world_pack_source_;
-    std::unique_ptr<CompositePackSource> premium_world_template_pack_source_;
-    std::unique_ptr<CompositePackSource> temp_world_template_pack_source_;
+    gsl::not_null<std::unique_ptr<InvalidPacks>> invalid_packs_;
+    gsl::not_null<std::unique_ptr<IRepositoryFactory>> factory_;
+    gsl::not_null<std::shared_ptr<RepositorySources>> sources_;
     std::unique_ptr<PackSourceReport> pack_source_report_;
-    ResourcePack *editor_pack_;
-    ResourcePack *vanilla_pack_;
+    gsl::not_null<std::unique_ptr<RepositoryLoading::VanillaPacks>> vanilla_packs_;
     std::vector<PackIdVersion> service_packs_;
-    std::vector<ResourceLocation> invalid_pack_location_;
-    std::vector<ResourceLocation> invalid_behavior_pack_location_;
-    std::vector<ResourceLocation> invalid_resource_pack_location_;
-    std::vector<ResourceLocation> invalid_template_pack_location_;
-    IMinecraftEventing &eventing_;
     PackManifestFactory &manifest_factory_;
     Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> content_accessibility_;
     Core::HeapPathBuffer current_world_path_;
@@ -54,12 +62,10 @@ private:
     std::unique_ptr<PackSettingsFactory> pack_settings_factory_;
     PackSourceFactory &pack_source_factory_;
     Bedrock::NonOwnerPointer<PackCommand::IPackCommandPipeline> commands_;
-    std::unique_ptr<TaskGroup> init_task_group_;
+    std::unique_ptr<TaskGroup> task_group_;
     Bedrock::Threading::Mutex initialize_mutex_;
-    bool cancel_initialization_;
-    bool initialized_;
-    bool reload_user_packs_requested_;
-    bool refresh_packs_requested_;
     ContentIdentity current_premium_world_template_identity_;
+    gsl::not_null<std::unique_ptr<ResourcePackRepositoryRefreshQueue>> refresher_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 576, 496);
+// TODO(fixme): check size
+// BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 576, 496);

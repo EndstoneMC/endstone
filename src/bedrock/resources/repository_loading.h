@@ -14,19 +14,9 @@
 
 #pragma once
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
-
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 11
-#define ENDSTONE_VERSION_PATCH 0
-
-#define NETWORK_PROTOCOL_VERSION 844
-
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
+namespace RepositoryLoading {
+struct VanillaPacks {
+    std::shared_ptr<ResourcePack> editor_pack;
+    std::shared_ptr<ResourcePack> vanilla_pack;
+};
+}  // namespace RepositoryLoading

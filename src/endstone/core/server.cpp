@@ -57,6 +57,26 @@ namespace fs = std::filesystem;
 namespace py = pybind11;
 
 namespace endstone::core {
+namespace {
+class ServerInstanceStopListener : ServerInstanceEventListener {
+public:
+    ::EventResult onServerThreadStopped(ServerInstance &instance) override
+    {
+        if (entt::locator<EndstoneServer>::has_value()) {
+            auto &server = entt::locator<EndstoneServer>::value();
+            server.disablePlugins();
+        }
+        entt::locator<EndstoneServer>::reset();
+        return ::EventResult::KeepGoing;
+    }
+
+    static ServerInstanceEventListener &getInstance()
+    {
+        static ServerInstanceStopListener instance;
+        return instance;
+    }
+};
+}  // namespace
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
@@ -92,6 +112,7 @@ void EndstoneServer::init(ServerInstance &server_instance)
         throw std::runtime_error("Server instance already initialized.");
     }
     server_instance_ = &server_instance;
+    server_instance_->getEventCoordinator()->registerListener(&ServerInstanceStopListener::getInstance());
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
     player_ban_list_->load();
@@ -144,13 +165,20 @@ void EndstoneServer::initRegistries()
     });
 }
 
-void EndstoneServer::setResourcePackRepository(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
+void EndstoneServer::setResourcePackRepository(IResourcePackRepository &repo)
 {
     if (resource_pack_repository_) {
         throw std::runtime_error("Resource pack repository already set.");
     }
-    resource_pack_repository_ = std::move(repo);
-    auto io = resource_pack_repository_->getPackSourceFactory().createPackIOProvider();
+    resource_pack_repository_ = repo;
+}
+
+void EndstoneServer::initPackSource(const PackSourceFactory &pack_source_factory)
+{
+    if (resource_pack_source_) {
+        throw std::runtime_error("Resource pack source already created.");
+    }
+    auto io = pack_source_factory.createPackIOProvider();
     resource_pack_source_ = std::make_unique<EndstonePackSource>(EndstonePackSourceOptions(
         PackSourceOptions(std::move(io)), resource_pack_repository_->getResourcePacksPath().getContainer(),
         PackType::Resources));
@@ -185,7 +213,8 @@ void EndstoneServer::loadResourcePacks()
         });
     });
     std::stringstream ss(json.dump());
-    const auto pack_stack = ResourcePackStack::deserialize(ss, *resource_pack_repository_);
+    const auto pack_stack =
+        ResourcePackStack::deserialize(ss, *resource_pack_repository_, level_->getHandle().getLevelId());
 
     // Add encryption keys to network handler to be sent to clients
     auto content_keys = resource_pack_source_->getContentKeys();

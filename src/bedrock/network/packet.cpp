@@ -66,10 +66,15 @@ SerializationMode Packet::getSerializationMode() const
 
 void Packet::setSerializationMode(SerializationMode) {}
 
+std::string Packet::toString() const
+{
+    return "";
+}
+
 Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
                                            const SubClientId &sub_id)
 {
-    client_sub_id_ = sub_id;
+    sender_sub_id_ = sub_id;
     auto result = read(stream, reflection_ctx);
     if (!result.ignoreError()) {
         return BEDROCK_RETHROW(result);
@@ -77,9 +82,9 @@ Bedrock::Result<void> Packet::readNoHeader(ReadOnlyBinaryStream &stream, const c
     return result;
 }
 
-SubClientId Packet::getClientSubId() const
+SubClientId Packet::getSenderSubId() const
 {
-    return client_sub_id_;
+    return sender_sub_id_;
 }
 
 Compressibility Packet::getCompressible() const

@@ -12,19 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/server_instance.h"
+#include "bedrock/resources/repository_sources.h"
 
+#include "endstone/core/packs/endstone_pack_source.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-void ServerInstance::_resetServerScriptManager()
+void RepositorySources::initializePackSource(PackSourceFactory &pack_source_factory)
 {
-    // This function is called when the server loop stops (safely executed from the server thread)
-    // or during the destruction of the ServerInstance object.
-    if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
-        auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-        server.disablePlugins();
-    }
-    entt::locator<endstone::core::EndstoneServer>::reset();
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::_resetServerScriptManager, this);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&RepositorySources::initializePackSource, this, pack_source_factory);
+    auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
+    server.initPackSource(pack_source_factory);
+    pack_source_->addPackSource(&server.getPackSource());
 }

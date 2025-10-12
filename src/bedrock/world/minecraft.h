@@ -50,6 +50,7 @@ private:
     AllowList &allow_list_;
     PermissionsFile *permissions_file_;
     std::unique_ptr<PrivateKeyManager> server_keys_;
+    std::unique_ptr<MinecraftServiceKeyManager> minecraft_service_keys_;
     std::string save_game_path_;
     Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;
     ServerMetrics *server_metrics_;

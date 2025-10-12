@@ -33,7 +33,7 @@ using PackSourcePacks = std::vector<gsl::not_null<std::shared_ptr<Pack>>>;
 
 struct PackSourceOptions {
     PackSourceOptions() = default;
-    PackSourceOptions(std::unique_ptr<IPackIOProvider> io) : io(std::move(io)){};
+    PackSourceOptions(std::unique_ptr<IPackIOProvider> io) : io(std::move(io)) {};
     PackSourceOptions(PackSourceOptions &&) noexcept = default;
     std::unique_ptr<IPackIOProvider> io;
 };
@@ -58,6 +58,7 @@ struct PackSourceLoadResult {
 struct PackSourceLoadOptions {
     gsl::not_null<IPackManifestFactory *> manifest_factory;
     Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> key_provider;
+    PackCommand::IPackCommandPipeline *pipeline_override;
 };
 
 struct PackStorage {

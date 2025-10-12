@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.6](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.6) - 2025-10-02
+
+<small>[Compare with 0.10.5](https://github.com/EndstoneMC/endstone/compare/v0.10.5...v0.10.6)</small>
+
+### Added
+
+* Added support for BDS version 1.21.111.1.
+
+## [0.10.5](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.5) - 2025-09-26
+
+<small>[Compare with 0.10.4](https://github.com/EndstoneMC/endstone/compare/v0.10.4...v0.10.5)</small>
+
+### Added
+
+* Added support for BDS version 1.21.102.1.
+* Added `Level::getSeed` to retrieve the seed of the current level.
+* Added the `/seed` command to display the current level's seed.
+* Added `PlayerChatEvent::getFormat` and `PlayerChatEvent::setFormat` to customize the message format.
+
+### Fixed
+
+* Fixed a crash that could occur when a sub-client joined.
+* Ensured `Inventory::setItem` properly updates the client.
+* Item data is now handled correctly during `ItemStack` construction.
+* `ItemStack::setCount` now correctly updates the item count instead of clearing the entire stack.
+* `PlayerChatEvent::setMessage` now correctly displays the updated message to the client.
+
+### Changed
+
+* If a command usage includes a parameter of type `message`, it must be the final parameter. No additional parameters
+  are allowed after it.
+* On Windows, if the automatic loopback exemption fails, a warning will be shown, but the server will no longer stop
+  running.
+
 ## [0.10.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.4) - 2025-08-10
 
 <small>[Compare with 0.10.3](https://github.com/EndstoneMC/endstone/compare/v0.10.3...v0.10.4)</small>
