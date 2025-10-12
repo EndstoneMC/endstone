@@ -383,7 +383,6 @@ private:
     bool is_door_;
     bool is_opaque_full_block_;
     float translucency_;
-    // bool should_random_tick_;
     bool should_random_tick_extra_layer_;
     bool is_mob_piece_;
     bool can_be_extra_block_;
@@ -392,9 +391,6 @@ private:
 protected:
     Brightness light_block_;
     Brightness light_emission_;
-    FlameOdds flame_odds_;
-    BurnOdds burn_odds_;
-    LavaFlammable lava_flammable_;
     Color map_color_;
     float friction_;
     NoteBlockInstrument note_block_instrument_;
@@ -402,7 +398,7 @@ protected:
     bool return_default_block_on_unidentified_block_state_;
 
 private:
-    NewBlockID id_;  // +462
+    NewBlockID id_;  // +450
     BaseGameVersion min_required_game_version_;
     bool is_vanilla_;
     std::vector<HashedString> tags_;
@@ -415,10 +411,10 @@ private:
     AABB visual_shape_;
     std::int32_t bits_used_;
     std::int32_t total_bits_used_;
-    std::map<std::uint64_t, BlockStateInstance> states_;  // +640
+    std::map<std::uint64_t, BlockStateInstance> states_;  // +624
     std::unordered_map<HashedString, std::uint64_t> state_name_map_;
     std::size_t creative_enum_state_;
-    std::vector<std::unique_ptr<Block>> block_permutations_;  // +728
+    std::vector<std::unique_ptr<Block>> block_permutations_;  // +712
     Block *default_state_;
     std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;
     Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;
