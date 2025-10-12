@@ -857,28 +857,6 @@ void EndstonePlayer::initFromConnectionRequest(
             else {
                 game_version_ = server_.getMinecraftVersion();
             }
-
-            {
-                auto skin_id = req->getSkinId();
-                auto skin_height = req->getSkinImageHeight();
-                auto skin_width = req->getSkinImageWidth();
-                auto skin_image = Image::fromArray(Image::Type::RGBA, skin_width, skin_height, req->getSkinData());
-                if (!skin_image) {
-                    server_.getLogger().error("Player {} has an invalid skin: {}", getName(), skin_image.error());
-                    return;
-                }
-
-                auto cape_id = req->getCapeId();
-                auto cape_height = req->getCapeImageHeight();
-                auto cape_width = req->getCapeImageWidth();
-                auto cape_image = Image::fromArray(Image::Type::RGBA, skin_width, skin_height, req->getCapeData());
-                if (cape_id.empty() || !cape_image) {
-                    skin_ = std::make_unique<Skin>(skin_id, skin_image.value());
-                }
-                else {
-                    skin_ = std::make_unique<Skin>(skin_id, skin_image.value(), cape_id, cape_image.value());
-                }
-            }
         },
         request);
 }
