@@ -324,6 +324,9 @@ class Pybind11DocstringParser(Extension):
                     signature = f"{func_name}({match.group("args")}) -> {match.group("returns")}"
 
                     overload.parameters, overload.returns = self.parse_signature(signature, parent=func.parent)
+                    if overload.parameters and overload.parameters[0].name == "self":
+                        overload.parameters[0].annotation = None
+
                     overloads.append(overload)
 
             overloads[-1].docstring = Docstring("\n".join(doc_lines[doc_start:]).lstrip())
