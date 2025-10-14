@@ -77,7 +77,7 @@ class EndstoneRecipe(ConanFile):
             self.requires("libelf/0.8.13")
 
         if self._with_devtools:
-            self.requires("glew/2.2.0")
+            # self.requires("glew/2.2.0")
             self.requires("glfw/3.4")
             self.requires("imgui/1.91.8-docking")
             self.requires("zstr/1.0.7")
