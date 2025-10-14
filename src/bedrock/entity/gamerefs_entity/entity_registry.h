@@ -24,6 +24,7 @@
 template <typename>
 class WeakRef;
 
+class EntityContext;
 class EntityRegistry : public EnableGetWeakRef<EntityRegistry>, public std::enable_shared_from_this<EntityRegistry> {
 public:
     WeakRef<EntityRegistry> getWeakRef();
