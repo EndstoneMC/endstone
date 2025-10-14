@@ -68,6 +68,13 @@ bool HashedString::empty() const
     return str_.empty();
 }
 
+void HashedString::clear()
+{
+    str_.clear();
+    str_hash_ = 0;
+    last_match_ = nullptr;
+}
+
 bool HashedString::operator==(const HashedString &other) const
 {
     if (str_hash_ == other.str_hash_) {

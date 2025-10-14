@@ -21,6 +21,7 @@ ActorDefinitionIdentifier::ActorDefinitionIdentifier(const std::string &full_nam
 
 void ActorDefinitionIdentifier::initialize(const std::string &full_name)
 {
+    canonical_name_.clear();
     _extractIdentifier(full_name, *this);
     _initialize();
 }
@@ -83,11 +84,15 @@ void ActorDefinitionIdentifier::_extractIdentifier(const std::string &name, Acto
         ns = "minecraft";
     }
 
-    if (const auto lt = sv.find_first_of(EVENT_BEGIN); lt != std::string_view::npos) {
+    const auto lt = sv.find_first_of(EVENT_BEGIN);
+    if (lt != std::string_view::npos) {
         if (const auto gt = sv.find_first_of(EVENT_END, lt + 1); gt != std::string_view::npos && gt > lt + 1) {
             init_event = sv.substr(lt + 1, gt - lt - 1);
         }
         identifier = sv.substr(0, lt);
+    }
+    else {
+        identifier = sv;
     }
 
     id.namespace_ = ns;
