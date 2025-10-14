@@ -63,6 +63,11 @@ const char *HashedString::c_str() const
     return str_.c_str();
 }
 
+bool HashedString::empty() const
+{
+    return str_.empty();
+}
+
 bool HashedString::operator==(const HashedString &other) const
 {
     if (str_hash_ == other.str_hash_) {

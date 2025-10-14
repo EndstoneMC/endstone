@@ -36,6 +36,7 @@ public:
     [[nodiscard]] HashType64 getHash() const;
     [[nodiscard]] const std::string &getString() const;
     [[nodiscard]] const char *c_str() const;  // NOLINT(*-identifier-naming)
+    [[nodiscard]] bool empty() const;
 
     bool operator==(const HashedString &other) const;
     bool operator!=(const HashedString &other) const;
