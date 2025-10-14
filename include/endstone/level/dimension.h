@@ -119,6 +119,22 @@ public:
      * @return Item entity created as a result of this method
      */
     [[nodiscard]] virtual Item &dropItem(Location location, ItemStack &item) = 0;
+
+    /**
+     * @brief Creates an actor at the given Location
+     *
+     * @param location The location to spawn the actor
+     * @param type The actor to spawn
+     * @return Resulting Actor of this method
+     */
+    [[nodiscard]] virtual Actor *spawnActor(Location location, std::string type) = 0;
+
+    /**
+     * @brief Get a list of all actors in this dimension
+     *
+     * @return A List of all actors currently residing in this dimension
+     */
+    [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
 };
 }  // namespace endstone
 

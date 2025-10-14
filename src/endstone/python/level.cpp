@@ -64,7 +64,11 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
              py::arg("x"), py::arg("z"), "Gets the highest non-empty (impassable) block at the given coordinates.")
         .def_property_readonly("loaded_chunks", &Dimension::getLoadedChunks, "Gets a list of all loaded Chunks")
         .def("drop_item", &Dimension::dropItem, py::arg("location"), py::arg("item"),
-             "Drops an item at the specified Location");
+             "Drops an item at the specified Location")
+        .def("spawn_actor", &Dimension::spawnActor, py::arg("location"), py::arg("type"),
+             "Creates an actor at the given Location")
+        .def_property_readonly("actors", &Dimension::getActors, py::return_value_policy::reference_internal,
+                               "Get a list of all actors in this dimension");
 
     level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
         .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level",

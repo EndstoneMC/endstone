@@ -17,11 +17,11 @@
 #include <memory>
 #include <vector>
 
-#include "bedrock/forward.h"
 #include "bedrock/world/attribute/attribute.h"
 #include "bedrock/world/attribute/attribute_buff.h"
 #include "bedrock/world/attribute/mutable_attribute_with_context.h"
 
+class AttributeInstanceDelegate;
 class BaseAttributeMap;
 
 class AttributeInstance {

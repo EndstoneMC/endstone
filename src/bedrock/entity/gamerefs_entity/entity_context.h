@@ -23,7 +23,7 @@ public:
         : registry_(registry), entt_registry_(registry.registry_), entity_(entity_id)
     {
     }
-    EntityContext(const EntityContext &) = default;
+    EntityContext(const EntityContext & other) = default;
     EntityContext(EntityContext &&) = default;
     EntityContext &operator=(const EntityContext &) = delete;
     EntityContext &operator=(EntityContext &&) = delete;
@@ -64,6 +64,7 @@ public:
     [[nodiscard]] EntityRegistry &_registry() const;
 
 protected:
+    friend class EntityRegistry;
     friend class WeakStorageEntity;
 
     [[nodiscard]] EntityId _getEntityId() const

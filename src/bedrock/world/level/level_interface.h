@@ -42,6 +42,7 @@
 #include "bedrock/util/random.h"
 #include "bedrock/util/tag_registry.h"
 #include "bedrock/world/actor/actor_sound_identifier.h"
+#include "bedrock/world/actor/actor_factory.h"
 #include "bedrock/world/actor/death/tick_death_setting.h"
 #include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/permissions_handler.h"

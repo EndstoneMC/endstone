@@ -17,6 +17,7 @@
 #include <endstone/core/actor/item.h>
 #include <endstone/core/inventory/item_stack.h>
 
+#include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/block/block.h"
@@ -102,6 +103,34 @@ Item &EndstoneDimension::dropItem(const Location location, ItemStack &item)
         getHandle().getBlockSourceFromMainChunkSource(), item_stack, nullptr,
         Vec3{location.getX(), location.getY(), location.getZ()}, 10);
     return actor->getEndstoneActor<EndstoneItem>();
+}
+
+Actor *EndstoneDimension::spawnActor(Location location, std::string type)
+{
+    auto &actor_factory = level_.getHandle().getActorFactory();
+    const auto id = ActorDefinitionIdentifier(type);
+    auto entity = actor_factory.createSpawnedActor(id, nullptr, {location.getX(), location.getY(), location.getZ()},
+                                                   {location.getPitch(), location.getYaw()});
+    const auto *actor = level_.getHandle().addEntity(dimension_.getBlockSourceFromMainChunkSource(), std::move(entity));
+    if (!actor) {
+        return nullptr;
+    }
+    return &actor->getEndstoneActor();
+}
+
+std::vector<Actor *> EndstoneDimension::getActors() const
+{
+    std::vector<Actor *> result;
+    for (const auto &actor : level_.getActors()) {
+        if (!actor) {
+            continue;
+        }
+        if (&actor->getDimension() != this) {
+            continue;
+        }
+        result.push_back(actor);
+    }
+    return result;
 }
 
 ::Dimension &EndstoneDimension::getHandle() const

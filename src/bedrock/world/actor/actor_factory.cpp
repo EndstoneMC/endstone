@@ -12,17 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/entity/gamerefs_entity/entity_registry.h"
+#include "bedrock/world/actor/actor_factory.h"
 
-#include "bedrock/gamerefs/weak_ref.h"
-#include "entity_context.h"
+#include "bedrock/symbol.h"
 
-WeakRef<EntityRegistry> EntityRegistry::getWeakRef()
+OwnerPtr<EntityContext> ActorFactory::createSpawnedActor(const ActorDefinitionIdentifier &identifier, Actor *spawner,
+                                                         const Vec3 &position, const Vec2 &rotation)
 {
-    return WeakRef<EntityRegistry>(weak_from_this());
-}
-
-void EntityRegistry::_destroyEntity(EntityContext entity)
-{
-    registry_.destroy(entity._getEntityId());
+    return BEDROCK_CALL(&ActorFactory::createSpawnedActor, this, identifier, spawner, position, rotation);
 }

@@ -29,7 +29,9 @@ public:
     WeakRef<EntityRegistry> getWeakRef();
 
 protected:
+    void _destroyEntity(EntityContext entity);
     friend class EntityContext;
+    friend class OwnerStorageEntity;
 
 #ifdef BEDROCK_PREVIEW_SUPPORT
     bool is_viewing_;
