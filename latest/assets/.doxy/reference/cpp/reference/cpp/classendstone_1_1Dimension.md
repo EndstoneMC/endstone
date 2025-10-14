@@ -58,6 +58,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 | Type | Name |
 | ---: | :--- |
 | virtual [**Item**](classendstone_1_1Item.md) & | [**dropItem**](#function-dropitem) ([**Location**](classendstone_1_1Location.md) location, [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Drops an item at the specified_ [_**Location**_](classendstone_1_1Location.md) _._ |
+| virtual std::vector&lt; [**Actor**](classendstone_1_1Actor.md) \* &gt; | [**getActors**](#function-getactors) () const = 0<br>_Get a list of all actors in this dimension._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-12) (int x, int y, int z) const = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-22) ([**Location**](classendstone_1_1Location.md) location) const = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given_[_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getHighestBlockAt**](#function-gethighestblockat-12) (int x, int z) const = 0<br>_Gets the highest non-empty (impassable) block at the given coordinates._  |
@@ -67,6 +68,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 | virtual std::vector&lt; std::unique\_ptr&lt; [**Chunk**](classendstone_1_1Chunk.md) &gt; &gt; | [**getLoadedChunks**](#function-getloadedchunks) () = 0<br>_Gets a list of all loaded Chunks._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this dimension._  |
 | virtual [**Type**](classendstone_1_1Dimension.md#enum-type) | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this dimension._  |
+| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**spawnActor**](#function-spawnactor) ([**Location**](classendstone_1_1Location.md) location, std::string type) = 0<br>_Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual  | [**~Dimension**](#function-dimension) () = default<br> |
 
 
@@ -147,6 +149,31 @@ virtual Item & endstone::Dimension::dropItem (
 **Returns:**
 
 [**Item**](classendstone_1_1Item.md) entity created as a result of this method 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getActors 
+
+_Get a list of all actors in this dimension._ 
+```C++
+virtual std::vector< Actor * > endstone::Dimension::getActors () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+A List of all actors currently residing in this dimension 
 
 
 
@@ -425,6 +452,42 @@ virtual Type endstone::Dimension::getType () const = 0
 **Returns:**
 
 Type of this dimension 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function spawnActor 
+
+_Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _._
+```C++
+virtual Actor * endstone::Dimension::spawnActor (
+    Location location,
+    std::string type
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `location` The location to spawn the actor 
+* `type` The actor to spawn 
+
+
+
+**Returns:**
+
+Resulting [**Actor**](classendstone_1_1Actor.md) of this method 
 
 
 
