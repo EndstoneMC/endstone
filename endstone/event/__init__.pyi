@@ -88,27 +88,27 @@ class EventPriority(enum.IntEnum):
     Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
     """
 
-    LOWEST: EventPriority = 0
+    LOWEST = 0
     """
     Event call is of very low importance and should be run first, to allow other plugins to further customise the outcome
     """
-    LOW: EventPriority = 1
+    LOW = 1
     """
     Event call is of low importance
     """
-    NORMAL: EventPriority = 2
+    NORMAL = 2
     """
     Event call is neither important nor unimportant, and may be run normally
     """
-    HIGH: EventPriority = 3
+    HIGH = 3
     """
     Event call is of high importance
     """
-    HIGHEST: EventPriority = 4
+    HIGHEST = 4
     """
     Event call is critical and must have the final say in what happens to the event
     """
-    MONITOR: EventPriority = 5
+    MONITOR = 5
     """
     Event is listened to purely for monitoring the outcome of an event. No modifications to the event should be made under this priority.
     """
