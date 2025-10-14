@@ -23,7 +23,6 @@
 #include <utility>
 #include <zstr.hpp>
 
-#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <entt/entt.hpp>
 
@@ -188,15 +187,15 @@ void render()
     glfwMakeContextCurrent(gWindow);
     glfwSwapInterval(1);  // Enable vsync
 
-    if (glewInit() != GLEW_OK) {
-        gErrors.emplace_back("glewInit failed!");
-
-        // Destroy the window if GLEW initialization fails
-        glfwDestroyWindow(gWindow);
-        glfwTerminate();
-        gWindow = nullptr;
-        return;
-    }
+    // if (glewInit() != GLEW_OK) {
+    //     gErrors.emplace_back("glewInit failed!");
+    //
+    //     // Destroy the window if GLEW initialization fails
+    //     glfwDestroyWindow(gWindow);
+    //     glfwTerminate();
+    //     gWindow = nullptr;
+    //     return;
+    // }
 
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
