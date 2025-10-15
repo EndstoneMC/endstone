@@ -15,12 +15,15 @@
 #pragma once
 
 #include <bitset>
-#include <cstdarg>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/diagnostics/log_area.h"
 
 namespace BedrockLog {
-ENDSTONE_HOOK void log_va(LogCategory category, std::bitset<3> channel_mask, LogRule rule, LogAreaID area,
-                          std::uint32_t priority, char const *function, int line, char const *format, va_list args);
+using MessasgeId = int;
+struct LogDetails {
+private:
+    ENDSTONE_HOOK void _log_va(LogAreaID area, unsigned int priority, const char *function, int line,
+                               MessasgeId message_id, const char *format, va_list args);
+};
 }  // namespace BedrockLog
