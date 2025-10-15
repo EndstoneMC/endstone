@@ -1,4 +1,4 @@
-timestamp = 1760458041
+timestamp = 1760545855
 version = "1.21.113"
 
 [windows]
@@ -7,7 +7,7 @@ version = "1.21.113"
 # ActorFactory
 "?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z" = 60353200
 # BedrockLog
-"?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 92257840
+"?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z" = 92247344
 # BlockDescriptor
 "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z" = 70483376
 # BlockType
@@ -114,7 +114,7 @@ version = "1.21.113"
 # ActorFactory
 "_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2" = 150491488
 # BedrockLog
-"_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 202464848
+"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag" = 202524528
 # BlockDescriptor
 "_ZN15BlockDescriptor13ResolveHelper7resolveEb" = 168376960
 # BlockType
