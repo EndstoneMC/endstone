@@ -357,9 +357,9 @@ public:
     virtual void requestMapInfo(ActorUniqueID, bool) = 0;
     virtual ActorUniqueID expandMapByID(ActorUniqueID, bool) = 0;
     virtual bool copyAndLockMap(ActorUniqueID, ActorUniqueID) = 0;
+    virtual MapItemSavedData &createMapSavedData(ActorUniqueID const &, BlockPos const &, DimensionType, int) = 0;
     virtual MapItemSavedData &createMapSavedData(std::vector<ActorUniqueID> const &, BlockPos const &, DimensionType,
                                                  int) = 0;
-    virtual MapItemSavedData &createMapSavedData(ActorUniqueID const &, BlockPos const &, DimensionType, int) = 0;
     [[nodiscard]] virtual Core::PathBuffer<std::string> getScreenshotsFolder() const = 0;
     [[nodiscard]] virtual std::string getLevelId() const = 0;
     virtual void setLevelId(std::string) = 0;

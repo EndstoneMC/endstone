@@ -6,6 +6,8 @@ import collections
 import enum
 import typing
 
+from endstone.map import MapView
+
 __all__ = [
     "EquipmentSlot",
     "Inventory",
@@ -243,6 +245,20 @@ class MapMeta(ItemMeta):
     """
     Represents the metadata for a map item.
     """
+    @property
+    def has_map_view(self) -> bool:
+        """
+        Checks for existence of an associated map.
+        """
+        ...
+    @property
+    def map_view(self) -> MapView:
+        """
+        Gets or sets the map view that is associated with this map item.
+        """
+        ...
+    @map_view.setter
+    def map_view(self, arg1: MapView) -> None: ...
 
 class ItemFactory:
     def get_item_meta(self, type: str) -> ItemMeta:

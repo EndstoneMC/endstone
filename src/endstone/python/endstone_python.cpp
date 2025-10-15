@@ -149,10 +149,10 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_lang(m_lang);
     init_form(m_form);
     init_enchantments(m_enchantments);
+    init_map(m_map);
     init_inventory(m_inventory, item_stack);
     init_util(m_util, vector);
     init_ban(m_ban);
-    init_map(m_map);
     init_scoreboard(m_scoreboard);
     init_block(m_block, block);
     init_actor(m_actor, actor, mob);
@@ -356,7 +356,9 @@ void init_server(py::class_<Server> &server)
         .def_property_readonly("ban_list", &Server::getBanList, "Gets the player ban list.",
                                py::return_value_policy::reference)
         .def_property_readonly("ip_ban_list", &Server::getIpBanList, "Gets the IP ban list.",
-                               py::return_value_policy::reference);
+                               py::return_value_policy::reference)
+        .def("create_map", &Server::createMap, "Create a new map with an automatically assigned ID.",
+             py::arg("dimension"), py::return_value_policy::reference, py::keep_alive<1, 0>());
 }
 
 void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,

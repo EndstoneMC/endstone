@@ -49,6 +49,9 @@ public:
     virtual Vec3 translatePosAcrossDimension(Vec3 const &, AutomaticID<Dimension, int>) = 0;
     virtual void forEachPlayer(std::function<bool(Player &)>) = 0;
     virtual Actor *fetchEntity(ActorUniqueID, bool) = 0;
+    [[nodiscard]] virtual BlockSource &getBlockSourceFromMainChunkSource() const = 0;
+    virtual void buildPlayersForPositionPacket(const BlockPos &, const Player *,
+                                               std::vector<NetworkIdentifierWithSubId> &) const = 0;
 };
 
 class Dimension : public IDimension,
@@ -60,11 +63,29 @@ class Dimension : public IDimension,
 public:
     Dimension(ILevel &, DimensionType, DimensionHeightRange, Scheduler &, std::string);
 
+    virtual void init(const br::worldgen::StructureSetRegistry &) = 0;
+    virtual void tick() = 0;
+    virtual void tickRedstone() = 0;
+    [[nodiscard]] virtual std::unique_ptr<WorldGenerator> createGenerator(
+        const br::worldgen::StructureSetRegistry &) = 0;
+    virtual void upgradeLevelChunk(ChunkSource &, LevelChunk &, LevelChunk &) = 0;
+    virtual void fixWallChunk(ChunkSource &, LevelChunk &) = 0;
+    void initializeWithLevelStorageManagerConnector(
+        ILevelStorageManagerConnector &level_storage_manager_connector) override = 0;
+    [[nodiscard]] virtual bool levelChunkNeedsUpgrade(const LevelChunk &) const = 0;
+    [[nodiscard]] bool isNaturalDimension() const override = 0;
+    [[nodiscard]] virtual bool isValidSpawn(int, int) const = 0;
+    [[nodiscard]] virtual Color getBrightnessDependentFogColor(const Color &, float) const = 0;
+    [[nodiscard]] virtual Height getCloudHeight() const = 0;
+    [[nodiscard]] virtual HashedString getDefaultBiome() const = 0;
+    [[nodiscard]] virtual bool mayRespawnViaBed() const = 0;
+    [[nodiscard]] virtual BlockPos getSpawnPos() const = 0;
+    [[nodiscard]] virtual int getSpawnYPosition() const = 0;
+
     [[nodiscard]] bool isBrightOutside() const;
     [[nodiscard]] std::string getLocalizationKey() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] ChunkSource &getChunkSource() const;
-    [[nodiscard]] BlockSource &getBlockSourceFromMainChunkSource() const;
     Weather &getWeather() const;
     CircuitSystem &getCircuitSystem();
     [[nodiscard]] bool isRedstoneTick() const;

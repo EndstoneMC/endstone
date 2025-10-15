@@ -115,7 +115,7 @@ public:
      *
      * @return A list of references to each MapRenderer.
      */
-    [[nodiscard]] virtual std::vector<MapRenderer *> getRenderers() const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<MapRenderer>> getRenderers() const = 0;
 
     /**
      * @brief Add a renderer to this map.
@@ -131,7 +131,7 @@ public:
      *
      * @return True if the renderer was successfully removed.
      */
-    virtual bool removeRenderer(MapRenderer *renderer) = 0;
+    virtual bool removeRenderer(const std::shared_ptr<MapRenderer> &renderer) = 0;
 
     /**
      * @brief Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is

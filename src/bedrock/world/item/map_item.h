@@ -14,17 +14,17 @@
 
 #pragma once
 
-#include <bitset>
-#include <cstdarg>
+#include "bedrock/world/item/complex_item.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/diagnostics/log_area.h"
+class MapItem : public ComplexItem {
+public:
+    static const std::string TAG_MAP_SCALING;
+    static const std::string TAG_MAP_SCALE;
+    static const std::string TAG_MAP_PLAYER_DISPLAY;
+    inline static const std::string TAG_MAP_UUID = "map_uuid";
+    static const std::string TAG_MAP_NAME_INDEX;
+    static const std::string TAG_MAP_INIT;
+    static const std::string TAG_MAP_REGENERATE;
 
-namespace BedrockLog {
-using MessasgeId = int;
-struct LogDetails {
-private:
-    ENDSTONE_HOOK void _log_va(LogAreaID area, unsigned int priority, const char *function, int line,
-                               MessasgeId message_id, const char *format, va_list args);
+    using ComplexItem::ComplexItem;
 };
-}  // namespace BedrockLog

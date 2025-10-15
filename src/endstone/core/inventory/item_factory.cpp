@@ -14,6 +14,9 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
+#include "endstone/core/inventory/item_type.h"
+#include "endstone/core/inventory/meta/map_meta.h"
+
 namespace endstone::core {
 EndstoneItemFactory &EndstoneItemFactory::instance()
 {
@@ -37,7 +40,7 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const std::string &
 namespace {
 bool equals0(const EndstoneItemMeta &meta1, const EndstoneItemMeta &meta2)
 {
-    return meta1.equalsCommon(meta2) && meta1.notUncommon() && meta2.notUncommon();
+    return meta1.equalsCommon(meta2) && meta1.notUncommon(meta1) && meta2.notUncommon(meta1);
 }
 }  // namespace
 
@@ -63,12 +66,21 @@ std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, c
     return getItemMeta(type, static_cast<const EndstoneItemMeta *>(meta));
 }
 
+namespace {
+std::unordered_map<std::string,
+                   std::function<std::unique_ptr<EndstoneItemMeta>(const std::string  &type, const EndstoneItemMeta *meta)>>
+    item_meta_factories = {
+        {"minecraft:air", [](auto &, auto *) { return nullptr; }},
+        {"minecraft:filled_map", [](auto &, auto *m) { return std::make_unique<EndstoneMapMeta>(m); }},
+};
+
+}  // namespace
+
 std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string &type, const EndstoneItemMeta *meta) const
 {
-    if (type == "minecraft:air") {
-        return nullptr;
+    if (auto it = item_meta_factories.find(type); it != item_meta_factories.end()) {
+        return it->second(type, meta);
     }
-    // TODO(item): add support for map meta
     return std::make_unique<EndstoneItemMeta>(meta);
 }
 }  // namespace endstone::core

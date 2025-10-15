@@ -12,19 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/saveddata/maps/map_decoration.h"
 
-#include <bitset>
-#include <cstdarg>
+MapDecoration::MapDecoration(Type img, int8_t x, int8_t y, int8_t rot, const std::string &label, const Color &color)
+    : label_(label), image_(img), x_(x), y_(y), rotation_(rot), color_(color)
+{
+}
 
-#include "bedrock/bedrock.h"
-#include "bedrock/diagnostics/log_area.h"
+MapDecoration::Type MapDecoration::getImg() const
+{
+    return image_;
+}
 
-namespace BedrockLog {
-using MessasgeId = int;
-struct LogDetails {
-private:
-    ENDSTONE_HOOK void _log_va(LogAreaID area, unsigned int priority, const char *function, int line,
-                               MessasgeId message_id, const char *format, va_list args);
-};
-}  // namespace BedrockLog
+std::int8_t MapDecoration::getX() const
+{
+    return x_;
+}
+
+std::int8_t MapDecoration::getY() const
+{
+    return y_;
+}
+
+std::int8_t MapDecoration::getRot() const
+{
+    return rotation_;
+}
+
+const std::string &MapDecoration::getLabel() const
+{
+    return label_;
+}

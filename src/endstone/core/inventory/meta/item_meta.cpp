@@ -142,7 +142,6 @@ EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
         damage_ = damage;
     }
 }
-
 ItemMeta::Type EndstoneItemMeta::getType() const
 {
     return Type::Item;
@@ -311,7 +310,7 @@ bool EndstoneItemMeta::equalsCommon(const EndstoneItemMeta &that) const
         && (hasDamage() ? that.hasDamage() && damage_ == that.damage_ : !that.hasDamage());                       //
 }
 
-bool EndstoneItemMeta::notUncommon() const
+bool EndstoneItemMeta::notUncommon(const EndstoneItemMeta &other) const
 {
     return true;
 }
@@ -339,5 +338,10 @@ void EndstoneItemMeta::applyToItem(CompoundTag &tag) const
     if (hasDamage()) {
         tag.putInt(::Item::TAG_DAMAGE, damage_);
     }
+}
+
+bool EndstoneItemMeta::isType(Type type) const
+{
+    return getType() == type;
 }
 }  // namespace endstone::core

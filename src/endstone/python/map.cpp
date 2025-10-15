@@ -24,17 +24,59 @@ public:
 
     void initialize(MapView &map) override
     {
-        PYBIND11_OVERRIDE(void, MapRenderer, initialize, map);
+        PYBIND11_OVERRIDE(void, MapRenderer, initialize, std::ref(map));
     }
 
     void render(MapView &map, MapCanvas &canvas, Player &player) override
     {
-        PYBIND11_OVERRIDE_PURE(void, MapRenderer, render, map, canvas, player);
+        PYBIND11_OVERRIDE_PURE(void, MapRenderer, render, std::ref(map), std::ref(canvas), std::ref(player));
     }
 };
 
 void init_map(py::module_ &m)
 {
+    auto cursor = py::class_<MapCursor>(m, "MapCursor", "Represents a cursor on a map.");
+
+    py::native_enum<MapCursor::Type>(cursor, "Type", "enum.Enum", "Represents the standard types of map cursors.")
+        .value("PLAYER", MapCursor::Type::Player)
+        .value("FRAME", MapCursor::Type::Frame)
+        .value("RED_MARKER", MapCursor::Type::RedMarker)
+        .value("BLUE_MARKER", MapCursor::Type::BlueMarker)
+        .value("TARGET_X", MapCursor::Type::TargetX)
+        .value("TARGET_POINT", MapCursor::Type::TargetPoint)
+        .value("PLAYER_OFF_MAP", MapCursor::Type::PlayerOffMap)
+        .value("SIGN_MARKER", MapCursor::Type::SignMarker)
+        .value("PINK_MARKER", MapCursor::Type::PinkMarker)
+        .value("ORANGE_MARKER", MapCursor::Type::OrangeMarker)
+        .value("YELLOW_MARKER", MapCursor::Type::YellowMarker)
+        .value("CYAN_MARKER", MapCursor::Type::CyanMarker)
+        .value("GREEN_POINT", MapCursor::Type::GreenPoint)
+        .value("PLAYER_OFF_LIMITS", MapCursor::Type::PlayerOffLimits)
+        .value("MANSION", MapCursor::Type::Mansion)
+        .value("MONUMENT", MapCursor::Type::Monument)
+        .value("VILLAGE_DESERT", MapCursor::Type::VillageDesert)
+        .value("VILLAGE_PLAINS", MapCursor::Type::VillagePlains)
+        .value("VILLAGE_SAVANNA", MapCursor::Type::VillageSavanna)
+        .value("VILLAGE_SNOWY", MapCursor::Type::VillageSnowy)
+        .value("VILLAGE_TAIGA", MapCursor::Type::VillageTaiga)
+        .value("JUNGLE_TEMPLE", MapCursor::Type::JungleTemple)
+        .value("SWAMP_HUT", MapCursor::Type::SwampHut)
+        .value("TRIAL_CHAMBERS", MapCursor::Type::TrialChambers)
+        .finalize();
+
+    cursor
+        .def(py::init<std::int8_t, std::int8_t, std::int8_t, MapCursor::Type, bool, std::string>(), py::arg("x"),
+             py::arg("y"), py::arg("direction"), py::arg("type"), py::arg("visible"), py::arg("caption") = "")
+        .def_property("x", &MapCursor::getX, &MapCursor::setX, "Get or set the X position of this cursor.")
+        .def_property("y", &MapCursor::getY, &MapCursor::setY, "Get or set the Y position of this cursor.")
+        .def_property("direction", &MapCursor::getDirection, &MapCursor::setDirection,
+                      "Get or set the direction of this cursor")
+        .def_property("type", &MapCursor::getType, &MapCursor::setType, "Get or set the type of this cursor.")
+        .def_property("is_visible", &MapCursor::isVisible, &MapCursor::setVisible,
+                      "Get or set the visibility statis of this cursor.")
+        .def_property("caption", &MapCursor::getCaption, &MapCursor::setCaption,
+                      "Get or set the caption on this cursor.");
+
     auto view = py::class_<MapView>(m, "MapView", "Represents a map item.");
 
     py::class_<MapCanvas>(m, "MapCanvas",
@@ -42,14 +84,14 @@ void init_map(py::module_ &m)
                           "MapRenderer and represents that renderer's layer on the map.")
         .def_property_readonly("map_view", &MapCanvas::getMapView, "Get the map this canvas is attached to.",
                                py::return_value_policy::reference)
+        .def_property("cursors", &MapCanvas::getCursors, &MapCanvas::setCursors,
+                      "Get the cursorS associated with this canvas.")
         .def("set_pixel_color", &MapCanvas::setPixelColor, py::arg("x"), py::arg("y"), py::arg("color"),
-             "Draw a pixel to the canvas.\n\nIf None is used as color, then the color returned by "
-             "get_base_pixel_color() is shown on the map.")
-        .def("get_pixel_color", &MapCanvas::getPixelColor, py::arg("x"), py::arg("y"),
-             "Get a pixel from the canvas.\n\nIf no color is set at the given position for this canvas, then None is "
-             "returned and the color returned by get_base_pixel_color() is shown on the map")
-        .def("get_base_pixel_color", &MapCanvas::getBasePixelColor, py::arg("x"), py::arg("y"),
-             "Get a pixel from the layers below this canvas.")
+             "Draw a pixel to the canvas.")
+        .def("get_pixel_color", &MapCanvas::getPixelColor, py::arg("x"), py::arg("y"), "Get a pixel from the canvas.")
+        .def("set_pixel", &MapCanvas::setPixel, py::arg("x"), py::arg("y"), py::arg("color"),
+             "Draw a pixel to the canvas.")
+        .def("get_pixel", &MapCanvas::getPixel, py::arg("x"), py::arg("y"), "Get a pixel from the canvas.")
         .def("draw_image", &MapCanvas::drawImage, py::arg("x"), py::arg("y"), py::arg("image"),
              "Draw an image to the map. The image will be clipped if necessary.");
 
@@ -58,7 +100,7 @@ void init_map(py::module_ &m)
         .def(py::init<bool>(), py::arg("is_contextual") = false,
              "Initialize the map renderer base with the given contextual status.")
         .def("initialize", &MapRenderer::initialize, py::arg("view"), "Initialize this MapRenderer for the given map.")
-        .def("render", &MapRenderer::render, py::arg("map"), py::arg("canvas"), py::arg("player"),
+        .def("render", &MapRenderer::render, py::arg("view"), py::arg("canvas"), py::arg("player"),
              "Render to the given map.");
 
     py::native_enum<MapView::Scale>(view, "Scale", "enum.IntEnum",
@@ -83,7 +125,8 @@ void init_map(py::module_ &m)
         .def_property_readonly("renderers", &MapView::getRenderers,
                                "Get a copied list of MapRenderers currently in effect.",
                                py::return_value_policy::reference_internal)
-        .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), "Add a renderer to this map.")
+        .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), "Add a renderer to this map.",
+             py::keep_alive<1, 2>())
         .def("remove_renderer", &MapView::removeRenderer, py::arg("renderer"), "Remove a renderer from this map.")
         .def_property("is_unlimited_tracking", &MapView::isUnlimitedTracking, &MapView::setUnlimitedTracking,
                       "Whether the map will show a smaller position cursor (true), or no position cursor (false) when "

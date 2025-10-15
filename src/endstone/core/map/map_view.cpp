@@ -14,6 +14,7 @@
 
 #include "endstone/core/map/map_view.h"
 
+#include "endstone/core/map/map_canvas.h"
 #include "endstone/core/map/map_renderer.h"
 #include "endstone/core/server.h"
 
@@ -86,29 +87,27 @@ void EndstoneMapView::setDimension(const Dimension &dimension)
     map_.setDimensionId({static_cast<int>(dimension.getType())});
 }
 
-std::vector<MapRenderer *> EndstoneMapView::getRenderers() const
+std::vector<std::shared_ptr<MapRenderer>> EndstoneMapView::getRenderers() const
 {
-    std::vector<MapRenderer *> result;
-    for (const auto &renderer : renderers_) {
-        result.push_back(renderer.get());
-    }
-    return result;
+    return renderers_;
 }
 
 void EndstoneMapView::addRenderer(std::shared_ptr<MapRenderer> renderer)
 {
-    renderer->initialize(*this);
-    renderers_.emplace_back(std::move(renderer));
-    // TODO(map): create canvas entry
+    auto it = std::ranges::find_if(renderers_, [&](const auto &r) { return renderer == r; });
+    if (it == renderers_.end()) {
+        renderers_.emplace_back(renderer);
+        canvases_[renderer] = std::unordered_map<std::uint64_t, std::unique_ptr<EndstoneMapCanvas>>();
+        renderer->initialize(*this);
+    }
 }
 
-bool EndstoneMapView::removeRenderer(MapRenderer *renderer)
+bool EndstoneMapView::removeRenderer(const std::shared_ptr<MapRenderer> &renderer)
 {
-    auto it = std::remove_if(renderers_.begin(), renderers_.end(),
-                             [=](const std::shared_ptr<MapRenderer> &ptr) { return ptr.get() == renderer; });
+    auto it = std::ranges::find_if(renderers_, [&](const auto &r) { return renderer == r; });
     if (it != renderers_.end()) {
-        renderers_.erase(it, renderers_.end());
-        // TODO(map): clear canvas
+        renderers_.erase(it);
+        canvases_.erase(renderer);
         return true;
     }
     return false;
@@ -123,7 +122,7 @@ void EndstoneMapView::setUnlimitedTracking(const bool unlimited)
 {
     if (map_.unlimited_tracking_ != unlimited) {
         map_.unlimited_tracking_ = unlimited;
-        map_.setDirtyForSaveAndPixelData();
+        // map_.setDirtyForSaveAndPixelData();
     }
 }
 
@@ -136,8 +135,42 @@ void EndstoneMapView::setLocked(const bool locked)
 {
     if (map_.isLocked() != locked) {
         map_.locked_ = locked;
-        map_.setDirtyForSaveAndPixelData();
+        // map_.setDirtyForSaveAndPixelData();
     }
+}
+
+const RenderData &EndstoneMapView::render(EndstonePlayer &player)
+{
+    bool context = isContextual();
+    auto unique_id = context ? player.getId() : ActorUniqueID::INVALID_ID.raw_id;
+    RenderData &render = render_cache_.emplace(unique_id, RenderData()).first->second;
+    if (context) {
+        render_cache_.erase(ActorUniqueID::INVALID_ID.raw_id);
+    }
+
+    std::ranges::fill(render.buffer, 0);
+    render.cursors.clear();
+
+    for (const auto &renderer : renderers_) {
+        auto &canvas = *canvases_.at(renderer)
+                            .emplace(renderer->isContextual() ? player.getId() : ActorUniqueID::INVALID_ID.raw_id,
+                                     std::make_unique<EndstoneMapCanvas>(*this))
+                            .first->second;
+
+        canvas.buffer_ = render.buffer;
+        try {
+            renderer->render(*this, canvas, player);
+        }
+        catch (std::exception &e) {
+            player.getServer().getLogger().critical("Could not render map: {}", e.what());
+        }
+        render.buffer = canvas.buffer_;
+
+        for (const auto &cursor : canvas.getCursors()) {
+            render.cursors.emplace_back(cursor);
+        }
+    }
+    return render;
 }
 
 bool EndstoneMapView::isContextual() const

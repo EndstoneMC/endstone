@@ -14,10 +14,8 @@
 
 #pragma once
 
-#include <memory>
-#include <optional>
-#include <string>
-#include <vector>
+#include "endstone/inventory/meta/item_meta.h"
+#include "endstone/map/map_view.h"
 
 namespace endstone {
 /**
@@ -25,5 +23,27 @@ namespace endstone {
  */
 class MapMeta : public ItemMeta {
 public:
+    /**
+     * @brief Checks for existence of an associated map.
+     *
+     * @return true if this item has an associated map
+     */
+    [[nodiscard]] virtual bool hasMapView() const = 0;
+
+    /**
+     * @brief Gets the map view that is associated with this map item.
+     *
+     * @note Plugins should check that hasMapView() returns true before calling this method.
+     *
+     * @return the map view, or nullptr if the item hasMapView(), but this map does not exist on the server
+     */
+    [[nodiscard]] virtual MapView *getMapView() const = 0;
+
+    /**
+     * @brief Sets the associated map. This is used to determine what map is displayed.
+     *
+     * @param map the map to set
+     */
+    virtual void setMapView(const MapView *map) = 0;
 };
 }  // namespace endstone

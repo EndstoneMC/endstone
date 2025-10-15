@@ -14,17 +14,9 @@
 
 #pragma once
 
-#include <bitset>
-#include <cstdarg>
+#include "bedrock/world/item/item.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/diagnostics/log_area.h"
-
-namespace BedrockLog {
-using MessasgeId = int;
-struct LogDetails {
-private:
-    ENDSTONE_HOOK void _log_va(LogAreaID area, unsigned int priority, const char *function, int line,
-                               MessasgeId message_id, const char *format, va_list args);
+class ComplexItem : public Item {
+public:
+    using Item::Item;
 };
-}  // namespace BedrockLog
