@@ -229,7 +229,7 @@
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getMaxLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getStartLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
-* **getTranslationKey** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemType**](classendstone_1_1ItemType.md))
+* **getTranslationKey** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemType**](classendstone_1_1ItemType.md))
 * **getEventType** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **getPlugin** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPriority** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))

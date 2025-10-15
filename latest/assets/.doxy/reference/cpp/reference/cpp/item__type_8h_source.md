@@ -35,11 +35,13 @@ public:
 
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
+    [[nodiscard]] virtual std::string getTranslationKey(int data) const = 0;
+
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
-    static const ItemType *get(const std::string & name)
+    static const ItemType *get(const std::string &name)
     {
         return Endstone::getServer().getItemRegistry().get(name);
     }

@@ -58,6 +58,7 @@ _Represents a stack of items._
 | virtual int | [**getData**](#function-getdata) () const<br>_Gets the data for this stack of items._  |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
+| virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const<br>_Get the translation key, suitable for use in a translation component._  |
 | virtual std::string | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
 | virtual bool | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
 | virtual bool | [**isSimilar**](#function-issimilar) (const [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
@@ -229,6 +230,31 @@ inline virtual int endstone::ItemStack::getMaxStackSize () const
 **Returns:**
 
 The maximum you can stack this item to. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getTranslationKey 
+
+_Get the translation key, suitable for use in a translation component._ 
+```C++
+inline virtual std::string endstone::ItemStack::getTranslationKey () const
+```
+
+
+
+
+
+**Returns:**
+
+the translation key 
 
 
 

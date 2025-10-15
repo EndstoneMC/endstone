@@ -115,6 +115,15 @@ public:
         data_ = data;
     }
 
+    [[nodiscard]] virtual std::string getTranslationKey() const
+    {
+        const auto *item_type = ItemType::get(getType());
+        if (!item_type) {
+            return "item.air.name";
+        }
+        return item_type->getTranslationKey(getData());
+    }
+
     [[nodiscard]] virtual int getMaxStackSize() const
     {
         auto *item_type = ItemType::get(getType());

@@ -55,7 +55,8 @@ _Represents an item type._
 | virtual std::string | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this item type._  |
 | virtual int | [**getMaxDurability**](#function-getmaxdurability) () const = 0<br>_Gets the maximum durability of this item type._  |
 | virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Gets the maximum amount of this item type that can be held in a stack._  |
-| virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
+| virtual std::string | [**getTranslationKey**](#function-gettranslationkey-12) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
+| virtual std::string | [**getTranslationKey**](#function-gettranslationkey-22) (int data) const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 |  bool | [**operator!=**](#function-operator) (const std::string\_view other) const<br> |
 |  bool | [**operator!=**](#function-operator_1) (const [**ItemType**](classendstone_1_1ItemType.md) & other) const<br> |
 |  bool | [**operator==**](#function-operator_2) (const std::string\_view other) const<br> |
@@ -174,7 +175,7 @@ Maximum stack size for this item type
 
 
 
-### function getTranslationKey 
+### function getTranslationKey [1/2]
 
 _Get the translation key, suitable for use in a translation component._ 
 ```C++
@@ -182,6 +183,40 @@ virtual std::string endstone::ItemType::getTranslationKey () const = 0
 ```
 
 
+
+
+
+**Returns:**
+
+the translation key 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getTranslationKey [2/2]
+
+_Get the translation key, suitable for use in a translation component._ 
+```C++
+virtual std::string endstone::ItemType::getTranslationKey (
+    int data
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `data` Data for this item type
 
 
 
