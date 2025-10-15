@@ -139,6 +139,20 @@ public:
     }
 
     /**
+     * @brief Get the translation key, suitable for use in a translation component.
+     *
+     * @return the translation key
+     */
+    [[nodiscard]] virtual std::string getTranslationKey() const
+    {
+        const auto *item_type = ItemType::get(getType());
+        if (!item_type) {
+            return "item.air.name";
+        }
+        return item_type->getTranslationKey(getData());
+    }
+
+    /**
      * @brief Get the maximum stack size for this item.
      *
      * @return The maximum you can stack this item to.

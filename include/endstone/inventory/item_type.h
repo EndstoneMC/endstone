@@ -39,6 +39,15 @@ public:
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     /**
+     * @brief Get the translation key, suitable for use in a translation component.
+     *
+     * @param data Data for this item type
+     *
+     * @return the translation key
+     */
+    [[nodiscard]] virtual std::string getTranslationKey(int data) const = 0;
+
+    /**
      * @brief Gets the maximum amount of this item type that can be held in a stack
      *
      * @return Maximum stack size for this item type
@@ -61,7 +70,7 @@ public:
      *
      * @return ItemType if found, or nullptr
      */
-    static const ItemType *get(const std::string & name)
+    static const ItemType *get(const std::string &name)
     {
         return Endstone::getServer().getItemRegistry().get(name);
     }

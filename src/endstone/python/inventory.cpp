@@ -32,8 +32,10 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 
     py::class_<ItemType>(m, "ItemType", "Represents an item type.")
         .def_property_readonly("id", &ItemType::getId, "Return the identifier of this item type.")
-        .def_property_readonly("translation_key", &ItemType::getTranslationKey,
+        .def_property_readonly("translation_key", py::overload_cast<>(&ItemType::getTranslationKey, py::const_),
                                "Get the translation key, suitable for use in a translation component.")
+        .def("get_translation_key", py::overload_cast<int>(&ItemType::getTranslationKey, py::const_),
+             py::arg("data") = 0, "Get the translation key, suitable for use in a translation component.")
         .def_property_readonly("max_stack_size", &ItemType::getMaxStackSize,
                                "Gets the maximum amount of this item type that can be held in a stack.")
         .def_property_readonly("max_durability", &ItemType::getMaxDurability,
@@ -105,6 +107,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                       "Gets or sets the amount of items in this stack.")
         .def_property("data", &ItemStack::getData, &ItemStack::setData,
                       "Gets or sets the data for this stack of items.")
+        .def_property_readonly("translation_key", &ItemStack::getTranslationKey,
+                               "Get the translation key for this item.")
         .def_property_readonly("max_stack_size", &ItemStack::getMaxStackSize,
                                "Get the maximum stack size for this item.")
         .def("is_similar", &ItemStack::isSimilar, py::arg("other"),

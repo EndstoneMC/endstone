@@ -35,6 +35,7 @@ public:
     Result<void> setAmount(int amount) override;
     [[nodiscard]] int getData() const override;
     void setData(int data) override;
+    [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] bool isSimilar(const ItemStack &other) const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const override;

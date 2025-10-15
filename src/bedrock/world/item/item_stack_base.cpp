@@ -452,6 +452,19 @@ std::string ItemStackBase::getName() const
     return item_->buildDescriptionName(*this);
 }
 
+std::string ItemStackBase::getDescriptionId() const
+{
+    if (item_.isNull()) {
+        if (block_) {
+            return block_->getBlockType().buildDescriptionId(*block_);
+        }
+    }
+    else {
+        return item_->buildDescriptionId(getDescriptor(), user_data_.get());
+    }
+    return "";
+}
+
 std::string ItemStackBase::getCustomName() const
 {
     if (user_data_) {

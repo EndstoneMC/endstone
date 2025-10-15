@@ -25,7 +25,12 @@ std::string EndstoneItemType::getId() const
 
 std::string EndstoneItemType::getTranslationKey() const
 {
-    return item_.buildDescriptionId(ItemDescriptor(item_, 0), nullptr);
+    return getTranslationKey(0);
+}
+
+std::string EndstoneItemType::getTranslationKey(int data) const
+{
+    return item_.buildDescriptionId(ItemDescriptor(item_, data), nullptr);
 }
 
 int EndstoneItemType::getMaxStackSize() const

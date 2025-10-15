@@ -49,6 +49,12 @@ class ItemStack:
     @data.setter
     def data(self, arg1: int) -> None: ...
     @property
+    def translation_key(self) -> str:
+        """
+        Get the translation key for this item.
+        """
+        ...
+    @property
     def max_stack_size(self) -> int:
         """
         Get the maximum stack size for this item.
@@ -98,6 +104,11 @@ class ItemType:
         ...
     @property
     def translation_key(self) -> str:
+        """
+        Get the translation key, suitable for use in a translation component.
+        """
+        ...
+    def get_translation_key(self, data: int = 0) -> str:
         """
         Get the translation key, suitable for use in a translation component.
         """

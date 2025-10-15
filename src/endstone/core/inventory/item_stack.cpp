@@ -71,6 +71,14 @@ void EndstoneItemStack::setData(const int data)
     item_.setAuxValue(aux_value);
 }
 
+std::string EndstoneItemStack::getTranslationKey() const
+{
+   if (item_.isNull()) {
+        return "item.air.name";
+    }
+    return item_.getDescriptionId();
+}
+
 int EndstoneItemStack::getMaxStackSize() const
 {
     if (item_.isNull()) {

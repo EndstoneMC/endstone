@@ -74,6 +74,7 @@ public:
     [[nodiscard]] std::int16_t getAuxValue() const;
     void setAuxValue(std::int16_t);
     [[nodiscard]] std::string getName() const;
+    [[nodiscard]] std::string getDescriptionId() const;
     [[nodiscard]] std::string getCustomName() const;
     [[nodiscard]] bool hasCustomHoverName() const;
     [[nodiscard]] std::uint8_t getCount() const;  // Endstone
