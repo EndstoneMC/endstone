@@ -21,18 +21,14 @@
 #include <vector>
 
 namespace endstone {
-namespace core {
-class EndstoneItemMeta;
-}
 /**
  * @brief Represents the metadata of a generic item.
  */
-class MapMeta;
 class ItemMeta {
 public:
     enum class Type {
-        Item = 0,
-        Map = 1,
+        Item,
+        Map,
         Count,
     };
 
