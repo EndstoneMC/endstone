@@ -18,7 +18,7 @@
 
 const ItemStack ItemStack::EMPTY_ITEM{};
 
-ItemStack::ItemStack(const BlockLegacy &block, int count) : ItemStackBase(block, count) {}
+ItemStack::ItemStack(const BlockType &block, int count) : ItemStackBase(block, count) {}
 
 ItemStack::ItemStack(const ItemInstance &item_instance) : ItemStackBase(item_instance) {}
 
@@ -32,7 +32,7 @@ ItemStack::ItemStack(Item const &item, int count, int aux_value, CompoundTag con
 {
 }
 
-void ItemStack::reinit(const BlockLegacy &block, int count)
+void ItemStack::reinit(const BlockType &block, int count)
 {
     const ItemStack rhs(block, count);
     operator=(rhs);

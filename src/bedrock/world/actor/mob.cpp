@@ -15,7 +15,9 @@
 #include "bedrock/world/actor/mob.h"
 
 #include "bedrock/entity/components/mob_body_rotation_component.h"
+#include "bedrock/entity/components/no_action_time_component.h"
 #include "bedrock/world/actor/actor_flags.h"
+#include "bedrock/world/level/level.h"
 
 Mob *Mob::tryGetFromEntity(EntityContext &entity, bool include_removed)
 {
@@ -42,4 +44,15 @@ bool Mob::isSprinting() const
 void Mob::setYBodyRotation(float rotation)
 {
     getPersistentComponent<MobBodyRotationComponent>()->y_body_rot = rotation;
+}
+
+void Mob::resetNoActionTime()
+{
+    getPersistentComponent<NoActionTimeComponent>()->value = 0;
+}
+
+bool Mob::checkForPostHitDamageImmunity(float damage_difference, const ActorDamageSource &source)
+{
+    return !getLevel().isClientSide() && (invulnerable_time != 10 || !getChainedDamageEffects()) &&
+           source.getCause() != ActorDamageCause::SelfDestruct && invulnerable_time > 0 && damage_difference <= 0.0;
 }

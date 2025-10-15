@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "endstone/namespaced_key.h"
 #include "endstone/registry.h"
 #include "endstone/server.h"
 
@@ -23,21 +22,21 @@ namespace endstone::core {
 template <typename T>
 class MinecraftRegistry {
 public:
-    [[nodiscard]] const T *get(const NamespacedKey &key) const;
-    [[nodiscard]] std::vector<NamespacedKey> keys() const;
+    [[nodiscard]] const T *get(const std::string &key) const;
+    [[nodiscard]] std::vector<std::string> keys() const;
 };
 
 template <typename E, typename M>
 class EndstoneRegistry final : public Registry<E> {
 public:
-    using MinecraftToEndstoneFunc = std::function<std::unique_ptr<E>(NamespacedKey, const M &)>;
+    using MinecraftToEndstoneFunc = std::function<std::unique_ptr<E>(const std::string &, const M &)>;
 
     explicit EndstoneRegistry(MinecraftToEndstoneFunc minecraft_to_endstone)
         : minecraft_to_endstone_(minecraft_to_endstone)
     {
     }
 
-    E *get(NamespacedKey key) noexcept override
+    E *get(const std::string & key) noexcept override
     {
         auto it = cache_.find(key);
         if (it != cache_.end()) {
@@ -54,7 +53,7 @@ public:
         return raw;
     }
 
-    const E *get(NamespacedKey key) const noexcept override
+    const E *get(const std::string & key) const noexcept override
     {
         auto it = cache_.find(key);
         if (it != cache_.end()) {
@@ -71,20 +70,20 @@ public:
         return raw;
     }
 
-    E &getOrThrow(const NamespacedKey key) override
+    E &getOrThrow(const std::string & key) override
     {
         E *result = get(key);
         if (!result) {
-            throw std::out_of_range{std::string{"EndstoneRegistry: key not found: "} + key.toString()};
+            throw std::out_of_range{fmt::format("EndstoneRegistry: key not found: {}", key)};
         }
         return *result;
     }
 
-    const E &getOrThrow(const NamespacedKey key) const override
+    const E &getOrThrow(const std::string & key) const override
     {
         const E *result = get(key);
         if (!result) {
-            throw std::out_of_range{std::string{"EndstoneRegistry: key not found: "} + key.toString()};
+            throw std::out_of_range{fmt::format("EndstoneRegistry: key not found: {}", key)};
         }
         return *result;
     }
@@ -101,7 +100,7 @@ public:
     static std::unique_ptr<Registry<E>> createRegistry();
 
 private:
-    std::unique_ptr<E> createEndstone(NamespacedKey key, const M *minecraft) const
+    std::unique_ptr<E> createEndstone(const std::string & key, const M *minecraft) const
     {
         if (minecraft == nullptr) {
             return nullptr;
@@ -110,7 +109,7 @@ private:
     }
 
     MinecraftRegistry<M> minecraft_registry_;
-    mutable std::unordered_map<NamespacedKey, std::unique_ptr<E>> cache_;
+    mutable std::unordered_map<std::string, std::unique_ptr<E>> cache_;
     MinecraftToEndstoneFunc minecraft_to_endstone_;
 };
 

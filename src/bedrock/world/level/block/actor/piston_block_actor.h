@@ -39,7 +39,7 @@ private:
     PistonState state_;
     PistonState new_state_;
     bool verify_arm_;
-    bool should_verify_arm_type_;
+    bool should_verify_arm_type_; // +178
     std::vector<BlockPos> attached_blocks_;
     std::optional<std::vector<BlockPos>> future_client_attached_blocks_;
     std::vector<BlockPos> break_blocks_;

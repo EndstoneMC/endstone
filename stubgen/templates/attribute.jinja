@@ -1,0 +1,8 @@
+{%- if "property" in obj.labels -%}
+    {%- include "property.jinja" with context -%}
+{%- else -%}
+    {{ obj.name }}{{ ": " ~ obj.annotation if obj.annotation }} = {{ obj.value }}{{ "\n" }}
+    {%- if obj.docstring -%}
+        {%- include "docstring.jinja" with context -%}
+    {%- endif -%}
+{%- endif -%}

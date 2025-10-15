@@ -18,29 +18,16 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriority> &event_priority)
+void init_event(py::module_ &m, py::class_<Event> &event)
 {
-    py::enum_<EventResult>(m, "EventResult")
+    py::native_enum<EventResult>(m, "EventResult", "enum.Enum")
         .value("DENY", EventResult::Deny)
         .value("DEFAULT", EventResult::Default)
-        .value("ALLOW", EventResult::Allow);
+        .value("ALLOW", EventResult::Allow)
+        .finalize();
 
     event.def_property_readonly("event_name", &Event::getEventName, "Gets a user-friendly identifier for this event.")
         .def_property_readonly("is_asynchronous", &Event::isAsynchronous, "Whether the event fires asynchronously.");
-
-    event_priority
-        .value("LOWEST", EventPriority::Lowest,
-               "Event call is of very low importance and should be run first, to allow other plugins to further "
-               "customise the outcome")
-        .value("LOW", EventPriority::Low, "Event call is of low importance")
-        .value("NORMAL", EventPriority::Normal,
-               " Event call is neither important nor unimportant, and may be run normally")
-        .value("HIGH", EventPriority::High, "Event call is of high importance")
-        .value("HIGHEST", EventPriority::Highest,
-               "Event call is critical and must have the final say in what happens to the event")
-        .value("MONITOR", EventPriority::Monitor,
-               "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
-               "should be made under this priority.");
 
     py::class_<ICancellable>(m, "Cancellable", "Represents an event that may be cancelled by a plugin or the server.")
         .def_property(
@@ -205,7 +192,14 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
-                      "Gets or sets the message that the player will send.");
+                      "Gets or sets the message that the player will send.")
+        .def_property("player", &PlayerChatEvent::getPlayer, &PlayerChatEvent::setPlayer,
+                      py::return_value_policy::reference, "Gets or sets the player that this message will display as")
+        .def_property("format", &PlayerChatEvent::getFormat, &PlayerChatEvent::setFormat,
+                      "Sets the format to use to display this chat message")
+        .def_property_readonly("recipients", &PlayerChatEvent::getRecipients,
+                               py::return_value_policy::reference_internal,
+                               "Gets a set of recipients that this chat message will be displayed to");
     py::class_<PlayerCommandEvent, PlayerEvent, ICancellable>(m, "PlayerCommandEvent",
                                                               "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
@@ -228,11 +222,13 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                "Gets the GameMode the player is switched to.");
     auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
         m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.");
-    py::enum_<PlayerInteractEvent::Action>(player_interact_event, "Action")
+    py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum")
         .value("LEFT_CLICK_BLOCK", PlayerInteractEvent::Action::LeftClickBlock)
         .value("RIGHT_CLICK_BLOCK", PlayerInteractEvent::Action::RightClickBlock)
         .value("LEFT_CLICK_AIR", PlayerInteractEvent::Action::LeftClickAir)
-        .value("RIGHT_CLICK_AIR", PlayerInteractEvent::Action::RightClickAir);
+        .value("RIGHT_CLICK_AIR", PlayerInteractEvent::Action::RightClickAir)
+        .export_values()
+        .finalize();
     player_interact_event
         .def_property_readonly("action", &PlayerInteractEvent::getAction, "Returns the action type of interaction")
         .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "Check if this event involved an item")
@@ -383,9 +379,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
 
     auto server_load_event = py::class_<ServerLoadEvent, Event>(
         m, "ServerLoadEvent", "Called when either the server startup or reload has completed.");
-    py::enum_<ServerLoadEvent::LoadType>(server_load_event, "LoadType")
+    py::native_enum<ServerLoadEvent::LoadType>(server_load_event, "LoadType", "enum.Enum")
         .value("STARTUP", ServerLoadEvent::LoadType::Startup)
-        .export_values();
+        .export_values()
+        .finalize();
     server_load_event.def_property_readonly("type", &ServerLoadEvent::getType);
 
     py::class_<WeatherEvent, Event>(m, "WeatherEvent", "Represents a weather-related event")

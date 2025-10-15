@@ -68,8 +68,9 @@ public:
     [[nodiscard]] InputMode getCurrentInputMode() const;
     [[nodiscard]] std::string getThirdPartyName() const;
     [[nodiscard]] bool isVerified() const;
-    bool verify(const std::vector<std::string> &, int64_t);
+    [[nodiscard]] bool isWellFormed() const;
     bool verifySelfSigned();
+    void invalidate();
     [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
     [[nodiscard]] PlatformType getPlatformType() const;
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
@@ -80,9 +81,12 @@ public:
 private:
     [[nodiscard]] Json::Value getData(const std::string &key) const;
 
+    bool is_verified_;
     std::unique_ptr<WebToken> raw_token_;
     std::unique_ptr<UnverifiedCertificate> certificate_data_;
     LegacyMultiplayerToken legacy_multiplayer_token_;
     RawGameServerToken game_server_token_;
+    GameServerToken verified_game_server_token_;
     PlayerAuthenticationType authentication_type_;
+    PlayerAuthenticationInfo authentication_info_;
 };

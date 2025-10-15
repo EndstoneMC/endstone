@@ -20,7 +20,9 @@
 
 class BlockComponentStorage {
 public:
-    class ComponentBase {};
+    struct ComponentBase {
+        virtual ~ComponentBase();
+    };
 
 private:
     std::size_t padding_[12];                            // +0

@@ -14,7 +14,7 @@
 
 #pragma once
 
-enum class BlockActorType : int {
+enum class BlockActorType : std::uint8_t {
     Undefined = 0,
     Furnace = 1,
     Chest = 2,
@@ -71,5 +71,7 @@ enum class BlockActorType : int {
     TrialSpawner = 56,
     Vault = 57,
     CreakingHeart = 58,
-    _count = 59,
+    Shelf = 59,
+    CopperGolemStatue = 60,
+    _count = 61,
 };

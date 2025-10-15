@@ -27,35 +27,45 @@ using endstone::core::EndstoneServer;
 
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
-    if (const auto sender = ctx.getOrigin().getEndstoneSender(); sender) {
+    const auto &server = EndstoneServer::getInstance();
+    switch (ctx.getOrigin().getOriginType()) {
+    case CommandOriginType::Player: {
         auto command_line = ctx.getCommand();
+        endstone::Player &player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
 
-        if (auto *player = sender->asPlayer(); player) {
-            endstone::PlayerCommandEvent event(*player, ctx.getCommand());
-            server.getPluginManager().callEvent(event);
-
-            if (event.isCancelled()) {
-                return MCRESULT_CommandsDisabled;
-            }
-            command_line = event.getCommand();
-            server.getLogger().info("{} issued server command: {}", player->getName(), command_line);
+        endstone::PlayerCommandEvent e(player, command_line);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return MCRESULT_CommandsDisabled;
         }
 
-        if (auto *console = sender->asConsole(); console) {
-            endstone::ServerCommandEvent event(*console, command_line);
-            server.getPluginManager().callEvent(event);
-
-            if (event.isCancelled()) {
-                return MCRESULT_CommandsDisabled;
-            }
-            command_line = event.getCommand();
+        command_line = e.getCommand();
+        if (server.logCommands()) {
+            server.getLogger().info("{} issued server command: {}", player.getName(), command_line);
         }
-
-        if (server.dispatchCommand(*sender, command_line)) {
+        if (server.dispatchCommand(player, command_line)) {
             return MCRESULT_Success;
         }
         return MCRESULT_CommandNotFound;
+    }
+    case CommandOriginType::DedicatedServer: {
+        auto command_line = ctx.getCommand();
+        auto &console = server.getCommandSender();
+
+        endstone::ServerCommandEvent e(console, command_line);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return MCRESULT_CommandsDisabled;
+        }
+
+        command_line = e.getCommand();
+        if (server.dispatchCommand(console, command_line)) {
+            return MCRESULT_Success;
+        }
+        return MCRESULT_CommandNotFound;
+    }
+    default:
+        break;
     }
 
     // For other types of sender we don't support yet, fallback to the original dispatching route

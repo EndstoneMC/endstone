@@ -20,6 +20,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/bedrock_event_logger.cpp
         bedrock_hooks/campfire_block_actor.cpp
         bedrock_hooks/fire_block.cpp
+        bedrock_hooks/health_attribute_delegate.cpp
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item_registry_manager.cpp
         bedrock_hooks/level.cpp
@@ -33,6 +34,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/player.cpp
         bedrock_hooks/raknet_socket2.cpp
         bedrock_hooks/rak_peer_helper.cpp
+        bedrock_hooks/repository_sources.cpp
         bedrock_hooks/resource_pack_repository.cpp
         bedrock_hooks/say_command.cpp
         bedrock_hooks/script_actor_gameplay_handler.cpp
@@ -42,7 +44,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/script_player_gameplay_handler.cpp
         bedrock_hooks/script_scripting_event_handler.cpp
         bedrock_hooks/script_server_network_event_handler.cpp
-        bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
         bedrock_hooks/server_player_movement_correction_system.cpp
@@ -91,13 +92,13 @@ install(TARGETS endstone_runtime
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 if (WIN32)
-    install(TARGETS endstone_runtime RUNTIME DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-    install(TARGETS endstone_runtime_loader RUNTIME DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-    install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+    install(TARGETS endstone_runtime RUNTIME DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
+    install(TARGETS endstone_runtime_loader RUNTIME DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
+    install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
 endif ()
 if (UNIX)
-    install(TARGETS endstone_runtime LIBRARY DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+    install(TARGETS endstone_runtime LIBRARY DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
     if (ENDSTONE_SEPARATE_DEBUG_INFO)
-        install(FILES "$<TARGET_FILE_DIR:endstone_runtime>/endstone_runtime.dbg" DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+        install(FILES "$<TARGET_FILE_DIR:endstone_runtime>/endstone_runtime.dbg" DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
     endif ()
 endif ()

@@ -14,6 +14,7 @@
 
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
+#include "bedrock/network/packet/text_packet.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/server/packet_receive_event.h"
@@ -35,14 +36,59 @@ bool handleEvent(ChatEvent &event)
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = WeakEntityRef(event.sender).tryUnwrap<::Player>(); player) {
-        endstone::PlayerChatEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.message};
+        // populate recipient list
+        std::optional<std::vector<endstone::Player *>> recipients = std::nullopt;
+        if (event.targets.has_value()) {
+            auto r = std::vector<endstone::Player *>();
+            for (const auto &weak_ref : event.targets.value()) {
+                if (const auto *receipt = WeakEntityRef(weak_ref).tryUnwrap<::Player>(); receipt) {
+                    r.emplace_back(&receipt->getEndstoneActor<endstone::core::EndstonePlayer>());
+                }
+            }
+            recipients = r;
+        }
+
+        // create chat event
+        endstone::PlayerChatEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.message,
+                                    recipients};
+        auto original_format = e.getFormat();
+
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
         }
 
-        event.message = std::move(e.getMessage());
-        server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
+        std::string message;
+        try {
+            message = fmt::format(fmt::runtime(e.getFormat()), e.getPlayer().getName(), e.getMessage());
+        }
+        catch (const std::exception & /*e*/) {
+            server.getLogger().error("Invalid format string encountered in PlayerChatEvent.");
+            return false;
+        }
+
+        // Format has been changed, send formatted messages as raw and cancel the original event to avoid double sending
+        if (e.getFormat() != original_format) {
+            for (const auto &recipient : e.getRecipients()) {
+                recipient->sendMessage(message);
+            }
+            server.getLogger().info(message);
+            return false;
+        }
+
+        // Message has been changed, send new text messages and cancel the original event to avoid double sending
+        if (e.getMessage() != event.message) {
+            player = &static_cast<endstone::core::EndstonePlayer &>(e.getPlayer()).getPlayer();
+            for (const auto &recipient : e.getRecipients()) {
+                auto packet = TextPacket::createChat(player->getName(), e.getMessage(), std::nullopt, player->getXuid(),
+                                                     player->getPlatformOnlineId());
+                static_cast<endstone::core::EndstonePlayer *>(recipient)->getPlayer().sendNetworkPacket(packet);
+            }
+            return false;
+        }
+
+        // Nothing changed, proceed to original route and log to console
+        server.getLogger().info(message);
     }
     return true;
 }

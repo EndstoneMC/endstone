@@ -29,6 +29,18 @@ SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
     return static_cast<DataItem2<TypeInt8> *>(item)->data;
 }
 
+SynchedActorData::TypeInt64 SynchedActorData::getInt64(ID id) const
+{
+    if (!hasData(id)) {
+        return 0;
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Int64) {
+        return 0;
+    }
+    return static_cast<DataItem2<TypeInt64> *>(item)->data;
+}
+
 const std::string &SynchedActorData::getString(ID id) const
 {
     static std::string empty_string;
@@ -62,9 +74,19 @@ SynchedActorData::TypeInt8 SynchedActorDataEntityWrapper::getInt8(SynchedActorDa
     return data_->data.getInt8(id);
 }
 
+SynchedActorData::TypeInt64 SynchedActorDataEntityWrapper::getInt64(SynchedActorData::ID id) const
+{
+    return data_->data.getInt64(id);
+}
+
 const std::string &SynchedActorDataEntityWrapper::getString(SynchedActorData::ID id) const
 {
     return data_->data.getString(id);
+}
+
+bool SynchedActorDataEntityWrapper::hasData(SynchedActorData::ID id) const
+{
+    return data_->data.hasData(id);
 }
 
 gsl::not_null<SynchedActorData *> SynchedActorDataEntityWrapper::_get() const
@@ -82,6 +104,22 @@ void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt8>(SynchedActor
         return;
     }
     auto &item2 = static_cast<DataItem2<SynchedActorData::TypeInt8> &>(item);
+    if (item2.data != value) {
+        item2.data = value;
+        data->dirty_flags_.set(item.getId(), true);
+    }
+}
+
+template <>
+void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt64>(SynchedActorData::ID id,
+                                                                    const SynchedActorData::TypeInt64 &value)
+{
+    auto data = _get();
+    auto &item = data->_get(id);
+    if (item.getType() != DataItemType::Int64) {
+        return;
+    }
+    auto &item2 = static_cast<DataItem2<SynchedActorData::TypeInt64> &>(item);
     if (item2.data != value) {
         item2.data = value;
         data->dirty_flags_.set(item.getId(), true);

@@ -32,17 +32,10 @@ std::unordered_map<PackIdVersion, PackReport> const &PackSourceReport::getReport
     return reports_;
 }
 
-void PackSource::forEachPackConst(ConstPackCallback callback) const
+void PackSource::forEachPackShared(SharedPackCallback callback)
 {
-    for (const auto &pack : packs_) {
-        callback(*pack);
-    }
-}
-
-void PackSource::forEachPack(PackCallback callback)
-{
-    for (const auto &pack : packs_) {
-        callback(*pack);
+    for (const auto &pack : _getPacks()) {
+        callback(pack);
     }
 }
 
@@ -51,16 +44,38 @@ void PackSource::_buildSourcesForLoad(std::vector<gsl::not_null<PackSource *>> &
     out.emplace_back(this);
 }
 
-PackSource::PackSource(PackSourceOptions options) : io_(std::move(options.io)) {}
+void PackSource::forEachPackConst(ConstPackCallback callback) const
+{
+    for (const auto &pack : _getPacks()) {
+        callback(*pack);
+    }
+}
+
+void PackSource::forEachPack(PackCallback callback)
+{
+    for (const auto &pack : _getPacks()) {
+        callback(*pack);
+    }
+}
+
+PackSourcePacks PackSource::_getPacks() const
+{
+    return container_->lockShared([&](const PackStorage &storage) { return storage.packs; });
+}
 
 void PackSource::_setPacks(PackSourcePacks &&packs)
 {
-    packs_ = std::move(packs);
+    container_->lockShared([&](PackStorage &storage) { storage.packs = packs; });
 }
 
 void PackSource::_setReport(PackSourceReport &&report)
 {
-    report_ = std::move(report);
+    container_->lockShared([&](PackStorage &storage) { storage.report = report; });
+}
+
+PackSource::PackSource(PackSourceOptions options)
+    : io_(std::move(options.io)), container_(std::make_unique<PackStorageContainer>())
+{
 }
 
 void CompositePackSource::addPackSource(PackSource *pack_source)

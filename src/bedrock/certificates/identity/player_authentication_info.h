@@ -16,6 +16,8 @@
 
 #include <string>
 
+#include "bedrock/platform/uuid.h"
+
 enum class PlayerAuthenticationType : int {
     Invalid = -1,
     Full = 0,
@@ -25,6 +27,12 @@ enum class PlayerAuthenticationType : int {
 
 struct PlayerAuthenticationInfo {
     std::string xuid;
+    std::string play_fab_id;
+    std::string nintendo_id;
+    std::string psn_id;
     std::string xbox_live_name;
+    std::string nintendo_name;
+    std::string play_station_name;
+    std::string public_key;
+    mce::UUID authenticated_uuid;
 };
-

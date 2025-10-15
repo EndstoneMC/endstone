@@ -21,15 +21,21 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "endstone/core/actor/item.h"
+#include "endstone/core/actor/mob.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/level/level.h"
-#include "endstone/core/permissions/permissible.h"
 
 namespace endstone::core {
 
 EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor.getWeakEntity())
 {
     getPermissibleBase();
+}
+
+Actor *EndstoneActor::asActor() const
+{
+    return const_cast<EndstoneActor *>(this);
 }
 
 void EndstoneActor::sendMessage(const Message &message) const {}
@@ -96,6 +102,16 @@ std::unordered_set<PermissionAttachmentInfo *> EndstoneActor::getEffectivePermis
     return getPermissibleBase().getEffectivePermissions();
 }
 
+Mob *EndstoneActor::asMob() const
+{
+    return nullptr;
+}
+
+Item *EndstoneActor::asItem() const
+{
+    return nullptr;
+}
+
 std::string EndstoneActor::getType() const
 {
     return getActor().getActorIdentifier().getCanonicalName();
@@ -111,10 +127,10 @@ Location EndstoneActor::getLocation() const
     auto [x, y, z] = getActor().getPosition();
     y -= ActorOffset::getHeightOffset(getActor().getEntity());
     const auto &[pitch, yaw] = getActor().getRotation();
-    return {&getDimension(), x, y, z, pitch, yaw};
+    return {x, y, z, pitch, yaw, getDimension()};
 }
 
-Vector<float> EndstoneActor::getVelocity() const
+Vector EndstoneActor::getVelocity() const
 {
     if (getActor().hasCategory(ActorCategory::Mob) || getActor().hasCategory(ActorCategory::Ridable)) {
         auto *actor = getActor().getVehicle();
@@ -288,7 +304,11 @@ void EndstoneActor::setScoreTag(std::string score)
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
-    static std::shared_ptr<PermissibleBase> perm = PermissibleBase::create(nullptr);
+    static std::shared_ptr<PermissibleBase> perm;
+    if (!perm) {
+        perm = std::make_shared<PermissibleBase>(nullptr);
+        perm->recalculatePermissions();
+    }
     return *perm;
 }
 
@@ -297,30 +317,34 @@ PermissibleBase &EndstoneActor::getPermissibleBase()
     return getHandle<::Actor>();
 }
 
-std::shared_ptr<EndstoneActor> EndstoneActor::create(EndstoneServer &server, ::Actor &actor)
-{
-    return PermissibleFactory::create<EndstoneActor>(server, actor);
-}
-
 }  // namespace endstone::core
 
 endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
 {
+    return *getEndstoneActorPtr();
+}
+
+std::shared_ptr<endstone::core::EndstoneActor> Actor::getEndstoneActorPtr0() const
+{
     auto *self = const_cast<Actor *>(this);
     auto &component = entity_context_.getOrAddComponent<endstone::core::EndstoneActorComponent>();
     if (component.actor) {
-        return *component.actor;
+        return component.actor;
     }
 
     auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     if (auto *player = Player::tryGetFromEntity(self->entity_context_); player) {
-        component.actor = endstone::core::EndstonePlayer::create(server, *player);
+        component.actor = std::make_shared<endstone::core::EndstonePlayer>(server, *player);
+        component.actor->recalculatePermissions();
     }
     else if (auto *mob = Mob::tryGetFromEntity(self->entity_context_); mob) {
-        component.actor = endstone::core::EndstoneMob::create(server, *mob);
+        component.actor = std::make_shared<endstone::core::EndstoneMob>(server, *mob);
+    }
+    else if (auto *item = ItemActor::tryGetFromEntity(self->entity_context_); item) {
+        component.actor = std::make_shared<endstone::core::EndstoneItem>(server, *item);
     }
     else {
-        component.actor = endstone::core::EndstoneActor::create(server, *self);
+        component.actor = std::make_shared<endstone::core::EndstoneActor>(server, *self);
     }
-    return *component.actor;
+    return component.actor;
 }

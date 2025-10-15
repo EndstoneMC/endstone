@@ -32,6 +32,7 @@
 #include "endstone/core/command/defaults/pardon_ip_command.h"
 #include "endstone/core/command/defaults/plugins_command.h"
 #include "endstone/core/command/defaults/reload_command.h"
+#include "endstone/core/command/defaults/seed_command.h"
 #include "endstone/core/command/defaults/status_command.h"
 #include "endstone/core/command/defaults/version_command.h"
 #include "endstone/core/command/minecraft_command_adapter.h"
@@ -130,6 +131,7 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand(std::make_unique<PardonIpCommand>());
     registerCommand(std::make_unique<PluginsCommand>());
     registerCommand(std::make_unique<ReloadCommand>());
+    registerCommand(std::make_unique<SeedCommand>());
     registerCommand(std::make_unique<StatusCommand>());
     registerCommand(std::make_unique<VersionCommand>());
 #ifdef ENDSTONE_WITH_DEVTOOLS
@@ -336,6 +338,15 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
             }
             else {
+                if (parameter.type == "message" && (&parameter != &parameters.back())) {
+                    server_.getLogger().error(
+                        "Unable to register command '{}'. Argument '{}' of 'message' type must be "
+                        "the last argument in usage '{}'.",
+                        name, parameter.name, usage);
+                    success = false;
+                    break;
+                }
+
                 auto it = TYPE_SYMBOLS.find(std::string(parameter.type));
                 if (it == TYPE_SYMBOLS.end()) {
                     server_.getLogger().error("Unable to register command '{}'. Unsupported type '{}' in usage '{}'.",

@@ -16,7 +16,7 @@
 
 #include "bedrock/symbol.h"
 
-PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool /*is_dependent*/,
+PackInstance::PackInstance(NotNullResourcePack pack, int subpack_index, bool /*is_dependent*/,
                            PackSettings *pack_settings)
     : pack_(pack), subpack_index_(subpack_index), pack_settings_(pack_settings)
 {
@@ -24,15 +24,16 @@ PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int s
 
 const PackManifest &PackInstance::getManifest() const
 {
-    static PackManifest empty_manifest;
-    if (!pack_) {
+    static PackManifest empty_manifest(ManifestType::Pack);
+    if (!pack_.get()) {
         return empty_manifest;
     }
     return pack_->getManifest();
 }
 
 std::unique_ptr<ResourcePackStack> ResourcePackStack::deserialize(
-    std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo)
+    std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo,
+    std::optional<std::string> level_id)
 {
-    return BEDROCK_CALL(&ResourcePackStack::deserialize, file_stream, repo);
+    return BEDROCK_CALL(&ResourcePackStack::deserialize, file_stream, repo, level_id);
 }

@@ -66,10 +66,18 @@ public:
     /**
      * @brief Gets the dimension with the given name.
      *
-     * @param name the name of the dimension to retrieve
+     * @param name the name of the dimension to retrieve. For example, "overworld", "nether" or "the_end".
+     *
      * @return The Dimension with the given name, or nullptr if none exists
      */
     [[nodiscard]] virtual Dimension *getDimension(std::string name) const = 0;
+
+    /**
+     * @brief Gets the Seed for this level.
+     *
+     * @return This level's Seed
+     */
+    [[nodiscard]] virtual std::int64_t getSeed() const = 0;
 };
 
 }  // namespace endstone

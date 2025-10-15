@@ -51,7 +51,10 @@ public:
     virtual void addOnComplete(CompletionHandler) = 0;
 };
 
-template <typename T>
-using Async = typename IAsyncResult<T>::Handle;
+template <typename TResult>
+class Async : public std::shared_ptr<IAsyncResult<TResult>> {};
+
+template <typename TResult>
+class SharedAsync : public std::shared_ptr<IAsyncResult<TResult>> {};
 
 }  // namespace Bedrock::Threading

@@ -21,18 +21,33 @@ namespace endstone {
 /**
  * @brief Represents a 3-dimensional vector.
  */
-template <typename T>
 class Vector {
 public:
-    constexpr Vector() : x_(0), y_(0), z_(0) {}
-    constexpr Vector(T x, T y, T z) : x_(x), y_(y), z_(z) {}
+    /**
+     * @brief Construct the vector with all components as 0.
+     */
+    constexpr Vector() = default;
+
+    /**
+     * @brief Construct the vector with provided components.
+     *
+     * @param x X component
+     * @param y Y component
+     * @param z Z component
+     */
+    template <typename T>
+    constexpr Vector(T x, T y, T z)
+        requires(std::is_convertible_v<T, float>)
+        : x_(static_cast<float>(x)), y_(static_cast<float>(y)), z_(static_cast<float>(z))
+    {
+    }
 
     /**
      * @brief Gets the X component.
      *
      * @return The X component.
      */
-    constexpr T getX() const
+    [[nodiscard]] constexpr float getX() const
     {
         return x_;
     }
@@ -43,7 +58,7 @@ public:
      * @param x The new X component.
      * @return This vector.
      */
-    constexpr void setX(T x)
+    constexpr void setX(float x)
     {
         x_ = x;
     }
@@ -53,7 +68,7 @@ public:
      *
      * @return The Y component.
      */
-    constexpr T getY() const
+    [[nodiscard]] constexpr float getY() const
     {
         return y_;
     }
@@ -64,7 +79,7 @@ public:
      * @param y The new Y component.
      * @return This vector.
      */
-    constexpr void setY(T y)
+    constexpr void setY(float y)
     {
         y_ = y;
     }
@@ -74,7 +89,7 @@ public:
      *
      * @return The Z component.
      */
-    constexpr T getZ() const
+    [[nodiscard]] constexpr float getZ() const
     {
         return z_;
     }
@@ -85,32 +100,32 @@ public:
      * @param z The new Z component.
      * @return This vector.
      */
-    constexpr void setZ(T z)
+    constexpr void setZ(float z)
     {
         z_ = z;
     }
 
-    constexpr Vector<T> operator+(const Vector<T> &other) const
+    constexpr Vector operator+(const Vector &other) const
     {
-        return Vector(x_ + other.x_, y_ + other.y_, z_ + other.z_);
+        return {x_ + other.x_, y_ + other.y_, z_ + other.z_};
     }
 
-    constexpr Vector<T> operator-(const Vector<T> &other) const
+    constexpr Vector operator-(const Vector &other) const
     {
-        return Vector(x_ - other.x_, y_ - other.y_, z_ - other.z_);
+        return {x_ - other.x_, y_ - other.y_, z_ - other.z_};
     }
 
-    constexpr Vector<T> operator*(const Vector<T> &other) const
+    constexpr Vector operator*(const Vector &other) const
     {
-        return Vector(x_ * other.x_, y_ * other.y_, z_ * other.z_);
+        return {x_ * other.x_, y_ * other.y_, z_ * other.z_};
     }
 
-    constexpr Vector<T> operator/(const Vector<T> &other) const
+    constexpr Vector operator/(const Vector &other) const
     {
-        return Vector(x_ / other.x_, y_ / other.y_, z_ / other.z_);
+        return {x_ / other.x_, y_ / other.y_, z_ / other.z_};
     }
 
-    Vector<T> &operator+=(const Vector<T> &other)
+    Vector &operator+=(const Vector &other)
     {
         x_ += other.x_;
         y_ += other.y_;
@@ -118,7 +133,7 @@ public:
         return *this;
     }
 
-    Vector<T> &operator-=(const Vector<T> &other)
+    Vector &operator-=(const Vector &other)
     {
         x_ -= other.x_;
         y_ -= other.y_;
@@ -126,7 +141,7 @@ public:
         return *this;
     }
 
-    Vector<T> &operator*=(const Vector<T> &other)
+    Vector &operator*=(const Vector &other)
     {
         x_ *= other.x_;
         y_ *= other.y_;
@@ -134,7 +149,7 @@ public:
         return *this;
     }
 
-    Vector<T> &operator/=(const Vector<T> &other)
+    Vector &operator/=(const Vector &other)
     {
         x_ /= other.x_;
         y_ /= other.y_;
@@ -142,47 +157,47 @@ public:
         return *this;
     }
 
-    Vector<T> operator+(T scalar) const
+    Vector operator+(float scalar) const
     {
-        return Vector<T>(x_ + scalar, y_ + scalar, z_ + scalar);
+        return {x_ + scalar, y_ + scalar, z_ + scalar};
     }
 
-    Vector<T> operator-(T scalar) const
+    Vector operator-(float scalar) const
     {
-        return Vector<T>(x_ - scalar, y_ - scalar, z_ - scalar);
+        return {x_ - scalar, y_ - scalar, z_ - scalar};
     }
 
-    Vector<T> operator*(T scalar) const
+    Vector operator*(float scalar) const
     {
-        return Vector<T>(x_ * scalar, y_ * scalar, z_ * scalar);
+        return {x_ * scalar, y_ * scalar, z_ * scalar};
     }
 
-    Vector<T> operator/(T scalar) const
+    Vector operator/(float scalar) const
     {
-        return Vector<T>(x_ / scalar, y_ / scalar, z_ / scalar);
+        return {x_ / scalar, y_ / scalar, z_ / scalar};
     }
 
-    friend Vector<T> operator+(T scalar, const Vector<T> &v)
+    friend Vector operator+(float scalar, const Vector &v)
     {
-        return Vector<T>(scalar + v.x_, scalar + v.y_, scalar + v.z_);
+        return {scalar + v.x_, scalar + v.y_, scalar + v.z_};
     }
 
-    friend Vector<T> operator-(T scalar, const Vector<T> &v)
+    friend Vector operator-(float scalar, const Vector &v)
     {
-        return Vector<T>(scalar - v.x_, scalar - v.y_, scalar - v.z_);
+        return {scalar - v.x_, scalar - v.y_, scalar - v.z_};
     }
 
-    friend Vector<T> operator*(T scalar, const Vector<T> &v)
+    friend Vector operator*(float scalar, const Vector &v)
     {
-        return Vector<T>(scalar * v.x_, scalar * v.y_, scalar * v.z_);
+        return {scalar * v.x_, scalar * v.y_, scalar * v.z_};
     }
 
-    friend Vector<T> operator/(T scalar, const Vector<T> &v)
+    friend Vector operator/(float scalar, const Vector &v)
     {
-        return Vector<T>(scalar / v.x_, scalar / v.y_, scalar / v.z_);
+        return {scalar / v.x_, scalar / v.y_, scalar / v.z_};
     }
 
-    constexpr bool operator==(const Vector<T> &other) const
+    constexpr bool operator==(const Vector &other) const
     {
         return (x_ == other.x_) && (y_ == other.y_) && (z_ == other.z_);
     }
@@ -192,7 +207,7 @@ public:
      *
      * @return the magnitude
      */
-    [[nodiscard]] constexpr T length() const
+    [[nodiscard]] float length() const
     {
         return std::sqrt(lengthSquared());
     }
@@ -202,7 +217,7 @@ public:
      *
      * @return the magnitude
      */
-    [[nodiscard]] constexpr T lengthSquared() const
+    [[nodiscard]] constexpr float lengthSquared() const
     {
         return (x_ * x_) + (y_ * y_) + (z_ * z_);
     }
@@ -213,7 +228,7 @@ public:
      * @param other The other vector
      * @return the distance
      */
-    [[nodiscard]] constexpr T distance(const Vector<T> &other) const
+    [[nodiscard]] float distance(const Vector &other) const
     {
         return std::sqrt(distanceSquared(other));
     }
@@ -224,7 +239,7 @@ public:
      * @param other The other vector
      * @return the distance
      */
-    [[nodiscard]] constexpr T distanceSquared(const Vector<T> &other) const
+    [[nodiscard]] constexpr float distanceSquared(const Vector &other) const
     {
         return ((x_ - other.x_) * (x_ - other.x_)) + ((y_ - other.y_) * (y_ - other.y_)) +
                ((z_ - other.z_) * (z_ - other.z_));
@@ -235,9 +250,9 @@ public:
      *
      * @return the same vector
      */
-    [[nodiscard]] Vector<T> &normalize()
+    [[nodiscard]] Vector &normalize()
     {
-        double len = length();
+        const auto len = length();
         x_ /= len;
         y_ /= len;
         z_ /= len;
@@ -245,9 +260,9 @@ public:
     }
 
 protected:
-    T x_;
-    T y_;
-    T z_;
+    float x_ = 0.0;
+    float y_ = 0.0;
+    float z_ = 0.0;
 };
 
 }  // namespace endstone

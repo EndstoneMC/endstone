@@ -11,7 +11,7 @@ Here, we want an on-screen popup displaying "Hi!" to appear for every online pla
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        api_version = "0.5"
+        api_version = "{{ git.short_tag[1:].rsplit('.', 1)[0] }}"
 
         # ...
 
@@ -27,7 +27,7 @@ Here, we want an on-screen popup displaying "Hi!" to appear for every online pla
 === ":simple-cplusplus: C++"
 
     ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="10 13-19"
-    #include <endstone/plugin/plugin.h>
+    #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {
     public:

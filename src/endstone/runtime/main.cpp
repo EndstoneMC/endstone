@@ -24,6 +24,20 @@
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
+#if defined(_WIN32)
+#include <io.h>
+#define DUP    _dup
+#define DUP2   _dup2
+#define CLOSE  _close
+#define FILENO _fileno
+#else
+#include <unistd.h>
+#define DUP    dup
+#define DUP2   dup2
+#define CLOSE  close
+#define FILENO fileno
+#endif
+
 namespace py = pybind11;
 
 int init()
@@ -33,18 +47,27 @@ int init()
     try {
         logger.info("Initialising...");
 
+        // Save the current stdin, as it will be altered after the initialisation of python interpreter
+        const auto old_stdin = DUP(FILENO(stdin));
+
         // Initialise an isolated Python environment to avoid installing signal handlers
         // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
         PyConfig config;
         PyConfig_InitIsolatedConfig(&config);
         config.isolated = 0;
         config.use_environment = 1;
-        config.install_signal_handlers = 0;
         py::initialize_interpreter(&config);
         py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
         py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
+
+        // Release the GIL and never re-acquire.
         py::gil_scoped_release release{};
         release.disarm();
+
+        // Restore the stdin
+        std::fflush(stdin);
+        DUP2(old_stdin, FILENO(stdin));
+        CLOSE(old_stdin);
 
         // Install hooks
         endstone::hook::install();

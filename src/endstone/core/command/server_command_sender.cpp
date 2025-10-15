@@ -22,15 +22,13 @@
 
 namespace endstone::core {
 
-ServerCommandSender::ServerCommandSender() = default;
-
-void ServerCommandSender::init(std::shared_ptr<PermissibleBase> perm)
+ServerCommandSender::ServerCommandSender(std::shared_ptr<PermissibleBase> perm)
 {
     if (perm) {
         perm_ = std::move(perm);
     }
     else {
-        perm_ = PermissibleBase::create(this);
+        perm_ = std::make_shared<PermissibleBase>(this);
     }
 }
 

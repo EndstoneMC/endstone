@@ -19,5 +19,5 @@ wheelhouse/*
 stubs/*
 .cache/*
 dist/*
-endstone/_internal/version.py
+endstone/_version.py
 conan_provider.cmake

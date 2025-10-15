@@ -46,7 +46,7 @@ PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&optio
     }
 
     auto &server = entt::locator<EndstoneServer>::value_or();
-    server.getLogger().info("Loading resource packs...");
+    server.getLogger().info("Loading packs from '{}' ({})", path_, magic_enum::enum_name(pack_type_));
 
     PackSourceLoadResult result;
     for (const auto &entry : fs::directory_iterator(path_)) {
@@ -57,8 +57,7 @@ PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&optio
         }
 
         file = entry.path();
-        if (file.extension() == ".mcpack" || file.extension() == ".zip") {
-
+        if (std::regex_search(file.filename().string(), std::regex("\\.(mcpack|zip)$", std::regex::icase))) {
             // Check if the key file exists, in which case the pack would've been encrypted
             std::string key;
             auto key_path = file.string() + ".key";
@@ -92,7 +91,7 @@ PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&optio
             auto pack = Pack::createPack(*io_, file_location, getPackType(), getPackOrigin(), *options.manifest_factory,
                                          options.key_provider, &result.report, Core::Path::EMPTY);
             if (!pack) {
-                server.getLogger().error("Could not load resource pack from '{}':",
+                server.getLogger().error("Could not load pack from '{}':",
                                          file_location.getRelativePath().getContainer());
                 continue;
             }
@@ -106,7 +105,7 @@ PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&optio
 
     for (const auto &[pack_id, report] : result.report.getReports()) {
         if (report.hasErrors()) {
-            server.getLogger().error("Could not load resource pack from '{}':",
+            server.getLogger().error("Could not load pack from '{}':",
                                      report.getLocation().getRelativePath().getContainer());
             for (const auto &pack_error : report.getErrors()) {
                 server.getLogger().error(pack_error->getLocErrorMessage());

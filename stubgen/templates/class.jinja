@@ -1,0 +1,15 @@
+class {{ obj.name }}
+{%- if obj.bases -%}
+    ({{ obj.bases | join(', ') }})
+{%- endif -%}
+:
+{% filter indent(4, first=True) -%}
+    {%- if obj.docstring -%}
+        {%- include "docstring.jinja" with context -%}
+    {%- endif -%}
+    {%- for _, member in obj.members.items() %}
+        {%- with obj = member -%}
+            {%- include "{}.jinja".format(obj.kind.value) with context -%}
+        {%- endwith -%}
+    {%- endfor -%}
+{%- endfilter -%}

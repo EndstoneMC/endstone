@@ -1,0 +1,14 @@
+@property
+def {{ obj.name }}(self) -> {{ obj.annotation }}:
+{% filter indent(4, first=True) -%}
+    {%- if obj.docstring -%}
+        {%- include "docstring.jinja" with context -%}
+    {%- endif -%}
+    ...
+{% endfilter -%}
+{%- if obj.setter -%}
+    @{{ obj.name }}.setter{{ "\n" }}
+    {%- with obj = obj.setter -%}
+        {%- include "function.jinja" with context -%}
+    {%- endwith -%}
+{%- endif -%}

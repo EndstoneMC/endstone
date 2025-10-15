@@ -22,11 +22,6 @@ namespace endstone {
  */
 class Mob : public Actor {
 public:
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return const_cast<Mob *>(this);
-    }
-
     /**
      * @brief Checks to see if an actor is gliding, such as using an Elytra.
      * @return True if this actor is gliding.

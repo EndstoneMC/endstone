@@ -21,7 +21,7 @@ void FireBlock::_tryEvictBeehive(BlockSource &region, const BlockPos &pos) const
 {
     auto &block = region.getBlock(pos);
     if (block.getName() == VanillaBlockTypeIds::Beehive || block.getName() == VanillaBlockTypeIds::BeeNest) {
-        static_cast<const BeehiveBlock &>(block.getLegacyBlock()).evictAll(region, pos, false);
+        static_cast<const BeehiveBlock &>(block.getBlockType()).evictAll(region, pos, false);
     }
 }
 

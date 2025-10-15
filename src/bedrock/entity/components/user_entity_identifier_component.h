@@ -54,7 +54,6 @@ public:
 private:
     NetworkIdentifier network_id_;
     SubClientId client_sub_id_;
-    std::string playfab_id_unverified_;
     mce::UUID client_uuid_;
     PlayerAuthenticationType authentication_type_;
     PlayerAuthenticationInfo trusted_player_info_;

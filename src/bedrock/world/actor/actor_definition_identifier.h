@@ -20,7 +20,12 @@
 
 struct ActorDefinitionIdentifier {
 public:
+    static constexpr char NAMESPACE_SEPARATOR = ':';
+    static constexpr char EVENT_BEGIN = '<';
+    static constexpr char EVENT_END = '>';
     ActorDefinitionIdentifier() = default;
+    explicit ActorDefinitionIdentifier(const std::string &full_name);
+    void initialize(const std::string &full_name);
     [[nodiscard]] const std::string &getNamespace() const;
     [[nodiscard]] const std::string &getIdentifier() const;
     [[nodiscard]] const std::string &getInitEvent() const;
@@ -30,6 +35,9 @@ public:
     [[nodiscard]] bool isVanilla() const;
 
 private:
+    void _initialize();
+    static void _extractIdentifier(const std::string &name, ActorDefinitionIdentifier &id);
+
     std::string namespace_;                 // +0
     std::string identifier_;                // +24
     std::string init_event_;                // +48

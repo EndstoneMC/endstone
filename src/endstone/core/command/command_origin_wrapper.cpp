@@ -15,7 +15,7 @@
 #include "endstone/core/command/command_origin_wrapper.h"
 
 #include "endstone/core/message.h"
-#include "endstone/core/permissions/permissible.h"
+
 
 namespace endstone::core {
 
@@ -59,10 +59,4 @@ PermissionLevel CommandOriginWrapper::getPermissionLevel() const
     }
     return PermissionLevel::Default;
 }
-
-std::shared_ptr<CommandOriginWrapper> CommandOriginWrapper::create(const CommandOrigin &origin, CommandOutput &output)
-{
-    return PermissibleFactory::create<CommandOriginWrapper>(origin, output);
-}
-
 }  // namespace endstone::core

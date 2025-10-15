@@ -57,15 +57,18 @@ public:
 
     ~ServerNetworkHandler() override = 0;
 
-    ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
-                                        std::string const &, std::optional<std::string>, bool);
+    ENDSTONE_HOOK void disconnectClientWithMessage(const NetworkIdentifier &id, SubClientId sub_id,
+                                                   Connection::DisconnectFailReason disconnect_reason,
+                                                   const std::string &message,
+                                                   std::optional<std::string> filtered_message, bool skip_message);
     [[nodiscard]] int getMaxNumPlayers() const;
     int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
 
-    ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);                                // Endstone
-    void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id, std::string const &reason);  // Endstone
+    ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
+    void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id,
+                    std::string const &reason);  // Endstone
 
 private:
     friend class endstone::core::EndstoneServer;
@@ -93,6 +96,7 @@ private:
     Bedrock::NonOwnerPointer<ILevel> level_;
     ServerNetworkSystem &network_;
     PrivateKeyManager &server_keys_;
+    Bedrock::NotNullNonOwnerPtr<MinecraftServiceKeyManager> minecraft_service_keys_;
     ServerLocator &server_locator_;
     gsl::not_null<PacketSender *> packet_sender_;  // +200
     bool use_allow_list_;
@@ -101,6 +105,7 @@ private:
     DenyList server_deny_list_;
     NetworkServerConfig network_server_config_;
     bool has_displayed_pack_errors_;
+    std::shared_ptr<PackSettingsCache> pack_settings_cache_;
     NetworkIdentifier my_id_;
     int max_chunk_radius_;
     MinecraftCommands &minecraft_commands_;
@@ -119,7 +124,7 @@ private:
     std::vector<mce::UUID> known_emote_piece_ids_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::string, std::shared_ptr<ResourcePackFileUploadManager>>>
         resource_upload_managers_;
-    gsl::not_null<std::shared_ptr<std::shared_ptr<Bedrock::Threading::IAsyncResult<void>>>> previous_upload_;
+    gsl::not_null<std::shared_ptr<Bedrock::Threading::SharedAsync<void>>> previous_upload_;
     gsl::not_null<std::unique_ptr<ResourcePackPathLifetimeHelpers::ResourcePackPathCache>> resource_pack_path_cache_;
     gsl::not_null<std::unique_ptr<TaskGroup>> async_join_task_group_;
     gsl::not_null<std::unique_ptr<AsyncJoinTaskManager>> async_join_task_manager_;

@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-2022 ]
-        python-tag: [ "cp39", "cp310", "cp311", "cp312", "cp313" ]
+        python-tag: [ "cp39", "cp310", "cp311", "cp312", "cp313", "cp314" ]
         include:
           - os: ubuntu-latest
             platform: manylinux_x86_64
@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: true
@@ -58,7 +58,7 @@ jobs:
         run: echo "CONAN_HOME=/host${HOME}/.conan2" >> $GITHUB_ENV
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v3.0.1
+        uses: pypa/cibuildwheel@v3.2.1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}
@@ -86,7 +86,7 @@ jobs:
 
     steps:
       - name: Restore Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: endstone-wheels-*
           path: dist

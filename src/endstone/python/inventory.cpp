@@ -20,18 +20,18 @@ namespace endstone::python {
 
 void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 {
-    py::enum_<EquipmentSlot>(m, "EquipmentSlot")
+    py::native_enum<EquipmentSlot>(m, "EquipmentSlot", "enum.Enum")
         .value("HAND", EquipmentSlot::Hand)
         .value("OFF_HAND", EquipmentSlot::OffHand)
         .value("FEET", EquipmentSlot::Feet)
         .value("LEGS", EquipmentSlot::Legs)
         .value("CHEST", EquipmentSlot::Chest)
         .value("HEAD", EquipmentSlot::Head)
-        .value("BODY", EquipmentSlot::Body, "Only for certain entities such as horses and wolves.");
+        .value("BODY", EquipmentSlot::Body, "Only for certain entities such as horses and wolves.")
+        .finalize();
 
     py::class_<ItemType>(m, "ItemType", "Represents an item type.")
         .def_property_readonly("id", &ItemType::getId, "Return the identifier of this item type.")
-        .def_property_readonly("key", &ItemType::getKey, "Return the namespaced identifier of this item type.")
         .def_property_readonly("translation_key", &ItemType::getTranslationKey,
                                "Get the translation key, suitable for use in a translation component.")
         .def_property_readonly("max_stack_size", &ItemType::getMaxStackSize,

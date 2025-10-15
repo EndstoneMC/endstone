@@ -79,12 +79,21 @@ void init_form(py::module_ &m)
         .def_property("default_value", &Toggle::getDefaultValue, &Toggle::setDefaultValue,
                       "Gets or sets the value of the toggle.", py::return_value_policy::reference);
 
-    py::class_<Divider>(m, "Divider", "Represents a divider.")
-        .def(py::init<>());
+    py::class_<Divider>(m, "Divider", "Represents a divider.").def(py::init<>());
 
     py::class_<Header>(m, "Header", "Represents a header with a label.")
         .def(py::init<Message>(), py::arg("label") = "")
         .def_property("label", &Header::getLabel, &Header::setLabel, "Gets or sets the label of the header.",
+                      py::return_value_policy::reference);
+
+    py::class_<Button>(m, "Button", "Represents a button with text and an optional icon.")
+        .def(py::init<Message, std::optional<std::string>, Button::OnClickCallback>(), py::arg("text") = "",
+             py::arg("icon") = py::none(), py::arg("on_click") = Button::OnClickCallback{})
+        .def_property("text", &Button::getText, &Button::setText, "Gets or sets the text of the button",
+                      py::return_value_policy::reference)
+        .def_property("icon", &Button::getIcon, &Button::setIcon, "Gets or sets the icon path or URL of the button",
+                      py::return_value_policy::reference)
+        .def_property("on_click", &Button::getOnClick, &Button::setOnClick, "Gets or sets the on click callback.",
                       py::return_value_policy::reference);
 
     py::class_<MessageForm>(m, "MessageForm", "Represents a form with two buttons.")
@@ -115,47 +124,39 @@ void init_form(py::module_ &m)
                       "Gets or sets the text of button2.", py::return_value_policy::reference);
 
     auto action_form =
-        py::class_<ActionForm>(m, "ActionForm", "Represents a form with buttons that let the player take action.");
-
-    py::class_<Button>(action_form, "Button", "Represents a button with text and an optional icon.")
-        .def(py::init<Message, std::optional<std::string>, Button::OnClickCallback>(), py::arg("text") = "",
-             py::arg("icon") = py::none(), py::arg("on_click") = Button::OnClickCallback{})
-        .def_property("text", &Button::getText, &Button::setText,
-                      "Gets or sets the text of the button", py::return_value_policy::reference)
-        .def_property("icon", &Button::getIcon, &Button::setIcon,
-                      "Gets or sets the icon path or URL of the button", py::return_value_policy::reference)
-        .def_property("on_click", &Button::getOnClick, &Button::setOnClick,
-                      "Gets or sets the on click callback.", py::return_value_policy::reference);
-
-    action_form
-        .def(
-            py::init<>([](Message title, Message content, const std::optional<std::vector<ActionForm::Control>> &controls,
-                          ActionForm::OnSubmitCallback on_submit, ActionForm::OnCloseCallback on_close) {
-                return ActionForm()
-                    .setTitle(std::move(title))
-                    .setContent(std::move(content))
-                    .setControls(controls.value_or(std::vector<ActionForm::Control>{}))
-                    .setOnSubmit(std::move(on_submit))
-                    .setOnClose(std::move(on_close));
-            }),
-            py::arg("title") = "", py::arg("content") = "", py::arg("buttons") = py::none(),
-            py::arg("on_submit") = ActionForm::OnSubmitCallback{}, py::arg("on_close") = ActionForm::OnCloseCallback{})
-        .def_property("title", &ActionForm::getTitle, &ActionForm::setTitle, "Gets or sets the title of the form.",
-                      py::return_value_policy::reference)
-        .def_property("on_submit", &ActionForm::getOnSubmit, &ActionForm::setOnSubmit,
-                      "Gets or sets the on submit callback.", py::return_value_policy::reference)
-        .def_property("on_close", &ActionForm::getOnClose, &ActionForm::setOnClose,
-                      "Gets or sets the on close callback.", py::return_value_policy::reference)
-        .def_property("content", &ActionForm::getContent, &ActionForm::setContent,
-                      "Gets or sets the content of the form.", py::return_value_policy::reference)
-        .def("add_button", &ActionForm::addButton, "Adds a button to the form.", py::arg("text"),
-             py::arg("icon") = py::none(), py::arg("on_click") = Button::OnClickCallback{},
-             py::return_value_policy::reference)
-        .def("add_label", &ActionForm::addLabel, "Adds a label to the form.", py::arg("text"), py::return_value_policy::reference)
-        .def("add_header", &ActionForm::addHeader, "Adds a header to the form.", py::arg("text"), py::return_value_policy::reference)
-        .def("add_divider", &ActionForm::addDivider, "Adds a divider to the form.", py::return_value_policy::reference)
-        .def_property("controls", &ActionForm::getControls, &ActionForm::setControls,
-                      "Gets or sets the controls of the action form.", py::return_value_policy::reference);
+        py::class_<ActionForm>(m, "ActionForm", "Represents a form with buttons that let the player take action.")
+            .def(py::init<>([](Message title, Message content,
+                               const std::optional<std::vector<ActionForm::Control>> &controls,
+                               ActionForm::OnSubmitCallback on_submit, ActionForm::OnCloseCallback on_close) {
+                     return ActionForm()
+                         .setTitle(std::move(title))
+                         .setContent(std::move(content))
+                         .setControls(controls.value_or(std::vector<ActionForm::Control>{}))
+                         .setOnSubmit(std::move(on_submit))
+                         .setOnClose(std::move(on_close));
+                 }),
+                 py::arg("title") = "", py::arg("content") = "", py::arg("buttons") = py::none(),
+                 py::arg("on_submit") = ActionForm::OnSubmitCallback{},
+                 py::arg("on_close") = ActionForm::OnCloseCallback{})
+            .def_property("title", &ActionForm::getTitle, &ActionForm::setTitle, "Gets or sets the title of the form.",
+                          py::return_value_policy::reference)
+            .def_property("on_submit", &ActionForm::getOnSubmit, &ActionForm::setOnSubmit,
+                          "Gets or sets the on submit callback.", py::return_value_policy::reference)
+            .def_property("on_close", &ActionForm::getOnClose, &ActionForm::setOnClose,
+                          "Gets or sets the on close callback.", py::return_value_policy::reference)
+            .def_property("content", &ActionForm::getContent, &ActionForm::setContent,
+                          "Gets or sets the content of the form.", py::return_value_policy::reference)
+            .def("add_button", &ActionForm::addButton, "Adds a button to the form.", py::arg("text"),
+                 py::arg("icon") = py::none(), py::arg("on_click") = Button::OnClickCallback{},
+                 py::return_value_policy::reference)
+            .def("add_label", &ActionForm::addLabel, "Adds a label to the form.", py::arg("text"),
+                 py::return_value_policy::reference)
+            .def("add_header", &ActionForm::addHeader, "Adds a header to the form.", py::arg("text"),
+                 py::return_value_policy::reference)
+            .def("add_divider", &ActionForm::addDivider, "Adds a divider to the form.",
+                 py::return_value_policy::reference)
+            .def_property("controls", &ActionForm::getControls, &ActionForm::setControls,
+                          "Gets or sets the controls of the action form.", py::return_value_policy::reference);
 
     py::class_<ModalForm>(m, "ModalForm", "Represents a modal form with controls.")
         .def(py::init<>([](Message title, const std::optional<std::vector<ModalForm::Control>> &controls,

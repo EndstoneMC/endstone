@@ -14,11 +14,15 @@
 
 #include "bedrock/world/actor/mob.h"
 
+#include <iostream>
+
 #include "bedrock/entity/components/damage_sensor_component.h"
+#include "bedrock/entity/components/no_action_time_component.h"
 #include "endstone/actor/actor.h"
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/damage/damage_source.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_damage_event.h"
 #include "endstone/event/actor/actor_knockback_event.h"
@@ -46,29 +50,13 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
 
 bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)
 {
-    const auto &level = getLevel();
-    if (level.isClientSide() || isInvulnerableTo(source) || isDead()) {
+    addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(true);
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, damage, knock, ignite);
+    if (!hasComponent<endstone::core::MobHurtFlagComponent>()) {
+        // A related ActorDamageEvent is triggered and cancelled, propagate the result to the caller to prevent kb
+        // See also: HealthAttributeDelegate::change
         return false;
     }
-
-    // https://github.com/EndstoneMC/endstone/issues/175
-    if (auto *damage_sensor = tryGetComponent<DamageSensorComponent>(); damage_sensor) {
-        const auto damage_result = damage_sensor->recordGenericDamageAndCheckIfDealt(
-            *this, source, damage, static_cast<float>(getHealth()), {}, false);
-        if (damage_result == DealsDamage::No) {
-            return false;
-        }
-        if (damage_result == DealsDamage::NoButSidesEffectsApply) {
-            return true;
-        }
-    }
-
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    auto &mob = getEndstoneActor<endstone::core::EndstoneMob>();
-    endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return false;
-    }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, e.getDamage(), knock, ignite);
+    addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(false);
+    return result;
 }

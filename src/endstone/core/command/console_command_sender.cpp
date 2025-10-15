@@ -15,7 +15,6 @@
 #include "endstone/core/command/console_command_sender.h"
 
 #include "endstone/core/message.h"
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -35,11 +34,6 @@ void EndstoneConsoleCommandSender::sendErrorMessage(const Message &message) cons
     getServer().getLogger().error(EndstoneMessage::toString(message));
 }
 
-Server &EndstoneConsoleCommandSender::getServer() const
-{
-    return ServerCommandSender::getServer();
-}
-
 std::string EndstoneConsoleCommandSender::getName() const
 {
     return "Server";
@@ -48,56 +42,6 @@ std::string EndstoneConsoleCommandSender::getName() const
 PermissionLevel EndstoneConsoleCommandSender::getPermissionLevel() const
 {
     return PermissionLevel::Console;
-}
-
-bool EndstoneConsoleCommandSender::isPermissionSet(std::string name) const
-{
-    return ServerCommandSender::isPermissionSet(name);
-}
-
-bool EndstoneConsoleCommandSender::isPermissionSet(const Permission &perm) const
-{
-    return ServerCommandSender::isPermissionSet(perm);
-}
-
-bool EndstoneConsoleCommandSender::hasPermission(std::string name) const
-{
-    return ServerCommandSender::hasPermission(name);
-}
-
-bool EndstoneConsoleCommandSender::hasPermission(const Permission &perm) const
-{
-    return ServerCommandSender::hasPermission(perm);
-}
-
-PermissionAttachment *EndstoneConsoleCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
-{
-    return ServerCommandSender::addAttachment(plugin, name, value);
-}
-
-PermissionAttachment *EndstoneConsoleCommandSender::addAttachment(Plugin &plugin)
-{
-    return ServerCommandSender::addAttachment(plugin);
-}
-
-Result<void> EndstoneConsoleCommandSender::removeAttachment(PermissionAttachment &attachment)
-{
-    return ServerCommandSender::removeAttachment(attachment);
-}
-
-void EndstoneConsoleCommandSender::recalculatePermissions()
-{
-    ServerCommandSender::recalculatePermissions();
-}
-
-std::unordered_set<PermissionAttachmentInfo *> EndstoneConsoleCommandSender::getEffectivePermissions() const
-{
-    return ServerCommandSender::getEffectivePermissions();
-}
-
-std::shared_ptr<EndstoneConsoleCommandSender> EndstoneConsoleCommandSender::create()
-{
-    return PermissibleFactory::create<EndstoneConsoleCommandSender>();
 }
 
 }  // namespace endstone::core

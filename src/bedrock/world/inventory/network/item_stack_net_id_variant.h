@@ -19,10 +19,17 @@
 #include <variant>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/utility/binary_stream.h"
+
+struct ItemStackNetIdTag;
+struct ItemStackRequestIdTag;
+struct ItemStackLegacyRequestIdTag;
 
 template <typename Tag, typename RawIdT = int, RawIdT RawInvalid = 0>
 class TypedServerNetId {
 public:
+    TypedServerNetId() = default;
+
     [[nodiscard]] std::string toString() const
     {
         std::stringstream ss;
@@ -47,12 +54,15 @@ public:
     RawIdT raw_id = RawInvalid;
 };
 
+using ItemStackNetId = TypedServerNetId<ItemStackNetIdTag>;
+
 struct ItemStackNetIdVariant {
+    ItemStackNetIdVariant() = default;
+    void serialize(BinaryStream &) const;
     [[nodiscard]] std::string toString() const;
 
 private:
-    std::variant<TypedServerNetId<struct ItemStackNetIdTag>, TypedClientNetId<struct ItemStackRequestIdTag>,
-                 TypedClientNetId<struct ItemStackLegacyRequestIdTag>>
-        variant_;
+    std::variant<ItemStackNetId, TypedClientNetId<ItemStackRequestIdTag>, TypedClientNetId<ItemStackLegacyRequestIdTag>>
+        variant_ = ItemStackNetId();
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackNetIdVariant, 24, 24);

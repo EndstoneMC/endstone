@@ -18,8 +18,10 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <optional>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/threading/async.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/core/utility/optional_ref.h"
 #include "bedrock/forward.h"
@@ -33,13 +35,15 @@ public:
     virtual void clearLanguages() = 0;
     virtual std::vector<std::string> findAvailableLanguages(ResourcePackManager &) = 0;
     virtual std::unordered_map<std::string, std::string> findAvailableLanguageNames(ResourcePackManager &) = 0;
-    virtual void loadLanguages(ResourcePackManager &, gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>,
-                               std::string const &) = 0;
+    virtual Bedrock::Threading::Async<void> loadLanguages(ResourcePackManager &,
+                                                          gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>,
+                                                          std::string const &) = 0;
     virtual void loadAllLanguages(ResourcePackManager &) = 0;
     virtual std::vector<std::string> getLanguageCodesFromPack(PackAccessStrategy const &) = 0;
     virtual void loadLanguageKeywordsFromPack(PackManifest const &, PackAccessStrategy const &) = 0;
-    virtual void loadLanguageKeywordsFromPack(PackManifest const &, PackAccessStrategy const &,
-                                              std::vector<std::string> const &) = 0;
+    virtual void loadLanguageKeywordsFromPack(const PackManifest &, const PackAccessStrategy &,
+                                              const std::vector<std::string> &,
+                                              const std::optional<std::vector<std::string>> &) = 0;
     virtual void appendLanguageStringsFromPack(
         PackManifest const &, std::multimap<std::string, std::pair<std::string, std::string>> const &) = 0;
     virtual std::unordered_map<std::string, std::string> getLanguageKeywordsFromPack(PackManifest const &,
@@ -51,14 +55,15 @@ public:
     virtual void appendLanguageStrings(PackAccessStrategy *) = 0;
     virtual void addI18nObserver(I18nObserver &) = 0;
     virtual void chooseLanguage(std::string const &) = 0;
-    virtual std::string get(std::string const &, std::vector<std::string> const &, std::shared_ptr<Localization>) = 0;
-    virtual std::string get(std::string const &, std::shared_ptr<Localization>) = 0;
+    virtual std::string get(std::string const &, std::vector<std::string> const &,
+                            std::shared_ptr<const Localization>) = 0;
+    virtual std::string get(std::string const &, std::shared_ptr<const Localization>) = 0;
     virtual std::string getPackKeywordValue(PackManifest const &, std::string const &) = 0;
     virtual std::string getPackKeywordValueForTelemetry(PackManifest const &, std::string const &) = 0;
     virtual bool hasPackKeyEntry(PackManifest const &, std::string const &) = 0;
     [[nodiscard]] virtual std::string const &getSupportedLanguageCodes() const = 0;
     virtual std::string const &getLanguageName(std::string const &) = 0;
-    virtual std::shared_ptr<Localization> getLocaleFor(std::string const &) = 0;
+    virtual std::shared_ptr<const Localization> getLocaleFor(std::string const &) = 0;
     virtual std::string const &getLocaleCodeFor(std::string const &) = 0;
     virtual gsl::not_null<std::shared_ptr<const Localization>> getCurrentLanguage() = 0;
     virtual bool languageSupportsHypenSplitting() = 0;

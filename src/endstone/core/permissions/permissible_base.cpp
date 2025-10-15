@@ -16,17 +16,13 @@
 
 #include <memory>
 
-#include "endstone/core/permissions/permissible.h"
 #include "endstone/core/server.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
 
 namespace endstone::core {
 
-PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this)
-{
-    PermissibleBase::recalculatePermissions();
-}
+PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
 
 PermissibleBase::~PermissibleBase()
 {
@@ -195,9 +191,6 @@ std::unordered_set<PermissionAttachmentInfo *> PermissibleBase::getEffectivePerm
 
 CommandSender *PermissibleBase::asCommandSender() const
 {
-    if (opable_) {
-        return opable_->asCommandSender();
-    }
     return nullptr;
 }
 
@@ -211,11 +204,6 @@ void PermissibleBase::clearPermissions()
     getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Operator, parent_);
     getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Console, parent_);
     permissions_.clear();
-}
-
-std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
-{
-    return PermissibleFactory::create<PermissibleBase>(opable);
 }
 
 PluginManager *PermissibleBase::getPluginManager()

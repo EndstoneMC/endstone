@@ -19,6 +19,6 @@ struct BoatMovementComponent {
     int out_of_control_ticks;
     float y_rot_degree;
     float inv_friction;
-    float air_friction;
+    float air_friction_when_leashed;
 };
 static_assert(sizeof(BoatMovementComponent) == 20);

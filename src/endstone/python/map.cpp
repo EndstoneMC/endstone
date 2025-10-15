@@ -102,12 +102,15 @@ void init_map(py::module_ &m)
         .def("render", &MapRenderer::render, py::arg("view"), py::arg("canvas"), py::arg("player"),
              "Render to the given map.");
 
-    py::enum_<MapView::Scale>(view, "Scale", "An enum representing all possible scales a map can be set to.")
+    py::native_enum<MapView::Scale>(view, "Scale", "enum.IntEnum",
+                                    "An enum representing all possible scales a map can be set to.")
         .value("CLOSEST", MapView::Scale::Closest)
         .value("CLOSE", MapView::Scale::Close)
         .value("NORMAL", MapView::Scale::Normal)
         .value("FAR", MapView::Scale::Far)
-        .value("FARTHEST", MapView::Scale::Farthest);
+        .value("FARTHEST", MapView::Scale::Farthest)
+        .export_values()
+        .finalize();
 
     view.def_property_readonly("id", &MapView::getId, "Get the ID of this map item for use with MapMeta.")
         .def_property_readonly("is_virtual", &MapView::isVirtual, "Check whether this map is virtual.")

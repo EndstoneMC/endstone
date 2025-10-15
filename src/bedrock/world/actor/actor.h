@@ -232,7 +232,7 @@ public:
     [[nodiscard]] virtual bool canObstructSpawningAndBlockPlacement() const = 0;
     virtual AnimationComponent &getAnimationComponent() = 0;
     virtual void openContainerComponent(Player &) = 0;
-    virtual void swing() = 0;
+    virtual bool swing() = 0;
     virtual void useItem(ItemStackBase &, ItemUseMethod, bool) = 0;
     virtual void getDebugText(std::vector<std::string> &) = 0;
     [[nodiscard]] virtual float getMapDecorationRotation() const = 0;
@@ -272,6 +272,8 @@ public:
     [[nodiscard]] bool hasType(ActorType types) const;
     [[nodiscard]] ActorType getEntityTypeId() const;
     [[nodiscard]] const ActorDefinitionIdentifier &getActorIdentifier() const;
+    BuiltInActorComponents &getBuiltInActorComponents();
+    [[nodiscard]] const BuiltInActorComponents &getBuiltInActorComponents() const;
     [[nodiscard]] bool isSneaking() const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
@@ -319,6 +321,8 @@ public:
     void setScoreTag(const std::string &);
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
+    [[nodiscard]] gsl::not_null<MutableAttributeWithContext> getNotNullMutableAttribute(
+        const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
     void setFallDistance(float);
     [[nodiscard]] bool isDead() const;
@@ -327,15 +331,40 @@ public:
     [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;
     [[nodiscard]] const ItemStack &getOffhandSlot() const;
     [[nodiscard]] const ItemStack &getArmor(ArmorSlot) const;
-    bool isCreative() const;
-    bool isAdventure() const;
-    bool isSurvival() const;
-    bool isSpectator() const;
+    [[nodiscard]] bool isCreative() const;
+    [[nodiscard]] bool isAdventure() const;
+    [[nodiscard]] bool isSurvival() const;
+    [[nodiscard]] bool isSpectator() const;
     void queueBBUpdateFromValue(const Vec2 &);
     void queueBBUpdateFromDefinition();
+    void setChainedDamageEffects(bool);
+    [[nodiscard]] bool getChainedDamageEffects() const;
+    Mob *getLastHurtByMob();
+    [[nodiscard]] ActorUniqueID getLastHurtByMobID() const;
+    void setLastHurtByMob(Mob *);
+    Player *getLastHurtByPlayer();
+    [[nodiscard]] ActorUniqueID getLastHurtByPlayerID() const;
+    void setLastHurtByPlayer(Player *);
+    Mob *getLastHurtMob();
+    void setLastHurtMob(const Mob &target);
+    int getLastHurtMobTimestamp();
+    int getLastHurtByMobTime();
+    int getLastHurtByMobTimestamp();
+    [[nodiscard]] bool hasBeenHurtByMobInLastTicks(int) const;
+    [[nodiscard]] float getLastHurtDamage() const;
+    [[nodiscard]] ActorDamageCause getLastHurtCause() const;
+    [[nodiscard]] std::uint64_t getLastHurtTimestamp() const;
+    [[nodiscard]] bool isUseNewTradeScreen() const;
+    [[nodiscard]] bool canSeeDaylight() const;
+    [[nodiscard]] const Block *getInsideBlock() const;
+    void setInsideBlock(const Block *);
+    [[nodiscard]] const BlockPos &getInsideBlockPos() const;
+    void setInsideBlockPos(const BlockPos &);
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed = false);
     static Actor *tryGetFromEntity(StackRefResult<EntityContext>, bool include_removed = false);
+
+    void setLastHurtDamage(float damage);  // Endstone
 
 protected:
     void _setHeightOffset(float offset);
@@ -370,12 +399,10 @@ public:
     AABB *last_hit_bb;
     HashType64 name_tag_hash;
     float shadow_offset;
-    float pushthrough;
+    float push_through;
     int tick_count;
     int invulnerable_time;
     int last_health;
-    bool hurt_marked;
-    bool was_hurt_last_frame;
     bool invulnerable;
     int flame_tex_frame_index;
     float flame_frame_increment_time;
@@ -423,6 +450,8 @@ protected:
     ActorDefinitionPtr actor_definition_ptr_;
     std::string filtered_name_tag_;
     ActorTerrainInterlockData terrain_interlock_data_;
+    bool was_hurt_this_tick_;
+    bool was_hurt_last_tick_;
     ActorUniqueID last_hurt_mob_id_;
     ActorUniqueID last_hurt_by_mob_id_;
     ActorUniqueID last_hurt_by_player_id_;
@@ -457,6 +486,13 @@ public:
         return static_cast<T &>(getEndstoneActor0());
     }
 
+    template <typename T = endstone::core::EndstoneActor>
+    [[nodiscard]] std::shared_ptr<T> getEndstoneActorPtr() const
+    {
+        return std::static_pointer_cast<T>(getEndstoneActorPtr0());
+    }
+
 private:
     endstone::core::EndstoneActor &getEndstoneActor0() const;
+    std::shared_ptr<endstone::core::EndstoneActor> getEndstoneActorPtr0() const;
 };

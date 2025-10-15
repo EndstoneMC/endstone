@@ -6,6 +6,7 @@ set_target_properties(test_plugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "plugins")
 set_target_properties(test_plugin PROPERTIES RUNTIME_OUTPUT_DIRECTORY "plugins")
 
 add_executable(endstone_test
+        bedrock/test_actor_definition_identifier.cpp
         bedrock/test_binary_stream.cpp
         bedrock/test_block_pos.cpp
         bedrock/test_check.cpp

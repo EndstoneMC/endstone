@@ -22,6 +22,11 @@ public:
     using StackRef = typename GameRefs<Type>::StackRef;
     using GameRefs<Type>::OwnerStorage::OwnerStorage;
 
+    OwnerPtr(const OwnerPtr &) = delete;
+    OwnerPtr(OwnerPtr &&) = default;
+    OwnerPtr &operator=(const OwnerPtr &) = delete;
+    OwnerPtr &operator=(OwnerPtr &&) = default;
+
     explicit operator bool() const
     {
         return hasValue();

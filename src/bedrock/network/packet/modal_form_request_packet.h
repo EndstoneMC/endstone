@@ -18,8 +18,37 @@
 
 #include "bedrock/network/packet.h"
 
-class ModalFormRequestPacket : public Packet {
-public:
+struct ModalFormRequestPacketPayload {
+    ModalFormRequestPacketPayload();
+    ModalFormRequestPacketPayload(uint32_t, const std::string &);
+
     std::uint32_t form_id;
     std::string form_json;
+};
+
+class ModalFormRequestPacket : public Packet {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
+
+    ModalFormRequestPacket();
+    ModalFormRequestPacket(ModalFormRequestPacketPayload);
+
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] SerializationMode getSerializationMode() const override;
+    void setSerializationMode(SerializationMode) override;
+    void writeWithSerializationMode(BinaryStream &, const cereal::ReflectionCtx &,
+                                    std::optional<SerializationMode>) const override;
+    void write(BinaryStream &, const cereal::ReflectionCtx &) const override;
+    Bedrock::Result<void> read(ReadOnlyBinaryStream &, const cereal::ReflectionCtx &) override;
+    void write(BinaryStream &) const override;
+    Bedrock::Result<void> read(ReadOnlyBinaryStream &) override;
+
+private:
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &) override;
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &, const cereal::ReflectionCtx &) override;
+
+public:
+    ModalFormRequestPacketPayload payload;
+    SerializationMode serialization_mode;
 };

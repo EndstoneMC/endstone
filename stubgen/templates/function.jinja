@@ -1,0 +1,30 @@
+{%- if obj.overloads -%}
+    {%- for overload in obj.overloads -%}
+        {%- with obj = overload -%}
+            {{- "@typing.overload\n" -}}
+            {%- include "function.jinja" with context -%}
+        {%- endwith -%}
+    {%- endfor -%}
+{%- else -%}
+    {{- "@staticmethod\n" if 'staticmethod' in obj.labels -}}
+    {{- "@classmethod\n" if 'classmethod' in obj.labels -}}
+    def {{ obj.name }}(
+    {%- set ns = namespace(last_kind=None) -%}
+    {%- for parameter in obj.parameters -%}
+        {{- "/, " if ns.last_kind == "positional-only" and parameter.kind != "positional-only" -}}
+        {{- "*, " if ns.last_kind != "keyword-only" and parameter.kind == "keyword-only" -}}
+        {{- "*" if parameter.kind == "variadic positional" -}}
+        {{- "**" if parameter.kind == "variadic keyword" -}}
+        {{ parameter.name }}{{ ": " ~ parameter.annotation if parameter.annotation }}
+        {{- " = " ~ parameter.default if parameter.default -}}
+        {{- ", " if not loop.last -}}
+        {%- set ns.last_kind = parameter.kind -%}
+    {%- endfor -%}
+    ) -> {{ obj.returns }}:{{ "\n" }}
+    {%- filter indent(4, first=True) -%}
+        {%- if obj.docstring -%}
+            {%- include "docstring.jinja" with context -%}
+        {%- endif -%}
+        {{- "...\n" -}}
+    {%- endfilter -%}
+{%- endif -%}

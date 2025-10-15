@@ -27,7 +27,6 @@
 #include "bedrock/entity/components/runtime_id_component.h"
 #include "bedrock/entity/components/should_update_bounding_box_request_component.h"
 #include "bedrock/entity/components/tags_component.h"
-#include "bedrock/entity/systems/actor_set_pos_system.h"
 #include "bedrock/entity/systems/tag_system.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
@@ -76,6 +75,11 @@ const ActorDefinitionIdentifier &Actor::getActorIdentifier() const
         return component->identifier;
     }
     return empty;
+}
+
+const BuiltInActorComponents &Actor::getBuiltInActorComponents() const
+{
+    return built_in_components_;
 }
 
 bool Actor::isSneaking() const
@@ -247,6 +251,11 @@ bool Actor::hasCategory(ActorCategory categories) const
     return (categories & categories_) == categories;
 }
 
+float Actor::getLastHurtDamage() const
+{
+    return last_hurt_;
+}
+
 Actor *Actor::tryGetFromEntity(EntityContext const &entity, bool include_removed)
 {
     auto *component = entity.tryGetComponent<ActorOwnerComponent>();
@@ -267,6 +276,11 @@ Actor *Actor::tryGetFromEntity(StackRefResult<EntityContext> entity, bool includ
         return nullptr;
     }
     return tryGetFromEntity(*entity, include_removed);
+}
+
+void Actor::setLastHurtDamage(float damage)
+{
+    last_hurt_ = damage;
 }
 
 // void Actor::_setHeightOffset(float offset)
@@ -386,6 +400,12 @@ MutableAttributeWithContext Actor::getMutableAttribute(const HashedString &name)
     return component->attributes.getMutableInstanceWithContext(name);
 }
 
+gsl::not_null<MutableAttributeWithContext> Actor::getNotNullMutableAttribute(const HashedString &name)
+{
+    auto component = getPersistentComponent<AttributesComponent>();
+    return component->attributes.getMutableInstanceWithContext(name);
+}
+
 float Actor::getFallDistance() const
 {
     auto component = getPersistentComponent<FallDistanceComponent>();
@@ -457,4 +477,9 @@ void Actor::queueBBUpdateFromDefinition()
 {
     getEntity().getOrAddComponent<ShouldUpdateBoundingBoxRequestComponent>().update =
         ShouldUpdateBoundingBoxRequestComponent::UpdateFromDefinition();
+}
+
+bool Actor::getChainedDamageEffects() const
+{
+    return chained_damage_effects_;
 }

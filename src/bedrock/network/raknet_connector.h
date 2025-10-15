@@ -22,8 +22,7 @@
 class RakNetConnector : public RemoteConnector {
 
 public:
-    class ConnectionCallbacks : public Connector::ConnectionCallbacks {
-    public:
+    struct ConnectionCallbacks : Connector::ConnectionCallbacks {
         virtual void onAllConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
         virtual void onAllRemoteConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
         virtual void onOutgoingConnectionFailed(Connection::DisconnectFailReason, const std::string &) = 0;
@@ -51,4 +50,10 @@ public:
     [[nodiscard]] NetworkIdentifier getNetworkIdentifier() const override;
     virtual RakNet::RakPeerInterface *getPeer();
     [[nodiscard]] virtual const RakNet::RakPeerInterface *getPeer() const;
+    TransportLayer getNetworkType() const override;
+    void setDisableLanSignaling(bool) override;
+
+private:
+    void _onDisable() override;
+    void _onEnable() override;
 };

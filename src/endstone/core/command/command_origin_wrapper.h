@@ -22,16 +22,13 @@
 namespace endstone::core {
 
 class CommandOriginWrapper : public ServerCommandSender {
-protected:
+public:
     CommandOriginWrapper(const CommandOrigin &origin, CommandOutput &output);
 
-public:
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
-
-    static std::shared_ptr<CommandOriginWrapper> create(const CommandOrigin &origin, CommandOutput &output);
 
 private:
     const CommandOrigin &origin_;

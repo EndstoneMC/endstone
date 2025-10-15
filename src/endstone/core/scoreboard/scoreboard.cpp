@@ -147,7 +147,7 @@ std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
         case IdentityDefinition::Type::Entity: {
             auto actors = server.getLevel()->getActors();
             for (const auto &actor : actors) {
-                if (static_cast<EndstoneActor *>(actor)->getActor().getOrCreateUniqueID() == id_ref.getEntityId()) {
+                if (ActorUniqueID(actor->getId()) == id_ref.getEntityId()) {
                     result.emplace_back(actor);
                 }
             }
@@ -208,7 +208,7 @@ const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry) cons
                                      return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getPlayer());
                                  },
                                  [&](Actor *actor) -> const ::ScoreboardId & {
-                                     return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
+                                     return board_.getScoreboardId(dynamic_cast<EndstoneActor *>(actor)->getActor());
                                  },
                                  [&](const std::string &fake) -> const ::ScoreboardId & {
                                      return board_.getScoreboardId(fake);
@@ -228,7 +228,7 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
                                          static_cast<EndstonePlayer *>(player)->getPlayer());
                                  },
                                  [&](Actor *actor) -> const ::ScoreboardId & {
-                                     return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
+                                     return board_.createScoreboardId(dynamic_cast<EndstoneActor *>(actor)->getActor());
                                  },
                                  [&](const std::string &fake) -> const ::ScoreboardId & {
                                      return board_.createScoreboardId(fake);

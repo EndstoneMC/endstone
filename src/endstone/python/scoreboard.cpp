@@ -20,18 +20,23 @@ namespace endstone::python {
 
 void init_scoreboard(py::module_ &m)
 {
-    py::enum_<RenderType>(m, "RenderType", "Controls the way in which an Objective is rendered on the client side.")
+    py::native_enum<RenderType>(m, "RenderType", "enum.Enum",
+                                "Controls the way in which an Objective is rendered on the client side.")
         .value("INTEGER", RenderType::Integer)
-        .value("HEARTS", RenderType::Hearts);
+        .value("HEARTS", RenderType::Hearts)
+        .finalize();
 
-    py::enum_<DisplaySlot>(m, "DisplaySlot", "Locations for displaying objectives to the player")
+    py::native_enum<DisplaySlot>(m, "DisplaySlot", "enum.Enum", "Locations for displaying objectives to the player")
         .value("BELOW_NAME", DisplaySlot::BelowName, "Displays the score below the player's name.")
         .value("PLAYER_LIST", DisplaySlot::PlayerList, "Displays the score in the player list on the pause screen.")
-        .value("SIDE_BAR", DisplaySlot::SideBar, "Displays the score on the side of the player's screen.");
+        .value("SIDE_BAR", DisplaySlot::SideBar, "Displays the score on the side of the player's screen.")
+        .finalize();
 
-    py::enum_<ObjectiveSortOrder>(m, "ObjectiveSortOrder", "Represents the sort order of objectives on a DisplaySlot.")
+    py::native_enum<ObjectiveSortOrder>(m, "ObjectiveSortOrder", "enum.Enum",
+                                        "Represents the sort order of objectives on a DisplaySlot.")
         .value("ASCENDING", ObjectiveSortOrder::Ascending, "Sorts the objectives in the ascending order")
-        .value("DESCENDING", ObjectiveSortOrder::Descending, "Sorts the objectives in the descending order");
+        .value("DESCENDING", ObjectiveSortOrder::Descending, "Sorts the objectives in the descending order")
+        .finalize();
 
     auto scoreboard = py::class_<Scoreboard, std::shared_ptr<Scoreboard>>(m, "Scoreboard", "Represents a scoreboard");
     auto objective = py::class_<Objective>(
@@ -39,9 +44,10 @@ void init_scoreboard(py::module_ &m)
 
     auto criteria = py::class_<Criteria>(m, "Criteria", "Represents a scoreboard criteria.");
 
-    py::enum_<Criteria::Type>(criteria, "Type", "Represents a scoreboard criteria.")
+    py::native_enum<Criteria::Type>(criteria, "Type", "enum.Enum", "Represents a scoreboard criteria.")
         .value("DUMMY", Criteria::Type::Dummy, "The dummy criteria. Not changed by the server.")
-        .export_values();
+        .export_values()
+        .finalize();
 
     criteria.def_property_readonly("name", &Criteria::getName)
         .def_property_readonly("is_read_only", &Criteria::isReadOnly)
@@ -118,7 +124,7 @@ void init_scoreboard(py::module_ &m)
                 return self.addObjective(name, criteria, display_name.value_or(name), render_type);
             },
             "Registers an Objective on this Scoreboard with a name displayed to players", py::arg("name"),
-            py::arg("criteria"), py::arg("display_name") = py::none(), py::arg("render_type") = RenderType::Integer)
+            py::arg("criteria"), py::arg("display_name") = py::none(), py::arg_v("render_type", RenderType::Integer))
         .def("get_objective", py::overload_cast<std::string>(&Scoreboard::getObjective, py::const_),
              "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert())
         .def("get_objective", py::overload_cast<DisplaySlot>(&Scoreboard::getObjective, py::const_),

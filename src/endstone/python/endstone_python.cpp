@@ -12,12 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <utility>
+#include "endstone_python.h"
 
-#include <pybind11/chrono.h>
-#include <pybind11/numpy.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include <utility>
 
 #include "endstone/endstone.hpp"
 #include "registry.h"
@@ -34,17 +31,16 @@ void init_color_format(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_damage(py::module_ &);
 void init_enchantments(py::module_ &);
-void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
+void init_event(py::module_ &, py::class_<Event> &event);
 void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
-void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension);
+void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension,
+                py::class_<Location, Vector> &location);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
-void init_namespaced_key(py::module_ &, py::class_<NamespacedKey> &namespaced_key);
-void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
-                      py::enum_<PermissionDefault> &permission_default, py::enum_<PermissionLevel> &permission_level);
+void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission);
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player);
 void init_plugin(py::module_ &);
@@ -52,68 +48,124 @@ void init_registry(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
 void init_server(py::class_<Server> &server);
-void init_util(py::module_ &);
+void init_util(py::module_ &, py::class_<Vector> &);
 
-PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
+PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
     py::options options;
     options.disable_enum_members_docstring();
 
+    // Submodules
+    auto m_actor =
+        m.def_submodule("actor", "Classes relating to actors (entities) that can exist in a world, including all "
+                                 "players, monsters, projectiles, etc.");
+    auto m_ban = m.def_submodule("ban", "Classes relevant to bans.");
+    auto m_block = m.def_submodule("block", "Classes relating to the blocks in a world, including special states.");
+    auto m_boss =
+        m.def_submodule("boss", "Classes relating to the boss bars that appear at the top of the player's screen.");
+    auto m_command = m.def_submodule("command", "Classes relating to handling specialized non-chat player input.");
+    auto m_damage =
+        m.def_submodule("damage", "Classes relating to damage types and sources applicable to mobs (living entities).");
+    auto m_enchantments =
+        m.def_submodule("enchantments", "Classes relating to the specialized enhancements to ItemStacks.");
+    auto m_event = m.def_submodule("event", "Classes relating to handling triggered code executions.");
+    auto m_form = m.def_submodule("form");
+    auto m_inventory = m.def_submodule("inventory", "Classes relating to player inventories and item interactions.");
+    auto m_lang = m.def_submodule("lang");
+    auto m_level = m.def_submodule("level");
+    auto m_map = m.def_submodule("map", "Classes relating to plugin handling of map displays.");
+    auto m_permissions = m.def_submodule("permissions", "Classes relating to permissions of players.");
+    auto m_plugin = m.def_submodule("plugin", "Classes relating to loading and managing plugins.");
+    auto m_scheduler =
+        m.def_submodule("scheduler", "Classes relating to letting plugins run code at specific time intervals.");
+    auto m_scoreboard =
+        m.def_submodule("scoreboard", "Classes relating to manage the client side score display system.");
+    auto m_util = m.def_submodule("util", "Multi and single purpose classes.");
+
+    py::native_enum<EventPriority>(
+        m_event, "EventPriority", "enum.IntEnum",
+        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR")
+        .value("LOWEST", EventPriority::Lowest,
+               "Event call is of very low importance and should be run first, to allow other plugins to further "
+               "customise the outcome")
+        .value("LOW", EventPriority::Low, "Event call is of low importance")
+        .value("NORMAL", EventPriority::Normal,
+               " Event call is neither important nor unimportant, and may be run normally")
+        .value("HIGH", EventPriority::High, "Event call is of high importance")
+        .value("HIGHEST", EventPriority::Highest,
+               "Event call is critical and must have the final say in what happens to the event")
+        .value("MONITOR", EventPriority::Monitor,
+               "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
+               "should be made under this priority.")
+        .finalize();
+    py::native_enum<PermissionDefault>(m_permissions, "PermissionDefault", "enum.Enum",
+                                       "Represents the possible default values for permissions")
+        .value("TRUE", PermissionDefault::True)
+        .value("FALSE", PermissionDefault::False)
+        .value("OP", PermissionDefault::Operator)
+        .value("OPERATOR", PermissionDefault::Operator)
+        .value("NOT_OP", PermissionDefault::NotOperator)
+        .value("NOT_OPERATOR", PermissionDefault::NotOperator)
+        .value("CONSOLE", PermissionDefault::Console)
+        .finalize();
+    py::native_enum<PermissionLevel>(m_permissions, "PermissionLevel", "enum.IntEnum")
+        .value("DEFAULT", PermissionLevel::Default)
+        .value("OP", PermissionLevel::Operator)
+        .value("OPERATOR", PermissionLevel::Operator)
+        .value("CONSOLE", PermissionLevel::Console)
+        .finalize();
+
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
-    auto dimension = py::class_<Dimension>(m, "Dimension", "Represents a dimension within a Level.");
-    auto event = py::class_<Event>(m, "Event", "Represents an event.");
-    auto event_priority = py::enum_<EventPriority>(
-        m, "EventPriority",
-        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR");
-    auto level = py::class_<Level>(m, "Level");
+    auto event = py::class_<Event>(m_event, "Event", "Represents an event.");
     auto permissible = py::class_<Permissible>(
-        m, "Permissible", "Represents an object that may become a server operator and can be assigned permissions.");
-    auto permission =
-        py::class_<Permission>(m, "Permission", "Represents a unique permission that may be attached to a Permissible");
-    auto permission_default =
-        py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
-    auto permission_level = py::enum_<PermissionLevel>(m, "PermissionLevel");
+        m_permissions, "Permissible",
+        "Represents an object that may become a server operator and can be assigned permissions.");
+    auto permission = py::class_<Permission>(m_permissions, "Permission",
+                                             "Represents a unique permission that may be attached to a Permissible");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
-    auto block = py::class_<Block>(m, "Block", "Represents a block.");
-    auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
-    auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
-    auto mob = py::class_<Mob, Actor>(m, "Mob",
+    auto block = py::class_<Block>(m_block, "Block", "Represents a block.");
+    auto command_sender =
+        py::class_<CommandSender, Permissible>(m_command, "CommandSender", "Represents a command sender.");
+    auto actor = py::class_<Actor, CommandSender>(m_actor, "Actor", "Represents a base actor in the level.");
+    auto mob = py::class_<Mob, Actor>(m_actor, "Mob",
                                       "Represents a mobile entity (i.e. living entity), such as a monster or player.");
     auto offline_player = py::class_<OfflinePlayer>(
         m, "OfflinePlayer",
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
         "can, thus, be retrieved without the player needing to be online.");
     auto player = py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.");
-    auto item_stack = py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.");
-    auto namespaced_key = py::class_<NamespacedKey>(
-        m, "NamespacedKey", "Represents a string-based key which consists of two components - a namespace and a key.");
+    auto item_stack = py::class_<ItemStack>(m_inventory, "ItemStack", "Represents a stack of items.");
+    auto level = py::class_<Level>(m_level, "Level");
+    auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a Level.");
+    auto vector = py::class_<Vector>(m_util, "Vector", "Represents a 3-dimensional vector.");
+    auto location = py::class_<Location, Vector>(m_level, "Location",
+                                                 "Represents a 3-dimensional location in a dimension within a level.");
 
     init_color_format(m);
-    init_damage(m);
+    init_damage(m_damage);
     init_game_mode(m);
     init_logger(m);
-    init_lang(m);
-    init_form(m);
-    init_enchantments(m);
-    init_map(m);
-    init_inventory(m, item_stack);
-    init_util(m);
-    init_ban(m);
-    init_level(m, level, dimension);
-    init_scoreboard(m);
-    init_block(m, block);
-    init_actor(m, actor, mob);
+    init_lang(m_lang);
+    init_form(m_form);
+    init_enchantments(m_enchantments);
+    init_inventory(m_inventory, item_stack);
+    init_util(m_util, vector);
+    init_ban(m_ban);
+    init_map(m_map);
+    init_scoreboard(m_scoreboard);
+    init_block(m_block, block);
+    init_actor(m_actor, actor, mob);
+    init_level(m_level, level, dimension, location);
     init_player(m, offline_player, player);
-    init_boss(m);
-    init_command(m, command_sender);
-    init_plugin(m);
-    init_scheduler(m);
-    init_permissions(m, permissible, permission, permission_default, permission_level);
-    init_namespaced_key(m, namespaced_key);
+    init_boss(m_boss);
+    init_command(m_command, command_sender);
+    init_plugin(m_plugin);
+    init_scheduler(m_scheduler);
+    init_permissions(m_permissions, permissible, permission);
     init_registry(m);
     init_server(server);
-    init_event(m, event, event_priority);
+    init_event(m_event, event);
 }
 
 void init_color_format(py::module_ &m)
@@ -158,47 +210,30 @@ void init_color_format(py::module_ &m)
         .def_property_readonly_static("RESET", [](const py::object &) { return ColorFormat::Reset; });
 }
 
-void init_namespaced_key(py::module_ &m, py::class_<NamespacedKey> &namespaced_key)
-{
-    namespaced_key
-        .def(py::init([](const Plugin &plugin, std::string key) {
-            auto result = NamespacedKey::create(plugin, key);
-            if (!result) {
-                throw std::runtime_error(result.error());
-            }
-            return result.value();
-        }))
-        .def_property_readonly("namespace", &NamespacedKey::getNamespace, "Returns the namespace of the NamespacedKey.")
-        .def_property_readonly("key", &NamespacedKey::getKey, "Returns the key of the NamespacedKey.")
-        .def_static("from_string", &NamespacedKey::fromString, "Parses a NamespacedKey from a string.",
-                    py::arg("input"), py::arg("plugin") = py::none())
-        .def("__str__", &NamespacedKey::toString)
-        .def("__repr__", [](const NamespacedKey &key) {
-            return "NamespacedKey(namespace='" + key.getNamespace() + "', key='" + key.getKey() + "')";
-        });
-}
-
 void init_game_mode(py::module_ &m)
 {
-    py::enum_<GameMode>(m, "GameMode", "Represents the various type of game modes that Players may have.")
+    py::native_enum<GameMode>(m, "GameMode", "enum.Enum",
+                              "Represents the various type of game modes that Players may have.")
         .value("SURVIVAL", GameMode::Survival)
         .value("CREATIVE", GameMode::Creative)
         .value("ADVENTURE", GameMode::Adventure)
-        .value("SPECTATOR", GameMode::Spectator);
+        .value("SPECTATOR", GameMode::Spectator)
+        .finalize();
 }
 
 void init_logger(py::module &m)
 {
     auto logger = py::class_<Logger>(m, "Logger", "Logger class which can format and output varies levels of logs.");
 
-    py::enum_<Logger::Level>(logger, "Level", "Specifies the log level.")
+    py::native_enum<Logger::Level>(logger, "Level", "enum.IntEnum", "Specifies the log level.")
         .value("TRACE", Logger::Level::Trace)
         .value("DEBUG", Logger::Level::Debug)
         .value("INFO", Logger::Level::Info)
         .value("WARNING", Logger::Level::Warning)
         .value("ERROR", Logger::Level::Error)
         .value("CRITICAL", Logger::Level::Critical)
-        .export_values();
+        .export_values()
+        .finalize();
 
     logger.def("set_level", &Logger::setLevel, py::arg("level"), "Set the logging level for this Logger instance.")
         .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"),
@@ -232,7 +267,7 @@ void init_registry(py::module_ &m)
 
 void init_server(py::class_<Server> &server)
 {
-    server.def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
+    server.def_property_readonly("name", &Server::getName, "Gets the name of this server implementation.")
         .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
                                "Gets the Minecraft version that this server is running.")

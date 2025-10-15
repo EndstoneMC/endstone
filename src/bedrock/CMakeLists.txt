@@ -23,6 +23,7 @@ add_library(bedrock STATIC
         core/sem_ver/sem_version.cpp
         core/string/string_hash.cpp
         core/utility/binary_stream.cpp
+        core/utility/serialize_simple_types.cpp
         crypto/encoding/base64.cpp
         deps/json/value.cpp
         deps/raknet/get_time.cpp
@@ -42,6 +43,9 @@ add_library(bedrock STATIC
         network/network_identifier.cpp
         network/packet/types/world/actor/serialized_abilities_data.cpp
         network/packet/crafting_data_packet.cpp
+        network/packet/inventory_slot_packet.cpp
+        network/packet/text_packet.cpp
+        network/network_system.cpp
         network/packet.cpp
         network/server_network_handler.cpp
         network/sub_client_connection_request.cpp
@@ -73,6 +77,7 @@ add_library(bedrock STATIC
         world/actor/actor.cpp
         world/actor/actor_damage_source.cpp
         world/actor/actor_definition_identifier.cpp
+        world/actor/actor_factory.cpp
         world/actor/mob.cpp
         world/actor/synched_actor_data.cpp
         world/actor/item/item_actor.cpp
@@ -106,7 +111,7 @@ add_library(bedrock STATIC
         world/level/block/bed_block.cpp
         world/level/block/block.cpp
         world/level/block/block_descriptor.cpp
-        world/level/block/block_legacy.cpp
+        world/level/block/block_type.cpp
         world/level/block/campfire_block.cpp
         world/level/block/fire_block.cpp
         world/level/block/vanilla_block_type_ids.cpp

@@ -15,12 +15,19 @@
 #pragma once
 
 #include <unordered_map>
+#include <variant>
 
-#include "bedrock/deps/json/value.h"
+#include "bedrock/core/utility/pub_sub/publisher.h"
+
+using PackSettingsNameValueMap = std::unordered_map<std::string, std::variant<float, bool, std::string>>;
 
 class PackSettings {
 public:
 private:
-    Json::Value settings_;
-    std::unordered_map<std::string, PackSettings> pack_settings_;
+    const mce::UUID pack_id_;
+    std::weak_ptr<Bedrock::PubSub::Publisher<void(const mce::UUID &, const std::string &,
+                                                  const std::variant<float, bool, std::string> &),
+                                             Bedrock::PubSub::ThreadModel::MultiThreaded>>
+        on_change_publisher_;
+    PackSettingsNameValueMap name_value_map_;
 };

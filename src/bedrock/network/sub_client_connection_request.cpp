@@ -58,6 +58,11 @@ uint16_t SubClientConnectionRequest::getCapeImageHeight() const
     return getData("CapeImageHeight").asInt();
 }
 
+bool SubClientConnectionRequest::isVerified() const
+{
+    return is_verified_ && raw_token_ != nullptr;
+}
+
 std::string SubClientConnectionRequest::getGameVersionString() const
 {
     return getData("GameVersion").asString();
@@ -80,7 +85,7 @@ std::string SubClientConnectionRequest::getLanguageCode() const
 
 Json::Value SubClientConnectionRequest::getData(const std::string &key) const
 {
-    if (legacy_multiplayer_token_.isValid() && raw_token_) {
+    if (isVerified()) {
         return raw_token_->getData().get(key, Json::nullValue);
     }
     return Json::nullValue;

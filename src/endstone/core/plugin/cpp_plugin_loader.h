@@ -24,13 +24,13 @@ namespace endstone::core {
 
 class CppPluginLoader : public PluginLoader {
 public:
-    using PluginLoader::PluginLoader;
-
+    explicit CppPluginLoader(Server &server);
     [[nodiscard]] Plugin *loadPlugin(std::string file) override;
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
 
 private:
-    std::vector<std::unique_ptr<Plugin>> plugins_;
+    std::filesystem::path prefix_;
+    std::vector<std::unique_ptr<Plugin, std::function<void(Plugin *)>>> plugins_;
 };
 
 }  // namespace endstone::core

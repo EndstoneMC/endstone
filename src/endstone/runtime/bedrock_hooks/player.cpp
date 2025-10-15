@@ -20,6 +20,7 @@
 
 #include "bedrock/world/actor/item/item_actor.h"
 #include "bedrock/world/level/block/bed_block.h"
+#include "endstone/core/actor/item.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/item_stack.h"
@@ -46,7 +47,7 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-    const endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
+    const endstone::Location to{pos.x, pos.y, pos.z, getRotation().x, getRotation().y, player.getDimension()};
     endstone::PlayerTeleportEvent e{player, player.getLocation(), to};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
@@ -100,9 +101,8 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
     if (actor.hasCategory(ActorCategory::Item)) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-        const auto &item_stack = static_cast<ItemActor &>(actor).getItemStack();
-        const auto item = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
-        endstone::PlayerPickupItemEvent e(player, *item);
+        auto &item = actor.getEndstoneActor<endstone::core::EndstoneItem>();
+        endstone::PlayerPickupItemEvent e(player, item);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;

@@ -20,7 +20,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/namespaced_key.h"
 #include "endstone/registry.h"
 
 namespace py = pybind11;
@@ -30,37 +29,24 @@ template <typename T>
 void registry(py::module &m, const std::string &name)
 {
     py::class_<Registry<T>>(m, name.c_str())
-        .def("get", py::overload_cast<NamespacedKey>(&Registry<T>::get), py::arg("key"),
+        .def("get", py::overload_cast<const std::string &>(&Registry<T>::get), py::arg("key"),
              py::return_value_policy::reference)
         .def(
             "get_or_throw",
-            [](const Registry<T> &self, NamespacedKey key) -> const T & {
+            [](const Registry<T> &self, const std::string &key) -> const T & {
                 if (auto *p = self.get(key)) {
                     return *p;
                 }
-                throw py::key_error("No registry entry found for key: " + key.toString());
+                throw py::key_error(fmt::format("No registry entry found for key: {}", key));
             },
             py::arg("key"), py::return_value_policy::reference)
         .def(
             "__getitem__",
-            [](const Registry<T> &self, NamespacedKey key) -> const T & {
+            [](const Registry<T> &self, const std::string &key) -> const T & {
                 if (auto *p = self.get(key)) {
                     return *p;
                 }
-                throw py::key_error("No registry entry found for key: " + key.toString());
-            },
-            py::arg("key"), py::return_value_policy::reference)
-        .def(
-            "__getitem__",
-            [](const Registry<T> &self, const std::string &keyStr) -> const T & {
-                auto key = NamespacedKey::fromString(keyStr);
-                if (!key) {
-                    throw std::runtime_error(key.error());
-                }
-                if (auto *p = self.get(key.value())) {
-                    return *p;
-                }
-                throw py::key_error("No registry entry found for key: " + keyStr);
+                throw py::key_error(fmt::format("No registry entry found for key: {}", key));
             },
             py::arg("key"), py::return_value_policy::reference)
         .def(
@@ -75,14 +61,7 @@ void registry(py::module &m, const std::string &name)
             },
             py::return_value_policy::reference_internal)
         .def(
-            "__contains__", [](const Registry<T> &self, const NamespacedKey key) { return self.get(key) != nullptr; },
-            py::arg("key"))
-        .def(
-            "__contains__",
-            [](const Registry<T> &self, const std::string &key_str) {
-                auto key = NamespacedKey::fromString(key_str);
-                return key.has_value() && self.get(key.value()) != nullptr;
-            },
+            "__contains__", [](const Registry<T> &self, const std::string &key) { return self.get(key) != nullptr; },
             py::arg("key"));
 }
 };  // namespace endstone::python

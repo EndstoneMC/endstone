@@ -22,8 +22,34 @@
 class OwnerStorageEntity {
 protected:
     OwnerStorageEntity() = default;
+    OwnerStorageEntity(EntityRegistry &registry);
     OwnerStorageEntity(const OwnerStorageEntity &) = delete;
+    OwnerStorageEntity(OwnerStorageEntity &&other) noexcept : context_(other.context_)
+    {
+        other.context_.reset();
+    }
+    ~OwnerStorageEntity()
+    {
+        if (context_.has_value()) {
+            context_->_registry()._destroyEntity(context_.value());
+        }
+    }
     OwnerStorageEntity &operator=(const OwnerStorageEntity &) = delete;
+    OwnerStorageEntity &operator=(OwnerStorageEntity &&other) noexcept
+    {
+        if (this != &other) {
+            if (context_.has_value()) {
+                context_->_registry()._destroyEntity(context_.value());
+                context_.reset();
+            }
+
+            if (other.context_.has_value()) {
+                context_.emplace(std::move(other.context_.value()));
+                other.context_.reset();
+            }
+        }
+        return *this;
+    }
 
     [[nodiscard]] bool _hasValue() const
     {

@@ -24,7 +24,7 @@ namespace endstone {
  */
 class PlayerEvent : public Event {
 public:
-    explicit PlayerEvent(Player &player) : player_(player){};
+    explicit PlayerEvent(Player &player) : player_(player) {};
     ~PlayerEvent() override = default;
 
     /**
@@ -37,8 +37,8 @@ public:
         return player_;
     }
 
-private:
-    Player &player_;
+protected:
+    std::reference_wrapper<Player> player_;
 };
 
 }  // namespace endstone

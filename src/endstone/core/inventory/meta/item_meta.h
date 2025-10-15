@@ -50,7 +50,7 @@ public:
     [[nodiscard]] bool isUnbreakable() const override;
     void setUnbreakable(bool unbreakable) override;
 
-    [[nodiscard]] virtual bool applicableTo(const ItemType &type) const;
+    [[nodiscard]] virtual bool applicableTo(const std::string &type) const;
     [[nodiscard]] virtual bool equalsCommon(const EndstoneItemMeta &other) const;
     [[nodiscard]] virtual bool notUncommon(const EndstoneItemMeta &other) const;
     virtual void applyToItem(::CompoundTag &tag) const;

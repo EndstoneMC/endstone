@@ -164,13 +164,10 @@ Result<void> EndstoneInventory::setContents(std::vector<const ItemStack *> items
     return {};
 }
 
-Result<bool> EndstoneInventory::contains(const std::string &type) const
+bool EndstoneInventory::contains(const std::string &type) const
 {
-    const auto *item_type = ItemType::get(type);
-    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-
     for (const auto &item : getContents()) {
-        if (item != nullptr && item->getType() == *item_type) {
+        if (item != nullptr && item->getType() == type) {
             return true;
         }
     }
@@ -201,17 +198,14 @@ bool EndstoneInventory::contains(const ItemStack &item, int amount) const
     return false;
 }
 
-Result<bool> EndstoneInventory::containsAtLeast(const std::string &type, int amount) const
+bool EndstoneInventory::containsAtLeast(const std::string &type, int amount) const
 {
-    const auto *item_type = ItemType::get(type);
-    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-
     if (amount <= 0) {
         return true;
     }
 
     for (const auto &item : getContents()) {
-        if (item != nullptr && item->getType() == *item_type) {
+        if (item != nullptr && item->getType() == type) {
             if ((amount -= item->getAmount()) <= 0) {
                 return true;
             }
@@ -234,16 +228,13 @@ bool EndstoneInventory::containsAtLeast(const ItemStack &item, int amount) const
     return false;
 }
 
-Result<std::unordered_map<int, std::unique_ptr<ItemStack>>> EndstoneInventory::all(const std::string &type) const
+std::unordered_map<int, std::unique_ptr<ItemStack>> EndstoneInventory::all(const std::string &type) const
 {
-    const auto *item_type = ItemType::get(type);
-    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-
     std::unordered_map<int, std::unique_ptr<ItemStack>> slots;
     auto inventory = getContents();
     for (auto i = 0; i < inventory.size(); i++) {
         auto &item = inventory[i];
-        if (item != nullptr && item->getType() == *item_type) {
+        if (item != nullptr && item->getType() == type) {
             slots[i] = std::move(item);
         }
     }
@@ -263,15 +254,12 @@ std::unordered_map<int, std::unique_ptr<ItemStack>> EndstoneInventory::all(const
     return slots;
 }
 
-Result<int> EndstoneInventory::first(const std::string &type) const
+int EndstoneInventory::first(const std::string &type) const
 {
-    const auto *item_type = ItemType::get(type);
-    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-
     const auto inventory = getContents();
     for (auto i = 0; i < inventory.size(); i++) {
         const auto &item = inventory[i];
-        if (item != nullptr && item->getType() == *item_type) {
+        if (item != nullptr && item->getType() == type) {
             return i;
         }
     }
@@ -300,26 +288,22 @@ bool EndstoneInventory::isEmpty() const
     return container_.isEmpty();
 }
 
-Result<void> EndstoneInventory::remove(const std::string &type)
+void EndstoneInventory::remove(const std::string &type)
 {
-    const auto *item_type = ItemType::get(type);
-    ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
-
     const auto inventory = getContents();
     for (auto i = 0; i < inventory.size(); i++) {
-        auto &item = inventory[i];
-        if (item != nullptr && item->getType() == *item_type) {
+        const auto &item = inventory[i];
+        if (item != nullptr && item->getType() == type) {
             clear(i);
         }
     }
-    return {};
 }
 
 void EndstoneInventory::remove(const ItemStack &item)
 {
     const auto inventory = getContents();
     for (auto i = 0; i < inventory.size(); i++) {
-        auto &it = inventory[i];
+        const auto &it = inventory[i];
         if (it != nullptr && item == *it) {
             clear(i);
         }

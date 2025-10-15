@@ -1,0 +1,30 @@
+{%- if obj.docstring -%}
+    {%- include "docstring.jinja" with context -%}
+{%- endif -%}
+{%- for as_name, name in obj.imports.items() -%}
+    {%- if as_name == name -%}
+        import {{ as_name }}
+    {%- else -%}
+        {%- set ns = namespace(module=name.rsplit('.', maxsplit=1)[0]) -%}
+        {%- if ns.module.startswith(obj.path + ".") -%}
+            {%- set ns.module = ns.module[obj.path | length:] -%}
+        {%- endif -%}
+        from {{ ns.module }} import {{ as_name }}
+    {%- endif -%}
+    {{ "\n\n" if loop.last else "\n" }}
+{%- endfor -%}
+{%- if obj.modules -%}
+    from . import
+    {%- for name, mod in obj.modules.items() -%}
+        {{ " " ~ mod.name }}{{ "\n\n" if loop.last else "," }}
+    {%- endfor -%}
+{%- endif -%}
+{%- if obj.exports -%}
+    __all__ = {{ obj.exports }}
+
+{% endif -%}
+{%- for name, member in obj.members.items() if member.kind != "module" and name not in obj.imports -%}
+    {%- with obj = member -%}
+        {%- include "{}.jinja".format(obj.kind.value) with context -%}
+    {%- endwith -%}
+{%- endfor -%}

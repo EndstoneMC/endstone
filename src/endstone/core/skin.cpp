@@ -19,9 +19,7 @@ namespace endstone::core {
 Skin EndstoneSkin::fromMinecraft(const SerializedSkin &skin)
 {
     const auto &data = skin.getImageData();
-    auto image = Image::fromBuffer(
-        Image::Type::RGBA, data.width, data.height,
-        std::string_view{reinterpret_cast<const char *>(data.image_bytes.data()), data.image_bytes.size()});
+    auto image = Image(Image::Type::RGBA, data.width, data.height, data.image_bytes);
 
     std::optional<std::string> cape_id;
     if (!skin.getCapeId().empty()) {
@@ -36,14 +34,8 @@ Skin EndstoneSkin::fromMinecraft(const SerializedSkin &skin)
     const auto &cape_data = skin.getCapeImageData();
     std::optional<Image> cape_image = std::nullopt;
     if (!cape_data.image_bytes.empty()) {
-        auto result = Image::fromBuffer(Image::Type::RGBA, cape_data.width, cape_data.height,
-                                        std::string_view{reinterpret_cast<const char *>(cape_data.image_bytes.data()),
-                                                         cape_data.image_bytes.size()});
-        if (result.has_value()) {
-            cape_image = result.value();
-        }
+        cape_image = Image(Image::Type::RGBA, cape_data.width, cape_data.height, cape_data.image_bytes);
     }
-
-    return {skin_id, image.value(), cape_id, cape_image};
+    return {skin_id, image, cape_id, cape_image};
 }
 }  // namespace endstone::core

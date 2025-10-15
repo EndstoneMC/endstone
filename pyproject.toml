@@ -29,6 +29,7 @@ dependencies = [
     "endstone-bstats",
     "importlib-metadata",
     "importlib-resources",
+    "lazy-loader",
     "numpy",
     "packaging",
     "pkginfo",
@@ -53,7 +54,7 @@ Homepage = "https://github.com/EndstoneMC/endstone"
 Issues = "https://github.com/EndstoneMC/endstone/issues"
 
 [project.scripts]
-endstone = "endstone._internal.bootstrap:cli"
+endstone = "endstone.cli:main"
 
 [tool.scikit-build]
 build-dir = "build/{wheel_tag}"
@@ -65,7 +66,7 @@ wheel.license-files = ["LICENSE"]
 install.components = ["endstone_wheel"]
 install.strip = false
 metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
-sdist.include = ["endstone/_internal/version.py"]
+sdist.include = ["endstone/_version.py"]
 
 [tool.scikit-build-core-conan]
 config = ["tools.cmake.cmaketoolchain:generator=Ninja"]
@@ -79,12 +80,11 @@ if.platform-system = "linux"
 settings = ["compiler.cppstd=20", "compiler.libcxx=libc++"]
 
 [tool.setuptools_scm]
-write_to = "endstone/_internal/version.py"
+write_to = "endstone/_version.py"
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 
 [tool.ruff]
-extend-exclude = ["endstone_python.pyi"]
 line-length = 120
 lint.extend-select = ["I"]
 

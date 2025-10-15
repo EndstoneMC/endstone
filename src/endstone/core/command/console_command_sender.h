@@ -19,30 +19,18 @@
 
 namespace endstone::core {
 
-class EndstoneConsoleCommandSender : public ServerCommandSender,
-                                     public ConsoleCommandSender,
-                                     public std::enable_shared_from_this<EndstoneConsoleCommandSender> {
-protected:
+class EndstoneConsoleCommandSender : public ServerCommandSender, public ConsoleCommandSender {
+public:
     EndstoneConsoleCommandSender() = default;
 
-public:
     [[nodiscard]] ConsoleCommandSender *asConsole() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
-    [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
-    [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
-    [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment * addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment * addAttachment(Plugin &plugin) override;
-    Result<void> removeAttachment(PermissionAttachment &attachment) override;
-    void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 
-    static std::shared_ptr<EndstoneConsoleCommandSender> create();
+    // forward
+    ENDSTONE_FORWARD_IMPL_PERMISSIBLE(ServerCommandSender);
 };
 
 }  // namespace endstone::core

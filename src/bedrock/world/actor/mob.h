@@ -48,6 +48,7 @@ public:
     [[nodiscard]] virtual float getSpeed() const = 0;
     virtual void setSpeed(float) = 0;
     virtual void hurtEffects(ActorDamageSource const &, float, bool, bool) = 0;
+    virtual void damageCarriedItemOnAttack(Actor &target, float) = 0;
     virtual void aiStep() = 0;
     virtual void pushActors() = 0;
     virtual bool checkSpawnRules(bool) = 0;
@@ -63,7 +64,7 @@ public:
     virtual void setDamagedArmor(ArmorSlot, ItemStack const &) = 0;
     virtual void sendArmorDamage(std::bitset<4>) = 0;
     virtual void sendArmor(std::bitset<4>) = 0;
-    [[nodiscard]] virtual std::vector<ItemStack const *> getAllHand() const = 0;
+    [[nodiscard]] virtual std::vector<ItemStack const *> getAllHandEquipment() const = 0;
     [[nodiscard]] virtual std::vector<ItemStack const *> getAllEquipment() const = 0;
     virtual void dropEquipmentOnDeath(ActorDamageSource const &, int) = 0;
     virtual void dropEquipmentOnDeath() = 0;
@@ -94,6 +95,9 @@ public:
     [[nodiscard]] bool isGliding() const;
     [[nodiscard]] bool isSprinting() const;
     void setYBodyRotation(float rotation);
+    int getNoActionTime() const;
+    void resetNoActionTime();
+    bool checkForPostHitDamageImmunity(float damage_difference, const ActorDamageSource &source);
 
 public:
     float hurt_dir;

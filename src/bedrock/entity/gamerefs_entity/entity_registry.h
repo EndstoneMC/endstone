@@ -24,15 +24,19 @@
 template <typename>
 class WeakRef;
 
+class EntityContext;
 class EntityRegistry : public EnableGetWeakRef<EntityRegistry>, public std::enable_shared_from_this<EntityRegistry> {
 public:
     WeakRef<EntityRegistry> getWeakRef();
 
 protected:
+    void _destroyEntity(EntityContext entity);
     friend class EntityContext;
+    friend class OwnerStorageEntity;
 
-    // NOTE: uncomment the next line if you are running endstone on preview instead of release
-    // bool is_viewing_;
+#ifdef BEDROCK_PREVIEW_SUPPORT
+    bool is_viewing_;
+#endif
     std::string debug_name_;
     EnTTRegistry registry_;
     std::uint32_t id_;

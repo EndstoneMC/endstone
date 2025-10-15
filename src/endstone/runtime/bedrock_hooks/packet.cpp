@@ -42,14 +42,15 @@ public:
         }
 
         auto &pk = static_cast<LoginPacket &>(*packet);
-        if (!pk.connection_request) {
+        if (!pk.payload.connection_request) {
             return;
         }
 
-        const auto &token = pk.connection_request->getLegacyMultiplayerToken();
-        const auto name = token.getIdentityName();
-        const auto uuid = endstone::core::EndstoneUUID::fromMinecraft(token.getIdentity());
-        const auto xuid = token.getXuid(false);
+        auto &connection_request = pk.payload.connection_request;
+        const auto &info = connection_request->getAuthenticationInfo();
+        const auto name = info.xuid.empty() ? connection_request->getClientThirdPartyName() : info.xbox_live_name;
+        const auto uuid = endstone::core::EndstoneUUID::fromMinecraft(info.authenticated_uuid);
+        const auto xuid = info.xuid;
         if (server.getBanList().isBanned(name, uuid, xuid)) {
             const gsl::not_null ban_entry = server.getBanList().getBanEntry(name, uuid, xuid);
             if (const auto reason = ban_entry->getReason(); !reason.empty()) {
@@ -78,7 +79,7 @@ public:
     {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
-        if (const auto *p = network_handler->getServerPlayer(network_id, packet->getClientSubId())) {
+        if (const auto *p = network_handler->getServerPlayer(network_id, packet->getSenderSubId())) {
             if (p->getEndstoneActor<endstone::core::EndstonePlayer>().handlePacket(*packet)) {
                 original_.handle(network_id, callback, packet);
             }

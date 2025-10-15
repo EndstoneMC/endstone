@@ -30,12 +30,12 @@ struct EndstoneActorComponent {
     std::shared_ptr<EndstoneActor> actor;
 };
 
-class EndstoneActor : public Actor, public std::enable_shared_from_this<EndstoneActor> {
-protected:
+class EndstoneActor : public Actor {
+public:
     EndstoneActor(EndstoneServer &server, ::Actor &actor);
 
-public:
     // CommandSender
+    [[nodiscard]] Actor *asActor() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] Server &getServer() const override;
@@ -54,10 +54,12 @@ public:
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 
     // Actor
+    [[nodiscard]] Mob *asMob() const override;
+    [[nodiscard]] Item *asItem() const override;
     [[nodiscard]] std::string getType() const override;
     [[nodiscard]] std::uint64_t getRuntimeId() const override;
     [[nodiscard]] Location getLocation() const override;
-    [[nodiscard]] Vector<float> getVelocity() const override;
+    [[nodiscard]] Vector getVelocity() const override;
     [[nodiscard]] bool isOnGround() const override;
     [[nodiscard]] bool isInWater() const override;
     [[nodiscard]] bool isInLava() const override;
@@ -87,8 +89,6 @@ public:
 
     ::Actor &getActor() const;
 
-    static std::shared_ptr<EndstoneActor> create(EndstoneServer &server, ::Actor &actor);
-
 protected:
     template <typename T>
     T &getHandle() const
@@ -100,8 +100,6 @@ protected:
         return *ptr;
     }
 
-private:
-protected:
     EndstoneServer &server_;
 
 private:
@@ -110,3 +108,117 @@ private:
 };
 
 }  // namespace endstone::core
+
+#define ENDSTONE_FORWARD_IMPL_ACTOR(IMPL)                                     \
+    [[nodiscard]] std::string getType() const override                        \
+    {                                                                         \
+        return IMPL::getType();                                               \
+    }                                                                         \
+    [[nodiscard]] std::uint64_t getRuntimeId() const override                 \
+    {                                                                         \
+        return IMPL::getRuntimeId();                                          \
+    }                                                                         \
+    [[nodiscard]] Location getLocation() const override                       \
+    {                                                                         \
+        return IMPL::getLocation();                                           \
+    }                                                                         \
+    [[nodiscard]] Vector getVelocity() const override                         \
+    {                                                                         \
+        return IMPL::getVelocity();                                           \
+    }                                                                         \
+    [[nodiscard]] bool isOnGround() const override                            \
+    {                                                                         \
+        return IMPL::isOnGround();                                            \
+    }                                                                         \
+    [[nodiscard]] bool isInWater() const override                             \
+    {                                                                         \
+        return IMPL::isInWater();                                             \
+    }                                                                         \
+    [[nodiscard]] bool isInLava() const override                              \
+    {                                                                         \
+        return IMPL::isInLava();                                              \
+    }                                                                         \
+    [[nodiscard]] Level &getLevel() const override                            \
+    {                                                                         \
+        return IMPL::getLevel();                                              \
+    }                                                                         \
+    [[nodiscard]] Dimension &getDimension() const override                    \
+    {                                                                         \
+        return IMPL::getDimension();                                          \
+    }                                                                         \
+    void teleport(Location location) override                                 \
+    {                                                                         \
+        IMPL::teleport(location);                                             \
+    }                                                                         \
+    void teleport(Actor &target) override                                     \
+    {                                                                         \
+        IMPL::teleport(target);                                               \
+    }                                                                         \
+    [[nodiscard]] std::int64_t getId() const override                         \
+    {                                                                         \
+        return IMPL::getId();                                                 \
+    }                                                                         \
+    [[nodiscard]] bool isDead() const override                                \
+    {                                                                         \
+        return IMPL::isDead();                                                \
+    }                                                                         \
+    [[nodiscard]] bool isValid() const override                               \
+    {                                                                         \
+        return IMPL::isValid();                                               \
+    }                                                                         \
+    [[nodiscard]] int getHealth() const override                              \
+    {                                                                         \
+        return IMPL::getHealth();                                             \
+    }                                                                         \
+    [[nodiscard]] Result<void> setHealth(int health) const override           \
+    {                                                                         \
+        return IMPL::setHealth(health);                                       \
+    }                                                                         \
+    [[nodiscard]] int getMaxHealth() const override                           \
+    {                                                                         \
+        return IMPL::getMaxHealth();                                          \
+    }                                                                         \
+    [[nodiscard]] std::vector<std::string> getScoreboardTags() const override \
+    {                                                                         \
+        return IMPL::getScoreboardTags();                                     \
+    }                                                                         \
+    [[nodiscard]] bool addScoreboardTag(std::string tag) const override       \
+    {                                                                         \
+        return IMPL::addScoreboardTag(tag);                                   \
+    }                                                                         \
+    [[nodiscard]] bool removeScoreboardTag(std::string tag) const override    \
+    {                                                                         \
+        return IMPL::removeScoreboardTag(tag);                                \
+    }                                                                         \
+    [[nodiscard]] bool isNameTagVisible() const override                      \
+    {                                                                         \
+        return IMPL::isNameTagVisible();                                      \
+    }                                                                         \
+    void setNameTagVisible(bool visible) override                             \
+    {                                                                         \
+        IMPL::setNameTagVisible(visible);                                     \
+    }                                                                         \
+    [[nodiscard]] bool isNameTagAlwaysVisible() const override                \
+    {                                                                         \
+        return IMPL::isNameTagAlwaysVisible();                                \
+    }                                                                         \
+    void setNameTagAlwaysVisible(bool visible) override                       \
+    {                                                                         \
+        IMPL::setNameTagAlwaysVisible(visible);                               \
+    }                                                                         \
+    [[nodiscard]] std::string getNameTag() const override                     \
+    {                                                                         \
+        return IMPL::getNameTag();                                            \
+    }                                                                         \
+    void setNameTag(std::string name) override                                \
+    {                                                                         \
+        IMPL::setNameTag(name);                                               \
+    }                                                                         \
+    [[nodiscard]] std::string getScoreTag() const override                    \
+    {                                                                         \
+        return IMPL::getScoreTag();                                           \
+    }                                                                         \
+    void setScoreTag(std::string score) override                              \
+    {                                                                         \
+        IMPL::setScoreTag(score);                                             \
+    }

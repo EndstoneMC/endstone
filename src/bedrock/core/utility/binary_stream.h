@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/utility/serialize_simple_types.h"
 #include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/platform/result.h"
 
@@ -87,6 +88,19 @@ public:
                                            int doc_range_begin, int doc_range_end, char const *control_doc_field_name);
     virtual void branchingWrite_DEPRECATED(std::function<void(BinaryStream &, int)> &&branch_writer, int control_value,
                                            std::vector<int> const &doc_control_set, char const *control_doc_field_name);
+
+    template <typename Type>
+    void writeVectorList(std::vector<Type> list, const char *entry_doc_field_name, const char *entry_doc_field_notes,
+                         const char *list_doc_field_name, const char *list_doc_field_notes)
+    {
+        _writeArray([&](BinaryStream &stream) { stream.writeUnsignedVarInt(list.size(), "List Size", nullptr); },
+                    [&](BinaryStream &stream) {
+                        for (const auto &entry : list) {
+                            serialize<Type>::write(entry, stream);
+                        }
+                    },
+                    list_doc_field_name, list_doc_field_notes);
+    }
 
 private:
     virtual void _writeArray(std::function<void(BinaryStream &)> &&size_writer,

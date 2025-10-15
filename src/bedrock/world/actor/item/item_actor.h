@@ -18,9 +18,10 @@
 #include "bedrock/world/item/item_stack.h"
 
 class ItemActor : public Actor {
+public:
+    static constexpr int LIFETIME = 6000;
     static constexpr int INFINITE_PICKUP_DELAY = 65535;
 
-public:
     ItemActor(ActorDefinitionGroup *, const ActorDefinitionIdentifier &, EntityContext &);
     void reloadHardcoded(ActorInitializationMethod, const VariantParameterList &) override = 0;
     ~ItemActor() override;
@@ -58,6 +59,16 @@ public:
     void setSourceEntity(const Actor *);
     static ItemActor *tryGetFromEntity(EntityContext &entity, bool include_removed = false);
 
+    // Endstone begins
+    int getPickUpDelay() const;
+    void setLifeTime(int lifetime);
+    // Endstone ends
+
+    struct ItemRenderAdjustments {
+        bool use_adjustments;
+        float first_rendered_yaw;
+    };
+
 private:
     ItemStack item_;
     int age_;
@@ -68,4 +79,5 @@ private:
     int lifetime_;
     bool is_in_item_frame_;
     bool is_from_fishing_;
+    std::optional<ItemRenderAdjustments> render_adjustment_;
 };

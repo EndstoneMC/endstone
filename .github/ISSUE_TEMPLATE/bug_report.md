@@ -1,8 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[bug]"
-labels: bug
+type: bug
 assignees: ''
 
 ---
@@ -25,7 +24,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Details (please complete the following information):**
  - OS: [e.g. Windows, Linux]
- - Endstone Version: [e.g. v0.4.0]
+ - Endstone Version: [e.g. v0.10.0]
 
 **Additional context**
 Add any other context about the problem here.

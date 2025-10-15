@@ -31,7 +31,7 @@
 #include "bedrock/world/item/rarity.h"
 #include "bedrock/world/item/registry/item_registry.h"
 #include "bedrock/world/item/vanilla_item_tag.h"
-#include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/block_type.h"
 
 using BlockShape = std::int64_t;
 
@@ -53,7 +53,7 @@ public:
     virtual Item &setDescriptionId(std::string const &) = 0;
     virtual std::string const &getDescriptionId() const = 0;
     virtual int getMaxUseDuration(ItemStack const *) const = 0;
-    virtual WeakPtr<const BlockLegacy> const &getLegacyBlockForRendering() const = 0;
+    virtual WeakPtr<const BlockType> const &getBlockTypeForRendering() const = 0;
     virtual bool isMusicDisk() const = 0;
     virtual void executeEvent(ItemStackBase &, std::string const &, RenderParams &) const = 0;
     virtual bool isComponentBased() const = 0;
@@ -84,7 +84,7 @@ public:
     virtual bool isStackedByData() const = 0;
     virtual std::int16_t getMaxDamage() const = 0;
     virtual int getAttackDamage() const = 0;
-    virtual float getAttackDamageBonus(Actor const &, float) const = 0;
+    virtual float getAttackDamageBonus(Actor const &) const = 0;
     virtual bool isHandEquipped() const = 0;
     virtual bool isGlint(ItemStackBase const &) const = 0;
     virtual bool isPattern() const = 0;
@@ -124,6 +124,8 @@ public:
     virtual int buildIdAux(std::int16_t, CompoundTag const *) const = 0;
     virtual bool canUseOnSimTick() const = 0;
     virtual ItemStack &use(ItemStack &, Player &) const = 0;
+    virtual bool canUseAsAttack() const=0;
+    virtual ItemStack & useAsAttack(ItemStack & itemStack, Player &) const=0;
     virtual Actor *createProjectileActor(BlockSource &, ItemStack const &, Vec3 const &, Vec3 const &) const = 0;
     virtual bool dispense(BlockSource &, Container &, int slot, Vec3 const &, FacingID face) const = 0;
     virtual ItemUseMethod useTimeDepleted(ItemStack &, Level *, Player *) const = 0;
@@ -141,8 +143,8 @@ public:
     virtual std::uint8_t getMaxStackSize(ItemDescriptor const &) const = 0;
     virtual bool inventoryTick(ItemStack &, Level &, Actor &, int, bool) const = 0;
     virtual void refreshedInContainer(ItemStackBase const &, Level &) const = 0;
-    virtual HashedString const &getCooldownType() const = 0;
-    virtual int getCooldownTime() const = 0;
+    virtual HashedString const &getCooldownCategory() const = 0;
+    virtual int getCooldownDuration() const = 0;
     virtual void fixupCommon(ItemStackBase &) const = 0;
     virtual void fixupCommon(ItemStackBase &, Level &) const = 0;
     virtual InHandUpdateType getInHandUpdateType(Player const &, ItemStack const &, ItemStack const &, bool,
@@ -179,7 +181,7 @@ public:
     [[nodiscard]] const std::string &getFullItemName() const;
     [[nodiscard]] const HashedString &getFullNameHash() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
-    [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const;
+    [[nodiscard]] const WeakPtr<BlockType> &getBlockType() const;
     [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] const std::vector<ItemTag> &getTags() const;
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
@@ -228,7 +230,7 @@ protected:
     bool ignores_permission_ : 1;
     int max_use_duration_;
     BaseGameVersion min_required_base_game_version_;
-    WeakPtr<BlockLegacy> legacy_block_;
+    WeakPtr<BlockType> block_type_;
     CreativeItemCategory creative_category_;
     Item *crafting_remaining_item_;
     std::string creative_group_;  // +400
@@ -240,6 +242,6 @@ protected:
     std::unique_ptr<class FoodItemComponentLegacy> food_component_legacy_;
     std::unique_ptr<class SeedItemComponentLegacy> seed_component_legacy_;
     std::unique_ptr<class CameraItemComponentLegacy> camera_component_legacy_;
-    std::vector<std::function<void()>> on_reset_bai_callback_;
+    std::vector<std::function<void()>> on_reset_bai_callbacks_;
     std::vector<ItemTag> tags_;
 };

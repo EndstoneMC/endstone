@@ -16,6 +16,8 @@
 
 #include <fmt/core.h>
 
+#include "bedrock/core/utility/serialize_simple_types.h"
+
 ReadOnlyBinaryStream::ReadOnlyBinaryStream(std::string_view buffer, bool copy_buffer)
 {
     auto view = buffer;
