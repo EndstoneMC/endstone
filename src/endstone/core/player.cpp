@@ -149,10 +149,15 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     switch (packet.getId()) {
     case MinecraftPacketIds::PlayerEquipment: {
         auto &pk = static_cast<MobEquipmentPacket &>(packet);
-        PlayerItemHeldEvent e(*this, this->inventory_->getHeldItemSlot(), pk.selected_slot);
+        auto from_slot = this->inventory_->getHeldItemSlot();
+        auto to_slot = pk.selected_slot;
+        if (from_slot == to_slot) {
+            return true;
+        }
+        PlayerItemHeldEvent e(*this, from_slot, to_slot);
         getServer().getPluginManager().callEvent(e);
         if (e.isCancelled()) {
-            this->inventory_->setHeldItemSlot(this->inventory_->getHeldItemSlot());
+            this->inventory_->setHeldItemSlot(from_slot);
             return false;
         }
         return true;
@@ -688,11 +693,7 @@ void EndstonePlayer::sendForm(FormVariant form)
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->payload.form_id = ++form_ids_;
-    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
-                                           return FormCodec::toJson(arg);
-                                       }},
-                                       form)
-                                .dump();
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) { return FormCodec::toJson(arg); }}, form).dump();
     forms_.emplace(pk->payload.form_id, std::move(form));
     getPlayer().sendNetworkPacket(*packet);
 }
