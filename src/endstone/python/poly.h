@@ -112,13 +112,14 @@ struct polymorphic_type_hook<endstone::ItemMeta> {
             return src;
         }
 
-        if (const auto *meta = src->asMapMeta(); meta) {
+        switch (src->getType()) {
+        case endstone::ItemMeta::Type::Map:
             type = &typeid(endstone::MapMeta);
-            return meta;
+            return static_cast<const endstone::MapMeta *>(src);
+        default:
+            type = &typeid(endstone::ItemMeta);
+            return src;
         }
-
-        type = &typeid(endstone::ItemMeta);
-        return src;
     }
 };
 }  // namespace PYBIND11_NAMESPACE

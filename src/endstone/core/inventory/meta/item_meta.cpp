@@ -142,15 +142,9 @@ EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
         damage_ = damage;
     }
 }
-
-EndstoneItemMeta *EndstoneItemMeta::asEndstoneItemMeta() const
+ItemMeta::Type EndstoneItemMeta::getType() const
 {
-    return const_cast<EndstoneItemMeta *>(this);
-}
-
-MapMeta *EndstoneItemMeta::asMapMeta() const
-{
-    return nullptr;
+    return Type::Item;
 }
 
 bool EndstoneItemMeta::isEmpty() const
@@ -344,5 +338,10 @@ void EndstoneItemMeta::applyToItem(CompoundTag &tag) const
     if (hasDamage()) {
         tag.putInt(::Item::TAG_DAMAGE, damage_);
     }
+}
+
+bool EndstoneItemMeta::isType(Type type) const
+{
+    return getType() == type;
 }
 }  // namespace endstone::core

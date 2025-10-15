@@ -1,4 +1,4 @@
-timestamp = 1760458041
+timestamp = 1760551778
 version = "1.21.113"
 
 [windows]
@@ -49,6 +49,8 @@ version = "1.21.113"
 "?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 73264112
 # Level
 "?tick@Level@@UEAAXXZ" = 69588016
+# MapItemTrackedActor
+"?nextUpdatePacket@MapItemTrackedActor@@QEAA?AV?$unique_ptr@VPacket@@U?$default_delete@VPacket@@@std@@@std@@AEBVMapItemSavedData@@@Z" = 77108624
 # MinecraftCommands
 "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 53211792
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 53209312

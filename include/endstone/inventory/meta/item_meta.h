@@ -30,9 +30,20 @@ class EndstoneItemMeta;
 class MapMeta;
 class ItemMeta {
 public:
+    enum class Type {
+        Item = 0,
+        Map = 1,
+        Count,
+    };
+
     virtual ~ItemMeta() = default;
-    virtual core::EndstoneItemMeta *asEndstoneItemMeta() const = 0;
-    virtual MapMeta *asMapMeta() const = 0;
+
+    /**
+     * @brief Gets the type of this item meta
+     *
+     * @return type of this item meta
+     */
+    [[nodiscard]] virtual Type getType() const = 0;
 
     /**
      * @brief Checks if the item metadata is empty.

@@ -20,12 +20,11 @@
 
 namespace endstone::core {
 
-class EndstoneItemMeta : public virtual ItemMeta {
+class EndstoneItemMeta : public ItemMeta {
 public:
     EndstoneItemMeta(const EndstoneItemMeta *meta);
     EndstoneItemMeta(const ::CompoundTag &tag);
-    EndstoneItemMeta *asEndstoneItemMeta() const override;
-    [[nodiscard]] MapMeta *asMapMeta() const override;
+    [[nodiscard]] Type getType() const override;
     [[nodiscard]] bool isEmpty() const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override;
     [[nodiscard]] bool hasDisplayName() const override;
@@ -55,6 +54,8 @@ public:
     [[nodiscard]] virtual bool notUncommon(const EndstoneItemMeta &other) const;
     virtual void applyToItem(::CompoundTag &tag) const;
 
+    [[nodiscard]] bool isType(Type type) const;
+
 private:
     std::optional<std::string> display_name_;
     std::vector<std::string> lore_;
@@ -65,3 +66,93 @@ private:
 };
 
 }  // namespace endstone::core
+
+#define ENDSTONE_FORWARD_IMPL_ITEM_META(IMPL)                                       \
+    [[nodiscard]] bool hasDisplayName() const override                              \
+    {                                                                               \
+        return IMPL::hasDisplayName();                                              \
+    }                                                                               \
+    [[nodiscard]] std::optional<std::string> getDisplayName() const override        \
+    {                                                                               \
+        return IMPL::getDisplayName();                                              \
+    }                                                                               \
+    void setDisplayName(std::optional<std::string> name) override                   \
+    {                                                                               \
+        IMPL::setDisplayName(std::move(name));                                      \
+    }                                                                               \
+    [[nodiscard]] bool hasLore() const override                                     \
+    {                                                                               \
+        return IMPL::hasLore();                                                     \
+    }                                                                               \
+    [[nodiscard]] std::optional<std::vector<std::string>> getLore() const override  \
+    {                                                                               \
+        return IMPL::getLore();                                                     \
+    }                                                                               \
+    void setLore(std::optional<std::vector<std::string>> lore) override             \
+    {                                                                               \
+        IMPL::setLore(std::move(lore));                                             \
+    }                                                                               \
+    [[nodiscard]] bool hasDamage() const override                                   \
+    {                                                                               \
+        return IMPL::hasDamage();                                                   \
+    }                                                                               \
+    [[nodiscard]] int getDamage() const override                                    \
+    {                                                                               \
+        return IMPL::getDamage();                                                   \
+    }                                                                               \
+    void setDamage(int damage) override                                             \
+    {                                                                               \
+        IMPL::setDamage(damage);                                                    \
+    }                                                                               \
+    [[nodiscard]] bool hasEnchants() const override                                 \
+    {                                                                               \
+        return IMPL::hasEnchants();                                                 \
+    }                                                                               \
+    [[nodiscard]] bool hasEnchant(const std::string &id) const override             \
+    {                                                                               \
+        return IMPL::hasEnchant(id);                                                \
+    }                                                                               \
+    [[nodiscard]] int getEnchantLevel(const std::string &id) const override         \
+    {                                                                               \
+        return IMPL::getEnchantLevel(id);                                           \
+    }                                                                               \
+    [[nodiscard]] std::unordered_map<std::string, int> getEnchants() const override \
+    {                                                                               \
+        return IMPL::getEnchants();                                                 \
+    }                                                                               \
+    bool addEnchant(const std::string &id, int level, bool force) override          \
+    {                                                                               \
+        return IMPL::addEnchant(id, level, force);                                  \
+    }                                                                               \
+    bool removeEnchant(const std::string &id) override                              \
+    {                                                                               \
+        return IMPL::removeEnchant(id);                                             \
+    }                                                                               \
+    void removeEnchants() override                                                  \
+    {                                                                               \
+        IMPL::removeEnchants();                                                     \
+    }                                                                               \
+    [[nodiscard]] bool hasRepairCost() const override                               \
+    {                                                                               \
+        return IMPL::hasRepairCost();                                               \
+    }                                                                               \
+    [[nodiscard]] int getRepairCost() const override                                \
+    {                                                                               \
+        return IMPL::getRepairCost();                                               \
+    }                                                                               \
+    void setRepairCost(int cost) override                                           \
+    {                                                                               \
+        IMPL::setRepairCost(cost);                                                  \
+    }                                                                               \
+    [[nodiscard]] bool isUnbreakable() const override                               \
+    {                                                                               \
+        return IMPL::isUnbreakable();                                               \
+    }                                                                               \
+    void setUnbreakable(bool unbreakable) override                                  \
+    {                                                                               \
+        IMPL::setUnbreakable(unbreakable);                                          \
+    }                                                                               \
+    [[nodiscard]] bool applicableTo(const std::string &type) const override         \
+    {                                                                               \
+        return IMPL::applicableTo(type);                                            \
+    }

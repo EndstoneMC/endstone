@@ -23,7 +23,7 @@ namespace endstone {
 /**
  * @brief Represents the metadata for a map item.
  */
-class MapMeta : public virtual ItemMeta {
+class MapMeta : public ItemMeta {
 public:
     /**
      * @brief Checks for existence of an associated map.
