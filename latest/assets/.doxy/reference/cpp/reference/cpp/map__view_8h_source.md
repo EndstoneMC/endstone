@@ -62,11 +62,11 @@ public:
 
     virtual void setDimension(const Dimension &dimension) = 0;
 
-    [[nodiscard]] virtual std::vector<MapRenderer *> getRenderers() const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<MapRenderer>> getRenderers() const = 0;
 
     virtual void addRenderer(std::shared_ptr<MapRenderer> renderer) = 0;
 
-    virtual bool removeRenderer(MapRenderer *renderer) = 0;
+    virtual bool removeRenderer(const std::shared_ptr<MapRenderer> &renderer) = 0;
 
     [[nodiscard]] virtual bool isUnlimitedTracking() const = 0;
 

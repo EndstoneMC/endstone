@@ -47,6 +47,7 @@
 * **chunk\_** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
 * **cancelled\_** ([**endstone::Event**](classendstone_1_1Event.md))
+* **caption\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **clicked\_position\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
@@ -64,7 +65,7 @@
 * **damage\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md))
 * **damage\_source\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **DateFormat** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
-* **direction\_** ([**endstone::BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md))
+* **direction\_** ([**endstone::BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **DEFAULT\_ALPHA** ([**endstone::Color**](classendstone_1_1Color.md))
 * **DarkAqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **DarkBlue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -275,7 +276,7 @@
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **text\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
-* **type\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **type\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 
 
 ## u
@@ -287,6 +288,7 @@
 ## v
 
 * **valid\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **visible\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 
@@ -302,15 +304,15 @@
 
 ## x
 
+* **x\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **xuid\_** ([**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md))
-* **x\_** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
 
 ## y
 
 * **Yellow** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **yaw\_** ([**endstone::Location**](classendstone_1_1Location.md))
-* **y\_** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **y\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 
 
 ## z

@@ -21,7 +21,7 @@
 
 ## t
 
-* **Type** ([**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
+* **Type** ([**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 
 
 

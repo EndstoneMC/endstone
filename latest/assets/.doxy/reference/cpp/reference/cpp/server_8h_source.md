@@ -37,6 +37,7 @@
 #include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
+#include "endstone/map/map_view.h"
 #include "endstone/player.h"
 #include "endstone/plugin/service_manager.h"
 #include "endstone/scoreboard/scoreboard.h"
@@ -166,6 +167,8 @@ public:
     [[nodiscard]] virtual Registry<Enchantment> &getEnchantmentRegistry() const = 0;
 
     [[nodiscard]] virtual Registry<ItemType> &getItemRegistry() const = 0;
+
+    [[nodiscard]] virtual MapView& createMap(const Dimension &dimension) const = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

@@ -120,10 +120,9 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 
 ```C++
 enum endstone::ItemMeta::Type {
-    Item = 0,
-    Map = 1,
-    Count,
-    None = Item
+    Item,
+    Map,
+    Count
 };
 ```
 

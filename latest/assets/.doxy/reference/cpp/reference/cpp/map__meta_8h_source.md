@@ -24,14 +24,17 @@
 
 #pragma once
 
-#include <memory>
-#include <optional>
-#include <string>
-#include <vector>
+#include "endstone/inventory/meta/item_meta.h"
+#include "endstone/map/map_view.h"
 
 namespace endstone {
 class MapMeta : public ItemMeta {
 public:
+    [[nodiscard]] virtual bool hasMapView() const = 0;
+
+    [[nodiscard]] virtual MapView *getMapView() const = 0;
+
+    virtual void setMapView(const MapView *map) = 0;
 };
 }  // namespace endstone
 ```

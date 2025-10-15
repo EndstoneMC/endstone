@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include "endstone/map/map_cursor.h"
 #include "endstone/util/color.h"
 #include "endstone/util/image.h"
 
@@ -37,21 +38,19 @@ public:
 
     [[nodiscard]] virtual MapView &getMapView() const = 0;
 
-    virtual void setPixelColor(int x, int y, std::optional<Color> color) = 0;
+    [[nodiscard]] virtual std::vector<MapCursor> getCursors() const = 0;
 
-    [[nodiscard]] virtual std::optional<Color> getPixelColor(int x, int y) const = 0;
+    virtual void setCursors(const std::vector<MapCursor> &cursors) = 0;
 
-    [[nodiscard]] virtual Color getBasePixelColor(int x, int y) const = 0;
+    virtual void setPixelColor(int x, int y, Color color) = 0;
 
-    virtual void setPixel(int x, int y, int color) = 0;
+    [[nodiscard]] virtual Result<Color> getPixelColor(int x, int y) const = 0;
 
-    [[nodiscard]] virtual int getPixel(int x, int y) const = 0;
+    virtual void setPixel(int x, int y, std::uint32_t color) = 0;
 
-    [[nodiscard]] virtual int getBasePixel(int x, int y) const = 0;
+    [[nodiscard]] virtual std::uint32_t getPixel(int x, int y) const = 0;
 
     virtual void drawImage(int x, int y, const Image &image) = 0;
-
-    // TODO(map): getCursors and setCursors
 };
 
 }  // namespace endstone

@@ -76,6 +76,13 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+| virtual [**MapView**](classendstone_1_1MapView.md) \* | [**getMapView**](#function-getmapview) () const = 0<br>_Gets the map view that is associated with this map item._  |
+| virtual bool | [**hasMapView**](#function-hasmapview) () const = 0<br>_Checks for existence of an associated map._  |
+| virtual void | [**setMapView**](#function-setmapview) (const [**MapView**](classendstone_1_1MapView.md) \* map) = 0<br>_Sets the associated map. This is used to determine what map is displayed._  |
 
 
 ## Public Functions inherited from endstone::ItemMeta
@@ -163,6 +170,92 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 
 
+## Public Functions Documentation
+
+
+
+
+### function getMapView 
+
+_Gets the map view that is associated with this map item._ 
+```C++
+virtual MapView * endstone::MapMeta::getMapView () const = 0
+```
+
+
+
+
+
+**Note:**
+
+Plugins should check that [**hasMapView()**](classendstone_1_1MapMeta.md#function-hasmapview) returns true before calling this method.
+
+
+
+
+**Returns:**
+
+the map view, or nullptr if the item [**hasMapView()**](classendstone_1_1MapMeta.md#function-hasmapview), but this map does not exist on the server 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function hasMapView 
+
+_Checks for existence of an associated map._ 
+```C++
+virtual bool endstone::MapMeta::hasMapView () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+true if this item has an associated map 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setMapView 
+
+_Sets the associated map. This is used to determine what map is displayed._ 
+```C++
+virtual void endstone::MapMeta::setMapView (
+    const MapView * map
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `map` the map to set 
+
+
+
+
+        
+
+<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `include/endstone/inventory/meta/map_meta.h`

@@ -330,6 +330,7 @@
     <member refid="classendstone_1_1Color_1a6696f9d17391d894745ddc0c202707b1" kind="function"><name>getAlpha</name></member>
     <member refid="classendstone_1_1Color_1a90d9dc03bed7fd437a864b5a3a2e597e" kind="function"><name>setAlpha</name></member>
     <member refid="classendstone_1_1Color_1aafd4045f6c816b868c35dc494c2713b0" kind="function"><name>asRGBA</name></member>
+    <member refid="classendstone_1_1Color_1a1fa78483f74d710d98d3114ce46eab57" kind="function"><name>asABGR</name></member>
     <member refid="classendstone_1_1Color_1ae79fd7ce5bc89837d82073ffdb7fab65" kind="function"><name>asRGB</name></member>
     <member refid="classendstone_1_1Color_1a49132ac0dcd6eb30d0c88b060e2145aa" kind="function"><name>asBGR</name></member>
     <member refid="classendstone_1_1Color_1aba327588593d6e8fd59114d831fb0b60" kind="function"><name>operator==</name></member>
@@ -338,6 +339,7 @@
     <member refid="classendstone_1_1Color_1ab5bdb830e17b94e429c36e519ba5d08f" kind="function"><name>fromRGB</name></member>
     <member refid="classendstone_1_1Color_1a9e54364845addf34dbc1641265479a50" kind="function"><name>fromBGR</name></member>
     <member refid="classendstone_1_1Color_1a09bbf9dd83f827588692890fe9d4ebf7" kind="function"><name>fromRGBA</name></member>
+    <member refid="classendstone_1_1Color_1ab2bfc5c270a350790950c0014059098a" kind="function"><name>fromABGR</name></member>
     <member refid="classendstone_1_1Color_1a9bdf55abfb01aabe84e04b3e72da5ebe" kind="function"><name>fromRGB</name></member>
     <member refid="classendstone_1_1Color_1a15c60c7b1d2e5c368c9595a83429f1fd" kind="function"><name>fromBGR</name></member>
   </compound>
@@ -743,7 +745,6 @@
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a7d74f3b92b19da5e606d737d339a9679" kind="enumvalue"><name>Item</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a46f3ea056caa3126b91f3f70beea068c" kind="enumvalue"><name>Map</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044ae93f994f01c537c4e2f7d8528c3eb5e9" kind="enumvalue"><name>Count</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
     <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" kind="function"><name>~ItemMeta</name></member>
     <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ItemMeta_1a43a0aa639900616ec5235f9ece8592e7" kind="function"><name>isEmpty</name></member>
@@ -896,15 +897,64 @@
   <compound refid="classendstone_1_1MapCanvas" kind="class"><name>endstone::MapCanvas</name>
     <member refid="classendstone_1_1MapCanvas_1a5130d9187ef7596b7fa535241dd0b8d6" kind="function"><name>~MapCanvas</name></member>
     <member refid="classendstone_1_1MapCanvas_1a49128d914ad9dd72f7c10231ea91b613" kind="function"><name>getMapView</name></member>
-    <member refid="classendstone_1_1MapCanvas_1a78d8511f22478ee4d575b2386dd04f2b" kind="function"><name>setPixelColor</name></member>
-    <member refid="classendstone_1_1MapCanvas_1a62449e7abb0b7fe0fb4c6913aba65409" kind="function"><name>getPixelColor</name></member>
-    <member refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" kind="function"><name>getBasePixelColor</name></member>
-    <member refid="classendstone_1_1MapCanvas_1aeda347adb5b53f59d6a06288fecd8e03" kind="function"><name>setPixel</name></member>
-    <member refid="classendstone_1_1MapCanvas_1ac89828d05275822fc1d4f22abb556f76" kind="function"><name>getPixel</name></member>
-    <member refid="classendstone_1_1MapCanvas_1a6fa7b6cbe5a37fc5784491b64f83c3cb" kind="function"><name>getBasePixel</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a1b9ebc993a915ba2eb8998b428a847a5" kind="function"><name>getCursors</name></member>
+    <member refid="classendstone_1_1MapCanvas_1abc7a84ff2147636d451c6e9a87294d31" kind="function"><name>setCursors</name></member>
+    <member refid="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" kind="function"><name>setPixelColor</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a8d2c16a90382c6616234c9b7420ad317" kind="function"><name>getPixelColor</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" kind="function"><name>setPixel</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a6974d7ff1ddbebb681a2b49d37534a23" kind="function"><name>getPixel</name></member>
     <member refid="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" kind="function"><name>drawImage</name></member>
   </compound>
+  <compound refid="classendstone_1_1MapCursor" kind="class"><name>endstone::MapCursor</name>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kind="enum"><name>Type</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a636da1d35e805b00eae0fcd8333f9234" kind="enumvalue"><name>Player</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a3bb3e8c8a24891ba0f7608bcc96f8b0a" kind="enumvalue"><name>Frame</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a4c342c1abef0405c887d87a126bc9e68" kind="enumvalue"><name>RedMarker</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a37af81494c6a57516e35a438dd0ac6fb" kind="enumvalue"><name>BlueMarker</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1acfa5bb4d1b195e96ee29acd7d368dbf0" kind="enumvalue"><name>TargetX</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a6e0f201ab6abe56f791ed6cc41f8da21" kind="enumvalue"><name>TargetPoint</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a996aff7aa33bb7502158a80edf2549a6" kind="enumvalue"><name>PlayerOffMap</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a1bba9c3ca5859b84a3c4b66eff35334b" kind="enumvalue"><name>SignMarker</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aacf11b2fadfb349d8ddec834f661d8c2" kind="enumvalue"><name>PinkMarker</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aa5edb542828ea85b0bc13b67dc4d096b" kind="enumvalue"><name>OrangeMarker</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a28faab60a61d6ad211a193002f45b2c5" kind="enumvalue"><name>YellowMarker</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a0f13a4bd90323e755d8a7155e854eea3" kind="enumvalue"><name>CyanMarker</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1af4b65a32d4058e4f465b5233bf06d895" kind="enumvalue"><name>GreenPoint</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1ad871d261253f249b24a98cb75c25f535" kind="enumvalue"><name>PlayerOffLimits</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1ae190bccc5ecb4fc25e23cc2d9d46a18b" kind="enumvalue"><name>Mansion</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a64ff06a3760f9cd7c19d86a751a74205" kind="enumvalue"><name>Monument</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a7679d9422568e6a4dcb6707f48771742" kind="enumvalue"><name>VillageDesert</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a4db37c88982584db75f18a4b69869be3" kind="enumvalue"><name>VillagePlains</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aa3a43e6f8177d54e5f64118e1e5c2249" kind="enumvalue"><name>VillageSavanna</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1ac8e11bc01dc0c79c62ce3d6fc15bf1e4" kind="enumvalue"><name>VillageSnowy</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aa5c518ea2f58e58b5ad4d55d3b05d5a9" kind="enumvalue"><name>VillageTaiga</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a64e7e7f511db9a47a60fa57d036a58e9" kind="enumvalue"><name>JungleTemple</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a030fc65c5c72dae3c4d8892c08af7c8b" kind="enumvalue"><name>SwampHut</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1acb76ebed2323459ef5c6de161f001be4" kind="enumvalue"><name>TrialChambers</name></member>
+    <member refid="classendstone_1_1MapCursor_1a2f0e971bf5d3d81d8438394167d79d2c" kind="variable"><name>x_</name></member>
+    <member refid="classendstone_1_1MapCursor_1ad35979b1bfba225e87c0222892a40b36" kind="variable"><name>y_</name></member>
+    <member refid="classendstone_1_1MapCursor_1a80958d5cc18e5a9bb0d5eb5a13ca9278" kind="variable"><name>direction_</name></member>
+    <member refid="classendstone_1_1MapCursor_1adc46bac110c927e3ab55e60bf2449a69" kind="variable"><name>visible_</name></member>
+    <member refid="classendstone_1_1MapCursor_1a1fa52f04be86f9d0410c968c37ccfec1" kind="variable"><name>caption_</name></member>
+    <member refid="classendstone_1_1MapCursor_1a8bb3f8ea3c7c6d06627d51d7ce82cbb8" kind="variable"><name>type_</name></member>
+    <member refid="classendstone_1_1MapCursor_1a99a41d849f80e9a83f46d978a211df65" kind="function"><name>MapCursor</name></member>
+    <member refid="classendstone_1_1MapCursor_1adf1a23f11c7267eba48a76ca2b6724ee" kind="function"><name>getX</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae34f0e46b4603482a5caf2ac79681ab7" kind="function"><name>getY</name></member>
+    <member refid="classendstone_1_1MapCursor_1a30e6f6d1908b80373e5583a270e0b63d" kind="function"><name>getDirection</name></member>
+    <member refid="classendstone_1_1MapCursor_1aee3bb721ce1903c66eea99b67c3a5118" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1MapCursor_1ae9506f2c0559118d4144b5e346a40c14" kind="function"><name>isVisible</name></member>
+    <member refid="classendstone_1_1MapCursor_1a29380088da25b4084b81606e6b5d508f" kind="function"><name>setX</name></member>
+    <member refid="classendstone_1_1MapCursor_1a484cc2ed2c6de8debc8972f6c8c0988f" kind="function"><name>setY</name></member>
+    <member refid="classendstone_1_1MapCursor_1a0de703b52edf0754d5592be8e581ecee" kind="function"><name>setDirection</name></member>
+    <member refid="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" kind="function"><name>setType</name></member>
+    <member refid="classendstone_1_1MapCursor_1a5428ea761c7426c0f42597f4b2ebbdb4" kind="function"><name>setVisible</name></member>
+    <member refid="classendstone_1_1MapCursor_1a502289582909400265906211368ee2fe" kind="function"><name>getCaption</name></member>
+    <member refid="classendstone_1_1MapCursor_1a5dca61d7f87cb3113256b691645467c6" kind="function"><name>setCaption</name></member>
+  </compound>
   <compound refid="classendstone_1_1MapMeta" kind="class"><name>endstone::MapMeta</name>
+    <member refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" kind="function"><name>hasMapView</name></member>
+    <member refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" kind="function"><name>getMapView</name></member>
+    <member refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" kind="function"><name>setMapView</name></member>
   </compound>
   <compound refid="classendstone_1_1MapRenderer" kind="class"><name>endstone::MapRenderer</name>
     <member refid="classendstone_1_1MapRenderer_1a241417d1788753148454dc43c62db045" kind="friend"><name>core::EndstoneMapView</name></member>
@@ -934,9 +984,9 @@
     <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" kind="function"><name>setCenterZ</name></member>
     <member refid="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" kind="function"><name>setDimension</name></member>
-    <member refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" kind="function"><name>getRenderers</name></member>
+    <member refid="classendstone_1_1MapView_1a91a42244a4f6e209e3d80fd2d1343bda" kind="function"><name>getRenderers</name></member>
     <member refid="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" kind="function"><name>addRenderer</name></member>
-    <member refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" kind="function"><name>removeRenderer</name></member>
+    <member refid="classendstone_1_1MapView_1a778c94e5095993dd7c5895d7f8c24eee" kind="function"><name>removeRenderer</name></member>
     <member refid="classendstone_1_1MapView_1ab94f8ff90f7ecef5e313f40696a993b8" kind="function"><name>isUnlimitedTracking</name></member>
     <member refid="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" kind="function"><name>setUnlimitedTracking</name></member>
     <member refid="classendstone_1_1MapView_1afde755089e4f1bcb1849fe27a56323fa" kind="function"><name>isLocked</name></member>
@@ -1661,6 +1711,7 @@
     <member refid="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" kind="function"><name>getServiceManager</name></member>
     <member refid="classendstone_1_1Server_1a7c61c7491de9bf768a0b7bb7ede40fc8" kind="function"><name>getEnchantmentRegistry</name></member>
     <member refid="classendstone_1_1Server_1a606ca501b46d441693be1117087fce47" kind="function"><name>getItemRegistry</name></member>
+    <member refid="classendstone_1_1Server_1a4d65ff2e2b62f582c1615497bb8b5d83" kind="function"><name>createMap</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
     <member refid="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" kind="variable"><name>NAME</name></member>
@@ -2234,6 +2285,8 @@
   <compound refid="logger_8h" kind="file"><name>logger.h</name>
   </compound>
   <compound refid="map__canvas_8h" kind="file"><name>map_canvas.h</name>
+  </compound>
+  <compound refid="map__cursor_8h" kind="file"><name>map_cursor.h</name>
   </compound>
   <compound refid="map__renderer_8h" kind="file"><name>map_renderer.h</name>
   </compound>

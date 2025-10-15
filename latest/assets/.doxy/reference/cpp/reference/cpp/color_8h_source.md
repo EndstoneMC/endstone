@@ -63,6 +63,11 @@ public:
         return fromRGBA(rgba >> 24 & BIT_MASK, rgba >> 16 & BIT_MASK, rgba >> 8 & BIT_MASK, rgba & BIT_MASK);
     }
 
+    static Result<Color> fromABGR(const int abgr)
+    {
+        return fromRGBA(abgr & BIT_MASK, abgr >> 8 & BIT_MASK, abgr >> 16 & BIT_MASK, abgr >> 24 & BIT_MASK);
+    }
+
     static Result<Color> fromRGB(const int rgb)
     {
         ENDSTONE_CHECKF((rgb >> 24) == 0, "Extraneous data in: {}", rgb);
@@ -118,6 +123,11 @@ public:
     [[nodiscard]] int asRGBA() const
     {
         return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha();
+    }
+
+    [[nodiscard]] int asABGR() const
+    {
+        return getAlpha() << 24 | getBlue() << 16 | getGreen() << 8 | getRed();
     }
 
     [[nodiscard]] int asRGB() const

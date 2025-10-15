@@ -62,12 +62,12 @@ _Represents a map item._
 | virtual int | [**getCenterZ**](#function-getcenterz) () const = 0<br>_Get the center Z position of this map._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) () const = 0<br>_Get the dimension that this map is associated with._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Get the ID of this map item for use with_ [_**MapMeta**_](classendstone_1_1MapMeta.md) _._ |
-| virtual std::vector&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) \* &gt; | [**getRenderers**](#function-getrenderers) () const = 0<br>_Get a list of MapRenderers currently in effect._  |
+| virtual std::vector&lt; std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; &gt; | [**getRenderers**](#function-getrenderers) () const = 0<br>_Get a list of MapRenderers currently in effect._  |
 | virtual [**Scale**](classendstone_1_1MapView.md#enum-scale) | [**getScale**](#function-getscale) () const = 0<br>_Get the scale of this map._  |
 | virtual bool | [**isLocked**](#function-islocked) () const = 0<br>_Gets whether the map is locked or not. A locked map may not be explored further._  |
 | virtual bool | [**isUnlimitedTracking**](#function-isunlimitedtracking) () const = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
 | virtual bool | [**isVirtual**](#function-isvirtual) () const = 0<br>_Check whether this map is virtual._  |
-| virtual bool | [**removeRenderer**](#function-removerenderer) ([**MapRenderer**](classendstone_1_1MapRenderer.md) \* renderer) = 0<br>_Remove a renderer from this map._  |
+| virtual bool | [**removeRenderer**](#function-removerenderer) (const std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; & renderer) = 0<br>_Remove a renderer from this map._  |
 | virtual void | [**setCenterX**](#function-setcenterx) (int x) = 0<br>_Set the center X position of this map._  |
 | virtual void | [**setCenterZ**](#function-setcenterz) (int z) = 0<br>_Set the center Z position of this map._  |
 | virtual void | [**setDimension**](#function-setdimension) (const [**Dimension**](classendstone_1_1Dimension.md) & dimension) = 0<br>_Set the dimension that this map is associated with._  |
@@ -261,7 +261,7 @@ The unique ID of the map.
 
 _Get a list of MapRenderers currently in effect._ 
 ```C++
-virtual std::vector< MapRenderer * > endstone::MapView::getRenderers () const = 0
+virtual std::vector< std::shared_ptr< MapRenderer > > endstone::MapView::getRenderers () const = 0
 ```
 
 
@@ -390,7 +390,7 @@ True if the map is virtual.
 _Remove a renderer from this map._ 
 ```C++
 virtual bool endstone::MapView::removeRenderer (
-    MapRenderer * renderer
+    const std::shared_ptr< MapRenderer > & renderer
 ) = 0
 ```
 

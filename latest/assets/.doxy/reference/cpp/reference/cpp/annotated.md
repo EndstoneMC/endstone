@@ -74,8 +74,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**LevelEvent**](classendstone_1_1LevelEvent.md) _Represents events within a level._     
     * **class** [**Location**](classendstone_1_1Location.md) _Represents a 3-dimensional location in a dimension within a level._     
     * **class** [**Logger**](classendstone_1_1Logger.md) [_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._    
-    * **class** [**MapCanvas**](classendstone_1_1MapCanvas.md) _Represents a canvas for drawing to a map. Each canvas is associated with a specific_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _and represents that renderer's layer on the map._    
-    * **class** [**MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._ 
+    * **class** [**MapCanvas**](classendstone_1_1MapCanvas.md) _Represents a canvas for drawing to a map._     
+    * **class** [**MapCursor**](classendstone_1_1MapCursor.md) _Represents a cursor on a map._     
+    * **class** [**MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._     
     * **class** [**MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._     
     * **class** [**MapView**](classendstone_1_1MapView.md) _Represents a map item._     
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     

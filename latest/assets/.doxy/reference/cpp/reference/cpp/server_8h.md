@@ -22,6 +22,7 @@
 * `#include "endstone/lang/language.h"`
 * `#include "endstone/level/level.h"`
 * `#include "endstone/logger.h"`
+* `#include "endstone/map/map_view.h"`
 * `#include "endstone/player.h"`
 * `#include "endstone/plugin/service_manager.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`

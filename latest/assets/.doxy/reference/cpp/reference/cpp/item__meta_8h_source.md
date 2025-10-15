@@ -34,10 +34,9 @@ namespace endstone {
 class ItemMeta {
 public:
     enum class Type {
-        Item = 0,
-        Map = 1,
+        Item,
+        Map,
         Count,
-        None = Item,
     };
 
     virtual ~ItemMeta() = default;

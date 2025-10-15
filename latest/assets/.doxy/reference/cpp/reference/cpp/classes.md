@@ -209,6 +209,8 @@
 
 * [**MapCanvas**](classendstone_1_1MapCanvas.md)
 ([**endstone**](namespaceendstone.md))
+* [**MapCursor**](classendstone_1_1MapCursor.md)
+([**endstone**](namespaceendstone.md))
 * [**MapMeta**](classendstone_1_1MapMeta.md)
 ([**endstone**](namespaceendstone.md))
 * [**MapRenderer**](classendstone_1_1MapRenderer.md)

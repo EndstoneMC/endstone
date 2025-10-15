@@ -10,6 +10,7 @@
 
 
 
+* `#include "endstone/map/map_cursor.h"`
 * `#include "endstone/util/color.h"`
 * `#include "endstone/util/image.h"`
 
@@ -36,7 +37,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**MapCanvas**](classendstone_1_1MapCanvas.md) <br>_Represents a canvas for drawing to a map. Each canvas is associated with a specific_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _and represents that renderer's layer on the map._ |
+| class | [**MapCanvas**](classendstone_1_1MapCanvas.md) <br>_Represents a canvas for drawing to a map._  |
 
 
 

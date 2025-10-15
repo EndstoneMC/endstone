@@ -8,7 +8,7 @@
 
 
 
-_Represents a canvas for drawing to a map. Each canvas is associated with a specific_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _and represents that renderer's layer on the map._
+_Represents a canvas for drawing to a map._ [More...](#detailed-description)
 
 * `#include <endstone/map/map_canvas.h>`
 
@@ -53,13 +53,13 @@ _Represents a canvas for drawing to a map. Each canvas is associated with a spec
 | Type | Name |
 | ---: | :--- |
 | virtual void | [**drawImage**](#function-drawimage) (int x, int y, const [**Image**](classendstone_1_1Image.md) & image) = 0<br>_Draw an image to the map. The image will be clipped if necessary._  |
-| virtual int | [**getBasePixel**](#function-getbasepixel) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
-| virtual [**Color**](classendstone_1_1Color.md) | [**getBasePixelColor**](#function-getbasepixelcolor) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
+| virtual std::vector&lt; [**MapCursor**](classendstone_1_1MapCursor.md) &gt; | [**getCursors**](#function-getcursors) () const = 0<br>_Get the cursors associated with this canvas._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**getMapView**](#function-getmapview) () const = 0<br>_Get the map this canvas is attached to._  |
-| virtual int | [**getPixel**](#function-getpixel) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
-| virtual std::optional&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getPixelColor**](#function-getpixelcolor) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
-| virtual void | [**setPixel**](#function-setpixel) (int x, int y, int color) = 0<br>_Draw a pixel to the canvas._  |
-| virtual void | [**setPixelColor**](#function-setpixelcolor) (int x, int y, std::optional&lt; [**Color**](classendstone_1_1Color.md) &gt; color) = 0<br>_Draw a pixel to the canvas._  |
+| virtual std::uint32\_t | [**getPixel**](#function-getpixel) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
+| virtual Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getPixelColor**](#function-getpixelcolor) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
+| virtual void | [**setCursors**](#function-setcursors) (const std::vector&lt; [**MapCursor**](classendstone_1_1MapCursor.md) &gt; & cursors) = 0<br>_Set the cursors associated with this canvas._  |
+| virtual void | [**setPixel**](#function-setpixel) (int x, int y, std::uint32\_t color) = 0<br>_Draw a pixel to the canvas._  |
+| virtual void | [**setPixelColor**](#function-setpixelcolor) (int x, int y, [**Color**](classendstone_1_1Color.md) color) = 0<br>_Draw a pixel to the canvas._  |
 | virtual  | [**~MapCanvas**](#function-mapcanvas) () = default<br> |
 
 
@@ -89,6 +89,20 @@ _Represents a canvas for drawing to a map. Each canvas is associated with a spec
 
 
 
+## Detailed Description
+
+
+
+
+**Note:**
+
+Each canvas is associated with a specific [**MapRenderer**](classendstone_1_1MapRenderer.md) and represents that renderer's layer on the map. 
+
+
+
+
+
+    
 ## Public Functions Documentation
 
 
@@ -125,67 +139,20 @@ virtual void endstone::MapCanvas::drawImage (
 
 
 
-### function getBasePixel 
+### function getCursors 
 
-_Get a pixel from the layers below this canvas._ 
+_Get the cursors associated with this canvas._ 
 ```C++
-virtual int endstone::MapCanvas::getBasePixel (
-    int x,
-    int y
-) const = 0
+virtual std::vector< MapCursor > endstone::MapCanvas::getCursors () const = 0
 ```
 
 
 
 
 
-**Parameters:**
-
-
-* `x` The x coordinate, from 0 to 127. 
-* `y` The y coordinate, from 0 to 127. 
-
-
-
 **Returns:**
 
-The color. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getBasePixelColor 
-
-_Get a pixel from the layers below this canvas._ 
-```C++
-virtual Color endstone::MapCanvas::getBasePixelColor (
-    int x,
-    int y
-) const = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `x` The x coordinate, from 0 to 127.
-* `y` The y coordinate, from 0 to 127. 
-
-
-
-**Returns:**
-
-The color. 
+The MapCursorCollection associated with this canvas. 
 
 
 
@@ -226,7 +193,7 @@ The [**MapView**](classendstone_1_1MapView.md) this canvas is attached to.
 
 _Get a pixel from the canvas._ 
 ```C++
-virtual int endstone::MapCanvas::getPixel (
+virtual std::uint32_t endstone::MapCanvas::getPixel (
     int x,
     int y
 ) const = 0
@@ -262,15 +229,12 @@ The color.
 
 _Get a pixel from the canvas._ 
 ```C++
-virtual std::optional< Color > endstone::MapCanvas::getPixelColor (
+virtual Result< Color > endstone::MapCanvas::getPixelColor (
     int x,
     int y
 ) const = 0
 ```
 
-
-
-If no color is set at the given position for this canvas, then std::nullopt is returned and the color returned by [**getBasePixelColor()**](classendstone_1_1MapCanvas.md#function-getbasepixelcolor) is shown on the map.
 
 
 
@@ -279,14 +243,41 @@ If no color is set at the given position for this canvas, then std::nullopt is r
 
 
 * `x` The x coordinate, from 0 to 127. 
-* `y` The y coordinate, from 0 to 127. 
+* `y` The y coordinate, from 0 to 127.
 
 
 
 **Returns:**
 
-The color, or std::nullopt if no color is set. 
+The color 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setCursors 
+
+_Set the cursors associated with this canvas._ 
+```C++
+virtual void endstone::MapCanvas::setCursors (
+    const std::vector< MapCursor > & cursors
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `cursors` The MapCursorCollection to associate with this canvas. 
 
 
 
@@ -304,7 +295,7 @@ _Draw a pixel to the canvas._
 virtual void endstone::MapCanvas::setPixel (
     int x,
     int y,
-    int color
+    std::uint32_t color
 ) = 0
 ```
 
@@ -335,13 +326,10 @@ _Draw a pixel to the canvas._
 virtual void endstone::MapCanvas::setPixelColor (
     int x,
     int y,
-    std::optional< Color > color
+    Color color
 ) = 0
 ```
 
-
-
-If std::nullopt is used as color, then the color returned by [**getBasePixelColor()**](classendstone_1_1MapCanvas.md#function-getbasepixelcolor) is shown on the map.
 
 
 
@@ -351,7 +339,7 @@ If std::nullopt is used as color, then the color returned by [**getBasePixelColo
 
 * `x` The x coordinate, from 0 to 127. 
 * `y` The y coordinate, from 0 to 127. 
-* `color` The color, or std::nullopt for base color. 
+* `color` The color 
 
 
 

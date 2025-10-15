@@ -59,6 +59,7 @@ _Represents a color with red, green, blue, and alpha components._
 | Type | Name |
 | ---: | :--- |
 |  constexpr | [**Color**](#function-color) (const std::uint8\_t red, const std::uint8\_t green, const std::uint8\_t blue, const std::uint8\_t alpha=DEFAULT\_ALPHA) <br> |
+|  int | [**asABGR**](#function-asabgr) () const<br>_Gets the color as an ABGR integer._  |
 |  int | [**asBGR**](#function-asbgr) () const<br>_Gets the color as an BGR integer._  |
 |  int | [**asRGB**](#function-asrgb) () const<br>_Gets the color as an RGB integer._  |
 |  int | [**asRGBA**](#function-asrgba) () const<br>_Gets the color as an RGBA integer._  |
@@ -78,6 +79,7 @@ _Represents a color with red, green, blue, and alpha components._
 
 | Type | Name |
 | ---: | :--- |
+|  Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**fromABGR**](#function-fromabgr) (const int abgr) <br>_Creates a new color object from an integer that contains the alpha, blue, green, and red bytes._  |
 |  Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**fromBGR**](#function-frombgr-12) (const int blue, const int green, const int red) <br>_Creates a new_ [_**Color**_](classendstone_1_1Color.md) _object from a blue, green, and red._ |
 |  Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**fromBGR**](#function-frombgr-22) (const int bgr) <br> |
 |  Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**fromRGB**](#function-fromrgb-12) (const int red, const int green, const int blue) <br>_Creates a new_ [_**Color**_](classendstone_1_1Color.md) _object from a red, green, and blue._ |
@@ -156,6 +158,31 @@ inline constexpr endstone::Color::Color (
 
 
 
+
+<hr>
+
+
+
+### function asABGR 
+
+_Gets the color as an ABGR integer._ 
+```C++
+inline int endstone::Color::asABGR () const
+```
+
+
+
+
+
+**Returns:**
+
+An integer representation of this color, as 0xAABBGGRR 
+
+
+
+
+
+        
 
 <hr>
 
@@ -501,6 +528,40 @@ a new color object with the red component
 <hr>
 ## Public Static Functions Documentation
 
+
+
+
+### function fromABGR 
+
+_Creates a new color object from an integer that contains the alpha, blue, green, and red bytes._ 
+```C++
+static inline Result< Color > endstone::Color::fromABGR (
+    const int abgr
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `abgr` the integer storing the alpha, blue, green, and red values
+
+
+
+**Returns:**
+
+a new color object for specified values 
+
+
+
+
+
+        
+
+<hr>
 
 
 
