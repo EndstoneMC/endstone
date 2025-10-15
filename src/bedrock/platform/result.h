@@ -14,12 +14,12 @@
 
 #pragma once
 
+#include <iostream>
 #include <system_error>
 
 #include <nonstd/expected.hpp>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/debug/bedrock_event_logger.h"
 #include "bedrock/platform/check.h"
 
 namespace Bedrock {
@@ -31,10 +31,8 @@ class ResultLogger {
     static void log(std::optional<LogLevel> log_level, std::optional<LogAreaID> log_area, const std::string &error,
                     const CallStack &call_stack)
     {
-        va_list args{};
         const auto message = fmt::format("Error: {}\nCall stack:{}", error, call_stack);
-        log_va(BedrockLog::LogArea, {1}, BedrockLog::DefaultRules, log_area.value_or(LogAreaID::All),
-               log_level.value_or(Error), __FUNCTION__, __LINE__, message.c_str(), args);
+        std::cerr << message << std::endl;
     }
 };
 

@@ -23,12 +23,11 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/logger.h"
 
-void BedrockLog::log_va(LogCategory /*category*/, std::bitset<3> /*channel_mask*/, LogRule /*rule*/, LogAreaID area,
-                        std::uint32_t priority, const char * /*function*/, int /*line*/, const char *format,
-                        va_list args)
+void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, const char * /*function*/, int /*line*/,
+                                     MessasgeId /*message_id*/, const char *format, va_list args)
 {
-    auto name = magic_enum::enum_name(area);
-    auto &logger = endstone::core::LoggerFactory::getLogger(std::string(name));
+    const auto name = magic_enum::enum_name(area);
+    const auto &logger = endstone::core::LoggerFactory::getLogger(std::string(name));
     endstone::Logger::Level log_level;
     switch (priority) {
     case Bedrock::LogLevel::Verbose:
@@ -52,12 +51,12 @@ void BedrockLog::log_va(LogCategory /*category*/, std::bitset<3> /*channel_mask*
     va_copy(args_copy, args);
     std::vector<char> buf(1 + std::vsnprintf(nullptr, 0, format, args));
     va_end(args);
-    std::size_t len = std::vsnprintf(buf.data(), buf.size(), format, args_copy);
+    const std::size_t len = std::vsnprintf(buf.data(), buf.size(), format, args_copy);
     va_end(args_copy);
 
     std::string_view message(buf.data(), len);
     auto lines = message | std::ranges::views::split('\n');
-    for (const auto &line : lines) {
-        logger.log(log_level, std::string_view(line.begin(), line.end()));
+    for (const auto &l : lines) {
+        logger.log(log_level, std::string_view(l.begin(), l.end()));
     }
 }
