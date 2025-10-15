@@ -149,10 +149,10 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_lang(m_lang);
     init_form(m_form);
     init_enchantments(m_enchantments);
+    init_map(m_map);
     init_inventory(m_inventory, item_stack);
     init_util(m_util, vector);
     init_ban(m_ban);
-    init_map(m_map);
     init_scoreboard(m_scoreboard);
     init_block(m_block, block);
     init_actor(m_actor, actor, mob);

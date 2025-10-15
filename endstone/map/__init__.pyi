@@ -2,6 +2,7 @@
 Classes relating to plugin handling of map displays.
 """
 
+import collections
 import enum
 import typing
 
@@ -10,7 +11,91 @@ import numpy
 from endstone import Player
 from endstone.level import Dimension
 
-__all__ = ["MapCanvas", "MapRenderer", "MapView"]
+__all__ = ["MapCanvas", "MapCursor", "MapRenderer", "MapView"]
+
+class MapCursor:
+    """
+    Represents a cursor on a map.
+    """
+    def __init__(self, x: int, y: int, direction: int, type: Type, visible: bool, caption: str = "") -> None: ...
+    class Type(enum.Enum):
+        """
+        Represents the standard types of map cursors.
+        """
+
+        PLAYER = 0
+        FRAME = 1
+        RED_MARKER = 2
+        BLUE_MARKER = 3
+        TARGET_X = 4
+        TARGET_POINT = 5
+        PLAYER_OFF_MAP = 6
+        SIGN_MARKER = 7
+        PINK_MARKER = 8
+        ORANGE_MARKER = 9
+        YELLOW_MARKER = 10
+        CYAN_MARKER = 11
+        GREEN_POINT = 12
+        PLAYER_OFF_LIMITS = 13
+        MANSION = 14
+        MONUMENT = 15
+        VILLAGE_DESERT = 17
+        VILLAGE_PLAINS = 18
+        VILLAGE_SAVANNA = 19
+        VILLAGE_SNOWY = 20
+        VILLAGE_TAIGA = 21
+        JUNGLE_TEMPLE = 22
+        SWAMP_HUT = 23
+        TRIAL_CHAMBERS = 24
+
+    @property
+    def x(self) -> int:
+        """
+        Get or set the X position of this cursor.
+        """
+        ...
+    @x.setter
+    def x(self, arg1: int) -> None: ...
+    @property
+    def y(self) -> int:
+        """
+        Get or set the Y position of this cursor.
+        """
+        ...
+    @y.setter
+    def y(self, arg1: int) -> None: ...
+    @property
+    def direction(self) -> int:
+        """
+        Get or set the direction of this cursor
+        """
+        ...
+    @direction.setter
+    def direction(self, arg1: int) -> None: ...
+    @property
+    def type(self) -> Type:
+        """
+        Get or set the type of this cursor.
+        """
+        ...
+    @type.setter
+    def type(self, arg1: Type) -> None: ...
+    @property
+    def is_visible(self) -> bool:
+        """
+        Get or set the visibility statis of this cursor.
+        """
+        ...
+    @is_visible.setter
+    def is_visible(self, arg1: bool) -> None: ...
+    @property
+    def caption(self) -> str:
+        """
+        Get or set the caption on this cursor.
+        """
+        ...
+    @caption.setter
+    def caption(self, arg1: str) -> None: ...
 
 class MapView:
     """
@@ -119,23 +204,32 @@ class MapCanvas:
         Get the map this canvas is attached to.
         """
         ...
-    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...] | None) -> None:
+    @property
+    def cursors(self) -> list[MapCursor]:
+        """
+        Get the cursorS associated with this canvas.
+        """
+        ...
+    @cursors.setter
+    def cursors(self, arg1: list[MapCursor]) -> None: ...
+    def set_pixel_color(self, x: int, y: int, color: tuple[int, ...]) -> None:
         """
         Draw a pixel to the canvas.
-
-        If None is used as color, then the color returned by get_base_pixel_color() is shown on the map.
         """
         ...
-    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...] | None:
+    def get_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
         """
         Get a pixel from the canvas.
-
-        If no color is set at the given position for this canvas, then None is returned and the color returned by get_base_pixel_color() is shown on the map
         """
         ...
-    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
+    def set_pixel(self, x: int, y: int, color: int) -> None:
         """
-        Get a pixel from the layers below this canvas.
+        Draw a pixel to the canvas.
+        """
+        ...
+    def get_pixel(self, x: int, y: int) -> int:
+        """
+        Get a pixel from the canvas.
         """
         ...
     def draw_image(self, x: int, y: int, image: numpy.ndarray[numpy.uint8]) -> None:
@@ -158,7 +252,7 @@ class MapRenderer:
         Initialize this MapRenderer for the given map.
         """
         ...
-    def render(self, map: MapView, canvas: MapCanvas, player: Player) -> None:
+    def render(self, view: MapView, canvas: MapCanvas, player: Player) -> None:
         """
         Render to the given map.
         """

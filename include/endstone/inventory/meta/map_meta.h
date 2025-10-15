@@ -14,10 +14,8 @@
 
 #pragma once
 
-#include <memory>
-#include <optional>
-#include <string>
-#include <vector>
+#include "endstone/inventory/meta/item_meta.h"
+#include "endstone/map/map_view.h"
 
 namespace endstone {
 /**

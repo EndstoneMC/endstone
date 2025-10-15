@@ -36,7 +36,8 @@ from .enchantments import Enchantment
 from .form import ActionForm, MessageForm, ModalForm
 from .inventory import Inventory, ItemFactory, ItemType, PlayerInventory
 from .lang import Language, Translatable
-from .level import Level, Location
+from .level import Dimension, Level, Location
+from .map import MapView
 from .plugin import PluginCommand, PluginManager, ServiceManager
 from .scheduler import Scheduler
 from .scoreboard import Scoreboard
@@ -318,6 +319,11 @@ class Server:
     def ip_ban_list(self) -> IpBanList:
         """
         Gets the IP ban list.
+        """
+        ...
+    def create_map(self, dimension: Dimension) -> MapView:
+        """
+        Create a new map with an automatically assigned ID.
         """
         ...
 

@@ -15,6 +15,7 @@
 #pragma once
 
 #include <bitset>
+#include <cstdarg>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/diagnostics/log_area.h"

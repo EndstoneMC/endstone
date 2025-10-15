@@ -37,7 +37,7 @@ void init_map(py::module_ &m)
 {
     auto cursor = py::class_<MapCursor>(m, "MapCursor", "Represents a cursor on a map.");
 
-    py::enum_<MapCursor::Type>(cursor, "Type", "Represents the standard types of map cursors.")
+    py::native_enum<MapCursor::Type>(cursor, "Type", "enum.Enum", "Represents the standard types of map cursors.")
         .value("PLAYER", MapCursor::Type::Player)
         .value("FRAME", MapCursor::Type::Frame)
         .value("RED_MARKER", MapCursor::Type::RedMarker)
@@ -61,7 +61,8 @@ void init_map(py::module_ &m)
         .value("VILLAGE_TAIGA", MapCursor::Type::VillageTaiga)
         .value("JUNGLE_TEMPLE", MapCursor::Type::JungleTemple)
         .value("SWAMP_HUT", MapCursor::Type::SwampHut)
-        .value("TRIAL_CHAMBERS", MapCursor::Type::TrialChambers);
+        .value("TRIAL_CHAMBERS", MapCursor::Type::TrialChambers)
+        .finalize();
 
     cursor
         .def(py::init<std::int8_t, std::int8_t, std::int8_t, MapCursor::Type, bool, std::string>(), py::arg("x"),
