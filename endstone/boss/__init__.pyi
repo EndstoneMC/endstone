@@ -3,7 +3,6 @@ Classes relating to the boss bars that appear at the top of the player's screen.
 """
 
 import enum
-import typing
 
 from endstone import Player
 

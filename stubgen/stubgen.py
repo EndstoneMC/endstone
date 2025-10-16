@@ -5,7 +5,6 @@ __all__ = ["main"]
 
 import griffe
 import jinja2
-
 from extensions import (
     MemberOrderFix,
     Pybind11DocstringParser,

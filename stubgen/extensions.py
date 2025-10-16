@@ -51,12 +51,12 @@ class Pybind11SubmoduleSupport(Extension):
     """
 
     def on_module_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            mod: Module,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        mod: Module,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -92,12 +92,12 @@ class Pybind11PropertySupport(Extension):
     """
 
     def on_attribute_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            attr: Attribute,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        attr: Attribute,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -142,12 +142,12 @@ class Pybind11NativeEnumSupport(Extension):
     """
 
     def on_attribute_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            attr: Attribute,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        attr: Attribute,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -191,12 +191,12 @@ class Pybind11InternalsFilter(Extension):
             obj.members.pop(member, None)
 
     def on_attribute_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            attr: Attribute,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        attr: Attribute,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -205,22 +205,22 @@ class Pybind11InternalsFilter(Extension):
             attr.docstring = None
 
     def on_class_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            cls: Class,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        cls: Class,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         cls.bases = [base for base in cls.bases if base != "pybind11_builtins.pybind11_object"]
 
     def on_class_members(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            cls: Class,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        cls: Class,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if "__init__" in cls.members:
             func = cls.members["__init__"]
@@ -230,12 +230,12 @@ class Pybind11InternalsFilter(Extension):
 
 class Pybind11DocstringParser(Extension):
     def on_attribute_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            attr: Attribute,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        attr: Attribute,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -259,12 +259,12 @@ class Pybind11DocstringParser(Extension):
             attr.annotation = parse_docstring_annotation(returns_str, attr.docstring)
 
     def on_function_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            func: Function,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        func: Function,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -378,12 +378,12 @@ class Pybind11ImportFix(Extension):
         self.current: Module | Class | None = None
 
     def on_module_instance(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            mod: Module,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        mod: Module,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -394,12 +394,12 @@ class Pybind11ImportFix(Extension):
         self.module = mod
 
     def on_module_members(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            mod: Module,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        mod: Module,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if self.module is not mod:
             return
@@ -491,13 +491,13 @@ class Pybind11ImportFix(Extension):
 
         if name.startswith(self.module.path + "."):
             # internal import
-            target = self.module.get_member(name[len(self.module.path) + 1:])
+            target = self.module.get_member(name[len(self.module.path) + 1 :])
 
             if self.current.is_class and target.parent.path == self.current.path:
                 return target.name
 
             if target.module.path == self.current.module.path:
-                return target.path[len(self.current.module.path) + 1:]
+                return target.path[len(self.current.module.path) + 1 :]
 
             alias_path = name
             alias_name = name.rsplit(".", 1)[-1]
@@ -531,12 +531,12 @@ class Pybind11ImportFix(Extension):
 
 class Pybind11ExportFix(Extension):
     def on_module_members(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            mod: Module,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        mod: Module,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
@@ -562,12 +562,12 @@ class MemberOrderFix(Extension):
     """
 
     def on_members(
-            self,
-            *,
-            node: ast.AST | ObjectNode,
-            obj: Object,
-            agent: Visitor | Inspector,
-            **kwargs: Any,
+        self,
+        *,
+        node: ast.AST | ObjectNode,
+        obj: Object,
+        agent: Visitor | Inspector,
+        **kwargs: Any,
     ) -> None:
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return

@@ -2,7 +2,6 @@
 Classes relating to player inventories and item interactions.
 """
 
-import collections
 import enum
 import typing
 

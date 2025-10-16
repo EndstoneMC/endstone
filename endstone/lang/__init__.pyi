@@ -1,4 +1,3 @@
-import collections
 import typing
 
 __all__ = ["Language", "Translatable"]

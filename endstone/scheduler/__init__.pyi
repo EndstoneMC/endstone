@@ -3,7 +3,6 @@ Classes relating to letting plugins run code at specific time intervals.
 """
 
 import collections
-import typing
 
 from endstone.plugin import Plugin
 

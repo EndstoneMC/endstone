@@ -12,15 +12,15 @@ def main():
 
     # Inject extras
     package = module.package
-    module.set_member('__version__', package.get_member('__version__'))
-    module.set_member('__minecraft_version__', package.get_member('__minecraft_version__'))
-    module.imports.setdefault('__version__', package.imports.get('__version__'))
-    module.exports = ['__version__', '__minecraft_version__'] + module.exports
-    module.set_member('event.event_handler', package.get_member('event.event_handler'))
-    module['event'].exports.append('event_handler')
-    module.set_member('plugin.Plugin', package.get_member('plugin.Plugin'))
-    module['plugin.Plugin'].bases = None
-    module['plugin.Plugin'].members.pop('_get_description')
+    module.set_member("__version__", package.get_member("__version__"))
+    module.set_member("__minecraft_version__", package.get_member("__minecraft_version__"))
+    module.imports.setdefault("__version__", package.imports.get("__version__"))
+    module.exports = ["__version__", "__minecraft_version__"] + module.exports
+    module.set_member("event.event_handler", package.get_member("event.event_handler"))
+    module["event"].exports.append("event_handler")
+    module.set_member("plugin.Plugin", package.get_member("plugin.Plugin"))
+    module["plugin.Plugin"].bases = None
+    module["plugin.Plugin"].members.pop("_get_description")
 
     # Render the stubs
     render(module, stubs_path)

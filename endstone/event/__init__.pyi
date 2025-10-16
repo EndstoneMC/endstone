@@ -2,9 +2,7 @@
 Classes relating to handling triggered code executions.
 """
 
-import collections
 import enum
-import typing
 
 from endstone import GameMode, Player, Skin
 from endstone.actor import Actor, Item, Mob

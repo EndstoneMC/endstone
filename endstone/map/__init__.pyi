@@ -2,9 +2,7 @@
 Classes relating to plugin handling of map displays.
 """
 
-import collections
 import enum
-import typing
 
 import numpy
 
