@@ -48,6 +48,12 @@ class Plugin(_Plugin):
         return self._description
 
     def register_events(self, listener: object) -> None:
+        """Registers all events defined in the given listener instance.
+
+        Args:
+            listener (object): The listener object containing event handler methods
+                to be registered.
+        """
         if not self.is_enabled:
             raise RuntimeError(f"Plugin {self.name} attempted to register events while not enabled")
 
@@ -85,18 +91,41 @@ class Plugin(_Plugin):
 
     @property
     def config(self) -> dict:
+        """
+        Returns the plugin's configuration loaded from config.toml.
+
+        Loads and returns the plugin’s configuration data from ``config.toml``.
+        If the configuration has not been loaded yet, it is automatically
+        reloaded using ``reload_config()``.
+
+        Returns:
+            dict: The plugin's configuration data.
+        """
         if self._config is None:
             self._config = self.reload_config()
 
         return self._config
 
     def reload_config(self) -> dict:
+        """
+        Returns the plugin's configuration loaded from config.toml.
+
+        Loads and returns the plugin’s configuration data from ``config.toml``.
+        If a default configuration file is packaged with the plugin, its values
+        are used as defaults.
+
+        Returns:
+            dict: The plugin's configuration data.
+        """
         with (Path(self.data_folder) / "config.toml").open("r", encoding="utf-8") as f:
             self._config = tomlkit.load(f)
 
         return self._config
 
     def save_config(self) -> None:
+        """
+        Saves the current configuration to the config.toml file.
+        """
         if self._config is None:
             return
 
@@ -104,10 +133,36 @@ class Plugin(_Plugin):
             tomlkit.dump(self._config, f)
 
     def save_default_config(self) -> None:
+        """
+        Saves the default config.toml file to the plugin's data folder.
+
+        If ``config.toml`` does not already exist in the plugin’s data folder,
+        this method copies the default version from the plugin’s packaged
+        resources. If the file already exists, the method does nothing and
+        fails silently.
+        """
         if not (Path(self.data_folder) / "config.toml").exists():
             self.save_resources("config.toml", False)
 
     def save_resources(self, path: str, replace: bool = False) -> None:
+        """
+        Saves a packaged resource from the plugin module to the data folder.
+
+        The method locates a resource bundled within the plugin’s package and
+        copies it to the plugin’s data folder, preserving its relative directory
+        structure. If the target file already exists, it will only be replaced
+        if ``replace`` is set to True.
+
+        Args:
+            path (str): The relative path to the resource inside the plugin’s package.
+                Directory separators are normalized to forward slashes.
+            replace (bool, optional): Whether to overwrite the existing file if it
+                already exists. Defaults to False.
+
+        Raises:
+            FileNotFoundError: If the specified resource cannot be found in the package.
+            OSError: If an error occurs while copying or creating directories.
+        """
         path = path.replace(os.pathsep, "/")
         out_path = Path(self.data_folder) / path
         if not out_path.exists() or replace:
@@ -117,7 +172,6 @@ class Plugin(_Plugin):
                 shutil.copy(f, out_path)
         else:
             self.logger.warning(f"Could not save {out_path.name} to {out_path}: file already exists.")
-            return
 
 
 __getattr__, __dir__, __all__ = lazy.attach(
