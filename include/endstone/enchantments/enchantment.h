@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include "endstone/detail/endstone.h"
+#include "endstone/registry.h"
+
 namespace endstone {
 class ItemStack;
 
@@ -66,5 +69,19 @@ public:
      * @return True if the enchantment may be applied, otherwise False
      */
     [[nodiscard]] virtual bool canEnchantItem(const ItemStack &item) const = 0;
+
+    /**
+     * @brief Attempts to get the Enchantment with the given name.
+     *
+     * @note This is a normal lookup, names must be the precise name.
+     *
+     * @param name Name of the Enchantment to get
+     *
+     * @return ItemType if found, or nullptr
+     */
+    static const Enchantment *get(const std::string &name)
+    {
+        return Endstone::getServer().getEnchantmentRegistry().get(name);
+    }
 };
 }  // namespace endstone
