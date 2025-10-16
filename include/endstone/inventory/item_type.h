@@ -66,7 +66,7 @@ public:
      *
      * @note This is a normal lookup, names must be the precise name.
      *
-     * @param name Name of the item_type to get
+     * @param name Name of the ItemType to get
      *
      * @return ItemType if found, or nullptr
      */
