@@ -4634,7 +4634,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            register_events (endstone.plugin.Plugin.register_events)" href="#endstone.plugin.Plugin.register_events">register_events</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Registers all events defined in the given listener instance.</p>
                 </div>
               </td>
             </tr>
@@ -4642,7 +4642,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            reload_config (endstone.plugin.Plugin.reload_config)" href="#endstone.plugin.Plugin.reload_config">reload_config</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Returns the plugin's configuration loaded from config.toml.</p>
                 </div>
               </td>
             </tr>
@@ -4650,7 +4650,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            save_config (endstone.plugin.Plugin.save_config)" href="#endstone.plugin.Plugin.save_config">save_config</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Saves the current configuration to the config.toml file.</p>
                 </div>
               </td>
             </tr>
@@ -4658,7 +4658,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            save_default_config (endstone.plugin.Plugin.save_default_config)" href="#endstone.plugin.Plugin.save_default_config">save_default_config</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Saves the default config.toml file to the plugin's data folder.</p>
                 </div>
               </td>
             </tr>
@@ -4666,7 +4666,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            save_resources (endstone.plugin.Plugin.save_resources)" href="#endstone.plugin.Plugin.save_resources">save_resources</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Saves a packaged resource from the plugin module to the data folder.</p>
                 </div>
               </td>
             </tr>
@@ -4746,7 +4746,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                
+                <p>Returns the plugin's configuration loaded from config.toml.</p>
               </div>
             </td>
           </tr>
@@ -5138,6 +5138,34 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Returns the plugin's configuration loaded from config.toml.</p>
+<p>Loads and returns the plugin’s configuration data from <code>config.toml</code>.
+If the configuration has not been loaded yet, it is automatically
+reloaded using <code>reload_config()</code>.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>dict</code></td>            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The plugin's configuration data.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
     </div>
 
@@ -5659,6 +5687,40 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Registers all events defined in the given listener instance.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>listener</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#object">object</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The listener object containing event handler methods
+to be registered.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
     </div>
 
@@ -5676,6 +5738,34 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Returns the plugin's configuration loaded from config.toml.</p>
+<p>Loads and returns the plugin’s configuration data from <code>config.toml</code>.
+If a default configuration file is packaged with the plugin, its values
+are used as defaults.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>dict</code></td>            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The plugin's configuration data.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -5695,6 +5785,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Saves the current configuration to the config.toml file.</p>
+
 
     </div>
 
@@ -5713,6 +5805,12 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Saves the default config.toml file to the plugin's data folder.</p>
+<p>If <code>config.toml</code> does not already exist in the plugin’s data folder,
+this method copies the default version from the plugin’s packaged
+resources. If the file already exists, the method does nothing and
+fails silently.</p>
+
 
     </div>
 
@@ -5730,6 +5828,94 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Saves a packaged resource from the plugin module to the data folder.</p>
+<p>The method locates a resource bundled within the plugin’s package and
+copies it to the plugin’s data folder, preserving its relative directory
+structure. If the target file already exists, it will only be replaced
+if <code>replace</code> is set to True.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>path</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The relative path to the resource inside the plugin’s package.
+Directory separators are normalized to forward slashes.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>replace</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to overwrite the existing file if it
+already exists. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError">FileNotFoundError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the specified resource cannot be found in the package.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#OSError">OSError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If an error occurs while copying or creating directories.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
