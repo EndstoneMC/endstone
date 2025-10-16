@@ -5,6 +5,14 @@
     <includes refid="item__meta_8h" local="yes">endstone/inventory/meta/item_meta.h</includes>
     <includedby refid="item__stack_8h" local="yes">include/endstone/inventory/item_stack.h</includedby>
     <incdepgraph>
+      <node id="8">
+        <label>endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h"/>
@@ -24,12 +32,36 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>endstone/registry.h</label>
+        <link refid="registry_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone/detail/endstone.h</label>
+      </node>
+      <node id="13">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="11">
+        <label>functional</label>
       </node>
       <node id="3">
         <label>memory</label>
       </node>
       <node id="4">
         <label>optional</label>
+      </node>
+      <node id="12">
+        <label>stdexcept</label>
       </node>
       <node id="5">
         <label>string</label>

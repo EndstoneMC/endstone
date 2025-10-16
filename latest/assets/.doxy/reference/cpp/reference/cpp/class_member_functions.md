@@ -40,6 +40,7 @@
 * **all** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **asMetaFor** ([**endstone::ItemFactory**](classendstone_1_1ItemFactory.md))
 * **addEnchant** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
+* **as** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **addRenderer** ([**endstone::MapView**](classendstone_1_1MapView.md))
 * **addControl** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **addParent** ([**endstone::Permission**](classendstone_1_1Permission.md))
@@ -69,7 +70,7 @@
 ## c
 
 * **captureState** ([**endstone::Block**](classendstone_1_1Block.md))
-* **clone** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
+* **clone** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **cancel** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
 * **ChunkEvent** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
 * **ChunkLoadEvent** ([**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md))
@@ -164,7 +165,7 @@
 * **getRuntimeId** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::BlockData**](classendstone_1_1BlockData.md))
 * **getScoreTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getScoreboardTags** ([**endstone::Actor**](classendstone_1_1Actor.md))
-* **getType** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockData**](classendstone_1_1BlockData.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::DamageSource**](classendstone_1_1DamageSource.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **getType** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockData**](classendstone_1_1BlockData.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::DamageSource**](classendstone_1_1DamageSource.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **getVelocity** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getDamage** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **getDamageSource** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
@@ -269,6 +270,7 @@
 * **getPixel** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md))
 * **getPixelColor** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md))
 * **getCaption** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
+* **getMapId** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **getCenterX** ([**endstone::MapView**](classendstone_1_1MapView.md))
 * **getCenterZ** ([**endstone::MapView**](classendstone_1_1MapView.md))
 * **getRenderers** ([**endstone::MapView**](classendstone_1_1MapView.md))
@@ -379,6 +381,7 @@
 * **getItemFactory** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getItemRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getLanguage** ([**endstone::Server**](classendstone_1_1Server.md))
+* **getMap** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getMinecraftVersion** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getOnlineMode** ([**endstone::Server**](classendstone_1_1Server.md))
@@ -428,6 +431,7 @@
 * **hasLore** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **hasRepairCost** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **hasItemMeta** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
+* **hasMapId** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **hasMapView** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **hasBlock** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **hasItem** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
@@ -453,10 +457,11 @@
 * **isAsynchronous** ([**endstone::Event**](classendstone_1_1Event.md))
 * **isIgnoreCancelled** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **Image** ([**endstone::Image**](classendstone_1_1Image.md))
-* **isEmpty** ([**endstone::Inventory**](classendstone_1_1Inventory.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
+* **isEmpty** ([**endstone::Inventory**](classendstone_1_1Inventory.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **IpBanEntry** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md))
 * **isUnlimitedLifetime** ([**endstone::Item**](classendstone_1_1Item.md))
 * **isApplicable** ([**endstone::ItemFactory**](classendstone_1_1ItemFactory.md))
+* **ItemMeta** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **isUnbreakable** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **ItemStack** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **isEndstoneItemStack** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
@@ -510,6 +515,7 @@
 ## m
 
 * **MapCursor** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
+* **MapMeta** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **MapRenderer** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 
 
@@ -690,6 +696,7 @@
 * **setDirection** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **setX** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **setY** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
+* **setMapId** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **setMapView** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **setCenterX** ([**endstone::MapView**](classendstone_1_1MapView.md))
 * **setCenterZ** ([**endstone::MapView**](classendstone_1_1MapView.md))

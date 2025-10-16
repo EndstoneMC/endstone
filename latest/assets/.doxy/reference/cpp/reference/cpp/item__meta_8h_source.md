@@ -30,64 +30,196 @@
 #include <unordered_map>
 #include <vector>
 
+#include "endstone/enchantments/enchantment.h"
+
 namespace endstone {
 class ItemMeta {
 public:
     enum class Type {
         Item,
         Map,
-        Count,
     };
+
+    explicit ItemMeta(const ItemMeta *meta)
+    {
+        if (meta == nullptr) {
+            return;
+        }
+        display_name_ = meta->display_name_;
+        lore_ = meta->lore_;
+        enchantments_ = meta->enchantments_;
+        repair_cost_ = meta->repair_cost_;
+        damage_ = meta->damage_;
+        unbreakable_ = meta->unbreakable_;
+    }
 
     virtual ~ItemMeta() = default;
 
-    [[nodiscard]] virtual Type getType() const = 0;
+    [[nodiscard]] virtual Type getType() const
+    {
+        return Type::Item;
+    }
 
-    [[nodiscard]] virtual bool isEmpty() const = 0;
+    [[nodiscard]] virtual bool isEmpty() const
+    {
+        return !(hasDisplayName() || hasLore() || hasEnchants() || hasRepairCost() || isUnbreakable() || hasDamage());
+    }
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const
+    {
+        return std::make_unique<ItemMeta>(this);
+    }
 
-    [[nodiscard]] virtual bool hasDisplayName() const = 0;
+    [[nodiscard]] bool hasDisplayName() const
+    {
+        return !display_name_.empty();
+    }
 
-    [[nodiscard]] virtual std::optional<std::string> getDisplayName() const = 0;
+    [[nodiscard]] std::string getDisplayName() const
+    {
+        return display_name_;
+    }
 
-    virtual void setDisplayName(std::optional<std::string> name) = 0;
+    void setDisplayName(std::optional<std::string> name)
+    {
+        display_name_ = std::move(name.value_or(""));
+    }
 
-    [[nodiscard]] virtual bool hasLore() const = 0;
+    [[nodiscard]] bool hasLore() const
+    {
+        return !lore_.empty();
+    }
 
-    [[nodiscard]] virtual std::optional<std::vector<std::string>> getLore() const = 0;
+    [[nodiscard]] std::vector<std::string> getLore() const
+    {
+        return lore_;
+    }
 
-    virtual void setLore(std::optional<std::vector<std::string>> lore) = 0;
+    void setLore(std::optional<std::vector<std::string>> lore)
+    {
+        if (!lore.has_value() || lore.value().empty()) {
+            lore_.clear();
+        }
+        else {
+            lore_ = std::move(lore.value());
+        }
+    }
 
-    [[nodiscard]] virtual bool hasDamage() const = 0;
+    [[nodiscard]] bool hasDamage() const
+    {
+        return damage_ > 0;
+    }
 
-    [[nodiscard]] virtual int getDamage() const = 0;
+    [[nodiscard]] int getDamage() const
+    {
+        return damage_;
+    }
 
-    virtual void setDamage(int damage) = 0;
+    void setDamage(int damage)
+    {
+        damage_ = damage;
+    }
 
-    [[nodiscard]] virtual bool hasEnchants() const = 0;
+    [[nodiscard]] bool hasEnchants() const
+    {
+        return !enchantments_.empty();
+    }
 
-    [[nodiscard]] virtual bool hasEnchant(const std::string &id) const = 0;
+    [[nodiscard]] bool hasEnchant(const std::string &id) const
+    {
+        return hasEnchants() && enchantments_.contains(id);
+    }
 
-    [[nodiscard]] virtual int getEnchantLevel(const std::string &id) const = 0;
+    [[nodiscard]] int getEnchantLevel(const std::string &id) const
+    {
+        if (!hasEnchant(id)) {
+            return 0;
+        }
+        return enchantments_.at(id);
+    }
 
-    [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const = 0;
+    [[nodiscard]] std::unordered_map<std::string, int> getEnchants() const
+    {
+        if (hasEnchants()) {
+            return enchantments_;
+        }
+        return {};
+    }
 
-    virtual bool addEnchant(const std::string &id, int level, bool force) = 0;
+    bool addEnchant(const std::string &id, int level, bool force = false)
+    {
+        const auto *ench = Enchantment::get(id);
+        if (!ench) {
+            return false;
+        }
+        if (force || level >= ench->getStartLevel() && level <= ench->getMaxLevel()) {
+            const auto old = getEnchantLevel(id);
+            enchantments_[id] = level;
+            return old == 0 || old != level;
+        }
+        return false;
+    }
 
-    virtual bool removeEnchant(const std::string &id) = 0;
+    bool removeEnchant(const std::string &id)
+    {
+        return enchantments_.erase(id) > 0;
+    }
 
-    virtual void removeEnchants() = 0;
+    void removeEnchants()
+    {
+        enchantments_.clear();
+    }
 
-    [[nodiscard]] virtual bool hasRepairCost() const = 0;
+    [[nodiscard]] bool hasRepairCost() const
+    {
+        return repair_cost_ > 0;
+    }
 
-    [[nodiscard]] virtual int getRepairCost() const = 0;
+    [[nodiscard]] int getRepairCost() const
+    {
+        return repair_cost_;
+    }
 
-    virtual void setRepairCost(int cost) = 0;
+    void setRepairCost(int cost)
+    {
+        repair_cost_ = cost;
+    }
 
-    [[nodiscard]] virtual bool isUnbreakable() const = 0;
+    [[nodiscard]] bool isUnbreakable() const
+    {
+        return unbreakable_;
+    }
 
-    virtual void setUnbreakable(bool unbreakable) = 0;
+    void setUnbreakable(bool unbreakable)
+    {
+        unbreakable_ = unbreakable;
+    }
+
+    template <typename T>
+    T *as()
+    {
+        if (getType() == T::TYPE) {
+            return static_cast<T *>(this);
+        }
+        return nullptr;
+    }
+
+    template <typename T>
+    const T *as() const
+    {
+        if (getType() == T::TYPE) {
+            return static_cast<const T *>(this);
+        }
+        return nullptr;
+    }
+
+private:
+    std::string display_name_;
+    std::vector<std::string> lore_;
+    std::unordered_map<std::string, int> enchantments_;
+    int repair_cost_ = 0;
+    int damage_ = 0;
+    bool unbreakable_ = false;
 };
 }  // namespace endstone
 ```

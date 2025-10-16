@@ -4,6 +4,14 @@
     <compoundname>recipe.h</compoundname>
     <includes refid="item__stack_8h" local="yes">endstone/inventory/item_stack.h</includes>
     <incdepgraph>
+      <node id="11">
+        <label>endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
@@ -19,14 +27,14 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="16">
         <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="4" relation="include">
@@ -46,6 +54,8 @@
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="1">

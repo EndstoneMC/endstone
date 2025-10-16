@@ -33,6 +33,14 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
+      <node id="70">
+        <label>endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone/event/cancellable.h</label>
         <link refid="cancellable_8h_source"/>
@@ -262,14 +270,14 @@
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
       </node>
-      <node id="70">
+      <node id="72">
         <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="66" relation="include">
@@ -289,6 +297,8 @@
         <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
         </childnode>
       </node>
       <node id="45">

@@ -60,12 +60,20 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
+      <node id="40">
+        <label>endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -113,14 +121,14 @@
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="43">
         <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="36" relation="include">
@@ -141,6 +149,8 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
       </node>
       <node id="16">
         <label>endstone/lang/translatable.h</label>
@@ -152,7 +162,7 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="44">
         <label>endstone/level/chunk.h</label>
         <link refid="chunk_8h_source"/>
         <childnode refid="10" relation="include">
@@ -165,7 +175,7 @@
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>

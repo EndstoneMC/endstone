@@ -24,17 +24,70 @@
 
 #pragma once
 
+#include "endstone/detail/endstone.h"
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/map/map_view.h"
 
 namespace endstone {
-class MapMeta : public ItemMeta {
+class MapMeta final : public ItemMeta {
 public:
-    [[nodiscard]] virtual bool hasMapView() const = 0;
+    explicit MapMeta(const ItemMeta *meta) : ItemMeta(meta)
+    {
+        const auto *map = meta ? meta->as<MapMeta>() : nullptr;
+        if (!map) {
+            return;
+        }
+        map_id_ = map->map_id_;
+    }
 
-    [[nodiscard]] virtual MapView *getMapView() const = 0;
+    static constexpr auto TYPE = Type::Map;
+    [[nodiscard]] Type getType() const override
+    {
+        return TYPE;
+    }
 
-    virtual void setMapView(const MapView *map) = 0;
+    [[nodiscard]] bool isEmpty() const override
+    {
+        return ItemMeta::isEmpty() && hasMapId();
+    }
+
+    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
+    {
+        return std::make_unique<MapMeta>(this);
+    }
+
+    [[nodiscard]] bool hasMapId() const
+    {
+        return map_id_ != -1;
+    }
+
+    [[nodiscard]] std::int64_t getMapId() const
+    {
+        return map_id_;
+    }
+
+    void setMapId(std::int64_t id)
+    {
+        map_id_ = id;
+    }
+
+    [[nodiscard]] bool hasMapView() const
+    {
+        return hasMapId();
+    }
+
+    [[nodiscard]] MapView *getMapView() const
+    {
+        return Endstone::getServer().getMap(getMapId());
+    }
+
+    void setMapView(const MapView *map)
+    {
+        map_id_ = map ? map->getId() : -1;
+    }
+
+private:
+    std::int64_t map_id_ = -1;
 };
 }  // namespace endstone
 ```

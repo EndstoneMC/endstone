@@ -168,7 +168,9 @@ public:
 
     [[nodiscard]] virtual Registry<ItemType> &getItemRegistry() const = 0;
 
-    [[nodiscard]] virtual MapView& createMap(const Dimension &dimension) const = 0;
+    [[nodiscard]] virtual MapView *getMap(std::int64_t id) const = 0;
+
+    [[nodiscard]] virtual MapView &createMap(const Dimension &dimension) const = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

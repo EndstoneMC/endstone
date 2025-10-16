@@ -15,6 +15,7 @@
 * `#include <string>`
 * `#include <unordered_map>`
 * `#include <vector>`
+* `#include "endstone/enchantments/enchantment.h"`
 
 
 

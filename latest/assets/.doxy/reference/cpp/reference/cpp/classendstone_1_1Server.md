@@ -85,6 +85,7 @@ _Represents a server implementation._
 | virtual [**Language**](classendstone_1_1Language.md) & | [**getLanguage**](#function-getlanguage) () const = 0<br>_Gets the current language interface used by the server._  |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
+| virtual [**MapView**](classendstone_1_1MapView.md) \* | [**getMap**](#function-getmap) (std::int64\_t id) const = 0<br>_Gets the map from the given item ID._  |
 | virtual int | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
 | virtual std::string | [**getMinecraftVersion**](#function-getminecraftversion) () const = 0<br>_Gets the Minecraft version that this server is running._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this server implementation._  |
@@ -896,6 +897,40 @@ virtual Logger & endstone::Server::getLogger () const = 0
 **Returns:**
 
 [**Logger**](classendstone_1_1Logger.md) associated with this server 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getMap 
+
+_Gets the map from the given item ID._ 
+```C++
+virtual MapView * endstone::Server::getMap (
+    std::int64_t id
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `id` the id of the map to get
+
+
+
+**Returns:**
+
+a map view if it exists, or null otherwise 
 
 
 
