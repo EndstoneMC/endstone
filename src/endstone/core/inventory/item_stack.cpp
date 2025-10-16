@@ -16,7 +16,7 @@
 
 #include "bedrock/world/item/item.h"
 #include "endstone/core/inventory/item_factory.h"
-#include "endstone/core/inventory/meta/item_meta.h"
+#include "endstone/core/inventory/item_metas.h"
 
 namespace endstone::core {
 
@@ -73,7 +73,7 @@ void EndstoneItemStack::setData(const int data)
 
 std::string EndstoneItemStack::getTranslationKey() const
 {
-   if (item_.isNull()) {
+    if (item_.isNull()) {
         return "item.air.name";
     }
     return item_.getDescriptionId();
@@ -163,15 +163,11 @@ std::string EndstoneItemStack::getType(const ItemStackBase *item)
 
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ItemStackBase *item)
 {
+    const auto type = getType(item);
     if (!hasItemMeta(item)) {
         return EndstoneItemFactory::instance().getItemMeta(getType(item));
     }
-
-    // TODO(item): support map meta
-    // if (type == "minecraft:filled_map") {
-    //     return std::make_unique<EndstoneMapMeta>(item->getUserData());
-    // }
-    return std::make_unique<EndstoneItemMeta>(*item->getUserData());
+    return EndstoneItemMetas::getItemMetaDetails(type).fromItemStack(*item);
 }
 
 bool EndstoneItemStack::hasItemMeta(const ItemStackBase *item)
@@ -199,8 +195,8 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
         return true;
     }
 
-    auto tag = std::make_unique<CompoundTag>();
-    static_cast<const EndstoneItemMeta *>(item_meta.get())->applyToItem(*tag);
+    auto tag = item->hasUserData() ? item->getUserData()->clone() : std::make_unique<CompoundTag>();
+    EndstoneItemMetas::getItemMetaDetails(item_meta->getType()).applyToItem(*item_meta, *tag);
     item->setUserData(std::move(tag));
     return true;
 }

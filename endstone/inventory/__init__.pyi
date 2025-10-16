@@ -157,7 +157,7 @@ class ItemMeta:
         """
         ...
     @property
-    def display_name(self) -> str | None:
+    def display_name(self) -> str:
         """
         Gets or sets the display name.
         """
@@ -171,7 +171,7 @@ class ItemMeta:
         """
         ...
     @property
-    def lore(self) -> list[str] | None:
+    def lore(self) -> list[str]:
         """
         Gets or sets the lore for this item.
         """

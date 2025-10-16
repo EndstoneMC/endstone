@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/detail/endstone.h"
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/map/map_view.h"
 
@@ -21,29 +22,96 @@ namespace endstone {
 /**
  * @brief Represents the metadata for a map item.
  */
-class MapMeta : public ItemMeta {
+class MapMeta final : public ItemMeta {
 public:
+    explicit MapMeta(const ItemMeta *meta) : ItemMeta(meta)
+    {
+        const auto *map = meta ? meta->as<MapMeta>() : nullptr;
+        if (!map) {
+            return;
+        }
+        map_id_ = map->map_id_;
+    }
+
+    static constexpr auto TYPE = Type::Map;
+    [[nodiscard]] Type getType() const override
+    {
+        return TYPE;
+    }
+
+    [[nodiscard]] bool isEmpty() const override
+    {
+        return ItemMeta::isEmpty() && hasMapId();
+    }
+
+    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
+    {
+        return std::make_unique<MapMeta>(this);
+    }
+
+    /**
+     * @brief Checks for existence of a map ID number.
+     *
+     * @return true if this has a map ID number.
+     */
+    [[nodiscard]] bool hasMapId() const
+    {
+        return map_id_ != -1;
+    }
+
+    /**
+     * @brief Gets the map ID that is set. This is used to determine what map is displayed.
+     *
+     * @return the map ID that is set
+     */
+    [[nodiscard]] std::int64_t getMapId() const
+    {
+        return map_id_;
+    }
+
+    /**
+     * @brief Sets the map ID. This is used to determine what map is displayed.
+     *
+     * @param id the map id to set
+     */
+    void setMapId(std::int64_t id)
+    {
+        map_id_ = id;
+    }
+
     /**
      * @brief Checks for existence of an associated map.
      *
      * @return true if this item has an associated map
      */
-    [[nodiscard]] virtual bool hasMapView() const = 0;
+    [[nodiscard]] bool hasMapView() const
+    {
+        return hasMapId();
+    }
 
     /**
-     * @brief Gets the map view that is associated with this map item.
+     * @brief Gets the map view associated with this map item.
      *
      * @note Plugins should check that hasMapView() returns true before calling this method.
      *
      * @return the map view, or nullptr if the item hasMapView(), but this map does not exist on the server
      */
-    [[nodiscard]] virtual MapView *getMapView() const = 0;
+    [[nodiscard]] MapView *getMapView() const
+    {
+        return Endstone::getServer().getMap(getMapId());
+    }
 
     /**
      * @brief Sets the associated map. This is used to determine what map is displayed.
      *
      * @param map the map to set
      */
-    virtual void setMapView(const MapView *map) = 0;
+    void setMapView(const MapView *map)
+    {
+        map_id_ = map ? map->getId() : -1;
+    }
+
+private:
+    std::int64_t map_id_ = -1;
 };
 }  // namespace endstone

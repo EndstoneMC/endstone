@@ -65,6 +65,7 @@ add_library(endstone_core
         inventory/meta/map_meta.cpp
         inventory/inventory.cpp
         inventory/item_factory.cpp
+        inventory/item_metas.cpp
         inventory/item_stack.cpp
         inventory/item_type.cpp
         inventory/player_inventory.cpp

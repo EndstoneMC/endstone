@@ -16,6 +16,7 @@
 
 #include "bedrock/world/item/item.h"
 #include "endstone/inventory/item_type.h"
+#include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone::core {
 

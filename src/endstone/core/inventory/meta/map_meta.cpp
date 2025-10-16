@@ -12,108 +12,59 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/meta/map_meta.h"
+#include "endstone/inventory/meta/map_meta.h"
 
 #include "bedrock/world/item/map_item.h"
-#include "endstone/core/server.h"
+#include "endstone/core/inventory/item_metas.h"
 
 namespace endstone::core {
-EndstoneMapMeta::EndstoneMapMeta(const EndstoneItemMeta *meta) : EndstoneItemMeta(meta)
+template <>
+bool EndstoneItemMetas::applicableTo<MapMeta>(const std::string &type)
 {
-    if (!meta || !meta->isType(Type::Map)) {
-        return;
+    return applicableTo<ItemMeta>(type);
+}
+
+template <>
+void EndstoneItemMetas::applyToItem<MapMeta>(const MapMeta &self, ::CompoundTag &tag)
+{
+    applyToItem<ItemMeta>(self, tag);
+
+    tag.remove(MapItem::TAG_MAP_UUID);
+    if (self.hasMapId()) {
+        tag.putInt64(MapItem::TAG_MAP_UUID, self.getMapId());
     }
-    *this = *static_cast<const EndstoneMapMeta *>(meta);
 }
 
-EndstoneMapMeta::EndstoneMapMeta(const CompoundTag &tag) : EndstoneItemMeta(tag)
+template <>
+bool EndstoneItemMetas::equalsCommon<MapMeta>(const MapMeta &self, const ItemMeta &that)
 {
-    if (const auto map_id = tag.getInt64(MapItem::TAG_MAP_UUID)) {
-        map_id_ = map_id;
-    }
-}
-
-ItemMeta::Type EndstoneMapMeta::getType() const
-{
-    return Type::Map;
-}
-
-bool EndstoneMapMeta::isEmpty() const
-{
-    return EndstoneItemMeta::isEmpty() && isMapEmpty();
-}
-
-std::unique_ptr<ItemMeta> EndstoneMapMeta::clone() const
-{
-    std::unique_ptr<MapMeta> copy = std::make_unique<EndstoneMapMeta>(*this);
-    return copy;
-}
-
-bool EndstoneMapMeta::equalsCommon(const EndstoneItemMeta &other) const
-{
-    if (!EndstoneItemMeta::equalsCommon(other)) {
+    if (!equalsCommon<ItemMeta>(self, that)) {
         return false;
     }
-    if (other.isType(Type::Map)) {
-        const auto &that = static_cast<const EndstoneMapMeta &>(other);
-        return (hasMapId() ? that.hasMapId() && map_id_ == that.map_id_ : !that.hasMapId());
+    if (const auto *other = that.as<MapMeta>()) {
+        return (self.hasMapId() ? other->hasMapId() && self.getMapId() == other->getMapId() : !other->hasMapId());
     }
     return true;
 }
 
-bool EndstoneMapMeta::notUncommon(const EndstoneItemMeta &other) const
+template <>
+bool EndstoneItemMetas::notUncommon<MapMeta>(const MapMeta &self, const ItemMeta &that)
 {
-    return EndstoneItemMeta::notUncommon(other) && (other.isType(Type::Map) || isMapEmpty());
+    return notUncommon<ItemMeta>(self, that);
 }
 
-void EndstoneMapMeta::applyToItem(CompoundTag &tag) const
+template <>
+void EndstoneItemMetas::loadFrom<MapMeta>(MapMeta &self, const ::ItemStackBase &item)
 {
-    EndstoneItemMeta::applyToItem(tag);
-    if (hasMapId()) {
-        tag.putInt64(MapItem::TAG_MAP_UUID, getMapId());
+    if (!item.hasUserData()) {
+        return;
     }
-}
 
-bool EndstoneMapMeta::hasMapView() const
-{
-    return hasMapId();
-}
+    loadFrom<ItemMeta>(self, item);
 
-MapView *EndstoneMapMeta::getMapView() const
-{
-    if (!hasMapView()) {
-        return nullptr;
+    const auto &tag = *item.getUserData();
+    if (const auto map_id = tag.getInt64(MapItem::TAG_MAP_UUID)) {
+        self.setMapId(map_id);
     }
-    return EndstoneServer::getInstance().getMap(getMapId());
-}
-
-void EndstoneMapMeta::setMapView(const MapView *map)
-{
-    if (map == nullptr) {
-        map_id_ = std::nullopt;
-    }
-    else {
-        map_id_ = map->getId();
-    }
-}
-
-bool EndstoneMapMeta::hasMapId() const
-{
-    return map_id_.has_value();
-}
-
-std::int64_t EndstoneMapMeta::getMapId() const
-{
-    return map_id_.value_or(-1);
-}
-
-void EndstoneMapMeta::setMapId(std::int64_t id)
-{
-    map_id_ = id;
-}
-
-bool EndstoneMapMeta::isMapEmpty() const
-{
-    return !(hasMapId());
 }
 }  // namespace endstone::core

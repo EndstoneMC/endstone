@@ -12,23 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/core/inventory/item_metas.h"
 
-#include "endstone/inventory/item_factory.h"
+#include "endstone/inventory/meta/item_meta.h"
+#include "endstone/inventory/meta/map_meta.h"
 
 namespace endstone::core {
-
-class EndstoneItemFactory : public ItemFactory {
-public:
-    static EndstoneItemFactory &instance();
-
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const std::string &type) const override;
-    [[nodiscard]] bool isApplicable(const ItemMeta *meta, const std::string &type) const override;
-    [[nodiscard]] bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const override;
-    [[nodiscard]] std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, const std::string &type) const override;
-
-private:
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const std::string &type, const ItemMeta *meta) const;
-};
-
+EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::EMPTY = ItemMetaDetails::create<void>();
+EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::ITEM = ItemMetaDetails::create<ItemMeta>();
+EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::MAP = ItemMetaDetails::create<MapMeta>();
 }  // namespace endstone::core

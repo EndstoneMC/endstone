@@ -321,6 +321,11 @@ class Server:
         Gets the IP ban list.
         """
         ...
+    def get_map(self, id: int) -> MapView:
+        """
+        Gets the map from the given map ID.
+        """
+        ...
     def create_map(self, dimension: Dimension) -> MapView:
         """
         Create a new map with an automatically assigned ID.

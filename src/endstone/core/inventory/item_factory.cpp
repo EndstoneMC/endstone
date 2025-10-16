@@ -14,8 +14,8 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
+#include "endstone/core/inventory/item_metas.h"
 #include "endstone/core/inventory/item_type.h"
-#include "endstone/core/inventory/meta/map_meta.h"
 
 namespace endstone::core {
 EndstoneItemFactory &EndstoneItemFactory::instance()
@@ -34,15 +34,9 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const std::string &
     if (meta == nullptr) {
         return false;
     }
-    return static_cast<const EndstoneItemMeta *>(meta)->applicableTo(type);
+    const auto &details = EndstoneItemMetas::getItemMetaDetails(meta->getType());
+    return details.applicableTo(type);
 }
-
-namespace {
-bool equals0(const EndstoneItemMeta &meta1, const EndstoneItemMeta &meta2)
-{
-    return meta1.equalsCommon(meta2) && meta1.notUncommon(meta1) && meta2.notUncommon(meta1);
-}
-}  // namespace
 
 bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) const
 {
@@ -58,29 +52,20 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
         return meta1->isEmpty();
     }
 
-    return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
+    const auto &details1 = EndstoneItemMetas::getItemMetaDetails(meta1->getType());
+    const auto &details2 = EndstoneItemMetas::getItemMetaDetails(meta2->getType());
+    return details1.equalsCommon(*meta1, *meta2) && details1.notUncommon(*meta1, *meta2) &&
+           details2.notUncommon(*meta2, *meta1);
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, const std::string &type) const
 {
-    return getItemMeta(type, static_cast<const EndstoneItemMeta *>(meta));
+    return getItemMeta(type, meta);
 }
 
-namespace {
-std::unordered_map<std::string,
-                   std::function<std::unique_ptr<EndstoneItemMeta>(const std::string  &type, const EndstoneItemMeta *meta)>>
-    item_meta_factories = {
-        {"minecraft:air", [](auto &, auto *) { return nullptr; }},
-        {"minecraft:filled_map", [](auto &, auto *m) { return std::make_unique<EndstoneMapMeta>(m); }},
-};
-
-}  // namespace
-
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string &type, const EndstoneItemMeta *meta) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string &type, const ItemMeta *meta) const
 {
-    if (auto it = item_meta_factories.find(type); it != item_meta_factories.end()) {
-        return it->second(type, meta);
-    }
-    return std::make_unique<EndstoneItemMeta>(meta);
+    const auto &details = EndstoneItemMetas::getItemMetaDetails(type);
+    return details.fromItemMeta(type, meta);
 }
 }  // namespace endstone::core
