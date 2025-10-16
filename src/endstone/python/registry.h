@@ -25,12 +25,12 @@
 namespace py = pybind11;
 
 namespace endstone::python {
-template <typename T>
-void registry(py::module &m, const std::string &name)
+template <typename T, typename... Args>
+void registry(py::module &m, const std::string &name, Args &&...args)
 {
-    py::class_<Registry<T>>(m, name.c_str())
+    py::class_<Registry<T>>(m, name.c_str(), std::forward<Args>(args)...)
         .def("get", py::overload_cast<const std::string &>(&Registry<T>::get), py::arg("key"),
-             py::return_value_policy::reference)
+             py::return_value_policy::reference, "Get the object by its key.")
         .def(
             "get_or_throw",
             [](const Registry<T> &self, const std::string &key) -> const T & {
@@ -39,7 +39,7 @@ void registry(py::module &m, const std::string &name)
                 }
                 throw py::key_error(fmt::format("No registry entry found for key: {}", key));
             },
-            py::arg("key"), py::return_value_policy::reference)
+            py::arg("key"), py::return_value_policy::reference, "Get the object by its key or throw if missing.")
         .def(
             "__getitem__",
             [](const Registry<T> &self, const std::string &key) -> const T & {

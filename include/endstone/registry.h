@@ -44,7 +44,9 @@ public:
     virtual T *get(const std::string & key) noexcept = 0;
 
     /**
-     * @brief Const overload of get().
+    * @brief Get the object by its key.
+     *
+     * Returns a raw pointer to the object, or nullptr if not found.
      *
      * @param key Non-null key to look up.
      * @return const T* Pointer to the object, or nullptr if it does not exist.
@@ -67,7 +69,7 @@ public:
     }
 
     /**
-     * @brief Const overload of getOrThrow().
+     * @brief Get the object by its key or throw if missing.
      *
      * @param key Key of the object to retrieve.
      * @return const T& Const reference to the object with the given key.

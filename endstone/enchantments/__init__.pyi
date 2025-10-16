@@ -43,3 +43,9 @@ class Enchantment:
         This does not check if it conflicts with any enchantments already applied to the item.
         """
         ...
+    @staticmethod
+    def get(name: str) -> Enchantment:
+        """
+        Attempts to get the Enchantment with the given name.
+        """
+        ...

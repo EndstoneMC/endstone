@@ -261,8 +261,8 @@ void init_logger(py::module &m)
 
 void init_registry(py::module_ &m)
 {
-    python::registry<Enchantment>(m, "EnchantmentRegistry");
-    python::registry<ItemType>(m, "ItemRegistry");
+    python::registry<Enchantment>(m, "EnchantmentRegistry", "Server enchantments.");
+    python::registry<ItemType>(m, "ItemRegistry", "Server item types。");
 }
 
 void init_server(py::class_<Server> &server)

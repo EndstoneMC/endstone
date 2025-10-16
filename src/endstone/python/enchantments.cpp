@@ -34,7 +34,9 @@ void init_enchantments(py::module_ &m)
              "Check if this enchantment conflicts with another enchantment.")
         .def("can_enchant_item", &Enchantment::canEnchantItem, py::arg("item"),
              "Checks if this Enchantment may be applied to the given ItemStack.\n\nThis does not check if it conflicts "
-             "with any enchantments already applied to the item.");
+             "with any enchantments already applied to the item.")
+        .def_static("get", &Enchantment::get, py::arg("name"), "Attempts to get the Enchantment with the given name.",
+                    py::return_value_policy::reference);
 }
 
 }  // namespace endstone::python
