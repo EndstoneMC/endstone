@@ -2122,6 +2122,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-static-functions" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Static Functions
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2229,6 +2240,36 @@ For latest updates join the chat on
     
 </li>
       
+        <li class="md-nav__item">
+    <a href="#public-static-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Static Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Static Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-get" class="md-nav__link">
+      <span class="md-ellipsis">
+        function get
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
     </ul>
   
 </nav>
@@ -2302,6 +2343,21 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="public-static-functions">Public Static Functions<a class="headerlink" href="#public-static-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">const <a href="./"><strong>Enchantment</strong></a> *</td>
+<td style="text-align: left;"><a href="#function-get"><strong>get</strong></a> (const std::string &amp; name) <br><em>Attempts to get the</em> <a href="./"><em><strong>Enchantment</strong></em></a> <em>with the given name.</em></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-canenchantitem">function canEnchantItem<a class="headerlink" href="#function-canenchantitem" title="Permanent link">&para;</a></h3>
 <p><em>Checks if this</em> <a href="./"><em><strong>Enchantment</strong></em></a> <em>may be applied to the given</em><a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>.</em>
@@ -2367,6 +2423,22 @@ For latest updates join the chat on
 <h3 id="function-enchantment">function ~Enchantment<a class="headerlink" href="#function-enchantment" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Enchantment</span><span class="o">::~</span><span class="n">Enchantment</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
+<hr>
+<h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-get">function get<a class="headerlink" href="#function-get" title="Permanent link">&para;</a></h3>
+<p><em>Attempts to get the</em> <a href="./"><em><strong>Enchantment</strong></em></a> <em>with the given name.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Enchantment</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Enchantment</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Note:</strong></p>
+<p>This is a normal lookup, names must be the precise name.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> Name of the <a href="./"><strong>Enchantment</strong></a> to get</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1ItemType/"><strong>ItemType</strong></a> if found, or nullptr </p>
 <hr>
 
 <hr />

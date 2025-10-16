@@ -10,6 +10,8 @@
 
 
 
+* `#include "endstone/detail/endstone.h"`
+* `#include "endstone/registry.h"`
 
 
 

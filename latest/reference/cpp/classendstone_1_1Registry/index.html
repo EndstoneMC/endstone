@@ -2285,7 +2285,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual const T *</td>
-<td style="text-align: left;"><a href="#function-get-22"><strong>get</strong></a> (const std::string &amp; key) noexcept const = 0<br><em>Const overload of</em> <a href="./#function-get-12"><em><strong>get()</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-get-22"><strong>get</strong></a> (const std::string &amp; key) noexcept const = 0<br><em>Get the object by its key.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual T &amp;</td>
@@ -2293,7 +2293,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual const T &amp;</td>
-<td style="text-align: left;"><a href="#function-getorthrow-22"><strong>getOrThrow</strong></a> (const std::string &amp; key) const<br><em>Const overload of</em> <a href="./#function-getorthrow-12"><em><strong>getOrThrow()</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-getorthrow-22"><strong>getOrThrow</strong></a> (const std::string &amp; key) const<br><em>Get the object by its key or throw if missing.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2337,11 +2337,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-get-22">function get [2/2]<a class="headerlink" href="#function-get-22" title="Permanent link">&para;</a></h3>
-<p><em>Const overload of</em> <a href="./#function-get-12"><em><strong>get()</strong></em></a> <em>.</em>
+<p><em>Get the object by its key.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>Returns a raw pointer to the object, or nullptr if not found.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>key</code> Non-null key to look up. </li>
@@ -2369,7 +2370,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getorthrow-22">function getOrThrow [2/2]<a class="headerlink" href="#function-getorthrow-22" title="Permanent link">&para;</a></h3>
-<p><em>Const overload of</em> <a href="./#function-getorthrow-12"><em><strong>getOrThrow()</strong></em></a> <em>.</em>
+<p><em>Get the object by its key or throw if missing.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Registry</span><span class="o">::</span><span class="n">getOrThrow</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>

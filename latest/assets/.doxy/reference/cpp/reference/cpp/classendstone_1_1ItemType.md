@@ -332,7 +332,7 @@ This is a normal lookup, names must be the precise name.
 **Parameters:**
 
 
-* `name` Name of the item\_type to get
+* `name` Name of the [**ItemType**](classendstone_1_1ItemType.md) to get
 
 
 

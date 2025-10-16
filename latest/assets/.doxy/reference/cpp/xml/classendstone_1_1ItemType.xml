@@ -216,7 +216,7 @@
 <parametername>name</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Name of the item_type to get</para>
+<para>Name of the <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> to get</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

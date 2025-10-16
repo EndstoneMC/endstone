@@ -24,6 +24,9 @@
 
 #pragma once
 
+#include "endstone/detail/endstone.h"
+#include "endstone/registry.h"
+
 namespace endstone {
 class ItemStack;
 
@@ -42,6 +45,11 @@ public:
     [[nodiscard]] virtual bool conflictsWith(const Enchantment &other) const = 0;
 
     [[nodiscard]] virtual bool canEnchantItem(const ItemStack &item) const = 0;
+
+    static const Enchantment *get(const std::string &name)
+    {
+        return Endstone::getServer().getEnchantmentRegistry().get(name);
+    }
 };
 }  // namespace endstone
 ```

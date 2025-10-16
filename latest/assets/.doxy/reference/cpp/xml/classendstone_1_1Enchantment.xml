@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="22" column="13"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="25" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="29" column="26"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="32" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="36" column="26"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="39" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="43" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="46" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="50" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="53" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="58" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="61" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -150,17 +150,53 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="68" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="71" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a498add7a48a4da156a9fe51df51b21a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> *</type>
+        <definition>static const Enchantment * endstone::Enchantment::get</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>get</name>
+        <qualifiedname>endstone::Enchantment::get</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Attempts to get the <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> with the given name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is a normal lookup, names must be the precise name.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> to get</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> if found, or nullptr </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="82" column="30" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="82" bodyend="85"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/enchantments/enchantment.h" line="20" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="20" bodyend="69"/>
+    <location file="include/endstone/enchantments/enchantment.h" line="23" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="23" bodyend="86"/>
     <listofallmembers>
       <member refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>canEnchantItem</name></member>
       <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>conflictsWith</name></member>
+      <member refid="classendstone_1_1Enchantment_1a498add7a48a4da156a9fe51df51b21a0" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>get</name></member>
       <member refid="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getId</name></member>
       <member refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getMaxLevel</name></member>
       <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getStartLevel</name></member>

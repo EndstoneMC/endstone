@@ -56,9 +56,9 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 | ---: | :--- |
 | virtual void | [**forEach**](#function-foreach) (std::function&lt; bool(const T &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
 | virtual T \* | [**get**](#function-get-12) (const std::string & key) noexcept = 0<br>_Get the object by its key._  |
-| virtual const T \* | [**get**](#function-get-22) (const std::string & key) noexcept const = 0<br>_Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._ |
+| virtual const T \* | [**get**](#function-get-22) (const std::string & key) noexcept const = 0<br>_Get the object by its key._  |
 | virtual T & | [**getOrThrow**](#function-getorthrow-12) (const std::string & key) <br>_Get the object by its key or throw if missing._  |
-| virtual const T & | [**getOrThrow**](#function-getorthrow-22) (const std::string & key) const<br>_Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._ |
+| virtual const T & | [**getOrThrow**](#function-getorthrow-22) (const std::string & key) const<br>_Get the object by its key or throw if missing._  |
 | virtual  | [**~Registry**](#function-registry) () = default<br> |
 
 
@@ -179,13 +179,16 @@ T\* Pointer to the object, or nullptr if it does not exist.
 
 ### function get [2/2]
 
-_Const overload of_ [_**get()**_](classendstone_1_1Registry.md#function-get-12) _._
+_Get the object by its key._ 
 ```C++
 virtual const T * endstone::Registry::get (
     const std::string & key
 ) noexcept const = 0
 ```
 
+
+
+Returns a raw pointer to the object, or nullptr if not found.
 
 
 
@@ -254,7 +257,7 @@ T& Reference to the object with the given key.
 
 ### function getOrThrow [2/2]
 
-_Const overload of_ [_**getOrThrow()**_](classendstone_1_1Registry.md#function-getorthrow-12) _._
+_Get the object by its key or throw if missing._ 
 ```C++
 inline virtual const T & endstone::Registry::getOrThrow (
     const std::string & key

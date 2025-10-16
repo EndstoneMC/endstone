@@ -66,9 +66,10 @@
           <declname>key</declname>
         </param>
         <briefdescription>
-<para>Const overload of <ref refid="classendstone_1_1Registry_1a62de53f9a1af2cfde7b0ff98bd5187a2" kindref="member">get()</ref>. </para>
+<para>Get the object by its key. </para>
         </briefdescription>
         <detaileddescription>
+<para>Returns a raw pointer to the object, or nullptr if not found.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>key</parametername>
@@ -84,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="52" column="21"/>
+        <location file="include/endstone/registry.h" line="54" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a810eb72599f3fc7b2d48ef3be2cacd6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>T &amp;</type>
@@ -124,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="61" column="15" bodyfile="include/endstone/registry.h" bodystart="61" bodyend="67"/>
+        <location file="include/endstone/registry.h" line="63" column="15" bodyfile="include/endstone/registry.h" bodystart="63" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1a96ea1a8193696a2da85d8b765512a915" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const T &amp;</type>
@@ -137,7 +138,7 @@
           <declname>key</declname>
         </param>
         <briefdescription>
-<para>Const overload of <ref refid="classendstone_1_1Registry_1a810eb72599f3fc7b2d48ef3be2cacd6f" kindref="member">getOrThrow()</ref>. </para>
+<para>Get the object by its key or throw if missing. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -164,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="76" column="21" bodyfile="include/endstone/registry.h" bodystart="76" bodyend="82"/>
+        <location file="include/endstone/registry.h" line="78" column="21" bodyfile="include/endstone/registry.h" bodystart="78" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -194,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="94" column="18"/>
+        <location file="include/endstone/registry.h" line="96" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -213,7 +214,7 @@
 </parameterlist>
 </para>
     </detaileddescription>
-    <location file="include/endstone/registry.h" line="32" column="1" bodyfile="include/endstone/registry.h" bodystart="32" bodyend="95"/>
+    <location file="include/endstone/registry.h" line="32" column="1" bodyfile="include/endstone/registry.h" bodystart="32" bodyend="97"/>
     <listofallmembers>
       <member refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>forEach</name></member>
       <member refid="classendstone_1_1Registry_1a62de53f9a1af2cfde7b0ff98bd5187a2" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>get</name></member>
