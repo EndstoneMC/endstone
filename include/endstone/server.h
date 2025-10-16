@@ -407,13 +407,22 @@ public:
     [[nodiscard]] virtual Registry<ItemType> &getItemRegistry() const = 0;
 
     /**
+     * @brief Gets the map from the given item ID.
+     *
+     * @param id the id of the map to get
+     *
+     * @return a map view if it exists, or null otherwise
+     */
+    [[nodiscard]] virtual MapView *getMap(std::int64_t id) const = 0;
+
+    /**
      * @brief Create a new map with an automatically assigned ID.
      *
      * @param dimension the Dimension the map will belong to
      *
      * @return a newly created map view
      */
-    [[nodiscard]] virtual MapView& createMap(const Dimension &dimension) const = 0;
+    [[nodiscard]] virtual MapView &createMap(const Dimension &dimension) const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

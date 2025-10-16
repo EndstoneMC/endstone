@@ -357,6 +357,8 @@ void init_server(py::class_<Server> &server)
                                py::return_value_policy::reference)
         .def_property_readonly("ip_ban_list", &Server::getIpBanList, "Gets the IP ban list.",
                                py::return_value_policy::reference)
+        .def("get_map", &Server::getMap, "Gets the map from the given map ID.", py::arg("id"),
+             py::return_value_policy::reference, py::keep_alive<1, 0>())
         .def("create_map", &Server::createMap, "Create a new map with an automatically assigned ID.",
              py::arg("dimension"), py::return_value_policy::reference, py::keep_alive<1, 0>());
 }
