@@ -142,7 +142,6 @@ class LevelStorageWriteBatch;
 class LinkedAssetValidator {};
 class LocalConnector;
 class LootTables;
-class MapDataManager;
 class MaterialTypeHelper;
 class MinecraftGameTest;
 class MinecraftServiceKeyManager;
