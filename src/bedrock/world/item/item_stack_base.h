@@ -55,7 +55,7 @@ public:
     void set(int count);
     [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] bool hasUserData() const;
-    [[nodiscard]] bool hasSameUserData(const ItemStackBase & other) const;
+    [[nodiscard]] bool hasSameUserData(const ItemStackBase &other) const;
     void setUserData(std::unique_ptr<CompoundTag>);
     [[nodiscard]] const CompoundTag *getUserData() const;
     CompoundTag *getUserData();
@@ -83,6 +83,7 @@ public:
     static const std::string TAG_LORE;
     static const std::string TAG_REPAIR_COST;
     static const std::string TAG_ENCHANTS;
+    static const std::string TAG_UNBREAKABLE;
     static constexpr int ID_MASK = 0xffff;
     static constexpr int ENCHANT_MASK = 0x8000;
     static constexpr int AUX_VALUE_MASK = 0x7fff;
@@ -107,9 +108,9 @@ protected:
     bool show_pick_up_{true};                              // +36
     bool was_picked_up_{false};                            // +37
     std::chrono::steady_clock::time_point pick_up_time_;   // +40
-    std::vector<const BlockType *> can_place_on_;        // +56
+    std::vector<const BlockType *> can_place_on_;          // +56
     std::size_t can_place_on_hash_{0};                     // +80
-    std::vector<const BlockType *> can_destroy_;         // +88
+    std::vector<const BlockType *> can_destroy_;           // +88
     std::size_t can_destroy_hash_{0};                      // +112
     Tick blocking_tick_{};                                 // +120
     std::unique_ptr<ItemInstance> charged_item_{nullptr};  // +128

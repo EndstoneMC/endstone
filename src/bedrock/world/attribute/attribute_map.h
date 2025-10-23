@@ -22,6 +22,8 @@
 #include "bedrock/world/attribute/attribute_instance_handle.h"
 
 class BaseAttributeMap {
+    using UnderlyingMapContainer = std::unordered_map<std::uint32_t, AttributeInstance>;
+
 public:
     [[nodiscard]] const AttributeInstance &getInstance(const Attribute &attribute) const;
     [[nodiscard]] const AttributeInstance &getInstance(std::uint32_t id_value) const;
@@ -34,7 +36,7 @@ private:
     void _onAttributeModified(const AttributeInstance &instance);
     void _onAttributeModifiedDisabled(const AttributeInstance &instance);
 
-    std::unordered_map<std::uint32_t, AttributeInstance> instance_map_;
+    UnderlyingMapContainer instance_map_;
     std::vector<AttributeInstanceHandle> dirty_attributes_;
     void (BaseAttributeMap::*on_attribute_modified_)(const AttributeInstance &) =
         &BaseAttributeMap::_onAttributeModified;

@@ -573,3 +573,4 @@ const std::string ItemStackBase::TAG_LORE = "Lore";
 const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";
 const std::string ItemStackBase::TAG_REPAIR_COST = "RepairCost";
 const std::string ItemStackBase::TAG_ENCHANTS = "ench";
+const std::string ItemStackBase::TAG_UNBREAKABLE = "Unbreakable";

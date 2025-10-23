@@ -202,7 +202,7 @@ public:
     [[nodiscard]] virtual bool detachesOnPistonMove(BlockSource &, BlockPos const &) const = 0;
     virtual void movedByPiston(BlockSource &, BlockPos const &) const = 0;
     virtual void onStructureBlockPlace(BlockSource &, BlockPos const &) const = 0;
-    virtual void onStructureNeighborBlockPlace(BlockSource &, BlockPos const &) const = 0;
+    // virtual void onStructureNeighborBlockPlace(BlockSource &, BlockPos const &) const = 0;
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
     virtual void updateEntityAfterFallOn(BlockPos const &, UpdateEntityAfterFallOnInterface &) const = 0;
     [[nodiscard]] virtual bool isBounceBlock() const = 0;

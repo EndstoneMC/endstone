@@ -105,7 +105,7 @@ private:
     DenyList server_deny_list_;
     NetworkServerConfig network_server_config_;
     bool has_displayed_pack_errors_;
-    std::shared_ptr<PackSettingsCache> pack_settings_cache_;
+    std::shared_ptr<ScriptPackSettingsCache> pack_settings_cache_;
     NetworkIdentifier my_id_;
     int max_chunk_radius_;
     MinecraftCommands &minecraft_commands_;

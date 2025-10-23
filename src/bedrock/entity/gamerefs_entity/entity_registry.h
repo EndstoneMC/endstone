@@ -29,6 +29,7 @@ public:
     WeakRef<EntityRegistry> getWeakRef();
 
 protected:
+    using EntityInvokeCallbackFunc = std::function<void(EntityId)>;
     friend class EntityContext;
 
 #ifdef BEDROCK_PREVIEW_SUPPORT
@@ -37,4 +38,6 @@ protected:
     std::string debug_name_;
     EnTTRegistry registry_;
     std::uint32_t id_;
+    EntityInvokeCallbackFunc pre_entity_invoke_;
+    EntityInvokeCallbackFunc post_entity_invoke_;
 };

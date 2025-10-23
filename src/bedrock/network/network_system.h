@@ -79,4 +79,7 @@ private:
     NetworkSettingOptions network_setting_options_;
     gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> reflection_ctx_;             // +512
     gsl::not_null<std::unique_ptr<IPacketSerializationController>> packet_overrides_;  // +520
+    gsl::not_null<std::unique_ptr<
+        Bedrock::PubSub::Publisher<void(const Json::Value &), Bedrock::PubSub::ThreadModel::MultiThreaded>>>
+        session_summary_publisher_;
 };

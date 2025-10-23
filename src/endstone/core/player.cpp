@@ -290,7 +290,7 @@ void EndstonePlayer::setOp(bool value)
         return;
     }
 
-    getPlayer().setPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
+    getPlayer().setCommandPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
     recalculatePermissions();
     updateCommands();
     last_op_status_ = value;

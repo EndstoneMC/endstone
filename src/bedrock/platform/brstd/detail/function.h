@@ -200,6 +200,18 @@ template <DerivedType, typename Signature, bool OverrideCallOperatorModifiers>
 class function_invoke_base;
 
 template <typename Return, typename... Xs>
+class function_invoke_base<DerivedType::MoveOnly, Return(Xs...), false>
+    : public function_base<DerivedType::MoveOnly, function_base_impl<DerivedType::MoveOnly, Return, false>> {};
+
+template <typename Return, typename... Xs>
+class function_invoke_base<DerivedType::MoveOnly, Return(Xs...) const, false>
+    : public function_base<DerivedType::MoveOnly, function_base_impl<DerivedType::MoveOnly, Return, false>> {};
+
+template <typename Return, typename... Xs>
+class function_invoke_base<DerivedType::Copyable, Return(Xs...), false>
+    : public function_base<DerivedType::Copyable, function_base_impl<DerivedType::Copyable, Return, false>> {};
+
+template <typename Return, typename... Xs>
 class function_invoke_base<DerivedType::Copyable, Return(Xs...) const, false>
     : public function_base<DerivedType::Copyable, function_base_impl<DerivedType::Copyable, Return, false>> {};
 

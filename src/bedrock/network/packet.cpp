@@ -17,9 +17,15 @@
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/symbol.h"
 
+size_t Packet::getMaxSize() const
+{
+    // TODO(fixme): check value
+    return 0xA00000;
+}
+
 Bedrock::Result<void> Packet::checkSize(std::uint64_t packet_size, bool is_receiver_server) const
 {
-    if (is_receiver_server && packet_size > 0xA00000) {
+    if (is_receiver_server && packet_size > getMaxSize()) {
         return BEDROCK_NEW_ERROR(std::errc::message_size);
     }
     return {};

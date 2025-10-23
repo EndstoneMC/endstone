@@ -24,6 +24,7 @@
 #include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block/block_change_context.h"
 #include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_source_listener.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
@@ -85,8 +86,10 @@ public:
     virtual void removeListener(Listener &) = 0;
     virtual ActorSpan fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
     virtual ActorSpan fetchEntities(ActorType, AABB const &, Actor const *, std::function<bool(Actor *)>) = 0;
-    virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
-    virtual bool removeBlock(const BlockPos &) = 0;
+    virtual bool setBlock(const BlockPos &, const Block &, int, const ActorBlockSyncMessage *,
+                          const BlockChangeContext &) = 0;
+    virtual bool setExtraBlock(const BlockPos &, const Block &, int) = 0;
+    virtual bool removeBlock(const BlockPos &, const BlockChangeContext &) = 0;
     [[nodiscard]] virtual Height getMinHeight() const = 0;
     [[nodiscard]] virtual Height getMaxHeight() const = 0;
     [[nodiscard]] virtual Dimension &getDimension() const = 0;

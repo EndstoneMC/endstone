@@ -36,7 +36,7 @@ void PlayerItemInUse::setItemInUse(const ItemStack &new_item, EntityContext &own
                                    PlayerInventorySlotData slot)
 {
     item_ = new_item;
-    should_send_interaction_game_events = item_.getItem()->shouldSendInteractionGameEvents();
+    should_emit_game_events = item_.getItem()->shouldEmitInUseGameEvents();
     slot_ = slot;
     auto &item_in_use = owner.getOrAddComponent<ItemInUseComponent>();
     item_in_use.item = item_.getItemPtr();

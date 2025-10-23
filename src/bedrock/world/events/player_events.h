@@ -65,7 +65,9 @@ struct PlayerSayCommandEvent {
 };
 struct PlayerUseNameTagEvent {
     WeakRef<EntityContext> player;
-    ItemStack item;
+    WeakRef<EntityContext> entity_named;
+    std::optional<Bedrock::Safety::RedactableString> previous_name;
+    Bedrock::Safety::RedactableString new_name;
 };
 struct PlayerDropItemEvent {
     WeakRef<EntityContext> player;
@@ -105,6 +107,9 @@ struct PlayerInitialSpawnEvent {
 };
 struct PlayerRespawnEvent {
     WeakRef<EntityContext> player;
+};
+struct PlayerSleepStateChangeEvent {
+    bool is_sleeping;
 };
 struct PlayerStopLoadingEvent {
     WeakRef<EntityContext> player;
@@ -240,10 +245,10 @@ struct PlayerGameplayEvent<void>
           PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
           PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerInputModeChangeEvent,
           PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerCloseContainerEvent, PlayerShootArrowEvent,
-          PlayerSwingStartEvent, PlayerRespawnEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
-          PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent,
-          PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent,
-          PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, PlayerHotbarSelectedSlotChangeEvent,
+          PlayerSwingStartEvent, PlayerRespawnEvent, PlayerSleepStateChangeEvent, PlayerStopLoadingEvent,
+          PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
+          PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent,
+          PlayerEmoteEvent, PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, PlayerHotbarSelectedSlotChangeEvent,
           PlayerInputPermissionCategoryChangeEvent> {};
 static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 

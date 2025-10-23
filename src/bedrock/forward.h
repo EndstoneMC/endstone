@@ -150,6 +150,7 @@ class MinecraftGameTest;
 class MinecraftServiceKeyManager;
 class MobAnimationComponent;
 class MobHurtTimeComponent;
+class MolangPackSettingsCache;
 class MolangVariable;
 class MoveInputComponent;
 class NavigationComponent;
@@ -159,7 +160,7 @@ class NetworkStatistics {};
 class Options;
 class PackManifestFactory;
 class PackMetadata;
-class PackSettingsCache;
+class ScriptPackSettingsCache;
 class PackSettingsFactory;
 class Particle;
 class Path;
@@ -334,6 +335,9 @@ class SpawnPlacements;
 namespace MovementDataExtractionUtility {
 class SnapshotAccessor;
 }
+namespace SharedTypes::Comprehensive {
+struct CameraPreset;
+}
 
 class PacketGroupDefinition {
 public:
@@ -341,9 +345,9 @@ public:
 };
 
 // Template Classes
-template <typename A, typename B, typename C>
+template <typename Type, typename... Args>
 class OwnerPtrFactory;
-template <typename A, typename B, typename C>
+template <typename Type, typename... Args>
 class Factory;
 template <typename T>
 class ServiceReference;
