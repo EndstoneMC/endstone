@@ -25,7 +25,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/item_registry_manager.cpp
         bedrock_hooks/level.cpp
         bedrock_hooks/map_data_manager.cpp
-        bedrock_hooks/map_item_tracked_actor.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
         bedrock_hooks/network_connection.cpp

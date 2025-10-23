@@ -45,6 +45,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "EventResult",
             "LeavesDecayEvent",
             "LevelEvent",
+            "MapInitializeEvent",
             "MobEvent",
             "PacketReceiveEvent",
             "PacketSendEvent",

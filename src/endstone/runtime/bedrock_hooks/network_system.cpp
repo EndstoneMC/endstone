@@ -15,12 +15,15 @@
 #include "bedrock/network/network_system.h"
 
 #include <entt/entt.hpp>
+#include <spdlog/spdlog.h>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/resource_packs_info_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
 #include "endstone/core/level/level.h"
+#include "endstone/core/map/map_view.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/packet_send_event.h"
@@ -62,24 +65,52 @@ void patchPacket(const ResourcePackStackPacket &packet)
         }
     }
 }
+
+void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::EndstonePlayer &player)
+{
+    if (packet.getName() != "ClientboundMapItemDataPacket") {
+        return;
+    }
+
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    auto *map = static_cast<endstone::core::EndstoneMapView *>(server.getMap(packet.getMapId().raw_id));
+    if (!map) {
+        return;
+    }
+
+    auto &pk = const_cast<ClientboundMapItemDataPacket &>(packet);
+    if (pk.map_pixels_.empty() || pk.decorations_.empty()) {
+        return;  // Map creation, no data to be patched
+    }
+
+    if (pk.start_x_ < 0 || pk.start_y_ < 0 || pk.width_ <= 0 || pk.height_ <= 0 ||
+        pk.start_x_ + pk.width_ > MapConstants::MAP_SIZE || pk.start_y_ + pk.height_ > MapConstants::MAP_SIZE) {
+        return;  // Out of bounds
+    }
+
+    const auto &render = map->render(player);
+    for (auto x = 0; x < pk.width_; ++x) {
+        for (auto y = 0; y < pk.height_; ++y) {
+            pk.map_pixels_[x + (y * pk.width_)] =
+                render.buffer[(pk.start_x_ + x) + ((pk.start_y_ + y) * MapConstants::MAP_SIZE)];
+        }
+    }
+
+    pk.decorations_.clear();
+    for (const auto &cursor : render.cursors) {
+        if (cursor.isVisible()) {
+            pk.decorations_.emplace_back(
+                std::make_shared<MapDecoration>(static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(),
+                                                cursor.getY(), cursor.getDirection(), cursor.getCaption(),
+                                                mce::Color::WHITE  // TODO(map): support different colors
+                                                ));
+        }
+    }
+}
 }  // namespace
 
 void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)
 {
-    switch (packet.getId()) {
-    case MinecraftPacketIds::StartGame:
-        patchPacket(static_cast<const StartGamePacket &>(packet));
-        break;
-    case MinecraftPacketIds::ResourcePacksInfo:
-        patchPacket(static_cast<const ResourcePacksInfoPacket &>(packet));
-        break;
-    case MinecraftPacketIds::ResourcePackStack:
-        patchPacket(static_cast<const ResourcePackStackPacket &>(packet));
-        break;
-    default:
-        break;
-    }
-
     std::vector<NetworkIdentifierWithSubId> recipients;
     recipients.emplace_back(network_id, sender_sub_id);
     for (const auto &queue : incoming_packets) {
@@ -105,6 +136,26 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     endstone::Player *player = nullptr;
     if (server_player) {
         player = &server_player->getEndstoneActor<endstone::core::EndstonePlayer>();
+    }
+
+    switch (packet.getId()) {
+    case MinecraftPacketIds::StartGame:
+        patchPacket(static_cast<const StartGamePacket &>(packet));
+        break;
+    case MinecraftPacketIds::ResourcePacksInfo:
+        patchPacket(static_cast<const ResourcePacksInfoPacket &>(packet));
+        break;
+    case MinecraftPacketIds::ResourcePackStack:
+        patchPacket(static_cast<const ResourcePackStackPacket &>(packet));
+        break;
+    case MinecraftPacketIds::MapData:
+        if (player) {
+            patchPacket(static_cast<const ClientboundMapItemDataPacket &>(packet),
+                        static_cast<endstone::core::EndstonePlayer &>(*player));
+        }
+        break;
+    default:
+        break;
     }
 
     ReadOnlyBinaryStream read_stream(stream.getView(), false);

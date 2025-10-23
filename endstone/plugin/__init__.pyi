@@ -240,13 +240,75 @@ class Plugin:
     _description: PluginDescription | None = None
     _config = None
     _listeners = []
-    def register_events(self, listener: object) -> None: ...
+    def register_events(self, listener: object) -> None:
+        """
+        Registers all events defined in the given listener instance.
+
+        Args:
+            listener (object): The listener object containing event handler methods
+                to be registered.
+        """
+        ...
     @property
-    def config(self) -> dict: ...
-    def reload_config(self) -> dict: ...
-    def save_config(self) -> None: ...
-    def save_default_config(self) -> None: ...
-    def save_resources(self, path: str, replace: bool = False) -> None: ...
+    def config(self) -> dict:
+        """
+        Returns the plugin's configuration loaded from config.toml.
+
+        Loads and returns the plugin’s configuration data from ``config.toml``.
+        If the configuration has not been loaded yet, it is automatically
+        reloaded using ``reload_config()``.
+
+        Returns:
+            dict: The plugin's configuration data.
+        """
+        ...
+    def reload_config(self) -> dict:
+        """
+        Returns the plugin's configuration loaded from config.toml.
+
+        Loads and returns the plugin’s configuration data from ``config.toml``.
+        If a default configuration file is packaged with the plugin, its values
+        are used as defaults.
+
+        Returns:
+            dict: The plugin's configuration data.
+        """
+        ...
+    def save_config(self) -> None:
+        """
+        Saves the current configuration to the config.toml file.
+        """
+        ...
+    def save_default_config(self) -> None:
+        """
+        Saves the default config.toml file to the plugin's data folder.
+
+        If ``config.toml`` does not already exist in the plugin’s data folder,
+        this method copies the default version from the plugin’s packaged
+        resources. If the file already exists, the method does nothing and
+        fails silently.
+        """
+        ...
+    def save_resources(self, path: str, replace: bool = False) -> None:
+        """
+        Saves a packaged resource from the plugin module to the data folder.
+
+        The method locates a resource bundled within the plugin’s package and
+        copies it to the plugin’s data folder, preserving its relative directory
+        structure. If the target file already exists, it will only be replaced
+        if ``replace`` is set to True.
+
+        Args:
+            path (str): The relative path to the resource inside the plugin’s package.
+                Directory separators are normalized to forward slashes.
+            replace (bool, optional): Whether to overwrite the existing file if it
+                already exists. Defaults to False.
+
+        Raises:
+            FileNotFoundError: If the specified resource cannot be found in the package.
+            OSError: If an error occurs while copying or creating directories.
+        """
+        ...
     def get_command(self, name: str) -> PluginCommand:
         """
         Gets the command with the given name, specific to this plugin.

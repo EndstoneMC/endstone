@@ -30,9 +30,15 @@ public:
     ClientboundMapItemDataPacket(ActorUniqueID, int8_t, const MapItemSavedData::DecorationCollection &,
                                  buffer_span<unsigned int>, int, int, int, int, DimensionType, bool, const BlockPos &);
     ClientboundMapItemDataPacket(gsl::not_null<MapItemSavedData *>, Level &);
-    ActorUniqueID getMapId() const;
+    ActorUniqueID getMapId() const
+    {
+        return map_ids_.front();
+    }
     const std::vector<ActorUniqueID> &getMapIds() const;
-    DimensionType getDimensionId() const;
+    DimensionType getDimensionId() const
+    {
+        return DimensionType(dimension_);
+    }
     int8_t getScale() const;
     void applyToMap(MapItemSavedData &, const bool) const;
     void resampleClientMap(MapItemSavedData &, BlockSource &, const BlockPos &, int) const;
@@ -42,9 +48,7 @@ public:
     BlockPos getMapOrigin() const;
     bool hasEmptyOrBlackPixels() const;
 
-protected:
-    friend class MapItemTrackedActor;
-
+    // protected: ENDSTONE: protected -> public
     std::vector<ActorUniqueID> map_ids_;
     int8_t scale_;
     std::vector<std::shared_ptr<MapDecoration>> decorations_;

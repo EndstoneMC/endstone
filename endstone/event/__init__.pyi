@@ -12,6 +12,7 @@ from endstone.damage import DamageSource
 from endstone.inventory import EquipmentSlot, ItemStack
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
+from endstone.map import MapView
 from endstone.plugin import Plugin
 from endstone.util import SocketAddress, Vector
 
@@ -42,6 +43,7 @@ __all__ = [
     "EventResult",
     "LeavesDecayEvent",
     "LevelEvent",
+    "MapInitializeEvent",
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
@@ -796,6 +798,17 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
     def recipients(self) -> set[CommandSender]:
         """
         Gets a set of recipients that this broadcast message will be displayed to.
+        """
+        ...
+
+class MapInitializeEvent(ServerEvent):
+    """
+    Called when a map is initialized.
+    """
+    @property
+    def map(self) -> MapView:
+        """
+        Gets the map initialized in this event.
         """
         ...
 
