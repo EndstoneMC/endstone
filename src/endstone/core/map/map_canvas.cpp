@@ -44,7 +44,7 @@ void EndstoneMapCanvas::setPixelColor(int x, int y, Color color)
 
 Result<Color> EndstoneMapCanvas::getPixelColor(int x, int y) const
 {
-    return Color::fromABGR(getPixel(x, y));
+    return Color::fromABGR(static_cast<std::int32_t>(getPixel(x, y)));
 }
 
 void EndstoneMapCanvas::setPixel(int x, int y, std::uint32_t color)

@@ -111,25 +111,6 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
 
 void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &packet, SubClientId sender_sub_id)
 {
-    std::vector<NetworkIdentifierWithSubId> recipients;
-    recipients.emplace_back(network_id, sender_sub_id);
-    for (const auto &queue : incoming_packets) {
-        if (!queue) {
-            continue;
-        }
-        if (queue->callback_obj.allowOutgoingPacket(recipients, packet) != OutgoingPacketFilterResult::Allowed) {
-            return;
-        }
-    }
-
-    BinaryStream stream;
-    const auto packet_id = static_cast<int>(packet.getId());
-    const auto header = packet_id | (static_cast<unsigned>(sender_sub_id) << 10) |
-                        (static_cast<unsigned>(packet.getSenderSubId()) << 12);
-    stream.writeUnsignedVarInt(header, "Header Data", nullptr);
-    packet.writeWithSerializationMode(stream, getPacketReflectionCtx(),
-                                      packet_overrides_->getOverrideModeForPacket(packet.getId()));
-
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     const auto *server_player =
         server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(network_id, sender_sub_id);
@@ -157,6 +138,25 @@ void NetworkSystem::send(const NetworkIdentifier &network_id, const Packet &pack
     default:
         break;
     }
+
+    std::vector<NetworkIdentifierWithSubId> recipients;
+    recipients.emplace_back(network_id, sender_sub_id);
+    for (const auto &queue : incoming_packets) {
+        if (!queue) {
+            continue;
+        }
+        if (queue->callback_obj.allowOutgoingPacket(recipients, packet) != OutgoingPacketFilterResult::Allowed) {
+            return;
+        }
+    }
+
+    BinaryStream stream;
+    const auto packet_id = static_cast<int>(packet.getId());
+    const auto header = packet_id | (static_cast<unsigned>(sender_sub_id) << 10) |
+                        (static_cast<unsigned>(packet.getSenderSubId()) << 12);
+    stream.writeUnsignedVarInt(header, "Header Data", nullptr);
+    packet.writeWithSerializationMode(stream, getPacketReflectionCtx(),
+                                      packet_overrides_->getOverrideModeForPacket(packet.getId()));
 
     ReadOnlyBinaryStream read_stream(stream.getView(), false);
     read_stream.getUnsignedVarInt();
