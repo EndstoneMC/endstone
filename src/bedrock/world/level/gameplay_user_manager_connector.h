@@ -14,12 +14,16 @@
 
 #pragma once
 
+#include "bedrock/core/utility/pub_sub/connector.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/world/actor/player/player.h"
+
 class IGameplayUserManagerConnector {
 public:
-    virtual Bedrock::PubSub::Connector<void (EntityContext &)> & getGameplayUserAddedConnector() = 0;
-    virtual Bedrock::PubSub::Connector<void (const EntityContext &)> & getGameplayUserResumedConnector() = 0;
-    virtual Bedrock::PubSub::Connector<void (const EntityContext &)> & getGameplayUserSuspendedConnector() = 0;
-    virtual Bedrock::PubSub::Connector<void (const Player &)> & getPlayerRenamedConnector() = 0;
-    virtual Bedrock::PubSub::Connector<void (EntityContext &)> & getGameplayUserRemovedConnector() = 0;
-    virtual Bedrock::PubSub::Connector<void ()> & getAnyGameplayUsersRemovedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(EntityContext &)> &getGameplayUserAddedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(const EntityContext &)> &getGameplayUserResumedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(const EntityContext &)> &getGameplayUserSuspendedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(const Player &)> &getPlayerRenamedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(EntityContext &)> &getGameplayUserRemovedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void()> &getAnyGameplayUsersRemovedConnector() = 0;
 };
