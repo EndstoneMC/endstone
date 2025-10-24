@@ -924,7 +924,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/result.h" line="22" column="1" bodyfile="include/endstone/util/result.h" bodystart="22" bodyend="-1"/>
+        <location file="include/endstone/util/result.h" line="23" column="1" bodyfile="include/endstone/util/result.h" bodystart="23" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">

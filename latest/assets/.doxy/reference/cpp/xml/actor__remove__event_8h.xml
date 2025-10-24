@@ -109,6 +109,8 @@
       <node id="17">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
       </node>

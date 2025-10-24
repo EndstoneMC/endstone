@@ -652,6 +652,8 @@
       <node id="29">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="30" relation="include">
         </childnode>
       </node>
