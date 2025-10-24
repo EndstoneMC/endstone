@@ -912,8 +912,10 @@
     <member refid="classendstone_1_1MapCanvas_1abc7a84ff2147636d451c6e9a87294d31" kind="function"><name>setCursors</name></member>
     <member refid="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" kind="function"><name>setPixelColor</name></member>
     <member refid="classendstone_1_1MapCanvas_1a8d2c16a90382c6616234c9b7420ad317" kind="function"><name>getPixelColor</name></member>
+    <member refid="classendstone_1_1MapCanvas_1ae923292f488d32883b7b73a361284da0" kind="function"><name>getBasePixelColor</name></member>
     <member refid="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" kind="function"><name>setPixel</name></member>
     <member refid="classendstone_1_1MapCanvas_1a6974d7ff1ddbebb681a2b49d37534a23" kind="function"><name>getPixel</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a3cbade71dec5ec2ead328d6ebebcff97" kind="function"><name>getBasePixel</name></member>
     <member refid="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" kind="function"><name>drawImage</name></member>
   </compound>
   <compound refid="classendstone_1_1MapCursor" kind="class"><name>endstone::MapCursor</name>
@@ -961,6 +963,11 @@
     <member refid="classendstone_1_1MapCursor_1a5428ea761c7426c0f42597f4b2ebbdb4" kind="function"><name>setVisible</name></member>
     <member refid="classendstone_1_1MapCursor_1a502289582909400265906211368ee2fe" kind="function"><name>getCaption</name></member>
     <member refid="classendstone_1_1MapCursor_1a5dca61d7f87cb3113256b691645467c6" kind="function"><name>setCaption</name></member>
+  </compound>
+  <compound refid="classendstone_1_1MapInitializeEvent" kind="class"><name>endstone::MapInitializeEvent</name>
+    <member refid="classendstone_1_1MapInitializeEvent_1a4c38adc35361eb0bdd9de48665244369" kind="variable"><name>map_</name></member>
+    <member refid="classendstone_1_1MapInitializeEvent_1ae3c1caa0f7a0d1fb7987307e6305fa35" kind="function"><name>MapInitializeEvent</name></member>
+    <member refid="classendstone_1_1MapInitializeEvent_1ab82614a939a5a9a0ec1bd7ed24007994" kind="function"><name>getMap</name></member>
   </compound>
   <compound refid="classendstone_1_1MapMeta" kind="class"><name>endstone::MapMeta</name>
     <member refid="classendstone_1_1MapMeta_1a373d55ca5e77c44bc37cf30560c9c9cb" kind="variable"><name>TYPE</name></member>
@@ -2220,6 +2227,8 @@
   <compound refid="player__teleport__event_8h" kind="file"><name>player_teleport_event.h</name>
   </compound>
   <compound refid="broadcast__message__event_8h" kind="file"><name>broadcast_message_event.h</name>
+  </compound>
+  <compound refid="map__initialize__event_8h" kind="file"><name>map_initialize_event.h</name>
   </compound>
   <compound refid="packet__receive__event_8h" kind="file"><name>packet_receive_event.h</name>
   </compound>

@@ -99,6 +99,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_teleport\_event.h**](player__teleport__event_8h.md)     
             * **dir** [**server**](dir_77022909323d5ad872c4820a738a5429.md)     
                 * **file** [**broadcast\_message\_event.h**](broadcast__message__event_8h.md)     
+                * **file** [**map\_initialize\_event.h**](map__initialize__event_8h.md)     
                 * **file** [**packet\_receive\_event.h**](packet__receive__event_8h.md)     
                 * **file** [**packet\_send\_event.h**](packet__send__event_8h.md)     
                 * **file** [**plugin\_disable\_event.h**](plugin__disable__event_8h.md)     

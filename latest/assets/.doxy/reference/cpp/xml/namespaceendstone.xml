@@ -73,6 +73,7 @@
     <innerclass refid="classendstone_1_1Logger" prot="public">endstone::Logger</innerclass>
     <innerclass refid="classendstone_1_1MapCanvas" prot="public">endstone::MapCanvas</innerclass>
     <innerclass refid="classendstone_1_1MapCursor" prot="public">endstone::MapCursor</innerclass>
+    <innerclass refid="classendstone_1_1MapInitializeEvent" prot="public">endstone::MapInitializeEvent</innerclass>
     <innerclass refid="classendstone_1_1MapMeta" prot="public">endstone::MapMeta</innerclass>
     <innerclass refid="classendstone_1_1MapRenderer" prot="public">endstone::MapRenderer</innerclass>
     <innerclass refid="classendstone_1_1MapView" prot="public">endstone::MapView</innerclass>

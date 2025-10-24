@@ -184,6 +184,7 @@
 * **MinecoinGold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **meta\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
+* **map\_** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md))
 * **map\_id\_** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **muted\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **message\_id\_** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))

@@ -17,7 +17,7 @@ _Represents a Server-related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::PluginDisableEvent](classendstone_1_1PluginDisableEvent.md),  [endstone::PluginEnableEvent](classendstone_1_1PluginEnableEvent.md),  [endstone::ServerLoadEvent](classendstone_1_1ServerLoadEvent.md)
+Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::MapInitializeEvent](classendstone_1_1MapInitializeEvent.md),  [endstone::PluginDisableEvent](classendstone_1_1PluginDisableEvent.md),  [endstone::PluginEnableEvent](classendstone_1_1PluginEnableEvent.md),  [endstone::ServerLoadEvent](classendstone_1_1ServerLoadEvent.md)
 
 
 

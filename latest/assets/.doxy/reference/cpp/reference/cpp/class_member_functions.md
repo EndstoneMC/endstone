@@ -265,11 +265,14 @@
 * **getBlockZ** ([**endstone::Location**](classendstone_1_1Location.md))
 * **getPitch** ([**endstone::Location**](classendstone_1_1Location.md))
 * **getYaw** ([**endstone::Location**](classendstone_1_1Location.md))
+* **getBasePixel** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md))
+* **getBasePixelColor** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md))
 * **getCursors** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md))
 * **getMapView** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md), [**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **getPixel** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md))
 * **getPixelColor** ([**endstone::MapCanvas**](classendstone_1_1MapCanvas.md))
 * **getCaption** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
+* **getMap** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getMapId** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **getCenterX** ([**endstone::MapView**](classendstone_1_1MapView.md))
 * **getCenterZ** ([**endstone::MapView**](classendstone_1_1MapView.md))
@@ -381,7 +384,6 @@
 * **getItemFactory** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getItemRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getLanguage** ([**endstone::Server**](classendstone_1_1Server.md))
-* **getMap** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getMinecraftVersion** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getOnlineMode** ([**endstone::Server**](classendstone_1_1Server.md))
@@ -515,6 +517,7 @@
 ## m
 
 * **MapCursor** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
+* **MapInitializeEvent** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md))
 * **MapMeta** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **MapRenderer** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 

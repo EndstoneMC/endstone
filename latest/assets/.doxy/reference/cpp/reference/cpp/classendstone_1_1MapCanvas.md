@@ -53,6 +53,8 @@ _Represents a canvas for drawing to a map._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 | virtual void | [**drawImage**](#function-drawimage) (int x, int y, const [**Image**](classendstone_1_1Image.md) & image) = 0<br>_Draw an image to the map. The image will be clipped if necessary._  |
+| virtual std::uint32\_t | [**getBasePixel**](#function-getbasepixel) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
+| virtual Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getBasePixelColor**](#function-getbasepixelcolor) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
 | virtual std::vector&lt; [**MapCursor**](classendstone_1_1MapCursor.md) &gt; | [**getCursors**](#function-getcursors) () const = 0<br>_Get the cursors associated with this canvas._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**getMapView**](#function-getmapview) () const = 0<br>_Get the map this canvas is attached to._  |
 | virtual std::uint32\_t | [**getPixel**](#function-getpixel) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
@@ -129,6 +131,78 @@ virtual void endstone::MapCanvas::drawImage (
 * `x` The x coordinate of the image. 
 * `y` The y coordinate of the image. 
 * `image` The [**Image**](classendstone_1_1Image.md) to draw. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getBasePixel 
+
+_Get a pixel from the layers below this canvas._ 
+```C++
+virtual std::uint32_t endstone::MapCanvas::getBasePixel (
+    int x,
+    int y
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `x` The x coordinate, from 0 to 127. 
+* `y` The y coordinate, from 0 to 127. 
+
+
+
+**Returns:**
+
+The color. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getBasePixelColor 
+
+_Get a pixel from the layers below this canvas._ 
+```C++
+virtual Result< Color > endstone::MapCanvas::getBasePixelColor (
+    int x,
+    int y
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `x` The x coordinate, from 0 to 127. 
+* `y` The y coordinate, from 0 to 127.
+
+
+
+**Returns:**
+
+The color 
+
 
 
 

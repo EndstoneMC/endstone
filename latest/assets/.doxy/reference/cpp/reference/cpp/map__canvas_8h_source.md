@@ -46,9 +46,13 @@ public:
 
     [[nodiscard]] virtual Result<Color> getPixelColor(int x, int y) const = 0;
 
+    [[nodiscard]] virtual Result<Color> getBasePixelColor(int x, int y) const = 0;
+
     virtual void setPixel(int x, int y, std::uint32_t color) = 0;
 
     [[nodiscard]] virtual std::uint32_t getPixel(int x, int y) const = 0;
+
+    [[nodiscard]] virtual std::uint32_t getBasePixel(int x, int y) const = 0;
 
     virtual void drawImage(int x, int y, const Image &image) = 0;
 };
