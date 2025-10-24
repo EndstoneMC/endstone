@@ -26,14 +26,18 @@ public:
     void setCursors(const std::vector<MapCursor> &cursors) override;
     void setPixelColor(int x, int y, Color color) override;
     [[nodiscard]] Result<Color> getPixelColor(int x, int y) const override;
+    [[nodiscard]] Result<Color> getBasePixelColor(int x, int y) const override;
     void setPixel(int x, int y, std::uint32_t color) override;
     [[nodiscard]] std::uint32_t getPixel(int x, int y) const override;
+    [[nodiscard]] std::uint32_t getBasePixel(int x, int y) const override;
     void drawImage(int x, int y, const Image &image) override;
 
-private:
-    friend class EndstoneMapView;
+    void setBase(const std::vector<std::uint32_t> &base);
+    const std::vector<std::uint32_t> &getBuffer() const;
 
+private:
     std::vector<std::uint32_t> buffer_;
+    const std::vector<std::uint32_t> *base_;
     EndstoneMapView &map_view_;
     std::vector<MapCursor> cursors_;
 };

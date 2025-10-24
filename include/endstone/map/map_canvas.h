@@ -72,6 +72,16 @@ public:
     [[nodiscard]] virtual Result<Color> getPixelColor(int x, int y) const = 0;
 
     /**
+     * @brief Get a pixel from the layers below this canvas.
+     *
+     * @param x The x coordinate, from 0 to 127.
+     * @param y The y coordinate, from 0 to 127.
+     *
+     * @return The color
+     */
+    [[nodiscard]] virtual Result<Color> getBasePixelColor(int x, int y) const = 0;
+
+    /**
      * @brief Draw a pixel to the canvas.
      *
      * @param x The x coordinate, from 0 to 127.
@@ -88,6 +98,15 @@ public:
      * @return The color.
      */
     [[nodiscard]] virtual std::uint32_t getPixel(int x, int y) const = 0;
+
+    /**
+     * @brief Get a pixel from the layers below this canvas.
+     *
+     * @param x The x coordinate, from 0 to 127.
+     * @param y The y coordinate, from 0 to 127.
+     * @return The color.
+     */
+    [[nodiscard]] virtual std::uint32_t getBasePixel(int x, int y) const = 0;
 
     /**
      * @brief Draw an image to the map. The image will be clipped if necessary.

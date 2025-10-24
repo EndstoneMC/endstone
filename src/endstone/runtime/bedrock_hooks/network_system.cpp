@@ -14,9 +14,6 @@
 
 #include "bedrock/network/network_system.h"
 
-#include <entt/entt.hpp>
-#include <spdlog/spdlog.h>
-
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
@@ -27,7 +24,6 @@
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/packet_send_event.h"
-#include "endstone/runtime/hook.h"
 
 namespace {
 void patchPacket(const StartGamePacket &packet)

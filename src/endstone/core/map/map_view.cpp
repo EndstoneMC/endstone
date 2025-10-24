@@ -157,14 +157,14 @@ const RenderData &EndstoneMapView::render(EndstonePlayer &player)
                                      std::make_unique<EndstoneMapCanvas>(*this))
                             .first->second;
 
-        canvas.buffer_ = render.buffer;
+        canvas.setBase(render.buffer);
         try {
             renderer->render(*this, canvas, player);
         }
         catch (std::exception &e) {
             player.getServer().getLogger().critical("Could not render map: {}", e.what());
         }
-        render.buffer = canvas.buffer_;
+        render.buffer = canvas.getBuffer();
 
         for (const auto &cursor : canvas.getCursors()) {
             render.cursors.emplace_back(cursor);

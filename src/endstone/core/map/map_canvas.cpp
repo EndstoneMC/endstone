@@ -47,6 +47,11 @@ Result<Color> EndstoneMapCanvas::getPixelColor(int x, int y) const
     return Color::fromABGR(static_cast<std::int32_t>(getPixel(x, y)));
 }
 
+Result<Color> EndstoneMapCanvas::getBasePixelColor(int x, int y) const
+{
+    return Color::fromABGR(static_cast<std::int32_t>(getBasePixel(x, y)));
+}
+
 void EndstoneMapCanvas::setPixel(int x, int y, std::uint32_t color)
 {
     if (x < 0 || y < 0 || x >= MapConstants::MAP_SIZE || y >= MapConstants::MAP_SIZE) {
@@ -66,6 +71,17 @@ std::uint32_t EndstoneMapCanvas::getPixel(int x, int y) const
     return buffer_[y * MapConstants::MAP_SIZE + x];
 }
 
+std::uint32_t EndstoneMapCanvas::getBasePixel(int x, int y) const
+{
+    if (base_ == nullptr) {
+        return 0;
+    }
+    if (x < 0 || y < 0 || x >= MapConstants::MAP_SIZE || y >= MapConstants::MAP_SIZE) {
+        return 0;
+    }
+    return (*base_)[y * MapConstants::MAP_SIZE + x];
+}
+
 void EndstoneMapCanvas::drawImage(int x, int y, const Image &image)
 {
     for (auto xx = 0; xx < image.getWidth(); ++xx) {
@@ -73,5 +89,15 @@ void EndstoneMapCanvas::drawImage(int x, int y, const Image &image)
             setPixelColor(x + xx, y + yy, image.getColor(xx, yy));
         }
     }
+}
+
+void EndstoneMapCanvas::setBase(const std::vector<std::uint32_t> &base)
+{
+    base_ = &base;
+}
+
+const std::vector<std::uint32_t> &EndstoneMapCanvas::getBuffer() const
+{
+    return buffer_;
 }
 }  // namespace endstone::core
