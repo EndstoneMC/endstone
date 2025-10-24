@@ -18,13 +18,13 @@
 
 class MapItem : public ComplexItem {
 public:
-    static const std::string TAG_MAP_SCALING;
-    static const std::string TAG_MAP_SCALE;
-    static const std::string TAG_MAP_PLAYER_DISPLAY;
+    inline static const std::string TAG_MAP_SCALING = "map_is_scaling";
+    inline static const std::string TAG_MAP_SCALE = "map_scale";
+    inline static const std::string TAG_MAP_PLAYER_DISPLAY = "map_display_player";
     inline static const std::string TAG_MAP_UUID = "map_uuid";
-    static const std::string TAG_MAP_NAME_INDEX;
-    static const std::string TAG_MAP_INIT;
-    static const std::string TAG_MAP_REGENERATE;
+    inline static const std::string TAG_MAP_NAME_INDEX = "map_name_index";
+    inline static const std::string TAG_MAP_INIT = "map_is_init";
+    inline static const std::string TAG_MAP_REGENERATE = "map_regenerate";
 
     using ComplexItem::ComplexItem;
 };
