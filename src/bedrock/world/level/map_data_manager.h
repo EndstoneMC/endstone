@@ -20,27 +20,30 @@
 
 class MapDataManager {
 public:
+    MapDataManager(DimensionManager &dimension_manager, LevelStorage *level_storage,
+                   std::unique_ptr<IMapDataManagerOptions> map_data_manager_options,
+                   std::function<ActorUniqueID()> get_new_unique_id);
     virtual ~MapDataManager() = default;
     virtual void registerOnGameplayUserAddedSubscription(IGameplayUserManagerConnector &);
-    void registerOnSaveLevelDataSubscription(ILevelStorageManagerConnector &levelStorageManagerConnector);
+    void registerOnSaveLevelDataSubscription(ILevelStorageManagerConnector &level_storage_manager_connector);
     MapItemSavedData *getMapSavedData(const ActorUniqueID uuid);
     const size_t getMapDataMapSize() const;
     MapItemSavedData &createMapSavedData(const ActorUniqueID &uuid, const BlockPos &origin, DimensionType dimension,
-                                         int returnScaleLevel);
-    MapItemSavedData &createMapSavedData(const std::vector<ActorUniqueID> &mapIds, const BlockPos &origin,
-                                         DimensionType dimension, int returnScaleLevel);
+                                         int return_scale_level);
+    MapItemSavedData &createMapSavedData(const std::vector<ActorUniqueID> &map_ids, const BlockPos &origin,
+                                         DimensionType dimension, int return_scale_level);
     virtual MapItemSavedData &createMapSavedData(const ActorUniqueID &uuid);
-    virtual void requestMapInfo(const ActorUniqueID uuid, bool forceUpdate);
-    bool copyAndLockMap(const ActorUniqueID originalMapUuid, const ActorUniqueID newMapUuid);
-    ActorUniqueID expandMapByID(const ActorUniqueID uuid, bool wasInit);
-    void setPacketSender(PacketSender &packetSender);
+    virtual void requestMapInfo(const ActorUniqueID uuid, bool force_update);
+    bool copyAndLockMap(const ActorUniqueID original_map_uuid, const ActorUniqueID new_map_uuid);
+    ActorUniqueID expandMapByID(const ActorUniqueID uuid, bool was_init);
+    void setPacketSender(PacketSender &packet_sender);
     void onStartLeaveGame();
     void tick();
 
 protected:
-    virtual void _copyAndLockMap(const ActorUniqueID originalMapUuid, const ActorUniqueID newMapUuid);
+    virtual void _copyAndLockMap(const ActorUniqueID original_map_uuid, const ActorUniqueID new_map_uuid);
     ENDSTONE_HOOK MapItemSavedData *_loadMapData(const ActorUniqueID &uuid);
-    void _onSaveLevelData(LevelStorage &levelStorage);
+    void _onSaveLevelData(LevelStorage &level_storage);
     DimensionManager &dimension_manager_;
     LevelStorage *level_storage_;
     gsl::not_null<std::unique_ptr<IMapDataManagerOptions>> map_data_manager_options_;

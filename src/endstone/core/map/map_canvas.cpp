@@ -15,6 +15,7 @@
 #include "endstone/core/map/map_canvas.h"
 
 #include "bedrock/world/item/map_constants.h"
+#include "endstone/core/map/map_view.h"
 
 namespace endstone::core {
 EndstoneMapCanvas::EndstoneMapCanvas(EndstoneMapView &map_view)

@@ -16,6 +16,9 @@
 
 #include "bedrock/world/item/map_constants.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
+#include "endstone/core/map/map_canvas.h"
+#include "endstone/map/map_cursor.h"
+#include "endstone/map/map_renderer.h"
 #include "endstone/map/map_view.h"
 
 namespace endstone::core {

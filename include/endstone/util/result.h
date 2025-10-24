@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <fmt/format.h>
 #include <nonstd/expected.hpp>
 
 namespace endstone {

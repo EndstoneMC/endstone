@@ -14,10 +14,10 @@
 
 #pragma once
 
-#include "endstone/core/map/map_view.h"
 #include "endstone/map/map_canvas.h"
 
 namespace endstone::core {
+class EndstoneMapView;
 class EndstoneMapCanvas : public MapCanvas {
 public:
     EndstoneMapCanvas(EndstoneMapView &map_view);
