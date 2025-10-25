@@ -112,7 +112,6 @@ public:
     size_t update_interval;
 
 private:
-    ENDSTONE_HOOK void _deserializeData(const CompoundTag &tag);
     friend class endstone::core::EndstoneMapView;
 
     ActorUniqueID map_id_;

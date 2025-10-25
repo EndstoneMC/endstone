@@ -1,4 +1,4 @@
-timestamp = 1761403676
+timestamp = 1761258498
 version = "1.21.114"
 
 [windows]
@@ -49,8 +49,8 @@ version = "1.21.114"
 "?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 73251536
 # Level
 "?tick@Level@@UEAAXXZ" = 69563584
-# MapItemSavedData
-"?_deserializeData@MapItemSavedData@@AEAAXAEBVCompoundTag@@@Z" = 77059312
+# MapDataManager
+"?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z" = 69654544
 # MinecraftCommands
 "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 51388016
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 51385536
@@ -158,8 +158,8 @@ version = "1.21.114"
 "_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 175560368
 # Level
 "_ZN5Level4tickEv" = 169124640
-# MapItemSavedData
-"_ZN16MapItemSavedData16_deserializeDataERK11CompoundTag" = 177199200
+# MapDataManager
+"_ZN14MapDataManager12_loadMapDataERK13ActorUniqueID" = 169239328
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 137072320
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 137040176
