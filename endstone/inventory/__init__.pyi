@@ -256,6 +256,20 @@ class MapMeta(ItemMeta):
     Represents the metadata for a map item.
     """
     @property
+    def has_map_id(self) -> bool:
+        """
+        Checks for existence of a map ID number.
+        """
+        ...
+    @property
+    def map_id(self) -> int:
+        """
+        Gets or sets the map ID. This is used to determine what map is displayed.
+        """
+        ...
+    @map_id.setter
+    def map_id(self, arg1: int) -> None: ...
+    @property
     def has_map_view(self) -> bool:
         """
         Checks for existence of an associated map.

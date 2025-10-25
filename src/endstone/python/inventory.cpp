@@ -75,6 +75,9 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                       "Gets or sets the unbreakable tag. An unbreakable item will not lose durability.");
 
     py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.")
+        .def_property_readonly("has_map_id", &MapMeta::hasMapId, "Checks for existence of a map ID number.")
+        .def_property("map_id", &MapMeta::getMapId, &MapMeta::setMapId,
+                      "Gets or sets the map ID. This is used to determine what map is displayed.")
         .def_property_readonly("has_map_view", &MapMeta::hasMapView, "Checks for existence of an associated map.")
         .def_property("map_view", &MapMeta::getMapView, &MapMeta::setMapView, py::return_value_policy::reference,
                       "Gets or sets the map view that is associated with this map item.");
