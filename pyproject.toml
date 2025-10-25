@@ -87,7 +87,7 @@ local_scheme = "no-local-version"
 
 [tool.ruff]
 line-length = 120
-lint.extend-select = ["I"]
+lint.extend-select = ["I", "F"]
 
 [tool.cibuildwheel]
 skip = ["pp*"]
