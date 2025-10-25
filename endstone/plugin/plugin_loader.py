@@ -48,7 +48,7 @@ def find_python():
 
 
 class PythonPluginLoader(PluginLoader):
-    SUPPORTED_API = ["0.5", "0.6", "0.7", "0.8", "0.9", "0.10"]
+    SUPPORTED_API = ["0.5", "0.6", "0.7", "0.8", "0.9", "0.10", "0.11"]
 
     def __init__(self, server: Server):
         PluginLoader.__init__(self, server)
