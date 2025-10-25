@@ -41,8 +41,8 @@ def main():
         output_file.write_text(text, encoding="utf-8")
 
     cmds = [
-        ["ruff", "check", "--fix", "--select", "I", str(output_path)],
         ["ruff", "format", str(output_path)],
+        ["ruff", "check", "--select", "I,E,F", "--ignore", "E501", "--fix", str(output_path)],
     ]
     for cmd in cmds:
         print(f"Running: {' '.join(cmd)}")
