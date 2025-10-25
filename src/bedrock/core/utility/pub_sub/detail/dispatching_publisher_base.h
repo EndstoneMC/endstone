@@ -20,7 +20,7 @@ namespace Bedrock::PubSub::Detail {
 
 template <typename ThreadingModel, typename SubscriptionBody>
 class DispatchingPublisherBase : public ThreadingPublisherBase<ThreadingModel> {
-    using ReturnType = typename SubscriptionBody::ReturnType;
+    using ReturnType =  SubscriptionBody::ReturnType;
 
 protected:
     DispatchingPublisherBase() = default;

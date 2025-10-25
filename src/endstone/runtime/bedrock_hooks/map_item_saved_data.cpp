@@ -6,7 +6,7 @@
 
 void MapItemSavedData::_deserializeData(const CompoundTag &tag)
 {
+    ENDSTONE_HOOK_CALL_ORIGINAL(&MapItemSavedData::_deserializeData, this, tag);
     endstone::MapInitializeEvent e{getMapView()};
     endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&MapItemSavedData::_deserializeData, this, tag);
 }

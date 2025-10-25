@@ -25,7 +25,7 @@ namespace Bedrock::PubSub {
 template <typename Signature, typename ThreadingModel, ReturnPolicyType PolicyType = ReturnPolicyType::Aggregate>
 class Publisher
     : public Detail::DispatchingPublisherBase<ThreadingModel, Detail::SubscriptionBody<Signature, PolicyType>>,
-      Connector<Signature> {
+      public Connector<Signature> {
 public:
     Publisher() = default;
     Publisher(Publisher &&) noexcept = default;
@@ -34,7 +34,7 @@ public:
     Publisher &operator=(const Publisher &) = delete;
 
 private:
-    using FunctionType = typename Connector<Signature>::FunctionType;
+    using FunctionType = Connector<Signature>::FunctionType;
     Subscription _connectInternal(FunctionType &&fn, ConnectPosition at, ContextType &&context,
                                   std::optional<int> group) override;
 };

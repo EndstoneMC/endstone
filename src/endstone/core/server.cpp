@@ -24,6 +24,7 @@
 
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
+#include "bedrock/server/server_map_data_manager.h"
 #include "bedrock/shared_constants.h"
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/level/block/block_descriptor.h"
@@ -52,6 +53,7 @@
 #include "endstone/event/chunk/chunk_load_event.h"
 #include "endstone/event/chunk/chunk_unload_event.h"
 #include "endstone/event/server/broadcast_message_event.h"
+#include "endstone/event/server/map_initialize_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
 
@@ -143,6 +145,7 @@ void EndstoneServer::setLevel(::Level &level)
             }
         },
         Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+
     on_chunk_unload_subscription_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
         [&](LevelChunk &lc) -> void {
             const auto chunk = std::make_unique<EndstoneChunk>(lc);
@@ -150,6 +153,15 @@ void EndstoneServer::setLevel(::Level &level)
             getPluginManager().callEvent(e);
         },
         Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+
+    on_map_created_ = static_cast<ServerMapDataManager *>(level.getMapDataManager().get().access())
+                          ->getOnCreateMapSavedDataConnector()
+                          .connect(
+                              [&](MapItemSavedData &map) {
+                                  MapInitializeEvent e{map.getMapView()};
+                                  getPluginManager().callEvent(e);
+                              },
+                              Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
 
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};

@@ -169,6 +169,7 @@ private:
     bool log_commands_ = true;
     ::Bedrock::PubSub::Subscription on_chunk_load_subscription_;
     ::Bedrock::PubSub::Subscription on_chunk_unload_subscription_;
+    ::Bedrock::PubSub::Subscription on_map_created_;
 };
 
 }  // namespace endstone::core

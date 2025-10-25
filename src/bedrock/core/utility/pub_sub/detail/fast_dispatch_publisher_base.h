@@ -67,6 +67,6 @@ struct FastDispatchBaseSelector<ThreadModel::MultiThreadedStrict> {
 };
 
 template <typename ThreadModel>
-using FastDispatchPublisherBase = typename FastDispatchBaseSelector<ThreadModel>::type;
+using FastDispatchPublisherBase = FastDispatchBaseSelector<ThreadModel>::type;
 
 }  // namespace Bedrock::PubSub::Detail
