@@ -16,4 +16,8 @@
 
 namespace MapConstants {
 static constexpr int MAP_SIZE = 128;
-}
+static constexpr int HALF_MAP_SIZE = MAP_SIZE / 2;
+static constexpr int TRACKING_RANGE = 320;
+static constexpr int MAX_SCALE = 4;
+static constexpr int DEFAULT_SCALE = 0;
+}  // namespace MapConstants
