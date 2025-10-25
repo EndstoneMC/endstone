@@ -42,7 +42,7 @@ public:
 
 protected:
     virtual void _copyAndLockMap(const ActorUniqueID original_map_uuid, const ActorUniqueID new_map_uuid);
-    ENDSTONE_HOOK MapItemSavedData *_loadMapData(const ActorUniqueID &uuid);
+    MapItemSavedData *_loadMapData(const ActorUniqueID &uuid);
     void _onSaveLevelData(LevelStorage &level_storage);
     DimensionManager &dimension_manager_;
     LevelStorage *level_storage_;
