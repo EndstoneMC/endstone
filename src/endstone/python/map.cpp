@@ -18,7 +18,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-class PyMapRenderer : public MapRenderer {
+class PyMapRenderer : public MapRenderer, public py::trampoline_self_life_support {
 public:
     using MapRenderer::MapRenderer;
 
@@ -95,8 +95,7 @@ void init_map(py::module_ &m)
         .def("draw_image", &MapCanvas::drawImage, py::arg("x"), py::arg("y"), py::arg("image"),
              "Draw an image to the map. The image will be clipped if necessary.");
 
-    py::class_<MapRenderer, PyMapRenderer, std::shared_ptr<MapRenderer>>(m, "MapRenderer",
-                                                                         "Represents a renderer for a map.")
+    py::class_<MapRenderer, PyMapRenderer, py::smart_holder>(m, "MapRenderer", "Represents a renderer for a map.")
         .def(py::init<bool>(), py::arg("is_contextual") = false,
              "Initialize the map renderer base with the given contextual status.")
         .def("initialize", &MapRenderer::initialize, py::arg("view"), "Initialize this MapRenderer for the given map.")
@@ -125,8 +124,7 @@ void init_map(py::module_ &m)
         .def_property_readonly("renderers", &MapView::getRenderers,
                                "Get a copied list of MapRenderers currently in effect.",
                                py::return_value_policy::reference_internal)
-        .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), "Add a renderer to this map.",
-             py::keep_alive<1, 2>())
+        .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), "Add a renderer to this map.")
         .def("remove_renderer", &MapView::removeRenderer, py::arg("renderer"), "Remove a renderer from this map.")
         .def_property("is_unlimited_tracking", &MapView::isUnlimitedTracking, &MapView::setUnlimitedTracking,
                       "Whether the map will show a smaller position cursor (true), or no position cursor (false) when "

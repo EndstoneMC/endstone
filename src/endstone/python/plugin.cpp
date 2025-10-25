@@ -18,7 +18,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-class PyPlugin : public Plugin {
+class PyPlugin : public Plugin, public py::trampoline_self_life_support {
 public:
     using Plugin::Plugin;
 
@@ -166,7 +166,7 @@ void init_plugin(py::module &m)
             "permissions", &PluginDescription::getPermissions,
             "Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.");
 
-    py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin", "Represents a Plugin")
+    py::class_<Plugin, CommandExecutor, PyPlugin, py::smart_holder>(m, "Plugin", "Represents a Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
         .def("on_enable", &Plugin::onEnable, "Called when this plugin is enabled")
@@ -181,8 +181,8 @@ void init_plugin(py::module &m)
         .def_property_readonly("is_enabled", &Plugin::isEnabled,
                                "Returns a value indicating whether this plugin is currently enabled")
         .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.")
-        .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::keep_alive<1, 0>(),
-             py::arg("name"), "Gets the command with the given name, specific to this plugin.")
+        .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
+             "Gets the command with the given name, specific to this plugin.")
         .def_property_readonly("data_folder", &Plugin::getDataFolder,
                                "Returns the folder that the plugin data's files are located in.");
 
