@@ -5,14 +5,18 @@ import sys
 import time
 
 import click
+import colorlog
 
 from endstone._version import __version__
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="[%(asctime)s.%(msecs)03d %(levelname)s] [%(name)s] %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
+handler = colorlog.StreamHandler()
+handler.setFormatter(
+    colorlog.ColoredFormatter(
+        fmt="%(log_color)s[%(asctime)s.%(msecs)03d %(levelname)s] [%(name)s] %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
 )
+logging.basicConfig(level=logging.INFO, handlers=[handler])
 logger = logging.getLogger(__name__)
 
 __all__ = ["main"]

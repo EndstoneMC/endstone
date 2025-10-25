@@ -14,6 +14,7 @@
 
 #include "bedrock/core/debug/bedrock_event_logger.h"
 
+#include <cstdarg>
 #include <cstdio>
 #include <ranges>
 
