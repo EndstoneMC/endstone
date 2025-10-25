@@ -41,7 +41,7 @@ public:
 
     [[nodiscard]] bool isEmpty() const override
     {
-        return ItemMeta::isEmpty() && hasMapId();
+        return ItemMeta::isEmpty() && isMapEmpty();
     }
 
     [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
@@ -109,6 +109,12 @@ public:
     void setMapView(const MapView *map)
     {
         map_id_ = map ? map->getId() : -1;
+    }
+
+protected:
+    [[nodiscard]] bool isMapEmpty() const
+    {
+        return !(hasMapId());  // TODO(map): add hasScaling
     }
 
 private:
