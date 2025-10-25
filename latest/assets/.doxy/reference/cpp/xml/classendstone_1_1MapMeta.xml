@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="115" column="18" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="115" bodyend="-1"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="121" column="18" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="121" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -247,6 +247,22 @@
         <location file="include/endstone/inventory/meta/map_meta.h" line="109" column="10" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="109" bodyend="112"/>
       </memberdef>
     </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1aabb184357818fecc383378693a2153dd" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::MapMeta::isMapEmpty</definition>
+        <argsstring>() const</argsstring>
+        <name>isMapEmpty</name>
+        <qualifiedname>endstone::MapMeta::isMapEmpty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="115" column="11" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="115" bodyend="118"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
 <para>Represents the metadata for a map item. </para>
     </briefdescription>
@@ -276,7 +292,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/meta/map_meta.h" line="25" column="1" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="25" bodyend="116"/>
+    <location file="include/endstone/inventory/meta/map_meta.h" line="25" column="1" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="25" bodyend="122"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemMeta_1a5b5d701e9b9a365981b853d5cc1ad259" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>addEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1a27248f2767a7d4374849e382d0fa89a2" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>as</name></member>
@@ -300,6 +316,7 @@
       <member refid="classendstone_1_1MapMeta_1a509f115b40074e9de18bdcbf5d565576" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>hasMapView</name></member>
       <member refid="classendstone_1_1ItemMeta_1a76eed81fb70ea79adf5e046ad3761536" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>hasRepairCost</name></member>
       <member refid="classendstone_1_1MapMeta_1af27099c2fc92a1b01af85649f902125b" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>isEmpty</name></member>
+      <member refid="classendstone_1_1MapMeta_1aabb184357818fecc383378693a2153dd" prot="protected" virt="non-virtual"><scope>endstone::MapMeta</scope><name>isMapEmpty</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4d4036c00165a6935c8f016f4b4bbdf4" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>isUnbreakable</name></member>
       <member refid="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>ItemMeta</name></member>
       <member refid="classendstone_1_1MapMeta_1a8e3068cd9c3ca94dbc6f7dd93d7c41ca" prot="private" virt="non-virtual"><scope>endstone::MapMeta</scope><name>map_id_</name></member>

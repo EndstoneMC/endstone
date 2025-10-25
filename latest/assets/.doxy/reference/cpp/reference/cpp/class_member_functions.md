@@ -470,6 +470,7 @@
 * **isSimilar** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **info** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **isEnabledFor** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **isMapEmpty** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **initialize** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **isContextual** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **isEndstoneMapRenderer** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))

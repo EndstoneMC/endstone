@@ -178,7 +178,7 @@
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42" refid="classendstone_1_1MapMeta_1af27099c2fc92a1b01af85649f902125b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1af27099c2fc92a1b01af85649f902125b" kindref="member">isEmpty</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="43"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ad6bbacae4d9f4009d6e60ee16a20f41f" kindref="member">ItemMeta::isEmpty</ref>()<sp/>&amp;&amp;<sp/><ref refid="classendstone_1_1MapMeta_1ad532a5306e9bf084b1ca5728bacef48f" kindref="member">hasMapId</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ad6bbacae4d9f4009d6e60ee16a20f41f" kindref="member">ItemMeta::isEmpty</ref>()<sp/>&amp;&amp;<sp/>isMapEmpty();</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47" refid="classendstone_1_1MapMeta_1af0b98024806dc794e0006453fc468f8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1MapMeta_1af0b98024806dc794e0006453fc468f8c" kindref="member">clone</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
@@ -216,10 +216,16 @@
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map_id_<sp/>=<sp/>map<sp/>?<sp/>map-&gt;<ref refid="classendstone_1_1MapView_1aaa13aa08f9e1c8b15797a9ea8af70951" kindref="member">getId</ref>()<sp/>:<sp/>-1;</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>std::int64_t<sp/>map_id_<sp/>=<sp/>-1;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="117"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isMapEmpty()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="116"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<ref refid="classendstone_1_1MapMeta_1ad532a5306e9bf084b1ca5728bacef48f" kindref="member">hasMapId</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(map):<sp/>add<sp/>hasScaling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>std::int64_t<sp/>map_id_<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/inventory/meta/map_meta.h"/>
   </compounddef>

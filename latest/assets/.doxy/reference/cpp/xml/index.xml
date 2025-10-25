@@ -982,6 +982,7 @@
     <member refid="classendstone_1_1MapMeta_1a509f115b40074e9de18bdcbf5d565576" kind="function"><name>hasMapView</name></member>
     <member refid="classendstone_1_1MapMeta_1a4bbee56bb97be6620f4110672b3a9559" kind="function"><name>getMapView</name></member>
     <member refid="classendstone_1_1MapMeta_1a9cc1efc031fa2f18e805452a332ff739" kind="function"><name>setMapView</name></member>
+    <member refid="classendstone_1_1MapMeta_1aabb184357818fecc383378693a2153dd" kind="function"><name>isMapEmpty</name></member>
   </compound>
   <compound refid="classendstone_1_1MapRenderer" kind="class"><name>endstone::MapRenderer</name>
     <member refid="classendstone_1_1MapRenderer_1a241417d1788753148454dc43c62db045" kind="friend"><name>core::EndstoneMapView</name></member>

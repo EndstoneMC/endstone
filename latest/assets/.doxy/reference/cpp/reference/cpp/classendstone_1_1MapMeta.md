@@ -177,6 +177,11 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 
 
+## Protected Functions
+
+| Type | Name |
+| ---: | :--- |
+|  bool | [**isMapEmpty**](#function-ismapempty) () const<br> |
 
 
 
@@ -457,6 +462,21 @@ inline void endstone::MapMeta::setMapView (
 
 
         
+
+<hr>
+## Protected Functions Documentation
+
+
+
+
+### function isMapEmpty 
+
+```C++
+inline bool endstone::MapMeta::isMapEmpty () const
+```
+
+
+
 
 <hr>
 
