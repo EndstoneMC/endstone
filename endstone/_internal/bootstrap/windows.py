@@ -2,6 +2,7 @@ import _winapi
 import ctypes
 import os
 import subprocess
+import sys
 import warnings
 from subprocess import STARTUPINFO, Handle, list2cmdline
 
@@ -166,6 +167,14 @@ class WindowsBootstrap(Bootstrap):
             if ret <= 32:
                 raise RuntimeError(f"CheckNetIsolation LoopbackExempt -a failed with exit code {ret}.")
 
+    def _check_python_distribution(self) -> None:
+        if "WindowsApp" in sys.base_prefix:
+            self._logger.warning("You are using a Microsoft Store distribution of Python which is not supported.")
+            self._logger.warning(
+                "If you experience issues, please use a regular Python distribution instead "
+                "from https://www.python.org/downloads/ ."
+            )
+
     def _run(self, *args, **kwargs) -> int:
         try:
             self._add_loopback_exemption()
@@ -174,6 +183,7 @@ class WindowsBootstrap(Bootstrap):
                 f"Unable to add loopback exemption: %s. See bedrock_server_how_to.html for more details. {e}"
             )
 
+        self._check_python_distribution()
         process = PopenWithDll(
             [str(self.executable_path.absolute())],
             text=True,
