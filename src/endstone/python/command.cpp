@@ -18,7 +18,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-class PyCommandExecutor : public CommandExecutor {
+class PyCommandExecutor : public CommandExecutor, public py::trampoline_self_life_support {
 public:
     using CommandExecutor::CommandExecutor;
 
@@ -96,7 +96,7 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
         .def_property_readonly("is_registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
 
-    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(
+    py::class_<CommandExecutor, PyCommandExecutor, py::smart_holder>(
         m, "CommandExecutor", "Represents a class which contains a single method for executing commands")
         .def(py::init<>())
         .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),

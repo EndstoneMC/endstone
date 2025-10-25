@@ -27,10 +27,7 @@ public:
     ~ServerMapDataManager() override = default;
     void registerOnGameplayUserAddedSubscription(
         IGameplayUserManagerConnector &gameplay_user_manager_connector) override;
-    Bedrock::PubSub::Connector<void(MapItemSavedData &)> &getOnCreateMapSavedDataConnector() override
-    {
-        return on_create_map_saved_data_;
-    }
+    Bedrock::PubSub::Connector<void(MapItemSavedData &)> &getOnCreateMapSavedDataConnector() override;
     MapItemSavedData &createMapSavedData(const ActorUniqueID &uuid) override;
     void requestMapInfo(const ActorUniqueID, bool) override;
 
