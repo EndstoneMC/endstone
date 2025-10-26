@@ -14,26 +14,33 @@
 
 #include "endstone/core/crash_handler.h"
 
-#include <sentry.h>
-
-#include <filesystem>
-#include <iostream>
-#include <string>
-
-#include <cpptrace/cpptrace.hpp>
-#include <cpptrace/formatting.hpp>
-#include <fmt/format.h>
-
-#include "endstone/detail/common.h"
-#include "endstone/detail/platform.h"
-
 #ifdef _WIN32
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #endif
 
 #ifdef __linux__
 #include <csignal>
 #endif
+
+#include <sentry.h>
+
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <string>
+
+#include <cpptrace/cpptrace.hpp>
+#include <cpptrace/formatting.hpp>
+#include <date/date.h>
+#include <fmt/color.h>
+#include <fmt/format.h>
+#include <fmt/std.h>
+#include <spdlog/spdlog.h>
+
+#include "endstone/detail/common.h"
+#include "endstone/detail/platform.h"
 
 namespace fs = std::filesystem;
 
@@ -137,12 +144,33 @@ void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
     stream << "\n";
 }
 
+std::string get_filename_formatted_date_time()
+{
+    const auto now = std::chrono::system_clock::now();
+    const auto tp = date::floor<std::chrono::seconds>(now);
+    std::ostringstream oss;
+    oss << date::format("%Y-%m-%d-%H.%M.%S", tp);
+    return oss.str();
+}
+
 sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
 {
     const auto stacktrace = cpptrace::generate_trace();
-    auto &stream = std::cerr;
-    print_crash_message(stream, ctx);
-    print_stacktrace(stream, stacktrace);
+    print_crash_message(std::cerr, ctx);
+    print_stacktrace(std::cerr, stacktrace);
+
+    try {
+        fs::path path = "./crash-reports/";
+        fs::create_directories(path);
+        path = path / fmt::format("crash-{}-server.txt", get_filename_formatted_date_time());
+        std::ofstream out(path, std::ios::out | std::ios::trunc);
+        print_crash_message(out, ctx);
+        print_stacktrace(out, stacktrace);
+        fmt::print(fmt::fg(fmt::terminal_color::red), "This crash report has been saved to: {}\n", absolute(path));
+    }
+    catch (...) {
+        fmt::print(fmt::fg(fmt::terminal_color::red), "We were unable to save this crash report to disk.\n");
+    }
 
     if (!should_report(stacktrace, ctx)) {
         sentry_value_decref(event);
