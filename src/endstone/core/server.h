@@ -67,6 +67,7 @@ public:
     void disablePlugins() const;
 
     [[nodiscard]] Scheduler &getScheduler() const override;
+    [[nodiscard]] EndstoneScheduler &getEndstoneScheduler() const;
 
     [[nodiscard]] Level *getLevel() const override;
 

@@ -157,9 +157,14 @@ void EndstoneServer::setLevel(::Level &level)
     on_map_created_ = static_cast<ServerMapDataManager *>(level.getMapDataManager().get().access())
                           ->getOnCreateMapSavedDataConnector()
                           .connect(
-                              [&](MapItemSavedData &map) {
-                                  MapInitializeEvent e{map.getMapView()};
-                                  getPluginManager().callEvent(e);
+                              [&](const MapItemSavedData &map_data) {
+                                  // The map origin isn't initialized yet at this point.
+                                  // Defer the event to the next tick to ensure all data is fully set.
+                                  auto &map = map_data.getMapView();
+                                  getEndstoneScheduler().runTask([&]() {
+                                      MapInitializeEvent e{map};
+                                      getPluginManager().callEvent(e);
+                                  });
                               },
                               Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
 
@@ -370,6 +375,11 @@ void EndstoneServer::disablePlugins() const
 }
 
 Scheduler &EndstoneServer::getScheduler() const
+{
+    return *scheduler_;
+}
+
+EndstoneScheduler &EndstoneServer::getEndstoneScheduler() const
 {
     return *scheduler_;
 }
