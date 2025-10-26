@@ -21,6 +21,7 @@
 #include <string>
 
 #include <cpptrace/cpptrace.hpp>
+#include <cpptrace/formatting.hpp>
 #include <fmt/format.h>
 
 #include "endstone/detail/common.h"
@@ -39,6 +40,15 @@ namespace fs = std::filesystem;
 namespace endstone::core {
 
 namespace {
+
+const cpptrace::formatter &get_formatter()
+{
+    static auto formatter = cpptrace::formatter{}  //
+                                .addresses(cpptrace::formatter::address_mode::object)
+                                .paths(cpptrace::formatter::path_mode::basename)
+                                .snippets(true);
+    return formatter;
+}
 
 #ifdef _WIN32
 struct exception_slot {
@@ -89,36 +99,6 @@ const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction
                                           SIGNAL_DEF(SIGFPE, "FloatingPointException"),
                                           SIGNAL_DEF(SIGSEGV, "Segfault")};
 #endif
-
-void print_frame(std::ostream &stream, bool color, unsigned frame_number_width, std::size_t counter,
-                 const cpptrace::stacktrace_frame &frame)
-{
-    const auto *reset = color ? "\033[0m" : "";
-    const auto *green = color ? "\033[32m" : "";
-    const auto *yellow = color ? "\033[33m" : "";
-    const auto *blue = color ? "\033[34m" : "";
-    std::string line = fmt::format("[{:<{}}] ", counter, frame_number_width);
-    if (frame.is_inline) {
-        line += fmt::format("{:<{}}", "(inlined)", 2 * sizeof(cpptrace::frame_ptr) + 2);
-    }
-    else {
-        line += fmt::format("{}0x{:<{}x}{}", blue, frame.raw_address, 2 * sizeof(cpptrace::frame_ptr), reset);
-        line += fmt::format(" {}(0x{:09x}){}", green, frame.object_address, reset);
-    }
-    if (!frame.symbol.empty()) {
-        line += fmt::format(" in {}{}{}", yellow, frame.symbol, reset);
-    }
-    if (!frame.filename.empty()) {
-        line += fmt::format(" at {}{}{}", green, frame.filename, reset);
-        if (frame.line.has_value()) {
-            line += fmt::format(":{}{}{}", blue, frame.line.value(), reset);
-            if (frame.column.has_value()) {
-                line += fmt::format(":{}{}{}", blue, frame.column.value(), reset);
-            }
-        }
-    }
-    stream << line;
-}
 
 bool should_report(const cpptrace::stacktrace &stacktrace, const sentry_ucontext_t *ctx)
 {
@@ -195,23 +175,7 @@ CrashHandler::~CrashHandler()
 
 void print_stacktrace(std::ostream &stream, const cpptrace::stacktrace &stacktrace)
 {
-    stream << "Stack trace (most recent call first):" << '\n';
-    if (const auto &frames = stacktrace.frames; frames.empty()) {
-        stream << "<empty trace>" << '\n';
-    }
-    else {
-        std::size_t counter = 0;
-        const auto color = cpptrace::isatty(cpptrace::stderr_fileno);
-        const auto frame_number_width = std::to_string(frames.size()).length();
-        for (const auto &frame : frames) {
-            print_frame(stream, color, frame_number_width, counter, frame);
-            stream << '\n';
-            if (frame.line.has_value() && !frame.filename.empty()) {
-                stream << cpptrace::get_snippet(frame.filename, frame.line.value(), 2, color);
-            }
-            counter++;
-        }
-    }
+    get_formatter().print(stream, stacktrace);
 }
 
 }  // namespace endstone::core
