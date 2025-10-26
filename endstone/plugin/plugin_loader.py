@@ -47,30 +47,31 @@ def find_python():
     raise RuntimeError(f"Unable to find Python executable. Attempted paths: {paths}")
 
 
+sys.executable = find_python()
+sys._base_executable = sys.executable
+
+
 class PythonPluginLoader(PluginLoader):
     SUPPORTED_API = ["0.5", "0.6", "0.7", "0.8", "0.9", "0.10", "0.11"]
 
     def __init__(self, server: Server):
         PluginLoader.__init__(self, server)
-
+        self._invalidate_caches()
         self._plugins = []
+        self._metrics = Metrics(self.server)
 
-        # fix sys.executable variable
-        sys.executable = find_python()
-        sys._base_executable = sys.executable
+    def __del__(self):
+        self._metrics.shutdown()
 
-        # invalidate previously loaded modules (in case of /reload)
+    def _invalidate_caches(self):
         importlib.invalidate_caches()
         for module in list(sys.modules.keys()):
             if module.startswith("endstone_"):
                 del sys.modules[module]
 
-        # prepare the temp site-dir
         self._prefix = os.path.join("plugins", ".local")
         for site_dir in site.getsitepackages(prefixes=[self._prefix]):
             site.addsitedir(site_dir)
-
-            # delete old and/or invalid packages
             if (
                 os.path.exists(site_dir)
                 and os.path.commonpath([site_dir, self._prefix]) == self._prefix
@@ -81,12 +82,6 @@ class PythonPluginLoader(PluginLoader):
                         continue
                     if directory.startswith("endstone_") or directory.startswith("~"):
                         shutil.rmtree(os.path.join(site_dir, directory))
-
-        # initialize the metrics
-        self._metrics = Metrics(self.server)
-
-    def __del__(self):
-        self._metrics.shutdown()
 
     @staticmethod
     def _build_commands(commands: dict) -> list[Command]:
