@@ -25,6 +25,7 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
 ]
 dependencies = [
+    "asyncio",
     "click",
     "colorlog",
     "endstone-bstats",
