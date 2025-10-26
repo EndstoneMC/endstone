@@ -160,7 +160,7 @@ sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event
     print_stacktrace(std::cerr, stacktrace);
 
     try {
-        fs::path path = "./crash-reports/";
+        fs::path path = "./crash_reports/";
         fs::create_directories(path);
         path = path / fmt::format("crash-{}-server.txt", get_filename_formatted_date_time());
         std::ofstream out(path, std::ios::out | std::ios::trunc);
