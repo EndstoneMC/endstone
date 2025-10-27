@@ -86,7 +86,7 @@ jobs:
 
     steps:
       - name: Restore Artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           pattern: endstone-wheels-*
           path: dist
