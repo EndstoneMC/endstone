@@ -52,7 +52,7 @@ public:
     [[nodiscard]] virtual bool containsAnyLiquid(AABB const &) const = 0;
     [[nodiscard]] virtual bool containsMaterial(AABB const &, MaterialType) const = 0;
     [[nodiscard]] virtual bool isInWall(const Vec3 &) const = 0;
-    [[nodiscard]] virtual bool isUnderWater(Vec3 const &, Block const &) const = 0;
+    [[nodiscard]] virtual bool isUnderWater(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
     [[nodiscard]] virtual bool hasBorderBlock(BlockPos) const = 0;
@@ -60,6 +60,7 @@ public:
     [[nodiscard]] virtual bool hasChunksAt(BlockPos const &, int, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(AABB const &, bool) const = 0;
     [[nodiscard]] virtual DimensionType getDimensionId() const = 0;
+    virtual bool shouldFireEvents(const LevelChunk &) = 0;
     virtual void fetchAABBs(std::vector<AABB> &, AABB const &, bool) const = 0;
     virtual void fetchCollisionShapes(std::vector<AABB> &, AABB const &, bool,
                                       optional_ref<GetCollisionShapeInterface const>, std::vector<AABB> *) const = 0;
@@ -119,9 +120,11 @@ public:
     [[nodiscard]] virtual bool canDoBlockDrops() const = 0;
     [[nodiscard]] virtual bool canDoContainedItemDrops() const = 0;
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
-    virtual void updateCheckForValidityState(bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
+    virtual void fireBlockChanged(const BlockPos &, uint32_t, const Block &, const Block &, int,
+                                  BlockChangedEventTarget, const ActorBlockSyncMessage *, Actor *) = 0;
+    virtual void blockEvent(const BlockPos &, int, int) = 0;
 };
 
 class BlockSource : public IBlockSource,
