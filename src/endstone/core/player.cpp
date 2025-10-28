@@ -290,7 +290,7 @@ void EndstonePlayer::setOp(bool value)
         return;
     }
 
-    getPlayer().setPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
+    getPlayer().setCommandPermissions(value ? CommandPermissionLevel::Admin : CommandPermissionLevel::Any);
     recalculatePermissions();
     updateCommands();
     last_op_status_ = value;
@@ -825,10 +825,8 @@ void EndstonePlayer::initFromConnectionRequest(
                 device_os_ = "Gear VR";
                 break;
             case BuildPlatform::UWP:
-                device_os_ = "Windows";
-                break;
             case BuildPlatform::Win32:
-                device_os_ = "Windows x86";
+                device_os_ = "Windows";
                 break;
             case BuildPlatform::tvOS_Deprecated:
                 device_os_ = "Apple TV";

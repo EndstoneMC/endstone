@@ -16,6 +16,9 @@
 
 #include <cstdint>
 
+#include "bedrock/core/container/dense_enum_map.h"
+#include "bedrock/shared_types/legacy/facing.h"
+#include "bedrock/voxel_shape/registry_handle.h"
 #include "bedrock/world/level/block/detection_rule.h"
 #include "bedrock/world/level/block/flammable.h"
 
@@ -26,6 +29,8 @@ struct BlockComponentDirectData {
         RENDERING = 0x2,
     };
 
+    using FaceShapeHandles =
+        Bedrock::DenseEnumMap<SharedTypes::Facing, VoxelShapes::RegistryHandle, SharedTypes::Facing::MAX>;
     class BlockTransformationComponent const *block_transformation_component;
     class BlockCollisionBoxComponent const *block_collision_box_component;
     class BlockSelectionBoxComponent const *block_selection_box_component;
@@ -46,6 +51,8 @@ struct BlockComponentDirectData {
     float friction;
     float destroy_speed;
     DetectionRule water_detection_rule;
+    VoxelShapes::RegistryHandle occlusion_shape_handle;
+    BlockComponentDirectData::FaceShapeHandles occlusion_shape_handles_by_face;
     LayerBitMask finalized;
     class BlockDestructibleByMiningComponent const *destructible_by_mining_component;
 };

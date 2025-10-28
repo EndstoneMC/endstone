@@ -24,6 +24,7 @@
 #include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block/block_change_context.h"
 #include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_source_listener.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
@@ -51,7 +52,7 @@ public:
     [[nodiscard]] virtual bool containsAnyLiquid(AABB const &) const = 0;
     [[nodiscard]] virtual bool containsMaterial(AABB const &, MaterialType) const = 0;
     [[nodiscard]] virtual bool isInWall(const Vec3 &) const = 0;
-    [[nodiscard]] virtual bool isUnderWater(Vec3 const &, Block const &) const = 0;
+    [[nodiscard]] virtual bool isUnderWater(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
     [[nodiscard]] virtual bool hasBorderBlock(BlockPos) const = 0;
@@ -59,6 +60,7 @@ public:
     [[nodiscard]] virtual bool hasChunksAt(BlockPos const &, int, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(AABB const &, bool) const = 0;
     [[nodiscard]] virtual DimensionType getDimensionId() const = 0;
+    virtual bool shouldFireEvents(const LevelChunk &) = 0;
     virtual void fetchAABBs(std::vector<AABB> &, AABB const &, bool) const = 0;
     virtual void fetchCollisionShapes(std::vector<AABB> &, AABB const &, bool,
                                       optional_ref<GetCollisionShapeInterface const>, std::vector<AABB> *) const = 0;
@@ -85,8 +87,10 @@ public:
     virtual void removeListener(Listener &) = 0;
     virtual ActorSpan fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
     virtual ActorSpan fetchEntities(ActorType, AABB const &, Actor const *, std::function<bool(Actor *)>) = 0;
-    virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
-    virtual bool removeBlock(const BlockPos &) = 0;
+    virtual bool setBlock(const BlockPos &, const Block &, int, const ActorBlockSyncMessage *,
+                          const BlockChangeContext &) = 0;
+    virtual bool setExtraBlock(const BlockPos &, const Block &, int) = 0;
+    virtual bool removeBlock(const BlockPos &, const BlockChangeContext &) = 0;
     [[nodiscard]] virtual Height getMinHeight() const = 0;
     [[nodiscard]] virtual Height getMaxHeight() const = 0;
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
@@ -116,9 +120,11 @@ public:
     [[nodiscard]] virtual bool canDoBlockDrops() const = 0;
     [[nodiscard]] virtual bool canDoContainedItemDrops() const = 0;
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
-    virtual void updateCheckForValidityState(bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
+    virtual void fireBlockChanged(const BlockPos &, uint32_t, const Block &, const Block &, int,
+                                  BlockChangedEventTarget, const ActorBlockSyncMessage *, Actor *) = 0;
+    virtual void blockEvent(const BlockPos &, int, int) = 0;
 };
 
 class BlockSource : public IBlockSource,

@@ -27,7 +27,7 @@ classifiers = [
 dependencies = [
     "click",
     "colorlog",
-    "endstone-bstats(<1.0.0)",
+    "endstone-bstats==0.1.0",
     "importlib-metadata",
     "importlib-resources",
     "numpy",

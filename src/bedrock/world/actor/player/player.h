@@ -165,7 +165,7 @@ public:
     const ItemStack &setSelectedSlot(int);
     [[nodiscard]] const std::string &getPlatformOnlineId() const;
     [[nodiscard]] const std::string &getName() const;
-    void setPermissions(CommandPermissionLevel permission);
+    void setCommandPermissions(CommandPermissionLevel permission);
     void setBedRespawnPosition(const BlockPos &);
     bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
     bool canSleep() const;

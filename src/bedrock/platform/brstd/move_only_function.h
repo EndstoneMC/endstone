@@ -14,19 +14,19 @@
 
 #pragma once
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
+#include "bedrock/platform/brstd/detail/function.h"
 
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 10
-#define ENDSTONE_VERSION_PATCH 8
+namespace brstd {
+template <class Signature>
+class move_only_function
+    : public detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false> {
+public:
+    template <typename F>
+    move_only_function(F &&f)
+        requires(!std::is_same_v<move_only_function, std::remove_cvref_t<F>>)
+    {
+        this->template construct_from_function<brstd::move_only_function, F>(std::forward<F>(f));
+    }
+};
 
-#define NETWORK_PROTOCOL_VERSION 859
-
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
+}  // namespace brstd

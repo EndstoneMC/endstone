@@ -91,6 +91,7 @@ public:
     virtual int getPatternIndex() const = 0;
     virtual Rarity getBaseRarity() const;
     virtual Rarity getRarity(ItemStackBase const &stack) const;
+    virtual std::uint32_t getSwingDuration() const;
     virtual bool showsDurabilityInCreative() const = 0;
     virtual bool isWearableThroughLootTable(CompoundTag const *) const = 0;
     virtual bool canDestroyInCreative() const = 0;
@@ -153,7 +154,7 @@ public:
     virtual void enchantProjectile(ItemStackBase const &, Actor &) const = 0;
     virtual ActorLocation getEquipLocation() const = 0;
     virtual LevelSoundEvent getEquipSound() const = 0;
-    virtual bool shouldSendInteractionGameEvents() const = 0;
+    virtual bool shouldEmitInUseGameEvents() const = 0;
     virtual bool useInterruptedByAttacking() const = 0;
     virtual bool hasSameRelevantUserData(ItemStackBase const &, ItemStackBase const &) const = 0;
     virtual void initClient(Json::Value const &, SemVersion const &, JsonBetaState, IPackLoadContext &) = 0;

@@ -255,7 +255,9 @@ enum class MinecraftPacketIds : int {
     ClientboundControlSchemeSetPacket = 327,
     ServerScriptDebugDrawerPacket = 328,
     ServerboundPackSettingChangePacket = 329,
-    EndId = 330,
+    DataStoreSyncPacket = 330,
+    GraphicsParameterOverridePacket = 331,
+    EndId = 332,
 };
 
 class NetEventCallback;
@@ -294,6 +296,7 @@ public:
     virtual ~Packet() = default;
     [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
     [[nodiscard]] virtual std::string getName() const = 0;
+    [[nodiscard]] virtual size_t getMaxSize() const;
     [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t packet_size, bool is_receiver_server) const;
     virtual void writeWithSerializationMode(BinaryStream &bit_stream, const cereal::ReflectionCtx &reflection_ctx,
                                             std::optional<SerializationMode> mode) const;

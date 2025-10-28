@@ -31,15 +31,14 @@ enum class BlockOcclusionType : int {
     Unknown = 0,
     HalfSlab = 1,
     Leaf = 2,
-    ThinConnects2D = 3,
-    Connects2D = 4,
-    isLiquid = 5,
-    Portal = 6,
-    Ice = 7,
-    Cactus = 8,
-    PowderSnow = 9,
-    SculkShrieker = 10,
-    Default = 11,
+    Connects2D = 3,
+    isLiquid = 4,
+    Portal = 5,
+    Ice = 6,
+    Cactus = 7,
+    PowderSnow = 8,
+    SculkShrieker = 9,
+    Default = 10,
 };
 
 struct CachedComponentData {
@@ -132,4 +131,4 @@ private:
     BlockRuntimeId network_id_;                        // +300
     bool has_runtime_id_;                              //
 };
-BEDROCK_STATIC_ASSERT_SIZE(Block, 304, 312);
+BEDROCK_STATIC_ASSERT_SIZE(Block, 320, 328);

@@ -133,7 +133,7 @@ EndstoneItemMeta::EndstoneItemMeta(const ::CompoundTag &tag)
     }
 
     // Unbreakable
-    if (const auto unbreakable = tag.getBoolean("Unbreakable")) {
+    if (const auto unbreakable = tag.getBoolean(ItemStackBase::TAG_UNBREAKABLE)) {
         unbreakable_ = unbreakable;
     }
 
@@ -333,7 +333,7 @@ void EndstoneItemMeta::applyToItem(CompoundTag &tag) const
     }
 
     if (isUnbreakable()) {
-        tag.putBoolean("Unbreakable", unbreakable_);
+        tag.putBoolean(ItemStackBase::TAG_UNBREAKABLE, unbreakable_);
     }
 
     if (hasDamage()) {
