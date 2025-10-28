@@ -456,7 +456,6 @@ public:
     virtual Bedrock::NotNullNonOwnerPtr<PlayerAbilitiesManager> getPlayerAbilitiesManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsManager> getPlayerPermissionsManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsSynchroniser> getPlayerPermissionsSynchroniser() = 0;
-    virtual MolangPackSettingsCache *getMolangPackSettingsCache() = 0;
     [[nodiscard]] virtual Recipes &getRecipes() const = 0;
     [[nodiscard]] virtual BlockReducer *getBlockReducer() const = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimPatternRegistry const> getTrimPatternRegistry() const = 0;
