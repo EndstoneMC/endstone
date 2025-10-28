@@ -456,6 +456,7 @@ public:
     virtual Bedrock::NotNullNonOwnerPtr<PlayerAbilitiesManager> getPlayerAbilitiesManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsManager> getPlayerPermissionsManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsSynchroniser> getPlayerPermissionsSynchroniser() = 0;
+    virtual MolangPackSettingsCache *getMolangPackSettingsCache() = 0;
     [[nodiscard]] virtual Recipes &getRecipes() const = 0;
     [[nodiscard]] virtual BlockReducer *getBlockReducer() const = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimPatternRegistry const> getTrimPatternRegistry() const = 0;
@@ -465,9 +466,6 @@ public:
     [[nodiscard]] virtual BlockType const &getRegisteredBorderBlock() const = 0;
     virtual void *getLevelChunkPerformanceTelemetry() = 0;
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
-    virtual void addBlockSourceForValidityTracking(BlockSource *) = 0;
-    virtual void removeBlockSourceFromValidityTracking(BlockSource *) = 0;
-    virtual void *getBlockSourceValidityManager() = 0;
     virtual void *getChunkGenerationManager() = 0;
     [[nodiscard]] virtual void *getChunkGenerationManager() const = 0;
     [[nodiscard]] virtual void *getMapDataManager() const = 0;
