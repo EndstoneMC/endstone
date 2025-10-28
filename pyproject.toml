@@ -26,7 +26,7 @@ classifiers = [
 ]
 dependencies = [
     "click",
-    "endstone-bstats",
+    "endstone-bstats==0.1.0",
     "importlib-metadata",
     "importlib-resources",
     "numpy",
