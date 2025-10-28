@@ -19,14 +19,16 @@
 
 size_t Packet::getMaxSize() const
 {
-    // TODO(fixme): check value
     return 0xA00000;
 }
 
 Bedrock::Result<void> Packet::checkSize(std::uint64_t packet_size, bool is_receiver_server) const
 {
     if (is_receiver_server && packet_size > getMaxSize()) {
-        return BEDROCK_NEW_ERROR(std::errc::message_size);
+        return BEDROCK_NEW_ERROR_MESSAGE(std::errc::message_size,
+                                         fmt::format("Server-bound packet too large! Type={} Size={}",
+                                                     static_cast<std::underlying_type_t<MinecraftPacketIds>>(getId()),
+                                                     packet_size));
     }
     return {};
 }
