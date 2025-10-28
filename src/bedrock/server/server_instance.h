@@ -71,7 +71,6 @@ private:
     Bedrock::Threading::Mutex mutex_destruction_;
     Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> event_coordinator_;
     std::atomic<InstanceState> instance_state_;
-    SPSCQueue<std::function<void()>, 512UL> command_queue_;
     Bedrock::Threading::Thread server_instance_thread_;
     Bedrock::Threading::Mutex resume_mutex_;
     Bedrock::Threading::ConditionVariable resume_signal_;
