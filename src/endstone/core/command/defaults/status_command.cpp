@@ -31,6 +31,10 @@ StatusCommand::StatusCommand() : EndstoneCommand("status")
 
 bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
+    if (!testPermission(sender)) {
+        return true;
+    }
+
     sender.sendMessage("{}---- {}Server status{} ----", ColorFormat::Green, ColorFormat::Reset, ColorFormat::Green);
 
     auto &server = entt::locator<EndstoneServer>::value();
@@ -75,12 +79,12 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
         avg_tps_color = ColorFormat::Gold;
     }
 
-    sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color,
-                       tps, server.getCurrentTickUsage() * 100, ColorFormat::Gold,
-                       tps_color, server.getCurrentMillisecondsPerTick());
+    sender.sendMessage("{}Current TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, tps_color, tps,
+                       server.getCurrentTickUsage() * 100, ColorFormat::Gold, tps_color,
+                       server.getCurrentMillisecondsPerTick());
     sender.sendMessage("{}Average TPS: {}{:.2f} ({:.2f}%). {}MSPT: {}{:.2f}ms", ColorFormat::Gold, avg_tps_color,
-                       avg_tps, server.getAverageTickUsage() * 100, ColorFormat::Gold,
-                       avg_tps_color, server.getAverageMillisecondsPerTick());
+                       avg_tps, server.getAverageTickUsage() * 100, ColorFormat::Gold, avg_tps_color,
+                       server.getAverageMillisecondsPerTick());
 
     sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, detail::get_thread_count());
 
