@@ -80,10 +80,11 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
     }
 
     //  We've already done the permission check above
-    command->permission_level_ = CommandPermissionLevel::Any;
-
+    auto permission_level = command->permission_level_;
+    command->permission_level_ = CommandPermissionLevel::Any;  // Override
     CommandOutput output{MinecraftCommands::getOutputType(*command_origin)};
     command->run(*command_origin, output);
+    command->permission_level_ = permission_level;  // Restore
 
     // redirect outputs to sender
     for (const auto &message : output.getMessages()) {
