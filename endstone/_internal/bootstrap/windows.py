@@ -33,13 +33,15 @@ class PopenWithDll(subprocess.Popen):
         c2pwrite,
         errread,
         errwrite,
-        unused_restore_signals,
-        unused_gid,
-        unused_gids,
-        unused_uid,
-        unused_umask,
-        unused_start_new_session,
-        unused_process_group,
+        # unused_restore_signals,
+        # unused_gid,
+        # unused_gids,
+        # unused_uid,
+        # unused_umask,
+        # unused_start_new_session,
+        # unused_process_group,
+        *unused_args,
+        **unused_kwargs,
     ):
         """Execute program (MS Windows version)"""
 
