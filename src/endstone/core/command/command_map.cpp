@@ -52,39 +52,63 @@ EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_line) const
 {
     if (!command_line.empty() && command_line[0] == '/') {
+        // remove the leading slash if present
         command_line = command_line.substr(1);
     }
 
+    // split the command line by space
     std::vector<std::string> args;
     split(args, command_line, boost::is_any_of(" "), boost::token_compress_on);
     if (args.empty()) {
         return false;
     }
 
-    const auto &registry = getHandle().getRegistry();
-    const auto *signature = registry.findCommand(args[0]);
-    if (!signature) {
+    // get the command by name
+    auto name = args[0];
+    std::ranges::transform(name, name.begin(), ::tolower);
+    const std::shared_ptr<Command> command = getCommand(name);
+    if (!command) {
         sender.sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
         return false;
     }
 
-    const auto target =
-        std::make_shared<MinecraftCommandWrapper>(const_cast<MinecraftCommands &>(getHandle()), *signature);
-    target->registerTo(*this);
-
-    try {
-        return target->execute(sender, std::vector(args.begin() + 1, args.end()));
+    if (!custom_commands_.contains(name)) {
+        // This is a vanilla command
+        try {
+            return command->execute(sender, std::vector(args.begin() + 1, args.end()));
+        }
+        catch (const std::exception &e) {
+            server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());
+            return false;
+        }
     }
-    catch (const std::exception &e) {
-        server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());
-        return false;
+    else {
+        // This is a custom command
+        const auto command_origin = MinecraftCommandWrapper::getCommandOrigin(sender);
+        if (!command_origin) {
+            sender.sendErrorMessage("Unsupported sender type!");
+            return false;
+        }
+        const auto *compiled = getHandle().compileCommand(  //
+            command_line, *command_origin, CurrentCmdVersion::Latest,
+            [&sender](auto const &err) { sender.sendErrorMessage(err); });
+        if (!compiled) {
+            return false;
+        }
+        try {
+            return command->execute(sender, static_cast<const MinecraftCommandAdapter *>(compiled)->args_);
+        }
+        catch (const std::exception &e) {
+            server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());
+            return false;
+        }
     }
 }
 
 void EndstoneCommandMap::clearCommands()
 {
     std::lock_guard lock(mutex_);
-    for (const auto &[name, command] : custom_commands_) {
+    for (const auto &command : custom_commands_ | std::views::values) {
         command->unregisterFrom(*this);
         unregisterCommand(command->getName());
     }
@@ -95,7 +119,6 @@ void EndstoneCommandMap::clearCommands()
 std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
 {
     std::ranges::transform(name, name.begin(), ::tolower);
-
     // Try to find the custom command we've registered
     if (const auto it = custom_commands_.find(name); it != custom_commands_.end()) {
         return it->second;
@@ -104,20 +127,14 @@ std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
     // Custom command not found, let's find it in CommandRegistry
     const auto &registry = getHandle().getRegistry();
     if (const auto *signature = registry.findCommand(name)) {
-        auto command =
-            std::make_shared<MinecraftCommandWrapper>(const_cast<MinecraftCommands &>(getHandle()), *signature);
+        auto command = std::make_shared<MinecraftCommandWrapper>(getHandle(), *signature);
         command->registerTo(*this);
         return command;
     }
-
     return nullptr;
 }
-MinecraftCommands &EndstoneCommandMap::getHandle()
-{
-    return server_.getServer().getMinecraft()->getCommands();
-}
 
-const MinecraftCommands &EndstoneCommandMap::getHandle() const
+MinecraftCommands &EndstoneCommandMap::getHandle() const
 {
     return server_.getServer().getMinecraft()->getCommands();
 }

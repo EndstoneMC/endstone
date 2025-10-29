@@ -21,6 +21,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/platform/brstd/move_only_function.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block_source.h"
@@ -34,6 +35,11 @@
 #include "bedrock/world/redstone/circuit/circuit_system.h"
 
 class Level;
+
+struct DerivedDimensionArguments {
+    ILevel &level;
+    brstd::move_only_function<std::unique_ptr<TaskGroup>(std::string_view)> create_task_group;
+};
 
 class IDimension {
 public:

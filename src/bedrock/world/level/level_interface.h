@@ -78,6 +78,8 @@
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
 
+using DimensionOwnerFactory = OwnerPtrFactory<Dimension, DerivedDimensionArguments &&>;
+
 class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:
     ~ILevel() override = default;
@@ -108,8 +110,9 @@ public:
         const = 0;
     [[nodiscard]] virtual BlockDefinitionGroup *getBlockDefinitions() const = 0;
     [[nodiscard]] virtual PropertyGroupManager &getActorPropertyGroup() const = 0;
-    virtual CameraPresets &getCameraPresets() = 0;
     [[nodiscard]] virtual CameraPresets const &getCameraPresets() const = 0;
+    virtual CameraPresets &getCameraPresets() = 0;
+    virtual const SharedTypes::Comprehensive::CameraPreset *getCameraPreset(int) = 0;
     [[nodiscard]] virtual bool getDisablePlayerInteractions() const = 0;
     virtual void setDisablePlayerInteractions(bool) = 0;
     [[nodiscard]] virtual AutomationBehaviorTreeGroup &getAutomationBehaviorTreeGroup() const = 0;
@@ -181,8 +184,8 @@ public:
     virtual SurfaceBuilderRegistry &getSurfaceBuilderRegistry() = 0;
     [[nodiscard]] virtual BiomeManager const &getBiomeManager() const = 0;
     virtual BiomeManager &getBiomeManager() = 0;
-    [[nodiscard]] virtual OwnerPtrFactory<Dimension, ILevel &, Scheduler &> const &getDimensionFactory() const = 0;
-    virtual OwnerPtrFactory<Dimension, ILevel &, Scheduler &> &getDimensionFactory() = 0;
+    [[nodiscard]] virtual const DimensionOwnerFactory &getDimensionFactory() const = 0;
+    virtual DimensionOwnerFactory &getDimensionFactory() = 0;
     [[nodiscard]] virtual Factory<BaseLightTextureImageBuilder, Level &, Scheduler &> const &
     getLightTextureImageBuilderFactory() const = 0;
     virtual Factory<BaseLightTextureImageBuilder, Level &, Scheduler &> &getLightTextureImageBuilderFactory() = 0;
@@ -331,7 +334,7 @@ public:
     virtual void registerTemporaryPointer(_TickPtr &) = 0;
     virtual void unregisterTemporaryPointer(_TickPtr &) = 0;
     virtual void *getTempEPtrManager() = 0;
-    virtual bool destroyBlock(BlockSource &, BlockPos const &, bool) = 0;
+    virtual bool destroyBlock(BlockSource &, BlockPos const &, bool, const BlockChangeContext &) = 0;
     virtual void *getLevelBlockDestroyer() = 0;
     virtual void upgradeStorageVersion(StorageVersion) = 0;
     virtual void suspendAndSave() = 0;
@@ -455,6 +458,7 @@ public:
     virtual Bedrock::NotNullNonOwnerPtr<PlayerAbilitiesManager> getPlayerAbilitiesManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsManager> getPlayerPermissionsManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsSynchroniser> getPlayerPermissionsSynchroniser() = 0;
+    virtual MolangPackSettingsCache *getMolangPackSettingsCache() = 0;
     [[nodiscard]] virtual Recipes &getRecipes() const = 0;
     [[nodiscard]] virtual BlockReducer *getBlockReducer() const = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimPatternRegistry const> getTrimPatternRegistry() const = 0;
@@ -464,9 +468,6 @@ public:
     [[nodiscard]] virtual BlockType const &getRegisteredBorderBlock() const = 0;
     virtual void *getLevelChunkPerformanceTelemetry() = 0;
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
-    virtual void addBlockSourceForValidityTracking(BlockSource *) = 0;
-    virtual void removeBlockSourceFromValidityTracking(BlockSource *) = 0;
-    virtual void *getBlockSourceValidityManager() = 0;
     virtual void *getChunkGenerationManager() = 0;
     [[nodiscard]] virtual void *getChunkGenerationManager() const = 0;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<MapDataManager> getMapDataManager() const = 0;

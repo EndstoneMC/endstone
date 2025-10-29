@@ -43,8 +43,6 @@ private:
         Bedrock::Threading::RecursiveMutex mutex;
     };
 
-    std::vector<Bedrock::PubSub::Subscription> subscriptions_;
-    SourcesList<std::shared_ptr<ContentCatalogPackSource>> content_catalog_pack_sources_;
     SourcesList<std::unique_ptr<TreatmentPackSource>> treatment_pack_sources_;
     SourcesList<std::unique_ptr<DirectoryPackSource>> directory_pack_sources_;
     SourcesList<std::unique_ptr<InPackagePackSource>> in_package_pack_sources_;

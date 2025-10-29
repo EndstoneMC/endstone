@@ -1,6 +1,6 @@
 import lazy_loader as lazy
 
-__minecraft_version__ = "1.21.114"
+__minecraft_version__ = "1.21.120"
 
 __getattr__, __dir__, __all__ = lazy.attach(
     __name__,

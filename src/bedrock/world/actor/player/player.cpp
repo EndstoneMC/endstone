@@ -120,7 +120,7 @@ const std::string &Player::getName() const
     return name_;
 }
 
-void Player::setPermissions(CommandPermissionLevel permission)
+void Player::setCommandPermissions(CommandPermissionLevel permission)
 {
     const auto component = getPersistentComponent<AbilitiesComponent>();
     component->abilities.setCommandPermissions(permission);

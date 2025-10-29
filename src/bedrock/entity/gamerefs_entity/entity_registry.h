@@ -30,9 +30,10 @@ public:
     WeakRef<EntityRegistry> getWeakRef();
 
 protected:
-    void _destroyEntity(EntityContext entity);
     friend class EntityContext;
     friend class OwnerStorageEntity;
+    using EntityInvokeCallbackFunc = std::function<void(EntityId)>;
+    void _destroyEntity(EntityContext entity);
 
 #ifdef BEDROCK_PREVIEW_SUPPORT
     bool is_viewing_;
@@ -40,4 +41,6 @@ protected:
     std::string debug_name_;
     EnTTRegistry registry_;
     std::uint32_t id_;
+    EntityInvokeCallbackFunc pre_entity_invoke_;
+    EntityInvokeCallbackFunc post_entity_invoke_;
 };

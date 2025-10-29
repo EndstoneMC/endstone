@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.8](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.8) - 2025-10-28
+
+<small>[Compare with 0.10.7](https://github.com/EndstoneMC/endstone/compare/v0.10.7...v0.10.8)</small>
+
+### Added
+
+* Added support for BDS version 1.21.120.4.
+
 ## [0.10.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.7) - 2025-10-14
 
 <small>[Compare with 0.10.6](https://github.com/EndstoneMC/endstone/compare/v0.10.6...v0.10.7)</small>

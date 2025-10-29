@@ -19,7 +19,12 @@
 
 #include "bedrock/core/utility/pub_sub/publisher.h"
 
-using PackSettingsNameValueMap = std::unordered_map<std::string, std::variant<float, bool, std::string>>;
+using PackSettingValue = std::variant<float, bool, std::string>;
+struct PackSettingValueAndDefault {
+    PackSettingValue value;
+    PackSettingValue default_value;
+};
+using PackSettingsNameValueMap = std::unordered_map<std::string, PackSettingValueAndDefault>;
 
 class PackSettings {
 public:
@@ -30,4 +35,5 @@ private:
                                              Bedrock::PubSub::ThreadModel::MultiThreaded>>
         on_change_publisher_;
     PackSettingsNameValueMap name_value_map_;
+    uint64_t last_used_;
 };

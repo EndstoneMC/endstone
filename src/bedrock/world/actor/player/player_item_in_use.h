@@ -30,7 +30,7 @@ struct PlayerItemInUse {
     void clearItemInUse(EntityContext &entity);
     void releaseUsing(Player &);
     bool shouldDisplayUseParticles(const EntityContext &);
-    bool should_send_interaction_game_events;
+    bool should_emit_game_events;
 
 private:
     ItemStack item_;

@@ -14,19 +14,22 @@
 
 #pragma once
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
+#include <cstdint>
 
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 11
-#define ENDSTONE_VERSION_PATCH 0
+namespace VoxelShapes {
+class RegistryHandle {
+    using value_type = std::uint16_t;
 
-#define NETWORK_PROTOCOL_VERSION 859
+public:
+    RegistryHandle();
+    explicit RegistryHandle(value_type index);
+    [[nodiscard]] bool isValid() const;
+    explicit operator bool() const;
+    [[nodiscard]] value_type value() const;
+    bool operator==(const RegistryHandle &);
 
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
+private:
+    static constexpr value_type INVALID_VALUE = -1;
+    value_type value_;
+};
+}  // namespace VoxelShapes

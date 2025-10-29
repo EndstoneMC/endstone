@@ -199,9 +199,25 @@ class function_base<DerivedType::Copyable, Base> : public function_base<DerivedT
 template <DerivedType, typename Signature, bool OverrideCallOperatorModifiers>
 class function_invoke_base;
 
-template <typename Return, typename... Xs>
-class function_invoke_base<DerivedType::Copyable, Return(Xs...) const, false>
-    : public function_base<DerivedType::Copyable, function_base_impl<DerivedType::Copyable, Return, false>> {};
+template <typename Return, typename... Xs, bool OverrideCallOperatorModifiers>
+class function_invoke_base<DerivedType::MoveOnly, Return(Xs...), OverrideCallOperatorModifiers>
+    : public function_base<DerivedType::MoveOnly,
+                           function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>> {};
+
+template <typename Return, typename... Xs, bool OverrideCallOperatorModifiers>
+class function_invoke_base<DerivedType::MoveOnly, Return(Xs...) const, OverrideCallOperatorModifiers>
+    : public function_base<DerivedType::MoveOnly,
+                           function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>> {};
+
+template <typename Return, typename... Xs, bool OverrideCallOperatorModifiers>
+class function_invoke_base<DerivedType::Copyable, Return(Xs...), OverrideCallOperatorModifiers>
+    : public function_base<DerivedType::Copyable,
+                           function_base_impl<DerivedType::Copyable, Return, OverrideCallOperatorModifiers, Xs...>> {};
+
+template <typename Return, typename... Xs, bool OverrideCallOperatorModifiers>
+class function_invoke_base<DerivedType::Copyable, Return(Xs...) const, OverrideCallOperatorModifiers>
+    : public function_base<DerivedType::Copyable,
+                           function_base_impl<DerivedType::Copyable, Return, OverrideCallOperatorModifiers, Xs...>> {};
 
 template <DerivedType Type, typename Signature, bool OverrideCallOperatorModifiers>
 class function_invoke : protected function_invoke_base<Type, Signature, OverrideCallOperatorModifiers> {
