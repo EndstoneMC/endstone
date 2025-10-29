@@ -38,8 +38,11 @@ public:
     virtual bool isChunkSaved(const ChunkPos &) = 0;
     virtual std::shared_ptr<LevelChunk> createNewChunk(const ChunkPos &cp, LoadMode lm, bool read_only) = 0;
     virtual std::shared_ptr<LevelChunk> getOrLoadChunk(const ChunkPos &cp, LoadMode lm, bool read_only) = 0;
-    virtual bool postProcess(ChunkViewSource &) = 0;
-    virtual void checkAndReplaceChunk(ChunkViewSource &, LevelChunk &) = 0;
+    virtual bool structurePostProcessChunk(ChunkViewSource &);
+    virtual bool decorationPostProcessChunk(ChunkViewSource &);
+    virtual void checkAndReplaceChunk(ChunkViewSource & neighborhood, LevelChunk & lc);
+    virtual bool verifyChunkNeedsNeighborAwareUpgrade(LevelChunk &);
+    virtual void neighborAwareChunkUpgrade(LevelChunk &, ChunkViewSource &);
     virtual void loadChunk(LevelChunk &, bool) = 0;
     virtual void postProcessMobsAt(BlockSource &, int, int, Random &) = 0;
     virtual void postProcessMobsAt(BlockSource &, const BoundingBox &) const = 0;
