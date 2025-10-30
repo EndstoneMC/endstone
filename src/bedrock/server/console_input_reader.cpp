@@ -12,24 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/server/console_input_reader.h"
 
-#include <atomic>
-#include <string>
+#include <codecvt>
+#include <iostream>
 
-#include "bedrock/core/threading/spsc_queue.h"
-#include "bedrock/platform/threading/thread.h"
+#include "bedrock/gameplayhandlers/block_gameplay_handler.h"
 
-class ConsoleInputReader {
-public:
-    ConsoleInputReader();
-    ~ConsoleInputReader();
-    bool getLine(std::string &out_line);
-    void unblockReading();
-
-private:
-    void _enableStdinUtf16();
-    SPSCQueue<std::string> console_input_;
-    std::atomic<bool> read_console_;
-    Bedrock::Threading::Thread console_thread_;
-};
+ConsoleInputReader::~ConsoleInputReader()
+{
+    read_console_ = false;
+    if (console_thread_.joinable()) {
+        console_thread_.join();
+    }
+}
