@@ -19,6 +19,41 @@
 namespace Lockless {
 template <typename T>
 class WeakAtomic {
+public:
+    WeakAtomic() : value_() {}
+
+    template <typename U>
+    WeakAtomic(U &&x) : value_(std::forward<U>(x))
+    {
+    }
+
+    WeakAtomic(WeakAtomic const &other) : value_(other.load()) {}
+
+    WeakAtomic(WeakAtomic &&other) : value_(std::move(other.load())) {}
+
+    operator T() const
+    {
+        return load();
+    }
+
+    template <typename U>
+    WeakAtomic const &operator=(U &&x)
+    {
+        value_.store(std::forward<U>(x), std::memory_order_relaxed);
+        return *this;
+    }
+
+    WeakAtomic const &operator=(WeakAtomic const &other)
+    {
+        value_.store(other.value.load(std::memory_order_relaxed), std::memory_order_relaxed);
+        return *this;
+    }
+
+    T load() const
+    {
+        return value_.load(std::memory_order_relaxed);
+    }
+
 private:
     std::atomic<T> value_;
 };
