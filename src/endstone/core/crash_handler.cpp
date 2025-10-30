@@ -120,7 +120,7 @@ void print_frame(std::ostream &stream, bool color, unsigned frame_number_width, 
     stream << line;
 }
 
-bool should_report(const cpptrace::stacktrace &stacktrace, const sentry_ucontext_t *ctx)
+bool should_print(const sentry_ucontext_t *ctx)
 {
 #ifdef _WIN32
     const auto *record = ctx->exception_ptrs.ExceptionRecord;
@@ -159,15 +159,14 @@ void print_crash_message(std::ostream &stream, const sentry_ucontext_t *ctx)
 
 sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
 {
+    if (!should_print(ctx)) {
+        return sentry_value_new_null();
+    }
+
     const auto stacktrace = cpptrace::generate_trace();
     auto &stream = std::cerr;
     print_crash_message(stream, ctx);
     print_stacktrace(stream, stacktrace);
-
-    if (!should_report(stacktrace, ctx)) {
-        sentry_value_decref(event);
-        return sentry_value_new_null();
-    }
     return event;
 }
 }  // namespace
