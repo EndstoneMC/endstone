@@ -159,7 +159,7 @@ class Bootstrap:
 
         # prepare the crashpad handler
         src_dir, dst_dir = Path(sentry_crashpad._get_executable("crashpad_handler")).parent, self.server_path
-        for s in src_dir.rglob('*'):
+        for s in src_dir.rglob("*"):
             if s.is_dir():
                 continue
             rel = s.relative_to(src_dir)
