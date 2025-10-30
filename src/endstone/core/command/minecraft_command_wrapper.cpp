@@ -64,7 +64,8 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
 
     const auto command_origin = getCommandOrigin(sender);
     if (!command_origin) {
-        throw std::runtime_error("Unsupported command origin type");
+        sender.sendErrorMessage("Unsupported sender type!");
+        return false;
     }
 
     // compile command
@@ -79,11 +80,12 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
         return false;
     }
 
-    //  We've already done the permission check above
-    command->permission_level_ = CommandPermissionLevel::Any;
-
+    // we've already done a stricter permission check above, we can safely bypass the vanilla check
+    const auto permission_level = command->permission_level_;
+    command->permission_level_ = CommandPermissionLevel::Any;  // bypass
     CommandOutput output{MinecraftCommands::getOutputType(*command_origin)};
     command->run(*command_origin, output);
+    command->permission_level_ = permission_level;  // clean up
 
     // redirect outputs to sender
     for (const auto &message : output.getMessages()) {

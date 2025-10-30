@@ -14,6 +14,10 @@ handler.setFormatter(
     colorlog.ColoredFormatter(
         fmt="%(log_color)s[%(asctime)s.%(msecs)03d %(levelname)s] [%(name)s] %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
+        reset=True,
+        log_colors={
+            "INFO": "reset",
+        },
     )
 )
 logging.basicConfig(level=logging.INFO, handlers=[handler])
