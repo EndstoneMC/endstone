@@ -47,6 +47,31 @@ def find_python():
     raise RuntimeError(f"Unable to find Python executable. Attempted paths: {paths}")
 
 
+def _build_commands(commands: dict) -> list[Command]:
+    results = []
+    for name, command in commands.items():
+        command = Command(name, **command)
+        results.append(command)
+    return results
+
+
+def _build_permissions(permissions: dict) -> list[Permission]:
+    results = []
+    for name, permission in permissions.items():
+        if "default" in permission:
+            value = permission["default"]
+            if isinstance(value, bool):
+                permission["default"] = PermissionDefault.TRUE if value else PermissionDefault.FALSE
+            elif isinstance(value, str):
+                permission["default"] = PermissionDefault.__members__[value.strip().replace(" ", "_").upper()]
+            elif not isinstance(value, PermissionDefault):
+                raise TypeError(f"Invalid value for default permission: {value}")
+
+        permission = Permission(name, **permission)
+        results.append(permission)
+    return results
+
+
 class PythonPluginLoader(PluginLoader):
     SUPPORTED_API = ["0.5", "0.6", "0.7", "0.8", "0.9", "0.10"]
 
@@ -87,31 +112,6 @@ class PythonPluginLoader(PluginLoader):
 
     def __del__(self):
         self._metrics.shutdown()
-
-    @staticmethod
-    def _build_commands(commands: dict) -> list[Command]:
-        results = []
-        for name, command in commands.items():
-            command = Command(name, **command)
-            results.append(command)
-        return results
-
-    @staticmethod
-    def _build_permissions(permissions: dict) -> list[Permission]:
-        results = []
-        for name, permission in permissions.items():
-            if "default" in permission:
-                value = permission["default"]
-                if isinstance(value, bool):
-                    permission["default"] = PermissionDefault.TRUE if value else PermissionDefault.FALSE
-                elif isinstance(value, str):
-                    permission["default"] = PermissionDefault.__members__[value.strip().replace(" ", "_").upper()]
-                elif not isinstance(value, PermissionDefault):
-                    raise TypeError(f"Invalid value for default permission: {value}")
-
-            permission = Permission(name, **permission)
-            results.append(permission)
-        return results
 
     def load_plugin(self, file: str) -> Plugin | None:
         env = os.environ.copy()
@@ -224,10 +224,10 @@ class PythonPluginLoader(PluginLoader):
         website = cls_attr.pop("website", "; ".join(plugin_metadata.get("project_url", [])))
 
         commands = cls_attr.pop("commands", {})
-        commands = self._build_commands(commands)
+        commands = _build_commands(commands)
 
         permissions = cls_attr.pop("permissions", {})
-        permissions = self._build_permissions(permissions)
+        permissions = _build_permissions(permissions)
 
         plugin_description = PluginDescription(
             name=name,
