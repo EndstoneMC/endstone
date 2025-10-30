@@ -89,12 +89,13 @@ int init()
 #ifdef _WIN32
 #include <windows.h>
 
-[[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE /*module*/,  // handle to DLL module
+[[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE module,  // handle to DLL module
                                      _In_ DWORD reason,          // reason for calling function
                                      _In_ LPVOID /*reserved*/)   // reserved
 {
     switch (reason) {
     case DLL_PROCESS_ATTACH: {
+        DisableThreadLibraryCalls(module);
         HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
         DWORD mode = 0;
         GetConsoleMode(console, &mode);
