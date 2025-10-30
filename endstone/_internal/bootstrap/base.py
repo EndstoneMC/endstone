@@ -154,10 +154,26 @@ class Bootstrap:
             file.writelines(minecraft_version)
 
     def _prepare(self) -> None:
+        # ensure the plugin folder exists
         self.plugin_path.mkdir(parents=True, exist_ok=True)
-        shutil.copytree(
-            Path(sentry_crashpad._get_executable("crashpad_handler")).parent, self.server_path, dirs_exist_ok=True
-        )
+
+        # prepare the crashpad handler
+        src_dir, dst_dir = Path(sentry_crashpad._get_executable("crashpad_handler")).parent, self.server_path
+        for s in src_dir.rglob('*'):
+            if s.is_dir():
+                continue
+            rel = s.relative_to(src_dir)
+            d = dst_dir / rel
+            if d.exists() and d.is_dir():
+                raise RuntimeError(f"Destination path is a directory: {d}")
+            d.parent.mkdir(parents=True, exist_ok=True)
+            if not d.exists():
+                try:
+                    shutil.copy2(s, d)
+                except Exception as e:
+                    raise RuntimeError(f"Failed to copy {s} -> {d}: {e}")
+
+        # create or update the config file
         if not self.config_path.exists():
             ref = importlib_resources.files("endstone") / "config" / "endstone.toml"
             with importlib_resources.as_file(ref) as path:
