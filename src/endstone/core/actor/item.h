@@ -19,10 +19,9 @@
 #include "endstone/core/actor/actor.h"
 
 namespace endstone::core {
-class EndstoneItem : public EndstoneActor, public Item {
+class EndstoneItem : public EndstoneActorBase<Item, ::ItemActor> {
 public:
-    explicit EndstoneItem(EndstoneServer &server, ::ItemActor &item);
-
+    using EndstoneActorBase::EndstoneActorBase;
     [[nodiscard]] Item *asItem() const override;
     [[nodiscard]] std::unique_ptr<ItemStack> getItemStack() const override;
     void setItemStack(const ItemStack &stack) override;
@@ -32,39 +31,5 @@ public:
     [[nodiscard]] bool isUnlimitedLifetime() const override;
     void setThrower(std::optional<std::int64_t> thrower) override;
     [[nodiscard]] std::optional<std::int64_t> getThrower() const override;
-
-    [[nodiscard]] ::ItemActor &getItem() const;
-
-    // forward
-    ENDSTONE_FORWARD_IMPL_PERMISSIBLE(EndstoneActor);
-    ENDSTONE_FORWARD_IMPL_ACTOR(EndstoneActor);
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override
-    {
-        return EndstoneActor::getPermissionLevel();
-    }
-    void sendMessage(const Message &message) const override
-    {
-        EndstoneActor::sendMessage(message);
-    }
-    void sendErrorMessage(const Message &message) const override
-    {
-        EndstoneActor::sendErrorMessage(message);
-    }
-    [[nodiscard]] std::string getName() const override
-    {
-        return EndstoneActor::getName();
-    }
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return EndstoneActor::asMob();
-    }
-    void setRotation(float yaw, float pitch) override
-    {
-        EndstoneActor::setRotation(yaw, pitch);
-    }
-    void remove() override
-    {
-        EndstoneActor::remove();
-    }
 };
 }  // namespace endstone::core

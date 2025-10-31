@@ -43,6 +43,7 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/message.h"
 #include "endstone/core/permissions/default_permissions.h"
+#include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/core/plugin/python_plugin_loader.h"
 #include "endstone/core/registry.h"

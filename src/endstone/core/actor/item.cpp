@@ -19,9 +19,6 @@
 #include "endstone/core/server.h"
 
 namespace endstone::core {
-
-EndstoneItem::EndstoneItem(EndstoneServer &server, ::ItemActor &actor) : EndstoneActor(server, actor) {}
-
 Item *EndstoneItem::asItem() const
 {
     return const_cast<EndstoneItem *>(this);
@@ -29,52 +26,46 @@ Item *EndstoneItem::asItem() const
 
 std::unique_ptr<ItemStack> EndstoneItem::getItemStack() const
 {
-    return EndstoneItemStack::fromMinecraft(getItem().getItemStack());
+    return EndstoneItemStack::fromMinecraft(getHandle().getItemStack());
 }
 
 void EndstoneItem::setItemStack(const ItemStack &stack)
 {
-    getItem().setItemStack(EndstoneItemStack::toMinecraft(&stack));
+    getHandle().setItemStack(EndstoneItemStack::toMinecraft(&stack));
 }
 
 int EndstoneItem::getPickupDelay() const
 {
-    return getItem().getPickUpDelay();
+    return getHandle().getPickUpDelay();
 }
 
 void EndstoneItem::setPickupDelay(int delay)
 {
-    getItem().setPickUpDelay(delay);
+    getHandle().setPickUpDelay(delay);
 }
 
 void EndstoneItem::setUnlimitedLifetime(bool unlimited)
 {
-    getItem().setLifeTime(unlimited ? std::numeric_limits<int>::max() : ItemActor::LIFETIME);
+    getHandle().setLifeTime(unlimited ? std::numeric_limits<int>::max() : ItemActor::LIFETIME);
 }
 
 bool EndstoneItem::isUnlimitedLifetime() const
 {
-    return getItem().getLifeTime() == std::numeric_limits<int>::max();
+    return getHandle().getLifeTime() == std::numeric_limits<int>::max();
 }
 
 void EndstoneItem::setThrower(std::optional<std::int64_t> thrower)
 {
-    auto &data = getItem().entity_data;
+    auto &data = getHandle().entity_data;
     data.set(static_cast<SynchedActorData::ID>(ActorDataIDs::OWNER), thrower.value_or(0UL));
 }
 
 std::optional<std::int64_t> EndstoneItem::getThrower() const
 {
-    const auto &data = getItem().entity_data;
+    const auto &data = getHandle().entity_data;
     if (data.hasData(static_cast<SynchedActorData::ID>(ActorDataIDs::OWNER))) {
         return data.getInt64(static_cast<SynchedActorData::ID>(ActorDataIDs::OWNER));
     }
     return std::nullopt;
 }
-
-ItemActor &EndstoneItem::getItem() const
-{
-    return getHandle<::ItemActor>();
-}
-
 }  // namespace endstone::core

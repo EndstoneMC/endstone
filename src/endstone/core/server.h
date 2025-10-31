@@ -28,7 +28,6 @@
 #include "endstone/core/lang/language.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/packs/endstone_pack_source.h"
-#include "endstone/core/player.h"
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/plugin/service_manager.h"
 #include "endstone/core/scheduler/scheduler.h"
@@ -37,9 +36,8 @@
 #include "endstone/server.h"
 
 namespace endstone::core {
-
 class EndstoneConsoleCommandSender;
-
+class EndstonePlayer;
 class EndstoneServer : public Server {
 public:
     explicit EndstoneServer();

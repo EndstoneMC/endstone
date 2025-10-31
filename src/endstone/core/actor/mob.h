@@ -14,58 +14,35 @@
 
 #pragma once
 
+#include "bedrock/world/actor/mob.h"
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/actor.h"
 
-class Mob;
-
 namespace endstone::core {
-class EndstoneMob : public EndstoneActor, public Mob {
+template <typename Interface, typename Handle>
+    requires std::is_base_of_v<Mob, Interface> && std::is_base_of_v<::Mob, Handle>
+class EndstoneMobBase : public EndstoneActorBase<Interface, Handle> {
 public:
-    explicit EndstoneMob(EndstoneServer &server, ::Mob &mob);
+    using EndstoneActorBase<Interface, Handle>::EndstoneActorBase;
+    [[nodiscard]] Mob *asMob() const override
+    {
+        return const_cast<EndstoneMobBase *>(this);
+    }
 
-    [[nodiscard]] Mob *asMob() const override;
-    void setRotation(float yaw, float pitch) override;
-    [[nodiscard]] bool isGliding() const override;
+    void setRotation(float yaw, float pitch) override
+    {
+        EndstoneActor::setRotation(yaw, pitch);
+        getHandle().setYBodyRotation(yaw);
+    }
 
-    ::Mob &getMob() const;
-
-    // forward
-    ENDSTONE_FORWARD_IMPL_PERMISSIBLE(EndstoneActor);
-    ENDSTONE_FORWARD_IMPL_ACTOR(EndstoneActor);
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override
+    [[nodiscard]] bool isGliding() const override
     {
-        return EndstoneActor::getPermissionLevel();
-    }
-    void sendMessage(const Message &message) const override
-    {
-        EndstoneActor::sendMessage(message);
-    }
-    void sendErrorMessage(const Message &message) const override
-    {
-        EndstoneActor::sendErrorMessage(message);
-    }
-    [[nodiscard]] std::string getName() const override
-    {
-        return EndstoneActor::getName();
-    }
-    [[nodiscard]] Item *asItem() const override
-    {
-        return EndstoneActor::asItem();
-    }
-    void remove() override
-    {
-        EndstoneActor::remove();
+        return getHandle().isGliding();
     }
 };
-}  // namespace endstone::core
 
-#define ENDSTONE_FORWARD_IMPL_MOB(IMPL)               \
-    void setRotation(float yaw, float pitch) override \
-    {                                                 \
-        IMPL::setRotation(yaw, pitch);                \
-    }                                                 \
-    [[nodiscard]] bool isGliding() const override     \
-    {                                                 \
-        return IMPL::isGliding();                     \
-    }
+class EndstoneMob : public EndstoneMobBase<Mob, ::Mob> {
+public:
+    using EndstoneMobBase::EndstoneMobBase;
+};
+}  // namespace endstone::core

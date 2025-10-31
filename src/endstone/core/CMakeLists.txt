@@ -28,7 +28,6 @@ add_library(endstone_core
         signal_handler.cpp
         skin.cpp
         actor/actor.cpp
-        actor/mob.cpp
         actor/item.cpp
         ban/ip_ban_list.cpp
         ban/player_ban_list.cpp

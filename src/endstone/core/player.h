@@ -23,22 +23,18 @@
 #include "bedrock/world/events/player_events.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/util/uuid.h"
 #include "endstone/player.h"
+#include "permissions/permissible_base.h"
 
 class Player;
 class ServerNetworkHandler;
 
 namespace endstone::core {
 
-class EndstonePlayer : public EndstoneMob, public Player {
+class EndstonePlayer : public EndstoneMobBase<Player, ::Player> {
 public:
-    explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
-
-    // CommandSender
-    [[nodiscard]] Player *asPlayer() const override;
-    void sendMessage(const Message &message) const override;
-    void sendErrorMessage(const Message &message) const override;
-    [[nodiscard]] std::string getName() const override;
+    EndstonePlayer(EndstoneServer &server, ::Player &player);
 
     // Permissible
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
@@ -51,7 +47,12 @@ public:
     Result<void> removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
-    [[nodiscard]] Server &getServer() const override;
+
+    // CommandSender
+    [[nodiscard]] Player *asPlayer() const override;
+    void sendMessage(const Message &message) const override;
+    void sendErrorMessage(const Message &message) const override;
+    [[nodiscard]] std::string getName() const override;
 
     // Actor
     void remove() override;
@@ -118,18 +119,16 @@ public:
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
+
     bool handlePacket(Packet &packet);
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();
-
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();
-
-    ::Player &getPlayer() const;
 
 private:
     friend class ::ServerNetworkHandler;
@@ -147,19 +146,6 @@ private:
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     bool spawned_ = false;
     bool last_op_status_ = false;
-
-public:
-    // forward
-    ENDSTONE_FORWARD_IMPL_ACTOR(EndstoneMob);
-    ENDSTONE_FORWARD_IMPL_MOB(EndstoneMob);
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return EndstoneMob::asMob();
-    }
-    [[nodiscard]] Item *asItem() const override
-    {
-        return EndstoneMob::asItem();
-    }
 };
 
 }  // namespace endstone::core

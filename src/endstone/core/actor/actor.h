@@ -14,9 +14,15 @@
 
 #pragma once
 
+#include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/entity/weak_entity_ref.h"
+#include "bedrock/server/commands/command_utils.h"
+#include "bedrock/world/actor/provider/actor_offset.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/actor/actor.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/permissions/permissible_base.h"
+#include "endstone/core/server.h"
 
 class Actor;
 
@@ -30,195 +36,327 @@ struct EndstoneActorComponent {
     std::shared_ptr<EndstoneActor> actor;
 };
 
-class EndstoneActor : public Actor {
+class ActorPermissibleBase {
 public:
-    EndstoneActor(EndstoneServer &server, ::Actor &actor);
+    static PermissibleBase &get();
+};
 
-    // CommandSender
-    [[nodiscard]] Actor *asActor() const override;
-    void sendMessage(const Message &message) const override;
-    void sendErrorMessage(const Message &message) const override;
-    [[nodiscard]] Server &getServer() const override;
-    [[nodiscard]] std::string getName() const override;
+template <typename Interface, typename Handle>
+    requires std::is_base_of_v<Actor, Interface> && std::is_base_of_v<::Actor, Handle>
+class EndstoneActorBase : public Interface {
+public:
+    EndstoneActorBase(EndstoneServer &server, Handle &handle) : server_(server), handle_(handle.getWeakEntity())
+    {
+        ActorPermissibleBase::get();
+    }
 
     // Permissible
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
-    [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
-    [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment *addAttachment(Plugin &plugin) override;
-    Result<void> removeAttachment(PermissionAttachment &attachment) override;
-    void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override
+    {
+        return ActorPermissibleBase::get().getPermissionLevel();
+    }
+
+    [[nodiscard]] bool isPermissionSet(std::string name) const override
+    {
+        return ActorPermissibleBase::get().isPermissionSet(name);
+    }
+
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override
+    {
+        return ActorPermissibleBase::get().isPermissionSet(perm);
+    }
+
+    [[nodiscard]] bool hasPermission(std::string name) const override
+    {
+        return ActorPermissibleBase::get().hasPermission(name);
+    }
+
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override
+    {
+        return ActorPermissibleBase::get().hasPermission(perm);
+    }
+
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    {
+        return ActorPermissibleBase::get().addAttachment(plugin, name, value);
+    }
+
+    PermissionAttachment *addAttachment(Plugin &plugin) override
+    {
+        return ActorPermissibleBase::get().addAttachment(plugin);
+    }
+
+    Result<void> removeAttachment(PermissionAttachment &attachment) override
+    {
+        return ActorPermissibleBase::get().removeAttachment(attachment);
+    }
+
+    void recalculatePermissions() override
+    {
+        ActorPermissibleBase::get().recalculatePermissions();
+    }
+
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
+    {
+        return ActorPermissibleBase::get().getEffectivePermissions();
+    }
+
+    // CommandSender
+    [[nodiscard]] ConsoleCommandSender *asConsole() const override
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] BlockCommandSender *asBlock() const override
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] Actor *asActor() const override
+    {
+        return const_cast<EndstoneActorBase *>(this);
+    }
+
+    [[nodiscard]] Player *asPlayer() const override
+    {
+        return nullptr;
+    }
+
+    void sendMessage(const Message &message) const override {}
+
+    void sendErrorMessage(const Message &message) const override {}
+
+    [[nodiscard]] Server &getServer() const override
+    {
+        return server_;
+    }
+
+    [[nodiscard]] std::string getName() const override
+    {
+        return CommandUtils::getActorName(getHandle());
+    }
 
     // Actor
-    [[nodiscard]] Mob *asMob() const override;
-    [[nodiscard]] Item *asItem() const override;
-    [[nodiscard]] std::string getType() const override;
-    [[nodiscard]] std::uint64_t getRuntimeId() const override;
-    [[nodiscard]] Location getLocation() const override;
-    [[nodiscard]] Vector<float> getVelocity() const override;
-    [[nodiscard]] bool isOnGround() const override;
-    [[nodiscard]] bool isInWater() const override;
-    [[nodiscard]] bool isInLava() const override;
-    [[nodiscard]] Level &getLevel() const override;
-    [[nodiscard]] Dimension &getDimension() const override;
-    void setRotation(float yaw, float pitch) override;
-    void teleport(Location location) override;
-    void teleport(Actor &target) override;
-    [[nodiscard]] std::int64_t getId() const override;
-    void remove() override;
-    [[nodiscard]] bool isDead() const override;
-    [[nodiscard]] bool isValid() const override;
-    [[nodiscard]] int getHealth() const override;
-    [[nodiscard]] Result<void> setHealth(int health) const override;
-    [[nodiscard]] int getMaxHealth() const override;
-    [[nodiscard]] std::vector<std::string> getScoreboardTags() const override;
-    [[nodiscard]] bool addScoreboardTag(std::string tag) const override;
-    [[nodiscard]] bool removeScoreboardTag(std::string tag) const override;
-    [[nodiscard]] bool isNameTagVisible() const override;
-    void setNameTagVisible(bool visible) override;
-    [[nodiscard]] bool isNameTagAlwaysVisible() const override;
-    void setNameTagAlwaysVisible(bool visible) override;
-    [[nodiscard]] std::string getNameTag() const override;
-    void setNameTag(std::string name) override;
-    [[nodiscard]] std::string getScoreTag() const override;
-    void setScoreTag(std::string score) override;
-
-    ::Actor &getActor() const;
-
-protected:
-    template <typename T>
-    T &getHandle() const
+    [[nodiscard]] Mob *asMob() const override
     {
-        auto *ptr = actor_.tryUnwrap<T>(/*include_removed*/ true);
+        return nullptr;
+    }
+
+    [[nodiscard]] Item *asItem() const override
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] std::string getType() const override
+    {
+        return getHandle().getActorIdentifier().getCanonicalName();
+    }
+
+    [[nodiscard]] std::uint64_t getRuntimeId() const override
+    {
+        return getHandle().getRuntimeID().raw_id;
+    }
+
+    [[nodiscard]] Location getLocation() const override
+    {
+        auto [x, y, z] = getHandle().getPosition();
+        y -= ActorOffset::getHeightOffset(getHandle().getEntity());
+        const auto &[pitch, yaw] = getHandle().getRotation();
+        return {&getDimension(), x, y, z, pitch, yaw};
+    }
+
+    [[nodiscard]] Vector<float> getVelocity() const override
+    {
+        if (getHandle().hasCategory(ActorCategory::Mob) || getHandle().hasCategory(ActorCategory::Ridable)) {
+            auto *vehicle = getHandle().getVehicle();
+            if (!vehicle) {
+                vehicle = &getHandle();
+            }
+            if (auto *component = vehicle->template tryGetComponent<PostTickPositionDeltaComponent>()) {
+                const auto &delta = component->value;
+                return {delta.x, delta.y, delta.z};
+            }
+        }
+        const auto &delta = getHandle().getPosDelta();
+        return {delta.x, delta.y, delta.z};
+    }
+
+    [[nodiscard]] bool isOnGround() const override
+    {
+        return getHandle().isOnGround();
+    }
+
+    [[nodiscard]] bool isInWater() const override
+    {
+        return getHandle().isInWater();
+    }
+
+    [[nodiscard]] bool isInLava() const override
+    {
+        return getHandle().isInLava();
+    }
+
+    [[nodiscard]] Level &getLevel() const override
+    {
+        {
+            return *server_.getLevel();
+        }
+    }
+
+    [[nodiscard]] Dimension &getDimension() const override
+    {
+        return *getLevel().getDimension(getHandle().getDimension().getName());
+    }
+
+    void setRotation(float yaw, float pitch) override
+    {
+        getHandle().setRotationWrapped({pitch, yaw});
+    }
+
+    void teleport(Location location) override
+    {
+        DimensionType destination_dimension = VanillaDimensions::Undefined;
+        if (auto *dimension = location.getDimension(); dimension) {
+            destination_dimension = static_cast<EndstoneDimension *>(dimension)->getHandle().getDimensionId();
+        }
+
+        auto rotation = RotationCommandUtils::RotationData{RelativeFloat{location.getPitch(), false},
+                                                           RelativeFloat{location.getYaw(), false}, std::nullopt};
+
+        auto target =
+            TeleportCommand::computeTarget(getHandle(),                                          // victim
+                                           {location.getX(), location.getY(), location.getZ()},  // destination
+                                           nullptr,                                              // facing
+                                           destination_dimension,                                //  dimension
+                                           rotation,                                             // rotation
+                                           CommandVersion::CurrentVersion);
+
+        TeleportCommand::applyTarget(getHandle(), std::move(target), /*keep_velocity*/ false);
+    }
+
+    void teleport(Actor &target) override
+    {
+        teleport(target.getLocation());
+    }
+
+    [[nodiscard]] std::int64_t getId() const override
+    {
+        return getHandle().getOrCreateUniqueID().raw_id;
+    }
+
+    void remove() override
+    {
+        getHandle().remove();
+    }
+
+    [[nodiscard]] bool isDead() const override
+    {
+        return !getHandle().isAlive();
+    }
+
+    [[nodiscard]] bool isValid() const override
+    {
+        const auto *handle = handle_.tryUnwrap<Handle>();
+        if (!handle) {
+            return false;
+        }
+        return handle->isAlive();
+    }
+
+    [[nodiscard]] int getHealth() const override
+    {
+        return getHandle().getHealth();
+    }
+
+    [[nodiscard]] Result<void> setHealth(int health) const override
+    {
+        ENDSTONE_CHECKF(health >= 0 && health <= getMaxHealth(),  //
+                        "Health value ({}) must be between 0 and {}.", health, getMaxHealth())
+        auto mutable_attr = getHandle().getMutableAttribute("minecraft:health");
+        mutable_attr.instance->setCurrentValue(static_cast<float>(health), mutable_attr.context);
+        return {};
+    }
+
+    [[nodiscard]] int getMaxHealth() const override
+    {
+        return getHandle().getMaxHealth();
+    }
+
+    [[nodiscard]] std::vector<std::string> getScoreboardTags() const override
+    {
+        return getHandle().getTags();
+    }
+
+    [[nodiscard]] bool addScoreboardTag(std::string tag) const override
+    {
+        return getHandle().addTag(tag);
+    }
+
+    [[nodiscard]] bool removeScoreboardTag(std::string tag) const override
+    {
+        return getHandle().removeTag(tag);
+    }
+
+    [[nodiscard]] bool isNameTagVisible() const override
+    {
+        return getHandle().canShowNameTag();
+    }
+
+    void setNameTagVisible(bool visible) override
+    {
+        getHandle().setNameTagVisible(visible);
+    }
+
+    [[nodiscard]] bool isNameTagAlwaysVisible() const override
+    {
+        return getHandle().entity_data.getInt8(static_cast<SynchedActorData::ID>(ActorDataIDs::NAMETAG_ALWAYS_SHOW)) !=
+               0;
+    }
+
+    void setNameTagAlwaysVisible(bool visible) override
+    {
+        getHandle().entity_data.template set<SynchedActorData::TypeInt8>(
+            static_cast<SynchedActorData::ID>(ActorDataIDs::NAMETAG_ALWAYS_SHOW), visible);
+    }
+
+    [[nodiscard]] std::string getNameTag() const override
+    {
+        return getHandle().getNameTag();
+    }
+
+    void setNameTag(std::string name) override
+    {
+        getHandle().setNameTag(name);
+    }
+
+    [[nodiscard]] std::string getScoreTag() const override
+    {
+        return getHandle().getScoreTag();
+    }
+
+    void setScoreTag(std::string score) override
+    {
+        getHandle().setScoreTag(score);
+    }
+
+    Handle &getHandle() const
+    {
+        auto *ptr = handle_.tryUnwrap<Handle>(/*include_removed*/ true);
         if (!ptr) {
             throw std::runtime_error("Trying to access an actor that is no longer valid.");
         }
         return *ptr;
     }
 
+protected:
     EndstoneServer &server_;
 
 private:
-    WeakEntityRef actor_;
-    static PermissibleBase &getPermissibleBase();
+    WeakEntityRef handle_;
 };
 
+class EndstoneActor : public EndstoneActorBase<Actor, ::Actor> {
+public:
+    using EndstoneActorBase::EndstoneActorBase;
+};
 }  // namespace endstone::core
-
-#define ENDSTONE_FORWARD_IMPL_ACTOR(IMPL)                                     \
-    [[nodiscard]] std::string getType() const override                        \
-    {                                                                         \
-        return IMPL::getType();                                               \
-    }                                                                         \
-    [[nodiscard]] std::uint64_t getRuntimeId() const override                 \
-    {                                                                         \
-        return IMPL::getRuntimeId();                                          \
-    }                                                                         \
-    [[nodiscard]] Location getLocation() const override                       \
-    {                                                                         \
-        return IMPL::getLocation();                                           \
-    }                                                                         \
-    [[nodiscard]] Vector<float> getVelocity() const override                  \
-    {                                                                         \
-        return IMPL::getVelocity();                                           \
-    }                                                                         \
-    [[nodiscard]] bool isOnGround() const override                            \
-    {                                                                         \
-        return IMPL::isOnGround();                                            \
-    }                                                                         \
-    [[nodiscard]] bool isInWater() const override                             \
-    {                                                                         \
-        return IMPL::isInWater();                                             \
-    }                                                                         \
-    [[nodiscard]] bool isInLava() const override                              \
-    {                                                                         \
-        return IMPL::isInLava();                                              \
-    }                                                                         \
-    [[nodiscard]] Level &getLevel() const override                            \
-    {                                                                         \
-        return IMPL::getLevel();                                              \
-    }                                                                         \
-    [[nodiscard]] Dimension &getDimension() const override                    \
-    {                                                                         \
-        return IMPL::getDimension();                                          \
-    }                                                                         \
-    void teleport(Location location) override                                 \
-    {                                                                         \
-        IMPL::teleport(location);                                             \
-    }                                                                         \
-    void teleport(Actor &target) override                                     \
-    {                                                                         \
-        IMPL::teleport(target);                                               \
-    }                                                                         \
-    [[nodiscard]] std::int64_t getId() const override                         \
-    {                                                                         \
-        return IMPL::getId();                                                 \
-    }                                                                         \
-    [[nodiscard]] bool isDead() const override                                \
-    {                                                                         \
-        return IMPL::isDead();                                                \
-    }                                                                         \
-    [[nodiscard]] bool isValid() const override                               \
-    {                                                                         \
-        return IMPL::isValid();                                               \
-    }                                                                         \
-    [[nodiscard]] int getHealth() const override                              \
-    {                                                                         \
-        return IMPL::getHealth();                                             \
-    }                                                                         \
-    [[nodiscard]] Result<void> setHealth(int health) const override           \
-    {                                                                         \
-        return IMPL::setHealth(health);                                       \
-    }                                                                         \
-    [[nodiscard]] int getMaxHealth() const override                           \
-    {                                                                         \
-        return IMPL::getMaxHealth();                                          \
-    }                                                                         \
-    [[nodiscard]] std::vector<std::string> getScoreboardTags() const override \
-    {                                                                         \
-        return IMPL::getScoreboardTags();                                     \
-    }                                                                         \
-    [[nodiscard]] bool addScoreboardTag(std::string tag) const override       \
-    {                                                                         \
-        return IMPL::addScoreboardTag(tag);                                   \
-    }                                                                         \
-    [[nodiscard]] bool removeScoreboardTag(std::string tag) const override    \
-    {                                                                         \
-        return IMPL::removeScoreboardTag(tag);                                \
-    }                                                                         \
-    [[nodiscard]] bool isNameTagVisible() const override                      \
-    {                                                                         \
-        return IMPL::isNameTagVisible();                                      \
-    }                                                                         \
-    void setNameTagVisible(bool visible) override                             \
-    {                                                                         \
-        IMPL::setNameTagVisible(visible);                                     \
-    }                                                                         \
-    [[nodiscard]] bool isNameTagAlwaysVisible() const override                \
-    {                                                                         \
-        return IMPL::isNameTagAlwaysVisible();                                \
-    }                                                                         \
-    void setNameTagAlwaysVisible(bool visible) override                       \
-    {                                                                         \
-        IMPL::setNameTagAlwaysVisible(visible);                               \
-    }                                                                         \
-    [[nodiscard]] std::string getNameTag() const override                     \
-    {                                                                         \
-        return IMPL::getNameTag();                                            \
-    }                                                                         \
-    void setNameTag(std::string name) override                                \
-    {                                                                         \
-        IMPL::setNameTag(name);                                               \
-    }                                                                         \
-    [[nodiscard]] std::string getScoreTag() const override                    \
-    {                                                                         \
-        return IMPL::getScoreTag();                                           \
-    }                                                                         \
-    void setScoreTag(std::string score) override                              \
-    {                                                                         \
-        IMPL::setScoreTag(score);                                             \
-    }
