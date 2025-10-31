@@ -95,6 +95,11 @@ public:
         return sender_.asConsole();
     }
 
+    [[nodiscard]] BlockCommandSender *asBlock() const override
+    {
+        return sender_.asBlock();
+    }
+
     [[nodiscard]] Actor *asActor() const override
     {
         return sender_.asActor();
