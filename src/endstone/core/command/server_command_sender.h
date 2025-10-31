@@ -14,29 +14,78 @@
 
 #pragma once
 
-#include "endstone/command/command_sender.h"
+#include <utility>
+
 #include "endstone/core/permissions/permissible_base.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 
-class ServerCommandSender : public CommandSender {
+template <typename Interface>
+class ServerCommandSender : public Interface {
 protected:
-    explicit ServerCommandSender(std::shared_ptr<PermissibleBase> perm = nullptr);
+    explicit ServerCommandSender(std::shared_ptr<PermissibleBase> perm = nullptr)
+    {
+        if (perm) {
+            perm_ = std::move(perm);
+        }
+        else {
+            perm_ = std::make_shared<PermissibleBase>(this);
+        }
+    }
 
 public:
-    [[nodiscard]] Server &getServer() const override;
-    [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
-    [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment *addAttachment(Plugin &plugin) override;
-    Result<void> removeAttachment(PermissionAttachment &attachment) override;
-    void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] Server &getServer() const override
+    {
+        return EndstoneServer::getInstance();
+    }
+
+    [[nodiscard]] bool isPermissionSet(std::string name) const override
+    {
+        return perm_->isPermissionSet(name);
+    }
+
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override
+    {
+        return perm_->isPermissionSet(perm);
+    }
+
+    [[nodiscard]] bool hasPermission(std::string name) const override
+    {
+        return perm_->hasPermission(name);
+    }
+
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override
+    {
+        return perm_->hasPermission(perm);
+    }
+
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    {
+        return perm_->addAttachment(plugin, name, value);
+    }
+
+    PermissionAttachment *addAttachment(Plugin &plugin) override
+    {
+        return perm_->addAttachment(plugin);
+    }
+
+    Result<void> removeAttachment(PermissionAttachment &attachment) override
+    {
+        return perm_->removeAttachment(attachment);
+    }
+
+    void recalculatePermissions() override
+    {
+        perm_->recalculatePermissions();
+    }
+
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
+    {
+        return perm_->getEffectivePermissions();
+    }
 
 private:
-    PermissibleBase &pimpl() const;
     mutable std::shared_ptr<PermissibleBase> perm_;
 };
 
