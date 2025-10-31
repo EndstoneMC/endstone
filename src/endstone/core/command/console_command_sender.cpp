@@ -19,6 +19,11 @@
 
 namespace endstone::core {
 
+ConsoleCommandSender *EndstoneConsoleCommandSender::asConsole() const
+{
+    return const_cast<EndstoneConsoleCommandSender *>(this);
+}
+
 void EndstoneConsoleCommandSender::sendMessage(const Message &message) const
 {
     getServer().getLogger().info(EndstoneMessage::toString(message));

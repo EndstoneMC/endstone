@@ -24,7 +24,6 @@
 #include "endstone/core/ban/ip_ban_list.h"
 #include "endstone/core/ban/player_ban_list.h"
 #include "endstone/core/command/command_map.h"
-#include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/crash_handler.h"
 #include "endstone/core/lang/language.h"
 #include "endstone/core/level/level.h"
@@ -38,6 +37,8 @@
 #include "endstone/server.h"
 
 namespace endstone::core {
+
+class EndstoneConsoleCommandSender;
 
 class EndstoneServer : public Server {
 public:

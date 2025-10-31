@@ -21,12 +21,6 @@ namespace endstone {
 /**
  * @brief Represents a console command sender
  */
-class ConsoleCommandSender : public CommandSender {
-public:
-    [[nodiscard]] ConsoleCommandSender *asConsole() const override
-    {
-        return const_cast<ConsoleCommandSender *>(this);
-    }
-};
+class ConsoleCommandSender : public CommandSender {};
 
 }  // namespace endstone

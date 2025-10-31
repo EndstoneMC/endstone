@@ -20,7 +20,6 @@
 #include "endstone/core/server.h"
 
 namespace endstone::core {
-
 template <typename Interface>
 class ServerCommandSender : public Interface {
 protected:
