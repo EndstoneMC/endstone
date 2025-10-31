@@ -19,18 +19,14 @@
 
 namespace endstone::core {
 
-class EndstoneConsoleCommandSender : public ServerCommandSender, public ConsoleCommandSender {
+class EndstoneConsoleCommandSender : public ServerCommandSender<ConsoleCommandSender> {
 public:
     EndstoneConsoleCommandSender() = default;
 
-    [[nodiscard]] ConsoleCommandSender *asConsole() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
-
-    // forward
-    ENDSTONE_FORWARD_IMPL_PERMISSIBLE(ServerCommandSender);
 };
 
 }  // namespace endstone::core
