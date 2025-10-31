@@ -37,12 +37,12 @@ public:
     AppIsland();
     ~AppIsland() override = default;
     IslandId getId() override;
-    virtual bool start();
-    virtual bool suspend();
-    virtual bool resume();
-    virtual bool stop();
-    virtual void mainUpdate();
-    virtual void processActivationArguments(const ActivationArguments &);
+    bool start() override;
+    bool suspend() override;
+    bool resume() override;
+    bool stop() override;
+    void mainUpdate() override;
+    void processActivationArguments(const ActivationArguments &) override;
     std::unique_ptr<SignalReceiver> signal_rcvr;
 };
 }  // namespace Bedrock
