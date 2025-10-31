@@ -22,8 +22,10 @@ namespace endstone::core {
 template <typename Interface, typename Handle>
     requires std::is_base_of_v<Mob, Interface> && std::is_base_of_v<::Mob, Handle>
 class EndstoneMobBase : public EndstoneActorBase<Interface, Handle> {
+    using Base = EndstoneActorBase<Interface, Handle>;
+
 public:
-    using EndstoneActorBase<Interface, Handle>::EndstoneActorBase;
+    using Base::Base;
     [[nodiscard]] Mob *asMob() const override
     {
         return const_cast<EndstoneMobBase *>(this);
@@ -31,13 +33,13 @@ public:
 
     void setRotation(float yaw, float pitch) override
     {
-        EndstoneActor::setRotation(yaw, pitch);
-        getHandle().setYBodyRotation(yaw);
+        Base::setRotation(yaw, pitch);
+        Base::getHandle().setYBodyRotation(yaw);
     }
 
     [[nodiscard]] bool isGliding() const override
     {
-        return getHandle().isGliding();
+        return Base::getHandle().isGliding();
     }
 };
 

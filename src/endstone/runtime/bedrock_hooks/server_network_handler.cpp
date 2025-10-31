@@ -19,6 +19,7 @@
 
 #include "bedrock/locale/i18n.h"
 #include "endstone/core/entity/components/flag_components.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"

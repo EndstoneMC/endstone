@@ -17,6 +17,8 @@
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/events/scripting_events.h"
+#include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/server/script_message_event.h"
 #include "endstone/runtime/vtable_hook.h"

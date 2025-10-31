@@ -18,6 +18,8 @@
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
+#include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
@@ -31,7 +33,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
     switch (ctx.getOrigin().getOriginType()) {
     case CommandOriginType::Player: {
         auto command_line = ctx.getCommand();
-        endstone::Player &player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
+        auto &player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
 
         endstone::PlayerCommandEvent e(player, command_line);
         server.getPluginManager().callEvent(e);

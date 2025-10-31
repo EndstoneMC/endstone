@@ -20,12 +20,24 @@
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/player.h"
 
-endstone::core::EndstoneActor &Actor::getEndstoneActor0() const
+namespace endstone::core {
+PermissibleBase &ActorPermissibleBase::get()
+{
+    static std::shared_ptr<PermissibleBase> perm;
+    if (!perm) {
+        perm = std::make_shared<PermissibleBase>(nullptr);
+        perm->recalculatePermissions();
+    }
+    return *perm;
+}
+}  // namespace endstone::core
+
+endstone::Actor &Actor::getEndstoneActor0() const
 {
     return *getEndstoneActorPtr();
 }
 
-std::shared_ptr<endstone::core::EndstoneActor> Actor::getEndstoneActorPtr0() const
+std::shared_ptr<endstone::Actor> Actor::getEndstoneActorPtr0() const
 {
     auto *self = const_cast<Actor *>(this);
     auto &component = entity_context_.getOrAddComponent<endstone::core::EndstoneActorComponent>();

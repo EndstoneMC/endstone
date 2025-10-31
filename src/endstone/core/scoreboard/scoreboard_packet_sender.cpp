@@ -14,6 +14,7 @@
 
 #include "endstone/core/scoreboard/scoreboard_packet_sender.h"
 
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/uuid.h"
 
@@ -63,14 +64,14 @@ void ScoreboardPacketSender::sendToClient(const UserEntityIdentifierComponent *u
 void ScoreboardPacketSender::sendToClient(const NetworkIdentifier &network_identifier, const ::Packet &packet,
                                           SubClientId sub_id)
 {
-    for (const auto &item : server_.getOnlinePlayers()) {
-        auto *player = static_cast<EndstonePlayer *>(item);
+    for (const auto &p : server_.getOnlinePlayers()) {
+        auto *player = static_cast<EndstonePlayer *>(p);
 
         if (&player->getScoreboard() != &scoreboard_) {
             continue;
         }
 
-        auto user_identifier = player->getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
+        auto user_identifier = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
         if (user_identifier->getNetworkId() != network_identifier || user_identifier->getSubClientId() != sub_id) {
             continue;
         }
@@ -88,14 +89,14 @@ void ScoreboardPacketSender::sendToClients(
 
 void ScoreboardPacketSender::sendBroadcast(const ::Packet &packet)
 {
-    for (const auto &item : server_.getOnlinePlayers()) {
-        auto *player = static_cast<EndstonePlayer *>(item);
+    for (const auto &p : server_.getOnlinePlayers()) {
+        auto *player = static_cast<EndstonePlayer *>(p);
 
         if (&player->getScoreboard() != &scoreboard_) {
             continue;
         }
 
-        auto user_identifier = player->getPlayer().getPersistentComponent<UserEntityIdentifierComponent>();
+        auto user_identifier = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
         sender_.sendToClient(user_identifier, packet);
     }
 }

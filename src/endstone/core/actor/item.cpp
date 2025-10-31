@@ -14,8 +14,7 @@
 
 #include "endstone/core/actor/item.h"
 
-#include <endstone/core/inventory/item_stack.h>
-
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

@@ -16,6 +16,7 @@
 
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "endstone/core/entity/components/flag_components.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"

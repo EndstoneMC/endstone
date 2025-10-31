@@ -623,7 +623,7 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
     getPlayerBoard(player).resetScores(&player);
 
     // add player to the new board
-    new_board.onPlayerJoined(player.getPlayer());
+    new_board.onPlayerJoined(player.getHandle());
 
     // update tracking records
     if (&scoreboard == scoreboard_.get()) {

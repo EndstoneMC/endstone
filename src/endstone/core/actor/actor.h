@@ -33,7 +33,7 @@ class EndstoneServer;
 class EndstoneActor;
 
 struct EndstoneActorComponent {
-    std::shared_ptr<EndstoneActor> actor;
+    std::shared_ptr<Actor> actor;
 };
 
 class ActorPermissibleBase {

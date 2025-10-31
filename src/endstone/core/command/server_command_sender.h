@@ -84,6 +84,26 @@ public:
         return perm_->getEffectivePermissions();
     }
 
+    [[nodiscard]] ConsoleCommandSender *asConsole() const override
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] BlockCommandSender *asBlock() const override
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] Actor *asActor() const override
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] Player *asPlayer() const override
+    {
+        return nullptr;
+    }
+
 private:
     mutable std::shared_ptr<PermissibleBase> perm_;
 };

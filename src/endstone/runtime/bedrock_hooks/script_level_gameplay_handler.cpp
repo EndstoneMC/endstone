@@ -19,6 +19,7 @@
 #include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/level_events.h"
+#include "endstone/core/actor/actor.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_spawn_event.h"
