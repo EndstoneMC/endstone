@@ -46,40 +46,28 @@ public:
      *
      * @return CommandSender, nullptr if not a ConsoleCommandSender
      */
-    [[nodiscard]] virtual ConsoleCommandSender *asConsole() const
-    {
-        return nullptr;
-    }
+    [[nodiscard]] virtual ConsoleCommandSender *asConsole() const = 0;
 
     /**
      * @brief Gets a CommandSender as BlockCommandSender
      *
      * @return CommandSender, nullptr if not a BlockCommandSender
      */
-    [[nodiscard]] virtual BlockCommandSender *asBlock() const
-    {
-        return nullptr;
-    }
+    [[nodiscard]] virtual BlockCommandSender *asBlock() const = 0;
 
     /**
      * @brief Gets a CommandSender as Actor
      *
      * @return Actor, nullptr if not an Actor
      */
-    [[nodiscard]] virtual Actor *asActor() const
-    {
-        return nullptr;
-    }
+    [[nodiscard]] virtual Actor *asActor() const = 0;
 
     /**
      * @brief Gets a CommandSender as Player
      *
      * @return Player, nullptr if not a Player
      */
-    [[nodiscard]] virtual Player *asPlayer() const
-    {
-        return nullptr;
-    }
+    [[nodiscard]] virtual Player *asPlayer() const = 0;
 
     /**
      * @brief Sends this sender a message
