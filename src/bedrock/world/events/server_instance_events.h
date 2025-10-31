@@ -14,9 +14,7 @@
 
 #pragma once
 
-#include <optional>
-
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/world/events/event_variant.h"
 
 class ServerInstance;
 

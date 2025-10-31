@@ -14,9 +14,13 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+#include "bedrock/common_types.h"
 #include "bedrock/core/utility/unique_owner_pointer.h"
 #include "bedrock/forward.h"
+#include "bedrock/minecraft_app_interface.h"
 #include "bedrock/server/console_input_reader.h"
+#include "bedrock/world/events/server_instance_event_coordinator.h"
 
 class DedicatedServer : public IMinecraftApp, public Bedrock::AppIsland {
 public:
@@ -29,6 +33,7 @@ public:
     };
     DedicatedServer();
     ~DedicatedServer() override;
+    ENDSTONE_HOOK StartResult start(const std::string &sessionID, const Bedrock::ActivationArguments &args);
     bool stop() override;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<FileArchiver> getFileArchiver() const;
 

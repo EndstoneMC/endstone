@@ -17,6 +17,7 @@
 #include "bedrock/world/events/server_instance_events.h"
 
 class Minecraft;
+class Level;
 
 class ServerInstanceEventListener {
 public:

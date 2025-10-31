@@ -1,4 +1,4 @@
-timestamp = 1761683190
+timestamp = 1761872145
 version = "1.21.120"
 
 [windows]
@@ -37,6 +37,8 @@ version = "1.21.120"
 "?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 9477088
 # CraftingDataPacket
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 23551376
+# DedicatedServer
+"?start@DedicatedServer@@QEAA?AW4StartResult@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z" = 1228000
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 70841328
 # HealthAttributeDelegate
@@ -144,6 +146,8 @@ version = "1.21.120"
 "_ZN6Common20getGameVersionStringEv" = 83996704
 # CraftingDataPacket
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 117026800
+# DedicatedServer
+"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE" = 63650560
 # FurnaceBlockActor
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 182405104
 # HealthAttributeDelegate

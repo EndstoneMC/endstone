@@ -15,7 +15,6 @@
 #pragma once
 
 #include "bedrock/forward.h"
-#include "bedrock/server/server_instance.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/server_instance_event_listener.h"
 
