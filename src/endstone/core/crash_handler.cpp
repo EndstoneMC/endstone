@@ -112,6 +112,8 @@ bool should_print(const sentry_ucontext_t *ctx)
 #ifdef _WIN32
     const auto *record = ctx->exception_ptrs.ExceptionRecord;
     if (record->ExceptionCode == STATUS_FATAL_APP_EXIT) {
+        // Skip printing when the app crashes during intentional shutdown
+        // (e.g., via std::exit or ExitProcess).
         return false;
     }
 #endif
@@ -156,6 +158,7 @@ std::string get_filename_formatted_date_time()
 sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
 {
     if (!should_print(ctx)) {
+        sentry_value_decref(event);
         return sentry_value_new_null();
     }
 
@@ -177,11 +180,6 @@ sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event
     }
     catch (...) {
         fmt::print(fmt::fg(fmt::terminal_color::red), "We were unable to save this crash report to disk.\n");
-    }
-
-    if (!should_report(stacktrace, ctx)) {
-        sentry_value_decref(event);
-        return sentry_value_new_null();
     }
     return event;
 }
