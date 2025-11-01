@@ -34,7 +34,7 @@
 * **allowChangesFrom** ([**endstone::Command**](classendstone_1_1Command.md))
 * **asPluginCommand** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **asActor** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
-* **asBlock** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
+* **asBlock** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **asCommandSender** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **asConsole** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **asPlayer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))

@@ -441,10 +441,10 @@
   </compound>
   <compound refid="classendstone_1_1CommandSender" kind="class"><name>endstone::CommandSender</name>
     <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" kind="function"><name>asCommandSender</name></member>
-    <member refid="classendstone_1_1CommandSender_1ad52351f5219698ad2bb2fbd6509c80f5" kind="function"><name>asConsole</name></member>
-    <member refid="classendstone_1_1CommandSender_1afece60cdcb1ef41acc69bcb8a482320f" kind="function"><name>asBlock</name></member>
-    <member refid="classendstone_1_1CommandSender_1a981997682a69961a0cb5e92b7a70f4ff" kind="function"><name>asActor</name></member>
-    <member refid="classendstone_1_1CommandSender_1aef66d1ad6c2cbc924e51f02407f94fa3" kind="function"><name>asPlayer</name></member>
+    <member refid="classendstone_1_1CommandSender_1a635ff0815f93ba402b40486e5b3a4fdb" kind="function"><name>asConsole</name></member>
+    <member refid="classendstone_1_1CommandSender_1ad60565f649ada2e97dd8f62c8d791027" kind="function"><name>asBlock</name></member>
+    <member refid="classendstone_1_1CommandSender_1aa3ff3e9752f3a3a7a84bc9058d7abbdc" kind="function"><name>asActor</name></member>
+    <member refid="classendstone_1_1CommandSender_1a13a510a2f1e21138d8dfa9f9c898e136" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kind="function"><name>sendErrorMessage</name></member>
@@ -471,6 +471,7 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aeeb41c929000b7f74f64d289d509edba" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a1ad4a226bbf1e73d89839d743585b678" kind="function"><name>asConsole</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a6bcf6c6209c022c36c8d7d923a55f8f2" kind="function"><name>asBlock</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a44729e5299e551a8058e457a60c64900" kind="function"><name>asActor</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a367f090917a2dc9a34bfad1fb0fb29c2" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" kind="function"><name>getServer</name></member>

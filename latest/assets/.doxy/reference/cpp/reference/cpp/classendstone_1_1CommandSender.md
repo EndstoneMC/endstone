@@ -74,11 +74,11 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](#function-asactor) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
-| virtual [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) \* | [**asBlock**](#function-asblock) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**BlockCommandSender**_](classendstone_1_1BlockCommandSender.md) _._ |
+| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](#function-asactor) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
+| virtual [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) \* | [**asBlock**](#function-asblock) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**BlockCommandSender**_](classendstone_1_1BlockCommandSender.md) _._ |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
-| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**ConsoleCommandSender**_](classendstone_1_1ConsoleCommandSender.md) _._ |
-| virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
+| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](#function-asconsole) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**ConsoleCommandSender**_](classendstone_1_1ConsoleCommandSender.md) _._ |
+| virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
 | virtual void | [**sendErrorMessage**](#function-senderrormessage-12) (const Message & message) const = 0<br>_Sends this sender a error message._  |
@@ -168,7 +168,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._
 ```C++
-inline virtual Actor * endstone::CommandSender::asActor () const
+virtual Actor * endstone::CommandSender::asActor () const = 0
 ```
 
 
@@ -193,7 +193,7 @@ inline virtual Actor * endstone::CommandSender::asActor () const
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**BlockCommandSender**_](classendstone_1_1BlockCommandSender.md) _._
 ```C++
-inline virtual BlockCommandSender * endstone::CommandSender::asBlock () const
+virtual BlockCommandSender * endstone::CommandSender::asBlock () const = 0
 ```
 
 
@@ -245,7 +245,7 @@ Implements [*endstone::Permissible::asCommandSender*](classendstone_1_1Permissib
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**ConsoleCommandSender**_](classendstone_1_1ConsoleCommandSender.md) _._
 ```C++
-inline virtual ConsoleCommandSender * endstone::CommandSender::asConsole () const
+virtual ConsoleCommandSender * endstone::CommandSender::asConsole () const = 0
 ```
 
 
@@ -270,7 +270,7 @@ inline virtual ConsoleCommandSender * endstone::CommandSender::asConsole () cons
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._
 ```C++
-inline virtual Player * endstone::CommandSender::asPlayer () const
+virtual Player * endstone::CommandSender::asPlayer () const = 0
 ```
 
 

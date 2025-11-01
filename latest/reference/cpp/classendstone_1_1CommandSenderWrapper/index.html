@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
@@ -2250,6 +2250,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-asblock" class="md-nav__link">
+      <span class="md-ellipsis">
+        function asBlock
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-asconsole" class="md-nav__link">
       <span class="md-ellipsis">
         function asConsole
@@ -2515,6 +2528,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-asactor"><strong>asActor</strong></a> () override const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Actor/"><em><strong>Actor</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1BlockCommandSender/"><strong>BlockCommandSender</strong></a> *</td>
+<td style="text-align: left;"><a href="#function-asblock"><strong>asBlock</strong></a> () override const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1BlockCommandSender/"><em><strong>BlockCommandSender</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1ConsoleCommandSender/"><strong>ConsoleCommandSender</strong></a> *</td>
 <td style="text-align: left;"><a href="#function-asconsole"><strong>asConsole</strong></a> () override const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1ConsoleCommandSender/"><em><strong>ConsoleCommandSender</strong></em></a> <em>.</em></td>
 </tr>
@@ -2584,11 +2601,11 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asactor"><strong>asActor</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Actor/"><em><strong>Actor</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asactor"><strong>asActor</strong></a> () const = 0<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Actor/"><em><strong>Actor</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1BlockCommandSender/"><strong>BlockCommandSender</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asblock"><strong>asBlock</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1BlockCommandSender/"><em><strong>BlockCommandSender</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asblock"><strong>asBlock</strong></a> () const = 0<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1BlockCommandSender/"><em><strong>BlockCommandSender</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> *</td>
@@ -2596,11 +2613,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1ConsoleCommandSender/"><strong>ConsoleCommandSender</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asconsole"><strong>asConsole</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1ConsoleCommandSender/"><em><strong>ConsoleCommandSender</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asconsole"><strong>asConsole</strong></a> () const = 0<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1ConsoleCommandSender/"><em><strong>ConsoleCommandSender</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Player/"><strong>Player</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asplayer"><strong>asPlayer</strong></a> () const<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-asplayer"><strong>asPlayer</strong></a> () const = 0<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2746,9 +2763,18 @@ For latest updates join the chat on
 <p>Implements <a href="../classendstone_1_1CommandSender/#function-asactor"><em>endstone::CommandSender::asActor</em></a></p>
 <hr>
 
+<h3 id="function-asblock">function asBlock<a class="headerlink" href="#function-asblock" title="Permanent link">&para;</a></h3>
+<p><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1BlockCommandSender/"><em><strong>BlockCommandSender</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">BlockCommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">asBlock</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a>, nullptr if not a <a href="../classendstone_1_1BlockCommandSender/"><strong>BlockCommandSender</strong></a> </p>
+<p>Implements <a href="../classendstone_1_1CommandSender/#function-asblock"><em>endstone::CommandSender::asBlock</em></a></p>
+<hr>
+
 <h3 id="function-asconsole">function asConsole<a class="headerlink" href="#function-asconsole" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1ConsoleCommandSender/"><em><strong>ConsoleCommandSender</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ConsoleCommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">asConsole</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ConsoleCommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">asConsole</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a>, nullptr if not a <a href="../classendstone_1_1ConsoleCommandSender/"><strong>ConsoleCommandSender</strong></a> </p>
@@ -2757,7 +2783,7 @@ For latest updates join the chat on
 
 <h3 id="function-asplayer">function asPlayer<a class="headerlink" href="#function-asplayer" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>as</em><a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">asPlayer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">asPlayer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Player/"><strong>Player</strong></a>, nullptr if not a <a href="../classendstone_1_1Player/"><strong>Player</strong></a> </p>
@@ -2766,7 +2792,7 @@ For latest updates join the chat on
 
 <h3 id="function-geteffectivepermissions">function getEffectivePermissions<a class="headerlink" href="#function-geteffectivepermissions" title="Permanent link">&para;</a></h3>
 <p><em>Gets a set containing all the permissions currently in effect by this object.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PermissionAttachmentInfo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getEffectivePermissions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PermissionAttachmentInfo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getEffectivePermissions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Set of currently effective permissions </p>
@@ -2775,7 +2801,7 @@ For latest updates join the chat on
 
 <h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
 <p><em>Gets the name of this command sender.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Name of the sender </p>
@@ -2784,7 +2810,7 @@ For latest updates join the chat on
 
 <h3 id="function-getpermissionlevel">function getPermissionLevel<a class="headerlink" href="#function-getpermissionlevel" title="Permanent link">&para;</a></h3>
 <p><em>Gets the permission level of this object.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">PermissionLevel</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getPermissionLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">PermissionLevel</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getPermissionLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The permission level </p>
@@ -2793,7 +2819,7 @@ For latest updates join the chat on
 
 <h3 id="function-getserver">function getServer<a class="headerlink" href="#function-getserver" title="Permanent link">&para;</a></h3>
 <p><em>Returns the server instance that this command is running on.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Server/"><strong>Server</strong></a> instance </p>
@@ -2802,9 +2828,9 @@ For latest updates join the chat on
 
 <h3 id="function-haspermission-12">function hasPermission [&frac12;]<a class="headerlink" href="#function-haspermission-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2817,9 +2843,9 @@ For latest updates join the chat on
 
 <h3 id="function-haspermission-22">function hasPermission [2/2]<a class="headerlink" href="#function-haspermission-22" title="Permanent link">&para;</a></h3>
 <p><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">hasPermission</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2832,9 +2858,9 @@ For latest updates join the chat on
 
 <h3 id="function-ispermissionset-12">function isPermissionSet [&frac12;]<a class="headerlink" href="#function-ispermissionset-12" title="Permanent link">&para;</a></h3>
 <p><em>Checks if this object contains an override for the specified permission, by fully qualified name.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isPermissionSet</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isPermissionSet</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2847,9 +2873,9 @@ For latest updates join the chat on
 
 <h3 id="function-ispermissionset-22">function isPermissionSet [2/2]<a class="headerlink" href="#function-ispermissionset-22" title="Permanent link">&para;</a></h3>
 <p><em>Checks if this object contains an override for the specified</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isPermissionSet</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isPermissionSet</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2862,16 +2888,16 @@ For latest updates join the chat on
 
 <h3 id="function-recalculatepermissions">function recalculatePermissions<a class="headerlink" href="#function-recalculatepermissions" title="Permanent link">&para;</a></h3>
 <p><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">recalculatePermissions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">recalculatePermissions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div></p>
 <p>Implements <a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><em>endstone::Permissible::recalculatePermissions</em></a></p>
 <hr>
 
 <h3 id="function-removeattachment">function removeAttachment<a class="headerlink" href="#function-removeattachment" title="Permanent link">&para;</a></h3>
 <p><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">removeAttachment</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">attachment</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">removeAttachment</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">attachment</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2884,9 +2910,9 @@ For latest updates join the chat on
 
 <h3 id="function-senderrormessage">function sendErrorMessage<a class="headerlink" href="#function-senderrormessage" title="Permanent link">&para;</a></h3>
 <p><em>Sends this sender a error message.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">sendErrorMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">sendErrorMessage</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2897,9 +2923,9 @@ For latest updates join the chat on
 
 <h3 id="function-sendmessage">function sendMessage<a class="headerlink" href="#function-sendmessage" title="Permanent link">&para;</a></h3>
 <p><em>Sends this sender a message.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">sendMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">sendMessage</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
