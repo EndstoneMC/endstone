@@ -4,7 +4,7 @@ import asyncio
 import concurrent.futures
 import threading
 import typing
-from typing import Optional, Awaitable
+from typing import Awaitable, Optional
 
 __all__ = ["get_loop", "submit"]
 
