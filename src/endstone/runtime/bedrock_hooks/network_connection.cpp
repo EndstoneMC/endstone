@@ -16,6 +16,7 @@
 
 #include <endstone/core/util/socket_address.h>
 
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/server/packet_receive_event.h"
 #include "endstone/runtime/hook.h"

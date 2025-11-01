@@ -24,77 +24,33 @@
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-#if defined(_WIN32)
-#include <io.h>
-#define DUP    _dup
-#define DUP2   _dup2
-#define CLOSE  _close
-#define FILENO _fileno
-#else
-#include <unistd.h>
-#define DUP    dup
-#define DUP2   dup2
-#define CLOSE  close
-#define FILENO fileno
-#endif
-
 namespace py = pybind11;
 
 int init()
 {
-    spdlog::flush_every(std::chrono::seconds(5));
-    const auto &logger = endstone::core::LoggerFactory::getLogger("EndstoneRuntime");
     try {
-        logger.info("Initialising...");
-
-        // Save the current stdin, as it will be altered after the initialisation of python interpreter
-        const auto old_stdin = DUP(FILENO(stdin));
-
-        // Initialise an isolated Python environment to avoid installing signal handlers
-        // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
-        PyConfig config;
-        PyConfig_InitIsolatedConfig(&config);
-        config.isolated = 0;
-        config.use_environment = 1;
-        py::initialize_interpreter(&config);
-        py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
-        py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
-
-        // Release the GIL and never re-acquire.
-        py::gil_scoped_release release{};
-        release.disarm();
-
-        // Restore the stdin
-        std::fflush(stdin);
-        DUP2(old_stdin, FILENO(stdin));
-        CLOSE(old_stdin);
-
-        // Install hooks
+        spdlog::flush_every(std::chrono::seconds(5));
         endstone::hook::install();
-
-#ifdef ENDSTONE_WITH_DEVTOOLS
-        // Create devtools window
-        auto thread = std::thread(&endstone::devtools::render);
-        thread.detach();
-#endif
         return 0;
     }
     catch (const std::exception &e) {
-        logger.error("An exception occurred while initialising Endstone runtime.");
+        const auto &logger = endstone::core::LoggerFactory::getLogger("Endstone");
+        logger.error("An exception occurred while installing hooks.");
         logger.error("{}", e.what());
-        throw e;
+        return 4;
     }
 }
 
 #ifdef _WIN32
 #include <windows.h>
 
-[[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE /*module*/,  // handle to DLL module
-                                     _In_ DWORD reason,          // reason for calling function
-                                     _In_ LPVOID /*reserved*/)   // reserved
+[[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE module,     // handle to DLL module
+                                     _In_ DWORD reason,         // reason for calling function
+                                     _In_ LPVOID /*reserved*/)  // reserved
 {
     switch (reason) {
     case DLL_PROCESS_ATTACH: {
+        DisableThreadLibraryCalls(module);
         HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
         DWORD mode = 0;
         GetConsoleMode(console, &mode);

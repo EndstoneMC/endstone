@@ -17,6 +17,7 @@
 #include <iostream>
 
 #include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/runtime/vtable_hook.h"

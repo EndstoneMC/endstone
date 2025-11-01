@@ -15,14 +15,13 @@
 #include "endstone/core/level/level.h"
 
 #include <entt/entt.hpp>
-#include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
-#include "endstone/color_format.h"
+#include "endstone/core/actor/actor.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/level/dimension.h"
 

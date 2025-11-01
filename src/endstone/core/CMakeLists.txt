@@ -28,7 +28,6 @@ add_library(endstone_core
         signal_handler.cpp
         skin.cpp
         actor/actor.cpp
-        actor/mob.cpp
         actor/item.cpp
         ban/ip_ban_list.cpp
         ban/player_ban_list.cpp
@@ -46,7 +45,6 @@ add_library(endstone_core
         command/console_command_sender.cpp
         command/minecraft_command_adapter.cpp
         command/minecraft_command_wrapper.cpp
-        command/server_command_sender.cpp
         command/defaults/ban_command.cpp
         command/defaults/ban_ip_command.cpp
         command/defaults/ban_list_command.cpp

@@ -100,6 +100,7 @@ class EquipmentSlot;
 class Experiments;
 class FeatureRegistry;
 class FeatureTypeFactory;
+class FileArchiver;
 class FogDefinition;
 class FrameUpdateContextBase;
 class GameEventDispatcher {};
@@ -283,6 +284,7 @@ namespace cg {
 class ImageBuffer;
 }
 namespace Core {
+class FileSystem;
 class FilePathManager;
 class FileStorageArea;
 class LevelStorageResult;

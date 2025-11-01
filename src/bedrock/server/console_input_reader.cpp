@@ -12,14 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/server/console_input_reader.h"
 
-#include "bedrock/forward.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/server_instance_event_listener.h"
+#include <codecvt>
+#include <iostream>
 
-class ServerInstanceEventCoordinator : public EventCoordinator<ServerInstanceEventListener> {
-public:
-protected:
-    std::unique_ptr<ServerInstanceEventHandler> server_instance_event_handler_;
-};
+#include "bedrock/gameplayhandlers/block_gameplay_handler.h"
+
+ConsoleInputReader::~ConsoleInputReader()
+{
+    read_console_ = false;
+    if (console_thread_.joinable()) {
+        console_thread_.join();
+    }
+}

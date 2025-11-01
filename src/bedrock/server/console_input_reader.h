@@ -14,19 +14,22 @@
 
 #pragma once
 
-#include "endstone/command/console_command_sender.h"
-#include "endstone/core/command/server_command_sender.h"
+#include <atomic>
+#include <string>
 
-namespace endstone::core {
-class EndstoneConsoleCommandSender : public ServerCommandSender<ConsoleCommandSender> {
+#include "bedrock/core/threading/spsc_queue.h"
+#include "bedrock/platform/threading/thread.h"
+
+class ConsoleInputReader {
 public:
-    EndstoneConsoleCommandSender() = default;
+    ConsoleInputReader();
+    ~ConsoleInputReader();
+    bool getLine(std::string &out_line);
+    void unblockReading();
 
-    [[nodiscard]] ConsoleCommandSender *asConsole() const override;
-    void sendMessage(const Message &message) const override;
-    void sendErrorMessage(const Message &message) const override;
-    [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override;
+private:
+    void _enableStdinUtf16();
+    SPSCQueue<std::string> console_input_;
+    std::atomic<bool> read_console_;
+    Bedrock::Threading::Thread console_thread_;
 };
-
-}  // namespace endstone::core

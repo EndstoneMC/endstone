@@ -14,6 +14,7 @@
 
 #include "endstone/core/damage/damage_source.h"
 
+#include "endstone/core/actor/actor.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

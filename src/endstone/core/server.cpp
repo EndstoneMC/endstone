@@ -25,6 +25,7 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/server/server_map_data_manager.h"
+#include "bedrock/server/dedicated_server.h"
 #include "bedrock/shared_constants.h"
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/level/block/block_descriptor.h"
@@ -45,6 +46,7 @@
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/permissions/default_permissions.h"
+#include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/core/plugin/python_plugin_loader.h"
 #include "endstone/core/registry.h"
@@ -189,7 +191,7 @@ void EndstoneServer::setResourcePackRepository(IResourcePackRepository &repo)
     if (resource_pack_repository_) {
         throw std::runtime_error("Resource pack repository already set.");
     }
-    resource_pack_repository_ = repo;
+    resource_pack_repository_ = &repo;
 }
 
 void EndstoneServer::initPackSource(const PackSourceFactory &pack_source_factory)
@@ -660,7 +662,7 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
     getPlayerBoard(player).resetScores(&player);
 
     // add player to the new board
-    new_board.onPlayerJoined(player.getPlayer());
+    new_board.onPlayerJoined(player.getHandle());
 
     // update tracking records
     if (&scoreboard == scoreboard_.get()) {

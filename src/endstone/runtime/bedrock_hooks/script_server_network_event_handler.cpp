@@ -15,6 +15,7 @@
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
 #include "bedrock/network/packet/text_packet.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/server/packet_receive_event.h"
@@ -78,11 +79,11 @@ bool handleEvent(ChatEvent &event)
 
         // Message has been changed, send new text messages and cancel the original event to avoid double sending
         if (e.getMessage() != event.message) {
-            player = &static_cast<endstone::core::EndstonePlayer &>(e.getPlayer()).getPlayer();
+            player = &static_cast<endstone::core::EndstonePlayer &>(e.getPlayer()).getHandle();
             for (const auto &recipient : e.getRecipients()) {
                 auto packet = TextPacket::createChat(player->getName(), e.getMessage(), std::nullopt, player->getXuid(),
                                                      player->getPlatformOnlineId());
-                static_cast<endstone::core::EndstonePlayer *>(recipient)->getPlayer().sendNetworkPacket(packet);
+                static_cast<endstone::core::EndstonePlayer *>(recipient)->getHandle().sendNetworkPacket(packet);
             }
             return false;
         }

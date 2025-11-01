@@ -12,33 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/actor/mob.h"
+#pragma once
 
-#include "endstone/core/server.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 
-namespace endstone::core {
+class IEntityRegistryOwner : public Bedrock::EnableNonOwnerReferences {
+protected:
+    ~IEntityRegistryOwner() override = default;
 
-EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob) {}
-
-Mob *EndstoneMob::asMob() const
-{
-    return const_cast<EndstoneMob *>(this);
-}
-
-void EndstoneMob::setRotation(float yaw, float pitch)
-{
-    EndstoneActor::setRotation(yaw, pitch);
-    getMob().setYBodyRotation(yaw);
-}
-
-bool EndstoneMob::isGliding() const
-{
-    return getMob().isGliding();
-}
-
-::Mob &EndstoneMob::getMob() const
-{
-    return getHandle<::Mob>();
-}
-
-}  // namespace endstone::core
+public:
+    virtual StackRefResult<EntityRegistry> getEntityRegistry() = 0;
+    [[nodiscard]] virtual StackRefResult<const EntityRegistry> getEntityRegistry() const = 0;
+};

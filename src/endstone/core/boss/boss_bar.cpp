@@ -16,6 +16,7 @@
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -153,7 +154,7 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
 {
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    const auto &handle = static_cast<EndstonePlayer &>(player).getPlayer();
+    const auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
     pk->boss_id = handle.getOrCreateUniqueID();
     pk->player_id = handle.getOrCreateUniqueID();
     pk->event_type = event_type;

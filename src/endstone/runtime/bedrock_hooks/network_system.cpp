@@ -22,6 +22,7 @@
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/server.h"
+#include "endstone/core/player.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/packet_send_event.h"
 

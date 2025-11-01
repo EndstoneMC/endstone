@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.9](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.9) - 2025-10-30
+
+<small>[Compare with 0.10.8](https://github.com/EndstoneMC/endstone/compare/v0.10.8...v0.10.9)</small>
+
+### Fixed
+
+* Resolved crashes in the chunk-related API.
+* Stack traces are no longer shown when the server fails to start due to a port conflict on Windows.
+* Fixed an issue where `CommandSenderWrapper` could not capture the output of custom commands.
+* Fixed an issue in the `/status` command where permission checks were not performed.
+* Fixed a crash that could occur when the Minecraft service was unavailable.
+
 ## [0.10.8](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.8) - 2025-10-28
 
 <small>[Compare with 0.10.7](https://github.com/EndstoneMC/endstone/compare/v0.10.7...v0.10.8)</small>

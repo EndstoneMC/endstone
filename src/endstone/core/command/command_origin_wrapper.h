@@ -18,10 +18,9 @@
 #include "endstone/core/command/server_command_sender.h"
 #include "endstone/core/server.h"
 
-
 namespace endstone::core {
 
-class CommandOriginWrapper : public ServerCommandSender {
+class CommandOriginWrapper : public ServerCommandSender<CommandSender> {
 public:
     CommandOriginWrapper(const CommandOrigin &origin, CommandOutput &output);
 

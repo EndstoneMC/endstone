@@ -15,6 +15,7 @@
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 
 #include "bedrock/world/actor/actor.h"
+#include "endstone/core/actor/mob.h"
 #include "endstone/core/damage/damage_source.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"

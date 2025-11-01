@@ -56,6 +56,7 @@
 #include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/item_helper.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/actor/actor.h"
 
 class Player;
 class Level;
@@ -493,6 +494,6 @@ public:
     }
 
 private:
-    endstone::core::EndstoneActor &getEndstoneActor0() const;
-    std::shared_ptr<endstone::core::EndstoneActor> getEndstoneActorPtr0() const;
+    endstone::Actor &getEndstoneActor0() const;
+    std::shared_ptr<endstone::Actor> getEndstoneActorPtr0() const;
 };

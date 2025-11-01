@@ -107,7 +107,7 @@ const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction
                                           SIGNAL_DEF(SIGSEGV, "Segfault")};
 #endif
 
-bool should_report(const cpptrace::stacktrace &stacktrace, const sentry_ucontext_t *ctx)
+bool should_print(const sentry_ucontext_t *ctx)
 {
 #ifdef _WIN32
     const auto *record = ctx->exception_ptrs.ExceptionRecord;
@@ -155,7 +155,14 @@ std::string get_filename_formatted_date_time()
 
 sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
 {
+    if (!should_print(ctx)) {
+        return sentry_value_new_null();
+    }
+
     const auto stacktrace = cpptrace::generate_trace();
+    auto &stream = std::cerr;
+    print_crash_message(stream, ctx);
+    print_stacktrace(stream, stacktrace);
     print_crash_message(std::cerr, ctx);
     print_stacktrace(std::cerr, stacktrace);
 

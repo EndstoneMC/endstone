@@ -79,6 +79,16 @@ public:
     {
         return {"\\.whl"};
     }
+
+    void enablePlugin(Plugin &plugin) const override
+    {
+        PYBIND11_OVERRIDE_NAME(void, PluginLoader, "enable_plugin", enablePlugin, std::ref(plugin));
+    }
+
+    void disablePlugin(Plugin &plugin) const override
+    {
+        PYBIND11_OVERRIDE_NAME(void, PluginLoader, "disable_plugin", disablePlugin, std::ref(plugin));
+    }
 };
 
 namespace {

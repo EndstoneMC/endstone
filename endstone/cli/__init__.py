@@ -16,7 +16,11 @@ handler.setFormatter(
         datefmt="%Y-%m-%d %H:%M:%S",
         reset=True,
         log_colors={
+            "DEBUG": "cyan",
             "INFO": "reset",
+            "WARNING": "bold_yellow",
+            "ERROR": "bold_red",
+            "CRITICAL": "bold,bg_red",
         },
     )
 )

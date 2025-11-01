@@ -37,8 +37,7 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender(Comman
         return getEntity()->getEndstoneActorPtr();
     }
     case CommandOriginType::CommandBlock: {
-        return std::static_pointer_cast<endstone::BlockCommandSender>(
-            std::make_shared<endstone::core::EndstoneBlockCommandSender>(*this, output));
+        return std::make_shared<endstone::core::EndstoneBlockCommandSender>(*this, output);
     }
     case CommandOriginType::MinecartCommandBlock:
         // TODO(permission): add CommandMinecart

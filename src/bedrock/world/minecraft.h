@@ -18,6 +18,7 @@
 #include <memory>
 #include <string>
 
+#include "bedrock/entity/gamerefs_entity/entity_registry_owner.h"
 #include "bedrock/forward.h"
 #include "bedrock/minecraft_app_interface.h"
 #include "bedrock/network/server_network_handler.h"
@@ -27,13 +28,13 @@
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
 
-class Minecraft : public Bedrock::EnableNonOwnerReferences {
+class Minecraft : public IEntityRegistryOwner {
 public:
     Minecraft(IMinecraftApp &, GameCallbacks &, AllowList &, PermissionsFile *,
               const Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> &, std::chrono::seconds, IMinecraftEventing &,
               ClientOrServerNetworkSystemRef, PacketSender &, SubClientId, Timer &, Timer &,
               const Bedrock::NotNullNonOwnerPtr<const IContentTierManager> &, ServerMetrics *);
-    ~Minecraft() override = 0;
+    ~Minecraft() override = default;
     MinecraftCommands &getCommands();
     [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;
     void requestServerShutdown(const std::string &message);

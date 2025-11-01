@@ -20,7 +20,7 @@
 #include "endstone/core/command/server_command_sender.h"
 
 namespace endstone::core {
-class EndstoneBlockCommandSender : public ServerCommandSender, public BlockCommandSender {
+class EndstoneBlockCommandSender : public ServerCommandSender<BlockCommandSender> {
 public:
     EndstoneBlockCommandSender(const CommandOrigin &origin, CommandOutput &output);
 
@@ -30,9 +30,6 @@ public:
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] std::unique_ptr<Block> getBlock() const override;
-
-    // forward
-    ENDSTONE_FORWARD_IMPL_PERMISSIBLE(ServerCommandSender);
 
 private:
     const CommandOrigin &origin_;
