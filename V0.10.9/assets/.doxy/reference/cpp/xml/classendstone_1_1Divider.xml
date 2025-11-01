@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Divider" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Divider</compoundname>
+    <includes refid="divider_8h" local="no">endstone/form/controls/divider.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Divider_1a8a5122832b87ae7c59cb6786e9d3c8d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Divider::Divider</definition>
+        <argsstring>()=default</argsstring>
+        <name>Divider</name>
+        <qualifiedname>endstone::Divider::Divider</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/divider.h" line="30" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a divider. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/divider.h" line="28" column="1" bodyfile="include/endstone/form/controls/divider.h" bodystart="28" bodyend="31"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Divider_1a8a5122832b87ae7c59cb6786e9d3c8d1" prot="public" virt="non-virtual"><scope>endstone::Divider</scope><name>Divider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
