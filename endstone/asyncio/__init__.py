@@ -44,7 +44,7 @@ class _ThreadLoopRunner:
             self._thread = t
             self._started_evt.wait()
 
-    def shutdown(self, *, join_timeout: Optional[float] = None) -> None:
+    def shutdown(self, *, timeout: Optional[float] = None) -> None:
         with self._lock:
             if self._loop is None:
                 self._closed = True
@@ -72,7 +72,8 @@ class _ThreadLoopRunner:
 
             loop.call_soon_threadsafe(loop.stop)  # noqa
             if thread and thread.is_alive():
-                thread.join(join_timeout)
+                if thread is not threading.current_thread():
+                    thread.join(timeout)
 
             if not loop.is_closed():
                 loop.close()

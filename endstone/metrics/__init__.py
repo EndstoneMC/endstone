@@ -6,8 +6,8 @@ import psutil
 
 from endstone.plugin import Plugin
 
-from ._base import MetricsBase
-from ._charts import (
+from .base import MetricsBase
+from .charts import (
     AdvancedBarChart,
     AdvancedPie,
     CustomChart,
@@ -17,7 +17,7 @@ from ._charts import (
     SimplePie,
     SingleLineChart,
 )
-from ._config import MetricsConfig
+from .config import MetricsConfig
 
 __all__ = [
     "Metrics",
