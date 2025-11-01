@@ -162,10 +162,10 @@ public:
         auto [x, y, z] = getHandle().getPosition();
         y -= ActorOffset::getHeightOffset(getHandle().getEntity());
         const auto &[pitch, yaw] = getHandle().getRotation();
-        return {&getDimension(), x, y, z, pitch, yaw};
+        return {x, y, z, pitch, yaw, getDimension()};
     }
 
-    [[nodiscard]] Vector<float> getVelocity() const override
+    [[nodiscard]] Vector getVelocity() const override
     {
         if (getHandle().hasCategory(ActorCategory::Mob) || getHandle().hasCategory(ActorCategory::Ridable)) {
             auto *vehicle = getHandle().getVehicle();

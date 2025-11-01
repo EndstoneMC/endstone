@@ -16,6 +16,7 @@
 
 #include "endstone/core/map/map_canvas.h"
 #include "endstone/core/map/map_renderer.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
