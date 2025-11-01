@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Stack traces are no longer shown when the server fails to start due to a port conflict on Windows.
 * Fixed an issue where `CommandSenderWrapper` could not capture the output of custom commands.
 * Fixed an issue in the `/status` command where permission checks were not performed.
+* Fixed a crash that could occur when the Minecraft service was unavailable.
 
 ## [0.10.8](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.8) - 2025-10-28
 
