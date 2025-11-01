@@ -27,6 +27,7 @@
 #include "endstone/core/crash_handler.h"
 #include "endstone/core/lang/language.h"
 #include "endstone/core/level/level.h"
+#include "endstone/core/metrics.h"
 #include "endstone/core/packs/endstone_pack_source.h"
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/plugin/service_manager.h"
@@ -153,6 +154,7 @@ private:
     std::unique_ptr<Registry<Enchantment>> enchantment_registry_;
     std::unique_ptr<Registry<ItemType>> item_registry_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
+    std::unique_ptr<EndstoneMetrics> metrics_;
     std::unordered_map<UUID, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
     IResourcePackRepository *resource_pack_repository_ = nullptr;

@@ -24,8 +24,8 @@
 
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
-#include "bedrock/server/server_map_data_manager.h"
 #include "bedrock/server/dedicated_server.h"
+#include "bedrock/server/server_map_data_manager.h"
 #include "bedrock/shared_constants.h"
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/level/block/block_descriptor.h"
@@ -135,6 +135,7 @@ void EndstoneServer::setLevel(::Level &level)
     level_ = std::make_unique<EndstoneLevel>(level);
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
+    metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
     loadResourcePacks();
     initRegistries();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message

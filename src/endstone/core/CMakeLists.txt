@@ -20,6 +20,7 @@ add_library(endstone_core
         game_mode.cpp
         logger_factory.cpp
         message.cpp
+        metrics.cpp
         platform_linux.cpp
         platform_windows.cpp
         player.cpp
