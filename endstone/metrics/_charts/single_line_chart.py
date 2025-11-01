@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Callable
 
-from endstone_bstats._charts.custom_chart import CustomChart
+from .custom_chart import CustomChart
 
 
 class SingleLineChart(CustomChart):

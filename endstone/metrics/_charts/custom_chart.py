@@ -3,8 +3,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import final
 
-from endstone_bstats._errors import ChartDataError
-
 
 class CustomChart(ABC):
     """
@@ -46,7 +44,7 @@ class CustomChart(ABC):
             chart["data"] = data
 
         except Exception as e:
-            raise ChartDataError(f"Failed to get data for custom chart with id {self.chart_id}") from e
+            raise ValueError(f"Failed to get data for custom chart with id {self.chart_id}") from e
 
         return chart
 
