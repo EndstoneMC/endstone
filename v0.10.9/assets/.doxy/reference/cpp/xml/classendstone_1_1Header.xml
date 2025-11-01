@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Header" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Header</compoundname>
+    <includes refid="header_8h" local="no">endstone/form/controls/header.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Header_1a2775bffd0b0910fa6ee50cf2a8a0b079" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::Header::label_</definition>
+        <argsstring></argsstring>
+        <name>label_</name>
+        <qualifiedname>endstone::Header::label_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/header.h" line="57" column="13" bodyfile="include/endstone/form/controls/header.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Header_1aceac5ab5dccb454e4e6a3c1c601cc291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Header::Header</definition>
+        <argsstring>()=default</argsstring>
+        <name>Header</name>
+        <qualifiedname>endstone::Header::Header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/header.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Header_1afc892cb3df129426d1ec2f8e6f51874a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Header::Header</definition>
+        <argsstring>(Message label)</argsstring>
+        <name>Header</name>
+        <qualifiedname>endstone::Header::Header</qualifiedname>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/header.h" line="31" column="14" bodyfile="include/endstone/form/controls/header.h" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::Header::getLabel</definition>
+        <argsstring>() const</argsstring>
+        <name>getLabel</name>
+        <qualifiedname>endstone::Header::getLabel</qualifiedname>
+        <briefdescription>
+<para>Gets the label of the header. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The label of the header. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/header.h" line="40" column="14" bodyfile="include/endstone/form/controls/header.h" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Header_1a4fe365b58872e118382981c82f925742" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Header" kindref="compound">Header</ref> &amp;</type>
+        <definition>Header &amp; endstone::Header::setLabel</definition>
+        <argsstring>(Message label)</argsstring>
+        <name>setLabel</name>
+        <qualifiedname>endstone::Header::setLabel</qualifiedname>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+<para>Sets the label of the header. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>label</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new label for the header. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current header. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/header.h" line="51" column="12" bodyfile="include/endstone/form/controls/header.h" bodystart="51" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a header with a label. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/header.h" line="28" column="1" bodyfile="include/endstone/form/controls/header.h" bodystart="28" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" prot="public" virt="non-virtual"><scope>endstone::Header</scope><name>getLabel</name></member>
+      <member refid="classendstone_1_1Header_1aceac5ab5dccb454e4e6a3c1c601cc291" prot="public" virt="non-virtual"><scope>endstone::Header</scope><name>Header</name></member>
+      <member refid="classendstone_1_1Header_1afc892cb3df129426d1ec2f8e6f51874a" prot="public" virt="non-virtual"><scope>endstone::Header</scope><name>Header</name></member>
+      <member refid="classendstone_1_1Header_1a2775bffd0b0910fa6ee50cf2a8a0b079" prot="private" virt="non-virtual"><scope>endstone::Header</scope><name>label_</name></member>
+      <member refid="classendstone_1_1Header_1a4fe365b58872e118382981c82f925742" prot="public" virt="non-virtual"><scope>endstone::Header</scope><name>setLabel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
