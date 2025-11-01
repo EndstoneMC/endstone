@@ -52,9 +52,18 @@ class MetricsBase(ABC):
         self._log_sent_data = log_sent_data
         self._log_response_status_text = log_response_status_text
         self._custom_charts: Set = set()
+        self._future: concurrent.futures.Future | None = None
 
         if self.enabled:
-            endstone.asyncio.submit(self._start_submitting())
+            self._future = endstone.asyncio.submit(self._start_submitting())
+
+    def shutdown(self):
+        if self._future:
+            self._future.cancel()
+            try:
+                self._future.result(timeout=3)  # wait for cancellation
+            except concurrent.futures.CancelledError:
+                self._future = None
 
     @property
     @abstractmethod
