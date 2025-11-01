@@ -585,10 +585,15 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     switch (packet.getId()) {
     case MinecraftPacketIds::PlayerEquipment: {
         auto &pk = static_cast<MobEquipmentPacket &>(packet);
-        PlayerItemHeldEvent e(*this, this->inventory_->getHeldItemSlot(), pk.selected_slot);
+        auto from_slot = this->inventory_->getHeldItemSlot();
+        auto to_slot = pk.selected_slot;
+        if (from_slot == to_slot) {
+            return true;
+        }
+        PlayerItemHeldEvent e(*this, from_slot, to_slot);
         getServer().getPluginManager().callEvent(e);
         if (e.isCancelled()) {
-            this->inventory_->setHeldItemSlot(this->inventory_->getHeldItemSlot());
+            this->inventory_->setHeldItemSlot(from_slot);
             return false;
         }
         return true;
