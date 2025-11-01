@@ -7,10 +7,29 @@ import psutil
 from endstone.plugin import Plugin
 
 from ._base import MetricsBase
-from ._charts import DrilldownPie, SimplePie
+from ._charts import (
+    AdvancedBarChart,
+    AdvancedPie,
+    CustomChart,
+    DrilldownPie,
+    MultiLineChart,
+    SimpleBarChart,
+    SimplePie,
+    SingleLineChart,
+)
 from ._config import MetricsConfig
 
-__all__ = ["Metrics"]
+__all__ = [
+    "Metrics",
+    "AdvancedBarChart",
+    "AdvancedPie",
+    "CustomChart",
+    "DrilldownPie",
+    "MultiLineChart",
+    "SimpleBarChart",
+    "SimplePie",
+    "SingleLineChart",
+]
 
 
 def _get_python_version() -> dict[str, dict[str, int]]:
