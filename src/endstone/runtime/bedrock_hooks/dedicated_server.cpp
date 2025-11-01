@@ -35,7 +35,7 @@
 
 namespace py = pybind11;
 
-DedicatedServer::StartResult DedicatedServer::start(const std::string &sessionID,
+DedicatedServer::StartResult DedicatedServer::start(const std::string &session_id,
                                                     const Bedrock::ActivationArguments &args)
 {
     // Save the current stdin, as it will be altered after the initialisation of python interpreter
@@ -59,7 +59,7 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &sessionID
     DUP2(old_stdin, FILENO(stdin));
     CLOSE(old_stdin);
 
-    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, sessionID, args);
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, session_id, args);
 
     // Clean up
     entt::locator<endstone::core::EndstoneServer>::reset();

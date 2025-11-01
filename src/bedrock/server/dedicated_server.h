@@ -33,7 +33,7 @@ public:
     };
     DedicatedServer();
     ~DedicatedServer() override;
-    ENDSTONE_HOOK StartResult start(const std::string &sessionID, const Bedrock::ActivationArguments &args);
+    ENDSTONE_HOOK StartResult start(const std::string &session_id, const Bedrock::ActivationArguments &args);
     bool stop() override;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<FileArchiver> getFileArchiver() const;
 
