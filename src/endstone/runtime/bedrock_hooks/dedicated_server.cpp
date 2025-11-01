@@ -38,38 +38,30 @@ namespace py = pybind11;
 DedicatedServer::StartResult DedicatedServer::start(const std::string &sessionID,
                                                     const Bedrock::ActivationArguments &args)
 {
-    try {
-        // Save the current stdin, as it will be altered after the initialisation of python interpreter
-        const auto old_stdin = DUP(FILENO(stdin));
+    // Save the current stdin, as it will be altered after the initialisation of python interpreter
+    const auto old_stdin = DUP(FILENO(stdin));
 
-        // Initialise an isolated Python environment to avoid installing signal handlers
-        // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
-        PyConfig config;
-        PyConfig_InitIsolatedConfig(&config);
-        config.isolated = 0;
-        config.use_environment = 1;
-        py::scoped_interpreter interpreter(&config);
-        py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
-        py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
+    // Initialise an isolated Python environment to avoid installing signal handlers
+    // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
+    PyConfig config;
+    PyConfig_InitIsolatedConfig(&config);
+    config.isolated = 0;
+    config.use_environment = 1;
+    py::scoped_interpreter interpreter(&config);
+    py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
+    py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
 
-        // Release the GIL
-        py::gil_scoped_release release{};
+    // Release the GIL
+    py::gil_scoped_release release{};
 
-        // Restore the stdin
-        std::fflush(stdin);
-        DUP2(old_stdin, FILENO(stdin));
-        CLOSE(old_stdin);
+    // Restore the stdin
+    std::fflush(stdin);
+    DUP2(old_stdin, FILENO(stdin));
+    CLOSE(old_stdin);
 
-        auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, sessionID, args);
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, sessionID, args);
 
-        // Clean up
-        entt::locator<endstone::core::EndstoneServer>::reset();
-        return result;
-    }
-    catch (const std::exception &e) {
-        const auto &logger = endstone::core::LoggerFactory::getLogger("Server");
-        logger.error("An exception occurred while initialising Endstone runtime.");
-        logger.error("{}", e.what());
-        return StartResult::RuntimeError;
-    }
+    // Clean up
+    entt::locator<endstone::core::EndstoneServer>::reset();
+    return result;
 }

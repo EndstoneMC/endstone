@@ -172,7 +172,7 @@ void EndstoneServer::setResourcePackRepository(IResourcePackRepository &repo)
     if (resource_pack_repository_) {
         throw std::runtime_error("Resource pack repository already set.");
     }
-    resource_pack_repository_ = repo;
+    resource_pack_repository_ = &repo;
 }
 
 void EndstoneServer::initPackSource(const PackSourceFactory &pack_source_factory)

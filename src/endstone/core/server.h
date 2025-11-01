@@ -152,7 +152,7 @@ private:
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
     std::unordered_map<UUID, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
-    Bedrock::NonOwnerPointer<IResourcePackRepository> resource_pack_repository_;
+    IResourcePackRepository *resource_pack_repository_ = nullptr;
     std::unique_ptr<EndstonePackSource> resource_pack_source_;
     int tick_counter_ = 0;
     float current_mspt_ = SharedConstants::MilliSecondsPerTick * 1.0F;
