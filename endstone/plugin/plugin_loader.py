@@ -15,7 +15,7 @@ import pkginfo
 from importlib_metadata import EntryPoint, distribution, entry_points, metadata
 
 from endstone import Server
-from endstone._metrics import Metrics
+from endstone._metrics import EndstoneMetrics
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
 from endstone.plugin import Plugin, PluginDescription, PluginLoader, PluginLoadOrder
@@ -83,10 +83,7 @@ class PythonPluginLoader(PluginLoader):
         PluginLoader.__init__(self, server)
         self._invalidate_caches()
         self._plugins = []
-        self._metrics = Metrics(self.server)
-
-    def __del__(self):
-        self._metrics.shutdown()
+        self._metrics = EndstoneMetrics(self.server)
 
     def _invalidate_caches(self):
         importlib.invalidate_caches()

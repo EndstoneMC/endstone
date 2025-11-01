@@ -3,18 +3,19 @@ from pathlib import Path
 from typing import Any, Dict
 
 import psutil
-from endstone_bstats import AdvancedPie, DrilldownPie, MetricsBase, MetricsConfig, SimplePie, SingleLineChart
 
 from endstone import Server, __minecraft_version__
 
+from .metrics import AdvancedPie, DrilldownPie, MetricsBase, MetricsConfig, SimplePie, SingleLineChart
 
-class Metrics(MetricsBase):
+
+class EndstoneMetrics(MetricsBase):
     def __init__(self, server: Server):
         self._server = server
 
         # Get the config file
-        bstats_folder = Path("plugins") / "bstats"
-        config_file = bstats_folder / "config.toml"
+        config_path = Path("plugins") / "bstats"
+        config_file = config_path / "config.toml"
         self._config = MetricsConfig(config_file, True)
 
         super().__init__(
