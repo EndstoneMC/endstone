@@ -15,11 +15,11 @@
 #include "endstone/core/console/console.h"
 
 namespace endstone::core {
-std::string EndstoneConsole::readLine(const std::string &prompt)
+std::optional<std::string> EndstoneConsole::readLine(const std::string &prompt)
 {
     const char *cstr = rx_.input(prompt);
     if (!cstr) {
-        return {};
+        return std::nullopt;
     }
     std::string line(cstr);
     if (!line.empty()) {

@@ -121,10 +121,6 @@ void EndstoneServer::init(ServerInstance &server_instance)
     }
     server_instance_ = &server_instance;
     server_instance_->getEventCoordinator()->registerListener(&ServerInstanceStopListener::getInstance());
-
-    auto &server = static_cast<DedicatedServer &>(server_instance.app_);
-    server.console_input_reader_ = std::make_unique<EndstoneConsoleReader>();
-
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
     player_ban_list_->load();
@@ -180,6 +176,10 @@ void EndstoneServer::setLevel(::Level &level)
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     getPluginManager().callEvent(event);
+
+    // start accepting input
+    auto &server = static_cast<DedicatedServer &>(server_instance_->app_);
+    server.console_input_reader_ = std::make_unique<EndstoneConsoleReader>();
 }
 
 void EndstoneServer::initRegistries()

@@ -22,7 +22,7 @@ namespace endstone::core {
 class EndstoneConsole {
 public:
     EndstoneConsole() = default;
-    [[nodiscard]] std::string readLine(const std::string &prompt);
+    [[nodiscard]] std::optional<std::string> readLine(const std::string &prompt);
     void printAbove(std::string_view message);
 
     static EndstoneConsole &getInstance();

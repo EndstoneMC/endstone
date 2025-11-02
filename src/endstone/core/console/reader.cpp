@@ -29,14 +29,18 @@ EndstoneConsoleReader::EndstoneConsoleReader()
         std::wcin.clear();
         while (true) {
             auto line = EndstoneConsole::getInstance().readLine("> ");
-            if (line.empty()) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));
-                continue;
+            if (line.has_value()) {
+                console_input_.try_enqueue(line.value());
+                if (line.value() == "stop") {
+                    break;
+                }
             }
-            console_input_.try_enqueue(line);
-            if (line == "stop") {
+            else {
+                // Ctrl + C, EOF
+                console_input_.try_enqueue("stop");
                 break;
             }
+
             if (!read_console_) {
                 return;
             }
