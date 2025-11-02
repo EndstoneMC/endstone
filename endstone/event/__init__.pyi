@@ -213,6 +213,25 @@ class ActorDeathEvent(MobEvent):
         """
         ...
 
+class PlayerDeathEvent(ActorDeathEvent):
+    """
+    Called when a player dies
+    """
+    @property
+    def player(self) -> Player:
+        """
+        Gets the Player that is breaking the block involved in this event.
+        """
+        ...
+    @property
+    def death_message(self) -> str | Translatable | None:
+        """
+        Gets or sets the death message that will appear to everyone on the server.
+        """
+        ...
+    @death_message.setter
+    def death_message(self, arg1: str | Translatable | None) -> None: ...
+
 class ActorExplodeEvent(ActorEvent, Cancellable):
     """
     Called when an Actor explodes.
@@ -502,19 +521,6 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
         ...
     @command.setter
     def command(self, arg1: str) -> None: ...
-
-class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
-    """
-    Called when a player dies
-    """
-    @property
-    def death_message(self) -> str | Translatable | None:
-        """
-        Gets or sets the death message that will appear to everyone on the server.
-        """
-        ...
-    @death_message.setter
-    def death_message(self, arg1: str | Translatable | None) -> None: ...
 
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """
