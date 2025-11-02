@@ -69,6 +69,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("ms-gsl/4.2.0")
         self.requires("nlohmann_json/3.12.0")
         self.requires("pybind11/3.0.1")
+        self.requires("replxx/0.0.4")
         self.requires("sentry-native/0.7.17")
         self.requires("spdlog/1.15.3")
         self.requires("tomlplusplus/3.3.0")
@@ -77,7 +78,6 @@ class EndstoneRecipe(ConanFile):
             self.requires("libelf/0.8.13")
 
         if self._with_devtools:
-            # self.requires("glew/2.2.0")
             self.requires("glfw/3.4")
             self.requires("imgui/1.91.8-docking")
             self.requires("zstr/1.0.7")
