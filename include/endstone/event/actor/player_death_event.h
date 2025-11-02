@@ -18,19 +18,26 @@
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
-
 /**
  * @brief Called when a Player dies
  */
-class PlayerDeathEvent : public ActorDeathEvent, public PlayerEvent {
+class PlayerDeathEvent : public ActorDeathEvent {
 public:
     ENDSTONE_EVENT(PlayerDeathEvent);
-
     explicit PlayerDeathEvent(Player &player, std::unique_ptr<DamageSource> damage_source,
                               std::optional<Message> death_message)
-        : ActorDeathEvent(player, std::move(damage_source)), PlayerEvent(player),
-          death_message_(std::move(death_message))
+        : ActorDeathEvent(player, std::move(damage_source)), death_message_(std::move(death_message))
     {
+    }
+
+    /**
+     * @brief Returns the Player involved in this event
+     *
+     * @return Player which is involved in this event
+     */
+    [[nodiscard]] Player &getPlayer() const
+    {
+        return static_cast<Player &>(getActor());
     }
 
     /**
@@ -58,5 +65,4 @@ private:
 
     // TODO(event): new exp, new level, new total exp, keep level, keep inventory
 };
-
 }  // namespace endstone

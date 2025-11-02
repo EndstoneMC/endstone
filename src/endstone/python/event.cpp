@@ -71,6 +71,11 @@ void init_event(py::module_ &m, py::class_<Event> &event)
     py::class_<ActorDeathEvent, ActorEvent<Mob>>(m, "ActorDeathEvent", "Called when an Actor dies.")
         .def_property_readonly("damage_source", &ActorDeathEvent::getDamageSource, py::return_value_policy::reference,
                                "Gets the source of damage which caused the death.");
+    py::class_<PlayerDeathEvent, ActorDeathEvent>(m, "PlayerDeathEvent", "Called when a player dies")
+        .def_property_readonly("player", &PlayerDeathEvent::getPlayer, py::return_value_policy::reference,
+                               "Gets the Player that is breaking the block involved in this event.")
+        .def_property("death_message", &PlayerDeathEvent::getDeathMessage, &PlayerDeathEvent::setDeathMessage,
+                      "Gets or sets the death message that will appear to everyone on the server.");
     py::class_<ActorExplodeEvent, ActorEvent<Actor>, ICancellable>(m, "ActorExplodeEvent",
                                                                    "Called when an Actor explodes.")
         .def_property_readonly("location", &ActorExplodeEvent::getLocation,
@@ -204,9 +209,6 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                                               "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
                       "Gets or sets the command that the player will send.");
-    py::class_<PlayerDeathEvent, ActorDeathEvent, PlayerEvent>(m, "PlayerDeathEvent", "Called when a player dies")
-        .def_property("death_message", &PlayerDeathEvent::getDeathMessage, &PlayerDeathEvent::setDeathMessage,
-                      "Gets or sets the death message that will appear to everyone on the server.");
     py::class_<PlayerDropItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory")
         .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference,

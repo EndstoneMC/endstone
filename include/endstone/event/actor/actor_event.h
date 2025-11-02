@@ -18,7 +18,6 @@
 #include "endstone/event/event.h"
 
 namespace endstone {
-
 /**
  * @brief Represents an Actor-related event
  */
@@ -43,5 +42,4 @@ public:
 private:
     ActorType &actor_;
 };
-
 }  // namespace endstone
