@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bullseye AS base
+FROM python:3.12-slim-bookworm AS base
 
 LABEL maintainer="Endstone <hello@endstone.dev>"
 
@@ -22,7 +22,7 @@ RUN apt-get update -y -qq \
     && update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100
 
 # Install CMake and other build tools
-ARG CMAKE_VERSION=3.31.4
+ARG CMAKE_VERSION=4.0.3
 ARG CMAKE_SH=cmake-${CMAKE_VERSION}-linux-x86_64.sh
 RUN apt-get update -y -qq \
     && apt-get install -y -qq wget git ninja-build \
@@ -57,7 +57,7 @@ RUN --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
     && pytest tests/endstone/python
 
 # Final stage
-FROM python:3.12-slim-bookworm AS final
+FROM base AS final
 
 # Install runtime dependencies
 RUN apt-get update -y -qq \
