@@ -14,6 +14,8 @@
 
 #include "endstone/core/metrics.h"
 
+#include <pybind11/embed.h>
+
 namespace py = pybind11;
 
 namespace endstone::core {

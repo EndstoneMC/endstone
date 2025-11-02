@@ -16,7 +16,7 @@
 
 #include <string_view>
 
-#include <pybind11/embed.h>
+#include <pybind11/pybind11.h>
 
 #include "endstone/plugin/plugin_loader.h"
 

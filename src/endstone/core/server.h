@@ -27,7 +27,6 @@
 #include "endstone/core/crash_handler.h"
 #include "endstone/core/lang/language.h"
 #include "endstone/core/level/level.h"
-#include "endstone/core/metrics.h"
 #include "endstone/core/packs/endstone_pack_source.h"
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/plugin/service_manager.h"
@@ -38,6 +37,7 @@
 
 namespace endstone::core {
 class EndstoneConsoleCommandSender;
+class EndstoneMetrics;
 class EndstonePlayer;
 class EndstoneServer : public Server {
 public:

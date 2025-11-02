@@ -15,6 +15,9 @@ set(FUNCHOOK_INSTALL OFF CACHE BOOL "Install funchook")
 FetchContent_MakeAvailable(funchook)
 add_library(funchook::funchook ALIAS funchook-static)
 
+set(PYBIND11_FINDPYTHON ON)
+find_package(pybind11 CONFIG REQUIRED)
+
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
         bedrock_hooks/bedrock_event_logger.cpp
@@ -58,7 +61,7 @@ add_library(endstone_runtime SHARED
 )
 add_library(endstone::runtime ALIAS endstone_runtime)
 set_target_properties(endstone_runtime PROPERTIES COMPILE_WARNING_AS_ERROR ON)
-target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
+target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook pybind11::embed)
 if (MSVC)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
     target_link_options(endstone_runtime PRIVATE /DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF)

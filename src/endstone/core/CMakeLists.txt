@@ -9,8 +9,8 @@ find_package(date REQUIRED)
 find_package(EnTT REQUIRED)
 find_package(magic_enum REQUIRED)
 find_package(nlohmann_json REQUIRED)
-find_package(Python COMPONENTS Interpreter Development REQUIRED)
-find_package(pybind11 REQUIRED)
+set(PYBIND11_FINDPYTHON ON)
+find_package(pybind11 CONFIG REQUIRED)
 find_package(sentry REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(tomlplusplus REQUIRED)
@@ -113,7 +113,7 @@ target_link_libraries(endstone_core PUBLIC
         EnTT::EnTT
         magic_enum::magic_enum
         nlohmann_json::nlohmann_json
-        pybind11::embed
+        pybind11::pybind11
         sentry::sentry
         spdlog::spdlog
         tomlplusplus::tomlplusplus)
