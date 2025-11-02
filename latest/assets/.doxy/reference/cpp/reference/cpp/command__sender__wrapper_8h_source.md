@@ -99,22 +99,22 @@ public:
 
     [[nodiscard]] ConsoleCommandSender *asConsole() const override
     {
-        return nullptr;
+        return sender_.asConsole();
     }
 
     [[nodiscard]] BlockCommandSender *asBlock() const override
     {
-        return nullptr;
+        return sender_.asBlock();
     }
 
     [[nodiscard]] Actor *asActor() const override
     {
-        return nullptr;
+        return sender_.asActor();
     }
 
     [[nodiscard]] Player *asPlayer() const override
     {
-        return nullptr;
+        return sender_.asPlayer();
     }
 
     [[nodiscard]] Server &getServer() const override

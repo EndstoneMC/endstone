@@ -160,7 +160,7 @@
         </childnode>
       </node>
       <node id="4">
-        <label>include/endstone/event/player/player_death_event.h</label>
+        <label>include/endstone/event/actor/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>
     </invincdepgraph>

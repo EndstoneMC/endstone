@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_event.h" line="44" column="15" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="44" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_event.h" line="43" column="15" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="43" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_event.h" line="28" column="14" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="28" bodyend="28"/>
+        <location file="include/endstone/event/actor/actor_event.h" line="27" column="14" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="27" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorEvent_1a9fff5524effc04e99bb28d49a9b37b6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_event.h" line="29" column="5"/>
+        <location file="include/endstone/event/actor/actor_event.h" line="28" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>ActorType &amp;</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_event.h" line="36" column="16" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="36" bodyend="39"/>
+        <location file="include/endstone/event/actor/actor_event.h" line="35" column="16" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="35" bodyend="38"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -106,7 +106,7 @@
         <link refid="classendstone_1_1Event"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/actor_event.h" line="26" column="1" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="26" bodyend="45"/>
+    <location file="include/endstone/event/actor/actor_event.h" line="25" column="1" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="25" bodyend="44"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorEvent_1a5bda59f76a2df1a35f89d47c6ef2bcbf" prot="private" virt="non-virtual"><scope>endstone::ActorEvent</scope><name>actor_</name></member>
       <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::ActorEvent</scope><name>ActorEvent</name></member>

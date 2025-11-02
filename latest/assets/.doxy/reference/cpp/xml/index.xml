@@ -63,10 +63,9 @@
     <member refid="classendstone_1_1ActorDamageEvent_1a538c8cedc5f6f72088aaf4351d9e32f4" kind="function"><name>getDamageSource</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorDeathEvent" kind="class"><name>endstone::ActorDeathEvent</name>
-    <member refid="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1ActorDeathEvent_1ac6b8ca9f296013ab0943df44b763e4a3" kind="variable"><name>damage_source_</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1a2c2b7162128bb50eae25b3c924a80207" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1ActorDeathEvent_1a0a2ffc4f1aa535e3afd006a934114f1a" kind="function"><name>ActorDeathEvent</name></member>
-    <member refid="classendstone_1_1ActorDeathEvent_1ad3572783702cd3e40447a3d6344a8094" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1ActorDeathEvent_1ac269e4dac094cf1275a1fe60302872ed" kind="function"><name>getDamageSource</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorEvent" kind="class"><name>endstone::ActorEvent</name>
@@ -1311,6 +1310,7 @@
     <member refid="classendstone_1_1PlayerDeathEvent_1a6480e2399396eaa3fb8ed7bfcb56da21" kind="variable"><name>death_message_</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a65fb428be5bdb70e91101198e73416dd" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a3104f4d23f97f8c6231b5b6be585d18e" kind="function"><name>PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1acc66e0f2d94b897223abd87c1ff30e8b" kind="function"><name>getPlayer</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" kind="function"><name>getDeathMessage</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" kind="function"><name>setDeathMessage</name></member>
   </compound>
@@ -2145,6 +2145,8 @@
   </compound>
   <compound refid="actor__teleport__event_8h" kind="file"><name>actor_teleport_event.h</name>
   </compound>
+  <compound refid="player__death__event_8h" kind="file"><name>player_death_event.h</name>
+  </compound>
   <compound refid="block__break__event_8h" kind="file"><name>block_break_event.h</name>
   </compound>
   <compound refid="block__cook__event_8h" kind="file"><name>block_cook_event.h</name>
@@ -2189,8 +2191,6 @@
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>
   <compound refid="player__command__event_8h" kind="file"><name>player_command_event.h</name>
-  </compound>
-  <compound refid="player__death__event_8h" kind="file"><name>player_death_event.h</name>
   </compound>
   <compound refid="player__drop__item__event_8h" kind="file"><name>player_drop_item_event.h</name>
   </compound>

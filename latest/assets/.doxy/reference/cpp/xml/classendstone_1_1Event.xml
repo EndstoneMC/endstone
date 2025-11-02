@@ -158,7 +158,6 @@
         <name>getEventName</name>
         <qualifiedname>endstone::Event::getEventName</qualifiedname>
         <reimplementedby refid="classendstone_1_1ActorDamageEvent_1adc39392f2370363313d09e4dde688e08">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1ActorDeathEvent_1ad3572783702cd3e40447a3d6344a8094">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ActorExplodeEvent_1a5cc3e0325db3f67173ae516314fae999">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ActorRemoveEvent_1aba629c08862f2ce560791525abfc6037">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f">getEventName</reimplementedby>
@@ -470,8 +469,6 @@
         <label>endstone::PlayerDeathEvent</label>
         <link refid="classendstone_1_1PlayerDeathEvent"/>
         <childnode refid="6" relation="public-inheritance">
-        </childnode>
-        <childnode refid="29" relation="public-inheritance">
         </childnode>
       </node>
       <node id="34">

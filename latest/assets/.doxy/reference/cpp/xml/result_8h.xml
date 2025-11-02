@@ -175,7 +175,7 @@
       <node id="70">
         <label>include/endstone/event/actor/actor_death_event.h</label>
         <link refid="actor__death__event_8h_source"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
       <node id="71">
@@ -215,6 +215,10 @@
       <node id="74">
         <label>include/endstone/event/actor/actor_teleport_event.h</label>
         <link refid="actor__teleport__event_8h_source"/>
+      </node>
+      <node id="39">
+        <label>include/endstone/event/actor/player_death_event.h</label>
+        <link refid="player__death__event_8h_source"/>
       </node>
       <node id="8">
         <label>include/endstone/event/block/block_break_event.h</label>
@@ -308,17 +312,13 @@
         <label>include/endstone/event/player/player_bed_leave_event.h</label>
         <link refid="player__bed__leave__event_8h_source"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/endstone/event/player/player_chat_event.h</label>
         <link refid="player__chat__event_8h_source"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
-      </node>
-      <node id="41">
-        <label>include/endstone/event/player/player_death_event.h</label>
-        <link refid="player__death__event_8h_source"/>
       </node>
       <node id="42">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
@@ -331,11 +331,11 @@
       <node id="38">
         <label>include/endstone/event/player/player_event.h</label>
         <link refid="player__event_8h_source"/>
+        <childnode refid="39" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>

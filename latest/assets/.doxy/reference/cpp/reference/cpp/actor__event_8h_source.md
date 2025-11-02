@@ -28,7 +28,6 @@
 #include "endstone/event/event.h"
 
 namespace endstone {
-
 template <typename ActorType>
 class ActorEvent : public Event {
 public:
@@ -45,7 +44,6 @@ public:
 private:
     ActorType &actor_;
 };
-
 }  // namespace endstone
 ```
 

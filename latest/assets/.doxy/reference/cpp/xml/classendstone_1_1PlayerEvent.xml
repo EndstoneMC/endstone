@@ -5,7 +5,6 @@
     <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerBedLeaveEvent" prot="public" virt="non-virtual">endstone::PlayerBedLeaveEvent</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1PlayerDeathEvent" prot="public" virt="non-virtual">endstone::PlayerDeathEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerJoinEvent" prot="public" virt="non-virtual">endstone::PlayerJoinEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerQuitEvent" prot="public" virt="non-virtual">endstone::PlayerQuitEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerRespawnEvent" prot="public" virt="non-virtual">endstone::PlayerRespawnEvent</derivedcompoundref>
@@ -118,12 +117,6 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="22">
-        <label>endstone::PlayerDeathEvent</label>
-        <link refid="classendstone_1_1PlayerDeathEvent"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="7">
         <label>endstone::PlayerDropItemEvent</label>
         <link refid="classendstone_1_1PlayerDropItemEvent"/>
@@ -172,7 +165,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="23">
+      <node id="22">
         <label>endstone::PlayerJoinEvent</label>
         <link refid="classendstone_1_1PlayerJoinEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -208,13 +201,13 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="24">
+      <node id="23">
         <label>endstone::PlayerQuitEvent</label>
         <link refid="classendstone_1_1PlayerQuitEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>endstone::PlayerRespawnEvent</label>
         <link refid="classendstone_1_1PlayerRespawnEvent"/>
         <childnode refid="1" relation="public-inheritance">

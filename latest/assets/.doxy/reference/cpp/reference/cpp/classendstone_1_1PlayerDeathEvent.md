@@ -10,15 +10,11 @@
 
 _Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._
 
-* `#include <endstone/event/player/player_death_event.h>`
+* `#include <endstone/event/actor/player_death_event.h>`
 
 
 
-Inherits the following classes: [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md),  [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
-
-
-
-
+Inherits the following classes: [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 
 
@@ -31,49 +27,6 @@ Inherits the following classes: [endstone::ActorDeathEvent](classendstone_1_1Act
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Static Attributes inherited from endstone::ActorDeathEvent
-
-See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](classendstone_1_1ActorDeathEvent.md#variable-name)   = `"ActorDeathEvent"`<br> |
 
 
 
@@ -163,6 +116,7 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md)) <br> |
 |   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, std::optional&lt; Message &gt; death\_message) <br> |
 |  std::optional&lt; Message &gt; | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
+|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Returns the_ [_**Player**_](classendstone_1_1Player.md) _involved in this event._ |
 |  void | [**setDeathMessage**](#function-setdeathmessage) (std::optional&lt; Message &gt; death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 
 
@@ -173,8 +127,8 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md#function-actordeathevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source) <br> |
+|   | [**ENDSTONE\_EVENT**](classendstone_1_1ActorDeathEvent.md#function-endstone_event) ([**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md)) <br> |
 |  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](classendstone_1_1ActorDeathEvent.md#function-getdamagesource) () const<br>_Gets the source of damage which caused the death._  |
-| virtual std::string | [**getEventName**](classendstone_1_1ActorDeathEvent.md#function-geteventname) () override const<br> |
 
 
 ## Public Functions inherited from endstone::ActorEvent
@@ -200,90 +154,6 @@ See [endstone::Event](classendstone_1_1Event.md)
 |  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
 |  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 | virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
-
-
-## Public Functions inherited from endstone::PlayerEvent
-
-See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
-|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](classendstone_1_1PlayerEvent.md#function-getplayer) () const<br> |
-|   | [**~PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) () override<br> |
-
-
-## Public Functions inherited from endstone::Event
-
-See [endstone::Event](classendstone_1_1Event.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-12) (bool async=false) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-22) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-| virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
-|  bool | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) (const [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-| virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Protected Attributes inherited from endstone::PlayerEvent
-
-See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
-
-| Type | Name |
-| ---: | :--- |
-|  std::reference\_wrapper&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](classendstone_1_1PlayerEvent.md#variable-player_)  <br> |
-
-
-
-
-
-
 
 
 
@@ -452,6 +322,31 @@ Message to appear to other players on the server.
 
 
 
+### function getPlayer 
+
+_Returns the_ [_**Player**_](classendstone_1_1Player.md) _involved in this event._
+```C++
+inline Player & endstone::PlayerDeathEvent::getPlayer () const
+```
+
+
+
+
+
+**Returns:**
+
+[**Player**](classendstone_1_1Player.md) which is involved in this event 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setDeathMessage 
 
 _Set the death message that will appear to everyone on the server._ 
@@ -478,5 +373,5 @@ inline void endstone::PlayerDeathEvent::setDeathMessage (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/event/player/player_death_event.h`
+The documentation for this class was generated from the following file `include/endstone/event/actor/player_death_event.h`
 

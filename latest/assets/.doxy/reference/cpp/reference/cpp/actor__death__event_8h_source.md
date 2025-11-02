@@ -31,15 +31,10 @@ namespace endstone {
 
 class ActorDeathEvent : public ActorEvent<Mob> {
 public:
+    ENDSTONE_EVENT(ActorDeathEvent);
     ActorDeathEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source)
         : ActorEvent(actor), damage_source_(std::move(damage_source))
     {
-    }
-
-    inline static const std::string NAME = "ActorDeathEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
     }
 
     [[nodiscard]] DamageSource &getDamageSource() const

@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_remove_event.h" line="29" column="5" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="28" bodyend="28"/>
+        <location file="include/endstone/event/actor/actor_remove_event.h" line="29" column="5" bodyfile="include/endstone/event/actor/actor_event.h" bodystart="27" bodyend="27"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

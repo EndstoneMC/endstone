@@ -2111,17 +2111,6 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes-inherited-from-endstoneactordeathevent" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Attributes inherited from endstone::ActorDeathEvent
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -2158,39 +2147,6 @@ For latest updates join the chat on
     <a href="#public-functions-inherited-from-endstoneevent" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions inherited from endstone::Event
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneplayerevent" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Functions inherited from endstone::PlayerEvent
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneevent_1" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Functions inherited from endstone::Event
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#protected-attributes-inherited-from-endstoneplayerevent" class="md-nav__link">
-      <span class="md-ellipsis">
-        Protected Attributes inherited from endstone::PlayerEvent
       </span>
     </a>
 
@@ -2241,6 +2197,19 @@ For latest updates join the chat on
     <a href="#function-getdeathmessage" class="md-nav__link">
       <span class="md-ellipsis">
         function getDeathMessage
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getplayer" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getPlayer
       </span>
     </a>
 
@@ -2303,25 +2272,9 @@ For latest updates join the chat on
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>PlayerDeathEvent</strong></a></p>
 <p><em>Called when a</em> <a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>dies.</em></p>
 <ul>
-<li><code>#include &lt;endstone/event/player/player_death_event.h&gt;</code></li>
+<li><code>#include &lt;endstone/event/actor/player_death_event.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1ActorDeathEvent/">endstone::ActorDeathEvent</a>,  <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
-<h2 id="public-static-attributes-inherited-from-endstoneactordeathevent">Public Static Attributes inherited from endstone::ActorDeathEvent<a class="headerlink" href="#public-static-attributes-inherited-from-endstoneactordeathevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1ActorDeathEvent/">endstone::ActorDeathEvent</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">const std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#variable-name"><strong>NAME</strong></a>   = <code>"ActorDeathEvent"</code><br></td>
-</tr>
-</tbody>
-</table>
+<p>Inherits the following classes: <a href="../classendstone_1_1ActorDeathEvent/">endstone::ActorDeathEvent</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2344,6 +2297,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getdeathmessage"><strong>getDeathMessage</strong></a> () const<br><em>Get the death message that will appear to everyone on the server.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getplayer"><strong>getPlayer</strong></a> () const<br><em>Returns the</em> <a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>involved in this event.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-setdeathmessage"><strong>setDeathMessage</strong></a> (std::optional&lt; Message &gt; death_message) <br><em>Set the death message that will appear to everyone on the server.</em></td>
 </tr>
@@ -2364,12 +2321,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-actordeathevent"><strong>ActorDeathEvent</strong></a> (<a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> &amp; actor, std::unique_ptr&lt; <a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> &gt; damage_source) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-getdamagesource"><strong>getDamageSource</strong></a> () const<br><em>Gets the source of damage which caused the death.</em></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-endstone_event"><strong>ENDSTONE_EVENT</strong></a> (<a href="../classendstone_1_1ActorDeathEvent/"><strong>ActorDeathEvent</strong></a>) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1DamageSource/"><strong>DamageSource</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ActorDeathEvent/#function-getdamagesource"><strong>getDamageSource</strong></a> () const<br><em>Gets the source of damage which caused the death.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2433,82 +2390,6 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneplayerevent">Public Functions inherited from endstone::PlayerEvent<a class="headerlink" href="#public-functions-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>PlayerEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-getplayer"><strong>getPlayer</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>~PlayerEvent</strong></a> () override<br></td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-functions-inherited-from-endstoneevent_1">Public Functions inherited from endstone::Event<a class="headerlink" href="#public-functions-inherited-from-endstoneevent_1" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1Event/">endstone::Event</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-12"><strong>Event</strong></a> (bool async=false) <br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-22"><strong>Event</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event"><strong>~Event</strong></a> () = default<br></td>
-</tr>
-</tbody>
-</table>
-<h2 id="protected-attributes-inherited-from-endstoneplayerevent">Protected Attributes inherited from endstone::PlayerEvent<a class="headerlink" href="#protected-attributes-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">std::reference_wrapper&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#variable-player_"><strong>player_</strong></a>  <br></td>
-</tr>
-</tbody>
-</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">ENDSTONE_EVENT</span><span class="w"> </span><span class="p">(</span>
@@ -2534,11 +2415,19 @@ For latest updates join the chat on
 <p>Message to appear to other players on the server. </p>
 <hr>
 
+<h3 id="function-getplayer">function getPlayer<a class="headerlink" href="#function-getplayer" title="Permanent link">&para;</a></h3>
+<p><em>Returns the</em> <a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>involved in this event.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">getPlayer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Player/"><strong>Player</strong></a> which is involved in this event </p>
+<hr>
+
 <h3 id="function-setdeathmessage">function setDeathMessage<a class="headerlink" href="#function-setdeathmessage" title="Permanent link">&para;</a></h3>
 <p><em>Set the death message that will appear to everyone on the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">setDeathMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">death_message</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">setDeathMessage</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">death_message</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2547,7 +2436,7 @@ For latest updates join the chat on
 <hr>
 
 <hr />
-<p>The documentation for this class was generated from the following file <code>include/endstone/event/player/player_death_event.h</code></p>
+<p>The documentation for this class was generated from the following file <code>include/endstone/event/actor/player_death_event.h</code></p>
 
 
 

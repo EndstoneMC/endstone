@@ -140,7 +140,7 @@
       <node id="46">
         <label>include/endstone/event/actor/actor_death_event.h</label>
         <link refid="actor__death__event_8h_source"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="47">
@@ -180,6 +180,10 @@
       <node id="51">
         <label>include/endstone/event/actor/actor_teleport_event.h</label>
         <link refid="actor__teleport__event_8h_source"/>
+      </node>
+      <node id="23">
+        <label>include/endstone/event/actor/player_death_event.h</label>
+        <link refid="player__death__event_8h_source"/>
       </node>
       <node id="21">
         <label>include/endstone/event/block/block_place_event.h</label>
@@ -223,25 +227,21 @@
         <childnode refid="66" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/endstone/event/player/player_bed_enter_event.h</label>
         <link refid="player__bed__enter__event_8h_source"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/endstone/event/player/player_bed_leave_event.h</label>
         <link refid="player__bed__leave__event_8h_source"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/endstone/event/player/player_chat_event.h</label>
         <link refid="player__chat__event_8h_source"/>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
-      </node>
-      <node id="27">
-        <label>include/endstone/event/player/player_death_event.h</label>
-        <link refid="player__death__event_8h_source"/>
       </node>
       <node id="28">
         <label>include/endstone/event/player/player_drop_item_event.h</label>

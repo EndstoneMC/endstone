@@ -48,11 +48,6 @@ Inherited by the following classes: [endstone::PlayerDeathEvent](classendstone_1
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  const std::string | [**NAME**](#variable-name)   = `"ActorDeathEvent"`<br> |
 
 
 
@@ -100,8 +95,8 @@ Inherited by the following classes: [endstone::PlayerDeathEvent](classendstone_1
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorDeathEvent**](#function-actordeathevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md)) <br> |
 |  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](#function-getdamagesource) () const<br>_Gets the source of damage which caused the death._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 
 
 ## Public Functions inherited from endstone::ActorEvent
@@ -207,21 +202,6 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::ActorDeathEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -233,6 +213,21 @@ const std::string endstone::ActorDeathEvent::NAME;
 inline endstone::ActorDeathEvent::ActorDeathEvent (
     Mob & actor,
     std::unique_ptr< DamageSource > damage_source
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::ActorDeathEvent::ENDSTONE_EVENT (
+    ActorDeathEvent
 ) 
 ```
 
@@ -263,35 +258,6 @@ a [**DamageSource**](classendstone_1_1DamageSource.md) detailing the source of t
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::ActorDeathEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 
