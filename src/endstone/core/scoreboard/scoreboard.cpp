@@ -205,10 +205,16 @@ DisplaySlot EndstoneScoreboard::fromMinecraftSlot(std::string slot)
 const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry) const
 {
     return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                                     if (!player) {
+                                         return ScoreboardId::INVALID;
+                                     }
                                      return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
                                  },
                                  [&](Actor *actor) -> const ::ScoreboardId & {
-                                     return board_.getScoreboardId(dynamic_cast<EndstoneActor *>(actor)->getHandle());
+                                     if (!actor) {
+                                         return ScoreboardId::INVALID;
+                                     }
+                                     return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getHandle());
                                  },
                                  [&](const std::string &fake) -> const ::ScoreboardId & {
                                      return board_.getScoreboardId(fake);
@@ -224,11 +230,17 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
     }
 
     return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                                     if (!player) {
+                                         return ScoreboardId::INVALID;
+                                     }
                                      return board_.createScoreboardId(
                                          static_cast<EndstonePlayer *>(player)->getHandle());
                                  },
                                  [&](Actor *actor) -> const ::ScoreboardId & {
-                                     return board_.createScoreboardId(dynamic_cast<EndstoneActor *>(actor)->getHandle());
+                                     if (!actor) {
+                                         return ScoreboardId::INVALID;
+                                     }
+                                     return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getHandle());
                                  },
                                  [&](const std::string &fake) -> const ::ScoreboardId & {
                                      return board_.createScoreboardId(fake);

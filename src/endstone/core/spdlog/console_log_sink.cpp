@@ -23,11 +23,10 @@
 namespace endstone::core {
 
 ConsoleLogSink::ConsoleLogSink(FILE *target_file, spdlog::color_mode mode)
-    : target_file_(target_file), spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t>(
-                                     spdlog::details::make_unique<spdlog::pattern_formatter>())
+    : base_sink(spdlog::details::make_unique<spdlog::pattern_formatter>()), target_file_(target_file)
 {
     setColorMode(mode);
-    auto *formatter = dynamic_cast<spdlog::pattern_formatter *>(formatter_.get());
+    auto *formatter = static_cast<spdlog::pattern_formatter *>(formatter_.get());
     formatter->add_flag<LevelFormatter>('L');
     formatter->add_flag<TextFormatter>('v', should_do_colors_);
     formatter->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
