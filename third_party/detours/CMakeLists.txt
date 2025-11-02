@@ -4,7 +4,7 @@ FetchContent_Declare(
         detours
         URL https://github.com/microsoft/Detours/archive/9764cebcb1a75940e68fa83d6730ffaf0f669401.zip
 )
-FetchContent_Populate(detours)
+FetchContent_MakeAvailable(detours)
 
 add_library(detours STATIC
         "${detours_SOURCE_DIR}/src/creatwth.cpp"
