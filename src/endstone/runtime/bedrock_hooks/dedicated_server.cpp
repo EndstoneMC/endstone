@@ -14,6 +14,8 @@
 
 #include "bedrock/server/dedicated_server.h"
 
+#include <iostream>
+
 #include <pybind11/embed.h>
 
 #include "endstone/core/logger_factory.h"
@@ -59,6 +61,11 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
     DUP2(old_stdin, FILENO(stdin));
     CLOSE(old_stdin);
 
+    // Set the EOF flag for stdin so that the ConsoleInputReader thread exits as soon as it begins
+    std::cin.setstate(std::ios::eofbit);
+    std::wcin.setstate(std::ios::eofbit);
+
+    // Start the dedicated server (call origin)
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, session_id, args);
 
     // Clean up

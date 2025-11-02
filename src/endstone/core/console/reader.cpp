@@ -12,21 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/core/console/reader.h"
 
-#include <atomic>
-#include <string>
+namespace endstone::core {
+EndstoneConsoleReader::EndstoneConsoleReader()
+{
+    read_console_ = true;
+    console_thread_ = std::thread([]() { printf("Endstone console thread started!\n"); });
+}
 
-#include "bedrock/core/threading/spsc_queue.h"
-#include "bedrock/platform/threading/thread.h"
+const EndstoneConsole &EndstoneConsoleReader::getConsole() const
+{
+    return console_;
+}
 
-class ConsoleInputReader {
-public:
-    // ConsoleInputReader() = default;
-    ~ConsoleInputReader();
-
-protected:
-    SPSCQueue<std::string> console_input_;
-    std::atomic<bool> read_console_ = false;
-    Bedrock::Threading::Thread console_thread_;
-};
+EndstoneConsole &EndstoneConsoleReader::getConsole()
+{
+    return console_;
+}
+}  // namespace endstone::core

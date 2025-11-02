@@ -1,4 +1,4 @@
-// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,19 +14,17 @@
 
 #pragma once
 
-#include <atomic>
-#include <string>
+#include "bedrock/server/console_input_reader.h"
+#include "endstone/core/console/console.h"
 
-#include "bedrock/core/threading/spsc_queue.h"
-#include "bedrock/platform/threading/thread.h"
-
-class ConsoleInputReader {
+namespace endstone::core {
+class EndstoneConsoleReader : public ConsoleInputReader {
 public:
-    // ConsoleInputReader() = default;
-    ~ConsoleInputReader();
+    EndstoneConsoleReader();
+    [[nodiscard]] const EndstoneConsole &getConsole() const;
+    [[nodiscard]] EndstoneConsole &getConsole();
 
-protected:
-    SPSCQueue<std::string> console_input_;
-    std::atomic<bool> read_console_ = false;
-    Bedrock::Threading::Thread console_thread_;
+private:
+    EndstoneConsole console_;
 };
+}  // namespace endstone::core

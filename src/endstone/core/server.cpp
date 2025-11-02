@@ -36,6 +36,7 @@
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/console/reader.h"
 #include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_type.h"
@@ -45,6 +46,7 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
+#include "endstone/core/metrics.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
@@ -119,6 +121,10 @@ void EndstoneServer::init(ServerInstance &server_instance)
     }
     server_instance_ = &server_instance;
     server_instance_->getEventCoordinator()->registerListener(&ServerInstanceStopListener::getInstance());
+
+    auto &server = static_cast<DedicatedServer &>(server_instance.app_);
+    server.console_input_reader_ = std::make_unique<EndstoneConsoleReader>();
+
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
     player_ban_list_->load();

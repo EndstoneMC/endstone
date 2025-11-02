@@ -22,6 +22,10 @@
 #include "bedrock/server/console_input_reader.h"
 #include "bedrock/world/events/server_instance_event_coordinator.h"
 
+namespace endstone::core {
+class EndstoneServer;
+}
+
 class DedicatedServer : public IMinecraftApp, public Bedrock::AppIsland {
 public:
     enum class StartResult : int {
@@ -38,6 +42,7 @@ public:
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<FileArchiver> getFileArchiver() const;
 
 private:
+    friend class endstone::core::EndstoneServer;
     virtual Bedrock::NotNullNonOwnerPtr<Minecraft> getPrimaryMinecraft();
     [[nodiscard]] Bedrock::NotNullNonOwnerPtr<Automation::AutomationClient> getAutomationClient() const override;
     [[nodiscard]] bool isEduMode() const override;

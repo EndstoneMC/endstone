@@ -11,6 +11,7 @@ find_package(magic_enum REQUIRED)
 find_package(nlohmann_json REQUIRED)
 set(PYBIND11_FINDPYTHON ON)
 find_package(pybind11 CONFIG REQUIRED)
+find_package(replxx REQUIRED)
 find_package(sentry REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(tomlplusplus REQUIRED)
@@ -37,6 +38,8 @@ add_library(endstone_core
         block/block_face.cpp
         block/block_state.cpp
         boss/boss_bar.cpp
+        console/console.cpp
+        console/reader.cpp
         command/block_command_sender.cpp
         command/command_lexer.cpp
         command/command_map.cpp
@@ -114,6 +117,7 @@ target_link_libraries(endstone_core PUBLIC
         magic_enum::magic_enum
         nlohmann_json::nlohmann_json
         pybind11::pybind11
+        replxx::replxx
         sentry::sentry
         spdlog::spdlog
         tomlplusplus::tomlplusplus)

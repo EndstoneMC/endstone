@@ -12,21 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/core/console/console.h"
 
-#include <atomic>
-#include <string>
-
-#include "bedrock/core/threading/spsc_queue.h"
-#include "bedrock/platform/threading/thread.h"
-
-class ConsoleInputReader {
-public:
-    // ConsoleInputReader() = default;
-    ~ConsoleInputReader();
-
-protected:
-    SPSCQueue<std::string> console_input_;
-    std::atomic<bool> read_console_ = false;
-    Bedrock::Threading::Thread console_thread_;
-};
+namespace endstone::core {
+}
