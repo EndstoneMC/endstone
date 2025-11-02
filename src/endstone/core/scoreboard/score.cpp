@@ -49,6 +49,8 @@ Result<void> EndstoneScore::setValue(int score)
     auto board = objective_->checkState();
     ENDSTONE_CHECK_RESULT(board);
     const auto &id = board.value()->getOrCreateScoreboardId(entry_);
+    ENDSTONE_CHECK(id.isValid(), "Unable to create scoreboard id for entry.");
+
     ScoreboardOperationResult result;
     board.value()->board_.modifyPlayerScore(result, id, objective_->objective_, score, PlayerScoreSetFunction::Set);
     switch (result) {
