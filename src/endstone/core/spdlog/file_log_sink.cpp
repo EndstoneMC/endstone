@@ -26,8 +26,8 @@ namespace endstone::core {
 
 FileLogSink::FileLogSink(spdlog::filename_t base_filename, spdlog::filename_t file_pattern, uint16_t max_files,
                          const spdlog::file_event_handlers &event_handlers)
-    : base_filename_(std::move(base_filename)), file_pattern_(std::move(file_pattern)), max_files_(max_files),
-      file_helper_{event_handlers}
+    : base_filename_(std::move(base_filename)), file_pattern_(std::move(file_pattern)), file_helper_{event_handlers},
+      max_files_(max_files)
 {
     using spdlog::details::os::path_exists;
 
@@ -40,7 +40,7 @@ FileLogSink::FileLogSink(spdlog::filename_t base_filename, spdlog::filename_t fi
     }
     rotation_tp_ = nextRotation();
 
-    auto *formatter = dynamic_cast<spdlog::pattern_formatter *>(formatter_.get());
+    auto *formatter = static_cast<spdlog::pattern_formatter *>(formatter_.get());
     formatter->add_flag<LevelFormatter>('L');
     formatter->add_flag<TextFormatter>('v', false);
     formatter->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
