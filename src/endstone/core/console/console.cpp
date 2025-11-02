@@ -15,4 +15,32 @@
 #include "endstone/core/console/console.h"
 
 namespace endstone::core {
+std::string EndstoneConsole::readLine(const std::string &prompt)
+{
+    const char *cstr = rx_.input(prompt);
+    if (!cstr) {
+        return {};
+    }
+    std::string line(cstr);
+    if (!line.empty()) {
+        rx_.history_add(line);
+    }
+    return line;
 }
+
+void EndstoneConsole::printAbove(std::string_view message)
+{
+    if (!message.empty() && message.back() == '\n') {
+        rx_.print("%.*s", static_cast<int>(message.size()), message.data());
+    }
+    else {
+        rx_.print("%.*s\n", static_cast<int>(message.size()), message.data());
+    }
+}
+
+EndstoneConsole &EndstoneConsole::getInstance()
+{
+    static EndstoneConsole console;
+    return console;
+}
+}  // namespace endstone::core

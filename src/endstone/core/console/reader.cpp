@@ -14,20 +14,33 @@
 
 #include "endstone/core/console/reader.h"
 
+#include <iostream>
+
 namespace endstone::core {
 EndstoneConsoleReader::EndstoneConsoleReader()
 {
     read_console_ = true;
-    console_thread_ = std::thread([]() { printf("Endstone console thread started!\n"); });
-}
+    console_thread_ = std::thread([this]() {
+        if (!read_console_) {
+            return;
+        }
 
-const EndstoneConsole &EndstoneConsoleReader::getConsole() const
-{
-    return console_;
-}
-
-EndstoneConsole &EndstoneConsoleReader::getConsole()
-{
-    return console_;
+        std::cin.clear();
+        std::wcin.clear();
+        while (true) {
+            auto line = EndstoneConsole::getInstance().readLine("> ");
+            if (line.empty()) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                continue;
+            }
+            console_input_.try_enqueue(line);
+            if (line == "stop") {
+                break;
+            }
+            if (!read_console_) {
+                return;
+            }
+        }
+    });
 }
 }  // namespace endstone::core

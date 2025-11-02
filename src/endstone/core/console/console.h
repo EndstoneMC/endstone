@@ -14,6 +14,20 @@
 
 #pragma once
 
+#include <chrono>
+#include <replxx.hxx>
+#include <string>
+
 namespace endstone::core {
-class EndstoneConsole {};
+class EndstoneConsole {
+public:
+    EndstoneConsole() = default;
+    [[nodiscard]] std::string readLine(const std::string &prompt);
+    void printAbove(std::string_view message);
+
+    static EndstoneConsole &getInstance();
+
+private:
+    replxx::Replxx rx_;
+};
 }  // namespace endstone::core

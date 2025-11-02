@@ -17,6 +17,7 @@
 #include <spdlog/pattern_formatter.h>
 #include <spdlog/sinks/base_sink-inl.h>
 
+#include "endstone/core/console/console.h"
 #include "endstone/core/spdlog/level_formatter.h"
 #include "endstone/core/spdlog/text_formatter.h"
 
@@ -61,40 +62,30 @@ std::string ConsoleLogSink::toString(const spdlog::string_view_t &sv)
 
 void ConsoleLogSink::sink_it_(const spdlog::details::log_msg &msg)
 {
+    static auto &console = EndstoneConsole::getInstance();
     msg.color_range_start = 0;
     msg.color_range_end = 0;
     spdlog::memory_buf_t formatted;
     formatter_->format(msg, formatted);
     if (should_do_colors_ && msg.color_range_end > msg.color_range_start) {
+        std::string out;
+        out.reserve(formatted.size() + 32);
         // before color range
-        printRange(formatted, 0, msg.color_range_start);
+        out.append(formatted.data(), formatted.data() + msg.color_range_start);
         // in color range
-        printColorCode(colors_.at(static_cast<std::size_t>(msg.level)));
-        printRange(formatted, msg.color_range_start, msg.color_range_end);
-        printColorCode(reset);
+        out.append(colors_.at(static_cast<std::size_t>(msg.level)));
+        out.append(formatted.data() + msg.color_range_start, formatted.data() + msg.color_range_end);
+        out.append(reset.data(), reset.size());
         // after color range
-        printRange(formatted, msg.color_range_end, formatted.size());
+        out.append(formatted.data() + msg.color_range_end, formatted.data() + formatted.size());
+        console.printAbove(out);
     }
     else  // no color
     {
-        printRange(formatted, 0, formatted.size());
+        console.printAbove({formatted.data(), formatted.size()});
     }
-    fflush(target_file_);
 }
 
-void ConsoleLogSink::flush_()
-{
-    fflush(target_file_);
-}
-
-void ConsoleLogSink::printColorCode(const spdlog::string_view_t &color_code)
-{
-    fwrite(color_code.data(), sizeof(char), color_code.size(), target_file_);
-}
-
-void ConsoleLogSink::printRange(const spdlog::memory_buf_t &formatted, std::size_t start, std::size_t end)
-{
-    fwrite(formatted.data() + start, sizeof(char), end - start, target_file_);
-}
+void ConsoleLogSink::flush_() {}
 
 }  // namespace endstone::core

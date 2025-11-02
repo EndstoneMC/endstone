@@ -21,10 +21,5 @@ namespace endstone::core {
 class EndstoneConsoleReader : public ConsoleInputReader {
 public:
     EndstoneConsoleReader();
-    [[nodiscard]] const EndstoneConsole &getConsole() const;
-    [[nodiscard]] EndstoneConsole &getConsole();
-
-private:
-    EndstoneConsole console_;
 };
 }  // namespace endstone::core

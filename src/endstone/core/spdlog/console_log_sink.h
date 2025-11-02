@@ -23,7 +23,6 @@
 #include <spdlog/spdlog.h>
 
 namespace endstone::core {
-
 class ConsoleLogSink : public spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t> {
 public:
     explicit ConsoleLogSink(FILE *target_file, spdlog::color_mode mode = spdlog::color_mode::automatic);
