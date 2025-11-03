@@ -28,7 +28,7 @@ EndstoneMetrics::EndstoneMetrics(Server &server) : server_(server)
         obj_ = cls(std::ref(server));
     }
     catch (std::exception &e) {
-        server_.getLogger().error("Unable to start metrics.", e.what());
+        server_.getLogger().warning("Unable to start metrics: {}", e.what());
     }
 }
 
@@ -43,7 +43,7 @@ EndstoneMetrics::~EndstoneMetrics()
         (void)shutdown();
     }
     catch (std::exception &e) {
-        server_.getLogger().error("Unable to shutdown metrics.", e.what());
+        server_.getLogger().warning("Unable to shutdown metrics: {}", e.what());
     }
     obj_ = py::object();
 }
