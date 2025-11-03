@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bookworm AS base
+FROM python:3.12-slim-bullseye AS base
 
 LABEL maintainer="Endstone <hello@endstone.dev>"
 
@@ -11,7 +11,7 @@ FROM base AS builder
 # Install required dependencies and configure LLVM
 ARG LLVM_VERSION=16
 RUN apt-get update -y -qq \
-    && apt-get install -y -qq build-essential lsb-release wget software-properties-common gnupg \
+    && apt-get install -y -qq build-essential lsb-release git wget software-properties-common gnupg \
     && wget https://apt.llvm.org/llvm.sh \
     && chmod +x llvm.sh \
     && ./llvm.sh ${LLVM_VERSION} \
@@ -20,15 +20,6 @@ RUN apt-get update -y -qq \
     && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100
-
-# Install CMake and other build tools
-ARG CMAKE_VERSION=4.0.3
-ARG CMAKE_SH=cmake-${CMAKE_VERSION}-linux-x86_64.sh
-RUN apt-get update -y -qq \
-    && apt-get install -y -qq wget git ninja-build \
-    && wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_SH} \
-    && chmod +x ${CMAKE_SH} \
-    && ./${CMAKE_SH} --skip-license --exclude-subdir --prefix=/usr/local
 
 # Set default compiler and target platform tag for Python wheels
 ENV CC=clang \
@@ -41,7 +32,7 @@ WORKDIR /usr/src/endstone
 # Install C++ dependencies using Conan
 COPY conanfile.py conanfile.py
 RUN python -m pip install --upgrade pip \
-    && pip install conan \
+    && pip install conan cmake ninja \
     && conan profile detect \
     && conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja
 

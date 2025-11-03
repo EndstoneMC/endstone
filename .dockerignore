@@ -1,11 +1,10 @@
-.dockerignore
-Dockerfile
-
-.github
+.cache/*
+.idea/*
+.venv/*
+venv/*
 bedrock_server
 build
 dist
-docs
-venv
+stubs
 wheelhouse
 CMakeUserPresets.json
