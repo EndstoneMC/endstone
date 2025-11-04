@@ -24,11 +24,15 @@
 #include <entt/entt.hpp>
 #include <fmt/format.h>
 
-#include "../endstone/core/platform.h"
 #include "endstone/detail/cast.h"
 
-namespace endstone::detail {
+namespace endstone::runtime {
 #include "bedrock_symbols.generated.h"
+
+void *get_module_base();
+std::string get_module_pathname();
+void *get_executable_base();
+std::string get_executable_pathname();
 
 consteval std::size_t get_symbol(const std::string_view symbol)
 {
@@ -54,20 +58,7 @@ constexpr decltype(auto) invoke(const char *function, Func &&func, Args &&...arg
     (void)function;
     return std::invoke(func, std::forward<Args>(args)...);
 }
-}  // namespace endstone::detail
 
-#define BEDROCK_CALL(fp, ...)                                                                        \
-    endstone::detail::invoke(                                                                        \
-        __FUNCDNAME__,                                                                               \
-        endstone::detail::fp_cast(fp, static_cast<char *>(endstone::detail::get_executable_base()) + \
-                                          endstone::detail::get_symbol(__FUNCDNAME__)),              \
-        ##__VA_ARGS__)
-
-#define BEDROCK_VAR(type, name)                                                           \
-    reinterpret_cast<type>(static_cast<char *>(endstone::detail::get_executable_base()) + \
-                           endstone::detail::get_symbol(name));
-
-namespace endstone::detail {
 #ifdef _WIN32
 template <std::size_t Offset, typename Class, typename... Args>
 Class *(*get_ctor())(Class *, Args...)
@@ -83,7 +74,18 @@ void (*get_ctor())(Class *, Args...)
     return reinterpret_cast<void (*)(Class *, Args...)>(addr);
 }
 #endif
-}  // namespace endstone::detail
+}  // namespace endstone::runtime
+
+#define BEDROCK_CALL(fp, ...)                                                                         \
+    endstone::runtime::invoke(                                                                         \
+        __FUNCDNAME__,                                                                                \
+        endstone::detail::fp_cast(fp, static_cast<char *>(endstone::runtime::get_executable_base()) + \
+                                          endstone::runtime::get_symbol(__FUNCDNAME__)),              \
+        ##__VA_ARGS__)
+
+#define BEDROCK_VAR(type, name)                                                            \
+    reinterpret_cast<type>(static_cast<char *>(endstone::runtime::get_executable_base()) + \
+                           endstone::runtime::get_symbol(name));
 
 #define BEDROCK_CTOR(type, ...) \
-    endstone::detail::get_ctor<endstone::detail::get_symbol(__FUNCDNAME__), type, ##__VA_ARGS__>()
+    endstone::runtime::get_ctor<endstone::runtime::get_symbol(__FUNCDNAME__), type, ##__VA_ARGS__>()

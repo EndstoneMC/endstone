@@ -14,10 +14,7 @@
 
 #include "endstone/core/game_mode.h"
 
-#include "endstone/detail/utility.h"
-
 namespace endstone::core {
-
 GameMode EndstoneGameMode::fromMinecraft(GameType type)
 {
     switch (type) {
@@ -45,8 +42,7 @@ GameType EndstoneGameMode::toMinecraft(GameMode mode)
     case GameMode::Spectator:
         return GameType::Spectator;
     default:
-        detail::unreachable();
+        return GameType::WorldDefault;
     }
 }
-
 }  // namespace endstone::core

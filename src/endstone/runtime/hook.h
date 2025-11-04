@@ -21,7 +21,7 @@
 #include "bedrock/symbol.h"
 #include "endstone/detail/cast.h"
 
-namespace endstone::hook {
+namespace endstone::runtime::hook {
 namespace details {
 const std::error_category &error_category();
 void *&get_original(void *target);
@@ -35,13 +35,14 @@ void *get_original()
 {
     static void **original = nullptr;
     if (!original) {
-        original = &details::get_original(static_cast<char *>(detail::get_executable_base()) + RVA);
+        original = &details::get_original(static_cast<char *>(get_executable_base()) + RVA);
     }
     return *original;
 }
-}  // namespace endstone::hook
+}  // namespace endstone::runtime::hook
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, __FUNCDNAME__, ##__VA_ARGS__)
-#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                            \
-    std::invoke(endstone::detail::fp_cast(fp, endstone::hook::get_original<endstone::detail::get_symbol(name)>()), \
-                ##__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                              \
+    std::invoke(                                                                                                     \
+        endstone::detail::fp_cast(fp, endstone::runtime::hook::get_original<endstone::runtime::get_symbol(name)>()), \
+        ##__VA_ARGS__)

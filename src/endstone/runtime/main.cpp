@@ -31,7 +31,7 @@ int init()
 {
     try {
         spdlog::flush_every(std::chrono::seconds(5));
-        endstone::hook::install();
+        endstone::runtime::hook::install();
         return 0;
     }
     catch (const std::exception &e) {

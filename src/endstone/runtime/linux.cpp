@@ -21,10 +21,9 @@
 #include <libelf.h>
 #include <unistd.h>
 
+#include <fstream>
 #include <string>
 #include <unordered_map>
-
-#include "endstone/core/platform.h"
 
 namespace {
 void read_elf(const std::string &module_pathname, uint32_t section_type,
@@ -74,7 +73,8 @@ void read_elf(const std::string &module_pathname, uint32_t section_type,
 }
 }  // namespace
 
-namespace endstone::hook::details {
+namespace endstone::runtime {
+namespace hook::details {
 const std::unordered_map<std::string, void *> &get_detours()
 {
     static std::unordered_map<std::string, void *> detours;
@@ -82,8 +82,8 @@ const std::unordered_map<std::string, void *> &get_detours()
         return detours;
     }
 
-    auto *module_base = detail::get_module_base();
-    auto module_pathname = detail::get_module_pathname();
+    auto *module_base = get_module_base();
+    auto module_pathname = get_module_pathname();
 
     read_elf(module_pathname, SHT_DYNSYM, [&](auto *elf, auto &shdr, auto &sym) {
         if (sym.st_shndx == SHN_UNDEF || GELF_ST_TYPE(sym.st_info) != STT_FUNC ||
@@ -103,9 +103,8 @@ const std::unordered_map<std::string, void *> &get_detours()
     detours.erase("endstone_get_server");
     return detours;
 }
-}  // namespace endstone::hook::details
+}  // namespace hook::details
 
-namespace endstone::runtime {
 namespace {
 struct ModuleInfo {
     void *base;

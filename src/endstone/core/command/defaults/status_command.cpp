@@ -14,8 +14,6 @@
 
 #include "endstone/core/command/defaults/status_command.h"
 
-#include <entt/entt.hpp>
-
 #include "endstone/color_format.h"
 #include "endstone/core/platform.h"
 #include "endstone/core/server.h"
@@ -86,12 +84,12 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
                        avg_tps, server.getAverageTickUsage() * 100, ColorFormat::Gold, avg_tps_color,
                        server.getAverageMillisecondsPerTick());
 
-    sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, detail::get_thread_count());
+    sender.sendMessage("{}Thread count: {}{}", ColorFormat::Gold, ColorFormat::Red, get_thread_count());
 
     sender.sendMessage("{}Used memory: {}{:.2f} MB", ColorFormat::Gold, ColorFormat::Red,
-                       detail::get_used_physical_memory() / 1024.0F / 1024.0F);
+                       get_used_physical_memory() / 1024.0F / 1024.0F);
     sender.sendMessage("{}Total memory: {}{:.2f} MB", ColorFormat::Gold, ColorFormat::Red,
-                       detail::get_total_virtual_memory() / 1024.0F / 1024.0F);
+                       get_total_virtual_memory() / 1024.0F / 1024.0F);
 
     auto *level = server.getLevel();
     sender.sendMessage("{}Level \"{}\":", ColorFormat::Gold, level->getName());

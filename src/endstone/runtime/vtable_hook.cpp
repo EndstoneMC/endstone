@@ -18,7 +18,7 @@
 
 #include <unordered_map>
 
-namespace endstone::hook {
+namespace endstone::runtime::vhook {
 namespace details {
 using OriginalMap = std::unordered_map<void *, void *>;
 static OriginalMap &originals()  // NOLINT(*-use-anonymous-namespace)
@@ -27,7 +27,7 @@ static OriginalMap &originals()  // NOLINT(*-use-anonymous-namespace)
     return originals;
 }
 
-void hook_vtable(void **vtable, int ordinal, void *detour)
+void create(void **vtable, int ordinal, void *detour)
 {
     // Get the function pointer at the specified ordinal.
     void *target = vtable[ordinal];
@@ -56,7 +56,7 @@ void hook_vtable(void **vtable, int ordinal, void *detour)
 }
 }  // namespace details
 
-void *get_vtable_original(void *detour)
+void *get_original(void *detour)
 {
     const auto it = details::originals().find(detour);
     if (it == details::originals().end()) {
@@ -64,4 +64,4 @@ void *get_vtable_original(void *detour)
     }
     return it->second;
 }
-}  // namespace endstone::hook
+}  // namespace endstone::runtime::vhook

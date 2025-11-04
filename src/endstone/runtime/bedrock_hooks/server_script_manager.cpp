@@ -35,87 +35,87 @@ void hookEventHandler(T &handler);
 template <>
 void hookEventHandler(ActorGameplayHandler &handler)
 {
-    using endstone::hook::hook_vtable;
+    using namespace endstone::runtime;
 #ifdef _WIN32
-    hook_vtable<4>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+    vhook::create<4>(&handler, &ScriptActorGameplayHandler::handleEvent1);
 #else
-    hook_vtable<2>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+    vhook::create<2>(&handler, &ScriptActorGameplayHandler::handleEvent1);
 #endif
 }
 
 template <>
 void hookEventHandler(BlockGameplayHandler &handler)
 {
-    using endstone::hook::hook_vtable;
+    using namespace endstone::runtime;
 #ifdef _WIN32
-    hook_vtable<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
-    hook_vtable<1>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
+    vhook::create<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
+    vhook::create<1>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
 #else
-    hook_vtable<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
-    hook_vtable<5>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
+    vhook::create<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
+    vhook::create<5>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
 #endif
 }
 
 template <>
 void hookEventHandler(ItemGameplayHandler &handler)
 {
-    using endstone::hook::hook_vtable;
+    using namespace endstone::runtime;
 #ifdef _WIN32
-    // hook_vtable<2>(&handler, &ScriptItemGameplayHandler::handleEvent1);
-    hook_vtable<1>(&handler, &ScriptItemGameplayHandler::handleEvent2);
+    // vhook::create<2>(&handler, &ScriptItemGameplayHandler::handleEvent1);
+    vhook::create<1>(&handler, &ScriptItemGameplayHandler::handleEvent2);
 #else
-    // hook_vtable<2>(&handler, &ScriptItemGameplayHandler::handleEvent1);
-    hook_vtable<3>(&handler, &ScriptItemGameplayHandler::handleEvent2);
+    // vhook::create<2>(&handler, &ScriptItemGameplayHandler::handleEvent1);
+    vhook::create<3>(&handler, &ScriptItemGameplayHandler::handleEvent2);
 #endif
 }
 
 template <>
 void hookEventHandler(LevelGameplayHandler &handler)
 {
-    using endstone::hook::hook_vtable;
+    using namespace endstone::runtime;
 #ifdef _WIN32
-    hook_vtable<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    hook_vtable<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+    vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
+    vhook::create<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
 #else
-    hook_vtable<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    hook_vtable<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+    vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
+    vhook::create<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
 #endif
 }
 
 template <>
 void hookEventHandler(PlayerGameplayHandler &handler)
 {
-    using endstone::hook::hook_vtable;
+    using namespace endstone::runtime;
 #ifdef _WIN32
-    hook_vtable<3>(&handler, &ScriptPlayerGameplayHandler::handleEvent1);
-    hook_vtable<2>(&handler, &ScriptPlayerGameplayHandler::handleEvent2);
-    hook_vtable<1>(&handler, &ScriptPlayerGameplayHandler::handleEvent3);
+    vhook::create<3>(&handler, &ScriptPlayerGameplayHandler::handleEvent1);
+    vhook::create<2>(&handler, &ScriptPlayerGameplayHandler::handleEvent2);
+    vhook::create<1>(&handler, &ScriptPlayerGameplayHandler::handleEvent3);
 #else
-    hook_vtable<2>(&handler, &ScriptPlayerGameplayHandler::handleEvent1);
-    hook_vtable<3>(&handler, &ScriptPlayerGameplayHandler::handleEvent2);
-    hook_vtable<4>(&handler, &ScriptPlayerGameplayHandler::handleEvent3);
+    vhook::create<2>(&handler, &ScriptPlayerGameplayHandler::handleEvent1);
+    vhook::create<3>(&handler, &ScriptPlayerGameplayHandler::handleEvent2);
+    vhook::create<4>(&handler, &ScriptPlayerGameplayHandler::handleEvent3);
 #endif
 }
 
 template <>
 void hookEventHandler(ScriptingEventHandler &handler)
 {
-    using endstone::hook::hook_vtable;
+    using namespace endstone::runtime;
 #ifdef _WIN32
-    hook_vtable<1>(&handler, &ScriptScriptingEventHandler::handleEvent2);
+    vhook::create<1>(&handler, &ScriptScriptingEventHandler::handleEvent2);
 #else
-    hook_vtable<3>(&handler, &ScriptScriptingEventHandler::handleEvent2);
+    vhook::create<3>(&handler, &ScriptScriptingEventHandler::handleEvent2);
 #endif
 }
 
 template <>
 void hookEventHandler(ServerNetworkEventHandler &handler)
 {
-    using endstone::hook::hook_vtable;
+    using namespace endstone::runtime;
 #ifdef _WIN32
-    hook_vtable<1>(&handler, &ScriptServerNetworkEventHandler::handleEvent1);
+    vhook::create<1>(&handler, &ScriptServerNetworkEventHandler::handleEvent1);
 #else
-    hook_vtable<2>(&handler, &ScriptServerNetworkEventHandler::handleEvent1);
+    vhook::create<2>(&handler, &ScriptServerNetworkEventHandler::handleEvent1);
 #endif
 }
 

@@ -75,7 +75,8 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 }
 }  // namespace
 
-namespace endstone::hook::details {
+namespace endstone::runtime {
+namespace hook::details {
 const std::unordered_map<std::string, void *> &get_detours()
 {
     static std::unordered_map<std::string, void *> detours;
@@ -100,9 +101,8 @@ const std::unordered_map<std::string, void *> &get_detours()
     detours.erase("endstone_get_server");
     return detours;
 }
-}  // namespace endstone::hook::details
+}  // namespace hook::details
 
-namespace endstone::runtime {
 namespace {
 HMODULE get_module_handle(const char *module_name)
 {

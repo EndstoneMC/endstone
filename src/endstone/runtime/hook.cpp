@@ -25,7 +25,7 @@
 #include "bedrock/symbol.h"
 #include "endstone/core/platform.h"
 
-namespace endstone::hook {
+namespace endstone::runtime::hook {
 namespace details {
 /**
  * @brief Mapping of hooked targets to their original implementations.
@@ -57,8 +57,8 @@ const std::unordered_map<std::string, void *> &get_targets()
     if (!targets.empty()) {
         return targets;
     }
-    auto *executable_base = detail::get_executable_base();
-    detail::foreach_symbol([executable_base](const auto &key, auto offset) {
+    auto *executable_base = get_executable_base();
+    foreach_symbol([executable_base](const auto &key, auto offset) {
         SPDLOG_DEBUG("T: {} -> 0x{:x}", key, offset);
         auto *target = static_cast<char *>(executable_base) + offset;
         targets.emplace(key, target);
@@ -143,4 +143,4 @@ void install()
     }
 }
 
-}  // namespace endstone::hook
+}  // namespace endstone::runtime::hook
