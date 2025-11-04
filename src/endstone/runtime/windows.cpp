@@ -20,13 +20,14 @@
 
 // DbgHelp.h must be included after Windows.h
 #include <DbgHelp.h>
+#include <Psapi.h>
 
 #include <chrono>
 #include <string>
 #include <system_error>
 #include <unordered_map>
 
-#include "endstone/detail/platform.h"
+#include "endstone/core/platform.h"
 
 enum SymTagEnum {
     SymTagPublicSymbol = 10,
@@ -84,8 +85,8 @@ const std::unordered_map<std::string, void *> &get_detours()
         return detours;
     }
 
-    auto *module_base = detail::get_module_base();
-    const auto module_pathname = detail::get_module_pathname();
+    auto *module_base = get_module_base();
+    const auto module_pathname = get_module_pathname();
 
     enumerate_symbols(  //
         module_pathname.c_str(),

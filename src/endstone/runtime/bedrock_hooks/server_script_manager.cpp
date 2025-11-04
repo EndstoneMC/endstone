@@ -29,13 +29,14 @@
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/vtable_hook.h"
 
+namespace vhook = endstone::runtime::vhook;
+
 template <typename T>
 void hookEventHandler(T &handler);
 
 template <>
 void hookEventHandler(ActorGameplayHandler &handler)
 {
-    using namespace endstone::runtime;
 #ifdef _WIN32
     vhook::create<4>(&handler, &ScriptActorGameplayHandler::handleEvent1);
 #else
@@ -46,7 +47,6 @@ void hookEventHandler(ActorGameplayHandler &handler)
 template <>
 void hookEventHandler(BlockGameplayHandler &handler)
 {
-    using namespace endstone::runtime;
 #ifdef _WIN32
     vhook::create<3>(&handler, &ScriptBlockGameplayHandler::handleEvent2);
     vhook::create<1>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
@@ -59,7 +59,6 @@ void hookEventHandler(BlockGameplayHandler &handler)
 template <>
 void hookEventHandler(ItemGameplayHandler &handler)
 {
-    using namespace endstone::runtime;
 #ifdef _WIN32
     // vhook::create<2>(&handler, &ScriptItemGameplayHandler::handleEvent1);
     vhook::create<1>(&handler, &ScriptItemGameplayHandler::handleEvent2);
@@ -72,7 +71,6 @@ void hookEventHandler(ItemGameplayHandler &handler)
 template <>
 void hookEventHandler(LevelGameplayHandler &handler)
 {
-    using namespace endstone::runtime;
 #ifdef _WIN32
     vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
     vhook::create<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
@@ -85,7 +83,6 @@ void hookEventHandler(LevelGameplayHandler &handler)
 template <>
 void hookEventHandler(PlayerGameplayHandler &handler)
 {
-    using namespace endstone::runtime;
 #ifdef _WIN32
     vhook::create<3>(&handler, &ScriptPlayerGameplayHandler::handleEvent1);
     vhook::create<2>(&handler, &ScriptPlayerGameplayHandler::handleEvent2);
@@ -100,7 +97,6 @@ void hookEventHandler(PlayerGameplayHandler &handler)
 template <>
 void hookEventHandler(ScriptingEventHandler &handler)
 {
-    using namespace endstone::runtime;
 #ifdef _WIN32
     vhook::create<1>(&handler, &ScriptScriptingEventHandler::handleEvent2);
 #else
@@ -111,7 +107,6 @@ void hookEventHandler(ScriptingEventHandler &handler)
 template <>
 void hookEventHandler(ServerNetworkEventHandler &handler)
 {
-    using namespace endstone::runtime;
 #ifdef _WIN32
     vhook::create<1>(&handler, &ScriptServerNetworkEventHandler::handleEvent1);
 #else

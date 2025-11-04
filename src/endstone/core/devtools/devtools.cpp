@@ -36,7 +36,7 @@
 #include "endstone/core/devtools/vanilla_data.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/detail/common.h"
-#include "endstone/detail/platform.h"
+#include "endstone/runtime/runtime.h"
 #include "endstone/variant.h"
 
 namespace fs = std::filesystem;
@@ -127,8 +127,7 @@ struct adl_serializer<CompoundTag> {
 };
 NLOHMANN_JSON_NAMESPACE_END
 
-namespace endstone::devtools {
-
+namespace endstone::core::devtools {
 namespace {
 auto &gLogger = core::LoggerFactory::getLogger("DevTools");
 std::vector<std::string> gErrors = {};
@@ -231,7 +230,7 @@ void render()
         if (x_scale != prev_scale) {
             prev_scale = x_scale;
             auto font_path =
-                fs::path{detail::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
+                fs::path{runtime::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
             io.Fonts->Clear();
             io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(15 * x_scale));
             io.Fonts->Build();
@@ -670,4 +669,4 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
     save_json_to_file(recipe_json, "recipes.json");
 }
 
-}  // namespace endstone::devtools
+}  // namespace endstone::core::devtools

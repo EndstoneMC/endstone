@@ -45,7 +45,7 @@ inline void to_json(nlohmann::json &json, const AABB &aabb)
     json.push_back(truncate(aabb.max.z));
 }
 
-namespace endstone::devtools {
+namespace endstone::core::devtools {
 namespace {
 void dumpBlockData(VanillaData &data, const ::Level &level)
 {
@@ -202,7 +202,7 @@ void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
                 continue;
             }
             auto name_or_tag = ingredient.contains("tag") ? ingredient["tag"] : ingredient["item"];
-            if (ingredient_key.find(name_or_tag) == ingredient_key.end()) {
+            if (!ingredient_key.contains(name_or_tag)) {
                 json["input"][std::string{next_key}] = ingredient;
                 ingredient_key[name_or_tag] = next_key++;
             }
@@ -217,9 +217,7 @@ void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
 void dumpRecipes(VanillaData &data, ::Level &level)
 {
     auto packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
-    auto id_to_name = [&level](int id) {
-        return level.getItemRegistry().getItem(id)->getFullItemName();
-    };
+    auto id_to_name = [&level](int id) { return level.getItemRegistry().getItem(id)->getFullItemName(); };
 
     for (const auto &entry : packet->crafting_entries) {
         nlohmann::json recipe;
@@ -369,27 +367,26 @@ void dumpRecipes(VanillaData &data, ::Level &level)
 void dumpBiomes(VanillaData &data, ::Level &level)
 {
     auto &biomes = data.biomes;
-    level.getBiomeRegistry().forEachBiome([&biomes](const Biome &biome) {
-        biomes[biome.getFullName()] = {{"id", biome.getId()}};
-    });
+    level.getBiomeRegistry().forEachBiome(
+        [&biomes](const Biome &biome) { biomes[biome.getFullName()] = {{"id", biome.getId()}}; });
 }
 
 }  // namespace
 
 VanillaData *VanillaData::get()
 {
-    static std::atomic<bool> ready = false;
-    static std::atomic<bool> should_run = true;
+    static std::atomic ready = false;
+    static std::atomic should_run = true;
 
     if (ready) {
         return &entt::locator<VanillaData>::value();
     }
 
-    if (entt::locator<core::EndstoneServer>::has_value()) {
-        auto &server = entt::locator<core::EndstoneServer>::value();
+    if (entt::locator<EndstoneServer>::has_value()) {
+        auto &server = entt::locator<EndstoneServer>::value();
         if (auto *server_level = server.getLevel(); server_level) {
-            auto &level = static_cast<core::EndstoneLevel *>(server_level)->getHandle();
-            auto &scheduler = static_cast<core::EndstoneScheduler &>(server.getScheduler());
+            auto &level = static_cast<EndstoneLevel *>(server_level)->getHandle();
+            auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
             if (should_run) {
                 scheduler.runTask([&]() {
                     // run on the server thread instead of UI thread
@@ -408,4 +405,4 @@ VanillaData *VanillaData::get()
     return nullptr;
 }
 
-}  // namespace endstone::devtools
+}  // namespace endstone::core::devtools
