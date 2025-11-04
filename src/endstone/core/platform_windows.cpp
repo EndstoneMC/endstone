@@ -23,70 +23,9 @@
 #include <string_view>
 #include <system_error>
 
-#include "endstone/detail/platform.h"
+#include "endstone/core/platform.h"
 
-namespace endstone::detail {
-
-namespace {
-HMODULE get_module_handle(const char *module_name)
-{
-    auto *module = GetModuleHandleA(module_name);
-    if (!module) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleHandleA failed");
-    }
-    return module;
-}
-}  // namespace
-
-void *get_module_base()
-{
-    static void *base = []() {
-        MODULEINFO mi = {nullptr};
-        if (!GetModuleInformation(GetCurrentProcess(), get_module_handle("endstone_runtime.dll"), &mi, sizeof(mi))) {
-            throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
-                                    "GetModuleInformation failed");
-        }
-
-        return mi.lpBaseOfDll;
-    }();
-    return base;
-}
-
-std::string get_module_pathname()
-{
-    char file_name[MAX_PATH] = {0};
-    auto len =
-        GetModuleFileNameExA(GetCurrentProcess(), get_module_handle("endstone_runtime.dll"), file_name, MAX_PATH);
-    if (len == 0 || len == MAX_PATH) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleFileNameEx failed");
-    }
-    return file_name;
-}
-
-void *get_executable_base()
-{
-    static void *base = []() {
-        MODULEINFO mi = {nullptr};
-        if (!GetModuleInformation(GetCurrentProcess(), get_module_handle(nullptr), &mi, sizeof(mi))) {
-            throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
-                                    "GetModuleInformation failed");
-        }
-
-        return mi.lpBaseOfDll;
-    }();
-    return base;
-}
-
-std::string get_executable_pathname()
-{
-    char file_name[MAX_PATH] = {0};
-    auto len = GetModuleFileNameExA(GetCurrentProcess(), get_module_handle(nullptr), file_name, MAX_PATH);
-    if (len == 0 || len == MAX_PATH) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleFileNameEx failed");
-    }
-    return file_name;
-}
-
+namespace endstone::core {
 std::string_view get_platform()
 {
     return "Windows";
@@ -134,6 +73,5 @@ std::size_t get_total_virtual_memory()
     throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetProcessMemoryInfo failed");
 }
 
-}  // namespace endstone::detail
-
+}  // namespace endstone::core
 #endif

@@ -14,11 +14,9 @@
 
 #pragma once
 
-#include <string>
-
-namespace endstone::core {
-std::string_view get_platform();
-std::size_t get_thread_count();
-std::size_t get_used_physical_memory();
-std::size_t get_total_virtual_memory();
-}  // namespace endstone::core
+namespace endstone::runtime {
+void *get_module_base();
+std::string get_module_pathname();
+void *get_executable_base();
+std::string get_executable_pathname();
+}  // namespace endstone::runtime

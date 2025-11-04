@@ -23,6 +23,7 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
+#include "endstone/runtime/runtime.h"
 
 namespace py = pybind11;
 
