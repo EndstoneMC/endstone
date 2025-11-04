@@ -19,4 +19,7 @@ void *get_module_base();
 std::string get_module_pathname();
 void *get_executable_base();
 std::string get_executable_pathname();
+void stdin_save();
+void stdin_close();
+void stdin_restore();
 }  // namespace endstone::runtime

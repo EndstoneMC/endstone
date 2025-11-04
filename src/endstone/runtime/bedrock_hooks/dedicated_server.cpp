@@ -20,6 +20,7 @@
 
 #include "endstone/core/logger_factory.h"
 #include "endstone/runtime/hook.h"
+#include "endstone/runtime/runtime.h"
 
 #if defined(_WIN32)
 #include <io.h>
@@ -41,7 +42,7 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
                                                     const Bedrock::ActivationArguments &args)
 {
     // Save the current stdin, as it will be altered after the initialisation of python interpreter
-    const auto old_stdin = DUP(FILENO(stdin));
+    endstone::runtime::stdin_save();
 
     // Initialise an isolated Python environment to avoid installing signal handlers
     // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
@@ -56,14 +57,8 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
     // Release the GIL
     py::gil_scoped_release release{};
 
-    // Restore the stdin
-    std::fflush(stdin);
-    DUP2(old_stdin, FILENO(stdin));
-    CLOSE(old_stdin);
-
-    // Set the EOF flag for stdin so that the ConsoleInputReader thread exits as soon as it begins
-    std::cin.setstate(std::ios::eofbit);
-    std::wcin.setstate(std::ios::eofbit);
+    // Close stdin so that the ConsoleInputReader thread exits as soon as it begins
+    endstone::runtime::stdin_close();
 
     // Start the dedicated server (call origin)
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, session_id, args);

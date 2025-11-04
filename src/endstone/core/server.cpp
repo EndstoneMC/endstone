@@ -60,6 +60,7 @@
 #include "endstone/event/server/map_initialize_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/runtime/runtime.h"
 
 namespace fs = std::filesystem;
 namespace py = pybind11;
@@ -178,6 +179,7 @@ void EndstoneServer::setLevel(::Level &level)
     getPluginManager().callEvent(event);
 
     // start accepting input
+    runtime::stdin_restore();
     auto &server = static_cast<DedicatedServer &>(server_instance_->app_);
     server.console_input_reader_ = std::make_unique<EndstoneConsoleReader>();
 }

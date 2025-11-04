@@ -16,6 +16,8 @@
 
 #include <iostream>
 
+#include "endstone/runtime/runtime.h"
+
 namespace endstone::core {
 EndstoneConsoleReader::EndstoneConsoleReader()
 {
@@ -25,8 +27,6 @@ EndstoneConsoleReader::EndstoneConsoleReader()
             return;
         }
 
-        std::cin.clear();
-        std::wcin.clear();
         while (true) {
             auto line = EndstoneConsole::getInstance().readLine("> ");
             if (line.has_value()) {
