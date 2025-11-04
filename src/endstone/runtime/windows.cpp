@@ -170,21 +170,17 @@ std::string get_executable_pathname()
 namespace {
 int stdin_fd = -1;
 int null_fd = -1;
-HANDLE stdin_handle = nullptr;
 }  // namespace
 
 void stdin_save()
 {
     stdin_fd = _dup(_fileno(stdin));
-    stdin_handle = GetStdHandle(STD_INPUT_HANDLE);
 }
 
 void stdin_close()
 {
     null_fd = _open("NUL", _O_RDONLY);
     _dup2(null_fd, _fileno(stdin));
-    SetStdHandle(STD_INPUT_HANDLE, CreateFileA("CONIN$", GENERIC_READ | GENERIC_WRITE,
-                                               FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr, OPEN_EXISTING, 0, nullptr));
     std::cin.clear();
     std::wcin.clear();
 }
@@ -198,10 +194,6 @@ void stdin_restore()
     _close(stdin_fd);
     stdin_fd = -1;
 
-    if (stdin_handle) {
-        SetStdHandle(STD_INPUT_HANDLE, stdin_handle);
-        stdin_handle = NULL;
-    }
     if (null_fd >= 0) {
         _close(null_fd);
         null_fd = -1;
