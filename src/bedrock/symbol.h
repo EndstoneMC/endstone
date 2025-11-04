@@ -24,8 +24,8 @@
 #include <entt/entt.hpp>
 #include <fmt/format.h>
 
+#include "../endstone/core/platform.h"
 #include "endstone/detail/cast.h"
-#include "endstone/detail/platform.h"
 
 namespace endstone::detail {
 #include "bedrock_symbols.generated.h"

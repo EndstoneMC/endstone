@@ -24,7 +24,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "endstone/detail/platform.h"
+#include "endstone/core/platform.h"
 
 namespace {
 void read_elf(const std::string &module_pathname, uint32_t section_type,

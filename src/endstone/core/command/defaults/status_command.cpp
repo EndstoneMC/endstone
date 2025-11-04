@@ -17,8 +17,8 @@
 #include <entt/entt.hpp>
 
 #include "endstone/color_format.h"
+#include "endstone/core/platform.h"
 #include "endstone/core/server.h"
-#include "endstone/detail/platform.h"
 
 namespace endstone::core {
 

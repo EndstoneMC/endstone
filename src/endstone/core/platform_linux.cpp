@@ -19,7 +19,7 @@
 
 #include <fmt/format.h>
 
-#include "endstone/detail/platform.h"
+#include "endstone/core/platform.h"
 
 namespace endstone::detail {
 

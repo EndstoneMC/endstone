@@ -20,11 +20,10 @@
 #include <system_error>
 #include <unordered_map>
 
-#include <entt/core/hashed_string.hpp>
 #include <spdlog/spdlog.h>
 
 #include "bedrock/symbol.h"
-#include "endstone/detail/platform.h"
+#include "endstone/core/platform.h"
 
 namespace endstone::hook {
 namespace details {
