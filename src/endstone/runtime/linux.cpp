@@ -22,6 +22,7 @@
 #include <unistd.h>
 
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <unordered_map>
 
@@ -179,6 +180,41 @@ std::string get_executable_pathname()
 {
     auto module_info = get_module_info(nullptr);
     return module_info.pathname;
+}
+
+namespace {
+int stdin_fd = -1;
+int null_fd = -1;
+}  // namespace
+
+void stdin_save()
+{
+    stdin_fd = ::dup(STDIN_FILENO);
+}
+
+void stdin_close()
+{
+    null_fd = ::open("/dev/null", O_RDONLY);
+    ::dup2(null_fd, STDIN_FILENO);
+    std::cin.clear();
+    std::wcin.clear();
+}
+
+void stdin_restore()
+{
+    if (stdin_fd < 0) {
+        return;
+    }
+    ::dup2(stdin_fd, STDIN_FILENO);
+    ::close(stdin_fd);
+    stdin_fd = -1;
+
+    if (null_fd >= 0) {
+        ::close(null_fd);
+        null_fd = -1;
+    }
+    std::cin.clear();
+    std::wcin.clear();
 }
 }  // namespace endstone::runtime
 

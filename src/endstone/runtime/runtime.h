@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <string>
+
 namespace endstone::runtime {
 void *get_module_base();
 std::string get_module_pathname();
