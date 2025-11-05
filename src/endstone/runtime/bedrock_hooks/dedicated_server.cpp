@@ -22,20 +22,6 @@
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/runtime.h"
 
-#if defined(_WIN32)
-#include <io.h>
-#define DUP    _dup
-#define DUP2   _dup2
-#define CLOSE  _close
-#define FILENO _fileno
-#else
-#include <unistd.h>
-#define DUP    dup
-#define DUP2   dup2
-#define CLOSE  close
-#define FILENO fileno
-#endif
-
 namespace py = pybind11;
 
 DedicatedServer::StartResult DedicatedServer::start(const std::string &session_id,
