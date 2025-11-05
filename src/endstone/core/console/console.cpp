@@ -14,27 +14,86 @@
 
 #include "endstone/core/console/console.h"
 
+#include <iostream>
+#if defined(_WIN32)
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
+
 namespace endstone::core {
+namespace {
+bool is_true(const char *v)
+{
+    if (!v) {
+        return false;
+    }
+    std::string s(v);
+    for (auto &c : s) {
+        c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+    }
+    return (s == "1" || s == "true" || s == "yes" || s == "on");
+}
+
+bool stdin_is_tty()
+{
+#if _WIN32
+    return _isatty(_fileno(stdin)) != 0;
+#else
+    return ::isatty(::fileno(stdin)) != 0;
+#endif
+}
+}  // namespace
+
+EndstoneConsole::EndstoneConsole()
+{
+    const char *value = std::getenv("ENDSTONE_NO_INTERACTIVE");
+    if (!is_true(value) && stdin_is_tty()) {
+        rx_ = replxx::Replxx{};
+    }
+}
+
 std::optional<std::string> EndstoneConsole::readLine(const std::string &prompt)
 {
-    const char *cstr = rx_.input(prompt);
-    if (!cstr) {
-        return std::nullopt;
+    std::string line;
+    if (rx_.has_value()) {
+        const char *cstr = rx_->input(prompt);
+        if (!cstr) {
+            return std::nullopt;
+        }
+        line = cstr;
+        if (!line.empty()) {
+            rx_->history_add(line);
+        }
     }
-    std::string line(cstr);
-    if (!line.empty()) {
-        rx_.history_add(line);
+    else {
+        if (!std::getline(std::cin, line)) {
+            return std::nullopt;
+        }
     }
     return line;
 }
 
 void EndstoneConsole::printAbove(std::string_view message)
 {
-    if (!message.empty() && message.back() == '\n') {
-        rx_.print("%.*s", static_cast<int>(message.size()), message.data());
+    const bool has_nl = !message.empty() && message.back() == '\n';
+    if (rx_.has_value()) {
+        if (has_nl) {
+            rx_->print("%.*s", message.size(), message.data());
+        }
+        else {
+            rx_->print("%.*s\n", message.size(), message.data());
+        }
     }
     else {
-        rx_.print("%.*s\n", static_cast<int>(message.size()), message.data());
+        if (has_nl) {
+            std::cout.write(message.data(), static_cast<std::streamsize>(message.size()));
+        }
+        else {
+            std::cout.write(message.data(), static_cast<std::streamsize>(message.size()));
+            std::cout.put('\n');
+        }
+        std::cout.flush();
     }
 }
 

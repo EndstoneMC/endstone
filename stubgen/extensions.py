@@ -321,7 +321,7 @@ class Pybind11DocstringParser(Extension):
                     doc_start = i + 1
 
                     overload = Function(name=func.name)
-                    signature = f"{func_name}({match.group("args")}) -> {match.group("returns")}"
+                    signature = f"{func_name}({match.group('args')}) -> {match.group('returns')}"
 
                     overload.parameters, overload.returns = self.parse_signature(signature, parent=func.parent)
                     if overload.parameters and overload.parameters[0].name == "self":
