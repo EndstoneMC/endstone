@@ -36,7 +36,6 @@
 #include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
-#include "endstone/core/console/reader.h"
 #include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_type.h"
@@ -181,7 +180,7 @@ void EndstoneServer::setLevel(::Level &level)
     // start accepting input
     runtime::stdin_restore();
     auto &server = static_cast<DedicatedServer &>(server_instance_->app_);
-    server.console_input_reader_ = std::make_unique<EndstoneConsoleReader>();
+    server.console_input_reader_->startEndstone();
 }
 
 void EndstoneServer::initRegistries()
@@ -189,7 +188,7 @@ void EndstoneServer::initRegistries()
     enchantment_registry_ = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
     item_registry_ = EndstoneRegistry<ItemType, ::Item>::createRegistry();
     BlockStateRegistry::get().unregisterBlockStates();
-    ::BlockState::forEachState([this](const auto &state) {
+    ::BlockState::forEachState([](const auto &state) {
         BlockStateRegistry::get().registerBlockState(state);
         return true;
     });

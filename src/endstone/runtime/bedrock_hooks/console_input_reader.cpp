@@ -12,27 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/console/reader.h"
+#include "bedrock/server/console_input_reader.h"
 
+#include <codecvt>
 #include <iostream>
 
-#include "endstone/runtime/runtime.h"
+#include "bedrock/gameplayhandlers/block_gameplay_handler.h"
+#include "endstone/core/console/console.h"
 
-namespace endstone::core {
-EndstoneConsoleReader::EndstoneConsoleReader()
+using endstone::core::EndstoneConsole;
+
+void ConsoleInputReader::startEndstone()
 {
+    read_console_ = false;
+    if (console_thread_.joinable()) {
+        console_thread_.join();
+    }
     read_console_ = true;
     console_thread_ = std::thread([this]() {
-        if (!read_console_) {
-            return;
-        }
-
-        while (true) {
+        while (read_console_) {
             auto line = EndstoneConsole::getInstance().readLine("> ");
             if (line.has_value()) {
-                console_input_.try_enqueue(line.value());
-                if (line.value() == "stop") {
-                    break;
+                if (!line->empty()) {
+                    console_input_.try_enqueue(line.value());
+                    if (line.value() == "stop") {
+                        break;
+                    }
                 }
             }
             else {
@@ -40,11 +45,6 @@ EndstoneConsoleReader::EndstoneConsoleReader()
                 console_input_.try_enqueue("stop");
                 break;
             }
-
-            if (!read_console_) {
-                return;
-            }
         }
     });
 }
-}  // namespace endstone::core

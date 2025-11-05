@@ -59,7 +59,6 @@ add_library(bedrock STATIC
         resources/resource_pack.cpp
         resources/resource_pack_manager.cpp
         resources/resource_pack_stack.cpp
-        server/console_input_reader.cpp
         server/server_instance.cpp
         server/commands/command.cpp
         server/commands/command_origin.cpp

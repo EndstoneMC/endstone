@@ -15,11 +15,6 @@
 #include "endstone/core/console/console.h"
 
 #include <iostream>
-#if defined(_WIN32)
-#include <io.h>
-#else
-#include <unistd.h>
-#endif
 
 namespace endstone::core {
 namespace {
@@ -34,21 +29,12 @@ bool is_true(const char *v)
     }
     return (s == "1" || s == "true" || s == "yes" || s == "on");
 }
-
-bool stdin_is_tty()
-{
-#if _WIN32
-    return _isatty(_fileno(stdin)) != 0;
-#else
-    return ::isatty(::fileno(stdin)) != 0;
-#endif
-}
 }  // namespace
 
 EndstoneConsole::EndstoneConsole()
 {
     const char *value = std::getenv("ENDSTONE_NO_INTERACTIVE");
-    if (!is_true(value) && stdin_is_tty()) {
+    if (!is_true(value)) {
         rx_ = replxx::Replxx{};
     }
 }
@@ -67,7 +53,8 @@ std::optional<std::string> EndstoneConsole::readLine(const std::string &prompt)
         }
     }
     else {
-        if (!std::getline(std::cin, line)) {
+        std::getline(std::cin, line);
+        if (!std::cin.good()) {
             return std::nullopt;
         }
     }

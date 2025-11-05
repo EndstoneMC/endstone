@@ -215,6 +215,7 @@ void stdin_restore()
     }
     std::cin.clear();
     std::wcin.clear();
+    std::clearerr(stdin);
 }
 }  // namespace endstone::runtime
 

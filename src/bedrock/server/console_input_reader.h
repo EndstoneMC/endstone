@@ -22,10 +22,11 @@
 
 class ConsoleInputReader {
 public:
-    // ConsoleInputReader() = default;
+    ConsoleInputReader();
     ~ConsoleInputReader();
+    void startEndstone();  // Endstone
 
-protected:
+private:
     SPSCQueue<std::string> console_input_;
     std::atomic<bool> read_console_ = false;
     Bedrock::Threading::Thread console_thread_;
