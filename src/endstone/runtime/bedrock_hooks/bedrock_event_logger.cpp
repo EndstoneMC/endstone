@@ -27,6 +27,11 @@
 void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, const char * /*function*/, int /*line*/,
                                      MessasgeId /*message_id*/, const char *format, va_list args)
 {
+    if (area == LogAreaID::Database && priority <= Bedrock::LogLevel::Info) {
+        // Suppress logs from DBStorage (e.g. Running AutoCompaction...)
+        return;
+    }
+
     const auto name = magic_enum::enum_name(area);
     const auto &logger = endstone::core::LoggerFactory::getLogger(std::string(name));
     endstone::Logger::Level log_level;
