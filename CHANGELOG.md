@@ -5,7 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.10.10](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.9) - 2025-11-01
+## [0.10.11](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.10) - 2025-11-05
+
+<small>[Compare with 0.10.10](https://github.com/EndstoneMC/endstone/compare/v0.10.10...v0.10.11)</small>
+
+### Added
+
+* Added support for BDS version 1.21.121.1.
+
+### Fixed
+
+* Resolved a crash that could occur when updating the scoreboard of an entity.
+
+## [0.10.10](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.10) - 2025-11-01
 
 <small>[Compare with 0.10.9](https://github.com/EndstoneMC/endstone/compare/v0.10.9...v0.10.10)</small>
 
