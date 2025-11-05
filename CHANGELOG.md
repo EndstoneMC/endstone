@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 * Added support for BDS version 1.21.121.1.
+* Verbose database logs (e.g. Running AutoCompaction...) are now suppressed.
 
 ### Fixed
 
