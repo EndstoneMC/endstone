@@ -36,7 +36,7 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
     PyConfig_InitIsolatedConfig(&config);
     config.isolated = 0;
     config.use_environment = 1;
-    py::scoped_interpreter interpreter(&config);
+    py::initialize_interpreter(&config);
     py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
     py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
 
