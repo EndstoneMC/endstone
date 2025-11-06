@@ -120,6 +120,8 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1ab0bce5bf080702eb2808d46e7e1ab612" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
+  <compound refid="structendstone_1_1Attribute" kind="struct"><name>endstone::Attribute</name>
+  </compound>
   <compound refid="classendstone_1_1BanEntry" kind="class"><name>endstone::BanEntry</name>
     <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" kind="typedef"><name>Date</name></member>
     <member refid="classendstone_1_1BanEntry_1ab6991f9c822ac9cd969188b71aabae4a" kind="variable"><name>DateFormat</name></member>
@@ -2079,6 +2081,9 @@
   </compound>
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
+  <compound refid="attribute_8h" kind="file"><name>attribute.h</name>
+    <member refid="attribute_8h_1afa65150d3aba5f0979f5542154863dc7" kind="define"><name>HANDLE_MC_ATTRIBUTE</name></member>
+  </compound>
   <compound refid="ban__entry_8h" kind="file"><name>ban_entry.h</name>
   </compound>
   <compound refid="ban__list_8h" kind="file"><name>ban_list.h</name>
@@ -2406,6 +2411,8 @@
   <compound refid="dir_dd7779a583e02d88c9a89a2c881c3946" kind="dir"><name>include/endstone/actor</name>
   </compound>
   <compound refid="dir_621c26b5fd4198aba66e7e31570ce44a" kind="dir"><name>include/endstone/event/actor</name>
+  </compound>
+  <compound refid="dir_5bd322557a2ad4dbfaf5ca599d780f7c" kind="dir"><name>include/endstone/attribute</name>
   </compound>
   <compound refid="dir_f1b1f2e9abb31749ef58cd98f22bcd78" kind="dir"><name>include/endstone/ban</name>
   </compound>

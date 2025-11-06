@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structendstone_1_1Attribute" kind="struct" language="C++" prot="public">
+    <compoundname>endstone::Attribute</compoundname>
+    <includes refid="attribute_8h" local="no">endstone/attribute/attribute.h</includes>
+    <briefdescription>
+<para>All attribute types. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/attribute/attribute.h" line="23" column="1" bodyfile="include/endstone/attribute/attribute.h" bodystart="23" bodyend="28"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
