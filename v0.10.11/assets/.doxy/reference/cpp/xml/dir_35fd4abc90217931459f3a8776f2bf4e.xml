@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_35fd4abc90217931459f3a8776f2bf4e" kind="dir">
+    <compoundname>include/endstone/map</compoundname>
+    <innerfile refid="map__canvas_8h">map_canvas.h</innerfile>
+    <innerfile refid="map__renderer_8h">map_renderer.h</innerfile>
+    <innerfile refid="map__view_8h">map_view.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/map/"/>
+  </compounddef>
+</doxygen>
