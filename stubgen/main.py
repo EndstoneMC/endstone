@@ -38,6 +38,7 @@ def main():
         text = text.replace("typing.SupportsInt", "int")
         relative_path = pyi.relative_to(source_path)
         output_file = output_path / relative_path
+        output_file.parent.mkdir(parents=True, exist_ok=True)
         output_file.write_text(text, encoding="utf-8")
 
     cmds = [
