@@ -89,6 +89,7 @@ add_library(bedrock STATIC
         world/actor/provider/actor_offset.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp
+        world/attribute/mutable_attribute_with_context.cpp
         world/inventory/network/item_stack_net_id_variant.cpp
         world/item/item.cpp
         world/item/item_descriptor.cpp

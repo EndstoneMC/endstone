@@ -29,10 +29,12 @@ public:
     virtual ~AttributeInstance() = default;
     // virtual void tick() = 0;
 
-    [[nodiscard]] float getCurrentValue() const;
+    [[nodiscard]] const Attribute *getAttribute() const;
     [[nodiscard]] float getMaxValue() const;
-    void setCurrentValue(float value, AttributeModificationContext ctx);
-    [[nodiscard]] Attribute *getAttribute() const;
+    [[nodiscard]] float getMinValue() const;
+    [[nodiscard]] float getDefaultValue(int operand) const;
+    [[nodiscard]] float getCurrentValue() const;
+    void setCurrentValue(float value, AttributeModificationContext context);
     void addBuff(const AttributeBuff &, AttributeModificationContext);
 
 private:

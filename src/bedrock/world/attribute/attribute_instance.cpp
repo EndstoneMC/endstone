@@ -16,9 +16,9 @@
 
 #include "bedrock/world/attribute/attribute_map.h"
 
-float AttributeInstance::getCurrentValue() const
+const Attribute *AttributeInstance::getAttribute() const
 {
-    return current_value_;
+    return attribute_;
 }
 
 float AttributeInstance::getMaxValue() const
@@ -26,15 +26,15 @@ float AttributeInstance::getMaxValue() const
     return current_max_value_;
 }
 
-void AttributeInstance::setCurrentValue(float value, AttributeModificationContext ctx)
+float AttributeInstance::getCurrentValue() const
 {
-    current_value_ = value;
-    _setDirty(ctx);
+    return current_value_;
 }
 
-Attribute *AttributeInstance::getAttribute() const
+void AttributeInstance::setCurrentValue(float value, AttributeModificationContext context)
 {
-    return attribute_;
+    current_value_ = value;
+    _setDirty(context);
 }
 
 void AttributeInstance::_setDirty(AttributeModificationContext ctx)

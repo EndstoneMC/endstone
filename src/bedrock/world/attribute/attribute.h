@@ -18,6 +18,14 @@
 
 #include "bedrock/core/string/string_hash.h"
 
+enum class AttributeOperands : int {
+    OPERAND_MIN = 0,
+    OPERAND_MAX = 1,
+    OPERAND_CURRENT = 2,
+    TOTAL_OPERANDS = 3,
+    OPERAND_INVALID = 3,
+};
+
 enum class RedefinitionMode : std::int8_t {
     KeepCurrent = 0,
     UpdateToNewDefault = 1
