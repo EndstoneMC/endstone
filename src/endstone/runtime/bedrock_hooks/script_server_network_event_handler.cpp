@@ -41,7 +41,7 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
         return original();
     }
 
-    static GameplayHandlerResult CANCEL = {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+    static constexpr GameplayHandlerResult CANCEL{HandlerResult::BypassListeners, CoordinatorResult::Cancel};
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     // populate recipient list

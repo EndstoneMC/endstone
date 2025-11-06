@@ -19,8 +19,12 @@ enum class HandlerResult : int {
     NotifyListeners = 1,
 };
 
-template<typename ReturnValueType>
+template <typename T>
 struct GameplayHandlerResult {
     HandlerResult handler_result;
-    ReturnValueType return_value;
+    T return_value;
 };
+
+// CTAD deduction guide
+template <typename T>
+GameplayHandlerResult(HandlerResult, T) -> GameplayHandlerResult<T>;
