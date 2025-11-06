@@ -347,7 +347,7 @@ void EndstonePlayer::setFlySpeed(float value) const
 
 float EndstonePlayer::getWalkSpeed() const
 {
-    return getHandle().getSpeed();
+    return getHandle().getAbilities().getFloat(AbilitiesIndex::WalkSpeed);
 }
 
 void EndstonePlayer::setWalkSpeed(float value) const
