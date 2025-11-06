@@ -47,6 +47,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._ 
     * **class** [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
         * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
+* **class** [**endstone::Attribute**](classendstone_1_1Attribute.md) _All attribute types._ 
+* **class** [**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._ 
 * **class** [**endstone::BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
     * **class** [**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md) 
     * **class** [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) 
@@ -117,7 +119,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_
 * **class** [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) 
 * **class** [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) 
-* **struct** [**endstone::Attribute**](structendstone_1_1Attribute.md) _All attribute types._ 
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 

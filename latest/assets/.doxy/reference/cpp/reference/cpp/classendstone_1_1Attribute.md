@@ -1,10 +1,10 @@
 
 
-# Struct endstone::Attribute
+# Class endstone::Attribute
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Attribute**](structendstone_1_1Attribute.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Attribute**](classendstone_1_1Attribute.md)
 
 
 

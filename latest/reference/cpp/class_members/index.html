@@ -3044,7 +3044,7 @@ For latest updates join the chat on
 <li><strong>getRuntimeId</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>)</li>
 <li><strong>getScoreTag</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>getScoreboardTags</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
-<li><strong>getType</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>, <a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>, <a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
+<li><strong>getType</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>, <a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>, <a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
 <li><strong>getVelocity</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>getDamage</strong> (<a href="../classendstone_1_1ActorDamageEvent/"><strong>endstone::ActorDamageEvent</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>getDamageSource</strong> (<a href="../classendstone_1_1ActorDamageEvent/"><strong>endstone::ActorDamageEvent</strong></a>, <a href="../classendstone_1_1ActorDeathEvent/"><strong>endstone::ActorDeathEvent</strong></a>)</li>
@@ -3055,6 +3055,12 @@ For latest updates join the chat on
 <li><strong>getSource</strong> (<a href="../classendstone_1_1ActorKnockbackEvent/"><strong>endstone::ActorKnockbackEvent</strong></a>, <a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>, <a href="../classendstone_1_1BlockCookEvent/"><strong>endstone::BlockCookEvent</strong></a>)</li>
 <li><strong>getFrom</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>)</li>
 <li><strong>getTo</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>)</li>
+<li><strong>getBaseMaxValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
+<li><strong>getBaseMinValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
+<li><strong>getBaseValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
+<li><strong>getMaxValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
+<li><strong>getMinValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
+<li><strong>getValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>, <a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>, <a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a>)</li>
 <li><strong>getCreated</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
 <li><strong>getExpiration</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
 <li><strong>getReason</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>, <a href="../classendstone_1_1PlayerKickEvent/"><strong>endstone::PlayerKickEvent</strong></a>)</li>
@@ -3181,7 +3187,6 @@ For latest updates join the chat on
 <li><strong>getRemovalCallback</strong> (<a href="../classendstone_1_1PermissionAttachment/"><strong>endstone::PermissionAttachment</strong></a>)</li>
 <li><strong>getAttachment</strong> (<a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>)</li>
 <li><strong>getPermission</strong> (<a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
-<li><strong>getValue</strong> (<a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>, <a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a>)</li>
 <li><strong>getAllowFlight</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getDeviceId</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getDeviceOS</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
@@ -3627,6 +3632,9 @@ For latest updates join the chat on
 <li><strong>source_</strong> (<a href="../classendstone_1_1ActorKnockbackEvent/"><strong>endstone::ActorKnockbackEvent</strong></a>, <a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>, <a href="../classendstone_1_1BlockCookEvent/"><strong>endstone::BlockCookEvent</strong></a>)</li>
 <li><strong>setFrom</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>)</li>
 <li><strong>setTo</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerMoveEvent/"><strong>endstone::PlayerMoveEvent</strong></a>)</li>
+<li><strong>setBaseMaxValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
+<li><strong>setBaseMinValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
+<li><strong>setBaseValue</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
 <li><strong>setCreated</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
 <li><strong>setExpiration</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>)</li>
 <li><strong>setReason</strong> (<a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a>, <a href="../classendstone_1_1PlayerKickEvent/"><strong>endstone::PlayerKickEvent</strong></a>)</li>
@@ -3857,6 +3865,7 @@ For latest updates join the chat on
 <li><strong>~ActorExplodeEvent</strong> (<a href="../classendstone_1_1ActorExplodeEvent/"><strong>endstone::ActorExplodeEvent</strong></a>)</li>
 <li><strong>~ActorSpawnEvent</strong> (<a href="../classendstone_1_1ActorSpawnEvent/"><strong>endstone::ActorSpawnEvent</strong></a>)</li>
 <li><strong>~ActorTeleportEvent</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>)</li>
+<li><strong>~AttributeInstance</strong> (<a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>)</li>
 <li><strong>~BanList</strong> (<a href="../classendstone_1_1BanList/"><strong>endstone::BanList</strong></a>)</li>
 <li><strong>~Block</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>)</li>
 <li><strong>~BlockBreakEvent</strong> (<a href="../classendstone_1_1BlockBreakEvent/"><strong>endstone::BlockBreakEvent</strong></a>)</li>

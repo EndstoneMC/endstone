@@ -185,7 +185,11 @@
          <lastmod>2025-11-06</lastmod>
     </url>
     <url>
-         <loc>https://endstone.dev/latest/reference/cpp/structendstone_1_1Attribute/</loc>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Attribute/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1AttributeInstance/</loc>
          <lastmod>2025-11-06</lastmod>
     </url>
     <url>
@@ -882,6 +886,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/attribute_8h_source/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/attribute__instance_8h/</loc>
+         <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/attribute__instance_8h_source/</loc>
          <lastmod>2025-11-06</lastmod>
     </url>
     <url>

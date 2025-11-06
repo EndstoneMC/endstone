@@ -15,7 +15,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._    
     * **class** [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._    
     * **class** [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) _Called when a non-player entity is teleported from one location to another._     
-    * **struct** [**Attribute**](structendstone_1_1Attribute.md) _All attribute types._ 
+    * **class** [**Attribute**](classendstone_1_1Attribute.md) _All attribute types._ 
+    * **class** [**AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._     
     * **class** [**BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
     * **class** [**BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._     
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     

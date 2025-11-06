@@ -27,7 +27,8 @@
 #include <string>
 
 namespace endstone {
-struct Attribute {
+class Attribute {
+public:
 #define HANDLE_MC_ATTRIBUTE(ID, NAME, DESC) inline static const std::string NAME = "minecraft:" ID;
 #include "attribute.def"
 

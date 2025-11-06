@@ -24,7 +24,9 @@
 ([**endstone**](namespaceendstone.md))
 * [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md)
 ([**endstone**](namespaceendstone.md))
-* [**Attribute**](structendstone_1_1Attribute.md)
+* [**Attribute**](classendstone_1_1Attribute.md)
+([**endstone**](namespaceendstone.md))
+* [**AttributeInstance**](classendstone_1_1AttributeInstance.md)
 ([**endstone**](namespaceendstone.md))
 
 

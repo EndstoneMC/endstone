@@ -20,7 +20,7 @@
         <label>string</label>
       </node>
     </incdepgraph>
-    <innerclass refid="structendstone_1_1Attribute" prot="public">endstone::Attribute</innerclass>
+    <innerclass refid="classendstone_1_1Attribute" prot="public">endstone::Attribute</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <sectiondef kind="define">
       <memberdef kind="define" id="attribute_8h_1afa65150d3aba5f0979f5542154863dc7" prot="public" static="no">
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="24" column="9" bodyfile="include/endstone/attribute/attribute.h" bodystart="24" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="25" column="9" bodyfile="include/endstone/attribute/attribute.h" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -62,13 +62,14 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="23" refid="structendstone_1_1Attribute" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structendstone_1_1Attribute" kindref="compound">Attribute</ref><sp/>{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HANDLE_MC_ATTRIBUTE(ID,<sp/>NAME,<sp/>DESC)<sp/>inline<sp/>static<sp/>const<sp/>std::string<sp/>NAME<sp/>=<sp/>&quot;minecraft:&quot;<sp/>ID;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;attribute.def&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>HANDLE_MC_ATTRIBUTE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="29"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classendstone_1_1Attribute" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Attribute" kindref="compound">Attribute</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HANDLE_MC_ATTRIBUTE(ID,<sp/>NAME,<sp/>DESC)<sp/>inline<sp/>static<sp/>const<sp/>std::string<sp/>NAME<sp/>=<sp/>&quot;minecraft:&quot;<sp/>ID;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;attribute.def&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>HANDLE_MC_ATTRIBUTE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/attribute/attribute.h"/>
   </compounddef>

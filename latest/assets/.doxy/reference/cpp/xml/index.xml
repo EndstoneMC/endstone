@@ -120,7 +120,20 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1ab0bce5bf080702eb2808d46e7e1ab612" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
-  <compound refid="structendstone_1_1Attribute" kind="struct"><name>endstone::Attribute</name>
+  <compound refid="classendstone_1_1Attribute" kind="class"><name>endstone::Attribute</name>
+  </compound>
+  <compound refid="classendstone_1_1AttributeInstance" kind="class"><name>endstone::AttributeInstance</name>
+    <member refid="classendstone_1_1AttributeInstance_1a2c760ef86dbaff64b27215bee0a64d2e" kind="function"><name>~AttributeInstance</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1ab64e1b83d261bd9acd12002d1c3774d7" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1aec4bae985b1028f0267083cffb79d5a7" kind="function"><name>getBaseValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1acd02e0d33c2bbe142d65550de035f3a3" kind="function"><name>setBaseValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a792ba38e6ce8f864ff6d08d036563157" kind="function"><name>getBaseMaxValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a0086e63ae99b08b1732c43ce425158aa" kind="function"><name>setBaseMaxValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1aa6016f211d9ea74d7c8e19f23a7a037a" kind="function"><name>getBaseMinValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1aa63427800cdc8cb78a56c70c302f0062" kind="function"><name>setBaseMinValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1aa8337efa45ce9c7c5ce034fb9b22b52c" kind="function"><name>getValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a972e00db97932fc2967b16f6ce52ea22" kind="function"><name>getMaxValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a08ffa1345942dc141349743e7c4a23ef" kind="function"><name>getMinValue</name></member>
   </compound>
   <compound refid="classendstone_1_1BanEntry" kind="class"><name>endstone::BanEntry</name>
     <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" kind="typedef"><name>Date</name></member>
@@ -2083,6 +2096,8 @@
   </compound>
   <compound refid="attribute_8h" kind="file"><name>attribute.h</name>
     <member refid="attribute_8h_1afa65150d3aba5f0979f5542154863dc7" kind="define"><name>HANDLE_MC_ATTRIBUTE</name></member>
+  </compound>
+  <compound refid="attribute__instance_8h" kind="file"><name>attribute_instance.h</name>
   </compound>
   <compound refid="ban__entry_8h" kind="file"><name>ban_entry.h</name>
   </compound>

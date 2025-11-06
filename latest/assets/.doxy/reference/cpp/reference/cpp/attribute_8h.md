@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| struct | [**Attribute**](structendstone_1_1Attribute.md) <br>_All attribute types._  |
+| class | [**Attribute**](classendstone_1_1Attribute.md) <br>_All attribute types._  |
 
 
 

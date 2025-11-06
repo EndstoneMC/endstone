@@ -3,6 +3,7 @@
   <compounddef id="dir_5bd322557a2ad4dbfaf5ca599d780f7c" kind="dir">
     <compoundname>include/endstone/attribute</compoundname>
     <innerfile refid="attribute_8h">attribute.h</innerfile>
+    <innerfile refid="attribute__instance_8h">attribute_instance.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
