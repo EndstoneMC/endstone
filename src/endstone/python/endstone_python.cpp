@@ -24,6 +24,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob);
+void init_attribute(py::module_ &);
 void init_ban(py::module_ &);
 void init_block(py::module_ &, py::class_<Block> &block);
 void init_boss(py::module_ &);
@@ -59,6 +60,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto m_actor =
         m.def_submodule("actor", "Classes relating to actors (entities) that can exist in a world, including all "
                                  "players, monsters, projectiles, etc.");
+    auto m_attribute = m.def_submodule("attribute", "Classes relevant to attributes.");
     auto m_ban = m.def_submodule("ban", "Classes relevant to bans.");
     auto m_block = m.def_submodule("block", "Classes relating to the blocks in a world, including special states.");
     auto m_boss =
@@ -142,6 +144,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto location = py::class_<Location, Vector>(m_level, "Location",
                                                  "Represents a 3-dimensional location in a dimension within a level.");
 
+    init_attribute(m_attribute);
     init_color_format(m);
     init_damage(m_damage);
     init_game_mode(m);

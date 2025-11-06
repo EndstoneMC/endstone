@@ -27,6 +27,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "actor/actor.h"
 #include "actor/item.h"
 #include "actor/mob.h"
+#include "attribute/attribute.h"
 #include "ban/ban_entry.h"
 #include "ban/ban_list.h"
 #include "ban/ip_ban_entry.h"

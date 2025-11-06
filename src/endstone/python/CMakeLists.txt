@@ -6,6 +6,7 @@ find_package(pybind11 CONFIG REQUIRED)
 
 pybind11_add_module(_python MODULE
         actor.cpp
+        attribute.cpp
         ban.cpp
         block.cpp
         boss.cpp

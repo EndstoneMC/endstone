@@ -5,7 +5,7 @@
 HANDLE_MC_ATTRIBUTE("health", HEALTH, "Health of an entity.")
 HANDLE_MC_ATTRIBUTE("follow_range", FOLLOW_RANGE, "Range at which an entity will follow others.")
 HANDLE_MC_ATTRIBUTE("knockback_resistance", KNOCKBACK_RESISTANCE, "Resistance of an entity to knockback.")
-HANDLE_MC_ATTRIBUTE("movement", MOVEMENT_SPEED, GENERIC, "Movement speed of an entity.")
+HANDLE_MC_ATTRIBUTE("movement", MOVEMENT_SPEED, "Movement speed of an entity.")
 HANDLE_MC_ATTRIBUTE("underwater_movement", UNDERWATER_MOVEMENT_SPEED, "Movement speed of an entity underwater.")
 HANDLE_MC_ATTRIBUTE("lava_movement", LAVA_MOVEMENT_SPEED, "Movement speed of an entity in lava.")
 HANDLE_MC_ATTRIBUTE("attack_damage", ATTACK_DAMAGE, "Attack damage of an entity.")

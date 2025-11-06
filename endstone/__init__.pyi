@@ -8,6 +8,7 @@ import numpy
 
 from . import (
     actor,
+    attribute,
     ban,
     block,
     boss,
@@ -56,6 +57,7 @@ __all__ = [
     "Server",
     "Skin",
     "actor",
+    "attribute",
     "ban",
     "block",
     "boss",
