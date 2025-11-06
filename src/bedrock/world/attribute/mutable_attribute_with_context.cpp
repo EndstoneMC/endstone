@@ -23,6 +23,16 @@ float AttributeInstanceForwarder::getCurrentValue() const
     return instance->getCurrentValue();
 }
 
+void AttributeInstanceForwarder::setDefaultValue(float default_value, int operand)
+{
+    instance->setDefaultValue(default_value, operand, context);
+}
+
+void AttributeInstanceForwarder::setDefaultValueOnly(float new_default_value)
+{
+    instance->setDefaultValueOnly(new_default_value, context);
+}
+
 void AttributeInstanceForwarder::setCurrentValue(float value)
 {
     instance->setCurrentValue(value, context);
@@ -32,7 +42,6 @@ MutableAttributeWithContext::MutableAttributeWithContext(AttributeInstance *inst
                                                          AttributeModificationContext context)
     : instance(instance), context(context)
 {
-
 }
 
 bool MutableAttributeWithContext::isValid() const

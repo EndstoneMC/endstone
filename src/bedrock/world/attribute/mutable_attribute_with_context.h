@@ -42,7 +42,7 @@ struct AttributeInstanceForwarder {
     // bool hasModifier(const AttributeModifier &modifier) const;
     [[nodiscard]] bool hasTemporalBuffs() const;
     void setDefaultValue(float default_value, int operand);
-    void setDefaultValueOnly(float);
+    void setDefaultValueOnly(float new_default_value);
     void setRange(float min, float base, float max);
     void setMaxValue(float max);
     void setMinValue(float);

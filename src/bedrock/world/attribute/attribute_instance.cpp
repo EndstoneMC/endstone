@@ -26,6 +26,36 @@ float AttributeInstance::getMaxValue() const
     return current_max_value_;
 }
 
+float AttributeInstance::getMinValue() const
+{
+    return current_min_value_;
+}
+
+float AttributeInstance::getDefaultValue(int operand) const
+{
+    if (operand <= 2) {
+        return default_values_[operand];
+    }
+    return 0.0;
+}
+
+void AttributeInstance::setDefaultValue(float default_value, int operand, AttributeModificationContext context)
+{
+    if (operand <= 2 && default_values_[operand] != default_value) {
+        default_values_[operand] = default_value;
+        current_values_[operand] = default_value;
+        _setDirty(context);
+    }
+}
+
+void AttributeInstance::setDefaultValueOnly(float new_default_value, AttributeModificationContext context)
+{
+    if (default_value_ != new_default_value) {
+        default_value_ = new_default_value;
+        _setDirty(context);
+    }
+}
+
 float AttributeInstance::getCurrentValue() const
 {
     return current_value_;
@@ -37,9 +67,9 @@ void AttributeInstance::setCurrentValue(float value, AttributeModificationContex
     _setDirty(context);
 }
 
-void AttributeInstance::_setDirty(AttributeModificationContext ctx)
+void AttributeInstance::_setDirty(AttributeModificationContext context)
 {
-    if (ctx.attribute_map) {
-        ctx.attribute_map->onAttributeModified(*this);
+    if (context.attribute_map) {
+        context.attribute_map->onAttributeModified(*this);
     }
 }

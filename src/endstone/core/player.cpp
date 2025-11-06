@@ -355,7 +355,7 @@ void EndstonePlayer::setWalkSpeed(float value) const
     getHandle().getAbilities().setAbility(AbilitiesIndex::WalkSpeed, value);
     updateAbilities();
     auto mutable_attr = getHandle().getMutableAttribute("minecraft:movement");
-    mutable_attr->setCurrentValue(value);
+    mutable_attr->setDefaultValue(getWalkSpeed(), static_cast<int>(AttributeOperands::OPERAND_CURRENT));
 }
 
 Scoreboard &EndstonePlayer::getScoreboard() const

@@ -33,6 +33,8 @@ public:
     [[nodiscard]] float getMaxValue() const;
     [[nodiscard]] float getMinValue() const;
     [[nodiscard]] float getDefaultValue(int operand) const;
+    void setDefaultValue(float default_value, int operand, AttributeModificationContext context);
+    void setDefaultValueOnly(float new_default_value, AttributeModificationContext context);
     [[nodiscard]] float getCurrentValue() const;
     void setCurrentValue(float value, AttributeModificationContext context);
     void addBuff(const AttributeBuff &, AttributeModificationContext);
@@ -40,7 +42,7 @@ public:
 private:
     friend class BaseAttributeMap;
 
-    void _setDirty(AttributeModificationContext ctx);
+    void _setDirty(AttributeModificationContext context);
 
     Attribute *attribute_;
     std::vector<void *> modifier_list_;
@@ -62,6 +64,6 @@ private:
             float current_max_value_;
             float current_value_;
         };
-    };
+    } ;
 };
 static_assert(sizeof(AttributeInstance) == 128);
