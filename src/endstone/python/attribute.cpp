@@ -26,5 +26,22 @@ void init_attribute(py::module_ &m)
 
 #undef HANDLE_MC_ATTRIBUTE
         ;
+
+    py::class_<AttributeInstance>(
+        m, "AttributeInstance",
+        "Represents a mutable instance of an attribute and its associated modifiers and values.")
+        .def_property_readonly("type", &AttributeInstance::getType, "The attribute type pertaining to this instance.")
+        .def_property("base_value", &AttributeInstance::getBaseValue, &AttributeInstance::setBaseValue,
+                      "Base value of this instance before modifiers are applied.")
+        .def_property("base_max_value", &AttributeInstance::getBaseMaxValue, &AttributeInstance::setBaseMaxValue,
+                      "Base max value of this instance before modifiers are applied.")
+        .def_property("base_min_value", &AttributeInstance::getBaseMinValue, &AttributeInstance::setBaseMinValue,
+                      "Base min value of this instance before modifiers are applied.")
+        .def_property_readonly("value", &AttributeInstance::getValue,
+                               "Get the value of this instance after all associated modifiers have been applied.")
+        .def_property_readonly("max_value", &AttributeInstance::getMaxValue,
+                               "Get the max value of this instance after all associated modifiers have been applied.")
+        .def_property_readonly("min_value", &AttributeInstance::getMinValue,
+                               "Get the min value of this instance after all associated modifiers have been applied.");
 }
 }  // namespace endstone::python
