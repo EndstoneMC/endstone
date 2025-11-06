@@ -18,6 +18,7 @@
 
 #include "bedrock/platform/uuid.h"
 #include "bedrock/world/attribute/attribute_buff.h"
+#include "bedrock/world/attribute/attribute_modifier.h"
 
 class AttributeInstance;
 class BaseAttributeMap;
@@ -37,9 +38,9 @@ struct AttributeInstanceForwarder {
     AttributeInstanceForwarder() = default;
     [[nodiscard]] float getCurrentValue() const;
     [[nodiscard]] float getDefaultValue(int operand) const;
-    // bool hasModifier(const mce::UUID &id) const;
-    // bool hasModifier(std::shared_ptr<AttributeModifier> modifier) const;
-    // bool hasModifier(const AttributeModifier &modifier) const;
+    bool hasModifier(const mce::UUID &id) const;
+    bool hasModifier(std::shared_ptr<AttributeModifier> modifier) const;
+    bool hasModifier(const AttributeModifier &modifier) const;
     [[nodiscard]] bool hasTemporalBuffs() const;
     void setDefaultValue(float default_value, int operand);
     void setDefaultValueOnly(float);
@@ -54,15 +55,15 @@ struct AttributeInstanceForwarder {
     void serializationSetRange(float, float, float, float, float);
     void addBuff(const AttributeBuff &buff);
     void removeBuffs();
-    // void addModifiers(gsl::not_null<std::vector<std::shared_ptr<AttributeModifier>> *>);
-    // void addModifier(std::shared_ptr<AttributeModifier> modifier);
-    // void addModifier(const AttributeModifier &modifier);
-    // void updateModifier(const AttributeModifier &);
-    // bool removeModifier(const mce::UUID &id);
-    // void removeModifier(std::shared_ptr<AttributeModifier> modifier);
-    // void removeModifier(const AttributeModifier &modifier);
-    // void removeModifiers(const std::string &);
-    // void removeModifiers();
+    void addModifiers(gsl::not_null<std::vector<std::shared_ptr<AttributeModifier>> *>);
+    void addModifier(std::shared_ptr<AttributeModifier> modifier);
+    void addModifier(const AttributeModifier &modifier);
+    void updateModifier(const AttributeModifier &);
+    bool removeModifier(const mce::UUID &id);
+    void removeModifier(std::shared_ptr<AttributeModifier> modifier);
+    void removeModifier(const AttributeModifier &modifier);
+    void removeModifiers(const std::string &);
+    void removeModifiers();
     void recalculateModifiers();
     void notify(AttributeMessageType);
     AttributeInstance *instance;
