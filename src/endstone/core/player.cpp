@@ -347,13 +347,15 @@ void EndstonePlayer::setFlySpeed(float value) const
 
 float EndstonePlayer::getWalkSpeed() const
 {
-    return getHandle().getAbilities().getFloat(AbilitiesIndex::WalkSpeed);
+    return getHandle().getSpeed();
 }
 
 void EndstonePlayer::setWalkSpeed(float value) const
 {
     getHandle().getAbilities().setAbility(AbilitiesIndex::WalkSpeed, value);
     updateAbilities();
+    auto mutable_attr = getHandle().getMutableAttribute("minecraft:movement");
+    mutable_attr->setCurrentValue(value);
 }
 
 Scoreboard &EndstonePlayer::getScoreboard() const
