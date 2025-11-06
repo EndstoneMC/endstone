@@ -322,8 +322,6 @@ public:
     void setScoreTag(const std::string &);
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
-    [[nodiscard]] gsl::not_null<MutableAttributeWithContext> getNotNullMutableAttribute(
-        const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
     void setFallDistance(float);
     [[nodiscard]] bool isDead() const;

@@ -273,7 +273,7 @@ public:
         ENDSTONE_CHECKF(health >= 0 && health <= getMaxHealth(),  //
                         "Health value ({}) must be between 0 and {}.", health, getMaxHealth())
         auto mutable_attr = getHandle().getMutableAttribute("minecraft:health");
-        mutable_attr.instance->setCurrentValue(static_cast<float>(health), mutable_attr.context);
+        mutable_attr->setCurrentValue(static_cast<float>(health));
         return {};
     }
 

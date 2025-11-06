@@ -400,12 +400,6 @@ MutableAttributeWithContext Actor::getMutableAttribute(const HashedString &name)
     return component->attributes.getMutableInstanceWithContext(name);
 }
 
-gsl::not_null<MutableAttributeWithContext> Actor::getNotNullMutableAttribute(const HashedString &name)
-{
-    auto component = getPersistentComponent<AttributesComponent>();
-    return component->attributes.getMutableInstanceWithContext(name);
-}
-
 float Actor::getFallDistance() const
 {
     auto component = getPersistentComponent<FallDistanceComponent>();
