@@ -4,6 +4,7 @@
     <compoundname>include/endstone/attribute</compoundname>
     <innerfile refid="attribute_8h">attribute.h</innerfile>
     <innerfile refid="attribute__instance_8h">attribute_instance.h</innerfile>
+    <innerfile refid="attribute__modifier_8h">attribute_modifier.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

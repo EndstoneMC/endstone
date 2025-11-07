@@ -11,6 +11,7 @@
 
 
 * `#include <string>`
+* `#include "endstone/attribute/attribute_modifier.h"`
 
 
 

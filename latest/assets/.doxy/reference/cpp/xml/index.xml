@@ -134,6 +134,31 @@
     <member refid="classendstone_1_1AttributeInstance_1aa8337efa45ce9c7c5ce034fb9b22b52c" kind="function"><name>getValue</name></member>
     <member refid="classendstone_1_1AttributeInstance_1a972e00db97932fc2967b16f6ce52ea22" kind="function"><name>getMaxValue</name></member>
     <member refid="classendstone_1_1AttributeInstance_1a08ffa1345942dc141349743e7c4a23ef" kind="function"><name>getMinValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1ae4e8c5dbda550816b24c08fd0a216edf" kind="function"><name>getModifiers</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1aa1ede5a54c73d13f0b7c5b564cc037bf" kind="function"><name>addModifier</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a7dfee14fcbe2ecc529574f9b6176c4a1" kind="function"><name>removeModifier</name></member>
+  </compound>
+  <compound refid="classendstone_1_1AttributeModifier" kind="class"><name>endstone::AttributeModifier</name>
+    <member refid="classendstone_1_1AttributeModifier_1ac599b22e706b6706a2807be972ab2ce4" kind="enum"><name>Operand</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1ac599b22e706b6706a2807be972ab2ce4a689202409e48743b914713f96d93947c" kind="enumvalue"><name>Value</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1ac599b22e706b6706a2807be972ab2ce4aacbf6a529c5ebfe1089dd9d99cc6277b" kind="enumvalue"><name>MaxValue</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1ac599b22e706b6706a2807be972ab2ce4a16f44636d92735a35fbc952abaefc71a" kind="enumvalue"><name>MinValue</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170" kind="enum"><name>Operation</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170a9865fd6fe2a47af47eee9c3bc3e46956" kind="enumvalue"><name>AddNumber</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170ace6129b1e2d848abb4e45baf22a998c9" kind="enumvalue"><name>AddScalar</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170a6dfce3aa7f2cac190b1c278f33cb75e2" kind="enumvalue"><name>MultiplyScalar1</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a418ee3df70b3aa734b3aaaa94a4ab6ff" kind="variable"><name>name_</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a5880929fc276e39a791a721e86bcad31" kind="variable"><name>uuid_</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1af426b1b9feca243b95fbbfd48e2b0c38" kind="variable"><name>amount_</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a5da23d83f8408e67013bba09b466738f" kind="variable"><name>operand_</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a0a377d2a916ff12ebc4aa1f1946eb3e3" kind="variable"><name>operation_</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1aad89a55b65183a10a9fe4c62aa2e5919" kind="function"><name>AttributeModifier</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a658c9380a9b358e5af723baa3a20a1c4" kind="function"><name>AttributeModifier</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a66328bc61adfc27c551f3454aef023e3" kind="function"><name>getUniqueId</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1ae1aadfb08a50d17d93502dac5cbe3b13" kind="function"><name>getName</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a64fd4cca69b16a3a740e0ee4aec93bb3" kind="function"><name>getAmount</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a4cef1bd2843a90dad3fe0541d08a4742" kind="function"><name>getOperand</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a710ed8941c3fc3afd04d3babe85bf0bb" kind="function"><name>getOperation</name></member>
   </compound>
   <compound refid="classendstone_1_1BanEntry" kind="class"><name>endstone::BanEntry</name>
     <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" kind="typedef"><name>Date</name></member>
@@ -2098,6 +2123,8 @@
     <member refid="attribute_8h_1afa65150d3aba5f0979f5542154863dc7" kind="define"><name>HANDLE_MC_ATTRIBUTE</name></member>
   </compound>
   <compound refid="attribute__instance_8h" kind="file"><name>attribute_instance.h</name>
+  </compound>
+  <compound refid="attribute__modifier_8h" kind="file"><name>attribute_modifier.h</name>
   </compound>
   <compound refid="ban__entry_8h" kind="file"><name>ban_entry.h</name>
   </compound>

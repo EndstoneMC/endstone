@@ -47,6 +47,7 @@ _Represents a button with text and an optional icon._
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
 | class | [**Attribute**](classendstone_1_1Attribute.md) <br>_All attribute types._  |
 | class | [**AttributeInstance**](classendstone_1_1AttributeInstance.md) <br>_Represents a mutable instance of an attribute and its associated modifiers and values._  |
+| class | [**AttributeModifier**](classendstone_1_1AttributeModifier.md) <br>_Represents an attribute modifier._  |
 | class | [**BanEntry**](classendstone_1_1BanEntry.md) <br>_A single entry from a ban list._  |
 | class | [**BanList**](classendstone_1_1BanList.md) &lt;typename T&gt;<br>_Represents a ban list, containing bans._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |

@@ -392,7 +392,7 @@
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>data[16];</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>data[16]<sp/>=<sp/>{0};</highlight></codeline>
 <codeline lineno="108"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref>)<sp/>==<sp/>endstone::UUID::size());</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>

@@ -10,13 +10,14 @@
         <argsstring>[16]</argsstring>
         <name>data</name>
         <qualifiedname>endstone::UUID::data</qualifiedname>
+        <initializer>= {0}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="107" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="107" bodyend="-1"/>
+        <location file="include/endstone/util/uuid.h" line="107" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="107" bodyend="107"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">

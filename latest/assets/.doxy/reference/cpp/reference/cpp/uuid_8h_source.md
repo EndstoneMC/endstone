@@ -109,7 +109,7 @@ public:
 
         return result;
     }
-    std::uint8_t data[16];
+    std::uint8_t data[16] = {0};
 };
 static_assert(sizeof(endstone::UUID) == endstone::UUID::size());
 

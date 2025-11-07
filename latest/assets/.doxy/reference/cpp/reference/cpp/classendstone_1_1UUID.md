@@ -36,7 +36,7 @@ _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1
 
 | Type | Name |
 | ---: | :--- |
-|  std::uint8\_t | [**data**](#variable-data)  <br> |
+|  std::uint8\_t | [**data**](#variable-data)   = `{0}`<br> |
 
 
 

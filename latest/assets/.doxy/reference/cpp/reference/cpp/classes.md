@@ -28,6 +28,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**AttributeInstance**](classendstone_1_1AttributeInstance.md)
 ([**endstone**](namespaceendstone.md))
+* [**AttributeModifier**](classendstone_1_1AttributeModifier.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## b

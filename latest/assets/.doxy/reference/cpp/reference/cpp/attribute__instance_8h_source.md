@@ -26,6 +26,8 @@
 
 #include <string>
 
+#include "endstone/attribute/attribute_modifier.h"
+
 namespace endstone {
 class AttributeInstance {
 public:
@@ -51,7 +53,11 @@ public:
 
     [[nodiscard]] virtual float getMinValue() const = 0;
 
-    // TODO(attribute): add modifiers
+    [[nodiscard]] virtual std::vector<AttributeModifier> getModifiers() const = 0;
+
+    virtual void addModifier(const AttributeModifier &modifier) = 0;
+
+    virtual void removeModifier(const AttributeModifier &modifier) = 0;
 };
 }  // namespace endstone
 ```

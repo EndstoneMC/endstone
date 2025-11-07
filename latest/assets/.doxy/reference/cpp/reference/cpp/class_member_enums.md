@@ -14,6 +14,12 @@
 * **LoadType** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 
 
+## o
+
+* **Operand** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
+* **Operation** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
+
+
 ## s
 
 * **Scale** ([**endstone::MapView**](classendstone_1_1MapView.md))

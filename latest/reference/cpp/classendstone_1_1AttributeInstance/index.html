@@ -2135,6 +2135,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-addmodifier" class="md-nav__link">
+      <span class="md-ellipsis">
+        function addModifier
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getbasemaxvalue" class="md-nav__link">
       <span class="md-ellipsis">
         function getBaseMaxValue
@@ -2200,6 +2213,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getmodifiers" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getModifiers
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-gettype" class="md-nav__link">
       <span class="md-ellipsis">
         function getType
@@ -2216,6 +2242,19 @@ For latest updates join the chat on
     <a href="#function-getvalue" class="md-nav__link">
       <span class="md-ellipsis">
         function getValue
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-removemodifier" class="md-nav__link">
+      <span class="md-ellipsis">
+        function removeModifier
       </span>
     </a>
 
@@ -2329,6 +2368,10 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-addmodifier"><strong>addModifier</strong></a> (const <a href="../classendstone_1_1AttributeModifier/"><strong>AttributeModifier</strong></a> &amp; modifier) = 0<br><em>Add a modifier to this instance.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual float</td>
 <td style="text-align: left;"><a href="#function-getbasemaxvalue"><strong>getBaseMaxValue</strong></a> () const = 0<br><em>Base max value of this instance before modifiers are applied.</em></td>
 </tr>
@@ -2342,11 +2385,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual float</td>
-<td style="text-align: left;"><a href="#function-getmaxvalue"><strong>getMaxValue</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getmaxvalue"><strong>getMaxValue</strong></a> () const = 0<br><em>Get the max value of this instance after all associated modifiers have been applied.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual float</td>
-<td style="text-align: left;"><a href="#function-getminvalue"><strong>getMinValue</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getminvalue"><strong>getMinValue</strong></a> () const = 0<br><em>Get the min value of this instance after all associated modifiers have been applied.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1AttributeModifier/"><strong>AttributeModifier</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getmodifiers"><strong>getModifiers</strong></a> () const = 0<br><em>Get all modifiers present on this instance.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2354,7 +2401,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual float</td>
-<td style="text-align: left;"><a href="#function-getvalue"><strong>getValue</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getvalue"><strong>getValue</strong></a> () const = 0<br><em>Get the value of this instance after all associated modifiers have been applied.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-removemodifier"><strong>removeModifier</strong></a> (const <a href="../classendstone_1_1AttributeModifier/"><strong>AttributeModifier</strong></a> &amp; modifier) = 0<br><em>Remove a modifier from this instance.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -2375,9 +2426,21 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-addmodifier">function addModifier<a class="headerlink" href="#function-addmodifier" title="Permanent link">&para;</a></h3>
+<p><em>Add a modifier to this instance.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">addModifier</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">AttributeModifier</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">modifier</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>modifier</code> to add </li>
+</ul>
+<hr>
+
 <h3 id="function-getbasemaxvalue">function getBaseMaxValue<a class="headerlink" href="#function-getbasemaxvalue" title="Permanent link">&para;</a></h3>
 <p><em>Base max value of this instance before modifiers are applied.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getBaseMaxValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getBaseMaxValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>base max value </p>
@@ -2385,7 +2448,7 @@ For latest updates join the chat on
 
 <h3 id="function-getbaseminvalue">function getBaseMinValue<a class="headerlink" href="#function-getbaseminvalue" title="Permanent link">&para;</a></h3>
 <p><em>Base min value of this instance before modifiers are applied.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getBaseMinValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getBaseMinValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>base max value </p>
@@ -2393,49 +2456,69 @@ For latest updates join the chat on
 
 <h3 id="function-getbasevalue">function getBaseValue<a class="headerlink" href="#function-getbasevalue" title="Permanent link">&para;</a></h3>
 <p><em>Base value of this instance before modifiers are applied.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getBaseValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getBaseValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>base value </p>
 <hr>
 
 <h3 id="function-getmaxvalue">function getMaxValue<a class="headerlink" href="#function-getmaxvalue" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getMaxValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Get the max value of this instance after all associated modifiers have been applied.</p>
+<p><em>Get the max value of this instance after all associated modifiers have been applied.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getMaxValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the max attribute value </p>
 <hr>
 
 <h3 id="function-getminvalue">function getMinValue<a class="headerlink" href="#function-getminvalue" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getMinValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Get the min value of this instance after all associated modifiers have been applied.</p>
+<p><em>Get the min value of this instance after all associated modifiers have been applied.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getMinValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the min attribute value </p>
 <hr>
 
+<h3 id="function-getmodifiers">function getModifiers<a class="headerlink" href="#function-getmodifiers" title="Permanent link">&para;</a></h3>
+<p><em>Get all modifiers present on this instance.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">AttributeModifier</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getModifiers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>a copied collection of all modifiers </p>
+<hr>
+
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
 <p><em>The attribute type pertaining to this instance.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the attribute type </p>
 <hr>
 
 <h3 id="function-getvalue">function getValue<a class="headerlink" href="#function-getvalue" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Get the value of this instance after all associated modifiers have been applied.</p>
+<p><em>Get the value of this instance after all associated modifiers have been applied.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">getValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the total attribute value </p>
 <hr>
 
+<h3 id="function-removemodifier">function removeModifier<a class="headerlink" href="#function-removemodifier" title="Permanent link">&para;</a></h3>
+<p><em>Remove a modifier from this instance.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">removeModifier</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">AttributeModifier</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">modifier</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>modifier</code> to remove </li>
+</ul>
+<hr>
+
 <h3 id="function-setbasemaxvalue">function setBaseMaxValue<a class="headerlink" href="#function-setbasemaxvalue" title="Permanent link">&para;</a></h3>
 <p><em>Set the base max value of this instance.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">setBaseMaxValue</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">setBaseMaxValue</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2445,9 +2528,9 @@ For latest updates join the chat on
 
 <h3 id="function-setbaseminvalue">function setBaseMinValue<a class="headerlink" href="#function-setbaseminvalue" title="Permanent link">&para;</a></h3>
 <p><em>Set the base min value of this instance.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">setBaseMinValue</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">setBaseMinValue</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2457,9 +2540,9 @@ For latest updates join the chat on
 
 <h3 id="function-setbasevalue">function setBaseValue<a class="headerlink" href="#function-setbasevalue" title="Permanent link">&para;</a></h3>
 <p><em>Set the base value of this instance.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">setBaseValue</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::</span><span class="n">setBaseValue</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2468,7 +2551,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-attributeinstance">function ~AttributeInstance<a class="headerlink" href="#function-attributeinstance" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::~</span><span class="n">AttributeInstance</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeInstance</span><span class="o">::~</span><span class="n">AttributeInstance</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

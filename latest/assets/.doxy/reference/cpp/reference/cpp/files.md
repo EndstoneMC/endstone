@@ -15,6 +15,7 @@ Here is a list of all files with brief descriptions:
         * **dir** [**attribute**](dir_5bd322557a2ad4dbfaf5ca599d780f7c.md)     
             * **file** [**attribute.h**](attribute_8h.md)     
             * **file** [**attribute\_instance.h**](attribute__instance_8h.md)     
+            * **file** [**attribute\_modifier.h**](attribute__modifier_8h.md)     
         * **dir** [**ban**](dir_f1b1f2e9abb31749ef58cd98f22bcd78.md)     
             * **file** [**ban\_entry.h**](ban__entry_8h.md)     
             * **file** [**ban\_list.h**](ban__list_8h.md)     
