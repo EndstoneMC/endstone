@@ -16,6 +16,8 @@
 
 #include <string>
 
+#include "endstone/attribute/attribute_modifier.h"
+
 namespace endstone {
 /**
  * @brief Represents a mutable instance of an attribute and its associated modifiers and values.
@@ -74,26 +76,45 @@ public:
     virtual void setBaseMinValue(float value) = 0;
 
     /**
-     * Get the value of this instance after all associated modifiers have been applied.
+     * @brief Get the value of this instance after all associated modifiers have been applied.
      *
      * @return the total attribute value
      */
     [[nodiscard]] virtual float getValue() const = 0;
 
     /**
-     * Get the max value of this instance after all associated modifiers have been applied.
+     * @brief Get the max value of this instance after all associated modifiers have been applied.
      *
      * @return the max attribute value
      */
     [[nodiscard]] virtual float getMaxValue() const = 0;
 
     /**
-     * Get the min value of this instance after all associated modifiers have been applied.
+     * @brief Get the min value of this instance after all associated modifiers have been applied.
      *
      * @return the min attribute value
      */
     [[nodiscard]] virtual float getMinValue() const = 0;
 
-    // TODO(attribute): add modifiers
+    /**
+     * @brief Get all modifiers present on this instance.
+     *
+     * @return a copied collection of all modifiers
+     */
+    [[nodiscard]] virtual std::vector<AttributeModifier> getModifiers() const = 0;
+
+    /**
+     * @brief Add a modifier to this instance.
+     *
+     * @param modifier to add
+     */
+    virtual void addModifier(const AttributeModifier &modifier) = 0;
+
+    /**
+     * @brief Remove a modifier from this instance.
+     *
+     * @param modifier to remove
+     */
+    virtual void removeModifier(const AttributeModifier &modifier) = 0;
 };
 }  // namespace endstone

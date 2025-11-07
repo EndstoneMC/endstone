@@ -163,6 +163,7 @@ class Pybind11NativeEnumSupport(Extension):
             else:
                 # this is an exported entry (i.e., pybind11::native_enum<Enum>::export_values())
                 attr.value = match.group("enum")
+                attr.docstring = None
 
 
 class Pybind11InternalsFilter(Extension):

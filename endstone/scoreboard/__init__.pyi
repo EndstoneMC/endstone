@@ -207,9 +207,6 @@ class Criteria:
         """
 
     DUMMY = Type.DUMMY
-    """
-    The dummy criteria. Not changed by the server.
-    """
     @property
     def name(self) -> str: ...
     @property

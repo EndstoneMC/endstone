@@ -2,8 +2,10 @@
 Classes relevant to attributes.
 """
 
+import enum
+import uuid
 
-__all__ = ["Attribute", "AttributeInstance"]
+__all__ = ["Attribute", "AttributeInstance", "AttributeModifier"]
 
 class Attribute:
     """
@@ -26,6 +28,75 @@ class Attribute:
     PLAYER_LEVEL = "minecraft:player.level"
     PLAYER_EXPERIENCE = "minecraft:player.experience"
     ZOMBIE_SPAWN_REINFORCEMENTS = "minecraft:zombie.spawn_reinforcements"
+
+class AttributeModifier:
+    """
+    Represents an attribute modifier.
+    """
+    def __init__(self, name: str, amount: float, operation: Operation, operand: Operand = Operand.VALUE) -> None: ...
+    class Operand(enum.Enum):
+        """
+        Value on which operation to be applied.
+        """
+
+        VALUE = 0
+        MAX_VALUE = 1
+        MIN_VALUE = 2
+
+    VALUE = Operand.VALUE
+    MAX_VALUE = Operand.MAX_VALUE
+    MIN_VALUE = Operand.MIN_VALUE
+    class Operation(enum.Enum):
+        """
+        Operation to be applied.
+        """
+
+        ADD_NUMBER = 0
+        """
+        Adds (or subtracts) the specified amount to the base value.
+        """
+        ADD_SCALAR = 1
+        """
+        Adds this scalar of amount to the base value.
+        """
+        MULTIPLY_SCALAR_1 = 2
+        """
+        Multiply amount by this value, after adding 1 to it.
+        """
+
+    ADD_NUMBER = Operation.ADD_NUMBER
+    ADD_SCALAR = Operation.ADD_SCALAR
+    MULTIPLY_SCALAR_1 = Operation.MULTIPLY_SCALAR_1
+    @property
+    def unique_id(self) -> uuid.UUID:
+        """
+        Get the unique ID for this modifier.
+        """
+        ...
+    @property
+    def name(self) -> str:
+        """
+        Get the name of this modifier.
+        """
+        ...
+    @property
+    def amount(self) -> float:
+        """
+        Get the amount by which this modifier will apply the operation.
+        """
+        ...
+    @property
+    def operand(self) -> Operand:
+        """
+        Get the operand this modifier will apply.
+        """
+        ...
+    @property
+    def operation(self) -> Operation:
+        """
+        Get the operation this modifier will apply.
+        """
+        ...
 
 class AttributeInstance:
     """
@@ -77,5 +148,21 @@ class AttributeInstance:
     def min_value(self) -> float:
         """
         Get the min value of this instance after all associated modifiers have been applied.
+        """
+        ...
+    @property
+    def modifiers(self) -> list[AttributeModifier]:
+        """
+        Get all modifiers present on this instance.
+        """
+        ...
+    def add_modifier(self, modifier: AttributeModifier) -> None:
+        """
+        Add a modifier to this instance.
+        """
+        ...
+    def remove_modifier(self, modifier: AttributeModifier) -> None:
+        """
+        Remove a modifier from this instance.
         """
         ...
