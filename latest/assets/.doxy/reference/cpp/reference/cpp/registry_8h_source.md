@@ -30,17 +30,16 @@
 #include <fmt/format.h>
 
 namespace endstone {
-
 template <typename T>
 class Registry {
 public:
     virtual ~Registry() = default;
 
-    virtual T *get(const std::string & key) noexcept = 0;
+    virtual T *get(const std::string &key) noexcept = 0;
 
-    virtual const T *get(const std::string & key) const noexcept = 0;
+    virtual const T *get(const std::string &key) const noexcept = 0;
 
-    virtual T &getOrThrow(const std::string & key)
+    virtual T &getOrThrow(const std::string &key)
     {
         if (auto *p = get(key)) {
             return *p;
@@ -48,7 +47,7 @@ public:
         throw std::invalid_argument(fmt::format("No registry entry found for key: {}", key));
     }
 
-    virtual const T &getOrThrow(const std::string & key) const
+    virtual const T &getOrThrow(const std::string &key) const
     {
         if (auto *p = get(key)) {
             return *p;

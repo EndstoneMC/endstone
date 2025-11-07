@@ -327,6 +327,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PluginManager**](classendstone_1_1PluginManager.md)
 ([**endstone**](namespaceendstone.md))
+* [**PotionType**](classendstone_1_1PotionType.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## r

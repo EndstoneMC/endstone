@@ -2,8 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="attribute_8h" kind="file" language="C++">
     <compoundname>attribute.h</compoundname>
+    <includes local="no">functional</includes>
     <includes local="no">string</includes>
-    <includes local="yes">attribute.def</includes>
+    <includes local="yes">endstone/detail/endstone.h</includes>
+    <includes refid="registry_8h" local="yes">endstone/registry.h</includes>
     <incdepgraph>
       <node id="1">
         <label>include/endstone/attribute/attribute.h</label>
@@ -12,32 +14,39 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
-      <node id="3">
-        <label>attribute.def</label>
+      <node id="5">
+        <label>endstone/registry.h</label>
+        <link refid="registry_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone/detail/endstone.h</label>
+      </node>
+      <node id="7">
+        <label>fmt/format.h</label>
       </node>
       <node id="2">
+        <label>functional</label>
+      </node>
+      <node id="6">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
         <label>string</label>
       </node>
     </incdepgraph>
     <innerclass refid="classendstone_1_1Attribute" prot="public">endstone::Attribute</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
-    <sectiondef kind="define">
-      <memberdef kind="define" id="attribute_8h_1afa65150d3aba5f0979f5542154863dc7" prot="public" static="no">
-        <name>HANDLE_MC_ATTRIBUTE</name>
-        <param><defname>ID</defname></param>
-        <param><defname>NAME</defname></param>
-        <param><defname>DESC</defname></param>
-        <initializer>inline static const std::string NAME = &quot;minecraft:&quot; ID;</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="25" column="9" bodyfile="include/endstone/attribute/attribute.h" bodystart="25" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -45,7 +54,7 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>The<sp/>Endstone<sp/>Project.<sp/>(https://endstone.dev)<sp/>All<sp/>Rights<sp/>Reserved.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
@@ -59,17 +68,48 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="23" refid="classendstone_1_1Attribute" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Attribute" kindref="compound">Attribute</ref><sp/>{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HANDLE_MC_ATTRIBUTE(ID,<sp/>NAME,<sp/>DESC)<sp/>inline<sp/>static<sp/>const<sp/>std::string<sp/>NAME<sp/>=<sp/>&quot;minecraft:&quot;<sp/>ID;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;attribute.def&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>HANDLE_MC_ATTRIBUTE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/detail/endstone.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/registry.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="27" refid="classendstone_1_1Attribute" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Attribute" kindref="compound">Attribute</ref><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30" refid="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" kindref="member">Health</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:health&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classendstone_1_1Attribute_1a8948c8f94cc2c3f77f182bcd96cbddcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a8948c8f94cc2c3f77f182bcd96cbddcd" kindref="member">FollowRange</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:follow_range&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classendstone_1_1Attribute_1aadc9e5baf72fd7361563deea2eca4453" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1aadc9e5baf72fd7361563deea2eca4453" kindref="member">KnockbackResistance</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:knockback_resistance&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classendstone_1_1Attribute_1abda74e2d60abbda6c84fdc7d8f5faf74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1abda74e2d60abbda6c84fdc7d8f5faf74" kindref="member">MovementSpeed</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:movement&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classendstone_1_1Attribute_1ae5331621bb7909b957cfd19d567801bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1ae5331621bb7909b957cfd19d567801bf" kindref="member">UnderwaterMovementSpeed</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:underwater_movement&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classendstone_1_1Attribute_1a1edce1a17770df3b5d929389a51dd8ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a1edce1a17770df3b5d929389a51dd8ef" kindref="member">LavaMovementSpeed</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:lava_movement&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classendstone_1_1Attribute_1aa31e02509a3604d26a5367f7cfca6927" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1aa31e02509a3604d26a5367f7cfca6927" kindref="member">AttackDamage</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:attack_damage&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classendstone_1_1Attribute_1a8d0083b7980c70038a8cf9b03811a3a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a8d0083b7980c70038a8cf9b03811a3a9" kindref="member">Absorption</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:absorption&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classendstone_1_1Attribute_1a362c652498582fb951aacd8d71d41255" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a362c652498582fb951aacd8d71d41255" kindref="member">Luck</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:luck&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classendstone_1_1Attribute_1aea378ff4925943117d40a6de5bef47a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1aea378ff4925943117d40a6de5bef47a3" kindref="member">JumpStrength</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:jump_strength&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classendstone_1_1Attribute_1aac9546c578a22405f09b32d9fa989518" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1aac9546c578a22405f09b32d9fa989518" kindref="member">PlayerHunger</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:player.hunger&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classendstone_1_1Attribute_1a4e4ec132134eb3e7a4c30fd292b2fff9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a4e4ec132134eb3e7a4c30fd292b2fff9" kindref="member">PlayerSaturation</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:player.saturation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classendstone_1_1Attribute_1ac06d7f7380120e587e71e6c1fb993101" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1ac06d7f7380120e587e71e6c1fb993101" kindref="member">PlayerExhaustion</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:player.exhaustion&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classendstone_1_1Attribute_1add534a7ac8619e4533e5df7341cb65e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1add534a7ac8619e4533e5df7341cb65e3" kindref="member">PlayerLevel</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:player.level&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classendstone_1_1Attribute_1a169db16643b6a7dea438ecedc8ddcae0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a169db16643b6a7dea438ecedc8ddcae0" kindref="member">PlayerExperience</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:player.experience&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classendstone_1_1Attribute_1a3040e0ce928371139d0f12e97b9a4d49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Attribute_1a3040e0ce928371139d0f12e97b9a4d49" kindref="member">ZombieSpawnReinforcements</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;minecraft:zombie.spawn_reinforcements&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/attribute/attribute.h"/>
   </compounddef>

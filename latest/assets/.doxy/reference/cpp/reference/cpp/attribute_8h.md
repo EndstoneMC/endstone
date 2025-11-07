@@ -10,8 +10,10 @@
 
 
 
+* `#include <functional>`
 * `#include <string>`
-* `#include "attribute.def"`
+* `#include "endstone/detail/endstone.h"`
+* `#include "endstone/registry.h"`
 
 
 
@@ -86,32 +88,7 @@
 
 
 
-## Macros
 
-| Type | Name |
-| ---: | :--- |
-| define  | [**HANDLE\_MC\_ATTRIBUTE**](attribute_8h.md#define-handle_mc_attribute) (ID, NAME, DESC) `inline static const std::string NAME = "minecraft:" ID;`<br> |
-
-## Macro Definition Documentation
-
-
-
-
-
-### define HANDLE\_MC\_ATTRIBUTE 
-
-```C++
-#define HANDLE_MC_ATTRIBUTE (
-    ID,
-    NAME,
-    DESC
-) `inline static const std::string NAME = "minecraft:" ID;`
-```
-
-
-
-
-<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `include/endstone/attribute/attribute.h`

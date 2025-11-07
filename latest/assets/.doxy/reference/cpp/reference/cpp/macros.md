@@ -13,10 +13,5 @@
 * **ENDSTONE\_CHECK\_RESULT** ([**result.h**](result_8h.md))
 
 
-## h
-
-* **HANDLE\_MC\_ATTRIBUTE** ([**attribute.h**](attribute_8h.md))
-
-
 
 

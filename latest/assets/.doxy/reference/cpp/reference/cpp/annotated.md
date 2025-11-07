@@ -15,7 +15,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._    
     * **class** [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._    
     * **class** [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) _Called when a non-player entity is teleported from one location to another._     
-    * **class** [**Attribute**](classendstone_1_1Attribute.md) _All attribute types._ 
+    * **class** [**Attribute**](classendstone_1_1Attribute.md) _All attribute types._     
     * **class** [**AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._     
     * **class** [**AttributeModifier**](classendstone_1_1AttributeModifier.md) _Represents an attribute modifier._     
     * **class** [**BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
@@ -128,6 +128,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md) _Called when a plugin is enabled._     
     * **class** [**PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._     
     * **class** [**PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._    
+    * **class** [**PotionType**](classendstone_1_1PotionType.md) _All potion types._     
     * **class** [**Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
     * **class** [**Registry**](classendstone_1_1Registry.md) _Abstract registry interface for keyed objects._     
     * **class** [**Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._     

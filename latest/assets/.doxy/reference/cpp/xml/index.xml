@@ -121,6 +121,22 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
   <compound refid="classendstone_1_1Attribute" kind="class"><name>endstone::Attribute</name>
+    <member refid="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" kind="variable"><name>Health</name></member>
+    <member refid="classendstone_1_1Attribute_1a8948c8f94cc2c3f77f182bcd96cbddcd" kind="variable"><name>FollowRange</name></member>
+    <member refid="classendstone_1_1Attribute_1aadc9e5baf72fd7361563deea2eca4453" kind="variable"><name>KnockbackResistance</name></member>
+    <member refid="classendstone_1_1Attribute_1abda74e2d60abbda6c84fdc7d8f5faf74" kind="variable"><name>MovementSpeed</name></member>
+    <member refid="classendstone_1_1Attribute_1ae5331621bb7909b957cfd19d567801bf" kind="variable"><name>UnderwaterMovementSpeed</name></member>
+    <member refid="classendstone_1_1Attribute_1a1edce1a17770df3b5d929389a51dd8ef" kind="variable"><name>LavaMovementSpeed</name></member>
+    <member refid="classendstone_1_1Attribute_1aa31e02509a3604d26a5367f7cfca6927" kind="variable"><name>AttackDamage</name></member>
+    <member refid="classendstone_1_1Attribute_1a8d0083b7980c70038a8cf9b03811a3a9" kind="variable"><name>Absorption</name></member>
+    <member refid="classendstone_1_1Attribute_1a362c652498582fb951aacd8d71d41255" kind="variable"><name>Luck</name></member>
+    <member refid="classendstone_1_1Attribute_1aea378ff4925943117d40a6de5bef47a3" kind="variable"><name>JumpStrength</name></member>
+    <member refid="classendstone_1_1Attribute_1aac9546c578a22405f09b32d9fa989518" kind="variable"><name>PlayerHunger</name></member>
+    <member refid="classendstone_1_1Attribute_1a4e4ec132134eb3e7a4c30fd292b2fff9" kind="variable"><name>PlayerSaturation</name></member>
+    <member refid="classendstone_1_1Attribute_1ac06d7f7380120e587e71e6c1fb993101" kind="variable"><name>PlayerExhaustion</name></member>
+    <member refid="classendstone_1_1Attribute_1add534a7ac8619e4533e5df7341cb65e3" kind="variable"><name>PlayerLevel</name></member>
+    <member refid="classendstone_1_1Attribute_1a169db16643b6a7dea438ecedc8ddcae0" kind="variable"><name>PlayerExperience</name></member>
+    <member refid="classendstone_1_1Attribute_1a3040e0ce928371139d0f12e97b9a4d49" kind="variable"><name>ZombieSpawnReinforcements</name></member>
   </compound>
   <compound refid="classendstone_1_1AttributeInstance" kind="class"><name>endstone::AttributeInstance</name>
     <member refid="classendstone_1_1AttributeInstance_1a2c760ef86dbaff64b27215bee0a64d2e" kind="function"><name>~AttributeInstance</name></member>
@@ -1667,6 +1683,49 @@
     <member refid="classendstone_1_1PluginManager_1a9a414d170b547bce47ac00933a4f1020" kind="function"><name>getDefaultPermSubscriptions</name></member>
     <member refid="classendstone_1_1PluginManager_1ad2545d188bff41477fe3fd5264251cfc" kind="function"><name>getPermissions</name></member>
   </compound>
+  <compound refid="classendstone_1_1PotionType" kind="class"><name>endstone::PotionType</name>
+    <member refid="classendstone_1_1PotionType_1a82f5fefbd3fbca555cc3de232735f27e" kind="variable"><name>Water</name></member>
+    <member refid="classendstone_1_1PotionType_1a2e42a17c9960477de466c12c74ea4d69" kind="variable"><name>Mundane</name></member>
+    <member refid="classendstone_1_1PotionType_1ae36b681f6c4552b3ee2f7bea5cfe0795" kind="variable"><name>LongMundane</name></member>
+    <member refid="classendstone_1_1PotionType_1a801f61e5678ed0836abbc44f6edc8056" kind="variable"><name>Thick</name></member>
+    <member refid="classendstone_1_1PotionType_1a934a4efc0c60904aa69e6dd875f1cd7e" kind="variable"><name>Awkward</name></member>
+    <member refid="classendstone_1_1PotionType_1ace8f4629639d2b1c523320205494c27e" kind="variable"><name>Nightvision</name></member>
+    <member refid="classendstone_1_1PotionType_1a53ff99d5732b77f5b181404047616cbd" kind="variable"><name>LongNightvision</name></member>
+    <member refid="classendstone_1_1PotionType_1acc44b7274cb6f20e2bbe02599b6d7e87" kind="variable"><name>Invisibility</name></member>
+    <member refid="classendstone_1_1PotionType_1a09a7a37a6ade2e8952a4678232134fa1" kind="variable"><name>LongInvisibility</name></member>
+    <member refid="classendstone_1_1PotionType_1aba6f1f93f0ac476af383b587a6c74ed8" kind="variable"><name>Leaping</name></member>
+    <member refid="classendstone_1_1PotionType_1a36f3881be53c96e429de099807afd0c2" kind="variable"><name>LongLeaping</name></member>
+    <member refid="classendstone_1_1PotionType_1a6dc284fe1840039c8ef8a2cc712188d4" kind="variable"><name>StrongLeaping</name></member>
+    <member refid="classendstone_1_1PotionType_1aec1eb44f513e34f339af932d64ffee8a" kind="variable"><name>FireResistance</name></member>
+    <member refid="classendstone_1_1PotionType_1aa438cb3ca3ee81ddb3b7858ee4877036" kind="variable"><name>LongFireResistance</name></member>
+    <member refid="classendstone_1_1PotionType_1a91dbe1465d0d788db72f2304d8b21892" kind="variable"><name>Swiftness</name></member>
+    <member refid="classendstone_1_1PotionType_1a5fc403b2603683ac91076569d7a23115" kind="variable"><name>LongSwiftness</name></member>
+    <member refid="classendstone_1_1PotionType_1a1581a974eed694438fa1d00489d9050d" kind="variable"><name>StrongSwiftness</name></member>
+    <member refid="classendstone_1_1PotionType_1a1551a2caf362a91a1dfd81f9fa2e3726" kind="variable"><name>Slowness</name></member>
+    <member refid="classendstone_1_1PotionType_1a71e4c65417a374a809d5fe3306eca358" kind="variable"><name>LongSlowness</name></member>
+    <member refid="classendstone_1_1PotionType_1ace66f2f54600a9d3b59c9895d6cbe21f" kind="variable"><name>WaterBreathing</name></member>
+    <member refid="classendstone_1_1PotionType_1a1c6d84c930df4d76627fd81a7ed127cc" kind="variable"><name>LongWaterBreathing</name></member>
+    <member refid="classendstone_1_1PotionType_1a66fffb2ec05a62c6efeb828517bfe575" kind="variable"><name>Healing</name></member>
+    <member refid="classendstone_1_1PotionType_1a7a6cd07d904eb6a7a0d1bae3bdfe0c45" kind="variable"><name>StrongHealing</name></member>
+    <member refid="classendstone_1_1PotionType_1a707bbab37945163a2ac4c6f34bed9372" kind="variable"><name>Harming</name></member>
+    <member refid="classendstone_1_1PotionType_1a98c8cb9774dbf5ce65f7874d81a80185" kind="variable"><name>StrongHarming</name></member>
+    <member refid="classendstone_1_1PotionType_1ae06515a190dbd97e6064a974578be9e2" kind="variable"><name>Poison</name></member>
+    <member refid="classendstone_1_1PotionType_1a19968831e3b8455f366ade3b3ca11279" kind="variable"><name>LongPoison</name></member>
+    <member refid="classendstone_1_1PotionType_1ac5b96d18de11e99756ac9168b882eb94" kind="variable"><name>StrongPoison</name></member>
+    <member refid="classendstone_1_1PotionType_1a3cbd106a8e61957786636c5005089697" kind="variable"><name>Regeneration</name></member>
+    <member refid="classendstone_1_1PotionType_1a45d48d3ccb90eef2e260dadd78dc8c45" kind="variable"><name>LongRegeneration</name></member>
+    <member refid="classendstone_1_1PotionType_1a295b5f41c2b87b3568ba66feda45042e" kind="variable"><name>StrongRegeneration</name></member>
+    <member refid="classendstone_1_1PotionType_1a7d494218a9889e2f3c6bd53385d4dd2d" kind="variable"><name>Strength</name></member>
+    <member refid="classendstone_1_1PotionType_1ad7bb3897ee2a96c3465827a8701c10ba" kind="variable"><name>LongStrength</name></member>
+    <member refid="classendstone_1_1PotionType_1a9a5d59579dec55740e51f926d21218df" kind="variable"><name>StrongStrength</name></member>
+    <member refid="classendstone_1_1PotionType_1ae474688a67d93bd0b256d2e6e8be72e1" kind="variable"><name>Weakness</name></member>
+    <member refid="classendstone_1_1PotionType_1a8bcb20c1075d56f4f42dca573cce6b13" kind="variable"><name>LongWeakness</name></member>
+    <member refid="classendstone_1_1PotionType_1a754e358e88cee9f01ab363a78cf50456" kind="variable"><name>Wither</name></member>
+    <member refid="classendstone_1_1PotionType_1a67d039e139115f7984a08aa1f8757cfe" kind="variable"><name>TurtleMaster</name></member>
+    <member refid="classendstone_1_1PotionType_1a2ac345546d5a4809c511cbaa95264f2e" kind="variable"><name>LongTurtleMaster</name></member>
+    <member refid="classendstone_1_1PotionType_1ae26fbdaa7c876e4962ab806b55f3aa74" kind="variable"><name>StrongTurtleMaster</name></member>
+    <member refid="classendstone_1_1PotionType_1a61c7675bf28f2ab7a07c1475463391fe" kind="variable"><name>SlowFalling</name></member>
+  </compound>
   <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
     <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
     <member refid="classendstone_1_1Recipe_1a9aa7cfa8bcb947ef1a0ad139ee68df1e" kind="function"><name>getResult</name></member>
@@ -2120,7 +2179,6 @@
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
   <compound refid="attribute_8h" kind="file"><name>attribute.h</name>
-    <member refid="attribute_8h_1afa65150d3aba5f0979f5542154863dc7" kind="define"><name>HANDLE_MC_ATTRIBUTE</name></member>
   </compound>
   <compound refid="attribute__instance_8h" kind="file"><name>attribute_instance.h</name>
   </compound>
@@ -2407,6 +2465,8 @@
   </compound>
   <compound refid="service__priority_8h" kind="file"><name>service_priority.h</name>
   </compound>
+  <compound refid="potion__type_8h" kind="file"><name>potion_type.h</name>
+  </compound>
   <compound refid="registry_8h" kind="file"><name>registry.h</name>
   </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
@@ -2499,6 +2559,8 @@
   <compound refid="dir_7c05c37b25e9c9eccd9c63c2d313ba28" kind="dir"><name>include/endstone/event/player</name>
   </compound>
   <compound refid="dir_53ee43673b2467e53c4cb8c30a2e7d89" kind="dir"><name>include/endstone/plugin</name>
+  </compound>
+  <compound refid="dir_3aeea1eb013bc4968668ceaff3f9e2f0" kind="dir"><name>include/endstone/potion</name>
   </compound>
   <compound refid="dir_3a50fadda3c7cdc27c965a478a3f7d27" kind="dir"><name>include/endstone/scheduler</name>
   </compound>

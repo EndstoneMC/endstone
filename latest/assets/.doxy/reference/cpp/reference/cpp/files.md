@@ -172,6 +172,8 @@ Here is a list of all files with brief descriptions:
             * **file** [**service.h**](service_8h.md)     
             * **file** [**service\_manager.h**](service__manager_8h.md)     
             * **file** [**service\_priority.h**](service__priority_8h.md)     
+        * **dir** [**potion**](dir_3aeea1eb013bc4968668ceaff3f9e2f0.md)     
+            * **file** [**potion\_type.h**](potion__type_8h.md)     
         * **dir** [**scheduler**](dir_3a50fadda3c7cdc27c965a478a3f7d27.md)     
             * **file** [**scheduler.h**](scheduler_8h.md)     
             * **file** [**task.h**](task_8h.md)     
