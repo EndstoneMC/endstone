@@ -20,7 +20,6 @@
 #include <fmt/format.h>
 
 namespace endstone {
-
 /**
  * @brief Abstract registry interface for keyed objects.
  *
@@ -41,17 +40,17 @@ public:
      * @param key Non-null key to look up.
      * @return T* Pointer to the object, or nullptr if it does not exist.
      */
-    virtual T *get(const std::string & key) noexcept = 0;
+    virtual T *get(const std::string &key) noexcept = 0;
 
     /**
-    * @brief Get the object by its key.
+     * @brief Get the object by its key.
      *
      * Returns a raw pointer to the object, or nullptr if not found.
      *
      * @param key Non-null key to look up.
      * @return const T* Pointer to the object, or nullptr if it does not exist.
      */
-    virtual const T *get(const std::string & key) const noexcept = 0;
+    virtual const T *get(const std::string &key) const noexcept = 0;
 
     /**
      * @brief Get the object by its key or throw if missing.
@@ -60,7 +59,7 @@ public:
      * @return T& Reference to the object with the given key.
      * @throws std::invalid_argument if no object with the given key exists.
      */
-    virtual T &getOrThrow(const std::string & key)
+    virtual T &getOrThrow(const std::string &key)
     {
         if (auto *p = get(key)) {
             return *p;
@@ -75,7 +74,7 @@ public:
      * @return const T& Const reference to the object with the given key.
      * @throws std::invalid_argument if no object with the given key exists.
      */
-    virtual const T &getOrThrow(const std::string & key) const
+    virtual const T &getOrThrow(const std::string &key) const
     {
         if (auto *p = get(key)) {
             return *p;

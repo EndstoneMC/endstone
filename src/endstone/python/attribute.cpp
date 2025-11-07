@@ -20,12 +20,48 @@ namespace endstone::python {
 void init_attribute(py::module_ &m)
 {
     py::class_<Attribute>(m, "Attribute", "All attribute types.")
-#define HANDLE_MC_ATTRIBUTE(ID, NAME, DESC) \
-    .def_property_readonly_static(#NAME, [](const py::object &) { return Attribute::NAME; }, DESC)
-#include "endstone/attribute/attribute.def"
-
-#undef HANDLE_MC_ATTRIBUTE
-        ;
+        .def_property_readonly_static(
+            "HEALTH", [](const py::object &) { return Attribute::Health; }, "Health of an entity.")
+        .def_property_readonly_static(
+            "FOLLOW_RANGE", [](const py::object &) { return Attribute::FollowRange; },
+            "Range at which an entity will follow others.")
+        .def_property_readonly_static(
+            "KNOCKBACK_RESISTANCE", [](const py::object &) { return Attribute::KnockbackResistance; },
+            "Resistance of an entity to knockback.")
+        .def_property_readonly_static(
+            "MOVEMENT_SPEED", [](const py::object &) { return Attribute::MovementSpeed; },
+            "Movement speed of an entity.")
+        .def_property_readonly_static(
+            "UNDERWATER_MOVEMENT_SPEED", [](const py::object &) { return Attribute::UnderwaterMovementSpeed; },
+            "Movement speed of an entity underwater.")
+        .def_property_readonly_static(
+            "LAVA_MOVEMENT_SPEED", [](const py::object &) { return Attribute::LavaMovementSpeed; },
+            "Movement speed of an entity in lava.")
+        .def_property_readonly_static(
+            "ATTACK_DAMAGE", [](const py::object &) { return Attribute::AttackDamage; }, "Attack damage of an entity.")
+        .def_property_readonly_static(
+            "ABSORPTION", [](const py::object &) { return Attribute::Absorption; }, "Absorption of an entity.")
+        .def_property_readonly_static(
+            "LUCK", [](const py::object &) { return Attribute::Luck; }, "Luck bonus of an entity.")
+        .def_property_readonly_static(
+            "JUMP_STRENGTH", [](const py::object &) { return Attribute::JumpStrength; },
+            "Strength with which an entity will jump.")
+        .def_property_readonly_static(
+            "PLAYER_HUNGER", [](const py::object &) { return Attribute::PlayerHunger; }, "Hunger level of a player.")
+        .def_property_readonly_static(
+            "PLAYER_SATURATION", [](const py::object &) { return Attribute::PlayerSaturation; },
+            "Saturation level of a player.")
+        .def_property_readonly_static(
+            "PLAYER_EXHAUSTION", [](const py::object &) { return Attribute::PlayerExhaustion; },
+            "Exhaustion level of a player.")
+        .def_property_readonly_static(
+            "PLAYER_LEVEL", [](const py::object &) { return Attribute::PlayerLevel; }, "Experience level of a player.")
+        .def_property_readonly_static(
+            "PLAYER_EXPERIENCE", [](const py::object &) { return Attribute::PlayerExperience; },
+            "Progress toward the next experience level of a player.")
+        .def_property_readonly_static(
+            "ZOMBIE_SPAWN_REINFORCEMENTS", [](const py::object &) { return Attribute::ZombieSpawnReinforcements; },
+            "Chance of a zombie to spawn reinforcements.");
 
     auto modifier = py::class_<AttributeModifier>(m, "AttributeModifier", "Represents an attribute modifier.");
 

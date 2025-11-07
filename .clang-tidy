@@ -35,7 +35,7 @@ CheckOptions:
   readability-implicit-bool-conversion.AllowIntegerConditions: true
   readability-identifier-naming.AbstractClassCase: CamelCase
   readability-identifier-naming.ClassCase: CamelCase
-  readability-identifier-naming.ClassConstantCase: UPPER_CASE
+  readability-identifier-naming.ClassConstantCase: CamelCase
   readability-identifier-naming.ClassMemberCase: CamelCase
   readability-identifier-naming.ClassMemberPrefix: 'm'
   readability-identifier-naming.ClassMethodCase: camelBack
