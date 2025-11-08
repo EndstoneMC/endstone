@@ -25,7 +25,7 @@ namespace endstone::core {
 template <>
 const Enchant *MinecraftRegistry<Enchant>::get(const std::string &key) const
 {
-    return Enchant::getEnchantFromName(key);
+    return Enchant::getEnchantFromName(NamespacedKey::getKey(key));
 }
 
 template <>
@@ -33,7 +33,7 @@ std::vector<std::string> MinecraftRegistry<Enchant>::keys() const
 {
     std::vector<std::string> keys;
     for (const auto &enchant : Enchant::getEnchants()) {
-        keys.emplace_back(enchant->getStringId().getString());
+        keys.emplace_back(NamespacedKey::minecraft(enchant->getStringId().getString()));
     }
     return keys;
 }

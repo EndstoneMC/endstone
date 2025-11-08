@@ -15,13 +15,224 @@
 #pragma once
 
 #include "endstone/detail/endstone.h"
+#include "endstone/namespaced_key.h"
 #include "endstone/registry.h"
 
 namespace endstone {
 class ItemStack;
 
 class Enchantment {
+    static std::string getEnchantment(const std::string &key)
+    {
+        return NamespacedKey::minecraft(key);
+    }
+
 public:
+    /**
+     * @brief Provides protection against environmental damage
+     */
+    inline static const std::string Protection = getEnchantment("protection");
+
+    /**
+     * @brief Provides protection against fire damage
+     */
+    inline static const std::string FireProtection = getEnchantment("fire_protection");
+
+    /**
+     * @brief Provides protection against fall damage
+     */
+    inline static const std::string FeatherFalling = getEnchantment("feather_falling");
+
+    /**
+     * @brief Provides protection against explosive damage
+     */
+    inline static const std::string BlastProtection = getEnchantment("blast_protection");
+
+    /**
+     * @brief Provides protection against projectile damage
+     */
+    inline static const std::string ProjectileProtection = getEnchantment("projectile_protection");
+
+    /**
+     * @brief Damages the attacker
+     */
+    inline static const std::string Thorns = getEnchantment("thorns");
+
+    /**
+     * @brief Decreases the rate of air loss whilst underwater
+     */
+    inline static const std::string Respiration = getEnchantment("respiration");
+
+    /**
+     * @brief Increases walking speed while in water
+     */
+    inline static const std::string DepthStrider = getEnchantment("depth_strider");
+
+    /**
+     * @brief Increases the speed at which a player may mine underwater
+     */
+    inline static const std::string AquaAffinity = getEnchantment("aqua_affinity");
+
+    /**
+     * @brief Increases damage against all targets
+     */
+    inline static const std::string Sharpness = getEnchantment("sharpness");
+
+    /**
+     * @brief Increases damage against undead targets
+     */
+    inline static const std::string Smite = getEnchantment("smite");
+
+    /**
+     * @brief Increases damage against arthropod targets
+     */
+    inline static const std::string BaneOfArthropods = getEnchantment("bane_of_arthropods");
+
+    /**
+     * @brief All damage to other targets will knock them back when hit
+     */
+    inline static const std::string Knockback = getEnchantment("knockback");
+
+    /**
+     * @brief When attacking a target, has a chance to set them on fire
+     */
+    inline static const std::string FireAspect = getEnchantment("fire_aspect");
+
+    /**
+     * @brief Provides a chance of gaining extra loot when killing monsters
+     */
+    inline static const std::string Looting = getEnchantment("looting");
+
+    /**
+     * @brief Increases the rate at which you mine/dig
+     */
+    inline static const std::string Efficiency = getEnchantment("efficiency");
+
+    /**
+     * @brief Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)
+     */
+    inline static const std::string SilkTouch = getEnchantment("silk_touch");
+
+    /**
+     * @brief Decreases the rate at which a tool looses durability
+     */
+    inline static const std::string Unbreaking = getEnchantment("unbreaking");
+
+    /**
+     * @brief Provides a chance of gaining extra loot when destroying blocks
+     */
+    inline static const std::string Fortune = getEnchantment("fortune");
+
+    /**
+     * @brief Provides extra damage when shooting arrows from bows
+     */
+    inline static const std::string Power = getEnchantment("power");
+
+    /**
+     * @brief Provides a knockback when an entity is hit by an arrow from a bow
+     */
+    inline static const std::string Punch = getEnchantment("punch");
+
+    /**
+     * @brief Sets entities on fire when hit by arrows shot from a bow
+     */
+    inline static const std::string Flame = getEnchantment("flame");
+
+    /**
+     * @brief Provides infinite arrows when shooting a bow
+     */
+    inline static const std::string Infinity = getEnchantment("infinity");
+
+    /**
+     * @brief Decreases odds of catching worthless junk
+     */
+    inline static const std::string LuckOfTheSea = getEnchantment("luck_of_the_sea");
+
+    /**
+     * @brief Increases rate of fish biting your hook
+     */
+    inline static const std::string Lure = getEnchantment("lure");
+
+    /**
+     * @brief Freezes any still water adjacent to ice / frost which player is walking on
+     */
+    inline static const std::string FrostWalker = getEnchantment("frost_walker");
+
+    /**
+     * @brief Allows mending the item using experience orbs
+     */
+    inline static const std::string Mending = getEnchantment("mending");
+
+    /**
+     * @brief Item cannot be removed
+     */
+    inline static const std::string CurseOfBinding = getEnchantment("binding");
+
+    /**
+     * @brief Item disappears instead of dropping
+     */
+    inline static const std::string CurseOfVanishing = getEnchantment("vanishing");
+
+    /**
+     * @brief Deals more damage to mobs that live in the ocean
+     */
+    inline static const std::string Impaling = getEnchantment("impaling");
+
+    /**
+     * @brief When it is rainy, launches the player in the direction their trident is thrown
+     */
+    inline static const std::string Riptide = getEnchantment("riptide");
+
+    /**
+     * @brief Causes a thrown trident to return to the player who threw it
+     */
+    inline static const std::string Loyalty = getEnchantment("loyalty");
+
+    /**
+     * @brief Strikes lightning when a mob is hit with a trident if conditions are stormy
+     */
+    inline static const std::string Channeling = getEnchantment("channeling");
+
+    /**
+     * @brief Shoot multiple arrows from crossbows
+     */
+    inline static const std::string Multishot = getEnchantment("multishot");
+
+    /**
+     * @brief Crossbow projectiles pierce entities
+     */
+    inline static const std::string Piercing = getEnchantment("piercing");
+
+    /**
+     * @brief Charges crossbows quickly
+     */
+    inline static const std::string QuickCharge = getEnchantment("quick_charge");
+
+    /**
+     * @brief Walk quicker on soul blocks
+     */
+    inline static const std::string SoulSpeed = getEnchantment("soul_speed");
+
+    /**
+     * @brief Walk quicker while sneaking
+     */
+    inline static const std::string SwiftSneak = getEnchantment("swift_sneak");
+
+    /**
+     * @brief Emits wind burst upon hitting enemy
+     */
+    inline static const std::string WindBurst = getEnchantment("wind_burst");
+
+    /**
+     * @brief Increases fall damage of maces
+     */
+    inline static const std::string Density = getEnchantment("density");
+
+    /**
+     * @brief Reduces armor effectiveness against maces
+     */
+    inline static const std::string Breach = getEnchantment("breach");
+
     virtual ~Enchantment() = default;
 
     /**

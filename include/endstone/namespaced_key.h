@@ -35,5 +35,47 @@ public:
         }
         return Minecraft + ":" + key;
     }
+
+    /**
+     * @brief Get the namespace (the part before the last colon).
+     *
+     * Examples:
+     * - "minecraft:stone" -> "minecraft"
+     * - "custom:block" -> "custom"
+     * - "minecraft:potion_type:water" -> "minecraft:potion_type"
+     * - "stone" -> "minecraft" (default)
+     *
+     * @param key the namespaced key string
+     * @return substring before the last colon, or "minecraft" if none
+     */
+    [[nodiscard]] static std::string getNamespace(const std::string &key)
+    {
+        const auto pos = key.rfind(':');
+        if (pos == std::string::npos) {
+            return Minecraft;
+        }
+        return key.substr(0, pos);
+    }
+
+    /**
+     * @brief Get the key name (the part after the last colon).
+     *
+     * Examples:
+     * - "minecraft:stone" -> "stone"
+     * - "custom:block" -> "block"
+     * - "minecraft:potion_type:water" -> "water"
+     * - "stone" -> "stone"
+     *
+     * @param key the namespaced key string
+     * @return substring after the last colon, or the whole string if no colon
+     */
+    [[nodiscard]] static std::string getKey(const std::string &key)
+    {
+        const auto pos = key.rfind(':');
+        if (pos == std::string::npos) {
+            return key;
+        }
+        return key.substr(pos + 1);
+    }
 };
 }  // namespace endstone
