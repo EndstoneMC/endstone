@@ -592,6 +592,45 @@
     <member refid="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" kind="function"><name>getDefaultIndex</name></member>
     <member refid="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" kind="function"><name>setDefaultIndex</name></member>
   </compound>
+  <compound refid="classendstone_1_1EffectType" kind="class"><name>endstone::EffectType</name>
+    <member refid="classendstone_1_1EffectType_1a0edb6c0ffc0d258c0bf73cc406fcf36d" kind="variable"><name>Speed</name></member>
+    <member refid="classendstone_1_1EffectType_1ae7ff89cef56b3c088a0cb04c59824318" kind="variable"><name>Slowness</name></member>
+    <member refid="classendstone_1_1EffectType_1ace34fdac89593096af519b55e5e07aaa" kind="variable"><name>Haste</name></member>
+    <member refid="classendstone_1_1EffectType_1ad12456c87b72295bcdfcdaecf3cb549f" kind="variable"><name>MiningFatigue</name></member>
+    <member refid="classendstone_1_1EffectType_1a131a015cb4caf77914e847d73f80d3e7" kind="variable"><name>Strength</name></member>
+    <member refid="classendstone_1_1EffectType_1a8e7df6c5cf7edd1de10fc058867c27c0" kind="variable"><name>InstantHealth</name></member>
+    <member refid="classendstone_1_1EffectType_1a0f85ee53ebfc961a73d4f3522ec06f47" kind="variable"><name>InstantDamage</name></member>
+    <member refid="classendstone_1_1EffectType_1ab6b81a5bab0c2f0a44ac936bf98d7b14" kind="variable"><name>JumpBoost</name></member>
+    <member refid="classendstone_1_1EffectType_1a5775abe1f24ce0353f83b58146d6da28" kind="variable"><name>Nausea</name></member>
+    <member refid="classendstone_1_1EffectType_1a4243b93a3b30d4885415fde43de62e2c" kind="variable"><name>Regeneration</name></member>
+    <member refid="classendstone_1_1EffectType_1a429343b8bd0373f56dc1842998dbd647" kind="variable"><name>Resistance</name></member>
+    <member refid="classendstone_1_1EffectType_1ab4dd3d6e9c0a328a28508ad741a36cab" kind="variable"><name>FireResistance</name></member>
+    <member refid="classendstone_1_1EffectType_1ab5e4a5a9729395c68b25f1aa00774018" kind="variable"><name>WaterBreathing</name></member>
+    <member refid="classendstone_1_1EffectType_1af8dfb14543ec5a0156b2130fb5428de5" kind="variable"><name>Invisibility</name></member>
+    <member refid="classendstone_1_1EffectType_1a4a0a915b1f54b2db5c14d1acd7f9f126" kind="variable"><name>Blindness</name></member>
+    <member refid="classendstone_1_1EffectType_1a95fbf0ce737ee098368f415262cd206f" kind="variable"><name>NightVision</name></member>
+    <member refid="classendstone_1_1EffectType_1abab9c99570d6b2d300538238c1236023" kind="variable"><name>Hunger</name></member>
+    <member refid="classendstone_1_1EffectType_1a89e71ed8b05139b171cd72be6482dbc1" kind="variable"><name>Weakness</name></member>
+    <member refid="classendstone_1_1EffectType_1a2900bf9ac5414674aa7ca8603f4e3acc" kind="variable"><name>Poison</name></member>
+    <member refid="classendstone_1_1EffectType_1a09787e5505d49122a7ee5b47eba61c68" kind="variable"><name>Wither</name></member>
+    <member refid="classendstone_1_1EffectType_1a6b2aaec69245679e7d85fcd766cb5232" kind="variable"><name>HealthBoost</name></member>
+    <member refid="classendstone_1_1EffectType_1a31bf6ab9da53b70b3c6fbd239efb3d63" kind="variable"><name>Absorption</name></member>
+    <member refid="classendstone_1_1EffectType_1aecbd26087ffcba4dc1ba1873a9326c49" kind="variable"><name>Saturation</name></member>
+    <member refid="classendstone_1_1EffectType_1a240f34b649162d2322caea45d7b41fd8" kind="variable"><name>Levitation</name></member>
+    <member refid="classendstone_1_1EffectType_1ab7425b3fa3f62b9ff602418301d79f3b" kind="variable"><name>FatalPoison</name></member>
+    <member refid="classendstone_1_1EffectType_1a22eff781cf7c5ec4c27103b7133bef35" kind="variable"><name>ConduitPower</name></member>
+    <member refid="classendstone_1_1EffectType_1a6eaaf3aef81e3c829496ed973400ca65" kind="variable"><name>SlowFalling</name></member>
+    <member refid="classendstone_1_1EffectType_1afd571d2c1744540c4fa1ee11dc371980" kind="variable"><name>BadOmen</name></member>
+    <member refid="classendstone_1_1EffectType_1af6b5ad04eaa26791853638928f8bb538" kind="variable"><name>HeroOfTheVillage</name></member>
+    <member refid="classendstone_1_1EffectType_1ae3e16443e431969b1e6787dd81549bfb" kind="variable"><name>Darkness</name></member>
+    <member refid="classendstone_1_1EffectType_1a3733620d33b976f3522e65a0f1fbedd9" kind="variable"><name>TrialOmen</name></member>
+    <member refid="classendstone_1_1EffectType_1ae6367d8fb10511c417aa26716121856b" kind="variable"><name>WindCharged</name></member>
+    <member refid="classendstone_1_1EffectType_1a95c3ef30260b849d4f8eb6a01fde7134" kind="variable"><name>Weaving</name></member>
+    <member refid="classendstone_1_1EffectType_1a327f7dec9ed9b578e5250ba6e2e15d7d" kind="variable"><name>Oozing</name></member>
+    <member refid="classendstone_1_1EffectType_1ab29f0cd3886f1c19ae0399bde24ab2bf" kind="variable"><name>Infested</name></member>
+    <member refid="classendstone_1_1EffectType_1abda9edc6db36eb6a4431ef37e0a34736" kind="variable"><name>RaidOmen</name></member>
+    <member refid="classendstone_1_1EffectType_1a099e77cf32a51f151e1aba4f05bfdc51" kind="function"><name>getEffectType</name></member>
+  </compound>
   <compound refid="classendstone_1_1Enchantment" kind="class"><name>endstone::Enchantment</name>
     <member refid="classendstone_1_1Enchantment_1a77f68b71735935a36c6fbcf1bad9a9f6" kind="variable"><name>Protection</name></member>
     <member refid="classendstone_1_1Enchantment_1a603f1ff3531ba50b470bb6723fcaff33" kind="variable"><name>FireProtection</name></member>
@@ -2288,6 +2327,8 @@
   </compound>
   <compound refid="damage__source_8h" kind="file"><name>damage_source.h</name>
   </compound>
+  <compound refid="effect__type_8h" kind="file"><name>effect_type.h</name>
+  </compound>
   <compound refid="enchantment_8h" kind="file"><name>enchantment.h</name>
   </compound>
   <compound refid="actor__damage__event_8h" kind="file"><name>actor_damage_event.h</name>
@@ -2590,6 +2631,8 @@
   <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
   </compound>
   <compound refid="dir_d35032eb9ca22acb8eface5f2c8b6a35" kind="dir"><name>include/endstone/damage</name>
+  </compound>
+  <compound refid="dir_aaf7aa7272c9e0e62216386f1c427eea" kind="dir"><name>include/endstone/effect</name>
   </compound>
   <compound refid="dir_5154bf3e53eefb0e1f350f5612107967" kind="dir"><name>include/endstone/enchantments</name>
   </compound>

@@ -1,0 +1,652 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1EffectType" kind="class" language="C++" prot="public">
+    <compoundname>endstone::EffectType</compoundname>
+    <includes refid="effect__type_8h" local="no">endstone/effect/effect_type.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a0edb6c0ffc0d258c0bf73cc406fcf36d" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Speed</definition>
+        <argsstring></argsstring>
+        <name>Speed</name>
+        <qualifiedname>endstone::EffectType::Speed</qualifiedname>
+        <initializer>= getEffectType(&quot;speed&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases movement speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="35" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ae7ff89cef56b3c088a0cb04c59824318" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Slowness</definition>
+        <argsstring></argsstring>
+        <name>Slowness</name>
+        <qualifiedname>endstone::EffectType::Slowness</qualifiedname>
+        <initializer>= getEffectType(&quot;slowness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases movement speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="40" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ace34fdac89593096af519b55e5e07aaa" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Haste</definition>
+        <argsstring></argsstring>
+        <name>Haste</name>
+        <qualifiedname>endstone::EffectType::Haste</qualifiedname>
+        <initializer>= getEffectType(&quot;haste&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases dig speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="45" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ad12456c87b72295bcdfcdaecf3cb549f" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::MiningFatigue</definition>
+        <argsstring></argsstring>
+        <name>MiningFatigue</name>
+        <qualifiedname>endstone::EffectType::MiningFatigue</qualifiedname>
+        <initializer>= getEffectType(&quot;mining_fatigue&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases dig speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="50" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a131a015cb4caf77914e847d73f80d3e7" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Strength</definition>
+        <argsstring></argsstring>
+        <name>Strength</name>
+        <qualifiedname>endstone::EffectType::Strength</qualifiedname>
+        <initializer>= getEffectType(&quot;strength&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases damage dealt. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="55" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a8e7df6c5cf7edd1de10fc058867c27c0" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::InstantHealth</definition>
+        <argsstring></argsstring>
+        <name>InstantHealth</name>
+        <qualifiedname>endstone::EffectType::InstantHealth</qualifiedname>
+        <initializer>= getEffectType(&quot;instant_health&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Heals an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="60" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a0f85ee53ebfc961a73d4f3522ec06f47" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::InstantDamage</definition>
+        <argsstring></argsstring>
+        <name>InstantDamage</name>
+        <qualifiedname>endstone::EffectType::InstantDamage</qualifiedname>
+        <initializer>= getEffectType(&quot;instant_damage&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hurts an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="65" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ab6b81a5bab0c2f0a44ac936bf98d7b14" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::JumpBoost</definition>
+        <argsstring></argsstring>
+        <name>JumpBoost</name>
+        <qualifiedname>endstone::EffectType::JumpBoost</qualifiedname>
+        <initializer>= getEffectType(&quot;jump_boost&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases jump height. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="70" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a5775abe1f24ce0353f83b58146d6da28" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Nausea</definition>
+        <argsstring></argsstring>
+        <name>Nausea</name>
+        <qualifiedname>endstone::EffectType::Nausea</qualifiedname>
+        <initializer>= getEffectType(&quot;nausea&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Warps vision on the client. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="75" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a4243b93a3b30d4885415fde43de62e2c" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Regeneration</definition>
+        <argsstring></argsstring>
+        <name>Regeneration</name>
+        <qualifiedname>endstone::EffectType::Regeneration</qualifiedname>
+        <initializer>= getEffectType(&quot;regeneration&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Regenerates health. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="80" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a429343b8bd0373f56dc1842998dbd647" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Resistance</definition>
+        <argsstring></argsstring>
+        <name>Resistance</name>
+        <qualifiedname>endstone::EffectType::Resistance</qualifiedname>
+        <initializer>= getEffectType(&quot;resistance&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases damage dealt to an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="85" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ab4dd3d6e9c0a328a28508ad741a36cab" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::FireResistance</definition>
+        <argsstring></argsstring>
+        <name>FireResistance</name>
+        <qualifiedname>endstone::EffectType::FireResistance</qualifiedname>
+        <initializer>= getEffectType(&quot;fire_resistance&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stops fire damage. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="90" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ab5e4a5a9729395c68b25f1aa00774018" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::WaterBreathing</definition>
+        <argsstring></argsstring>
+        <name>WaterBreathing</name>
+        <qualifiedname>endstone::EffectType::WaterBreathing</qualifiedname>
+        <initializer>= getEffectType(&quot;water_breathing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows breathing underwater. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="95" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1af8dfb14543ec5a0156b2130fb5428de5" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Invisibility</definition>
+        <argsstring></argsstring>
+        <name>Invisibility</name>
+        <qualifiedname>endstone::EffectType::Invisibility</qualifiedname>
+        <initializer>= getEffectType(&quot;invisibility&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Grants invisibility. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="100" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a4a0a915b1f54b2db5c14d1acd7f9f126" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Blindness</definition>
+        <argsstring></argsstring>
+        <name>Blindness</name>
+        <qualifiedname>endstone::EffectType::Blindness</qualifiedname>
+        <initializer>= getEffectType(&quot;blindness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blinds an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="105" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a95fbf0ce737ee098368f415262cd206f" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::NightVision</definition>
+        <argsstring></argsstring>
+        <name>NightVision</name>
+        <qualifiedname>endstone::EffectType::NightVision</qualifiedname>
+        <initializer>= getEffectType(&quot;night_vision&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows an entity to see in the dark. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="110" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1abab9c99570d6b2d300538238c1236023" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Hunger</definition>
+        <argsstring></argsstring>
+        <name>Hunger</name>
+        <qualifiedname>endstone::EffectType::Hunger</qualifiedname>
+        <initializer>= getEffectType(&quot;hunger&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases hunger. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="115" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a89e71ed8b05139b171cd72be6482dbc1" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Weakness</definition>
+        <argsstring></argsstring>
+        <name>Weakness</name>
+        <qualifiedname>endstone::EffectType::Weakness</qualifiedname>
+        <initializer>= getEffectType(&quot;weakness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases damage dealt by an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="120" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a2900bf9ac5414674aa7ca8603f4e3acc" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Poison</definition>
+        <argsstring></argsstring>
+        <name>Poison</name>
+        <qualifiedname>endstone::EffectType::Poison</qualifiedname>
+        <initializer>= getEffectType(&quot;poison&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deals damage to an entity over time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="125" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a09787e5505d49122a7ee5b47eba61c68" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Wither</definition>
+        <argsstring></argsstring>
+        <name>Wither</name>
+        <qualifiedname>endstone::EffectType::Wither</qualifiedname>
+        <initializer>= getEffectType(&quot;wither&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deals damage to an entity over time and gives the health to the shooter. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="131" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a6b2aaec69245679e7d85fcd766cb5232" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::HealthBoost</definition>
+        <argsstring></argsstring>
+        <name>HealthBoost</name>
+        <qualifiedname>endstone::EffectType::HealthBoost</qualifiedname>
+        <initializer>= getEffectType(&quot;health_boost&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases the maximum health of an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="136" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a31bf6ab9da53b70b3c6fbd239efb3d63" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Absorption</definition>
+        <argsstring></argsstring>
+        <name>Absorption</name>
+        <qualifiedname>endstone::EffectType::Absorption</qualifiedname>
+        <initializer>= getEffectType(&quot;absorption&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="142" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1aecbd26087ffcba4dc1ba1873a9326c49" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Saturation</definition>
+        <argsstring></argsstring>
+        <name>Saturation</name>
+        <qualifiedname>endstone::EffectType::Saturation</qualifiedname>
+        <initializer>= getEffectType(&quot;saturation&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases the food level of an entity each tick. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="147" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a240f34b649162d2322caea45d7b41fd8" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Levitation</definition>
+        <argsstring></argsstring>
+        <name>Levitation</name>
+        <qualifiedname>endstone::EffectType::Levitation</qualifiedname>
+        <initializer>= getEffectType(&quot;levitation&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes the entity to float into the air. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="152" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ab7425b3fa3f62b9ff602418301d79f3b" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::FatalPoison</definition>
+        <argsstring></argsstring>
+        <name>FatalPoison</name>
+        <qualifiedname>endstone::EffectType::FatalPoison</qualifiedname>
+        <initializer>= getEffectType(&quot;fatal_poison&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="157" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a22eff781cf7c5ec4c27103b7133bef35" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::ConduitPower</definition>
+        <argsstring></argsstring>
+        <name>ConduitPower</name>
+        <qualifiedname>endstone::EffectType::ConduitPower</qualifiedname>
+        <initializer>= getEffectType(&quot;conduit_power&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Effects granted by a nearby conduit. Includes enhanced underwater abilities. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="162" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a6eaaf3aef81e3c829496ed973400ca65" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::SlowFalling</definition>
+        <argsstring></argsstring>
+        <name>SlowFalling</name>
+        <qualifiedname>endstone::EffectType::SlowFalling</qualifiedname>
+        <initializer>= getEffectType(&quot;slow_falling&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Slows entity fall rate. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="167" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1afd571d2c1744540c4fa1ee11dc371980" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::BadOmen</definition>
+        <argsstring></argsstring>
+        <name>BadOmen</name>
+        <qualifiedname>endstone::EffectType::BadOmen</qualifiedname>
+        <initializer>= getEffectType(&quot;bad_omen&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Triggers an ominous event when the player enters a village or trial chambers.<linebreak/>
+ oof. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="173" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1af6b5ad04eaa26791853638928f8bb538" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::HeroOfTheVillage</definition>
+        <argsstring></argsstring>
+        <name>HeroOfTheVillage</name>
+        <qualifiedname>endstone::EffectType::HeroOfTheVillage</qualifiedname>
+        <initializer>= getEffectType(&quot;hero_of_the_village&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reduces the cost of villager trades.<linebreak/>
+ \o/. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="179" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ae3e16443e431969b1e6787dd81549bfb" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Darkness</definition>
+        <argsstring></argsstring>
+        <name>Darkness</name>
+        <qualifiedname>endstone::EffectType::Darkness</qualifiedname>
+        <initializer>= getEffectType(&quot;darkness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes the player&apos;s vision to dim occasionally. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="184" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a3733620d33b976f3522e65a0f1fbedd9" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::TrialOmen</definition>
+        <argsstring></argsstring>
+        <name>TrialOmen</name>
+        <qualifiedname>endstone::EffectType::TrialOmen</qualifiedname>
+        <initializer>= getEffectType(&quot;trial_omen&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes trial spawners to become ominous. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="189" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ae6367d8fb10511c417aa26716121856b" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::WindCharged</definition>
+        <argsstring></argsstring>
+        <name>WindCharged</name>
+        <qualifiedname>endstone::EffectType::WindCharged</qualifiedname>
+        <initializer>= getEffectType(&quot;wind_charged&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Emits a wind burst upon death. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="194" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a95c3ef30260b849d4f8eb6a01fde7134" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Weaving</definition>
+        <argsstring></argsstring>
+        <name>Weaving</name>
+        <qualifiedname>endstone::EffectType::Weaving</qualifiedname>
+        <initializer>= getEffectType(&quot;weaving&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates cobwebs upon death. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="199" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a327f7dec9ed9b578e5250ba6e2e15d7d" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Oozing</definition>
+        <argsstring></argsstring>
+        <name>Oozing</name>
+        <qualifiedname>endstone::EffectType::Oozing</qualifiedname>
+        <initializer>= getEffectType(&quot;oozing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes slimes to spawn upon death. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="204" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ab29f0cd3886f1c19ae0399bde24ab2bf" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::Infested</definition>
+        <argsstring></argsstring>
+        <name>Infested</name>
+        <qualifiedname>endstone::EffectType::Infested</qualifiedname>
+        <initializer>= getEffectType(&quot;infested&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Chance of spawning silverfish when hurt. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="209" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1abda9edc6db36eb6a4431ef37e0a34736" prot="public" static="yes" mutable="no">
+        <type>const auto</type>
+        <definition>const auto endstone::EffectType::RaidOmen</definition>
+        <argsstring></argsstring>
+        <name>RaidOmen</name>
+        <qualifiedname>endstone::EffectType::RaidOmen</qualifiedname>
+        <initializer>= getEffectType(&quot;raid_omen&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Triggers a raid when a player enters a village. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="214" column="30" bodyfile="include/endstone/effect/effect_type.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classendstone_1_1EffectType_1a099e77cf32a51f151e1aba4f05bfdc51" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string endstone::EffectType::getEffectType</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>getEffectType</name>
+        <qualifiedname>endstone::EffectType::getEffectType</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="26" column="24" bodyfile="include/endstone/effect/effect_type.h" bodystart="26" bodyend="29"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All effect types. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/effect/effect_type.h" line="25" column="1" bodyfile="include/endstone/effect/effect_type.h" bodystart="25" bodyend="215"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1EffectType_1a31bf6ab9da53b70b3c6fbd239efb3d63" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Absorption</name></member>
+      <member refid="classendstone_1_1EffectType_1afd571d2c1744540c4fa1ee11dc371980" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>BadOmen</name></member>
+      <member refid="classendstone_1_1EffectType_1a4a0a915b1f54b2db5c14d1acd7f9f126" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Blindness</name></member>
+      <member refid="classendstone_1_1EffectType_1a22eff781cf7c5ec4c27103b7133bef35" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>ConduitPower</name></member>
+      <member refid="classendstone_1_1EffectType_1ae3e16443e431969b1e6787dd81549bfb" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Darkness</name></member>
+      <member refid="classendstone_1_1EffectType_1ab7425b3fa3f62b9ff602418301d79f3b" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>FatalPoison</name></member>
+      <member refid="classendstone_1_1EffectType_1ab4dd3d6e9c0a328a28508ad741a36cab" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>FireResistance</name></member>
+      <member refid="classendstone_1_1EffectType_1a099e77cf32a51f151e1aba4f05bfdc51" prot="private" virt="non-virtual"><scope>endstone::EffectType</scope><name>getEffectType</name></member>
+      <member refid="classendstone_1_1EffectType_1ace34fdac89593096af519b55e5e07aaa" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Haste</name></member>
+      <member refid="classendstone_1_1EffectType_1a6b2aaec69245679e7d85fcd766cb5232" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>HealthBoost</name></member>
+      <member refid="classendstone_1_1EffectType_1af6b5ad04eaa26791853638928f8bb538" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>HeroOfTheVillage</name></member>
+      <member refid="classendstone_1_1EffectType_1abab9c99570d6b2d300538238c1236023" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Hunger</name></member>
+      <member refid="classendstone_1_1EffectType_1ab29f0cd3886f1c19ae0399bde24ab2bf" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Infested</name></member>
+      <member refid="classendstone_1_1EffectType_1a0f85ee53ebfc961a73d4f3522ec06f47" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>InstantDamage</name></member>
+      <member refid="classendstone_1_1EffectType_1a8e7df6c5cf7edd1de10fc058867c27c0" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>InstantHealth</name></member>
+      <member refid="classendstone_1_1EffectType_1af8dfb14543ec5a0156b2130fb5428de5" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Invisibility</name></member>
+      <member refid="classendstone_1_1EffectType_1ab6b81a5bab0c2f0a44ac936bf98d7b14" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>JumpBoost</name></member>
+      <member refid="classendstone_1_1EffectType_1a240f34b649162d2322caea45d7b41fd8" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Levitation</name></member>
+      <member refid="classendstone_1_1EffectType_1ad12456c87b72295bcdfcdaecf3cb549f" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>MiningFatigue</name></member>
+      <member refid="classendstone_1_1EffectType_1a5775abe1f24ce0353f83b58146d6da28" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Nausea</name></member>
+      <member refid="classendstone_1_1EffectType_1a95fbf0ce737ee098368f415262cd206f" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>NightVision</name></member>
+      <member refid="classendstone_1_1EffectType_1a327f7dec9ed9b578e5250ba6e2e15d7d" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Oozing</name></member>
+      <member refid="classendstone_1_1EffectType_1a2900bf9ac5414674aa7ca8603f4e3acc" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Poison</name></member>
+      <member refid="classendstone_1_1EffectType_1abda9edc6db36eb6a4431ef37e0a34736" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>RaidOmen</name></member>
+      <member refid="classendstone_1_1EffectType_1a4243b93a3b30d4885415fde43de62e2c" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Regeneration</name></member>
+      <member refid="classendstone_1_1EffectType_1a429343b8bd0373f56dc1842998dbd647" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Resistance</name></member>
+      <member refid="classendstone_1_1EffectType_1aecbd26087ffcba4dc1ba1873a9326c49" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Saturation</name></member>
+      <member refid="classendstone_1_1EffectType_1a6eaaf3aef81e3c829496ed973400ca65" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>SlowFalling</name></member>
+      <member refid="classendstone_1_1EffectType_1ae7ff89cef56b3c088a0cb04c59824318" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Slowness</name></member>
+      <member refid="classendstone_1_1EffectType_1a0edb6c0ffc0d258c0bf73cc406fcf36d" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Speed</name></member>
+      <member refid="classendstone_1_1EffectType_1a131a015cb4caf77914e847d73f80d3e7" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Strength</name></member>
+      <member refid="classendstone_1_1EffectType_1a3733620d33b976f3522e65a0f1fbedd9" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>TrialOmen</name></member>
+      <member refid="classendstone_1_1EffectType_1ab5e4a5a9729395c68b25f1aa00774018" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>WaterBreathing</name></member>
+      <member refid="classendstone_1_1EffectType_1a89e71ed8b05139b171cd72be6482dbc1" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Weakness</name></member>
+      <member refid="classendstone_1_1EffectType_1a95c3ef30260b849d4f8eb6a01fde7134" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Weaving</name></member>
+      <member refid="classendstone_1_1EffectType_1ae6367d8fb10511c417aa26716121856b" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>WindCharged</name></member>
+      <member refid="classendstone_1_1EffectType_1a09787e5505d49122a7ee5b47eba61c68" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Wither</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

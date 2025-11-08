@@ -242,6 +242,7 @@
 * **getDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
+* **getEffectType** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **getEnchantment** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getMaxLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getStartLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))

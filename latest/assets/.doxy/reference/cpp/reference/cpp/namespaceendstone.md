@@ -84,6 +84,7 @@ _Represents a button with text and an optional icon._
 | class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a level._  |
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
+| class | [**EffectType**](classendstone_1_1EffectType.md) <br>_All effect types._  |
 | class | [**Enchantment**](classendstone_1_1Enchantment.md) <br> |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |

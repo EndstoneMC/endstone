@@ -44,6 +44,8 @@ Here is a list of all files with brief descriptions:
             * **file** [**plugin\_command.h**](plugin__command_8h.md)     
         * **dir** [**damage**](dir_d35032eb9ca22acb8eface5f2c8b6a35.md)     
             * **file** [**damage\_source.h**](damage__source_8h.md)     
+        * **dir** [**effect**](dir_aaf7aa7272c9e0e62216386f1c427eea.md)     
+            * **file** [**effect\_type.h**](effect__type_8h.md)     
         * **dir** [**enchantments**](dir_5154bf3e53eefb0e1f350f5612107967.md)     
             * **file** [**enchantment.h**](enchantment_8h.md)     
         * **dir** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md)     

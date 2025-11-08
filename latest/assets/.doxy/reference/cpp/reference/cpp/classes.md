@@ -119,6 +119,8 @@
 
 ## e
 
+* [**EffectType**](classendstone_1_1EffectType.md)
+([**endstone**](namespaceendstone.md))
 * [**Enchantment**](classendstone_1_1Enchantment.md)
 ([**endstone**](namespaceendstone.md))
 * [**Event**](classendstone_1_1Event.md)
