@@ -45,6 +45,7 @@ void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::c
 void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
                  py::class_<Player, Mob, OfflinePlayer> &player);
 void init_plugin(py::module_ &);
+void init_potion(py::module_ &);
 void init_registry(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
@@ -78,6 +79,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto m_map = m.def_submodule("map", "Classes relating to plugin handling of map displays.");
     auto m_permissions = m.def_submodule("permissions", "Classes relating to permissions of players.");
     auto m_plugin = m.def_submodule("plugin", "Classes relating to loading and managing plugins.");
+    auto m_potion = m.def_submodule("potion", "Classes relating to potion effects.");
     auto m_scheduler =
         m.def_submodule("scheduler", "Classes relating to letting plugins run code at specific time intervals.");
     auto m_scoreboard =
@@ -153,6 +155,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_form(m_form);
     init_enchantments(m_enchantments);
     init_map(m_map);
+    init_potion(m_potion);
     init_inventory(m_inventory, item_stack);
     init_util(m_util, vector);
     init_ban(m_ban);

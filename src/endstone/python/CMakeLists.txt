@@ -22,6 +22,7 @@ pybind11_add_module(_python MODULE
         map.cpp
         permissions.cpp
         plugin.cpp
+        potion.cpp
         scheduler.cpp
         scoreboard.cpp
         util.cpp
