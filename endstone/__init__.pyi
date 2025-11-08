@@ -153,7 +153,7 @@ class Server:
         ...
     def get_registry(self, type: typing.Type[T]) -> Registry[T]:
         """
-        Returns the registry for all the enchantments.
+        Returns the registry for the given type.
         """
         ...
     @property
